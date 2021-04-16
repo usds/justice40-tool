@@ -1,0 +1,302 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Vector Tiles in Leaflet</title>
+
+<!-- CSS for Leaflet map  -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+crossorigin="" />
+
+<!-- JS for Leaflet map  -->
+<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+crossorigin=""></script>
+
+<!-- Leaflet plugin for vector tiles support -->
+<script type="text/javascript"  src="https://unpkg.com/leaflet.vectorgrid@1.2.0"></script>
+
+<!-- Set up a full-screen map -->
+<style>
+html, body, #map { height: 100%; width: 100%; }
+body { padding: 0; margin: 0; }
+#map { z-index: 1; }
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
+
+.legend {
+    line-height: 18px;
+    color: #555;
+}
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- Put the map in this element -->
+<div id="map"></div>
+
+<script>
+// Leaflet map object
+// var map = L.map('map').setView([0, 0], 2);
+
+
+var usBounds = L.latLngBounds(
+    L.latLng(5.499550, -167.276413), //Southwest
+    L.latLng(83.162102, -52.233040)  //Northeast
+);
+
+var marylandBounds = L.latLngBounds(
+    L.latLng(39.7425, -75.0450), //Southwest
+    L.latLng(37.8713, -79.4938)  //Northeast
+);
+
+
+var map = L.map('map', {
+    'center': [0, 0],
+    'zoom': 0,
+    'maxBounds': marylandBounds
+}).fitBounds(marylandBounds);
+
+// Add a base map layer to the map
+var baseUrl = "https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png";
+// var baseLayer = L.tileLayer(baseUrl).addTo(map);
+
+let mapboxAccessToken = "TOKEN_HERE";
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + mapboxAccessToken, {
+    id: 'mapbox/light-v9',
+    attribution: "OSM",
+    tileSize: 512,
+    zoomOffset: -1
+}).addTo(map);
+
+
+// Add the tile layer to the map
+// https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/50m/cultural/ne_50m_admin_0_countries.zip
+var vectorServer = "http://localhost:7800/";
+var vectorLayerId = "public.marylandblockgroups";
+var vectorUrl = vectorServer + vectorLayerId + "/{z}/{x}/{y}.pbf";
+var vectorTileStyling = {};
+
+function getColor(d) {
+    return d > 0.83  ? '#E31A1C' :
+           d > 0.66  ? '#FC4E2A' :
+           d > 0.50  ? '#FD8D3C' :
+           d > 0.33   ? '#FEB24C' :
+           d > 0.16   ? '#FED976' :
+                      '#FFEDA0';
+}
+
+
+function highlightFeature(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+        weight: 5,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0.7
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+    }
+
+    info.update(layer.feature.properties);
+}
+
+function resetHighlight(e) {
+    geojson.resetStyle(e.target);
+    info.update();
+}
+
+function zoomToFeature(e) {
+    map.fitBounds(e.target.getBounds());
+}
+
+function onEachFeature(feature, featureLayer, vtLayer, tileCoords) {
+    featureLayer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+    });
+}
+
+
+// Rendering options
+vectorTileStyling[vectorLayerId] = function(properties, zoom) {
+    return {
+        "fill": true,
+        // "fillColor": getColor(properties.lowincpct),
+        "fillColor": [
+            'interpolate',
+            ['linear'],
+            ['get', 'lowincpct'],
+            0,
+            '#000000',
+            1,
+            '#ffffff' 
+        ],
+        "fillOpacity": 0.8,
+        "color": "green",
+        "opacity": 0.7,
+        "weight": 2,
+    }
+    
+};
+var vectorTileOptions = {
+    "rendererFactory": L.canvas.tile,
+    "vectorTileLayerStyles": vectorTileStyling,
+    interactive: true,
+    onEachFeature: onEachFeature
+};
+var vectorLayer = L.vectorGrid.protobuf(vectorUrl, vectorTileOptions).addTo(map);
+
+function highlight(e) {
+  console.log(e);
+  if (e.layer.feature) {
+    var latlng = [e.layer.feature.geometry.coordinates[1],e.layer.feature.geometry.coordinates[0]];
+    console.log(latlng)
+  }
+}
+//     var parcel = e.layer.feature.properties;
+//     var index = parcel.index.split(" | ");
+//     var pin = index[0];
+//     var name = index[1];
+//   }else{
+//     var latlng = [e.latlng.lat,e.latlng.lng];
+//     console.log(latlng)
+//     var parcel = e.layer.properties;
+//     var pin = parcel.PIN;
+//     var name  = parcel.NAME;
+//   }
+//   console.log(parcel);
+//   id = parcel.geoid;
+//   var popup = 'Parcel ID: ' + pin + '<hr>Name: ' + name;
+//   map.on('popupopen', function() {
+//     map.spin(false);
+//   });
+//   map.on('popupclose', function() {
+//     vectorLayer.setFeatureStyle(id, {
+//       color: 'orange',
+//       weight: 1
+//     });
+//   });
+//   setTimeout(function() {
+//     vectorLayer.setFeatureStyle(id, {
+//       color: 'red'
+//     });
+//     map.openPopup(popup, latlng);
+//     x = 0
+//   }, 50);
+
+vectorLayer.on('click', function(e) {
+    highlight(e);
+    e.preventDefault();
+});
+
+
+var info = L.control();
+
+info.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this.update();
+    return this._div;
+};
+
+// method that we will use to update the control based on feature properties passed
+info.update = function (props) {
+    this._div.innerHTML = '<h4>Percent poverty</h4>' +  (props ?
+        '<b>' + props.name + '</b><br />' + props.density + ' people / mi<sup>2</sup>'
+        : 'Hover over a census block group');
+};
+
+info.addTo(map);
+
+
+var legend = L.control({position: 'bottomright'});
+
+legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = [0, 0.16, 0.33, 0.50, 0.66, 0.83, 100],
+        labels = [];
+
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getColor(grades[i+1]) + '"></i> ' +
+            grades[i] + (grades[i] ? '&ndash;' + grades[i+1] + '<br>' : '+');
+    }
+
+    return div;
+};
+
+legend.addTo(map);
+
+// let dropdown = L.control({position: "topleft"});
+// dropdown.onAdd = function() {
+//     let div = L.DomUtil.create("div", "dropdown");
+//     div.innerHTML = 
+//         '<select id="species_sel">' +
+//             '<option>Abutilon indicum</option>' +
+//             '<option>Acinos rotundifolius</option>' +
+//             '<option>Adonis aestivalis</option>' +
+//         '</select>';
+//     return div;
+// };
+// dropdown.addTo(map);
+
+</script>
+
+<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function() {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					head.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					head.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function(msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			console.log('Live reload enabled.');
+		})();
+	}
+	// ]]>
+</script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Demo: Make a choropleth map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      h2,
+      h3 {
+        margin: 10px;
+        font-size: 1.2em;
+      }
+      h3 {
+        font-size: 1em;
+      }
+      p {
+        font-size: 0.85em;
+        margin: 10px;
+        text-align: left;
+      }
+      .map-overlay {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.8);
+        margin-right: 20px;
+        font-family: Arial, sans-serif;
+        overflow: auto;
+        border-radius: 3px;
+      }
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+      #features {
+        top: 0;
+        height: 100px;
+        margin-top: 20px;
+        width: 250px;
+      }
+      #legend {
+        padding: 10px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        line-height: 18px;
+        height: 150px;
+        margin-bottom: 40px;
+        width: 100px;
+      }
+      .legend-key {
+        display: inline-block;
+        border-radius: 20%;
+        width: 10px;
+        height: 10px;
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div class="map-overlay" id="features">
+      <h2>US population density</h2>
+      <div id="pd"><p>Hover over a state!</p></div>
+    </div>
+    <div class="map-overlay" id="legend"></div>
+
+    <script>
+      // define access token
+      mapboxgl.accessToken = 'TOKEN_HERE';
+
+      // define layer names
+    
+
+    let colors = [
+          '#FFEDA0',
+          '#FED976',
+          '#FEB24C',
+          '#FD8D3C',
+          '#FC4E2A',
+          '#E31A1C',
+          '#BD0026'
+    ];
+
+    let layers = [
+          '0',
+          '0.16',
+          '0.33',
+          '0.50',
+          '0.67',
+          '0.83',
+          '1.0'
+    ];
+
+    let layersAndColors = colors.map(
+        (color, index) => [color, parseFloat(layers[index])]
+    ).flat();
+
+    //create map
+    var map = new mapboxgl.Map({
+        container: 'map', // container id
+        center: [-76.615278, 39.289444],
+        bounds: [
+          [-75.0450, 39.7425],
+          [-79.4938, 37.8713, ]
+        ],
+        style: {
+            "version": 8,
+            "name": "Mapbox Streets",
+            "sprite": "mapbox://sprites/mapbox/streets-v8",
+            "glyphs": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",
+            "sources": {
+                'carto-light': {
+                    'type': 'raster',
+                    'tiles': [
+                        "http://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+                        "http://b.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+                        "http://c.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+                        "http://d.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
+                    ]
+                },
+                'postgis-tiles': {
+                    'type': 'vector',
+                    'tiles': [
+                        // "http://localhost:5000/api/tiles/{z}/{x}/{y}.mvt"
+                        "http://localhost:7800/public.marylandblockgroups/{z}/{x}/{y}.pbf"
+                    ]
+                }
+            },
+            "layers": [{
+                'id': 'carto-light-layer',
+                'type': 'raster',
+                'source': 'carto-light',
+                'minzoom': 0,
+                'maxzoom': 22
+            },{
+                "id": "postgis-tiles",
+                "type": "fill",
+                "source": "postgis-tiles",
+                "source-layer": "postgis-tiles",
+                "paint": {
+                    "fill-color": [
+                        "interpolate",
+                        ["linear"],
+                        ["get", "LOWINCPCT"],
+                        0,
+                        "hsl(0, 0%, 100%)",
+                        1,
+                        "#000000"
+                    ]
+                }
+          },]
+        }//'mapbox://styles/examples/cjgioozof002u2sr5k7t14dim' // map style URL from Mapbox Studio
+      });
+
+
+      // wait for map to load before adjusting it
+      map.on('load', function () {
+        // make a pointer cursor
+        map.getCanvas().style.cursor = 'default';
+
+        // set map bounds to the continental US
+        // map.fitBounds([
+        //   [-75.0450, 39.7425],
+        //   [-79.4938, 37.8713, ]
+        // ]);
+
+        // make a pointer cursor
+        map.getCanvas().style.cursor = 'default';
+
+        
+
+        // create legend
+        for (i = 0; i < layers.length; i++) {
+          var layer = layers[i];
+          var color = colors[i];
+          var item = document.createElement('div');
+          var key = document.createElement('span');
+          key.className = 'legend-key';
+          key.style.backgroundColor = color;
+
+          var value = document.createElement('span');
+          value.innerHTML = layer;
+          item.appendChild(key);
+          item.appendChild(value);
+          legend.appendChild(item);
+        }
+
+        map.addSource('postgis-tiles2', {
+            'type': 'vector',
+            'tiles': [
+            'http://localhost:7800/public.marylandblockgroups/{z}/{x}/{y}.pbf'
+            ]
+          });
+
+        // change info window on hover
+        map.on('mousemove', function (e) {
+          var states = map.queryRenderedFeatures(e.point, {
+            layers: ['postgis-tiles']
+          });
+
+          if (states.length > 0) {
+            document.getElementById('pd').innerHTML =
+              '<h3><strong>' +
+              states[0].properties.name +
+              '</strong></h3><p><strong><em>' +
+              states[0].properties.density +
+              '</strong> people per square mile</em></p>';
+          } else {
+            document.getElementById('pd').innerHTML =
+              '<p>Hover over a state!</p>';
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
