@@ -26,7 +26,7 @@ var vtLayer = new VectorTileLayer({
   declutter: false,
   source: new VectorTileSource({
     format: new MVT(),
-    url: 'http://localhost:7800/public.marylandblockgroups/{z}/{x}/{y}.pbf'
+    url: 'http://localhost:7800/public.maryland/{z}/{x}/{y}.mvt'
   }),
   style: new Style({
     stroke: new Stroke({
@@ -39,9 +39,9 @@ var vtLayer = new VectorTileLayer({
         ['linear'],
         ['get', 'lowincpct'],
         0,
-        '#5aca5b',
+        'white',
         1,
-        '#ff6a19' ]
+        'black' ]
       })
     })
 });
