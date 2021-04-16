@@ -1,0 +1,40 @@
+version: "3.9" # optional since v1.27.0
+
+services:
+  tileserv:
+    image: pramsey/pg_tileserv:20210210
+    container_name: tileserv
+    env_file:
+      - ./config/tileserv.env
+    depends_on:
+      tileserv_db:
+        condition: service_healthy
+    ports:
+      - 7800:7800
+  tileserv_db:
+    image: postgis/postgis:13-master
+    container_name: tileserv_db
+    volumes:
+      - ./data:/work
+      - local_db:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tileserv"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    env_file:
+      - ./config/db.env
+
+  # See https://blog.crunchydata.com/blog/production-postgis-vector-tiles-caching
+  # cache:
+  #   image: eeacms/varnish
+  #   container_name: tileserv_cache
+  #   ports:
+  #     - "80:6081"
+  #   env_file:
+  #     - ./config/cache.env
+  #   depends_on:
+  #     - tileserv
+volumes:
+  local_db:
