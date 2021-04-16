@@ -1,0 +1,42 @@
+{
+  "name": "justice40-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "justice40-frontend",
+  "author": "Shelby Switzer",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "@mdx-js/mdx": "^1.6.22",
+    "@mdx-js/react": "^1.6.22",
+    "gatsby": "^3.2.1",
+    "gatsby-plugin-image": "^1.3.0",
+    "gatsby-plugin-manifest": "^3.3.0",
+    "gatsby-plugin-mdx": "^2.3.0",
+    "gatsby-plugin-netlify-cms": "^5.3.0",
+    "gatsby-plugin-react-helmet": "^4.3.0",
+    "gatsby-plugin-react-leaflet": "^3.0.0",
+    "gatsby-plugin-sass": "^4.3.0",
+    "gatsby-plugin-sharp": "^3.3.0",
+    "gatsby-plugin-sitemap": "^3.3.0",
+    "gatsby-source-filesystem": "^3.3.0",
+    "gatsby-transformer-remark": "^4.0.0",
+    "gatsby-transformer-sharp": "^3.3.0",
+    "leaflet": "^1.7.1",
+    "netlify-cms-app": "^2.14.45",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
+    "react-leaflet": "^3.1.0",
+    "sass": "^1.32.8",
+    "uswds": "^2.11.1"
+  }
+}
