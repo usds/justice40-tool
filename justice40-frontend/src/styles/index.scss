@@ -2,10 +2,13 @@
   These are necessary for the image and font urls referenced in the source
   files to resolve correctly.
 */
-$theme-image-path: '../../node_modules/uswds/src/img';
-$theme-font-path: '../../node_modules/uswds/src/fonts';
+$theme-image-path: "../../node_modules/uswds/src/img";
+$theme-font-path: "../../node_modules/uswds/src/fonts";
 
-@import '../../node_modules/uswds/';
+@import "../../node_modules/uswds/";
+@import "../../node_modules/mapbox-gl/src/css/mapbox-gl.css";
 // @import 'uswds';
 
-#map { height: 180px; }
+#map {
+  height: 180px;
+}

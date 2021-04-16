@@ -31,11 +31,13 @@
     "gatsby-transformer-remark": "^4.0.0",
     "gatsby-transformer-sharp": "^3.3.0",
     "leaflet": "^1.7.1",
+    "mapbox-gl": "^2.2.0",
     "netlify-cms-app": "^2.14.45",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
     "react-leaflet": "^3.1.0",
+    "react-map-gl": "^6.1.12",
     "sass": "^1.32.8",
     "uswds": "^2.11.1"
   }

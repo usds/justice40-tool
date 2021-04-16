@@ -9,7 +9,7 @@ module.exports = {
       },
       {
         items: [
-          { text: 'Document with sidenav', link: '/document-with-sidenav' },
+          { text: 'Mapbox', link: '/mapbox' },
         ],
       },
       {
