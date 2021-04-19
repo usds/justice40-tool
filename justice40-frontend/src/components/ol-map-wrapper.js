@@ -8,15 +8,12 @@ import TileLayer from 'ol/layer/Tile'
 import VectorLayer from 'ol/layer/Vector'
 import VectorSource from 'ol/source/Vector'
 import XYZ from 'ol/source/XYZ'
-import {transform} from 'ol/proj'
-import {toStringXY} from 'ol/coordinate';
 
 function OlMapWrapper(props) {
 
   // set intial state
   const [ map, setMap ] = useState()
   const [ featuresLayer, setFeaturesLayer ] = useState()
-  const [ selectedCoord , setSelectedCoord ] = useState()
 
   // pull refs
   const mapElement = useRef()
@@ -58,14 +55,11 @@ function OlMapWrapper(props) {
       ],
       view: new View({
         projection: 'EPSG:3857',
-        center: [0, 0],
-        zoom: 2
+        center: [39.0458, -76.6413],
+        zoom: 9
       }),
       controls: []
     })
-
-    // set map onclick handler
-    initialMap.on('click', handleMapClick)
 
     // save map and vector layer references to state
     setMap(initialMap)
@@ -75,7 +69,6 @@ function OlMapWrapper(props) {
 
   // update map if features prop changes - logic formerly put into componentDidUpdate
   useEffect( () => {
-
     if (props.features.length) { // may be null on first render
 
       // set features to map
@@ -94,24 +87,6 @@ function OlMapWrapper(props) {
 
   },[props.features])
 
-  // map click handler
-  const handleMapClick = (event) => {
-
-    // get clicked coordinate using mapRef to access current React state inside OpenLayers callback
-    //  https://stackoverflow.com/a/60643670
-    const clickedCoord = mapRef.current.getCoordinateFromPixel(event.pixel);
-
-    // transform coord to EPSG 4326 standard Lat Long
-    const transormedCoord = transform(clickedCoord, 'EPSG:3857', 'EPSG:4326')
-
-    // set React state
-    setSelectedCoord( transormedCoord )
-
-    console.log(transormedCoord)
-    
-  }
-
-  // render component
   return (     
       <div className="map-wrapper">
           <div ref={mapElement} id="ol-map" className="map-container"></div>
