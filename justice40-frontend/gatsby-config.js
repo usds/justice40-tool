@@ -13,6 +13,11 @@ module.exports = {
         ],
       },
       {
+        items: [
+          { text: 'Leaflet', link: '/leaflet' },
+        ],
+      },
+      {
         title: 'Document submenu',
         items: [
           { text: 'Navigation link', link: '/' },
