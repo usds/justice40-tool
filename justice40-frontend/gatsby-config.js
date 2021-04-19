@@ -5,20 +5,10 @@ module.exports = {
     description: `Front end for Justice40 mappping tool project`,
     navigation: [
       {
-        items: [{ text: 'Home', link: '/' }],
+        items: [{ text: 'Leaflet', link: '/' }],
       },
       {
-        items: [
-          { text: 'Document with sidenav', link: '/document-with-sidenav' },
-        ],
-      },
-      {
-        title: 'Document submenu',
-        items: [
-          { text: 'Navigation link', link: '/' },
-          { text: 'Navigation link', link: '/' },
-          { text: 'Navigation link', link: '/' },
-        ],
+        items: [{ text: 'OpenLayers', link: '/openlayers' }],
       },
     ],
     secondaryLinks: [
