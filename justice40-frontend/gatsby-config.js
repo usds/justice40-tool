@@ -8,22 +8,13 @@ module.exports = {
         items: [{ text: 'Home', link: '/' }],
       },
       {
-        items: [
-          { text: 'Mapbox', link: '/mapbox' },
-        ],
+        items: [{ text: 'Leaflet', link: '/leaflet' }],
       },
       {
-        items: [
-          { text: 'Leaflet', link: '/leaflet' },
-        ],
+        items: [{ text: 'Mapbox', link: '/mapbox' }],
       },
       {
-        title: 'Document submenu',
-        items: [
-          { text: 'Navigation link', link: '/' },
-          { text: 'Navigation link', link: '/' },
-          { text: 'Navigation link', link: '/' },
-        ],
+        items: [{ text: 'OpenLayers', link: '/openlayers' }],
       },
     ],
     secondaryLinks: [

@@ -6,9 +6,16 @@ $theme-image-path: "../../node_modules/uswds/src/img";
 $theme-font-path: "../../node_modules/uswds/src/fonts";
 
 @import "../../node_modules/uswds/";
+@import "../../node_modules/ol/ol.css";
 @import "../../node_modules/mapbox-gl/src/css/mapbox-gl.css";
-// @import 'uswds';
 
 #map {
   height: 180px;
+}
+
+#ol-map {
+  min-width: 600px;
+  min-height: 500px;
+  height: 500px;
+  width: 100%;
 }
