@@ -25,7 +25,7 @@ const OpenLayersPage = () => {
       <>
       <Layout>
         <SEO title="OpenLayers" />
-        <h1>OpenLayers</h1>
+        <h1 className="margin-left-9">OpenLayers</h1>
         
         <OlMapWrapper features={features} />
   
