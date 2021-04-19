@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useCallback, useState } from 'react';
 import Layout from '../components/layout';
 import ReactMapGL, {Layer, Source} from 'react-map-gl';
 import * as mapboxStyles from "./mapbox.module.css";
@@ -62,6 +62,25 @@ const MapboxMap = () => {
         longitude: -76.615278,
         zoom: 8
       });
+      const [hoverInfo, setHoverInfo] = useState(null);
+
+      const onHover = useCallback(event => {
+        const {
+          features,
+          srcEvent: {offsetX, offsetY}
+        } = event;
+        const hoveredFeature = features && features[0];
+      
+        setHoverInfo(
+          hoveredFeature
+            ? {
+                feature: hoveredFeature,
+                x: offsetX,
+                y: offsetY
+              }
+            : null
+        );
+      }, []);
 
       return (
         <ReactMapGL 
@@ -71,10 +90,17 @@ const MapboxMap = () => {
           height="100%"
           onViewportChange={(viewport) => setViewport(viewport)}
           mapStyle={mapStyle}
+          onHover={onHover}
         >
           <Source type="vector" {...xyzSource}>
            <Layer {...layerStyle} />
           </Source>
+          {hoverInfo && (
+            <div className={mapboxStyles.tooltip} style={{left: hoverInfo.x, top: hoverInfo.y}}>
+              <div>ID: {hoverInfo.feature.properties.id}</div>
+              <div>Percent Low Income: {parseFloat(hoverInfo.feature.properties.lowincpct * 100).toFixed(2)+"%"}</div>
+            </div>
+          )}
         </ReactMapGL>
       );
 }
@@ -82,7 +108,7 @@ const MapboxMap = () => {
 const MapboxPage = () => {
     return (
         <Layout>
-          <div class={mapboxStyles.mapContainer}>
+          <div className={mapboxStyles.mapContainer}>
             <MapboxMap  />
           </div>
         </Layout>
