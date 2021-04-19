@@ -13,6 +13,8 @@ import Banner from './banner';
 import Footer from './footer';
 import Header from './header';
 import Nav from './nav';
+import Tagline from './tagline';
+import * as styles from "./layout.module.css";
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -40,6 +42,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      <div className={styles.site}>
       <a className="usa-skipnav" href="#main-content">
         Skip to main content
       </a>
@@ -48,8 +51,10 @@ const Layout = ({ children }) => {
       <Header siteTitle={title}>
         <Nav {...{ navigation, secondaryLinks }} />
       </Header>
-        {children}
-      <Footer />
+        <div className={styles.siteContent}>{children}</div>
+        <Tagline />
+        <Footer />
+      </div>
     </>
   );
 };
