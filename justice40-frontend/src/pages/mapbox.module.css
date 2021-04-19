@@ -1,6 +1,9 @@
 .mapContainer {
-  height: 400px;
+  height: 50vh;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
 }
 
 .tooltip {

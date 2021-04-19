@@ -8,7 +8,7 @@ const LeafletMap = () => {
         <MapContainer
             center={[39.0458, -76.6413]}
             zoom={8}
-            style={{ height: "400px" }}
+            style={{ height: "50vh" }}
         >
             <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

@@ -2,16 +2,14 @@ module.exports = {
   siteMetadata: {
     author: 'Shelby Switzer',
     title: `Justice40 Climate and Environment Justice Screening Tool`,
+    siteUrl: 'localhost:8000',
     description: `Front end for Justice40 mappping tool project`,
     navigation: [
       {
-        items: [{ text: 'Home', link: '/' }],
+        items: [{ text: 'Mapbox', link: '/mapbox' }],
       },
       {
         items: [{ text: 'Leaflet', link: '/leaflet' }],
-      },
-      {
-        items: [{ text: 'Mapbox', link: '/mapbox' }],
       },
       {
         items: [{ text: 'OpenLayers', link: '/openlayers' }],
@@ -46,7 +44,6 @@ module.exports = {
   },
   pathPrefix: process.env.BASEURL || '/',
   plugins: [
-    "gatsby-plugin-netlify-cms",
     "gatsby-plugin-sass",
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",

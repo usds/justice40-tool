@@ -36,6 +36,7 @@ const layerStyle = {
 
 const mapStyle = {
   'version': 8,
+  'cursor': 'pointer',
   'sources': {
     'carto-light': {
       'type': 'raster',
