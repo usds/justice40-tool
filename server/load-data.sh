@@ -3,5 +3,5 @@ set -euo pipefail
 
 # Load Maryland geojson
 echo "Loading data..."
-docker-compose exec tileserv_db sh -c 'ogr2ogr -progress -f PostgreSQL PG:"dbname=tileserv user=tileserv" /work/maryland.geojson'
+docker-compose exec tileserv_db sh -c 'ogr2ogr -progress -f PostgreSQL PG:"dbname=tileserv user=tileserv" /work/maryland.geojson -nln maryland'
 echo "Data load complete"

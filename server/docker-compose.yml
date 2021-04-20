@@ -12,7 +12,7 @@ services:
     ports:
       - 7800:7800
   tileserv_db:
-    image: postgis/postgis:13-master
+    image: kartoza/postgis:13-3.1
     container_name: tileserv_db
     volumes:
       - ./data:/work
