@@ -82,44 +82,59 @@ Chosen option: **Mapbox GL JS**. This library has wide adoption, is modular, and
 [Source](https://github.com/maplibre/maplibre-gl-js) - v1.14.0 (3/24/21)
 MapLibre is a fork of Mapbox 1.13.0 that preserves the older BSD 3-clause license.
 
-#### Pros
+#### MapLibre-GL-JS Pros
 
-- Being a fork of Mapbox GL JS (though an earlier version), MapLibre has almost all of the benefits of Mapbox called out above
-- Returns to 3-Clause BSD [License](https://github.com/maplibre/maplibre-gl-js/blob/main/LICENSE.txt) means true FOSS licensing, as well as free operation
+- **Everything above** : Being a fork of Mapbox GL JS (though an earlier version), MapLibre has all of the benefits of Mapbox called out above
+- **Licensing** : Returns to 3-Clause BSD [License](https://github.com/maplibre/maplibre-gl-js/blob/main/LICENSE.txt) means true FOSS licensing, as well as free operation
 
-#### Cons
+#### MapLibre-GL-JS Cons
 
-- This library is still quite young, having been formed only mid-December last year
-- There may be licensing or legal challenges from Mapbox around the use of this tool
-- Though supported by [react-map-gl](https://github.com/visgl/react-map-gl), there is not yet as full-featured support for MapLibre-GL in other component-based wrapper libraries
-- There is an [issue](https://github.com/maplibre/maplibre-gl-js/pull/21) open now discussing the possibility of breaking backwards compatibility as part of a MapLibre 2.0 release. In practice this would mean we would not be able to use layers created within Mapbox in MapLibre tooling.
+- **Maturity** : This library is still quite young, having been formed only mid-December last year
+- **Licensing Complications** : There may be licensing or legal challenges from Mapbox around the use of this tool
+- **Component-based Wrappers** : Though supported by [react-map-gl](https://github.com/visgl/react-map-gl), there is not yet as full-featured support for MapLibre-GL in other component-based wrapper libraries
+- **Backwards Compatibility** : There is an [issue](https://github.com/maplibre/maplibre-gl-js/pull/21) open now discussing the possibility of breaking backwards compatibility as part of a MapLibre 2.0 release. In practice this would mean we would not be able to use layers created within Mapbox in MapLibre tooling.
+- **New Features** : There is not yet clarity on how and when this library would be updated and what its upcoming feature roadmap looks like
 
 ### Leaflet
 
 [Source](https://github.com/Leaflet/Leaflet) - v1.7.1 (9/4/20) + [Leaflet.VectorGrid](https://github.com/Leaflet/Leaflet.VectorGrid) - v1.3.0 (2017)
+Leaflet is a popular open-source mapping visualization library that has been around since 2010.
 
-#### Pros
+#### Leaflet Pros
 
-- Leaflet has by far the largest number of [stars](https://github.com/Leaflet/Leaflet/stargazers) on Gitbub (30,500 at the time of writing)
--
+- **Popularity** : Leaflet has by far the largest number of [stars](https://github.com/Leaflet/Leaflet/stargazers) on Gitbub (30,500 at the time of writing)
+- **Modularity** : Leaflet has a [number](https://leafletjs.com/plugins.html) of plugins that augment its functionality, including [Leaflet.VectorGrid](https://github.com/Leaflet/Leaflet.VectorGrid) which enables Vector Tiles
+- **License** : Leaflet is BSD 2-Clause [licensed](https://github.com/Leaflet/Leaflet/blob/master/LICENSE)
 
-#### Cons
+#### Leaflet Cons
+
+- **Performance** : As seen above, Leaflet performance is quite poor across device types, relative to other libraries, even with the vector plugin
+- **Modern Stack** : The lack of out-of-the-box vector tile support opens the possibility for version requirement mismatches. Additionally, the last update to the VectorGrid plugin was a [year ago](https://github.com/Leaflet/Leaflet.VectorGrid/commits/master)
 
 ### OpenLayers
 
 [Source](https://github.com/openlayers/openlayers) - v6.5.0 (12/27/20)
 
-#### Pros
+#### OpenLayers Pros
 
-#### Cons
+- **Licensing** : OpenLayers is BSD 2-Clause [licensed](https://github.com/openlayers/openlayers/blob/main/LICENSE.md)
+- **Performant** : According to above chart, OpenLayers is generally performant across device types, in some instances equivalent to Mapbox
+- **More fully featured** : OpenLayers has a number of GIS features that other tools do not
+
+#### OpenLayers Cons
+
+- **Longer learning curve**
 
 ### ArcGIS API for Javascript
 
 [Source](https://developers.arcgis.com/javascript/latest/) - v4.18 (12/2020)
 
-#### Pros
+#### ArcGIS API for Javascript Pros
 
-#### Cons
+- **508 Compliance** : ArcGIS provides regularly-updated accessibility [conformance reports](https://www.esri.com/en-us/legal/accessibility/conformance-reports) detailing their products' conformance with 508 standards.
+- **Wide Usage/Maturity** : ArcGIS is a widely-used tool in this space
+
+#### ArcGIS API for Javascript Cons
 
 ## References
 
