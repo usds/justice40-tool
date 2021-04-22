@@ -30,8 +30,6 @@ We provide more detail on these factors below.
 - **Performant** : Library should be performant on a range of device types, enabling fast load times and ease of navigation in a highly-complex rendering environment where there may be hundreds of thousands of features.
 - **Accessible** : library must be compliant according to [section 508](https://www.section508.gov/) of the Rehabilitation Act [(29 U.S.C. § 794d)](https://www.govinfo.gov/content/pkg/USCODE-2011-title29/html/USCODE-2011-title29-chap16-subchapV-sec794d.htm), as well as [Section 501](https://www.eeoc.gov/statutes/rehabilitation-act-1973) guidance regarding Reasonable Accommodation per US federal government legal requirements. Ideally it should adopt [Web Content Accessibility Guidelines](https://www.w3.org/WAI/standards-guidelines/wcag/) to at least the AA level.
 - **Internationalized/Localized** : Nearly [22%](https://data.census.gov/cedsci/table?q=B16001&hidePreview=false&tid=ACSDT1Y2017.B16001&vintage=2018) of the US population speaks a language other than English at home. Our mapping solution should be familiar and easy to use by this population.
-- **Secure** :
-- **Mobile-Friendly** :
 - **Minimizes network usage** : Where possible, we should seek to minimize network usage to ensure lower data usage costs and faster load times.
 
 ## Considered Options
@@ -109,21 +107,27 @@ Leaflet is a popular open-source mapping visualization library that has been aro
 #### Leaflet Cons
 
 - **Performance** : As seen above, Leaflet performance is quite poor across device types, relative to other libraries, even with the vector plugin
-- **Modern Stack** : The lack of out-of-the-box vector tile support opens the possibility for version requirement mismatches. Additionally, the last update to the VectorGrid plugin was a [year ago](https://github.com/Leaflet/Leaflet.VectorGrid/commits/master)
+- **Modern Stack** : The lack of out-of-the-box vector tile support and the necessity of another library opens the possibility for version requirement mismatches and security vulnerabilities. Additionally, the last update to the VectorGrid plugin was a [year ago](https://github.com/Leaflet/Leaflet.VectorGrid/commits/master).
 
 ### OpenLayers
 
 [Source](https://github.com/openlayers/openlayers) - v6.5.0 (12/27/20)
+OpenLayers was created in 2005 and is thus one of the older solutions under consideration here.
 
 #### OpenLayers Pros
 
 - **Licensing** : OpenLayers is BSD 2-Clause [licensed](https://github.com/openlayers/openlayers/blob/main/LICENSE.md)
-- **Performant** : According to above chart, OpenLayers is generally performant across device types, in some instances equivalent to Mapbox
-- **More fully featured** : OpenLayers has a number of GIS features that other tools do not
+- **Performant** : According to above chart, OpenLayers is generally performant across device types, in some instances equivalent to Mapbox. It features WebGL support and GPU acceleration as well.
+- **More fully featured** : OpenLayers has a number of GIS features that other web-based tools do not. A slightly older [analysis](https://link.springer.com/article/10.1007/s10109-017-0248-z) done in 2017 concluded that when compared to a set of considered features, OpenLayers 3 had a relatively large number of supported overall GIS features:
+  ![GIS Feature set](GIS_Features.png)
+- **Popularity** : OpenLayers is second only to Leaflet in the number of Github [stars](https://github.com/openlayers/openlayers/stargazers) it has received, close to 8000
 
 #### OpenLayers Cons
 
-- **Longer learning curve**
+- **Learning Curve** : A [recent survey](https://pea.lib.pte.hu/bitstream/handle/pea/23611/farkas-gabor-phd-2020.pdf?sequence=1) ranking various mapping libraries ranked OpenLayers as "Hard" in a scale from "Basic" to "Very Hard", and furthermore calculated "Approximate Learning Curve for Javascript", by which it was on the harder end as well (more detail in paper):
+  ![Difficulty Ranking](DifficultyRanking.png)
+- **Modern Stack** : OpenLayers requires a [plugin](https://github.com/openlayers/ol-mapbox-style) for the combination of MVT vector tiles and Mapbox GL Styles, though it does support it
+- **Rendering** : According to [geoapify](https://www.geoapify.com/mapbox-gl-new-license-and-6-free-alternatives), it has 'slightly less "polished" rendering quality and performance' compared to MapLibre GL
 
 ### ArcGIS API for Javascript
 
@@ -131,11 +135,22 @@ Leaflet is a popular open-source mapping visualization library that has been aro
 
 #### ArcGIS API for Javascript Pros
 
-- **508 Compliance** : ArcGIS provides regularly-updated accessibility [conformance reports](https://www.esri.com/en-us/legal/accessibility/conformance-reports) detailing their products' conformance with 508 standards.
-- **Wide Usage/Maturity** : ArcGIS is a widely-used tool in this space
+- **Accessibility** : ArcGIS provides regularly-updated accessibility [conformance reports](https://www.esri.com/en-us/legal/accessibility/conformance-reports) detailing their products' conformance with 508 standards.
+  - Note: These audits are not all up to date - the ArcGIS online evaluation was last completed in September 2018
+- **Internationalization/Localization** : [Built](https://developers.arcgis.com/javascript/3/jshelp/localization.html) on Dojo, in turn built on Globalize.js, described [here](https://www.sitepen.com/blog/the-state-of-internationalization-in-javascript) as "arguably the most complete JavaScript internationalization ecosystem available today"
+  - Note: the ES6 `Intl` module has a number of features that have improved upon overall internationalization and is now built into JS itself.
+- **Name recognition** : Esri in general holds "approximately 43% of the global market share and estimated annual revenues of approximately $1.1 Billion, from roughly 300,000 customers" ([source](https://digital.hbs.edu/platform-digit/submission/esri-and-arcgis/])). Relatedly, Esri tools interoperate well with other Esri tools, and their ecosystem is large.
+  - Note: according to [one analysis](https://www.datanyze.com/market-share/mapping-and-gis--121) specifically the ArcGIS Web API holds only 0.48% of the marketshare overall.
+- **Modularity** : As seen in ArcGIS [documentation](https://developers.arcgis.com/documentation/), Esri interoperates with Leaflet (through a custom fork), Mapbox GL JS, and OpenLayers.
 
 #### ArcGIS API for Javascript Cons
 
-## References
+- **License** : Though Esri maintains a [handful](https://www.esri.com/en-us/arcgis/open-vision/initiatives/open-source) of open-source tools, ArcGIS API for JS itself, as well as many other tools within the Esri / ArcGIS portfolio, is [closed source](https://github.com/Esri/arcgis-js-api/blob/master/copyright.txt) and proprietary, hosting only minified versions of their software and not encouraging community contribution or feedback.
+- **Complexity** : The feature set comes with the tradeoff of greater complexity in implementation
 
-- [State of Minnesota Accessibility Guide for Interactive Web Maps](https://mn.gov/mnit/assets/web-map-accessibility-guide_tcm38-403564.pdf)
+## Appendix A: Other comparisons
+
+There are a handful of other similar comparisons out there, here are some references:
+
+- Geoapify comparison:
+  ![Geoapify Comparison](GeoapifyComparison.png)
