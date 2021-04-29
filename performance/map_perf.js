@@ -72,8 +72,8 @@ function delay(time) {
   // const devtoolsProtocolClient = await page.target().createCDPSession();
   //   await devtoolsProtocolClient.send('Overlay.setShowFPSCounter', { show: true });
   let full_measurements = {};
-  // let options = ["openlayers", "olms", "leaflet", "mapbox", "ol_react"];
-  for(const option of ["mb_react"]) {
+  let options = ["openlayers", "olms", "leaflet", "mapbox", "ol_react"];
+  for(const option of options ) {
     const measurements=  await measurePageLoad(browser, option, `http://localhost:1234/${option}.html`);
     full_measurements[option] = getAverages(zip(measurements));
     console.log(`Measurements from ${option}: ${measurements}`);
