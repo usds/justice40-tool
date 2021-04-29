@@ -1,6 +1,7 @@
 import 'ol/ol.css';
 import TileLayer from 'ol/layer/Tile';
 import XYZ from 'ol/source/XYZ';
+import {TileArcGISRest} from 'ol/source';
 import Map from 'ol/Map.js';
 import View from 'ol/View.js';
 import MVT from 'ol/format/MVT.js';
@@ -9,8 +10,6 @@ import VectorTileSource from 'ol/source/VectorTile.js';
 import {Fill, Style} from 'ol/style.js';
 import {fromLonLat} from 'ol/proj';
 import getColor from './utils';
-
-
 
 const xyzSource = new VectorTileSource({
   format: new MVT(),
@@ -40,12 +39,23 @@ const map = new Map({
   target: 'map',
   view: new View({
     center: fromLonLat([-76.6413, 39.0458]),
-    zoom: 8,
+    zoom: 9,
   })
 });
 
+const censusBlockSource = new TileArcGISRest({
+  url: "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/"
+});
+
+
+const censusBlockLayer = new TileLayer({
+  extent: [-13884991, 2870341, -7455066, 6338219],
+  source: censusBlockSource
+});
+
 map.addLayer(cartoLayer);
-map.addLayer(vtLayer);
+//map.addLayer(vtLayer);
+map.addLayer(censusBlockLayer);
 
 map.once('rendercomplete', ()=>{
   performance.mark("MAP_IDLE");
