@@ -23,9 +23,9 @@ const layerStyle = {
         ["linear"],
         ["get", "lowincpct"],
         0,
-        "rgb(30,4,110)",
+        "white",
         1,
-        "white"
+        "rgb(0,94,162)"
     ],
     "fill-opacity": 0.5
     }
