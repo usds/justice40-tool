@@ -16,11 +16,12 @@
     "colormap": "^2.3.2",
     "leaflet": "^1.7.1",
     "leaflet.vectorgrid": "^1.3.0",
-    "mapbox-gl": "1.13.0",
+    "mapbox-gl": "^1.13.0",
     "ol": "^6.5.0",
     "ol-mapbox-style": "^6.3.2",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-map-gl": "^6.1.12"
   },
   "browserslist": {
     "production": [

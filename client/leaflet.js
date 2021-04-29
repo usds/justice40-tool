@@ -1,7 +1,6 @@
 import colormap from 'colormap';
 import L from 'leaflet';
 import "leaflet.vectorgrid";
-import "leaflet/dist/leaflet.css";
 import getColor from './utils';
 
 var usBounds = L.latLngBounds(

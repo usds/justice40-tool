@@ -94,6 +94,16 @@ function MapWrapper(props) {
     // save map and vector layer references to state
     setMap(initialMap)
     // setFeaturesLayer(initalFeaturesLayer)
+    
+    initialMap.once('rendercomplete', ()=>{
+      performance.mark("MAP_IDLE");
+     // console.log("OL IS IDLE");
+    });
+    
+    xyzSource.once('tileloadend', function () {
+      performance.mark("STYLE_LOADED");
+      // console.log("STYLE LOADED");
+    });
 
   },[])
 

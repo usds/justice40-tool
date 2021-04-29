@@ -86,7 +86,7 @@ const map = new Map({
    const parcelsLayer = new VectorTileLayer({
       source: parcelsSource
    });
-   loadedMap.addLayer(parcelsLayer);
+   // loadedMap.addLayer(parcelsLayer);
 
    loadedMap.once('rendercomplete', ()=>{
       performance.mark("MAP_IDLE");

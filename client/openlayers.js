@@ -1,4 +1,3 @@
-import 'ol/ol.css';
 import TileLayer from 'ol/layer/Tile';
 import XYZ from 'ol/source/XYZ';
 import {TileArcGISRest} from 'ol/source';
@@ -39,7 +38,7 @@ const map = new Map({
   target: 'map',
   view: new View({
     center: fromLonLat([-76.6413, 39.0458]),
-    zoom: 9,
+    zoom: 8,
   })
 });
 
@@ -54,8 +53,8 @@ const censusBlockLayer = new TileLayer({
 });
 
 map.addLayer(cartoLayer);
-//map.addLayer(vtLayer);
-map.addLayer(censusBlockLayer);
+map.addLayer(vtLayer);
+// map.addLayer(censusBlockLayer);
 
 map.once('rendercomplete', ()=>{
   performance.mark("MAP_IDLE");
