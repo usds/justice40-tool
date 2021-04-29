@@ -1,7 +1,11 @@
 import Map from 'ol/Map.js';
 import View from 'ol/View.js';
 import {fromLonLat} from 'ol/proj';
-import {apply, getLayer, getLayers} from 'ol-mapbox-style';
+import {VectorTile} from 'ol/VectorTile';
+import MVT from 'ol/format/MVT.js';
+import VectorTileLayer from 'ol/layer/VectorTile.js';
+import VectorTileSource from 'ol/source/VectorTile.js';
+import olms, {pply, getLayer, getLayers} from 'ol-mapbox-style';
 
 
 let mapConfig = {
@@ -72,7 +76,18 @@ const map = new Map({
 });
 
 (async () => {
-   const loadedMap = await apply(map, mapConfig);
+   const loadedMap = await olms(map, mapConfig);
+
+   const parcelsSource = new VectorTileSource({
+      format: new MVT(),
+      // url: `https://vectortileservices3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Santa_Monica_Mountains_Parcels_VTL/VectorTileServer/tile/{z}/{y}/{x}.pbf`
+      url: "https://sit-tileservice.geoplatform.info/vector/ngda_nhpn/{z}/{x}/{y}.mvt"
+    });
+   const parcelsLayer = new VectorTileLayer({
+      source: parcelsSource
+   });
+   loadedMap.addLayer(parcelsLayer);
+
    loadedMap.once('rendercomplete', ()=>{
       performance.mark("MAP_IDLE");
       const layer = getLayer(loadedMap, "public.maryland.MultiPolygon.fill");

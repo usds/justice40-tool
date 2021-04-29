@@ -54,6 +54,21 @@ const initialMapStyle = {
     }]
 };
 
+const largeMVTSource = {
+    name: "largeMVT",
+    scheme: 'xyz',
+    tiles: ["http://localhost:7800/public.maryland/{z}/{x}/{y}.mvt"],
+    type: 'vector'
+};
+
+const largeMVTLayer = {
+    id: 'largeMVT.fill',
+    type: 'line',
+    source: 'largeMVT',
+    "source-layer": "largeMVT",
+
+}
+
 const mapConfig = {
     container: 'map',
     //bounds: [[-75.0450, 39.7425], [-79.4938, 37.8713]],
@@ -64,8 +79,10 @@ const mapConfig = {
 
 const map = new mapboxgl.Map(mapConfig);
 map.on("load", function() {
-    map.addSource("public.maryland", xyzSource);
-    map.addLayer(layerStyle);
+    map.addSource("largeMVT", largeMVTSource);
+    map.addLayer(largeMVTLayer);
+    // map.addSource("public.maryland", xyzSource);
+    // map.addLayer(layerStyle);
 });
 
 map.once('style.load', (ev) => {
