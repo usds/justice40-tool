@@ -5,16 +5,47 @@
     <title>Leaflet MVT</title>
     <style>
       html, body, #map { height: 100%; width: 100%; }
+      #container {
+          display: flex;
+          flex-wrap: wrap;
+      }
+      .cell {
+          /* padding: 0 10px 0 10px; */
+          width: 50vw;
+          height: 50vh;
+      }
+      iframe {
+          height:80%;
+          width:80%;
+      }
     </style>
   </head>
   <body>
-    <ul>
-        <li><a href="./leaflet.html">Leaflet</a></li>
-        <li><a href="./openlayers.html">OL</a></li>
-        <li><a href="./olms.html">OL MB</a></li>
-        <li><a href="./ol_react.html">OL React</a></li>
-        <li><a href="./mapbox.html">MB</a></li>
-        <li><a href="./mb_react.html">MB React</a></li>
-    </ul>
+    <div id="container">
+        <div class="cell">
+                <h1><a href="./leaflet.html">Leaflet</a></h1>
+                <iframe src="./leaflet.html"> </iframe>
+        </div>
+        <div class="cell">
+                <h1><a href="./openlayers.html">OL</a></h1>
+                <iframe src="./openlayers.html"> </iframe>
+        </div>
+        <div class="cell">
+                <h1><a href="./olms.html">OL MB</a></h1>
+                <iframe src="./olms.html"> </iframe>
+        </div>
+        <div class="cell">
+                <h1><a href="./ol_react.html">OL React</a></h1>
+                <iframe src="./ol_react.html"> </iframe>
+        </div>
+        <div class="cell">
+                <h1><a href="./mapbox.html">MB</a></h1>
+                <iframe src="./mapbox.html"> </iframe>
+        </div>
+        <div class="cell">
+                <h1><a href="./mb_react.html">MB React</a></h1>
+                <iframe src="./mb_react.html"> </iframe>
+        </div>
+    </div>
   </body>
 </html>

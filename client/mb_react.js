@@ -67,11 +67,11 @@ const MapboxMap = () => {
     const onLoad = useCallback(event => {
         const map = event.target;
         performance.mark("STYLE_LOADED")
-        console.log("STYLE LOADED");
+        // console.log("STYLE LOADED");
 
         map.once('idle',function(){
             performance.mark("MAP_IDLE");
-            console.log("MAPBOX IS IDLE");
+            // console.log("MAPBOX IS IDLE");
         });
       }, []);
 
