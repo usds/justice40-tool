@@ -56,16 +56,57 @@ const mapStyle = {
   }]
 };
 
+const censusSource = {
+  'type': 'raster',
+  'tiles': [
+      'https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/export?bbox={bbox-epsg-3857}&bboxSR=EPSG%3A3857&layers=1&layerDefs=&size=256%2c256&imageSR=&format=png&transparent=true&dpi=&time=&layerTimeOptions=&dynamicLayers=&gdbVersion=&mapScale=&f=image'
+  ],
+  'tileSize': 256
+};
+
+const censusLayer = {
+  'id': 'wms-test-layer',
+  'type': 'raster',
+  'source': 'wms-test-source',
+  'paint': {}
+}
+
 const MapboxMap = () => {
     const [viewport, setViewport] = useState({
         latitude: 39.289444,
         longitude: -76.615278,
-        zoom: 7
+        zoom: 6
       });
       const [hoverInfo, setHoverInfo] = useState(null);
 
     const onLoad = useCallback(event => {
         const map = event.target;
+
+        let largeMVTSource = {
+        'tiles': [
+          'https://sit-tileservice.geoplatform.info/vector/ngda_nhpn/{z}/{x}/{y}.mvt'
+        ],
+        'type': 'vector',
+        'minzoom': 0,
+        'maxzoom': 22
+    };
+
+	let largeMVTLayer = {
+    'id': 'National Highway',
+    'type': 'line',
+    'source': 'ngda_nhpn',
+    'source-layer': 'national_highway',
+    'layout': {
+      'line-cap': 'round',
+      'line-join': 'round'
+    },
+    'paint': {
+      'line-opacity': 0.8,
+      'line-color': 'red',
+    }
+	};
+  map.addSource('ngda_nhpn', largeMVTSource);
+  map.addLayer(largeMVTLayer);
         performance.mark("STYLE_LOADED")
         // console.log("STYLE LOADED");
 
@@ -88,8 +129,8 @@ const MapboxMap = () => {
         //   onHover={onHover}
           onLoad={onLoad}
         >
-          <Source type="vector" {...xyzSource}>
-           <Layer {...layerStyle} />
+          <Source type="vector" {...censusSource}>
+           <Layer {...censusLayer} />
           </Source>
           {hoverInfo && (
             <div style={{left: hoverInfo.x, top: hoverInfo.y}}>

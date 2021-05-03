@@ -12,11 +12,13 @@ import XYZ from 'ol/source/XYZ';
 import MVT from 'ol/format/MVT.js';
 import VectorTileLayer from 'ol/layer/VectorTile.js';
 import VectorTileSource from 'ol/source/VectorTile.js';
-import {Fill, Style} from 'ol/style.js';
+import {Fill, Style, Stroke} from 'ol/style.js';
 import {transform} from 'ol/proj'
 import {toStringXY} from 'ol/coordinate';
 import {fromLonLat} from 'ol/proj';
 import getColor from './utils';
+import {VectorTile} from 'ol/VectorTile';
+import {TileArcGISRest} from 'ol/source';
 
 function MapWrapper(props) {
 
@@ -59,6 +61,32 @@ function MapWrapper(props) {
        }
     });
 
+    const censusBlockSource = new TileArcGISRest({
+      url: "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/"
+    });
+    
+    
+    const censusBlockLayer = new TileLayer({
+      extent: [-13884991, 2870341, -7455066, 6338219],
+      source: censusBlockSource
+    });
+
+    const largeMVTSource = new VectorTileSource({
+      format: new MVT(),
+      url: 'https://sit-tileservice.geoplatform.info/vector/ngda_nhpn/{z}/{x}/{y}.mvt'
+    });
+    
+    const largeMVTLayer = new VectorTileLayer({
+      // extent: [-13884991, 2870341, -7455066, 6338219],
+      source: largeMVTSource,
+      style: new Style({
+        stroke: new Stroke({
+          color: 'red',
+          opacity: 1,
+        })
+      })
+    });
+
     // create map
     const initialMap = new Map({
       target: mapElement.current,
@@ -78,12 +106,14 @@ function MapWrapper(props) {
           })
         }), */
 
-        vtLayer
+        // vtLayer
+        //censusBlockLayer
+        largeMVTLayer
         
       ],
       view: new View({
         center: fromLonLat([-76.6413, 39.0458]),
-        zoom: 8,
+        zoom: 7,
       }),
       controls: []
     })
@@ -97,12 +127,12 @@ function MapWrapper(props) {
     
     initialMap.once('rendercomplete', ()=>{
       performance.mark("MAP_IDLE");
-     // console.log("OL IS IDLE");
+     console.log("OL IS IDLE");
     });
     
-    xyzSource.once('tileloadend', function () {
+    largeMVTSource.once('tileloadend', function () {
       performance.mark("STYLE_LOADED");
-      // console.log("STYLE LOADED");
+      console.log("STYLE LOADED");
     });
 
   },[])

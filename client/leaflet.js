@@ -14,10 +14,11 @@ var marylandBounds = L.latLngBounds(
 );
 
 var map = L.map('map', {
-    'center': [0, 0],
-    'zoom': 0,
-    'maxBounds': marylandBounds
-}).fitBounds(marylandBounds);
+    'center': [39.0458, -76.6413],
+    'zoom': 7
+    // 'maxBounds': marylandBounds
+});
+// }).fitBounds(marylandBounds);
 
 const baseLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}' + (L.Browser.retina ? '@2x.png' : '.png'), {
    attribution:'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -44,13 +45,26 @@ vectorTileStyling[vectorLayerId] = function(properties, zoom) {
 var vectorTileOptions = {
     vectorTileLayerStyles: vectorTileStyling
 };
-var vectorLayer = L.vectorGrid.protobuf(vectorUrl, vectorTileOptions).addTo(map);
+//var vectorLayer = L.vectorGrid.protobuf(vectorUrl, vectorTileOptions).addTo(map);
 
-vectorLayer.on('load', function(e) {
+const largeMVTOptions = {
+    vectorTileLayerStyles: {
+        "National Highway": {
+            "stroke-color": 'red'
+        }
+    }
+}
+
+const largeMVTLayer = L.vectorGrid.protobuf("https://sit-tileservice.geoplatform.info/vector/ngda_nhpn/{z}/{x}/{y}.mvt", largeMVTOptions).addTo(map);
+// const censusLayer = L.tileLayer.wms('https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/export?&bboxSR=EPSG%3A3857&layers=1&layerDefs=&size=256%2c256&imageSR=&format=png&transparent=true&dpi=&time=&layerTimeOptions=&dynamicLayers=&gdbVersion=&mapScale=&f=image').addTo(map);
+
+largeMVTLayer.on('load', function(e) {
     performance.mark("STYLE_LOADED");
+    console.log("SL");
 });
 
 map.whenReady(()=>{
     performance.mark("MAP_IDLE");
+    console.log("MI");
 });
 

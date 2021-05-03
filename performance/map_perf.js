@@ -37,7 +37,7 @@ function getAverages(arrays) {
 async function measurePageLoad(browser, name, url) {
   let measurements = new Array();
 
-  for (let i = 0; i <= 10; i++) {
+  for (let i = 0; i < 10; i++) {
     const page = await browser.newPage()
     page.on('console', message => console.log(`\t${message.type().substr(0, 3).toUpperCase()} ${message.text()}`));
     console.log(name);
@@ -72,7 +72,7 @@ function delay(time) {
   // const devtoolsProtocolClient = await page.target().createCDPSession();
   //   await devtoolsProtocolClient.send('Overlay.setShowFPSCounter', { show: true });
   let full_measurements = {};
-  let options = ["openlayers", "olms", "leaflet", "mapbox", "ol_react"];
+  let options = ["openlayers", "olms", "ol_react", "leaflet", "mapbox", "mb_react"];
   for(const option of options ) {
     const measurements=  await measurePageLoad(browser, option, `http://localhost:1234/${option}.html`);
     full_measurements[option] = getAverages(zip(measurements));

@@ -6,7 +6,7 @@ import View from 'ol/View.js';
 import MVT from 'ol/format/MVT.js';
 import VectorTileLayer from 'ol/layer/VectorTile.js';
 import VectorTileSource from 'ol/source/VectorTile.js';
-import {Fill, Style} from 'ol/style.js';
+import {Fill, Style, Stroke} from 'ol/style.js';
 import {fromLonLat} from 'ol/proj';
 import getColor from './utils';
 
@@ -38,7 +38,7 @@ const map = new Map({
   target: 'map',
   view: new View({
     center: fromLonLat([-76.6413, 39.0458]),
-    zoom: 8,
+    zoom: 7,
   })
 });
 
@@ -52,16 +52,53 @@ const censusBlockLayer = new TileLayer({
   source: censusBlockSource
 });
 
+const largeMVTSource = new VectorTileSource({
+  format: new MVT(),
+  url: 'https://sit-tileservice.geoplatform.info/vector/ngda_nhpn/{z}/{x}/{y}.mvt'
+});
+
+const largeMVTLayer = new VectorTileLayer({
+  // extent: [-13884991, 2870341, -7455066, 6338219],
+  source: largeMVTSource,
+  style: new Style({
+    stroke: new Stroke({
+      color: 'red',
+      opacity: 1,
+    })
+  })
+});
+
+
+// let style = new Style({
+//   stroke: new Stroke({
+//     color: 'rgb(255, 175, 109)',
+//     width: 3,
+//     opacity: 1,
+//   })
+// });
+
+// // add mapbox vector tile
+// let mvt = new VectorTileLayer({
+//   declutter: true,
+//   source: new VectorTileSource({
+//     format: new MVT(),
+//     url: 'https://sit-tileservice.geoplatform.info/vector/ngda_nhpn/{z}/{x}/{y}.mvt',
+//   }),
+//   style: style
+// });
+
+
 map.addLayer(cartoLayer);
-map.addLayer(vtLayer);
+// map.addLayer(vtLayer);
 // map.addLayer(censusBlockLayer);
+map.addLayer(largeMVTLayer);
 
 map.once('rendercomplete', ()=>{
   performance.mark("MAP_IDLE");
- // console.log("OL IS IDLE");
+ console.log("OL IS IDLE");
 });
 
-xyzSource.once('tileloadend', function () {
+largeMVTSource.once('tileloadend', function () {
   performance.mark("STYLE_LOADED");
-  // console.log("STYLE LOADED");
+  console.log("STYLE LOADED");
 });

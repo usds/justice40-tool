@@ -1,5 +1,4 @@
 import mapboxgl from "mapbox-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
 
 const xyzSource = {
     name: "public.maryland",
@@ -56,41 +55,101 @@ const initialMapStyle = {
 
 const largeMVTSource = {
     name: "largeMVT",
-    scheme: 'xyz',
-    tiles: ["http://localhost:7800/public.maryland/{z}/{x}/{y}.mvt"],
+    // scheme: 'xyz',
+    // tilejson: "2.0.0",
+    minzoom: 0,
+    maxzoom: 22,
+    // prefetchable: true,
+    tiles: ["https://sit-tileservice.geoplatform.info/vector/ngda_nhpn/{z}/{x}/{y}.mvt"],
     type: 'vector'
 };
 
 const largeMVTLayer = {
-    id: 'largeMVT.fill',
-    type: 'line',
+    id: 'largeMVT',
     source: 'largeMVT',
     "source-layer": "largeMVT",
-
+    type: 'line',
+    'layout': {
+        'line-cap': 'round',
+        'line-join': 'round'
+        },
+    paint: {
+        'line-opacity': 0.6,
+        'line-color': 'rgb(53, 175, 109)',
+        'line-width': 3
+    }
 }
 
 const mapConfig = {
     container: 'map',
     //bounds: [[-75.0450, 39.7425], [-79.4938, 37.8713]],
     center: [-76.6413, 39.0458],
-    zoom: 7,
-    style: initialMapStyle
+    zoom: 6,
+    style: 'mapbox://styles/mapbox/streets-v11'//initialMapStyle
 }
 
+mapboxgl.accessToken = 'pk.eyJ1IjoibmF0aGlsbGFyZHVzZHMiLCJhIjoiY2ttd2cycHQyMDFnMDJycWtiaXd4bDZtMiJ9.zyr-vdNDGjVMikkPDL6bYA';
 const map = new mapboxgl.Map(mapConfig);
 map.on("load", function() {
-    map.addSource("largeMVT", largeMVTSource);
-    map.addLayer(largeMVTLayer);
+    // map.addSource("largeMVT", largeMVTSource);
+    // map.addLayer(largeMVTLayer);
+
+    let largeMVTSource = {
+        'tiles': [
+          'https://sit-tileservice.geoplatform.info/vector/ngda_nhpn/{z}/{x}/{y}.mvt'
+        ],
+        'type': 'vector',
+        'minzoom': 0,
+        'maxzoom': 22
+    };
+
+	let largeMVTLayer = {
+    'id': 'National Highway',
+    'type': 'line',
+    'source': 'ngda_nhpn',
+    'source-layer': 'national_highway',
+    'layout': {
+      'line-cap': 'round',
+      'line-join': 'round'
+    },
+    'paint': {
+      'line-opacity': 1,
+      'line-color': 'red',
+    }
+	};
+  
+  map.addSource('ngda_nhpn', largeMVTSource);
+  map.addLayer(largeMVTLayer);
+
     // map.addSource("public.maryland", xyzSource);
     // map.addLayer(layerStyle);
+
+    // map.addSource('wms-test-source', {
+    //     'type': 'raster',
+    //     // use the tiles option to specify a WMS tile source URL
+    //     // https://docs.mapbox.com/mapbox-gl-js/style-spec/sources/
+    //     'tiles': [
+    //         'https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/export?bbox={bbox-epsg-3857}&bboxSR=EPSG%3A3857&layers=1&layerDefs=&size=256%2c256&imageSR=&format=png&transparent=true&dpi=&time=&layerTimeOptions=&dynamicLayers=&gdbVersion=&mapScale=&f=image'
+    //     ],
+    //     'tileSize': 256
+    // });
+    // map.addLayer(
+    //     {
+    //     'id': 'wms-test-layer',
+    //     'type': 'raster',
+    //     'source': 'wms-test-source',
+    //     'paint': {}
+    //     },
+    //     'aeroway-line'
+    // );
 });
 
 map.once('style.load', (ev) => {
-    //console.log("MB STYLE LOADED");
+    console.log("MB STYLE LOADED");
     performance.mark("STYLE_LOADED");
 });
 
 map.once('idle',function(){
     performance.mark("MAP_IDLE");
-    //console.log("MAPBOX IS IDLE");
+    console.log("MAPBOX IS IDLE");
 });
