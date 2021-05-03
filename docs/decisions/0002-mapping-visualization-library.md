@@ -1,4 +1,4 @@
-# [short title of solved problem and solution]
+# Mapping Visualization Library
 
 - Status: draft
 - Deciders: Lucas Brown, Shelby Switzer, Nat Hillard
@@ -63,7 +63,7 @@ We provide more detail on these factors below.
     In this chart, the two letters following the library name are for basemap layer and feature layer. Further, "R" is "raster" and "V" is vector, and lower numbers indicate faster load times. "OpenLayersRR" and "OpenLayersRV", (signifying a raster base layer and vector feature layer), performed quite well across all device types compared to other libraries.
   - We also performed local testing using puppeteer and web performance APIs, tested against a choropleth map of the cenus block groups, which represents a likely usecase for us. The results were as follows:
     ![Choropleth Map Performance](ChoroplethMapPerformance.png) ([Source](Maryland.csv))
-    We will be posting these results shortly to the repository for visibility into methodology and tests.
+    Testing and results can be found on the `client_perf` [branch](https://github.com/usds/justice40-tool/tree/client_perf) in this repository.
   - Finally, we tested these mapping solutions against a large dataset with many features, a map of national highways, at a lower zoom level. The tiles were still loaded on-demand, but the greater detail and number of features meant a more difficult render. Trends seemed similar to the above, with the exception of Leaflet:
     ![Highways Map Performance](HighwayMapPerformance.png) ([Source](Highways.csv))
     Notes:
