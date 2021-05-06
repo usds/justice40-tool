@@ -53,3 +53,5 @@ If a participant engages in harassing behavior, the Justice40 Team may take any 
 
 Adopt a code of conduct in your community
 If you would like to adopt a policy similar to this one in your community, see our community anti-harassment resources, including a freely reusable and modifiable policy.
+
+(Adapted from the Geek Feminism Code of Conduct [here](https://geekfeminismdotorg.wordpress.com/about/code-of-conduct/) )
