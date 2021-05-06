@@ -6,13 +6,7 @@ module.exports = {
     description: `Front end for Justice40 mappping tool project`,
     navigation: [
       {
-        items: [{ text: 'Mapbox', link: '/mapbox' }],
-      },
-      {
-        items: [{ text: 'Leaflet', link: '/leaflet' }],
-      },
-      {
-        items: [{ text: 'OpenLayers', link: '/openlayers' }],
+        items: [{ text: 'Map', link: '/index' }],
       },
     ],
     secondaryLinks: [
@@ -80,7 +74,6 @@ module.exports = {
         name: `markdown-pages`,
       },
     },
-    `gatsby-transformer-remark`,
-    `gatsby-plugin-react-leaflet`
+    `gatsby-transformer-remark`
   ],
 };

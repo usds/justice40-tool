@@ -7,15 +7,3 @@ $theme-font-path: "../../node_modules/uswds/src/fonts";
 
 @import "../../node_modules/uswds/";
 @import "../../node_modules/ol/ol.css";
-@import "../../node_modules/mapbox-gl/src/css/mapbox-gl.css";
-
-#map {
-  height: 180px;
-}
-
-#ol-map {
-  min-width: 600px;
-  min-height: 50vh;
-  height: 500px;
-  width: 100%;
-}
