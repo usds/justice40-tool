@@ -51,7 +51,6 @@ Participants asked to stop any harassing behavior are expected to comply immedia
 
 If a participant engages in harassing behavior, the Justice40 Team may take any action they deem appropriate, up to and including expulsion from all Justice40 spaces and identification of the participant as a harasser to other Justice40 members or the general public.
 
-Adopt a code of conduct in your community
-If you would like to adopt a policy similar to this one in your community, see our community anti-harassment resources, including a freely reusable and modifiable policy.
+# Adopt a code of conduct in your community
 
-(Adapted from the Geek Feminism Code of Conduct [here](https://geekfeminismdotorg.wordpress.com/about/code-of-conduct/) )
+This anti-harassment policy is based on the example policy from the [Geek Feminism wiki](https://geekfeminism.wikia.org/wiki/Community_anti-harassment), created by the Geek Feminism community.
