@@ -41,7 +41,7 @@ In the issue, please describe the feature you would like to see, why you need it
 
 If you would like to contribute, please submit a pull request. In order for us to merge a pull request, the following checks are enabled within this repo:
 
-- Merges to `main` are prohitited - please open a pull request from a branch
+- Merges to `main` are prohibited - please open a pull request from a branch
 - At least one required reviewer must approve the commit (see [CODEOWNERS](https://github.com/usds/justice40-tool/tree/main/.github/CODEOWNERS) for the most up-to-date list of these members)
 - All required status checks must pass
 
