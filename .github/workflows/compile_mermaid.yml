@@ -17,9 +17,9 @@ jobs:
       - name: get changed files
         id: getfile
         run: |
-          echo "::set-output name=files::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep -e '.*\.md$' | xargs)"
+          echo "::set-output name=files::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep -e '.*\.mmd$' | xargs)"
 
-      - name: md files changed
+      - name: mmd files changed
         run: |
           echo ${{ steps.getfile.outputs.files }}
 
