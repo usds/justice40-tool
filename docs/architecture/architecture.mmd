@@ -1,0 +1,27 @@
+graph LR
+    subgraph ds["Data Selection"]
+    Intake --> Backlog --> Voting
+    end
+    subgraph dp["Data Pipeline"]
+    Voting --> Approved
+    Approved --> Properties
+    Approved --> Geometries
+    Properties --> GeoJSON
+    Geometries --> GeoJSON
+    end
+    subgraph s["Server(s)"]
+    GeoJSON --> db[("Feature Database")]
+    db --> tileserv["Tile Server"]
+    tileserv --> lb["Load balancing"]
+    lb --> auth["auth, IP allowlist, API key"]
+    auth --> api
+    end
+    subgraph j40["Justice40 Client"]
+    api --> vl["J40 Visualization Library"]
+    ts["Tile Styling"] --> vl
+    vl --> fe["J40 Static Site Frontend"]
+    end
+    subgraph oc["Other Clients"]
+    api --> 3p["Third Party Apps"]
+    end
+    
