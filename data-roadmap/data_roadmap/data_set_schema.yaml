@@ -1,0 +1,4 @@
+name: str()
+age: int(max=200)
+height: num()
+awesome: bool()
