@@ -17,9 +17,9 @@ graph LR
     auth --> api
     end
     subgraph j40["Justice40 Client"]
-    api --> vl["J40 Visualization Library"]
+    api --> vl["Justice40 Visualization Library"]
     ts["Tile Styling"] --> vl
-    vl --> fe["J40 Static Site Frontend"]
+    vl --> fe["Justice40 Static Site Frontend"]
     end
     subgraph oc["Other Clients"]
     api --> 3p["Third Party Apps"]
