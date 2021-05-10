@@ -12,8 +12,8 @@ graph LR
     subgraph s["Server(s)"]
     GeoJSON --> db[("Feature Database")]
     db --> tileserv["Tile Server"]
-    tileserv --> lb["Load balancing"]
-    lb --> auth["Auth, IP allowlist, API key, OpenAPI"]
+    tileserv --> lb["Load Balancer"]
+    lb --> auth["Auth, IP Allowlist, API Key, OpenAPI"]
     auth --> api
     end
     subgraph j40["Justice40 Client"]

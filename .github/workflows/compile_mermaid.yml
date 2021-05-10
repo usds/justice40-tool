@@ -28,6 +28,10 @@ jobs:
         with:
           files: ${{ steps.getfile.outputs.files }}
           output: '.resources'
+        env:
+          HIDE_CODEBLOCKS: 1
+          ABSOLUTE_IMAGE_LINKS: 1
+          OUTPUT_FILE_TYPE: "svg"
 
       - name: show changes
         run: |
