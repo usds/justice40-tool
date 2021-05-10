@@ -4,9 +4,13 @@ The below is a general architecture of our proposed system:
 
 ![Architecture](architecture-mmd.svg)
 
-## Updating
+## Updating the Diagram
 
 **Note: Do Not directly modify the svg file, it is generated automatically!**
+
+In the event that you are interested in updating the architecture of our system, please go through the Architecture Decision Record Process (see [here](https://github.com/usds/justice40-tool/tree/main/docs/decisions) for more detail on this process).
+
+Provided you have already done this, however, and/or would like to make small changes to the diagram itself, please read on!
 
 This diagram was generated from a text-based markdown-like file using [MermaidJS](https://mermaid-js.github.io/) syntax and the [Compile Mermaid Markdown](https://github.com/marketplace/actions/compile-mermaid-markdown) Github Action.
 
