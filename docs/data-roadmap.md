@@ -1,8 +1,8 @@
-# Data backlog proposal
+# Data roadmap proposal
 
-This document describes how we setup a "data backlog", which serves several purposes.
+This document describes how we setup a "data roadmap", which serves several purposes.
 
-The goals of the data backlog are as follows:
+The goals of the data roadmap are as follows:
 
 * Tracking data sets being considered for inclusion in the Climate and Economic Justice Screening Tool (CEJST), either as a data set that is included in the cumulative impacts score or a reference data set that is not included in the score
 
@@ -16,11 +16,11 @@ The goals of the data backlog are as follows:
 
 * Enabling members of the public to submit revisions to the information about each problem area or data set, with easy-to-use and accessible tools
 
-* Enabling the CEJST development team to review suggestions before incorporating them officially into the data backlog, to filter out potential noise and spam, or consider how requests may lead to changes in software features and documentation
+* Enabling the CEJST development team to review suggestions before incorporating them officially into the data roadmap, to filter out potential noise and spam, or consider how requests may lead to changes in software features and documentation
 
 # User stories
 
-These goals can map onto several user stories for the data backlog, such as:
+These goals can map onto several user stories for the data roadmap, such as:
 
 * As a community member, I want to suggest a new idea for a dataset.
 * As a community member, I want to understand what happened with my suggestion for a new dataset.
@@ -76,7 +76,7 @@ Other ideas for consideration:
 
 There is no single tool that supports all the goals and user stories above. Therefore we've proposed combining a number of tools in a way that can support them all.
 
-We've also proposed various "milestones" that will allow us to iteratively and sequentially build the data backlog in a way that supports the entire vision but starts with small and achievable steps. These milestones are proposed in order.
+We've also proposed various "milestones" that will allow us to iteratively and sequentially build the data roadmap in a way that supports the entire vision but starts with small and achievable steps. These milestones are proposed in order.
 
 ## Milestone: YAML files for data sets and linter
 
@@ -86,11 +86,19 @@ The benefit of using a YAML file for this is that it's easy to subject changes t
 
 We'll use a Python-based script to load all the files in the directory, and then run a schema validator to ensure all the files have valid entries.
 
-For schema validation, we propose using [Marshmallow](https://marshmallow.readthedocs.io/en/stable/). This is slightly heavier-weight than necessary, but since we're planning to use Marshmallow as a serialization library elsewhere in the project, it helps to keep things consistent.
+For schema validation, we propose using [Yamale](https://github.com/23andMe/Yamale). This provides a lightweight schema and validator, and [integrates nicely with GitHub actions](https://github.com/nrkno/yaml-schema-validator-github-action).
 
 If there's an improper format in any of the files, the schema validator will throw an error.
 
 As part of this milestone, we will also set this up to run automatically with each commit to any branch as part of CI/CD.
+
+## Milestone: Google forms integration
+
+To make it easy for non-engineer members of the public and advisory bodies such as the WHEJAC to submit suggestions for data sets, we will configure a Google Form that maps to the schema of the data set files.
+
+This will enable members of the public to fill out a simple form suggesting data without needing to understand Github or other engineering concepts.
+
+At first, these responses can just go into a resulting Google Sheet and be manually copied and converted into data set description files. Later, we can write a script that converts new entries in the Google Sheet automatically into data set files. This can be setup to run as a trigger on the addition of new rows to the Google Sheet.
 
 ## Milestone: Post data in tabular format
 
@@ -106,23 +114,15 @@ At the initial launch, we are not planning for members of the open source commun
 
 This will help developers know what to work on next, and open source community members can also pick up tickets and work to integrate the data sets.
 
-## Milestone: Google forms integration
-
-To make it easy for non-engineer members of the public and advisory bodies such as the WHEJAC to submit suggestions for data sets, we will configure a Google Form that maps to the schema of the data set files.
-
-This will enable members of the public to fill out a simple form suggesting data without needing to understand Github or other engineering concepts. .
-
-At first, these responses can just go into a resulting Google Sheet and be manually copied and converted into data set description files. Later, we can write a script that converts new entries in the Google Sheet automatically into data set files. This can be setup to run as a trigger on the addition of new rows to the Google Sheet.
-
 ## Milestone: Add problem areas
 
-We can create a folder for descriptions of "problem areas" that describe problems in climate, environmental, and economic justice, even without specific proposals of data sets.
-
-For instance, a problem area may be "food insecurity", and a number of data sets can have this as their problem area.
+We'll need to somehow track "problem areas" that describe problems in climate, environmental, and economic justice, even without specific proposals of data sets. For instance, a problem area may be "food insecurity", and a number of data sets can have this as their problem area.
 
 We can change the linter to validate that every data set description maps to one or more known problem areas.
 
 The benefit of this is that some non-data-focused members of the public or the WHEJAC advisory body may want to suggest we prioritize certain problem areas, with or without ideas for specific data sets that may best address that problem area.
+
+It is not clear at this time the best path forward for implementing these problem area descriptions. One option is to create a folder for descriptions of problem areas, which contains YAML files that get validated according to a schema. Another option would be simply to add these as an array in the description of data sets, or add labels to the tickets once data sets are tracked in GitHub tickets. 
 
 ## Milestone: Add prioritzation voting for WHEJAC and members of the public
 
