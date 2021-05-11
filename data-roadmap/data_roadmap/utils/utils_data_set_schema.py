@@ -11,34 +11,43 @@ DATA_SET_DESCRIPTIONS_DIRECTORY = os.path.join(
 
 # TODO: This is hacky for now. Add some safety around loading this, e.g. by
 # using `importlib_resources`. - Lucas
-DATA_SET_DESCRIPTION_SCHEMA_FILE_PATH = os.path.join(UTILS_DIRECTORY,
-                                          "../data_set_description_schema.yaml")
-DATA_SET_DESCRIPTION_FIELD_DESCRIPTIONS_FILE_PATH = os.path.join(UTILS_DIRECTORY,
-                                      "../data_set_description_field_descriptions.yaml")
+DATA_SET_DESCRIPTION_SCHEMA_FILE_PATH = os.path.join(
+    UTILS_DIRECTORY, "../data_set_description_schema.yaml"
+)
+DATA_SET_DESCRIPTION_FIELD_DESCRIPTIONS_FILE_PATH = os.path.join(
+    UTILS_DIRECTORY, "../data_set_description_field_descriptions.yaml"
+)
 
-DATA_SET_DESCRIPTION_TEMPLATE_FILE_PATH = os.path.join(os.path.dirname(
-    os.path.dirname(
-    os.path.realpath(__file__))),"data_set_description_template.yaml")
+DATA_SET_DESCRIPTION_TEMPLATE_FILE_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.realpath(__file__))),
+    "data_set_description_template.yaml",
+)
 
 
 def load_data_set_description_schema():
-    schema = yamale.make_schema(path=DATA_SET_DESCRIPTION_SCHEMA_FILE_PATH    )
+    schema = yamale.make_schema(path=DATA_SET_DESCRIPTION_SCHEMA_FILE_PATH)
 
     return schema
 
+
 def load_data_set_description_field_descriptions():
     # Load field descriptions.
-    with open(DATA_SET_DESCRIPTION_FIELD_DESCRIPTIONS_FILE_PATH, 'r') as stream:
+    with open(DATA_SET_DESCRIPTION_FIELD_DESCRIPTIONS_FILE_PATH, "r") as stream:
         data_set_description_field_descriptions = yaml.safe_load(stream=stream)
 
     return data_set_description_field_descriptions
 
-def validate_schema(data_set_description_schema: yamale.schema.schema.Schema,
-                    data_set_description_field_descriptions: dict):
+
+def validate_schema(
+    data_set_description_schema: yamale.schema.schema.Schema,
+    data_set_description_field_descriptions: dict,
+):
     for field_name in data_set_description_schema.dict.keys():
         if field_name not in data_set_description_field_descriptions:
-            raise ValueError(f"Field `{field_name}` does not have a "
-                             f"description. Please add one to file `{DATA_SET_DESCRIPTION_FIELD_DESCRIPTIONS_FILE_PATH}`")
+            raise ValueError(
+                f"Field `{field_name}` does not have a "
+                f"description. Please add one to file `{DATA_SET_DESCRIPTION_FIELD_DESCRIPTIONS_FILE_PATH}`"
+            )
     pass
 
 
@@ -57,14 +66,18 @@ def validate_all_data_set_descriptions(data_set_description_schema):
         yamale.validate(schema=data_set_description_schema, data=data_set_description)
 
 
-def write_data_set_description_template_file(data_set_description_schema, data_set_description_field_descriptions):
+def write_data_set_description_template_file(
+    data_set_description_schema, data_set_description_field_descriptions
+):
 
     template_file_lines = []
 
     schema_dict = data_set_description_schema.dict
     for field_name, field_schema in schema_dict.items():
         template_file_lines.append(f"{field_name}: \n")
-        template_file_lines.append(f"# Description: {data_set_description_field_descriptions[field_name]}\n")
+        template_file_lines.append(
+            f"# Description: {data_set_description_field_descriptions[field_name]}\n"
+        )
         template_file_lines.append(f"# Required field: {field_schema.is_required}\n")
         template_file_lines.append(f"# Field type: {field_schema.get_name()}\n")
         if type(field_schema) is yamale.validators.validators.Enum:
@@ -75,20 +88,26 @@ def write_data_set_description_template_file(data_set_description_schema, data_s
         # Add an empty linebreak to separate fields.
         template_file_lines.append("\n")
 
-    with open(DATA_SET_DESCRIPTION_TEMPLATE_FILE_PATH, 'w') as file:
+    with open(DATA_SET_DESCRIPTION_TEMPLATE_FILE_PATH, "w") as file:
         file.writelines(template_file_lines)
 
 
 if __name__ == "__main__":
     data_set_description_schema = load_data_set_description_schema()
-    data_set_description_field_descriptions = \
+    data_set_description_field_descriptions = (
         load_data_set_description_field_descriptions()
+    )
 
-    validate_schema(data_set_description_schema=data_set_description_schema,
-                    data_set_description_field_descriptions=data_set_description_field_descriptions)
+    validate_schema(
+        data_set_description_schema=data_set_description_schema,
+        data_set_description_field_descriptions=data_set_description_field_descriptions,
+    )
 
     write_data_set_description_template_file(
         data_set_description_schema=data_set_description_schema,
-        data_set_description_field_descriptions=data_set_description_field_descriptions)
+        data_set_description_field_descriptions=data_set_description_field_descriptions,
+    )
 
-    validate_all_data_set_descriptions(data_set_description_schema=data_set_description_schema)
+    validate_all_data_set_descriptions(
+        data_set_description_schema=data_set_description_schema
+    )
