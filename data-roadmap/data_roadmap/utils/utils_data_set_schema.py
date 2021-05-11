@@ -72,6 +72,9 @@ def write_data_set_description_template_file(data_set_description_schema, data_s
                 f"# Valid choices are one of the following: {field_schema.enums}\n"
             )
 
+        # Add an empty linebreak to separate fields.
+        template_file_lines.append("\n")
+
     with open(DATA_SET_DESCRIPTION_TEMPLATE_FILE_PATH, 'w') as file:
         file.writelines(template_file_lines)
 
