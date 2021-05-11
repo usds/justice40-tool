@@ -1,27 +1,37 @@
 graph LR
+    subgraph c["Community"]
+        input["Community Input"]
+    end
+
     subgraph ds["Data Selection"]
-    Intake --> Roadmap --> Voting
+        input --> Intake
+        input --> Evolution
+        input --> Voting
+        Intake --> Evolution --> Voting
     end
-    subgraph dp["Data Pipeline"]
-    Voting --> Approved
-    Approved --> Properties
-    Approved --> Geometries
-    Properties --> GeoJSON
-    Geometries --> GeoJSON
+    
+    subgraph s["Geoplatform.gov"]
+        subgraph dp["Data Pipeline (Justice40 Repo)"]
+            Voting --> a["Approved Datasets"]
+            a --> Properties
+            a --> Geometries
+        end
+        subgraph Server
+            Properties --> GeoJSON
+            Geometries --> GeoJSON
+            GeoJSON --> db[("Feature Database")]
+            db --> tileserv["Tile Server"]
+        end
+            subgraph j40["Justice40 Client"]
+            tileserv --> vl
+            ts["Tile Styling"] --> vl["Justice40 Visualization Library"]
+            vl --> fe["Justice40 Static Site Frontend"]
+        end
     end
-    subgraph s["Server(s)"]
-    GeoJSON --> db[("Feature Database")]
-    db --> tileserv["Tile Server"]
-    tileserv --> lb["Load Balancer"]
-    lb --> auth["Auth, IP Allowlist, API Key, OpenAPI"]
-    auth --> api
-    end
-    subgraph j40["Justice40 Client"]
-    api --> vl["Justice40 Visualization Library"]
-    ts["Tile Styling"] --> vl
-    vl --> fe["Justice40 Static Site Frontend"]
-    end
+
     subgraph oc["Other Clients"]
-    api --> 3p["Third Party Apps"]
+        tileserv -- API --> 3p["Third Party Apps"]
+        GeoJSON -- API --> 3p
+        db -- API --> 3p
     end
     
