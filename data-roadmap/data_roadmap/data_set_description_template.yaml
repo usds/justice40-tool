@@ -1,0 +1,21 @@
+name: 
+# Description: The name of the thing.
+# Required field: True
+# Field type: str
+age: 
+# Description: The age of the thing.
+# Required field: True
+# Field type: int
+height: 
+# Description: The height of the thing.
+# Required field: True
+# Field type: num
+awesome: 
+# Description: The awesome of the thing.
+# Required field: True
+# Field type: bool
+field: 
+# Description: The field of the thing.
+# Required field: True
+# Field type: enum
+# Valid choices are one of the following: ('option 1', 'option 2')

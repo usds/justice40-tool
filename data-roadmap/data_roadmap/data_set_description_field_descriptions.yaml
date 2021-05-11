@@ -1,0 +1,7 @@
+# There is no method for adding field descriptions to `yamale` schemas.
+# Therefore, we've created a dictionary here of fields and their descriptions.
+name: The name of the thing.
+age:  The age of the thing.
+height:  The height of the thing.
+awesome:  The awesome of the thing.
+field:  The field of the thing.
