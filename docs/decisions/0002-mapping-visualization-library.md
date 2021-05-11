@@ -1,6 +1,6 @@
 # Mapping Visualization Library
 
-- Status: draft
+- Status: approved
 - Deciders: Lucas Brown, Shelby Switzer, Nat Hillard
 - Date: 2021-04-21
 - Tags: frontend
@@ -55,27 +55,27 @@ We provide more detail on these factors below.
 
 - **Licensing** : OpenLayers is BSD 2-Clause [licensed](https://github.com/openlayers/openlayers/blob/main/LICENSE.md)
 - **More fully featured** : OpenLayers has a number of GIS features that other web-based tools do not. A somewhat older [analysis](https://link.springer.com/article/10.1007/s10109-017-0248-z) done in 2017 concluded that when compared to a set of considered features, OpenLayers 3 had a relatively large number of supported overall GIS features:
-  ![GIS Feature set](GIS_Features.png)
+  ![GIS Feature set](./0002-files/GIS_Features.png)
 - **Popularity** : OpenLayers is second only to Leaflet in the number of Github [stars](https://github.com/openlayers/openlayers/stargazers) it has received, close to 8000
 - **Performance** :
   - The below chart comes from an September 2020 [study](https://doi.org/10.3390/ijgi9100563). The purpose of this study was to compare OpenLayers to Mapbox-GL-JS and Leaflet (both raster and vector tile variants) as the potential basis for a Life Quality Index for 55,000+ census radius jurisdictions in Argentina.
-    ![Execution Time](ExecutionTime.png) ([Source](https://doi.org/10.3390/ijgi9100563))
+    ![Execution Time](./0002-files/ExecutionTime.png) ([Source](https://doi.org/10.3390/ijgi9100563))
     In this chart, the two letters following the library name are for basemap layer and feature layer. Further, "R" is "raster" and "V" is vector, and lower numbers indicate faster load times. "OpenLayersRR" and "OpenLayersRV", (signifying a raster base layer and vector feature layer), performed quite well across all device types compared to other libraries.
   - We also performed local testing using puppeteer and web performance APIs, tested against a choropleth map of the cenus block groups, which represents a likely usecase for us. The results were as follows:
-    ![Choropleth Map Performance](ChoroplethMapPerformance.png) ([Source](Maryland.csv))
+    ![Choropleth Map Performance](./0002-files/ChoroplethMapPerformance.png) ([Source](./0002-files/Maryland.csv))
     Testing and results can be found on the `client_perf` [branch](https://github.com/usds/justice40-tool/tree/client_perf) in this repository.
   - Finally, we tested these mapping solutions against a large dataset with many features, a map of national highways, at a lower zoom level. The tiles were still loaded on-demand, but the greater detail and number of features meant a more difficult render. Trends seemed similar to the above, with the exception of Leaflet:
-    ![Highways Map Performance](HighwayMapPerformance.png) ([Source](Highways.csv))
+    ![Highways Map Performance](./0002-files/HighwayMapPerformance.png) ([Source](./0002-files/Highways.csv))
     Notes:
     - OL+MB did not file the `tiledidload` event and thus there was not a separate measure for style loaded
     - Apparent performance was different from measured/reported overall, particularly when it comes to zoom performance. This is an area to dig into further and measured at a later time to understand better.
 - **Data Usage** : The same study above also analyzed the amount of data usage for each of the libraries under investigation, and the result was the below chart (Lower values are better). OpenLayers overall performed quite well
-  ![Data Usage](NetworkTraffic.png) ([Source](https://doi.org/10.3390/ijgi9100563))
+  ![Data Usage](./0002-files/NetworkTraffic.png) ([Source](https://doi.org/10.3390/ijgi9100563))
 
 ### Negative Consequences
 
 - **Learning Curve** : A [recent survey](https://pea.lib.pte.hu/bitstream/handle/pea/23611/farkas-gabor-phd-2020.pdf?sequence=1) ranking various mapping libraries ranked OpenLayers as "Hard" in a scale from "Basic" to "Very Hard", and furthermore calculated "Approximate Learning Curve for Javascript", by which it was on the harder end as well (more detail in paper):
-  ![Difficulty Ranking](DifficultyRanking.png) ([Source](https://pea.lib.pte.hu/bitstream/handle/pea/23611/farkas-gabor-phd-2020.pdf?sequence=1))
+  ![Difficulty Ranking](./0002-files/DifficultyRanking.png) ([Source](https://pea.lib.pte.hu/bitstream/handle/pea/23611/farkas-gabor-phd-2020.pdf?sequence=1))
   This is part of the tradeoff in the library's large feature set. Anecdotally, however, for the purpose of a simple choropleth map, implementation felt similar to other libraries.
 - **Modern Stack** : OpenLayers requires a [plugin](https://github.com/openlayers/ol-mapbox-style) for the combination of MVT vector tiles and Mapbox GL Styles, though it does support it.
 - **Rendering** : According to [geoapify](https://www.geoapify.com/mapbox-gl-new-license-and-6-free-alternatives), it has 'slightly less "polished" rendering quality and performance' compared to Mapbox/MapLibre GL. This is partly related to the fact that it does not yet support using WebGL for rendering anything more than points ([source](https://openlayers.org/workshop/en/webgl/points.html)).
@@ -85,7 +85,7 @@ We provide more detail on these factors below.
 - **Accessibility**
   - Accessibility for web mapping technology in general is [not](https://wcag-maps.nicchan.me/) [good](https://sparkgeo.com/blog/the-accessibility-of-web-maps/). As of now, the default 2D visualizations in and of themselves do not provide explicit 508 compliance, and there is no official accessibilty [statement](https://www.w3.org/WAI/planning/statements/) for OpenLayers.
   - According to a recent exhaustive WCAG 2.1 [evaluation](https://github.com/Malvoz/web-maps-wcag-evaluation/) that compared several map providers, though almost all web maps performed [poorly](https://wcag-maps.nicchan.me/), OpenLayers came out in the middle of the pack:
-    ![Accessibility](WGAC2.1SuccessCount.png) (Source: original [here](./AccessibilityComparison.tsv), based on data [here](https://github.com/Malvoz/web-maps-wcag-evaluation/))
+    ![Accessibility](./0002-files/WCAG2.1SuccessCount.png) (Source: original [here](./0002-files/AccessibilityComparison.tsv), based on data [here](https://github.com/Malvoz/web-maps-wcag-evaluation/))
     This chart counts the number of successful WCAG 2.1 criteria from the above-linked study.
   - Mitigations:
     - According to at least one accessibility [expert](http://stackoverflow.com/questions/15659051/google-maps-508-accessibility-without-styles/16060809#16060809), it is sufficient for compliance reasons to provide an alternative means of viewing the same information provided by the map, perhaps in a table or other format. This is a common solution to this problem.
@@ -106,7 +106,7 @@ We provide more detail on these factors below.
 - **(Relative) Accessibility** : Mapbox-GL-JS came out 4th out of 12 in the above accessibility analysis. Mapbox also released several [patches](https://github.com/mapbox/mapbox-gl-js/pulls?q=is%3Apr++accessibility+) recently to address the issues that were found and are actively working on this.
 - **Localization** : Through the mapbox-gl-language [plugin](https://github.com/mapbox/mapbox-gl-language/), it is possible to dynamically change the language of mapbox-provided basemaps to other languages. Additionally, they have a plugin for displaying [RTL languages](https://github.com/mapbox/mapbox-gl-rtl-text), and the [ability](https://docs.mapbox.com/mapbox-gl-js/style-spec/expressions/#types-number-format) to format numbers according to locale conventions.
 - **Popularity** : According to [NPM Trends](https://www.npmtrends.com/mapbox-gl-vs-leaflet-vs-ol-vs-arcgis-js-api-vs-maplibre-gl) Mapbox-GL is the most downloaded package among those considered. More info [here](https://www.geoapify.com/map-libraries-comparison-leaflet-vs-mapbox-gl-vs-openlayers-trends-and-statistics)
-  ![Download Stats](MapDownloadCount.png)
+  ![Download Stats](./0002-files/MapDownloadCount.png)
 
 #### Mapbox-GL JS Cons
 
@@ -174,7 +174,7 @@ Leaflet is a popular open-source mapping visualization library that has been aro
 There are a handful of other similar comparisons out there, here are some references:
 
 - Geoapify comparison ([Source](https://www.geoapify.com/mapbox-gl-new-license-and-6-free-alternatives))
-  ![Geoapify Comparison](GeoapifyComparison.png)
+  ![Geoapify Comparison](./0002-files/GeoapifyComparison.png)
 - Flatlogic [Comparison](https://flatlogic.com/blog/top-mapping-and-maps-api/)
 
 ## Appendix B: Further Reading
