@@ -1,2 +1,1 @@
 yamale==3.0.6
-importlib_resources==5.1.2
