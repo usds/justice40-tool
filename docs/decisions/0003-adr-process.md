@@ -48,7 +48,7 @@ Small changes don't need one, but for larger changes that would introduce a new 
 ### Process
 
 Please see the below diagram:
-![ADR Process](./0003-files/adr_process.mmd.svg)
+![ADR Process](./0003-files/adr_process-mmd.svg)
 
 1. **Start**: To create a new ADR, you have a few options:
 
@@ -60,7 +60,7 @@ Please see the below diagram:
 
 3. **Proposed**: Fill out all fields, set status to `proposed`, and open a pull-request.
 
-   1. We recommend [Mermaid](https://mermaid-js.github.io) for diagrams! Create a file with a `.mmd` extension and reference `filename.mmd.svg` in your docs, and Github Actions will automatically create the svg fore you! Preview diagrams with the Mermaid [Live Editor](https://mermaid-js.github.io/mermaid-live-editor/).
+   1. We recommend [Mermaid](https://mermaid-js.github.io) for diagrams! Create a file with a `.mmd` extension and reference `filename-mmd.svg` in your docs, and Github Actions will automatically create the svg fore you! Preview diagrams with the Mermaid [Live Editor](https://mermaid-js.github.io/mermaid-live-editor/).
    2. To keep things organized, create a folder with the name `XXXX-files` and put supporting ADR material there.
 
 4. **Email** Send an email to [the justice40-open-source Google Group](mailto:justice40-open-source@googlegroups.com) and link to the Pull Request created in (2). Set a deadline to solicit feedback, at most one week away.
