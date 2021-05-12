@@ -15,10 +15,12 @@ graph LR
             Voting --> a["Approved Datasets"]
             a --> Properties
             a --> Geometries
+            Properties --> Processing
+            Geometries --> Processing
+            input --> Processing
         end
         subgraph Server
-            Properties --> GeoJSON
-            Geometries --> GeoJSON
+            Processing --> GeoJSON
             GeoJSON --> db[("Feature Database")]
             db --> tileserv["Tile Server"]
         end
