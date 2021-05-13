@@ -2,7 +2,7 @@
 # `write_data_set_description_template_file` from the schema
 # and field descriptions files. Do not manually edit this file.
 
-name: 
+name:
 # Description: A short name of the data set.
 # Required field: True
 # Field type: str

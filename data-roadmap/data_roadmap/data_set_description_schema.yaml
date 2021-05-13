@@ -6,7 +6,8 @@ data_formats: enum('GeoJSON', 'Esri Shapefile (SHP, DBF, SHX)', 'GML', 'KML/KMZ'
   'GPX', 'CSV/XLSX', 'GDB', 'MBTILES', 'LAS', required=True)
 spatial_resolution: enum('State/territory', 'County', 'Zip code', 'Census tract',
   'Census block group', 'Exact address or lat/long', 'Other', required=True)
-public_status: enum('Not Released', 'Public', 'Public for certain audiences', 'Other', required=True)
+public_status: enum('Not Released', 'Public', 'Public for certain audiences', 'Other',
+  required=True)
 sponsor: str(required=True)
 subjective_rating_of_data_quality: enum('Low Quality', 'Medium Quality', 'High
   Quality', required=False)

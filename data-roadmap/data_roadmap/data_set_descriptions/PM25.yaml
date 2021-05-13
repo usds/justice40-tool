@@ -20,7 +20,7 @@ estimated_margin_of_error:
 known_data_quality_issues: Many PM 2.5 stations are known to be pretty far apart, so
   averaging them can lead to data quality loss.
 
-geographic_coverage_percent: 
+geographic_coverage_percent:
 
 geographic_coverage_description:
 
@@ -33,4 +33,3 @@ documentation: https://www.epa.gov/sites/production/files/2015-05/documents/ejsc
 data_can_go_in_cloud: True
 
 discussion:
-
