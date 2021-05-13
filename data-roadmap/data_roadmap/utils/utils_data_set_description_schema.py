@@ -1,6 +1,3 @@
-import glob
-import os
-
 import yamale
 import yaml
 
