@@ -39,7 +39,6 @@ class UtilsDataSetDescriptionSchema(unittest.TestCase):
         self.assertDictEqual(field_descriptions, mock_dict)
 
     def test_validate_descriptions_for_schema(self):
-
         # Test when all descriptions are present.
         field_descriptions = {
             "name": "The name of the thing.",
