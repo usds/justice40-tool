@@ -1,3 +1,5 @@
+import pathlib
+
 import yamale
 import yaml
 
@@ -21,7 +23,9 @@ DATA_SET_DESCRIPTION_TEMPLATE_FILE_PATH = DATA_ROADMAP_DIRECTORY.joinpath(
 )
 
 
-def load_data_set_description_schema(file_path=DATA_SET_DESCRIPTION_SCHEMA_FILE_PATH):
+def load_data_set_description_schema(
+    file_path: pathlib.PosixPath = DATA_SET_DESCRIPTION_SCHEMA_FILE_PATH,
+):
     """Load from file the data set description schema."""
     schema = yamale.make_schema(path=file_path)
 
@@ -29,7 +33,7 @@ def load_data_set_description_schema(file_path=DATA_SET_DESCRIPTION_SCHEMA_FILE_
 
 
 def load_data_set_description_field_descriptions(
-    file_path=DATA_SET_DESCRIPTION_FIELD_DESCRIPTIONS_FILE_PATH,
+    file_path: pathlib.PosixPath = DATA_SET_DESCRIPTION_FIELD_DESCRIPTIONS_FILE_PATH,
 ):
     """Load from file the descriptions of fields in the data set description."""
     # Load field descriptions.
