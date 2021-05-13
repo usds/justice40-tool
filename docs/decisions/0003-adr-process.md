@@ -50,11 +50,7 @@ Small changes don't need one, but for larger changes that would introduce a new 
 Please see the below diagram:
 ![ADR Process](./0003-files/adr_process-mmd.svg)
 
-1. **Start**: To create a new ADR, you have a few options:
-
-   1. **Old fashioned file copy**: Copy `template.md` into a new file in this directory, named `XXXX-name-of-issue.md` where the `XXXX` part is incremented from the previous ADR.
-
-   2. **ADR Tools**: Install `adr-tools` with `brew install adr-tools` then `adr new "Issue Name"` to make a new file. Copy contents of `template.md` in its place to get the right fields.
+1. **Start**: To create a new ADR, copy `template.md` into a new file in this directory, named `XXXX-name-of-issue.md` where the `XXXX` part is incremented from the previous ADR.
 
 2. **Draft**: While your ADR is still being written, set the status to `draft`
 
