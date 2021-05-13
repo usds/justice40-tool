@@ -4,23 +4,23 @@ import os
 import yamale
 import yaml
 
-UTILS_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
-DATA_SET_DESCRIPTIONS_DIRECTORY = os.path.join(
-    UTILS_DIRECTORY, "../data_set_descriptions"
+import importlib_resources
+
+DATA_ROADMAP_DIRECTORY = importlib_resources.files("data_roadmap")
+UTILS_DIRECTORY = DATA_ROADMAP_DIRECTORY.joinpath("utils")
+DATA_SET_DESCRIPTIONS_DIRECTORY = DATA_ROADMAP_DIRECTORY.joinpath(
+    "data_set_descriptions"
 )
 
-# TODO: This is hacky for now. Add some safety around loading this, e.g. by
-# using `importlib_resources`. - Lucas
-DATA_SET_DESCRIPTION_SCHEMA_FILE_PATH = os.path.join(
-    UTILS_DIRECTORY, "../data_set_description_schema.yaml"
+DATA_SET_DESCRIPTION_SCHEMA_FILE_PATH = DATA_ROADMAP_DIRECTORY.joinpath(
+    "data_set_description_schema.yaml"
 )
-DATA_SET_DESCRIPTION_FIELD_DESCRIPTIONS_FILE_PATH = os.path.join(
-    UTILS_DIRECTORY, "../data_set_description_field_descriptions.yaml"
+DATA_SET_DESCRIPTION_FIELD_DESCRIPTIONS_FILE_PATH = DATA_ROADMAP_DIRECTORY.joinpath(
+    "data_set_description_field_descriptions.yaml"
 )
 
-DATA_SET_DESCRIPTION_TEMPLATE_FILE_PATH = os.path.join(
-    os.path.dirname(os.path.dirname(os.path.realpath(__file__))),
-    "data_set_description_template.yaml",
+DATA_SET_DESCRIPTION_TEMPLATE_FILE_PATH = DATA_ROADMAP_DIRECTORY.joinpath(
+    "data_set_description_template.yaml"
 )
 
 
@@ -74,12 +74,12 @@ def validate_all_data_set_descriptions(
     against the provided schema.
 
     """
-    all_combined_file_paths = sorted(
-        glob.glob(os.path.join(DATA_SET_DESCRIPTIONS_DIRECTORY, "*.yaml"))
+    data_set_description_file_paths_generator = DATA_SET_DESCRIPTIONS_DIRECTORY.glob(
+        "*.yaml"
     )
 
     # Validate each file
-    for file_path in sorted(all_combined_file_paths):
+    for file_path in data_set_description_file_paths_generator:
         print(f"Validating {file_path}...")
 
         # Create a yamale Data object
