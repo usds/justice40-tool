@@ -19,11 +19,9 @@ known_data_quality_issues: It can be helpful to write out known problems.
 geographic_coverage_percent: We want to think about data that is comprehensive across America.
 geographic_coverage_description: A verbal description of geographic coverage.
 data_formats: Developers need to know what formats the data is available in
-last_updated_date: When was the data last updated / refreshed? We need a way to capture
-  recency if not able to get a date
+last_updated_date: When was the data last updated / refreshed? (In format YYYY-MM-DD.
+  If exact date is not known, use YYYY-01-01.)
 frequency_of_updates: How often is this data updated? Is it updated on a reliable cadence?
-data_category_keywords: Since the taxonomy for these indicators and datasets isn't an
-  exact science and different audiences may use different ways to refer to the data set categories, let's use a list of keywords instead of a single word
 documentation: Link to docs. Also, is the documentation good enough? Can we get the info we need?
 data_can_go_in_cloud: Some datasets can not legally go in the cloud
 
