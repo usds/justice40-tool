@@ -95,7 +95,6 @@ def write_data_set_description_template_file(
     template_file_path: str = DATA_SET_DESCRIPTION_TEMPLATE_FILE_PATH,
 ):
     """Write an example data set description with helpful comments."""
-
     template_file_lines = []
 
     # Write comments at the top of the template
