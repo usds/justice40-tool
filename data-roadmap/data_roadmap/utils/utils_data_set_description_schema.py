@@ -25,7 +25,7 @@ DATA_SET_DESCRIPTION_TEMPLATE_FILE_PATH = DATA_ROADMAP_DIRECTORY.joinpath(
 
 def load_data_set_description_schema(
     file_path: pathlib.PosixPath = DATA_SET_DESCRIPTION_SCHEMA_FILE_PATH,
-):
+) -> yamale.schema.schema.Schema:
     """Load from file the data set description schema."""
     schema = yamale.make_schema(path=file_path)
 
@@ -34,7 +34,7 @@ def load_data_set_description_schema(
 
 def load_data_set_description_field_descriptions(
     file_path: pathlib.PosixPath = DATA_SET_DESCRIPTION_FIELD_DESCRIPTIONS_FILE_PATH,
-):
+) -> dict:
     """Load from file the descriptions of fields in the data set description."""
     # Load field descriptions.
     with open(file_path, "r") as stream:
@@ -46,7 +46,7 @@ def load_data_set_description_field_descriptions(
 def validate_descriptions_for_schema(
     schema: yamale.schema.schema.Schema,
     field_descriptions: dict,
-):
+) -> None:
     """Validate descriptions for schema.
 
     Checks that every field in the `yamale` schema also has a field
@@ -68,7 +68,7 @@ def validate_descriptions_for_schema(
 
 def validate_all_data_set_descriptions(
     data_set_description_schema: yamale.schema.schema.Schema,
-):
+) -> None:
     """Validate data set descriptions.
 
     Validate each file in the `data_set_descriptions` directory the schema
@@ -94,7 +94,7 @@ def write_data_set_description_template_file(
     data_set_description_schema: yamale.schema.schema.Schema,
     data_set_description_field_descriptions: dict,
     template_file_path: str = DATA_SET_DESCRIPTION_TEMPLATE_FILE_PATH,
-):
+) -> None:
     """Write an example data set description with helpful comments."""
     template_file_lines = []
 
@@ -125,7 +125,7 @@ def write_data_set_description_template_file(
         file.writelines(template_file_lines)
 
 
-def run_validations_and_write_template():
+def run_validations_and_write_template() -> None:
     """Run validations of schema and descriptions, and write a template file."""
     # Load the schema and a separate dictionary
     data_set_description_schema = load_data_set_description_schema()
