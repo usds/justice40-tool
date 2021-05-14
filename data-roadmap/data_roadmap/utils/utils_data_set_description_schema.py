@@ -1,9 +1,7 @@
+import importlib_resources
 import pathlib
-
 import yamale
 import yaml
-
-import importlib_resources
 
 # Set directories.
 DATA_ROADMAP_DIRECTORY = importlib_resources.files("data_roadmap")
