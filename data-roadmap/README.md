@@ -43,18 +43,15 @@ tracked in one `YAML` file per data set description in the directory
 
 Each data set description includes a number of fields, some of which are required.
 The schema defining these fields is written in [Yamale](https://github.com/23andMe/Yamale) 
-and lives at [data_roadmap/data_set_description_schema.yaml]
-(data_roadmap/data_set_description_schema.yaml).
+and lives at [data_roadmap/data_set_description_schema.yaml](data_roadmap/data_set_description_schema.yaml).
 
 Because `Yamale` does not provide a method for describing fields, we've created an
 additional file that includes written descriptions of the meaning of each field in
-the schema. These live in [data_roadmap/data_set_description_field_descriptions.yaml]
-(data_roadmap/data_set_description_field_descriptions.yaml).
+the schema. These live in [data_roadmap/data_set_description_field_descriptions.yaml](data_roadmap/data_set_description_field_descriptions.yaml).
 
 In order to provide a helpful starting point for people who are ready to contribute
 ideas for a new data set for consideration, there is an auto-generated data set
-description template that lives at [data_roadmap/data_set_description_template.yaml]
-(data_roadmap/data_set_description_template.yaml).
+description template that lives at [data_roadmap/data_set_description_template.yaml](data_roadmap/data_set_description_template.yaml).
 
 # Steps to add a new data set description: the "easy" way
 
