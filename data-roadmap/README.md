@@ -39,26 +39,28 @@ between different options for data in the data roadmap.
 
 In order to support a process of peer review on edits and updates, these details are
 tracked in one `YAML` file per data set description in the directory
-`data_roadmap/data_set_descriptions`.
+[data_roadmap/data_set_descriptions](data_roadmap/data_set_descriptions).
 
 Each data set description includes a number of fields, some of which are required.
-The schema defining these fields is written in [Yamale](https://github
-.com/23andMe/Yamale) and lives at `data_roadmap/data_set_description_schema.yaml`.
+The schema defining these fields is written in [Yamale](https://github.com/23andMe/Yamale) 
+and lives at [data_roadmap/data_set_description_schema.yaml]
+(data_roadmap/data_set_description_schema.yaml).
 
 Because `Yamale` does not provide a method for describing fields, we've created an
 additional file that includes written descriptions of the meaning of each field in
-the schema. These live in `data_roadmap/data_set_description_field_descriptions.yaml`.
+the schema. These live in [data_roadmap/data_set_description_field_descriptions.yaml]
+(data_roadmap/data_set_description_field_descriptions.yaml).
 
 In order to provide a helpful starting point for people who are ready to contribute
 ideas for a new data set for consideration, there is an auto-generated data set
-description template that lives at `data_roadmap/data_set_description_template.yaml`.
+description template that lives at [data_roadmap/data_set_description_template.yaml]
+(data_roadmap/data_set_description_template.yaml).
 
 # Steps to add a new data set description: the "easy" way
 
 Soon we will create a Google Form that contributors can use to submit ideas for new
 data sets. The Google Form will match the schema of the data set descriptions. Please
-see [this ticket](https://app.zenhub
-.com/workspaces/justice40-60993f6e05473d0010ec44e3/issues/usds/justice40-tool/39)
+see [this ticket](https://app.zenhub.com/workspaces/justice40-60993f6e05473d0010ec44e3/issues/usds/justice40-tool/39)
 for tracking this work.
 
 # Steps to add a new data set description: the git-savvy way
@@ -95,13 +97,13 @@ We've also proposed various "milestones" that will allow us to iteratively and
 sequentially build the data roadmap in a way that supports the entire vision but
 starts with small and achievable steps. These milestones are proposed in order.
 
-This work is most accurately tracked in [this epic](https://app.zenhub
-.com/workspaces/justice40-60993f6e05473d0010ec44e3/issues/usds/justice40-tool/38).
+This work is most accurately tracked in [this epic](https://app.zenhub.com/workspaces/justice40-60993f6e05473d0010ec44e3/issues/usds/justice40-tool/38).
 We've also verbally described them below.
 
-## Milestone: YAML files for data sets and linter
+## Milestone: YAML files for data sets and linter (Done)
 
-To start, we'll create a folder in the appropriate repository [is this `justice40-tool`?] that can house YAML files, one per data set. Each file will describe the characteristics of the data.
+To start, we'll create a folder in this repository that can 
+house YAML files, one per data set. Each file will describe the characteristics of the data.
 
 The benefit of using a YAML file for this is that it's easy to subject changes to these files to peer review through the pull request process. This allows external collaborators from the open source community to submit suggested changes, which can be reviewed by the core CEJST team.
 
