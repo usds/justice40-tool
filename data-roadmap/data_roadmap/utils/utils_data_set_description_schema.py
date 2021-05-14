@@ -5,21 +5,20 @@ import yaml
 
 import importlib_resources
 
+# Set directories.
 DATA_ROADMAP_DIRECTORY = importlib_resources.files("data_roadmap")
-UTILS_DIRECTORY = DATA_ROADMAP_DIRECTORY.joinpath("utils")
-DATA_SET_DESCRIPTIONS_DIRECTORY = DATA_ROADMAP_DIRECTORY.joinpath(
-    "data_set_descriptions"
-)
+UTILS_DIRECTORY = DATA_ROADMAP_DIRECTORY / "utils"
+DATA_SET_DESCRIPTIONS_DIRECTORY = DATA_ROADMAP_DIRECTORY / "data_set_descriptions"
 
-DATA_SET_DESCRIPTION_SCHEMA_FILE_PATH = DATA_ROADMAP_DIRECTORY.joinpath(
-    "data_set_description_schema.yaml"
+# Set file paths.
+DATA_SET_DESCRIPTION_SCHEMA_FILE_PATH = (
+    DATA_ROADMAP_DIRECTORY / "data_set_description_schema.yaml"
 )
-DATA_SET_DESCRIPTION_FIELD_DESCRIPTIONS_FILE_PATH = DATA_ROADMAP_DIRECTORY.joinpath(
-    "data_set_description_field_descriptions.yaml"
+DATA_SET_DESCRIPTION_FIELD_DESCRIPTIONS_FILE_PATH = (
+    DATA_ROADMAP_DIRECTORY / "data_set_description_field_descriptions.yaml"
 )
-
-DATA_SET_DESCRIPTION_TEMPLATE_FILE_PATH = DATA_ROADMAP_DIRECTORY.joinpath(
-    "data_set_description_template.yaml"
+DATA_SET_DESCRIPTION_TEMPLATE_FILE_PATH = (
+    DATA_ROADMAP_DIRECTORY / "data_set_description_template.yaml"
 )
 
 
