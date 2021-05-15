@@ -11,6 +11,7 @@ services:
     ports:
       - 7800:7800
     restart: unless-stopped
+
   db:
     image: kartoza/postgis:13-3.1
     volumes:
@@ -25,10 +26,11 @@ services:
     ports:
       - 5434:5432
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U map_dev_user -d map_dev"]
+      test: ["CMD-SHELL", "pg_isready -h db -U map_dev_user -d map_dev"]
       interval: 5s
       timeout: 5s
       retries: 5
     restart: unless-stopped
+
 volumes:
   pgdata:
