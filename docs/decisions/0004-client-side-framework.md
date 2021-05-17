@@ -5,7 +5,7 @@
 - Date: 2021-05-12
 - Tags: front-end, client
 
-Technical Story: [description | ticket/issue URL]
+Technical Story: https://github.com/usds/justice40-tool/issues/44 
 
 ## Context and Problem Statement
 
@@ -29,11 +29,8 @@ We need to decide what framework to use for our front end client.
 
 - Jekyll
 - Gatsby
-- Hugo
 - Next.js
 - Gridsome
-- Middleman
-- Nuxt.js
 - Eleventy
 - Static HTML + JS site
 - Create-react-app
@@ -85,12 +82,6 @@ Cons:
 - Local builds and refreshes feel slow compared to other frameworks on this list
 - Seems a little more geared toward the blog usecase
 
-### Hugo
-
-Pros:
-
-Cons:
-
 ### Next
 
 Pros:
@@ -127,17 +118,16 @@ Cons:
 - Relatively unknown compared to other Vue-based frameworks: 7200 stars, compared to VuePress 18200, Nuxt.js's 33000
 - There is a (really cool!) USWDS wrapper [library](https://github.com/usds/uswds-vue) -- and it's even supported by Mike Pritchard at USDS! -- providing Vue support, but it's still relatively new (Sep 2020)
 
-### Nuxt
-
-Pros:
-
-Cons:
-
 ### Eleventy
 
 Pros:
+- Used elsewhere in USDS (PRIME ReportStream)
+- Simple and straightforward
+- Seems to be like Jekyll but for JavaScript
 
 Cons:
+- Static-site only: Would be difficult to build out a more fully featured app later from this base
+- Doesn't appear to offer us much in terms of speeding up the build
 
 ### Static HTML + JS site
 
@@ -153,8 +143,12 @@ Cons:
 ### Create-react-app
 
 Pros:
+- Standard app for getting started in React (and we are leaning towards React as a team)
+- Like with the static site, there's less out of the box but more customization possible and potentially less to get in our way
 
 Cons:
+- We'd have to figure out things like static site generation and CMS integration on our own
+- Along those lines, doesn't appear to offer us much in terms of speeding up the build
 
 ## Links <!-- optional -->
 
