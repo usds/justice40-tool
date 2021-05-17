@@ -89,9 +89,9 @@ const largeMVTLayer = new VectorTileLayer({
 
 
 map.addLayer(cartoLayer);
-// map.addLayer(vtLayer);
+map.addLayer(vtLayer);
 // map.addLayer(censusBlockLayer);
-map.addLayer(largeMVTLayer);
+// map.addLayer(largeMVTLayer);
 
 map.once('rendercomplete', ()=>{
   performance.mark("MAP_IDLE");

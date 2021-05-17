@@ -61,14 +61,18 @@ function MapWrapper(props) {
        }
     });
 
-    const censusBlockSource = new TileArcGISRest({
+    const censusBlockSourceRaster = new TileArcGISRest({
       url: "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Tracts_Blocks/MapServer/"
     });
+
+    const censusBlockSourceVector = new VectorTileSource({
+      format: new MVT(),
+      url: "https://gis.data.census.gov/arcgis/rest/services/Hosted/VT_2019_150_00_PY_D1/VectorTileServer/tile/{z}/{y}/{x}.mvt"
+    })
     
-    
-    const censusBlockLayer = new TileLayer({
+    const censusBlockLayer = new VectorTileLayer({
       extent: [-13884991, 2870341, -7455066, 6338219],
-      source: censusBlockSource
+      source: censusBlockSourceVector
     });
 
     const largeMVTSource = new VectorTileSource({
@@ -107,8 +111,8 @@ function MapWrapper(props) {
         }), */
 
         // vtLayer
-        //censusBlockLayer
-        largeMVTLayer
+        censusBlockLayer
+        //largeMVTLayer
         
       ],
       view: new View({
