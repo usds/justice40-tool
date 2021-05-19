@@ -3,7 +3,7 @@ name: 'Compile Mermaid in Markdown'
 on:
   push:
     paths:
-      - '**/*.mmd'
+      - 'docs/**/*.mmd'
 
 jobs:
   build:
@@ -42,8 +42,8 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add .
-          git commit -m "Add changes" -a
+          git add -A
+          git diff-index --quiet HEAD || git commit -a -m 'Updating Diagram'
 
       - name: Push Changes
         uses: ad-m/github-push-action@master
