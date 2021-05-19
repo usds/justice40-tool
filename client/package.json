@@ -14,8 +14,13 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean"
   },
+  "devDependencies": {
+    "gatsby-cli": "^3.5.0"
+  },
   "dependencies": {
     "@trussworks/react-uswds": "^1.17.0",
+    "@types/react": "^17.0.6",
+    "@types/react-dom": "^17.0.5",
     "gatsby": "^3.4.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
