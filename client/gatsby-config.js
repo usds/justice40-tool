@@ -1,6 +1,11 @@
 module.exports = {
   siteMetadata: {
     title: "Justice40 Tool",
+    flags: {
+      DEV_SSR: false
+    },
   },
-  plugins: [],
+  plugins: [
+    "gatsby-plugin-sass"
+  ]
 };
