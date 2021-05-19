@@ -1,8 +1,8 @@
 # Client-side Framework
 
 - Status: draft
-- Deciders: Shelby Switzer, Nat Hillard, Lucas Brown
-- Date: 2021-05-12
+- Deciders: Justice40 team
+- Date: 2021-05-19
 - Tags: front-end, client
 
 Technical Story: https://github.com/usds/justice40-tool/issues/44 
@@ -13,10 +13,11 @@ We need to decide what framework to use for our front end client.
 
 ## Decision Drivers <!-- optional -->
 
-- Default to open
-- Team skills and capacity
-- Ease of implementation
-- Can support following features:
+- **Default to open** - Choose open source technology in our stack.
+- **Team skills and capacity** - Most of the team has React experience.
+- **Ease of implementation** - We're looking for significant community support and a shallow learning curve.
+- **Skills of our community** - Our open source community as well as potential collaborators in federal government are likely to have experience with Python and JavaScript, so we're not strongly considering options outside of these ecosystems.
+- **Can support following features:**
   - USWDS integration
   - Content management by nontechnical team member, such as with Markdown files or integration with a headless CMS
   - Solid accessibility support
@@ -37,17 +38,21 @@ We need to decide what framework to use for our front end client.
 
 ## Decision Outcome
 
-Chosen option: "[option 1]", because [justification. e.g., only option, which meets k.o. criterion decision driver | which resolves force force | … | comes out best (see below)].
+Chosen option: Gatsby, because it seems to hit the balance between being simple and static-site focused and having capabilities for scaling up features and eventually evolving to a full stack application should we need it. 
 
 ### Positive Consequences <!-- optional -->
 
-- [e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]
-- …
+- Very large plugin [ecosystem](https://www.gatsbyjs.com/plugins)
+- Batteries included philosophy helps in rendering static pages, routing, styling, markdown rendering
+- Easy CMS support
+- Straightforward to learn / pick up
+- Fairly good [documentation](https://www.gatsbyjs.com/docs)
 
 ### Negative Consequences <!-- optional -->
 
-- [e.g., compromising quality attribute, follow-up decisions required, …]
-- …
+- Test development environment ran out of memory. We debugged this further and could not replicate the problem on a new machine, but the original experience was annoying to work around and this [article](https://support.gatsbyjs.com/hc/en-us/articles/360053096273-Why-did-I-hit-Out-of-Memory-errors-) suggests it could be a more widespread problem.
+- Local builds and refreshes feel slow compared to other frameworks on this list
+- Seems a little more geared toward the blog usecase
 
 ## Pros and Cons of the Options
 
@@ -65,22 +70,6 @@ Cons:
 - Limited in terms of support for more advanced interactive features / JS components: based on team's experience, we will run up to the limitations pretty quickly
 - Not scalable past a static site option if we need that
 - We might need non-static solution in the future / dynamic pages - how
-
-### Gatsby
-
-Pros:
-
-- Very large plugin [ecosystem](https://www.gatsbyjs.com/plugins)
-- Batteries included philosophy helps in rendering static pages, routing, styling
-- Easy CMS support
-- Straightforward to learn / pick up
-- Fairly good [documentation](https://www.gatsbyjs.com/docs)
-
-Cons:
-
-- Test development environment ran out of memory - need to debug further but this was a bit annoying to work around. More on this [here](https://support.gatsbyjs.com/hc/en-us/articles/360053096273-Why-did-I-hit-Out-of-Memory-errors-)
-- Local builds and refreshes feel slow compared to other frameworks on this list
-- Seems a little more geared toward the blog usecase
 
 ### Next
 
@@ -151,6 +140,3 @@ Cons:
 - Along those lines, doesn't appear to offer us much in terms of speeding up the build
 
 ## Links <!-- optional -->
-
-- [Link type](link to adr) <!-- example: Refined by [xxx](yyyymmdd-xxx.md) -->
-- … <!-- numbers of links can vary -->
