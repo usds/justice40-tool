@@ -14,7 +14,7 @@ We need a host for our data pipeline and front end website/app.
 
 - **Speed of launch** - We have a mandate to launch an initial version of our tool by July 27, and we want to get an informational site up much sooner.
 - **Support for continuous integration and delivery** - We need our hosting provider to support a modern software development lifecycle that includes continuous integration and delivery, such as integration with our Github repository and CI/CD tool such as Github Actions.
-- **Ease of implementation** - 
+- **Ease of implementation** - Ideally we can choose a platform that some of the team has experience with, that doesn't have a steep learning curve, and/or that has good support.
 - **Commitment to open source and process** - Any code used for servers, data processing, or front end hosting must be able to be open source, so there cannot be limitations with regard to where/how code is hosted and shared.  
 
 
@@ -25,7 +25,7 @@ We need a host for our data pipeline and front end website/app.
 
 ## Decision Outcome
 
-We will use Geoplatform.gov for hosting our data pipeline, tile server, and front end client. They have a set of shared service offerings that will enable us to have an open data pipeline from data source to tile API, enabling contributions to data processing at any point as well as enabling data access for users at any point (e.g. whether a user wants to access raw data or GeoJSON or tile format). See this diagram that illustrates the proposed system architecture and hosting: docs/architecture/architecture.mmd
+We will use Geoplatform.gov for hosting our data pipeline, tile server, and front end client. They have a set of shared service offerings that will enable us to have an open data pipeline from data source to tile API, enabling contributions to data processing at any point as well as enabling data access for users at any point (e.g. whether a user wants to access raw data or GeoJSON or tile format). See this ![diagram](architecture.mmd.svg) that illustrates the proposed system architecture and hosting.
 
 ### Positive Consequences
 
@@ -51,7 +51,7 @@ Pros:
 Cons:
 - We would not be able to launch our website or backend on our expected timeline
 - Would require a lot more build on our part for the data pipeline and tile server
-
+- Would not have the flexibility to easily run serverless functions if we needed to
 
 ## Links <!-- optional -->
 
