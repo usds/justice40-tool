@@ -15,11 +15,15 @@
     "clean": "gatsby clean"
   },
   "devDependencies": {
-    "gatsby-cli": "^3.5.0"
-  },
-  "dependencies": {
+    "@types/node": "^15.3.1",
     "@types/react": "^17.0.1",
     "@types/react-dom": "^17.0.1",
+    "gatsby-cli": "^3.5.0",
+    "gatsby-plugin-scss-typescript": "^5.1.0",
+    "sass": "^1.32.13"
+  },
+  "dependencies": {
+    "@trussworks/react-uswds": "^1.17.0",
     "gatsby": "^3.4.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
