@@ -122,4 +122,10 @@ function createForm() {
 
   var item = "Discussion";
   form.addParagraphTextItem().setTitle(item).setRequired(false);
+
+  var random_id = Utilities.getUuid();
+  var ss = SpreadsheetApp.create(
+    "Justice 40 Data Set Subnmissions - version: " + random_id
+  );
+  form.setDestination(FormApp.DestinationType.SPREADSHEET, ss.getId());
 }
