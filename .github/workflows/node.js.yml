@@ -8,11 +8,16 @@ name: GH Pages deploy
 on:
   push:
     branches: [main]
+    paths:
+      - 'client/**/*'
   pull_request:
     branches: [main]
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: client
     strategy:
       matrix:
         node-version: [16.x]
