@@ -19,8 +19,9 @@
     "@types/react": "^17.0.1",
     "@types/react-dom": "^17.0.1",
     "gatsby-cli": "^3.5.0",
-    "gatsby-plugin-scss-typescript": "^5.1.0",
-    "sass": "^1.32.13"
+    "gatsby-plugin-sass": "^4.5.0",
+    "sass": "^1.33.0",
+    "sass-loader": "^11.1.1"
   },
   "dependencies": {
     "@trussworks/react-uswds": "^1.17.0",

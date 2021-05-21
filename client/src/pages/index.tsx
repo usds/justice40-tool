@@ -1,15 +1,11 @@
 import * as React from "react"
-import {GovBanner} from '@trussworks/react-uswds';
+import Layout from '../components/layout';
 
 // markup
-const IndexPage = () => {
+export default function IndexPage() {
   return (
-      <main>
-        <GovBanner />
+      <Layout>
         <title>Justice40</title>
-        <h1>Justice40</h1>
-      </main>
+      </Layout>
   )
 }
-
-export default IndexPage;

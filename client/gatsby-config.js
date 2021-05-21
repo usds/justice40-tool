@@ -12,5 +12,14 @@ module.exports = {
   siteMetadata: {
     title: "Justice40",
   },
-  plugins: ['gatsby-plugin-scss-typescript'],
+  plugins: [{
+    resolve: 'gatsby-plugin-sass',
+    options: {
+      cssLoaderOptions: {
+        modules: {
+          exportLocalsConvention: 'camelCaseOnly'
+        }
+      }
+    }
+},],
 };
