@@ -15,10 +15,7 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
               use: loaders.null(),
             },
           ],
-        },
-        resolve: {
-          modules: [path.resolve(__dirname, "src"), "node_modules"],
-        },
+        }
       })
     }
   }
