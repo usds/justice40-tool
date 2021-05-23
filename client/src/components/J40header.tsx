@@ -1,17 +1,21 @@
 import React from 'react';
 import { GovBanner, Header, Title, PrimaryNav } from '@trussworks/react-uswds';
-import { Link } from "gatsby";
+import { useIntl, Link } from "gatsby-plugin-intl"
 
 const headerLinks = [
     <Link to="/">Home</Link>
 ];
 
 const J40Header = () => {
+    const intl = useIntl()
+    const title = intl.formatMessage({ id: "71L0pp", defaultMessage:"Justice40", description:"Title of the project" });
     return (
         <>
         <GovBanner />
         <Header>
-            <Title>Justice 40</Title>
+            <Title>
+                {title}
+            </Title>
             <PrimaryNav items={headerLinks}/>
         </Header>
         </>
