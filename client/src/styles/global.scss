@@ -1,2 +1,24 @@
 @import "~@trussworks/react-uswds/lib/uswds.css";
 @import "~@trussworks/react-uswds/lib/index.css";
+
+.floatLogoLeft {
+  width: 100%;
+  padding-left: 50%;
+}
+
+.nobreak {
+  white-space: nowrap;
+}
+
+.footerAddressTitle {
+  line-height: 2.5;
+  font-weight: bold;
+}
+
+// no way to control style of line address line items via react+trussworks so we're
+// overriding the style used.
+.usa-footer__contact-info {
+  line-height: 1.5;
+  white-space: nowrap;
+  text-align: center;
+}

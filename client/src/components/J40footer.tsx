@@ -1,17 +1,56 @@
 import React from 'react';
-import { Footer } from '@trussworks/react-uswds';
-import {Link} from 'gatsby';
-
-const footerLinks = [
-    <Link to="/">Home</Link>
-];
+import {Footer, Logo, FooterNav, Address} from '@trussworks/react-uswds';
+// @ts-ignore
+import whitehouseIcon from '../images/eop-seal.svg';
 
 const J40Footer = () => {
-    return (
-        <>
-        <Footer primary={[]} secondary={footerLinks} />
-        </>
-    );
+  return (
+    <>
+      <Footer
+        size="big"
+        primary={<></>}
+        secondary={<FooterNav
+          aria-label="Footer navigation"
+          size="big"
+          className={"nobreak"}
+          links={[
+            [
+              "Agency Partners",
+              <a href="https://www.epa.gov/">Environmental Protection Agency</a>,
+              <a href="https://www.omb.gov/">Office of Management and Budget</a>,
+              <a href="https://www.doe.gov/">Department of Energy</a>,
+              <a href="https://www.hud.gov/">Department of Housing <br/> and Urban
+                Development</a>,
+            ],
+            [
+              "More Information",
+              <a href="https://www.whitehouse.gov/">Whitehouse.gov</a>,
+              <a href="#">Accessibility Statement</a>,
+              <a href="#">Privacy, Policies, and Legal Information</a>,
+            ],
+            [<br/>,
+              <Logo
+                size="medium"
+                className={"floatLogoLeft"}
+                image={
+                  <img className={"usa-footer__logo-img"} src={whitehouseIcon} alt="Whitehouse logo"/>
+                }
+              />,
+            ],
+            [
+              <span className={"footerAddressTitle"}>Council on Environmental Quality<br /></span>,
+              <Address className={"footerAddressReadability"} items={[
+                "730 Jackson Pl NW",
+                "Washington, D.C. 20506",
+                "(202) 395-5750",
+              ]}
+              />
+            ],
+          ]}
+        />}
+      />
+    </>
+  )
 };
 
 export default J40Footer;
