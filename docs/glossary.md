@@ -22,6 +22,6 @@ Know a term and its definition that you don't see here? Make a pull request with
 | MVP | Minimum Viable Product |
 | Pull Request | Way to submit code or documentation for review on Github before it is integrated into the source code. |
 | Repository | A repository on Github is the place where source code for a system or app is published, and it has collaborative features such as issues, project boards, and pull requests. |
-| WHEJAC | White House Environment Justice Advisory Council. This is a diverse group of 25-30 Environment Justice advocates, experts, and community representatives who drive the product vision for the Climate and Economic Justice Screening Tool. |
+| WHEJAC | White House Environment Justice Advisory Council. This is a diverse group of environmenal justice advocates, experts, and community representatives who advise on the Justice40 program. |
 | YAML | Format for writing text in both a human-readable and machine-readable way. This lets us automate with files easily while still being able to interact with the text easily as people. |
 | Zenhub | Project management tool that integrates with Github. This is what we use to manage our sprint backlog and is available here: https://app.zenhub.com/workspaces/justice40-60993f6e05473d0010ec44e3/board?repos=358242767 |
