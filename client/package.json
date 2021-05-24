@@ -24,7 +24,6 @@
     "gatsby-cli": "^3.5.0",
     "gatsby-plugin-intl": "^0.3.3",
     "gatsby-plugin-sass": "^4.5.0",
-    "npm": "^7.14.0",
     "sass": "^1.33.0",
     "sass-loader": "^11.1.1"
   },
