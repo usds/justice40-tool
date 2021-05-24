@@ -17,8 +17,8 @@ const J40Footer = () => {
             [
               "Agency Partners",
               <a href="https://www.epa.gov/">Environmental Protection Agency</a>,
-              <a href="https://www.omb.gov/">Office of Management and Budget</a>,
-              <a href="https://www.doe.gov/">Department of Energy</a>,
+              <a href="https://www.whitehouse.gov/omb">Office of Management and Budget</a>,
+              <a href="https://www.energy.gov/">Department of Energy</a>,
               <a href="https://www.hud.gov/">Department of Housing and Urban
                 Development</a>,
             ],
