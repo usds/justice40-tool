@@ -51,6 +51,6 @@ const J40Footer = () => {
       />
     </>
   )
-}
+};
 
 export default J40Footer;
