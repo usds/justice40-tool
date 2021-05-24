@@ -2,8 +2,8 @@
 name: Architectural Decision Record
 about: Propose an architectural decision
 title: 'ADR: [decision here]'
-labels: 'decision-record'
-assignees: ''
+labels: ''
+assignees: esfoobar-usds, NatHillardUSDS, switzersc-usds, TomNUSDS
 
 ---
 
