@@ -12,6 +12,10 @@ Contributions are always welcome!
 
 See `CONTRIBUTING.md` for ways to get started.
 
+## Glossary
+
+Confused about a term? Heard an acronym and have no idea what it stands for? Check out [our glossary](docs/glossary.md)!
+
 ## Feedback
 
 If you have any feedback or questions, please reach out to us at justice40open@usds.gov.
