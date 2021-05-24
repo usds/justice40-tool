@@ -1,18 +1,25 @@
-@import "~@trussworks/react-uswds/lib/uswds.css";
 @import "~@trussworks/react-uswds/lib/index.css";
+@import "~@trussworks/react-uswds/lib/uswds.css";
 
-.floatLogoLeft {
+.j40FloatLogoLeft {
   width: 100%;
   padding-left: 50%;
 }
 
-.nobreak {
+.j40Footer {
+  font-family: "sans-serif";
+  font-size: 12px;
+  line-height: 24px;
+}
+
+.j40FooterAddressTitle {
+  line-height: 2.5;
+  font-weight: bold;
   white-space: nowrap;
 }
 
-.footerAddressTitle {
-  line-height: 2.5;
-  font-weight: bold;
+.j40FooterLogo {
+  max-width: 120px;
 }
 
 // no way to control style of line address line items via react+trussworks so we're

@@ -11,7 +11,7 @@ const J40Footer = () => {
         primary={<></>}
         secondary={<FooterNav
           aria-label="Footer navigation"
-          size="big"
+          size="big"   // fyi you leave this off and it silently fails... lovely
           className={"nobreak"}
           links={[
             [
@@ -19,7 +19,7 @@ const J40Footer = () => {
               <a href="https://www.epa.gov/">Environmental Protection Agency</a>,
               <a href="https://www.omb.gov/">Office of Management and Budget</a>,
               <a href="https://www.doe.gov/">Department of Energy</a>,
-              <a href="https://www.hud.gov/">Department of Housing <br/> and Urban
+              <a href="https://www.hud.gov/">Department of Housing and Urban
                 Development</a>,
             ],
             [
@@ -31,14 +31,14 @@ const J40Footer = () => {
             [<br/>,
               <Logo
                 size="medium"
-                className={"floatLogoLeft"}
+                className={"j40FloatLogoLeft"}
                 image={
-                  <img className={"usa-footer__logo-img"} src={whitehouseIcon} alt="Whitehouse logo"/>
+                  <img className={"usa-footer__logo-img j40FooterLogo"} src={whitehouseIcon} alt="Whitehouse logo"/>
                 }
               />,
             ],
             [
-              <span className={"footerAddressTitle"}>Council on Environmental Quality<br /></span>,
+              <span className={"j40FooterAddressTitle"}>Council on Environmental Quality<br/></span>,
               <Address className={"footerAddressReadability"} items={[
                 "730 Jackson Pl NW",
                 "Washington, D.C. 20506",
@@ -51,6 +51,6 @@ const J40Footer = () => {
       />
     </>
   )
-};
+}
 
 export default J40Footer;
