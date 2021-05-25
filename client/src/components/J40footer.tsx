@@ -16,29 +16,29 @@ const J40Footer = () => {
           links={[
             [
               "Agency Partners",
-              <a href="https://www.epa.gov/">Environmental Protection Agency</a>,
-              <a href="https://www.whitehouse.gov/omb">Office of Management and Budget</a>,
-              <a href="https://www.energy.gov/">Department of Energy</a>,
-              <a href="https://www.hud.gov/">Department of Housing and Urban
+              <a href="https://www.epa.gov/" target="_blank">Environmental Protection Agency</a>,
+              <a href="https://www.whitehouse.gov/omb" target="_blank">Office of Management and Budget</a>,
+              <a href="https://www.energy.gov/" target="_blank">Department of Energy</a>,
+              <a href="https://www.hud.gov/" target="_blank">Department of Housing and Urban
                 Development</a>,
             ],
             [
               "More Information",
-              <a href="https://www.whitehouse.gov/">Whitehouse.gov</a>,
+              <a href="https://www.whitehouse.gov/" target="_blank">Whitehouse.gov</a>,
               <a href="#">Accessibility Statement</a>,
               <a href="#">Privacy, Policies, and Legal Information</a>,
             ],
             [<br/>,
               <Logo
                 size="medium"
-                className={"j40FloatLogoLeft"}
+                className={"j40-logo-float-right"}
                 image={
-                  <img className={"usa-footer__logo-img j40FooterLogo"} src={whitehouseIcon} alt="Whitehouse logo"/>
+                  <img className={"usa-footer__logo-img"} src={whitehouseIcon} alt="Whitehouse logo"/>
                 }
               />,
             ],
             [
-              <span className={"j40FooterAddressTitle"}>Council on Environmental Quality<br/></span>,
+              <span>Council on Environmental Quality<br/></span>,
               <Address className={"footerAddressReadability"} items={[
                 "730 Jackson Pl NW",
                 "Washington, D.C. 20506",

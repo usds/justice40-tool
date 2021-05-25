@@ -1,24 +1,36 @@
 @import "~@trussworks/react-uswds/lib/index.css";
 @import "~@trussworks/react-uswds/lib/uswds.css";
 
-.j40FloatLogoLeft {
+.j40-logo-float-right {
   width: 100%;
   padding-left: 50%;
 }
 
-.j40Footer {
-}
-
-.j40FooterAddressTitle {
-}
-
-.j40FooterLogo {
-  max-width: 120px;
+.j40-footer-logo {
+  // max-width: 120px;   // this doubles the logo size default is 60px
 }
 
 // no way to control style of line address line items via react+trussworks so we're
 // overriding the style used.
 .usa-footer__contact-info {
-  line-height: 1.5;
-  white-space: nowrap;
+  // line-height: 1.5;     // makes the address more readable
+  // white-space: nowrap;
+}
+
+.j40-two-column {
+  overflow: hidden;
+  column-count: 2;
+  column-gap: 1em;
+  padding: 0;
+}
+
+.j40-two-column > * {
+  display: inline-flex;
+  width: 90%;
+  padding-bottom: 1.5em;
+  padding-left: 1em;
+}
+
+.j40-two-column-icons-spacing {
+  padding-right: 1em;
 }
