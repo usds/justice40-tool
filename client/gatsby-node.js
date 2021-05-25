@@ -6,16 +6,4 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   actions.setWebpackConfig({
     devtool: 'eval-source-map',
   });  
-  if (stage === "build-html" || stage === "develop-html") {
-      actions.setWebpackConfig({
-        module: {
-          rules: [
-            {
-              test: /@trussworks\/react-uswds/,
-              use: loaders.null(),
-            },
-          ],
-        }
-      })
-    }
-  }
+}

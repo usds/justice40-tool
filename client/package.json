@@ -10,9 +10,10 @@
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby develop",
-    "build": "gatsby build",
+    "build": "gatsby build --prefix-paths",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "intl:extract": "formatjs extract 'src/(pages|components)/*.tsx' --out-file src/intl/en.json",
     "intl:compile": "formatjs compile src/intl/en.json --ast --out-file compiled-lang/en.json"
   },
@@ -24,11 +25,12 @@
     "gatsby-cli": "^3.5.0",
     "gatsby-plugin-intl": "^0.3.3",
     "gatsby-plugin-sass": "^4.5.0",
+    "gh-pages": "^3.2.0",
     "sass": "^1.33.0",
     "sass-loader": "^11.1.1"
   },
   "dependencies": {
-    "@trussworks/react-uswds": "^1.17.0",
+    "@trussworks/react-uswds": "trussworks/react-uswds#kh-serverside-rendering-fix-1250",
     "gatsby": "^3.4.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
