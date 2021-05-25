@@ -1,16 +1,16 @@
 module.exports = {
-  /* 
+  /*
   This is to workaround the following error when building locally:
-  Warning: React.createElement: type is invalid -- expected a string 
+  Warning: React.createElement: type is invalid -- expected a string
   (for built-in components) or a class/function (for composite components) but got: undefined.
     at IndexPage
   We will need to fix this before running `gatsby build`
   */
   flags: {
-      DEV_SSR: false
+    DEV_SSR: false,
   },
   siteMetadata: {
-    title: "Justice40",
+    title: 'Justice40',
   },
   pathPrefix: "/justice40-tool",
   plugins: [
@@ -19,23 +19,47 @@ module.exports = {
       options: {
         cssLoaderOptions: {
           modules: {
-            exportLocalsConvention: 'camelCaseOnly'
-          }
-        }
-      }
+            exportLocalsConvention: 'camelCaseOnly',
+          },
+        },
+      },
     },
     {
-        resolve: `gatsby-plugin-intl`,
-        options: {
-          // language JSON resource path
-          path: `${__dirname}/src/intl`,
-          // supported language
-          languages: [`en`, `es`],
-          // language file path
-          defaultLanguage: `en`,
-          // option to redirect to `/en` when connecting `/`
-          redirect: true,
+      resolve: `gatsby-plugin-intl`,
+      options: {
+        // language JSON resource path
+        path: `${__dirname}/src/intl`,
+        // supported language
+        languages: [`en`, `es`],
+        // language file path
+        defaultLanguage: `en`,
+        // option to redirect to `/en` when connecting `/`
+        redirect: true,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-prettier-eslint',
+      options: {
+        prettier: {
+          patterns: [
+            // the pattern "**/*.{js,jsx,ts,tsx}" is not used because we will rely on `eslint --fix`
+            '**/*.{css,scss,less}',
+            '**/*.{json,json5}',
+            '**/*.{graphql}',
+            '**/*.{md,mdx}',
+            '**/*.{html}',
+            '**/*.{yaml,yml}',
+          ],
         },
+        eslint: {
+          patterns: '**/*.{js,jsx,ts,tsx}',
+          customOptions: {
+            fix: true,
+            cache: true,
+            version: "detect"
+          },
+        },
+      },
     },
   ],
 };
