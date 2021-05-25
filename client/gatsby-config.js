@@ -12,6 +12,7 @@ module.exports = {
   siteMetadata: {
     title: "Justice40",
   },
+  pathPrefix: "/justice40-tool",
   plugins: [
     {
       resolve: 'gatsby-plugin-sass',
