@@ -31,8 +31,10 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build --if-present
+      - name: Get directory contents
+        run: ls -R
       - name: Upload Artifact
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v2
         with:
           name: J40Static
           path: ./public
@@ -43,7 +45,7 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v2
       - name: Download Artifacts
-        uses: actions/download-artifact@master
+        uses: actions/download-artifact@v2
         with:
           name: J40Static
           path: ./public
