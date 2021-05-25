@@ -1,18 +1,8 @@
 module.exports = {
-  /*
-  This is to workaround the following error when building locally:
-  Warning: React.createElement: type is invalid -- expected a string
-  (for built-in components) or a class/function (for composite components) but got: undefined.
-    at IndexPage
-  We will need to fix this before running `gatsby build`
-  */
-  flags: {
-    DEV_SSR: false,
-  },
   siteMetadata: {
     title: 'Justice40',
   },
-  pathPrefix: "/justice40-tool",
+  pathPrefix: '/justice40-tool',
   plugins: [
     {
       resolve: 'gatsby-plugin-sass',
@@ -42,7 +32,8 @@ module.exports = {
       options: {
         prettier: {
           patterns: [
-            // the pattern "**/*.{js,jsx,ts,tsx}" is not used because we will rely on `eslint --fix`
+            // The pattern "**/*.{js,jsx,ts,tsx}" is
+            // not used because we will rely on `eslint --fix`
             '**/*.{css,scss,less}',
             '**/*.{json,json5}',
             '**/*.{graphql}',
@@ -53,10 +44,11 @@ module.exports = {
         },
         eslint: {
           patterns: '**/*.{js,jsx,ts,tsx}',
+          ignorePatterns: ['public', 'node_modules', '*scss.d.ts'],
+          failOnError: true,
           customOptions: {
             fix: true,
             cache: true,
-            version: "detect"
           },
         },
       },

@@ -8,7 +8,13 @@ Linting is a required check before merges can happen, please lint your code, for
 
 To use:
 
-1. During development: `npx gatsby develop` will automatically run prettier and eslint during development as files change, watch the console for updates
+1. During development:
+
+   1. `npx gatsby develop` will automatically run prettier and eslint during development as files change, watch the console for updates.
+   2. Alternatively, if you're using VSCode:
+      1. Install the [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) plugins
+      2. Enable `editor.formatOnSave`, and optionally `"editor.codeActionsOnSave": {"source.fixAll": true},` to apply settings on save
+
 2. Before a PR: `npm run lint:fix` can be run locally to apply auto-fixes to issues that can be fixed
 3. Before merge (automatic): `npm run lint` is run against all PRs by a github action.
 
