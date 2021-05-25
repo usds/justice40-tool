@@ -3,7 +3,7 @@ import {GovBanner, Header, Title, PrimaryNav} from '@trussworks/react-uswds';
 import {useIntl, Link} from 'gatsby-plugin-intl';
 
 const headerLinks = [
-  <Link to="/">Home</Link>,
+  <Link to="/" key="/">Home</Link>,
 ];
 
 const J40Header = () => {

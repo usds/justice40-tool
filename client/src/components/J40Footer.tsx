@@ -3,7 +3,7 @@ import {Footer} from '@trussworks/react-uswds';
 import {Link} from 'gatsby-plugin-intl';
 
 const footerLinks = [
-  <Link to="/">Home</Link>,
+  <Link to="/" key="/">Home</Link>,
 ];
 
 const J40Footer = () => {
