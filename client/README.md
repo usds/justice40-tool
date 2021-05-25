@@ -1,5 +1,19 @@
 # Justice40 Client
 
+## Linting and Formatting
+
+This project uses [ESLint](https://eslint.org/) for code linting and [Prettier](https://prettier.io/) for formatting. They are integrated via [gatsby-plugin-prettier-eslint](https://www.gatsbyjs.com/plugins/gatsby-plugin-prettier-eslint/).
+
+Linting is a required check before merges can happen, please lint your code, for the sake of consistency!
+
+To use:
+
+1. During development: `npx gatsby develop` will automatically run prettier and eslint during development as files change, watch the console for updates
+2. Before a PR: `npm run lint:fix` can be run locally to apply auto-fixes to issues that can be fixed
+3. Before merge (automatic): `npm run lint` is run against all PRs by a github action.
+
+The ruleset is simply the base ruleset + [Google](https://github.com/google/eslint-config-google).
+
 ## Localization
 
 ### About
