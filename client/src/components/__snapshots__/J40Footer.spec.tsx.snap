@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`J40Footer renders correctly 1`] = `
+Array [
+  <footer
+    className="usa-footer"
+  >
+    <div
+      className="usa-footer__primary-section"
+    />
+    <div
+      className="usa-footer__secondary-section"
+    >
+      <div
+        className="grid-container"
+      >
+        <a
+          href="/en/"
+          onClick={[Function]}
+        >
+          Home
+        </a>
+      </div>
+    </div>
+  </footer>,
+  ",",
+]
+`;
