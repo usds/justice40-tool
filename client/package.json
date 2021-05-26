@@ -39,7 +39,7 @@
     "sass-loader": "^11.1.1"
   },
   "dependencies": {
-    "@trussworks/react-uswds": "^1.17.0",
+    "@trussworks/react-uswds": "trussworks/react-uswds#kh-serverside-rendering-fix-1250",
     "gatsby": "^3.4.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
