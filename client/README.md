@@ -20,6 +20,15 @@ To use:
 
 The ruleset is simply the base ruleset + [Google](https://github.com/google/eslint-config-google).
 
+## Testing
+
+This project uses [jest](https://jestjs.io/) for unit testing, using `react-test-renderer` to output to text-based snapshot files.
+
+To run tests: `npm test`
+To rebuild snapshots when you know a component has changed: `npm run test:update`
+
+-
+
 ## Localization
 
 ### About
