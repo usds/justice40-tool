@@ -40,7 +40,6 @@ const J40Footer = () => {
             [<br/>,
               <Logo
                 size="medium"
-                className={'j40-logo-float-right'}
                 key={'logoimg'}
                 image={
                   <img className={'usa-footer__logo-img'} src={whitehouseIcon}

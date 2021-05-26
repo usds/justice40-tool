@@ -2,8 +2,9 @@ import * as React from 'react';
 import Layout from '../components/layout';
 // import {GridContainer, Grid} from '@trussworks/react-uswds';
 
-// this section seems verbose and silly
-// this inlines the svg as data:image/svg+xml ... this isnt' ideal.
+// this section seems too verbose? must be a more readable way to do this.
+// this inlines the svg as data:image/svg+xml For larger images this
+// can cause page bloat, but it should be fine here.
 // @ts-ignore
 import publicIcon from '/node_modules/uswds/dist/img/usa-icons/public.svg';
 // @ts-ignore
