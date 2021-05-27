@@ -3,7 +3,7 @@
 exports[`J40Footer renders correctly 1`] = `
 Array [
   <footer
-    className="usa-footer"
+    className="usa-footer usa-footer--big"
   >
     <div
       className="usa-footer__primary-section"
@@ -14,12 +14,202 @@ Array [
       <div
         className="grid-container"
       >
-        <a
-          href="/en/"
-          onClick={[Function]}
+        <nav
+          aria-label="Footer navigation"
+          className="usa-footer__nav nobreak"
         >
-          Home
-        </a>
+          <div
+            className="grid-row grid-gap-4"
+          >
+            <div
+              className="mobile-lg:grid-col-6 desktop:grid-col-3"
+            >
+              <section
+                className="usa-footer__primary-content usa-footer__primary-content--collapsible"
+              >
+                <h4
+                  className="usa-footer__primary-link"
+                >
+                  Agency Partners
+                </h4>
+                <ul
+                  className="usa-list usa-list--unstyled"
+                >
+                  <li
+                    className="usa-footer__secondary-link"
+                  >
+                    <a
+                      href="https://www.epa.gov/"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Environmental Protection Agency
+                    </a>
+                  </li>
+                  <li
+                    className="usa-footer__secondary-link"
+                  >
+                    <a
+                      href="https://www.whitehouse.gov/omb"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Office of Management and Budget
+                    </a>
+                  </li>
+                  <li
+                    className="usa-footer__secondary-link"
+                  >
+                    <a
+                      href="https://www.energy.gov/"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Department of Energy
+                    </a>
+                  </li>
+                  <li
+                    className="usa-footer__secondary-link"
+                  >
+                    <a
+                      href="https://www.hud.gov/"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Department of Housing and Urban Development
+                    </a>
+                  </li>
+                </ul>
+              </section>
+            </div>
+            <div
+              className="mobile-lg:grid-col-6 desktop:grid-col-3"
+            >
+              <section
+                className="usa-footer__primary-content usa-footer__primary-content--collapsible"
+              >
+                <h4
+                  className="usa-footer__primary-link"
+                >
+                  More Information
+                </h4>
+                <ul
+                  className="usa-list usa-list--unstyled"
+                >
+                  <li
+                    className="usa-footer__secondary-link"
+                  >
+                    <a
+                      href="https://www.whitehouse.gov/"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Whitehouse.gov
+                    </a>
+                  </li>
+                  <li
+                    className="usa-footer__secondary-link"
+                  >
+                    <a
+                      href="#"
+                    >
+                      Accessibility Statement
+                    </a>
+                  </li>
+                  <li
+                    className="usa-footer__secondary-link"
+                  >
+                    <a
+                      href="#"
+                    >
+                      Privacy, Policies, and Legal Information
+                    </a>
+                  </li>
+                </ul>
+              </section>
+            </div>
+            <div
+              className="mobile-lg:grid-col-6 desktop:grid-col-3"
+            >
+              <section
+                className="usa-footer__primary-content usa-footer__primary-content--collapsible"
+              >
+                <h4
+                  className="usa-footer__primary-link"
+                >
+                  <br />
+                </h4>
+                <ul
+                  className="usa-list usa-list--unstyled"
+                >
+                  <li
+                    className="usa-footer__secondary-link"
+                  >
+                    <div
+                      className="usa-footer__logo grid-row mobile-lg:grid-col-6 mobile-lg:grid-gap-2"
+                      data-testid="footerLogo"
+                    >
+                      <div
+                        className="mobile-lg:grid-col-auto"
+                      >
+                        <img
+                          alt="Whitehouse logo"
+                          className="usa-footer__logo-img"
+                          src="test-file-stub"
+                        />
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </section>
+            </div>
+            <div
+              className="mobile-lg:grid-col-6 desktop:grid-col-3"
+            >
+              <section
+                className="usa-footer__primary-content usa-footer__primary-content--collapsible"
+              >
+                <h4
+                  className="usa-footer__primary-link"
+                >
+                  Council on Environmental Quality
+                  <br />
+                </h4>
+                <ul
+                  className="usa-list usa-list--unstyled"
+                >
+                  <li
+                    className="usa-footer__secondary-link"
+                  >
+                    <address
+                      className="usa-footer__address footerAddressReadability"
+                    >
+                      <div
+                        className="usa-footer__contact-info grid-row grid-gap"
+                      >
+                        <div
+                          className=""
+                        >
+                          730 Jackson Pl NW
+                        </div>
+                        <div
+                          className=""
+                        >
+                          Washington, D.C. 20506
+                        </div>
+                        <div
+                          className=""
+                        >
+                          (202) 395-5750
+                        </div>
+                      </div>
+                    </address>
+                  </li>
+                </ul>
+              </section>
+            </div>
+          </div>
+        </nav>
       </div>
     </div>
   </footer>,

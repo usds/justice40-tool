@@ -1,2 +1,20 @@
-@import "~@trussworks/react-uswds/lib/uswds.css";
 @import "~@trussworks/react-uswds/lib/index.css";
+@import "~@trussworks/react-uswds/lib/uswds.css";
+
+.j40-two-column {
+  overflow: hidden;
+  column-count: 2;
+  column-gap: 1em;
+  padding: 0;
+}
+
+.j40-two-column > * {
+  display: inline-flex;
+  width: 90%;
+  padding-bottom: 1.5em;
+  padding-left: 1em;
+}
+
+.j40-two-column-icons-spacing {
+  padding-right: 1em;
+}
