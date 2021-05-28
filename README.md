@@ -8,7 +8,9 @@ Welcome to the Justice40 Open Source Community! This repo contains the code, pro
 The Justice40 initiative and screening tool were announced in an [Executive Order](https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/27/executive-order-on-tackling-the-climate-crisis-at-home-and-abroad/) in January 2021, with the goal to launch an MVP of the tool by July 27, 2021. This tool will include interactive maps and an initial draft scorecard which federal agencies can use to prioritize historically overburdened and underserved communities for benefits in their programs.
 
 ## Core team
-The core Justice40 team building this tool is a small group of designers, developers, and product managers from the US Digital Service in partnership with the Council on Environmental Quality (CEQ). An up-to-date list of core team members can be found in [MAINTAINERS.md](MAINTAINERS.md).
+The core Justice40 team building this tool is a small group of designers, developers, and product managers from the US Digital Service in partnership with the Council on Environmental Quality (CEQ). 
+
+An up-to-date list of core team members can be found in [MAINTAINERS.md](MAINTAINERS.md). The engineering members of the core team who maintain the code in this repo are listed in [.github/CODEOWNERS](.github/CODEOWNERS).
 
 ## Community
 The Justice40 team is taking a community-first and open source approach to the product development of this tool. We believe government software should be made in the open and be built and licensed such that anyone can take the code, run it themselves without paying money to third parties or using proprietary software, and use it as they will. 
