@@ -1,9 +1,18 @@
-Shelby Switzer - switzersc-usds
-Nat Hillard - NatHillardUSDS
-Jorge Escobar - esfoobar-usds
-Lucas Brown - lucasmbrown-usds
-Tom Nielsen - TomNUSDS
-Katherine Mlkia - katherinedm-usds
-Kameron Kerger - KameronKerger
-Jane Lien - janelien
-Beth Mattern - BethMattern
+# Justice40 Project Maintainers
+## Project Leadership
+- Lucas Brown - lucasmbrown-usds
+
+## Engineering
+(See [CODEOWNERS file](./github/CODEOWNERS) for definitive list
+- Shelby Switzer - switzersc-usds - engineering lead
+- Nat Hillard - NatHillardUSDS
+- Jorge Escobar - esfoobar-usds
+- Tom Nielsen - TomNUSDS
+
+## Product
+- Katherine Mlkia - katherinedm-usds
+- Beth Mattern - BethMattern
+
+## Design
+- Kameron Kerger - KameronKerger
+- Jane Lien - janelien
