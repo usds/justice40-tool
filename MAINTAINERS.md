@@ -10,7 +10,7 @@
 - Tom Nielsen - TomNUSDS
 
 ## Product
-- Katherine Mlkia - katherinedm-usds
+- Katherine Mlika - katherinedm-usds
 - Beth Mattern - BethMattern
 
 ## Design
