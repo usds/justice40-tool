@@ -23,6 +23,8 @@
   },
   "devDependencies": {
     "@formatjs/cli": "^4.2.15",
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.7",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.3.1",
     "@types/react": "^17.0.1",
