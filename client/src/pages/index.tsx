@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Layout from '../components/layout';
+import {Helmet} from 'react-helmet';
 // import {GridContainer, Grid} from '@trussworks/react-uswds';
 
 // this section seems too verbose? must be a more readable way to do this.
@@ -41,6 +42,10 @@ const IndexPage = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Justice40</title>
+      </Helmet>
 
       <main id="main-content" role="main">
         <section className="grid-container">
