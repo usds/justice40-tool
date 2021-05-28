@@ -21,7 +21,7 @@ const J40Header = () => {
 
       <GovBanner />
       <Header>
-        <Title>
+        <Title className={'usa-hero__heading j40-title'}>
           {title}
         </Title>
         <PrimaryNav items={headerLinks}/>
