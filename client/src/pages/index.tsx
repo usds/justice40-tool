@@ -41,7 +41,6 @@ const IndexPage = () => {
 
   return (
     <Layout>
-
       <main id="main-content" role="main">
         <section className="grid-container">
           <div className="grid-row grid-gap">

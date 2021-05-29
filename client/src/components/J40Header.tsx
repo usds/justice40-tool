@@ -1,6 +1,7 @@
 import React from 'react';
 import {GovBanner, Header, Title, PrimaryNav} from '@trussworks/react-uswds';
 import {useIntl, Link} from 'gatsby-plugin-intl';
+import {Helmet} from 'react-helmet';
 
 const headerLinks = [
   <Link to="/" key="/">Home</Link>,
@@ -13,9 +14,14 @@ const J40Header = () => {
     description: 'Title of the project'});
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{title}</title>
+      </Helmet>
+
       <GovBanner />
       <Header>
-        <Title>
+        <Title className={'usa-hero__heading j40-title'}>
           {title}
         </Title>
         <PrimaryNav items={headerLinks}/>
