@@ -1,5 +1,4 @@
-import {cy} from 'local-cypress';
-
+// / <reference types="Cypress" />
 
 describe('Translation Test', () => {
   it('Checks that locales have correct content', () => {
