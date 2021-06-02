@@ -1,5 +1,9 @@
 import React from 'react';
-import {GovBanner, Header, Title, PrimaryNav} from '@trussworks/react-uswds';
+import {GovBanner,
+  Header,
+  Title,
+  PrimaryNav,
+  SiteAlert} from '@trussworks/react-uswds';
 import {useIntl, Link} from 'gatsby-plugin-intl';
 import {Helmet} from 'react-helmet';
 
@@ -20,6 +24,15 @@ const J40Header = () => {
       </Helmet>
 
       <GovBanner />
+      <SiteAlert variant="emergency"
+        heading="Work In Progress">
+        <p>This site is still a work in
+          progress and has not been released.
+          Please
+        <a href="mailto:justice40open@usds.gov"> contact the J40 Team </a>
+          for feedback
+        </p>
+      </SiteAlert>
       <Header>
         <Title className={'usa-hero__heading j40-title'}>
           {title}
