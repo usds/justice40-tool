@@ -7,6 +7,7 @@
   "keywords": [
     "gatsby"
   ],
+  "license": "CC0-1.0",
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby develop",
@@ -14,6 +15,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "jest",
+    "licenses": "license-checker --production --onlyAllow 'Apache-2.0;BSD;BSD-2-Clause;BSD-3-Clause;CC0-1.0;CC-BY-3.0;CC-BY-4.0;ISC;MIT;Public Domain;Unlicense;UNLICENSED;ODC-By-1.0;WTFPL;MPL-2.0'",
     "test:update": "npm test -- -u",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "lint": "eslint './src/**/*.{ts,tsx}' --ignore-pattern node_modules/ --ignore-pattern public --ignore-pattern *scss.d.ts",
@@ -43,6 +45,7 @@
     "gh-pages": "^3.2.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.0.1",
+    "license-checker": "^25.0.1",
     "prettier": "^2.3.0",
     "react-test-renderer": "^17.0.2",
     "sass": "^1.33.0",
