@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@formatjs/cli": "^4.2.15",
+    "@types/react-helmet": "^6.1.1",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.3.1",
     "@types/react": "^17.0.1",
@@ -35,6 +36,7 @@
     "eslint": "^7.27.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-react": "^7.23.2",
+    "gatsby": "^3.4.1",
     "gatsby-cli": "^3.5.0",
     "gatsby-plugin-intl": "^0.3.3",
     "gatsby-plugin-prettier-eslint": "^1.0.6",
@@ -51,8 +53,6 @@
   },
   "dependencies": {
     "@trussworks/react-uswds": "github:nathillardusds/react-uswds#nathillardusds/ssr",
-    "@types/react-helmet": "^6.1.1",
-    "gatsby": "^3.4.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
