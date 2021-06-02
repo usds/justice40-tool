@@ -7,8 +7,6 @@ import Layout from '../components/layout';
 // this inlines the svg as data:image/svg+xml For larger images this
 // can cause page bloat, but it should be fine here.
 // @ts-ignore
-import publicIcon from '/node_modules/uswds/dist/img/usa-icons/public.svg';
-// @ts-ignore
 import chatIcon from '/node_modules/uswds/dist/img/usa-icons/chat.svg';
 // @ts-ignore
 import githubIcon from '/node_modules/uswds/dist/img/usa-icons/github.svg';
@@ -29,7 +27,6 @@ import washIcon from '/node_modules/uswds/dist/img/usa-icons/wash.svg';
 // markup
 const IndexPage = () => {
   const readMoreList: (any | string)[][] = [
-    [publicIcon, 'Climate change'],
     [ecoIcon, 'Clean energy and energy efficiency'],
     [busIcon, 'Clean transit'],
     [homeIcon, 'Affordable and sustainable housing'],
@@ -42,14 +39,13 @@ const IndexPage = () => {
     <Layout>
       <main id="main-content" role="main">
         <section className="grid-container usa-section">
-          <div className="grid-row grid-gap-4">
+          <div className="grid-row grid-gap-2">
 
             <div className="desktop:grid-col">
               <div className="grid-row grid-gap">
                 <div
-                  className="desktop:grid-col-10 \
-                            usa-prose text-asset-container">
-                  <h2>Our Team</h2>
+                  className="usa-prose text-asset-container">
+                  <h2>About Justice40</h2>
                   <p>
                     In an effort to address historical environmental injustices,
                     President Biden created the Justice40 Initiative on January
@@ -80,14 +76,15 @@ const IndexPage = () => {
                     'executive-order-on-tackling-the-climate-' +
                     'crisis-at-home-and-abroad/'}
                       target={'_blank'}
-                      rel={'noreferrer'}
-                    >Executive Order on Tackling the Climate Crisis at Home and
+                      rel={'noreferrer'}>
+                    Executive Order on Tackling the Climate Crisis at Home and
                     Abroad.</a>
                   </p>
                 </div>
               </div>
 
               <div className="tablet:grid-col-10">
+                <h4>Areas of Focus</h4>
                 <ul className="usa-icon-list j40-two-column">
                   {readMoreList.map((item, index) => {
                     return (
@@ -114,7 +111,7 @@ const IndexPage = () => {
                 <div
                   className="desktop:grid-col-10 \
                             usa-prose text-asset-container">
-                  <h3>A Transparent, Community-First Approach</h3>
+                  <h4>A Transparent, Community-First Approach</h4>
 
                   <p>
                     Successful initiatives are guided by direct input from the
@@ -160,7 +157,7 @@ const IndexPage = () => {
             {/* aside*/}
             <aside
               aria-labelledby="left-sidebar"
-              className="desktop:grid-col-2 usa-prose grid-gap"
+              className="desktop:grid-col-3 usa-prose grid-gap j40-aside"
               id="left-sidebar">
               <h2 className={'usa-graphic-list__heading'}>Get Involved</h2>
               <h3>

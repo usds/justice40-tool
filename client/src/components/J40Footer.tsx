@@ -64,9 +64,11 @@ const J40Footer = () => {
                     <img
                       className={'usa-footer__logo-img'}
                       src={whitehouseIcon}
-                      alt={'Whitehouse logo'} />
+                      alt={'Whitehouse logo'}/>
                   }
-                  heading={<p className="usa-footer__logo-heading">
+                  heading={<p
+                    className={'usa-footer__logo-heading ' +
+                    ' j40-footer-logo-heading'}>
                     Council on Environmental Quality</p>}
                 />
               </>,

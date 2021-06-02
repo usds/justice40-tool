@@ -1,10 +1,10 @@
 import React from 'react';
 import {GovBanner, Header, Title, PrimaryNav} from '@trussworks/react-uswds';
-import {useIntl, Link} from 'gatsby-plugin-intl';
+import {useIntl} from 'gatsby-plugin-intl';
 import {Helmet} from 'react-helmet';
 
 const headerLinks = [
-  <Link to="/" key="/">Home</Link>,
+  <></>,
 ];
 
 const J40Header = () => {
@@ -22,11 +22,13 @@ const J40Header = () => {
       </Helmet>
 
       <GovBanner/>
-      <Header>
-        <Title className={'usa-hero__heading j40-title'}>
-          {title}
-        </Title>
-        <PrimaryNav items={headerLinks}/>
+      <Header className={'j40-header'} basic={true} role={'banner'}>
+        <div className="usa-nav-container">
+          <div className="usa-navbar">
+            <Title className={'j40-title'}>{title}</Title>
+          </div>
+          <PrimaryNav items={headerLinks}/>
+        </div>
       </Header>
     </>
   );

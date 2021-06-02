@@ -137,7 +137,7 @@ Array [
                 <h4
                   className="usa-footer__primary-link"
                 >
-                  <br />
+                  Have a question about government services?
                 </h4>
                 <ul
                   className="usa-list usa-list--unstyled"
@@ -145,20 +145,11 @@ Array [
                   <li
                     className="usa-footer__secondary-link"
                   >
-                    <div
-                      className="usa-footer__logo grid-row mobile-lg:grid-col-6 mobile-lg:grid-gap-2"
-                      data-testid="footerLogo"
+                    <a
+                      href="#"
                     >
-                      <div
-                        className="mobile-lg:grid-col-auto"
-                      >
-                        <img
-                          alt="Whitehouse logo"
-                          className="usa-footer__logo-img"
-                          src="test-file-stub"
-                        />
-                      </div>
-                    </div>
+                      Find a contact at USA.gov
+                    </a>
                   </li>
                 </ul>
               </section>
@@ -172,8 +163,29 @@ Array [
                 <h4
                   className="usa-footer__primary-link"
                 >
-                  Council on Environmental Quality
-                  <br />
+                  <div
+                    className="usa-footer__logo grid-row grid-gap-2 j40-footer-logo"
+                    data-testid="footerLogo"
+                  >
+                    <div
+                      className="grid-col-auto"
+                    >
+                      <img
+                        alt="Whitehouse logo"
+                        className="usa-footer__logo-img"
+                        src="test-file-stub"
+                      />
+                    </div>
+                    <div
+                      className="grid-col-auto"
+                    >
+                      <p
+                        className="usa-footer__logo-heading"
+                      >
+                        Council on Environmental Quality
+                      </p>
+                    </div>
+                  </div>
                 </h4>
                 <ul
                   className="usa-list usa-list--unstyled"
@@ -182,7 +194,7 @@ Array [
                     className="usa-footer__secondary-link"
                   >
                     <address
-                      className="usa-footer__address footerAddressReadability"
+                      className="usa-footer__address j40-address-readability"
                     >
                       <div
                         className="usa-footer__contact-info grid-row grid-gap"
