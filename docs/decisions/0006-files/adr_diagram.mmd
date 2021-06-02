@@ -1,0 +1,15 @@
+graph TB
+    Start -- Create Issue with ADR Template --> DR["Draft"]
+    DR --> RD{"Ready for Discussion?"}
+    RD --> |Yes - Maintainer Adds Ready for Discussion label| DI["In Discussion"]
+    RD --> |No - Iterate| DR
+    DI -- Discuss in Ticket + wait for comment period to expire --> C{Consensus}
+    C --> |Yes| PR["Pull Request"]
+    C --> |No| A{Concerns Addressed?}
+    A --> |Yes| PR
+    A --> |No| IP["In Person Discussion"]
+    IP --> O{Voting Outcome}    
+    O --> |Accepted - add label | PR
+    O --> |Rejected - add label | PR
+    PR --> PRP["Standard PR Process"]
+    PRP --> Close
