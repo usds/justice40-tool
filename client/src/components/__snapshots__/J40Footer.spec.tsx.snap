@@ -180,7 +180,7 @@ Array [
                       className="grid-col-auto"
                     >
                       <p
-                        className="usa-footer__logo-heading"
+                        className="usa-footer__logo-heading  j40-footer-logo-heading"
                       >
                         Council on Environmental Quality
                       </p>
