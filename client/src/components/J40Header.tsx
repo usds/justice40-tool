@@ -24,13 +24,13 @@ const J40Header = () => {
       </Helmet>
 
       <GovBanner />
-      <SiteAlert variant="emergency"
-        heading="Work In Progress">
-        <p>This site is still a work in
-          progress and has not been released.
-          Please
-        <a href="mailto:justice40open@usds.gov"> contact the J40 Team </a>
-          for feedback
+      <SiteAlert variant="info"
+        heading="Welcome to Justice40's Temporary Home">
+        <p>
+        While Justice40 gets up and running,
+        we are using GitHub Pages as a temporary website host.
+        To learn more about GitHub Pages, click
+          <a href="https://pages.github.com/"> here </a>
         </p>
       </SiteAlert>
       <Header>
