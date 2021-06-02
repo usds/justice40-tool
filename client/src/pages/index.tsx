@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Layout from '../components/layout';
+
 // import {GridContainer, Grid} from '@trussworks/react-uswds';
 
 // this section seems too verbose? must be a more readable way to do this.
@@ -19,11 +20,9 @@ import busIcon from '/node_modules/uswds/dist/img/usa-icons/directions_bus.svg';
 import homeIcon from '/node_modules/uswds/dist/img/usa-icons/home.svg';
 // @ts-ignore
 import groupsIcon from '/node_modules/uswds/dist/img/usa-icons/groups.svg';
-// todo: fix svg overlay
+import pollutionIcon // @ts-ignore
+  from '/node_modules/uswds/dist/img/usa-icons/severe_weather.svg';
 // @ts-ignore
-import pollutionIcon from '/node_modules/uswds/dist/img/usa-icons/warning.svg';
-// @ts-ignore
-// eslint-disable-next-line max-len
 import washIcon from '/node_modules/uswds/dist/img/usa-icons/wash.svg';
 
 
@@ -42,8 +41,8 @@ const IndexPage = () => {
   return (
     <Layout>
       <main id="main-content" role="main">
-        <section className="grid-container">
-          <div className="grid-row grid-gap">
+        <section className="grid-container usa-section">
+          <div className="grid-row grid-gap-4">
 
             <div className="desktop:grid-col">
               <div className="grid-row grid-gap">
@@ -75,8 +74,15 @@ const IndexPage = () => {
 
                   <p>
                     Read more about the Justice40 Initiative in President
-                    Biden’s Executive Order on Tackling the Climate Crisis at
-                    Home and Abroad.
+                    Biden’s <a
+                      href={'https://www.whitehouse.gov/briefing-room/' +
+                    'presidential-actions/2021/01/27/' +
+                    'executive-order-on-tackling-the-climate-' +
+                    'crisis-at-home-and-abroad/'}
+                      target={'_blank'}
+                      rel={'noreferrer'}
+                    >Executive Order on Tackling the Climate Crisis at Home and
+                    Abroad.</a>
                   </p>
                 </div>
               </div>
@@ -112,80 +118,49 @@ const IndexPage = () => {
 
                   <p>
                     Successful initiatives are guided by direct input from the
-                    communities they are serving. CEQ
-                    commits
-                    to transparency, inclusivity, and iteration in building this
-                    screening tool.
+                    communities they are serving. CEQ commits to transparency,
+                    inclusivity, and iteration in building this screening tool.
                   </p>
 
                   <p>
-                    Transparent: The code and data behind the screening tool are
-                    open source, meaning it is available
-                    for the public to review and contribute to. This tool is
-                    being developed publicly so that
-                    communities,
-                    academic experts, and anyone who’s interested can be
-                    involved in the tool-building process.
+                    <i>Transparent:</i> The code and data behind the screening
+                    tool are open source, meaning it is available for the public
+                    to review and contribute to. This tool is being developed
+                    publicly so that communities, academic experts, and anyone
+                    who’s interested can be involved in the tool-building
+                    process.
                   </p>
 
                   <p>
-                    Inclusive: Many areas which lack investments also lack
-                    environmental data and would be overlooked
-                    using available environmental data. CEQ is actively reaching
-                    out to groups that have historically
-                    been excluded from decision-making, such as groups in rural
-                    and tribal areas, to understand their
-                    needs
-                    and ask for their input.
+                    <i>Inclusive:</i> Many areas which lack investments also
+                    lack environmental data and would be overlooked using
+                    available environmental data. CEQ is actively reaching out
+                    to groups that have historically been excluded from
+                    decision-making, such as groups in rural and tribal areas,
+                    to understand their needs and ask for their input.
                   </p>
 
                   <p>
-                    Iterative: The initial community prioritization list
-                    provided by the screening tool is the
-                    beginning
-                    of a collaborative process in score refinement, rather than
-                    a final answer. CEQ has received
-                    recommendations on data sets from community interviews, the
-                    White House Environmental Justice
-                    Advisory Council, and through public comment, but
-                    establishing a score that is truly
-                    representative
-                    will be a long-term, ongoing process. As communities submit
-                    feedback and recommendations, CEQ will
-                    continue to improve the tools being built and the processes
-                    for stakeholder and public engagement.
+                    <i>Iterative:</i> The initial community prioritization list
+                    provided by the screening tool is the beginning of a
+                    collaborative process in score refinement, rather than a
+                    final answer. CEQ has received recommendations on data sets
+                    from community interviews, the White House Environmental
+                    Justice Advisory Council, and through public comment, but
+                    establishing a score that is truly representative will be a
+                    long-term, ongoing process. As communities submit feedback
+                    and recommendations, CEQ will continue to improve the tools
+                    being built and the processes for stakeholder and public
+                    engagement.
                   </p>
                 </div>
               </div>
-
-              <div className="grid-row grid-gap">
-                <div
-                  className="desktop:grid-col-10 \
-                            usa-prose text-asset-container">
-                  <h3>Timeline</h3>
-                  <p>
-                    [timeline image here]
-                  </p>
-
-                  <p>
-                    Continuously engage with stakeholders and community members
-                    to get feedback on the screening tool,
-                    scoring, and overall process.
-                  </p>
-
-                  <p>
-                    Continuously source data that meets data principles as
-                    defined through community input.
-                  </p>
-                </div>
-              </div>
-
             </div>
 
             {/* aside*/}
             <aside
               aria-labelledby="left-sidebar"
-              className="desktop:grid-col-2 usa-prose"
+              className="desktop:grid-col-2 usa-prose grid-gap"
               id="left-sidebar">
               <h2 className={'usa-graphic-list__heading'}>Get Involved</h2>
               <h3>
@@ -195,8 +170,7 @@ const IndexPage = () => {
                 <br/>
                 Send Feedback
               </h3>
-              <p>Have ideas about how to
-                acknowledge the on-the-ground
+              <p>Have ideas about how to acknowledge the on-the-ground
                 experiences of your community?
               </p>
               Email: <a href="mailto: justice40open@usds.gov">
@@ -210,13 +184,17 @@ const IndexPage = () => {
                 Join the open source community</h3>
               <p>
                 Justice40’s code is open source, which means it is available for
-                the public to view and contribute.
-                Anyone can view and contribute on GitHub.
+                the public to view and contribute. Anyone can view and
+                contribute on GitHub.
               </p>
               <p>
-                <a href={'https://github.com/usds/justice40-tool'}>Check it out
-                  on GitHub</a></p>
-
+                <a
+                  href={'https://github.com/usds/justice40-tool/' +
+                  'crisis-at-home-and-abroad/'}
+                  target={'_blank'}
+                  rel={'noreferrer'}
+                  key={'github3'}>Check it out on GitHub</a>
+              </p>
             </aside>
           </div>
 

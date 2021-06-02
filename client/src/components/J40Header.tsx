@@ -9,17 +9,19 @@ const headerLinks = [
 
 const J40Header = () => {
   const intl = useIntl();
-  const title = intl.formatMessage({id: '71L0pp',
+  const title = intl.formatMessage({
+    id: '71L0pp',
     defaultMessage: 'Justice40',
-    description: 'Title of the project'});
+    description: 'Title of the project',
+  });
   return (
     <>
       <Helmet>
-        <meta charSet="utf-8" />
+        <meta charSet="utf-8"/>
         <title>{title}</title>
       </Helmet>
 
-      <GovBanner />
+      <GovBanner/>
       <Header>
         <Title className={'usa-hero__heading j40-title'}>
           {title}

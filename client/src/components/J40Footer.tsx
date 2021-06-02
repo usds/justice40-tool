@@ -16,47 +16,71 @@ const J40Footer = () => {
           links={[
             [
               'Agency Partners',
-              <a href="https://www.epa.gov/" target="_blank" rel="noreferrer"
+              <a
+                href={'https://www.epa.gov/'}
+                target={'_blank'}
+                rel={'noreferrer'}
                 key={'epalink'}>Environmental Protection Agency</a>,
-              <a href="https://www.whitehouse.gov/omb" target="_blank"
-                rel="noreferrer" key={'whitehouselink'}>Office of Management
+              <a
+                href={'https://www.whitehouse.gov/omb'}
+                target={'_blank'}
+                rel={'noreferrer'}
+                key={'whitehouselink'}>Office of Management
                 and Budget</a>,
-              <a href="https://www.energy.gov/" target="_blank" rel="noreferrer"
+              <a
+                href={'https://www.energy.gov/'}
+                target={'_blank'}
+                rel={'noreferrer'}
                 key={'energylink'}>Department of Energy</a>,
-              <a href="https://www.hud.gov/" target="_blank" rel="noreferrer"
+              <a
+                href={'https://www.hud.gov/'}
+                target={'_blank'}
+                rel={'noreferrer'}
                 key={'hudlink'}>Department of Housing and Urban
                 Development</a>,
             ],
             [
               'More Information',
-              <a href="https://www.whitehouse.gov/" target="_blank"
-                rel="noreferrer"
+              <a
+                href={'https://www.whitehouse.gov/'}
+                target={'_blank'}
+                rel={'noreferrer'}
                 key={'whitehouselink2'}>Whitehouse.gov</a>,
               <a href="#" key={'accessibilitylink'}>Accessibility Statement</a>,
               <a href="#" key={'privacylink'}>Privacy, Policies, and Legal
                 Information</a>,
             ],
-            // eslint-disable-next-line react/jsx-key
-            [<br/>,
-              <Logo
-                size="medium"
-                key={'logoimg'}
-                image={
-                  <img className={'usa-footer__logo-img'} src={whitehouseIcon}
-                    alt="Whitehouse logo"/>
-                }
-              />,
+            [
+              'Have a question about government services?',
+              <a href="#" key={'privacylink'}>Find a contact at USA.gov</a>,
             ],
             [
-              <>Council on Environmental Quality<br/></>,
-              <Address className={'footerAddressReadability'}
-                key={'footeraddress'}
-                items={[
-                  '730 Jackson Pl NW',
-                  'Washington, D.C. 20506',
-                  '(202) 395-5750',
-                ]}
-              />,
+              <>
+                <Logo
+                  size="slim"
+                  key={'logoimg'}
+                  className={'j40-footer-logo'}
+                  image={
+                    <img
+                      className={'usa-footer__logo-img'}
+                      src={whitehouseIcon}
+                      alt={'Whitehouse logo'} />
+                  }
+                  heading={<p className="usa-footer__logo-heading">
+                    Council on Environmental Quality</p>}
+                />
+              </>,
+              <>
+                <Address
+                  className={'j40-address-readability'}
+                  key={'footeraddress'}
+                  items={[
+                    '730 Jackson Pl NW',
+                    'Washington, D.C. 20506',
+                    '(202) 395-5750',
+                  ]}
+                />
+              </>,
             ],
           ]}
         />}
