@@ -37,6 +37,8 @@ jobs:
         run: npm run lint
       - name: Test
         run: npm test
+      - name: Check for security vulnerabilities
+        run: npm audit --production
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
