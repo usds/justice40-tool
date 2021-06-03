@@ -21,7 +21,31 @@
   max-width: revert;
 }
 
+
+.j40-header {
+  background-color: #112F4E; /* todo: move color to theme */
+  color: white;
+}
+
 .j40-title {
-  padding: 2em;
+  font-size: xx-large;
+}
+
+.j40-aside {
+  background-color: #EFF6FB;
+}
+
+.j40-footer-logo {
+  display: inline-block;
+  text-align: center;
+}
+
+.j40-footer-logo-heading {
+
+}
+
+.j40-address-readability {
+  display: inline-block;
+  line-height: 1.5 !important;
   text-align: center;
 }
