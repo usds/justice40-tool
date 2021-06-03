@@ -137,7 +137,7 @@ exports[`J40Footer renders correctly 1`] = `
                 <h4
                   class="usa-footer__primary-link"
                 >
-                  <br />
+                  Have a question about government services?
                 </h4>
                 <ul
                   class="usa-list usa-list--unstyled"
@@ -145,20 +145,11 @@ exports[`J40Footer renders correctly 1`] = `
                   <li
                     class="usa-footer__secondary-link"
                   >
-                    <div
-                      class="usa-footer__logo grid-row mobile-lg:grid-col-6 mobile-lg:grid-gap-2"
-                      data-testid="footerLogo"
+                    <a
+                      href="#"
                     >
-                      <div
-                        class="mobile-lg:grid-col-auto"
-                      >
-                        <img
-                          alt="Whitehouse logo"
-                          class="usa-footer__logo-img"
-                          src="test-file-stub"
-                        />
-                      </div>
-                    </div>
+                      Find a contact at USA.gov
+                    </a>
                   </li>
                 </ul>
               </section>
@@ -172,8 +163,29 @@ exports[`J40Footer renders correctly 1`] = `
                 <h4
                   class="usa-footer__primary-link"
                 >
-                  Council on Environmental Quality
-                  <br />
+                  <div
+                    class="usa-footer__logo grid-row grid-gap-2 j40-footer-logo"
+                    data-testid="footerLogo"
+                  >
+                    <div
+                      class="grid-col-auto"
+                    >
+                      <img
+                        alt="Whitehouse logo"
+                        class="usa-footer__logo-img"
+                        src="test-file-stub"
+                      />
+                    </div>
+                    <div
+                      class="grid-col-auto"
+                    >
+                      <p
+                        class="usa-footer__logo-heading  j40-footer-logo-heading"
+                      >
+                        Council on Environmental Quality
+                      </p>
+                    </div>
+                  </div>
                 </h4>
                 <ul
                   class="usa-list usa-list--unstyled"
@@ -182,7 +194,7 @@ exports[`J40Footer renders correctly 1`] = `
                     class="usa-footer__secondary-link"
                   >
                     <address
-                      class="usa-footer__address footerAddressReadability"
+                      class="usa-footer__address j40-address-readability"
                     >
                       <div
                         class="usa-footer__contact-info grid-row grid-gap"
