@@ -1,0 +1,19 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    -   id: check-yaml
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+-   repo: https://github.com/psf/black
+    rev: 21.5b1  # change this to the most recent stable release
+    hooks:
+    -   id: black
+-   repo: https://gitlab.com/pycqa/flake8
+    rev: 3.9.2  # change this to the most recent stable release
+    hooks:
+    - id: flake8
+-   repo: https://github.com/pycqa/pylint
+    rev: pylint-2.6.0
+    hooks:
+    -   id: pylint
