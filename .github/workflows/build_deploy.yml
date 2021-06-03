@@ -35,6 +35,8 @@ jobs:
         run: ls -la public
       - name: Lint
         run: npm run lint
+      - name: License Check
+        run: npm run licenses
       - name: Test
         run: npm test
       - name: Check for security vulnerabilities

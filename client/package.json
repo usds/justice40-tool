@@ -7,6 +7,7 @@
   "keywords": [
     "gatsby"
   ],
+  "license": "CC0-1.0",
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby develop",
@@ -16,6 +17,7 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "test": "jest",
+    "licenses": "license-checker --production --onlyAllow 'Apache-2.0;BSD;BSD-2-Clause;BSD-3-Clause;CC0-1.0;CC-BY-3.0;CC-BY-4.0;ISC;MIT;Public Domain;Unlicense;UNLICENSED;ODC-By-1.0;WTFPL;MPL-2.0'",
     "test:e2e": "start-server-and-test develop http://localhost:8000 cy:open",
     "test:e2e:ci": "start-server-and-test develop http://localhost:8000 cy:run",
     "test:update": "npm test -- -u",
@@ -56,6 +58,7 @@
     "gh-pages": "^3.2.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.0.1",
+    "license-checker": "^25.0.1",
     "prettier": "^2.3.0",
     "react-test-renderer": "^17.0.2",
     "sass": "^1.33.0",
