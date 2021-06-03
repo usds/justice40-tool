@@ -1,8 +1,11 @@
 import React from 'react';
-import {GovBanner, Header, Title, PrimaryNav} from '@trussworks/react-uswds';
+import {GovBanner,
+  Header,
+  Title,
+  PrimaryNav,
+  SiteAlert} from '@trussworks/react-uswds';
 import {useIntl} from 'gatsby-plugin-intl';
 import {Helmet} from 'react-helmet';
-
 const headerLinks = [
   <></>,
 ];
@@ -20,7 +23,16 @@ const J40Header = () => {
         <meta charSet="utf-8"/>
         <title>{title}</title>
       </Helmet>
-
+      <SiteAlert
+        variant="info"
+        heading="Welcome to Justice40's Temporary Home">
+        <p>
+        While Justice40 gets up and running,
+        we are using GitHub Pages as a temporary website host. <br/>
+        To learn more about GitHub Pages, click &nbsp;
+          <a href="https://pages.github.com/">here</a>.
+        </p>
+      </SiteAlert>
       <GovBanner/>
       <Header className={'j40-header'} basic={true} role={'banner'}>
         <div className="usa-nav-container">
