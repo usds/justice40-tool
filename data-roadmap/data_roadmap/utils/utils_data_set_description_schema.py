@@ -1,5 +1,6 @@
-import importlib_resources
 import pathlib
+
+import importlib_resources
 import yamale
 import yaml
 

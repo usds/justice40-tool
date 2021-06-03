@@ -1,6 +1,7 @@
 import unittest
 from unittest import mock
 
+# TODO: Remove this after fixing formatting
 import yamale
 from data_roadmap.utils.utils_data_set_description_schema import (
     load_data_set_description_schema,
@@ -167,8 +168,8 @@ field: enum('option 1', 'option 2')
             self.assertEqual(
                 str(context_manager.exception),
                 """Error validating data
-	age: 'asdf' is not a int.
-	awesome: 'asdf' is not a bool.""",
+    age: 'asdf' is not a int.
+    awesome: 'asdf' is not a bool.""",
             )
 
             # Make some of the data missing.
@@ -181,7 +182,7 @@ field: enum('option 1', 'option 2')
             self.assertEqual(
                 str(context_manager.exception),
                 """Error validating data
-	name: Required field missing""",
+    name: Required field missing""",
             )
 
     @mock.patch("builtins.open", new_callable=mock.mock_open)

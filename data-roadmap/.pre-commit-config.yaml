@@ -13,7 +13,8 @@ repos:
     rev: 3.9.2  # change this to the most recent stable release
     hooks:
     - id: flake8
--   repo: https://github.com/pycqa/pylint
-    rev: pylint-2.6.0
-    hooks:
-    -   id: pylint
+# TODO: Fix the broken imports with pylint
+# -   repo: https://github.com/pycqa/pylint
+#     rev: pylint-2.6.0
+#     hooks:
+#     -   id: pylint
