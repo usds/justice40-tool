@@ -38,13 +38,13 @@ const IndexPage = () => {
   return (
     <Layout>
       <main id="main-content" role="main">
-        <div className="grid-row grid-gap-2">
-          <section className="grid-container usa-section">
-            <div className="desktop:grid-col">
+        <div className={'grid-row grid-gap-2'}>
+          <section className={'grid-container usa-section'}>
+            <div className={'desktop:grid-col'}>
 
-              <div className="grid-row grid-gap">
+              <div className={'grid-row grid-gap'}>
                 <div
-                  className="usa-prose text-asset-container">
+                  className={'usa-prose text-asset-container'}>
                   <h2>About Justice40</h2>
                   <p>
                     In an effort to address historical environmental injustices,
@@ -83,22 +83,22 @@ const IndexPage = () => {
                 </div>
               </div>
 
-              <div className="grid-gap j40-two-column-confine">
+              <div className={'grid-gap j40-two-column-confine'}>
                 <h4>Areas of Focus</h4>
-                <ul className="usa-icon-list j40-two-column">
+                <ul className={'usa-icon-list j40-two-column'}>
                   {readMoreList.map((item, index) => {
                     return (
                       <li
                         key={`readmore_li_${index}`}
-                        className="usa-icon-list__item">
-                        <div className="usa-icon-list__icon">
+                        className={'usa-icon-list__item'}>
+                        <div className={'usa-icon-list__icon'}>
                           <img
-                            className="j40-two-column-icons-spacing"
+                            className={'j40-two-column-icons-spacing'}
                             key={`readmore_img_${index}`}
                             src={item[0]} alt={item[1] + ' icon'}/>
                         </div>
                         <div
-                          className="usa-icon-list__content"> {item[1]} </div>
+                          className={'usa-icon-list__content'}> {item[1]} </div>
                       </li>
                     );
                   })
@@ -106,9 +106,9 @@ const IndexPage = () => {
                 </ul>
               </div>
 
-              <div className="grid-row grid-gap">
+              <div className={'grid-row grid-gap'}>
                 <div
-                  className="usa-prose text-asset-container">
+                  className={'usa-prose text-asset-container'}>
                   <h4>A Transparent, Community-First Approach</h4>
 
                   <p>
