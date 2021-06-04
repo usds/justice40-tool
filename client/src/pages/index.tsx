@@ -38,13 +38,13 @@ const IndexPage = () => {
   return (
     <Layout>
       <main id="main-content" role="main">
-        <section className="grid-container usa-section">
-          <div className="grid-row grid-gap-2">
+        <div className={'grid-row grid-gap-2'}>
+          <section className={'grid-container usa-section'}>
+            <div className={'desktop:grid-col'}>
 
-            <div className="desktop:grid-col">
-              <div className="grid-row grid-gap">
+              <div className={'grid-row grid-gap'}>
                 <div
-                  className="usa-prose text-asset-container">
+                  className={'usa-prose text-asset-container'}>
                   <h2>About Justice40</h2>
                   <p>
                     In an effort to address historical environmental injustices,
@@ -83,22 +83,22 @@ const IndexPage = () => {
                 </div>
               </div>
 
-              <div className="tablet:grid-col-10">
+              <div className={'grid-gap j40-two-column-confine'}>
                 <h4>Areas of Focus</h4>
-                <ul className="usa-icon-list j40-two-column">
+                <ul className={'usa-icon-list j40-two-column'}>
                   {readMoreList.map((item, index) => {
                     return (
                       <li
                         key={`readmore_li_${index}`}
-                        className="usa-icon-list__item">
-                        <div className="usa-icon-list__icon">
+                        className={'usa-icon-list__item'}>
+                        <div className={'usa-icon-list__icon'}>
                           <img
-                            className="j40-two-column-icons-spacing"
+                            className={'j40-two-column-icons-spacing'}
                             key={`readmore_img_${index}`}
                             src={item[0]} alt={item[1] + ' icon'}/>
                         </div>
                         <div
-                          className="usa-icon-list__content"> {item[1]} </div>
+                          className={'usa-icon-list__content'}> {item[1]} </div>
                       </li>
                     );
                   })
@@ -106,11 +106,9 @@ const IndexPage = () => {
                 </ul>
               </div>
 
-
-              <div className="grid-row grid-gap">
+              <div className={'grid-row grid-gap'}>
                 <div
-                  className="desktop:grid-col-10 \
-                            usa-prose text-asset-container">
+                  className={'usa-prose text-asset-container'}>
                   <h4>A Transparent, Community-First Approach</h4>
 
                   <p>
@@ -153,32 +151,35 @@ const IndexPage = () => {
                 </div>
               </div>
             </div>
+          </section>
 
-            {/* aside*/}
-            <aside
-              aria-labelledby="left-sidebar"
-              className="desktop:grid-col-3 usa-prose grid-gap j40-aside"
-              id="left-sidebar">
-              <h2 className={'usa-graphic-list__heading'}>Get Involved</h2>
-              <h3>
+          {/* aside */}
+          <aside
+            aria-labelledby="left-sidebar"
+            className={'j40-aside desktop:grid-col-3'}
+            id="left-sidebar">
+            <section
+              className={'usa-prose grid-gap grid-container usa-section'}>
+              <h3 className={'j40-aside-title'}>Get Involved</h3>
+              <h5>
                 <img
-                  className={'flex-align-self-center width-5'} src={chatIcon}
+                  className={'flex-align-self-center width-4'} src={chatIcon}
                   alt={'chat icon'}/>
                 <br/>
                 Send Feedback
-              </h3>
+              </h5>
               <p>Have ideas about how to acknowledge the on-the-ground
                 experiences of your community?
               </p>
               Email: <a href="mailto: justice40open@usds.gov">
               justice40open@usds.gov</a>
               <p>&nbsp;</p>
-              <h3>
+              <h5>
                 <img
-                  className={'flex-align-self-center width-5'}
+                  className={'flex-align-self-center width-4'}
                   src={githubIcon} alt={'github icon'}/>
                 <br/>
-                Join the open source community</h3>
+                Join the open source community</h5>
               <p>
                 Justice40’s code is open source, which means it is available for
                 the public to view and contribute. Anyone can view and
@@ -192,10 +193,10 @@ const IndexPage = () => {
                   rel={'noreferrer'}
                   key={'github3'}>Check it out on GitHub</a>
               </p>
-            </aside>
-          </div>
+            </section>
+          </aside>
+        </div>
 
-        </section>
       </main>
     </Layout>
   );

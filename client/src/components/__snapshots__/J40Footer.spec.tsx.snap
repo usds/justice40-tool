@@ -180,7 +180,7 @@ exports[`J40Footer renders correctly 1`] = `
                       class="grid-col-auto"
                     >
                       <p
-                        class="usa-footer__logo-heading  j40-footer-logo-heading"
+                        class=" j40-footer-logo-heading"
                       >
                         Council on Environmental Quality
                       </p>

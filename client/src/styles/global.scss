@@ -3,9 +3,16 @@
 
 .j40-two-column {
   overflow: hidden;
-  column-count: 2;
-  column-gap: 1em;
   padding: 0;
+
+  @media (min-width: 768px) {
+    column-count: 2;
+    column-gap: 1em;
+  }
+  @media (max-width: 768px) {
+    column-count: 1;
+    column-gap: 0;
+  }
 }
 
 .j40-two-column > * {
@@ -21,6 +28,10 @@
   max-width: revert;
 }
 
+.j40-two-column-confine {
+  max-width: fit-content;
+}
+
 .j40-header {
   background-color: #112f4e; /* todo: move color to theme */
   color: white;
@@ -28,10 +39,15 @@
 
 .j40-title {
   font-size: xx-large;
+  font-family: "Merriweather Web";
 }
 
 .j40-aside {
   background-color: #eff6fb;
+}
+
+.j40-aside-title {
+  padding-bottom: 1em;
 }
 
 .j40-footer-logo {
