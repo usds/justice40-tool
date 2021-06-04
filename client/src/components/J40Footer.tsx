@@ -67,8 +67,7 @@ const J40Footer = () => {
                       alt={'Whitehouse logo'}/>
                   }
                   heading={<p
-                    className={'usa-footer__logo-heading ' +
-                    ' j40-footer-logo-heading'}>
+                    className={' j40-footer-logo-heading'}>
                     Council on Environmental Quality</p>}
                 />
               </>,
