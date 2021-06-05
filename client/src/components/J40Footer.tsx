@@ -11,8 +11,7 @@ const J40Footer = () => {
         primary={<></>}
         secondary={<FooterNav
           aria-label="Footer navigation"
-          size="big" // fyi you leave this off and it silently fails... lovely
-          className={'nobreak'}
+          size="big" // fyi you leave this off and it silently fails...
           links={[
             [
               'Agency Partners',
