@@ -37,9 +37,9 @@ Please open an issue of type "Feature request" [here](https://github.com/usds/ju
 
 In the issue, please describe the feature you would like to see, why you need it, and how it should work. Team members will respond to the issue as soon as possible.
 
-### Submit a pull request
+### Code contributions
 
-If you would like to contribute, please submit a pull request. In order for us to merge a pull request, the following checks are enabled within this repo:
+If you would like to contribute to any part of the codebase, please fork the repository [following the Github forking methodology](https://docs.github.com/en/github/getting-started-with-github/quickstart/fork-a-repo). Then, make changes to the code in your own copy of the repository, including tests if applicable, and finally [submit a pull request against the upstream repo.](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork) In order for us to merge a pull request, the following checks are enabled within this repo:
 
 - Merges to `main` are prohibited - please open a pull request from a branch
 - At least one required reviewer must approve the commit (see [CODEOWNERS](https://github.com/usds/justice40-tool/tree/main/.github/CODEOWNERS) for the most up-to-date list of these members)
