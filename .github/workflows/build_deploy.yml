@@ -59,9 +59,17 @@ jobs:
         with:
           name: J40Static
           path: ./public
-      - name: Deploy 🚀
+      - name: Deploy to Github Pages
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages # The branch the action should deploy to.
           FOLDER: public # The folder the action should deploy.
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: Deploy to Geoplatform AWS
+        run: aws s3 sync ./public/ s3://usds-geoplatform-justice40-website --delete
