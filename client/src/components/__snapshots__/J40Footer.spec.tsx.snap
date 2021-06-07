@@ -1,42 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`J40Footer renders correctly 1`] = `
-Array [
+<DocumentFragment>
   <footer
-    className="usa-footer usa-footer--big"
+    class="usa-footer usa-footer--big"
   >
     <div
-      className="usa-footer__primary-section"
+      class="usa-footer__primary-section"
     />
     <div
-      className="usa-footer__secondary-section"
+      class="usa-footer__secondary-section"
     >
       <div
-        className="grid-container"
+        class="grid-container"
       >
         <nav
           aria-label="Footer navigation"
-          className="usa-footer__nav nobreak"
+          class="usa-footer__nav"
         >
           <div
-            className="grid-row grid-gap-4"
+            class="grid-row grid-gap-4"
           >
             <div
-              className="mobile-lg:grid-col-6 desktop:grid-col-3"
+              class="mobile-lg:grid-col-6 desktop:grid-col-3"
             >
               <section
-                className="usa-footer__primary-content usa-footer__primary-content--collapsible"
+                class="usa-footer__primary-content usa-footer__primary-content--collapsible"
               >
                 <h4
-                  className="usa-footer__primary-link"
+                  class="usa-footer__primary-link"
                 >
                   Agency Partners
                 </h4>
                 <ul
-                  className="usa-list usa-list--unstyled"
+                  class="usa-list usa-list--unstyled"
                 >
                   <li
-                    className="usa-footer__secondary-link"
+                    class="usa-footer__secondary-link"
                   >
                     <a
                       href="https://www.epa.gov/"
@@ -47,7 +47,7 @@ Array [
                     </a>
                   </li>
                   <li
-                    className="usa-footer__secondary-link"
+                    class="usa-footer__secondary-link"
                   >
                     <a
                       href="https://www.whitehouse.gov/omb"
@@ -58,7 +58,7 @@ Array [
                     </a>
                   </li>
                   <li
-                    className="usa-footer__secondary-link"
+                    class="usa-footer__secondary-link"
                   >
                     <a
                       href="https://www.energy.gov/"
@@ -69,7 +69,7 @@ Array [
                     </a>
                   </li>
                   <li
-                    className="usa-footer__secondary-link"
+                    class="usa-footer__secondary-link"
                   >
                     <a
                       href="https://www.hud.gov/"
@@ -83,21 +83,21 @@ Array [
               </section>
             </div>
             <div
-              className="mobile-lg:grid-col-6 desktop:grid-col-3"
+              class="mobile-lg:grid-col-6 desktop:grid-col-3"
             >
               <section
-                className="usa-footer__primary-content usa-footer__primary-content--collapsible"
+                class="usa-footer__primary-content usa-footer__primary-content--collapsible"
               >
                 <h4
-                  className="usa-footer__primary-link"
+                  class="usa-footer__primary-link"
                 >
                   More Information
                 </h4>
                 <ul
-                  className="usa-list usa-list--unstyled"
+                  class="usa-list usa-list--unstyled"
                 >
                   <li
-                    className="usa-footer__secondary-link"
+                    class="usa-footer__secondary-link"
                   >
                     <a
                       href="https://www.whitehouse.gov/"
@@ -108,7 +108,7 @@ Array [
                     </a>
                   </li>
                   <li
-                    className="usa-footer__secondary-link"
+                    class="usa-footer__secondary-link"
                   >
                     <a
                       href="#"
@@ -117,7 +117,7 @@ Array [
                     </a>
                   </li>
                   <li
-                    className="usa-footer__secondary-link"
+                    class="usa-footer__secondary-link"
                   >
                     <a
                       href="#"
@@ -129,76 +129,88 @@ Array [
               </section>
             </div>
             <div
-              className="mobile-lg:grid-col-6 desktop:grid-col-3"
+              class="mobile-lg:grid-col-6 desktop:grid-col-3"
             >
               <section
-                className="usa-footer__primary-content usa-footer__primary-content--collapsible"
+                class="usa-footer__primary-content usa-footer__primary-content--collapsible"
               >
                 <h4
-                  className="usa-footer__primary-link"
+                  class="usa-footer__primary-link"
                 >
-                  <br />
+                  Have a question about government services?
                 </h4>
                 <ul
-                  className="usa-list usa-list--unstyled"
+                  class="usa-list usa-list--unstyled"
                 >
                   <li
-                    className="usa-footer__secondary-link"
+                    class="usa-footer__secondary-link"
                   >
-                    <div
-                      className="usa-footer__logo grid-row mobile-lg:grid-col-6 mobile-lg:grid-gap-2"
-                      data-testid="footerLogo"
+                    <a
+                      href="#"
                     >
-                      <div
-                        className="mobile-lg:grid-col-auto"
-                      >
-                        <img
-                          alt="Whitehouse logo"
-                          className="usa-footer__logo-img"
-                          src="test-file-stub"
-                        />
-                      </div>
-                    </div>
+                      Find a contact at USA.gov
+                    </a>
                   </li>
                 </ul>
               </section>
             </div>
             <div
-              className="mobile-lg:grid-col-6 desktop:grid-col-3"
+              class="mobile-lg:grid-col-6 desktop:grid-col-3"
             >
               <section
-                className="usa-footer__primary-content usa-footer__primary-content--collapsible"
+                class="usa-footer__primary-content usa-footer__primary-content--collapsible"
               >
                 <h4
-                  className="usa-footer__primary-link"
+                  class="usa-footer__primary-link"
                 >
-                  Council on Environmental Quality
-                  <br />
+                  <div
+                    class="usa-footer__logo grid-row grid-gap-2 j40-footer-logo"
+                    data-testid="footerLogo"
+                  >
+                    <div
+                      class="grid-col-auto"
+                    >
+                      <img
+                        alt="Whitehouse logo"
+                        class="usa-footer__logo-img"
+                        src="test-file-stub"
+                      />
+                    </div>
+                    <div
+                      class="grid-col-auto"
+                    >
+                      <p
+                        class=" j40-footer-logo-heading"
+                      >
+                        Council on Environmental Quality
+                      </p>
+                    </div>
+                  </div>
                 </h4>
                 <ul
-                  className="usa-list usa-list--unstyled"
+                  class="usa-list usa-list--unstyled"
                 >
                   <li
-                    className="usa-footer__secondary-link"
+                    class="usa-footer__secondary-link"
                   >
                     <address
-                      className="usa-footer__address footerAddressReadability"
+                      class="usa-footer__address j40-address-readability"
                     >
                       <div
-                        className="usa-footer__contact-info grid-row grid-gap"
+                        class="usa-footer__contact-info grid-row grid-gap"
                       >
                         <div
-                          className=""
+                          class=""
                         >
                           730 Jackson Pl NW
                         </div>
                         <div
-                          className=""
+                          class=""
                         >
                           Washington, D.C. 20506
                         </div>
                         <div
-                          className=""
+                          class=""
                         >
                           (202) 395-5750
                         </div>
@@ -212,7 +224,7 @@ Array [
         </nav>
       </div>
     </div>
-  </footer>,
-  ",",
-]
+  </footer>
+  ,
+</DocumentFragment>
 `;
