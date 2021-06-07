@@ -16,7 +16,7 @@ exports[`J40Footer renders correctly 1`] = `
       >
         <nav
           aria-label="Footer navigation"
-          class="usa-footer__nav nobreak"
+          class="usa-footer__nav"
         >
           <div
             class="grid-row grid-gap-4"

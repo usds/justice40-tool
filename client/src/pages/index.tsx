@@ -7,10 +7,6 @@ import Layout from '../components/layout';
 // this inlines the svg as data:image/svg+xml For larger images this
 // can cause page bloat, but it should be fine here.
 // @ts-ignore
-import chatIcon from '/node_modules/uswds/dist/img/usa-icons/chat.svg';
-// @ts-ignore
-import githubIcon from '/node_modules/uswds/dist/img/usa-icons/github.svg';
-// @ts-ignore
 import ecoIcon from '/node_modules/uswds/dist/img/usa-icons/eco.svg';
 // @ts-ignore
 import busIcon from '/node_modules/uswds/dist/img/usa-icons/directions_bus.svg';
@@ -22,6 +18,7 @@ import pollutionIcon // @ts-ignore
   from '/node_modules/uswds/dist/img/usa-icons/severe_weather.svg';
 // @ts-ignore
 import washIcon from '/node_modules/uswds/dist/img/usa-icons/wash.svg';
+import J40Aside from '../components/J40Aside';
 
 
 // markup
@@ -41,10 +38,8 @@ const IndexPage = () => {
         <div className={'grid-row grid-gap-2'}>
           <section className={'grid-container usa-section'}>
             <div className={'desktop:grid-col'}>
-
               <div className={'grid-row grid-gap'}>
-                <div
-                  className={'usa-prose text-asset-container'}>
+                <div className={'usa-prose text-asset-container'}>
                   <h2>About Justice40</h2>
                   <p>
                     In an effort to address historical environmental injustices,
@@ -152,49 +147,7 @@ const IndexPage = () => {
               </div>
             </div>
           </section>
-
-          {/* aside */}
-          <aside
-            aria-labelledby="left-sidebar"
-            className={'j40-aside desktop:grid-col-3'}
-            id="left-sidebar">
-            <section
-              className={'usa-prose grid-gap grid-container usa-section'}>
-              <h3 className={'j40-aside-title'}>Get Involved</h3>
-              <h5>
-                <img
-                  className={'flex-align-self-center width-4'} src={chatIcon}
-                  alt={'chat icon'}/>
-                <br/>
-                Send Feedback
-              </h5>
-              <p>Have ideas about how to acknowledge the on-the-ground
-                experiences of your community?
-              </p>
-              Email: <a href="mailto: justice40open@usds.gov">
-              justice40open@usds.gov</a>
-              <p>&nbsp;</p>
-              <h5>
-                <img
-                  className={'flex-align-self-center width-4'}
-                  src={githubIcon} alt={'github icon'}/>
-                <br/>
-                Join the open source community</h5>
-              <p>
-                Justice40’s code is open source, which means it is available for
-                the public to view and contribute. Anyone can view and
-                contribute on GitHub.
-              </p>
-              <p>
-                <a
-                  href={'https://github.com/usds/justice40-tool/' +
-                  'crisis-at-home-and-abroad/'}
-                  target={'_blank'}
-                  rel={'noreferrer'}
-                  key={'github3'}>Check it out on GitHub</a>
-              </p>
-            </section>
-          </aside>
+          <J40Aside/>
         </div>
 
       </main>

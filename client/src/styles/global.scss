@@ -39,7 +39,6 @@
 
 .j40-title {
   font-size: xx-large;
-  font-family: "Merriweather Web";
 }
 
 .j40-aside {
@@ -60,6 +59,17 @@
 
 .j40-address-readability {
   display: inline-block;
-  line-height: 1.5 !important;
+  line-height: 1.5 !important;  // trussworks issue
   text-align: center;
+}
+
+// This should really be part of uswds and use $theme-step-indicator-segment-color-complete
+.j40-usa-process-list__item--complete {
+  &::before {
+    color: white;
+    background-color: #00a91c;
+    content: '✓'
+  }
+
+  border-left-color: #005ea2 !important;  // todo: fix
 }
