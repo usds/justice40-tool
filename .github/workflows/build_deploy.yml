@@ -72,4 +72,4 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: Deploy to Geoplatform AWS
-        run: aws s3 sync ./public/ s3://usds-geoplatform-justice40-website --delete
+        run: aws s3 sync ./public/ s3://usds-geoplatform-justice40-website/justice40-tool --delete
