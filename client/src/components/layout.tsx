@@ -6,7 +6,7 @@ import {URLFlagProvider} from '../contexts/FlagContext';
 
 interface ILayoutProps {
   children: ReactNode,
-  location: URL
+  location: Location
 }
 
 const Layout = ({children, location}: ILayoutProps) => {

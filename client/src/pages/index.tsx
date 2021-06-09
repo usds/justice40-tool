@@ -21,7 +21,7 @@ import washIcon from '/node_modules/uswds/dist/img/usa-icons/wash.svg';
 import J40Aside from '../components/J40Aside';
 
 interface IndexPageProps {
-  location: URL;
+  location: Location;
 };
 
 // markup
