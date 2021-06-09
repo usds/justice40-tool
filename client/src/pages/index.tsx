@@ -20,9 +20,12 @@ import pollutionIcon // @ts-ignore
 import washIcon from '/node_modules/uswds/dist/img/usa-icons/wash.svg';
 import J40Aside from '../components/J40Aside';
 
+interface IndexPageProps {
+  location: Location;
+};
 
 // markup
-const IndexPage = () => {
+const IndexPage = ({location}: IndexPageProps) => {
   const readMoreList: (any | string)[][] = [
     [ecoIcon, 'Clean energy and energy efficiency'],
     [busIcon, 'Clean transit'],
@@ -33,7 +36,7 @@ const IndexPage = () => {
   ];
 
   return (
-    <Layout>
+    <Layout location={location}>
       <main id="main-content" role="main">
         <div className={'grid-row grid-gap-2'}>
           <section className={'grid-container usa-section'}>

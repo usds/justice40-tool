@@ -59,7 +59,7 @@
 
 .j40-address-readability {
   display: inline-block;
-  line-height: 1.5 !important;  // trussworks issue
+  line-height: 1.5 !important; // trussworks issue
   text-align: center;
 }
 
@@ -68,8 +68,8 @@
   &::before {
     color: white;
     background-color: #00a91c;
-    content: '✓'
+    content: "✓";
   }
 
-  border-left-color: #005ea2 !important;  // todo: fix
+  border-left-color: #005ea2 !important; // todo: fix
 }
