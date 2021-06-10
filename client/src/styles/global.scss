@@ -137,10 +137,10 @@ $j40-max-width: 80ex;
   &::before {
     color: white;
     background-color: #00a91c;
-    content: '✓'
+    content: "✓";
   }
 
-  border-left-color: #005ea2 !important;  // todo: fix
+  border-left-color: #005ea2 !important; // todo: fix
 }
 
 // NOTE: uswds `.usa-prose` defines these all as Merriweather Web via $theme-font-role-heading

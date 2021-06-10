@@ -4,20 +4,21 @@ import {GridContainer, Grid} from '@trussworks/react-uswds';
 import J40Header2 from './J40Header2';
 import J40Footer from './J40Footer';
 import J40Aside from '../components/J40Aside';
+import {URLFlagProvider} from '../contexts/FlagContext';
 
 interface ILayoutProps {
-  children: ReactNode
+  children: ReactNode,
+  location: Location
 }
 
-const Layout = ({children}: ILayoutProps) => {
+const Layout = ({children, location}: ILayoutProps) => {
   return (
-    <div className={''}>
+    <URLFlagProvider location={location}>
       <J40Header2/>
       <GridContainer containerSize={'desktop-lg'}
         className={'j40-grid-container'}>
         <Grid row>
-          <main
-            id={'main-content'}
+          <main id={'main-content'}
             className={'usa-layout-docs desktop:grid-col-9 j40-main-content'}>
             <section className={'usa-prose'}>
               {children}
@@ -27,7 +28,7 @@ const Layout = ({children}: ILayoutProps) => {
         </Grid>
       </GridContainer>
       <J40Footer/>
-    </div>
+    </URLFlagProvider>
   );
 };
 

@@ -4,13 +4,21 @@ import {GovBanner,
   Title,
   PrimaryNav,
   SiteAlert} from '@trussworks/react-uswds';
-import {useIntl} from 'gatsby-plugin-intl';
+import {useIntl, Link} from 'gatsby-plugin-intl';
 import {Helmet} from 'react-helmet';
-const headerLinks = [
-  <></>,
-];
+import {useFlags} from '../contexts/FlagContext';
+
+const headerLinks = (flags: string[] | undefined) => {
+  const timelineLink = <Link key="/timeline" to="/timeline"> Timeline </Link>;
+  const links = [];
+  if (flags && flags.includes('timeline')) {
+    links.push(timelineLink);
+  }
+  return links;
+};
 
 const J40Header = () => {
+  const flags = useFlags();
   const intl = useIntl();
   const title = intl.formatMessage({
     id: '71L0pp',
@@ -39,7 +47,7 @@ const J40Header = () => {
           <div className="usa-navbar">
             <Title className={'j40-title'}>{title}</Title>
           </div>
-          <PrimaryNav items={headerLinks}/>
+          <PrimaryNav items={headerLinks(flags)} />
         </div>
       </Header>
     </>

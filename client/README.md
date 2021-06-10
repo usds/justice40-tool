@@ -61,3 +61,26 @@ From there, send `src/intl/en.json` to translators. (Depending on the TMS (Trans
 To access a translated version of a page, e.g. `pages/index.js`, add the locale as a portion of the URL path, as follows:
 
 - English: `localhost:8000/en/`, or `localhost:8000/` (the default fallback is English)
+
+## Feature Toggling
+
+We have implemented very simple feature flagging for this app, accessible via URL parameters.
+
+There are a lot of benefits to using feature toggles -- see [Martin Fowler](https://martinfowler.com/articles/feature-toggles.html) for a longer justification, but in short, they enable shipping in-progress work to production without enabling particular features for all users.
+
+### Viewing Features
+
+To view features, add the `flags` parameter to the URL, and set the value to a comma-delimited list of features to enable, e.g. `localhost:8000?flags=1,2,3` will enable features 1, 2, and 3.
+
+In the future we may add other means of audience-targeting, but for now we will be sharing links with flags enabled as a means of sharing in-development funcitonality
+
+### Using Flags
+
+When developing, to use a flag:
+
+1. Pass the Gatsby-provided `location` variable to your component. You have several options here:
+   1. If your page uses the `Layout` [component](src/components/layout.tsx), you automatically get `URLFlagProvider` (see [FlagContext](src/contexts/FlagContext.tsx) for more info).
+   2. If your page does not use `Layout`, you need to surround your component with a `URLFlagProvider` component and pass `location`. You can get `location` from the default props of the page (more [here](https://www.gatsbyjs.com/docs/location-data-from-props/)). See [Index.tsx](src/pages/index.tsx) for an example.
+2. Use the `useFlags()` hook to get access to an array of flags, and check this array for the presence of the correct feature identifier. See [J40Header](src/components/J40Header.tsx) for an example.
+
+And that's it!

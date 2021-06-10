@@ -19,8 +19,12 @@ import pollutionIcon // @ts-ignore
 // @ts-ignore
 import washIcon from '/node_modules/uswds/dist/img/usa-icons/wash.svg';
 
+interface IndexPageProps {
+  location: Location;
+};
+
 // markup
-const IndexPage = () => {
+const IndexPage = ({location}: IndexPageProps) => {
   const readMoreList: (any | string)[][] = [
     [ecoIcon, 'Clean energy and energy efficiency'],
     [busIcon, 'Clean transit'],
@@ -30,7 +34,7 @@ const IndexPage = () => {
     [washIcon, 'Clean water infrastructure'],
   ];
 
-  return (<Layout>
+  return (<Layout location={location}>
     <h2>About Justice40</h2>
     <p>
         In an effort to address historical environmental injustices,

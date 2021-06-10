@@ -4,8 +4,12 @@ import Layout from '../components/layout';
 // @ts-ignore
 import renewIcon from '/node_modules/uswds/dist/img/usa-icons/autorenew.svg';
 
-const TimelinePage = () => {
-  return (<Layout>
+interface TimelinePageProps {
+  location: URL;
+};
+
+const TimelinePage = ({location}: TimelinePageProps) => {
+  return (<Layout location={location}>
     <h2>Timeline</h2>
     <h3>Throughout the Process</h3>
     <div className="grid-col">
