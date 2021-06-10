@@ -60,6 +60,7 @@
     "jest": "^27.0.1",
     "license-checker": "^25.0.1",
     "prettier": "^2.3.0",
+    "prop-types": "^15.7.2",
     "react-test-renderer": "^17.0.2",
     "sass": "^1.33.0",
     "sass-loader": "^11.1.1",
@@ -67,7 +68,7 @@
     "ts-jest": "^27.0.0"
   },
   "dependencies": {
-    "@trussworks/react-uswds": "github:nathillardusds/react-uswds#nathillardusds/ssr",
+    "@trussworks/react-uswds": "nathillardusds/react-uswds#nathillardusds/ssr",
     "query-string": "^7.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

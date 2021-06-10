@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  justice40tool:
+    image: justice40tool
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 8000:8000

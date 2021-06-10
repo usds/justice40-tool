@@ -1,20 +1,10 @@
-FROM node:14 AS build
-
-# This will henceforth be our app directory
+FROM node:14-alpine
+ENV NODE_ENV=production
 WORKDIR /usr/src/app
-
-# Copy both package.json and package-lock.json
-COPY package*.json ./
-
-# Install dependencies
-RUN npm install
-
-# Copy App source
-COPY . . 
-
+RUN apk --no-cache add git
+COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
+RUN npm install && mv node_modules ../
+RUN npm install --global gatsby-cli
+COPY . .
 EXPOSE 8000
-CMD [ "npm", "start" ]
-
-# RUN npm build
-# FROM scratch AS bin
-# COPY --from=build ./public /
+CMD ["npm", "start"]

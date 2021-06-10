@@ -1,0 +1,16 @@
+version: "3"
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+      - "9929:9929"
+      - "9230:9230"
+    # volumes:
+    #   - /client/node_modules
+    #   - ./client:/app
+    environment:
+      - NODE_ENV=development
+      - GATSBY_WEBPACK_PUBLICPATH=/
