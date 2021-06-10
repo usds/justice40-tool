@@ -6,3 +6,5 @@ flake8==3.9.2
 pylint==2.8.3
 tox==3.23.1
 pytest==6.2.4
+safety==1.10.3
+liccheck==0.6.0
