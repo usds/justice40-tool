@@ -1,15 +1,42 @@
+/*
+  These are necessary for the image and font urls referenced in the source
+  files to resolve correctly.
+*/
+$theme-image-path: '../../node_modules/uswds/src/img';
+$theme-font-path: '../../node_modules/uswds/src/fonts';
+
+/*
+  Example:
+
+  The url for the hero image in the source file is not currently prefixed by
+  the $theme-image-path above.
+
+  $theme-hero-image: '#{$theme-image-path}/hero.png';
+*/
+
+// Custom USWDS changes to variables go here
+// see https://designsystem.digital.gov/documentation/settings/
+$theme-show-compile-warnings: false;
+$theme-show-notifications: false;
+
+$theme-font-role-heading: "sans";
+
+@import '../../node_modules/uswds';
+
 @import "~@trussworks/react-uswds/lib/index.css";
-@import "~@trussworks/react-uswds/lib/uswds.css";
+
+// Custom SASS/CSS goes here
+$j40-max-width: 80ex;
 
 .j40-two-column {
   overflow: hidden;
   padding: 0;
 
-  @media (min-width: 768px) {
+  @media (min-width: 40em) {
     column-count: 2;
     column-gap: 1em;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 40em) {
     column-count: 1;
     column-gap: 0;
   }
@@ -29,41 +56,83 @@
 }
 
 .j40-two-column-confine {
+  display: inline-flex;
   max-width: fit-content;
 }
 
-.j40-header {
-  background-color: #112f4e; /* todo: move color to theme */
-  color: white;
+@media all and (min-width: 40em) {
+  .j40-grid-container {
+    padding-right: 0;
+  }
 }
 
-.j40-title {
-  font-size: xx-large;
+.j40-header, .j40-primary-nav, .j40-header > li > a{
+  background-color: #112f4e; /* todo: move color to theme */
+  color: white !important;
+  z-index: 5;
+
+  .usa-nav-container {
+    max-width: ($j40-max-width*2);
+  }
+
+  span {
+    // make sure the open close cheveron is colored correctly
+    color: white;
+  }
+
+  // this is the title
+  .usa-logo__text {
+    font-size: 1.8em;
+  }
 }
 
 .j40-aside {
   background-color: #eff6fb;
+  padding-right: 1em;
+  padding-left: 1em;
+
+  h1 {
+    font-weight: 100;
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-weight: 100;
+    font-size: 1.4em;
+  }
+
+  h3 {
+    font-weight: 100;
+    font-size: 1.3em;
+  }
 }
 
-.j40-aside-title {
-  padding-bottom: 1em;
+.j40-footer {
+  .usa-footer__contact-info {
+    justify-content: center;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .j40-footer-logo {
+    display: inline-block;
+    text-align: center;
+  }
 }
 
-.j40-footer-logo {
-  display: inline-block;
-  text-align: center;
-}
-
-.j40-footer-logo-heading {
-}
-
-.j40-address-readability {
-  display: inline-block;
-  line-height: 1.5 !important;  // trussworks issue
-  text-align: center;
+// spacing top & bottom around main content
+@media all and (min-width: 40em) {
+  .j40-main-content {
+    margin-bottom: 2rem;
+    margin-top: 2.5rem;
+  }
 }
 
 // This should really be part of uswds and use $theme-step-indicator-segment-color-complete
+// The Progress element doesn't really support color changing the line connecting progress
+// (like the Steps element does) and the checkbox.
+// The border-left-color required an !important to make work. Maybe add a feature request
+// to have the process list officially support a more Steps-like behavior
 .j40-usa-process-list__item--complete {
   &::before {
     color: white;
@@ -72,4 +141,14 @@
   }
 
   border-left-color: #005ea2 !important;  // todo: fix
+}
+
+// NOTE: uswds `.usa-prose` defines these all as Merriweather Web via $theme-font-role-heading
+.usa-prose {
+  h1, h2, h3, h4 {
+    font-family: Source Sans Pro Web, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  }
+  p, div {
+    max-width: $j40-max-width;
+  }
 }

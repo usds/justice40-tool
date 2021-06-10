@@ -8,6 +8,7 @@ const J40Footer = () => {
     <>
       <Footer
         size="big"
+        className={'j40-footer'}
         primary={<></>}
         secondary={<FooterNav
           aria-label="Footer navigation"
@@ -66,7 +67,7 @@ const J40Footer = () => {
                       alt={'Whitehouse logo'}/>
                   }
                   heading={<p
-                    className={' j40-footer-logo-heading'}>
+                    className={'j40-footer-logo-heading'}>
                     Council on Environmental Quality</p>}
                 />
               </>,

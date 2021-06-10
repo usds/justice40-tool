@@ -18,8 +18,6 @@ import pollutionIcon // @ts-ignore
   from '/node_modules/uswds/dist/img/usa-icons/severe_weather.svg';
 // @ts-ignore
 import washIcon from '/node_modules/uswds/dist/img/usa-icons/wash.svg';
-import J40Aside from '../components/J40Aside';
-
 
 // markup
 const IndexPage = () => {
@@ -32,126 +30,109 @@ const IndexPage = () => {
     [washIcon, 'Clean water infrastructure'],
   ];
 
-  return (
-    <Layout>
-      <main id="main-content" role="main">
-        <div className={'grid-row grid-gap-2'}>
-          <section className={'grid-container usa-section'}>
-            <div className={'desktop:grid-col'}>
-              <div className={'grid-row grid-gap'}>
-                <div className={'usa-prose text-asset-container'}>
-                  <h2>About Justice40</h2>
-                  <p>
-                    In an effort to address historical environmental injustices,
-                    President Biden created the Justice40 Initiative on January
-                    27, 2021. The Justice40 Initiative directs 40% of the
-                    benefits from federal investments in seven key areas to
-                    overburdened and underserved communities.
-                  </p>
+  return (<Layout>
+    <h2>About Justice40</h2>
+    <p>
+        In an effort to address historical environmental injustices,
+        President Biden created the Justice40 Initiative on January
+        27, 2021. The Justice40 Initiative directs 40% of the
+        benefits from federal investments in seven key areas to
+        overburdened and underserved communities.
+    </p>
 
-                  <p>
-                    Federal agencies will prioritize benefits using a new
-                    climate and economic justice screening tool. This screening
-                    tool will be a map that visualizes data to compare the
-                    cumulative impacts of environmental, climate, and economic
-                    factors. It is being developed by the Council on
-                    Environmental Quality (CEQ) with guidance from environmental
-                    justice leaders and communities affected by environmental
-                    injustices. The first version of the screening tool will be
-                    released in July 2021. However, the screening tool and data
-                    being used will be continuously updated to better reflect
-                    the lived experiences of community members.
-                  </p>
+    <p>
+        Federal agencies will prioritize benefits using a new
+        climate and economic justice screening tool. This screening
+        tool will be a map that visualizes data to compare the
+        cumulative impacts of environmental, climate, and economic
+        factors. It is being developed by the Council on
+        Environmental Quality (CEQ) with guidance from environmental
+        justice leaders and communities affected by environmental
+        injustices. The first version of the screening tool will be
+        released in July 2021. However, the screening tool and data
+        being used will be continuously updated to better reflect
+        the lived experiences of community members.
+    </p>
 
-                  <p>
-                    Read more about the Justice40 Initiative in President
-                    Biden’s <a
-                      href={'https://www.whitehouse.gov/briefing-room/' +
-                    'presidential-actions/2021/01/27/' +
-                    'executive-order-on-tackling-the-climate-' +
-                    'crisis-at-home-and-abroad/'}
-                      target={'_blank'}
-                      rel={'noreferrer'}>
-                    Executive Order on Tackling the Climate Crisis at Home and
-                    Abroad.</a>
-                  </p>
+    <p>
+        Read more about the Justice40 Initiative in President
+        Biden’s <a
+        href={'https://www.whitehouse.gov/briefing-room/' +
+        'presidential-actions/2021/01/27/' +
+        'executive-order-on-tackling-the-climate-' +
+        'crisis-at-home-and-abroad/'}
+        target={'_blank'}
+        rel={'noreferrer'}>
+        Executive Order on Tackling the Climate Crisis at Home and
+        Abroad.</a>
+    </p>
+
+    <h3>Areas of Focus</h3>
+    <div className={'grid-row grid-gap'}>
+      <div className={'j40-two-column-confine'}>
+        <ul className={'usa-icon-list j40-two-column'}>
+          {readMoreList.map((item, index) => {
+            return (
+              <li
+                key={`readmore_li_${index}`}
+                className={'usa-icon-list__item'}>
+                <div className={'usa-icon-list__icon'}>
+                  <img
+                    className={'j40-two-column-icons-spacing'}
+                    key={`readmore_img_${index}`}
+                    src={item[0]} alt={item[1] + ' icon'}/>
                 </div>
-              </div>
-
-              <div className={'grid-gap j40-two-column-confine'}>
-                <h4>Areas of Focus</h4>
-                <ul className={'usa-icon-list j40-two-column'}>
-                  {readMoreList.map((item, index) => {
-                    return (
-                      <li
-                        key={`readmore_li_${index}`}
-                        className={'usa-icon-list__item'}>
-                        <div className={'usa-icon-list__icon'}>
-                          <img
-                            className={'j40-two-column-icons-spacing'}
-                            key={`readmore_img_${index}`}
-                            src={item[0]} alt={item[1] + ' icon'}/>
-                        </div>
-                        <div
-                          className={'usa-icon-list__content'}> {item[1]} </div>
-                      </li>
-                    );
-                  })
-                  }
-                </ul>
-              </div>
-
-              <div className={'grid-row grid-gap'}>
                 <div
-                  className={'usa-prose text-asset-container'}>
-                  <h4>A Transparent, Community-First Approach</h4>
+                  className={'usa-icon-list__content'}> {item[1]} </div>
+              </li>
+            );
+          })
+          }
+        </ul>
+      </div>
+    </div>
 
-                  <p>
-                    Successful initiatives are guided by direct input from the
-                    communities they are serving. CEQ commits to transparency,
-                    inclusivity, and iteration in building this screening tool.
-                  </p>
 
-                  <p>
-                    <i>Transparent:</i> The code and data behind the screening
-                    tool are open source, meaning it is available for the public
-                    to review and contribute to. This tool is being developed
-                    publicly so that communities, academic experts, and anyone
-                    who’s interested can be involved in the tool-building
-                    process.
-                  </p>
+    <h3>A Transparent, Community-First Approach</h3>
 
-                  <p>
-                    <i>Inclusive:</i> Many areas which lack investments also
-                    lack environmental data and would be overlooked using
-                    available environmental data. CEQ is actively reaching out
-                    to groups that have historically been excluded from
-                    decision-making, such as groups in rural and tribal areas,
-                    to understand their needs and ask for their input.
-                  </p>
+    <p>
+    Successful initiatives are guided by direct input from the
+    communities they are serving. CEQ commits to transparency,
+    inclusivity, and iteration in building this screening tool.
+    </p>
 
-                  <p>
-                    <i>Iterative:</i> The initial community prioritization list
-                    provided by the screening tool is the beginning of a
-                    collaborative process in score refinement, rather than a
-                    final answer. CEQ has received recommendations on data sets
-                    from community interviews, the White House Environmental
-                    Justice Advisory Council, and through public comment, but
-                    establishing a score that is truly representative will be a
-                    long-term, ongoing process. As communities submit feedback
-                    and recommendations, CEQ will continue to improve the tools
-                    being built and the processes for stakeholder and public
-                    engagement.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
-          <J40Aside/>
-        </div>
+    <p>
+      <i>Transparent:</i> The code and data behind the screening
+    tool are open source, meaning it is available for the public
+    to review and contribute to. This tool is being developed
+    publicly so that communities, academic experts, and anyone
+    who’s interested can be involved in the tool-building
+    process.
+    </p>
 
-      </main>
-    </Layout>
+    <p>
+      <i>Inclusive:</i> Many areas which lack investments also
+    lack environmental data and would be overlooked using
+    available environmental data. CEQ is actively reaching out
+    to groups that have historically been excluded from
+    decision-making, such as groups in rural and tribal areas,
+    to understand their needs and ask for their input.
+    </p>
+
+    <p>
+      <i>Iterative:</i> The initial community prioritization list
+    provided by the screening tool is the beginning of a
+    collaborative process in score refinement, rather than a
+    final answer. CEQ has received recommendations on data sets
+    from community interviews, the White House Environmental
+    Justice Advisory Council, and through public comment, but
+    establishing a score that is truly representative will be a
+    long-term, ongoing process. As communities submit feedback
+    and recommendations, CEQ will continue to improve the tools
+    being built and the processes for stakeholder and public
+    engagement.
+    </p>
+  </Layout>
   );
 };
 
