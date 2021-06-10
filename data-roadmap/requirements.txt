@@ -1,3 +1,8 @@
 yamale==3.0.6
 importlib-resources==5.1.4
 pre-commit==2.13.0
+black==21.5b2
+flake8==3.9.2
+pylint==2.8.3
+tox==3.23.1
+pytest==6.2.4

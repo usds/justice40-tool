@@ -1,3 +1,4 @@
+# pylint: disable=W0511,C0114
 import pathlib
 
 import importlib_resources
@@ -7,7 +8,9 @@ import yaml
 # Set directories.
 DATA_ROADMAP_DIRECTORY = importlib_resources.files("data_roadmap")
 UTILS_DIRECTORY = DATA_ROADMAP_DIRECTORY / "utils"
-DATA_SET_DESCRIPTIONS_DIRECTORY = DATA_ROADMAP_DIRECTORY / "data_set_descriptions"
+DATA_SET_DESCRIPTIONS_DIRECTORY = (
+    DATA_ROADMAP_DIRECTORY / "data_set_descriptions"
+)
 
 # Set file paths.
 DATA_SET_DESCRIPTION_SCHEMA_FILE_PATH = (
@@ -53,14 +56,14 @@ def validate_descriptions_for_schema(
     for field_name in schema.dict.keys():
         if field_name not in field_descriptions:
             raise ValueError(
-                f"Field `{field_name}` does not have a "
-                f"description. Please add one to file `{DATA_SET_DESCRIPTION_FIELD_DESCRIPTIONS_FILE_PATH}`"
+                f"Field `{field_name}` does not have a description. "
+                f"Please add one to file `{DATA_SET_DESCRIPTION_FIELD_DESCRIPTIONS_FILE_PATH}`"
             )
 
     for field_name in field_descriptions.keys():
         if field_name not in schema.dict.keys():
             raise ValueError(
-                f"Field `{field_name}` has a description but is not in the " f"schema."
+                f"Field `{field_name}` has a description but is not in the schema."
             )
 
 
@@ -73,8 +76,8 @@ def validate_all_data_set_descriptions(
     against the provided schema.
 
     """
-    data_set_description_file_paths_generator = DATA_SET_DESCRIPTIONS_DIRECTORY.glob(
-        "*.yaml"
+    data_set_description_file_paths_generator = (
+        DATA_SET_DESCRIPTIONS_DIRECTORY.glob("*.yaml")
     )
 
     # Validate each file
@@ -85,7 +88,9 @@ def validate_all_data_set_descriptions(
         data_set_description = yamale.make_data(file_path)
 
         # TODO: explore collecting all errors and raising them at once. - Lucas
-        yamale.validate(schema=data_set_description_schema, data=data_set_description)
+        yamale.validate(
+            schema=data_set_description_schema, data=data_set_description
+        )
 
 
 def write_data_set_description_template_file(
@@ -109,9 +114,13 @@ def write_data_set_description_template_file(
         template_file_lines.append(
             f"# Description: {data_set_description_field_descriptions[field_name]}\n"
         )
-        template_file_lines.append(f"# Required field: {field_schema.is_required}\n")
-        template_file_lines.append(f"# Field type: {field_schema.get_name()}\n")
-        if type(field_schema) is yamale.validators.validators.Enum:
+        template_file_lines.append(
+            f"# Required field: {field_schema.is_required}\n"
+        )
+        template_file_lines.append(
+            f"# Field type: {field_schema.get_name()}\n"
+        )
+        if isinstance(field_schema, yamale.validators.validators.Enum):
             template_file_lines.append(
                 f"# Valid choices are one of the following: {field_schema.enums}\n"
             )

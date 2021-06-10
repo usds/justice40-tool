@@ -1,3 +1,4 @@
+# pylint: disable=W0511,C0114,C0115,C0116,R0201
 import unittest
 from unittest import mock
 
@@ -20,7 +21,9 @@ class UtilsDataSetDescriptionSchema(unittest.TestCase):
         make_schema_mock.assert_called_once_with(path="mock.yaml")
 
     @mock.patch("yaml.safe_load")
-    def test_load_data_set_description_field_descriptions(self, yaml_safe_load_mock):
+    def test_load_data_set_description_field_descriptions(
+        self, yaml_safe_load_mock
+    ):
         # Note: this isn't a great test, we could mock the actual YAML to
         # make it better. - Lucas
         mock_dict = {
@@ -74,7 +77,8 @@ field: enum('option 1', 'option 2')
         # Should fail because of the missing field description.
         with self.assertRaises(ValueError) as context_manager:
             validate_descriptions_for_schema(
-                schema=schema, field_descriptions=field_descriptions_missing_one
+                schema=schema,
+                field_descriptions=field_descriptions_missing_one,
             )
 
         # Using `assertIn` because the file path is returned in the error
@@ -101,7 +105,7 @@ field: enum('option 1', 'option 2')
 
         # Using `assertIn` because the file path is returned in the error
         # message, and it varies based on environment.
-        self.assertEquals(
+        self.assertEqual(
             "Field `extra` has a description but is not in the schema.",
             str(context_manager.exception),
         )
@@ -156,14 +160,18 @@ field: enum('option 1', 'option 2')
             yamale_make_data_mock.return_value = valid_data
 
             # Should pass.
-            validate_all_data_set_descriptions(data_set_description_schema=schema)
+            validate_all_data_set_descriptions(
+                data_set_description_schema=schema
+            )
 
             # Make some of the data invalid.
             yamale_make_data_mock.return_value = invalid_data_1
 
             # Should fail because of the invalid field values.
             with self.assertRaises(yamale.YamaleError) as context_manager:
-                validate_all_data_set_descriptions(data_set_description_schema=schema)
+                validate_all_data_set_descriptions(
+                    data_set_description_schema=schema
+                )
 
             self.assertEqual(
                 str(context_manager.exception),
@@ -177,7 +185,9 @@ field: enum('option 1', 'option 2')
 
             # Should fail because of the missing fields.
             with self.assertRaises(yamale.YamaleError) as context_manager:
-                validate_all_data_set_descriptions(data_set_description_schema=schema)
+                validate_all_data_set_descriptions(
+                    data_set_description_schema=schema
+                )
 
             self.assertEqual(
                 str(context_manager.exception),
@@ -186,7 +196,9 @@ field: enum('option 1', 'option 2')
             )
 
     @mock.patch("builtins.open", new_callable=mock.mock_open)
-    def test_write_data_set_description_template_file(self, builtins_writelines_mock):
+    def test_write_data_set_description_template_file(
+        self, builtins_writelines_mock
+    ):
         schema = yamale.make_schema(
             content="""
                     name: str()
