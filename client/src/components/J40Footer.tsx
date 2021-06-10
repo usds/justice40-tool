@@ -73,7 +73,6 @@ const J40Footer = () => {
               </>,
               <>
                 <Address
-                  className={'j40-address-readability'}
                   key={'footeraddress'}
                   items={[
                     '730 Jackson Pl NW',

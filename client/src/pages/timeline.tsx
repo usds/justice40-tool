@@ -5,8 +5,8 @@ import Layout from '../components/layout';
 import renewIcon from '/node_modules/uswds/dist/img/usa-icons/autorenew.svg';
 
 interface TimelinePageProps {
-  location: URL;
-};
+  location: Location;
+}
 
 const TimelinePage = ({location}: TimelinePageProps) => {
   return (<Layout location={location}>

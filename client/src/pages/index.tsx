@@ -21,7 +21,7 @@ import washIcon from '/node_modules/uswds/dist/img/usa-icons/wash.svg';
 
 interface IndexPageProps {
   location: Location;
-};
+}
 
 // markup
 const IndexPage = ({location}: IndexPageProps) => {

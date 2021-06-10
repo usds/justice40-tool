@@ -60,7 +60,7 @@ $j40-max-width: 80ex;
   max-width: fit-content;
 }
 
-@media all and (min-width: 40em) {
+@media all and (min-width: 64em) {
   .j40-grid-container {
     padding-right: 0;
   }
@@ -83,6 +83,10 @@ $j40-max-width: 80ex;
   // this is the title
   .usa-logo__text {
     font-size: 1.8em;
+  }
+
+  .usa-current::after, :hover::after {
+    background-color: #2491ff !important;
   }
 }
 
