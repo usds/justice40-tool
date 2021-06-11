@@ -19,6 +19,7 @@ import pollutionIcon // @ts-ignore
 // @ts-ignore
 import washIcon from '/node_modules/uswds/dist/img/usa-icons/wash.svg';
 
+
 interface IndexPageProps {
   location: Location;
 }
