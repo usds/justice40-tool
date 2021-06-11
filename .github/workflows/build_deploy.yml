@@ -29,9 +29,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       # If this is just a PR branch, put content in a hash directory. Otherwise, put it in "main"
       - name: Set DESTINATION_FOLDER
-        run: echo "DESTINATION_FOLDER=${{ github.event.pull_request.merged == 'true' && 'main' || $SHA_SHORT }}" >> $GITHUB_ENV
-        env:
-          SHA_SHORT: ${{$GITHUB_SHA | cut -c 1-6}}
+        run: echo "DESTINATION_FOLDER=${{ github.event.pull_request.merged == 'true' && 'main' || github.sha | cut -c 1-6 }}" >> $GITHUB_ENV
       - name: Install
         run: npm ci
       - name: Build
