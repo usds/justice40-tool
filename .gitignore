@@ -127,3 +127,6 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# temporary census data
+score/data/census
