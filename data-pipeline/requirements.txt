@@ -1,3 +1,4 @@
+-e . # installs this package
 pre-commit==2.13.0
 black==21.5b2
 flake8==3.9.2
