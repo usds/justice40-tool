@@ -3,19 +3,27 @@ import requests
 import zipfile
 
 with requests.Session() as s:
-    fips = "01"
-    print(f"downloading {fips}")
+    with open("data/fips_states_2010.csv") as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=",")
+        line_count = 0
+        for row in csv_reader:
+            if line_count == 0:
+                line_count += 1
+            else:
+                fips = row[0].strip()
+                print(f"downloading {row[1]}")
 
-    cbg_state_url = (
-        f"https://www2.census.gov/geo/tiger/TIGER2010/BG/2010/tl_2010_{fips}_bg10.zip"
-    )
-    download = s.get(cbg_state_url)
-    file_contents = download.content
-    zip_file = open("downloaded.zip", "wb")
-    zip_file.write(file_contents)
-    zip_file.close()
+                cbg_state_url = f"https://www2.census.gov/geo/tiger/TIGER2010/BG/2010/tl_2010_{fips}_bg10.zip"
+                download = s.get(cbg_state_url)
+                file_contents = download.content
+                zip_file = open("data/census/downloaded.zip", "wb")
+                zip_file.write(file_contents)
+                zip_file.close()
 
-    print(f"extracting {fips}")
+                print(f"extracting {row[1]}")
 
-    with zipfile.ZipFile("downloaded.zip", "r") as zip_ref:
-        zip_ref.extractall("data")
+                with zipfile.ZipFile("data/census/downloaded.zip", "r") as zip_ref:
+                    zip_ref.extractall(f"data/census/{fips}")
+                line_count += 1
+
+    print("Census block groups downloading complete")
