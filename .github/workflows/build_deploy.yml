@@ -7,7 +7,7 @@
 name: GH Pages deploy
 env:
   # If this is just a PR branch, put content in a hash directory. Otherwise, put it in "main"
-  DESTINATION_FOLDER: ${{ github.event.pull_request.merged == 'true' && 'main' || ${{env.GITHUB_SHA}} | cut -c1-8 }}
+  DESTINATION_FOLDER: ${{ github.event.pull_request.merged == 'true' && 'main' || ${{GITHUB_SHA}} | cut -c1-8 }}
 on:
   push:
     branches: [main]
