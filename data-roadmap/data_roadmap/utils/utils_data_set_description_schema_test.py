@@ -174,7 +174,7 @@ field: enum('option 1', 'option 2')
                 )
 
             self.assertEqual(
-                str(context_manager.exception),
+                str(context_manager.exception).replace("\t", "    "),
                 """Error validating data
     age: 'asdf' is not a int.
     awesome: 'asdf' is not a bool.""",
@@ -190,7 +190,7 @@ field: enum('option 1', 'option 2')
                 )
 
             self.assertEqual(
-                str(context_manager.exception),
+                str(context_manager.exception).replace("\t", "    "),
                 """Error validating data
     name: Required field missing""",
             )
