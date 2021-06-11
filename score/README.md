@@ -9,7 +9,7 @@
   - Windows: `./venv/Scripts/activate`
   - Mac/Linux: `source venv/bin/activate`
 - Install packages: `pip install -r requirements.txt`
-  Where'
+  - If you are a Windows user, you might need to install Build Tools for Visual Studio. [Instructions here](https://stackoverflow.com/a/54136652)
 
 ## Running the Jupyter notebook
 

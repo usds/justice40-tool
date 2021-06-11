@@ -3,3 +3,4 @@ jupyter
 numpy
 pandas
 requests
+pyshp
