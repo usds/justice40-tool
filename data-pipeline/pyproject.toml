@@ -1,0 +1,55 @@
+# configures some basic black settings per this article:
+# https://ljvmiranda921.github.io/notebook/2018/06/21/precommits-using-black-and-flake8/
+[tool.black]
+line-length = 79
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | \.env
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+[tool.liccheck]
+# Authorized and unauthorized licenses in LOWER CASE
+authorized_licenses = [
+        "bsd",
+        "new bsd",
+        "bsd license",
+        "new bsd license",
+        "simplified bsd",
+        "apache",
+        "apache 2.0",
+        "apache software license",
+        "apache software",
+        "gnu lgpl",
+        "gnu lesser general public license v2 (lgplv2)",
+        "gnu general public license v2 (gplv2)",
+        "gnu library or lesser general public license (lgpl)",
+        "lgpl with exceptions or zpl",
+        "isc license",
+        "isc license (iscl)",
+        "mit",
+        "mit license",
+        "mozilla public license 2.0 (mpl 2.0)",
+        "public domain",
+        "python software foundation license",
+        "python software foundation",
+        "zpl 2.1"
+]
+
+unauthorized_licenses = [
+        "gpl v3"
+]
+
+[tool.pylint."MESSAGE CONTROL"]
+disable = [
+  "C0114"
+]
