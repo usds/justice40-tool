@@ -1,0 +1,5 @@
+ipython
+jupyter
+numpy
+pandas
+requests
