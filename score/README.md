@@ -26,3 +26,11 @@
 - Activate your virtualenv (see above)
 - Run `python scripts/download_cbg.py`
   Note: Census files are not kept in the repository and the download directories are ignored by Git
+
+## Generating mbtiles
+
+- Run the following script: `python .\scripts\generate_mbtiles.py`
+
+## Serve the map locally
+
+- Run: `docker run --rm -it -v ${PWD}/data/tiles:/data -p 8080:80 klokantech/tileserver-gl`

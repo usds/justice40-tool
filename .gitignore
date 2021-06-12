@@ -130,3 +130,4 @@ cython_debug/
 
 # temporary census data
 score/data/census
+score/data/tiles
