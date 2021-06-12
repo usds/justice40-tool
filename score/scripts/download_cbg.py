@@ -12,32 +12,47 @@ with requests.Session() as s:
                 line_count += 1
             else:
                 fips = row[0].strip()
-                print(f"downloading {row[1]}")
 
-                cbg_state_url = f"https://www2.census.gov/geo/tiger/TIGER2010/BG/2010/tl_2010_{fips}_bg10.zip"
-                download = s.get(cbg_state_url)
-                file_contents = download.content
-                zip_file = open("data/census/downloaded.zip", "wb")
-                zip_file.write(file_contents)
-                zip_file.close()
+                # check if file exists
+                if not os.path.isfile(
+                    f"data/census/shp/{fips}/tl_2010_{fips}_bg10.shp"
+                ):
+                    print(f"downloading {row[1]}")
 
-                print(f"extracting {row[1]}")
+                    cbg_state_url = f"https://www2.census.gov/geo/tiger/TIGER2010/BG/2010/tl_2010_{fips}_bg10.zip"
+                    download = s.get(cbg_state_url)
+                    file_contents = download.content
+                    zip_file = open("data/census/downloaded.zip", "wb")
+                    zip_file.write(file_contents)
+                    zip_file.close()
 
-                with zipfile.ZipFile("data/census/downloaded.zip", "r") as zip_ref:
-                    zip_ref.extractall(f"data/census/shp/{fips}")
+                    print(f"extracting {row[1]}")
 
-                # ogr2ogr
-                print(f"encoding GeoJSON for {row[1]}")
-                cmd = (
-                    'docker run --rm -it -v "%cd%"/:/home osgeo/gdal:alpine-ultrasmall-latest ogr2ogr -f GeoJSON /home/data/census/geojson/'
-                    + fips
-                    + ".json /home/data/census/shp/"
-                    + fips
-                    + "/tl_2010_"
-                    + fips
-                    + "_bg10.shp"
-                )
-                print(cmd)
-                os.system(cmd)
+                    with zipfile.ZipFile("data/census/downloaded.zip", "r") as zip_ref:
+                        zip_ref.extractall(f"data/census/shp/{fips}")
+
+                if not os.path.isfile(f"data/census/geojson/{fips}.json"):
+
+                    # ogr2ogr
+                    print(f"encoding GeoJSON for {row[1]}")
+
+                    # PWD is different for Windows
+                    if os.name == "nt":
+                        pwd = "%cd%"
+                    else:
+                        pwd = "${PWD}"
+                    cmd = (
+                        'docker run --rm -it -v "'
+                        + pwd
+                        + '"/:/home osgeo/gdal:alpine-ultrasmall-latest ogr2ogr -f GeoJSON /home/data/census/geojson/'
+                        + fips
+                        + ".json /home/data/census/shp/"
+                        + fips
+                        + "/tl_2010_"
+                        + fips
+                        + "_bg10.shp"
+                    )
+                    print(cmd)
+                    os.system(cmd)
 
     print("Census block groups downloading complete")

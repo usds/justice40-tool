@@ -17,3 +17,12 @@
 - Change to this directory (i.e. `cd score`)
 - Activate your virtualenv (see above)
 - Type `jupyter notebook`. Your browser should open with a Jupyter Notebook tab
+
+## Downloading Census Block Groups GeoJSON
+
+- Make sure you have Docker running
+- Start a terminal
+- Change to this directory (i.e. `cd score`)
+- Activate your virtualenv (see above)
+- Run `python scripts/download_cbg.py`
+  Note: Census files are not kept in the repository and the download directories are ignored by Git
