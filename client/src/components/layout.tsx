@@ -1,6 +1,5 @@
 import React, {ReactNode} from 'react';
 import {GridContainer, Grid} from '@trussworks/react-uswds';
-// import * as styles from './layout.module.scss';
 import J40Header from './J40Header';
 import J40Footer from './J40Footer';
 import J40Aside from '../components/J40Aside';

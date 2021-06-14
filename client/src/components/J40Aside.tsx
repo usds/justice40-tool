@@ -4,8 +4,7 @@ import * as React from 'react';
 import chatIcon from '/node_modules/uswds/dist/img/usa-icons/chat.svg';
 // @ts-ignore
 import githubIcon from '/node_modules/uswds/dist/img/usa-icons/github.svg';
-// usa-prose site-prose grid-gap ' +
-//           'grid-container usa-section
+
 const J40Aside = () => {
   return (
     <>
