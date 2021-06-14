@@ -12,22 +12,22 @@ const J40Aside = () => {
         aria-labelledby="right-sidebar"
         className={'j40-aside desktop:grid-col-3 usa-prose usa-section'}
         id="right-sidebar">
-        <h1>Get Involved</h1>
-        <h2><img
+        <h2>Get Involved</h2>
+        <h3><img
           className={'flex-align-self-center width-4 j40-aside-icon'}
           src={chatIcon} alt={'chat icon'}/>
-        Send Feedback</h2>
+        Send Feedback</h3>
         <p className={'usa-prose site-prose'}>Have ideas about how to
         acknowledge the on-the-ground experiences of your community?
         </p>
       Email: <a href="mailto: justice40open@usds.gov">
       justice40open@usds.gov</a>
         <p>&nbsp;</p>
-        <h2>
+        <h3>
           <img
             className={'flex-align-self-center width-4 j40-aside-icon'}
             src={githubIcon} alt={'github icon'}/>
-        Join the open source community</h2>
+        Join the open source community</h3>
         <p>
         Justice40’s code is open source, which means it is available for
         the public to view and contribute. Anyone can view and

@@ -66,7 +66,7 @@ $j40-max-width: 80ex;
   }
 }
 
-.j40-header, .j40-primary-nav, .j40-header > li > a{
+.j40-header, .j40-primary-nav, .j40-header > li > a {
   background-color: #112f4e; /* todo: move color to theme */
   color: white !important;
   z-index: 5;
@@ -112,19 +112,14 @@ $j40-max-width: 80ex;
   padding-right: 1em;
   padding-left: 1em;
 
-  h1 {
+  h2 {
     font-weight: 100;
     font-size: 2em;
   }
 
-  h2 {
-    font-weight: 100;
-    font-size: 1.4em;
-  }
-
   h3 {
     font-weight: 100;
-    font-size: 1.3em;
+    font-size: 1.4em;
   }
 
   .j40-aside-icon {
@@ -148,10 +143,17 @@ $j40-max-width: 80ex;
 }
 
 // spacing top & bottom around main content
-@include at-media("mobile-lg") {
-  .j40-main-content {
+.j40-main-content {
+  @include at-media("mobile-lg") {
     margin-bottom: 2rem;
     margin-top: 2.5rem;
+  }
+
+  h1 {
+    font-size: 2.13rem;
+  }
+  h2 {
+    font-size: 1.46rem;
   }
 }
 
@@ -174,6 +176,7 @@ $j40-max-width: 80ex;
   h1, h2, h3, h4 {
     font-family: Source Sans Pro Web, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
   }
+
   p, div {
     max-width: $j40-max-width;
   }
@@ -183,8 +186,10 @@ $j40-max-width: 80ex;
   p {
     margin: 0;
   }
+
   padding-top: 0;
   padding-bottom: 0;
+
   .usa-alert:before {
     margin-top: 12px !important;
   }

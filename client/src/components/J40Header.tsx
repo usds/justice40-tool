@@ -57,7 +57,7 @@ const J40Header = () => {
 
   return (
     <>
-      <Helmet>
+      <Helmet htmlAttributes={{lang: intl.locale}}>
         <meta charSet="utf-8"/>
         <title>{title}</title>
       </Helmet>
