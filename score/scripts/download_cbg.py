@@ -2,8 +2,11 @@ import csv
 import requests
 import zipfile
 import os
+import json
 
 with requests.Session() as s:
+    # the fips_states_2010.csv is generated from data here
+    # https://www.census.gov/geographies/reference-files/time-series/geo/tallies.html
     with open("data/fips_states_2010.csv") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=",")
         line_count = 0
@@ -32,7 +35,6 @@ with requests.Session() as s:
                         zip_ref.extractall(f"data/census/shp/{fips}")
 
                 if not os.path.isfile(f"data/census/geojson/{fips}.json"):
-
                     # ogr2ogr
                     print(f"encoding GeoJSON for {row[1]}")
 
@@ -54,5 +56,51 @@ with requests.Session() as s:
                     )
                     print(cmd)
                     os.system(cmd)
+
+    # generate CBG CSV table for pandas
+    ## load in memory
+    cbg_national_list = []  # in-memory global list
+    cbg_per_state_list = {}  # in-memory dict per state
+    for file in os.listdir("data/census/geojson"):
+        if file.endswith("01.json") or file.endswith("02.json"):
+            print(f"ingesting geoid10 for file {file}")
+            with open(f"data/census/geojson/{file}") as f:
+                geojson = json.load(f)
+                for feature in geojson["features"]:
+                    geoid10 = feature["properties"]["GEOID10"]
+                    cbg_national_list.append(str(geoid10))
+                    geoid10_state_id = geoid10[:2]
+                    if not cbg_per_state_list.get(geoid10_state_id):
+                        cbg_per_state_list[geoid10_state_id] = []
+                    cbg_per_state_list[geoid10_state_id].append(geoid10)
+
+    ## write to individual state csv
+    for state_id in cbg_per_state_list:
+        geoid10_list = cbg_per_state_list[state_id]
+        with open(
+            f"data/census/csv/{state_id}.csv", mode="w", newline=""
+        ) as cbg_csv_file:
+            cbg_csv_file_writer = csv.writer(
+                cbg_csv_file, delimiter=",", quotechar='"', quoting=csv.QUOTE_MINIMAL
+            )
+
+            for geoid10 in geoid10_list:
+                cbg_csv_file_writer.writerow(
+                    [
+                        geoid10,
+                    ]
+                )
+
+    ## write US csv
+    with open(f"data/census/csv/us.csv", mode="w", newline="") as cbg_csv_file:
+        cbg_csv_file_writer = csv.writer(
+            cbg_csv_file, delimiter=",", quotechar='"', quoting=csv.QUOTE_MINIMAL
+        )
+        for geoid10 in cbg_national_list:
+            cbg_csv_file_writer.writerow(
+                [
+                    geoid10,
+                ]
+            )
 
     print("Census block groups downloading complete")
