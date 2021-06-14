@@ -27,6 +27,11 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Set GITHUB_SHA_SHORT
+        run: echo "GITHUB_SHA_SHORT=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
+      # If this is just a PR branch, put content in a hash directory. Otherwise, put it in "main"
+      - name: Set DESTINATION_FOLDER
+        run: echo "DESTINATION_FOLDER=${{ github.event.pull_request.merged == 'true' && 'main' || env.GITHUB_SHA_SHORT }}" >> $GITHUB_ENV
       - name: Install
         run: npm ci
       - name: Build
@@ -59,12 +64,18 @@ jobs:
         with:
           name: J40Static
           path: ./public
+      - name: Set GITHUB_SHA_SHORT
+        run: echo "GITHUB_SHA_SHORT=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
+      # If this is just a PR branch, put content in a hash directory. Otherwise, put it in "main"
+      - name: Set DESTINATION_FOLDER
+        run: echo "DESTINATION_FOLDER=${{ github.event.pull_request.merged == 'true' && 'main' || env.GITHUB_SHA_SHORT }}" >> $GITHUB_ENV
       - name: Deploy to Github Pages
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages # The branch the action should deploy to.
           FOLDER: public # The folder the action should deploy.
+          TARGET-FOLDER: ${{env.DESTINATION_FOLDER}} # If we're on a PR branch, merge to PR folder
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -72,4 +83,4 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: Deploy to Geoplatform AWS
-        run: aws s3 sync ./public/ s3://usds-geoplatform-justice40-website --delete
+        run: aws s3 sync ./public/ s3://usds-geoplatform-justice40-website/justice40-tool/${{env.DESTINATION_FOLDER}} --delete

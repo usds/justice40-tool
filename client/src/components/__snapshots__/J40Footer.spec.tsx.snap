@@ -3,7 +3,7 @@
 exports[`J40Footer renders correctly 1`] = `
 <DocumentFragment>
   <footer
-    class="usa-footer usa-footer--big"
+    class="usa-footer usa-footer--big j40-footer"
   >
     <div
       class="usa-footer__primary-section"
@@ -180,7 +180,7 @@ exports[`J40Footer renders correctly 1`] = `
                       class="grid-col-auto"
                     >
                       <p
-                        class=" j40-footer-logo-heading"
+                        class="j40-footer-logo-heading"
                       >
                         Council on Environmental Quality
                       </p>
@@ -194,7 +194,7 @@ exports[`J40Footer renders correctly 1`] = `
                     class="usa-footer__secondary-link"
                   >
                     <address
-                      class="usa-footer__address j40-address-readability"
+                      class="usa-footer__address"
                     >
                       <div
                         class="usa-footer__contact-info grid-row grid-gap"

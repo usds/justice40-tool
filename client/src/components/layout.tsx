@@ -1,18 +1,33 @@
 import React, {ReactNode} from 'react';
-import * as styles from './layout.module.scss';
+import {GridContainer, Grid} from '@trussworks/react-uswds';
 import J40Header from './J40Header';
 import J40Footer from './J40Footer';
+import J40Aside from '../components/J40Aside';
+import {URLFlagProvider} from '../contexts/FlagContext';
+
 interface ILayoutProps {
-  children: ReactNode
+  children: ReactNode,
+  location: Location
 }
 
-const Layout = ({children}: ILayoutProps) => {
+const Layout = ({children, location}: ILayoutProps) => {
   return (
-    <div className={styles.site}>
-      <J40Header />
-      <div className={styles.siteContent}>{children}</div>
-      <J40Footer />
-    </div>
+    <URLFlagProvider location={location}>
+      <J40Header/>
+      <GridContainer containerSize={'desktop-lg'}
+        className={'j40-grid-container'}>
+        <Grid row>
+          <main id={'main-content'}
+            className={'usa-layout-docs desktop:grid-col-9 j40-main-content'}>
+            <section className={'usa-prose'}>
+              {children}
+            </section>
+          </main>
+          <J40Aside/>
+        </Grid>
+      </GridContainer>
+      <J40Footer/>
+    </URLFlagProvider>
   );
 };
 
