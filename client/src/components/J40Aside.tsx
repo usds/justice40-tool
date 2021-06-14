@@ -15,9 +15,9 @@ const J40Aside = () => {
         id="right-sidebar">
         <h1>Get Involved</h1>
         <h2><img
-          className={'flex-align-self-center width-4'} src={chatIcon}
-          alt={'chat icon'}/></h2>
-        <h2>Send Feedback</h2>
+          className={'flex-align-self-center width-4 j40-aside-icon'}
+          src={chatIcon} alt={'chat icon'}/>
+        Send Feedback</h2>
         <p className={'usa-prose site-prose'}>Have ideas about how to
         acknowledge the on-the-ground experiences of your community?
         </p>
@@ -26,10 +26,8 @@ const J40Aside = () => {
         <p>&nbsp;</p>
         <h2>
           <img
-            className={'flex-align-self-center width-4'}
+            className={'flex-align-self-center width-4 j40-aside-icon'}
             src={githubIcon} alt={'github icon'}/>
-        </h2>
-        <h2>
         Join the open source community</h2>
         <p>
         Justice40’s code is open source, which means it is available for

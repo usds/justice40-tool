@@ -1,7 +1,7 @@
 import React, {ReactNode} from 'react';
 import {GridContainer, Grid} from '@trussworks/react-uswds';
 // import * as styles from './layout.module.scss';
-import J40Header2 from './J40Header2';
+import J40Header from './J40Header';
 import J40Footer from './J40Footer';
 import J40Aside from '../components/J40Aside';
 import {URLFlagProvider} from '../contexts/FlagContext';
@@ -14,7 +14,7 @@ interface ILayoutProps {
 const Layout = ({children, location}: ILayoutProps) => {
   return (
     <URLFlagProvider location={location}>
-      <J40Header2/>
+      <J40Header/>
       <GridContainer containerSize={'desktop-lg'}
         className={'j40-grid-container'}>
         <Grid row>
