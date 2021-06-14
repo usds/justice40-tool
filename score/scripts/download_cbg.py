@@ -62,7 +62,7 @@ with requests.Session() as s:
     cbg_national_list = []  # in-memory global list
     cbg_per_state_list = {}  # in-memory dict per state
     for file in os.listdir("data/census/geojson"):
-        if file.endswith("01.json") or file.endswith("02.json"):
+        if file.endswith(".json"):
             print(f"ingesting geoid10 for file {file}")
             with open(f"data/census/geojson/{file}") as f:
                 geojson = json.load(f)
