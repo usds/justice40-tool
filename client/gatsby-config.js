@@ -5,7 +5,7 @@ module.exports = {
   pathPrefix: '/justice40-tool',
   plugins: [
     {
-      resolve: `gatsby-plugin-sass`,
+      resolve: 'gatsby-plugin-sass',
       options: {
         sassOptions: {
           includePaths: [
@@ -20,7 +20,7 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-intl`,
+      resolve: 'gatsby-plugin-intl',
       options: {
         // language JSON resource path
         path: `${__dirname}/src/intl`,
@@ -39,12 +39,12 @@ module.exports = {
           patterns: [
             // The pattern "**/*.{js,jsx,ts,tsx}" is
             // not used because we will rely on `eslint --fix`
-            'src/*.{css,scss,less}',
-            'src/*.{json,json5}',
-            'src/*.{graphql}',
-            'src/*.{md,mdx}',
-            'src/*.{html}',
-            'src/*.{yaml,yml}',
+            '**/*.{css,scss,less}',
+            '**/*.{json,json5}',
+            '**/*.{graphql}',
+            '**/*.{md,mdx}',
+            '**/*.{html}',
+            '**/*.{yaml,yml}',
           ],
         },
         eslint: {
