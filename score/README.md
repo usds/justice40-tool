@@ -18,9 +18,9 @@
 - Activate your virtualenv (see above)
 - Type `jupyter notebook`. Your browser should open with a Jupyter Notebook tab
 
-## Downloading Census Block Groups GeoJSON
+## Downloading Census Block Groups GeoJSON and Generating CBG CSVs
 
-- Make sure you have Docker running
+- Make sure you have Docker running in your machine
 - Start a terminal
 - Change to this directory (i.e. `cd score`)
 - Activate your virtualenv (see above)
