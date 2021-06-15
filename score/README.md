@@ -29,6 +29,8 @@
 
 ## Generating mbtiles
 
+- Change to this directory (i.e. `cd score`)
+- Activate your virtualenv (see above)
 - Run the following script: `python .\scripts\generate_mbtiles.py`
 
 ## Serve the map locally
