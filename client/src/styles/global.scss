@@ -2,8 +2,8 @@
   These are necessary for the image and font urls referenced in the source
   files to resolve correctly.
 */
-$theme-image-path: '../../node_modules/uswds/src/img';
-$theme-font-path: '../../node_modules/uswds/src/fonts';
+$theme-image-path: "../../node_modules/uswds/src/img";
+$theme-font-path: "../../node_modules/uswds/src/fonts";
 
 /*
   Example:
@@ -21,7 +21,7 @@ $theme-show-notifications: false;
 
 $theme-font-role-heading: "sans";
 
-@import '../../node_modules/uswds';
+@import "../../node_modules/uswds";
 
 @import "~@trussworks/react-uswds/lib/index.css";
 
@@ -66,13 +66,15 @@ $j40-max-width: 80ex;
   }
 }
 
-.j40-header, .j40-primary-nav, .j40-header > li > a {
+.j40-header,
+.j40-primary-nav,
+.j40-header > li > a {
   background-color: #112f4e; /* todo: move color to theme */
   color: white !important;
   z-index: 5;
 
   .usa-nav-container {
-    max-width: ($j40-max-width*2);
+    max-width: ($j40-max-width * 2);
   }
 
   span {
@@ -86,7 +88,8 @@ $j40-max-width: 80ex;
     font-family: "serif";
   }
 
-  .usa-current::after, :hover::after {
+  .usa-current::after,
+  :hover::after {
     background-color: #2491ff !important;
   }
 
@@ -173,11 +176,16 @@ $j40-max-width: 80ex;
 
 // NOTE: uswds `.usa-prose` defines these all as Merriweather Web via $theme-font-role-heading
 .usa-prose {
-  h1, h2, h3, h4 {
-    font-family: Source Sans Pro Web, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: Source Sans Pro Web, Helvetica Neue, Helvetica, Roboto, Arial,
+      sans-serif;
   }
 
-  p, div {
+  p,
+  div {
     max-width: $j40-max-width;
   }
 }
@@ -194,4 +202,3 @@ $j40-max-width: 80ex;
     margin-top: 12px !important;
   }
 }
-
