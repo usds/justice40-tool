@@ -35,7 +35,7 @@ const IndexPage = ({location}: IndexPageProps) => {
   ];
 
   return (<Layout location={location}>
-    <h2>About Justice40</h2>
+    <h1>About Justice40</h1>
     <p>
         In an effort to address historical environmental injustices,
         President Biden created the Justice40 Initiative on January
@@ -71,7 +71,7 @@ const IndexPage = ({location}: IndexPageProps) => {
         Abroad.</a>
     </p>
 
-    <h3>Areas of Focus</h3>
+    <h2>Areas of Focus</h2>
     <div className={'grid-row grid-gap'}>
       <div className={'j40-two-column-confine'}>
         <ul className={'usa-icon-list j40-two-column'}>
@@ -97,7 +97,7 @@ const IndexPage = ({location}: IndexPageProps) => {
     </div>
 
 
-    <h3>A Transparent, Community-First Approach</h3>
+    <h2>A Transparent, Community-First Approach</h2>
 
     <p>
     Successful initiatives are guided by direct input from the
@@ -136,6 +136,7 @@ const IndexPage = ({location}: IndexPageProps) => {
     being built and the processes for stakeholder and public
     engagement.
     </p>
+
   </Layout>
   );
 };

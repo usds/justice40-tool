@@ -57,7 +57,7 @@ const J40Header = () => {
 
   return (
     <>
-      <Helmet>
+      <Helmet htmlAttributes={{lang: intl.locale}}>
         <meta charSet="utf-8"/>
         <title>{title}</title>
       </Helmet>
@@ -67,7 +67,8 @@ const J40Header = () => {
         className={'j40-sitealert'}>
         <b>Welcome to Justice40&apos;s Temporary Home</b> While Justice40 gets
         up and running, we are using GitHub Pages as a temporary website
-        host. To learn more about GitHub Pages, click <a href="https://pages.github.com/">here</a>.
+        host. To learn more about GitHub Pages, click
+        <a href="https://pages.github.com/">here</a>.
       </SiteAlert>
       <Header
         basic={true} role={'banner'}
