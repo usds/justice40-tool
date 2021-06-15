@@ -2,22 +2,22 @@ import os
 from pathlib import Path
 import shutil
 
-data_path = Path.cwd().joinpath("data")
+data_path = Path.cwd() / "data"
 
 # remove existing mbtiles file
-mb_tiles_path = data_path.joinpath("tiles", "block2010.mbtiles")
+mb_tiles_path = data_path / "tiles" / "block2010.mbtiles"
 if os.path.exists(mb_tiles_path):
     os.remove(mb_tiles_path)
 
 # remove existing mvt directory
-mvt_tiles_path = data_path.joinpath("tiles", "mvt")
+mvt_tiles_path = data_path / "tiles" / "mvt"
 if os.path.exists(mvt_tiles_path):
     shutil.rmtree(mvt_tiles_path)
 
 # get a list of all json files to plug in the docker commands below
 # (workaround since *.json doesn't seem to work)
 geojson_list = ""
-geojson_path = data_path.joinpath("census", "geojson")
+geojson_path = data_path / "census" / "geojson"
 for file in os.listdir(geojson_path):
     if file.endswith(".json"):
         geojson_list += f"/home/data/census/geojson/{file} "

@@ -5,7 +5,7 @@ import os
 import json
 from pathlib import Path
 
-data_path = Path.cwd().joinpath("data")
+data_path = Path.cwd() / "data"
 
 with requests.Session() as s:
     # the fips_states_2010.csv is generated from data here
