@@ -18,6 +18,16 @@
 - Activate your virtualenv (see above)
 - Type `jupyter notebook`. Your browser should open with a Jupyter Notebook tab
 
+## Activating variable-enabled Markdown for Jupyter notebooks 
+- Change to this directory (i.e. `cd score`)
+- Run `jupyter contrib nbextension install --user`
+- Run `jupyter nbextension enable python-markdown/main`
+- Make sure you've loaded the Jupyter notebook in a "Trusted" state. (See button near
+ top right of Notebook screen.)
+ 
+For more information, see [nbextensions docs](https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/install.html) and
+see [python-markdown docs](https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tree/master/src/jupyter_contrib_nbextensions/nbextensions/python-markdown). 
+
 ## Downloading Census Block Groups GeoJSON and Generating CBG CSVs
 
 - Make sure you have Docker running in your machine

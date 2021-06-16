@@ -1,5 +1,6 @@
 ipython
 jupyter
+jupyter_contrib_nbextensions
 numpy
 pandas
 requests
