@@ -22,8 +22,6 @@ for file in os.listdir(geojson_path):
     if file.endswith(".json"):
         geojson_list += f"/home/data/census/geojson/{file} "
 
-breakpoint()
-
 if geojson_list == "":
     print("No GeoJson files found. Please run download_cbg.py first")
 
@@ -35,7 +33,7 @@ else:
 cmd = (
     'docker run --rm -it -v "'
     + pwd
-    + '"/:/home klokantech/tippecanoe tippecanoe -zg -o /home/data/tiles/block2010.mbtiles --drop-densest-as-needed --extend-zooms-if-still-dropping -l cbg2010 '
+    + '"/:/home klokantech/tippecanoe tippecanoe -zg -o /home/data/tiles/block2010.mbtiles --drop-densest-as-needed --extend-zooms-if-still-dropping -l cbg2010 -s_srs EPSG:4269 -t_srs EPSG:4326 '
     + geojson_list
 )
 print(cmd)
@@ -51,7 +49,7 @@ else:
 cmd = (
     'docker run --rm -it -v "'
     + pwd
-    + '"/:/home klokantech/tippecanoe tippecanoe --no-tile-compression -zg -e /home/data/tiles/mvt /home/data/census/geojson/01.json '
+    + '"/:/home klokantech/tippecanoe tippecanoe --no-tile-compression -zg -e /home/data/tiles/mvt '
     + geojson_list
 )
 print(cmd)
