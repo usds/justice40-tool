@@ -10,7 +10,7 @@ data_path = Path.cwd() / "data"
 with requests.Session() as s:
     # the fips_states_2010.csv is generated from data here
     # https://www.census.gov/geographies/reference-files/time-series/geo/tallies.html
-    fips_csv_path = data_path.joinpath("fips_states_2010.csv")
+    fips_csv_path = data_path / "fips_states_2010.csv"
     with open(fips_csv_path) as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=",")
         line_count = 0
@@ -27,10 +27,12 @@ with requests.Session() as s:
                 if not os.path.isfile(shp_file_path):
                     print(f"downloading {row[1]}")
 
+                    # 2020 tiger data is here: https://www2.census.gov/geo/tiger/TIGER2020/BG/
+                    # But using 2010 for now
                     cbg_state_url = f"https://www2.census.gov/geo/tiger/TIGER2010/BG/2010/tl_2010_{fips}_bg10.zip"
                     download = s.get(cbg_state_url)
                     file_contents = download.content
-                    zip_file_path = data_path.joinpath("census", "downloaded.zip")
+                    zip_file_path = data_path / "census" / "downloaded.zip"
                     zip_file = open(zip_file_path, "wb")
                     zip_file.write(file_contents)
                     zip_file.close()
@@ -38,7 +40,7 @@ with requests.Session() as s:
                     print(f"extracting {row[1]}")
 
                     with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
-                        shp_dir_path = data_path.joinpath("census", "shp", fips)
+                        shp_dir_path = data_path / "census" / "shp" / fips
                         zip_ref.extractall(shp_dir_path)
 
                 geojson_dir_path = data_path.joinpath(
