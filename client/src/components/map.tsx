@@ -4,10 +4,10 @@ import View from 'ol/View';
 import Feature from 'ol/Feature';
 import Geometry from 'ol/geom/Geometry';
 import TileLayer from 'ol/layer/Tile';
-import VectorLayer from 'ol/layer/Vector';
 import VectorTileSource from 'ol/source/VectorTile';
 import VectorTileLayer from 'ol/layer/VectorTile';
 import MVT from 'ol/format/MVT';
+import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import XYZ from 'ol/source/XYZ';
 import {fromLonLat} from 'ol/proj';
@@ -28,7 +28,12 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
         React.MutableRefObject<HTMLInputElement>;
 
   useEffect( () => {
-    const initalFeaturesLayer = new VectorTileLayer({
+    // create and add initial vector source layer, to be replaced layer
+    const initialFeaturesLayer = new VectorLayer({
+      source: new VectorSource(),
+    });
+
+    const censusBlockGroupTileLayer = new VectorTileLayer({
       source: new VectorTileSource({
         format: new MVT(),
         url: 'https://gis.data.census.gov/arcgis/rest/services/Hosted/VT_2019_150_00_PY_D1/VectorTileServer/tile/{z}/{y}/{x}.mvt',
@@ -44,18 +49,19 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
             url: 'https://{1-4}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
           }),
         }),
-        initalFeaturesLayer,
+        censusBlockGroupTileLayer,
+        initialFeaturesLayer,
       ],
       view: new View({
         projection: 'EPSG:3857',
-        center: fromLonLat([-95.7129, 37.0902]), // [37.0902, 95.7129],
+        center: fromLonLat([-95.7129, 37.0902]),
         zoom: 3,
       }),
       controls: [],
     });
 
     setMap(initialMap);
-    setFeaturesLayer(initalFeaturesLayer);
+    setFeaturesLayer(initialFeaturesLayer);
   }, []);
 
 

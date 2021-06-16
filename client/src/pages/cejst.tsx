@@ -11,7 +11,7 @@ import * as styles from './cejst.module.scss';
 
 interface IMapPageProps {
   location: Location;
-};
+}
 
 const CEJSTPage = ({location}: IMapPageProps) => {
   const [features, setFeatures] = useState<Feature<Geometry>[]>([]);
@@ -42,7 +42,7 @@ const CEJSTPage = ({location}: IMapPageProps) => {
           heading="Limited Data Sources">
           <p>
             In this tool, we are using data sources that our
-            combined by our cummulative impact methodology.
+            combined by our cumulative impact methodology.
             Our sources were selected because sit amet,
             consectetur adipiscing. See all the sources we
             are investigating on our data roadmap.

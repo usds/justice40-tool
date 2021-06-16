@@ -6,7 +6,7 @@ import renewIcon from '/node_modules/uswds/dist/img/usa-icons/autorenew.svg';
 
 interface TimelinePageProps {
   location: Location;
-};
+}
 
 const TimelinePage = ({location}: TimelinePageProps) => {
   return (<Layout location={location}>
