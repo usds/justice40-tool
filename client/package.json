@@ -70,6 +70,7 @@
   "dependencies": {
     "@trussworks/react-uswds": "github:nathillardusds/react-uswds#nathillardusds/ssr",
     "ol": "^6.5.0",
+    "ol-mapbox-style": "^6.3.2",
     "query-string": "^7.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

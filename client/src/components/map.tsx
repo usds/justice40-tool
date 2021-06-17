@@ -3,20 +3,65 @@ import Map from 'ol/Map';
 import View from 'ol/View';
 import Feature from 'ol/Feature';
 import Geometry from 'ol/geom/Geometry';
-import TileLayer from 'ol/layer/Tile';
-import VectorTileSource from 'ol/source/VectorTile';
-import VectorTileLayer from 'ol/layer/VectorTile';
-import MVT from 'ol/format/MVT';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
-import XYZ from 'ol/source/XYZ';
 import {fromLonLat} from 'ol/proj';
 import * as styles from './map.module.scss';
-
+import olms from 'ol-mapbox-style';
 
 interface IMapWrapperProps {
   features: Feature<Geometry>[],
 };
+
+const mapConfig = {
+  'version': 8,
+  'cursor': 'pointer',
+  'sources': {
+    'carto-light': {
+      'type': 'raster',
+      'tiles': [
+        'https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
+        'https://b.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
+        'https://c.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
+        'https://d.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
+      ],
+    },
+    'custom': {
+      'projection': 'EPSG:3857',
+      'type': 'vector',
+      'tiles': [
+        'https://gis.data.census.gov/arcgis/rest/services/Hosted/VT_2019_150_00_PY_D1/VectorTileServer/tile/{z}/{y}/{x}.mvt',
+      ],
+    },
+  },
+  'layers': [
+    {
+      'id': 'carto-light-layer',
+      'source': 'carto-light',
+      'type': 'raster',
+      'minzoom': 0,
+      'maxzoom': 22,
+    },
+    {
+      'id': 'blocks',
+      'type': 'line',
+      'source': 'custom',
+      'source-layer': 'BlockGroup',
+      'minzoom': 0,
+      'layout': {
+        'line-cap': 'round',
+        'line-join': 'round',
+      },
+
+      'paint': {
+        'line-opacity': 0.6,
+        'line-color': 'red',
+        'line-width': 1,
+      },
+    },
+  ],
+};
+
 
 // The below adapted from
 // https://taylor.callsen.me/using-openlayers-with-react-functional-components/
@@ -33,35 +78,18 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
       source: new VectorSource(),
     });
 
-    const censusBlockGroupTileLayer = new VectorTileLayer({
-      source: new VectorTileSource({
-        format: new MVT(),
-        url: 'https://gis.data.census.gov/arcgis/rest/services/Hosted/VT_2019_150_00_PY_D1/VectorTileServer/tile/{z}/{y}/{x}.mvt',
-      }),
-    });
-
     const initialMap = new Map({
       target: mapElement.current,
-      layers: [
-
-        new TileLayer({
-          source: new XYZ({
-            url: 'https://{1-4}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
-          }),
-        }),
-        censusBlockGroupTileLayer,
-        initialFeaturesLayer,
-      ],
       view: new View({
-        projection: 'EPSG:3857',
-        center: fromLonLat([-95.7129, 37.0902]),
-        zoom: 3,
+        center: fromLonLat([-86.502136, 32.4687126]),
+        zoom: 4,
       }),
       controls: [],
     });
 
     setMap(initialMap);
     setFeaturesLayer(initialFeaturesLayer);
+    olms(initialMap, mapConfig);
   }, []);
 
 
