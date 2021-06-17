@@ -5,7 +5,6 @@ from pathlib import Path
 
 def get_state_fips_codes():
     data_path = Path.cwd() / "data"
-    breakpoint()
     fips_csv_path = data_path / "fips_states_2010.csv"
     fips_state_list = []
     with open(fips_csv_path) as csv_file:

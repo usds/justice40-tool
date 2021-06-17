@@ -4,6 +4,7 @@ import zipfile
 import os
 import json
 from pathlib import Path
+
 from utils import get_state_fips_codes
 
 data_path = Path.cwd() / "data"
