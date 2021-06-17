@@ -8,6 +8,7 @@
 - Nat Hillard - NatHillardUSDS
 - Jorge Escobar - esfoobar-usds
 - Tom Nielsen - TomNUSDS
+- Gina Maini - ginabeena
 
 ## Product
 - Katherine Mlika - katherinedm-usds

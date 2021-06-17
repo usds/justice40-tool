@@ -39,9 +39,8 @@ const J40Header = () => {
           className={'j40-header'}>Timeline</Link>],
       ['cejst',
         <Link
-          to={'/#cejst'}
+          to={'/cejst'}
           key={'cejst'}
-          target={'_blank'}
           className={'j40-header'}>CEJST</Link>],
     ]);
 

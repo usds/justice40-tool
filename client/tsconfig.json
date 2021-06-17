@@ -11,7 +11,23 @@
     "skipLibCheck": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "removeComments": false
+    "removeComments": false,
+    "allowJs": true,
+    "baseUrl": "./",
+    "paths": {
+      "ol": ["node_modules/ol/src"],
+      "ol/*": ["node_modules/ol/src/*"],
+      "ol-mapbox-style": ["node_modules/ol-mapbox-style/src"],
+      "ol-mapbox-style/*": ["node_modules/ol-mapbox-style/src/*"]
+    }
   },
-  "include": ["./src/**/*"]
+  "include": [
+    "./src/**/*",
+    "**/*.ts",
+    "node_modules/ol/**/*",
+    "node_modules/ol-mapbox-style/**/*"
+  ],
+  "typeAcquisition": {
+    "exclude": ["ol", "ol-mapbox-style"]
+  }
 }

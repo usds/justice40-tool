@@ -54,7 +54,7 @@ else:
 cmd = (
     'docker run --rm -it -v "'
     + pwd
-    + '"/:/home klokantech/tippecanoe tippecanoe --drop-densest-as-needed -zg -o /home/data/tiles/block2010.mbtiles --drop-densest-as-needed --extend-zooms-if-still-dropping -l cbg2010 -s_srs EPSG:4269 -t_srs EPSG:4326 '
+    + '"/:/home klokantech/tippecanoe tippecanoe --drop-densest-as-needed -zg -o /home/data/tiles/block2010.mbtiles --extend-zooms-if-still-dropping -l cbg2010 -s_srs EPSG:4269 -t_srs EPSG:4326 '
     + geojson_list
 )
 print(cmd)
