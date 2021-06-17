@@ -26,7 +26,7 @@ else:
     pwd = "${PWD}"
 
 # remove existing score json files
-score_geojson_dir = data_path + "score" + "geojson"
+score_geojson_dir = data_path / "score" / "geojson"
 files_in_directory = os.listdir(score_geojson_dir)
 filtered_files = [file for file in files_in_directory if file.endswith(".json")]
 for file in filtered_files:
