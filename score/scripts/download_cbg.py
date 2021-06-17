@@ -81,7 +81,7 @@ with requests.Session() as s:
                         cbg_per_state_list[geoid10_state_id] = []
                     cbg_per_state_list[geoid10_state_id].append(geoid10)
 
-    csv_dir_path = (data_path / "census" / "csv",)
+    csv_dir_path = data_path / "census" / "csv"
     ## write to individual state csv
     for state_id in cbg_per_state_list:
         geoid10_list = cbg_per_state_list[state_id]
