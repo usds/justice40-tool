@@ -5,70 +5,64 @@ import os
 import json
 from pathlib import Path
 
+from utils import get_state_fips_codes
+
 data_path = Path.cwd() / "data"
 
 with requests.Session() as s:
     # the fips_states_2010.csv is generated from data here
     # https://www.census.gov/geographies/reference-files/time-series/geo/tallies.html
-    fips_csv_path = data_path / "fips_states_2010.csv"
-    with open(fips_csv_path) as csv_file:
-        csv_reader = csv.reader(csv_file, delimiter=",")
-        line_count = 0
-        for row in csv_reader:
-            if line_count == 0:
-                line_count += 1
+    state_fips_codes = get_state_fips_codes()
+    for fips in state_fips_codes:
+        # check if file exists
+        shp_file_path = data_path.joinpath(
+            "census", "shp", fips, f"tl_2010_{fips}_bg10.shp"
+        )
+        if not os.path.isfile(shp_file_path):
+            print(f"downloading {row[1]}")
+
+            # 2020 tiger data is here: https://www2.census.gov/geo/tiger/TIGER2020/BG/
+            # But using 2010 for now
+            cbg_state_url = f"https://www2.census.gov/geo/tiger/TIGER2010/BG/2010/tl_2010_{fips}_bg10.zip"
+            download = s.get(cbg_state_url)
+            file_contents = download.content
+            zip_file_path = data_path / "census" / "downloaded.zip"
+            zip_file = open(zip_file_path, "wb")
+            zip_file.write(file_contents)
+            zip_file.close()
+
+            print(f"extracting {row[1]}")
+
+            with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
+                shp_dir_path = data_path / "census" / "shp" / fips
+                zip_ref.extractall(shp_dir_path)
+
+        geojson_dir_path = data_path.joinpath(
+            "census",
+            "geojson",
+        )
+        if not os.path.isfile(geojson_dir_path.joinpath(fips + ".json")):
+            # ogr2ogr
+            print(f"encoding GeoJSON for {row[1]}")
+
+            # PWD is different for Windows
+            if os.name == "nt":
+                pwd = "%cd%"
             else:
-                fips = row[0].strip()
-
-                # check if file exists
-                shp_file_path = data_path.joinpath(
-                    "census", "shp", fips, f"tl_2010_{fips}_bg10.shp"
-                )
-                if not os.path.isfile(shp_file_path):
-                    print(f"downloading {row[1]}")
-
-                    # 2020 tiger data is here: https://www2.census.gov/geo/tiger/TIGER2020/BG/
-                    # But using 2010 for now
-                    cbg_state_url = f"https://www2.census.gov/geo/tiger/TIGER2010/BG/2010/tl_2010_{fips}_bg10.zip"
-                    download = s.get(cbg_state_url)
-                    file_contents = download.content
-                    zip_file_path = data_path / "census" / "downloaded.zip"
-                    zip_file = open(zip_file_path, "wb")
-                    zip_file.write(file_contents)
-                    zip_file.close()
-
-                    print(f"extracting {row[1]}")
-
-                    with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
-                        shp_dir_path = data_path / "census" / "shp" / fips
-                        zip_ref.extractall(shp_dir_path)
-
-                geojson_dir_path = data_path.joinpath(
-                    "census",
-                    "geojson",
-                )
-                if not os.path.isfile(geojson_dir_path.joinpath(fips + ".json")):
-                    # ogr2ogr
-                    print(f"encoding GeoJSON for {row[1]}")
-
-                    # PWD is different for Windows
-                    if os.name == "nt":
-                        pwd = "%cd%"
-                    else:
-                        pwd = "${PWD}"
-                    cmd = (
-                        'docker run --rm -it -v "'
-                        + pwd
-                        + '"/:/home osgeo/gdal:alpine-ultrasmall-latest ogr2ogr -f GeoJSON /home/data/census/geojson/'
-                        + fips
-                        + ".json /home/data/census/shp/"
-                        + fips
-                        + "/tl_2010_"
-                        + fips
-                        + "_bg10.shp"
-                    )
-                    print(cmd)
-                    os.system(cmd)
+                pwd = "${PWD}"
+            cmd = (
+                'docker run --rm -it -v "'
+                + pwd
+                + '"/:/home osgeo/gdal:alpine-ultrasmall-latest ogr2ogr -f GeoJSON /home/data/census/geojson/'
+                + fips
+                + ".json /home/data/census/shp/"
+                + fips
+                + "/tl_2010_"
+                + fips
+                + "_bg10.shp"
+            )
+            print(cmd)
+            os.system(cmd)
 
     # generate CBG CSV table for pandas
     ## load in memory
@@ -87,10 +81,7 @@ with requests.Session() as s:
                         cbg_per_state_list[geoid10_state_id] = []
                     cbg_per_state_list[geoid10_state_id].append(geoid10)
 
-    csv_dir_path = data_path.joinpath(
-        "census",
-        "csv",
-    )
+    csv_dir_path = data_path / "census" / "csv"
     ## write to individual state csv
     for state_id in cbg_per_state_list:
         geoid10_list = cbg_per_state_list[state_id]

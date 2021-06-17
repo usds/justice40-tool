@@ -132,3 +132,5 @@ cython_debug/
 score/data/census
 score/data/tiles
 score/data/tmp
+score/data/dataset
+score/data/score
