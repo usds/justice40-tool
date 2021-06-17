@@ -33,7 +33,7 @@ for fips in state_fips_codes:
         + '"/:/home '
         + "osgeo/gdal:alpine-small-latest ogr2ogr -f GeoJSON "
         + f"-sql \"SELECT * FROM tl_2010_{fips}_bg10 LEFT JOIN '/home/data/dataset/ejscreen_2020/data{fips}.csv'.data{fips} ON tl_2010_{fips}_bg10.GEOID10 = data{fips}.ID\" "
-        + "/home/data/score/geojson/{fips}.json /home/data/census/shp/{fips}/tl_2010_{fips}_bg10.dbf"
+        + f"/home/data/score/geojson/{fips}.json /home/data/census/shp/{fips}/tl_2010_{fips}_bg10.dbf"
     )
     print(cmd)
     os.system(cmd)
