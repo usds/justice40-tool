@@ -39,10 +39,9 @@ cmd = (
     + pwd
     + '"/:/home '
     + "osgeo/gdal:alpine-small-latest ogr2ogr -f GeoJSON "
-    + "-sql \"SELECT * FROM tl_2010_01_bg10 LEFT JOIN '/home/data/dataset/ejscreen_2020/01.csv'.custom ON tl_2010_01_bg10.GEOID10 = custom.ID\" "
+    + "-sql \"SELECT * FROM tl_2010_01_bg10 LEFT JOIN '/home/data/dataset/ejscreen_2020/data01.csv'.data01 ON tl_2010_01_bg10.GEOID10 = data01.ID\" "
     + "/home/data/score/geojson/01.json /home/data/census/shp/01/tl_2010_01_bg10.dbf"
 )
-breakpoint()
 print(cmd)
 os.system(cmd)
 
