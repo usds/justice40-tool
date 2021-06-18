@@ -15,8 +15,8 @@ import MVT from 'ol/format/MVT.js';
 import {Fill, Style} from 'ol/style.js';
 import XYZ from 'ol/source/XYZ';
 import * as d3 from 'd3';
-import {transform} from 'ol/proj';
-import {toStringXY} from 'ol/coordinate';
+// import {transform} from 'ol/proj';
+// import {toStringXY} from 'ol/coordinate';
 import Overlay from 'ol/Overlay';
 
 
@@ -32,7 +32,7 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
   const [featuresLayer, setFeaturesLayer] = useState<VectorLayer>();
   const [selectedFeature, setSelectedFeature] = useState<Feature>();
   const [hoveredFeature, setHoveredFeature] = useState<Feature>();
-  const [selectedCoord, setSelectedCoord] = useState();
+  // const [selectedCoord, setSelectedCoord] = useState();
 
   const mapElement = useRef() as
         React.MutableRefObject<HTMLInputElement>;
@@ -156,10 +156,10 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
     const clickedCoord = mapRef.current.getCoordinateFromPixel(event.pixel);
 
     // transform coord to EPSG 4326 standard Lat Long
-    const transformedCoord = transform(clickedCoord, 'EPSG:3857', 'EPSG:4326');
+    // const transformedCoord = transform(clickedCoord, 'EPSG:3857', 'EPSG:4326');
 
     // set React state
-    setSelectedCoord( transformedCoord );
+    // setSelectedCoord( transformedCoord );
     mapRef.current.forEachFeatureAtPixel(event.pixel, (feature) => {
       setSelectedFeature(feature);
       return true;
@@ -188,13 +188,13 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
       <div ref={mapElement} className={styles.mapContainer}></div>
       <div className="clicked-coord-label">
         <p>{ (hoveredFeature) ? readablePercent(hoveredFeature.properties_['score_a_percentile']) : '' }</p>
-        <p>{ (selectedCoord) ? toStringXY(selectedCoord, 5) : '' }</p>
+        {/* <p>{ (selectedCoord) ? toStringXY(selectedCoord, 5) : '' }</p> */}
         <div ref={popupContainer} className={styles.popupContainer}>
           <a href="#" ref={popupCloser} className={styles.popupCloser}></a>
           <div ref={popupContent} className={styles.popupContent}>
             { (selectedFeature) ?
                 <div>
-                  <h2>JustProgress Score:</h2>
+                  <h2>Cumulative Index Score:</h2>
                   <h3>{readablePercent(selectedFeature.properties_['score_a_percentile'])}</h3>
                 </div> :
                   '' }
