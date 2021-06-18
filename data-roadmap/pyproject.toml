@@ -27,12 +27,14 @@ authorized_licenses = [
         "simplified bsd",
         "apache",
         "apache 2.0",
+        "apache license 2.0",
         "apache software license",
         "apache software",
         "gnu lgpl",
         "gnu lesser general public license v2 (lgplv2)",
         "gnu general public license v2 (gplv2)",
         "gnu library or lesser general public license (lgpl)",
+        "gpl v3",
         "lgpl with exceptions or zpl",
         "isc license",
         "isc license (iscl)",
@@ -43,8 +45,4 @@ authorized_licenses = [
         "python software foundation license",
         "python software foundation",
         "zpl 2.1"
-]
-
-unauthorized_licenses = [
-        "gpl v3"
 ]
