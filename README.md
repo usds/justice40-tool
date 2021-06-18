@@ -19,6 +19,9 @@ We know that we can learn from a wide variety of communities, including those wh
 
 We also recognize capacity building as a key part of involving a diverse open source community. We are doing our best to use accessible language, provide technical and process documents in multiple languages, and offer support to our community members of a wide variety of background and skillsets, directly or in the form of group chats and training. If you have ideas for how we can improve or add to our capacity building efforts and methods for welcoming folks into our community, please let use know in the [Google Group](https://groups.google.com/u/4/g/justice40-open-source) or email us at justice40open@usds.gov.
 
+### Community Guidelines
+Principles and guidelines for participating in our open source community are available [here](COMMUNITY_GUIDELINES.md). Please read them before joining or starting a conversation in this repo or one of the channels listed below. 
+
 ### Community Chats
 We host open source community chats every two weeks on Monday at 5-6pm ET. You can find information about the agenda and how to participate in our [Google Group](https://groups.google.com/u/4/g/justice40-open-source).
 
