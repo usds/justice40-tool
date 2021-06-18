@@ -7,6 +7,11 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sass',
       options: {
+        sassOptions: {
+          includePaths: [
+            './node_modules/uswds',
+          ],
+        },
         cssLoaderOptions: {
           modules: {
             exportLocalsConvention: 'camelCaseOnly',
@@ -15,7 +20,7 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-intl`,
+      resolve: 'gatsby-plugin-intl',
       options: {
         // language JSON resource path
         path: `${__dirname}/src/intl`,

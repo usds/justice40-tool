@@ -1,7 +1,8 @@
 import React, {ReactNode} from 'react';
-import * as styles from './layout.module.scss';
+import {GridContainer, Grid} from '@trussworks/react-uswds';
 import J40Header from './J40Header';
 import J40Footer from './J40Footer';
+import J40Aside from '../components/J40Aside';
 import {URLFlagProvider} from '../contexts/FlagContext';
 
 interface ILayoutProps {
@@ -10,13 +11,25 @@ interface ILayoutProps {
 }
 
 const Layout = ({children, location}: ILayoutProps) => {
+  const isWidthFullPage = location.pathname.endsWith('/cejst');
+  const conditionalAside = isWidthFullPage ? <></> : <J40Aside/>;
+  const gridCssClass = isWidthFullPage ? ' desktop:grid-col-12' :
+    'desktop:grid-col-9';
+
   return (
     <URLFlagProvider location={location}>
-      <div className={styles.site}>
-        <J40Header />
-        <div className={styles.siteContent}>{children}</div>
-        <J40Footer />
-      </div>
+      <J40Header/>
+      <GridContainer containerSize={'desktop-lg'}
+        className={'j40-grid-container'}>
+        <Grid row>
+          <main id={'main-content'}
+            className={'usa-layout-docs j40-main-content ' + gridCssClass}>
+            {children}
+          </main>
+          {conditionalAside}
+        </Grid>
+      </GridContainer>
+      <J40Footer/>
     </URLFlagProvider>
   );
 };
