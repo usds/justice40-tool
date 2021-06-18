@@ -125,8 +125,9 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
     });
 
     const j40source = new VectorTileSource({
-      format: new MVT(),
-      url: 'http://localhost:8080/data/block2010/{z}/{x}/{y}.pbf',
+      'format': new MVT(),
+      'url': 'http://localhost:8080/data/block2010/{z}/{x}/{y}.pbf',
+      // url: 'http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/tiles/{z}/{x}/{y}.pbf',
     });
 
     const colors = d3.scaleSequential(d3.interpolateBlues)
@@ -137,15 +138,21 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
       source: j40source,
       style: function(feature) {
         const data = feature.get('score_a_percentile');
-        const rgb = colors(data);
-        const rbgArr = rgb.slice(
-            rgb.indexOf('(') + 1,
-            rgb.indexOf(')'),
-        ).split(', ');
+        let colorString;
+        if (data) {
+          const rgb = colors(data);
+          const rbgArr = rgb.slice(
+              rgb.indexOf('(') + 1,
+              rgb.indexOf(')'),
+          ).split(', ');
+          colorString = `rgba(${rbgArr[0]}, ${rbgArr[1]}, ${rbgArr[2]}, 0.5)`;
+        } else {
+          colorString = 'white';
+        }
         // const inOrOut = feature.get('score_a_top_percentile_25');
         return new Style({
           fill: new Fill({
-            color: `rgba(${rbgArr[0]}, ${rbgArr[1]}, ${rbgArr[2]}, 0.5)`, // inOrOut == 'True' ? 'blue' : 'white',
+            color: colorString, // inOrOut == 'True' ? 'blue' : 'white',
           }),
         });
       },
