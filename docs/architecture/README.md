@@ -4,6 +4,14 @@ The below is a general architecture of our proposed system:
 
 ![Architecture](architecture-mmd.svg)
 
+The following is a more detailed diagram of the geo data pipeline architecture (the Data Pipeline and Server boxes in the general architecture diagram above).
+
+![Geo Data Pipeline](geodata-pipeline-arch-mmd.svg)
+
+We are partnering with Geoplatform to turn some of these pieces into open source shared services that they would own. The following is a modified diagram showing which pieces would tentatively be owned by Geoplatform.
+
+![Geo Data Pipeline](geodata-pipeline-arch-geoplatform-mmd.svg)
+
 ## Updating the Diagram
 
 **Note: Do Not directly modify the svg file, it is generated automatically!**
