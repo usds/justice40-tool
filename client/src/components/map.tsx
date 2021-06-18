@@ -17,6 +17,7 @@ import XYZ from 'ol/source/XYZ';
 import * as d3 from 'd3';
 import {transform} from 'ol/proj';
 import {toStringXY} from 'ol/coordinate';
+import Overlay from 'ol/Overlay';
 
 
 interface IMapWrapperProps {
@@ -27,16 +28,24 @@ interface IMapWrapperProps {
 // https://taylor.callsen.me/using-openlayers-with-react-functional-components/
 const MapWrapper = ({features}: IMapWrapperProps) => {
   const [map, setMap] = useState<Map>();
+  const [currentOverlay, setCurrentOverlay] = useState<Overlay>();
   const [featuresLayer, setFeaturesLayer] = useState<VectorLayer>();
   const [selectedFeature, setSelectedFeature] = useState<Feature>();
+  const [hoveredFeature, setHoveredFeature] = useState<Feature>();
   const [selectedCoord, setSelectedCoord] = useState();
 
   const mapElement = useRef() as
         React.MutableRefObject<HTMLInputElement>;
+  const mapRef = useRef() as React.MutableRefObject<Map>;
 
-  const mapRef = useRef() as
-    React.MutableRefObject<HTMLInputElement>;
+
+  const popupContainer = React.useRef<HTMLDivElement>(null);
+  const popupCloser = React.useRef<HTMLDivElement>(null);
+  const popupContent = React.useRef<HTMLDivElement>(null);
+
+  const overlayRef = useRef() as React.MutableRefObject<Map>;
   mapRef.current = map;
+  overlayRef.current = currentOverlay;
 
   useEffect( () => {
     // create and add initial vector source layer, to be replaced layer
@@ -46,8 +55,8 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
 
     const j40source = new VectorTileSource({
       'format': new MVT(),
-      // 'url': 'http://localhost:8080/data/block2010/{z}/{x}/{y}.pbf',
-      'url': 'http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/nm/{z}/{x}/{y}.pbf',
+      'url': 'http://localhost:8080/data/block2010/{z}/{x}/{y}.pbf',
+      // 'url': 'http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/nm/{z}/{x}/{y}.pbf',
     });
 
     const colors = d3.scaleSequential(d3.interpolateBlues)
@@ -78,6 +87,21 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
       },
     });
 
+
+    popupCloser.current.onclick = function() {
+      overlay.setPosition(undefined);
+      popupCloser.current.blur();
+      return false;
+    };
+
+    const overlay = new Overlay({
+      element: popupContainer.current,
+      autoPan: true,
+      autoPanAnimation: {
+        duration: 250,
+      },
+    });
+
     const initialMap = new Map({
       target: mapElement.current,
       view: new View({
@@ -93,11 +117,14 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
         j40Layer,
       ],
       controls: [],
+      overlays: [overlay],
     });
+
 
     initialMap.on('click', handleMapClick);
     initialMap.on('pointermove', handlePointerMove);
     setMap(initialMap);
+    setCurrentOverlay(overlay);
     setFeaturesLayer(initialFeaturesLayer);
     // olms(initialMap, mapConfig);
   }, []);
@@ -133,26 +160,47 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
 
     // set React state
     setSelectedCoord( transformedCoord );
-  };
-
-  const handlePointerMove = (event: { pixel: any; }) => {
-    if (selectedFeature !== undefined) {
-      selectedFeature?.setStyle(undefined);
-      setSelectedFeature(undefined);
-    }
-
     mapRef.current.forEachFeatureAtPixel(event.pixel, (feature) => {
       setSelectedFeature(feature);
       return true;
     });
+
+    overlayRef.current.setPosition(clickedCoord);
+  };
+
+  const handlePointerMove = (event: { pixel: any; }) => {
+    if (hoveredFeature !== undefined) {
+      hoveredFeature?.setStyle(undefined);
+      setHoveredFeature(undefined);
+    }
+
+    mapRef.current.forEachFeatureAtPixel(event.pixel, (feature) => {
+      setHoveredFeature(feature);
+      return true;
+    });
+  };
+  const readablePercent = (percent:number) => {
+    return `${parseFloat(percent * 100).toFixed(2)}%`;
   };
 
   return (
     <>
       <div ref={mapElement} className={styles.mapContainer}></div>
       <div className="clicked-coord-label">
-        <p>{ (selectedFeature) ? selectedFeature.properties_['score_a_percentile'] : '' }</p>
+        <p>{ (hoveredFeature) ? readablePercent(hoveredFeature.properties_['score_a_percentile']) : '' }</p>
         <p>{ (selectedCoord) ? toStringXY(selectedCoord, 5) : '' }</p>
+        <div ref={popupContainer} className={styles.popupContainer}>
+          <a href="#" ref={popupCloser} className={styles.popupCloser}></a>
+          <div ref={popupContent} className={styles.popupContent}>
+            { (selectedFeature) ?
+                <div>
+                  <h2>JustProgress Score:</h2>
+                  <h3>{readablePercent(selectedFeature.properties_['score_a_percentile'])}</h3>
+                </div> :
+                  '' }
+
+          </div>
+        </div>
       </div>
     </>
   );
