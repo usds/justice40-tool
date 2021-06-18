@@ -25,6 +25,15 @@ if os.name == "nt":
 else:
     pwd = "${PWD}"
 
+# remove existing score json files
+score_geojson_dir = data_path / "score" / "geojson"
+files_in_directory = os.listdir(score_geojson_dir)
+filtered_files = [file for file in files_in_directory if file.endswith(".json")]
+for file in filtered_files:
+    path_to_file = os.path.join(score_geojson_dir, file)
+    os.remove(path_to_file)
+
+# join the state shape sqllite with the score csv
 state_fips_codes = get_state_fips_codes()
 for fips in state_fips_codes:
     cmd = (
@@ -32,7 +41,7 @@ for fips in state_fips_codes:
         + pwd
         + '"/:/home '
         + "osgeo/gdal:alpine-small-latest ogr2ogr -f GeoJSON "
-        + f"-sql \"SELECT * FROM tl_2010_{fips}_bg10 LEFT JOIN '/home/data/dataset/ejscreen_2020/data{fips}.csv'.data{fips} ON tl_2010_{fips}_bg10.GEOID10 = data{fips}.ID\" "
+        + f"-sql \"SELECT * FROM tl_2010_{fips}_bg10 LEFT JOIN '/home/data/score/csv/data{fips}.csv'.data{fips} ON tl_2010_{fips}_bg10.GEOID10 = data{fips}.ID\" "
         + f"/home/data/score/geojson/{fips}.json /home/data/census/shp/{fips}/tl_2010_{fips}_bg10.dbf"
     )
     print(cmd)
