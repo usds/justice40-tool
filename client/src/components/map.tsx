@@ -126,8 +126,8 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
 
     const j40source = new VectorTileSource({
       'format': new MVT(),
-      'url': 'http://localhost:8080/data/block2010/{z}/{x}/{y}.pbf',
-      // url: 'http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/tiles/{z}/{x}/{y}.pbf',
+      // 'url': 'http://localhost:8080/data/block2010/{z}/{x}/{y}.pbf',
+      'url': 'http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/nm/{z}/{x}/{y}.pbf',
     });
 
     const colors = d3.scaleSequential(d3.interpolateBlues)
