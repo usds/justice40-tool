@@ -1,0 +1,28 @@
+graph TD
+    Dataset1["Dataset 1"]-->Score
+    Dataset2["Dataset 2"]-->Score
+    Census["Census TIGER Data"]-->CGTiger
+    subgraph "Owned by Geoplatform"
+        CGTiger["Create GeoJSON from Shapefile with osgeo/gdal"]-->TS3
+        
+    end
+    TS3("TIGER GeoJSON (S3)")-->CGJ
+    Score["Create Score CSV"]--Event Notification-->CSV
+    CSV("CSV (S3)")--"Event Notification (Geoplatform)"-->CGJ
+    subgraph "Owned by Geoplatform"
+        CGJ["Combine (ogr2ogr)+ Create GeoJSON"]--Event Notification-->GeoJSON
+    end
+    GeoJSON("GeoJSON (S3)")-->Tip
+    GeoJSON--"Access non-geo data"-->Client
+    subgraph "Owned by Geoplatform"
+        Tip[/Tippecanoe/]-->CreateMVT["Create and Send MVT"]
+    end
+    subgraph production
+        CreateMVT-->MBTiles
+        MBTiles-->Uncompressed("Uncompressed MVT (Geoplatform S3)")
+    end
+    subgraph development
+        CreateMVT-->Compressed("MBTiles (GeoPlatform S3)")-->TS[/Tileserver-GL/]
+    end
+    TS--"XYZ URL"-->Client
+    Uncompressed--"XYZ URL"-->Client["Gatsby+OpenLayers Client"]

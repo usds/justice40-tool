@@ -11,6 +11,11 @@ interface ILayoutProps {
 }
 
 const Layout = ({children, location}: ILayoutProps) => {
+  const isWidthFullPage = location.pathname.endsWith('/cejst');
+  const conditionalAside = isWidthFullPage ? <></> : <J40Aside/>;
+  const gridCssClass = isWidthFullPage ? ' desktop:grid-col-12' :
+    'desktop:grid-col-9';
+
   return (
     <URLFlagProvider location={location}>
       <J40Header/>
@@ -18,12 +23,10 @@ const Layout = ({children, location}: ILayoutProps) => {
         className={'j40-grid-container'}>
         <Grid row>
           <main id={'main-content'}
-            className={'usa-layout-docs desktop:grid-col-9 j40-main-content'}>
-            <section className={'usa-prose'}>
-              {children}
-            </section>
+            className={'usa-layout-docs j40-main-content ' + gridCssClass}>
+            {children}
           </main>
-          <J40Aside/>
+          {conditionalAside}
         </Grid>
       </GridContainer>
       <J40Footer/>

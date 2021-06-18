@@ -2,8 +2,8 @@
   These are necessary for the image and font urls referenced in the source
   files to resolve correctly.
 */
-$theme-image-path: '../../node_modules/uswds/src/img';
-$theme-font-path: '../../node_modules/uswds/src/fonts';
+$theme-image-path: "../../node_modules/uswds/src/img";
+$theme-font-path: "../../node_modules/uswds/src/fonts";
 
 /*
   Example:
@@ -21,7 +21,7 @@ $theme-show-notifications: false;
 
 $theme-font-role-heading: "sans";
 
-@import '../../node_modules/uswds';
+@import "../../node_modules/uswds";
 
 @import "~@trussworks/react-uswds/lib/index.css";
 
@@ -66,17 +66,19 @@ $j40-max-width: 80ex;
   }
 }
 
-.j40-header, .j40-primary-nav, .j40-header > li > a{
+.j40-header,
+.j40-primary-nav,
+.j40-header > li > a {
   background-color: #112f4e; /* todo: move color to theme */
   color: white !important;
   z-index: 5;
 
   .usa-nav-container {
-    max-width: ($j40-max-width*2);
+    max-width: ($j40-max-width * 2);
   }
 
   span {
-    // make sure the open close cheveron is colored correctly
+    // make sure the open close chevron is colored correctly
     color: white;
   }
 
@@ -86,7 +88,8 @@ $j40-max-width: 80ex;
     font-family: "serif";
   }
 
-  .usa-current::after, :hover::after {
+  .usa-current::after,
+  :hover::after {
     background-color: #2491ff !important;
   }
 
@@ -95,8 +98,16 @@ $j40-max-width: 80ex;
     font-size: 1.2em;
   }
 
-  //media (max-width: 63.99em)
-  //.usa-nav__primary a:not(.usa-button):hover {}
+  // invert the hover color so contrast stays good enough for accessibility
+  .usa-nav__primary a:not(.usa-button):hover {
+    background-color: #2491ff !important;
+  }
+
+  // this is the closebox, it's not easy to change the X color, so we change
+  // the background to keep it's contrast high
+  .usa-nav__close {
+    background-color: white;
+  }
 }
 
 .j40-aside {
@@ -104,19 +115,14 @@ $j40-max-width: 80ex;
   padding-right: 1em;
   padding-left: 1em;
 
-  h1 {
+  h2 {
     font-weight: 100;
     font-size: 2em;
   }
 
-  h2 {
-    font-weight: 100;
-    font-size: 1.4em;
-  }
-
   h3 {
     font-weight: 100;
-    font-size: 1.3em;
+    font-size: 1.4em;
   }
 
   .j40-aside-icon {
@@ -140,10 +146,17 @@ $j40-max-width: 80ex;
 }
 
 // spacing top & bottom around main content
-@include at-media("mobile-lg") {
-  .j40-main-content {
+.j40-main-content {
+  @include at-media("mobile-lg") {
     margin-bottom: 2rem;
     margin-top: 2.5rem;
+  }
+
+  h1 {
+    font-size: 2.13rem;
+  }
+  h2 {
+    font-size: 1.46rem;
   }
 }
 
@@ -163,10 +176,16 @@ $j40-max-width: 80ex;
 
 // NOTE: uswds `.usa-prose` defines these all as Merriweather Web via $theme-font-role-heading
 .usa-prose {
-  h1, h2, h3, h4 {
-    font-family: Source Sans Pro Web, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: Source Sans Pro Web, Helvetica Neue, Helvetica, Roboto, Arial,
+      sans-serif;
   }
-  p, div {
+
+  p,
+  div {
     max-width: $j40-max-width;
   }
 }
@@ -175,10 +194,11 @@ $j40-max-width: 80ex;
   p {
     margin: 0;
   }
+
   padding-top: 0;
   padding-bottom: 0;
+
   .usa-alert:before {
     margin-top: 12px !important;
   }
 }
-

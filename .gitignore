@@ -128,3 +128,13 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+<<<<<<< HEAD
+=======
+
+# temporary census data
+score/data/census
+score/data/tiles
+score/data/tmp
+score/data/dataset
+score/data/score
+>>>>>>> main
