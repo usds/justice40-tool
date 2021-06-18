@@ -8,13 +8,13 @@ import Geometry from 'ol/geom/Geometry';
 import {Alert} from '@trussworks/react-uswds';
 import * as styles from './cejst.module.scss';
 
-
 interface IMapPageProps {
   location: Location;
 }
 
 const CEJSTPage = ({location}: IMapPageProps) => {
   const [features, setFeatures] = useState<Feature<Geometry>[]>([]);
+
   return (
     <Layout location={location}>
       <main id="main-content" role="main">

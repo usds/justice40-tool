@@ -69,6 +69,9 @@
   },
   "dependencies": {
     "@trussworks/react-uswds": "github:nathillardusds/react-uswds#nathillardusds/ssr",
+    "@types/d3": "^6.7.1",
+    "d3": "^7.0.0",
+    "d3-scale-chromatic": "^3.0.0",
     "ol": "^6.5.0",
     "ol-mapbox-style": "^6.3.2",
     "query-string": "^7.0.0",

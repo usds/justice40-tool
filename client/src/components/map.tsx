@@ -7,60 +7,100 @@ import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import {fromLonLat} from 'ol/proj';
 import * as styles from './map.module.scss';
-import olms from 'ol-mapbox-style';
+// import olms from 'ol-mapbox-style';
+import TileLayer from 'ol/layer/Tile';
+import VectorTileLayer from 'ol/layer/VectorTile.js';
+import VectorTileSource from 'ol/source/VectorTile.js';
+import MVT from 'ol/format/MVT.js';
+import {Fill, Style} from 'ol/style.js';
+import XYZ from 'ol/source/XYZ';
+import * as d3 from 'd3';
+import {transform} from 'ol/proj';
+import {toStringXY} from 'ol/coordinate';
+
 
 interface IMapWrapperProps {
   features: Feature<Geometry>[],
 };
 
-const mapConfig = {
-  'version': 8,
-  'cursor': 'pointer',
-  'sources': {
-    'carto-light': {
-      'type': 'raster',
-      'tiles': [
-        'https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
-        'https://b.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
-        'https://c.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
-        'https://d.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
-      ],
-    },
-    'custom': {
-      'projection': 'EPSG:3857',
-      'type': 'vector',
-      'tiles': [
-        'https://gis.data.census.gov/arcgis/rest/services/Hosted/VT_2019_150_00_PY_D1/VectorTileServer/tile/{z}/{y}/{x}.mvt',
-      ],
-    },
-  },
-  'layers': [
-    {
-      'id': 'carto-light-layer',
-      'source': 'carto-light',
-      'type': 'raster',
-      'minzoom': 0,
-      'maxzoom': 22,
-    },
-    {
-      'id': 'blocks',
-      'type': 'line',
-      'source': 'custom',
-      'source-layer': 'BlockGroup',
-      'minzoom': 0,
-      'layout': {
-        'line-cap': 'round',
-        'line-join': 'round',
-      },
+// const mapConfig = {
+//   'version': 8,
+//   'cursor': 'pointer',
+//   'sources': {
+//     'carto-light': {
+//       'type': 'raster',
+//       'tiles': [
+//         'https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
+//         'https://b.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
+//         'https://c.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
+//         'https://d.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
+//       ],
+//     },
+//     // 'custom': {
+//     //   'projection': 'EPSG:3857',
+//     //   'type': 'vector',
+//     //   'tiles': [
+//     //     'https://gis.data.census.gov/arcgis/rest/services/Hosted/VT_2019_150_00_PY_D1/VectorTileServer/tile/{z}/{y}/{x}.mvt',
+//     //     // 'http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/data/tiles/mvt/{z}/{x}/{y}.pbf',
+//     //   ],
+//     // },
+//     'j40': {
+//       'type': 'vector',
+//       'tiles': [
+//         // 'https://gis.data.census.gov/arcgis/rest/services/Hosted/VT_2019_150_00_PY_D1/VectorTileServer/tile/{z}/{y}/{x}.mvt',
+//         // 'http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/data/tiles/mvt/{z}/{x}/{y}.pbf',
+//         'http://localhost:8080/data/block2010/{z}/{x}/{y}.pbf',
+//       ],
+//     },
+//   },
+//   'layers': [
+//     {
+//       'id': 'carto-light-layer',
+//       'source': 'carto-light',
+//       'type': 'raster',
+//       'minzoom': 0,
+//       'maxzoom': 22,
+//     },
+//     // {
+//     //   'id': 'alabama_fill',
+//     //   'type': 'fill',
+//     //   'source': 'j40',
+//     //   'source-layer': 'blocks',
+//     //   'paint': {
+//     //     'fill-color': [
+//     //       'interpolate',
+//     //       [
+//     //         'linear',
+//     //       ],
+//     //       [
+//     //         'get',
+//     //         'lowincpct',
+//     //       ],
+//     //       0,
+//     //       'white',
+//     //     ],
+//     //     'fill-opacity': 0.5,
+//     //   },
+//     // },
+//     // {
+//     //   'id': 'blocks',
+//     //   'type': 'line',
+//     //   'source': 'custom',
+//     //   'source-layer': 'BlockGroup',
+//     //   'minzoom': 0,
+//     //   'layout': {
+//     //     'line-cap': 'round',
+//     //     'line-join': 'round',
+//     //   },
 
-      'paint': {
-        'line-opacity': 0.6,
-        'line-color': 'red',
-        'line-width': 1,
-      },
-    },
-  ],
-};
+//     //   'paint': {
+//     //     'line-opacity': 0.6,
+//     //     'line-color': 'red',
+//     //     'line-width': 1,
+//     //   },
+//     // },
+//   ],
+// };
 
 
 // The below adapted from
@@ -68,14 +108,47 @@ const mapConfig = {
 const MapWrapper = ({features}: IMapWrapperProps) => {
   const [map, setMap] = useState<Map>();
   const [featuresLayer, setFeaturesLayer] = useState<VectorLayer>();
+  const [selectedFeature, setSelectedFeature] = useState<Feature>();
+  const [selectedCoord, setSelectedCoord] = useState();
 
   const mapElement = useRef() as
         React.MutableRefObject<HTMLInputElement>;
+
+  const mapRef = useRef() as
+    React.MutableRefObject<HTMLInputElement>;
+  mapRef.current = map;
 
   useEffect( () => {
     // create and add initial vector source layer, to be replaced layer
     const initialFeaturesLayer = new VectorLayer({
       source: new VectorSource(),
+    });
+
+    const j40source = new VectorTileSource({
+      format: new MVT(),
+      url: 'http://localhost:8080/data/block2010/{z}/{x}/{y}.pbf',
+    });
+
+    const colors = d3.scaleSequential(d3.interpolateBlues)
+        .domain([0, 1]); // d3.scaleOrdinal(d3.interpolateBlues);
+
+    const j40Layer = new VectorTileLayer({
+      declutter: false,
+      source: j40source,
+      style: function(feature) {
+        const data = feature.get('score_a_percentile');
+        const rgb = colors(data);
+        const rbgArr = rgb.slice(
+            rgb.indexOf('(') + 1,
+            rgb.indexOf(')'),
+        ).split(', ');
+        // const inOrOut = feature.get('score_a_top_percentile_25');
+        return new Style({
+          fill: new Fill({
+            color: `rgba(${rbgArr[0]}, ${rbgArr[1]}, ${rbgArr[2]}, 0.5)`, // inOrOut == 'True' ? 'blue' : 'white',
+          }),
+        });
+      },
     });
 
     const initialMap = new Map({
@@ -84,12 +157,22 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
         center: fromLonLat([-86.502136, 32.4687126]),
         zoom: 4,
       }),
+      layers: [
+        new TileLayer({
+          source: new XYZ({
+            url: 'https://{1-4}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
+          }),
+        }),
+        j40Layer,
+      ],
       controls: [],
     });
 
+    initialMap.on('click', handleMapClick);
+    initialMap.on('pointermove', handlePointerMove);
     setMap(initialMap);
     setFeaturesLayer(initialFeaturesLayer);
-    olms(initialMap, mapConfig);
+    // olms(initialMap, mapConfig);
   }, []);
 
 
@@ -102,6 +185,7 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
             features: features,
           }),
       );
+
       const extent = featuresLayer?.getSource().getExtent();
       if (extent != null) {
         // fit map to feature extent (with 100px of padding)
@@ -112,8 +196,38 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
     }
   }, [features]);
 
+  const handleMapClick = (event: { pixel: any; }) => {
+    // get clicked coordinate using mapRef to access current React state inside OpenLayers callback
+    //  https://stackoverflow.com/a/60643670
+    const clickedCoord = mapRef.current.getCoordinateFromPixel(event.pixel);
+
+    // transform coord to EPSG 4326 standard Lat Long
+    const transformedCoord = transform(clickedCoord, 'EPSG:3857', 'EPSG:4326');
+
+    // set React state
+    setSelectedCoord( transformedCoord );
+  };
+
+  const handlePointerMove = (event: { pixel: any; }) => {
+    if (selectedFeature !== undefined) {
+      selectedFeature?.setStyle(undefined);
+      setSelectedFeature(undefined);
+    }
+
+    mapRef.current.forEachFeatureAtPixel(event.pixel, (feature) => {
+      setSelectedFeature(feature);
+      return true;
+    });
+  };
+
   return (
-    <div ref={mapElement} className={styles.mapContainer}></div>
+    <>
+      <div ref={mapElement} className={styles.mapContainer}></div>
+      <div className="clicked-coord-label">
+        <p>{ (selectedFeature) ? selectedFeature.properties_['score_a_percentile'] : '' }</p>
+        <p>{ (selectedCoord) ? toStringXY(selectedCoord, 5) : '' }</p>
+      </div>
+    </>
   );
 };
 
