@@ -134,3 +134,6 @@ score/data/tiles
 score/data/tmp
 score/data/dataset
 score/data/score
+
+# node
+node_modules

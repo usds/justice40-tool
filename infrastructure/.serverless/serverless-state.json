@@ -1,0 +1,172 @@
+{
+  "service": {
+    "service": "justice40-data-harvester",
+    "serviceObject": {
+      "name": "justice40-data-harvester"
+    },
+    "provider": {
+      "name": "aws",
+      "runtime": "nodejs12.x",
+      "stage": "sit",
+      "region": "us-east-1",
+      "profile": "sit",
+      "deploymentBucket": "j40-sit-us-east-1-justice40-data-harvester",
+      "stackName": "j40-sit-justice40-data-harvester",
+      "versionFunctions": true,
+      "deploymentBucketObject": {
+        "name": "j40-sit-us-east-1-justice40-data-harvester",
+        "blockPublicAccess": true,
+        "maxPreviousDeploymentArtifacts": 5
+      },
+      "compiledCloudFormationTemplate": {
+        "AWSTemplateFormatVersion": "2010-09-09",
+        "Description": "The AWS CloudFormation template for this Serverless application",
+        "Resources": {
+          "DataBucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+              "BucketName": "j40-sit-justice40-data-harvester-data",
+              "AccessControl": "PublicRead",
+              "CorsConfiguration": {
+                "CorsRules": [
+                  {
+                    "AllowedOrigins": [
+                      "*"
+                    ],
+                    "AllowedMethods": [
+                      "GET"
+                    ],
+                    "AllowedHeaders": [
+                      "Content-Length"
+                    ]
+                  }
+                ]
+              },
+              "WebsiteConfiguration": {
+                "IndexDocument": "index.html",
+                "ErrorDocument": "error.html"
+              }
+            }
+          }
+        },
+        "Outputs": {
+          "ServerlessDeploymentBucketName": {
+            "Value": "j40-sit-us-east-1-justice40-data-harvester",
+            "Export": {
+              "Name": "sls-justice40-data-harvester-sit-ServerlessDeploymentBucketName"
+            }
+          }
+        }
+      }
+    },
+    "custom": {
+      "environment": {
+        "DEPLOYMENT_BUCKET_PREFIX": "j40",
+        "STACK_NAME_PREFIX": "j40-",
+        "DATA_BUCKET": "j40-sit-justice40-data-harvester-data"
+      },
+      "namespace": "justice40",
+      "namespaceShort": "j40",
+      "iamRoleStatements": [
+        {
+          "Effect": "Allow",
+          "Action": [
+            "s3:ListBucket"
+          ],
+          "Resource": [
+            {
+              "Fn::Join": [
+                "",
+                [
+                  "arn:aws:s3:::",
+                  {
+                    "Ref": "DataBucket"
+                  },
+                  "/*"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "Effect": "Allow",
+          "Action": [
+            "s3:DeleteObject",
+            "s3:GetObject",
+            "s3:PutObject",
+            "s3:PutObjectAcl"
+          ],
+          "Resource": [
+            {
+              "Fn::Join": [
+                "",
+                [
+                  "arn:aws:s3:::",
+                  {
+                    "Ref": "DataBucket"
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "pluginsData": {},
+    "functions": {},
+    "resources": {
+      "Resources": {
+        "DataBucket": {
+          "Type": "AWS::S3::Bucket",
+          "Properties": {
+            "BucketName": "j40-sit-justice40-data-harvester-data",
+            "AccessControl": "PublicRead",
+            "CorsConfiguration": {
+              "CorsRules": [
+                {
+                  "AllowedOrigins": [
+                    "*"
+                  ],
+                  "AllowedMethods": [
+                    "GET"
+                  ],
+                  "AllowedHeaders": [
+                    "Content-Length"
+                  ]
+                }
+              ]
+            },
+            "WebsiteConfiguration": {
+              "IndexDocument": "index.html",
+              "ErrorDocument": "error.html"
+            }
+          }
+        }
+      },
+      "Outputs": {}
+    },
+    "configValidationMode": "warn",
+    "serviceFilename": "serverless.yml",
+    "initialServerlessConfig": {
+      "service": {
+        "$ref": "$[\"service\"][\"serviceObject\"]"
+      },
+      "frameworkVersion": ">=2.48.0",
+      "provider": {
+        "$ref": "$[\"service\"][\"provider\"]"
+      },
+      "custom": {
+        "$ref": "$[\"service\"][\"custom\"]"
+      },
+      "resources": {
+        "$ref": "$[\"service\"][\"resources\"]"
+      }
+    },
+    "layers": {},
+    "isDashboardMonitoringPreconfigured": false
+  },
+  "package": {
+    "artifactDirectoryName": "serverless/justice40-data-harvester/sit/1624308990228-2021-06-21T20:56:30.228Z",
+    "artifact": ""
+  }
+}

@@ -1,0 +1,47 @@
+service: justice40-data-harvester
+
+frameworkVersion: ">=2.48.0"
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'sit'}
+  region: ${opt:region, 'us-east-1'}
+  profile: ${self:provider.stage}
+  deploymentBucket:
+    name: ${self:custom.environment.DEPLOYMENT_BUCKET_PREFIX}-${self:provider.stage}-${self:provider.region}-${self:service}
+    blockPublicAccess: true
+    maxPreviousDeploymentArtifacts: 5
+  stackName: ${self:custom.environment.STACK_NAME_PREFIX}${self:provider.stage}-${self:service}
+
+custom:
+  environment: ${file(./environment.yml):${self:provider.stage}}
+  namespace: justice40 # Used to tag resources with a "Namespace".
+  namespaceShort: j40 # Used to prefix stack name, deployment bucket, resource "Name" tags, etc.
+
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - "s3:ListBucket"
+      Resource:
+        - Fn::Join:
+          - ""
+          - - "arn:aws:s3:::"
+            - Ref: DataBucket
+            - "/*"
+    - Effect: Allow
+      Action:
+        - "s3:DeleteObject"
+        - "s3:GetObject"
+        - "s3:PutObject"
+        - "s3:PutObjectAcl"
+      Resource:
+        - Fn::Join:
+          - ""
+          - - "arn:aws:s3:::"
+            - Ref: DataBucket
+
+# functions: ${file(./functions.yml)}
+
+resources:
+  - ${file(./resources-s3.yml)}
