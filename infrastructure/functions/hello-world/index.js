@@ -1,0 +1,1 @@
+exports.handler = () => 'Hello, World!'

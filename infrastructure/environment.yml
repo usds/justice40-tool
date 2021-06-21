@@ -1,0 +1,15 @@
+sit:
+  DEPLOYMENT_BUCKET_PREFIX: ${self:custom.namespaceShort}
+  STACK_NAME_PREFIX: "${self:custom.namespaceShort}-"
+  DATA_BUCKET: ${self:custom.environment.DEPLOYMENT_BUCKET_PREFIX}-${self:provider.stage}-${self:service}-data
+
+
+stg:
+  DEPLOYMENT_BUCKET_PREFIX: ${self:custom.namespaceShort}
+  STACK_NAME_PREFIX: "${self:custom.namespaceShort}-"
+  DATA_BUCKET: ${self:custom.environment.DEPLOYMENT_BUCKET_PREFIX}-${self:provider.stage}-${self:service}-data
+
+prd:
+  DEPLOYMENT_BUCKET_PREFIX: ${self:custom.namespaceShort}
+  STACK_NAME_PREFIX: "${self:custom.namespaceShort}-"
+  DATA_BUCKET: ${self:custom.environment.DEPLOYMENT_BUCKET_PREFIX}-${self:provider.stage}-${self:service}-data

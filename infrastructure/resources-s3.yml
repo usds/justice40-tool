@@ -1,0 +1,18 @@
+Resources:
+
+  DataBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: ${self:custom.environment.DATA_BUCKET}
+      AccessControl: PublicRead
+      CorsConfiguration:
+        CorsRules:
+          - AllowedOrigins:
+              - "*"
+            AllowedMethods: 
+              - GET
+            AllowedHeaders:
+              - Content-Length
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: error.html
