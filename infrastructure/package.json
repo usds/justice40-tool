@@ -13,6 +13,8 @@
   "author": "",
   "license": "UNLICENSED",
   "dependencies": {
-    "serverless": "^2.48.0"
+    "serverless": "^2.48.0",
+    "serverless-certificate-creator": "^1.5.3",
+    "serverless-pseudo-parameters": "^2.5.0"
   }
 }

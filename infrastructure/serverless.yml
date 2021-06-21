@@ -14,10 +14,24 @@ provider:
     maxPreviousDeploymentArtifacts: 5
   stackName: ${self:custom.environment.STACK_NAME_PREFIX}${self:provider.stage}-${self:service}
 
+plugins:
+  - serverless-certificate-creator
+  - serverless-pseudo-parameters
+
 custom:
   environment: ${file(./environment.yml):${self:provider.stage}}
   namespace: justice40 # Used to tag resources with a "Namespace".
   namespaceShort: j40 # Used to prefix stack name, deployment bucket, resource "Name" tags, etc.
+
+  customCertificate:
+    certificateName: ${self:provider.stage}-${self:service}.${self:custom.environment.HOSTED_ZONE_DOMAIN}
+    hostedZoneIds: ${self:custom.environment.HOSTED_ZONE_ID_DOMAIN}
+    region: ${self:provider.region}
+    tags:
+      Name: ${self:provider.stage}-${self:service}.${self:custom.environment.HOSTED_ZONE_DOMAIN}
+      Environment: ${self:provider.stage}
+    rewriteRecords: true
+    enabled: ${self:custom.environment.SHOULD_CREATE_SSL_CERTIFICATE}
 
   iamRoleStatements:
     - Effect: Allow
@@ -45,3 +59,4 @@ custom:
 
 resources:
   - ${file(./resources-s3.yml)}
+  - ${file(./resources-cloudfront.yml)}
