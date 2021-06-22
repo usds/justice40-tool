@@ -43,7 +43,10 @@ Resources:
                 # Allow the ECS tasks to upload logs to CloudWatch
                 - 'logs:CreateLogStream'
                 - 'logs:PutLogEvents'
+                - 'logs:CreateLogStream'
+                - 'logs:DescribeLogStreams'
               Resource: '*'
+
   ECSTaskRoleOgr2Ogr:
     Type: AWS::IAM::Role
     Properties:
