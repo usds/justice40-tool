@@ -2,14 +2,28 @@ sit:
   DEPLOYMENT_BUCKET_PREFIX: ${self:custom.namespaceShort}
   STACK_NAME_PREFIX: "${self:custom.namespaceShort}-"
   DATA_BUCKET: ${self:custom.environment.DEPLOYMENT_BUCKET_PREFIX}-${self:provider.stage}-${self:service}-data
-
+  SHOULD_CREATE_SSL_CERTIFICATE: true
+  HOSTED_ZONE_ID_DOMAIN: Z104704314NAAG3GV4SN1
+  HOSTED_ZONE_SUBDOMAIN: ${self:provider.stage}-${self:service}
+  HOSTED_ZONE_DOMAIN: geoplatform.info
+  CLOUDFRONT_CERTIFICATE_ARN: arn:aws:acm:us-east-1:998343784597:certificate/083641d4-9df6-4f89-b79d-6697f428f5b9
 
 stg:
   DEPLOYMENT_BUCKET_PREFIX: ${self:custom.namespaceShort}
   STACK_NAME_PREFIX: "${self:custom.namespaceShort}-"
   DATA_BUCKET: ${self:custom.environment.DEPLOYMENT_BUCKET_PREFIX}-${self:provider.stage}-${self:service}-data
+  SHOULD_CREATE_SSL_CERTIFICATE: false
+  HOSTED_ZONE_ID_DOMAIN: TBD
+  HOSTED_ZONE_SUBDOMAIN: ${self:provider.stage}-${self:service}
+  HOSTED_ZONE_DOMAIN: TBD
+  CLOUDFRONT_CERTIFICATE_ARN: TBD
 
 prd:
   DEPLOYMENT_BUCKET_PREFIX: ${self:custom.namespaceShort}
   STACK_NAME_PREFIX: "${self:custom.namespaceShort}-"
   DATA_BUCKET: ${self:custom.environment.DEPLOYMENT_BUCKET_PREFIX}-${self:provider.stage}-${self:service}-data
+  SHOULD_CREATE_SSL_CERTIFICATE: false
+  HOSTED_ZONE_ID_DOMAIN: TBD
+  HOSTED_ZONE_SUBDOMAIN: ${self:service}
+  HOSTED_ZONE_DOMAIN: TBD
+  CLOUDFRONT_CERTIFICATE_ARN: TBD

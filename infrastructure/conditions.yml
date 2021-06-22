@@ -1,0 +1,11 @@
+Conditions:
+
+  ShouldOnlyCreateResourcesInSIT:
+    Fn::Equals:
+      - ${self:provider.stage}
+      - sit
+
+  ShouldOnlyCreateResourcesInPRD:
+    Fn::Equals:
+      - ${self:provider.stage}
+      - prd
