@@ -173,7 +173,7 @@ async function executeRawOgr2OgrCommand(options) {
             containerOverrides: [
                 {
                     name: `${STAGE}-justice40-data-harvester-osgeo-gdal`,
-                    command: event.command
+                    command: ['ogr2ogr', ...event.command]
                 }
             ]
         }
