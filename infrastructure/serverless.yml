@@ -58,6 +58,8 @@ custom:
 # functions: ${file(./functions.yml)}
 
 resources:
+  - ${file(./conditions.yml)}
   - ${file(./resources-s3.yml)}
   - ${file(./resources-cloudfront.yml)}
   - ${file(./resources-ecs.yml)}
+  - ${file(./resources-route53.yml)}
