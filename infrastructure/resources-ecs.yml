@@ -71,7 +71,7 @@ Resources:
   TaskDefinitionOgr2Ogr:
     Type: AWS::ECS::TaskDefinition
     Properties:
-      Family: ${self:provider.stage}-${self:service}
+      Family: ${self:provider.stage}-${self:service}-ogr2ogr
       Cpu: 1024
       Memory: 2048
       NetworkMode: awsvpc
