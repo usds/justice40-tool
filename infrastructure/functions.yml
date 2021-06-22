@@ -1,0 +1,30 @@
+DetectChangesForWorker:
+  handler: functions/detect-changes-for-worker/index.handler
+  name: ${self:provider.stage}-DetectChangesForWorker
+  description: Scans an S3 bucket (with prefix) for items that have changes recently and sends them to ECS Tasks for processing
+  runtime: nodejs12.x
+  memorySize: 512
+  timeout: 900
+  environment:
+    REGION: ${self:provider.region}
+    STAGE: ${self:provider.stage}
+
+  # There are two phases that are processed.
+  #
+  #  1. Looking for new/updated ZIP files that should be joined to the USDS scoring data into GeoJSON files
+  #  2. Looking for new/updated GeoJSON files that should be rendered into tiles
+  #
+  # The `input` values are attached directly to the Lambda event object
+  events:
+    - schedule:
+        rate: cron(0 5 * * ? *) # Scan for updated data at Midnight Eastern Time
+        input:
+          bucketName: !Ref DataBucket
+          bucketPrefix: sources
+          age: 86400 # Seconds
+    - schedule:
+        rate: cron(0 7 * * ? *) # Run two hours after the gerneating any GeoJSON
+        input:
+          bucketName: !Ref DataBucket
+          bucketPrefix: joined
+          age: 86400 # Seconds

@@ -1,0 +1,25 @@
+{
+    "containerDefinitions": [
+        {
+            "name": "ECSUSDSJustice40Worker",
+            "image": "osgeo/gdal:alpine-small-latest",
+            "cpu": 1024,
+            "environment": [
+                {
+                    "name": "AWS_REGION",
+                    "value": "${REGION}"
+                }
+            ],
+            "command": [
+                "ogr2ogr",
+                "-f", "GeoJSON",
+                "-sql", "SELECT * FROM ${census_source} LEFT JOIN '${usds_source}'.${usds_source_name} ON ${census_source}.${census_join_attribute} = ${usds_source_name}.${usds_join_attribute}",
+                "${output}",
+                "${input}"
+                ],
+            "memory": 1024,
+            "essential": true
+        }
+    ],
+    "family": ""
+}
