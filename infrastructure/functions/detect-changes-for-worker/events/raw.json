@@ -1,0 +1,9 @@
+{
+    "action": "raw",
+    "command": [
+        "-f",
+        "GeoJSON",
+        "/home/tabblock2010_01_pophu.json",
+        "/vsizip//home/tabblock2010_01_pophu.zip"
+    ]
+}

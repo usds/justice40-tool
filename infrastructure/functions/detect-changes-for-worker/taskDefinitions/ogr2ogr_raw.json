@@ -11,11 +11,7 @@
                 }
             ],
             "command": [
-                "ogr2ogr",
-                "-f", "GeoJSON",
-                "-sql", "${sql}",
-                "${output}",
-                "${input}"
+                "ogr2ogr"
             ],
             "memory": 1024,
             "essential": true

@@ -16,6 +16,10 @@ async function handler(event) {
 
     // Determine what action to take
     switch (event.action) {
+        // Execute a raw ogr2ogr command in Fargate
+        case 'raw':
+            return await executeRawOgr2OgrCommand(options);
+
         // Combine USDS data with external data sources
         case 'enrichment':
             return await enrichDataWithUSDSAttributes(options);
@@ -27,21 +31,27 @@ async function handler(event) {
 }
 
 async function enrichDataWithUSDSAttributes(options) {
+    const { logger } = options.deps;
 
     // Scan the S3 bucket for items
     const cutoff = getTimestampCutoff(options);
     const inputRecords = await fetchInputS3Objects(options, cutoff);
 
+    logger.debug(inputRecords);
+
     // For each item, create an ECS Task
     for ( const record of inputRecords ) {
-        const taskVars = createECSTaskVariablesFromS3Record(record);
-        await createECSTaskDefinition(options, taskVars);
+        const taskVars = createECSTaskVariablesFromS3Record(options, record);
+        const taskDefinition = await createECSTaskDefinition(options, 'ogr2ogr', taskVars);
+
+        logger.info(JSON.stringify(taskDefinition, null, 2));
     }
 
     return 'Enrichment complete';
 }
 
 function initialize(event) {
+    logger.debug('event:', event);
     return {
         deps: {
             DateTime,
@@ -67,51 +77,110 @@ function buildDestinationVSIS3Path(options, name) {
     return `/vsis3/${bucket}/${key}`;
 }
 
-async function createECSTaskDefinition(options, taskVars) {
+function applyVariableSubstitution(options, vars, input) {
+    const { logger } = options.deps;
+
+    let result = input;
+    for (const [key, value] of Object.entries(vars)) {
+        const token = '${' + key + '}';
+
+        // Use the split-join-method because the tokens have special characters which
+        // confuses the Regular Expression constructor
+        //  @see https://stackoverflow.com/a/17606289/332406
+        result = result.split(token).join(value);
+    }
+
+    return result;
+}
+
+async function createECSTaskDefinition(options, templateName, taskVars) {
     const { fs, path } = options.deps;
 
     // Load the task template
-    let taskTemplate = await fs.promises.readFile(path.join(__dirname, 'taskDefinitions', 'ogr2ogr.json'));
+    const templatePath = path.join(__dirname, 'taskDefinitions', `${templateName}.json`);
+    const rawTaskTemplate = await fs.promises.readFile(templatePath, 'utf8');
 
     // Perform variable substitution
-    for (const key of Object.keys(taskVars)) {
-        const token = '${' + key + '}';
-        taskTemplate = taskTemplate.replaceAll(token, taskVars[key]);
-    }
+    const taskTemplate = applyVariableSubstitution(options, taskVars, rawTaskTemplate);
 
     // Parse into a JSON object and return
     return JSON.parse(taskTemplate);
 }
 
-async function createTask(input, output, ) {
-    const { REGION } = process.env;
+/**
+ * Takes the event parameters and performs some variable substitution for the
+ * SQL query based on the actual items being processed.
+ */
+function createECSTaskVariablesFromS3Record(options, record) {
+    const { event } = options;
+    const { REGION } = options.env;
+    const { path } = options.deps;
 
-    const taskVars = {
-        REGION,
-        input,
-        census_source,
-        census_join_attribute,
-        usds_source,
-        usds_source_name,
-        usds_join_attribute,
-        output
+    const fullKey = record.Key;
+    const baseKey = path.basename(fullKey);
+    const baseKeyExt = path.extname(baseKey);
+    const baseKeyNoExt = path.basename(baseKey, baseKeyExt);
+
+    // Define all of the valid substitution variables
+    const vars = {
+        "s3.Key:full": fullKey,
+        "s3.Key": baseKey,
+        "s3.Key:base": baseKeyNoExt,
+        "s3.Key:ext": baseKeyExt
     };
 
+    // Apply them to the SQL clause
+    const sql = applyVariableSubstitution(options, vars, event.sql);
+
+    // Return the modified event record
+    return {
+        ...event,
+        REGION,
+        sql
+    };
+}
+
+async function executeRawOgr2OgrCommand(options) {
+    const { env } = options;
+    const { event } = options;
+
+    // These are the only variables injected from the environment
+    const taskVars = {
+        REGION: env.REGION
+    };
+
+    // Create the basic task definition
+    const taskDefinition = await createECSTaskDefinition(options, 'ogr2ogr_raw', taskVars);
+
+    // Append the command arguments from the event to the first (and only) container definition
+    taskDefinition.containerDefinitions[0].command.push(...event.command);
+
+    // Create the full Tas parameter object and execute
     const params = {
-        taskDefinition: await createECSTaskDefinition(taskVars),
+        taskDefinition: JSON.stringify(taskDefinition),
         count: 1
     };
 
     return await ecs.runTask(params).promise();
 }
 
-function createECSTaskDefinition() {
-
-}
-
 function fetchInputS3Objects (options, cutoff) {
     const { sourceBucketName, sourceBucketPrefix } = options.event;
     return fetchS3Objects(sourceBucketName, sourceBucketPrefix, cutoff);
+}
+
+function isSimpleObject(c, prefix) {
+    // The object is the prefix, ignore...
+    if (c.Key.length === prefix.length) {
+        return false;
+    }
+
+    // This doesn't give the *exact* count, but all we really care about is that
+    // the value is the same for the prefix and the S3 Key.
+    const separatorCount = c.Key.split('/').length;
+    const prefixSeparatorCount = prefix.split('/').length;
+
+    return separatorCount === prefixSeparatorCount;
 }
 
 /**
@@ -122,7 +191,7 @@ function fetchInputS3Objects (options, cutoff) {
  */
 async function fetchS3Objects (bucket, prefix, cutoff) {
     const objects = [];
-    const threshold = cutoff.getTime();
+    const threshold = cutoff.toMillis();
 
     // Limit the results to items in this bucket with a specific prefix
     const params = {
@@ -134,8 +203,11 @@ async function fetchS3Objects (bucket, prefix, cutoff) {
         // Get all of the initial objects
         const response = await s3.listObjectsV2(params).promise();
 
+        // Filter out any objects that are within another "folder" or match the prefix itself
+        const validObjects = response.Contents.filter(c => isSimpleObject(c, prefix));
+
         // Filter out any objects with a LastModified timestamp prior to the cutoff
-        const updatedObjects = response.Contents.filter(c => threshold < c.LastModified.getTime());
+        const updatedObjects = validObjects.filter(c => threshold < c.LastModified.getTime());
         objects.push(...updatedObjects);
 
         params.ContinuationToken = response.IsTruncated
