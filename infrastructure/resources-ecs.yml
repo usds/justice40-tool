@@ -1,0 +1,12 @@
+Resources:
+
+  ECSCluster:
+    Type: AWS::ECS::Cluster
+    Properties:
+      Tags:
+        - Key: Stage
+          Value: ${self:provider.stage}
+        - Key: Namespace
+          Value: ${self:custom.namespace}
+        - Key: Name
+          Value: ${self:custom.namespaceShort}-${self:provider.stage}-ecs-cluster
