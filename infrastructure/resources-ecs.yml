@@ -1,3 +1,9 @@
+Parameters:
+  ServiceNameOgr2Ogr:
+    Type: String
+    Default: ogr2ogr-gdal-3.6
+    Description: The name of the service
+
 Resources:
 
   ECSCluster:
@@ -10,3 +16,89 @@ Resources:
           Value: ${self:custom.namespace}
         - Key: Name
           Value: ${self:custom.namespaceShort}-${self:provider.stage}-ecs-cluster
+
+  # Task execution role allowing access to resources.
+  ECSTaskExecutionRoleOgr2Ogr:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service: [ecs-tasks.amazonaws.com]
+          Action: ['sts:AssumeRole']
+      Path: /
+      Policies:
+        - PolicyName: AmazonECSTaskExecutionRolePolicy
+          PolicyDocument:
+            Statement:
+              # Allow the ECS Tasks to access our specific S3 bucket
+            - Effect: Allow
+              Action:
+                - 's3:*'
+              Resource:
+                - Fn::GetAtt: [ DataBucket, Arn ]
+
+  ECSTaskRoleOgr2Ogr:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service: "ecs-tasks.amazonaws.com"
+          Action: ['sts:AssumeRole']
+      Path: /
+      Policies:
+        - PolicyName: "${self:provider.stage}-${self:service}-task-policy"
+          PolicyDocument:
+            Statement:
+              - Effect: Allow
+                Action:
+                  - secretsmanager:GetSecretValue
+                Resource: "*"
+              - Effect: Allow
+                Action:
+                  - kms:Decrypt
+                Resource: "*"
+                # EventBridge permissions.
+              - Effect: Allow
+                Action:
+                  - events:PutEvents
+                Resource:
+                  - arn:aws:events:${self:provider.region}:#{AWS::AccountId}:*
+
+  TaskDefinitionOgr2Ogr:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: ${self:provider.stage}-${self:service}
+      Cpu: 1024
+      Memory: 2048
+      NetworkMode: awsvpc
+      RequiresCompatibilities:
+        - FARGATE
+      ExecutionRoleArn:
+        Fn::GetAtt: [ ECSTaskExecutionRoleOgr2Ogr, Arn ]
+      TaskRoleArn:
+        Fn::GetAtt: [ ECSTaskRoleOgr2Ogr, Arn ]
+      ContainerDefinitions:
+        - Name: ${self:provider.stage}-${self:service}
+          Cpu: 1024
+          Memory: 2048
+          Image: osgeo/gdal:alpine-ultrasmall-latest
+          Environment:
+            - Name: REGION
+              Value: ${self:provider.region}
+            - Name: STAGE
+              Value: ${self:provider.stage}
+            - Name: NODE_ENV
+              Value: ${self:provider.stage}
+            - Name: ENV_NAME
+              Value: ${self:provider.stage}
+
+          LogConfiguration:
+            LogDriver: 'awslogs'
+            Options:
+              awslogs-group: ${self:provider.stage}-${self:service}
+              awslogs-region: ${self:provider.region}
+              awslogs-stream-prefix: ${self:service}
