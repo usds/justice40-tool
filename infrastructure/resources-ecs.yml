@@ -38,7 +38,12 @@ Resources:
                 - 's3:*'
               Resource:
                 - Fn::GetAtt: [ DataBucket, Arn ]
-
+            - Effect: Allow
+              Action:
+                # Allow the ECS tasks to upload logs to CloudWatch
+                - 'logs:CreateLogStream'
+                - 'logs:PutLogEvents'
+              Resource: '*'
   ECSTaskRoleOgr2Ogr:
     Type: AWS::IAM::Role
     Properties:
@@ -82,7 +87,7 @@ Resources:
       TaskRoleArn:
         Fn::GetAtt: [ ECSTaskRoleOgr2Ogr, Arn ]
       ContainerDefinitions:
-        - Name: ${self:provider.stage}-${self:service}
+        - Name: ${self:provider.stage}-${self:service}-osgeo-gdal
           Cpu: 1024
           Memory: 2048
           Image: osgeo/gdal:alpine-ultrasmall-latest

@@ -141,27 +141,51 @@ function createECSTaskVariablesFromS3Record(options, record) {
 }
 
 async function executeRawOgr2OgrCommand(options) {
+    const { logger } = options.deps;
     const { env } = options;
     const { event } = options;
+    const { ECS_CLUSTER, STAGE, VPC_SUBNET_ID } = env;
 
     // These are the only variables injected from the environment
-    const taskVars = {
-        REGION: env.REGION
-    };
+    //const taskVars = {
+    //    REGION
+    //};
 
     // Create the basic task definition
-    const taskDefinition = await createECSTaskDefinition(options, 'ogr2ogr_raw', taskVars);
-
-    // Append the command arguments from the event to the first (and only) container definition
-    taskDefinition.containerDefinitions[0].command.push(...event.command);
+    // const taskDefinition = await createECSTaskDefinition(options, 'ogr2ogr_raw', taskVars);
 
     // Create the full Tas parameter object and execute
     const params = {
-        taskDefinition: JSON.stringify(taskDefinition),
-        count: 1
+        taskDefinition: getTaskDefinitionName(options),
+        cluster: ECS_CLUSTER,
+        launchType: 'FARGATE',
+        count: 1,
+        networkConfiguration: { // Must be specified for tasks with `awsvpc` networking and awsvpc networking is required for FARGATE launch types
+            awsvpcConfiguration: {
+                subnets: [
+                    VPC_SUBNET_ID
+                ],
+                assignPublicIp: 'DISABLED',
+                securityGroups: []
+            }
+        },
+        overrides: {
+            containerOverrides: [
+                {
+                    name: `${STAGE}-justice40-data-harvester-osgeo-gdal`,
+                    command: event.command
+                }
+            ]
+        }
     };
 
+    logger.info(`Executing ECS Task...`, JSON.stringify(params, null, 2));
     return await ecs.runTask(params).promise();
+}
+
+function getTaskDefinitionName(options) {
+    const { STAGE } = options.env;
+    return `${STAGE}-justice40-data-harvester-ogr2ogr`;
 }
 
 function fetchInputS3Objects (options, cutoff) {
