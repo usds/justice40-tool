@@ -1,29 +1,119 @@
+// Standard odules
+const fs = require('fs');
+const path = require('path');
+const { DateTime }= require('luxon');
+const logger = console;
+
+// AWS APIs
 const AWS = require('aws-sdk');
+const { env } = require('process');
 const s3 = new AWS.S3();
-var ecs = new AWS.ECS();
+const ecs = new AWS.ECS();
 
 async function handler(event) {
-    // Scan the S3 bucket for items
-    const cutoff = DateTime.now().minus({ seconds: event.age });
-    const newItems = await fetchS3Objects(event.bucketName, event.bucketPrefix, cutoff);
+    // Build the options for the lambda
+    const options = initialize(event);
 
-    // For each item, create an ECS Task
+    // Determine what action to take
+    switch (event.action) {
+        // Combine USDS data with external data sources
+        case 'enrichment':
+            return await enrichDataWithUSDSAttributes(options);
 
-    return 'Finished'
+        default:
+            logger.warn(`Unknown action ${action}. Exiting`);
+            break;
+    }
 }
 
-async function createTask() {
+async function enrichDataWithUSDSAttributes(options) {
+
+    // Scan the S3 bucket for items
+    const cutoff = getTimestampCutoff(options);
+    const inputRecords = await fetchInputS3Objects(options, cutoff);
+
+    // For each item, create an ECS Task
+    for ( const record of inputRecords ) {
+        const taskVars = createECSTaskVariablesFromS3Record(record);
+        await createECSTaskDefinition(options, taskVars);
+    }
+
+    return 'Enrichment complete';
+}
+
+function initialize(event) {
+    return {
+        deps: {
+            DateTime,
+            fs,
+            logger,
+            path,
+            s3,
+            ecs
+        },
+        env,
+        event
+    };
+}
+
+function getTimestampCutoff(options) {
+    const { event } = options;
+    const { DateTime } = options.deps;
+
+    return DateTime.now().minus({ seconds: event.age });
+}
+
+function buildDestinationVSIS3Path(options, name) {
+    return `/vsis3/${bucket}/${key}`;
+}
+
+async function createECSTaskDefinition(options, taskVars) {
+    const { fs, path } = options.deps;
+
+    // Load the task template
+    let taskTemplate = await fs.promises.readFile(path.join(__dirname, 'taskDefinitions', 'ogr2ogr.json'));
+
+    // Perform variable substitution
+    for (const key of Object.keys(taskVars)) {
+        const token = '${' + key + '}';
+        taskTemplate = taskTemplate.replaceAll(token, taskVars[key]);
+    }
+
+    // Parse into a JSON object and return
+    return JSON.parse(taskTemplate);
+}
+
+async function createTask(input, output, ) {
+    const { REGION } = process.env;
+
+    const taskVars = {
+        REGION,
+        input,
+        census_source,
+        census_join_attribute,
+        usds_source,
+        usds_source_name,
+        usds_join_attribute,
+        output
+    };
+
     const params = {
-        taskDefinition: createECSTaskDefinition(),
+        taskDefinition: await createECSTaskDefinition(taskVars),
         count: 1
     };
 
-    await ecs.runTask(params).promise();
+    return await ecs.runTask(params).promise();
 }
 
 function createECSTaskDefinition() {
 
 }
+
+function fetchInputS3Objects (options, cutoff) {
+    const { sourceBucketName, sourceBucketPrefix } = options.event;
+    return fetchS3Objects(sourceBucketName, sourceBucketPrefix, cutoff);
+}
+
 /**
  * @param {string} bucket name in S3 to scan
  * @param {string} prefix of S3 buket items

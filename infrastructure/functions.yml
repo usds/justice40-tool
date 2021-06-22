@@ -19,12 +19,19 @@ DetectChangesForWorker:
     - schedule:
         rate: cron(0 5 * * ? *) # Scan for updated data at Midnight Eastern Time
         input:
-          bucketName: !Ref DataBucket
-          bucketPrefix: sources
+          action: enrichment
+          sourceBucketName: !Ref DataBucket
+          sourceBucketPrefix: sources
           age: 86400 # Seconds
+          sql: "SELECT * FROM ${s3.Key:noext} LEFT JOIN '/home/custom.csv'.custom ON tabblock2010_01_pophu.BLOCKID10 = custom.BLOCKID10"
+          destBucketName: !Ref DataBucket
+          destBucketPrefix: joined
     - schedule:
         rate: cron(0 7 * * ? *) # Run two hours after the gerneating any GeoJSON
         input:
-          bucketName: !Ref DataBucket
-          bucketPrefix: joined
+          action: none
+          sourceBucketName: !Ref DataBucket
+          sourceBucketPrefix: joined
           age: 86400 # Seconds
+          destBucketName: !Ref DataBucket
+          destBucketPrefix: tiles
