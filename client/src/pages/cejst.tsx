@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import Layout from '../components/layout';
 import MapWrapper from '../components/map';
-// import MapControls from '../components/mapControls';
 import HowYouCanHelp from '../components/HowYouCanHelp';
 import Feature from 'ol/Feature';
 import Geometry from 'ol/geom/Geometry';
@@ -38,7 +37,7 @@ const CEJSTPage = ({location}: IMapPageProps) => {
           prioritize Justice40 communities.
         </p>
         <Alert
-          type="warning"
+          type="info"
           heading="Limited Data Sources">
           <p>
             In this tool, we are using data sources that our
@@ -48,7 +47,6 @@ const CEJSTPage = ({location}: IMapPageProps) => {
             are investigating on our data roadmap.
           </p>
         </Alert>
-        {/* <MapControls setFeatures={setFeatures}/> */}
         <MapWrapper features={features} />
         <HowYouCanHelp />
       </main>

@@ -7,7 +7,6 @@ import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import {fromLonLat} from 'ol/proj';
 import * as styles from './map.module.scss';
-// import olms from 'ol-mapbox-style';
 import TileLayer from 'ol/layer/Tile';
 import VectorTileLayer from 'ol/layer/VectorTile.js';
 import VectorTileSource from 'ol/source/VectorTile.js';
@@ -15,8 +14,7 @@ import MVT from 'ol/format/MVT.js';
 import {Fill, Style} from 'ol/style.js';
 import XYZ from 'ol/source/XYZ';
 import * as d3 from 'd3';
-// import {transform} from 'ol/proj';
-// import {toStringXY} from 'ol/coordinate';
+
 import Overlay from 'ol/Overlay';
 
 
@@ -32,10 +30,9 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
   const [featuresLayer, setFeaturesLayer] = useState<VectorLayer>();
   const [selectedFeature, setSelectedFeature] = useState<Feature>();
   const [hoveredFeature, setHoveredFeature] = useState<Feature>();
-  // const [selectedCoord, setSelectedCoord] = useState();
 
   const mapElement = useRef() as
-        React.MutableRefObject<HTMLInputElement>;
+    React.MutableRefObject<HTMLInputElement>;
   const mapRef = useRef() as React.MutableRefObject<Map>;
 
 
@@ -47,7 +44,7 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
   mapRef.current = map;
   overlayRef.current = currentOverlay;
 
-  useEffect( () => {
+  useEffect(() => {
     // create and add initial vector source layer, to be replaced layer
     const initialFeaturesLayer = new VectorLayer({
       source: new VectorSource(),
@@ -55,12 +52,22 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
 
     const j40source = new VectorTileSource({
       'format': new MVT(),
+      // Use the below for local development:
       // 'url': 'http://localhost:8080/data/block2010/{z}/{x}/{y}.pbf',
       'url': 'http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/nm/{z}/{x}/{y}.pbf',
     });
 
     const colors = d3.scaleSequential(d3.interpolateBlues)
         .domain([0, 1]); // d3.scaleOrdinal(d3.interpolateBlues);
+
+    const colorWithAlpha = (data: number, alpha:number ) => {
+      const rgb = colors(data);
+      const rbgArr = rgb.slice(
+          rgb.indexOf('(') + 1,
+          rgb.indexOf(')'),
+      ).split(', ');
+      return `rgba(${rbgArr[0]}, ${rbgArr[1]}, ${rbgArr[2]}, ${alpha})`;
+    };
 
     const j40Layer = new VectorTileLayer({
       declutter: false,
@@ -69,12 +76,7 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
         const data = feature.get('score_a_percentile');
         let colorString;
         if (data) {
-          const rgb = colors(data);
-          const rbgArr = rgb.slice(
-              rgb.indexOf('(') + 1,
-              rgb.indexOf(')'),
-          ).split(', ');
-          colorString = `rgba(${rbgArr[0]}, ${rbgArr[1]}, ${rbgArr[2]}, 0.5)`;
+          colorString = colorWithAlpha(data, 0.3);
         } else {
           colorString = 'white';
         }
@@ -131,7 +133,7 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
 
 
   // update map if features prop changes
-  useEffect( () => {
+  useEffect(() => {
     if (features.length) { // may be empty on first render
       // set features to map
       featuresLayer?.setSource(
@@ -179,7 +181,7 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
       return true;
     });
   };
-  const readablePercent = (percent:number) => {
+  const readablePercent = (percent: number) => {
     return `${parseFloat(percent * 100).toFixed(2)}%`;
   };
 
@@ -187,17 +189,27 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
     <>
       <div ref={mapElement} className={styles.mapContainer}></div>
       <div className="clicked-coord-label">
-        <p>{ (hoveredFeature) ? readablePercent(hoveredFeature.properties_['score_a_percentile']) : '' }</p>
-        {/* <p>{ (selectedCoord) ? toStringXY(selectedCoord, 5) : '' }</p> */}
+        <p>{(hoveredFeature) ? readablePercent(hoveredFeature.properties_['score_a_percentile']) : ''}</p>
         <div ref={popupContainer} className={styles.popupContainer}>
           <a href="#" ref={popupCloser} className={styles.popupCloser}></a>
           <div ref={popupContent} className={styles.popupContent}>
-            { (selectedFeature) ?
-                <div>
-                  <h2>Cumulative Index Score:</h2>
-                  <h3>{readablePercent(selectedFeature.properties_['score_a_percentile'])}</h3>
-                </div> :
-                  '' }
+            {(selectedFeature) ?
+              <div>
+                <h2>Cumulative Index Score:</h2>
+                <h3>{readablePercent(selectedFeature.properties_['score_a_percentile'])}</h3>
+                {/* // this will eventually populate a sidebar
+                <dl>
+                    {
+                      Object.keys(selectedFeature.getProperties()).map((key, index) => (
+                        <>
+                          <dt>{key}</dt>
+                          <dd>{selectedFeature.properties_[key]}</dd>
+                        </>
+                      ))
+                    }
+                  </dl> */}
+              </div> :
+              ''}
 
           </div>
         </div>
