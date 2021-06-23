@@ -33,11 +33,25 @@ Resources:
           PolicyDocument:
             Statement:
               # Allow the ECS Tasks to access our specific S3 bucket
+              #  @see https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html for Multi-Part Upload requirement
             - Effect: Allow
               Action:
-                - 's3:*'
+                - s3:ListBucket
+                - s3:ListBucketMultipartUploads
               Resource:
-                - Fn::GetAtt: [ DataBucket, Arn ]
+                - arn:aws:s3:::${self:custom.environment.DATA_BUCKET}
+            - Effect: Allow
+              Action:
+                - s3:PutObject
+                - s3:PutObjectAcl
+                - s3:GetObject
+                - s3:GetObjectVersion
+                - s3:DeleteObject
+                - s3:DeleteObjectVersion
+                - s3:AbortMultipartUpload
+                - s3:ListMultipartUploadParts
+              Resource:
+                - arn:aws:s3:::${self:custom.environment.DATA_BUCKET}/*
             - Effect: Allow
               Action:
                 # Allow the ECS tasks to upload logs to CloudWatch
