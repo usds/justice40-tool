@@ -92,8 +92,8 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
   const popupContent = React.useRef<HTMLDivElement>(null);
 
   const overlayRef = useRef() as React.MutableRefObject<Overlay>;
-  mapRef.current = map;
-  overlayRef.current = currentOverlay;
+  mapRef.current = map!;
+  overlayRef.current = currentOverlay!;
 
   useEffect( () => {
     // create and add initial vector source layer, to be replaced layer
@@ -101,14 +101,14 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
       source: new VectorSource(),
     });
 
-    popupCloser.current.onclick = function() {
+    popupCloser.current!.onclick = function() {
       overlay.setPosition(undefined);
-      popupCloser.current.blur();
+      popupCloser.current!.blur();
       return false;
     };
 
     const overlay = new Overlay({
-      element: popupContainer.current,
+      element: popupContainer.current!,
       autoPan: true,
       autoPanAnimation: {
         duration: 250,
@@ -171,7 +171,7 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
     properties = selectedFeature.getProperties();
   }
 
-  const getTitleContent = (properties) => {
+  const getTitleContent = (properties: { [key: string]: any; }) => {
     return (
       <table className={styles.popupHeaderTable}>
         <tbody>
@@ -204,7 +204,7 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
         <div ref={popupContainer} className={styles.popupContainer}>
           <a href="#" ref={popupCloser} className={styles.popupCloser}></a>
           <div ref={popupContent} className={styles.popupContent}>
-            {(selectedFeature) ?
+            {(selectedFeature && properties) ?
               <div>
                 {getTitleContent(properties)}
                 {/* <Table bordered={false}>
