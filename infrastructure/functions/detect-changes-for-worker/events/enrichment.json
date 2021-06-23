@@ -1,0 +1,9 @@
+{
+    "action": "enrichment",
+    "sourceBucketName": "j40-sit-justice40-data-harvester-data",
+    "sourceBucketPrefix": "usds/",
+    "age": 86400,
+    "sql": "SELECT * FROM ${s3.Key:base} LEFT JOIN '/home/custom.csv'.custom ON tabblock2010_01_pophu.BLOCKID10 = custom.BLOCKID10",
+    "destBucketName": "j40-sit-justice40-data-harvester-data",
+    "destBucketPrefix": "joined/"
+}

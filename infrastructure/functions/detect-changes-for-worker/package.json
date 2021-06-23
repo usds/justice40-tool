@@ -1,0 +1,14 @@
+{
+  "name": "detect-changes-for-worker",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "test:raw": "cat ./events/raw.json | docker run --rm -v ${PWD}:/var/task --env-file ./test.env -i -e DOCKER_LAMBDA_USE_STDIN=1 lambci/lambda:nodejs12.x index.handler",
+    "test:enrichment": "cat ./events/enrichment.json | docker run --rm -v ${PWD}:/var/task --env-file ./test.env -i -e DOCKER_LAMBDA_USE_STDIN=1 lambci/lambda:nodejs12.x index.handler"
+  },
+  "author": "Xentity",
+  "license": "ISC",
+  "dependencies": {
+    "luxon": "^1.27.0"
+  }
+}
