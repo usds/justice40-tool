@@ -1,6 +1,7 @@
 {
     "action": "raw",
     "command": [
+        "--debug", "ON",
         "-f",
         "GeoJSON",
         "/vsis3/j40-sit-justice40-data-harvester-data/sources/tabblock2010_01_pophu.json",
