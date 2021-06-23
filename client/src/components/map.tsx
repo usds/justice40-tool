@@ -27,10 +27,9 @@ const mapConfig = {
       ],
     },
     'custom': {
-      'projection': 'EPSG:3857',
       'type': 'vector',
       'tiles': [
-        'https://gis.data.census.gov/arcgis/rest/services/Hosted/VT_2019_150_00_PY_D1/VectorTileServer/tile/{z}/{y}/{x}.mvt',
+        'http://localhost:8080/data/tl_2010_bg_with_data/{z}/{x}/{y}.pbf',
       ],
     },
   },
@@ -44,19 +43,30 @@ const mapConfig = {
     },
     {
       'id': 'blocks',
-      'type': 'line',
+      'type': 'fill',
       'source': 'custom',
-      'source-layer': 'BlockGroup',
+      'source-layer': 'blocks',
       'minzoom': 0,
       'layout': {
         'line-cap': 'round',
         'line-join': 'round',
       },
-
+      // 01=AL, 30=MT, 34=NJ, 36=NY
+      'filter': ['in', 'STATEFP10', '01', '30', '34', '36'],
       'paint': {
-        'line-opacity': 0.6,
-        'line-color': 'red',
-        'line-width': 1,
+        'fill-color': [
+          'interpolate',
+          ['linear'],
+          ['to-number', [
+            'get',
+            'Score C (percentile)',
+          ]],
+          0.0,
+          'white',
+          1,
+          'blue',
+        ],
+        'fill-opacity': 0.75,
       },
     },
   ],
