@@ -4,3 +4,4 @@ jupyter_contrib_nbextensions
 numpy
 pandas
 requests
+click
