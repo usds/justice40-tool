@@ -14,7 +14,8 @@
 - Start a terminal
 - Change to this directory (i.e. `cd score`)
 - Activate a Poetry Shell (see above)
-- Run `python scripts/download_cbg.py`
+- If you want to clear out all data and tiles from all directories, you can run: `python application.py data-cleanup`.
+- Run `python application.py census-data-download`
   Note: Census files are not kept in the repository and the download directories are ignored by Git
 
 ## Generating mbtiles

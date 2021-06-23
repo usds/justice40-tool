@@ -3,9 +3,10 @@ import click
 from pathlib import Path
 import logging
 
-from etl.sources.census.utils import reset_data_directories as census_reset
-from etl.sources.ejscreen.utils import reset_data_directories as ejscreen_reset
+from etl.sources.census.etl_utils import reset_data_directories as census_reset
+from etl.sources.ejscreen.etl_utils import reset_data_directories as ejscreen_reset
 from utils import remove_files_from_dir
+from etl.sources.census.etl import download_census_csvs
 
 settings.APP_ROOT = Path.cwd()
 
@@ -19,6 +20,7 @@ def cli():
     help="Clean up all data folders",
 )
 def data_cleanup():
+
     data_path = settings.APP_ROOT / "data"
 
     # census directories
@@ -38,12 +40,16 @@ def data_cleanup():
     # cleanup tmp dir
     remove_files_from_dir(data_path / "tmp")
 
+    logging.info("Cleaned up all data files")
+
 
 @cli.command(
     help="Census data download",
 )
-def census():
-    click.echo("Dropped the database")
+def census_data_download():
+    logging.info("Downloading Census data")
+    data_path = settings.APP_ROOT / "data"
+    download_census_csvs(data_path)
 
 
 if __name__ == "__main__":
