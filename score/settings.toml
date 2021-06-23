@@ -1,0 +1,10 @@
+[default]
+AWS_VALUE = ""
+
+[development]
+AWS_VALUE = "Dev"
+
+[staging]
+AWS_VALUE = "Stage"
+
+[production]

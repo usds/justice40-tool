@@ -12,7 +12,7 @@ data_path = Path.cwd() / "data"
 with requests.Session() as s:
     # the fips_states_2010.csv is generated from data here
     # https://www.census.gov/geographies/reference-files/time-series/geo/tallies.html
-    state_fips_codes = get_state_fips_codes()
+    state_fips_codes = get_state_fips_codes(data_path)
     for fips in state_fips_codes:
         # check if file exists
         shp_file_path = data_path.joinpath(

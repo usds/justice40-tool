@@ -129,6 +129,9 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+# Ignore dynaconf secret files
+score/.secrets.*
+
 # ignore data
 score/data
 score/data/census
