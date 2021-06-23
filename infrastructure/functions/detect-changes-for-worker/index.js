@@ -51,7 +51,7 @@ async function enrichDataWithUSDSAttributes(options) {
 }
 
 function initialize(event) {
-    logger.debug('event:', event);
+    logger.debug('event:', JSON.stringify(event, null, 2));
     return {
         deps: {
             DateTime,

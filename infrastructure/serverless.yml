@@ -8,6 +8,7 @@ provider:
   stage: ${opt:stage, 'sit'}
   region: ${opt:region, 'us-east-1'}
   profile: ${self:provider.stage}
+  lambdaHashingVersion: "20201221"
   deploymentBucket:
     name: ${self:custom.environment.DEPLOYMENT_BUCKET_PREFIX}-${self:provider.stage}-${self:provider.region}-${self:service}
     blockPublicAccess: true
@@ -34,6 +35,23 @@ custom:
     enabled: ${self:custom.environment.SHOULD_CREATE_SSL_CERTIFICATE}
 
   iamRoleStatements:
+    - Effect: "Allow"
+      Condition:
+        ArnEquals:
+          ecs:cluster:
+            Fn::GetAtt: [ ECSCluster, Arn ]
+      Action: "ecs:RunTask"
+      Resource: "*"
+    - Effect: "Allow"
+      Condition:
+        ArnEquals:
+          ecs:cluster:
+            Fn::GetAtt: [ ECSCluster, Arn ]
+      Action:
+        - "iam:ListInstanceProfiles"
+        - "iam:ListRoles"
+        - "iam:PassRole"
+      Resource: "*"
     - Effect: Allow
       Action:
         - "s3:ListBucket"
@@ -55,7 +73,7 @@ custom:
           - - "arn:aws:s3:::"
             - Ref: DataBucket
 
-# functions: ${file(./functions.yml)}
+functions: ${file(./functions.yml)}
 
 resources:
   - ${file(./conditions.yml)}
