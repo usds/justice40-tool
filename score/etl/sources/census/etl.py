@@ -19,7 +19,7 @@ with requests.Session() as s:
             "census", "shp", fips, f"tl_2010_{fips}_bg10.shp"
         )
         if not os.path.isfile(shp_file_path):
-            print(f"downloading {row[1]}")
+            print(f"downloading {fips}")
 
             # 2020 tiger data is here: https://www2.census.gov/geo/tiger/TIGER2020/BG/
             # But using 2010 for now
@@ -31,7 +31,7 @@ with requests.Session() as s:
             zip_file.write(file_contents)
             zip_file.close()
 
-            print(f"extracting {row[1]}")
+            print(f"extracting {fips}")
 
             with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
                 shp_dir_path = data_path / "census" / "shp" / fips
@@ -43,7 +43,7 @@ with requests.Session() as s:
         )
         if not os.path.isfile(geojson_dir_path.joinpath(fips + ".json")):
             # ogr2ogr
-            print(f"encoding GeoJSON for {row[1]}")
+            print(f"encoding GeoJSON for {fips}")
 
             # PWD is different for Windows
             if os.name == "nt":
@@ -67,7 +67,7 @@ with requests.Session() as s:
     # generate CBG CSV table for pandas
     ## load in memory
     cbg_national_list = []  # in-memory global list
-    cbg_per_state_list = {}  # in-memory dict per state
+    cbg_per_state_list: dict = {}  # in-memory dict per state
     for file in os.listdir(geojson_dir_path):
         if file.endswith(".json"):
             print(f"ingesting geoid10 for file {file}")
