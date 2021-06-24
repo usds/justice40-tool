@@ -1,14 +1,17 @@
-// Standard odules
+// Standard modules
 const fs = require('fs');
 const path = require('path');
-const { DateTime }= require('luxon');
+const { DateTime } = require('luxon');
 const logger = console;
 
 // AWS APIs
 const AWS = require('aws-sdk');
-const { env } = require('process');
-const s3 = new AWS.S3();
-const ecs = new AWS.ECS();
+
+// Local modules
+const util = require('util');
+const gdal = require('gdal');
+const s3 = require('s3');
+const ecs = require('ecs');
 
 async function handler(event) {
     // Build the options for the lambda
@@ -18,14 +21,14 @@ async function handler(event) {
     switch (event.action) {
         // Execute a raw command against the gdal container
         case 'gdal':
-            return await executeRawCommand(options, event.command);
+            return await ecs.executeRawCommand(options, event.command);
 
         // Assume that we're running ogr2ogr
         case 'ogr2ogr':
-            return await executeRawCommand(options, ['ogr2ogr', ...event.command]);
+            return await ecs.executeRawCommand(options, ['ogr2ogr', ...event.command]);
 
         case 'tippecanoe':
-            return await executeRawCommand(options, event.command);
+            return await ecs.executeRawCommand(options, event.command);
     
         // Combine USDS data with external data sources
         case 'enrichment':
@@ -39,17 +42,18 @@ async function handler(event) {
 
 async function enrichDataWithUSDSAttributes(options) {
     const { logger } = options.deps;
+    const { util, ecs } = options.deps.local;
 
     // Scan the S3 bucket for items
-    const cutoff = getTimestampCutoff(options);
+    const cutoff = util.getTimestampCutoff(options);
     const inputRecords = await fetchInputS3Objects(options, cutoff);
 
     logger.debug(inputRecords);
 
     // For each item, create an ECS Task
     for ( const record of inputRecords ) {
-        const taskVars = createECSTaskVariablesFromS3Record(options, record);
-        const taskDefinition = await createECSTaskDefinition(options, 'ogr2ogr', taskVars);
+        const taskVars = ecs.createECSTaskVariablesFromS3Record(options, record);
+        const taskDefinition = await ecs.createECSTaskDefinition(options, 'ogr2ogr', taskVars);
 
         logger.info(JSON.stringify(taskDefinition, null, 2));
     }
@@ -57,6 +61,18 @@ async function enrichDataWithUSDSAttributes(options) {
     return 'Enrichment complete';
 }
 
+/**
+ * Get a collection of S3 objects that need to be processed.
+ */
+function fetchInputS3Objects (options, cutoff) {
+    const { s3 } = options.deps.local;
+    const { sourceBucketName, sourceBucketPrefix } = options.event;
+    return s3.fetchUpdatedS3Objects(options, sourceBucketName, sourceBucketPrefix, cutoff);
+}
+
+/**
+ * Wrap all dependencies in an object in order to inject as appropriate.
+ */
 function initialize(event) {
     logger.debug('event:', JSON.stringify(event, null, 2));
     return {
@@ -65,244 +81,18 @@ function initialize(event) {
             fs,
             logger,
             path,
-            s3,
-            ecs
-        },
-        env,
-        event
-    };
-}
-
-function getTimestampCutoff(options) {
-    const { event } = options;
-    const { DateTime } = options.deps;
-
-    return DateTime.now().minus({ seconds: event.age });
-}
-
-function buildDestinationVSIS3Path(options, name) {
-    return `/vsis3/${bucket}/${key}`;
-}
-
-function applyVariableSubstitution(options, vars, input) {
-    const { logger } = options.deps;
-
-    let result = input;
-    for (const [key, value] of Object.entries(vars)) {
-        const token = '${' + key + '}';
-
-        // Use the split-join-method because the tokens have special characters which
-        // confuses the Regular Expression constructor
-        //  @see https://stackoverflow.com/a/17606289/332406
-        result = result.split(token).join(value);
-    }
-
-    return result;
-}
-
-async function createECSTaskDefinition(options, templateName, taskVars) {
-    const { fs, path } = options.deps;
-
-    // Load the task template
-    const templatePath = path.join(__dirname, 'taskDefinitions', `${templateName}.json`);
-    const rawTaskTemplate = await fs.promises.readFile(templatePath, 'utf8');
-
-    // Perform variable substitution
-    const taskTemplate = applyVariableSubstitution(options, taskVars, rawTaskTemplate);
-
-    // Parse into a JSON object and return
-    return JSON.parse(taskTemplate);
-}
-
-/**
- * Takes the event parameters and performs some variable substitution for the
- * SQL query based on the actual items being processed.
- */
-function createECSTaskVariablesFromS3Record(options, record) {
-    const { event } = options;
-    const { REGION } = options.env;
-    const { path } = options.deps;
-
-    const fullKey = record.Key;
-    const baseKey = path.basename(fullKey);
-    const baseKeyExt = path.extname(baseKey);
-    const baseKeyNoExt = path.basename(baseKey, baseKeyExt);
-
-    // Define all of the valid substitution variables
-    const vars = {
-        "s3.Key:full": fullKey,
-        "s3.Key": baseKey,
-        "s3.Key:base": baseKeyNoExt,
-        "s3.Key:ext": baseKeyExt
-    };
-
-    // Apply them to the SQL clause
-    const sql = applyVariableSubstitution(options, vars, event.sql);
-
-    // Return the modified event record
-    return {
-        ...event,
-        REGION,
-        sql
-    };
-}
-
-/**
- * Take an array of commands and modify it with a list of pre- and post-
- * command to run in the image.  This is primarily used to move files in 
- * and out of the container ephemeral storage.
- */
-function wrapContainerCommand(options, pre, command, post) {
-    // We will run all of the commands as a chained bash command, so merge everything
-    // together using '&&' chaining.
-    //
-    // We expect the pre/post arrays to be full commands, while the command array is a list
-    // on individual pieces of a single command.
-    if (!pre && !post) {
-        return command;
-    }
-
-    const allCommands = [];
-
-    // Pre-commands come first
-    allCommands.push(...(pre || []));
-
-    // Turn the primart array of command line arguments into a single command line string
-    allCommands.push(command.join(' '));
-
-    // And add in the post-commands last
-    allCommands.push(...(post || []));
-
-    // Return a new array of commands with everything chained using '&&' so that execution will terminate
-    // as soon as any command in the chain fails.
-    return ['/bin/sh', '-c', allCommands.join(' && ')];
-}
-
-function getTaskDefinitionName(options) {
-    const { GDAL_TASK_DEFINITION, TIPPECANOE_TASK_DEFINITION } = options.env;
-    const { action } = options.event;
-
-    switch (action) {
-        case 'gdal':
-        case 'ogr2ogr':
-            return GDAL_TASK_DEFINITION;
-        case 'tippecanoe':
-            return TIPPECANOE_TASK_DEFINITION;
-    }
-
-    throw new Error(`No Fargate Task Definition defined for ${action}`);
-}
-
-function getFargateContainerDefinitionName(options) {
-    const { GDAL_CONTAINER_DEFINITION, TIPPECANOE_CONTAINER_DEFINITION } = options.env;
-    const { action } = options.event;
-
-    switch (action) {
-        case 'gdal':
-        case 'ogr2ogr':
-            return GDAL_CONTAINER_DEFINITION;
-        case 'tippecanoe':
-            return TIPPECANOE_CONTAINER_DEFINITION
-    }
-
-    throw new Error(`No Fargate Container Definition Name defined for ${action}`);
-}
-
-/**
- * Executes a (known) container in Fargate with the provided command line parameters
- */
-async function executeRawCommand(options, command) {
-    const { logger } = options.deps;
-    const { env, event } = options;
-    const { ECS_CLUSTER, VPC_SUBNET_ID } = env;
-
-    // If there are pre- or post- commands defined, wrap up the primary command
-    const containerCommand = wrapContainerCommand(options, event.pre, command, event.post);
-
-    // Get the name of the container that we are using
-    const containerDefinitionName = getFargateContainerDefinitionName(options);
-
-    // Create the full Task parameter object and execute
-    const params = {
-        taskDefinition: getTaskDefinitionName(options),
-        cluster: ECS_CLUSTER,
-        launchType: 'FARGATE',
-        count: 1,
-        networkConfiguration: { // Must be specified for tasks with `awsvpc` networking and awsvpc networking is required for FARGATE launch types
-            awsvpcConfiguration: {
-                subnets: [
-                    VPC_SUBNET_ID
-                ],
-                assignPublicIp: 'DISABLED',
-                securityGroups: []
+            s3: new AWS.S3(),
+            ecs: new AWS.ECS(),
+            local: {
+                ecs,
+                gdal,
+                s3,
+                util
             }
         },
-        overrides: {
-            containerOverrides: [
-                {
-                    name: containerDefinitionName,
-                    command: containerCommand
-                }
-            ]
-        }
+        env: process.env,
+        event
     };
-
-    logger.info(`Executing ECS Task...`, JSON.stringify(params, null, 2));
-    return await ecs.runTask(params).promise();
-}
-
-function fetchInputS3Objects (options, cutoff) {
-    const { sourceBucketName, sourceBucketPrefix } = options.event;
-    return fetchS3Objects(sourceBucketName, sourceBucketPrefix, cutoff);
-}
-
-function isSimpleObject(c, prefix) {
-    // The object is the prefix, ignore...
-    if (c.Key.length === prefix.length) {
-        return false;
-    }
-
-    // This doesn't give the *exact* count, but all we really care about is that
-    // the value is the same for the prefix and the S3 Key.
-    const separatorCount = c.Key.split('/').length;
-    const prefixSeparatorCount = prefix.split('/').length;
-
-    return separatorCount === prefixSeparatorCount;
-}
-
-/**
- * @param {string} bucket name in S3 to scan
- * @param {string} prefix of S3 buket items
- * @param {Date} cutoff timestamp
- * @returns 
- */
-async function fetchS3Objects (bucket, prefix, cutoff) {
-    const objects = [];
-    const threshold = cutoff.toMillis();
-
-    // Limit the results to items in this bucket with a specific prefix
-    const params = {
-      Bucket: bucket,
-      Prefix: prefix
-    };
-  
-    do {
-        // Get all of the initial objects
-        const response = await s3.listObjectsV2(params).promise();
-
-        // Filter out any objects that are within another "folder" or match the prefix itself
-        const validObjects = response.Contents.filter(c => isSimpleObject(c, prefix));
-
-        // Filter out any objects with a LastModified timestamp prior to the cutoff
-        const updatedObjects = validObjects.filter(c => threshold < c.LastModified.getTime());
-        objects.push(...updatedObjects);
-
-        params.ContinuationToken = response.IsTruncated
-          ? response.NextContinuationToken
-          : null;
-    } while (params.ContinuationToken);
-  
-    return objects;
 }
 
 module.exports = {
