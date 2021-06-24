@@ -58,8 +58,8 @@ def download_census_csvs(data_path: Path) -> None:
 
         # generate CBG CSV table for pandas
         ## load in memory
-        cbg_national_list = []  # in-memory global list
-        cbg_per_state_list: dict = {}  # in-memory dict per state
+        cbg_national = []  # in-memory global list
+        cbg_per_state: dict = {}  # in-memory dict per state
         for file in os.listdir(geojson_dir_path):
             if file.endswith(".json"):
                 logging.info(f"Ingesting geoid10 for file {file}")
@@ -67,16 +67,16 @@ def download_census_csvs(data_path: Path) -> None:
                     geojson = json.load(f)
                     for feature in geojson["features"]:
                         geoid10 = feature["properties"]["GEOID10"]
-                        cbg_national_list.append(str(geoid10))
+                        cbg_national.append(str(geoid10))
                         geoid10_state_id = geoid10[:2]
-                        if not cbg_per_state_list.get(geoid10_state_id):
-                            cbg_per_state_list[geoid10_state_id] = []
-                        cbg_per_state_list[geoid10_state_id].append(geoid10)
+                        if not cbg_per_state.get(geoid10_state_id):
+                            cbg_per_state[geoid10_state_id] = []
+                        cbg_per_state[geoid10_state_id].append(geoid10)
 
         csv_dir_path = data_path / "census" / "csv"
         ## write to individual state csv
-        for state_id in cbg_per_state_list:
-            geoid10_list = cbg_per_state_list[state_id]
+        for state_id in cbg_per_state:
+            geoid10_list = cbg_per_state[state_id]
             with open(
                 csv_dir_path / f"{state_id}.csv", mode="w", newline=""
             ) as cbg_csv_file:
@@ -99,7 +99,7 @@ def download_census_csvs(data_path: Path) -> None:
             cbg_csv_file_writer = csv.writer(
                 cbg_csv_file, delimiter=",", quotechar='"', quoting=csv.QUOTE_MINIMAL
             )
-            for geoid10 in cbg_national_list:
+            for geoid10 in cbg_national:
                 cbg_csv_file_writer.writerow(
                     [
                         geoid10,

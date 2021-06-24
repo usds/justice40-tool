@@ -74,8 +74,6 @@ def generate_tiles(data_path: Path):
     print(cmd)
     os.system(cmd)
 
-    # if AWS creds are present, generate uncompressed toles
-    # docker run --rm -it -v ${PWD}:/data tippecanoe tippecanoe --no-tile-compression -zg -e /data/tiles_custom -l blocks /data/tabblock2010_01_pophu_joined.json
     # PWD is different for Windows
     if os.name == "nt":
         pwd = "%cd%"
