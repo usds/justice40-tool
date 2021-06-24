@@ -147,6 +147,37 @@ function createECSTaskVariablesFromS3Record(options, record) {
     };
 }
 
+/**
+ * Take an array of commands and modify it with a list of pre- and post-
+ * command to run in the image.  This is primarily used to move files in 
+ * and out of the container ephemeral storage.
+ */
+function wrapContainerCommand(options, pre, command, post) {
+    // We will run all of the commands as a chained bash command, so merge everything
+    // together using '&&' chaining.
+    //
+    // We expect the pre/post arrays to be full commands, while the command array is a list
+    // on individual pieces of a single command.
+    if (!pre && !post) {
+        return command;
+    }
+
+    const allCommands = [];
+
+    // Pre-commands come first
+    allCommands.push(...(pre || []));
+
+    // Turn the primart array of command line arguments into a single command line string
+    allCommands.push(command.join(' '));
+
+    // And add in the post-commands last
+    allCommands.push(...(post || []));
+
+    // Return a new array of commands with everything chained using '&&' so that execution will terminate
+    // as soon as any command in the chain fails.
+    return ['/bin/sh', '-c', allCommands.join(' && ')];
+}
+
 function getTaskDefinitionName(options) {
     const { GDAL_TASK_DEFINITION, TIPPECANOE_TASK_DEFINITION } = options.env;
     const { action } = options.event;
@@ -182,8 +213,11 @@ function getFargateContainerDefinitionName(options) {
  */
 async function executeRawCommand(options, command) {
     const { logger } = options.deps;
-    const { env } = options;
+    const { env, event } = options;
     const { ECS_CLUSTER, VPC_SUBNET_ID } = env;
+
+    // If there are pre- or post- commands defined, wrap up the primary command
+    const containerCommand = wrapContainerCommand(options, event.pre, command, event.post);
 
     // Get the name of the container that we are using
     const containerDefinitionName = getFargateContainerDefinitionName(options);
@@ -207,7 +241,7 @@ async function executeRawCommand(options, command) {
             containerOverrides: [
                 {
                     name: containerDefinitionName,
-                    command: command
+                    command: containerCommand
                 }
             ]
         }

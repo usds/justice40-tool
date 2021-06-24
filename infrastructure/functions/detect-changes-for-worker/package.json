@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "test:raw": "cat ./events/raw.json | docker run --rm -v ${PWD}:/var/task --env-file ./test.env -i -e DOCKER_LAMBDA_USE_STDIN=1 lambci/lambda:nodejs12.x index.handler",
+    "test:gdal": "cat ./events/gdal.json | docker run --rm -v ${PWD}:/var/task --env-file ./test.env -i -e DOCKER_LAMBDA_USE_STDIN=1 lambci/lambda:nodejs12.x index.handler",
+    "test:tippecanoe": "cat ./events/tippecanoe.json | docker run --rm -v ${PWD}:/var/task --env-file ./test.env -i -e DOCKER_LAMBDA_USE_STDIN=1 lambci/lambda:nodejs12.x index.handler",
     "test:enrichment": "cat ./events/enrichment.json | docker run --rm -v ${PWD}:/var/task --env-file ./test.env -i -e DOCKER_LAMBDA_USE_STDIN=1 lambci/lambda:nodejs12.x index.handler"
   },
   "author": "Xentity",
