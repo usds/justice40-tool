@@ -30,7 +30,9 @@ const mapConfig = {
     'custom': {
       'type': 'vector',
       'tiles': [
-        'http://localhost:8080/data/tl_2010_bg_with_data/{z}/{x}/{y}.pbf',
+        'http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/0624_demo/{z}/{x}/{y}.pbf',
+        // For local development, use:
+        // 'http://localhost:8080/data/tl_2010_bg_with_data/{z}/{x}/{y}.pbf',
       ],
     },
     'labels': {
