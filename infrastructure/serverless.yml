@@ -1,4 +1,5 @@
 service: justice40-data-harvester
+configValidationMode: error
 
 frameworkVersion: ">=2.48.0"
 
@@ -8,11 +9,53 @@ provider:
   stage: ${opt:stage, 'sit'}
   region: ${opt:region, 'us-east-1'}
   profile: ${self:provider.stage}
+  lambdaHashingVersion: "20201221"
   deploymentBucket:
     name: ${self:custom.environment.DEPLOYMENT_BUCKET_PREFIX}-${self:provider.stage}-${self:provider.region}-${self:service}
     blockPublicAccess: true
     maxPreviousDeploymentArtifacts: 5
   stackName: ${self:custom.environment.STACK_NAME_PREFIX}${self:provider.stage}-${self:service}
+  
+  iam:
+    role:
+      statements:
+        - Effect: "Allow"
+          # Condition:
+          #   ArnEquals:
+          #     ecs:cluster:
+          #       Fn::GetAtt: [ ECSCluster, Arn ]
+          Action: "ecs:RunTask"
+          Resource: "*"
+        - Effect: "Allow"
+          # Condition:
+          #   ArnEquals:
+          #     ecs:cluster:
+          #       Fn::GetAtt: [ ECSCluster, Arn ]
+          Action:
+            - "iam:ListInstanceProfiles"
+            - "iam:ListRoles"
+            - "iam:PassRole"
+          Resource: "*"
+        - Effect: Allow
+          Action:
+            - "s3:ListBucket"
+          Resource:
+            - Fn::Join:
+              - ""
+              - - "arn:aws:s3:::"
+                - Ref: DataBucket
+                - "/*"
+        - Effect: Allow
+          Action:
+            - "s3:DeleteObject"
+            - "s3:GetObject"
+            - "s3:PutObject"
+            - "s3:PutObjectAcl"
+          Resource:
+            - Fn::Join:
+              - ""
+              - - "arn:aws:s3:::"
+                - Ref: DataBucket
 
 plugins:
   - serverless-certificate-creator
@@ -33,29 +76,8 @@ custom:
     rewriteRecords: true
     enabled: ${self:custom.environment.SHOULD_CREATE_SSL_CERTIFICATE}
 
-  iamRoleStatements:
-    - Effect: Allow
-      Action:
-        - "s3:ListBucket"
-      Resource:
-        - Fn::Join:
-          - ""
-          - - "arn:aws:s3:::"
-            - Ref: DataBucket
-            - "/*"
-    - Effect: Allow
-      Action:
-        - "s3:DeleteObject"
-        - "s3:GetObject"
-        - "s3:PutObject"
-        - "s3:PutObjectAcl"
-      Resource:
-        - Fn::Join:
-          - ""
-          - - "arn:aws:s3:::"
-            - Ref: DataBucket
 
-# functions: ${file(./functions.yml)}
+functions: ${file(./functions.yml)}
 
 resources:
   - ${file(./conditions.yml)}

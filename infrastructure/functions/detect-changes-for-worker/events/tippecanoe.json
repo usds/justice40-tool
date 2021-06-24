@@ -1,0 +1,15 @@
+{
+    "action": "tippecanoe",
+    "command": [
+        "tile-join",
+        "--force",
+        "-pk",
+        "-n",
+        "tl_2010_bg",
+        "-o",
+        "/tmp/tl_2010_bg_with_data.mbtiles",
+        "-c",
+        "/tmp/usa.csv",
+        "/tmp/tl_2010_bg.mbtiles"
+    ]
+}

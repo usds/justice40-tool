@@ -16,16 +16,23 @@ async function handler(event) {
 
     // Determine what action to take
     switch (event.action) {
-        // Execute a raw ogr2ogr command in Fargate
-        case 'raw':
-            return await executeRawOgr2OgrCommand(options);
+        // Execute a raw command against the gdal container
+        case 'gdal':
+            return await executeRawCommand(options, event.command);
 
+        // Assume that we're running ogr2ogr
+        case 'ogr2ogr':
+            return await executeRawCommand(options, ['ogr2ogr', ...event.command]);
+
+        case 'tippecanoe':
+            return await executeRawCommand(options, event.command);
+    
         // Combine USDS data with external data sources
         case 'enrichment':
             return await enrichDataWithUSDSAttributes(options);
 
         default:
-            logger.warn(`Unknown action ${action}. Exiting`);
+            logger.warn(`Unknown action ${event.action}. Exiting`);
             break;
     }
 }
@@ -51,7 +58,7 @@ async function enrichDataWithUSDSAttributes(options) {
 }
 
 function initialize(event) {
-    logger.debug('event:', event);
+    logger.debug('event:', JSON.stringify(event, null, 2));
     return {
         deps: {
             DateTime,
@@ -140,21 +147,48 @@ function createECSTaskVariablesFromS3Record(options, record) {
     };
 }
 
-async function executeRawOgr2OgrCommand(options) {
+function getTaskDefinitionName(options) {
+    const { GDAL_TASK_DEFINITION, TIPPECANOE_TASK_DEFINITION } = options.env;
+    const { action } = options.event;
+
+    switch (action) {
+        case 'gdal':
+        case 'ogr2ogr':
+            return GDAL_TASK_DEFINITION;
+        case 'tippecanoe':
+            return TIPPECANOE_TASK_DEFINITION;
+    }
+
+    throw new Error(`No Fargate Task Definition defined for ${action}`);
+}
+
+function getFargateContainerDefinitionName(options) {
+    const { GDAL_CONTAINER_DEFINITION, TIPPECANOE_CONTAINER_DEFINITION } = options.env;
+    const { action } = options.event;
+
+    switch (action) {
+        case 'gdal':
+        case 'ogr2ogr':
+            return GDAL_CONTAINER_DEFINITION;
+        case 'tippecanoe':
+            return TIPPECANOE_CONTAINER_DEFINITION
+    }
+
+    throw new Error(`No Fargate Container Definition Name defined for ${action}`);
+}
+
+/**
+ * Executes a (known) container in Fargate with the provided command line parameters
+ */
+async function executeRawCommand(options, command) {
     const { logger } = options.deps;
     const { env } = options;
-    const { event } = options;
-    const { ECS_CLUSTER, STAGE, VPC_SUBNET_ID } = env;
+    const { ECS_CLUSTER, VPC_SUBNET_ID } = env;
 
-    // These are the only variables injected from the environment
-    //const taskVars = {
-    //    REGION
-    //};
+    // Get the name of the container that we are using
+    const containerDefinitionName = getFargateContainerDefinitionName(options);
 
-    // Create the basic task definition
-    // const taskDefinition = await createECSTaskDefinition(options, 'ogr2ogr_raw', taskVars);
-
-    // Create the full Tas parameter object and execute
+    // Create the full Task parameter object and execute
     const params = {
         taskDefinition: getTaskDefinitionName(options),
         cluster: ECS_CLUSTER,
@@ -172,8 +206,8 @@ async function executeRawOgr2OgrCommand(options) {
         overrides: {
             containerOverrides: [
                 {
-                    name: `${STAGE}-justice40-data-harvester-osgeo-gdal`,
-                    command: ['ogr2ogr', ...event.command]
+                    name: containerDefinitionName,
+                    command: command
                 }
             ]
         }
@@ -181,11 +215,6 @@ async function executeRawOgr2OgrCommand(options) {
 
     logger.info(`Executing ECS Task...`, JSON.stringify(params, null, 2));
     return await ecs.runTask(params).promise();
-}
-
-function getTaskDefinitionName(options) {
-    const { STAGE } = options.env;
-    return `${STAGE}-justice40-data-harvester-ogr2ogr`;
 }
 
 function fetchInputS3Objects (options, cutoff) {

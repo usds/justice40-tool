@@ -1,5 +1,5 @@
 {
-    "action": "raw",
+    "action": "ogr2ogr",
     "command": [
         "--debug", "ON",
         "-f",

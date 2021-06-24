@@ -18,7 +18,7 @@ Resources:
           Value: ${self:custom.namespaceShort}-${self:provider.stage}-ecs-cluster
 
   # Task execution role allowing access to resources.
-  ECSTaskExecutionRoleOgr2Ogr:
+  ECSTaskExecutionRoleShared:
     Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
@@ -41,7 +41,7 @@ Resources:
                 - 'logs:DescribeLogStreams'
               Resource: '*'
 
-  ECSTaskRoleOgr2Ogr:
+  ECSTaskRoleShared:
     Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
@@ -96,21 +96,56 @@ Resources:
   TaskDefinitionOgr2Ogr:
     Type: AWS::ECS::TaskDefinition
     Properties:
-      Family: ${self:provider.stage}-${self:service}-ogr2ogr
+      Family: ${self:custom.environment.GDAL_TASK_DEFINITION_NAME}
       Cpu: 1024
       Memory: 2048
       NetworkMode: awsvpc
       RequiresCompatibilities:
         - FARGATE
       ExecutionRoleArn:
-        Fn::GetAtt: [ ECSTaskExecutionRoleOgr2Ogr, Arn ]
+        Fn::GetAtt: [ ECSTaskExecutionRoleShared, Arn ]
       TaskRoleArn:
-        Fn::GetAtt: [ ECSTaskRoleOgr2Ogr, Arn ]
+        Fn::GetAtt: [ ECSTaskRoleShared, Arn ]
       ContainerDefinitions:
-        - Name: ${self:provider.stage}-${self:service}-osgeo-gdal
+        - Name: ${self:custom.environment.GDAL_CONTAINER_DEFINITION_NAME}
           Cpu: 1024
           Memory: 2048
           Image: osgeo/gdal:alpine-ultrasmall-latest
+          Environment:
+            - Name: REGION
+              Value: ${self:provider.region}
+            - Name: STAGE
+              Value: ${self:provider.stage}
+            - Name: NODE_ENV
+              Value: ${self:provider.stage}
+            - Name: ENV_NAME
+              Value: ${self:provider.stage}
+
+          LogConfiguration:
+            LogDriver: 'awslogs'
+            Options:
+              awslogs-group: ${self:provider.stage}-${self:service}
+              awslogs-region: ${self:provider.region}
+              awslogs-stream-prefix: ${self:service}
+
+  TaskDefinitionTippecanoe:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: ${self:custom.environment.TIPPECANOE_TASK_DEFINITION_NAME}
+      Cpu: 1024
+      Memory: 2048
+      NetworkMode: awsvpc
+      RequiresCompatibilities:
+        - FARGATE
+      ExecutionRoleArn:
+        Fn::GetAtt: [ ECSTaskExecutionRoleShared, Arn ]
+      TaskRoleArn:
+        Fn::GetAtt: [ ECSTaskRoleShared, Arn ]
+      ContainerDefinitions:
+        - Name: ${self:custom.environment.TIPPECANOE_CONTAINER_DEFINITION_NAME}
+          Cpu: 1024
+          Memory: 2048
+          Image: mikegiddens/tippecanoe:latest
           Environment:
             - Name: REGION
               Value: ${self:provider.region}

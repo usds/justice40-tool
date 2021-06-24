@@ -7,6 +7,10 @@ sit:
   HOSTED_ZONE_SUBDOMAIN: ${self:provider.stage}-${self:service}
   HOSTED_ZONE_DOMAIN: geoplatform.info
   CLOUDFRONT_CERTIFICATE_ARN: arn:aws:acm:us-east-1:998343784597:certificate/083641d4-9df6-4f89-b79d-6697f428f5b9
+  GDAL_TASK_DEFINITION_NAME: ${self:provider.stage}-${self:service}-gdal
+  GDAL_CONTAINER_DEFINITION_NAME: ${self:provider.stage}-${self:service}-osgeo-gdal
+  TIPPECANOE_TASK_DEFINITION_NAME: ${self:provider.stage}-${self:service}-tippecanoe
+  TIPPECANOE_CONTAINER_DEFINITION_NAME: ${self:provider.stage}-${self:service}-mgiddens-tippecanoe
 
 stg:
   DEPLOYMENT_BUCKET_PREFIX: ${self:custom.namespaceShort}
@@ -17,6 +21,8 @@ stg:
   HOSTED_ZONE_SUBDOMAIN: ${self:provider.stage}-${self:service}
   HOSTED_ZONE_DOMAIN: TBD
   CLOUDFRONT_CERTIFICATE_ARN: TBD
+  GDAL_CONTAINER_DEFINITION_NAME: ${self:provider.stage}-${self:service}-osgeo-gdal
+  TIPPECANOE_CONTAINER_DEFINITION_NAME: ${self:provider.stage}-${self:service}-tippecanoe
 
 prd:
   DEPLOYMENT_BUCKET_PREFIX: ${self:custom.namespaceShort}
@@ -27,3 +33,5 @@ prd:
   HOSTED_ZONE_SUBDOMAIN: ${self:service}
   HOSTED_ZONE_DOMAIN: TBD
   CLOUDFRONT_CERTIFICATE_ARN: TBD
+  GDAL_CONTAINER_DEFINITION_NAME: ${self:provider.stage}-${self:service}-osgeo-gdal
+  TIPPECANOE_CONTAINER_DEFINITION_NAME: ${self:provider.stage}-${self:service}-tippecanoe
