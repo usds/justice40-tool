@@ -1,3 +1,4 @@
+censusdata
 ipython
 jupyter
 jupyter_contrib_nbextensions
