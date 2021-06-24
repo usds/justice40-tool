@@ -13,7 +13,6 @@ interface IMapPageProps {
 }
 
 const CEJSTPage = ({location}: IMapPageProps) => {
-
   // We temporarily removed MapControls, which would enable you to `setFeatures` also, for now
   //   We will bring back later when we have interactive controls.
   const [features] = useState<Feature<Geometry>[]>([]);
