@@ -8,6 +8,9 @@ DetectChangesForWorker:
   environment:
     REGION: ${self:provider.region}
     STAGE: ${self:provider.stage}
+    ECS_CLUSTER: !Ref ECSCluster
+    VPC_SUBNET_ID:
+      Fn::ImportValue: ${self:provider.stage}-PrivateSubnetOne
 
   # There are two phases that are processed.
   #

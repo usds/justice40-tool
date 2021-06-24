@@ -16,16 +16,23 @@ async function handler(event) {
 
     // Determine what action to take
     switch (event.action) {
-        // Execute a raw ogr2ogr command in Fargate
-        case 'raw':
-            return await executeRawOgr2OgrCommand(options);
+        // Execute a raw command against the gdal container
+        case 'gdal':
+            return await executeRawGdalCommand(options, event.command);
 
+        // Assume that we're running ogr2ogr
+        case 'ogr2ogr':
+            return await executeRawGdalCommand(options, ['ogr2ogr', ...event.command]);
+    
         // Combine USDS data with external data sources
         case 'enrichment':
             return await enrichDataWithUSDSAttributes(options);
 
+        case 'tippecanoe':
+            throw new Error('tippecanoe actions are not yet supported');
+
         default:
-            logger.warn(`Unknown action ${action}. Exiting`);
+            logger.warn(`Unknown action ${event.action}. Exiting`);
             break;
     }
 }
@@ -140,21 +147,31 @@ function createECSTaskVariablesFromS3Record(options, record) {
     };
 }
 
-async function executeRawOgr2OgrCommand(options) {
+function getFargteContainerName(options) {
+    const { STAGE } = options.env;
+    const { action } = options.event;
+
+    // 
+    if (action === 'tippecanoe') {
+        return null;
+    }
+
+    return `${STAGE}-justice40-data-harvester-osgeo-gdal`;
+}
+
+/**
+ * Executes the GDAL container in Fargate witht he provided command line parameters
+ */
+async function executeRawGdalCommand(options, command) {
     const { logger } = options.deps;
     const { env } = options;
     const { event } = options;
-    const { ECS_CLUSTER, STAGE, VPC_SUBNET_ID } = env;
+    const { ECS_CLUSTER, VPC_SUBNET_ID } = env;
 
-    // These are the only variables injected from the environment
-    //const taskVars = {
-    //    REGION
-    //};
+    // Get the name of the container that we are using
+    const containerName = getFargteContainerName(options);
 
-    // Create the basic task definition
-    // const taskDefinition = await createECSTaskDefinition(options, 'ogr2ogr_raw', taskVars);
-
-    // Create the full Tas parameter object and execute
+    // Create the full Task parameter object and execute
     const params = {
         taskDefinition: getTaskDefinitionName(options),
         cluster: ECS_CLUSTER,
@@ -172,8 +189,8 @@ async function executeRawOgr2OgrCommand(options) {
         overrides: {
             containerOverrides: [
                 {
-                    name: `${STAGE}-justice40-data-harvester-osgeo-gdal`,
-                    command: ['ogr2ogr', ...event.command]
+                    name: containerName,
+                    command: command
                 }
             ]
         }
