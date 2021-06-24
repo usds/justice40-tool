@@ -12,7 +12,7 @@ import Overlay from 'ol/Overlay';
 // import {Table} from '@trussworks/react-uswds';
 
 // @ts-ignore
-// import zoomIcon from '/node_modules/uswds/dist/img/usa-icons/zoom_in.svg';
+import zoomIcon from '/node_modules/uswds/dist/img/usa-icons/zoom_in.svg';
 
 const mapConfig = {
   'version': 8,
@@ -102,18 +102,23 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
   const [featuresLayer, setFeaturesLayer] = useState<VectorLayer>();
   const [currentOverlay, setCurrentOverlay] = useState<Overlay>();
   const [selectedFeature, setSelectedFeature] = useState<FeatureLike>();
+  const [currentZoom, setCurrentZoom] = useState<number>(0);
 
   const mapElement = useRef() as
     React.MutableRefObject<HTMLInputElement>;
-  const mapRef = useRef() as React.MutableRefObject<Map>;
 
+  // create state ref that can be accessed in OpenLayers onclick callback function
+  //  https://stackoverflow.com/a/60643670
+  const mapRef = useRef() as React.MutableRefObject<Map>;
+  if (map) {
+    mapRef.current = map;
+  }
 
   const popupContainer = React.useRef<HTMLDivElement>(null);
   const popupCloser = React.useRef<HTMLAnchorElement>(null);
   const popupContent = React.useRef<HTMLDivElement>(null);
 
   const overlayRef = useRef() as React.MutableRefObject<Overlay>;
-  mapRef.current = map!;
   overlayRef.current = currentOverlay!;
 
   useEffect( () => {
@@ -122,6 +127,10 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
       source: new VectorSource(),
     });
 
+    if (!popupCloser || !popupContainer) {
+      return;
+    }
+
     popupCloser.current!.onclick = function() {
       overlay.setPosition(undefined);
       popupCloser.current!.blur();
@@ -129,13 +138,13 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
     };
 
     const overlay = new Overlay({
+      // Using the non-null assertion operator as we check for null above
       element: popupContainer.current!,
       autoPan: true,
       autoPanAnimation: {
         duration: 250,
       },
     });
-
     const initialMap = new Map({
       target: mapElement.current,
       view: new View({
@@ -145,9 +154,12 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
       controls: [],
       overlays: [overlay],
     });
+    const currentZoom = Math.floor(initialMap.getView().getZoom());
 
+    initialMap.on('moveend', handleMoveEnd);
     initialMap.on('click', handleMapClick);
     setMap(initialMap);
+    setCurrentZoom(currentZoom);
     setCurrentOverlay(overlay);
     setFeaturesLayer(initialFeaturesLayer);
     olms(initialMap, mapConfig);
@@ -178,17 +190,17 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
 
     mapRef.current.forEachFeatureAtPixel(event.pixel, (feature) => {
       setSelectedFeature(feature);
-      feature.getProperties()['feature-state'] = 'selected';
-      //   let feature = new ol.Feature(new ol.geom.Point(coords));
-      // feature.setStyle(this.createIconStyle(this.coffeeShopIconPath, undefined));
-      // feature.setProperties({ name: 'test point', value: 15 });
-
-      // this.vectorSource.addFeature(feature);
-
       return true;
     });
 
     overlayRef.current.setPosition(clickedCoord);
+  };
+
+  const handleMoveEnd = () => {
+    const newZoom = Math.floor(mapRef.current.getView().getZoom()!);
+    if (currentZoom != newZoom) {
+      setCurrentZoom(newZoom);
+    }
   };
 
   const readablePercent = (percent: number) => {
@@ -213,20 +225,22 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
   };
 
   const getTitleContent = (properties: { [key: string]: any; }) => {
+    const blockGroup = properties['GEOID10'];
+    const score = properties['Score C (percentile)'];
     return (
       <table className={styles.popupHeaderTable}>
         <tbody>
           <tr>
             <td><strong>Census Block Group:</strong></td>
-            <td>{properties['GEOID10']}</td>
+            <td>{blockGroup}</td>
           </tr>
           <tr>
             <td><strong>Just Progress Categorization:</strong></td>
-            <td>{getCategorization(properties['Score C (percentile)'])}</td>
+            <td>{getCategorization(score)}</td>
           </tr>
           <tr>
             <td><strong>Cumulative Index Score:</strong></td>
-            <td>{readablePercent(properties['Score C (percentile)'])}</td>
+            <td>{readablePercent(score)}</td>
           </tr>
         </tbody>
       </table>
@@ -271,6 +285,15 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
               ''}
         </div>
       </div>
+
+      { currentZoom < 5 ?
+      <div className={styles.zoomWarning}>
+        <img
+          src={zoomIcon} alt={'zoom icon'}/>
+          Zoom in to the state or regional level to see prioritized communities on the map.
+      </div> :
+      ''
+      }
     </div>
   );
 };
