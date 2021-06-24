@@ -96,7 +96,7 @@ Resources:
   TaskDefinitionOgr2Ogr:
     Type: AWS::ECS::TaskDefinition
     Properties:
-      Family: ${self:provider.stage}-${self:service}-ogr2ogr
+      Family: ${self:custom.environment.GDAL_TASK_DEFINITION_NAME}
       Cpu: 1024
       Memory: 2048
       NetworkMode: awsvpc
@@ -131,7 +131,7 @@ Resources:
   TaskDefinitionTippecanoe:
     Type: AWS::ECS::TaskDefinition
     Properties:
-      Family: ${self:provider.stage}-${self:service}-tippecanoe
+      Family: ${self:custom.environment.TIPPECANOE_TASK_DEFINITION_NAME}
       Cpu: 1024
       Memory: 2048
       NetworkMode: awsvpc

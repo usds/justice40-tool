@@ -147,6 +147,21 @@ function createECSTaskVariablesFromS3Record(options, record) {
     };
 }
 
+function getTaskDefinitionName(options) {
+    const { GDAL_TASK_DEFINITION, TIPPECANOE_TASK_DEFINITION } = options.env;
+    const { action } = options.event;
+
+    switch (action) {
+        case 'gdal':
+        case 'ogr2ogr':
+            return GDAL_TASK_DEFINITION;
+        case 'tippecanoe':
+            return TIPPECANOE_TASK_DEFINITION;
+    }
+
+    throw new Error(`No Fargate Task Definition defined for ${action}`);
+}
+
 function getFargateContainerDefinitionName(options) {
     const { GDAL_CONTAINER_DEFINITION, TIPPECANOE_CONTAINER_DEFINITION } = options.env;
     const { action } = options.event;
@@ -200,11 +215,6 @@ async function executeRawCommand(options, command) {
 
     logger.info(`Executing ECS Task...`, JSON.stringify(params, null, 2));
     return await ecs.runTask(params).promise();
-}
-
-function getTaskDefinitionName(options) {
-    const { STAGE } = options.env;
-    return `${STAGE}-justice40-data-harvester-ogr2ogr`;
 }
 
 function fetchInputS3Objects (options, cutoff) {
