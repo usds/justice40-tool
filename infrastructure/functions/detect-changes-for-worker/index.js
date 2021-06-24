@@ -18,18 +18,18 @@ async function handler(event) {
     switch (event.action) {
         // Execute a raw command against the gdal container
         case 'gdal':
-            return await executeRawGdalCommand(options, event.command);
+            return await executeRawCommand(options, event.command);
 
         // Assume that we're running ogr2ogr
         case 'ogr2ogr':
-            return await executeRawGdalCommand(options, ['ogr2ogr', ...event.command]);
+            return await executeRawCommand(options, ['ogr2ogr', ...event.command]);
+
+        case 'tippecanoe':
+            return await executeRawCommand(options, event.command);
     
         // Combine USDS data with external data sources
         case 'enrichment':
             return await enrichDataWithUSDSAttributes(options);
-
-        case 'tippecanoe':
-            throw new Error('tippecanoe actions are not yet supported');
 
         default:
             logger.warn(`Unknown action ${event.action}. Exiting`);
@@ -147,29 +147,31 @@ function createECSTaskVariablesFromS3Record(options, record) {
     };
 }
 
-function getFargteContainerName(options) {
-    const { STAGE } = options.env;
+function getFargateContainerDefinitionName(options) {
+    const { GDAL_CONTAINER_DEFINITION, TIPPECANOE_CONTAINER_DEFINITION } = options.env;
     const { action } = options.event;
 
-    // 
-    if (action === 'tippecanoe') {
-        return null;
+    switch (action) {
+        case 'gdal':
+        case 'ogr2ogr':
+            return GDAL_CONTAINER_DEFINITION;
+        case 'tippecanoe':
+            return TIPPECANOE_CONTAINER_DEFINITION
     }
 
-    return `${STAGE}-justice40-data-harvester-osgeo-gdal`;
+    throw new Error(`No Fargate Container Definition Name defined for ${action}`);
 }
 
 /**
- * Executes the GDAL container in Fargate witht he provided command line parameters
+ * Executes a (known) container in Fargate with the provided command line parameters
  */
-async function executeRawGdalCommand(options, command) {
+async function executeRawCommand(options, command) {
     const { logger } = options.deps;
     const { env } = options;
-    const { event } = options;
     const { ECS_CLUSTER, VPC_SUBNET_ID } = env;
 
     // Get the name of the container that we are using
-    const containerName = getFargteContainerName(options);
+    const containerDefinitionName = getFargateContainerDefinitionName(options);
 
     // Create the full Task parameter object and execute
     const params = {
@@ -189,7 +191,7 @@ async function executeRawGdalCommand(options, command) {
         overrides: {
             containerOverrides: [
                 {
-                    name: containerName,
+                    name: containerDefinitionName,
                     command: command
                 }
             ]

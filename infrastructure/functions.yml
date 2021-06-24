@@ -11,6 +11,8 @@ DetectChangesForWorker:
     ECS_CLUSTER: !Ref ECSCluster
     VPC_SUBNET_ID:
       Fn::ImportValue: ${self:provider.stage}-PrivateSubnetOne
+    GDAL_CONTAINER_DEFINITION: ${self:custom.environment.GDAL_CONTAINER_DEFINITION_NAME}
+    TIPPECANOE_CONTAINER_DEFINITION: ${self:custom.environment.TIPPECANOE_CONTAINER_DEFINITION_NAME}
 
   # There are two phases that are processed.
   #

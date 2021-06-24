@@ -107,7 +107,7 @@ Resources:
       TaskRoleArn:
         Fn::GetAtt: [ ECSTaskRoleShared, Arn ]
       ContainerDefinitions:
-        - Name: ${self:provider.stage}-${self:service}-osgeo-gdal
+        - Name: ${self:custom.environment.GDAL_CONTAINER_DEFINITION_NAME}
           Cpu: 1024
           Memory: 2048
           Image: osgeo/gdal:alpine-ultrasmall-latest
@@ -142,7 +142,7 @@ Resources:
       TaskRoleArn:
         Fn::GetAtt: [ ECSTaskRoleShared, Arn ]
       ContainerDefinitions:
-        - Name: ${self:provider.stage}-${self:service}-tippecanoe
+        - Name: ${self:custom.environment.TIPPECANOE_CONTAINER_DEFINITION_NAME}
           Cpu: 1024
           Memory: 2048
           Image: mikegiddens/tippecanoe:latest
