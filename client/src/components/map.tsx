@@ -200,9 +200,9 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
 
   const getCategorization = (percentile: number) => {
     let categorization = '';
-    if (percentile > 0.75 ) {
+    if (percentile >= 0.75 ) {
       categorization = 'Prioritized';
-    } else if (0.60 < percentile && percentile < 0.75) {
+    } else if (0.60 <= percentile && percentile < 0.75) {
       categorization = 'Threshold';
     } else {
       categorization = 'Non-prioritized';
