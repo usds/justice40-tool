@@ -21,16 +21,25 @@ const mapConfig = {
     'carto-light': {
       'type': 'raster',
       'tiles': [
-        'https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
-        'https://b.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
-        'https://c.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
-        'https://d.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
+        'https://a.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
+        'https://b.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
+        'https://c.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
+        'https://d.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
       ],
     },
     'custom': {
       'type': 'vector',
       'tiles': [
         'http://localhost:8080/data/tl_2010_bg_with_data/{z}/{x}/{y}.pbf',
+      ],
+    },
+    'labels': {
+      'type': 'raster',
+      'tiles': [
+        'https://cartodb-basemaps-a.global.ssl.fastly.net/light_only_labels/{z}/{x}/{y}@2x.png',
+        'https://cartodb-basemaps-b.global.ssl.fastly.net/light_only_labels/{z}/{x}/{y}@2x.png',
+        'https://cartodb-basemaps-c.global.ssl.fastly.net/light_only_labels/{z}/{x}/{y}@2x.png',
+        'https://cartodb-basemaps-d.global.ssl.fastly.net/light_only_labels/{z}/{x}/{y}@2x.png',
       ],
     },
   },
@@ -52,8 +61,8 @@ const mapConfig = {
         'line-cap': 'round',
         'line-join': 'round',
       },
-      // 01=AL, 30=MT, 34=NJ, 36=NY
-      'filter': ['in', 'STATEFP10', '01', '30', '34', '36'],
+      // 01=AL, 30=MT, 34=NJ, 35=NM, 36=NY
+      'filter': ['in', 'STATEFP10', '01', '30', '34', '35', '36'],
       'paint': {
         'fill-color': [
           'interpolate',
@@ -69,6 +78,13 @@ const mapConfig = {
         ],
         'fill-opacity': 0.75,
       },
+    },
+    {
+      'id': 'labels-only',
+      'type': 'raster',
+      'source': 'labels',
+      'minzoom': 0,
+      'maxzoom': 22,
     },
   ],
 };
