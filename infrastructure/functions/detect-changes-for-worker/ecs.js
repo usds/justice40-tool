@@ -2,7 +2,8 @@
  * Load an ECS Task Definition template and apply variable substitution
  */
 async function createECSTaskDefinition(options, templateName, taskVars) {
-    const { fs, path, util } = options.deps;
+    const { fs, path } = options.deps;
+    const { util } = options.deps.local;
 
     // Load the task template
     const templatePath = path.join(__dirname, 'taskDefinitions', `${templateName}.json`);
@@ -23,20 +24,10 @@ async function createECSTaskDefinition(options, templateName, taskVars) {
  function createECSTaskVariablesFromS3Record(options, record) {
     const { event } = options;
     const { REGION } = options.env;
-    const { path, util } = options.deps;
+    const { util } = options.deps;
 
-    const fullKey = record.Key;
-    const baseKey = path.basename(fullKey);
-    const baseKeyExt = path.extname(baseKey);
-    const baseKeyNoExt = path.basename(baseKey, baseKeyExt);
-
-    // Define all of the valid substitution variables
-    const vars = {
-        "s3.Key:full": fullKey,
-        "s3.Key": baseKey,
-        "s3.Key:base": baseKeyNoExt,
-        "s3.Key:ext": baseKeyExt
-    };
+    // Create substituion variables from the S3 record
+    const vars = util.createSubstitutionVariablesFromS3Record(options, record, 's3');
 
     // Apply them to the SQL clause
     const sql = util.applyVariableSubstitution(options, vars, event.sql);
@@ -84,14 +75,15 @@ async function createECSTaskDefinition(options, templateName, taskVars) {
 /**
  * Returns the appropriate ECS Task Definition name based on the current action
  */
-function getTaskDefinitionName(options) {
+function getTaskDefinitionName(options, event) {
     const { GDAL_TASK_DEFINITION, TIPPECANOE_TASK_DEFINITION } = options.env;
-    const { action } = options.event;
+    const { action } = event;
 
     switch (action) {
         case 'gdal':
         case 'ogr2ogr':
-            return GDAL_TASK_DEFINITION;
+        case 'enrichment':
+                return GDAL_TASK_DEFINITION;
         case 'tippecanoe':
             return TIPPECANOE_TASK_DEFINITION;
     }
@@ -102,14 +94,15 @@ function getTaskDefinitionName(options) {
 /**
  * Returns the appropriate ECS Container Definition name based on the current action
  */
-function getFargateContainerDefinitionName(options) {
+function getFargateContainerDefinitionName(options, event) {
     const { GDAL_CONTAINER_DEFINITION, TIPPECANOE_CONTAINER_DEFINITION } = options.env;
-    const { action } = options.event;
+    const { action } = event;
 
     switch (action) {
         case 'gdal':
         case 'ogr2ogr':
-            return GDAL_CONTAINER_DEFINITION;
+        case 'enrichment':
+                return GDAL_CONTAINER_DEFINITION;
         case 'tippecanoe':
             return TIPPECANOE_CONTAINER_DEFINITION
     }
@@ -120,20 +113,20 @@ function getFargateContainerDefinitionName(options) {
 /**
  * Executes a (known) container in Fargate with the provided command line parameters.
  */
- async function executeRawCommand(options, command) {
+async function executeRawCommand(options, event) {
     const { ecs, logger } = options.deps;
-    const { env, event } = options;
+    const { env } = options;
     const { ECS_CLUSTER, VPC_SUBNET_ID } = env;
 
     // If there are pre- or post- commands defined, wrap up the primary command
-    const containerCommand = wrapContainerCommand(options, event.pre, command, event.post);
+    const containerCommand = wrapContainerCommand(options, event.pre, event.command, event.post);
 
     // Get the name of the container that we are using
-    const containerDefinitionName = getFargateContainerDefinitionName(options);
+    const containerDefinitionName = getFargateContainerDefinitionName(options, event);
 
     // Create the full Task parameter object and execute
     const params = {
-        taskDefinition: getTaskDefinitionName(options),
+        taskDefinition: getTaskDefinitionName(options, event),
         cluster: ECS_CLUSTER,
         launchType: 'FARGATE',
         count: 1,

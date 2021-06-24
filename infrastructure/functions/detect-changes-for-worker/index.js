@@ -8,10 +8,10 @@ const logger = console;
 const AWS = require('aws-sdk');
 
 // Local modules
-const util = require('util');
-const gdal = require('gdal');
-const s3 = require('s3');
-const ecs = require('ecs');
+const util = require('./util');
+const gdal = require('./gdal');
+const s3 = require('./s3');
+const ecs = require('./ecs');
 
 async function handler(event) {
     // Build the options for the lambda
@@ -21,18 +21,21 @@ async function handler(event) {
     switch (event.action) {
         // Execute a raw command against the gdal container
         case 'gdal':
-            return await ecs.executeRawCommand(options, event.command);
+            return await ecs.executeRawCommand(options, event);
 
         // Assume that we're running ogr2ogr
         case 'ogr2ogr':
-            return await ecs.executeRawCommand(options, ['ogr2ogr', ...event.command]);
+            return await ecs.executeRawCommand(options, {
+                ...event,
+                command: ['ogr2ogr', ...event.command]
+            });
 
         case 'tippecanoe':
-            return await ecs.executeRawCommand(options, event.command);
+            return await ecs.executeRawCommand(options, event);
     
         // Combine USDS data with external data sources
         case 'enrichment':
-            return await enrichDataWithUSDSAttributes(options);
+            return await enrichDataWithUSDSAttributes(options, event);
 
         default:
             logger.warn(`Unknown action ${event.action}. Exiting`);
@@ -40,34 +43,61 @@ async function handler(event) {
     }
 }
 
-async function enrichDataWithUSDSAttributes(options) {
+async function enrichDataWithUSDSAttributes(options, event) {
     const { logger } = options.deps;
-    const { util, ecs } = options.deps.local;
+    const { util, ecs, s3 } = options.deps.local;
 
-    // Scan the S3 bucket for items
+    // Use the event.age to calculate the custoff for any input files
     const cutoff = util.getTimestampCutoff(options);
-    const inputRecords = await fetchInputS3Objects(options, cutoff);
+    logger.info(`Cutoff time of ${cutoff}`);
 
-    logger.debug(inputRecords);
+    // Scan the source S3 bucket for items that need to be processed
+    const { sourceBucketName, sourceBucketPrefix } = event;
+    const sourceS3Records = await s3.fetchUpdatedS3Objects(options, sourceBucketName, sourceBucketPrefix, cutoff);
 
-    // For each item, create an ECS Task
-    for ( const record of inputRecords ) {
-        const taskVars = ecs.createECSTaskVariablesFromS3Record(options, record);
-        const taskDefinition = await ecs.createECSTaskDefinition(options, 'ogr2ogr', taskVars);
+    // If there are no input record, exit early
+    if (sourceS3Records.length === 0) {
+        logger.info(`There are no objects in s3://${sourceBucketName}/${sourceBucketPrefix} that have been modified after the cutoff date`);
+        return;
+    }
+    
+    // Scan for the census records
+    const { censusBucketName, censusBucketPrefix } = event;
+    const censusS3Records = await s3.fetchS3Objects(options, censusBucketName, censusBucketPrefix);
 
-        logger.info(JSON.stringify(taskDefinition, null, 2));
+    // If there are no census datasets, exit early
+    if (censusS3Records.length === 0) {
+        logger.info(`There are no objects in s3://${censusBucketName}/${censusBucketPrefix}`);
+        return;
     }
 
-    return 'Enrichment complete';
-}
+    // Create a set of substitution variables for each S3 record that will be applied to the
+    // action template
+    const censusVariables = censusS3Records.map(r => util.createSubstitutionVariablesFromS3Record(options, r, 'census'));
+    const sourceVariables = sourceS3Records.map(r => util.createSubstitutionVariablesFromS3Record(options, r, 'source'));
 
-/**
- * Get a collection of S3 objects that need to be processed.
- */
-function fetchInputS3Objects (options, cutoff) {
-    const { s3 } = options.deps.local;
-    const { sourceBucketName, sourceBucketPrefix } = options.event;
-    return s3.fetchUpdatedS3Objects(options, sourceBucketName, sourceBucketPrefix, cutoff);
+    // Kick off an ECS task for each (source, census) pair.
+    for ( const census of censusVariables ) {
+        for ( const source of sourceVariables) {
+            // Merge the variables together
+            const vars = { ...census, ...source };
+
+            // Let the logs know what's happening
+            logger.info(`Enriching ${vars['census.Key']} with ${vars['source.Key']}...`);
+
+            // Apply the substitutions to the pre, post, and command arrays
+            const pre = util.applyVariableSubstitutionToArray(options, vars, event.pre);
+            const post = util.applyVariableSubstitutionToArray(options, vars, event.post);
+            const command = util.applyVariableSubstitutionToArray(options, vars, event.command);
+
+            await ecs.executeRawCommand(options, {
+                ...event,
+                pre,
+                command: ['ogr2ogr', ...command],
+                post
+            });
+        }
+    }
 }
 
 /**

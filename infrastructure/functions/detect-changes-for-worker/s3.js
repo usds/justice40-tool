@@ -26,13 +26,24 @@ function isSimpleObject(c, prefix) {
  * 
  * This returns objects that have recently changed for re-processing.
  */
- async function fetchUpdatedS3Objects (options, bucket, prefix, cutoff) {
+function fetchUpdatedS3Objects (options, bucket, prefix, cutoff) {
+    // Define a filter function that only looks at object on a single level of the
+    // bucket and removes any objects with a LastModified timestamp prior to the cutoff
+    const threshold = cutoff.toMillis();
+    const filterFunc = (c) => isSimpleObject(c, prefix) && (threshold < c.LastModified.getTime());
+
+    return fetchS3Objects(options, bucket, prefix, filterFunc);
+}
+
+/**
+ * Basic utility function to return S3 object from a bucket that match a given prefix.  An
+ * optional filtering function can be passed in.
+ */
+async function fetchS3Objects (options, bucket, prefix, filterFunc = () => true) {
     const { s3 } = options.deps;
     const objects = [];
-    const threshold = cutoff.toMillis();
 
-    // Limit the results to items in this bucket with a specific prefix, and do not recursively
-    // search the bucket -- only looks at object on a single level
+    // Limit the results to items in this bucket with a specific prefix
     const params = {
       Bucket: bucket,
       Prefix: prefix
@@ -42,12 +53,9 @@ function isSimpleObject(c, prefix) {
         // Get all of the initial objects
         const response = await s3.listObjectsV2(params).promise();
 
-        // Filter out any objects that are within another "folder" or match the prefix itself
-        const validObjects = response.Contents.filter(c => isSimpleObject(c, prefix));
-
-        // Filter out any objects with a LastModified timestamp prior to the cutoff
-        const updatedObjects = validObjects.filter(c => threshold < c.LastModified.getTime());
-        objects.push(...updatedObjects);
+        // Optionally, filter out objects
+        const contents = response.Contents.filter(filterFunc);
+        objects.push(...contents);
 
         params.ContinuationToken = response.IsTruncated
           ? response.NextContinuationToken
@@ -59,5 +67,6 @@ function isSimpleObject(c, prefix) {
 
 module.exports = {
     isSimpleObject,
+    fetchS3Objects,
     fetchUpdatedS3Objects
 };
