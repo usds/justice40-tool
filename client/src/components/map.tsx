@@ -11,6 +11,9 @@ import olms from 'ol-mapbox-style';
 import Overlay from 'ol/Overlay';
 // import {Table} from '@trussworks/react-uswds';
 
+// @ts-ignore
+// import zoomIcon from '/node_modules/uswds/dist/img/usa-icons/zoom_in.svg';
+
 const mapConfig = {
   'version': 8,
   'cursor': 'pointer',
@@ -154,8 +157,16 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
 
   const handleMapClick = (event: { pixel: any; }) => {
     const clickedCoord = mapRef.current.getCoordinateFromPixel(event.pixel);
+
     mapRef.current.forEachFeatureAtPixel(event.pixel, (feature) => {
       setSelectedFeature(feature);
+      feature.getProperties()['feature-state'] = 'selected';
+      //   let feature = new ol.Feature(new ol.geom.Point(coords));
+      // feature.setStyle(this.createIconStyle(this.coffeeShopIconPath, undefined));
+      // feature.setProperties({ name: 'test point', value: 15 });
+
+      // this.vectorSource.addFeature(feature);
+
       return true;
     });
 
@@ -171,6 +182,18 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
     properties = selectedFeature.getProperties();
   }
 
+  const getCategorization = (percentile: number) => {
+    let categorization = '';
+    if (percentile > 0.75 ) {
+      categorization = 'Prioritized';
+    } else if (0.60 < percentile && percentile < 0.75) {
+      categorization = 'Threshold';
+    } else {
+      categorization = 'Non-prioritized';
+    }
+    return categorization;
+  };
+
   const getTitleContent = (properties: { [key: string]: any; }) => {
     return (
       <table className={styles.popupHeaderTable}>
@@ -181,7 +204,7 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
           </tr>
           <tr>
             <td><strong>Just Progress Categorization:</strong></td>
-            <td>{properties['Score C (top 25th percentile)']}</td>
+            <td>{getCategorization(properties['Score C (percentile)'])}</td>
           </tr>
           <tr>
             <td><strong>Cumulative Index Score:</strong></td>
@@ -198,13 +221,13 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
   // };
 
   return (
-    <>
-      <div ref={mapElement} className={styles.mapContainer}></div>
-      <div className="clicked-coord-label">
-        <div ref={popupContainer} className={styles.popupContainer}>
-          <a href="#" ref={popupCloser} className={styles.popupCloser}></a>
-          <div ref={popupContent} className={styles.popupContent}>
-            {(selectedFeature && properties) ?
+    <div className={styles.mapWrapperContainer}>
+      <div ref={mapElement} className={styles.mapContainer} />
+
+      <div ref={popupContainer} className={styles.popupContainer}>
+        <a href="#" ref={popupCloser} className={styles.popupCloser}></a>
+        <div ref={popupContent} className={styles.popupContent}>
+          {(selectedFeature && properties) ?
               <div>
                 {getTitleContent(properties)}
                 {/* <Table bordered={false}>
@@ -228,12 +251,9 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
                 </Table> */}
               </div> :
               ''}
-
-
-          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

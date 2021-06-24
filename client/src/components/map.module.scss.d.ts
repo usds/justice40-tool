@@ -5,6 +5,8 @@ declare namespace MapModuleScssNamespace {
     popupCloser: string;
     popupContent: string;
     popupHeaderTable: string;
+    zoomWarning:string;
+    mapWrapperContainer:string;
   }
 }
 

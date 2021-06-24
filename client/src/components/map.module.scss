@@ -68,3 +68,23 @@
 .popupHeaderTable tbody td:first {
   font-weight: bold;
 }
+
+.zoomWarning {
+  background-color: #9c3d10;
+  height: 8%;
+  width: 66%;
+  margin: auto;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zoomWarning > img {
+  filter: invert(100%);
+}
+
+.mapWrapperContainer {
+  justify-content: "center";
+  align-items: "center";
+}
