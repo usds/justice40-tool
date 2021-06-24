@@ -14,9 +14,8 @@ def download_census_csvs(data_path: Path) -> None:
     state_fips_codes = get_state_fips_codes(data_path)
     for fips in state_fips_codes:
         # check if file exists
-        shp_file_path = data_path.joinpath(
-            "census", "shp", fips, f"tl_2010_{fips}_bg10.shp"
-        )
+        shp_file_path = data_path / "census" / "shp" / fips / f"tl_2010_{fips}_bg10.shp"
+
         if not os.path.isfile(shp_file_path):
             logging.info(f"Downloading {fips}")
 
@@ -27,12 +26,9 @@ def download_census_csvs(data_path: Path) -> None:
                 cbg_state_url, data_path / "tmp", data_path / "census" / "shp" / fips
             )
 
-        geojson_dir_path = data_path.joinpath(
-            "census",
-            "geojson",
-        )
+        geojson_dir_path = data_path / "census" / "geojson"
 
-        if not os.path.isfile(geojson_dir_path.joinpath(fips + ".json")):
+        if not os.path.isfile(geojson_dir_path / f"{fips}.json"):
             # ogr2ogr
             logging.info(f"Encoding GeoJSON for {fips}")
 
@@ -67,7 +63,7 @@ def download_census_csvs(data_path: Path) -> None:
         for file in os.listdir(geojson_dir_path):
             if file.endswith(".json"):
                 logging.info(f"Ingesting geoid10 for file {file}")
-                with open(geojson_dir_path.joinpath(file)) as f:
+                with open(geojson_dir_path / file) as f:
                     geojson = json.load(f)
                     for feature in geojson["features"]:
                         geoid10 = feature["properties"]["GEOID10"]
@@ -82,7 +78,7 @@ def download_census_csvs(data_path: Path) -> None:
         for state_id in cbg_per_state_list:
             geoid10_list = cbg_per_state_list[state_id]
             with open(
-                csv_dir_path.joinpath(f"{state_id}.csv"), mode="w", newline=""
+                csv_dir_path / f"{state_id}.csv", mode="w", newline=""
             ) as cbg_csv_file:
                 cbg_csv_file_writer = csv.writer(
                     cbg_csv_file,
@@ -99,9 +95,7 @@ def download_census_csvs(data_path: Path) -> None:
                     )
 
         ## write US csv
-        with open(
-            csv_dir_path.joinpath("us.csv"), mode="w", newline=""
-        ) as cbg_csv_file:
+        with open(csv_dir_path / "us.csv", mode="w", newline="") as cbg_csv_file:
             cbg_csv_file_writer = csv.writer(
                 cbg_csv_file, delimiter=",", quotechar='"', quoting=csv.QUOTE_MINIMAL
             )

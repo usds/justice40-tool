@@ -6,16 +6,14 @@
 - Make sure you have Python 3.9 installed: `python -V` or `python3 -V`
 - We use [Poetry](https://python-poetry.org/). Please follow the instructions to download
 - Change to this directory (i.e. `cd score`)
-- Activate a Poetry Shell: `poetry shell`
 
 ## Downloading Census Block Groups GeoJSON and Generating CBG CSVs
 
 - Make sure you have Docker running in your machine
 - Start a terminal
 - Change to this directory (i.e. `cd score`)
-- Activate a Poetry Shell (see above)
-- If you want to clear out all data and tiles from all directories, you can run: `python application.py data-cleanup`.
-- Run `python application.py census-data-download`
+- If you want to clear out all data and tiles from all directories, you can run: `poetry run python application.py data-cleanup`.
+- Then run `poetry run python application.py census-data-download`
   Note: Census files are not kept in the repository and the download directories are ignored by Git
 
 ## Generating mbtiles
