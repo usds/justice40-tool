@@ -5,10 +5,11 @@ services:
     container_name: j40_score_1
     build: score
     ports:
-      - 8088:8088
+      - 8888:8888
     volumes:
       - ./score:/score
     stdin_open: true
     tty: true
     environment:
       ENV_FOR_DYNACONF: development
+      PYTHONUNBUFFERED: 1

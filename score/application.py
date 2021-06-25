@@ -2,8 +2,6 @@ from config import settings
 import click
 from pathlib import Path
 import logging
-import os
-import glob
 
 from etl.sources.census.etl_utils import reset_data_directories as census_reset
 from utils import remove_files_from_dir, remove_all_from_dir

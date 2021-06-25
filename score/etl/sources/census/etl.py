@@ -28,33 +28,16 @@ def download_census_csvs(data_path: Path) -> None:
 
         geojson_dir_path = data_path / "census" / "geojson"
 
-        if not os.path.isfile(geojson_dir_path / f"{fips}.json"):
-            # ogr2ogr
-            logging.info(f"Encoding GeoJSON for {fips}")
-
-            # if it's running inside Docker container
-            if os.environ.get("DOCKER_CONTAINER"):
-                # TODO
-                pass
-            else:
-                # this is being run on virtualenv
-                # PWD is different for Windows
-                if os.name == "nt":
-                    pwd = "%cd%"
-                else:
-                    pwd = "${PWD}"
-                cmd = (
-                    'docker run --rm -it -v "'
-                    + pwd
-                    + '"/:/home osgeo/gdal:alpine-ultrasmall-latest ogr2ogr -f GeoJSON /home/data/census/geojson/'
-                    + fips
-                    + ".json /home/data/census/shp/"
-                    + fips
-                    + "/tl_2010_"
-                    + fips
-                    + "_bg10.shp"
-                )
-                os.system(cmd)
+        cmd = (
+            "ogr2ogr -f GeoJSON data/census/geojson/"
+            + fips
+            + ".json data/census/shp/"
+            + fips
+            + "/tl_2010_"
+            + fips
+            + "_bg10.shp"
+        )
+        os.system(cmd)
 
         # generate CBG CSV table for pandas
         ## load in memory

@@ -8,10 +8,11 @@ To build the docker container the first time, make sure you're in the root direc
 
 After the container is built, you can start the container wtih `docker-compose up`.
 
-To run commands, open a new terminal window or tab:
+Then run commands, opening a new terminal window or tab:
 
 - Get help: `docker exec j40_score_1 python3 application.py --help`
 - Clean up the data directories: `docker exec j40_score_1 python3 application.py data-cleanup`
+- Generate census data: `docker exec j40_score_1 python3 application.py census-data-download`
 
 ## Local development
 
@@ -23,7 +24,7 @@ You can run the Python code locally to develop, using Poetry. However, to genera
 - Change to this directory (i.e. `cd score`)
 - Start a Poetry shell with `poetry shell`
 
-## Downloading Census Block Groups GeoJSON and Generating CBG CSVs
+### Downloading Census Block Groups GeoJSON and Generating CBG CSVs
 
 - Make sure you have Docker running in your machine
 - Start a terminal
@@ -32,24 +33,24 @@ You can run the Python code locally to develop, using Poetry. However, to genera
 - Then run `poetry run python application.py census-data-download`
   Note: Census files are not kept in the repository and the download directories are ignored by Git
 
-## Generating mbtiles
+### Generating mbtiles
 
 - Change to this directory (i.e. `cd score`)
 - Activate a Poetry Shell (see above)
 - Run the following script: `python .\scripts\generate_mbtiles.py`
 
-## Serve the map locally
+### Serve the map locally
 
 - Run: `docker run --rm -it -v ${PWD}/data/tiles:/data -p 8080:80 klokantech/tileserver-gl`
 
-## Running Jupyter notebooks
+### Running Jupyter notebooks
 
 - Start a terminal
 - Change to this directory (i.e. `cd score`)
 - Activate a Poetry Shell (see above)
 - Type `jupyter notebook`. Your browser should open with a Jupyter Notebook tab
 
-## Activating variable-enabled Markdown for Jupyter notebooks
+### Activating variable-enabled Markdown for Jupyter notebooks
 
 - Change to this directory (i.e. `cd score`)
 - Run `jupyter contrib nbextension install --user`
