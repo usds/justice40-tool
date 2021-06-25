@@ -40,6 +40,29 @@ async function createECSTaskDefinition(options, templateName, taskVars) {
     };
 }
 
+/**
+ * Small utility function to look at a bash command line element and decide if it needs to
+ * be quoted and/or any characters escaped.
+ *
+ * Currently, it just takes are of double-quotes and does not do full nested escapes.
+ */
+function quoteAndEscape(s) {
+    // Escape any single quote chars using ASCII codes
+    //  @see https://stackoverflow.com/a/42341860/332406
+    //
+    // Throw an exception if there are double-quotes in the command itself, soo much nested
+    // escaping for now....
+    if (s.includes('"')) {
+        throw new Error(`Double-quotes are not allowed in the container arguments`);
+    }
+
+    // If there are any space in the string, wrap it in escaped double-quotes
+    if (s.includes(' ')) {
+        return `"${s}"`;
+    }
+
+    return s;
+}
 
 /**
  * Take an array of commands and modify it with a list of pre- and post-
@@ -61,8 +84,9 @@ async function createECSTaskDefinition(options, templateName, taskVars) {
     // Pre-commands come first
     allCommands.push(...(pre || []));
 
-    // Turn the primart array of command line arguments into a single command line string
-    allCommands.push(command.join(' '));
+    // Turn the primary array of command line arguments into a single command line string.  Be sure to 
+    // quote/escape elements with spaces and double-quotes
+    allCommands.push(command.map(c => quoteAndEscape(c)).join(' '));
 
     // And add in the post-commands last
     allCommands.push(...(post || []));
