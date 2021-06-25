@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Layout from '../components/layout';
-import MapWrapper from '../components/map';
+// import MapWrapper from '../components/map';
+import MapWrapper from '../components/mapWrapper';
 import HowYouCanHelp from '../components/HowYouCanHelp';
-import Feature from 'ol/Feature';
-import Geometry from 'ol/geom/Geometry';
 import {Alert} from '@trussworks/react-uswds';
 import * as styles from './cejst.module.scss';
 
@@ -15,7 +14,6 @@ interface IMapPageProps {
 const CEJSTPage = ({location}: IMapPageProps) => {
   // We temporarily removed MapControls, which would enable you to `setFeatures` also, for now
   //   We will bring back later when we have interactive controls.
-  const [features] = useState<Feature<Geometry>[]>([]);
   return (
     <Layout location={location}>
       <main id="main-content" role="main">
@@ -50,7 +48,7 @@ const CEJSTPage = ({location}: IMapPageProps) => {
           </p>
         </Alert>
         <h2>Explore the Tool</h2>
-        <MapWrapper features={features} />
+        <MapWrapper/>
         <HowYouCanHelp />
       </main>
     </Layout>
