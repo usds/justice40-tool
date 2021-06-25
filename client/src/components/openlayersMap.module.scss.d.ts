@@ -1,12 +1,6 @@
 declare namespace MapModuleScssNamespace {
   export interface IMapModuleScss {
-    mapContainer: string;
-    popupContainer: string;
-    popupCloser: string;
-    popupContent: string;
-    popupHeaderTable: string;
-    zoomWarning:string;
-    mapWrapperContainer:string;
+    mapContainer:string;
   }
 }
 
