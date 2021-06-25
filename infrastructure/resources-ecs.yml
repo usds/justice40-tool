@@ -110,7 +110,7 @@ Resources:
         - Name: ${self:custom.environment.GDAL_CONTAINER_DEFINITION_NAME}
           Cpu: 1024
           Memory: 2048
-          Image: osgeo/gdal:alpine-ultrasmall-latest
+          Image: osgeo/gdal:alpine-small-latest
           Environment:
             - Name: REGION
               Value: ${self:provider.region}
