@@ -16,30 +16,56 @@ DetectChangesForWorker:
     TIPPECANOE_TASK_DEFINITION: ${self:custom.environment.TIPPECANOE_TASK_DEFINITION_NAME}
     TIPPECANOE_CONTAINER_DEFINITION: ${self:custom.environment.TIPPECANOE_CONTAINER_DEFINITION_NAME}
 
-  # There are two phases that are processed.
-  #
-  #  1. Looking for new/updated ZIP files that should be joined to the USDS scoring data into GeoJSON files
-  #  2. Looking for new/updated GeoJSON files that should be rendered into tiles
-  #
-  # The `input` values are attached directly to the Lambda event object
-  events:
-    - schedule:
-        rate: cron(0 5 * * ? *) # Scan for updated data at Midnight Eastern Time
-        input:
-          action: enrichment
-          sourceBucketName: !Ref DataBucket
-          sourceBucketPrefix: sources
-          age: 86400 # Seconds
-          sql:
-            Fn::Join: ['', ["SELECT * FROM $", "{s3.Key:noext} LEFT JOIN '/home/custom.csv'.custom ON tabblock2010_01_pophu.BLOCKID10 = custom.BLOCKID10"]]
-          destBucketName: !Ref DataBucket
-          destBucketPrefix: joined
-    - schedule:
-        rate: cron(0 7 * * ? *) # Run two hours after the generating any GeoJSON
-        input:
-          action: none
-          sourceBucketName: !Ref DataBucket
-          sourceBucketPrefix: joined
-          age: 86400 # Seconds
-          destBucketName: !Ref DataBucket
-          destBucketPrefix: tiles
+  # The ECS Tasks can be kicked of my invoking the lambda on a schedule.  This can provide the
+  # ability to do nightly refreshed of the data.
+  # events:
+  #   - schedule:
+  #       rate: cron(*/2 * * * ? *) # Fire every 2 minutes
+  #       input:
+  #         action: "gdal"
+  #         command:
+  #           - "ogrinfo"
+  #           - "-al"
+  #           - "-so"
+  #           - "-ro"
+  #           - "/vsizip//vsicurl/https://j40-sit-justice40-data-harvester-data.s3.amazonaws.com/census/tabblock2010_01_pophu.zip"
+  #   - schedule:
+  #       rate: cron(0 5 * * ? *) # Scan for updated data at Midnight Eastern Time
+  #       input:
+  #         action: enrichment
+  #         sourceBucketName: !Ref DataBucket
+  #         sourceBucketPrefix: usds/custom.csv
+  #         age: 86400 # Seconds
+  #         censusBucketName: j40-sit-justice40-data-harvester-data
+  #         censusBucketPrefix: census/tabblock2010_01_pophu.zip
+  #         pre:
+  #           - Fn::Join: ['', ["wget https://j40-sit-justice40-data-harvester-data.s3.amazonaws.com/usds/$", "{source.Key} -O /tmp/custom.csv"]]
+  #         command:
+  #           - "-f"
+  #           - "GeoJSON"
+  #           - "-sql"
+  #           - Fn::Join: ['', ["SELECT * FROM $", "{census.Key:base} LEFT JOIN '/tmp/custom.csv'.custom ON $", "{census.Key:base}.BLOCKID10 = custom.BLOCKID10"]]
+  #           - Fn::Join: ['', ["/vsis3/j40-sit-justice40-data-harvester-data/joined/$", "{source.Key:base}-$", "{census.Key:base}.json"]]
+  #           - Fn::Join: ['', ["/vsizip//vsicurl/https://j40-sit-justice40-data-harvester-data.s3.amazonaws.com/census/$", "{census.Key}"]]
+  #   - schedule:
+  #       rate: cron(0 7 * * ? *) # Run two hours after the generating any GeoJSON
+  #       input:
+  #         action: tippecanoe
+  #         pre:
+  #          - "curl https://gp-sit-tileservice-tile-cache.s3.amazonaws.com/usds/usa.csv -o /tmp/usa.csv"
+  #          - "curl https://gp-sit-tileservice-tile-cache.s3.amazonaws.com/usds/tristate.mbtiles -o /tmp/tristate.mbtiles"
+  #         post:
+  #          - "aws s3 cp /tmp/tl_2010_bg_with_data.mbtiles s3://j40-sit-justice40-data-harvester-data/output/tl_2010_bg_with_data.mbtiles"
+  #          - "tile-join --force -pk -pC -n tl_2010_bg -e /tmp/tiles /tmp/tl_2010_bg_with_data.mbtiles"
+  #          - "aws s3 sync /tmp/tiles s3://j40-sit-justice40-data-harvester-data/output/tiles"
+  #         command:
+  #          - "tile-join"
+  #          - "--force"
+  #          - "-pk"
+  #          - "-n"
+  #          - "tl_2010_bg"
+  #          - "-o"
+  #          - "/tmp/tl_2010_bg_with_data.mbtiles"
+  #          - "-c"
+  #          - "/tmp/usa.csv"
+  #          - "/tmp/tristate.mbtiles"
