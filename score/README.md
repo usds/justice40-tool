@@ -35,13 +35,13 @@ You can run the Python code locally to develop, using Poetry. However, to genera
 
 ### Generating mbtiles
 
-- Change to this directory (i.e. `cd score`)
-- Activate a Poetry Shell (see above)
-- Run the following script: `python .\scripts\generate_mbtiles.py`
+- TBD
 
 ### Serve the map locally
 
-- Run: `docker run --rm -it -v ${PWD}/data/tiles:/data -p 8080:80 klokantech/tileserver-gl`
+- Start a terminal
+- Change to this directory (i.e. `cd score`)
+- Run: `docker run --rm -it -v ${PWD}/data/tiles:/data -p 8080:80 maptiler/tileserver-gl`
 
 ### Running Jupyter notebooks
 
@@ -53,6 +53,7 @@ You can run the Python code locally to develop, using Poetry. However, to genera
 ### Activating variable-enabled Markdown for Jupyter notebooks
 
 - Change to this directory (i.e. `cd score`)
+- Activate a Poetry Shell (see above)
 - Run `jupyter contrib nbextension install --user`
 - Run `jupyter nbextension enable python-markdown/main`
 - Make sure you've loaded the Jupyter notebook in a "Trusted" state. (See button near

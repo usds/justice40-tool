@@ -1,10 +1,27 @@
 from pathlib import Path
 import os
 import logging
-from typing import Union
 import shutil
 import requests
 import zipfile
+
+
+def get_module_logger(module_name):
+    """
+    To use this, do logger = get_module_logger(__name__)
+    """
+    logger = logging.getLogger(module_name)
+    handler = logging.StreamHandler()
+    formatter = logging.Formatter(
+        "%(asctime)s [%(name)-12s] %(levelname)-8s %(message)s"
+    )
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+    logger.setLevel(logging.DEBUG)
+    return logger
+
+
+logger = get_module_logger(__name__)
 
 
 def remove_files_from_dir(files_path: Path, extension: str = None) -> None:
@@ -17,7 +34,7 @@ def remove_files_from_dir(files_path: Path, extension: str = None) -> None:
             if file == "__init__.py":
                 continue
         os.remove(files_path / file)
-        logging.info(f"Removing {file}")
+        logger.info(f"Removing {file}")
 
 
 def remove_all_from_dir(files_path: Path) -> None:
@@ -29,7 +46,7 @@ def remove_all_from_dir(files_path: Path) -> None:
             os.remove(files_path / file)
         else:
             shutil.rmtree(files_path / file)
-        logging.info(f"Removing {file}")
+        logger.info(f"Removing {file}")
 
 
 def remove_all_dirs_from_dir(dir_path: Path) -> None:
@@ -43,7 +60,7 @@ def remove_all_dirs_from_dir(dir_path: Path) -> None:
 def unzip_file_from_url(
     file_url: str, download_path: Path, zip_file_directory: Path
 ) -> None:
-    logging.info(f"Downloading {file_url}")
+    logger.info(f"Downloading {file_url}")
     download = requests.get(file_url)
     file_contents = download.content
     zip_file_path = download_path / "downloaded.zip"
@@ -51,7 +68,7 @@ def unzip_file_from_url(
     zip_file.write(file_contents)
     zip_file.close()
 
-    logging.info(f"Extracting {zip_file_path}")
+    logger.info(f"Extracting {zip_file_path}")
     with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
         zip_ref.extractall(zip_file_directory)
 

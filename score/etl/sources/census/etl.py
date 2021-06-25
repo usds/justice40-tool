@@ -2,10 +2,11 @@ import csv
 import os
 import json
 from pathlib import Path
-import logging
 
 from .etl_utils import get_state_fips_codes
-from utils import unzip_file_from_url
+from utils import unzip_file_from_url, get_module_logger
+
+logger = get_module_logger(__name__)
 
 
 def download_census_csvs(data_path: Path) -> None:
@@ -17,7 +18,7 @@ def download_census_csvs(data_path: Path) -> None:
         shp_file_path = data_path / "census" / "shp" / fips / f"tl_2010_{fips}_bg10.shp"
 
         if not os.path.isfile(shp_file_path):
-            logging.info(f"Downloading {fips}")
+            logger.info(f"Downloading {fips}")
 
             # 2020 tiger data is here: https://www2.census.gov/geo/tiger/TIGER2020/BG/
             # But using 2010 for now
@@ -45,7 +46,7 @@ def download_census_csvs(data_path: Path) -> None:
         cbg_per_state: dict = {}  # in-memory dict per state
         for file in os.listdir(geojson_dir_path):
             if file.endswith(".json"):
-                logging.info(f"Ingesting geoid10 for file {file}")
+                logger.info(f"Ingesting geoid10 for file {file}")
                 with open(geojson_dir_path / file) as f:
                     geojson = json.load(f)
                     for feature in geojson["features"]:
@@ -89,4 +90,4 @@ def download_census_csvs(data_path: Path) -> None:
                     ]
                 )
 
-        logging.info("Census block groups downloading complete")
+        logger.info("Census block groups downloading complete")
