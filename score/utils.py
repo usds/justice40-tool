@@ -20,6 +20,18 @@ def remove_files_from_dir(files_path: Path, extension: str = None) -> None:
         logging.info(f"Removing {file}")
 
 
+def remove_all_from_dir(files_path: Path) -> None:
+    for file in os.listdir(files_path):
+        # don't rempove __init__ files as they conserve dir structure
+        if file == "__init__.py":
+            continue
+        if os.path.isfile(files_path / file):
+            os.remove(files_path / file)
+        else:
+            shutil.rmtree(files_path / file)
+        logging.info(f"Removing {file}")
+
+
 def remove_all_dirs_from_dir(dir_path: Path) -> None:
     for filename in os.listdir(dir_path):
         file_path = os.path.join(dir_path, filename)

@@ -27,11 +27,7 @@ RUN apt-get -y install gdal-bin
 # Prepare python packages
 WORKDIR /score
 RUN pip3 install --upgrade pip setuptools wheel
-
 COPY . .
-ENV DYNACONF_ENV=development
 
 COPY requirements.txt .
 RUN pip3 install -r requirements.txt
-
-CMD ["/bin/sh", "-c", "python3 application.py"]

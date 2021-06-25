@@ -1,11 +1,27 @@
-# Justice 40 Score generator
+# Justice 40 Score application
 
-## Setup
+## Running using Docker
+
+We use Docker to install the necessary libraries in a container that can be run in any operating system.
+
+To build the docker container the first time, make sure you're in the root directory of the repository and run `docker-compose build`
+
+After the container is built, you can start the container wtih `docker-compose up`.
+
+To run commands, open a new terminal window or tab:
+
+- Get help: `docker exec j40_score_1 python3 application.py --help`
+- Clean up the data directories: `docker exec j40_score_1 python3 application.py data-cleanup`
+
+## Local development
+
+You can run the Python code locally to develop, using Poetry. However, to generate the census data you will need the [GDAL library](https://github.com/OSGeo/gdal) installed locally. Also to generate tiles for a local map, you will need [Mapbox tippeanoe](https://github.com/mapbox/tippecanoe)
 
 - Start a terminal
 - Make sure you have Python 3.9 installed: `python -V` or `python3 -V`
-- We use [Poetry](https://python-poetry.org/). Please follow the instructions to download
+- We use [Poetry](https://python-poetry.org/). Please follow the instructions to download to your system
 - Change to this directory (i.e. `cd score`)
+- Start a Poetry shell with `poetry shell`
 
 ## Downloading Census Block Groups GeoJSON and Generating CBG CSVs
 

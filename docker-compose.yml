@@ -1,0 +1,14 @@
+version: "3.4"
+services:
+  score:
+    image: j40_score
+    container_name: j40_score_1
+    build: score
+    ports:
+      - 8088:8088
+    volumes:
+      - ./score:/score
+    stdin_open: true
+    tty: true
+    environment:
+      ENV_FOR_DYNACONF: development
