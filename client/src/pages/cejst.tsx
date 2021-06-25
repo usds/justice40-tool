@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import Layout from '../components/layout';
 import MapWrapper from '../components/map';
-import MapControls from '../components/mapControls';
 import HowYouCanHelp from '../components/HowYouCanHelp';
 import Feature from 'ol/Feature';
 import Geometry from 'ol/geom/Geometry';
@@ -14,7 +13,9 @@ interface IMapPageProps {
 }
 
 const CEJSTPage = ({location}: IMapPageProps) => {
-  const [features, setFeatures] = useState<Feature<Geometry>[]>([]);
+  // We temporarily removed MapControls, which would enable you to `setFeatures` also, for now
+  //   We will bring back later when we have interactive controls.
+  const [features] = useState<Feature<Geometry>[]>([]);
   return (
     <Layout location={location}>
       <main id="main-content" role="main">
@@ -48,7 +49,7 @@ const CEJSTPage = ({location}: IMapPageProps) => {
             are investigating on our data roadmap.
           </p>
         </Alert>
-        <MapControls setFeatures={setFeatures}/>
+        <h2>Explore the Tool</h2>
         <MapWrapper features={features} />
         <HowYouCanHelp />
       </main>

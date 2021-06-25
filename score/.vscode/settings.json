@@ -1,0 +1,4 @@
+{
+    "python.pythonPath": "venv\\Scripts\\python.exe",
+    "python.dataScience.sendSelectionToInteractiveWindow": false
+}
