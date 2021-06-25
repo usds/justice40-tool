@@ -27,11 +27,16 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Set GITHUB_SHA_SHORT
-        run: echo "GITHUB_SHA_SHORT=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
       # If this is just a PR branch, put content in a hash directory. Otherwise, put it in "main"
-      - name: Set DESTINATION_FOLDER
-        run: echo "DESTINATION_FOLDER=${{ github.event.pull_request.merged == 'true' && 'main' || env.GITHUB_SHA_SHORT }}" >> $GITHUB_ENV
+      # This variable is used by gatsby-config.js to set a prefixPath
+      - name: Set DESTINATION_FOLDER for main
+        if: ${{ github.event.pull_request.merged == true }}
+        run: |
+          echo "DESTINATION_FOLDER=main" >> $GITHUB_ENV
+      - name: Set DESTINATION_FOLDER for branch
+        if: ${{ github.event.pull_request.merged != true }}
+        run: |
+          echo "DESTINATION_FOLDER=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
       - name: Install
         run: npm ci
       - name: Build
@@ -65,11 +70,15 @@ jobs:
         with:
           name: J40Static
           path: ./public
-      - name: Set GITHUB_SHA_SHORT
-        run: echo "GITHUB_SHA_SHORT=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
       # If this is just a PR branch, put content in a hash directory. Otherwise, put it in "main"
-      - name: Set DESTINATION_FOLDER
-        run: echo "DESTINATION_FOLDER=${{ github.event.pull_request.merged == 'true' && 'main' || env.GITHUB_SHA_SHORT }}" >> $GITHUB_ENV
+      - name: Set DESTINATION_FOLDER for main
+        if: ${{ github.event.pull_request.merged == true }}
+        run: |
+          echo "DESTINATION_FOLDER=main" >> $GITHUB_ENV
+      - name: Set DESTINATION_FOLDER for branch
+        if: ${{ github.event.pull_request.merged != true }}
+        run: |
+          echo "DESTINATION_FOLDER=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
       - name: Deploy to Github Pages
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
@@ -77,6 +86,7 @@ jobs:
           BRANCH: gh-pages # The branch the action should deploy to.
           FOLDER: public # The folder the action should deploy.
           TARGET-FOLDER: ${{env.DESTINATION_FOLDER}} # If we're on a PR branch, merge to PR folder
+          CLEAN: true
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
