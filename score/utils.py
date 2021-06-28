@@ -58,10 +58,10 @@ def remove_all_dirs_from_dir(dir_path: Path) -> None:
 
 
 def unzip_file_from_url(
-    file_url: str, download_path: Path, zip_file_directory: Path
+    file_url: str, download_path: Path, zip_file_directory: Path, verify: bool = False
 ) -> None:
     logger.info(f"Downloading {file_url}")
-    download = requests.get(file_url)
+    download = requests.get(file_url, verify=verify)
     file_contents = download.content
     zip_file_path = download_path / "downloaded.zip"
     zip_file = open(zip_file_path, "wb")
