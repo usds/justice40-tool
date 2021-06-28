@@ -97,6 +97,18 @@ six = ">=1.9.0"
 webencodings = "*"
 
 [[package]]
+name = "censusdata"
+version = "1.13"
+description = "Download data from U.S. Census API"
+category = "main"
+optional = false
+python-versions = ">=2.7"
+
+[package.dependencies]
+pandas = "*"
+requests = "*"
+
+[[package]]
 name = "certifi"
 version = "2021.5.30"
 description = "Python package for providing Mozilla's CA Bundle."
@@ -1052,7 +1064,7 @@ notebook = ">=4.4.1"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "cfd0637bbf9517065b1e25a165ba01abd8a6e533becb3fb68db91e4821c6d4f8"
+content-hash = "93144f580490e6f83370e233e8259e884973752d42460e632eff508240339db8"
 
 [metadata.files]
 appdirs = [
@@ -1106,6 +1118,9 @@ black = [
 bleach = [
     {file = "bleach-3.3.0-py2.py3-none-any.whl", hash = "sha256:6123ddc1052673e52bab52cdc955bcb57a015264a1c57d37bea2f6b817af0125"},
     {file = "bleach-3.3.0.tar.gz", hash = "sha256:98b3170739e5e83dd9dc19633f074727ad848cbedb6026708c8ac2d3b697a433"},
+]
+censusdata = [
+    {file = "CensusData-1.13.tar.gz", hash = "sha256:c2cc6ea93cb704f84fe4dda84925884c220bdf5dc8e5dd1a4b63a068f6a16ba8"},
 ]
 certifi = [
     {file = "certifi-2021.5.30-py2.py3-none-any.whl", hash = "sha256:50b1e4f8446b06f41be7dd6338db18e0990601dce795c2b1686458aa7e8fa7d8"},
