@@ -12,6 +12,14 @@ Then run commands, opening a new terminal window or tab:
 - Clean up the data directories: `docker run --rm -it j40_score /bin/sh -c "python3 application.py data-cleanup"`
 - Generate census data: `docker run --rm -it j40_score /bin/sh -c "python3 application.py census-data-download"`
 
+## Log visualization
+
+If you want to visualize logs, the following temporary workaround can be used:
+
+- Run `docker-compose up` on the root of the repo
+- Open a new tab on your terminal
+- Then run any command for the application using this format: `docker exec j40_score_1 python3 application.py [command]`
+
 ## Local development
 
 You can run the Python code locally to develop, using Poetry. However, to generate the census data you will need the [GDAL library](https://github.com/OSGeo/gdal) installed locally. Also to generate tiles for a local map, you will need [Mapbox tippeanoe](https://github.com/mapbox/tippecanoe)
