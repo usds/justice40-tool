@@ -6,13 +6,11 @@ We use Docker to install the necessary libraries in a container that can be run 
 
 To build the docker container the first time, make sure you're in the root directory of the repository and run `docker-compose build`
 
-After the container is built, you can start the container wtih `docker-compose up`.
-
 Then run commands, opening a new terminal window or tab:
 
-- Get help: `docker exec j40_score_1 python3 application.py --help`
-- Clean up the data directories: `docker exec j40_score_1 python3 application.py data-cleanup`
-- Generate census data: `docker exec j40_score_1 python3 application.py census-data-download`
+- Get help: `docker run --rm -it j40_score /bin/sh -c "python3 application.py" python3 application.py --help"`
+- Clean up the data directories: `docker run --rm -it j40_score /bin/sh -c "python3 application.py data-cleanup"`
+- Generate census data: `docker run --rm -it j40_score /bin/sh -c "python3 application.py census-data-download"`
 
 ## Local development
 
