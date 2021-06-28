@@ -6,5 +6,5 @@ pass
 # Recalculate score
 pass
 
-# update the front end JSON/CSV of list data source
+# update the front end JSON/CSV of list of data sources
 pass
