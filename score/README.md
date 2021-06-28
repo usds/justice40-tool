@@ -20,9 +20,9 @@ You can run the Python code locally to develop, using Poetry. However, to genera
 
 - Start a terminal
 - Make sure you have Python 3.9 installed: `python -V` or `python3 -V`
-- We use [Poetry](https://python-poetry.org/). Please follow the instructions to download to your system
+- We use [Poetry](https://python-poetry.org/) for managing dependencies and building the application. Please follow the instructions on their site to download.
 - Change to this directory (i.e. `cd score`)
-- Start a Poetry shell with `poetry shell`
+- Install Poetry requirements with `poetry install`
 
 ### Downloading Census Block Groups GeoJSON and Generating CBG CSVs
 
@@ -47,8 +47,7 @@ You can run the Python code locally to develop, using Poetry. However, to genera
 
 - Start a terminal
 - Change to this directory (i.e. `cd score`)
-- Activate a Poetry Shell (see above)
-- Type `jupyter notebook`. Your browser should open with a Jupyter Notebook tab
+- Run `poetry run jupyter notebook`. Your browser should open with a Jupyter Notebook tab
 
 ### Activating variable-enabled Markdown for Jupyter notebooks
 
