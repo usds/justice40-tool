@@ -1,5 +1,6 @@
 *.env
 .idea
+.vscode
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -128,7 +129,11 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-# temporary census data
+# Ignore dynaconf secret files
+score/.secrets.*
+
+# ignore data
+score/data
 score/data/census
 score/data/tiles
 score/data/tmp

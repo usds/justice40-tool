@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "score"
+version = "0.1.0"
+description = "ETL and Generation of Justice 40 Score"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+ipython = "^7.24.1"
+jupyter = "^1.0.0"
+jupyter-contrib-nbextensions = "^0.5.1"
+numpy = "^1.21.0"
+pandas = "^1.2.5"
+requests = "^2.25.1"
+click = "^8.0.1"
+dynaconf = "^3.1.4"
+types-requests = "^2.25.0"
+CensusData = "^1.13"
+
+[tool.poetry.dev-dependencies]
+mypy = "^0.910"
+black = {version = "^21.6b0", allow-prereleases = true}
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
