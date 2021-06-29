@@ -1,5 +1,6 @@
 import {Style, FillPaint} from 'mapbox-gl';
 import chroma from 'chroma-js';
+import * as constants from '../data/constants';
 
 // eslint-disable-next-line require-jsdoc
 function hexToHSLA(hex:string, alpha:number) {
@@ -98,7 +99,7 @@ const mapStyle : Style = {
     'custom': {
       'type': 'vector',
       'tiles': [
-        'https://d2zjid6n5ja2pt.cloudfront.net/0624_demo/{z}/{x}/{y}.pbf',
+        'https://d2zjid6n5ja2pt.cloudfront.net/0629_demo/{z}/{x}/{y}.pbf',
         // For local development, use:
         // 'http://localhost:8080/data/tl_2010_bg_with_data/{z}/{x}/{y}.pbf',
       ],
@@ -138,11 +139,11 @@ const mapStyle : Style = {
       'source-layer': 'blocks',
       'type': 'fill',
       'filter': ['all',
-        ['>', 'Score C (percentile)', 0.6],
+        ['>', constants.SCORE_PROPERTY, 0.6],
         // ['in', 'STATEFP10', '01', '30', '34', '35', '36'],
       ],
       'paint': makePaint({
-        field: 'Score C (percentile)',
+        field: constants.SCORE_PROPERTY,
         minRamp: 0,
         medRamp: 0.6,
         maxRamp: 0.75,
@@ -155,11 +156,11 @@ const mapStyle : Style = {
       'source-layer': 'blocks',
       'type': 'fill',
       'filter': ['all',
-        ['>', 'Score C (percentile)', 0.6],
-        ['in', 'STATEFP10', '01', '30', '34', '35', '36'],
+        ['>', constants.SCORE_PROPERTY, 0.6],
+        // ['in', 'STATEFP10', '01', '30', '34', '35', '36'],
       ],
       'paint': makePaint({
-        field: 'Score C (percentile)',
+        field: constants.SCORE_PROPERTY,
         minRamp: 0,
         medRamp: 0.6,
         maxRamp: 1.0,

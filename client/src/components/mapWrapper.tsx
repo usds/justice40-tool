@@ -2,6 +2,7 @@ import * as React from 'react';
 import {useFlags} from '../contexts/FlagContext';
 import MapboxMap from './mapboxMap';
 import OpenLayersMap from './openlayersMap';
+import * as constants from '../data/constants';
 
 const MapWrapper = () => {
   const flags = useFlags();
@@ -12,6 +13,7 @@ const MapWrapper = () => {
             <MapboxMap /> :
             <OpenLayersMap features={[]}/>
       }
+      <p>Current Score Property: {constants.SCORE_PROPERTY}</p>
     </div>
   );
 };

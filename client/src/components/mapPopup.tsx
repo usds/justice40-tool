@@ -5,6 +5,7 @@ import {Table} from '@trussworks/react-uswds';
 import {Coordinate} from 'ol/Coordinate';
 import Map from 'ol/Map';
 import {FeatureLike} from 'ol/Feature';
+import * as constants from '../data/constants';
 
 interface IMapPopupProps {
     map: Map,
@@ -62,7 +63,7 @@ const MapPopup = ({map, selectedFeature, position}: IMapPopupProps) => {
   const getTitleContent = () => {
     const properties = selectedFeature.getProperties();
     const blockGroup = properties['GEOID10'];
-    const score = properties['Score C (percentile)'];
+    const score = properties[constants.SCORE_PROPERTY];
     return (
       <table>
         <tbody>
