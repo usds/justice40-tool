@@ -40,6 +40,46 @@ Contributions are always welcome! We encourage contributions in the form of disc
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for ways to get started.
 
+## Installation (macOS)
+
+#### Get dev tools
+1. Open the terminal and type `git` and hit RETURN.
+2. If dev tools are not installed a window will prompt you to install dev tools. 
+3. Open the terminal and type `git --version` and hit RETURN.
+4. Validate that a version number is returned. If so, git is properly installed.
+
+#### Install Homebrew
+1. Open the terminal and copy / paste this command and hit RETURN.
+
+`/bin/bash -c “$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`
+
+2. Validate installation by typing `brew -v` in the terminal and ensure a version number is shown.
+
+#### Install Node
+1. Open the terminal and type `brew install node` and hit RETURN. 
+    1. If this returns an error, you can download Node directly from it's [website](https://nodejs.org/en/).
+
+#### Install Yarn and Gatsby CLI
+Note that while this app uses npm as the package manager, yarn is required to build the [uswds](https://github.com/uswds/uswds) library.
+
+1.  Open the terminal and type `sudo npm install -global yarn` and hit RETURN.
+    1. Type `yarn -v` and hit RETURN
+    2. Verify a version number is shown
+2. Open the terminal and type `sudo npm install -global gatsby-cli` and hit RETURN.
+    1. Type `gatsby-cli -v` and hit RETURN
+    2. Verify a version number is shown
+
+#### IDE set up
+While any IDE can be used, we're outlining how to set up VS Code
+
+1. Open the terminal and type `brew install --cask visual-studio-code` and hit RETURN.
+    1. If this doesn't work, you can download VS Code from the [website](https://code.visualstudio.com/).
+2. After [forking this repo](https://github.com/usds/justice40-tool/blob/main/CONTRIBUTING.md#code-contributions), you can clone your forked repo into VS Code
+3. Open the terminal and navigate to `client` directory
+4. Type `npm install` to load dependencies
+5. Type `gatsby develop` to spin up the app
+6. Navigate to `localhost:8000` to view the app
+
 ## Glossary
 
 Confused about a term? Heard an acronym and have no idea what it stands for? Check out [our glossary](docs/glossary.md)!
