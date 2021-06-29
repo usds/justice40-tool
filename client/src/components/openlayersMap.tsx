@@ -76,7 +76,7 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
           }),
       );
       const extent = featuresLayer?.getSource().getExtent();
-      if (extent != null) {
+      if (extent) {
         // fit map to feature extent (with 100px of padding)
         map?.getView().fit(extent, {
           padding: [100, 100, 100, 100],
