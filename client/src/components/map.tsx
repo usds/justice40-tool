@@ -30,7 +30,7 @@ const mapConfig = {
     'custom': {
       'type': 'vector',
       'tiles': [
-        'http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/0624_demo/{z}/{x}/{y}.pbf',
+        'https://d2zjid6n5ja2pt.cloudfront.net/0629_demo/{z}/{x}/{y}.pbf',
         // For local development, use:
         // 'http://localhost:8080/data/tl_2010_bg_with_data/{z}/{x}/{y}.pbf',
       ],
@@ -71,7 +71,7 @@ const mapConfig = {
           ['linear'],
           ['to-number', [
             'get',
-            'Score C (percentile)',
+            'Score D (percentile)',
           ]],
           0.0,
           'white',
