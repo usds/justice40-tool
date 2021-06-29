@@ -7,7 +7,7 @@ from utils import unzip_file_from_url
 class ExtractTransformLoad:
     def __init__(self):
         self.DATA_PATH = settings.APP_ROOT / "data"
-        self.TMP_PATH = DATA_PATH / "tmp"
+        self.TMP_PATH = self.DATA_PATH / "tmp"
 
     def get_yaml_config(self):
         pass
