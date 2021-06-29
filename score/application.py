@@ -5,7 +5,7 @@ from pathlib import Path
 from etl.sources.census.etl_utils import reset_data_directories as census_reset
 from utils import remove_files_from_dir, remove_all_from_dir, get_module_logger
 from etl.sources.census.etl import download_census_csvs
-
+from etl.runner import etl_runner
 
 settings.APP_ROOT = Path.cwd()
 logger = get_module_logger(__name__)
@@ -52,6 +52,13 @@ def census_data_download():
     download_census_csvs(data_path)
 
     logger.info("Completed downloading census data")
+
+
+@cli.command(
+    help="Run all ETL processes",
+)
+def etl_run():
+    etl_runner()
 
 
 if __name__ == "__main__":

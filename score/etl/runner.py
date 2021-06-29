@@ -1,10 +1,21 @@
-dataset_list = ["census_acs", "ejscreen"]  # this list comes from YAMLs
+import importlib
 
-# Run the ETLs for the dataset_list
-pass
 
-# Recalculate score
-pass
+def etl_runner() -> None:
+    # this list comes from YAMLs
+    dataset_list = [{"module_dir": "census_acs", "class_name": "CensusACSETL"}]
 
-# update the front end JSON/CSV of list of data sources
-pass
+    # Run the ETLs for the dataset_list
+    for dataset in dataset_list:
+        etl_module = importlib.import_module(f"etl.sources.{dataset['module_dir']}.etl")
+        etl_class = getattr(etl_module, dataset["class_name"])
+        etl_instance = etl_class()
+
+        # run extract
+        etl_instance.extract()
+
+    # Recalculate score
+    pass
+
+    # update the front end JSON/CSV of list of data sources
+    pass

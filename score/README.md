@@ -8,7 +8,7 @@ To build the docker container the first time, make sure you're in the root direc
 
 Then run commands, opening a new terminal window or tab:
 
-- Get help: `docker run --rm -it j40_score /bin/sh -c "python3 application.py" python3 application.py --help"`
+- Get help: `docker run --rm -it j40_score /bin/sh -c "python3 application.py --help"`
 - Clean up the data directories: `docker run --rm -it j40_score /bin/sh -c "python3 application.py data-cleanup"`
 - Generate census data: `docker run --rm -it j40_score /bin/sh -c "python3 application.py census-data-download"`
 
