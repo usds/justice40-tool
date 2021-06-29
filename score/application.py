@@ -1,13 +1,11 @@
 from config import settings
 import click
-from pathlib import Path
 
 from etl.sources.census.etl_utils import reset_data_directories as census_reset
 from utils import remove_files_from_dir, remove_all_from_dir, get_module_logger
 from etl.sources.census.etl import download_census_csvs
-from etl.runner import etl_runner
+from etl.runner import etl_runner, score_generate
 
-settings.APP_ROOT = Path.cwd()
 logger = get_module_logger(__name__)
 
 
@@ -58,7 +56,15 @@ def census_data_download():
     help="Run all ETL processes",
 )
 def etl_run():
+    print(settings.APP_ROOT)
     etl_runner()
+
+
+@cli.command(
+    help="Generate Score",
+)
+def score_run():
+    score_generate()
 
 
 if __name__ == "__main__":

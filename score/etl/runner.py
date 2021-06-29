@@ -1,5 +1,7 @@
 import importlib
 
+from etl.score.etl import ScoreETL
+
 
 def etl_runner() -> None:
     # this list comes from YAMLs
@@ -31,8 +33,18 @@ def etl_runner() -> None:
         # cleanup
         etl_instance.cleanup()
 
-    # Recalculate score
-    pass
-
     # update the front end JSON/CSV of list of data sources
     pass
+
+
+def score_generate() -> None:
+    score = ScoreETL()
+
+    # run extract
+    score.extract()
+
+    # run transform
+    score.transform()
+
+    # run load
+    score.load()
