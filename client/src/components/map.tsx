@@ -226,7 +226,7 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
 
   const getTitleContent = (properties: { [key: string]: any; }) => {
     const blockGroup = properties['GEOID10'];
-    const score = properties['Score C (percentile)'];
+    const score = properties['Score D (percentile)'];
     return (
       <table className={styles.popupHeaderTable}>
         <tbody>
