@@ -4,13 +4,13 @@ import importlib
 def etl_runner() -> None:
     # this list comes from YAMLs
     dataset_list = [
-        # {"module_dir": "census_acs", "class_name": "CensusACSETL"},
-        # {"module_dir": "ejscreen", "class_name": "EJScreenETL"},
+        {"module_dir": "census_acs", "class_name": "CensusACSETL"},
+        {"module_dir": "ejscreen", "class_name": "EJScreenETL"},
         {
             "module_dir": "housing_and_transportation",
             "class_name": "HousingTransportationETL",
         },
-        # {"module_dir": "hud_housing", "class_name": "HudHousingETL"},
+        {"module_dir": "hud_housing", "class_name": "HudHousingETL"},
     ]
 
     # Run the ETLs for the dataset_list
@@ -27,6 +27,9 @@ def etl_runner() -> None:
 
         # run load
         etl_instance.load()
+
+        # cleanup
+        etl_instance.cleanup()
 
     # Recalculate score
     pass

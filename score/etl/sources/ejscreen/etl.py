@@ -1,9 +1,7 @@
 import pandas as pd
-import censusdata
 
 from etl.base import ExtractTransformLoad
-from etl.sources.census.etl_utils import get_state_fips_codes
-from utils import get_module_logger, unzip_file_from_url, remove_all_from_dir
+from utils import get_module_logger
 
 logger = get_module_logger(__name__)
 

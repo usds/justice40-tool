@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from config import settings
-from utils import unzip_file_from_url
+from utils import unzip_file_from_url, remove_all_from_dir
 
 
 class ExtractTransformLoad:
@@ -25,3 +25,7 @@ class ExtractTransformLoad:
 
     def load(self) -> None:
         pass
+
+    def cleanup(self) -> None:
+        # cleanup
+        remove_all_from_dir(self.TMP_PATH)
