@@ -39,8 +39,6 @@ jobs:
           echo "DESTINATION_FOLDER=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
       - name: Install
         run: npm ci
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Build
         run: npm run build --if-present
       - name: Get directory contents
