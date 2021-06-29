@@ -24,13 +24,14 @@ class CensusACSETL(ExtractTransformLoad):
             "C16002_010E",
             "C16002_013E",
         ]
+        self.df: pd.DataFrame
 
     def _fips_from_censusdata_censusgeo(self, censusgeo: censusdata.censusgeo) -> str:
         """Create a FIPS code from the proprietary censusgeo index."""
         fips = "".join([value for (key, value) in censusgeo.params()])
         return fips
 
-    def extract(self):
+    def extract(self) -> None:
         dfs = []
         for fips in get_state_fips_codes(self.DATA_PATH):
             logger.info(f"Downloading data for state/territory with FIPS code {fips}")
@@ -51,10 +52,50 @@ class CensusACSETL(ExtractTransformLoad):
                 )
             )
 
-        df = pd.concat(dfs)
+        self.df = pd.concat(dfs)
 
-        df[self.GEOID_FIELD_NAME] = df.index.to_series().apply(
+        self.df[self.GEOID_FIELD_NAME] = self.df.index.to_series().apply(
             func=self._fips_from_censusdata_censusgeo
         )
 
-        print(df.head())
+    def transform(self) -> None:
+        logger.info(f"Starting Census ACS Transform")
+
+        # Calculate percent unemployment.
+        # TODO: remove small-sample data that should be `None` instead of a high-variance fraction.
+        self.df[self.UNEMPLOYED_FIELD_NAME] = self.df.B23025_005E / self.df.B23025_003E
+        self.df[self.UNEMPLOYED_FIELD_NAME].describe()
+
+        # Calculate linguistic isolation.
+        individual_limited_english_fields = [
+            "C16002_004E",
+            "C16002_007E",
+            "C16002_010E",
+            "C16002_013E",
+        ]
+
+        self.df[self.LINGUISTIC_ISOLATION_TOTAL_FIELD_NAME] = self.df[
+            individual_limited_english_fields
+        ].sum(axis=1, skipna=True)
+        self.df[self.LINGUISTIC_ISOLATION_FIELD_NAME] = (
+            self.df[self.LINGUISTIC_ISOLATION_TOTAL_FIELD_NAME].astype(float)
+            / self.df["C16002_001E"]
+        )
+
+        self.df[self.LINGUISTIC_ISOLATION_FIELD_NAME].describe()
+
+    def load(self) -> None:
+        logger.info(f"Saving Census ACS Data")
+
+        # mkdir census
+        self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
+
+        columns_to_include = [
+            self.GEOID_FIELD_NAME,
+            self.UNEMPLOYED_FIELD_NAME,
+            self.LINGUISTIC_ISOLATION_FIELD_NAME,
+        ]
+
+        self.df[columns_to_include].to_csv(
+            path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False
+        )

@@ -14,6 +14,12 @@ def etl_runner() -> None:
         # run extract
         etl_instance.extract()
 
+        # run transform
+        etl_instance.transform()
+
+        # run load
+        etl_instance.load()
+
     # Recalculate score
     pass
 
