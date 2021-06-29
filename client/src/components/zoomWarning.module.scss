@@ -1,18 +1,17 @@
 .zoomWarning {
-    background-color: #953a10;
-    height: 5.5%;
-    width: 66%;
-    margin: auto;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position:absolute;
-    top:50%;
-    left:20%;
-  }
-  
-  .zoomWarning > img {
-    filter: invert(100%);
-  }
-  
+  background-color: #953a10;
+  height: 5.5%;
+  width: 66%;
+  margin: auto;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+}
+
+.zoomWarning > img {
+  filter: invert(100%);
+}

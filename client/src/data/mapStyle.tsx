@@ -14,7 +14,7 @@ function hexToHSLA(hex:string, alpha:number) {
  * @param {number} medRamp : the medium value this can assume
  * @param {number} maxRamp : the maximum value this can assume
  * @param {boolean} high : whether this is a "high" or "low" layer
- * @return {FillLayerDetails} a mapboxgl fill layer
+ * @return {FillPaint} a mapboxgl fill layer
  **/
 function makePaint({
   field,
@@ -92,13 +92,13 @@ const mapStyle : Style = {
     'geo': {
       'type': 'raster',
       'tiles': [
-        'http://mt0.google.com/vt/lyrs=p&hl=en&x={x}&y={y}&z={z}',
+        'https://mt0.google.com/vt/lyrs=p&hl=en&x={x}&y={y}&z={z}',
       ],
     },
     'custom': {
       'type': 'vector',
       'tiles': [
-        'http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/0624_demo/{z}/{x}/{y}.pbf',
+        'https://d2zjid6n5ja2pt.cloudfront.net/0624_demo/{z}/{x}/{y}.pbf',
         // For local development, use:
         // 'http://localhost:8080/data/tl_2010_bg_with_data/{z}/{x}/{y}.pbf',
       ],

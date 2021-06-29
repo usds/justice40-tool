@@ -48,7 +48,7 @@ const MapPopup = ({map, selectedFeature, position}: IMapPopupProps) => {
   }, [position]);
 
   const getCategorization = (percentile: number) => {
-    let categorization = '';
+    let categorization;
     if (percentile >= 0.75 ) {
       categorization = 'Prioritized';
     } else if (0.60 <= percentile && percentile < 0.75) {

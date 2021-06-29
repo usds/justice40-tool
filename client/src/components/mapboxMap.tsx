@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React, {useRef, useEffect, useState} from 'react';
-import {Map, NavigationControl, Popup, MapLayerMouseEvent, Coordinate} from 'mapbox-gl';
+import {Map, NavigationControl} from 'mapbox-gl';
 import * as styles from './mapboxMap.module.scss';
 import mapStyle from '../data/mapStyle';
 import ZoomWarning from './zoomWarning';
 
 const MapboxMap = () => {
   const mapContainer = React.useRef<HTMLDivElement>(null);
-  const map = useRef<Map>() as React.MutableRefObject<Map>; ;
+  const map = useRef<Map>() as React.MutableRefObject<Map>;
   const [lng, setLng] = useState(-86.502136);
   const [lat, setLat] = useState(32.4687126);
   const [zoom, setZoom] = useState(3);

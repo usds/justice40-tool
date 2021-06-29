@@ -3,11 +3,11 @@ declare namespace ZoomWarningModuleScssNamespace {
         zoomWarning: string;
     }
   }
-  
-  declare const ZoomWarningModuleScssModule: ZoomWarningModuleScssNamespace.IZoomWarningModuleScss & {
+
+declare const ZoomWarningModuleScssModule: ZoomWarningModuleScssNamespace.IZoomWarningModuleScss & {
     /** WARNING: Only available when `css-loader` is used without `style-loader` or `mini-css-extract-plugin` */
     locals: ZoomWarningModuleScssNamespace.IZoomWarningModuleScss;
   };
-  
-  export = ZoomWarningModuleScssModule;
-  
+
+export = ZoomWarningModuleScssModule;
+
