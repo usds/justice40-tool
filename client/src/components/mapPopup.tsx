@@ -24,8 +24,7 @@ const MapPopup = ({map, selectedFeature, position}: IMapPopupProps) => {
   };
 
   useEffect(() => {
-    if (!popupCloserElement && !popupContainerElement) return;
-    popupCloserElement.current!.onclick = function() {
+    popupCloserElement.current.onclick = function() {
       overlay.setPosition(undefined);
       popupCloserElement.current!.blur();
       return false;
@@ -43,7 +42,7 @@ const MapPopup = ({map, selectedFeature, position}: IMapPopupProps) => {
   }, []);
 
   useEffect( () => {
-    if (position && currentOverlay) { // may be empty on first render
+    if (position && currentOverlay && selectedFeature) { // may be empty on first render
       currentOverlay.setPosition(position);
     }
   }, [position]);
@@ -118,7 +117,8 @@ const MapPopup = ({map, selectedFeature, position}: IMapPopupProps) => {
 
   return (
     <>
-      <div ref={popupContainerElement} className={styles.popupContainer}>
+      <div ref={popupContainerElement}
+        className={styles.popupContainer}>
         <a href="#" ref={popupCloserElement} className={styles.popupCloser}></a>
         <div ref={popupContentElement} className={styles.popupContent}>
           {popupContent}

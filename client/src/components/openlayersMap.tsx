@@ -96,10 +96,16 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
   const handleMapClick = (event: { pixel: any }) => {
     const clickedCoord = mapRef.current.getCoordinateFromPixel(event.pixel);
 
+    let featureFound = false;
     mapRef.current.forEachFeatureAtPixel(event.pixel, (feature) => {
+      featureFound = true;
       setSelectedFeature(feature);
       return true;
     });
+
+    if (!featureFound) {
+      setSelectedFeature(undefined);
+    }
 
     setCurrentOverlayPosition(clickedCoord);
   };
@@ -115,7 +121,7 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
     <>
       <div ref={mapElement} className={styles.mapContainer}/>
       {map?
-        <MapPopup selectedFeature={selectedFeature!} map={map!} position={currentOverlayPosition} /> :
+        <MapPopup selectedFeature={selectedFeature} map={map!} position={currentOverlayPosition} /> :
         ''
       }
       <ZoomWarning zoomLevel={currentZoom} />
