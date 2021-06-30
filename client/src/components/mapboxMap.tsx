@@ -4,21 +4,21 @@ import {LngLatBoundsLike,
   Map,
   NavigationControl,
   PopupOptions,
-  Popup} from 'mapbox-gl';
+  Popup,
+  LngLatLike} from 'mapbox-gl';
 import mapStyle from '../data/mapStyle';
 import ZoomWarning from './zoomWarning';
 import PopupContent from './popupContent';
 import * as styles from './mapboxMap.module.scss';
 import * as constants from '../data/constants';
 import ReactDOM from 'react-dom';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 type ClickEvent = mapboxgl.MapMouseEvent & mapboxgl.EventData;
 
 const MapboxMap = () => {
   const mapContainer = React.useRef<HTMLDivElement>(null);
   const map = useRef<Map>() as React.MutableRefObject<Map>;
-  const [lat, setLat] = useState(constants.DEFAULT_CENTER[0]);
-  const [lng, setLng] = useState(constants.DEFAULT_CENTER[1]);
   const [zoom, setZoom] = useState(constants.GLOBAL_MIN_ZOOM);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const MapboxMap = () => {
     const initialMap = new Map({
       container: mapContainer.current!,
       style: mapStyle,
-      center: [lng, lat],
+      center: constants.DEFAULT_CENTER as LngLatLike,
       zoom: zoom,
       minZoom: constants.GLOBAL_MIN_ZOOM,
       maxZoom: constants.GLOBAL_MAX_ZOOM,
@@ -51,7 +51,7 @@ const MapboxMap = () => {
       ReactDOM.render(<PopupContent properties={features[0].properties} />, placeholder);
       const options : PopupOptions = {
         offset: [0, 0],
-        className: styles.mapboxglPopup,
+        className: styles.j40Popup,
       };
       new Popup(options)
           .setLngLat(e.lngLat)
@@ -64,17 +64,18 @@ const MapboxMap = () => {
   useEffect(() => {
     if (!map.current) return; // wait for map to initialize
     map.current.on('move', () => {
-      setLng(map.current.getCenter().lng);
-      setLat(map.current.getCenter().lat);
       setZoom(map.current.getZoom());
+    });
+    map.current.on('mouseenter', 'score-low', () => {
+      map.current.getCanvas().style.cursor = 'pointer';
+    });
+    map.current.on('mouseleave', 'score-low', () => {
+      map.current.getCanvas().style.cursor = '';
     });
   });
 
   return (
     <div>
-      <div className={styles.sidebar}>
-            Longitude: {lng.toFixed(4)} | Latitude: {lat.toFixed(4)} | Zoom: {zoom.toFixed(2)}
-      </div>
       <div ref={mapContainer} className={styles.mapContainer}/>
       <ZoomWarning zoomLevel={zoom} />
     </div>

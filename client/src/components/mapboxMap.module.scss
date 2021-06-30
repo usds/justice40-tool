@@ -21,8 +21,13 @@ $sidebar-color: #ffffff;
   border-radius: 4px;
 }
 
-.mapboxgl-popup {
-  background-color: red;
+.j40Popup {
   max-height: 300px;
+  max-width: 300px;
   overflow: scroll;
+  pointer-events: all !important;
+}
+
+.j40Popup .mapboxgl-popup-content {
+  pointer-events: all;
 }
