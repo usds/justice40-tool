@@ -1,0 +1,164 @@
+Parameters:
+  ServiceNameOgr2Ogr:
+    Type: String
+    Default: ogr2ogr-gdal-3.6
+    Description: The name of the service
+
+Resources:
+
+  ECSCluster:
+    Type: AWS::ECS::Cluster
+    Properties:
+      Tags:
+        - Key: Stage
+          Value: ${self:provider.stage}
+        - Key: Namespace
+          Value: ${self:custom.namespace}
+        - Key: Name
+          Value: ${self:custom.namespaceShort}-${self:provider.stage}-ecs-cluster
+
+  # Task execution role allowing access to resources.
+  ECSTaskExecutionRoleShared:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service: [ecs-tasks.amazonaws.com]
+          Action: ['sts:AssumeRole']
+      Path: /
+      Policies:
+        - PolicyName: AmazonECSTaskExecutionRolePolicy
+          PolicyDocument:
+            Statement:
+            - Effect: Allow
+              Action:
+                # Allow the ECS tasks to upload logs to CloudWatch
+                - 'logs:CreateLogStream'
+                - 'logs:PutLogEvents'
+                - 'logs:CreateLogStream'
+                - 'logs:DescribeLogStreams'
+              Resource: '*'
+
+  ECSTaskRoleShared:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service: "ecs-tasks.amazonaws.com"
+          Action: ['sts:AssumeRole']
+      Path: /
+      Policies:
+        - PolicyName: "${self:provider.stage}-${self:service}-task-policy"
+          PolicyDocument:
+            Statement:
+              - Effect: Allow
+                Action:
+                  - secretsmanager:GetSecretValue
+                Resource: "*"
+              - Effect: Allow
+                Action:
+                  - kms:Decrypt
+                Resource: "*"
+                # EventBridge permissions.
+              - Effect: Allow
+                Action:
+                  - events:PutEvents
+                Resource:
+                  - arn:aws:events:${self:provider.region}:#{AWS::AccountId}:*
+                # Allow the ECS Tasks to access our specific S3 bucket
+                #  @see https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html for Multi-Part Upload requirement
+              - Effect: Allow
+                Action:
+                  - s3:GetBucketAcl
+                  - s3:ListBucket
+                  - s3:ListBucketMultipartUploads
+                Resource:
+                  - arn:aws:s3:::${self:custom.environment.DATA_BUCKET}
+              - Effect: Allow
+                Action:
+                  - s3:PutObject
+                  - s3:PutObjectAcl
+                  - s3:GetObject
+                  - s3:GetObjectAcl
+                  - s3:GetObjectVersion
+                  - s3:GetObjectVersionAcl
+                  - s3:DeleteObject
+                  - s3:DeleteObjectVersion
+                  - s3:AbortMultipartUpload
+                  - s3:ListMultipartUploadParts
+                Resource:
+                  - arn:aws:s3:::${self:custom.environment.DATA_BUCKET}/*
+
+  TaskDefinitionOgr2Ogr:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: ${self:custom.environment.GDAL_TASK_DEFINITION_NAME}
+      Cpu: 1024
+      Memory: 2048
+      NetworkMode: awsvpc
+      RequiresCompatibilities:
+        - FARGATE
+      ExecutionRoleArn:
+        Fn::GetAtt: [ ECSTaskExecutionRoleShared, Arn ]
+      TaskRoleArn:
+        Fn::GetAtt: [ ECSTaskRoleShared, Arn ]
+      ContainerDefinitions:
+        - Name: ${self:custom.environment.GDAL_CONTAINER_DEFINITION_NAME}
+          Cpu: 1024
+          Memory: 2048
+          Image: osgeo/gdal:alpine-small-latest
+          Environment:
+            - Name: REGION
+              Value: ${self:provider.region}
+            - Name: STAGE
+              Value: ${self:provider.stage}
+            - Name: NODE_ENV
+              Value: ${self:provider.stage}
+            - Name: ENV_NAME
+              Value: ${self:provider.stage}
+
+          LogConfiguration:
+            LogDriver: 'awslogs'
+            Options:
+              awslogs-group: ${self:provider.stage}-${self:service}
+              awslogs-region: ${self:provider.region}
+              awslogs-stream-prefix: ${self:service}
+
+  TaskDefinitionTippecanoe:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: ${self:custom.environment.TIPPECANOE_TASK_DEFINITION_NAME}
+      Cpu: 1024
+      Memory: 2048
+      NetworkMode: awsvpc
+      RequiresCompatibilities:
+        - FARGATE
+      ExecutionRoleArn:
+        Fn::GetAtt: [ ECSTaskExecutionRoleShared, Arn ]
+      TaskRoleArn:
+        Fn::GetAtt: [ ECSTaskRoleShared, Arn ]
+      ContainerDefinitions:
+        - Name: ${self:custom.environment.TIPPECANOE_CONTAINER_DEFINITION_NAME}
+          Cpu: 1024
+          Memory: 2048
+          Image: mikegiddens/tippecanoe:latest
+          Environment:
+            - Name: REGION
+              Value: ${self:provider.region}
+            - Name: STAGE
+              Value: ${self:provider.stage}
+            - Name: NODE_ENV
+              Value: ${self:provider.stage}
+            - Name: ENV_NAME
+              Value: ${self:provider.stage}
+
+          LogConfiguration:
+            LogDriver: 'awslogs'
+            Options:
+              awslogs-group: ${self:provider.stage}-${self:service}
+              awslogs-region: ${self:provider.region}
+              awslogs-stream-prefix: ${self:service}
