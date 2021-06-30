@@ -1,16 +1,17 @@
 /* eslint-disable no-unused-vars */
 import React, {useRef, useEffect, useState} from 'react';
-import {Map, NavigationControl} from 'mapbox-gl';
-import * as styles from './mapboxMap.module.scss';
+import {LngLatBoundsLike, Map, NavigationControl} from 'mapbox-gl';
 import mapStyle from '../data/mapStyle';
 import ZoomWarning from './zoomWarning';
+import * as styles from './mapboxMap.module.scss';
+import * as constants from '../data/constants';
 
 const MapboxMap = () => {
   const mapContainer = React.useRef<HTMLDivElement>(null);
   const map = useRef<Map>() as React.MutableRefObject<Map>;
-  const [lng, setLng] = useState(-86.502136);
-  const [lat, setLat] = useState(32.4687126);
-  const [zoom, setZoom] = useState(3);
+  const [lat, setLat] = useState(constants.DEFAULT_CENTER[0]);
+  const [lng, setLng] = useState(constants.DEFAULT_CENTER[1]);
+  const [zoom, setZoom] = useState(constants.GLOBAL_MIN_ZOOM);
 
   useEffect(() => {
     // Only initialize once
@@ -21,6 +22,9 @@ const MapboxMap = () => {
       style: mapStyle,
       center: [lng, lat],
       zoom: zoom,
+      minZoom: constants.GLOBAL_MIN_ZOOM,
+      maxZoom: constants.GLOBAL_MAX_ZOOM,
+      maxBounds: constants.GLOBAL_MAX_BOUNDS as LngLatBoundsLike,
     });
 
     initialMap.addControl(new NavigationControl());

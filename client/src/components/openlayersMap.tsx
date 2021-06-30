@@ -11,10 +11,10 @@ import olms from 'ol-mapbox-style';
 import mapStyle from '../data/mapStyle';
 import ZoomWarning from './zoomWarning';
 import MapPopup from './mapPopup';
+import {transformExtent} from 'ol/src/proj';
 import * as styles from './openlayersMap.module.scss';
-
-const DEFAULT_ZOOM = 4;
-const DEFAULT_US_CENTER = [-86.502136, 32.4687126];
+import * as constants from '../data/constants';
+import {Extent} from 'ol/src/extent';
 
 interface IMapWrapperProps {
   features: Feature<Geometry>[],
@@ -39,10 +39,18 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
     mapRef.current = map;
   }
 
+  const transform = (extent: Extent) : Extent => {
+    return transformExtent(extent, 'EPSG:4326', 'EPSG:3857');
+  };
+
+
   useEffect( () => {
     const view = new View({
-      center: fromLonLat(DEFAULT_US_CENTER),
+      center: fromLonLat(constants.DEFAULT_CENTER),
       zoom: 4,
+      maxZoom: constants.GLOBAL_MAX_ZOOM,
+      minZoom: constants.GLOBAL_MIN_ZOOM,
+      extent: transform(constants.GLOBAL_MAX_BOUNDS.flat()) as [number, number, number, number],
     });
 
     // create and add initial vector source layer, to be replaced layer
@@ -55,7 +63,7 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
       view: view,
       controls: [],
     });
-    const currentZoom = Math.floor(initialMap.getView().getZoom() || DEFAULT_ZOOM);
+    const currentZoom = Math.floor(initialMap.getView().getZoom() || constants.GLOBAL_MIN_ZOOM);
 
     initialMap.on('moveend', handleMoveEnd);
     initialMap.on('click', handleMapClick);
@@ -97,7 +105,7 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
   };
 
   const handleMoveEnd = () => {
-    const newZoom = Math.floor(mapRef.current.getView().getZoom() || DEFAULT_ZOOM);
+    const newZoom = Math.floor(mapRef.current.getView().getZoom() || constants.GLOBAL_MIN_ZOOM);
     if (currentZoom != newZoom) {
       setCurrentZoom(newZoom);
     }

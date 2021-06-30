@@ -119,15 +119,15 @@ const mapStyle : Style = {
       'id': 'carto',
       'source': 'carto',
       'type': 'raster',
-      'minzoom': 3,
-      'maxzoom': 11,
+      'minzoom': constants.GLOBAL_MIN_ZOOM,
+      'maxzoom': constants.GLOBAL_MAX_ZOOM,
     },
     {
       'id': 'geo',
       'source': 'geo',
       'type': 'raster',
-      'minzoom': 3,
-      'maxzoom': 11,
+      'minzoom': constants.GLOBAL_MIN_ZOOM,
+      'maxzoom': constants.GLOBAL_MAX_ZOOM,
       'layout': {
         // Make the layer visible by default.
         'visibility': 'none',
@@ -149,6 +149,8 @@ const mapStyle : Style = {
         maxRamp: 0.75,
         high: false,
       }),
+      'minzoom': constants.GLOBAL_MIN_ZOOM_LOW,
+      'maxzoom': constants.GLOBAL_MAX_ZOOM_LOW,
     },
     {
       'id': 'score-high',
@@ -166,13 +168,15 @@ const mapStyle : Style = {
         maxRamp: 1.0,
         high: true,
       }),
+      'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
+      'maxzoom': constants.GLOBAL_MAX_ZOOM_HIGH,
     },
     {
       'id': 'labels-only',
       'type': 'raster',
       'source': 'labels',
-      'minzoom': 4,
-      'maxzoom': 11,
+      'minzoom': constants.GLOBAL_MIN_ZOOM,
+      'maxzoom': constants.GLOBAL_MAX_ZOOM,
     },
   ],
 };
