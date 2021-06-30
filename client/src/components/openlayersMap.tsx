@@ -121,7 +121,7 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
     <>
       <div ref={mapElement} className={styles.mapContainer}/>
       {map?
-        <MapPopup selectedFeature={selectedFeature} map={map!} position={currentOverlayPosition} /> :
+        <MapPopup selectedFeature={selectedFeature!} map={map!} position={currentOverlayPosition} /> :
         ''
       }
       <ZoomWarning zoomLevel={currentZoom} />

@@ -24,7 +24,7 @@ const MapPopup = ({map, selectedFeature, position}: IMapPopupProps) => {
   };
 
   useEffect(() => {
-    popupCloserElement.current.onclick = function() {
+    popupCloserElement.current!.onclick = function() {
       overlay.setPosition(undefined);
       popupCloserElement.current!.blur();
       return false;
