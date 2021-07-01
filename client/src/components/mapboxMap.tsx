@@ -41,6 +41,8 @@ const MapboxMap = () => {
     // disable map rotation using touch rotation gesture
     initialMap.touchZoomRotate.disableRotation();
 
+    setZoom(initialMap.getZoom());
+
     initialMap.on('click', handleClick);
     initialMap.addControl(new NavigationControl({showCompass: false}), 'top-left');
     map.current = initialMap;
