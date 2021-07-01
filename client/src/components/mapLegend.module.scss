@@ -29,7 +29,7 @@ $max-color: rgba(26, 68, 128, 0.6);
 }
 
 #prioritized {
-  background-color: $min-color;
+  background-color: $max-color;
 }
 
 #threshold {
@@ -37,5 +37,5 @@ $max-color: rgba(26, 68, 128, 0.6);
 }
 
 #nonPrioritized {
-  background-color: $max-color;
+  background-color: $min-color;
 }
