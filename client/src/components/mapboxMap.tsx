@@ -33,6 +33,7 @@ const MapboxMap = () => {
       minZoom: constants.GLOBAL_MIN_ZOOM,
       maxZoom: constants.GLOBAL_MAX_ZOOM,
       maxBounds: constants.GLOBAL_MAX_BOUNDS as LngLatBoundsLike,
+      hash: true, // Adds hash of zoom/lat/long to the url
     });
     initialMap.on('click', handleClick);
     initialMap.addControl(new NavigationControl());
