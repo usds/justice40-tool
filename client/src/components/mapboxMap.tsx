@@ -9,10 +9,10 @@ import {LngLatBoundsLike,
 import mapStyle from '../data/mapStyle';
 import ZoomWarning from './zoomWarning';
 import PopupContent from './popupContent';
-import * as styles from './mapboxMap.module.scss';
 import * as constants from '../data/constants';
 import ReactDOM from 'react-dom';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import * as styles from './mapboxMap.module.scss';
 
 type ClickEvent = mapboxgl.MapMouseEvent & mapboxgl.EventData;
 
@@ -34,6 +34,12 @@ const MapboxMap = () => {
       maxZoom: constants.GLOBAL_MAX_ZOOM,
       maxBounds: constants.GLOBAL_MAX_BOUNDS as LngLatBoundsLike,
     });
+    // disable map rotation using right click + drag
+    initialMap.dragRotate.disable();
+
+    // disable map rotation using touch rotation gesture
+    initialMap.touchZoomRotate.disableRotation();
+
     initialMap.on('click', handleClick);
     initialMap.addControl(new NavigationControl({showCompass: false}), 'top-left');
     map.current = initialMap;
@@ -52,11 +58,11 @@ const MapboxMap = () => {
       const options : PopupOptions = {
         offset: [0, 0],
         className: styles.j40Popup,
+        focusAfterOpen: false,
       };
       new Popup(options)
           .setLngLat(e.lngLat)
           .setDOMContent(placeholder)
-          .setMaxWidth('300px')
           .addTo(map);
     }
   };

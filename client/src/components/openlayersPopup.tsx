@@ -1,18 +1,18 @@
 import React, {useRef, useEffect, useState} from 'react';
-import * as styles from './mapPopup.module.scss';
+import * as styles from './openlayersPopup.module.scss';
 import Overlay from 'ol/Overlay';
 import {Coordinate} from 'ol/Coordinate';
 import Map from 'ol/Map';
 import {FeatureLike} from 'ol/Feature';
 import PopupContent from './popupContent';
 
-interface IMapPopupProps {
+interface IOpenlayersPopupProps {
     map: Map,
     selectedFeature: FeatureLike;
     position: Coordinate;
 }
 
-const MapPopup = ({map, selectedFeature, position}: IMapPopupProps) => {
+const OpenlayersPopup = ({map, selectedFeature, position}: IOpenlayersPopupProps) => {
   const popupContainerElement = useRef<HTMLDivElement>(null);
   const popupCloserElement = useRef<HTMLAnchorElement>(null);
   const popupContentElement = useRef<HTMLDivElement>(null);
@@ -55,4 +55,4 @@ const MapPopup = ({map, selectedFeature, position}: IMapPopupProps) => {
   );
 };
 
-export default MapPopup;
+export default OpenlayersPopup;

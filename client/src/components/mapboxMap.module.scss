@@ -7,11 +7,12 @@ $sidebar-color: #ffffff;
 
 .j40Popup {
   max-height: 300px;
-  max-width: 300px;
-  overflow: scroll;
+  min-width: 36%;
+  max-width: 36%;
+  overflow-y: scroll;
   pointer-events: all !important;
-}
 
-.j40Popup .mapboxgl-popup-content {
-  pointer-events: all;
+  .mapboxgl-popup-content {
+    pointer-events: all;
+  }
 }

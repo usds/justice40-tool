@@ -202,3 +202,12 @@ $j40-max-width: 80ex;
     margin-top: 12px !important;
   }
 }
+
+// Mapbox overrides
+// Note that these need to be here to properly override defaults
+
+.mapboxgl-popup-close-button {
+  font-size: 3em;
+  margin-right: 12px;
+  margin-top: 15px;
+}
