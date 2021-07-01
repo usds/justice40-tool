@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Layout from '../components/layout';
 
-// import {GridContainer, Grid} from '@trussworks/react-uswds';
 
 // this section seems too verbose? must be a more readable way to do this.
 // this inlines the svg as data:image/svg+xml For larger images this
@@ -18,7 +17,8 @@ import pollutionIcon // @ts-ignore
   from '/node_modules/uswds/dist/img/usa-icons/severe_weather.svg';
 // @ts-ignore
 import washIcon from '/node_modules/uswds/dist/img/usa-icons/wash.svg';
-
+// @ts-ignore
+import publicIcon from '/node_modules/uswds/dist/img/usa-icons/public.svg';
 
 interface IndexPageProps {
   location: Location;
@@ -27,6 +27,7 @@ interface IndexPageProps {
 // markup
 const IndexPage = ({location}: IndexPageProps) => {
   const readMoreList: (any | string)[][] = [
+    [publicIcon, 'Climate change'],
     [ecoIcon, 'Clean energy and energy efficiency'],
     [busIcon, 'Clean transit'],
     [homeIcon, 'Affordable and sustainable housing'],
