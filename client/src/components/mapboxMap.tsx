@@ -35,7 +35,7 @@ const MapboxMap = () => {
       maxBounds: constants.GLOBAL_MAX_BOUNDS as LngLatBoundsLike,
     });
     initialMap.on('click', handleClick);
-    initialMap.addControl(new NavigationControl());
+    initialMap.addControl(new NavigationControl({showCompass: false}), 'top-left');
     map.current = initialMap;
   });
 
