@@ -211,3 +211,9 @@ $j40-max-width: 80ex;
   margin-right: 12px;
   margin-top: 15px;
 }
+
+.mapboxgl-popup-content {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5) !important;
+  border-radius: 8px !important;
+  pointer-events: all !important;
+}

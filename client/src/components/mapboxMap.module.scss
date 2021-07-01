@@ -11,8 +11,4 @@ $sidebar-color: #ffffff;
   max-width: 36%;
   overflow-y: scroll;
   pointer-events: all !important;
-
-  .mapboxgl-popup-content {
-    pointer-events: all;
-  }
 }
