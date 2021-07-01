@@ -22,7 +22,8 @@ function makePaint({
   minRamp,
   medRamp,
   maxRamp,
-  high,
+  // Will be used later when we differentiate layer sources
+  high = true,
 }: {
     field: string;
     minRamp: number;
@@ -30,52 +31,20 @@ function makePaint({
     maxRamp: number;
     high: boolean;
   }): FillPaint {
-  const minColor = 'white'; // '232, 88%, 100%';
-  const medColor = '#D1DAE6';
-  const maxColor = '#768FB3'; // '0, 98%, 56%';
-  return {
+  const paintDescriptor : FillPaint = {
     'fill-color': [
-      'interpolate',
-      ['linear'],
-      ['zoom'],
-        high ? 9 : 0,
-        [
-          'step',
-          ['get', field],
-          hexToHSLA(minColor, high ? 0 : 0.5 ),
-          minRamp,
-          hexToHSLA(minColor, high ? 0 : 0.5 ),
-          medRamp,
-          hexToHSLA(medColor, high ? 0 : 0.5 ),
-          maxRamp,
-          hexToHSLA(maxColor, high ? 0 : 0.5 ),
-        ],
-        high ? 11 : 9,
-        [
-          'step',
-          ['get', field],
-          hexToHSLA(minColor, high ? 0.5 : 0.5 ),
-          minRamp,
-          hexToHSLA(minColor, high ? 0.5 : 0.5 ),
-          medRamp,
-          hexToHSLA(medColor, high ? 0.5 : 0.5 ),
-          maxRamp,
-          hexToHSLA(maxColor, high ? 0.5 : 0.5 ),
-        ],
-        high ? 22 : 11,
-        [
-          'step',
-          ['get', field],
-          hexToHSLA(minColor, high ? 0.5 : 0 ),
-          minRamp,
-          hexToHSLA(minColor, high ? 0.5 : 0 ),
-          medRamp,
-          hexToHSLA(medColor, high ? 0.5 : 0 ),
-          maxRamp,
-          hexToHSLA(maxColor, high ? 0.5 : 0 ),
-        ],
+      'step',
+      ['get', field],
+      hexToHSLA(styleConstants.MIN_COLOR, constants.DEFAULT_LAYER_OPACITY ),
+      minRamp,
+      hexToHSLA(styleConstants.MIN_COLOR, constants.DEFAULT_LAYER_OPACITY ),
+      medRamp,
+      hexToHSLA(styleConstants.MED_COLOR, constants.DEFAULT_LAYER_OPACITY ),
+      maxRamp,
+      hexToHSLA(styleConstants.MAX_COLOR, constants.DEFAULT_LAYER_OPACITY ),
     ],
   };
+  return paintDescriptor;
 }
 
 const mapStyle : Style = {
@@ -96,7 +65,7 @@ const mapStyle : Style = {
         'https://mt0.google.com/vt/lyrs=p&hl=en&x={x}&y={y}&z={z}',
       ],
     },
-    'custom': {
+    'score': {
       'type': 'vector',
       'tiles': [
         'https://d2zjid6n5ja2pt.cloudfront.net/0629_demo/{z}/{x}/{y}.pbf',
@@ -134,8 +103,8 @@ const mapStyle : Style = {
       },
     },
     {
-      'id': 'score-low',
-      'source': 'custom',
+      'id': 'score',
+      'source': 'score',
       'source-layer': 'blocks',
       'type': 'fill',
       'filter': ['all',
@@ -147,29 +116,28 @@ const mapStyle : Style = {
         minRamp: 0,
         medRamp: 0.6,
         maxRamp: 0.75,
-        high: false,
-      }),
-      'minzoom': constants.GLOBAL_MIN_ZOOM_LOW,
-      'maxzoom': constants.GLOBAL_MAX_ZOOM_LOW,
-    },
-    {
-      'id': 'score-high',
-      'source': 'custom',
-      'source-layer': 'blocks',
-      'type': 'fill',
-      'filter': ['all',
-        ['>', constants.SCORE_PROPERTY, 0.6],
-        // ['in', 'STATEFP10', '01', '30', '34', '35', '36'],
-      ],
-      'paint': makePaint({
-        field: constants.SCORE_PROPERTY,
-        minRamp: 0,
-        medRamp: 0.6,
-        maxRamp: 1.0,
         high: true,
       }),
+      'minzoom': constants.GLOBAL_MIN_ZOOM,
+      'maxzoom': constants.GLOBAL_MAX_ZOOM,
+    },
+    {
+      'id': 'score-highlights',
+      'source': 'score',
+      'source-layer': 'blocks',
+      'type': 'line',
       'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
       'maxzoom': constants.GLOBAL_MAX_ZOOM_HIGH,
+      'layout': {
+        'visibility': 'visible',
+        'line-join': 'round',
+        'line-cap': 'round',
+      },
+      'paint': {
+        'line-color': constants.DEFAULT_OUTLINE_COLOR,
+        'line-width': 0.8,
+        'line-opacity': 0.5,
+      },
     },
     {
       'id': 'labels-only',

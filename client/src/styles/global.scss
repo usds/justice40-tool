@@ -202,3 +202,13 @@ $j40-max-width: 80ex;
     margin-top: 12px !important;
   }
 }
+
+$min-color: "#FFFFFF";
+$med-color: "#D1DAE6";
+$max-color: "#768FB3";
+
+:export {
+  MIN_COLOR: $min-color;
+  MED_COLOR: $med-color;
+  MAX_COLOR: $max-color;
+}

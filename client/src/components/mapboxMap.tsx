@@ -43,7 +43,7 @@ const MapboxMap = () => {
     const map = e.target;
     const clickedCoord = e.point;
     const features = map.queryRenderedFeatures(clickedCoord, {
-      layers: ['score-low'],
+      layers: ['score'],
     });
 
     if (features.length && features[0].properties) {
@@ -66,16 +66,17 @@ const MapboxMap = () => {
     map.current.on('move', () => {
       setZoom(map.current.getZoom());
     });
-    map.current.on('mouseenter', 'score-low', () => {
+    map.current.on('mouseenter', 'score', () => {
       map.current.getCanvas().style.cursor = 'pointer';
     });
-    map.current.on('mouseleave', 'score-low', () => {
+    map.current.on('mouseleave', 'score', () => {
       map.current.getCanvas().style.cursor = '';
     });
   });
 
   return (
     <div>
+      <p>{zoom}</p>
       <div ref={mapContainer} className={styles.mapContainer}/>
       <ZoomWarning zoomLevel={zoom} />
     </div>
