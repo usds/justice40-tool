@@ -1,0 +1,41 @@
+$min-color: #fafaf8;
+$med-color: rgba(26, 68, 128, 0.2);
+$max-color: rgba(26, 68, 128, 0.6);
+
+.legendContainer {
+  margin-top: 19px;
+  font-size: 0.8em;
+}
+
+.swatchContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.legendItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 29px;
+}
+
+.colorSwatch {
+  box-sizing: border-box;
+  height: 20px;
+  width: 20px;
+  border: 1px solid #1a4480;
+  margin-right: 10px;
+}
+
+#prioritized {
+  background-color: $min-color;
+}
+
+#threshold {
+  background-color: $med-color;
+}
+
+#nonPrioritized {
+  background-color: $max-color;
+}

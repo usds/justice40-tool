@@ -3,6 +3,7 @@ import Layout from '../components/layout';
 // import MapWrapper from '../components/map';
 import MapWrapper from '../components/mapWrapper';
 import HowYouCanHelp from '../components/HowYouCanHelp';
+import Legend from '../components/legend';
 import {Alert} from '@trussworks/react-uswds';
 import * as styles from './cejst.module.scss';
 
@@ -49,6 +50,7 @@ const CEJSTPage = ({location}: IMapPageProps) => {
         </Alert>
         <h2>Explore the Tool</h2>
         <MapWrapper/>
+        <Legend />
         <HowYouCanHelp />
       </main>
     </Layout>

@@ -76,7 +76,6 @@ const MapboxMap = () => {
 
   return (
     <div>
-      <p>{zoom}</p>
       <div ref={mapContainer} className={styles.mapContainer}/>
       <ZoomWarning zoomLevel={zoom} />
     </div>
