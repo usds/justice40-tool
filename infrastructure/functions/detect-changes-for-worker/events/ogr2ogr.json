@@ -1,0 +1,10 @@
+{
+    "action": "ogr2ogr",
+    "command": [
+        "--debug", "ON",
+        "-f",
+        "GeoJSON",
+        "/vsis3/j40-sit-justice40-data-harvester-data/sources/tabblock2010_01_pophu.json",
+        "/vsizip//vsicurl/https://j40-sit-justice40-data-harvester-data.s3.amazonaws.com/census/tabblock2010_01_pophu.zip"
+    ]
+}

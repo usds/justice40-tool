@@ -1,10 +1,3 @@
-.mapContainer {
-  height: 676px;
-  margin-bottom: 29px;
-  max-width: revert;
-  margin-top: 50px;
-}
-
 .popupContainer {
   position: absolute;
   background-color: white;
@@ -15,6 +8,7 @@
   bottom: 12px;
   left: -50px;
   min-width: 280px;
+  overflow: scroll;
 }
 
 .popupContainer:after,
@@ -55,31 +49,4 @@
 
 .popupContent {
   max-height: 300px;
-  overflow: scroll;
-}
-
-.popupHeaderTable {
-  border-collapse: collapse;
-  border-spacing: 0;
-  font: normal 12px;
-  border: none;
-}
-
-.popupHeaderTable tbody td:first {
-  font-weight: bold;
-}
-
-.zoomWarning {
-  background-color: #953a10;
-  height: 8%;
-  width: 66%;
-  margin: auto;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.zoomWarning > img {
-  filter: invert(100%);
 }

@@ -30,11 +30,11 @@ jobs:
       # If this is just a PR branch, put content in a hash directory. Otherwise, put it in "main"
       # This variable is used by gatsby-config.js to set a prefixPath
       - name: Set DESTINATION_FOLDER for main
-        if: ${{ github.event.pull_request.merged == true }}
+        if: github.event.pull_request.merged == true
         run: |
           echo "DESTINATION_FOLDER=main" >> $GITHUB_ENV
       - name: Set DESTINATION_FOLDER for branch
-        if: ${{ github.event.pull_request.merged != true }}
+        if: github.event.pull_request.merged != true
         run: |
           echo "DESTINATION_FOLDER=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
       - name: Install
@@ -72,11 +72,11 @@ jobs:
           path: ./public
       # If this is just a PR branch, put content in a hash directory. Otherwise, put it in "main"
       - name: Set DESTINATION_FOLDER for main
-        if: ${{ github.event.pull_request.merged == true }}
+        if: github.event.pull_request.merged == true
         run: |
           echo "DESTINATION_FOLDER=main" >> $GITHUB_ENV
       - name: Set DESTINATION_FOLDER for branch
-        if: ${{ github.event.pull_request.merged != true }}
+        if: github.event.pull_request.merged != true
         run: |
           echo "DESTINATION_FOLDER=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
       - name: Deploy to Github Pages
