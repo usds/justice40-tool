@@ -4,17 +4,17 @@
 
 We use Docker to install the necessary libraries in a container that can be run in any operating system.
 
-To build the docker container the first time, make sure you're in the root directory of the repository and run `docker-compose build`
+To build the docker container the first time, make sure you have Docker running on your machine and that you're in the root directory of the repository. Then run `docker-compose build`.
 
-Then run commands, opening a new terminal window or tab:
+You can then run the following commands. You probably want to run these in a new terminal tab or window, because they may take a long time to run, especially the last one that generates the census data.
 
 - Get help: `docker run --rm -it j40_score /bin/sh -c "python3 application.py" python3 application.py --help"`
 - Clean up the data directories: `docker run --rm -it j40_score /bin/sh -c "python3 application.py data-cleanup"`
-- Generate census data: `docker run --rm -it j40_score /bin/sh -c "python3 application.py census-data-download"`
+- Generate census data (this may take 2-3 hours): `docker run --rm -it j40_score /bin/sh -c "python3 application.py census-data-download"`
 
 ## Log visualization
 
-If you want to visualize logs, the following temporary workaround can be used:
+If you want to visualize logs while running a command, the following temporary workaround can be used:
 
 - Run `docker-compose up` on the root of the repo
 - Open a new tab on your terminal
@@ -22,7 +22,7 @@ If you want to visualize logs, the following temporary workaround can be used:
 
 ## Local development
 
-You can run the Python code locally to develop, using Poetry. However, to generate the census data you will need the [GDAL library](https://github.com/OSGeo/gdal) installed locally. Also to generate tiles for a local map, you will need [Mapbox tippeanoe](https://github.com/mapbox/tippecanoe)
+You can run the Python code locally without Docker to develop, using Poetry. However, to generate the census data you will need the [GDAL library](https://github.com/OSGeo/gdal) installed locally. Also to generate tiles for a local map, you will need [Mapbox tippeanoe](https://github.com/mapbox/tippecanoe)
 
 - Start a terminal
 - Make sure you have Python 3.9 installed: `python -V` or `python3 -V`
