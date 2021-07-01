@@ -5,7 +5,7 @@ const HowYouCanHelp = () => {
   return (
     <div className={styles.howYouCanHelpContainer}>
       <h2>How You Can Help Improve the Tool</h2>
-      <ul>
+      <ul className={'usa-list'}>
         <li>If you have information that could help, we’d love to hear from you.</li>
         <li>View our full set of data sources and methodology
             where you can add or download sources and check statuses on our data roadmap.</li>

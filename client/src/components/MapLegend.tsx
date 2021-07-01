@@ -1,7 +1,7 @@
 import React from 'react';
-import * as styles from './legend.module.scss';
+import * as styles from './mapLegend.module.scss';
 
-const Legend = () => {
+const MapLegend = () => {
   return (
     <div className={styles.legendContainer}>
       <h3 className={styles.legendHeader}>COLOR KEY</h3>
@@ -23,4 +23,4 @@ const Legend = () => {
   );
 };
 
-export default Legend;
+export default MapLegend;
