@@ -45,7 +45,7 @@ $j40-max-width: 80ex;
 .j40-two-column > * {
   display: inline-flex;
   width: 90%;
-  padding-bottom: 1.5em;
+  padding-bottom: 1.2em; /* space between items */
   padding-left: 1em;
 }
 
@@ -69,8 +69,7 @@ $j40-max-width: 80ex;
 .j40-header,
 .j40-primary-nav,
 .j40-header > li > a {
-  background-color: #112f4e; /* todo: move color to theme */
-  color: white !important;
+  color: #112f4e !important;
   z-index: 5;
 
   .usa-nav-container {
@@ -79,7 +78,7 @@ $j40-max-width: 80ex;
 
   span {
     // make sure the open close chevron is colored correctly
-    color: white;
+    color: #112f4e;
   }
 
   // this is the title
@@ -88,25 +87,14 @@ $j40-max-width: 80ex;
     font-family: "serif";
   }
 
-  .usa-current::after,
-  :hover::after {
-    background-color: #2491ff !important;
-  }
-
   // menu item font
   .usa-nav__primary {
     font-size: 1.2em;
   }
 
-  // invert the hover color so contrast stays good enough for accessibility
-  .usa-nav__primary a:not(.usa-button):hover {
-    background-color: #2491ff !important;
-  }
-
-  // this is the closebox, it's not easy to change the X color, so we change
-  // the background to keep it's contrast high
-  .usa-nav__close {
-    background-color: white;
+  .byline {
+    font-size: .4em;
+    font-weight: normal;
   }
 }
 
@@ -195,10 +183,44 @@ $j40-max-width: 80ex;
     margin: 0;
   }
 
-  padding-top: 0;
-  padding-bottom: 0;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  min-height: 4em;
 
-  .usa-alert:before {
-    margin-top: 12px !important;
+  * + .usa-alert {
+    margin: 0 !important;
+  }
+}
+
+.j40-maplegend {
+  dt {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    overflow: hidden;
+    border: 1px solid #282828;
+  }
+
+  dd {
+    vertical-align: top;
+    padding-top: 0.1em;
+
+    display: inline-block;
+    width: 12em;
+    margin: 0 0 0 1em;
+  }
+
+  .mapsquare-a {
+    background-color: #1A4480;
+    color: #1A4480;
+  }
+  .mapsquare-b {
+    background-color: #a9a9aa;
+    color: #a9a9aa;
+  }
+
+  .mapsquare-c {
+    background-color: #ecececff;
+    color: #ecececff;
   }
 }
