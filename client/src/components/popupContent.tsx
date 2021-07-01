@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {Table} from '@trussworks/react-uswds';
 import * as constants from '../data/constants';
+import * as styles from './popupContent.module.scss';
 
 interface IPopupContentProps {
   properties: constants.J40Properties,
@@ -9,7 +9,7 @@ interface IPopupContentProps {
 
 const PopupContent = ({properties}:IPopupContentProps) => {
   const readablePercent = (percent: number) => {
-    return `${(percent * 100).toFixed(2)}%`;
+    return `${(percent * 100).toFixed(2)}`;
   };
 
   const getCategorization = (percentile: number) => {
@@ -28,28 +28,32 @@ const PopupContent = ({properties}:IPopupContentProps) => {
     const blockGroup = properties[constants.GEOID_PROPERTY];
     const score = properties[constants.SCORE_PROPERTY] as number;
     return (
-      <table>
-        <tbody>
-          <tr>
-            <td><strong>Census Block Group:</strong></td>
-            <td>{blockGroup}</td>
-          </tr>
-          <tr>
-            <td><strong>Just Progress Categorization:</strong></td>
-            <td>{getCategorization(score)}</td>
-          </tr>
-          <tr>
-            <td><strong>Cumulative Index Score:</strong></td>
-            <td>{readablePercent(score)}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div className={styles.titleContainer}>
+        <div>
+          <span className={styles.titleIndicatorName}>Census Block Group: </span>
+          <span>{blockGroup}</span>
+        </div>
+        <div>
+          <span className={styles.titleIndicatorName}>Just Progress Categorization: </span>
+          <span>{getCategorization(score)}</span>
+        </div>
+        <div>
+          <span className={styles.titleIndicatorName}>Cumulative Index Score: </span>
+          <span>{readablePercent(score)}</span>
+        </div>
+      </div>
     );
   };
 
   const getBodyContent = (properties: constants.J40Properties) => {
     const rows = [];
-    for (const [key, value] of Object.entries(properties)) {
+    const sortedKeys = Object.entries(properties).sort();
+    for (let [key, value] of sortedKeys) {
+      // We should only format floats
+      if (typeof value === 'number' && value % 1 !== 0) {
+        value = readablePercent(value);
+      }
+
       // Filter out all caps
       if (!key.match(/^[A-Z0-9]+$/)) {
         rows.push(<tr key={key} >
@@ -65,19 +69,19 @@ const PopupContent = ({properties}:IPopupContentProps) => {
   return (
     <>
       {properties ?
-      <div>
+      <div id='popupContainer'>
         {getTitleContent(properties)}
-        <Table bordered={false}>
+        <table className={'usa-table usa-table--borderless ' + styles.popupContentTable}>
           <thead>
             <tr>
-              <th scope="col">Indicator</th>
-              <th scope="col">Percentile(0-100)</th>
+              <th scope="col">INDICATOR</th>
+              <th scope="col">VALUE</th>
             </tr>
           </thead>
           <tbody>
             {getBodyContent(properties)}
           </tbody>
-        </Table>
+        </table>
       </div> :
     '' }
     </>

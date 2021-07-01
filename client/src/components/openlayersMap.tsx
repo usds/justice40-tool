@@ -10,7 +10,7 @@ import {Coordinate} from 'ol/coordinate';
 import olms from 'ol-mapbox-style';
 import mapStyle from '../data/mapStyle';
 import ZoomWarning from './zoomWarning';
-import MapPopup from './mapPopup';
+import OpenlayersPopup from './openlayersPopup';
 import {transformExtent} from 'ol/src/proj';
 import * as styles from './openlayersMap.module.scss';
 import * as constants from '../data/constants';
@@ -121,7 +121,7 @@ const MapWrapper = ({features}: IMapWrapperProps) => {
     <>
       <div ref={mapElement} className={styles.mapContainer}/>
       {map?
-        <MapPopup selectedFeature={selectedFeature!} map={map!} position={currentOverlayPosition} /> :
+        <OpenlayersPopup selectedFeature={selectedFeature!} map={map!} position={currentOverlayPosition} /> :
         ''
       }
       <ZoomWarning zoomLevel={currentZoom} />

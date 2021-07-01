@@ -1,6 +1,5 @@
 declare namespace MapboxMapModuleScssNamespace {
   export interface IMapboxMapModuleScss {
-    sidebar: string;
     mapContainer: string;
     j40Popup: string;
   }

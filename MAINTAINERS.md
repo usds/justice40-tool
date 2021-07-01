@@ -1,4 +1,7 @@
 # Justice40 Project Maintainers
+
+*[¡Lea esto en español!](MAINTAINERS-es.md)*
+
 ## Project Leadership
 - Lucas Brown - lucasmbrown-usds
 

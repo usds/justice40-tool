@@ -93,7 +93,7 @@ $j40-max-width: 80ex;
   }
 
   .byline {
-    font-size: 0.4em;
+    font-size: 0.3em;
     font-weight: normal;
   }
 }
@@ -192,35 +192,17 @@ $j40-max-width: 80ex;
   }
 }
 
-.j40-maplegend {
-  dt {
-    width: 20px;
-    height: 20px;
-    display: inline-block;
-    overflow: hidden;
-    border: 1px solid #282828;
-  }
+// Mapbox overrides
+// Note that these need to be here to properly override defaults
 
-  dd {
-    vertical-align: top;
-    padding-top: 0.1em;
+.mapboxgl-popup-close-button {
+  font-size: 3em;
+  margin-right: 12px;
+  margin-top: 15px;
+}
 
-    display: inline-block;
-    width: 12em;
-    margin: 0 0 0 1em;
-  }
-
-  .mapsquare-a {
-    background-color: #1a4480;
-    color: #1a4480;
-  }
-  .mapsquare-b {
-    background-color: #a9a9aa;
-    color: #a9a9aa;
-  }
-
-  .mapsquare-c {
-    background-color: #ecececff;
-    color: #ecececff;
-  }
+.mapboxgl-popup-content {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5) !important;
+  border-radius: 8px !important;
+  pointer-events: all !important;
 }
