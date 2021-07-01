@@ -22,7 +22,6 @@ function makePaint({
   minRamp,
   medRamp,
   maxRamp,
-  // Will be used later when we differentiate layer sources
   high = true,
 }: {
     field: string;
@@ -35,13 +34,13 @@ function makePaint({
     'fill-color': [
       'step',
       ['get', field],
-      hexToHSLA(styleConstants.MIN_COLOR, constants.DEFAULT_LAYER_OPACITY ),
+      hexToHSLA(constants.MIN_COLOR, constants.DEFAULT_LAYER_OPACITY ),
       minRamp,
-      hexToHSLA(styleConstants.MIN_COLOR, constants.DEFAULT_LAYER_OPACITY ),
+      hexToHSLA(constants.MIN_COLOR, constants.DEFAULT_LAYER_OPACITY ),
       medRamp,
-      hexToHSLA(styleConstants.MED_COLOR, constants.DEFAULT_LAYER_OPACITY ),
+      hexToHSLA(constants.MED_COLOR, constants.DEFAULT_LAYER_OPACITY ),
       maxRamp,
-      hexToHSLA(styleConstants.MAX_COLOR, constants.DEFAULT_LAYER_OPACITY ),
+      hexToHSLA(constants.MAX_COLOR, constants.DEFAULT_LAYER_OPACITY ),
     ],
   };
   return paintDescriptor;
