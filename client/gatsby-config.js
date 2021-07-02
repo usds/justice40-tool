@@ -39,10 +39,10 @@ module.exports = {
           patterns: [
             // The pattern "**/*.{js,jsx,ts,tsx}" is
             // not used because we will rely on `eslint --fix`
-            '**/*.{css,scss,less}',
-            '**/*.{json,json5}',
+            '**/*.{scss}',
+            '**/*.{json}',
             '**/*.{graphql}',
-            '**/*.{md,mdx}',
+            '**/*.{md}',
             '**/*.{html}',
             '**/*.{yaml,yml}',
           ],
