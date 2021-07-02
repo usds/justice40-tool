@@ -36,6 +36,10 @@ El equipo central usa el grupo para publicar la información más reciente sobre
 Las colaboraciones son siempre bien recibidas. Nos agradan las aportaciones en forma de conversación sobre los temas de este repositorio y las solicitudes para incorporación de cambios en la documentación y el código.
 En [CONTRIBUTING-es.md](CONTRIBUTING-es.md), consulte la manera de empezar a participar.
 
+## Instalación 
+
+La instalación es una instalación típica de gatsby y los detalles se pueden encontrar en [INSTALLATION-es.md](INSTALLATION-es.md)
+
 ## Glosario
 ¿Tiene duda acerca de un término? ¿Encontró un acrónimo y no sabe a qué se refiere? Consulte [nuestro glosario](docs/glossary.md) *(en inglés)*.
 
