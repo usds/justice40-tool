@@ -1,5 +1,7 @@
 # Installing the Justice40 Tool
 
+*[¡Lea esto en español!](INSTALLATION-es.md)*
+
 ## Required Software
 - git, node, yarn, gatsby-cli, and an IDE
 
