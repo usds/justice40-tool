@@ -1,5 +1,66 @@
+$primary-color: #112f4e;
+
 .disclaimer {
-  margin-top: 24px;
-  margin-bottom: 21px;
-  margin-left: 49px;
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 25px;
+
+  .textBox {
+    flex: 2;
+    max-width: 700px;
+    // border: 1px solid blue;
+    p {
+      margin: 20px 49px;
+    }
+  }
+  
+  
+  .downloadBoxContainer {
+    flex: 0 0 350px;
+    // flex: 1;
+    // border: 1px solid red;
+
+    color: whitesmoke;
+    margin: auto;
+
+    .downloadBox {
+      background-color: $primary-color;
+      min-width: 400px;
+      border-radius: 6px 6px;
+
+      .downloadBoxTextBox {
+        // border: 2px solid green;
+        padding: 25px 25px;
+        display: flex;
+        flex-direction: column;
+        
+        .downloadBoxTitle {
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+
+        .downloadBoxText {
+          margin-bottom: 20px;
+        }
+
+        .downloadBoxButtonContainer {
+          margin-top: 20px 0 0 0;
+          align-self: center;
+        }
+
+        .downloadBoxButton{
+          background-color: white;
+          color: $primary-color;
+          display: flex;
+
+          .downloadPacketText {
+            padding-top: 4px;
+            padding-left: 5px;
+          }
+        }
+
+      }
+    }
+  }
+
 }
