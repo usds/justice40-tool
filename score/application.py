@@ -15,15 +15,25 @@ def cli():
 
 
 @cli.command(
-    help="Clean up all data folders",
+    help="Clean up all census data folders",
 )
-def data_cleanup():
+def census_cleanup():
 
     data_path = settings.APP_ROOT / "data"
 
     # census directories
     logger.info(f"Initializing all census data")
     census_reset(data_path)
+
+    logger.info("Cleaned up all census data files")
+
+
+@cli.command(
+    help="Clean up all data folders",
+)
+def data_cleanup():
+
+    data_path = settings.APP_ROOT / "data"
 
     # dataset directory
     logger.info(f"Initializing all dataset directoriees")

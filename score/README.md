@@ -4,11 +4,12 @@
 
 We use Docker to install the necessary libraries in a container that can be run in any operating system.
 
-To build the docker container the first time, make sure you're in the root directory of the repository and run `docker-compose build`
+To build the docker container the first time, make sure you're in the root directory of the repository and run `docker-compose build`.
 
-Then run commands, opening a new terminal window or tab:
+After that, to run commands type the following:
 
 - Get help: `docker run --rm -it j40_score /bin/sh -c "python3 application.py --help"`
+- Clean up the census data directories: `docker run --rm -it j40_score /bin/sh -c "python3 application.py census-cleanup"`
 - Clean up the data directories: `docker run --rm -it j40_score /bin/sh -c "python3 application.py data-cleanup"`
 - Generate census data: `docker run --rm -it j40_score /bin/sh -c "python3 application.py census-data-download"`
 - Run all ETL processes: `docker run --rm -it j40_score /bin/sh -c "python3 application.py etl-run"`
