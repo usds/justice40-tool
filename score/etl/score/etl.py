@@ -1,6 +1,7 @@
 import collections
 import functools
 import pandas as pd
+import matplotlib.pyplot as plt
 
 from etl.base import ExtractTransformLoad
 from utils import get_module_logger
@@ -118,6 +119,9 @@ class ScoreETL(ExtractTransformLoad):
         self.df = census_block_group_df.merge(
             census_tract_df, on=self.GEOID_TRACT_FIELD_NAME
         )
+
+        if len(census_block_group_df) > 220333:
+            raise ValueError("Too many rows in the join.")
 
         # Define a named tuple that will be used for each data set input.
         DataSet = collections.namedtuple(
@@ -292,6 +296,21 @@ class ScoreETL(ExtractTransformLoad):
                 self.df[data_set.renamed_field] - min_value
             ) / (max_value - min_value)
 
+            # Graph distributions and correlations.
+            min_max_fields = [
+                f"{data_set.renamed_field}{self.MIN_MAX_FIELD_SUFFIX}"
+                for data_set in data_sets
+                if data_set.renamed_field != self.GEOID_FIELD_NAME
+            ]
+            self.df.hist(
+                column=min_max_fields,
+                layout=(len(min_max_fields), 1),
+                figsize=(10, 30),
+                bins=30,
+            )
+
+            plt.tight_layout()
+
         # Calculate score "A" and score "B"
         self.df["Score A"] = self.df[
             [
@@ -354,6 +373,18 @@ class ScoreETL(ExtractTransformLoad):
         # and calculate "Score E", which uses percentile normalization for the same fields
         self.df["Score D"] = self.df[fields_min_max].mean(axis=1)
         self.df["Score E"] = self.df[fields_percentile].mean(axis=1)
+
+        # Graph distributions
+        self.df.hist(
+            column=fields_min_max,
+            layout=(len(fields_min_max), 1),
+            figsize=(10, 30),
+            bins=30,
+        )
+        plt.tight_layout()
+
+        # Calculate correlations
+        self.df[fields_min_max].corr()
 
         # Create percentiles for the scores
         for score_field in ["Score A", "Score B", "Score C", "Score D", "Score E"]:
