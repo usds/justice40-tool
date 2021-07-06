@@ -1,5 +1,6 @@
 from pathlib import Path
 import csv
+import pandas as pd
 import os
 from config import settings
 
@@ -53,3 +54,14 @@ def get_state_fips_codes(data_path: Path) -> list:
                 fips = row[0].strip()
                 fips_state_list.append(fips)
     return fips_state_list
+
+
+def get_state_information(data_path: Path) -> list:
+    fips_csv_path = data_path / "census" / "csv" / "fips_states_2010.csv"
+
+    df = pd.read_csv(fips_csv_path)
+
+    # Left pad the FIPS codes with 0s
+    df["fips"] = df["fips"].astype(str).apply(lambda x: x.zfill(2))
+
+    return df
