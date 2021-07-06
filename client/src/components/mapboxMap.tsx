@@ -14,6 +14,13 @@ import ReactDOM from 'react-dom';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import * as styles from './mapboxMap.module.scss';
 
+declare global {
+  interface Window {
+    Cypress?: object;
+    mapboxGlMap: Map;
+  }
+}
+
 type ClickEvent = mapboxgl.MapMouseEvent & mapboxgl.EventData;
 
 const MapboxMap = () => {
@@ -33,12 +40,21 @@ const MapboxMap = () => {
       minZoom: constants.GLOBAL_MIN_ZOOM,
       maxZoom: constants.GLOBAL_MAX_ZOOM,
       maxBounds: constants.GLOBAL_MAX_BOUNDS as LngLatBoundsLike,
+      hash: true, // Adds hash of zoom/lat/long to the url
     });
     // disable map rotation using right click + drag
     initialMap.dragRotate.disable();
 
     // disable map rotation using touch rotation gesture
     initialMap.touchZoomRotate.disableRotation();
+
+    setZoom(initialMap.getZoom());
+
+    initialMap.on('load', () => {
+      if (window.Cypress) {
+        window.mapboxGlMap = initialMap;
+      }
+    });
 
     initialMap.on('click', handleClick);
     initialMap.addControl(new NavigationControl({showCompass: false}), 'top-left');
