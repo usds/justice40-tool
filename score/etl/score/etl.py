@@ -319,7 +319,7 @@ class ScoreETL(ExtractTransformLoad):
         # Combine the score from the two Exposures and Environmental Effects buckets into a single score called "Pollution Burden". The math for this score is: (1.0 * Exposures Score + 0.5 * Environment Effects score) / 1.5.
         self.df[self.AGGREGATION_POLLUTION] = (
             1.0 * self.df[f"{self.BUCKET_EXPOSURES}"]
-            + 0.5 * df[f"{self.BUCKET_ENVIRONMENTAL}"]
+            + 0.5 * self.df[f"{self.BUCKET_ENVIRONMENTAL}"]
         ) / 1.5
 
         # Average the score from the two Sensitive populations and Socioeconomic factors buckets into a single score called "Population Characteristics".

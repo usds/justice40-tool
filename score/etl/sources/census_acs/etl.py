@@ -13,7 +13,7 @@ class CensusACSETL(ExtractTransformLoad):
         self.ACS_YEAR = 2019
         self.OUTPUT_PATH = self.DATA_PATH / "dataset" / f"census_acs_{self.ACS_YEAR}"
         self.GEOID_FIELD_NAME = "GEOID10"
-        self.UNEMPLOYED_FIELD_NAME = "Unemployed Civilians (fraction)"
+        self.UNEMPLOYED_FIELD_NAME = "Unemployed civilians (percent)"
         self.LINGUISTIC_ISOLATION_FIELD_NAME = "Linguistic isolation (percent)"
         self.LINGUISTIC_ISOLATION_TOTAL_FIELD_NAME = "Linguistic isolation (total)"
         self.LINGUISTIC_ISOLATION_FIELDS = [
@@ -63,7 +63,6 @@ class CensusACSETL(ExtractTransformLoad):
         # Calculate percent unemployment.
         # TODO: remove small-sample data that should be `None` instead of a high-variance fraction.
         self.df[self.UNEMPLOYED_FIELD_NAME] = self.df.B23025_005E / self.df.B23025_003E
-        self.df[self.UNEMPLOYED_FIELD_NAME].describe()
 
         # Calculate linguistic isolation.
         individual_limited_english_fields = [
