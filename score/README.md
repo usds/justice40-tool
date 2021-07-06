@@ -17,7 +17,7 @@ After that, to run commands type the following:
 
 ## Log visualization
 
-If you want to visualize logs, the following temporary workaround can be used:
+If you want to visualize logs while running a command, the following temporary workaround can be used:
 
 - Run `docker-compose up` on the root of the repo
 - Open a new tab on your terminal
@@ -25,7 +25,7 @@ If you want to visualize logs, the following temporary workaround can be used:
 
 ## Local development
 
-You can run the Python code locally to develop, using Poetry. However, to generate the census data you will need the [GDAL library](https://github.com/OSGeo/gdal) installed locally. Also to generate tiles for a local map, you will need [Mapbox tippeanoe](https://github.com/mapbox/tippecanoe)
+You can run the Python code locally without Docker to develop, using Poetry. However, to generate the census data you will need the [GDAL library](https://github.com/OSGeo/gdal) installed locally. Also to generate tiles for a local map, you will need [Mapbox tippeanoe](https://github.com/mapbox/tippecanoe)
 
 - Start a terminal
 - Make sure you have Python 3.9 installed: `python -V` or `python3 -V`

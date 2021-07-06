@@ -13,6 +13,7 @@ Know a term and its definition that you don't see here? Make a pull request with
 | CEJST | Climate and Economic Justice Screening Tool. This is the tool we are building to support the Justice40 initiative and help identify historically overburdened and underserved communities for benefits. |
 | Contributor | Someone who participates in the open source community by contributing code, documentation, information, discussion, etc. |
 | Data Roadmap | Our way to keep track of what data has been suggested and prioritized for inclusion in the CEJST and manage prioritization and eventual integration into the tool. |
+| EJ | Environmental Justice. See this [wikipedia](https://en.wikipedia.org/wiki/Environmental_justice) link for more information. |
 | EVCM | Experience-validating community member. This is a user profile that we use when conceiving user stories, and represents members of the community who may view or use the tool and give feedback on whether the tool or the data it uses accurately reflects their experience. |
 | Github | An online tool for publishing, sharing, and discussing code. |
 | Google Group | A listserv / mailing list product from Google that lets you subscribe to updates and partipcipate in discussions. Our open source data+tech Google Group is available here: https://groups.google.com/u/4/g/justice40-open-source |

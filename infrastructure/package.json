@@ -1,0 +1,20 @@
+{
+  "name": "infrastructure",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "serverless": "^2.48.0",
+    "serverless-certificate-creator": "^1.5.3",
+    "serverless-pseudo-parameters": "^2.5.0"
+  }
+}
