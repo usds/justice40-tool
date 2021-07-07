@@ -1,16 +1,11 @@
 import * as React from 'react';
-import {useFlags} from '../contexts/FlagContext';
-import MapboxMap from './mapboxMap';
-import OpenLayersMap from './openlayersMap';
+import J40Map from './J40Map';
 
 const MapWrapper = () => {
-  const flags = useFlags();
   return (
     <div>
       {
-            flags.includes('mb') ?
-            <MapboxMap /> :
-            <OpenLayersMap features={[]}/>
+        <J40Map />
       }
     </div>
   );

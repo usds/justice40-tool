@@ -6,13 +6,13 @@ import maplibregl, {LngLatBoundsLike,
   PopupOptions,
   Popup,
   LngLatLike} from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
 import mapStyle from '../data/mapStyle';
 import ZoomWarning from './zoomWarning';
 import PopupContent from './popupContent';
 import * as constants from '../data/constants';
 import ReactDOM from 'react-dom';
-import 'maplibre-gl/dist/maplibre-gl.css';
-import * as styles from './mapboxMap.module.scss';
+import * as styles from './J40Map.module.scss';
 
 declare global {
   interface Window {
@@ -22,7 +22,7 @@ declare global {
 }
 type ClickEvent = maplibregl.MapMouseEvent & maplibregl.EventData;
 
-const MapboxMap = () => {
+const J40Map = () => {
   const mapContainer = React.useRef<HTMLDivElement>(null);
   const map = useRef<Map>() as React.MutableRefObject<Map>;
   const [zoom, setZoom] = useState(constants.GLOBAL_MIN_ZOOM);
@@ -102,4 +102,4 @@ const MapboxMap = () => {
   );
 };
 
-export default MapboxMap;
+export default J40Map;

@@ -8,14 +8,14 @@ function hexToHSLA(hex:string, alpha:number) {
 }
 
 /**
- * `MakePaint` generates a zoom-faded Mapbox style formatted layer given a set of parameters.
+ * `MakePaint` generates a zoom-faded Maplibre style formatted layer given a set of parameters.
  *
  * @param {string} field : the field within the data to consult
  * @param {number} minRamp : the minimum value this can assume
  * @param {number} medRamp : the medium value this can assume
  * @param {number} maxRamp : the maximum value this can assume
  * @param {boolean} high : whether this is a "high" or "low" layer
- * @return {FillPaint} a mapboxgl fill layer
+ * @return {FillPaint} a maplibregl fill layer
  **/
 function makePaint({
   field,
