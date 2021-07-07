@@ -1,29 +1,28 @@
 /* eslint-disable no-unused-vars */
 import React, {useRef, useEffect, useState} from 'react';
-import {LngLatBoundsLike,
+import maplibregl, {LngLatBoundsLike,
   Map,
   NavigationControl,
   PopupOptions,
   Popup,
-  LngLatLike} from 'mapbox-gl';
+  LngLatLike} from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
 import mapStyle from '../data/mapStyle';
 import ZoomWarning from './zoomWarning';
 import PopupContent from './popupContent';
 import * as constants from '../data/constants';
 import ReactDOM from 'react-dom';
-import 'mapbox-gl/dist/mapbox-gl.css';
-import * as styles from './mapboxMap.module.scss';
+import * as styles from './J40Map.module.scss';
 
 declare global {
   interface Window {
     Cypress?: object;
-    mapboxGlMap: Map;
+    underlyingMap: Map;
   }
 }
+type ClickEvent = maplibregl.MapMouseEvent & maplibregl.EventData;
 
-type ClickEvent = mapboxgl.MapMouseEvent & mapboxgl.EventData;
-
-const MapboxMap = () => {
+const J40Map = () => {
   const mapContainer = React.useRef<HTMLDivElement>(null);
   const map = useRef<Map>() as React.MutableRefObject<Map>;
   const [zoom, setZoom] = useState(constants.GLOBAL_MIN_ZOOM);
@@ -38,7 +37,6 @@ const MapboxMap = () => {
       center: constants.DEFAULT_CENTER as LngLatLike,
       zoom: zoom,
       minZoom: constants.GLOBAL_MIN_ZOOM,
-      maxZoom: constants.GLOBAL_MAX_ZOOM,
       maxBounds: constants.GLOBAL_MAX_BOUNDS as LngLatBoundsLike,
       hash: true, // Adds hash of zoom/lat/long to the url
     });
@@ -52,7 +50,7 @@ const MapboxMap = () => {
 
     initialMap.on('load', () => {
       if (window.Cypress) {
-        window.mapboxGlMap = initialMap;
+        window.underlyingMap = initialMap;
       }
     });
 
@@ -104,4 +102,4 @@ const MapboxMap = () => {
   );
 };
 
-export default MapboxMap;
+export default J40Map;

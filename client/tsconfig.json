@@ -15,20 +15,9 @@
     "allowJs": true,
     "resolveJsonModule": true,
     "baseUrl": "./",
-    "paths": {
-      "ol": ["node_modules/ol/src"],
-      "ol/*": ["node_modules/ol/src/*"],
-      "ol-mapbox-style": ["node_modules/ol-mapbox-style/src"],
-      "ol-mapbox-style/*": ["node_modules/ol-mapbox-style/src/*"]
-    }
   },
   "include": [
     "./src/**/*ts",
     "./src/**/*tsx",
-    "node_modules/ol/**/*",
-    "node_modules/ol-mapbox-style/**/*"
   ],
-  "typeAcquisition": {
-    "exclude": ["ol", "ol-mapbox-style"]
-  }
 }

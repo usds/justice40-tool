@@ -1,4 +1,4 @@
-import {Style, FillPaint} from 'mapbox-gl';
+import {Style, FillPaint} from 'maplibre-gl';
 import chroma from 'chroma-js';
 import * as constants from '../data/constants';
 
@@ -8,27 +8,24 @@ function hexToHSLA(hex:string, alpha:number) {
 }
 
 /**
- * `MakePaint` generates a zoom-faded Mapbox style formatted layer given a set of parameters.
+ * `MakePaint` generates a zoom-faded Maplibre style formatted layer given a set of parameters.
  *
  * @param {string} field : the field within the data to consult
  * @param {number} minRamp : the minimum value this can assume
  * @param {number} medRamp : the medium value this can assume
  * @param {number} maxRamp : the maximum value this can assume
- * @param {boolean} high : whether this is a "high" or "low" layer
- * @return {FillPaint} a mapboxgl fill layer
+ * @return {FillPaint} a maplibregl fill layer
  **/
 function makePaint({
   field,
   minRamp,
   medRamp,
   maxRamp,
-  high = true,
 }: {
     field: string;
     minRamp: number;
     medRamp: number;
     maxRamp: number;
-    high: boolean;
   }): FillPaint {
   const paintDescriptor : FillPaint = {
     'fill-color': [
@@ -88,14 +85,12 @@ const mapStyle : Style = {
       'source': 'carto',
       'type': 'raster',
       'minzoom': constants.GLOBAL_MIN_ZOOM - 1,
-      'maxzoom': constants.GLOBAL_MAX_ZOOM + 1,
     },
     {
       'id': 'geo',
       'source': 'geo',
       'type': 'raster',
       'minzoom': constants.GLOBAL_MIN_ZOOM - 1,
-      'maxzoom': constants.GLOBAL_MAX_ZOOM + 1,
       'layout': {
         // Make the layer visible by default.
         'visibility': 'none',
@@ -115,7 +110,6 @@ const mapStyle : Style = {
         minRamp: 0,
         medRamp: 0.6,
         maxRamp: 0.75,
-        high: true,
       }),
       'minzoom': constants.GLOBAL_MIN_ZOOM,
       'maxzoom': constants.GLOBAL_MAX_ZOOM,
@@ -126,7 +120,6 @@ const mapStyle : Style = {
       'source-layer': 'blocks',
       'type': 'line',
       'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
-      'maxzoom': constants.GLOBAL_MAX_ZOOM_HIGH,
       'layout': {
         'visibility': 'visible',
         'line-join': 'round',
@@ -143,7 +136,6 @@ const mapStyle : Style = {
       'type': 'raster',
       'source': 'labels',
       'minzoom': constants.GLOBAL_MIN_ZOOM,
-      'maxzoom': constants.GLOBAL_MAX_ZOOM,
     },
   ],
 };
