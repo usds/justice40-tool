@@ -6,7 +6,7 @@ from utils import get_module_logger
 logger = get_module_logger(__name__)
 
 
-class CalEnviroScrenETL(ExtractTransformLoad):
+class CalEnviroScreenETL(ExtractTransformLoad):
     def __init__(self):
         self.CALENVIROSCREEN_FTP_URL = "https://justice40-data.s3.amazonaws.com/CalEnviroScreen/CalEnviroScreen_4.0_2021.zip"
         self.CALENVIROSCREEN_CSV = self.TMP_PATH / "CalEnviroScreen_4.0_2021.csv"
@@ -18,7 +18,6 @@ class CalEnviroScrenETL(ExtractTransformLoad):
         self.CALENVIROSCREEN_PRIORITY_COMMUNITY_FIELD_NAME = (
             "calenviroscreen_priority_community"
         )
-        self.GEOID_TRACT_FIELD_NAME = "GEOID10_TRACT"
 
         # Choosing constants.
         # None of these numbers are final, but just for the purposes of comparison.

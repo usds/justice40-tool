@@ -13,8 +13,6 @@ logger = get_module_logger(__name__)
 class ScoreETL(ExtractTransformLoad):
     def __init__(self):
         # Define some global parameters
-        self.GEOID_FIELD_NAME = "GEOID10"
-        self.GEOID_TRACT_FIELD_NAME = "GEOID10_TRACT"
         self.BUCKET_SOCIOECONOMIC = "Socioeconomic Factors"
         self.BUCKET_SENSITIVE = "Sensitive populations"
         self.BUCKET_ENVIRONMENTAL = "Environmental effects"

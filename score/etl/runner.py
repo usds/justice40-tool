@@ -13,7 +13,7 @@ def etl_runner() -> None:
             "class_name": "HousingTransportationETL",
         },
         {"module_dir": "hud_housing", "class_name": "HudHousingETL"},
-        {"module_dir": "calenviroscreen", "class_name": "CalEnviroScrenETL"},
+        {"module_dir": "calenviroscreen", "class_name": "CalEnviroScreenETL"},
         {"module_dir": "hud_recap", "class_name": "HudRecapETL"},
     ]
 

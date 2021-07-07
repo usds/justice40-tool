@@ -15,7 +15,6 @@ class HousingTransportationETL(ExtractTransformLoad):
         self.OUTPUT_PATH = (
             self.DATA_PATH / "dataset" / "housing_and_transportation_index"
         )
-        self.GEOID_FIELD_NAME = "GEOID10"
         self.df: pd.DataFrame
 
     def extract(self) -> None:

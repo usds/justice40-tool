@@ -12,7 +12,6 @@ class CensusACSETL(ExtractTransformLoad):
     def __init__(self):
         self.ACS_YEAR = 2019
         self.OUTPUT_PATH = self.DATA_PATH / "dataset" / f"census_acs_{self.ACS_YEAR}"
-        self.GEOID_FIELD_NAME = "GEOID10"
         self.UNEMPLOYED_FIELD_NAME = "Unemployed civilians (percent)"
         self.LINGUISTIC_ISOLATION_FIELD_NAME = "Linguistic isolation (percent)"
         self.LINGUISTIC_ISOLATION_TOTAL_FIELD_NAME = "Linguistic isolation (total)"

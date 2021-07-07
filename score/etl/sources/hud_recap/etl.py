@@ -18,7 +18,6 @@ class HudRecapETL(ExtractTransformLoad):
 
         # Definining some variable names
         self.HUD_RECAP_PRIORITY_COMMUNITY_FIELD_NAME = "hud_recap_priority_community"
-        self.GEOID_TRACT_FIELD_NAME = "GEOID10_TRACT"
 
         self.df: pd.DataFrame
 

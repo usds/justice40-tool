@@ -8,6 +8,10 @@ class ExtractTransformLoad:
     DATA_PATH = settings.APP_ROOT / "data"
     TMP_PATH = DATA_PATH / "tmp"
 
+    # constants
+    GEOID_FIELD_NAME = "GEOID10"
+    GEOID_TRACT_FIELD_NAME = "GEOID10_TRACT"
+
     def get_yaml_config(self) -> None:
         pass
 
@@ -21,10 +25,10 @@ class ExtractTransformLoad:
             unzip_file_from_url(source_url, self.TMP_PATH, extract_path)
 
     def transform(self) -> None:
-        pass
+        raise NotImplementedError
 
     def load(self) -> None:
-        pass
+        raise NotImplementedError
 
     def cleanup(self) -> None:
         # cleanup
