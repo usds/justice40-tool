@@ -72,7 +72,7 @@
   "dependencies": {
     "@trussworks/react-uswds": "git+https://www.github.com/nathillardusds/react-uswds#nathillardusds/ssr",
     "chroma-js": "^2.1.2",
-    "mapbox-gl": "^1.13.0",
+    "maplibre-gl": ">=1.14.0",
     "ol": "^6.5.0",
     "ol-mapbox-style": "^6.3.2",
     "query-string": "^7.0.0",

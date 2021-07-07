@@ -3,7 +3,7 @@
 // For some interactions, we need access to the underlying map
 // Below adapted from https://github.com/codeforcologne/edelgard-map
 Cypress.Commands.add('getMap', () => {
-  return cy.window().its('mapboxGlMap');
+  return cy.window().its('underlyingMap');
 });
 
 Cypress.Commands.add('waitForMove', (map) => {
@@ -18,6 +18,6 @@ Cypress.Commands.add('panTo', (map, lngLat) => {
 });
 
 Cypress.Commands.add('getMapCanvas', () => {
-  return cy.get('.mapboxgl-canvas');
+  return cy.get('.maplibregl-canvas');
 });
 

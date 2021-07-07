@@ -1,4 +1,4 @@
-import {Style, FillPaint} from 'mapbox-gl';
+import {Style, FillPaint} from 'maplibre-gl';
 import chroma from 'chroma-js';
 import * as constants from '../data/constants';
 
@@ -88,14 +88,12 @@ const mapStyle : Style = {
       'source': 'carto',
       'type': 'raster',
       'minzoom': constants.GLOBAL_MIN_ZOOM - 1,
-      'maxzoom': constants.GLOBAL_MAX_ZOOM + 1,
     },
     {
       'id': 'geo',
       'source': 'geo',
       'type': 'raster',
       'minzoom': constants.GLOBAL_MIN_ZOOM - 1,
-      'maxzoom': constants.GLOBAL_MAX_ZOOM + 1,
       'layout': {
         // Make the layer visible by default.
         'visibility': 'none',
@@ -126,7 +124,6 @@ const mapStyle : Style = {
       'source-layer': 'blocks',
       'type': 'line',
       'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
-      'maxzoom': constants.GLOBAL_MAX_ZOOM_HIGH,
       'layout': {
         'visibility': 'visible',
         'line-join': 'round',
@@ -143,7 +140,6 @@ const mapStyle : Style = {
       'type': 'raster',
       'source': 'labels',
       'minzoom': constants.GLOBAL_MIN_ZOOM,
-      'maxzoom': constants.GLOBAL_MAX_ZOOM,
     },
   ],
 };
