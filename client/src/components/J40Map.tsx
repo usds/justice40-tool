@@ -13,6 +13,8 @@ import PopupContent from './popupContent';
 import * as constants from '../data/constants';
 import ReactDOM from 'react-dom';
 import * as styles from './J40Map.module.scss';
+import 'maplibre-gl/dist/maplibre-gl.css';
+
 
 declare global {
   interface Window {
