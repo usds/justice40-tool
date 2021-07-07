@@ -14,7 +14,6 @@ function hexToHSLA(hex:string, alpha:number) {
  * @param {number} minRamp : the minimum value this can assume
  * @param {number} medRamp : the medium value this can assume
  * @param {number} maxRamp : the maximum value this can assume
- * @param {boolean} high : whether this is a "high" or "low" layer
  * @return {FillPaint} a maplibregl fill layer
  **/
 function makePaint({
@@ -22,13 +21,11 @@ function makePaint({
   minRamp,
   medRamp,
   maxRamp,
-  high = true,
 }: {
     field: string;
     minRamp: number;
     medRamp: number;
     maxRamp: number;
-    high: boolean;
   }): FillPaint {
   const paintDescriptor : FillPaint = {
     'fill-color': [
@@ -113,7 +110,6 @@ const mapStyle : Style = {
         minRamp: 0,
         medRamp: 0.6,
         maxRamp: 0.75,
-        high: true,
       }),
       'minzoom': constants.GLOBAL_MIN_ZOOM,
       'maxzoom': constants.GLOBAL_MAX_ZOOM,
