@@ -1,16 +1,17 @@
 /* eslint-disable no-unused-vars */
-import React, {useState} from 'react';
+import React, {useState, useRef, Ref, useEffect} from 'react';
 import mapStyle from '../data/mapStyle';
 import ZoomWarning from './zoomWarning';
 import PopupContent from './popupContent';
-import {Map} from 'maplibre-gl';
+import {Map, MapboxGeoJSONFeature} from 'maplibre-gl';
 import ReactMapGL, {
   MapEvent,
   ViewportProps,
   WebMercatorViewport,
   Popup,
   NavigationControl,
-  MapContext} from 'react-map-gl';
+  MapRef,
+  MapContext, LinearInterpolator} from 'react-map-gl';
 import * as constants from '../data/constants';
 import * as styles from './J40Map.module.scss';
 import 'maplibre-gl/dist/maplibre-gl.css';
@@ -38,7 +39,9 @@ const J40Map = () => {
     zoom: constants.GLOBAL_MIN_ZOOM,
   });
   const [popupInfo, setPopupInfo] = useState<IPopupInterface>();
+  const [selectedFeature, setSelectedFeature] = useState<MapboxGeoJSONFeature>();
   const context = React.useContext(MapContext);
+  const mapRef = useRef<MapRef>();
 
   const onClick = (event: MapEvent) => {
     const feature = event.features && event.features[0];
@@ -54,21 +57,48 @@ const J40Map = () => {
             padding: 40,
           },
       );
+      const map = mapRef.current.getMap();
+
+      // If we've selected a new feature, set 'selected' to false
+      if (selectedFeature && feature.id !== selectedFeature.id) {
+        map.setFeatureState({
+          source: selectedFeature.source,
+          sourceLayer: selectedFeature.sourceLayer,
+          id: selectedFeature.id,
+        }, {selected: false});
+      }
+      map.setFeatureState({
+        source: feature.source,
+        sourceLayer: feature.sourceLayer,
+        id: feature.id,
+      }, {selected: true});
+      setSelectedFeature(feature);
+
+      // Needs refining
+      // setViewport({
+      //   ...viewport,
+      //   longitude,
+      //   latitude,
+      //   zoom,
+      //   transitionInterpolator: new LinearInterpolator({
+      //     around: [event.offsetCenter.x, event.offsetCenter.y],
+      //   }),
+      //   transitionDuration: 1000,
+      // });
+
       const popupInfo = {
         longitude: longitude,
         latitude: latitude,
         zoom: zoom,
         properties: feature.properties,
       };
-
       setPopupInfo(popupInfo);
     }
   };
 
-
   const onLoad = () => {
     if (window.Cypress) {
-      window.underlyingMap = context.map;
+      window.underlyingMap = mapRef.current.getMap();
     }
   };
 
@@ -89,6 +119,7 @@ const J40Map = () => {
         onViewportChange={setViewport}
         onClick={onClick}
         onLoad={onLoad}
+        ref={mapRef}
       >
         {popupInfo && (
           <Popup

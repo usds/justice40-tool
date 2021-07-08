@@ -30,7 +30,10 @@ function makePaint({
   const paintDescriptor : FillPaint = {
     'fill-color': [
       'step',
-      ['get', field],
+      ['to-number', [
+        'get',
+        field,
+      ]],
       hexToHSLA(constants.MIN_COLOR, constants.DEFAULT_LAYER_OPACITY ),
       minRamp,
       hexToHSLA(constants.MIN_COLOR, constants.DEFAULT_LAYER_OPACITY ),
@@ -129,6 +132,22 @@ const mapStyle : Style = {
         'line-color': constants.DEFAULT_OUTLINE_COLOR,
         'line-width': 0.8,
         'line-opacity': 0.5,
+      },
+    },
+    {
+      'id': 'score-border-highlight',
+      'type': 'line',
+      'source': 'score',
+      'source-layer': 'blocks',
+      'layout': {},
+      'paint': {
+        'line-color': constants.BORDER_HIGHLIGHT_COLOR,
+        'line-width': [
+          'case',
+          ['boolean', ['feature-state', 'selected'], false],
+          5.0,
+          0,
+        ],
       },
     },
     {
