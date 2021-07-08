@@ -87,13 +87,13 @@ const mapStyle : Style = {
       'id': 'carto',
       'source': 'carto',
       'type': 'raster',
-      'minzoom': constants.GLOBAL_MIN_ZOOM - 1,
+      // 'minzoom': constants.GLOBAL_MIN_ZOOM - 1,
     },
     {
       'id': 'geo',
       'source': 'geo',
       'type': 'raster',
-      'minzoom': constants.GLOBAL_MIN_ZOOM - 1,
+      // 'minzoom': constants.GLOBAL_MIN_ZOOM - 1,
       'layout': {
         // Make the layer visible by default.
         'visibility': 'none',
@@ -114,15 +114,15 @@ const mapStyle : Style = {
         medRamp: 0.6,
         maxRamp: 0.75,
       }),
-      'minzoom': constants.GLOBAL_MIN_ZOOM,
-      'maxzoom': constants.GLOBAL_MAX_ZOOM,
+      // 'minzoom': constants.GLOBAL_MIN_ZOOM,
+      // 'maxzoom': constants.GLOBAL_MAX_ZOOM,
     },
     {
       'id': 'score-highlights',
       'source': 'score',
       'source-layer': 'blocks',
       'type': 'line',
-      'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
+      // 'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
       'layout': {
         'visibility': 'visible',
         'line-join': 'round',
@@ -154,7 +154,7 @@ const mapStyle : Style = {
       'id': 'labels-only',
       'type': 'raster',
       'source': 'labels',
-      'minzoom': constants.GLOBAL_MIN_ZOOM,
+      // 'minzoom': constants.GLOBAL_MIN_ZOOM,
     },
   ],
 };

@@ -3,6 +3,8 @@ declare namespace J40MapModuleScssNamespace {
     mapContainer: string;
     j40Popup: string;
     navigationControls: string;
+    zoomContainer: string;
+    zoomButton: string;
   }
 }
 

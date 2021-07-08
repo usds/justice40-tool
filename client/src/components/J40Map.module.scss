@@ -15,3 +15,31 @@ $sidebar-color: #ffffff;
   height: 80px;
   width: 40px;
 }
+.zoomButton {
+  width: 40px;
+  height: 40px;
+  border-width: 1px 2px;
+  border-color: #000000;
+  border-style: solid;
+  background-color: #ffffff;
+}
+
+.zoomContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 16px;
+  line-height: 40px;
+  position: absolute;
+  left: 20px;
+  top: 315px;
+  z-index: 10;
+}
+
+.zoomButton:first-child {
+  border-top-width: 2px;
+}
+
+.zoomButton:last-child {
+  border-bottom-width: 2px;
+}

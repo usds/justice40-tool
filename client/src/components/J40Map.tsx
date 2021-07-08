@@ -11,12 +11,12 @@ import ReactMapGL, {
   Popup,
   NavigationControl,
   MapRef,
-  MapContext, LinearInterpolator} from 'react-map-gl';
+  MapContext, FlyToInterpolator} from 'react-map-gl';
 import * as constants from '../data/constants';
 import * as styles from './J40Map.module.scss';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import bbox from '@turf/bbox';
-
+import * as d3 from 'd3-ease';
 
 declare global {
   interface Window {
@@ -102,14 +102,52 @@ const J40Map = () => {
     }
   };
 
+  const goToPlace = (bounds: [[number, number], [number, number]]) => {
+    const {longitude, latitude, zoom} = new WebMercatorViewport(viewport)
+        .fitBounds(bounds, {
+          padding: 20,
+          offset: [0, -100],
+        });
+    setViewport({
+      ...viewport,
+      longitude,
+      latitude,
+      zoom,
+      transitionDuration: 1000,
+      transitionInterpolator: new FlyToInterpolator(),
+      transitionEasing: d3.easeCubic,
+    });
+  };
+  const onClickZoomButton = (event: MapEvent) => {
+    const buttonID = event.target.id;
+    switch (buttonID) {
+      case '48':
+        goToPlace(constants.LOWER_48_BOUNDS);
+        break;
+      case 'AK':
+        goToPlace(constants.ALASKA_BOUNDS);
+        break;
+      case 'HI':
+        goToPlace(constants.HAWAII_BOUNDS);
+        break;
+      case 'PR':
+        goToPlace(constants.PUERTO_RICO_BOUNDS);
+        break;
+
+      default:
+        break;
+    }
+  };
+
+
   return (
     <>
       <ReactMapGL
         {...viewport}
         className={styles.mapContainer}
         mapStyle={mapStyle}
-        minZoom={constants.GLOBAL_MIN_ZOOM}
-        maxZoom={constants.GLOBAL_MAX_ZOOM}
+        // minZoom={constants.GLOBAL_MIN_ZOOM}
+        // maxZoom={constants.GLOBAL_MAX_ZOOM}
         mapOptions={{hash: true}}
         width="90vw"
         height="52vw"
@@ -141,6 +179,12 @@ const J40Map = () => {
         />
       </ReactMapGL>
       <ZoomWarning zoomLevel={viewport.zoom!} />
+      <div className={styles.zoomContainer}>
+        <button id={'48'} onClick={onClickZoomButton} className={styles.zoomButton}>48</button>
+        <button id={'AK'} onClick={onClickZoomButton} className={styles.zoomButton}>AK</button>
+        <button id={'HI'} onClick={onClickZoomButton} className={styles.zoomButton}>HI</button>
+        <button id={'PR'} onClick={onClickZoomButton} className={styles.zoomButton}>PR</button>
+      </div>
     </>
   );
 };
