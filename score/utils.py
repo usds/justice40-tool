@@ -142,9 +142,9 @@ def data_folder_cleanup() -> None:
     remove_all_from_dir(data_path / "dataset")
 
 
-def score_folder_cleanup()) -> None:
+def score_folder_cleanup() -> None:
     """Remove all files and directories from the local data/score path"""
-    
+
     data_path = settings.APP_ROOT / "data"
 
     logger.info(f"Initializing all score data")
@@ -152,7 +152,7 @@ def score_folder_cleanup()) -> None:
     remove_files_from_dir(data_path / "score" / "geojson", ".json")
 
 
-def temp_folder_cleanup()) -> None:
+def temp_folder_cleanup() -> None:
     """Remove all files and directories from the local data/tmp temporary path"""
 
     data_path = settings.APP_ROOT / "data"
@@ -169,7 +169,7 @@ def get_excel_column_name(index: int) -> str:
         index (int): the index of the column
 
     Returns:
-        str: the excel column name    
+        str: the excel column name
     """
     excel_column_names = [
         "A",

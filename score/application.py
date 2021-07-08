@@ -16,6 +16,7 @@ logger = get_module_logger(__name__)
 
 @click.group()
 def cli():
+    """Defines a click group for the commands below"""
     pass
 
 
@@ -23,6 +24,7 @@ def cli():
     help="Clean up all census data folders",
 )
 def census_cleanup():
+    """CLI command to clean up the census data folder"""
     data_path = settings.APP_ROOT / "data"
 
     # census directories
@@ -36,6 +38,7 @@ def census_cleanup():
     help="Clean up all data folders",
 )
 def data_cleanup():
+    """CLI command to clean up the all the data folders"""
     data_folder_cleanup()
     score_folder_cleanup()
     temp_folder_cleanup()
@@ -47,6 +50,8 @@ def data_cleanup():
     help="Census data download",
 )
 def census_data_download():
+    """CLI command to download all census shape files from the Census FTP and extract the geojson
+    to generate national and by state Census Block Group CSVs"""
     logger.info("Downloading census data")
     data_path = settings.APP_ROOT / "data"
     download_census_csvs(data_path)
@@ -55,11 +60,19 @@ def census_data_download():
 
 
 @cli.command(
-    help="Run all ETL processes",
+    help="Run all ETL processes or a specific one",
 )
 @click.option("-d", "--dataset", required=False, type=str)
 def etl_run(dataset):
-    print(settings.APP_ROOT)
+    """Run a specific or all ETL processes
+
+    Args:
+        dataset (str): Name of the ETL module to be run (optional)
+
+    Returns:
+        None
+    """
+
     etl_runner(dataset)
 
 

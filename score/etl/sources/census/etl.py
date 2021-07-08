@@ -10,6 +10,17 @@ logger = get_module_logger(__name__)
 
 
 def download_census_csvs(data_path: Path) -> None:
+    """Download all census shape files from the Census FTP and extract the geojson
+    to generate national and by state Census Block Group CSVs
+
+    Args:
+        data_path (pathlib.Path): Name of the directory where the files and directories will
+        be created
+
+    Returns:
+        None
+    """
+
     # the fips_states_2010.csv is generated from data here
     # https://www.census.gov/geographies/reference-files/time-series/geo/tallies.html
     state_fips_codes = get_state_fips_codes(data_path)
@@ -17,7 +28,9 @@ def download_census_csvs(data_path: Path) -> None:
 
     for fips in state_fips_codes:
         # check if file exists
-        shp_file_path = data_path / "census" / "shp" / fips / f"tl_2010_{fips}_bg10.shp"
+        shp_file_path = (
+            data_path / "census" / "shp" / fips / f"tl_2010_{fips}_bg10.shp"
+        )
 
         logger.info(f"Checking if {fips} file exists")
         if not os.path.isfile(shp_file_path):
@@ -26,7 +39,9 @@ def download_census_csvs(data_path: Path) -> None:
             # But using 2010 for now
             cbg_state_url = f"https://www2.census.gov/geo/tiger/TIGER2010/BG/2010/tl_2010_{fips}_bg10.zip"
             unzip_file_from_url(
-                cbg_state_url, data_path / "tmp", data_path / "census" / "shp" / fips
+                cbg_state_url,
+                data_path / "tmp",
+                data_path / "census" / "shp" / fips,
             )
 
             cmd = (
@@ -81,7 +96,10 @@ def download_census_csvs(data_path: Path) -> None:
     ## write US csv
     with open(csv_dir_path / "us.csv", mode="w", newline="") as cbg_csv_file:
         cbg_csv_file_writer = csv.writer(
-            cbg_csv_file, delimiter=",", quotechar='"', quoting=csv.QUOTE_MINIMAL
+            cbg_csv_file,
+            delimiter=",",
+            quotechar='"',
+            quoting=csv.QUOTE_MINIMAL,
         )
         for geoid10 in cbg_national:
             cbg_csv_file_writer.writerow(
