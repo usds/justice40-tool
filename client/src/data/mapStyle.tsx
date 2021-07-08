@@ -66,6 +66,7 @@ const mapStyle : Style = {
     },
     'score': {
       'type': 'vector',
+      'promoteId': 'GEOID10',
       'tiles': [
         'https://d2zjid6n5ja2pt.cloudfront.net/0629_demo/{z}/{x}/{y}.pbf',
         // For local development, use:
