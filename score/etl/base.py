@@ -4,7 +4,7 @@ from config import settings
 from utils import unzip_file_from_url, remove_all_from_dir
 
 
-class ExtractTransformLoad:
+class ExtractTransformLoad(object):
     DATA_PATH = settings.APP_ROOT / "data"
     TMP_PATH = DATA_PATH / "tmp"
 

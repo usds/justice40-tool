@@ -1,7 +1,6 @@
 import collections
 import functools
 import pandas as pd
-import matplotlib.pyplot as plt
 
 from etl.base import ExtractTransformLoad
 from utils import get_module_logger
@@ -300,14 +299,6 @@ class ScoreETL(ExtractTransformLoad):
                 for data_set in data_sets
                 if data_set.renamed_field != self.GEOID_FIELD_NAME
             ]
-            self.df.hist(
-                column=min_max_fields,
-                layout=(len(min_max_fields), 1),
-                figsize=(10, 30),
-                bins=30,
-            )
-
-            plt.tight_layout()
 
         # Calculate score "A" and score "B"
         self.df["Score A"] = self.df[
@@ -371,15 +362,6 @@ class ScoreETL(ExtractTransformLoad):
         # and calculate "Score E", which uses percentile normalization for the same fields
         self.df["Score D"] = self.df[fields_min_max].mean(axis=1)
         self.df["Score E"] = self.df[fields_percentile].mean(axis=1)
-
-        # Graph distributions
-        self.df.hist(
-            column=fields_min_max,
-            layout=(len(fields_min_max), 1),
-            figsize=(10, 30),
-            bins=30,
-        )
-        plt.tight_layout()
 
         # Calculate correlations
         self.df[fields_min_max].corr()

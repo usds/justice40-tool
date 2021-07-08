@@ -1,8 +1,13 @@
-from config import settings
 import click
 
+from config import settings
 from etl.sources.census.etl_utils import reset_data_directories as census_reset
-from utils import remove_files_from_dir, remove_all_from_dir, get_module_logger
+from utils import (
+    get_module_logger,
+    data_folder_cleanup,
+    score_folder_cleanup,
+    temp_folder_cleanup,
+)
 from etl.sources.census.etl import download_census_csvs
 from etl.runner import etl_runner, score_generate
 
@@ -18,7 +23,6 @@ def cli():
     help="Clean up all census data folders",
 )
 def census_cleanup():
-
     data_path = settings.APP_ROOT / "data"
 
     # census directories
@@ -32,23 +36,11 @@ def census_cleanup():
     help="Clean up all data folders",
 )
 def data_cleanup():
+    data_folder_cleanup()
+    score_folder_cleanup()
+    temp_folder_cleanup()
 
-    data_path = settings.APP_ROOT / "data"
-
-    # dataset directory
-    logger.info(f"Initializing all dataset directoriees")
-    remove_all_from_dir(data_path / "dataset")
-
-    # score directory
-    logger.info(f"Initializing all score data")
-    remove_files_from_dir(data_path / "score" / "csv", ".csv")
-    remove_files_from_dir(data_path / "score" / "geojson", ".json")
-
-    # cleanup tmp dir
-    logger.info(f"Initializing all temp directoriees")
-    remove_all_from_dir(data_path / "tmp")
-
-    logger.info("Cleaned up all data files")
+    logger.info("Cleaned up all data folders")
 
 
 @cli.command(
@@ -65,9 +57,10 @@ def census_data_download():
 @cli.command(
     help="Run all ETL processes",
 )
-def etl_run():
+@click.option("-d", "--dataset", required=False, type=str)
+def etl_run(dataset):
     print(settings.APP_ROOT)
-    etl_runner()
+    etl_runner(dataset)
 
 
 @cli.command(
