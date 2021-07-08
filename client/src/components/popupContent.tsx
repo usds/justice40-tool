@@ -24,7 +24,7 @@ const PopupContent = ({properties}:IPopupContentProps) => {
     return categorization;
   };
 
-  const getTitleContent = (properties: constants.J40Properties) => {
+  const getTitleContent = () => {
     const blockGroup = properties[constants.GEOID_PROPERTY];
     const score = properties[constants.SCORE_PROPERTY] as number;
     return (
@@ -45,7 +45,7 @@ const PopupContent = ({properties}:IPopupContentProps) => {
     );
   };
 
-  const getBodyContent = (properties: constants.J40Properties) => {
+  const getBodyContent = () => {
     const rows = [];
     const sortedKeys = Object.entries(properties).sort();
     for (let [key, value] of sortedKeys) {
@@ -70,7 +70,7 @@ const PopupContent = ({properties}:IPopupContentProps) => {
     <>
       {properties ?
       <div id='popupContainer'>
-        {getTitleContent(properties)}
+        {getTitleContent()}
         <table className={'usa-table usa-table--borderless ' + styles.popupContentTable}>
           <thead>
             <tr>
@@ -79,7 +79,7 @@ const PopupContent = ({properties}:IPopupContentProps) => {
             </tr>
           </thead>
           <tbody>
-            {getBodyContent(properties)}
+            {getBodyContent()}
           </tbody>
         </table>
       </div> :

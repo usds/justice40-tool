@@ -1,14 +1,15 @@
 $sidebar-background: rgba(35, 55, 75, 0.9);
 $sidebar-color: #ffffff;
 
-.mapContainer {
-  height: 676px;
-}
-
 .j40Popup {
   max-height: 300px;
   min-width: 36%;
   max-width: 36%;
   overflow-y: scroll;
   pointer-events: all !important;
+}
+
+.navigationControls {
+  right: 10px;
+  top: 10px;
 }
