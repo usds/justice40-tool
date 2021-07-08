@@ -9,9 +9,15 @@ import urllib3
 from config import settings
 
 
-def get_module_logger(module_name):
-    """
-    To use this, do logger = get_module_logger(__name__)
+def get_module_logger(module_name: str) -> logging.Logger:
+    """Instantiates a logger object on stdout
+
+    Args:
+        module_name (str): Name of the module outputting the logs
+
+    Returns:
+        logger (Logging.logger): A logger object
+
     """
     logger = logging.getLogger(module_name)
     handler = logging.StreamHandler()
@@ -28,6 +34,17 @@ logger = get_module_logger(__name__)
 
 
 def remove_files_from_dir(files_path: Path, extension: str = None) -> None:
+    """Removes all files from a specific directory with the exception of __init__.py
+    files or files with a specific extension
+
+    Args:
+        files_path (pathlib.Path): Name of the directory where the files will be deleted
+        extension (str): Extension of the file pattern to delete, example "json" (optional)
+
+    Returns:
+        None
+
+    """
     for file in os.listdir(files_path):
         if extension:
             if not file.endswith(extension):
@@ -41,6 +58,15 @@ def remove_files_from_dir(files_path: Path, extension: str = None) -> None:
 
 
 def remove_all_from_dir(files_path: Path) -> None:
+    """Removes all files and directories from a specific directory, except __init__.py files
+
+    Args:
+        files_path (pathlib.Path): Name of the directory where the files and directories will be deleted
+
+    Returns:
+        None
+
+    """
     for file in os.listdir(files_path):
         # don't rempove __init__ files as they conserve dir structure
         if file == "__init__.py":
@@ -53,6 +79,15 @@ def remove_all_from_dir(files_path: Path) -> None:
 
 
 def remove_all_dirs_from_dir(dir_path: Path) -> None:
+    """Removes all directories from a speficic directory
+
+    Args:
+        dir_path (pathlib.Path): Name of the directory where the directories will be deleted
+
+    Returns:
+        None
+
+    """
     for filename in os.listdir(dir_path):
         file_path = os.path.join(dir_path, filename)
         if os.path.isdir(file_path):
@@ -61,8 +96,24 @@ def remove_all_dirs_from_dir(dir_path: Path) -> None:
 
 
 def unzip_file_from_url(
-    file_url: str, download_path: Path, zip_file_directory: Path, verify: bool = False
+    file_url: str,
+    download_path: Path,
+    unzipped_file_path: Path,
+    verify: bool = False,
 ) -> None:
+    """Downloads a zip file from a remote URL location and unzips it in a specific directory, removing the temporary file after
+
+    Args:
+        file_url (str): URL where the zip file is located
+        download_path (pathlib.Path): directory where the temporary file will be downloaded (called downloaded.zip by default)
+        unzipped_file_path (pathlib.Path): directory and name of the extracted file
+        verify (bool): A flag to check if the certificate is valid. If truthy, an invalid certificate will throw an error (optional, default to False)
+
+    Returns:
+        None
+
+    """
+
     # disable https warning
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -76,20 +127,24 @@ def unzip_file_from_url(
 
     logger.info(f"Extracting {zip_file_path}")
     with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
-        zip_ref.extractall(zip_file_directory)
+        zip_ref.extractall(unzipped_file_path)
 
     # cleanup temporary file
     os.remove(zip_file_path)
 
 
-def data_folder_cleanup():
+def data_folder_cleanup() -> None:
+    """Remove all files and directories from the local data/dataset path"""
+
     data_path = settings.APP_ROOT / "data"
 
     logger.info(f"Initializing all dataset directoriees")
     remove_all_from_dir(data_path / "dataset")
 
 
-def score_folder_cleanup():
+def score_folder_cleanup()) -> None:
+    """Remove all files and directories from the local data/score path"""
+    
     data_path = settings.APP_ROOT / "data"
 
     logger.info(f"Initializing all score data")
@@ -97,7 +152,9 @@ def score_folder_cleanup():
     remove_files_from_dir(data_path / "score" / "geojson", ".json")
 
 
-def temp_folder_cleanup():
+def temp_folder_cleanup()) -> None:
+    """Remove all files and directories from the local data/tmp temporary path"""
+
     data_path = settings.APP_ROOT / "data"
 
     logger.info(f"Initializing all temp directoriees")
@@ -105,11 +162,14 @@ def temp_folder_cleanup():
 
 
 def get_excel_column_name(index: int) -> str:
-    """This is used to map a numeric index to the appropriate column in Excel.
-
-    E.g., column #95 is "CR".
-
+    """Map a numeric index to the appropriate column in Excel. E.g., column #95 is "CR".
     Only works for the first 1000 columns.
+
+    Args:
+        index (int): the index of the column
+
+    Returns:
+        str: the excel column name    
     """
     excel_column_names = [
         "A",

@@ -4,7 +4,7 @@ from etl.score.etl import ScoreETL
 
 
 def etl_runner(dataset_to_run: str = None) -> None:
-    """Clears the data directories and runs all etl processes or a specific one
+    """Runs all etl processes or a specific one
 
     Args:
         dataset_to_run (str): Run a specific ETL process. If missing, runs all processes (optional)
@@ -46,6 +46,7 @@ def etl_runner(dataset_to_run: str = None) -> None:
         if not dataset_list:
             raise ValueError("Invalid dataset name")
         else:
+            # reset the list to just the dataset
             dataset_list = [dataset_element]
 
     # Run the ETLs for the dataset_list
@@ -71,6 +72,14 @@ def etl_runner(dataset_to_run: str = None) -> None:
 
 
 def score_generate() -> None:
+    """Generates the score and saves it on the local data directory
+
+    Args:
+        None
+
+    Returns:
+        None
+    """
     score = ScoreETL()
 
     # run extract
