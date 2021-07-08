@@ -1,14 +1,12 @@
 /* eslint-disable no-unused-vars */
-import React, {useState, useRef, Ref, useEffect} from 'react';
+import React, {useState, useRef} from 'react';
 import mapStyle from '../data/mapStyle';
 import ZoomWarning from './zoomWarning';
-import PopupContent from './popupContent';
 import {Map, MapboxGeoJSONFeature} from 'maplibre-gl';
 import ReactMapGL, {
   MapEvent,
   ViewportProps,
   WebMercatorViewport,
-  Popup,
   NavigationControl,
   MapRef,
   MapContext, FlyToInterpolator} from 'react-map-gl';
@@ -25,20 +23,18 @@ declare global {
   }
 }
 
-interface IPopupInterface {
-  latitude: number
-  longitude: number
-  zoom: number
-  properties: constants.J40Properties,
+interface IJ40Map {
+  setDetailViewData: Function
 };
 
-const J40Map = () => {
+
+const J40Map = ({setDetailViewData}: IJ40Map) => {
   const [viewport, setViewport] = useState<ViewportProps>({
     latitude: constants.DEFAULT_CENTER[0],
     longitude: constants.DEFAULT_CENTER[1],
     zoom: constants.GLOBAL_MIN_ZOOM,
   });
-  const [popupInfo, setPopupInfo] = useState<IPopupInterface>();
+
   const [selectedFeature, setSelectedFeature] = useState<MapboxGeoJSONFeature>();
   const context = React.useContext(MapContext);
   const mapRef = useRef<MapRef>();
@@ -92,7 +88,7 @@ const J40Map = () => {
         zoom: zoom,
         properties: feature.properties,
       };
-      setPopupInfo(popupInfo);
+      setDetailViewData(popupInfo);
     }
   };
 
@@ -149,7 +145,7 @@ const J40Map = () => {
         // minZoom={constants.GLOBAL_MIN_ZOOM}
         // maxZoom={constants.GLOBAL_MAX_ZOOM}
         mapOptions={{hash: true}}
-        width="90vw"
+        width="68.4vw"
         height="52vw"
         dragRotate={false}
         touchRotate={false}
@@ -159,7 +155,7 @@ const J40Map = () => {
         onLoad={onLoad}
         ref={mapRef}
       >
-        {popupInfo && (
+        {/* {popupInfo && (
           <Popup
             className={styles.j40Popup}
             tipSize={5}
@@ -169,9 +165,9 @@ const J40Map = () => {
             closeOnClick={true}
             onClose={setPopupInfo}
           >
-            <PopupContent properties={popupInfo.properties} />
+            <AreaDetail properties={popupInfo.properties} />
           </Popup>
-        )}
+        )} */}
 
         <NavigationControl
           showCompass={false}

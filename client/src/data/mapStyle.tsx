@@ -122,7 +122,7 @@ const mapStyle : Style = {
       'source': 'score',
       'source-layer': 'blocks',
       'type': 'line',
-      // 'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
+      'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
       'layout': {
         'visibility': 'visible',
         'line-join': 'round',

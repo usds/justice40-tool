@@ -1,13 +1,13 @@
 import * as React from 'react';
 import * as constants from '../data/constants';
-import * as styles from './popupContent.module.scss';
+import * as styles from './areaDetail.module.scss';
 
-interface IPopupContentProps {
+interface IAreaDetailProps {
   properties: constants.J40Properties,
 }
 
 
-const PopupContent = ({properties}:IPopupContentProps) => {
+const AreaDetail = ({properties}:IAreaDetailProps) => {
   const readablePercent = (percent: number) => {
     return `${(percent * 100).toFixed(2)}`;
   };
@@ -69,23 +69,25 @@ const PopupContent = ({properties}:IPopupContentProps) => {
   return (
     <>
       {properties ?
-      <div id='popupContainer'>
+      <div className={styles.areaDetailContainer}>
         {getTitleContent()}
-        <table className={'usa-table usa-table--borderless ' + styles.popupContentTable}>
-          <thead>
-            <tr>
-              <th scope="col">INDICATOR</th>
-              <th scope="col">VALUE</th>
-            </tr>
-          </thead>
-          <tbody>
-            {getBodyContent()}
-          </tbody>
-        </table>
+        <div className={styles.areaDetailTableContainer}>
+          <table className={'usa-table usa-table--borderless ' + styles.areaDetailTable}>
+            <thead>
+              <tr>
+                <th scope="col">INDICATOR</th>
+                <th scope="col">VALUE</th>
+              </tr>
+            </thead>
+            <tbody>
+              {getBodyContent()}
+            </tbody>
+          </table>
+        </div>
       </div> :
     '' }
     </>
   );
 };
 
-export default PopupContent;
+export default AreaDetail;

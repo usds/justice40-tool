@@ -1,0 +1,26 @@
+.areaDetailTable {
+  max-width: 31.6vw;
+}
+
+.areaDetailTable > thead {
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 22px 22px;
+}
+
+.titleIndicatorName {
+  font-weight: bold;
+}
+
+.areaDetailContainer {
+  max-height: 50vh;
+  overflow: scroll;
+}
+
+.areaDetailTableContainer {
+  overflow: auto;
+  padding: 22px;
+}
