@@ -18,6 +18,6 @@ Cypress.Commands.add('panTo', (map, lngLat) => {
 });
 
 Cypress.Commands.add('getMapCanvas', () => {
-  return cy.get('.maplibregl-canvas');
+  return cy.get('.mapbox-canvas');
 });
 

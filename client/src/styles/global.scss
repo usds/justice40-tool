@@ -194,15 +194,44 @@ $j40-max-width: 80ex;
 
 // Maplibre overrides
 // Note that these need to be here to properly override defaults
+// Additionally, because we're using react-map-gl, you need to use
+// the mapboxgl- class name variables
 
-.maplibregl-popup-close-button {
+.mapboxgl-popup-close-button {
   font-size: 3em;
   margin-right: 12px;
   margin-top: 15px;
 }
 
-.maplibregl-popup-content {
+.mapboxgl-popup-content {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5) !important;
   border-radius: 8px !important;
   pointer-events: all !important;
+}
+
+.mapboxgl-ctrl-zoom-in,
+.mapboxgl-ctrl-zoom-out {
+  box-sizing: border-box;
+  height: 40px;
+  width: 40px;
+  border: 2px solid #000000;
+  background-color: #ffffff;
+  font-size: 24px;
+  padding-top: 5px;
+}
+
+.mapboxgl-ctrl-zoom-out {
+  border-top-width: 1px;
+}
+
+.mapboxgl-ctrl-zoom-in {
+  border-bottom-width: 1px;
+}
+
+.mapboxgl-ctrl-zoom-in::after {
+  content: url("../../node_modules/uswds/dist/img/usa-icons/add.svg");
+}
+
+.mapboxgl-ctrl-zoom-out::after {
+  content: url("../../node_modules/uswds/dist/img/usa-icons/remove.svg");
 }

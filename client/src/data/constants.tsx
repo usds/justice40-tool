@@ -13,7 +13,10 @@ export const GLOBAL_MIN_ZOOM_HIGH = 9;
 export const GLOBAL_MAX_ZOOM_HIGH = 12;
 
 // Bounds
-export const GLOBAL_MAX_BOUNDS = [[-167.276413, -52.233040], [5.499550, 83.162102]];
+export const GLOBAL_MAX_BOUNDS = [
+  [-168.118306, 5.499550],
+  [-66.950000, 83.162102],
+];
 export const DEFAULT_CENTER = [32.4687126, -86.502136];
 
 // Opacity

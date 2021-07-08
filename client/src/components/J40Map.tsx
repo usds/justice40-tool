@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, {useState} from 'react';
-import {Map} from 'maplibre-gl';
 import mapStyle from '../data/mapStyle';
 import ZoomWarning from './zoomWarning';
 import PopupContent from './popupContent';
+import {Map} from 'maplibre-gl';
 import ReactMapGL, {
   MapEvent,
   ViewportProps,
@@ -64,6 +64,7 @@ const J40Map = () => {
       setPopupInfo(popupInfo);
     }
   };
+
 
   const onLoad = () => {
     if (window.Cypress) {
