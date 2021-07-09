@@ -63,6 +63,9 @@ const mapStyle : Style = {
     },
     'score': {
       'type': 'vector',
+      // Our current tippecanoe command does not set an id.
+      // The below line promotes the GEOID10 property to the ID
+      'promoteId': 'GEOID10',
       'tiles': [
         'https://d2zjid6n5ja2pt.cloudfront.net/0629_demo/{z}/{x}/{y}.pbf',
         // For local development, use:
@@ -129,6 +132,24 @@ const mapStyle : Style = {
         'line-color': constants.DEFAULT_OUTLINE_COLOR,
         'line-width': 0.8,
         'line-opacity': 0.5,
+      },
+    },
+    {
+      // This layer queries the feature-state property "selected" and
+      // highlights the border of the selected region if true
+      'id': 'score-border-highlight',
+      'type': 'line',
+      'source': 'score',
+      'source-layer': 'blocks',
+      'layout': {},
+      'paint': {
+        'line-color': constants.BORDER_HIGHLIGHT_COLOR,
+        'line-width': [
+          'case',
+          ['boolean', ['feature-state', 'selected'], false],
+          5.0,
+          0,
+        ],
       },
     },
     {
