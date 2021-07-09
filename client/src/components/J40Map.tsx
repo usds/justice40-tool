@@ -5,7 +5,8 @@ import maplibregl, {LngLatBoundsLike,
   NavigationControl,
   PopupOptions,
   Popup,
-  LngLatLike} from 'maplibre-gl';
+  LngLatLike,
+  MapboxGeoJSONFeature} from 'maplibre-gl';
 import mapStyle from '../data/mapStyle';
 import ZoomWarning from './zoomWarning';
 import PopupContent from './popupContent';
@@ -25,6 +26,7 @@ type ClickEvent = maplibregl.MapMouseEvent & maplibregl.EventData;
 const J40Map = () => {
   const mapContainer = React.useRef<HTMLDivElement>(null);
   const mapRef = useRef<Map>() as React.MutableRefObject<Map>;
+  const selectedFeature = useRef<MapboxGeoJSONFeature>();
   const [zoom, setZoom] = useState(constants.GLOBAL_MIN_ZOOM);
 
   useEffect(() => {
@@ -55,6 +57,20 @@ const J40Map = () => {
     initialMap.addControl(new NavigationControl({showCompass: false}), 'top-left');
     mapRef.current = initialMap;
   }, []);
+  const setMapSelected = (feature:MapboxGeoJSONFeature, isSelected:boolean) : void => {
+    // The below can be confirmed during debug with:
+    // mapRef.current.getFeatureState({"id":feature.id, "source":feature.source, "sourceLayer":feature.sourceLayer})
+    mapRef.current.setFeatureState({
+      source: feature.source,
+      sourceLayer: feature.sourceLayer,
+      id: feature.id,
+    }, {selected: isSelected});
+    if (isSelected) {
+      selectedFeature.current = feature;
+    } else {
+      selectedFeature.current = undefined;
+    }
+  };
 
   const handleClick = (e: ClickEvent) => {
     const map = e.target;
@@ -62,10 +78,16 @@ const J40Map = () => {
     const features = map.queryRenderedFeatures(clickedCoord, {
       layers: ['score'],
     });
-
-    if (features.length && features[0].properties) {
+    const feature = features && features[0];
+    if (feature) {
       const placeholder = document.createElement('div');
-      ReactDOM.render(<PopupContent properties={features[0].properties} />, placeholder);
+      // If we've selected a new feature, set 'selected' to false
+      if (selectedFeature.current && feature.id !== selectedFeature.current.id) {
+        setMapSelected(selectedFeature.current, false);
+      }
+      setMapSelected(feature, true);
+
+      ReactDOM.render(<PopupContent properties={feature.properties} />, placeholder);
       const options : PopupOptions = {
         offset: [0, 0],
         className: styles.j40Popup,
@@ -74,6 +96,9 @@ const J40Map = () => {
       new Popup(options)
           .setLngLat(e.lngLat)
           .setDOMContent(placeholder)
+          .on('close', function() {
+            setMapSelected(feature, false);
+          })
           .addTo(map);
     }
   };

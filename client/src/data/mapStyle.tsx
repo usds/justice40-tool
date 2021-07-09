@@ -63,8 +63,11 @@ const mapStyle : Style = {
     },
     'score': {
       'type': 'vector',
+      // Our current tippecanoe command does not set an id.
+      // The below line promotes the GEOID10 property to the ID
+      'promoteId': 'GEOID10',
       'tiles': [
-        'https://d2zjid6n5ja2pt.cloudfront.net/0629_demo/{z}/{x}/{y}.pbf',
+        `${constants.FEATURE_TILE_BASE_URL}/{z}/{x}/{y}.pbf`,
         // For local development, use:
         // 'http://localhost:8080/data/tl_2010_bg_with_data/{z}/{x}/{y}.pbf',
       ],
@@ -98,8 +101,8 @@ const mapStyle : Style = {
     },
     {
       'id': 'score',
-      'source': 'score',
-      'source-layer': 'blocks',
+      'source': constants.SCORE_SOURCE_NAME,
+      'source-layer': constants.SCORE_SOURCE_LAYER,
       'type': 'fill',
       'filter': ['all',
         ['>', constants.SCORE_PROPERTY, 0.6],
@@ -117,7 +120,7 @@ const mapStyle : Style = {
     {
       'id': 'score-highlights',
       'source': 'score',
-      'source-layer': 'blocks',
+      'source-layer': constants.SCORE_SOURCE_LAYER,
       'type': 'line',
       'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
       'layout': {
@@ -129,6 +132,24 @@ const mapStyle : Style = {
         'line-color': constants.DEFAULT_OUTLINE_COLOR,
         'line-width': 0.8,
         'line-opacity': 0.5,
+      },
+    },
+    {
+      // This layer queries the feature-state property "selected" and
+      // highlights the border of the selected region if true
+      'id': 'score-border-highlight',
+      'type': 'line',
+      'source': 'score',
+      'source-layer': constants.SCORE_SOURCE_LAYER,
+      'layout': {},
+      'paint': {
+        'line-color': constants.BORDER_HIGHLIGHT_COLOR,
+        'line-width': [
+          'case',
+          ['boolean', ['feature-state', 'selected'], false],
+          5.0,
+          0,
+        ],
       },
     },
     {

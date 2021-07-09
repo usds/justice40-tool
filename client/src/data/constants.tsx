@@ -1,6 +1,16 @@
+// URLS
+export const FEATURE_TILE_BASE_URL = 'https://d2zjid6n5ja2pt.cloudfront.net/0629_demo';
+
+// Performance markers
+export const PERFORMANCE_MARKER_MAP_IDLE = 'MAP_IDLE';
+
 // Properties
 export const SCORE_PROPERTY = 'Score D (percentile)';
 export const GEOID_PROPERTY = 'GEOID10';
+export const SCORE_SOURCE_NAME = 'score';
+// The name of the layer within the tiles that contains the score
+export const SCORE_SOURCE_LAYER = 'blocks';
+
 export type J40Properties = { [key: string]: any };
 
 
@@ -63,3 +73,4 @@ export const DEFAULT_OUTLINE_COLOR = '#4EA5CF';
 export const MIN_COLOR = '#FFFFFF';
 export const MED_COLOR = '#D1DAE6';
 export const MAX_COLOR = '#768FB3';
+export const BORDER_HIGHLIGHT_COLOR = '#00BDE3';
