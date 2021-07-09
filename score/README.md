@@ -27,6 +27,8 @@ If you want to visualize logs while running a command, the following temporary w
 
 You can run the Python code locally without Docker to develop, using Poetry. However, to generate the census data you will need the [GDAL library](https://github.com/OSGeo/gdal) installed locally. Also to generate tiles for a local map, you will need [Mapbox tippeanoe](https://github.com/mapbox/tippecanoe)
 
+Note: If you are using Windows, please follow [these instructions](https://stackoverflow.com/questions/56958421/pip-install-geopandas-on-windows) to install Geopandas locally. If you want to install TippeCanoe, [follow these instrcutions](https://github.com/GISupportICRC/ArcGIS2Mapbox#installing-tippecanoe-on-windows).
+
 - Start a terminal
 - Make sure you have Python 3.9 installed: `python -V` or `python3 -V`
 - We use [Poetry](https://python-poetry.org/) for managing dependencies and building the application. Please follow the instructions on their site to download.
