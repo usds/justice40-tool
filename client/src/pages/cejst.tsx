@@ -3,14 +3,13 @@ import Layout from '../components/layout';
 import MapWrapper from '../components/mapWrapper';
 import HowYouCanHelp from '../components/HowYouCanHelp';
 import MapLegend from '../components/mapLegend';
+import DownloadPacket from '../components/downloadPacket';
 import * as styles from './cejst.module.scss';
-import {Button} from '@trussworks/react-uswds';
-// @ts-ignore
-import downloadIcon from '/node_modules/uswds/dist/img/usa-icons/file_download.svg';
 
 interface IMapPageProps {
   location: Location;
 }
+
 
 const CEJSTPage = ({location}: IMapPageProps) => {
   // We temporarily removed MapControls, which would enable you to `setFeatures` also, for now
@@ -50,23 +49,7 @@ const CEJSTPage = ({location}: IMapPageProps) => {
                 page.
               </p>
             </div>
-            <div className={styles.downloadBoxContainer}>
-              <div className={styles.downloadBox}>
-                <div className={styles.downloadBoxTextBox}>
-                  <div className={styles.downloadBoxTitle}>Just Progress Packet</div>
-                  <div className={styles.downloadBoxText}>This downloadable packet includes the list of Just Progress
-                  prioritized communities (30,021
-                    census block groups) and 18 datasets.
-                  </div>
-                  <div className={styles.downloadBoxButtonContainer}>
-                    <Button className={styles.downloadBoxButton} type="button">
-                      <div><img src={downloadIcon} /> </div>
-                      <div className={styles.downloadPacketText}>Download packet</div>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <DownloadPacket />
           </div>
         </section>
 

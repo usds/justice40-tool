@@ -2,14 +2,6 @@ declare namespace CejstModuleScssNamespace {
   export interface ICejstModuleScss {
     disclaimer: string;
     textBox: string;
-    downloadBoxContainer: string;
-    downloadBox: string;
-    downloadBoxTextBox: string;
-    downloadBoxTitle: string;
-    downloadBoxText: string;
-    downloadBoxButtonContainer: string;
-    downloadBoxButton: string;
-    downloadPacketText: string;
   }
 }
 
