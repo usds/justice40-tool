@@ -67,7 +67,7 @@ const mapStyle : Style = {
       // The below line promotes the GEOID10 property to the ID
       'promoteId': 'GEOID10',
       'tiles': [
-        'https://d2zjid6n5ja2pt.cloudfront.net/0629_demo/{z}/{x}/{y}.pbf',
+        `${constants.FEATURE_TILE_BASE_URL}/{z}/{x}/{y}.pbf`,
         // For local development, use:
         // 'http://localhost:8080/data/tl_2010_bg_with_data/{z}/{x}/{y}.pbf',
       ],
@@ -101,8 +101,8 @@ const mapStyle : Style = {
     },
     {
       'id': 'score',
-      'source': 'score',
-      'source-layer': 'blocks',
+      'source': constants.SCORE_SOURCE_NAME,
+      'source-layer': constants.SCORE_SOURCE_LAYER,
       'type': 'fill',
       'filter': ['all',
         ['>', constants.SCORE_PROPERTY, 0.6],
@@ -120,7 +120,7 @@ const mapStyle : Style = {
     {
       'id': 'score-highlights',
       'source': 'score',
-      'source-layer': 'blocks',
+      'source-layer': constants.SCORE_SOURCE_LAYER,
       'type': 'line',
       'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
       'layout': {
@@ -140,7 +140,7 @@ const mapStyle : Style = {
       'id': 'score-border-highlight',
       'type': 'line',
       'source': 'score',
-      'source-layer': 'blocks',
+      'source-layer': constants.SCORE_SOURCE_LAYER,
       'layout': {},
       'paint': {
         'line-color': constants.BORDER_HIGHLIGHT_COLOR,
