@@ -8,7 +8,6 @@ describe('Tests for the Explore the Map page', () => {
     cy.visit('http://localhost:8000/en/cejst');
   });
 
-
   // The below values all assume a 13-inch MB as set in viewport above.
   // Values will be different for different screens
   const tests = {

@@ -57,7 +57,6 @@ const J40Map = () => {
     initialMap.addControl(new NavigationControl({showCompass: false}), 'top-left');
     mapRef.current = initialMap;
   }, []);
-
   const setMapSelected = (feature:MapboxGeoJSONFeature, isSelected:boolean) : void => {
     // The below can be confirmed during debug with:
     // mapRef.current.getFeatureState({"id":feature.id, "source":feature.source, "sourceLayer":feature.sourceLayer})
