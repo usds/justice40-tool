@@ -5,7 +5,7 @@ import * as styles from './downloadPacket.module.scss';
 import downloadIcon from '/node_modules/uswds/dist/img/usa-icons/file_download.svg';
 
 const DownloadPacket = () => {
-  const cbgFileURL = 'https://justice40-data.s3.amazonaws.com/Census/csv/01.csv';
+  const cbgFileURL = 'https://usds-geoplatform-justice40-website.s3.amazonaws.com/data/score/csv/usa.csv';
   return (
     <div className={styles.downloadBoxContainer}>
       <div className={styles.downloadBox}>
