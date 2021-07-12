@@ -8,7 +8,6 @@ import maplibregl, {LngLatBoundsLike,
   LngLatLike,
   MapboxGeoJSONFeature} from 'maplibre-gl';
 import mapStyle from '../data/mapStyle';
-import ZoomWarning from './zoomWarning';
 import PopupContent from './popupContent';
 import * as constants from '../data/constants';
 import ReactDOM from 'react-dom';
@@ -76,7 +75,7 @@ const J40Map = () => {
     const map = e.target;
     const clickedCoord = e.point;
     const features = map.queryRenderedFeatures(clickedCoord, {
-      layers: ['score'],
+      layers: [constants.HIGH_SCORE_LAYER_NAME],
     });
     const feature = features && features[0];
     if (feature) {
@@ -107,10 +106,10 @@ const J40Map = () => {
     mapRef.current.on('move', () => {
       setZoom(mapRef.current.getZoom());
     });
-    mapRef.current.on('mouseenter', 'score', () => {
+    mapRef.current.on('mouseenter', constants.HIGH_SCORE_LAYER_NAME, () => {
       mapRef.current.getCanvas().style.cursor = 'pointer';
     });
-    mapRef.current.on('mouseleave', 'score', () => {
+    mapRef.current.on('mouseleave', constants.HIGH_SCORE_LAYER_NAME, () => {
       mapRef.current.getCanvas().style.cursor = '';
     });
   }, [mapRef]);
@@ -177,7 +176,6 @@ const J40Map = () => {
         </button>
       </div>
       <div ref={mapContainer} className={styles.mapContainer}/>
-      <ZoomWarning zoomLevel={zoom} />
     </div>
   );
 };

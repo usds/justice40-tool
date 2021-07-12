@@ -39,7 +39,7 @@ describe('Tests for the Explore the Map page', () => {
       return map.getFeatureState(
           {
             'id': id,
-            'source': constants.SCORE_SOURCE_NAME,
+            'source': constants.HIGH_SCORE_SOURCE_NAME,
             'sourceLayer': constants.SCORE_SOURCE_LAYER,
           },
       );
