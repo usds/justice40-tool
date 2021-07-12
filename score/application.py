@@ -67,7 +67,7 @@ def census_data_download():
     help="Run all ETL processes or a specific one",
 )
 @click.option("-d", "--dataset", required=False, type=str)
-def etl_run(dataset):
+def etl_run(dataset: str):
     """Run a specific or all ETL processes
 
     Args:
