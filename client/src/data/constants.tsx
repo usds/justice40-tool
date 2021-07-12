@@ -20,7 +20,7 @@ export const GLOBAL_MAX_ZOOM = 22;
 export const GLOBAL_MIN_ZOOM_LOW = 3;
 export const GLOBAL_MAX_ZOOM_LOW = 9;
 export const GLOBAL_MIN_ZOOM_HIGH = 9;
-export const GLOBAL_MAX_ZOOM_HIGH = 12;
+export const GLOBAL_MAX_ZOOM_HIGH = 11;
 
 // Bounds
 export const GLOBAL_MAX_BOUNDS = [

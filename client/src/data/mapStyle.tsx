@@ -71,6 +71,11 @@ const mapStyle : Style = {
         // For local development, use:
         // 'http://localhost:8080/data/tl_2010_bg_with_data/{z}/{x}/{y}.pbf',
       ],
+
+      // Seeting maxzoom here enables 'overzooming'
+      // e.g. continued zooming beyond the max bounds.
+      // More here: https://docs.mapbox.com/help/glossary/overzoom/
+      'maxzoom': constants.GLOBAL_MAX_ZOOM_HIGH,
     },
     'labels': {
       'type': 'raster',
