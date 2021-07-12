@@ -17,13 +17,6 @@ def generate_tiles(data_path: Path) -> None:
     if os.path.exists(mvt_tiles_path):
         shutil.rmtree(mvt_tiles_path)
 
-    # Merge scores into json
-
-    if os.name == "nt":
-        pwd = "%cd%"
-    else:
-        pwd = "${PWD}"
-
     # remove existing score json files
     score_geojson_dir = data_path / "score" / "geojson"
     files_in_directory = os.listdir(score_geojson_dir)
@@ -36,12 +29,9 @@ def generate_tiles(data_path: Path) -> None:
     state_fips_codes = get_state_fips_codes()
     for fips in state_fips_codes:
         cmd = (
-            'docker run --rm -v "'
-            + pwd
-            + '"/:/home '
-            + "osgeo/gdal:alpine-small-latest ogr2ogr -f GeoJSON "
-            + f"-sql \"SELECT * FROM tl_2010_{fips}_bg10 LEFT JOIN '/home/data/score/csv/data{fips}.csv'.data{fips} ON tl_2010_{fips}_bg10.GEOID10 = data{fips}.ID\" "
-            + f"/home/data/score/geojson/{fips}.json /home/data/census/shp/{fips}/tl_2010_{fips}_bg10.dbf"
+            "ogr2ogr -f GeoJSON "
+            + f"-sql \"SELECT * FROM tl_2010_{fips}_bg10 LEFT JOIN 'data/score/csv/data{fips}.csv'.data{fips} ON tl_2010_{fips}_bg10.GEOID10 = data{fips}.ID\" "
+            + f"data/score/geojson/{fips}.json data/census/shp/{fips}/tl_2010_{fips}_bg10.dbf"
         )
         os.system(cmd)
 
@@ -51,7 +41,7 @@ def generate_tiles(data_path: Path) -> None:
     geojson_path = data_path / "score" / "geojson"
     for file in os.listdir(geojson_path):
         if file.endswith(".json"):
-            geojson_list += f"/home/data/score/geojson/{file} "
+            geojson_list += f"data/score/geojson/{file} "
 
     if geojson_list == "":
         logging.error(
@@ -59,28 +49,15 @@ def generate_tiles(data_path: Path) -> None:
         )
 
     # generate mbtiles file
-    # PWD is different for Windows
-    if os.name == "nt":
-        pwd = "%cd%"
-    else:
-        pwd = "${PWD}"
     cmd = (
-        'docker run --rm -it -v "'
-        + pwd
-        + '"/:/home klokantech/tippecanoe tippecanoe --drop-densest-as-needed -zg -o /home/data/tiles/block2010.mbtiles --extend-zooms-if-still-dropping -l cbg2010 -s_srs EPSG:4269 -t_srs EPSG:4326 '
+        "tippecanoe --drop-densest-as-needed -zg -o /home/data/tiles/block2010.mbtiles --extend-zooms-if-still-dropping -l cbg2010 -s_srs EPSG:4269 -t_srs EPSG:4326 "
         + geojson_list
     )
     os.system(cmd)
 
-    # PWD is different for Windows
-    if os.name == "nt":
-        pwd = "%cd%"
-    else:
-        pwd = "${PWD}"
+    # generate mvts
     cmd = (
-        'docker run --rm -it -v "'
-        + pwd
-        + '"/:/home klokantech/tippecanoe tippecanoe --drop-densest-as-needed --no-tile-compression  -zg -e /home/data/tiles/mvt '
+        "tippecanoe --drop-densest-as-needed --no-tile-compression  -zg -e /home/data/tiles/mvt "
         + geojson_list
     )
     os.system(cmd)

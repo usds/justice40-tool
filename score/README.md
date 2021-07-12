@@ -4,13 +4,16 @@
 
 We use Docker to install the necessary libraries in a container that can be run in any operating system.
 
-To build the docker container the first time, make sure you have Docker running on your machine and that you're in the root directory of the repository. Then run `docker-compose build`.
+To build the docker container the first time, make sure you're in the root directory of the repository and run `docker-compose build`.
 
-You can then run the following commands. You probably want to run these in a new terminal tab or window, because they may take a long time to run, especially the last one that generates the census data.
+After that, to run commands type the following:
 
-- Get help: `docker run --rm -it j40_score /bin/sh -c "python3 application.py" python3 application.py --help"`
+- Get help: `docker run --rm -it j40_score /bin/sh -c "python3 application.py --help"`
+- Clean up the census data directories: `docker run --rm -it j40_score /bin/sh -c "python3 application.py census-cleanup"`
 - Clean up the data directories: `docker run --rm -it j40_score /bin/sh -c "python3 application.py data-cleanup"`
-- Generate census data (this may take 2-3 hours): `docker run --rm -it j40_score /bin/sh -c "python3 application.py census-data-download"`
+- Generate census data: `docker run --rm -it j40_score /bin/sh -c "python3 application.py census-data-download"`
+- Run all ETL processes: `docker run --rm -it j40_score /bin/sh -c "python3 application.py etl-run"`
+- Generate Score: `docker run --rm -it j40_score /bin/sh -c "python3 application.py score-run"`
 
 ## Log visualization
 
@@ -23,6 +26,8 @@ If you want to visualize logs while running a command, the following temporary w
 ## Local development
 
 You can run the Python code locally without Docker to develop, using Poetry. However, to generate the census data you will need the [GDAL library](https://github.com/OSGeo/gdal) installed locally. Also to generate tiles for a local map, you will need [Mapbox tippeanoe](https://github.com/mapbox/tippecanoe)
+
+Note: If you are using Windows, please follow [these instructions](https://stackoverflow.com/questions/56958421/pip-install-geopandas-on-windows) to install Geopandas locally. If you want to install TippeCanoe, [follow these instrcutions](https://github.com/GISupportICRC/ArcGIS2Mapbox#installing-tippecanoe-on-windows).
 
 - Start a terminal
 - Make sure you have Python 3.9 installed: `python -V` or `python3 -V`
