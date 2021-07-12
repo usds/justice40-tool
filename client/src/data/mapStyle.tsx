@@ -43,47 +43,63 @@ function makePaint({
   return paintDescriptor;
 }
 
+const imageSuffix = constants.isMobile ? '' : '@2x';
+
 const mapStyle : Style = {
   'version': 8,
   'sources': {
     'carto': {
       'type': 'raster',
-      'tiles': [
-        'https://a.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
-        'https://b.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
-        'https://c.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
-        'https://d.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
+      'tiles':
+      [
+        `https://a.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
+        `https://b.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
+        `https://c.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
+        `https://d.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
       ],
+      'minzoom': constants.GLOBAL_MIN_ZOOM,
+      'maxzoom': constants.GLOBAL_MAX_ZOOM,
     },
     'geo': {
       'type': 'raster',
       'tiles': [
         'https://mt0.google.com/vt/lyrs=p&hl=en&x={x}&y={y}&z={z}',
       ],
+      'minzoom': constants.GLOBAL_MIN_ZOOM,
+      'maxzoom': constants.GLOBAL_MAX_ZOOM,
     },
-    'score': {
+    'score-high': {
       'type': 'vector',
       // Our current tippecanoe command does not set an id.
       // The below line promotes the GEOID10 property to the ID
-      'promoteId': 'GEOID10',
+      'promoteId': constants.GEOID_PROPERTY,
       'tiles': [
-        `${constants.FEATURE_TILE_BASE_URL}/{z}/{x}/{y}.pbf`,
-        // For local development, use:
-        // 'http://localhost:8080/data/tl_2010_bg_with_data/{z}/{x}/{y}.pbf',
+        constants.FEATURE_TILE_HIGH_ZOOM_URL,
       ],
-
       // Seeting maxzoom here enables 'overzooming'
       // e.g. continued zooming beyond the max bounds.
       // More here: https://docs.mapbox.com/help/glossary/overzoom/
+      'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
       'maxzoom': constants.GLOBAL_MAX_ZOOM_HIGH,
+    },
+    'score-low': {
+      'type': 'vector',
+      'promoteId': constants.GEOID_PROPERTY,
+      'tiles': [
+        constants.FEATURE_TILE_LOW_ZOOM_URL,
+        // For local development, use:
+        // 'http://localhost:8080/data/tl_2010_bg_with_data/{z}/{x}/{y}.pbf',
+      ],
+      'minzoom': constants.GLOBAL_MIN_ZOOM_LOW,
+      'maxzoom': constants.GLOBAL_MAX_ZOOM_LOW,
     },
     'labels': {
       'type': 'raster',
       'tiles': [
-        'https://cartodb-basemaps-a.global.ssl.fastly.net/light_only_labels/{z}/{x}/{y}@2x.png',
-        'https://cartodb-basemaps-b.global.ssl.fastly.net/light_only_labels/{z}/{x}/{y}@2x.png',
-        'https://cartodb-basemaps-c.global.ssl.fastly.net/light_only_labels/{z}/{x}/{y}@2x.png',
-        'https://cartodb-basemaps-d.global.ssl.fastly.net/light_only_labels/{z}/{x}/{y}@2x.png',
+        `https://cartodb-basemaps-a.global.ssl.fastly.net/light_only_labels/{z}/{x}/{y}${imageSuffix}.png`,
+        `https://cartodb-basemaps-b.global.ssl.fastly.net/light_only_labels/{z}/{x}/{y}${imageSuffix}.png`,
+        `https://cartodb-basemaps-c.global.ssl.fastly.net/light_only_labels/{z}/{x}/{y}${imageSuffix}.png`,
+        `https://cartodb-basemaps-d.global.ssl.fastly.net/light_only_labels/{z}/{x}/{y}${imageSuffix}.png`,
       ],
     },
   },
@@ -92,42 +108,58 @@ const mapStyle : Style = {
       'id': 'carto',
       'source': 'carto',
       'type': 'raster',
-      'minzoom': constants.GLOBAL_MIN_ZOOM - 1,
+      'minzoom': constants.GLOBAL_MIN_ZOOM,
+      'maxzoom': constants.GLOBAL_MAX_ZOOM,
     },
     {
       'id': 'geo',
       'source': 'geo',
       'type': 'raster',
-      'minzoom': constants.GLOBAL_MIN_ZOOM - 1,
       'layout': {
-        // Make the layer visible by default.
+        // Make the layer invisible by default.
         'visibility': 'none',
       },
-    },
-    {
-      'id': 'score',
-      'source': constants.SCORE_SOURCE_NAME,
-      'source-layer': constants.SCORE_SOURCE_LAYER,
-      'type': 'fill',
-      'filter': ['all',
-        ['>', constants.SCORE_PROPERTY, 0.6],
-        // ['in', 'STATEFP10', '01', '30', '34', '35', '36'],
-      ],
-      'paint': makePaint({
-        field: constants.SCORE_PROPERTY,
-        minRamp: 0,
-        medRamp: 0.6,
-        maxRamp: 0.75,
-      }),
       'minzoom': constants.GLOBAL_MIN_ZOOM,
       'maxzoom': constants.GLOBAL_MAX_ZOOM,
     },
     {
+      'id': constants.HIGH_SCORE_LAYER_NAME,
+      'source': constants.HIGH_SCORE_SOURCE_NAME,
+      'source-layer': constants.SCORE_SOURCE_LAYER,
+      'type': 'fill',
+      'filter': ['all',
+        ['>', constants.SCORE_PROPERTY_HIGH, constants.SCORE_BOUNDARY_THRESHOLD],
+      ],
+      'paint': makePaint({
+        field: constants.SCORE_PROPERTY_HIGH,
+        minRamp: constants.SCORE_BOUNDARY_LOW,
+        medRamp: constants.SCORE_BOUNDARY_THRESHOLD,
+        maxRamp: constants.SCORE_BOUNDARY_PRIORITIZED,
+      }),
+      'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
+    },
+    {
+      'id': constants.LOW_SCORE_LAYER_NAME,
+      'source': constants.LOW_SCORE_SOURCE_NAME,
+      'source-layer': constants.SCORE_SOURCE_LAYER,
+      'type': 'fill',
+      'filter': ['all',
+        ['>', constants.SCORE_PROPERTY_LOW, constants.SCORE_BOUNDARY_THRESHOLD],
+      ],
+      'paint': makePaint({
+        field: constants.SCORE_PROPERTY_LOW,
+        minRamp: constants.SCORE_BOUNDARY_LOW,
+        medRamp: constants.SCORE_BOUNDARY_THRESHOLD,
+        maxRamp: constants.SCORE_BOUNDARY_PRIORITIZED,
+      }),
+      'minzoom': constants.GLOBAL_MIN_ZOOM_LOW,
+      'maxzoom': constants.GLOBAL_MAX_ZOOM_LOW,
+    },
+    {
       'id': 'score-highlights',
-      'source': 'score',
+      'source': constants.HIGH_SCORE_SOURCE_NAME,
       'source-layer': constants.SCORE_SOURCE_LAYER,
       'type': 'line',
-      'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
       'layout': {
         'visibility': 'visible',
         'line-join': 'round',
@@ -138,13 +170,15 @@ const mapStyle : Style = {
         'line-width': 0.8,
         'line-opacity': 0.5,
       },
+      'minzoom': constants.GLOBAL_MIN_ZOOM_HIGHLIGHT,
+      'maxzoom': constants.GLOBAL_MAX_ZOOM_HIGHLIGHT,
     },
     {
       // This layer queries the feature-state property "selected" and
       // highlights the border of the selected region if true
       'id': 'score-border-highlight',
       'type': 'line',
-      'source': 'score',
+      'source': constants.HIGH_SCORE_SOURCE_NAME,
       'source-layer': constants.SCORE_SOURCE_LAYER,
       'layout': {},
       'paint': {
@@ -152,16 +186,19 @@ const mapStyle : Style = {
         'line-width': [
           'case',
           ['boolean', ['feature-state', 'selected'], false],
-          5.0,
+          constants.HIGHLIGHT_BORDER_WIDTH,
           0,
         ],
       },
+      'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
+      'maxzoom': constants.GLOBAL_MAX_ZOOM_HIGH,
     },
     {
       'id': 'labels-only',
       'type': 'raster',
       'source': 'labels',
       'minzoom': constants.GLOBAL_MIN_ZOOM,
+      'maxzoom': constants.GLOBAL_MAX_ZOOM,
     },
   ],
 };
