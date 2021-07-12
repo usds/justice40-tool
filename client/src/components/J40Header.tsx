@@ -10,17 +10,45 @@ import {
 } from '@trussworks/react-uswds';
 import {Helmet} from 'react-helmet';
 import {useFlags} from '../contexts/FlagContext';
+import {defineMessages} from 'react-intl';
 
 const J40Header = () => {
   const flags = useFlags();
   const intl = useIntl();
-  const title = intl.formatMessage({
-    id: '71L0pp',
-    defaultMessage: 'Justice40',
-    description: 'Title of the project',
-  });
-
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const messages = defineMessages({
+    title: {
+      id: 'header.title',
+      defaultMessage: 'Justice40',
+      description: 'Title in header',
+    },
+    about: {
+      id: 'header.about',
+      defaultMessage: 'About',
+      description: 'Navigate to the about page',
+    },
+    explore: {
+      id: 'header.explore',
+      defaultMessage: 'Explore the tool',
+      description: 'Navigate to the Explore the tool page',
+    },
+    methodology: {
+      id: 'header.methodology',
+      defaultMessage: 'Methodology',
+      description: 'Navigate to the Methodology page',
+    },
+    contact: {
+      id: 'header.contact',
+      defaultMessage: 'Contact',
+      description: 'Navigate to the Contact page',
+    },
+    timeline: {
+      id: 'header.timeline',
+      defaultMessage: 'Timeline',
+      description: 'Navigate to the Timeline page',
+    },
+  });
+  const title = intl.formatMessage(messages.title);
 
   const toggleMobileNav = (): void =>
     setMobileNavOpen((prevOpen) => !prevOpen);
@@ -34,31 +62,31 @@ const J40Header = () => {
           to={'/'}
           key={'about'}
           activeClassName="usa-current"
-          className={'j40-header'}>About</Link>],
+          className={'j40-header'}>{intl.formatMessage(messages.about)}</Link>],
       ['cejst',
         <Link
           to={'/cejst'}
           key={'cejst'}
           activeClassName="usa-current"
-          className={'j40-header'}>Explore the tool</Link>],
+          className={'j40-header'}>{intl.formatMessage(messages.explore)}</Link>],
       ['methodology',
         <Link
           to={'/methodology'}
           key={'methodology'}
           activeClassName="usa-current"
-          className={'j40-header'}>Methodology</Link>],
+          className={'j40-header'}>{intl.formatMessage(messages.methodology)}</Link>],
       ['contact',
         <Link
           to={'/contact'}
           key={'contact'}
           activeClassName="usa-current"
-          className={'j40-header'}>Contact</Link>],
+          className={'j40-header'}>{intl.formatMessage(messages.contact)}</Link>],
       ['timeline',
         <Link
           to={'/timeline'}
           key={'timline'}
           activeClassName="usa-current"
-          className={'j40-header'}>Timeline</Link>],
+          className={'j40-header'}>{intl.formatMessage(messages.timeline)}</Link>],
     ]);
 
     // select which items from the above map to show, right now it's only two
