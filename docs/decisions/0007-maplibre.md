@@ -25,8 +25,7 @@ Chosen option: [MapLibre 1.15.0](https://github.com/maplibre/maplibre-gl-js), a 
 ### Positive Consequences
 
 - MapLibre is a free and open source alternative
-- Performance is preferable to OpenLayers, as seen in the below video
-  [MapLibre Performance](https://user-images.githubusercontent.com/72811320/124788369-446a6f80-df17-11eb-9dec-6635f8bfc3cb.mp4)
+- Performance is preferable to OpenLayers, as seen in this video: ![MapLibre Performance](https://user-images.githubusercontent.com/72811320/124788369-446a6f80-df17-11eb-9dec-6635f8bfc3cb.mp4)
 - MapLibre is under continued development
 
 ### Negative Consequences
