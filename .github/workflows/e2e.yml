@@ -1,14 +1,20 @@
-name: example-cron
-on:
+name: End to end tests
+# on:
+#   push
   schedule:
     # runs tests every day at 12am ET (4am UTC)
     - cron: '0 4 * * *'
-jobs:
+jobs: 
   nightly:
     runs-on: ubuntu-20.04
+    env:
+      working-directory: ./client
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - run: cd justice40-tool/client
       - name: Cypress nightly tests 🌃
-        uses: cypress-io/github-action@v2        
+        uses: cypress-io/github-action@v2
+        with:
+          working-directory: ${{env.working-directory}}
+          start: npm start
+          wait-on: 'http://localhost:8000'
