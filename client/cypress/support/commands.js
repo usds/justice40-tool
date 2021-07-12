@@ -21,3 +21,8 @@ Cypress.Commands.add('getMapCanvas', () => {
   return cy.get('.maplibregl-canvas');
 });
 
+Cypress.Commands.add('waitForMapIdle', (map) => {
+  return new Cypress.Promise((resolve) => {
+    map.once('idle', resolve);
+  });
+});

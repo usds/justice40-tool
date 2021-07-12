@@ -42,6 +42,18 @@
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "port": 9229
-    }
+    },
+    {
+      "type": "chrome",
+      "request": "attach",
+      "name": "Debug Cypress",
+      "port": 9222,
+      "urlFilter": "http://localhost*",
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true,
+      "skipFiles": [
+          "cypress_runner.js",
+      ],
+   },
   ]
 }

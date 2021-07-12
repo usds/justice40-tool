@@ -14,7 +14,7 @@
     "build": "gatsby build --prefix-paths",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "cy:open": "cypress open",
+    "cy:open": "CYPRESS_REMOTE_DEBUGGING_PORT=9222 cypress open",
     "cy:run": "cypress run",
     "test": "jest",
     "licenses": "license-checker --production --onlyAllow 'Apache-2.0;BSD;BSD-2-Clause;BSD-3-Clause;CC0-1.0;CC-BY-3.0;CC-BY-4.0;ISC;MIT;Public Domain;Unlicense;UNLICENSED;ODC-By-1.0;WTFPL;MPL-2.0'",

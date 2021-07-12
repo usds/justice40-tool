@@ -5,13 +5,13 @@ import maplibregl, {LngLatBoundsLike,
   NavigationControl,
   PopupOptions,
   Popup,
-  LngLatLike} from 'maplibre-gl';
-import 'maplibre-gl/dist/maplibre-gl.css';
+  LngLatLike,
+  MapboxGeoJSONFeature} from 'maplibre-gl';
 import mapStyle from '../data/mapStyle';
-import ZoomWarning from './zoomWarning';
 import PopupContent from './popupContent';
 import * as constants from '../data/constants';
 import ReactDOM from 'react-dom';
+import 'maplibre-gl/dist/maplibre-gl.css';
 import * as styles from './J40Map.module.scss';
 
 declare global {
@@ -24,13 +24,11 @@ type ClickEvent = maplibregl.MapMouseEvent & maplibregl.EventData;
 
 const J40Map = () => {
   const mapContainer = React.useRef<HTMLDivElement>(null);
-  const map = useRef<Map>() as React.MutableRefObject<Map>;
+  const mapRef = useRef<Map>() as React.MutableRefObject<Map>;
+  const selectedFeature = useRef<MapboxGeoJSONFeature>();
   const [zoom, setZoom] = useState(constants.GLOBAL_MIN_ZOOM);
 
   useEffect(() => {
-    // Only initialize once
-    if (map.current && mapContainer.current) return;
-
     const initialMap = new Map({
       container: mapContainer.current!,
       style: mapStyle,
@@ -56,19 +54,39 @@ const J40Map = () => {
 
     initialMap.on('click', handleClick);
     initialMap.addControl(new NavigationControl({showCompass: false}), 'top-left');
-    map.current = initialMap;
-  });
+    mapRef.current = initialMap;
+  }, []);
+  const setMapSelected = (feature:MapboxGeoJSONFeature, isSelected:boolean) : void => {
+    // The below can be confirmed during debug with:
+    // mapRef.current.getFeatureState({"id":feature.id, "source":feature.source, "sourceLayer":feature.sourceLayer})
+    mapRef.current.setFeatureState({
+      source: feature.source,
+      sourceLayer: feature.sourceLayer,
+      id: feature.id,
+    }, {selected: isSelected});
+    if (isSelected) {
+      selectedFeature.current = feature;
+    } else {
+      selectedFeature.current = undefined;
+    }
+  };
 
   const handleClick = (e: ClickEvent) => {
     const map = e.target;
     const clickedCoord = e.point;
     const features = map.queryRenderedFeatures(clickedCoord, {
-      layers: ['score'],
+      layers: [constants.HIGH_SCORE_LAYER_NAME],
     });
-
-    if (features.length && features[0].properties) {
+    const feature = features && features[0];
+    if (feature) {
       const placeholder = document.createElement('div');
-      ReactDOM.render(<PopupContent properties={features[0].properties} />, placeholder);
+      // If we've selected a new feature, set 'selected' to false
+      if (selectedFeature.current && feature.id !== selectedFeature.current.id) {
+        setMapSelected(selectedFeature.current, false);
+      }
+      setMapSelected(feature, true);
+
+      ReactDOM.render(<PopupContent properties={feature.properties} />, placeholder);
       const options : PopupOptions = {
         offset: [0, 0],
         className: styles.j40Popup,
@@ -77,27 +95,87 @@ const J40Map = () => {
       new Popup(options)
           .setLngLat(e.lngLat)
           .setDOMContent(placeholder)
+          .on('close', function() {
+            setMapSelected(feature, false);
+          })
           .addTo(map);
     }
   };
 
   useEffect(() => {
-    if (!map.current) return; // wait for map to initialize
-    map.current.on('move', () => {
-      setZoom(map.current.getZoom());
+    mapRef.current.on('move', () => {
+      setZoom(mapRef.current.getZoom());
     });
-    map.current.on('mouseenter', 'score', () => {
-      map.current.getCanvas().style.cursor = 'pointer';
+    mapRef.current.on('mouseenter', constants.HIGH_SCORE_LAYER_NAME, () => {
+      mapRef.current.getCanvas().style.cursor = 'pointer';
     });
-    map.current.on('mouseleave', 'score', () => {
-      map.current.getCanvas().style.cursor = '';
+    mapRef.current.on('mouseleave', constants.HIGH_SCORE_LAYER_NAME, () => {
+      mapRef.current.getCanvas().style.cursor = '';
     });
-  });
+  }, [mapRef]);
+
+  const goToPlace = (bounds:number[][]) => {
+    mapRef.current.fitBounds(bounds as LngLatBoundsLike);
+  };
+
+  const onClickTerritoryFocusButton = (event: React.MouseEvent<HTMLButtonElement>) => {
+    // currentTarget always refers to the element to which the event handler
+    // has been attached, as opposed to Event.target, which identifies
+    // the element on which the event occurred and which may be its descendant.
+    const buttonID = event.target && event.currentTarget.id;
+
+    switch (buttonID) {
+      case '48':
+        goToPlace(constants.LOWER_48_BOUNDS);
+        break;
+      case 'AK':
+        goToPlace(constants.ALASKA_BOUNDS);
+        break;
+      case 'HI':
+        goToPlace(constants.HAWAII_BOUNDS);
+        break;
+      case 'PR':
+        goToPlace(constants.PUERTO_RICO_BOUNDS);
+        break;
+
+      default:
+        break;
+    }
+  };
 
   return (
     <div>
+      <div className={styles.territoryFocusContainer}>
+        <button
+          id={'48'}
+          onClick={onClickTerritoryFocusButton}
+          className={styles.territoryFocusButton}
+          aria-label="Zoom to Lower 48" >
+            48
+        </button>
+        <button
+          id={'AK'}
+          onClick={onClickTerritoryFocusButton}
+          className={styles.territoryFocusButton}
+          aria-label="Zoom to Alaska" >
+            AK
+        </button>
+        <button
+          id={'HI'}
+          onClick={onClickTerritoryFocusButton}
+          className={styles.territoryFocusButton}
+          aria-label="Zoom to Hawaii" >
+            HI
+        </button>
+        <button
+          id={'PR'}
+          onClick={onClickTerritoryFocusButton}
+          className={styles.territoryFocusButton}
+          aria-label="Zoom to Puerto Rico" >
+            PR
+        </button>
+      </div>
       <div ref={mapContainer} className={styles.mapContainer}/>
-      <ZoomWarning zoomLevel={zoom} />
     </div>
   );
 };

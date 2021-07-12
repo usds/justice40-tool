@@ -25,7 +25,9 @@ We need a host for our data pipeline and front end website/app.
 
 ## Decision Outcome
 
-We will use Geoplatform.gov for hosting our data pipeline, tile server, and front end client. They have a set of shared service offerings that will enable us to have an open data pipeline from data source to tile API, enabling contributions to data processing at any point as well as enabling data access for users at any point (e.g. whether a user wants to access raw data or GeoJSON or tile format). See this ![diagram](architecture.mmd.svg) that illustrates the proposed system architecture and hosting.
+We will use Geoplatform.gov for hosting our data pipeline, tile server, and front end client. They have a set of shared service offerings that will enable us to have an open data pipeline from data source to tile API, enabling contributions to data processing at any point as well as enabling data access for users at any point (e.g. whether a user wants to access raw data or GeoJSON or tile format). The diagram below illustrates the proposed system architecture and hosting: 
+
+![diagram](https://raw.githubusercontent.com/usds/justice40-tool/main/docs/architecture/architecture-mmd.svg)
 
 ### Positive Consequences
 

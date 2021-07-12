@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as constants from '../data/constants';
 import * as styles from './popupContent.module.scss';
+import {GeoJsonProperties} from 'geojson';
 
 interface IPopupContentProps {
-  properties: constants.J40Properties,
+  properties: GeoJsonProperties,
 }
-
 
 const PopupContent = ({properties}:IPopupContentProps) => {
   const readablePercent = (percent: number) => {
