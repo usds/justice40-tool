@@ -20,12 +20,12 @@ Styling a map with a large number of features, in a performant way, is difficult
 
 ## Decision Outcome
 
-Chosen option: [MapLibre 1.15.0](https://github.com/maplibre/maplibre-gl-js), a free and open-source alternative to Mapbox with good performance and standard map styling cabilities, and continued development lifecycle.
+Chosen option: [MapLibre 1.15.0](https://github.com/maplibre/maplibre-gl-js), a free and open-source library with good performance and standard map styling capabilities, and continued development lifecycle.
 
 ### Positive Consequences
 
-- MapLibre is a free and open source alternative
-- Performance is preferable to OpenLayers, as seen in this video: [MapLibre Performance](https://user-images.githubusercontent.com/72811320/124788369-446a6f80-df17-11eb-9dec-6635f8bfc3cb.mp4)
+- MapLibre is free and open source
+- Performance is preferable to OpenLayers, as seen in this video: [MapLibre Performance](./0007-files/MapComparison.mp4)
 - MapLibre is under continued development
 
 ### Negative Consequences
@@ -43,24 +43,24 @@ Chosen option: [MapLibre 1.15.0](https://github.com/maplibre/maplibre-gl-js), a 
 
 The latest released version of [Mapbox](https://docs.mapbox.com/mapbox-gl-js/api/)
 
-- Good: performance is quite good and improving
-- Bad: as of December of last year, Mapbox has moved to a proprietary license
-- Bad: requires key, payment, even for self-hosted version and tiles
+- Pro: performance is quite good and improving
+- Con: as of December of last year, Mapbox has moved to a proprietary license
+- Con: requires key, payment, even for self-hosted version and tiles
 
 ### Mapbox-GL JS 1.13.0
 
 The last pre-license change version of [Mapbox](https://github.com/mapbox/mapbox-gl-js/releases/tag/v1.13.0)
 
-- Good: Perf still good
-- Good: License permissive, no required key
-- Bad: Not under current active development
+- Pro: Perf still good
+- Pro: License permissive, no required key
+- Con: Not under current active development
 
 ### OpenLayers 6.4.3
 
 This option is sticking with our current choice, the latest released version of the [OpenLayers](https://github.com/openlayers/openlayers), an alternative open source framework.
 
-- Good: No change necessary vs. current setup
-- Bad: Without WebGL support, performance is inferior to these other options
+- Pro: No change necessary vs. current setup
+- Con: Without WebGL support, performance is inferior to these other options
 
 ## Links
 
