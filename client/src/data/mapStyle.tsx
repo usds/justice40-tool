@@ -69,6 +69,9 @@ const mapStyle : Style = {
       'maxzoom': constants.GLOBAL_MAX_ZOOM,
     },
     'score-high': {
+      // "Score-high" represents the full set of data
+      // at the census block group level. It is only shown
+      // at high zoom levels to avoid performance issues at lower zooms
       'type': 'vector',
       // Our current tippecanoe command does not set an id.
       // The below line promotes the GEOID10 property to the ID
@@ -83,6 +86,10 @@ const mapStyle : Style = {
       'maxzoom': constants.GLOBAL_MAX_ZOOM_HIGH,
     },
     'score-low': {
+      // "Score-low" represents a tileset at the level of bucketed tracts.
+      // census block group information is `dissolve`d into tracts, then
+      // each tract is `dissolve`d into one of ten buckets. It is meant
+      // to give us a favorable tradeoff between performance and fidelity.
       'type': 'vector',
       'promoteId': constants.GEOID_PROPERTY,
       'tiles': [
@@ -156,6 +163,8 @@ const mapStyle : Style = {
       'maxzoom': constants.GLOBAL_MAX_ZOOM_LOW,
     },
     {
+      // "Score-highlights" represents the border
+      // around given tiles that appears at higher zooms
       'id': 'score-highlights',
       'source': constants.HIGH_SCORE_SOURCE_NAME,
       'source-layer': constants.SCORE_SOURCE_LAYER,
@@ -174,8 +183,8 @@ const mapStyle : Style = {
       'maxzoom': constants.GLOBAL_MAX_ZOOM_HIGHLIGHT,
     },
     {
-      // This layer queries the feature-state property "selected" and
-      // highlights the border of the selected region if true
+      // "score-border-highlight" is used to highlight
+      // the currently-selected feature
       'id': 'score-border-highlight',
       'type': 'line',
       'source': constants.HIGH_SCORE_SOURCE_NAME,
@@ -194,6 +203,7 @@ const mapStyle : Style = {
       'maxzoom': constants.GLOBAL_MAX_ZOOM_HIGH,
     },
     {
+      // We put labels last to ensure prominence
       'id': 'labels-only',
       'type': 'raster',
       'source': 'labels',
