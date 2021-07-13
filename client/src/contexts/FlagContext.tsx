@@ -1,6 +1,8 @@
 import * as React from 'react';
 import * as queryString from 'query-string';
 
+export type FlagContainer = { [key: string]: any };
+
 /**
  * FlagContext stores feature flags and passes them to consumers
  */
@@ -8,7 +10,7 @@ import * as queryString from 'query-string';
   /**
    * Contains a list of all currently-active flags
    */
-  flags: { [key: string]: any };
+  flags: FlagContainer;
 }
 
 const FlagContext = React.createContext<IFlagContext>({flags: []});
@@ -16,9 +18,9 @@ const FlagContext = React.createContext<IFlagContext>({flags: []});
 /**
  * `useFlags` returns all feature flags.
  *
- * @return {Flags[]} flags All project feature flags
+ * @return {FlagContainer} flags All project feature flags
  */
-const useFlags = () : { [key: string]: any } => {
+const useFlags = () : FlagContainer => {
   const {flags} = React.useContext(FlagContext);
   return flags;
 };
@@ -39,7 +41,7 @@ interface IURLFlagProviderProps {
  **/
 const URLFlagProvider = ({children, location}: IURLFlagProviderProps) => {
   const flagString = queryString.parse(location.search).flags;
-  const flags : { [key: string]: any } = {};
+  const flags : FlagContainer = {};
   let flagList: string[] = [];
   if (flagString && typeof flagString === 'string') {
     flagList = (flagString as string).split(',');
