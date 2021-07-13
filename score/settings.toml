@@ -1,0 +1,8 @@
+[default]
+AWS_JUSTICE40_DATA_URL = "https://justice40-data.s3.amazonaws.com"
+
+[development]
+
+[staging]
+
+[production]

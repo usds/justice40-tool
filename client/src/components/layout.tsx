@@ -11,7 +11,7 @@ interface ILayoutProps {
 }
 
 const Layout = ({children, location}: ILayoutProps) => {
-  const isWidthFullPage = location.pathname.endsWith('/cejst');
+  const isWidthFullPage = location.pathname.match(/cejst\/?/);
   const conditionalAside = isWidthFullPage ? <></> : <J40Aside/>;
   const gridCssClass = isWidthFullPage ? ' desktop:grid-col-12' :
     'desktop:grid-col-9';

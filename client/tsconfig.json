@@ -3,7 +3,7 @@
     "module": "commonjs",
     "target": "es6",
     "jsx": "preserve",
-    "lib": ["dom", "es2015", "es2017"],
+    "lib": ["dom", "es2015", "es2017", "es2019"],
     "strict": true,
     "noEmit": true,
     "isolatedModules": true,
@@ -13,21 +13,11 @@
     "noUnusedParameters": true,
     "removeComments": false,
     "allowJs": true,
+    "resolveJsonModule": true,
     "baseUrl": "./",
-    "paths": {
-      "ol": ["node_modules/ol/src"],
-      "ol/*": ["node_modules/ol/src/*"],
-      "ol-mapbox-style": ["node_modules/ol-mapbox-style/src"],
-      "ol-mapbox-style/*": ["node_modules/ol-mapbox-style/src/*"]
-    }
   },
   "include": [
-    "./src/**/*",
-    "**/*.ts",
-    "node_modules/ol/**/*",
-    "node_modules/ol-mapbox-style/**/*"
+    "./src/**/*ts",
+    "./src/**/*tsx",
   ],
-  "typeAcquisition": {
-    "exclude": ["ol", "ol-mapbox-style"]
-  }
 }

@@ -1,0 +1,84 @@
+Resources:
+
+  S3DataBucketPolicyCDN:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket:
+        Ref: DataBucket
+      PolicyDocument:
+        Statement:
+          - Effect: "Allow"
+            Action:
+              - "s3:GetObject"
+            Resource:
+              Fn::Join:
+                - ""
+                - - "arn:aws:s3:::"
+                  - Ref: DataBucket
+                  - "/*"
+            Principal: "*"
+
+  DataBucketCachePolicy:
+    Type: AWS::CloudFront::CachePolicy
+    Properties:
+      CachePolicyConfig:
+        Name: ${self:provider.stage}-${self:service}-cloudfront-cache-policy
+        Comment: CloudFront Cache Policy for justice40 data harvester
+        DefaultTTL: "86400" # one day, only if Origin does _not_ send `Cache-Control` or `Expires` headers
+        MaxTTL: "31536000" # one year, used to validate when origin sends `Cache-Control` or `Expires` headers
+        MinTTL: "1" # one second
+        ParametersInCacheKeyAndForwardedToOrigin:
+          EnableAcceptEncodingGzip: false
+          EnableAcceptEncodingBrotli: false
+          CookiesConfig:
+            CookieBehavior: none
+          HeadersConfig:
+            HeaderBehavior: none
+          QueryStringsConfig:
+            QueryStringBehavior: none
+
+  DataDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Origins:
+        - Id: DataBucket
+          DomainName: 
+            # e.g. j40-sit-justice40-data-harvester-data.s3-website-us-east-1.amazonaws.com 
+            Fn::Join:
+              - ""
+              - - ${self:custom.namespaceShort}-
+                - ${self:provider.stage}-
+                - ${self:service}-
+                - data
+                - ".s3-website-"
+                - Ref: AWS::Region
+                - ".amazonaws.com"
+          CustomOriginConfig:
+            HTTPPort: '80'
+            HTTPSPort: '443'
+            OriginProtocolPolicy: http-only
+            OriginSSLProtocols: [ "TLSv1", "TLSv1.1", "TLSv1.2" ]
+          OriginCustomHeaders:
+            - HeaderName: Origin # if the `Origin` header isn't present, S3 won't send CORS headers, this forces CORS to always be included
+              HeaderValue: geoplatform.gov # this doesn't need to be anything specific, since Allow-Origin: * is our CORS policy, it just has to have a value
+              
+        Enabled: true
+        HttpVersion: http2
+        Comment: CDN for justice40 data bucket
+        Aliases:
+          - ${self:custom.environment.HOSTED_ZONE_SUBDOMAIN}.${self:custom.environment.HOSTED_ZONE_DOMAIN}
+        PriceClass: PriceClass_All
+        DefaultCacheBehavior:
+          AllowedMethods: [HEAD, GET, OPTIONS]
+          CachedMethods: [HEAD, GET]
+          CachePolicyId:
+            Ref: DataBucketCachePolicy
+          MinTTL: '0'
+          DefaultTTL: '0'
+          TargetOriginId: DataBucket
+          ViewerProtocolPolicy: redirect-to-https
+        CustomErrorResponses: []
+        ViewerCertificate:
+          AcmCertificateArn: ${self:custom.environment.CLOUDFRONT_CERTIFICATE_ARN}
+          SslSupportMethod: sni-only

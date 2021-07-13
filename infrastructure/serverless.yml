@@ -1,0 +1,87 @@
+service: justice40-data-harvester
+configValidationMode: error
+
+frameworkVersion: ">=2.48.0"
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'sit'}
+  region: ${opt:region, 'us-east-1'}
+  profile: ${self:provider.stage}
+  lambdaHashingVersion: "20201221"
+  deploymentBucket:
+    name: ${self:custom.environment.DEPLOYMENT_BUCKET_PREFIX}-${self:provider.stage}-${self:provider.region}-${self:service}
+    blockPublicAccess: true
+    maxPreviousDeploymentArtifacts: 5
+  stackName: ${self:custom.environment.STACK_NAME_PREFIX}${self:provider.stage}-${self:service}
+  
+  iam:
+    role:
+      statements:
+        - Effect: "Allow"
+          # Condition:
+          #   ArnEquals:
+          #     ecs:cluster:
+          #       Fn::GetAtt: [ ECSCluster, Arn ]
+          Action: "ecs:RunTask"
+          Resource: "*"
+        - Effect: "Allow"
+          # Condition:
+          #   ArnEquals:
+          #     ecs:cluster:
+          #       Fn::GetAtt: [ ECSCluster, Arn ]
+          Action:
+            - "iam:ListInstanceProfiles"
+            - "iam:ListRoles"
+            - "iam:PassRole"
+          Resource: "*"
+        - Effect: Allow
+          Action:
+            - "s3:ListBucket"
+          Resource:
+            - Fn::Join:
+              - ""
+              - - "arn:aws:s3:::"
+                - Ref: DataBucket
+                - "/*"
+        - Effect: Allow
+          Action:
+            - "s3:DeleteObject"
+            - "s3:GetObject"
+            - "s3:PutObject"
+            - "s3:PutObjectAcl"
+          Resource:
+            - Fn::Join:
+              - ""
+              - - "arn:aws:s3:::"
+                - Ref: DataBucket
+
+plugins:
+  - serverless-certificate-creator
+  - serverless-pseudo-parameters
+
+custom:
+  environment: ${file(./environment.yml):${self:provider.stage}}
+  namespace: justice40 # Used to tag resources with a "Namespace".
+  namespaceShort: j40 # Used to prefix stack name, deployment bucket, resource "Name" tags, etc.
+
+  customCertificate:
+    certificateName: ${self:provider.stage}-${self:service}.${self:custom.environment.HOSTED_ZONE_DOMAIN}
+    hostedZoneIds: ${self:custom.environment.HOSTED_ZONE_ID_DOMAIN}
+    region: ${self:provider.region}
+    tags:
+      Name: ${self:provider.stage}-${self:service}.${self:custom.environment.HOSTED_ZONE_DOMAIN}
+      Environment: ${self:provider.stage}
+    rewriteRecords: true
+    enabled: ${self:custom.environment.SHOULD_CREATE_SSL_CERTIFICATE}
+
+
+functions: ${file(./functions.yml)}
+
+resources:
+  - ${file(./conditions.yml)}
+  - ${file(./resources-s3.yml)}
+  - ${file(./resources-cloudfront.yml)}
+  - ${file(./resources-ecs.yml)}
+  - ${file(./resources-route53.yml)}

@@ -1,6 +1,7 @@
-
 # Justice40 Tool
 [![CC0 License](https://img.shields.io/badge/license-CCO--1.0-brightgreen)](https://github.com/usds/justice40-tool/blob/main/LICENSE)
+
+*[¡Lea esto en español!](README-es.md)*
 
 Welcome to the Justice40 Open Source Community! This repo contains the code, processes, and documentation for the data and tech powering the Justice40 Climate and Economic Justice Screening Tool (CEJST).
 
@@ -39,6 +40,10 @@ Curious about whether to ask a question here as a Github issue or in the Google 
 Contributions are always welcome! We encourage contributions in the form of discussion on issues in this repo and pull requests of documentation and code. 
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for ways to get started.
+
+## Installation 
+
+The installation is a typical gatsby install and the details can be found in [INSTALLATION.md](https://github.com/usds/justice40-tool/blob/main/INSTALLATION.md)
 
 ## Glossary
 

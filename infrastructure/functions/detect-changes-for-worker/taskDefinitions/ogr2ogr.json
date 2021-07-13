@@ -1,0 +1,25 @@
+{
+    "containerDefinitions": [
+        {
+            "name": "ECSUSDSJustice40Worker",
+            "image": "osgeo/gdal:alpine-small-latest",
+            "cpu": 1024,
+            "environment": [
+                {
+                    "name": "AWS_REGION",
+                    "value": "${REGION}"
+                }
+            ],
+            "command": [
+                "ogr2ogr",
+                "-f", "GeoJSON",
+                "-sql", "${sql}",
+                "${output}",
+                "${input}"
+            ],
+            "memory": 1024,
+            "essential": true
+        }
+    ],
+    "family": ""
+}
