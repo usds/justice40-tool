@@ -8,7 +8,7 @@ import * as queryString from 'query-string';
   /**
    * Contains a list of all currently-active flags
    */
-  flags: string[];
+  flags: { [key: string]: any };
 }
 
 const FlagContext = React.createContext<IFlagContext>({flags: []});
@@ -18,7 +18,7 @@ const FlagContext = React.createContext<IFlagContext>({flags: []});
  *
  * @return {Flags[]} flags All project feature flags
  */
-const useFlags = () : string[] => {
+const useFlags = () : { [key: string]: any } => {
   const {flags} = React.useContext(FlagContext);
   return flags;
 };
@@ -39,9 +39,18 @@ interface IURLFlagProviderProps {
  **/
 const URLFlagProvider = ({children, location}: IURLFlagProviderProps) => {
   const flagString = queryString.parse(location.search).flags;
-  let flags: string[] = [];
+  const flags : { [key: string]: any } = {};
+  let flagList: string[] = [];
   if (flagString && typeof flagString === 'string') {
-    flags = (flagString as string).split(',');
+    flagList = (flagString as string).split(',');
+  }
+  for (const flag of flagList) {
+    if (flag.includes('=')) {
+      const [key, value] = flag.split('=');
+      flags[key] = value;
+    } else {
+      flags[flag] = true;
+    }
   }
   console.log(JSON.stringify(location), JSON.stringify(flags));
 

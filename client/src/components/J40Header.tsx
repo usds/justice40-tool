@@ -25,7 +25,7 @@ const J40Header = () => {
   const toggleMobileNav = (): void =>
     setMobileNavOpen((prevOpen) => !prevOpen);
 
-  const headerLinks = (flags: string[] | undefined) => {
+  const headerLinks = (flags: {[key: string] : any} | undefined) => {
     // static map of all possible menu items. Originally, it was all strings,
     // but we need to handle both onsite and offsite links.
     const menuData = new Map<string, JSX.Element>([
@@ -64,7 +64,7 @@ const J40Header = () => {
     // select which items from the above map to show, right now it's only two
     // possibilities so it's simple. Note: strings are used as react keys
     const menu =
-      flags?.includes('sprint3') ?
+      ('sprint3' in flags!) ?
         ['about', 'cejst', 'methodology', 'contact'] :
         ['about', 'cejst', 'methodology', 'contact'];
     // TODO: make feature flags flags work.
