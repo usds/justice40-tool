@@ -2,7 +2,7 @@
 name: Informe de un error
 about: Bug Report en español
 title: ''
-labels: bug
+labels: bug, needs-triage
 assignees: ''
 
 ---

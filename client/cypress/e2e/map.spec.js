@@ -39,7 +39,7 @@ describe('Tests for the Explore the Map page', () => {
       return map.getFeatureState(
           {
             'id': id,
-            'source': constants.SCORE_SOURCE_NAME,
+            'source': constants.HIGH_SCORE_SOURCE_NAME,
             'sourceLayer': constants.SCORE_SOURCE_LAYER,
           },
       );
@@ -54,7 +54,7 @@ describe('Tests for the Explore the Map page', () => {
       cy.waitForMapIdle(map);
       map.fire('click', {lngLat: punx1001Info.coords});
       const punx1001FeatureState = getFeatureState(map, punx1001Info.id);
-      expect(punx1001FeatureState).to.deep.equal({'selected': true});
+      expect(punx1001FeatureState).to.deep.equal({[constants.SELECTED_PROPERTY]: true});
     });
   });
 });

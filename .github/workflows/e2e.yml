@@ -9,5 +9,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - run: cd justice40-tool/client
       - name: Cypress nightly tests 🌃
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v2        

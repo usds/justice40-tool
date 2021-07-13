@@ -1,13 +1,23 @@
 // URLS
-export const FEATURE_TILE_BASE_URL = 'https://d2zjid6n5ja2pt.cloudfront.net/0629_demo';
+export const FEATURE_TILE_BASE_URL = 'https://d2zjid6n5ja2pt.cloudfront.net';
+const XYZ_SUFFIX = '{z}/{x}/{y}.pbf';
+export const FEATURE_TILE_HIGH_ZOOM_URL = `${FEATURE_TILE_BASE_URL}/0629_demo/${XYZ_SUFFIX}`;
+export const FEATURE_TILE_LOW_ZOOM_URL = `${FEATURE_TILE_BASE_URL}/tiles_low/${XYZ_SUFFIX}`;
+
 
 // Performance markers
 export const PERFORMANCE_MARKER_MAP_IDLE = 'MAP_IDLE';
 
 // Properties
-export const SCORE_PROPERTY = 'Score D (percentile)';
+export const SCORE_PROPERTY_HIGH = 'Score D (percentile)';
+export const SCORE_PROPERTY_LOW = 'D_SCORE';
 export const GEOID_PROPERTY = 'GEOID10';
-export const SCORE_SOURCE_NAME = 'score';
+export const HIGH_SCORE_SOURCE_NAME = 'score-high';
+export const HIGH_SCORE_LAYER_NAME = 'score-high-layer';
+export const LOW_SCORE_SOURCE_NAME = 'score-low';
+export const LOW_SCORE_LAYER_NAME = 'score-low-layer';
+export const SELECTED_PROPERTY = 'selected';
+
 // The name of the layer within the tiles that contains the score
 export const SCORE_SOURCE_LAYER = 'blocks';
 
@@ -18,9 +28,11 @@ export type J40Properties = { [key: string]: any };
 export const GLOBAL_MIN_ZOOM = 3;
 export const GLOBAL_MAX_ZOOM = 22;
 export const GLOBAL_MIN_ZOOM_LOW = 3;
-export const GLOBAL_MAX_ZOOM_LOW = 9;
-export const GLOBAL_MIN_ZOOM_HIGH = 9;
-export const GLOBAL_MAX_ZOOM_HIGH = 12;
+export const GLOBAL_MAX_ZOOM_LOW = 7;
+export const GLOBAL_MIN_ZOOM_HIGHLIGHT = 9;
+export const GLOBAL_MAX_ZOOM_HIGHLIGHT = 22;
+export const GLOBAL_MIN_ZOOM_HIGH = 7;
+export const GLOBAL_MAX_ZOOM_HIGH = 11;
 
 // Bounds
 export const GLOBAL_MAX_BOUNDS = [
@@ -74,3 +86,13 @@ export const MIN_COLOR = '#FFFFFF';
 export const MED_COLOR = '#D1DAE6';
 export const MAX_COLOR = '#768FB3';
 export const BORDER_HIGHLIGHT_COLOR = '#00BDE3';
+
+// Widths
+export const HIGHLIGHT_BORDER_WIDTH = 5.0;
+
+// Score boundaries
+export const SCORE_BOUNDARY_LOW = 0.0;
+export const SCORE_BOUNDARY_THRESHOLD = 0.6;
+export const SCORE_BOUNDARY_PRIORITIZED = 0.75;
+
+export const isMobile = typeof window !== 'undefined' && (window.innerWidth < 400);
