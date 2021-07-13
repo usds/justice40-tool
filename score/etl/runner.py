@@ -1,6 +1,7 @@
 import importlib
 
-from etl.score.etl import ScoreETL
+from etl.score.etl_score import ScoreETL
+from etl.score.etl_county_state_score import CountyStateScoreETL
 
 
 def etl_runner(dataset_to_run: str = None) -> None:
@@ -20,7 +21,11 @@ def etl_runner(dataset_to_run: str = None) -> None:
             "module_dir": "census_acs",
             "class_name": "CensusACSETL",
         },
-        {"name": "ejscreen", "module_dir": "ejscreen", "class_name": "EJScreenETL"},
+        {
+            "name": "ejscreen",
+            "module_dir": "ejscreen",
+            "class_name": "EJScreenETL",
+        },
         {
             "name": "housing_and_transportation",
             "module_dir": "housing_and_transportation",
@@ -36,12 +41,17 @@ def etl_runner(dataset_to_run: str = None) -> None:
             "module_dir": "calenviroscreen",
             "class_name": "CalEnviroScreenETL",
         },
-        {"name": "hud_recap", "module_dir": "hud_recap", "class_name": "HudRecapETL"},
+        {
+            "name": "hud_recap",
+            "module_dir": "hud_recap",
+            "class_name": "HudRecapETL",
+        },
     ]
 
     if dataset_to_run:
         dataset_element = next(
-            (item for item in dataset_list if item["name"] == dataset_to_run), None
+            (item for item in dataset_list if item["name"] == dataset_to_run),
+            None,
         )
         if not dataset_list:
             raise ValueError("Invalid dataset name")
@@ -51,7 +61,9 @@ def etl_runner(dataset_to_run: str = None) -> None:
 
     # Run the ETLs for the dataset_list
     for dataset in dataset_list:
-        etl_module = importlib.import_module(f"etl.sources.{dataset['module_dir']}.etl")
+        etl_module = importlib.import_module(
+            f"etl.sources.{dataset['module_dir']}.etl"
+        )
         etl_class = getattr(etl_module, dataset["class_name"])
         etl_instance = etl_class()
 
@@ -80,16 +92,18 @@ def score_generate() -> None:
     Returns:
         None
     """
-    score = ScoreETL()
 
-    # run extract
-    score.extract()
+    # Score Gen
+    # score_gen = ScoreETL()
+    # score_gen.extract()
+    # score_gen.transform()
+    # score_gen.load()
 
-    # run transform
-    score.transform()
-
-    # run load
-    score.load()
+    # County and State Info
+    score_county = CountyStateScoreETL()
+    score_county.extract()
+    score_county.transform()
+    score_county.cleanup()
 
 
 def _find_dataset_index(dataset_list, key, value):
