@@ -68,7 +68,7 @@ const mapStyle : Style = {
       'minzoom': constants.GLOBAL_MIN_ZOOM,
       'maxzoom': constants.GLOBAL_MAX_ZOOM,
     },
-    'score-high': {
+    [constants.HIGH_SCORE_SOURCE_NAME]: {
       // "Score-high" represents the full set of data
       // at the census block group level. It is only shown
       // at high zoom levels to avoid performance issues at lower zooms
@@ -85,7 +85,7 @@ const mapStyle : Style = {
       'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
       'maxzoom': constants.GLOBAL_MAX_ZOOM_HIGH,
     },
-    'score-low': {
+    [constants.LOW_SCORE_SOURCE_NAME]: {
       // "Score-low" represents a tileset at the level of bucketed tracts.
       // census block group information is `dissolve`d into tracts, then
       // each tract is `dissolve`d into one of ten buckets. It is meant
@@ -165,7 +165,7 @@ const mapStyle : Style = {
     {
       // "Score-highlights" represents the border
       // around given tiles that appears at higher zooms
-      'id': 'score-highlights',
+      'id': 'score-highlights-layer',
       'source': constants.HIGH_SCORE_SOURCE_NAME,
       'source-layer': constants.SCORE_SOURCE_LAYER,
       'type': 'line',
@@ -185,7 +185,7 @@ const mapStyle : Style = {
     {
       // "score-border-highlight" is used to highlight
       // the currently-selected feature
-      'id': 'score-border-highlight',
+      'id': 'score-border-highlight-layer',
       'type': 'line',
       'source': constants.HIGH_SCORE_SOURCE_NAME,
       'source-layer': constants.SCORE_SOURCE_LAYER,
@@ -194,7 +194,7 @@ const mapStyle : Style = {
         'line-color': constants.BORDER_HIGHLIGHT_COLOR,
         'line-width': [
           'case',
-          ['boolean', ['feature-state', 'selected'], false],
+          ['boolean', ['feature-state', constants.SELECTED_PROPERTY], false],
           constants.HIGHLIGHT_BORDER_WIDTH,
           0,
         ],
@@ -204,7 +204,7 @@ const mapStyle : Style = {
     },
     {
       // We put labels last to ensure prominence
-      'id': 'labels-only',
+      'id': 'labels-only-layer',
       'type': 'raster',
       'source': 'labels',
       'minzoom': constants.GLOBAL_MIN_ZOOM,

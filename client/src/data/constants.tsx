@@ -16,6 +16,7 @@ export const HIGH_SCORE_SOURCE_NAME = 'score-high';
 export const HIGH_SCORE_LAYER_NAME = 'score-high-layer';
 export const LOW_SCORE_SOURCE_NAME = 'score-low';
 export const LOW_SCORE_LAYER_NAME = 'score-low-layer';
+export const SELECTED_PROPERTY = 'selected';
 
 // The name of the layer within the tiles that contains the score
 export const SCORE_SOURCE_LAYER = 'blocks';

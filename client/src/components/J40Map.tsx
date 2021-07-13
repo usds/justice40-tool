@@ -63,7 +63,7 @@ const J40Map = () => {
       source: feature.source,
       sourceLayer: feature.sourceLayer,
       id: feature.id,
-    }, {selected: isSelected});
+    }, {[constants.SELECTED_PROPERTY]: isSelected});
     if (isSelected) {
       selectedFeature.current = feature;
     } else {
