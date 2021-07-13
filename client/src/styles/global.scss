@@ -24,6 +24,7 @@ $theme-font-role-heading: "sans";
 @import "../../node_modules/uswds";
 
 @import "~@trussworks/react-uswds/lib/index.css";
+@import "../../node_modules/mapbox-gl/dist/mapbox-gl.css";
 
 // Custom SASS/CSS goes here
 $j40-max-width: 80ex;
@@ -195,14 +196,29 @@ $j40-max-width: 80ex;
 // Maplibre overrides
 // Note that these need to be here to properly override defaults
 
-.maplibregl-popup-close-button {
+.mapboxgl-popup-close-button {
   font-size: 3em;
   margin-right: 12px;
   margin-top: 15px;
 }
 
-.maplibregl-popup-content {
+.mapboxgl-popup-content {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5) !important;
   border-radius: 8px !important;
   pointer-events: all !important;
+  width: auto;
+}
+
+// Because we're using react-map-gl, you need to use
+// the mapboxgl- class name variables
+
+.mapboxgl-ctrl-group button {
+  height: 40px;
+  width: 40px;
+  box-sizing: border-box;
+  border-width: 2px;
+  border-color: #000000;
+  border-style: solid;
+  background-color: #ffffff;
+  font-size: 24px;
 }

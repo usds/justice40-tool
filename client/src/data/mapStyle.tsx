@@ -206,7 +206,6 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
           ],
         },
         'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
-        'maxzoom': constants.GLOBAL_MAX_ZOOM_HIGH,
       },
       {
       // We put labels last to ensure prominence

@@ -1,13 +1,13 @@
 import * as React from 'react';
 import * as constants from '../data/constants';
-import * as styles from './popupContent.module.scss';
-import {GeoJsonProperties} from 'geojson';
+import * as styles from './areaDetail.module.scss';
 
-interface IPopupContentProps {
-  properties: GeoJsonProperties,
+interface IAreaDetailProps {
+  properties: constants.J40Properties,
 }
 
-const PopupContent = ({properties}:IPopupContentProps) => {
+
+const AreaDetail = ({properties}:IAreaDetailProps) => {
   const readablePercent = (percent: number) => {
     return `${(percent * 100).toFixed(2)}`;
   };
@@ -24,7 +24,7 @@ const PopupContent = ({properties}:IPopupContentProps) => {
     return categorization;
   };
 
-  const getTitleContent = (properties: constants.J40Properties) => {
+  const getTitleContent = () => {
     const blockGroup = properties[constants.GEOID_PROPERTY];
     const score = properties[constants.SCORE_PROPERTY_HIGH] as number;
     return (
@@ -45,7 +45,7 @@ const PopupContent = ({properties}:IPopupContentProps) => {
     );
   };
 
-  const getBodyContent = (properties: constants.J40Properties) => {
+  const getBodyContent = () => {
     const rows = [];
     const sortedKeys = Object.entries(properties).sort();
     for (let [key, value] of sortedKeys) {
@@ -69,23 +69,25 @@ const PopupContent = ({properties}:IPopupContentProps) => {
   return (
     <>
       {properties ?
-      <div id='popupContainer'>
-        {getTitleContent(properties)}
-        <table className={'usa-table usa-table--borderless ' + styles.popupContentTable}>
-          <thead>
-            <tr>
-              <th scope="col">INDICATOR</th>
-              <th scope="col">VALUE</th>
-            </tr>
-          </thead>
-          <tbody>
-            {getBodyContent(properties)}
-          </tbody>
-        </table>
+      <div className={styles.areaDetailContainer}>
+        {getTitleContent()}
+        <div className={styles.areaDetailTableContainer}>
+          <table className={'usa-table usa-table--borderless ' + styles.areaDetailTable}>
+            <thead>
+              <tr>
+                <th scope="col">INDICATOR</th>
+                <th scope="col">VALUE</th>
+              </tr>
+            </thead>
+            <tbody>
+              {getBodyContent()}
+            </tbody>
+          </table>
+        </div>
       </div> :
     '' }
     </>
   );
 };
 
-export default PopupContent;
+export default AreaDetail;
