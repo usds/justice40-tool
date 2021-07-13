@@ -31,6 +31,16 @@ $primary-color: #112f4e;
         .downloadBoxButtonContainer {
           margin-top: 20px 0 0 0;
           align-self: center;
+
+          a {
+            text-decoration: none;
+          }
+
+          img {
+            // This should be a global css-filter value as it's generated
+            // from the primary color.
+            filter: invert(15%) sepia(9%) saturate(5666%) hue-rotate(175deg) brightness(96%) contrast(95%);
+          }
         }
 
         .downloadBoxButton{
