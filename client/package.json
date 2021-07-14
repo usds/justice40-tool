@@ -25,7 +25,7 @@
     "lint": "eslint './src/**/*.{ts,tsx}' --ignore-pattern node_modules/ --ignore-pattern public --ignore-pattern *scss.d.ts",
     "lint:fix": "npm run lint -- --quiet --fix",
     "intl:extract": "formatjs extract 'src/(pages|components)/*.tsx' --out-file src/intl/en.json",
-    "intl:compile-es": "formatjs compile src/intl/es.json --ast --out-file compiled-lang/es.json"
+    "intl:compile-en": "formatjs compile src/intl/en.json --ast --out-file compiled-lang/en.json"
   },
   "devDependencies": {
     "@formatjs/cli": "^4.2.15",
