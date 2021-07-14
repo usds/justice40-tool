@@ -4,20 +4,20 @@
 <summary>Table of Contents</summary>
 
 <!-- TOC -->
+
 - [About this application](#about-this-application)
-  - [Scoring Comparison Workflow](#scoring-comparison-workflow)
+  - [Score comparison workflow](#score-comparison-workflow)
     - [Workflow Diagram](#workflow-diagram)
-    - [Step 1: Run ETL scripts for data sources](#step-1-run-etl-scripts-for-data-sources)
-    - [Step 2: Load and merge source data as a dataframe](#step-2-load-and-merge-source-data-as-a-dataframe)
-    - [Step 3: Calculate the Justice40 candidate scores](#step-3-calculate-the-justice40-candidate-scores)
-    - [Step 4: Compare the Justice40 scores to other established scores](#step-4-compare-the-justice40-scores-to-other-established-scores)
+    - [Step 1: Run the ETL script for each data source](#step-1-run-the-etl-script-for-each-data-source)
+    - [Step 2: Calculate the Justice40 scores](#step-2-calculate-the-justice40-scores)
+    - [Step 3: Compare the Justice40 scores to other indices](#step-3-compare-the-justice40-scores-to-other-indices)
   - [Data Sources](#data-sources)
-- [Justice40 candidate scores](#justice40-candidate-scores)
-  - [Score A](#score-a)
-  - [Score B](#score-b)
-  - [Score C](#score-c)
-  - [Score D](#score-d)
-  - [Score E](#score-e)
+  - [Justice40 candidate scores](#justice40-candidate-scores)
+    - [Score A](#score-a)
+    - [Score B](#score-b)
+    - [Score C](#score-c)
+    - [Score D](#score-d)
+    - [Score E](#score-e)
 - [Running using Docker](#running-using-docker)
 - [Log visualization](#log-visualization)
 - [Local development](#local-development)
@@ -34,17 +34,35 @@
 
 ## About this application
 
-### Scoring Comparison Workflow
+### Score comparison workflow
 
 #### Workflow Diagram
 
-#### Step 1: Run ETL scripts for data sources
+#### Step 1: Run the ETL script for each data source
 
-#### Step 2: Load and merge source data as a dataframe
+1. Call the `etl-run` command using the application manager [`application.py`](application.py)
+   - With Docker: `docker run --rm -it j40_score /bin/sh -c "python3 application.py etl-run"`
+   - With Poetry: `poetry run python application.py etl-run`
+1. The `etl-run` command will execute the corresponding ETL script for each data source in [`etl/sources/`](etl/sources). For example, [`etl/sources/ejscreen/etl.py`](etl/sources/ejscreen/etl.py) is the ETL script for EJSCREEN data.
+1. Each ETL script will extract the data from its original source, then format the data into `.csv` files that get stored in the relevant folder in [`data/dataset/`](data/dataset). For example, HUD Housing data is stored in `data/dataset/hud_housing/usa.csv`
 
-#### Step 3: Calculate the Justice40 candidate scores
+>**NOTE:** You have the option to pass the name of a specific data source to the `etl-run` command, which will limit the execution of the ETL process to that specific data source.
+> For example: `poetry run python application.py etl-run ejscreen` would only run the ETL process for EJSCREEN data.
 
-#### Step 4: Compare the Justice40 scores to other established scores
+#### Step 2: Calculate the Justice40 scores
+
+1. Call the `score-run` command using the application manager [`application.py`](application.py)
+   - With Docker: `docker run --rm -it j40_score /bin/sh -c "python3 application.py score-run"`
+   - With Poetry: `poetry run python application.py score-run`
+1. The `score-run` command will execute the [`etl/score/etl.py`](etl/score/etl.py) script which loads the data from each of the source files added to the `data/dataset/` directory by the ETL scripts in Step 1.
+1. These data sets are merged into a single dataframe using their Census Block Group GEOID as a common key, and the data in each of the columns is standardized in two ways:
+    - Their [percentile rank](https://en.wikipedia.org/wiki/Percentile_rank) is calculated, which tells us what percentage of other Census Block Groups have a lower value for that particular column.
+    - They are normalized using [min-max normalization](https://en.wikipedia.org/wiki/Feature_scaling), which adjusts the scale of the data so that the Census Block Group with the highest value for that column is set to 1, the Census Block Group with the lowest value is set to 0, and all of the other values are adjusted to fit within that range based on how close they were to the highest or lowest value.
+1. The standardized columns are then used to calculate each of the [Justice40 candidate scores](#justice40-candidate-scores) described in greater detail below, and the results are exported to a `.csv` file in [`data/score/csv`](data/score/csv)
+
+#### Step 3: Compare the Justice40 scores to other indices
+
+1. TODO: Describe the steps for this
 
 ### Data Sources
 
@@ -56,17 +74,17 @@
 - **[HUD Recap](etl/sources/hud_recap):**
 - **[CalEnviroScreen](etl/scores/calenviroscreen):**
 
-## Justice40 candidate scores
+### Justice40 candidate scores
 
-### Score A
+#### Score A: {TODO Intuitive Name}
 
-### Score B
+#### Score B: {TODO Intuitive Name}
 
-### Score C
+#### Score C: {TODO Intuitive Name}
 
-### Score D
+#### Score D: {TODO Intuitive Name}
 
-### Score E
+#### Score E: {TODO Intuitive Name}
 
 ## Running using Docker
 
