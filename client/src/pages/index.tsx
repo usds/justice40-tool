@@ -1,8 +1,8 @@
 import * as React from 'react';
 import Layout from '../components/layout';
 import AreasOfFocusList from '../components/areasOfFocusList';
-import {useIntl} from 'gatsby-plugin-intl';
-import {defineMessages, FormattedMessage} from 'react-intl';
+import {FormattedMessage, useIntl} from 'gatsby-plugin-intl';
+import {defineMessages} from 'react-intl';
 
 interface IndexPageProps {
   location: Location;
