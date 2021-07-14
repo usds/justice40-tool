@@ -1,8 +1,11 @@
 // URLS
 export const FEATURE_TILE_BASE_URL = 'https://d2zjid6n5ja2pt.cloudfront.net';
 const XYZ_SUFFIX = '{z}/{x}/{y}.pbf';
-export const FEATURE_TILE_HIGH_ZOOM_URL = `${FEATURE_TILE_BASE_URL}/0629_demo/${XYZ_SUFFIX}`;
-export const FEATURE_TILE_LOW_ZOOM_URL = `${FEATURE_TILE_BASE_URL}/tiles_low/${XYZ_SUFFIX}`;
+export const featureURLForTilesetName = (tilesetName :string ) : string => {
+  return `${FEATURE_TILE_BASE_URL}/${tilesetName}/${XYZ_SUFFIX}`;
+};
+export const FEATURE_TILE_HIGH_ZOOM_URL = featureURLForTilesetName('0629_demo');
+export const FEATURE_TILE_LOW_ZOOM_URL = featureURLForTilesetName('tiles_low');
 
 
 // Performance markers
@@ -16,6 +19,7 @@ export const HIGH_SCORE_SOURCE_NAME = 'score-high';
 export const HIGH_SCORE_LAYER_NAME = 'score-high-layer';
 export const LOW_SCORE_SOURCE_NAME = 'score-low';
 export const LOW_SCORE_LAYER_NAME = 'score-low-layer';
+export const SELECTED_PROPERTY = 'selected';
 
 // The name of the layer within the tiles that contains the score
 export const SCORE_SOURCE_LAYER = 'blocks';

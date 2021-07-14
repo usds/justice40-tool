@@ -26,7 +26,7 @@ const PopupContent = ({properties}:IPopupContentProps) => {
 
   const getTitleContent = (properties: constants.J40Properties) => {
     const blockGroup = properties[constants.GEOID_PROPERTY];
-    const score = properties[constants.SCORE_PROPERTY] as number;
+    const score = properties[constants.SCORE_PROPERTY_HIGH] as number;
     return (
       <div className={styles.titleContainer}>
         <div>

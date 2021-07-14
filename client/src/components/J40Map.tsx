@@ -7,10 +7,12 @@ import maplibregl, {LngLatBoundsLike,
   Popup,
   LngLatLike,
   MapboxGeoJSONFeature} from 'maplibre-gl';
-import mapStyle from '../data/mapStyle';
+import {makeMapStyle} from '../data/mapStyle';
 import PopupContent from './popupContent';
 import * as constants from '../data/constants';
 import ReactDOM from 'react-dom';
+import {useFlags} from '../contexts/FlagContext';
+
 import 'maplibre-gl/dist/maplibre-gl.css';
 import * as styles from './J40Map.module.scss';
 
@@ -27,11 +29,12 @@ const J40Map = () => {
   const mapRef = useRef<Map>() as React.MutableRefObject<Map>;
   const selectedFeature = useRef<MapboxGeoJSONFeature>();
   const [zoom, setZoom] = useState(constants.GLOBAL_MIN_ZOOM);
+  const flags = useFlags();
 
   useEffect(() => {
     const initialMap = new Map({
       container: mapContainer.current!,
-      style: mapStyle,
+      style: makeMapStyle(flags),
       center: constants.DEFAULT_CENTER as LngLatLike,
       zoom: zoom,
       minZoom: constants.GLOBAL_MIN_ZOOM,
@@ -63,7 +66,7 @@ const J40Map = () => {
       source: feature.source,
       sourceLayer: feature.sourceLayer,
       id: feature.id,
-    }, {selected: isSelected});
+    }, {[constants.SELECTED_PROPERTY]: isSelected});
     if (isSelected) {
       selectedFeature.current = feature;
     } else {
