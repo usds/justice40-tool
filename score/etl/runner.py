@@ -94,15 +94,16 @@ def score_generate() -> None:
     """
 
     # Score Gen
-    # score_gen = ScoreETL()
-    # score_gen.extract()
-    # score_gen.transform()
-    # score_gen.load()
+    score_gen = ScoreETL()
+    score_gen.extract()
+    score_gen.transform()
+    score_gen.load()
 
-    # County and State Info
+    # Add County and State Info
     score_county = CountyStateScoreETL()
     score_county.extract()
     score_county.transform()
+    score_county.load()
     score_county.cleanup()
 
 
