@@ -16,14 +16,12 @@ class PostScoreETL(ExtractTransformLoad):
         self.CENSUS_COUNTIES_ZIP_URL = "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/Gaz_counties_national.zip"
         self.CENSUS_COUNTIES_TXT = self.TMP_PATH / "Gaz_counties_national.txt"
         self.CENSUS_COUNTIES_COLS = ["USPS", "GEOID", "NAME"]
-        self.CSV_PATH = self.DATA_PATH / "score" / "csv"
+        self.SCORE_CSV_PATH = self.DATA_PATH / "score" / "csv" / "full"
         self.STATE_CSV = (
             self.DATA_PATH / "census" / "csv" / "fips_states_2010.csv"
         )
-        self.SCORE_CSV = self.DATA_PATH / "score" / "csv" / "usa.csv"
-        self.COUNTY_SCORE_CSV = (
-            self.DATA_PATH / "score" / "csv" / "usa-county.csv"
-        )
+        self.SCORE_CSV = self.SCORE_CSV_PATH / "usa.csv"
+        self.COUNTY_SCORE_CSV = self.SCORE_CSV_PATH / "usa-county.csv"
 
         self.counties_df: pd.DataFrame
         self.states_df: pd.DataFrame
@@ -60,6 +58,8 @@ class PostScoreETL(ExtractTransformLoad):
             columns={"USPS": "State Abbreviation", "NAME": "County Name"},
             inplace=True,
         )
+
+        # remove unnecessary columns
         self.states_df.rename(
             columns={
                 "fips": "State Code",
@@ -68,6 +68,9 @@ class PostScoreETL(ExtractTransformLoad):
             },
             inplace=True,
         )
+        self.states_df.drop(["region", "division"], axis=1, inplace=True)
+
+        # add the tract level column
         self.score_df["GEOID"] = self.score_df.GEOID10.str[:5]
 
         # merge state and counties
@@ -84,6 +87,7 @@ class PostScoreETL(ExtractTransformLoad):
 
     def load(self) -> None:
         logger.info(f"Saving Score + County CSV")
+        self.SCORE_CSV_PATH.mkdir(parents=True, exist_ok=True)
         self.score_county_state_merged.to_csv(
             self.COUNTY_SCORE_CSV, index=False
         )

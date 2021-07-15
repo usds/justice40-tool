@@ -149,8 +149,8 @@ def score_folder_cleanup() -> None:
     data_path = settings.APP_ROOT / "data"
 
     logger.info(f"Initializing all score data")
-    remove_files_from_dir(data_path / "score" / "csv", ".csv")
-    remove_files_from_dir(data_path / "score" / "geojson", ".json")
+    remove_all_from_dir(data_path / "score" / "csv")
+    remove_all_from_dir(data_path / "score" / "geojson")
 
 
 def temp_folder_cleanup() -> None:
