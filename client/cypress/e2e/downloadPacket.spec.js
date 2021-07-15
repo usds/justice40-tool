@@ -4,7 +4,7 @@ describe('Census Block Group download', () => {
   it('validate file download', () => {
     cy.visit('localhost:8000/en/cejst');
     cy.get('#download-link').invoke('attr', 'target', '_blank');
-    cy.intercept(`https://usds-geoplatform-justice40-website.s3.amazonaws.com/data/score/csv/usa.csv`,
+    cy.intercept('https://justice40-data.s3.amazonaws.com/Score/usa.zip',
         {
           body: 'success',
           headers: {
