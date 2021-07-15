@@ -16,17 +16,29 @@ class PostScoreETL(ExtractTransformLoad):
         self.CENSUS_COUNTIES_ZIP_URL = "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/Gaz_counties_national.zip"
         self.CENSUS_COUNTIES_TXT = self.TMP_PATH / "Gaz_counties_national.txt"
         self.CENSUS_COUNTIES_COLS = ["USPS", "GEOID", "NAME"]
-        self.SCORE_CSV_PATH = self.DATA_PATH / "score" / "csv" / "full"
+        self.SCORE_CSV_PATH = self.DATA_PATH / "score" / "csv"
         self.STATE_CSV = (
             self.DATA_PATH / "census" / "csv" / "fips_states_2010.csv"
         )
-        self.SCORE_CSV = self.SCORE_CSV_PATH / "usa.csv"
-        self.COUNTY_SCORE_CSV = self.SCORE_CSV_PATH / "usa-county.csv"
+        self.SCORE_CSV = self.SCORE_CSV_PATH / "full" / "usa.csv"
+        self.COUNTY_SCORE_CSV = self.SCORE_CSV_PATH / "full" / "usa-county.csv"
+
+        self.TILES_SCORE_COLUMNS = [
+            "GEOID10",
+            "Score E (percentile)",
+            "Score E (top 25th percentile)",
+            "GEOID",
+            "State Abbreviation",
+            "County Name",
+        ]
+        self.TILES_SCORE_CSV_PATH = self.SCORE_CSV_PATH / "tiles"
+        self.TILES_SCORE_CSV = self.TILES_SCORE_CSV_PATH / "usa.csv"
 
         self.counties_df: pd.DataFrame
         self.states_df: pd.DataFrame
         self.score_df: pd.DataFrame
         self.score_county_state_merged: pd.DataFrame
+        self.score_for_tiles: pd.DataFrame
 
     def extract(self) -> None:
         super().extract(
@@ -88,6 +100,13 @@ class PostScoreETL(ExtractTransformLoad):
     def load(self) -> None:
         logger.info(f"Saving Score + County CSV")
         self.SCORE_CSV_PATH.mkdir(parents=True, exist_ok=True)
-        self.score_county_state_merged.to_csv(
-            self.COUNTY_SCORE_CSV, index=False
-        )
+        # self.score_county_state_merged.to_csv(
+        #     self.COUNTY_SCORE_CSV, index=False
+        # )
+
+        logger.info(f"Saving Tile Score CSV")
+        # TODO: check which are the columns we'll use
+        # Related to: https://github.com/usds/justice40-tool/issues/302
+        score_tiles = self.score_county_state_merged[self.TILES_SCORE_COLUMNS]
+        self.TILES_SCORE_CSV_PATH.mkdir(parents=True, exist_ok=True)
+        score_tiles.to_csv(self.TILES_SCORE_CSV, index=False)
