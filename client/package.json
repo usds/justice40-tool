@@ -70,7 +70,7 @@
     "ts-jest": "^27.0.0"
   },
   "dependencies": {
-    "@trussworks/react-uswds": "git+https://www.github.com/nathillardusds/react-uswds#nathillardusds/ssr",
+    "@trussworks/react-uswds": "git+https://git@github.com/nathillardusds/react-uswds#nathillardusds/ssr",
     "chroma-js": "^2.1.2",
     "mapbox-gl": "^1.13.0",
     "maplibre-gl": ">=1.14.0",
