@@ -1,6 +1,7 @@
 declare namespace CejstModuleScssNamespace {
   export interface ICejstModuleScss {
     disclaimer: string;
+    textBox: string;
   }
 }
 

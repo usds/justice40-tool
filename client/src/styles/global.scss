@@ -28,6 +28,7 @@ $theme-font-role-heading: "sans";
 
 // Custom SASS/CSS goes here
 $j40-max-width: 80ex;
+$primary-color: #112f4e;
 
 .j40-two-column {
   overflow: hidden;
@@ -70,7 +71,7 @@ $j40-max-width: 80ex;
 .j40-header,
 .j40-primary-nav,
 .j40-header > li > a {
-  color: #112f4e !important;
+  color: $primary-color !important;
   z-index: 5;
 
   .usa-nav-container {
@@ -79,7 +80,7 @@ $j40-max-width: 80ex;
 
   span {
     // make sure the open close chevron is colored correctly
-    color: #112f4e;
+    color: $primary-color;
   }
 
   // this is the title

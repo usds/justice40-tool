@@ -1,5 +1,12 @@
+$primary-color: #112f4e;
+
 .disclaimer {
-  margin-top: 24px;
-  margin-bottom: 21px;
-  margin-left: 49px;
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 25px;
+
+  .textBox {
+    flex: 2;
+    max-width: 700px;
+  }
 }
