@@ -8,10 +8,8 @@ logger = get_module_logger(__name__)
 
 class CountyStateScoreETL(ExtractTransformLoad):
     def __init__(self):
-        self.CENSUS_COUNTIES_ZIP_URL = "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2010_Gazetteer/2020_Gaz_counties_national.zip"
-        self.CENSUS_COUNTIES_TXT = (
-            self.TMP_PATH / "2020_Gaz_counties_national.txt"
-        )
+        self.CENSUS_COUNTIES_ZIP_URL = "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/Gaz_counties_national.zip"
+        self.CENSUS_COUNTIES_TXT = self.TMP_PATH / "Gaz_counties_national.txt"
         self.CENSUS_COUNTIES_COLS = ["USPS", "GEOID", "NAME"]
         self.CSV_PATH = self.DATA_PATH / "score" / "csv"
         self.STATE_CSV = (
@@ -20,10 +18,6 @@ class CountyStateScoreETL(ExtractTransformLoad):
         self.SCORE_CSV = self.DATA_PATH / "score" / "csv" / "usa.csv"
         self.COUNTY_SCORE_CSV = (
             self.DATA_PATH / "score" / "csv" / "usa-county.csv"
-        )
-        self.CENSUS_COUNTIES_ZIP_URL = "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2020_Gazetteer/2010_Gaz_counties_national.zip"
-        self.CENSUS_COUNTIES_TXT = (
-            self.TMP_PATH / "2020_Gaz_counties_national.txt"
         )
 
         self.counties_df: pd.DataFrame
@@ -43,6 +37,7 @@ class CountyStateScoreETL(ExtractTransformLoad):
             sep="\t",
             dtype={"GEOID": "string", "USPS": "string"},
             low_memory=False,
+            encoding="latin-1",
         )
 
         logger.info(f"Reading States CSV")
@@ -57,14 +52,14 @@ class CountyStateScoreETL(ExtractTransformLoad):
         # rename some of the columns to prepare for merge
         self.counties_df = self.counties_df[["USPS", "GEOID", "NAME"]]
         self.counties_df.rename(
-            columns={"USPS": "State Abbrev", "NAME": "County Name"},
+            columns={"USPS": "State Abbreviation", "NAME": "County Name"},
             inplace=True,
         )
         self.states_df.rename(
             columns={
                 "fips": "State Code",
                 "state_name": "State Name",
-                "state_code": "State Abbrev",
+                "state_abbreviation": "State Abbreviation",
             },
             inplace=True,
         )
@@ -74,7 +69,7 @@ class CountyStateScoreETL(ExtractTransformLoad):
         county_state_merged = self.counties_df.join(
             self.states_df, rsuffix=" Other"
         )
-        del county_state_merged["State Abbrev Other"]
+        del county_state_merged["State Abbreviation Other"]
 
         # merge county and score
         self.score_county_state_merged = self.score_df.join(

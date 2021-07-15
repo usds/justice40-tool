@@ -120,6 +120,7 @@ def unzip_file_from_url(
     logger.info(f"Downloading {file_url}")
     download = requests.get(file_url, verify=verify)
     file_contents = download.content
+
     zip_file_path = download_path / "downloaded.zip"
     zip_file = open(zip_file_path, "wb")
     zip_file.write(file_contents)
