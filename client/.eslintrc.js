@@ -20,9 +20,11 @@ module.exports = {
   'plugins': [
     'react',
     '@typescript-eslint',
+    'formatjs',
   ],
   'rules': {
     'max-len': [2, {'code': 120, 'tabWidth': 4, 'ignoreUrls': true}],
+    'formatjs/no-offset': 'error',
   },
   'settings': {
     'react': {
