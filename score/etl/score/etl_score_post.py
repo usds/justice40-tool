@@ -6,7 +6,12 @@ from utils import get_module_logger
 logger = get_module_logger(__name__)
 
 
-class CountyStateScoreETL(ExtractTransformLoad):
+class PostScoreETL(ExtractTransformLoad):
+    """
+    A class used to instantiate an ETL object to retrieve and process data from
+    datasets.
+    """
+
     def __init__(self):
         self.CENSUS_COUNTIES_ZIP_URL = "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/Gaz_counties_national.zip"
         self.CENSUS_COUNTIES_TXT = self.TMP_PATH / "Gaz_counties_national.txt"

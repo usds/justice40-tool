@@ -1,7 +1,7 @@
 import importlib
 
 from etl.score.etl_score import ScoreETL
-from etl.score.etl_county_state_score import CountyStateScoreETL
+from etl.score.etl_score_post import PostScoreETL
 
 
 def etl_runner(dataset_to_run: str = None) -> None:
@@ -99,12 +99,12 @@ def score_generate() -> None:
     score_gen.transform()
     score_gen.load()
 
-    # Add County and State Info
-    score_county = CountyStateScoreETL()
-    score_county.extract()
-    score_county.transform()
-    score_county.load()
-    score_county.cleanup()
+    # Post Score Processing
+    score_post = PostScoreETL()
+    score_post.extract()
+    score_post.transform()
+    score_post.load()
+    score_post.cleanup()
 
 
 def _find_dataset_index(dataset_list, key, value):
