@@ -8,7 +8,7 @@ logger = get_module_logger(__name__)
 
 class CountyStateScoreETL(ExtractTransformLoad):
     def __init__(self):
-        self.CENSUS_COUNTIES_ZIP_URL = "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2020_Gazetteer/2020_Gaz_counties_national.zip"
+        self.CENSUS_COUNTIES_ZIP_URL = "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2010_Gazetteer/2020_Gaz_counties_national.zip"
         self.CENSUS_COUNTIES_TXT = (
             self.TMP_PATH / "2020_Gaz_counties_national.txt"
         )
@@ -21,7 +21,7 @@ class CountyStateScoreETL(ExtractTransformLoad):
         self.COUNTY_SCORE_CSV = (
             self.DATA_PATH / "score" / "csv" / "usa-county.csv"
         )
-        self.CENSUS_COUNTIES_ZIP_URL = "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2020_Gazetteer/2020_Gaz_counties_national.zip"
+        self.CENSUS_COUNTIES_ZIP_URL = "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2020_Gazetteer/2010_Gaz_counties_national.zip"
         self.CENSUS_COUNTIES_TXT = (
             self.TMP_PATH / "2020_Gaz_counties_national.txt"
         )
