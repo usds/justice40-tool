@@ -4,6 +4,9 @@ declare namespace J40MapModuleScssNamespace {
     j40Popup: string;
     territoryFocusButton: string;
     territoryFocusContainer: string;
+    navigationControl: string;
+    fullscreenControl: string;
+    geolocateControl: string;
   }
 }
 
