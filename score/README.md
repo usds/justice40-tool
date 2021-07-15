@@ -34,27 +34,31 @@
 
 ## About this application
 
+This application is used to compare experimental versions of the Justice40 score to established environmental justice indices, such as EJSCREEN, CalEnviroScreen, and so on. The goal of this comparison is to identify the
+
 ### Score comparison workflow
 
 #### Workflow Diagram
 
+TODO add mermaid diagram
+
 #### Step 1: Run the ETL script for each data source
 
-1. Call the `etl-run` command using the application manager [`application.py`](application.py)
+1. Call the `etl-run` command using the application manager `application.py`
    - With Docker: `docker run --rm -it j40_score /bin/sh -c "python3 application.py etl-run"`
    - With Poetry: `poetry run python application.py etl-run`
-1. The `etl-run` command will execute the corresponding ETL script for each data source in [`etl/sources/`](etl/sources). For example, [`etl/sources/ejscreen/etl.py`](etl/sources/ejscreen/etl.py) is the ETL script for EJSCREEN data.
-1. Each ETL script will extract the data from its original source, then format the data into `.csv` files that get stored in the relevant folder in [`data/dataset/`](data/dataset). For example, HUD Housing data is stored in `data/dataset/hud_housing/usa.csv`
+1. The `etl-run` command will execute the corresponding ETL script for each data source in `etl/sources/`. For example, `etl/sources/ejscreen/etl.py` is the ETL script for EJSCREEN data.
+1. Each ETL script will extract the data from its original source, then format the data into `.csv` files that get stored in the relevant folder in `data/dataset/`. For example, HUD Housing data is stored in `data/dataset/hud_housing/usa.csv`
 
 >**NOTE:** You have the option to pass the name of a specific data source to the `etl-run` command, which will limit the execution of the ETL process to that specific data source.
 > For example: `poetry run python application.py etl-run ejscreen` would only run the ETL process for EJSCREEN data.
 
 #### Step 2: Calculate the Justice40 scores
 
-1. Call the `score-run` command using the application manager [`application.py`](application.py)
+1. Call the `score-run` command using the application manager `application.py`
    - With Docker: `docker run --rm -it j40_score /bin/sh -c "python3 application.py score-run"`
    - With Poetry: `poetry run python application.py score-run`
-1. The `score-run` command will execute the [`etl/score/etl.py`](etl/score/etl.py) script which loads the data from each of the source files added to the `data/dataset/` directory by the ETL scripts in Step 1.
+1. The `score-run` command will execute the `etl/score/etl.py` script which loads the data from each of the source files added to the `data/dataset/` directory by the ETL scripts in Step 1.
 1. These data sets are merged into a single dataframe using their Census Block Group GEOID as a common key, and the data in each of the columns is standardized in two ways:
     - Their [percentile rank](https://en.wikipedia.org/wiki/Percentile_rank) is calculated, which tells us what percentage of other Census Block Groups have a lower value for that particular column.
     - They are normalized using [min-max normalization](https://en.wikipedia.org/wiki/Feature_scaling), which adjusts the scale of the data so that the Census Block Group with the highest value for that column is set to 1, the Census Block Group with the lowest value is set to 0, and all of the other values are adjusted to fit within that range based on how close they were to the highest or lowest value.
@@ -66,25 +70,79 @@
 
 ### Data Sources
 
-- **[EJSCREEN](etl/sources/ejscreen):**
-- **[Census](etl/sources/census):**
-- **[American Communities Survey](etl/sources/census_acs):**
-- **[Housing and Transportation](etl/sources/housing_and_transportation):**
-- **[HUD Housing](etl/sources/hud_housing):**
-- **[HUD Recap](etl/sources/hud_recap):**
-- **[CalEnviroScreen](etl/scores/calenviroscreen):**
+- **[EJSCREEN](etl/sources/ejscreen):** TODO Add description of data source
+- **[Census](etl/sources/census):** TODO Add description of data source
+- **[American Communities Survey](etl/sources/census_acs):** TODO Add description of data source
+- **[Housing and Transportation](etl/sources/housing_and_transportation):** TODO Add description of data source
+- **[HUD Housing](etl/sources/hud_housing):** TODO Add description of data source
+- **[HUD Recap](etl/sources/hud_recap):** TODO Add description of data source
+- **[CalEnviroScreen](etl/scores/calenviroscreen):** TODO Add description of data source
 
 ### Justice40 candidate scores
 
-#### Score A: {TODO Intuitive Name}
+Below we've outlined some experimental versions of the Justice40 score that this comparative tool seeks to compare against the well-established environmental justice indices listed above.
 
-#### Score B: {TODO Intuitive Name}
+>**NOTE:** These scores _**do not**_ represent final versions of the Justice40 scores and are merely used for comparative purposes. As a result, the specific input columns and formulas used to calculate them are likely to change over time.
 
-#### Score C: {TODO Intuitive Name}
+#### Score A
 
-#### Score D: {TODO Intuitive Name}
+TODO add a narrative description of how to interpret this score
 
-#### Score E: {TODO Intuitive Name}
+**Input Columns**
+- {Source Column 1}
+- {Source Column 2}
+- ...
+
+**Formula**
+TODO add formula
+
+#### Score B
+
+TODO add a narrative description of how to interpret this score
+
+**Input Columns**
+- {Source Column 1}
+- {Source Column 2}
+- ...
+
+**Formula**
+TODO add formula
+
+#### Score C
+
+TODO add a narrative description of how to interpret this score
+
+**Input Columns**
+- {Source Column 1}
+- {Source Column 2}
+- ...
+
+**Formula**
+TODO add formula
+
+#### Score D
+
+TODO add a narrative description of how to interpret this score
+
+**Input Columns**
+- {Source Column 1}
+- {Source Column 2}
+- ...
+
+**Formula**
+TODO add formula
+
+#### Score E
+
+TODO add a narrative description of how to interpret this score
+
+**Input Columns**
+- {Source Column 1}
+- {Source Column 2}
+- ...
+
+**Formula**
+TODO add formula
 
 ## Running using Docker
 
