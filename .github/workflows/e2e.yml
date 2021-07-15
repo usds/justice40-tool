@@ -1,6 +1,6 @@
 name: End to end tests
-# on:
-#   push
+on:
+  # push
   schedule:
     # runs tests every day at 12am ET (4am UTC)
     - cron: '0 4 * * *'
