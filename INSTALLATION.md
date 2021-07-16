@@ -5,7 +5,7 @@
 ## Required Software
 You'll need the following set up in your environment before continuing to run the Justice40 Tool code.
 
-- git, node, yarn, gatsby-cli, and an IDE
+- git, node, and an IDE
 
 ### Install Git
 
@@ -33,17 +33,9 @@ Homebrew is an easy way to manage software downloads on MacOS. You don't *have* 
 
 This will work for both MacOS and Win10. Follow instructions on this [link](https://medium.com/@nodesource/installing-node-js-tutorial-using-nvm-5c6ff5925dd8). Be sure to read through the whole doc to find the sections within each step relevant to you (e.g. if you're using Homebrew, when you get to Step 2 look for the section, "Install NVM with Homebrew").
 
+If you install NVM using Homebrew, make sure to read the output in terminal after you run `brew install nvm`. You will need to add a few lines to your ~/.bash_profile and perhaps complete a couple other tasks.
 
-### Install Yarn and Gatsby CLI
-- This is for both MacOS and Win10
-- Note that while this app uses npm as the package manager, yarn is required to build the [uswds](https://github.com/uswds/uswds) library.
-
-1.  Open the terminal and type `sudo npm install -global yarn` and hit RETURN.
-    1. Type `yarn -v` and hit RETURN
-    2. Verify a version number is shown
-2. Open the terminal and type `sudo npm install -global gatsby-cli` and hit RETURN.
-    1. Type `gatsby-cli -v` and hit RETURN
-    2. Verify a version number is shown
+Once you install NVM, don't forget to install Node! This is included in the linked tutorial above.
 
 ### IDE set up
 While any IDE can be used, we're outlining how to set up VS Code
@@ -70,8 +62,8 @@ While any IDE can be used, we're outlining how to set up VS Code
 
 Once you have the required software installed and ready on your computer, you're ready to begin installing and running the Justice40 Tool code.
 
-1. Clone this repo locally. In your terminal/CLI, in the directory you wish to put this repo, run `git clone git@github.com:usds/justice40-tool.git`. 
-2. If you're using a Mac and Homebrew, go ahead and run `brew update` and `brew doctor`. It's always good to run these regularly to make sure your packages are up to date and in good condition. 
+1. Fork this repository and create a clone locally. In your terminal/CLI, in the directory you wish to put this project, run `git clone` plus the URL of your fork. 
+1. If you're using a Mac and Homebrew, go ahead and run `brew update` and `brew doctor`. It's always good to run these regularly to make sure your packages are up to date and in good condition. 
 
 Now, check out the next section on the organization of this repository to determine where to go next.
 

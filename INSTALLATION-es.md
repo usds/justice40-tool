@@ -3,7 +3,7 @@
 *[Read this in English](INSTALLATION.md)*
 
 ## Software requerido
-- git, node, yarn, gatsby-cli, and an IDE
+- git, node, and an IDE
 
 ### Instalar Git
 
@@ -28,23 +28,13 @@ Descargar desde [sitio web](https://git-scm.com/download/win)
 
 Esto funcionará tanto para MacOS como para Win10. Siga las instrucciones de este [enlace](https://medium.com/@nodesource/installing-node-js-tutorial-using-nvm-5c6ff5925dd8)
 
-### Instalar Yarn y Gatsby CLI
-- Esto es para MacOS y Win10
-- Tenga en cuenta que si bien esta aplicación usa npm como administrador de paquetes, se requiere hilo para construir el [uswds](https://github.com/uswds/uswds) library.
-
-1. Abra la terminal y escriba `sudo npm install -global yarn` y presione RETORNO.
-    1. Escribe "yarn -v" y pulsa RETORNO.
-    2. Verifique que se muestre un número de versión
-2. Abra la terminal y escriba `sudo npm install -global gatsby-cli` y presione RETORNO.
-    1. Escribe `gatsby-cli -v` y presiona RETORNO
-    2. Verifique que se muestre un número de versión
 
 ### Configuración de IDE
 Si bien se puede usar cualquier IDE, describimos cómo configurar VS Code
 
 1. Abra la terminal y escriba `brew install --cask visual-studio-code` y presione RETORNO.
     1. Si esto no funciona o para Win10, puede descargar VS Code desde el [sitio web](https://code.visualstudio.com/).
-2. Después de [bifurcar este repositorio](https://github.com/usds/justice40-tool/blob/main/CONTRIBUTING.md#code-contributions), puede clonar su repositorio bifurcado en VS Code
+2. Después de [bifurcar este repositorio](https://github.com/usds/justice40-tool/blob/main/CONTRIBUTING-es.md#colaboraciones-con-c%C3%B3digo), puede clonar su repositorio bifurcado en VS Code
 3. VS Code con el mensaje de "clonar un repositorio"
 4. Abra la terminal y navegue al directorio `cliente`
 5. Escriba `npm install` para cargar las dependencias
@@ -58,3 +48,14 @@ Si bien se puede usar cualquier IDE, describimos cómo configurar VS Code
 3. [Live Share](https://github.com/MicrosoftDocs/live-share)
 4. [Live Share Audio](https://github.com/MicrosoftDocs/live-share)
 5. [Live Share Extention Pack](https://github.com/MicrosoftDocs/live-share)
+
+## Ejecuta el código
+
+1. Bifurcar este repositorio y crear un clon local. [Más información](https://docs.github.com/es/github/getting-started-with-github/quickstart/fork-a-repo)
+1. Si está usando una Mac y Homebrew, abra la terminal y escriba `brew update` y `brew doctor`.
+
+Para el desarrollo de front-end, lea el [Client README](client/README.md).
+
+Para el desorrollo de back-end, lea el [Score README](score/README.md).
+
+Para la implementación de software, lea el [Infrastructure README](infrastructure/README.md).
