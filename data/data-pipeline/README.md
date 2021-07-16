@@ -8,12 +8,12 @@ To build the docker container the first time, make sure you're in the root direc
 
 After that, to run commands type the following:
 
-- Get help: `docker run --rm -it j40_score /bin/sh -c "python3 application.py --help"`
-- Clean up the census data directories: `docker run --rm -it j40_score /bin/sh -c "python3 application.py census-cleanup"`
-- Clean up the data directories: `docker run --rm -it j40_score /bin/sh -c "python3 application.py data-cleanup"`
-- Generate census data: `docker run --rm -it j40_score /bin/sh -c "python3 application.py census-data-download"`
-- Run all ETL processes: `docker run --rm -it j40_score /bin/sh -c "python3 application.py etl-run"`
-- Generate Score: `docker run --rm -it j40_score /bin/sh -c "python3 application.py score-run"`
+- Get help: `docker run --rm -it j40_data_pipeline /bin/sh -c "python3 application.py --help"`
+- Clean up the census data directories: `docker run --rm -it j40_data_pipeline /bin/sh -c "python3 application.py census-cleanup"`
+- Clean up the data directories: `docker run --rm -it j40_data_pipeline /bin/sh -c "python3 application.py data-cleanup"`
+- Generate census data: `docker run --rm -it j40_data_pipeline /bin/sh -c "python3 application.py census-data-download"`
+- Run all ETL processes: `docker run --rm -it j40_data_pipeline /bin/sh -c "python3 application.py etl-run"`
+- Generate Score: `docker run --rm -it j40_data_pipeline /bin/sh -c "python3 application.py score-run"`
 
 ## Log visualization
 
@@ -21,7 +21,7 @@ If you want to visualize logs while running a command, the following temporary w
 
 - Run `docker-compose up` on the root of the repo
 - Open a new tab on your terminal
-- Then run any command for the application using this format: `docker exec j40_score_1 python3 application.py [command]`
+- Then run any command for the application using this format: `docker exec j40_data_pipeline_1 python3 application.py [command]`
 
 ## Local development
 

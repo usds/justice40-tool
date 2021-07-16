@@ -1,8 +1,8 @@
 version: "3.4"
 services:
   score:
-    image: j40_score
-    container_name: j40_score_1
+    image: j40_data_pipeline
+    container_name: j40_data_pipeline_1
     build: score
     ports:
       - 8888:8888
