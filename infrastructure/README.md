@@ -30,6 +30,27 @@ You'll have to grab the arn of the certificate from the log output or go into th
 
     `./node_modules/.bin/serverless deploy --aws-profile <<your profile name from ~/.aws/credentials>> --stage stg --verbose`
 
+## View Our Resources in AWS Console
+
+Sign in and checkout:
+
+https://console.aws.amazon.com/lambda/home?region=us-east-1#/applications/j40-stg-justice40-data-harvester?tab=deploy
+
+to see our Cloudformation template deploys as lambdas. You should see the `j40-stg-justice40-data-harvester` deploy events there. 
+
+To see our functions in the lambda, check out: 
+
+https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/
+
+Right now we just have:
+`stg-DetectChangesForWorker` which has no triggers and just immediately runs when you deploy. Additional work needs to be done to have it run on a cron. That code exists and is currently commented out. 
+
+To view the buckets it writes to in `stg` go to:
+
+https://s3.console.aws.amazon.com/s3/home?region=us-east-1&region=us-east-1
+
+Currently the logging is not setup to write to an internal S3. 
+
 # Warning! This section on is currently unimplemented, partially incorrect, and untested.
 
 ## Testing
