@@ -3,11 +3,11 @@ services:
   score:
     image: j40_data_pipeline
     container_name: j40_data_pipeline_1
-    build: score
+    build: data/data-pipeline
     ports:
       - 8888:8888
     volumes:
-      - ./score:/score
+      - ./data/data-pipeline:/data-pipeline
     stdin_open: true
     tty: true
     environment:
