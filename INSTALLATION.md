@@ -3,7 +3,7 @@
 *[¡Lea esto en español!](INSTALLATION-es.md)*
 
 ## Required Software
-- git, node, yarn, gatsby-cli, and an IDE
+- git, node, yarn and an IDE
 
 ### Install Git
 
@@ -29,16 +29,13 @@ Download from [website](https://git-scm.com/download/win)
 This will work for both MacOS and Win10. Follow instructions on this [link](https://medium.com/@nodesource/installing-node-js-tutorial-using-nvm-5c6ff5925dd8)
 
 
-### Install Yarn and Gatsby CLI
+### Install Yarn
 - This is for both MacOS and Win10
 - Note that while this app uses npm as the package manager, yarn is required to build the [uswds](https://github.com/uswds/uswds) library.
 
-1.  Open the terminal and type `sudo npm install -global yarn` and hit RETURN.
-    1. Type `yarn -v` and hit RETURN
-    2. Verify a version number is shown
-2. Open the terminal and type `sudo npm install -global gatsby-cli` and hit RETURN.
-    1. Type `gatsby-cli -v` and hit RETURN
-    2. Verify a version number is shown
+Open the terminal and type `sudo npm install -global yarn` and hit RETURN.
+1. Type `yarn -v` and hit RETURN
+2. Verify a version number is shown
 
 ### IDE set up
 While any IDE can be used, we're outlining how to set up VS Code
