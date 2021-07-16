@@ -5,13 +5,13 @@
   `ssr` means server-side rendering.
   */
 export const onPreRenderHTML = ({getHeadComponents}) => {
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV !== 'production') { // ONLY run in production
     return;
   }
 
   getHeadComponents().forEach((el) => {
     // Remove inline css. https://github.com/gatsbyjs/gatsby/issues/1526
-    if (el.type === 'style') {
+    if (el.type === 'style' && el.props['data-href']) {
       el.type = 'link';
       el.props['href'] = el.props['data-href'];
       el.props['rel'] = 'stylesheet';
