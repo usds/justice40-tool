@@ -1,0 +1,131 @@
+Resources:
+  Justice40VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      CidrBlock: '10.0.0.0/16'
+      Tags:
+        - Key: Stage
+          Value: ${self:provider.stage}
+        - Key: Name
+          Value: ${self:provider.stage}-vpc
+​
+  PublicSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: us-east-1a
+      VpcId: !Ref Justice40VPC
+      CidrBlock: '10.0.1.0/24'
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Stage
+          Value: ${self:provider.stage}
+        - Key: Name
+          Value: ${self:provider.stage}-vpc-public-subnet
+​
+  PrivateSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: us-east-1a
+      VpcId: !Ref Justice40VPC
+      CidrBlock: '10.0.2.0/24'
+      MapPublicIpOnLaunch: false
+      Tags:
+        - Key: Stage
+          Value: ${self:provider.stage}
+        - Key: Name
+          Value: ${self:provider.stage}-vpc-private-subnet
+​
+  # Create an Internet Gateway for the public subnet and a NAT gateway for
+  # the private subnet
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Stage
+          Value: ${self:provider.stage}
+        - Key: Name
+          Value: ${self:provider.stage}-vpc-internet-gateway
+​
+  GatewayAttachement:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref Justice40VPC
+      InternetGatewayId: !Ref InternetGateway
+​
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref Justice40VPC
+      Tags:
+        - Key: Stage
+          Value: ${self:provider.stage}
+        - Key: Name
+          Value: ${self:provider.stage}-vpc-public-route-table-internet-gateway
+​
+  PublicRoute:
+    Type: AWS::EC2::Route
+    DependsOn: GatewayAttachement
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      DestinationCidrBlock: '0.0.0.0/0'
+      GatewayId: !Ref InternetGateway
+​
+  PublicSubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PublicSubnet
+      RouteTableId: !Ref PublicRouteTable
+​
+  # NAT gateway
+  NatGateway:
+    Type: AWS::EC2::NatGateway
+    DependsOn:
+      - GatewayAttachement
+    Properties:
+      AllocationId:
+        Fn::GetAtt: [ EIP, AllocationId ]
+      SubnetId: !Ref PublicSubnet
+      Tags:
+        - Key: Stage
+          Value: ${self:provider.stage}
+        - Key: Name
+          Value: ${self:provider.stage}-vpc-nat-gateway
+​
+  EIP:
+    Type: AWS::EC2::EIP
+    DependsOn:
+      - GatewayAttachement
+    Properties:
+      Domain: vpc
+      Tags:
+        - Key: Stage
+          Value: ${self:provider.stage}
+        - Key: Name
+          Value: ${self:provider.stage}-vpc-eip-nat-gateway
+​
+  PrivateRouteTableNATGateway:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref Justice40VPC
+      Tags:
+        - Key: Stage
+          Value: ${self:provider.stage}
+        - Key: Name
+          Value: ${self:provider.stage}-vpc-private-route-table-nat-gateway
+​
+  PrivateRouteNATGateway:
+    Type: AWS::EC2::Route
+    DependsOn:
+      - GatewayAttachement
+    Properties:
+      RouteTableId: !Ref PrivateRouteTableNATGateway
+      DestinationCidrBlock: '0.0.0.0/0'
+      NatGatewayId: !Ref NatGateway
+​
+  PrivateSubnetNATGatewayRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PrivateSubnet
+      RouteTableId: !Ref PrivateRouteTableNATGateway

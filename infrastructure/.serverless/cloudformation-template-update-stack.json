@@ -1,0 +1,563 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "The AWS CloudFormation template for this Serverless application",
+  "Resources": {
+    "DetectChangesForWorkerLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/stg-DetectChangesForWorker"
+      }
+    },
+    "IamRoleLambdaExecution": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "lambda.amazonaws.com"
+                ]
+              },
+              "Action": [
+                "sts:AssumeRole"
+              ]
+            }
+          ]
+        },
+        "Policies": [
+          {
+            "PolicyName": {
+              "Fn::Join": [
+                "-",
+                [
+                  "justice40-data-harvester",
+                  "stg",
+                  "lambda"
+                ]
+              ]
+            },
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "logs:CreateLogStream",
+                    "logs:CreateLogGroup"
+                  ],
+                  "Resource": [
+                    {
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/stg-DetectChangesForWorker:*"
+                    }
+                  ]
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "logs:PutLogEvents"
+                  ],
+                  "Resource": [
+                    {
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/stg-DetectChangesForWorker:*:*"
+                    }
+                  ]
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "ecs:RunTask"
+                  ],
+                  "Resource": "*"
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "iam:ListInstanceProfiles",
+                    "iam:ListRoles",
+                    "iam:PassRole"
+                  ],
+                  "Resource": "*"
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:ListBucket"
+                  ],
+                  "Resource": [
+                    {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "arn:aws:s3:::",
+                          {
+                            "Ref": "DataBucket"
+                          },
+                          "/*"
+                        ]
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:DeleteObject",
+                    "s3:GetObject",
+                    "s3:PutObject",
+                    "s3:PutObjectAcl"
+                  ],
+                  "Resource": [
+                    {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "arn:aws:s3:::",
+                          {
+                            "Ref": "DataBucket"
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "Path": "/",
+        "RoleName": {
+          "Fn::Join": [
+            "-",
+            [
+              "justice40-data-harvester",
+              "stg",
+              {
+                "Ref": "AWS::Region"
+              },
+              "lambdaRole"
+            ]
+          ]
+        }
+      }
+    },
+    "DetectChangesForWorkerLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": "j40-stg-us-east-1-justice40-data-harvester",
+          "S3Key": "serverless/justice40-data-harvester/stg/1626206837769-2021-07-13T20:07:17.769Z/justice40-data-harvester.zip"
+        },
+        "Handler": "functions/detect-changes-for-worker/index.handler",
+        "Runtime": "nodejs12.x",
+        "FunctionName": "stg-DetectChangesForWorker",
+        "MemorySize": 512,
+        "Timeout": 900,
+        "Description": "Scans an S3 bucket (with prefix) for items that have changes recently and sends them to ECS Tasks for processing",
+        "Environment": {
+          "Variables": {
+            "REGION": "us-east-1",
+            "STAGE": "stg",
+            "ECS_CLUSTER": {
+              "Ref": "ECSCluster"
+            },
+            "GDAL_TASK_DEFINITION": "stg-justice40-data-harvester-gdal",
+            "GDAL_CONTAINER_DEFINITION": "stg-justice40-data-harvester-osgeo-gdal",
+            "TIPPECANOE_TASK_DEFINITION": "stg-justice40-data-harvester-tippecanoe",
+            "TIPPECANOE_CONTAINER_DEFINITION": "stg-justice40-data-harvester-mgiddens-tippecanoe"
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        }
+      },
+      "DependsOn": [
+        "DetectChangesForWorkerLogGroup"
+      ]
+    },
+    "DetectChangesForWorkerLambdaVersionn8C9nBDUXettan8JtiSiIjR3m19lt6Sd0pYmyiu2h4": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "DetectChangesForWorkerLambdaFunction"
+        },
+        "CodeSha256": "mvESd2wjGf0ujMF2uIceSaXnkxPxTj/X3AlB2bxCcTE=",
+        "Description": "Scans an S3 bucket (with prefix) for items that have changes recently and sends them to ECS Tasks for processing"
+      }
+    },
+    "DataBucket": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": "j40-stg-justice40-data-harvester-data",
+        "AccessControl": "PublicRead",
+        "CorsConfiguration": {
+          "CorsRules": [
+            {
+              "AllowedOrigins": [
+                "*"
+              ],
+              "AllowedMethods": [
+                "GET"
+              ],
+              "AllowedHeaders": [
+                "Content-Length"
+              ]
+            }
+          ]
+        },
+        "WebsiteConfiguration": {
+          "IndexDocument": "index.html",
+          "ErrorDocument": "error.html"
+        }
+      }
+    },
+    "S3DataBucketPolicyCDN": {
+      "Type": "AWS::S3::BucketPolicy",
+      "Properties": {
+        "Bucket": {
+          "Ref": "DataBucket"
+        },
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "s3:GetObject"
+              ],
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:aws:s3:::",
+                    {
+                      "Ref": "DataBucket"
+                    },
+                    "/*"
+                  ]
+                ]
+              },
+              "Principal": "*"
+            }
+          ]
+        }
+      }
+    },
+    "ECSCluster": {
+      "Type": "AWS::ECS::Cluster",
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Stage",
+            "Value": "stg"
+          },
+          {
+            "Key": "Namespace",
+            "Value": "justice40"
+          },
+          {
+            "Key": "Name",
+            "Value": "j40-stg-ecs-cluster"
+          }
+        ]
+      }
+    },
+    "ECSTaskExecutionRoleShared": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "ecs-tasks.amazonaws.com"
+                ]
+              },
+              "Action": [
+                "sts:AssumeRole"
+              ]
+            }
+          ]
+        },
+        "Path": "/",
+        "Policies": [
+          {
+            "PolicyName": "AmazonECSTaskExecutionRolePolicy",
+            "PolicyDocument": {
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "logs:CreateLogStream",
+                    "logs:PutLogEvents",
+                    "logs:CreateLogStream",
+                    "logs:DescribeLogStreams"
+                  ],
+                  "Resource": "*"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "ECSTaskRoleShared": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "ecs-tasks.amazonaws.com"
+              },
+              "Action": [
+                "sts:AssumeRole"
+              ]
+            }
+          ]
+        },
+        "Path": "/",
+        "Policies": [
+          {
+            "PolicyName": "stg-justice40-data-harvester-task-policy",
+            "PolicyDocument": {
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "secretsmanager:GetSecretValue"
+                  ],
+                  "Resource": "*"
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "kms:Decrypt"
+                  ],
+                  "Resource": "*"
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "events:PutEvents"
+                  ],
+                  "Resource": [
+                    {
+                      "Fn::Sub": "arn:aws:events:us-east-1:${AWS::AccountId}:*"
+                    }
+                  ]
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:GetBucketAcl",
+                    "s3:ListBucket",
+                    "s3:ListBucketMultipartUploads"
+                  ],
+                  "Resource": [
+                    "arn:aws:s3:::j40-stg-justice40-data-harvester-data"
+                  ]
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:PutObject",
+                    "s3:PutObjectAcl",
+                    "s3:GetObject",
+                    "s3:GetObjectAcl",
+                    "s3:GetObjectVersion",
+                    "s3:GetObjectVersionAcl",
+                    "s3:DeleteObject",
+                    "s3:DeleteObjectVersion",
+                    "s3:AbortMultipartUpload",
+                    "s3:ListMultipartUploadParts"
+                  ],
+                  "Resource": [
+                    "arn:aws:s3:::j40-stg-justice40-data-harvester-data/*"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "TaskDefinitionOgr2Ogr": {
+      "Type": "AWS::ECS::TaskDefinition",
+      "Properties": {
+        "Family": "stg-justice40-data-harvester-gdal",
+        "Cpu": 1024,
+        "Memory": 2048,
+        "NetworkMode": "awsvpc",
+        "RequiresCompatibilities": [
+          "FARGATE"
+        ],
+        "ExecutionRoleArn": {
+          "Fn::GetAtt": [
+            "ECSTaskExecutionRoleShared",
+            "Arn"
+          ]
+        },
+        "TaskRoleArn": {
+          "Fn::GetAtt": [
+            "ECSTaskRoleShared",
+            "Arn"
+          ]
+        },
+        "ContainerDefinitions": [
+          {
+            "Name": "stg-justice40-data-harvester-osgeo-gdal",
+            "Cpu": 1024,
+            "Memory": 2048,
+            "Image": "osgeo/gdal:alpine-small-latest",
+            "Environment": [
+              {
+                "Name": "REGION",
+                "Value": "us-east-1"
+              },
+              {
+                "Name": "STAGE",
+                "Value": "stg"
+              },
+              {
+                "Name": "NODE_ENV",
+                "Value": "stg"
+              },
+              {
+                "Name": "ENV_NAME",
+                "Value": "stg"
+              }
+            ],
+            "LogConfiguration": {
+              "LogDriver": "awslogs",
+              "Options": {
+                "awslogs-group": "stg-justice40-data-harvester",
+                "awslogs-region": "us-east-1",
+                "awslogs-stream-prefix": "justice40-data-harvester"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "TaskDefinitionTippecanoe": {
+      "Type": "AWS::ECS::TaskDefinition",
+      "Properties": {
+        "Family": "stg-justice40-data-harvester-tippecanoe",
+        "Cpu": 1024,
+        "Memory": 2048,
+        "NetworkMode": "awsvpc",
+        "RequiresCompatibilities": [
+          "FARGATE"
+        ],
+        "ExecutionRoleArn": {
+          "Fn::GetAtt": [
+            "ECSTaskExecutionRoleShared",
+            "Arn"
+          ]
+        },
+        "TaskRoleArn": {
+          "Fn::GetAtt": [
+            "ECSTaskRoleShared",
+            "Arn"
+          ]
+        },
+        "ContainerDefinitions": [
+          {
+            "Name": "stg-justice40-data-harvester-mgiddens-tippecanoe",
+            "Cpu": 1024,
+            "Memory": 2048,
+            "Image": "mikegiddens/tippecanoe:latest",
+            "Environment": [
+              {
+                "Name": "REGION",
+                "Value": "us-east-1"
+              },
+              {
+                "Name": "STAGE",
+                "Value": "stg"
+              },
+              {
+                "Name": "NODE_ENV",
+                "Value": "stg"
+              },
+              {
+                "Name": "ENV_NAME",
+                "Value": "stg"
+              }
+            ],
+            "LogConfiguration": {
+              "LogDriver": "awslogs",
+              "Options": {
+                "awslogs-group": "stg-justice40-data-harvester",
+                "awslogs-region": "us-east-1",
+                "awslogs-stream-prefix": "justice40-data-harvester"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "ARecordDataHarvester": {
+      "Type": "AWS::Route53::RecordSetGroup",
+      "Condition": "ShouldOnlyCreateResourcesInSIT",
+      "Properties": {
+        "HostedZoneId": "TBD",
+        "RecordSets": [
+          {
+            "Name": "stg-justice40-data-harvester.TBD.",
+            "Type": "A",
+            "AliasTarget": {
+              "HostedZoneId": "Z2FDTNDATAQYW2"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "Outputs": {
+    "ServerlessDeploymentBucketName": {
+      "Value": "j40-stg-us-east-1-justice40-data-harvester",
+      "Export": {
+        "Name": "sls-justice40-data-harvester-stg-ServerlessDeploymentBucketName"
+      }
+    },
+    "DetectChangesForWorkerLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "DetectChangesForWorkerLambdaVersionn8C9nBDUXettan8JtiSiIjR3m19lt6Sd0pYmyiu2h4"
+      },
+      "Export": {
+        "Name": "sls-justice40-data-harvester-stg-DetectChangesForWorkerLambdaFunctionQualifiedArn"
+      }
+    }
+  },
+  "Conditions": {
+    "ShouldOnlyCreateResourcesInSIT": {
+      "Fn::Equals": [
+        "stg",
+        "sit"
+      ]
+    },
+    "ShouldOnlyCreateResourcesInPRD": {
+      "Fn::Equals": [
+        "stg",
+        "prd"
+      ]
+    }
+  },
+  "Parameters": {
+    "ServiceNameOgr2Ogr": {
+      "Type": "String",
+      "Default": "ogr2ogr-gdal-3.6",
+      "Description": "The name of the service"
+    }
+  }
+}

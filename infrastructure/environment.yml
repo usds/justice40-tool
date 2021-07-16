@@ -16,13 +16,15 @@ stg:
   DEPLOYMENT_BUCKET_PREFIX: ${self:custom.namespaceShort}
   STACK_NAME_PREFIX: "${self:custom.namespaceShort}-"
   DATA_BUCKET: ${self:custom.environment.DEPLOYMENT_BUCKET_PREFIX}-${self:provider.stage}-${self:service}-data
-  SHOULD_CREATE_SSL_CERTIFICATE: false
+  SHOULD_CREATE_SSL_CERTIFICATE: true
   HOSTED_ZONE_ID_DOMAIN: TBD
   HOSTED_ZONE_SUBDOMAIN: ${self:provider.stage}-${self:service}
   HOSTED_ZONE_DOMAIN: TBD
   CLOUDFRONT_CERTIFICATE_ARN: TBD
+  GDAL_TASK_DEFINITION_NAME: ${self:provider.stage}-${self:service}-gdal
   GDAL_CONTAINER_DEFINITION_NAME: ${self:provider.stage}-${self:service}-osgeo-gdal
-  TIPPECANOE_CONTAINER_DEFINITION_NAME: ${self:provider.stage}-${self:service}-tippecanoe
+  TIPPECANOE_TASK_DEFINITION_NAME: ${self:provider.stage}-${self:service}-tippecanoe
+  TIPPECANOE_CONTAINER_DEFINITION_NAME: ${self:provider.stage}-${self:service}-mgiddens-tippecanoe
 
 prd:
   DEPLOYMENT_BUCKET_PREFIX: ${self:custom.namespaceShort}

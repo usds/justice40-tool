@@ -66,15 +66,15 @@ custom:
   namespace: justice40 # Used to tag resources with a "Namespace".
   namespaceShort: j40 # Used to prefix stack name, deployment bucket, resource "Name" tags, etc.
 
-  customCertificate:
-    certificateName: ${self:provider.stage}-${self:service}.${self:custom.environment.HOSTED_ZONE_DOMAIN}
-    hostedZoneIds: ${self:custom.environment.HOSTED_ZONE_ID_DOMAIN}
-    region: ${self:provider.region}
-    tags:
-      Name: ${self:provider.stage}-${self:service}.${self:custom.environment.HOSTED_ZONE_DOMAIN}
-      Environment: ${self:provider.stage}
-    rewriteRecords: true
-    enabled: ${self:custom.environment.SHOULD_CREATE_SSL_CERTIFICATE}
+  # customCertificate:
+  #   certificateName: ${self:provider.stage}-${self:service}.${self:custom.environment.HOSTED_ZONE_DOMAIN}
+  #   hostedZoneIds: ${self:custom.environment.HOSTED_ZONE_ID_DOMAIN}
+  #   region: ${self:provider.region}
+  #   tags:
+  #     Name: ${self:provider.stage}-${self:service}.${self:custom.environment.HOSTED_ZONE_DOMAIN}
+  #     Environment: ${self:provider.stage}
+  #   rewriteRecords: true
+  #   enabled: ${self:custom.environment.SHOULD_CREATE_SSL_CERTIFICATE}
 
 
 functions: ${file(./functions.yml)}

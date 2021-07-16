@@ -1,22 +1,42 @@
-## create acm certificate
+# Current steps for local & stg:
 
-This only needs to be run once for the `sit` environment.  stg and prd, we're assuming some other certificate arn will be used
+## Assumptions
 
-    npx serverless create-cert 
+Make sure you have previously run
 
-you'll have to grab the arn of the certificate from the log output or go into the console to get it, looks like the plugin doesn't work any more.  Set CLOUDFRONT_CERTIFICATE_ARN in sit to that value
+`npm install`
 
-## deploy
+and this assumes you have set up an AWS account and have your CLI programmatic access stored in:
 
-    sls deploy --aws-profile geoplatform --stage sit --verbose
+OSX:
+`~/.aws/credentials`
 
-If it's the first time deploying, you'll have to create a dns entry that points to the cloudfront distribution.
+Windows:
+`C:\Users\USERNAME\.aws\credentials`
 
-## testing
+## Create ACM Certificate
+
+This only needs to be run once for the `stg` environment.  Prd (not yet created: tbd) will be assuming some other certificate arn will be used.
+
+    `npx serverless create-cert`
+
+You'll have to grab the arn of the certificate from the log output or go into the console to get it, looks like the plugin doesn't work any more.  Set CLOUDFRONT_CERTIFICATE_ARN in sit to that value.
+
+## How To Deploy
+
+    `sls deploy --aws-profile <<your profile name from ~/.aws/credentials>> --stage stg --verbose`
+
+* Note: if sls doesn't work for you, try running this command inside /infrastructure: 
+
+    `./node_modules/.bin/serverless deploy --aws-profile <<your profile name from ~/.aws/credentials>> --stage stg --verbose`
+
+# Warning! This section on is currently unimplemented, partially incorrect, and untested.
+
+## Testing
 
 The examples can be run several different ways
 
-### local
+### Local
 
 The `package.json` file incluses several examples to run against the local source code.  The actual 
 tasks will execute within AWS, so an `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` must be set in
@@ -27,7 +47,7 @@ $ cd ./functions/detect-changes-for-worker
 $ npm run test:gdal
 ```
 
-### lambda invoke
+### Lambda invoke
 
 The deployed lambda functions can be directly invoked with the `serverless invoke` function.
 

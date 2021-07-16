@@ -148,3 +148,4 @@ node_modules
 
 # pyenv
 .python-version
+cython_debug/.serverless/
