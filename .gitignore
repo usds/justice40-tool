@@ -130,15 +130,10 @@ dmypy.json
 cython_debug/
 
 # Ignore dynaconf secret files
-score/.secrets.*
+data/data-pipeline/.secrets.*
 
 # ignore data
-score/data
-score/data/census
-score/data/tiles
-score/data/tmp
-score/data/dataset
-score/data/score
+data/data-pipeline/data/*
 
 # node
 node_modules
