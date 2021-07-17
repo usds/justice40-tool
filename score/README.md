@@ -10,7 +10,7 @@
     - [Workflow Diagram](#workflow-diagram)
     - [Step 0: Set up your environment](#step-0-set-up-your-environment)
     - [Step 1: Run the ETL script for each data source](#step-1-run-the-etl-script-for-each-data-source)
-    - [Step 2: Calculate the Justice40 scores](#step-2-calculate-the-justice40-scores)
+    - [Step 2: Calculate the Justice40 score experiments](#step-2-calculate-the-justice40-score-experiments)
     - [Step 3: Compare the Justice40 score experiments to other indices](#step-3-compare-the-justice40-score-experiments-to-other-indices)
   - [Data Sources](#data-sources)
 - [Running using Docker](#running-using-docker)
@@ -61,7 +61,7 @@ TODO add mermaid diagram
 _**NOTE:** You have the option to pass the name of a specific data source to the `etl-run` command, which will limit the execution of the ETL process to that specific data source._
 _For example: `poetry run python application.py etl-run ejscreen` would only run the ETL process for EJSCREEN data._
 
-#### Step 2: Calculate the Justice40 scores
+#### Step 2: Calculate the Justice40 score experiments
 
 1. Call the `score-run` command using the application manager `application.py` **NOTE:** This may take several minutes to execute.
    - With Docker: `docker run --rm -it j40_score /bin/sh -c "python3 application.py score-run"`
