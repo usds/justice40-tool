@@ -9,9 +9,7 @@ logger = get_module_logger(__name__)
 
 class HousingTransportationETL(ExtractTransformLoad):
     def __init__(self):
-        self.HOUSING_FTP_URL = (
-            "https://htaindex.cnt.org/download/download.php?focus=blkgrp&geoid="
-        )
+        self.HOUSING_FTP_URL = "https://htaindex.cnt.org/download/download.php?focus=blkgrp&geoid="
         self.OUTPUT_PATH = (
             self.DATA_PATH / "dataset" / "housing_and_transportation_index"
         )
@@ -30,7 +28,9 @@ class HousingTransportationETL(ExtractTransformLoad):
             )
 
             # New file name:
-            tmp_csv_file_path = zip_file_dir / f"htaindex_data_blkgrps_{fips}.csv"
+            tmp_csv_file_path = (
+                zip_file_dir / f"htaindex_data_blkgrps_{fips}.csv"
+            )
             tmp_df = pd.read_csv(filepath_or_buffer=tmp_csv_file_path)
 
             dfs.append(tmp_df)
@@ -44,9 +44,9 @@ class HousingTransportationETL(ExtractTransformLoad):
 
         # Rename and reformat block group ID
         self.df.rename(columns={"blkgrp": self.GEOID_FIELD_NAME}, inplace=True)
-        self.df[self.GEOID_FIELD_NAME] = self.df[self.GEOID_FIELD_NAME].str.replace(
-            '"', ""
-        )
+        self.df[self.GEOID_FIELD_NAME] = self.df[
+            self.GEOID_FIELD_NAME
+        ].str.replace('"', "")
 
     def load(self) -> None:
         logger.info(f"Saving Housing and Transportation Data")

@@ -81,7 +81,9 @@ class ScoreETL(ExtractTransformLoad):
         )
 
         # Load HUD housing data
-        hud_housing_csv = self.DATA_PATH / "dataset" / "hud_housing" / "usa.csv"
+        hud_housing_csv = (
+            self.DATA_PATH / "dataset" / "hud_housing" / "usa.csv"
+        )
         self.hud_housing_df = pd.read_csv(
             hud_housing_csv,
             dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
@@ -107,7 +109,9 @@ class ScoreETL(ExtractTransformLoad):
 
         # Sanity check the join.
         if (
-            len(census_block_group_df[self.GEOID_FIELD_NAME].str.len().unique())
+            len(
+                census_block_group_df[self.GEOID_FIELD_NAME].str.len().unique()
+            )
             != 1
         ):
             raise ValueError(

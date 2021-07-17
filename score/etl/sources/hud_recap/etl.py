@@ -17,7 +17,9 @@ class HudRecapETL(ExtractTransformLoad):
         self.CSV_PATH = self.DATA_PATH / "dataset" / "hud_recap"
 
         # Definining some variable names
-        self.HUD_RECAP_PRIORITY_COMMUNITY_FIELD_NAME = "hud_recap_priority_community"
+        self.HUD_RECAP_PRIORITY_COMMUNITY_FIELD_NAME = (
+            "hud_recap_priority_community"
+        )
 
         self.df: pd.DataFrame
 
@@ -33,7 +35,9 @@ class HudRecapETL(ExtractTransformLoad):
         logger.info(f"Transforming HUD Recap Data")
 
         # Load comparison index (CalEnviroScreen 4)
-        self.df = pd.read_csv(self.HUD_RECAP_CSV, dtype={"Census Tract": "string"})
+        self.df = pd.read_csv(
+            self.HUD_RECAP_CSV, dtype={"Census Tract": "string"}
+        )
 
         self.df.rename(
             columns={

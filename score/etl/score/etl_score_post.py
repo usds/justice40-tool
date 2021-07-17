@@ -59,7 +59,9 @@ class PostScoreETL(ExtractTransformLoad):
         self.states_df = pd.read_csv(
             self.STATE_CSV, dtype={"fips": "string", "state_code": "string"}
         )
-        self.score_df = pd.read_csv(self.SCORE_CSV, dtype={"GEOID10": "string"})
+        self.score_df = pd.read_csv(
+            self.SCORE_CSV, dtype={"GEOID10": "string"}
+        )
 
     def transform(self) -> None:
         logger.info(f"Transforming data sources for Score + County CSV")

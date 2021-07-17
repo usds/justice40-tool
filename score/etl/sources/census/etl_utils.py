@@ -3,7 +3,11 @@ import csv
 import os
 from config import settings
 
-from utils import remove_files_from_dir, remove_all_dirs_from_dir, unzip_file_from_url
+from utils import (
+    remove_files_from_dir,
+    remove_all_dirs_from_dir,
+    unzip_file_from_url,
+)
 
 
 def reset_data_directories(data_path: Path) -> None:
