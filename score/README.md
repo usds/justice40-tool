@@ -8,16 +8,11 @@
 - [About this application](#about-this-application)
   - [Score comparison workflow](#score-comparison-workflow)
     - [Workflow Diagram](#workflow-diagram)
+    - [Step 0: Set up your environment](#step-0-set-up-your-environment)
     - [Step 1: Run the ETL script for each data source](#step-1-run-the-etl-script-for-each-data-source)
     - [Step 2: Calculate the Justice40 scores](#step-2-calculate-the-justice40-scores)
-    - [Step 3: Compare the Justice40 scores to other indices](#step-3-compare-the-justice40-scores-to-other-indices)
+    - [Step 3: Compare the Justice40 score experiments to other indices](#step-3-compare-the-justice40-score-experiments-to-other-indices)
   - [Data Sources](#data-sources)
-  - [Justice40 candidate scores](#justice40-candidate-scores)
-    - [Score A](#score-a)
-    - [Score B](#score-b)
-    - [Score C](#score-c)
-    - [Score D](#score-d)
-    - [Score E](#score-e)
 - [Running using Docker](#running-using-docker)
 - [Log visualization](#log-visualization)
 - [Local development](#local-development)
@@ -34,37 +29,50 @@
 
 ## About this application
 
-This application is used to compare experimental versions of the Justice40 score to established environmental justice indices, such as EJSCREEN, CalEnviroScreen, and so on. The goal of this comparison is to identify the
+This application is used to compare experimental versions of the Justice40 score to established environmental justice indices, such as EJSCREEN, CalEnviroScreen, and so on.
+
+_**NOTE:** These scores **do not** represent final versions of the Justice40 scores and are merely used for comparative purposes. As a result, the specific input columns and formulas used to calculate them are likely to change over time._
+
 
 ### Score comparison workflow
+
+The descriptions below provide a more detailed outline of what happens at each step of ETL and score calculation workflow.
 
 #### Workflow Diagram
 
 TODO add mermaid diagram
 
+#### Step 0: Set up your environment
+
+1. After cloning the project locally, change to this directory: `cd score`
+1. Choose whether you'd like to run this application using Docker or if you'd like to install the dependencies locally so you can contribute to the project.
+    - **With Docker:** Follow these [installation instructions](https://docs.docker.com/get-docker/) and skip down to the [Running with Docker section](#running-with-docker) for more information
+    - **For Local Development:** Skip down to the [Local Development section](#local-development) for more detailed installation instructions
+
+
 #### Step 1: Run the ETL script for each data source
 
-1. Call the `etl-run` command using the application manager `application.py`
+1. Call the `etl-run` command using the application manager `application.py` **NOTE:** This may take several minutes to execute.
    - With Docker: `docker run --rm -it j40_score /bin/sh -c "python3 application.py etl-run"`
    - With Poetry: `poetry run python application.py etl-run`
 1. The `etl-run` command will execute the corresponding ETL script for each data source in `etl/sources/`. For example, `etl/sources/ejscreen/etl.py` is the ETL script for EJSCREEN data.
 1. Each ETL script will extract the data from its original source, then format the data into `.csv` files that get stored in the relevant folder in `data/dataset/`. For example, HUD Housing data is stored in `data/dataset/hud_housing/usa.csv`
 
->**NOTE:** You have the option to pass the name of a specific data source to the `etl-run` command, which will limit the execution of the ETL process to that specific data source.
-> For example: `poetry run python application.py etl-run ejscreen` would only run the ETL process for EJSCREEN data.
+_**NOTE:** You have the option to pass the name of a specific data source to the `etl-run` command, which will limit the execution of the ETL process to that specific data source._
+_For example: `poetry run python application.py etl-run ejscreen` would only run the ETL process for EJSCREEN data._
 
 #### Step 2: Calculate the Justice40 scores
 
-1. Call the `score-run` command using the application manager `application.py`
+1. Call the `score-run` command using the application manager `application.py` **NOTE:** This may take several minutes to execute.
    - With Docker: `docker run --rm -it j40_score /bin/sh -c "python3 application.py score-run"`
    - With Poetry: `poetry run python application.py score-run`
 1. The `score-run` command will execute the `etl/score/etl.py` script which loads the data from each of the source files added to the `data/dataset/` directory by the ETL scripts in Step 1.
 1. These data sets are merged into a single dataframe using their Census Block Group GEOID as a common key, and the data in each of the columns is standardized in two ways:
     - Their [percentile rank](https://en.wikipedia.org/wiki/Percentile_rank) is calculated, which tells us what percentage of other Census Block Groups have a lower value for that particular column.
     - They are normalized using [min-max normalization](https://en.wikipedia.org/wiki/Feature_scaling), which adjusts the scale of the data so that the Census Block Group with the highest value for that column is set to 1, the Census Block Group with the lowest value is set to 0, and all of the other values are adjusted to fit within that range based on how close they were to the highest or lowest value.
-1. The standardized columns are then used to calculate each of the [Justice40 candidate scores](#justice40-candidate-scores) described in greater detail below, and the results are exported to a `.csv` file in [`data/score/csv`](data/score/csv)
+1. The standardized columns are then used to calculate each of the Justice40 score experiments described in greater detail below, and the results are exported to a `.csv` file in [`data/score/csv`](data/score/csv)
 
-#### Step 3: Compare the Justice40 scores to other indices
+#### Step 3: Compare the Justice40 score experiments to other indices
 
 1. TODO: Describe the steps for this
 
@@ -78,71 +86,6 @@ TODO add mermaid diagram
 - **[HUD Recap](etl/sources/hud_recap):** TODO Add description of data source
 - **[CalEnviroScreen](etl/scores/calenviroscreen):** TODO Add description of data source
 
-### Justice40 candidate scores
-
-Below we've outlined some experimental versions of the Justice40 score that this comparative tool seeks to compare against the well-established environmental justice indices listed above.
-
->**NOTE:** These scores _**do not**_ represent final versions of the Justice40 scores and are merely used for comparative purposes. As a result, the specific input columns and formulas used to calculate them are likely to change over time.
-
-#### Score A
-
-TODO add a narrative description of how to interpret this score
-
-**Input Columns**
-- {Source Column 1}
-- {Source Column 2}
-- ...
-
-**Formula**
-TODO add formula
-
-#### Score B
-
-TODO add a narrative description of how to interpret this score
-
-**Input Columns**
-- {Source Column 1}
-- {Source Column 2}
-- ...
-
-**Formula**
-TODO add formula
-
-#### Score C
-
-TODO add a narrative description of how to interpret this score
-
-**Input Columns**
-- {Source Column 1}
-- {Source Column 2}
-- ...
-
-**Formula**
-TODO add formula
-
-#### Score D
-
-TODO add a narrative description of how to interpret this score
-
-**Input Columns**
-- {Source Column 1}
-- {Source Column 2}
-- ...
-
-**Formula**
-TODO add formula
-
-#### Score E
-
-TODO add a narrative description of how to interpret this score
-
-**Input Columns**
-- {Source Column 1}
-- {Source Column 2}
-- ...
-
-**Formula**
-TODO add formula
 
 ## Running using Docker
 
