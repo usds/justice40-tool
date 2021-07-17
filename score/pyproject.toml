@@ -3,6 +3,9 @@ name = "score"
 version = "0.1.0"
 description = "ETL and Generation of Justice 40 Score"
 authors = ["Your Name <you@example.com>"]
+packages = [
+    { include = "etl" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.7.1"
@@ -27,3 +30,31 @@ flake8 = "^3.9.2"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+# configures some basic black settings per this article:
+# https://ljvmiranda921.github.io/notebook/2018/06/21/precommits-using-black-and-flake8/
+[tool.black]
+line-length = 79
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | \.env
+  | _build
+  | buck-out
+  | build
+  | dist
+  | env
+)/
+'''
+
+[tool.pylint."MESSAGE CONTROL"]
+disable = [
+  "C0114",  # Disables module docstrings
+  "R0201",  # Disables method could have been a function
+  "R0903"  # Disables too few public methods
+]
