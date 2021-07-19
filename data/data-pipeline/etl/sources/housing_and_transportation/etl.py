@@ -27,8 +27,7 @@ class HousingTransportationETL(ExtractTransformLoad):
             )
 
             # Puerto Rico has no data, so skip
-            breakpoint()
-            if fips == 72:
+            if fips == "72":
                 continue
 
             unzip_file_from_url(
