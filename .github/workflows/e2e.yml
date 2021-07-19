@@ -1,8 +1,14 @@
+# Full command list of cypress github actions:
+#   https://github.com/cypress-io/github-action#cypress-iogithub-action--
+
 name: End to end tests
 on:
-  # push
+  # To run tests on the push event of a specific branch:
+  # push:
+  #   branches:
+  #     - vimusds/cypress-debug-download
   schedule:
-    # runs tests every day at 12am ET (4am UTC)
+    # runs tests every day at 12am ET (4am UTC):
     - cron: '0 4 * * *'
 jobs: 
   nightly:
@@ -18,3 +24,5 @@ jobs:
           working-directory: ${{env.working-directory}}
           start: npm start
           wait-on: 'http://localhost:8000'
+          # To run only specific spec/tests:
+          # spec: cypress/e2e/downloadPacket.spec.js
