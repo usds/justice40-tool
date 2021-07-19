@@ -140,9 +140,6 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
         'source': constants.HIGH_SCORE_SOURCE_NAME,
         'source-layer': constants.SCORE_SOURCE_LAYER,
         'type': 'fill',
-        'filter': ['all',
-          ['>', constants.SCORE_PROPERTY_HIGH, constants.SCORE_BOUNDARY_THRESHOLD],
-        ],
         'paint': makePaint({
           field: constants.SCORE_PROPERTY_HIGH,
           minRamp: constants.SCORE_BOUNDARY_LOW,
