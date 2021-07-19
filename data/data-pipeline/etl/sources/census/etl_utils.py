@@ -56,7 +56,11 @@ def get_state_fips_codes(data_path: Path) -> list:
     return fips_state_list
 
 
-def get_state_information(data_path: Path) -> list:
+def get_state_information(data_path: Path) -> pd.DataFrame:
+    """Load the full state file as a dataframe.
+
+    Useful because of the state regional information.
+    """
     fips_csv_path = data_path / "census" / "csv" / "fips_states_2010.csv"
 
     df = pd.read_csv(fips_csv_path)
