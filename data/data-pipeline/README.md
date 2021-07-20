@@ -38,7 +38,7 @@ You can run the Python code locally without Docker to develop, using Poetry. How
 
 - Make sure you have Docker running in your machine
 - Start a terminal
-- Change to this directory (i.e. `cd score`)
+- Change to this directory (i.e. `cd data/data-pipeline`)
 - If you want to clear out all data and tiles from all directories, you can run: `poetry run python application.py data-cleanup`.
 - Then run `poetry run python application.py census-data-download`
   Note: Census files are not kept in the repository and the download directories are ignored by Git
@@ -50,18 +50,18 @@ You can run the Python code locally without Docker to develop, using Poetry. How
 ### Serve the map locally
 
 - Start a terminal
-- Change to this directory (i.e. `cd score`)
+- Change to this directory (i.e. `cd data/data-pipeline`)
 - Run: `docker run --rm -it -v ${PWD}/data/tiles:/data -p 8080:80 maptiler/tileserver-gl`
 
 ### Running Jupyter notebooks
 
 - Start a terminal
-- Change to this directory (i.e. `cd score`)
+- Change to this directory (i.e. `cd data/data-pipeline`)
 - Run `poetry run jupyter notebook`. Your browser should open with a Jupyter Notebook tab
 
 ### Activating variable-enabled Markdown for Jupyter notebooks
 
-- Change to this directory (i.e. `cd score`)
+- Change to this directory (i.e. `cd data/data-pipeline`)
 - Activate a Poetry Shell (see above)
 - Run `jupyter contrib nbextension install --user`
 - Run `jupyter nbextension enable python-markdown/main`
