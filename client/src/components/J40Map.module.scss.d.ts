@@ -1,5 +1,6 @@
 declare namespace J40MapModuleScssNamespace {
   export interface IJ40MapModuleScss {
+    mapRow: string;
     mapContainer: string;
     j40Popup: string;
     territoryFocusButton: string;
@@ -7,6 +8,7 @@ declare namespace J40MapModuleScssNamespace {
     navigationControl: string;
     fullscreenControl: string;
     geolocateControl: string;
+    detailView: string;
   }
 }
 

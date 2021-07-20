@@ -1,7 +1,12 @@
 $sidebar-background: rgba(35, 55, 75, 0.9);
 $sidebar-color: #ffffff;
 
+.mapRow{
+  display: flex;
+}
+
 .mapContainer {
+  flex: 1 0 75%;
   height: 676px;
 }
 
@@ -24,4 +29,9 @@ $sidebar-color: #ffffff;
 .geolocateControl {
   right: 1.25em;
   top: 5em;
+}
+
+.detailView {
+  flex: 1 0 25%;
+  border: 1px solid lightgray;
 }

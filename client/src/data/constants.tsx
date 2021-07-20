@@ -22,6 +22,12 @@ export const HIGH_SCORE_LAYER_NAME = 'score-high-layer';
 export const LOW_SCORE_SOURCE_NAME = 'score-low';
 export const LOW_SCORE_LAYER_NAME = 'score-low-layer';
 export const SELECTED_PROPERTY = 'selected';
+export const POVERTY_PROPERTY_PERCENTILE = 'Poverty (Less than 200% of federal poverty line) (percentile)';
+export const HOUSING_BURDEN_PROPERTY_PERCENTILE = 'Housing burden (percent) (percentile)';
+export const LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE = 'Linguistic isolation (percent) (percentile)';
+export const UNEMPLOYMENT_PROPERTY_PERCENTILE = 'Unemployed civilians (percent) (percentile)';
+// eslint-disable-next-line max-len
+export const EDUCATION_PROPERTY_PERCENTILE = 'Percent individuals age 25 or over with less than high school degree (percentile)';
 
 // The name of the layer within the tiles that contains the score
 export const SCORE_SOURCE_LAYER = 'blocks';

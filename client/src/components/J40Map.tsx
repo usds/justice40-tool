@@ -7,12 +7,12 @@ import ReactMapGL, {
   WebMercatorViewport,
   NavigationControl,
   GeolocateControl,
-  Popup,
   FlyToInterpolator,
   FullscreenControl,
   MapRef} from 'react-map-gl';
 import {makeMapStyle} from '../data/mapStyle';
 import AreaDetail from './areaDetail';
+import DidYouKnow from './didYouKnow';
 import bbox from '@turf/bbox';
 import * as d3 from 'd3-ease';
 import {useFlags} from '../contexts/FlagContext';
@@ -164,7 +164,7 @@ const J40Map = () => {
   };
 
   return (
-    <>
+    <div className={styles.mapRow}>
       <ReactMapGL
         {...viewport}
         className={styles.mapContainer}
@@ -184,21 +184,6 @@ const J40Map = () => {
         onTransitionEnd={onTransitionEnd}
         ref={mapRef}
       >
-        {(detailViewData && !transitionInProgress) && (
-          <Popup
-            className={styles.j40Popup}
-            tipSize={5}
-            anchor="top"
-            longitude={detailViewData.longitude!}
-            latitude={detailViewData.latitude!}
-            closeOnClick={true}
-            onClose={setDetailViewData}
-            captureScroll={true}
-          >
-            <AreaDetail properties={detailViewData.properties} />
-          </Popup>
-        )}
-
         <NavigationControl
           showCompass={false}
           className={styles.navigationControl}
@@ -214,7 +199,13 @@ const J40Map = () => {
         <TerritoryFocusControl onClickTerritoryFocusButton={onClickTerritoryFocusButton}/>
         {'fs' in flags ? <FullscreenControl className={styles.fullscreenControl}/> :'' }
       </ReactMapGL>
-    </>
+      <div className={styles.detailView}>
+        {(detailViewData && !transitionInProgress) ?
+          <AreaDetail properties={detailViewData.properties} /> :
+          <DidYouKnow />
+        }
+      </div>
+    </div>
   );
 };
 
