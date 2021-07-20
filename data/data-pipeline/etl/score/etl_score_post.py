@@ -100,7 +100,7 @@ class PostScoreETL(ExtractTransformLoad):
         del self.score_county_state_merged["GEOID_OTHER"]
 
     def load(self) -> None:
-        logger.info(f"Saving Full Score CSV")
+        logger.info(f"Saving Full Score CSV with County Information")
         self.SCORE_CSV_PATH.mkdir(parents=True, exist_ok=True)
         self.score_county_state_merged.to_csv(self.FULL_SCORE_CSV, index=False)
 
