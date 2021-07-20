@@ -27,6 +27,38 @@
     "defaultMessage": "Clean water infrastructure",
     "description": "item in areasOfInterest list"
   },
+  "footer.arialabel": {
+    "defaultMessage": "Footer navigation",
+    "description": "aria-label text for whole footer"
+  },
+  "footer.findcontactlink": {
+    "defaultMessage": "Find a contact at USA.gov",
+    "description": "Footer find contact link text"
+  },
+  "footer.foialink": {
+    "defaultMessage": "Freedom of Information Act (FOIA)",
+    "description": "Footer FOIA link text"
+  },
+  "footer.logo.title": {
+    "defaultMessage": "Council on Environmental Quality",
+    "description": "Footer under logo"
+  },
+  "footer.moreinfoheader": {
+    "defaultMessage": "More Information",
+    "description": "Footer column header"
+  },
+  "footer.privacylink": {
+    "defaultMessage": "Privacy Policy",
+    "description": "Footer privacy policy link text"
+  },
+  "footer.questionsheader": {
+    "defaultMessage": "Have a question about government services?",
+    "description": "Footer column header"
+  },
+  "footer.whitehouselogoalt": {
+    "defaultMessage": "Whitehouse logo",
+    "description": "Footer Whitehouse logo alt text"
+  },
   "header.about": {
     "defaultMessage": "About",
     "description": "Navigate to the about page"
