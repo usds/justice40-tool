@@ -4,6 +4,7 @@ import J40Header from './J40Header';
 import J40Footer from './J40Footer';
 import J40Aside from '../components/J40Aside';
 import {URLFlagProvider} from '../contexts/FlagContext';
+// this has to be wrong
 
 interface ILayoutProps {
   children: ReactNode,
@@ -16,6 +17,7 @@ const Layout = ({children, location}: ILayoutProps) => {
   const gridCssClass = isWidthFullPage ? ' desktop:grid-col-12' :
     'desktop:grid-col-9';
 
+  // @ts-ignore
   return (
     <URLFlagProvider location={location}>
       <J40Header/>

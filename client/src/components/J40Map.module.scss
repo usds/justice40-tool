@@ -6,38 +6,22 @@ $sidebar-color: #ffffff;
 }
 
 .j40Popup {
-  max-height: 300px;
-  min-width: 36%;
-  max-width: 36%;
+  max-height: 50%;
   overflow-y: scroll;
-  pointer-events: all !important;
 }
 
-.territoryFocusButton {
-  width: 40px;
-  height: 40px;
-  border-width: 1px 2px;
-  border-color: #000000;
-  border-style: solid;
-  background-color: #ffffff;
+.navigationControl {
+  left: 1.25em;
+  top: 2.5em;
+  width: 2.5em;
 }
 
-.territoryFocusContainer {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  font-size: 16px;
-  line-height: 40px;
-  position: absolute;
-  left: 20px;
-  top: 300px;
-  z-index: 10;
+.fullscreenControl {
+  right: 1.25em;
+  top: 2.5em;
 }
 
-.territoryFocusButton:first-child {
-  border-top-width: 2px;
-}
-
-.territoryFocusButton:last-child {
-  border-bottom-width: 2px;
+.geolocateControl {
+  right: 1.25em;
+  top: 5em;
 }

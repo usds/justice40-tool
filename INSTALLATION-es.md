@@ -28,7 +28,6 @@ Descargar desde [sitio web](https://git-scm.com/download/win)
 
 Esto funcionará tanto para MacOS como para Win10. Siga las instrucciones de este [enlace](https://medium.com/@nodesource/installing-node-js-tutorial-using-nvm-5c6ff5925dd8)
 
-
 ### Configuración de IDE
 Si bien se puede usar cualquier IDE, describimos cómo configurar VS Code
 

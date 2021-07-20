@@ -30,139 +30,6 @@ exports[`J40Footer renders correctly 1`] = `
                 <h4
                   class="usa-footer__primary-link"
                 >
-                  Agency Partners
-                </h4>
-                <ul
-                  class="usa-list usa-list--unstyled"
-                >
-                  <li
-                    class="usa-footer__secondary-link"
-                  >
-                    <a
-                      href="https://www.epa.gov/"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      Environmental Protection Agency
-                    </a>
-                  </li>
-                  <li
-                    class="usa-footer__secondary-link"
-                  >
-                    <a
-                      href="https://www.whitehouse.gov/omb"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      Office of Management and Budget
-                    </a>
-                  </li>
-                  <li
-                    class="usa-footer__secondary-link"
-                  >
-                    <a
-                      href="https://www.energy.gov/"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      Department of Energy
-                    </a>
-                  </li>
-                  <li
-                    class="usa-footer__secondary-link"
-                  >
-                    <a
-                      href="https://www.hud.gov/"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      Department of Housing and Urban Development
-                    </a>
-                  </li>
-                </ul>
-              </section>
-            </div>
-            <div
-              class="mobile-lg:grid-col-6 desktop:grid-col-3"
-            >
-              <section
-                class="usa-footer__primary-content usa-footer__primary-content--collapsible"
-              >
-                <h4
-                  class="usa-footer__primary-link"
-                >
-                  More Information
-                </h4>
-                <ul
-                  class="usa-list usa-list--unstyled"
-                >
-                  <li
-                    class="usa-footer__secondary-link"
-                  >
-                    <a
-                      href="https://www.whitehouse.gov/"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      Whitehouse.gov
-                    </a>
-                  </li>
-                  <li
-                    class="usa-footer__secondary-link"
-                  >
-                    <a
-                      href="#"
-                    >
-                      Accessibility Statement
-                    </a>
-                  </li>
-                  <li
-                    class="usa-footer__secondary-link"
-                  >
-                    <a
-                      href="#"
-                    >
-                      Privacy, Policies, and Legal Information
-                    </a>
-                  </li>
-                </ul>
-              </section>
-            </div>
-            <div
-              class="mobile-lg:grid-col-6 desktop:grid-col-3"
-            >
-              <section
-                class="usa-footer__primary-content usa-footer__primary-content--collapsible"
-              >
-                <h4
-                  class="usa-footer__primary-link"
-                >
-                  Have a question about government services?
-                </h4>
-                <ul
-                  class="usa-list usa-list--unstyled"
-                >
-                  <li
-                    class="usa-footer__secondary-link"
-                  >
-                    <a
-                      href="#"
-                    >
-                      Find a contact at USA.gov
-                    </a>
-                  </li>
-                </ul>
-              </section>
-            </div>
-            <div
-              class="mobile-lg:grid-col-6 desktop:grid-col-3"
-            >
-              <section
-                class="usa-footer__primary-content usa-footer__primary-content--collapsible"
-              >
-                <h4
-                  class="usa-footer__primary-link"
-                >
                   <div
                     class="usa-footer__logo grid-row grid-gap-2 j40-footer-logo"
                     data-testid="footerLogo"
@@ -216,6 +83,78 @@ exports[`J40Footer renders correctly 1`] = `
                         </div>
                       </div>
                     </address>
+                  </li>
+                </ul>
+              </section>
+            </div>
+            <div
+              class="mobile-lg:grid-col-6 desktop:grid-col-3"
+            >
+              <section
+                class="usa-footer__primary-content usa-footer__primary-content--collapsible"
+              >
+                <h4
+                  class="usa-footer__primary-link"
+                >
+                  More Information
+                </h4>
+                <ul
+                  class="usa-list usa-list--unstyled"
+                >
+                  <li
+                    class="usa-footer__secondary-link"
+                  >
+                    <a
+                      href="https://www.whitehouse.gov/"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Whitehouse.gov
+                    </a>
+                  </li>
+                  <li
+                    class="usa-footer__secondary-link"
+                  >
+                    <a
+                      href="#"
+                    >
+                      Freedom of Information Act (FOIA)
+                    </a>
+                  </li>
+                  <li
+                    class="usa-footer__secondary-link"
+                  >
+                    <a
+                      href="#"
+                    >
+                      Privacy Policy
+                    </a>
+                  </li>
+                </ul>
+              </section>
+            </div>
+            <div
+              class="mobile-lg:grid-col-6 desktop:grid-col-3"
+            >
+              <section
+                class="usa-footer__primary-content usa-footer__primary-content--collapsible"
+              >
+                <h4
+                  class="usa-footer__primary-link"
+                >
+                  Have a question about government services?
+                </h4>
+                <ul
+                  class="usa-list usa-list--unstyled"
+                >
+                  <li
+                    class="usa-footer__secondary-link"
+                  >
+                    <a
+                      href="#"
+                    >
+                      Find a contact at USA.gov
+                    </a>
                   </li>
                 </ul>
               </section>

@@ -1,6 +1,15 @@
 import React, {ReactNode} from 'react';
-import {IntlContextProvider} from 'gatsby-plugin-intl';
+import {IntlProvider, IntlContextProvider} from 'gatsby-plugin-intl';
+import messages from '../intl/en.json'; // this is updated by `formatjs extract`
 
+const intlConfig = {
+  language: 'en',
+  languages: ['en', 'es'],
+  messages,
+  originalPath: '/',
+  redirect: true,
+  routed: true,
+};
 interface ILocalizedComponentProps {
   children: ReactNode
 }
@@ -8,8 +17,10 @@ interface ILocalizedComponentProps {
 export const LocalizedComponent = ({children}: ILocalizedComponentProps) => {
   return (
     <>
-      <IntlContextProvider value={{language: 'en', routed: true}}>
-        {children}
+      <IntlContextProvider value={intlConfig} >
+        <IntlProvider locale={'en'}>
+          {children}
+        </IntlProvider>
       </IntlContextProvider>,
     </>
   );

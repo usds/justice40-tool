@@ -120,6 +120,7 @@ def unzip_file_from_url(
     logger.info(f"Downloading {file_url}")
     download = requests.get(file_url, verify=verify)
     file_contents = download.content
+
     zip_file_path = download_path / "downloaded.zip"
     zip_file = open(zip_file_path, "wb")
     zip_file.write(file_contents)
@@ -148,8 +149,8 @@ def score_folder_cleanup() -> None:
     data_path = settings.APP_ROOT / "data"
 
     logger.info(f"Initializing all score data")
-    remove_files_from_dir(data_path / "score" / "csv", ".csv")
-    remove_files_from_dir(data_path / "score" / "geojson", ".json")
+    remove_all_from_dir(data_path / "score" / "csv")
+    remove_all_from_dir(data_path / "score" / "geojson")
 
 
 def temp_folder_cleanup() -> None:

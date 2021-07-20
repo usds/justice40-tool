@@ -1,0 +1,53 @@
+fips,state_name,state_abbreviation,region,division
+01,Alabama,AL,South,East South Central
+02,Alaska,AK,West,Pacific
+04,Arizona,AZ,West,Mountain
+05,Arkansas,AR,South,West South Central
+06,California,CA,West,Pacific
+08,Colorado,CO,West,Mountain
+09,Connecticut,CT,Northeast,New England
+10,Delaware,DE,South,South Atlantic
+11,District of Columbia,DC,South,South Atlantic
+12,Florida,FL,South,South Atlantic
+13,Georgia,GA,South,South Atlantic
+15,Hawaii,HI,West,Pacific
+16,Idaho,ID,West,Mountain
+17,Illinois,IL,Midwest,East North Central
+18,Indiana,IN,Midwest,East North Central
+19,Iowa,IA,Midwest,West North Central
+20,Kansas,KS,Midwest,West North Central
+21,Kentucky,KY,South,East South Central
+22,Louisiana,LA,South,West South Central
+23,Maine,ME,Northeast,New England
+24,Maryland,MD,South,South Atlantic
+25,Massachusetts,MA,Northeast,New England
+26,Michigan,MI,Midwest,East North Central
+27,Minnesota,MN,Midwest,West North Central
+28,Mississippi,MS,South,East South Central
+29,Missouri,MO,Midwest,West North Central
+30,Montana,MT,West,Mountain
+31,Nebraska,NE,Midwest,West North Central
+32,Nevada,NV,West,Mountain
+33,New Hampshire,NH,Northeast,New England
+34,New Jersey,NJ,Northeast,Middle Atlantic
+35,New Mexico,NM,West,Mountain
+36,New York,NY,Northeast,Middle Atlantic
+37,North Carolina,NC,South,South Atlantic
+38,North Dakota,ND,Midwest,West North Central
+39,Ohio,OH,Midwest,East North Central
+40,Oklahoma,OK,South,West South Central
+41,Oregon,OR,West,Pacific
+42,Pennsylvania,PA,Northeast,Middle Atlantic
+44,Rhode Island,RI,Northeast,New England
+45,South Carolina,SC,South,South Atlantic
+46,South Dakota,SD,Midwest,West North Central
+47,Tennessee,TN,South,East South Central
+48,Texas,TX,South,West South Central
+49,Utah,UT,West,Mountain
+50,Vermont,VT,Northeast,New England
+51,Virginia,VA,South,South Atlantic
+53,Washington,WA,West,Pacific
+54,West Virginia,WV,South,South Atlantic
+55,Wisconsin,WI,Midwest,East North Central
+56,Wyoming,WY,West,Mountain
+72,Puerto Rico,PR,Puerto Rico,Puerto Rico

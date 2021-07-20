@@ -1,10 +1,12 @@
+import {LngLatBoundsLike} from 'maplibre-gl';
+
 // URLS
 export const FEATURE_TILE_BASE_URL = 'https://d2zjid6n5ja2pt.cloudfront.net';
 const XYZ_SUFFIX = '{z}/{x}/{y}.pbf';
 export const featureURLForTilesetName = (tilesetName :string ) : string => {
   return `${FEATURE_TILE_BASE_URL}/${tilesetName}/${XYZ_SUFFIX}`;
 };
-export const FEATURE_TILE_HIGH_ZOOM_URL = featureURLForTilesetName('0629_demo');
+export const FEATURE_TILE_HIGH_ZOOM_URL = featureURLForTilesetName('0714_high');
 export const FEATURE_TILE_LOW_ZOOM_URL = featureURLForTilesetName('tiles_low');
 
 
@@ -38,42 +40,42 @@ export const GLOBAL_MIN_ZOOM_HIGH = 7;
 export const GLOBAL_MAX_ZOOM_HIGH = 11;
 
 // Bounds
-export const GLOBAL_MAX_BOUNDS = [
+export const GLOBAL_MAX_BOUNDS : LngLatBoundsLike = [
   [-180.118306, 5.499550],
   [-65.0, 83.162102],
 ];
 
-export const LOWER_48_BOUNDS = [
+export const LOWER_48_BOUNDS : LngLatBoundsLike = [
   [-124.7844079, 24.7433195],
   [-66.9513812, 49.3457868],
 ];
 
-export const ALASKA_BOUNDS = [
+export const ALASKA_BOUNDS : LngLatBoundsLike = [
   [-183.856888, 50.875311],
   [-140.932617, 71.958797],
 ];
 
-export const HAWAII_BOUNDS = [
+export const HAWAII_BOUNDS : LngLatBoundsLike = [
   [-168.118306, 18.748115],
   [-154.757881, 22.378413],
 ];
 
-export const PUERTO_RICO_BOUNDS = [
+export const PUERTO_RICO_BOUNDS : LngLatBoundsLike = [
   [-67.945404, 17.88328],
   [-65.220703, 18.515683],
 ];
 
-export const GUAM_BOUNDS = [
+export const GUAM_BOUNDS : LngLatBoundsLike = [
   [-215.389709, 13.225909],
   [-215.040894, 13.663335],
 ];
 
-export const MARIANA_ISLAND_BOUNDS = [
+export const MARIANA_ISLAND_BOUNDS : LngLatBoundsLike = [
   [-215.313449, 14.007801],
   [-213.742404, 19.750326],
 ];
 
-export const AMERICAN_SAMOA_BOUNDS = [
+export const AMERICAN_SAMOA_BOUNDS : LngLatBoundsLike = [
   [-171.089874, -14.548699],
   [-168.1433, -11.046934],
 ];
