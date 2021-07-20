@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: 'Justice40',
+    image: '/static/favicon.ico',
   },
   pathPrefix: `/justice40-tool/${process.env.DESTINATION_FOLDER}`,
   plugins: [
