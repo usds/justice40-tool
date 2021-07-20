@@ -1,5 +1,19 @@
 # Justice40 Client
 
+## Installing and running the client site
+
+1. Confirm you have the base required software installed. See [INSTALLATION](INSTALLATION.md) for more details.
+1. Install yarn if you do not have it yet. Open your terminal and run `sudo npm install -global yarn`. This works on MacOS and Win10. To confirm it is installed, run `yarn -v`. A version number should be returned.
+1. Navigate to the base directory of this repository, and go to the `client` directory (`cd client`). 
+1. Run the command `npm install` to install the dependencies. 
+1. Run `npm start` to start up the client app. 
+1. Open your browser and navigate to http://localhost:8000
+
+*Note that while this app uses npm as the package manager, yarn is required to build the [uswds](https://github.com/uswds/uswds) library.*
+
+### Viewing data on the map
+TODO
+
 ## Linting and Formatting
 
 This project uses [ESLint](https://eslint.org/) for code linting and [Prettier](https://prettier.io/) for formatting. They are integrated via [gatsby-plugin-prettier-eslint](https://www.gatsbyjs.com/plugins/gatsby-plugin-prettier-eslint/).
