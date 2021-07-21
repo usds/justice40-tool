@@ -245,7 +245,15 @@ $primary-color: #112f4e;
     border-color: #000000;
     border-style: solid;
     font-size: 1.5em;
+
+    // It seems necessary to set an explicit size for one of the dimensions
+    // in order for this icon to be rendered correctly by gatsby build
+    // see more here: https://thatemil.com/blog/2014/04/06/intrinsic-sizing-of-svg-in-responsive-web-design/
+    .mapboxgl-ctrl-icon {
+      height: 1em;
+    }
   }
+
   button.mapboxgl-ctrl-zoom-in {
     .mapboxgl-ctrl-icon {
       background-image: url("../../node_modules/uswds/dist/img/usa-icons/add.svg");
