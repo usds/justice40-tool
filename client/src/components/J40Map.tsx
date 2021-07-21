@@ -207,7 +207,6 @@ const J40Map = () => {
         className={styles.mapSidePanel}
         detailViewData={detailViewData}
         transitionInProgress={transitionInProgress}
-        selectedFeature={selectedFeature}
       />
     </div>
   );
