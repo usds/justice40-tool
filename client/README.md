@@ -97,4 +97,8 @@ When developing, to use a flag:
    2. If your page does not use `Layout`, you need to surround your component with a `URLFlagProvider` component and pass `location`. You can get `location` from the default props of the page (more [here](https://www.gatsbyjs.com/docs/location-data-from-props/)). See [Index.tsx](src/pages/index.tsx) for an example.
 2. Use the `useFlags()` hook to get access to an array of flags, and check this array for the presence of the correct feature identifier. See [J40Header](src/components/J40Header.tsx) for an example.
 
-And that's it!
+#### When to use flags:
+
+1. The feature is an experimental change
+2. The feature is an outcome of a spike where the direct work wasn’t prioritized in the current sprint however there's a desire to help design to see / use it  - eg. fullscreen / geolocation (future sprint purposes)
+3. The feature is something with multiple possible implementations that we want to give our team the experience of trying out separately for comparison purposes - eg. mapbox vs. openlayers, different low tile layers for low zoom
