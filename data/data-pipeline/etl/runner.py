@@ -2,6 +2,7 @@ import importlib
 
 from etl.score.etl_score import ScoreETL
 from etl.score.etl_score_post import PostScoreETL
+from etl.score.etl_score_geo import GeoScoreETL
 
 
 def etl_runner(dataset_to_run: str = None) -> None:
@@ -105,6 +106,23 @@ def score_generate() -> None:
     score_post.transform()
     score_post.load()
     score_post.cleanup()
+
+
+def score_geo() -> None:
+    """Generates the geojson files with score data baked in
+
+    Args:
+        None
+
+    Returns:
+        None
+    """
+
+    # Score Geo
+    score_geo = GeoScoreETL()
+    score_geo.extract()
+    score_geo.transform()
+    score_geo.load()
 
 
 def _find_dataset_index(dataset_list, key, value):

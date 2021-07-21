@@ -9,7 +9,7 @@ from utils import (
     temp_folder_cleanup,
 )
 from etl.sources.census.etl import download_census_csvs
-from etl.runner import etl_runner, score_generate
+from etl.runner import etl_runner, score_generate, score_geo
 
 logger = get_module_logger(__name__)
 
@@ -86,6 +86,14 @@ def etl_run(dataset: str):
 def score_run():
     """CLI command to generate the score"""
     score_generate()
+
+
+@cli.command(
+    help="Generate Geojson files with scores baked in",
+)
+def geo_score():
+    """CLI command to generate the score"""
+    score_geo()
 
 
 if __name__ == "__main__":
