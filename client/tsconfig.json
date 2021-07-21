@@ -15,6 +15,7 @@
     "allowJs": true,
     "resolveJsonModule": true,
     "baseUrl": "./",
+    "suppressImplicitAnyIndexErrors": true,
   },
   "include": [
     "./src/**/*ts",

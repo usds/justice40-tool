@@ -6,7 +6,8 @@ $sidebar-color: #ffffff;
 }
 
 .mapContainer {
-  flex: 1 0 75%;
+  //Todo VS: Why don't I need this?
+  // flex: 1 0 75%;
   height: 676px;
 }
 
@@ -31,7 +32,7 @@ $sidebar-color: #ffffff;
   top: 5em;
 }
 
-.detailView {
+.mapSidePanel {
   flex: 1 0 25%;
   border: 1px solid lightgray;
 }

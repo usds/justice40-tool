@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+// External Libs:
 import React, {MouseEvent, useRef, useState} from 'react';
 import {Map, MapboxGeoJSONFeature, LngLatBoundsLike} from 'maplibre-gl';
 import ReactMapGL, {
@@ -10,14 +11,17 @@ import ReactMapGL, {
   FlyToInterpolator,
   FullscreenControl,
   MapRef} from 'react-map-gl';
-import {makeMapStyle} from '../data/mapStyle';
-import AreaDetail from './areaDetail';
-import DidYouKnow from './didYouKnow';
 import bbox from '@turf/bbox';
 import * as d3 from 'd3-ease';
+// Contexts:
 import {useFlags} from '../contexts/FlagContext';
-import TerritoryFocusControl from './territoryFocusControl';
 
+// Components:
+import TerritoryFocusControl from './territoryFocusControl';
+import MapSidePanel from './mapSidePanel';
+
+// Styles:
+import {makeMapStyle} from '../data/mapStyle';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import * as constants from '../data/constants';
 import * as styles from './J40Map.module.scss';
@@ -199,12 +203,12 @@ const J40Map = () => {
         <TerritoryFocusControl onClickTerritoryFocusButton={onClickTerritoryFocusButton}/>
         {'fs' in flags ? <FullscreenControl className={styles.fullscreenControl}/> :'' }
       </ReactMapGL>
-      <div className={styles.detailView}>
-        {(detailViewData && !transitionInProgress) ?
-          <AreaDetail properties={detailViewData.properties} /> :
-          <DidYouKnow />
-        }
-      </div>
+      <MapSidePanel
+        className={styles.mapSidePanel}
+        detailViewData={detailViewData}
+        transitionInProgress={transitionInProgress}
+        selectedFeature={selectedFeature}
+      />
     </div>
   );
 };

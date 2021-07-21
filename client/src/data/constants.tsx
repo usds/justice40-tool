@@ -26,6 +26,8 @@ export const POVERTY_PROPERTY_PERCENTILE = 'Poverty (Less than 200% of federal p
 export const HOUSING_BURDEN_PROPERTY_PERCENTILE = 'Housing burden (percent) (percentile)';
 export const LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE = 'Linguistic isolation (percent) (percentile)';
 export const UNEMPLOYMENT_PROPERTY_PERCENTILE = 'Unemployed civilians (percent) (percentile)';
+
+// Todo VS: Whats a good way to allow string to take up multiple lines?
 // eslint-disable-next-line max-len
 export const EDUCATION_PROPERTY_PERCENTILE = 'Percent individuals age 25 or over with less than high school degree (percentile)';
 
