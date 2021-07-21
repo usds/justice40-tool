@@ -211,15 +211,50 @@ $primary-color: #112f4e;
 }
 
 // Because we're using react-map-gl, you need to use
-// the mapboxgl- class name variables
+// the mapboxgl- class name variables.
+// Maplibre has its own classnames with a maplibre prefix,
+// but it after 1.14.0 it optionally still allows for the mapbox-gl prefix
 
-.mapboxgl-ctrl-group button {
-  height: 40px;
-  width: 40px;
-  box-sizing: border-box;
-  border-width: 2px;
-  border-color: #000000;
-  border-style: solid;
-  background-color: #ffffff;
-  font-size: 24px;
+// Below properties override mb defaults
+.mapboxgl-ctrl-group:not(:empty) {
+  box-shadow: none;
+}
+
+@media (-ms-high-contrast: active) {
+  .mapboxgl-ctrl-group:not(:empty) {
+    box-shadow: none;
+  }
+}
+
+.mapboxgl-ctrl-group {
+  border-radius: 0px;
+}
+
+.mapboxgl-ctrl {
+  button + button {
+    border-top: 1px;
+  }
+
+  button {
+    border-radius: 0px;
+    height: 1.66em;
+    width: 1.66em;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border-width: 2px;
+    border-color: #000000;
+    border-style: solid;
+    font-size: 1.5em;
+  }
+  button.mapboxgl-ctrl-zoom-in {
+    .mapboxgl-ctrl-icon {
+      background-image: url("../../node_modules/uswds/dist/img/usa-icons/add.svg");
+    }
+  }
+
+  button.mapboxgl-ctrl-zoom-out {
+    .mapboxgl-ctrl-icon {
+      background-image: url("../../node_modules/uswds/dist/img/usa-icons/remove.svg");
+    }
+  }
 }
