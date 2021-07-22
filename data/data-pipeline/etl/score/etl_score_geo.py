@@ -32,7 +32,7 @@ class GeoScoreETL(ExtractTransformLoad):
         self.NUMBER_OF_BUCKETS = 10
 
         self.geojson_usa_df: gpd.GeoDataFrame
-        self.score_usa_df: gpd.GeoDataFrame
+        self.score_usa_df: pd.DataFrame
         self.geojson_score_usa_high: gpd.GeoDataFrame
         self.geojson_score_usa_low: gpd.GeoDataFrame
 
