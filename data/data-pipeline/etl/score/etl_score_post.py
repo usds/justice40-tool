@@ -20,8 +20,8 @@ class PostScoreETL(ExtractTransformLoad):
         self.STATE_CSV = (
             self.DATA_PATH / "census" / "csv" / "fips_states_2010.csv"
         )
-        self.SCORE_CSV = self.SCORE_CSV_PATH / "full" / "usa.csv"
-        self.COUNTY_SCORE_CSV = self.SCORE_CSV_PATH / "full" / "usa-county.csv"
+        self.FULL_SCORE_CSV = self.SCORE_CSV_PATH / "full" / "usa.csv"
+        self.TILR_SCORE_CSV = self.SCORE_CSV_PATH / "tile" / "usa.csv"
 
         self.TILES_SCORE_COLUMNS = [
             "GEOID10",
@@ -59,7 +59,9 @@ class PostScoreETL(ExtractTransformLoad):
         self.states_df = pd.read_csv(
             self.STATE_CSV, dtype={"fips": "string", "state_code": "string"}
         )
-        self.score_df = pd.read_csv(self.SCORE_CSV, dtype={"GEOID10": "string"})
+        self.score_df = pd.read_csv(
+            self.FULL_SCORE_CSV, dtype={"GEOID10": "string"}
+        )
 
     def transform(self) -> None:
         logger.info(f"Transforming data sources for Score + County CSV")
@@ -98,11 +100,9 @@ class PostScoreETL(ExtractTransformLoad):
         del self.score_county_state_merged["GEOID_OTHER"]
 
     def load(self) -> None:
-        logger.info(f"Saving Score + County CSV")
+        logger.info(f"Saving Full Score CSV with County Information")
         self.SCORE_CSV_PATH.mkdir(parents=True, exist_ok=True)
-        # self.score_county_state_merged.to_csv(
-        #     self.COUNTY_SCORE_CSV, index=False
-        # )
+        self.score_county_state_merged.to_csv(self.FULL_SCORE_CSV, index=False)
 
         logger.info(f"Saving Tile Score CSV")
         # TODO: check which are the columns we'll use

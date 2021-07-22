@@ -25,7 +25,7 @@ RUN add-apt-repository ppa:ubuntugis/ppa
 RUN apt-get -y install gdal-bin
 
 # Prepare python packages
-WORKDIR /score
+WORKDIR /data-pipeline
 RUN pip3 install --upgrade pip setuptools wheel
 COPY . .
 
