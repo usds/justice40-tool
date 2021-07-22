@@ -76,7 +76,6 @@ class GeoScoreETL(ExtractTransformLoad):
             inplace=True,
         )
 
-        breakpoint()
         logger.info(f"Aggregating into tracts")
         usa_tracts = self._aggregate_to_tracts(usa_simplified)
 
