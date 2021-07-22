@@ -15,6 +15,7 @@
     "allowJs": true,
     "resolveJsonModule": true,
     "baseUrl": "./",
+    // Todo VS: is this really needed?
     "suppressImplicitAnyIndexErrors": true,
   },
   "include": [
