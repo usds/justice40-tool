@@ -27,6 +27,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
   const getTitleContent = () => {
     const blockGroup = properties[constants.GEOID_PROPERTY];
     const score = properties[constants.SCORE_PROPERTY_HIGH] as number;
+    const population = properties[constants.TOTAL_POPULATION];
     return (
       <div className={styles.titleContainer}>
         <div>
@@ -40,6 +41,10 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
         <div>
           <span className={styles.titleIndicatorName}>Cumulative Index Score: </span>
           <span>{readablePercent(score)}</span>
+        </div>
+        <div>
+          <span className={styles.titleIndicatorName}>Total Population: </span>
+          <span>{population}</span>
         </div>
       </div>
     );
