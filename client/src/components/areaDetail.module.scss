@@ -1,23 +1,116 @@
-.areaDetailTable {
-  max-width: 31.6vw;
-}
+//Todo VS: Check if colors are already being used in legend
+$sidePanelBorderColor: #F2F2F2;
+$sidePanelBorder: 2px solid $sidePanelBorderColor;
+$sidePanelLabelFontColor: #171716;
 
-.titleContainer {
-  display: flex;
-  flex-direction: column;
-  padding: 22px 22px;
-}
-
-.titleIndicatorName {
-  font-weight: bold;
-}
+@mixin sidePanelLabelStyle {
+  font-size: small;
+  color: $sidePanelLabelFontColor;
+  font-weight: 600;
+};
 
 .areaDetailContainer {
-  max-height: 50vh;
-  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+};
+
+// top row styles
+.topRow{
+  display: flex;
+}
+.cumltveIndScore, .categorization {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 7.7rem;
+  border-bottom: $sidePanelBorder;
+  flex: 1 0 50%;
+  padding-top:2rem;
+}
+.topRowTitle, 
+.censusLabel {
+ @include sidePanelLabelStyle;
+}
+.topRowSubTitle {
+  font-size: small;
+  color: $sidePanelLabelFontColor;
+};
+.score {
+  font-size: xx-large;
+  font-weight: bolder;
+}
+.scoreSuperscript {
+  font-size: large;
+  padding-bottom: 1rem;
+}
+.categorization {
+  border-left: $sidePanelBorder; 
+}
+.priority {
+  display: flex;
 }
 
-.areaDetailTableContainer {
-  overflow: auto;
-  padding: 22px;
+//Todo VS: how to change color from JS?
+.priorityCircle{
+  height: .6rem;
+  width: .6rem;
+  border-radius: 100%;
+  border:1px solid #1a4480;
+  align-self: center;
+  margin-top: .8rem;
+  margin-right: .5rem;
+  background: #1a4480;
+  opacity: 0.6;
+}
+.prioritization{
+  font-size: large;
+  font-weight: bold;
+  padding-top: .8rem;
+}
+.censusRow {
+  display: flex;
+  flex-direction: column;
+  border-bottom: $sidePanelBorder;
+}
+
+//census row styles
+.censusRow {
+  padding: 1rem;
+}
+.censusText, 
+.indicatorDescription {
+  font-size: small;
+}
+
+//Divider styles
+.divider {
+  @include sidePanelLabelStyle;
+  display: flex;
+  justify-content: space-between;
+  border-bottom:  $sidePanelBorder;
+  padding: .3rem .5rem .3rem 1rem;
+  background-color: #EDEEF0;
+}
+
+//Indicator box styles
+.indicatorBox {
+  display: flex;
+  padding: 1.5rem 1rem;
+  border-bottom: $sidePanelBorder;
+}
+
+.indicatorBox:last-child {
+  border-bottom: none;
+}
+
+.indicatorTitle {
+  font-size: large;
+  font-weight: bolder;
+}
+
+.indicatorValue {
+  flex: 1 0 37%;
+  align-self: center;
+  padding-left: 2.4rem;
+  font-size: large;
 }

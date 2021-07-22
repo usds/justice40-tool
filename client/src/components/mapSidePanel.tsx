@@ -2,7 +2,7 @@
 // Todo VS what is a better way around this jsdoc disabling?
 
 import React from 'react';
-import DidYouKnow from './didYouKnow';
+import MapIntroduction from './mapIntroduction';
 import AreaDetail from './areaDetail';
 import * as constants from '../data/constants';
 
@@ -23,6 +23,7 @@ interface IMapSidePanelProps {
 
 // Todo VS: Should this component be given a type, eg, functional or pure or something?
 const MapSidePanel = ({className, detailViewData, isFeatureSelected}:IMapSidePanelProps) => {
+  console.log(detailViewData?.properties);
   // Todo VS: Why does this error out?
   // const {properties} = detailViewData
 
@@ -50,32 +51,21 @@ const MapSidePanel = ({className, detailViewData, isFeatureSelected}:IMapSidePan
 
   // Todo VS: Why does using indicators[n] as keys error out?
   const tempData:ItempData = {
-    [constants.POVERTY_PROPERTY_PERCENTILE]: detailViewData ?
-      detailViewData.properties[indicators[0]] : null,
-    [constants.EDUCATION_PROPERTY_PERCENTILE]: detailViewData ?
-      detailViewData.properties[indicators[1]] : null,
-    [constants.LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE]: detailViewData ?
-      detailViewData.properties[indicators[2]] : null,
-    [constants.UNEMPLOYMENT_PROPERTY_PERCENTILE]: detailViewData ?
-      detailViewData.properties[indicators[3]] : null,
-    [constants.HOUSING_BURDEN_PROPERTY_PERCENTILE]: detailViewData ?
-      detailViewData.properties[indicators[4]] : null,
-    [constants.SCORE_PROPERTY_HIGH]: detailViewData ?
-      detailViewData.properties[indicators[5]] : null,
-    [constants.GEOID_PROPERTY]: detailViewData ?
-      detailViewData.properties[indicators[6]] : null,
-    [constants.TOTAL_POPULATION]: detailViewData ?
-      detailViewData.properties[indicators[7]] : null,
+    [constants.POVERTY_PROPERTY_PERCENTILE]: detailViewData?.properties[indicators[0]],
+    [constants.EDUCATION_PROPERTY_PERCENTILE]: detailViewData?.properties[indicators[1]],
+    [constants.LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE]: detailViewData?.properties[indicators[2]],
+    [constants.UNEMPLOYMENT_PROPERTY_PERCENTILE]: detailViewData?.properties[indicators[3]],
+    [constants.HOUSING_BURDEN_PROPERTY_PERCENTILE]: detailViewData?.properties[indicators[4]],
+    [constants.SCORE_PROPERTY_HIGH]: detailViewData?.properties[indicators[5]],
+    [constants.GEOID_PROPERTY]: detailViewData?.properties[indicators[6]],
+    [constants.TOTAL_POPULATION]: detailViewData?.properties[indicators[7]],
   };
-
-  console.log('detailedView properties:', detailViewData ? detailViewData.properties : null);
-  console.log('tempData', tempData);
 
   return (
     <div className={className} >
       {(detailViewData && isFeatureSelected ) ?
           <AreaDetail properties={tempData} /> :
-          <DidYouKnow />
+          <MapIntroduction />
       }
     </div>
   );

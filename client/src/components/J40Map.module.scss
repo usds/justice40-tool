@@ -1,5 +1,8 @@
 $sidebar-background: rgba(35, 55, 75, 0.9);
 $sidebar-color: #ffffff;
+//Todo VS: Set theme colors:
+$sidePanelBorderColor: #F2F2F2;
+$sidePanelBorder: 2px solid $sidePanelBorderColor;
 
 .mapRow{
   display: flex;
@@ -33,6 +36,6 @@ $sidebar-color: #ffffff;
 }
 
 .mapSidePanel {
-  flex: 1 0 25%;
-  border: 1px solid lightgray;
+  flex: 1 0 29%;
+  border: 2px solid $sidePanelBorderColor;
 }
