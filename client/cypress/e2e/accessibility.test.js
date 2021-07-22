@@ -23,12 +23,13 @@ function terminalLog(violations) {
   cy.task('table', violationData);
 }
 
-
-describe('Accessibility tests', () => {
-  beforeEach(() => {
-    cy.visit('/').get('main').injectAxe();
-  });
-  it('Has no detectable accessibility violations on load', () => {
-    cy.checkA11y(null, {includedImpacts: ['critical']}, terminalLog);
+describe('Accessibility checks', () => {
+  Cypress.env('endpoints').forEach((endpoint) => {
+    it(`${endpoint} has no accessibility violoations on load`, () => {
+      cy.visit(endpoint).then(() => {
+        cy.injectAxe();
+        cy.checkA11y(null, null, terminalLog);
+      });
+    });
   });
 });
