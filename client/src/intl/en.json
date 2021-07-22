@@ -63,6 +63,22 @@
     "defaultMessage": "About",
     "description": "Navigate to the about page"
   },
+  "header.alertBodyBeta": {
+    "defaultMessage": "This website will be continuously updated",
+    "description": "Alerts that appear on every page"
+  },
+  "header.alertBodyLimitedData": {
+    "defaultMessage": "Datasets may be added, updated, or removed.",
+    "description": "Alerts that appear on maps page"
+  },
+  "header.alertTitleBeta": {
+    "defaultMessage": "Public beta",
+    "description": "Alerts that appear on every page - title"
+  },
+  "header.alertTitleLimitedData": {
+    "defaultMessage": "Limited data sources",
+    "description": "Alerts that appear on maps page - title"
+  },
   "header.contact": {
     "defaultMessage": "Contact",
     "description": "Navigate to the Contact page"
@@ -72,7 +88,7 @@
     "description": "Navigate to the Explore the tool page"
   },
   "header.methodology": {
-    "defaultMessage": "Methodology",
+    "defaultMessage": "Data & methodology",
     "description": "Navigate to the Methodology page"
   },
   "header.timeline": {
@@ -80,7 +96,7 @@
     "description": "Navigate to the Timeline page"
   },
   "header.title": {
-    "defaultMessage": "Justice40",
+    "defaultMessage": "Climate and Economic Justice Screening Tool",
     "description": "Title in header"
   },
   "index.aboutContent.header": {

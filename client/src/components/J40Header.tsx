@@ -1,25 +1,27 @@
 import React, {useState} from 'react';
-import {Link, useIntl} from 'gatsby-plugin-intl';
+import {FormattedMessage, Link, useIntl} from 'gatsby-plugin-intl';
 import {
   Alert,
   Header,
   NavMenuButton,
   PrimaryNav,
   GovBanner,
-  Title,
 } from '@trussworks/react-uswds';
-import {Helmet} from 'react-helmet';
-import {useFlags} from '../contexts/FlagContext';
 import {defineMessages} from 'react-intl';
+// @ts-ignore
+import siteLogo from '../../src/images/icon.png';
 
-const J40Header = () => {
-  const flags = useFlags();
+interface HeaderProps {
+  location?: Location; // optional param makes unit tests easier
+}
+
+const J40Header = ({location}: HeaderProps) => {
   const intl = useIntl();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const messages = defineMessages({
     title: {
       id: 'header.title',
-      defaultMessage: 'Justice40',
+      defaultMessage: 'Climate and Economic Justice Screening Tool',
       description: 'Title in header',
     },
     about: {
@@ -34,7 +36,7 @@ const J40Header = () => {
     },
     methodology: {
       id: 'header.methodology',
-      defaultMessage: 'Methodology',
+      defaultMessage: 'Data & methodology',
       description: 'Navigate to the Methodology page',
     },
     contact: {
@@ -53,7 +55,7 @@ const J40Header = () => {
   const toggleMobileNav = (): void =>
     setMobileNavOpen((prevOpen) => !prevOpen);
 
-  const headerLinks = (flags: {[key: string] : any} | undefined) => {
+  const headerLinks = () => {
     // static map of all possible menu items. Originally, it was all strings,
     // but we need to handle both onsite and offsite links.
     const menuData = new Map<string, JSX.Element>([
@@ -89,41 +91,29 @@ const J40Header = () => {
           className={'j40-header'}>{intl.formatMessage(messages.timeline)}</Link>],
     ]);
 
-    // select which items from the above map to show, right now it's only two
-    // possibilities so it's simple. Note: strings are used as react keys
-    const menu =
-      ('sprint3' in flags!) ?
-        ['about', 'cejst', 'methodology', 'contact'] :
-        ['about', 'cejst', 'methodology', 'contact'];
-    // TODO: make feature flags flags work.
+    const menu =['about', 'cejst', 'methodology', 'contact'];
     return menu.map((key) => menuData.get(key));
   };
 
   return (
     <>
-      <Helmet htmlAttributes={{lang: intl.locale}}>
-        <meta charSet="utf-8"/>
-        <title>{title}</title>
-      </Helmet>
       <GovBanner/>
       <Header
         basic={true} role={'banner'}
         className={'usa-header j40-header'}>
         <div className="usa-nav-container">
           <div className="usa-navbar">
-            <Title>{title}
-              <div className={'byline'}>
-                A climate and economic justice screening tool
-              </div>
-            </Title>
-
+            <h1 className="usa-logo">
+              <img className="sitelogo" src={siteLogo} alt={title} />
+              <span className={'usa-logo__text'}>{title}</span>
+            </h1>
             <NavMenuButton
               key={'mobileMenuButton'}
               onClick={toggleMobileNav}
               label="Menu"/>
           </div>
           <PrimaryNav
-            items={headerLinks(flags)}
+            items={headerLinks()}
             mobileExpanded={mobileNavOpen}
             onToggleMobileNav={toggleMobileNav}
             className={'j40-header'}
@@ -131,25 +121,33 @@ const J40Header = () => {
           </PrimaryNav>
         </div>
       </Header>
-      <Alert
-        className={'j40-sitealert'}
-        type="info">
-        <b>Public beta — </b>
-        Welcome to the public beta of the Just Progress Map, a climate and
-        economic justice screening tool. The tool will be continuously updated.
-        Please submit feedback.
+
+      <Alert className={'j40-sitealert'} type="info">
+        <b><FormattedMessage
+          id='header.alertTitleBeta'
+          description={'Alerts that appear on every page - title'}
+          defaultMessage={`Public beta`}/> - </b>
+        <FormattedMessage
+          id='header.alertBodyBeta'
+          description={'Alerts that appear on every page'}
+          defaultMessage={`This website will be continuously updated`}/>
         <br/>
       </Alert>
-      <Alert
-        className={'j40-sitealert'}
-        type="warning">
-        <b>Limited data sources — </b>
-        This tool currently includes 16 datasets. Over time, datasets could be
-        added, updated, or removed. The datasets come from a variety of sources
-        based on availability, quality, and relevance to environmental, energy,
-        and climate issues. Each dataset has limitations, such as how recently
-        the data was updated.
-      </Alert>
+
+      { // include this alert ONLY on the maps page.
+        location?.pathname.includes('cejst') ?
+        <Alert className={'j40-sitealert'} type="warning">
+          <b><FormattedMessage
+            id='header.alertTitleLimitedData'
+            description={'Alerts that appear on maps page - title'}
+            defaultMessage={`Limited data sources`}/> — </b>
+          <FormattedMessage
+            id='header.alertBodyLimitedData'
+            description={'Alerts that appear on maps page'}
+            defaultMessage={`Datasets may be added, updated, or removed.`}/>
+          <br/>
+        </Alert> : <></>
+      }
     </>
   );
 };

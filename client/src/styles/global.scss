@@ -85,18 +85,32 @@ $primary-color: #112f4e;
 
   // this is the title
   .usa-logo__text {
-    font-size: 1.8em;
-    font-family: "serif";
-  }
-
-  // menu item font
-  .usa-nav__primary {
-    font-size: 1.2em;
-  }
-
-  .byline {
-    font-size: 0.3em;
+    font-size: 0.9em;
+    padding-top: 0.7em; // allows vertical centering on logo and text
     font-weight: normal;
+  }
+
+  // this controls where the title text wraps
+  .usa-navbar {
+    width: 90%;
+  }
+
+  // this actual site logo
+  .sitelogo {
+    float: left; // allows vertical centering on logo and text
+    padding: 0.5em;
+    width: 4em;
+  }
+
+  // nav menu item font
+  .usa-nav__primary {
+    font-size: 1.0em;
+    padding: 0.5em;
+  }
+
+  // this is forcing the whole toolbar much taller
+  .usa-logo {
+    margin-top: 1.5rem;
   }
 }
 
@@ -185,7 +199,7 @@ $primary-color: #112f4e;
     margin: 0;
   }
 
-  padding-top: 7px;
+  padding-top: 17px;
   padding-bottom: 7px;
   min-height: 4em;
 
