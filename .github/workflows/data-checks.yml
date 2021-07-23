@@ -3,8 +3,6 @@ name: Data Checks
 
 on:
   push:
-    paths:
-      - 'data/*'  # runs on any push that includes commits to data/ directory
   pull_request:
     branches: [ main ]  # runs on any PR against main
 
