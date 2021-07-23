@@ -2,23 +2,27 @@
 
 exports[`PageAlert renders correctly 1`] = `
 <DocumentFragment>
-  <div
-    class="usa-alert usa-alert--info j40-sitealert"
-    data-testid="alert"
+  <span
+    class="j40-sitealerts-component"
   >
     <div
-      class="usa-alert__body"
+      class="usa-alert usa-alert--info j40-sitealert"
+      data-testid="alert"
     >
-      <p
-        class="usa-alert__text"
+      <div
+        class="usa-alert__body"
       >
-        <b>
-          Public beta - 
-        </b>
-        This website will be continuously updated
-        <br />
-      </p>
+        <p
+          class="usa-alert__text"
+        >
+          <b>
+            Public beta - 
+          </b>
+          This website will be continuously updated
+          <br />
+        </p>
+      </div>
     </div>
-  </div>
+  </span>
 </DocumentFragment>
 `;

@@ -12,7 +12,8 @@ export const PageAlerts = ({
   dataSourceWarning = false}: IPageAlertProps) => {
   return (
     <>
-      { betaWarning ?
+      <div className={'j40-sitealerts-component'}>
+        { betaWarning ?
         <Alert className={'j40-sitealert'} type="info">
           <b><FormattedMessage
             id='header.alertTitleBeta'
@@ -25,8 +26,9 @@ export const PageAlerts = ({
           <br/>
         </Alert> :
         <></>
-      }
-      { dataSourceWarning ? // default is to not show
+        }
+
+        { dataSourceWarning ? // default is to not show
         <Alert className={'j40-sitealert'} type="warning">
           <b><FormattedMessage
             id='header.alertTitleLimitedData'
@@ -39,7 +41,8 @@ export const PageAlerts = ({
           <br/>
         </Alert> :
         <></>
-      }
+        }
+      </div>
     </>
   );
 };

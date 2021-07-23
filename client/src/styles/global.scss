@@ -198,13 +198,17 @@ $primary-color: #112f4e;
     margin: 0;
   }
 
-  padding-top: 17px;
-  padding-bottom: 7px;
   min-height: 4em;
+  margin: 0 !important;
 
   * + .usa-alert {
     margin: 0 !important;
   }
+}
+
+.j40-sitealerts-component {
+  margin-top: 0.5em;
+  margin-bottom: 3em;
 }
 
 // Maplibre overrides

@@ -116,8 +116,6 @@ const J40Header = () => {
           </PrimaryNav>
         </div>
       </Header>
-
-
     </>
   );
 };
