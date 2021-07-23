@@ -34,7 +34,7 @@ jobs:
           cd data/data-pipeline
           poetry run tox
 
-  data-pipeline:
+  data-roadmap:
     runs-on: ubuntu-latest
     strategy:
       matrix:
