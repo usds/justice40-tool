@@ -169,45 +169,6 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
         'maxzoom': constants.GLOBAL_MAX_ZOOM_LOW,
       },
       {
-      // "Score-highlights" represents the border
-      // around given tiles that appears at higher zooms
-        'id': 'score-highlights-layer',
-        'source': constants.HIGH_SCORE_SOURCE_NAME,
-        'source-layer': constants.SCORE_SOURCE_LAYER,
-        'type': 'line',
-        'layout': {
-          'visibility': 'visible',
-          'line-join': 'round',
-          'line-cap': 'round',
-        },
-        'paint': {
-          'line-color': constants.DEFAULT_OUTLINE_COLOR,
-          'line-width': 0.8,
-          'line-opacity': 0.5,
-        },
-        'minzoom': constants.GLOBAL_MIN_ZOOM_HIGHLIGHT,
-        'maxzoom': constants.GLOBAL_MAX_ZOOM_HIGHLIGHT,
-      },
-      {
-      // "score-border-highlight" is used to highlight
-      // the currently-selected feature
-        'id': 'score-border-highlight-layer',
-        'type': 'line',
-        'source': constants.HIGH_SCORE_SOURCE_NAME,
-        'source-layer': constants.SCORE_SOURCE_LAYER,
-        'layout': {},
-        'paint': {
-          'line-color': constants.BORDER_HIGHLIGHT_COLOR,
-          'line-width': [
-            'case',
-            ['boolean', ['feature-state', constants.SELECTED_PROPERTY], false],
-            constants.HIGHLIGHT_BORDER_WIDTH,
-            0,
-          ],
-        },
-        'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
-      },
-      {
       // We put labels last to ensure prominence
         'id': 'labels-only-layer',
         'type': 'raster',

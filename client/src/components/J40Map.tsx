@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, {MouseEvent, useRef, useState} from 'react';
+import React, {MouseEvent, useRef, useState, useMemo} from 'react';
 import {Map, MapboxGeoJSONFeature, LngLatBoundsLike} from 'maplibre-gl';
 import ReactMapGL, {
   MapEvent,
@@ -10,7 +10,7 @@ import ReactMapGL, {
   Popup,
   FlyToInterpolator,
   FullscreenControl,
-  MapRef} from 'react-map-gl';
+  MapRef, Source, Layer} from 'react-map-gl';
 import {makeMapStyle} from '../data/mapStyle';
 import AreaDetail from './areaDetail';
 import bbox from '@turf/bbox';
@@ -52,6 +52,9 @@ const J40Map = () => {
   const mapRef = useRef<MapRef>(null);
   const flags = useFlags();
 
+  const selectedFeatureId = (selectedFeature && selectedFeature.id) || '';
+  const filter = useMemo(() => ['in', 'GEOID10', selectedFeatureId], [selectedFeature]);
+
   const onClick = (event: MapEvent) => {
     const feature = event.features && event.features[0];
     if (feature) {
@@ -66,11 +69,11 @@ const J40Map = () => {
             padding: 40,
           },
       );
-      // If we've selected a new feature, set 'selected' to false
-      if (selectedFeature && feature.id !== selectedFeature.id) {
-        setMapSelected(selectedFeature, false);
+      if (feature.id !== selectedFeatureId) {
+        setSelectedFeature(feature);
+      } else {
+        setSelectedFeature(undefined);
       }
-      setMapSelected(feature, true);
       const popupInfo = {
         longitude: longitude,
         latitude: latitude,
@@ -108,21 +111,6 @@ const J40Map = () => {
       transitionInterpolator: new FlyToInterpolator(),
       transitionEasing: d3.easeCubic,
     });
-  };
-
-  const setMapSelected = (feature:MapboxGeoJSONFeature, isSelected:boolean) : void => {
-    // The below can be confirmed during debug with:
-    // mapRef.current.getFeatureState({"id":feature.id, "source":feature.source, "sourceLayer":feature.sourceLayer})
-    mapRef.current && mapRef.current.getMap().setFeatureState({
-      source: feature.source,
-      sourceLayer: feature.sourceLayer,
-      id: feature.id,
-    }, {[constants.SELECTED_PROPERTY]: isSelected});
-    if (isSelected) {
-      setSelectedFeature(feature);
-    } else {
-      setSelectedFeature(undefined);
-    }
   };
 
   const onClickTerritoryFocusButton = (event: MouseEvent<HTMLButtonElement>) => {
@@ -185,6 +173,38 @@ const J40Map = () => {
         onTransitionEnd={onTransitionEnd}
         ref={mapRef}
       >
+        <Source
+          id={constants.HIGH_SCORE_SOURCE_NAME}
+          type="vector"
+          promoteId={constants.GEOID_PROPERTY}
+          tiles={[constants.FEATURE_TILE_HIGH_ZOOM_URL]}
+          maxzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
+          minzoom={constants.GLOBAL_MAX_ZOOM_HIGH}
+        >
+          <Layer
+            id={'score-highlights-layer'}
+            source-layer={constants.SCORE_SOURCE_LAYER}
+            type={'line'}
+            paint={{
+              'line-color': constants.DEFAULT_OUTLINE_COLOR,
+              'line-width': 0.8,
+              'line-opacity': 0.5,
+            }}
+            minzoom={constants.GLOBAL_MIN_ZOOM_HIGHLIGHT}
+            maxzoom={constants.GLOBAL_MAX_ZOOM_HIGHLIGHT}
+          />
+          <Layer
+            id={'score-border-highlight-layer'}
+            type={'line'}
+            source-layer={constants.SCORE_SOURCE_LAYER}
+            paint={{
+              'line-color': constants.BORDER_HIGHLIGHT_COLOR,
+              'line-width': constants.HIGHLIGHT_BORDER_WIDTH,
+            }}
+            filter={filter}
+            minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
+          />
+        </Source>
         {(detailViewData && !transitionInProgress) && (
           <Popup
             className={styles.j40Popup}
