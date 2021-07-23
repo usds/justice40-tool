@@ -3,7 +3,7 @@
 // For some interactions, we need access to the underlying map
 // Below adapted from https://github.com/codeforcologne/edelgard-map
 Cypress.Commands.add('getMap', () => {
-  return cy.window().its('underlyingMap');
+  return cy.window().its('underlyingMap', {timeout: 10000});
 });
 
 Cypress.Commands.add('waitForMove', (map) => {

@@ -142,5 +142,41 @@
   "index.section3.transparentLabel": {
     "defaultMessage": "Transparent:",
     "description": "Italic label for 1st paragraph of section 3 on index page"
+  },
+  "map.territoryFocus.alaska.long": {
+    "defaultMessage": "Alaska",
+    "description": "The full name indicating the bounds of Alaska"
+  },
+  "map.territoryFocus.alaska.short": {
+    "defaultMessage": "AK",
+    "description": "The abbreviated indicating the bounds of Alaska"
+  },
+  "map.territoryFocus.focusOn": {
+    "defaultMessage": "Focus on {territory}",
+    "description": "Focus on the bounds of a specific territory"
+  },
+  "map.territoryFocus.hawaii.long": {
+    "defaultMessage": "Hawaii",
+    "description": "The longer name indicating the bounds of Hawaii"
+  },
+  "map.territoryFocus.hawaii.short": {
+    "defaultMessage": "HI",
+    "description": "The abbreviated name indicating the bounds of Hawaii"
+  },
+  "map.territoryFocus.lower48.long": {
+    "defaultMessage": "Lower 48",
+    "description": "The longer name indicating the bounds of the Lower 48 states"
+  },
+  "map.territoryFocus.lower48.short": {
+    "defaultMessage": "48",
+    "description": "The abbreviated name indicating the bounds of the Lower 48 states"
+  },
+  "map.territoryFocus.puerto_rico.long": {
+    "defaultMessage": "Puerto Rico",
+    "description": "The full name indicating the bounds of Puerto Rico"
+  },
+  "map.territoryFocus.puerto_rico.short": {
+    "defaultMessage": "PR",
+    "description": "The abbreviated name indicating the bounds of Puerto Rico"
   }
 }
