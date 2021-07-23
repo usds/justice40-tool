@@ -5,6 +5,10 @@ $sidePanelBorder: 2px solid $sidePanelBorderColor;
 
 .mapRow{
   display: flex;
+
+  @media screen and (max-width: 400px) {
+    flex-wrap: wrap;
+  }
 }
 
 .mapContainer {

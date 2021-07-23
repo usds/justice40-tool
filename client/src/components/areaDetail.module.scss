@@ -9,6 +9,7 @@ $sidePanelBorderColor: #F2F2F2;
 $sidePanelBorder: 2px solid $sidePanelBorderColor;
 $sidePanelLabelFontColor: #171716;
 $featureSelectBorderColor: #00BDE3;
+$mobileBreakpoint: 400px;
 
 @mixin sidePanelLabelStyle {
   font-size: small;
@@ -35,6 +36,7 @@ $featureSelectBorderColor: #00BDE3;
 .topRow {
   display: flex;
 }
+
 .cumltveIndScore, .categorization {
   display: flex;
   flex-direction: column;
@@ -42,27 +44,32 @@ $featureSelectBorderColor: #00BDE3;
   height: 7.7rem;
   border-bottom: $sidePanelBorder;
   flex: 1 0 50%;
-  padding-top:2rem;
+  padding-top: 2rem;
 }
-.topRowTitle, 
-.censusLabel {
- @include sidePanelLabelStyle;
+
+.topRowTitle, .censusLabel {
+  @include sidePanelLabelStyle;
 }
+
 .topRowSubTitle {
   font-size: small;
   color: $sidePanelLabelFontColor;
 };
+
 .score {
   font-size: xx-large;
   font-weight: bolder;
 }
+
 .scoreSuperscript {
   font-size: large;
   padding-bottom: 1rem;
 }
+
 .categorization {
   border-left: $sidePanelBorder; 
 }
+
 .priority {
   display: flex;
 }
@@ -70,22 +77,26 @@ $featureSelectBorderColor: #00BDE3;
 .prioritized {
   @include categorizationCircleStyle;
   background: #1a4480;
-  border:1px solid $featureSelectBorderColor;
+  border: 1px solid $featureSelectBorderColor;
 }
+
 .threshold {
   @include categorizationCircleStyle;
   background: #D7DDE7;
-  border:1px solid $featureSelectBorderColor;
+  border: 1px solid $featureSelectBorderColor;
 }
+
 .nonPrioritized {
   @include categorizationCircleStyle;
   border:1px solid $featureSelectBorderColor;
 }
+
 .prioritization {
   font-size: large;
   font-weight: bold;
   padding-top: .8rem;
 }
+
 .censusRow {
   display: flex;
   flex-direction: column;
@@ -95,10 +106,18 @@ $featureSelectBorderColor: #00BDE3;
 //census row styles
 .censusRow {
   padding: 1rem;
+
+  @media screen and (max-width: $mobileBreakpoint) {
+    display: none;
+  }
 }
-.censusText, 
-.indicatorDescription {
+
+.censusText, .indicatorDescription {
   font-size: small;
+
+  @media screen and (max-width: $mobileBreakpoint) {
+    display: none;
+  }
 }
 
 //Divider styles
@@ -116,6 +135,12 @@ $featureSelectBorderColor: #00BDE3;
   display: flex;
   padding: 1.5rem 1rem;
   border-bottom: $sidePanelBorder;
+
+  @media screen and (max-width: $mobileBreakpoint) {
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
 }
 
 .indicatorBox:last-child {
@@ -125,6 +150,7 @@ $featureSelectBorderColor: #00BDE3;
 .indicatorTitle {
   font-size: large;
   font-weight: bolder;
+
 }
 
 .indicatorValue {
@@ -132,4 +158,11 @@ $featureSelectBorderColor: #00BDE3;
   align-self: center;
   padding-left: 2.4rem;
   font-size: large;
+
+  @media screen and (max-width: $mobileBreakpoint) {
+    flex: none;
+    align-self: inherit;
+    padding-left: unset;
+    padding-right: 3rem;
+  }
 }
