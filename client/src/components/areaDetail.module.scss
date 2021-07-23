@@ -5,39 +5,40 @@
 // Todo VS: Investigate how to automatically correct styles on save?
 // ie, spacing, indents, new line, etc.
 
-$sidePanelBorderColor: #F2F2F2;
+$sidePanelBorderColor: #f2f2f2;
 $sidePanelBorder: 2px solid $sidePanelBorderColor;
 $sidePanelLabelFontColor: #171716;
-$featureSelectBorderColor: #00BDE3;
+$featureSelectBorderColor: #00bde3;
 $mobileBreakpoint: 400px;
 
 @mixin sidePanelLabelStyle {
   font-size: small;
   color: $sidePanelLabelFontColor;
   font-weight: 600;
-};
+}
 
 @mixin categorizationCircleStyle {
-  height: .6rem;
-  width: .6rem;
+  height: 0.6rem;
+  width: 0.6rem;
   border-radius: 100%;
   align-self: center;
-  margin-top: .8rem;
-  margin-right: .5rem;
+  margin-top: 0.8rem;
+  margin-right: 0.5rem;
   opacity: 0.6;
 }
 
 .areaDetailContainer {
   display: flex;
   flex-direction: column;
-};
+}
 
 // top row styles
 .topRow {
   display: flex;
 }
 
-.cumltveIndScore, .categorization {
+.cumltveIndScore,
+.categorization {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,14 +48,15 @@ $mobileBreakpoint: 400px;
   padding-top: 2rem;
 }
 
-.topRowTitle, .censusLabel {
+.topRowTitle,
+.censusLabel {
   @include sidePanelLabelStyle;
 }
 
 .topRowSubTitle {
   font-size: small;
   color: $sidePanelLabelFontColor;
-};
+}
 
 .score {
   font-size: xx-large;
@@ -67,7 +69,7 @@ $mobileBreakpoint: 400px;
 }
 
 .categorization {
-  border-left: $sidePanelBorder; 
+  border-left: $sidePanelBorder;
 }
 
 .priority {
@@ -82,19 +84,19 @@ $mobileBreakpoint: 400px;
 
 .threshold {
   @include categorizationCircleStyle;
-  background: #D7DDE7;
+  background: #d7dde7;
   border: 1px solid $featureSelectBorderColor;
 }
 
 .nonPrioritized {
   @include categorizationCircleStyle;
-  border:1px solid $featureSelectBorderColor;
+  border: 1px solid $featureSelectBorderColor;
 }
 
 .prioritization {
   font-size: large;
   font-weight: bold;
-  padding-top: .8rem;
+  padding-top: 0.8rem;
 }
 
 .censusRow {
@@ -108,7 +110,8 @@ $mobileBreakpoint: 400px;
   padding: 1rem;
 }
 
-.censusText, .indicatorDescription {
+.censusText,
+.indicatorDescription {
   font-size: small;
 }
 
@@ -117,9 +120,9 @@ $mobileBreakpoint: 400px;
   @include sidePanelLabelStyle;
   display: flex;
   justify-content: space-between;
-  border-bottom:  $sidePanelBorder;
-  padding: .3rem .5rem .3rem 1rem;
-  background-color: #EDEEF0;
+  border-bottom: $sidePanelBorder;
+  padding: 0.3rem 0.5rem 0.3rem 1rem;
+  background-color: #edeef0;
 }
 
 //Indicator box styles
@@ -142,7 +145,6 @@ $mobileBreakpoint: 400px;
 .indicatorTitle {
   font-size: large;
   font-weight: bolder;
-
 }
 
 .indicatorValue {

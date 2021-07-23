@@ -6,7 +6,7 @@ import * as styles from './mapIntroduction.module.scss';
 const MapIntroduction = () => {
   return (
     <div role="table" className={styles.mapIntroContainer}>
-      <div role="row" className={styles.header}>Zoom and select a census block group to view data</div>
+      <div role="row" className={styles.mapIntroHeader}>Zoom and select a census block group to view data</div>
       <div role="rowgroup" className={styles.mapIntroText}>
         <img className={styles.mapIntroLightbulb} src={lightbulbIcon} />
         <div className={styles.didYouKnowBox}>

@@ -1,7 +1,7 @@
 declare namespace MapIntroductionModuleScssNamespace {
     export interface IMapIntroductionModuleScss {
         mapIntroContainer: string;
-        header: string;
+        mapIntroHeader: string;
         mapIntroText: string;
         mapIntroLightbulb: string;
         didYouKnowBox: string
