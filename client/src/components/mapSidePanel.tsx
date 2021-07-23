@@ -3,19 +3,20 @@
 // See FlagContext.tsx for how we're doing JSDOCs
 
 import React from 'react';
-import {MapboxGeoJSONFeature} from 'maplibre-gl';
 import MapIntroduction from './mapIntroduction';
 import {IDetailViewInterface} from '../components/J40Map';
 import AreaDetail from './areaDetail';
 import * as constants from '../data/constants';
 
+// Todo VS: investigate optional className:
 interface IMapSidePanelProps {
     className?: string,
     detailViewData: IDetailViewInterface | undefined,
-    selectedFeature:MapboxGeoJSONFeature | undefined
+    selectedFeatureId: string | number | undefined
   }
 
-const MapSidePanel = ({className, detailViewData, selectedFeature}:IMapSidePanelProps) => {
+const MapSidePanel = ({className, detailViewData, selectedFeatureId}:IMapSidePanelProps) => {
+  console.log(className);
   const indicators = [
     constants.POVERTY_PROPERTY_PERCENTILE,
     constants.EDUCATION_PROPERTY_PERCENTILE,
@@ -40,7 +41,7 @@ const MapSidePanel = ({className, detailViewData, selectedFeature}:IMapSidePanel
 
   return (
     <div className={className} >
-      {(detailViewData && selectedFeature ) ?
+      {(detailViewData && selectedFeatureId ) ?
           <AreaDetail properties={tempData} /> :
           <MapIntroduction />
       }

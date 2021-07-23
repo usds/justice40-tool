@@ -215,7 +215,7 @@ const J40Map = () => {
         <MapSidePanel
           className={styles.mapSidePanel}
           detailViewData={detailViewData}
-          selectedFeature={selectedFeature}
+          selectedFeatureId={selectedFeature?.id}
         />
       </div>
     );
@@ -274,7 +274,7 @@ const J40Map = () => {
       <MapSidePanel
         className={styles.mapSidePanel}
         detailViewData={detailViewData}
-        selectedFeature={selectedFeature}
+        selectedFeatureId={selectedFeature?.id}
       />
     </div>
   );

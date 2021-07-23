@@ -68,17 +68,18 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
 
   const [categorization, categoryCircleStyle] = getCategorization(score);
 
+  // Todo VS: Understand how to make this more a11y
   return (
-    <div className={styles.areaDetailContainer}>
-      <div className={styles.topRow}>
-        <div className={styles.cumltveIndScore}>
-          <div className={styles.topRowTitle}>Cumulative Index Score</div>
+    <div role="table" className={styles.areaDetailContainer}>
+      <div role="row" className={styles.topRow}>
+        <div role="cell" className={styles.cumltveIndScore}>
+          <div role="columnheader" className={styles.topRowTitle}>Cumulative Index Score</div>
           <div className={styles.score}>{`${readablePercent(score)}`}
             <sup className={styles.scoreSuperscript}><span>th</span></sup>
           </div>
           <div className={styles.topRowSubTitle}>percentile</div>
         </div>
-        <div className={styles.categorization}>
+        <div role="cell" className={styles.categorization}>
           <div className={styles.topRowTitle}>Categorization</div>
           <div className={styles.priority}>
             <div className={categoryCircleStyle} />
@@ -86,7 +87,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
           </div>
         </div>
       </div>
-      <div className={styles.censusRow}>
+      <div role="rowgroup" className={styles.censusRow}>
         <div>
           <span className={styles.censusLabel}>Census block group: </span>
           <span className={styles.censusText}>{blockGroup}</span>
@@ -101,13 +102,13 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
           <span className={styles.censusLabel}>Population: </span>
           <span className={styles.censusText}>{population.toLocaleString()}</span></div>
       </div>
-      <div className={styles.divider}>
+      <div role="row" className={styles.divider}>
         <div>INDICATORS</div>
         <div>PERCENTILE (0-100)</div>
       </div>
 
       {indicators.map((indicator, index) => (
-        <div key={index} className={styles.indicatorBox}>
+        <div role="rowgroup" key={index} className={styles.indicatorBox}>
           <div className={styles.indicatorInfo}>
             <div className={styles.indicatorTitle}>{indicator.label}</div>
             <div className={styles.indicatorDescription}>
