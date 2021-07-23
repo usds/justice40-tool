@@ -1,6 +1,5 @@
 $sidebar-background: rgba(35, 55, 75, 0.9);
 $sidebar-color: #ffffff;
-//Todo VS: Set theme colors:
 $sidePanelBorderColor: #F2F2F2;
 $sidePanelBorder: 2px solid $sidePanelBorderColor;
 
@@ -9,8 +8,6 @@ $sidePanelBorder: 2px solid $sidePanelBorderColor;
 }
 
 .mapContainer {
-  //Todo VS: Why don't I need this?
-  // flex: 1 0 75%;
   height: 676px;
 }
 

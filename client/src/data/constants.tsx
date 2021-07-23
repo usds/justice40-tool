@@ -37,7 +37,6 @@ export const SCORE_SOURCE_LAYER = 'blocks';
 
 export type J40Properties = { [key: string]: any };
 
-
 // Zoom
 export const GLOBAL_MIN_ZOOM = 3;
 export const GLOBAL_MAX_ZOOM = 22;

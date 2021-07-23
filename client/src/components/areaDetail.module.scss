@@ -1,7 +1,14 @@
-//Todo VS: Check if colors are already being used in legend
+// Todo VS: How to re-use these styles among scss files?
+// OR How to use global styles?
+// OR How to export/import styles?
+
+// Todo VS: Investigate how to automatically correct styles on save?
+// ie, spacing, indents, new line, etc.
+
 $sidePanelBorderColor: #F2F2F2;
 $sidePanelBorder: 2px solid $sidePanelBorderColor;
 $sidePanelLabelFontColor: #171716;
+$featureSelectBorderColor: #00BDE3;
 
 @mixin sidePanelLabelStyle {
   font-size: small;
@@ -9,13 +16,23 @@ $sidePanelLabelFontColor: #171716;
   font-weight: 600;
 };
 
+@mixin categorizationCircleStyle {
+  height: .6rem;
+  width: .6rem;
+  border-radius: 100%;
+  align-self: center;
+  margin-top: .8rem;
+  margin-right: .5rem;
+  opacity: 0.6;
+}
+
 .areaDetailContainer {
   display: flex;
   flex-direction: column;
 };
 
 // top row styles
-.topRow{
+.topRow {
   display: flex;
 }
 .cumltveIndScore, .categorization {
@@ -50,19 +67,21 @@ $sidePanelLabelFontColor: #171716;
   display: flex;
 }
 
-//Todo VS: how to change color from JS?
-.priorityCircle{
-  height: .6rem;
-  width: .6rem;
-  border-radius: 100%;
-  border:1px solid #1a4480;
-  align-self: center;
-  margin-top: .8rem;
-  margin-right: .5rem;
+.prioritized {
+  @include categorizationCircleStyle;
   background: #1a4480;
-  opacity: 0.6;
+  border:1px solid $featureSelectBorderColor;
 }
-.prioritization{
+.threshold {
+  @include categorizationCircleStyle;
+  background: #D7DDE7;
+  border:1px solid $featureSelectBorderColor;
+}
+.nonPrioritized {
+  @include categorizationCircleStyle;
+  border:1px solid $featureSelectBorderColor;
+}
+.prioritization {
   font-size: large;
   font-weight: bold;
   padding-top: .8rem;

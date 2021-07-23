@@ -7,7 +7,9 @@ declare namespace MapModuleScssNamespace {
     topRowTitle:string;
     topRowSubTitle:string;
     categorization:string;
-    priorityCircle:string;
+    prioritized:string;
+    threshold:string;
+    nonPrioritized:string;
     priority:string;
     prioritization:string;
     censusRow:string;

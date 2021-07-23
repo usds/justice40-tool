@@ -2,17 +2,36 @@ import * as React from 'react';
 import * as constants from '../data/constants';
 import * as styles from './areaDetail.module.scss';
 
+export const readablePercent = (percent: number) => {
+  return `${(percent * 100).toFixed(1)}`;
+};
+
+export const getCategorization = (percentile: number) => {
+  let categorization;
+  let categoryCircleStyle;
+
+  if (percentile >= 0.75 ) {
+    categorization = 'Prioritized';
+    categoryCircleStyle = styles.prioritized;
+  } else if (0.60 <= percentile && percentile < 0.75) {
+    categorization = 'Threshold';
+    categoryCircleStyle = styles.threshold;
+  } else {
+    categorization = 'Non-prioritized';
+    categoryCircleStyle = styles.nonPrioritized;
+  }
+  return [categorization, categoryCircleStyle];
+};
+
 interface IAreaDetailProps {
   properties: constants.J40Properties,
 }
-
 
 const AreaDetail = ({properties}:IAreaDetailProps) => {
   const score = properties[constants.SCORE_PROPERTY_HIGH] as number;
   const blockGroup = properties[constants.GEOID_PROPERTY];
   const population = properties[constants.TOTAL_POPULATION];
 
-  // Todo VS: Need to figure out how to decode the state and county info from GEOID
   interface indicatorInfo {
     label: string,
     description: string,
@@ -47,21 +66,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
 
   const indicators = [povertyInfo, eduInfo, linIsoInfo, umemployInfo, houseBurden];
 
-  const readablePercent = (percent: number) => {
-    return `${(percent * 100).toFixed(1)}`;
-  };
-
-  const getCategorization = (percentile: number) => {
-    let categorization;
-    if (percentile >= 0.75 ) {
-      categorization = 'Prioritized';
-    } else if (0.60 <= percentile && percentile < 0.75) {
-      categorization = 'Threshold';
-    } else {
-      categorization = 'Non-prioritized';
-    }
-    return categorization;
-  };
+  const [categorization, categoryCircleStyle] = getCategorization(score);
 
   return (
     <div className={styles.areaDetailContainer}>
@@ -76,8 +81,8 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
         <div className={styles.categorization}>
           <div className={styles.topRowTitle}>Categorization</div>
           <div className={styles.priority}>
-            <div className={styles.priorityCircle} />
-            <div className={styles.prioritization}>{getCategorization(score)}</div>
+            <div className={categoryCircleStyle} />
+            <div className={styles.prioritization}>{categorization}</div>
           </div>
         </div>
       </div>

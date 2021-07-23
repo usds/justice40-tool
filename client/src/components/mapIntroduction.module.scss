@@ -2,12 +2,33 @@
     padding: 20px 20px;
 }
 
+.header {
+    font-size: xx-large;
+    line-height: 1.9rem;
+    padding-top: .8rem;
+    padding-left: .3rem;
+}
 .mapIntroText {
     display: flex;
-    
+    margin-top: 2.4rem;
 }
 
 .mapIntroLightbulb {
+    flex: 1 0 10%;
     align-self: flex-start;
-    padding-top: 13px;
+}
+
+.didYouKnowBox{
+    padding-left: .4rem;
+    padding-top: .2rem;
+    font-size: large;
+}
+
+.didYouKnow {
+    font-weight: 600;
+}
+.didYouKnowText {
+    width: 95%;
+    padding-top: .3rem;
+    line-height: 1.5rem;
 }

@@ -35,12 +35,13 @@ declare global {
 }
 
 
-interface IDetailViewInterface {
+export interface IDetailViewInterface {
   latitude: number
   longitude: number
   zoom: number
   properties: constants.J40Properties,
 };
+
 
 const J40Map = () => {
   const [viewport, setViewport] = useState<ViewportProps>({
@@ -53,7 +54,6 @@ const J40Map = () => {
   const [detailViewData, setDetailViewData] = useState<IDetailViewInterface>();
   // const [transitionInProgress, setTransitionInProgress] = useState<boolean>(false);
   const [geolocationInProgress, setGeolocationInProgress] = useState<boolean>(false);
-  const [isFeatureSelected, setIsFeatureSelected] = useState<boolean>(false);
 
   const mapRef = useRef<MapRef>(null);
   const flags = useFlags();
@@ -61,7 +61,6 @@ const J40Map = () => {
   const onClick = (event: MapEvent) => {
     const feature = event.features && event.features[0];
     if (feature) {
-      setIsFeatureSelected(true);
       const [minLng, minLat, maxLng, maxLat] = bbox(feature);
       const newViewPort = new WebMercatorViewport({height: viewport.height!, width: viewport.width!});
       const {longitude, latitude, zoom} = newViewPort.fitBounds(
@@ -76,7 +75,6 @@ const J40Map = () => {
       // If we've selected a new feature, set 'selected' to false
 
       if (selectedFeature && feature.id !== selectedFeature.id) {
-        // Todo VS: Maybe refactor this function to have the 2nd arg maybe use isFeatureSelected state variable?
         setMapSelected(selectedFeature, false);
       }
       setMapSelected(feature, true);
@@ -119,7 +117,7 @@ const J40Map = () => {
     });
   };
 
-  // Todo VS: Need to understand what this function is actually doing
+
   const setMapSelected = (feature:MapboxGeoJSONFeature, isSelected:boolean) : void => {
     // The below can be confirmed during debug with:
     // mapRef.current.getFeatureState({"id":feature.id, "source":feature.source, "sourceLayer":feature.sourceLayer})
@@ -134,6 +132,7 @@ const J40Map = () => {
       setSelectedFeature(undefined);
     }
   };
+
 
   const onClickTerritoryFocusButton = (event: MouseEvent<HTMLButtonElement>) => {
     const buttonID = event.target && (event.target as HTMLElement).id;
@@ -212,7 +211,7 @@ const J40Map = () => {
       <MapSidePanel
         className={styles.mapSidePanel}
         detailViewData={detailViewData}
-        isFeatureSelected={isFeatureSelected}
+        selectedFeature={selectedFeature}
       />
     </div>
   );
