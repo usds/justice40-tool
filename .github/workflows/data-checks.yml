@@ -27,9 +27,9 @@ jobs:
       - uses: Gr1N/setup-poetry@v4
       - name: Install dependencies
         run: |
-          cd data-pipeline
+          cd data/data-pipeline
           poetry install
       - name: Run tox
         run: |
-          cd data-pipeline
+          cd data/data-pipeline
           poetry run tox
