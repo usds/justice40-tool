@@ -106,18 +106,10 @@ $mobileBreakpoint: 400px;
 //census row styles
 .censusRow {
   padding: 1rem;
-
-  @media screen and (max-width: $mobileBreakpoint) {
-    display: none;
-  }
 }
 
 .censusText, .indicatorDescription {
   font-size: small;
-
-  @media screen and (max-width: $mobileBreakpoint) {
-    display: none;
-  }
 }
 
 //Divider styles
@@ -160,9 +152,9 @@ $mobileBreakpoint: 400px;
   font-size: large;
 
   @media screen and (max-width: $mobileBreakpoint) {
-    flex: none;
+    flex: 1 0 40%;
     align-self: inherit;
-    padding-left: unset;
-    padding-right: 3rem;
+    padding-left: 3rem;
+    padding-top: 1rem;
   }
 }

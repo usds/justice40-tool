@@ -54,7 +54,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     value: properties[constants.LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE],
   };
   const umemployInfo:indicatorInfo = {
-    label: 'Unemployment',
+    label: 'Unemployment rate',
     description: 'Number of unemployed people as a percentage of the labor force',
     value: properties[constants.UNEMPLOYMENT_PROPERTY_PERCENTILE],
   };
