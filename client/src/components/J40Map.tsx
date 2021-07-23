@@ -8,6 +8,7 @@ import ReactMapGL, {
   WebMercatorViewport,
   NavigationControl,
   GeolocateControl,
+  Popup,
   FlyToInterpolator,
   FullscreenControl,
   MapRef} from 'react-map-gl';
@@ -19,6 +20,7 @@ import {useFlags} from '../contexts/FlagContext';
 // Components:
 import TerritoryFocusControl from './territoryFocusControl';
 import MapSidePanel from './mapSidePanel';
+import AreaDetail from './areaDetail';
 
 // Styles:
 import {makeMapStyle} from '../data/mapStyle';
@@ -52,7 +54,7 @@ const J40Map = () => {
 
   const [selectedFeature, setSelectedFeature] = useState<MapboxGeoJSONFeature>();
   const [detailViewData, setDetailViewData] = useState<IDetailViewInterface>();
-  // const [transitionInProgress, setTransitionInProgress] = useState<boolean>(false);
+  const [transitionInProgress, setTransitionInProgress] = useState<boolean>(false);
   const [geolocationInProgress, setGeolocationInProgress] = useState<boolean>(false);
 
   const mapRef = useRef<MapRef>(null);
@@ -156,13 +158,13 @@ const J40Map = () => {
     }
   };
 
-  // const onTransitionStart = () => {
-  //   setTransitionInProgress(true);
-  // };
+  const onTransitionStart = () => {
+    setTransitionInProgress(true);
+  };
 
-  // const onTransitionEnd = () => {
-  //   setTransitionInProgress(false);
-  // };
+  const onTransitionEnd = () => {
+    setTransitionInProgress(false);
+  };
 
   const onGeolocate = () => {
     setGeolocationInProgress(false);
@@ -191,8 +193,8 @@ const J40Map = () => {
           onViewportChange={setViewport}
           onClick={onClick}
           onLoad={onLoad}
-          // onTransitionStart={onTransitionStart}
-          // onTransitionEnd={onTransitionEnd}
+          onTransitionStart={onTransitionStart}
+          onTransitionEnd={onTransitionEnd}
           ref={mapRef}
         >
           <NavigationControl
@@ -236,10 +238,24 @@ const J40Map = () => {
         onViewportChange={setViewport}
         onClick={onClick}
         onLoad={onLoad}
-        // onTransitionStart={onTransitionStart}
-        // onTransitionEnd={onTransitionEnd}
+        onTransitionStart={onTransitionStart}
+        onTransitionEnd={onTransitionEnd}
         ref={mapRef}
       >
+        {('fs' in flags && detailViewData && !transitionInProgress) && (
+          <Popup
+            className={styles.j40Popup}
+            tipSize={5}
+            anchor="top"
+            longitude={detailViewData.longitude!}
+            latitude={detailViewData.latitude!}
+            closeOnClick={true}
+            onClose={setDetailViewData}
+            captureScroll={true}
+          >
+            <AreaDetail properties={detailViewData.properties} />
+          </Popup>
+        )}
         <NavigationControl
           showCompass={false}
           className={styles.navigationControl}
