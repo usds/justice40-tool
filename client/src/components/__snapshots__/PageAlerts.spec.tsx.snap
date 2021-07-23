@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageAlert renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="usa-alert usa-alert--info j40-sitealert"
+    data-testid="alert"
+  >
+    <div
+      class="usa-alert__body"
+    >
+      <p
+        class="usa-alert__text"
+      >
+        <b>
+          Public beta - 
+        </b>
+        This website will be continuously updated
+        <br />
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

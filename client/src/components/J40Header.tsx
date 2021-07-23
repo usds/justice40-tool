@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
-import {FormattedMessage, Link, useIntl} from 'gatsby-plugin-intl';
+import {Link, useIntl} from 'gatsby-plugin-intl';
 import {
-  Alert,
   Header,
   NavMenuButton,
   PrimaryNav,
@@ -11,11 +10,7 @@ import {defineMessages} from 'react-intl';
 // @ts-ignore
 import siteLogo from '../../src/images/icon.png';
 
-interface HeaderProps {
-  location?: Location; // optional param makes unit tests easier
-}
-
-const J40Header = ({location}: HeaderProps) => {
+const J40Header = () => {
   const intl = useIntl();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const messages = defineMessages({
@@ -122,32 +117,7 @@ const J40Header = ({location}: HeaderProps) => {
         </div>
       </Header>
 
-      <Alert className={'j40-sitealert'} type="info">
-        <b><FormattedMessage
-          id='header.alertTitleBeta'
-          description={'Alerts that appear on every page - title'}
-          defaultMessage={`Public beta`}/> - </b>
-        <FormattedMessage
-          id='header.alertBodyBeta'
-          description={'Alerts that appear on every page'}
-          defaultMessage={`This website will be continuously updated`}/>
-        <br/>
-      </Alert>
 
-      { // include this alert ONLY on the maps page.
-        location?.pathname.includes('cejst') ?
-        <Alert className={'j40-sitealert'} type="warning">
-          <b><FormattedMessage
-            id='header.alertTitleLimitedData'
-            description={'Alerts that appear on maps page - title'}
-            defaultMessage={`Limited data sources`}/> — </b>
-          <FormattedMessage
-            id='header.alertBodyLimitedData'
-            description={'Alerts that appear on maps page'}
-            defaultMessage={`Datasets may be added, updated, or removed.`}/>
-          <br/>
-        </Alert> : <></>
-      }
     </>
   );
 };
