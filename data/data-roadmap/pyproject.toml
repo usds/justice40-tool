@@ -1,0 +1,20 @@
+[tool.poetry]
+authors = ["CEJST Development Team <justice40open@usds.gov>"]
+description = "Data roadmap package"
+name = "data_roadmap"
+version = "0.1.0"
+packages = [
+    { include = "utils" },  # required for poetry packaging to install in tox
+]
+
+[tool.poetry.dependencies]
+python = "^3.7.1"
+yamale = "^3.0.7"
+importlib-resources = "^5.2.0"
+
+
+[tool.poetry.dev-dependencies]
+tox = "^3.24.0"
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core>=1.0.0"]
