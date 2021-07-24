@@ -6,6 +6,6 @@ describe('rendering of the component', () => {
   render(<MapIntroduction />);
 
   it('renders the title', () => {
-    screen.getByRole('row', {name: /Zoom and select/i});
+    expect(screen.getByRole('banner')).toHaveTextContent('Zoom and select a census block group to view data');
   });
 });

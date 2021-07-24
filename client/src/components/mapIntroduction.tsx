@@ -5,19 +5,19 @@ import * as styles from './mapIntroduction.module.scss';
 
 const MapIntroduction = () => {
   return (
-    <div role="table" className={styles.mapIntroContainer}>
-      <div role="row" className={styles.mapIntroHeader}>Zoom and select a census block group to view data</div>
-      <div role="rowgroup" className={styles.mapIntroText}>
+    <aside className={styles.mapIntroContainer}>
+      <header className={styles.mapIntroHeader}>Zoom and select a census block group to view data</header>
+      <div className={styles.mapIntroText}>
         <img className={styles.mapIntroLightbulb} src={lightbulbIcon} />
         <div className={styles.didYouKnowBox}>
           <div className={styles.didYouKnow}> Did you know?</div>
-          <div role="row" className={styles.didYouKnowText}>
+          <cite className={styles.didYouKnowText}>
             A census block group is generally between 600 and 3,000 people. It is the smallest geographical unit for
             which the U.S. Census Bureau publishes sample data.
-          </div>
+          </cite>
         </div>
       </div>
-    </div>
+    </aside>
   );
 };
 

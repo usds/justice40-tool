@@ -42,8 +42,7 @@ describe('simulate a click on map', () => {
   />);
 
   // Todo VS: figure out why this component doesn't render?
-//   it('renders the AreaDetail', () => {
-//     const columnheader = screen.getByRole('columnheader');
-//     screen.debug(columnheader);
-//   });
+  // it('renders the AreaDetail', () => {
+  //   screen.getByRole('aside');
+  // });
 });

@@ -1,5 +1,5 @@
 /* eslint-disable require-jsdoc */
-// Todo VS what is a better way around this jsdoc disabling?
+// Todo VS: what is a better way around this jsdoc disabling?
 // See FlagContext.tsx for how we're doing JSDOCs
 
 import React from 'react';
@@ -8,9 +8,8 @@ import {IDetailViewInterface} from '../components/J40Map';
 import AreaDetail from './areaDetail';
 import * as constants from '../data/constants';
 
-// Todo VS: investigate optional className:
 interface IMapSidePanelProps {
-    className?: string,
+    className: string,
     detailViewData: IDetailViewInterface | undefined,
     selectedFeatureId: string | number | undefined
   }

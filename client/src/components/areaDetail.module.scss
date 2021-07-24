@@ -1,12 +1,7 @@
-// Todo VS: How to re-use these styles among scss files?
-// OR How to use global styles?
-// OR How to export/import styles?
+@import "./areaDetailUtils.module.scss";
 
-$sidePanelBorderColor: #f2f2f2;
-$sidePanelBorder: 2px solid $sidePanelBorderColor;
 $sidePanelLabelFontColor: #171716;
 $featureSelectBorderColor: #00bde3;
-$mobileBreakpoint: 400px;
 
 @mixin sidePanelLabelStyle {
   font-size: small;
@@ -100,6 +95,8 @@ $mobileBreakpoint: 400px;
   display: flex;
   flex-direction: column;
   border-bottom: $sidePanelBorder;
+  list-style: none;
+  margin: 0;
 }
 
 //census row styles

@@ -1,12 +1,9 @@
-$sidebar-background: rgba(35, 55, 75, 0.9);
-$sidebar-color: #ffffff;
-$sidePanelBorderColor: #F2F2F2;
-$sidePanelBorder: 2px solid $sidePanelBorderColor;
+@import "./areaDetailUtils.module.scss";
 
-.mapRow{
+.mapRow {
   display: flex;
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: $mobileBreakpoint) {
     flex-wrap: wrap;
   }
 }

@@ -28,9 +28,8 @@ export const LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE = 'Linguistic isolation (p
 export const UNEMPLOYMENT_PROPERTY_PERCENTILE = 'Unemployed civilians (percent) (percentile)';
 export const TOTAL_POPULATION = 'Total population';
 
-// Todo VS: Whats a good way to allow string to take up multiple lines?
-// eslint-disable-next-line max-len
-export const EDUCATION_PROPERTY_PERCENTILE = 'Percent individuals age 25 or over with less than high school degree (percentile)';
+export const EDUCATION_PROPERTY_PERCENTILE = 'Percent individuals age 25 or over ' +
+'with less than high school degree (percentile)';
 
 // The name of the layer within the tiles that contains the score
 export const SCORE_SOURCE_LAYER = 'blocks';

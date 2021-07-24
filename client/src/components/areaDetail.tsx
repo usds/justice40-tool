@@ -68,47 +68,49 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
 
   const [categorization, categoryCircleStyle] = getCategorization(score);
 
-  // Todo VS: Understand how to make this more a11y
   return (
-    <div role="table" className={styles.areaDetailContainer}>
-      <div role="row" className={styles.topRow}>
-        <div role="cell" className={styles.cumltveIndScore}>
-          <div role="columnheader" className={styles.topRowTitle}>Cumulative Index Score</div>
+    <aside className={styles.areaDetailContainer}>
+      <header className={styles.topRow}>
+        <div className={styles.cumltveIndScore}>
+          <div className={styles.topRowTitle}>Cumulative Index Score</div>
           <div className={styles.score}>{`${readablePercent(score)}`}
             <sup className={styles.scoreSuperscript}><span>th</span></sup>
           </div>
           <div className={styles.topRowSubTitle}>percentile</div>
         </div>
-        <div role="cell" className={styles.categorization}>
+        <div className={styles.categorization}>
           <div className={styles.topRowTitle}>Categorization</div>
           <div className={styles.priority}>
             <div className={categoryCircleStyle} />
             <div className={styles.prioritization}>{categorization}</div>
           </div>
         </div>
-      </div>
-      <div role="rowgroup" className={styles.censusRow}>
-        <div>
+      </header>
+      <ul className={styles.censusRow}>
+        <li>
           <span className={styles.censusLabel}>Census block group: </span>
           <span className={styles.censusText}>{blockGroup}</span>
-        </div>
-        <div>
+        </li>
+        <li>
           <span className={styles.censusLabel}>County: </span>
-          <span className={styles.censusText}>{'Washington County'}</span></div>
-        <div>
+          <span className={styles.censusText}>{'Washington County'}</span>
+        </li>
+        <li>
           <span className={styles.censusLabel}>State: </span>
-          <span className={styles.censusText}>{'District of Columbia'}</span></div>
-        <div>
+          <span className={styles.censusText}>{'District of Columbia'}</span>
+        </li>
+        <li>
           <span className={styles.censusLabel}>Population: </span>
-          <span className={styles.censusText}>{population.toLocaleString()}</span></div>
-      </div>
-      <div role="row" className={styles.divider}>
+          <span className={styles.censusText}>{population.toLocaleString()}</span>
+        </li>
+      </ul>
+      <div className={styles.divider}>
         <div>INDICATORS</div>
         <div>PERCENTILE (0-100)</div>
       </div>
 
       {indicators.map((indicator, index) => (
-        <div role="rowgroup" key={index} className={styles.indicatorBox}>
+        <li key={index} className={styles.indicatorBox}>
           <div className={styles.indicatorInfo}>
             <div className={styles.indicatorTitle}>{indicator.label}</div>
             <div className={styles.indicatorDescription}>
@@ -116,10 +118,10 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
             </div>
           </div>
           <div className={styles.indicatorValue}>{readablePercent(indicator.value)}</div>
-        </div>
+        </li>
       ))}
 
-    </div>
+    </aside>
   );
 };
 

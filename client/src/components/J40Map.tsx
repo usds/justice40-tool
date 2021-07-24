@@ -174,53 +174,6 @@ const J40Map = () => {
     setGeolocationInProgress(true);
   };
 
-  // Todo VS: Is there a better way to change based on mobile?
-  if (constants.isMobile) {
-    return (
-      <div className={styles.mapRow}>
-        <ReactMapGL
-          {...viewport}
-          className={styles.mapContainer}
-          mapStyle={makeMapStyle(flags)}
-          minZoom={constants.GLOBAL_MIN_ZOOM}
-          maxZoom={constants.GLOBAL_MAX_ZOOM}
-          mapOptions={{hash: true}}
-          width="100%"
-          height="90vw"
-          dragRotate={false}
-          touchRotate={false}
-          interactiveLayerIds={[constants.HIGH_SCORE_LAYER_NAME]}
-          onViewportChange={setViewport}
-          onClick={onClick}
-          onLoad={onLoad}
-          onTransitionStart={onTransitionStart}
-          onTransitionEnd={onTransitionEnd}
-          ref={mapRef}
-        >
-          <NavigationControl
-            showCompass={false}
-            className={styles.navigationControl}
-          />
-          {'gl' in flags ? <GeolocateControl
-            className={styles.geolocateControl}
-            positionOptions={{enableHighAccuracy: true}}
-            onGeolocate={onGeolocate}
-            // @ts-ignore // Types have not caught up yet, see https://github.com/visgl/react-map-gl/issues/1492
-            onClick={onClickGeolocate}
-          /> : ''}
-          {geolocationInProgress ? <div>Geolocation in progress...</div> : ''}
-          <TerritoryFocusControl onClickTerritoryFocusButton={onClickTerritoryFocusButton}/>
-          {'fs' in flags ? <FullscreenControl className={styles.fullscreenControl}/> :'' }
-        </ReactMapGL>
-        <MapSidePanel
-          className={styles.mapSidePanel}
-          detailViewData={detailViewData}
-          selectedFeatureId={selectedFeature?.id}
-        />
-      </div>
-    );
-  }
-
   return (
     <div className={styles.mapRow}>
       <ReactMapGL
@@ -231,7 +184,7 @@ const J40Map = () => {
         maxZoom={constants.GLOBAL_MAX_ZOOM}
         mapOptions={{hash: true}}
         width="100%"
-        height="42.1vw"
+        height={constants.isMobile && '90vw' || '42.1vw'}
         dragRotate={false}
         touchRotate={false}
         interactiveLayerIds={[constants.HIGH_SCORE_LAYER_NAME]}
