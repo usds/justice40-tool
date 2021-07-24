@@ -16,7 +16,7 @@ describe('tests that the map side panel renders MapIntroduction component', () =
     it(`should render MapIntroduction component on ${device[0]} x ${device[1]}`, () => {
       cy.visit('http://localhost:8000/en/cejst');
       cy.viewport(device[0], device[1]);
-      cy.get('div[class*="mapIntroContainer"]').should('be.visible');
+      cy.get('aside').should('be.visible');
     });
   });
 });

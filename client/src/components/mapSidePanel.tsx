@@ -15,7 +15,6 @@ interface IMapSidePanelProps {
   }
 
 const MapSidePanel = ({className, detailViewData, selectedFeatureId}:IMapSidePanelProps) => {
-  console.log(className);
   const indicators = [
     constants.POVERTY_PROPERTY_PERCENTILE,
     constants.EDUCATION_PROPERTY_PERCENTILE,
