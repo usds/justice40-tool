@@ -182,20 +182,21 @@ const J40Map = () => {
           minzoom={constants.GLOBAL_MAX_ZOOM_HIGH}
         >
           <Layer
-            id={'score-highlights-layer'}
+            id={constants.CURRENTLY_SELECTED_FEATURE_HIGHLIGHT_LAYER_NAME}
             source-layer={constants.SCORE_SOURCE_LAYER}
-            type={'line'}
+            type='line'
             paint={{
               'line-color': constants.DEFAULT_OUTLINE_COLOR,
-              'line-width': 0.8,
-              'line-opacity': 0.5,
+              'line-width': constants.CURRENTLY_SELECTED_FEATURE_LAYER_WIDTH,
+              'line-opacity': constants.CURRENTLY_SELECTED_FEATURE_LAYER_OPACITY,
             }}
             minzoom={constants.GLOBAL_MIN_ZOOM_HIGHLIGHT}
             maxzoom={constants.GLOBAL_MAX_ZOOM_HIGHLIGHT}
           />
+
           <Layer
-            id={'score-border-highlight-layer'}
-            type={'line'}
+            id={constants.BLOCK_GROUP_BOUNDARY_LAYER_NAME}
+            type='line'
             source-layer={constants.SCORE_SOURCE_LAYER}
             paint={{
               'line-color': constants.BORDER_HIGHLIGHT_COLOR,

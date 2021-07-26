@@ -22,6 +22,8 @@ export const HIGH_SCORE_LAYER_NAME = 'score-high-layer';
 export const LOW_SCORE_SOURCE_NAME = 'score-low';
 export const LOW_SCORE_LAYER_NAME = 'score-low-layer';
 export const SELECTED_PROPERTY = 'selected';
+export const CURRENTLY_SELECTED_FEATURE_HIGHLIGHT_LAYER_NAME = 'currently-selected-feature-highlight-layer';
+export const BLOCK_GROUP_BOUNDARY_LAYER_NAME = 'block-group-boundary-layer';
 
 // The name of the layer within the tiles that contains the score
 export const SCORE_SOURCE_LAYER = 'blocks';
@@ -91,9 +93,11 @@ export const MIN_COLOR = '#FFFFFF';
 export const MED_COLOR = '#D1DAE6';
 export const MAX_COLOR = '#768FB3';
 export const BORDER_HIGHLIGHT_COLOR = '#00BDE3';
+export const CURRENTLY_SELECTED_FEATURE_LAYER_OPACITY = 0.5;
 
 // Widths
 export const HIGHLIGHT_BORDER_WIDTH = 5.0;
+export const CURRENTLY_SELECTED_FEATURE_LAYER_WIDTH = 0.8;
 
 // Score boundaries
 export const SCORE_BOUNDARY_LOW = 0.0;
