@@ -126,6 +126,7 @@ const J40Map = () => {
   };
 
   const onClickTerritoryFocusButton = (event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
     const buttonID = event.target && (event.target as HTMLElement).id;
 
     switch (buttonID) {
