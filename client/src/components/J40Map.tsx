@@ -175,7 +175,7 @@ const J40Map = () => {
   };
 
   return (
-    <div className={styles.mapRow}>
+    <div className={styles.mapAndInfoPanelContainer}>
       <ReactMapGL
         {...viewport}
         className={styles.mapContainer}
@@ -226,7 +226,7 @@ const J40Map = () => {
       </ReactMapGL>
       <MapSidePanel
         className={styles.mapSidePanel}
-        detailViewData={detailViewData}
+        featureProperties={detailViewData?.properties}
         selectedFeatureId={selectedFeature?.id}
       />
     </div>

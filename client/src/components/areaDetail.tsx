@@ -10,10 +10,10 @@ export const getCategorization = (percentile: number) => {
   let categorization;
   let categoryCircleStyle;
 
-  if (percentile >= 0.75 ) {
+  if (percentile >= constants.SCORE_BOUNDARY_PRIORITIZED ) {
     categorization = 'Prioritized';
     categoryCircleStyle = styles.prioritized;
-  } else if (0.60 <= percentile && percentile < 0.75) {
+  } else if (constants.SCORE_BOUNDARY_THRESHOLD <= percentile && percentile < constants.SCORE_BOUNDARY_PRIORITIZED) {
     categorization = 'Threshold';
     categoryCircleStyle = styles.threshold;
   } else {

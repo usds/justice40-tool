@@ -32,15 +32,15 @@ describe('tests the readablePercent function', () => {
 });
 
 describe('tests the getCategorization function', () => {
-  it('should equal Prioritized for value >= .75', () => {
+  it(`should equal Prioritized for value >= ${constants.SCORE_BOUNDARY_LOW}`, () => {
     expect(getCategorization(.756)).toEqual(['Prioritized', undefined]);
   });
 
-  it('should equal Threshold for .60 <= value < .75', () => {
+  it(`should equal Threshold for .60 <= value < ${constants.SCORE_BOUNDARY_THRESHOLD}`, () => {
     expect(getCategorization(.65)).toEqual(['Threshold', undefined]);
   });
 
-  it('should equal Non-prioritized for value < .60', () => {
+  it(`should equal Non-prioritized for value < ${constants.SCORE_BOUNDARY_PRIORITIZED}`, () => {
     expect(getCategorization(.53)).toEqual(['Non-prioritized', undefined]);
   });
 });

@@ -1,6 +1,6 @@
 @import "./areaDetailUtils.module.scss";
 
-.mapRow {
+.mapAndInfoPanelContainer {
   display: flex;
 
   @media screen and (max-width: $mobileBreakpoint) {
