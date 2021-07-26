@@ -19,7 +19,7 @@ import {useFlags} from '../contexts/FlagContext';
 
 // Components:
 import TerritoryFocusControl from './territoryFocusControl';
-import MapSidePanel from './mapSidePanel';
+import MapInfoPanel from './mapInfoPanel';
 import AreaDetail from './areaDetail';
 
 // Styles:
@@ -224,8 +224,8 @@ const J40Map = () => {
         <TerritoryFocusControl onClickTerritoryFocusButton={onClickTerritoryFocusButton}/>
         {'fs' in flags ? <FullscreenControl className={styles.fullscreenControl}/> :'' }
       </ReactMapGL>
-      <MapSidePanel
-        className={styles.mapSidePanel}
+      <MapInfoPanel
+        className={styles.mapInfoPanel}
         featureProperties={detailViewData?.properties}
         selectedFeatureId={selectedFeature?.id}
       />

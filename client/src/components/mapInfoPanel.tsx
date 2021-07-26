@@ -2,13 +2,13 @@ import React from 'react';
 import MapIntroduction from './mapIntroduction';
 import AreaDetail from './areaDetail';
 
-interface IMapSidePanelProps {
+interface IMapInfoPanelProps {
     className: string,
     featureProperties: { [key:string]: string | number } | undefined,
     selectedFeatureId: string | number | undefined
   }
 
-const MapSidePanel = ({className, featureProperties, selectedFeatureId}:IMapSidePanelProps) => {
+const MapInfoPanel = ({className, featureProperties, selectedFeatureId}:IMapInfoPanelProps) => {
   return (
     <div className={className} >
       {(featureProperties && selectedFeatureId ) ?
@@ -19,4 +19,4 @@ const MapSidePanel = ({className, featureProperties, selectedFeatureId}:IMapSide
   );
 };
 
-export default MapSidePanel;
+export default MapInfoPanel;

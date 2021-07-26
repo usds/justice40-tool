@@ -2,7 +2,7 @@ declare namespace MapModuleScssNamespace {
   export interface IMapModuleScss {
     areaDetailContainer: string;
     topRow:string;
-    cumltveIndScore:string;
+    cumulativeIndexScore:string;
     scoreSuperscript: string;
     topRowTitle:string;
     topRowSubTitle:string;

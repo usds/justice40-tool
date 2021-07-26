@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {render, screen} from '@testing-library/react';
-import MapSidePanel from './mapSidePanel';
+import MapInfoPanel from './mapInfoPanel';
 
 describe('simulate app starting up, no click on map', () => {
-  render(<MapSidePanel
+  render(<MapInfoPanel
     className={'someClassName'}
     featureProperties={undefined}
     selectedFeatureId={undefined}
@@ -30,8 +30,8 @@ describe('simulate a click on map', () => {
   };
   const selectedFeatureId = 345;
 
-  render(<MapSidePanel
-    className={'J40Map-module--mapSidePanel--8Ap7p'}
+  render(<MapInfoPanel
+    className={'J40Map-module--mapInfoPanel--8Ap7p'}
     featureProperties={featureProperties}
     selectedFeatureId={selectedFeatureId}
   />);

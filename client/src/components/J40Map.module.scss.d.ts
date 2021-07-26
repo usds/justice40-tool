@@ -9,7 +9,7 @@ declare namespace J40MapModuleScssNamespace {
     fullscreenControl: string;
     geolocateControl: string;
     detailView: string;
-    mapSidePanel: string;
+    mapInfoPanel: string;
   }
 }
 

@@ -71,7 +71,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
   return (
     <aside className={styles.areaDetailContainer}>
       <header className={styles.topRow}>
-        <div className={styles.cumltveIndScore}>
+        <div className={styles.cumulativeIndexScore}>
           <div className={styles.topRowTitle}>Cumulative Index Score</div>
           <div className={styles.score}>{`${readablePercent(score)}`}
             <sup className={styles.scoreSuperscript}><span>th</span></sup>
