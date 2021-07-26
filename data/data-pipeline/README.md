@@ -93,7 +93,7 @@ Right now, our comparison tool exists simply as a python notebook in `data/data-
 1. In your browser, navigate to one of the URLs returned by the above command.
 1. Select `scoring_comparison.ipynb` from the options in your browser.
 1. Run through the steps in the notebook. You can step through them one at a time by clicking the "Run" button for each cell, or open the "Cell" menu and click "Run all" to run them all at once.
-1. Outputs of the comparison tool will be available in `data/data-pipeline/data/tmp/comparison_outputs`.
+1. Outputs of the comparison tool will be available in `data/data-pipeline/data/tmp/comparison_outputs`. *NOTE:* This may take several minutes or up to an hour to fully execute and generate the reports.
 
 ### Data Sources
 
