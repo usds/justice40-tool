@@ -8,7 +8,7 @@ logger = get_module_logger(__name__)
 
 class CalEnviroScreenETL(ExtractTransformLoad):
     def __init__(self):
-        self.CALENVIROSCREEN_FTP_URL = " https://justice40-data.s3.amazonaws.com/data-sources/CalEnviroScreen_4.0_2021.zip"
+        self.CALENVIROSCREEN_FTP_URL = "https://justice40-data.s3.amazonaws.com/data-sources/CalEnviroScreen_4.0_2021.zip"
         self.CALENVIROSCREEN_CSV = self.TMP_PATH / "CalEnviroScreen_4.0_2021.csv"
         self.CSV_PATH = self.DATA_PATH / "dataset" / "calenviroscreen4"
 
