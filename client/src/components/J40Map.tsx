@@ -53,7 +53,7 @@ const J40Map = () => {
   const flags = useFlags();
 
   const selectedFeatureId = (selectedFeature && selectedFeature.id) || '';
-  const filter = useMemo(() => ['in', 'GEOID10', selectedFeatureId], [selectedFeature]);
+  const filter = useMemo(() => ['in', constants.GEOID_PROPERTY, selectedFeatureId], [selectedFeature]);
 
   const onClick = (event: MapEvent) => {
     const feature = event.features && event.features[0];
