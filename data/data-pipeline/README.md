@@ -76,8 +76,11 @@ _For example: `poetry run python application.py etl-run -d ejscreen` would only 
 
 We are building a comparison tool to enable easy (or at least straightforward) comparison of the Justice40 score with other existing indices. The goal of having this is so that as we experiment and iterate with a scoring methodology, we can understand how our score overlaps with or differs from other indices that communities, nonprofits, and governmentss use to inform decision making.
 
-Right now, our comparison tool exists simply as a python notebook in `data/data-pipeline/ipython/scoring_comparison.ipynb`. To run this comparison tool, first make sure eyou've gone through the above steps to run the data ETL and score generation. Then:
+Right now, our comparison tool exists simply as a python notebook in `data/data-pipeline/ipython/scoring_comparison.ipynb`.
 
+To run this comparison tool:
+
+1. Make sure you've gone through the above steps to run the data ETL and score generation.
 1. From this directory (`data/data-pipeline`), navigate to the `ipython` directory: `cd ipython`.
 1. Ensure you have `pandoc` installed on your computer. If you're on a Mac, run `brew install pandoc`; for other OSes, see pandoc's [installation guide](https://pandoc.org/installing.html).
 1. Install the extra dependencies:
