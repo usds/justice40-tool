@@ -394,13 +394,15 @@ class ScoreETL(ExtractTransformLoad):
             "Score C",
             "Score D",
             "Score E",
+            "Poverty (Less than 200% of federal poverty line)",
         ]:
-            self.df[f"{score_field}{self.PERCENTILE_FIELD_SUFFIX}"] = self.df[
-                score_field
-            ].rank(pct=True)
-            self.df[f"{score_field} (top 25th percentile)"] = (
-                self.df[f"{score_field}{self.PERCENTILE_FIELD_SUFFIX}"] >= 0.75
-            )
+            self.df[f"{score_field}{self.PERCENTILE_FIELD_SUFFIX}"] = self.df[score_field].rank(pct=True)
+
+            for threshold in [0.25, 0.3, 0.35, 0.4]:
+                fraction_converted_to_percent = int(100 * threshold)
+                self.df[f"{score_field} (top {fraction_converted_to_percent}th percentile)"] = (
+                        self.df[f"{score_field}{self.PERCENTILE_FIELD_SUFFIX}"] >= 1 - threshold
+                )
 
     def load(self) -> None:
         logger.info(f"Saving Score CSV")
