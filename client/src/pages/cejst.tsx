@@ -2,7 +2,6 @@ import React from 'react';
 import Layout from '../components/layout';
 import MapWrapper from '../components/mapWrapper';
 import HowYouCanHelp from '../components/HowYouCanHelp';
-import MapLegend from '../components/mapLegend';
 import DownloadPacket from '../components/downloadPacket';
 import * as styles from './cejst.module.scss';
 
@@ -52,10 +51,7 @@ const CEJSTPage = ({location}: IMapPageProps) => {
             <DownloadPacket />
           </div>
         </section>
-
-        <h2>Explore the Tool</h2>
         <MapWrapper />
-        <MapLegend />
         <HowYouCanHelp />
       </main>
     </Layout>

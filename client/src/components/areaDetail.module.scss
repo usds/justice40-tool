@@ -1,23 +1,156 @@
-.areaDetailTable {
-  max-width: 31.6vw;
+@import "./areaDetailUtils.scss";
+
+$sidePanelLabelFontColor: #171716;
+$featureSelectBorderColor: #00bde3;
+
+@mixin sidePanelLabelStyle {
+  font-size: small;
+  color: $sidePanelLabelFontColor;
+  font-weight: 600;
 }
 
-.titleContainer {
-  display: flex;
-  flex-direction: column;
-  padding: 22px 22px;
-}
-
-.titleIndicatorName {
-  font-weight: bold;
+@mixin categorizationCircleStyle {
+  height: 0.6rem;
+  width: 0.6rem;
+  border-radius: 100%;
+  align-self: center;
+  margin-top: 0.8rem;
+  margin-right: 0.5rem;
+  opacity: 0.6;
 }
 
 .areaDetailContainer {
-  max-height: 50vh;
-  overflow: scroll;
+  display: flex;
+  flex-direction: column;
 }
 
-.areaDetailTableContainer {
-  overflow: auto;
-  padding: 22px;
+// top row styles
+.topRow {
+  display: flex;
+}
+
+.cumulativeIndexScore,
+.categorization {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 7.7rem;
+  border-bottom: $sidePanelBorder;
+  flex: 1 0 50%;
+  padding-top: 2rem;
+}
+
+.topRowTitle,
+.censusLabel {
+  @include sidePanelLabelStyle;
+}
+
+.topRowSubTitle {
+  font-size: small;
+  color: $sidePanelLabelFontColor;
+}
+
+.score {
+  font-size: xx-large;
+  font-weight: bolder;
+}
+
+.scoreSuperscript {
+  font-size: large;
+  padding-bottom: 1rem;
+}
+
+.categorization {
+  border-left: $sidePanelBorder;
+}
+
+.priority {
+  display: flex;
+}
+
+.prioritized {
+  @include categorizationCircleStyle;
+  background: #1a4480;
+  border: 1px solid $featureSelectBorderColor;
+}
+
+.threshold {
+  @include categorizationCircleStyle;
+  background: #d7dde7;
+  border: 1px solid $featureSelectBorderColor;
+}
+
+.nonPrioritized {
+  @include categorizationCircleStyle;
+  border: 1px solid $featureSelectBorderColor;
+}
+
+.prioritization {
+  font-size: large;
+  font-weight: bold;
+  padding-top: 0.8rem;
+}
+
+.censusRow {
+  display: flex;
+  flex-direction: column;
+  border-bottom: $sidePanelBorder;
+  list-style: none;
+  margin: 0;
+}
+
+//census row styles
+.censusRow {
+  padding: 1rem;
+}
+
+.censusText,
+.indicatorDescription {
+  font-size: small;
+}
+
+//Divider styles
+.divider {
+  @include sidePanelLabelStyle;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: $sidePanelBorder;
+  padding: 0.3rem 0.5rem 0.3rem 1rem;
+  background-color: #edeef0;
+}
+
+//Indicator box styles
+.indicatorBox {
+  display: flex;
+  padding: 1.5rem 1rem;
+  border-bottom: $sidePanelBorder;
+
+  @media screen and (max-width: $mobileBreakpoint) {
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+}
+
+.indicatorBox:last-child {
+  border-bottom: none;
+}
+
+.indicatorTitle {
+  font-size: large;
+  font-weight: bolder;
+}
+
+.indicatorValue {
+  flex: 1 0 37%;
+  align-self: center;
+  padding-left: 2.4rem;
+  font-size: large;
+
+  @media screen and (max-width: $mobileBreakpoint) {
+    flex: 1 0 40%;
+    align-self: inherit;
+    padding-left: 3rem;
+    padding-top: 1rem;
+  }
 }
