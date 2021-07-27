@@ -178,6 +178,65 @@ const J40Map = () => {
 
   // Todo VS: remove this
   console.log('isMobile: ', isMobile);
+  if (isMobile) {
+    return (
+      <div className={styles.mapAndInfoPanelContainer}>
+        <ReactMapGL
+          {...viewport}
+          className={styles.mapContainer}
+          mapStyle={makeMapStyle(flags)}
+          minZoom={constants.GLOBAL_MIN_ZOOM}
+          maxZoom={constants.GLOBAL_MAX_ZOOM}
+          mapOptions={{hash: true}}
+          width="100%"
+          height={'44vh'}
+          dragRotate={false}
+          touchRotate={false}
+          interactiveLayerIds={[constants.HIGH_SCORE_LAYER_NAME]}
+          onViewportChange={setViewport}
+          onClick={onClick}
+          onLoad={onLoad}
+          onTransitionStart={onTransitionStart}
+          onTransitionEnd={onTransitionEnd}
+          ref={mapRef}
+        >
+          {('fs' in flags && detailViewData && !transitionInProgress) && (
+            <Popup
+              className={styles.j40Popup}
+              tipSize={5}
+              anchor="top"
+              longitude={detailViewData.longitude!}
+              latitude={detailViewData.latitude!}
+              closeOnClick={true}
+              onClose={setDetailViewData}
+              captureScroll={true}
+            >
+              <AreaDetail properties={detailViewData.properties} />
+            </Popup>
+          )}
+          <NavigationControl
+            showCompass={false}
+            className={styles.navigationControl}
+          />
+          {'gl' in flags ? <GeolocateControl
+            className={styles.geolocateControl}
+            positionOptions={{enableHighAccuracy: true}}
+            onGeolocate={onGeolocate}
+            // @ts-ignore // Types have not caught up yet, see https://github.com/visgl/react-map-gl/issues/1492
+            onClick={onClickGeolocate}
+          /> : ''}
+          {geolocationInProgress ? <div>Geolocation in progress...</div> : ''}
+          <TerritoryFocusControl onClickTerritoryFocusButton={onClickTerritoryFocusButton}/>
+          {'fs' in flags ? <FullscreenControl className={styles.fullscreenControl}/> :'' }
+        </ReactMapGL>
+        <MapInfoPanel
+          className={styles.mapInfoPanel}
+          featureProperties={detailViewData?.properties}
+          selectedFeatureId={selectedFeature?.id}
+        />
+      </div>
+    );
+  }
   return (
     <div className={styles.mapAndInfoPanelContainer}>
       <ReactMapGL
@@ -188,7 +247,8 @@ const J40Map = () => {
         maxZoom={constants.GLOBAL_MAX_ZOOM}
         mapOptions={{hash: true}}
         width="100%"
-        height={isMobile ? '44vh' : '100%'}
+        // height={isMobile ? '44vh' : '100%'}
+        height={'100%'}
         dragRotate={false}
         touchRotate={false}
         interactiveLayerIds={[constants.HIGH_SCORE_LAYER_NAME]}
