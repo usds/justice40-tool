@@ -14,6 +14,7 @@ import ReactMapGL, {
   MapRef} from 'react-map-gl';
 import bbox from '@turf/bbox';
 import * as d3 from 'd3-ease';
+import {isMobile} from 'react-device-detect';
 
 // Contexts:
 import {useFlags} from '../contexts/FlagContext';
@@ -176,7 +177,7 @@ const J40Map = () => {
   };
 
   // Todo VS: remove this
-  console.log('isMobile: ', constants.isMobile);
+  console.log('isMobile: ', isMobile);
   return (
     <div className={styles.mapAndInfoPanelContainer}>
       <ReactMapGL
@@ -187,7 +188,7 @@ const J40Map = () => {
         maxZoom={constants.GLOBAL_MAX_ZOOM}
         mapOptions={{hash: true}}
         width="100%"
-        height={constants.isMobile && '44vh' || '100%'}
+        height={isMobile ? '44vh' : '100%'}
         dragRotate={false}
         touchRotate={false}
         interactiveLayerIds={[constants.HIGH_SCORE_LAYER_NAME]}
