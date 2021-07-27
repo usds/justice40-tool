@@ -15,5 +15,19 @@ describe('LatLng Test', () => {
       cy.url().should('include', '#4/35.04/-77.9');
     });
   });
+  it('allows user to specify alternative starting URL', () => {
+    const [expectedZoom, expectedLat, expectedLng] = [12.05, 41.40965, -75.65978];
+    const expectedURL = `http://localhost:8000/en/cejst/#${expectedZoom}/${expectedLat}/${expectedLng}`;
+    cy.visit(expectedURL);
+    cy.getMap().then((map) => {
+      cy.waitForMapIdle(map);
+      cy.url().should('equal', expectedURL);
+      const actualZoom = map.getZoom();
+      const actualCenter = map.getCenter();
+      expect(actualCenter.lat).to.eq(expectedLat);
+      expect(actualCenter.lng).to.eq(expectedLng);
+      expect(actualZoom).to.eq(expectedZoom);
+    });
+  });
 });
 
