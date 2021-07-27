@@ -11,6 +11,10 @@ on:
     branches: [main]
     paths:
       - 'client/**/*'
+  push:
+    branches:
+      - '*' # Run on all updates to PR branches
+      - '!main' # Do not run on pushes to main
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -95,7 +99,7 @@ jobs:
         run: aws s3 sync ./public/ s3://usds-geoplatform-justice40-website/justice40-tool/${{env.DESTINATION_FOLDER}} --delete
       - name: Update PR with deployed URL
         uses: mshick/add-pr-comment@v1
-        if: github.event_name == 'pull_request' && github.event.action == 'opened' # Only comment if the PR has been opened
+        if: github.event_name == 'pull_request' && github.event.action == 'opened' || github.event_name == 'push' # Only comment if the PR has been opened or a push has updated it
         with:
           message: |
             **🚢 PR Deployed! 🚢**
@@ -105,6 +109,6 @@ jobs:
           allow-repeats: false # This is the default
       - name: Printing deployment URLs
         run: |
-          echo "Github pages: https://usds.github.io/justice40-tool/$DESTINATION_FOLDER/en
-          echo "Standard S3 bucket version (http only) : http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/justice40-tool/$DESTINATION_FOLDER/en
-          ehoc "Cloudfront https: https://d2zjid6n5ja2pt.cloudfront.net/justice40-tool/$DESTINATION_FOLDER/en"
+          echo "Github pages: https://usds.github.io/justice40-tool/$DESTINATION_FOLDER/en"
+          echo "Standard S3 bucket version (http only) : http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/justice40-tool/$DESTINATION_FOLDER/en"
+          echo "Cloudfront https: https://d2zjid6n5ja2pt.cloudfront.net/justice40-tool/$DESTINATION_FOLDER/en"
