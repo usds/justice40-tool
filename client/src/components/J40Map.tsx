@@ -14,6 +14,7 @@ import ReactMapGL, {
   MapRef} from 'react-map-gl';
 import bbox from '@turf/bbox';
 import * as d3 from 'd3-ease';
+
 // Contexts:
 import {useFlags} from '../contexts/FlagContext';
 
@@ -22,7 +23,7 @@ import TerritoryFocusControl from './territoryFocusControl';
 import MapInfoPanel from './mapInfoPanel';
 import AreaDetail from './areaDetail';
 
-// Styles:
+// Styles and constants
 import {makeMapStyle} from '../data/mapStyle';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import * as constants from '../data/constants';

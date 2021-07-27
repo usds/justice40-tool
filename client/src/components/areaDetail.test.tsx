@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {render, screen} from '@testing-library/react';
 import AreaDetail, {getCategorization, readablePercent} from './areaDetail';
+import {LocalizedComponent} from '../test/testHelpers';
 import * as constants from '../data/constants';
 
 describe('rendering of the AreaDetail', () => {
@@ -15,7 +16,12 @@ describe('rendering of the AreaDetail', () => {
     [constants.TOTAL_POPULATION]: 3435435,
   };
 
-  render(<AreaDetail properties={properties}/>);
+  render(
+      <LocalizedComponent>
+        <AreaDetail properties={properties}/>
+      </LocalizedComponent>,
+  )
+  ;
 
   it('checks if various text fields are visible', () => {
     expect(screen.getByText('Cumulative Index Score')).toBeVisible();

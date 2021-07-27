@@ -1,6 +1,13 @@
+// External Libs:
 import * as React from 'react';
-import * as constants from '../data/constants';
+import {useIntl} from 'gatsby-plugin-intl';
+import {defineMessages} from 'react-intl';
+
+// Components:
+
+// Styles and constants
 import * as styles from './areaDetail.module.scss';
+import * as constants from '../data/constants';
 
 export const readablePercent = (percent: number) => {
   return `${(percent * 100).toFixed(1)}`;
@@ -28,6 +35,36 @@ interface IAreaDetailProps {
 }
 
 const AreaDetail = ({properties}:IAreaDetailProps) => {
+  const intl = useIntl();
+  const messages = defineMessages({
+    poverty: {
+      id: 'areaDetail.indicator.poverty',
+      defaultMessage: 'Poverty',
+      description: 'Household income is less than or equal to twice the federal "poverty level"',
+    },
+    education: {
+      id: 'areaDetail.indicator.education',
+      defaultMessage: 'Education',
+      description: 'Percent of people age 25 or older that didn’t get a high school diploma',
+    },
+    linguisticIsolation: {
+      id: 'areaDetail.indicator.linguisticIsolation',
+      defaultMessage: 'Linguistic Isolation',
+      description: 'Households in which all members speak a non-English language and ' +
+      'speak English less than "very well"',
+    },
+    unemployment: {
+      id: 'areaDetail.indicator.unemployment',
+      defaultMessage: 'Unemployment',
+      description: 'Number of unemployed people as a percentage of the labor force',
+    },
+    houseBurden: {
+      id: 'areaDetail.indicator.houseBurden',
+      defaultMessage: 'Housing Burden',
+      description: 'Households that are low income and spend more than 30% of their income to housing costs',
+    },
+  });
+
   const score = properties[constants.SCORE_PROPERTY_HIGH] as number;
   const blockGroup = properties[constants.GEOID_PROPERTY];
   const population = properties[constants.TOTAL_POPULATION];
@@ -38,8 +75,9 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     value: number,
   }
 
+  // Todo: Ticket #367 will be replacing descriptions with YAML file
   const povertyInfo:indicatorInfo = {
-    label: 'Poverty',
+    label: intl.formatMessage(messages.poverty),
     description: 'Household income is less than or equal to twice the federal "poverty level"',
     value: properties[constants.POVERTY_PROPERTY_PERCENTILE],
   };

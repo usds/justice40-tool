@@ -1,4 +1,24 @@
 {
+  "areaDetail.indicator.education": {
+    "defaultMessage": "Education",
+    "description": "Percent of people age 25 or older that didn’t get a high school diploma"
+  },
+  "areaDetail.indicator.houseBurden": {
+    "defaultMessage": "Housing Burden",
+    "description": "Households that are low income and spend more than 30% of their income to housing costs"
+  },
+  "areaDetail.indicator.linguisticIsolation": {
+    "defaultMessage": "Linguistic Isolation",
+    "description": "Households in which all members speak a non-English language and speak English less than \"very well\""
+  },
+  "areaDetail.indicator.poverty": {
+    "defaultMessage": "Poverty",
+    "description": "Household income is less than or equal to twice the federal \"poverty level\""
+  },
+  "areaDetail.indicator.unemployment": {
+    "defaultMessage": "Unemployment",
+    "description": "Number of unemployed people as a percentage of the labor force"
+  },
   "areasOfInterest.climate": {
     "defaultMessage": "Climate change",
     "description": "item in areasOfInterest list"

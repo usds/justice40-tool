@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {render, screen} from '@testing-library/react';
 import MapInfoPanel from './mapInfoPanel';
+import {LocalizedComponent} from '../test/testHelpers';
 
 describe('simulate app starting up, no click on map', () => {
   render(<MapInfoPanel
@@ -30,11 +31,15 @@ describe('simulate a click on map', () => {
   };
   const selectedFeatureId = 345;
 
-  render(<MapInfoPanel
-    className={'J40Map-module--mapInfoPanel--8Ap7p'}
-    featureProperties={featureProperties}
-    selectedFeatureId={selectedFeatureId}
-  />);
+  render(
+      <LocalizedComponent>
+        <MapInfoPanel
+          className={'J40Map-module--mapInfoPanel--8Ap7p'}
+          featureProperties={featureProperties}
+          selectedFeatureId={selectedFeatureId}
+        />
+      </LocalizedComponent>,
+  );
 
   // Todo VS: figure out why this component doesn't render?
   // it('renders the AreaDetail', () => {
