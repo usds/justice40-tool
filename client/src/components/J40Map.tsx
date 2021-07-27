@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+// External Libs:
 import React, {MouseEvent, useRef, useState, useMemo} from 'react';
 import {Map, MapboxGeoJSONFeature, LngLatBoundsLike} from 'maplibre-gl';
 import ReactMapGL, {
@@ -11,13 +12,20 @@ import ReactMapGL, {
   FlyToInterpolator,
   FullscreenControl,
   MapRef, Source, Layer} from 'react-map-gl';
-import {makeMapStyle} from '../data/mapStyle';
-import AreaDetail from './areaDetail';
 import bbox from '@turf/bbox';
 import * as d3 from 'd3-ease';
-import {useFlags} from '../contexts/FlagContext';
-import TerritoryFocusControl from './territoryFocusControl';
+import {isMobile} from 'react-device-detect';
 
+// Contexts:
+import {useFlags} from '../contexts/FlagContext';
+
+// Components:
+import TerritoryFocusControl from './territoryFocusControl';
+import MapInfoPanel from './mapInfoPanel';
+import AreaDetail from './areaDetail';
+
+// Styles and constants
+import {makeMapStyle} from '../data/mapStyle';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import * as constants from '../data/constants';
 import * as styles from './J40Map.module.scss';
@@ -35,7 +43,7 @@ interface IJ40Interface {
 };
 
 
-interface IDetailViewInterface {
+export interface IDetailViewInterface {
   latitude: number
   longitude: number
   zoom: number
@@ -54,6 +62,8 @@ const J40Map = ({location}: IJ40Interface) => {
   const [detailViewData, setDetailViewData] = useState<IDetailViewInterface>();
   const [transitionInProgress, setTransitionInProgress] = useState<boolean>(false);
   const [geolocationInProgress, setGeolocationInProgress] = useState<boolean>(false);
+  const [isMobileMapState, setIsMobileMapState] = useState<boolean>(false);
+
   const mapRef = useRef<MapRef>(null);
   const flags = useFlags();
 
@@ -98,6 +108,8 @@ const J40Map = ({location}: IJ40Interface) => {
     if (typeof window !== 'undefined' && window.Cypress && mapRef.current) {
       window.underlyingMap = mapRef.current.getMap();
     }
+
+    if (isMobile) setIsMobileMapState(true);
   };
 
 
@@ -158,16 +170,15 @@ const J40Map = ({location}: IJ40Interface) => {
   };
 
   return (
-    <>
+    <div className={styles.mapAndInfoPanelContainer}>
       <ReactMapGL
         {...viewport}
-        className={styles.mapContainer}
         mapStyle={makeMapStyle(flags)}
         minZoom={constants.GLOBAL_MIN_ZOOM}
         maxZoom={constants.GLOBAL_MAX_ZOOM}
         mapOptions={{hash: true}}
         width="100%"
-        height="52vw"
+        height={isMobileMapState ? '44vh' : '100%'}
         dragRotate={false}
         touchRotate={false}
         interactiveLayerIds={[constants.HIGH_SCORE_LAYER_NAME]}
@@ -177,6 +188,7 @@ const J40Map = ({location}: IJ40Interface) => {
         onTransitionStart={onTransitionStart}
         onTransitionEnd={onTransitionEnd}
         ref={mapRef}
+        data-cy={'reactMapGL'}
       >
         <Source
           id={constants.HIGH_SCORE_SOURCE_NAME}
@@ -211,7 +223,7 @@ const J40Map = ({location}: IJ40Interface) => {
             minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
           />
         </Source>
-        {(detailViewData && !transitionInProgress) && (
+        {('fs' in flags && detailViewData && !transitionInProgress) && (
           <Popup
             className={styles.j40Popup}
             tipSize={5}
@@ -225,7 +237,6 @@ const J40Map = ({location}: IJ40Interface) => {
             <AreaDetail properties={detailViewData.properties} />
           </Popup>
         )}
-
         <NavigationControl
           showCompass={false}
           className={styles.navigationControl}
@@ -241,7 +252,12 @@ const J40Map = ({location}: IJ40Interface) => {
         <TerritoryFocusControl onClickTerritoryFocusButton={onClickTerritoryFocusButton}/>
         {'fs' in flags ? <FullscreenControl className={styles.fullscreenControl}/> :'' }
       </ReactMapGL>
-    </>
+      <MapInfoPanel
+        className={styles.mapInfoPanel}
+        featureProperties={detailViewData?.properties}
+        selectedFeatureId={selectedFeature?.id}
+      />
+    </div>
   );
 };
 
