@@ -6,12 +6,11 @@
 
 name: GH Pages deploy
 on:
-  push:
+  pull_request:
+    types: [ closed, opened ]
     branches: [main]
     paths:
       - 'client/**/*'
-  pull_request:
-    branches: [main]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -30,7 +29,7 @@ jobs:
       # If this is just a PR branch, put content in a hash directory. Otherwise, put it in "main"
       # This variable is used by gatsby-config.js to set a prefixPath
       - name: Set DESTINATION_FOLDER for main
-        if: github.event.pull_request.merged == true
+        if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
         run: |
           echo "DESTINATION_FOLDER=main" >> $GITHUB_ENV
       - name: Set DESTINATION_FOLDER for branch
@@ -72,7 +71,7 @@ jobs:
           path: ./public
       # If this is just a PR branch, put content in a hash directory. Otherwise, put it in "main"
       - name: Set DESTINATION_FOLDER for main
-        if: github.event.pull_request.merged == true
+        if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
         run: |
           echo "DESTINATION_FOLDER=main" >> $GITHUB_ENV
       - name: Set DESTINATION_FOLDER for branch
@@ -82,7 +81,6 @@ jobs:
       - name: Deploy to Github Pages
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages # The branch the action should deploy to.
           FOLDER: public # The folder the action should deploy.
           TARGET-FOLDER: ${{env.DESTINATION_FOLDER}} # If we're on a PR branch, merge to PR folder
@@ -95,3 +93,18 @@ jobs:
           aws-region: us-east-1
       - name: Deploy to Geoplatform AWS
         run: aws s3 sync ./public/ s3://usds-geoplatform-justice40-website/justice40-tool/${{env.DESTINATION_FOLDER}} --delete
+      - name: Update PR with deployed URL
+        uses: mshick/add-pr-comment@v1
+        if: github.event_name == 'pull_request' && github.event.action == 'opened' # Only comment if the PR has been opened
+        with:
+          message: |
+            **🚢 PR Deployed! 🚢**
+            Find it here: https://d2zjid6n5ja2pt.cloudfront.net/justice40-tool/${{env.DESTINATION_FOLDER}}/en/cejst/ !
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
+          allow-repeats: false # This is the default
+      - name: Printing deployment URLs
+        run: |
+          echo "Github pages: https://usds.github.io/justice40-tool/$DESTINATION_FOLDER/en
+          echo "Standard S3 bucket version (http only) : http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/justice40-tool/$DESTINATION_FOLDER/en
+          ehoc "Cloudfront https: https://d2zjid6n5ja2pt.cloudfront.net/justice40-tool/$DESTINATION_FOLDER/en"
