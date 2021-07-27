@@ -1,4 +1,3 @@
-from geopandas.geodataframe import GeoDataFrame
 import pandas as pd
 import geopandas as gpd
 import math
