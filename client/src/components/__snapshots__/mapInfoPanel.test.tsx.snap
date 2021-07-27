@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`simulate a click on map hould match the snapshot of the MapInfoPanel component 1`] = `<DocumentFragment />`;
+
+exports[`simulate app starting up, no click on map should match the snapshot of the MapIntroduction component 1`] = `
+<DocumentFragment>
+  <div
+    class="someClassName"
+  >
+    <aside>
+      <header>
+        Zoom and select a census block group to view data
+      </header>
+      <div>
+        <img
+          src="test-file-stub"
+        />
+        <div>
+          <div>
+             Did you know?
+          </div>
+          <cite>
+            A census block group is generally between 600 and 3,000 people. It is the smallest geographical unit for which the U.S. Census Bureau publishes sample data.
+          </cite>
+        </div>
+      </div>
+    </aside>
+  </div>
+</DocumentFragment>
+`;

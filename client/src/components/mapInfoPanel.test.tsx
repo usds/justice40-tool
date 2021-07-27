@@ -1,17 +1,17 @@
 import * as React from 'react';
-import {render, screen} from '@testing-library/react';
+import {render} from '@testing-library/react';
 import MapInfoPanel from './mapInfoPanel';
 import {LocalizedComponent} from '../test/testHelpers';
 
 describe('simulate app starting up, no click on map', () => {
-  render(<MapInfoPanel
+  const {asFragment} = render(<MapInfoPanel
     className={'someClassName'}
     featureProperties={undefined}
     selectedFeatureId={undefined}
   />);
 
-  it('renders the MapIntroduction', () => {
-    expect(screen.getByText(/Zoom/)).toHaveTextContent('Zoom and select a census block group to view data');
+  it('should match the snapshot of the MapIntroduction component', () => {
+    expect(asFragment()).toMatchSnapshot();
   });
 });
 
@@ -31,7 +31,7 @@ describe('simulate a click on map', () => {
   };
   const selectedFeatureId = 345;
 
-  render(
+  const {asFragment} = render(
       <LocalizedComponent>
         <MapInfoPanel
           className={'J40Map-module--mapInfoPanel--8Ap7p'}
@@ -41,8 +41,7 @@ describe('simulate a click on map', () => {
       </LocalizedComponent>,
   );
 
-  // Todo VS: figure out why this component doesn't render?
-  // it('renders the AreaDetail', () => {
-  //   screen.getByRole('aside');
-  // });
+  it('hould match the snapshot of the MapInfoPanel component', () => {
+    expect(asFragment()).toMatchSnapshot();
+  });
 });

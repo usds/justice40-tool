@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {render, screen} from '@testing-library/react';
+import {render} from '@testing-library/react';
 import AreaDetail, {getCategorization, readablePercent} from './areaDetail';
 import {LocalizedComponent} from '../test/testHelpers';
 import * as constants from '../data/constants';
@@ -16,7 +16,7 @@ describe('rendering of the AreaDetail', () => {
     [constants.TOTAL_POPULATION]: 3435435,
   };
 
-  render(
+  const {asFragment} = render(
       <LocalizedComponent>
         <AreaDetail properties={properties}/>
       </LocalizedComponent>,
@@ -24,12 +24,7 @@ describe('rendering of the AreaDetail', () => {
   ;
 
   it('checks if various text fields are visible', () => {
-    expect(screen.getByText('Cumulative Index Score')).toBeVisible();
-    expect(screen.getByText('Categorization')).toBeVisible();
-    expect(screen.getByText('Poverty')).toBeVisible();
-    expect(screen.getByText('Education')).toBeVisible();
-    expect(screen.getByText('Linguistic Isolation')).toBeVisible();
-    expect(screen.getByText('Housing Burden')).toBeVisible();
+    expect(asFragment()).toMatchSnapshot();
   });
 });
 
