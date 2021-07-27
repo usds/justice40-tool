@@ -179,21 +179,16 @@ const J40Map = () => {
     setGeolocationInProgress(true);
   };
 
-  // Todo VS: remove this
-  console.log('isMobile: ', isMobile);
-  console.log('isMobileMapState: ', isMobileMapState);
   return (
     <div className={styles.mapAndInfoPanelContainer}>
       <ReactMapGL
         {...viewport}
-        className={styles.mapContainer}
         mapStyle={makeMapStyle(flags)}
         minZoom={constants.GLOBAL_MIN_ZOOM}
         maxZoom={constants.GLOBAL_MAX_ZOOM}
         mapOptions={{hash: true}}
         width="100%"
         height={isMobileMapState ? '44vh' : '100%'}
-        // height={'100%'}
         dragRotate={false}
         touchRotate={false}
         interactiveLayerIds={[constants.HIGH_SCORE_LAYER_NAME]}
@@ -203,6 +198,7 @@ const J40Map = () => {
         onTransitionStart={onTransitionStart}
         onTransitionEnd={onTransitionEnd}
         ref={mapRef}
+        data-cy={'reactMapGL'}
       >
         {('fs' in flags && detailViewData && !transitionInProgress) && (
           <Popup
