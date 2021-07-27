@@ -4,11 +4,15 @@ import MapInfoPanel from './mapInfoPanel';
 import {LocalizedComponent} from '../test/testHelpers';
 
 describe('simulate app starting up, no click on map', () => {
-  const {asFragment} = render(<MapInfoPanel
-    className={'someClassName'}
-    featureProperties={undefined}
-    selectedFeatureId={undefined}
-  />);
+  const {asFragment} = render(
+      <LocalizedComponent>
+        <MapInfoPanel
+          className={'someClassName'}
+          featureProperties={undefined}
+          selectedFeatureId={undefined}
+        />
+      </LocalizedComponent>,
+  );
 
   it('should match the snapshot of the MapIntroduction component', () => {
     expect(asFragment()).toMatchSnapshot();

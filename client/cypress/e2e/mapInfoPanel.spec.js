@@ -23,10 +23,14 @@ describe('tests that the map side panel renders MapIntroduction component', () =
 });
 
 /**
- * Todo VS:
+ * Todo: Ticket #423:
+ *
  * After fixing the PR deployed URL in regards to the mobile view (parent height
  * not setting to 44vh) by creating a state variable to force a re-render, this
  * cypress test regressed and is now failing. Need to investigate why.
+ *
+ * See this ticket for more info:
+ * https://app.zenhub.com/workspaces/justice40-60993f6e05473d0010ec44e3/issues/usds/justice40-tool/423
  *
  * Tried
  * 1. reloading the page

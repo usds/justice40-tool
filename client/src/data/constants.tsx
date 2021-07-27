@@ -1,4 +1,5 @@
 import {LngLatBoundsLike} from 'maplibre-gl';
+import {isMobile as isMobileReactDeviceDetect} from 'react-device-detect';
 
 // URLS
 export const FEATURE_TILE_BASE_URL = 'https://d2zjid6n5ja2pt.cloudfront.net';
@@ -107,4 +108,4 @@ export const SCORE_BOUNDARY_LOW = 0.0;
 export const SCORE_BOUNDARY_THRESHOLD = 0.6;
 export const SCORE_BOUNDARY_PRIORITIZED = 0.75;
 
-export const isMobile = typeof window !== 'undefined' && (window.innerWidth < 400);
+export const isMobile = isMobileReactDeviceDetect;

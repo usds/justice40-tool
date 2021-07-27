@@ -94,13 +94,13 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     },
     linguisticIsolation: {
       id: 'areaDetail.indicator.linguisticIsolation',
-      defaultMessage: 'Linguistic Isolation',
+      defaultMessage: 'Linguistic isolation',
       description: 'Households in which all members speak a non-English language and ' +
       'speak English less than "very well"',
     },
     unemployment: {
       id: 'areaDetail.indicator.unemployment',
-      defaultMessage: 'Unemployment',
+      defaultMessage: 'Unemployment rate',
       description: 'Number of unemployed people as a percentage of the labor force',
     },
     houseBurden: {

@@ -113,7 +113,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
     >
       <div>
         <div>
-          Linguistic Isolation
+          Linguistic isolation
         </div>
         <div>
           Households in which all members speak a non-English language and speak English less than "very well"
@@ -128,7 +128,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
     >
       <div>
         <div>
-          Unemployment
+          Unemployment rate
         </div>
         <div>
           Number of unemployed people as a percentage of the labor force
