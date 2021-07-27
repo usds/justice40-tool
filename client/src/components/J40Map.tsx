@@ -30,6 +30,10 @@ declare global {
   }
 }
 
+interface IJ40Interface {
+  location: Location;
+};
+
 
 interface IDetailViewInterface {
   latitude: number
@@ -38,11 +42,12 @@ interface IDetailViewInterface {
   properties: constants.J40Properties,
 };
 
-const J40Map = () => {
+const J40Map = ({location}: IJ40Interface) => {
+  const [zoom, lat, lng] = location.hash.slice(1).split('/');
   const [viewport, setViewport] = useState<ViewportProps>({
-    latitude: constants.DEFAULT_CENTER[0],
-    longitude: constants.DEFAULT_CENTER[1],
-    zoom: constants.GLOBAL_MIN_ZOOM,
+    latitude: lat && parseFloat(lat) || constants.DEFAULT_CENTER[0],
+    longitude: lng && parseFloat(lng) || constants.DEFAULT_CENTER[1],
+    zoom: zoom && parseFloat(zoom) || constants.GLOBAL_MIN_ZOOM,
   });
 
   const [selectedFeature, setSelectedFeature] = useState<MapboxGeoJSONFeature>();
