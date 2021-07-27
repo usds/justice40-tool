@@ -1,4 +1,28 @@
 {
+  "areaDetail.geographicInfo.censusBlockGroup": [
+    {
+      "type": 0,
+      "value": "Census block group:"
+    }
+  ],
+  "areaDetail.geographicInfo.county": [
+    {
+      "type": 0,
+      "value": "County:"
+    }
+  ],
+  "areaDetail.geographicInfo.population": [
+    {
+      "type": 0,
+      "value": "Population:"
+    }
+  ],
+  "areaDetail.geographicInfo.state": [
+    {
+      "type": 0,
+      "value": "State:"
+    }
+  ],
   "areaDetail.indicator.education": [
     {
       "type": 0,
@@ -27,6 +51,36 @@
     {
       "type": 0,
       "value": "Unemployment"
+    }
+  ],
+  "areaDetail.indicators.indicatorColumnHeader": [
+    {
+      "type": 0,
+      "value": "INDICATORS"
+    }
+  ],
+  "areaDetail.indicators.percentileColumnHeader": [
+    {
+      "type": 0,
+      "value": "PERCENTILE (0-100)"
+    }
+  ],
+  "areaDetail.priorityInfo.categorization": [
+    {
+      "type": 0,
+      "value": "Categorization"
+    }
+  ],
+  "areaDetail.priorityInfo.cumulativeIndexScore": [
+    {
+      "type": 0,
+      "value": "Cumulative Index Score"
+    }
+  ],
+  "areaDetail.priorityInfo.percentile": [
+    {
+      "type": 0,
+      "value": "percentile"
     }
   ],
   "areasOfInterest.climate": [

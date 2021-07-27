@@ -37,6 +37,51 @@ interface IAreaDetailProps {
 const AreaDetail = ({properties}:IAreaDetailProps) => {
   const intl = useIntl();
   const messages = defineMessages({
+    cumulativeIndexScore: {
+      id: 'areaDetail.priorityInfo.cumulativeIndexScore',
+      defaultMessage: 'Cumulative Index Score',
+      description: 'the cumulative score of the feature selected',
+    },
+    percentile: {
+      id: 'areaDetail.priorityInfo.percentile',
+      defaultMessage: 'percentile',
+      description: 'the percentil of the feature selected',
+    },
+    categorization: {
+      id: 'areaDetail.priorityInfo.categorization',
+      defaultMessage: 'Categorization',
+      description: 'the categorization of prioritized, threshold or non-prioritized',
+    },
+    censusBlockGroup: {
+      id: 'areaDetail.geographicInfo.censusBlockGroup',
+      defaultMessage: 'Census block group:',
+      description: 'the census block group id number of the feature selected',
+    },
+    county: {
+      id: 'areaDetail.geographicInfo.county',
+      defaultMessage: 'County:',
+      description: 'the county of the feature selected',
+    },
+    state: {
+      id: 'areaDetail.geographicInfo.state',
+      defaultMessage: 'State: ',
+      description: 'the state of the feature selected',
+    },
+    population: {
+      id: 'areaDetail.geographicInfo.population',
+      defaultMessage: 'Population:',
+      description: 'the population of the feature selected',
+    },
+    indicatorColumnHeader: {
+      id: 'areaDetail.indicators.indicatorColumnHeader',
+      defaultMessage: 'INDICATORS',
+      description: 'the population of the feature selected',
+    },
+    percentileColumnHeader: {
+      id: 'areaDetail.indicators.percentileColumnHeader',
+      defaultMessage: 'PERCENTILE (0-100)',
+      description: 'the population of the feature selected',
+    },
     poverty: {
       id: 'areaDetail.indicator.poverty',
       defaultMessage: 'Poverty',
@@ -82,22 +127,22 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     value: properties[constants.POVERTY_PROPERTY_PERCENTILE],
   };
   const eduInfo:indicatorInfo = {
-    label: 'Education',
+    label: intl.formatMessage(messages.education),
     description: 'Percent of people age 25 or older that didn’t get a high school diploma',
     value: properties[constants.EDUCATION_PROPERTY_PERCENTILE],
   };
   const linIsoInfo:indicatorInfo = {
-    label: 'Linguistic Isolation',
+    label: intl.formatMessage(messages.linguisticIsolation),
     description: 'Households in which all members speak a non-English language and speak English less than "very well"',
     value: properties[constants.LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE],
   };
   const umemployInfo:indicatorInfo = {
-    label: 'Unemployment rate',
+    label: intl.formatMessage(messages.unemployment),
     description: 'Number of unemployed people as a percentage of the labor force',
     value: properties[constants.UNEMPLOYMENT_PROPERTY_PERCENTILE],
   };
   const houseBurden:indicatorInfo = {
-    label: 'Housing Burden',
+    label: intl.formatMessage(messages.houseBurden),
     description: 'Households that are low income and spend more than 30% of their income to housing costs',
     value: properties[constants.HOUSING_BURDEN_PROPERTY_PERCENTILE],
   };
@@ -107,17 +152,17 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
   const [categorization, categoryCircleStyle] = getCategorization(score);
 
   return (
-    <aside className={styles.areaDetailContainer}>
-      <header className={styles.topRow}>
+    <aside className={styles.areaDetailContainer} data-cy={'aside'}>
+      <header className={styles.topRow }>
         <div className={styles.cumulativeIndexScore}>
-          <div className={styles.topRowTitle}>Cumulative Index Score</div>
-          <div className={styles.score}>{`${readablePercent(score)}`}
+          <div className={styles.topRowTitle}>{intl.formatMessage(messages.cumulativeIndexScore)}</div>
+          <div className={styles.score} data-cy={'score'}>{`${readablePercent(score)}`}
             <sup className={styles.scoreSuperscript}><span>th</span></sup>
           </div>
-          <div className={styles.topRowSubTitle}>percentile</div>
+          <div className={styles.topRowSubTitle}>{intl.formatMessage(messages.percentile)}</div>
         </div>
         <div className={styles.categorization}>
-          <div className={styles.topRowTitle}>Categorization</div>
+          <div className={styles.topRowTitle}>{intl.formatMessage(messages.categorization)}</div>
           <div className={styles.priority}>
             <div className={categoryCircleStyle} />
             <div className={styles.prioritization}>{categorization}</div>
@@ -126,29 +171,29 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
       </header>
       <ul className={styles.censusRow}>
         <li>
-          <span className={styles.censusLabel}>Census block group: </span>
+          <span className={styles.censusLabel}>{intl.formatMessage(messages.censusBlockGroup)} </span>
           <span className={styles.censusText}>{blockGroup}</span>
         </li>
         <li>
-          <span className={styles.censusLabel}>County: </span>
-          <span className={styles.censusText}>{'Washington County'}</span>
+          <span className={styles.censusLabel}>{intl.formatMessage(messages.county)} </span>
+          <span className={styles.censusText}>{'Washington County*'}</span>
         </li>
         <li>
-          <span className={styles.censusLabel}>State: </span>
-          <span className={styles.censusText}>{'District of Columbia'}</span>
+          <span className={styles.censusLabel}>{intl.formatMessage(messages.state)}</span>
+          <span className={styles.censusText}>{'District of Columbia*'}</span>
         </li>
         <li>
-          <span className={styles.censusLabel}>Population: </span>
+          <span className={styles.censusLabel}>{intl.formatMessage(messages.population)} </span>
           <span className={styles.censusText}>{population.toLocaleString()}</span>
         </li>
       </ul>
       <div className={styles.divider}>
-        <div>INDICATORS</div>
-        <div>PERCENTILE (0-100)</div>
+        <div>{intl.formatMessage(messages.indicatorColumnHeader)}</div>
+        <div>{intl.formatMessage(messages.percentileColumnHeader)}</div>
       </div>
 
       {indicators.map((indicator, index) => (
-        <li key={index} className={styles.indicatorBox}>
+        <li key={index} className={styles.indicatorBox} data-cy={'indicatorBox'}>
           <div className={styles.indicatorInfo}>
             <div className={styles.indicatorTitle}>{indicator.label}</div>
             <div className={styles.indicatorDescription}>

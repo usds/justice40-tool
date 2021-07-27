@@ -1,10 +1,12 @@
-@import "./areaDetailUtils.module.scss";
+@import "./areaDetailUtils.scss";
 
 .mapAndInfoPanelContainer {
   display: flex;
+  height: 81vh; //desktop
 
   @media screen and (max-width: $mobileBreakpoint) {
-    flex-wrap: wrap;
+    flex-direction: column;
+    height: fit-content;
   }
 }
 
@@ -33,6 +35,7 @@
 }
 
 .mapInfoPanel {
-  flex: 1 0 29%;
   border: 2px solid $sidePanelBorderColor;
+  overflow-y: auto;
+  max-width: 22rem;
 }

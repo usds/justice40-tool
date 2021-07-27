@@ -2,13 +2,17 @@
 
 exports[`rendering of the AreaDetail checks if various text fields are visible 1`] = `
 <DocumentFragment>
-  <aside>
+  <aside
+    data-cy="aside"
+  >
     <header>
       <div>
         <div>
           Cumulative Index Score
         </div>
-        <div>
+        <div
+          data-cy="score"
+        >
           9500.0
           <sup>
             <span>
@@ -46,7 +50,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           County: 
         </span>
         <span>
-          Washington County
+          Washington County*
         </span>
       </li>
       <li>
@@ -54,7 +58,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           State: 
         </span>
         <span>
-          District of Columbia
+          District of Columbia*
         </span>
       </li>
       <li>
@@ -74,7 +78,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         PERCENTILE (0-100)
       </div>
     </div>
-    <li>
+    <li
+      data-cy="indicatorBox"
+    >
       <div>
         <div>
           Poverty
@@ -87,7 +93,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         9900.0
       </div>
     </li>
-    <li>
+    <li
+      data-cy="indicatorBox"
+    >
       <div>
         <div>
           Education
@@ -100,7 +108,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         9800.0
       </div>
     </li>
-    <li>
+    <li
+      data-cy="indicatorBox"
+    >
       <div>
         <div>
           Linguistic Isolation
@@ -113,10 +123,12 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         9700.0
       </div>
     </li>
-    <li>
+    <li
+      data-cy="indicatorBox"
+    >
       <div>
         <div>
-          Unemployment rate
+          Unemployment
         </div>
         <div>
           Number of unemployed people as a percentage of the labor force
@@ -126,7 +138,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         9600.0
       </div>
     </li>
-    <li>
+    <li
+      data-cy="indicatorBox"
+    >
       <div>
         <div>
           Housing Burden

@@ -185,7 +185,7 @@ const J40Map = () => {
         maxZoom={constants.GLOBAL_MAX_ZOOM}
         mapOptions={{hash: true}}
         width="100%"
-        height={constants.isMobile && '90vw' || '44.8vw'}
+        height={constants.isMobile ? '44vh' : '100%'}
         dragRotate={false}
         touchRotate={false}
         interactiveLayerIds={[constants.HIGH_SCORE_LAYER_NAME]}
