@@ -175,6 +175,8 @@ const J40Map = () => {
     setGeolocationInProgress(true);
   };
 
+  // Todo VS: remove this
+  console.log('isMobile: ', constants.isMobile);
   return (
     <div className={styles.mapAndInfoPanelContainer}>
       <ReactMapGL
@@ -185,7 +187,7 @@ const J40Map = () => {
         maxZoom={constants.GLOBAL_MAX_ZOOM}
         mapOptions={{hash: true}}
         width="100%"
-        height={constants.isMobile ? '44vh' : '100%'}
+        height={constants.isMobile && '44vh' || '100%'}
         dragRotate={false}
         touchRotate={false}
         interactiveLayerIds={[constants.HIGH_SCORE_LAYER_NAME]}
