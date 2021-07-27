@@ -62,6 +62,16 @@ class GeoScoreETL(ExtractTransformLoad):
             self.geojson_usa_df, on="GEOID10", how="left"
         )
 
+        breakpoint()
+        missing_cbg_df = self.geojson_score_usa_high[
+            self.geojson_score_usa_high[[self.TARGET_SCORE_NAME]].isnull()
+        ]
+
+        missing_cbg_count = self.geojson_score_usa_high[
+            [self.TARGET_SCORE_NAME].isnull()
+        ]
+        logger.info(f"Dropping {missing_cbg_count} CBGs with no score")
+
         self.geojson_score_usa_high = gpd.GeoDataFrame(
             self.geojson_score_usa_high, crs="EPSG:4326"
         )

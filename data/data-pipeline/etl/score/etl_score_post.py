@@ -87,17 +87,13 @@ class PostScoreETL(ExtractTransformLoad):
         # add the tract level column
         self.score_df["GEOID"] = self.score_df.GEOID10.str[:5]
 
-        # merge state and counties
-        county_state_merged = self.counties_df.join(
-            self.states_df, rsuffix=" Other"
+        county_state_merged = self.counties_df.merge(
+            self.states_df, on="State Abbreviation", how="left"
         )
-        del county_state_merged["State Abbreviation Other"]
 
-        # merge county and score
-        self.score_county_state_merged = self.score_df.join(
-            county_state_merged, rsuffix="_OTHER"
+        self.score_county_state_merged = self.score_df.merge(
+            county_state_merged, on="GEOID", how="left"
         )
-        del self.score_county_state_merged["GEOID_OTHER"]
 
     def load(self) -> None:
         logger.info(f"Saving Full Score CSV with County Information")
