@@ -2,8 +2,8 @@ import React from 'react';
 import Layout from '../components/layout';
 import J40Map from '../components/J40Map';
 import HowYouCanHelp from '../components/HowYouCanHelp';
-import MapLegend from '../components/mapLegend';
 import DownloadPacket from '../components/downloadPacket';
+import MapLegend from '../components/mapLegend';
 import * as styles from './cejst.module.scss';
 
 interface IMapPageProps {
@@ -52,10 +52,11 @@ const CEJSTPage = ({location}: IMapPageProps) => {
             <DownloadPacket />
           </div>
         </section>
-
-        <h2>Explore the Tool</h2>
-        <J40Map location={location}/>
-        <MapLegend />
+        <section>
+          <h2>Explore the Tool</h2>
+          <J40Map location={location}/>
+          <MapLegend />
+        </section>
         <HowYouCanHelp />
       </main>
     </Layout>

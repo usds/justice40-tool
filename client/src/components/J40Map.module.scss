@@ -1,13 +1,17 @@
-$sidebar-background: rgba(35, 55, 75, 0.9);
-$sidebar-color: #ffffff;
+@import "./areaDetailUtils.scss";
 
-.mapContainer {
-  height: 676px;
+.mapAndInfoPanelContainer {
+  display: flex;
+  height: 81vh; //desktop
+
+  @media screen and (max-width: $mobileBreakpoint) {
+    flex-direction: column;
+    height: fit-content;
+  }
 }
 
 .j40Popup {
-  max-height: 50%;
-  overflow-y: scroll;
+  width: 375px;
 }
 
 .navigationControl {
@@ -24,4 +28,10 @@ $sidebar-color: #ffffff;
 .geolocateControl {
   right: 1.25em;
   top: 5em;
+}
+
+.mapInfoPanel {
+  border: 2px solid $sidePanelBorderColor;
+  overflow-y: auto;
+  max-width: 22rem;
 }
