@@ -23,12 +23,16 @@ export const HIGH_SCORE_LAYER_NAME = 'score-high-layer';
 export const LOW_SCORE_SOURCE_NAME = 'score-low';
 export const LOW_SCORE_LAYER_NAME = 'score-low-layer';
 export const SELECTED_PROPERTY = 'selected';
+export const CURRENTLY_SELECTED_FEATURE_HIGHLIGHT_LAYER_NAME = 'currently-selected-feature-highlight-layer';
+export const BLOCK_GROUP_BOUNDARY_LAYER_NAME = 'block-group-boundary-layer';
+
+
+// Properties
 export const POVERTY_PROPERTY_PERCENTILE = 'Poverty (Less than 200% of federal poverty line) (percentile)';
 export const HOUSING_BURDEN_PROPERTY_PERCENTILE = 'Housing burden (percent) (percentile)';
 export const LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE = 'Linguistic isolation (percent) (percentile)';
 export const UNEMPLOYMENT_PROPERTY_PERCENTILE = 'Unemployed civilians (percent) (percentile)';
 export const TOTAL_POPULATION = 'Total population';
-
 export const EDUCATION_PROPERTY_PERCENTILE = 'Percent individuals age 25 or over ' +
 'with less than high school degree (percentile)';
 
@@ -99,9 +103,11 @@ export const MIN_COLOR = '#FFFFFF';
 export const MED_COLOR = '#D1DAE6';
 export const MAX_COLOR = '#768FB3';
 export const BORDER_HIGHLIGHT_COLOR = '#00BDE3';
+export const CURRENTLY_SELECTED_FEATURE_LAYER_OPACITY = 0.5;
 
 // Widths
 export const HIGHLIGHT_BORDER_WIDTH = 5.0;
+export const CURRENTLY_SELECTED_FEATURE_LAYER_WIDTH = 0.8;
 
 // Score boundaries
 export const SCORE_BOUNDARY_LOW = 0.0;
