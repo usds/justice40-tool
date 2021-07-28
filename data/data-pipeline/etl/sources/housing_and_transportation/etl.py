@@ -44,8 +44,6 @@ class HousingTransportationETL(ExtractTransformLoad):
 
         self.df = pd.concat(dfs)
 
-        self.df.head()
-
     def transform(self) -> None:
         logger.info(f"Transforming Housing and Transportation Data")
 

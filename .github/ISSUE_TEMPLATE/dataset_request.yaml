@@ -1,0 +1,174 @@
+name: Dataset Request
+description: Request a datast for inclusion in the product
+title: "[Dataset Request]: "
+labels: [dataset, triage]
+assignees:
+  - switzersc-usds, lucasmbrown-usds
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to fill out this dataset request!
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: ex. email@example.com
+    validations:
+      required: false
+  - type: input
+    id: dataset-name
+    attributes:
+      label: What is the name of the dataset?
+      description: Try to provide the standard name under which this dataset is known
+      placeholder: Dataset name
+    validations:
+      required: true
+  - type: input
+    id: dataset-source
+    attributes:
+      label: What is the source URL of the dataset?
+      description: Provide the canonical source URL of the dataset
+      placeholder: www.example.com
+    validations:
+      required: true
+  - type: textarea
+    id: relevance-to-ej
+    attributes:
+      label: What is the relevance of the dataset to environmental justice?
+      description: Please help us to see the relevance of your suggestion in detail
+      placeholder: factor X has a significant impact on health
+    validations:
+      required: true
+  - type: checkboxes
+    id: operating-systems
+    attributes:
+      label: What formats does this source support?
+      description: You may select more than one.
+      options:
+        - label: CSV
+        - label: XLS/XLSX
+        - label: geoJSON
+        - label: ArcGIS REST API
+        - label: other
+  - type: textarea
+    id: other-datasource-type
+    attributes:
+      label: If "other" above, please specify
+      description: If you have selected "other" above, please give as much detail as you can as to where this data can live 
+      placeholder: www.example.com and www.example2.com
+    validations:
+      required: false
+  - type: dropdown
+    id: spatial-resolution
+    attributes:
+      label: What is the spatial resolution of this dataset?
+      options:
+        - County
+        - Census tract
+        - Census block group
+    validations:
+      required: true
+  - type: dropdown
+    id: is-it-public
+    attributes:
+      label: Is this dataset public?
+      options:
+        - "Yes"
+        - "No"
+    validations:
+      required: true
+  - type: input
+    id: sponsor
+    attributes:
+      label: What is the sponsoring agency of this dataset?
+      description: Provide the government agency, organization, or corporation that owns this dataset
+      placeholder: DataCorp, Inc.
+    validations:
+      required: true
+  - type: dropdown
+    id: data-quality-rating
+    attributes:
+      label: How would you rate the quality of this data?
+      options:
+        - Low
+        - Medium
+        - High
+    validations:
+      required: true
+  - type: input
+    id: margin-of-error
+    attributes:
+      label: What is the estimated margin of error of this dataset (if known)?
+      description: Provide known margin of error if known
+      placeholder: 5%
+    validations:
+      required: false
+  - type: textarea
+    id: data-quality-issues
+    attributes:
+      label: Known data quality issues
+      description: Please describe any data quality issues you know about with this dataset.
+      placeholder: Limited accuracy in rural areas, etc. 
+    validations:
+      required: false  
+  - type: input
+    id: geographic-coverage
+    attributes:
+      label: What is the geographic coverage (in percent) of this dataset
+      description: If known, provide an estimate of the coverage of this dataset vis-a-vis the full United States 
+      placeholder: 90%
+    validations:
+      required: false
+  - type: textarea
+    id: geographic-coverage-description
+    attributes:
+      label: Description of geographic coverage estimate
+      description: (If relevant) Please explain your reasoning behind the above estimate of geographic coverage
+      placeholder: e.g. Missing information for Puerto Rico, etc. 
+    validations:
+      required: false  
+  - type: input
+    id: last-updated-date
+    attributes:
+      label: What is the date of last update for this dataset?
+      description: Please provide in the format YYYY-MM-DD
+      placeholder: "2017-01-01"
+    validations:
+      required: true
+  - type: dropdown
+    id: frequency-of-updates
+    attributes:
+      label: How frequently is this data updated?
+      options:
+        - Less than annually
+        - Annually
+        - Greater than annually
+    validations:
+      required: true
+  - type: input
+    id: link-to-documentation
+    attributes:
+      label: Link to more documentation
+      description: Please provide a link where one can find additional information 
+      placeholder: www.example.com
+    validations:
+      required: true   
+  - type: dropdown
+    id: can-go-in-cloud
+    attributes:
+      label: Can this data be put on the cloud?
+      options:
+        - "Yes"
+        - "No"
+    validations:
+      required: true
+  - type: textarea
+    id: additional-information
+    attributes:
+      label: Additional Information 
+      description: Please provide any additional information you have about this dataset
+      placeholder: e.g. Missing information for Puerto Rico, etc. 
+    validations:
+      required: false

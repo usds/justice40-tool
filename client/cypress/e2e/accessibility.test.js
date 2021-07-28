@@ -29,6 +29,6 @@ describe('Accessibility tests', () => {
     cy.visit('/').get('main').injectAxe();
   });
   it('Has no detectable accessibility violations on load', () => {
-    cy.checkA11y(null, null, terminalLog);
+    cy.checkA11y(null, {includedImpacts: ['critical']}, terminalLog);
   });
 });

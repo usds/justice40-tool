@@ -1,4 +1,60 @@
 {
+  "areaDetail.geographicInfo.censusBlockGroup": {
+    "defaultMessage": "Census block group:",
+    "description": "the census block group id number of the feature selected"
+  },
+  "areaDetail.geographicInfo.county": {
+    "defaultMessage": "County:",
+    "description": "the county of the feature selected"
+  },
+  "areaDetail.geographicInfo.population": {
+    "defaultMessage": "Population:",
+    "description": "the population of the feature selected"
+  },
+  "areaDetail.geographicInfo.state": {
+    "defaultMessage": "State:",
+    "description": "the state of the feature selected"
+  },
+  "areaDetail.indicator.education": {
+    "defaultMessage": "Education",
+    "description": "Percent of people age 25 or older that didn’t get a high school diploma"
+  },
+  "areaDetail.indicator.houseBurden": {
+    "defaultMessage": "Housing Burden",
+    "description": "Households that are low income and spend more than 30% of their income to housing costs"
+  },
+  "areaDetail.indicator.linguisticIsolation": {
+    "defaultMessage": "Linguistic Isolation",
+    "description": "Households in which all members speak a non-English language and speak English less than \"very well\""
+  },
+  "areaDetail.indicator.poverty": {
+    "defaultMessage": "Poverty",
+    "description": "Household income is less than or equal to twice the federal \"poverty level\""
+  },
+  "areaDetail.indicator.unemployment": {
+    "defaultMessage": "Unemployment",
+    "description": "Number of unemployed people as a percentage of the labor force"
+  },
+  "areaDetail.indicators.indicatorColumnHeader": {
+    "defaultMessage": "INDICATORS",
+    "description": "the population of the feature selected"
+  },
+  "areaDetail.indicators.percentileColumnHeader": {
+    "defaultMessage": "PERCENTILE (0-100)",
+    "description": "the population of the feature selected"
+  },
+  "areaDetail.priorityInfo.categorization": {
+    "defaultMessage": "Categorization",
+    "description": "the categorization of prioritized, threshold or non-prioritized"
+  },
+  "areaDetail.priorityInfo.cumulativeIndexScore": {
+    "defaultMessage": "Cumulative Index Score",
+    "description": "the cumulative score of the feature selected"
+  },
+  "areaDetail.priorityInfo.percentile": {
+    "defaultMessage": "percentile",
+    "description": "the percentil of the feature selected"
+  },
   "areasOfInterest.climate": {
     "defaultMessage": "Climate change",
     "description": "item in areasOfInterest list"
@@ -142,5 +198,41 @@
   "index.section3.transparentLabel": {
     "defaultMessage": "Transparent:",
     "description": "Italic label for 1st paragraph of section 3 on index page"
+  },
+  "map.territoryFocus.alaska.long": {
+    "defaultMessage": "Alaska",
+    "description": "The full name indicating the bounds of Alaska"
+  },
+  "map.territoryFocus.alaska.short": {
+    "defaultMessage": "AK",
+    "description": "The abbreviated indicating the bounds of Alaska"
+  },
+  "map.territoryFocus.focusOn": {
+    "defaultMessage": "Focus on {territory}",
+    "description": "Focus on the bounds of a specific territory"
+  },
+  "map.territoryFocus.hawaii.long": {
+    "defaultMessage": "Hawaii",
+    "description": "The longer name indicating the bounds of Hawaii"
+  },
+  "map.territoryFocus.hawaii.short": {
+    "defaultMessage": "HI",
+    "description": "The abbreviated name indicating the bounds of Hawaii"
+  },
+  "map.territoryFocus.lower48.long": {
+    "defaultMessage": "Lower 48",
+    "description": "The longer name indicating the bounds of the Lower 48 states"
+  },
+  "map.territoryFocus.lower48.short": {
+    "defaultMessage": "48",
+    "description": "The abbreviated name indicating the bounds of the Lower 48 states"
+  },
+  "map.territoryFocus.puerto_rico.long": {
+    "defaultMessage": "Puerto Rico",
+    "description": "The full name indicating the bounds of Puerto Rico"
+  },
+  "map.territoryFocus.puerto_rico.short": {
+    "defaultMessage": "PR",
+    "description": "The abbreviated name indicating the bounds of Puerto Rico"
   }
 }
