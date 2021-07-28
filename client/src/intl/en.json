@@ -1,4 +1,60 @@
 {
+  "areaDetail.geographicInfo.censusBlockGroup": {
+    "defaultMessage": "Census block group:",
+    "description": "the census block group id number of the feature selected"
+  },
+  "areaDetail.geographicInfo.county": {
+    "defaultMessage": "County:",
+    "description": "the county of the feature selected"
+  },
+  "areaDetail.geographicInfo.population": {
+    "defaultMessage": "Population:",
+    "description": "the population of the feature selected"
+  },
+  "areaDetail.geographicInfo.state": {
+    "defaultMessage": "State:",
+    "description": "the state of the feature selected"
+  },
+  "areaDetail.indicator.education": {
+    "defaultMessage": "Education",
+    "description": "Percent of people age 25 or older that didn’t get a high school diploma"
+  },
+  "areaDetail.indicator.houseBurden": {
+    "defaultMessage": "Housing Burden",
+    "description": "Households that are low income and spend more than 30% of their income to housing costs"
+  },
+  "areaDetail.indicator.linguisticIsolation": {
+    "defaultMessage": "Linguistic Isolation",
+    "description": "Households in which all members speak a non-English language and speak English less than \"very well\""
+  },
+  "areaDetail.indicator.poverty": {
+    "defaultMessage": "Poverty",
+    "description": "Household income is less than or equal to twice the federal \"poverty level\""
+  },
+  "areaDetail.indicator.unemployment": {
+    "defaultMessage": "Unemployment",
+    "description": "Number of unemployed people as a percentage of the labor force"
+  },
+  "areaDetail.indicators.indicatorColumnHeader": {
+    "defaultMessage": "INDICATORS",
+    "description": "the population of the feature selected"
+  },
+  "areaDetail.indicators.percentileColumnHeader": {
+    "defaultMessage": "PERCENTILE (0-100)",
+    "description": "the population of the feature selected"
+  },
+  "areaDetail.priorityInfo.categorization": {
+    "defaultMessage": "Categorization",
+    "description": "the categorization of prioritized, threshold or non-prioritized"
+  },
+  "areaDetail.priorityInfo.cumulativeIndexScore": {
+    "defaultMessage": "Cumulative Index Score",
+    "description": "the cumulative score of the feature selected"
+  },
+  "areaDetail.priorityInfo.percentile": {
+    "defaultMessage": "percentile",
+    "description": "the percentil of the feature selected"
+  },
   "areasOfInterest.climate": {
     "defaultMessage": "Climate change",
     "description": "item in areasOfInterest list"

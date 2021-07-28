@@ -1,4 +1,5 @@
 import {LngLatBoundsLike} from 'maplibre-gl';
+import {isMobile as isMobileReactDeviceDetect} from 'react-device-detect';
 
 // URLS
 export const FEATURE_TILE_BASE_URL = 'https://d2zjid6n5ja2pt.cloudfront.net';
@@ -22,19 +23,30 @@ export const HIGH_SCORE_LAYER_NAME = 'score-high-layer';
 export const LOW_SCORE_SOURCE_NAME = 'score-low';
 export const LOW_SCORE_LAYER_NAME = 'score-low-layer';
 export const SELECTED_PROPERTY = 'selected';
+export const CURRENTLY_SELECTED_FEATURE_HIGHLIGHT_LAYER_NAME = 'currently-selected-feature-highlight-layer';
+export const BLOCK_GROUP_BOUNDARY_LAYER_NAME = 'block-group-boundary-layer';
+
+
+// Properties
+export const POVERTY_PROPERTY_PERCENTILE = 'Poverty (Less than 200% of federal poverty line) (percentile)';
+export const HOUSING_BURDEN_PROPERTY_PERCENTILE = 'Housing burden (percent) (percentile)';
+export const LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE = 'Linguistic isolation (percent) (percentile)';
+export const UNEMPLOYMENT_PROPERTY_PERCENTILE = 'Unemployed civilians (percent) (percentile)';
+export const TOTAL_POPULATION = 'Total population';
+export const EDUCATION_PROPERTY_PERCENTILE = 'Percent individuals age 25 or over ' +
+'with less than high school degree (percentile)';
 
 // The name of the layer within the tiles that contains the score
 export const SCORE_SOURCE_LAYER = 'blocks';
 
 export type J40Properties = { [key: string]: any };
 
-
 // Zoom
 export const GLOBAL_MIN_ZOOM = 3;
 export const GLOBAL_MAX_ZOOM = 22;
 export const GLOBAL_MIN_ZOOM_LOW = 3;
 export const GLOBAL_MAX_ZOOM_LOW = 7;
-export const GLOBAL_MIN_ZOOM_HIGHLIGHT = 9;
+export const GLOBAL_MIN_ZOOM_HIGHLIGHT = 8;
 export const GLOBAL_MAX_ZOOM_HIGHLIGHT = 22;
 export const GLOBAL_MIN_ZOOM_HIGH = 7;
 export const GLOBAL_MAX_ZOOM_HIGH = 11;
@@ -91,13 +103,15 @@ export const MIN_COLOR = '#FFFFFF';
 export const MED_COLOR = '#D1DAE6';
 export const MAX_COLOR = '#768FB3';
 export const BORDER_HIGHLIGHT_COLOR = '#00BDE3';
+export const CURRENTLY_SELECTED_FEATURE_LAYER_OPACITY = 0.5;
 
 // Widths
 export const HIGHLIGHT_BORDER_WIDTH = 5.0;
+export const CURRENTLY_SELECTED_FEATURE_LAYER_WIDTH = 0.8;
 
 // Score boundaries
 export const SCORE_BOUNDARY_LOW = 0.0;
 export const SCORE_BOUNDARY_THRESHOLD = 0.6;
 export const SCORE_BOUNDARY_PRIORITIZED = 0.75;
 
-export const isMobile = typeof window !== 'undefined' && (window.innerWidth < 400);
+export const isMobile = isMobileReactDeviceDetect;

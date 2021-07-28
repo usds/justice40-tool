@@ -1,0 +1,10 @@
+/*
+ This file is meant to hold styles that are shared with other SASS modules.
+ You can import this file into other SASS file to re-use styles.
+
+ Todo Design System: replace colors with tokens. Once these styles become more general the name can be less specific
+*/
+
+$sidePanelBorderColor: #f2f2f2;
+$sidePanelBorder: 2px solid $sidePanelBorderColor;
+$mobileBreakpoint: 400px;
