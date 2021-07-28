@@ -44,7 +44,7 @@ TODO add mermaid diagram
 
 #### Step 0: Set up your environment
 
-1. After cloning the project locally, change to this directory: `cd score`
+1. After cloning the project locally, change to this directory: `cd data/data-pipeline`
 1. Choose whether you'd like to run this application using Docker or if you'd like to install the dependencies locally so you can contribute to the project.
     - **With Docker:** Follow these [installation instructions](https://docs.docker.com/get-docker/) and skip down to the [Running with Docker section](#running-with-docker) for more information
     - **For Local Development:** Skip down to the [Local Development section](#local-development) for more detailed installation instructions
@@ -53,7 +53,7 @@ TODO add mermaid diagram
 #### Step 1: Run the ETL script for each data source
 
 1. Call the `etl-run` command using the application manager `application.py` **NOTE:** This may take several minutes to execute.
-   - With Docker: `docker run --rm -it j40_score /bin/sh -c "python3 application.py etl-run"`
+   - With Docker: `docker run --rm -it j40_data_pipeline /bin/sh -c "python3 application.py etl-run"`
    - With Poetry: `poetry run python application.py etl-run`
 1. The `etl-run` command will execute the corresponding ETL script for each data source in `etl/sources/`. For example, `etl/sources/ejscreen/etl.py` is the ETL script for EJSCREEN data.
 1. Each ETL script will extract the data from its original source, then format the data into `.csv` files that get stored in the relevant folder in `data/dataset/`. For example, HUD Housing data is stored in `data/dataset/hud_housing/usa.csv`
@@ -64,7 +64,7 @@ _For example: `poetry run python application.py etl-run ejscreen` would only run
 #### Step 2: Calculate the Justice40 score experiments
 
 1. Call the `score-run` command using the application manager `application.py` **NOTE:** This may take several minutes to execute.
-   - With Docker: `docker run --rm -it j40_score /bin/sh -c "python3 application.py score-run"`
+   - With Docker: `docker run --rm -it j40_data_pipeline /bin/sh -c "python3 application.py score-run"`
    - With Poetry: `poetry run python application.py score-run`
 1. The `score-run` command will execute the `etl/score/etl.py` script which loads the data from each of the source files added to the `data/dataset/` directory by the ETL scripts in Step 1.
 1. These data sets are merged into a single dataframe using their Census Block Group GEOID as a common key, and the data in each of the columns is standardized in two ways:
