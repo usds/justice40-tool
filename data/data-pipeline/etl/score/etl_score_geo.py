@@ -62,16 +62,6 @@ class GeoScoreETL(ExtractTransformLoad):
             self.geojson_usa_df, on="GEOID10", how="left"
         )
 
-        breakpoint()
-        missing_cbg_df = self.geojson_score_usa_high[
-            self.geojson_score_usa_high[[self.TARGET_SCORE_NAME]].isnull()
-        ]
-
-        missing_cbg_count = self.geojson_score_usa_high[
-            [self.TARGET_SCORE_NAME].isnull()
-        ]
-        logger.info(f"Dropping {missing_cbg_count} CBGs with no score")
-
         self.geojson_score_usa_high = gpd.GeoDataFrame(
             self.geojson_score_usa_high, crs="EPSG:4326"
         )
@@ -85,7 +75,7 @@ class GeoScoreETL(ExtractTransformLoad):
             inplace=True,
         )
 
-        logger.info(f"Aggregating into tracts")
+        logger.info(f"Aggregating into tracts (~5 minutes)")
         usa_tracts = self._aggregate_to_tracts(usa_simplified)
 
         usa_tracts = gpd.GeoDataFrame(
@@ -95,7 +85,9 @@ class GeoScoreETL(ExtractTransformLoad):
         )
 
         logger.info(f"Creating buckets from tracts")
-        usa_bucketed = self._create_buckets_from_tracts(usa_tracts)
+        usa_bucketed = self._create_buckets_from_tracts(
+            usa_tracts, self.NUMBER_OF_BUCKETS
+        )
 
         logger.info(f"Aggregating buckets")
         usa_aggregated = self._aggregate_buckets(usa_bucketed, agg_func="mean")
@@ -126,7 +118,9 @@ class GeoScoreETL(ExtractTransformLoad):
         # assign tracts to buckets by D_SCORE
         state_tracts.sort_values(self.TARGET_SCORE_RENAME_TO, inplace=True)
         SCORE_bucket = []
-        bucket_size = math.ceil(len(state_tracts.index) / self.NU)
+        bucket_size = math.ceil(
+            len(state_tracts.index) / self.NUMBER_OF_BUCKETS
+        )
         for i in range(len(state_tracts.index)):
             SCORE_bucket.extend([math.floor(i / bucket_size)])
         state_tracts[f"{self.TARGET_SCORE_RENAME_TO}_bucket"] = SCORE_bucket
@@ -154,7 +148,7 @@ class GeoScoreETL(ExtractTransformLoad):
             for j in range(len(state_bucketed_df["geometry"][i].geoms)):
                 compressed.append(
                     [
-                        state_bucketed_df["D_SCORE"][i],
+                        state_bucketed_df[self.TARGET_SCORE_RENAME_TO][i],
                         state_bucketed_df["geometry"][i].geoms[j],
                     ]
                 )
@@ -162,9 +156,9 @@ class GeoScoreETL(ExtractTransformLoad):
 
     def load(self) -> None:
         logger.info(f"Writing usa-high (~9 minutes)")
-        # self.geojson_score_usa_high.to_file(
-        #     self.SCORE_HIGH_GEOJSON, driver="GeoJSON"
-        # )
+        self.geojson_score_usa_high.to_file(
+            self.SCORE_HIGH_GEOJSON, driver="GeoJSON"
+        )
         logger.info(f"Completed writing usa-high")
 
         logger.info(f"Writing usa-low (~9 minutes)")
