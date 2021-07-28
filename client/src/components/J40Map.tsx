@@ -51,6 +51,7 @@ export interface IDetailViewInterface {
 };
 
 const J40Map = ({location}: IJ40Interface) => {
+  // Hash portion of URL is of the form #zoom/lat/lng
   const [zoom, lat, lng] = location.hash.slice(1).split('/');
   const [viewport, setViewport] = useState<ViewportProps>({
     latitude: lat && parseFloat(lat) || constants.DEFAULT_CENTER[0],
