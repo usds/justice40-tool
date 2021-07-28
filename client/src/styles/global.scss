@@ -84,19 +84,60 @@ $primary-color: #112f4e;
   }
 
   // this is the title
-  .usa-logo__text {
-    font-size: 1.8em;
-    font-family: "serif";
+  @include at-media("desktop") {
+    .j40-title {
+      font-size: 0.9em;
+      padding-top: 25px; // allows vertical centering on logo and text
+      padding-bottom: 0; // allows vertical centering on logo and text
+      font-weight: normal;
+    }
+
+    .usa-navbar {
+      width: 100%;
+    }
+
+    // this actual site logo
+    .sitelogo {
+      float: left; // allows vertical centering on logo and text
+      padding: 0.5em;
+      width: 4em;
+    }
+
+    // nav menu item font
+    .usa-nav__primary {
+      .usa-nav__primary-item {
+        a {
+          font-size: 1.0em;
+          font-weight: 600;
+          padding: 0.5em;
+        }
+      }
+    }
+
+    // this is forcing the whole toolbar much taller
+    .usa-logo {
+      margin-top: 1.2rem;
+      margin-bottom: 1.2rem;
+    }
   }
 
-  // menu item font
-  .usa-nav__primary {
-    font-size: 1.2em;
-  }
+  @include at-media("mobile") {
+    .usa-logo__text {
+      padding-top: 3px; // allows vertical centering on logo and text
+      padding-bottom: 0; // allows vertical centering on logo and text
+      font-weight: normal;
+    }
 
-  .byline {
-    font-size: 0.3em;
-    font-weight: normal;
+    .usa-navbar {
+      width: 100%;
+    }
+
+    .j40-sitelogo {
+      float: left; // allows vertical centering on logo and text
+      padding: 0.4em;
+      width: 3em;
+    }
+
   }
 }
 
@@ -138,7 +179,7 @@ $primary-color: #112f4e;
 // spacing top & bottom around main content
 .j40-main-content {
   @include at-media("mobile-lg") {
-    margin-bottom: 2rem;
+    margin-bottom: 0;
     margin-top: 2.5rem;
   }
 
@@ -185,12 +226,25 @@ $primary-color: #112f4e;
     margin: 0;
   }
 
-  padding-top: 7px;
-  padding-bottom: 7px;
-  min-height: 4em;
+  min-height: 2.5em;
+  margin: 0 !important;
 
-  * + .usa-alert {
+  .usa-alert {
     margin: 0 !important;
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+
+  .usa-alert__body {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .usa-alert__text {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
   }
 }
 
@@ -227,7 +281,7 @@ $primary-color: #112f4e;
 }
 
 .mapboxgl-ctrl-group {
-  border-radius: 0px;
+  border-radius: 0;
 }
 
 .mapboxgl-ctrl {
@@ -236,7 +290,7 @@ $primary-color: #112f4e;
   }
 
   button {
-    border-radius: 0px;
+    border-radius: 0;
     height: 1.66em;
     width: 1.66em;
     box-sizing: border-box;

@@ -21,7 +21,7 @@ export const LocalizedComponent = ({children}: ILocalizedComponentProps) => {
         <IntlProvider locale={'en'}>
           {children}
         </IntlProvider>
-      </IntlContextProvider>,
+      </IntlContextProvider>
     </>
   );
 };
