@@ -99,17 +99,17 @@ $primary-color: #112f4e;
     // this actual site logo
     .sitelogo {
       float: left; // allows vertical centering on logo and text
-      padding: 0.5em;
+      margin-right: 0.5em; // space between logo and text
       width: 4em;
+      padding: 0.5em; // this will change the size of the logo too
     }
 
     // nav menu item font
     .usa-nav__primary {
       .usa-nav__primary-item {
         a {
-          font-size: 1.0em;
+          margin-bottom: 0.5em; // how far menu is from bottom edge of nav
           font-weight: 600;
-          padding: 0.5em;
         }
       }
     }
@@ -134,8 +134,9 @@ $primary-color: #112f4e;
 
     .j40-sitelogo {
       float: left; // allows vertical centering on logo and text
-      padding: 0.4em;
+      margin-right: 0.5em; // space between logo and text
       width: 3em;
+      padding: 0.4em;  // this will change the size of the logo too
     }
 
   }
