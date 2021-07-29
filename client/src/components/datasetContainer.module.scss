@@ -1,0 +1,31 @@
+@import "./utils.scss";
+
+$headingFontColor: #122e51;
+
+.datasetContainer {
+  background-color: #eef6fb;
+  padding-top: 10px;
+}
+.datasetContainerHeader {
+  font-size: 1.8rem;
+  margin-bottom: 0.4rem;
+  color: $headingFontColor;
+}
+
+.datasetContainerSubTitle {
+  width: 50%;
+  line-height: 1.7rem;
+  margin-top: 0;
+  margin-bottom: 1.4rem;
+  color: $headingFontColor;
+
+  @media screen and (max-width: 700px) {
+    width: 90%;
+  }
+}
+
+.datasetCardsContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
