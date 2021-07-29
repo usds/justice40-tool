@@ -128,6 +128,8 @@ Here's a list of commands:
 - Generate census data: `docker exec j40_data_pipeline_1 python3 application.py census-data-download"`
 - Run all ETL processes: `docker exec j40_data_pipeline_1 python3 application.py etl-run"`
 - Generate Score: `docker exec j40_data_pipeline_1 python3 application.py score-run"`
+- Generate Score with Geojson and high and low versions: `docker exec j40_data_pipeline_1 python3 application.py geo-score`
+- Generate Map Tiles: `docker exec j40_data_pipeline_1 python3 application.py generate-map-tiles`
 
 ## Local development
 
@@ -162,7 +164,7 @@ You can run the Python code locally without Docker to develop, using Poetry. How
 
 - Start a terminal
 - Change to this directory (i.e. `cd data/data-pipeline`)
-- Run: `docker run --rm -it -v ${PWD}/data/tiles:/data -p 8080:80 maptiler/tileserver-gl`
+- Run: `docker run --rm -it -v ${PWD}/data/score/tiles/high:/data -p 8080:80 maptiler/tileserver-gl`
 
 ### Running Jupyter notebooks
 

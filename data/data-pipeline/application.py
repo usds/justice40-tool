@@ -10,6 +10,7 @@ from utils import (
 )
 from etl.sources.census.etl import download_census_csvs
 from etl.runner import etl_runner, score_generate, score_geo
+from tile.generate import generate_tiles
 
 logger = get_module_logger(__name__)
 
@@ -85,6 +86,7 @@ def etl_run(dataset: str):
 )
 def score_run():
     """CLI command to generate the score"""
+
     score_generate()
 
 
@@ -93,7 +95,18 @@ def score_run():
 )
 def geo_score():
     """CLI command to generate the score"""
+
     score_geo()
+
+
+@cli.command(
+    help="Generate map tiles",
+)
+def generate_map_tiles():
+    """CLI command to generate the map tiles"""
+
+    data_path = settings.APP_ROOT / "data"
+    generate_tiles(data_path)
 
 
 if __name__ == "__main__":
