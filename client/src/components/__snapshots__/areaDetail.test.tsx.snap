@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of the AreaDetail checks if various text fields are visible 1`] = `
+<DocumentFragment>
+  <aside
+    data-cy="aside"
+  >
+    <header>
+      <div>
+        <div>
+          Cumulative Index Score
+        </div>
+        <div
+          data-cy="score"
+        >
+          9500.0
+          <sup>
+            <span>
+              th
+            </span>
+          </sup>
+        </div>
+        <div>
+          percentile
+        </div>
+      </div>
+      <div>
+        <div>
+          Categorization
+        </div>
+        <div>
+          <div />
+          <div>
+            Prioritized
+          </div>
+        </div>
+      </div>
+    </header>
+    <ul>
+      <li>
+        <span>
+          Census block group: 
+        </span>
+        <span>
+          98729374234
+        </span>
+      </li>
+      <li>
+        <span>
+          County: 
+        </span>
+        <span>
+          Washington County*
+        </span>
+      </li>
+      <li>
+        <span>
+          State: 
+        </span>
+        <span>
+          District of Columbia*
+        </span>
+      </li>
+      <li>
+        <span>
+          Population: 
+        </span>
+        <span>
+          3,435,435
+        </span>
+      </li>
+    </ul>
+    <div>
+      <div>
+        INDICATORS
+      </div>
+      <div>
+        PERCENTILE (0-100)
+      </div>
+    </div>
+    <li
+      data-cy="indicatorBox"
+    >
+      <div>
+        <div>
+          Poverty
+        </div>
+        <div>
+          Household income is less than or equal to twice the federal "poverty level"
+        </div>
+      </div>
+      <div>
+        9900.0
+      </div>
+    </li>
+    <li
+      data-cy="indicatorBox"
+    >
+      <div>
+        <div>
+          Education
+        </div>
+        <div>
+          Percent of people age 25 or older that didn’t get a high school diploma
+        </div>
+      </div>
+      <div>
+        9800.0
+      </div>
+    </li>
+    <li
+      data-cy="indicatorBox"
+    >
+      <div>
+        <div>
+          Linguistic isolation
+        </div>
+        <div>
+          Households in which all members speak a non-English language and speak English less than "very well"
+        </div>
+      </div>
+      <div>
+        9700.0
+      </div>
+    </li>
+    <li
+      data-cy="indicatorBox"
+    >
+      <div>
+        <div>
+          Unemployment rate
+        </div>
+        <div>
+          Number of unemployed people as a percentage of the labor force
+        </div>
+      </div>
+      <div>
+        9600.0
+      </div>
+    </li>
+    <li
+      data-cy="indicatorBox"
+    >
+      <div>
+        <div>
+          Housing Burden
+        </div>
+        <div>
+          Households that are low income and spend more than 30% of their income to housing costs
+        </div>
+      </div>
+      <div>
+        9500.0
+      </div>
+    </li>
+  </aside>
+  ,
+</DocumentFragment>
+`;

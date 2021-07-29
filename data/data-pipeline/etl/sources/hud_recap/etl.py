@@ -33,7 +33,7 @@ class HudRecapETL(ExtractTransformLoad):
         logger.info(f"Transforming HUD Recap Data")
 
         # Load comparison index (CalEnviroScreen 4)
-        self.df = pd.read_csv(self.HUD_RECAP_CSV, dtype={"Census Tract": "string"})
+        self.df = pd.read_csv(self.HUD_RECAP_CSV, dtype={"GEOID": "string"})
 
         self.df.rename(
             columns={

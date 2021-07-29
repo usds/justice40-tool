@@ -133,7 +133,6 @@ def unzip_file_from_url(
     # cleanup temporary file
     os.remove(zip_file_path)
 
-
 def data_folder_cleanup() -> None:
     """Remove all files and directories from the local data/dataset path"""
 
@@ -160,7 +159,6 @@ def temp_folder_cleanup() -> None:
 
     logger.info(f"Initializing all temp directoriees")
     remove_all_from_dir(data_path / "tmp")
-
 
 def get_excel_column_name(index: int) -> str:
     """Map a numeric index to the appropriate column in Excel. E.g., column #95 is "CR".

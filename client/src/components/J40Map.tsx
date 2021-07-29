@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
-import React, {MouseEvent, useRef, useState} from 'react';
+// External Libs:
+import React, {MouseEvent, useRef, useState, useMemo} from 'react';
 import {Map, MapboxGeoJSONFeature, LngLatBoundsLike} from 'maplibre-gl';
 import ReactMapGL, {
   MapEvent,
@@ -10,14 +11,21 @@ import ReactMapGL, {
   Popup,
   FlyToInterpolator,
   FullscreenControl,
-  MapRef} from 'react-map-gl';
-import {makeMapStyle} from '../data/mapStyle';
-import AreaDetail from './areaDetail';
+  MapRef, Source, Layer} from 'react-map-gl';
 import bbox from '@turf/bbox';
 import * as d3 from 'd3-ease';
-import {useFlags} from '../contexts/FlagContext';
-import TerritoryFocusControl from './territoryFocusControl';
+import {isMobile} from 'react-device-detect';
 
+// Contexts:
+import {useFlags} from '../contexts/FlagContext';
+
+// Components:
+import TerritoryFocusControl from './territoryFocusControl';
+import MapInfoPanel from './mapInfoPanel';
+import AreaDetail from './areaDetail';
+
+// Styles and constants
+import {makeMapStyle} from '../data/mapStyle';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import * as constants from '../data/constants';
 import * as styles from './J40Map.module.scss';
@@ -30,27 +38,38 @@ declare global {
   }
 }
 
+interface IJ40Interface {
+  location: Location;
+};
 
-interface IDetailViewInterface {
+
+export interface IDetailViewInterface {
   latitude: number
   longitude: number
   zoom: number
   properties: constants.J40Properties,
 };
 
-const J40Map = () => {
+const J40Map = ({location}: IJ40Interface) => {
+  // Hash portion of URL is of the form #zoom/lat/lng
+  const [zoom, lat, lng] = location.hash.slice(1).split('/');
   const [viewport, setViewport] = useState<ViewportProps>({
-    latitude: constants.DEFAULT_CENTER[0],
-    longitude: constants.DEFAULT_CENTER[1],
-    zoom: constants.GLOBAL_MIN_ZOOM,
+    latitude: lat && parseFloat(lat) || constants.DEFAULT_CENTER[0],
+    longitude: lng && parseFloat(lng) || constants.DEFAULT_CENTER[1],
+    zoom: zoom && parseFloat(zoom) || constants.GLOBAL_MIN_ZOOM,
   });
 
   const [selectedFeature, setSelectedFeature] = useState<MapboxGeoJSONFeature>();
   const [detailViewData, setDetailViewData] = useState<IDetailViewInterface>();
   const [transitionInProgress, setTransitionInProgress] = useState<boolean>(false);
   const [geolocationInProgress, setGeolocationInProgress] = useState<boolean>(false);
+  const [isMobileMapState, setIsMobileMapState] = useState<boolean>(false);
+
   const mapRef = useRef<MapRef>(null);
   const flags = useFlags();
+
+  const selectedFeatureId = (selectedFeature && selectedFeature.id) || '';
+  const filter = useMemo(() => ['in', constants.GEOID_PROPERTY, selectedFeatureId], [selectedFeature]);
 
   const onClick = (event: MapEvent) => {
     const feature = event.features && event.features[0];
@@ -66,11 +85,11 @@ const J40Map = () => {
             padding: 40,
           },
       );
-      // If we've selected a new feature, set 'selected' to false
-      if (selectedFeature && feature.id !== selectedFeature.id) {
-        setMapSelected(selectedFeature, false);
+      if (feature.id !== selectedFeatureId) {
+        setSelectedFeature(feature);
+      } else {
+        setSelectedFeature(undefined);
       }
-      setMapSelected(feature, true);
       const popupInfo = {
         longitude: longitude,
         latitude: latitude,
@@ -90,6 +109,8 @@ const J40Map = () => {
     if (typeof window !== 'undefined' && window.Cypress && mapRef.current) {
       window.underlyingMap = mapRef.current.getMap();
     }
+
+    if (isMobile) setIsMobileMapState(true);
   };
 
 
@@ -110,22 +131,8 @@ const J40Map = () => {
     });
   };
 
-  const setMapSelected = (feature:MapboxGeoJSONFeature, isSelected:boolean) : void => {
-    // The below can be confirmed during debug with:
-    // mapRef.current.getFeatureState({"id":feature.id, "source":feature.source, "sourceLayer":feature.sourceLayer})
-    mapRef.current && mapRef.current.getMap().setFeatureState({
-      source: feature.source,
-      sourceLayer: feature.sourceLayer,
-      id: feature.id,
-    }, {[constants.SELECTED_PROPERTY]: isSelected});
-    if (isSelected) {
-      setSelectedFeature(feature);
-    } else {
-      setSelectedFeature(undefined);
-    }
-  };
-
   const onClickTerritoryFocusButton = (event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
     const buttonID = event.target && (event.target as HTMLElement).id;
 
     switch (buttonID) {
@@ -164,16 +171,15 @@ const J40Map = () => {
   };
 
   return (
-    <>
+    <div className={styles.mapAndInfoPanelContainer}>
       <ReactMapGL
         {...viewport}
-        className={styles.mapContainer}
         mapStyle={makeMapStyle(flags)}
         minZoom={constants.GLOBAL_MIN_ZOOM}
         maxZoom={constants.GLOBAL_MAX_ZOOM}
         mapOptions={{hash: true}}
         width="100%"
-        height="52vw"
+        height={isMobileMapState ? '44vh' : '100%'}
         dragRotate={false}
         touchRotate={false}
         interactiveLayerIds={[constants.HIGH_SCORE_LAYER_NAME]}
@@ -183,8 +189,42 @@ const J40Map = () => {
         onTransitionStart={onTransitionStart}
         onTransitionEnd={onTransitionEnd}
         ref={mapRef}
+        data-cy={'reactMapGL'}
       >
-        {(detailViewData && !transitionInProgress) && (
+        <Source
+          id={constants.HIGH_SCORE_SOURCE_NAME}
+          type="vector"
+          promoteId={constants.GEOID_PROPERTY}
+          tiles={[constants.FEATURE_TILE_HIGH_ZOOM_URL]}
+          maxzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
+          minzoom={constants.GLOBAL_MAX_ZOOM_HIGH}
+        >
+          <Layer
+            id={constants.CURRENTLY_SELECTED_FEATURE_HIGHLIGHT_LAYER_NAME}
+            source-layer={constants.SCORE_SOURCE_LAYER}
+            type='line'
+            paint={{
+              'line-color': constants.DEFAULT_OUTLINE_COLOR,
+              'line-width': constants.CURRENTLY_SELECTED_FEATURE_LAYER_WIDTH,
+              'line-opacity': constants.CURRENTLY_SELECTED_FEATURE_LAYER_OPACITY,
+            }}
+            minzoom={constants.GLOBAL_MIN_ZOOM_HIGHLIGHT}
+            maxzoom={constants.GLOBAL_MAX_ZOOM_HIGHLIGHT}
+          />
+
+          <Layer
+            id={constants.BLOCK_GROUP_BOUNDARY_LAYER_NAME}
+            type='line'
+            source-layer={constants.SCORE_SOURCE_LAYER}
+            paint={{
+              'line-color': constants.BORDER_HIGHLIGHT_COLOR,
+              'line-width': constants.HIGHLIGHT_BORDER_WIDTH,
+            }}
+            filter={filter}
+            minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
+          />
+        </Source>
+        {('fs' in flags && detailViewData && !transitionInProgress) && (
           <Popup
             className={styles.j40Popup}
             tipSize={5}
@@ -198,7 +238,6 @@ const J40Map = () => {
             <AreaDetail properties={detailViewData.properties} />
           </Popup>
         )}
-
         <NavigationControl
           showCompass={false}
           className={styles.navigationControl}
@@ -214,7 +253,12 @@ const J40Map = () => {
         <TerritoryFocusControl onClickTerritoryFocusButton={onClickTerritoryFocusButton}/>
         {'fs' in flags ? <FullscreenControl className={styles.fullscreenControl}/> :'' }
       </ReactMapGL>
-    </>
+      <MapInfoPanel
+        className={styles.mapInfoPanel}
+        featureProperties={detailViewData?.properties}
+        selectedFeatureId={selectedFeature?.id}
+      />
+    </div>
   );
 };
 

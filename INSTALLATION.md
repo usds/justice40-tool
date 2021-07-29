@@ -78,7 +78,7 @@ There is also a docker-compose file that will eventually include everything you 
 If you wish to check out our client-side code (i.e. the GatsbyJS statically generated website with the map), check out the `client` directory and its [README](client/README.md).
 
 **Running the backend**
-If you want to run the data pipeline with ETL and score generation, check out the `score` directory and its [README](score/README.md).
+If you want to run the data pipeline with ETL and score generation, check out the `data/data-pipeline` directory and its [README](data/data-pipeline/README.md).
 
 **Deployment**
 For core team contributors working on deployment, check out the `infrastructure` directory and its [README](infrastructure/README.md) for information on deploying the backend to AWS.
