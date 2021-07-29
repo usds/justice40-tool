@@ -12,7 +12,11 @@ import {Helmet} from 'react-helmet';
 import {useFlags} from '../contexts/FlagContext';
 import {defineMessages} from 'react-intl';
 
-const J40Header = () => {
+interface IJ40HeaderProps {
+  location: Location
+}
+const J40Header = ({location}:IJ40HeaderProps) => {
+  const isMethodologyPage = location.pathname.match(/methodology\/?/);
   const flags = useFlags();
   const intl = useIntl();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -140,7 +144,7 @@ const J40Header = () => {
         Please submit feedback.
         <br/>
       </Alert>
-      <Alert
+      {!isMethodologyPage && <Alert
         className={'j40-sitealert'}
         type="warning">
         <b>Limited data sources — </b>
@@ -149,7 +153,7 @@ const J40Header = () => {
         based on availability, quality, and relevance to environmental, energy,
         and climate issues. Each dataset has limitations, such as how recently
         the data was updated.
-      </Alert>
+      </Alert>}
     </>
   );
 };
