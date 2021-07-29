@@ -3,6 +3,9 @@ authors = ["Your Name <you@example.com>"]
 description = "ETL and Generation of Justice 40 Score"
 name = "score"
 version = "0.1.0"
+packages = [
+    { include = "etl" },  # required for poetry packaging to install in tox
+]
 
 [tool.poetry.dependencies]
 CensusData = "^1.13"
@@ -21,6 +24,7 @@ types-requests = "^2.25.0"
 [tool.poetry.dev-dependencies]
 black = {version = "^21.6b0", allow-prereleases = true}
 mypy = "^0.910"
+tox = "^3.24.0"
 
 [build-system]
 build-backend = "poetry.core.masonry.api"

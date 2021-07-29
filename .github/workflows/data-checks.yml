@@ -1,0 +1,35 @@
+# This runs tox in the two directories under data
+name: Data Checks
+
+on:
+  push:
+  pull_request:
+    branches: [ main ]  # runs on any PR against main
+
+
+jobs:
+  data-pipeline:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # checks all of the versions allowed in pyproject.toml
+        python-version: [3.7, 3.8, 3.9]
+
+    steps:
+      # installs python
+      # one execution of the tests per version listed above
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      # installs poetry
+      - uses: Gr1N/setup-poetry@v4
+      - name: Install dependencies
+        run: |
+          cd data/data-pipeline
+          poetry install
+      - name: Run tox
+        run: |
+          cd data/data-pipeline
+          poetry run tox
