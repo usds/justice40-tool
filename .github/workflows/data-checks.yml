@@ -33,29 +33,3 @@ jobs:
         run: |
           cd data/data-pipeline
           poetry run tox
-
-  data-roadmap:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        # checks all of the versions allowed in pyproject.toml
-        python-version: [3.7, 3.8, 3.9]
-
-    steps:
-      # installs python
-      # one execution of the tests per version listed above
-      - uses: actions/checkout@v2
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-      # installs poetry
-      - uses: Gr1N/setup-poetry@v4
-      - name: Install dependencies
-        run: |
-          cd data/data-roadmap
-          poetry install
-      - name: Run tox
-        run: |
-          cd data/data-roadmap
-          poetry run tox
