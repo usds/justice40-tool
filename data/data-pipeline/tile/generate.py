@@ -26,7 +26,7 @@ def generate_tiles(data_path: Path) -> None:
     cmd = "tippecanoe "
     cmd += "--force -Z 5 -z 11 -l usa_high "
     cmd += "-o " + str(high_tile_path) + "/usa_high.mbtiles "
-    cmd += "-l blocks " + str(score_geojson_dir / "usa-high.json")
+    cmd += str(score_geojson_dir / "usa-high.json")
     os.system(cmd)
 
     # generate high mvts
@@ -42,7 +42,7 @@ def generate_tiles(data_path: Path) -> None:
     cmd = "tippecanoe "
     cmd += "--force -Z 5 -z 11 -l usa_low "
     cmd += "-o " + str(low_tile_path) + "/usa_low.mbtiles "
-    cmd += "-l blocks " + str(score_geojson_dir / "usa-low.json")
+    cmd += str(score_geojson_dir / "usa-low.json")
     os.system(cmd)
 
     # generate low mvts
