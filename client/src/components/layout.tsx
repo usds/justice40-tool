@@ -3,7 +3,7 @@ import {GridContainer, Grid} from '@trussworks/react-uswds';
 import J40Header from './J40Header';
 import J40Footer from './J40Footer';
 import {URLFlagProvider} from '../contexts/FlagContext';
-import DatasetContainer from './datasetContainer';
+import DatasetContainer from '../components/DatasetContainer';
 // this has to be wrong
 
 interface ILayoutProps {
