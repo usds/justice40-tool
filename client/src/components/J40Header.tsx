@@ -127,14 +127,16 @@ const J40Header = () => {
         </div>
       </Header>
       <Alert className={'j40-sitealert'} type="info">
-        <b><FormattedMessage
+        <span className={'j40-sitealert-title'}><FormattedMessage
           id='header.alertTitleBeta'
           description={'Alerts that appear on every page - title'}
-          defaultMessage={`Public beta`}/> - </b>
-        <FormattedMessage
-          id='header.alertBodyBeta'
-          description={'Alerts that appear on every page'}
-          defaultMessage={`This website will be continuously updated`}/>
+          defaultMessage={`Public beta`}/> - </span>
+        <span className={'j40-sitealert-body'}>
+          <FormattedMessage
+            id='header.alertBodyBeta'
+            description={'Alerts that appear on every page'}
+            defaultMessage={`This website will be continuously updated`}/>
+        </span>
         <br/>
       </Alert>
     </>

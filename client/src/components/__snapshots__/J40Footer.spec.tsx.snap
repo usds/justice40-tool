@@ -164,5 +164,6 @@ exports[`J40Footer renders correctly 1`] = `
       </div>
     </div>
   </footer>
+  ,
 </DocumentFragment>
 `;

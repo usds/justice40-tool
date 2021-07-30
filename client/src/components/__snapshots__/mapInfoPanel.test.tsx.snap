@@ -26,5 +26,6 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
       </div>
     </aside>
   </div>
+  ,
 </DocumentFragment>
 `;

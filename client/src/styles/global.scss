@@ -87,7 +87,6 @@ $primary-color: #112f4e;
   @include at-media("desktop") {
     .j40-title {
       font-size: 0.9em;
-      padding-top: 25px; // allows vertical centering on logo and text
       padding-bottom: 0; // allows vertical centering on logo and text
       font-weight: normal;
     }
@@ -228,10 +227,17 @@ $primary-color: #112f4e;
   }
 
   min-height: 2.5em;
-  margin: 0 !important;
+  margin: 0;
+
+  .j40-sitealert-title {
+    font-weight: bold;
+  }
+
+  .j40-sitealert-body {
+  }
 
   .usa-alert {
-    margin: 0 !important;
+    margin: 0;
     padding-bottom: 0;
     padding-top: 0;
   }

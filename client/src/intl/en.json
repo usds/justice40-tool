@@ -24,7 +24,7 @@
     "description": "Households that are low income and spend more than 30% of their income to housing costs"
   },
   "areaDetail.indicator.linguisticIsolation": {
-    "defaultMessage": "Linguistic Isolation",
+    "defaultMessage": "Linguistic isolation",
     "description": "Households in which all members speak a non-English language and speak English less than \"very well\""
   },
   "areaDetail.indicator.poverty": {
@@ -32,7 +32,7 @@
     "description": "Household income is less than or equal to twice the federal \"poverty level\""
   },
   "areaDetail.indicator.unemployment": {
-    "defaultMessage": "Unemployment",
+    "defaultMessage": "Unemployment rate",
     "description": "Number of unemployed people as a percentage of the labor force"
   },
   "areaDetail.indicators.indicatorColumnHeader": {
@@ -83,6 +83,18 @@
     "defaultMessage": "Clean water infrastructure",
     "description": "item in areasOfInterest list"
   },
+  "contact.general": {
+    "defaultMessage": "For technical support, email {tech_email_address}",
+    "description": "Contact page body text"
+  },
+  "contact.pageheader": {
+    "defaultMessage": "Contact",
+    "description": "H2 header for contact page"
+  },
+  "contact.sectionheader": {
+    "defaultMessage": "Email us",
+    "description": "Heading for page to allow users to contact project maintainers"
+  },
   "footer.arialabel": {
     "defaultMessage": "Footer navigation",
     "description": "aria-label text for whole footer"
@@ -119,6 +131,14 @@
     "defaultMessage": "About",
     "description": "Navigate to the about page"
   },
+  "header.alertBodyBeta": {
+    "defaultMessage": "This website will be continuously updated",
+    "description": "Alerts that appear on every page"
+  },
+  "header.alertTitleBeta": {
+    "defaultMessage": "Public beta",
+    "description": "Alerts that appear on every page - title"
+  },
   "header.contact": {
     "defaultMessage": "Contact",
     "description": "Navigate to the Contact page"
@@ -128,16 +148,20 @@
     "description": "Navigate to the Explore the tool page"
   },
   "header.methodology": {
-    "defaultMessage": "Methodology",
+    "defaultMessage": "Data & methodology",
     "description": "Navigate to the Methodology page"
   },
   "header.timeline": {
     "defaultMessage": "Timeline",
     "description": "Navigate to the Timeline page"
   },
-  "header.title": {
-    "defaultMessage": "Justice40",
-    "description": "Title in header"
+  "header.title.line1": {
+    "defaultMessage": "Climate and Economic Justice",
+    "description": "Title in header line 1 of 2"
+  },
+  "header.title.line2": {
+    "defaultMessage": "Screening Tool",
+    "description": "Title in header line 2 of 2"
   },
   "index.aboutContent.header": {
     "defaultMessage": "About Justice40",
@@ -234,5 +258,17 @@
   "map.territoryFocus.puerto_rico.short": {
     "defaultMessage": "PR",
     "description": "The abbreviated name indicating the bounds of Puerto Rico"
+  },
+  "mapIntro.censusBlockGroupDefinition": {
+    "defaultMessage": "A census block group is generally between 600 and 3,000 people. It is the smallest geographical unit for which the U.S. Census Bureau publishes sample data.",
+    "description": "cites the definition and helpful information about census groups"
+  },
+  "mapIntro.didYouKnow": {
+    "defaultMessage": "Did you know?",
+    "description": "text prompting a cite paragraph"
+  },
+  "mapIntro.mapIntroHeader": {
+    "defaultMessage": "Zoom and select a census block group to view data",
+    "description": "introductory text of ways to use the map"
   }
 }

@@ -154,5 +154,6 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
       </div>
     </li>
   </aside>
+  ,
 </DocumentFragment>
 `;

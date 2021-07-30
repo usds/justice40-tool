@@ -18,7 +18,7 @@ const ContactPage = ({location}: ContactPageProps) => {
         defaultMessage={'Contact'}/></h2>
       <h3><FormattedMessage
         id={'contact.sectionheader'}
-        description={'H3 header for contact page'}
+        description={'Heading for page to allow users to contact project maintainers'}
         defaultMessage={'Email us'}/></h3>
 
       <p>
