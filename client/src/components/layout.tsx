@@ -4,7 +4,7 @@ import J40Header from './J40Header';
 import J40Footer from './J40Footer';
 import J40Aside from '../components/J40Aside';
 import {URLFlagProvider} from '../contexts/FlagContext';
-import DatasetContainer from './datasetContainer';
+import DatasetContainer from '../components/DatasetContainer';
 // this has to be wrong
 
 interface ILayoutProps {
