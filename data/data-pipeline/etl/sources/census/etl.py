@@ -2,6 +2,7 @@ import csv
 import os
 import json
 from pathlib import Path
+import geopandas as gpd
 
 from .etl_utils import get_state_fips_codes
 from utils import unzip_file_from_url, get_module_logger
@@ -11,7 +12,7 @@ logger = get_module_logger(__name__)
 
 def download_census_csvs(data_path: Path) -> None:
     """Download all census shape files from the Census FTP and extract the geojson
-    to generate national and by state Census Block Group CSVs
+    to generate national and by state Census Block Group CSVs and GeoJSONs
 
     Args:
         data_path (pathlib.Path): Name of the directory where the files and directories will
@@ -107,5 +108,18 @@ def download_census_csvs(data_path: Path) -> None:
                     geoid10,
                 ]
             )
+
+    ## create national geojson
+    logger.info(f"Generating national geojson file")
+    usa_df = gpd.GeoDataFrame()
+
+    for file_name in geojson_dir_path.rglob("*.json"):
+        logger.info(f"Ingesting {file_name}")
+        state_gdf = gpd.read_file(file_name)
+        usa_df = usa_df.append(state_gdf)
+
+    usa_df = usa_df.to_crs("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs")
+    logger.info(f"Writing national geojson file")
+    usa_df.to_file(geojson_dir_path / "us.json", driver="GeoJSON")
 
     logger.info("Census block groups downloading complete")
