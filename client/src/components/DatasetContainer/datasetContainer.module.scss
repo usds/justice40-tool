@@ -1,10 +1,9 @@
-@import "./utils.scss";
+@import "../utils.scss";
 
 $headingFontColor: #122e51;
 
 .datasetContainer {
   background-color: #eef6fb;
-  padding-top: 10px;
 }
 .datasetContainerHeader {
   font-size: 1.8rem;
@@ -28,4 +27,8 @@ $headingFontColor: #122e51;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+
+.j40AlertContainer {
+  background-color: #faf3d1;
 }

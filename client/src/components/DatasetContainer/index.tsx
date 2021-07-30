@@ -1,8 +1,11 @@
 import React from 'react';
-import DatasetCard from './datasetCard';
+import {useIntl} from 'gatsby-plugin-intl';
+import {defineMessages} from 'react-intl';
+import DatasetCard from '../DatasetCard';
 import * as styles from './datasetContainer.module.scss';
+import J40Alert from '../J40Alert';
 
-const cards = [
+export const cards = [
   {
     indicator: 'Poverty',
     description: `Percent of a block group's population in households where the household 
@@ -54,14 +57,31 @@ const cards = [
 ];
 
 const DatasetContainer = () => {
+  const intl = useIntl();
+  const messages = defineMessages({
+    cumulativeScore: {
+      id: 'datasetContainer.header.cumulativeScore',
+      defaultMessage: 'Datasets used in cumulative score',
+      description: 'section label of which datasets are used in cumulative score',
+    },
+    subTitle: {
+      id: 'datasetContainer.subTitle',
+      defaultMessage: 'The datasets come from a variety of sources and ' +
+      'were selected after considering relevance, availability, recency and quality.',
+      description: 'description of the dataset section',
+    },
+  });
+
   return (
     <div className={`${styles.datasetContainer} desktop:grid-col`}>
+      <div className={`${styles.j40AlertContainer} desktop:grid-col`}>
+        <div className={'grid-container-desktop-lg'}>
+          <J40Alert />
+        </div>
+      </div>
       <div className={'grid-container-desktop-lg'}>
-        <h1 className={styles.datasetContainerHeader}>Datasets used in cumulative score</h1>
-        <p className={styles.datasetContainerSubTitle}>
-        The datasets come from a variety of sources and were selected after
-        considering relevance, availability, recency and quality.
-        </p>
+        <h1 className={styles.datasetContainerHeader}>{intl.formatMessage(messages.cumulativeScore)}</h1>
+        <p className={styles.datasetContainerSubTitle}>{intl.formatMessage(messages.subTitle)}</p>
         <div className={styles.datasetCardsContainer}>
           {cards.map((card, index) => <DatasetCard key={index} datasetCardProps={card}/>)}
         </div>
