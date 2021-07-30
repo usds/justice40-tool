@@ -26,6 +26,8 @@ exports[`rendering of the DatasetCard checks if component renders 1`] = `
         </span>
         <a
           href="https://www.census.gov/"
+          rel="noreferrer"
+          target="_blank"
         >
           U.S. Census Bureau
         </a>

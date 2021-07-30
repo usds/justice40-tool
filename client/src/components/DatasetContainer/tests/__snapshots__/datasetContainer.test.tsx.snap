@@ -50,6 +50,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </span>
               <a
                 href="https://www.census.gov/"
+                rel="noreferrer"
+                target="_blank"
               >
                 U.S. Census Bureau
               </a>
@@ -85,6 +87,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </span>
               <a
                 href="https://www.census.gov/"
+                rel="noreferrer"
+                target="_blank"
               >
                 U.S. Census Bureau
               </a>
@@ -123,6 +127,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </span>
               <a
                 href="https://www.census.gov/"
+                rel="noreferrer"
+                target="_blank"
               >
                 U.S. Census Bureau
               </a>
@@ -159,6 +165,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </span>
               <a
                 href="https://www.census.gov/"
+                rel="noreferrer"
+                target="_blank"
               >
                 U.S. Census Bureau
               </a>
@@ -196,6 +204,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </span>
               <a
                 href="https://www.census.gov/"
+                rel="noreferrer"
+                target="_blank"
               >
                 U.S. Census Bureau
               </a>

@@ -54,7 +54,6 @@ const URLFlagProvider = ({children, location}: IURLFlagProviderProps) => {
       flags[flag] = true;
     }
   }
-  console.log(JSON.stringify(location), JSON.stringify(flags));
 
   return (
     <FlagContext.Provider

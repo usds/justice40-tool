@@ -57,7 +57,7 @@ const DatasetCard = ({key, datasetCardProps}:IDatasetCardProps) => {
           <span className={styles.datasetCardLabels}>
             {intl.formatMessage(messages.dataSource)}
           </span>
-          <a href={datasetCardProps.dataSourceURL}>
+          <a href={datasetCardProps.dataSourceURL} target={'_blank'} rel="noreferrer">
             {datasetCardProps.dataSourceLabel}
           </a>
         </li>
