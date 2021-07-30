@@ -2,8 +2,8 @@ import React from 'react';
 import {useIntl} from 'gatsby-plugin-intl';
 import {defineMessages} from 'react-intl';
 import DatasetCard from '../DatasetCard';
-import * as styles from './datasetContainer.module.scss';
 import J40Alert from '../J40Alert';
+import * as styles from './datasetContainer.module.scss';
 
 export const cards = [
   {
