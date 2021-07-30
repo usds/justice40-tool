@@ -18,37 +18,32 @@ const J40Header = () => {
     titleLine1: {
       id: 'header.title.line1',
       defaultMessage: `Climate and Economic Justice`,
-      description: 'Title in header line 1 of 2',
+      description: 'Title in nav header line 1 of 2',
     },
     titleLine2: {
       id: 'header.title.line2',
       defaultMessage: `Screening Tool`,
-      description: 'Title in header line 2 of 2',
+      description: 'Title in nav header line 2 of 2',
     },
     about: {
       id: 'header.about',
       defaultMessage: 'About',
-      description: 'Navigate to the about page',
+      description: 'Header navigate item to the about page',
     },
     explore: {
       id: 'header.explore',
       defaultMessage: 'Explore the tool',
-      description: 'Navigate to the Explore the tool page',
+      description: 'Header navigate item to the Explore the tool page',
     },
     methodology: {
       id: 'header.methodology',
       defaultMessage: 'Data & methodology',
-      description: 'Navigate to the Methodology page',
+      description: 'Header navigate item to the Methodology page',
     },
     contact: {
       id: 'header.contact',
       defaultMessage: 'Contact',
-      description: 'Navigate to the Contact page',
-    },
-    timeline: {
-      id: 'header.timeline',
-      defaultMessage: 'Timeline',
-      description: 'Navigate to the Timeline page',
+      description: 'Header navigate item to the Contact page',
     },
   });
   const titleL1 = intl.formatMessage(messages.titleLine1);
@@ -85,12 +80,6 @@ const J40Header = () => {
           key={'contact'}
           activeClassName="usa-current"
           className={'j40-header'}>{intl.formatMessage(messages.contact)}</Link>],
-      ['timeline',
-        <Link
-          to={'/timeline'}
-          key={'timline'}
-          activeClassName="usa-current"
-          className={'j40-header'}>{intl.formatMessage(messages.timeline)}</Link>],
     ]);
 
     const menu =['about', 'cejst', 'methodology', 'contact'];
