@@ -29,9 +29,7 @@ def download_census_csvs(data_path: Path) -> None:
 
     for fips in state_fips_codes:
         # check if file exists
-        shp_file_path = (
-            data_path / "census" / "shp" / fips / f"tl_2010_{fips}_bg10.shp"
-        )
+        shp_file_path = data_path / "census" / "shp" / fips / f"tl_2010_{fips}_bg10.shp"
 
         logger.info(f"Checking if {fips} file exists")
         if not os.path.isfile(shp_file_path):

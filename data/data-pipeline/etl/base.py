@@ -34,9 +34,7 @@ class ExtractTransformLoad(object):
 
         pass
 
-    def extract(
-        self, source_url: str = None, extract_path: Path = None
-    ) -> None:
+    def extract(self, source_url: str = None, extract_path: Path = None) -> None:
         """Extract the data from
         a remote source. By default it provides code to get the file from a source url,
         unzips it and stores it on an extract_path."""

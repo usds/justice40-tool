@@ -11,16 +11,16 @@ class HudHousingETL(ExtractTransformLoad):
     def __init__(self):
         self.OUTPUT_PATH = self.DATA_PATH / "dataset" / "hud_housing"
         self.GEOID_TRACT_FIELD_NAME = "GEOID10_TRACT"
-        self.HOUSING_FTP_URL = "https://www.huduser.gov/portal/datasets/cp/2012thru2016-140-csv.zip"
+        self.HOUSING_FTP_URL = (
+            "https://www.huduser.gov/portal/datasets/cp/2012thru2016-140-csv.zip"
+        )
         self.HOUSING_ZIP_FILE_DIR = self.TMP_PATH / "hud_housing"
 
         # We measure households earning less than 80% of HUD Area Median Family Income by county
         # and paying greater than 30% of their income to housing costs.
         self.HOUSING_BURDEN_FIELD_NAME = "Housing burden (percent)"
         self.HOUSING_BURDEN_NUMERATOR_FIELD_NAME = "HOUSING_BURDEN_NUMERATOR"
-        self.HOUSING_BURDEN_DENOMINATOR_FIELD_NAME = (
-            "HOUSING_BURDEN_DENOMINATOR"
-        )
+        self.HOUSING_BURDEN_DENOMINATOR_FIELD_NAME = "HOUSING_BURDEN_DENOMINATOR"
 
         # Note: some variable definitions.
         # HUD-adjusted median family income (HAMFI).
@@ -53,9 +53,7 @@ class HudHousingETL(ExtractTransformLoad):
         )
 
         # Rename and reformat block group ID
-        self.df.rename(
-            columns={"geoid": self.GEOID_TRACT_FIELD_NAME}, inplace=True
-        )
+        self.df.rename(columns={"geoid": self.GEOID_TRACT_FIELD_NAME}, inplace=True)
 
         # The CHAS data has census tract ids such as `14000US01001020100`
         # Whereas the rest of our data uses, for the same tract, `01001020100`.
@@ -165,9 +163,7 @@ class HudHousingETL(ExtractTransformLoad):
         # TODO: add small sample size checks
         self.df[self.HOUSING_BURDEN_FIELD_NAME] = self.df[
             self.HOUSING_BURDEN_NUMERATOR_FIELD_NAME
-        ].astype(float) / self.df[
-            self.HOUSING_BURDEN_DENOMINATOR_FIELD_NAME
-        ].astype(
+        ].astype(float) / self.df[self.HOUSING_BURDEN_DENOMINATOR_FIELD_NAME].astype(
             float
         )
 

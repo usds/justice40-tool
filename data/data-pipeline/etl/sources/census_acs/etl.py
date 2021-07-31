@@ -11,14 +11,10 @@ logger = get_module_logger(__name__)
 class CensusACSETL(ExtractTransformLoad):
     def __init__(self):
         self.ACS_YEAR = 2019
-        self.OUTPUT_PATH = (
-            self.DATA_PATH / "dataset" / f"census_acs_{self.ACS_YEAR}"
-        )
+        self.OUTPUT_PATH = self.DATA_PATH / "dataset" / f"census_acs_{self.ACS_YEAR}"
         self.UNEMPLOYED_FIELD_NAME = "Unemployed civilians (percent)"
         self.LINGUISTIC_ISOLATION_FIELD_NAME = "Linguistic isolation (percent)"
-        self.LINGUISTIC_ISOLATION_TOTAL_FIELD_NAME = (
-            "Linguistic isolation (total)"
-        )
+        self.LINGUISTIC_ISOLATION_TOTAL_FIELD_NAME = "Linguistic isolation (total)"
         self.LINGUISTIC_ISOLATION_FIELDS = [
             "C16002_001E",
             "C16002_004E",
@@ -28,9 +24,7 @@ class CensusACSETL(ExtractTransformLoad):
         ]
         self.df: pd.DataFrame
 
-    def _fips_from_censusdata_censusgeo(
-        self, censusgeo: censusdata.censusgeo
-    ) -> str:
+    def _fips_from_censusdata_censusgeo(self, censusgeo: censusdata.censusgeo) -> str:
         """Create a FIPS code from the proprietary censusgeo index."""
         fips = "".join([value for (key, value) in censusgeo.params()])
         return fips
@@ -38,9 +32,7 @@ class CensusACSETL(ExtractTransformLoad):
     def extract(self) -> None:
         dfs = []
         for fips in get_state_fips_codes(self.DATA_PATH):
-            logger.info(
-                f"Downloading data for state/territory with FIPS code {fips}"
-            )
+            logger.info(f"Downloading data for state/territory with FIPS code {fips}")
 
             dfs.append(
                 censusdata.download(
@@ -69,9 +61,7 @@ class CensusACSETL(ExtractTransformLoad):
 
         # Calculate percent unemployment.
         # TODO: remove small-sample data that should be `None` instead of a high-variance fraction.
-        self.df[self.UNEMPLOYED_FIELD_NAME] = (
-            self.df.B23025_005E / self.df.B23025_003E
-        )
+        self.df[self.UNEMPLOYED_FIELD_NAME] = self.df.B23025_005E / self.df.B23025_003E
 
         # Calculate linguistic isolation.
         individual_limited_english_fields = [

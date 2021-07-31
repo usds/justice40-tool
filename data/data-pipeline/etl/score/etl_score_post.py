@@ -19,9 +19,7 @@ class PostScoreETL(ExtractTransformLoad):
         self.CENSUS_USA_CSV = self.DATA_PATH / "census" / "csv" / "us.csv"
         self.SCORE_CSV_PATH = self.DATA_PATH / "score" / "csv"
 
-        self.STATE_CSV = (
-            self.DATA_PATH / "census" / "csv" / "fips_states_2010.csv"
-        )
+        self.STATE_CSV = self.DATA_PATH / "census" / "csv" / "fips_states_2010.csv"
 
         self.FULL_SCORE_CSV = self.SCORE_CSV_PATH / "full" / "usa.csv"
         self.TILR_SCORE_CSV = self.SCORE_CSV_PATH / "tile" / "usa.csv"
@@ -62,9 +60,7 @@ class PostScoreETL(ExtractTransformLoad):
         self.states_df = pd.read_csv(
             self.STATE_CSV, dtype={"fips": "string", "state_code": "string"}
         )
-        self.score_df = pd.read_csv(
-            self.FULL_SCORE_CSV, dtype={"GEOID10": "string"}
-        )
+        self.score_df = pd.read_csv(self.FULL_SCORE_CSV, dtype={"GEOID10": "string"})
 
     def transform(self) -> None:
         logger.info(f"Transforming data sources for Score + County CSV")
@@ -121,9 +117,9 @@ class PostScoreETL(ExtractTransformLoad):
         null_cbg_df = merged_df[merged_df["Score E (percentile)"].isnull()]
 
         # subsctract data sets
-        removed_df = pd.concat(
-            [merged_df, null_cbg_df, null_cbg_df]
-        ).drop_duplicates(keep=False)
+        removed_df = pd.concat([merged_df, null_cbg_df, null_cbg_df]).drop_duplicates(
+            keep=False
+        )
 
         # set the score to the new df
         self.score_county_state_merged = removed_df
