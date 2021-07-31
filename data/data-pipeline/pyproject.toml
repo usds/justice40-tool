@@ -25,6 +25,10 @@ types-requests = "^2.25.0"
 black = {version = "^21.6b0", allow-prereleases = true}
 mypy = "^0.910"
 tox = "^3.24.0"
+flake8 = "^3.9.2"
+pylint = "^2.9.6"
+liccheck = "^0.6.2"
+safety = "^1.10.3"
 
 [build-system]
 build-backend = "poetry.core.masonry.api"
