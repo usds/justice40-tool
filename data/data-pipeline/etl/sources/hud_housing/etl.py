@@ -24,7 +24,11 @@ class HudHousingETL(ExtractTransformLoad):
 
         # Note: some variable definitions.
         # HUD-adjusted median family income (HAMFI).
-        # The four housing problems are: incomplete kitchen facilities, incomplete plumbing facilities, more than 1 person per room, and cost burden greater than 30%.
+        # The four housing problems are:
+        #   - incomplete kitchen facilities,
+        #   - incomplete plumbing facilities,
+        #   - more than 1 person per room,
+        #   - cost burden greater than 30%.
         # Table 8 is the desired table.
 
         self.df: pd.DataFrame
@@ -68,69 +72,177 @@ class HudHousingETL(ExtractTransformLoad):
 
         # Owner occupied numerator fields
         OWNER_OCCUPIED_NUMERATOR_FIELDS = [
-            # Key: Column Name	Line_Type	Tenure	Household income	Cost burden	Facilities
-            # T8_est7	Subtotal	Owner occupied	less than or equal to 30% of HAMFI	greater than 30% but less than or equal to 50%	All
+            # Column Name
+            #   Line_Type
+            #   Tenure
+            #   Household income
+            #   Cost burden
+            #   Facilities
             "T8_est7",
-            # T8_est10	Subtotal	Owner occupied	less than or equal to 30% of HAMFI	greater than 50%	All
+            #   Subtotal
+            #   Owner occupied
+            #   less than or equal to 30% of HAMFI
+            #   greater than 30% but less than or equal to 50%
+            #   All
             "T8_est10",
-            # T8_est20	Subtotal	Owner occupied	greater than 30% but less than or equal to 50% of HAMFI	greater than 30% but less than or equal to 50%	All
+            #   Subtotal
+            #   Owner occupied
+            #   less than or equal to 30% of HAMFI
+            #   greater than 50%
+            #   All
             "T8_est20",
-            # T8_est23	Subtotal	Owner occupied	greater than 30% but less than or equal to 50% of HAMFI	greater than 50%	All
+            #   Subtotal
+            #   Owner occupied
+            #   greater than 30% but less than or equal to 50% of HAMFI
+            #   greater than 30% but less than or equal to 50%
+            #   All
             "T8_est23",
-            # T8_est33	Subtotal	Owner occupied	greater than 50% but less than or equal to 80% of HAMFI	greater than 30% but less than or equal to 50%	All
+            #   Subtotal
+            #   Owner occupied
+            #   greater than 30% but less than or equal to 50% of HAMFI
+            #   greater than 50%
+            #   All
             "T8_est33",
-            # T8_est36	Subtotal	Owner occupied	greater than 50% but less than or equal to 80% of HAMFI	greater than 50%	All
+            #   Subtotal
+            #   Owner occupied
+            #   greater than 50% but less than or equal to 80% of HAMFI
+            #   greater than 30% but less than or equal to 50%
+            #   All
             "T8_est36",
+            #   Subtotal
+            #   Owner occupied
+            #   greater than 50% but less than or equal to 80% of HAMFI
+            #   greater than 50%
+            #   All
         ]
 
         # These rows have the values where HAMFI was not computed, b/c of no or negative income.
         OWNER_OCCUPIED_NOT_COMPUTED_FIELDS = [
-            # Key: Column Name	Line_Type	Tenure	Household income	Cost burden	Facilities
-            # T8_est13	Subtotal	Owner occupied	less than or equal to 30% of HAMFI	not computed (no/negative income)	All
+            # Column Name
+            #   Line_Type
+            #   Tenure
+            #   Household income
+            #   Cost burden
+            #   Facilities
             "T8_est13",
-            # T8_est26	Subtotal	Owner occupied	greater than 30% but less than or equal to 50% of HAMFI	not computed (no/negative income)	All
+            #   Subtotal
+            #   Owner occupied
+            #   less than or equal to 30% of HAMFI
+            #   not computed (no/negative income)
+            #   All
             "T8_est26",
-            # T8_est39	Subtotal	Owner occupied	greater than 50% but less than or equal to 80% of HAMFI	not computed (no/negative income)	All
+            #   Subtotal
+            #   Owner occupied
+            #   greater than 30% but less than or equal to 50% of HAMFI
+            #   not computed (no/negative income)
+            #   All
             "T8_est39",
-            # T8_est52	Subtotal	Owner occupied	greater than 80% but less than or equal to 100% of HAMFI	not computed (no/negative income)	All
+            #   Subtotal
+            #   Owner occupied
+            #   greater than 50% but less than or equal to 80% of HAMFI
+            #   not computed (no/negative income)
+            #   All
             "T8_est52",
-            # T8_est65	Subtotal	Owner occupied	greater than 100% of HAMFI	not computed (no/negative income)	All
+            #   Subtotal
+            #   Owner occupied
+            #   greater than 80% but less than or equal to 100% of HAMFI
+            #   not computed (no/negative income)
+            #   All
             "T8_est65",
+            #   Subtotal
+            #   Owner occupied
+            #   greater than 100% of HAMFI
+            #   not computed (no/negative income)
+            #   All
         ]
 
-        # T8_est2	Subtotal	Owner occupied	All	All	All
         OWNER_OCCUPIED_POPULATION_FIELD = "T8_est2"
+        #   Subtotal
+        #   Owner occupied
+        #   All
+        #   All
+        #   All
 
         # Renter occupied numerator fields
         RENTER_OCCUPIED_NUMERATOR_FIELDS = [
-            # Key: Column Name	Line_Type	Tenure	Household income	Cost burden	Facilities
-            # T8_est73	Subtotal	Renter occupied	less than or equal to 30% of HAMFI	greater than 30% but less than or equal to 50%	All
+            # Column Name
+            #   Line_Type
+            #   Tenure
+            #   Household income
+            #   Cost burden
+            #   Facilities
             "T8_est73",
-            # T8_est76	Subtotal	Renter occupied	less than or equal to 30% of HAMFI	greater than 50%	All
+            #   Subtotal
+            #   Renter occupied
+            #   less than or equal to 30% of HAMFI
+            #   greater than 30% but less than or equal to 50%
+            #   All
             "T8_est76",
-            # T8_est86	Subtotal	Renter occupied	greater than 30% but less than or equal to 50% of HAMFI	greater than 30% but less than or equal to 50%	All
+            #   Subtotal
+            #   Renter occupied
+            #   less than or equal to 30% of HAMFI
+            #   greater than 50%
+            #   All
             "T8_est86",
-            # T8_est89	Subtotal	Renter occupied	greater than 30% but less than or equal to 50% of HAMFI	greater than 50%	All
+            #   Subtotal
+            #   Renter occupied
+            #   greater than 30% but less than or equal to 50% of HAMFI
+            #   greater than 30% but less than or equal to 50%
+            #   All
             "T8_est89",
-            # T8_est99	Subtotal	Renter occupied	greater than 50% but less than or equal to 80% of HAMFI	greater than 30% but less than or equal to 50%	All
+            #   Subtotal
+            #   Renter occupied
+            #   greater than 30% but less than or equal to 50% of HAMFI
+            #   greater than 50%
+            #   All
             "T8_est99",
-            # T8_est102	Subtotal	Renter occupied	greater than 50% but less than or equal to 80% of HAMFI	greater than 50%	All
+            #   Subtotal
+            #   Renter occupied	greater than 50% but less than or equal to 80% of HAMFI
+            #   greater than 30% but less than or equal to 50%
+            #   All
             "T8_est102",
+            #   Subtotal
+            #   Renter occupied
+            #   greater than 50% but less than or equal to 80% of HAMFI
+            #   greater than 50%
+            #   All
         ]
 
         # These rows have the values where HAMFI was not computed, b/c of no or negative income.
         RENTER_OCCUPIED_NOT_COMPUTED_FIELDS = [
-            # Key: Column Name	Line_Type	Tenure	Household income	Cost burden	Facilities
-            # T8_est79	Subtotal	Renter occupied	less than or equal to 30% of HAMFI	not computed (no/negative income)	All
+            # Column Name
+            #   Line_Type
+            #   Tenure
+            #   Household income
+            #   Cost burden
+            #   Facilities
             "T8_est79",
-            # T8_est92	Subtotal	Renter occupied	greater than 30% but less than or equal to 50% of HAMFI	not computed (no/negative income)	All
+            #   Subtotal
+            #   Renter occupied	less than or equal to 30% of HAMFI
+            #   not computed (no/negative income)
+            #   All
             "T8_est92",
-            # T8_est105	Subtotal	Renter occupied	greater than 50% but less than or equal to 80% of HAMFI	not computed (no/negative income)	All
+            #   Subtotal
+            #   Renter occupied	greater than 30% but less than or equal to 50% of HAMFI
+            #   not computed (no/negative income)
+            #   All
             "T8_est105",
-            # T8_est118	Subtotal	Renter occupied	greater than 80% but less than or equal to 100% of HAMFI	not computed (no/negative income)	All
+            #   Subtotal
+            #   Renter occupied
+            #   greater than 50% but less than or equal to 80% of HAMFI
+            #   not computed (no/negative income)
+            #   All
             "T8_est118",
-            # T8_est131	Subtotal	Renter occupied	greater than 100% of HAMFI	not computed (no/negative income)	All
+            #   Subtotal
+            #   Renter occupied	greater than 80% but less than or equal to 100% of HAMFI
+            #   not computed (no/negative income)
+            #   All
             "T8_est131",
+            #   Subtotal
+            #   Renter occupied
+            #   greater than 100% of HAMFI
+            #   not computed (no/negative income)
+            #   All
         ]
 
         # T8_est68	Subtotal	Renter occupied	All	All	All
