@@ -84,7 +84,7 @@ class ScoreETL(ExtractTransformLoad):
         )
 
     def transform(self) -> None:
-        logger.info(f"Transforming Score Data")
+        logger.info("Transforming Score Data")
 
         # Join all the data sources that use census block groups
         census_block_group_dfs = [
@@ -396,8 +396,8 @@ class ScoreETL(ExtractTransformLoad):
                 )
 
     def load(self) -> None:
-        logger.info(f"Saving Score CSV")
+        logger.info("Saving Score CSV")
 
         # write nationwide csv
         self.SCORE_CSV_PATH.mkdir(parents=True, exist_ok=True)
-        self.df.to_csv(self.SCORE_CSV_PATH / f"usa.csv", index=False)
+        self.df.to_csv(self.SCORE_CSV_PATH / "usa.csv", index=False)

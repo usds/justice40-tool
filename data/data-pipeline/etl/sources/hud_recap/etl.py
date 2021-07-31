@@ -22,7 +22,7 @@ class HudRecapETL(ExtractTransformLoad):
         self.df: pd.DataFrame
 
     def extract(self) -> None:
-        logger.info(f"Downloading HUD Recap Data")
+        logger.info("Downloading HUD Recap Data")
         download = requests.get(self.HUD_RECAP_CSV_URL, verify=None)
         file_contents = download.content
         csv_file = open(self.HUD_RECAP_CSV, "wb")
@@ -30,7 +30,7 @@ class HudRecapETL(ExtractTransformLoad):
         csv_file.close()
 
     def transform(self) -> None:
-        logger.info(f"Transforming HUD Recap Data")
+        logger.info("Transforming HUD Recap Data")
 
         # Load comparison index (CalEnviroScreen 4)
         self.df = pd.read_csv(self.HUD_RECAP_CSV, dtype={"GEOID": "string"})
@@ -57,7 +57,7 @@ class HudRecapETL(ExtractTransformLoad):
         self.df.sort_values(by=self.GEOID_TRACT_FIELD_NAME, inplace=True)
 
     def load(self) -> None:
-        logger.info(f"Saving HUD Recap CSV")
+        logger.info("Saving HUD Recap CSV")
         # write nationwide csv
         self.CSV_PATH.mkdir(parents=True, exist_ok=True)
-        self.df.to_csv(self.CSV_PATH / f"usa.csv", index=False)
+        self.df.to_csv(self.CSV_PATH / "usa.csv", index=False)

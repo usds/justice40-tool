@@ -57,7 +57,7 @@ class CensusACSETL(ExtractTransformLoad):
         )
 
     def transform(self) -> None:
-        logger.info(f"Starting Census ACS Transform")
+        logger.info("Starting Census ACS Transform")
 
         # Calculate percent unemployment.
         # TODO: remove small-sample data that should be `None` instead of a high-variance fraction.
@@ -82,7 +82,7 @@ class CensusACSETL(ExtractTransformLoad):
         self.df[self.LINGUISTIC_ISOLATION_FIELD_NAME].describe()
 
     def load(self) -> None:
-        logger.info(f"Saving Census ACS Data")
+        logger.info("Saving Census ACS Data")
 
         # mkdir census
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
@@ -98,6 +98,6 @@ class CensusACSETL(ExtractTransformLoad):
         )
 
     def validate(self) -> None:
-        logger.info(f"Validating Census ACS Data")
+        logger.info("Validating Census ACS Data")
 
         pass

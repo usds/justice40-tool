@@ -108,7 +108,7 @@ def download_census_csvs(data_path: Path) -> None:
             )
 
     ## create national geojson
-    logger.info(f"Generating national geojson file")
+    logger.info("Generating national geojson file")
     usa_df = gpd.GeoDataFrame()
 
     for file_name in geojson_dir_path.rglob("*.json"):
@@ -117,7 +117,7 @@ def download_census_csvs(data_path: Path) -> None:
         usa_df = usa_df.append(state_gdf)
 
     usa_df = usa_df.to_crs("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs")
-    logger.info(f"Writing national geojson file")
+    logger.info("Writing national geojson file")
     usa_df.to_file(geojson_dir_path / "us.json", driver="GeoJSON")
 
     logger.info("Census block groups downloading complete")

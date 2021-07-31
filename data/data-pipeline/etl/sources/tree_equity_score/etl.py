@@ -69,7 +69,7 @@ class TreeEquityScoreETL(ExtractTransformLoad):
         ]
 
     def extract(self) -> None:
-        logger.info(f"Downloading Tree Equity Score Data")
+        logger.info("Downloading Tree Equity Score Data")
         for state in self.states:
             super().extract(
                 f"{self.TES_URL}{state}.zip.zip",
@@ -77,14 +77,14 @@ class TreeEquityScoreETL(ExtractTransformLoad):
             )
 
     def transform(self) -> None:
-        logger.info(f"Transforming Tree Equity Score Data")
+        logger.info("Transforming Tree Equity Score Data")
         tes_state_dfs = []
         for state in self.states:
             tes_state_dfs.append(gpd.read_file(f"{self.TMP_PATH}/{state}/{state}.shp"))
         self.df = gpd.GeoDataFrame(pd.concat(tes_state_dfs), crs=tes_state_dfs[0].crs)
 
     def load(self) -> None:
-        logger.info(f"Saving Tree Equity Score GeoJSON")
+        logger.info("Saving Tree Equity Score GeoJSON")
         # write nationwide csv
         self.CSV_PATH.mkdir(parents=True, exist_ok=True)
         self.df.to_file(self.CSV_PATH / "tes_conus.geojson", driver="GeoJSON")

@@ -30,7 +30,7 @@ def census_cleanup():
     data_path = settings.APP_ROOT / "data"
 
     # census directories
-    logger.info(f"Initializing all census data")
+    logger.info("Initializing all census data")
     census_reset(data_path)
 
     logger.info("Cleaned up all census data files")

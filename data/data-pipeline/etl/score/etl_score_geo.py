@@ -34,7 +34,7 @@ class GeoScoreETL(ExtractTransformLoad):
         self.geojson_score_usa_low: gpd.GeoDataFrame
 
     def extract(self) -> None:
-        logger.info(f"Reading US GeoJSON (~6 minutes)")
+        logger.info("Reading US GeoJSON (~6 minutes)")
         self.geojson_usa_df = gpd.read_file(
             self.CENSUS_USA_GEOJSON,
             dtype={"GEOID10": "string"},
@@ -43,7 +43,7 @@ class GeoScoreETL(ExtractTransformLoad):
         )
         self.geojson_usa_df.head()
 
-        logger.info(f"Reading score CSV")
+        logger.info("Reading score CSV")
         self.score_usa_df = pd.read_csv(
             self.TILE_SCORE_CSV,
             dtype={"GEOID10": "string"},
@@ -51,11 +51,11 @@ class GeoScoreETL(ExtractTransformLoad):
         )
 
     def transform(self) -> None:
-        logger.info(f"Pruning Census GeoJSON")
+        logger.info("Pruning Census GeoJSON")
         fields = ["GEOID10", "geometry"]
         self.geojson_usa_df = self.geojson_usa_df[fields]
 
-        logger.info(f"Merging and compressing score CSV with USA GeoJSON")
+        logger.info("Merging and compressing score CSV with USA GeoJSON")
         self.geojson_score_usa_high = self.score_usa_df.merge(
             self.geojson_usa_df, on="GEOID10", how="left"
         )
@@ -73,7 +73,7 @@ class GeoScoreETL(ExtractTransformLoad):
             inplace=True,
         )
 
-        logger.info(f"Aggregating into tracts (~5 minutes)")
+        logger.info("Aggregating into tracts (~5 minutes)")
         usa_tracts = self._aggregate_to_tracts(usa_simplified)
 
         usa_tracts = gpd.GeoDataFrame(
@@ -82,12 +82,12 @@ class GeoScoreETL(ExtractTransformLoad):
             crs="EPSG:4326",
         )
 
-        logger.info(f"Creating buckets from tracts")
+        logger.info("Creating buckets from tracts")
         usa_bucketed = self._create_buckets_from_tracts(
             usa_tracts, self.NUMBER_OF_BUCKETS
         )
 
-        logger.info(f"Aggregating buckets")
+        logger.info("Aggregating buckets")
         usa_aggregated = self._aggregate_buckets(usa_bucketed, agg_func="mean")
 
         compressed = self._breakup_multipolygons(usa_aggregated, self.NUMBER_OF_BUCKETS)
@@ -149,10 +149,10 @@ class GeoScoreETL(ExtractTransformLoad):
         return compressed
 
     def load(self) -> None:
-        logger.info(f"Writing usa-high (~9 minutes)")
+        logger.info("Writing usa-high (~9 minutes)")
         self.geojson_score_usa_high.to_file(self.SCORE_HIGH_GEOJSON, driver="GeoJSON")
-        logger.info(f"Completed writing usa-high")
+        logger.info("Completed writing usa-high")
 
-        logger.info(f"Writing usa-low (~9 minutes)")
+        logger.info("Writing usa-low (~9 minutes)")
         self.geojson_score_usa_low.to_file(self.SCORE_LOW_GEOJSON, driver="GeoJSON")
-        logger.info(f"Completed writing usa-low")
+        logger.info("Completed writing usa-low")

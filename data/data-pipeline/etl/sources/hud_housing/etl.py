@@ -30,14 +30,14 @@ class HudHousingETL(ExtractTransformLoad):
         self.df: pd.DataFrame
 
     def extract(self) -> None:
-        logger.info(f"Extracting HUD Housing Data")
+        logger.info("Extracting HUD Housing Data")
         super().extract(
             self.HOUSING_FTP_URL,
             self.HOUSING_ZIP_FILE_DIR,
         )
 
     def transform(self) -> None:
-        logger.info(f"Transforming HUD Housing Data")
+        logger.info("Transforming HUD Housing Data")
 
         # New file name:
         tmp_csv_file_path = (
@@ -168,7 +168,7 @@ class HudHousingETL(ExtractTransformLoad):
         )
 
     def load(self) -> None:
-        logger.info(f"Saving HUD Housing Data")
+        logger.info("Saving HUD Housing Data")
 
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
 

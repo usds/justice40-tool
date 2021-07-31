@@ -16,14 +16,14 @@ class EJScreenETL(ExtractTransformLoad):
         self.df: pd.DataFrame
 
     def extract(self) -> None:
-        logger.info(f"Downloading EJScreen Data")
+        logger.info("Downloading EJScreen Data")
         super().extract(
             self.EJSCREEN_FTP_URL,
             self.TMP_PATH,
         )
 
     def transform(self) -> None:
-        logger.info(f"Transforming EJScreen Data")
+        logger.info("Transforming EJScreen Data")
         self.df = pd.read_csv(
             self.EJSCREEN_CSV,
             dtype={"ID": "string"},
@@ -33,7 +33,7 @@ class EJScreenETL(ExtractTransformLoad):
         )
 
     def load(self) -> None:
-        logger.info(f"Saving EJScreen CSV")
+        logger.info("Saving EJScreen CSV")
         # write nationwide csv
         self.CSV_PATH.mkdir(parents=True, exist_ok=True)
-        self.df.to_csv(self.CSV_PATH / f"usa.csv", index=False)
+        self.df.to_csv(self.CSV_PATH / "usa.csv", index=False)

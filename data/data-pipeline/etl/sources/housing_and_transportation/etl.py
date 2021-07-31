@@ -43,7 +43,7 @@ class HousingTransportationETL(ExtractTransformLoad):
         self.df = pd.concat(dfs)
 
     def transform(self) -> None:
-        logger.info(f"Transforming Housing and Transportation Data")
+        logger.info("Transforming Housing and Transportation Data")
 
         # Rename and reformat block group ID
         self.df.rename(columns={"blkgrp": self.GEOID_FIELD_NAME}, inplace=True)
@@ -52,7 +52,7 @@ class HousingTransportationETL(ExtractTransformLoad):
         )
 
     def load(self) -> None:
-        logger.info(f"Saving Housing and Transportation Data")
+        logger.info("Saving Housing and Transportation Data")
 
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
         self.df.to_csv(path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False)
