@@ -4,7 +4,6 @@ import pandas as pd
 
 from etl.base import ExtractTransformLoad
 from utils import get_module_logger
-from etl.sources.census.etl_utils import get_state_fips_codes
 
 logger = get_module_logger(__name__)
 
@@ -301,7 +300,7 @@ class ScoreETL(ExtractTransformLoad):
             ) / (max_value - min_value)
 
             # Graph distributions and correlations.
-            min_max_fields = [
+            min_max_fields = [  # noqa: F841
                 f"{data_set.renamed_field}{self.MIN_MAX_FIELD_SUFFIX}"
                 for data_set in data_sets
                 if data_set.renamed_field != self.GEOID_FIELD_NAME

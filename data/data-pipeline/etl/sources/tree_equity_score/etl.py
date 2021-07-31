@@ -3,7 +3,6 @@ import geopandas as gpd
 
 from etl.base import ExtractTransformLoad
 from utils import get_module_logger
-import os
 
 logger = get_module_logger(__name__)
 

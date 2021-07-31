@@ -1,5 +1,4 @@
 from pathlib import Path
-import pathlib
 
 from config import settings
 from utils import unzip_file_from_url, remove_all_from_dir
