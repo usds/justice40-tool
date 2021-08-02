@@ -1,7 +1,6 @@
 import click
 
 from config import settings
-from etl.sources.census.etl_utils import reset_data_directories as census_reset
 from utils import (
     get_module_logger,
     data_folder_cleanup,
@@ -9,6 +8,7 @@ from utils import (
     temp_folder_cleanup,
 )
 from etl.sources.census.etl import download_census_csvs
+from etl.sources.census.etl_utils import reset_data_directories as census_reset
 from etl.runner import etl_runner, score_generate, score_geo
 
 logger = get_module_logger(__name__)

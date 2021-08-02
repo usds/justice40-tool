@@ -2,9 +2,10 @@ from pathlib import Path
 import os
 import logging
 import shutil
-import requests
 import zipfile
 import urllib3
+
+import requests
 
 from config import settings
 

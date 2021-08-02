@@ -1,11 +1,12 @@
-import csv
 import os
+import csv
 import json
 from pathlib import Path
+
 import geopandas as gpd
 
-from .etl_utils import get_state_fips_codes
 from utils import unzip_file_from_url, get_module_logger
+from .etl_utils import get_state_fips_codes
 
 logger = get_module_logger(__name__)
 
