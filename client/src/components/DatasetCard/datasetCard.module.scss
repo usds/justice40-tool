@@ -1,0 +1,40 @@
+.datasetCard {
+  background-color: white;
+  padding: 2.7rem 3rem 3rem 3rem;
+  margin-bottom: 3rem;
+  max-width: 34rem;
+}
+
+.datasetCardIndicator {
+  margin-top: 0;
+  font-size: x-large;
+  margin-bottom: 0.8rem;
+}
+
+.datasetCardWhatIsIt {
+  margin-bottom: 0;
+  font-size: large;
+  font-weight: bolder;
+}
+
+.datasetCardList {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 1.6rem;
+}
+
+.datasetCardListItem {
+  margin-bottom: 0.4rem;
+  font-size: large;
+}
+
+.datasetCardDescription {
+  font-size: large;
+  padding-top: 0.3rem;
+  line-height: 1.5rem;
+}
+
+.datasetCardLabels {
+  font-size: large;
+  font-weight: bolder;
+}

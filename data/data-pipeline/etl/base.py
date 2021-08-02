@@ -1,11 +1,10 @@
 from pathlib import Path
-import pathlib
 
 from config import settings
 from utils import unzip_file_from_url, remove_all_from_dir
 
 
-class ExtractTransformLoad(object):
+class ExtractTransformLoad:
     """
     A class used to instantiate an ETL object to retrieve and process data from
     datasets.
@@ -34,9 +33,7 @@ class ExtractTransformLoad(object):
 
         pass
 
-    def extract(
-        self, source_url: str = None, extract_path: Path = None
-    ) -> None:
+    def extract(self, source_url: str = None, extract_path: Path = None) -> None:
         """Extract the data from
         a remote source. By default it provides code to get the file from a source url,
         unzips it and stores it on an extract_path."""

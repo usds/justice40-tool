@@ -1,0 +1,225 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of the DatasetContainer checks if various text fields are visible 1`] = `
+<DocumentFragment>
+  <div
+    class="undefined desktop:grid-col"
+  >
+    <div
+      class="undefined desktop:grid-col"
+    >
+      <div
+        class="grid-container-desktop-lg"
+      >
+        <div>
+          Limited data sources — Datasets may be added, updated, or removed.
+        </div>
+      </div>
+    </div>
+    <div
+      class="grid-container-desktop-lg"
+    >
+      <h1>
+        Datasets used in cumulative score
+      </h1>
+      <p>
+        The datasets come from a variety of sources and were selected after considering relevance, availability, recency and quality.
+      </p>
+      <div>
+        <div>
+          <h3>
+            Poverty
+          </h3>
+          <div>
+            What is it?
+          </div>
+          <div>
+            Percent of a block group's population in households where the household 
+    income is less than or equal to twice the federal "poverty level"
+          </div>
+          <ul>
+            <li>
+              <span>
+                Data resolution: 
+              </span>
+              Census block group
+            </li>
+            <li>
+              <span>
+                Data source: 
+              </span>
+              <a
+                href="https://www.census.gov/"
+                rel="noreferrer"
+                target="_blank"
+              >
+                U.S. Census Bureau
+              </a>
+            </li>
+            <li>
+              <span>
+                Data date range: 
+              </span>
+              5-year estimates, 2015-2019
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>
+            Education (less than high school)
+          </h3>
+          <div>
+            What is it?
+          </div>
+          <div>
+            Percent of people age 25 or older in a block group whose education is short of a high school diploma
+          </div>
+          <ul>
+            <li>
+              <span>
+                Data resolution: 
+              </span>
+              Census block group
+            </li>
+            <li>
+              <span>
+                Data source: 
+              </span>
+              <a
+                href="https://www.census.gov/"
+                rel="noreferrer"
+                target="_blank"
+              >
+                U.S. Census Bureau
+              </a>
+            </li>
+            <li>
+              <span>
+                Data date range: 
+              </span>
+              5-year estimates, 2015-2019
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>
+            Linguistic isolation
+          </h3>
+          <div>
+            What is it?
+          </div>
+          <div>
+            Percent of people in a block group living in linguistically 
+    isolated households — a linguistically isolated household is a household in 
+    which all members aged 14 years and over speak a non-English language and also speak 
+    English less than "very well" (i.e., have difficulty with English)
+          </div>
+          <ul>
+            <li>
+              <span>
+                Data resolution: 
+              </span>
+              Census block group
+            </li>
+            <li>
+              <span>
+                Data source: 
+              </span>
+              <a
+                href="https://www.census.gov/"
+                rel="noreferrer"
+                target="_blank"
+              >
+                U.S. Census Bureau
+              </a>
+            </li>
+            <li>
+              <span>
+                Data date range: 
+              </span>
+              5-year estimates, 2015-2019
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>
+            Unemployment rate
+          </h3>
+          <div>
+            What is it?
+          </div>
+          <div>
+            Unemployment rate (people who are unemployed divided by the total population of 
+      people in the labor force over 16 years old)
+          </div>
+          <ul>
+            <li>
+              <span>
+                Data resolution: 
+              </span>
+              Census block group
+            </li>
+            <li>
+              <span>
+                Data source: 
+              </span>
+              <a
+                href="https://www.census.gov/"
+                rel="noreferrer"
+                target="_blank"
+              >
+                U.S. Census Bureau
+              </a>
+            </li>
+            <li>
+              <span>
+                Data date range: 
+              </span>
+              5-year estimates, 2015-2019
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>
+            Housing burden
+          </h3>
+          <div>
+            What is it?
+          </div>
+          <div>
+            Percent of households in a census tract that are both low income (making less
+       than 80% of the HUD Area Median Family Income) and severely burdened by housing costs 
+       (paying greater than 30% of their income to housing costs)
+          </div>
+          <ul>
+            <li>
+              <span>
+                Data resolution: 
+              </span>
+              Census block group
+            </li>
+            <li>
+              <span>
+                Data source: 
+              </span>
+              <a
+                href="https://www.census.gov/"
+                rel="noreferrer"
+                target="_blank"
+              >
+                U.S. Census Bureau
+              </a>
+            </li>
+            <li>
+              <span>
+                Data date range: 
+              </span>
+              5-year estimates, 2015-2019
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

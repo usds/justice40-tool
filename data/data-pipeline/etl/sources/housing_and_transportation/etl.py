@@ -35,9 +35,7 @@ class HousingTransportationETL(ExtractTransformLoad):
             )
 
             # New file name:
-            tmp_csv_file_path = (
-                zip_file_dir / f"htaindex_data_blkgrps_{fips}.csv"
-            )
+            tmp_csv_file_path = zip_file_dir / f"htaindex_data_blkgrps_{fips}.csv"
             tmp_df = pd.read_csv(filepath_or_buffer=tmp_csv_file_path)
 
             dfs.append(tmp_df)
@@ -45,16 +43,16 @@ class HousingTransportationETL(ExtractTransformLoad):
         self.df = pd.concat(dfs)
 
     def transform(self) -> None:
-        logger.info(f"Transforming Housing and Transportation Data")
+        logger.info("Transforming Housing and Transportation Data")
 
         # Rename and reformat block group ID
         self.df.rename(columns={"blkgrp": self.GEOID_FIELD_NAME}, inplace=True)
-        self.df[self.GEOID_FIELD_NAME] = self.df[
-            self.GEOID_FIELD_NAME
-        ].str.replace('"', "")
+        self.df[self.GEOID_FIELD_NAME] = self.df[self.GEOID_FIELD_NAME].str.replace(
+            '"', ""
+        )
 
     def load(self) -> None:
-        logger.info(f"Saving Housing and Transportation Data")
+        logger.info("Saving Housing and Transportation Data")
 
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
         self.df.to_csv(path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False)

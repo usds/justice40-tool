@@ -67,9 +67,7 @@ def etl_runner(dataset_to_run: str = None) -> None:
 
     # Run the ETLs for the dataset_list
     for dataset in dataset_list:
-        etl_module = importlib.import_module(
-            f"etl.sources.{dataset['module_dir']}.etl"
-        )
+        etl_module = importlib.import_module(f"etl.sources.{dataset['module_dir']}.etl")
         etl_class = getattr(etl_module, dataset["class_name"])
         etl_instance = etl_class()
 

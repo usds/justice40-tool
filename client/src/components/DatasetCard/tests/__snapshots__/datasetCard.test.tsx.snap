@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of the DatasetCard checks if component renders 1`] = `
+<DocumentFragment>
+  <div>
+    <h3>
+      Poverty
+    </h3>
+    <div>
+      What is it?
+    </div>
+    <div>
+      Percent of a block group's population in households where the household 
+    income is less than or equal to twice the federal "poverty level"
+    </div>
+    <ul>
+      <li>
+        <span>
+          Data resolution: 
+        </span>
+        Census block group
+      </li>
+      <li>
+        <span>
+          Data source: 
+        </span>
+        <a
+          href="https://www.census.gov/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          U.S. Census Bureau
+        </a>
+      </li>
+      <li>
+        <span>
+          Data date range: 
+        </span>
+        5-year estimates, 2015-2019
+      </li>
+    </ul>
+  </div>
+</DocumentFragment>
+`;
