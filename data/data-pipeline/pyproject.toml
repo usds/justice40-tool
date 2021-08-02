@@ -33,3 +33,18 @@ safety = "^1.10.3"
 [build-system]
 build-backend = "poetry.core.masonry.api"
 requires = ["poetry-core>=1.0.0"]
+
+[tool.pylint]
+
+[tool.pylint."MESSAGE CONTROL"]
+disable = [
+  "C0114",  # Disables module docstrings
+  "R0201",  # Disables method could have been a function
+  "R0903",  # Disables too few public methods
+  "C0103",  # Disables name case styling
+  "W0511",  # Disables FIXME warning
+  "W1203"   # Disables f-string interpolation for logging warning
+]
+
+[tool.pylint.FORMAT]
+max-line-length=150
