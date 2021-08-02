@@ -56,7 +56,6 @@ const CEJSTPage = ({location}: IMapPageProps) => {
       </section>
 
       <section>
-        <h2>Explore the Tool</h2>
         <MapWrapper location={location} />
         <HowYouCanHelp/>
       </section>

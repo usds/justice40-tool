@@ -12,12 +12,7 @@ interface ILayoutProps {
 }
 
 const Layout = ({children, location}: ILayoutProps) => {
-  // const isExploreToolPage = location.pathname.match(/cejst\/?/);
   const isMethodologyPage = location.pathname.match(/methodology\/?/);
-  // const isWidthFullPage = isExploreToolPage || isMethodologyPage;
-  // const conditionalAside = isWidthFullPage ? <></> : <J40Aside/>;
-  // const gridCssClass = isWidthFullPage ? ' desktop:grid-col-12' :
-  //   'desktop:grid-col-9';
 
   // @ts-ignore
   return (
