@@ -8,11 +8,11 @@ interface IMapWrapperProps {
 
 const MapWrapper = ({location}: IMapWrapperProps) => {
   return (
-    <section>
+    <>
       <h2>Explore the Tool</h2>
       <J40Map location={location}/>
       <MapLegend />
-    </section>
+    </>
   );
 };
 

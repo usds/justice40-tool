@@ -11,7 +11,11 @@ import {defineMessages} from 'react-intl';
 // @ts-ignore
 import siteLogo from '../../src/images/icon.png';
 
-const J40Header = () => {
+interface IJ40HeaderProps {
+  location: Location
+}
+const J40Header = ({location}:IJ40HeaderProps) => {
+  const isMethodologyPage = location.pathname.match(/methodology\/?/);
   const intl = useIntl();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const messages = defineMessages({
@@ -128,6 +132,16 @@ const J40Header = () => {
         </span>
         <br/>
       </Alert>
+      {!isMethodologyPage && <Alert
+        className={'j40-sitealert'}
+        type="warning">
+        <b>Limited data sources — </b>
+        This tool currently includes 16 datasets. Over time, datasets could be
+        added, updated, or removed. The datasets come from a variety of sources
+        based on availability, quality, and relevance to environmental, energy,
+        and climate issues. Each dataset has limitations, such as how recently
+        the data was updated.
+      </Alert>}
     </>
   );
 };

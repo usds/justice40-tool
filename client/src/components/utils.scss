@@ -5,6 +5,10 @@
  Todo Design System: replace colors with tokens. Once these styles become more general the name can be less specific
 */
 
+//Styles associated with the side panel
 $sidePanelBorderColor: #f2f2f2;
 $sidePanelBorder: 2px solid $sidePanelBorderColor;
 $mobileBreakpoint: 400px;
+
+//Styles with Dataset container
+$datasetContainerColor: #eef6fb;
