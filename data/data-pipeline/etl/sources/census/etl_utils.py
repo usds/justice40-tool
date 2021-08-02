@@ -1,7 +1,8 @@
-from pathlib import Path
-import csv
-import pandas as pd
 import os
+import csv
+
+from pathlib import Path
+import pandas as pd
 from config import settings
 
 from utils import (
@@ -35,7 +36,7 @@ def get_state_fips_codes(data_path: Path) -> list:
 
     # check if file exists
     if not os.path.isfile(fips_csv_path):
-        logger.info(f"Downloading fips from S3 repository")
+        logger.info("Downloading fips from S3 repository")
         unzip_file_from_url(
             settings.AWS_JUSTICE40_DATA_URL + "/Census/fips_states_2010.zip",
             data_path / "tmp",

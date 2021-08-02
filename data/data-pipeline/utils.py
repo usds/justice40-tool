@@ -2,9 +2,10 @@ from pathlib import Path
 import os
 import logging
 import shutil
-import requests
 import zipfile
 import urllib3
+
+import requests
 
 from config import settings
 
@@ -133,12 +134,13 @@ def unzip_file_from_url(
     # cleanup temporary file
     os.remove(zip_file_path)
 
+
 def data_folder_cleanup() -> None:
     """Remove all files and directories from the local data/dataset path"""
 
     data_path = settings.APP_ROOT / "data"
 
-    logger.info(f"Initializing all dataset directoriees")
+    logger.info("Initializing all dataset directoriees")
     remove_all_from_dir(data_path / "dataset")
 
 
@@ -147,7 +149,7 @@ def score_folder_cleanup() -> None:
 
     data_path = settings.APP_ROOT / "data"
 
-    logger.info(f"Initializing all score data")
+    logger.info("Initializing all score data")
     remove_all_from_dir(data_path / "score" / "csv")
     remove_all_from_dir(data_path / "score" / "geojson")
 
@@ -157,8 +159,9 @@ def temp_folder_cleanup() -> None:
 
     data_path = settings.APP_ROOT / "data"
 
-    logger.info(f"Initializing all temp directoriees")
+    logger.info("Initializing all temp directoriees")
     remove_all_from_dir(data_path / "tmp")
+
 
 def get_excel_column_name(index: int) -> str:
     """Map a numeric index to the appropriate column in Excel. E.g., column #95 is "CR".
