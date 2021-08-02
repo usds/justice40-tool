@@ -31,60 +31,67 @@ exports[`J40Footer renders correctly 1`] = `
                   class="usa-footer__primary-link"
                 >
                   <div
-                    class="usa-footer__logo grid-row grid-gap-2 j40-footer-logo"
-                    data-testid="footerLogo"
+                    class="j40-centerfootercolumn"
                   >
                     <div
-                      class="grid-col-auto"
+                      class="j40-centerfootercolumn"
                     >
-                      <img
-                        alt="Whitehouse logo"
-                        class="usa-footer__logo-img"
-                        src="test-file-stub"
-                      />
+                      <div
+                        class="usa-footer__logo grid-row grid-gap-2 j40-footer-logo"
+                        data-testid="footerLogo"
+                      >
+                        <div
+                          class="grid-col-auto"
+                        >
+                          <img
+                            alt="Whitehouse logo"
+                            class="usa-footer__logo-img"
+                            src="test-file-stub"
+                          />
+                        </div>
+                        <div
+                          class="grid-col-auto"
+                        >
+                          <p
+                            class="j40-footer-logo-heading"
+                          >
+                            Council on Environmental Quality
+                          </p>
+                        </div>
+                      </div>
                     </div>
                     <div
-                      class="grid-col-auto"
+                      class="j40-centerfootercolumn"
                     >
-                      <p
-                        class="j40-footer-logo-heading"
+                      <address
+                        class="usa-footer__address j40-footer-address"
                       >
-                        Council on Environmental Quality
-                      </p>
+                        <div
+                          class="usa-footer__contact-info grid-row grid-gap"
+                        >
+                          <div
+                            class=""
+                          >
+                            730 Jackson Pl NW
+                          </div>
+                          <div
+                            class=""
+                          >
+                            Washington, D.C. 20506
+                          </div>
+                          <div
+                            class=""
+                          >
+                            (202) 395-5750
+                          </div>
+                        </div>
+                      </address>
                     </div>
                   </div>
                 </h4>
                 <ul
                   class="usa-list usa-list--unstyled"
-                >
-                  <li
-                    class="usa-footer__secondary-link"
-                  >
-                    <address
-                      class="usa-footer__address"
-                    >
-                      <div
-                        class="usa-footer__contact-info grid-row grid-gap"
-                      >
-                        <div
-                          class=""
-                        >
-                          730 Jackson Pl NW
-                        </div>
-                        <div
-                          class=""
-                        >
-                          Washington, D.C. 20506
-                        </div>
-                        <div
-                          class=""
-                        >
-                          (202) 395-5750
-                        </div>
-                      </div>
-                    </address>
-                  </li>
-                </ul>
+                />
               </section>
             </div>
             <div
@@ -116,7 +123,9 @@ exports[`J40Footer renders correctly 1`] = `
                     class="usa-footer__secondary-link"
                   >
                     <a
-                      href="#"
+                      href="https://www.whitehouse.gov/ceq/foia"
+                      rel="noreferrer"
+                      target="_blank"
                     >
                       Freedom of Information Act (FOIA)
                     </a>
@@ -125,7 +134,9 @@ exports[`J40Footer renders correctly 1`] = `
                     class="usa-footer__secondary-link"
                   >
                     <a
-                      href="#"
+                      href="https://www.whitehouse.gov/privacy/"
+                      rel="noreferrer"
+                      target="_blank"
                     >
                       Privacy Policy
                     </a>
@@ -151,7 +162,7 @@ exports[`J40Footer renders correctly 1`] = `
                     class="usa-footer__secondary-link"
                   >
                     <a
-                      href="#"
+                      href="https://www.usa.gov/"
                     >
                       Find a contact at USA.gov
                     </a>

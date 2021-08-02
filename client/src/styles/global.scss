@@ -164,15 +164,18 @@ $primary-color: #112f4e;
 }
 
 .j40-footer {
-  .usa-footer__contact-info {
-    justify-content: center;
-    line-height: 1.5;
+  .j40-footer-logo {
     text-align: center;
+    display: inline-block;
   }
 
-  .j40-footer-logo {
-    display: inline-block;
-    text-align: center;
+  .j40-footer-address {
+    .usa-footer__contact-info, .j40-centerfootercolumn {
+      line-height: 1.5;
+      text-align: center;
+      display: inline-block;
+      font-weight: normal;
+    }
   }
 }
 
