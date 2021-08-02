@@ -9,6 +9,7 @@ logger = get_module_logger(__name__)
 
 class HudRecapETL(ExtractTransformLoad):
     def __init__(self):
+        # pylint: disable=line-too-long
         self.HUD_RECAP_CSV_URL = "https://opendata.arcgis.com/api/v3/datasets/56de4edea8264fe5a344da9811ef5d6e_0/downloads/data?format=csv&spatialRefId=4326"  # noqa: E501
         self.HUD_RECAP_CSV = (
             self.TMP_PATH

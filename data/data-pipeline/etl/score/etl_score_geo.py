@@ -1,6 +1,7 @@
+import math
+
 import pandas as pd
 import geopandas as gpd
-import math
 
 from etl.base import ExtractTransformLoad
 from utils import get_module_logger

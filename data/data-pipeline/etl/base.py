@@ -4,7 +4,7 @@ from config import settings
 from utils import unzip_file_from_url, remove_all_from_dir
 
 
-class ExtractTransformLoad(object):
+class ExtractTransformLoad:
     """
     A class used to instantiate an ETL object to retrieve and process data from
     datasets.

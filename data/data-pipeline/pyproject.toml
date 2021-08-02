@@ -43,8 +43,30 @@ disable = [
   "R0903",  # Disables too few public methods
   "C0103",  # Disables name case styling
   "W0511",  # Disables FIXME warning
-  "W1203"   # Disables f-string interpolation for logging warning
+  "W1203",  # Disables f-string interpolation for logging warning
+  # Errors temporarily ignored for further discussion
+  "W0107",  # Disables unnecessary pass
+  "W0221",  # Disables arguments differ
+  "R0902",  # Disables too many instance attributes
+  "R0914",  # Disables too many local variables
+  "W0621",  # Disables redefined outer name
+  "C0302",  # Disables too many lines in module
+  "R1732",  # Disables consider using "with"
+  "R1720",  # Disables unnecessary "else" after "raise"
+  "C0206",  # Disables consider iteratig with ".items()"
+  "C0200",  # Disables consider using "enumerate" instead of "range" + "len"
+  "W0612",  # Disables unused variable
+  "W0613",  # Disables unused argument
+  "C0116",  # Disables missing function or method docstring
+  "C0115",  # Disables missing class docstring
 ]
 
 [tool.pylint.FORMAT]
 max-line-length=150
+
+[tool.pylint.SIMILARITIES]
+# Configures how pylint detects repetitive code
+min-similarity-lines = 4
+ignore-comments = "yes"
+ignore-docstrings = "yes"
+ignore-imports = "yes"
