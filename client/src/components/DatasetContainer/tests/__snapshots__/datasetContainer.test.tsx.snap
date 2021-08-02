@@ -221,6 +221,5 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       </div>
     </div>
   </div>
-  ,
 </DocumentFragment>
 `;

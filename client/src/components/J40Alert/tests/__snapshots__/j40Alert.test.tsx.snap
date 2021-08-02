@@ -5,6 +5,5 @@ exports[`rendering of the J40Alert checks if various text fields are visible 1`]
   <div>
     Limited data sources — Datasets may be added, updated, or removed.
   </div>
-  ,
 </DocumentFragment>
 `;
