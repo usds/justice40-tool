@@ -3,6 +3,7 @@ declare namespace HowYouCanHelpModuleScssNamespace {
     howYouCanHelpContainer: string;
     howYouCanHelpBullet: string,
     listWrapper: string;
+    howYouCanHelpText: string;
   }
 }
 

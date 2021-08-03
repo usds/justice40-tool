@@ -1,10 +1,18 @@
 @import "../components/utils.scss";
 
 .howYouCanHelpContainer {
-  margin: 2rem 2rem;
+  margin: 2rem 0;
 
   .listWrapper {
     display: flex;
+  }
+
+  ul {
+    padding-left: 0;
+  }
+
+  .howYouCanHelpText {
+    padding-left: 1rem;
   }
 }
 

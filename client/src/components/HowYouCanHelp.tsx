@@ -9,7 +9,7 @@ const HowYouCanHelp = () => {
         <li>
           <div className={styles.listWrapper}>
             <div className={styles.howYouCanHelpBullet}></div>
-            <div>If you have helpful information, we’d love to
+            <div className={styles.howYouCanHelpText}>If you have helpful information, we’d love to{` `}
               <a href={'mailto:vimusds@gmail.com'}>get an email from you</a>
               .</div>
           </div>
@@ -17,13 +17,17 @@ const HowYouCanHelp = () => {
         <li>
           <div className={styles.listWrapper}>
             <div className={styles.howYouCanHelpBullet}></div>
-            <div>View our data and methodology and send us feedback.</div>
+            <div className={styles.howYouCanHelpText}>View our{` `}
+              <a href={'methodology'}>data and methodology</a>{` `}
+              and send us feedback.</div>
           </div>
         </li>
         <li>
           <div className={styles.listWrapper}>
             <div className={styles.howYouCanHelpBullet}></div>
-            <div>Find your community and share your feedback.</div>
+            <div className={styles.howYouCanHelpText}>Find your community and{` `}
+              <a href={'contact'}>share your feedback</a>
+              .</div>
           </div>
         </li>
 

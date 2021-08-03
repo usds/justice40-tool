@@ -4,11 +4,10 @@ import {defineMessages} from 'react-intl';
 import * as styles from './datasetCard.module.scss';
 
 interface IDatasetCardProps {
-  key: number,
   datasetCardProps: { [key:string]: string }
 }
 
-const DatasetCard = ({key, datasetCardProps}:IDatasetCardProps) => {
+const DatasetCard = ({datasetCardProps}:IDatasetCardProps) => {
   const intl = useIntl();
   const messages = defineMessages({
     whatIsIt: {
@@ -32,11 +31,6 @@ const DatasetCard = ({key, datasetCardProps}:IDatasetCardProps) => {
       description: 'label associated with explaining the card',
     },
   });
-
-  // Todo VS: figure out how to ignore unused variables such as keys
-  // tried tsconfig, no-unused-vars, @typescript-eslint/no-unused-vars
-  // Also check associated unit test warning.
-  console.log(key);
 
   return (
     <div className={styles.datasetCard}>
