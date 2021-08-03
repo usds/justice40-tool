@@ -7,7 +7,12 @@ declare namespace HowYouCanHelpModuleScssNamespace {
     prioritized: string,
     threshold: string,
     nonPrioritized: string,
-    legendItem: string
+    legendItem: string,
+    infoIcon: string,
+    legendTooltip: string,
+    legendTooltipText: string,
+    legendTooltipTheme: string,
+    infoIconWrapper: string,
   }
 }
 

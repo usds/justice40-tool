@@ -1,3 +1,30 @@
+@import "../components/utils.scss";
+
 .howYouCanHelpContainer {
-  margin: 29px 24px 49px 42px;
+  margin: 2rem 2rem;
+
+  .listWrapper {
+    display: flex;
+  }
+}
+
+.howYouCanHelpContainer > * {
+  color: $headingFontColor;
+}
+
+.howYouCanHelpContainer h2 {
+  font-weight: normal;
+}
+
+.howYouCanHelpContainer li {
+  list-style: none;
+  padding-bottom: 1rem;
+}
+
+.howYouCanHelpBullet {
+  width: 0.25rem;
+  height: 0.25rem;
+  border-radius: 50%;
+  background-color: $headingFontColor;
+  margin: 0.5rem;
 }

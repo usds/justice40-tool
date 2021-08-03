@@ -5,12 +5,28 @@ const HowYouCanHelp = () => {
   return (
     <div className={styles.howYouCanHelpContainer}>
       <h2>How You Can Help Improve the Tool</h2>
-      <ul className={'usa-list'}>
-        <li>If you have information that could help, we’d love to hear from you.</li>
-        <li>View our full set of data sources and methodology
-            where you can add or download sources and check statuses on our data roadmap.</li>
-        <li>Check out our timeline and send feedback or attend relevant events.</li>
-        <li>Contact us and share the stories of your community.</li>
+      <ul>
+        <li>
+          <div className={styles.listWrapper}>
+            <div className={styles.howYouCanHelpBullet}></div>
+            <div>If you have helpful information, we’d love to
+              <a href={'mailto:vimusds@gmail.com'}>get an email from you</a>
+              .</div>
+          </div>
+        </li>
+        <li>
+          <div className={styles.listWrapper}>
+            <div className={styles.howYouCanHelpBullet}></div>
+            <div>View our data and methodology and send us feedback.</div>
+          </div>
+        </li>
+        <li>
+          <div className={styles.listWrapper}>
+            <div className={styles.howYouCanHelpBullet}></div>
+            <div>Find your community and share your feedback.</div>
+          </div>
+        </li>
+
       </ul>
     </div>
   );

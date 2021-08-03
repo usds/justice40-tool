@@ -16,6 +16,7 @@ interface IJ40HeaderProps {
 }
 const J40Header = ({location}:IJ40HeaderProps) => {
   const isMethodologyPage = location.pathname.match(/methodology\/?/);
+  const isExploreToolPage = location.pathname.match(/cejst\/?/);
   const intl = useIntl();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const messages = defineMessages({
@@ -132,7 +133,7 @@ const J40Header = ({location}:IJ40HeaderProps) => {
         </span>
         <br/>
       </Alert>
-      {!isMethodologyPage && <Alert
+      {(!isMethodologyPage && !isExploreToolPage) && <Alert
         className={'j40-sitealert'}
         type="warning">
         <b>Limited data sources — </b>

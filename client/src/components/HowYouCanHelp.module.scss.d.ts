@@ -1,6 +1,8 @@
 declare namespace HowYouCanHelpModuleScssNamespace {
   export interface IHowYouCanHelpModuleScss {
     howYouCanHelpContainer: string;
+    howYouCanHelpBullet: string,
+    listWrapper: string;
   }
 }
 

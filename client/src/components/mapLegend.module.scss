@@ -1,31 +1,62 @@
+@import "../components/utils.scss";
+
 $min-color: #fafaf8;
 $med-color: rgba(26, 68, 128, 0.2);
 $max-color: rgba(26, 68, 128, 0.6);
+$alertInfoColor: #e7f6f8;
 
 .legendContainer {
-  margin-top: 19px;
+  margin: 1rem 1.2rem 1rem 2.5rem;
   font-size: 0.8em;
+  border: 1px solid #8c9297;
+  padding: 0 1.8rem;
+  flex: 1;
+  color: $headingFontColor;
+
+  .legendTooltip {
+  }
+
+  .legendTooltipText {
+    max-width: 14rem;
+    font-size: medium;
+  }
+}
+
+.legendHeader {
+  margin-bottom: 0;
 }
 
 .swatchContainer {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
 }
 
 .legendItem {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-right: 29px;
+
+  span {
+    font-size: medium;
+  }
+
+  .infoIconWrapper {
+    margin-left: 0.8rem;
+    .infoIcon {
+      width: 2rem;
+      height: 2rem;
+      margin-top: 0.4rem;
+    }
+  }
 }
 
 .colorSwatch {
   box-sizing: border-box;
-  height: 20px;
-  width: 20px;
-  border: 1px solid #1a4480;
+  height: 1.7rem;
+  width: 1.7rem;
   margin-right: 10px;
+  border-radius: 50%;
 }
 
 #prioritized {
@@ -38,4 +69,16 @@ $max-color: rgba(26, 68, 128, 0.6);
 
 #nonPrioritized {
   background-color: $min-color;
+}
+
+.legendTooltipTheme {
+  color: $headingFontColor !important;
+  background-color: $alertInfoColor !important;
+  &.place-top {
+    &:after {
+      border-top-color: $alertInfoColor !important;
+      border-top-style: solid !important;
+      border-top-width: 6px !important;
+    }
+  }
 }
