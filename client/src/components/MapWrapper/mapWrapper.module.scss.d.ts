@@ -1,6 +1,5 @@
 declare namespace MapWrapperScssNamespace {
     export interface IMapWrapperScss {
-        mapCaptionText: string;
         mapCaptionTextLink: string;
 
     }

@@ -12,7 +12,7 @@ const MapWrapper = ({location}: IMapWrapperProps) => {
     <>
       <J40Alert/>
       <J40Map location={location}/>
-      <p className={styles.mapCaptionText}>
+      <p>
         <div className={styles.mapCaptionTextLink}>
           <a href={'https://justice40-data.s3.amazonaws.com/Score/usa.zip'}>
           Download the draft list of prioritized communities (pre-decisional) and datasets used.

@@ -8,7 +8,7 @@ import infoIcon from '/node_modules/uswds/dist/img/usa-icons/info_outline.svg';
 const getToolTipContent = (type:string) => {
   if (type === 'prioritized') {
     return (
-      <div className={styles.legendTooltip}>
+      <div>
         <h2>Prioritized community</h2>
         <p className={styles.legendTooltipText}>A prioritized community is one that has a cumulative index score of Xth
           percentile and above. 40% of the benefits from investments outlined by the
@@ -17,7 +17,7 @@ const getToolTipContent = (type:string) => {
     );
   } else {
     return (
-      <div className={styles.legendTooltip}>
+      <div>
         <h2>Threshold community</h2>
         <p className={styles.legendTooltipText}>Communities with a cumulative index score between
            Y - X.99th percentile are
