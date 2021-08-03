@@ -5,7 +5,7 @@ const HowYouCanHelp = () => {
   return (
     <div className={styles.howYouCanHelpContainer}>
       <h2 className={styles.howYouCanHelpHeader}>How You Can Help Improve the Tool</h2>
-      <ul>
+      <ul className={styles.howYouCanHelpListWrapper}>
         <li className={styles.howYouCanHelpList}>
           <div className={styles.howYouCanHelpText}>If you have helpful information, we’d love to{` `}
             <a href={'mailto:vimusds@gmail.com'}>get an email from you</a>

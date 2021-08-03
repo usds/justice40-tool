@@ -3,10 +3,6 @@
 .howYouCanHelpContainer {
   margin: 2rem 0;
 
-  ul {
-    padding-left: 0;
-  }
-
   .howYouCanHelpText {
     color: $headingFontColor;
     padding-left: 1rem;
@@ -19,6 +15,10 @@
 }
 
 .howYouCanHelpList {
-  list-style-type: none;
+  list-style-type: disc;
   padding-bottom: 1rem;
+}
+
+.howYouCanHelpListWrapper {
+  padding-left: 1rem;
 }

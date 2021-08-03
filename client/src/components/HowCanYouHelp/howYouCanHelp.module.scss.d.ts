@@ -6,6 +6,7 @@ declare namespace HowYouCanHelpModuleScssNamespace {
     listWrapper: string;
     howYouCanHelpText: string;
     howYouCanHelpList: string;
+    howYouCanHelpListWrapper: string;
   }
 }
 
