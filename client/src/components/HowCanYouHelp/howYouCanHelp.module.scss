@@ -8,19 +8,17 @@
   }
 
   .howYouCanHelpText {
+    color: $headingFontColor;
     padding-left: 1rem;
   }
 }
 
-.howYouCanHelpContainer > * {
+.howYouCanHelpHeader {
   color: $headingFontColor;
-}
-
-.howYouCanHelpContainer h2 {
   font-weight: normal;
 }
 
-.howYouCanHelpContainer li {
+.howYouCanHelpList {
   list-style-type: none;
   padding-bottom: 1rem;
 }
