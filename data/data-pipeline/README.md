@@ -128,6 +128,8 @@ Here's a list of commands:
 - Generate census data: `docker exec j40_data_pipeline_1 python3 application.py census-data-download"`
 - Run all ETL processes: `docker exec j40_data_pipeline_1 python3 application.py etl-run"`
 - Generate Score: `docker exec j40_data_pipeline_1 python3 application.py score-run"`
+- Generate Score with Geojson and high and low versions: `docker exec j40_data_pipeline_1 python3 application.py geo-score`
+- Generate Map Tiles: `docker exec j40_data_pipeline_1 python3 application.py generate-map-tiles`
 
 ## Local development
 
@@ -154,15 +156,18 @@ You can run the Python code locally without Docker to develop, using Poetry. How
 - Then run `poetry run python application.py census-data-download`
   Note: Census files are not kept in the repository and the download directories are ignored by Git
 
-### Generating mbtiles
+### Generating Map Tiles
 
-- TBD
+- Make sure you have Docker running in your machine
+- Start a terminal
+- Change to this directory (i.e. `cd data/data-pipeline`)
+- Then run `poetry run python application.py generate-map-tiles`
 
 ### Serve the map locally
 
 - Start a terminal
 - Change to this directory (i.e. `cd data/data-pipeline`)
-- Run: `docker run --rm -it -v ${PWD}/data/tiles:/data -p 8080:80 maptiler/tileserver-gl`
+- For USA high zoom: `docker run --rm -it -v ${PWD}/data/score/tiles/high:/data -p 8080:80 maptiler/tileserver-gl`
 
 ### Running Jupyter notebooks
 

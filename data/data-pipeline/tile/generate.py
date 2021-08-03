@@ -1,63 +1,60 @@
-import os
 from pathlib import Path
-import shutil
+import os
+from subprocess import call
 
-from etl.sources.census.etl_utils import get_state_fips_codes
+from utils import remove_all_from_dir
+from utils import get_module_logger
+
+logger = get_module_logger(__name__)
 
 
 def generate_tiles(data_path: Path) -> None:
 
-    # remove existing mbtiles file
-    mb_tiles_path = data_path / "tiles" / "block2010.mbtiles"
-    if os.path.exists(mb_tiles_path):
-        os.remove(mb_tiles_path)
-
-    # remove existing mvt directory
-    mvt_tiles_path = data_path / "tiles" / "mvt"
-    if os.path.exists(mvt_tiles_path):
-        shutil.rmtree(mvt_tiles_path)
-
-    # remove existing score json files
+    score_tiles_path = data_path / "score" / "tiles"
+    high_tile_path = score_tiles_path / "high"
+    low_tile_path = score_tiles_path / "low"
     score_geojson_dir = data_path / "score" / "geojson"
-    files_in_directory = os.listdir(score_geojson_dir)
-    filtered_files = [file for file in files_in_directory if file.endswith(".json")]
-    for file in filtered_files:
-        path_to_file = os.path.join(score_geojson_dir, file)
-        os.remove(path_to_file)
 
-    # join the state shape sqllite with the score csv
-    state_fips_codes = get_state_fips_codes()
-    for fips in state_fips_codes:
-        cmd = (
-            "ogr2ogr -f GeoJSON "
-            + f"-sql \"SELECT * FROM tl_2010_{fips}_bg10 LEFT JOIN 'data/score/csv/data{fips}.csv'.data{fips} ON tl_2010_{fips}_bg10.GEOID10 = data{fips}.ID\" "
-            + f"data/score/geojson/{fips}.json data/census/shp/{fips}/tl_2010_{fips}_bg10.dbf"
-        )
-        os.system(cmd)
+    USA_HIGH_MIN_ZOOM = 5
+    USA_HIGH_MAX_ZOOM = 11
+    USA_LOW_MIN_ZOOM = 0
+    USA_LOW_MAX_ZOOM = 7
 
-    # get a list of all json files to plug in the docker commands below
-    # (workaround since *.json doesn't seem to work)
-    geojson_list = ""
-    geojson_path = data_path / "score" / "geojson"
-    for file in os.listdir(geojson_path):
-        if file.endswith(".json"):
-            geojson_list += f"data/score/geojson/{file} "
+    # remove existing mbtiles file
+    remove_all_from_dir(score_tiles_path)
 
-    if geojson_list == "":
-        logging.error(
-            "No GeoJson files found. Please run scripts/download_cbg.py first"
-        )
+    # create dirs
+    os.mkdir(high_tile_path)
+    os.mkdir(low_tile_path)
 
-    # generate mbtiles file
-    cmd = (
-        "tippecanoe --drop-densest-as-needed -zg -o /home/data/tiles/block2010.mbtiles --extend-zooms-if-still-dropping -l cbg2010 -s_srs EPSG:4269 -t_srs EPSG:4326 "
-        + geojson_list
-    )
-    os.system(cmd)
+    # generate high mbtiles file
+    logger.info(f"Generating USA High mbtiles file")
+    cmd = "tippecanoe "
+    cmd += f"--minimum-zoom={USA_HIGH_MIN_ZOOM} --maximum-zoom={USA_HIGH_MAX_ZOOM} --layer=blocks "
+    cmd += f"--output={high_tile_path}/usa_high.mbtiles "
+    cmd += str(score_geojson_dir / "usa-high.json")
+    call(cmd, shell=True)
 
-    # generate mvts
-    cmd = (
-        "tippecanoe --drop-densest-as-needed --no-tile-compression  -zg -e /home/data/tiles/mvt "
-        + geojson_list
-    )
-    os.system(cmd)
+    # generate high mvts
+    logger.info(f"Generating USA High mvt folders and files")
+    cmd = "tippecanoe "
+    cmd += f"--minimum-zoom={USA_HIGH_MIN_ZOOM} --maximum-zoom={USA_HIGH_MAX_ZOOM} --no-tile-compression "
+    cmd += f"--output-to-directory={high_tile_path} "
+    cmd += str(score_geojson_dir / "usa-high.json")
+    call(cmd, shell=True)
+
+    # generate low mbtiles file
+    logger.info(f"Generating USA Low mbtiles file")
+    cmd = "tippecanoe "
+    cmd += f"--minimum-zoom={USA_LOW_MIN_ZOOM} --maximum-zoom={USA_LOW_MAX_ZOOM} --layer=blocks "
+    cmd += f"--output={low_tile_path}/usa_low.mbtiles "
+    cmd += str(score_geojson_dir / "usa-low.json")
+    call(cmd, shell=True)
+
+    # generate low mvts
+    logger.info(f"Generating USA Low mvt folders and files")
+    cmd = "tippecanoe "
+    cmd += f"--minimum-zoom={USA_LOW_MIN_ZOOM} --maximum-zoom={USA_LOW_MAX_ZOOM} --no-tile-compression "
+    cmd += f"--output-to-directory={low_tile_path} "
+    cmd += str(score_geojson_dir / "usa-low.json")
+    call(cmd, shell=True)
