@@ -3,9 +3,9 @@
 .howYouCanHelpContainer {
   margin: 2rem 0;
 
-  .listWrapper {
-    display: flex;
-  }
+  // .listWrapper {
+  //   display: flex;
+  // }
 
   ul {
     padding-left: 0;
@@ -25,14 +25,14 @@
 }
 
 .howYouCanHelpContainer li {
-  list-style: none;
+  list-style-type: none;
   padding-bottom: 1rem;
 }
 
-.howYouCanHelpBullet {
-  width: 0.25rem;
-  height: 0.25rem;
-  border-radius: 50%;
-  background-color: $headingFontColor;
-  margin: 0.5rem;
-}
+// .howYouCanHelpBullet {
+//   width: 0.25rem;
+//   height: 0.25rem;
+//   border-radius: 50%;
+//   background-color: $headingFontColor;
+//   margin: 0.5rem;
+// }
