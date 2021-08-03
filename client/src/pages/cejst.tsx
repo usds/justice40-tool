@@ -3,7 +3,7 @@ import {Link} from 'gatsby-plugin-intl';
 
 import Layout from '../components/layout';
 import MapWrapper from '../components/MapWrapper';
-import HowYouCanHelp from '../components/HowYouCanHelp';
+import HowYouCanHelp from '../components/HowCanYouHelp';
 import MapLegend from '../components/mapLegend';
 
 import * as styles from './cejst.module.scss';

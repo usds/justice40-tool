@@ -1,5 +1,5 @@
 import React from 'react';
-import * as styles from './HowYouCanHelp.module.scss';
+import * as styles from './howYouCanHelp.module.scss';
 
 const HowYouCanHelp = () => {
   return (
