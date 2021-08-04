@@ -3,7 +3,12 @@ import {useIntl} from 'gatsby-plugin-intl';
 import {defineMessages} from 'react-intl';
 import * as styles from './j40Alert.module.scss';
 
-const J40Alert = () => {
+interface IJ40AlertProps {
+  location: Location;
+}
+
+const J40Alert = ({location}:IJ40AlertProps) => {
+  const isPadded = location?.pathname.match(/cejst\/?/);
   const intl = useIntl();
   const messages = defineMessages({
     alertMsg: {
@@ -13,7 +18,7 @@ const J40Alert = () => {
     },
   });
   return (
-    <div className={styles.j40Alert}>
+    <div className={isPadded ? styles.j40AlertLeftPad : styles.j40Alert}>
       {intl.formatMessage(messages.alertMsg)}
     </div>
   );

@@ -10,7 +10,7 @@ interface IMapWrapperProps {
 const MapWrapper = ({location}: IMapWrapperProps) => {
   return (
     <>
-      <J40Alert/>
+      <J40Alert location={location}/>
       <J40Map location={location}/>
       <p>
         <div className={styles.mapCaptionTextLink}>

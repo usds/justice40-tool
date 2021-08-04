@@ -1,9 +1,18 @@
 @import "../utils.scss";
 
-.j40Alert {
+@mixin j40AlertBase {
   font-size: large;
   font-weight: 600;
-  padding: 1rem 0;
   background-color: $j40AlertWarningColor;
   margin-top: 2rem;
+}
+
+.j40Alert {
+  @include j40AlertBase;
+  padding: 1rem 0;
+}
+
+.j40AlertLeftPad {
+  @include j40AlertBase;
+  padding: 1rem 1rem;
 }

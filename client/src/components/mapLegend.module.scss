@@ -82,10 +82,13 @@ $alertInfoColor: #e7f6f8;
 
 .legendTooltipTheme {
   color: $headingFontColor !important;
-  background-color: $alertInfoColor !important;
+  background-color: white !important;
+  opacity: 1 !important;
+  border: $sidePanelBorder !important;
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2) !important;
   &.place-top {
     &:after {
-      border-top-color: $alertInfoColor !important;
+      border-top-color: white !important;
       border-top-style: solid !important;
       border-top-width: 6px !important;
     }
