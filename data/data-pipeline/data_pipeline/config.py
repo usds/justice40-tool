@@ -1,7 +1,8 @@
-from pathlib import Path
-from importlib.resources import path
+import pathlib
 
 from dynaconf import Dynaconf
+
+import data_pipeline
 
 settings = Dynaconf(
     envvar_prefix="DYNACONF",
@@ -10,8 +11,7 @@ settings = Dynaconf(
 )
 
 # set root dir
-with path(__package__, ".") as p:
-    settings.APP_ROOT = p
+settings.APP_ROOT = pathlib.Path(data_pipeline.__file__).resolve().parent
 
 # To set an environment use:
 # Linux/OSX: export ENV_FOR_DYNACONF=staging
