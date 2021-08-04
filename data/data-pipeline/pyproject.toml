@@ -1,11 +1,11 @@
 [tool.poetry]
 authors = ["Your Name <you@example.com>"]
 description = "ETL and Generation of Justice 40 Score"
-name = "score"
-version = "0.1.0"
+name = "data-pipeline"
 packages = [
-    { include = "etl" },  # required for poetry packaging to install in tox
+  {include = "etl"}, # required for poetry packaging to install in tox
 ]
+version = "0.1.0"
 
 [tool.poetry.dependencies]
 CensusData = "^1.13"
@@ -23,12 +23,13 @@ types-requests = "^2.25.0"
 
 [tool.poetry.dev-dependencies]
 black = {version = "^21.6b0", allow-prereleases = true}
-mypy = "^0.910"
-tox = "^3.24.0"
 flake8 = "^3.9.2"
-pylint = "^2.9.6"
 liccheck = "^0.6.2"
+mypy = "^0.910"
+pylint = "^2.9.6"
+pytest = "^6.2.4"
 safety = "^1.10.3"
+tox = "^3.24.0"
 
 [build-system]
 build-backend = "poetry.core.masonry.api"
@@ -38,66 +39,69 @@ requires = ["poetry-core>=1.0.0"]
 
 [tool.pylint."MESSAGE CONTROL"]
 disable = [
-  "C0114",  # Disables module docstrings
-  "R0201",  # Disables method could have been a function
-  "R0903",  # Disables too few public methods
-  "C0103",  # Disables name case styling
-  "W0511",  # Disables FIXME warning
-  "W1203",  # Disables f-string interpolation for logging warning
-  # Errors temporarily ignored for further discussion
-  "W0107",  # Disables unnecessary pass
-  "W0221",  # Disables arguments differ
-  "R0902",  # Disables too many instance attributes
-  "R0914",  # Disables too many local variables
-  "W0621",  # Disables redefined outer name
-  "C0302",  # Disables too many lines in module
-  "R1732",  # Disables consider using "with"
-  "R1720",  # Disables unnecessary "else" after "raise"
-  "C0206",  # Disables consider iteratig with ".items()"
-  "C0200",  # Disables consider using "enumerate" instead of "range" + "len"
-  "W0612",  # Disables unused variable
-  "W0613",  # Disables unused argument
-  "C0116",  # Disables missing function or method docstring
-  "C0115",  # Disables missing class docstring
+  "C0114", # Disables module docstrings
+  "R0201", # Disables method could have been a function
+  "R0903", # Disables too few public methods
+  "C0103", # Disables name case styling
+  "W0511", # Disables FIXME warning
+  "W1203", # Disables f-string interpolation for logging warning  # Errors temporarily ignored for further discussion
+  "W0107", # Disables unnecessary pass
+  "W0221", # Disables arguments differ
+  "R0902", # Disables too many instance attributes
+  "R0914", # Disables too many local variables
+  "W0621", # Disables redefined outer name
+  "C0302", # Disables too many lines in module
+  "R1732", # Disables consider using "with"
+  "R1720", # Disables unnecessary "else" after "raise"
+  "C0206", # Disables consider iteratig with ".items()"
+  "C0200", # Disables consider using "enumerate" instead of "range" + "len"
+  "W0612", # Disables unused variable
+  "W0613", # Disables unused argument
+  "C0116", # Disables missing function or method docstring
+  "C0115", # Disables missing class docstring
 ]
 
 [tool.pylint.FORMAT]
-max-line-length=150
+max-line-length = 150
 
 [tool.pylint.SIMILARITIES]
 # Configures how pylint detects repetitive code
-min-similarity-lines = 4
 ignore-comments = "yes"
 ignore-docstrings = "yes"
 ignore-imports = "yes"
+min-similarity-lines = 4
 
 [tool.liccheck]
 # Authorized and unauthorized licenses in LOWER CASE
 authorized_licenses = [
-        "bsd",
-        "new bsd",
-        "bsd license",
-        "bsd 3-clause",
-        "new bsd license",
-        "simplified bsd",
-        "apache",
-        "apache 2.0",
-        "apache license 2.0",
-        "apache software license",
-        "apache software",
-        "gnu lgpl",
-        "gnu lesser general public license v2 (lgplv2)",
-        "gnu general public license v2 (gplv2)",
-        "gnu library or lesser general public license (lgpl)",
-        "lgpl with exceptions or zpl",
-        "isc license",
-        "isc license (iscl)",
-        "mit",
-        "mit license",
-        "mozilla public license 2.0 (mpl 2.0)",
-        "public domain",
-        "python software foundation license",
-        "python software foundation",
-        "zpl 2.1",
-        "gpl v3"
+  "bsd",
+  "new bsd",
+  "bsd license",
+  "bsd 3-clause",
+  "new bsd license",
+  "simplified bsd",
+  "apache",
+  "apache 2.0",
+  "apache license 2.0",
+  "apache software license",
+  "apache software",
+  "gnu lgpl",
+  "gnu lesser general public license v2 (lgplv2)",
+  "gnu general public license v2 (gplv2)",
+  "gnu library or lesser general public license (lgpl)",
+  "lgpl with exceptions or zpl",
+  "isc license",
+  "isc license (iscl)",
+  "mit",
+  "mit license",
+  "mozilla public license 2.0 (mpl 2.0)",
+  "public domain",
+  "python software foundation license",
+  "python software foundation",
+  "zpl 2.1",
+  "gpl v3",
 ]
+
+[tool.poetry.scripts]
+etl = 'data_pipeline.application:etl_run'
+score = 'data_pipeline.application:score_run'

@@ -5,23 +5,25 @@
 
 <!-- TOC -->
 
-- [About this application](#about-this-application)
-  - [Score comparison workflow](#score-comparison-workflow)
-    - [Workflow Diagram](#workflow-diagram)
-    - [Step 0: Set up your environment](#step-0-set-up-your-environment)
-    - [Step 1: Run the ETL script for each data source](#step-1-run-the-etl-script-for-each-data-source)
-    - [Step 2: Calculate the Justice40 score experiments](#step-2-calculate-the-justice40-score-experiments)
-    - [Step 3: Compare the Justice40 score experiments to other indices](#step-3-compare-the-justice40-score-experiments-to-other-indices)
-  - [Data Sources](#data-sources)
-- [Running using Docker](#running-using-docker)
-- [Log visualization](#log-visualization)
-- [Local development](#local-development)
-  - [Downloading Census Block Groups GeoJSON and Generating CBG CSVs](#downloading-census-block-groups-geojson-and-generating-cbg-csvs)
-  - [Generating mbtiles](#generating-mbtiles)
-  - [Serve the map locally](#serve-the-map-locally)
-  - [Running Jupyter notebooks](#running-jupyter-notebooks)
-  - [Activating variable-enabled Markdown for Jupyter notebooks](#activating-variable-enabled-markdown-for-jupyter-notebooks)
-- [Miscellaneous](#miscellaneous)
+- [Justice 40 Score application](#justice-40-score-application)
+  - [About this application](#about-this-application)
+    - [Score comparison workflow](#score-comparison-workflow)
+      - [Workflow Diagram](#workflow-diagram)
+      - [Step 0: Set up your environment](#step-0-set-up-your-environment)
+      - [Step 1: Run the ETL script for each data source](#step-1-run-the-etl-script-for-each-data-source)
+      - [Step 2: Calculate the Justice40 score experiments](#step-2-calculate-the-justice40-score-experiments)
+      - [Step 3: Compare the Justice40 score experiments to other indices](#step-3-compare-the-justice40-score-experiments-to-other-indices)
+    - [Data Sources](#data-sources)
+  - [Running using Docker](#running-using-docker)
+  - [Local development](#local-development)
+    - [Windows Users](#windows-users)
+    - [Setting up Poetry](#setting-up-poetry)
+    - [Downloading Census Block Groups GeoJSON and Generating CBG CSVs](#downloading-census-block-groups-geojson-and-generating-cbg-csvs)
+    - [Generating mbtiles](#generating-mbtiles)
+    - [Serve the map locally](#serve-the-map-locally)
+    - [Running Jupyter notebooks](#running-jupyter-notebooks)
+    - [Activating variable-enabled Markdown for Jupyter notebooks](#activating-variable-enabled-markdown-for-jupyter-notebooks)
+  - [Miscellaneous](#miscellaneous)
 
 <!-- /TOC -->
 
@@ -33,8 +35,12 @@ This application is used to compare experimental versions of the Justice40 score
 
 _**NOTE:** These scores **do not** represent final versions of the Justice40 scores and are merely used for comparative purposes. As a result, the specific input columns and formulas used to calculate them are likely to change over time._
 
+<<<<<<< Updated upstream
 
 ### Score generation and comparison workflow
+=======
+### Score comparison workflow
+>>>>>>> Stashed changes
 
 The descriptions below provide a more detailed outline of what happens at each step of ETL and score calculation workflow.
 
@@ -44,11 +50,14 @@ TODO add mermaid diagram
 
 #### Step 0: Set up your environment
 
+<<<<<<< Updated upstream
 1. After cloning the project locally, change to this directory: `cd data/data-pipeline`
+=======
+1. After cloning the project locally, change to this directory: `cd data`
+>>>>>>> Stashed changes
 1. Choose whether you'd like to run this application using Docker or if you'd like to install the dependencies locally so you can contribute to the project.
-    - **With Docker:** Follow these [installation instructions](https://docs.docker.com/get-docker/) and skip down to the [Running with Docker section](#running-with-docker) for more information
-    - **For Local Development:** Skip down to the [Local Development section](#local-development) for more detailed installation instructions
-
+   - **With Docker:** Follow these [installation instructions](https://docs.docker.com/get-docker/) and skip down to the [Running with Docker section](#running-with-docker) for more information
+   - **For Local Development:** Skip down to the [Local Development section](#local-development) for more detailed installation instructions
 
 #### Step 1: Run the ETL script for each data source
 
@@ -68,8 +77,8 @@ _For example: `poetry run python application.py etl-run -d ejscreen` would only 
    - With Poetry: `poetry run python application.py score-run`
 1. The `score-run` command will execute the `etl/score/etl.py` script which loads the data from each of the source files added to the `data/dataset/` directory by the ETL scripts in Step 1.
 1. These data sets are merged into a single dataframe using their Census Block Group GEOID as a common key, and the data in each of the columns is standardized in two ways:
-    - Their [percentile rank](https://en.wikipedia.org/wiki/Percentile_rank) is calculated, which tells us what percentage of other Census Block Groups have a lower value for that particular column.
-    - They are normalized using [min-max normalization](https://en.wikipedia.org/wiki/Feature_scaling), which adjusts the scale of the data so that the Census Block Group with the highest value for that column is set to 1, the Census Block Group with the lowest value is set to 0, and all of the other values are adjusted to fit within that range based on how close they were to the highest or lowest value.
+   - Their [percentile rank](https://en.wikipedia.org/wiki/Percentile_rank) is calculated, which tells us what percentage of other Census Block Groups have a lower value for that particular column.
+   - They are normalized using [min-max normalization](https://en.wikipedia.org/wiki/Feature_scaling), which adjusts the scale of the data so that the Census Block Group with the highest value for that column is set to 1, the Census Block Group with the lowest value is set to 0, and all of the other values are adjusted to fit within that range based on how close they were to the highest or lowest value.
 1. The standardized columns are then used to calculate each of the Justice40 score experiments described in greater detail below, and the results are exported to a `.csv` file in [`data/score/csv`](data/score/csv)
 
 #### Step 3: Compare the Justice40 score experiments to other indices
@@ -110,7 +119,6 @@ To run this comparison tool:
 - **[HUD Recap](etl/sources/hud_recap):** TODO Add description of data source
 - **[CalEnviroScreen](etl/scores/calenviroscreen):** TODO Add description of data source
 
-
 ## Running using Docker
 
 We use Docker to install the necessary libraries in a container that can be run in any operating system.
@@ -136,6 +144,7 @@ Here's a list of commands:
 You can run the Python code locally without Docker to develop, using Poetry. However, to generate the census data you will need the [GDAL library](https://github.com/OSGeo/gdal) installed locally. Also to generate tiles for a local map, you will need [Mapbox tippeanoe](https://github.com/mapbox/tippecanoe). Please refer to the repos for specific instructions for your OS.
 
 ### Windows Users
+
 - If you want to download Census data or run tile generation, please install TippeCanoe [following these instrcutions](https://github.com/GISupportICRC/ArcGIS2Mapbox#installing-tippecanoe-on-windows).
 - If you want to generate tiles, you need some pre-requisites for Geopandas as specified in the Poetry requirements. Please follow [these instructions](https://stackoverflow.com/questions/56958421/pip-install-geopandas-on-windows) to install the Geopandas dependency locally.
 
