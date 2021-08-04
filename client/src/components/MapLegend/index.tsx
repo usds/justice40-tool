@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactTooltip from 'react-tooltip';
+
 import * as styles from './mapLegend.module.scss';
 
 // @ts-ignore

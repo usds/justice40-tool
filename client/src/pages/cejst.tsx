@@ -4,14 +4,13 @@ import {Link} from 'gatsby-plugin-intl';
 import Layout from '../components/layout';
 import MapWrapper from '../components/MapWrapper';
 import HowYouCanHelp from '../components/HowCanYouHelp';
-import MapLegend from '../components/mapLegend';
+import MapLegend from '../components/MapLegend';
 
 import * as styles from './cejst.module.scss';
 
 interface IMapPageProps {
   location: Location;
 }
-
 
 const CEJSTPage = ({location}: IMapPageProps) => {
   // We temporarily removed MapControls, which would enable you to `setFeatures` also, for now
