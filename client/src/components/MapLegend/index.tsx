@@ -2,6 +2,7 @@ import React from 'react';
 import ReactTooltip from 'react-tooltip';
 import {useIntl} from 'gatsby-plugin-intl';
 import {defineMessages} from 'react-intl';
+import {Tooltip} from '@trussworks/react-uswds';
 
 import * as styles from './mapLegend.module.scss';
 import * as constants from '../../data/constants';
@@ -68,6 +69,21 @@ const MapLegend = () => {
     },
   });
 
+  // Type definitions required for @trussworks tooltip
+  type CustomDivProps = React.PropsWithChildren<{
+    className?: string
+  }> &
+    JSX.IntrinsicElements['div'] &
+    React.RefAttributes<HTMLDivElement>
+  const CustomDiv: React.ForwardRefExoticComponent<CustomDivProps> = React.forwardRef(
+      ({className, children, ...tooltipProps}: CustomDivProps, ref) => (
+        <div ref={ref} className={styles.infoIconWrapper} {...tooltipProps}>
+          {children}
+        </div>
+      ),
+  );
+  CustomDiv.displayName = 'custom info wrapper';
+
   return (
     <div className={styles.legendContainer}>
       <h3 className={styles.legendHeader}>COLOR KEY</h3>
@@ -90,7 +106,27 @@ const MapLegend = () => {
         <div className={styles.legendItem}>
           <div className={styles.colorSwatch} id={styles.threshold} />
           <span>{intl.formatMessage(messages.thresholdLabel)}</span>
-          <div className={styles.infoIconWrapper} data-for="threshold" data-tip="threshold tool tip">
+
+          {/* Using @trussworks tooltip */}
+          <Tooltip<CustomDivProps>
+            label={`Threshold community
+             Communities with a cumulative 
+             index score between Y - X.99th
+             percentile are considered 
+             threshold communities. 
+             While these communities are 
+             currently not considered a 
+             prioritized community, this may 
+             change based on updates to the 
+             scoring method.`}
+            position='left'
+            // wrapperclasses={styles.legendTooltipTheme}
+            asCustom={CustomDiv}>
+            <img className={styles.infoIcon} src={infoIcon} />
+          </Tooltip>
+
+          {/* Using react-tooltip lib */}
+          {/* <div className={styles.infoIconWrapper} data-for="threshold" data-tip="threshold tool tip">
             <img className={styles.infoIcon} src={infoIcon} />
           </div>
           <ReactTooltip
@@ -100,7 +136,9 @@ const MapLegend = () => {
             effect={'solid'}
             className={styles.legendTooltipTheme} >
             {getToolTipContent('threshold')}
-          </ReactTooltip>
+          </ReactTooltip> */}
+
+
         </div>
       </div>
     </div>
