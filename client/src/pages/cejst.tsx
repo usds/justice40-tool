@@ -25,9 +25,11 @@ const CEJSTPage = ({location}: IMapPageProps) => {
               Zoom into the map to see which communities the tool has currently
               identified as prioritized (the top 25% of communities) or on the
               threshold. Learn more about the formula and datasets that were
-              used to prioritize these communities on the&nbsp;
+              used to prioritize these communities on the
+              {` `}
               <Link to={'/methodology'}>Data & methodology</Link>
-              &nbsp;page.
+              {` `}
+              page.
             </p>
           </div>
           <MapLegend />
