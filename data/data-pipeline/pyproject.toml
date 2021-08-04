@@ -2,9 +2,6 @@
 authors = ["Your Name <you@example.com>"]
 description = "ETL and Generation of Justice 40 Score"
 name = "data-pipeline"
-packages = [
-  {include = "etl"}, # required for poetry packaging to install in tox
-]
 version = "0.1.0"
 
 [tool.poetry.dependencies]
@@ -103,5 +100,8 @@ authorized_licenses = [
 ]
 
 [tool.poetry.scripts]
+cleanup_data = 'data_pipeline.application:data_cleanup'
+download_census = 'data_pipeline.application:census_data_download'
 etl = 'data_pipeline.application:etl_run'
+generate_tiles = 'data_pipeline.application:generate_map_tiles'
 score = 'data_pipeline.application:score_run'
