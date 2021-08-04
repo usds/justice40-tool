@@ -114,4 +114,9 @@ export const SCORE_BOUNDARY_LOW = 0.0;
 export const SCORE_BOUNDARY_THRESHOLD = 0.6;
 export const SCORE_BOUNDARY_PRIORITIZED = 0.75;
 
+
+// Explore the Tool page Map Legend
+export const PRIORITIZED_COMMUNITY = 'Prioritized community';
+export const THRESHOLD_COMMUNITY = 'Threshold community';
+
 export const isMobile = isMobileReactDeviceDetect;
