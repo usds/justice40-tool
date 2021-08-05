@@ -27,7 +27,7 @@ def generate_tiles(data_path: Path) -> None:
     os.mkdir(low_tile_path)
 
     # generate high mbtiles file
-    logger.info(f"Generating USA High mbtiles file")
+    logger.info("Generating USA High mbtiles file")
     cmd = "tippecanoe "
     cmd += f"--minimum-zoom={USA_HIGH_MIN_ZOOM} --maximum-zoom={USA_HIGH_MAX_ZOOM} --layer=blocks "
     cmd += f"--output={high_tile_path}/usa_high.mbtiles "
@@ -35,7 +35,7 @@ def generate_tiles(data_path: Path) -> None:
     call(cmd, shell=True)
 
     # generate high mvts
-    logger.info(f"Generating USA High mvt folders and files")
+    logger.info("Generating USA High mvt folders and files")
     cmd = "tippecanoe "
     cmd += f"--minimum-zoom={USA_HIGH_MIN_ZOOM} --maximum-zoom={USA_HIGH_MAX_ZOOM} --no-tile-compression "
     cmd += f"--output-to-directory={high_tile_path} "
@@ -43,7 +43,7 @@ def generate_tiles(data_path: Path) -> None:
     call(cmd, shell=True)
 
     # generate low mbtiles file
-    logger.info(f"Generating USA Low mbtiles file")
+    logger.info("Generating USA Low mbtiles file")
     cmd = "tippecanoe "
     cmd += f"--minimum-zoom={USA_LOW_MIN_ZOOM} --maximum-zoom={USA_LOW_MAX_ZOOM} --layer=blocks "
     cmd += f"--output={low_tile_path}/usa_low.mbtiles "
@@ -51,7 +51,7 @@ def generate_tiles(data_path: Path) -> None:
     call(cmd, shell=True)
 
     # generate low mvts
-    logger.info(f"Generating USA Low mvt folders and files")
+    logger.info("Generating USA Low mvt folders and files")
     cmd = "tippecanoe "
     cmd += f"--minimum-zoom={USA_LOW_MIN_ZOOM} --maximum-zoom={USA_LOW_MAX_ZOOM} --no-tile-compression "
     cmd += f"--output-to-directory={low_tile_path} "

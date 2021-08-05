@@ -27,7 +27,11 @@ def etl_runner(dataset_to_run: str = None) -> None:
             "module_dir": "census_acs",
             "class_name": "CensusACSETL",
         },
-        {"name": "ejscreen", "module_dir": "ejscreen", "class_name": "EJScreenETL",},
+        {
+            "name": "ejscreen",
+            "module_dir": "ejscreen",
+            "class_name": "EJScreenETL",
+        },
         {
             "name": "housing_and_transportation",
             "module_dir": "housing_and_transportation",
@@ -43,12 +47,17 @@ def etl_runner(dataset_to_run: str = None) -> None:
             "module_dir": "calenviroscreen",
             "class_name": "CalEnviroScreenETL",
         },
-        {"name": "hud_recap", "module_dir": "hud_recap", "class_name": "HudRecapETL",},
+        {
+            "name": "hud_recap",
+            "module_dir": "hud_recap",
+            "class_name": "HudRecapETL",
+        },
     ]
 
     if dataset_to_run:
         dataset_element = next(
-            (item for item in dataset_list if item["name"] == dataset_to_run), None,
+            (item for item in dataset_list if item["name"] == dataset_to_run),
+            None,
         )
         if not dataset_list:
             raise ValueError("Invalid dataset name")
