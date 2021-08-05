@@ -38,7 +38,7 @@ def get_state_fips_codes(data_path: Path) -> list:
     if not os.path.isfile(fips_csv_path):
         logger.info("Downloading fips from S3 repository")
         unzip_file_from_url(
-            settings.AWS_JUSTICE40_DATA_URL + "/Census/fips_states_2010.zip",
+            settings.AWS_JUSTICE40_DATASOURCES_URL + "/fips_states_2010.zip",
             data_path / "tmp",
             data_path / "census" / "csv",
         )
