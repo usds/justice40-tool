@@ -129,9 +129,9 @@ Once completed, run `docker-compose up` and then open a new tab or terminal wind
 Here's a list of commands:
 
 - Get help: `docker exec j40_data_pipeline_1 python3 application.py --help"`
-- Clean up the census data directories: `docker exec j40_data_pipeline_1 python3 application.py census-cleanup"`
-- Clean up the data directories: `docker exec j40_data_pipeline_1 python3 application.py data-cleanup"`
 - Generate census data: `docker exec j40_data_pipeline_1 python3 application.py census-data-download"`
+- Run all ETL and Generate score: `docker exec j40_data_pipeline_1 python3 application.py score-full-run`
+- Clean up the data directories: `docker exec j40_data_pipeline_1 python3 application.py data-cleanup"`
 - Run all ETL processes: `docker exec j40_data_pipeline_1 python3 application.py etl-run"`
 - Generate Score: `docker exec j40_data_pipeline_1 python3 application.py score-run"`
 - Generate Score with Geojson and high and low versions: `docker exec j40_data_pipeline_1 python3 application.py geo-score`

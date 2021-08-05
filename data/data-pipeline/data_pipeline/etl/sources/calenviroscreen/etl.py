@@ -2,13 +2,16 @@ import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger
+from data_pipeline.config import settings
 
 logger = get_module_logger(__name__)
 
 
 class CalEnviroScreenETL(ExtractTransformLoad):
     def __init__(self):
-        self.CALENVIROSCREEN_FTP_URL = "https://justice40-data.s3.amazonaws.com/data-sources/CalEnviroScreen_4.0_2021.zip"
+        self.CALENVIROSCREEN_FTP_URL = (
+            settings.AWS_JUSTICE40_DATASOURCES_URL + "/CalEnviroScreen_4.0_2021.zip"
+        )
         self.CALENVIROSCREEN_CSV = self.TMP_PATH / "CalEnviroScreen_4.0_2021.csv"
         self.CSV_PATH = self.DATA_PATH / "dataset" / "calenviroscreen4"
 
@@ -28,7 +31,8 @@ class CalEnviroScreenETL(ExtractTransformLoad):
     def extract(self) -> None:
         logger.info("Downloading CalEnviroScreen Data")
         super().extract(
-            self.CALENVIROSCREEN_FTP_URL, self.TMP_PATH,
+            self.CALENVIROSCREEN_FTP_URL,
+            self.TMP_PATH,
         )
 
     def transform(self) -> None:
