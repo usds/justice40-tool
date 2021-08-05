@@ -2,6 +2,7 @@ import csv
 import json
 import os
 from pathlib import Path
+import subprocess
 
 import geopandas as gpd
 from data_pipeline.utils import get_module_logger, unzip_file_from_url
@@ -30,11 +31,17 @@ def download_census_csvs(data_path: Path) -> None:
 
     for fips in state_fips_codes:
         # check if file exists
-        shp_file_path = data_path / "census" / "shp" / fips / f"tl_2010_{fips}_bg10.shp"
+        shp_file_path: Path = (
+            data_path / "census" / "shp" / fips / f"tl_2010_{fips}_bg10.shp"
+        )
+        geojson_file_path = data_path / "census" / "geojson" / f"{fips}.json"
 
-        logger.info(f"Checking if {fips} file exists")
-        if not os.path.isfile(shp_file_path):
-            logger.info(f"Downloading and extracting {fips} shape file")
+        logger.info(f"Checking if {fips} shp file exists")
+        if not shp_file_path.is_file():
+            logger.info(
+                f"{fips} shp file does not exist. Downloading and extracting shape file"
+            )
+
             # 2020 tiger data is here: https://www2.census.gov/geo/tiger/TIGER2020/BG/
             # But using 2010 for now
             cbg_state_url = f"https://www2.census.gov/geo/tiger/TIGER2010/BG/2010/tl_2010_{fips}_bg10.zip"
@@ -43,17 +50,19 @@ def download_census_csvs(data_path: Path) -> None:
                 data_path / "tmp",
                 data_path / "census" / "shp" / fips,
             )
-
-            cmd = (
-                "ogr2ogr -f GeoJSON data/census/geojson/"
-                + fips
-                + ".json data/census/shp/"
-                + fips
-                + "/tl_2010_"
-                + fips
-                + "_bg10.shp"
+        logger.info(f"Checking if {fips} geoJSON file exists ")
+        if not geojson_file_path.is_file():
+            logger.info(
+                f"GeoJSON file {fips} does not exist. Converting shp to geoJSON"
             )
-            os.system(cmd)
+            cmd = [
+                "ogr2ogr",
+                "-f",
+                "GeoJSON",
+                str(geojson_file_path),
+                str(shp_file_path),
+            ]
+            subprocess.run(cmd, check=True)
 
     # generate CBG CSV table for pandas
     ## load in memory
@@ -94,6 +103,7 @@ def download_census_csvs(data_path: Path) -> None:
                 )
 
     ## write US csv
+    logger.info("Writing national us.csv file")
     with open(csv_dir_path / "us.csv", mode="w", newline="") as cbg_csv_file:
         cbg_csv_file_writer = csv.writer(
             cbg_csv_file,
