@@ -196,7 +196,7 @@ class PostScoreETL(ExtractTransformLoad):
 
     def _save_downloadable_zip(self):
         logger.info("Saving Downloadable CSV")
-        logger.info([c for c in self.score_county_state_merged.columns])
+        logger.info(list(self.score_county_state_merged.columns))
         logger.info(self.DOWNLOADABLE_SCORE_COLUMNS)
         downloadable_tiles = self.score_county_state_merged[
             self.DOWNLOADABLE_SCORE_COLUMNS
