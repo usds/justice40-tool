@@ -18,8 +18,7 @@ class EJScreenETL(ExtractTransformLoad):
     def extract(self) -> None:
         logger.info("Downloading EJScreen Data")
         super().extract(
-            self.EJSCREEN_FTP_URL,
-            self.TMP_PATH,
+            self.EJSCREEN_FTP_URL, self.TMP_PATH,
         )
 
     def transform(self) -> None:

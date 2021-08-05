@@ -43,8 +43,7 @@ class PostScoreETL(ExtractTransformLoad):
 
     def extract(self) -> None:
         super().extract(
-            self.CENSUS_COUNTIES_ZIP_URL,
-            self.TMP_PATH,
+            self.CENSUS_COUNTIES_ZIP_URL, self.TMP_PATH,
         )
 
         logger.info("Reading Counties CSV")
@@ -68,8 +67,7 @@ class PostScoreETL(ExtractTransformLoad):
         # rename some of the columns to prepare for merge
         self.counties_df = self.counties_df[["USPS", "GEOID", "NAME"]]
         self.counties_df.rename(
-            columns={"USPS": "State Abbreviation", "NAME": "County Name"},
-            inplace=True,
+            columns={"USPS": "State Abbreviation", "NAME": "County Name"}, inplace=True,
         )
 
         # remove unnecessary columns

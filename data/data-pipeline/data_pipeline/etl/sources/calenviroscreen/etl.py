@@ -28,8 +28,7 @@ class CalEnviroScreenETL(ExtractTransformLoad):
     def extract(self) -> None:
         logger.info("Downloading CalEnviroScreen Data")
         super().extract(
-            self.CALENVIROSCREEN_FTP_URL,
-            self.TMP_PATH,
+            self.CALENVIROSCREEN_FTP_URL, self.TMP_PATH,
         )
 
     def transform(self) -> None:

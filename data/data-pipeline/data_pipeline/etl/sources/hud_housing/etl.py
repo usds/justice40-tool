@@ -34,8 +34,7 @@ class HudHousingETL(ExtractTransformLoad):
     def extract(self) -> None:
         logger.info("Extracting HUD Housing Data")
         super().extract(
-            self.HOUSING_FTP_URL,
-            self.HOUSING_ZIP_FILE_DIR,
+            self.HOUSING_FTP_URL, self.HOUSING_ZIP_FILE_DIR,
         )
 
     def transform(self) -> None:
@@ -49,10 +48,7 @@ class HudHousingETL(ExtractTransformLoad):
             / "140"
             / "Table8.csv"
         )
-        self.df = pd.read_csv(
-            filepath_or_buffer=tmp_csv_file_path,
-            encoding="latin-1",
-        )
+        self.df = pd.read_csv(filepath_or_buffer=tmp_csv_file_path, encoding="latin-1",)
 
         # Rename and reformat block group ID
         self.df.rename(columns={"geoid": self.GEOID_TRACT_FIELD_NAME}, inplace=True)

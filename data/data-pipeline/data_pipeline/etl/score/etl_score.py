@@ -59,9 +59,7 @@ class ScoreETL(ExtractTransformLoad):
         # Load census data
         census_csv = self.DATA_PATH / "dataset" / "census_acs_2019" / "usa.csv"
         self.census_df = pd.read_csv(
-            census_csv,
-            dtype={self.GEOID_FIELD_NAME: "string"},
-            low_memory=False,
+            census_csv, dtype={self.GEOID_FIELD_NAME: "string"}, low_memory=False,
         )
 
         # Load housing and transportation data
@@ -123,8 +121,7 @@ class ScoreETL(ExtractTransformLoad):
 
         # Define a named tuple that will be used for each data set input.
         DataSet = collections.namedtuple(
-            typename="DataSet",
-            field_names=["input_field", "renamed_field", "bucket"],
+            typename="DataSet", field_names=["input_field", "renamed_field", "bucket"],
         )
 
         data_sets = [
@@ -141,9 +138,7 @@ class ScoreETL(ExtractTransformLoad):
                 bucket=None,
             ),
             DataSet(
-                input_field="ACSTOTPOP",
-                renamed_field="Total population",
-                bucket=None,
+                input_field="ACSTOTPOP", renamed_field="Total population", bucket=None,
             ),
             # The following data sets have buckets, because they're used in the score
             DataSet(
@@ -249,9 +244,7 @@ class ScoreETL(ExtractTransformLoad):
         }
 
         self.df.rename(
-            columns=renaming_dict,
-            inplace=True,
-            errors="raise",
+            columns=renaming_dict, inplace=True, errors="raise",
         )
 
         columns_to_keep = [data_set.renamed_field for data_set in data_sets]

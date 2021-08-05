@@ -22,9 +22,7 @@ def cli():
     pass
 
 
-@cli.command(
-    help="Clean up all census data folders",
-)
+@cli.command(help="Clean up all census data folders",)
 def census_cleanup():
     """CLI command to clean up the census data folder"""
 
@@ -37,9 +35,7 @@ def census_cleanup():
     logger.info("Cleaned up all census data files")
 
 
-@cli.command(
-    help="Clean up all data folders",
-)
+@cli.command(help="Clean up all data folders",)
 def data_cleanup():
     """CLI command to clean up the all the data folders"""
 
@@ -50,9 +46,7 @@ def data_cleanup():
     logger.info("Cleaned up all data folders")
 
 
-@cli.command(
-    help="Census data download",
-)
+@cli.command(help="Census data download",)
 def census_data_download():
     """CLI command to download all census shape files from the Census FTP and extract the geojson
     to generate national and by state Census Block Group CSVs"""
@@ -64,9 +58,7 @@ def census_data_download():
     logger.info("Completed downloading census data")
 
 
-@cli.command(
-    help="Run all ETL processes or a specific one",
-)
+@cli.command(help="Run all ETL processes or a specific one",)
 @click.option("-d", "--dataset", required=False, type=str)
 def etl_run(dataset: str):
     """Run a specific or all ETL processes
@@ -81,27 +73,21 @@ def etl_run(dataset: str):
     etl_runner(dataset)
 
 
-@cli.command(
-    help="Generate Score",
-)
+@cli.command(help="Generate Score",)
 def score_run():
     """CLI command to generate the score"""
 
     score_generate()
 
 
-@cli.command(
-    help="Generate Geojson files with scores baked in",
-)
+@cli.command(help="Generate Geojson files with scores baked in",)
 def geo_score():
     """CLI command to generate the score"""
 
     score_geo()
 
 
-@cli.command(
-    help="Generate map tiles",
-)
+@cli.command(help="Generate map tiles",)
 def generate_map_tiles():
     """CLI command to generate the map tiles"""
 
