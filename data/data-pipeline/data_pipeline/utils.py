@@ -1,3 +1,4 @@
+import datetime
 import logging
 import os
 import shutil
@@ -97,7 +98,10 @@ def remove_all_dirs_from_dir(dir_path: Path) -> None:
 
 
 def unzip_file_from_url(
-    file_url: str, download_path: Path, unzipped_file_path: Path, verify: bool = False,
+    file_url: str,
+    download_path: Path,
+    unzipped_file_path: Path,
+    verify: bool = False,
 ) -> None:
     """Downloads a zip file from a remote URL location and unzips it in a specific directory, removing the temporary file after
 
@@ -116,8 +120,13 @@ def unzip_file_from_url(
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
     logger.info(f"Downloading {file_url}")
-    download = requests.get(file_url, verify=verify)
-    file_contents = download.content
+    response = requests.get(file_url, verify=verify)
+    if response.status_code == 200:
+        file_contents = response.content
+    else:
+        exit(
+            f"HTTP response {response.status_code} from url {file_url}. Info: {response.content}"
+        )
 
     zip_file_path = download_path / "downloaded.zip"
     zip_file = open(zip_file_path, "wb")
@@ -149,6 +158,7 @@ def score_folder_cleanup() -> None:
     logger.info("Initializing all score data")
     remove_all_from_dir(data_path / "score" / "csv")
     remove_all_from_dir(data_path / "score" / "geojson")
+    remove_all_from_dir(data_path / "score" / "downloadable")
 
 
 def temp_folder_cleanup() -> None:
@@ -1173,3 +1183,29 @@ def get_excel_column_name(index: int) -> str:
     ]
 
     return excel_column_names[index]
+
+
+def get_zip_info(archive_path: Path) -> list:
+    """
+    Returns information about a provided archive
+
+    Args:
+        archive_path (pathlib.Path): Path of the archive to be inspected
+
+    Returns:
+        a list of information about every file in the zipfile
+
+    """
+    zf = zipfile.ZipFile(archive_path)
+    info_list = []
+    for info in zf.infolist():
+        info_dict = {}
+        info_dict["Filename"] = info.filename
+        info_dict["Comment"] = info.comment.decode("utf8")
+        info_dict["Modified"] = datetime.datetime(*info.date_time).isoformat()
+        info_dict["System"] = f"{info.create_system} (0 = Windows, 3 = Unix)"
+        info_dict["ZIP version"] = info.create_version
+        info_dict["Compressed"] = f"{info.compress_size} bytes"
+        info_dict["Uncompressed"] = f"{info.file_size} bytes"
+        info_list.append(info_dict)
+    return info_list
