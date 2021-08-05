@@ -23,21 +23,6 @@ def cli():
 
 
 @cli.command(
-    help="Clean up all census data folders",
-)
-def census_cleanup():
-    """CLI command to clean up the census data folder"""
-
-    data_path = settings.APP_ROOT / "data"
-
-    # census directories
-    logger.info("Initializing all census data")
-    census_reset(data_path)
-
-    logger.info("Cleaned up all census data files")
-
-
-@cli.command(
     help="Clean up all data folders",
 )
 def data_cleanup():
@@ -57,8 +42,12 @@ def census_data_download():
     """CLI command to download all census shape files from the Census FTP and extract the geojson
     to generate national and by state Census Block Group CSVs"""
 
-    logger.info("Downloading census data")
     data_path = settings.APP_ROOT / "data"
+
+    logger.info("Initializing all census data")
+    census_reset(data_path)
+
+    logger.info("Downloading census data")
     download_census_csvs(data_path)
 
     logger.info("Completed downloading census data")
@@ -87,6 +76,19 @@ def etl_run(dataset: str):
 def score_run():
     """CLI command to generate the score"""
 
+    score_generate()
+
+
+@cli.command(
+    help="Run ETL + Score Generation",
+)
+def score_full_run():
+    """CLI command to run ETL and generate the score in one command"""
+
+    data_folder_cleanup()
+    score_folder_cleanup()
+    temp_folder_cleanup()
+    etl_runner()
     score_generate()
 
 
