@@ -1,6 +1,7 @@
 import datetime
 import logging
 import os
+import sys
 import shutil
 import zipfile
 from pathlib import Path
@@ -124,7 +125,7 @@ def unzip_file_from_url(
     if response.status_code == 200:
         file_contents = response.content
     else:
-        exit(
+        sys.exit(
             f"HTTP response {response.status_code} from url {file_url}. Info: {response.content}"
         )
 
