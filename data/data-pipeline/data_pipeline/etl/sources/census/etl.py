@@ -5,7 +5,6 @@ from enum import Enum
 from pathlib import Path
 
 import geopandas as gpd
-import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger, unzip_file_from_url
 
@@ -44,14 +43,16 @@ class CensusETL(ExtractTransformLoad):
         Returns:
             Path on disk to the file_type file corresponding to this FIPS
         """
+        file_path : Path
         if file_type == GeoFileType.SHP:
-            return Path(
+            file_path = Path(
                 self.SHP_BASE_PATH / fips_code / f"tl_2010_{fips_code}_bg10.shp"
             )
         elif file_type == GeoFileType.GEOJSON:
-            return Path(self.GEOJSON_BASE_PATH / f"{fips_code}.json")
+            file_path = Path(self.GEOJSON_BASE_PATH / f"{fips_code}.json")
         elif file_type == GeoFileType.CSV:
-            return Path(self.CSV_BASE_PATH / f"{fips_code}.csv")
+            file_path = Path(self.CSV_BASE_PATH / f"{fips_code}.csv")
+        return file_path
 
     def _extract_shp(self, fips_code: str) -> None:
         """Download the SHP file for the provided FIPS code
