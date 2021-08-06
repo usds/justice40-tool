@@ -7,160 +7,176 @@ exports[`J40Footer renders correctly 1`] = `
   >
     <div
       class="usa-footer__primary-section"
-    />
+    >
+      <div
+        class="grid-container"
+        data-testid="gridContainer"
+      >
+        <div
+          class=""
+          data-testid="grid"
+        >
+          <nav
+            aria-label="Footer navigation"
+            class="usa-footer__nav"
+          >
+            <div
+              class="grid-row grid-gap-4"
+            >
+              <div
+                class="mobile-lg:grid-col-6 desktop:grid-col-3"
+              >
+                <section
+                  class="usa-footer__primary-content usa-footer__primary-content--collapsible"
+                >
+                  <h4
+                    class="usa-footer__primary-link"
+                  >
+                    Contacts
+                  </h4>
+                  <ul
+                    class="usa-list usa-list--unstyled"
+                  >
+                    <li
+                      class="usa-footer__secondary-link"
+                    >
+                      <address
+                        class="usa-footer__address j40-footer-address"
+                      >
+                        <div
+                          class="usa-footer__contact-info grid-row grid-gap"
+                        >
+                          <div
+                            class="grid-col-auto"
+                          >
+                            730 Jackson Pl NW
+                          </div>
+                          <div
+                            class="grid-col-auto"
+                          >
+                            Washington, D.C. 20506
+                          </div>
+                          <div
+                            class="grid-col-auto"
+                          >
+                            (202) 395-5750
+                          </div>
+                        </div>
+                      </address>
+                    </li>
+                  </ul>
+                </section>
+              </div>
+              <div
+                class="mobile-lg:grid-col-6 desktop:grid-col-3"
+              >
+                <section
+                  class="usa-footer__primary-content usa-footer__primary-content--collapsible"
+                >
+                  <h4
+                    class="usa-footer__primary-link"
+                  >
+                    More Information
+                  </h4>
+                  <ul
+                    class="usa-list usa-list--unstyled"
+                  >
+                    <li
+                      class="usa-footer__secondary-link"
+                    >
+                      <a
+                        href="https://www.whitehouse.gov/"
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        Whitehouse.gov
+                      </a>
+                    </li>
+                    <li
+                      class="usa-footer__secondary-link"
+                    >
+                      <a
+                        href="https://www.whitehouse.gov/ceq/foia"
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        Freedom of Information Act (FOIA)
+                      </a>
+                    </li>
+                    <li
+                      class="usa-footer__secondary-link"
+                    >
+                      <a
+                        href="https://www.whitehouse.gov/privacy/"
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        Privacy Policy
+                      </a>
+                    </li>
+                  </ul>
+                </section>
+              </div>
+              <div
+                class="mobile-lg:grid-col-6 desktop:grid-col-3"
+              >
+                <section
+                  class="usa-footer__primary-content usa-footer__primary-content--collapsible"
+                >
+                  <h4
+                    class="usa-footer__primary-link"
+                  >
+                    Have a question about government services?
+                  </h4>
+                  <ul
+                    class="usa-list usa-list--unstyled"
+                  >
+                    <li
+                      class="usa-footer__secondary-link"
+                    >
+                      <a
+                        href="https://www.usa.gov/"
+                      >
+                        Find a contact at USA.gov
+                      </a>
+                    </li>
+                  </ul>
+                </section>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
     <div
       class="usa-footer__secondary-section"
     >
       <div
         class="grid-container"
       >
-        <nav
-          aria-label="Footer navigation"
-          class="usa-footer__nav"
+        <div
+          class="usa-footer__logo grid-row mobile-lg:grid-col-6 mobile-lg:grid-gap-2 j40-footer-logo"
+          data-testid="footerLogo"
         >
           <div
-            class="grid-row grid-gap-4"
+            class="mobile-lg:grid-col-auto"
           >
-            <div
-              class="mobile-lg:grid-col-6 desktop:grid-col-3"
-            >
-              <section
-                class="usa-footer__primary-content usa-footer__primary-content--collapsible"
-              >
-                <h4
-                  class="usa-footer__primary-link"
-                >
-                  <div
-                    class="usa-footer__logo grid-row grid-gap-2 j40-footer-logo"
-                    data-testid="footerLogo"
-                  >
-                    <div
-                      class="grid-col-auto"
-                    >
-                      <img
-                        alt="Whitehouse logo"
-                        class="usa-footer__logo-img"
-                        src="test-file-stub"
-                      />
-                    </div>
-                    <div
-                      class="grid-col-auto"
-                    >
-                      <p
-                        class="j40-footer-logo-heading"
-                      >
-                        Council on Environmental Quality
-                      </p>
-                    </div>
-                  </div>
-                </h4>
-                <ul
-                  class="usa-list usa-list--unstyled"
-                >
-                  <li
-                    class="usa-footer__secondary-link"
-                  >
-                    <address
-                      class="usa-footer__address"
-                    >
-                      <div
-                        class="usa-footer__contact-info grid-row grid-gap"
-                      >
-                        <div
-                          class=""
-                        >
-                          730 Jackson Pl NW
-                        </div>
-                        <div
-                          class=""
-                        >
-                          Washington, D.C. 20506
-                        </div>
-                        <div
-                          class=""
-                        >
-                          (202) 395-5750
-                        </div>
-                      </div>
-                    </address>
-                  </li>
-                </ul>
-              </section>
-            </div>
-            <div
-              class="mobile-lg:grid-col-6 desktop:grid-col-3"
-            >
-              <section
-                class="usa-footer__primary-content usa-footer__primary-content--collapsible"
-              >
-                <h4
-                  class="usa-footer__primary-link"
-                >
-                  More Information
-                </h4>
-                <ul
-                  class="usa-list usa-list--unstyled"
-                >
-                  <li
-                    class="usa-footer__secondary-link"
-                  >
-                    <a
-                      href="https://www.whitehouse.gov/"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      Whitehouse.gov
-                    </a>
-                  </li>
-                  <li
-                    class="usa-footer__secondary-link"
-                  >
-                    <a
-                      href="#"
-                    >
-                      Freedom of Information Act (FOIA)
-                    </a>
-                  </li>
-                  <li
-                    class="usa-footer__secondary-link"
-                  >
-                    <a
-                      href="#"
-                    >
-                      Privacy Policy
-                    </a>
-                  </li>
-                </ul>
-              </section>
-            </div>
-            <div
-              class="mobile-lg:grid-col-6 desktop:grid-col-3"
-            >
-              <section
-                class="usa-footer__primary-content usa-footer__primary-content--collapsible"
-              >
-                <h4
-                  class="usa-footer__primary-link"
-                >
-                  Have a question about government services?
-                </h4>
-                <ul
-                  class="usa-list usa-list--unstyled"
-                >
-                  <li
-                    class="usa-footer__secondary-link"
-                  >
-                    <a
-                      href="#"
-                    >
-                      Find a contact at USA.gov
-                    </a>
-                  </li>
-                </ul>
-              </section>
-            </div>
+            <img
+              alt="Whitehouse logo"
+              class="usa-footer__logo-img"
+              src="test-file-stub"
+            />
           </div>
-        </nav>
+          <div
+            class="mobile-lg:grid-col-auto"
+          >
+            <p
+              class="j40-footer-logo-heading"
+            >
+              Council on Environmental Quality
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </footer>
