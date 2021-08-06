@@ -2,7 +2,6 @@ import click
 
 from data_pipeline.config import settings
 from data_pipeline.etl.runner import etl_runner, score_generate, score_geo
-from data_pipeline.etl.sources.census.etl import download_census_csvs
 from data_pipeline.etl.sources.census.etl_utils import (
     reset_data_directories as census_reset,
 )
