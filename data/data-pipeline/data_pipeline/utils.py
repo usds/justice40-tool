@@ -9,7 +9,7 @@ from pathlib import Path
 import requests
 import urllib3
 
-from .config import settings
+from data_pipeline.config import settings
 
 
 def get_module_logger(module_name: str) -> logging.Logger:

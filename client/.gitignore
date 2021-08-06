@@ -4,3 +4,4 @@ public
 .eslintcache
 cypress/screenshots/
 cypress/videos/
+.DS_Store
