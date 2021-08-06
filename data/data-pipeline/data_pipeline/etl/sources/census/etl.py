@@ -43,7 +43,7 @@ class CensusETL(ExtractTransformLoad):
         Returns:
             Path on disk to the file_type file corresponding to this FIPS
         """
-        file_path : Path
+        file_path: Path
         if file_type == GeoFileType.SHP:
             file_path = Path(
                 self.SHP_BASE_PATH / fips_code / f"tl_2010_{fips_code}_bg10.shp"
