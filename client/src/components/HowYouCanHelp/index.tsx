@@ -1,11 +1,23 @@
 import React from 'react';
 import {Link} from 'gatsby-plugin-intl';
+import {useIntl} from 'gatsby-plugin-intl';
+import {defineMessages} from 'react-intl';
+
 import * as styles from './howYouCanHelp.module.scss';
 
 const HowYouCanHelp = () => {
+  const intl = useIntl();
+  const messages = defineMessages({
+    youCanHelpHeader: {
+      id: 'header.howyoucanhelp',
+      defaultMessage: 'How You Can Help Improve the Tool',
+      description: 'the header of the how you can help section',
+    },
+  });
+
   return (
     <div className={styles.howYouCanHelpContainer}>
-      <h2 className={styles.howYouCanHelpHeader}>How You Can Help Improve the Tool</h2>
+      <h2 className={styles.howYouCanHelpHeader}>{intl.formatMessage(messages.youCanHelpHeader)}</h2>
       <ul className={styles.howYouCanHelpListWrapper}>
         <li className={styles.howYouCanHelpList}>
           <div className={styles.howYouCanHelpText}>If you have helpful information, we’d love to

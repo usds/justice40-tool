@@ -2,6 +2,7 @@ import {LngLatBoundsLike} from 'maplibre-gl';
 import {isMobile as isMobileReactDeviceDetect} from 'react-device-detect';
 
 // URLS
+export const DOWNLOAD_ZIP_URL = 'https://justice40-data.s3.amazonaws.com/Score/usa.zip';
 export const FEATURE_TILE_BASE_URL = 'https://d2zjid6n5ja2pt.cloudfront.net';
 const XYZ_SUFFIX = '{z}/{x}/{y}.pbf';
 export const featureURLForTilesetName = (tilesetName :string ) : string => {
