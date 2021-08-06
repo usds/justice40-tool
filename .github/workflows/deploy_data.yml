@@ -30,9 +30,7 @@ jobs:
       - name: Print poetry version
         run: poetry --version
       - name: Install dependencies
-        run: |
-          cd data/data-pipeline
-          poetry install
+        run: poetry install
       - name: Run Scripts
         run: |
           poetry run download_census
