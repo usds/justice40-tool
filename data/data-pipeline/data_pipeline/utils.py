@@ -7,7 +7,7 @@ from pathlib import Path
 import requests
 import urllib3
 
-from .config import settings
+from data_pipeline.config import settings
 
 
 def get_module_logger(module_name: str) -> logging.Logger:
@@ -97,7 +97,10 @@ def remove_all_dirs_from_dir(dir_path: Path) -> None:
 
 
 def unzip_file_from_url(
-    file_url: str, download_path: Path, unzipped_file_path: Path, verify: bool = False,
+    file_url: str,
+    download_path: Path,
+    unzipped_file_path: Path,
+    verify: bool = False,
 ) -> None:
     """Downloads a zip file from a remote URL location and unzips it in a specific directory, removing the temporary file after
 

@@ -1,10 +1,13 @@
 import click
 
-from .config import settings
-from .etl.runner import etl_runner, score_generate, score_geo
-from .etl.sources.census.etl_utils import reset_data_directories as census_reset
-from .tile.generate import generate_tiles
-from .utils import (
+from data_pipeline.config import settings
+from data_pipeline.etl.runner import etl_runner, score_generate, score_geo
+from data_pipeline.etl.sources.census.etl import download_census_csvs
+from data_pipeline.etl.sources.census.etl_utils import (
+    reset_data_directories as census_reset,
+)
+from data_pipeline.tile.generate import generate_tiles
+from data_pipeline.utils import (
     data_folder_cleanup,
     get_module_logger,
     score_folder_cleanup,
