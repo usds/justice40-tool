@@ -10,52 +10,42 @@ on: [push, pull_request]
 jobs:
   deploy_data:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: data/data-pipeline
     strategy:
       matrix:
         python-version: [3.9]
-    # defaults:
-    #   run:
-    #     working-directory: data/data-pipeline
     steps:
-    # - name: Checkout source
-    #   uses: actions/checkout@v2
-    - name: lol
-      run: "node -v"
-      # - name: Use Node.js 16
-      #   uses: actions/setup-node@v2
-      #   with:
-      #     node-version: '16'
-      #     cache: 'npm'
-      # - name: Print variables to help debug
-      #   uses: hmarr/debug-action@v2
-      # - name: Set up Python ${{ matrix.python-version }}
-      #   uses: actions/setup-python@v2
-      #   with:
-      #     python-version: ${{ matrix.python-version }}
-      
-      # - name: Setup Poetry
-      #   uses: Gr1N/setup-poetry@v4
-      # - name: Install dependencies
-      #   run: poetry install
-      # - name: Run tox
-      #   run: |
-      #     poetry run download_census
-      #     poetry run score_full
-      #     poetry run generate_tiles
-      # - name: Configure AWS Credentials
-      #   uses: aws-actions/configure-aws-credentials@v1
-      #   with:
-      #     aws-access-key-id: ${{ secrets.DATA_DEV_AWS_ACCESS_KEY_ID }}
-      #     aws-secret-access-key: ${{ secrets.DATA_DEV_AWS_SECRET_ACCESS_KEY }}
-      #     aws-region: us-east-1
-      # - name: Deploy to Geoplatform AWS
-      #   run: |
-      #     aws s3 sync ./data_pipeline/data/ s3://justice40-data/data-pipeline/data --delete
-      # - name: Update PR with Comment about deployment
-      #   uses: mshick/add-pr-comment@v1
-      #   with:
-      #     message: |
-      #       Data Synced! Find it here: s3://justice40-data/data-pipeline/data/   
-      #     repo-token: ${{ secrets.GITHUB_TOKEN }}
-      #     repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
-      #     allow-repeats: false # This is the default
+      - name: Print variables to help debug
+        uses: hmarr/debug-action@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Setup Poetry
+        uses: Gr1N/setup-poetry@v4
+      - name: Install dependencies
+        run: poetry install
+      - name: Run tox
+        run: |
+          poetry run download_census
+          poetry run score_full
+          poetry run generate_tiles
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.DATA_DEV_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.DATA_DEV_AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: Deploy to Geoplatform AWS
+        run: |
+          aws s3 sync ./data_pipeline/data/ s3://justice40-data/data-pipeline/data --delete
+      - name: Update PR with Comment about deployment
+        uses: mshick/add-pr-comment@v1
+        with:
+          message: |
+            Data Synced! Find it here: s3://justice40-data/data-pipeline/data/
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
+          allow-repeats: false # This is the default
