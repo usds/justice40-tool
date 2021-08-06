@@ -46,19 +46,21 @@ TODO add mermaid diagram
 
 #### Step 0: Set up your environment
 
-1. After cloning the project locally, change to this directory: `cd data/data-pipeline`
 1. Choose whether you'd like to run this application using Docker or if you'd like to install the dependencies locally so you can contribute to the project.
    - **With Docker:** Follow these [installation instructions](https://docs.docker.com/get-docker/) and skip down to the [Running with Docker section](#running-with-docker) for more information
    - **For Local Development:** Skip down to the [Local Development section](#local-development) for more detailed installation instructions
 
-#### (Optional) Step 0: Run the script to download census data
+#### Step 1: Run the script to download census data or download from the Justice40 S3 URL
 
-1. See instructions below for downloading census data, which is a prerequisite for running score code
+1. Call the `census_data_download` command using the application manager `application.py` **NOTE:** This may take several minutes to execute.
+   - With Docker: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application census-data-download"`
+   - With Poetry: `poetry run download_census`
+2. If you have a high speed internet connection and don't want to generate the census data or install `GDAL` locally, you can download a zip version of the Census file [here](https://justice40-data.s3.amazonaws.com/data-sources/census.zip). Then unzip and move the contents inside the `data/data-pipeline/data_pipeline/data/census/` folder/
 
-#### Step 1: Run the ETL script for each data source
+#### Step 2: Run the ETL script for each data source
 
 1. Call the `etl-run` command using the application manager `application.py` **NOTE:** This may take several minutes to execute.
-   - With Docker: `docker run --rm -it j40_data_pipeline /bin/sh -c "python3 application.py etl-run"`
+   - With Docker: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application etl-run"`
    - With Poetry: `poetry run etl`
 2. This command will execute the corresponding ETL script for each data source in `data_pipeline/etl/sources/`. For example, `data_pipeline/etl/sources/ejscreen/etl.py` is the ETL script for EJSCREEN data.
 3. Each ETL script will extract the data from its original source, then format the data into `.csv` files that get stored in the relevant folder in `data_pipeline/data/dataset/`. For example, HUD Housing data is stored in `data_pipeline/data/dataset/hud_housing/usa.csv`
@@ -66,10 +68,10 @@ TODO add mermaid diagram
 _**NOTE:** You have the option to pass the name of a specific data source to the `etl-run` command using the `-d` flag, which will limit the execution of the ETL process to that specific data source._
 _For example: `poetry run etl -- -d ejscreen` would only run the ETL process for EJSCREEN data._
 
-#### Step 2: Calculate the Justice40 score experiments
+#### Step 3: Calculate the Justice40 score experiments
 
 1. Call the `score-run` command using the application manager `application.py` **NOTE:** This may take several minutes to execute.
-   - With Docker: `docker run --rm -it j40_data_pipeline /bin/sh -c "python3 application.py score-run"`
+   - With Docker: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application score-run"`
    - With Poetry: `poetry run score`
 1. The `score-run` command will execute the `etl/score/etl.py` script which loads the data from each of the source files added to the `data/dataset/` directory by the ETL scripts in Step 1.
 1. These data sets are merged into a single dataframe using their Census Block Group GEOID as a common key, and the data in each of the columns is standardized in two ways:
@@ -77,7 +79,7 @@ _For example: `poetry run etl -- -d ejscreen` would only run the ETL process for
    - They are normalized using [min-max normalization](https://en.wikipedia.org/wiki/Feature_scaling), which adjusts the scale of the data so that the Census Block Group with the highest value for that column is set to 1, the Census Block Group with the lowest value is set to 0, and all of the other values are adjusted to fit within that range based on how close they were to the highest or lowest value.
 1. The standardized columns are then used to calculate each of the Justice40 score experiments described in greater detail below, and the results are exported to a `.csv` file in [`data/score/csv`](data/score/csv)
 
-#### Step 3: Compare the Justice40 score experiments to other indices
+#### Step 4: Compare the Justice40 score experiments to other indices
 
 We are building a comparison tool to enable easy (or at least straightforward) comparison of the Justice40 score with other existing indices. The goal of having this is so that as we experiment and iterate with a scoring methodology, we can understand how our score overlaps with or differs from other indices that communities, nonprofits, and governmentss use to inform decision making.
 
@@ -121,21 +123,21 @@ _NOTE:_ This may take several minutes or over an hour to fully execute and gener
 
 We use Docker to install the necessary libraries in a container that can be run in any operating system.
 
-To build the docker container the first time, make sure you're in the root directory of the repository and run `docker-compose build`.
+To build the docker container the first time, make sure you're in the root directory of the repository and run `docker-compose build --no-cache`.
 
 Once completed, run `docker-compose up` and then open a new tab or terminal window, and then run any command for the application using this format:
-`docker exec j40_data_pipeline_1 python3 application.py [command]`
+`docker exec j40_data_pipeline_1 python3 -m data_pipeline.application [command]`
 
 Here's a list of commands:
 
-- Get help: `docker exec j40_data_pipeline_1 python3 application.py --help"`
-- Generate census data: `docker exec j40_data_pipeline_1 python3 application.py census-data-download"`
-- Run all ETL and Generate score: `docker exec j40_data_pipeline_1 python3 application.py score-full-run`
-- Clean up the data directories: `docker exec j40_data_pipeline_1 python3 application.py data-cleanup"`
-- Run all ETL processes: `docker exec j40_data_pipeline_1 python3 application.py etl-run"`
-- Generate Score: `docker exec j40_data_pipeline_1 python3 application.py score-run"`
-- Generate Score with Geojson and high and low versions: `docker exec j40_data_pipeline_1 python3 application.py geo-score`
-- Generate Map Tiles: `docker exec j40_data_pipeline_1 python3 application.py generate-map-tiles`
+- Get help: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application --help"`
+- Generate census data: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application census-data-download"`
+- Run all ETL and Generate score: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application score-full-run`
+- Clean up the data directories: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application data-cleanup"`
+- Run all ETL processes: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application etl-run"`
+- Generate Score: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application score-run"`
+- Generate Score with Geojson and high and low versions: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application geo-score`
+- Generate Map Tiles: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application generate-map-tiles`
 
 ## Local development
 
@@ -143,8 +145,7 @@ You can run the Python code locally without Docker to develop, using Poetry. How
 
 ### Windows Users
 
-- If you want to download Census data or run tile generation, please install TippeCanoe [following these instrcutions](https://github.com/GISupportICRC/ArcGIS2Mapbox#installing-tippecanoe-on-windows).
-- If you want to generate tiles, you need some pre-requisites for Geopandas as specified in the Poetry requirements. Please follow [these instructions](https://stackoverflow.com/questions/56958421/pip-install-geopandas-on-windows) to install the Geopandas dependency locally.
+If you want to run tile generation, please install TippeCanoe [following these instrcutions](https://github.com/GISupportICRC/ArcGIS2Mapbox#installing-tippecanoe-on-windows). You also need some pre-requisites for Geopandas as specified in the Poetry requirements. Please follow [these instructions](https://stackoverflow.com/questions/56958421/pip-install-geopandas-on-windows) to install the Geopandas dependency locally.
 
 ### Setting up Poetry
 

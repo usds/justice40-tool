@@ -72,14 +72,14 @@ class CensusETL(ExtractTransformLoad):
                 f"{fips_code} shp file does not exist. Downloading and extracting shape file"
             )
 
-        # 2020 tiger data is here: https://www2.census.gov/geo/tiger/TIGER2020/BG/
-        # But using 2010 for now
-        cbg_state_url = f"https://www2.census.gov/geo/tiger/TIGER2010/BG/2010/tl_2010_{fips_code}_bg10.zip"
-        unzip_file_from_url(
-            cbg_state_url,
-            self.TMP_PATH,
-            self.DATA_PATH / "census" / "shp" / fips_code,
-        )
+            # 2020 tiger data is here: https://www2.census.gov/geo/tiger/TIGER2020/BG/
+            # But using 2010 for now
+            cbg_state_url = f"https://www2.census.gov/geo/tiger/TIGER2010/BG/2010/tl_2010_{fips_code}_bg10.zip"
+            unzip_file_from_url(
+                cbg_state_url,
+                self.TMP_PATH,
+                self.DATA_PATH / "census" / "shp" / fips_code,
+            )
 
     def extract(self) -> None:
         logger.info("Downloading Census Data")

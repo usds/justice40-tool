@@ -18,11 +18,6 @@ def etl_runner(dataset_to_run: str = None) -> None:
     # this list comes from YAMLs
     dataset_list = [
         {
-            "name": "census",
-            "module_dir": "census",
-            "class_name": "CensusETL",
-        },
-        {
             "name": "tree_equity_score",
             "module_dir": "tree_equity_score",
             "class_name": "TreeEquityScoreETL",
