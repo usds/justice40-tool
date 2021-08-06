@@ -2,7 +2,6 @@ import click
 
 from .config import settings
 from .etl.runner import etl_runner, score_generate, score_geo
-from .etl.sources.census.etl import download_census_csvs
 from .etl.sources.census.etl_utils import reset_data_directories as census_reset
 from .tile.generate import generate_tiles
 from .utils import (
@@ -59,7 +58,7 @@ def census_data_download():
     census_reset(data_path)
 
     logger.info("Downloading census data")
-    download_census_csvs(data_path)
+    etl_runner("census")
 
     logger.info("Completed downloading census data")
 
