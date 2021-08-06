@@ -17,6 +17,8 @@ jobs:
       matrix:
         python-version: [3.9]
     steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
       - name: Print variables to help debug
         uses: hmarr/debug-action@v2
       - name: Set up Python ${{ matrix.python-version }}
