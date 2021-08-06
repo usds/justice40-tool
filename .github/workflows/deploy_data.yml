@@ -25,10 +25,8 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Setup Poetry
         uses: Gr1N/setup-poetry@v7
-      - name: Source Poetry HOME and print version
-        run: |
-          source $HOME/.poetry/env 
-          poetry --version
+      - name: Print poetry version
+        run: poetry --version
       - name: Install dependencies
         run: |
           cd data/data-pipeline
