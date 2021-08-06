@@ -40,8 +40,7 @@ jobs:
       - name: Run Scripts
         run: |
           poetry run download_census
-          poetry run score_full
-          poetry run generate_tiles
+          poetry run etl_and_score
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
