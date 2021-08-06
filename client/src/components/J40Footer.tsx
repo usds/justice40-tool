@@ -4,6 +4,7 @@ import {
   Footer,
   FooterNav,
   Logo,
+  GridContainer, Grid,
 } from '@trussworks/react-uswds';
 import {} from '@trussworks/react-uswds';
 import {useIntl} from 'gatsby-plugin-intl';
@@ -57,83 +58,78 @@ const J40Footer = () => {
     },
   });
 
+  // see https://designsystem.digital.gov/components/footer/
   return (
     <>
       <Footer
         size="big"
         className={'j40-footer'}
-        primary={<></>}
-        secondary={<FooterNav
-          aria-label={intl.formatMessage(messages.arialabelfooter)}
-          size="big" // fyi you leave this off and it silently fails...
-          links={[
-            [
-              <div key={'fnkey'} className={'j40-centerfootercolumn'}>
-                <div
-                  key={'centerfootercolumnlogo'}
-                  className={'j40-centerfootercolumn'}>
-                  <Logo
-                    size="slim"
-                    key={'logoimg'}
-                    className={'j40-footer-logo'}
-                    image={
-                      <img
-                        className={'usa-footer__logo-img'}
-                        src={whitehouseIcon}
-                        alt={intl.formatMessage(messages.whitehouselogoalt)}/>
-                    }
-                    heading={<p
-                      className={'j40-footer-logo-heading'}>
-                      {intl.formatMessage(messages.logotitle)}</p>}
-                  />
-                </div>
-                <div
-                  key={'centerfootercolumnaddr'}
-                  className={'j40-centerfootercolumn'}>
+        primary={
+          <GridContainer><Grid>
+            <FooterNav
+              aria-label={intl.formatMessage(messages.arialabelfooter)}
+              size="big" // fyi you leave this off and it silently fails...
+              links={[
+                ['Contacts',
                   <Address
                     key={'footeraddress'}
                     className={'j40-footer-address'}
+                    size={'big'}
                     items={[
                       '730 Jackson Pl NW',
                       'Washington, D.C. 20506',
                       '(202) 395-5750',
                     ]}
-                  />
-                </div>
-              </div>,
-            ],
-            [
-              intl.formatMessage(messages.moreinfoheader),
-              <a
-                key={'whitehouselink2'}
-                href={'https://www.whitehouse.gov/'}
-                target={'_blank'}
-                rel={'noreferrer'}>Whitehouse.gov</a>,
-              <a
-                key="foialink"
-                target={'_blank'}
-                rel={'noreferrer'}
-                href={'https://www.whitehouse.gov/ceq/foia'}>
-                {intl.formatMessage(messages.foia)}
-              </a>,
-              <a
-                key={'privacylink'}
-                target={'_blank'}
-                rel={'noreferrer'}
-                href={'https://www.whitehouse.gov/privacy/'}>
-                {intl.formatMessage(messages.privacy)}
-              </a>,
-            ],
-            [
-              intl.formatMessage(messages.questionsheader),
-              <a
-                key={'contactlink'}
-                href={'https://www.usa.gov/'}>
-                {intl.formatMessage(messages.contactlink)}
-              </a>,
-            ],
-          ]}
-        />}
+                  />,
+                ],
+                [
+                  intl.formatMessage(messages.moreinfoheader),
+                  <a
+                    key={'whitehouselink2'}
+                    href={'https://www.whitehouse.gov/'}
+                    target={'_blank'}
+                    rel={'noreferrer'}>Whitehouse.gov</a>,
+                  <a
+                    key="foialink"
+                    target={'_blank'}
+                    rel={'noreferrer'}
+                    href={'https://www.whitehouse.gov/ceq/foia'}>
+                    {intl.formatMessage(messages.foia)}
+                  </a>,
+                  <a
+                    key={'privacylink'}
+                    target={'_blank'}
+                    rel={'noreferrer'}
+                    href={'https://www.whitehouse.gov/privacy/'}>
+                    {intl.formatMessage(messages.privacy)}
+                  </a>,
+                ],
+                [
+                  intl.formatMessage(messages.questionsheader),
+                  <a
+                    key={'contactlink'}
+                    href={'https://www.usa.gov/'}>
+                    {intl.formatMessage(messages.contactlink)}
+                  </a>,
+                ],
+              ]}
+            />
+          </Grid></GridContainer>}
+        secondary={
+          <Logo
+            size="medium"
+            key={'logoimg'}
+            className={'j40-footer-logo'}
+            image={
+              <img
+                className={'usa-footer__logo-img'}
+                src={whitehouseIcon}
+                alt={intl.formatMessage(messages.whitehouselogoalt)}/>
+            }
+            heading={<p
+              className={'j40-footer-logo-heading'}>
+              {intl.formatMessage(messages.logotitle)}</p>}
+          />}
       />
     </>
   );

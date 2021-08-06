@@ -165,16 +165,15 @@ $primary-color: #112f4e;
 
 .j40-footer {
   .j40-footer-logo {
-    text-align: center;
-    display: inline-block;
+    font-weight: bold;
   }
 
   .j40-footer-address {
-    .usa-footer__contact-info, .j40-centerfootercolumn {
-      line-height: 1.5;
-      text-align: center;
-      display: inline-block;
+    .usa-footer__contact-info {
       font-weight: normal;
+      text-align: left;
+      display: inline-block;
+      line-height: 1.5;
     }
   }
 }
