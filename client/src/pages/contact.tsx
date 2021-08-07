@@ -14,7 +14,7 @@ const ContactPage = ({location}: ContactPageProps) => {
 
   return (<Layout location={location}>
     <J40MainGridContainer>
-      <Grid row>
+      <Grid row><Grid col>
         <section className={'usa-prose'}>
           <h2><FormattedMessage
             id={'contact.pageheader'}
@@ -50,7 +50,7 @@ const ContactPage = ({location}: ContactPageProps) => {
               }}/>
           </p>
         </section>
-      </Grid>
+      </Grid></Grid>
     </J40MainGridContainer>
   </Layout>
   );

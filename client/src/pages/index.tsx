@@ -22,9 +22,9 @@ const IndexPage = ({location}: IndexPageProps) => {
     presidentalLinkUri: {
       id: 'index.presidentalLinkUri',
       defaultMessage: 'https://www.whitehouse.gov/briefing-room/' +
-                      'presidential-actions/2021/01/27/' +
-                      'executive-order-on-tackling-the-climate-' +
-                      'crisis-at-home-and-abroad/',
+        'presidential-actions/2021/01/27/' +
+        'executive-order-on-tackling-the-climate-' +
+        'crisis-at-home-and-abroad/',
       description: 'Link url to presidential actions executive order. Part of paragraph 3',
     },
     presidentalLinkLabel: {
@@ -51,7 +51,7 @@ const IndexPage = ({location}: IndexPageProps) => {
 
   return (<Layout location={location}>
     <J40MainGridContainer>
-      <Grid row>
+      <Grid row><Grid col>
         <section className={'usa-prose'}>
           <h1>{intl.formatMessage(messages.aboutHeader)}</h1>
 
@@ -67,7 +67,7 @@ const IndexPage = ({location}: IndexPageProps) => {
           `}/></p>
 
           <p><FormattedMessage
-            id='index.aboutContent.p2'
+            id="index.aboutContent.p2"
             description={'paragraph 2 of main content on index page'}
             defaultMessage={`
             Federal agencies will prioritize benefits using a new
@@ -90,11 +90,14 @@ const IndexPage = ({location}: IndexPageProps) => {
           Read more about the Justice40 Initiative in President Biden’s 
           {presidentLink}
           `}
-            values={{presidentLink:
-              <a href={intl.formatMessage(messages.presidentalLinkUri)}
-                target='_blank'
-                rel='noreferrer'>{intl.formatMessage(messages.presidentalLinkLabel)}
-              </a>}}/>
+            values={{
+              presidentLink:
+                <a
+                  href={intl.formatMessage(messages.presidentalLinkUri)}
+                  target="_blank"
+                  rel="noreferrer">{intl.formatMessage(messages.presidentalLinkLabel)}
+                </a>,
+            }}/>
           </p>
 
           <h2><FormattedMessage
@@ -102,7 +105,7 @@ const IndexPage = ({location}: IndexPageProps) => {
             description={'section 2 header'}
             defaultMessage={'Areas of Focus'}/></h2>
 
-          <AreasOfFocusList />
+          <AreasOfFocusList/>
 
           <h2><FormattedMessage
             id={'index.section3.header'}
@@ -130,7 +133,8 @@ const IndexPage = ({location}: IndexPageProps) => {
               who’s interested can be involved in the tool-building
               process.`}
               values={{
-                inlineHeader: <i>{intl.formatMessage(messages.transparentLabel)}</i>,
+                inlineHeader:
+                  <i>{intl.formatMessage(messages.transparentLabel)}</i>,
               }}/>
           </p>
 
@@ -147,7 +151,8 @@ const IndexPage = ({location}: IndexPageProps) => {
               to understand their needs and ask for their input.
           `}
               values={{
-                inlineHeader: <i>{intl.formatMessage(messages.inclusiveLabel)}</i>,
+                inlineHeader:
+                  <i>{intl.formatMessage(messages.inclusiveLabel)}</i>,
               }}/>
           </p>
 
@@ -169,11 +174,12 @@ const IndexPage = ({location}: IndexPageProps) => {
               engagement.
           `}
               values={{
-                inlineHeader: <i>{intl.formatMessage(messages.iterativeLabel)}</i>,
+                inlineHeader:
+                  <i>{intl.formatMessage(messages.iterativeLabel)}</i>,
               }}/>
           </p>
         </section>
-      </Grid>
+      </Grid></Grid>
     </J40MainGridContainer>
   </Layout>);
 };

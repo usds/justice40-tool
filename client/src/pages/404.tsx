@@ -33,14 +33,14 @@ const codeStyles = {
 const NotFoundPage = () => {
   return (<Layout location={location}>
     <J40MainGridContainer>
-      <Grid row>
+      <Grid row><Grid col>
         <h1 style={headingStyles}>Page not found</h1>
-      </Grid>
-      <Grid row>
+      </Grid></Grid>
+      <Grid row><Grid col>
         <p style={paragraphStyles}>
             Sorry{' '}
           <span role="img" aria-label="Pensive emoji">
-          😔
+            😔
           </span>{' '}
             we couldn’t find what you were looking for.
           <br/>
@@ -55,7 +55,7 @@ const NotFoundPage = () => {
           <br/>
           <Link to="/">Go home</Link>.
         </p>
-      </Grid>
+      </Grid></Grid>
     </J40MainGridContainer>
   </Layout>
   );

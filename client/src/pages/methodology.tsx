@@ -12,13 +12,14 @@ interface MethodPageProps {
 const IndexPage = ({location}: MethodPageProps) => {
   return (<Layout location={location}>
     <J40MainGridContainer>
-      <Grid row>
+      <Grid row><Grid col>
         <section>
           <h1>Methodology</h1>
           <p>
             The Just Progress tool combines demographic, environmental, and
             socio-economic data to generate a cumulative index score, referred
-            to as the Just Progress Index. The tool currently utilizes national,
+            to as the Just Progress Index. The tool currently utilizes
+            national,
             publically-available data from the United States Census Bureau’s
             American Community Survey (ACS) and the EPA’s EJScreen tool.
           </p>
@@ -28,7 +29,8 @@ const IndexPage = ({location}: MethodPageProps) => {
           </p>
           <p>
             Pollution Burden: health risks arising from proximity and
-            potential exposures to pollution and other adverse environmental conditions
+            potential exposures to pollution and other adverse environmental
+            conditions
           </p>
           <p>
             Demographics: sensitive populations and socioeconomic factors that
@@ -39,12 +41,13 @@ const IndexPage = ({location}: MethodPageProps) => {
               Index</b>
           </p>
         </section>
-      </Grid>
+      </Grid></Grid>
     </J40MainGridContainer>
+
     <J40MainGridContainer fullWidth={true}>
-      <Grid row className="j40-no-flex">
+      <Grid row><Grid col>
         <DatasetContainer/>
-      </Grid>
+      </Grid></Grid>
     </J40MainGridContainer>
   </Layout>);
 };

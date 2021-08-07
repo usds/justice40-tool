@@ -17,7 +17,7 @@ const CEJSTPage = ({location}: IMapPageProps) => {
   //   We will bring back later when we have interactive controls.
   return (<Layout location={location}>
     <J40MainGridContainer>
-      <Grid row>
+      <Grid row><Grid col>
         <section>
           <h2>Just Progress communities</h2>
           <div className={styles.disclaimer}>
@@ -42,7 +42,8 @@ const CEJSTPage = ({location}: IMapPageProps) => {
               </p>
               <p>
                 Download the Just Progress packet or explore the map below to
-                see the list of prioritized communities. To learn more about how
+                see the list of prioritized communities. To learn more about
+                how
                 these communities were prioritized check out the
                 &nbsp;
                 <a
@@ -56,17 +57,19 @@ const CEJSTPage = ({location}: IMapPageProps) => {
             <DownloadPacket/>
           </div>
         </section>
-      </Grid>
-      <Grid row className="j40-no-flex">
+      </Grid></Grid>
+
+      <Grid row><Grid col>
         <section>
           <MapWrapper location={location}/>
         </section>
-      </Grid>
-      <Grid row>
+      </Grid></Grid>
+
+      <Grid row><Grid col>
         <section>
           <HowYouCanHelp/>
         </section>
-      </Grid>
+      </Grid></Grid>
     </J40MainGridContainer>
   </Layout>);
 };
