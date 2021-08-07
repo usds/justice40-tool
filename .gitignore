@@ -148,3 +148,4 @@ node_modules
 
 # pyenv
 .python-version
+.DS_Store
