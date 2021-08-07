@@ -28,7 +28,7 @@ const MapWrapper = ({location}: IMapWrapperProps) => {
   });
   return (
     <>
-      <J40Alert location={location}/>
+      <J40Alert alertStyle={{'padding-left': '1rem'}}/>
       <J40Map location={location}/>
       <div className={styles.mapCaptionTextLink}>
         <a href={constants.DOWNLOAD_ZIP_URL}>

@@ -3,12 +3,13 @@ import {useIntl} from 'gatsby-plugin-intl';
 import {defineMessages} from 'react-intl';
 import * as styles from './j40Alert.module.scss';
 
+// This prop follows an inversion of control pattern allowing the user of this component to specify
+// how it's rendered. See more here: https://kentcdodds.com/blog/inversion-of-control
 interface IJ40AlertProps {
-  location: Location;
+  alertStyle?: {[key:string]: string};
 }
 
-const J40Alert = ({location}:IJ40AlertProps) => {
-  const isPadded = location?.pathname.match(/cejst\/?/);
+const J40Alert = ({alertStyle}:IJ40AlertProps) => {
   const intl = useIntl();
   const messages = defineMessages({
     alertMsg: {
@@ -18,7 +19,7 @@ const J40Alert = ({location}:IJ40AlertProps) => {
     },
   });
   return (
-    <div className={isPadded ? styles.j40AlertLeftPad : styles.j40Alert}>
+    <div className={styles.j40Alert} style={alertStyle}>
       {intl.formatMessage(messages.alertMsg)}
     </div>
   );

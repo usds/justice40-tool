@@ -67,6 +67,11 @@ const MapLegend = () => {
       defaultMessage: constants.THRESHOLD_COMMUNITY,
       description: 'the label of the threshold community legend',
     },
+    legendLabel: {
+      id: 'legend.colorkey.label',
+      defaultMessage: 'COLOR KEY',
+      description: 'the label of the key in the legend',
+    },
   });
 
   // Type definitions required for @trussworks tooltip. This type defines the div that wraps the icon.
@@ -87,7 +92,7 @@ const MapLegend = () => {
 
   return (
     <div className={styles.legendContainer}>
-      <h3 className={styles.legendHeader}>COLOR KEY</h3>
+      <h3 className={styles.legendHeader}>{intl.formatMessage(messages.legendLabel)}</h3>
       <div className={styles.swatchContainer}>
         <div className={styles.legendItem}>
           <div className={styles.colorSwatch} id={styles.prioritized} />
