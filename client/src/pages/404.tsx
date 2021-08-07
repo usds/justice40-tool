@@ -29,8 +29,12 @@ const codeStyles = {
   borderRadius: 4,
 };
 
+interface I404PageProps {
+  location: Location;
+}
+
 // markup
-const NotFoundPage = () => {
+const NotFoundPage =({location}: I404PageProps) => {
   return (<Layout location={location}>
     <J40MainGridContainer>
       <Grid row><Grid col>
