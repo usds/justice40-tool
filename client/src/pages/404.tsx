@@ -5,12 +5,6 @@ import {Link} from 'gatsby-plugin-intl';
 import {Grid} from '@trussworks/react-uswds';
 
 // styles
-// const pageStyles = {
-//   color: '#232129',
-//   padding: '96px',
-//   fontFamily: '-apple-system, Roboto, sans-serif, serif',
-// };
-
 const headingStyles = {
   marginTop: 32,
   marginBottom: 64,
@@ -29,8 +23,12 @@ const codeStyles = {
   borderRadius: 4,
 };
 
+interface I404PageProps {
+  location: Location;
+}
+
 // markup
-const NotFoundPage = () => {
+const NotFoundPage =({location}: I404PageProps) => {
   return (<Layout location={location}>
     <J40MainGridContainer>
       <Grid row><Grid col>

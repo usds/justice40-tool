@@ -1,7 +1,7 @@
 import React from 'react';
 import {GridContainer, Grid} from '@trussworks/react-uswds';
 
-const ScoreProgressStepsList = () => {
+const ScoreStepsList = () => {
   return (<>
     <div className={'j40-process-list-wrapper'}>
       <ul>
@@ -85,4 +85,4 @@ const ScoreProgressStepsList = () => {
   );
 };
 
-export default ScoreProgressStepsList;
+export default ScoreStepsList;

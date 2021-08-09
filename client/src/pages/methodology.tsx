@@ -2,8 +2,8 @@ import * as React from 'react';
 import Layout from '../components/layout';
 import DatasetContainer from '../components/DatasetContainer';
 import J40MainGridContainer from '../components/J40MainGridContainer';
+import scoreStepsList from '../components/scoreStepsList';
 import {Grid} from '@trussworks/react-uswds';
-import ScoreProgressStepsList from '../components/scoreStepsList';
 
 interface MethodPageProps {
   location: Location;
@@ -53,7 +53,7 @@ const IndexPage = ({location}: MethodPageProps) => {
 
     <J40MainGridContainer>
       <Grid row><Grid col>
-        <ScoreProgressStepsList/>
+        <scoreStepsList/>
       </Grid></Grid>
     </J40MainGridContainer>
   </Layout>);

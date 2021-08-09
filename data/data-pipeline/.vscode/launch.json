@@ -1,0 +1,71 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Score Run",
+      "type": "python",
+      "request": "launch",
+      "module": "data_pipeline.application",
+      "args": ["score-run"]
+    },
+    {
+      "name": "Data Cleanup",
+      "type": "python",
+      "request": "launch",
+      "module": "data_pipeline.application",
+      "args": ["data-cleanup"]
+    },
+    {
+      "name": "Census Cleanup",
+      "type": "python",
+      "request": "launch",
+      "module": "data_pipeline.application",
+      "args": ["census-cleanup"]
+    },
+    {
+      "name": "Download Census",
+      "type": "python",
+      "request": "launch",
+      "module": "data_pipeline.application",
+      "args": ["census-data-download"]
+    },
+    {
+      "name": "Score Full Run",
+      "type": "python",
+      "request": "launch",
+      "module": "data_pipeline.application",
+      "args": ["score-full-run"]
+    },
+    {
+      "name": "Generate Map Tiles",
+      "type": "python",
+      "request": "launch",
+      "module": "data_pipeline.application",
+      "args": ["generate-map-tiles"]
+    },
+    {
+      "name": "ETL Run",
+      "type": "python",
+      "request": "launch",
+      "module": "data_pipeline.application",
+      "args": ["etl-run"]
+    },
+    {
+      "name": "poetry install",
+      "type": "python",
+      "request": "launch",
+      "module": "poetry",
+      "args": ["install"]
+    },
+    {
+      "name": "poetry update",
+      "type": "python",
+      "request": "launch",
+      "module": "poetry",
+      "args": ["update"]
+    }
+  ]
+}
