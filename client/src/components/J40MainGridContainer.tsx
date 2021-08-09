@@ -13,17 +13,17 @@ const J40MainGridContainer = ({
   children,
   fullWidth = false,
   className = 'j40-grid-container'}: ILayoutProps) => {
-  return !fullWidth ? (
+  return fullWidth ? (
+    <div
+      className={'j40-grid-container ' + className}>
+      {children}
+    </div>
+  ) : (
     <GridContainer
       containerSize={'desktop-lg'}
       className={'j40-grid-container ' + className}>
       {children}
     </GridContainer>
-  ) : (
-    <div
-      className={'j40-grid-container ' + className}>
-      {children}
-    </div>
   );
 };
 

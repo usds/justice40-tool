@@ -5,12 +5,6 @@ import {Link} from 'gatsby-plugin-intl';
 import {Grid} from '@trussworks/react-uswds';
 
 // styles
-// const pageStyles = {
-//   color: '#232129',
-//   padding: '96px',
-//   fontFamily: '-apple-system, Roboto, sans-serif, serif',
-// };
-
 const headingStyles = {
   marginTop: 32,
   marginBottom: 64,
