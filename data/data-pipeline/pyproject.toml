@@ -23,6 +23,7 @@ black = {version = "^21.6b0", allow-prereleases = true}
 flake8 = "^3.9.2"
 liccheck = "^0.6.2"
 mypy = "^0.910"
+openpyxl = "^3.0.7"
 pylint = "^2.9.6"
 pytest = "^6.2.4"
 safety = "^1.10.3"
@@ -100,6 +101,7 @@ authorized_licenses = [
 ]
 
 [tool.poetry.scripts]
+cleanup_census = 'data_pipeline.application:census_cleanup'
 cleanup_data = 'data_pipeline.application:data_cleanup'
 download_census = 'data_pipeline.application:census_data_download'
 etl = 'data_pipeline.application:etl_run'
