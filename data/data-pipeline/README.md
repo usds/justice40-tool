@@ -153,7 +153,7 @@ Here's whats included:
 
 1. `launch.json` - launch commands that allow for debugging the various commands in `application.py`. Note that because we are using the otherwise excellent [Click CLI](https://click.palletsprojects.com/en/8.0.x/), and Click in turn uses `console_scripts` to parse and execute command line options, it is necessary to run the equivalent of `python -m data_pipeline.application [command]` within `launch.json` to be able to set and hit breakpoints (this is what is currently implemented. Otherwise, you may find that the script times out after 5 seconds. More about this [here](https://stackoverflow.com/questions/64556874/how-can-i-debug-python-console-script-command-line-apps-with-the-vscode-debugger).
 
-2. `settings.json` - these ensure that you're using the default virtual environment (`"${workspaceFolder}/.venv/bin/python"`), linter (`pylint`), formatter (`flake8`), and test library (`pytest`) that the team is using.
+2. `settings.json` - these ensure that you're using the default linter (`pylint`), formatter (`flake8`), and test library (`pytest`) that the team is using.
 
 3. `tasks.json` - these enable you to use `Terminal->Run Task` to run our preferred formatters and linters within your project.
 
