@@ -10,13 +10,15 @@
     - [Score generation and comparison workflow](#score-generation-and-comparison-workflow)
       - [Workflow Diagram](#workflow-diagram)
       - [Step 0: Set up your environment](#step-0-set-up-your-environment)
-      - [(Optional) Step 0: Run the script to download census data](#optional-step-0-run-the-script-to-download-census-data)
-      - [Step 1: Run the ETL script for each data source](#step-1-run-the-etl-script-for-each-data-source)
-      - [Step 2: Calculate the Justice40 score experiments](#step-2-calculate-the-justice40-score-experiments)
-      - [Step 3: Compare the Justice40 score experiments to other indices](#step-3-compare-the-justice40-score-experiments-to-other-indices)
+      - [Step 1: Run the script to download census data or download from the Justice40 S3 URL](#step-1-run-the-script-to-download-census-data-or-download-from-the-justice40-s3-url)
+      - [Step 2: Run the ETL script for each data source](#step-2-run-the-etl-script-for-each-data-source)
+      - [Step 3: Calculate the Justice40 score experiments](#step-3-calculate-the-justice40-score-experiments)
+      - [Step 4: Compare the Justice40 score experiments to other indices](#step-4-compare-the-justice40-score-experiments-to-other-indices)
     - [Data Sources](#data-sources)
   - [Running using Docker](#running-using-docker)
   - [Local development](#local-development)
+    - [VSCode](#vscode)
+    - [MacOS](#macos)
     - [Windows Users](#windows-users)
     - [Setting up Poetry](#setting-up-poetry)
     - [Downloading Census Block Groups GeoJSON and Generating CBG CSVs](#downloading-census-block-groups-geojson-and-generating-cbg-csvs)
@@ -141,7 +143,28 @@ Here's a list of commands:
 
 ## Local development
 
-You can run the Python code locally without Docker to develop, using Poetry. However, to generate the census data you will need the [GDAL library](https://github.com/OSGeo/gdal) installed locally. Also to generate tiles for a local map, you will need [Mapbox tippeanoe](https://github.com/mapbox/tippecanoe). Please refer to the repos for specific instructions for your OS.
+You can run the Python code locally without Docker to develop, using Poetry. However, to generate the census data you will need the [GDAL library](https://github.com/OSGeo/gdal) installed locally. Also to generate tiles for a local map, you will need [Mapbox tippecanoe](https://github.com/mapbox/tippecanoe). Please refer to the repos for specific instructions for your OS.
+
+### VSCode
+
+If you are using VSCode, you can make use of the `.vscode` folder checked in under `data/data-pipeline/.vscode`. To do this, open this directory with `code data/data-pipeline` .
+
+Here's whats included:
+
+1. `launch.json` - launch commands that allow for debugging the various commands in `application.py`. Note that because we are using the otherwise excellent [Click CLI](https://click.palletsprojects.com/en/8.0.x/), and Click in turn uses `console_scripts` to parse and execute command line options, it is necessary to run the equivalent of `python -m data_pipeline.application [command]` within `launch.json` to be able to set and hit breakpoints (this is what is currently implemented. Otherwise, you may find that the script times out after 5 seconds. More about this [here](https://stackoverflow.com/questions/64556874/how-can-i-debug-python-console-script-command-line-apps-with-the-vscode-debugger).
+
+2. `settings.json` - these ensure that you're using the default virtual environment (`"${workspaceFolder}/.venv/bin/python"`), linter (`pylint`), formatter (`flake8`), and test library (`pytest`) that the team is using.
+
+3. `tasks.json` - these enable you to use `Terminal->Run Task` to run our preferred formatters and linters within your project.
+
+Users are instructed to only add settings to this file that should be shared across the team, and not to add settings here that only apply to local development environments (particularly full absolute paths which can differ between setups). If you are looking to add something to this file, check in with the rest of the team to ensure the proposed settings should be shared.
+
+### MacOS
+
+To install the above-named executables:
+
+- gdal: `brew install gdal`
+- Tippecanoe: `brew install tippecanoe`
 
 ### Windows Users
 
