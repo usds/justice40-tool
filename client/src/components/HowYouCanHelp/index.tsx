@@ -9,7 +9,7 @@ const HowYouCanHelp = () => {
   const intl = useIntl();
   const messages = defineMessages({
     youCanHelpHeader: {
-      id: 'header.howyoucanhelp',
+      id: 'howYouCanHelp.header.text',
       defaultMessage: 'How You Can Help Improve the Tool',
       description: 'the header of the how you can help section',
     },

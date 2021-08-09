@@ -1,6 +1,5 @@
 import React from 'react';
 import {useIntl} from 'gatsby-plugin-intl';
-import {defineMessages} from 'react-intl';
 import {Tooltip} from '@trussworks/react-uswds';
 
 import * as styles from './mapLegend.module.scss';
@@ -56,23 +55,6 @@ import infoIcon from '/node_modules/uswds/dist/img/usa-icons/info_outline.svg';
 
 const MapLegend = () => {
   const intl = useIntl();
-  const messages = defineMessages({
-    priorityLabel: {
-      id: 'legend.info.priority.label',
-      defaultMessage: constants.PRIORITIZED_COMMUNITY,
-      description: 'the label of the prioritized community legend',
-    },
-    thresholdLabel: {
-      id: 'legend.info.threshold.label',
-      defaultMessage: constants.THRESHOLD_COMMUNITY,
-      description: 'the label of the threshold community legend',
-    },
-    legendLabel: {
-      id: 'legend.colorkey.label',
-      defaultMessage: 'COLOR KEY',
-      description: 'the label of the key in the legend',
-    },
-  });
 
   // Type definitions required for @trussworks tooltip. This type defines the div that wraps the icon.
   // This allows to pass children and other attributes.
@@ -92,11 +74,11 @@ const MapLegend = () => {
 
   return (
     <div className={styles.legendContainer}>
-      <h3 className={styles.legendHeader}>{intl.formatMessage(messages.legendLabel)}</h3>
+      <h3 className={styles.legendHeader}>{intl.formatMessage(constants.EXPLORE_TOOL_PAGE_TEXT.LEGEND_LABEL)}</h3>
       <div className={styles.swatchContainer}>
         <div className={styles.legendItem}>
           <div className={styles.colorSwatch} id={styles.prioritized} />
-          <span>{intl.formatMessage(messages.priorityLabel)}</span>
+          <span>{intl.formatMessage(constants.EXPLORE_TOOL_PAGE_TEXT.PRIORITY_LABEL)}</span>
 
           {/* Using @trussworks tooltip */}
           <Tooltip<IconWrapperProps>
@@ -113,7 +95,7 @@ const MapLegend = () => {
         </div>
         <div className={styles.legendItem}>
           <div className={styles.colorSwatch} id={styles.threshold} />
-          <span>{intl.formatMessage(messages.thresholdLabel)}</span>
+          <span>{intl.formatMessage(constants.EXPLORE_TOOL_PAGE_TEXT.THRESHOLD_LABEL)}</span>
 
           {/* Using @trussworks tooltip */}
           <Tooltip<IconWrapperProps>
