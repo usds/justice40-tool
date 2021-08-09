@@ -1,8 +1,10 @@
 import * as React from 'react';
 import Layout from '../components/layout';
 import AreasOfFocusList from '../components/areasOfFocusList';
+import J40MainGridContainer from '../components/J40MainGridContainer';
 import {FormattedMessage, useIntl} from 'gatsby-plugin-intl';
 import {defineMessages} from 'react-intl';
+import {Grid} from '@trussworks/react-uswds';
 
 interface IndexPageProps {
   location: Location;
@@ -20,9 +22,9 @@ const IndexPage = ({location}: IndexPageProps) => {
     presidentalLinkUri: {
       id: 'index.presidentalLinkUri',
       defaultMessage: 'https://www.whitehouse.gov/briefing-room/' +
-                      'presidential-actions/2021/01/27/' +
-                      'executive-order-on-tackling-the-climate-' +
-                      'crisis-at-home-and-abroad/',
+        'presidential-actions/2021/01/27/' +
+        'executive-order-on-tackling-the-climate-' +
+        'crisis-at-home-and-abroad/',
       description: 'Link url to presidential actions executive order. Part of paragraph 3',
     },
     presidentalLinkLabel: {
@@ -48,13 +50,15 @@ const IndexPage = ({location}: IndexPageProps) => {
   });
 
   return (<Layout location={location}>
-    <section className={'usa-prose'}>
-      <h1>{intl.formatMessage(messages.aboutHeader)}</h1>
+    <J40MainGridContainer>
+      <Grid row><Grid col>
+        <section className={'usa-prose'}>
+          <h1>{intl.formatMessage(messages.aboutHeader)}</h1>
 
-      <p><FormattedMessage
-        id={'index.aboutContent.p1'}
-        description={'paragraph 1 of main content on index page'}
-        defaultMessage={`
+          <p><FormattedMessage
+            id={'index.aboutContent.p1'}
+            description={'paragraph 1 of main content on index page'}
+            defaultMessage={`
             In an effort to address historical environmental injustices,
             President Biden created the Justice40 Initiative on January
             27, 2021. The Justice40 Initiative directs 40% of the
@@ -62,10 +66,10 @@ const IndexPage = ({location}: IndexPageProps) => {
             overburdened and underserved communities.
           `}/></p>
 
-      <p><FormattedMessage
-        id='index.aboutContent.p2'
-        description={'paragraph 2 of main content on index page'}
-        defaultMessage={`
+          <p><FormattedMessage
+            id="index.aboutContent.p2"
+            description={'paragraph 2 of main content on index page'}
+            defaultMessage={`
             Federal agencies will prioritize benefits using a new
             climate and economic justice screening tool. This screening
             tool will be a map that visualizes data to compare the
@@ -79,62 +83,66 @@ const IndexPage = ({location}: IndexPageProps) => {
           the lived experiences of community members.
         `}/></p>
 
-      <p><FormattedMessage
-        id={'index.aboutContent.p3'}
-        description={'paragraph 3 of main content on index page'}
-        defaultMessage={`
+          <p><FormattedMessage
+            id={'index.aboutContent.p3'}
+            description={'paragraph 3 of main content on index page'}
+            defaultMessage={`
           Read more about the Justice40 Initiative in President Biden’s 
           {presidentLink}
           `}
-        values={{presidentLink:
-              <a href={intl.formatMessage(messages.presidentalLinkUri)}
-                target='_blank'
-                rel='noreferrer'>{intl.formatMessage(messages.presidentalLinkLabel)}
-              </a>}}/>
-      </p>
+            values={{
+              presidentLink:
+                <a
+                  href={intl.formatMessage(messages.presidentalLinkUri)}
+                  target="_blank"
+                  rel="noreferrer">{intl.formatMessage(messages.presidentalLinkLabel)}
+                </a>,
+            }}/>
+          </p>
 
-      <h2><FormattedMessage
-        id={'index.section2.header'}
-        description={'section 2 header'}
-        defaultMessage={'Areas of Focus'}/></h2>
+          <h2><FormattedMessage
+            id={'index.section2.header'}
+            description={'section 2 header'}
+            defaultMessage={'Areas of Focus'}/></h2>
 
-      <AreasOfFocusList />
+          <AreasOfFocusList/>
 
-      <h2><FormattedMessage
-        id={'index.section3.header'}
-        description={'section 3 header'}
-        defaultMessage={'A Transparent, Community-First Approach'}/></h2>
+          <h2><FormattedMessage
+            id={'index.section3.header'}
+            description={'section 3 header'}
+            defaultMessage={'A Transparent, Community-First Approach'}/></h2>
 
-      <p><FormattedMessage
-        id={'index.section3.intro'}
-        description={'section 3 content paragraph 1 intro'}
-        defaultMessage={`
+          <p><FormattedMessage
+            id={'index.section3.intro'}
+            description={'section 3 content paragraph 1 intro'}
+            defaultMessage={`
             Successful initiatives are guided by direct input from the
             communities they are serving. CEQ commits to transparency,
             inclusivity, and iteration in building this screening tool.`}/>
-      </p>
+          </p>
 
-      <p>
-        <FormattedMessage
-          id={'index.section3.transparent'}
-          description={'section 3 content transparent'}
-          defaultMessage={`
+          <p>
+            <FormattedMessage
+              id={'index.section3.transparent'}
+              description={'section 3 content transparent'}
+              defaultMessage={`
               {inlineHeader} The code and data behind the screening
               tool are open source, meaning it is available for the public
               to review and contribute to. This tool is being developed
               publicly so that communities, academic experts, and anyone
               who’s interested can be involved in the tool-building
               process.`}
-          values={{
-            inlineHeader: <i>{intl.formatMessage(messages.transparentLabel)}</i>,
-          }}/>
-      </p>
+              values={{
+                inlineHeader:
+                  <i>{intl.formatMessage(messages.transparentLabel)}</i>,
+              }}/>
+          </p>
 
-      <p>
-        <FormattedMessage
-          id={'index.section3.inclusive'}
-          description={'section 3 content inclusive'}
-          defaultMessage={`
+          <p>
+            <FormattedMessage
+              id={'index.section3.inclusive'}
+              description={'section 3 content inclusive'}
+              defaultMessage={`
               {inlineHeader} Many areas which lack investments also
               lack environmental data and would be overlooked using
               available environmental data. CEQ is actively reaching out
@@ -142,16 +150,17 @@ const IndexPage = ({location}: IndexPageProps) => {
               decision-making, such as groups in rural and tribal areas,
               to understand their needs and ask for their input.
           `}
-          values={{
-            inlineHeader: <i>{intl.formatMessage(messages.inclusiveLabel)}</i>,
-          }}/>
-      </p>
+              values={{
+                inlineHeader:
+                  <i>{intl.formatMessage(messages.inclusiveLabel)}</i>,
+              }}/>
+          </p>
 
-      <p>
-        <FormattedMessage
-          id={'index.section3.iterative'}
-          description={'section 3 content iterative'}
-          defaultMessage={`
+          <p>
+            <FormattedMessage
+              id={'index.section3.iterative'}
+              description={'section 3 content iterative'}
+              defaultMessage={`
               {inlineHeader} The initial community prioritization list
               provided by the screening tool is the beginning of a
               collaborative process in score refinement, rather than a
@@ -164,13 +173,15 @@ const IndexPage = ({location}: IndexPageProps) => {
               being built and the processes for stakeholder and public
               engagement.
           `}
-          values={{
-            inlineHeader: <i>{intl.formatMessage(messages.iterativeLabel)}</i>,
-          }}/>
-      </p>
-    </section>
-  </Layout>
-  );
+              values={{
+                inlineHeader:
+                  <i>{intl.formatMessage(messages.iterativeLabel)}</i>,
+              }}/>
+          </p>
+        </section>
+      </Grid></Grid>
+    </J40MainGridContainer>
+  </Layout>);
 };
 
 export default IndexPage;
