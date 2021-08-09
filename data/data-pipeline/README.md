@@ -55,14 +55,14 @@ TODO add mermaid diagram
 #### Step 1: Run the script to download census data or download from the Justice40 S3 URL
 
 1. Call the `census_data_download` command using the application manager `application.py` **NOTE:** This may take several minutes to execute.
-   - With Docker: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application census-data-download"`
+   - With Docker: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application census-data-download`
    - With Poetry: `poetry run download_census`
 2. If you have a high speed internet connection and don't want to generate the census data or install `GDAL` locally, you can download a zip version of the Census file [here](https://justice40-data.s3.amazonaws.com/data-sources/census.zip). Then unzip and move the contents inside the `data/data-pipeline/data_pipeline/data/census/` folder/
 
 #### Step 2: Run the ETL script for each data source
 
 1. Call the `etl-run` command using the application manager `application.py` **NOTE:** This may take several minutes to execute.
-   - With Docker: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application etl-run"`
+   - With Docker: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application etl-run`
    - With Poetry: `poetry run etl`
 2. This command will execute the corresponding ETL script for each data source in `data_pipeline/etl/sources/`. For example, `data_pipeline/etl/sources/ejscreen/etl.py` is the ETL script for EJSCREEN data.
 3. Each ETL script will extract the data from its original source, then format the data into `.csv` files that get stored in the relevant folder in `data_pipeline/data/dataset/`. For example, HUD Housing data is stored in `data_pipeline/data/dataset/hud_housing/usa.csv`
@@ -73,7 +73,7 @@ _For example: `poetry run etl -- -d ejscreen` would only run the ETL process for
 #### Step 3: Calculate the Justice40 score experiments
 
 1. Call the `score-run` command using the application manager `application.py` **NOTE:** This may take several minutes to execute.
-   - With Docker: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application score-run"`
+   - With Docker: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application score-run`
    - With Poetry: `poetry run score`
 1. The `score-run` command will execute the `etl/score/etl.py` script which loads the data from each of the source files added to the `data/dataset/` directory by the ETL scripts in Step 1.
 1. These data sets are merged into a single dataframe using their Census Block Group GEOID as a common key, and the data in each of the columns is standardized in two ways:
@@ -132,12 +132,12 @@ Once completed, run `docker-compose up` and then open a new tab or terminal wind
 
 Here's a list of commands:
 
-- Get help: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application --help"`
-- Generate census data: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application census-data-download"`
+- Get help: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application --help`
+- Generate census data: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application census-data-download`
 - Run all ETL and Generate score: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application score-full-run`
-- Clean up the data directories: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application data-cleanup"`
-- Run all ETL processes: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application etl-run"`
-- Generate Score: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application score-run"`
+- Clean up the data directories: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application data-cleanup`
+- Run all ETL processes: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application etl-run`
+- Generate Score: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application score-run`
 - Generate Score with Geojson and high and low versions: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application geo-score`
 - Generate Map Tiles: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application generate-map-tiles`
 
