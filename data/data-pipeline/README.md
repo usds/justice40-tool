@@ -54,10 +54,11 @@ TODO add mermaid diagram
 
 #### Step 1: Run the script to download census data or download from the Justice40 S3 URL
 
-1. Call the `census_data_download` command using the application manager `application.py` **NOTE:** This may take several minutes to execute.
+1. Install GDAL as described [below](#local-development)
+2. Call the `census_data_download` command using the application manager `application.py` **NOTE:** This may take several minutes to execute.
    - With Docker: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application census-data-download`
    - With Poetry: `poetry run download_census`
-2. If you have a high speed internet connection and don't want to generate the census data or install `GDAL` locally, you can download a zip version of the Census file [here](https://justice40-data.s3.amazonaws.com/data-sources/census.zip). Then unzip and move the contents inside the `data/data-pipeline/data_pipeline/data/census/` folder/
+3. If you have a high speed internet connection and don't want to generate the census data or install `GDAL` locally, you can download a zip version of the Census file [here](https://justice40-data.s3.amazonaws.com/data-sources/census.zip). Then unzip and move the contents inside the `data/data-pipeline/data_pipeline/data/census/` folder/
 
 #### Step 2: Run the ETL script for each data source
 
