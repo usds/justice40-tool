@@ -133,12 +133,12 @@ cython_debug/
 */data-pipeline/.secrets.*
 
 # ignore data
-*/data-pipeline/data
-*/data-pipeline/data/census
-*/data-pipeline/data/tiles
-*/data-pipeline/data/tmp
-*/data-pipeline/data/dataset
-*/data-pipeline/data/score
+*/data-pipeline/data_pipeline/data
+*/data-pipeline/data_pipeline/data/census
+*/data-pipeline/data_pipeline/data/tiles
+*/data-pipeline/data_pipeline/data/tmp
+*/data-pipeline/data_pipeline/data/dataset
+*/data-pipeline/data_pipeline/data/score
 
 # node
 node_modules
@@ -148,3 +148,4 @@ node_modules
 
 # pyenv
 .python-version
+.DS_Store

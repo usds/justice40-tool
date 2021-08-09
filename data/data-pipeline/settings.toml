@@ -1,5 +1,5 @@
 [default]
-AWS_JUSTICE40_DATA_URL = "https://justice40-data.s3.amazonaws.com"
+AWS_JUSTICE40_DATASOURCES_URL = "https://justice40-data.s3.amazonaws.com/data-sources"
 
 [development]
 
