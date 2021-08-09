@@ -16,7 +16,7 @@ charset-normalizer==2.0.4; python_full_version >= "3.6.0" and python_version >= 
 click-plugins==1.1.1; python_version >= "3.6"
 click==8.0.1; python_version >= "3.6"
 cligj==0.7.2; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.3.0" and python_version < "4" and python_version >= "3.6"
-colorama==0.4.4; platform_system == "Windows" and python_version >= "3.7" and python_full_version >= "3.6.2" and sys_platform == "win32" and python_version < "4.0" and (python_version >= "3.7" and python_full_version < "3.0.0" and sys_platform == "win32" or sys_platform == "win32" and python_version >= "3.7" and python_full_version >= "3.5.0")
+colorama==0.4.4; platform_system == "Windows" and python_version >= "3.7" and python_full_version >= "3.6.2" and sys_platform == "win32" and python_version < "4.0" and (python_version >= "3.6" and python_full_version < "3.0.0" and sys_platform == "win32" or sys_platform == "win32" and python_version >= "3.6" and python_full_version >= "3.5.0") and (python_version >= "3.7" and python_full_version < "3.0.0" and sys_platform == "win32" or sys_platform == "win32" and python_version >= "3.7" and python_full_version >= "3.5.0")
 configparser==5.0.2; python_version >= "3.6"
 debugpy==1.4.1; python_version >= "3.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.7"
 decorator==5.0.9; python_version >= "3.7"
@@ -90,6 +90,7 @@ pylint==2.9.6; python_version >= "3.6" and python_version < "4.0"
 pyparsing==2.4.7; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.3.0" and python_version >= "3.6"
 pyproj==3.1.0; python_version >= "3.7"
 pyrsistent==0.18.0; python_version >= "3.6"
+pytest-mock==3.6.1; python_version >= "3.6"
 pytest==6.2.4; python_version >= "3.6"
 python-dateutil==2.8.2; python_full_version >= "3.7.1" and python_version >= "3.7"
 pytz==2021.1; python_full_version >= "3.7.1" and python_version >= "2.7"

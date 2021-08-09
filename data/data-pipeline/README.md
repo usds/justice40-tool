@@ -27,6 +27,13 @@
     - [Running Jupyter notebooks](#running-jupyter-notebooks)
     - [Activating variable-enabled Markdown for Jupyter notebooks](#activating-variable-enabled-markdown-for-jupyter-notebooks)
   - [Miscellaneous](#miscellaneous)
+  - [Testing](#testing)
+    - [Background](#background)
+    - [ETL Tests](#etl-tests)
+    - [Configuration / Fixtures](#configuration--fixtures)
+    - [Extract Tests](#extract-tests)
+    - [Transform Tests](#transform-tests)
+    - [Load Tests](#load-tests)
 
 <!-- /TOC -->
 
@@ -221,3 +228,53 @@ see [python-markdown docs](https://github.com/ipython-contrib/jupyter_contrib_nb
 ## Miscellaneous
 
 - To export packages from Poetry to `requirements.txt` run `poetry export --without-hashes > requirements.txt`
+
+## Testing
+
+### Background
+
+For this project, we make use of [pytest](https://docs.pytest.org/en/latest/) for testing purposes. To run tests, simply run `pytest` at the top-level directory.
+
+### ETL Tests
+
+ETL tests are typically organized into three buckets:
+
+- Extract Tests
+- Transform Tests, and
+- Load Tests
+
+These are tested using different strategies, explained below.
+
+### Configuration / Fixtures
+
+Test data is configured via [fixtures](https://docs.pytest.org/en/latest/explanation/fixtures.html).
+
+These draw from several sources:
+
+1. DataFrame literal
+   For small dataframes, we can use a locally-defined data structure that is explicit about data types, e.g. `counties_transformed_expected`.
+   Note that it is necessary to do this instead of `from_dict` or similar because by default pandas DataFrames infer types, and this is less consistent
+
+2. Pickle files / snapshots
+   For larger dataframes (esp those with 100+ properties), it is more beneficial to use python [pickle files](https://docs.python.org/3/library/pickle.html).
+   These are taken from real runs of the current, known, working state and stored under the `snapshots` subdirectory.
+
+In the futrue, we could potentially use something like [pytest-snapshot](https://pypi.org/project/pytest-snapshot/) for this purpose.
+
+### Extract Tests
+
+Extract tests rely on the limited data transformations that occur as data is loaded from source files.
+
+In tests, we use fake, limited csvs read via `StringIO` , taken from the first several rows of the files of interest, and ensure data types are correct.
+
+Down the line, we could use a tool like [Pandera](https://pandera.readthedocs.io/) to enforce schemas, both for the tests and the classes themselves.
+
+### Transform Tests
+
+Transform tests are the heart of ETL tests, and compare ideal dataframes with their actual counterparts.
+
+See above [Fixtures](#configuration--fixtures) section for information about where data is coming from.
+
+### Load Tests
+
+These make use of [tmp_path_factory](https://docs.pytest.org/en/latest/how-to/tmp_path.html) to create a file-system located under `temp_dir`, and validate whether the correct files are written to the correct locations.
