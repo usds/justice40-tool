@@ -3,7 +3,7 @@ import {isMobile as isMobileReactDeviceDetect} from 'react-device-detect';
 import {defineMessages} from 'react-intl';
 
 // URLS
-export const DOWNLOAD_ZIP_URL = 'https://justice40-data.s3.amazonaws.com/Score/usa.zip';
+export const DOWNLOAD_ZIP_URL = 'https://justice40-data.s3.amazonaws.com/data-pipeline/data/score/downloadable/Screening+Tool+Data.zip';
 export const FEATURE_TILE_BASE_URL = 'https://d2zjid6n5ja2pt.cloudfront.net';
 const XYZ_SUFFIX = '{z}/{x}/{y}.pbf';
 export const featureURLForTilesetName = (tilesetName :string ) : string => {
