@@ -177,10 +177,15 @@ class PostScoreETL(ExtractTransformLoad):
 
         # merge census cbgs with score
         merged_df = cbg_usa_df.merge(
-            self.score_county_state_merged, on="GEOID10", how="left"
+            self.score_county_state_merged,
+            on="GEOID10",
+            how="left",
         )
-        # TODO: merged_df has population with one decimal
-        # self.score_county_state_merged doesn't
+
+        # recast population to integer
+        merged_df["Total population"] = (
+            merged_df["Total population"].fillna(0.0).astype(int)
+        )
 
         # list the null score cbgs
         null_cbg_df = merged_df[merged_df["Score E (percentile)"].isnull()]
@@ -202,8 +207,6 @@ class PostScoreETL(ExtractTransformLoad):
 
     def _save_tile_csv(self):
         logger.info("Saving Tile Score CSV")
-        breakpoint()
-
         score_tiles = self.score_county_state_merged[self.TILES_SCORE_COLUMNS]
 
         # round decimals for tile columns
