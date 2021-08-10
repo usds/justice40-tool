@@ -57,6 +57,18 @@ class PostScoreETL(ExtractTransformLoad):
         self.TILES_SCORE_CSV_PATH = self.SCORE_CSV_PATH / "tiles"
         self.TILES_SCORE_CSV = self.TILES_SCORE_CSV_PATH / "usa.csv"
 
+        # columns to round floats to 2 decimals
+        self.TILES_SCORE_FLOAT_COLUMNS = [
+            "Score E (percentile)",
+            "Score E (top 25th percentile)",
+            "Poverty (Less than 200% of federal poverty line)",
+            "Percent individuals age 25 or over with less than high school degree",
+            "Linguistic isolation (percent)",
+            "Unemployed civilians (percent)",
+            "Housing burden (percent)",
+        ]
+        self.TILES_ROUND_NUM_DECIMALS = 2
+
         self.DOWNLOADABLE_SCORE_INDICATORS_BASIC = [
             "Percent individuals age 25 or over with less than high school degree",
             "Linguistic isolation (percent)",
@@ -191,6 +203,8 @@ class PostScoreETL(ExtractTransformLoad):
         null_cbg_df = merged_df[merged_df["Score E (percentile)"].isnull()]
 
         # subsctract data sets
+        # this follows the XOR pattern outlined here:
+        # https://stackoverflow.com/a/37313953
         removed_df = pd.concat(
             [merged_df, null_cbg_df, null_cbg_df]
         ).drop_duplicates(keep=False)
@@ -209,18 +223,10 @@ class PostScoreETL(ExtractTransformLoad):
         logger.info("Saving Tile Score CSV")
         score_tiles = self.score_county_state_merged[self.TILES_SCORE_COLUMNS]
 
-        # round decimals for tile columns
-        TILES_SCORE_FLOAT_COLUMNS = [
-            "Score E (percentile)",
-            "Score E (top 25th percentile)",
-            "Poverty (Less than 200% of federal poverty line)",
-            "Percent individuals age 25 or over with less than high school degree",
-            "Linguistic isolation (percent)",
-            "Unemployed civilians (percent)",
-            "Housing burden (percent)",
-        ]
         decimals = pd.Series(
-            [2, 2, 2, 2, 2, 2, 2], index=TILES_SCORE_FLOAT_COLUMNS
+            [self.TILES_ROUND_NUM_DECIMALS]
+            * len(self.TILES_SCORE_FLOAT_COLUMNS),
+            index=self.TILES_SCORE_FLOAT_COLUMNS,
         )
         score_tiles = score_tiles.round(decimals)
 
