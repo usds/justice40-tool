@@ -35,12 +35,13 @@ class CDCPlacesETL(ExtractTransformLoad):
 
         # Rename GEOID field
         self.df.rename(
-            columns={self.GEOID_FIELD_NAME: self.CDC_GEOID_FIELD_NAME}, inplace=True
+            columns={self.GEOID_TRACT_FIELD_NAME: self.CDC_GEOID_FIELD_NAME},
+            inplace=True,
         )
 
         # Note: Puerto Rico not included.
         self.df = self.df.pivot(
-            index=self.CDC_GEOID_FIELD_NAME,
+            index=self.GEOID_TRACT_FIELD_NAME,
             columns=self.CDC_MEASURE_FIELD_NAME,
             values=self.CDC_VALUE_FIELD_NAME,
         )
