@@ -424,7 +424,7 @@ class ScoreETL(ExtractTransformLoad):
 
         self.df[meets_burden_field_name] = (
             self.df["Particulate matter (PM2.5)"] > 10
-        ) | (self.df["Respiratory hazard " "index"] > 0.75)
+        ) | (self.df["Respiratory hazard index"] > 0.75)
 
         self.df["Score F (communities)"] = (
             self.df[ami_and_high_school_field_name] & self.df[meets_burden_field_name]
