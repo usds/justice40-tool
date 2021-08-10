@@ -499,22 +499,22 @@ class ScoreETL(ExtractTransformLoad):
                 ]
                 > 0.8
             )
-            | (
-                self.df[
-                    "Current lack of health insurance among adults aged 18-64 years (percentile)"
-                ]
-                > 0.8
-            )
+            # | (
+            #     self.df[
+            #         "Current lack of health insurance among adults aged 18-64 years (percentile)"
+            #     ]
+            #     > 0.8
+            # )
             | (
                 self.df["Diagnosed diabetes among adults aged >=18 years (percentile)"]
                 > 0.8
             )
-            | (
-                self.df[
-                    "Physical health not good for >=14 days among adults aged >=18 years (percentile)"
-                ]
-                > 0.8
-            )
+            # | (
+            #     self.df[
+            #         "Physical health not good for >=14 days among adults aged >=18 years (percentile)"
+            #     ]
+            #     > 0.8
+            # )
         )
 
         self.df["Score F (communities)"] = (
