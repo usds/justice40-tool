@@ -1,6 +1,17 @@
 declare namespace HowYouCanHelpModuleScssNamespace {
   export interface IHowYouCanHelpModuleScss {
-    howYouCanHelpContainer: string;
+    legendContainer: string;
+    legendHeader: string;
+    swatchContainer: string;
+    colorSwatch: string;
+    prioritized: string,
+    threshold: string,
+    nonPrioritized: string,
+    legendItem: string,
+    infoIcon: string,
+    legendTooltipText: string,
+    legendTooltipTheme: string,
+    infoIconWrapper: string,
   }
 }
 

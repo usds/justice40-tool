@@ -1,0 +1,96 @@
+@import "../utils.scss";
+
+$min-color: #fafaf8;
+$med-color: rgba(26, 68, 128, 0.2);
+$max-color: rgba(26, 68, 128, 0.6);
+$alertInfoColor: #e7f6f8;
+
+.legendContainer {
+  margin: 1rem 1.2rem 1rem 2.5rem;
+  font-size: 0.8em;
+  border: 1px solid #8c9297;
+  padding: 0 1.8rem;
+  flex: 1;
+  color: $headingFontColor;
+
+  .legendTooltipText {
+    max-width: 14rem;
+    font-size: medium;
+  }
+
+  @media screen and (max-width: $mobileBreakpoint) {
+    margin: 1rem 0;
+  }
+}
+
+.legendHeader {
+  margin-bottom: 0;
+}
+
+.swatchContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @media screen and (max-width: $mobileBreakpoint) {
+    flex-wrap: wrap;
+  }
+}
+
+.legendItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  span {
+    font-size: medium;
+  }
+
+  .infoIconWrapper {
+    margin-left: 0.8rem;
+    .infoIcon {
+      width: 2rem;
+      height: 2rem;
+      margin-top: 0.4rem;
+    }
+  }
+
+  @media screen and (max-width: $mobileBreakpoint) {
+    padding-left: 3rem;
+  }
+}
+
+.colorSwatch {
+  box-sizing: border-box;
+  height: 1.7rem;
+  width: 1.7rem;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+#prioritized {
+  background-color: $max-color;
+}
+
+#threshold {
+  background-color: $med-color;
+}
+
+#nonPrioritized {
+  background-color: $min-color;
+}
+
+.legendTooltipTheme {
+  color: $headingFontColor !important;
+  background-color: white !important;
+  opacity: 1 !important;
+  border: $sidePanelBorder !important;
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2) !important;
+  &.place-top {
+    &:after {
+      border-top-color: white !important;
+      border-top-style: solid !important;
+      border-top-width: 6px !important;
+    }
+  }
+}

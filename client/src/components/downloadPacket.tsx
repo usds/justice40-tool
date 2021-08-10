@@ -1,10 +1,9 @@
 import React from 'react';
 import {Button} from '@trussworks/react-uswds';
-import * as styles from './downloadPacket.module.scss';
 // @ts-ignore
 import downloadIcon from '/node_modules/uswds/dist/img/usa-icons/file_download.svg';
-
-export const cbgFileURL = 'https://justice40-data.s3.amazonaws.com/Score/usa.zip';
+import * as styles from './downloadPacket.module.scss';
+import * as constants from '../data/constants';
 
 const DownloadPacket = () => {
   return (
@@ -16,7 +15,7 @@ const DownloadPacket = () => {
           prioritized communities (30,021 census block groups) and 18 datasets.
           </div>
           <div className={styles.downloadBoxButtonContainer}>
-            <a id={'download-link'} href={cbgFileURL}>
+            <a id={'download-link'} href={constants.DOWNLOAD_ZIP_URL}>
               <Button className={styles.downloadBoxButton} type="button">
                 <div><img src={downloadIcon} /> </div>
                 <div className={styles.downloadPacketText}>Download packet</div>
