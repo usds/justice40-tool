@@ -24,7 +24,20 @@ class CensusACSETL(ExtractTransformLoad):
         ]
         self.MEDIAN_INCOME_FIELD = "B19013_001E"
         self.MEDIAN_INCOME_FIELD_NAME = "Median household income in the past 12 months"
+        self.MEDIAN_INCOME_STATE_FIELD_NAME = "Median household income (State)"
+        self.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD_NAME = (
+            "Median household income (% of state median household income)"
+        )
+        self.STATE_GEOID_FIELD_NAME = "GEOID2"
         self.df: pd.DataFrame
+        self.state_median_income_df: pd.DataFrame
+
+        # TODO: refactor this to put this file on s3 and download it from there
+        self.STATE_MEDIAN_INCOME_FILE_PATH = (
+            self.DATA_PATH
+            / "needs_to_be_moved_to_s3"
+            / "2014_to_2019_state_median_income.csv"
+        )
 
     def _fips_from_censusdata_censusgeo(self, censusgeo: censusdata.censusgeo) -> str:
         """Create a FIPS code from the proprietary censusgeo index."""
@@ -59,11 +72,35 @@ class CensusACSETL(ExtractTransformLoad):
             func=self._fips_from_censusdata_censusgeo
         )
 
+        self.state_median_income_df = pd.read_csv(
+            # TODO: Replace with reading from S3.
+            filepath_or_buffer=self.STATE_MEDIAN_INCOME_FILE_PATH,
+            dtype={self.STATE_GEOID_FIELD_NAME: "string"},
+        )
+
     def transform(self) -> None:
         logger.info("Starting Census ACS Transform")
 
         # Rename median income
         self.df[self.MEDIAN_INCOME_FIELD_NAME] = self.df[self.MEDIAN_INCOME_FIELD]
+
+        # TODO: handle null values for CBG median income, which are `-666666666`.
+
+        # Join state data on CBG data:
+        self.df[self.STATE_GEOID_FIELD_NAME] = (
+            self.df[self.GEOID_FIELD_NAME].astype(str).str[0:2]
+        )
+        self.df = self.df.merge(
+            self.state_median_income_df,
+            how="left",
+            on=self.STATE_GEOID_FIELD_NAME,
+        )
+
+        # Calculate the income of the block group as a fraction of the state income:
+        self.df[self.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD_NAME] = (
+            self.df[self.MEDIAN_INCOME_FIELD_NAME]
+            / self.df[self.MEDIAN_INCOME_STATE_FIELD_NAME]
+        )
 
         # Calculate percent unemployment.
         # TODO: remove small-sample data that should be `None` instead of a high-variance fraction.
@@ -98,6 +135,8 @@ class CensusACSETL(ExtractTransformLoad):
             self.UNEMPLOYED_FIELD_NAME,
             self.LINGUISTIC_ISOLATION_FIELD_NAME,
             self.MEDIAN_INCOME_FIELD_NAME,
+            self.MEDIAN_INCOME_STATE_FIELD_NAME,
+            self.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD_NAME,
         ]
 
         self.df[columns_to_include].to_csv(
