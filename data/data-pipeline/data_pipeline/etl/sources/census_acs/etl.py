@@ -22,6 +22,8 @@ class CensusACSETL(ExtractTransformLoad):
             "C16002_010E",
             "C16002_013E",
         ]
+        self.MEDIAN_INCOME_FIELD = "B19013_001E"
+        self.MEDIAN_INCOME_FIELD_NAME = "Median household income in the past 12 months"
         self.df: pd.DataFrame
 
     def _fips_from_censusdata_censusgeo(self, censusgeo: censusdata.censusgeo) -> str:
@@ -45,6 +47,7 @@ class CensusACSETL(ExtractTransformLoad):
                         # Emploment fields
                         "B23025_005E",
                         "B23025_003E",
+                        self.MEDIAN_INCOME_FIELD,
                     ]
                     + self.LINGUISTIC_ISOLATION_FIELDS,
                 )
@@ -58,6 +61,9 @@ class CensusACSETL(ExtractTransformLoad):
 
     def transform(self) -> None:
         logger.info("Starting Census ACS Transform")
+
+        # Rename median income
+        self.df[self.MEDIAN_INCOME_FIELD_NAME] = self.df[self.MEDIAN_INCOME_FIELD]
 
         # Calculate percent unemployment.
         # TODO: remove small-sample data that should be `None` instead of a high-variance fraction.
@@ -91,6 +97,7 @@ class CensusACSETL(ExtractTransformLoad):
             self.GEOID_FIELD_NAME,
             self.UNEMPLOYED_FIELD_NAME,
             self.LINGUISTIC_ISOLATION_FIELD_NAME,
+            self.MEDIAN_INCOME_FIELD_NAME,
         ]
 
         self.df[columns_to_include].to_csv(
