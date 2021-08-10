@@ -431,7 +431,6 @@ class ScoreETL(ExtractTransformLoad):
             self.df[ami_and_high_school_field_name] & self.df[meets_burden_field_name]
         )
 
-
     def load(self) -> None:
         logger.info("Saving Score CSV")
 
