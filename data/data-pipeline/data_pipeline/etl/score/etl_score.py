@@ -219,6 +219,8 @@ class ScoreETL(ExtractTransformLoad):
         )
 
     def transform(self) -> None:
+        ## IMPORTANT: THIS METHOD IS CLOSE TO THE LIMIT OF STATEMENTS
+
         logger.info("Transforming Score Data")
 
         # Join all the data sources that use census block groups
