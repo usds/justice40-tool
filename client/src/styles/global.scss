@@ -68,6 +68,7 @@ $primary-color: #112f4e;
 
 @include at-media("mobile-lg") {
   .j40-grid-container {
+    line-height: 1.5rem;
     padding-right: 0;
   }
 }
@@ -102,9 +103,9 @@ $primary-color: #112f4e;
     // this actual site logo
     .sitelogo {
       float: left; // allows vertical centering on logo and text
-      margin-right: 0.5em; // space between logo and text
-      width: 4em;
-      padding: 0.5em; // this will change the size of the logo too
+      margin-right: 0.5rem; // space between logo and text
+      width: 4rem;
+      padding: 0.5rem; // this will change the size of the logo too
     }
 
     // nav menu item font
@@ -191,6 +192,7 @@ $primary-color: #112f4e;
   h1 {
     font-size: 2.7rem;
   }
+
   h2 {
     font-size: 1.46rem;
   }
@@ -217,7 +219,7 @@ $primary-color: #112f4e;
   h3,
   h4 {
     font-family: Source Sans Pro Web, Helvetica Neue, Helvetica, Roboto, Arial,
-      sans-serif;
+    sans-serif;
   }
 
   p,
@@ -328,4 +330,90 @@ $primary-color: #112f4e;
       background-image: url("../../node_modules/uswds/dist/img/usa-icons/remove.svg");
     }
   }
+}
+
+
+/* the > is for child only syntax in css. This is required so that lists that are nested under the
+      list are not affected (e.g. <ul><li><p><ul><li>not styled</li></ul></p></li><ul>*/
+.j40-process-list-wrapper > {
+  $j40-steps-list-color: #002D3F;
+  ul {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    padding-inline-start: 0;
+
+    > li {
+      list-style-type: none;
+      position: relative;
+      margin-left: 2.5rem;
+      /* do the lines */
+      border-left: .2rem solid $j40-steps-list-color;
+      padding-left: 1.88rem;
+      /* removes gap between line and circle */
+      margin-top: -1rem;
+      padding-bottom: 2rem;
+    }
+
+    > li:before {
+      content: " ";
+      border: 1rem solid $j40-steps-list-color;
+      border-radius: 100rem;
+      height: 0; /* it's all controlled by the border */
+      width: 0;
+      margin-top: -0.5rem;
+      margin-left: -3rem;
+      position: absolute;
+    }
+
+    > li:last-child {
+      /* no line on last item */
+      border-left: .2rem solid transparent;
+      margin-top: -1.9rem;
+    }
+  }
+}
+
+/* The math equation on the methodology page.. which is a royal pain */
+.j40-math-division-container {
+  > .j40-math-eq-left-side {
+    text-align: right;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+
+    > .j40-math-eq-numerator {
+      border-bottom: solid 3px black;
+      text-align: center;
+      width: 90%;
+    }
+
+    > .j40-math-eq-denominator {
+      text-align: center;
+      width: 90%;
+    }
+  }
+
+  > .j40-math-eq-middle {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.25rem;
+  }
+
+  > .j40-math-eq-right-side {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem;
+  }
+}
+
+/* these are currently used in the list, but it seems like they should be globally consistent with the rest of the site */
+.j40-item-list-title {
+  margin-block-end: auto;
+}
+
+.j40-item-list-subtitle {
+  margin-block-start: auto;
+  margin-block-end: auto;
+  font-style: italic;
 }
