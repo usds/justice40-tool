@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
-import {FormattedMessage, Link, useIntl} from 'gatsby-plugin-intl';
+import {Link, useIntl} from 'gatsby-plugin-intl';
 import {
-  Alert,
   Header,
   NavMenuButton,
   PrimaryNav,
@@ -11,12 +10,7 @@ import {defineMessages} from 'react-intl';
 // @ts-ignore
 import siteLogo from '../../src/images/icon.png';
 
-interface IJ40HeaderProps {
-  location: Location
-}
-const J40Header = ({location}:IJ40HeaderProps) => {
-  const isMethodologyPage = location.pathname.match(/methodology\/?/);
-  const isExploreToolPage = location.pathname.match(/cejst\/?/);
+const J40Header = () => {
   const intl = useIntl();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const messages = defineMessages({
@@ -120,29 +114,6 @@ const J40Header = ({location}:IJ40HeaderProps) => {
           </PrimaryNav>
         </div>
       </Header>
-      <Alert className={'j40-sitealert'} type="info">
-        <span className={'j40-sitealert-title'}><FormattedMessage
-          id='header.alertTitleBeta'
-          description={'Alerts that appear on every page - title'}
-          defaultMessage={`Public beta`}/> - </span>
-        <span className={'j40-sitealert-body'}>
-          <FormattedMessage
-            id='header.alertBodyBeta'
-            description={'Alerts that appear on every page'}
-            defaultMessage={`This website will be continuously updated`}/>
-        </span>
-        <br/>
-      </Alert>
-      {(!isMethodologyPage && !isExploreToolPage) && <Alert
-        className={'j40-sitealert'}
-        type="warning">
-        <b>Limited data sources — </b>
-        This tool currently includes 16 datasets. Over time, datasets could be
-        added, updated, or removed. The datasets come from a variety of sources
-        based on availability, quality, and relevance to environmental, energy,
-        and climate issues. Each dataset has limitations, such as how recently
-        the data was updated.
-      </Alert>}
     </>
   );
 };

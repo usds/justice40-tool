@@ -12,7 +12,7 @@ const Layout = ({children, location}: ILayoutProps) => {
   // @ts-ignore
   return (
     <URLFlagProvider location={location}>
-      <J40Header location={location}/>
+      <J40Header />
       <main id={'main-content'}>
         {children}
       </main>
