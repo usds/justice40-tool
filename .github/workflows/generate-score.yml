@@ -1,11 +1,11 @@
-name: Deploy Data
+name: Generate Score
 on: 
-  push:
-    paths:
-      - 'data/data-pipeline/*'
-  pull_request:
-    paths:
-      - 'data/data-pipeline/*'
+  workflow_dispatch:
+    inputs:
+      confirm-action:
+        description: This will rebuild the data sources and regenerate the score, are you sure you want to proceed? (Y/n)
+        default: n
+        required: true
 
 jobs:
   deploy_data:
@@ -49,7 +49,9 @@ jobs:
           aws-region: us-east-1
       - name: Deploy to Geoplatform AWS
         run: |
-          aws s3 sync ./data_pipeline/data/ s3://justice40-data/data-pipeline/data --delete
+          aws s3 sync ./data_pipeline/data/dataset/ s3://justice40-data/data-pipeline/data/dataset --delete
+          aws s3 sync ./data_pipeline/data/score/csv/ s3://justice40-data/data-pipeline/data/score/csv --delete
+          aws s3 sync ./data_pipeline/data/score/downloadable/ s3://justice40-data/data-pipeline/data/score/downloadable --delete
       - name: Update PR with Comment about deployment
         uses: mshick/add-pr-comment@v1
         with:
