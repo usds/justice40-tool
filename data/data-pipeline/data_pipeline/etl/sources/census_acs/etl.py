@@ -41,10 +41,10 @@ class CensusACSETL(ExtractTransformLoad):
 
         self.STATE_MEDIAN_INCOME_FTP_URL = (
             settings.AWS_JUSTICE40_DATASOURCES_URL
-            + "/2014_to_2019_state_median_income.zip"
+            + "/2015_to_2019_state_median_income.zip"
         )
         self.STATE_MEDIAN_INCOME_FILE_PATH = (
-            self.TMP_PATH / "2014_to_2019_state_median_income.csv"
+            self.TMP_PATH / "2015_to_2019_state_median_income.csv"
         )
 
     def _fips_from_censusdata_censusgeo(
@@ -102,6 +102,24 @@ class CensusACSETL(ExtractTransformLoad):
         self.df[self.MEDIAN_INCOME_FIELD_NAME] = self.df[
             self.MEDIAN_INCOME_FIELD
         ]
+
+        # TODO: handle null values for CBG median income, which are `-666666666`.
+
+        # Join state data on CBG data:
+        self.df[self.STATE_GEOID_FIELD_NAME] = (
+            self.df[self.GEOID_FIELD_NAME].astype(str).str[0:2]
+        )
+        self.df = self.df.merge(
+            self.state_median_income_df,
+            how="left",
+            on=self.STATE_GEOID_FIELD_NAME,
+        )
+
+        # Calculate the income of the block group as a fraction of the state income:
+        self.df[self.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD_NAME] = (
+            self.df[self.MEDIAN_INCOME_FIELD_NAME]
+            / self.df[self.MEDIAN_INCOME_STATE_FIELD_NAME]
+        )
 
         # TODO: handle null values for CBG median income, which are `-666666666`.
 

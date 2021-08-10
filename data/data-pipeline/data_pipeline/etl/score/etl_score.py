@@ -27,10 +27,10 @@ class ScoreETL(ExtractTransformLoad):
         self.UNEMPLOYED_FIELD_NAME = "Unemployed civilians (percent)"
         self.LINGUISTIC_ISOLATION_FIELD_NAME = "Linguistic isolation (percent)"
         self.HOUSING_BURDEN_FIELD_NAME = "Housing burden (percent)"
-        self.POVERTY_FIELD_NAME = (
-            "Poverty (Less than 200% of federal poverty line)"
+        self.POVERTY_FIELD_NAME = "Poverty (Less than 200% of federal poverty line)"
+        self.HIGH_SCHOOL_FIELD_NAME = (
+            "Percent individuals age 25 or over with less than high school degree"
         )
-        self.HIGH_SCHOOL_FIELD_NAME = "Percent individuals age 25 or over with less than high school degree"
         self.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD_NAME = (
             "Median household income (% of state median household income)"
         )
@@ -185,9 +185,7 @@ class ScoreETL(ExtractTransformLoad):
         self.ejscreen_df = pd.read_csv(
             ejscreen_csv, dtype={"ID": "string"}, low_memory=False
         )
-        self.ejscreen_df.rename(
-            columns={"ID": self.GEOID_FIELD_NAME}, inplace=True
-        )
+        self.ejscreen_df.rename(columns={"ID": self.GEOID_FIELD_NAME}, inplace=True)
 
         # Load census data
         census_csv = self.DATA_PATH / "dataset" / "census_acs_2019" / "usa.csv"
@@ -199,10 +197,7 @@ class ScoreETL(ExtractTransformLoad):
 
         # Load housing and transportation data
         housing_and_transportation_index_csv = (
-            self.DATA_PATH
-            / "dataset"
-            / "housing_and_transportation_index"
-            / "usa.csv"
+            self.DATA_PATH / "dataset" / "housing_and_transportation_index" / "usa.csv"
         )
         self.housing_and_transportation_df = pd.read_csv(
             housing_and_transportation_index_csv,
@@ -238,10 +233,7 @@ class ScoreETL(ExtractTransformLoad):
         )
 
         # Sanity check the join.
-        if (
-            len(census_block_group_df[self.GEOID_FIELD_NAME].str.len().unique())
-            != 1
-        ):
+        if len(census_block_group_df[self.GEOID_FIELD_NAME].str.len().unique()) != 1:
             raise ValueError(
                 f"One of the input CSVs uses {self.GEOID_FIELD_NAME} with a different length."
             )
@@ -251,9 +243,9 @@ class ScoreETL(ExtractTransformLoad):
         census_tract_df = self.hud_housing_df
 
         # Calculate the tract for the CBG data.
-        census_block_group_df[
-            self.GEOID_TRACT_FIELD_NAME
-        ] = census_block_group_df[self.GEOID_FIELD_NAME].str[0:11]
+        census_block_group_df[self.GEOID_TRACT_FIELD_NAME] = census_block_group_df[
+            self.GEOID_FIELD_NAME
+        ].str[0:11]
 
         self.df = census_block_group_df.merge(
             census_tract_df, on=self.GEOID_TRACT_FIELD_NAME
@@ -267,8 +259,7 @@ class ScoreETL(ExtractTransformLoad):
 
         # Rename columns:
         renaming_dict = {
-            data_set.input_field: data_set.renamed_field
-            for data_set in data_sets
+            data_set.input_field: data_set.renamed_field for data_set in data_sets
         }
 
         self.df.rename(
@@ -330,9 +321,7 @@ class ScoreETL(ExtractTransformLoad):
             ]
         ].mean(axis=1)
         self.df["Score B"] = (
-            self.df[
-                "Poverty (Less than 200% of federal poverty line) (percentile)"
-            ]
+            self.df["Poverty (Less than 200% of federal poverty line) (percentile)"]
             * self.df[
                 "Percent individuals age 25 or over with less than high school degree (percentile)"
             ]
@@ -367,8 +356,7 @@ class ScoreETL(ExtractTransformLoad):
         # Multiply the "Pollution Burden" score and the "Population Characteristics"
         # together to produce the cumulative impact score.
         self.df["Score C"] = (
-            self.df[self.AGGREGATION_POLLUTION]
-            * self.df[self.AGGREGATION_POPULATION]
+            self.df[self.AGGREGATION_POLLUTION] * self.df[self.AGGREGATION_POPULATION]
         )
 
         if len(census_block_group_df) > 220333:
@@ -383,12 +371,10 @@ class ScoreETL(ExtractTransformLoad):
         ]
 
         fields_min_max = [
-            f"{field}{self.MIN_MAX_FIELD_SUFFIX}"
-            for field in fields_to_use_in_score
+            f"{field}{self.MIN_MAX_FIELD_SUFFIX}" for field in fields_to_use_in_score
         ]
         fields_percentile = [
-            f"{field}{self.PERCENTILE_FIELD_SUFFIX}"
-            for field in fields_to_use_in_score
+            f"{field}{self.PERCENTILE_FIELD_SUFFIX}" for field in fields_to_use_in_score
         ]
 
         # Calculate "Score D", which uses min-max normalization
@@ -441,8 +427,7 @@ class ScoreETL(ExtractTransformLoad):
         ) | (self.df["Respiratory hazard " "index"] > 0.75)
 
         self.df["Score F (communities)"] = (
-            self.df[ami_and_high_school_field_name]
-            & self.df[meets_burden_field_name]
+            self.df[ami_and_high_school_field_name] & self.df[meets_burden_field_name]
         )
 
     def load(self) -> None:
@@ -452,8 +437,6 @@ class ScoreETL(ExtractTransformLoad):
         self.SCORE_CSV_PATH.mkdir(parents=True, exist_ok=True)
 
         # TODO: drop
-        self.df[0:10000].to_csv(
-            self.SCORE_CSV_PATH / "usa-10000.csv", index=False
-        )
+        self.df[0:10000].to_csv(self.SCORE_CSV_PATH / "usa-10000.csv", index=False)
 
         self.df.to_csv(self.SCORE_CSV_PATH / "usa.csv", index=False)
