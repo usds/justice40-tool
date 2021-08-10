@@ -1,11 +1,9 @@
 name: Deploy Data
 on: 
-  push:
-    paths:
-      - 'data/data-pipeline/*'
   pull_request:
+    branches: [main]
     paths:
-      - 'data/data-pipeline/*'
+      - 'data/data-pipeline/**'
 
 jobs:
   deploy_data:
