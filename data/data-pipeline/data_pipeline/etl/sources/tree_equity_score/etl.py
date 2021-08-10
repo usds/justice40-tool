@@ -70,7 +70,8 @@ class TreeEquityScoreETL(ExtractTransformLoad):
         logger.info("Downloading Tree Equity Score Data")
         for state in self.states:
             super().extract(
-                f"{self.TES_URL}{state}.zip.zip", f"{self.TMP_PATH}/{state}",
+                f"{self.TES_URL}{state}.zip.zip",
+                f"{self.TMP_PATH}/{state}",
             )
 
     def transform(self) -> None:

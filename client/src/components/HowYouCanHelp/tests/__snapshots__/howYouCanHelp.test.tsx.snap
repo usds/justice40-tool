@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of the HowYouCanHelp checks if various text fields are visible 1`] = `
+<DocumentFragment>
+  <div>
+    <h2>
+      How You Can Help Improve the Tool
+    </h2>
+    <ul>
+      <li>
+        <div>
+          If you have helpful information, we’d love to 
+          <a
+            href="mailto:screeningtool.feedback@usds.gov"
+          >
+            get an email from you
+          </a>
+           .
+        </div>
+      </li>
+      <li>
+        <div>
+          View our 
+          <a
+            href="/en/methodology"
+          >
+            Data & methodology
+          </a>
+           and send us feedback.
+        </div>
+      </li>
+      <li>
+        <div>
+          Find your community and 
+          <a
+            href="mailto:screeningtool.feedback@usds.gov"
+          >
+            share your feedback
+          </a>
+           .
+        </div>
+      </li>
+    </ul>
+  </div>
+</DocumentFragment>
+`;

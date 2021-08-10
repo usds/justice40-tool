@@ -95,6 +95,34 @@
     "defaultMessage": "Email us",
     "description": "Heading for page to allow users to contact project maintainers"
   },
+  "datasetAlert.header.alertMsg": {
+    "defaultMessage": "Limited data sources — Datasets may be added, updated, or removed.",
+    "description": "an alert message to inform users that datasets may change"
+  },
+  "datasetCard.dataDateRange": {
+    "defaultMessage": "Data date range:",
+    "description": "label associated with explaining the card"
+  },
+  "datasetCard.dataResolution": {
+    "defaultMessage": "Data resolution:",
+    "description": "label associated with explaining the card"
+  },
+  "datasetCard.dataSource": {
+    "defaultMessage": "Data source:",
+    "description": "label associated with explaining the card"
+  },
+  "datasetCard.whatIsIt": {
+    "defaultMessage": "What is it?",
+    "description": "label associated with explaining the card"
+  },
+  "datasetContainer.header.cumulativeScore": {
+    "defaultMessage": "Datasets used in cumulative score",
+    "description": "section label of which datasets are used in cumulative score"
+  },
+  "datasetContainer.subTitle": {
+    "defaultMessage": "The datasets come from a variety of sources and were selected after considering relevance, availability, recency and quality.",
+    "description": "description of the dataset section"
+  },
   "footer.arialabel": {
     "defaultMessage": "Footer navigation",
     "description": "aria-label text for whole footer"
@@ -129,7 +157,7 @@
   },
   "header.about": {
     "defaultMessage": "About",
-    "description": "Navigate to the about page"
+    "description": "Header navigate item to the about page"
   },
   "header.alertBodyBeta": {
     "defaultMessage": "This website will be continuously updated",
@@ -141,27 +169,27 @@
   },
   "header.contact": {
     "defaultMessage": "Contact",
-    "description": "Navigate to the Contact page"
+    "description": "Header navigate item to the Contact page"
   },
   "header.explore": {
     "defaultMessage": "Explore the tool",
-    "description": "Navigate to the Explore the tool page"
+    "description": "Header navigate item to the Explore the tool page"
   },
   "header.methodology": {
     "defaultMessage": "Data & methodology",
-    "description": "Navigate to the Methodology page"
-  },
-  "header.timeline": {
-    "defaultMessage": "Timeline",
-    "description": "Navigate to the Timeline page"
+    "description": "Header navigate item to the Methodology page"
   },
   "header.title.line1": {
     "defaultMessage": "Climate and Economic Justice",
-    "description": "Title in header line 1 of 2"
+    "description": "Title in nav header line 1 of 2"
   },
   "header.title.line2": {
     "defaultMessage": "Screening Tool",
-    "description": "Title in header line 2 of 2"
+    "description": "Title in nav header line 2 of 2"
+  },
+  "howYouCanHelp.header.text": {
+    "defaultMessage": "How You Can Help Improve the Tool",
+    "description": "the header of the how you can help section"
   },
   "index.aboutContent.header": {
     "defaultMessage": "About Justice40",
@@ -223,6 +251,18 @@
     "defaultMessage": "Transparent:",
     "description": "Italic label for 1st paragraph of section 3 on index page"
   },
+  "legend.colorkey.label": {
+    "defaultMessage": "COLOR KEY",
+    "description": "the label of the key in the legend"
+  },
+  "legend.info.priority.label": {
+    "defaultMessage": "Prioritized community",
+    "description": "the label of the prioritized community legend"
+  },
+  "legend.info.threshold.label": {
+    "defaultMessage": "Threshold community",
+    "description": "the label of the threshold community legend"
+  },
   "map.territoryFocus.alaska.long": {
     "defaultMessage": "Alaska",
     "description": "The full name indicating the bounds of Alaska"
@@ -270,5 +310,13 @@
   "mapIntro.mapIntroHeader": {
     "defaultMessage": "Zoom and select a census block group to view data",
     "description": "introductory text of ways to use the map"
+  },
+  "mapwrapper.download.contents": {
+    "defaultMessage": "ZIP file will contain one .xlsx, one .csv and one .pdf (30 MB).",
+    "description": "download link contents"
+  },
+  "mapwrapper.download.link": {
+    "defaultMessage": "Download the draft list of prioritized communities (pre-decisional) and datasets used",
+    "description": "download link for datasets"
   }
 }

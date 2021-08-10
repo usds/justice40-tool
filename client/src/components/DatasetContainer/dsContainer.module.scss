@@ -1,7 +1,5 @@
 @import "../utils.scss";
 
-$headingFontColor: #122e51;
-
 .datasetContainer {
   background-color: #eef6fb;
 }
@@ -30,5 +28,5 @@ $headingFontColor: #122e51;
 }
 
 .j40AlertContainer {
-  background-color: #faf3d1;
+  background-color: $j40AlertWarningColor;
 }

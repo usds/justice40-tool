@@ -46,7 +46,9 @@ class GeoScoreETL(ExtractTransformLoad):
 
         logger.info("Reading score CSV")
         self.score_usa_df = pd.read_csv(
-            self.TILE_SCORE_CSV, dtype={"GEOID10": "string"}, low_memory=False,
+            self.TILE_SCORE_CSV,
+            dtype={"GEOID10": "string"},
+            low_memory=False,
         )
 
     def transform(self) -> None:
@@ -68,7 +70,8 @@ class GeoScoreETL(ExtractTransformLoad):
         ].reset_index(drop=True)
 
         usa_simplified.rename(
-            columns={self.TARGET_SCORE_NAME: self.TARGET_SCORE_RENAME_TO}, inplace=True,
+            columns={self.TARGET_SCORE_NAME: self.TARGET_SCORE_RENAME_TO},
+            inplace=True,
         )
 
         logger.info("Aggregating into tracts (~5 minutes)")

@@ -1,7 +1,9 @@
 import {LngLatBoundsLike} from 'maplibre-gl';
 import {isMobile as isMobileReactDeviceDetect} from 'react-device-detect';
+import {defineMessages} from 'react-intl';
 
 // URLS
+export const DOWNLOAD_ZIP_URL = 'https://justice40-data.s3.amazonaws.com/data-pipeline/data/score/downloadable/Screening+Tool+Data.zip';
 export const FEATURE_TILE_BASE_URL = 'https://d2zjid6n5ja2pt.cloudfront.net';
 const XYZ_SUFFIX = '{z}/{x}/{y}.pbf';
 export const featureURLForTilesetName = (tilesetName :string ) : string => {
@@ -113,5 +115,25 @@ export const CURRENTLY_SELECTED_FEATURE_LAYER_WIDTH = 0.8;
 export const SCORE_BOUNDARY_LOW = 0.0;
 export const SCORE_BOUNDARY_THRESHOLD = 0.6;
 export const SCORE_BOUNDARY_PRIORITIZED = 0.75;
+
+
+// Explore the Tool:
+export const EXPLORE_TOOL_PAGE_TEXT = defineMessages({
+  PRIORITY_LABEL: {
+    id: 'legend.info.priority.label',
+    defaultMessage: 'Prioritized community',
+    description: 'the label of the prioritized community legend',
+  },
+  THRESHOLD_LABEL: {
+    id: 'legend.info.threshold.label',
+    defaultMessage: 'Threshold community',
+    description: 'the label of the threshold community legend',
+  },
+  LEGEND_LABEL: {
+    id: 'legend.colorkey.label',
+    defaultMessage: 'COLOR KEY',
+    description: 'the label of the key in the legend',
+  },
+});
 
 export const isMobile = isMobileReactDeviceDetect;

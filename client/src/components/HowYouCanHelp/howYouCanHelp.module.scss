@@ -1,0 +1,24 @@
+@import "../utils.scss";
+
+.howYouCanHelpContainer {
+  margin: 2rem 0;
+
+  .howYouCanHelpText {
+    color: $headingFontColor;
+    padding-left: 1rem;
+  }
+}
+
+.howYouCanHelpHeader {
+  color: $headingFontColor;
+  font-weight: normal;
+}
+
+.howYouCanHelpList {
+  list-style-type: disc;
+  padding-bottom: 1rem;
+}
+
+.howYouCanHelpListWrapper {
+  padding-left: 2rem;
+}
