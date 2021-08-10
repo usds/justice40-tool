@@ -1,5 +1,13 @@
-.j40Alert {
+@import "../utils.scss";
+
+@mixin j40AlertBase {
   font-size: large;
-  font-weight: 600;
-  padding: 1rem 0;
+  background-color: $j40AlertWarningColor;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.j40Alert {
+  @include j40AlertBase;
 }

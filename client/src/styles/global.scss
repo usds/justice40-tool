@@ -30,6 +30,10 @@ $theme-font-role-heading: "sans";
 $j40-max-width: 80ex;
 $primary-color: #112f4e;
 
+#main-content {
+  border-top: 0;
+}
+
 .j40-two-column {
   overflow: hidden;
   padding: 0;
@@ -138,7 +142,6 @@ $primary-color: #112f4e;
       width: 3em;
       padding: 0.4em; // this will change the size of the logo too
     }
-
   }
 }
 
@@ -187,7 +190,7 @@ $primary-color: #112f4e;
   }
 
   h1 {
-    font-size: 2.13rem;
+    font-size: 2.7rem;
   }
 
   h2 {
@@ -235,9 +238,6 @@ $primary-color: #112f4e;
 
   .j40-sitealert-title {
     font-weight: bold;
-  }
-
-  .j40-sitealert-body {
   }
 
   .usa-alert {

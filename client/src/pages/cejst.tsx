@@ -1,9 +1,13 @@
 import React from 'react';
-import Layout from '../components/layout';
-import MapWrapper from '../components/mapWrapper';
+import {Link} from 'gatsby-plugin-intl';
+
+import AlertWrapper from '../components/AlertWrapper';
 import HowYouCanHelp from '../components/HowYouCanHelp';
-import DownloadPacket from '../components/downloadPacket';
 import J40MainGridContainer from '../components/J40MainGridContainer';
+import Layout from '../components/layout';
+import MapWrapper from '../components/MapWrapper';
+import MapLegend from '../components/MapLegend';
+
 import * as styles from './cejst.module.scss';
 import {Grid} from '@trussworks/react-uswds';
 
@@ -16,45 +20,28 @@ const CEJSTPage = ({location}: IMapPageProps) => {
   // We temporarily removed MapControls, which would enable you to `setFeatures` also, for now
   //   We will bring back later when we have interactive controls.
   return (<Layout location={location}>
-    <J40MainGridContainer>
+    <J40MainGridContainer fullWidth={true}>
+      <AlertWrapper hideWarningAlert={true}/>
+    </J40MainGridContainer>
+
+    <J40MainGridContainer className={'j40-main-content'}>
       <Grid row><Grid col>
         <section>
-          <h2>Just Progress communities</h2>
-          <div className={styles.disclaimer}>
-            <div className={styles.textBox}>
+          <h1 className={styles.explorePageHeader}>Explore the tool</h1>
+          <div className={styles.explorePageSubHeader}>
+            <div className={styles.explorePageHeaderText}>
               <p>
-                Just Progress helps identify and prioritize communities across
-                the United States and U.S. territories
-                that have been historically overburdened and underserved.
-                These communities will receive 40% of
-                the benefits from investments in key areas outlined by the
-                &nbsp;
-                <a
-                  href={'https://www.whitehouse.gov/briefing-room/' +
-                  'presidential-actions/2021/01/27/' +
-                  'executive-order-on-tackling-the-climate-' +
-                  'crisis-at-home-and-abroad/'}
-                  target={'_blank'}
-                  rel={'noreferrer'}>
-                  Executive Order on Tackling the Climate Crisis at Home and
-                  Abroad
-                </a>.
-              </p>
-              <p>
-                Download the Just Progress packet or explore the map below to
-                see the list of prioritized communities. To learn more about
-                how
-                these communities were prioritized check out the
-                &nbsp;
-                <a
-                  href={'./methodology'}>
-                  Methodology
-                </a>
-                &nbsp;
-                page.
+              Zoom into the map to see which communities the tool has currently
+              identified as prioritized (the top 25% of communities) or on the
+              threshold. Learn more about the formula and datasets that were
+              used to prioritize these communities on the
+                {` `}
+                <Link to={'/methodology'}>Data & methodology</Link>
+                {` `}
+              page.
               </p>
             </div>
-            <DownloadPacket/>
+            <MapLegend />
           </div>
         </section>
       </Grid></Grid>

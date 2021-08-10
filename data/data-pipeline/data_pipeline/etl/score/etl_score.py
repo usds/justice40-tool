@@ -31,6 +31,9 @@ class ScoreETL(ExtractTransformLoad):
         self.HIGH_SCHOOL_FIELD_NAME = (
             "Percent individuals age 25 or over with less than high school degree"
         )
+        self.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD_NAME = (
+            "Median household income (% of state median household income)"
+        )
 
         # There's another aggregation level (a second level of "buckets").
         self.AGGREGATION_POLLUTION = "Pollution Burden"
@@ -59,7 +62,9 @@ class ScoreETL(ExtractTransformLoad):
         # Load census data
         census_csv = self.DATA_PATH / "dataset" / "census_acs_2019" / "usa.csv"
         self.census_df = pd.read_csv(
-            census_csv, dtype={self.GEOID_FIELD_NAME: "string"}, low_memory=False,
+            census_csv,
+            dtype={self.GEOID_FIELD_NAME: "string"},
+            low_memory=False,
         )
 
         # Load housing and transportation data
@@ -121,7 +126,8 @@ class ScoreETL(ExtractTransformLoad):
 
         # Define a named tuple that will be used for each data set input.
         DataSet = collections.namedtuple(
-            typename="DataSet", field_names=["input_field", "renamed_field", "bucket"],
+            typename="DataSet",
+            field_names=["input_field", "renamed_field", "bucket"],
         )
 
         data_sets = [
@@ -138,9 +144,16 @@ class ScoreETL(ExtractTransformLoad):
                 bucket=None,
             ),
             DataSet(
-                input_field="ACSTOTPOP", renamed_field="Total population", bucket=None,
+                input_field="ACSTOTPOP",
+                renamed_field="Total population",
+                bucket=None,
             ),
-            # The following data sets have buckets, because they're used in the score
+            DataSet(
+                input_field=self.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD_NAME,
+                renamed_field=self.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD_NAME,
+                bucket=None,
+            ),
+            # The following data sets have buckets, because they're used in Score C
             DataSet(
                 input_field="CANCER",
                 renamed_field="Air toxics cancer risk",
@@ -244,7 +257,9 @@ class ScoreETL(ExtractTransformLoad):
         }
 
         self.df.rename(
-            columns=renaming_dict, inplace=True, errors="raise",
+            columns=renaming_dict,
+            inplace=True,
+            errors="raise",
         )
 
         columns_to_keep = [data_set.renamed_field for data_set in data_sets]
@@ -368,9 +383,6 @@ class ScoreETL(ExtractTransformLoad):
         self.df["Score D"] = self.df[fields_min_max].mean(axis=1)
         self.df["Score E"] = self.df[fields_percentile].mean(axis=1)
 
-        # Calculate correlations
-        self.df[fields_min_max].corr()
-
         # Create percentiles for the scores
         for score_field in [
             "Score A",
@@ -393,9 +405,40 @@ class ScoreETL(ExtractTransformLoad):
                     >= 1 - threshold
                 )
 
+        # Now for binary (non index) scores.
+
+        # Calculate "Score F", which uses "either/or" thresholds.
+        ami_and_high_school_field_name = "Low AMI, Low HS graduation"
+        meets_socio_field_name = "Meets socioeconomic criteria"
+        meets_burden_field_name = "Meets burden criteria"
+
+        self.df[ami_and_high_school_field_name] = (
+            self.df[self.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD_NAME] < 0.80
+        ) & (self.df[self.HIGH_SCHOOL_FIELD_NAME] > 0.2)
+
+        self.df[meets_socio_field_name] = (
+            self.df[ami_and_high_school_field_name]
+            | (self.df[self.POVERTY_FIELD_NAME] > 0.40)
+            | (self.df[self.LINGUISTIC_ISOLATION_FIELD_NAME] > 0.10)
+            | (self.df[self.HIGH_SCHOOL_FIELD_NAME] > 0.4)
+        )
+
+        self.df[meets_burden_field_name] = (
+            self.df["Particulate matter (PM2.5)"] > 10
+        ) | (self.df["Respiratory hazard " "index"] > 0.75)
+
+        self.df["Score F (communities)"] = (
+            self.df[ami_and_high_school_field_name] & self.df[meets_burden_field_name]
+        )
+
+
     def load(self) -> None:
         logger.info("Saving Score CSV")
 
         # write nationwide csv
         self.SCORE_CSV_PATH.mkdir(parents=True, exist_ok=True)
+
+        # TODO: drop
+        self.df[0:10000].to_csv(self.SCORE_CSV_PATH / "usa-10000.csv", index=False)
+
         self.df.to_csv(self.SCORE_CSV_PATH / "usa.csv", index=False)

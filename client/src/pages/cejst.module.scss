@@ -1,12 +1,21 @@
+@import "../components/utils.scss";
+
 $primary-color: #112f4e;
 
-.disclaimer {
+h1.explorePageHeader {
+  font-weight: bolder;
+  margin-bottom: 0;
+  color: $headingFontColor;
+}
+
+.explorePageSubHeader {
   display: flex;
   flex-wrap: wrap;
   line-height: 25px;
+  color: $headingFontColor;
 
-  .textBox {
-    flex: 2;
-    max-width: 700px;
+  .explorePageHeaderText {
+    max-width: 34rem;
+    font-size: large;
   }
 }

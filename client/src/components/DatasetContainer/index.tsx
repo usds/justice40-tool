@@ -83,7 +83,7 @@ const DatasetContainer = () => {
         <h1 className={styles.datasetContainerHeader}>{intl.formatMessage(messages.cumulativeScore)}</h1>
         <p className={styles.datasetContainerSubTitle}>{intl.formatMessage(messages.subTitle)}</p>
         <div className={styles.datasetCardsContainer}>
-          {cards.map((card, index) => <DatasetCard key={index} datasetCardProps={card}/>)}
+          {cards.map((card) => <DatasetCard key={card.indicator} datasetCardProps={card}/>)}
         </div>
       </div>
     </div>
