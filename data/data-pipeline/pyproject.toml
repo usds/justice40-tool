@@ -17,6 +17,7 @@ pandas = "^1.2.5"
 python = "^3.7.1"
 requests = "^2.25.1"
 types-requests = "^2.25.0"
+XlsxWriter = "^3.0.1"
 
 [tool.poetry.dev-dependencies]
 black = {version = "^21.6b0", allow-prereleases = true}
