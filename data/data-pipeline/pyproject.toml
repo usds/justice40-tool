@@ -53,6 +53,7 @@ disable = [
   "R0914", # Disables too many local variables
   "W0621", # Disables redefined outer name
   "C0302", # Disables too many lines in module
+  "R0915", # Ignores too many statements
   "R1732", # Disables consider using "with"
   "R1720", # Disables unnecessary "else" after "raise"
   "C0206", # Disables consider iteratig with ".items()"
