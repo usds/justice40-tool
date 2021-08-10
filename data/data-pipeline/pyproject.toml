@@ -20,7 +20,10 @@ requests = "^2.25.1"
 tqdm = "4.62.0"
 types-requests = "^2.25.0"
 us = "^2.0.2"
+<<<<<<< HEAD
 xlsxwriter = "^2.0.0"
+=======
+>>>>>>> b7bf760c (fixing dependency issue)
 
 [tool.poetry.dev-dependencies]
 black = {version = "^21.6b0", allow-prereleases = true}
