@@ -98,11 +98,47 @@ def remove_all_dirs_from_dir(dir_path: Path) -> None:
             logging.info(f"Removing directory {file_path}")
 
 
-def unzip_file_from_url(
+def download_file_from_url(
     file_url: str,
-    download_path: Path,
-    unzipped_file_path: Path,
-    verify: bool = False,
+    download_file_name: Path,
+    verify: bool = True,
+) -> str:
+    """Downloads a file from a remote URL location and returns the file location.
+
+    Args:
+        file_url (str): URL where the zip file is located
+        download_file_name (pathlib.Path): file path where the file will be downloaded (called downloaded.zip by default)
+        verify (bool): A flag to check if the certificate is valid. If truthy, an invalid certificate will throw an error (optional, default to False)
+
+    Returns:
+        None
+
+    """
+    # disable https warning
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+    if not os.path.isdir(download_file_name.parent):
+        os.mkdir(download_file_name.parent)
+
+    logger.info(f"Downloading {file_url}")
+    response = requests.get(file_url, verify=verify)
+    if response.status_code == 200:
+        file_contents = response.content
+    else:
+        sys.exit(
+            f"HTTP response {response.status_code} from url {file_url}. Info: {response.content}"
+        )
+
+    # Write the contents to disk.
+    file = open(download_file_name, "wb")
+    file.write(file_contents)
+    file.close()
+
+    return download_file_name
+
+
+def unzip_file_from_url(
+    file_url: str, download_path: Path, unzipped_file_path: Path, verify: bool = True
 ) -> None:
     """Downloads a zip file from a remote URL location and unzips it in a specific directory, removing the temporary file after
 
@@ -116,23 +152,11 @@ def unzip_file_from_url(
         None
 
     """
-
-    # disable https warning
-    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
-    logger.info(f"Downloading {file_url}")
-    response = requests.get(file_url, verify=verify)
-    if response.status_code == 200:
-        file_contents = response.content
-    else:
-        sys.exit(
-            f"HTTP response {response.status_code} from url {file_url}. Info: {response.content}"
-        )
-
-    zip_file_path = download_path / "downloaded.zip"
-    zip_file = open(zip_file_path, "wb")
-    zip_file.write(file_contents)
-    zip_file.close()
+    zip_file_path = download_file_from_url(
+        file_url=file_url,
+        download_file_name=download_path / "downloaded.zip",
+        verify=verify,
+    )
 
     logger.info(f"Extracting {zip_file_path}")
     with zipfile.ZipFile(zip_file_path, "r") as zip_ref:

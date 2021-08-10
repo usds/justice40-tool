@@ -437,6 +437,8 @@ class ScoreETL(ExtractTransformLoad):
         self.SCORE_CSV_PATH.mkdir(parents=True, exist_ok=True)
 
         # TODO: drop
-        self.df[0:10000].to_csv(self.SCORE_CSV_PATH / "usa-10000.csv", index=False)
+        self.df.sample(n=10000).to_csv(
+            self.SCORE_CSV_PATH / "usa-10000.csv", index=False
+        )
 
         self.df.to_csv(self.SCORE_CSV_PATH / "usa.csv", index=False)
