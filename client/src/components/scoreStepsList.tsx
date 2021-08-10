@@ -51,17 +51,17 @@ const ScoreStepsList = () => {
             </p>
             <p>
               <GridContainer className={''}>
-                <Grid row className={'J40MathDivisionContainer'}>
-                  <Grid col className={'J40MathEqLeftSide grid-col-fill'}>
-                    <div className={'J40DivNumerator'}>
+                <Grid row className={'j40-math-division-container'}>
+                  <Grid col className={'j40-math-eq-left-side grid-col-fill'}>
+                    <div className={'j40-math-eq-numerator'}>
                 Dataset 1 + Dataset 2 + ... + Dataset N
                     </div>
-                    <div className={'J40MathEqDenominator'}>
+                    <div className={'j40-math-eq-denominator'}>
                 # of datasets
                     </div>
                   </Grid>
-                  <Grid col className={'J40MathEqMiddle grid-col-auto'}>=</Grid>
-                  <Grid col className={'J40MathEqRightSide grid-col-fill'}>Cumulative index score</Grid>
+                  <Grid col className={'j40-math-eq-middle grid-col-auto'}>=</Grid>
+                  <Grid col className={'j40-math-eq-right-side grid-col-fill'}>Cumulative index score</Grid>
                 </Grid>
               </GridContainer>
             </p>

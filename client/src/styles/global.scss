@@ -368,39 +368,39 @@ $primary-color: #112f4e;
     > li:last-child {
       /* no line on last item */
       border-left: .2rem solid transparent;
-      margin-top: -1.88rem;
+      margin-top: -1.9rem;
     }
   }
 }
 
 /* The math equation on the methodology page.. which is a royal pain */
-.J40MathDivisionContainer {
-  > .J40MathEqLeftSide {
+.j40-math-division-container {
+  > .j40-math-eq-left-side {
     text-align: right;
     justify-content: center;
     align-items: center;
     padding: 0.5rem;
 
-    > .J40DivNumerator {
+    > .j40-math-eq-numerator {
       border-bottom: solid 3px black;
       text-align: center;
       width: 90%;
     }
 
-    > .J40MathEqDenominator {
+    > .j40-math-eq-denominator {
       text-align: center;
       width: 90%;
     }
   }
 
-  > .J40MathEqMiddle {
+  > .j40-math-eq-middle {
     display: inline-flex;
     justify-content: center;
     align-items: center;
     padding: 0.25rem;
   }
 
-  > .J40MathEqRightSide {
+  > .j40-math-eq-right-side {
     display: inline-flex;
     align-items: center;
     padding: 0.25rem;
