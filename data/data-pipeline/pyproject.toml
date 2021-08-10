@@ -12,11 +12,16 @@ geopandas = "^0.9.0"
 ipython = "^7.24.1"
 jupyter = "^1.0.0"
 jupyter-contrib-nbextensions = "^0.5.1"
+matplotlib = "^3.4.2"
 numpy = "^1.21.0"
 pandas = "^1.2.5"
 python = "^3.7.1"
+pypandoc = "^1.6.3"
 requests = "^2.25.1"
+tqdm = "4.62.0"
 types-requests = "^2.25.0"
+us = "^2.0.2"
+xlsxwriter = "^2.0.0"
 
 [tool.poetry.dev-dependencies]
 black = {version = "^21.6b0", allow-prereleases = true}
