@@ -41,16 +41,32 @@ class PostScoreETL(ExtractTransformLoad):
 
         self.TILES_SCORE_COLUMNS = [
             "GEOID10",
+            "State Name",
+            "County Name",
+            "Total population",
             "Score E (percentile)",
             "Score E (top 25th percentile)",
-            "GEOID",
-            "State Abbreviation",
-            "County Name",
+            "Poverty (Less than 200% of federal poverty line)",
+            "Percent individuals age 25 or over with less than high school degree",
+            "Linguistic isolation (percent)",
+            "Unemployed civilians (percent)",
+            "Housing burden (percent)",
         ]
         self.TILES_SCORE_CSV_PATH = self.SCORE_CSV_PATH / "tiles"
         self.TILES_SCORE_CSV = self.TILES_SCORE_CSV_PATH / "usa.csv"
 
-        # These are the
+        # columns to round floats to 2 decimals
+        self.TILES_SCORE_FLOAT_COLUMNS = [
+            "Score E (percentile)",
+            "Score E (top 25th percentile)",
+            "Poverty (Less than 200% of federal poverty line)",
+            "Percent individuals age 25 or over with less than high school degree",
+            "Linguistic isolation (percent)",
+            "Unemployed civilians (percent)",
+            "Housing burden (percent)",
+        ]
+        self.TILES_ROUND_NUM_DECIMALS = 2
+
         self.DOWNLOADABLE_SCORE_INDICATORS_BASIC = [
             "Percent individuals age 25 or over with less than high school degree",
             "Linguistic isolation (percent)",
@@ -106,7 +122,10 @@ class PostScoreETL(ExtractTransformLoad):
         self.counties_df = pd.read_csv(
             self.CENSUS_COUNTIES_TXT,
             sep="\t",
-            dtype={"GEOID": "string", "USPS": "string"},
+            dtype={
+                "GEOID": "string",
+                "USPS": "string",
+            },
             low_memory=False,
             encoding="latin-1",
         )
@@ -115,7 +134,10 @@ class PostScoreETL(ExtractTransformLoad):
         self.states_df = pd.read_csv(
             self.STATE_CSV, dtype={"fips": "string", "state_code": "string"}
         )
-        self.score_df = pd.read_csv(self.FULL_SCORE_CSV, dtype={"GEOID10": "string"})
+        self.score_df = pd.read_csv(
+            self.FULL_SCORE_CSV,
+            dtype={"GEOID10": "string", "Total population": "int64"},
+        )
 
     def transform(self) -> None:
         logger.info("Transforming data sources for Score + County CSV")
@@ -165,13 +187,22 @@ class PostScoreETL(ExtractTransformLoad):
 
         # merge census cbgs with score
         merged_df = cbg_usa_df.merge(
-            self.score_county_state_merged, on="GEOID10", how="left"
+            self.score_county_state_merged,
+            on="GEOID10",
+            how="left",
+        )
+
+        # recast population to integer
+        merged_df["Total population"] = (
+            merged_df["Total population"].fillna(0.0).astype(int)
         )
 
         # list the null score cbgs
         null_cbg_df = merged_df[merged_df["Score E (percentile)"].isnull()]
 
         # subsctract data sets
+        # this follows the XOR pattern outlined here:
+        # https://stackoverflow.com/a/37313953
         removed_df = pd.concat([merged_df, null_cbg_df, null_cbg_df]).drop_duplicates(
             keep=False
         )
@@ -188,9 +219,14 @@ class PostScoreETL(ExtractTransformLoad):
 
     def _save_tile_csv(self):
         logger.info("Saving Tile Score CSV")
-        # TODO: check which are the columns we'll use
-        # Related to: https://github.com/usds/justice40-tool/issues/302
         score_tiles = self.score_county_state_merged[self.TILES_SCORE_COLUMNS]
+
+        decimals = pd.Series(
+            [self.TILES_ROUND_NUM_DECIMALS] * len(self.TILES_SCORE_FLOAT_COLUMNS),
+            index=self.TILES_SCORE_FLOAT_COLUMNS,
+        )
+        score_tiles = score_tiles.round(decimals)
+
         self.TILES_SCORE_CSV_PATH.mkdir(parents=True, exist_ok=True)
         score_tiles.to_csv(self.TILES_SCORE_CSV, index=False)
 
@@ -210,7 +246,10 @@ class PostScoreETL(ExtractTransformLoad):
         downloadable_tiles.to_excel(self.DOWNLOADABLE_SCORE_EXCEL, index=False)
 
         logger.info("Compressing files")
-        files_to_compress = [self.DOWNLOADABLE_SCORE_CSV, self.DOWNLOADABLE_SCORE_EXCEL]
+        files_to_compress = [
+            self.DOWNLOADABLE_SCORE_CSV,
+            self.DOWNLOADABLE_SCORE_EXCEL,
+        ]
         with zipfile.ZipFile(self.DOWNLOADABLE_SCORE_ZIP, "w") as zf:
             for f in files_to_compress:
                 zf.write(f, arcname=Path(f).name, compress_type=compression)
