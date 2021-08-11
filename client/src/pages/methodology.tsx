@@ -5,6 +5,7 @@ import AlertWrapper from '../components/AlertWrapper';
 import DatasetContainer from '../components/DatasetContainer';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
+import ScoreStepsList from '../components/scoreStepsList';
 
 interface MethodPageProps {
   location: Location;
@@ -61,6 +62,11 @@ const IndexPage = ({location}: MethodPageProps) => {
         </Grid>
       </J40MainGridContainer>
 
+      <J40MainGridContainer>
+        <Grid row><Grid col>
+          <ScoreStepsList/>
+        </Grid></Grid>
+      </J40MainGridContainer>
     </Layout>
   );
 };
