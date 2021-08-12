@@ -96,7 +96,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: Deploy to Geoplatform AWS
-        run: aws s3 sync ./public/ s3://usds-geoplatform-justice40-website/justice40-tool/${{env.DESTINATION_FOLDER}} --delete
+        run: aws s3 sync ./public/ s3://usds-geoplatform-justice40-website/justice40-tool/${{env.DESTINATION_FOLDER}} --acl public-read --delete
       - name: Update PR with deployed URL
         uses: mshick/add-pr-comment@v1
         if: github.event_name == 'pull_request' && github.event.action == 'opened' || github.event_name == 'push' # Only comment if the PR has been opened or a push has updated it
