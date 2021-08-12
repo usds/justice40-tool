@@ -10,13 +10,15 @@
     - [Score generation and comparison workflow](#score-generation-and-comparison-workflow)
       - [Workflow Diagram](#workflow-diagram)
       - [Step 0: Set up your environment](#step-0-set-up-your-environment)
-      - [(Optional) Step 0: Run the script to download census data](#optional-step-0-run-the-script-to-download-census-data)
-      - [Step 1: Run the ETL script for each data source](#step-1-run-the-etl-script-for-each-data-source)
-      - [Step 2: Calculate the Justice40 score experiments](#step-2-calculate-the-justice40-score-experiments)
-      - [Step 3: Compare the Justice40 score experiments to other indices](#step-3-compare-the-justice40-score-experiments-to-other-indices)
+      - [Step 1: Run the script to download census data or download from the Justice40 S3 URL](#step-1-run-the-script-to-download-census-data-or-download-from-the-justice40-s3-url)
+      - [Step 2: Run the ETL script for each data source](#step-2-run-the-etl-script-for-each-data-source)
+      - [Step 3: Calculate the Justice40 score experiments](#step-3-calculate-the-justice40-score-experiments)
+      - [Step 4: Compare the Justice40 score experiments to other indices](#step-4-compare-the-justice40-score-experiments-to-other-indices)
     - [Data Sources](#data-sources)
   - [Running using Docker](#running-using-docker)
   - [Local development](#local-development)
+    - [VSCode](#vscode)
+    - [MacOS](#macos)
     - [Windows Users](#windows-users)
     - [Setting up Poetry](#setting-up-poetry)
     - [Downloading Census Block Groups GeoJSON and Generating CBG CSVs](#downloading-census-block-groups-geojson-and-generating-cbg-csvs)
@@ -53,14 +55,14 @@ TODO add mermaid diagram
 #### Step 1: Run the script to download census data or download from the Justice40 S3 URL
 
 1. Call the `census_data_download` command using the application manager `application.py` **NOTE:** This may take several minutes to execute.
-   - With Docker: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application census-data-download"`
-   - With Poetry: `poetry run download_census`
+   - With Docker: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application census-data-download`
+   - With Poetry: `poetry run download_census` (Install GDAL as described [below](#local-development))
 2. If you have a high speed internet connection and don't want to generate the census data or install `GDAL` locally, you can download a zip version of the Census file [here](https://justice40-data.s3.amazonaws.com/data-sources/census.zip). Then unzip and move the contents inside the `data/data-pipeline/data_pipeline/data/census/` folder/
 
 #### Step 2: Run the ETL script for each data source
 
 1. Call the `etl-run` command using the application manager `application.py` **NOTE:** This may take several minutes to execute.
-   - With Docker: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application etl-run"`
+   - With Docker: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application etl-run`
    - With Poetry: `poetry run etl`
 2. This command will execute the corresponding ETL script for each data source in `data_pipeline/etl/sources/`. For example, `data_pipeline/etl/sources/ejscreen/etl.py` is the ETL script for EJSCREEN data.
 3. Each ETL script will extract the data from its original source, then format the data into `.csv` files that get stored in the relevant folder in `data_pipeline/data/dataset/`. For example, HUD Housing data is stored in `data_pipeline/data/dataset/hud_housing/usa.csv`
@@ -71,7 +73,7 @@ _For example: `poetry run etl -- -d ejscreen` would only run the ETL process for
 #### Step 3: Calculate the Justice40 score experiments
 
 1. Call the `score-run` command using the application manager `application.py` **NOTE:** This may take several minutes to execute.
-   - With Docker: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application score-run"`
+   - With Docker: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application score-run`
    - With Poetry: `poetry run score`
 1. The `score-run` command will execute the `etl/score/etl.py` script which loads the data from each of the source files added to the `data/dataset/` directory by the ETL scripts in Step 1.
 1. These data sets are merged into a single dataframe using their Census Block Group GEOID as a common key, and the data in each of the columns is standardized in two ways:
@@ -119,18 +121,39 @@ Once completed, run `docker-compose up` and then open a new tab or terminal wind
 
 Here's a list of commands:
 
-- Get help: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application --help"`
-- Generate census data: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application census-data-download"`
+- Get help: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application --help`
+- Generate census data: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application census-data-download`
 - Run all ETL and Generate score: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application score-full-run`
-- Clean up the data directories: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application data-cleanup"`
-- Run all ETL processes: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application etl-run"`
-- Generate Score: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application score-run"`
+- Clean up the data directories: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application data-cleanup`
+- Run all ETL processes: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application etl-run`
+- Generate Score: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application score-run`
 - Generate Score with Geojson and high and low versions: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application geo-score`
 - Generate Map Tiles: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application generate-map-tiles`
 
 ## Local development
 
-You can run the Python code locally without Docker to develop, using Poetry. However, to generate the census data you will need the [GDAL library](https://github.com/OSGeo/gdal) installed locally. Also to generate tiles for a local map, you will need [Mapbox tippeanoe](https://github.com/mapbox/tippecanoe). Please refer to the repos for specific instructions for your OS.
+You can run the Python code locally without Docker to develop, using Poetry. However, to generate the census data you will need the [GDAL library](https://github.com/OSGeo/gdal) installed locally. Also to generate tiles for a local map, you will need [Mapbox tippecanoe](https://github.com/mapbox/tippecanoe). Please refer to the repos for specific instructions for your OS.
+
+### VSCode
+
+If you are using VSCode, you can make use of the `.vscode` folder checked in under `data/data-pipeline/.vscode`. To do this, open this directory with `code data/data-pipeline` .
+
+Here's whats included:
+
+1. `launch.json` - launch commands that allow for debugging the various commands in `application.py`. Note that because we are using the otherwise excellent [Click CLI](https://click.palletsprojects.com/en/8.0.x/), and Click in turn uses `console_scripts` to parse and execute command line options, it is necessary to run the equivalent of `python -m data_pipeline.application [command]` within `launch.json` to be able to set and hit breakpoints (this is what is currently implemented. Otherwise, you may find that the script times out after 5 seconds. More about this [here](https://stackoverflow.com/questions/64556874/how-can-i-debug-python-console-script-command-line-apps-with-the-vscode-debugger).
+
+2. `settings.json` - these ensure that you're using the default linter (`pylint`), formatter (`flake8`), and test library (`pytest`) that the team is using.
+
+3. `tasks.json` - these enable you to use `Terminal->Run Task` to run our preferred formatters and linters within your project.
+
+Users are instructed to only add settings to this file that should be shared across the team, and not to add settings here that only apply to local development environments (particularly full absolute paths which can differ between setups). If you are looking to add something to this file, check in with the rest of the team to ensure the proposed settings should be shared.
+
+### MacOS
+
+To install the above-named executables:
+
+- gdal: `brew install gdal`
+- Tippecanoe: `brew install tippecanoe`
 
 ### Windows Users
 
@@ -159,6 +182,7 @@ If you want to run tile generation, please install TippeCanoe [following these i
 - Start a terminal
 - Change to the package directory (i.e. `cd data/data-pipeline/data_pipeline`)
 - Then run `poetry run generate_tiles`
+- If you have S3 keys, you can sync to the dev repo by doing `aws s3 sync ./data_pipeline/data/score/tiles/ s3://justice40-data/data-pipeline/data/score/tiles --acl public-read --delete`
 
 ### Serve the map locally
 
