@@ -58,12 +58,13 @@ Disable caching in the browser and clear the cache.
 
 ### S3 Permissions
 
-When the tile data is updated, it's possible that the permissions on the S3 bucket may be reset to be non-publically accessible. The CDN mentioned above points to an underlying S3 bucket. Check the permissions by curling the underlying S3 bucket direclty and inspecting the headers:
+When the tile data is updated, it's possible that the permissions on the S3 bucket may be reset to be non-publically accessible. The CDN mentioned above points to an underlying S3 bucket. Check the permissions by curling the underlying S3 bucket directly and inspecting the headers:
 
-`curl -sSL -D - https://justice40-data.s3.amazonaws.com/data-pipeline/data/score/tiles/low/3/1/3.pbf`
+`curl -D - http://justice40-data.s3.amazonaws.com/data-pipeline/data/score/tiles/low/3/1/3.pbf`
 
-If permissions are not set up correctly the underlying S3 location will not be accessible (will show a 403 via curl) or a permission XML error when accessing via the browser. This curl is done to check that the file is public and is available over SSL, if not, there could be an issue with the map reading it. It should return 200 with a reasonble file size on the order of KB.
+If permissions are not set up correctly the underlying S3 location will not be accessible (will show a 403 via curl) or a permission XML error when accessing via the browser. This curl is done to check that the file is public, if not, there could be an issue with the map reading it. It should return 200 with a reasonble file size on the order of KB.
 
+Note also that the browser will also need to run the localhost on http as well.
 Update permissions in s3 and try again.
 
 ### CDN caching
