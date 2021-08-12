@@ -12,18 +12,17 @@ interface ContactPageProps {
 
 const ContactPage = ({location}: ContactPageProps) => {
   const generalemail = 'screeningtool.feedback@usds.gov';
-  const techemail = 'screeningtool.support@usds.gov';
 
   return (
     <Layout location={location}>
 
       <J40MainGridContainer fullWidth={true}>
-        <AlertWrapper />
+        <AlertWrapper/>
       </J40MainGridContainer>
 
       <J40MainGridContainer>
-        <Grid row><Grid col>
-          <section className={'usa-prose'}>
+        <section className={'usa-prose'}>
+          <Grid row><Grid col>
             <h2><FormattedMessage
               id={'contact.pageheader'}
               description={'H2 header for contact page'}
@@ -37,28 +36,14 @@ const ContactPage = ({location}: ContactPageProps) => {
               <FormattedMessage
                 id={'contact.general'}
                 description={'Contact page body text'}
-                defaultMessage={`
-              For general feedback, email {general_email_address}
-          `}
+                defaultMessage={`For general feedback, email {general_email_address}`}
                 values={{
                   general_email_address:
                     <a href={`mailto:${generalemail}`}>{generalemail}</a>,
                 }}/>
             </p>
-            <p>
-              <FormattedMessage
-                id={'contact.general'}
-                description={'Contact page body text'}
-                defaultMessage={`
-              For technical support, email {tech_email_address}
-          `}
-                values={{
-                  tech_email_address:
-                    <a href={`mailto:${techemail}`}>{techemail}</a>,
-                }}/>
-            </p>
-          </section>
-        </Grid></Grid>
+          </Grid></Grid>
+        </section>
       </J40MainGridContainer>
     </Layout>
   );
