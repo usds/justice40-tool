@@ -174,4 +174,4 @@ When zooming in (the zoom number will increase), thus aka 'high' zoom levels, th
 }
 ```
 
-In either case, if the contract below is not upheld, the map may not render the data layer.
+In either case, if any contract (low or high) is not upheld, the map may not render the data layer.
