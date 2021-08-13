@@ -407,6 +407,13 @@ $primary-color: #112f4e;
   }
 }
 
+ul.j40-process-nested-list {
+  margin-bottom: 2rem;
+  > li {
+    list-style-type: disc; /* without this, we get hollow circles */
+  }
+}
+
 /* these are currently used in the list, but it seems like they should be globally consistent with the rest of the site */
 .j40-item-list-title {
   margin-block-end: auto;
