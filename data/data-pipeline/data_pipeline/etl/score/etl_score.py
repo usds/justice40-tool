@@ -50,6 +50,7 @@ class ScoreETL(ExtractTransformLoad):
         self.census_df: pd.DataFrame
         self.housing_and_transportation_df: pd.DataFrame
         self.hud_housing_df: pd.DataFrame
+        self.cdc_places_df: pd.DataFrame
 
     def data_sets(self) -> list:
         # Define a named tuple that will be used for each data set input.
@@ -283,7 +284,10 @@ class ScoreETL(ExtractTransformLoad):
         ]
         census_tract_df = functools.reduce(
             lambda left, right: pd.merge(
-                left=left, right=right, on=self.GEOID_TRACT_FIELD_NAME, how="outer"
+                left=left,
+                right=right,
+                on=self.GEOID_TRACT_FIELD_NAME,
+                how="outer",
             ),
             census_tract_dfs,
         )
