@@ -22,7 +22,7 @@ import {useFlags} from '../contexts/FlagContext';
 // Components:
 import TerritoryFocusControl from './territoryFocusControl';
 import MapInfoPanel from './mapInfoPanel';
-import AreaDetail from './areaDetail';
+import AreaDetail from './AreaDetail';
 
 // Styles and constants
 import {makeMapStyle} from '../data/mapStyle';

@@ -4,21 +4,28 @@ import {defineMessages} from 'react-intl';
 
 // URLS
 export const DOWNLOAD_ZIP_URL = 'https://justice40-data.s3.amazonaws.com/data-pipeline/data/score/downloadable/Screening+Tool+Data.zip';
-export const FEATURE_TILE_BASE_URL = 'https://d2zjid6n5ja2pt.cloudfront.net';
+
+// This is the URL for the CDN that delivers the tile data
+export const FEATURE_TILE_BASE_URL = 'https://d3jqyw10j8e7p9.cloudfront.net';
+const FEATURE_TILE_PATH = 'data-pipeline/data/score/tiles';
+
+// This is the URL for the CDN that delivers the application
+// const APP_BASE_URL = 'https://d2zjid6n5ja2pt.cloudfront.net';
 const XYZ_SUFFIX = '{z}/{x}/{y}.pbf';
+
 export const featureURLForTilesetName = (tilesetName :string ) : string => {
-  return `${FEATURE_TILE_BASE_URL}/${tilesetName}/${XYZ_SUFFIX}`;
+  return `${FEATURE_TILE_BASE_URL}/${FEATURE_TILE_PATH}/${tilesetName}/${XYZ_SUFFIX}`;
 };
-export const FEATURE_TILE_HIGH_ZOOM_URL = featureURLForTilesetName('0714_high');
-export const FEATURE_TILE_LOW_ZOOM_URL = featureURLForTilesetName('tiles_low');
+export const FEATURE_TILE_HIGH_ZOOM_URL = featureURLForTilesetName('high');
+export const FEATURE_TILE_LOW_ZOOM_URL = featureURLForTilesetName('low');
 
 
 // Performance markers
 export const PERFORMANCE_MARKER_MAP_IDLE = 'MAP_IDLE';
 
 // Properties
-export const SCORE_PROPERTY_HIGH = 'Score D (percentile)';
-export const SCORE_PROPERTY_LOW = 'D_SCORE';
+export const SCORE_PROPERTY_HIGH = 'Score E (percentile)';
+export const SCORE_PROPERTY_LOW = 'E_SCORE';
 export const GEOID_PROPERTY = 'GEOID10';
 export const HIGH_SCORE_SOURCE_NAME = 'score-high';
 export const HIGH_SCORE_LAYER_NAME = 'score-high-layer';
@@ -30,13 +37,15 @@ export const BLOCK_GROUP_BOUNDARY_LAYER_NAME = 'block-group-boundary-layer';
 
 
 // Properties
-export const POVERTY_PROPERTY_PERCENTILE = 'Poverty (Less than 200% of federal poverty line) (percentile)';
-export const HOUSING_BURDEN_PROPERTY_PERCENTILE = 'Housing burden (percent) (percentile)';
-export const LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE = 'Linguistic isolation (percent) (percentile)';
-export const UNEMPLOYMENT_PROPERTY_PERCENTILE = 'Unemployed civilians (percent) (percentile)';
+export const POVERTY_PROPERTY_PERCENTILE = 'Poverty (Less than 200% of federal poverty line)';
+export const HOUSING_BURDEN_PROPERTY_PERCENTILE = 'Housing burden (percent)';
+export const LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE = 'Linguistic isolation (percent)';
+export const UNEMPLOYMENT_PROPERTY_PERCENTILE = 'Unemployed civilians (percent)';
 export const TOTAL_POPULATION = 'Total population';
-export const EDUCATION_PROPERTY_PERCENTILE = 'Percent individuals age 25 or over ' +
-'with less than high school degree (percentile)';
+export const EDUCATION_PROPERTY_PERCENTILE = 'Percent individuals age 25 or over with less than high school degree';
+export const COUNTY_NAME = 'County Name';
+export const STATE_NAME = 'State Name';
+
 
 // The name of the layer within the tiles that contains the score
 export const SCORE_SOURCE_LAYER = 'blocks';
