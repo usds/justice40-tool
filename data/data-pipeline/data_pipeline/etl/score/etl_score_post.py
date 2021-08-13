@@ -46,11 +46,11 @@ class PostScoreETL(ExtractTransformLoad):
             "Total population",
             "Score E (percentile)",
             "Score E (top 25th percentile)",
-            "Poverty (Less than 200% of federal poverty line)",
-            "Percent individuals age 25 or over with less than high school degree",
-            "Linguistic isolation (percent)",
-            "Unemployed civilians (percent)",
-            "Housing burden (percent)",
+            "Poverty (Less than 200% of federal poverty line) (percentile)"
+            "Percent individuals age 25 or over with less than high school degree (percentile)",
+            "Linguistic isolation (percent) (percentile)",
+            "Unemployed civilians (percent) (percentile)",
+            "Housing burden (percent) (percentile)",
         ]
         self.TILES_SCORE_CSV_PATH = self.SCORE_CSV_PATH / "tiles"
         self.TILES_SCORE_CSV = self.TILES_SCORE_CSV_PATH / "usa.csv"
