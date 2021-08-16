@@ -21,6 +21,6 @@ describe('rendering of the component', () => {
   });
 
   it('No console errors', () => {
-    expect(console.error).toBeCalledTimes(0);
+    expect(global.console.error).toBeCalledTimes(0);
   });
 });
