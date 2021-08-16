@@ -7,6 +7,7 @@
 
 - [Justice 40 Score application](#justice-40-score-application)
   - [About this application](#about-this-application)
+    - [Using the data](#using-the-data)
     - [Score generation and comparison workflow](#score-generation-and-comparison-workflow)
       - [Workflow Diagram](#workflow-diagram)
       - [Step 0: Set up your environment](#step-0-set-up-your-environment)
@@ -37,6 +38,30 @@
 This application is used to compare experimental versions of the Justice40 score to established environmental justice indices, such as EJSCREEN, CalEnviroScreen, and so on.
 
 _**NOTE:** These scores **do not** represent final versions of the Justice40 scores and are merely used for comparative purposes. As a result, the specific input columns and formulas used to calculate them are likely to change over time._
+
+### Using the data
+
+One of our primary development principles is that the entire data pipeline should be open and replicable end-to-end, and therefore we strive to make data available for use at every stage of our pipeline. You can follow the instructions below in this README to spin up the data pipeline yourself in your own environment; you can also access the data we've already processed on our S3 bucket. 
+
+In the sub-sections below, we outline what each stage of the data provenance looks like and where you can find the data output by that stage. If you'd like to actually perform each step in your own environment, skip down to [Score generation and comparison workflow](#score-generation-and-comparison-workflow).
+
+#### 1. Source data
+If you would like to find and use the raw source data, you can find the source URLs in the `etl.py` files located within each directory in `data/data-pipeline/etl/sources`.
+
+#### 2. Extract-Transform-Load (ETL) the data
+The first step of processing we do is that we perform a simple ETL process for each of the source datasets. Code is available in `data/data-pipeline/etl/sources`, and the output of this process is a number of CSVs available at the following locations: 
+
+* EJScreen: https://justice40-data.s3.amazonaws.com/data-pipeline/data/dataset/ejscreen_2019/usa.csv
+* Census ACS 2019: https://justice40-data.s3.amazonaws.com/data-pipeline/data/dataset/census_acs_2019/usa.csv
+* Housing and Transportation Index: https://justice40-data.s3.amazonaws.com/data-pipeline/data/dataset/housing_and_transportation_index/usa.csv
+* HUD Housing: https://justice40-data.s3.amazonaws.com/data-pipeline/data/dataset/hud_housing/usa.csv
+
+Each CSV may have a different column name for the census tract or census block group identifier. You can find what the name is in the ETL code. Please note that when you view these files you should make sure that your text editor or spreadsheet software does not remove the initial `0` from this identifier field (many IDs begin with `0`).
+
+#### 3. Combined dataset
+
+#### 4. Tileset
+
 
 ### Score generation and comparison workflow
 
