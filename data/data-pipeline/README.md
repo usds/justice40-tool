@@ -41,7 +41,7 @@ _**NOTE:** These scores **do not** represent final versions of the Justice40 sco
 
 ### Using the data
 
-One of our primary development principles is that the entire data pipeline should be open and replicable end-to-end, and therefore we strive to make data available for use at every stage of our pipeline. You can follow the instructions below in this README to spin up the data pipeline yourself in your own environment; you can also access the data we've already processed on our S3 bucket. 
+One of our primary development principles is that the entire data pipeline should be open and replicable end-to-end. As part of this, in addition to all code being open, we also strive to make data visible and available for use at every stage of our pipeline. You can follow the instructions below in this README to spin up the data pipeline yourself in your own environment; you can also access the data we've already processed on our S3 bucket.
 
 In the sub-sections below, we outline what each stage of the data provenance looks like and where you can find the data output by that stage. If you'd like to actually perform each step in your own environment, skip down to [Score generation and comparison workflow](#score-generation-and-comparison-workflow).
 
@@ -59,14 +59,12 @@ The first step of processing we perform is a simple ETL process for each of the 
 Each CSV may have a different column name for the census tract or census block group identifier. You can find what the name is in the ETL code. Please note that when you view these files you should make sure that your text editor or spreadsheet software does not remove the initial `0` from this identifier field (many IDs begin with `0`).
 
 #### 3. Combined dataset
-The CSV with the combined data from all of these sources is available here:
-
-This is an output of the code available in `data/data-pipeline/etl/`.
+The CSV with the combined data from all of these sources will be available soon!
 
 #### 4. Tileset
-Once we have all the data, we need to convert it to tiles to make it usable on a map. We only need a subset of the data to display in our client UI, so we do not include all data from the combined CSV in the tileset. You can access the tiles here:
+Once we have all the data from the previous stages, we convert it to tiles to make it usable on a map. We only need a subset of the data to display in our client UI, so we do not include all data from the combined CSV in the tileset.
 
-This tileset is an output of the code avaialble in `data/data-pipeline/etl/`.
+Link to the tile server coming soon!
 
 ### Score generation and comparison workflow
 
