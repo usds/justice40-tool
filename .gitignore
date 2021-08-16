@@ -139,7 +139,6 @@ cython_debug/
 */data-pipeline/data_pipeline/data/tmp
 */data-pipeline/data_pipeline/data/dataset
 */data-pipeline/data_pipeline/data/score
-*/data-pipeline/data_pipeline/etl/sources/*/test_data
 */data-pipeline/data_pipeline/etl/sources/*/tmp_dir
 
 # node
