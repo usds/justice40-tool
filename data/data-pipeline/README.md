@@ -49,7 +49,7 @@ In the sub-sections below, we outline what each stage of the data provenance loo
 If you would like to find and use the raw source data, you can find the source URLs in the `etl.py` files located within each directory in `data/data-pipeline/etl/sources`.
 
 #### 2. Extract-Transform-Load (ETL) the data
-The first step of processing we do is that we perform a simple ETL process for each of the source datasets. Code is available in `data/data-pipeline/etl/sources`, and the output of this process is a number of CSVs available at the following locations: 
+The first step of processing we perform is a simple ETL process for each of the source datasets. Code is available in `data/data-pipeline/etl/sources`, and the output of this process is a number of CSVs available at the following locations: 
 
 * EJScreen: https://justice40-data.s3.amazonaws.com/data-pipeline/data/dataset/ejscreen_2019/usa.csv
 * Census ACS 2019: https://justice40-data.s3.amazonaws.com/data-pipeline/data/dataset/census_acs_2019/usa.csv
@@ -59,9 +59,14 @@ The first step of processing we do is that we perform a simple ETL process for e
 Each CSV may have a different column name for the census tract or census block group identifier. You can find what the name is in the ETL code. Please note that when you view these files you should make sure that your text editor or spreadsheet software does not remove the initial `0` from this identifier field (many IDs begin with `0`).
 
 #### 3. Combined dataset
+The CSV with the combined data from all of these sources is available here:
+
+This is an output of the code available in `data/data-pipeline/etl/`.
 
 #### 4. Tileset
+Once we have all the data, we need to convert it to tiles to make it usable on a map. We only need a subset of the data to display in our client UI, so we do not include all data from the combined CSV in the tileset. You can access the tiles here:
 
+This tileset is an output of the code avaialble in `data/data-pipeline/etl/`.
 
 ### Score generation and comparison workflow
 
