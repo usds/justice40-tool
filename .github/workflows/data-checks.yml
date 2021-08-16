@@ -3,6 +3,8 @@ name: Data Checks
 on:
   pull_request:
     branches: [ main ]  # runs on any PR against main
+    paths:
+      - "data/**"
 jobs:
   data-pipeline:
     runs-on: ubuntu-latest

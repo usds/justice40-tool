@@ -92,8 +92,8 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ secrets.CLIENT_DEV_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.CLIENT_DEV_AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: Deploy to Geoplatform AWS
         run: aws s3 sync ./public/ s3://usds-geoplatform-justice40-website/justice40-tool/${{env.DESTINATION_FOLDER}} --acl public-read --delete
