@@ -28,7 +28,7 @@ const J40Footer = () => {
     },
     moreinfoheader: {
       id: 'footer.moreinfoheader',
-      defaultMessage: 'More Information',
+      defaultMessage: 'More information',
       description: 'Footer column header',
     },
     foia: {
@@ -70,7 +70,7 @@ const J40Footer = () => {
               aria-label={intl.formatMessage(messages.arialabelfooter)}
               size="big" // fyi you leave this off and it silently fails...
               links={[
-                ['Contacts',
+                ['Contact',
                   <Address
                     key={'footeraddress'}
                     className={'j40-footer-address'}

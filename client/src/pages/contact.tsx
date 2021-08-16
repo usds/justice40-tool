@@ -11,53 +11,36 @@ interface ContactPageProps {
 }
 
 const ContactPage = ({location}: ContactPageProps) => {
-  const generalemail = 'screeningtool.feedback@usds.gov';
-  const techemail = 'screeningtool.support@usds.gov';
+  const generalEmail = 'screeningtool.feedback@usds.gov';
 
   return (
     <Layout location={location}>
 
       <J40MainGridContainer fullWidth={true}>
-        <AlertWrapper />
+        <AlertWrapper/>
       </J40MainGridContainer>
 
-      <J40MainGridContainer>
+      <J40MainGridContainer className={'usa-prose'}>
         <Grid row><Grid col>
-          <section className={'usa-prose'}>
-            <h2><FormattedMessage
-              id={'contact.pageheader'}
-              description={'H2 header for contact page'}
-              defaultMessage={'Contact'}/></h2>
-            <h3><FormattedMessage
-              id={'contact.sectionheader'}
-              description={'Heading for page to allow users to contact project maintainers'}
-              defaultMessage={'Email us'}/></h3>
+          <h2><FormattedMessage
+            id={'contact.pageheader'}
+            description={'H2 header for contact page'}
+            defaultMessage={'Contact'}/></h2>
+          <h3><FormattedMessage
+            id={'contact.sectionheader'}
+            description={'Heading for page to allow users to contact project maintainers'}
+            defaultMessage={'Email us'}/></h3>
 
-            <p>
-              <FormattedMessage
-                id={'contact.general'}
-                description={'Contact page body text'}
-                defaultMessage={`
-              For general feedback, email {general_email_address}
-          `}
-                values={{
-                  general_email_address:
-                    <a href={`mailto:${generalemail}`}>{generalemail}</a>,
-                }}/>
-            </p>
-            <p>
-              <FormattedMessage
-                id={'contact.general'}
-                description={'Contact page body text'}
-                defaultMessage={`
-              For technical support, email {tech_email_address}
-          `}
-                values={{
-                  tech_email_address:
-                    <a href={`mailto:${techemail}`}>{techemail}</a>,
-                }}/>
-            </p>
-          </section>
+          <p>
+            <FormattedMessage
+              id={'contact.general'}
+              description={'Contact page body text'}
+              defaultMessage={`For general feedback, email {general_email_address}`}
+              values={{
+                general_email_address:
+                    <a href={`mailto:${generalEmail}`}>{generalEmail}</a>,
+              }}/>
+          </p>
         </Grid></Grid>
       </J40MainGridContainer>
     </Layout>
