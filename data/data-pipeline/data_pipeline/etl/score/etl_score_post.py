@@ -32,7 +32,9 @@ class PostScoreETL(ExtractTransformLoad):
         self.SCORE_CSV_PATH = self.DATA_PATH / "score" / "csv"
         self.DOWNLOADABLE_INFO_PATH = self.DATA_PATH / "score" / "downloadable"
 
-        self.STATE_CSV = self.DATA_PATH / "census" / "csv" / "fips_states_2010.csv"
+        self.STATE_CSV = (
+            self.DATA_PATH / "census" / "csv" / "fips_states_2010.csv"
+        )
 
         self.FULL_SCORE_CSV = self.SCORE_CSV_PATH / "full" / "usa.csv"
         self.FULL_SCORE_CSV_PLUS_COUNTIES = (
@@ -46,11 +48,11 @@ class PostScoreETL(ExtractTransformLoad):
             "Total population",
             "Score E (percentile)",
             "Score E (top 25th percentile)",
-            "Poverty (Less than 200% of federal poverty line)",
-            "Percent individuals age 25 or over with less than high school degree",
-            "Linguistic isolation (percent)",
-            "Unemployed civilians (percent)",
-            "Housing burden (percent)",
+            "Poverty (Less than 200% of federal poverty line) (percentile)",
+            "Percent individuals age 25 or over with less than high school degree (percentile)",
+            "Linguistic isolation (percent) (percentile)",
+            "Unemployed civilians (percent) (percentile)",
+            "Housing burden (percent) (percentile)",
         ]
         self.TILES_SCORE_CSV_PATH = self.SCORE_CSV_PATH / "tiles"
         self.TILES_SCORE_CSV = self.TILES_SCORE_CSV_PATH / "usa.csv"
@@ -59,11 +61,11 @@ class PostScoreETL(ExtractTransformLoad):
         self.TILES_SCORE_FLOAT_COLUMNS = [
             "Score E (percentile)",
             "Score E (top 25th percentile)",
-            "Poverty (Less than 200% of federal poverty line)",
-            "Percent individuals age 25 or over with less than high school degree",
-            "Linguistic isolation (percent)",
-            "Unemployed civilians (percent)",
-            "Housing burden (percent)",
+            "Poverty (Less than 200% of federal poverty line) (percentile)",
+            "Percent individuals age 25 or over with less than high school degree (percentile)",
+            "Linguistic isolation (percent) (percentile)",
+            "Unemployed civilians (percent) (percentile)",
+            "Housing burden (percent) (percentile)",
         ]
         self.TILES_ROUND_NUM_DECIMALS = 2
 
@@ -203,9 +205,9 @@ class PostScoreETL(ExtractTransformLoad):
         # subsctract data sets
         # this follows the XOR pattern outlined here:
         # https://stackoverflow.com/a/37313953
-        removed_df = pd.concat([merged_df, null_cbg_df, null_cbg_df]).drop_duplicates(
-            keep=False
-        )
+        removed_df = pd.concat(
+            [merged_df, null_cbg_df, null_cbg_df]
+        ).drop_duplicates(keep=False)
 
         # set the score to the new df
         self.score_county_state_merged = removed_df
@@ -222,7 +224,8 @@ class PostScoreETL(ExtractTransformLoad):
         score_tiles = self.score_county_state_merged[self.TILES_SCORE_COLUMNS]
 
         decimals = pd.Series(
-            [self.TILES_ROUND_NUM_DECIMALS] * len(self.TILES_SCORE_FLOAT_COLUMNS),
+            [self.TILES_ROUND_NUM_DECIMALS]
+            * len(self.TILES_SCORE_FLOAT_COLUMNS),
             index=self.TILES_SCORE_FLOAT_COLUMNS,
         )
         score_tiles = score_tiles.round(decimals)
