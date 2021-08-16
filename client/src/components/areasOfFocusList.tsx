@@ -4,6 +4,27 @@ import {useIntl} from 'gatsby-plugin-intl';
 import {defineMessages} from 'react-intl';
 
 
+// css needed
+//
+// .j40-two-column > * {
+//   display: inline-flex;
+//   width: 90%;
+//   padding-bottom: 1.2em; /* space between items */
+//   padding-left: 1em;
+// }
+//
+// .j40-two-column-icons-spacing {
+//   padding-right: 1em;
+//   width: 2.3em;
+//   max-width: revert;
+// }
+//
+// .j40-two-column-confine {
+//   display: inline-flex;
+//   max-width: fit-content;
+// }
+
+
 // this section seems too verbose? must be a more readable way to do this.
 // this inlines the svg as data:image/svg+xml For larger images this
 // can cause page bloat, but it should be fine here.
