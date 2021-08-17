@@ -193,7 +193,7 @@ class PostScoreETL(ExtractTransformLoad):
         self, score_county_state_merged: pd.DataFrame, score_csv_path: Path
     ) -> None:
         logger.info("Saving Full Score CSV with County Information")
-        score_csv_path.mkdir(parents=True, exist_ok=True)
+        score_csv_path.parent.mkdir(parents=True, exist_ok=True)
         score_county_state_merged.to_csv(score_csv_path, index=False)
 
     def _load_tile_csv(
