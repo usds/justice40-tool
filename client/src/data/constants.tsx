@@ -5,6 +5,9 @@ import {defineMessages} from 'react-intl';
 // URLS
 export const DOWNLOAD_ZIP_URL = 'https://justice40-data.s3.amazonaws.com/data-pipeline/data/score/downloadable/Screening+Tool+Data.zip';
 
+// This is the URL for the origin S3 bucket:
+// export const ORIGIN_BASE_URL = 'https://justice40-data.s3.amazonaws.com';
+
 // This is the URL for the CDN that delivers the tile data
 export const FEATURE_TILE_BASE_URL = 'https://d3jqyw10j8e7p9.cloudfront.net';
 const FEATURE_TILE_PATH = 'data-pipeline/data/score/tiles';
