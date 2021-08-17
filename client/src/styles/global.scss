@@ -35,20 +35,6 @@ $j40-blue-background-color: #EFF6FB;
   border-top: 0;
 }
 
-.j40-two-column {
-  overflow: hidden;
-  padding: 0;
-
-  @media (min-width: 40em) {
-    column-count: 2;
-    column-gap: 1em;
-  }
-  @media (max-width: 40em) {
-    column-count: 1;
-    column-gap: 0;
-  }
-}
-
 @include at-media("mobile-lg") {
   .j40-grid-container {
     line-height: 1.5rem;

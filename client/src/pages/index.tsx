@@ -3,7 +3,6 @@ import {defineMessages} from 'react-intl';
 import {Grid} from '@trussworks/react-uswds';
 import {FormattedMessage, useIntl} from 'gatsby-plugin-intl';
 
-// import AreasOfFocusList from '../components/areasOfFocusList';  // TODO: remove areasOfFocusList file
 // import AlertWrapper from '../components/AlertWrapper';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
