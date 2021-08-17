@@ -103,7 +103,7 @@ const IndexPage = ({location}: IndexPageProps) => {
           </Grid>
 
           <Grid col={8}>
-            <h2>About the Justice40 Initiative</h2>
+            <h2 className={'padding-top-8'}>About the Justice40 Initiative</h2>
             <FormattedMessage
               id="index.aboutContent.p2"
               description={'paragraph 2 of main content on index page'}
