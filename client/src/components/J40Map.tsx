@@ -104,10 +104,10 @@ const J40Map = ({location}: IJ40Interface) => {
     }
   };
 
-
   const onLoad = () => {
     if (typeof window !== 'undefined' && window.Cypress && mapRef.current) {
-      window.underlyingMap = mapRef.current.getMap();
+      // Removing this to allow for CORS access to data CDN
+      // window.underlyingMap = mapRef.current.getMap();
     }
 
     if (isMobile) setIsMobileMapState(true);
