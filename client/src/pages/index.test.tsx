@@ -3,10 +3,11 @@ import {render} from '@testing-library/react';
 import Index from './index';
 import {LocalizedComponent} from '../test/testHelpers';
 
-beforeAll(() => {
-  jest.spyOn(global.console, 'error').mockImplementation((...params) => {
-    console.error(params);
-  });
+jest.spyOn(console, 'error').mockImplementation(() => {});
+
+afterAll(() => {
+  // Restore mock after all tests are done, so it won't affect other test suites
+  jest.resetAllMocks();
 });
 
 describe('rendering of the component', () => {
@@ -24,3 +25,4 @@ describe('rendering of the component', () => {
     expect(global.console.error).toBeCalledTimes(0);
   });
 });
+
