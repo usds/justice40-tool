@@ -2,7 +2,7 @@
 
 This README contains the following content:
 
-- [Installing and running the client side](#installing-and-running-the-client-side)
+- [Installing and running the client site](#installing-and-running-the-client-site)
 - [Linting and Formatting](#linting-and-formatting)
 - [Testing](#testing)
 - [Localization](#localization)
@@ -22,7 +22,7 @@ _Note that while this app uses npm as the package manager, yarn is required to b
 
 ### Viewing data on the map
 
-See [VIEW_MAP_DATA](./VIEW_MAP_DATA) for more details on this
+See [VIEW_MAP_DATA](./VIEW_MAP_DATA) for more details on this.
 
 ## Linting and Formatting
 
