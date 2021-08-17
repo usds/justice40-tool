@@ -3,7 +3,7 @@ from pathlib import Path
 from data_pipeline.config import settings
 
 # Base Paths
-DATA_PATH = Path(settings.APP_ROOT / "data")
+DATA_PATH = Path(settings.APP_ROOT) / "data"
 TMP_PATH = DATA_PATH / "tmp"
 
 # Remote Paths

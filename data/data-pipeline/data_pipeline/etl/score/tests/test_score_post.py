@@ -1,6 +1,7 @@
 import io
 import pandas.api.types as ptypes
 import pandas.testing as pdt
+from importlib import reload
 from data_pipeline.etl.score import constants
 
 # See conftest.py for all fixtures used in these tests
@@ -8,6 +9,8 @@ from data_pipeline.etl.score import constants
 
 # Extract Tests
 def test_extract_counties(etl, county_data_initial):
+    from data_pipeline.etl.score import constants
+
     extracted = etl._extract_counties(io.StringIO(county_data_initial))
     assert all(
         ptypes.is_string_dtype(extracted[col])
@@ -82,3 +85,24 @@ def test_create_downloadable_data(etl, score_data_expected, downloadable_data_ex
         output_downloadable_df_actual,
         downloadable_data_expected,
     )
+
+
+def test_load_score_csv(etl, score_data_expected):
+    reload(constants)
+    etl._load_score_csv(
+        score_data_expected,
+        constants.FULL_SCORE_CSV_FULL_PLUS_COUNTIES_FILE_PATH,
+    )
+    assert constants.FULL_SCORE_CSV_FULL_PLUS_COUNTIES_FILE_PATH.is_file()
+
+
+def test_load_tile_csv(etl, tile_data_expected):
+    reload(constants)
+    etl._load_score_csv(tile_data_expected, constants.DATA_SCORE_TILES_FILE_PATH)
+    assert constants.DATA_SCORE_TILES_FILE_PATH.is_file()
+
+
+def test_load_downloadable_zip(etl, downloadable_data_expected):
+    reload(constants)
+    etl._load_score_csv(downloadable_data_expected, constants.SCORE_DOWNLOADABLE_DIR)
+    assert constants.SCORE_DOWNLOADABLE_DIR.is_file()

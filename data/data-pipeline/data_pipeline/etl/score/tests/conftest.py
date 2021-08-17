@@ -4,8 +4,6 @@ from pathlib import Path
 
 import pandas as pd
 import pytest
-from data_pipeline.etl.score.etl_score_post import PostScoreETL
-from data_pipeline.etl.score import constants
 
 
 def pytest_configure():
@@ -23,15 +21,23 @@ def root(tmp_path_factory):
     return root
 
 
+@pytest.fixture(autouse=True)
+def settings_override(monkeypatch, root):
+    from data_pipeline.config import settings
+
+    monkeypatch.setattr(settings, "APP_ROOT", root)
+    return settings
+
+
 @pytest.fixture()
 def etl(monkeypatch, root):
+    from data_pipeline.etl.score.etl_score_post import PostScoreETL
+
     tmp_path = root / "tmp"
     tmp_path.mkdir(parents=True, exist_ok=True)
     etl = PostScoreETL()
     monkeypatch.setattr(etl, "DATA_PATH", root)
     monkeypatch.setattr(etl, "TMP_PATH", tmp_path)
-    monkeypatch.setattr(constants, "DATA_PATH", root)
-    monkeypatch.setattr(constants, "TMP_PATH", tmp_path)
     return etl
 
 
@@ -114,18 +120,7 @@ def score_data_expected():
 
 @pytest.fixture()
 def tile_data_expected():
-    return pd.DataFrame.from_dict(
-        data={
-            "GEOID10": pd.Series(["010010201001", "010010201002"], dtype="object"),
-            "Score E (percentile)": pd.Series([0.351718, 0.110560], dtype="float64"),
-            "Score E (top 25th percentile)": pd.Series([False, False], dtype="bool"),
-            "GEOID": pd.Series(["01001", "01001"], dtype="object"),
-            "State Abbreviation": pd.Series(["AL", "AL"], dtype="string"),
-            "County Name": pd.Series(
-                ["AutaugaCounty", "AutaugaCounty"], dtype="object"
-            ),
-        },
-    )
+    return pd.read_pickle(pytest.SNAPSHOT_DIR / "tile_data_expected.pkl")
 
 
 @pytest.fixture()
