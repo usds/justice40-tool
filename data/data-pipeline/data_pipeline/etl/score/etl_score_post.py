@@ -81,7 +81,7 @@ class PostScoreETL(ExtractTransformLoad):
         self.input_counties_df = self._extract_counties(
             constants.CENSUS_COUNTIES_FILE_NAME
         )
-        self.input_state_df = self._extract_states(
+        self.input_states_df = self._extract_states(
             constants.DATA_CENSUS_CSV_STATE_FILE_PATH
         )
         self.input_score_df = self._extract_score(
