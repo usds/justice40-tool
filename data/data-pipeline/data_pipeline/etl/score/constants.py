@@ -44,12 +44,29 @@ SCORE_DOWNLOADABLE_ZIP_FILE_PATH = SCORE_DOWNLOADABLE_DIR / "Screening Tool Data
 CENSUS_COUNTIES_COLUMNS = ["USPS", "GEOID", "NAME"]
 TILES_SCORE_COLUMNS = [
     "GEOID10",
+    "State Name",
+    "County Name",
+    "Total population",
     "Score E (percentile)",
     "Score E (top 25th percentile)",
-    "GEOID",
-    "State Abbreviation",
-    "County Name",
+    "Poverty (Less than 200% of federal poverty line) (percentile)",
+    "Percent individuals age 25 or over with less than high school degree (percentile)",
+    "Linguistic isolation (percent) (percentile)",
+    "Unemployed civilians (percent) (percentile)",
+    "Housing burden (percent) (percentile)",
 ]
+
+# columns to round floats to 2 decimals
+TILES_SCORE_FLOAT_COLUMNS = [
+    "Score E (percentile)",
+    "Score E (top 25th percentile)",
+    "Poverty (Less than 200% of federal poverty line)",
+    "Percent individuals age 25 or over with less than high school degree",
+    "Linguistic isolation (percent)",
+    "Unemployed civilians (percent)",
+    "Housing burden (percent)",
+]
+TILES_ROUND_NUM_DECIMALS = 2
 
 DOWNLOADABLE_SCORE_INDICATOR_COLUMNS_BASIC = [
     "Percent individuals age 25 or over with less than high school degree",

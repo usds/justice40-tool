@@ -41,7 +41,10 @@ class PostScoreETL(ExtractTransformLoad):
         return pd.read_csv(
             county_path,
             sep="\t",
-            dtype={"GEOID": "string", "USPS": "string"},
+            dtype={
+                "GEOID": "string",
+                "USPS": "string",
+            },
             low_memory=False,
             encoding="latin-1",
         )
@@ -54,7 +57,10 @@ class PostScoreETL(ExtractTransformLoad):
 
     def _extract_score(self, score_path: Path) -> pd.DataFrame:
         logger.info("Reading Score CSV")
-        return pd.read_csv(score_path, dtype={"GEOID10": "string"})
+        return pd.read_csv(
+            score_path,
+            dtype={"GEOID10": "string", "Total population": "int64"},
+        )
 
     def _extract_national_cbg(self, national_cbg_path: Path) -> pd.DataFrame:
         logger.info("Reading national CBG")
@@ -147,10 +153,17 @@ class PostScoreETL(ExtractTransformLoad):
             score_county_state_merged, on="GEOID10", how="left"
         )
 
+        # recast population to integer
+        score_county_state_merged["Total population"] = (
+            merged_df["Total population"].fillna(0.0).astype(int)
+        )
+
         # list the null score cbgs
         null_cbg_df = merged_df[merged_df["Score E (percentile)"].isnull()]
 
         # subtract data sets
+        # this follows the XOR pattern outlined here:
+        # https://stackoverflow.com/a/37313953
         de_duplicated_df = pd.concat(
             [merged_df, null_cbg_df, null_cbg_df]
         ).drop_duplicates(keep=False)
@@ -161,7 +174,13 @@ class PostScoreETL(ExtractTransformLoad):
     def _create_tile_data(
         self, score_county_state_merged_df: pd.DataFrame
     ) -> pd.DataFrame:
-        return score_county_state_merged_df[constants.TILES_SCORE_COLUMNS]
+        score_tiles = score_county_state_merged_df[constants.TILES_SCORE_COLUMNS]
+        decimals = pd.Series(
+            [constants.TILES_ROUND_NUM_DECIMALS]
+            * len(constants.TILES_SCORE_FLOAT_COLUMNS),
+            index=constants.TILES_SCORE_FLOAT_COLUMNS,
+        )
+        return score_tiles.round(decimals)
 
     def _create_downloadable_data(
         self, score_county_state_merged_df: pd.DataFrame
