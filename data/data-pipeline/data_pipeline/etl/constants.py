@@ -38,7 +38,7 @@ DATASET_LIST = [
         "name": "national_risk_index",
         "module_dir": "national_risk_index",
         "class_name": "NationalRiskIndexETL",
-    }
+    },
 ]
 CENSUS_INFO = {
     "name": "census",
