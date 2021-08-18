@@ -15,7 +15,7 @@ exports[`rendering of the AboutCard checks if component renders 1`] = `
         data-testid="grid"
       >
         <img
-          alt="{header}"
+          alt="Test Header"
           class="j40-aboutcard-image"
           src="about:blank"
         />

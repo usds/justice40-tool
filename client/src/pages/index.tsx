@@ -181,7 +181,8 @@ const IndexPage = ({location}: IndexPageProps) => {
             imgSrc={githubIcon}
             header={'Join the open source community'}
             actionText={'Check it out on GitHub'}
-            actionUrl={'https://github.com/usds/justice40-tool'}>
+            actionUrl={'https://github.com/usds/justice40-tool'}
+            actionOpenInNewTab={true}>
             The screening tool’s code is open source, which means it is
             available for the public to view and contribute to. Anyone can
             view and contribute on GitHub.

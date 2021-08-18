@@ -7,6 +7,7 @@ interface AboutCardProps {
   header: string;
   actionText: string;
   actionUrl: string;
+  actionOpenInNewTab?: boolean;
   className?: string;
 }
 
@@ -17,7 +18,7 @@ const AboutCard = (props: React.PropsWithChildren<AboutCardProps>) => {
         <Grid col={2}>
           <img
             className={'j40-aboutcard-image'}
-            alt="{header}"
+            alt={props.header}
             src={props.imgSrc}/>
         </Grid>
 
@@ -26,7 +27,15 @@ const AboutCard = (props: React.PropsWithChildren<AboutCardProps>) => {
             <div className={'j40-section-header'}>{props.header}</div>
             <div className={'j40-section-body'}>{props.children}</div>
             <div className={'j40-section-footer'}>
-              <a className={'j40-aboutcard-link'} href={props.actionUrl}>{props.actionText}</a>
+              {props.actionOpenInNewTab ?
+                <a
+                  className={'j40-aboutcard-link'}
+                  href={props.actionUrl}
+                  target="_blank"
+                  rel="noreferrer">{props.actionText}</a> :
+                <a className={'j40-aboutcard-link'}
+                  href={props.actionUrl}>{props.actionText}</a>
+              }
             </div>
           </Grid>
         </Grid>
