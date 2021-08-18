@@ -68,6 +68,7 @@ class TestNationalRiskIndexETL:
         - The unzipped folder is stored in self.TMP_PATH
         - There are three files in the resulting unzipped folder
         """
+        # TODO: mock this test out with a locally zipped file
         # mock_etl.extract()
         assert 1
 
@@ -75,8 +76,10 @@ class TestNationalRiskIndexETL:
         """Tests the transform() method for NationalRiskIndexETL
 
         Validates the following conditions:
-        - That the unzipped folder is stored in self.TMP_PATH
-        - That there are three files in the resulting unzipped folder
+        - The columns have been renamed correctly
+        - All but a specified subset of columns have been dropped
+        - The values for each tract has been applied to each of the block
+          groups in that tract
         """
         # setup - copy sample extracted input into NRI_CSV path
         input_src = DATA_DIR / "input.csv"
@@ -84,6 +87,14 @@ class TestNationalRiskIndexETL:
         if not input_dst.exists():
             copyfile(input_src, input_dst)
             assert input_dst.exists()
+        assert 1
 
     def test_load(self, mock_etl):
+        """Tests the load() method for NationalRiskIndexETL
+
+        Validates the following conditions:
+        - The transformed dataframe is written to the directory specified by
+          self.OUTPUT_DIR
+        - The content of the file that's written matches the data in self.df
+        """
         assert 1

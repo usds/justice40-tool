@@ -34,6 +34,11 @@ DATASET_LIST = [
         "module_dir": "hud_recap",
         "class_name": "HudRecapETL",
     },
+    {
+        "name": "national_risk_index",
+        "module_dir": "national_risk_index",
+        "class_name": "NationalRiskIndexETL",
+    }
 ]
 CENSUS_INFO = {
     "name": "census",
