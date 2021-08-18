@@ -3,7 +3,7 @@ import {defineMessages} from 'react-intl';
 import {Grid} from '@trussworks/react-uswds';
 import {FormattedMessage, useIntl} from 'gatsby-plugin-intl';
 
-// import AlertWrapper from '../components/AlertWrapper';
+import AlertWrapper from '../components/AlertWrapper';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 import AboutCard from '../components/AboutCard/AboutCard';
@@ -66,7 +66,7 @@ const IndexPage = ({location}: IndexPageProps) => {
 
   return (
     <Layout location={location}>
-
+      <AlertWrapper />
       <J40MainGridContainer className={'j40-about-page'}>
         <Grid row gap="lg" className={'flex-align-center j40-section-body'}>
           <Grid col={4} className={'j40-about-image-col'}>
