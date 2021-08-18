@@ -76,7 +76,7 @@ const DatasetContainer = () => {
     <div className={`${styles.datasetContainer} desktop:grid-col`}>
       <div className={`${styles.j40AlertContainer} desktop:grid-col`}>
         <div className={'grid-container-desktop-lg'}>
-          <J40Alert />
+          <J40Alert isPaddedLeft={false}/>
         </div>
       </div>
       <div className={'grid-container-desktop-lg'}>

@@ -7,7 +7,7 @@ import {defineMessages} from 'react-intl';
 
 // Styles and constants
 import * as styles from './areaDetail.module.scss';
-import * as constants from '../data/constants';
+import * as constants from '../../data/constants';
 
 export const readablePercent = (percent: number) => {
   return `${(percent * 100).toFixed(1)}`;
@@ -113,6 +113,8 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
   const score = properties[constants.SCORE_PROPERTY_HIGH] as number;
   const blockGroup = properties[constants.GEOID_PROPERTY];
   const population = properties[constants.TOTAL_POPULATION];
+  const countyName = properties[constants.COUNTY_NAME];
+  const stateName = properties[constants.STATE_NAME];
 
   interface indicatorInfo {
     label: string,
@@ -176,11 +178,11 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
         </li>
         <li>
           <span className={styles.censusLabel}>{intl.formatMessage(messages.county)} </span>
-          <span className={styles.censusText}>{'Washington County*'}</span>
+          <span className={styles.censusText}>{countyName}</span>
         </li>
         <li>
           <span className={styles.censusLabel}>{intl.formatMessage(messages.state)}</span>
-          <span className={styles.censusText}>{'District of Columbia*'}</span>
+          <span className={styles.censusText}>{stateName}</span>
         </li>
         <li>
           <span className={styles.censusLabel}>{intl.formatMessage(messages.population)} </span>
@@ -194,7 +196,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
 
       {indicators.map((indicator, index) => (
         <li key={index} className={styles.indicatorBox} data-cy={'indicatorBox'}>
-          <div className={styles.indicatorInfo}>
+          <div>
             <div className={styles.indicatorTitle}>{indicator.label}</div>
             <div className={styles.indicatorDescription}>
               {indicator.description}

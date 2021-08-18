@@ -11,3 +11,11 @@
 .j40Alert {
   @include j40AlertBase;
 }
+
+.j40AlertPaddedLeft {
+  padding-left: 1rem;
+}
+
+.j40AlertNoPaddingLeft {
+  padding-left: 0;
+}
