@@ -17,7 +17,6 @@ declare namespace MapModuleScssNamespace {
     censusLabel:string;
     divider:string;
     indicatorBox:string;
-    indicatorInfo:string;
     indicatorTitle:string;
     indicatorDescription:string;
     indicatorValue:string;

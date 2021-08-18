@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {render} from '@testing-library/react';
-import AreaDetail, {getCategorization, readablePercent} from './areaDetail';
-import {LocalizedComponent} from '../test/testHelpers';
-import * as constants from '../data/constants';
+import AreaDetail, {getCategorization, readablePercent} from '..';
+import {LocalizedComponent} from '../../../test/testHelpers';
+import * as constants from '../../../data/constants';
 
 describe('rendering of the AreaDetail', () => {
   const properties = {

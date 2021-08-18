@@ -22,7 +22,9 @@ class GeoScoreETL(ExtractTransformLoad):
         self.SCORE_CSV_PATH = self.DATA_PATH / "score" / "csv"
         self.TILE_SCORE_CSV = self.SCORE_CSV_PATH / "tiles" / "usa.csv"
 
-        self.CENSUS_USA_GEOJSON = self.DATA_PATH / "census" / "geojson" / "us.json"
+        self.CENSUS_USA_GEOJSON = (
+            self.DATA_PATH / "census" / "geojson" / "us.json"
+        )
 
         self.TARGET_SCORE_NAME = "Score E (percentile)"
         self.TARGET_SCORE_RENAME_TO = "E_SCORE"
@@ -91,7 +93,9 @@ class GeoScoreETL(ExtractTransformLoad):
         logger.info("Aggregating buckets")
         usa_aggregated = self._aggregate_buckets(usa_bucketed, agg_func="mean")
 
-        compressed = self._breakup_multipolygons(usa_aggregated, self.NUMBER_OF_BUCKETS)
+        compressed = self._breakup_multipolygons(
+            usa_aggregated, self.NUMBER_OF_BUCKETS
+        )
 
         self.geojson_score_usa_low = gpd.GeoDataFrame(
             compressed,
@@ -115,7 +119,9 @@ class GeoScoreETL(ExtractTransformLoad):
         # assign tracts to buckets by D_SCORE
         state_tracts.sort_values(self.TARGET_SCORE_RENAME_TO, inplace=True)
         SCORE_bucket = []
-        bucket_size = math.ceil(len(state_tracts.index) / self.NUMBER_OF_BUCKETS)
+        bucket_size = math.ceil(
+            len(state_tracts.index) / self.NUMBER_OF_BUCKETS
+        )
         for i in range(len(state_tracts.index)):
             SCORE_bucket.extend([math.floor(i / bucket_size)])
         state_tracts[f"{self.TARGET_SCORE_RENAME_TO}_bucket"] = SCORE_bucket
@@ -151,9 +157,13 @@ class GeoScoreETL(ExtractTransformLoad):
 
     def load(self) -> None:
         logger.info("Writing usa-high (~9 minutes)")
-        self.geojson_score_usa_high.to_file(self.SCORE_HIGH_GEOJSON, driver="GeoJSON")
+        self.geojson_score_usa_high.to_file(
+            self.SCORE_HIGH_GEOJSON, driver="GeoJSON"
+        )
         logger.info("Completed writing usa-high")
 
         logger.info("Writing usa-low (~9 minutes)")
-        self.geojson_score_usa_low.to_file(self.SCORE_LOW_GEOJSON, driver="GeoJSON")
+        self.geojson_score_usa_low.to_file(
+            self.SCORE_LOW_GEOJSON, driver="GeoJSON"
+        )
         logger.info("Completed writing usa-low")
