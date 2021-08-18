@@ -2,6 +2,7 @@ import os
 from shutil import copyfile
 
 import pytest
+import pandas as pd
 
 from data_pipeline.config import settings
 from data_pipeline.etl.base import ExtractTransformLoad
@@ -60,6 +61,8 @@ class TestNationalRiskIndexETL:
         assert etl.TMP_PATH == tmp_path
         assert etl.INPUT_CSV == input_csv
         assert etl.OUTPUT_DIR == output_dir
+        assert etl.GEOID_FIELD_NAME == "GEOID10"
+        assert etl.GEOID_TRACT_FIELD_NAME == "GEOID10_TRACT"
 
     def test_extract(self, mock_etl):
         """Tests the extract() method for NationalRiskIndexETL
@@ -77,17 +80,37 @@ class TestNationalRiskIndexETL:
 
         Validates the following conditions:
         - The columns have been renamed correctly
-        - All but a specified subset of columns have been dropped
         - The values for each tract has been applied to each of the block
           groups in that tract
         """
-        # setup - copy sample extracted input into NRI_CSV path
+        # setup - copy sample data into tmp_dir
+        etl = mock_etl
         input_src = DATA_DIR / "input.csv"
-        input_dst = mock_etl.INPUT_CSV
-        if not input_dst.exists():
-            copyfile(input_src, input_dst)
-            assert input_dst.exists()
-        assert 1
+        input_dst = etl.INPUT_CSV
+        acs_src = DATA_DIR / "acs.csv"
+        acs_dst = DATA_DIR / etl.BLOCK_GROUP_CSV
+        for src, dst in [(input_src, input_dst), (acs_src, acs_dst)]:
+            if not dst.exists():
+                dst.parent.mkdir(parents=True, exist_ok=True)
+                copyfile(src, dst)
+                assert dst.exists()
+        # setup - read in sample output as dataframe
+        TRACT_COL = etl.GEOID_TRACT_FIELD_NAME
+        BLOCK_COL = etl.GEOID_FIELD_NAME
+        expected = pd.read_csv(
+            DATA_DIR / "output.csv",
+            dtype={BLOCK_COL: str, TRACT_COL: str},
+        )
+        # execution
+        etl.transform()
+        expected_dict = expected.to_dict("records")
+        output_dict = etl.df.to_dict("records")
+        print(type(etl.df))
+        # validation
+        assert etl.df.shape == (10, 6)
+        assert list(etl.df.columns) == list(expected.columns)
+        for i, record in enumerate(output_dict):
+            assert record == expected_dict[i]
 
     def test_load(self, mock_etl):
         """Tests the load() method for NationalRiskIndexETL
@@ -97,4 +120,19 @@ class TestNationalRiskIndexETL:
           self.OUTPUT_DIR
         - The content of the file that's written matches the data in self.df
         """
-        assert 1
+        # setup
+        etl = mock_etl
+        output_path = etl.OUTPUT_DIR / "usa.csv"
+        TRACT_COL = etl.GEOID_TRACT_FIELD_NAME
+        BLOCK_COL = etl.GEOID_FIELD_NAME
+        expected = pd.read_csv(
+            DATA_DIR / "output.csv",
+            dtype={BLOCK_COL: str, TRACT_COL: str},
+        )
+        etl.df = expected
+        # execution
+        etl.load()
+        output = pd.read_csv(output_path, dtype={BLOCK_COL: str, TRACT_COL: str})
+        # validation
+        assert output_path.exists()
+        assert output.equals(expected)
