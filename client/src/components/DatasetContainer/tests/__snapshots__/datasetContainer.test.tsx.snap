@@ -11,7 +11,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       <div
         class="grid-container-desktop-lg"
       >
-        <div>
+        <div
+          class="undefined undefined"
+        >
           Limited data sources — Datasets may be added, updated, or removed.
         </div>
       </div>

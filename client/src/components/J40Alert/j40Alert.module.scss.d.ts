@@ -1,7 +1,8 @@
 declare namespace J40AlertScssNamespace {
     export interface IJ40AlertScss {
-        j40Alert: string;
-        j40AlertLeftPad: string;
+      j40Alert: string;
+      j40AlertPaddedLeft: string;
+      j40AlertNoPaddingLeft: string;
     }
   }
 
