@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {defineMessages} from 'react-intl';
-import {Grid} from '@trussworks/react-uswds';
 import {FormattedMessage, useIntl} from 'gatsby-plugin-intl';
 
 import AlertWrapper from '../components/AlertWrapper';
@@ -66,18 +65,15 @@ const IndexPage = ({location}: IndexPageProps) => {
 
   return (
     <Layout location={location}>
-      <AlertWrapper />
+      <AlertWrapper/>
       <J40MainGridContainer className={'j40-about-page'}>
-        <Grid row gap="lg" className={'flex-align-center j40-section-body'}>
-          <Grid col={4} className={'j40-about-image-col'}>
-            <img
-              className={'j40-about-large-circle-graphics'}
-              alt="usa map graphics with pins"
-              src={aboutUSMapImg}/>
-          </Grid>
 
-          <Grid col={8}>
-            <h2>About the screening tool</h2>
+        <AboutCardsContainer>
+          <AboutCard
+            size={'large'}
+            imgSrc={aboutUSMapImg}
+            header={'About the screening tool'}>
+
             <FormattedMessage
               id={'index.aboutContent.p1'}
               description={'paragraph 1 of main content on index page'}
@@ -91,19 +87,16 @@ const IndexPage = ({location}: IndexPageProps) => {
               disadvantaged communities for the purposes of the Justice40
               Initiative.                     
                   `}/>
-          </Grid>
-        </Grid>
 
-        <Grid row gap="lg" className={'flex-align-center j40-section-body'}>
-          <Grid col={4} className={'j40-about-image-col'}>
-            <img
-              className={'j40-about-large-circle-graphics'}
-              alt="graphics showing 40%"
-              src={aboutJ40Img}/>
-          </Grid>
+          </AboutCard>
+        </AboutCardsContainer>
 
-          <Grid col={8}>
-            <h2 className={'padding-top-8'}>About the Justice40 Initiative</h2>
+        <AboutCardsContainer>
+          <AboutCard
+            size={'large'}
+            imgSrc={aboutJ40Img}
+            header={'About the Justice40 Initiative'}>
+
             <FormattedMessage
               id="index.aboutContent.p2"
               description={'paragraph 2 of main content on index page'}
@@ -133,8 +126,39 @@ const IndexPage = ({location}: IndexPageProps) => {
                   </a>,
               }}/>
             </p>
-          </Grid>
-        </Grid>
+
+          </AboutCard>
+        </AboutCardsContainer>
+
+        {/* <Grid tablet={{col: true}} gap={'lg'}>*/}
+        {/*  <Grid row className={'j40-aboutcard-sm-card'}>*/}
+        {/*    <Grid col={3} className={'j40-about-image-col'}>*/}
+        {/*      <img*/}
+        {/*        className={'j40-about-large-circle-graphics'}*/}
+        {/*        alt="usa map graphics with pins"*/}
+        {/*        src={aboutUSMapImg}/>*/}
+        {/*    </Grid>*/}
+
+        {/*    <Grid col={9} className={'j40-section-sm-body'}>*/}
+        {/*      <h2>About the screening tool</h2>*/}
+        {/*      */}
+        {/*    </Grid>*/}
+        {/*  </Grid>*/}
+
+        {/*  <Grid row gap="lg" className={'flex-align-center j40-section-sm-body'}>*/}
+        {/*    <Grid col={3} className={'j40-about-image-col'}>*/}
+        {/*      <img*/}
+        {/*        className={'j40-about-large-circle-graphics'}*/}
+        {/*        alt="graphics showing 40%"*/}
+        {/*        src={aboutJ40Img}/>*/}
+        {/*    </Grid>*/}
+
+        {/*    <Grid col={9}>*/}
+        {/*      <h2>About the Justice40 Initiative</h2>*/}
+        {/*      */}
+        {/*    </Grid>*/}
+        {/*  </Grid>*/}
+        {/* </Grid>*/}
       </J40MainGridContainer>
 
       <J40MainGridContainer
@@ -144,6 +168,7 @@ const IndexPage = ({location}: IndexPageProps) => {
           className={'j40-about-page'}>
           <AboutCardsContainer>
             <AboutCard
+              size={'small'}
               imgSrc={accountBalanceIcon}
               header={'Federal program managers'}
               actionText={'Go to data & methodology'}
@@ -154,6 +179,7 @@ const IndexPage = ({location}: IndexPageProps) => {
             </AboutCard>
 
             <AboutCard
+              size={'small'}
               imgSrc={groupsIcon}
               header={'Community members'}
               actionText={'Explore the tool'}
@@ -169,6 +195,7 @@ const IndexPage = ({location}: IndexPageProps) => {
         className={'j40-about-page'}>
         <AboutCardsContainer>
           <AboutCard
+            size={'small'}
             imgSrc={commentIcon}
             header={'Send Feedback'}
             actionText={'Email: screeningtool.feedback@usds.gov'}
@@ -178,6 +205,7 @@ const IndexPage = ({location}: IndexPageProps) => {
           </AboutCard>
 
           <AboutCard
+            size={'small'}
             imgSrc={githubIcon}
             header={'Join the open source community'}
             actionText={'Check it out on GitHub'}

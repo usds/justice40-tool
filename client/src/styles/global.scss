@@ -168,17 +168,20 @@ $j40-blue-background-color: #EFF6FB;
 }
 
 // we can use to to make all section headers consistent
-.j40-section-header {
+.j40-section-sm-header {
   font-weight: bold;
-  padding-bottom: 0.25rem;
+  padding-bottom: 0.24rem;
+  padding-right: 0.24rem;
 }
 
-.j40-section-body {
+.j40-section-sm-body {
   line-height: 1.5;
-  padding-bottom: 1.5em;
+  padding-bottom: 1.2rem;
+  padding-right: 1.2rem;
+
 }
 
-.j40-section-footer {
+.j40-section-sm-footer {
   padding-bottom: 0.5rem;
 }
 
@@ -409,54 +412,21 @@ $j40-blue-background-color: #EFF6FB;
   background-color: $j40-blue-background-color;
 }
 
-/* index (about) page */
-.j40-about-page {
-  .j40-about-large-circle-graphics {
-    flex: 1 0 10%;
-    align-self: flex-start;
-  }
-
-  .j40-about-image-col {
-    max-width: 10.5rem;
-  }
-
-  .j40-about-section-divider {
-    max-width: 1px;
-    max-height: 100px;
-    border-left: 1px black solid;
-    border-top: 1px black solid;
-  }
-
-  .j40-about-cards.usa-card-group > .usa-card {
-    .usa-card__container {
-      border-style: none;
-      background-color: $j40-blue-background-color;
-    }
-
-    .usa-card--flag.usa-card__media {
-      max-width: 5rem;
-    }
-
-    .usa-card--flag .usa-card__header, .usa-card--flag .usa-card__body, .usa-card--flag .usa-card__footer {
-      margin-left: 2rem;
-    }
-  }
-
-  .j40-aboutcard-link {
-   font-weight: bold;
-  }
-}
-
 /* about card - based on datasetCard... need to combine */
 .j40-aboutcard-container {
-  .j40-aboutcard-card {
+
+  .j40-aboutcard-lg-card {
     margin: 1.2rem 0 3rem 0;
 
-    .j40-aboutcard-image {
-      width: 3rem;
-      margin: 0.25rem;
+    .j40-aboutpage-image-container {
+      width: 10.5rem;
+      padding: 1.24rem 1.24rem 0 .24rem;
     }
 
+    .j40-aboutcard-image {
+      flex: 1 0 10%;
+      align-self: flex-start;
+    }
 
     .j40-aboutcard-header {
     }
@@ -468,7 +438,34 @@ $j40-blue-background-color: #EFF6FB;
     }
 
     .j40-aboutcard-link {
+      font-weight: bold;
     }
   }
+
+  .j40-aboutcard-sm-card {
+    margin: 1.2rem 0 3rem 0;
+
+    .j40-aboutpage-image-container {
+      padding: 1.24rem 1.24rem 0 .24rem;
+    }
+
+    .j40-aboutcard-image {
+      width: 3rem;
+    }
+
+    .j40-aboutcard-header {
+    }
+
+    .j40-aboutcard-body {
+    }
+
+    .j40-aboutcard-footer {
+    }
+
+    .j40-aboutcard-link {
+      font-weight: bold;
+    }
+  }
+
 }
 
