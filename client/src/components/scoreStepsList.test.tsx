@@ -3,6 +3,8 @@ import {render} from '@testing-library/react';
 import ScoreStepsList from './scoreStepsList';
 import {LocalizedComponent} from '../test/testHelpers';
 
+// TODO: Move this to a location that will detect on all tests
+// See ticket: #550
 beforeAll(() => {
   jest.spyOn(global.console, 'error').mockImplementation((...params) => {
     console.error(params);
