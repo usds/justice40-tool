@@ -138,7 +138,10 @@ def download_file_from_url(
 
 
 def unzip_file_from_url(
-    file_url: str, download_path: Path, unzipped_file_path: Path, verify: bool = True
+    file_url: str,
+    download_path: Path,
+    unzipped_file_path: Path,
+    verify: bool = True,
 ) -> None:
     """Downloads a zip file from a remote URL location and unzips it in a specific directory, removing the temporary file after
 

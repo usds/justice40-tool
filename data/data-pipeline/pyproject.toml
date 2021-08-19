@@ -75,6 +75,9 @@ ignore-docstrings = "yes"
 ignore-imports = "yes"
 min-similarity-lines = 4
 
+[tool.black]
+line-length = 80
+
 [tool.liccheck]
 # Authorized and unauthorized licenses in LOWER CASE
 authorized_licenses = [

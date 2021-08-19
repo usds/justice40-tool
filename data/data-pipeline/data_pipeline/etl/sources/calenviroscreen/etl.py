@@ -10,14 +10,19 @@ logger = get_module_logger(__name__)
 class CalEnviroScreenETL(ExtractTransformLoad):
     def __init__(self):
         self.CALENVIROSCREEN_FTP_URL = (
-            settings.AWS_JUSTICE40_DATASOURCES_URL + "/CalEnviroScreen_4.0_2021.zip"
+            settings.AWS_JUSTICE40_DATASOURCES_URL
+            + "/CalEnviroScreen_4.0_2021.zip"
         )
-        self.CALENVIROSCREEN_CSV = self.TMP_PATH / "CalEnviroScreen_4.0_2021.csv"
+        self.CALENVIROSCREEN_CSV = (
+            self.TMP_PATH / "CalEnviroScreen_4.0_2021.csv"
+        )
         self.CSV_PATH = self.DATA_PATH / "dataset" / "calenviroscreen4"
 
         # Definining some variable names
         self.CALENVIROSCREEN_SCORE_FIELD_NAME = "calenviroscreen_score"
-        self.CALENVIROSCREEN_PERCENTILE_FIELD_NAME = "calenviroscreen_percentile"
+        self.CALENVIROSCREEN_PERCENTILE_FIELD_NAME = (
+            "calenviroscreen_percentile"
+        )
         self.CALENVIROSCREEN_PRIORITY_COMMUNITY_FIELD_NAME = (
             "calenviroscreen_priority_community"
         )
