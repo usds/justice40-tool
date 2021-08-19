@@ -2,17 +2,14 @@ FROM node:14
 
 WORKDIR /app
 
-# Todo: Attempting to install yarn to troubleshoot @trusswork warnings
-RUN npm install yarn
-
 COPY package*.json ./
 
-RUN npm install
+RUN yarn install --network-concurrency 2
 
 COPY . .
 
-ENV PORT=8000
+ENV PORT=6000
 
-EXPOSE 8000
+EXPOSE 6000
 
 CMD [ "npm", "start"]
