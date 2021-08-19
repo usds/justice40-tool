@@ -3,6 +3,8 @@ import {render} from '@testing-library/react';
 import Index from './index';
 import {LocalizedComponent} from '../test/testHelpers';
 
+// TODO: Move this to a location that will detect on all tests
+// See ticket: #550
 jest.spyOn(console, 'error').mockImplementation(() => {});
 
 afterAll(() => {
