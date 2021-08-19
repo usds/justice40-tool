@@ -19,14 +19,14 @@ const AboutCard = (props: React.PropsWithChildren<AboutCardProps>) => {
     return (
       <Grid tablet={{col: true}} gap={'lg'} className={(props.className || '')}>
         <Grid row className={'j40-aboutcard-lg-card'}>
-          <Grid desktop={{col: 3}} className={'j40-aboutpage-image-container'}>
+          <Grid tablet={{col: 3}} className={'j40-aboutpage-image-container'}>
             <img
               className={'j40-aboutcard-image'}
               alt={props.header}
               src={props.imgSrc}/>
           </Grid>
 
-          <Grid desktop={{col: 9}}>
+          <Grid tablet={{col: 9}}>
             <Grid row>
               <h3 className={'j40-section-header'}>{props.header}</h3>
               <div className={'j40-section-body'}>{props.children}</div>
@@ -42,14 +42,14 @@ const AboutCard = (props: React.PropsWithChildren<AboutCardProps>) => {
     return (
       <Grid tablet={{col: true}} gap={'lg'} className={(props.className || '')}>
         <Grid row className={'j40-aboutcard-sm-card'}>
-          <Grid desktop={{col: 2}} className={'j40-aboutpage-image-container'}>
+          <Grid tablet={{col: 2}} className={'j40-aboutpage-image-container'}>
             <img
               className={'j40-aboutcard-image'}
               alt={props.header}
               src={props.imgSrc}/>
           </Grid>
 
-          <Grid desktop={{col: 9}}>
+          <Grid tablet={{col: 9}}>
             <Grid row>
               <h3 className={'j40-section-header'}>{props.header}</h3>
               <div className={'j40-section-body'}>{props.children}</div>
