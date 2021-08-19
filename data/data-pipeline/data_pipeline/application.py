@@ -109,14 +109,15 @@ def score_full_run():
 def geo_score(datasource: str):
     """CLI command to generate the score"""
 
-    if datasource is "" or " ":
+    if datasource is " ":
         score_geo("local")
-    if not datasource:
+    elif not datasource:
         score_geo("local")
-    if datasource is "aws":
+    elif datasource is "aws":
         score_geo("aws")
     else:
         logger.warn('This data source is unimplemented, %s' % datasource)
+        return -1
 
 
 @cli.command(
