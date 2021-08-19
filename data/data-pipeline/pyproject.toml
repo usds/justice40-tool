@@ -62,6 +62,7 @@ disable = [
   "W0613", # Disables unused argument
   "C0116", # Disables missing function or method docstring
   "C0115", # Disables missing class docstring
+  "R0915", # Disables too many statements (score generation transform)
 ]
 
 [tool.pylint.FORMAT]
@@ -103,6 +104,7 @@ authorized_licenses = [
   "python software foundation",
   "zpl 2.1",
   "gpl v3",
+  "historical permission notice and disclaimer (hpnd)",
 ]
 
 [tool.poetry.scripts]
