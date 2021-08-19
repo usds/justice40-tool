@@ -9,9 +9,9 @@ from data_pipeline.utils import get_module_logger
 logger = get_module_logger(__name__)
 
 
-class GeoScoreETL(ExtractTransformLoad):
+class LocalGeoScoreETL(ExtractTransformLoad):
     """
-    A class used to generate per state and national GeoJson files with the score baked in
+    A class used to generate per state and national GeoJson files locally with the score baked in
     """
 
     def __init__(self):
@@ -167,3 +167,9 @@ class GeoScoreETL(ExtractTransformLoad):
             self.SCORE_LOW_GEOJSON, driver="GeoJSON"
         )
         logger.info("Completed writing usa-low")
+
+
+class AWSGeoScoreETL(ExtractTransformLoad):
+    """
+    A class used to generate per state and national GeoJson files on AWS with the score baked in
+    """

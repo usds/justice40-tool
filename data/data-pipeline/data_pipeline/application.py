@@ -105,10 +105,18 @@ def score_full_run():
 
 
 @cli.command(help="Generate Geojson files with scores baked in")
-def geo_score():
+@click.option("-ds", "--data-source", required=False, type=str)
+def geo_score(datasource: str):
     """CLI command to generate the score"""
 
-    score_geo()
+    if datasource is "" or " ":
+        score_geo("local")
+    if not datasource:
+        score_geo("local")
+    if datasource is "aws":
+        score_geo("aws")
+    else:
+        logger.warn('This data source is unimplemented, %s' % datasource)
 
 
 @cli.command(

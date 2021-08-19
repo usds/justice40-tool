@@ -91,21 +91,31 @@ def score_generate() -> None:
     score_post.cleanup()
 
 
-def score_geo() -> None:
+def score_geo(dataset: str) -> None:
     """Generates the geojson files with score data baked in
 
     Args:
-        None
+        dataset: by default it will read "local", but if they pass "aws" 
+        it will look in AWS for S3 resources
 
     Returns:
         None
     """
+    if dataset is "local":
+        # Score Geo
+        score_geo = LocalGeoScoreETL()
+        score_geo.extract()
+        score_geo.transform()
+        score_geo.load()
+    if dataset is "aws":
+        # Score Geo
+        score_geo = AWSGeoScoreETL()
+        score_geo.extract()
+        score_geo.transform()
+        score_geo.load()
+    else:
+        return -1
 
-    # Score Geo
-    score_geo = GeoScoreETL()
-    score_geo.extract()
-    score_geo.transform()
-    score_geo.load()
 
 
 def _find_dataset_index(dataset_list, key, value):
