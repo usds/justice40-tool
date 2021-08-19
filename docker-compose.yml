@@ -13,3 +13,9 @@ services:
     environment:
       ENV_FOR_DYNACONF: development
       PYTHONUNBUFFERED: 1
+  j40_web:
+    image: j40_web
+    container_name: j40_web_container
+    build: ./client
+    ports: 
+      - 8000:6000
