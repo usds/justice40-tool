@@ -67,7 +67,7 @@ const AboutCard = (props: React.PropsWithChildren<AboutCardProps>) => {
               </div>
             </Grid>
           </Grid>
-          <Grid col={1}>&nbsp;</Grid>
+          <Grid col={1}>{' '}</Grid>
         </Grid>
       </Grid>
     );
