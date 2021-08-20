@@ -153,6 +153,8 @@ _NOTE:_ This may take several minutes or over an hour to fully execute and gener
 
 We use Docker to install the necessary libraries in a container that can be run in any operating system.
 
+*Important*: To be able to run the data Docker containers, you need to increase the memory resoure of your container to at leat 8096 MB.
+
 To build the docker container the first time, make sure you're in the root directory of the repository and run `docker-compose build --no-cache`.
 
 Once completed, run `docker-compose up` and then open a new tab or terminal window, and then run any command for the application using this format:
@@ -175,7 +177,7 @@ You can run the Python code locally without Docker to develop, using Poetry. How
 
 ### VSCode
 
-If you are using VSCode, you can make use of the `.vscode` folder checked in under `data/data-pipeline/.vscode`. To do this, open this directory with `code data/data-pipeline` .
+If you are using VSCode, you can make use of the `.vscode` folder checked in under `data/data-pipeline/.vscode`. To do this, open this directory with `code data/data-pipeline`.
 
 Here's whats included:
 
