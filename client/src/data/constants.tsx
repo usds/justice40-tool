@@ -3,7 +3,7 @@ import {isMobile as isMobileReactDeviceDetect} from 'react-device-detect';
 import {defineMessages} from 'react-intl';
 
 export const DOWNLOAD_ZIP_URL = [
-  process.env.GATSBY_DATA_CDN_BASE_URL,
+  process.env.GATSBY_DATA_ROOT_PATH,
   process.env.GATSBY_DATA_PIPELINE_SCORE_PATH,
   process.env.GATSBY_SCORE_DOWNLOAD_FILE_PATH,
 ].join('/');
@@ -11,7 +11,7 @@ export const DOWNLOAD_ZIP_URL = [
 const XYZ_SUFFIX = '{z}/{x}/{y}.pbf';
 export const featureURLForTilesetName = (tilesetName :string ) : string => {
   return [
-    process.env.GATSBY_DATA_CDN_BASE_URL,
+    process.env.GATSBY_DATA_ROOT_PATH,
     process.env.GATSBY_DATA_PIPELINE_SCORE_PATH,
     process.env.GATSBY_MAP_TILES_PATH,
     tilesetName,
