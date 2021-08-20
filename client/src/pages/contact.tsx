@@ -16,8 +16,8 @@ const ContactPage = ({location}: ContactPageProps) => {
   return (
     <Layout location={location}>
 
-      <J40MainGridContainer fullWidth={true}>
-        <AlertWrapper/>
+      <J40MainGridContainer>
+        <AlertWrapper showBetaAlert={true} showLimitedDataAlert={false}/>
       </J40MainGridContainer>
 
       <J40MainGridContainer className={'usa-prose'}>

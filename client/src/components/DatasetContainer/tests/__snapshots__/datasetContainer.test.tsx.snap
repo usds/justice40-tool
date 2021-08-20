@@ -6,24 +6,37 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
     class="undefined desktop:grid-col"
   >
     <div
-      class="undefined desktop:grid-col"
-    >
-      <div
-        class="grid-container-desktop-lg"
-      >
-        <div
-          class="undefined undefined"
-        >
-          Limited data sources — Datasets may be added, updated, or removed.
-        </div>
-      </div>
-    </div>
-    <div
       class="grid-container-desktop-lg"
     >
       <h1>
         Datasets used in cumulative score
       </h1>
+      <div>
+        <div
+          class="usa-alert usa-alert--warning j40-sitealert"
+          data-testid="alert"
+        >
+          <div
+            class="usa-alert__body"
+          >
+            <p
+              class="usa-alert__text"
+            >
+              <span
+                class="j40-sitealert-title"
+              >
+                Limited data sources
+              </span>
+              <span
+                class="j40-sitealert-body"
+              >
+                 — Datasets may be added, updated, or removed.
+              </span>
+              <br />
+            </p>
+          </div>
+        </div>
+      </div>
       <p>
         The datasets come from a variety of sources and were selected after considering relevance, availability, recency and quality.
       </p>
