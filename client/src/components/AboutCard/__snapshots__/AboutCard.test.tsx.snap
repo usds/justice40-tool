@@ -7,11 +7,11 @@ exports[`rendering of the AboutCard checks if component renders 1`] = `
     data-testid="grid"
   >
     <div
-      class="grid-row j40-aboutcard-card"
+      class="grid-row j40-aboutcard-sm-card"
       data-testid="grid"
     >
       <div
-        class="grid-col-2"
+        class="tablet:grid-col-2 j40-aboutpage-image-container"
         data-testid="grid"
       >
         <img
@@ -21,18 +21,18 @@ exports[`rendering of the AboutCard checks if component renders 1`] = `
         />
       </div>
       <div
-        class="grid-col-10"
+        class="tablet:grid-col-9"
         data-testid="grid"
       >
         <div
           class="grid-row"
           data-testid="grid"
         >
-          <div
+          <h3
             class="j40-section-header"
           >
             Test Header
-          </div>
+          </h3>
           <div
             class="j40-section-body"
           >
@@ -49,6 +49,12 @@ exports[`rendering of the AboutCard checks if component renders 1`] = `
             </a>
           </div>
         </div>
+      </div>
+      <div
+        class="grid-col-1"
+        data-testid="grid"
+      >
+         
       </div>
     </div>
   </div>
