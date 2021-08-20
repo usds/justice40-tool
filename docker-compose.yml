@@ -21,3 +21,5 @@ services:
       DATA_SOURCE: "local"
     ports: 
       - 8000:6000
+    volumes:
+      - ./data/data-pipeline:/data-pipeline
