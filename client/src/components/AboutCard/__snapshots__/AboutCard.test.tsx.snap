@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of the AboutCard checks if component renders 1`] = `
+<DocumentFragment>
+  <div
+    class="grid-gap-lg tablet:grid-col"
+    data-testid="grid"
+  >
+    <div
+      class="grid-row j40-aboutcard-card"
+      data-testid="grid"
+    >
+      <div
+        class="grid-col-2"
+        data-testid="grid"
+      >
+        <img
+          alt="Test Header"
+          class="j40-aboutcard-image"
+          src="about:blank"
+        />
+      </div>
+      <div
+        class="grid-col-10"
+        data-testid="grid"
+      >
+        <div
+          class="grid-row"
+          data-testid="grid"
+        >
+          <div
+            class="j40-section-header"
+          >
+            Test Header
+          </div>
+          <div
+            class="j40-section-body"
+          >
+            Content body of the action card.
+          </div>
+          <div
+            class="j40-section-footer"
+          >
+            <a
+              class="j40-aboutcard-link"
+              href="#"
+            >
+              Test Action
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
