@@ -17,5 +17,7 @@ services:
     image: j40_web
     container_name: j40_web_container
     build: ./client
+    environment:
+      DATA_SOURCE: "local"
     ports: 
       - 8000:6000
