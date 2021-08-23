@@ -152,7 +152,7 @@ const NavSection = ({
   return (
     <section className={'usa-footer__primary-content'}>
       <h4 className="padding-top-1 padding-bottom-0">{primaryLinkOrHeading}</h4>
-      <NavList type="footerSecondary" items={secondaryLinks} />
+      <NavList className={'padding-bottom-4'} type="footerSecondary" items={secondaryLinks} />
     </section>
   );
 };

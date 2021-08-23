@@ -27,7 +27,7 @@ exports[`J40Footer renders correctly 1`] = `
                 Contact
               </h4>
               <ul
-                class="usa-list usa-list--unstyled"
+                class="usa-list usa-list--unstyled padding-bottom-4"
               >
                 <li
                   class="usa-footer__secondary-link"
@@ -71,7 +71,7 @@ exports[`J40Footer renders correctly 1`] = `
                 More information
               </h4>
               <ul
-                class="usa-list usa-list--unstyled"
+                class="usa-list usa-list--unstyled padding-bottom-4"
               >
                 <li
                   class="usa-footer__secondary-link"
@@ -121,7 +121,7 @@ exports[`J40Footer renders correctly 1`] = `
                 Have a question about government services?
               </h4>
               <ul
-                class="usa-list usa-list--unstyled"
+                class="usa-list usa-list--unstyled padding-bottom-4"
               >
                 <li
                   class="usa-footer__secondary-link"
