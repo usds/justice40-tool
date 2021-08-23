@@ -121,24 +121,6 @@ class CensusACSETL(ExtractTransformLoad):
             / self.df[self.MEDIAN_INCOME_STATE_FIELD_NAME]
         )
 
-        # TODO: handle null values for CBG median income, which are `-666666666`.
-
-        # Join state data on CBG data:
-        self.df[self.STATE_GEOID_FIELD_NAME] = (
-            self.df[self.GEOID_FIELD_NAME].astype(str).str[0:2]
-        )
-        self.df = self.df.merge(
-            self.state_median_income_df,
-            how="left",
-            on=self.STATE_GEOID_FIELD_NAME,
-        )
-
-        # Calculate the income of the block group as a fraction of the state income:
-        self.df[self.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD_NAME] = (
-            self.df[self.MEDIAN_INCOME_FIELD_NAME]
-            / self.df[self.MEDIAN_INCOME_STATE_FIELD_NAME]
-        )
-
         # Calculate percent unemployment.
         # TODO: remove small-sample data that should be `None` instead of a high-variance fraction.
         self.df[self.UNEMPLOYED_FIELD_NAME] = (
