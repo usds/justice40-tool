@@ -14,7 +14,7 @@ const J40MainGridContainer = ({
   children,
   fullWidth = false,
   blueBackground = false,
-  className = 'j40-grid-container '}: ILayoutProps) => {
+  className = ''}: ILayoutProps) => {
   // is it a blue background strip?
   className += (blueBackground ? 'j40-main-grid-blue-bk ' : '');
 
