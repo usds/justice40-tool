@@ -1,5 +1,6 @@
 version: "3.4"
 services:
+  # The j40_data_pipeline service runs the ETL pipeline to create the score
   score:
     image: j40_data_pipeline
     container_name: j40_data_pipeline_1
@@ -13,9 +14,23 @@ services:
     environment:
       ENV_FOR_DYNACONF: development
       PYTHONUNBUFFERED: 1
-  j40_web:
-    image: j40_web
-    container_name: j40_web_container
+
+  # The score_server serves the data-pipeline volume as a URL   
+  j40_score_server:
+    image: j40_score_server
+    container_name: j40_score_server_container
+    build: ./
+    volumes:
+      - ./data/data-pipeline/data_pipeline/data/score:/data/data-pipeline/data_pipeline/data/score
+    ports:
+      - 5000:5000
+    depends_on: 
+      - "score"
+  
+  #The j40_website service runs the web app / map / site
+  j40_website:
+    image: j40_website
+    container_name: j40_website_container
     build: ./client
     environment:
       DATA_SOURCE: "local"
@@ -23,3 +38,5 @@ services:
       - 8000:6000
     volumes:
       - ./data/data-pipeline:/data-pipeline
+    depends_on:
+      - "j40_score_server"
