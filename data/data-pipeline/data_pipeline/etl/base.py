@@ -1,4 +1,5 @@
 from pathlib import Path
+from typing import Optional
 
 from data_pipeline.config import settings
 from data_pipeline.utils import unzip_file_from_url, remove_all_from_dir
@@ -34,7 +35,10 @@ class ExtractTransformLoad:
         pass
 
     def extract(
-        self, source_url: str = None, extract_path: Path = None
+        self,
+        source_url: str = None,
+        extract_path: Path = None,
+        verify: Optional[bool] = True,
     ) -> None:
         """Extract the data from
         a remote source. By default it provides code to get the file from a source url,
@@ -42,7 +46,9 @@ class ExtractTransformLoad:
 
         # this can be accessed via super().extract()
         if source_url and extract_path:
-            unzip_file_from_url(source_url, self.TMP_PATH, extract_path)
+            unzip_file_from_url(
+                source_url, self.TMP_PATH, extract_path, verify=verify
+            )
 
     def transform(self) -> None:
         """Transform the data extracted into a format that can be consumed by the

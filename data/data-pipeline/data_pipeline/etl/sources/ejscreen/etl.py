@@ -18,6 +18,7 @@ class EJScreenETL(ExtractTransformLoad):
         super().extract(
             self.EJSCREEN_FTP_URL,
             self.TMP_PATH,
+            verify=False,  # EPA EJScreen end point has certificate issues often
         )
 
     def transform(self) -> None:
