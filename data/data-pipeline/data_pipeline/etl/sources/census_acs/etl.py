@@ -41,10 +41,10 @@ class CensusACSETL(ExtractTransformLoad):
 
         self.STATE_MEDIAN_INCOME_FTP_URL = (
             settings.AWS_JUSTICE40_DATASOURCES_URL
-            + "/2014_to_2019_state_median_income.zip"
+            + "/2015_to_2019_state_median_income.zip"
         )
         self.STATE_MEDIAN_INCOME_FILE_PATH = (
-            self.TMP_PATH / "2014_to_2019_state_median_income.csv"
+            self.TMP_PATH / "2015_to_2019_state_median_income.csv"
         )
 
     def _fips_from_censusdata_censusgeo(

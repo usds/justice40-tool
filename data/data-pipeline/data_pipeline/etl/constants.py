@@ -34,6 +34,11 @@ DATASET_LIST = [
         "module_dir": "hud_recap",
         "class_name": "HudRecapETL",
     },
+    {
+        "name": "cdc_places",
+        "module_dir": "cdc_places",
+        "class_name": "CDCPlacesETL",
+    },
 ]
 CENSUS_INFO = {
     "name": "census",

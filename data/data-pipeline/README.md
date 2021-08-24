@@ -120,17 +120,6 @@ To run this comparison tool:
 1. Make sure you've gone through the above steps to run the data ETL and score generation.
 1. From the package directory (`data/data-pipeline/data_pipeline/`), navigate to the `ipython` directory: `cd ipython`.
 1. Ensure you have `pandoc` installed on your computer. If you're on a Mac, run `brew install pandoc`; for other OSes, see pandoc's [installation guide](https://pandoc.org/installing.html).
-1. Install the extra dependencies:
-
-```python
-  pip install pypandoc
-  pip install requests
-  pip install us
-  pip install tqdm
-  pip install dynaconf
-  pip instal xlsxwriter
-```
-
 1. Start the notebooks: `jupyter notebook`
 1. In your browser, navigate to one of the URLs returned by the above command.
 1. Select `scoring_comparison.ipynb` from the options in your browser.

@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "test with tox",
+      "label": "Test with tox",
       "type": "shell",
       "command": "tox",
       "group": {
@@ -16,19 +16,25 @@
       "label": "Run Black Formatter",
       "type": "shell",
       "command": "black",
-      "args": ["data_pipeline"]
+      "args": [
+        "data_pipeline"
+      ]
     },
     {
       "label": "Run Flake8 Style Enforcer",
       "type": "shell",
       "command": "black",
-      "args": ["data_pipeline"]
+      "args": [
+        "data_pipeline"
+      ]
     },
     {
       "label": "Run Pylint",
       "type": "shell",
       "command": "pylint",
-      "args": ["data_pipeline"]
+      "args": [
+        "data_pipeline"
+      ]
     }
   ]
 }
