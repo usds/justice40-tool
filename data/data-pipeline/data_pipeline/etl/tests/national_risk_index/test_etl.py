@@ -1,7 +1,6 @@
 from pathlib import Path
 from shutil import copyfile
 
-import pytest
 import pandas as pd
 
 from data_pipeline.config import settings
