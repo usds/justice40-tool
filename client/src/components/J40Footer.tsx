@@ -1,17 +1,15 @@
 import React from 'react';
 import {
   Address,
-  Footer,
-  FooterNav,
   Logo,
-  GridContainer, Grid,
 } from '@trussworks/react-uswds';
-import {} from '@trussworks/react-uswds';
+import {NavList} from '@trussworks/react-uswds';
 import {useIntl} from 'gatsby-plugin-intl';
 import {defineMessages} from 'react-intl';
 
 // @ts-ignore
 import whitehouseIcon from '../images/eop-seal.svg';
+import J40MainGridContainer from './J40MainGridContainer';
 
 const J40Footer = () => {
   const intl = useIntl();
@@ -58,64 +56,73 @@ const J40Footer = () => {
     },
   });
 
+  const NAVLINKS = [
+    ['Contact',
+      <Address
+        key={'footeraddress'}
+        className={'j40-footer-address'}
+        size={'big'}
+        items={[
+          '730 Jackson Pl NW',
+          'Washington, D.C. 20506',
+          '(202) 395-5750',
+        ]}
+      />,
+    ],
+    [
+      intl.formatMessage(messages.moreinfoheader),
+      <a
+        key={'whitehouselink2'}
+        href={'https://www.whitehouse.gov/'}
+        target={'_blank'}
+        rel={'noreferrer'}>Whitehouse.gov</a>,
+      <a
+        key="foialink"
+        target={'_blank'}
+        rel={'noreferrer'}
+        href={'https://www.whitehouse.gov/ceq/foia'}>
+        {intl.formatMessage(messages.foia)}
+      </a>,
+      <a
+        key={'privacylink'}
+        target={'_blank'}
+        rel={'noreferrer'}
+        href={'https://www.whitehouse.gov/privacy/'}>
+        {intl.formatMessage(messages.privacy)}
+      </a>,
+    ],
+    [
+      intl.formatMessage(messages.questionsheader),
+      <a
+        key={'contactlink'}
+        href={'https://www.usa.gov/'}>
+        {intl.formatMessage(messages.contactlink)}
+      </a>,
+    ],
+  ];
+
   // see https://designsystem.digital.gov/components/footer/
   return (
-    <>
-      <Footer
-        size="big"
-        className={'j40-footer'}
-        primary={
-          <GridContainer><Grid>
-            <FooterNav
-              aria-label={intl.formatMessage(messages.arialabelfooter)}
-              size="big" // fyi you leave this off and it silently fails...
-              links={[
-                ['Contact',
-                  <Address
-                    key={'footeraddress'}
-                    className={'j40-footer-address'}
-                    size={'big'}
-                    items={[
-                      '730 Jackson Pl NW',
-                      'Washington, D.C. 20506',
-                      '(202) 395-5750',
-                    ]}
-                  />,
-                ],
-                [
-                  intl.formatMessage(messages.moreinfoheader),
-                  <a
-                    key={'whitehouselink2'}
-                    href={'https://www.whitehouse.gov/'}
-                    target={'_blank'}
-                    rel={'noreferrer'}>Whitehouse.gov</a>,
-                  <a
-                    key="foialink"
-                    target={'_blank'}
-                    rel={'noreferrer'}
-                    href={'https://www.whitehouse.gov/ceq/foia'}>
-                    {intl.formatMessage(messages.foia)}
-                  </a>,
-                  <a
-                    key={'privacylink'}
-                    target={'_blank'}
-                    rel={'noreferrer'}
-                    href={'https://www.whitehouse.gov/privacy/'}>
-                    {intl.formatMessage(messages.privacy)}
-                  </a>,
-                ],
-                [
-                  intl.formatMessage(messages.questionsheader),
-                  <a
-                    key={'contactlink'}
-                    href={'https://www.usa.gov/'}>
-                    {intl.formatMessage(messages.contactlink)}
-                  </a>,
-                ],
-              ]}
-            />
-          </Grid></GridContainer>}
-        secondary={
+    // we cannot use trussworks Footer because it doesn't layout correct
+    // and there's no easy way to override. It comes down to the
+    // `className="mobile-lg:grid-col-6 desktop:grid-col-3">` needs to be
+    // `className="mobile-lg:grid-col-12 desktop:grid-col-4">` ugh.
+    <footer className={'j40-footer'}>
+      <div className="usa-footer__primary-section">
+        <J40MainGridContainer>
+          <div className={'grid-row grid-gap-4 padding-bottom-6 tablet-lg:grid-col4'}>
+            {NAVLINKS.map((links, i) => (
+              <div key={`linkSection-${i}`}
+                className="mobile-lg:grid-col-12 desktop:grid-col-4">
+                <NavSection links={links} />
+              </div>
+            ))}
+          </div>
+        </J40MainGridContainer>
+      </div>
+
+      <div className="usa-footer__secondary-section">
+        <J40MainGridContainer>
           <Logo
             size="medium"
             key={'logoimg'}
@@ -129,9 +136,24 @@ const J40Footer = () => {
             heading={<p
               className={'j40-footer-logo-heading'}>
               {intl.formatMessage(messages.logotitle)}</p>}
-          />}
-      />
-    </>
+          />
+        </J40MainGridContainer>
+      </div>
+    </footer>
+  );
+};
+
+const NavSection = ({
+  links,
+}: {
+  links: React.ReactNode[]
+}): React.ReactElement => {
+  const [primaryLinkOrHeading, ...secondaryLinks] = links;
+  return (
+    <section className={'usa-footer__primary-content'}>
+      <h4 className="padding-top-1 padding-bottom-0">{primaryLinkOrHeading}</h4>
+      <NavList className={'padding-bottom-4'} type="footerSecondary" items={secondaryLinks} />
+    </section>
   );
 };
 
