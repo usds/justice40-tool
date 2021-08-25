@@ -1,45 +1,13 @@
-# TODO: Promote mock_paths and mock_etl to conftest fixtures, and make it return the base class
 # TODO: Change equality checking of dataframes to use df.equals()
-import os
 from shutil import copyfile
 
 import pytest
 import pandas as pd
 
 from data_pipeline.config import settings
-from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.sources.national_risk_index.etl import NationalRiskIndexETL
 
-DIR_ROOT = settings.APP_ROOT / "etl" / "sources" / "national_risk_index"
-DATA_DIR = DIR_ROOT / "tests"/ "data"
-TMP_DIR = settings.APP_ROOT / "data" / "tmp" / "tests"
-
-
-@pytest.fixture(scope="session")
-def mock_paths(tmp_path_factory) -> tuple:
-    """Creates new DATA_PATH and TMP_PATH that point to a temporary local
-    file structure that can be used to mock data folder during testing
-    """
-    # sets location of the temp directory inside the national_risk_index folder
-    os.environ["PYTEST_DEBUG_TEMPROOT"] = str(TMP_DIR)
-    TMP_DIR.mkdir(parents=True, exist_ok=True)
-    # creates DATA_PATH and TMP_PATH directories in temp directory
-    data_path = tmp_path_factory.mktemp("data", numbered=False)
-    tmp_path = data_path / "tmp"
-    tmp_path.mkdir()
-    return data_path, tmp_path
-
-
-@pytest.fixture
-def mock_etl(monkeypatch, mock_paths) -> NationalRiskIndexETL:
-    """Creates a mock version of the base ExtractTransformLoad class and resets
-    global the variables for DATA_PATH and TMP_PATH to the local mock_paths
-    """
-    data_path, tmp_path = mock_paths
-    monkeypatch.setattr(ExtractTransformLoad, "DATA_PATH", data_path)
-    monkeypatch.setattr(ExtractTransformLoad, "TMP_PATH", tmp_path)
-    etl = NationalRiskIndexETL()
-    return etl
+DATA_DIR = settings.APP_ROOT / "etl" / "tests" / "national_risk_index" / "data"
 
 
 class TestNationalRiskIndexETL:
@@ -54,7 +22,7 @@ class TestNationalRiskIndexETL:
         - self.OUTPUT_PATH points to the correct path in the temp directory
         """
         # setup
-        etl = mock_etl
+        etl = NationalRiskIndexETL()
         data_path, tmp_path = mock_paths
         input_csv = tmp_path / "NRI_Table_CensusTracts.csv"
         output_dir = data_path / "dataset" / "national_risk_index_2020"
@@ -75,7 +43,7 @@ class TestNationalRiskIndexETL:
           groups in that tract
         """
         # setup - copy sample data into tmp_dir
-        etl = mock_etl
+        etl = NationalRiskIndexETL()
         input_src = DATA_DIR / "input.csv"
         input_dst = etl.INPUT_CSV
         acs_src = DATA_DIR / "acs.csv"
@@ -112,7 +80,7 @@ class TestNationalRiskIndexETL:
         - The content of the file that's written matches the data in self.df
         """
         # setup
-        etl = mock_etl
+        etl = NationalRiskIndexETL()
         output_path = etl.OUTPUT_DIR / "usa.csv"
         TRACT_COL = etl.GEOID_TRACT_FIELD_NAME
         BLOCK_COL = etl.GEOID_FIELD_NAME
