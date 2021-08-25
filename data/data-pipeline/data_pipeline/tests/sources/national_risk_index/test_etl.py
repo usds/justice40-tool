@@ -8,7 +8,9 @@ from data_pipeline.etl.sources.national_risk_index.etl import (
     NationalRiskIndexETL,
 )
 
-DATA_DIR = settings.APP_ROOT / "etl" / "tests" / "national_risk_index" / "data"
+DATA_DIR = (
+    settings.APP_ROOT / "tests" / "sources" / "national_risk_index" / "data"
+)
 
 
 def copy_data_files(src: Path, dst: Path) -> None:
