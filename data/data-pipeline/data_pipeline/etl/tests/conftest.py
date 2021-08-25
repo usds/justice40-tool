@@ -22,6 +22,7 @@ def mock_paths(tmp_path_factory) -> tuple:
     tmp_path.mkdir()
     return data_path, tmp_path
 
+
 @pytest.fixture
 def mock_etl(monkeypatch, mock_paths) -> None:
     """Creates a mock version of the base ExtractTransformLoad class and resets

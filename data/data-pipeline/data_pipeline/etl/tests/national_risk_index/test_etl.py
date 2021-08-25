@@ -99,7 +99,9 @@ class TestNationalRiskIndexETL:
         etl.df = expected
         # execution
         etl.load()
-        output = pd.read_csv(output_path, dtype={BLOCK_COL: str, TRACT_COL: str})
+        output = pd.read_csv(
+            output_path, dtype={BLOCK_COL: str, TRACT_COL: str}
+        )
         # validation
         assert output_path.exists()
         assert output.equals(expected)

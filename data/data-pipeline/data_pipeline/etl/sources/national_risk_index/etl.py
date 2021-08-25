@@ -10,11 +10,11 @@ class NationalRiskIndexETL(ExtractTransformLoad):
     """ETL class for the FEMA National Risk Index dataset"""
 
     def __init__(self):
-        self.NRI_FTP_URL = (
-            "https://nri-data-downloads.s3.amazonaws.com/NRI_Table_CensusTracts.zip"
-        )
+        self.NRI_FTP_URL = "https://nri-data-downloads.s3.amazonaws.com/NRI_Table_CensusTracts.zip"
         self.INPUT_CSV = self.TMP_PATH / "NRI_Table_CensusTracts.csv"
-        self.OUTPUT_DIR = self.DATA_PATH / "dataset" / "national_risk_index_2020"
+        self.OUTPUT_DIR = (
+            self.DATA_PATH / "dataset" / "national_risk_index_2020"
+        )
         self.BLOCK_GROUP_CSV = (
             self.DATA_PATH / "dataset" / "census_acs_2019" / "usa.csv"
         )
