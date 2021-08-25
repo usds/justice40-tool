@@ -35,6 +35,12 @@ DATASET_LIST = [
         "class_name": "HudRecapETL",
     },
     {
+
+        "name": "cdc_places",
+        "module_dir": "cdc_places",
+        "class_name": "CDCPlacesETL",
+    },
+    {
         "name": "national_risk_index",
         "module_dir": "national_risk_index",
         "class_name": "NationalRiskIndexETL",

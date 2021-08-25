@@ -29,41 +29,10 @@ $theme-font-role-heading: "sans";
 // Custom SASS/CSS goes here
 $j40-max-width: 80ex;
 $primary-color: #112f4e;
+$j40-blue-background-color: #EFF6FB;
 
 #main-content {
   border-top: 0;
-}
-
-.j40-two-column {
-  overflow: hidden;
-  padding: 0;
-
-  @media (min-width: 40em) {
-    column-count: 2;
-    column-gap: 1em;
-  }
-  @media (max-width: 40em) {
-    column-count: 1;
-    column-gap: 0;
-  }
-}
-
-.j40-two-column > * {
-  display: inline-flex;
-  width: 90%;
-  padding-bottom: 1.2em; /* space between items */
-  padding-left: 1em;
-}
-
-.j40-two-column-icons-spacing {
-  padding-right: 1em;
-  width: 2.3em;
-  max-width: revert;
-}
-
-.j40-two-column-confine {
-  display: inline-flex;
-  max-width: fit-content;
 }
 
 @include at-media("mobile-lg") {
@@ -197,6 +166,25 @@ $primary-color: #112f4e;
     font-size: 1.46rem;
   }
 }
+
+// we can use to to make all section headers consistent
+.j40-section-sm-header {
+  font-weight: bold;
+  padding-bottom: 0.24rem;
+  padding-right: 0.24rem;
+}
+
+.j40-section-sm-body {
+  line-height: 1.5;
+  padding-bottom: 1.2rem;
+  padding-right: 1.2rem;
+
+}
+
+.j40-section-sm-footer {
+  padding-bottom: 0.5rem;
+}
+
 
 // This should really be part of uswds and use $theme-step-indicator-segment-color-complete
 // The Progress element doesn't really support color changing the line connecting progress
@@ -337,6 +325,7 @@ $primary-color: #112f4e;
       list are not affected (e.g. <ul><li><p><ul><li>not styled</li></ul></p></li><ul>*/
 .j40-process-list-wrapper > {
   $j40-steps-list-color: #002D3F;
+
   ul {
     margin-top: 3rem;
     margin-bottom: 1rem;
@@ -407,6 +396,13 @@ $primary-color: #112f4e;
   }
 }
 
+ul.j40-process-nested-list {
+  margin-bottom: 2rem;
+  > li {
+    list-style-type: disc; /* without this, we get hollow circles */
+  }
+}
+
 /* these are currently used in the list, but it seems like they should be globally consistent with the rest of the site */
 .j40-item-list-title {
   margin-block-end: auto;
@@ -417,3 +413,66 @@ $primary-color: #112f4e;
   margin-block-end: auto;
   font-style: italic;
 }
+
+/* this is used by J40MainGridContainer to show a blue background */
+.j40-main-grid-blue-bk {
+  background-color: $j40-blue-background-color;
+}
+
+/* about card - based on datasetCard... need to combine */
+.j40-aboutcard-container {
+
+  .j40-aboutcard-lg-card {
+    margin: 1.2rem 0 3rem 0;
+
+    .j40-aboutpage-image-container {
+      width: 10.5rem;
+      padding: 1.24rem 1.24rem 0 .24rem;
+    }
+
+    .j40-aboutcard-image {
+      flex: 1 0 10%;
+      align-self: flex-start;
+    }
+
+    .j40-aboutcard-header {
+    }
+
+    .j40-aboutcard-body {
+    }
+
+    .j40-aboutcard-footer {
+    }
+
+    .j40-aboutcard-link {
+      font-weight: bold;
+    }
+  }
+
+  .j40-aboutcard-sm-card {
+    margin: 1.2rem 0 3rem 0;
+
+    .j40-aboutpage-image-container {
+      padding: 1.24rem 1.24rem 0 .24rem;
+    }
+
+    .j40-aboutcard-image {
+      width: 3rem;
+    }
+
+    .j40-aboutcard-header {
+    }
+
+    .j40-aboutcard-body {
+    }
+
+    .j40-aboutcard-footer {
+    }
+
+    .j40-aboutcard-link {
+      font-weight: bold;
+    }
+  }
+
+}
+

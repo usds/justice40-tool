@@ -49,17 +49,13 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         <span>
           County: 
         </span>
-        <span>
-          Washington County*
-        </span>
+        <span />
       </li>
       <li>
         <span>
           State: 
         </span>
-        <span>
-          District of Columbia*
-        </span>
+        <span />
       </li>
       <li>
         <span>
