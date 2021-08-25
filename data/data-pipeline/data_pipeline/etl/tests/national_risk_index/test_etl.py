@@ -1,4 +1,4 @@
-# TODO: Change equality checking of dataframes to use df.equals()
+from pathlib import Path
 from shutil import copyfile
 
 import pytest
@@ -8,6 +8,22 @@ from data_pipeline.config import settings
 from data_pipeline.etl.sources.national_risk_index.etl import NationalRiskIndexETL
 
 DATA_DIR = settings.APP_ROOT / "etl" / "tests" / "national_risk_index" / "data"
+
+
+def copy_data_files(src: Path, dst: Path) -> None:
+    """Copies test data from src Path to dst Path for use in testing
+
+    Args
+        src: pathlib.Path instance. The location of the source data file.
+        dst: pathlib.Path instance. Where to copy the source data file to.
+
+    Returns
+        None. This is a void function
+    """
+    if not dst.exists():
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        copyfile(src, dst)
+        assert dst.exists()
 
 
 class TestNationalRiskIndexETL:
@@ -49,27 +65,19 @@ class TestNationalRiskIndexETL:
         acs_src = DATA_DIR / "acs.csv"
         acs_dst = DATA_DIR / etl.BLOCK_GROUP_CSV
         for src, dst in [(input_src, input_dst), (acs_src, acs_dst)]:
-            if not dst.exists():
-                dst.parent.mkdir(parents=True, exist_ok=True)
-                copyfile(src, dst)
-                assert dst.exists()
+            copy_data_files(src, dst)
         # setup - read in sample output as dataframe
         TRACT_COL = etl.GEOID_TRACT_FIELD_NAME
         BLOCK_COL = etl.GEOID_FIELD_NAME
         expected = pd.read_csv(
             DATA_DIR / "output.csv",
-            dtype={BLOCK_COL: str, TRACT_COL: str},
+            dtype={BLOCK_COL: "string", TRACT_COL: "string"},
         )
         # execution
         etl.transform()
-        expected_dict = expected.to_dict("records")
-        output_dict = etl.df.to_dict("records")
-        print(type(etl.df))
         # validation
         assert etl.df.shape == (10, 6)
-        assert list(etl.df.columns) == list(expected.columns)
-        for i, record in enumerate(output_dict):
-            assert record == expected_dict[i]
+        assert etl.df.equals(expected)
 
     def test_load(self, mock_etl):
         """Tests the load() method for NationalRiskIndexETL
