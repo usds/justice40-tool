@@ -1,4 +1,3 @@
-# TODO: Move the tmp_dir into a tests folder in data/tmp
 # TODO: Promote mock_paths and mock_etl to conftest fixtures, and make it return the base class
 # TODO: Change equality checking of dataframes to use df.equals()
 import os
@@ -13,7 +12,7 @@ from data_pipeline.etl.sources.national_risk_index.etl import NationalRiskIndexE
 
 DIR_ROOT = settings.APP_ROOT / "etl" / "sources" / "national_risk_index"
 DATA_DIR = DIR_ROOT / "tests"/ "data"
-TMP_DIR = DIR_ROOT / "tmp_dir"
+TMP_DIR = settings.APP_ROOT / "data" / "tmp" / "tests"
 
 
 @pytest.fixture(scope="session")
@@ -66,17 +65,6 @@ class TestNationalRiskIndexETL:
         assert etl.OUTPUT_DIR == output_dir
         assert etl.GEOID_FIELD_NAME == "GEOID10"
         assert etl.GEOID_TRACT_FIELD_NAME == "GEOID10_TRACT"
-
-    def test_extract(self, mock_etl):
-        """Tests the extract() method for NationalRiskIndexETL
-
-        Validates the following conditions:
-        - The unzipped folder is stored in self.TMP_PATH
-        - There are three files in the resulting unzipped folder
-        """
-        # TODO: mock this test out with a locally zipped file
-        # mock_etl.extract()
-        assert 1
 
     def test_transform(self, mock_etl):
         """Tests the transform() method for NationalRiskIndexETL
