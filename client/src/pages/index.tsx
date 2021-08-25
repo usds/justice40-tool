@@ -65,7 +65,10 @@ const IndexPage = ({location}: IndexPageProps) => {
 
   return (
     <Layout location={location}>
-      <AlertWrapper/>
+      <J40MainGridContainer>
+        <AlertWrapper showBetaAlert={true} showLimitedDataAlert={false}/>
+      </J40MainGridContainer>
+
       <J40MainGridContainer className={'j40-about-page'}>
 
         <AboutCardsContainer>
@@ -129,36 +132,6 @@ const IndexPage = ({location}: IndexPageProps) => {
 
           </AboutCard>
         </AboutCardsContainer>
-
-        {/* <Grid tablet={{col: true}} gap={'lg'}>*/}
-        {/*  <Grid row className={'j40-aboutcard-sm-card'}>*/}
-        {/*    <Grid col={3} className={'j40-about-image-col'}>*/}
-        {/*      <img*/}
-        {/*        className={'j40-about-large-circle-graphics'}*/}
-        {/*        alt="usa map graphics with pins"*/}
-        {/*        src={aboutUSMapImg}/>*/}
-        {/*    </Grid>*/}
-
-        {/*    <Grid col={9} className={'j40-section-sm-body'}>*/}
-        {/*      <h2>About the screening tool</h2>*/}
-        {/*      */}
-        {/*    </Grid>*/}
-        {/*  </Grid>*/}
-
-        {/*  <Grid row gap="lg" className={'flex-align-center j40-section-sm-body'}>*/}
-        {/*    <Grid col={3} className={'j40-about-image-col'}>*/}
-        {/*      <img*/}
-        {/*        className={'j40-about-large-circle-graphics'}*/}
-        {/*        alt="graphics showing 40%"*/}
-        {/*        src={aboutJ40Img}/>*/}
-        {/*    </Grid>*/}
-
-        {/*    <Grid col={9}>*/}
-        {/*      <h2>About the Justice40 Initiative</h2>*/}
-        {/*      */}
-        {/*    </Grid>*/}
-        {/*  </Grid>*/}
-        {/* </Grid>*/}
       </J40MainGridContainer>
 
       <J40MainGridContainer
