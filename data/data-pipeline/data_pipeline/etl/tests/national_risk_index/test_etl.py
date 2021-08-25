@@ -5,7 +5,9 @@ import pytest
 import pandas as pd
 
 from data_pipeline.config import settings
-from data_pipeline.etl.sources.national_risk_index.etl import NationalRiskIndexETL
+from data_pipeline.etl.sources.national_risk_index.etl import (
+    NationalRiskIndexETL,
+)
 
 DATA_DIR = settings.APP_ROOT / "etl" / "tests" / "national_risk_index" / "data"
 
