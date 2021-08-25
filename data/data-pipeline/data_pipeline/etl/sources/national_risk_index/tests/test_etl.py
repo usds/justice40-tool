@@ -1,4 +1,3 @@
-# TODO: Move this all under a tests/ dir in national_risk_index dir
 # TODO: Move the tmp_dir into a tests folder in data/tmp
 # TODO: Promote mock_paths and mock_etl to conftest fixtures, and make it return the base class
 # TODO: Change equality checking of dataframes to use df.equals()
@@ -13,7 +12,7 @@ from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.sources.national_risk_index.etl import NationalRiskIndexETL
 
 DIR_ROOT = settings.APP_ROOT / "etl" / "sources" / "national_risk_index"
-DATA_DIR = DIR_ROOT / "test_data"
+DATA_DIR = DIR_ROOT / "tests"/ "data"
 TMP_DIR = DIR_ROOT / "tmp_dir"
 
 
