@@ -34,6 +34,8 @@ services:
     build: ./client
     environment:
       DATA_SOURCE: local
+    volumes:
+      - ./client:/client
     ports: 
       - 8000:6000
     depends_on:
