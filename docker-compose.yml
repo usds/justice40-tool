@@ -34,10 +34,6 @@ services:
     build: ./client
     environment:
       DATA_SOURCE: local
-      GATSBY_DATA_ROOT_PATH: http://127.0.0.1:5000/data/data-pipeline
-      GATSBY_DATA_PIPELINE_SCORE_PATH: data_pipeline/data/score
-      GATSBY_SCORE_DOWNLOAD_FILE_PATH: downloadable/Screening+Tool+Data.zip
-      GATSBY_MAP_TILES_PATH: tiles
     ports: 
       - 8000:6000
     depends_on:

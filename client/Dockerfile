@@ -4,7 +4,7 @@ WORKDIR /client
 
 COPY package*.json ./
 
-RUN yarn install --network-concurrency 2
+RUN npm install
 
 COPY . .
 
