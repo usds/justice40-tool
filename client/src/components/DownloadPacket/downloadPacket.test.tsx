@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {render, screen} from '@testing-library/react';
-import DownloadPacket from './downloadPacket';
+import DownloadPacket from '.';
 
 test('download packet component defined', () => {
   render(<DownloadPacket />);

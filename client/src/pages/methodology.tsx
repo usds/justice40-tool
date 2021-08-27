@@ -3,6 +3,7 @@ import {Grid} from '@trussworks/react-uswds';
 
 import AlertWrapper from '../components/AlertWrapper';
 import DatasetContainer from '../components/DatasetContainer';
+import DownloadPacket from '../components/DownloadPacket';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 import ScoreStepsList from '../components/scoreStepsList';
@@ -21,37 +22,26 @@ const IndexPage = ({location}: MethodPageProps) => {
       </J40MainGridContainer>
 
       <J40MainGridContainer className={'j40-main-content'}>
-        <Grid row>
-          <Grid col>
+        <h1>Methodology</h1>
+        <Grid row gap>
+          <Grid col={12} tablet={{col: 6}}>
             <section>
-              <h1>Methodology</h1>
               <p>
-            The Just Progress tool combines demographic, environmental, and
-            socio-economic data to generate a cumulative index score, referred
-            to as the Just Progress Index. The tool currently utilizes
-            national,
-            publically-available data from the United States Census Bureau’s
-            American Community Survey (ACS) and the EPA’s EJScreen tool.
+              The cumulative index score is a metric that is intended to assist Federal agencies
+              in identifying disadvantaged communities for the purposes of the Justice40
+              Initiative. The score methodology and included data sets are currently in beta and
+              may change over time.
               </p>
               <p>
-            The various inputs into the Just Progress Index are averaged into
-            2 categories: Pollution Burden and Demographics.
-              </p>
-              <p>
-            Pollution Burden: health risks arising from proximity and
-            potential exposures to pollution and other adverse environmental
-            conditions
-              </p>
-              <p>
-            Demographics: sensitive populations and socioeconomic factors that
-            make a community more vulnerable
-              </p>
-              <p>
-                <b>Pollution Burden average x Demographics average = Just Progress
-              Index</b>
+              Learn about the datasets used in the cumulative score and read about how the score
+               is calculated. Download the list of prioritized communities along with the datasets used in the score.
               </p>
             </section>
-          </Grid></Grid>
+          </Grid>
+          <Grid col={12} tablet={{col: 6}}>
+            <DownloadPacket />
+          </Grid>
+        </Grid>
       </J40MainGridContainer>
 
       <J40MainGridContainer fullWidth={true}>
