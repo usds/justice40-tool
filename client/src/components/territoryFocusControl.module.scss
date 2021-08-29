@@ -14,15 +14,15 @@
 .territoryFocusContainer {
   display: flex;
   flex-direction: column;
-  text-align: center;
-  font-size: 16px;
-  line-height: 1.75em;
   position: absolute;
   left: 20px;
-  top: 300px;
-  z-index: 10;
-  left: 20px;
   top: 150px;
+  z-index: 10;
+
+  text-align: center;
+  // @include u-font-size('mono', 8);  doesn't work because we're in component scss
+  font-size: font-size('mono', 'sm');
+  line-height: 1.5rem;
 }
 
 .territoryFocusButton:first-child {
