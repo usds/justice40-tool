@@ -20,9 +20,9 @@
   z-index: 10;
 
   text-align: center;
-  // @include u-font-size('mono', 8);  doesn't work because we're in component scss
-  font-size: font-size('mono', 'sm');
-  line-height: 1.5rem;
+  line-height: 1rem;
+  font-family: Roboto Mono Web, Bitstream Vera Sans Mono, Consolas, Courier, monospace;
+  font-size: 1em;
 }
 
 .territoryFocusButton:first-child {
