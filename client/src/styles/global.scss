@@ -296,6 +296,30 @@ $j40-blue-background-color: #EFF6FB;
       background-image: url("../../node_modules/uswds/dist/img/usa-icons/remove.svg");
     }
   }
+
+  button.mapboxgl-ctrl-zoom-to-48 {
+    .mapboxgl-ctrl-icon {
+      background-image: url("../images/mapbtn-48.svg");
+    }
+  }
+
+  button.mapboxgl-ctrl-zoom-to-ak {
+    .mapboxgl-ctrl-icon {
+      background-image: url("../images/mapbtn-AK.svg");
+    }
+  }
+
+  button.mapboxgl-ctrl-zoom-to-hi {
+    .mapboxgl-ctrl-icon {
+      background-image: url("../images/mapbtn-HI.svg");
+    }
+  }
+
+  button.mapboxgl-ctrl-zoom-to-pr {
+    .mapboxgl-ctrl-icon {
+      background-image: url("../images/mapbtn-PR.svg");
+    }
+  }
 }
 
 
