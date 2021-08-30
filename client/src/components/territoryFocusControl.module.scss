@@ -1,4 +1,5 @@
 .territoryFocusButton {
+  display: inline-block;  // iPhone centering fix.
   width: 2.5em;
   height: 2.5em;
   border-width: 1px 2px;
@@ -22,7 +23,7 @@
   text-align: center;
   line-height: 1rem;
   font-family: Roboto Mono Web, Bitstream Vera Sans Mono, Consolas, Courier, monospace;
-  font-size: 1em;
+  font-size: 1rem;
 }
 
 .territoryFocusButton:first-child {
