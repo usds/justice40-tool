@@ -35,7 +35,7 @@ services:
     environment:
       DATA_SOURCE: local
     volumes:
-      - ./client:/client
+      - ./client/src:/client/src
     ports: 
       - 8000:6000
     depends_on:

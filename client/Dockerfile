@@ -2,9 +2,13 @@ FROM node:14
 
 WORKDIR /client
 
-COPY package*.json ./
-
+# first install tha packages
+COPY package.json .
+RUN npm update
 RUN npm install
+
+# the copy the whole source folder
+COPY . .
 
 ENV PORT=6000
 
