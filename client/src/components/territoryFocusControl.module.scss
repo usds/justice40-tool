@@ -1,34 +1,8 @@
-.territoryFocusButton {
-  width: 2.5em;
-  height: 2.5em;
-  border-width: 1px 2px;
-  border-color: #000000;
-  border-style: solid;
-  background-color: #ffffff;
-}
-
-.territoryFocusButton:not(:disabled):hover {
-  background-color: #f4f4f4;
-}
-
 .territoryFocusContainer {
   display: flex;
   flex-direction: column;
-  text-align: center;
-  font-size: 16px;
-  line-height: 1.75em;
   position: absolute;
   left: 20px;
-  top: 300px;
-  z-index: 10;
-  left: 20px;
   top: 150px;
-}
-
-.territoryFocusButton:first-child {
-  border-top-width: 2px;
-}
-
-.territoryFocusButton:last-child {
-  border-bottom-width: 2px;
+  z-index: 10;
 }

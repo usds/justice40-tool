@@ -4,10 +4,10 @@ import {_useMapControl as useMapControl} from 'react-map-gl';
 import * as styles from './territoryFocusControl.module.scss';
 
 interface ITerritoryFocusControl {
-  onClickTerritoryFocusButton : MouseEventHandler<HTMLButtonElement>;
+  onClickTerritoryFocusButton: MouseEventHandler<HTMLButtonElement>;
 }
 
-const TerritoryFocusControl = ({onClickTerritoryFocusButton} : ITerritoryFocusControl) => {
+const TerritoryFocusControl = ({onClickTerritoryFocusButton}: ITerritoryFocusControl) => {
   const intl = useIntl();
 
   const {containerRef} = useMapControl({
@@ -81,28 +81,37 @@ const TerritoryFocusControl = ({onClickTerritoryFocusButton} : ITerritoryFocusCo
       ),
     },
   ];
+  // the offset for this array should map the territories variable
+  const territoriesIconClassName = [
+    'mapboxgl-ctrl-zoom-to-48',
+    'mapboxgl-ctrl-zoom-to-ak',
+    'mapboxgl-ctrl-zoom-to-hi',
+    'mapboxgl-ctrl-zoom-to-pr',
+  ];
 
   return (
     <div ref={containerRef} className={styles.territoryFocusContainer}>
-      {territories.map((territory) =>
-        <button
-          id={territory.short}
-          key={territory.short}
-          onClick={onClickTerritoryFocusButton}
-          className={styles.territoryFocusButton}
-          aria-label={intl.formatMessage(
-              {
-                id: 'map.territoryFocus.focusOn',
-                defaultMessage: 'Focus on {territory}',
-                description: 'Focus on the bounds of a specific territory',
-              },
-              {
-                territory: territory.long,
-              },
-          )}>
-          {territory.short}
-        </button>,
-      )}
+      <div className={'mapboxgl-ctrl mapboxgl-ctrl-group'}>
+        {territories.map((territory, index) =>
+          <button
+            id={territory.short}
+            key={territory.short}
+            onClick={onClickTerritoryFocusButton}
+            className={'mapboxgl-ctrl-icon ' + territoriesIconClassName[index]}
+            aria-label={intl.formatMessage(
+                {
+                  id: 'map.territoryFocus.focusOn',
+                  defaultMessage: 'Focus on {territory}',
+                  description: 'Focus on the bounds of a specific territory',
+                },
+                {
+                  territory: territory.long,
+                },
+            )}>
+            <span className={'mapboxgl-ctrl-icon'} aria-hidden={true}/>
+          </button>,
+        )}
+      </div>
     </div>
   );
 };

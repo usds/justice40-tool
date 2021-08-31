@@ -1,7 +1,6 @@
 declare namespace TerritoryFocusControlModuleScssNamespace {
     export interface ITerritoryFocusControlModuleScss {
       territoryFocusContainer: string;
-      territoryFocusButton: string;
     }
   }
 

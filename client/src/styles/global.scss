@@ -282,6 +282,7 @@ $j40-blue-background-color: #EFF6FB;
     // see more here: https://thatemil.com/blog/2014/04/06/intrinsic-sizing-of-svg-in-responsive-web-design/
     .mapboxgl-ctrl-icon {
       height: 1em;
+      pointer-events: none; /* this keeps the icons from "eating" the click events instead of the button getting them */
     }
   }
 
@@ -294,6 +295,30 @@ $j40-blue-background-color: #EFF6FB;
   button.mapboxgl-ctrl-zoom-out {
     .mapboxgl-ctrl-icon {
       background-image: url("../../node_modules/uswds/dist/img/usa-icons/remove.svg");
+    }
+  }
+
+  button.mapboxgl-ctrl-zoom-to-48 {
+    .mapboxgl-ctrl-icon {
+      background-image: url("../images/mapbtn-48.svg");
+    }
+  }
+
+  button.mapboxgl-ctrl-zoom-to-ak {
+    .mapboxgl-ctrl-icon {
+      background-image: url("../images/mapbtn-AK.svg");
+    }
+  }
+
+  button.mapboxgl-ctrl-zoom-to-hi {
+    .mapboxgl-ctrl-icon {
+      background-image: url("../images/mapbtn-HI.svg");
+    }
+  }
+
+  button.mapboxgl-ctrl-zoom-to-pr {
+    .mapboxgl-ctrl-icon {
+      background-image: url("../images/mapbtn-PR.svg");
     }
   }
 }
