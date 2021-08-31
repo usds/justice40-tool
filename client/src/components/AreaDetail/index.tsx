@@ -9,8 +9,25 @@ import {defineMessages} from 'react-intl';
 import * as styles from './areaDetail.module.scss';
 import * as constants from '../../data/constants';
 
-export const readablePercent = (percent: number) => {
-  return `${(percent * 100).toFixed(1)}`;
+export const readablePercentile = (percentile: number) => {
+  return Math.round(percentile * 100);
+};
+
+
+// Todo: Add internationalization to superscript ticket #582
+const getSuperscriptOrdinal = (percentile: number) => {
+  const englishOrdinalRules = new Intl.PluralRules('en', {
+    type: 'ordinal',
+  });
+  const suffixes = {
+    zero: 'th',
+    one: 'st',
+    two: 'nd',
+    few: 'rd',
+    many: 'th',
+    other: 'th',
+  };
+  return suffixes[englishOrdinalRules.select(percentile)];
 };
 
 export const getCategorization = (percentile: number) => {
@@ -158,7 +175,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
       <header className={styles.topRow }>
         <div className={styles.cumulativeIndexScore}>
           <div className={styles.topRowTitle}>{intl.formatMessage(messages.cumulativeIndexScore)}</div>
-          <div className={styles.score} data-cy={'score'}>{`${readablePercent(score)}`}
+          <div className={styles.score} data-cy={'score'}>{`${readablePercentile(score)}`}
             <sup className={styles.scoreSuperscript}><span>th</span></sup>
           </div>
           <div className={styles.topRowSubTitle}>{intl.formatMessage(messages.percentile)}</div>
@@ -202,7 +219,12 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
               {indicator.description}
             </div>
           </div>
-          <div className={styles.indicatorValue}>{readablePercent(indicator.value)}</div>
+          <div className={styles.indicatorValue}>
+            {readablePercentile(indicator.value)}
+            <sup className={styles.indicatorSuperscript}><span>
+              {getSuperscriptOrdinal(readablePercentile(indicator.value))}
+            </span></sup>
+          </div>
         </li>
       ))}
 

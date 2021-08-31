@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {render} from '@testing-library/react';
-import AreaDetail, {getCategorization, readablePercent} from '..';
+import AreaDetail, {getCategorization, readablePercentile} from '..';
 import {LocalizedComponent} from '../../../test/testHelpers';
 import * as constants from '../../../data/constants';
 
@@ -28,8 +28,11 @@ describe('rendering of the AreaDetail', () => {
   });
 });
 
-describe('tests the readablePercent function', () => {
-  expect(readablePercent(.9877665443)).toEqual('98.8');
+describe('tests the readablePercentile function', () => {
+  expect(readablePercentile(.98)).toEqual(98);
+  expect(readablePercentile(.07)).toEqual(7);
+  expect(readablePercentile(.123)).toEqual(12);
+  expect(readablePercentile(.789)).toEqual(79);
 });
 
 describe('tests the getCategorization function', () => {
