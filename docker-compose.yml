@@ -23,9 +23,7 @@ services:
     volumes:
       - ./data/data-pipeline/data_pipeline/data/score:/data/data-pipeline/data_pipeline/data/score
     ports:
-      - 5000:5000
-    depends_on: 
-      - "score"
+      - 5000:8080
   
   #The j40_website service runs the web app / map / site
   j40_website:

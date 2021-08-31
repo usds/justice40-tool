@@ -1,3 +1,3 @@
 FROM node:latest
-RUN npm install -g serve
-CMD serve ./
+RUN npm install -g http-server
+CMD http-server ./ --cors
