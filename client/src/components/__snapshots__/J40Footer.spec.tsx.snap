@@ -3,148 +3,138 @@
 exports[`J40Footer renders correctly 1`] = `
 <DocumentFragment>
   <footer
-    class="usa-footer usa-footer--big j40-footer"
+    class="j40-footer"
   >
     <div
       class="usa-footer__primary-section"
     >
       <div
-        class="grid-container"
+        class="grid-container-desktop-lg j40-grid-container "
         data-testid="gridContainer"
       >
         <div
-          class=""
-          data-testid="grid"
+          class="grid-row grid-gap-4 padding-bottom-6 tablet-lg:grid-col4"
         >
-          <nav
-            aria-label="Footer navigation"
-            class="usa-footer__nav"
+          <div
+            class="mobile-lg:grid-col-12 desktop:grid-col-4"
           >
-            <div
-              class="grid-row grid-gap-4"
+            <section
+              class="usa-footer__primary-content"
             >
-              <div
-                class="mobile-lg:grid-col-6 desktop:grid-col-3"
+              <h4
+                class="padding-top-1 padding-bottom-0"
               >
-                <section
-                  class="usa-footer__primary-content usa-footer__primary-content--collapsible"
-                >
-                  <h4
-                    class="usa-footer__primary-link"
-                  >
-                    Contact
-                  </h4>
-                  <ul
-                    class="usa-list usa-list--unstyled"
-                  >
-                    <li
-                      class="usa-footer__secondary-link"
-                    >
-                      <address
-                        class="usa-footer__address j40-footer-address"
-                      >
-                        <div
-                          class="usa-footer__contact-info grid-row grid-gap"
-                        >
-                          <div
-                            class="grid-col-auto"
-                          >
-                            730 Jackson Pl NW
-                          </div>
-                          <div
-                            class="grid-col-auto"
-                          >
-                            Washington, D.C. 20506
-                          </div>
-                          <div
-                            class="grid-col-auto"
-                          >
-                            (202) 395-5750
-                          </div>
-                        </div>
-                      </address>
-                    </li>
-                  </ul>
-                </section>
-              </div>
-              <div
-                class="mobile-lg:grid-col-6 desktop:grid-col-3"
+                Contact
+              </h4>
+              <ul
+                class="usa-list usa-list--unstyled padding-bottom-4"
               >
-                <section
-                  class="usa-footer__primary-content usa-footer__primary-content--collapsible"
+                <li
+                  class="usa-footer__secondary-link"
                 >
-                  <h4
-                    class="usa-footer__primary-link"
+                  <address
+                    class="usa-footer__address j40-footer-address"
                   >
-                    More information
-                  </h4>
-                  <ul
-                    class="usa-list usa-list--unstyled"
-                  >
-                    <li
-                      class="usa-footer__secondary-link"
+                    <div
+                      class="usa-footer__contact-info grid-row grid-gap"
                     >
-                      <a
-                        href="https://www.whitehouse.gov/"
-                        rel="noreferrer"
-                        target="_blank"
+                      <div
+                        class="grid-col-auto"
                       >
-                        Whitehouse.gov
-                      </a>
-                    </li>
-                    <li
-                      class="usa-footer__secondary-link"
-                    >
-                      <a
-                        href="https://www.whitehouse.gov/ceq/foia"
-                        rel="noreferrer"
-                        target="_blank"
+                        730 Jackson Pl NW
+                      </div>
+                      <div
+                        class="grid-col-auto"
                       >
-                        Freedom of Information Act (FOIA)
-                      </a>
-                    </li>
-                    <li
-                      class="usa-footer__secondary-link"
-                    >
-                      <a
-                        href="https://www.whitehouse.gov/privacy/"
-                        rel="noreferrer"
-                        target="_blank"
+                        Washington, D.C. 20506
+                      </div>
+                      <div
+                        class="grid-col-auto"
                       >
-                        Privacy Policy
-                      </a>
-                    </li>
-                  </ul>
-                </section>
-              </div>
-              <div
-                class="mobile-lg:grid-col-6 desktop:grid-col-3"
+                        (202) 395-5750
+                      </div>
+                    </div>
+                  </address>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div
+            class="mobile-lg:grid-col-12 desktop:grid-col-4"
+          >
+            <section
+              class="usa-footer__primary-content"
+            >
+              <h4
+                class="padding-top-1 padding-bottom-0"
               >
-                <section
-                  class="usa-footer__primary-content usa-footer__primary-content--collapsible"
+                More information
+              </h4>
+              <ul
+                class="usa-list usa-list--unstyled padding-bottom-4"
+              >
+                <li
+                  class="usa-footer__secondary-link"
                 >
-                  <h4
-                    class="usa-footer__primary-link"
+                  <a
+                    href="https://www.whitehouse.gov/"
+                    rel="noreferrer"
+                    target="_blank"
                   >
-                    Have a question about government services?
-                  </h4>
-                  <ul
-                    class="usa-list usa-list--unstyled"
+                    Whitehouse.gov
+                  </a>
+                </li>
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    href="https://www.whitehouse.gov/ceq/foia"
+                    rel="noreferrer"
+                    target="_blank"
                   >
-                    <li
-                      class="usa-footer__secondary-link"
-                    >
-                      <a
-                        href="https://www.usa.gov/"
-                      >
-                        Find a contact at USA.gov
-                      </a>
-                    </li>
-                  </ul>
-                </section>
-              </div>
-            </div>
-          </nav>
+                    Freedom of Information Act (FOIA)
+                  </a>
+                </li>
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    href="https://www.whitehouse.gov/privacy/"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Privacy Policy
+                  </a>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div
+            class="mobile-lg:grid-col-12 desktop:grid-col-4"
+          >
+            <section
+              class="usa-footer__primary-content"
+            >
+              <h4
+                class="padding-top-1 padding-bottom-0"
+              >
+                Have a question about government services?
+              </h4>
+              <ul
+                class="usa-list usa-list--unstyled padding-bottom-4"
+              >
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    href="https://www.usa.gov/"
+                  >
+                    Find a contact at USA.gov
+                  </a>
+                </li>
+              </ul>
+            </section>
+          </div>
         </div>
       </div>
     </div>
@@ -152,7 +142,8 @@ exports[`J40Footer renders correctly 1`] = `
       class="usa-footer__secondary-section"
     >
       <div
-        class="grid-container"
+        class="grid-container-desktop-lg j40-grid-container "
+        data-testid="gridContainer"
       >
         <div
           class="usa-footer__logo grid-row mobile-lg:grid-col-6 mobile-lg:grid-gap-2 j40-footer-logo"

@@ -16,8 +16,8 @@
     "clean": "gatsby clean",
     "cy:open": "CYPRESS_REMOTE_DEBUGGING_PORT=9222 cypress open",
     "cy:run": "cypress run",
-    "test": "jest",
     "licenses": "license-checker --production --onlyAllow 'Apache-2.0;BSD;BSD-2-Clause;BSD-3-Clause;CC0-1.0;CC-BY-3.0;CC-BY-4.0;ISC;MIT;Public Domain;Unlicense;UNLICENSED;ODC-By-1.0;WTFPL;MPL-2.0'",
+    "test": "jest",
     "test:e2e": "start-server-and-test develop http://localhost:8000 cy:open",
     "test:e2e:ci": "start-server-and-test develop http://localhost:8000 cy:run",
     "test:update": "npm test -- -u",
@@ -71,7 +71,7 @@
     "ts-jest": "^27.0.0"
   },
   "dependencies": {
-    "@trussworks/react-uswds": "git+https://git@github.com/nathillardusds/react-uswds#nathillardusds/ssr",
+    "@trussworks/react-uswds": "^2.0.0",
     "@turf/bbox": "^6.5.0",
     "chroma-js": "^2.1.2",
     "d3-ease": "^3.0.1",

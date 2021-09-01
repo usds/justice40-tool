@@ -30,6 +30,7 @@ exports[`rendering of the AboutCard checks if component renders 1`] = `
         >
           <h3
             class="j40-section-header"
+            data-cy="about-justice-40-heading"
           >
             Test Header
           </h3>

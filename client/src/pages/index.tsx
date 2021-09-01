@@ -61,18 +61,31 @@ const IndexPage = ({location}: IndexPageProps) => {
       defaultMessage: 'Iterative:',
       description: 'Italic label for 3rd paragraph of section 3 on index page',
     },
+    aboutScreenToolHeading: {
+      id: 'index.heading.screentool',
+      defaultMessage: 'About the screening tool',
+      description: 'heading for about screening tool',
+    },
+    aboutJustice40Heading: {
+      id: 'index.heading.justice40',
+      defaultMessage: 'About the Justice40 Initiative',
+      description: 'heading for about justice 40',
+    },
   });
 
   return (
     <Layout location={location}>
-      <AlertWrapper/>
+      <J40MainGridContainer>
+        <AlertWrapper showBetaAlert={true} showLimitedDataAlert={false}/>
+      </J40MainGridContainer>
+
       <J40MainGridContainer className={'j40-about-page'}>
 
         <AboutCardsContainer>
           <AboutCard
             size={'large'}
             imgSrc={aboutUSMapImg}
-            header={'About the screening tool'}>
+            header={intl.formatMessage(messages.aboutScreenToolHeading)}>
 
             <FormattedMessage
               id={'index.aboutContent.p1'}
@@ -95,7 +108,7 @@ const IndexPage = ({location}: IndexPageProps) => {
           <AboutCard
             size={'large'}
             imgSrc={aboutJ40Img}
-            header={'About the Justice40 Initiative'}>
+            header={intl.formatMessage(messages.aboutJustice40Heading)}>
 
             <FormattedMessage
               id="index.aboutContent.p2"
@@ -129,36 +142,6 @@ const IndexPage = ({location}: IndexPageProps) => {
 
           </AboutCard>
         </AboutCardsContainer>
-
-        {/* <Grid tablet={{col: true}} gap={'lg'}>*/}
-        {/*  <Grid row className={'j40-aboutcard-sm-card'}>*/}
-        {/*    <Grid col={3} className={'j40-about-image-col'}>*/}
-        {/*      <img*/}
-        {/*        className={'j40-about-large-circle-graphics'}*/}
-        {/*        alt="usa map graphics with pins"*/}
-        {/*        src={aboutUSMapImg}/>*/}
-        {/*    </Grid>*/}
-
-        {/*    <Grid col={9} className={'j40-section-sm-body'}>*/}
-        {/*      <h2>About the screening tool</h2>*/}
-        {/*      */}
-        {/*    </Grid>*/}
-        {/*  </Grid>*/}
-
-        {/*  <Grid row gap="lg" className={'flex-align-center j40-section-sm-body'}>*/}
-        {/*    <Grid col={3} className={'j40-about-image-col'}>*/}
-        {/*      <img*/}
-        {/*        className={'j40-about-large-circle-graphics'}*/}
-        {/*        alt="graphics showing 40%"*/}
-        {/*        src={aboutJ40Img}/>*/}
-        {/*    </Grid>*/}
-
-        {/*    <Grid col={9}>*/}
-        {/*      <h2>About the Justice40 Initiative</h2>*/}
-        {/*      */}
-        {/*    </Grid>*/}
-        {/*  </Grid>*/}
-        {/* </Grid>*/}
       </J40MainGridContainer>
 
       <J40MainGridContainer
