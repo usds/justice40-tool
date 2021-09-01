@@ -1,4 +1,28 @@
 {
+  "alert.alertBetaBody": [
+    {
+      "type": 0,
+      "value": "This website may be continuously updated"
+    }
+  ],
+  "alert.alertBetaTitle": [
+    {
+      "type": 0,
+      "value": "Public beta"
+    }
+  ],
+  "alert.alertDataLimitedBody": [
+    {
+      "type": 0,
+      "value": "Datasets may be added, updated, or removed."
+    }
+  ],
+  "alert.alertDataLimitedTitle": [
+    {
+      "type": 0,
+      "value": "Limited data sources"
+    }
+  ],
   "areaDetail.geographicInfo.censusBlockGroup": [
     {
       "type": 0,
@@ -38,7 +62,7 @@
   "areaDetail.indicator.linguisticIsolation": [
     {
       "type": 0,
-      "value": "Linguistic Isolation"
+      "value": "Linguistic isolation"
     }
   ],
   "areaDetail.indicator.poverty": [
@@ -50,7 +74,7 @@
   "areaDetail.indicator.unemployment": [
     {
       "type": 0,
-      "value": "Unemployment"
+      "value": "Unemployment rate"
     }
   ],
   "areaDetail.indicators.indicatorColumnHeader": [
@@ -83,46 +107,62 @@
       "value": "percentile"
     }
   ],
-  "areasOfInterest.climate": [
+  "contact.general": [
     {
       "type": 0,
-      "value": "Climate change"
+      "value": "For general feedback, email "
+    },
+    {
+      "type": 1,
+      "value": "general_email_address"
     }
   ],
-  "areasOfInterest.energy": [
+  "contact.pageheader": [
     {
       "type": 0,
-      "value": "Clean energy and energy efficiency"
+      "value": "Contact"
     }
   ],
-  "areasOfInterest.housing": [
+  "contact.sectionheader": [
     {
       "type": 0,
-      "value": "Affordable and sustainable housing"
+      "value": "Email us"
     }
   ],
-  "areasOfInterest.pollution": [
+  "datasetCard.dataDateRange": [
     {
       "type": 0,
-      "value": "Remediation of legacy pollution"
+      "value": "Data date range:"
     }
   ],
-  "areasOfInterest.training": [
+  "datasetCard.dataResolution": [
     {
       "type": 0,
-      "value": "Training and workforce development"
+      "value": "Data resolution:"
     }
   ],
-  "areasOfInterest.transit": [
+  "datasetCard.dataSource": [
     {
       "type": 0,
-      "value": "Clean transit"
+      "value": "Data source:"
     }
   ],
-  "areasOfInterest.water": [
+  "datasetCard.whatIsIt": [
     {
       "type": 0,
-      "value": "Clean water infrastructure"
+      "value": "What is it?"
+    }
+  ],
+  "datasetContainer.header.cumulativeScore": [
+    {
+      "type": 0,
+      "value": "Datasets used in cumulative score"
+    }
+  ],
+  "datasetContainer.subTitle": [
+    {
+      "type": 0,
+      "value": "The datasets come from a variety of sources and were selected after considering relevance, availability, recency and quality."
     }
   ],
   "footer.arialabel": [
@@ -152,7 +192,7 @@
   "footer.moreinfoheader": [
     {
       "type": 0,
-      "value": "More Information"
+      "value": "More information"
     }
   ],
   "footer.privacylink": [
@@ -194,37 +234,37 @@
   "header.methodology": [
     {
       "type": 0,
-      "value": "Methodology"
+      "value": "Data & methodology"
     }
   ],
-  "header.timeline": [
+  "header.title.line1": [
     {
       "type": 0,
-      "value": "Timeline"
+      "value": "Climate and Economic Justice"
     }
   ],
-  "header.title": [
+  "header.title.line2": [
     {
       "type": 0,
-      "value": "Justice40"
+      "value": "Screening Tool"
     }
   ],
-  "index.aboutContent.header": [
+  "howYouCanHelp.header.text": [
     {
       "type": 0,
-      "value": "About Justice40"
+      "value": "How You Can Help Improve the Tool"
     }
   ],
   "index.aboutContent.p1": [
     {
       "type": 0,
-      "value": "In an effort to address historical environmental injustices, President Biden created the Justice40 Initiative on January 27, 2021. The Justice40 Initiative directs 40% of the benefits from federal investments in seven key areas to overburdened and underserved communities."
+      "value": "On January 27, 2021, President Biden directed the Council on Environmental Quality (CEQ) to create a climate and economic justice screening tool. The purpose of the tool is to provide socioeconomic, environmental, and climate information and data to help inform decisions that may affect disadvantaged communities. The tool is designed to assist Federal agencies in identifying disadvantaged communities for the purposes of the Justice40 Initiative."
     }
   ],
   "index.aboutContent.p2": [
     {
       "type": 0,
-      "value": "Federal agencies will prioritize benefits using a new climate and economic justice screening tool. This screening tool will be a map that visualizes data to compare the cumulative impacts of environmental, climate, and economic factors. It is being developed by the Council on Environmental Quality (CEQ) with guidance from environmental justice leaders and communities affected by environmental injustices. The first version of the screening tool will be released in July 2021. However, the screening tool and data being used will be continuously updated to better reflect the lived experiences of community members."
+      "value": "The goal of the Justice40 Initiative is for 40 percent of benefits of Federal programs in seven key areas to flow to disadvantaged communities. These seven key areas are: climate change, clean energy and energy efficiency, clean transit, affordable and sustainable housing, training and workforce development, remediation of legacy pollution, and clean water infrastructure."
     }
   ],
   "index.aboutContent.p3": [
@@ -235,6 +275,18 @@
     {
       "type": 1,
       "value": "presidentLink"
+    }
+  ],
+  "index.heading.justice40": [
+    {
+      "type": 0,
+      "value": "About the Justice40 Initiative"
+    }
+  ],
+  "index.heading.screentool": [
+    {
+      "type": 0,
+      "value": "About the screening tool"
     }
   ],
   "index.presidentalLinkLabel": [
@@ -249,48 +301,10 @@
       "value": "https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/27/executive-order-on-tackling-the-climate-crisis-at-home-and-abroad/"
     }
   ],
-  "index.section2.header": [
-    {
-      "type": 0,
-      "value": "Areas of Focus"
-    }
-  ],
-  "index.section3.header": [
-    {
-      "type": 0,
-      "value": "A Transparent, Community-First Approach"
-    }
-  ],
-  "index.section3.inclusive": [
-    {
-      "type": 1,
-      "value": "inlineHeader"
-    },
-    {
-      "type": 0,
-      "value": " Many areas which lack investments also lack environmental data and would be overlooked using available environmental data. CEQ is actively reaching out to groups that have historically been excluded from decision-making, such as groups in rural and tribal areas, to understand their needs and ask for their input."
-    }
-  ],
   "index.section3.inclusiveLabel": [
     {
       "type": 0,
       "value": "Inclusive:"
-    }
-  ],
-  "index.section3.intro": [
-    {
-      "type": 0,
-      "value": "Successful initiatives are guided by direct input from the communities they are serving. CEQ commits to transparency, inclusivity, and iteration in building this screening tool."
-    }
-  ],
-  "index.section3.iterative": [
-    {
-      "type": 1,
-      "value": "inlineHeader"
-    },
-    {
-      "type": 0,
-      "value": " The initial community prioritization list provided by the screening tool is the beginning of a collaborative process in score refinement, rather than a final answer. CEQ has received recommendations on data sets from community interviews, the White House Environmental Justice Advisory Council, and through public comment, but establishing a score that is truly representative will be a long-term, ongoing process. As communities submit feedback and recommendations, CEQ will continue to improve the tools being built and the processes for stakeholder and public engagement."
     }
   ],
   "index.section3.iterativeLabel": [
@@ -299,20 +313,28 @@
       "value": "Iterative:"
     }
   ],
-  "index.section3.transparent": [
-    {
-      "type": 1,
-      "value": "inlineHeader"
-    },
-    {
-      "type": 0,
-      "value": " The code and data behind the screening tool are open source, meaning it is available for the public to review and contribute to. This tool is being developed publicly so that communities, academic experts, and anyone who’s interested can be involved in the tool-building process."
-    }
-  ],
   "index.section3.transparentLabel": [
     {
       "type": 0,
       "value": "Transparent:"
+    }
+  ],
+  "legend.colorkey.label": [
+    {
+      "type": 0,
+      "value": "COLOR KEY"
+    }
+  ],
+  "legend.info.priority.label": [
+    {
+      "type": 0,
+      "value": "Prioritized community"
+    }
+  ],
+  "legend.info.threshold.label": [
+    {
+      "type": 0,
+      "value": "Threshold community"
     }
   ],
   "map.territoryFocus.alaska.long": [
@@ -371,6 +393,78 @@
     {
       "type": 0,
       "value": "PR"
+    }
+  ],
+  "mapIntro.censusBlockGroupDefinition": [
+    {
+      "type": 0,
+      "value": "A census block group is generally between 600 and 3,000 people. It is the smallest geographical unit for which the U.S. Census Bureau publishes sample data."
+    }
+  ],
+  "mapIntro.didYouKnow": [
+    {
+      "type": 0,
+      "value": "Did you know?"
+    }
+  ],
+  "mapIntro.mapIntroHeader": [
+    {
+      "type": 0,
+      "value": "Zoom and select a census block group to view data"
+    }
+  ],
+  "mapwrapper.download.contents": [
+    {
+      "type": 0,
+      "value": "ZIP file will contain one .xlsx, one .csv and one .pdf (30 MB)."
+    }
+  ],
+  "mapwrapper.download.link": [
+    {
+      "type": 0,
+      "value": "Download the draft list of prioritized communities (pre-decisional) and datasets used"
+    }
+  ],
+  "youCanHelpDataMethLinkText.link.text": [
+    {
+      "type": 0,
+      "value": "Data & methodology"
+    }
+  ],
+  "youCanHelpDataMethPrefixText.link.prefix.text": [
+    {
+      "type": 0,
+      "value": "View our"
+    }
+  ],
+  "youCanHelpDataMethSuffixText.link.suffix.text": [
+    {
+      "type": 0,
+      "value": "and send us feedback"
+    }
+  ],
+  "youCanHelpInfoLink.link.text": [
+    {
+      "type": 0,
+      "value": "get an email from you"
+    }
+  ],
+  "youCanHelpInfoText.list.element.prefix": [
+    {
+      "type": 0,
+      "value": "If you have helpful information, we’d love to"
+    }
+  ],
+  "youCanHelpSharingLinkText.link.text": [
+    {
+      "type": 0,
+      "value": "share your feedback"
+    }
+  ],
+  "youCanHelpSharingPrefixText.link.prefix.text": [
+    {
+      "type": 0,
+      "value": "Find your community and"
     }
   ]
 }

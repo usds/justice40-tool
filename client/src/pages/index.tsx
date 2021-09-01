@@ -61,6 +61,16 @@ const IndexPage = ({location}: IndexPageProps) => {
       defaultMessage: 'Iterative:',
       description: 'Italic label for 3rd paragraph of section 3 on index page',
     },
+    aboutScreenToolHeading: {
+      id: 'index.heading.screentool',
+      defaultMessage: 'About the screening tool',
+      description: 'heading for about screening tool',
+    },
+    aboutJustice40Heading: {
+      id: 'index.heading.justice40',
+      defaultMessage: 'About the Justice40 Initiative',
+      description: 'heading for about justice 40',
+    },
   });
 
   return (
@@ -75,7 +85,7 @@ const IndexPage = ({location}: IndexPageProps) => {
           <AboutCard
             size={'large'}
             imgSrc={aboutUSMapImg}
-            header={'About the screening tool'}>
+            header={intl.formatMessage(messages.aboutScreenToolHeading)}>
 
             <FormattedMessage
               id={'index.aboutContent.p1'}
@@ -98,7 +108,7 @@ const IndexPage = ({location}: IndexPageProps) => {
           <AboutCard
             size={'large'}
             imgSrc={aboutJ40Img}
-            header={'About the Justice40 Initiative'}>
+            header={intl.formatMessage(messages.aboutJustice40Heading)}>
 
             <FormattedMessage
               id="index.aboutContent.p2"
