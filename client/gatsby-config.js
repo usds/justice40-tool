@@ -1,7 +1,3 @@
-require('dotenv').config({
-  path: `.env.${process.env.DATA_SOURCE}`,
-});
-
 module.exports = {
   siteMetadata: {
     title: 'Justice40',
