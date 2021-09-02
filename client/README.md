@@ -27,6 +27,11 @@ _Note that while this app uses npm as the package manager, yarn is required to b
 - type `docker-compose up`
 - Running this on MacBook Pro with a 2.6GHz 6-core i7 with 16 GB of memory can take upto 20 minutes to complete.
 
+#### Changing the source of tile / map layer
+If you don't want to use the local data-pipeline location for getting the tile / map layers, you can change the 
+DATA_SOURCE env variable in the docker-compose.yml file to development and it will point to the CDN for the tile / 
+map layer.
+
 #### Troubleshooting docker
 
 - If an error is thrown about [running out of space](https://medium.com/@wlarch/no-space-left-on-device-when-using-docker-compose-why-c4a2c783c6f6) on device see this for ways to reclaim space.
