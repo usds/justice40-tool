@@ -15,8 +15,8 @@ on:
     branches: [main]
       # - '*' # Run on all updates to PR branches
       # - '!main' # Do not run on pushes to main
-    paths:
-      - 'client/**/*'      
+    # paths:
+    #   - 'client/**/*'      
 jobs:
   build:
     runs-on: ubuntu-latest
