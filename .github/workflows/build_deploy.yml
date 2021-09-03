@@ -9,7 +9,7 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    # types: [ closed, opened ]
+    types: [ closed, opened, synchronize ]
     branches: [ main ]
     # paths:
     #   - 'client/**/*'
