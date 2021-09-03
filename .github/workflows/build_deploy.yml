@@ -12,9 +12,9 @@ on:
     paths:
       - 'client/**/*'
   push:
-    branches:
-      - '**' # Run on all updates to PR branches
-      - '!main' # Do not run on pushes to main
+    branches: [main]
+      # - '*' # Run on all updates to PR branches
+      # - '!main' # Do not run on pushes to main
     paths:
       - 'client/**/*'      
 jobs:
