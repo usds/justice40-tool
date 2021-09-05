@@ -257,18 +257,7 @@ class ScoreETL(ExtractTransformLoad):
             low_memory=False,
         )
 
-    def transform(self) -> None:
-        ## IMPORTANT: THIS METHOD IS CLOSE TO THE LIMIT OF STATEMENTS
-
-        logger.info("Transforming Score Data")
-
-        # Join all the data sources that use census block groups
-        census_block_group_dfs = [
-            self.ejscreen_df,
-            self.census_df,
-            self.housing_and_transportation_df,
-        ]
-
+    def _join_cbg_dfs(self, census_block_group_dfs: list) -> pd.DataFrame:
         census_block_group_df = functools.reduce(
             lambda left, right: pd.merge(
                 left=left, right=right, on=self.GEOID_FIELD_NAME, how="outer"
@@ -284,12 +273,9 @@ class ScoreETL(ExtractTransformLoad):
             raise ValueError(
                 f"One of the input CSVs uses {self.GEOID_FIELD_NAME} with a different length."
             )
-
-        # Join all the data sources that use census tracts
-        census_tract_dfs = [
-            self.hud_housing_df,
-            self.cdc_places_df,
-        ]
+        return census_block_group_df
+    
+    def _join_tract_dfs(self, census_tract_dfs: list) -> pd.DataFrame:
         census_tract_df = functools.reduce(
             lambda left, right: pd.merge(
                 left=left,
@@ -308,6 +294,36 @@ class ScoreETL(ExtractTransformLoad):
             raise ValueError(
                 f"One of the input CSVs uses {self.GEOID_TRACT_FIELD_NAME} with a different length."
             )
+        return census_tract_df
+
+    def _add_score_a(self, df: pd.DataFrame) -> pd.DataFrame:
+        df["Score A"] = df[
+            [
+                "Poverty (Less than 200% of federal poverty line) (percentile)",
+                "Percent individuals age 25 or over with less than high school degree (percentile)",
+            ]
+        ].mean(axis=1)
+        return df
+
+    def transform(self) -> None:
+        ## IMPORTANT: THIS METHOD IS CLOSE TO THE LIMIT OF STATEMENTS
+
+        logger.info("Transforming Score Data")
+
+        # Join all the data sources that use census block groups
+        census_block_group_dfs = [
+            self.ejscreen_df, 
+            self.census_df, 
+            self.housing_and_transportation_df,
+        ]
+        census_block_group_df = self._join_cbg_dfs(census_block_group_dfs)
+
+        # Join all the data sources that use census tracts
+        census_tract_dfs = [
+            self.hud_housing_df,
+            self.cdc_places_df,
+        ]
+        census_tract_df = self._join_tract_dfs(census_tract_dfs)
 
         # Calculate the tract for the CBG data.
         census_block_group_df[
@@ -382,12 +398,7 @@ class ScoreETL(ExtractTransformLoad):
             ) / (max_value - min_value)
 
         # Calculate score "A" and score "B"
-        self.df["Score A"] = self.df[
-            [
-                "Poverty (Less than 200% of federal poverty line) (percentile)",
-                "Percent individuals age 25 or over with less than high school degree (percentile)",
-            ]
-        ].mean(axis=1)
+        self.df = self._add_score_a(self.df)
         self.df["Score B"] = (
             self.df[
                 "Poverty (Less than 200% of federal poverty line) (percentile)"
