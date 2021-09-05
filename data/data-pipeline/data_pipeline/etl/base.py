@@ -1,8 +1,19 @@
 from pathlib import Path
 from typing import Optional
 
+import pandas as pd
+
 from data_pipeline.config import settings
-from data_pipeline.utils import unzip_file_from_url, remove_all_from_dir
+from data_pipeline.utils import (
+    unzip_file_from_url,
+    remove_all_from_dir,
+    get_module_logger,
+)
+
+logger = get_module_logger(__name__)
+
+BLOCK_COL = "GEOID10"
+TRACT_COL = "GEOID10_TRACT"
 
 
 class ExtractTransformLoad:
@@ -17,10 +28,24 @@ class ExtractTransformLoad:
         GEOID_TRACT_FIELD_NAME (str): The common column name for a Census Tract identifier
     """
 
-    DATA_PATH: Path = settings.APP_ROOT / "data"
+    APP_ROOT: Path = settings.APP_ROOT
+    DATA_PATH: Path = APP_ROOT / "data"
     TMP_PATH: Path = DATA_PATH / "tmp"
-    GEOID_FIELD_NAME: str = "GEOID10"
-    GEOID_TRACT_FIELD_NAME: str = "GEOID10_TRACT"
+    CENSUS_CSV: Path = DATA_PATH / "census" / "csv" / "us.csv"
+    GEOID_FIELD_NAME: str = BLOCK_COL
+    GEOID_TRACT_FIELD_NAME: str = TRACT_COL
+
+    def __init__(self, config_path: Path, is_dataset: bool = False) -> None:
+        """Inits the class with instance specific variables"""
+
+        # set by _get_yaml_config()
+        self.NAME: str = None
+        self.SOURCE_URL: str = None
+        self.OUTPUT_PATH: Path = None
+        self.SCORE_COLS: list = None
+
+        if is_dataset:
+            self.FIPS_CODES: pd.Dataframe = self._get_census_fips_codes()
 
     def get_yaml_config(self) -> None:
         """Reads the YAML configuration file for the dataset and stores
@@ -40,9 +65,9 @@ class ExtractTransformLoad:
         extract_path: Path = None,
         verify: Optional[bool] = True,
     ) -> None:
-        """Extract the data from
-        a remote source. By default it provides code to get the file from a source url,
-        unzips it and stores it on an extract_path."""
+        """Extract the data from a remote source. By default it provides code
+        to get the file from a source url, unzips it and stores it on an
+        extract_path."""
 
         # this can be accessed via super().extract()
         if source_url and extract_path:
@@ -66,3 +91,62 @@ class ExtractTransformLoad:
         """Clears out any files stored in the TMP folder"""
 
         remove_all_from_dir(self.TMP_PATH)
+
+    def _get_cenus_fips_codes(self) -> pd.DataFrame:
+        """Loads FIPS codes for each Census block group and tract"""
+
+        # check that the census data exists
+        if not self.CENSUS_CSV.exists():
+            logger.info("Census data not found, please run download_csv first")
+        # load the census data
+        df = pd.read_csv(self.CENSUS_CSV, dtype={BLOCK_COL: "string"})
+        # extract Census tract FIPS code from Census block group
+        df[TRACT_COL] = df[BLOCK_COL].str[0:11]
+        return df_acs[[BLOCK_COL, TRACT_COL]]
+
+    def validate_init(self) -> None:
+        """Checks that the child class was initialized correctly and that all
+        of the required attributes were preserved or set
+
+        Expected conditions:
+        - GEOID_FIELD_NAME and GEOID_TRACT_FIELD_NAME haven't changed
+        - All of the instance attributes were set by _get_yaml_config()
+        """
+
+        # checks that GEOID field names haven't changed
+        assert self.GEOID_FIELD_NAME == "GEOID10"
+        assert self.GEOID_TRACT_FIELD_NAME == "GEOID10_TRACT"
+        # checks that attributes were configured from yaml file correctly
+        yaml_attrs = ["NAME", "SOURCE_URL", "OUTPUT_DIR", "SCORE_COLS"]
+        for attr in yaml_attrs:
+            assert getattr(self, attr) is not None, f"{attr} wasn't set"
+
+    def validate_output(self) -> None:
+        """Checks that the output of the ETL process adheres to the contract
+        expected by the score module
+
+        Contract conditions:
+        - Output is saved as usa.csv at the path specified by self.OUTPUT_PATH
+        - The output csv has a column named GEOID10 which stores each of the
+          Census block group FIPS codes in data/census/csv/usa.csv
+        - The output csv has a column named GEOID10_TRACT which stores each of
+          Census tract FIPS codes associated with each Census block group
+        - The output csv has each of the columns expected by the score and the
+          name and dtype of those columns match the format expected by score
+        """
+
+        # read in output file
+        # and check that GEOID cols are present
+        assert self.OUTPUT_PATH.exists(), "No file found at OUTPUT_PATH"
+        df_output = pd.read_csv(
+            self.OUTPUT_PATH,
+            dtype={BLOCK_COL: "string", TRACT_COL: "string"},
+        )
+
+        # check that the GEOID cols in the output match census data
+        geoid_cols = [BLOCK_COL_NAME, TRACT_COL_NAME]
+        assert self.FIPS_CODES.equals(df_output[[BLOCK_COL_NAME]])
+
+        # check that the score columns are in the output
+        for cols in self.SCORE_COLS:
+            assert col in df_output.columns
