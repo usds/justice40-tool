@@ -258,6 +258,7 @@ class ScoreETL(ExtractTransformLoad):
         )
 
     def _join_cbg_dfs(self, census_block_group_dfs: list) -> pd.DataFrame:
+        logger.info("Joining Census Block Group dataframes")
         census_block_group_df = functools.reduce(
             lambda left, right: pd.merge(
                 left=left, right=right, on=self.GEOID_FIELD_NAME, how="outer"
@@ -276,6 +277,7 @@ class ScoreETL(ExtractTransformLoad):
         return census_block_group_df
     
     def _join_tract_dfs(self, census_tract_dfs: list) -> pd.DataFrame:
+        logger.info("Joining Census Tract dataframes")
         census_tract_df = functools.reduce(
             lambda left, right: pd.merge(
                 left=left,
@@ -297,12 +299,180 @@ class ScoreETL(ExtractTransformLoad):
         return census_tract_df
 
     def _add_score_a(self, df: pd.DataFrame) -> pd.DataFrame:
+        logger.info("Adding Score A")
         df["Score A"] = df[
             [
                 "Poverty (Less than 200% of federal poverty line) (percentile)",
                 "Percent individuals age 25 or over with less than high school degree (percentile)",
             ]
         ].mean(axis=1)
+        return df
+
+    def _add_score_b(self, df: pd.DataFrame) -> pd.DataFrame:
+        logger.info("Adding Score B")
+        df["Score B"] = (
+            self.df[
+                "Poverty (Less than 200% of federal poverty line) (percentile)"
+            ]
+            * self.df[
+                "Percent individuals age 25 or over with less than high school degree (percentile)"
+            ]
+        )
+        return df
+
+    def _add_score_c(self, df: pd.DataFrame, data_sets: list) -> pd.DataFrame:
+        logger.info("Adding Score C")
+        # Average all the percentile values in each bucket into a single score for each of the four buckets.
+        for bucket in self.BUCKETS:
+            fields_in_bucket = [
+                f"{data_set.renamed_field}{self.PERCENTILE_FIELD_SUFFIX}"
+                for data_set in data_sets
+                if data_set.bucket == bucket
+            ]
+            df[f"{bucket}"] = df[fields_in_bucket].mean(axis=1)
+
+        # Combine the score from the two Exposures and Environmental Effects buckets
+        # into a single score called "Pollution Burden".
+        # The math for this score is:
+        # (1.0 * Exposures Score + 0.5 * Environment Effects score) / 1.5.
+        df[self.AGGREGATION_POLLUTION] = (
+            1.0 * df[f"{self.BUCKET_EXPOSURES}"]
+            + 0.5 * df[f"{self.BUCKET_ENVIRONMENTAL}"]
+        ) / 1.5
+
+        # Average the score from the two Sensitive populations and
+        # Socioeconomic factors buckets into a single score called
+        # "Population Characteristics".
+        df[self.AGGREGATION_POPULATION] = df[
+            [f"{self.BUCKET_SENSITIVE}", f"{self.BUCKET_SOCIOECONOMIC}"]
+        ].mean(axis=1)
+
+        # Multiply the "Pollution Burden" score and the "Population Characteristics"
+        # together to produce the cumulative impact score.
+        df["Score C"] = (
+            df[self.AGGREGATION_POLLUTION]
+            * df[self.AGGREGATION_POPULATION]
+        )
+        return df
+    
+    def _add_scores_d_and_e(self, df: pd.DataFrame) -> pd.DataFrame:
+        logger.info("Adding Scores D and E")
+        fields_to_use_in_score = [
+            self.UNEMPLOYED_FIELD_NAME,
+            self.LINGUISTIC_ISOLATION_FIELD_NAME,
+            self.HOUSING_BURDEN_FIELD_NAME,
+            self.POVERTY_FIELD_NAME,
+            self.HIGH_SCHOOL_FIELD_NAME,
+        ]
+
+        fields_min_max = [
+            f"{field}{self.MIN_MAX_FIELD_SUFFIX}"
+            for field in fields_to_use_in_score
+        ]
+        fields_percentile = [
+            f"{field}{self.PERCENTILE_FIELD_SUFFIX}"
+            for field in fields_to_use_in_score
+        ]
+
+        # Calculate "Score D", which uses min-max normalization
+        # and calculate "Score E", which uses percentile normalization for the same fields
+        df["Score D"] = self.df[fields_min_max].mean(axis=1)
+        df["Score E"] = self.df[fields_percentile].mean(axis=1)
+        return df
+
+    def _add_score_percentiles(self, df: pd.DataFrame) -> pd.DataFrame:
+        logger.info("Adding Score Percentiles")
+        for score_field in [
+            "Score A",
+            "Score B",
+            "Score C",
+            "Score D",
+            "Score E",
+            "Poverty (Less than 200% of federal poverty line)",
+        ]:
+            df[f"{score_field}{self.PERCENTILE_FIELD_SUFFIX}"] = df[
+                score_field
+            ].rank(pct=True)
+
+            for threshold in [0.25, 0.3, 0.35, 0.4]:
+                fraction_converted_to_percent = int(100 * threshold)
+                df[
+                    f"{score_field} (top {fraction_converted_to_percent}th percentile)"
+                ] = (
+                    df[f"{score_field}{self.PERCENTILE_FIELD_SUFFIX}"]
+                    >= 1 - threshold
+                )
+        return df
+
+    def _add_score_f(self, df: pd.DataFrame) -> pd.DataFrame:
+        logger.info("Adding Score F")
+        ami_and_high_school_field_name = "Low AMI, Low HS graduation"
+        meets_socio_field_name = "Meets socioeconomic criteria"
+        meets_burden_field_name = "Meets burden criteria"
+
+        df[ami_and_high_school_field_name] = (
+            df[self.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD_NAME] < 0.80
+        ) & (df[self.HIGH_SCHOOL_FIELD_NAME] > 0.2)
+
+        df[meets_socio_field_name] = (
+            df[ami_and_high_school_field_name]
+            | (df[self.POVERTY_FIELD_NAME] > 0.40)
+            | (df[self.LINGUISTIC_ISOLATION_FIELD_NAME] > 0.10)
+            | (df[self.HIGH_SCHOOL_FIELD_NAME] > 0.4)
+        )
+
+        df[meets_burden_field_name] = (
+            (df["Particulate matter (PM2.5) (percentile)"] > 0.9)
+            | (df["Respiratory hazard index (percentile)"] > 0.9)
+            | (df["Traffic proximity and volume (percentile)"] > 0.9)
+            | (
+                df[
+                    "Percent pre-1960s housing (lead paint indicator) (percentile)"
+                ]
+                > 0.9
+            )
+            | (df["Proximity to RMP sites (percentile)"] > 0.9)
+            | (
+                df[
+                    "Current asthma among adults aged >=18 years (percentile)"
+                ]
+                > 0.9
+            )
+            | (
+                df[
+                    "Coronary heart disease among adults aged >=18 years (percentile)"
+                ]
+                > 0.9
+            )
+            | (
+                df[
+                    "Cancer (excluding skin cancer) among adults aged >=18 years (percentile)"
+                ]
+                > 0.9
+            )
+            # | (
+            #     self.df[
+            #         "Current lack of health insurance among adults aged 18-64 years (percentile)"
+            #     ]
+            #     > 0.9
+            # )
+            | (
+                df[
+                    "Diagnosed diabetes among adults aged >=18 years (percentile)"
+                ]
+                > 0.9
+            )
+            # | (
+            #     self.df[
+            #         "Physical health not good for >=14 days among adults aged >=18 years (percentile)"
+            #     ]
+            #     > 0.9
+            # )
+        )
+
+        df["Score F (communities)"] = (
+            df[meets_socio_field_name] & df[meets_burden_field_name]
+        )
         return df
 
     def transform(self) -> None:
@@ -397,167 +567,28 @@ class ScoreETL(ExtractTransformLoad):
                 self.df[data_set.renamed_field] - min_value
             ) / (max_value - min_value)
 
-        # Calculate score "A" and score "B"
+        # Calculate score "A"
         self.df = self._add_score_a(self.df)
-        self.df["Score B"] = (
-            self.df[
-                "Poverty (Less than 200% of federal poverty line) (percentile)"
-            ]
-            * self.df[
-                "Percent individuals age 25 or over with less than high school degree (percentile)"
-            ]
-        )
 
-        # Calculate "CalEnviroScreen for the US" score
-        # Average all the percentile values in each bucket into a single score for each of the four buckets.
-        for bucket in self.BUCKETS:
-            fields_in_bucket = [
-                f"{data_set.renamed_field}{self.PERCENTILE_FIELD_SUFFIX}"
-                for data_set in data_sets
-                if data_set.bucket == bucket
-            ]
-            self.df[f"{bucket}"] = self.df[fields_in_bucket].mean(axis=1)
+        # Calculate score "B"
+        self.df = self._add_score_b(self.df)
 
-        # Combine the score from the two Exposures and Environmental Effects buckets
-        # into a single score called "Pollution Burden".
-        # The math for this score is:
-        # (1.0 * Exposures Score + 0.5 * Environment Effects score) / 1.5.
-        self.df[self.AGGREGATION_POLLUTION] = (
-            1.0 * self.df[f"{self.BUCKET_EXPOSURES}"]
-            + 0.5 * self.df[f"{self.BUCKET_ENVIRONMENTAL}"]
-        ) / 1.5
-
-        # Average the score from the two Sensitive populations and
-        # Socioeconomic factors buckets into a single score called
-        # "Population Characteristics".
-        self.df[self.AGGREGATION_POPULATION] = self.df[
-            [f"{self.BUCKET_SENSITIVE}", f"{self.BUCKET_SOCIOECONOMIC}"]
-        ].mean(axis=1)
-
-        # Multiply the "Pollution Burden" score and the "Population Characteristics"
-        # together to produce the cumulative impact score.
-        self.df["Score C"] = (
-            self.df[self.AGGREGATION_POLLUTION]
-            * self.df[self.AGGREGATION_POPULATION]
-        )
+        # Calculate score "C" - "CalEnviroScreen for the US" score
+        self.df = self._add_score_c(self.df, data_sets)
 
         if len(census_block_group_df) > 220333:
             raise ValueError("Too many rows in the join.")
 
-        fields_to_use_in_score = [
-            self.UNEMPLOYED_FIELD_NAME,
-            self.LINGUISTIC_ISOLATION_FIELD_NAME,
-            self.HOUSING_BURDEN_FIELD_NAME,
-            self.POVERTY_FIELD_NAME,
-            self.HIGH_SCHOOL_FIELD_NAME,
-        ]
-
-        fields_min_max = [
-            f"{field}{self.MIN_MAX_FIELD_SUFFIX}"
-            for field in fields_to_use_in_score
-        ]
-        fields_percentile = [
-            f"{field}{self.PERCENTILE_FIELD_SUFFIX}"
-            for field in fields_to_use_in_score
-        ]
-
-        # Calculate "Score D", which uses min-max normalization
-        # and calculate "Score E", which uses percentile normalization for the same fields
-        self.df["Score D"] = self.df[fields_min_max].mean(axis=1)
-        self.df["Score E"] = self.df[fields_percentile].mean(axis=1)
+        # Calculate scores "D" and "E"
+        self.df = self._add_scores_d_and_e(self.df)
 
         # Create percentiles for the scores
-        for score_field in [
-            "Score A",
-            "Score B",
-            "Score C",
-            "Score D",
-            "Score E",
-            "Poverty (Less than 200% of federal poverty line)",
-        ]:
-            self.df[f"{score_field}{self.PERCENTILE_FIELD_SUFFIX}"] = self.df[
-                score_field
-            ].rank(pct=True)
-
-            for threshold in [0.25, 0.3, 0.35, 0.4]:
-                fraction_converted_to_percent = int(100 * threshold)
-                self.df[
-                    f"{score_field} (top {fraction_converted_to_percent}th percentile)"
-                ] = (
-                    self.df[f"{score_field}{self.PERCENTILE_FIELD_SUFFIX}"]
-                    >= 1 - threshold
-                )
+        self.df = self._add_score_percentiles(self.df)
 
         # Now for binary (non index) scores.
 
         # Calculate "Score F", which uses "either/or" thresholds.
-        ami_and_high_school_field_name = "Low AMI, Low HS graduation"
-        meets_socio_field_name = "Meets socioeconomic criteria"
-        meets_burden_field_name = "Meets burden criteria"
-
-        self.df[ami_and_high_school_field_name] = (
-            self.df[self.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD_NAME] < 0.80
-        ) & (self.df[self.HIGH_SCHOOL_FIELD_NAME] > 0.2)
-
-        self.df[meets_socio_field_name] = (
-            self.df[ami_and_high_school_field_name]
-            | (self.df[self.POVERTY_FIELD_NAME] > 0.40)
-            | (self.df[self.LINGUISTIC_ISOLATION_FIELD_NAME] > 0.10)
-            | (self.df[self.HIGH_SCHOOL_FIELD_NAME] > 0.4)
-        )
-
-        self.df[meets_burden_field_name] = (
-            (self.df["Particulate matter (PM2.5) (percentile)"] > 0.9)
-            | (self.df["Respiratory hazard index (percentile)"] > 0.9)
-            | (self.df["Traffic proximity and volume (percentile)"] > 0.9)
-            | (
-                self.df[
-                    "Percent pre-1960s housing (lead paint indicator) (percentile)"
-                ]
-                > 0.9
-            )
-            | (self.df["Proximity to RMP sites (percentile)"] > 0.9)
-            | (
-                self.df[
-                    "Current asthma among adults aged >=18 years (percentile)"
-                ]
-                > 0.9
-            )
-            | (
-                self.df[
-                    "Coronary heart disease among adults aged >=18 years (percentile)"
-                ]
-                > 0.9
-            )
-            | (
-                self.df[
-                    "Cancer (excluding skin cancer) among adults aged >=18 years (percentile)"
-                ]
-                > 0.9
-            )
-            # | (
-            #     self.df[
-            #         "Current lack of health insurance among adults aged 18-64 years (percentile)"
-            #     ]
-            #     > 0.9
-            # )
-            | (
-                self.df[
-                    "Diagnosed diabetes among adults aged >=18 years (percentile)"
-                ]
-                > 0.9
-            )
-            # | (
-            #     self.df[
-            #         "Physical health not good for >=14 days among adults aged >=18 years (percentile)"
-            #     ]
-            #     > 0.9
-            # )
-        )
-
-        self.df["Score F (communities)"] = (
-            self.df[meets_socio_field_name] & self.df[meets_burden_field_name]
-        )
+        self.df = self._add_score_f(self.df)
 
     def load(self) -> None:
         logger.info("Saving Score CSV")
