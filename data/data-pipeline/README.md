@@ -96,7 +96,7 @@ TODO add mermaid diagram
 3. Each ETL script will extract the data from its original source, then format the data into `.csv` files that get stored in the relevant folder in `data_pipeline/data/dataset/`. For example, HUD Housing data is stored in `data_pipeline/data/dataset/hud_housing/usa.csv`
 
 _**NOTE:** You have the option to pass the name of a specific data source to the `etl-run` command using the `-d` flag, which will limit the execution of the ETL process to that specific data source._
-_For example: `poetry run etl -- -d ejscreen` would only run the ETL process for EJSCREEN data._
+_For example: `poetry run etl -d ejscreen` would only run the ETL process for EJSCREEN data._
 
 #### Step 3: Calculate the Justice40 score experiments
 
