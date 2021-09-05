@@ -475,10 +475,8 @@ class ScoreETL(ExtractTransformLoad):
         )
         return df
 
-    def transform(self) -> None:
-        ## IMPORTANT: THIS METHOD IS CLOSE TO THE LIMIT OF STATEMENTS
-
-        logger.info("Transforming Score Data")
+    def _prepare_initial_df(self, data_sets: list) -> pd.DataFrame:
+        logger.info("Preparing initial dataframe")
 
         # Join all the data sources that use census block groups
         census_block_group_dfs = [
@@ -500,47 +498,44 @@ class ScoreETL(ExtractTransformLoad):
             self.GEOID_TRACT_FIELD_NAME
         ] = census_block_group_df[self.GEOID_FIELD_NAME].str[0:11]
 
-        self.df = census_block_group_df.merge(
+        df = census_block_group_df.merge(
             census_tract_df, on=self.GEOID_TRACT_FIELD_NAME
         )
 
         if len(census_block_group_df) > 220333:
             raise ValueError("Too many rows in the join.")
-
-        # get data sets list
-        data_sets = self.data_sets()
-
+        
         # Rename columns:
         renaming_dict = {
             data_set.input_field: data_set.renamed_field
             for data_set in data_sets
         }
 
-        self.df.rename(
+        df.rename(
             columns=renaming_dict,
             inplace=True,
             errors="raise",
         )
 
         columns_to_keep = [data_set.renamed_field for data_set in data_sets]
-        self.df = self.df[columns_to_keep]
+        df = df[columns_to_keep]
 
         # Convert all columns to numeric.
         for data_set in data_sets:
             # Skip GEOID_FIELD_NAME, because it's a string.
             if data_set.renamed_field == self.GEOID_FIELD_NAME:
                 continue
-            self.df[f"{data_set.renamed_field}"] = pd.to_numeric(
-                self.df[data_set.renamed_field]
+            df[f"{data_set.renamed_field}"] = pd.to_numeric(
+                df[data_set.renamed_field]
             )
 
         # calculate percentiles
         for data_set in data_sets:
-            self.df[
+            df[
                 f"{data_set.renamed_field}{self.PERCENTILE_FIELD_SUFFIX}"
-            ] = self.df[data_set.renamed_field].rank(pct=True)
+            ] = df[data_set.renamed_field].rank(pct=True)
 
-        # Math:
+        # Do some math:
         # (
         #     Observed value
         #     - minimum of all values
@@ -555,17 +550,30 @@ class ScoreETL(ExtractTransformLoad):
             if data_set.renamed_field == self.GEOID_FIELD_NAME:
                 continue
 
-            min_value = self.df[data_set.renamed_field].min(skipna=True)
+            min_value = df[data_set.renamed_field].min(skipna=True)
 
-            max_value = self.df[data_set.renamed_field].max(skipna=True)
+            max_value = df[data_set.renamed_field].max(skipna=True)
 
             logger.info(
                 f"For data set {data_set.renamed_field}, the min value is {min_value} and the max value is {max_value}."
             )
 
-            self.df[f"{data_set.renamed_field}{self.MIN_MAX_FIELD_SUFFIX}"] = (
-                self.df[data_set.renamed_field] - min_value
+            df[f"{data_set.renamed_field}{self.MIN_MAX_FIELD_SUFFIX}"] = (
+                df[data_set.renamed_field] - min_value
             ) / (max_value - min_value)
+        
+        return df
+
+    def transform(self) -> None:
+        ## IMPORTANT: THIS METHOD IS CLOSE TO THE LIMIT OF STATEMENTS
+
+        logger.info("Transforming Score Data")
+        
+        # get data sets list
+        data_sets = self.data_sets()
+
+        # prepare the df with the right CBG/tract IDs, column names/types, and percentiles
+        self.df = self._prepare_initial_df(data_sets)
 
         # Calculate score "A"
         self.df = self._add_score_a(self.df)
@@ -576,9 +584,6 @@ class ScoreETL(ExtractTransformLoad):
         # Calculate score "C" - "CalEnviroScreen for the US" score
         self.df = self._add_score_c(self.df, data_sets)
 
-        if len(census_block_group_df) > 220333:
-            raise ValueError("Too many rows in the join.")
-
         # Calculate scores "D" and "E"
         self.df = self._add_scores_d_and_e(self.df)
 
@@ -586,7 +591,6 @@ class ScoreETL(ExtractTransformLoad):
         self.df = self._add_score_percentiles(self.df)
 
         # Now for binary (non index) scores.
-
         # Calculate "Score F", which uses "either/or" thresholds.
         self.df = self._add_score_f(self.df)
 
