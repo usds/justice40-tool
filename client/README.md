@@ -1,18 +1,28 @@
 # Justice40 Client
 
+This README contains the following content:
+
+- [Installing and running the client site](#installing-and-running-the-client-site)
+- [Linting and Formatting](#linting-and-formatting)
+- [Testing](#testing)
+- [Localization](#localization)
+- [Feature toggling](#feature-toggling)
+- [Debugging](#debugging)
+
 ## Installing and running the client site
 
 1. Confirm you have the base required software installed. See [INSTALLATION](INSTALLATION.md) for more details.
 1. Install yarn if you do not have it yet. Open your terminal and run `sudo npm install -global yarn`. This works on MacOS and Win10. To confirm it is installed, run `yarn -v`. A version number should be returned.
-1. Navigate to the base directory of this repository, and go to the `client` directory (`cd client`). 
-1. Run the command `npm install` to install the dependencies. 
-1. Run `npm start` to start up the client app. 
+1. Navigate to the base directory of this repository, and go to the `client` directory (`cd client`).
+1. Run the command `npm install` to install the dependencies.
+1. Run `npm start` to start up the client app.
 1. Open your browser and navigate to http://localhost:8000
 
-*Note that while this app uses npm as the package manager, yarn is required to build the [uswds](https://github.com/uswds/uswds) library.*
+_Note that while this app uses npm as the package manager, yarn is required to build the [uswds](https://github.com/uswds/uswds) library._
 
 ### Viewing data on the map
-TODO
+
+See [VIEW_MAP_DATA](./VIEW_MAP_DATA) for more details on this.
 
 ## Linting and Formatting
 
@@ -41,7 +51,11 @@ This project uses [jest](https://jestjs.io/) for unit testing, using `react-test
 To run tests: `npm test`
 To rebuild snapshots when you know a component has changed: `npm run test:update`
 
--
+The app has end-to-end tests using cypress which can be started by:
+
+`npm run cy:open`
+
+This will open the test runner. Choose any tests to run!
 
 ## Localization
 
@@ -100,5 +114,14 @@ When developing, to use a flag:
 #### When to use flags:
 
 1. The feature is an experimental change
-2. The feature is an outcome of a spike where the direct work wasn’t prioritized in the current sprint however there's a desire to help design to see / use it  - eg. fullscreen / geolocation (future sprint purposes)
+2. The feature is an outcome of a spike where the direct work wasn’t prioritized in the current sprint however there's a desire to help design to see / use it - eg. fullscreen / geolocation (future sprint purposes)
 3. The feature is something with multiple possible implementations that we want to give our team the experience of trying out separately for comparison purposes - eg. mapbox vs. openlayers, different low tile layers for low zoom
+
+## Debugging
+
+1. Ensure that VS code is open in the client folder
+2. Run the app with `npm start` in the terminal
+3. Click on the debugger (SHIFT+CMD+D on mac)
+4. Run the _Debug Chrome_ configuration by hitting the green play button
+5. Install the [CORS chrome extension](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en) in the browser that is launched by the debugger.
+6. Set breakpoints in VS code!

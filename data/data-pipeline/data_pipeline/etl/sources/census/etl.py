@@ -33,7 +33,9 @@ class CensusETL(ExtractTransformLoad):
         self.NATIONAL_CBG_CSV_PATH = self.CSV_BASE_PATH / "us.csv"
         self.NATIONAL_CBG_JSON_PATH = self.GEOJSON_BASE_PATH / "us.json"
 
-    def _path_for_fips_file(self, fips_code: str, file_type: GeoFileType) -> Path:
+    def _path_for_fips_file(
+        self, fips_code: str, file_type: GeoFileType
+    ) -> Path:
         """Get paths for associated geospatial files for the provided FIPS code
 
         Args:
@@ -93,7 +95,9 @@ class CensusETL(ExtractTransformLoad):
             None
         """
         shp_file_path = self._path_for_fips_file(fips_code, GeoFileType.SHP)
-        geojson_file_path = self._path_for_fips_file(fips_code, GeoFileType.GEOJSON)
+        geojson_file_path = self._path_for_fips_file(
+            fips_code, GeoFileType.GEOJSON
+        )
         logger.info(f"Checking if {fips_code} geoJSON file exists ")
         if not geojson_file_path.is_file():
             logger.info(
@@ -176,7 +180,9 @@ class CensusETL(ExtractTransformLoad):
 
         if not self.NATIONAL_CBG_CSV_PATH.is_file():
             logger.info(f"Creating {self.NATIONAL_CBG_CSV_PATH}")
-            with open(self.NATIONAL_CBG_CSV_PATH, mode="w", newline="") as cbg_csv_file:
+            with open(
+                self.NATIONAL_CBG_CSV_PATH, mode="w", newline=""
+            ) as cbg_csv_file:
                 cbg_csv_file_writer = csv.writer(
                     cbg_csv_file,
                     delimiter=",",
@@ -205,7 +211,9 @@ class CensusETL(ExtractTransformLoad):
             state_gdf = gpd.read_file(file_name)
             usa_df = usa_df.append(state_gdf)
 
-        usa_df = usa_df.to_crs("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs")
+        usa_df = usa_df.to_crs(
+            "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
+        )
         logger.info("Writing national geojson file")
         usa_df.to_file(self.NATIONAL_CBG_JSON_PATH, driver="GeoJSON")
 

@@ -50,6 +50,7 @@ class ScoreETL(ExtractTransformLoad):
         self.census_df: pd.DataFrame
         self.housing_and_transportation_df: pd.DataFrame
         self.hud_housing_df: pd.DataFrame
+        self.cdc_places_df: pd.DataFrame
 
     def data_sets(self) -> list:
         # Define a named tuple that will be used for each data set input.
@@ -79,6 +80,36 @@ class ScoreETL(ExtractTransformLoad):
             DataSet(
                 input_field=self.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD_NAME,
                 renamed_field=self.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD_NAME,
+                bucket=None,
+            ),
+            DataSet(
+                input_field="Current asthma among adults aged >=18 years",
+                renamed_field="Current asthma among adults aged >=18 years",
+                bucket=None,
+            ),
+            DataSet(
+                input_field="Coronary heart disease among adults aged >=18 years",
+                renamed_field="Coronary heart disease among adults aged >=18 years",
+                bucket=None,
+            ),
+            DataSet(
+                input_field="Cancer (excluding skin cancer) among adults aged >=18 years",
+                renamed_field="Cancer (excluding skin cancer) among adults aged >=18 years",
+                bucket=None,
+            ),
+            DataSet(
+                input_field="Current lack of health insurance among adults aged 18-64 years",
+                renamed_field="Current lack of health insurance among adults aged 18-64 years",
+                bucket=None,
+            ),
+            DataSet(
+                input_field="Diagnosed diabetes among adults aged >=18 years",
+                renamed_field="Diagnosed diabetes among adults aged >=18 years",
+                bucket=None,
+            ),
+            DataSet(
+                input_field="Physical health not good for >=14 days among adults aged >=18 years",
+                renamed_field="Physical health not good for >=14 days among adults aged >=18 years",
                 bucket=None,
             ),
             # The following data sets have buckets, because they're used in Score C
@@ -218,6 +249,14 @@ class ScoreETL(ExtractTransformLoad):
             low_memory=False,
         )
 
+        # Load CDC Places data
+        cdc_places_csv = self.DATA_PATH / "dataset" / "cdc_places" / "usa.csv"
+        self.cdc_places_df = pd.read_csv(
+            cdc_places_csv,
+            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
+            low_memory=False,
+        )
+
     def transform(self) -> None:
         ## IMPORTANT: THIS METHOD IS CLOSE TO THE LIMIT OF STATEMENTS
 
@@ -247,8 +286,28 @@ class ScoreETL(ExtractTransformLoad):
             )
 
         # Join all the data sources that use census tracts
-        # TODO: when there's more than one data source using census tract, reduce/merge them here.
-        census_tract_df = self.hud_housing_df
+        census_tract_dfs = [
+            self.hud_housing_df,
+            self.cdc_places_df,
+        ]
+        census_tract_df = functools.reduce(
+            lambda left, right: pd.merge(
+                left=left,
+                right=right,
+                on=self.GEOID_TRACT_FIELD_NAME,
+                how="outer",
+            ),
+            census_tract_dfs,
+        )
+
+        # Sanity check the join.
+        if (
+            len(census_tract_df[self.GEOID_TRACT_FIELD_NAME].str.len().unique())
+            != 1
+        ):
+            raise ValueError(
+                f"One of the input CSVs uses {self.GEOID_TRACT_FIELD_NAME} with a different length."
+            )
 
         # Calculate the tract for the CBG data.
         census_block_group_df[
@@ -437,12 +496,56 @@ class ScoreETL(ExtractTransformLoad):
         )
 
         self.df[meets_burden_field_name] = (
-            self.df["Particulate matter (PM2.5)"] > 10
-        ) | (self.df["Respiratory hazard " "index"] > 0.75)
+            (self.df["Particulate matter (PM2.5) (percentile)"] > 0.9)
+            | (self.df["Respiratory hazard index (percentile)"] > 0.9)
+            | (self.df["Traffic proximity and volume (percentile)"] > 0.9)
+            | (
+                self.df[
+                    "Percent pre-1960s housing (lead paint indicator) (percentile)"
+                ]
+                > 0.9
+            )
+            | (self.df["Proximity to RMP sites (percentile)"] > 0.9)
+            | (
+                self.df[
+                    "Current asthma among adults aged >=18 years (percentile)"
+                ]
+                > 0.9
+            )
+            | (
+                self.df[
+                    "Coronary heart disease among adults aged >=18 years (percentile)"
+                ]
+                > 0.9
+            )
+            | (
+                self.df[
+                    "Cancer (excluding skin cancer) among adults aged >=18 years (percentile)"
+                ]
+                > 0.9
+            )
+            # | (
+            #     self.df[
+            #         "Current lack of health insurance among adults aged 18-64 years (percentile)"
+            #     ]
+            #     > 0.9
+            # )
+            | (
+                self.df[
+                    "Diagnosed diabetes among adults aged >=18 years (percentile)"
+                ]
+                > 0.9
+            )
+            # | (
+            #     self.df[
+            #         "Physical health not good for >=14 days among adults aged >=18 years (percentile)"
+            #     ]
+            #     > 0.9
+            # )
+        )
 
         self.df["Score F (communities)"] = (
-            self.df[ami_and_high_school_field_name]
-            & self.df[meets_burden_field_name]
+            self.df[meets_socio_field_name] & self.df[meets_burden_field_name]
         )
 
     def load(self) -> None:
@@ -450,10 +553,4 @@ class ScoreETL(ExtractTransformLoad):
 
         # write nationwide csv
         self.SCORE_CSV_PATH.mkdir(parents=True, exist_ok=True)
-
-        # TODO: drop
-        self.df[0:10000].to_csv(
-            self.SCORE_CSV_PATH / "usa-10000.csv", index=False
-        )
-
         self.df.to_csv(self.SCORE_CSV_PATH / "usa.csv", index=False)

@@ -1,12 +1,29 @@
 import * as React from 'react';
 import {defineMessages} from 'react-intl';
-import {Grid} from '@trussworks/react-uswds';
 import {FormattedMessage, useIntl} from 'gatsby-plugin-intl';
 
-import AreasOfFocusList from '../components/areasOfFocusList';
 import AlertWrapper from '../components/AlertWrapper';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
+import AboutCard from '../components/AboutCard/AboutCard';
+
+// @ts-ignore
+import aboutUSMapImg from '../images/about-usmap.svg';
+// @ts-ignore
+import aboutJ40Img from '../images/about-j40.svg';
+import accountBalanceIcon // @ts-ignore
+  from '/node_modules/uswds/dist/img/usa-icons/account_balance.svg';
+
+import groupsIcon from // @ts-ignore
+  '/node_modules/uswds/dist/img/usa-icons/groups.svg';
+
+import commentIcon from // @ts-ignore
+  '/node_modules/uswds/dist/img/usa-icons/comment.svg';
+
+import githubIcon from // @ts-ignore
+  '/node_modules/uswds/dist/img/usa-icons/github.svg';
+import AboutCardsContainer from '../components/AboutCard/AboutCardsContainer';
+
 
 interface IndexPageProps {
   location: Location;
@@ -16,11 +33,6 @@ interface IndexPageProps {
 const IndexPage = ({location}: IndexPageProps) => {
   const intl = useIntl();
   const messages = defineMessages({
-    aboutHeader: {
-      id: 'index.aboutContent.header',
-      defaultMessage: 'About Justice40',
-      description: 'h1 header on About page',
-    },
     presidentalLinkUri: {
       id: 'index.presidentalLinkUri',
       defaultMessage: 'https://www.whitehouse.gov/briefing-room/' +
@@ -49,155 +61,144 @@ const IndexPage = ({location}: IndexPageProps) => {
       defaultMessage: 'Iterative:',
       description: 'Italic label for 3rd paragraph of section 3 on index page',
     },
+    aboutScreenToolHeading: {
+      id: 'index.heading.screentool',
+      defaultMessage: 'About the screening tool',
+      description: 'heading for about screening tool',
+    },
+    aboutJustice40Heading: {
+      id: 'index.heading.justice40',
+      defaultMessage: 'About the Justice40 Initiative',
+      description: 'heading for about justice 40',
+    },
   });
 
   return (
     <Layout location={location}>
-
-      <J40MainGridContainer fullWidth={true}>
-        <AlertWrapper />
+      <J40MainGridContainer>
+        <AlertWrapper showBetaAlert={true} showLimitedDataAlert={false}/>
       </J40MainGridContainer>
 
-      <J40MainGridContainer>
-        <Grid row>
-          <Grid col>
-            <section className={'usa-prose'}>
-              <h1>{intl.formatMessage(messages.aboutHeader)}</h1>
+      <J40MainGridContainer className={'j40-about-page'}>
 
-              <p>
-                <FormattedMessage
-                  id={'index.aboutContent.p1'}
-                  description={'paragraph 1 of main content on index page'}
-                  defaultMessage={`
-                    In an effort to address historical environmental injustices,
-                    President Biden created the Justice40 Initiative on January
-                    27, 2021. The Justice40 Initiative directs 40% of the
-                    benefits from federal investments in seven key areas to
-                    overburdened and underserved communities.
+        <AboutCardsContainer>
+          <AboutCard
+            size={'large'}
+            imgSrc={aboutUSMapImg}
+            header={intl.formatMessage(messages.aboutScreenToolHeading)}>
+
+            <FormattedMessage
+              id={'index.aboutContent.p1'}
+              description={'paragraph 1 of main content on index page'}
+              defaultMessage={`
+              On January 27, 2021, President Biden directed the Council on
+              Environmental Quality (CEQ) to create a climate and economic
+              justice screening tool. The purpose of the tool is to provide
+              socioeconomic, environmental, and climate information and data to
+              help inform decisions that may affect disadvantaged communities.
+              The tool is designed to assist Federal agencies in identifying
+              disadvantaged communities for the purposes of the Justice40
+              Initiative.                     
                   `}/>
-              </p>
 
-              <p>
-                <FormattedMessage
-                  id="index.aboutContent.p2"
-                  description={'paragraph 2 of main content on index page'}
-                  defaultMessage={`
-                    Federal agencies will prioritize benefits using a new
-                    climate and economic justice screening tool. This screening
-                    tool will be a map that visualizes data to compare the
-                    cumulative impacts of environmental, climate, and economic
-                    factors. It is being developed by the Council on
-                    Environmental Quality (CEQ) with guidance from environmental
-                    justice leaders and communities affected by environmental
-                    injustices. The first version of the screening tool will be
-                    released in July 2021. However, the screening tool and data
-                    being used will be continuously updated to better reflect
-                    the lived experiences of community members.
+          </AboutCard>
+        </AboutCardsContainer>
+
+        <AboutCardsContainer>
+          <AboutCard
+            size={'large'}
+            imgSrc={aboutJ40Img}
+            header={intl.formatMessage(messages.aboutJustice40Heading)}>
+
+            <FormattedMessage
+              id="index.aboutContent.p2"
+              description={'paragraph 2 of main content on index page'}
+              defaultMessage={`
+                The goal of the Justice40 Initiative is for 40 percent of
+                benefits of Federal programs in seven key areas to flow to
+                disadvantaged communities. These seven key areas are: climate
+                change, clean energy and energy efficiency, clean transit,
+                affordable and sustainable housing, training and workforce
+                development, remediation of legacy pollution, and clean water
+                infrastructure.
                   `}/>
-              </p>
 
-              <p><FormattedMessage
-                id={'index.aboutContent.p3'}
-                description={'paragraph 3 of main content on index page'}
-                defaultMessage={`
+            <p><FormattedMessage
+              id={'index.aboutContent.p3'}
+              description={'paragraph 3 of main content on index page'}
+              defaultMessage={`
                   Read more about the Justice40 Initiative in President Biden’s 
                   {presidentLink}
                   `}
-                values={{
-                  presidentLink:
-                <a
-                  href={intl.formatMessage(messages.presidentalLinkUri)}
-                  target="_blank"
-                  rel="noreferrer">{intl.formatMessage(messages.presidentalLinkLabel)}
-                </a>,
-                }}/>
-              </p>
+              values={{
+                presidentLink:
+                  <a
+                    href={intl.formatMessage(messages.presidentalLinkUri)}
+                    target="_blank"
+                    rel="noreferrer">{intl.formatMessage(messages.presidentalLinkLabel)}
+                  </a>,
+              }}/>
+            </p>
 
-              <h2>
-                <FormattedMessage
-                  id={'index.section2.header'}
-                  description={'section 2 header'}
-                  defaultMessage={'Areas of Focus'}/>
-              </h2>
+          </AboutCard>
+        </AboutCardsContainer>
+      </J40MainGridContainer>
 
-              <AreasOfFocusList/>
+      <J40MainGridContainer
+        fullWidth={true}
+        blueBackground={true}>
+        <J40MainGridContainer
+          className={'j40-about-page'}>
+          <AboutCardsContainer>
+            <AboutCard
+              size={'small'}
+              imgSrc={accountBalanceIcon}
+              header={'Federal program managers'}
+              actionText={'Go to data & methodology'}
+              actionUrl={'./methodology'}>
+              Download the screening tool’s draft list of prioritized
+              communities and information on how to use it for your program in
+              the future on the data and methodology page.
+            </AboutCard>
 
-              <h2>
-                <FormattedMessage
-                  id={'index.section3.header'}
-                  description={'section 3 header'}
-                  defaultMessage={'A Transparent, Community-First Approach'}/>
-              </h2>
+            <AboutCard
+              size={'small'}
+              imgSrc={groupsIcon}
+              header={'Community members'}
+              actionText={'Explore the tool'}
+              actionUrl={'./cejst'}>
+              Find your community or communities that you may be familiar with
+              and check their prioritization information on the map.
+            </AboutCard>
+          </AboutCardsContainer>
+        </J40MainGridContainer>
+      </J40MainGridContainer>
 
-              <p><FormattedMessage
-                id={'index.section3.intro'}
-                description={'section 3 content paragraph 1 intro'}
-                defaultMessage={`
-                  Successful initiatives are guided by direct input from the
-                  communities they are serving. CEQ commits to transparency,
-                  inclusivity, and iteration in building this screening tool.`}/>
-              </p>
+      <J40MainGridContainer
+        className={'j40-about-page'}>
+        <AboutCardsContainer>
+          <AboutCard
+            size={'small'}
+            imgSrc={commentIcon}
+            header={'Send Feedback'}
+            actionText={'Email: screeningtool.feedback@usds.gov'}
+            actionUrl={'mailto:screeningtool.feedback@usds.gov'}>
+            Have ideas about how to acknowledge the on-the-ground experiences
+            of your community?
+          </AboutCard>
 
-              <p>
-                <FormattedMessage
-                  id={'index.section3.transparent'}
-                  description={'section 3 content transparent'}
-                  defaultMessage={`
-                    {inlineHeader} The code and data behind the screening
-                    tool are open source, meaning it is available for the public
-                    to review and contribute to. This tool is being developed
-                    publicly so that communities, academic experts, and anyone
-                    who’s interested can be involved in the tool-building
-                    process.`}
-                  values={{
-                    inlineHeader:
-                  <i>{intl.formatMessage(messages.transparentLabel)}</i>,
-                  }}/>
-              </p>
-
-              <p>
-                <FormattedMessage
-                  id={'index.section3.inclusive'}
-                  description={'section 3 content inclusive'}
-                  defaultMessage={`
-                    {inlineHeader} Many areas which lack investments also
-                    lack environmental data and would be overlooked using
-                    available environmental data. CEQ is actively reaching out
-                    to groups that have historically been excluded from
-                    decision-making, such as groups in rural and tribal areas,
-                    to understand their needs and ask for their input.
-                  `}
-                  values={{
-                    inlineHeader:
-                  <i>{intl.formatMessage(messages.inclusiveLabel)}</i>,
-                  }}/>
-              </p>
-
-              <p>
-                <FormattedMessage
-                  id={'index.section3.iterative'}
-                  description={'section 3 content iterative'}
-                  defaultMessage={`
-                    {inlineHeader} The initial community prioritization list
-                    provided by the screening tool is the beginning of a
-                    collaborative process in score refinement, rather than a
-                    final answer. CEQ has received recommendations on data sets
-                    from community interviews, the White House Environmental
-                    Justice Advisory Council, and through public comment, but
-                    establishing a score that is truly representative will be a
-                    long-term, ongoing process. As communities submit feedback
-                    and recommendations, CEQ will continue to improve the tools
-                    being built and the processes for stakeholder and public
-                    engagement.
-                  `}
-                  values={{
-                    inlineHeader:
-                  <i>{intl.formatMessage(messages.iterativeLabel)}</i>,
-                  }}/>
-              </p>
-            </section>
-          </Grid>
-        </Grid>
+          <AboutCard
+            size={'small'}
+            imgSrc={githubIcon}
+            header={'Join the open source community'}
+            actionText={'Check it out on GitHub'}
+            actionUrl={'https://github.com/usds/justice40-tool'}
+            actionOpenInNewTab={true}>
+            The screening tool’s code is open source, which means it is
+            available for the public to view and contribute to. Anyone can
+            view and contribute on GitHub.
+          </AboutCard>
+        </AboutCardsContainer>
       </J40MainGridContainer>
     </Layout>);
 };

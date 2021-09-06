@@ -1,6 +1,6 @@
 import React from 'react';
 import MapIntroduction from './mapIntroduction';
-import AreaDetail from './areaDetail';
+import AreaDetail from './AreaDetail';
 
 interface IMapInfoPanelProps {
     className: string,

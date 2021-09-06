@@ -12,6 +12,7 @@ geopandas = "^0.9.0"
 ipython = "^7.24.1"
 jupyter = "^1.0.0"
 jupyter-contrib-nbextensions = "^0.5.1"
+matplotlib = "^3.4.2"
 numpy = "^1.21.0"
 pandas = "^1.2.5"
 python = "^3.7.1"
@@ -62,6 +63,7 @@ disable = [
   "W0613", # Disables unused argument
   "C0116", # Disables missing function or method docstring
   "C0115", # Disables missing class docstring
+  "R0915", # Disables too many statements (score generation transform)
 ]
 
 [tool.pylint.FORMAT]
@@ -73,6 +75,9 @@ ignore-comments = "yes"
 ignore-docstrings = "yes"
 ignore-imports = "yes"
 min-similarity-lines = 4
+
+[tool.black]
+line-length = 80
 
 [tool.liccheck]
 # Authorized and unauthorized licenses in LOWER CASE
@@ -103,6 +108,7 @@ authorized_licenses = [
   "python software foundation",
   "zpl 2.1",
   "gpl v3",
+  "historical permission notice and disclaimer (hpnd)",
 ]
 
 [tool.poetry.scripts]

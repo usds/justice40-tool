@@ -6,13 +6,18 @@ import {GridContainer} from '@trussworks/react-uswds';
 interface ILayoutProps {
   children: ReactNode,
   fullWidth?: boolean,
+   blueBackground?: boolean,
   className?: string
 }
 
 const J40MainGridContainer = ({
   children,
   fullWidth = false,
-  className = 'j40-grid-container'}: ILayoutProps) => {
+  blueBackground = false,
+  className = ''}: ILayoutProps) => {
+  // is it a blue background strip?
+  className += (blueBackground ? 'j40-main-grid-blue-bk ' : '');
+
   return fullWidth ? (
     <div
       className={'j40-grid-container ' + className}>

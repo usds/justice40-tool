@@ -20,8 +20,8 @@ const CEJSTPage = ({location}: IMapPageProps) => {
   // We temporarily removed MapControls, which would enable you to `setFeatures` also, for now
   //   We will bring back later when we have interactive controls.
   return (<Layout location={location}>
-    <J40MainGridContainer fullWidth={true}>
-      <AlertWrapper hideWarningAlert={true}/>
+    <J40MainGridContainer>
+      <AlertWrapper showBetaAlert={true} showLimitedDataAlert={false}/>
     </J40MainGridContainer>
 
     <J40MainGridContainer className={'j40-main-content'}>

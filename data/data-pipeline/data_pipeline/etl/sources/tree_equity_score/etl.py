@@ -8,9 +8,7 @@ logger = get_module_logger(__name__)
 
 class TreeEquityScoreETL(ExtractTransformLoad):
     def __init__(self):
-        self.TES_URL = (
-            "https://national-tes-data-share.s3.amazonaws.com/national_tes_share/"
-        )
+        self.TES_URL = "https://national-tes-data-share.s3.amazonaws.com/national_tes_share/"
         self.TES_CSV = self.TMP_PATH / "tes_2021_data.csv"
         self.CSV_PATH = self.DATA_PATH / "dataset" / "tree_equity_score"
         self.df: gpd.GeoDataFrame
@@ -78,8 +76,12 @@ class TreeEquityScoreETL(ExtractTransformLoad):
         logger.info("Transforming Tree Equity Score Data")
         tes_state_dfs = []
         for state in self.states:
-            tes_state_dfs.append(gpd.read_file(f"{self.TMP_PATH}/{state}/{state}.shp"))
-        self.df = gpd.GeoDataFrame(pd.concat(tes_state_dfs), crs=tes_state_dfs[0].crs)
+            tes_state_dfs.append(
+                gpd.read_file(f"{self.TMP_PATH}/{state}/{state}.shp")
+            )
+        self.df = gpd.GeoDataFrame(
+            pd.concat(tes_state_dfs), crs=tes_state_dfs[0].crs
+        )
 
     def load(self) -> None:
         logger.info("Saving Tree Equity Score GeoJSON")

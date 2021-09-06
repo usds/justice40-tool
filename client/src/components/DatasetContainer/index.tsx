@@ -2,8 +2,8 @@ import React from 'react';
 import {useIntl} from 'gatsby-plugin-intl';
 import {defineMessages} from 'react-intl';
 import DatasetCard from '../DatasetCard';
-import J40Alert from '../J40Alert';
 import * as styles from './dsContainer.module.scss';
+import AlertWrapper from '../AlertWrapper';
 
 export const cards = [
   {
@@ -67,23 +67,21 @@ const DatasetContainer = () => {
     subTitle: {
       id: 'datasetContainer.subTitle',
       defaultMessage: 'The datasets come from a variety of sources and ' +
-      'were selected after considering relevance, availability, recency and quality.',
+        'were selected after considering relevance, availability, recency and quality.',
       description: 'description of the dataset section',
     },
   });
 
   return (
     <div className={`${styles.datasetContainer} desktop:grid-col`}>
-      <div className={`${styles.j40AlertContainer} desktop:grid-col`}>
-        <div className={'grid-container-desktop-lg'}>
-          <J40Alert />
-        </div>
-      </div>
       <div className={'grid-container-desktop-lg'}>
         <h1 className={styles.datasetContainerHeader}>{intl.formatMessage(messages.cumulativeScore)}</h1>
+        <AlertWrapper showBetaAlert={false} showLimitedDataAlert={true}/>
         <p className={styles.datasetContainerSubTitle}>{intl.formatMessage(messages.subTitle)}</p>
         <div className={styles.datasetCardsContainer}>
-          {cards.map((card) => <DatasetCard key={card.indicator} datasetCardProps={card}/>)}
+          {cards.map((card) => <DatasetCard
+            key={card.indicator}
+            datasetCardProps={card}/>)}
         </div>
       </div>
     </div>

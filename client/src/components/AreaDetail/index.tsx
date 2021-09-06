@@ -7,10 +7,27 @@ import {defineMessages} from 'react-intl';
 
 // Styles and constants
 import * as styles from './areaDetail.module.scss';
-import * as constants from '../data/constants';
+import * as constants from '../../data/constants';
 
-export const readablePercent = (percent: number) => {
-  return `${(percent * 100).toFixed(1)}`;
+export const readablePercentile = (percentile: number) => {
+  return Math.round(percentile * 100);
+};
+
+
+// Todo: Add internationalization to superscript ticket #582
+const getSuperscriptOrdinal = (percentile: number) => {
+  const englishOrdinalRules = new Intl.PluralRules('en', {
+    type: 'ordinal',
+  });
+  const suffixes = {
+    zero: 'th',
+    one: 'st',
+    two: 'nd',
+    few: 'rd',
+    many: 'th',
+    other: 'th',
+  };
+  return suffixes[englishOrdinalRules.select(percentile)];
 };
 
 export const getCategorization = (percentile: number) => {
@@ -113,6 +130,8 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
   const score = properties[constants.SCORE_PROPERTY_HIGH] as number;
   const blockGroup = properties[constants.GEOID_PROPERTY];
   const population = properties[constants.TOTAL_POPULATION];
+  const countyName = properties[constants.COUNTY_NAME];
+  const stateName = properties[constants.STATE_NAME];
 
   interface indicatorInfo {
     label: string,
@@ -156,7 +175,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
       <header className={styles.topRow }>
         <div className={styles.cumulativeIndexScore}>
           <div className={styles.topRowTitle}>{intl.formatMessage(messages.cumulativeIndexScore)}</div>
-          <div className={styles.score} data-cy={'score'}>{`${readablePercent(score)}`}
+          <div className={styles.score} data-cy={'score'}>{`${readablePercentile(score)}`}
             <sup className={styles.scoreSuperscript}><span>th</span></sup>
           </div>
           <div className={styles.topRowSubTitle}>{intl.formatMessage(messages.percentile)}</div>
@@ -176,11 +195,11 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
         </li>
         <li>
           <span className={styles.censusLabel}>{intl.formatMessage(messages.county)} </span>
-          <span className={styles.censusText}>{'Washington County*'}</span>
+          <span className={styles.censusText}>{countyName}</span>
         </li>
         <li>
           <span className={styles.censusLabel}>{intl.formatMessage(messages.state)}</span>
-          <span className={styles.censusText}>{'District of Columbia*'}</span>
+          <span className={styles.censusText}>{stateName}</span>
         </li>
         <li>
           <span className={styles.censusLabel}>{intl.formatMessage(messages.population)} </span>
@@ -194,13 +213,18 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
 
       {indicators.map((indicator, index) => (
         <li key={index} className={styles.indicatorBox} data-cy={'indicatorBox'}>
-          <div className={styles.indicatorInfo}>
+          <div>
             <div className={styles.indicatorTitle}>{indicator.label}</div>
             <div className={styles.indicatorDescription}>
               {indicator.description}
             </div>
           </div>
-          <div className={styles.indicatorValue}>{readablePercent(indicator.value)}</div>
+          <div className={styles.indicatorValue}>
+            {readablePercentile(indicator.value)}
+            <sup className={styles.indicatorSuperscript}><span>
+              {getSuperscriptOrdinal(readablePercentile(indicator.value))}
+            </span></sup>
+          </div>
         </li>
       ))}
 
