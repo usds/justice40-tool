@@ -2,6 +2,7 @@ from pathlib import Path
 from typing import Optional
 
 import pandas as pd
+import yaml
 
 from data_pipeline.config import settings
 from data_pipeline.utils import (
@@ -41,17 +42,41 @@ class ExtractTransformLoad:
         # set by _get_yaml_config()
         self.NAME: str = None
         self.SOURCE_URL: str = None
-        self.OUTPUT_PATH: Path = None
+        self.GEO_COL: str = None
+        self.GEO_LEVEL: str = None
         self.SCORE_COLS: list = None
+        self.FIPS_CODES: pd.DataFrame = None
+        self.OUTPUT_PATH: Path = None
 
-        if is_dataset:
-            self.FIPS_CODES: pd.Dataframe = self._get_census_fips_codes()
+        self._get_yaml_config(config_path)
 
-    def get_yaml_config(self) -> None:
+    def _get_yaml_config(self, config_path: Path) -> None:
         """Reads the YAML configuration file for the dataset and stores
         the properies in the instance (upcoming feature)"""
+        # parse the yaml config file
+        try:
+            with open(config_path, "r") as file:
+                config = yaml.safe_load(file)
+        except (FileNotFoundError, yaml.YAMLError) as err:
+            raise err
 
-        pass
+        # set dataset specific attributes
+        if config["is_dataset"]:
+            # self.FIPS_CODES: pd.Dataframe = self._get_census_fips_codes()
+            csv_dir = self.DATA_PATH / "dataset"
+        else:
+            csv_dir = self.DATA_PATH / "census" / "csv"
+
+        # parse name and set output path
+        name = config.get("name")
+        snake_name = name.replace(" ", "_").lower()  # converts to snake case
+        output_dir = snake_name + (config.get("year") or "")
+        self.OUTPUT_PATH = csv_dir / output_dir / "usa.csv"
+
+        # set class attributes
+        attrs = ["NAME", "SOURCE_URL", "GEO_COL", "GEO_LEVEL", "SCORE_COLS"]
+        for attr in attrs:
+            setattr(self, attr, config[attr.lower()])
 
     def check_ttl(self) -> None:
         """Checks if the ETL process can be run based on a the TLL value on the
@@ -102,24 +127,7 @@ class ExtractTransformLoad:
         df = pd.read_csv(self.CENSUS_CSV, dtype={BLOCK_COL: "string"})
         # extract Census tract FIPS code from Census block group
         df[TRACT_COL] = df[BLOCK_COL].str[0:11]
-        return df_acs[[BLOCK_COL, TRACT_COL]]
-
-    def validate_init(self) -> None:
-        """Checks that the child class was initialized correctly and that all
-        of the required attributes were preserved or set
-
-        Expected conditions:
-        - GEOID_FIELD_NAME and GEOID_TRACT_FIELD_NAME haven't changed
-        - All of the instance attributes were set by _get_yaml_config()
-        """
-
-        # checks that GEOID field names haven't changed
-        assert self.GEOID_FIELD_NAME == "GEOID10"
-        assert self.GEOID_TRACT_FIELD_NAME == "GEOID10_TRACT"
-        # checks that attributes were configured from yaml file correctly
-        yaml_attrs = ["NAME", "SOURCE_URL", "OUTPUT_DIR", "SCORE_COLS"]
-        for attr in yaml_attrs:
-            assert getattr(self, attr) is not None, f"{attr} wasn't set"
+        return df[[BLOCK_COL, TRACT_COL]]
 
     def validate_output(self) -> None:
         """Checks that the output of the ETL process adheres to the contract
@@ -144,9 +152,9 @@ class ExtractTransformLoad:
         )
 
         # check that the GEOID cols in the output match census data
-        geoid_cols = [BLOCK_COL_NAME, TRACT_COL_NAME]
-        assert self.FIPS_CODES.equals(df_output[[BLOCK_COL_NAME]])
+        geoid_cols = [BLOCK_COL, TRACT_COL]
+        assert self.FIPS_CODES.equals(df_output[[BLOCK_COL]])
 
         # check that the score columns are in the output
-        for cols in self.SCORE_COLS:
+        for col in self.SCORE_COLS:
             assert col in df_output.columns
