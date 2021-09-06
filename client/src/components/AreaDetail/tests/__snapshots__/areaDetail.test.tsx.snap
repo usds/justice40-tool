@@ -13,7 +13,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         <div
           data-cy="score"
         >
-          9500.0
+          9500
           <sup>
             <span>
               th
@@ -86,7 +86,12 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         </div>
       </div>
       <div>
-        9900.0
+        9900
+        <sup>
+          <span>
+            th
+          </span>
+        </sup>
       </div>
     </li>
     <li
@@ -101,7 +106,12 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         </div>
       </div>
       <div>
-        9800.0
+        9800
+        <sup>
+          <span>
+            th
+          </span>
+        </sup>
       </div>
     </li>
     <li
@@ -116,7 +126,12 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         </div>
       </div>
       <div>
-        9700.0
+        9700
+        <sup>
+          <span>
+            th
+          </span>
+        </sup>
       </div>
     </li>
     <li
@@ -131,7 +146,12 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         </div>
       </div>
       <div>
-        9600.0
+        9600
+        <sup>
+          <span>
+            th
+          </span>
+        </sup>
       </div>
     </li>
     <li
@@ -146,7 +166,12 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         </div>
       </div>
       <div>
-        9500.0
+        9500
+        <sup>
+          <span>
+            th
+          </span>
+        </sup>
       </div>
     </li>
   </aside>

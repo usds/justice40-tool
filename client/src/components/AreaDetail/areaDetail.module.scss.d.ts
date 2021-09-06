@@ -21,6 +21,7 @@ declare namespace MapModuleScssNamespace {
     indicatorDescription:string;
     indicatorValue:string;
     score:string;
+    indicatorSuperscript: string;
   }
 }
 
