@@ -8,6 +8,10 @@
 - [Justice 40 Score application](#justice-40-score-application)
   - [About this application](#about-this-application)
     - [Using the data](#using-the-data)
+      - [1. Source data](#1-source-data)
+      - [2. Extract-Transform-Load (ETL) the data](#2-extract-transform-load-etl-the-data)
+      - [3. Combined dataset](#3-combined-dataset)
+      - [4. Tileset](#4-tileset)
     - [Score generation and comparison workflow](#score-generation-and-comparison-workflow)
       - [Workflow Diagram](#workflow-diagram)
       - [Step 0: Set up your environment](#step-0-set-up-your-environment)
@@ -30,11 +34,13 @@
   - [Miscellaneous](#miscellaneous)
   - [Testing](#testing)
     - [Background](#background)
-    - [ETL Tests](#etl-tests)
     - [Configuration / Fixtures](#configuration--fixtures)
-    - [Extract Tests](#extract-tests)
-    - [Transform Tests](#transform-tests)
-    - [Load Tests](#load-tests)
+      - [Updating Pickles](#updating-pickles)
+      - [Future Enchancements](#future-enchancements)
+    - [ETL Unit Tests](#etl-unit-tests)
+      - [Extract Tests](#extract-tests)
+      - [Transform Tests](#transform-tests)
+      - [Load Tests](#load-tests)
 
 <!-- /TOC -->
 
@@ -53,22 +59,26 @@ One of our primary development principles is that the entire data pipeline shoul
 In the sub-sections below, we outline what each stage of the data provenance looks like and where you can find the data output by that stage. If you'd like to actually perform each step in your own environment, skip down to [Score generation and comparison workflow](#score-generation-and-comparison-workflow).
 
 #### 1. Source data
+
 If you would like to find and use the raw source data, you can find the source URLs in the `etl.py` files located within each directory in `data/data-pipeline/etl/sources`.
 
 #### 2. Extract-Transform-Load (ETL) the data
-The first step of processing we perform is a simple ETL process for each of the source datasets. Code is available in `data/data-pipeline/etl/sources`, and the output of this process is a number of CSVs available at the following locations: 
 
-* EJScreen: https://justice40-data.s3.amazonaws.com/data-pipeline/data/dataset/ejscreen_2019/usa.csv
-* Census ACS 2019: https://justice40-data.s3.amazonaws.com/data-pipeline/data/dataset/census_acs_2019/usa.csv
-* Housing and Transportation Index: https://justice40-data.s3.amazonaws.com/data-pipeline/data/dataset/housing_and_transportation_index/usa.csv
-* HUD Housing: https://justice40-data.s3.amazonaws.com/data-pipeline/data/dataset/hud_housing/usa.csv
+The first step of processing we perform is a simple ETL process for each of the source datasets. Code is available in `data/data-pipeline/etl/sources`, and the output of this process is a number of CSVs available at the following locations:
+
+- EJScreen: <https://justice40-data.s3.amazonaws.com/data-pipeline/data/dataset/ejscreen_2019/usa.csv>
+- Census ACS 2019: <https://justice40-data.s3.amazonaws.com/data-pipeline/data/dataset/census_acs_2019/usa.csv>
+- Housing and Transportation Index: <https://justice40-data.s3.amazonaws.com/data-pipeline/data/dataset/housing_and_transportation_index/usa.csv>
+- HUD Housing: <https://justice40-data.s3.amazonaws.com/data-pipeline/data/dataset/hud_housing/usa.csv>
 
 Each CSV may have a different column name for the census tract or census block group identifier. You can find what the name is in the ETL code. Please note that when you view these files you should make sure that your text editor or spreadsheet software does not remove the initial `0` from this identifier field (many IDs begin with `0`).
 
 #### 3. Combined dataset
+
 The CSV with the combined data from all of these sources will be available soon!
 
 #### 4. Tileset
+
 Once we have all the data from the previous stages, we convert it to tiles to make it usable on a map. We only need a subset of the data to display in our client UI, so we do not include all data from the combined CSV in the tileset.
 
 Link to the tile server coming soon!
@@ -149,7 +159,7 @@ _NOTE:_ This may take several minutes or over an hour to fully execute and gener
 
 We use Docker to install the necessary libraries in a container that can be run in any operating system.
 
-*Important*: To be able to run the data Docker containers, you need to increase the memory resoure of your container to at leat 8096 MB.
+_Important_: To be able to run the data Docker containers, you need to increase the memory resoure of your container to at leat 8096 MB.
 
 To build the docker container the first time, make sure you're in the root directory of the repository and run `docker-compose build --no-cache`.
 
@@ -259,17 +269,40 @@ For this project, we make use of [pytest](https://docs.pytest.org/en/latest/) fo
 
 Test data is configured via [fixtures](https://docs.pytest.org/en/latest/explanation/fixtures.html).
 
-These draw from several sources:
+These fixtures utilize [pickle files](https://docs.python.org/3/library/pickle.html) to store dataframes to disk. This is ultimately because if you assert equality on two dataframes, even if column values have the same "visible" value, if their types are mismatching they will be counted as not being equal.
 
-1. DataFrame literal
-   For small dataframes, we can use a locally-defined data structure that is explicit about data types, e.g. `counties_transformed_expected`.
-   Note that it is necessary to do this instead of `from_dict` or similar because by default pandas DataFrames infer types, and this is less consistent
+In a bit more detail:
 
-2. Pickle files / snapshots
-   For larger dataframes (esp those with 100+ properties), it is more beneficial to use python [pickle files](https://docs.python.org/3/library/pickle.html).
-   These are taken from real runs of the current, known, working state and stored under the `snapshots` subdirectory.
+1. Pandas dataframes are typed, and by default, types are inferred when you create one from scratch. If you create a dataframe using the `DataFrame` [constructors](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame), there is no guarantee that types will be correct, without explicit `dtype` annotations. Explicit `dtype` annotations are possible, but, and this leads us to point #2:
 
-In the future, we could potentially use something like [pytest-snapshot](https://pypi.org/project/pytest-snapshot/) for this purpose.
+2. Our transformations/dataframes in the source code under test itself doesn't always require specific types, and it is often sufficient in the code itself to just rely on the `object` type. I attempted adding explicit typing based on the "logical" type of given columns, but in practice it resulted in non-matching dataframes that _actually_ had the same value -- in particular it was very common to have one dataframe column of type `string` and another of type `object` that carried the same values. So, that is to say, even if we did create a "correctly" typed dataframe (according to our logical assumptions about what types should be), they were still counted as mismatched against the dataframes that are actually used in our program. To fix this "the right way", it is necessary to explicitly annotate types at the point of the `read_csv` call, which definitely has other potential unintended side effects and would need to be done carefully.
+
+3. For larger dataframes (some of these have 150+ values), it was initially deemed too difficult/time consuming to manually annotate all types, and further, to modify those type annotations based on what is expected in the souce code under test.
+
+#### Updating Pickles
+
+If you update the input our output to various methods, it is necessary to create new pickles so that data is validated correctly. To do this:
+
+1. Drop a breakpoint just before the dataframe will otherwise be written to / read from disk. If you're using VSCode, use one of the named run targets within `data-pipeline` such as `Score Full Run` , and put a breakpoint in the margin just before the actionable step. More on using breakpoints in VSCode [here](https://code.visualstudio.com/docs/editor/debugging#_breakpoints). If you are not using VSCode, you can put the line `breakpoint()` in your code and it will stop where you have placed the line in whatever calling context you are using.
+2. In your editor/terminal, run `df.to_pickle("snapshots/YOUR_OUT_PATH_HERE.pkl")` to write the pickle to the appropriate location on disk.
+3. Be sure to do this for all inputs/outputs that have changed as a result of your modification. It is often necessary to do this several times for cascading operations.
+4. To inspect your pickle, open a python interpreter, then run `pickle.load( open( "snapshots/YOUR_OUT_PATH_HERE.pkl", "rb" ) )` to get file contents.
+
+#### Future Enchancements
+
+Pickles have several downsides that we should consider alternatives for:
+
+1. They are opaque - it is necessary to open a python interpreter (as written above) to confirm its contents
+2. They are a bit harder for newcomers to python to grok.
+3. They potentially encode flawed typing assumptions (see above) which are paved over for future test runs.
+
+In the future, we could adopt any of the below strategies to work around this:
+
+1. We could use [pytest-snapshot](https://pypi.org/project/pytest-snapshot/) to automatically store the output of each test as data changes. This would make it so that you could avoid having to generate a pickle for each method - instead, you would only need to call `generate` once , and only when the dataframe had changed.
+
+Additionally, you could use a pandas type schema annotation such as [pandera](https://pandera.readthedocs.io/en/stable/schema_models.html?highlight=inputschema#basic-usage) to annotate input/output schemas for given functions, and your unit tests could use these to validate explicitly. This could be of very high value for annotating expectations.
+
+Alternatively, or in conjunction, you could move toward using a more strictly-typed container format for read/writes such as SQL/SQLite, and use something like [SQLModel](https://github.com/tiangolo/sqlmodel) to handle more explicit type guarantees.
 
 ### ETL Unit Tests
 
@@ -298,3 +331,5 @@ See above [Fixtures](#configuration--fixtures) section for information about whe
 #### Load Tests
 
 These make use of [tmp_path_factory](https://docs.pytest.org/en/latest/how-to/tmp_path.html) to create a file-system located under `temp_dir`, and validate whether the correct files are written to the correct locations.
+
+Additional future modifications could include the use of Pandera and/or other schema validation tools, and or a more explicit test that the data written to file can be read back in and yield the same dataframe.
