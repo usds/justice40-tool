@@ -41,6 +41,11 @@ exports[`J40Footer renders correctly 1`] = `
                       <div
                         class="grid-col-auto"
                       >
+                        Council on Environmental Quality
+                      </div>
+                      <div
+                        class="grid-col-auto"
+                      >
                         730 Jackson Pl NW
                       </div>
                       <div
