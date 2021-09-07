@@ -7,7 +7,7 @@
 name: GH Pages deploy
 on:
   pull_request:
-    types: [ closed, opened ]
+    types: [ closed, opened, synchronize ]
     branches: [main]
     paths:
       - 'client/**/*'
