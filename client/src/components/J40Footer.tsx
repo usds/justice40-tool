@@ -63,6 +63,7 @@ const J40Footer = () => {
         className={'j40-footer-address'}
         size={'big'}
         items={[
+          'Council on Environmental Quality',
           '730 Jackson Pl NW',
           'Washington, D.C. 20506',
           '(202) 395-5750',
