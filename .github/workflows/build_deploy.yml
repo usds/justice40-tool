@@ -46,6 +46,8 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build --if-present
+        env:
+          DATA_SOURCE: development
       - name: Get directory contents
         run: ls -la public
       - name: Lint
