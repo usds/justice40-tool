@@ -24,7 +24,7 @@ const CEJSTPage = ({location}: IMapPageProps) => {
       <AlertWrapper showBetaAlert={true} showLimitedDataAlert={false}/>
     </J40MainGridContainer>
 
-    <J40MainGridContainer className={'j40-main-content'}>
+    <J40MainGridContainer>
       <Grid row><Grid col>
         <section>
           <h1 className={styles.explorePageHeader}>Explore the tool</h1>

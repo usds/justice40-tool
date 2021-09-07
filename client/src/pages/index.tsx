@@ -79,7 +79,7 @@ const IndexPage = ({location}: IndexPageProps) => {
         <AlertWrapper showBetaAlert={true} showLimitedDataAlert={false}/>
       </J40MainGridContainer>
 
-      <J40MainGridContainer className={'j40-about-page'}>
+      <J40MainGridContainer>
 
         <AboutCardsContainer>
           <AboutCard
@@ -148,7 +148,7 @@ const IndexPage = ({location}: IndexPageProps) => {
         fullWidth={true}
         blueBackground={true}>
         <J40MainGridContainer
-          className={'j40-about-page'}>
+        >
           <AboutCardsContainer>
             <AboutCard
               size={'small'}
@@ -175,7 +175,7 @@ const IndexPage = ({location}: IndexPageProps) => {
       </J40MainGridContainer>
 
       <J40MainGridContainer
-        className={'j40-about-page'}>
+      >
         <AboutCardsContainer>
           <AboutCard
             size={'small'}

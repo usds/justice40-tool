@@ -20,7 +20,7 @@ const ContactPage = ({location}: ContactPageProps) => {
         <AlertWrapper showBetaAlert={true} showLimitedDataAlert={false}/>
       </J40MainGridContainer>
 
-      <J40MainGridContainer className={'usa-prose'}>
+      <J40MainGridContainer>
         <Grid row><Grid col>
           <h2><FormattedMessage
             id={'contact.pageheader'}

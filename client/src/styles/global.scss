@@ -1,34 +1,35 @@
 /*
-  These are necessary for the image and font urls referenced in the source
-  files to resolve correctly.
-*/
-$theme-image-path: "../../node_modules/uswds/src/img";
-$theme-font-path: "../../node_modules/uswds/src/fonts";
+According to the fundamental usage of USWDS:
+https://designsystem.digital.gov/documentation/fundamentals/
 
-/*
-  Example:
-
-  The url for the hero image in the source file is not currently prefixed by
-  the $theme-image-path above.
-
-  $theme-hero-image: '#{$theme-image-path}/hero.png';
+There are 3 things that should be included in this file:
 */
 
-// Custom USWDS changes to variables go here
-// see https://designsystem.digital.gov/documentation/settings/
-$theme-show-compile-warnings: false;
-$theme-show-notifications: false;
+// 1. Include or point to a USWDS settings file:
+@import "./uswds-settings.scss";
 
-$theme-font-role-heading: "sans";
-
+// 2. Point to the USWDS source code:
 @import "../../node_modules/uswds";
 
+// Point to other CSS libraries:
 @import "~@trussworks/react-uswds/lib/index.css";
 @import "../../node_modules/mapbox-gl/dist/mapbox-gl.css";
 
-// Custom SASS/CSS goes here
 
-
+/* 
+  3. Include or point to your project's custom Sass
+  Instead of having a separate file for these styles, all styles are being placed here.
+    - Global vars
+    - Layout styles
+    --  Header styles
+    --  Main content styles
+    --  Footer styles
+    - Component styles
+    -- Alert styles
+    -- Map styles
+    -- Timeline/process list styles
+    -- About styles
+*/
 
 
 /* 
@@ -36,11 +37,11 @@ $theme-font-role-heading: "sans";
 *      GLOBAL VARS
 ****************************** 
 */ 
-$j40-max-width: 80ex;
+
 $primary-color: #112f4e;
 $j40-blue-background-color: #EFF6FB;
 
-
+// Base Styles for Typography
 
 
 /***************** LAYOUT STYLES **************************************************************
@@ -62,7 +63,7 @@ components include:
   z-index: 5;
 
   .usa-nav-container {
-    max-width: ($j40-max-width * 2);
+    max-width: 76rem;
   }
 
   span {
@@ -139,46 +140,10 @@ components include:
   background-color: $j40-blue-background-color;
 }
 
-@include at-media("mobile-lg") {
-  .j40-grid-container {
-    line-height: 1.5rem;
-    padding-right: 0;
-  }
-}
-
 #main-content {
   border-top: 0;
-}
-
-// spacing top & bottom around main content
-.j40-main-content {
-  @include at-media("mobile-lg") {
-    margin-bottom: 0;
-    margin-top: 2.5rem;
-  }
-
   h1 {
-    font-size: 2.7rem;
-  }
-
-  h2 {
-    font-size: 1.46rem;
-  }
-}
-
-// NOTE: uswds `.usa-prose` defines these all as Merriweather Web via $theme-font-role-heading
-.usa-prose {
-  h1,
-  h2,
-  h3,
-  h4 {
-    font-family: Source Sans Pro Web, Helvetica Neue, Helvetica, Roboto, Arial,
-    sans-serif;
-  }
-
-  p,
-  div {
-    max-width: $j40-max-width;
+    // font-size: unit('3xl');
   }
 }
 
