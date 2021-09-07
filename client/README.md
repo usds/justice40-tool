@@ -23,8 +23,8 @@ _Note that while this app uses npm as the package manager, yarn is required to b
 
 ### Via docker
 - Launch VS code in the top level directory (above client)
-- install the Microsoft docker VS code extension
-- type `docker-compose up`
+- Install the Microsoft docker VS code extension
+- Type `docker-compose up`
 - Running this on MacBook Pro with a 2.6GHz 6-core i7 with 16 GB of memory can take upto 20 minutes to complete.
 
 #### Changing the source of tile / map layer
