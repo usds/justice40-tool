@@ -39,6 +39,11 @@ DATASET_LIST = [
         "module_dir": "cdc_places",
         "class_name": "CDCPlacesETL",
     },
+    {
+        "name": "national_risk_index",
+        "module_dir": "national_risk_index",
+        "class_name": "NationalRiskIndexETL",
+    },
 ]
 CENSUS_INFO = {
     "name": "census",

@@ -61,6 +61,8 @@ class PostScoreETL(ExtractTransformLoad):
 
         # columns to round floats to 2 decimals
         self.TILES_SCORE_FLOAT_COLUMNS = [
+            "Score D (percentile)",
+            "Score D (top 25th percentile)",
             "Score E (percentile)",
             "Score E (top 25th percentile)",
             "Poverty (Less than 200% of federal poverty line) (percentile)",

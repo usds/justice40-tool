@@ -2,22 +2,21 @@ import {LngLatBoundsLike} from 'maplibre-gl';
 import {isMobile as isMobileReactDeviceDetect} from 'react-device-detect';
 import {defineMessages} from 'react-intl';
 
-// URLS
-export const DOWNLOAD_ZIP_URL = 'https://justice40-data.s3.amazonaws.com/data-pipeline/data/score/downloadable/Screening+Tool+Data.zip';
+export const DOWNLOAD_ZIP_URL = [
+  process.env.GATSBY_DATA_ROOT_PATH,
+  process.env.GATSBY_DATA_PIPELINE_SCORE_PATH,
+  process.env.GATSBY_SCORE_DOWNLOAD_FILE_PATH,
+].join('/');
 
-// This is the URL for the origin S3 bucket:
-// export const ORIGIN_BASE_URL = 'https://justice40-data.s3.amazonaws.com';
-
-// This is the URL for the CDN that delivers the tile data
-export const FEATURE_TILE_BASE_URL = 'https://d3jqyw10j8e7p9.cloudfront.net';
-const FEATURE_TILE_PATH = 'data-pipeline/data/score/tiles';
-
-// This is the URL for the CDN that delivers the application
-// const APP_BASE_URL = 'https://d2zjid6n5ja2pt.cloudfront.net';
 const XYZ_SUFFIX = '{z}/{x}/{y}.pbf';
-
 export const featureURLForTilesetName = (tilesetName :string ) : string => {
-  return `${FEATURE_TILE_BASE_URL}/${FEATURE_TILE_PATH}/${tilesetName}/${XYZ_SUFFIX}`;
+  return [
+    process.env.GATSBY_DATA_ROOT_PATH,
+    process.env.GATSBY_DATA_PIPELINE_SCORE_PATH,
+    process.env.GATSBY_MAP_TILES_PATH,
+    tilesetName,
+    XYZ_SUFFIX,
+  ].join('/');
 };
 export const FEATURE_TILE_HIGH_ZOOM_URL = featureURLForTilesetName('high');
 export const FEATURE_TILE_LOW_ZOOM_URL = featureURLForTilesetName('low');

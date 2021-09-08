@@ -11,6 +11,7 @@ This README contains the following content:
 
 ## Installing and running the client site
 
+### Via npm
 1. Confirm you have the base required software installed. See [INSTALLATION](INSTALLATION.md) for more details.
 1. Install yarn if you do not have it yet. Open your terminal and run `sudo npm install -global yarn`. This works on MacOS and Win10. To confirm it is installed, run `yarn -v`. A version number should be returned.
 1. Navigate to the base directory of this repository, and go to the `client` directory (`cd client`).
@@ -19,6 +20,22 @@ This README contains the following content:
 1. Open your browser and navigate to http://localhost:8000
 
 _Note that while this app uses npm as the package manager, yarn is required to build the [uswds](https://github.com/uswds/uswds) library._
+
+### Via docker
+- Launch VS code in the top level directory (above client)
+- Install the Microsoft docker VS code extension
+- Type `docker-compose up`
+- Running this on MacBook Pro with a 2.6GHz 6-core i7 with 16 GB of memory can take upto 20 minutes to complete.
+
+#### Changing the source of tile / map layer
+If you don't want to use the local data-pipeline location for getting the tile / map layers, you can change the 
+DATA_SOURCE env variable in the docker-compose.yml file to development and it will point to the CDN for the tile / 
+map layer.
+
+#### Troubleshooting docker
+
+- If an error is thrown about [running out of space](https://medium.com/@wlarch/no-space-left-on-device-when-using-docker-compose-why-c4a2c783c6f6) on device see this for ways to reclaim space.
+
 
 ### Viewing data on the map
 
