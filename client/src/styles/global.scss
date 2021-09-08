@@ -1,3 +1,7 @@
+// other CSS libraries:
+@import "~@trussworks/react-uswds/lib/index.css";
+@import "../../node_modules/mapbox-gl/dist/mapbox-gl.css";
+
 /*
 According to the fundamental usage of USWDS:
 https://designsystem.digital.gov/documentation/fundamentals/
@@ -11,20 +15,15 @@ There are 3 things that should be included in this file:
 // 2. Point to the USWDS source code:
 @import "../../node_modules/uswds";
 
-// Point to other CSS libraries:
-@import "~@trussworks/react-uswds/lib/index.css";
-@import "../../node_modules/mapbox-gl/dist/mapbox-gl.css";
-
-
+// 3. Include or point to your project's custom Sass
 /* 
-  3. Include or point to your project's custom Sass
   Instead of having a separate file for these styles, all styles are being placed here.
-    - Global vars
-    - Layout styles
-    --  Header styles
-    --  Main content styles
-    --  Footer styles
-    - Component styles
+  - Global styles
+  - Layout styles
+    -- Header styles
+    -- Main content styles
+    -- Footer styles
+  - Component styles
     -- Alert styles
     -- Map styles
     -- Timeline/process list styles
@@ -32,16 +31,29 @@ There are 3 things that should be included in this file:
 */
 
 
-/* 
-******************************
-*      GLOBAL VARS
-****************************** 
-*/ 
+
+
+/***************** GLOBAL STYLES **************************************************************/
 
 $primary-color: #112f4e;
 $j40-blue-background-color: #EFF6FB;
 
-// Base Styles for Typography
+
+h1 {
+  @include typeset('sans', '3xl', 2);  // sets font family, size and line-height
+  @include u-text('bold'); // sets font-weight 
+  @include u-margin-top(5);
+  @include u-margin-bottom(0);
+}
+
+h2 {
+  @include typeset('sans', 'xl', 2);  // sets font family, size and line-height
+  @include u-text('bold'); // sets font-weight 
+  @include u-margin-top(4);
+  @include u-margin-bottom(0);
+}
+
+
 
 
 /***************** LAYOUT STYLES **************************************************************
@@ -142,9 +154,6 @@ components include:
 
 #main-content {
   border-top: 0;
-  h1 {
-    // font-size: unit('3xl');
-  }
 }
 
 
