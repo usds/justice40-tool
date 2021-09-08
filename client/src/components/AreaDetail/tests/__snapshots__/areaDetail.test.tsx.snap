@@ -67,20 +67,20 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
       </li>
     </ul>
     <div>
-      <div>
-        INDICATORS
-      </div>
-      <div>
-        PERCENTILE (0-100)
-      </div>
+      <h6>
+        Inidicators
+      </h6>
+      <h6>
+        Percentile (0-100)
+      </h6>
     </div>
     <li
       data-cy="indicatorBox"
     >
       <div>
-        <div>
+        <h4>
           Poverty
-        </div>
+        </h4>
         <div>
           Household income is less than or equal to twice the federal "poverty level"
         </div>
@@ -98,9 +98,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
       data-cy="indicatorBox"
     >
       <div>
-        <div>
+        <h4>
           Education
-        </div>
+        </h4>
         <div>
           Percent of people age 25 or older that didn’t get a high school diploma
         </div>
@@ -118,9 +118,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
       data-cy="indicatorBox"
     >
       <div>
-        <div>
+        <h4>
           Linguistic isolation
-        </div>
+        </h4>
         <div>
           Households in which all members speak a non-English language and speak English less than "very well"
         </div>
@@ -138,9 +138,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
       data-cy="indicatorBox"
     >
       <div>
-        <div>
+        <h4>
           Unemployment rate
-        </div>
+        </h4>
         <div>
           Number of unemployed people as a percentage of the labor force
         </div>
@@ -158,9 +158,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
       data-cy="indicatorBox"
     >
       <div>
-        <div>
+        <h4>
           Housing Burden
-        </div>
+        </h4>
         <div>
           Households that are low income and spend more than 30% of their income to housing costs
         </div>

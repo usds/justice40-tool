@@ -91,12 +91,12 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     },
     indicatorColumnHeader: {
       id: 'areaDetail.indicators.indicatorColumnHeader',
-      defaultMessage: 'INDICATORS',
+      defaultMessage: 'Inidicators',
       description: 'the population of the feature selected',
     },
     percentileColumnHeader: {
       id: 'areaDetail.indicators.percentileColumnHeader',
-      defaultMessage: 'PERCENTILE (0-100)',
+      defaultMessage: 'Percentile (0-100)',
       description: 'the population of the feature selected',
     },
     poverty: {
@@ -207,14 +207,14 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
         </li>
       </ul>
       <div className={styles.divider}>
-        <div>{intl.formatMessage(messages.indicatorColumnHeader)}</div>
-        <div>{intl.formatMessage(messages.percentileColumnHeader)}</div>
+        <h6>{intl.formatMessage(messages.indicatorColumnHeader)}</h6>
+        <h6>{intl.formatMessage(messages.percentileColumnHeader)}</h6>
       </div>
 
       {indicators.map((indicator, index) => (
         <li key={index} className={styles.indicatorBox} data-cy={'indicatorBox'}>
           <div>
-            <div className={styles.indicatorTitle}>{indicator.label}</div>
+            <h4>{indicator.label}</h4>
             <div className={styles.indicatorDescription}>
               {indicator.description}
             </div>

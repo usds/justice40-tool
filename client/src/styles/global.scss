@@ -55,10 +55,10 @@ h3 {
   @include j40-headings('lg', 2, 4, 'bold');
 }
 h4 {
-  @include j40-headings('lg', 1, 3, 'bold');
+  @include j40-headings('sm', 1, 3, 'bold');
 }
 h5 {
-  @include j40-headings('sm', 3, 0, 'bold');
+  @include j40-headings('sm', 4, 0, 'bold');
 }
 h6 {
   @include j40-headings('3xs', 1, 0, 'normal');
