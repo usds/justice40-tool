@@ -93,6 +93,16 @@
       "args": [
         "update"
       ]
-    }
+    },
+    {
+      "name": "upload map tiles to s3",
+      "type": "bash",
+      "request": "launch",
+      "module": "poetry",
+      "args": [
+        "update"
+      ]
+    },
+    // aws s3 sync ./data_pipeline/data/score/tiles/ s3://justice40-data/data-pipeline/data/score/tiles --acl public-read --delete
   ]
 }
