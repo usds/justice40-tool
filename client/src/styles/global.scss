@@ -46,6 +46,11 @@ $j40-blue-background-color: #EFF6FB;
   @include u-margin-bottom(0);
 }
 
+@mixin j40-mb($space-token) {
+  @include u-margin-bottom($space-token);
+};
+
+
 h1 {
   @include j40-headings('3xl', 2, 5, 'bold');
 }
@@ -77,6 +82,15 @@ p {
   @include u-margin-bottom(0);
 }
 
+// 40 pixel margin-bottom
+.j40-mb-5 {
+  @include j40-mb(5)
+}
+
+// 24 pixel margin-bottom
+.j40-mb-3 {
+  @include j40-mb(3)
+}
 /***************** LAYOUT STYLES **************************************************************
 This section will outline styles for components that are on each page. These 
 components include:
