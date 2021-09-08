@@ -9,7 +9,7 @@ $alertInfoColor: #e7f6f8;
   margin: 1rem 1.2rem 1rem 2.5rem;
   font-size: 0.8em;
   border: 1px solid #8c9297;
-  padding: 0 1.8rem;
+  padding: 1rem 1.8rem 0;
   flex: 1;
   color: $headingFontColor;
 
@@ -23,9 +23,6 @@ $alertInfoColor: #e7f6f8;
   }
 }
 
-.legendHeader {
-  margin-bottom: 0;
-}
 
 .swatchContainer {
   display: flex;
