@@ -38,6 +38,7 @@ There are 3 things that should be included in this file:
 $primary-color: #112f4e;
 $j40-blue-background-color: #EFF6FB;
 
+// All headings (h1 - h6) created from this base mixin
 @mixin j40-headings($font-size-token, $line-height-token, $margin-top-token, $font-weight-token) {
   @include typeset('sans', $font-size-token, $line-height-token);  // sets font family, size and line-height
   @include u-margin-top($margin-top-token);
@@ -48,20 +49,32 @@ $j40-blue-background-color: #EFF6FB;
 h1 {
   @include j40-headings('3xl', 2, 5, 'bold');
 }
+
 h2 {
   @include j40-headings('xl', 2, 4, 'bold');
 }
+
 h3 {
   @include j40-headings('lg', 2, 4, 'bold');
 }
+
 h4 {
   @include j40-headings('sm', 1, 3, 'bold');
 }
+
 h5 {
   @include j40-headings('sm', 4, 0, 'bold');
 }
+
 h6 {
   @include j40-headings('3xs', 1, 0, 'normal');
+}
+
+p {
+  @include typeset('sans', 'sm', 4);  
+  @include u-margin-top(2.5);
+  @include u-text('normal'); 
+  @include u-margin-bottom(0);
 }
 
 /***************** LAYOUT STYLES **************************************************************
@@ -482,6 +495,10 @@ ul.j40-process-nested-list {
 
     .j40-aboutcard-link {
       font-weight: bold;
+    }
+
+    div.j40-aboutcard-sm-link {
+      @include u-margin-top(2);
     }
   }
 }
