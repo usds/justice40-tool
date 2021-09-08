@@ -68,6 +68,9 @@ disable = [
 [tool.pylint.FORMAT]
 max-line-length = 150
 
+[tool.pylint.typecheck]
+generated-members = "pandas.*" # fixes E1101 for ETL.df 
+
 [tool.pylint.SIMILARITIES]
 # Configures how pylint detects repetitive code
 ignore-comments = "yes"
