@@ -1,8 +1,11 @@
 import * as React from 'react';
 import {Grid} from '@trussworks/react-uswds';
+import {useIntl} from 'gatsby-plugin-intl';
+import {defineMessages} from 'react-intl';
 
 import AlertWrapper from '../components/AlertWrapper';
 import DatasetContainer from '../components/DatasetContainer';
+import DownloadPacket from '../components/DownloadPacket';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 import ScoreStepsList from '../components/scoreStepsList';
@@ -13,6 +16,30 @@ interface MethodPageProps {
 
 // markup
 const IndexPage = ({location}: MethodPageProps) => {
+  const intl = useIntl();
+  const messages = defineMessages({
+    methodologyPageHeader: {
+      id: 'methodology.page.header.text',
+      defaultMessage: 'Methodology',
+      description: 'methodology page header text',
+    },
+    methodologyPagep1: {
+      id: 'methodology.page.paragraph.first',
+      defaultMessage: 'The cumulative index score is a metric that is intended to assist Federal agencies'+
+      ' in identifying disadvantaged communities for the purposes of the Justice 40'+
+      ' Initiative. The score methodology and included data sets are currently in beta and'+
+      ' may change over time.',
+      description: 'methodology page paragraph 1',
+    },
+    methodologyPagep2: {
+      id: 'methodology.page.paragraph.second',
+      defaultMessage: 'Learn about the datasets used in the cumulative score and read about'+
+       ' how the score is calculated. Download the list of prioritized communities along with the datasets'+
+       ' used in the score.',
+      description: 'methodology page paragraph 2',
+    },
+  });
+
   return (
     <Layout location={location}>
 
@@ -21,37 +48,22 @@ const IndexPage = ({location}: MethodPageProps) => {
       </J40MainGridContainer>
 
       <J40MainGridContainer className={'j40-main-content'}>
-        <Grid row>
-          <Grid col>
+        <h1>{intl.formatMessage(messages.methodologyPageHeader)}</h1>
+        <Grid row gap>
+          <Grid col={12} tablet={{col: 6}}>
             <section>
-              <h1>Methodology</h1>
               <p>
-            The Just Progress tool combines demographic, environmental, and
-            socio-economic data to generate a cumulative index score, referred
-            to as the Just Progress Index. The tool currently utilizes
-            national,
-            publically-available data from the United States Census Bureau’s
-            American Community Survey (ACS) and the EPA’s EJScreen tool.
+                {intl.formatMessage(messages.methodologyPagep1)}
               </p>
               <p>
-            The various inputs into the Just Progress Index are averaged into
-            2 categories: Pollution Burden and Demographics.
-              </p>
-              <p>
-            Pollution Burden: health risks arising from proximity and
-            potential exposures to pollution and other adverse environmental
-            conditions
-              </p>
-              <p>
-            Demographics: sensitive populations and socioeconomic factors that
-            make a community more vulnerable
-              </p>
-              <p>
-                <b>Pollution Burden average x Demographics average = Just Progress
-              Index</b>
+                {intl.formatMessage(messages.methodologyPagep2)}
               </p>
             </section>
-          </Grid></Grid>
+          </Grid>
+          <Grid col={12} tablet={{col: 6}}>
+            <DownloadPacket />
+          </Grid>
+        </Grid>
       </J40MainGridContainer>
 
       <J40MainGridContainer fullWidth={true}>

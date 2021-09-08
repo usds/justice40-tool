@@ -1,20 +1,15 @@
 $primary-color: #112f4e;
 
 .downloadBoxContainer {
-    flex: 0 0 350px;
-    // flex: 1;
-    // border: 1px solid red;
 
     color: whitesmoke;
     margin: auto;
 
     .downloadBox {
       background-color: $primary-color;
-      min-width: 400px;
       border-radius: 6px 6px;
 
       .downloadBoxTextBox {
-        // border: 2px solid green;
         padding: 25px 25px;
         display: flex;
         flex-direction: column;
