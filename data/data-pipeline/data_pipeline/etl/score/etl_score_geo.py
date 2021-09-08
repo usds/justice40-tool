@@ -26,8 +26,8 @@ class GeoScoreETL(ExtractTransformLoad):
             self.DATA_PATH / "census" / "geojson" / "us.json"
         )
 
-        self.TARGET_SCORE_NAME = "Score E (percentile)"
-        self.TARGET_SCORE_RENAME_TO = "E_SCORE"
+        self.TARGET_SCORE_NAME = "Score D (percentile)"
+        self.TARGET_SCORE_RENAME_TO = "D_SCORE"
 
         self.NUMBER_OF_BUCKETS = 10
 
