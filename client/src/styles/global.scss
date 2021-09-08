@@ -47,13 +47,18 @@ h1 {
 }
 
 h2 {
-  @include typeset('sans', 'xl', 2);  // sets font family, size and line-height
-  @include u-text('bold'); // sets font-weight 
+  @include typeset('sans', 'xl', 2); 
+  @include u-text('bold'); 
   @include u-margin-top(4);
   @include u-margin-bottom(0);
 }
 
-
+h3 {
+  @include typeset('sans', 'lg', 2); 
+  @include u-text('bold'); 
+  @include u-margin-top(4);
+  @include u-margin-bottom(0);
+}
 
 
 /***************** LAYOUT STYLES **************************************************************
@@ -150,6 +155,9 @@ components include:
 /* this is used by J40MainGridContainer to show a blue background */
 .j40-main-grid-blue-bk {
   background-color: $j40-blue-background-color;
+
+  // This style is to remove the margin collapse occuring
+  border-top: 1px solid $j40-blue-background-color;
 }
 
 #main-content {

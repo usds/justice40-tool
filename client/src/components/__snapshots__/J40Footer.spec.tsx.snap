@@ -9,7 +9,7 @@ exports[`J40Footer renders correctly 1`] = `
       class="usa-footer__primary-section"
     >
       <div
-        class="grid-container-desktop-lg j40-grid-container "
+        class="grid-container-desktop-lg"
         data-testid="gridContainer"
       >
         <div
@@ -147,7 +147,7 @@ exports[`J40Footer renders correctly 1`] = `
       class="usa-footer__secondary-section"
     >
       <div
-        class="grid-container-desktop-lg j40-grid-container "
+        class="grid-container-desktop-lg"
         data-testid="gridContainer"
       >
         <div

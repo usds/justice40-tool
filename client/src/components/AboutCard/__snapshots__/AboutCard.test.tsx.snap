@@ -28,20 +28,13 @@ exports[`rendering of the AboutCard checks if component renders 1`] = `
           class="grid-row"
           data-testid="grid"
         >
-          <h3
-            class="j40-section-header"
-            data-cy="about-justice-40-heading"
-          >
+          <h3>
             Test Header
           </h3>
-          <div
-            class="j40-section-body"
-          >
+          <div>
             Content body of the action card.
           </div>
-          <div
-            class="j40-section-footer"
-          >
+          <div>
             <a
               class="j40-aboutcard-link"
               href="#"
