@@ -9,63 +9,100 @@
       "type": "python",
       "request": "launch",
       "module": "data_pipeline.application",
-      "args": ["score-run"]
+      "args": [
+        "score-run"
+      ]
     },
     {
       "name": "Data Cleanup",
       "type": "python",
       "request": "launch",
       "module": "data_pipeline.application",
-      "args": ["data-cleanup"]
+      "args": [
+        "data-cleanup"
+      ]
     },
     {
       "name": "Census Cleanup",
       "type": "python",
       "request": "launch",
       "module": "data_pipeline.application",
-      "args": ["census-cleanup"]
+      "args": [
+        "census-cleanup"
+      ]
     },
     {
       "name": "Download Census",
       "type": "python",
       "request": "launch",
       "module": "data_pipeline.application",
-      "args": ["census-data-download"]
+      "args": [
+        "census-data-download"
+      ]
     },
     {
       "name": "Score Full Run",
       "type": "python",
       "request": "launch",
       "module": "data_pipeline.application",
-      "args": ["score-full-run"]
+      "args": [
+        "score-full-run"
+      ]
+    },
+    {
+      "name": "Combine Score and GeoJSON",
+      "type": "python",
+      "request": "launch",
+      "module": "data_pipeline.application",
+      "args": [
+        "geo-score"
+      ]
     },
     {
       "name": "Generate Map Tiles",
       "type": "python",
       "request": "launch",
       "module": "data_pipeline.application",
-      "args": ["generate-map-tiles"]
+      "args": [
+        "generate-map-tiles"
+      ]
     },
     {
       "name": "ETL Run",
       "type": "python",
       "request": "launch",
       "module": "data_pipeline.application",
-      "args": ["etl-run"]
+      "args": [
+        "etl-run"
+      ]
     },
     {
       "name": "poetry install",
       "type": "python",
       "request": "launch",
       "module": "poetry",
-      "args": ["install"]
+      "args": [
+        "install"
+      ]
     },
     {
       "name": "poetry update",
       "type": "python",
       "request": "launch",
       "module": "poetry",
-      "args": ["update"]
-    }
+      "args": [
+        "update"
+      ]
+    },
+    {
+      "name": "upload map tiles to s3",
+      "type": "bash",
+      "request": "launch",
+      "module": "poetry",
+      "args": [
+        "update"
+      ]
+    },
+    // aws s3 sync ./data_pipeline/data/score/tiles/ s3://justice40-data/data-pipeline/data/score/tiles --acl public-read --delete
   ]
 }
