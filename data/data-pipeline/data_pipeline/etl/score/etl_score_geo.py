@@ -103,6 +103,10 @@ class GeoScoreETL(ExtractTransformLoad):
             crs="EPSG:4326",
         )
 
+        # round to 2 decimals
+        decimals = pd.Series([2], index=[self.TARGET_SCORE_RENAME_TO])
+        self.geojson_score_usa_low = self.geojson_score_usa_low.round(decimals)
+
     def _aggregate_to_tracts(
         self, block_group_df: gpd.GeoDataFrame
     ) -> gpd.GeoDataFrame:
