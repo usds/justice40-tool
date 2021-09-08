@@ -153,7 +153,7 @@ class ExtractTransformLoad:
 
         # check that the GEOID cols in the output match census data
         geoid_cols = [BLOCK_COL, TRACT_COL]
-        assert self.FIPS_CODES.equals(df_output[[BLOCK_COL]])
+        assert self.FIPS_CODES.equals(df_output[geoid_cols])
 
         # check that the score columns are in the output
         for col in self.SCORE_COLS:
