@@ -50,7 +50,7 @@
       ]
     },
     {
-      "name": "Score Geo",
+      "name": "Combine Score and GeoJSON",
       "type": "python",
       "request": "launch",
       "module": "data_pipeline.application",
