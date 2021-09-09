@@ -4,10 +4,15 @@ This document tries to capture the process for designers and developers
 - Developer process
 
 ## Designer process
-- Designers are using a tool to capture designs and mocks
-- Designs capture the app/site on various widths that are supported
-- Designs will show spacing / typography for most commonly used components using USWDS tokens.
-- TBD to be filled in by design
+- Designers are using a Sketch library from USWDS to ensure elements brought into the design are using USWDS 
+components and tokens.
+- <h> and <p> tags were defined using USWDS spacing, color, and typography tokens. 
+- Designs show <h> and <p> tags in context using realistic content (though content is subject to change). 
+- Designs also show additional spacing tokens used for containers.
+- Designs show the various breakpoints (using USWDS tokens as guidance) to indicate how elements shift between 
+narrow and wide screen widths.
+- If there is not a USWDS component available to fulfill an interaction need, a custom design is created, 
+keeping in mind scalability, the larger design system, and responsiveness.
 
 ## Developer process
 There are a number of ways that the app is styled. 
