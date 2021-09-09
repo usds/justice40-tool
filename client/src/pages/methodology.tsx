@@ -26,7 +26,7 @@ const IndexPage = ({location}: MethodPageProps) => {
     methodologyPagep1: {
       id: 'methodology.page.paragraph.first',
       defaultMessage: 'The methodology for determining disadvantaged communities for the purposes of '+
-      ' Justice40 initiative is currently in progress.',
+      ' the Justice40 Initiative is currently in progress.',
       description: 'methodology page paragraph 1',
     },
   });
