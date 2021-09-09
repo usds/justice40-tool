@@ -80,7 +80,7 @@ p {
 }
 
 p.secondary {
-  @include j40-element('3xs', 4, 'normal', 1);
+  @include j40-element('3xs', 4, 'normal', .5);
 }
 
 // 40 pixel margin-bottom
