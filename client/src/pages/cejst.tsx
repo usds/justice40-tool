@@ -24,39 +24,45 @@ const CEJSTPage = ({location}: IMapPageProps) => {
       <AlertWrapper showBetaAlert={true} showLimitedDataAlert={false}/>
     </J40MainGridContainer>
 
-    <J40MainGridContainer className={'j40-main-content'}>
-      <Grid row><Grid col>
-        <section>
-          <h1 className={styles.explorePageHeader}>Explore the tool</h1>
-          <div className={styles.explorePageSubHeader}>
-            <div className={styles.explorePageHeaderText}>
-              <p>
+    <J40MainGridContainer>
+      <Grid row className={'j40-mb-5'}>
+        <Grid col>
+          <section>
+            <h1 className={styles.explorePageHeader}>Explore the tool</h1>
+            <div className={styles.explorePageSubHeader}>
+              <div className={styles.explorePageHeaderText}>
+                <p>
               Zoom into the map to see which communities the tool has currently
               identified as prioritized (the top 25% of communities) or on the
               threshold. Learn more about the formula and datasets that were
               used to prioritize these communities on the
-                {` `}
-                <Link to={'/methodology'}>Data & methodology</Link>
-                {` `}
+                  {` `}
+                  <Link to={'/methodology'}>Data & methodology</Link>
+                  {` `}
               page.
-              </p>
+                </p>
+              </div>
+              <MapLegend />
             </div>
-            <MapLegend />
-          </div>
-        </section>
-      </Grid></Grid>
+          </section>
+        </Grid>
+      </Grid>
 
-      <Grid row><Grid col>
-        <section>
-          <MapWrapper location={location}/>
-        </section>
-      </Grid></Grid>
+      <Grid row>
+        <Grid col>
+          <section>
+            <MapWrapper location={location}/>
+          </section>
+        </Grid>
+      </Grid>
 
-      <Grid row><Grid col>
-        <section>
-          <HowYouCanHelp/>
-        </section>
-      </Grid></Grid>
+      <Grid row>
+        <Grid col>
+          <section>
+            <HowYouCanHelp/>
+          </section>
+        </Grid>
+      </Grid>
     </J40MainGridContainer>
   </Layout>);
 };

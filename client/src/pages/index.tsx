@@ -2,10 +2,11 @@ import * as React from 'react';
 import {defineMessages} from 'react-intl';
 import {FormattedMessage, useIntl} from 'gatsby-plugin-intl';
 
+import AboutCard from '../components/AboutCard/AboutCard';
+import AboutCardsContainer from '../components/AboutCard/AboutCardsContainer';
 import AlertWrapper from '../components/AlertWrapper';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
-import AboutCard from '../components/AboutCard/AboutCard';
 
 // @ts-ignore
 import aboutUSMapImg from '../images/about-usmap.svg';
@@ -22,7 +23,6 @@ import commentIcon from // @ts-ignore
 
 import githubIcon from // @ts-ignore
   '/node_modules/uswds/dist/img/usa-icons/github.svg';
-import AboutCardsContainer from '../components/AboutCard/AboutCardsContainer';
 
 
 interface IndexPageProps {
@@ -79,7 +79,7 @@ const IndexPage = ({location}: IndexPageProps) => {
         <AlertWrapper showBetaAlert={true} showLimitedDataAlert={false}/>
       </J40MainGridContainer>
 
-      <J40MainGridContainer className={'j40-about-page'}>
+      <J40MainGridContainer>
 
         <AboutCardsContainer>
           <AboutCard
@@ -123,21 +123,22 @@ const IndexPage = ({location}: IndexPageProps) => {
                 infrastructure.
                   `}/>
 
-            <p><FormattedMessage
-              id={'index.aboutContent.p3'}
-              description={'paragraph 3 of main content on index page'}
-              defaultMessage={`
+            <p>
+              <FormattedMessage
+                id={'index.aboutContent.p3'}
+                description={'paragraph 3 of main content on index page'}
+                defaultMessage={`
                   Read more about the Justice40 Initiative in President Biden’s 
                   {presidentLink}
                   `}
-              values={{
-                presidentLink:
+                values={{
+                  presidentLink:
                   <a
                     href={intl.formatMessage(messages.presidentalLinkUri)}
                     target="_blank"
                     rel="noreferrer">{intl.formatMessage(messages.presidentalLinkLabel)}
                   </a>,
-              }}/>
+                }}/>
             </p>
 
           </AboutCard>
@@ -147,8 +148,8 @@ const IndexPage = ({location}: IndexPageProps) => {
       <J40MainGridContainer
         fullWidth={true}
         blueBackground={true}>
-        <J40MainGridContainer
-          className={'j40-about-page'}>
+        <J40MainGridContainer>
+          <h2>How to get started</h2>
           <AboutCardsContainer>
             <AboutCard
               size={'small'}
@@ -174,8 +175,8 @@ const IndexPage = ({location}: IndexPageProps) => {
         </J40MainGridContainer>
       </J40MainGridContainer>
 
-      <J40MainGridContainer
-        className={'j40-about-page'}>
+      <J40MainGridContainer>
+        <h2>Get involved</h2>
         <AboutCardsContainer>
           <AboutCard
             size={'small'}

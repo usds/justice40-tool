@@ -1,8 +1,11 @@
 import * as React from 'react';
 import Layout from '../components/layout';
 
+
+// THIS COMPONENT IS NOT BEING USED
+
 // @ts-ignore
-import renewIcon from '/node_modules/uswds/dist/img/usa-icons/autorenew.svg';
+// import renewIcon from '/node_modules/uswds/dist/img/usa-icons/autorenew.svg';
 
 interface TimelinePageProps {
   location: Location;
@@ -10,17 +13,17 @@ interface TimelinePageProps {
 
 const TimelinePage = ({location}: TimelinePageProps) => {
   return (<Layout location={location}>
-    <section className={'usa-prose'}>
-      <h1>Timeline</h1>
+    <section>
+      {/* <h1>Timelin</h1>
       <h2>Throughout the Process</h2>
       <div className="grid-col">
         <div className="grid-row grid-gap-lg">
           <div className="grid-col-1">
             <img
-              className={'flex-align-self-center width-4'}
+              className={''}
               src={renewIcon} alt={'renew icon'}/>
           </div>
-          <div className={'usa-prose text-asset-container ' +
+          <div className={'text-asset-container ' +
           'grid-col-fill'}>
             <p>Continuously engage with stakeholders and community
               members to get feedback on the screening tool, scoring,
@@ -55,7 +58,7 @@ const TimelinePage = ({location}: TimelinePageProps) => {
           <p>Create a public scorecard to ensure accountability of
               investments by February 2022.</p>
         </li>
-      </ol>
+      </ol> */}
     </section>
   </Layout>
   );

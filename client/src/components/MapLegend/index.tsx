@@ -74,7 +74,7 @@ const MapLegend = () => {
 
   return (
     <div className={styles.legendContainer}>
-      <h3 className={styles.legendHeader}>{intl.formatMessage(constants.EXPLORE_TOOL_PAGE_TEXT.LEGEND_LABEL)}</h3>
+      <h6>{intl.formatMessage(constants.EXPLORE_TOOL_PAGE_TEXT.LEGEND_LABEL)}</h6>
       <div className={styles.swatchContainer}>
         <div className={styles.legendItem}>
           <div className={styles.colorSwatch} id={styles.prioritized} />

@@ -28,8 +28,8 @@ const AboutCard = (props: React.PropsWithChildren<AboutCardProps>) => {
 
           <Grid tablet={{col: 9}}>
             <Grid row>
-              <h3 className={'j40-section-header'} data-cy={'about-screen-tool-heading'}>{props.header} </h3>
-              <div className={'j40-section-body'}>{props.children}</div>
+              <h2 data-cy={'about-screen-tool-heading'}>{props.header} </h2>
+              <p>{props.children}</p>
             </Grid>
           </Grid>
 
@@ -51,9 +51,9 @@ const AboutCard = (props: React.PropsWithChildren<AboutCardProps>) => {
 
           <Grid tablet={{col: 9}}>
             <Grid row>
-              <h3 className={'j40-section-header'} data-cy={'about-justice-40-heading'}>{props.header}</h3>
-              <div className={'j40-section-body'}>{props.children}</div>
-              <div className={'j40-section-footer'}>
+              <h3>{props.header}</h3>
+              <p>{props.children}</p>
+              <div className={'j40-aboutcard-sm-link'}>
                 {props.actionOpenInNewTab ?
                   <a
                     className={'j40-aboutcard-link'}

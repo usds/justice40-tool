@@ -47,7 +47,7 @@ const IndexPage = ({location}: MethodPageProps) => {
         <AlertWrapper showBetaAlert={true} showLimitedDataAlert={false}/>
       </J40MainGridContainer>
 
-      <J40MainGridContainer className={'j40-main-content'}>
+      <J40MainGridContainer>
         <h1>{intl.formatMessage(messages.methodologyPageHeader)}</h1>
         <Grid row gap>
           <Grid col={12} tablet={{col: 6}}>
@@ -75,9 +75,11 @@ const IndexPage = ({location}: MethodPageProps) => {
       </J40MainGridContainer>
 
       <J40MainGridContainer>
-        <Grid row><Grid col>
-          <ScoreStepsList/>
-        </Grid></Grid>
+        <Grid row>
+          <Grid col>
+            <ScoreStepsList/>
+          </Grid>
+        </Grid>
       </J40MainGridContainer>
     </Layout>
   );

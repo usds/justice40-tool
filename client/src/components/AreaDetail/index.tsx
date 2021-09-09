@@ -91,12 +91,12 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     },
     indicatorColumnHeader: {
       id: 'areaDetail.indicators.indicatorColumnHeader',
-      defaultMessage: 'INDICATORS',
+      defaultMessage: 'Indicators',
       description: 'the population of the feature selected',
     },
     percentileColumnHeader: {
       id: 'areaDetail.indicators.percentileColumnHeader',
-      defaultMessage: 'PERCENTILE (0-100)',
+      defaultMessage: 'Percentile (0-100)',
       description: 'the population of the feature selected',
     },
     poverty: {
@@ -181,7 +181,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
           <div className={styles.topRowSubTitle}>{intl.formatMessage(messages.percentile)}</div>
         </div>
         <div className={styles.categorization}>
-          <div className={styles.topRowTitle}>{intl.formatMessage(messages.categorization)}</div>
+          <h6 className={styles.topRowTitle}>{intl.formatMessage(messages.categorization)}</h6>
           <div className={styles.priority}>
             <div className={categoryCircleStyle} />
             <div className={styles.prioritization}>{categorization}</div>
@@ -207,17 +207,17 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
         </li>
       </ul>
       <div className={styles.divider}>
-        <div>{intl.formatMessage(messages.indicatorColumnHeader)}</div>
-        <div>{intl.formatMessage(messages.percentileColumnHeader)}</div>
+        <h6>{intl.formatMessage(messages.indicatorColumnHeader)}</h6>
+        <h6>{intl.formatMessage(messages.percentileColumnHeader)}</h6>
       </div>
 
       {indicators.map((indicator, index) => (
         <li key={index} className={styles.indicatorBox} data-cy={'indicatorBox'}>
           <div>
-            <div className={styles.indicatorTitle}>{indicator.label}</div>
-            <div className={styles.indicatorDescription}>
+            <h4>{indicator.label}</h4>
+            <p className={'secondary'}>
               {indicator.description}
-            </div>
+            </p>
           </div>
           <div className={styles.indicatorValue}>
             {readablePercentile(indicator.value)}

@@ -3,7 +3,7 @@
 import React, {ReactNode} from 'react';
 import {GridContainer} from '@trussworks/react-uswds';
 
-interface ILayoutProps {
+interface IJ40MainGridContainer {
   children: ReactNode,
   fullWidth?: boolean,
    blueBackground?: boolean,
@@ -14,19 +14,19 @@ const J40MainGridContainer = ({
   children,
   fullWidth = false,
   blueBackground = false,
-  className = ''}: ILayoutProps) => {
+  className = ''}: IJ40MainGridContainer) => {
   // is it a blue background strip?
   className += (blueBackground ? 'j40-main-grid-blue-bk ' : '');
 
   return fullWidth ? (
     <div
-      className={'j40-grid-container ' + className}>
+      className={className}>
       {children}
     </div>
   ) : (
     <GridContainer
       containerSize={'desktop-lg'}
-      className={'j40-grid-container ' + className}>
+      className={className}>
       {children}
     </GridContainer>
   );
