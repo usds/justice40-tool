@@ -140,7 +140,7 @@ _NOTE:_ This may take several minutes or over an hour to fully execute and gener
 
 We use Docker to install the necessary libraries in a container that can be run in any operating system.
 
-*Important*: To be able to run the data Docker containers, you need to increase the memory resoure of your container to at leat 8096 MB.
+*Important*: To be able to run the data Docker containers, you need to increase the memory resource of your container to at leat 8096 MB.
 
 To build the docker container the first time, make sure you're in the root directory of the repository and run `docker-compose build --no-cache`.
 
