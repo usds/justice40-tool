@@ -1,47 +1,109 @@
-/*
-  These are necessary for the image and font urls referenced in the source
-  files to resolve correctly.
-*/
-$theme-image-path: "../../node_modules/uswds/src/img";
-$theme-font-path: "../../node_modules/uswds/src/fonts";
-
-/*
-  Example:
-
-  The url for the hero image in the source file is not currently prefixed by
-  the $theme-image-path above.
-
-  $theme-hero-image: '#{$theme-image-path}/hero.png';
-*/
-
-// Custom USWDS changes to variables go here
-// see https://designsystem.digital.gov/documentation/settings/
-$theme-show-compile-warnings: false;
-$theme-show-notifications: false;
-
-$theme-font-role-heading: "sans";
-
-@import "../../node_modules/uswds";
-
+// other CSS libraries:
 @import "~@trussworks/react-uswds/lib/index.css";
 @import "../../node_modules/mapbox-gl/dist/mapbox-gl.css";
 
-// Custom SASS/CSS goes here
-$j40-max-width: 80ex;
+/*
+According to the fundamental usage of USWDS:
+https://designsystem.digital.gov/documentation/fundamentals/
+
+There are 3 things that should be included in this file:
+*/
+
+// 1. Include or point to a USWDS settings file:
+@import "./uswds-settings.scss";
+
+// 2. Point to the USWDS source code:
+@import "../../node_modules/uswds";
+
+// 3. Include or point to your project's custom Sass
+/* 
+  Instead of having a separate file for these styles, all styles are being placed here.
+  - Global styles
+  - Layout styles
+    -- Header styles
+    -- Main content styles
+    -- Footer styles
+  - Component styles
+    -- Alert styles
+    -- Map styles
+    -- Timeline/process list styles
+    -- About styles
+*/
+
+
+
+
+/***************** GLOBAL STYLES **************************************************************/
+
 $primary-color: #112f4e;
 $j40-blue-background-color: #EFF6FB;
 
-#main-content {
-  border-top: 0;
+// The j40-element mixin is used to create any font element. E.g. <h1>, <p> tags, etc.
+// Arguments to the mixins must be tokens from USWDS
+@mixin j40-element($font-size, $line-height, $font-weight, $margin-top, $margin-bottom: 0) {
+  @include typeset('sans', $font-size, $line-height); 
+  @include u-text($font-weight);  
+  @include u-margin-top($margin-top);
+  @include u-margin-bottom($margin-bottom);
 }
 
-@include at-media("mobile-lg") {
-  .j40-grid-container {
-    line-height: 1.5rem;
-    padding-right: 0;
-  }
+h1 {
+  @include j40-element('3xl', 2, 'bold', 5 );
 }
 
+h2 {
+  @include j40-element('xl', 2, 'bold', 4 );
+}
+
+h3 {
+  @include j40-element('lg', 2, 'bold', 4 );
+}
+
+h4 {
+  @include j40-element('sm', 1, 'bold', 3 );
+}
+
+h5 {
+  @include j40-element('md', 4, 'bold', 0 );
+}
+
+h6 {
+  @include j40-element('3xs', 1, 'normal', 0);
+}
+
+p {
+  @include j40-element('sm', 4, 'normal', 2.5);
+}
+
+p.secondary {
+  @include j40-element('3xs', 4, 'normal', .5);
+}
+
+// 40 pixel margin-bottom
+.j40-mb-5 {
+  @include u-margin-bottom(5)
+}
+
+// 24 pixel margin-bottom
+.j40-mb-3 {
+  @include u-margin-bottom(3)
+}
+
+
+
+
+/***************** LAYOUT STYLES **************************************************************
+This section will outline styles for components that are on each page. These 
+components include:
+
+- header styles
+- main content styles
+- footer styles
+
+******************************
+*      HEADER STYLES
+****************************** 
+*/ 
 .j40-header,
 .j40-primary-nav,
 .j40-header > li > a {
@@ -49,7 +111,7 @@ $j40-blue-background-color: #EFF6FB;
   z-index: 5;
 
   .usa-nav-container {
-    max-width: ($j40-max-width * 2);
+    max-width: 76rem;
   }
 
   span {
@@ -114,7 +176,38 @@ $j40-blue-background-color: #EFF6FB;
   }
 }
 
+
+/* 
+******************************
+*      MAIN CONTENT STYLES
+****************************** 
+*/
+
+/* this is used by J40MainGridContainer to show a blue background */
+.j40-main-grid-blue-bk {
+  background-color: $j40-blue-background-color;
+
+  // This style is to remove the margin collapse occuring
+  border-top: 1px solid $j40-blue-background-color;
+}
+
+#main-content {
+  border-top: 0;
+  min-height: 60vh;
+}
+
+
+/* 
+******************************
+*      FOOTER STYLES
+****************************** 
+*/ 
 .j40-footer {
+
+  .usa-footer__primary-section.pb{
+    @include u-padding-bottom(2);
+  }
+
   .j40-footer-logo {
     font-weight: bold;
   }
@@ -127,72 +220,29 @@ $j40-blue-background-color: #EFF6FB;
       line-height: 1.5;
     }
   }
-}
 
-// spacing top & bottom around main content
-.j40-main-content {
-  @include at-media("mobile-lg") {
-    margin-bottom: 0;
-    margin-top: 2.5rem;
-  }
-
-  h1 {
-    font-size: 2.7rem;
-  }
-
-  h2 {
-    font-size: 1.46rem;
+  .footer-link-first-child{
+    display: inline-block;
+    @include u-margin-top(1.5)
   }
 }
 
-// we can use to to make all section headers consistent
-.j40-section-sm-header {
-  font-weight: bold;
-  padding-bottom: 0.24rem;
-  padding-right: 0.24rem;
-}
-
-.j40-section-sm-body {
-  line-height: 1.5;
-  padding-bottom: 1.2rem;
-  padding-right: 1.2rem;
-
-}
-
-.j40-section-sm-footer {
-  padding-bottom: 0.5rem;
-}
 
 
-// This should really be part of uswds and use $theme-step-indicator-segment-color-complete
-// The Progress element doesn't really support color changing the line connecting progress
-// (like the Steps element does) and the checkbox.
-// The border-left-color required an !important to make work. Maybe add a feature request
-// to have the process list officially support a more Steps-like behavior
-.j40-usa-process-list__item--complete {
-  &::before {
-    color: white;
-    background-color: #00a91c;
-  }
 
-  border-left-color: #005ea2 !important; // todo: fix
-}
+/***************** COMPONENT STYLES **************************************************************
+This section will outline styles that are component specific
 
-// NOTE: uswds `.usa-prose` defines these all as Merriweather Web via $theme-font-role-heading
-.usa-prose {
-  h1,
-  h2,
-  h3,
-  h4 {
-    font-family: Source Sans Pro Web, Helvetica Neue, Helvetica, Roboto, Arial,
-    sans-serif;
-  }
+- alert
+- map
+- timeline
+- about
 
-  p,
-  div {
-    max-width: $j40-max-width;
-  }
-}
+/* 
+******************************
+*      ALERT STYLES
+****************************** 
+*/
 
 .j40-sitealert {
   p {
@@ -224,6 +274,13 @@ $j40-blue-background-color: #EFF6FB;
     margin-bottom: 0;
   }
 }
+
+
+/* 
+******************************
+*      MAP STYLES
+****************************** 
+*/
 
 // Maplibre overrides
 // Note that these need to be here to properly override defaults
@@ -324,6 +381,12 @@ $j40-blue-background-color: #EFF6FB;
 }
 
 
+/* 
+***************************************
+*      TIMELINE / PROCESS LIST STYLES
+*************************************** 
+*/ 
+
 /* the > is for child only syntax in css. This is required so that lists that are nested under the
       list are not affected (e.g. <ul><li><p><ul><li>not styled</li></ul></p></li><ul>*/
 .j40-process-list-wrapper > {
@@ -417,10 +480,12 @@ ul.j40-process-nested-list {
   font-style: italic;
 }
 
-/* this is used by J40MainGridContainer to show a blue background */
-.j40-main-grid-blue-bk {
-  background-color: $j40-blue-background-color;
-}
+
+/* 
+******************************
+*      ABOUT CARD STYLES
+****************************** 
+*/
 
 /* about card - based on datasetCard... need to combine */
 .j40-aboutcard-container {
@@ -436,15 +501,6 @@ ul.j40-process-nested-list {
     .j40-aboutcard-image {
       flex: 1 0 10%;
       align-self: flex-start;
-    }
-
-    .j40-aboutcard-header {
-    }
-
-    .j40-aboutcard-body {
-    }
-
-    .j40-aboutcard-footer {
     }
 
     .j40-aboutcard-link {
@@ -463,19 +519,13 @@ ul.j40-process-nested-list {
       width: 3rem;
     }
 
-    .j40-aboutcard-header {
-    }
-
-    .j40-aboutcard-body {
-    }
-
-    .j40-aboutcard-footer {
-    }
-
     .j40-aboutcard-link {
       font-weight: bold;
     }
-  }
 
+    div.j40-aboutcard-sm-link {
+      @include u-margin-top(2);
+    }
+  }
 }
 

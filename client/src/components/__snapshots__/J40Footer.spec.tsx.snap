@@ -6,10 +6,10 @@ exports[`J40Footer renders correctly 1`] = `
     class="j40-footer"
   >
     <div
-      class="usa-footer__primary-section"
+      class="usa-footer__primary-section pb"
     >
       <div
-        class="grid-container-desktop-lg j40-grid-container "
+        class="grid-container-desktop-lg"
         data-testid="gridContainer"
       >
         <div
@@ -82,6 +82,7 @@ exports[`J40Footer renders correctly 1`] = `
                   class="usa-footer__secondary-link"
                 >
                   <a
+                    class="footer-link-first-child"
                     href="https://www.whitehouse.gov/"
                     rel="noreferrer"
                     target="_blank"
@@ -132,6 +133,7 @@ exports[`J40Footer renders correctly 1`] = `
                   class="usa-footer__secondary-link"
                 >
                   <a
+                    class="footer-link-first-child"
                     href="https://www.usa.gov/"
                   >
                     Find a contact at USA.gov
@@ -147,7 +149,7 @@ exports[`J40Footer renders correctly 1`] = `
       class="usa-footer__secondary-section"
     >
       <div
-        class="grid-container-desktop-lg j40-grid-container "
+        class="grid-container-desktop-lg"
         data-testid="gridContainer"
       >
         <div
@@ -166,11 +168,9 @@ exports[`J40Footer renders correctly 1`] = `
           <div
             class="mobile-lg:grid-col-auto"
           >
-            <p
-              class="j40-footer-logo-heading"
-            >
+            <h5>
               Council on Environmental Quality
-            </p>
+            </h5>
           </div>
         </div>
       </div>

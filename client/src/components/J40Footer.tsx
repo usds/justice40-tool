@@ -73,6 +73,7 @@ const J40Footer = () => {
     [
       intl.formatMessage(messages.moreinfoheader),
       <a
+        className={'footer-link-first-child'}
         key={'whitehouselink2'}
         href={'https://www.whitehouse.gov/'}
         target={'_blank'}
@@ -95,6 +96,7 @@ const J40Footer = () => {
     [
       intl.formatMessage(messages.questionsheader),
       <a
+        className={'footer-link-first-child'}
         key={'contactlink'}
         href={'https://www.usa.gov/'}>
         {intl.formatMessage(messages.contactlink)}
@@ -109,7 +111,7 @@ const J40Footer = () => {
     // `className="mobile-lg:grid-col-6 desktop:grid-col-3">` needs to be
     // `className="mobile-lg:grid-col-12 desktop:grid-col-4">` ugh.
     <footer className={'j40-footer'}>
-      <div className="usa-footer__primary-section">
+      <div className="usa-footer__primary-section pb">
         <J40MainGridContainer>
           <div className={'grid-row grid-gap-4 padding-bottom-6 tablet-lg:grid-col4'}>
             {NAVLINKS.map((links, i) => (
@@ -134,9 +136,7 @@ const J40Footer = () => {
                 src={whitehouseIcon}
                 alt={intl.formatMessage(messages.whitehouselogoalt)}/>
             }
-            heading={<p
-              className={'j40-footer-logo-heading'}>
-              {intl.formatMessage(messages.logotitle)}</p>}
+            heading={<h5>{intl.formatMessage(messages.logotitle)}</h5>}
           />
         </J40MainGridContainer>
       </div>

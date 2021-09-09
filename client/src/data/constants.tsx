@@ -143,7 +143,7 @@ export const EXPLORE_TOOL_PAGE_TEXT = defineMessages({
   },
   LEGEND_LABEL: {
     id: 'legend.colorkey.label',
-    defaultMessage: 'COLOR KEY',
+    defaultMessage: 'Color key',
     description: 'the label of the key in the legend',
   },
 });
