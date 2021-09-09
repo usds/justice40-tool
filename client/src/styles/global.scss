@@ -47,10 +47,6 @@ $j40-blue-background-color: #EFF6FB;
   @include u-margin-bottom($margin-bottom);
 }
 
-@mixin j40-mb($space-token) {
-  @include u-margin-bottom($space-token);
-};
-
 h1 {
   @include j40-element('3xl', 2, 'bold', 5 );
 }
@@ -68,7 +64,7 @@ h4 {
 }
 
 h5 {
-  @include j40-element('sm', 4, 'bold', 0 );
+  @include j40-element('md', 4, 'bold', 0 );
 }
 
 h6 {
@@ -85,12 +81,12 @@ p.secondary {
 
 // 40 pixel margin-bottom
 .j40-mb-5 {
-  @include j40-mb(5)
+  @include u-margin-bottom(5)
 }
 
 // 24 pixel margin-bottom
 .j40-mb-3 {
-  @include j40-mb(3)
+  @include u-margin-bottom(3)
 }
 
 
@@ -207,6 +203,11 @@ components include:
 ****************************** 
 */ 
 .j40-footer {
+
+  .usa-footer__primary-section.pb{
+    @include u-padding-bottom(2);
+  }
+
   .j40-footer-logo {
     font-weight: bold;
   }
@@ -218,6 +219,11 @@ components include:
       display: inline-block;
       line-height: 1.5;
     }
+  }
+
+  .footer-link-first-child{
+    display: inline-block;
+    @include u-margin-top(1.5)
   }
 }
 
