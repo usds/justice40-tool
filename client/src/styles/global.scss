@@ -38,48 +38,49 @@ There are 3 things that should be included in this file:
 $primary-color: #112f4e;
 $j40-blue-background-color: #EFF6FB;
 
-// All headings (h1 - h6) created from this base mixin
-@mixin j40-headings($font-size-token, $line-height-token, $margin-top-token, $font-weight-token) {
-  @include typeset('sans', $font-size-token, $line-height-token);  // sets font family, size and line-height
-  @include u-margin-top($margin-top-token);
-  @include u-text($font-weight-token); // sets font-weight 
-  @include u-margin-bottom(0);
+// The j40-element mixin is used to create any font element. E.g. <h1>, <p> tags, etc.
+// Arguments to the mixins must be tokens from USWDS
+@mixin j40-element($font-size, $line-height, $font-weight, $margin-top, $margin-bottom: 0) {
+  @include typeset('sans', $font-size, $line-height); 
+  @include u-text($font-weight);  
+  @include u-margin-top($margin-top);
+  @include u-margin-bottom($margin-bottom);
 }
 
 @mixin j40-mb($space-token) {
   @include u-margin-bottom($space-token);
 };
 
-
 h1 {
-  @include j40-headings('3xl', 2, 5, 'bold');
+  @include j40-element('3xl', 2, 'bold', 5 );
 }
 
 h2 {
-  @include j40-headings('xl', 2, 4, 'bold');
+  @include j40-element('xl', 2, 'bold', 4 );
 }
 
 h3 {
-  @include j40-headings('lg', 2, 4, 'bold');
+  @include j40-element('lg', 2, 'bold', 4 );
 }
 
 h4 {
-  @include j40-headings('sm', 1, 3, 'bold');
+  @include j40-element('sm', 1, 'bold', 3 );
 }
 
 h5 {
-  @include j40-headings('sm', 4, 0, 'bold');
+  @include j40-element('sm', 4, 'bold', 0 );
 }
 
 h6 {
-  @include j40-headings('3xs', 1, 0, 'normal');
+  @include j40-element('3xs', 1, 'normal', 0);
 }
 
 p {
-  @include typeset('sans', 'sm', 4);  
-  @include u-margin-top(2.5);
-  @include u-text('normal'); 
-  @include u-margin-bottom(0);
+  @include j40-element('sm', 4, 'normal', 2.5);
+}
+
+p.secondary {
+  @include j40-element('3xs', 4, 'normal', 1);
 }
 
 // 40 pixel margin-bottom
@@ -91,6 +92,10 @@ p {
 .j40-mb-3 {
   @include j40-mb(3)
 }
+
+
+
+
 /***************** LAYOUT STYLES **************************************************************
 This section will outline styles for components that are on each page. These 
 components include:

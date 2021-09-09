@@ -91,7 +91,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     },
     indicatorColumnHeader: {
       id: 'areaDetail.indicators.indicatorColumnHeader',
-      defaultMessage: 'Inidicators',
+      defaultMessage: 'Indicators',
       description: 'the population of the feature selected',
     },
     percentileColumnHeader: {
@@ -181,7 +181,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
           <div className={styles.topRowSubTitle}>{intl.formatMessage(messages.percentile)}</div>
         </div>
         <div className={styles.categorization}>
-          <div className={styles.topRowTitle}>{intl.formatMessage(messages.categorization)}</div>
+          <h6 className={styles.topRowTitle}>{intl.formatMessage(messages.categorization)}</h6>
           <div className={styles.priority}>
             <div className={categoryCircleStyle} />
             <div className={styles.prioritization}>{categorization}</div>
@@ -215,9 +215,9 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
         <li key={index} className={styles.indicatorBox} data-cy={'indicatorBox'}>
           <div>
             <h4>{indicator.label}</h4>
-            <div className={styles.indicatorDescription}>
+            <p className={'secondary'}>
               {indicator.description}
-            </div>
+            </p>
           </div>
           <div className={styles.indicatorValue}>
             {readablePercentile(indicator.value)}

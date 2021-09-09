@@ -25,9 +25,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         </div>
       </div>
       <div>
-        <div>
+        <h6>
           Categorization
-        </div>
+        </h6>
         <div>
           <div />
           <div>
@@ -68,7 +68,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
     </ul>
     <div>
       <h6>
-        Inidicators
+        Indicators
       </h6>
       <h6>
         Percentile (0-100)
@@ -81,9 +81,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         <h4>
           Poverty
         </h4>
-        <div>
+        <p
+          class="secondary"
+        >
           Household income is less than or equal to twice the federal "poverty level"
-        </div>
+        </p>
       </div>
       <div>
         9900
@@ -101,9 +103,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         <h4>
           Education
         </h4>
-        <div>
+        <p
+          class="secondary"
+        >
           Percent of people age 25 or older that didn’t get a high school diploma
-        </div>
+        </p>
       </div>
       <div>
         9800
@@ -121,9 +125,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         <h4>
           Linguistic isolation
         </h4>
-        <div>
+        <p
+          class="secondary"
+        >
           Households in which all members speak a non-English language and speak English less than "very well"
-        </div>
+        </p>
       </div>
       <div>
         9700
@@ -141,9 +147,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         <h4>
           Unemployment rate
         </h4>
-        <div>
+        <p
+          class="secondary"
+        >
           Number of unemployed people as a percentage of the labor force
-        </div>
+        </p>
       </div>
       <div>
         9600
@@ -161,9 +169,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         <h4>
           Housing Burden
         </h4>
-        <div>
+        <p
+          class="secondary"
+        >
           Households that are low income and spend more than 30% of their income to housing costs
-        </div>
+        </p>
       </div>
       <div>
         9500
