@@ -7,12 +7,6 @@ on:
     branches: [main]
     paths:
       - "client/**/*"
-  # push:
-  #   branches:
-  #     - '*' # Run on all updates to PR branches
-  #     - '!main' # Do not run on pushes to main
-  #   paths:
-  #     - 'client/**/*'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -28,14 +22,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      # If this is just a PR branch, put content in a hash directory. Otherwise, put it in "main"
-      # This variable is used by gatsby-config.js to set a prefixPath
-      # - name: Set DESTINATION_FOLDER for main
-      #   if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
-      # run: |
-      #   echo "DESTINATION_FOLDER=main" >> $GITHUB_ENV
       - name: Set DESTINATION_FOLDER for branch
-        # if: github.event.pull_request.merged != true
         run: |
           echo "DESTINATION_FOLDER=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
       - name: Install
@@ -73,13 +60,7 @@ jobs:
         with:
           name: J40Static
           path: ./public
-      # If this is just a PR branch, put content in a hash directory. Otherwise, put it in "main"
-      # - name: Set DESTINATION_FOLDER for main
-      # if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
-      # run: |
-      #   echo "DESTINATION_FOLDER=main" >> $GITHUB_ENV
       - name: Set DESTINATION_FOLDER for branch
-        # if: github.event.pull_request.merged != true
         run: |
           echo "DESTINATION_FOLDER=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
       - name: Deploy to Github Pages
@@ -99,7 +80,6 @@ jobs:
         run: aws s3 sync ./public/ s3://usds-geoplatform-justice40-website/justice40-tool/${{env.DESTINATION_FOLDER}} --acl public-read --delete
       - name: Update PR with deployed URL
         uses: mshick/add-pr-comment@v1
-        # if: (github.event_name == 'pull_request' && github.event.action == 'opened') || github.event_name == 'push' # Only comment if the PR has been opened or a push has updated it
         with:
           # Deploy to S3 for the staging URL
           message: |
