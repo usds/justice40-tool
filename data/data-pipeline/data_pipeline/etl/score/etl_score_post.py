@@ -219,9 +219,7 @@ class PostScoreETL(ExtractTransformLoad):
         self, score_tiles_df: pd.DataFrame, tile_score_path: Path
     ) -> None:
         logger.info("Saving Tile Score CSV")
-        # TODO: check which are the columns we'll use
-        # Related to: https://github.com/usds/justice40-tool/issues/302
-        tile_score_path.mkdir(parents=True, exist_ok=True)
+        tile_score_path.parent.mkdir(parents=True, exist_ok=True)
         score_tiles_df.to_csv(tile_score_path, index=False)
 
     def _load_downloadable_zip(
@@ -230,9 +228,9 @@ class PostScoreETL(ExtractTransformLoad):
         logger.info("Saving Downloadable CSV")
 
         downloadable_info_path.mkdir(parents=True, exist_ok=True)
-        csv_path = downloadable_info_path / "usa.csv"
-        excel_path = downloadable_info_path / "usa.xlsx"
-        zip_path = downloadable_info_path / "Screening Tool Data.zip"
+        csv_path = constants.SCORE_DOWNLOADABLE_CSV_FILE_PATH
+        excel_path = constants.SCORE_DOWNLOADABLE_EXCEL_FILE_PATH
+        zip_path = constants.SCORE_DOWNLOADABLE_ZIP_FILE_PATH
 
         logger.info("Writing downloadable csv")
         downloadable_df.to_csv(csv_path, index=False)
