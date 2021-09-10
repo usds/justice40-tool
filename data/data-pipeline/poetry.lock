@@ -404,11 +404,7 @@ python-versions = ">=3.5"
 
 [[package]]
 name = "importlib-metadata"
-<<<<<<< HEAD
-version = "4.6.4"
-=======
 version = "4.6.3"
->>>>>>> main
 description = "Read metadata from Python packages"
 category = "main"
 optional = false
@@ -433,11 +429,7 @@ python-versions = "*"
 
 [[package]]
 name = "ipykernel"
-<<<<<<< HEAD
-version = "6.2.0"
-=======
 version = "6.1.0"
->>>>>>> main
 description = "IPython Kernel for Jupyter"
 category = "main"
 optional = false
@@ -1673,11 +1665,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7.1"
-<<<<<<< HEAD
-content-hash = "8139209d89f54f359ff1ecb9ba6e5fef46d8377469e1ffc74b4eac41244c7b9f"
-=======
 content-hash = "7fd9dc6d4902d1010da038192ba1a074d9c50264cb4b5d5fabfc45869f9f718a"
->>>>>>> main
 
 [metadata.files]
 appdirs = [
@@ -1940,26 +1928,16 @@ idna = [
     {file = "idna-3.2.tar.gz", hash = "sha256:467fbad99067910785144ce333826c71fb0e63a425657295239737f7ecd125f3"},
 ]
 importlib-metadata = [
-<<<<<<< HEAD
-    {file = "importlib_metadata-4.6.4-py3-none-any.whl", hash = "sha256:ed5157fef23a4bc4594615a0dd8eba94b2bb36bf2a343fa3d8bb2fa0a62a99d5"},
-    {file = "importlib_metadata-4.6.4.tar.gz", hash = "sha256:7b30a78db2922d78a6f47fb30683156a14f3c6aa5cc23f77cc8967e9ab2d002f"},
-=======
     {file = "importlib_metadata-4.6.3-py3-none-any.whl", hash = "sha256:51c6635429c77cf1ae634c997ff9e53ca3438b495f10a55ba28594dd69764a8b"},
     {file = "importlib_metadata-4.6.3.tar.gz", hash = "sha256:0645585859e9a6689c523927a5032f2ba5919f1f7d0e84bd4533312320de1ff9"},
->>>>>>> main
 ]
 iniconfig = [
     {file = "iniconfig-1.1.1-py2.py3-none-any.whl", hash = "sha256:011e24c64b7f47f6ebd835bb12a743f2fbe9a26d4cecaa7f53bc4f35ee9da8b3"},
     {file = "iniconfig-1.1.1.tar.gz", hash = "sha256:bc3af051d7d14b2ee5ef9969666def0cd1a000e121eaea580d4a313df4b37f32"},
 ]
 ipykernel = [
-<<<<<<< HEAD
-    {file = "ipykernel-6.2.0-py3-none-any.whl", hash = "sha256:35cc31accec420e90c4b66ea7f4e7b067c769e31af3502e45326c6f1294d238d"},
-    {file = "ipykernel-6.2.0.tar.gz", hash = "sha256:4439459f171d77f35b7f7e72dace5d7c2dd10a5c9e2c22b173ad9048fbfe7656"},
-=======
     {file = "ipykernel-6.1.0-py3-none-any.whl", hash = "sha256:804202fb4a621dce163bf88ce2687c98450d7ed728ef1d17d6f5ed20744c6e02"},
     {file = "ipykernel-6.1.0.tar.gz", hash = "sha256:e21a718c696ded7d4d5e25b13d2bdd88e099e782fd3be66f9d2e66397543d283"},
->>>>>>> main
 ]
 ipython = [
     {file = "ipython-7.26.0-py3-none-any.whl", hash = "sha256:892743b65c21ed72b806a3a602cca408520b3200b89d1924f4b3d2cdb3692362"},
