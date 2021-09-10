@@ -21,11 +21,11 @@ class CensusACSETL(ExtractTransformLoad):
             "Linguistic isolation (total)"
         )
         self.LINGUISTIC_ISOLATION_FIELDS = [
-            "C16002_001E", # Estimate!!Total
-            "C16002_004E", # Estimate!!Total!!Spanish!!Limited English speaking household
-            "C16002_007E", # Estimate!!Total!!Other Indo-European languages!!Limited English speaking household
-            "C16002_010E", # Estimate!!Total!!Asian and Pacific Island languages!!Limited English speaking household
-            "C16002_013E", # Estimate!!Total!!Other languages!!Limited English speaking household
+            "C16002_001E",  # Estimate!!Total
+            "C16002_004E",  # Estimate!!Total!!Spanish!!Limited English speaking household
+            "C16002_007E",  # Estimate!!Total!!Other Indo-European languages!!Limited English speaking household
+            "C16002_010E",  # Estimate!!Total!!Asian and Pacific Island languages!!Limited English speaking household
+            "C16002_013E",  # Estimate!!Total!!Other languages!!Limited English speaking household
         ]
         self.MEDIAN_INCOME_FIELD = "B19013_001E"
         self.MEDIAN_INCOME_FIELD_NAME = (

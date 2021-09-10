@@ -33,16 +33,22 @@ def test_extract_score(etl, score_data_initial):
 
 
 # Transform Tests
-def test_transform_counties(etl, county_data_initial, counties_transformed_expected):
+def test_transform_counties(
+    etl, county_data_initial, counties_transformed_expected
+):
     extracted_counties = etl._extract_counties(county_data_initial)
     counties_transformed_actual = etl._transform_counties(extracted_counties)
-    pdt.assert_frame_equal(counties_transformed_actual, counties_transformed_expected)
+    pdt.assert_frame_equal(
+        counties_transformed_actual, counties_transformed_expected
+    )
 
 
 def test_transform_states(etl, state_data_initial, states_transformed_expected):
     extracted_states = etl._extract_states(state_data_initial)
     states_transformed_actual = etl._transform_states(extracted_states)
-    pdt.assert_frame_equal(states_transformed_actual, states_transformed_expected)
+    pdt.assert_frame_equal(
+        states_transformed_actual, states_transformed_expected
+    )
 
 
 def test_transform_score(etl, score_data_initial, score_transformed_expected):
@@ -82,8 +88,12 @@ def test_create_tile_data(etl, score_data_expected, tile_data_expected):
     )
 
 
-def test_create_downloadable_data(etl, score_data_expected, downloadable_data_expected):
-    output_downloadable_df_actual = etl._create_downloadable_data(score_data_expected)
+def test_create_downloadable_data(
+    etl, score_data_expected, downloadable_data_expected
+):
+    output_downloadable_df_actual = etl._create_downloadable_data(
+        score_data_expected
+    )
     pdt.assert_frame_equal(
         output_downloadable_df_actual,
         downloadable_data_expected,
@@ -101,7 +111,9 @@ def test_load_score_csv(etl, score_data_expected):
 
 def test_load_tile_csv(etl, tile_data_expected):
     reload(constants)
-    etl._load_score_csv(tile_data_expected, constants.DATA_SCORE_TILES_FILE_PATH)
+    etl._load_score_csv(
+        tile_data_expected, constants.DATA_SCORE_TILES_FILE_PATH
+    )
     assert constants.DATA_SCORE_TILES_FILE_PATH.is_file()
 
 

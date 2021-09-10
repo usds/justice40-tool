@@ -83,7 +83,9 @@ def states_transformed_expected():
     return pd.DataFrame.from_dict(
         data={
             "State Code": pd.Series(["01", "02", "04"], dtype="string"),
-            "State Name": pd.Series(["Alabama", "Alaska", "Arizona"], dtype="object"),
+            "State Name": pd.Series(
+                ["Alabama", "Alaska", "Arizona"], dtype="object"
+            ),
             "State Abbreviation": pd.Series(["AL", "AK", "AZ"], dtype="string"),
         },
     )
@@ -91,14 +93,18 @@ def states_transformed_expected():
 
 @pytest.fixture()
 def score_transformed_expected():
-    return pd.read_pickle(pytest.SNAPSHOT_DIR / "score_transformed_expected.pkl")
+    return pd.read_pickle(
+        pytest.SNAPSHOT_DIR / "score_transformed_expected.pkl"
+    )
 
 
 @pytest.fixture()
 def national_cbg_df():
     return pd.DataFrame.from_dict(
         data={
-            "GEOID10": pd.Series(["010010201001", "010010201002"], dtype="string"),
+            "GEOID10": pd.Series(
+                ["010010201001", "010010201002"], dtype="string"
+            ),
         },
     )
 
@@ -115,4 +121,6 @@ def tile_data_expected():
 
 @pytest.fixture()
 def downloadable_data_expected():
-    return pd.read_pickle(pytest.SNAPSHOT_DIR / "downloadable_data_expected.pkl")
+    return pd.read_pickle(
+        pytest.SNAPSHOT_DIR / "downloadable_data_expected.pkl"
+    )

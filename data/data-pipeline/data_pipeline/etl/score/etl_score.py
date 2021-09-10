@@ -7,6 +7,7 @@ from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
 
+
 class ScoreETL(ExtractTransformLoad):
     def __init__(self):
         # Define some global parameters
@@ -30,7 +31,9 @@ class ScoreETL(ExtractTransformLoad):
             "Poverty (Less than 200% of federal poverty line)"
         )
         self.HIGH_SCHOOL_FIELD_NAME = "Percent individuals age 25 or over with less than high school degree"
-        self.STATE_MEDIAN_INCOME_FIELD_NAME: str = "Median household income (State; 2019 inflation-adjusted dollars)"
+        self.STATE_MEDIAN_INCOME_FIELD_NAME: str = (
+            "Median household income (State; 2019 inflation-adjusted dollars)"
+        )
         self.MEDIAN_INCOME_FIELD_NAME = (
             "Median household income in the past 12 months"
         )
@@ -262,7 +265,12 @@ class ScoreETL(ExtractTransformLoad):
         )
 
         # Load census AMI data
-        census_acs_median_incomes_csv = self.DATA_PATH / "dataset" / "census_acs_median_income_2019" / "usa.csv"
+        census_acs_median_incomes_csv = (
+            self.DATA_PATH
+            / "dataset"
+            / "census_acs_median_income_2019"
+            / "usa.csv"
+        )
         self.census_acs_median_incomes_df = pd.read_csv(
             census_acs_median_incomes_csv,
             dtype={self.GEOID_FIELD_NAME: "string"},
@@ -362,8 +370,7 @@ class ScoreETL(ExtractTransformLoad):
         # Multiply the "Pollution Burden" score and the "Population Characteristics"
         # together to produce the cumulative impact score.
         df["Score C"] = (
-            df[self.AGGREGATION_POLLUTION]
-            * df[self.AGGREGATION_POPULATION]
+            df[self.AGGREGATION_POLLUTION] * df[self.AGGREGATION_POPULATION]
         )
         return df
 
@@ -446,9 +453,7 @@ class ScoreETL(ExtractTransformLoad):
             )
             | (df["Proximity to RMP sites (percentile)"] > 0.9)
             | (
-                df[
-                    "Current asthma among adults aged >=18 years (percentile)"
-                ]
+                df["Current asthma among adults aged >=18 years (percentile)"]
                 > 0.9
             )
             | (
@@ -502,7 +507,7 @@ class ScoreETL(ExtractTransformLoad):
             self.ejscreen_df,
             self.census_df,
             self.housing_and_transportation_df,
-            self.census_acs_median_incomes_df
+            self.census_acs_median_incomes_df,
         ]
         census_block_group_df = self._join_cbg_dfs(census_block_group_dfs)
 
@@ -525,7 +530,9 @@ class ScoreETL(ExtractTransformLoad):
         # If GEOID10s are read as numbers instead of strings, the initial 0 is dropped,
         # and then we get too many CBG rows (one for 012345 and one for 12345).
         if len(census_block_group_df) > self.EXPECTED_MAX_CENSUS_BLOCK_GROUPS:
-            raise ValueError(f"Too many rows in the join: {len(census_block_group_df)}")
+            raise ValueError(
+                f"Too many rows in the join: {len(census_block_group_df)}"
+            )
 
         # Calculate median income variables.
         # First, calculate the income of the block group as a fraction of the state income.
@@ -565,9 +572,9 @@ class ScoreETL(ExtractTransformLoad):
 
         # calculate percentiles
         for data_set in data_sets:
-            df[
-                f"{data_set.renamed_field}{self.PERCENTILE_FIELD_SUFFIX}"
-            ] = df[data_set.renamed_field].rank(pct=True)
+            df[f"{data_set.renamed_field}{self.PERCENTILE_FIELD_SUFFIX}"] = df[
+                data_set.renamed_field
+            ].rank(pct=True)
 
         # Do some math:
         # (
