@@ -6,6 +6,7 @@ env:
   PR_NUMBER: ${{github.event.pull_request.number}}
 jobs:
   get-pr:
+    runs-on: ubuntu-latest
     steps:
       - name: echo pr direct
         run: |
