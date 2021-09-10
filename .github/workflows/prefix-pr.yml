@@ -6,7 +6,8 @@ env:
   PR_NUMBER: ${{github.event.pull_request.number}}
 jobs:
   get-pr:
-    run: |
-      echo "pr direct: ${{github.event.pull_request.number}}"
-    run: |
-      echo "env: ${{env.PR_NUMBER}}"
+    steps:
+      run: |
+        echo "pr direct: ${{github.event.pull_request.number}}"
+      run: |
+        echo "env: ${{env.PR_NUMBER}}"
