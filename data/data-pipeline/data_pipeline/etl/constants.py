@@ -44,6 +44,11 @@ DATASET_LIST = [
         "module_dir": "national_risk_index",
         "class_name": "NationalRiskIndexETL",
     },
+    {
+        "name": "census_acs_median_income",
+        "module_dir": "census_acs_median_income",
+        "class_name": "CensusACSMedianIncomeETL",
+    },
 ]
 CENSUS_INFO = {
     "name": "census",
