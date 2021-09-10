@@ -48,6 +48,8 @@ TILES_SCORE_COLUMNS = [
     "State Name",
     "County Name",
     "Total population",
+    "Score D (percentile)",
+    "Score D (top 25th percentile)",
     "Score E (percentile)",
     "Score E (top 25th percentile)",
     "Poverty (Less than 200% of federal poverty line) (percentile)",
@@ -59,6 +61,8 @@ TILES_SCORE_COLUMNS = [
 
 # columns to round floats to 2 decimals
 TILES_SCORE_FLOAT_COLUMNS = [
+    "Score D (percentile)",
+    "Score D (top 25th percentile)",
     "Score E (percentile)",
     "Score E (top 25th percentile)",
     "Poverty (Less than 200% of federal poverty line)",
