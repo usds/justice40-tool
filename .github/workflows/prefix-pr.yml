@@ -1,0 +1,12 @@
+name: Prefix PR to build folder
+on:
+  pull_request:
+    branches: [main]
+env: 
+  PR_NUMBER: ${{github.event.pull_request.number}}
+jobs:
+  get-pr:
+    run: |
+      echo "pr direct: ${{github.event.pull_request.number}}"
+    run: |
+      echo "env: ${{env.PR_NUMBER}}"
