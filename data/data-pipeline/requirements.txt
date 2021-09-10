@@ -94,7 +94,7 @@ pyflakes==2.3.1; python_version >= "2.7" and python_full_version < "3.0.0" or py
 pygments==2.9.0; python_version >= "3.7"
 pylint==2.9.6; python_version >= "3.6" and python_version < "4.0"
 pypandoc==1.6.3
-pyparsing==2.4.7; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.3.0" and python_version >= "3.6"
+pyparsing==2.4.7; python_version >= "3.7" and python_full_version < "3.0.0" or python_full_version >= "3.3.0" and python_version >= "3.7"
 pyproj==3.1.0; python_version >= "3.7"
 pyrsistent==0.18.0; python_version >= "3.6"
 pytest==6.2.4; python_version >= "3.6"
