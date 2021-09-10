@@ -230,9 +230,9 @@ class PostScoreETL(ExtractTransformLoad):
         logger.info("Saving Downloadable CSV")
 
         downloadable_info_path.mkdir(parents=True, exist_ok=True)
-        csv_path = downloadable_info_path / "usa.csv"
-        excel_path = downloadable_info_path / "usa.xlsx"
-        zip_path = downloadable_info_path / "Screening Tool Data.zip"
+        csv_path = constants.SCORE_DOWNLOADABLE_CSV_FILE_PATH
+        excel_path = constants.SCORE_DOWNLOADABLE_EXCEL_FILE_PATH
+        zip_path = constants.SCORE_DOWNLOADABLE_ZIP_FILE_PATH
 
         logger.info("Writing downloadable csv")
         downloadable_df.to_csv(csv_path, index=False)
