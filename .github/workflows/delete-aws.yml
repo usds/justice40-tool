@@ -24,4 +24,4 @@ jobs:
           aws-secret-access-key: ${{ secrets.CLIENT_DEV_AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: Deploy to Geoplatform AWS
-        run: aws s3 rm s3://test-bucket-vim-shah/test-folder/ --recursive --exclude "*" --include "$(echo $PR_NUMBER)-*"
+        run: aws s3 rm s3://test-bucket-vim-shah/test-folder --recursive --exclude "*" --include "$(echo $PR_NUMBER)-*"
