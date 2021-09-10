@@ -5,6 +5,7 @@ import sys
 import shutil
 import zipfile
 from pathlib import Path
+from subprocess import call
 
 import requests
 import urllib3
@@ -196,6 +197,21 @@ def temp_folder_cleanup() -> None:
 
     logger.info("Initializing all temp directoriees")
     remove_all_from_dir(data_path / "tmp")
+
+
+def check_first_run() -> bool:
+    """Checks if a local semaphore has been set to only run once the
+    calling function"""
+
+    data_path = settings.APP_ROOT / "data"
+    file = "first_run.txt"
+
+    if not os.path.isfile(data_path / file):
+        cmd = f"touch {data_path}/{file}"
+        call(cmd, shell=True)
+        return True
+
+    return False
 
 
 def get_excel_column_name(index: int) -> str:
