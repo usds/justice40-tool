@@ -14,3 +14,6 @@ jobs:
       - name: echo env pr number
         run: |
           echo "env: ${{env.PR_NUMBER}}"
+      - name: env direct
+        run: |
+          echo "$PR_NUMBER"
