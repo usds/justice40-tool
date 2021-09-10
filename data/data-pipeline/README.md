@@ -284,9 +284,9 @@ In a bit more detail:
 If you update the input our output to various methods, it is necessary to create new pickles so that data is validated correctly. To do this:
 
 1. Drop a breakpoint just before the dataframe will otherwise be written to / read from disk. If you're using VSCode, use one of the named run targets within `data-pipeline` such as `Score Full Run` , and put a breakpoint in the margin just before the actionable step. More on using breakpoints in VSCode [here](https://code.visualstudio.com/docs/editor/debugging#_breakpoints). If you are not using VSCode, you can put the line `breakpoint()` in your code and it will stop where you have placed the line in whatever calling context you are using.
-2. In your editor/terminal, run `df.to_pickle("snapshots/YOUR_OUT_PATH_HERE.pkl")` to write the pickle to the appropriate location on disk.
-3. Be sure to do this for all inputs/outputs that have changed as a result of your modification. It is often necessary to do this several times for cascading operations.
-4. To inspect your pickle, open a python interpreter, then run `pickle.load( open( "snapshots/YOUR_OUT_PATH_HERE.pkl", "rb" ) )` to get file contents.
+1. In your editor/terminal, run `df.to_pickle("data_pipeline/etl/score/tests/snapshots/YOUR_OUT_PATH_HERE.pkl")` to write the pickle to the appropriate location on disk.
+1. Be sure to do this for all inputs/outputs that have changed as a result of your modification. It is often necessary to do this several times for cascading operations.
+1. To inspect your pickle, open a python interpreter, then run `pickle.load( open( "data_pipeline/etl/score/tests/snapshots/YOUR_OUT_PATH_HERE.pkl", "rb" ) )` to get file contents.
 
 #### Future Enchancements
 
