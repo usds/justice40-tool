@@ -77,6 +77,7 @@ const DatasetContainer = () => {
       <div className={'grid-container-desktop-lg'}>
         <h1 className={styles.datasetContainerHeader}>{intl.formatMessage(messages.cumulativeScore)}</h1>
         <AlertWrapper showBetaAlert={false} showLimitedDataAlert={true}/>
+
         <p className={styles.datasetContainerSubTitle}>{intl.formatMessage(messages.subTitle)}</p>
         <div className={styles.datasetCardsContainer}>
           {cards.map((card) => <DatasetCard
