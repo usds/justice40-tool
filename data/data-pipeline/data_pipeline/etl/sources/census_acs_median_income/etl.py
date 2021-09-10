@@ -15,7 +15,7 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
         self.ACS_YEAR: int = 2019
         self.OUTPUT_PATH: Path = self.DATA_PATH / "dataset" / f"census_acs_median_income_{self.ACS_YEAR}"
 
-        # Set self.for MSAs.
+        # Set constants for Geocorr MSAs data.
         self.GEOCORR_FILE_PATH: str = "/Users/lucas/Documents/usds/repos/lucasmbrown/misc/geocorr2014_all_states.csv"
         self.PLACE_FIELD_NAME: str = "Census Place Name"
         self.COUNTY_FIELD_NAME: str = "County Name"
@@ -24,22 +24,23 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
         self.MSA_ID_FIELD_NAME: str = "MSA ID"
         self.MSA_TYPE_FIELD_NAME: str = "MSA Type"
 
-        # self.for MSA median incomes
+        # Set constants for MSA median incomes
         self.MSA_MEDIAN_INCOME_URL: str = f"https://api.census.gov/data/{self.ACS_YEAR}/acs/acs5?get=B19013_001E&for=metropolitan%20statistical%20area/micropolitan%20statistical%20area"
         self.MSA_INCOME_FIELD_NAME: str = f"Median household income in the past 12 months (MSA; {self.ACS_YEAR} inflation-adjusted dollars)"
 
-        # self.for state median incomes
+        # Set constants for state median incomes
         self.STATE_MEDIAN_INCOME_URL: str = f"https://api.census.gov/data/{self.ACS_YEAR}/acs/acs5?get=B19013_001E&for=state"
         self.STATE_GEOID_FIELD_NAME: str = "GEOID2"
         self.STATE_MEDIAN_INCOME_FIELD_NAME: str = f"Median household income (State; {self.ACS_YEAR} inflation-adjusted dollars)"
 
-        # self.for output
+        # Constants for output
         self.AMI_REFERENCE_FIELD_NAME: str = "AMI Reference"
         self.AMI_FIELD_NAME: str = "Area Median Income (State or metropolitan)"
 
     def _transform_geocorr(self) -> pd.DataFrame:
         # Transform the geocorr data
         geocorr_df = self.raw_geocorr_df
+        
         # Strip the unnecessary period from the tract ID:
         geocorr_df["tract"] = geocorr_df["tract"].str.replace(".", "", regex=False)
 

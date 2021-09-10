@@ -30,7 +30,7 @@ class ScoreETL(ExtractTransformLoad):
             "Poverty (Less than 200% of federal poverty line)"
         )
         self.HIGH_SCHOOL_FIELD_NAME = "Percent individuals age 25 or over with less than high school degree"
-        self.STATE_MEDIAN_INCOME_FIELD_NAME: str = f"Median household income (State; 2019 inflation-adjusted dollars)"
+        self.STATE_MEDIAN_INCOME_FIELD_NAME: str = "Median household income (State; 2019 inflation-adjusted dollars)"
         self.MEDIAN_INCOME_FIELD_NAME = (
             "Median household income in the past 12 months"
         )
@@ -489,6 +489,7 @@ class ScoreETL(ExtractTransformLoad):
         return df
 
     def _add_score_g(self, df: pd.DataFrame) -> pd.DataFrame:
+        logger.info("Adding Score G")
         # TODO: add scoring
         return df
 
