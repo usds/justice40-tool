@@ -7,7 +7,6 @@ from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
 
-
 class ScoreETL(ExtractTransformLoad):
     def __init__(self):
         # Define some global parameters
@@ -32,6 +31,9 @@ class ScoreETL(ExtractTransformLoad):
         )
         self.HIGH_SCHOOL_FIELD_NAME = "Percent individuals age 25 or over with less than high school degree"
         self.STATE_MEDIAN_INCOME_FIELD_NAME: str = f"Median household income (State; 2019 inflation-adjusted dollars)"
+        self.MEDIAN_INCOME_FIELD_NAME = (
+            "Median household income in the past 12 months"
+        )
         self.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD_NAME = (
             "Median household income (% of state median household income)"
         )
@@ -212,6 +214,7 @@ class ScoreETL(ExtractTransformLoad):
         ]
 
     def extract(self) -> None:
+        logger.info("Loading data sets from disk.")
         # EJSCreen csv Load
         ejscreen_csv = self.DATA_PATH / "dataset" / "ejscreen_2019" / "usa.csv"
         self.ejscreen_df = pd.read_csv(
@@ -255,6 +258,14 @@ class ScoreETL(ExtractTransformLoad):
         self.cdc_places_df = pd.read_csv(
             cdc_places_csv,
             dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
+            low_memory=False,
+        )
+
+        # Load census AMI data
+        census_acs_median_incomes_csv = self.DATA_PATH / "dataset" / "census_acs_median_income_2019" / "usa.csv"
+        self.census_acs_median_incomes_df = pd.read_csv(
+            census_acs_median_incomes_csv,
+            dtype={self.GEOID_FIELD_NAME: "string"},
             low_memory=False,
         )
 
@@ -477,6 +488,10 @@ class ScoreETL(ExtractTransformLoad):
         )
         return df
 
+    def _add_score_g(self, df: pd.DataFrame) -> pd.DataFrame:
+        # TODO: add scoring
+        return df
+
     # TODO Move a lot of this to the ETL part of the pipeline
     def _prepare_initial_df(self, data_sets: list) -> pd.DataFrame:
         logger.info("Preparing initial dataframe")
@@ -486,7 +501,7 @@ class ScoreETL(ExtractTransformLoad):
             self.ejscreen_df,
             self.census_df,
             self.housing_and_transportation_df,
-            self.census_acs_median_income_df
+            self.census_acs_median_incomes_df
         ]
         census_block_group_df = self._join_cbg_dfs(census_block_group_dfs)
 
@@ -508,8 +523,18 @@ class ScoreETL(ExtractTransformLoad):
 
         # If GEOID10s are read as numbers instead of strings, the initial 0 is dropped,
         # and then we get too many CBG rows (one for 012345 and one for 12345).
-        if len(census_block_group_df) > 220333:
-            raise ValueError("Too many rows in the join.")
+        if len(census_block_group_df) > self.EXPECTED_MAX_CENSUS_BLOCK_GROUPS:
+            raise ValueError(f"Too many rows in the join: {len(census_block_group_df)}")
+
+        # Calculate median income variables.
+        # First, calculate the income of the block group as a fraction of the state income.
+        # TODO: handle null values for CBG median income, which are `-666666666`.
+        df[self.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD_NAME] = (
+            df[self.MEDIAN_INCOME_FIELD_NAME]
+            / df[self.STATE_MEDIAN_INCOME_FIELD_NAME]
+        )
+
+        # TODO: Calculate the income of the block group as a fraction of the AMI.
 
         # TODO Refactor to no longer use the data_sets list and do all renaming in ETL step
         # Rename columns:
@@ -602,9 +627,10 @@ class ScoreETL(ExtractTransformLoad):
         # Calculate "Score F", which uses "either/or" thresholds.
         self.df = self._add_score_f(self.df)
 
+        # Calculate "Score G", which uses AMI and poverty.
+        self.df = self._add_score_g(self.df)
+
     def load(self) -> None:
         logger.info("Saving Score CSV")
-
-        # write nationwide csv
         self.SCORE_CSV_PATH.mkdir(parents=True, exist_ok=True)
         self.df.to_csv(self.SCORE_CSV_PATH / "usa.csv", index=False)

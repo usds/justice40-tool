@@ -10,8 +10,6 @@ from data_pipeline.config import settings
 
 logger = get_module_logger(__name__)
 
-pd.options.mode.chained_assignment = 'raise'
-
 class CensusACSMedianIncomeETL(ExtractTransformLoad):
     def __init__(self):
         self.ACS_YEAR: int = 2019
@@ -88,7 +86,7 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
         # Note: avoiding using inplace because of unusual `SettingWithCopyWarning` warning.
         geocorr_df = geocorr_df.sort_values(by=self.GEOID_FIELD_NAME, axis=0, ascending=True, inplace=False)
 
-        if len(geocorr_df) > 220333:
+        if len(geocorr_df) > self.EXPECTED_MAX_CENSUS_BLOCK_GROUPS:
             raise ValueError("Too many CBGs.")
 
         return geocorr_df
@@ -176,7 +174,7 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
             on=self.STATE_GEOID_FIELD_NAME,
         )
 
-        if len(merged_with_state_income_df) > 220333:
+        if len(merged_with_state_income_df) > self.EXPECTED_MAX_CENSUS_BLOCK_GROUPS:
             raise ValueError("Too many CBGs in join.")
 
         # Choose reference income: MSA if MSA type is Metro, otherwise use State.
