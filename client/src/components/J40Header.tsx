@@ -93,13 +93,15 @@ const J40Header = () => {
         className={'usa-header j40-header'}>
         <div className="usa-nav-container">
           <div className="usa-navbar">
-            <h1 className="usa-logo">
+            {/* Removing h1 from logo ease transition to USWDS tokens in headers */}
+            {/* https://wehavezeal.com/blog/web-development/2016/01/12/should-i-use-the-h1-tag-for-my-website-logo */}
+            <div className="usa-logo">
               <img className="j40-sitelogo" src={siteLogo} alt={`${titleL1} ${titleL2}`} />
               <span className={'usa-logo__text j40-title'}>
                 <span className={'j40-title-line1'}>{titleL1}</span><br/>
                 <span className={'j40-title-line2'}>{titleL2}</span>
               </span>
-            </h1>
+            </div>
             <NavMenuButton
               key={'mobileMenuButton'}
               onClick={toggleMobileNav}

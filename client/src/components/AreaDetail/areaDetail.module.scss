@@ -108,8 +108,7 @@ $featureSelectBorderColor: #00bde3;
   padding: 1rem;
 }
 
-.censusText,
-.indicatorDescription {
+.censusText {
   font-size: small;
 }
 
@@ -126,7 +125,7 @@ $featureSelectBorderColor: #00bde3;
 //Indicator box styles
 .indicatorBox {
   display: flex;
-  padding: 1.5rem 1rem;
+  padding: 0 1rem 1.5rem;
   border-bottom: $sidePanelBorder;
 
   @media screen and (max-width: $mobileBreakpoint) {
@@ -138,11 +137,6 @@ $featureSelectBorderColor: #00bde3;
 
 .indicatorBox:last-child {
   border-bottom: none;
-}
-
-.indicatorTitle {
-  font-size: large;
-  font-weight: bolder;
 }
 
 .indicatorValue {

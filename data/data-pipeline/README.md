@@ -74,14 +74,10 @@ The first step of processing we perform is a simple ETL process for each of the 
 Each CSV may have a different column name for the census tract or census block group identifier. You can find what the name is in the ETL code. Please note that when you view these files you should make sure that your text editor or spreadsheet software does not remove the initial `0` from this identifier field (many IDs begin with `0`).
 
 #### 3. Combined dataset
-
-The CSV with the combined data from all of these sources will be available soon!
+The CSV with the combined data from all of these sources [can be accessed here](https://justice40-data.s3.amazonaws.com/data-pipeline/data/score/csv/full/usa.csv).
 
 #### 4. Tileset
-
-Once we have all the data from the previous stages, we convert it to tiles to make it usable on a map. We only need a subset of the data to display in our client UI, so we do not include all data from the combined CSV in the tileset.
-
-Link to the tile server coming soon!
+Once we have all the data from the previous stages, we convert it to tiles to make it usable on a map. We render the map on the client side which can be seen using `docker-compose up`.
 
 ### Score generation and comparison workflow
 
@@ -113,7 +109,7 @@ TODO add mermaid diagram
 3. Each ETL script will extract the data from its original source, then format the data into `.csv` files that get stored in the relevant folder in `data_pipeline/data/dataset/`. For example, HUD Housing data is stored in `data_pipeline/data/dataset/hud_housing/usa.csv`
 
 _**NOTE:** You have the option to pass the name of a specific data source to the `etl-run` command using the `-d` flag, which will limit the execution of the ETL process to that specific data source._
-_For example: `poetry run etl -- -d ejscreen` would only run the ETL process for EJSCREEN data._
+_For example: `poetry run etl -d ejscreen` would only run the ETL process for EJSCREEN data._
 
 #### Step 3: Calculate the Justice40 score experiments
 
@@ -159,11 +155,14 @@ _NOTE:_ This may take several minutes or over an hour to fully execute and gener
 
 We use Docker to install the necessary libraries in a container that can be run in any operating system.
 
-_Important_: To be able to run the data Docker containers, you need to increase the memory resoure of your container to at leat 8096 MB.
+*Important*: To be able to run the data Docker containers, you need to increase the memory resource of your container to at leat 8096 MB.
 
 To build the docker container the first time, make sure you're in the root directory of the repository and run `docker-compose build --no-cache`.
 
-Once completed, run `docker-compose up` and then open a new tab or terminal window, and then run any command for the application using this format:
+Once completed, run `docker-compose up`. Docker will spin up 3 containers: the client container, the static server container and the data container. Once all data is generated, you can see the application using a browser and navigating to `htto://localhost:8000`.
+
+If you want to run specific data tasks, you can open a new terminal tab or terminal window while `docker-compose up` is running, and then execute any command for the application using this format:
+
 `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application [command]`
 
 Here's a list of commands:
@@ -174,7 +173,7 @@ Here's a list of commands:
 - Clean up the data directories: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application data-cleanup`
 - Run all ETL processes: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application etl-run`
 - Generate Score: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application score-run`
-- Generate Score with Geojson and high and low versions: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application geo-score`
+- Combine Score with Geojson and generate high and low zoom map tile sets: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application geo-score`
 - Generate Map Tiles: `docker exec j40_data_pipeline_1 python3 -m data_pipeline.application generate-map-tiles`
 
 ## Local development

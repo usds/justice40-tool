@@ -10,7 +10,7 @@ const HowYouCanHelp = () => {
   const messages = defineMessages({
     youCanHelpHeader: {
       id: 'howYouCanHelp.header.text',
-      defaultMessage: 'How You Can Help Improve the Tool',
+      defaultMessage: 'How you can help improve the tool',
       description: 'the header of the how you can help section',
     },
     youCanHelpInfoText: {
@@ -52,7 +52,7 @@ const HowYouCanHelp = () => {
 
   return (
     <div className={styles.howYouCanHelpContainer}>
-      <h2 className={styles.howYouCanHelpHeader}>
+      <h2>
         {intl.formatMessage(messages.youCanHelpHeader)}
       </h2>
       <ul className={styles.howYouCanHelpListWrapper}>

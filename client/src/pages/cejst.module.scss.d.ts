@@ -1,7 +1,6 @@
 declare namespace CejstModuleScssNamespace {
   export interface ICejstModuleScss {
     explorePageHeader;
-    explorePageSubHeader: string;
     explorePageHeaderText: string;
   }
 }

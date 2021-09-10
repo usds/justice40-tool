@@ -7,6 +7,11 @@ import {LocalizedComponent} from '../test/testHelpers';
 // See ticket: #550
 jest.spyOn(console, 'error').mockImplementation(() => {});
 
+beforeAll(() => {
+  // Restore mock after all tests are done, so it won't affect other test suites
+  jest.resetAllMocks();
+});
+
 afterAll(() => {
   // Restore mock after all tests are done, so it won't affect other test suites
   jest.resetAllMocks();

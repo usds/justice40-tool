@@ -272,6 +272,12 @@ class HudHousingETL(ExtractTransformLoad):
             - self.df[RENTER_OCCUPIED_NOT_COMPUTED_FIELDS].sum(axis=1)
         )
 
+
+        self.df["DENOM INCL NOT COMPUTED"] = (
+            self.df[OWNER_OCCUPIED_POPULATION_FIELD]
+            + self.df[RENTER_OCCUPIED_POPULATION_FIELD]
+        )
+
         # TODO: add small sample size checks
         self.df[self.HOUSING_BURDEN_FIELD_NAME] = self.df[
             self.HOUSING_BURDEN_NUMERATOR_FIELD_NAME
@@ -293,5 +299,6 @@ class HudHousingETL(ExtractTransformLoad):
                 self.HOUSING_BURDEN_NUMERATOR_FIELD_NAME,
                 self.HOUSING_BURDEN_DENOMINATOR_FIELD_NAME,
                 self.HOUSING_BURDEN_FIELD_NAME,
+                "DENOM INCL NOT COMPUTED",
             ]
         ].to_csv(path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False)

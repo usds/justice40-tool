@@ -20,28 +20,33 @@ const ContactPage = ({location}: ContactPageProps) => {
         <AlertWrapper showBetaAlert={true} showLimitedDataAlert={false}/>
       </J40MainGridContainer>
 
-      <J40MainGridContainer className={'usa-prose'}>
-        <Grid row><Grid col>
-          <h2><FormattedMessage
-            id={'contact.pageheader'}
-            description={'H2 header for contact page'}
-            defaultMessage={'Contact'}/></h2>
-          <h3><FormattedMessage
-            id={'contact.sectionheader'}
-            description={'Heading for page to allow users to contact project maintainers'}
-            defaultMessage={'Email us'}/></h3>
-
-          <p>
-            <FormattedMessage
-              id={'contact.general'}
-              description={'Contact page body text'}
-              defaultMessage={`For general feedback, email {general_email_address}`}
-              values={{
-                general_email_address:
+      <J40MainGridContainer>
+        <Grid row>
+          <Grid col>
+            <h1>
+              <FormattedMessage
+                id={'contact.pageheader'}
+                description={'H2 header for contact page'}
+                defaultMessage={'Contact'}/>
+            </h1>
+            <h2>
+              <FormattedMessage
+                id={'contact.sectionheader'}
+                description={'Heading for page to allow users to contact project maintainers'}
+                defaultMessage={'Email us'}/>
+            </h2>
+            <p>
+              <FormattedMessage
+                id={'contact.general'}
+                description={'Contact page body text'}
+                defaultMessage={`For general feedback, email {general_email_address}`}
+                values={{
+                  general_email_address:
                     <a href={`mailto:${generalEmail}`}>{generalEmail}</a>,
-              }}/>
-          </p>
-        </Grid></Grid>
+                }}/>
+            </p>
+          </Grid>
+        </Grid>
       </J40MainGridContainer>
     </Layout>
   );
