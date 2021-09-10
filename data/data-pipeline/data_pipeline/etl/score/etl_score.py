@@ -404,6 +404,7 @@ class ScoreETL(ExtractTransformLoad):
                 )
         return df
 
+    # TODO Make variables and constants clearer (meaning and type)
     def _add_score_f(self, df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Adding Score F")
         ami_and_high_school_field_name = "Low AMI, Low HS graduation"
@@ -475,6 +476,7 @@ class ScoreETL(ExtractTransformLoad):
         )
         return df
 
+    # TODO Move a lot of this to the ETL part of the pipeline
     def _prepare_initial_df(self, data_sets: list) -> pd.DataFrame:
         logger.info("Preparing initial dataframe")
 
@@ -502,9 +504,12 @@ class ScoreETL(ExtractTransformLoad):
             census_tract_df, on=self.GEOID_TRACT_FIELD_NAME
         )
 
+        # If GEOID10s are read as numbers instead of strings, the initial 0 is dropped, 
+        # and then we get too many CBG rows (one for 012345 and one for 12345).
         if len(census_block_group_df) > 220333:
             raise ValueError("Too many rows in the join.")
         
+        # TODO Refactor to no longer use the data_sets list and do all renaming in ETL step
         # Rename columns:
         renaming_dict = {
             data_set.input_field: data_set.renamed_field
@@ -521,6 +526,7 @@ class ScoreETL(ExtractTransformLoad):
         df = df[columns_to_keep]
 
         # Convert all columns to numeric.
+        # TODO do this at the same time as calculating percentiles in future refactor
         for data_set in data_sets:
             # Skip GEOID_FIELD_NAME, because it's a string.
             if data_set.renamed_field == self.GEOID_FIELD_NAME:
