@@ -18,9 +18,8 @@ const DownloadPacket = () => {
     },
     downloadPacketInfo: {
       id: 'downloadPacket.info.text',
-      defaultMessage: 'The package includes the draft list of prioritized communities (.csv and .xlsx) and'+
-      ' information about how to use the list (.pdf). This information should not be used' +
-      ' to make program resource allocation decisions.',
+      defaultMessage: 'The package includes the draft list of prioritized communities (.csv and .xlsx).'+
+      ' This information should not be used to make program resource allocation decisions.',
       description: 'download packet info text',
     },
     downloadPacketButtonText: {
