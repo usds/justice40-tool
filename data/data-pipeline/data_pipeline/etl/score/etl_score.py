@@ -31,6 +31,7 @@ class ScoreETL(ExtractTransformLoad):
             "Poverty (Less than 200% of federal poverty line)"
         )
         self.HIGH_SCHOOL_FIELD_NAME = "Percent individuals age 25 or over with less than high school degree"
+        self.STATE_MEDIAN_INCOME_FIELD_NAME: str = f"Median household income (State; 2019 inflation-adjusted dollars)"
         self.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD_NAME = (
             "Median household income (% of state median household income)"
         )
@@ -275,7 +276,7 @@ class ScoreETL(ExtractTransformLoad):
                 f"One of the input CSVs uses {self.GEOID_FIELD_NAME} with a different length."
             )
         return census_block_group_df
-    
+
     def _join_tract_dfs(self, census_tract_dfs: list) -> pd.DataFrame:
         logger.info("Joining Census Tract dataframes")
         census_tract_df = functools.reduce(
@@ -354,7 +355,7 @@ class ScoreETL(ExtractTransformLoad):
             * df[self.AGGREGATION_POPULATION]
         )
         return df
-    
+
     def _add_scores_d_and_e(self, df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Adding Scores D and E")
         fields_to_use_in_score = [
@@ -482,9 +483,10 @@ class ScoreETL(ExtractTransformLoad):
 
         # Join all the data sources that use census block groups
         census_block_group_dfs = [
-            self.ejscreen_df, 
-            self.census_df, 
+            self.ejscreen_df,
+            self.census_df,
             self.housing_and_transportation_df,
+            self.census_acs_median_income_df
         ]
         census_block_group_df = self._join_cbg_dfs(census_block_group_dfs)
 
@@ -504,11 +506,11 @@ class ScoreETL(ExtractTransformLoad):
             census_tract_df, on=self.GEOID_TRACT_FIELD_NAME
         )
 
-        # If GEOID10s are read as numbers instead of strings, the initial 0 is dropped, 
+        # If GEOID10s are read as numbers instead of strings, the initial 0 is dropped,
         # and then we get too many CBG rows (one for 012345 and one for 12345).
         if len(census_block_group_df) > 220333:
             raise ValueError("Too many rows in the join.")
-        
+
         # TODO Refactor to no longer use the data_sets list and do all renaming in ETL step
         # Rename columns:
         renaming_dict = {
@@ -567,14 +569,14 @@ class ScoreETL(ExtractTransformLoad):
             df[f"{data_set.renamed_field}{self.MIN_MAX_FIELD_SUFFIX}"] = (
                 df[data_set.renamed_field] - min_value
             ) / (max_value - min_value)
-        
+
         return df
 
     def transform(self) -> None:
         ## IMPORTANT: THIS METHOD IS CLOSE TO THE LIMIT OF STATEMENTS
 
         logger.info("Transforming Score Data")
-        
+
         # get data sets list
         data_sets = self.data_sets()
 
