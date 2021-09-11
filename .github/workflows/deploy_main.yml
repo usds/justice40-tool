@@ -72,14 +72,14 @@ jobs:
           aws-region: us-east-1
       - name: Deploy to Geoplatform AWS
         run: aws s3 sync ./public/ s3://usds-geoplatform-justice40-website/justice40-tool/${{env.DESTINATION_FOLDER}} --acl public-read --delete
-      # - name: Invalidate cache on AWS CDNs
-      #   uses: chetan/invalidate-cloudfront-action@master
-      #   env:
-      #     DISTRIBUTION: "ED03LPVC4OXSW" # TODO: set this as ENV var above
-      #     PATHS: "/*"
-      #     AWS_REGION: "us-east-1"
-      #     AWS_ACCESS_KEY_ID: ${{ secrets.CLIENT_DEV_AWS_ACCESS_KEY_ID }}
-      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.CLIENT_DEV_AWS_SECRET_ACCESS_KEY }}
+      - name: Invalidate cache on AWS CDNs
+        uses: chetan/invalidate-cloudfront-action@master
+        env:
+          DISTRIBUTION: "ED03LPVC4OXSW" # TODO: set this as ENV var above
+          PATHS: "/*"
+          AWS_REGION: "us-east-1"
+          AWS_ACCESS_KEY_ID: ${{ secrets.CLIENT_DEV_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.CLIENT_DEV_AWS_SECRET_ACCESS_KEY }}
       - name: Update PR with deployed URL
         uses: mshick/add-pr-comment@v1
         with:
