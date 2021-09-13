@@ -5,7 +5,6 @@ import sys
 import shutil
 import zipfile
 from pathlib import Path
-from subprocess import call
 
 import requests
 import urllib3
@@ -188,6 +187,7 @@ def score_folder_cleanup() -> None:
     remove_all_from_dir(data_path / "score" / "csv")
     remove_all_from_dir(data_path / "score" / "geojson")
     remove_all_from_dir(data_path / "score" / "downloadable")
+    remove_all_from_dir(data_path / "score" / "tiles")
 
 
 def temp_folder_cleanup() -> None:
@@ -207,8 +207,6 @@ def check_first_run() -> bool:
     file = "first_run.txt"
 
     if not os.path.isfile(data_path / file):
-        cmd = f"touch {data_path}/{file}"
-        call(cmd, shell=True)
         return True
 
     return False

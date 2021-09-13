@@ -1,4 +1,6 @@
 import click
+from subprocess import call
+import sys
 
 from data_pipeline.config import settings
 from data_pipeline.etl.runner import etl_runner, score_generate, score_geo
@@ -35,6 +37,7 @@ def census_cleanup():
     census_reset(data_path)
 
     logger.info("Cleaned up all census data files")
+    sys.exit()
 
 
 @cli.command(help="Clean up all data folders")
@@ -46,6 +49,7 @@ def data_cleanup():
     temp_folder_cleanup()
 
     logger.info("Cleaned up all data folders")
+    sys.exit()
 
 
 @cli.command(
@@ -64,6 +68,7 @@ def census_data_download():
     etl_runner("census")
 
     logger.info("Completed downloading census data")
+    sys.exit()
 
 
 @cli.command(
@@ -81,6 +86,7 @@ def etl_run(dataset: str):
     """
 
     etl_runner(dataset)
+    sys.exit()
 
 
 @cli.command(
@@ -89,7 +95,9 @@ def etl_run(dataset: str):
 def score_run():
     """CLI command to generate the score"""
 
+    score_folder_cleanup()
     score_generate()
+    sys.exit()
 
 
 @cli.command(
@@ -103,6 +111,7 @@ def score_full_run():
     temp_folder_cleanup()
     etl_runner()
     score_generate()
+    sys.exit()
 
 
 @cli.command(help="Generate Geojson files with scores baked in")
@@ -110,6 +119,7 @@ def geo_score():
     """CLI command to generate the score"""
 
     score_geo()
+    sys.exit()
 
 
 @cli.command(
@@ -120,6 +130,7 @@ def generate_map_tiles():
 
     data_path = settings.APP_ROOT / "data"
     generate_tiles(data_path)
+    sys.exit()
 
 
 @cli.command(
@@ -145,7 +156,7 @@ def data_full_run(check):
     if check and not check_first_run():
         # check if the data full run has been run before
         logger.info("*** The data full run was already executed")
-        exit()
+        sys.exit()
 
     # census directories
     logger.info("*** Initializing all data folders")
@@ -169,7 +180,12 @@ def data_full_run(check):
     logger.info("*** Generating Map Tiles")
     generate_tiles(data_path)
 
+    file = "first_run.txt"
+    cmd = f"touch {data_path}/{file}"
+    call(cmd, shell=True)
+
     logger.info("*** Map data ready")
+    sys.exit()
 
 
 if __name__ == "__main__":
