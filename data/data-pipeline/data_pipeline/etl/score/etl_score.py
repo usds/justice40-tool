@@ -41,13 +41,15 @@ class ScoreETL(ExtractTransformLoad):
             "Median household income (% of state median household income)"
         )
 
-        self.POVERTY_LESS_THAN_100_PERCENT_FPL_FIELD_NAME = (
+        # Note: these variable names are slightly different (missing the word `PERCENT`) than those in the source ETL to avoid pylint's duplicate
+        # code error. - LMB
+        self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME = (
             "Percent of individuals < 100% Federal Poverty Line"
         )
-        self.POVERTY_LESS_THAN_150_PERCENT_FPL_FIELD_NAME = (
+        self.POVERTY_LESS_THAN_150_FPL_FIELD_NAME = (
             "Percent of individuals < 150% Federal Poverty Line"
         )
-        self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME = (
+        self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME = (
             "Percent of individuals < 200% Federal Poverty Line"
         )
 
@@ -67,6 +69,7 @@ class ScoreETL(ExtractTransformLoad):
         self.housing_and_transportation_df: pd.DataFrame
         self.hud_housing_df: pd.DataFrame
         self.cdc_places_df: pd.DataFrame
+        self.census_acs_median_incomes_df: pd.DataFrame
 
     def data_sets(self) -> list:
         # Define a named tuple that will be used for each data set input.
@@ -129,18 +132,18 @@ class ScoreETL(ExtractTransformLoad):
                 bucket=None,
             ),
             DataSet(
-                input_field=self.POVERTY_LESS_THAN_100_PERCENT_FPL_FIELD_NAME,
-                renamed_field=self.POVERTY_LESS_THAN_100_PERCENT_FPL_FIELD_NAME,
+                input_field=self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME,
+                renamed_field=self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME,
                 bucket=None,
             ),
             DataSet(
-                input_field=self.POVERTY_LESS_THAN_150_PERCENT_FPL_FIELD_NAME,
-                renamed_field=self.POVERTY_LESS_THAN_150_PERCENT_FPL_FIELD_NAME,
+                input_field=self.POVERTY_LESS_THAN_150_FPL_FIELD_NAME,
+                renamed_field=self.POVERTY_LESS_THAN_150_FPL_FIELD_NAME,
                 bucket=None,
             ),
             DataSet(
-                input_field=self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME,
-                renamed_field=self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME,
+                input_field=self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME,
+                renamed_field=self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME,
                 bucket=None,
             ),
             # The following data sets have buckets, because they're used in Score C

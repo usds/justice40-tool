@@ -4,7 +4,6 @@ import censusdata
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.sources.census.etl_utils import get_state_fips_codes
 from data_pipeline.utils import get_module_logger
-from data_pipeline.config import settings
 
 logger = get_module_logger(__name__)
 
@@ -40,6 +39,7 @@ class CensusACSETL(ExtractTransformLoad):
             "C17002_006E",  # Estimate!!Total!!1.50 to 1.84
             "C17002_007E",  # Estimate!!Total!!1.85 to 1.99
         ]
+
         self.POVERTY_LESS_THAN_100_PERCENT_FPL_FIELD_NAME = (
             "Percent of individuals < 100% Federal Poverty Line"
         )

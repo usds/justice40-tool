@@ -1,6 +1,6 @@
 import json
-import pandas as pd
 from pathlib import Path
+import pandas as pd
 import requests
 
 from data_pipeline.etl.base import ExtractTransformLoad
@@ -45,6 +45,12 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
         # Constants for output
         self.AMI_REFERENCE_FIELD_NAME: str = "AMI Reference"
         self.AMI_FIELD_NAME: str = "Area Median Income (State or metropolitan)"
+
+        # Remaining definitions
+        self.output_df: pd.DataFrame
+        self.raw_geocorr_df: pd.DataFrame
+        self.msa_median_incomes: dict
+        self.state_median_incomes: dict
 
     def _transform_geocorr(self) -> pd.DataFrame:
         # Transform the geocorr data
