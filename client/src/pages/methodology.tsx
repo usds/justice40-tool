@@ -32,7 +32,7 @@ const IndexPage = ({location}: MethodPageProps) => {
   });
 
   return (
-    <Layout location={location}>
+    <Layout location={location} title={'Data and Methodology'}>
 
       <J40MainGridContainer>
         <AlertWrapper showBetaAlert={true} showLimitedDataAlert={false}/>

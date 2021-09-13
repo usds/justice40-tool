@@ -29,7 +29,7 @@ interface I404PageProps {
 
 // markup
 const NotFoundPage =({location}: I404PageProps) => {
-  return (<Layout location={location}>
+  return (<Layout location={location} title={'Page not found'}>
     <J40MainGridContainer>
       <Grid row><Grid col>
         <h1 style={headingStyles}>Page not found</h1>
