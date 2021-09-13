@@ -197,7 +197,7 @@ class PostScoreETL(ExtractTransformLoad):
         ]
 
     def transform(self) -> None:
-        logger.info("Transforming data sources for Score + County CSV")
+        logger.info("Transforming data sources for Score + County CSVs")
 
         transformed_counties = self._transform_counties(self.input_counties_df)
         transformed_states = self._transform_states(self.input_states_df)
