@@ -1,12 +1,12 @@
 import json
 import pandas as pd
 from pathlib import Path
-import os
 import requests
 
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger
 from data_pipeline.config import settings
+from data_pipeline.utils import unzip_file_from_url
 
 logger = get_module_logger(__name__)
 
@@ -21,7 +21,6 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
         )
 
         # Set constants for Geocorr MSAs data.
-        self.GEOCORR_FILE_PATH: str = "/Users/lucas/Documents/usds/repos/lucasmbrown/misc/geocorr2014_all_states.csv"
         self.PLACE_FIELD_NAME: str = "Census Place Name"
         self.COUNTY_FIELD_NAME: str = "County Name"
         self.STATE_ABBREVIATION_FIELD_NAME: str = "State Abbreviation"
@@ -32,7 +31,10 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
         self.MSA_TYPE_FIELD_NAME: str = "MSA Type"
 
         # Set constants for MSA median incomes
-        self.MSA_MEDIAN_INCOME_URL: str = f"https://api.census.gov/data/{self.ACS_YEAR}/acs/acs5?get=B19013_001E&for=metropolitan%20statistical%20area/micropolitan%20statistical%20area"
+        self.MSA_MEDIAN_INCOME_URL: str = (
+            f"https://api.census.gov/data/{self.ACS_YEAR}/acs/acs5?get=B19013_001E"
+            + "&for=metropolitan%20statistical%20area/micropolitan%20statistical%20area"
+        )
         self.MSA_INCOME_FIELD_NAME: str = f"Median household income in the past 12 months (MSA; {self.ACS_YEAR} inflation-adjusted dollars)"
 
         # Set constants for state median incomes
@@ -116,7 +118,7 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
         )
         msa_median_incomes_df.rename(
             columns={
-                f"B19013_001E": self.MSA_INCOME_FIELD_NAME,
+                "B19013_001E": self.MSA_INCOME_FIELD_NAME,
                 "metropolitan statistical area/micropolitan statistical area": self.MSA_ID_FIELD_NAME,
             },
             inplace=True,
@@ -155,8 +157,18 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
         # The specific query used is the following, which takes a couple of minutes to run:
         # https://mcdc.missouri.edu/cgi-bin/broker?_PROGRAM=apps.geocorr2014.sas&_SERVICE=MCDC_long&_debug=0&state=Mo29&state=Al01&state=Ak02&state=Az04&state=Ar05&state=Ca06&state=Co08&state=Ct09&state=De10&state=Dc11&state=Fl12&state=Ga13&state=Hi15&state=Id16&state=Il17&state=In18&state=Ia19&state=Ks20&state=Ky21&state=La22&state=Me23&state=Md24&state=Ma25&state=Mi26&state=Mn27&state=Ms28&state=Mt30&state=Ne31&state=Nv32&state=Nh33&state=Nj34&state=Nm35&state=Ny36&state=Nc37&state=Nd38&state=Oh39&state=Ok40&state=Or41&state=Pa42&state=Ri44&state=Sc45&state=Sd46&state=Tn47&state=Tx48&state=Ut49&state=Vt50&state=Va51&state=Wa53&state=Wv54&state=Wi55&state=Wy56&g1_=state&g1_=county&g1_=placefp&g1_=tract&g1_=bg&g2_=cbsa10&g2_=cbsatype10&wtvar=pop10&nozerob=1&title=&csvout=1&namoptf=b&listout=1&lstfmt=html&namoptr=b&oropt=&counties=&metros=&places=&latitude=&longitude=&locname=&distance=&kiloms=0&nrings=&r1=&r2=&r3=&r4=&r5=&r6=&r7=&r8=&r9=&r10=&lathi=&latlo=&longhi=&longlo=
         logger.info("Starting download of Geocorr information.")
+
+        unzip_file_from_url(
+            file_url=settings.AWS_JUSTICE40_DATASOURCES_URL
+            + "/geocorr2014_all_states.csv.zip",
+            download_path=self.TMP_PATH,
+            unzipped_file_path=self.TMP_PATH / "geocorr",
+        )
+
         self.raw_geocorr_df = pd.read_csv(
-            filepath_or_buffer=self.GEOCORR_FILE_PATH,
+            filepath_or_buffer=self.TMP_PATH
+            / "geocorr"
+            / "geocorr2014_all_states.csv",
             # Skip second row, which has descriptions.
             skiprows=[1],
             # The following need to remain as strings for all of their digits, not get converted to numbers.

@@ -52,15 +52,6 @@ class CensusACSETL(ExtractTransformLoad):
 
         self.STATE_GEOID_FIELD_NAME = "GEOID2"
         self.df: pd.DataFrame
-        self.state_median_income_df: pd.DataFrame
-
-        self.STATE_MEDIAN_INCOME_FTP_URL = (
-            settings.AWS_JUSTICE40_DATASOURCES_URL
-            + "/2015_to_2019_state_median_income.zip"
-        )
-        self.STATE_MEDIAN_INCOME_FILE_PATH = (
-            self.TMP_PATH / "2015_to_2019_state_median_income.csv"
-        )
 
     def _fips_from_censusdata_censusgeo(
         self, censusgeo: censusdata.censusgeo
@@ -70,11 +61,6 @@ class CensusACSETL(ExtractTransformLoad):
         return fips
 
     def extract(self) -> None:
-        # Extract state median income
-        super().extract(
-            self.STATE_MEDIAN_INCOME_FTP_URL,
-            self.TMP_PATH,
-        )
         dfs = []
         for fips in get_state_fips_codes(self.DATA_PATH):
             logger.info(
@@ -103,12 +89,6 @@ class CensusACSETL(ExtractTransformLoad):
 
         self.df[self.GEOID_FIELD_NAME] = self.df.index.to_series().apply(
             func=self._fips_from_censusdata_censusgeo
-        )
-
-        self.state_median_income_df = pd.read_csv(
-            # TODO: Replace with reading from S3.
-            filepath_or_buffer=self.STATE_MEDIAN_INCOME_FILE_PATH,
-            dtype={self.STATE_GEOID_FIELD_NAME: "string"},
         )
 
     def transform(self) -> None:
