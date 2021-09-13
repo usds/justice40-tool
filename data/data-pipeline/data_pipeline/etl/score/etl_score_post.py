@@ -234,8 +234,6 @@ class PostScoreETL(ExtractTransformLoad):
         self, score_tiles_df: pd.DataFrame, tile_score_path: Path
     ) -> None:
         logger.info("Saving Tile Score CSV")
-        # TODO: check which are the columns we'll use
-        # Related to: https://github.com/usds/justice40-tool/issues/302
         tile_score_path.parent.mkdir(parents=True, exist_ok=True)
         score_tiles_df.to_csv(tile_score_path, index=False)
 

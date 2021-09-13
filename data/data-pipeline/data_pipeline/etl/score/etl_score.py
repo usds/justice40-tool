@@ -570,7 +570,7 @@ class ScoreETL(ExtractTransformLoad):
             / df[self.STATE_MEDIAN_INCOME_FIELD_NAME]
         )
 
-        # TODO: Calculate the income of the block group as a fraction of the AMI.
+        # TODO: Calculate the income of the block group as a fraction of the AMI (either state or metropolitan, depending on reference).
 
         # TODO Refactor to no longer use the data_sets list and do all renaming in ETL step
         # Rename columns:
