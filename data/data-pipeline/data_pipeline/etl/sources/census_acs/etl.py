@@ -31,6 +31,25 @@ class CensusACSETL(ExtractTransformLoad):
         self.MEDIAN_INCOME_FIELD_NAME = (
             "Median household income in the past 12 months"
         )
+        self.POVERTY_FIELDS = [
+            "C17002_001E",  # Estimate!!Total,
+            "C17002_002E",  # Estimate!!Total!!Under .50
+            "C17002_003E",  # Estimate!!Total!!.50 to .99
+            "C17002_004E",  # Estimate!!Total!!1.00 to 1.24
+            "C17002_005E",  # Estimate!!Total!!1.25 to 1.49
+            "C17002_006E",  # Estimate!!Total!!1.50 to 1.84
+            "C17002_007E",  # Estimate!!Total!!1.85 to 1.99
+        ]
+        self.POVERTY_LESS_THAN_100_PERCENT_FPL_FIELD_NAME = (
+            "Percent of individuals < 100% Federal Poverty Line"
+        )
+        self.POVERTY_LESS_THAN_150_PERCENT_FPL_FIELD_NAME = (
+            "Percent of individuals < 150% Federal Poverty Line"
+        )
+        self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME = (
+            "Percent of individuals < 200% Federal Poverty Line"
+        )
+
         self.STATE_GEOID_FIELD_NAME = "GEOID2"
         self.df: pd.DataFrame
         self.state_median_income_df: pd.DataFrame
@@ -75,7 +94,8 @@ class CensusACSETL(ExtractTransformLoad):
                         "B23025_003E",
                         self.MEDIAN_INCOME_FIELD,
                     ]
-                    + self.LINGUISTIC_ISOLATION_FIELDS,
+                    + self.LINGUISTIC_ISOLATION_FIELDS
+                    + self.POVERTY_FIELDS,
                 )
             )
 
@@ -123,6 +143,27 @@ class CensusACSETL(ExtractTransformLoad):
 
         self.df[self.LINGUISTIC_ISOLATION_FIELD_NAME].describe()
 
+        # Calculate percent at different poverty thresholds
+        self.df[self.POVERTY_LESS_THAN_100_PERCENT_FPL_FIELD_NAME] = (
+            self.df["C17002_002E"] + self.df["C17002_003E"]
+        ) / self.df["C17002_001E"]
+
+        self.df[self.POVERTY_LESS_THAN_150_PERCENT_FPL_FIELD_NAME] = (
+            self.df["C17002_002E"]
+            + self.df["C17002_003E"]
+            + self.df["C17002_004E"]
+            + self.df["C17002_005E"]
+        ) / self.df["C17002_001E"]
+
+        self.df[self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME] = (
+            self.df["C17002_002E"]
+            + self.df["C17002_003E"]
+            + self.df["C17002_004E"]
+            + self.df["C17002_005E"]
+            + self.df["C17002_006E"]
+            + self.df["C17002_007E"]
+        ) / self.df["C17002_001E"]
+
     def load(self) -> None:
         logger.info("Saving Census ACS Data")
 
@@ -134,6 +175,9 @@ class CensusACSETL(ExtractTransformLoad):
             self.UNEMPLOYED_FIELD_NAME,
             self.LINGUISTIC_ISOLATION_FIELD_NAME,
             self.MEDIAN_INCOME_FIELD_NAME,
+            self.POVERTY_LESS_THAN_100_PERCENT_FPL_FIELD_NAME,
+            self.POVERTY_LESS_THAN_150_PERCENT_FPL_FIELD_NAME,
+            self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME,
         ]
 
         self.df[columns_to_include].to_csv(

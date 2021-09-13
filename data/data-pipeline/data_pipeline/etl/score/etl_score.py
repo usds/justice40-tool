@@ -41,6 +41,16 @@ class ScoreETL(ExtractTransformLoad):
             "Median household income (% of state median household income)"
         )
 
+        self.POVERTY_LESS_THAN_100_PERCENT_FPL_FIELD_NAME = (
+            "Percent of individuals < 100% Federal Poverty Line"
+        )
+        self.POVERTY_LESS_THAN_150_PERCENT_FPL_FIELD_NAME = (
+            "Percent of individuals < 150% Federal Poverty Line"
+        )
+        self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME = (
+            "Percent of individuals < 200% Federal Poverty Line"
+        )
+
         # There's another aggregation level (a second level of "buckets").
         self.AGGREGATION_POLLUTION = "Pollution Burden"
         self.AGGREGATION_POPULATION = "Population Characteristics"
@@ -116,6 +126,21 @@ class ScoreETL(ExtractTransformLoad):
             DataSet(
                 input_field="Physical health not good for >=14 days among adults aged >=18 years",
                 renamed_field="Physical health not good for >=14 days among adults aged >=18 years",
+                bucket=None,
+            ),
+            DataSet(
+                input_field=self.POVERTY_LESS_THAN_100_PERCENT_FPL_FIELD_NAME,
+                renamed_field=self.POVERTY_LESS_THAN_100_PERCENT_FPL_FIELD_NAME,
+                bucket=None,
+            ),
+            DataSet(
+                input_field=self.POVERTY_LESS_THAN_150_PERCENT_FPL_FIELD_NAME,
+                renamed_field=self.POVERTY_LESS_THAN_150_PERCENT_FPL_FIELD_NAME,
+                bucket=None,
+            ),
+            DataSet(
+                input_field=self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME,
+                renamed_field=self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME,
                 bucket=None,
             ),
             # The following data sets have buckets, because they're used in Score C
