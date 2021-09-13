@@ -45,6 +45,20 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
         # Constants for output
         self.AMI_REFERENCE_FIELD_NAME: str = "AMI Reference"
         self.AMI_FIELD_NAME: str = "Area Median Income (State or metropolitan)"
+        self.COLUMNS_TO_KEEP = [
+            self.GEOID_FIELD_NAME,
+            self.PLACE_FIELD_NAME,
+            self.COUNTY_FIELD_NAME,
+            self.STATE_ABBREVIATION_FIELD_NAME,
+            self.MSA_FIELD_NAME,
+            self.MSA_ID_FIELD_NAME,
+            self.MSA_TYPE_FIELD_NAME,
+            self.MSA_INCOME_FIELD_NAME,
+            self.STATE_GEOID_FIELD_NAME,
+            self.STATE_MEDIAN_INCOME_FIELD_NAME,
+            self.AMI_REFERENCE_FIELD_NAME,
+            self.AMI_FIELD_NAME,
+        ]
 
         # Remaining definitions
         self.output_df: pd.DataFrame
@@ -256,22 +270,7 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
     def load(self) -> None:
         logger.info("Saving Census ACS Median Income CSV")
 
-        columns_to_keep = [
-            self.GEOID_FIELD_NAME,
-            self.PLACE_FIELD_NAME,
-            self.COUNTY_FIELD_NAME,
-            self.STATE_ABBREVIATION_FIELD_NAME,
-            self.MSA_FIELD_NAME,
-            self.MSA_ID_FIELD_NAME,
-            self.MSA_TYPE_FIELD_NAME,
-            self.MSA_INCOME_FIELD_NAME,
-            self.STATE_GEOID_FIELD_NAME,
-            self.STATE_MEDIAN_INCOME_FIELD_NAME,
-            self.AMI_REFERENCE_FIELD_NAME,
-            self.AMI_FIELD_NAME,
-        ]
-
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
-        self.output_df[columns_to_keep].to_csv(
+        self.output_df[self.COLUMNS_TO_KEEP].to_csv(
             path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False
         )
