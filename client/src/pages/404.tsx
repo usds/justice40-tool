@@ -1,19 +1,11 @@
 import * as React from 'react';
-import Layout from '../components/layout';
-import J40MainGridContainer from '../components/J40MainGridContainer';
+import {defineMessages} from 'react-intl';
 import {Link} from 'gatsby-plugin-intl';
+import {useIntl} from 'gatsby-plugin-intl';
 import {Grid} from '@trussworks/react-uswds';
 
-// styles
-const headingStyles = {
-  marginTop: 32,
-  marginBottom: 64,
-  maxWidth: 320,
-};
-
-const paragraphStyles = {
-  marginBottom: 48,
-};
+import J40MainGridContainer from '../components/J40MainGridContainer';
+import Layout from '../components/layout';
 
 const codeStyles = {
   color: '#8A6534',
@@ -29,33 +21,76 @@ interface I404PageProps {
 
 // markup
 const NotFoundPage =({location}: I404PageProps) => {
-  return (<Layout location={location} title={'Page not found'}>
-    <J40MainGridContainer>
-      <Grid row><Grid col>
-        <h1 style={headingStyles}>Page not found</h1>
-      </Grid></Grid>
-      <Grid row><Grid col>
-        <p style={paragraphStyles}>
-            Sorry{' '}
-          <span role="img" aria-label="Pensive emoji">
+  const intl = useIntl();
+  const messages = defineMessages({
+    pageNotFoundTitle: {
+      id: 'pageNotFound.title.text',
+      defaultMessage: 'Page not found',
+      description: 'page not found title text',
+    },
+    pageNotFoundHeading: {
+      id: 'pageNotFound.heading.text',
+      defaultMessage: 'Page not found',
+      description: 'page not found heading text',
+    },
+    pageNotFoundApology: {
+      id: 'pageNotFound.apology.text',
+      defaultMessage: 'Sorry',
+      description: 'page not found apology text',
+    },
+    pageNotFoundApologyDescription: {
+      id: 'pageNotFound.apology.description.text',
+      defaultMessage: 'we couldn’t find what you were looking for.',
+      description: 'page not found apology description text',
+    },
+    pageNotFoundGuidance: {
+      id: 'pageNotFound.Guidance.text',
+      defaultMessage: 'Try creating a page in',
+      description: 'page not found guidance text',
+    },
+    pageNotFoundLinkToGoHome: {
+      id: 'pageNotFound.link.to.go.home.text',
+      defaultMessage: 'Go home',
+      description: 'page not found link to go home text',
+    },
+  });
+
+  return (
+    <Layout location={location} title={intl.formatMessage(messages.pageNotFoundTitle)}>
+      <J40MainGridContainer>
+
+        <Grid row>
+          <h1>{intl.formatMessage(messages.pageNotFoundHeading)}</h1>
+        </Grid>
+
+        <Grid row>
+          <p>
+            {intl.formatMessage(messages.pageNotFoundApology)}
+            {' '}
+            <span role="img" aria-label="Pensive emoji">
             😔
-          </span>{' '}
-            we couldn’t find what you were looking for.
-          <br/>
+            </span>{' '}
+            {intl.formatMessage(messages.pageNotFoundApologyDescription)}
+          </p>
+        </Grid>
+
+        <Grid row>
           {process.env.NODE_ENV === 'development' ? (
-              <>
-                <br/>
-                Try creating a page
-                in <code style={codeStyles}>src/pages/</code>.
-                <br/>
-              </>
+              <p>
+                {intl.formatMessage(messages.pageNotFoundGuidance)}
+                <code style={codeStyles}>src/pages/</code>.
+              </p>
             ) : null}
-          <br/>
-          <Link to="/">Go home</Link>.
-        </p>
-      </Grid></Grid>
-    </J40MainGridContainer>
-  </Layout>
+        </Grid>
+
+        <Grid>
+          <p>
+            <Link to="/">{intl.formatMessage(messages.pageNotFoundLinkToGoHome)}</Link>.
+          </p>
+        </Grid>
+
+      </J40MainGridContainer>
+    </Layout>
   );
 };
 
