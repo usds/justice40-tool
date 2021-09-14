@@ -18,6 +18,11 @@ interface MethodPageProps {
 const IndexPage = ({location}: MethodPageProps) => {
   const intl = useIntl();
   const messages = defineMessages({
+    methodologyPageTitle: {
+      id: 'methodology.page.title.text',
+      defaultMessage: 'Data and Methodology',
+      description: 'methodology page title text',
+    },
     methodologyPageHeader: {
       id: 'methodology.page.header.text',
       defaultMessage: 'Methodology',
@@ -32,7 +37,7 @@ const IndexPage = ({location}: MethodPageProps) => {
   });
 
   return (
-    <Layout location={location} title={'Data and Methodology'}>
+    <Layout location={location} title={intl.formatMessage(messages.methodologyPageTitle)}>
 
       <J40MainGridContainer>
         <AlertWrapper showBetaAlert={true} showLimitedDataAlert={false}/>
