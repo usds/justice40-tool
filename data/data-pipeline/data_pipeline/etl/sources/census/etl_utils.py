@@ -43,7 +43,7 @@ def get_state_fips_codes(data_path: Path) -> list:
         )
 
     fips_state_list = []
-    with open(fips_csv_path) as csv_file:
+    with open(fips_csv_path, encoding="utf-8") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=",")
         line_count = 0
 
