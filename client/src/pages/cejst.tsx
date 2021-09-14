@@ -65,15 +65,13 @@ const CEJSTPage = ({location}: IMapPageProps) => {
           <MapLegend />
         </Grid>
       </Grid>
+    </J40MainGridContainer>
 
-      <Grid row>
-        <Grid col>
-          <section>
-            <MapWrapper location={location}/>
-          </section>
-        </Grid>
-      </Grid>
+    <J40MainGridContainer>
+      <MapWrapper location={location}/>
+    </J40MainGridContainer>
 
+    <J40MainGridContainer>
       <Grid row>
         <Grid col>
           <section>

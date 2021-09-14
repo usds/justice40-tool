@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {useIntl} from 'gatsby-plugin-intl';
 import {defineMessages} from 'react-intl';
+import {Grid} from '@trussworks/react-uswds';
 
 import J40Map from '../J40Map';
 
@@ -28,14 +29,26 @@ const MapWrapper = ({location}: IMapWrapperProps) => {
   });
   return (
     <>
-      <AlertWrapper showBetaAlert={false} showLimitedDataAlert={true}/>
-      <J40Map location={location}/>
-      <div className={styles.mapCaptionTextLink}>
-        <a href={constants.DOWNLOAD_ZIP_URL}>
-          {intl.formatMessage(messages.downloadLinkText)}
-        </a>
-      </div>
-      <div>{intl.formatMessage(messages.downloadContents)}</div>
+      <Grid row>
+        <Grid col={12}>
+          <AlertWrapper showBetaAlert={false} showLimitedDataAlert={true}/>
+        </Grid>
+      </Grid>
+
+      <Grid row>
+        <J40Map location={location}/>
+      </Grid>
+
+      <Grid row>
+        <Grid col={6}>
+          <div className={styles.mapCaptionTextLink}>
+            <a href={constants.DOWNLOAD_ZIP_URL}>
+              {intl.formatMessage(messages.downloadLinkText)}
+            </a>
+          </div>
+          <div>{intl.formatMessage(messages.downloadContents)}</div>
+        </Grid>
+      </Grid>
     </>
   );
 };

@@ -15,6 +15,8 @@ import ReactMapGL, {
 import bbox from '@turf/bbox';
 import * as d3 from 'd3-ease';
 import {isMobile} from 'react-device-detect';
+import {Grid} from '@trussworks/react-uswds';
+import {useWindowSize} from 'react-use';
 
 // Contexts:
 import {useFlags} from '../contexts/FlagContext';
@@ -64,6 +66,7 @@ const J40Map = ({location}: IJ40Interface) => {
   const [transitionInProgress, setTransitionInProgress] = useState<boolean>(false);
   const [geolocationInProgress, setGeolocationInProgress] = useState<boolean>(false);
   const [isMobileMapState, setIsMobileMapState] = useState<boolean>(false);
+  const {width: windowWidth} = useWindowSize();
 
   const mapRef = useRef<MapRef>(null);
   const flags = useFlags();
@@ -170,94 +173,99 @@ const J40Map = ({location}: IJ40Interface) => {
   };
 
   return (
-    <div className={styles.mapAndInfoPanelContainer}>
-      <ReactMapGL
-        {...viewport}
-        mapStyle={makeMapStyle(flags)}
-        minZoom={constants.GLOBAL_MIN_ZOOM}
-        maxZoom={constants.GLOBAL_MAX_ZOOM}
-        mapOptions={{hash: true}}
-        width="100%"
-        height={isMobileMapState ? '44vh' : '100%'}
-        dragRotate={false}
-        touchRotate={false}
-        interactiveLayerIds={[constants.HIGH_SCORE_LAYER_NAME]}
-        onViewportChange={setViewport}
-        onClick={onClick}
-        onLoad={onLoad}
-        onTransitionStart={onTransitionStart}
-        onTransitionEnd={onTransitionEnd}
-        ref={mapRef}
-        data-cy={'reactMapGL'}
-      >
-        <Source
-          id={constants.HIGH_SCORE_SOURCE_NAME}
-          type="vector"
-          promoteId={constants.GEOID_PROPERTY}
-          tiles={[constants.FEATURE_TILE_HIGH_ZOOM_URL]}
-          maxzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
-          minzoom={constants.GLOBAL_MAX_ZOOM_HIGH}
+    <>
+      <Grid col={12} desktop={{col: 8}}>
+        <ReactMapGL
+          {...viewport}
+          mapStyle={makeMapStyle(flags)}
+          minZoom={constants.GLOBAL_MIN_ZOOM}
+          maxZoom={constants.GLOBAL_MAX_ZOOM}
+          mapOptions={{hash: true}}
+          width="100%"
+          height={windowWidth < 1024 ? '44vh' : '100%'}
+          dragRotate={false}
+          touchRotate={false}
+          interactiveLayerIds={[constants.HIGH_SCORE_LAYER_NAME]}
+          onViewportChange={setViewport}
+          onClick={onClick}
+          onLoad={onLoad}
+          onTransitionStart={onTransitionStart}
+          onTransitionEnd={onTransitionEnd}
+          ref={mapRef}
+          data-cy={'reactMapGL'}
         >
-          <Layer
-            id={constants.CURRENTLY_SELECTED_FEATURE_HIGHLIGHT_LAYER_NAME}
-            source-layer={constants.SCORE_SOURCE_LAYER}
-            type='line'
-            paint={{
-              'line-color': constants.DEFAULT_OUTLINE_COLOR,
-              'line-width': constants.CURRENTLY_SELECTED_FEATURE_LAYER_WIDTH,
-              'line-opacity': constants.CURRENTLY_SELECTED_FEATURE_LAYER_OPACITY,
-            }}
-            minzoom={constants.GLOBAL_MIN_ZOOM_HIGHLIGHT}
-            maxzoom={constants.GLOBAL_MAX_ZOOM_HIGHLIGHT}
-          />
-
-          <Layer
-            id={constants.BLOCK_GROUP_BOUNDARY_LAYER_NAME}
-            type='line'
-            source-layer={constants.SCORE_SOURCE_LAYER}
-            paint={{
-              'line-color': constants.BORDER_HIGHLIGHT_COLOR,
-              'line-width': constants.HIGHLIGHT_BORDER_WIDTH,
-            }}
-            filter={filter}
-            minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
-          />
-        </Source>
-        {('fs' in flags && detailViewData && !transitionInProgress) && (
-          <Popup
-            className={styles.j40Popup}
-            tipSize={5}
-            anchor="top"
-            longitude={detailViewData.longitude!}
-            latitude={detailViewData.latitude!}
-            closeOnClick={true}
-            onClose={setDetailViewData}
-            captureScroll={true}
+          <Source
+            id={constants.HIGH_SCORE_SOURCE_NAME}
+            type="vector"
+            promoteId={constants.GEOID_PROPERTY}
+            tiles={[constants.FEATURE_TILE_HIGH_ZOOM_URL]}
+            maxzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
+            minzoom={constants.GLOBAL_MAX_ZOOM_HIGH}
           >
-            <AreaDetail properties={detailViewData.properties} />
-          </Popup>
-        )}
-        <NavigationControl
-          showCompass={false}
-          className={styles.navigationControl}
+            <Layer
+              id={constants.CURRENTLY_SELECTED_FEATURE_HIGHLIGHT_LAYER_NAME}
+              source-layer={constants.SCORE_SOURCE_LAYER}
+              type='line'
+              paint={{
+                'line-color': constants.DEFAULT_OUTLINE_COLOR,
+                'line-width': constants.CURRENTLY_SELECTED_FEATURE_LAYER_WIDTH,
+                'line-opacity': constants.CURRENTLY_SELECTED_FEATURE_LAYER_OPACITY,
+              }}
+              minzoom={constants.GLOBAL_MIN_ZOOM_HIGHLIGHT}
+              maxzoom={constants.GLOBAL_MAX_ZOOM_HIGHLIGHT}
+            />
+
+            <Layer
+              id={constants.BLOCK_GROUP_BOUNDARY_LAYER_NAME}
+              type='line'
+              source-layer={constants.SCORE_SOURCE_LAYER}
+              paint={{
+                'line-color': constants.BORDER_HIGHLIGHT_COLOR,
+                'line-width': constants.HIGHLIGHT_BORDER_WIDTH,
+              }}
+              filter={filter}
+              minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
+            />
+          </Source>
+          {('fs' in flags && detailViewData && !transitionInProgress) && (
+            <Popup
+              className={styles.j40Popup}
+              tipSize={5}
+              anchor="top"
+              longitude={detailViewData.longitude!}
+              latitude={detailViewData.latitude!}
+              closeOnClick={true}
+              onClose={setDetailViewData}
+              captureScroll={true}
+            >
+              <AreaDetail properties={detailViewData.properties} />
+            </Popup>
+          )}
+          <NavigationControl
+            showCompass={false}
+            className={styles.navigationControl}
+          />
+          {'gl' in flags ? <GeolocateControl
+            className={styles.geolocateControl}
+            positionOptions={{enableHighAccuracy: true}}
+            onGeolocate={onGeolocate}
+            // @ts-ignore // Types have not caught up yet, see https://github.com/visgl/react-map-gl/issues/1492
+            onClick={onClickGeolocate}
+          /> : ''}
+          {geolocationInProgress ? <div>Geolocation in progress...</div> : ''}
+          <TerritoryFocusControl onClickTerritoryFocusButton={onClickTerritoryFocusButton}/>
+          {'fs' in flags ? <FullscreenControl className={styles.fullscreenControl}/> :'' }
+        </ReactMapGL>
+      </Grid>
+
+      <Grid col={12} desktop={{col: 4}} className={styles.mapInfoPanel}>
+        <MapInfoPanel
+          className={styles.mapInfoPanel}
+          featureProperties={detailViewData?.properties}
+          selectedFeatureId={selectedFeature?.id}
         />
-        {'gl' in flags ? <GeolocateControl
-          className={styles.geolocateControl}
-          positionOptions={{enableHighAccuracy: true}}
-          onGeolocate={onGeolocate}
-          // @ts-ignore // Types have not caught up yet, see https://github.com/visgl/react-map-gl/issues/1492
-          onClick={onClickGeolocate}
-        /> : ''}
-        {geolocationInProgress ? <div>Geolocation in progress...</div> : ''}
-        <TerritoryFocusControl onClickTerritoryFocusButton={onClickTerritoryFocusButton}/>
-        {'fs' in flags ? <FullscreenControl className={styles.fullscreenControl}/> :'' }
-      </ReactMapGL>
-      <MapInfoPanel
-        className={styles.mapInfoPanel}
-        featureProperties={detailViewData?.properties}
-        selectedFeatureId={selectedFeature?.id}
-      />
-    </div>
+      </Grid>
+    </>
   );
 };
 

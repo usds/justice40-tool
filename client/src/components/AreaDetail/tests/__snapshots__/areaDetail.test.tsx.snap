@@ -74,6 +74,94 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         Percentile (0-100)
       </h6>
     </div>
+    <div
+      class="usa-accordion"
+      data-testid="accordion"
+    >
+      <h2
+        class="usa-accordion__heading j40-accordion"
+      >
+        <button
+          aria-controls="test1"
+          aria-expanded="true"
+          class="usa-accordion__button"
+          data-testid="accordionButton_test1"
+          type="button"
+        >
+          indicators used in prio
+        </button>
+      </h2>
+      <div
+        class="usa-accordion__content usa-prose j40-accordion"
+        data-testid="accordionItem_test1"
+        id="test1"
+      >
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Poverty
+            </h4>
+            <p
+              class="secondary"
+            >
+              Household income is less than or equal to twice the federal "poverty level"
+            </p>
+          </div>
+          <div>
+            9900
+            <sup>
+              <span>
+                th
+              </span>
+            </sup>
+          </div>
+        </li>
+      </div>
+      <h2
+        class="usa-accordion__heading j40-accordian-bg-colored"
+      >
+        <button
+          aria-controls="test2"
+          aria-expanded="false"
+          class="usa-accordion__button"
+          data-testid="accordionButton_test2"
+          type="button"
+        >
+          additional indicators
+        </button>
+      </h2>
+      <div
+        class="usa-accordion__content usa-prose j40-accordian-bg-colored"
+        data-testid="accordionItem_test2"
+        hidden=""
+        id="test2"
+      >
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Education
+            </h4>
+            <p
+              class="secondary"
+            >
+              Percent of people age 25 or older that didn’t get a high school diploma
+            </p>
+          </div>
+          <div>
+            9800
+            <sup>
+              <span>
+                th
+              </span>
+            </sup>
+          </div>
+        </li>
+      </div>
+    </div>
     <li
       data-cy="indicatorBox"
     >
