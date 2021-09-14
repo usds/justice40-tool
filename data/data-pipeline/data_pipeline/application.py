@@ -44,6 +44,9 @@ def census_cleanup():
 def data_cleanup():
     """CLI command to clean up the all the data folders"""
 
+    data_path = settings.APP_ROOT / "data"
+
+    census_reset(data_path)
     data_folder_cleanup()
     score_folder_cleanup()
     temp_folder_cleanup()

@@ -200,8 +200,8 @@ def temp_folder_cleanup() -> None:
 
 
 def check_first_run() -> bool:
-    """Checks if a local semaphore has been set to only run once the
-    calling function"""
+    """Checks if a local flag file has been set and returns False
+    if it hasn't"""
 
     data_path = settings.APP_ROOT / "data"
     file = "first_run.txt"
