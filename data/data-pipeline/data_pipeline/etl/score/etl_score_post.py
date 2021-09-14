@@ -201,7 +201,7 @@ class PostScoreETL(ExtractTransformLoad):
         ]
 
     def transform(self) -> None:
-        logger.info("Transforming data sources for Score + County CSV")
+        logger.info("Transforming data sources for Score + County CSVs")
 
         transformed_counties = self._transform_counties(self.input_counties_df)
         transformed_states = self._transform_states(self.input_states_df)
@@ -267,7 +267,7 @@ class PostScoreETL(ExtractTransformLoad):
             constants.FULL_SCORE_CSV_FULL_PLUS_COUNTIES_FILE_PATH,
         )
         self._load_tile_csv(
-            self.output_score_tiles_df, constants.DATA_SCORE_TILES_FILE_PATH
+            self.output_score_tiles_df, constants.DATA_SCORE_CSV_TILES_FILE_PATH
         )
         self._load_downloadable_zip(
             self.output_downloadable_df, constants.SCORE_DOWNLOADABLE_DIR
