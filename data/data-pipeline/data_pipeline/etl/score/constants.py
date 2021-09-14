@@ -31,9 +31,12 @@ FULL_SCORE_CSV_FULL_PLUS_COUNTIES_FILE_PATH = (
     DATA_SCORE_CSV_FULL_DIR / "usa_counties.csv"
 )
 
-## Score Tile paths
+# Score Tile CSV source path
+DATA_SCORE_CSV_TILES_PATH = DATA_SCORE_CSV_DIR / "tiles"
+DATA_SCORE_CSV_TILES_FILE_PATH = DATA_SCORE_CSV_TILES_PATH / "usa.csv"
+
+## Tile path
 DATA_SCORE_TILES_DIR = DATA_SCORE_DIR / "tiles"
-DATA_SCORE_TILES_FILE_PATH = DATA_SCORE_TILES_DIR / "usa.csv"
 
 # Downloadable paths
 SCORE_DOWNLOADABLE_DIR = DATA_SCORE_DIR / "downloadable"

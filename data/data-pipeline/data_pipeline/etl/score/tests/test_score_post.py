@@ -112,9 +112,9 @@ def test_load_score_csv(etl, score_data_expected):
 def test_load_tile_csv(etl, tile_data_expected):
     reload(constants)
     etl._load_score_csv(
-        tile_data_expected, constants.DATA_SCORE_TILES_FILE_PATH
+        tile_data_expected, constants.DATA_SCORE_CSV_TILES_FILE_PATH
     )
-    assert constants.DATA_SCORE_TILES_FILE_PATH.is_file()
+    assert constants.DATA_SCORE_CSV_TILES_FILE_PATH.is_file()
 
 
 def test_load_downloadable_zip(etl, downloadable_data_expected):

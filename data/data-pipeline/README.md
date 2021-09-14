@@ -311,7 +311,7 @@ ETL unit tests are typically organized into three buckets:
 - Transform Tests, and
 - Load Tests
 
-These are tested using different strategies, explained below.
+These are tested using different strategies explained below.
 
 #### Extract Tests
 
