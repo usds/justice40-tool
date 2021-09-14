@@ -237,6 +237,7 @@ This section will outline styles that are component specific
 - map
 - timeline
 - about
+- accordion
 
 /* 
 ******************************
@@ -529,3 +530,17 @@ ul.j40-process-nested-list {
   }
 }
 
+/* 
+******************************
+*      ACCORDION CARD STYLES
+****************************** 
+*/
+
+.j40-accordion {
+  @include j40-element('3xs', 1, 'normal', 0);
+}
+
+.j40-accordian-bg-colored {
+  @include j40-element('3xs', 1, 'normal', 0);
+  background-color: lightgrey;
+}

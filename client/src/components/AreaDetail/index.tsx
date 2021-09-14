@@ -4,6 +4,7 @@ import {useIntl} from 'gatsby-plugin-intl';
 import {defineMessages} from 'react-intl';
 
 // Components:
+import {Accordion} from '@trussworks/react-uswds';
 
 // Styles and constants
 import * as styles from './areaDetail.module.scss';
@@ -210,6 +211,57 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
         <h6>{intl.formatMessage(messages.indicatorColumnHeader)}</h6>
         <h6>{intl.formatMessage(messages.percentileColumnHeader)}</h6>
       </div>
+      <Accordion
+        items={
+          [
+            {
+              id: 'test1',
+              title: 'indicators used in prio',
+              content: (
+                <li className={styles.indicatorBox} data-cy={'indicatorBox'}>
+                  <div>
+                    <h4>{indicators[0].label}</h4>
+                    <p className={'secondary'}>
+                      {indicators[0].description}
+                    </p>
+                  </div>
+                  <div className={styles.indicatorValue}>
+                    {readablePercentile(indicators[0].value)}
+                    <sup className={styles.indicatorSuperscript}><span>
+                      {getSuperscriptOrdinal(readablePercentile(indicators[0].value))}
+                    </span></sup>
+                  </div>
+                </li>
+              ),
+              expanded: true,
+              className: 'j40-accordion',
+            },
+            {
+              className: 'j40-accordian-bg-colored',
+              id: 'test2',
+              title: 'additional indicators',
+              content: (
+                (
+                  <li className={styles.indicatorBox} data-cy={'indicatorBox'}>
+                    <div>
+                      <h4>{indicators[1].label}</h4>
+                      <p className={'secondary'}>
+                        {indicators[1].description}
+                      </p>
+                    </div>
+                    <div className={styles.indicatorValue}>
+                      {readablePercentile(indicators[1].value)}
+                      <sup className={styles.indicatorSuperscript}><span>
+                        {getSuperscriptOrdinal(readablePercentile(indicators[1].value))}
+                      </span></sup>
+                    </div>
+                  </li>
+                )
+              ),
+              expanded: false,
+            },
+          ]
+        }/>
 
       {indicators.map((indicator, index) => (
         <li key={index} className={styles.indicatorBox} data-cy={'indicatorBox'}>
