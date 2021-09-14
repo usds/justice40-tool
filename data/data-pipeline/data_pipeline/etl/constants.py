@@ -49,6 +49,11 @@ DATASET_LIST = [
         "module_dir": "census_acs_median_income",
         "class_name": "CensusACSMedianIncomeETL",
     },
+    {
+        "name": "cdc_life_expectancy",
+        "module_dir": "cdc_life_expectancy",
+        "class_name": "CDCLifeExpectancy",
+    }
 ]
 CENSUS_INFO = {
     "name": "census",
