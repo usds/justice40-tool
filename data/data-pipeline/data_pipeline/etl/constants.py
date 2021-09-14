@@ -53,7 +53,7 @@ DATASET_LIST = [
         "name": "cdc_life_expectancy",
         "module_dir": "cdc_life_expectancy",
         "class_name": "CDCLifeExpectancy",
-    }
+    },
 ]
 CENSUS_INFO = {
     "name": "census",

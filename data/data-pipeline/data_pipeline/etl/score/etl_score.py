@@ -26,7 +26,9 @@ class ScoreETL(ExtractTransformLoad):
         # A few specific field names
         # TODO: clean this up, I name some fields but not others.
         self.UNEMPLOYED_FIELD_NAME: str = "Unemployed civilians (percent)"
-        self.LINGUISTIC_ISOLATION_FIELD_NAME: str = "Linguistic isolation (percent)"
+        self.LINGUISTIC_ISOLATION_FIELD_NAME: str = (
+            "Linguistic isolation (percent)"
+        )
         self.HOUSING_BURDEN_FIELD_NAME: str = "Housing burden (percent)"
         self.POVERTY_FIELD_NAME: str = (
             "Poverty (Less than 200% of federal poverty line)"
@@ -578,9 +580,7 @@ class ScoreETL(ExtractTransformLoad):
 
         df["NMTC (communities)"] = (
             (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
-        ) | (
-            (df[self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME] > 0.20)
-        )
+        ) | ((df[self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME] > 0.20))
 
         df["NMTC modified (communities)"] = (
             (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
