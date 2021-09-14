@@ -57,10 +57,14 @@ class PostScoreETL(ExtractTransformLoad):
 
     def _extract_score(self, score_path: Path) -> pd.DataFrame:
         logger.info("Reading Score CSV")
-        return pd.read_csv(
-            score_path,
-            dtype={"GEOID10": "string", "Total population": "int64"},
+        df = pd.read_csv(score_path, dtype={"GEOID10": "string"})
+
+        # Convert total population to an int:
+        df["Total population"] = df["Total population"].astype(
+            int, errors="ignore"
         )
+
+        return df
 
     def _extract_national_cbg(self, national_cbg_path: Path) -> pd.DataFrame:
         logger.info("Reading national CBG")
@@ -91,18 +95,23 @@ class PostScoreETL(ExtractTransformLoad):
             constants.DATA_CENSUS_CSV_FILE_PATH
         )
 
-    def _transform_counties(self, initial_counties_df: pd.DataFrame) -> pd.DataFrame:
+    def _transform_counties(
+        self, initial_counties_df: pd.DataFrame
+    ) -> pd.DataFrame:
         """
         Necessary modifications to the counties dataframe
         """
         # Rename some of the columns to prepare for merge
         new_df = initial_counties_df[constants.CENSUS_COUNTIES_COLUMNS]
         new_df.rename(
-            columns={"USPS": "State Abbreviation", "NAME": "County Name"}, inplace=True
+            columns={"USPS": "State Abbreviation", "NAME": "County Name"},
+            inplace=True,
         )
         return new_df
 
-    def _transform_states(self, initial_states_df: pd.DataFrame) -> pd.DataFrame:
+    def _transform_states(
+        self, initial_states_df: pd.DataFrame
+    ) -> pd.DataFrame:
         """
         Necessary modifications to the states dataframe
         """
@@ -174,7 +183,9 @@ class PostScoreETL(ExtractTransformLoad):
     def _create_tile_data(
         self, score_county_state_merged_df: pd.DataFrame
     ) -> pd.DataFrame:
-        score_tiles = score_county_state_merged_df[constants.TILES_SCORE_COLUMNS]
+        score_tiles = score_county_state_merged_df[
+            constants.TILES_SCORE_COLUMNS
+        ]
         decimals = pd.Series(
             [constants.TILES_ROUND_NUM_DECIMALS]
             * len(constants.TILES_SCORE_FLOAT_COLUMNS),
@@ -185,10 +196,12 @@ class PostScoreETL(ExtractTransformLoad):
     def _create_downloadable_data(
         self, score_county_state_merged_df: pd.DataFrame
     ) -> pd.DataFrame:
-        return score_county_state_merged_df[constants.DOWNLOADABLE_SCORE_COLUMNS]
+        return score_county_state_merged_df[
+            constants.DOWNLOADABLE_SCORE_COLUMNS
+        ]
 
     def transform(self) -> None:
-        logger.info("Transforming data sources for Score + County CSV")
+        logger.info("Transforming data sources for Score + County CSVs")
 
         transformed_counties = self._transform_counties(self.input_counties_df)
         transformed_states = self._transform_states(self.input_states_df)
@@ -206,7 +219,9 @@ class PostScoreETL(ExtractTransformLoad):
         self.output_downloadable_df = self._create_downloadable_data(
             output_score_county_state_merged_df
         )
-        self.output_score_county_state_merged_df = output_score_county_state_merged_df
+        self.output_score_county_state_merged_df = (
+            output_score_county_state_merged_df
+        )
 
     def _load_score_csv(
         self, score_county_state_merged: pd.DataFrame, score_csv_path: Path
@@ -252,7 +267,7 @@ class PostScoreETL(ExtractTransformLoad):
             constants.FULL_SCORE_CSV_FULL_PLUS_COUNTIES_FILE_PATH,
         )
         self._load_tile_csv(
-            self.output_score_tiles_df, constants.DATA_SCORE_TILES_FILE_PATH
+            self.output_score_tiles_df, constants.DATA_SCORE_CSV_TILES_FILE_PATH
         )
         self._load_downloadable_zip(
             self.output_downloadable_df, constants.SCORE_DOWNLOADABLE_DIR

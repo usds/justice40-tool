@@ -1,7 +1,8 @@
 import collections
 import functools
-
+from pathlib import Path
 import pandas as pd
+
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger
 
@@ -11,11 +12,11 @@ logger = get_module_logger(__name__)
 class ScoreETL(ExtractTransformLoad):
     def __init__(self):
         # Define some global parameters
-        self.BUCKET_SOCIOECONOMIC = "Socioeconomic Factors"
-        self.BUCKET_SENSITIVE = "Sensitive populations"
-        self.BUCKET_ENVIRONMENTAL = "Environmental effects"
-        self.BUCKET_EXPOSURES = "Exposures"
-        self.BUCKETS = [
+        self.BUCKET_SOCIOECONOMIC: str = "Socioeconomic Factors"
+        self.BUCKET_SENSITIVE: str = "Sensitive populations"
+        self.BUCKET_ENVIRONMENTAL: str = "Environmental effects"
+        self.BUCKET_EXPOSURES: str = "Exposures"
+        self.BUCKETS: str = [
             self.BUCKET_SOCIOECONOMIC,
             self.BUCKET_SENSITIVE,
             self.BUCKET_ENVIRONMENTAL,
@@ -24,25 +25,47 @@ class ScoreETL(ExtractTransformLoad):
 
         # A few specific field names
         # TODO: clean this up, I name some fields but not others.
-        self.UNEMPLOYED_FIELD_NAME = "Unemployed civilians (percent)"
-        self.LINGUISTIC_ISOLATION_FIELD_NAME = "Linguistic isolation (percent)"
-        self.HOUSING_BURDEN_FIELD_NAME = "Housing burden (percent)"
-        self.POVERTY_FIELD_NAME = (
+        self.UNEMPLOYED_FIELD_NAME: str = "Unemployed civilians (percent)"
+        self.LINGUISTIC_ISOLATION_FIELD_NAME: str = "Linguistic isolation (percent)"
+        self.HOUSING_BURDEN_FIELD_NAME: str = "Housing burden (percent)"
+        self.POVERTY_FIELD_NAME: str = (
             "Poverty (Less than 200% of federal poverty line)"
         )
-        self.HIGH_SCHOOL_FIELD_NAME = "Percent individuals age 25 or over with less than high school degree"
-        self.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD_NAME = (
+        self.HIGH_SCHOOL_FIELD_NAME: str = "Percent individuals age 25 or over with less than high school degree"
+        self.STATE_MEDIAN_INCOME_FIELD_NAME: str = (
+            "Median household income (State; 2019 inflation-adjusted dollars)"
+        )
+        self.MEDIAN_INCOME_FIELD_NAME: str = (
+            "Median household income in the past 12 months"
+        )
+        self.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD_NAME: str = (
             "Median household income (% of state median household income)"
+        )
+        self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME: str = (
+            "Median household income (% of AMI)"
+        )
+        self.AMI_FIELD_NAME: str = "Area Median Income (State or metropolitan)"
+
+        # Note: these variable names are slightly different (missing the word `PERCENT`) than those in the source ETL to avoid pylint's duplicate
+        # code error. - LMB
+        self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME: str = (
+            "Percent of individuals < 100% Federal Poverty Line"
+        )
+        self.POVERTY_LESS_THAN_150_FPL_FIELD_NAME: str = (
+            "Percent of individuals < 150% Federal Poverty Line"
+        )
+        self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME: str = (
+            "Percent of individuals < 200% Federal Poverty Line"
         )
 
         # There's another aggregation level (a second level of "buckets").
-        self.AGGREGATION_POLLUTION = "Pollution Burden"
-        self.AGGREGATION_POPULATION = "Population Characteristics"
+        self.AGGREGATION_POLLUTION: str = "Pollution Burden"
+        self.AGGREGATION_POPULATION: str = "Population Characteristics"
 
-        self.PERCENTILE_FIELD_SUFFIX = " (percentile)"
-        self.MIN_MAX_FIELD_SUFFIX = " (min-max normalized)"
+        self.PERCENTILE_FIELD_SUFFIX: str = " (percentile)"
+        self.MIN_MAX_FIELD_SUFFIX: str = " (min-max normalized)"
 
-        self.SCORE_CSV_PATH = self.DATA_PATH / "score" / "csv" / "full"
+        self.SCORE_CSV_PATH: Path = self.DATA_PATH / "score" / "csv" / "full"
 
         # dataframes
         self.df: pd.DataFrame
@@ -51,6 +74,7 @@ class ScoreETL(ExtractTransformLoad):
         self.housing_and_transportation_df: pd.DataFrame
         self.hud_housing_df: pd.DataFrame
         self.cdc_places_df: pd.DataFrame
+        self.census_acs_median_incomes_df: pd.DataFrame
 
     def data_sets(self) -> list:
         # Define a named tuple that will be used for each data set input.
@@ -110,6 +134,31 @@ class ScoreETL(ExtractTransformLoad):
             DataSet(
                 input_field="Physical health not good for >=14 days among adults aged >=18 years",
                 renamed_field="Physical health not good for >=14 days among adults aged >=18 years",
+                bucket=None,
+            ),
+            DataSet(
+                input_field=self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME,
+                renamed_field=self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME,
+                bucket=None,
+            ),
+            DataSet(
+                input_field=self.POVERTY_LESS_THAN_150_FPL_FIELD_NAME,
+                renamed_field=self.POVERTY_LESS_THAN_150_FPL_FIELD_NAME,
+                bucket=None,
+            ),
+            DataSet(
+                input_field=self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME,
+                renamed_field=self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME,
+                bucket=None,
+            ),
+            DataSet(
+                input_field=self.AMI_FIELD_NAME,
+                renamed_field=self.AMI_FIELD_NAME,
+                bucket=None,
+            ),
+            DataSet(
+                input_field=self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME,
+                renamed_field=self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME,
                 bucket=None,
             ),
             # The following data sets have buckets, because they're used in Score C
@@ -211,6 +260,7 @@ class ScoreETL(ExtractTransformLoad):
         ]
 
     def extract(self) -> None:
+        logger.info("Loading data sets from disk.")
         # EJSCreen csv Load
         ejscreen_csv = self.DATA_PATH / "dataset" / "ejscreen_2019" / "usa.csv"
         self.ejscreen_df = pd.read_csv(
@@ -257,6 +307,19 @@ class ScoreETL(ExtractTransformLoad):
             low_memory=False,
         )
 
+        # Load census AMI data
+        census_acs_median_incomes_csv = (
+            self.DATA_PATH
+            / "dataset"
+            / "census_acs_median_income_2019"
+            / "usa.csv"
+        )
+        self.census_acs_median_incomes_df = pd.read_csv(
+            census_acs_median_incomes_csv,
+            dtype={self.GEOID_FIELD_NAME: "string"},
+            low_memory=False,
+        )
+
     def _join_cbg_dfs(self, census_block_group_dfs: list) -> pd.DataFrame:
         logger.info("Joining Census Block Group dataframes")
         census_block_group_df = functools.reduce(
@@ -275,7 +338,7 @@ class ScoreETL(ExtractTransformLoad):
                 f"One of the input CSVs uses {self.GEOID_FIELD_NAME} with a different length."
             )
         return census_block_group_df
-    
+
     def _join_tract_dfs(self, census_tract_dfs: list) -> pd.DataFrame:
         logger.info("Joining Census Tract dataframes")
         census_tract_df = functools.reduce(
@@ -350,11 +413,10 @@ class ScoreETL(ExtractTransformLoad):
         # Multiply the "Pollution Burden" score and the "Population Characteristics"
         # together to produce the cumulative impact score.
         df["Score C"] = (
-            df[self.AGGREGATION_POLLUTION]
-            * df[self.AGGREGATION_POPULATION]
+            df[self.AGGREGATION_POLLUTION] * df[self.AGGREGATION_POPULATION]
         )
         return df
-    
+
     def _add_scores_d_and_e(self, df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Adding Scores D and E")
         fields_to_use_in_score = [
@@ -434,9 +496,7 @@ class ScoreETL(ExtractTransformLoad):
             )
             | (df["Proximity to RMP sites (percentile)"] > 0.9)
             | (
-                df[
-                    "Current asthma among adults aged >=18 years (percentile)"
-                ]
+                df["Current asthma among adults aged >=18 years (percentile)"]
                 > 0.9
             )
             | (
@@ -476,15 +536,47 @@ class ScoreETL(ExtractTransformLoad):
         )
         return df
 
+    def _add_score_g(self, df: pd.DataFrame) -> pd.DataFrame:
+        logger.info("Adding Score G")
+
+        high_school_cutoff_threshold = 0.05
+
+        df["Score G (communities)"] = (
+            (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.7)
+            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
+        ) | (
+            (df[self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME] > 0.50)
+            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
+        )
+        df["Score G"] = df["Score G (communities)"].astype(int)
+        df["Score G (percentile)"] = df["Score G"]
+
+        df["NMTC (communities)"] = (
+            (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
+        ) | (
+            (df[self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME] > 0.20)
+        )
+
+        df["NMTC modified (communities)"] = (
+            (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
+            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
+        ) | (
+            (df[self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME] > 0.20)
+            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
+        )
+
+        return df
+
     # TODO Move a lot of this to the ETL part of the pipeline
     def _prepare_initial_df(self, data_sets: list) -> pd.DataFrame:
         logger.info("Preparing initial dataframe")
 
         # Join all the data sources that use census block groups
         census_block_group_dfs = [
-            self.ejscreen_df, 
-            self.census_df, 
+            self.ejscreen_df,
+            self.census_df,
             self.housing_and_transportation_df,
+            self.census_acs_median_incomes_df,
         ]
         census_block_group_df = self._join_cbg_dfs(census_block_group_dfs)
 
@@ -504,11 +596,25 @@ class ScoreETL(ExtractTransformLoad):
             census_tract_df, on=self.GEOID_TRACT_FIELD_NAME
         )
 
-        # If GEOID10s are read as numbers instead of strings, the initial 0 is dropped, 
+        # If GEOID10s are read as numbers instead of strings, the initial 0 is dropped,
         # and then we get too many CBG rows (one for 012345 and one for 12345).
-        if len(census_block_group_df) > 220333:
-            raise ValueError("Too many rows in the join.")
-        
+        if len(census_block_group_df) > self.EXPECTED_MAX_CENSUS_BLOCK_GROUPS:
+            raise ValueError(
+                f"Too many rows in the join: {len(census_block_group_df)}"
+            )
+
+        # Calculate median income variables.
+        # First, calculate the income of the block group as a fraction of the state income.
+        df[self.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD_NAME] = (
+            df[self.MEDIAN_INCOME_FIELD_NAME]
+            / df[self.STATE_MEDIAN_INCOME_FIELD_NAME]
+        )
+
+        # Calculate the income of the block group as a fraction of the AMI (either state or metropolitan, depending on reference).
+        df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] = (
+            df[self.MEDIAN_INCOME_FIELD_NAME] / df[self.AMI_FIELD_NAME]
+        )
+
         # TODO Refactor to no longer use the data_sets list and do all renaming in ETL step
         # Rename columns:
         renaming_dict = {
@@ -537,9 +643,9 @@ class ScoreETL(ExtractTransformLoad):
 
         # calculate percentiles
         for data_set in data_sets:
-            df[
-                f"{data_set.renamed_field}{self.PERCENTILE_FIELD_SUFFIX}"
-            ] = df[data_set.renamed_field].rank(pct=True)
+            df[f"{data_set.renamed_field}{self.PERCENTILE_FIELD_SUFFIX}"] = df[
+                data_set.renamed_field
+            ].rank(pct=True)
 
         # Do some math:
         # (
@@ -567,14 +673,14 @@ class ScoreETL(ExtractTransformLoad):
             df[f"{data_set.renamed_field}{self.MIN_MAX_FIELD_SUFFIX}"] = (
                 df[data_set.renamed_field] - min_value
             ) / (max_value - min_value)
-        
+
         return df
 
     def transform(self) -> None:
         ## IMPORTANT: THIS METHOD IS CLOSE TO THE LIMIT OF STATEMENTS
 
         logger.info("Transforming Score Data")
-        
+
         # get data sets list
         data_sets = self.data_sets()
 
@@ -600,9 +706,11 @@ class ScoreETL(ExtractTransformLoad):
         # Calculate "Score F", which uses "either/or" thresholds.
         self.df = self._add_score_f(self.df)
 
+        # Calculate "Score G", which uses AMI and poverty.
+        self.df = self._add_score_g(self.df)
+
     def load(self) -> None:
         logger.info("Saving Score CSV")
-
-        # write nationwide csv
         self.SCORE_CSV_PATH.mkdir(parents=True, exist_ok=True)
+
         self.df.to_csv(self.SCORE_CSV_PATH / "usa.csv", index=False)

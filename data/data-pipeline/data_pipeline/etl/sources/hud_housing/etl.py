@@ -272,7 +272,6 @@ class HudHousingETL(ExtractTransformLoad):
             - self.df[RENTER_OCCUPIED_NOT_COMPUTED_FIELDS].sum(axis=1)
         )
 
-
         self.df["DENOM INCL NOT COMPUTED"] = (
             self.df[OWNER_OCCUPIED_POPULATION_FIELD]
             + self.df[RENTER_OCCUPIED_POPULATION_FIELD]

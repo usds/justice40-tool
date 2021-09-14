@@ -21,6 +21,8 @@ class ExtractTransformLoad:
     TMP_PATH: Path = DATA_PATH / "tmp"
     GEOID_FIELD_NAME: str = "GEOID10"
     GEOID_TRACT_FIELD_NAME: str = "GEOID10_TRACT"
+    # TODO: investigate. Census says there are only 217,740 CBGs in the US.
+    EXPECTED_MAX_CENSUS_BLOCK_GROUPS: int = 220405
 
     def get_yaml_config(self) -> None:
         """Reads the YAML configuration file for the dataset and stores
