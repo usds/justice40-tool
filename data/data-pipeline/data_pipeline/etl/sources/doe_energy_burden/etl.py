@@ -15,7 +15,6 @@ class DOEEnergyBurden(ExtractTransformLoad):
             + "/DOE_LEAD_with_EJSCREEN.csv.zip"
         )
 
-        # TODO: put a zip on s3.
         self.OUTPUT_PATH: Path = (
             self.DATA_PATH / "dataset" / "doe_energy_burden"
         )
@@ -51,8 +50,6 @@ class DOEEnergyBurden(ExtractTransformLoad):
             },
             low_memory=False,
         )
-
-        logger.info(self.raw_df.head())
 
     def transform(self) -> None:
         logger.info("Starting transforms.")
