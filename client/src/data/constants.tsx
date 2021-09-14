@@ -26,7 +26,7 @@ export const FEATURE_TILE_LOW_ZOOM_URL = featureURLForTilesetName('low');
 export const PERFORMANCE_MARKER_MAP_IDLE = 'MAP_IDLE';
 
 // Properties
-export const SCORE_PROPERTY_HIGH = 'Score G (percentile)';
+export const SCORE_PROPERTY_HIGH = 'Score G';
 export const SCORE_PROPERTY_LOW = 'G_SCORE';
 export const GEOID_PROPERTY = 'GEOID10';
 export const HIGH_SCORE_SOURCE_NAME = 'score-high';
