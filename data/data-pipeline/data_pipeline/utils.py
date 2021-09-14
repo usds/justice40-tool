@@ -187,6 +187,7 @@ def score_folder_cleanup() -> None:
     remove_all_from_dir(data_path / "score" / "csv")
     remove_all_from_dir(data_path / "score" / "geojson")
     remove_all_from_dir(data_path / "score" / "downloadable")
+    remove_all_from_dir(data_path / "score" / "tiles")
 
 
 def temp_folder_cleanup() -> None:
@@ -196,6 +197,19 @@ def temp_folder_cleanup() -> None:
 
     logger.info("Initializing all temp directoriees")
     remove_all_from_dir(data_path / "tmp")
+
+
+def check_first_run() -> bool:
+    """Checks if a local flag file has been set and returns False
+    if it hasn't"""
+
+    data_path = settings.APP_ROOT / "data"
+    file = "first_run.txt"
+
+    if not os.path.isfile(data_path / file):
+        return True
+
+    return False
 
 
 def get_excel_column_name(index: int) -> str:
