@@ -84,12 +84,11 @@ def score_generate() -> None:
     score_gen.load()
 
     # Post Score Processing
-    # TODO: uncomment
-    # score_post = PostScoreETL()
-    # score_post.extract()
-    # score_post.transform()
-    # score_post.load()
-    # score_post.cleanup()
+    score_post = PostScoreETL()
+    score_post.extract()
+    score_post.transform()
+    score_post.load()
+    score_post.cleanup()
 
 
 def score_geo() -> None:
