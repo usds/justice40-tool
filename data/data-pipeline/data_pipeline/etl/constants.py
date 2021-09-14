@@ -54,6 +54,11 @@ DATASET_LIST = [
         "module_dir": "cdc_life_expectancy",
         "class_name": "CDCLifeExpectancy",
     },
+    {
+        "name": "doe_energy_burden",
+        "module_dir": "doe_energy_burden",
+        "class_name": "DOEEnergyBurden",
+    },
 ]
 CENSUS_INFO = {
     "name": "census",
