@@ -590,19 +590,9 @@ class ScoreETL(ExtractTransformLoad):
         )
         df["Score H"] = df["Score H (communities)"].astype(int)
 
-        # df["80% AMI & 6% high school (communities)"] = (
-        #     (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
-        #     & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold_2)
-        #     )
-        #
-        # df["FPL200>40% & 6% high school (communities)"] = (
-        #     (df[self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME] > 0.40)
-        #     & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold_2)
-        # )
-
         df["NMTC (communities)"] = (
             (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
-        ) | ((df[self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME] > 0.20))
+        ) | (df[self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME] > 0.20)
 
         df["NMTC modified (communities)"] = (
             (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)

@@ -1,12 +1,8 @@
-import json
 from pathlib import Path
 import pandas as pd
-import requests
 
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger, download_file_from_url
-from data_pipeline.config import settings
-from data_pipeline.utils import unzip_file_from_url
 
 logger = get_module_logger(__name__)
 
@@ -26,6 +22,9 @@ class CDCLifeExpectancy(ExtractTransformLoad):
             self.GEOID_TRACT_FIELD_NAME,
             self.LIFE_EXPECTANCY_FIELD_NAME,
         ]
+
+        self.raw_df: pd.DataFrame
+        self.output_df: pd.DataFrame
 
     def extract(self) -> None:
         logger.info("Starting data download.")
