@@ -161,6 +161,11 @@ class ScoreETL(ExtractTransformLoad):
                 renamed_field=self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME,
                 bucket=None,
             ),
+            DataSet(
+                input_field=self.MEDIAN_INCOME_FIELD_NAME,
+                renamed_field=self.MEDIAN_INCOME_FIELD_NAME,
+                bucket=None,
+            ),
             # The following data sets have buckets, because they're used in Score C
             DataSet(
                 input_field="CANCER",
@@ -540,7 +545,7 @@ class ScoreETL(ExtractTransformLoad):
         logger.info("Adding Score G")
 
         high_school_cutoff_threshold = 0.05
-        high_school_cutoff_threshold_2 = 0.07
+        high_school_cutoff_threshold_2 = 0.06
 
         df["Score G (communities)"] = (
             (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.7)
@@ -561,15 +566,15 @@ class ScoreETL(ExtractTransformLoad):
         )
         df["Score H"] = df["Score H (communities)"].astype(int)
 
-        df["80% AMI & 7% high school (communities)"] = (
-            (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
-            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold_2)
-            )
-
-        df["FPL200>40% & 7% high school (communities)"] = (
-            (df[self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME] > 0.40)
-            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold_2)
-        )
+        # df["80% AMI & 6% high school (communities)"] = (
+        #     (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
+        #     & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold_2)
+        #     )
+        #
+        # df["FPL200>40% & 6% high school (communities)"] = (
+        #     (df[self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME] > 0.40)
+        #     & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold_2)
+        # )
 
         df["NMTC (communities)"] = (
             (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
@@ -657,7 +662,8 @@ class ScoreETL(ExtractTransformLoad):
             # Skip GEOID_FIELD_NAME, because it's a string.
             if data_set.renamed_field == self.GEOID_FIELD_NAME:
                 continue
-            df[f"{data_set.renamed_field}"] = pd.to_numeric(
+
+            df[data_set.renamed_field] = pd.to_numeric(
                 df[data_set.renamed_field]
             )
 
