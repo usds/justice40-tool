@@ -57,10 +57,14 @@ class PostScoreETL(ExtractTransformLoad):
 
     def _extract_score(self, score_path: Path) -> pd.DataFrame:
         logger.info("Reading Score CSV")
-        return pd.read_csv(
-            score_path,
-            dtype={"GEOID10": "string", "Total population": "int64"},
+        df = pd.read_csv(score_path, dtype={"GEOID10": "string"})
+
+        # Convert total population to an int:
+        df["Total population"] = df["Total population"].astype(
+            int, errors="ignore"
         )
+
+        return df
 
     def _extract_national_cbg(self, national_cbg_path: Path) -> pd.DataFrame:
         logger.info("Reading national CBG")
