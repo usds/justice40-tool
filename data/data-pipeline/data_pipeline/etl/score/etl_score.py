@@ -338,10 +338,7 @@ class ScoreETL(ExtractTransformLoad):
 
         # Load CDC life expectancy data
         cdc_life_expectancy_csv = (
-            self.DATA_PATH
-            / "dataset"
-            / "cdc_life_expectancy"
-            / "usa.csv"
+            self.DATA_PATH / "dataset" / "cdc_life_expectancy" / "usa.csv"
         )
         self.cdc_life_expectancy_df = pd.read_csv(
             cdc_life_expectancy_csv,
@@ -621,7 +618,7 @@ class ScoreETL(ExtractTransformLoad):
         census_tract_dfs = [
             self.hud_housing_df,
             self.cdc_places_df,
-            self.cdc_life_expectancy_df
+            self.cdc_life_expectancy_df,
         ]
         census_tract_df = self._join_tract_dfs(census_tract_dfs)
 
