@@ -26,13 +26,6 @@ class CDCLifeExpectancy(ExtractTransformLoad):
             self.GEOID_TRACT_FIELD_NAME,
             self.LIFE_EXPECTANCY_FIELD_NAME,
         ]
-        #
-        # # Remaining definitions
-        # self.raw_df: pd.DataFrame
-        # self.output_df: pd.DataFrame
-        # self.raw_geocorr_df: pd.DataFrame
-        # self.msa_median_incomes: dict
-        # self.state_median_incomes: dict
 
     def extract(self) -> None:
         logger.info("Starting data download.")

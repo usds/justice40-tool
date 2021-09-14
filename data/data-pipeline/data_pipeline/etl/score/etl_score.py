@@ -60,6 +60,9 @@ class ScoreETL(ExtractTransformLoad):
             "Percent of individuals < 200% Federal Poverty Line"
         )
 
+        # CDC life expectancy
+        self.LIFE_EXPECTANCY_FIELD_NAME = "Life expectancy (years)"
+
         # There's another aggregation level (a second level of "buckets").
         self.AGGREGATION_POLLUTION: str = "Pollution Burden"
         self.AGGREGATION_POPULATION: str = "Population Characteristics"
@@ -77,6 +80,7 @@ class ScoreETL(ExtractTransformLoad):
         self.hud_housing_df: pd.DataFrame
         self.cdc_places_df: pd.DataFrame
         self.census_acs_median_incomes_df: pd.DataFrame
+        self.cdc_life_expectancy_df: pd.DataFrame
 
     def data_sets(self) -> list:
         # Define a named tuple that will be used for each data set input.
@@ -166,6 +170,11 @@ class ScoreETL(ExtractTransformLoad):
             DataSet(
                 input_field=self.MEDIAN_INCOME_FIELD_NAME,
                 renamed_field=self.MEDIAN_INCOME_FIELD_NAME,
+                bucket=None,
+            ),
+            DataSet(
+                input_field=self.LIFE_EXPECTANCY_FIELD_NAME,
+                renamed_field=self.LIFE_EXPECTANCY_FIELD_NAME,
                 bucket=None,
             ),
             # The following data sets have buckets, because they're used in Score C
@@ -324,6 +333,19 @@ class ScoreETL(ExtractTransformLoad):
         self.census_acs_median_incomes_df = pd.read_csv(
             census_acs_median_incomes_csv,
             dtype={self.GEOID_FIELD_NAME: "string"},
+            low_memory=False,
+        )
+
+        # Load CDC life expectancy data
+        cdc_life_expectancy_csv = (
+            self.DATA_PATH
+            / "dataset"
+            / "cdc_life_expectancy"
+            / "usa.csv"
+        )
+        self.cdc_life_expectancy_df = pd.read_csv(
+            cdc_life_expectancy_csv,
+            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
             low_memory=False,
         )
 
@@ -609,6 +631,7 @@ class ScoreETL(ExtractTransformLoad):
         census_tract_dfs = [
             self.hud_housing_df,
             self.cdc_places_df,
+            self.cdc_life_expectancy_df
         ]
         census_tract_df = self._join_tract_dfs(census_tract_dfs)
 
