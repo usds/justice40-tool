@@ -562,82 +562,6 @@ class ScoreETL(ExtractTransformLoad):
             (df[self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME] > 0.20)
             & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
         )
-        df["NMTC modified"] = df["Score G (communities)"].astype(int)
-
-
-        df["Score H (communities)"] = (
-            (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
-            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
-        ) | (
-            (df[self.POVERTY_LESS_THAN_150_FPL_FIELD_NAME] > 0.20)
-            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
-        )
-        df["Score H"] = df["Score H (communities)"].astype(int)
-
-        df["Score I (communities)"] = (
-            (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
-            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
-        ) | (
-            (df[self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME] > 0.20)
-            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
-        )
-        df["Score I"] = df["Score I (communities)"].astype(int)
-
-        df["Score K (communities)"] = (
-            (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.7)
-            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
-        ) | (
-            (df[self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME] > 0.25)
-            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
-        )
-        df["Score K"] = df["Score K (communities)"].astype(int)
-
-        df["AMI < 80 and HS (communities)"] = (
-            df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8
-        ) & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
-
-        df["AMI < 80 (communities)"] = (
-            df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8
-        )
-
-        df["AMI < 75 and HS (communities)"] = (
-            df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.75
-        ) & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
-
-        df["AMI < 75 (communities)"] = (
-            df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.75
-        )
-
-        df["<200 FPL > 20 and HS (communities)"] = (
-            df[self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME] > 0.20
-        ) & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
-
-        df["<200 FPL > 20 (communities)"] = (
-            df[self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME] > 0.20
-        )
-
-        df["<100 FPL > 20 and HS (communities)"] = (
-            df[self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME] > 0.20
-        ) & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
-
-        df["<200 FPL > 40 and HS (communities)"] = (
-            df[self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME] > 0.40
-        ) & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
-
-        df["<200 FPL > 50 and HS (communities)"] = (
-            df[self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME] > 0.50
-        ) & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
-
-        df["AMI < 70 and HS (communities)"] = (
-            df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.70
-        ) & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
-
-
-        df["<100 FPL > 20 (communities)"] = (
-            df[self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME] > 0.20
-        )
-
-        df["Health Insurance (communities)"] = df["Current lack of health insurance among adults aged 18-64 years (percentile)"] > .75
 
         return df
 
@@ -787,13 +711,4 @@ class ScoreETL(ExtractTransformLoad):
         logger.info("Saving Score CSV")
         self.SCORE_CSV_PATH.mkdir(parents=True, exist_ok=True)
 
-        # TODO: delete
-        # self.df[
-        #     self.df.loc[:, self.GEOID_FIELD_NAME].astype(str).str[0:2] == "51"
-        # ].to_csv(self.SCORE_CSV_PATH / "virginia.csv", index=False)
-        # logger.info("Saved one state.")
-
         self.df.to_csv(self.SCORE_CSV_PATH / "usa.csv", index=False)
-
-        # TODO: delete.
-        logger.info("Saved all states.")
