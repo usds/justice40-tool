@@ -549,6 +549,7 @@ class ScoreETL(ExtractTransformLoad):
             & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
         )
         df["Score G"] = df["Score G (communities)"].astype(int)
+        df["Score G (percentile)"] = df["Score G"]
 
         df["NMTC (communities)"] = (
             (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
