@@ -99,6 +99,16 @@ class CensusACSETL(ExtractTransformLoad):
             self.MEDIAN_INCOME_FIELD
         ]
 
+        # Handle null values for CBG median income, which are `-666666666`.
+        missing_value_count = sum(self.df[self.MEDIAN_INCOME_FIELD_NAME]==-666666666)
+        logger.info(
+            f"There are {missing_value_count} ({int(100*missing_value_count/self.df[self.MEDIAN_INCOME_FIELD_NAME].count())}%) values of "
+            + f"`{self.MEDIAN_INCOME_FIELD_NAME}` being marked as null values."
+        )
+        self.df[self.MEDIAN_INCOME_FIELD_NAME] = self.df[
+            self.MEDIAN_INCOME_FIELD_NAME
+        ].replace(to_replace=-666666666, value=None)
+
         # Calculate percent unemployment.
         # TODO: remove small-sample data that should be `None` instead of a high-variance fraction.
         self.df[self.UNEMPLOYED_FIELD_NAME] = (

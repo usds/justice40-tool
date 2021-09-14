@@ -1,7 +1,8 @@
 import collections
 import functools
-
+from pathlib import Path
 import pandas as pd
+
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger
 
@@ -11,11 +12,11 @@ logger = get_module_logger(__name__)
 class ScoreETL(ExtractTransformLoad):
     def __init__(self):
         # Define some global parameters
-        self.BUCKET_SOCIOECONOMIC = "Socioeconomic Factors"
-        self.BUCKET_SENSITIVE = "Sensitive populations"
-        self.BUCKET_ENVIRONMENTAL = "Environmental effects"
-        self.BUCKET_EXPOSURES = "Exposures"
-        self.BUCKETS = [
+        self.BUCKET_SOCIOECONOMIC: str = "Socioeconomic Factors"
+        self.BUCKET_SENSITIVE: str = "Sensitive populations"
+        self.BUCKET_ENVIRONMENTAL: str = "Environmental effects"
+        self.BUCKET_EXPOSURES: str = "Exposures"
+        self.BUCKETS: str = [
             self.BUCKET_SOCIOECONOMIC,
             self.BUCKET_SENSITIVE,
             self.BUCKET_ENVIRONMENTAL,
@@ -24,43 +25,47 @@ class ScoreETL(ExtractTransformLoad):
 
         # A few specific field names
         # TODO: clean this up, I name some fields but not others.
-        self.UNEMPLOYED_FIELD_NAME = "Unemployed civilians (percent)"
-        self.LINGUISTIC_ISOLATION_FIELD_NAME = "Linguistic isolation (percent)"
-        self.HOUSING_BURDEN_FIELD_NAME = "Housing burden (percent)"
-        self.POVERTY_FIELD_NAME = (
+        self.UNEMPLOYED_FIELD_NAME: str = "Unemployed civilians (percent)"
+        self.LINGUISTIC_ISOLATION_FIELD_NAME: str = "Linguistic isolation (percent)"
+        self.HOUSING_BURDEN_FIELD_NAME: str = "Housing burden (percent)"
+        self.POVERTY_FIELD_NAME: str = (
             "Poverty (Less than 200% of federal poverty line)"
         )
-        self.HIGH_SCHOOL_FIELD_NAME = "Percent individuals age 25 or over with less than high school degree"
+        self.HIGH_SCHOOL_FIELD_NAME: str = "Percent individuals age 25 or over with less than high school degree"
         self.STATE_MEDIAN_INCOME_FIELD_NAME: str = (
             "Median household income (State; 2019 inflation-adjusted dollars)"
         )
-        self.MEDIAN_INCOME_FIELD_NAME = (
+        self.MEDIAN_INCOME_FIELD_NAME: str = (
             "Median household income in the past 12 months"
         )
-        self.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD_NAME = (
+        self.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD_NAME: str = (
             "Median household income (% of state median household income)"
         )
+        self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME: str = (
+            "Median household income (% of AMI)"
+        )
+        self.AMI_FIELD_NAME: str = "Area Median Income (State or metropolitan)"
 
         # Note: these variable names are slightly different (missing the word `PERCENT`) than those in the source ETL to avoid pylint's duplicate
         # code error. - LMB
-        self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME = (
+        self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME: str = (
             "Percent of individuals < 100% Federal Poverty Line"
         )
-        self.POVERTY_LESS_THAN_150_FPL_FIELD_NAME = (
+        self.POVERTY_LESS_THAN_150_FPL_FIELD_NAME: str = (
             "Percent of individuals < 150% Federal Poverty Line"
         )
-        self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME = (
+        self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME: str = (
             "Percent of individuals < 200% Federal Poverty Line"
         )
 
         # There's another aggregation level (a second level of "buckets").
-        self.AGGREGATION_POLLUTION = "Pollution Burden"
-        self.AGGREGATION_POPULATION = "Population Characteristics"
+        self.AGGREGATION_POLLUTION: str = "Pollution Burden"
+        self.AGGREGATION_POPULATION: str = "Population Characteristics"
 
-        self.PERCENTILE_FIELD_SUFFIX = " (percentile)"
-        self.MIN_MAX_FIELD_SUFFIX = " (min-max normalized)"
+        self.PERCENTILE_FIELD_SUFFIX: str = " (percentile)"
+        self.MIN_MAX_FIELD_SUFFIX: str = " (min-max normalized)"
 
-        self.SCORE_CSV_PATH = self.DATA_PATH / "score" / "csv" / "full"
+        self.SCORE_CSV_PATH: Path = self.DATA_PATH / "score" / "csv" / "full"
 
         # dataframes
         self.df: pd.DataFrame
@@ -144,6 +149,16 @@ class ScoreETL(ExtractTransformLoad):
             DataSet(
                 input_field=self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME,
                 renamed_field=self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME,
+                bucket=None,
+            ),
+            DataSet(
+                input_field=self.AMI_FIELD_NAME,
+                renamed_field=self.AMI_FIELD_NAME,
+                bucket=None,
+            ),
+            DataSet(
+                input_field=self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME,
+                renamed_field=self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME,
                 bucket=None,
             ),
             # The following data sets have buckets, because they're used in Score C
@@ -523,7 +538,33 @@ class ScoreETL(ExtractTransformLoad):
 
     def _add_score_g(self, df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Adding Score G")
-        # TODO: add scoring
+
+        high_school_cutoff_threshold = 0.05
+
+        df["Score G (communities)"] = (
+            (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.7)
+            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
+        ) | (
+            (df[self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME] > 0.50)
+            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
+        )
+        df["Score G"] = df["Score G (communities)"].astype(int)
+        df["Score G (percentile)"] = df["Score G"]
+
+        df["NMTC (communities)"] = (
+            (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
+        ) | (
+            (df[self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME] > 0.20)
+        )
+
+        df["NMTC modified (communities)"] = (
+            (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
+            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
+        ) | (
+            (df[self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME] > 0.20)
+            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
+        )
+
         return df
 
     # TODO Move a lot of this to the ETL part of the pipeline
@@ -564,13 +605,15 @@ class ScoreETL(ExtractTransformLoad):
 
         # Calculate median income variables.
         # First, calculate the income of the block group as a fraction of the state income.
-        # TODO: handle null values for CBG median income, which are `-666666666`.
         df[self.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD_NAME] = (
             df[self.MEDIAN_INCOME_FIELD_NAME]
             / df[self.STATE_MEDIAN_INCOME_FIELD_NAME]
         )
 
-        # TODO: Calculate the income of the block group as a fraction of the AMI (either state or metropolitan, depending on reference).
+        # Calculate the income of the block group as a fraction of the AMI (either state or metropolitan, depending on reference).
+        df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] = (
+            df[self.MEDIAN_INCOME_FIELD_NAME] / df[self.AMI_FIELD_NAME]
+        )
 
         # TODO Refactor to no longer use the data_sets list and do all renaming in ETL step
         # Rename columns:
@@ -669,4 +712,5 @@ class ScoreETL(ExtractTransformLoad):
     def load(self) -> None:
         logger.info("Saving Score CSV")
         self.SCORE_CSV_PATH.mkdir(parents=True, exist_ok=True)
+
         self.df.to_csv(self.SCORE_CSV_PATH / "usa.csv", index=False)

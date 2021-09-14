@@ -57,6 +57,8 @@ TILES_SCORE_COLUMNS = [
     "Score D (top 25th percentile)",
     "Score E (percentile)",
     "Score E (top 25th percentile)",
+    "Score G (communities)",
+    "Score G",
     "Poverty (Less than 200% of federal poverty line) (percentile)",
     "Percent individuals age 25 or over with less than high school degree (percentile)",
     "Linguistic isolation (percent) (percentile)",
