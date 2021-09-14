@@ -121,7 +121,7 @@ class CensusETL(ExtractTransformLoad):
         for file in self.GEOJSON_BASE_PATH.iterdir():
             if file.suffix == ".json":
                 logger.info(f"Ingesting geoid10 for file {file}")
-                with open(self.GEOJSON_BASE_PATH / file) as f:
+                with open(self.GEOJSON_BASE_PATH / file, encoding="utf-8") as f:
                     geojson = json.load(f)
                     for feature in geojson["features"]:
                         geoid10 = feature["properties"]["GEOID10"]
@@ -155,7 +155,9 @@ class CensusETL(ExtractTransformLoad):
         ## write to individual state csv
         geoid10_list = self.CBG_PER_STATE[fips_code]
         csv_path = self._path_for_fips_file(fips_code, GeoFileType.CSV)
-        with open(csv_path, mode="w", newline="") as cbg_csv_file:
+        with open(
+            csv_path, mode="w", newline="", encoding="utf-8"
+        ) as cbg_csv_file:
             cbg_csv_file_writer = csv.writer(
                 cbg_csv_file,
                 delimiter=",",
@@ -181,7 +183,10 @@ class CensusETL(ExtractTransformLoad):
         if not self.NATIONAL_CBG_CSV_PATH.is_file():
             logger.info(f"Creating {self.NATIONAL_CBG_CSV_PATH}")
             with open(
-                self.NATIONAL_CBG_CSV_PATH, mode="w", newline=""
+                self.NATIONAL_CBG_CSV_PATH,
+                mode="w",
+                newline="",
+                encoding="utf-8",
             ) as cbg_csv_file:
                 cbg_csv_file_writer = csv.writer(
                     cbg_csv_file,
