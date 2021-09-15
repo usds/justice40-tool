@@ -11,8 +11,7 @@ const ScoreStepsList = () => {
               <h3 className={'j40-item-list-title'}>Gather datasets</h3>
               <h4 className={'j40-item-list-subtitle'}>Data inputs</h4>
               <p>
-                The cumulative index score includes the following equally
-                weighted inputs.
+                The methodology includes the following inputs that are equally weighted.
               </p>
 
               <ul className={'j40-process-nested-list'}>
