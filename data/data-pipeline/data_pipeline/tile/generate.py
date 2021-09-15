@@ -38,6 +38,7 @@ def generate_tiles(data_path: Path) -> None:
     logger.info("Generating USA High mvt folders and files")
     cmd = "tippecanoe "
     cmd += f"--minimum-zoom={USA_HIGH_MIN_ZOOM} --maximum-zoom={USA_HIGH_MAX_ZOOM} --no-tile-compression "
+    cmd += "--drop-densest-as-needed "
     cmd += f"--output-to-directory={high_tile_path} --layer=blocks "
     cmd += str(score_geojson_dir / "usa-high.json")
     call(cmd, shell=True)
@@ -54,6 +55,7 @@ def generate_tiles(data_path: Path) -> None:
     logger.info("Generating USA Low mvt folders and files")
     cmd = "tippecanoe "
     cmd += f"--minimum-zoom={USA_LOW_MIN_ZOOM} --maximum-zoom={USA_LOW_MAX_ZOOM} --no-tile-compression "
+    cmd += "--drop-densest-as-needed "
     cmd += f"--output-to-directory={low_tile_path} --layer=blocks "
     cmd += str(score_geojson_dir / "usa-low.json")
     call(cmd, shell=True)

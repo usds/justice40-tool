@@ -26,8 +26,8 @@ class GeoScoreETL(ExtractTransformLoad):
             self.DATA_PATH / "census" / "geojson" / "us.json"
         )
 
-        self.TARGET_SCORE_NAME = "Score E (percentile)"
-        self.TARGET_SCORE_RENAME_TO = "E_SCORE"
+        self.TARGET_SCORE_NAME = "Score G"
+        self.TARGET_SCORE_RENAME_TO = "G_SCORE"
 
         self.NUMBER_OF_BUCKETS = 10
 
@@ -102,6 +102,10 @@ class GeoScoreETL(ExtractTransformLoad):
             columns=[self.TARGET_SCORE_RENAME_TO, "geometry"],
             crs="EPSG:4326",
         )
+
+        # round to 2 decimals
+        decimals = pd.Series([2], index=[self.TARGET_SCORE_RENAME_TO])
+        self.geojson_score_usa_low = self.geojson_score_usa_low.round(decimals)
 
     def _aggregate_to_tracts(
         self, block_group_df: gpd.GeoDataFrame

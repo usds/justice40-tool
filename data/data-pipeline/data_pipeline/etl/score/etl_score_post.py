@@ -6,6 +6,8 @@ import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger, get_zip_info
 
+from . import constants
+
 ## zlib is not available on all systems
 try:
     import zlib  # noqa # pylint: disable=unused-import
@@ -25,108 +27,19 @@ class PostScoreETL(ExtractTransformLoad):
     """
 
     def __init__(self):
-        self.CENSUS_COUNTIES_ZIP_URL = "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/Gaz_counties_national.zip"
-        self.CENSUS_COUNTIES_TXT = self.TMP_PATH / "Gaz_counties_national.txt"
-        self.CENSUS_COUNTIES_COLS = ["USPS", "GEOID", "NAME"]
-        self.CENSUS_USA_CSV = self.DATA_PATH / "census" / "csv" / "us.csv"
-        self.SCORE_CSV_PATH = self.DATA_PATH / "score" / "csv"
-        self.DOWNLOADABLE_INFO_PATH = self.DATA_PATH / "score" / "downloadable"
+        self.input_counties_df: pd.DataFrame
+        self.input_states_df: pd.DataFrame
+        self.input_score_df: pd.DataFrame
+        self.input_national_cbg_df: pd.DataFrame
 
-        self.STATE_CSV = (
-            self.DATA_PATH / "census" / "csv" / "fips_states_2010.csv"
-        )
+        self.output_score_county_state_merged_df: pd.DataFrame
+        self.output_score_tiles_df: pd.DataFrame
+        self.output_downloadable_df: pd.DataFrame
 
-        self.FULL_SCORE_CSV = self.SCORE_CSV_PATH / "full" / "usa.csv"
-        self.FULL_SCORE_CSV_PLUS_COUNTIES = (
-            self.SCORE_CSV_PATH / "full" / "usa_counties.csv"
-        )
-
-        self.TILES_SCORE_COLUMNS = [
-            "GEOID10",
-            "State Name",
-            "County Name",
-            "Total population",
-            "Score D (percentile)",
-            "Score D (top 25th percentile)",
-            "Score E (percentile)",
-            "Score E (top 25th percentile)",
-            "Poverty (Less than 200% of federal poverty line) (percentile)",
-            "Percent individuals age 25 or over with less than high school degree (percentile)",
-            "Linguistic isolation (percent) (percentile)",
-            "Unemployed civilians (percent) (percentile)",
-            "Housing burden (percent) (percentile)",
-        ]
-        self.TILES_SCORE_CSV_PATH = self.SCORE_CSV_PATH / "tiles"
-        self.TILES_SCORE_CSV = self.TILES_SCORE_CSV_PATH / "usa.csv"
-
-        # columns to round floats to 2 decimals
-        self.TILES_SCORE_FLOAT_COLUMNS = [
-            "Score D (percentile)",
-            "Score D (top 25th percentile)",
-            "Score E (percentile)",
-            "Score E (top 25th percentile)",
-            "Poverty (Less than 200% of federal poverty line) (percentile)",
-            "Percent individuals age 25 or over with less than high school degree (percentile)",
-            "Linguistic isolation (percent) (percentile)",
-            "Unemployed civilians (percent) (percentile)",
-            "Housing burden (percent) (percentile)",
-        ]
-        self.TILES_ROUND_NUM_DECIMALS = 2
-
-        self.DOWNLOADABLE_SCORE_INDICATORS_BASIC = [
-            "Percent individuals age 25 or over with less than high school degree",
-            "Linguistic isolation (percent)",
-            "Poverty (Less than 200% of federal poverty line)",
-            "Unemployed civilians (percent)",
-            "Housing burden (percent)",
-            "Respiratory hazard index",
-            "Diesel particulate matter",
-            "Particulate matter (PM2.5)",
-            "Traffic proximity and volume",
-            "Proximity to RMP sites",
-            "Wastewater discharge",
-            "Percent pre-1960s housing (lead paint indicator)",
-            "Total population",
-        ]
-
-        # For every indicator above, we want to include percentile and min-max normalized variants also
-        self.DOWNLOADABLE_SCORE_INDICATORS_FULL = list(
-            pd.core.common.flatten(
-                [
-                    [p, f"{p} (percentile)", f"{p} (min-max normalized)"]
-                    for p in self.DOWNLOADABLE_SCORE_INDICATORS_BASIC
-                ]
-            )
-        )
-
-        # Finally we augment with the GEOID10, county, and state
-        self.DOWNLOADABLE_SCORE_COLUMNS = [
-            "GEOID10",
-            "County Name",
-            "State Name",
-            *self.DOWNLOADABLE_SCORE_INDICATORS_FULL,
-        ]
-        self.DOWNLOADABLE_SCORE_CSV = self.DOWNLOADABLE_INFO_PATH / "usa.csv"
-        self.DOWNLOADABLE_SCORE_EXCEL = self.DOWNLOADABLE_INFO_PATH / "usa.xlsx"
-        self.DOWNLOADABLE_SCORE_ZIP = (
-            self.DOWNLOADABLE_INFO_PATH / "Screening Tool Data.zip"
-        )
-
-        self.counties_df: pd.DataFrame
-        self.states_df: pd.DataFrame
-        self.score_df: pd.DataFrame
-        self.score_county_state_merged: pd.DataFrame
-        self.score_for_tiles: pd.DataFrame
-
-    def extract(self) -> None:
-        super().extract(
-            self.CENSUS_COUNTIES_ZIP_URL,
-            self.TMP_PATH,
-        )
-
+    def _extract_counties(self, county_path: Path) -> pd.DataFrame:
         logger.info("Reading Counties CSV")
-        self.counties_df = pd.read_csv(
-            self.CENSUS_COUNTIES_TXT,
+        return pd.read_csv(
+            county_path,
             sep="\t",
             dtype={
                 "GEOID": "string",
@@ -136,134 +49,226 @@ class PostScoreETL(ExtractTransformLoad):
             encoding="latin-1",
         )
 
+    def _extract_states(self, state_path: Path) -> pd.DataFrame:
         logger.info("Reading States CSV")
-        self.states_df = pd.read_csv(
-            self.STATE_CSV, dtype={"fips": "string", "state_code": "string"}
-        )
-        self.score_df = pd.read_csv(
-            self.FULL_SCORE_CSV,
-            dtype={"GEOID10": "string", "Total population": "int64"},
+        return pd.read_csv(
+            state_path, dtype={"fips": "string", "state_abbreviation": "string"}
         )
 
-    def transform(self) -> None:
-        logger.info("Transforming data sources for Score + County CSV")
+    def _extract_score(self, score_path: Path) -> pd.DataFrame:
+        logger.info("Reading Score CSV")
+        df = pd.read_csv(score_path, dtype={"GEOID10": "string"})
 
-        # rename some of the columns to prepare for merge
-        self.counties_df = self.counties_df[["USPS", "GEOID", "NAME"]]
-        self.counties_df.rename(
-            columns={"USPS": "State Abbreviation", "NAME": "County Name"},
-            inplace=True,
+        # Convert total population to an int:
+        df["Total population"] = df["Total population"].astype(
+            int, errors="ignore"
         )
 
-        # remove unnecessary columns
-        self.states_df.rename(
-            columns={
-                "fips": "State Code",
-                "state_name": "State Name",
-                "state_abbreviation": "State Abbreviation",
-            },
-            inplace=True,
-        )
-        self.states_df.drop(["region", "division"], axis=1, inplace=True)
+        return df
 
-        # add the tract level column
-        self.score_df["GEOID"] = self.score_df.GEOID10.str[:5]
-
-        # merge state with counties
-        county_state_merged = self.counties_df.merge(
-            self.states_df, on="State Abbreviation", how="left"
-        )
-
-        # merge state + county with score
-        self.score_county_state_merged = self.score_df.merge(
-            county_state_merged, on="GEOID", how="left"
-        )
-
-        # check if there are census cbgs without score
-        logger.info("Removing CBG rows without score")
-
-        ## load cbgs
-        cbg_usa_df = pd.read_csv(
-            self.CENSUS_USA_CSV,
+    def _extract_national_cbg(self, national_cbg_path: Path) -> pd.DataFrame:
+        logger.info("Reading national CBG")
+        return pd.read_csv(
+            national_cbg_path,
             names=["GEOID10"],
             dtype={"GEOID10": "string"},
             low_memory=False,
             header=None,
         )
 
+    def extract(self) -> None:
+        logger.info("Starting Extraction")
+        super().extract(
+            constants.CENSUS_COUNTIES_ZIP_URL,
+            constants.TMP_PATH,
+        )
+        self.input_counties_df = self._extract_counties(
+            constants.CENSUS_COUNTIES_FILE_NAME
+        )
+        self.input_states_df = self._extract_states(
+            constants.DATA_CENSUS_CSV_STATE_FILE_PATH
+        )
+        self.input_score_df = self._extract_score(
+            constants.DATA_SCORE_CSV_FULL_FILE_PATH
+        )
+        self.input_national_cbg_df = self._extract_national_cbg(
+            constants.DATA_CENSUS_CSV_FILE_PATH
+        )
+
+    def _transform_counties(
+        self, initial_counties_df: pd.DataFrame
+    ) -> pd.DataFrame:
+        """
+        Necessary modifications to the counties dataframe
+        """
+        # Rename some of the columns to prepare for merge
+        new_df = initial_counties_df[constants.CENSUS_COUNTIES_COLUMNS]
+        new_df.rename(
+            columns={"USPS": "State Abbreviation", "NAME": "County Name"},
+            inplace=True,
+        )
+        return new_df
+
+    def _transform_states(
+        self, initial_states_df: pd.DataFrame
+    ) -> pd.DataFrame:
+        """
+        Necessary modifications to the states dataframe
+        """
+        # remove unnecessary columns
+        new_df = initial_states_df.rename(
+            columns={
+                "fips": "State Code",
+                "state_name": "State Name",
+                "state_abbreviation": "State Abbreviation",
+            }
+        )
+        new_df.drop(["region", "division"], axis=1, inplace=True)
+        return new_df
+
+    def _transform_score(self, initial_score_df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Necessary modifications to the score dataframe
+        """
+        # Add the tract level column
+        new_df = initial_score_df.copy()
+        new_df["GEOID"] = initial_score_df.GEOID10.str[:5]
+        return new_df
+
+    def _create_score_data(
+        self,
+        national_cbg_df: pd.DataFrame,
+        counties_df: pd.DataFrame,
+        states_df: pd.DataFrame,
+        score_df: pd.DataFrame,
+    ) -> pd.DataFrame:
+
+        # merge state with counties
+        logger.info("Merging state with county info")
+        county_state_merged = counties_df.merge(
+            states_df, on="State Abbreviation", how="left"
+        )
+
+        # merge state + county with score
+        score_county_state_merged = score_df.merge(
+            county_state_merged, on="GEOID", how="left"
+        )
+
+        # check if there are census cbgs without score
+        logger.info("Removing CBG rows without score")
+
         # merge census cbgs with score
-        merged_df = cbg_usa_df.merge(
-            self.score_county_state_merged,
-            on="GEOID10",
-            how="left",
+        merged_df = national_cbg_df.merge(
+            score_county_state_merged, on="GEOID10", how="left"
         )
 
         # recast population to integer
-        merged_df["Total population"] = (
+        score_county_state_merged["Total population"] = (
             merged_df["Total population"].fillna(0.0).astype(int)
         )
 
         # list the null score cbgs
         null_cbg_df = merged_df[merged_df["Score E (percentile)"].isnull()]
 
-        # subsctract data sets
+        # subtract data sets
         # this follows the XOR pattern outlined here:
         # https://stackoverflow.com/a/37313953
-        removed_df = pd.concat(
+        de_duplicated_df = pd.concat(
             [merged_df, null_cbg_df, null_cbg_df]
         ).drop_duplicates(keep=False)
 
         # set the score to the new df
-        self.score_county_state_merged = removed_df
+        return de_duplicated_df
 
-    def _save_full_csv(self):
-        logger.info("Saving Full Score CSV with County Information")
-        self.SCORE_CSV_PATH.mkdir(parents=True, exist_ok=True)
-        self.score_county_state_merged.to_csv(
-            self.FULL_SCORE_CSV_PLUS_COUNTIES, index=False
-        )
-
-    def _save_tile_csv(self):
-        logger.info("Saving Tile Score CSV")
-        score_tiles = self.score_county_state_merged[self.TILES_SCORE_COLUMNS]
-
-        decimals = pd.Series(
-            [self.TILES_ROUND_NUM_DECIMALS]
-            * len(self.TILES_SCORE_FLOAT_COLUMNS),
-            index=self.TILES_SCORE_FLOAT_COLUMNS,
-        )
-        score_tiles = score_tiles.round(decimals)
-
-        self.TILES_SCORE_CSV_PATH.mkdir(parents=True, exist_ok=True)
-        score_tiles.to_csv(self.TILES_SCORE_CSV, index=False)
-
-    def _save_downloadable_zip(self):
-        logger.info("Saving Downloadable CSV")
-        logger.info(list(self.score_county_state_merged.columns))
-        logger.info(self.DOWNLOADABLE_SCORE_COLUMNS)
-        downloadable_tiles = self.score_county_state_merged[
-            self.DOWNLOADABLE_SCORE_COLUMNS
+    def _create_tile_data(
+        self, score_county_state_merged_df: pd.DataFrame
+    ) -> pd.DataFrame:
+        score_tiles = score_county_state_merged_df[
+            constants.TILES_SCORE_COLUMNS
         ]
-        self.DOWNLOADABLE_INFO_PATH.mkdir(parents=True, exist_ok=True)
+        decimals = pd.Series(
+            [constants.TILES_ROUND_NUM_DECIMALS]
+            * len(constants.TILES_SCORE_FLOAT_COLUMNS),
+            index=constants.TILES_SCORE_FLOAT_COLUMNS,
+        )
+        return score_tiles.round(decimals)
+
+    def _create_downloadable_data(
+        self, score_county_state_merged_df: pd.DataFrame
+    ) -> pd.DataFrame:
+        return score_county_state_merged_df[
+            constants.DOWNLOADABLE_SCORE_COLUMNS
+        ]
+
+    def transform(self) -> None:
+        logger.info("Transforming data sources for Score + County CSVs")
+
+        transformed_counties = self._transform_counties(self.input_counties_df)
+        transformed_states = self._transform_states(self.input_states_df)
+        transformed_score = self._transform_score(self.input_score_df)
+
+        output_score_county_state_merged_df = self._create_score_data(
+            self.input_national_cbg_df,
+            transformed_counties,
+            transformed_states,
+            transformed_score,
+        )
+        self.output_score_tiles_df = self._create_tile_data(
+            output_score_county_state_merged_df
+        )
+        self.output_downloadable_df = self._create_downloadable_data(
+            output_score_county_state_merged_df
+        )
+        self.output_score_county_state_merged_df = (
+            output_score_county_state_merged_df
+        )
+
+    def _load_score_csv(
+        self, score_county_state_merged: pd.DataFrame, score_csv_path: Path
+    ) -> None:
+        logger.info("Saving Full Score CSV with County Information")
+        score_csv_path.parent.mkdir(parents=True, exist_ok=True)
+        score_county_state_merged.to_csv(score_csv_path, index=False)
+
+    def _load_tile_csv(
+        self, score_tiles_df: pd.DataFrame, tile_score_path: Path
+    ) -> None:
+        logger.info("Saving Tile Score CSV")
+        tile_score_path.parent.mkdir(parents=True, exist_ok=True)
+        score_tiles_df.to_csv(tile_score_path, index=False)
+
+    def _load_downloadable_zip(
+        self, downloadable_df: pd.DataFrame, downloadable_info_path: Path
+    ) -> None:
+        logger.info("Saving Downloadable CSV")
+
+        downloadable_info_path.mkdir(parents=True, exist_ok=True)
+        csv_path = constants.SCORE_DOWNLOADABLE_CSV_FILE_PATH
+        excel_path = constants.SCORE_DOWNLOADABLE_EXCEL_FILE_PATH
+        zip_path = constants.SCORE_DOWNLOADABLE_ZIP_FILE_PATH
 
         logger.info("Writing downloadable csv")
-        downloadable_tiles.to_csv(self.DOWNLOADABLE_SCORE_CSV, index=False)
+        downloadable_df.to_csv(csv_path, index=False)
 
         logger.info("Writing downloadable excel")
-        downloadable_tiles.to_excel(self.DOWNLOADABLE_SCORE_EXCEL, index=False)
+        downloadable_df.to_excel(excel_path, index=False)
 
         logger.info("Compressing files")
-        files_to_compress = [
-            self.DOWNLOADABLE_SCORE_CSV,
-            self.DOWNLOADABLE_SCORE_EXCEL,
-        ]
-        with zipfile.ZipFile(self.DOWNLOADABLE_SCORE_ZIP, "w") as zf:
+        files_to_compress = [csv_path, excel_path]
+        with zipfile.ZipFile(zip_path, "w") as zf:
             for f in files_to_compress:
                 zf.write(f, arcname=Path(f).name, compress_type=compression)
-        zip_info = get_zip_info(self.DOWNLOADABLE_SCORE_ZIP)
+        zip_info = get_zip_info(zip_path)
         logger.info(json.dumps(zip_info, indent=4, sort_keys=True, default=str))
 
     def load(self) -> None:
-        self._save_full_csv()
-        self._save_tile_csv()
-        self._save_downloadable_zip()
+        self._load_score_csv(
+            self.output_score_county_state_merged_df,
+            constants.FULL_SCORE_CSV_FULL_PLUS_COUNTIES_FILE_PATH,
+        )
+        self._load_tile_csv(
+            self.output_score_tiles_df, constants.DATA_SCORE_CSV_TILES_FILE_PATH
+        )
+        self._load_downloadable_zip(
+            self.output_downloadable_df, constants.SCORE_DOWNLOADABLE_DIR
+        )

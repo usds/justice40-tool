@@ -35,6 +35,8 @@ class ExtractTransformLoad:
     CENSUS_CSV: Path = DATA_PATH / "census" / "csv" / "us.csv"
     GEOID_FIELD_NAME: str = BLOCK_COL
     GEOID_TRACT_FIELD_NAME: str = TRACT_COL
+    # TODO: investigate. Census says there are only 217,740 CBGs in the US.
+    EXPECTED_MAX_CENSUS_BLOCK_GROUPS: int = 220405
 
     def __init__(self, config_path: Path, is_dataset: bool = False) -> None:
         """Inits the class with instance specific variables"""
