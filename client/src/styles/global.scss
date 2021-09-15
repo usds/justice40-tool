@@ -382,6 +382,10 @@ This section will outline styles that are component specific
   }
 }
 
+//Area Detail Component
+p.secondary.j40-indicator {
+  max-width: 10rem;
+}
 
 /* 
 ***************************************
@@ -534,7 +538,7 @@ ul.j40-process-nested-list {
 
 /* 
 ******************************
-*      ACCORDION CARD STYLES
+*      ACCORDION STYLES
 ****************************** 
 */
 
@@ -546,11 +550,20 @@ ul.j40-process-nested-list {
   @include j40-element('3xs', 1, 'normal', 0);
   background-color: white;
 } 
-.usa-accordion__heading:nth-child(2) button.usa-accordion__button {
+.usa-accordion__heading button.usa-accordion__button {
   @include j40-element('3xs', 1, 'normal', 0);
-  background-color:#F3F3F3;
+  background-color: #F3F3F3;
 }
 
 .usa-accordion__heading:not(:first-child){
   @include u-margin-top(0);
+}
+
+#prioritization-indicators, #additional-indicators {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#additional-indicators {
+  background-color:#F3F3F3;
 }

@@ -5,37 +5,6 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
   <aside
     data-cy="aside"
   >
-    <header>
-      <div>
-        <div>
-          Cumulative Index Score
-        </div>
-        <div
-          data-cy="score"
-        >
-          9500
-          <sup>
-            <span>
-              th
-            </span>
-          </sup>
-        </div>
-        <div>
-          percentile
-        </div>
-      </div>
-      <div>
-        <h6>
-          Categorization
-        </h6>
-        <div>
-          <div />
-          <div>
-            Prioritized
-          </div>
-        </div>
-      </div>
-    </header>
     <ul>
       <li>
         <span>
@@ -67,6 +36,14 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
       </li>
     </ul>
     <div>
+      <div>
+        <div />
+        <h2>
+          Prioritized
+        </h2>
+      </div>
+    </div>
+    <div>
       <h6>
         Indicators
       </h6>
@@ -75,6 +52,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
       </h6>
     </div>
     <div
+      aria-multiselectable="true"
       class="usa-accordion"
       data-testid="accordion"
     >
@@ -82,20 +60,54 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         class="usa-accordion__heading j40-accordion"
       >
         <button
-          aria-controls="test1"
+          aria-controls="prioritization-indicators"
           aria-expanded="true"
           class="usa-accordion__button"
-          data-testid="accordionButton_test1"
+          data-testid="accordionButton_prioritization-indicators"
           type="button"
         >
-          indicators used in prio
+          Prioritization indicators
         </button>
       </h2>
       <div
         class="usa-accordion__content usa-prose j40-accordion"
-        data-testid="accordionItem_test1"
-        id="test1"
+        data-testid="accordionItem_prioritization-indicators"
+        id="prioritization-indicators"
       >
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Area Median Income
+            </h4>
+            <div>
+              9900
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Median income of the census block group calculated as a percent of the metropolitan area’s or state's median income
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Education, less than high school
+            </h4>
+            <div>
+              9800
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Percent of people age 25 or older that didn’t get a high school diploma
+          </p>
+        </li>
         <li
           data-cy="indicatorBox"
         >
@@ -103,175 +115,242 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             <h4>
               Poverty
             </h4>
-            <p
-              class="secondary"
-            >
-              Household income is less than or equal to twice the federal "poverty level"
-            </p>
+            <div>
+              9900
+            </div>
           </div>
-          <div>
-            9900
-            <sup>
-              <span>
-                th
-              </span>
-            </sup>
-          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Household income is less than or equal to twice the federal "poverty level"
+          </p>
         </li>
       </div>
       <h2
         class="usa-accordion__heading j40-accordian-bg-colored"
       >
         <button
-          aria-controls="test2"
+          aria-controls="additional-indicators"
           aria-expanded="false"
           class="usa-accordion__button"
-          data-testid="accordionButton_test2"
+          data-testid="accordionButton_additional-indicators"
           type="button"
         >
-          additional indicators
+          Additional indicators (not used in prioritization)
         </button>
       </h2>
       <div
         class="usa-accordion__content usa-prose j40-accordian-bg-colored"
-        data-testid="accordionItem_test2"
+        data-testid="accordionItem_additional-indicators"
         hidden=""
-        id="test2"
+        id="additional-indicators"
       >
         <li
           data-cy="indicatorBox"
         >
           <div>
             <h4>
-              Education
+              Asthma
             </h4>
-            <p
-              class="secondary"
-            >
-              Percent of people age 25 or older that didn’t get a high school diploma
-            </p>
+            <div>
+              9500
+            </div>
           </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            People who answer “yes” to both of the questions: “Have you ever been told by a doctor nurse, or other health professional that you have asthma?” and “Do you still have asthma?"
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
           <div>
-            9800
-            <sup>
-              <span>
-                th
-              </span>
-            </sup>
+            <h4>
+              Diabetes
+            </h4>
+            <div>
+              9500
+            </div>
           </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Households that are low income and spend more than 30% of their income to housing costs
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Diesel particulate matter
+            </h4>
+            <div>
+              9500
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Mixture of particles that is part of diesel exhaust in the air
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Energy burden
+            </h4>
+            <div>
+              9500
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Average annual energy cost ($) divided by household income
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              FEMA Risk index
+            </h4>
+            <div>
+              9500
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Risk based on 18 natural hazard types, in addition to acommunity's social vulnerability and community resilience
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Heart Disease
+            </h4>
+            <div>
+              9500
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            People ages 18 and up who report ever having been told by adoctor, nurse, or other health professionals that they had angina or coronary heart disease
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Housing cost burden
+            </h4>
+            <div>
+              9500
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            People ages 18 and up who report having been told by a doctor, nurse, or other health professionals that they have diabetes other than diabetes during pregnancy
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Lead paint
+            </h4>
+            <div>
+              9500
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Housing units built pre-1960, used as an indicator of potential lead paint exposure in homes
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Life expectancy
+            </h4>
+            <div>
+              9500
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Estimated years of life expectancy
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              PM2.5
+            </h4>
+            <div>
+              9500
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Traffic proximity and volume
+            </h4>
+            <div>
+              9500
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Count of vehicles (average annual daily traffic) at major roads within 500 meters, divided by distance in meters
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Wastewater discharge
+            </h4>
+            <div>
+              9500
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Toxic concentrations at stream segments within 500 meters divided by distance in kilometers
+          </p>
         </li>
       </div>
     </div>
-    <li
-      data-cy="indicatorBox"
-    >
-      <div>
-        <h4>
-          Poverty
-        </h4>
-        <p
-          class="secondary"
-        >
-          Household income is less than or equal to twice the federal "poverty level"
-        </p>
-      </div>
-      <div>
-        9900
-        <sup>
-          <span>
-            th
-          </span>
-        </sup>
-      </div>
-    </li>
-    <li
-      data-cy="indicatorBox"
-    >
-      <div>
-        <h4>
-          Education
-        </h4>
-        <p
-          class="secondary"
-        >
-          Percent of people age 25 or older that didn’t get a high school diploma
-        </p>
-      </div>
-      <div>
-        9800
-        <sup>
-          <span>
-            th
-          </span>
-        </sup>
-      </div>
-    </li>
-    <li
-      data-cy="indicatorBox"
-    >
-      <div>
-        <h4>
-          Linguistic isolation
-        </h4>
-        <p
-          class="secondary"
-        >
-          Households in which all members speak a non-English language and speak English less than "very well"
-        </p>
-      </div>
-      <div>
-        9700
-        <sup>
-          <span>
-            th
-          </span>
-        </sup>
-      </div>
-    </li>
-    <li
-      data-cy="indicatorBox"
-    >
-      <div>
-        <h4>
-          Unemployment rate
-        </h4>
-        <p
-          class="secondary"
-        >
-          Number of unemployed people as a percentage of the labor force
-        </p>
-      </div>
-      <div>
-        9600
-        <sup>
-          <span>
-            th
-          </span>
-        </sup>
-      </div>
-    </li>
-    <li
-      data-cy="indicatorBox"
-    >
-      <div>
-        <h4>
-          Housing Burden
-        </h4>
-        <p
-          class="secondary"
-        >
-          Households that are low income and spend more than 30% of their income to housing costs
-        </p>
-      </div>
-      <div>
-        9500
-        <sup>
-          <span>
-            th
-          </span>
-        </sup>
-      </div>
-    </li>
   </aside>
 </DocumentFragment>
 `;

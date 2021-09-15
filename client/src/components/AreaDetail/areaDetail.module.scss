@@ -14,7 +14,7 @@ $featureSelectBorderColor: #00bde3;
   width: 0.6rem;
   border-radius: 100%;
   align-self: center;
-  margin-top: 0.8rem;
+  margin-top: 1.8rem;
   margin-right: 0.5rem;
   opacity: 0.6;
 }
@@ -24,48 +24,16 @@ $featureSelectBorderColor: #00bde3;
   flex-direction: column;
 }
 
-// top row styles
-.topRow {
-  display: flex;
-}
-
-.cumulativeIndexScore,
 .categorization {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 7.7rem;
-  border-bottom: $sidePanelBorder;
   flex: 1 0 50%;
-  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
-.topRowTitle,
 .censusLabel {
   @include sidePanelLabelStyle;
-}
-
-.topRowSubTitle {
-  font-size: small;
-  color: $sidePanelLabelFontColor;
-}
-
-.score {
-  font-size: xx-large;
-  font-weight: bolder;
-}
-
-.indicatorSuperscript {
-  top: -0.2em
-}
-
-.scoreSuperscript {
-  font-size: large;
-  padding-bottom: 1rem;
-}
-
-.categorization {
-  border-left: $sidePanelBorder;
 }
 
 .priority {
@@ -98,14 +66,13 @@ $featureSelectBorderColor: #00bde3;
 .censusRow {
   display: flex;
   flex-direction: column;
-  border-bottom: $sidePanelBorder;
   list-style: none;
   margin: 0;
 }
 
 //census row styles
 .censusRow {
-  padding: 1rem;
+  padding: 1.2rem 1rem 0 1.2rem;
 }
 
 .censusText {
@@ -117,15 +84,15 @@ $featureSelectBorderColor: #00bde3;
   @include sidePanelLabelStyle;
   display: flex;
   justify-content: space-between;
-  border-bottom: $sidePanelBorder;
-  padding: 0.3rem 0.5rem 0.3rem 1rem;
+  padding: 0.3rem 0.5rem 0.3rem 1.2rem;
   background-color: #DFE1E2;
 }
 
 //Indicator box styles
 .indicatorBox {
   display: flex;
-  padding: 0 1rem 1.5rem;
+  flex-direction: column;
+  padding: 0 0rem 1.5rem;
   border-bottom: $sidePanelBorder;
 
   @media screen and (max-width: $mobileBreakpoint) {
@@ -139,16 +106,26 @@ $featureSelectBorderColor: #00bde3;
   border-bottom: none;
 }
 
-.indicatorValue {
-  flex: 1 0 37%;
-  align-self: center;
-  padding-left: 2.4rem;
-  font-size: large;
+.indicatorRow {
+  display: flex;
 
   @media screen and (max-width: $mobileBreakpoint) {
     flex: 1 0 40%;
     align-self: inherit;
     padding-left: 3rem;
     padding-top: 1rem;
+  }
+
+  .indicatorName {
+    flex: 0 1 77%;
+  }
+  
+  .indicatorValue {
+    margin-top: 1.2rem;
+    margin-left: 2.2rem;
+  }
+  
+  .indicatorDesc {
+    max-width: 10rem;    
   }
 }
