@@ -15,12 +15,12 @@ const HowYouCanHelp = () => {
     },
     youCanHelpInfoText: {
       id: 'youCanHelpInfoText.list.element.prefix',
-      defaultMessage: 'If you have helpful information, we’d love to',
+      defaultMessage: 'If you have helpful information, we would love to',
       description: 'you can help info text ',
     },
     youCanHelpInfoLinkText: {
       id: 'youCanHelpInfoLink.link.text',
-      defaultMessage: 'get an email from you',
+      defaultMessage: 'receive an email from you',
       description: 'you can help info text ',
     },
     youCanHelpDataMethPrefixText: {
@@ -35,7 +35,7 @@ const HowYouCanHelp = () => {
     },
     youCanHelpDataMethSuffixText: {
       id: 'youCanHelpDataMethSuffixText.link.suffix.text',
-      defaultMessage: 'and send us feedback',
+      defaultMessage: 'and send us feedback.',
       description: 'send us feedbackv via email',
     },
     youCanHelpSharingPrefixText: {

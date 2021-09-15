@@ -17,12 +17,12 @@ const MapWrapper = ({location}: IMapWrapperProps) => {
   const messages = defineMessages({
     downloadLinkText: {
       id: 'mapwrapper.download.link',
-      defaultMessage: 'Download the draft list of prioritized communities (pre-decisional) and datasets used',
+      defaultMessage: 'Download the draft list of communities of focus and datasets used.',
       description: 'download link for datasets',
     },
     downloadContents: {
       id: 'mapwrapper.download.contents',
-      defaultMessage: 'ZIP file will contain one .xlsx, one .csv and one .pdf (30 MB).',
+      defaultMessage: 'ZIP file will contain one .xlsx, one .csv, and one .pdf (30 MB).',
       description: 'download link contents',
     },
   });

@@ -83,9 +83,9 @@ const MapLegend = () => {
           {/* Using @trussworks tooltip */}
           <Tooltip<IconWrapperProps>
             label={`
-            Communities that have cumulative 
-            index score of Xth percentile
-            and above
+            These communities are identified as experiencing disadvantages that
+            merit the focus of certain Federal investments, including through
+            the Justice40 Initiative.
               `}
             position='left'
             asCustom={IconWrapper}>

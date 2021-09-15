@@ -32,14 +32,20 @@ const CEJSTPage = ({location}: IMapPageProps) => {
             <div className={styles.explorePageSubHeader}>
               <div className={styles.explorePageHeaderText}>
                 <p>
-              Zoom into the map to see which communities the tool has currently
-              identified as prioritized (the top 25% of communities) or on the
-              threshold. Learn more about the formula and datasets that were
-              used to prioritize these communities on the
+                Zoom into the map to see a draft list of communities of focus,
+                based on currently available datasets. The methodology for identifying
+                these communities of focus is draft and will be refined and updated
+                based on feedback.
+
+                </p>
+
+                <p>
                   {` `}
-                  <Link to={'/methodology'}>Data & methodology</Link>
+                  <Link to={'/methodology'}>
+                    Learn more about the existing formula and datasets used to
+                    identify this draft list of communities of focus.
+                  </Link>
                   {` `}
-              page.
                 </p>
               </div>
               <MapLegend />

@@ -133,7 +133,7 @@ export const SCORE_BOUNDARY_PRIORITIZED = 0.75;
 export const EXPLORE_TOOL_PAGE_TEXT = defineMessages({
   PRIORITY_LABEL: {
     id: 'legend.info.priority.label',
-    defaultMessage: 'Prioritized community',
+    defaultMessage: 'Draft communities of focus',
     description: 'the label of the prioritized community legend',
   },
   THRESHOLD_LABEL: {
