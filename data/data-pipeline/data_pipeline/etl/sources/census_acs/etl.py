@@ -100,7 +100,9 @@ class CensusACSETL(ExtractTransformLoad):
         ]
 
         # Handle null values for CBG median income, which are `-666666666`.
-        missing_value_count = sum(self.df[self.MEDIAN_INCOME_FIELD_NAME]==-666666666)
+        missing_value_count = sum(
+            self.df[self.MEDIAN_INCOME_FIELD_NAME] == -666666666
+        )
         logger.info(
             f"There are {missing_value_count} ({int(100*missing_value_count/self.df[self.MEDIAN_INCOME_FIELD_NAME].count())}%) values of "
             + f"`{self.MEDIAN_INCOME_FIELD_NAME}` being marked as null values."

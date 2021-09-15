@@ -26,7 +26,9 @@ class ScoreETL(ExtractTransformLoad):
         # A few specific field names
         # TODO: clean this up, I name some fields but not others.
         self.UNEMPLOYED_FIELD_NAME: str = "Unemployed civilians (percent)"
-        self.LINGUISTIC_ISOLATION_FIELD_NAME: str = "Linguistic isolation (percent)"
+        self.LINGUISTIC_ISOLATION_FIELD_NAME: str = (
+            "Linguistic isolation (percent)"
+        )
         self.HOUSING_BURDEN_FIELD_NAME: str = "Housing burden (percent)"
         self.POVERTY_FIELD_NAME: str = (
             "Poverty (Less than 200% of federal poverty line)"
@@ -58,6 +60,12 @@ class ScoreETL(ExtractTransformLoad):
             "Percent of individuals < 200% Federal Poverty Line"
         )
 
+        # CDC life expectancy
+        self.LIFE_EXPECTANCY_FIELD_NAME = "Life expectancy (years)"
+
+        # DOE energy burden
+        self.ENERGY_BURDEN_FIELD_NAME = "Energy burden"
+
         # There's another aggregation level (a second level of "buckets").
         self.AGGREGATION_POLLUTION: str = "Pollution Burden"
         self.AGGREGATION_POPULATION: str = "Population Characteristics"
@@ -75,6 +83,8 @@ class ScoreETL(ExtractTransformLoad):
         self.hud_housing_df: pd.DataFrame
         self.cdc_places_df: pd.DataFrame
         self.census_acs_median_incomes_df: pd.DataFrame
+        self.cdc_life_expectancy_df: pd.DataFrame
+        self.doe_energy_burden_df: pd.DataFrame
 
     def data_sets(self) -> list:
         # Define a named tuple that will be used for each data set input.
@@ -164,6 +174,16 @@ class ScoreETL(ExtractTransformLoad):
             DataSet(
                 input_field=self.MEDIAN_INCOME_FIELD_NAME,
                 renamed_field=self.MEDIAN_INCOME_FIELD_NAME,
+                bucket=None,
+            ),
+            DataSet(
+                input_field=self.LIFE_EXPECTANCY_FIELD_NAME,
+                renamed_field=self.LIFE_EXPECTANCY_FIELD_NAME,
+                bucket=None,
+            ),
+            DataSet(
+                input_field=self.ENERGY_BURDEN_FIELD_NAME,
+                renamed_field=self.ENERGY_BURDEN_FIELD_NAME,
                 bucket=None,
             ),
             # The following data sets have buckets, because they're used in Score C
@@ -322,6 +342,26 @@ class ScoreETL(ExtractTransformLoad):
         self.census_acs_median_incomes_df = pd.read_csv(
             census_acs_median_incomes_csv,
             dtype={self.GEOID_FIELD_NAME: "string"},
+            low_memory=False,
+        )
+
+        # Load CDC life expectancy data
+        cdc_life_expectancy_csv = (
+            self.DATA_PATH / "dataset" / "cdc_life_expectancy" / "usa.csv"
+        )
+        self.cdc_life_expectancy_df = pd.read_csv(
+            cdc_life_expectancy_csv,
+            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
+            low_memory=False,
+        )
+
+        # Load DOE energy burden data
+        doe_energy_burden_csv = (
+            self.DATA_PATH / "dataset" / "doe_energy_burden" / "usa.csv"
+        )
+        self.doe_energy_burden_df = pd.read_csv(
+            doe_energy_burden_csv,
+            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
             low_memory=False,
         )
 
@@ -566,21 +606,9 @@ class ScoreETL(ExtractTransformLoad):
         )
         df["Score H"] = df["Score H (communities)"].astype(int)
 
-        # df["80% AMI & 6% high school (communities)"] = (
-        #     (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
-        #     & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold_2)
-        #     )
-        #
-        # df["FPL200>40% & 6% high school (communities)"] = (
-        #     (df[self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME] > 0.40)
-        #     & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold_2)
-        # )
-
         df["NMTC (communities)"] = (
             (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
-        ) | (
-            (df[self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME] > 0.20)
-        )
+        ) | (df[self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME] > 0.20)
 
         df["NMTC modified (communities)"] = (
             (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
@@ -609,6 +637,8 @@ class ScoreETL(ExtractTransformLoad):
         census_tract_dfs = [
             self.hud_housing_df,
             self.cdc_places_df,
+            self.cdc_life_expectancy_df,
+            self.doe_energy_burden_df
         ]
         census_tract_df = self._join_tract_dfs(census_tract_dfs)
 
