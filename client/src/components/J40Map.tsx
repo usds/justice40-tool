@@ -174,7 +174,7 @@ const J40Map = ({location}: IJ40Interface) => {
 
   return (
     <>
-      <Grid col={12} desktop={{col: 8}}>
+      <Grid col={12} desktop={{col: 9}}>
         <ReactMapGL
           {...viewport}
           mapStyle={makeMapStyle(flags)}
@@ -258,7 +258,7 @@ const J40Map = ({location}: IJ40Interface) => {
         </ReactMapGL>
       </Grid>
 
-      <Grid col={12} desktop={{col: 4}} className={styles.mapInfoPanel}>
+      <Grid col={12} desktop={{col: 3}} className={styles.mapInfoPanel}>
         <MapInfoPanel
           className={styles.mapInfoPanel}
           featureProperties={detailViewData?.properties}

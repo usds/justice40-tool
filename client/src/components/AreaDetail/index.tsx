@@ -212,36 +212,28 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
         <h6>{intl.formatMessage(messages.percentileColumnHeader)}</h6>
       </div>
       <Accordion
+        multiselectable={true}
         items={
           [
             {
-              id: 'test1',
-              title: 'indicators used in prio',
+              id: 'prioritization-indicators',
+              title: 'Prioritization indicators',
               content: (
-                <li className={styles.indicatorBox} data-cy={'indicatorBox'}>
-                  <div>
-                    <h4>{indicators[0].label}</h4>
-                    <p className={'secondary'}>
-                      {indicators[0].description}
-                    </p>
-                  </div>
-                  <div className={styles.indicatorValue}>
-                    {readablePercentile(indicators[0].value)}
-                    <sup className={styles.indicatorSuperscript}><span>
-                      {getSuperscriptOrdinal(readablePercentile(indicators[0].value))}
-                    </span></sup>
-                  </div>
-                </li>
-              ),
-              expanded: true,
-              className: 'j40-accordion',
-            },
-            {
-              className: 'j40-accordian-bg-colored',
-              id: 'test2',
-              title: 'additional indicators',
-              content: (
-                (
+                <>
+                  <li className={styles.indicatorBox} data-cy={'indicatorBox'}>
+                    <div>
+                      <h4>{indicators[0].label}</h4>
+                      <p className={'secondary'}>
+                        {indicators[0].description}
+                      </p>
+                    </div>
+                    <div className={styles.indicatorValue}>
+                      {readablePercentile(indicators[0].value)}
+                      <sup className={styles.indicatorSuperscript}><span>
+                        {getSuperscriptOrdinal(readablePercentile(indicators[0].value))}
+                      </span></sup>
+                    </div>
+                  </li>
                   <li className={styles.indicatorBox} data-cy={'indicatorBox'}>
                     <div>
                       <h4>{indicators[1].label}</h4>
@@ -256,6 +248,45 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
                       </span></sup>
                     </div>
                   </li>
+                </>
+              ),
+              expanded: true,
+            },
+            {
+              id: 'additional-indicators',
+              title: 'Additional indicators (not used in prioritization)',
+              content: (
+                (
+                  <>
+                    <li className={styles.indicatorBox} data-cy={'indicatorBox'}>
+                      <div>
+                        <h4>{indicators[2].label}</h4>
+                        <p className={'secondary'}>
+                          {indicators[2].description}
+                        </p>
+                      </div>
+                      <div className={styles.indicatorValue}>
+                        {readablePercentile(indicators[2].value)}
+                        <sup className={styles.indicatorSuperscript}><span>
+                          {getSuperscriptOrdinal(readablePercentile(indicators[2].value))}
+                        </span></sup>
+                      </div>
+                    </li>
+                    <li className={styles.indicatorBox} data-cy={'indicatorBox'}>
+                      <div>
+                        <h4>{indicators[3].label}</h4>
+                        <p className={'secondary'}>
+                          {indicators[3].description}
+                        </p>
+                      </div>
+                      <div className={styles.indicatorValue}>
+                        {readablePercentile(indicators[3].value)}
+                        <sup className={styles.indicatorSuperscript}><span>
+                          {getSuperscriptOrdinal(readablePercentile(indicators[3].value))}
+                        </span></sup>
+                      </div>
+                    </li>
+                  </>
                 )
               ),
               expanded: false,
@@ -263,7 +294,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
           ]
         }/>
 
-      {indicators.map((indicator, index) => (
+      {/* {indicators.map((indicator, index) => (
         <li key={index} className={styles.indicatorBox} data-cy={'indicatorBox'}>
           <div>
             <h4>{indicator.label}</h4>
@@ -278,7 +309,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
             </span></sup>
           </div>
         </li>
-      ))}
+      ))} */}
 
     </aside>
   );

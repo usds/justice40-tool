@@ -37,6 +37,7 @@ There are 3 things that should be included in this file:
 
 $primary-color: #112f4e;
 $j40-blue-background-color: #EFF6FB;
+$sidePanelBorderColor: #f2f2f2;
 
 // The j40-element mixin is used to create any font element. E.g. <h1>, <p> tags, etc.
 // Arguments to the mixins must be tokens from USWDS
@@ -530,17 +531,26 @@ ul.j40-process-nested-list {
   }
 }
 
+
 /* 
 ******************************
 *      ACCORDION CARD STYLES
 ****************************** 
 */
 
-.j40-accordion {
+.usa-accordion__heading button.usa-accordion__button {
   @include j40-element('3xs', 1, 'normal', 0);
+  border-bottom: 1px solid $sidePanelBorderColor;
+} 
+.usa-accordion__heading:first-child button.usa-accordion__button {
+  @include j40-element('3xs', 1, 'normal', 0);
+  background-color: white;
+} 
+.usa-accordion__heading:nth-child(2) button.usa-accordion__button {
+  @include j40-element('3xs', 1, 'normal', 0);
+  background-color:#F3F3F3;
 }
 
-.j40-accordian-bg-colored {
-  @include j40-element('3xs', 1, 'normal', 0);
-  background-color: lightgrey;
+.usa-accordion__heading:not(:first-child){
+  @include u-margin-top(0);
 }
