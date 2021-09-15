@@ -60,25 +60,45 @@ const J40Header = () => {
           to={'/'}
           key={'about'}
           activeClassName="usa-current"
-          className={'j40-header'}>{intl.formatMessage(messages.about)}</Link>],
+          className={'j40-header'}
+          data-cy={'nav-link-about'}
+        >
+          {intl.formatMessage(messages.about)}
+        </Link>,
+      ],
       ['cejst',
         <Link
           to={'/cejst'}
           key={'cejst'}
           activeClassName="usa-current"
-          className={'j40-header'}>{intl.formatMessage(messages.explore)}</Link>],
+          className={'j40-header'}
+          data-cy={'nav-link-explore'}
+        >
+          {intl.formatMessage(messages.explore)}
+        </Link>,
+      ],
       ['methodology',
         <Link
           to={'/methodology'}
           key={'methodology'}
           activeClassName="usa-current"
-          className={'j40-header'}>{intl.formatMessage(messages.methodology)}</Link>],
+          className={'j40-header'}
+          data-cy={'nav-link-methodology'}
+        >
+          {intl.formatMessage(messages.methodology)}
+        </Link>,
+      ],
       ['contact',
         <Link
           to={'/contact'}
           key={'contact'}
           activeClassName="usa-current"
-          className={'j40-header'}>{intl.formatMessage(messages.contact)}</Link>],
+          className={'j40-header'}
+          data-cy={'nav-link-contact'}
+        >
+          {intl.formatMessage(messages.contact)}
+        </Link>,
+      ],
     ]);
 
     const menu =['about', 'cejst', 'methodology', 'contact'];

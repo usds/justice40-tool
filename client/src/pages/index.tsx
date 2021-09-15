@@ -74,7 +74,7 @@ const IndexPage = ({location}: IndexPageProps) => {
   });
 
   return (
-    <Layout location={location}>
+    <Layout location={location} title={'About'}>
       <J40MainGridContainer>
         <AlertWrapper showBetaAlert={true} showLimitedDataAlert={false}/>
       </J40MainGridContainer>

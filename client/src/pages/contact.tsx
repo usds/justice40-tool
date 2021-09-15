@@ -14,7 +14,7 @@ const ContactPage = ({location}: ContactPageProps) => {
   const generalEmail = 'screeningtool.feedback@usds.gov';
 
   return (
-    <Layout location={location}>
+    <Layout location={location} title={'Contact'}>
 
       <J40MainGridContainer>
         <AlertWrapper showBetaAlert={true} showLimitedDataAlert={false}/>

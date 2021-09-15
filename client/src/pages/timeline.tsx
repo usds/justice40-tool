@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Layout from '../components/layout';
 
-
 // THIS COMPONENT IS NOT BEING USED
 
 // @ts-ignore
@@ -12,7 +11,7 @@ interface TimelinePageProps {
 }
 
 const TimelinePage = ({location}: TimelinePageProps) => {
-  return (<Layout location={location}>
+  return (<Layout location={location} title={'Timeline'}>
     <section>
       {/* <h1>Timelin</h1>
       <h2>Throughout the Process</h2>
