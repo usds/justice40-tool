@@ -101,7 +101,7 @@ TILES_SCORE_FLOAT_COLUMNS = [
     "Traffic proximity and volume (percentile)",
     "FEMA Risk Index Expected Annual Loss Score (percentile)",
     "Energy burden (percentile)",
-    "Housing burden (percent) (percentile)",
+    # "Housing burden (percent) (percentile)",  # errors out for rounding
     "Wastewater discharge (percentile)",
     "Percent pre-1960s housing (lead paint indicator) (percentile)",
     "Diesel particulate matter (percentile)",
