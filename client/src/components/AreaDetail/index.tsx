@@ -333,7 +333,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
                 <>
                   {
                     indicators.map((indicator:any, index:number) => {
-                      return <li key={`ind${index}`} className={styles.indicatorBox} data-cy={'indicatorBox'}>
+                      return <li key={`ind${index}`} className={styles.indicatorBoxMain} data-cy={'indicatorBox'}>
                         <div className={styles.indicatorRow}>
                           <h4 className={styles.indicatorName}>{indicator.label}</h4>
                           <div className={styles.indicatorValue}>
@@ -359,7 +359,10 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
                   <>
                     {
                       additionalIndicators.map((indicator:any, index:number) => {
-                        return <li key={`ind${index}`} className={styles.indicatorBox} data-cy={'indicatorBox'}>
+                        return <li
+                          key={`ind${index}`}
+                          className={styles.indicatorBoxAdditional}
+                          data-cy={'indicatorBox'}>
                           <div className={styles.indicatorRow}>
                             <h4 className={styles.indicatorName}>{indicator.label}</h4>
                             <div className={styles.indicatorValue}>

@@ -18,6 +18,15 @@ $sidePanelLabelFontColor: #171716;
   opacity: 0.6;
 }
 
+@mixin indicatorBox {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0rem 1.5rem;
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
 .areaDetailContainer {
   display: flex;
   flex-direction: column;
@@ -88,21 +97,14 @@ $sidePanelLabelFontColor: #171716;
 }
 
 //Indicator box styles
-.indicatorBox {
-  display: flex;
-  flex-direction: column;
-  padding: 0 0rem 1.5rem;
+.indicatorBoxMain {
+  @include indicatorBox;
   border-bottom: $sidePanelBorder;
-
-  @media screen and (max-width: $mobileBreakpoint) {
-    justify-content: space-between;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-  }
 }
 
-.indicatorBox:last-child {
-  border-bottom: none;
+.indicatorBoxAdditional {
+  @include indicatorBox;
+  border-bottom: 1px solid #1b1b1b;
 }
 
 .indicatorRow {
