@@ -58,7 +58,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
 
         # read in the unzipped csv from NRI data source then rename the
         # Census Tract column for merging
-        df_nri = pd.read_csv(
+        df_nri: pd.DataFrame = pd.read_csv(
             self.INPUT_CSV,
             dtype={NRI_TRACT_COL: "string"},
             na_values=["None"],
@@ -75,9 +75,9 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         # Reduce columns.
         # Note: normally we wait until writing to CSV for this step, but since the file is so huge,
         # move this up here for performance reasons.
-        df_nri = df_nri[
+        df_nri = df_nri[ # pylint: disable=unsubscriptable-object
             [self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME, TRACT_COL]
-        ]  # pylint: disable=unsubscriptable-object
+        ]
 
         # get the full list of Census Block Groups from the ACS data
         # and extract the Census Tract ID from each Block Group ID
