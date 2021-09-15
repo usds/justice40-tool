@@ -76,6 +76,9 @@ TILES_SCORE_COLUMNS = [
     "Percent pre-1960s housing (lead paint indicator) (percentile)",
     "Diesel particulate matter (percentile)",
     "Particulate matter (PM2.5) (percentile)",
+    "Median household income (% of AMI) (percentile)",
+    "Percent of individuals < 200% Federal Poverty Line (percentile)",
+    "Percent individuals age 25 or over with less than high school degree (percentile)",
 ]
 
 # columns to round floats to 2 decimals
@@ -106,6 +109,9 @@ TILES_SCORE_FLOAT_COLUMNS = [
     "Percent pre-1960s housing (lead paint indicator) (percentile)",
     "Diesel particulate matter (percentile)",
     "Particulate matter (PM2.5) (percentile)",
+    "Median household income (% of AMI) (percentile)",
+    "Percent of individuals < 200% Federal Poverty Line (percentile)",
+    # "Percent individuals age 25 or over with less than high school degree (percentile)",  # errors out for rounding
 ]
 TILES_ROUND_NUM_DECIMALS = 2
 
