@@ -29,7 +29,7 @@ const AboutCard = (props: React.PropsWithChildren<AboutCardProps>) => {
           <Grid tablet={{col: 9}}>
             <Grid row>
               <h2 data-cy={'about-screen-tool-heading'}>{props.header} </h2>
-              <p>{props.children}</p>
+              {props.children}
             </Grid>
           </Grid>
 
