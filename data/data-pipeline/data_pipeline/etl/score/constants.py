@@ -109,7 +109,6 @@ TILES_SCORE_FLOAT_COLUMNS = [
     "Particulate matter (PM2.5) (percentile)",
     "Median household income (% of AMI) (percentile)",
     "Percent of individuals < 200% Federal Poverty Line (percentile)",
-    # "Percent individuals age 25 or over with less than high school degree (percentile)",  # errors out for rounding
 ]
 TILES_ROUND_NUM_DECIMALS = 2
 
