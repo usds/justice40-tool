@@ -4,11 +4,11 @@ import {useIntl} from 'gatsby-plugin-intl';
 import {defineMessages} from 'react-intl';
 
 import AlertWrapper from '../components/AlertWrapper';
-// import DatasetContainer from '../components/DatasetContainer';
+import DatasetContainer from '../components/DatasetContainer';
 import DownloadPacket from '../components/DownloadPacket';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
-// import ScoreStepsList from '../components/scoreStepsList';
+import ScoreStepsList from '../components/scoreStepsList';
 
 interface MethodPageProps {
   location: Location;
@@ -25,8 +25,8 @@ const IndexPage = ({location}: MethodPageProps) => {
     },
     methodologyPagep1: {
       id: 'methodology.page.paragraph.first',
-      defaultMessage: 'The methodology for determining disadvantaged communities for the purposes of '+
-      ' the Justice40 Initiative is currently in progress.',
+      defaultMessage: 'The methodology for identifying communities of focus is currently ' +
+      'in a draft, pre-decisional form that may change over time as more datasets become available.',
       description: 'methodology page paragraph 1',
     },
   });
@@ -54,7 +54,6 @@ const IndexPage = ({location}: MethodPageProps) => {
         </Grid>
       </J40MainGridContainer>
 
-      {/* // Temporarily removed while the app is demo'd to stakeholders
       <J40MainGridContainer fullWidth={true}>
         <Grid row>
           <Grid col>
@@ -69,7 +68,7 @@ const IndexPage = ({location}: MethodPageProps) => {
             <ScoreStepsList/>
           </Grid>
         </Grid>
-      </J40MainGridContainer> */}
+      </J40MainGridContainer>
     </Layout>
   );
 };

@@ -61,13 +61,15 @@ const DatasetContainer = () => {
   const messages = defineMessages({
     cumulativeScore: {
       id: 'datasetContainer.header.cumulativeScore',
-      defaultMessage: 'Datasets used in cumulative score',
+      defaultMessage: 'Datasets used in methodology',
       description: 'section label of which datasets are used in cumulative score',
     },
     subTitle: {
       id: 'datasetContainer.subTitle',
       defaultMessage: 'The datasets come from a variety of sources and ' +
-        'were selected after considering relevance, availability, recency and quality.',
+        'were selected based on relevance, availability, recency, and quality.' +
+        ' The datasets seek to identify a range of human health, environmental, ' +
+        'climate-related, and other cumulative impacts on disadvantaged communities.',
       description: 'description of the dataset section',
     },
   });
