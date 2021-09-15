@@ -64,6 +64,18 @@ TILES_SCORE_COLUMNS = [
     "Linguistic isolation (percent) (percentile)",
     "Unemployed civilians (percent) (percentile)",
     "Housing burden (percent) (percentile)",
+    "Diagnosed diabetes among adults aged >=18 years (percentile)",
+    "Current asthma among adults aged >=18 years (percentile)",
+    "Coronary heart disease among adults aged >=18 years (percentile)",
+    "Life expectancy (years) (percentile)",
+    "Traffic proximity and volume (percentile)",
+    "FEMA Risk Index Expected Annual Loss Score (percentile)",
+    "Energy burden (percentile)",
+    "Housing burden (percent) (percentile)",
+    "Wastewater discharge (percentile)",
+    "Percent pre-1960s housing (lead paint indicator) (percentile)",
+    "Diesel particulate matter (percentile)",
+    "Particulate matter (PM2.5) (percentile)",
 ]
 
 # columns to round floats to 2 decimals
@@ -77,6 +89,23 @@ TILES_SCORE_FLOAT_COLUMNS = [
     "Linguistic isolation (percent)",
     "Unemployed civilians (percent)",
     "Housing burden (percent)",
+    "Poverty (Less than 200% of federal poverty line) (percentile)",
+    "Percent individuals age 25 or over with less than high school degree (percentile)",
+    "Linguistic isolation (percent) (percentile)",
+    "Unemployed civilians (percent) (percentile)",
+    "Housing burden (percent) (percentile)",
+    "Diagnosed diabetes among adults aged >=18 years (percentile)",
+    "Current asthma among adults aged >=18 years (percentile)",
+    "Coronary heart disease among adults aged >=18 years (percentile)",
+    "Life expectancy (years) (percentile)",
+    "Traffic proximity and volume (percentile)",
+    "FEMA Risk Index Expected Annual Loss Score (percentile)",
+    "Energy burden (percentile)",
+    "Housing burden (percent) (percentile)",
+    "Wastewater discharge (percentile)",
+    "Percent pre-1960s housing (lead paint indicator) (percentile)",
+    "Diesel particulate matter (percentile)",
+    "Particulate matter (PM2.5) (percentile)",
 ]
 TILES_ROUND_NUM_DECIMALS = 2
 
