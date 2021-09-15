@@ -192,6 +192,7 @@ class PostScoreETL(ExtractTransformLoad):
             * len(constants.TILES_SCORE_FLOAT_COLUMNS),
             index=constants.TILES_SCORE_FLOAT_COLUMNS,
         )
+
         return score_tiles.round(decimals)
 
     def _create_downloadable_data(
