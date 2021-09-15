@@ -31,15 +31,6 @@ const CEJSTPage = ({location}: IMapPageProps) => {
       defaultMessage: 'Explore the tool',
       description: 'explore the tool heading text',
     },
-    exploreToolPageText: {
-      id: 'exploreTool.page.text',
-      defaultMessage: 'Zoom into the map to see which communities the tool has currently'+
-      'identified as prioritized (the top 25% of communities) or on the'+
-      'threshold. Learn more about the formula and datasets that were'+
-      'used to prioritize these communities on the',
-      description: 'explore the tool page text',
-    },
-
   });
 
   return (<Layout location={location} title={intl.formatMessage(messages.exploreToolTitleText)}>
@@ -53,7 +44,10 @@ const CEJSTPage = ({location}: IMapPageProps) => {
         <Grid col={12} tablet={{col: 6}}>
           <section>
             <p>
-              {intl.formatMessage(messages.exploreToolPageText)}
+            Zoom into the map to see communities of focus that can help Federal agencies
+            identify disadvantaged communities and to provide socioeconomic,
+            environmental, and climate information and data. Learn more about the methodology
+            and datasets that were used to determine these communities of focus on the
               {` `}
               <Link to={'/methodology'}>Data & methodology</Link>
               {` `}

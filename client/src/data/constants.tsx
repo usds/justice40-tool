@@ -133,19 +133,14 @@ export const SCORE_BOUNDARY_PRIORITIZED = 0.75;
 export const EXPLORE_TOOL_PAGE_TEXT = defineMessages({
   PRIORITY_LABEL: {
     id: 'legend.info.priority.label',
-    defaultMessage: 'Justice40 community of focus',
+    defaultMessage: 'Draft community of focus',
     description: 'the label of the prioritized community legend',
   },
   PRIORITY_DESCRIPT: {
     id: 'legend.info.threshold.label',
-    defaultMessage: 'Communities that are the focus for 40 percent of the overall benefits' +
-    ' of certain federal programs.',
+    defaultMessage: 'These communities are identified as experiencing disadvantages that merit' +
+    ' the focus of certain Federal investments, including through the Justice40 Initiative',
     description: 'the label of the threshold community legend',
-  },
-  LEGEND_LABEL: {
-    id: 'legend.colorkey.label',
-    defaultMessage: 'Color key',
-    description: 'the label of the key in the legend',
   },
 });
 

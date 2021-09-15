@@ -40,7 +40,7 @@ const HowYouCanHelp = () => {
     },
     youCanHelpSharingPrefixText: {
       id: 'youCanHelpSharingPrefixText.link.prefix.text',
-      defaultMessage: 'Find your community and',
+      defaultMessage: 'Find your community of interest and',
       description: 'find your community',
     },
     youCanHelpSharingLinkText: {

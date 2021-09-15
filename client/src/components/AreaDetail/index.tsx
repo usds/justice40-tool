@@ -15,13 +15,29 @@ export const readablePercentile = (percentile: number) => {
   return Math.round(percentile * 100);
 };
 
+// Todo: Add internationalization to superscript ticket #582
+const getSuperscriptOrdinal = (percentile: number) => {
+  const englishOrdinalRules = new Intl.PluralRules('en', {
+    type: 'ordinal',
+  });
+  const suffixes = {
+    zero: 'th',
+    one: 'st',
+    two: 'nd',
+    few: 'rd',
+    many: 'th',
+    other: 'th',
+  };
+  return suffixes[englishOrdinalRules.select(percentile)];
+};
+
 // Todo VS: remove threshold data
 export const getCategorization = (percentile: number) => {
   let categorization;
   let categoryCircleStyle;
 
   if (percentile >= constants.SCORE_BOUNDARY_PRIORITIZED ) {
-    categorization = 'Prioritized';
+    categorization = 'Community of focus';
     categoryCircleStyle = styles.prioritized;
   } else if (constants.SCORE_BOUNDARY_THRESHOLD <= percentile && percentile < constants.SCORE_BOUNDARY_PRIORITIZED) {
     categorization = 'Threshold';
@@ -72,7 +88,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     },
     indicatorColumnHeader: {
       id: 'areaDetail.indicators.indicatorColumnHeader',
-      defaultMessage: 'Indicators',
+      defaultMessage: 'Indicator',
       description: 'the population of the feature selected',
     },
     percentileColumnHeader: {
@@ -193,15 +209,15 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     " area’s or state's median income",
     value: properties[constants.POVERTY_PROPERTY_PERCENTILE],
   };
-  const poverty:indicatorInfo = {
-    label: intl.formatMessage(messages.poverty),
-    description: 'Household income is less than or equal to twice the federal "poverty level"',
-    value: properties[constants.POVERTY_PROPERTY_PERCENTILE],
-  };
   const eduInfo:indicatorInfo = {
     label: intl.formatMessage(messages.education),
     description: 'Percent of people age 25 or older that didn’t get a high school diploma',
     value: properties[constants.EDUCATION_PROPERTY_PERCENTILE],
+  };
+  const poverty:indicatorInfo = {
+    label: intl.formatMessage(messages.poverty),
+    description: 'Household income is less than or equal to twice the federal "poverty level"',
+    value: properties[constants.POVERTY_PROPERTY_PERCENTILE],
   };
   // const linIsoInfo:indicatorInfo = {
   //   label: intl.formatMessage(messages.linguisticIsolation),
@@ -214,15 +230,15 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
   //   description: 'Number of unemployed people as a percentage of the labor force',
   //   value: properties[constants.UNEMPLOYMENT_PROPERTY_PERCENTILE],
   // };
-  const diabetes:indicatorInfo = {
-    label: intl.formatMessage(messages.diabetes),
-    description: 'Households that are low income and spend more than 30% of their income to housing costs',
-    value: properties[constants.HOUSING_BURDEN_PROPERTY_PERCENTILE],
-  };
   const asthma:indicatorInfo = {
     label: intl.formatMessage(messages.asthma),
     description: 'People who answer “yes” to both of the questions: “Have you ever been told by' +
     ' a doctor nurse, or other health professional that you have asthma?” and “Do you still have asthma?"',
+    value: properties[constants.HOUSING_BURDEN_PROPERTY_PERCENTILE],
+  };
+  const diabetes:indicatorInfo = {
+    label: intl.formatMessage(messages.diabetes),
+    description: 'Households that are low income and spend more than 30% of their income to housing costs',
     value: properties[constants.HOUSING_BURDEN_PROPERTY_PERCENTILE],
   };
   const dieselPartMatter:indicatorInfo = {
@@ -314,7 +330,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
       <div className={styles.categorization}>
         <div className={styles.priority}>
           <div className={categoryCircleStyle} />
-          <h2>{categorization}</h2>
+          <h3>{categorization}</h3>
         </div>
       </div>
       <div className={styles.divider}>
@@ -327,7 +343,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
           [
             {
               id: 'prioritization-indicators',
-              title: 'Prioritization indicators',
+              title: 'Indicators',
               className: 'j40-accordion',
               content: (
                 <>
@@ -338,6 +354,9 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
                           <h4 className={styles.indicatorName}>{indicator.label}</h4>
                           <div className={styles.indicatorValue}>
                             {readablePercentile(indicator.value)}
+                            <sup className={styles.indicatorSuperscript}><span>
+                              {getSuperscriptOrdinal(readablePercentile(indicator.value))}
+                            </span></sup>
                           </div>
                         </div>
                         <p className={'secondary j40-indicator'}>
@@ -367,6 +386,9 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
                             <h4 className={styles.indicatorName}>{indicator.label}</h4>
                             <div className={styles.indicatorValue}>
                               {readablePercentile(indicator.value)}
+                              <sup className={styles.indicatorSuperscript}><span>
+                                {getSuperscriptOrdinal(readablePercentile(indicator.value))}
+                              </span></sup>
                             </div>
                           </div>
                           <p className={'secondary j40-indicator'}>

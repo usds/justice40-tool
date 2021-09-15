@@ -6,12 +6,12 @@ exports[`rendering of the MapLegend checks if snapshots have changed 1`] = `
     <div />
     <div>
       <h4>
-        Justice40 community of focus
+        Draft community of focus
       </h4>
       <p
         class="secondary"
       >
-        Communities that are the focus for 40 percent of the overall benefits of certain federal programs.
+        These communities are identified as experiencing disadvantages that merit the focus of certain Federal investments, including through the Justice40 Initiative
       </p>
     </div>
   </div>

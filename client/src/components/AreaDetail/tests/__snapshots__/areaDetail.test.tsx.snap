@@ -38,14 +38,14 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
     <div>
       <div>
         <div />
-        <h2>
-          Prioritized
-        </h2>
+        <h3>
+          Community of focus
+        </h3>
       </div>
     </div>
     <div>
       <h6>
-        Indicators
+        Indicator
       </h6>
       <h6>
         Percentile (0-100)
@@ -66,7 +66,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           data-testid="accordionButton_prioritization-indicators"
           type="button"
         >
-          Prioritization indicators
+          Indicators
         </button>
       </h2>
       <div
@@ -83,6 +83,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             </h4>
             <div>
               9900
+              <sup>
+                <span>
+                  th
+                </span>
+              </sup>
             </div>
           </div>
           <p
@@ -100,6 +105,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             </h4>
             <div>
               9800
+              <sup>
+                <span>
+                  th
+                </span>
+              </sup>
             </div>
           </div>
           <p
@@ -117,6 +127,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             </h4>
             <div>
               9900
+              <sup>
+                <span>
+                  th
+                </span>
+              </sup>
             </div>
           </div>
           <p
@@ -154,6 +169,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             </h4>
             <div>
               9500
+              <sup>
+                <span>
+                  th
+                </span>
+              </sup>
             </div>
           </div>
           <p
@@ -171,6 +191,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             </h4>
             <div>
               9500
+              <sup>
+                <span>
+                  th
+                </span>
+              </sup>
             </div>
           </div>
           <p
@@ -188,6 +213,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             </h4>
             <div>
               9500
+              <sup>
+                <span>
+                  th
+                </span>
+              </sup>
             </div>
           </div>
           <p
@@ -205,6 +235,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             </h4>
             <div>
               9500
+              <sup>
+                <span>
+                  th
+                </span>
+              </sup>
             </div>
           </div>
           <p
@@ -222,6 +257,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             </h4>
             <div>
               9500
+              <sup>
+                <span>
+                  th
+                </span>
+              </sup>
             </div>
           </div>
           <p
@@ -239,6 +279,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             </h4>
             <div>
               9500
+              <sup>
+                <span>
+                  th
+                </span>
+              </sup>
             </div>
           </div>
           <p
@@ -256,6 +301,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             </h4>
             <div>
               9500
+              <sup>
+                <span>
+                  th
+                </span>
+              </sup>
             </div>
           </div>
           <p
@@ -273,6 +323,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             </h4>
             <div>
               9500
+              <sup>
+                <span>
+                  th
+                </span>
+              </sup>
             </div>
           </div>
           <p
@@ -290,6 +345,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             </h4>
             <div>
               9500
+              <sup>
+                <span>
+                  th
+                </span>
+              </sup>
             </div>
           </div>
           <p
@@ -307,6 +367,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             </h4>
             <div>
               9500
+              <sup>
+                <span>
+                  th
+                </span>
+              </sup>
             </div>
           </div>
           <p
@@ -324,6 +389,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             </h4>
             <div>
               9500
+              <sup>
+                <span>
+                  th
+                </span>
+              </sup>
             </div>
           </div>
           <p
@@ -341,6 +411,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             </h4>
             <div>
               9500
+              <sup>
+                <span>
+                  th
+                </span>
+              </sup>
             </div>
           </div>
           <p
