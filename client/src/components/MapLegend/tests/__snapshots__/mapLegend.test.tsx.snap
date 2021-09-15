@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of the MapLegend checks if snapshots have changed 1`] = `
+<DocumentFragment>
+  <div>
+    <div />
+    <div>
+      <h4>
+        Justice40 community of focus
+      </h4>
+      <p
+        class="secondary"
+      >
+        Communities that are the focus for 40 percent of the overall benefits of certain federal programs.
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

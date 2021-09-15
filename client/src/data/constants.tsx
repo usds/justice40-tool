@@ -133,12 +133,13 @@ export const SCORE_BOUNDARY_PRIORITIZED = 0.75;
 export const EXPLORE_TOOL_PAGE_TEXT = defineMessages({
   PRIORITY_LABEL: {
     id: 'legend.info.priority.label',
-    defaultMessage: 'Prioritized community',
+    defaultMessage: 'Justice40 community of focus',
     description: 'the label of the prioritized community legend',
   },
-  THRESHOLD_LABEL: {
+  PRIORITY_DESCRIPT: {
     id: 'legend.info.threshold.label',
-    defaultMessage: 'Threshold community',
+    defaultMessage: 'Communities that are the focus for 40 percent of the overall benefits' +
+    ' of certain federal programs.',
     description: 'the label of the threshold community legend',
   },
   LEGEND_LABEL: {
