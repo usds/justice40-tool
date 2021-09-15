@@ -39,7 +39,7 @@ class CDCLifeExpectancy(ExtractTransformLoad):
         self.raw_df = pd.read_csv(
             filepath_or_buffer=download_file_name,
             dtype={
-            # The following need to remain as strings for all of their digits, not get converted to numbers.
+                # The following need to remain as strings for all of their digits, not get converted to numbers.
                 self.TRACT_INPUT_COLUMN_NAME: "string",
             },
             low_memory=False,

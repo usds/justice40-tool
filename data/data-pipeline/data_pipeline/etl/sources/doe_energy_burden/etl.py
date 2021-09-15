@@ -62,12 +62,16 @@ class DOEEnergyBurden(ExtractTransformLoad):
         )
 
         # Convert energy burden to a fraction, since we represent all other percentages as fractions.
-        output_df[self.ENERGY_BURDEN_FIELD_NAME] = output_df[self.ENERGY_BURDEN_FIELD_NAME] / 100
+        output_df[self.ENERGY_BURDEN_FIELD_NAME] = (
+            output_df[self.ENERGY_BURDEN_FIELD_NAME] / 100
+        )
 
         # Left-pad the tracts with 0s
         expected_length_of_census_tract_field = 11
-        output_df[self.GEOID_TRACT_FIELD_NAME] = output_df[self.GEOID_TRACT_FIELD_NAME].astype(str).apply(
-            lambda x: x.zfill(expected_length_of_census_tract_field)
+        output_df[self.GEOID_TRACT_FIELD_NAME] = (
+            output_df[self.GEOID_TRACT_FIELD_NAME]
+            .astype(str)
+            .apply(lambda x: x.zfill(expected_length_of_census_tract_field))
         )
 
         self.output_df = output_df
