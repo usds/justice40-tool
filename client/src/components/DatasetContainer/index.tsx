@@ -1,9 +1,12 @@
 import React from 'react';
 import {useIntl} from 'gatsby-plugin-intl';
 import {defineMessages} from 'react-intl';
+import {Grid} from '@trussworks/react-uswds';
+
 import DatasetCard from '../DatasetCard';
-import * as styles from './dsContainer.module.scss';
 import AlertWrapper from '../AlertWrapper';
+
+import * as styles from './dsContainer.module.scss';
 
 export const cards = [
   {
@@ -131,7 +134,8 @@ export const cards = [
   },
   {
     indicator: 'Diesel particulate matter',
-    description: `Diesel particulate matter level in air.`,
+    description: `Mixture of particles that is part of diesel exhaust, which measures the` +
+    ` Diesel particulate matter level in air.`,
     dataResolution: `Census block group`,
     dataSourceLabel: `U.S. Census Bureau`,
     dataSourceURL: `https://www.census.gov/`,
@@ -170,19 +174,25 @@ const DatasetContainer = () => {
 
   //  JSX return value:
   return (
-    <div className={`${styles.datasetContainer} desktop:grid-col`}>
-      <div className={'grid-container-desktop-lg'}>
-        <h1 className={styles.datasetContainerHeader}>{intl.formatMessage(messages.cumulativeScore)}</h1>
-        <AlertWrapper showBetaAlert={false} showLimitedDataAlert={true}/>
+    <>
+      <Grid row>
+        <Grid col={12}>
+          <AlertWrapper showBetaAlert={false} showLimitedDataAlert={true}/>
+          <h2>{intl.formatMessage(messages.cumulativeScore)}</h2>
+        </Grid>
+      </Grid>
 
-        <p className={styles.datasetContainerSubTitle}>{intl.formatMessage(messages.subTitle)}</p>
-        <div className={styles.datasetCardsContainer}>
-          {cards.map((card) => <DatasetCard
-            key={card.indicator}
-            datasetCardProps={card}/>)}
-        </div>
+      <Grid row>
+        <Grid col={12} tablet={{col: 7}} className={'j40-mb-3'}>
+          <p>{intl.formatMessage(messages.subTitle)}</p>
+        </Grid>
+      </Grid>
+      <div className={styles.datasetCardsContainer}>
+        {cards.map((card) => <DatasetCard
+          key={card.indicator}
+          datasetCardProps={card}/>)}
       </div>
-    </div>
+    </>
   );
 };
 

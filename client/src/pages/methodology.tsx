@@ -45,7 +45,7 @@ const IndexPage = ({location}: MethodPageProps) => {
 
       <J40MainGridContainer>
         <h1>{intl.formatMessage(messages.methodologyPageHeader)}</h1>
-        <Grid row gap>
+        <Grid row gap className={'j40-mb-5'}>
           <Grid col={12} tablet={{col: 6}}>
             <section>
               <p>
@@ -59,12 +59,10 @@ const IndexPage = ({location}: MethodPageProps) => {
         </Grid>
       </J40MainGridContainer>
 
-      <J40MainGridContainer fullWidth={true}>
-        <Grid row>
-          <Grid col>
-            <DatasetContainer/>
-          </Grid>
-        </Grid>
+      <J40MainGridContainer fullWidth={true} blueBackground={true}>
+        <J40MainGridContainer>
+          <DatasetContainer/>
+        </J40MainGridContainer>
       </J40MainGridContainer>
 
       <J40MainGridContainer>
