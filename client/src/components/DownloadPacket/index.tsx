@@ -13,7 +13,7 @@ const DownloadPacket = () => {
   const messages = defineMessages({
     downloadPacketHeader: {
       id: 'downloadPacket.header.text',
-      defaultMessage: 'Draft communities list (pre-decisional, 137MB)',
+      defaultMessage: 'Draft communities list (143MB)',
       description: 'download packet header text',
     },
     downloadPacketInfo: {

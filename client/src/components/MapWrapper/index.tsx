@@ -18,7 +18,12 @@ const MapWrapper = ({location}: IMapWrapperProps) => {
   const messages = defineMessages({
     downloadLinkText: {
       id: 'mapwrapper.download.link',
-      defaultMessage: 'Download the draft list of communities of focus and datasets used',
+      defaultMessage: 'Download the draft list ',
+      description: 'download link for datasets',
+    },
+    downloadLinkText1: {
+      id: 'mapwrapper.download1.link',
+      defaultMessage: 'of communities of focus and datasets used.',
       description: 'download link for datasets',
     },
     downloadContents: {
@@ -45,6 +50,9 @@ const MapWrapper = ({location}: IMapWrapperProps) => {
             <a href={constants.DOWNLOAD_ZIP_URL}>
               {intl.formatMessage(messages.downloadLinkText)}
             </a>
+            <span>
+              {intl.formatMessage(messages.downloadLinkText1)}
+            </span>
           </div>
           <div>{intl.formatMessage(messages.downloadContents)}</div>
         </Grid>

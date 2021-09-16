@@ -50,7 +50,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       data-testid="grid"
     >
       <p>
-        The datasets come from a variety of sources and were selected based on relevance, availability, recency, and quality. The datasets seek to identify a range of human health, environmental, climate-related, and other cumulative impacts on disadvantaged communities.
+        The datasets come from a variety of sources and were selected based on relevance, availability, recency, and quality. The datasets seek to identify a range of human health, environmental, climate-related, and other cumulative impacts on communities.
       </p>
     </div>
   </div>
@@ -82,7 +82,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             rel="noreferrer"
             target="_blank"
           >
-            Census's American Community Survey
+            Census' American Community Survey
           </a>
         </li>
         <li>
@@ -95,14 +95,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
     </div>
     <div>
       <h3>
-        Households below 100% of the federal poverty line
+        Poverty
       </h3>
       <div>
         What is it?
       </div>
       <div>
         Percent of a block group's population in households where the 
-    household income is at or below 100% the federal "poverty level."
+    household income is at or above 100% the federal "poverty level."
       </div>
       <ul>
         <li>
@@ -133,13 +133,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
     </div>
     <div>
       <h3>
-        Education. less than high school education
+        Education, less than high school education
       </h3>
       <div>
         What is it?
       </div>
       <div>
-        Percent of people age 25 or older in a block group whose 
+        Percent of people ages 25 years or older in a block group whose 
     education is short of a high school diploma.
       </div>
       <ul>
@@ -169,6 +169,34 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         </li>
       </ul>
     </div>
+  </div>
+  <div
+    class="grid-row"
+    data-testid="grid"
+  >
+    <div
+      class="grid-col-12"
+      data-testid="grid"
+    >
+      <h2>
+        Additional Indicators
+      </h2>
+    </div>
+  </div>
+  <div
+    class="grid-row"
+    data-testid="grid"
+  >
+    <div
+      class="grid-col-12 tablet:grid-col-7 j40-mb-3"
+      data-testid="grid"
+    >
+      <p>
+        These datasets provide additional information about each community.
+      </p>
+    </div>
+  </div>
+  <div>
     <div>
       <h3>
         Diabetes
@@ -428,7 +456,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             rel="noreferrer"
             target="_blank"
           >
-            Department of Energy (DOE) LEAD Score
+            LEAD Score
           </a>
         </li>
         <li>
@@ -480,7 +508,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
     </div>
     <div>
       <h3>
-        Wastewater discharge
+        Wastewater Discharge
       </h3>
       <div>
         What is it?
@@ -577,11 +605,12 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             Data source: 
           </span>
           <a
-            href="https://www.census.gov/"
+            href="https://www.epa.gov/national-air-toxics-assessment/2014-nata-assessment-results"
             rel="noreferrer"
             target="_blank"
           >
-            U.S. Census Bureau
+            Environmental Protection Agency (EPA) National Air Toxics Assessment (NATA)
+    
           </a>
         </li>
         <li>

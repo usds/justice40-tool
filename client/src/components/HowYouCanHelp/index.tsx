@@ -35,7 +35,7 @@ const HowYouCanHelp = () => {
     },
     youCanHelpDataMethSuffixText: {
       id: 'youCanHelpDataMethSuffixText.link.suffix.text',
-      defaultMessage: 'and send us feedback',
+      defaultMessage: 'page and send us feedback',
       description: 'send us feedbackv via email',
     },
     youCanHelpSharingPrefixText: {
