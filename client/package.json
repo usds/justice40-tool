@@ -85,6 +85,7 @@
     "react-helmet": "^6.1.0",
     "react-intl": "^5.20.4",
     "react-map-gl": "^6.1.16",
+    "react-use": "^17.3.1",
     "uswds": "^2.10.3"
   },
   "cypress-cucumber-preprocessor": {

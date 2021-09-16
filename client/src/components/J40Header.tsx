@@ -5,6 +5,7 @@ import {
   NavMenuButton,
   PrimaryNav,
   GovBanner,
+  Tag,
 } from '@trussworks/react-uswds';
 import {defineMessages} from 'react-intl';
 // @ts-ignore
@@ -120,6 +121,7 @@ const J40Header = () => {
               <span className={'usa-logo__text j40-title'}>
                 <span className={'j40-title-line1'}>{titleL1}</span><br/>
                 <span className={'j40-title-line2'}>{titleL2}</span>
+                <Tag className={'j40'}>Beta</Tag>
               </span>
             </div>
             <NavMenuButton

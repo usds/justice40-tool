@@ -43,7 +43,7 @@ const IndexPage = ({location}: IndexPageProps) => {
     },
     presidentalLinkLabel: {
       id: 'index.presidentalLinkLabel',
-      defaultMessage: 'Executive Order on Tackling the Climate Crisis at Home and Abroad.',
+      defaultMessage: 'Executive Order 14008 on Tackling the Climate Crisis at Home and Abroad',
       description: 'Link url to presidential actions executive order. Part of paragraph 3',
     },
     transparentLabel: {
@@ -87,20 +87,32 @@ const IndexPage = ({location}: IndexPageProps) => {
             imgSrc={aboutUSMapImg}
             header={intl.formatMessage(messages.aboutScreenToolHeading)}>
 
-            <FormattedMessage
-              id={'index.aboutContent.p1'}
-              description={'paragraph 1 of main content on index page'}
-              defaultMessage={`
-              On January 27, 2021, President Biden directed the Council on
-              Environmental Quality (CEQ) to create a climate and economic
-              justice screening tool. The purpose of the tool is to provide
-              socioeconomic, environmental, and climate information and data to
-              help inform decisions that may affect disadvantaged communities.
-              The tool is designed to assist Federal agencies in identifying
-              disadvantaged communities for the purposes of the Justice40
-              Initiative.                     
+            <p>
+              <FormattedMessage
+                id={'index.aboutContent.p1'}
+                description={'paragraph 1 of main content on index page'}
+                defaultMessage=
+                  {`On January 27, 2021, President Biden directed the Council on
+                    Environmental Quality (CEQ) to create a climate and economic
+                    justice screening tool. The purpose of the tool is to help
+                    Federal agencies identify disadvantaged communities and provide
+                    socioeconomic, environmental, and climate information and data
+                    to inform decisions that may affect these communities. The tool
+                    identifies disadvantaged communities as communities of focus
+                    through publicly available, nationally consistent, high-quality
+                    data.
                   `}/>
+            </p>
 
+            <p>
+              <FormattedMessage
+                id={'index.aboutContent.p1b'}
+                description={'paragraph 1b of main content on index page'}
+                defaultMessage={`
+                The current version of the tool is in a public beta form and
+                will be updated based on feedback from the public.
+                  `}/>
+            </p>
           </AboutCard>
         </AboutCardsContainer>
 
@@ -110,18 +122,22 @@ const IndexPage = ({location}: IndexPageProps) => {
             imgSrc={aboutJ40Img}
             header={intl.formatMessage(messages.aboutJustice40Heading)}>
 
-            <FormattedMessage
-              id="index.aboutContent.p2"
-              description={'paragraph 2 of main content on index page'}
-              defaultMessage={`
-                The goal of the Justice40 Initiative is for 40 percent of
-                benefits of Federal programs in seven key areas to flow to
-                disadvantaged communities. These seven key areas are: climate
-                change, clean energy and energy efficiency, clean transit,
-                affordable and sustainable housing, training and workforce
-                development, remediation of legacy pollution, and clean water
-                infrastructure.
-                  `}/>
+            <p>
+              <FormattedMessage
+                id="index.aboutContent.p2"
+                description={'paragraph 2 of main content on index page'}
+                defaultMessage={`
+                The tool will provide important information for the Justice40
+                Initiative. The goal of the Justice40 Initiative is to provide
+                40-percent of the overall benefits of certain federal
+                programs in seven key areas to disadvantaged communities.
+                These seven key areas are: climate change, clean energy and
+                energy efficiency, clean transit, affordable and sustainable
+                housing, training and workforce development, the remediation
+                and reduction of legacy pollution, and the development of
+                critical clean water infrastructure.
+                    `}/>
+            </p>
 
             <p>
               <FormattedMessage
@@ -157,9 +173,9 @@ const IndexPage = ({location}: IndexPageProps) => {
               header={'Federal program managers'}
               actionText={'Go to data & methodology'}
               actionUrl={'./methodology'}>
-              Download the screening tool’s draft list of prioritized
-              communities and information on how to use it for your program in
-              the future on the data and methodology page.
+              Download the screening tool’s draft list of communities of focus.
+              Explore data that may be useful to your program, and provide
+              feedback on the tool.
             </AboutCard>
 
             <AboutCard
@@ -168,8 +184,8 @@ const IndexPage = ({location}: IndexPageProps) => {
               header={'Community members'}
               actionText={'Explore the tool'}
               actionUrl={'./cejst'}>
-              Find your community or communities that you may be familiar with
-              and check their prioritization information on the map.
+              Explore data about communities of focus in your area, and help
+              provide feedback on the tool.
             </AboutCard>
           </AboutCardsContainer>
         </J40MainGridContainer>
@@ -184,8 +200,8 @@ const IndexPage = ({location}: IndexPageProps) => {
             header={'Send Feedback'}
             actionText={'Email: screeningtool.feedback@usds.gov'}
             actionUrl={'mailto:screeningtool.feedback@usds.gov'}>
-            Have ideas about how to acknowledge the on-the-ground experiences
-            of your community?
+            Have ideas about how this tool can be improved to better
+            reflect the on-the-ground experiences of your community?
           </AboutCard>
 
           <AboutCard
@@ -196,8 +212,8 @@ const IndexPage = ({location}: IndexPageProps) => {
             actionUrl={'https://github.com/usds/justice40-tool'}
             actionOpenInNewTab={true}>
             The screening tool’s code is open source, which means it is
-            available for the public to view and contribute to. Anyone can
-            view and contribute on GitHub.
+            available for the public to view and contribute to. Anyone
+            can view and contribute on GitHub.
           </AboutCard>
         </AboutCardsContainer>
       </J40MainGridContainer>

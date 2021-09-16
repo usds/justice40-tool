@@ -37,6 +37,7 @@ There are 3 things that should be included in this file:
 
 $primary-color: #112f4e;
 $j40-blue-background-color: #EFF6FB;
+$sidePanelBorderColor: #f2f2f2;
 
 // The j40-element mixin is used to create any font element. E.g. <h1>, <p> tags, etc.
 // Arguments to the mixins must be tokens from USWDS
@@ -76,7 +77,11 @@ p {
 }
 
 p.secondary {
-  @include j40-element('3xs', 4, 'normal', .5);
+  @include j40-element('3xs', 2, 'normal', .5);
+}
+
+p.flush {
+  @include j40-element('sm', 4, 'normal', 0);
 }
 
 // 40 pixel margin-bottom
@@ -176,6 +181,10 @@ components include:
   }
 }
 
+.usa-tag.j40 {
+  background: orange;
+    margin-left: 1rem;
+}
 
 /* 
 ******************************
@@ -237,6 +246,7 @@ This section will outline styles that are component specific
 - map
 - timeline
 - about
+- accordion
 
 /* 
 ******************************
@@ -380,6 +390,14 @@ This section will outline styles that are component specific
   }
 }
 
+//Area Detail Component
+p.secondary.j40-indicator {
+  max-width: 10rem;
+
+ @media screen and (max-width: 1024px) {
+   max-width: 80%;
+  }
+}
 
 /* 
 ***************************************
@@ -387,97 +405,8 @@ This section will outline styles that are component specific
 *************************************** 
 */ 
 
-/* the > is for child only syntax in css. This is required so that lists that are nested under the
-      list are not affected (e.g. <ul><li><p><ul><li>not styled</li></ul></p></li><ul>*/
-.j40-process-list-wrapper > {
-  $j40-steps-list-color: #002D3F;
-
-  ul {
-    margin-top: 3rem;
-    margin-bottom: 1rem;
-    padding-inline-start: 0;
-
-    > li {
-      list-style-type: none;
-      position: relative;
-      margin-left: 2.5rem;
-      /* do the lines */
-      border-left: .2rem solid $j40-steps-list-color;
-      padding-left: 1.88rem;
-      /* removes gap between line and circle */
-      margin-top: -1rem;
-      padding-bottom: 2rem;
-    }
-
-    > li:before {
-      content: " ";
-      border: 1rem solid $j40-steps-list-color;
-      border-radius: 100rem;
-      height: 0; /* it's all controlled by the border */
-      width: 0;
-      margin-top: -0.5rem;
-      margin-left: -3rem;
-      position: absolute;
-    }
-
-    > li:last-child {
-      /* no line on last item */
-      border-left: .2rem solid transparent;
-      margin-top: -1.9rem;
-    }
-  }
-}
-
-/* The math equation on the methodology page.. which is a royal pain */
-.j40-math-division-container {
-  > .j40-math-eq-left-side {
-    text-align: right;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem;
-
-    > .j40-math-eq-numerator {
-      border-bottom: solid 3px black;
-      text-align: center;
-      width: 90%;
-    }
-
-    > .j40-math-eq-denominator {
-      text-align: center;
-      width: 90%;
-    }
-  }
-
-  > .j40-math-eq-middle {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.25rem;
-  }
-
-  > .j40-math-eq-right-side {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.25rem;
-  }
-}
-
-ul.j40-process-nested-list {
-  margin-bottom: 2rem;
-  > li {
-    list-style-type: disc; /* without this, we get hollow circles */
-  }
-}
-
-/* these are currently used in the list, but it seems like they should be globally consistent with the rest of the site */
-.j40-item-list-title {
-  margin-block-end: auto;
-}
-
-.j40-item-list-subtitle {
-  margin-block-start: auto;
-  margin-block-end: auto;
-  font-style: italic;
+.usa-process-list__heading{
+  border-left-color: $j40-blue-background-color;
 }
 
 
@@ -529,3 +458,35 @@ ul.j40-process-nested-list {
   }
 }
 
+
+/* 
+******************************
+*      ACCORDION STYLES
+****************************** 
+*/
+
+.usa-accordion__heading button.usa-accordion__button {
+  @include j40-element('3xs', 1, 'normal', 0);
+  border-bottom: 1px solid $sidePanelBorderColor;
+} 
+.usa-accordion__heading:first-child button.usa-accordion__button {
+  @include j40-element('3xs', 1, 'normal', 0);
+  background-color: white;
+} 
+.usa-accordion__heading button.usa-accordion__button {
+  @include j40-element('3xs', 1, 'normal', 0);
+  background-color: #F3F3F3;
+}
+
+.usa-accordion__heading:not(:first-child){
+  @include u-margin-top(0);
+}
+
+#prioritization-indicators, #additional-indicators {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#additional-indicators {
+  background-color:#F3F3F3;
+}
