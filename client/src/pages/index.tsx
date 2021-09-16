@@ -63,12 +63,12 @@ const IndexPage = ({location}: IndexPageProps) => {
     },
     aboutScreenToolHeading: {
       id: 'index.heading.screentool',
-      defaultMessage: 'About the screening tool',
+      defaultMessage: 'The screening tool',
       description: 'heading for about screening tool',
     },
     aboutJustice40Heading: {
       id: 'index.heading.justice40',
-      defaultMessage: 'About the Justice40 Initiative',
+      defaultMessage: 'The Justice40 Initiative',
       description: 'heading for about justice 40',
     },
   });
@@ -197,7 +197,7 @@ const IndexPage = ({location}: IndexPageProps) => {
           <AboutCard
             size={'small'}
             imgSrc={commentIcon}
-            header={'Send Feedback'}
+            header={'Send feedback'}
             actionText={'Email: screeningtool.feedback@usds.gov'}
             actionUrl={'mailto:screeningtool.feedback@usds.gov'}>
             Have ideas about how this tool can be improved to better

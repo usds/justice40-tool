@@ -37,7 +37,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         </div>
       </div>
       <h2>
-        Datasets used methodology
+        Datasets used in methodology
       </h2>
     </div>
   </div>
@@ -82,7 +82,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             rel="noreferrer"
             target="_blank"
           >
-            Census' American Community Survey
+            Census's American Community Survey
           </a>
         </li>
         <li>
@@ -101,8 +101,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         What is it?
       </div>
       <div>
-        Percent of a block group's population in households where the 
-    household income is at or above 100% the federal "poverty level."
+        Percent of a block group's population in households where the household income is at or below 100% of the federal poverty level
       </div>
       <ul>
         <li>
@@ -140,7 +139,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       </div>
       <div>
         Percent of people ages 25 years or older in a block group whose 
-    education is short of a high school diploma.
+    education level is less than a high school diploma.
       </div>
       <ul>
         <li>
@@ -205,7 +204,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         What is it?
       </div>
       <div>
-        People ages 18 years and up who report having ever been 
+        People ages 18 years and older who report having ever been 
     told by a doctor, nurse, or other health professionals that they have 
     diabetes other than diabetes during pregnancy.
       </div>
@@ -284,7 +283,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         What is it?
       </div>
       <div>
-        People ages 18 years and up who report ever having been told 
+        People ages 18 years and older who report ever having been told 
     by a doctor, nurse, or other health professionals that they had angina or 
     coronary heart disease.
       </div>
@@ -376,7 +375,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             Data source: 
           </span>
           <a
-            href="#"
+            href="https://www.fhwa.dot.gov/policyinformation/hpms/shapefiles.cfm"
             rel="noreferrer"
             target="_blank"
           >
@@ -456,7 +455,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             rel="noreferrer"
             target="_blank"
           >
-            LEAD Score
+            Department of Energy (DOE) LEAD Score
           </a>
         </li>
         <li>
@@ -508,7 +507,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
     </div>
     <div>
       <h3>
-        Wastewater Discharge
+        Wastewater discharge
       </h3>
       <div>
         What is it?

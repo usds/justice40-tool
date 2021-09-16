@@ -23,12 +23,12 @@ const MapWrapper = ({location}: IMapWrapperProps) => {
     },
     downloadLinkText1: {
       id: 'mapwrapper.download1.link',
-      defaultMessage: 'of communities of focus and datasets used.',
+      defaultMessage: `of communities of focus and datasets used. Last updated: ${constants.DOWNLOAD_LAST_UPDATED}`,
       description: 'download link for datasets',
     },
     downloadContents: {
       id: 'mapwrapper.download.contents',
-      defaultMessage: 'ZIP file will contain one .xlsx, one .csv, and one .pdf (30 MB).',
+      defaultMessage: `ZIP file will contain one .xlsx, one .csv, and one .pdf (${constants.DOWNLOAD_FILE_SIZE}).`,
       description: 'download link contents',
     },
   });
@@ -45,7 +45,7 @@ const MapWrapper = ({location}: IMapWrapperProps) => {
       </Grid>
 
       <Grid row>
-        <Grid col={6}>
+        <Grid col={7}>
           <div className={styles.mapCaptionTextLink}>
             <a href={constants.DOWNLOAD_ZIP_URL}>
               {intl.formatMessage(messages.downloadLinkText)}

@@ -14,14 +14,14 @@ export const indicators = [
     description: `Median income of the census block group calculated as a percent 
     of the metropolitan area’s or state's median income.`,
     dataResolution: `Census block group`,
-    dataSourceLabel: `Census' American Community Survey`,
+    dataSourceLabel: `Census's American Community Survey`,
     dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
     dataDateRange: `2015-2019`,
   },
   {
     indicator: 'Poverty',
-    description: `Percent of a block group's population in households where the 
-    household income is at or above 100% the federal "poverty level."`,
+    description: `Percent of a block group's population in households where the household income` +
+    ` is at or below 100% of the federal poverty level`,
     dataResolution: `Census block group`,
     dataSourceLabel: `Census's American Community Survey`,
     dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
@@ -30,7 +30,7 @@ export const indicators = [
   {
     indicator: 'Education, less than high school education',
     description: `Percent of people ages 25 years or older in a block group whose 
-    education is short of a high school diploma.`,
+    education level is less than a high school diploma.`,
     dataResolution: `Census block group`,
     dataSourceLabel: `Census's American Community Survey`,
     dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
@@ -41,7 +41,7 @@ export const indicators = [
 export const additionalIndicators = [
   {
     indicator: 'Diabetes',
-    description: `People ages 18 years and up who report having ever been 
+    description: `People ages 18 years and older who report having ever been 
     told by a doctor, nurse, or other health professionals that they have 
     diabetes other than diabetes during pregnancy.`,
     dataResolution: `Census tract`,
@@ -62,7 +62,7 @@ export const additionalIndicators = [
   },
   {
     indicator: 'Heart disease',
-    description: `People ages 18 years and up who report ever having been told 
+    description: `People ages 18 years and older who report ever having been told 
     by a doctor, nurse, or other health professionals that they had angina or 
     coronary heart disease.`,
     dataResolution: `Census tract`,
@@ -85,7 +85,7 @@ export const additionalIndicators = [
     within 500 meters, divided by distance in meters (not km).`,
     dataResolution: `Census block group`,
     dataSourceLabel: `Department of Transportation (DOT) traffic data`,
-    dataSourceURL: `#`,
+    dataSourceURL: `https://www.fhwa.dot.gov/policyinformation/hpms/shapefiles.cfm`,
     dataDateRange: `2017`,
   },
   {
@@ -102,7 +102,7 @@ export const additionalIndicators = [
     indicator: 'Energy burden',
     description: `Average annual energy cost ($) divided by household income.`,
     dataResolution: `Census tract`,
-    dataSourceLabel: `LEAD Score`,
+    dataSourceLabel: `Department of Energy (DOE) LEAD Score`,
     dataSourceURL: `https://www.energy.gov/eere/slsc/low-income-energy-affordability-data-lead-tool`,
     dataDateRange: `2018`,
   },
@@ -117,7 +117,7 @@ export const additionalIndicators = [
     dataDateRange: `2013-2017`,
   },
   {
-    indicator: 'Wastewater Discharge',
+    indicator: 'Wastewater discharge',
     description: `RSEI modeled Toxic Concentrations at stream segments within 500 
     meters, divided by distance in kilometers (km).`,
     dataResolution: `Census block group`,
@@ -162,7 +162,7 @@ const DatasetContainer = () => {
   const messages = defineMessages({
     cumulativeScore: {
       id: 'datasetContainer.header.cumulativeScore',
-      defaultMessage: 'Datasets used methodology',
+      defaultMessage: 'Datasets used in methodology',
       description: 'section label of which datasets are used in cumulative score',
     },
     subTitle: {

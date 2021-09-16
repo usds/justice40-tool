@@ -13,13 +13,13 @@ const DownloadPacket = () => {
   const messages = defineMessages({
     downloadPacketHeader: {
       id: 'downloadPacket.header.text',
-      defaultMessage: 'Draft communities list (143MB)',
+      defaultMessage: `Draft communities list (${constants.DOWNLOAD_FILE_SIZE})`,
       description: 'download packet header text',
     },
     downloadPacketInfo: {
       id: 'downloadPacket.info.text',
-      defaultMessage: 'The package includes the draft list of prioritized communities (.csv and .xlsx).'+
-      ' This information should not be used to make program resource allocation decisions.',
+      defaultMessage: 'The package includes the draft list of prioritized communities (.csv and .xlsx) '+
+      ` and information about how to use the list (.pdf). Last updated: ${constants.DOWNLOAD_LAST_UPDATED} `,
       description: 'download packet info text',
     },
     downloadPacketButtonText: {

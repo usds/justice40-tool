@@ -35,7 +35,7 @@ const HowYouCanHelp = () => {
     },
     youCanHelpDataMethSuffixText: {
       id: 'youCanHelpDataMethSuffixText.link.suffix.text',
-      defaultMessage: 'page and send us feedback',
+      defaultMessage: 'page and send us feedback.',
       description: 'send us feedbackv via email',
     },
     youCanHelpSharingPrefixText: {
@@ -62,8 +62,7 @@ const HowYouCanHelp = () => {
             {` `}
             <a href={'mailto:screeningtool.feedback@usds.gov'}>
               {intl.formatMessage(messages.youCanHelpInfoLinkText)}
-            </a>
-            {` `}.
+            </a>.
           </div>
         </li>
         <li className={styles.howYouCanHelpList}>
@@ -83,8 +82,7 @@ const HowYouCanHelp = () => {
             {` `}
             <a href={'mailto:screeningtool.feedback@usds.gov'}>
               {intl.formatMessage(messages.youCanHelpSharingLinkText)}
-            </a>
-            {` `}.
+            </a>.
           </div>
         </li>
       </ul>

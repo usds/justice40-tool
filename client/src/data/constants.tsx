@@ -63,6 +63,8 @@ export const PM25_PERCENTILE = 'Particulate matter (PM2.5) (percentile)';
 
 // The name of the layer within the tiles that contains the score
 export const SCORE_SOURCE_LAYER = 'blocks';
+export const DOWNLOAD_FILE_SIZE = '143MB';
+export const DOWNLOAD_LAST_UPDATED = '09/20/21';
 
 export type J40Properties = { [key: string]: any };
 
@@ -149,7 +151,7 @@ export const EXPLORE_TOOL_PAGE_TEXT = defineMessages({
   },
   PRIORITY_DESCRIPT: {
     id: 'legend.info.threshold.label',
-    defaultMessage: 'These communities are identified as experiencing disadvantages that merit' +
+    defaultMessage: 'A community identified as experiencing disadvantages that merits' +
     ' the focus of certain Federal investments, including through the Justice40 Initiative',
     description: 'the label of the threshold community legend',
   },
