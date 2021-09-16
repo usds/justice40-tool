@@ -5,7 +5,7 @@ import {useIntl} from 'gatsby-plugin-intl';
 import {defineMessages} from 'react-intl';
 
 // Components:
-import {Accordion} from '@trussworks/react-uswds';
+// import {Accordion} from '@trussworks/react-uswds';
 
 // Styles and constants
 import * as styles from './areaDetail.module.scss';
@@ -40,10 +40,10 @@ export const getCategorization = (percentile: number) => {
     categorization = 'Community of focus';
     categoryCircleStyle = styles.prioritized;
   } else if (constants.SCORE_BOUNDARY_THRESHOLD <= percentile && percentile < constants.SCORE_BOUNDARY_PRIORITIZED) {
-    categorization = 'Threshold';
+    categorization = 'Not a community of focus';
     categoryCircleStyle = styles.threshold;
   } else {
-    categorization = 'Non-prioritized';
+    categorization = 'Not a community of focus';
     categoryCircleStyle = styles.nonPrioritized;
   }
   return [categorization, categoryCircleStyle];
@@ -338,14 +338,61 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
         <h6>{intl.formatMessage(messages.indicatorColumnHeader)}</h6>
         <h6>{intl.formatMessage(messages.percentileColumnHeader)}</h6>
       </div>
-      <Accordion
+
+      <>
+        {
+          indicators.map((indicator:any, index:number) => {
+            return <li key={`ind${index}`} className={styles.indicatorBoxMain} data-cy={'indicatorBox'}>
+              <div className={styles.indicatorRow}>
+                <h4 className={styles.indicatorName}>{indicator.label}</h4>
+                <div className={styles.indicatorValue}>
+                  {readablePercentile(indicator.value)}
+                  <sup className={styles.indicatorSuperscript}><span>
+                    {getSuperscriptOrdinal(readablePercentile(indicator.value))}
+                  </span></sup>
+                </div>
+              </div>
+              <p className={'secondary j40-indicator'}>
+                {indicator.description}
+              </p>
+            </li>;
+          })
+        }
+      </>
+
+      <>
+        {
+          additionalIndicators.map((indicator:any, index:number) => {
+            return <li
+              key={`ind${index}`}
+              className={styles.indicatorBoxAdditional}
+              data-cy={'indicatorBox'}>
+              <div className={styles.indicatorRow}>
+                <h4 className={styles.indicatorName}>{indicator.label}</h4>
+                <div className={styles.indicatorValue}>
+                  {readablePercentile(indicator.value)}
+                  <sup className={styles.indicatorSuperscript}><span>
+                    {getSuperscriptOrdinal(readablePercentile(indicator.value))}
+                  </span></sup>
+                </div>
+              </div>
+              <p className={'secondary j40-indicator'}>
+                {indicator.description}
+              </p>
+            </li>;
+          })
+        }
+      </>
+
+      {/* Temporarily remove Accordions and may place back in later, removed unused
+      className prop as as styles are based on the id of the Accordion Item */}
+      {/* <Accordion
         multiselectable={true}
         items={
           [
             {
               id: 'prioritization-indicators',
               title: 'Indicators',
-              className: 'j40-accordion',
               content: (
                 <>
                   {
@@ -373,7 +420,6 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
             {
               id: 'additional-indicators',
               title: 'Additional indicators (not used in prioritization)',
-              className: 'j40-accordian-bg-colored',
               content: (
                 (
                   <>
@@ -404,7 +450,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
               expanded: true,
             },
           ]
-        }/>
+        }/> */}
 
     </aside>
   );

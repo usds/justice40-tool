@@ -51,380 +51,336 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         Percentile (0-100)
       </h6>
     </div>
-    <div
-      aria-multiselectable="true"
-      class="usa-accordion"
-      data-testid="accordion"
+    <li
+      data-cy="indicatorBox"
     >
-      <h2
-        class="usa-accordion__heading j40-accordion"
-      >
-        <button
-          aria-controls="prioritization-indicators"
-          aria-expanded="true"
-          class="usa-accordion__button"
-          data-testid="accordionButton_prioritization-indicators"
-          type="button"
-        >
-          Indicators
-        </button>
-      </h2>
-      <div
-        class="usa-accordion__content usa-prose j40-accordion"
-        data-testid="accordionItem_prioritization-indicators"
-        id="prioritization-indicators"
-      >
-        <li
-          data-cy="indicatorBox"
-        >
-          <div>
-            <h4>
-              Area Median Income
-            </h4>
-            <div>
-              9900
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
-            </div>
-          </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Median income of the census block group calculated as a percent of the metropolitan area’s or state's median income
-          </p>
-        </li>
-        <li
-          data-cy="indicatorBox"
-        >
-          <div>
-            <h4>
-              Education, less than high school
-            </h4>
-            <div>
-              9800
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
-            </div>
-          </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Percent of people age 25 or older that didn’t get a high school diploma
-          </p>
-        </li>
-        <li
-          data-cy="indicatorBox"
-        >
-          <div>
-            <h4>
-              Poverty
-            </h4>
-            <div>
-              9900
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
-            </div>
-          </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Household income is less than or equal to the federal "poverty level"
-          </p>
-        </li>
+      <div>
+        <h4>
+          Area Median Income
+        </h4>
+        <div>
+          9900
+          <sup>
+            <span>
+              th
+            </span>
+          </sup>
+        </div>
       </div>
-      <h2
-        class="usa-accordion__heading j40-accordian-bg-colored"
+      <p
+        class="secondary j40-indicator"
       >
-        <button
-          aria-controls="additional-indicators"
-          aria-expanded="true"
-          class="usa-accordion__button"
-          data-testid="accordionButton_additional-indicators"
-          type="button"
-        >
-          Additional indicators (not used in prioritization)
-        </button>
-      </h2>
-      <div
-        class="usa-accordion__content usa-prose j40-accordian-bg-colored"
-        data-testid="accordionItem_additional-indicators"
-        id="additional-indicators"
-      >
-        <li
-          data-cy="indicatorBox"
-        >
-          <div>
-            <h4>
-              Asthma
-            </h4>
-            <div>
-              NaN
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
-            </div>
-          </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            People who answer “yes” to both of the questions: “Have you ever been told by a doctor nurse, or other health professional that you have asthma?” and “Do you still have asthma?"
-          </p>
-        </li>
-        <li
-          data-cy="indicatorBox"
-        >
-          <div>
-            <h4>
-              Diabetes
-            </h4>
-            <div>
-              NaN
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
-            </div>
-          </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            People ages 18 and up who report having been told by a doctor, nurse, or other health professionals that they have diabetes other than diabetes during pregnancy
-          </p>
-        </li>
-        <li
-          data-cy="indicatorBox"
-        >
-          <div>
-            <h4>
-              Diesel particulate matter
-            </h4>
-            <div>
-              NaN
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
-            </div>
-          </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Mixture of particles that is part of diesel exhaust in the air
-          </p>
-        </li>
-        <li
-          data-cy="indicatorBox"
-        >
-          <div>
-            <h4>
-              Energy burden
-            </h4>
-            <div>
-              NaN
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
-            </div>
-          </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Average annual energy cost ($) divided by household income
-          </p>
-        </li>
-        <li
-          data-cy="indicatorBox"
-        >
-          <div>
-            <h4>
-              FEMA Risk index
-            </h4>
-            <div>
-              NaN
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
-            </div>
-          </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Expected Annual Loss Score, which is the average economic loss in dollars resulting from natural hazards each year.
-          </p>
-        </li>
-        <li
-          data-cy="indicatorBox"
-        >
-          <div>
-            <h4>
-              Heart Disease
-            </h4>
-            <div>
-              NaN
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
-            </div>
-          </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            People ages 18 and up who report ever having been told by a doctor, nurse, or other health professionals that they had angina or coronary heart disease
-          </p>
-        </li>
-        <li
-          data-cy="indicatorBox"
-        >
-          <div>
-            <h4>
-              Housing cost burden
-            </h4>
-            <div>
-              9500
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
-            </div>
-          </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            People ages 18 and up who report having been told by a doctor, nurse, or other health professionals that they have diabetes other than diabetes during pregnancy
-          </p>
-        </li>
-        <li
-          data-cy="indicatorBox"
-        >
-          <div>
-            <h4>
-              Lead paint
-            </h4>
-            <div>
-              NaN
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
-            </div>
-          </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Housing units built pre-1960, used as an indicator of potential lead paint exposure in homes
-          </p>
-        </li>
-        <li
-          data-cy="indicatorBox"
-        >
-          <div>
-            <h4>
-              Life expectancy
-            </h4>
-            <div>
-              NaN
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
-            </div>
-          </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Estimated years of life expectancy
-          </p>
-        </li>
-        <li
-          data-cy="indicatorBox"
-        >
-          <div>
-            <h4>
-              PM2.5
-            </h4>
-            <div>
-              NaN
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
-            </div>
-          </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller
-          </p>
-        </li>
-        <li
-          data-cy="indicatorBox"
-        >
-          <div>
-            <h4>
-              Traffic proximity and volume
-            </h4>
-            <div>
-              NaN
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
-            </div>
-          </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Count of vehicles (average annual daily traffic) at major roads within 500 meters, divided by distance in meters
-          </p>
-        </li>
-        <li
-          data-cy="indicatorBox"
-        >
-          <div>
-            <h4>
-              Wastewater discharge
-            </h4>
-            <div>
-              NaN
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
-            </div>
-          </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Toxic concentrations at stream segments within 500 meters divided by distance in kilometers
-          </p>
-        </li>
+        Median income of the census block group calculated as a percent of the metropolitan area’s or state's median income
+      </p>
+    </li>
+    <li
+      data-cy="indicatorBox"
+    >
+      <div>
+        <h4>
+          Education, less than high school
+        </h4>
+        <div>
+          9800
+          <sup>
+            <span>
+              th
+            </span>
+          </sup>
+        </div>
       </div>
-    </div>
+      <p
+        class="secondary j40-indicator"
+      >
+        Percent of people age 25 or older that didn’t get a high school diploma
+      </p>
+    </li>
+    <li
+      data-cy="indicatorBox"
+    >
+      <div>
+        <h4>
+          Poverty
+        </h4>
+        <div>
+          9900
+          <sup>
+            <span>
+              th
+            </span>
+          </sup>
+        </div>
+      </div>
+      <p
+        class="secondary j40-indicator"
+      >
+        Household income is less than or equal to the federal "poverty level"
+      </p>
+    </li>
+    <li
+      data-cy="indicatorBox"
+    >
+      <div>
+        <h4>
+          Asthma
+        </h4>
+        <div>
+          NaN
+          <sup>
+            <span>
+              th
+            </span>
+          </sup>
+        </div>
+      </div>
+      <p
+        class="secondary j40-indicator"
+      >
+        People who answer “yes” to both of the questions: “Have you ever been told by a doctor nurse, or other health professional that you have asthma?” and “Do you still have asthma?"
+      </p>
+    </li>
+    <li
+      data-cy="indicatorBox"
+    >
+      <div>
+        <h4>
+          Diabetes
+        </h4>
+        <div>
+          NaN
+          <sup>
+            <span>
+              th
+            </span>
+          </sup>
+        </div>
+      </div>
+      <p
+        class="secondary j40-indicator"
+      >
+        People ages 18 and up who report having been told by a doctor, nurse, or other health professionals that they have diabetes other than diabetes during pregnancy
+      </p>
+    </li>
+    <li
+      data-cy="indicatorBox"
+    >
+      <div>
+        <h4>
+          Diesel particulate matter
+        </h4>
+        <div>
+          NaN
+          <sup>
+            <span>
+              th
+            </span>
+          </sup>
+        </div>
+      </div>
+      <p
+        class="secondary j40-indicator"
+      >
+        Mixture of particles that is part of diesel exhaust in the air
+      </p>
+    </li>
+    <li
+      data-cy="indicatorBox"
+    >
+      <div>
+        <h4>
+          Energy burden
+        </h4>
+        <div>
+          NaN
+          <sup>
+            <span>
+              th
+            </span>
+          </sup>
+        </div>
+      </div>
+      <p
+        class="secondary j40-indicator"
+      >
+        Average annual energy cost ($) divided by household income
+      </p>
+    </li>
+    <li
+      data-cy="indicatorBox"
+    >
+      <div>
+        <h4>
+          FEMA Risk index
+        </h4>
+        <div>
+          NaN
+          <sup>
+            <span>
+              th
+            </span>
+          </sup>
+        </div>
+      </div>
+      <p
+        class="secondary j40-indicator"
+      >
+        Expected Annual Loss Score, which is the average economic loss in dollars resulting from natural hazards each year.
+      </p>
+    </li>
+    <li
+      data-cy="indicatorBox"
+    >
+      <div>
+        <h4>
+          Heart Disease
+        </h4>
+        <div>
+          NaN
+          <sup>
+            <span>
+              th
+            </span>
+          </sup>
+        </div>
+      </div>
+      <p
+        class="secondary j40-indicator"
+      >
+        People ages 18 and up who report ever having been told by a doctor, nurse, or other health professionals that they had angina or coronary heart disease
+      </p>
+    </li>
+    <li
+      data-cy="indicatorBox"
+    >
+      <div>
+        <h4>
+          Housing cost burden
+        </h4>
+        <div>
+          9500
+          <sup>
+            <span>
+              th
+            </span>
+          </sup>
+        </div>
+      </div>
+      <p
+        class="secondary j40-indicator"
+      >
+        People ages 18 and up who report having been told by a doctor, nurse, or other health professionals that they have diabetes other than diabetes during pregnancy
+      </p>
+    </li>
+    <li
+      data-cy="indicatorBox"
+    >
+      <div>
+        <h4>
+          Lead paint
+        </h4>
+        <div>
+          NaN
+          <sup>
+            <span>
+              th
+            </span>
+          </sup>
+        </div>
+      </div>
+      <p
+        class="secondary j40-indicator"
+      >
+        Housing units built pre-1960, used as an indicator of potential lead paint exposure in homes
+      </p>
+    </li>
+    <li
+      data-cy="indicatorBox"
+    >
+      <div>
+        <h4>
+          Life expectancy
+        </h4>
+        <div>
+          NaN
+          <sup>
+            <span>
+              th
+            </span>
+          </sup>
+        </div>
+      </div>
+      <p
+        class="secondary j40-indicator"
+      >
+        Estimated years of life expectancy
+      </p>
+    </li>
+    <li
+      data-cy="indicatorBox"
+    >
+      <div>
+        <h4>
+          PM2.5
+        </h4>
+        <div>
+          NaN
+          <sup>
+            <span>
+              th
+            </span>
+          </sup>
+        </div>
+      </div>
+      <p
+        class="secondary j40-indicator"
+      >
+        Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller
+      </p>
+    </li>
+    <li
+      data-cy="indicatorBox"
+    >
+      <div>
+        <h4>
+          Traffic proximity and volume
+        </h4>
+        <div>
+          NaN
+          <sup>
+            <span>
+              th
+            </span>
+          </sup>
+        </div>
+      </div>
+      <p
+        class="secondary j40-indicator"
+      >
+        Count of vehicles (average annual daily traffic) at major roads within 500 meters, divided by distance in meters
+      </p>
+    </li>
+    <li
+      data-cy="indicatorBox"
+    >
+      <div>
+        <h4>
+          Wastewater discharge
+        </h4>
+        <div>
+          NaN
+          <sup>
+            <span>
+              th
+            </span>
+          </sup>
+        </div>
+      </div>
+      <p
+        class="secondary j40-indicator"
+      >
+        Toxic concentrations at stream segments within 500 meters divided by distance in kilometers
+      </p>
+    </li>
   </aside>
 </DocumentFragment>
 `;
