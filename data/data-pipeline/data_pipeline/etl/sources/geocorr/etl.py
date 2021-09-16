@@ -1,5 +1,6 @@
 import pandas as pd
 
+from data_pipeline.config import settings
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger, download_file_from_url, unzip_file_from_url
 
