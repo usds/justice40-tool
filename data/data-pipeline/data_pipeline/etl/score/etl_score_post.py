@@ -230,14 +230,16 @@ class PostScoreETL(ExtractTransformLoad):
     ) -> None:
         logger.info("Saving Full Score CSV with County Information")
         score_csv_path.parent.mkdir(parents=True, exist_ok=True)
-        score_county_state_merged.to_csv(score_csv_path, index=False)
+        score_county_state_merged.to_csv(
+            score_csv_path, index=False, encoding="utf-8"
+        )
 
     def _load_tile_csv(
         self, score_tiles_df: pd.DataFrame, tile_score_path: Path
     ) -> None:
         logger.info("Saving Tile Score CSV")
         tile_score_path.parent.mkdir(parents=True, exist_ok=True)
-        score_tiles_df.to_csv(tile_score_path, index=False)
+        score_tiles_df.to_csv(tile_score_path, index=False, encoding="utf-8")
 
     def _load_downloadable_zip(
         self, downloadable_df: pd.DataFrame, downloadable_info_path: Path
