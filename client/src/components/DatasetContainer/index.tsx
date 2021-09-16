@@ -58,7 +58,7 @@ export const cards = [
     dataDateRange: `2016-2019`,
   },
   {
-    indicator: 'Heart disase',
+    indicator: 'Heart disease',
     description: `People ages 18 years and up who report ever having been told 
     by a doctor, nurse, or other health professionals that they had angina or 
     coronary heart disease.`,
