@@ -5,9 +5,10 @@ import * as styles from './datasetCard.module.scss';
 
 interface IDatasetCardProps {
   datasetCardProps: { [key:string]: string }
+  additionalIndicator: boolean
 }
 
-const DatasetCard = ({datasetCardProps}:IDatasetCardProps) => {
+const DatasetCard = ({datasetCardProps, additionalIndicator}:IDatasetCardProps) => {
   const intl = useIntl();
   const messages = defineMessages({
     whatIsIt: {
@@ -33,7 +34,7 @@ const DatasetCard = ({datasetCardProps}:IDatasetCardProps) => {
   });
 
   return (
-    <div className={styles.datasetCard}>
+    <div className={additionalIndicator ? styles.datasetCardAdditional : styles.datasetCard}>
       <h3 className={styles.datasetCardIndicator}>{datasetCardProps.indicator}</h3>
       <div className={styles.datasetCardWhatIsIt}>{intl.formatMessage(messages.whatIsIt)}</div>
       <div className={styles.datasetCardDescription}>

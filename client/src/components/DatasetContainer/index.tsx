@@ -3,8 +3,9 @@ import {useIntl} from 'gatsby-plugin-intl';
 import {defineMessages} from 'react-intl';
 import {Grid} from '@trussworks/react-uswds';
 
-import DatasetCard from '../DatasetCard';
 import AlertWrapper from '../AlertWrapper';
+import DatasetCard from '../DatasetCard';
+import J40MainGridContainer from '../J40MainGridContainer';
 
 import * as styles from './dsContainer.module.scss';
 
@@ -188,42 +189,58 @@ const DatasetContainer = () => {
   //  JSX return value:
   return (
     <>
-      <Grid row>
-        <Grid col={12}>
-          <AlertWrapper showBetaAlert={false} showLimitedDataAlert={true}/>
-          <h2>{intl.formatMessage(messages.cumulativeScore)}</h2>
-        </Grid>
-      </Grid>
+      <J40MainGridContainer fullWidth={true} blueBackground={true}>
+        <J40MainGridContainer>
 
-      <Grid row>
-        <Grid col={12} tablet={{col: 7}} className={'j40-mb-3'}>
-          <p>{intl.formatMessage(messages.subTitle)}</p>
-        </Grid>
-      </Grid>
+          <Grid row>
+            <Grid col={12}>
+              <AlertWrapper showBetaAlert={false} showLimitedDataAlert={true}/>
+              <h2>{intl.formatMessage(messages.cumulativeScore)}</h2>
+            </Grid>
+          </Grid>
 
-      <div className={styles.datasetCardsContainer}>
-        {indicators.map((card) => <DatasetCard
-          key={card.indicator}
-          datasetCardProps={card}/>)}
-      </div>
+          <Grid row>
+            <Grid col={12} tablet={{col: 7}} className={'j40-mb-3'}>
+              <p>{intl.formatMessage(messages.subTitle)}</p>
+            </Grid>
+          </Grid>
 
-      <Grid row>
-        <Grid col={12}>
-          <h2>{intl.formatMessage(messages.additionalSubtitle)}</h2>
-        </Grid>
-      </Grid>
+          <div className={styles.datasetCardsContainer}>
+            {indicators.map((card) => <DatasetCard
+              key={card.indicator}
+              datasetCardProps={card}
+              additionalIndicator={false}
+            />)}
+          </div>
 
-      <Grid row>
-        <Grid col={12} tablet={{col: 7}} className={'j40-mb-3'}>
-          <p>{intl.formatMessage(messages.additionalText)}</p>
-        </Grid>
-      </Grid>
+        </J40MainGridContainer>
+      </J40MainGridContainer>
 
-      <div className={styles.datasetCardsContainer}>
-        {additionalIndicators.map((card) => <DatasetCard
-          key={card.indicator}
-          datasetCardProps={card}/>)}
-      </div>
+      <J40MainGridContainer fullWidth={true} blueBackground={false}>
+        <J40MainGridContainer>
+
+          <Grid row>
+            <Grid col={12}>
+              <h2>{intl.formatMessage(messages.additionalSubtitle)}</h2>
+            </Grid>
+          </Grid>
+
+          <Grid row>
+            <Grid col={12} tablet={{col: 7}} className={'j40-mb-3'}>
+              <p>{intl.formatMessage(messages.additionalText)}</p>
+            </Grid>
+          </Grid>
+
+          <div className={styles.datasetCardsContainer}>
+            {additionalIndicators.map((card) => <DatasetCard
+              key={card.indicator}
+              datasetCardProps={card}
+              additionalIndicator={true}
+            />)}
+          </div>
+
+        </J40MainGridContainer>
+      </J40MainGridContainer>
     </>
   );
 };

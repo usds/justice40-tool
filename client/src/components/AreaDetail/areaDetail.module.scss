@@ -105,7 +105,7 @@ $sidePanelLabelFontColor: #171716;
 .indicatorBoxAdditional {
   @include indicatorBox;
   border-bottom: 1px solid #1b1b1b;
-  background-color: #FAFAFA;
+  background-color: $additionalCardsBGColor;
 }
 
 .indicatorRow {
