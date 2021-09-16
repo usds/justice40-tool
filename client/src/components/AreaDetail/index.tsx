@@ -130,12 +130,12 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     diabetes: {
       id: 'areaDetail.indicator.diabetes',
       defaultMessage: 'Diabetes',
-      description: 'Households that are low income and spend more than 30% of their income to housing costs',
+      description: 'diabetes from dr or nurse',
     },
     dieselPartMatter: {
       id: 'areaDetail.indicator.dieselPartMatter',
       defaultMessage: 'Diesel particulate matter',
-      description: 'Mixture of particles that is part of diesel exhaust in the air',
+      description: 'Diesel particulate matter level in air',
     },
     energyBurden: {
       id: 'areaDetail.indicator.energyBurden',
@@ -216,7 +216,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
   };
   const poverty:indicatorInfo = {
     label: intl.formatMessage(messages.poverty),
-    description: 'Household income is less than or equal to twice the federal "poverty level"',
+    description: 'Household income is less than or equal to the federal "poverty level"',
     value: properties[constants.POVERTY_PROPERTY_PERCENTILE],
   };
   // const linIsoInfo:indicatorInfo = {
@@ -238,7 +238,8 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
   };
   const diabetes:indicatorInfo = {
     label: intl.formatMessage(messages.diabetes),
-    description: 'Households that are low income and spend more than 30% of their income to housing costs',
+    description: 'People ages 18 and up who report having been told by a doctor, nurse, or other' +
+    ' health professionals that they have diabetes other than diabetes during pregnancy',
     value: properties[constants.DIABETES_PERCENTILE],
   };
   const dieselPartMatter:indicatorInfo = {
@@ -281,14 +282,14 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
   };
   const femaRisk:indicatorInfo = {
     label: intl.formatMessage(messages.femaRisk),
-    description: 'Risk based on 18 natural hazard types, in addition to a'+
-    "community's social vulnerability and community resilience",
+    description: 'Expected Annual Loss Score, which is the average economic loss in dollars' +
+    ' resulting from natural hazards each year.',
     value: properties[constants.FEMA_PERCENTILE],
   };
   const heartDisease:indicatorInfo = {
     label: intl.formatMessage(messages.heartDisease),
     description: 'People ages 18 and up who report ever having been told by a' +
-    'doctor, nurse, or other health professionals that they had angina or coronary heart disease',
+    ' doctor, nurse, or other health professionals that they had angina or coronary heart disease',
     value: properties[constants.HEART_PERCENTILE],
   };
   const houseBurden:indicatorInfo = {

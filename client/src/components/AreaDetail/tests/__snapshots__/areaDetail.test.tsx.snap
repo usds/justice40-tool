@@ -137,7 +137,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           <p
             class="secondary j40-indicator"
           >
-            Household income is less than or equal to twice the federal "poverty level"
+            Household income is less than or equal to the federal "poverty level"
           </p>
         </li>
       </div>
@@ -200,7 +200,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           <p
             class="secondary j40-indicator"
           >
-            Households that are low income and spend more than 30% of their income to housing costs
+            People ages 18 and up who report having been told by a doctor, nurse, or other health professionals that they have diabetes other than diabetes during pregnancy
           </p>
         </li>
         <li
@@ -266,7 +266,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           <p
             class="secondary j40-indicator"
           >
-            Risk based on 18 natural hazard types, in addition to acommunity's social vulnerability and community resilience
+            Expected Annual Loss Score, which is the average economic loss in dollars resulting from natural hazards each year.
           </p>
         </li>
         <li
@@ -288,7 +288,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           <p
             class="secondary j40-indicator"
           >
-            People ages 18 and up who report ever having been told by adoctor, nurse, or other health professionals that they had angina or coronary heart disease
+            People ages 18 and up who report ever having been told by a doctor, nurse, or other health professionals that they had angina or coronary heart disease
           </p>
         </li>
         <li
