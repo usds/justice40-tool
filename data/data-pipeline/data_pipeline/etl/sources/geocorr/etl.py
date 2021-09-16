@@ -23,7 +23,7 @@ class GeoCorrETL(ExtractTransformLoad):
         logger.info("Starting to download 2MB GeoCorr Urban Rural Census Tract Map file.")
         unzip_file_from_url(
             file_url = settings.AWS_JUSTICE40_DATASOURCES_URL
-                + "/geocorr2014_all_states.csv.zip",
+                + "/geocorr_urban_rural.csv.zip",
             download_path=self.TMP_PATH,
             unzipped_file_path=self.TMP_PATH / "geocorr",
         )
