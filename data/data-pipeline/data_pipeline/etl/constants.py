@@ -59,6 +59,11 @@ DATASET_LIST = [
         "module_dir": "doe_energy_burden",
         "class_name": "DOEEnergyBurden",
     },
+    {
+        "name": "geocorr",
+        "module_dir": "geocorr",
+        "class_name": "GeoCorrETL",
+    },
 ]
 CENSUS_INFO = {
     "name": "census",
