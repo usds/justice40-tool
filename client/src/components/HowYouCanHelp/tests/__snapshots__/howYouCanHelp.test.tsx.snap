@@ -9,11 +9,11 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
     <ul>
       <li>
         <div>
-          If you have helpful information, we’d love to 
+          If you have helpful information, we would love to 
           <a
             href="mailto:screeningtool.feedback@usds.gov"
           >
-            get an email from you
+            recieve an email from you
           </a>
            .
         </div>
@@ -24,7 +24,7 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
           <a
             href="/en/methodology"
           >
-            Data & methodology
+            Data and methodology
           </a>
            and send us feedback
         </div>
