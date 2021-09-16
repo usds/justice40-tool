@@ -9,9 +9,9 @@ import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 
 // @ts-ignore
-import aboutUSMapImg from '../images/about-usmap.svg';
+import aboutUSMapImg from '../images/about-usmap-1.svg';
 // @ts-ignore
-import aboutJ40Img from '../images/about-j40.svg';
+import aboutJ40Img from '../images/about-j40-1.svg';
 import accountBalanceIcon // @ts-ignore
   from '/node_modules/uswds/dist/img/usa-icons/account_balance.svg';
 
