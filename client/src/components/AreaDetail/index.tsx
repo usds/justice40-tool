@@ -234,62 +234,62 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     label: intl.formatMessage(messages.asthma),
     description: 'People who answer “yes” to both of the questions: “Have you ever been told by' +
     ' a doctor nurse, or other health professional that you have asthma?” and “Do you still have asthma?"',
-    value: properties[constants.HOUSING_BURDEN_PROPERTY_PERCENTILE],
+    value: properties[constants.ASTHMA_PERCENTILE],
   };
   const diabetes:indicatorInfo = {
     label: intl.formatMessage(messages.diabetes),
     description: 'Households that are low income and spend more than 30% of their income to housing costs',
-    value: properties[constants.HOUSING_BURDEN_PROPERTY_PERCENTILE],
+    value: properties[constants.DIABETES_PERCENTILE],
   };
   const dieselPartMatter:indicatorInfo = {
     label: intl.formatMessage(messages.dieselPartMatter),
     description: 'Mixture of particles that is part of diesel exhaust in the air',
-    value: properties[constants.HOUSING_BURDEN_PROPERTY_PERCENTILE],
+    value: properties[constants.DIESEL_MATTER_PERCENTILE],
   };
   const lifeExpect:indicatorInfo = {
     label: intl.formatMessage(messages.lifeExpect),
     description: 'Estimated years of life expectancy',
-    value: properties[constants.HOUSING_BURDEN_PROPERTY_PERCENTILE],
+    value: properties[constants.LIFE_PERCENTILE],
   };
   const energyBurden:indicatorInfo = {
     label: intl.formatMessage(messages.energyBurden),
     description: 'Average annual energy cost ($) divided by household income',
-    value: properties[constants.HOUSING_BURDEN_PROPERTY_PERCENTILE],
+    value: properties[constants.ENERGY_PERCENTILE],
   };
   const pm25:indicatorInfo = {
     label: intl.formatMessage(messages.pm25),
     description: 'Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller',
-    value: properties[constants.HOUSING_BURDEN_PROPERTY_PERCENTILE],
+    value: properties[constants.PM25_PERCENTILE],
   };
   const leadPaint:indicatorInfo = {
     label: intl.formatMessage(messages.leadPaint),
     description: 'Housing units built pre-1960, used as an indicator of potential'+
     ' lead paint exposure in homes',
-    value: properties[constants.HOUSING_BURDEN_PROPERTY_PERCENTILE],
+    value: properties[constants.LEAD_PAINT_PERCENTILE],
   };
   const trafficVolume:indicatorInfo = {
     label: intl.formatMessage(messages.trafficVolume),
     description: 'Count of vehicles (average annual daily traffic) at major roads within 500 meters,' +
     ' divided by distance in meters',
-    value: properties[constants.HOUSING_BURDEN_PROPERTY_PERCENTILE],
+    value: properties[constants.TRAFFIC_PERCENTILE],
   };
   const wasteWater:indicatorInfo = {
     label: intl.formatMessage(messages.wasteWater),
     description: 'Toxic concentrations at stream segments within 500 meters divided by distance in' +
     ' kilometers',
-    value: properties[constants.HOUSING_BURDEN_PROPERTY_PERCENTILE],
+    value: properties[constants.WASTEWATER_PERCENTILE],
   };
   const femaRisk:indicatorInfo = {
     label: intl.formatMessage(messages.femaRisk),
     description: 'Risk based on 18 natural hazard types, in addition to a'+
     "community's social vulnerability and community resilience",
-    value: properties[constants.HOUSING_BURDEN_PROPERTY_PERCENTILE],
+    value: properties[constants.FEMA_PERCENTILE],
   };
   const heartDisease:indicatorInfo = {
     label: intl.formatMessage(messages.heartDisease),
     description: 'People ages 18 and up who report ever having been told by a' +
     'doctor, nurse, or other health professionals that they had angina or coronary heart disease',
-    value: properties[constants.HOUSING_BURDEN_PROPERTY_PERCENTILE],
+    value: properties[constants.HEART_PERCENTILE],
   };
   const houseBurden:indicatorInfo = {
     label: intl.formatMessage(messages.houseBurden),

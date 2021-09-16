@@ -168,7 +168,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               Asthma
             </h4>
             <div>
-              9500
+              NaN
               <sup>
                 <span>
                   th
@@ -190,7 +190,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               Diabetes
             </h4>
             <div>
-              9500
+              NaN
               <sup>
                 <span>
                   th
@@ -212,7 +212,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               Diesel particulate matter
             </h4>
             <div>
-              9500
+              NaN
               <sup>
                 <span>
                   th
@@ -234,7 +234,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               Energy burden
             </h4>
             <div>
-              9500
+              NaN
               <sup>
                 <span>
                   th
@@ -256,7 +256,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               FEMA Risk index
             </h4>
             <div>
-              9500
+              NaN
               <sup>
                 <span>
                   th
@@ -278,7 +278,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               Heart Disease
             </h4>
             <div>
-              9500
+              NaN
               <sup>
                 <span>
                   th
@@ -322,7 +322,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               Lead paint
             </h4>
             <div>
-              9500
+              NaN
               <sup>
                 <span>
                   th
@@ -344,7 +344,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               Life expectancy
             </h4>
             <div>
-              9500
+              NaN
               <sup>
                 <span>
                   th
@@ -366,7 +366,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               PM2.5
             </h4>
             <div>
-              9500
+              NaN
               <sup>
                 <span>
                   th
@@ -388,7 +388,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               Traffic proximity and volume
             </h4>
             <div>
-              9500
+              NaN
               <sup>
                 <span>
                   th
@@ -410,7 +410,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               Wastewater discharge
             </h4>
             <div>
-              9500
+              NaN
               <sup>
                 <span>
                   th
