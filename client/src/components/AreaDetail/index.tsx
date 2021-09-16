@@ -400,7 +400,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
                   </>
                 )
               ),
-              expanded: false,
+              expanded: true,
             },
           ]
         }/>
