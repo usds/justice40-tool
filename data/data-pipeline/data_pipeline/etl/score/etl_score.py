@@ -81,7 +81,7 @@ class ScoreETL(ExtractTransformLoad):
         self.SCORE_CSV_PATH: Path = self.DATA_PATH / "score" / "csv" / "full"
 
         # Urban Rural Map
-        self.URBAN_HERUISTIC_FIELD_NAME = "urban_heuristic_flag"
+        self.URBAN_HERUISTIC_FIELD_NAME = "Urban Heuristic Flag"
 
         # dataframes
         self.df: pd.DataFrame
@@ -660,7 +660,6 @@ class ScoreETL(ExtractTransformLoad):
         df["NMTC (communities)"] = (
             (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
         ) | (df[self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME] > 0.20)
-
 
         df["Score K (communities)"] = (
             (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
