@@ -29,7 +29,7 @@ class GeoCorrETL(ExtractTransformLoad):
         )
 
         self.df = pd.read_csv(
-            filepath_or_buffer=self.TMP_PATH / "geocorr" / "geocorr2014_all_states.csv",
+            filepath_or_buffer=self.TMP_PATH / "geocorr" / "geocorr_urban_rural.csv",
             dtype={self.GEOCORR_GEOID_FIELD_NAME: "string"},
             low_memory=False,
         )
