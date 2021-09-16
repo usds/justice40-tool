@@ -48,6 +48,7 @@
     "babel-preset-gatsby": "^1.6.0",
     "cypress": "^7.4.0",
     "cypress-axe": "^0.12.2",
+    "cypress-cucumber-preprocessor": "^4.2.0",
     "eslint": "^7.27.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-cypress": "^2.11.3",
@@ -84,6 +85,10 @@
     "react-helmet": "^6.1.0",
     "react-intl": "^5.20.4",
     "react-map-gl": "^6.1.16",
+    "react-use": "^17.3.1",
     "uswds": "^2.10.3"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
   }
 }

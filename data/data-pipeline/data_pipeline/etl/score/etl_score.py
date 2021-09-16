@@ -66,6 +66,11 @@ class ScoreETL(ExtractTransformLoad):
         # DOE energy burden
         self.ENERGY_BURDEN_FIELD_NAME = "Energy burden"
 
+        # FEMA Risk Index
+        self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME = (
+            "FEMA Risk Index Expected Annual Loss Score"
+        )
+
         # There's another aggregation level (a second level of "buckets").
         self.AGGREGATION_POLLUTION: str = "Pollution Burden"
         self.AGGREGATION_POPULATION: str = "Population Characteristics"
@@ -85,6 +90,7 @@ class ScoreETL(ExtractTransformLoad):
         self.census_acs_median_incomes_df: pd.DataFrame
         self.cdc_life_expectancy_df: pd.DataFrame
         self.doe_energy_burden_df: pd.DataFrame
+        self.national_risk_index_df: pd.DataFrame
 
     def data_sets(self) -> list:
         # Define a named tuple that will be used for each data set input.
@@ -184,6 +190,11 @@ class ScoreETL(ExtractTransformLoad):
             DataSet(
                 input_field=self.ENERGY_BURDEN_FIELD_NAME,
                 renamed_field=self.ENERGY_BURDEN_FIELD_NAME,
+                bucket=None,
+            ),
+            DataSet(
+                input_field=self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME,
+                renamed_field=self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME,
                 bucket=None,
             ),
             # The following data sets have buckets, because they're used in Score C
@@ -362,6 +373,16 @@ class ScoreETL(ExtractTransformLoad):
         self.doe_energy_burden_df = pd.read_csv(
             doe_energy_burden_csv,
             dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
+            low_memory=False,
+        )
+
+        # Load FEMA national risk index data
+        national_risk_index_csv = (
+            self.DATA_PATH / "dataset" / "national_risk_index_2020" / "usa.csv"
+        )
+        self.national_risk_index_df = pd.read_csv(
+            national_risk_index_csv,
+            dtype={self.GEOID_FIELD_NAME: "string"},
             low_memory=False,
         )
 
@@ -587,15 +608,26 @@ class ScoreETL(ExtractTransformLoad):
         high_school_cutoff_threshold = 0.05
         high_school_cutoff_threshold_2 = 0.06
 
+        # Score G is now modified NMTC
         df["Score G (communities)"] = (
+            (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
+            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
+        ) | (
+            (df[self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME] > 0.20)
+            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
+        )
+        df["Score G"] = df["Score G (communities)"].astype(int)
+        df["Score G (percentile)"] = df["Score G"]
+
+        df["Score I (communities)"] = (
             (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.7)
             & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
         ) | (
             (df[self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME] > 0.50)
             & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
         )
-        df["Score G"] = df["Score G (communities)"].astype(int)
-        df["Score G (percentile)"] = df["Score G"]
+        df["Score I"] = df["Score I (communities)"].astype(int)
+        df["Score I (percentile)"] = df["Score I"]
 
         df["Score H (communities)"] = (
             (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
@@ -610,12 +642,13 @@ class ScoreETL(ExtractTransformLoad):
             (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
         ) | (df[self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME] > 0.20)
 
-        df["NMTC modified (communities)"] = (
+
+        df["Score K (communities)"] = (
             (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
-            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
+            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold_2)
         ) | (
             (df[self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME] > 0.20)
-            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
+            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold_2)
         )
 
         return df
@@ -630,6 +663,7 @@ class ScoreETL(ExtractTransformLoad):
             self.census_df,
             self.housing_and_transportation_df,
             self.census_acs_median_incomes_df,
+            self.national_risk_index_df,
         ]
         census_block_group_df = self._join_cbg_dfs(census_block_group_dfs)
 
@@ -638,7 +672,7 @@ class ScoreETL(ExtractTransformLoad):
             self.hud_housing_df,
             self.cdc_places_df,
             self.cdc_life_expectancy_df,
-            self.doe_energy_burden_df
+            self.doe_energy_burden_df,
         ]
         census_tract_df = self._join_tract_dfs(census_tract_dfs)
 

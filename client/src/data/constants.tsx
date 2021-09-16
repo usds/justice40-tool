@@ -48,6 +48,17 @@ export const EDUCATION_PROPERTY_PERCENTILE =
 `Percent individuals age 25 or over with less than high school degree (percentile)`;
 export const COUNTY_NAME = 'County Name';
 export const STATE_NAME = 'State Name';
+export const DIABETES_PERCENTILE = 'Diagnosed diabetes among adults aged >=18 years (percentile)';
+export const ASTHMA_PERCENTILE = 'Current asthma among adults aged >=18 years (percentile)';
+export const HEART_PERCENTILE = 'Coronary heart disease among adults aged >=18 years (percentile)';
+export const LIFE_PERCENTILE = 'Life expectancy (years) (percentile)';
+export const TRAFFIC_PERCENTILE = 'Traffic proximity and volume (percentile)';
+export const FEMA_PERCENTILE = 'FEMA Risk Index Expected Annual Loss Score (percentile)';
+export const ENERGY_PERCENTILE = 'Energy burden (percentile)';
+export const WASTEWATER_PERCENTILE = 'Wastewater discharge (percentile)';
+export const LEAD_PAINT_PERCENTILE = 'Percent pre-1960s housing (lead paint indicator) (percentile)';
+export const DIESEL_MATTER_PERCENTILE = 'Diesel particulate matter (percentile)';
+export const PM25_PERCENTILE = 'Particulate matter (PM2.5) (percentile)';
 
 
 // The name of the layer within the tiles that contains the score
@@ -133,18 +144,14 @@ export const SCORE_BOUNDARY_PRIORITIZED = 0.75;
 export const EXPLORE_TOOL_PAGE_TEXT = defineMessages({
   PRIORITY_LABEL: {
     id: 'legend.info.priority.label',
-    defaultMessage: 'Prioritized community',
+    defaultMessage: 'Draft community of focus',
     description: 'the label of the prioritized community legend',
   },
-  THRESHOLD_LABEL: {
+  PRIORITY_DESCRIPT: {
     id: 'legend.info.threshold.label',
-    defaultMessage: 'Threshold community',
+    defaultMessage: 'These communities are identified as experiencing disadvantages that merit' +
+    ' the focus of certain Federal investments, including through the Justice40 Initiative',
     description: 'the label of the threshold community legend',
-  },
-  LEGEND_LABEL: {
-    id: 'legend.colorkey.label',
-    defaultMessage: 'Color key',
-    description: 'the label of the key in the legend',
   },
 });
 

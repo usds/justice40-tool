@@ -1,10 +1,6 @@
 declare namespace DatasetContainerScssNamespace {
     export interface IDatasetContainerScss {
-      datasetContainer:string;
       datasetCardsContainer: string;
-      datasetContainerHeader: string;
-      datasetContainerSubTitle: string;
-      j40AlertContainer: string;
     }
   }
 

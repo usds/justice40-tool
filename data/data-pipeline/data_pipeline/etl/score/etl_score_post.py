@@ -183,6 +183,7 @@ class PostScoreETL(ExtractTransformLoad):
     def _create_tile_data(
         self, score_county_state_merged_df: pd.DataFrame
     ) -> pd.DataFrame:
+        logger.info("Rounding Decimals")
         score_tiles = score_county_state_merged_df[
             constants.TILES_SCORE_COLUMNS
         ]
@@ -191,6 +192,7 @@ class PostScoreETL(ExtractTransformLoad):
             * len(constants.TILES_SCORE_FLOAT_COLUMNS),
             index=constants.TILES_SCORE_FLOAT_COLUMNS,
         )
+
         return score_tiles.round(decimals)
 
     def _create_downloadable_data(
