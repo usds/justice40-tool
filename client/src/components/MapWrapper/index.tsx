@@ -23,7 +23,7 @@ const MapWrapper = ({location}: IMapWrapperProps) => {
     },
     downloadContents: {
       id: 'mapwrapper.download.contents',
-      defaultMessage: 'ZIP file will contain one .xlsx, one .csv and one .pdf (30 MB).',
+      defaultMessage: 'ZIP file will contain one .xlsx, one .csv, and one .pdf (30 MB).',
       description: 'download link contents',
     },
   });
