@@ -128,9 +128,9 @@ const IndexPage = ({location}: IndexPageProps) => {
                 description={'paragraph 2 of main content on index page'}
                 defaultMessage={`
                 The tool will provide important information for the Justice40
-                Initiative. The goal of the Justice40 Initiative is to ensure
-                that 40-percent of the overall benefits of certain federal
-                programs in seven key areas reach disadvantaged communities.
+                Initiative. The goal of the Justice40 Initiative is to provide
+                40-percent of the overall benefits of certain federal
+                programs in seven key areas to disadvantaged communities.
                 These seven key areas are: climate change, clean energy and
                 energy efficiency, clean transit, affordable and sustainable
                 housing, training and workforce development, the remediation

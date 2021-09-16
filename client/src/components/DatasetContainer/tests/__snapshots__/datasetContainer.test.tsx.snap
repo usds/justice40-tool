@@ -95,14 +95,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
     </div>
     <div>
       <h3>
-        Poverty
+        Households below 100% of the federal poverty line
       </h3>
       <div>
         What is it?
       </div>
       <div>
         Percent of a block group's population in households where the 
-    household income is less than or equal to twice the federal "poverty level."
+    household income is at or below 100% the federal "poverty level."
       </div>
       <ul>
         <li>
@@ -563,7 +563,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         What is it?
       </div>
       <div>
-        Mixture of particles that is part of diesel exhaust, which measures the Diesel particulate matter level in air.
+        Mixture of particles that is part of diesel exhaust in the air.
       </div>
       <ul>
         <li>

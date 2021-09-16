@@ -19,9 +19,9 @@ export const cards = [
     dataDateRange: `2015-2019`,
   },
   {
-    indicator: 'Poverty',
+    indicator: 'Households below 100% of the federal poverty line',
     description: `Percent of a block group's population in households where the 
-    household income is less than or equal to twice the federal "poverty level."`,
+    household income is at or below 100% the federal "poverty level."`,
     dataResolution: `Census block group`,
     dataSourceLabel: `Census's American Community Survey`,
     dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
@@ -134,8 +134,7 @@ export const cards = [
   },
   {
     indicator: 'Diesel particulate matter',
-    description: `Mixture of particles that is part of diesel exhaust, which measures the` +
-    ` Diesel particulate matter level in air.`,
+    description: `Mixture of particles that is part of diesel exhaust in the air.`,
     dataResolution: `Census block group`,
     dataSourceLabel: `U.S. Census Bureau`,
     dataSourceURL: `https://www.census.gov/`,

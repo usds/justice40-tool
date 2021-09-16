@@ -51,13 +51,19 @@ const ScoreStepsList = () => {
           </p>
 
           <h4>
-            Percent of households below 200% of the federal poverty line
+            Percent of households below or at 100% of the federal poverty line
           </h4>
           <p className={'flush'}>
             This is the percent of households in a state with a household income
-            below 200% of the federal poverty line. This federal poverty line is
+            below or at 100% of the <a href="https://www.census.gov/topics/income-poverty/poverty/guidance/poverty-measures.html" target="_blank" rel="noreferrer">federal poverty line</a>. This federal poverty line is
             calculated based on the composition of each household (e.g., based on
             household size), but it does not vary geographically.
+          </p>
+          <h4>
+            The high school degree achievement rate for adults 25 years and older
+          </h4>
+          <p className={'flush'}>
+            The percent of individuals who are 25 or older who have received a high school degree.
           </p>
         </ProcessListItem>
 
@@ -71,10 +77,10 @@ const ScoreStepsList = () => {
             community of focus if:
           </p>
           <p>
-            (The median income is &lt;70% of the area median income   OR
+            (The median income is &lt;80% of the area median income   OR
           </p>
           <p className={'flush'}>
-            households living in poverty (at or below 200% of the federal poverty level) is &gt;50%)
+            households living in poverty (at or below 100% of the federal poverty level) is &gt;20%)
           </p>
           <p className={'flush'}>
             AND
