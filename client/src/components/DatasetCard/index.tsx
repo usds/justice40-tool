@@ -11,11 +11,6 @@ interface IDatasetCardProps {
 const DatasetCard = ({datasetCardProps, additionalIndicator}:IDatasetCardProps) => {
   const intl = useIntl();
   const messages = defineMessages({
-    whatIsIt: {
-      id: 'datasetCard.whatIsIt',
-      defaultMessage: 'What is it?',
-      description: 'label associated with explaining the card',
-    },
     dataResolution: {
       id: 'datasetCard.dataResolution',
       defaultMessage: 'Data resolution: ',
@@ -36,7 +31,6 @@ const DatasetCard = ({datasetCardProps, additionalIndicator}:IDatasetCardProps) 
   return (
     <div className={additionalIndicator ? styles.datasetCardAdditional : styles.datasetCard}>
       <h3 className={styles.datasetCardIndicator}>{datasetCardProps.indicator}</h3>
-      <div className={styles.datasetCardWhatIsIt}>{intl.formatMessage(messages.whatIsIt)}</div>
       <div className={styles.datasetCardDescription}>
         {datasetCardProps.description}
       </div>
@@ -44,17 +38,17 @@ const DatasetCard = ({datasetCardProps, additionalIndicator}:IDatasetCardProps) 
       <ul className={styles.datasetCardList}>
         <li className={styles.datasetCardListItem}>
           <span className={styles.datasetCardLabels}>
-            {intl.formatMessage(messages.dataResolution)}
-          </span>
-          {datasetCardProps.dataResolution}
-        </li>
-        <li className={styles.datasetCardListItem}>
-          <span className={styles.datasetCardLabels}>
             {intl.formatMessage(messages.dataSource)}
           </span>
           <a href={datasetCardProps.dataSourceURL} target={'_blank'} rel="noreferrer">
             {datasetCardProps.dataSourceLabel}
           </a>
+        </li>
+        <li className={styles.datasetCardListItem}>
+          <span className={styles.datasetCardLabels}>
+            {intl.formatMessage(messages.dataResolution)}
+          </span>
+          {datasetCardProps.dataResolution}
         </li>
         <li className={styles.datasetCardListItem}>
           <span className={styles.datasetCardLabels}>
