@@ -11,7 +11,6 @@ Consultar la lista definitiva en [archivo CODEOWNERS](./github/CODEOWNERS).
 - Shelby Switzer - switzersc-usds - dirección de ingeniería
 - Jorge Escobar - esfoobar-usds
 - Tom Nielsen - TomNUSDS
-- Gina Maini - ginabeena
 - Vim Shah - vim-usds
 
 ## Producto
