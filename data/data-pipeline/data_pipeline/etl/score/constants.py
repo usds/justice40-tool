@@ -6,6 +6,7 @@ from data_pipeline.config import settings
 # Base Paths
 DATA_PATH = Path(settings.APP_ROOT) / "data"
 TMP_PATH = DATA_PATH / "tmp"
+FILES_PATH = Path(settings.APP_ROOT) / "files"
 
 # Remote Paths
 CENSUS_COUNTIES_ZIP_URL = "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/Gaz_counties_national.zip"
@@ -42,6 +43,7 @@ DATA_SCORE_TILES_DIR = DATA_SCORE_DIR / "tiles"
 SCORE_DOWNLOADABLE_DIR = DATA_SCORE_DIR / "downloadable"
 SCORE_DOWNLOADABLE_CSV_FILE_PATH = SCORE_DOWNLOADABLE_DIR / "usa.csv"
 SCORE_DOWNLOADABLE_EXCEL_FILE_PATH = SCORE_DOWNLOADABLE_DIR / "usa.xlsx"
+SCORE_DOWNLOADABLE_PDF_FILE_PATH = FILES_PATH / "Draft_Communities_List.pdf"
 SCORE_DOWNLOADABLE_ZIP_FILE_PATH = (
     SCORE_DOWNLOADABLE_DIR / "Screening_Tool_Data.zip"
 )

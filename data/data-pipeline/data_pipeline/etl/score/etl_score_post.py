@@ -231,7 +231,9 @@ class PostScoreETL(ExtractTransformLoad):
         logger.info("Saving Full Score CSV with County Information")
         score_csv_path.parent.mkdir(parents=True, exist_ok=True)
         score_county_state_merged.to_csv(
-            score_csv_path, index=False, encoding="utf-8"
+            score_csv_path,
+            index=False,
+            encoding="utf-8-sig",  # windows compat https://stackoverflow.com/a/43684587
         )
 
     def _load_tile_csv(
@@ -250,6 +252,13 @@ class PostScoreETL(ExtractTransformLoad):
         csv_path = constants.SCORE_DOWNLOADABLE_CSV_FILE_PATH
         excel_path = constants.SCORE_DOWNLOADABLE_EXCEL_FILE_PATH
         zip_path = constants.SCORE_DOWNLOADABLE_ZIP_FILE_PATH
+        pdf_path = constants.SCORE_DOWNLOADABLE_PDF_FILE_PATH
+
+        # Rename score column
+        downloadable_df.rename(
+            columns={"Score G (communities)": "Community of focus (v0.1)"},
+            inplace=True,
+        )
 
         logger.info("Writing downloadable csv")
         downloadable_df.to_csv(csv_path, index=False)
@@ -258,7 +267,7 @@ class PostScoreETL(ExtractTransformLoad):
         downloadable_df.to_excel(excel_path, index=False)
 
         logger.info("Compressing files")
-        files_to_compress = [csv_path, excel_path]
+        files_to_compress = [csv_path, excel_path, pdf_path]
         with zipfile.ZipFile(zip_path, "w") as zf:
             for f in files_to_compress:
                 zf.write(f, arcname=Path(f).name, compress_type=compression)
