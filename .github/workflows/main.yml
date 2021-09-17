@@ -1,0 +1,33 @@
+# .github/workflows/ping-test.yml
+name: Trigger Run of site ping test
+on:
+  # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
+  schedule:
+    # Run every five minutes
+    - cron: '*/5 * * * *'
+  # https://github.blog/changelog/2020-07-06-github-actions-manual-triggers-with-workflow_dispatch/
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Ping test'  
+jobs:
+  sitePingCheck:
+    name: Slack Notification
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    # https://github.com/marketplace/actions/ping-my-site
+    - uses: Leocardoso94/is-my-site-up@v1.2
+      with:
+        site: "https://d2zjid6n5ja2pt.cloudfront.net/justice40-tool/main/en/"
+    # https://www.ravsam.in/blog/send-slack-notification-when-github-actions-fails/
+    - uses: ravsamhq/notify-slack-action@v1
+      if: always()
+      with:
+        status: ${{ job.status }}
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.J40_TOOL_MONITORING_SLACK_ALERTS }}
