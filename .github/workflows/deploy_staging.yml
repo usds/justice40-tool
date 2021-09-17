@@ -30,6 +30,7 @@ jobs:
       - name: Build
         run: npm run build --if-present
         env:
+          # Todo update this to env
           DATA_SOURCE: development
           PATH_PREFIX: "/justice40-tool/${{env.DESTINATION_FOLDER}}"
       - name: Get directory contents
