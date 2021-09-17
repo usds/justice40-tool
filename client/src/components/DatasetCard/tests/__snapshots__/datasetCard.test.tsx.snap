@@ -7,19 +7,10 @@ exports[`rendering of the DatasetCard checks if component renders 1`] = `
       Area Median Income
     </h3>
     <div>
-      What is it?
-    </div>
-    <div>
       Median income of the census block group calculated as a percent 
     of the metropolitan area’s or state's median income.
     </div>
     <ul>
-      <li>
-        <span>
-          Data resolution: 
-        </span>
-        Census block group
-      </li>
       <li>
         <span>
           Data source: 
@@ -31,6 +22,12 @@ exports[`rendering of the DatasetCard checks if component renders 1`] = `
         >
           Census's American Community Survey
         </a>
+      </li>
+      <li>
+        <span>
+          Data resolution: 
+        </span>
+        Census block group
       </li>
       <li>
         <span>

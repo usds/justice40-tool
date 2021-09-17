@@ -114,7 +114,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
       <p
         class="secondary j40-indicator"
       >
-        Household income is less than or equal to the federal "poverty level"
+        Percent of a block group's population in households where the household income is at or below 100% of the federal poverty level
       </p>
     </li>
     <li
@@ -210,7 +210,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
     >
       <div>
         <h4>
-          FEMA Risk index
+          FEMA Risk Index
         </h4>
         <div>
           NaN
@@ -232,7 +232,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
     >
       <div>
         <h4>
-          Heart Disease
+          Heart disease
         </h4>
         <div>
           NaN

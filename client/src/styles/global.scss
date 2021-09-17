@@ -430,6 +430,7 @@ p.secondary.j40-indicator {
     .j40-aboutcard-image {
       flex: 1 0 10%;
       align-self: flex-start;
+      @include u-margin-top(5);
     }
 
     .j40-aboutcard-link {

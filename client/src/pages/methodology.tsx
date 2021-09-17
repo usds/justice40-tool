@@ -59,11 +59,7 @@ const IndexPage = ({location}: MethodPageProps) => {
         </Grid>
       </J40MainGridContainer>
 
-      <J40MainGridContainer fullWidth={true} blueBackground={true}>
-        <J40MainGridContainer>
-          <DatasetContainer/>
-        </J40MainGridContainer>
-      </J40MainGridContainer>
+      <DatasetContainer/>
 
       <J40MainGridContainer>
         <Grid row>

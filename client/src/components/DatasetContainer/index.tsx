@@ -3,12 +3,13 @@ import {useIntl} from 'gatsby-plugin-intl';
 import {defineMessages} from 'react-intl';
 import {Grid} from '@trussworks/react-uswds';
 
-import DatasetCard from '../DatasetCard';
 import AlertWrapper from '../AlertWrapper';
+import DatasetCard from '../DatasetCard';
+import J40MainGridContainer from '../J40MainGridContainer';
 
 import * as styles from './dsContainer.module.scss';
 
-export const cards = [
+export const indicators = [
   {
     indicator: 'Area Median Income',
     description: `Median income of the census block group calculated as a percent 
@@ -19,26 +20,29 @@ export const cards = [
     dataDateRange: `2015-2019`,
   },
   {
-    indicator: 'Households below 100% of the federal poverty line',
-    description: `Percent of a block group's population in households where the 
-    household income is at or below 100% the federal "poverty level."`,
+    indicator: 'Poverty',
+    description: `Percent of a block group's population in households where the household income` +
+    ` is at or below 100% of the federal poverty level`,
     dataResolution: `Census block group`,
     dataSourceLabel: `Census's American Community Survey`,
     dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
     dataDateRange: `2015-2019`,
   },
   {
-    indicator: 'Education. less than high school education',
-    description: `Percent of people age 25 or older in a block group whose 
-    education is short of a high school diploma.`,
+    indicator: 'Education, less than high school education',
+    description: `Percent of people ages 25 years or older in a block group whose 
+    education level is less than a high school diploma.`,
     dataResolution: `Census block group`,
     dataSourceLabel: `Census's American Community Survey`,
     dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
     dataDateRange: `2015-2019`,
   },
+];
+
+export const additionalIndicators = [
   {
     indicator: 'Diabetes',
-    description: `People ages 18 years and up who report having ever been 
+    description: `People ages 18 years and older who report having ever been 
     told by a doctor, nurse, or other health professionals that they have 
     diabetes other than diabetes during pregnancy.`,
     dataResolution: `Census tract`,
@@ -59,7 +63,7 @@ export const cards = [
   },
   {
     indicator: 'Heart disease',
-    description: `People ages 18 years and up who report ever having been told 
+    description: `People ages 18 years and older who report ever having been told 
     by a doctor, nurse, or other health professionals that they had angina or 
     coronary heart disease.`,
     dataResolution: `Census tract`,
@@ -82,7 +86,7 @@ export const cards = [
     within 500 meters, divided by distance in meters (not km).`,
     dataResolution: `Census block group`,
     dataSourceLabel: `Department of Transportation (DOT) traffic data`,
-    dataSourceURL: `#`,
+    dataSourceURL: `https://www.fhwa.dot.gov/policyinformation/hpms/shapefiles.cfm`,
     dataDateRange: `2017`,
   },
   {
@@ -136,8 +140,9 @@ export const cards = [
     indicator: 'Diesel particulate matter',
     description: `Mixture of particles that is part of diesel exhaust in the air.`,
     dataResolution: `Census block group`,
-    dataSourceLabel: `U.S. Census Bureau`,
-    dataSourceURL: `https://www.census.gov/`,
+    dataSourceLabel: `Environmental Protection Agency (EPA) National Air Toxics Assessment (NATA)
+    `,
+    dataSourceURL: `https://www.epa.gov/national-air-toxics-assessment/2014-nata-assessment-results`,
     dataDateRange: `5-year estimates, 2015-2019`,
   },
   {
@@ -158,7 +163,7 @@ const DatasetContainer = () => {
   const messages = defineMessages({
     cumulativeScore: {
       id: 'datasetContainer.header.cumulativeScore',
-      defaultMessage: 'Datasets used methodology',
+      defaultMessage: 'Datasets used in methodology',
       description: 'section label of which datasets are used in cumulative score',
     },
     subTitle: {
@@ -166,31 +171,76 @@ const DatasetContainer = () => {
       defaultMessage: 'The datasets come from a variety of sources and were selected' +
       ' based on relevance, availability, recency, and quality. The datasets seek to' +
       ' identify a range of human health, environmental, climate-related, and other' +
-      ' cumulative impacts on disadvantaged communities.',
+      ' cumulative impacts on communities.',
       description: 'description of the dataset section',
+    },
+    additionalSubtitle: {
+      id: 'datasetContainer.additionalSubtitle',
+      defaultMessage: 'Additional Indicators',
+      description: 'indicator heading',
+    },
+    additionalText: {
+      id: 'datasetContainer.additionalText',
+      defaultMessage: 'These datasets provide additional information about each community.',
+      description: 'additional indicator heading',
     },
   });
 
   //  JSX return value:
   return (
     <>
-      <Grid row>
-        <Grid col={12}>
-          <AlertWrapper showBetaAlert={false} showLimitedDataAlert={true}/>
-          <h2>{intl.formatMessage(messages.cumulativeScore)}</h2>
-        </Grid>
-      </Grid>
+      <J40MainGridContainer fullWidth={true} blueBackground={true}>
+        <J40MainGridContainer>
 
-      <Grid row>
-        <Grid col={12} tablet={{col: 7}} className={'j40-mb-3'}>
-          <p>{intl.formatMessage(messages.subTitle)}</p>
-        </Grid>
-      </Grid>
-      <div className={styles.datasetCardsContainer}>
-        {cards.map((card) => <DatasetCard
-          key={card.indicator}
-          datasetCardProps={card}/>)}
-      </div>
+          <Grid row>
+            <Grid col={12}>
+              <AlertWrapper showBetaAlert={false} showLimitedDataAlert={true}/>
+              <h2>{intl.formatMessage(messages.cumulativeScore)}</h2>
+            </Grid>
+          </Grid>
+
+          <Grid row>
+            <Grid col={12} tablet={{col: 7}} className={'j40-mb-3'}>
+              <p>{intl.formatMessage(messages.subTitle)}</p>
+            </Grid>
+          </Grid>
+
+          <div className={styles.datasetCardsContainer}>
+            {indicators.map((card) => <DatasetCard
+              key={card.indicator}
+              datasetCardProps={card}
+              additionalIndicator={false}
+            />)}
+          </div>
+
+        </J40MainGridContainer>
+      </J40MainGridContainer>
+
+      <J40MainGridContainer fullWidth={true} blueBackground={false}>
+        <J40MainGridContainer>
+
+          <Grid row>
+            <Grid col={12}>
+              <h2>{intl.formatMessage(messages.additionalSubtitle)}</h2>
+            </Grid>
+          </Grid>
+
+          <Grid row>
+            <Grid col={12} tablet={{col: 7}} className={'j40-mb-3'}>
+              <p>{intl.formatMessage(messages.additionalText)}</p>
+            </Grid>
+          </Grid>
+
+          <div className={styles.datasetCardsContainer}>
+            {additionalIndicators.map((card) => <DatasetCard
+              key={card.indicator}
+              datasetCardProps={card}
+              additionalIndicator={true}
+            />)}
+          </div>
+
+        </J40MainGridContainer>
+      </J40MainGridContainer>
     </>
   );
 };

@@ -9,9 +9,9 @@ import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 
 // @ts-ignore
-import aboutUSMapImg from '../images/about-usmap.svg';
+import aboutUSMapImg from '../images/about-usmap-1.svg';
 // @ts-ignore
-import aboutJ40Img from '../images/about-j40.svg';
+import aboutJ40Img from '../images/about-j40-1.svg';
 import accountBalanceIcon // @ts-ignore
   from '/node_modules/uswds/dist/img/usa-icons/account_balance.svg';
 
@@ -63,12 +63,12 @@ const IndexPage = ({location}: IndexPageProps) => {
     },
     aboutScreenToolHeading: {
       id: 'index.heading.screentool',
-      defaultMessage: 'About the screening tool',
+      defaultMessage: 'The screening tool',
       description: 'heading for about screening tool',
     },
     aboutJustice40Heading: {
       id: 'index.heading.justice40',
-      defaultMessage: 'About the Justice40 Initiative',
+      defaultMessage: 'The Justice40 Initiative',
       description: 'heading for about justice 40',
     },
   });
@@ -197,7 +197,7 @@ const IndexPage = ({location}: IndexPageProps) => {
           <AboutCard
             size={'small'}
             imgSrc={commentIcon}
-            header={'Send Feedback'}
+            header={'Send feedback'}
             actionText={'Email: screeningtool.feedback@usds.gov'}
             actionUrl={'mailto:screeningtool.feedback@usds.gov'}>
             Have ideas about how this tool can be improved to better
