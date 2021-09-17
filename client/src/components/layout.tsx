@@ -14,7 +14,13 @@ const Layout = ({children, location, title}: ILayoutProps) => {
   // @ts-ignore
   return (
     <>
-      <Helmet title={title} defer={false} />
+      <Helmet title={title} defer={false}>
+        <script async
+          type="text/javascript"
+          id="_fed_an_ua_tag"
+          src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.jsagency=DOIsitetopic=cejstenhlink=true">
+        </script>
+      </Helmet>
       <URLFlagProvider location={location}>
         <J40Header />
         <main id={'main-content'}>
