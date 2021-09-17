@@ -6,6 +6,7 @@ from data_pipeline.config import settings
 # Base Paths
 DATA_PATH = Path(settings.APP_ROOT) / "data"
 TMP_PATH = DATA_PATH / "tmp"
+FILES_PATH = Path(settings.APP_ROOT) / "files"
 
 # Remote Paths
 CENSUS_COUNTIES_ZIP_URL = "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/Gaz_counties_national.zip"
@@ -42,6 +43,7 @@ DATA_SCORE_TILES_DIR = DATA_SCORE_DIR / "tiles"
 SCORE_DOWNLOADABLE_DIR = DATA_SCORE_DIR / "downloadable"
 SCORE_DOWNLOADABLE_CSV_FILE_PATH = SCORE_DOWNLOADABLE_DIR / "usa.csv"
 SCORE_DOWNLOADABLE_EXCEL_FILE_PATH = SCORE_DOWNLOADABLE_DIR / "usa.xlsx"
+SCORE_DOWNLOADABLE_PDF_FILE_PATH = FILES_PATH / "Draft_Communities_List.pdf"
 SCORE_DOWNLOADABLE_ZIP_FILE_PATH = (
     SCORE_DOWNLOADABLE_DIR / "Screening_Tool_Data.zip"
 )
@@ -77,7 +79,6 @@ TILES_SCORE_COLUMNS = [
     "Particulate matter (PM2.5) (percentile)",
     "Median household income (% of AMI) (percentile)",
     "Percent of individuals < 200% Federal Poverty Line (percentile)",
-    "Percent individuals age 25 or over with less than high school degree (percentile)",
 ]
 
 # columns to round floats to 2 decimals
@@ -113,18 +114,21 @@ TILES_SCORE_FLOAT_COLUMNS = [
 TILES_ROUND_NUM_DECIMALS = 2
 
 DOWNLOADABLE_SCORE_INDICATOR_COLUMNS_BASIC = [
+    "Area Median Income (State or metropolitan)",
+    "Percent of individuals < 100% Federal Poverty Line",
     "Percent individuals age 25 or over with less than high school degree",
-    "Linguistic isolation (percent)",
-    "Poverty (Less than 200% of federal poverty line)",
-    "Unemployed civilians (percent)",
-    "Housing burden (percent)",
-    "Respiratory hazard index",
-    "Diesel particulate matter",
-    "Particulate matter (PM2.5)",
+    "Diagnosed diabetes among adults aged >=18 years",
+    "Current asthma among adults aged >=18 years",
+    "Coronary heart disease among adults aged >=18 years",
+    "Life expectancy (years)",
     "Traffic proximity and volume",
-    "Proximity to RMP sites",
+    "FEMA Risk Index Expected Annual Loss Score",
+    "Energy burden",
+    "Housing burden (percent)",
     "Wastewater discharge",
     "Percent pre-1960s housing (lead paint indicator)",
+    "Diesel particulate matter",
+    "Particulate matter (PM2.5)",
     "Total population",
 ]
 
@@ -132,7 +136,7 @@ DOWNLOADABLE_SCORE_INDICATOR_COLUMNS_BASIC = [
 DOWNLOADABLE_SCORE_INDICATOR_COLUMNS_FULL = list(
     pd.core.common.flatten(
         [
-            [p, f"{p} (percentile)", f"{p} (min-max normalized)"]
+            [p, f"{p} (percentile)"]
             for p in DOWNLOADABLE_SCORE_INDICATOR_COLUMNS_BASIC
         ]
     )
@@ -143,7 +147,8 @@ DOWNLOADABLE_SCORE_COLUMNS = [
     "GEOID10",
     "County Name",
     "State Name",
-    "Score D (percentile)",
-    "Score D (top 25th percentile)",
+    "Score G (communities)",
+    "Median household income (% of AMI)",
+    "Median household income (% of state median household income) (percentile)",
     *DOWNLOADABLE_SCORE_INDICATOR_COLUMNS_FULL,
 ]
