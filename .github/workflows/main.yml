@@ -1,5 +1,5 @@
 # .github/workflows/ping-test.yml
-name: Trigger Run of site ping test
+name: Site ping test
 on:
   # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
   schedule:
@@ -26,7 +26,7 @@ jobs:
         site: "https://d2zjid6n5ja2pt.cloudfront.net/justice40-tool/main/en/"
     # https://www.ravsam.in/blog/send-slack-notification-when-github-actions-fails/
     - uses: ravsamhq/notify-slack-action@v1
-      if: always()
+      if:  ${{ failure() }}
       with:
         status: ${{ job.status }}
       env:
