@@ -39,10 +39,7 @@ exports[`rendering of the AboutCard checks if component renders 1`] = `
           >
             <a
               class="j40-aboutcard-link"
-              href="#"
-            >
-              Test Action
-            </a>
+            />
           </div>
         </div>
       </div>
