@@ -32,6 +32,7 @@ jobs:
         run: npm run build --if-present
         env:
           DATA_SOURCE: development
+          PATH_PREFIX: ""
       - name: Get directory contents
         run: ls -la public
       - name: Lint
@@ -85,7 +86,7 @@ jobs:
         with:
           message: |
             **🚢 PR Deployed! 🚢**
-            Find it here: https://d2zjid6n5ja2pt.cloudfront.net/justice40-tool/${{env.DESTINATION_FOLDER}}/en/cejst/ !
+            Find it here: https://d2zjid6n5ja2pt.cloudfront.net/  !
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: "github-actions[bot]" # The user.login for temporary GitHub tokens
           allow-repeats: false # This is the default
@@ -93,4 +94,4 @@ jobs:
         run: |
           echo "Github pages: https://usds.github.io/justice40-tool/$DESTINATION_FOLDER/en"
           echo "Standard S3 bucket version (http only) : http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/justice40-tool/$DESTINATION_FOLDER/en"
-          echo "Cloudfront https: https://d2zjid6n5ja2pt.cloudfront.net/justice40-tool/$DESTINATION_FOLDER/en"
+          echo "Cloudfront https: https://d2zjid6n5ja2pt.cloudfront.net"
