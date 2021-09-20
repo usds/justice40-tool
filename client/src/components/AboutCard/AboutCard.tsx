@@ -1,15 +1,17 @@
 import React from 'react';
 import {Grid} from '@trussworks/react-uswds';
+import LinkTypeWrapper from '../LinkTypeWrapper';
 
 // the "body" section is the child object to allow for html versus just text
 interface AboutCardProps {
   imgSrc: string;
   header: string;
   size?: 'small' | 'large';
-  actionText?: string;
-  actionUrl?: string;
-  actionOpenInNewTab?: boolean;
+  linkText?: string;
+  url?: string;
+  openUrlNewTab?: boolean;
   className?: string;
+  internal?:boolean;
 }
 
 const AboutCard = (props: React.PropsWithChildren<AboutCardProps>) => {
@@ -54,16 +56,13 @@ const AboutCard = (props: React.PropsWithChildren<AboutCardProps>) => {
               <h3>{props.header}</h3>
               <p>{props.children}</p>
               <div className={'j40-aboutcard-sm-link'}>
-                {props.actionOpenInNewTab ?
-                  <a
-                    className={'j40-aboutcard-link'}
-                    href={props.actionUrl}
-                    target="_blank"
-                    rel="noreferrer">{props.actionText}</a> :
-                  <a
-                    className={'j40-aboutcard-link'}
-                    href={props.actionUrl}>{props.actionText}</a>
-                }
+                <LinkTypeWrapper
+                  linkText={props.linkText}
+                  internal={props.internal}
+                  url={props.url}
+                  openUrlNewTab={props.openUrlNewTab}
+                  className={'j40-aboutcard-link'}
+                />
               </div>
             </Grid>
           </Grid>
