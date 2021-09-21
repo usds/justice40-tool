@@ -73,13 +73,13 @@ class TestNationalRiskIndexETL:
         TRACT_COL = etl.GEOID_TRACT_FIELD_NAME
         BLOCK_COL = etl.GEOID_FIELD_NAME
         expected = pd.read_csv(
-            DATA_DIR / "output.csv",
+            DATA_DIR / "transform.csv",
             dtype={BLOCK_COL: "string", TRACT_COL: "string"},
         )
         # execution
         etl.transform()
         # validation
-        assert etl.df.shape == (10, 6)
+        assert etl.df.shape == (10, 3)
         assert etl.df.equals(expected)
 
     def test_load(self, mock_etl):
@@ -90,21 +90,24 @@ class TestNationalRiskIndexETL:
           self.OUTPUT_DIR
         - The content of the file that's written matches the data in self.df
         """
-        # setup
+        # setup - col names
         etl = NationalRiskIndexETL()
-        output_path = etl.OUTPUT_DIR / "usa.csv"
         TRACT_COL = etl.GEOID_TRACT_FIELD_NAME
         BLOCK_COL = etl.GEOID_FIELD_NAME
-        expected = pd.read_csv(
+        # setup - mock transform step
+        transform_path = etl.OUTPUT_DIR / "transform.csv"
+        df_transform = pd.read_csv(
             DATA_DIR / "output.csv",
-            dtype={BLOCK_COL: str, TRACT_COL: str},
+            dtype={BLOCK_COL: "string", TRACT_COL: "string"},
         )
-        etl.df = expected
+        etl.df = df_transform
+        # setup - load expected output
+        output_path = etl.OUTPUT_DIR / "usa.csv"
+        expected = pd.read_csv(DATA_DIR / "output.csv", dtype={BLOCK_COL: str})
         # execution
         etl.load()
-        output = pd.read_csv(
-            output_path, dtype={BLOCK_COL: str, TRACT_COL: str}
-        )
+        output = pd.read_csv(output_path, dtype={BLOCK_COL: str})
         # validation
         assert output_path.exists()
+        assert output.shape == (10, 2)
         assert output.equals(expected)
