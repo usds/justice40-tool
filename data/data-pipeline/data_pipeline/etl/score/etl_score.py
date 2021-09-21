@@ -642,7 +642,6 @@ class ScoreETL(ExtractTransformLoad):
             (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
         ) | (df[self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME] > 0.20)
 
-
         df["Score K (communities)"] = (
             (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
             & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold_2)

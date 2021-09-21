@@ -90,19 +90,18 @@ class TestNationalRiskIndexETL:
           self.OUTPUT_DIR
         - The content of the file that's written matches the data in self.df
         """
-        # setup - col names
+        # setup - input variables
         etl = NationalRiskIndexETL()
         TRACT_COL = etl.GEOID_TRACT_FIELD_NAME
         BLOCK_COL = etl.GEOID_FIELD_NAME
+        output_path = etl.OUTPUT_DIR / "usa.csv"
         # setup - mock transform step
-        transform_path = etl.OUTPUT_DIR / "transform.csv"
         df_transform = pd.read_csv(
-            DATA_DIR / "output.csv",
+            DATA_DIR / "transform.csv",
             dtype={BLOCK_COL: "string", TRACT_COL: "string"},
         )
         etl.df = df_transform
         # setup - load expected output
-        output_path = etl.OUTPUT_DIR / "usa.csv"
         expected = pd.read_csv(DATA_DIR / "output.csv", dtype={BLOCK_COL: str})
         # execution
         etl.load()
