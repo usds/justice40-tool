@@ -2,9 +2,10 @@
 ## Above disables warning about access to underscore-prefixed methods
 
 from importlib import reload
-
+from pathlib import Path
 import pandas.api.types as ptypes
 import pandas.testing as pdt
+
 from data_pipeline.etl.score import constants
 
 # See conftest.py for all fixtures used in these tests
@@ -117,8 +118,17 @@ def test_load_tile_csv(etl, tile_data_expected):
     assert constants.DATA_SCORE_CSV_TILES_FILE_PATH.is_file()
 
 
-def test_load_downloadable_zip(etl, downloadable_data_expected):
+def test_load_downloadable_zip(etl, monkeypatch, downloadable_data_expected):
     reload(constants)
+    STATIC_FILES_PATH = (
+        Path.cwd() / "data_pipeline" / "files"
+    )  # need to monkeypatch to real dir
+    monkeypatch.setattr(constants, "FILES_PATH", STATIC_FILES_PATH)
+    monkeypatch.setattr(
+        constants,
+        "SCORE_DOWNLOADABLE_PDF_FILE_PATH",
+        STATIC_FILES_PATH / constants.SCORE_DOWNLOADABLE_PDF_FILE_NAME,
+    )
     etl._load_downloadable_zip(
         downloadable_data_expected, constants.SCORE_DOWNLOADABLE_DIR
     )

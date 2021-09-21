@@ -40,7 +40,6 @@ def etl(monkeypatch, root):
     tmp_path.mkdir(parents=True, exist_ok=True)
     etl = PostScoreETL()
     monkeypatch.setattr(etl, "DATA_PATH", root)
-    monkeypatch.setattr(etl, "FILES_PATH", root)
     monkeypatch.setattr(etl, "TMP_PATH", tmp_path)
 
     return etl
