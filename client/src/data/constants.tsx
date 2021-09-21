@@ -60,13 +60,10 @@ export const LEAD_PAINT_PERCENTILE = 'Percent pre-1960s housing (lead paint indi
 export const DIESEL_MATTER_PERCENTILE = 'Diesel particulate matter (percentile)';
 export const PM25_PERCENTILE = 'Particulate matter (PM2.5) (percentile)';
 
+export type J40Properties = { [key: string]: any };
 
 // The name of the layer within the tiles that contains the score
 export const SCORE_SOURCE_LAYER = 'blocks';
-export const DOWNLOAD_FILE_SIZE = '143MB';
-export const DOWNLOAD_LAST_UPDATED = '09/20/21';
-
-export type J40Properties = { [key: string]: any };
 
 // Zoom
 export const GLOBAL_MIN_ZOOM = 3;
@@ -120,6 +117,11 @@ export const AMERICAN_SAMOA_BOUNDS : LngLatBoundsLike = [
 ];
 
 export const DEFAULT_CENTER = [32.4687126, -86.502136];
+
+// Data versioning
+export const DOWNLOAD_FILE_SIZE = '143MB';
+export const DOWNLOAD_LAST_UPDATED = '09/20/21';
+export const VERSION_NUMBER = '0.1';
 
 // Opacity
 export const DEFAULT_LAYER_OPACITY = 0.6;
