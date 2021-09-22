@@ -19,7 +19,7 @@ const ScoreStepsList = () => {
             block boundaries from 2010.
           </p>
           <p>
-          The following describes the process for identifying disadvantaged communities.
+          The following describes the process for identifying communities of focus.
           </p>
         </Grid>
       </Grid>
@@ -29,9 +29,6 @@ const ScoreStepsList = () => {
         <ProcessListItem>
           <ProcessListHeading type="h4">Gather datasets</ProcessListHeading>
           <p>{' '}</p>
-          <h4>
-            Data inputs
-          </h4>
           <p className={'flush'}>
             The methodology includes the following inputs that are equally weighted.
           </p>
@@ -69,7 +66,7 @@ const ScoreStepsList = () => {
 
         <ProcessListItem>
           <ProcessListHeading type="h4">
-            Current Formula
+            Determine communites of focus
           </ProcessListHeading>
           <p>{' '}</p>
           <p className={'flush'}>
@@ -77,16 +74,19 @@ const ScoreStepsList = () => {
             community of focus if:
           </p>
           <p>
-            (The median income is &lt;80% of the area median income   OR
+            (The median income is less than 80% of the area median income
           </p>
           <p className={'flush'}>
-            households living in poverty (at or below 100% of the federal poverty level) is &gt;20%)
+            OR
+          </p>
+          <p className={'flush'}>
+            households living in poverty (at or below 100% of the federal poverty level) is greater than 20%)
           </p>
           <p className={'flush'}>
             AND
           </p>
           <p className={'flush'}>
-            The high school degree achievement rate for adults 25 years and older is &lt;95%
+            The high school degree achievement rate for adults 25 years and older is greater than 95%
           </p>
         </ProcessListItem>
 

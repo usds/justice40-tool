@@ -91,8 +91,9 @@ $sidePanelLabelFontColor: #171716;
   @include sidePanelLabelStyle;
   display: flex;
   justify-content: space-between;
-  padding: 0.3rem 0.5rem 0.3rem 1.2rem;
-  background-color: #DFE1E2;
+  padding: 0.5rem 0.5rem 0.5rem 1.2rem;
+  border-top: 1px solid $sidePanelBorderColor;
+  border-bottom: 1px solid $sidePanelBorderColor;
 }
 
 //Indicator box styles
@@ -104,7 +105,7 @@ $sidePanelLabelFontColor: #171716;
 .indicatorBoxAdditional {
   @include indicatorBox;
   border-bottom: 1px solid #1b1b1b;
-  background-color: #F3F3F3;
+  background-color: $additionalCardsBGColor;
 }
 
 .indicatorRow {

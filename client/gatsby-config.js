@@ -7,7 +7,7 @@ module.exports = {
     title: 'Justice40',
     image: '/static/favicon.ico',
   },
-  pathPrefix: `/justice40-tool/${process.env.DESTINATION_FOLDER}`,
+  pathPrefix: `${process.env.PATH_PREFIX}`,
   plugins: [
     {
       resolve: 'gatsby-plugin-sass',

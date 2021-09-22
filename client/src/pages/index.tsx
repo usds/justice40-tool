@@ -9,9 +9,9 @@ import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 
 // @ts-ignore
-import aboutUSMapImg from '../images/about-usmap.svg';
+import aboutUSMapImg from '../images/about-usmap-1.svg';
 // @ts-ignore
-import aboutJ40Img from '../images/about-j40.svg';
+import aboutJ40Img from '../images/about-j40-1.svg';
 import accountBalanceIcon // @ts-ignore
   from '/node_modules/uswds/dist/img/usa-icons/account_balance.svg';
 
@@ -63,12 +63,12 @@ const IndexPage = ({location}: IndexPageProps) => {
     },
     aboutScreenToolHeading: {
       id: 'index.heading.screentool',
-      defaultMessage: 'About the screening tool',
+      defaultMessage: 'The screening tool',
       description: 'heading for about screening tool',
     },
     aboutJustice40Heading: {
       id: 'index.heading.justice40',
-      defaultMessage: 'About the Justice40 Initiative',
+      defaultMessage: 'The Justice40 Initiative',
       description: 'heading for about justice 40',
     },
   });
@@ -171,8 +171,10 @@ const IndexPage = ({location}: IndexPageProps) => {
               size={'small'}
               imgSrc={accountBalanceIcon}
               header={'Federal program managers'}
-              actionText={'Go to data & methodology'}
-              actionUrl={'./methodology'}>
+              linkText={'Go to data & methodology'}
+              url={'/methodology'}
+              internal={true}
+            >
               Download the screening tool’s draft list of communities of focus.
               Explore data that may be useful to your program, and provide
               feedback on the tool.
@@ -182,8 +184,10 @@ const IndexPage = ({location}: IndexPageProps) => {
               size={'small'}
               imgSrc={groupsIcon}
               header={'Community members'}
-              actionText={'Explore the tool'}
-              actionUrl={'./cejst'}>
+              linkText={'Explore the tool'}
+              url={'/cejst'}
+              internal={true}
+            >
               Explore data about communities of focus in your area, and help
               provide feedback on the tool.
             </AboutCard>
@@ -197,9 +201,11 @@ const IndexPage = ({location}: IndexPageProps) => {
           <AboutCard
             size={'small'}
             imgSrc={commentIcon}
-            header={'Send Feedback'}
-            actionText={'Email: screeningtool.feedback@usds.gov'}
-            actionUrl={'mailto:screeningtool.feedback@usds.gov'}>
+            header={'Send feedback'}
+            linkText={'Email: screeningtool.feedback@usds.gov'}
+            url={'mailto:screeningtool.feedback@usds.gov'}
+            internal={false}
+          >
             Have ideas about how this tool can be improved to better
             reflect the on-the-ground experiences of your community?
           </AboutCard>
@@ -208,9 +214,11 @@ const IndexPage = ({location}: IndexPageProps) => {
             size={'small'}
             imgSrc={githubIcon}
             header={'Join the open source community'}
-            actionText={'Check it out on GitHub'}
-            actionUrl={'https://github.com/usds/justice40-tool'}
-            actionOpenInNewTab={true}>
+            linkText={'Check it out on GitHub'}
+            url={'https://github.com/usds/justice40-tool'}
+            openUrlNewTab={true}
+            internal={false}
+          >
             The screening tool’s code is open source, which means it is
             available for the public to view and contribute to. Anyone
             can view and contribute on GitHub.

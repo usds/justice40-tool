@@ -144,13 +144,13 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     },
     femaRisk: {
       id: 'areaDetail.indicator.femaRisk',
-      defaultMessage: 'FEMA Risk index',
+      defaultMessage: 'FEMA Risk Index',
       description: 'Risk based on 18 natural hazard types, in addition to a'+
       "community's social vulnerability and community resilience",
     },
     heartDisease: {
       id: 'areaDetail.indicator.heartDisease',
-      defaultMessage: 'Heart Disease',
+      defaultMessage: 'Heart disease',
       description: 'People ages 18 and up who report ever having been told by a' +
       'doctor, nurse, or other health professionals that they had angina or coronary heart disease',
     },
@@ -216,7 +216,8 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
   };
   const poverty:indicatorInfo = {
     label: intl.formatMessage(messages.poverty),
-    description: 'Household income is less than or equal to the federal "poverty level"',
+    description: "Percent of a block group's population in households where the household income" +
+    ' is at or below 100% of the federal poverty level',
     value: properties[constants.POVERTY_PROPERTY_PERCENTILE],
   };
   // const linIsoInfo:indicatorInfo = {

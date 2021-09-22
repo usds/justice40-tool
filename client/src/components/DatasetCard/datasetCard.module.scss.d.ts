@@ -1,6 +1,7 @@
 declare namespace DatasetCardScssNamespace {
     export interface IDatasetCardScss {
         datasetCard: string;
+        datasetCardAdditional:string;
         datasetCardIndicator:string;
         datasetCardWhatIsIt: string;
         datasetCardDescription: string;
