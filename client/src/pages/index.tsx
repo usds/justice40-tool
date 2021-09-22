@@ -123,6 +123,7 @@ const IndexPage = ({location}: IndexPageProps) => {
             header={intl.formatMessage(ABOUT_COPY.GET_INVOLVED.SEND_FEEDBACK_HEADING)}
             linkText={`Email: ${CONTACT_COPY.FEEDBACK_EMAIL}`}
             url={`mailto:${CONTACT_COPY.FEEDBACK_EMAIL}`}
+            openUrlNewTab={true}
             internal={false}>
             <p>
               {intl.formatMessage(ABOUT_COPY.GET_INVOLVED.SEND_FEEDBACK_INFO)}
