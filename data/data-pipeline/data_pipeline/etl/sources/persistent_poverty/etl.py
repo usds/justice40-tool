@@ -52,14 +52,28 @@ class PersistentPovertyETL(ExtractTransformLoad):
             dfs,
         )
 
+        # Left-pad the tracts with 0s
+        expected_length_of_census_tract_field = 11
+        df[self.GEOID_TRACT_FIELD_NAME] = (
+            df[self.GEOID_TRACT_FIELD_NAME]
+            .astype(str)
+            .apply(lambda x: x.zfill(expected_length_of_census_tract_field))
+        )
+
         # Sanity check the join.
-        # if (
-        #     len(df[self.GEOID_TRACT_FIELD_NAME].str.len().unique())
-        #     != 1
-        # ):
-        #     raise ValueError(
-        #         f"One of the input CSVs uses {self.GEOID_TRACT_FIELD_NAME} with a different length."
-        #     )
+        if (
+            len(df[self.GEOID_TRACT_FIELD_NAME].str.len().unique())
+            != 1
+        ):
+            raise ValueError(
+                f"One of the input CSVs uses {self.GEOID_TRACT_FIELD_NAME} with a different length."
+            )
+
+        if len(df) > self.EXPECTED_MAX_CENSUS_TRACTS:
+            raise ValueError(
+                f"Too many rows in the join: {len(df)}"
+            )
+
         return df
 
     def extract(self) -> None:
