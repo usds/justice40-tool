@@ -101,7 +101,7 @@ python-dateutil==2.8.2; python_full_version >= "3.7.1" and python_version >= "3.
 pytz==2021.1; python_full_version >= "3.7.1" and python_version >= "2.7"
 pywin32==301; sys_platform == "win32" and platform_python_implementation != "PyPy" and python_version >= "3.6"
 pywinpty==1.1.4; os_name == "nt" and python_version >= "3.6"
-pyyaml==5.4.1; python_version >= "3.5" and python_full_version < "3.0.0" or python_full_version >= "3.6.0" and python_version >= "3.5"
+pyyaml==5.4.1; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.6.0"
 pyzmq==22.3.0; python_full_version >= "3.6.1" and python_version >= "3.7"
 qtconsole==5.1.1; python_version >= "3.6"
 qtpy==1.11.1; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.6.0" and python_version >= "3.6"
@@ -120,9 +120,8 @@ tornado==6.1; python_full_version >= "3.6.1" and python_version >= "3.7"
 tox==3.24.4; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.5.0")
 tqdm==4.62.0; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.4.0")
 traitlets==5.1.0; python_full_version >= "3.6.1" and python_version >= "3.7"
-typed-ast==1.4.3; python_version < "3.8" and python_full_version >= "3.6.2" and python_version >= "3.6" and implementation_name == "cpython"
-types-requests==2.25.7
-typing-extensions==3.10.0.2
+types-requests==2.25.8
+typing-extensions==3.10.0.2; python_version < "3.8" and python_version >= "3.6"
 urllib3==1.26.6; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.6.0" and python_version < "4" and python_version >= "2.7"
 us==2.0.2
 virtualenv==20.8.0; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
