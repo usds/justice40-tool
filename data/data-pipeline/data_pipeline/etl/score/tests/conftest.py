@@ -41,6 +41,7 @@ def etl(monkeypatch, root):
     etl = PostScoreETL()
     monkeypatch.setattr(etl, "DATA_PATH", root)
     monkeypatch.setattr(etl, "TMP_PATH", tmp_path)
+
     return etl
 
 
@@ -63,6 +64,11 @@ def state_data_initial(sample_data_dir):
 @pytest.fixture()
 def score_data_initial(sample_data_dir):
     return sample_data_dir / "score_data_initial.csv"
+
+
+@pytest.fixture()
+def score_pdf_initial(sample_data_dir):
+    return sample_data_dir / "Draft_Communities_List.pdf"
 
 
 @pytest.fixture()

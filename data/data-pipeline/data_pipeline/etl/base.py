@@ -19,6 +19,7 @@ class ExtractTransformLoad:
 
     DATA_PATH: Path = settings.APP_ROOT / "data"
     TMP_PATH: Path = DATA_PATH / "tmp"
+    FILES_PATH: Path = settings.APP_ROOT / "files"
     GEOID_FIELD_NAME: str = "GEOID10"
     GEOID_TRACT_FIELD_NAME: str = "GEOID10_TRACT"
     # TODO: investigate. Census says there are only 217,740 CBGs in the US.
