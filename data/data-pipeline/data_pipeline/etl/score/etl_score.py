@@ -106,22 +106,22 @@ class ScoreETL(ExtractTransformLoad):
             "EJSCREEN Areas of Concern, National, 95th percentile (communities)"
         )
         self.EJSCREEN_AREAS_OF_CONCERN_STATE_70TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
-            "EJSCREEN Areas of Concern, National, 70th percentile (communities)"
+            "EJSCREEN Areas of Concern, State, 70th percentile (communities)"
         )
         self.EJSCREEN_AREAS_OF_CONCERN_STATE_75TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
-            "EJSCREEN Areas of Concern, National, 75th percentile (communities)"
+            "EJSCREEN Areas of Concern, State, 75th percentile (communities)"
         )
         self.EJSCREEN_AREAS_OF_CONCERN_STATE_80TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
-            "EJSCREEN Areas of Concern, National, 80th percentile (communities)"
+            "EJSCREEN Areas of Concern, State, 80th percentile (communities)"
         )
         self.EJSCREEN_AREAS_OF_CONCERN_STATE_85TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
-            "EJSCREEN Areas of Concern, National, 85th percentile (communities)"
+            "EJSCREEN Areas of Concern, State, 85th percentile (communities)"
         )
         self.EJSCREEN_AREAS_OF_CONCERN_STATE_90TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
-            "EJSCREEN Areas of Concern, National, 90th percentile (communities)"
+            "EJSCREEN Areas of Concern, State, 90th percentile (communities)"
         )
         self.EJSCREEN_AREAS_OF_CONCERN_STATE_95TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
-            "EJSCREEN Areas of Concern, National, 95th percentile (communities)"
+            "EJSCREEN Areas of Concern, State, 95th percentile (communities)"
         )
 
         # dataframes
