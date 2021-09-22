@@ -83,6 +83,20 @@ class ScoreETL(ExtractTransformLoad):
         # Urban Rural Map
         self.URBAN_HERUISTIC_FIELD_NAME = "Urban Heuristic Flag"
 
+        # EJ Areas of Concern
+        self.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_70TH_PERCENTILE_COMMUNITIES_FIELD_NAME = "EJSCREEN Areas of Concern, National, 70th percentile (communities)"
+        self.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_75TH_PERCENTILE_COMMUNITIES_FIELD_NAME = "EJSCREEN Areas of Concern, National, 75th percentile (communities)"
+        self.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_80TH_PERCENTILE_COMMUNITIES_FIELD_NAME = "EJSCREEN Areas of Concern, National, 80th percentile (communities)"
+        self.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_85TH_PERCENTILE_COMMUNITIES_FIELD_NAME = "EJSCREEN Areas of Concern, National, 85th percentile (communities)"
+        self.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_90TH_PERCENTILE_COMMUNITIES_FIELD_NAME = "EJSCREEN Areas of Concern, National, 90th percentile (communities)"
+        self.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_95TH_PERCENTILE_COMMUNITIES_FIELD_NAME = "EJSCREEN Areas of Concern, National, 95th percentile (communities)"
+        self.EJSCREEN_AREAS_OF_CONCERN_STATE_70TH_PERCENTILE_COMMUNITIES_FIELD_NAME = "EJSCREEN Areas of Concern, National, 70th percentile (communities)"
+        self.EJSCREEN_AREAS_OF_CONCERN_STATE_75TH_PERCENTILE_COMMUNITIES_FIELD_NAME = "EJSCREEN Areas of Concern, National, 75th percentile (communities)"
+        self.EJSCREEN_AREAS_OF_CONCERN_STATE_80TH_PERCENTILE_COMMUNITIES_FIELD_NAME = "EJSCREEN Areas of Concern, National, 80th percentile (communities)"
+        self.EJSCREEN_AREAS_OF_CONCERN_STATE_85TH_PERCENTILE_COMMUNITIES_FIELD_NAME = "EJSCREEN Areas of Concern, National, 85th percentile (communities)"
+        self.EJSCREEN_AREAS_OF_CONCERN_STATE_90TH_PERCENTILE_COMMUNITIES_FIELD_NAME = "EJSCREEN Areas of Concern, National, 90th percentile (communities)"
+        self.EJSCREEN_AREAS_OF_CONCERN_STATE_95TH_PERCENTILE_COMMUNITIES_FIELD_NAME = "EJSCREEN Areas of Concern, National, 95th percentile (communities)"
+
         # dataframes
         self.df: pd.DataFrame
         self.ejscreen_df: pd.DataFrame
@@ -95,6 +109,7 @@ class ScoreETL(ExtractTransformLoad):
         self.doe_energy_burden_df: pd.DataFrame
         self.national_risk_index_df: pd.DataFrame
         self.geocorr_urban_rural_df: pd.DataFrame
+        self.ejscreen_areas_of_concern_df: pd.DataFrame
 
     def data_sets(self) -> list:
         # Define a named tuple that will be used for each data set input.
@@ -206,6 +221,67 @@ class ScoreETL(ExtractTransformLoad):
                 renamed_field=self.URBAN_HERUISTIC_FIELD_NAME,
                 bucket=None,
             ),
+            DataSet(
+                input_field=self.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_70TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                renamed_field=self.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_70TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                bucket=None,
+            ),
+            DataSet(
+                input_field=self.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_75TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                renamed_field=self.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_75TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                bucket=None,
+            ),
+            DataSet(
+                input_field=self.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_80TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                renamed_field=self.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_80TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                bucket=None,
+            ),
+            DataSet(
+                input_field=self.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_85TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                renamed_field=self.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_85TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                bucket=None,
+            ),
+            DataSet(
+                input_field=self.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_90TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                renamed_field=self.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_90TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                bucket=None,
+            ),
+            DataSet(
+                input_field=self.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_95TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                renamed_field=self.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_95TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                bucket=None,
+            ),
+            DataSet(
+                input_field=self.EJSCREEN_AREAS_OF_CONCERN_STATE_70TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                renamed_field=self.EJSCREEN_AREAS_OF_CONCERN_STATE_70TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                bucket=None,
+            ),
+            DataSet(
+                input_field=self.EJSCREEN_AREAS_OF_CONCERN_STATE_75TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                renamed_field=self.EJSCREEN_AREAS_OF_CONCERN_STATE_75TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                bucket=None,
+            ),
+            DataSet(
+                input_field=self.EJSCREEN_AREAS_OF_CONCERN_STATE_80TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                renamed_field=self.EJSCREEN_AREAS_OF_CONCERN_STATE_80TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                bucket=None,
+            ),
+            DataSet(
+                input_field=self.EJSCREEN_AREAS_OF_CONCERN_STATE_85TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                renamed_field=self.EJSCREEN_AREAS_OF_CONCERN_STATE_85TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                bucket=None,
+            ),
+            DataSet(
+                input_field=self.EJSCREEN_AREAS_OF_CONCERN_STATE_90TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                renamed_field=self.EJSCREEN_AREAS_OF_CONCERN_STATE_90TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                bucket=None,
+            ),
+            DataSet(
+                input_field=self.EJSCREEN_AREAS_OF_CONCERN_STATE_95TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                renamed_field=self.EJSCREEN_AREAS_OF_CONCERN_STATE_95TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                bucket=None,
+            ),
+
             # The following data sets have buckets, because they're used in Score C
             DataSet(
                 input_field="CANCER",
@@ -402,6 +478,16 @@ class ScoreETL(ExtractTransformLoad):
         self.geocorr_urban_rural_df = pd.read_csv(
             geocorr_urban_rural_csv,
             dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
+            low_memory=False,
+        )
+
+        # Load EJ Screen Areas of Concern
+        ejscreen_areas_of_concern_csv = (
+            self.DATA_PATH / "dataset" / "ejscreen_areas_of_concern" / "usa.csv"
+        )
+        self.ejscreen_areas_of_concern_df = pd.read_csv(
+            ejscreen_areas_of_concern_csv,
+            dtype={self.GEOID_FIELD_NAME: "string"},
             low_memory=False,
         )
 
@@ -682,6 +768,7 @@ class ScoreETL(ExtractTransformLoad):
             self.housing_and_transportation_df,
             self.census_acs_median_incomes_df,
             self.national_risk_index_df,
+            self.ejscreen_areas_of_concern_df,
         ]
         census_block_group_df = self._join_cbg_dfs(census_block_group_dfs)
 

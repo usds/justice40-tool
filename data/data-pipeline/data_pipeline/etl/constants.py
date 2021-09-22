@@ -64,6 +64,11 @@ DATASET_LIST = [
         "module_dir": "geocorr",
         "class_name": "GeoCorrETL",
     },
+    {
+        "name": "ejscreen_areas_of_concern",
+        "module_dir": "ejscreen_areas_of_concern",
+        "class_name": "EJScreenAreasOfConcernETL",
+    },
 ]
 CENSUS_INFO = {
     "name": "census",
