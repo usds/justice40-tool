@@ -763,7 +763,8 @@ class ScoreETL(ExtractTransformLoad):
         # TODO do this at the same time as calculating percentiles in future refactor
         for data_set in data_sets:
             # Skip GEOID_FIELD_NAME, because it's a string.
-            if data_set.renamed_field == self.GEOID_FIELD_NAME:
+            # Skip `PERSISTENT_POVERTY_FIELD` because it's a straight pass-through.
+            if data_set.renamed_field == self.GEOID_FIELD_NAME or data_set.renamed_field == self.PERSISTENT_POVERTY_FIELD:
                 continue
 
             df[data_set.renamed_field] = pd.to_numeric(
