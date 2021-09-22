@@ -81,7 +81,7 @@ class ScoreETL(ExtractTransformLoad):
         self.SCORE_CSV_PATH: Path = self.DATA_PATH / "score" / "csv" / "full"
 
         # Urban Rural Map
-        self.URBAN_HERUISTIC_FIELD_NAME = "urban_heuristic_flag"
+        self.URBAN_HERUISTIC_FIELD_NAME = "Urban Heuristic Flag"
 
         # dataframes
         self.df: pd.DataFrame
@@ -638,6 +638,15 @@ class ScoreETL(ExtractTransformLoad):
         df["Score G"] = df["Score G (communities)"].astype(int)
         df["Score G (percentile)"] = df["Score G"]
 
+        df["Score H (communities)"] = (
+            (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
+            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold_2)
+        ) | (
+            (df[self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME] > 0.40)
+            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold_2)
+        )
+        df["Score H"] = df["Score H (communities)"].astype(int)
+
         df["Score I (communities)"] = (
             (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.7)
             & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
@@ -648,19 +657,9 @@ class ScoreETL(ExtractTransformLoad):
         df["Score I"] = df["Score I (communities)"].astype(int)
         df["Score I (percentile)"] = df["Score I"]
 
-        df["Score H (communities)"] = (
-            (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
-            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold_2)
-        ) | (
-            (df[self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME] > 0.40)
-            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold_2)
-        )
-        df["Score H"] = df["Score H (communities)"].astype(int)
-
         df["NMTC (communities)"] = (
             (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
         ) | (df[self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME] > 0.20)
-
 
         df["Score K (communities)"] = (
             (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)

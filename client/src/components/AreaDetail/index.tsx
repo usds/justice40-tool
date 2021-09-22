@@ -294,8 +294,8 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
   };
   const houseBurden:indicatorInfo = {
     label: intl.formatMessage(messages.houseBurden),
-    description: 'People ages 18 and up who report having been told by a doctor,' +
-    ' nurse, or other health professionals that they have diabetes other than diabetes during pregnancy',
+    description: 'Households that are low income and spend more than 30% of their income on' +
+    ' housing costs',
     value: properties[constants.HOUSING_BURDEN_PROPERTY_PERCENTILE],
   };
 
