@@ -1,15 +1,5 @@
 @import "./utils.scss";
 
-.mapAndInfoPanelContainer {
-  display: flex;
-  height: 81vh; //desktop
-
-  @media screen and (max-width: $mobileBreakpoint) {
-    flex-direction: column;
-    height: fit-content;
-  }
-}
-
 .j40Popup {
   width: 375px;
 }
@@ -31,7 +21,7 @@
 }
 
 .mapInfoPanel {
-  border: 2px solid $sidePanelBorderColor;
+  border: 1px solid $sidePanelBorderColor;
   overflow-y: auto;
-  max-width: 22rem;
+  height: 90vh;
 }

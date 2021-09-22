@@ -1,12 +1,12 @@
 // / <reference types="Cypress" />
 
-describe('Census Block Group download', () => {
+describe('Census Block Group packet download', () => {
+  const filename = `Screening_Tool_Data.zip`;
   it('validate file download', () => {
-    const filename = `Screening+Tool+Data.zip`;
     cy.visit('localhost:8000/en/methodology');
 
     cy.get('[data-cy="download-link"]').invoke('attr', 'target', '_blank');
-    cy.intercept(`https://justice40-data.s3.amazonaws.com/data-pipeline/data/score/downloadable/${filename}`,
+    cy.intercept(`https://d3jqyw10j8e7p9.cloudfront.net/data-pipeline/data/score/downloadable/${filename}`,
         {
           body: 'success',
           headers: {

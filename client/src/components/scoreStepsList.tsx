@@ -1,99 +1,96 @@
 import React from 'react';
-import {GridContainer, Grid} from '@trussworks/react-uswds';
+import {
+  ProcessList,
+  ProcessListItem,
+  ProcessListHeading,
+  Grid,
+} from '@trussworks/react-uswds';
 
 const ScoreStepsList = () => {
   return (
     <>
-      <div className={'j40-process-list-wrapper'}>
-        <ul>
-          <li>
-            <section>
-              <h3 className={'j40-item-list-title'}>Gather datasets</h3>
-              <h4 className={'j40-item-list-subtitle'}>Data inputs</h4>
-              <p>
-                The cumulative index score includes the following equally
-                weighted inputs.
-              </p>
+      <h2>Methodology</h2>
+      <Grid row>
+        <Grid col={7}>
+          <p>
+            The methodology for identifying communities of focus is calculated at the
+            census block group level. Census block geographical boundaries are determined
+            by the U.S. Census Bureau once every ten years. This tool utilizes the census
+            block boundaries from 2010.
+          </p>
+          <p>
+          The following describes the process for identifying communities of focus.
+          </p>
+        </Grid>
+      </Grid>
 
-              <ul className={'j40-process-nested-list'}>
-                <li>Poverty</li>
-                <li>Less than high school education</li>
-                <li>Linguistic isolation</li>
-                <li>Unemployment rate</li>
-                <li>Housing burden</li>
-              </ul>
+      <ProcessList>
 
+        <ProcessListItem>
+          <ProcessListHeading type="h4">Gather datasets</ProcessListHeading>
+          <p>{' '}</p>
+          <p className={'flush'}>
+            The methodology includes the following inputs that are equally weighted.
+          </p>
 
-              <h4 className={'j40-item-list-subtitle'}>
-                Combining data from different geographic units
-              </h4>
-              <p>
-                Some data is not available at the census block group level and
-                is instead only available for larger units such as census tracts
-                or counties. In these cases, all census block groups will get an
-                even contribution from the larger unit. For example, if a census
-                tract scores 90th percentile on an indicator, then all census
-                block groups within that tract will receive a value of 90th
-                percentile.
-              </p>
-              <h4 className={'j40-item-list-subtitle'}>Normalizing data</h4>
-              <p>
-                The range of the data that makes up the score varies, so the
-                data must be normalized so that each data indicator can be more
-                equally weighted. Min-max normalization is utilized, where the
-                minimum value in the range of values for each dataset is set at
-                0, the maximum value is set at 1, and every other value is
-                transformed into a decimal between 0 and 1. For example, if the
-                minimum value for unemployment was 10 and the maximum value was
-                30, a value of 20 would be transformed to 0.5 since it is
-                halfway between 10 and 30.
-              </p>
-            </section>
-          </li>
+          <h4>
+            Percent of Area Median Income
+          </h4>
+          <p className={'flush'}>
+            If a census block group is in a metropolitan area, this value is the
+            median income of the census block group calculated as a percent of
+            the metropolitan area’s median income.
+          </p>
+          <p>
+            If a census block group is not in a metropolitan area, this value is
+            the median income of the census block group calculated as a percent
+            of the state’s median income.
+          </p>
 
-          <li>
-            <section>
-              <h3>Calculate cumulative index score</h3>
-              <p>
-                To combine all variables into a single cumulative index score,
-                we average the normalized values across indicators.
-              </p>
+          <h4>
+            Percent of households below or at 100% of the federal poverty line
+          </h4>
+          <p className={'flush'}>
+            This is the percent of households in a state with a household income
+            below or at 100% of the <a href="https://www.census.gov/topics/income-poverty/poverty/guidance/poverty-measures.html" target="_blank" rel="noreferrer">federal poverty line</a>. This federal poverty line is
+            calculated based on the composition of each household (e.g., based on
+            household size), but it does not vary geographically.
+          </p>
+          <h4>
+            The high school degree achievement rate for adults 25 years and older
+          </h4>
+          <p className={'flush'}>
+            The percent of individuals who are 25 or older who have received a high school degree.
+          </p>
+        </ProcessListItem>
 
-              <GridContainer className={''}>
-                <Grid row className={'j40-math-division-container'}>
-                  <Grid col className={'j40-math-eq-left-side grid-col-fill'}>
-                    <div className={'j40-math-eq-numerator'}>
-                      Dataset 1 + Dataset 2 + ... + Dataset N
-                    </div>
-                    <div className={'j40-math-eq-denominator'}>
-                      # of datasets
-                    </div>
-                  </Grid>
-                  <Grid col className={'j40-math-eq-middle grid-col-auto'}>
-                    =
-                  </Grid>
-                  <Grid col className={'j40-math-eq-right-side grid-col-fill'}>
-                    Cumulative index score
-                  </Grid>
-                </Grid>
-              </GridContainer>
-            </section>
-          </li>
+        <ProcessListItem>
+          <ProcessListHeading type="h4">
+            Determine communites of focus
+          </ProcessListHeading>
+          <p>{' '}</p>
+          <p className={'flush'}>
+            Under the existing formula, a census block group will be considered a
+            community of focus if:
+          </p>
+          <p>
+            (The median income is less than 80% of the area median income
+          </p>
+          <p className={'flush'}>
+            OR
+          </p>
+          <p className={'flush'}>
+            households living in poverty (at or below 100% of the federal poverty level) is greater than 20%)
+          </p>
+          <p className={'flush'}>
+            AND
+          </p>
+          <p className={'flush'}>
+            The high school degree achievement rate for adults 25 years and older is greater than 95%
+          </p>
+        </ProcessListItem>
 
-          <li>
-            <section>
-              <h3 className={'j40-item-list-title'}>Assign priority</h3>
-              <p>
-                Census block groups are sorted by their cumulative index score
-                from highest to lowest. Census block groups that are in the top
-                25 percentile (i.e. have a cumulative index score in the 75 -
-                100th percentile) will be considered the prioritized
-                communities.
-              </p>
-            </section>
-          </li>
-        </ul>
-      </div>
+      </ProcessList>
     </>
   );
 };

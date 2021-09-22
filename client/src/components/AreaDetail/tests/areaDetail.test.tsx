@@ -36,15 +36,15 @@ describe('tests the readablePercentile function', () => {
 });
 
 describe('tests the getCategorization function', () => {
-  it(`should equal Prioritized for value >= ${constants.SCORE_BOUNDARY_LOW}`, () => {
-    expect(getCategorization(.756)).toEqual(['Prioritized', undefined]);
+  it(`should equal Community of focus for value >= ${constants.SCORE_BOUNDARY_LOW}`, () => {
+    expect(getCategorization(.756)).toEqual(['Community of focus', undefined]);
   });
 
   it(`should equal Threshold for .60 <= value < ${constants.SCORE_BOUNDARY_THRESHOLD}`, () => {
-    expect(getCategorization(.65)).toEqual(['Threshold', undefined]);
+    expect(getCategorization(.65)).toEqual(['Not a community of focus', undefined]);
   });
 
   it(`should equal Non-prioritized for value < ${constants.SCORE_BOUNDARY_PRIORITIZED}`, () => {
-    expect(getCategorization(.53)).toEqual(['Non-prioritized', undefined]);
+    expect(getCategorization(.53)).toEqual(['Not a community of focus', undefined]);
   });
 });

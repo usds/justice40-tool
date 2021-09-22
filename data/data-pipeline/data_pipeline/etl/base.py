@@ -13,9 +13,6 @@ from data_pipeline.utils import (
 
 logger = get_module_logger(__name__)
 
-BLOCK_COL = "GEOID10"
-TRACT_COL = "GEOID10_TRACT"
-
 
 class ExtractTransformLoad:
     """
@@ -32,9 +29,10 @@ class ExtractTransformLoad:
     APP_ROOT: Path = settings.APP_ROOT
     DATA_PATH: Path = APP_ROOT / "data"
     TMP_PATH: Path = DATA_PATH / "tmp"
+    FILES_PATH: Path = settings.APP_ROOT / "files"
     CENSUS_CSV: Path = DATA_PATH / "census" / "csv" / "us.csv"
-    GEOID_FIELD_NAME: str = BLOCK_COL
-    GEOID_TRACT_FIELD_NAME: str = TRACT_COL
+    GEOID_FIELD_NAME: str = "GEOID10"
+    GEOID_TRACT_FIELD_NAME: str = "GEOID10_TRACT"
     # TODO: investigate. Census says there are only 217,740 CBGs in the US.
     EXPECTED_MAX_CENSUS_BLOCK_GROUPS: int = 220405
 
@@ -126,10 +124,13 @@ class ExtractTransformLoad:
         if not self.CENSUS_CSV.exists():
             logger.info("Census data not found, please run download_csv first")
         # load the census data
-        df = pd.read_csv(self.CENSUS_CSV, dtype={BLOCK_COL: "string"})
+        df = pd.read_csv(
+            self.CENSUS_CSV,
+            dtype={self.GEOID_FIELD_NAME_COL: "string"}
+        )
         # extract Census tract FIPS code from Census block group
-        df[TRACT_COL] = df[BLOCK_COL].str[0:11]
-        return df[[BLOCK_COL, TRACT_COL]]
+        df[self.GEOID_TRACT_FIELD_NAME] = df[self.GEOID_FIELD_NAME].str[0:11]
+        return df[[self.GEOID_FIELD_NAME, TRACT_COL]]
 
     def validate_output(self) -> None:
         """Checks that the output of the ETL process adheres to the contract
@@ -150,11 +151,14 @@ class ExtractTransformLoad:
         assert self.OUTPUT_PATH.exists(), "No file found at OUTPUT_PATH"
         df_output = pd.read_csv(
             self.OUTPUT_PATH,
-            dtype={BLOCK_COL: "string", TRACT_COL: "string"},
+            dtype={
+                self.GEOID_FIELD_NAME: "string",
+                self.GEOID_TRACT_FIELD_NAME: "string"
+            },
         )
 
         # check that the GEOID cols in the output match census data
-        geoid_cols = [BLOCK_COL, TRACT_COL]
+        geoid_cols = [self.GEOID_FIELD_NAME, self.GEOID_TRACT_FIELD_NAME]
         assert self.FIPS_CODES.equals(df_output[geoid_cols])
 
         # check that the score columns are in the output

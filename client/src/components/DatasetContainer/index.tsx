@@ -1,57 +1,159 @@
 import React from 'react';
 import {useIntl} from 'gatsby-plugin-intl';
 import {defineMessages} from 'react-intl';
-import DatasetCard from '../DatasetCard';
-import * as styles from './dsContainer.module.scss';
-import AlertWrapper from '../AlertWrapper';
+import {Grid} from '@trussworks/react-uswds';
 
-export const cards = [
+import AlertWrapper from '../AlertWrapper';
+import DatasetCard from '../DatasetCard';
+import J40MainGridContainer from '../J40MainGridContainer';
+
+import * as styles from './dsContainer.module.scss';
+
+export const indicators = [
+  {
+    indicator: 'Area Median Income',
+    description: `Median income of the census block group calculated as a percent 
+    of the metropolitan area’s or state's median income.`,
+    dataResolution: `Census block group`,
+    dataSourceLabel: `Census's American Community Survey`,
+    dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
+    dataDateRange: `2015-2019`,
+  },
   {
     indicator: 'Poverty',
-    description: `Percent of a block group's population in households where the household 
-    income is less than or equal to twice the federal "poverty level"`,
+    description: `Percent of a block group's population in households where the household income` +
+    ` is at or below 100% of the federal poverty level`,
     dataResolution: `Census block group`,
-    dataSourceLabel: `U.S. Census Bureau`,
-    dataSourceURL: `https://www.census.gov/`,
+    dataSourceLabel: `Census's American Community Survey`,
+    dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
+    dataDateRange: `2015-2019`,
+  },
+  {
+    indicator: 'Education, less than high school education',
+    description: `Percent of people ages 25 years or older in a block group whose 
+    education level is less than a high school diploma.`,
+    dataResolution: `Census block group`,
+    dataSourceLabel: `Census's American Community Survey`,
+    dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
+    dataDateRange: `2015-2019`,
+  },
+];
+
+export const additionalIndicators = [
+  {
+    indicator: 'Diabetes',
+    description: `People ages 18 years and older who report having ever been 
+    told by a doctor, nurse, or other health professionals that they have 
+    diabetes other than diabetes during pregnancy.`,
+    dataResolution: `Census tract`,
+    dataSourceLabel: `Centers for Disease Control and Prevention (CDC) PLACES`,
+    dataSourceURL: `https://www.cdc.gov/places/index.html`,
+    dataDateRange: `2016-2019`,
+  },
+  {
+    indicator: 'Asthma',
+    description: `Weighted number of respondents people who answer “yes” both 
+    to both of the following questions: “Have you ever been told by a doctor, 
+    nurse, or other health professional that you have asthma?” and the question 
+    “Do you still have asthma?”`,
+    dataResolution: `Census tract`,
+    dataSourceLabel: `Centers for Disease Control and Prevention (CDC) PLACES`,
+    dataSourceURL: `https://www.cdc.gov/places/index.html`,
+    dataDateRange: `2016-2019`,
+  },
+  {
+    indicator: 'Heart disease',
+    description: `People ages 18 years and older who report ever having been told 
+    by a doctor, nurse, or other health professionals that they had angina or 
+    coronary heart disease.`,
+    dataResolution: `Census tract`,
+    dataSourceLabel: `Centers for Disease Control and Prevention (CDC) PLACES`,
+    dataSourceURL: `https://www.cdc.gov/places/index.html`,
+    dataDateRange: `2016-2019`,
+  },
+  {
+    indicator: 'Life expectancy',
+    description: `Estimated years of life expectancy.`,
+    dataResolution: `Census tract`,
+    dataSourceLabel: `Centers for Disease Control and Prevention (CDC) 
+    US Small-area Life Expectancy Estimates Project`,
+    dataSourceURL: `https://www.cdc.gov/nchs/nvss/usaleep/usaleep.html#data`,
+    dataDateRange: `2010-2015`,
+  },
+  {
+    indicator: 'Traffic proximity and volume',
+    description: `Count of vehicles (average annual daily traffic) at major roads 
+    within 500 meters, divided by distance in meters (not km).`,
+    dataResolution: `Census block group`,
+    dataSourceLabel: `Department of Transportation (DOT) traffic data`,
+    dataSourceURL: `https://www.fhwa.dot.gov/policyinformation/hpms/shapefiles.cfm`,
+    dataDateRange: `2017`,
+  },
+  {
+    indicator: 'FEMA Risk Index Expected Annual Loss Score',
+    description: `Average economic loss in dollars resulting from natural 
+    hazards each year. It is calculated for each hazard type and quantifies 
+    loss for relevant consequence types: buildings, people, and agriculture.`,
+    dataResolution: `Census tract`,
+    dataSourceLabel: `Federal Emergency Management Agency (FEMA)`,
+    dataSourceURL: `https://hazards.fema.gov/nri/expected-annual-loss`,
+    dataDateRange: `2014-2017`,
+  },
+  {
+    indicator: 'Energy burden',
+    description: `Average annual energy cost ($) divided by household income.`,
+    dataResolution: `Census tract`,
+    dataSourceLabel: `Department of Energy (DOE) LEAD Score`,
+    dataSourceURL: `https://www.energy.gov/eere/slsc/low-income-energy-affordability-data-lead-tool`,
+    dataDateRange: `2018`,
+  },
+  {
+    indicator: 'Housing cost burden',
+    description: `Households that are low income and spend more than 30% of their 
+    income to housing costs.`,
+    dataResolution: `Census tract`,
+    dataSourceLabel: `Department of Housing & Urban Development’s 
+    (HUD) Comprehensive Housing Affordability Strategy dataset`,
+    dataSourceURL: `https://www.huduser.gov/portal/datasets/cp.html`,
+    dataDateRange: `2013-2017`,
+  },
+  {
+    indicator: 'Wastewater discharge',
+    description: `RSEI modeled Toxic Concentrations at stream segments within 500 
+    meters, divided by distance in kilometers (km).`,
+    dataResolution: `Census block group`,
+    dataSourceLabel: `Environmental Protection Agency (EPA) Risk-Screening 
+    Environmental Indicators (RSEI) Model`,
+    dataSourceURL: `https://www.epa.gov/rsei`,
+    dataDateRange: `2020`,
+  },
+  {
+    indicator: 'Lead paint',
+    description: `Percent of housing units built pre-1960, used as an 
+    indicator of potential lead paint exposure in homes.`,
+    dataResolution: `Census block group`,
+    dataSourceLabel: `Census's American Community Survey`,
+    dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
+    dataDateRange: `2015-2019`,
+  },
+  {
+    indicator: 'Diesel particulate matter',
+    description: `Mixture of particles that is part of diesel exhaust in the air.`,
+    dataResolution: `Census block group`,
+    dataSourceLabel: `Environmental Protection Agency (EPA) National Air Toxics Assessment (NATA)
+    `,
+    dataSourceURL: `https://www.epa.gov/national-air-toxics-assessment/2014-nata-assessment-results`,
     dataDateRange: `5-year estimates, 2015-2019`,
   },
   {
-    indicator: 'Education (less than high school)',
-    description: `Percent of people age 25 or older in a block group whose education is short of a high school diploma`,
+    indicator: 'PM2.5',
+    description: `Fine inhalable particles, with diameters that are generally 
+    2.5 micrometers and smaller.`,
     dataResolution: `Census block group`,
-    dataSourceLabel: `U.S. Census Bureau`,
-    dataSourceURL: `https://www.census.gov/`,
-    dataDateRange: `5-year estimates, 2015-2019`,
-  },
-  {
-    indicator: 'Linguistic isolation',
-    description: `Percent of people in a block group living in linguistically 
-    isolated households — a linguistically isolated household is a household in 
-    which all members aged 14 years and over speak a non-English language and also speak 
-    English less than "very well" (i.e., have difficulty with English)`,
-    dataResolution: `Census block group`,
-    dataSourceLabel: `U.S. Census Bureau`,
-    dataSourceURL: `https://www.census.gov/`,
-    dataDateRange: `5-year estimates, 2015-2019`,
-  },
-  {
-    indicator: 'Unemployment rate',
-    description: `Unemployment rate (people who are unemployed divided by the total population of 
-      people in the labor force over 16 years old)`,
-    dataResolution: `Census block group`,
-    dataSourceLabel: `U.S. Census Bureau`,
-    dataSourceURL: `https://www.census.gov/`,
-    dataDateRange: `5-year estimates, 2015-2019`,
-  },
-  {
-    indicator: 'Housing burden',
-    description: `Percent of households in a census tract that are both low income (making less
-       than 80% of the HUD Area Median Family Income) and severely burdened by housing costs 
-       (paying greater than 30% of their income to housing costs)`,
-    dataResolution: `Census block group`,
-    dataSourceLabel: `U.S. Census Bureau`,
-    dataSourceURL: `https://www.census.gov/`,
-    dataDateRange: `5-year estimates, 2015-2019`,
+    dataSourceLabel: `Environmental Protection Agency (EPA) Office of Air 
+    and Radiation (OAR) fusion of model and monitor data`,
+    dataSourceURL: `https://www.epa.gov/aboutepa/about-office-air-and-radiation-oar`,
+    dataDateRange: `2017`,
   },
 
 ];
@@ -61,32 +163,85 @@ const DatasetContainer = () => {
   const messages = defineMessages({
     cumulativeScore: {
       id: 'datasetContainer.header.cumulativeScore',
-      defaultMessage: 'Datasets used in cumulative score',
+      defaultMessage: 'Datasets used in methodology',
       description: 'section label of which datasets are used in cumulative score',
     },
     subTitle: {
       id: 'datasetContainer.subTitle',
-      defaultMessage: 'The datasets come from a variety of sources and ' +
-        'were selected after considering relevance, availability, recency and quality.',
+      defaultMessage: 'The datasets come from a variety of sources and were selected' +
+      ' based on relevance, availability, recency, and quality. The datasets seek to' +
+      ' identify a range of human health, environmental, climate-related, and other' +
+      ' cumulative impacts on communities.',
       description: 'description of the dataset section',
+    },
+    additionalSubtitle: {
+      id: 'datasetContainer.additionalSubtitle',
+      defaultMessage: 'Additional Indicators',
+      description: 'indicator heading',
+    },
+    additionalText: {
+      id: 'datasetContainer.additionalText',
+      defaultMessage: 'These datasets provide additional information about each community.',
+      description: 'additional indicator heading',
     },
   });
 
   //  JSX return value:
   return (
-    <div className={`${styles.datasetContainer} desktop:grid-col`}>
-      <div className={'grid-container-desktop-lg'}>
-        <h1 className={styles.datasetContainerHeader}>{intl.formatMessage(messages.cumulativeScore)}</h1>
-        <AlertWrapper showBetaAlert={false} showLimitedDataAlert={true}/>
+    <>
+      <J40MainGridContainer fullWidth={true} blueBackground={true}>
+        <J40MainGridContainer>
 
-        <p className={styles.datasetContainerSubTitle}>{intl.formatMessage(messages.subTitle)}</p>
-        <div className={styles.datasetCardsContainer}>
-          {cards.map((card) => <DatasetCard
-            key={card.indicator}
-            datasetCardProps={card}/>)}
-        </div>
-      </div>
-    </div>
+          <Grid row>
+            <Grid col={12}>
+              <AlertWrapper showBetaAlert={false} showLimitedDataAlert={true}/>
+              <h2>{intl.formatMessage(messages.cumulativeScore)}</h2>
+            </Grid>
+          </Grid>
+
+          <Grid row>
+            <Grid col={12} tablet={{col: 7}} className={'j40-mb-3'}>
+              <p>{intl.formatMessage(messages.subTitle)}</p>
+            </Grid>
+          </Grid>
+
+          <div className={styles.datasetCardsContainer}>
+            {indicators.map((card) => <DatasetCard
+              key={card.indicator}
+              datasetCardProps={card}
+              additionalIndicator={false}
+            />)}
+          </div>
+
+        </J40MainGridContainer>
+      </J40MainGridContainer>
+
+      <J40MainGridContainer fullWidth={true} blueBackground={false}>
+        <J40MainGridContainer>
+
+          <Grid row>
+            <Grid col={12}>
+              <h2>{intl.formatMessage(messages.additionalSubtitle)}</h2>
+            </Grid>
+          </Grid>
+
+          <Grid row>
+            <Grid col={12} tablet={{col: 7}} className={'j40-mb-3'}>
+              <p>{intl.formatMessage(messages.additionalText)}</p>
+            </Grid>
+          </Grid>
+
+          <div className={styles.datasetCardsContainer}>
+            {additionalIndicators.map((card) => <DatasetCard
+              key={card.indicator}
+              datasetCardProps={card}
+              additionalIndicator={true}
+            />)}
+          </div>
+
+        </J40MainGridContainer>
+      </J40MainGridContainer>
+    </>
   );
 };
 

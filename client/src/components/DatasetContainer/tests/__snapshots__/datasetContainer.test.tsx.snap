@@ -3,56 +3,120 @@
 exports[`rendering of the DatasetContainer checks if various text fields are visible 1`] = `
 <DocumentFragment>
   <div
-    class="undefined desktop:grid-col"
+    class="j40-main-grid-blue-bk "
   >
     <div
       class="grid-container-desktop-lg"
+      data-testid="gridContainer"
     >
-      <h1>
-        Datasets used in cumulative score
-      </h1>
-      <div>
+      <div
+        class="grid-row"
+        data-testid="grid"
+      >
         <div
-          class="usa-alert usa-alert--warning j40-sitealert"
-          data-testid="alert"
+          class="grid-col-12"
+          data-testid="grid"
         >
-          <div
-            class="usa-alert__body"
-          >
-            <p
-              class="usa-alert__text"
+          <div>
+            <div
+              class="usa-alert usa-alert--warning j40-sitealert"
+              data-testid="alert"
             >
-              <span
-                class="j40-sitealert-title"
+              <div
+                class="usa-alert__body"
               >
-                Limited data sources
-              </span>
-              <span
-                class="j40-sitealert-body"
-              >
-                 — Datasets may be added, updated, or removed.
-              </span>
-              <br />
-            </p>
+                <p
+                  class="usa-alert__text"
+                >
+                  <span
+                    class="j40-sitealert-title"
+                  >
+                    Limited data sources
+                  </span>
+                  <span
+                    class="j40-sitealert-body"
+                  >
+                     — Datasets may be added, updated, or removed.
+                  </span>
+                  <br />
+                </p>
+              </div>
+            </div>
           </div>
+          <h2>
+            Datasets used in methodology
+          </h2>
         </div>
       </div>
-      <p>
-        The datasets come from a variety of sources and were selected after considering relevance, availability, recency and quality.
-      </p>
+      <div
+        class="grid-row"
+        data-testid="grid"
+      >
+        <div
+          class="grid-col-12 tablet:grid-col-7 j40-mb-3"
+          data-testid="grid"
+        >
+          <p>
+            The datasets come from a variety of sources and were selected based on relevance, availability, recency, and quality. The datasets seek to identify a range of human health, environmental, climate-related, and other cumulative impacts on communities.
+          </p>
+        </div>
+      </div>
       <div>
+        <div>
+          <h3>
+            Area Median Income
+          </h3>
+          <div>
+            Median income of the census block group calculated as a percent 
+    of the metropolitan area’s or state's median income.
+          </div>
+          <ul>
+            <li>
+              <span>
+                Data source: 
+              </span>
+              <a
+                href="https://www.census.gov/programs-surveys/acs"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Census's American Community Survey
+              </a>
+            </li>
+            <li>
+              <span>
+                Data resolution: 
+              </span>
+              Census block group
+            </li>
+            <li>
+              <span>
+                Data date range: 
+              </span>
+              2015-2019
+            </li>
+          </ul>
+        </div>
         <div>
           <h3>
             Poverty
           </h3>
           <div>
-            What is it?
-          </div>
-          <div>
-            Percent of a block group's population in households where the household 
-    income is less than or equal to twice the federal "poverty level"
+            Percent of a block group's population in households where the household income is at or below 100% of the federal poverty level
           </div>
           <ul>
+            <li>
+              <span>
+                Data source: 
+              </span>
+              <a
+                href="https://www.census.gov/programs-surveys/acs"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Census's American Community Survey
+              </a>
+            </li>
             <li>
               <span>
                 Data resolution: 
@@ -61,15 +125,466 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             </li>
             <li>
               <span>
+                Data date range: 
+              </span>
+              2015-2019
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>
+            Education, less than high school education
+          </h3>
+          <div>
+            Percent of people ages 25 years or older in a block group whose 
+    education level is less than a high school diploma.
+          </div>
+          <ul>
+            <li>
+              <span>
                 Data source: 
               </span>
               <a
-                href="https://www.census.gov/"
+                href="https://www.census.gov/programs-surveys/acs"
                 rel="noreferrer"
                 target="_blank"
               >
-                U.S. Census Bureau
+                Census's American Community Survey
               </a>
+            </li>
+            <li>
+              <span>
+                Data resolution: 
+              </span>
+              Census block group
+            </li>
+            <li>
+              <span>
+                Data date range: 
+              </span>
+              2015-2019
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class=""
+  >
+    <div
+      class="grid-container-desktop-lg"
+      data-testid="gridContainer"
+    >
+      <div
+        class="grid-row"
+        data-testid="grid"
+      >
+        <div
+          class="grid-col-12"
+          data-testid="grid"
+        >
+          <h2>
+            Additional Indicators
+          </h2>
+        </div>
+      </div>
+      <div
+        class="grid-row"
+        data-testid="grid"
+      >
+        <div
+          class="grid-col-12 tablet:grid-col-7 j40-mb-3"
+          data-testid="grid"
+        >
+          <p>
+            These datasets provide additional information about each community.
+          </p>
+        </div>
+      </div>
+      <div>
+        <div>
+          <h3>
+            Diabetes
+          </h3>
+          <div>
+            People ages 18 years and older who report having ever been 
+    told by a doctor, nurse, or other health professionals that they have 
+    diabetes other than diabetes during pregnancy.
+          </div>
+          <ul>
+            <li>
+              <span>
+                Data source: 
+              </span>
+              <a
+                href="https://www.cdc.gov/places/index.html"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Centers for Disease Control and Prevention (CDC) PLACES
+              </a>
+            </li>
+            <li>
+              <span>
+                Data resolution: 
+              </span>
+              Census tract
+            </li>
+            <li>
+              <span>
+                Data date range: 
+              </span>
+              2016-2019
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>
+            Asthma
+          </h3>
+          <div>
+            Weighted number of respondents people who answer “yes” both 
+    to both of the following questions: “Have you ever been told by a doctor, 
+    nurse, or other health professional that you have asthma?” and the question 
+    “Do you still have asthma?”
+          </div>
+          <ul>
+            <li>
+              <span>
+                Data source: 
+              </span>
+              <a
+                href="https://www.cdc.gov/places/index.html"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Centers for Disease Control and Prevention (CDC) PLACES
+              </a>
+            </li>
+            <li>
+              <span>
+                Data resolution: 
+              </span>
+              Census tract
+            </li>
+            <li>
+              <span>
+                Data date range: 
+              </span>
+              2016-2019
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>
+            Heart disease
+          </h3>
+          <div>
+            People ages 18 years and older who report ever having been told 
+    by a doctor, nurse, or other health professionals that they had angina or 
+    coronary heart disease.
+          </div>
+          <ul>
+            <li>
+              <span>
+                Data source: 
+              </span>
+              <a
+                href="https://www.cdc.gov/places/index.html"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Centers for Disease Control and Prevention (CDC) PLACES
+              </a>
+            </li>
+            <li>
+              <span>
+                Data resolution: 
+              </span>
+              Census tract
+            </li>
+            <li>
+              <span>
+                Data date range: 
+              </span>
+              2016-2019
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>
+            Life expectancy
+          </h3>
+          <div>
+            Estimated years of life expectancy.
+          </div>
+          <ul>
+            <li>
+              <span>
+                Data source: 
+              </span>
+              <a
+                href="https://www.cdc.gov/nchs/nvss/usaleep/usaleep.html#data"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Centers for Disease Control and Prevention (CDC) 
+    US Small-area Life Expectancy Estimates Project
+              </a>
+            </li>
+            <li>
+              <span>
+                Data resolution: 
+              </span>
+              Census tract
+            </li>
+            <li>
+              <span>
+                Data date range: 
+              </span>
+              2010-2015
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>
+            Traffic proximity and volume
+          </h3>
+          <div>
+            Count of vehicles (average annual daily traffic) at major roads 
+    within 500 meters, divided by distance in meters (not km).
+          </div>
+          <ul>
+            <li>
+              <span>
+                Data source: 
+              </span>
+              <a
+                href="https://www.fhwa.dot.gov/policyinformation/hpms/shapefiles.cfm"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Department of Transportation (DOT) traffic data
+              </a>
+            </li>
+            <li>
+              <span>
+                Data resolution: 
+              </span>
+              Census block group
+            </li>
+            <li>
+              <span>
+                Data date range: 
+              </span>
+              2017
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>
+            FEMA Risk Index Expected Annual Loss Score
+          </h3>
+          <div>
+            Average economic loss in dollars resulting from natural 
+    hazards each year. It is calculated for each hazard type and quantifies 
+    loss for relevant consequence types: buildings, people, and agriculture.
+          </div>
+          <ul>
+            <li>
+              <span>
+                Data source: 
+              </span>
+              <a
+                href="https://hazards.fema.gov/nri/expected-annual-loss"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Federal Emergency Management Agency (FEMA)
+              </a>
+            </li>
+            <li>
+              <span>
+                Data resolution: 
+              </span>
+              Census tract
+            </li>
+            <li>
+              <span>
+                Data date range: 
+              </span>
+              2014-2017
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>
+            Energy burden
+          </h3>
+          <div>
+            Average annual energy cost ($) divided by household income.
+          </div>
+          <ul>
+            <li>
+              <span>
+                Data source: 
+              </span>
+              <a
+                href="https://www.energy.gov/eere/slsc/low-income-energy-affordability-data-lead-tool"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Department of Energy (DOE) LEAD Score
+              </a>
+            </li>
+            <li>
+              <span>
+                Data resolution: 
+              </span>
+              Census tract
+            </li>
+            <li>
+              <span>
+                Data date range: 
+              </span>
+              2018
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>
+            Housing cost burden
+          </h3>
+          <div>
+            Households that are low income and spend more than 30% of their 
+    income to housing costs.
+          </div>
+          <ul>
+            <li>
+              <span>
+                Data source: 
+              </span>
+              <a
+                href="https://www.huduser.gov/portal/datasets/cp.html"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Department of Housing & Urban Development’s 
+    (HUD) Comprehensive Housing Affordability Strategy dataset
+              </a>
+            </li>
+            <li>
+              <span>
+                Data resolution: 
+              </span>
+              Census tract
+            </li>
+            <li>
+              <span>
+                Data date range: 
+              </span>
+              2013-2017
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>
+            Wastewater discharge
+          </h3>
+          <div>
+            RSEI modeled Toxic Concentrations at stream segments within 500 
+    meters, divided by distance in kilometers (km).
+          </div>
+          <ul>
+            <li>
+              <span>
+                Data source: 
+              </span>
+              <a
+                href="https://www.epa.gov/rsei"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Environmental Protection Agency (EPA) Risk-Screening 
+    Environmental Indicators (RSEI) Model
+              </a>
+            </li>
+            <li>
+              <span>
+                Data resolution: 
+              </span>
+              Census block group
+            </li>
+            <li>
+              <span>
+                Data date range: 
+              </span>
+              2020
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>
+            Lead paint
+          </h3>
+          <div>
+            Percent of housing units built pre-1960, used as an 
+    indicator of potential lead paint exposure in homes.
+          </div>
+          <ul>
+            <li>
+              <span>
+                Data source: 
+              </span>
+              <a
+                href="https://www.census.gov/programs-surveys/acs"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Census's American Community Survey
+              </a>
+            </li>
+            <li>
+              <span>
+                Data resolution: 
+              </span>
+              Census block group
+            </li>
+            <li>
+              <span>
+                Data date range: 
+              </span>
+              2015-2019
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>
+            Diesel particulate matter
+          </h3>
+          <div>
+            Mixture of particles that is part of diesel exhaust in the air.
+          </div>
+          <ul>
+            <li>
+              <span>
+                Data source: 
+              </span>
+              <a
+                href="https://www.epa.gov/national-air-toxics-assessment/2014-nata-assessment-results"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Environmental Protection Agency (EPA) National Air Toxics Assessment (NATA)
+    
+              </a>
+            </li>
+            <li>
+              <span>
+                Data resolution: 
+              </span>
+              Census block group
             </li>
             <li>
               <span>
@@ -81,15 +596,26 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         </div>
         <div>
           <h3>
-            Education (less than high school)
+            PM2.5
           </h3>
           <div>
-            What is it?
-          </div>
-          <div>
-            Percent of people age 25 or older in a block group whose education is short of a high school diploma
+            Fine inhalable particles, with diameters that are generally 
+    2.5 micrometers and smaller.
           </div>
           <ul>
+            <li>
+              <span>
+                Data source: 
+              </span>
+              <a
+                href="https://www.epa.gov/aboutepa/about-office-air-and-radiation-oar"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Environmental Protection Agency (EPA) Office of Air 
+    and Radiation (OAR) fusion of model and monitor data
+              </a>
+            </li>
             <li>
               <span>
                 Data resolution: 
@@ -98,138 +624,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             </li>
             <li>
               <span>
-                Data source: 
-              </span>
-              <a
-                href="https://www.census.gov/"
-                rel="noreferrer"
-                target="_blank"
-              >
-                U.S. Census Bureau
-              </a>
-            </li>
-            <li>
-              <span>
                 Data date range: 
               </span>
-              5-year estimates, 2015-2019
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h3>
-            Linguistic isolation
-          </h3>
-          <div>
-            What is it?
-          </div>
-          <div>
-            Percent of people in a block group living in linguistically 
-    isolated households — a linguistically isolated household is a household in 
-    which all members aged 14 years and over speak a non-English language and also speak 
-    English less than "very well" (i.e., have difficulty with English)
-          </div>
-          <ul>
-            <li>
-              <span>
-                Data resolution: 
-              </span>
-              Census block group
-            </li>
-            <li>
-              <span>
-                Data source: 
-              </span>
-              <a
-                href="https://www.census.gov/"
-                rel="noreferrer"
-                target="_blank"
-              >
-                U.S. Census Bureau
-              </a>
-            </li>
-            <li>
-              <span>
-                Data date range: 
-              </span>
-              5-year estimates, 2015-2019
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h3>
-            Unemployment rate
-          </h3>
-          <div>
-            What is it?
-          </div>
-          <div>
-            Unemployment rate (people who are unemployed divided by the total population of 
-      people in the labor force over 16 years old)
-          </div>
-          <ul>
-            <li>
-              <span>
-                Data resolution: 
-              </span>
-              Census block group
-            </li>
-            <li>
-              <span>
-                Data source: 
-              </span>
-              <a
-                href="https://www.census.gov/"
-                rel="noreferrer"
-                target="_blank"
-              >
-                U.S. Census Bureau
-              </a>
-            </li>
-            <li>
-              <span>
-                Data date range: 
-              </span>
-              5-year estimates, 2015-2019
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h3>
-            Housing burden
-          </h3>
-          <div>
-            What is it?
-          </div>
-          <div>
-            Percent of households in a census tract that are both low income (making less
-       than 80% of the HUD Area Median Family Income) and severely burdened by housing costs 
-       (paying greater than 30% of their income to housing costs)
-          </div>
-          <ul>
-            <li>
-              <span>
-                Data resolution: 
-              </span>
-              Census block group
-            </li>
-            <li>
-              <span>
-                Data source: 
-              </span>
-              <a
-                href="https://www.census.gov/"
-                rel="noreferrer"
-                target="_blank"
-              >
-                U.S. Census Bureau
-              </a>
-            </li>
-            <li>
-              <span>
-                Data date range: 
-              </span>
-              5-year estimates, 2015-2019
+              2017
             </li>
           </ul>
         </div>

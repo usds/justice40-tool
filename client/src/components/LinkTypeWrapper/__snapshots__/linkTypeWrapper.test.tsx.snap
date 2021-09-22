@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testing all link types tests external links new tab 1`] = `
+<DocumentFragment>
+  <a
+    href="www.usds.gov"
+  >
+    test link text
+  </a>
+</DocumentFragment>
+`;
+
+exports[`testing all link types tests external links same tab 1`] = `
+<DocumentFragment>
+  <a
+    href="www.usds.gov"
+    rel="noreferrer"
+    target="_blank"
+  >
+    test link text
+  </a>
+</DocumentFragment>
+`;
+
+exports[`testing all link types tests internal links 1`] = `
+<DocumentFragment>
+  <a
+    href="/en/methodology"
+  >
+    test link text
+  </a>
+</DocumentFragment>
+`;

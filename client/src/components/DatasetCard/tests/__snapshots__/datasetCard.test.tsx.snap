@@ -4,16 +4,25 @@ exports[`rendering of the DatasetCard checks if component renders 1`] = `
 <DocumentFragment>
   <div>
     <h3>
-      Poverty
+      Area Median Income
     </h3>
     <div>
-      What is it?
-    </div>
-    <div>
-      Percent of a block group's population in households where the household 
-    income is less than or equal to twice the federal "poverty level"
+      Median income of the census block group calculated as a percent 
+    of the metropolitan area’s or state's median income.
     </div>
     <ul>
+      <li>
+        <span>
+          Data source: 
+        </span>
+        <a
+          href="https://www.census.gov/programs-surveys/acs"
+          rel="noreferrer"
+          target="_blank"
+        >
+          Census's American Community Survey
+        </a>
+      </li>
       <li>
         <span>
           Data resolution: 
@@ -22,21 +31,9 @@ exports[`rendering of the DatasetCard checks if component renders 1`] = `
       </li>
       <li>
         <span>
-          Data source: 
-        </span>
-        <a
-          href="https://www.census.gov/"
-          rel="noreferrer"
-          target="_blank"
-        >
-          U.S. Census Bureau
-        </a>
-      </li>
-      <li>
-        <span>
           Data date range: 
         </span>
-        5-year estimates, 2015-2019
+        2015-2019
       </li>
     </ul>
   </div>

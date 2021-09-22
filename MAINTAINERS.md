@@ -11,7 +11,6 @@ See [CODEOWNERS file](./github/CODEOWNERS) for definitive list.
 - Shelby Switzer - switzersc-usds - engineering lead
 - Jorge Escobar - esfoobar-usds
 - Tom Nielsen - TomNUSDS
-- Gina Maini - ginabeena
 - Vim Shah - vim-usds
 
 ## Product

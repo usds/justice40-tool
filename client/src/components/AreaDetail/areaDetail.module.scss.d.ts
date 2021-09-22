@@ -1,11 +1,6 @@
 declare namespace MapModuleScssNamespace {
   export interface IMapModuleScss {
     areaDetailContainer: string;
-    topRow:string;
-    cumulativeIndexScore:string;
-    scoreSuperscript: string;
-    topRowTitle:string;
-    topRowSubTitle:string;
     categorization:string;
     prioritized:string;
     threshold:string;
@@ -16,10 +11,14 @@ declare namespace MapModuleScssNamespace {
     censusText: string;
     censusLabel:string;
     divider:string;
-    indicatorBox:string;
+    indicatorBoxMain:string;
+    indicatorBoxAdditional:string;
+    indicatorRow:string;
     indicatorValue:string;
-    score:string;
-    indicatorSuperscript: string;
+    indicatorName:string;
+    indicatorDesc:string;
+    indicatorBoxAdditional:string;
+    indicatorSuperscript:string;
   }
 }
 
