@@ -64,6 +64,11 @@ DATASET_LIST = [
         "module_dir": "geocorr",
         "class_name": "GeoCorrETL",
     },
+    {
+        "name": "persistent_poverty",
+        "module_dir": "persistent_poverty",
+        "class_name": "PersistentPovertyETL",
+    },
 ]
 CENSUS_INFO = {
     "name": "census",
