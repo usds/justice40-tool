@@ -764,9 +764,9 @@ class ScoreETL(ExtractTransformLoad):
         for data_set in data_sets:
             # Skip GEOID_FIELD_NAME, because it's a string.
             # Skip `PERSISTENT_POVERTY_FIELD` because it's a straight pass-through.
-            if (
-                data_set.renamed_field == self.GEOID_FIELD_NAME
-                or data_set.renamed_field == self.PERSISTENT_POVERTY_FIELD
+            if data_set.renamed_field in (
+                self.GEOID_FIELD_NAME,
+                self.PERSISTENT_POVERTY_FIELD,
             ):
                 continue
 
