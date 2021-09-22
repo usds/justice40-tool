@@ -80,6 +80,9 @@ class ScoreETL(ExtractTransformLoad):
 
         self.SCORE_CSV_PATH: Path = self.DATA_PATH / "score" / "csv" / "full"
 
+        # Urban Rural Map
+        self.URBAN_HERUISTIC_FIELD_NAME = "Urban Heuristic Flag"
+
         # dataframes
         self.df: pd.DataFrame
         self.ejscreen_df: pd.DataFrame
@@ -91,6 +94,7 @@ class ScoreETL(ExtractTransformLoad):
         self.cdc_life_expectancy_df: pd.DataFrame
         self.doe_energy_burden_df: pd.DataFrame
         self.national_risk_index_df: pd.DataFrame
+        self.geocorr_urban_rural_df: pd.DataFrame
 
     def data_sets(self) -> list:
         # Define a named tuple that will be used for each data set input.
@@ -195,6 +199,11 @@ class ScoreETL(ExtractTransformLoad):
             DataSet(
                 input_field=self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME,
                 renamed_field=self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME,
+                bucket=None,
+            ),
+            DataSet(
+                input_field=self.URBAN_HERUISTIC_FIELD_NAME,
+                renamed_field=self.URBAN_HERUISTIC_FIELD_NAME,
                 bucket=None,
             ),
             # The following data sets have buckets, because they're used in Score C
@@ -383,6 +392,16 @@ class ScoreETL(ExtractTransformLoad):
         self.national_risk_index_df = pd.read_csv(
             national_risk_index_csv,
             dtype={self.GEOID_FIELD_NAME: "string"},
+            low_memory=False,
+        )
+
+        # Load GeoCorr Urban Rural Map
+        geocorr_urban_rural_csv = (
+            self.DATA_PATH / "dataset" / "geocorr" / "usa.csv"
+        )
+        self.geocorr_urban_rural_df = pd.read_csv(
+            geocorr_urban_rural_csv,
+            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
             low_memory=False,
         )
 
@@ -619,6 +638,15 @@ class ScoreETL(ExtractTransformLoad):
         df["Score G"] = df["Score G (communities)"].astype(int)
         df["Score G (percentile)"] = df["Score G"]
 
+        df["Score H (communities)"] = (
+            (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
+            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold_2)
+        ) | (
+            (df[self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME] > 0.40)
+            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold_2)
+        )
+        df["Score H"] = df["Score H (communities)"].astype(int)
+
         df["Score I (communities)"] = (
             (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.7)
             & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold)
@@ -628,15 +656,6 @@ class ScoreETL(ExtractTransformLoad):
         )
         df["Score I"] = df["Score I (communities)"].astype(int)
         df["Score I (percentile)"] = df["Score I"]
-
-        df["Score H (communities)"] = (
-            (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
-            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold_2)
-        ) | (
-            (df[self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME] > 0.40)
-            & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold_2)
-        )
-        df["Score H"] = df["Score H (communities)"].astype(int)
 
         df["NMTC (communities)"] = (
             (df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] < 0.8)
@@ -672,6 +691,7 @@ class ScoreETL(ExtractTransformLoad):
             self.cdc_places_df,
             self.cdc_life_expectancy_df,
             self.doe_energy_burden_df,
+            self.geocorr_urban_rural_df,
         ]
         census_tract_df = self._join_tract_dfs(census_tract_dfs)
 
