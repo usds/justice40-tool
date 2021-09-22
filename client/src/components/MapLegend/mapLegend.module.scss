@@ -19,10 +19,8 @@ $alertInfoColor: #e7f6f8;
 .colorSwatch {
   flex: 1 0 2rem; 
   box-sizing: border-box;
-  height: 1.7rem;
-  width: 1.7rem;
+  height: 2rem;
   margin: 2rem 1.5rem 2rem 0;
   border-radius: 50%;
   background-color: $max-color;
-  border: 2px solid $featureSelectBorderColor;
 }

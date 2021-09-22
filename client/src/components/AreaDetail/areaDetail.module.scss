@@ -13,7 +13,7 @@ $sidePanelLabelFontColor: #171716;
   width: 0.6rem;
   border-radius: 100%;
   align-self: center;
-  margin-top: 1.8rem;
+  margin-top: 2rem;
   margin-right: 0.5rem;
   opacity: 0.6;
 }
@@ -50,18 +50,15 @@ $sidePanelLabelFontColor: #171716;
 .prioritized {
   @include categorizationCircleStyle;
   background: #1a4480;
-  border: 1px solid $featureSelectBorderColor;
 }
 
 .threshold {
   @include categorizationCircleStyle;
   background: #d7dde7;
-  border: 1px solid $featureSelectBorderColor;
 }
 
 .nonPrioritized {
   @include categorizationCircleStyle;
-  border: 1px solid $featureSelectBorderColor;
 }
 
 .prioritization {

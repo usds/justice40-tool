@@ -185,7 +185,9 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
       </ul>
       <div className={styles.categorization}>
         <div className={styles.priority}>
-          <div className={categoryCircleStyle} />
+          {categorization === 'Community of focus' ?
+          <div className={categoryCircleStyle} /> :
+          null }
           <h3>{categorization}</h3>
         </div>
         <p className={"secondary"}>version {METHODOLOGY_COPY.VERSION_NUMBER}</p>
