@@ -36,7 +36,7 @@ class PersistentPovertyETL(ExtractTransformLoad):
             f"{self.POVERTY_PREFIX} (1990)",
             f"{self.POVERTY_PREFIX} (2000)",
             f"{self.POVERTY_PREFIX} (2010)",
-            self.PERSISTENT_POVERTY_FIELD
+            self.PERSISTENT_POVERTY_FIELD,
         ]
 
         self.df: pd.DataFrame
@@ -46,6 +46,7 @@ class PersistentPovertyETL(ExtractTransformLoad):
             lambda left, right: pd.merge(
                 left=left,
                 right=right,
+                # All data frames will now have this field for tract.
                 on=self.GEOID_TRACT_FIELD_NAME,
                 how="outer",
             ),
@@ -61,18 +62,13 @@ class PersistentPovertyETL(ExtractTransformLoad):
         )
 
         # Sanity check the join.
-        if (
-            len(df[self.GEOID_TRACT_FIELD_NAME].str.len().unique())
-            != 1
-        ):
+        if len(df[self.GEOID_TRACT_FIELD_NAME].str.len().unique()) != 1:
             raise ValueError(
                 f"One of the input CSVs uses {self.GEOID_TRACT_FIELD_NAME} with a different length."
             )
 
         if len(df) > self.EXPECTED_MAX_CENSUS_TRACTS:
-            raise ValueError(
-                f"Too many rows in the join: {len(df)}"
-            )
+            raise ValueError(f"Too many rows in the join: {len(df)}")
 
         return df
 
@@ -123,18 +119,15 @@ class PersistentPovertyETL(ExtractTransformLoad):
 
             temporary_input_dfs.append(temporary_input_df)
 
-        df = self._join_input_dfs(temporary_input_dfs)
-
-        self.df = df
+        self.df = self._join_input_dfs(temporary_input_dfs)
 
     def transform(self) -> None:
         logger.info("Starting persistent poverty transform")
-
-        # dpovXX Description: persons for whom poverty status is determined
-        # npovXX Description: persons in poverty
-
         transformed_df = self.df
 
+        # Note: the fields are defined as following.
+        # dpovXX Description: persons for whom poverty status is determined
+        # npovXX Description: persons in poverty
         transformed_df[f"{self.POVERTY_PREFIX} (1990)"] = (
             transformed_df["NPOV90"] / transformed_df["DPOV90"]
         )
