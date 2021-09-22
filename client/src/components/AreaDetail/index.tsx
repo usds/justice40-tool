@@ -334,7 +334,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
           <div className={categoryCircleStyle} />
           <h3>{categorization}</h3>
         </div>
-        <h6>version {constants.VERSION_NUMBER}</h6>
+        <p className={"secondary"}>version {constants.VERSION_NUMBER}</p>
       </div>
       <div className={styles.divider}>
         <h6>{intl.formatMessage(messages.indicatorColumnHeader)}</h6>

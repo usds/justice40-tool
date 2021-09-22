@@ -19,7 +19,7 @@ const DownloadPacket = () => {
     downloadPacketInfo: {
       id: 'downloadPacket.info.text',
       defaultMessage: `The package includes draft v${constants.VERSION_NUMBER} `+
-      ` of the list communities of focus (.csv and .xlsx) ` +
+      ` of the list of communities of focus (.csv and .xlsx) ` +
       ` and information about how to use the list (.pdf).`,
       description: 'download packet info text',
     },
@@ -30,7 +30,7 @@ const DownloadPacket = () => {
     },
     downloadPacketButtonText: {
       id: 'downloadPacket.button.text',
-      defaultMessage: 'Download packet',
+      defaultMessage: 'Download package',
       description: 'download packet button text',
     },
   });
