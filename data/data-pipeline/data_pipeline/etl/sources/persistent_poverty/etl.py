@@ -43,9 +43,9 @@ class PersistentPovertyETL(ExtractTransformLoad):
 
     def _join_input_dfs(self, dfs: list) -> pd.DataFrame:
         df = functools.reduce(
-            lambda left, right: pd.merge(
-                left=left,
-                right=right,
+            lambda df_a, df_b: pd.merge(
+                left=df_a,
+                right=df_b,
                 # All data frames will now have this field for tract.
                 on=self.GEOID_TRACT_FIELD_NAME,
                 how="outer",
