@@ -69,6 +69,11 @@ DATASET_LIST = [
         "module_dir": "persistent_poverty",
         "class_name": "PersistentPovertyETL",
     },
+    {
+        "name": "ejscreen_areas_of_concern",
+        "module_dir": "ejscreen_areas_of_concern",
+        "class_name": "EJScreenAreasOfConcernETL",
+    },
 ]
 CENSUS_INFO = {
     "name": "census",
