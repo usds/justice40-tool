@@ -75,7 +75,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         # Reduce columns.
         # Note: normally we wait until writing to CSV for this step, but since the file is so huge,
         # move this up here for performance reasons.
-        df_nri = df_nri[ # pylint: disable=unsubscriptable-object
+        df_nri = df_nri[  # pylint: disable=unsubscriptable-object
             [self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME, TRACT_COL]
         ]
 
