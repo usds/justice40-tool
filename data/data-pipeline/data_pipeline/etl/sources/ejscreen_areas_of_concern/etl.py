@@ -12,7 +12,6 @@ class EJScreenAreasOfConcernETL(ExtractTransformLoad):
 
         # TO DO: Load from actual source; the issue is that this dataset is not public for now
         self.LOCAL_CSV_PATH = self.DATA_PATH / "local"
-        self.GEOID_CBG_FIELD_NAME = "GEOID10_CBG"
         self.df: pd.DataFrame
 
     def extract(self) -> None:
@@ -22,7 +21,7 @@ class EJScreenAreasOfConcernETL(ExtractTransformLoad):
             filepath_or_buffer=self.LOCAL_CSV_PATH
             / "ejscreen_areas_of_concerns_indicators.csv",
             dtype={
-                self.GEOID_CBG_FIELD_NAME: "string",
+                self.GEOID_FIELD_NAME: "string",
             },
             low_memory=False,
         )
