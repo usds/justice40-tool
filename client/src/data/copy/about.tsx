@@ -55,7 +55,7 @@ export const PAGE = defineMessages({
   },
   PRESIDENT_LINK_LABEL: {
     id: 'index.presidentalLinkLabel',
-    defaultMessage: 'Executive Order 14008 on Tackling the Climate Crisis at Home and Abroad',
+    defaultMessage: 'Executive Order 14008 on Tackling the Climate Crisis at Home and Abroad.',
     description: 'Link url to presidential actions executive order. Part of paragraph 2',
   },
 });
@@ -72,7 +72,7 @@ export const HOW_TO_GET_STARTED = defineMessages({
     description: 'sub heading of page',
   },
   FEDERAL_PM_HEADING: {
-    id: 'federal.pm.info',
+    id: 'federal.pm.heading',
     defaultMessage: 'Federal program managers',
     description: 'sub heading of page',
   },
@@ -109,7 +109,7 @@ export const HOW_TO_GET_STARTED = defineMessages({
 export const GET_INVOLVED = defineMessages({
   TITLE: {
     id: 'getInvolved.title',
-    defaultMessage: 'How to get started',
+    defaultMessage: 'Get involved',
     description: 'sub heading of page',
   },
   SEND_FEEDBACK_HEADING: {

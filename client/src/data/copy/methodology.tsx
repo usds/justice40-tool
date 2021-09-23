@@ -117,7 +117,7 @@ export const INDICATORS = [
   {
     indicator: 'Poverty',
     description: `Percent of a block group's population in households where the household income` +
-    ` is at or below 100% of the federal poverty level`,
+    ` is at or below 100% of the federal poverty level.`,
     dataResolution: `Census block group`,
     dataSourceLabel: `Census's American Community Survey`,
     dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
@@ -309,7 +309,7 @@ export const METHODOLOGY_STEPS = defineMessages({
     description: 'step 1 b heading',
   },
   STEP_1_C_HEADING: {
-    id: 'methodology.step.1.a.heading',
+    id: 'methodology.step.1.c.heading',
     defaultMessage: `The high school degree achievement rate for adults 25 years and older`,
     description: 'step 1 a heading',
   },

@@ -133,7 +133,7 @@ const IndexPage = ({location}: IndexPageProps) => {
           <AboutCard
             size={'small'}
             imgSrc={githubIcon}
-            header={intl.formatMessage(ABOUT_COPY.GET_INVOLVED.SEND_FEEDBACK_HEADING)}
+            header={intl.formatMessage(ABOUT_COPY.GET_INVOLVED.JOIN_OSC_HEADING)}
             linkText={intl.formatMessage(ABOUT_COPY.GET_INVOLVED.JOIN_OSC_LINK_TEXT)}
             url={ABOUT_COPY.GITHUB_LINK}
             openUrlNewTab={true}

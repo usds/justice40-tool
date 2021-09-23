@@ -102,7 +102,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             Poverty
           </h3>
           <div>
-            Percent of a block group's population in households where the household income is at or below 100% of the federal poverty level
+            Percent of a block group's population in households where the household income is at or below 100% of the federal poverty level.
           </div>
           <ul>
             <li>

@@ -89,12 +89,12 @@ export const SIDE_PANEL_CBG_INFO = defineMessages({
 
 export const COMMUNITY = {
   OF_FOCUS: <FormattedMessage
-    id={'areaDetail.priorityInfo.categorization'}
+    id={'areaDetail.categorization.community.of.focus'}
     defaultMessage={ 'Community of focus'}
     description={'the communities the score currently is focused on'}
   />,
   NOT_OF_FOCUS: <FormattedMessage
-    id= {'areaDetail.priorityInfo.categorization'}
+    id= {'areaDetail.categorization.not.community.of.focus'}
     defaultMessage= {'Not a community of focus'}
     description= {'the communities the score currently is not focused on'}
   />,
@@ -308,7 +308,7 @@ export const DOWNLOAD_DRAFT = {
     }}
   />,
   PARAGRAPH_2: <FormattedMessage
-    id={'download.draft.ptag.1'}
+    id={'download.draft.ptag.2'}
     description={'Download the draft list of communities of focus and datasets used.'}
     defaultMessage={`ZIP file will contain one .xlsx, one .csv, and one .pdf (${METHODOLOGY_COPY.DOWNLOAD_FILE_SIZE}).`}
   />,

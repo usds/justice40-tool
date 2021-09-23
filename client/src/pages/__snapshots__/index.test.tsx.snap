@@ -375,7 +375,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Executive Order 14008 on Tackling the Climate Crisis at Home and Abroad
+                    Executive Order 14008 on Tackling the Climate Crisis at Home and Abroad.
                   </a>
                 </p>
               </div>
@@ -508,7 +508,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       data-testid="gridContainer"
     >
       <h2>
-        How to get started
+        Get involved
       </h2>
       <div
         class="grid-row grid-gap-lg j40-aboutcard-container "
@@ -581,7 +581,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               data-testid="grid"
             >
               <img
-                alt="Send feedback"
+                alt="Join the open source community"
                 class="j40-aboutcard-image"
                 src="test-file-stub"
               />
@@ -595,7 +595,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 data-testid="grid"
               >
                 <h3>
-                  Send feedback
+                  Join the open source community
                 </h3>
                 <p>
                   The screening tool’s code is open source, which means it is  available for the public to view and contribute to. Anyone can view and contribute on GitHub.
