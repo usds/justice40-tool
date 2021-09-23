@@ -72,7 +72,7 @@ export const HOW_TO_GET_STARTED = defineMessages({
     description: 'sub heading of page',
   },
   FEDERAL_PM_HEADING: {
-    id: 'federal.pm.info',
+    id: 'federal.pm.heading',
     defaultMessage: 'Federal program managers',
     description: 'sub heading of page',
   },

@@ -309,7 +309,7 @@ export const METHODOLOGY_STEPS = defineMessages({
     description: 'step 1 b heading',
   },
   STEP_1_C_HEADING: {
-    id: 'methodology.step.1.a.heading',
+    id: 'methodology.step.1.c.heading',
     defaultMessage: `The high school degree achievement rate for adults 25 years and older`,
     description: 'step 1 a heading',
   },
