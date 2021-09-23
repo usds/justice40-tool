@@ -552,6 +552,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <a
                     class="j40-aboutcard-link"
                     href="mailto:screeningtool.feedback@usds.gov"
+                    rel="noreferrer"
+                    target="_blank"
                   >
                     Email: screeningtool.feedback@usds.gov
                   </a>

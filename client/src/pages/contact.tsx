@@ -38,7 +38,12 @@ const ContactPage = ({location}: IContactPageProps) => {
                 defaultMessage={CONTACT_COPY.CONTACT_VIA_EMAIL.DEFAULT_MESSAGE}
                 values={{
                   general_email_address:
-                    <a href={`mailto:${CONTACT_COPY.FEEDBACK_EMAIL}`}>{CONTACT_COPY.FEEDBACK_EMAIL}</a>,
+                    <a
+                      href={`mailto:${CONTACT_COPY.FEEDBACK_EMAIL}`}
+                      target="_blank"
+                      rel="noreferrer">
+                      {CONTACT_COPY.FEEDBACK_EMAIL}
+                    </a>,
                 }}/>
             </p>
           </Grid>
