@@ -180,8 +180,8 @@ export const ADDITIONAL_INDICATORS = [
     description: `Count of vehicles (average annual daily traffic) at major roads 
     within 500 meters, divided by distance in meters (not km).`,
     dataResolution: `Census block group`,
-    dataSourceLabel: `Department of Transportation (DOT) traffic data`,
-    dataSourceURL: `https://www.fhwa.dot.gov/policyinformation/hpms/shapefiles.cfm`,
+    dataSourceLabel: `Department of Transportation (DOT) traffic data as compiled by EPA's EJSCREEN`,
+    dataSourceURL: `https://www.epa.gov/ejscreen/technical-documentation-ejscreen`,
     dataDateRange: `2017`,
   },
   {
@@ -218,8 +218,8 @@ export const ADDITIONAL_INDICATORS = [
     meters, divided by distance in kilometers (km).`,
     dataResolution: `Census block group`,
     dataSourceLabel: `Environmental Protection Agency (EPA) Risk-Screening 
-    Environmental Indicators (RSEI) Model`,
-    dataSourceURL: `https://www.epa.gov/rsei`,
+    Environmental Indicators (RSEI) Model as compiled by EPA's EJSCREEN`,
+    dataSourceURL: `https://www.epa.gov/ejscreen/technical-documentation-ejscreen`,
     dataDateRange: `2020`,
   },
   {
@@ -236,8 +236,8 @@ export const ADDITIONAL_INDICATORS = [
     description: `Mixture of particles that is part of diesel exhaust in the air.`,
     dataResolution: `Census block group`,
     dataSourceLabel: `Environmental Protection Agency (EPA) National Air Toxics Assessment (NATA)
-    `,
-    dataSourceURL: `https://www.epa.gov/national-air-toxics-assessment/2014-nata-assessment-results`,
+    as compiled by EPA's EJSCREEN`,
+    dataSourceURL: `https://www.epa.gov/ejscreen/technical-documentation-ejscreen`,
     dataDateRange: `5-year estimates, 2015-2019`,
   },
   {
@@ -246,8 +246,8 @@ export const ADDITIONAL_INDICATORS = [
     2.5 micrometers and smaller.`,
     dataResolution: `Census block group`,
     dataSourceLabel: `Environmental Protection Agency (EPA) Office of Air 
-    and Radiation (OAR) fusion of model and monitor data`,
-    dataSourceURL: `https://www.epa.gov/aboutepa/about-office-air-and-radiation-oar`,
+    and Radiation (OAR) fusion of model and monitor data as compiled by EPA's EJSCREEN`,
+    dataSourceURL: `https://www.epa.gov/ejscreen/technical-documentation-ejscreen`,
     dataDateRange: `2017`,
   },
 
