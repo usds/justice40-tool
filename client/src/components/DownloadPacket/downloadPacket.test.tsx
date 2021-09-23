@@ -10,6 +10,6 @@ test('download packet component defined', () => {
       </LocalizedComponent>,
   );
 
-  screen.getByRole('button', {name: /download packet/i});
+  screen.getByRole('button', {name: /download package/i});
 });
 

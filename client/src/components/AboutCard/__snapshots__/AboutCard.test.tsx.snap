@@ -31,9 +31,7 @@ exports[`rendering of the AboutCard checks if component renders 1`] = `
           <h3>
             Test Header
           </h3>
-          <p>
-            Content body of the action card.
-          </p>
+          Content body of the action card.
           <div
             class="j40-aboutcard-sm-link"
           >

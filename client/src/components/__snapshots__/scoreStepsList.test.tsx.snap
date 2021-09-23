@@ -55,19 +55,17 @@ exports[`rendering of the component should match the snapshot of the MapIntroduc
       <h4>
         Percent of households below or at 100% of the federal poverty line
       </h4>
-      <p
-        class="flush"
+      This is the percent of households in a state with a household income 
+    below or at 100% of the 
+      <a
+        href="https://www.census.gov/topics/income-poverty/poverty/guidance/poverty-measures.html"
+        rel="noreferrer"
+        target="_blank"
       >
-        This is the percent of households in a state with a household income below or at 100% of the 
-        <a
-          href="https://www.census.gov/topics/income-poverty/poverty/guidance/poverty-measures.html"
-          rel="noreferrer"
-          target="_blank"
-        >
-          federal poverty line
-        </a>
-        . This federal poverty line is calculated based on the composition of each household (e.g., based on household size), but it does not vary geographically.
-      </p>
+        federal poverty line
+      </a>
+      . This federal poverty line is calculated 
+    based on the composition of each household (e.g., based on household size), but it does not vary geographically.
       <h4>
         The high school degree achievement rate for adults 25 years and older
       </h4>
@@ -97,21 +95,25 @@ exports[`rendering of the component should match the snapshot of the MapIntroduc
       <p>
         (The median income is less than 80% of the area median income
       </p>
+       
       <p
         class="flush"
       >
         OR
       </p>
+       
       <p
         class="flush"
       >
         households living in poverty (at or below 100% of the federal poverty level) is greater than 20%)
       </p>
+       
       <p
         class="flush"
       >
         AND
       </p>
+       
       <p
         class="flush"
       >

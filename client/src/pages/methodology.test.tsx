@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {render} from '@testing-library/react';
 import {LocalizedComponent} from '../test/testHelpers';
-import Index from './index';
+import Meth from './methodology';
 
 describe('rendering of the DatasetContainer', () => {
   const {asFragment} = render(
       <LocalizedComponent>
-        <Index location={window.location}/>
+        <Meth location={window.location}/>
       </LocalizedComponent>,
   );
 

@@ -1,12 +1,14 @@
 import * as React from 'react';
-import {defineMessages} from 'react-intl';
-import {FormattedMessage, useIntl} from 'gatsby-plugin-intl';
+import {useIntl} from 'gatsby-plugin-intl';
 
 import AboutCard from '../components/AboutCard/AboutCard';
 import AboutCardsContainer from '../components/AboutCard/AboutCardsContainer';
 import AlertWrapper from '../components/AlertWrapper';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
+
+import * as ABOUT_COPY from '../data/copy/about';
+import * as CONTACT_COPY from '../data/copy/contact';
 
 // @ts-ignore
 import aboutUSMapImg from '../images/about-usmap-1.svg';
@@ -24,7 +26,6 @@ import commentIcon from // @ts-ignore
 import githubIcon from // @ts-ignore
   '/node_modules/uswds/dist/img/usa-icons/github.svg';
 
-
 interface IndexPageProps {
   location: Location;
 }
@@ -32,49 +33,9 @@ interface IndexPageProps {
 // markup
 const IndexPage = ({location}: IndexPageProps) => {
   const intl = useIntl();
-  const messages = defineMessages({
-    presidentalLinkUri: {
-      id: 'index.presidentalLinkUri',
-      defaultMessage: 'https://www.whitehouse.gov/briefing-room/' +
-        'presidential-actions/2021/01/27/' +
-        'executive-order-on-tackling-the-climate-' +
-        'crisis-at-home-and-abroad/',
-      description: 'Link url to presidential actions executive order. Part of paragraph 3',
-    },
-    presidentalLinkLabel: {
-      id: 'index.presidentalLinkLabel',
-      defaultMessage: 'Executive Order 14008 on Tackling the Climate Crisis at Home and Abroad',
-      description: 'Link url to presidential actions executive order. Part of paragraph 3',
-    },
-    transparentLabel: {
-      id: 'index.section3.transparentLabel',
-      defaultMessage: 'Transparent:',
-      description: 'Italic label for 1st paragraph of section 3 on index page',
-    },
-    inclusiveLabel: {
-      id: 'index.section3.inclusiveLabel',
-      defaultMessage: 'Inclusive:',
-      description: 'Italic label for 2nd paragraph of section 3 on index page',
-    },
-    iterativeLabel: {
-      id: 'index.section3.iterativeLabel',
-      defaultMessage: 'Iterative:',
-      description: 'Italic label for 3rd paragraph of section 3 on index page',
-    },
-    aboutScreenToolHeading: {
-      id: 'index.heading.screentool',
-      defaultMessage: 'The screening tool',
-      description: 'heading for about screening tool',
-    },
-    aboutJustice40Heading: {
-      id: 'index.heading.justice40',
-      defaultMessage: 'The Justice40 Initiative',
-      description: 'heading for about justice 40',
-    },
-  });
 
   return (
-    <Layout location={location} title={'About'}>
+    <Layout location={location} title={intl.formatMessage(ABOUT_COPY.PAGE.TILE)}>
       <J40MainGridContainer>
         <AlertWrapper showBetaAlert={true} showLimitedDataAlert={false}/>
       </J40MainGridContainer>
@@ -85,34 +46,15 @@ const IndexPage = ({location}: IndexPageProps) => {
           <AboutCard
             size={'large'}
             imgSrc={aboutUSMapImg}
-            header={intl.formatMessage(messages.aboutScreenToolHeading)}>
-
-            <p>
-              <FormattedMessage
-                id={'index.aboutContent.p1'}
-                description={'paragraph 1 of main content on index page'}
-                defaultMessage=
-                  {`On January 27, 2021, President Biden directed the Council on
-                    Environmental Quality (CEQ) to create a climate and economic
-                    justice screening tool. The purpose of the tool is to help
-                    Federal agencies identify disadvantaged communities and provide
-                    socioeconomic, environmental, and climate information and data
-                    to inform decisions that may affect these communities. The tool
-                    identifies disadvantaged communities as communities of focus
-                    through publicly available, nationally consistent, high-quality
-                    data.
-                  `}/>
-            </p>
-
-            <p>
-              <FormattedMessage
-                id={'index.aboutContent.p1b'}
-                description={'paragraph 1b of main content on index page'}
-                defaultMessage={`
-                The current version of the tool is in a public beta form and
-                will be updated based on feedback from the public.
-                  `}/>
-            </p>
+            header={intl.formatMessage(ABOUT_COPY.PAGE.HEADING_1)}>
+            <>
+              <p>
+                {intl.formatMessage(ABOUT_COPY.PAGE.HEADING1_DESCRIPTION1)}
+              </p>
+              <p>
+                {intl.formatMessage(ABOUT_COPY.PAGE.HEADING1_DESCRIPTION2)}
+              </p>
+            </>
           </AboutCard>
         </AboutCardsContainer>
 
@@ -120,43 +62,19 @@ const IndexPage = ({location}: IndexPageProps) => {
           <AboutCard
             size={'large'}
             imgSrc={aboutJ40Img}
-            header={intl.formatMessage(messages.aboutJustice40Heading)}>
-
-            <p>
-              <FormattedMessage
-                id="index.aboutContent.p2"
-                description={'paragraph 2 of main content on index page'}
-                defaultMessage={`
-                The tool will provide important information for the Justice40
-                Initiative. The goal of the Justice40 Initiative is to provide
-                40-percent of the overall benefits of certain federal
-                programs in seven key areas to disadvantaged communities.
-                These seven key areas are: climate change, clean energy and
-                energy efficiency, clean transit, affordable and sustainable
-                housing, training and workforce development, the remediation
-                and reduction of legacy pollution, and the development of
-                critical clean water infrastructure.
-                    `}/>
-            </p>
-
-            <p>
-              <FormattedMessage
-                id={'index.aboutContent.p3'}
-                description={'paragraph 3 of main content on index page'}
-                defaultMessage={`
-                  Read more about the Justice40 Initiative in President Biden’s 
-                  {presidentLink}
-                  `}
-                values={{
-                  presidentLink:
-                  <a
-                    href={intl.formatMessage(messages.presidentalLinkUri)}
-                    target="_blank"
-                    rel="noreferrer">{intl.formatMessage(messages.presidentalLinkLabel)}
-                  </a>,
-                }}/>
-            </p>
-
+            header={intl.formatMessage(ABOUT_COPY.PAGE.HEADING_2)}>
+            <>
+              <p>
+                {intl.formatMessage(ABOUT_COPY.PAGE.HEADING2_DESCRIPTION1)}
+              </p>
+              <p>
+                {intl.formatMessage(ABOUT_COPY.PAGE.HEADING2_DESCRIPTION2)}
+                {' '}
+                <a href={ABOUT_COPY.EXEC_ORDER_LINK} target={'_blank'} rel="noreferrer">
+                  {intl.formatMessage(ABOUT_COPY.PAGE.PRESIDENT_LINK_LABEL)}
+                </a>
+              </p>
+            </>
           </AboutCard>
         </AboutCardsContainer>
       </J40MainGridContainer>
@@ -165,63 +83,63 @@ const IndexPage = ({location}: IndexPageProps) => {
         fullWidth={true}
         blueBackground={true}>
         <J40MainGridContainer>
-          <h2>How to get started</h2>
+          <h2>
+            {intl.formatMessage(ABOUT_COPY.HOW_TO_GET_STARTED.TITLE)}
+          </h2>
           <AboutCardsContainer>
             <AboutCard
               size={'small'}
               imgSrc={accountBalanceIcon}
-              header={'Federal program managers'}
-              linkText={'Go to data & methodology'}
+              header={intl.formatMessage(ABOUT_COPY.HOW_TO_GET_STARTED.FEDERAL_PM_HEADING)}
+              linkText={intl.formatMessage(ABOUT_COPY.HOW_TO_GET_STARTED.FEDERAL_PM_LINK_TEXT)}
               url={'/methodology'}
-              internal={true}
-            >
-              Download the screening tool’s draft list of communities of focus.
-              Explore data that may be useful to your program, and provide
-              feedback on the tool.
+              internal={true}>
+              <p>
+                {intl.formatMessage(ABOUT_COPY.HOW_TO_GET_STARTED.FEDERAL_PM_INFO)}
+              </p>
             </AboutCard>
 
             <AboutCard
               size={'small'}
               imgSrc={groupsIcon}
-              header={'Community members'}
-              linkText={'Explore the tool'}
+              header={intl.formatMessage(ABOUT_COPY.HOW_TO_GET_STARTED.COMMUNITY_MEMBERS_HEADING)}
+              linkText={intl.formatMessage(ABOUT_COPY.HOW_TO_GET_STARTED.COMMUNITY_MEMBERS_LINK_TEXT)}
               url={'/cejst'}
-              internal={true}
-            >
-              Explore data about communities of focus in your area, and help
-              provide feedback on the tool.
+              internal={true}>
+              <p>
+                {intl.formatMessage(ABOUT_COPY.HOW_TO_GET_STARTED.COMMUNITY_MEMBERS_INFO)}
+              </p>
             </AboutCard>
           </AboutCardsContainer>
         </J40MainGridContainer>
       </J40MainGridContainer>
 
       <J40MainGridContainer>
-        <h2>Get involved</h2>
+        <h2>{intl.formatMessage(ABOUT_COPY.GET_INVOLVED.TITLE)}</h2>
         <AboutCardsContainer>
           <AboutCard
             size={'small'}
             imgSrc={commentIcon}
-            header={'Send feedback'}
-            linkText={'Email: screeningtool.feedback@usds.gov'}
-            url={'mailto:screeningtool.feedback@usds.gov'}
-            internal={false}
-          >
-            Have ideas about how this tool can be improved to better
-            reflect the on-the-ground experiences of your community?
+            header={intl.formatMessage(ABOUT_COPY.GET_INVOLVED.SEND_FEEDBACK_HEADING)}
+            linkText={`Email: ${CONTACT_COPY.FEEDBACK_EMAIL}`}
+            url={`mailto:${CONTACT_COPY.FEEDBACK_EMAIL}`}
+            internal={false}>
+            <p>
+              {intl.formatMessage(ABOUT_COPY.GET_INVOLVED.SEND_FEEDBACK_INFO)}
+            </p>
           </AboutCard>
 
           <AboutCard
             size={'small'}
             imgSrc={githubIcon}
-            header={'Join the open source community'}
-            linkText={'Check it out on GitHub'}
-            url={'https://github.com/usds/justice40-tool'}
+            header={intl.formatMessage(ABOUT_COPY.GET_INVOLVED.SEND_FEEDBACK_HEADING)}
+            linkText={intl.formatMessage(ABOUT_COPY.GET_INVOLVED.JOIN_OSC_LINK_TEXT)}
+            url={ABOUT_COPY.GITHUB_LINK}
             openUrlNewTab={true}
-            internal={false}
-          >
-            The screening tool’s code is open source, which means it is
-            available for the public to view and contribute to. Anyone
-            can view and contribute on GitHub.
+            internal={false}>
+            <p>
+              {intl.formatMessage(ABOUT_COPY.GET_INVOLVED.JOIN_OSC_INFO)}
+            </p>
           </AboutCard>
         </AboutCardsContainer>
       </J40MainGridContainer>

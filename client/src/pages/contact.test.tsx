@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {render} from '@testing-library/react';
 import {LocalizedComponent} from '../test/testHelpers';
-import Index from './index';
+import Contact from './contact';
 
 describe('rendering of the DatasetContainer', () => {
   const {asFragment} = render(
       <LocalizedComponent>
-        <Index location={window.location}/>
+        <Contact location={window.location}/>
       </LocalizedComponent>,
   );
 
