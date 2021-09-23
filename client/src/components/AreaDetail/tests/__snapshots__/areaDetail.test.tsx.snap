@@ -8,7 +8,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
     <ul>
       <li>
         <span>
-          Census block group: 
+          Census block group:
         </span>
         <span>
           98729374234
@@ -16,7 +16,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
       </li>
       <li>
         <span>
-          County: 
+          County:
         </span>
         <span />
       </li>
@@ -28,7 +28,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
       </li>
       <li>
         <span>
-          Population: 
+          Population:
         </span>
         <span>
           3,435,435

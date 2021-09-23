@@ -1,12 +1,5 @@
 import {LngLatBoundsLike} from 'maplibre-gl';
 import {isMobile as isMobileReactDeviceDetect} from 'react-device-detect';
-import {defineMessages} from 'react-intl';
-
-export const DOWNLOAD_ZIP_URL = [
-  process.env.GATSBY_DATA_ROOT_PATH,
-  process.env.GATSBY_DATA_PIPELINE_SCORE_PATH,
-  process.env.GATSBY_SCORE_DOWNLOAD_FILE_PATH,
-].join('/');
 
 const XYZ_SUFFIX = '{z}/{x}/{y}.pbf';
 export const featureURLForTilesetName = (tilesetName :string ) : string => {
@@ -118,11 +111,6 @@ export const AMERICAN_SAMOA_BOUNDS : LngLatBoundsLike = [
 
 export const DEFAULT_CENTER = [32.4687126, -86.502136];
 
-// Data versioning
-export const DOWNLOAD_FILE_SIZE = '143MB';
-export const DOWNLOAD_LAST_UPDATED = '09/20/21';
-export const VERSION_NUMBER = '0.1';
-
 // Opacity
 export const DEFAULT_LAYER_OPACITY = 0.6;
 
@@ -142,21 +130,5 @@ export const CURRENTLY_SELECTED_FEATURE_LAYER_WIDTH = 0.8;
 export const SCORE_BOUNDARY_LOW = 0.0;
 export const SCORE_BOUNDARY_THRESHOLD = 0.6;
 export const SCORE_BOUNDARY_PRIORITIZED = 0.75;
-
-
-// Explore the Tool:
-export const EXPLORE_TOOL_PAGE_TEXT = defineMessages({
-  PRIORITY_LABEL: {
-    id: 'legend.info.priority.label',
-    defaultMessage: 'Draft community of focus',
-    description: 'the label of the prioritized community legend',
-  },
-  PRIORITY_DESCRIPT: {
-    id: 'legend.info.threshold.label',
-    defaultMessage: 'A community identified as experiencing disadvantages that merits' +
-    ' the focus of certain Federal investments, including through the Justice40 Initiative',
-    description: 'the label of the threshold community legend',
-  },
-});
 
 export const isMobile = isMobileReactDeviceDetect;
