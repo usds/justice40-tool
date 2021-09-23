@@ -41,6 +41,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
     </ul>
     <div>
       <div>
+        <div />
         <h3>
           Community of focus
         </h3>

@@ -1,6 +1,6 @@
 /* eslint-disable quotes */
 // External Libs:
-import * as React from 'react';
+import React, {useEffect} from 'react';
 import {useIntl} from 'gatsby-plugin-intl';
 
 // Components:
@@ -32,36 +32,28 @@ const getSuperscriptOrdinal = (percentile: number) => {
   return suffixes[englishOrdinalRules.select(percentile)];
 };
 
-// Todo VS: remove threshold data
-export const getCategorization = (percentile: number) => {
-  let categorization;
-  let categoryCircleStyle;
-
-  if (percentile >= constants.SCORE_BOUNDARY_PRIORITIZED ) {
-    categorization = EXPLORE_COPY.COMMUNITY.OF_FOCUS;
-    categoryCircleStyle = styles.prioritized;
-  } else if (constants.SCORE_BOUNDARY_THRESHOLD <= percentile && percentile < constants.SCORE_BOUNDARY_PRIORITIZED) {
-    categorization = EXPLORE_COPY.COMMUNITY.NOT_OF_FOCUS;
-    categoryCircleStyle = styles.threshold;
-  } else {
-    categorization = EXPLORE_COPY.COMMUNITY.NOT_OF_FOCUS;
-    categoryCircleStyle = styles.nonPrioritized;
-  }
-  return [categorization, categoryCircleStyle];
-};
-
 interface IAreaDetailProps {
   properties: constants.J40Properties,
 }
 
 const AreaDetail = ({properties}:IAreaDetailProps) => {
   const intl = useIntl();
+  const [isCommunityFocus, setIsCommunityFocus] = React.useState<boolean>(true);
 
   const score = properties[constants.SCORE_PROPERTY_HIGH] as number;
   const blockGroup = properties[constants.GEOID_PROPERTY];
   const population = properties[constants.TOTAL_POPULATION];
   const countyName = properties[constants.COUNTY_NAME];
   const stateName = properties[constants.STATE_NAME];
+
+  useEffect(() => {
+    if (score >= constants.SCORE_BOUNDARY_PRIORITIZED ) {
+      setIsCommunityFocus(true);
+    } else {
+      setIsCommunityFocus(false);
+    }
+  }, [score]);
+
 
   interface indicatorInfo {
     label: string,
@@ -153,8 +145,6 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     houseBurden, leadPaint, lifeExpect, pm25, trafficVolume, wasteWater,
   ];
 
-  const [categorization, categoryCircleStyle] = getCategorization(score);
-
   return (
     <aside className={styles.areaDetailContainer} data-cy={'aside'}>
       <ul className={styles.censusRow}>
@@ -184,11 +174,14 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
         </li>
       </ul>
       <div className={styles.categorization}>
-        <div className={styles.priority}>
-          {categorization === 'Community of focus' ?
-          <div className={categoryCircleStyle} /> :
-          null }
-          <h3>{categorization}</h3>
+        <div className={styles.communityOfFocus}>
+          {isCommunityFocus ?
+            <>
+              <div className={styles.communityOfFocusCircle} />
+              <h3>{EXPLORE_COPY.COMMUNITY.OF_FOCUS}</h3>
+            </> :
+          <h3>{EXPLORE_COPY.COMMUNITY.NOT_OF_FOCUS}</h3>
+          }
         </div>
         <p className={"secondary"}>version {METHODOLOGY_COPY.VERSION_NUMBER}</p>
       </div>

@@ -1,10 +1,9 @@
 import * as React from 'react';
 import {render} from '@testing-library/react';
-import AreaDetail, {getCategorization, readablePercentile} from '..';
+import AreaDetail, {readablePercentile} from '..';
 import {LocalizedComponent} from '../../../test/testHelpers';
 
 import * as constants from '../../../data/constants';
-import * as EXPLORE_COPY from '../../../data/copy/explore';
 
 describe('rendering of the AreaDetail', () => {
   const properties = {
@@ -22,8 +21,7 @@ describe('rendering of the AreaDetail', () => {
       <LocalizedComponent>
         <AreaDetail properties={properties}/>
       </LocalizedComponent>,
-  )
-  ;
+  );
 
   it('checks if various text fields are visible', () => {
     expect(asFragment()).toMatchSnapshot();
@@ -35,18 +33,4 @@ describe('tests the readablePercentile function', () => {
   expect(readablePercentile(.07)).toEqual(7);
   expect(readablePercentile(.123)).toEqual(12);
   expect(readablePercentile(.789)).toEqual(79);
-});
-
-describe('tests the getCategorization function', () => {
-  it(`should equal Community of focus for value >= ${constants.SCORE_BOUNDARY_LOW}`, () => {
-    expect(getCategorization(.756)).toEqual([EXPLORE_COPY.COMMUNITY.OF_FOCUS, undefined]);
-  });
-
-  it(`should equal Threshold for .60 <= value < ${constants.SCORE_BOUNDARY_THRESHOLD}`, () => {
-    expect(getCategorization(.65)).toEqual([EXPLORE_COPY.COMMUNITY.NOT_OF_FOCUS, undefined]);
-  });
-
-  it(`should equal Non-prioritized for value < ${constants.SCORE_BOUNDARY_PRIORITIZED}`, () => {
-    expect(getCategorization(.53)).toEqual([EXPLORE_COPY.COMMUNITY.NOT_OF_FOCUS, undefined]);
-  });
 });
