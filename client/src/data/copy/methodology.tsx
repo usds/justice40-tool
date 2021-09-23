@@ -117,7 +117,7 @@ export const INDICATORS = [
   {
     indicator: 'Poverty',
     description: `Percent of a block group's population in households where the household income` +
-    ` is at or below 100% of the federal poverty level`,
+    ` is at or below 100% of the federal poverty level.`,
     dataResolution: `Census block group`,
     dataSourceLabel: `Census's American Community Survey`,
     dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
