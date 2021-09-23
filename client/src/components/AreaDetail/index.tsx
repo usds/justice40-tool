@@ -162,25 +162,25 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
           <span className={styles.censusLabel}>
             {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CBG_INFO.CENSUS_BLOCK_GROUP)}
           </span>
-          <span className={styles.censusText}>{blockGroup}</span>
+          <span className={styles.censusText}>{` ${blockGroup}`}</span>
         </li>
         <li>
           <span className={styles.censusLabel}>
             {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CBG_INFO.COUNTY)}
           </span>
-          <span className={styles.censusText}>{countyName}</span>
+          <span className={styles.censusText}>{` ${countyName}`}</span>
         </li>
         <li>
           <span className={styles.censusLabel}>
             {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CBG_INFO.STATE)}
           </span>
-          <span className={styles.censusText}>{stateName}</span>
+          <span className={styles.censusText}>{` ${stateName}`}</span>
         </li>
         <li>
           <span className={styles.censusLabel}>
             {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CBG_INFO.POPULATION)}
           </span>
-          <span className={styles.censusText}>{population.toLocaleString()}</span>
+          <span className={styles.censusText}>{` ${population.toLocaleString()}`}</span>
         </li>
       </ul>
       <div className={styles.categorization}>

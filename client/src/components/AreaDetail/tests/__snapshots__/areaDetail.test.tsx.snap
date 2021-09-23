@@ -11,33 +11,36 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           Census block group:
         </span>
         <span>
-          98729374234
+           98729374234
         </span>
       </li>
       <li>
         <span>
           County:
         </span>
-        <span />
+        <span>
+           undefined
+        </span>
       </li>
       <li>
         <span>
           State: 
         </span>
-        <span />
+        <span>
+           undefined
+        </span>
       </li>
       <li>
         <span>
           Population:
         </span>
         <span>
-          3,435,435
+           3,435,435
         </span>
       </li>
     </ul>
     <div>
       <div>
-        <div />
         <h3>
           Community of focus
         </h3>
