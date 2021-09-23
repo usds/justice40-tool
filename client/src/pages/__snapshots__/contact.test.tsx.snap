@@ -302,6 +302,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             For general feedback, email 
             <a
               href="mailto:screeningtool.feedback@usds.gov"
+              rel="noreferrer"
+              target="_blank"
             >
               screeningtool.feedback@usds.gov
             </a>
