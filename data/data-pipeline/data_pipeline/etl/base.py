@@ -42,7 +42,7 @@ class ExtractTransformLoad:
         # set by _get_yaml_config()
         self.NAME: str = None
         self.SOURCE_URL: str = None
-        self.GEO_COL: str = None
+        self.GEOID_COL: str = None
         self.GEO_LEVEL: str = None
         self.SCORE_COLS: list = None
         self.FIPS_CODES: pd.DataFrame = None
@@ -61,10 +61,10 @@ class ExtractTransformLoad:
             raise err
 
         # set dataset specific attributes
-        if config["is_dataset"]:
-            # self.FIPS_CODES: pd.Dataframe = self._get_census_fips_codes()
+        if config["is_census"]:
             csv_dir = self.DATA_PATH / "dataset"
         else:
+            # self.FIPS_CODES: pd.Dataframe = self._get_census_fips_codes()
             csv_dir = self.DATA_PATH / "census" / "csv"
 
         # parse name and set output path
@@ -74,7 +74,7 @@ class ExtractTransformLoad:
         self.OUTPUT_PATH = csv_dir / output_dir / "usa.csv"
 
         # set class attributes
-        attrs = ["NAME", "SOURCE_URL", "GEO_COL", "GEO_LEVEL", "SCORE_COLS"]
+        attrs = ["NAME", "SOURCE_URL", "GEOID_COL", "GEO_LEVEL", "SCORE_COLS"]
         for attr in attrs:
             setattr(self, attr, config[attr.lower()])
 
@@ -117,7 +117,8 @@ class ExtractTransformLoad:
 
         remove_all_from_dir(self.TMP_PATH)
 
-    def _get_cenus_fips_codes(self) -> pd.DataFrame:
+    # TODO: Add test for this
+    def _get_census_fips_codes(self) -> pd.DataFrame:
         """Loads FIPS codes for each Census block group and tract"""
 
         # check that the census data exists
@@ -125,13 +126,13 @@ class ExtractTransformLoad:
             logger.info("Census data not found, please run download_csv first")
         # load the census data
         df = pd.read_csv(
-            self.CENSUS_CSV,
-            dtype={self.GEOID_FIELD_NAME_COL: "string"}
+            self.CENSUS_CSV, dtype={self.GEOID_FIELD_NAME: "string"}
         )
         # extract Census tract FIPS code from Census block group
         df[self.GEOID_TRACT_FIELD_NAME] = df[self.GEOID_FIELD_NAME].str[0:11]
-        return df[[self.GEOID_FIELD_NAME, TRACT_COL]]
+        return df[[self.GEOID_FIELD_NAME, self.GEOID_TRACT_FIELD_NAME]]
 
+    # TODO: Create tests
     def validate_output(self) -> None:
         """Checks that the output of the ETL process adheres to the contract
         expected by the score module
@@ -153,7 +154,7 @@ class ExtractTransformLoad:
             self.OUTPUT_PATH,
             dtype={
                 self.GEOID_FIELD_NAME: "string",
-                self.GEOID_TRACT_FIELD_NAME: "string"
+                self.GEOID_TRACT_FIELD_NAME: "string",
             },
         )
 

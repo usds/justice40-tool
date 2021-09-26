@@ -3,7 +3,7 @@ year: null
 is_dataset: true
 source_url: https://github.com/usds/justice40-tool/
 geo_level: Census Block Group
-geo_col: GEO COL
+geoid_col: GEO COL
 score_cols:
   - COL 1
   - COL 2

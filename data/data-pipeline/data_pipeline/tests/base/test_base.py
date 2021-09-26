@@ -27,7 +27,7 @@ class TestInit:
         # validation
         etl.NAME == "Template"
         etl.SOURCE_URL == "https://github.com/usds/justice40-tool/"
-        etl.GEO_COL == "GEO COL"
+        etl.GEOID_COL == "GEO COL"
         etl.GEO_LEVEL == "Census Block Group"
         etl.SCORE_COLS == ["COL 1", "COL 2", "COL 3"]
         etl.OUTPUT_PATH == data_path / "dataset" / "template"
