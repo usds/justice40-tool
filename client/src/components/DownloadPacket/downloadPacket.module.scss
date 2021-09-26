@@ -21,6 +21,9 @@ $primary-color: #112f4e;
 
         .downloadBoxText {
           margin-bottom: 20px;
+          span {
+            font-style: italic;
+          }
         }
 
         .downloadBoxButtonContainer {

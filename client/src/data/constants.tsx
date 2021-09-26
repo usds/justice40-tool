@@ -1,12 +1,5 @@
 import {LngLatBoundsLike} from 'maplibre-gl';
 import {isMobile as isMobileReactDeviceDetect} from 'react-device-detect';
-import {defineMessages} from 'react-intl';
-
-export const DOWNLOAD_ZIP_URL = [
-  process.env.GATSBY_DATA_ROOT_PATH,
-  process.env.GATSBY_DATA_PIPELINE_SCORE_PATH,
-  process.env.GATSBY_SCORE_DOWNLOAD_FILE_PATH,
-].join('/');
 
 const XYZ_SUFFIX = '{z}/{x}/{y}.pbf';
 export const featureURLForTilesetName = (tilesetName :string ) : string => {
@@ -60,13 +53,10 @@ export const LEAD_PAINT_PERCENTILE = 'Percent pre-1960s housing (lead paint indi
 export const DIESEL_MATTER_PERCENTILE = 'Diesel particulate matter (percentile)';
 export const PM25_PERCENTILE = 'Particulate matter (PM2.5) (percentile)';
 
+export type J40Properties = { [key: string]: any };
 
 // The name of the layer within the tiles that contains the score
 export const SCORE_SOURCE_LAYER = 'blocks';
-export const DOWNLOAD_FILE_SIZE = '143MB';
-export const DOWNLOAD_LAST_UPDATED = '09/20/21';
-
-export type J40Properties = { [key: string]: any };
 
 // Zoom
 export const GLOBAL_MIN_ZOOM = 3;
@@ -140,21 +130,5 @@ export const CURRENTLY_SELECTED_FEATURE_LAYER_WIDTH = 0.8;
 export const SCORE_BOUNDARY_LOW = 0.0;
 export const SCORE_BOUNDARY_THRESHOLD = 0.6;
 export const SCORE_BOUNDARY_PRIORITIZED = 0.75;
-
-
-// Explore the Tool:
-export const EXPLORE_TOOL_PAGE_TEXT = defineMessages({
-  PRIORITY_LABEL: {
-    id: 'legend.info.priority.label',
-    defaultMessage: 'Draft community of focus',
-    description: 'the label of the prioritized community legend',
-  },
-  PRIORITY_DESCRIPT: {
-    id: 'legend.info.threshold.label',
-    defaultMessage: 'A community identified as experiencing disadvantages that merits' +
-    ' the focus of certain Federal investments, including through the Justice40 Initiative',
-    description: 'the label of the threshold community legend',
-  },
-});
 
 export const isMobile = isMobileReactDeviceDetect;

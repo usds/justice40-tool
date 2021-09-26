@@ -7,47 +7,17 @@ import {
   GovBanner,
   Tag,
 } from '@trussworks/react-uswds';
-import {defineMessages} from 'react-intl';
+
 // @ts-ignore
 import siteLogo from '../../src/images/icon.png';
+import * as COMMON_COPY from '../data/copy/common';
 
 const J40Header = () => {
   const intl = useIntl();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const messages = defineMessages({
-    titleLine1: {
-      id: 'header.title.line1',
-      defaultMessage: `Climate and Economic Justice`,
-      description: 'Title in nav header line 1 of 2',
-    },
-    titleLine2: {
-      id: 'header.title.line2',
-      defaultMessage: `Screening Tool`,
-      description: 'Title in nav header line 2 of 2',
-    },
-    about: {
-      id: 'header.about',
-      defaultMessage: 'About',
-      description: 'Header navigate item to the about page',
-    },
-    explore: {
-      id: 'header.explore',
-      defaultMessage: 'Explore the tool',
-      description: 'Header navigate item to the Explore the tool page',
-    },
-    methodology: {
-      id: 'header.methodology',
-      defaultMessage: 'Data & methodology',
-      description: 'Header navigate item to the Methodology page',
-    },
-    contact: {
-      id: 'header.contact',
-      defaultMessage: 'Contact',
-      description: 'Header navigate item to the Contact page',
-    },
-  });
-  const titleL1 = intl.formatMessage(messages.titleLine1);
-  const titleL2 = intl.formatMessage(messages.titleLine2);
+
+  const titleL1 = intl.formatMessage(COMMON_COPY.HEADER.TITLE_LINE_1);
+  const titleL2 = intl.formatMessage(COMMON_COPY.HEADER.TITLE_LINE_2);
 
   const toggleMobileNav = (): void =>
     setMobileNavOpen((prevOpen) => !prevOpen);
@@ -62,9 +32,8 @@ const J40Header = () => {
           key={'about'}
           activeClassName="usa-current"
           className={'j40-header'}
-          data-cy={'nav-link-about'}
-        >
-          {intl.formatMessage(messages.about)}
+          data-cy={'nav-link-about'}>
+          {intl.formatMessage(COMMON_COPY.HEADER.ABOUT)}
         </Link>,
       ],
       ['cejst',
@@ -73,9 +42,8 @@ const J40Header = () => {
           key={'cejst'}
           activeClassName="usa-current"
           className={'j40-header'}
-          data-cy={'nav-link-explore'}
-        >
-          {intl.formatMessage(messages.explore)}
+          data-cy={'nav-link-explore'}>
+          {intl.formatMessage(COMMON_COPY.HEADER.EXPLORE)}
         </Link>,
       ],
       ['methodology',
@@ -84,9 +52,8 @@ const J40Header = () => {
           key={'methodology'}
           activeClassName="usa-current"
           className={'j40-header'}
-          data-cy={'nav-link-methodology'}
-        >
-          {intl.formatMessage(messages.methodology)}
+          data-cy={'nav-link-methodology'}>
+          {intl.formatMessage(COMMON_COPY.HEADER.METHODOLOGY)}
         </Link>,
       ],
       ['contact',
@@ -95,9 +62,8 @@ const J40Header = () => {
           key={'contact'}
           activeClassName="usa-current"
           className={'j40-header'}
-          data-cy={'nav-link-contact'}
-        >
-          {intl.formatMessage(messages.contact)}
+          data-cy={'nav-link-contact'}>
+          {intl.formatMessage(COMMON_COPY.HEADER.CONTACT)}
         </Link>,
       ],
     ]);

@@ -1,0 +1,803 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of the DatasetContainer checks if various text fields are visible 1`] = `
+<DocumentFragment>
+  <section
+    class="usa-banner"
+    data-testid="govBanner"
+  >
+    <div
+      class="usa-accordion"
+    >
+      <header
+        class="usa-banner__header"
+      >
+        <div
+          class="usa-banner__inner"
+        >
+          <div
+            class="grid-col-auto"
+          >
+            <img
+              alt="U.S. flag"
+              class="usa-banner__header-flag"
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAMAAABBPP0LAAAAG1BMVEUdM7EeNLIeM7HgQCDaPh/bPh/bPx/////bPyBEby41AAAAUElEQVQI123MNw4CABDEwD3jC/9/MQ1BQrgeOSkIqYe2o2FZtthXgQLgbHVMZdlsfUQFQnHtjP1+8BUhBDKOqtmfot6ojqPzR7TjdU+f6vkED+IDPhTBcMAAAAAASUVORK5CYII="
+            />
+          </div>
+          <div
+            class="grid-col-fill tablet:grid-col-auto"
+          >
+            <p
+              class="usa-banner__header-text"
+            >
+              An official website of the United States government
+            </p>
+            <p
+              aria-hidden="true"
+              class="usa-banner__header-action"
+            >
+              Here’s how you know
+            </p>
+          </div>
+          <button
+            aria-controls="gov-banner"
+            aria-expanded="false"
+            class="usa-accordion__button usa-banner__button"
+            type="button"
+          >
+            <span
+              class="usa-banner__button-text"
+            >
+              Here’s how you know
+            </span>
+          </button>
+        </div>
+      </header>
+      <div
+        class="usa-banner__content usa-accordion__content"
+        hidden=""
+        id="gov-banner"
+      >
+        <div
+          class="grid-row grid-gap-lg"
+        >
+          <div
+            class="usa-banner__guidance tablet:grid-col-6"
+          >
+            <img
+              alt=""
+              aria-hidden="true"
+              class="usa-banner__icon usa-media-block__img"
+              role="img"
+              src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiB2aWV3Qm94PSIwIDAgNjQgNjQiPjx0aXRsZT5pY29uLWRvdC1nb3Y8L3RpdGxlPjxwYXRoIGZpbGw9IiMyMzc4QzMiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTMyIDBjMTcuNjczIDAgMzIgMTQuMzI3IDMyIDMyIDAgMTcuNjczLTE0LjMyNyAzMi0zMiAzMkMxNC4zMjcgNjQgMCA0OS42NzMgMCAzMiAwIDE0LjMyNyAxNC4zMjcgMCAzMiAwem0wIDEuMjA4QzE0Ljk5NCAxLjIwOCAxLjIwOCAxNC45OTQgMS4yMDggMzJTMTQuOTk0IDYyLjc5MiAzMiA2Mi43OTIgNjIuNzkyIDQ5LjAwNiA2Mi43OTIgMzIgNDkuMDA2IDEuMjA4IDMyIDEuMjA4em0xMC41OSAzOC44NThhLjg1Ny44NTcgMCAwIDEgLjg4Mi44MjJ2MS42NDJIMTguODg2di0xLjY0MmEuODU3Ljg1NyAwIDAgMSAuODgyLS44MjJINDIuNTl6TTI1LjQ0MyAyNy43NzR2OS44MjloMS42NDJ2LTkuODNoMy4yNzN2OS44M0gzMnYtOS44M2gzLjI3MnY5LjgzaDEuNjQzdi05LjgzaDMuMjcydjkuODNoLjc2YS44NTcuODU3IDAgMCAxIC44ODIuODIxdi44MjFoLTIxLjN2LS44MDlhLjg1Ny44NTcgMCAwIDEgLjg4LS44MmguNzYydi05Ljg0MmgzLjI3MnptNS43MzYtOC4xODhsMTIuMjkzIDQuOTE1djEuNjQyaC0xLjYzYS44NTcuODU3IDAgMCAxLS44ODIuODIySDIxLjQxYS44NTcuODU3IDAgMCAxLS44ODItLjgyMmgtMS42NDJ2LTEuNjQybDEyLjI5My00LjkxNXoiLz48L3N2Zz4="
+            />
+            <div
+              class="usa-media-block__body"
+            >
+              <p>
+                <strong>
+                  Official websites use .gov
+                </strong>
+                <br />
+                A 
+                <strong>
+                  .gov
+                </strong>
+                 website belongs to an official government organization in the United States.
+              </p>
+            </div>
+          </div>
+          <div
+            class="usa-banner__guidance tablet:grid-col-6"
+          >
+            <img
+              alt=""
+              aria-hidden="true"
+              class="usa-banner__icon usa-media-block__img"
+              role="img"
+              src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiB2aWV3Qm94PSIwIDAgNjQgNjQiPjx0aXRsZT5pY29uLWh0dHBzPC90aXRsZT48cGF0aCBmaWxsPSIjNzE5RjJBIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zMiAwYzE3LjY3MyAwIDMyIDE0LjMyNyAzMiAzMiAwIDE3LjY3My0xNC4zMjcgMzItMzIgMzJDMTQuMzI3IDY0IDAgNDkuNjczIDAgMzIgMCAxNC4zMjcgMTQuMzI3IDAgMzIgMHptMCAxLjIwOEMxNC45OTQgMS4yMDggMS4yMDggMTQuOTk0IDEuMjA4IDMyUzE0Ljk5NCA2Mi43OTIgMzIgNjIuNzkyIDYyLjc5MiA0OS4wMDYgNjIuNzkyIDMyIDQ5LjAwNiAxLjIwOCAzMiAxLjIwOHptMCAxOC44ODZhNy4yNDUgNy4yNDUgMCAwIDEgNy4yNDUgNy4yNDV2My4xMDNoLjUyYy44NiAwIDEuNTU3LjY5OCAxLjU1NyAxLjU1OHY5LjMyMmMwIC44Ni0uNjk3IDEuNTU4LTEuNTU3IDEuNTU4aC0xNS41M2MtLjg2IDAtMS41NTctLjY5Ny0xLjU1Ny0xLjU1OFYzMmMwLS44Ni42OTctMS41NTggMS41NTctMS41NThoLjUyVjI3LjM0QTcuMjQ1IDcuMjQ1IDAgMCAxIDMyIDIwLjA5NHptMCAzLjEwM2E0LjE0MiA0LjE0MiAwIDAgMC00LjE0MiA0LjE0MnYzLjEwM2g4LjI4NFYyNy4zNEE0LjE0MiA0LjE0MiAwIDAgMCAzMiAyMy4xOTd6Ii8+PC9zdmc+"
+            />
+            <div
+              class="usa-media-block__body"
+            >
+              <p>
+                <strong>
+                  Secure .gov websites use HTTPS
+                </strong>
+                <br />
+                A 
+                <strong>
+                  lock (
+                  <span
+                    class="icon-lock"
+                  >
+                    <img
+                      alt="lock"
+                      class="usa-banner__lock-image"
+                      role="img"
+                      src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjUyIiBoZWlnaHQ9IjY0IiB2aWV3Qm94PSIwIDAgNTIgNjQiPjx0aXRsZT5sb2NrPC90aXRsZT48cGF0aCBmaWxsPSIjMUIxQjFCIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yNiAwYzEwLjQ5MyAwIDE5IDguNTA3IDE5IDE5djloM2E0IDQgMCAwIDEgNCA0djI4YTQgNCAwIDAgMS00IDRINGE0IDQgMCAwIDEtNC00VjMyYTQgNCAwIDAgMSA0LTRoM3YtOUM3IDguNTA3IDE1LjUwNyAwIDI2IDB6bTAgOGMtNS45NzkgMC0xMC44NDMgNC43Ny0xMC45OTYgMTAuNzEyTDE1IDE5djloMjJ2LTljMC02LjA3NS00LjkyNS0xMS0xMS0xMXoiLz48L3N2Zz4="
+                      title="Lock"
+                    />
+                  </span>
+                  )
+                </strong>
+                 or 
+                <strong>
+                  https://
+                </strong>
+                 means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <header
+    class="usa-header usa-header--basic usa-header j40-header"
+    data-testid="header"
+    role="banner"
+  >
+    <div
+      class="usa-nav-container"
+    >
+      <div
+        class="usa-navbar"
+      >
+        <div
+          class="usa-logo"
+        >
+          <img
+            alt="Climate and Economic Justice Screening Tool"
+            class="j40-sitelogo"
+            src="test-file-stub"
+          />
+          <span
+            class="usa-logo__text j40-title"
+          >
+            <span
+              class="j40-title-line1"
+            >
+              Climate and Economic Justice
+            </span>
+            <br />
+            <span
+              class="j40-title-line2"
+            >
+              Screening Tool
+            </span>
+            <span
+              class="usa-tag j40"
+              data-testid="tag"
+            >
+              Beta
+            </span>
+          </span>
+        </div>
+        <button
+          class="usa-menu-btn"
+          data-testid="navMenuButton"
+          type="button"
+        >
+          Menu
+        </button>
+      </div>
+      <nav
+        class="usa-nav j40-header"
+      >
+        <button
+          class="usa-nav__close"
+          data-testid="navCloseButton"
+          type="button"
+        >
+          <img
+            alt="close"
+            src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiB2aWV3Qm94PSIwIDAgNjQgNjQiPjx0aXRsZT5jbG9zZTwvdGl0bGU+PHBhdGggZmlsbD0iIzU2NUM2NSIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNTcuMDQyIDEuMTVsNS44MDkgNS44MDhhNCA0IDAgMCAxIDAgNS42NTdMNDMuNDY1IDMybDE5LjM4NiAxOS4zODVhNCA0IDAgMCAxIDAgNS42NTdsLTUuODA5IDUuODA5YTQgNCAwIDAgMS01LjY1NyAwTDMyIDQzLjQ2NSAxMi42MTUgNjIuODUxYTQgNCAwIDAgMS01LjY1NyAwbC01LjgwOS01LjgwOWE0IDQgMCAwIDEgMC01LjY1N0wyMC41MzUgMzIgMS4xNDkgMTIuNjE1YTQgNCAwIDAgMSAwLTUuNjU3bDUuODA5LTUuODA5YTQgNCAwIDAgMSA1LjY1NyAwTDMyIDIwLjUzNSA1MS4zODUgMS4xNDlhNCA0IDAgMCAxIDUuNjU3IDB6Ii8+PC9zdmc+"
+          />
+        </button>
+        <ul
+          class="usa-nav__primary usa-accordion"
+        >
+          <li
+            class="usa-nav__primary-item"
+          >
+            <a
+              class="j40-header"
+              data-cy="nav-link-about"
+              href="/en/"
+            >
+              About
+            </a>
+          </li>
+          <li
+            class="usa-nav__primary-item"
+          >
+            <a
+              class="j40-header"
+              data-cy="nav-link-explore"
+              href="/en/cejst"
+            >
+              Explore the tool
+            </a>
+          </li>
+          <li
+            class="usa-nav__primary-item"
+          >
+            <a
+              class="j40-header"
+              data-cy="nav-link-methodology"
+              href="/en/methodology"
+            >
+              Data & methodology
+            </a>
+          </li>
+          <li
+            class="usa-nav__primary-item"
+          >
+            <a
+              class="j40-header"
+              data-cy="nav-link-contact"
+              href="/en/contact"
+            >
+              Contact
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main
+    id="main-content"
+  >
+    <div
+      class="grid-container-desktop-lg"
+      data-testid="gridContainer"
+    >
+      <div>
+        <div
+          class="usa-alert usa-alert--info j40-sitealert"
+          data-testid="alert"
+        >
+          <div
+            class="usa-alert__body"
+          >
+            <p
+              class="usa-alert__text"
+            >
+              <span
+                class="j40-sitealert-title"
+              >
+                Public beta
+              </span>
+              <span
+                class="j40-sitealert-body"
+              >
+                 — This website may be continuously updated
+              </span>
+              <br />
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="grid-container-desktop-lg"
+      data-testid="gridContainer"
+    >
+      <div
+        class="grid-row grid-gap-lg j40-aboutcard-container "
+        data-testid="grid"
+      >
+        <div
+          class="grid-gap-lg tablet:grid-col"
+          data-testid="grid"
+        >
+          <div
+            class="grid-row j40-aboutcard-lg-card"
+            data-testid="grid"
+          >
+            <div
+              class="tablet:grid-col-3 j40-aboutpage-image-container"
+              data-testid="grid"
+            >
+              <img
+                alt="The screening tool"
+                class="j40-aboutcard-image"
+                src="test-file-stub"
+              />
+            </div>
+            <div
+              class="tablet:grid-col-9"
+              data-testid="grid"
+            >
+              <div
+                class="grid-row"
+                data-testid="grid"
+              >
+                <h2
+                  data-cy="about-screen-tool-heading"
+                >
+                  The screening tool
+                </h2>
+                <p>
+                  On January 27, 2021, President Biden directed the Council on Environmental Quality (CEQ) to create a climate and economic justice screening tool. The purpose of the tool is to help Federal agencies identify disadvantaged communities and provide socioeconomic, environmental, and climate information and data to inform decisions that may affect these communities. The tool identifies disadvantaged communities as communities of focus through publicly available, nationally consistent, high-quality data.
+                </p>
+                <p>
+                  The current version of the tool is in a public beta form and will be updated based on feedback from the public.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="grid-row grid-gap-lg j40-aboutcard-container "
+        data-testid="grid"
+      >
+        <div
+          class="grid-gap-lg tablet:grid-col"
+          data-testid="grid"
+        >
+          <div
+            class="grid-row j40-aboutcard-lg-card"
+            data-testid="grid"
+          >
+            <div
+              class="tablet:grid-col-3 j40-aboutpage-image-container"
+              data-testid="grid"
+            >
+              <img
+                alt="The Justice40 Initiative"
+                class="j40-aboutcard-image"
+                src="test-file-stub"
+              />
+            </div>
+            <div
+              class="tablet:grid-col-9"
+              data-testid="grid"
+            >
+              <div
+                class="grid-row"
+                data-testid="grid"
+              >
+                <h2
+                  data-cy="about-screen-tool-heading"
+                >
+                  The Justice40 Initiative
+                </h2>
+                <p>
+                  The tool will provide important information for the Justice40 Initiative. The goal of the Justice40 Initiative is to provide 40-percent of the overall benefits of certain federal programs in seven key areas to disadvantaged communities. These seven key areas are: climate change, clean energy and energy efficiency, clean transit, affordable and sustainable housing, training and workforce development, the remediation and reduction of legacy pollution, and the development of critical clean water infrastructure.
+                </p>
+                <p>
+                  Read more about the Justice40 Initiative in President Biden’s 
+                  <a
+                    href="https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/27/executive-order-on-tackling-the-climate-crisis-at-home-and-abroad/"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Executive Order 14008 on Tackling the Climate Crisis at Home and Abroad.
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="j40-main-grid-blue-bk "
+    >
+      <div
+        class="grid-container-desktop-lg"
+        data-testid="gridContainer"
+      >
+        <h2>
+          How to get started
+        </h2>
+        <div
+          class="grid-row grid-gap-lg j40-aboutcard-container "
+          data-testid="grid"
+        >
+          <div
+            class="grid-gap-lg tablet:grid-col"
+            data-testid="grid"
+          >
+            <div
+              class="grid-row j40-aboutcard-sm-card"
+              data-testid="grid"
+            >
+              <div
+                class="tablet:grid-col-2 j40-aboutpage-image-container"
+                data-testid="grid"
+              >
+                <img
+                  alt="Federal program managers"
+                  class="j40-aboutcard-image"
+                  src="test-file-stub"
+                />
+              </div>
+              <div
+                class="tablet:grid-col-9"
+                data-testid="grid"
+              >
+                <div
+                  class="grid-row"
+                  data-testid="grid"
+                >
+                  <h3>
+                    Federal program managers
+                  </h3>
+                  <p>
+                    Download the screening tool’s draft list of communities of focus. Explore data that may be useful to your program, and provide feedback on the tool.
+                  </p>
+                  <div
+                    class="j40-aboutcard-sm-link"
+                  >
+                    <a
+                      href="/en/methodology"
+                    >
+                      Go to data & methodology
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="grid-col-1"
+                data-testid="grid"
+              >
+                 
+              </div>
+            </div>
+          </div>
+          <div
+            class="grid-gap-lg tablet:grid-col"
+            data-testid="grid"
+          >
+            <div
+              class="grid-row j40-aboutcard-sm-card"
+              data-testid="grid"
+            >
+              <div
+                class="tablet:grid-col-2 j40-aboutpage-image-container"
+                data-testid="grid"
+              >
+                <img
+                  alt="Community members"
+                  class="j40-aboutcard-image"
+                  src="test-file-stub"
+                />
+              </div>
+              <div
+                class="tablet:grid-col-9"
+                data-testid="grid"
+              >
+                <div
+                  class="grid-row"
+                  data-testid="grid"
+                >
+                  <h3>
+                    Community members
+                  </h3>
+                  <p>
+                    Explore data about communities of focus in your area, and help  provide feedback on the tool.
+                  </p>
+                  <div
+                    class="j40-aboutcard-sm-link"
+                  >
+                    <a
+                      href="/en/cejst"
+                    >
+                      Explore the tool
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="grid-col-1"
+                data-testid="grid"
+              >
+                 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="grid-container-desktop-lg"
+      data-testid="gridContainer"
+    >
+      <h2>
+        Get involved
+      </h2>
+      <div
+        class="grid-row grid-gap-lg j40-aboutcard-container "
+        data-testid="grid"
+      >
+        <div
+          class="grid-gap-lg tablet:grid-col"
+          data-testid="grid"
+        >
+          <div
+            class="grid-row j40-aboutcard-sm-card"
+            data-testid="grid"
+          >
+            <div
+              class="tablet:grid-col-2 j40-aboutpage-image-container"
+              data-testid="grid"
+            >
+              <img
+                alt="Send feedback"
+                class="j40-aboutcard-image"
+                src="test-file-stub"
+              />
+            </div>
+            <div
+              class="tablet:grid-col-9"
+              data-testid="grid"
+            >
+              <div
+                class="grid-row"
+                data-testid="grid"
+              >
+                <h3>
+                  Send feedback
+                </h3>
+                <p>
+                  Have ideas about how this tool can be improved to better reflect the on-the-ground experiences of your community?
+                </p>
+                <div
+                  class="j40-aboutcard-sm-link"
+                >
+                  <a
+                    class="j40-aboutcard-link"
+                    href="mailto:screeningtool.feedback@usds.gov"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Email: screeningtool.feedback@usds.gov
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div
+              class="grid-col-1"
+              data-testid="grid"
+            >
+               
+            </div>
+          </div>
+        </div>
+        <div
+          class="grid-gap-lg tablet:grid-col"
+          data-testid="grid"
+        >
+          <div
+            class="grid-row j40-aboutcard-sm-card"
+            data-testid="grid"
+          >
+            <div
+              class="tablet:grid-col-2 j40-aboutpage-image-container"
+              data-testid="grid"
+            >
+              <img
+                alt="Join the open source community"
+                class="j40-aboutcard-image"
+                src="test-file-stub"
+              />
+            </div>
+            <div
+              class="tablet:grid-col-9"
+              data-testid="grid"
+            >
+              <div
+                class="grid-row"
+                data-testid="grid"
+              >
+                <h3>
+                  Join the open source community
+                </h3>
+                <p>
+                  The screening tool’s code is open source, which means it is  available for the public to view and contribute to. Anyone can view and contribute on GitHub.
+                </p>
+                <div
+                  class="j40-aboutcard-sm-link"
+                >
+                  <a
+                    class="j40-aboutcard-link"
+                    href="https://github.com/usds/justice40-tool"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Check it out on GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div
+              class="grid-col-1"
+              data-testid="grid"
+            >
+               
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer
+    class="j40-footer"
+  >
+    <div
+      class="usa-footer__primary-section pb"
+    >
+      <div
+        class="grid-container-desktop-lg"
+        data-testid="gridContainer"
+      >
+        <div
+          class="grid-row grid-gap-4 padding-bottom-6 tablet-lg:grid-col4"
+        >
+          <div
+            class="mobile-lg:grid-col-12 desktop:grid-col-4"
+          >
+            <section
+              class="usa-footer__primary-content"
+            >
+              <h4
+                class="padding-top-1 padding-bottom-0"
+              >
+                Contact
+              </h4>
+              <ul
+                class="usa-list usa-list--unstyled padding-bottom-4"
+              >
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <address
+                    class="usa-footer__address j40-footer-address"
+                  >
+                    <div
+                      class="usa-footer__contact-info grid-row grid-gap"
+                    >
+                      <div
+                        class="grid-col-auto"
+                      >
+                        Council on Environmental Quality
+                      </div>
+                      <div
+                        class="grid-col-auto"
+                      >
+                        730 Jackson Pl NW
+                      </div>
+                      <div
+                        class="grid-col-auto"
+                      >
+                        Washington, D.C. 20506
+                      </div>
+                      <div
+                        class="grid-col-auto"
+                      >
+                        (202) 395-5750
+                      </div>
+                    </div>
+                  </address>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div
+            class="mobile-lg:grid-col-12 desktop:grid-col-4"
+          >
+            <section
+              class="usa-footer__primary-content"
+            >
+              <h4
+                class="padding-top-1 padding-bottom-0"
+              >
+                More information
+              </h4>
+              <ul
+                class="usa-list usa-list--unstyled padding-bottom-4"
+              >
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    class="footer-link-first-child"
+                    href="https://www.whitehouse.gov/"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Whitehouse.gov
+                  </a>
+                </li>
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    href="https://www.whitehouse.gov/ceq/foia"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Freedom of Information Act (FOIA)
+                  </a>
+                </li>
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    href="https://www.whitehouse.gov/privacy/"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Privacy Policy
+                  </a>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div
+            class="mobile-lg:grid-col-12 desktop:grid-col-4"
+          >
+            <section
+              class="usa-footer__primary-content"
+            >
+              <h4
+                class="padding-top-1 padding-bottom-0"
+              >
+                Have a question about government services?
+              </h4>
+              <ul
+                class="usa-list usa-list--unstyled padding-bottom-4"
+              >
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    class="footer-link-first-child"
+                    href="https://www.usa.gov/"
+                  >
+                    Find a contact at USA.gov
+                  </a>
+                </li>
+              </ul>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="usa-footer__secondary-section"
+    >
+      <div
+        class="grid-container-desktop-lg"
+        data-testid="gridContainer"
+      >
+        <div
+          class="usa-footer__logo grid-row mobile-lg:grid-col-6 mobile-lg:grid-gap-2 j40-footer-logo"
+          data-testid="footerLogo"
+        >
+          <div
+            class="mobile-lg:grid-col-auto"
+          >
+            <img
+              alt="Whitehouse logo"
+              class="usa-footer__logo-img"
+              src="test-file-stub"
+            />
+          </div>
+          <div
+            class="mobile-lg:grid-col-auto"
+          >
+            <h5>
+              Council on Environmental Quality
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</DocumentFragment>
+`;

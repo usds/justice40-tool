@@ -6,12 +6,13 @@ import LinkTypeWrapper from '../LinkTypeWrapper';
 interface AboutCardProps {
   imgSrc: string;
   header: string;
-  size?: 'small' | 'large';
+  size: 'small' | 'large';
   linkText?: string;
   url?: string;
   openUrlNewTab?: boolean;
   className?: string;
   internal?:boolean;
+  // body:string | React.ReactNode;
 }
 
 const AboutCard = (props: React.PropsWithChildren<AboutCardProps>) => {
@@ -30,7 +31,7 @@ const AboutCard = (props: React.PropsWithChildren<AboutCardProps>) => {
 
           <Grid tablet={{col: 9}}>
             <Grid row>
-              <h2 data-cy={'about-screen-tool-heading'}>{props.header} </h2>
+              <h2 data-cy={'about-screen-tool-heading'}>{props.header}</h2>
               {props.children}
             </Grid>
           </Grid>
@@ -54,7 +55,7 @@ const AboutCard = (props: React.PropsWithChildren<AboutCardProps>) => {
           <Grid tablet={{col: 9}}>
             <Grid row>
               <h3>{props.header}</h3>
-              <p>{props.children}</p>
+              {props.children}
               <div className={'j40-aboutcard-sm-link'}>
                 <LinkTypeWrapper
                   linkText={props.linkText}

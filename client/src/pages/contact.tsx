@@ -1,20 +1,22 @@
 import * as React from 'react';
 import {Grid} from '@trussworks/react-uswds';
-import {FormattedMessage} from 'gatsby-plugin-intl';
+import {useIntl, FormattedMessage} from 'gatsby-plugin-intl';
 
 import AlertWrapper from '../components/AlertWrapper';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 
-interface ContactPageProps {
+import * as CONTACT_COPY from '../data/copy/contact';
+
+interface IContactPageProps {
   location: Location;
 }
 
-const ContactPage = ({location}: ContactPageProps) => {
-  const generalEmail = 'screeningtool.feedback@usds.gov';
+const ContactPage = ({location}: IContactPageProps) => {
+  const intl = useIntl();
 
   return (
-    <Layout location={location} title={'Contact'}>
+    <Layout location={location} title={intl.formatMessage(CONTACT_COPY.PAGE_INTRO.PAGE_TILE)}>
 
       <J40MainGridContainer>
         <AlertWrapper showBetaAlert={true} showLimitedDataAlert={false}/>
@@ -24,25 +26,24 @@ const ContactPage = ({location}: ContactPageProps) => {
         <Grid row>
           <Grid col>
             <h1>
-              <FormattedMessage
-                id={'contact.pageheader'}
-                description={'H2 header for contact page'}
-                defaultMessage={'Contact'}/>
+              {intl.formatMessage(CONTACT_COPY.PAGE_INTRO.PAGE_HEADING)}
             </h1>
             <h2>
-              <FormattedMessage
-                id={'contact.sectionheader'}
-                description={'Heading for page to allow users to contact project maintainers'}
-                defaultMessage={'Email us'}/>
+              {intl.formatMessage(CONTACT_COPY.PAGE_INTRO.PAGE_SUB_HEADING)}
             </h2>
             <p>
               <FormattedMessage
-                id={'contact.general'}
-                description={'Contact page body text'}
-                defaultMessage={`For general feedback, email {general_email_address}`}
+                id={CONTACT_COPY.CONTACT_VIA_EMAIL.ID}
+                description={CONTACT_COPY.CONTACT_VIA_EMAIL.DESCRIPTION}
+                defaultMessage={CONTACT_COPY.CONTACT_VIA_EMAIL.DEFAULT_MESSAGE}
                 values={{
                   general_email_address:
-                    <a href={`mailto:${generalEmail}`}>{generalEmail}</a>,
+                    <a
+                      href={`mailto:${CONTACT_COPY.FEEDBACK_EMAIL}`}
+                      target="_blank"
+                      rel="noreferrer">
+                      {CONTACT_COPY.FEEDBACK_EMAIL}
+                    </a>,
                 }}/>
             </p>
           </Grid>

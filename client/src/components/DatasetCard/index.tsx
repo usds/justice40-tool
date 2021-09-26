@@ -1,7 +1,8 @@
 import React from 'react';
 import {useIntl} from 'gatsby-plugin-intl';
-import {defineMessages} from 'react-intl';
+
 import * as styles from './datasetCard.module.scss';
+import * as METHODOLOGY_COPY from '../../data/copy/methodology';
 
 interface IDatasetCardProps {
   datasetCardProps: { [key:string]: string }
@@ -10,23 +11,6 @@ interface IDatasetCardProps {
 
 const DatasetCard = ({datasetCardProps, additionalIndicator}:IDatasetCardProps) => {
   const intl = useIntl();
-  const messages = defineMessages({
-    dataResolution: {
-      id: 'datasetCard.dataResolution',
-      defaultMessage: 'Data resolution: ',
-      description: 'label associated with explaining the card',
-    },
-    dataSource: {
-      id: 'datasetCard.dataSource',
-      defaultMessage: 'Data source: ',
-      description: 'label associated with explaining the card',
-    },
-    dataDateRange: {
-      id: 'datasetCard.dataDateRange',
-      defaultMessage: 'Data date range: ',
-      description: 'label associated with explaining the card',
-    },
-  });
 
   return (
     <div className={additionalIndicator ? styles.datasetCardAdditional : styles.datasetCard}>
@@ -38,7 +22,7 @@ const DatasetCard = ({datasetCardProps, additionalIndicator}:IDatasetCardProps) 
       <ul className={styles.datasetCardList}>
         <li className={styles.datasetCardListItem}>
           <span className={styles.datasetCardLabels}>
-            {intl.formatMessage(messages.dataSource)}
+            {intl.formatMessage(METHODOLOGY_COPY.DATASET_CARD_LABELS.SOURCE)}
           </span>
           <a href={datasetCardProps.dataSourceURL} target={'_blank'} rel="noreferrer">
             {datasetCardProps.dataSourceLabel}
@@ -46,13 +30,13 @@ const DatasetCard = ({datasetCardProps, additionalIndicator}:IDatasetCardProps) 
         </li>
         <li className={styles.datasetCardListItem}>
           <span className={styles.datasetCardLabels}>
-            {intl.formatMessage(messages.dataResolution)}
+            {intl.formatMessage(METHODOLOGY_COPY.DATASET_CARD_LABELS.RESOLUTION)}
           </span>
           {datasetCardProps.dataResolution}
         </li>
         <li className={styles.datasetCardListItem}>
           <span className={styles.datasetCardLabels}>
-            {intl.formatMessage(messages.dataDateRange)}
+            {intl.formatMessage(METHODOLOGY_COPY.DATASET_CARD_LABELS.DATE_RANGE)}
           </span>
           {datasetCardProps.dataDateRange}
         </li>

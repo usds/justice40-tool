@@ -5,89 +5,82 @@ import {
   ProcessListHeading,
   Grid,
 } from '@trussworks/react-uswds';
+import {useIntl} from 'gatsby-plugin-intl';
+
+import * as METHODOLOGY_COPY from '../data/copy/methodology';
 
 const ScoreStepsList = () => {
+  const intl = useIntl();
+
   return (
     <>
-      <h2>Methodology</h2>
+      <h2>
+        {intl.formatMessage(METHODOLOGY_COPY.METHODOLOGY_STEPS.HEADING)}
+      </h2>
       <Grid row>
         <Grid col={7}>
           <p>
-            The methodology for identifying communities of focus is calculated at the
-            census block group level. Census block geographical boundaries are determined
-            by the U.S. Census Bureau once every ten years. This tool utilizes the census
-            block boundaries from 2010.
+            {intl.formatMessage(METHODOLOGY_COPY.METHODOLOGY_STEPS.DESCRIPTION_1)}
           </p>
           <p>
-          The following describes the process for identifying communities of focus.
+            {intl.formatMessage(METHODOLOGY_COPY.METHODOLOGY_STEPS.DESCRIPTION_2)}
           </p>
         </Grid>
       </Grid>
 
       <ProcessList>
 
+        {/* Step 1 */}
         <ProcessListItem>
-          <ProcessListHeading type="h4">Gather datasets</ProcessListHeading>
-          <p>{' '}</p>
-          <p className={'flush'}>
-            The methodology includes the following inputs that are equally weighted.
-          </p>
 
-          <h4>
-            Percent of Area Median Income
-          </h4>
-          <p className={'flush'}>
-            If a census block group is in a metropolitan area, this value is the
-            median income of the census block group calculated as a percent of
-            the metropolitan area’s median income.
-          </p>
-          <p>
-            If a census block group is not in a metropolitan area, this value is
-            the median income of the census block group calculated as a percent
-            of the state’s median income.
-          </p>
-
-          <h4>
-            Percent of households below or at 100% of the federal poverty line
-          </h4>
-          <p className={'flush'}>
-            This is the percent of households in a state with a household income
-            below or at 100% of the <a href="https://www.census.gov/topics/income-poverty/poverty/guidance/poverty-measures.html" target="_blank" rel="noreferrer">federal poverty line</a>. This federal poverty line is
-            calculated based on the composition of each household (e.g., based on
-            household size), but it does not vary geographically.
-          </p>
-          <h4>
-            The high school degree achievement rate for adults 25 years and older
-          </h4>
-          <p className={'flush'}>
-            The percent of individuals who are 25 or older who have received a high school degree.
-          </p>
-        </ProcessListItem>
-
-        <ProcessListItem>
           <ProcessListHeading type="h4">
-            Determine communites of focus
+            {intl.formatMessage(METHODOLOGY_COPY.METHODOLOGY_STEPS.STEP_1_HEADING)}
           </ProcessListHeading>
           <p>{' '}</p>
           <p className={'flush'}>
-            Under the existing formula, a census block group will be considered a
-            community of focus if:
+            {intl.formatMessage(METHODOLOGY_COPY.METHODOLOGY_STEPS.STEP_1_INFO)}
+          </p>
+
+          {/* Step 1 A */}
+          <h4>
+            {intl.formatMessage(METHODOLOGY_COPY.METHODOLOGY_STEPS.STEP_1_A_HEADING)}
+          </h4>
+          <p className={'flush'}>
+            {intl.formatMessage(METHODOLOGY_COPY.METHODOLOGY_STEPS.STEP_1_A_INFO_1)}
           </p>
           <p>
-            (The median income is less than 80% of the area median income
+            {intl.formatMessage(METHODOLOGY_COPY.METHODOLOGY_STEPS.STEP_1_A_INFO_2)}
           </p>
+
+          {/* Step 1 B */}
+          <h4>
+            {intl.formatMessage(METHODOLOGY_COPY.METHODOLOGY_STEPS.STEP_1_B_HEADING)}
+          </h4>
+          {METHODOLOGY_COPY.COMPLEX_METH_STEPS.STEP_2_B_INFO}
+
+          {/* Step 1 C */}
+          <h4>
+            {intl.formatMessage(METHODOLOGY_COPY.METHODOLOGY_STEPS.STEP_1_C_HEADING)}
+          </h4>
           <p className={'flush'}>
-            OR
+            {intl.formatMessage(METHODOLOGY_COPY.METHODOLOGY_STEPS.STEP_1_C_INFO)}
           </p>
+        </ProcessListItem>
+
+        {/* Step 2 */}
+        <ProcessListItem>
+
+          <ProcessListHeading type="h4">
+            {intl.formatMessage(METHODOLOGY_COPY.METHODOLOGY_STEPS.STEP_2_HEADING)}
+          </ProcessListHeading>
+
+          <p>{' '}</p>
           <p className={'flush'}>
-            households living in poverty (at or below 100% of the federal poverty level) is greater than 20%)
+            {intl.formatMessage(METHODOLOGY_COPY.METHODOLOGY_STEPS.STEP_2_INFO)}
           </p>
-          <p className={'flush'}>
-            AND
-          </p>
-          <p className={'flush'}>
-            The high school degree achievement rate for adults 25 years and older is greater than 95%
-          </p>
+
+          {METHODOLOGY_COPY.COMPLEX_METH_STEPS.FORMULA}
+
         </ProcessListItem>
 
       </ProcessList>

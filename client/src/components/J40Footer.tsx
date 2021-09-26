@@ -5,56 +5,15 @@ import {
 } from '@trussworks/react-uswds';
 import {NavList} from '@trussworks/react-uswds';
 import {useIntl} from 'gatsby-plugin-intl';
-import {defineMessages} from 'react-intl';
+
+import J40MainGridContainer from './J40MainGridContainer';
 
 // @ts-ignore
 import whitehouseIcon from '../images/eop-seal.svg';
-import J40MainGridContainer from './J40MainGridContainer';
+import * as COMMON_COPY from '../data/copy/common';
 
 const J40Footer = () => {
   const intl = useIntl();
-  const messages = defineMessages({
-    arialabelfooter: {
-      id: 'footer.arialabel',
-      defaultMessage: 'Footer navigation',
-      description: 'aria-label text for whole footer',
-    },
-    logotitle: {
-      id: 'footer.logo.title',
-      defaultMessage: 'Council on Environmental Quality',
-      description: 'Footer under logo',
-    },
-    moreinfoheader: {
-      id: 'footer.moreinfoheader',
-      defaultMessage: 'More information',
-      description: 'Footer column header',
-    },
-    foia: {
-      id: 'footer.foialink',
-      defaultMessage: 'Freedom of Information Act (FOIA)',
-      description: 'Footer FOIA link text',
-    },
-    privacy: {
-      id: 'footer.privacylink',
-      defaultMessage: 'Privacy Policy',
-      description: 'Footer privacy policy link text',
-    },
-    whitehouselogoalt: {
-      id: 'footer.whitehouselogoalt',
-      defaultMessage: 'Whitehouse logo',
-      description: 'Footer Whitehouse logo alt text',
-    },
-    questionsheader: {
-      id: 'footer.questionsheader',
-      defaultMessage: 'Have a question about government services?',
-      description: 'Footer column header',
-    },
-    contactlink: {
-      id: 'footer.findcontactlink',
-      defaultMessage: 'Find a contact at USA.gov',
-      description: 'Footer find contact link text',
-    },
-  });
 
   const NAVLINKS = [
     ['Contact',
@@ -63,15 +22,15 @@ const J40Footer = () => {
         className={'j40-footer-address'}
         size={'big'}
         items={[
-          'Council on Environmental Quality',
-          '730 Jackson Pl NW',
-          'Washington, D.C. 20506',
-          '(202) 395-5750',
+          COMMON_COPY.FOOTER_CEQ_ADDRESS.NAME,
+          COMMON_COPY.FOOTER_CEQ_ADDRESS.STREET,
+          COMMON_COPY.FOOTER_CEQ_ADDRESS.CITY_STATE,
+          COMMON_COPY.FOOTER_CEQ_ADDRESS.PHONE,
         ]}
       />,
     ],
     [
-      intl.formatMessage(messages.moreinfoheader),
+      intl.formatMessage(COMMON_COPY.FOOTER.MORE_INFO),
       <a
         className={'footer-link-first-child'}
         key={'whitehouselink2'}
@@ -83,23 +42,23 @@ const J40Footer = () => {
         target={'_blank'}
         rel={'noreferrer'}
         href={'https://www.whitehouse.gov/ceq/foia'}>
-        {intl.formatMessage(messages.foia)}
+        {intl.formatMessage(COMMON_COPY.FOOTER.FOIA)}
       </a>,
       <a
         key={'privacylink'}
         target={'_blank'}
         rel={'noreferrer'}
         href={'https://www.whitehouse.gov/privacy/'}>
-        {intl.formatMessage(messages.privacy)}
+        {intl.formatMessage(COMMON_COPY.FOOTER.PRIVACY)}
       </a>,
     ],
     [
-      intl.formatMessage(messages.questionsheader),
+      intl.formatMessage(COMMON_COPY.FOOTER.QUESTIONS),
       <a
         className={'footer-link-first-child'}
         key={'contactlink'}
         href={'https://www.usa.gov/'}>
-        {intl.formatMessage(messages.contactlink)}
+        {intl.formatMessage(COMMON_COPY.FOOTER.CONTACT_LINK)}
       </a>,
     ],
   ];
@@ -134,9 +93,9 @@ const J40Footer = () => {
               <img
                 className={'usa-footer__logo-img'}
                 src={whitehouseIcon}
-                alt={intl.formatMessage(messages.whitehouselogoalt)}/>
+                alt={intl.formatMessage(COMMON_COPY.FOOTER.LOGO_ALT)}/>
             }
-            heading={<h5>{intl.formatMessage(messages.logotitle)}</h5>}
+            heading={<h5>{intl.formatMessage(COMMON_COPY.FOOTER.TITLE)}</h5>}
           />
         </J40MainGridContainer>
       </div>

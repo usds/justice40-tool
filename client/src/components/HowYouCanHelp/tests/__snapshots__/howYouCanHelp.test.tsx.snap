@@ -8,37 +8,31 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
     </h2>
     <ul>
       <li>
-        <div>
-          If you have helpful information, we would love to 
-          <a
-            href="mailto:screeningtool.feedback@usds.gov"
-          >
-            recieve an email from you
-          </a>
-          .
-        </div>
+        If you have helpful information, we would love to 
+        <a
+          href="mailto:screeningtool.feedback@usds.gov"
+        >
+          recieve an email from you
+        </a>
+        .
       </li>
       <li>
-        <div>
-          View our 
-          <a
-            href="/en/methodology"
-          >
-            Data and methodology
-          </a>
-           page and send us feedback.
-        </div>
+        View our 
+        <a
+          href="/en/methodology"
+        >
+          Data and methodology
+        </a>
+         page and send us feedback.
       </li>
       <li>
-        <div>
-          Find your community of interest and 
-          <a
-            href="mailto:screeningtool.feedback@usds.gov"
-          >
-            share your feedback
-          </a>
-          .
-        </div>
+        Find your community of interest and 
+        <a
+          href="mailto:screeningtool.feedback@usds.gov"
+        >
+          share your feedback
+        </a>
+        .
       </li>
     </ul>
   </div>

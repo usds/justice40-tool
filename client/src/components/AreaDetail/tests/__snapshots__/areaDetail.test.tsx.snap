@@ -8,30 +8,34 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
     <ul>
       <li>
         <span>
-          Census block group: 
+          Census block group:
         </span>
         <span>
-          98729374234
+           98729374234
         </span>
       </li>
       <li>
         <span>
-          County: 
+          County:
         </span>
-        <span />
+        <span>
+           undefined
+        </span>
       </li>
       <li>
         <span>
           State: 
         </span>
-        <span />
+        <span>
+           undefined
+        </span>
       </li>
       <li>
         <span>
-          Population: 
+          Population:
         </span>
         <span>
-          3,435,435
+           3,435,435
         </span>
       </li>
     </ul>
@@ -42,6 +46,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           Community of focus
         </h3>
       </div>
+      <p
+        class="secondary"
+      >
+        version 0.1
+      </p>
     </div>
     <div>
       <h6>

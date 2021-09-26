@@ -1,5 +1,4 @@
 import React from 'react';
-import {defineMessages} from 'react-intl';
 import {Link} from 'gatsby-plugin-intl';
 import {useIntl} from 'gatsby-plugin-intl';
 import {Grid} from '@trussworks/react-uswds';
@@ -11,6 +10,8 @@ import Layout from '../components/layout';
 import MapWrapper from '../components/MapWrapper';
 import MapLegend from '../components/MapLegend';
 
+import * as EXPLORE_COPY from '../data/copy/explore';
+
 interface IMapPageProps {
   location: Location;
 }
@@ -18,28 +19,16 @@ interface IMapPageProps {
 const CEJSTPage = ({location}: IMapPageProps) => {
   // We temporarily removed MapControls, which would enable you to `setFeatures` also, for now
   //   We will bring back later when we have interactive controls.
-
   const intl = useIntl();
-  const messages = defineMessages({
-    exploreToolTitleText: {
-      id: 'exploreTool.title.text',
-      defaultMessage: 'Explore the tool',
-      description: 'explore the tool title text',
-    },
-    exploreToolHeadingText: {
-      id: 'exploreTool.heading.text',
-      defaultMessage: 'Explore the tool',
-      description: 'explore the tool heading text',
-    },
-  });
 
-  return (<Layout location={location} title={intl.formatMessage(messages.exploreToolTitleText)}>
+
+  return (<Layout location={location} title={intl.formatMessage(EXPLORE_COPY.PAGE_INTRO.PAGE_TILE)}>
     <J40MainGridContainer>
       <AlertWrapper showBetaAlert={true} showLimitedDataAlert={false}/>
     </J40MainGridContainer>
 
     <J40MainGridContainer>
-      <h1>{intl.formatMessage(messages.exploreToolTitleText)}</h1>
+      <h1>{intl.formatMessage(EXPLORE_COPY.PAGE_INTRO.PAGE_HEADING)}</h1>
       <Grid row className={'j40-mb-5'}>
         <Grid col={12} tablet={{col: 6}}>
           <section>

@@ -13,7 +13,7 @@ $sidePanelLabelFontColor: #171716;
   width: 0.6rem;
   border-radius: 100%;
   align-self: center;
-  margin-top: 1.8rem;
+  margin-top: 2rem;
   margin-right: 0.5rem;
   opacity: 0.6;
 }
@@ -32,59 +32,43 @@ $sidePanelLabelFontColor: #171716;
   flex-direction: column;
 }
 
+
 .categorization {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-bottom: 2rem;
+
+  .communityOfFocus {
+    display: flex;
+
+    .communityOfFocusCircle {
+      @include categorizationCircleStyle;
+      background: #1a4480;
+    }
+
+  }
+
 }
 
-.censusLabel {
-  @include sidePanelLabelStyle;
-}
-
-.priority {
-  display: flex;
-}
-
-.prioritized {
-  @include categorizationCircleStyle;
-  background: #1a4480;
-  border: 1px solid $featureSelectBorderColor;
-}
-
-.threshold {
-  @include categorizationCircleStyle;
-  background: #d7dde7;
-  border: 1px solid $featureSelectBorderColor;
-}
-
-.nonPrioritized {
-  @include categorizationCircleStyle;
-  border: 1px solid $featureSelectBorderColor;
-}
-
-.prioritization {
-  font-size: large;
-  font-weight: bold;
-  padding-top: 0.8rem;
-}
-
+//Census row styles
 .censusRow {
   display: flex;
   flex-direction: column;
   list-style: none;
   margin: 0;
-}
-
-//census row styles
-.censusRow {
   padding: 1.2rem 1rem 0 1.2rem;
+
+  .censusLabel {
+    @include sidePanelLabelStyle;
+  }
+
+  .censusText {
+    font-size: small;
+  }  
 }
 
-.censusText {
-  font-size: small;
-}
+
 
 //Divider styles
 .divider {
@@ -125,6 +109,11 @@ $sidePanelLabelFontColor: #171716;
   .indicatorValue {
     margin-top: 1.2rem;
     margin-left: 2.2rem;
+    
+    .indicatorSuperscript {
+      top: -0.2em
+    }
+    
   }
   
   .indicatorDesc {
@@ -132,6 +121,3 @@ $sidePanelLabelFontColor: #171716;
   }
 }
 
-.indicatorSuperscript {
-  top: -0.2em
-}

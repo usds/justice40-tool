@@ -17,6 +17,11 @@ interface ILinkTypeWrapper {
  * instance to choose the type of link along with the props necessary to
  * set new tabs, classes.
  *
+ * Note - if the link is an external link and will not open in a new
+ * browser tab, ensure that hitting the back button works. This has shown to
+ * have errors on edge cases (ie, launching the gmail client with mailto links)
+ * and it is the recommendation to not have external links open in the same tab.
+ *
  * @param props
  * @returns
  */

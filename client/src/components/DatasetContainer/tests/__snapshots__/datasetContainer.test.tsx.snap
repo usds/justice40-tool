@@ -102,7 +102,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             Poverty
           </h3>
           <div>
-            Percent of a block group's population in households where the household income is at or below 100% of the federal poverty level
+            Percent of a block group's population in households where the household income is at or below 100% of the federal poverty level.
           </div>
           <ul>
             <li>
@@ -361,11 +361,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Data source: 
               </span>
               <a
-                href="https://www.fhwa.dot.gov/policyinformation/hpms/shapefiles.cfm"
+                href="https://www.epa.gov/ejscreen/technical-documentation-ejscreen"
                 rel="noreferrer"
                 target="_blank"
               >
-                Department of Transportation (DOT) traffic data
+                Department of Transportation (DOT) traffic data as compiled by EPA's EJSCREEN
               </a>
             </li>
             <li>
@@ -502,12 +502,12 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Data source: 
               </span>
               <a
-                href="https://www.epa.gov/rsei"
+                href="https://www.epa.gov/ejscreen/technical-documentation-ejscreen"
                 rel="noreferrer"
                 target="_blank"
               >
                 Environmental Protection Agency (EPA) Risk-Screening 
-    Environmental Indicators (RSEI) Model
+    Environmental Indicators (RSEI) Model as compiled by EPA's EJSCREEN
               </a>
             </li>
             <li>
@@ -572,12 +572,12 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Data source: 
               </span>
               <a
-                href="https://www.epa.gov/national-air-toxics-assessment/2014-nata-assessment-results"
+                href="https://www.epa.gov/ejscreen/technical-documentation-ejscreen"
                 rel="noreferrer"
                 target="_blank"
               >
                 Environmental Protection Agency (EPA) National Air Toxics Assessment (NATA)
-    
+    as compiled by EPA's EJSCREEN
               </a>
             </li>
             <li>
@@ -608,12 +608,12 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Data source: 
               </span>
               <a
-                href="https://www.epa.gov/aboutepa/about-office-air-and-radiation-oar"
+                href="https://www.epa.gov/ejscreen/technical-documentation-ejscreen"
                 rel="noreferrer"
                 target="_blank"
               >
                 Environmental Protection Agency (EPA) Office of Air 
-    and Radiation (OAR) fusion of model and monitor data
+    and Radiation (OAR) fusion of model and monitor data as compiled by EPA's EJSCREEN
               </a>
             </li>
             <li>

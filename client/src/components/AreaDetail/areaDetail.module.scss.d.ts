@@ -2,23 +2,19 @@ declare namespace MapModuleScssNamespace {
   export interface IMapModuleScss {
     areaDetailContainer: string;
     categorization:string;
-    prioritized:string;
-    threshold:string;
-    nonPrioritized:string;
-    priority:string;
-    prioritization:string;
+    communityOfFocus:string;
+    communityOfFocusCircle:string;
     censusRow:string;
-    censusText: string;
     censusLabel:string;
+    censusText: string;
     divider:string;
     indicatorBoxMain:string;
     indicatorBoxAdditional:string;
     indicatorRow:string;
-    indicatorValue:string;
     indicatorName:string;
-    indicatorDesc:string;
-    indicatorBoxAdditional:string;
+    indicatorValue:string;
     indicatorSuperscript:string;
+    indicatorDesc:string;
   }
 }
 
