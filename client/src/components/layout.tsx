@@ -15,11 +15,6 @@ const Layout = ({children, location, title}: ILayoutProps) => {
   return (
     <>
       <Helmet title={title} defer={false}>
-        <script async
-          type="text/javascript"
-          id="_fed_an_ua_tag"
-          src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=DOI&sitetopic=cejst">
-        </script>
       </Helmet>
       <URLFlagProvider location={location}>
         <J40Header />
