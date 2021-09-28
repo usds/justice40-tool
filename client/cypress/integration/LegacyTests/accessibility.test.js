@@ -10,15 +10,17 @@
  * The table of rule descriptions that are seen in the terminal can be seen in totality here:
  *  - https://github.com/dequelabs/axe-core/blob/master/doc/rule-descriptions.md
  *
- * The violation callback will post the violations into the terminal
  */
 
 const endpoints = [
-  // '/en/', needs an h1 tag on about page
-  '/en/cejst',
-  '/en/methodology',
+  // 'en/', needs an h1 tag on about page
+  'en/cejst',
+  'en/methodology',
+  'en/contact',
+  'en/404',
 ];
 
+// The violation callback will post the violations into the terminal
 // eslint-disable-next-line require-jsdoc
 function terminalLog(violations) {
   cy.task(
@@ -29,11 +31,11 @@ function terminalLog(violations) {
   );
 
   // pluck specific keys to keep the table readable
-  // The results array is described here:
-  // - https://www.deque.com/axe/core-documentation/api-documentation/#result-arrays
-  // Unable to figure out how add the HTML element that the violation is occuring on. Using
-  // Axe chrome plugin instead.
   const violationData = violations.map(
+      // The results array is described here:
+      // - https://www.deque.com/axe/core-documentation/api-documentation/#result-arrays
+      // Unable to figure out how add the HTML element that the violation is occuring on. Using
+      // Axe chrome plugin instead.
       ({id, impact, description}) => ({
         id,
         impact,
