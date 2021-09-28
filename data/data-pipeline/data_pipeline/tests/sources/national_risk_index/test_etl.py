@@ -45,6 +45,7 @@ class TestNationalRiskIndexETL:
         data_path, tmp_path = mock_paths
         input_csv = tmp_path / "NRI_Table_CensusTracts.csv"
         output_dir = data_path / "dataset" / "national_risk_index_2020"
+        print(input_csv)
         # validation
         assert etl.DATA_PATH == data_path
         assert etl.TMP_PATH == tmp_path
@@ -66,7 +67,7 @@ class TestNationalRiskIndexETL:
         input_src = DATA_DIR / "input.csv"
         input_dst = etl.INPUT_CSV
         acs_src = DATA_DIR / "acs.csv"
-        acs_dst = DATA_DIR / etl.BLOCK_GROUP_CSV
+        acs_dst = etl.BLOCK_GROUP_CSV
         for src, dst in [(input_src, input_dst), (acs_src, acs_dst)]:
             copy_data_files(src, dst)
         # setup - read in sample output as dataframe

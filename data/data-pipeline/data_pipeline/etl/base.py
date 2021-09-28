@@ -56,17 +56,17 @@ class ExtractTransformLoad:
         the properies in the instance (upcoming feature)"""
         # parse the yaml config file
         try:
-            with open(config_path, "r") as file:
+            with open(config_path, "r", encoding="utf-8") as file:
                 config = yaml.safe_load(file)
         except (FileNotFoundError, yaml.YAMLError) as err:
             raise err
 
         # set dataset specific attributes
         if config["is_census"]:
-            csv_dir = self.DATA_PATH / "dataset"
-        else:
-            # self.FIPS_CODES: pd.Dataframe = self._get_census_fips_codes()
             csv_dir = self.DATA_PATH / "census" / "csv"
+        else:
+            self.FIPS_CODES: pd.Dataframe = self._get_census_fips_codes()
+            csv_dir = self.DATA_PATH / "dataset"
 
         # parse name and set output path
         name = config.get("name")
@@ -147,7 +147,6 @@ class ExtractTransformLoad:
         - The output csv has each of the columns expected by the score and the
           name and dtype of those columns match the format expected by score
         """
-
         # read in output file
         # and check that GEOID cols are present
         assert self.OUTPUT_PATH.exists(), "No file found at OUTPUT_PATH"
@@ -165,4 +164,4 @@ class ExtractTransformLoad:
 
         # check that the score columns are in the output
         for col in self.SCORE_COLS:
-            assert col in df_output.columns
+            assert col in df_output.columns, f"{col} is missing from output"

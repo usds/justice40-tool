@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 
 import pytest
 
@@ -21,6 +22,11 @@ def mock_paths(tmp_path_factory) -> tuple:
     tmp_path = data_path / "tmp"
     tmp_path.mkdir()
     return data_path, tmp_path
+
+
+@pytest.fixture(scope="session")
+def mock_census(mock_paths) -> Path:
+    data_path, tmp_path = mock_paths
 
 
 @pytest.fixture
