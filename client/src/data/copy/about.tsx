@@ -6,6 +6,11 @@ export const PAGE = defineMessages({
     defaultMessage: 'About',
     description: 'about page title text',
   },
+  HEADING: {
+    id: 'index.heading.about.us',
+    defaultMessage: 'About us',
+    description: 'main heading for about page',
+  },
   HEADING_1: {
     id: 'index.heading.screentool',
     defaultMessage: 'The screening tool',

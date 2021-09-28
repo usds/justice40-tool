@@ -284,6 +284,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       class="grid-container-desktop-lg"
       data-testid="gridContainer"
     >
+      <h1>
+        About us
+      </h1>
       <div
         class="grid-row grid-gap-lg j40-aboutcard-container "
         data-testid="grid"
