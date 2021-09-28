@@ -10,6 +10,28 @@ from data_pipeline.etl.base import ExtractTransformLoad
 
 TEST_DIR = settings.APP_ROOT / "tests" / "base"
 DATA_DIR = TEST_DIR / "data"
+CONFIG_PATH = TEST_DIR / "config.yaml"
+OUTPUT_SRC = DATA_DIR / "output.csv"
+
+
+def remove_output(etl):
+    """Clears output.csv if it is exists"""
+    etl = TemplateETL(CONFIG_PATH)
+    if etl.OUTPUT_PATH.exists():
+        etl.OUTPUT_PATH.unlink()
+    assert etl.OUTPUT_PATH.exists() is False
+
+
+def load_output_source(etl):
+    """Loads output csv so that it can be modified"""
+    df = pd.read_csv(
+        OUTPUT_SRC,
+        dtype={
+            etl.GEOID_FIELD_NAME: "string",
+            etl.GEOID_TRACT_FIELD_NAME: "string",
+        },
+    )
+    return df
 
 
 class TemplateETL(ExtractTransformLoad):
@@ -34,8 +56,7 @@ class TestInit:
         """
         # setup
         data_path, tmp_path = mock_paths
-        config_path = TEST_DIR / "config.yaml"
-        etl = TemplateETL(config_path)
+        etl = TemplateETL(CONFIG_PATH)
         # validation
         etl.NAME == "Template"
         etl.SOURCE_URL == "https://github.com/usds/justice40-tool/"
@@ -73,15 +94,70 @@ class TestValidateOutput:
     def test_validate_output_success(self, mock_etl):
         """Tests that validate_output() runs successfully with valid output"""
         # setup - instantiate etl class
-        config_path = TEST_DIR / "config.yaml"
-        etl = TemplateETL(config_path)
+        etl = TemplateETL(CONFIG_PATH)
         # setup - load output file
-        output_src = DATA_DIR / "output.csv"
-        etl.OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(output_src, etl.OUTPUT_PATH)
+        shutil.copyfile(OUTPUT_SRC, etl.OUTPUT_PATH)
         # setup - load csv file
         census_src = DATA_DIR / "census.csv"
-        etl.CENSUS_CSV.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(census_src, etl.CENSUS_CSV)
         # validation
         etl.validate_output()
+
+    def test_validate_output_missing_output(self, mock_etl):
+        """Tests that validate_output() fails if the output isn't written to
+        the location at self.OUTPUT_PATH
+        """
+        # setup - remove output file
+        etl = TemplateETL(CONFIG_PATH)
+        remove_output(etl)
+        # validation
+        with pytest.raises(AssertionError):
+            etl.validate_output()
+
+    def test_validate_missing_geoid_col(self, mock_etl):
+        """Tests that validate_output() fails if the output is missing one of
+        census fips codes columns
+        """
+        # setup - remove output file
+        etl = TemplateETL(CONFIG_PATH)
+        remove_output(etl)
+        # setup - delete GEOID10 col from output
+        df = load_output_source(etl)
+        df.drop(etl.GEOID_FIELD_NAME, axis=1, inplace=True)
+        assert etl.GEOID_FIELD_NAME not in df.columns
+        df.to_csv(etl.OUTPUT_PATH)
+        # validation
+        with pytest.raises(KeyError):
+            etl.validate_output()
+
+    def test_validate_missing_census_block_group(self, mock_etl):
+        """Tests that validate_output() fails if the output is missing one of
+        census fips codes columns
+        """
+        # setup - remove output file
+        etl = TemplateETL(CONFIG_PATH)
+        remove_output(etl)
+        # setup - remove the first Census Block Group
+        df = load_output_source(etl)
+        df.drop(index=df.index[0], axis=0, inplace=True)  # delete row 1
+        assert len(df) == 9
+        df.to_csv(etl.OUTPUT_PATH)
+        # validation
+        with pytest.raises(AssertionError):
+            etl.validate_output()
+
+    def test_validate_missing_score_col(self, mock_etl):
+        """Tests that validate_output() fails if the output is missing one of
+        the columns used in the score
+        """
+        # setup - remove output file
+        etl = TemplateETL(CONFIG_PATH)
+        remove_output(etl)
+        # setup - delete one of the score columns
+        df = load_output_source(etl)
+        df.drop("COL 1", axis=1, inplace=True)
+        assert "COL 1" not in df.columns
+        df.to_csv(etl.OUTPUT_PATH)
+        # validation
+        with pytest.raises(AssertionError):
+            etl.validate_output()

@@ -73,6 +73,7 @@ class ExtractTransformLoad:
         snake_name = name.replace(" ", "_").lower()  # converts to snake case
         output_dir = snake_name + (config.get("year") or "")
         self.OUTPUT_PATH = csv_dir / output_dir / "usa.csv"
+        self.OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
 
         # set class attributes
         attrs = ["NAME", "SOURCE_URL", "GEOID_COL", "GEO_LEVEL", "SCORE_COLS"]
@@ -149,7 +150,7 @@ class ExtractTransformLoad:
         """
         # read in output file
         # and check that GEOID cols are present
-        assert self.OUTPUT_PATH.exists(), "No file found at OUTPUT_PATH"
+        assert self.OUTPUT_PATH.exists(), f"No file found at {self.OUTPUT_PATH}"
         df_output = pd.read_csv(
             self.OUTPUT_PATH,
             dtype={
@@ -160,6 +161,8 @@ class ExtractTransformLoad:
 
         # check that the GEOID cols in the output match census data
         geoid_cols = [self.GEOID_FIELD_NAME, self.GEOID_TRACT_FIELD_NAME]
+        for col in geoid_cols:
+            assert col in self.FIPS_CODES.columns
         assert self.FIPS_CODES.equals(df_output[geoid_cols])
 
         # check that the score columns are in the output
