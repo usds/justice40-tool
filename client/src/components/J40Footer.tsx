@@ -16,7 +16,8 @@ const J40Footer = () => {
   const intl = useIntl();
 
   const NAVLINKS = [
-    ['Contact',
+    [
+      intl.formatMessage(COMMON_COPY.FOOTER.CONTACT),
       <Address
         key={'footeraddress'}
         className={'j40-footer-address'}
