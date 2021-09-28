@@ -74,10 +74,10 @@ const J40Header = () => {
 
   return (
     <>
-      <GovBanner/>
       <Header
         basic={true} role={'banner'}
         className={'usa-header j40-header'}>
+        <GovBanner/>
         <div className="usa-nav-container">
           <div className="usa-navbar">
             {/* Removing h1 from logo ease transition to USWDS tokens in headers */}

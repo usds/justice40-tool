@@ -1,6 +1,21 @@
 // / <reference types="Cypress" />
 
-// Define at the top of the spec file or just import it
+/**
+ * The a11y check will use a cypress-axe library:
+ *  - https://www.npmjs.com/package/cypress-axe
+ *
+ * This implements Deque's axe.run:
+ *  - https://www.deque.com/axe/core-documentation/api-documentation/#api-name-axerun
+ *
+ * The table of rule descriptions that are seen in the terminal can be seen in totality here:
+ *  - https://github.com/dequelabs/axe-core/blob/master/doc/rule-descriptions.md
+ *
+ * The violation callback will post the violations into the terminal
+ */
+
+const endpoints = [
+  '/en/methodology',
+];
 
 // eslint-disable-next-line require-jsdoc
 function terminalLog(violations) {
@@ -10,13 +25,17 @@ function terminalLog(violations) {
         violations.length === 1 ? '' : 's'
       } ${violations.length === 1 ? 'was' : 'were'} detected`,
   );
+
   // pluck specific keys to keep the table readable
+  // The results array is described here:
+  // - https://www.deque.com/axe/core-documentation/api-documentation/#result-arrays
+  // Unable to figure out how add the HTML element that the violation is occuring on. Using
+  // Axe chrome plugin instead.
   const violationData = violations.map(
-      ({id, impact, description, nodes}) => ({
+      ({id, impact, description}) => ({
         id,
         impact,
         description,
-        nodes: nodes.length,
       }),
   );
 
@@ -24,11 +43,13 @@ function terminalLog(violations) {
 }
 
 
-describe('Accessibility tests', () => {
-  beforeEach(() => {
-    cy.visit('/').get('main').injectAxe();
-  });
-  it('Has no detectable accessibility violations on load', () => {
-    cy.checkA11y(null, {includedImpacts: ['critical']}, terminalLog);
+describe('Accessibility checks', () => {
+  endpoints.forEach((endpoint) => {
+    it(`Check Accessibility on ${endpoint} page`, () => {
+      cy.visit(endpoint).get('main').then(() => {
+        cy.injectAxe();
+        cy.checkA11y(null, null, terminalLog);
+      });
+    });
   });
 });

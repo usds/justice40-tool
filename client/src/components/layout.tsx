@@ -14,7 +14,9 @@ const Layout = ({children, location, title}: ILayoutProps) => {
   // @ts-ignore
   return (
     <>
-      <Helmet title={title} defer={false}>
+      <Helmet defer={false}>
+        <html lang="en"/>
+        <title>{title}</title>
         <script async
           type="text/javascript"
           id="_fed_an_ua_tag"
