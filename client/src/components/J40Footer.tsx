@@ -70,9 +70,9 @@ const J40Footer = () => {
     // `className="mobile-lg:grid-col-6 desktop:grid-col-3">` needs to be
     // `className="mobile-lg:grid-col-12 desktop:grid-col-4">` ugh.
     <footer className={'j40-footer'}>
-      <div className="usa-footer__primary-section pb">
+      <div className="usa-footer__primary-section pb2">
         <J40MainGridContainer>
-          <div className={'grid-row grid-gap-4 padding-bottom-6 tablet-lg:grid-col4'}>
+          <div className={'grid-row tablet-lg:grid-col4'}>
             {NAVLINKS.map((links, i) => (
               <div key={`linkSection-${i}`}
                 className="mobile-lg:grid-col-12 desktop:grid-col-4">
@@ -95,7 +95,11 @@ const J40Footer = () => {
                 src={whitehouseIcon}
                 alt={intl.formatMessage(COMMON_COPY.FOOTER.LOGO_ALT)}/>
             }
-            heading={<h5>{intl.formatMessage(COMMON_COPY.FOOTER.TITLE)}</h5>}
+            heading={
+              <div className={'j40-footer-ceq-font'}>
+                {intl.formatMessage(COMMON_COPY.FOOTER.TITLE)}
+              </div>
+            }
           />
         </J40MainGridContainer>
       </div>
@@ -110,9 +114,9 @@ const NavSection = ({
 }): React.ReactElement => {
   const [primaryLinkOrHeading, ...secondaryLinks] = links;
   return (
-    <section className={'usa-footer__primary-content'}>
-      <h4 className="padding-top-1 padding-bottom-0">{primaryLinkOrHeading}</h4>
-      <NavList className={'padding-bottom-4'} type="footerSecondary" items={secondaryLinks} />
+    <section>
+      <div className="j40-h4">{primaryLinkOrHeading}</div>
+      <NavList type="footerSecondary" items={secondaryLinks} />
     </section>
   );
 };

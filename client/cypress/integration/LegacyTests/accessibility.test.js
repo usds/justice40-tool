@@ -14,6 +14,8 @@
  */
 
 const endpoints = [
+  // '/en/', needs an h1 tag on about page
+  '/en/cejst',
   '/en/methodology',
 ];
 
