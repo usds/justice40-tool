@@ -31,6 +31,8 @@ services:
     container_name: j40_website_1
     build: ./client
     environment:
+      # See the client readme for more info on environment variables: 
+      # https://github.com/usds/justice40-tool/blob/main/client/README.md
       DATA_SOURCE: local
     volumes:
       - ./client/src:/client/src
