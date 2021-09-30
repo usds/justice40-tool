@@ -1,6 +1,7 @@
 import json
 import zipfile
 from pathlib import Path
+from dynaconf.loaders.py_loader import try_to_load_from_py_module_name
 
 import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad

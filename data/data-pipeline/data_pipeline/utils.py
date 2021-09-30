@@ -186,9 +186,14 @@ def score_folder_cleanup() -> None:
     logger.info("Initializing all score data")
     remove_all_from_dir(data_path / "score" / "csv")
     remove_all_from_dir(data_path / "score" / "geojson")
-    remove_all_from_dir(data_path / "score" / "downloadable")
     remove_all_from_dir(data_path / "score" / "tiles")
+    downloadable_cleanup()
 
+def downloadable_cleanup() -> None:
+    """Remove all files from downloadable directory in the local data/score path"""
+
+    data_path = settings.APP_ROOT / "data"
+    remove_all_from_dir(data_path / "score" / "downloadable")
 
 def temp_folder_cleanup() -> None:
     """Remove all files and directories from the local data/tmp temporary path"""
