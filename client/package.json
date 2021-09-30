@@ -76,7 +76,6 @@
     "@turf/bbox": "^6.5.0",
     "chroma-js": "^2.1.2",
     "d3-ease": "^3.0.1",
-    "gatsby-plugin-google-analytics": "^3.14.0",
     "mapbox-gl": "^1.13.0",
     "maplibre-gl": ">=1.14.0",
     "query-string": "^7.0.0",
