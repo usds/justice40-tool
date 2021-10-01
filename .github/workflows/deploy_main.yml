@@ -34,8 +34,8 @@ jobs:
           # See the client readme for more info on environment variables: 
           # https://github.com/usds/justice40-tool/blob/main/client/README.md
           DATA_SOURCE: cdn
-          # TODO: Update to CDN and/or main URL when either is back up
-          SITE_URL: http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/
+          # TODO: Update main URL when either is back up
+          SITE_URL: https://d29zfl8cj7y1zf.cloudfront.net/
       - name: Get directory contents
         run: ls -la public
       - name: Lint
@@ -79,7 +79,7 @@ jobs:
       - name: Invalidate cache on AWS CDNs
         uses: chetan/invalidate-cloudfront-action@master
         env:
-          DISTRIBUTION: "ED03LPVC4OXSW" # TODO: set this as ENV var above
+          DISTRIBUTION: "E27WCOZZ03KIBX" # TODO: set this as ENV var above
           PATHS: "/*"
           AWS_REGION: "us-east-1"
           AWS_ACCESS_KEY_ID: ${{ secrets.CLIENT_DEV_AWS_ACCESS_KEY_ID }}
