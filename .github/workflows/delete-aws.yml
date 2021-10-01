@@ -4,6 +4,7 @@ on:
     branches: [main]
 env: 
   PR_NUMBER: 111
+  WEB_CDN_ID: ED03LPVC4OXSW
 jobs:
   get-pr:
     runs-on: ubuntu-latest
@@ -27,5 +28,13 @@ jobs:
         run: aws s3 ls s3://usds-geoplatform-justice40-website/justice40-tool/
       - name: Remove staging artifacts
         run: aws s3 rm s3://usds-geoplatform-justice40-website/justice40-tool/ --exclude "*" --include "$(echo $PR_NUMBER)-*" --dryrun --recursive
+      - name: Invalidate cache on AWS CDNs
+        uses: chetan/invalidate-cloudfront-action@master
+        env:
+          DISTRIBUTION: $WEB_CDN_ID
+          PATHS: "/*"
+          AWS_REGION: "us-east-1"
+          AWS_ACCESS_KEY_ID: ${{ secrets.CLIENT_DEV_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.CLIENT_DEV_AWS_SECRET_ACCESS_KEY }}
       # - name: list no remaining bucket artifacts
       #    run: aws s3 ls s3://test-bucket-vim-shah/test-folder/
