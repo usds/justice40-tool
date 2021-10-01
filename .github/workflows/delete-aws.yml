@@ -24,8 +24,8 @@ jobs:
           aws-secret-access-key: ${{ secrets.CLIENT_DEV_AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: list bucket artifacts
-        run: aws s3 ls s3://test-bucket-vim-shah/test-folder/
-      - name: Remove staging artifacts
-        run: aws s3 rm s3://test-bucket-vim-shah/test-folder/ --exclude "*" --include "$(echo $PR_NUMBER)-*"
-      - name: list no remaining bucket artifacts
-        run: aws s3 ls s3://test-bucket-vim-shah/test-folder/
+        run: aws s3 ls s3://usds-geoplatform-justice40-website
+      # - name: Remove staging artifacts
+      #   run: aws s3 rm s3://test-bucket-vim-shah/test-folder/ --exclude "*" --include "$(echo $PR_NUMBER)-*"
+      # - name: list no remaining bucket artifacts
+      #   run: aws s3 ls s3://test-bucket-vim-shah/test-folder/
