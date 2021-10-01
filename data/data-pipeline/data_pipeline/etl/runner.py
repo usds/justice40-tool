@@ -105,7 +105,7 @@ def score_geo(census_data_source: str = "local") -> None:
     """
 
     # Score Geo
-    score_geo = GeoScoreETL(census_data_source)
+    score_geo = GeoScoreETL(census_data_source=census_data_source)
     score_geo.extract()
     score_geo.transform()
     score_geo.load()

@@ -119,7 +119,7 @@ def score_full_run():
 
 @cli.command(help="Generate Geojson files with scores baked in")
 @click.option(
-    "-d", "--census-data-source", default="local", required=False, type=str
+    "-cds", "--census-data-source", default="local", required=False, type=str
 )
 def geo_score(census_data_source: str):
     """CLI command to generate the score
@@ -134,7 +134,7 @@ def geo_score(census_data_source: str):
         None
     """
 
-    score_geo(census_data_source)
+    score_geo(census_data_source=census_data_source)
     sys.exit()
 
 

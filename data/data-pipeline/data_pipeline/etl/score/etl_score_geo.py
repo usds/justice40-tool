@@ -1,11 +1,9 @@
 import math
-import os
-import sys
-
 import pandas as pd
 import geopandas as gpd
 
 from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.sources.census.etl_utils import check_census_data
 from data_pipeline.utils import get_module_logger, unzip_file_from_url
 
 logger = get_module_logger(__name__)
@@ -25,9 +23,6 @@ class GeoScoreETL(ExtractTransformLoad):
         self.TILE_SCORE_CSV = self.SCORE_CSV_PATH / "tiles" / "usa.csv"
 
         self.CENSUS_DATA_SOURCE = census_data_source
-        self.CENSUS_DATA_S3_URL = (
-            "https://justice40-data.s3.amazonaws.com/data-sources/census.zip"
-        )
         self.CENSUS_USA_GEOJSON = (
             self.DATA_PATH / "census" / "geojson" / "us.json"
         )
@@ -43,21 +38,11 @@ class GeoScoreETL(ExtractTransformLoad):
         self.geojson_score_usa_low: gpd.GeoDataFrame
 
     def extract(self) -> None:
-        if self.CENSUS_DATA_SOURCE == "aws":
-            logger.info("Fetching Census data from AWS S3")
-            unzip_file_from_url(
-                self.CENSUS_DATA_S3_URL,
-                self.TMP_PATH,
-                self.DATA_PATH,
-            )
-
-        # TODO: make this an util to check whenever we're reading files from local data
-        #       folder and suggest a fox
-        if not os.path.isfile(self.CENSUS_USA_GEOJSON):
-            logger.info(
-                "No local census data found. Please use '-d aws` to fetch from AWS"
-            )
-            sys.exit()
+        breakpoint()
+        check_census_data(
+            census_data_path=self.DATA_PATH / "census",
+            census_data_source=self.CENSUS_DATA_SOURCE,
+        )
 
         logger.info("Reading US GeoJSON (~6 minutes)")
         self.geojson_usa_df = gpd.read_file(
