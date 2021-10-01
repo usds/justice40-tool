@@ -76,6 +76,7 @@
     "@turf/bbox": "^6.5.0",
     "chroma-js": "^2.1.2",
     "d3-ease": "^3.0.1",
+    "gatsby-plugin-env-variables": "^2.1.0",
     "gatsby-plugin-robots-txt": "^1.6.10",
     "gatsby-plugin-sitemap": "^4.10.0",
     "mapbox-gl": "^1.13.0",

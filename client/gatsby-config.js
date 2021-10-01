@@ -90,5 +90,11 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-env-variables`,
+      options: {
+        allowList: ['DATA_SOURCE'],
+      },
+    },
   ],
 };
