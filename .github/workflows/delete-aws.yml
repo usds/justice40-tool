@@ -4,7 +4,7 @@ on:
     branches: [main]
 env: 
   PR_NUMBER: 111
-  WEB_CDN_ID: ED03LPVC4OXSW
+  WEB_CDN_ID: E27WCOZZ03KIBX
 jobs:
   get-pr:
     runs-on: ubuntu-latest
