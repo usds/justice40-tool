@@ -118,10 +118,23 @@ def score_full_run():
 
 
 @cli.command(help="Generate Geojson files with scores baked in")
-def geo_score():
-    """CLI command to generate the score"""
+@click.option(
+    "-d", "--census-data-source", default="local", required=False, type=str
+)
+def geo_score(census_data_source: str):
+    """CLI command to generate the score
 
-    score_geo()
+    Args:
+        census_data_source (str): Source for the census data (optional)
+                                  Options:
+                                  - local: fetch census data from the local data directory
+                                  - aws: fetch census from AWS S3 J40 data repository
+
+    Returns:
+        None
+    """
+
+    score_geo(census_data_source)
     sys.exit()
 
 

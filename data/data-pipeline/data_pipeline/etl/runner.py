@@ -91,18 +91,21 @@ def score_generate() -> None:
     score_post.cleanup()
 
 
-def score_geo() -> None:
+def score_geo(census_data_source: str = "local") -> None:
     """Generates the geojson files with score data baked in
 
     Args:
-        None
+        census_data_source (str): Source for the census data (optional)
+                                  Options:
+                                  - local (default): fetch census data from the local data directory
+                                  - aws: fetch census from AWS S3 J40 data repository
 
     Returns:
         None
     """
 
     # Score Geo
-    score_geo = GeoScoreETL()
+    score_geo = GeoScoreETL(census_data_source)
     score_geo.extract()
     score_geo.transform()
     score_geo.load()
