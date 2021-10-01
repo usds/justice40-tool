@@ -1,4 +1,5 @@
 from pathlib import Path
+import datetime
 
 import pandas as pd
 from data_pipeline.config import settings
@@ -40,11 +41,13 @@ DATA_SCORE_CSV_TILES_FILE_PATH = DATA_SCORE_CSV_TILES_PATH / "usa.csv"
 DATA_SCORE_TILES_DIR = DATA_SCORE_DIR / "tiles"
 
 # Downloadable paths
+current_dt = datetime.datetime.now()
+timestamp_str = current_dt.strftime("%Y-%m-%d-%H%M")
 SCORE_DOWNLOADABLE_DIR = DATA_SCORE_DIR / "downloadable"
-SCORE_DOWNLOADABLE_CSV_FILE_PATH = SCORE_DOWNLOADABLE_DIR / "usa.csv"
-SCORE_DOWNLOADABLE_EXCEL_FILE_PATH = SCORE_DOWNLOADABLE_DIR / "usa.xlsx"
 SCORE_DOWNLOADABLE_PDF_FILE_NAME = "Draft_Communities_List.pdf"
 SCORE_DOWNLOADABLE_PDF_FILE_PATH = FILES_PATH / SCORE_DOWNLOADABLE_PDF_FILE_NAME
+SCORE_DOWNLOADABLE_CSV_FILE_PATH = SCORE_DOWNLOADABLE_DIR / f"communities-{timestamp_str}.csv"
+SCORE_DOWNLOADABLE_EXCEL_FILE_PATH = SCORE_DOWNLOADABLE_DIR / f"communities-{timestamp_str}.xlsx"
 SCORE_DOWNLOADABLE_ZIP_FILE_PATH = (
     SCORE_DOWNLOADABLE_DIR / "Screening_Tool_Data.zip"
 )

@@ -3,7 +3,7 @@ import sys
 import click
 
 from data_pipeline.config import settings
-from data_pipeline.etl.runner import etl_runner, score_generate, score_geo
+from data_pipeline.etl.runner import etl_runner, score_generate, score_geo, score_post
 from data_pipeline.etl.sources.census.etl_utils import (
     reset_data_directories as census_reset,
 )
@@ -12,6 +12,7 @@ from data_pipeline.utils import (
     data_folder_cleanup,
     get_module_logger,
     score_folder_cleanup,
+    downloadable_cleanup,
     temp_folder_cleanup,
     check_first_run,
 )
@@ -133,6 +134,17 @@ def generate_map_tiles():
 
     data_path = settings.APP_ROOT / "data"
     generate_tiles(data_path)
+    sys.exit()
+
+
+@cli.command(
+    help="Run etl_score_post to create score csv, tile csv, and downloadable zip",
+)
+def generate_score_post():
+    """CLI command to generate score, tile, and downloadable files"""
+
+    downloadable_cleanup()
+    score_post()
     sys.exit()
 
 

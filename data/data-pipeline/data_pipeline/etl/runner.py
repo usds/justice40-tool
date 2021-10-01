@@ -84,6 +84,18 @@ def score_generate() -> None:
     score_gen.load()
 
     # Post Score Processing
+    score_post()
+
+def score_post() -> None:
+    """Posts the score files to the local directory
+
+    Args:
+        None
+
+    Returns:
+        None
+    """
+    # Post Score Processing
     score_post = PostScoreETL()
     score_post.extract()
     score_post.transform()
