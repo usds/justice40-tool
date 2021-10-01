@@ -4,7 +4,7 @@ import geopandas as gpd
 
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.sources.census.etl_utils import check_census_data
-from data_pipeline.utils import get_module_logger, unzip_file_from_url
+from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
 

@@ -11,7 +11,6 @@ from data_pipeline.utils import (
     remove_files_from_dir,
     unzip_file_from_url,
 )
-from data_pipeline.config import settings
 
 logger = get_module_logger(__name__)
 
