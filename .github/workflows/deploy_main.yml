@@ -8,6 +8,10 @@ on:
     branches: [main]
     paths:
       - "client/**/*"
+env: 
+  PR_NUMBER: ${{github.event.pull_request.number}}
+  #Todo: Update with new CDN ID when access is granted
+  WEB_CDN_ID: ED03LPVC4OXSW 
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -79,11 +83,17 @@ jobs:
       - name: Invalidate cache on AWS CDNs
         uses: chetan/invalidate-cloudfront-action@master
         env:
+<<<<<<< HEAD
           DISTRIBUTION: "ED03LPVC4OXSW" # TODO: update to new CDN after access is provided
+=======
+          DISTRIBUTION: ${{env.WEB_CDN_ID}}
+>>>>>>> f23c4f7a (Remove artifacts on PR merge)
           PATHS: "/*"
           AWS_REGION: "us-east-1"
           AWS_ACCESS_KEY_ID: ${{ secrets.CLIENT_DEV_AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.CLIENT_DEV_AWS_SECRET_ACCESS_KEY }}
+      - name: Remove staging artifacts
+        run: aws s3 rm s3://usds-geoplatform-justice40-website/justice40-tool/ --exclude "*" --include "$(echo $PR_NUMBER)-*" --recursive
       - name: Update PR with deployed URL
         uses: mshick/add-pr-comment@v1
         with:
