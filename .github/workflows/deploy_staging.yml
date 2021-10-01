@@ -95,5 +95,3 @@ jobs:
       - name: Printing deployment URLs
         run: |
           echo "Github pages: https://usds.github.io/justice40-tool/$DESTINATION_FOLDER/en"
-          echo "Standard S3 bucket version (http only) : http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/justice40-tool/$DESTINATION_FOLDER/en"
-          echo "Cloudfront https: https://d2zjid6n5ja2pt.cloudfront.net/justice40-tool/$DESTINATION_FOLDER/en"

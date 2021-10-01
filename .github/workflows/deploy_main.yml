@@ -89,13 +89,13 @@ jobs:
         with:
           message: |
             **🚢 PR Deployed! 🚢**
-            Find it here: https://d2zjid6n5ja2pt.cloudfront.net/  !
+            Find it here: https://d29zfl8cj7y1zf.cloudfront.net/  !
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: "github-actions[bot]" # The user.login for temporary GitHub tokens
           allow-repeats: false # This is the default
       - name: Printing deployment URLs
         run: |
+          echo "Geoplatform official site (may or may not be up): https://screeningtool.geoplatform.gov/"
+          echo "The Cloudfront behind this official site: https://d29zfl8cj7y1zf.cloudfront.net/"
           echo "Github pages: https://usds.github.io/justice40-tool/$DESTINATION_FOLDER/en"
-          echo "Standard S3 bucket version (http only) : http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/justice40-tool/$DESTINATION_FOLDER/en"
-          echo "Cloudfront https: https://d2zjid6n5ja2pt.cloudfront.net"
-          echo "Geoplatform official site: https://screeningtool.geoplatform.gov/en/"
+          echo "The origin S3 bucket (http only) : http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/justice40-tool/$DESTINATION_FOLDER/en"
