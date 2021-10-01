@@ -38,7 +38,7 @@ class GeoScoreETL(ExtractTransformLoad):
         self.geojson_score_usa_low: gpd.GeoDataFrame
 
     def extract(self) -> None:
-        breakpoint()
+        # check census data
         check_census_data(
             census_data_path=self.DATA_PATH / "census",
             census_data_source=self.CENSUS_DATA_SOURCE,

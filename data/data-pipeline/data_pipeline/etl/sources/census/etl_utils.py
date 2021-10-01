@@ -88,7 +88,6 @@ def check_census_data(census_data_path: Path, census_data_source: str) -> None:
         None
 
     """
-    breakpoint()
     CENSUS_DATA_S3_URL = settings.AWS_JUSTICE40_DATASOURCES_URL + "/census.zip"
     DATA_PATH = settings.APP_ROOT / "data"
 
