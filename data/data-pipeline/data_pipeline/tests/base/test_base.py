@@ -58,12 +58,13 @@ class TestInit:
         data_path, tmp_path = mock_paths
         etl = TemplateETL(CONFIG_PATH)
         # validation
-        etl.NAME == "Template"
-        etl.SOURCE_URL == "https://github.com/usds/justice40-tool/"
-        etl.GEOID_COL == "GEO COL"
-        etl.GEO_LEVEL == "Census Block Group"
-        etl.SCORE_COLS == ["COL 1", "COL 2", "COL 3"]
-        etl.OUTPUT_PATH == data_path / "dataset" / "template"
+        assert etl.NAME == "Template"
+        assert etl.SOURCE_URL == "https://github.com/usds/justice40-tool/"
+        assert etl.GEOID_COL == "GEO COL"
+        assert etl.GEO_LEVEL == "Census Block Group"
+        assert etl.SCORE_COLS == ["COL 1", "COL 2", "COL 3"]
+        assert etl.OUTPUT_PATH == data_path / "dataset" / "template"
+        assert etl.CENSUS_CSV.exists()
 
     def test_init_missing_config(self, mock_etl):
         """Tests that FileNotFoundError is raised when the class is instantiated
@@ -97,9 +98,6 @@ class TestValidateOutput:
         etl = TemplateETL(CONFIG_PATH)
         # setup - load output file
         shutil.copyfile(OUTPUT_SRC, etl.OUTPUT_PATH)
-        # setup - load csv file
-        census_src = DATA_DIR / "census.csv"
-        shutil.copyfile(census_src, etl.CENSUS_CSV)
         # validation
         etl.validate_output()
 
@@ -132,7 +130,7 @@ class TestValidateOutput:
 
     def test_validate_missing_census_block_group(self, mock_etl):
         """Tests that validate_output() fails if the output is missing one of
-        census fips codes columns
+        census block group rows
         """
         # setup - remove output file
         etl = TemplateETL(CONFIG_PATH)

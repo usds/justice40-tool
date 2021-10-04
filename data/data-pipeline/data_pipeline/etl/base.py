@@ -30,7 +30,6 @@ class ExtractTransformLoad:
     DATA_PATH: Path = APP_ROOT / "data"
     TMP_PATH: Path = DATA_PATH / "tmp"
     FILES_PATH: Path = settings.APP_ROOT / "files"
-    CENSUS_CSV: Path = DATA_PATH / "census" / "csv" / "us.csv"
     GEOID_FIELD_NAME: str = "GEOID10"
     GEOID_TRACT_FIELD_NAME: str = "GEOID10_TRACT"
     # TODO: investigate. Census says there are only 217,740 CBGs in the US. This might be from CBGs at different time periods.
@@ -48,6 +47,7 @@ class ExtractTransformLoad:
         self.SCORE_COLS: list = None
         self.FIPS_CODES: pd.DataFrame = None
         self.OUTPUT_PATH: Path = None
+        self.CENSUS_CSV: Path = None
 
         self._get_yaml_config(config_path)
 
@@ -62,10 +62,12 @@ class ExtractTransformLoad:
             raise err
 
         # set dataset specific attributes
+        census_dir = self.DATA_PATH / "census" / "csv"
         if config["is_census"]:
-            csv_dir = self.DATA_PATH / "census" / "csv"
+            csv_dir = census_dir
         else:
-            self.FIPS_CODES: pd.Dataframe = self._get_census_fips_codes()
+            self.CENSUS_CSV = census_dir / "us.csv"
+            self.FIPS_CODES = self._get_census_fips_codes()
             csv_dir = self.DATA_PATH / "dataset"
 
         # parse name and set output path

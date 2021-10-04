@@ -1,9 +1,9 @@
 from pathlib import Path
-from shutil import copyfile
 
 import pandas as pd
 
 from data_pipeline.config import settings
+from data_pipeline.tests.conftest import copy_data_files
 from data_pipeline.etl.sources.national_risk_index.etl import (
     NationalRiskIndexETL,
 )
@@ -11,22 +11,6 @@ from data_pipeline.etl.sources.national_risk_index.etl import (
 DATA_DIR = (
     settings.APP_ROOT / "tests" / "sources" / "national_risk_index" / "data"
 )
-
-
-def copy_data_files(src: Path, dst: Path) -> None:
-    """Copies test data from src Path to dst Path for use in testing
-
-    Args
-        src: pathlib.Path instance. The location of the source data file.
-        dst: pathlib.Path instance. Where to copy the source data file to.
-
-    Returns
-        None. This is a void function
-    """
-    if not dst.exists():
-        dst.parent.mkdir(parents=True, exist_ok=True)
-        copyfile(src, dst)
-        assert dst.exists()
 
 
 class TestNationalRiskIndexETL:
