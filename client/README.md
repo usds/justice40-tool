@@ -7,6 +7,7 @@ This README contains the following content:
 - [Testing](#testing)
 - [Localization](#localization)
 - [Feature toggling](#feature-toggling)
+- [Environment variables](#environment-variables)
 - [Debugging](#debugging)
 
 ## Installing and running the client site
@@ -24,13 +25,32 @@ _Note that while this app uses npm as the package manager, yarn is required to b
 ### Via docker
 - Launch VS code in the top level directory (above client)
 - Install the Microsoft docker VS code extension
+- make sure you are in the main repo's directory
 - Type `docker-compose up`
 - Running this on MacBook Pro with a 2.6GHz 6-core i7 with 16 GB of memory can take upto 20 minutes to complete.
+- This will create three images, j4_website, j40_score_server and j40_data_pipeline. It will take up ~ 30 to 35 GB of image disk space
+
+By navigating to the client folder, the Dockerfile runs `npm start`. This will create a development version of the app.
+
+#### Re-building j4_website
+If you've made changes to the docker-compose file and want to re-build the j40_website:
+
+`docker-compose build --no-cache j40_website`
+
+This will not use the cache and re-build the image. Then do 
+
+`docker-compoe up`
+
+#### docker hangs
+- Ensure that there's enough disk image space in docker. The Docker Desktop app will show the total disk image used (gear cog -> Resources -> Disk image size). This application will require ~ 30 - 35 GB. Allocating 50-60 GB should be sufficient. If the amount used is significantly greater than 35 GB you may need to prune the docker images:
+
+`docker image system`
+
+This should reduce the total used space. 
 
 #### Changing the source of tile / map layer
 If you don't want to use the local data-pipeline location for getting the tile / map layers, you can change the 
-DATA_SOURCE env variable in the docker-compose.yml file to development and it will point to the CDN for the tile / 
-map layer.
+DATA_SOURCE env variable in the docker-compose.yml. See [environment variables](#environment-variables) for more info.
 
 #### Troubleshooting docker
 
@@ -106,6 +126,16 @@ From there, send `src/intl/en.json` to translators. (Depending on the TMS (Trans
 To access a translated version of a page, e.g. `pages/index.js`, add the locale as a portion of the URL path, as follows:
 
 - English: `localhost:8000/en/`, or `localhost:8000/` (the default fallback is English)
+
+## Environment Variables
+
+There are 3 environment variables that can be set:
+
+1. DATA_SOURCE (required) = can be set to 'cdn' or 'local'. This is used to change where the tiles are sourced from. It is used in the [constants](https://github.com/usds/justice40-tool/blob/main/client/src/data/constants.tsx) file to determine which TILE_BASE_URL to use.
+2. SITE_URL = set this to change the base URL for the website's public html folder. If none is provided, then localhost:8000 is used. This is used for the site_map.xml file and robots.txt file. This is only used during production build aka `npm build`.
+3. PATH_PREFIX = set this to add an additional path(s) to SITE_URL. If none is provided then no additional paths are added to the SITE_URL. This is only used during production build aka `npm build`.
+
+Note when setting environment variables in docker-compose, DATA_SOURCE is the only one that is applicable. 
 
 ## Feature Toggling
 

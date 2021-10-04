@@ -33,7 +33,7 @@ const ScoreStepsList = () => {
         {/* Step 1 */}
         <ProcessListItem>
 
-          <ProcessListHeading type="h4">
+          <ProcessListHeading type="h3">
             {intl.formatMessage(METHODOLOGY_COPY.METHODOLOGY_STEPS.STEP_1_HEADING)}
           </ProcessListHeading>
           <p>{' '}</p>
@@ -70,7 +70,7 @@ const ScoreStepsList = () => {
         {/* Step 2 */}
         <ProcessListItem>
 
-          <ProcessListHeading type="h4">
+          <ProcessListHeading type="h3">
             {intl.formatMessage(METHODOLOGY_COPY.METHODOLOGY_STEPS.STEP_2_HEADING)}
           </ProcessListHeading>
 

@@ -10,9 +10,9 @@ const MapLegend = () => {
     <div className={styles.legendContainer}>
       <div className={styles.colorSwatch} />
       <div>
-        <h4>
+        <div className={'j40-h4'}>
           {intl.formatMessage(EXPLORE_COPY.LEGEND.PRIORITY_LABEL)}
-        </h4>
+        </div>
         <p className={'secondary'}>
           {intl.formatMessage(EXPLORE_COPY.LEGEND.PRIORITY_DESCRIPT)}
         </p>

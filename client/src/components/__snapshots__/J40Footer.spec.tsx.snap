@@ -6,28 +6,26 @@ exports[`J40Footer renders correctly 1`] = `
     class="j40-footer"
   >
     <div
-      class="usa-footer__primary-section pb"
+      class="usa-footer__primary-section pb2"
     >
       <div
         class="grid-container-desktop-lg"
         data-testid="gridContainer"
       >
         <div
-          class="grid-row grid-gap-4 padding-bottom-6 tablet-lg:grid-col4"
+          class="grid-row tablet-lg:grid-col4"
         >
           <div
             class="mobile-lg:grid-col-12 desktop:grid-col-4"
           >
-            <section
-              class="usa-footer__primary-content"
-            >
-              <h4
-                class="padding-top-1 padding-bottom-0"
+            <section>
+              <div
+                class="j40-h4"
               >
                 Contact
-              </h4>
+              </div>
               <ul
-                class="usa-list usa-list--unstyled padding-bottom-4"
+                class="usa-list usa-list--unstyled"
               >
                 <li
                   class="usa-footer__secondary-link"
@@ -67,16 +65,14 @@ exports[`J40Footer renders correctly 1`] = `
           <div
             class="mobile-lg:grid-col-12 desktop:grid-col-4"
           >
-            <section
-              class="usa-footer__primary-content"
-            >
-              <h4
-                class="padding-top-1 padding-bottom-0"
+            <section>
+              <div
+                class="j40-h4"
               >
                 More information
-              </h4>
+              </div>
               <ul
-                class="usa-list usa-list--unstyled padding-bottom-4"
+                class="usa-list usa-list--unstyled"
               >
                 <li
                   class="usa-footer__secondary-link"
@@ -118,16 +114,14 @@ exports[`J40Footer renders correctly 1`] = `
           <div
             class="mobile-lg:grid-col-12 desktop:grid-col-4"
           >
-            <section
-              class="usa-footer__primary-content"
-            >
-              <h4
-                class="padding-top-1 padding-bottom-0"
+            <section>
+              <div
+                class="j40-h4"
               >
                 Have a question about government services?
-              </h4>
+              </div>
               <ul
-                class="usa-list usa-list--unstyled padding-bottom-4"
+                class="usa-list usa-list--unstyled"
               >
                 <li
                   class="usa-footer__secondary-link"
@@ -168,9 +162,11 @@ exports[`J40Footer renders correctly 1`] = `
           <div
             class="mobile-lg:grid-col-auto"
           >
-            <h5>
+            <div
+              class="j40-footer-ceq-font"
+            >
               Council on Environmental Quality
-            </h5>
+            </div>
           </div>
         </div>
       </div>

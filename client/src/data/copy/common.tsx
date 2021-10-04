@@ -104,6 +104,11 @@ export const FOOTER = defineMessages({
     defaultMessage: 'Find a contact at USA.gov',
     description: 'Footer find contact link text',
   },
+  CONTACT: {
+    id: 'footer.contactheader',
+    defaultMessage: 'Contact',
+    description: 'Footer column header',
+  },
 });
 
 export const FOOTER_CEQ_ADDRESS = {

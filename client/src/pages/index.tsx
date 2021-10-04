@@ -41,7 +41,7 @@ const IndexPage = ({location}: IndexPageProps) => {
       </J40MainGridContainer>
 
       <J40MainGridContainer>
-
+        <h1>{intl.formatMessage(ABOUT_COPY.PAGE.HEADING)}</h1>
         <AboutCardsContainer>
           <AboutCard
             size={'large'}

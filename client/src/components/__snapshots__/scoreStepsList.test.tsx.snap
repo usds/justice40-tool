@@ -27,12 +27,12 @@ exports[`rendering of the component should match the snapshot of the MapIntroduc
     <li
       class="usa-process-list__item"
     >
-      <h4
+      <h3
         class="usa-process-list__heading"
         data-testid="processListHeading"
       >
         Gather datasets
-      </h4>
+      </h3>
       <p>
          
       </p>
@@ -78,12 +78,12 @@ exports[`rendering of the component should match the snapshot of the MapIntroduc
     <li
       class="usa-process-list__item"
     >
-      <h4
+      <h3
         class="usa-process-list__heading"
         data-testid="processListHeading"
       >
         Determine communites of focus
-      </h4>
+      </h3>
       <p>
          
       </p>

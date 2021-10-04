@@ -15,7 +15,7 @@ const MapIntroduction = () => {
         {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.TITLE)}
       </header>
       <div className={styles.mapIntroText}>
-        <img className={styles.mapIntroLightbulb} src={lightbulbIcon} />
+        <img className={styles.mapIntroLightbulb} src={lightbulbIcon} alt={'icon showing a lightbulb'}/>
         <div className={styles.didYouKnowBox}>
           <div className={styles.didYouKnow}>
             {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.DID_YOU_KNOW)}

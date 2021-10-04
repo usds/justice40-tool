@@ -13,6 +13,7 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
       </header>
       <div>
         <img
+          alt="icon showing a lightbulb"
           src="test-file-stub"
         />
         <div>

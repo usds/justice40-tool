@@ -1,13 +1,21 @@
 require('dotenv').config({
-  path: `.env.${process.env.DATA_SOURCE}`,
+  // NODE_ENV is automatically set to
+  //   'development' when the app is launched via 'npm start' or 'npm develop'
+  //   'production' when the app is launched via 'npm build'
+
+  // Depending on the node environment, the app will then use
+  // .env.production or .env.development for application
+  // env variables.
+  path: `.env.${process.env.NODE_ENV}`,
 });
 
 module.exports = {
   siteMetadata: {
     title: 'Justice40',
     image: '/static/favicon.ico',
+    siteUrl: process.env.SITE_URL || 'http://localhost:8000',
   },
-  pathPrefix: `${process.env.PATH_PREFIX}`,
+  pathPrefix: process.env.PATH_PREFIX || '',
   plugins: [
     {
       resolve: 'gatsby-plugin-sass',
@@ -64,5 +72,36 @@ module.exports = {
       },
     },
     'gatsby-plugin-react-helmet',
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        policy: [{userAgent: '*', allow: '/'}],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        excludes: [
+          '/',
+          '/cejst',
+          '/contact',
+          '/methodology',
+          '/404',
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-env-variables`,
+      options: {
+        allowList: ['DATA_SOURCE'],
+      },
+    },
+    {
+      resolve: '@sentry/gatsby',
+      options: {
+        dsn: 'https://da0c28c22c9e4ff69d81650cabdec3d9@o1022662.ingest.sentry.io/5989007',
+        sampleRate: 0.7,
+      },
+    },
   ],
 };
