@@ -47,9 +47,9 @@ function terminalLog(violations) {
 }
 
 
-describe('Accessibility checks', () => {
+describe('Do the accessibility checks pass on each page?', () => {
   endpoints.forEach((endpoint) => {
-    it(`Check Accessibility on ${endpoint} page`, () => {
+    it(`Check accessibility on ${endpoint} page`, () => {
       cy.visit(endpoint).get('main').then(() => {
         cy.injectAxe();
         cy.checkA11y(null, null, terminalLog);
