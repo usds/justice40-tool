@@ -60,7 +60,7 @@ h3 {
   @include j40-element('lg', 2, 'bold', 4 );
 }
 
-h4 {
+h4, .j40-h4 {
   @include j40-element('sm', 1, 'bold', 3 );
 }
 
@@ -94,8 +94,9 @@ p.flush {
   @include u-margin-bottom(3)
 }
 
-
-
+.j40-footer-ceq-font {
+  @include j40-element('lg', 2, 'bold', 0 );
+}
 
 /***************** LAYOUT STYLES **************************************************************
 This section will outline styles for components that are on each page. These 
@@ -213,7 +214,7 @@ components include:
 */ 
 .j40-footer {
 
-  .usa-footer__primary-section.pb{
+  .usa-footer__primary-section.pb2{
     @include u-padding-bottom(2);
   }
 
