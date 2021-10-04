@@ -10,8 +10,7 @@ on:
       - "client/**/*"
 env: 
   PR_NUMBER: ${{github.event.pull_request.number}}
-  #Todo: Update with new CDN ID when access is granted
-  WEB_CDN_ID: ED03LPVC4OXSW 
+  WEB_CDN_ID: E27WCOZZ03KIBX 
 jobs:
   build:
     runs-on: ubuntu-latest
