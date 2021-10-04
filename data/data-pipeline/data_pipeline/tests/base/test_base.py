@@ -29,7 +29,7 @@ def load_output_source(etl):
         dtype={
             etl.GEOID_FIELD_NAME: "string",
             etl.GEOID_TRACT_FIELD_NAME: "string",
-        }
+        },
     )
     return df
 
@@ -63,7 +63,7 @@ class TestInit:
         assert etl.GEOID_COL == "GEO COL"
         assert etl.GEO_LEVEL == "Census Block Group"
         assert etl.SCORE_COLS == ["COL 1", "COL 2", "COL 3"]
-        assert etl.OUTPUT_PATH == data_path / "dataset" / "template"
+        assert etl.OUTPUT_PATH == data_path / "dataset" / "template" / "usa.csv"
         assert etl.CENSUS_CSV.exists()
 
     def test_init_missing_config(self, mock_etl):

@@ -49,6 +49,7 @@ def mock_census(mock_paths) -> Path:
     copy_data_files(census_src, census_dst)
     return census_dst
 
+
 @pytest.fixture
 def mock_etl(monkeypatch, mock_paths, mock_census) -> None:
     """Creates a mock version of the base ExtractTransformLoad class and resets

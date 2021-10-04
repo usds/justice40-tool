@@ -1,5 +1,3 @@
-from pathlib import Path
-
 import pandas as pd
 
 from data_pipeline.config import settings
