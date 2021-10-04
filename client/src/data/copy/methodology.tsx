@@ -23,8 +23,8 @@ export const PAGE = defineMessages({
 
 
 // Download Package
-export const DOWNLOAD_FILE_SIZE = '143MB';
-export const DOWNLOAD_LAST_UPDATED = '09/20/21';
+export const DOWNLOAD_FILE_SIZE = '111MB';
+export const DOWNLOAD_LAST_UPDATED = '10/01/21';
 export const VERSION_NUMBER = '0.1';
 
 export const DOWNLOAD_ZIP_URL = [
