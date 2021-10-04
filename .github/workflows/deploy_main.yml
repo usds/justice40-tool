@@ -79,7 +79,7 @@ jobs:
       - name: Invalidate cache on AWS CDNs
         uses: chetan/invalidate-cloudfront-action@master
         env:
-          DISTRIBUTION: "E27WCOZZ03KIBX" # TODO: set this as ENV var above
+          DISTRIBUTION: "ED03LPVC4OXSW" # TODO: update to new CDN after access is provided
           PATHS: "/*"
           AWS_REGION: "us-east-1"
           AWS_ACCESS_KEY_ID: ${{ secrets.CLIENT_DEV_AWS_ACCESS_KEY_ID }}
