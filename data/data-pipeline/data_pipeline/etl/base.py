@@ -37,7 +37,7 @@ class ExtractTransformLoad:
     EXPECTED_MAX_CENSUS_BLOCK_GROUPS: int = 220405
     EXPECTED_MAX_CENSUS_TRACTS: int = 73076
 
-    def __init__(self, config_path: Path, is_dataset: bool = False) -> None:
+    def __init__(self, config_path: Path) -> None:
         """Inits the class with instance specific variables"""
 
         # set by _get_yaml_config()

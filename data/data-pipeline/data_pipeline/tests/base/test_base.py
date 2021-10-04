@@ -29,7 +29,7 @@ def load_output_source(etl):
         dtype={
             etl.GEOID_FIELD_NAME: "string",
             etl.GEOID_TRACT_FIELD_NAME: "string",
-        },
+        }
     )
     return df
 
@@ -38,7 +38,7 @@ class TemplateETL(ExtractTransformLoad):
     """Mock ETL class that inherits from the base ETL"""
 
     def __init__(self, config_path: Path) -> None:
-        super().__init__(config_path, is_dataset=True)
+        super().__init__(config_path)
         self.EXTRACTED_CSV: Path = DATA_DIR / "output.csv"
         self.df: pd.DataFrame = None
 
