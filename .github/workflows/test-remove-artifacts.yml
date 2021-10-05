@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [main]
 env: 
-  PR_NUMBER: 2111
+  PR_NUMBER: 111
   WEB_CDN_ID: E27WCOZZ03KIBX 
 jobs:
   delete:
