@@ -1,17 +1,16 @@
-Feature: Does the About page open?
-  I want to open the about page
+Feature: The About page will open from all other pages
   
-  Scenario: About page FROM Explore Tool page
-    Given I am on the Explore Tool page
+  Scenario: About page open when navigating from Explore the Tool page
+    Given I am on the "Explore the tool" page
     When I click on the "About" page in the navigation
     Then I see "About" in the title
 
-  Scenario: About page FROM Methodology page
-    Given I am on the Explore Tool page
-    When I click on the "Methodology" page in the navigation
-    Then I see "Data and Methodology" in the title
+  Scenario: About page open when navigating from Methodology page
+    Given I am on the "Methodology" page
+    When I click on the "About" page in the navigation
+    Then I see "About" in the title
     
-  Scenario: About page FROM Contact page
-    Given I am on the Explore Tool page
-    When I click on the "Contact" page in the navigation
-    Then I see "Contact" in the title
+  Scenario: About page open when navigating from Contact page
+    Given I am on the "Contact" page
+    When I click on the "About" page in the navigation
+    Then I see "About" in the title

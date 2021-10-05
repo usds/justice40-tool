@@ -214,7 +214,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             <a
               class="j40-header"
-              data-cy="nav-link-explore"
+              data-cy="nav-link-explore-the-tool"
               href="/en/cejst"
             >
               Explore the tool
