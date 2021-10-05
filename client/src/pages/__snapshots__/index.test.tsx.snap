@@ -284,7 +284,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       class="grid-container-desktop-lg"
       data-testid="gridContainer"
     >
-      <h1>
+      <h1
+        data-cy="about-page-heading"
+      >
         About us
       </h1>
       <div
@@ -317,9 +319,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 class="grid-row"
                 data-testid="grid"
               >
-                <h2
-                  data-cy="about-screen-tool-heading"
-                >
+                <h2>
                   The screening tool
                 </h2>
                 <p>
@@ -363,9 +363,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 class="grid-row"
                 data-testid="grid"
               >
-                <h2
-                  data-cy="about-screen-tool-heading"
-                >
+                <h2>
                   The Justice40 Initiative
                 </h2>
                 <p>
