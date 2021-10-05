@@ -4,7 +4,7 @@ describe('Translation Test', () => {
   it('Sets default language to /en and redirects', () => {
     cy.visit('http://localhost:8000');
     cy.url().should('include', '/en/');
-    cy.get('[data-cy=about-screen-tool-heading]').contains('About the screening tool');
+    cy.get('[data-cy=about-page-heading]').contains('About');
   });
 
   // Todo VS: Understand how to create es content
