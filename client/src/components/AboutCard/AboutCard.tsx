@@ -1,6 +1,8 @@
 import React from 'react';
 import {Grid} from '@trussworks/react-uswds';
+
 import LinkTypeWrapper from '../LinkTypeWrapper';
+import {hyphenizeString} from '../../../cypress/integration/common/helpers';
 
 // the "body" section is the child object to allow for html versus just text
 interface AboutCardProps {
@@ -52,7 +54,7 @@ const AboutCard = (props: React.PropsWithChildren<AboutCardProps>) => {
               src={props.imgSrc}/>
           </Grid>
 
-          <Grid tablet={{col: 9}}>
+          <Grid tablet={{col: 9}} data-cy={`${hyphenizeString(props.header)}-card`}>
             <Grid row>
               <h3>{props.header}</h3>
               {props.children}

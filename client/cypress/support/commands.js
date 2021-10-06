@@ -1,4 +1,4 @@
-/* MAP */
+import {hyphenizeString} from '../integration/common/helpers';
 
 // For some interactions, we need access to the underlying map
 // Below adapted from https://github.com/codeforcologne/edelgard-map
@@ -24,5 +24,17 @@ Cypress.Commands.add('getMapCanvas', () => {
 Cypress.Commands.add('waitForMapIdle', (map) => {
   return new Cypress.Promise((resolve) => {
     map.once('idle', resolve);
+  });
+});
+
+Cypress.Commands.add('internalLinks', (string) => {
+  return cy.get(`[data-cy="${hyphenizeString(string)}-card"] a`).click();
+});
+
+Cypress.Commands.add('externalLinks', (string) => {
+  return cy.get(`[data-cy="${hyphenizeString(string)}-card"] a`).then((link) => {
+    cy.request(link.prop('href'))
+        .its('status')
+        .should('eq', 200);
   });
 });

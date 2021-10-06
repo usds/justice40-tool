@@ -419,6 +419,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </div>
               <div
                 class="tablet:grid-col-9"
+                data-cy="federal-program-managers-card"
                 data-testid="grid"
               >
                 <div
@@ -470,6 +471,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </div>
               <div
                 class="tablet:grid-col-9"
+                data-cy="community-members-card"
                 data-testid="grid"
               >
                 <div
@@ -535,6 +537,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             </div>
             <div
               class="tablet:grid-col-9"
+              data-cy="send-feedback-card"
               data-testid="grid"
             >
               <div
@@ -589,6 +592,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             </div>
             <div
               class="tablet:grid-col-9"
+              data-cy="join-the-open-source-community-card"
               data-testid="grid"
             >
               <div
