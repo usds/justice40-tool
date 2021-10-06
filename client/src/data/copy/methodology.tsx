@@ -28,7 +28,7 @@ export const DOWNLOAD_LAST_UPDATED = '10/01/21';
 export const VERSION_NUMBER = '0.1';
 
 export const DOWNLOAD_ZIP_URL = [
-  process.env.GATSBY_DATA_ROOT_PATH,
+  process.env.GATSBY_CDN_TILES_BASE_URL,
   process.env.GATSBY_DATA_PIPELINE_SCORE_PATH,
   process.env.GATSBY_SCORE_DOWNLOAD_FILE_PATH,
 ].join('/');
