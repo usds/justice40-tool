@@ -313,6 +313,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             </div>
             <div
               class="tablet:grid-col-9"
+              data-cy="the-screening-tool-block"
               data-testid="grid"
             >
               <div
@@ -357,6 +358,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             </div>
             <div
               class="tablet:grid-col-9"
+              data-cy="the-justice40-initiative-block"
               data-testid="grid"
             >
               <div
