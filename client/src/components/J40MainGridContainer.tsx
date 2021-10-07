@@ -6,18 +6,20 @@ import {GridContainer} from '@trussworks/react-uswds';
 interface IJ40MainGridContainer {
   children: ReactNode,
   fullWidth?: boolean,
-   blueBackground?: boolean,
-  className?: string
+  blueBackground?: boolean,
+  className?: string,
+  dataCy?: string,
 }
 
 const J40MainGridContainer = ({
   children,
   fullWidth = false,
   blueBackground = false,
-  className = ''}: IJ40MainGridContainer) => {
+  className = '',
+  dataCy,
+}: IJ40MainGridContainer) => {
   // is it a blue background strip?
   className += (blueBackground ? 'j40-main-grid-blue-bk ' : '');
-
   return fullWidth ? (
     <div
       className={className}>
@@ -26,7 +28,8 @@ const J40MainGridContainer = ({
   ) : (
     <GridContainer
       containerSize={'desktop-lg'}
-      className={className}>
+      className={className}
+      data-cy={dataCy}>
       {children}
     </GridContainer>
   );

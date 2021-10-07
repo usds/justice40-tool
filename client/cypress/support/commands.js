@@ -27,11 +27,11 @@ Cypress.Commands.add('waitForMapIdle', (map) => {
   });
 });
 
-Cypress.Commands.add('internalLinks', (string) => {
+Cypress.Commands.add('testInternalLink', (string) => {
   return cy.get(`[data-cy="${hyphenizeString(string)}-block"] a`).click();
 });
 
-Cypress.Commands.add('externalLinks', (string) => {
+Cypress.Commands.add('testExternalLink', (string) => {
   return cy.get(`[data-cy="${hyphenizeString(string)}-block"] a`).then((link) => {
     cy.request(link.prop('href'))
         .its('status')
@@ -39,7 +39,15 @@ Cypress.Commands.add('externalLinks', (string) => {
   });
 });
 
-Cypress.Commands.add('externalFooterLinks', (string) => {
+Cypress.Commands.add('testExternalLinks', (string) => {
+  return cy.get(`[data-cy="${hyphenizeString(string)}-block"] a`).each((links) => {
+    cy.request(links.prop('href'))
+        .its('status')
+        .should('eq', 200);
+  });
+});
+
+Cypress.Commands.add('testExternalFooterLink', (string) => {
   return cy.get(`[data-cy="${hyphenizeString(string)}"]`).then((link) => {
     cy.request(link.prop('href'))
         .its('status')

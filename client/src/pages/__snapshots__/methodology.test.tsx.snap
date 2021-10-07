@@ -356,6 +356,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
     >
       <div
         class="grid-container-desktop-lg"
+        data-cy="datasets-used-in-methodology-block"
         data-testid="gridContainer"
       >
         <div
@@ -523,6 +524,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
     >
       <div
         class="grid-container-desktop-lg"
+        data-cy="additional-indicators-block"
         data-testid="gridContainer"
       >
         <div

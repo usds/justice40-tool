@@ -31,12 +31,16 @@ Then(`I see {string} in the title`, (title) => {
   cy.title().should('include', title);
 });
 
+Then(`All links under {string} should work`, (title) => {
+  cy.testExternalLinks(title);
+});
+
 // Common Ands:
 And(`I click on the {string} {string} link`, (ctaString, type) => {
-  if (type === 'internal') cy.internalLinks(ctaString);
-  else cy.externalLinks(ctaString);
+  if (type === 'internal') cy.testInternalLink(ctaString);
+  else cy.testExternalLink(ctaString);
 });
 
 And(`I click on the {string} footer link`, (linkIndex) => {
-  cy.externalFooterLinks(linkIndex);
+  cy.testExternalFooterLink(linkIndex);
 });
