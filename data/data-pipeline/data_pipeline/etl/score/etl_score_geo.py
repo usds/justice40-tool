@@ -3,7 +3,10 @@ import pandas as pd
 import geopandas as gpd
 
 from data_pipeline.etl.base import ExtractTransformLoad
-from data_pipeline.etl.sources.census.etl_utils import check_census_data
+from data_pipeline.etl.sources.census.etl_utils import (
+    check_census_data,
+    check_census_data_source,
+)
 from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
@@ -39,7 +42,7 @@ class GeoScoreETL(ExtractTransformLoad):
 
     def extract(self) -> None:
         # check census data
-        check_census_data(
+        check_census_data_source(
             census_data_path=self.DATA_PATH / "census",
             census_data_source=self.CENSUS_DATA_SOURCE,
         )

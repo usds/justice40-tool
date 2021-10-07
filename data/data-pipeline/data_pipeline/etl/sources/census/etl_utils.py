@@ -74,8 +74,11 @@ def get_state_information(data_path: Path) -> pd.DataFrame:
     return df
 
 
-def check_census_data(census_data_path: Path, census_data_source: str) -> None:
-    """Checks if census data is present, and exits gradefully if it doesn't exist and if the user didn't request S3 downloading
+def check_census_data_source(
+    census_data_path: Path, census_data_source: str
+) -> None:
+    """Checks if census data is present, and exits gracefully if it doesn't exist. It will download it from S3
+       if census_data_source is set to "aws"
 
     Args:
         census_data_path (str): Path for Census data
@@ -91,15 +94,17 @@ def check_census_data(census_data_path: Path, census_data_source: str) -> None:
     CENSUS_DATA_S3_URL = settings.AWS_JUSTICE40_DATASOURCES_URL + "/census.zip"
     DATA_PATH = settings.APP_ROOT / "data"
 
-    if not os.path.isfile(census_data_path / "geojson" / "us.json"):
-        if census_data_source == "aws":
-            logger.info("Fetching Census data from AWS S3")
-            unzip_file_from_url(
-                CENSUS_DATA_S3_URL,
-                DATA_PATH / "tmp",
-                DATA_PATH,
-            )
-        else:
+    # download from s3 if census_data_source is aws
+    if census_data_source == "aws":
+        logger.info("Fetching Census data from AWS S3")
+        unzip_file_from_url(
+            CENSUS_DATA_S3_URL,
+            DATA_PATH / "tmp",
+            DATA_PATH,
+        )
+    else:
+        # check if census data is found locally
+        if not os.path.isfile(census_data_path / "geojson" / "us.json"):
             logger.info(
                 "No local census data found. Please use '-cds aws` to fetch from AWS"
             )
