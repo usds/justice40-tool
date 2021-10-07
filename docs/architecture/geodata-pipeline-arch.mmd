@@ -1,22 +1,38 @@
 graph TD
-    Dataset1["Dataset 1"]-->Score
-    Dataset2["Dataset 2"]-->Score
-    Census["Census TIGER Data"]-->CGTiger
-    CGTiger["Create GeoJSON from Shapefile with osgeo/gdal"]-->TS3
-    TS3("TIGER GeoJSON (S3)")-->CGJ
-    Score["Create Score CSV"]-->CSV
-    CSV("CSV (S3)")-->CGJ
-    CGJ["Combine (ogr2ogr)+ Create GeoJSON"]-->GeoJSON
-    GeoJSON("GeoJSON (S3)")-->Tip
-    GeoJSON--"Access non-geo data"-->Client
-    subgraph "Generate MVT"
-        Tip[/Tippecanoe/]-->CreateMVT["Create and Send MVT"]
+    Dataset1["Dataset 1"]-->ETL1
+    Dataset2["Dataset 2"]-->ETL2
+    subgraph "ETL and Score Generation"
+        ETL1["ETL for Dataset 1"]-->ncsv1("Normalized CSV (S3)")
+        ETL2["ETL for Dataset 2"]-->ncsv2("Normalized CSV (S3)")
+        ncsv1-->Score
+        ncsv2-->Score
+        Score-->DL("Downloadable zip")
+        Score["Generate Score (score-run)"]-->CSV
     end
+    DL-->Client
+
+    Census["Census TIGER Data Shapefiles (hosted by Census)"]-->CGTiger
+    subgraph "Census Data ETL"
+        CGTiger["Create GeoJSON from Shapefile with ogr2ogr"]-->TS3
+        TS3("TIGER GeoJSON State Files(S3)")-->CombineCensus["Combine Census State Files with Geopandas"]
+        CombineCensus-->NCS3("National Census GeoJSON (S3)")
+    end
+    
+    CSV("Full CSV (S3)")-->CGJ
+    NCS3-->CGJ
+    CGJ["Combine with ogr2ogr + Create GeoJSON (score-geo)"]-->GeoJSON
+    GeoJSON("GeoJSON files (high and low zoom) (S3)")-->Tip
+    GeoJSON--"Access non-geo data"-->Client
+    Tip["Create and Send Tiles using Tippecanoe"]-->Uncompressed
+    Tip-->Compressed
     subgraph production
-        CreateMVT-->Uncompressed("Uncompressed MVT (S3)")
+        Uncompressed("Uncompressed MVT high and low directories (S3)")
     end
     subgraph development
-        CreateMVT-->Compressed("MBTiles (S3)")-->TS[/Tileserver-GL/]
+        Local("Locally stored tiles")--"Option 1"-->TS
+        Compressed("Compressed high and low .mbtile files (S3)")--"Option 2"-->TS[/Tileserver-GL/]
     end
+    
     TS--"XYZ URL"-->Client
-    Uncompressed--"XYZ URL"-->Client["Gatsby+OpenLayers"]
+    Uncompressed--"XYZ URL"-->Client["Gatsby+MapLibre"]
+    
