@@ -48,6 +48,12 @@ jobs:
         run: npm test
       - name: Check for security vulnerabilities
         run: npm audit --production
+      - name: Cypress / Gherkin integration tests 🌃
+        uses: cypress-io/github-action@v2
+        with:
+          working-directory: ${{env.working-directory}}
+          start: npm start
+          wait-on: 'http://localhost:8000'
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
