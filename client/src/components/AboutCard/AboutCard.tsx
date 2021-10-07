@@ -54,7 +54,7 @@ const AboutCard = (props: React.PropsWithChildren<AboutCardProps>) => {
               src={props.imgSrc}/>
           </Grid>
 
-          <Grid tablet={{col: 9}} data-cy={`${hyphenizeString(props.header)}-card`}>
+          <Grid tablet={{col: 9}} data-cy={`${hyphenizeString(props.header)}-block`}>
             <Grid row>
               <h3>{props.header}</h3>
               {props.children}

@@ -7,6 +7,7 @@ exports[`J40Footer renders correctly 1`] = `
   >
     <div
       class="usa-footer__primary-section pb2"
+      data-cy="footer-primary-block"
     >
       <div
         class="grid-container-desktop-lg"
@@ -79,6 +80,7 @@ exports[`J40Footer renders correctly 1`] = `
                 >
                   <a
                     class="footer-link-first-child"
+                    data-cy="whitehouse-gov"
                     href="https://www.whitehouse.gov/"
                     rel="noreferrer"
                     target="_blank"
@@ -90,6 +92,7 @@ exports[`J40Footer renders correctly 1`] = `
                   class="usa-footer__secondary-link"
                 >
                   <a
+                    data-cy="freedom-of-information-act-(foia)"
                     href="https://www.whitehouse.gov/ceq/foia"
                     rel="noreferrer"
                     target="_blank"
@@ -101,6 +104,7 @@ exports[`J40Footer renders correctly 1`] = `
                   class="usa-footer__secondary-link"
                 >
                   <a
+                    data-cy="privacy-policy"
                     href="https://www.whitehouse.gov/privacy/"
                     rel="noreferrer"
                     target="_blank"
@@ -128,6 +132,7 @@ exports[`J40Footer renders correctly 1`] = `
                 >
                   <a
                     class="footer-link-first-child"
+                    data-cy="find-a-contact-at-usa-gov"
                     href="https://www.usa.gov/"
                   >
                     Find a contact at USA.gov

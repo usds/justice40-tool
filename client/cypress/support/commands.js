@@ -28,11 +28,19 @@ Cypress.Commands.add('waitForMapIdle', (map) => {
 });
 
 Cypress.Commands.add('internalLinks', (string) => {
-  return cy.get(`[data-cy="${hyphenizeString(string)}-card"] a`).click();
+  return cy.get(`[data-cy="${hyphenizeString(string)}-block"] a`).click();
 });
 
 Cypress.Commands.add('externalLinks', (string) => {
-  return cy.get(`[data-cy="${hyphenizeString(string)}-card"] a`).then((link) => {
+  return cy.get(`[data-cy="${hyphenizeString(string)}-block"] a`).then((link) => {
+    cy.request(link.prop('href'))
+        .its('status')
+        .should('eq', 200);
+  });
+});
+
+Cypress.Commands.add('externalFooterLinks', (string) => {
+  return cy.get(`[data-cy="${hyphenizeString(string)}"]`).then((link) => {
     cy.request(link.prop('href'))
         .its('status')
         .should('eq', 200);

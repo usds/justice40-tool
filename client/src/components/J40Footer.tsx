@@ -7,6 +7,7 @@ import {NavList} from '@trussworks/react-uswds';
 import {useIntl} from 'gatsby-plugin-intl';
 
 import J40MainGridContainer from './J40MainGridContainer';
+import {hyphenizeString} from '../../cypress/integration/common/helpers';
 
 // @ts-ignore
 import whitehouseIcon from '../images/eop-seal.svg';
@@ -37,19 +38,24 @@ const J40Footer = () => {
         key={'whitehouselink2'}
         href={'https://www.whitehouse.gov/'}
         target={'_blank'}
-        rel={'noreferrer'}>Whitehouse.gov</a>,
+        rel={'noreferrer'}
+        data-cy={hyphenizeString(COMMON_COPY.FOOTER.WHITEHOUSE.defaultMessage)}>
+        {intl.formatMessage(COMMON_COPY.FOOTER.WHITEHOUSE)}
+      </a>,
       <a
         key="foialink"
         target={'_blank'}
         rel={'noreferrer'}
-        href={'https://www.whitehouse.gov/ceq/foia'}>
+        href={'https://www.whitehouse.gov/ceq/foia'}
+        data-cy={hyphenizeString(COMMON_COPY.FOOTER.FOIA.defaultMessage)}>
         {intl.formatMessage(COMMON_COPY.FOOTER.FOIA)}
       </a>,
       <a
         key={'privacylink'}
         target={'_blank'}
         rel={'noreferrer'}
-        href={'https://www.whitehouse.gov/privacy/'}>
+        href={'https://www.whitehouse.gov/privacy/'}
+        data-cy={hyphenizeString(COMMON_COPY.FOOTER.PRIVACY.defaultMessage)}>
         {intl.formatMessage(COMMON_COPY.FOOTER.PRIVACY)}
       </a>,
     ],
@@ -58,7 +64,8 @@ const J40Footer = () => {
       <a
         className={'footer-link-first-child'}
         key={'contactlink'}
-        href={'https://www.usa.gov/'}>
+        href={'https://www.usa.gov/'}
+        data-cy={hyphenizeString(COMMON_COPY.FOOTER.CONTACT_LINK.defaultMessage)}>
         {intl.formatMessage(COMMON_COPY.FOOTER.CONTACT_LINK)}
       </a>,
     ],
@@ -71,11 +78,12 @@ const J40Footer = () => {
     // `className="mobile-lg:grid-col-6 desktop:grid-col-3">` needs to be
     // `className="mobile-lg:grid-col-12 desktop:grid-col-4">` ugh.
     <footer className={'j40-footer'}>
-      <div className="usa-footer__primary-section pb2">
+      <div className="usa-footer__primary-section pb2" data-cy={`footer-primary-block`}>
         <J40MainGridContainer>
           <div className={'grid-row tablet-lg:grid-col4'}>
             {NAVLINKS.map((links, i) => (
-              <div key={`linkSection-${i}`}
+              <div
+                key={`linkSection-${i}`}
                 className="mobile-lg:grid-col-12 desktop:grid-col-4">
                 <NavSection links={links} />
               </div>

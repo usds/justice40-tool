@@ -19,7 +19,11 @@ When(`I click on the {string} page in the navigation`, (page) => {
 });
 
 When(`I look for the {string} CTA`, (ctaString) => {
-  cy.get(`[data-cy="${hyphenizeString(ctaString)}-card"]`).scrollIntoView().should('be.visible');
+  cy.get(`[data-cy="${hyphenizeString(ctaString)}-block"]`).scrollIntoView().should('be.visible');
+});
+
+When(`I look for the {string}`, (footer) => {
+  cy.get(`[data-cy="${hyphenizeString(footer)}-primary-block"]`).scrollIntoView().should('be.visible');
 });
 
 // Common Thens:
@@ -31,4 +35,8 @@ Then(`I see {string} in the title`, (title) => {
 And(`I click on the {string} {string} link`, (ctaString, type) => {
   if (type === 'internal') cy.internalLinks(ctaString);
   else cy.externalLinks(ctaString);
+});
+
+And(`I click on the {string} footer link`, (linkIndex) => {
+  cy.externalFooterLinks(linkIndex);
 });
