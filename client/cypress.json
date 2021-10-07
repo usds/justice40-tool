@@ -2,5 +2,6 @@
   "baseUrl": "http://localhost:8000/",
   "integrationFolder": "cypress/integration",
   "chromeWebSecurity": false,
-  "trashAssetsBeforeRuns": true
+  "trashAssetsBeforeRuns": true,
+  "ignoreTestFiles": "keywords.js"
 }
