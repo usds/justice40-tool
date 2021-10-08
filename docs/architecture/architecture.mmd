@@ -3,37 +3,29 @@ graph LR
         input["Community Input"]
     end
 
-    subgraph ds["Data Selection"]
+    subgraph ds["Data Selection (vision)"]
         input --> Intake
         input --> Evolution
         input --> Voting
         Intake --> Evolution --> Voting
     end
     
-    subgraph s["Geoplatform.gov"]
+    subgraph s["Hosted by Geoplatform.gov"]
         subgraph dp["Data Pipeline (Justice40 Repo)"]
             Voting --> a["Approved Datasets"]
-            a --> Properties
-            a --> Geometries
-            Properties --> Processing
-            Geometries --> Processing
-            input --> Processing
+            a -- ETL --> ncsv["Normalized CSVs"]
+            ncsv--"Score Generation"--> ScoreCSV["Full CSV with Data and Score"]
+            ScoreCSV-->GeoJSON
+            GeoJSON-->MVT["Uncompressed MVT Tiles"]
         end
-        subgraph Server
-            Processing --> GeoJSON
-            GeoJSON --> db[("Feature Database")]
-            db --> tileserv["Tile Server"]
-        end
-            subgraph j40["Justice40 Client"]
-            tileserv --> vl
-            ts["Tile Styling"] --> vl["Justice40 Visualization Library"]
-            vl --> fe["Justice40 Static Site Frontend"]
+        subgraph j40["Justice40 Client"]
+            MVT --"API (S3 Access)"--> vl["Justice40 Visualization Library (MapLibre)"]
+            vl --> fe["Justice40 Static Site Frontend (Gatsby)"]
         end
     end
 
     subgraph oc["Other Clients"]
-        tileserv -- API --> 3p["Third Party Apps"]
-        GeoJSON -- API --> 3p
-        db -- API --> 3p
+        ScoreCSV --"API (S3 Access)" --> DS["Data Scientists"]
+        GeoJSON -- "API (S3 Access)" --> 3["Third Party Apps"]
+        MVT -- "API (S3 Access)" --> 3["Third Party Apps"]
     end
-    
