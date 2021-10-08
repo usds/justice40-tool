@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/justice40-tool/791-6c1a84c/sitemap/sitemap-index.xml
+Host: usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com
