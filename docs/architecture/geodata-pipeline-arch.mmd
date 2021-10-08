@@ -22,7 +22,6 @@ graph TD
     NCS3-->CGJ
     CGJ["Combine with ogr2ogr + Create GeoJSON (score-geo)"]-->GeoJSON
     GeoJSON("GeoJSON files (high and low zoom) (S3)")-->Tip
-    GeoJSON--"Access non-geo data"-->Client
     Tip["Create and Send Tiles using Tippecanoe"]-->Uncompressed
     Tip-->Compressed
     subgraph production
@@ -35,4 +34,3 @@ graph TD
     
     TS--"XYZ URL"-->Client
     Uncompressed--"XYZ URL"-->Client["Gatsby+MapLibre"]
-    
