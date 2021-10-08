@@ -1,30 +1,550 @@
 {
-  "areasOfInterest.climate": "Cambio climático",
-  "areasOfInterest.energy": "Energía limpia y eficiencia energética",
-  "areasOfInterest.housing": "Vivienda asequible y sostenible",
-  "areasOfInterest.pollution": "Remediación de la contaminación heredada",
-  "areasOfInterest.training": "Capacitación y desarrollo de la fuerza laboral",
-  "areasOfInterest.transit": "Transporte limpio",
-  "areasOfInterest.water": "Infraestructura de agua limpia",
-  "header.about": "Sobre nosotras",
-  "header.contact": "Contacto",
-  "header.explore": "Explore el trabajo",
-  "header.methodology": "Metodología",
-  "header.timeline": "Cronología",
-  "header.title": "Justice40",
-  "index.aboutContent.header": "Acerca de Justice40",
-  "index.aboutContent.p1": "En un esfuerzo por abordar las injusticias ambientales históricas, el presidente Biden creó la Iniciativa Justice40 el 27 de enero de 2021. La Iniciativa Justice40 dirige el 40% de los beneficios de las inversiones federales en siete áreas clave a comunidades sobrecargadas y desatendidas.",
-  "index.aboutContent.p2": "Las agencias federales darán prioridad a los beneficios utilizando una nueva herramienta de evaluación de la justicia económica y climática. Esta herramienta de selección será un mapa que visualiza datos para comparar los impactos acumulativos de factores ambientales, climáticos y económicos. Está siendo desarrollado por el Consejo de Calidad Ambiental (Council on Environmental Quality - CEQ) con la orientación de líderes de justicia ambiental y comunidades afectadas por injusticias ambientales. La primera versión de la herramienta de detección se lanzará en julio de 2021. Sin embargo, la herramienta de detección y los datos que se utilizan se actualizarán continuamente para reflejar mejor las experiencias vividas por los miembros de la comunidad.",
-  "index.aboutContent.p3": "Lea más sobre la Iniciativa Justice40 en {presidentLink} del presidente Biden.",
-  "index.presidentalLinkLabel": "Orden ejecutiva sobre la lucha contra la crisis climática en el país y en el extranjero.",
-  "index.presidentalLinkUri": "https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/27/executive-order-on-tackling-the-climate-crisis-at-home-and-abroad/",
-  "index.section2.header": "Áreas de enfoque",
-  "index.section3.header": "Un enfoque transparente, centrado en la comunidad",
-  "index.section3.inclusive": "{inlineHeader} Muchas áreas que carecen de inversiones también carecen de datos ambientales y se pasarían por alto utilizando los datos ambientales disponibles. CEQ se está acercando activamente a grupos que históricamente han sido excluidos de la toma de decisiones, como grupos en áreas rurales y tribales, para comprender sus necesidades y solicitar su opinión.",
-  "index.section3.inclusiveLabel": "Inclusivo:",
-  "index.section3.intro": "Las iniciativas exitosas están guiadas por aportes directos de las comunidades a las que sirven. CEQ se compromete con la transparencia, la inclusión y la iteración en la construcción de esta herramienta de evaluación.",
-  "index.section3.iterative": "{inlineHeader} La lista de priorización de la comunidad inicial proporcionada por la herramienta de evaluación es el comienzo de un proceso de colaboración en el refinamiento de la puntuación, en lugar de una respuesta final. CEQ ha recibido recomendaciones sobre conjuntos de datos de entrevistas comunitarias, el Consejo Asesor de Justicia Ambiental de la Casa Blanca y mediante comentarios públicos, pero establecer una puntuación que sea verdaderamente representativa será un proceso continuo a largo plazo. A medida que las comunidades envíen comentarios y recomendaciones, CEQ continuará mejorando las herramientas que se están construyendo y los procesos para la participación pública y de las partes interesadas.",
-  "index.section3.iterativeLabel": "Iterativo:",
-  "index.section3.transparent": "{inlineHeader} El código y los datos detrás de la herramienta de detección son de código abierto, lo que significa que está disponible para que el público los revise y contribuya. Esta herramienta se está desarrollando públicamente para que las comunidades, los expertos académicos y cualquier persona interesada puedan participar en el proceso de creación de herramientas.",
-  "index.section3.transparentLabel": "Transparencia:"
+  "about.page.sub.header.1.text.1": {
+    "defaultMessage": "On January 27, 2021, President Biden directed the Council on Environmental Quality (CEQ) to create a climate and economic justice screening tool. The purpose of the tool is to help Federal agencies identify disadvantaged communities and provide socioeconomic, environmental, and climate information and data to inform decisions that may affect these communities. The tool identifies disadvantaged communities as communities of focus through publicly available, nationally consistent, high-quality data.",
+    "description": "about page sub header text"
+  },
+  "about.page.sub.header.1.text.2": {
+    "defaultMessage": "The current version of the tool is in a public beta form and will be updated based on feedback from the public.",
+    "description": "about page sub header text"
+  },
+  "about.page.sub.header.2.text.1": {
+    "defaultMessage": "The tool will provide important information for the Justice40 Initiative. The goal of the Justice40 Initiative is to provide 40-percent of the overall benefits of certain federal programs in seven key areas to disadvantaged communities. These seven key areas are: climate change, clean energy and energy efficiency, clean transit, affordable and sustainable housing, training and workforce development, the remediation and reduction of legacy pollution, and the development of critical clean water infrastructure.",
+    "description": "about page sub header text"
+  },
+  "about.page.sub.header.2.text.2": {
+    "defaultMessage": "Read more about the Justice40 Initiative in President Biden’s",
+    "description": "about page sub header text"
+  },
+  "about.page.title.text": {
+    "defaultMessage": "Sobre nosotras",
+    "description": "about page title text"
+  },
+  "alert.alertBetaBody": {
+    "defaultMessage": "This website may be continuously updated",
+    "description": "Body for an alert inform users that datasets may change"
+  },
+  "alert.alertBetaTitle": {
+    "defaultMessage": "Public beta",
+    "description": "Title for an alert inform users that datasets may change"
+  },
+  "alert.alertDataLimitedBody": {
+    "defaultMessage": "Datasets may be added, updated, or removed.",
+    "description": "Body for an alert inform users that datasets may change"
+  },
+  "alert.alertDataLimitedTitle": {
+    "defaultMessage": "Limited data sources",
+    "description": "Title for an alert inform users that datasets may change"
+  },
+  "areaDetail.categorization.community.of.focus": {
+    "defaultMessage": "Community of focus",
+    "description": "the communities the score currently is focused on"
+  },
+  "areaDetail.categorization.not.community.of.focus": {
+    "defaultMessage": "Not a community of focus",
+    "description": "the communities the score currently is not focused on"
+  },
+  "areaDetail.geographicInfo.censusBlockGroup": {
+    "defaultMessage": "Census block group:",
+    "description": "the census block group id number of the feature selected"
+  },
+  "areaDetail.geographicInfo.county": {
+    "defaultMessage": "County:",
+    "description": "the county of the feature selected"
+  },
+  "areaDetail.geographicInfo.population": {
+    "defaultMessage": "Population:",
+    "description": "the population of the feature selected"
+  },
+  "areaDetail.geographicInfo.state": {
+    "defaultMessage": "State:",
+    "description": "the state of the feature selected"
+  },
+  "areaDetail.indicator.areaMedianIncome": {
+    "defaultMessage": "Area Median Income",
+    "description": "calculated as percent of the area median income"
+  },
+  "areaDetail.indicator.asthma": {
+    "defaultMessage": "Asthma",
+    "description": "have asthma or been diagnosed by a doctor to have asthma"
+  },
+  "areaDetail.indicator.description.area_median_income": {
+    "defaultMessage": "Median income of the census block group calculated as a percent of the metropolitan area’s or state's median income",
+    "description": "Median income of the census block group calculated as a percent of the metropolitan area’s or state's median income"
+  },
+  "areaDetail.indicator.description.asthma": {
+    "defaultMessage": "People who answer “yes” to both of the questions: “Have you ever been told by a doctor nurse, or other health professional that you have asthma?” and “Do you still have asthma?\"",
+    "description": "People who answer “yes” to both of the questions: “Have you ever been told by a doctor nurse, or other health professional that you have asthma?” and “Do you still have asthma?\""
+  },
+  "areaDetail.indicator.description.diabetes": {
+    "defaultMessage": "People ages 18 and up who report having been told by a doctor, nurse, or other health professionals that they have diabetes other than diabetes during pregnancy",
+    "description": "People ages 18 and up who report having been told by a doctor, nurse, or other health professionals that they have diabetes other than diabetes during pregnancy"
+  },
+  "areaDetail.indicator.description.dieselPartMatter": {
+    "defaultMessage": "Mixture of particles that is part of diesel exhaust in the air",
+    "description": "Mixture of particles that is part of diesel exhaust in the air"
+  },
+  "areaDetail.indicator.description.education": {
+    "defaultMessage": "Percent of people age 25 or older that didn’t get a high school diploma",
+    "description": "Percent of people age 25 or older that didn’t get a high school diploma"
+  },
+  "areaDetail.indicator.description.energyBurden": {
+    "defaultMessage": "Average annual energy cost ($) divided by household income",
+    "description": "Average annual energy cost ($) divided by household income"
+  },
+  "areaDetail.indicator.description.femaRisk": {
+    "defaultMessage": "Expected Annual Loss Score, which is the average economic loss in dollars resulting from natural hazards each year.",
+    "description": "Expected Annual Loss Score, which is the average economic loss in dollars resulting from natural hazards each year."
+  },
+  "areaDetail.indicator.description.heartDisease": {
+    "defaultMessage": "People ages 18 and up who report ever having been told by a doctor, nurse, or other health professionals that they had angina or coronary heart disease",
+    "description": "People ages 18 and up who report ever having been told by a doctor, nurse, or other health professionals that they had angina or coronary heart disease"
+  },
+  "areaDetail.indicator.description.houseBurden": {
+    "defaultMessage": "Households that are low income and spend more than 30% of their income on housing costs",
+    "description": "Households that are low income and spend more than 30% of their income on housing costs"
+  },
+  "areaDetail.indicator.description.leadPaint": {
+    "defaultMessage": "Housing units built pre-1960, used as an indicator of potential lead paint exposure in homes",
+    "description": "Housing units built pre-1960, used as an indicator of potential lead paint exposure in homes"
+  },
+  "areaDetail.indicator.description.lifeExpect": {
+    "defaultMessage": "Estimated years of life expectancy",
+    "description": "Estimated years of life expectancy"
+  },
+  "areaDetail.indicator.description.pm25": {
+    "defaultMessage": "Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller",
+    "description": "Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller"
+  },
+  "areaDetail.indicator.description.poverty": {
+    "defaultMessage": "Percent of a block group's population in households where the household income is at or below 100% of the federal poverty level",
+    "description": "Percent of a block group's population in households where the household income is at or below 100% of the federal poverty level"
+  },
+  "areaDetail.indicator.description.trafficVolume": {
+    "defaultMessage": "Count of vehicles (average annual daily traffic) at major roads within 500 meters, divided by distance in meters",
+    "description": "Count of vehicles (average annual daily traffic) at major roads within 500 meters, divided by distance in meters"
+  },
+  "areaDetail.indicator.description.wasteWater": {
+    "defaultMessage": "Toxic concentrations at stream segments within 500 meters divided by distance in kilometers",
+    "description": "Toxic concentrations at stream segments within 500 meters divided by distance in kilometers"
+  },
+  "areaDetail.indicator.diabetes": {
+    "defaultMessage": "Diabetes",
+    "description": "diabetes from dr or nurse"
+  },
+  "areaDetail.indicator.dieselPartMatter": {
+    "defaultMessage": "Diesel particulate matter",
+    "description": "Diesel particulate matter level in air"
+  },
+  "areaDetail.indicator.education": {
+    "defaultMessage": "Education, less than high school",
+    "description": "Percent of people age 25 or older that didn’t get a high school diploma"
+  },
+  "areaDetail.indicator.energyBurden": {
+    "defaultMessage": "Energy burden",
+    "description": "Average annual energy cost ($) divided by household income"
+  },
+  "areaDetail.indicator.femaRisk": {
+    "defaultMessage": "FEMA Risk Index",
+    "description": "Risk based on 18 natural hazard types, in addition to a community's social vulnerability and community resilience"
+  },
+  "areaDetail.indicator.heartDisease": {
+    "defaultMessage": "Heart disease",
+    "description": "People ages 18 and up who report ever having been told by adoctor, nurse, or other health professionals that they had angina or coronary heart disease"
+  },
+  "areaDetail.indicator.houseBurden": {
+    "defaultMessage": "Housing cost burden",
+    "description": "People ages 18 and up who report having been told by a doctor, nurse, or other health professionals that they have diabetes other than diabetes during pregnancy"
+  },
+  "areaDetail.indicator.leadPaint": {
+    "defaultMessage": "Lead paint",
+    "description": "Housing units built pre-1960, used as an indicator of potential lead paint exposure in homes"
+  },
+  "areaDetail.indicator.lifeExpect": {
+    "defaultMessage": "Life expectancy",
+    "description": "Estimated years of life expectancy"
+  },
+  "areaDetail.indicator.pm25": {
+    "defaultMessage": "PM2.5",
+    "description": "Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller"
+  },
+  "areaDetail.indicator.poverty": {
+    "defaultMessage": "Poverty",
+    "description": "Household income is less than or equal to twice the federal \"poverty level\""
+  },
+  "areaDetail.indicator.trafficVolume": {
+    "defaultMessage": "Traffic proximity and volume",
+    "description": "Count of vehicles (average annual daily traffic) at major roads within 500 meters, divided by distance in meters"
+  },
+  "areaDetail.indicator.wasteWater": {
+    "defaultMessage": "Wastewater discharge",
+    "description": "Toxic concentrations at stream segments within 500 meters divided by distance in kilometers"
+  },
+  "areaDetail.indicators.indicatorColumnHeader": {
+    "defaultMessage": "Indicator",
+    "description": "the population of the feature selected"
+  },
+  "areaDetail.indicators.percentileColumnHeader": {
+    "defaultMessage": "Percentile (0-100)",
+    "description": "the population of the feature selected"
+  },
+  "community.members.heading": {
+    "defaultMessage": "Community members",
+    "description": "sub heading of page"
+  },
+  "community.members.info": {
+    "defaultMessage": "Explore data about communities of focus in your area, and help provide feedback on the tool.",
+    "description": "sub heading of page"
+  },
+  "community.members.link": {
+    "defaultMessage": "Explore the tool",
+    "description": "link to explore the tool page"
+  },
+  "contact.page.header.text": {
+    "defaultMessage": "Contacto",
+    "description": "contact page header text"
+  },
+  "contact.page.sub.header.text": {
+    "defaultMessage": "Email us",
+    "description": "contact page sub header text"
+  },
+  "contact.page.title.text": {
+    "defaultMessage": "Contacto",
+    "description": "contact page title text"
+  },
+  "datasetCard.dataDateRange": {
+    "defaultMessage": "Data date range:",
+    "description": "label associated with explaining the card"
+  },
+  "datasetCard.dataResolution": {
+    "defaultMessage": "Data resolution:",
+    "description": "label associated with explaining the card"
+  },
+  "datasetCard.dataSource": {
+    "defaultMessage": "Data source:",
+    "description": "label associated with explaining the card"
+  },
+  "datasetContainer.additional.heading": {
+    "defaultMessage": "Additional Indicators",
+    "description": "additional indicators heading"
+  },
+  "datasetContainer.additional.info": {
+    "defaultMessage": "These datasets provide additional information about each community.",
+    "description": "additional indicator info"
+  },
+  "datasetContainer.heading": {
+    "defaultMessage": "Datasets used in methodology",
+    "description": "section heading of which datasets are used in cumulative score"
+  },
+  "datasetContainer.info": {
+    "defaultMessage": "The datasets come from a variety of sources and were selected based on relevance, availability, recency, and quality. The datasets seek to identify a range of human health, environmental, climate-related, and other cumulative impacts on communities.",
+    "description": "description of the dataset section"
+  },
+  "download.draft.ptag.1": {
+    "defaultMessage": "{downloadDraft} of communities of focus and datasets used. Last updated: {dateUpdated}.",
+    "description": "Download the draft list of communities of focus and datasets used."
+  },
+  "download.draft.ptag.2": {
+    "description": "Download the draft list of communities of focus and datasets used."
+  },
+  "downloadPacket.button.text": {
+    "defaultMessage": "Download package",
+    "description": "download packet button text"
+  },
+  "downloadPacket.header.text": {
+    "description": "download packet header text"
+  },
+  "downloadPacket.info.last.updated": {
+    "description": "download packet info last updated"
+  },
+  "downloadPacket.info.text": {
+    "description": "download packet info text"
+  },
+  "exploreTool.heading.text": {
+    "defaultMessage": "Explore the tool",
+    "description": "explore the tool heading text"
+  },
+  "exploreTool.title.text": {
+    "defaultMessage": "Explore the tool",
+    "description": "explore the tool title text"
+  },
+  "federal.pm.heading": {
+    "defaultMessage": "Federal program managers",
+    "description": "sub heading of page"
+  },
+  "federal.pm.info": {
+    "defaultMessage": "Download the screening tool’s draft list of communities of focus. Explore data that may be useful to your program, and provide feedback on the tool.",
+    "description": "sub heading of page"
+  },
+  "federal.pm.link": {
+    "defaultMessage": "Go to data & methodology",
+    "description": "link text to go to methodology page"
+  },
+  "footer.arialabel": {
+    "defaultMessage": "Footer navigation",
+    "description": "aria-label text for whole footer"
+  },
+  "footer.findcontactlink": {
+    "defaultMessage": "Find a contact at USA.gov",
+    "description": "Footer find contact link text"
+  },
+  "footer.foialink": {
+    "defaultMessage": "Freedom of Information Act (FOIA)",
+    "description": "Footer FOIA link text"
+  },
+  "footer.logo.title": {
+    "defaultMessage": "Council on Environmental Quality",
+    "description": "Footer under logo"
+  },
+  "footer.moreinfoheader": {
+    "defaultMessage": "More information",
+    "description": "Footer column header"
+  },
+  "footer.privacylink": {
+    "defaultMessage": "Privacy Policy",
+    "description": "Footer privacy policy link text"
+  },
+  "footer.questionsheader": {
+    "defaultMessage": "Have a question about government services?",
+    "description": "Footer column header"
+  },
+  "footer.whitehouselogoalt": {
+    "defaultMessage": "Whitehouse logo",
+    "description": "Footer Whitehouse logo alt text"
+  },
+  "getInvolved.title": {
+    "defaultMessage": "Get involved",
+    "description": "sub heading of page"
+  },
+  "header.about": {
+    "defaultMessage": "About",
+    "description": "Header navigate item to the about page"
+  },
+  "header.contact": {
+    "defaultMessage": "Contact",
+    "description": "Header navigate item to the Contact page"
+  },
+  "header.explore": {
+    "defaultMessage": "Explore the tool",
+    "description": "Header navigate item to the Explore the tool page"
+  },
+  "header.methodology": {
+    "defaultMessage": "Data & methodology",
+    "description": "Header navigate item to the Methodology page"
+  },
+  "header.title.line1": {
+    "defaultMessage": "Climate and Economic Justice",
+    "description": "Title in nav header line 1 of 2"
+  },
+  "header.title.line2": {
+    "defaultMessage": "Screening Tool",
+    "description": "Title in nav header line 2 of 2"
+  },
+  "howToGetStarted.title": {
+    "defaultMessage": "How to get started",
+    "description": "sub heading of page"
+  },
+  "index.heading.justice40": {
+    "defaultMessage": "The Justice40 Initiative",
+    "description": "heading for about justice 40"
+  },
+  "index.heading.screentool": {
+    "defaultMessage": "The screening tool",
+    "description": "heading for about screening tool"
+  },
+  "index.presidentalLinkLabel": {
+    "defaultMessage": "Executive Order 14008 on Tackling the Climate Crisis at Home and Abroad.",
+    "description": "Link url to presidential actions executive order. Part of paragraph 2"
+  },
+  "join.open.source.info": {
+    "defaultMessage": "The screening tool’s code is open source, which means it is available for the public to view and contribute to. Anyone can view and contribute on GitHub.",
+    "description": "info on joining open source community"
+  },
+  "join.open.source.link": {
+    "defaultMessage": "Check it out on GitHub",
+    "description": "link to github repository"
+  },
+  "join.opensource.heading": {
+    "defaultMessage": "Join the open source community",
+    "description": "join the community heading"
+  },
+  "legend.info.priority.label": {
+    "defaultMessage": "Draft community of focus",
+    "description": "the label of the prioritized community legend"
+  },
+  "legend.info.threshold.label": {
+    "defaultMessage": "A community identified as experiencing disadvantages that merits the focus of certain Federal investments, including through the Justice40 Initiative",
+    "description": "the label of the threshold community legend"
+  },
+  "map.territoryFocus.alaska.long": {
+    "defaultMessage": "Alaska",
+    "description": "The full name indicating the bounds of Alaska"
+  },
+  "map.territoryFocus.alaska.short": {
+    "defaultMessage": "AK",
+    "description": "The abbreviated indicating the bounds of Alaska"
+  },
+  "map.territoryFocus.focusOn": {
+    "defaultMessage": "Focus on {territory}",
+    "description": "Focus on the bounds of a specific territory"
+  },
+  "map.territoryFocus.hawaii.long": {
+    "defaultMessage": "Hawaii",
+    "description": "The longer name indicating the bounds of Hawaii"
+  },
+  "map.territoryFocus.hawaii.short": {
+    "defaultMessage": "HI",
+    "description": "The abbreviated name indicating the bounds of Hawaii"
+  },
+  "map.territoryFocus.lower48.long": {
+    "defaultMessage": "Lower 48",
+    "description": "The longer name indicating the bounds of the Lower 48 states"
+  },
+  "map.territoryFocus.lower48.short": {
+    "defaultMessage": "48",
+    "description": "The abbreviated name indicating the bounds of the Lower 48 states"
+  },
+  "map.territoryFocus.puerto_rico.long": {
+    "defaultMessage": "Puerto Rico",
+    "description": "The full name indicating the bounds of Puerto Rico"
+  },
+  "map.territoryFocus.puerto_rico.short": {
+    "defaultMessage": "PR",
+    "description": "The abbreviated name indicating the bounds of Puerto Rico"
+  },
+  "map.zoom.warning": {
+    "defaultMessage": "Zoom in to the state or regional level to see prioritized communities on the map.",
+    "description": "zoom warning on map"
+  },
+  "mapIntro.censusBlockGroupDefinition": {
+    "defaultMessage": "A census block group is generally between 600 and 3,000 people. It is the smallest geographical unit for which the U.S. Census Bureau publishes sample data.",
+    "description": "cites the definition and helpful information about census groups"
+  },
+  "mapIntro.didYouKnow": {
+    "defaultMessage": "Did you know?",
+    "description": "text prompting a cite paragraph"
+  },
+  "mapIntro.mapIntroHeader": {
+    "defaultMessage": "Zoom and select a census block group to view data",
+    "description": "introductory text of ways to use the map"
+  },
+  "methodology.page.header.text": {
+    "defaultMessage": "Methodology",
+    "description": "methodology page header text"
+  },
+  "methodology.page.paragraph.first": {
+    "defaultMessage": "The methodology for identifying communities of focus is currently in a draft, pre-decisional form that may change over time as more datasets become available.",
+    "description": "methodology page paragraph 1"
+  },
+  "methodology.page.title.text": {
+    "defaultMessage": "Data and Methodology",
+    "description": "methodology page title text"
+  },
+  "methodology.step.1.a.heading": {
+    "defaultMessage": "Percent of Area Median Income",
+    "description": "step 1 a heading"
+  },
+  "methodology.step.1.a.info.1": {
+    "defaultMessage": "If a census block group is in a metropolitan area, this value is the median income of the census block group calculated as a percent of the metropolitan area’s median income.",
+    "description": "step 1 a info 1"
+  },
+  "methodology.step.1.a.info.2": {
+    "defaultMessage": "If a census block group is not in a metropolitan area, this value is the median income of the census block group calculated as a percent of the state’s median income.",
+    "description": "step 1 a info 2"
+  },
+  "methodology.step.1.b.heading": {
+    "defaultMessage": "Percent of households below or at 100% of the federal poverty line",
+    "description": "step 1 b heading"
+  },
+  "methodology.step.1.c.heading": {
+    "defaultMessage": "The high school degree achievement rate for adults 25 years and older",
+    "description": "step 1 a heading"
+  },
+  "methodology.step.1.c.info": {
+    "defaultMessage": "The percent of individuals who are 25 or older who have received a high school degree.",
+    "description": "step 1 c info"
+  },
+  "methodology.step.1.heading": {
+    "defaultMessage": "Gather datasets",
+    "description": "first step heading"
+  },
+  "methodology.step.1.info": {
+    "defaultMessage": "The methodology includes the following inputs that are equally weighted.",
+    "description": "first step info"
+  },
+  "methodology.step.2.heading": {
+    "defaultMessage": "Determine communites of focus",
+    "description": "second step heading"
+  },
+  "methodology.step.2.info": {
+    "defaultMessage": "Under the existing formula, a census block group will be considered a community of focus if:",
+    "description": "second step info"
+  },
+  "methodology.steps.2.b.info": {
+    "defaultMessage": "This is the percent of households in a state with a household income below or at 100% of the {federalPovertyLine}. This federal poverty line is calculated based on the composition of each household (e.g., based on household size), but it does not vary geographically.",
+    "description": "Download the draft list of communities of focus and datasets used."
+  },
+  "methodology.steps.2.formula": {
+    "defaultMessage": "{medianIncome} {or} {livingAtPovery} {and} {education}",
+    "description": "Formala used to calculate communities of focus"
+  },
+  "methodology.steps.description.1": {
+    "defaultMessage": "The methodology for identifying communities of focus is calculated at the census block group level. Census block geographical boundaries are determined by the U.S. Census Bureau once every ten years. This tool utilizes the census block boundaries from 2010.",
+    "description": "first description text "
+  },
+  "methodology.steps.description.2": {
+    "defaultMessage": "The following describes the process for identifying communities of focus.",
+    "description": "second description text"
+  },
+  "methodology.steps.heading": {
+    "defaultMessage": "Methodology",
+    "description": "heading of methodology section"
+  },
+  "pageNotFound.Guidance.text": {
+    "defaultMessage": "Try creating a page in",
+    "description": "page not found guidance text"
+  },
+  "pageNotFound.apology.description.text": {
+    "defaultMessage": "we couldn’t find what you were looking for.",
+    "description": "page not found apology description text"
+  },
+  "pageNotFound.apology.text": {
+    "defaultMessage": "Sorry",
+    "description": "page not found apology text"
+  },
+  "pageNotFound.heading.text": {
+    "defaultMessage": "Page not found",
+    "description": "page not found heading text"
+  },
+  "pageNotFound.link.to.go.home.text": {
+    "defaultMessage": "Go home",
+    "description": "page not found link to go home text"
+  },
+  "pageNotFound.title.text": {
+    "defaultMessage": "Page not found",
+    "description": "page not found title text"
+  },
+  "send.feedback.heading": {
+    "defaultMessage": "Send feedback",
+    "description": "sending feedback heading"
+  },
+  "send.feedback.info": {
+    "defaultMessage": "Have ideas about how this tool can be improved to better reflect the on-the-ground experiences of your community?",
+    "description": "sending feedback information"
+  },
+  "youCanHelpInfoText.heading": {
+    "defaultMessage": "How you can help improve the tool",
+    "description": "how one can help us improve the tool"
+  },
+  "youCanHelpInfoText.list.item.1": {
+    "defaultMessage": "If you have helpful information, we would love to {rxEmailFromYou}.",
+    "description": "how one can help us via email"
+  },
+  "youCanHelpInfoText.list.item.2": {
+    "defaultMessage": "View our {dataMeth} page and send us feedback.",
+    "description": "give us feedback on our data and methodology"
+  },
+  "youCanHelpInfoText.list.item.3": {
+    "defaultMessage": "Find your community of interest and {shareFeedback}.",
+    "description": "share your feedback"
+  }
 }
