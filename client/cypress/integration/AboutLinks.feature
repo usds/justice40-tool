@@ -4,6 +4,7 @@ Feature: All links on About page are functional
     Given I am on the "About" page
     When I look for the "The Justice40 Initiative" CTA
     And I click on the "The Justice40 Initiative" "external" link
+    Then the link should respond successfully
 
   Scenario: Federal program officer can find and click on their CTA
     Given I am on the "About" page
@@ -17,14 +18,13 @@ Feature: All links on About page are functional
     And I click on the "Community members" "internal" link
     Then I see "Explore the tool" in the title
 
-  # Todo: Figure out how to test mailto links, hrefs are tested in integration tests
   Scenario: People can find how to Send feedback
     Given I am on the "About" page
-    When I look for the "Community members" CTA
+    When I look for the "Send feedback" CTA
+    Then the link should allow client to send an email to "screeningtool.feedback@usds.gov"
 
-  # Todo: Figure out how to test page content in new tab. This will test that link returns a 200.
   Scenario: Open source community can find and click on their CTA
     Given I am on the "About" page
     When I look for the "Join the open source community" CTA
     And I click on the "Join the open source community" "external" link
-
+    Then the link should respond successfully

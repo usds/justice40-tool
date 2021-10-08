@@ -27,28 +27,8 @@ Cypress.Commands.add('waitForMapIdle', (map) => {
   });
 });
 
-Cypress.Commands.add('testInternalLink', (string) => {
-  return cy.get(`[data-cy="${hyphenizeString(string)}-block"] a`).click();
-});
-
-Cypress.Commands.add('testExternalLink', (string) => {
-  return cy.get(`[data-cy="${hyphenizeString(string)}-block"] a`).then((link) => {
-    cy.request(link.prop('href'))
-        .its('status')
-        .should('eq', 200);
-  });
-});
-
 Cypress.Commands.add('testExternalLinks', (string) => {
-  return cy.get(`[data-cy="${hyphenizeString(string)}-block"] a`).each((links) => {
-    cy.request(links.prop('href'))
-        .its('status')
-        .should('eq', 200);
-  });
-});
-
-Cypress.Commands.add('testExternalFooterLink', (string) => {
-  return cy.get(`[data-cy="${hyphenizeString(string)}"]`).then((link) => {
+  return cy.get(`[data-cy="${hyphenizeString(string)}-block"] a`).each((link) => {
     cy.request(link.prop('href'))
         .its('status')
         .should('eq', 200);
