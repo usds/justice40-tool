@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'gatsby-plugin-intl';
 import {useIntl} from 'gatsby-plugin-intl';
 import {Grid} from '@trussworks/react-uswds';
 
@@ -33,14 +32,7 @@ const CEJSTPage = ({location}: IMapPageProps) => {
         <Grid col={12} tablet={{col: 6}}>
           <section>
             <p>
-            Zoom into the map to see communities of focus that can help Federal agencies
-            identify disadvantaged communities and to provide socioeconomic,
-            environmental, and climate information and data. Learn more about the methodology
-            and datasets that were used to determine these communities of focus on the
-              {` `}
-              <Link to={'/methodology'}>Data & methodology</Link>
-              {` `}
-                  page.
+              {EXPLORE_COPY.PAGE_DESCRIPTION}
             </p>
           </section>
         </Grid>
