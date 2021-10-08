@@ -93,6 +93,6 @@
     "uswds": "^2.10.3"
   },
   "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true
+    "nonGlobalStepDefinitions": false
   }
 }

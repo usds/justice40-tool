@@ -1,9 +1,9 @@
 /* eslint-disable new-cap */
 
-// Common keyword definitions for Gherkin workflows
+// Common step definitions for Gherkin
 
-import {ENDPOINTS} from '../LegacyTests/constants';
-import {hyphenizeString} from './helpers';
+import {ENDPOINTS} from '../../integration/LegacyTests/constants';
+import {hyphenizeString} from '../../integration/common/helpers';
 
 // Common Givens:
 Given('I am on the {string} page', (page) => {
