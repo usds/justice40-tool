@@ -6,6 +6,7 @@ from data_pipeline.config import settings
 from data_pipeline.etl.runner import etl_runner, score_generate, score_geo
 from data_pipeline.etl.sources.census.etl_utils import (
     reset_data_directories as census_reset,
+    zip_census_data,
 )
 from data_pipeline.tile.generate import generate_tiles
 from data_pipeline.utils import (
@@ -58,17 +59,24 @@ def data_cleanup():
 @cli.command(
     help="Census data download",
 )
-def census_data_download():
+@click.option(
+    "-zc",
+    "--zip-compress",
+    is_flag=True,
+    help="Upload to AWS S3 a zipped archive of the census data.",
+)
+def census_data_download(zip_compress):
     """CLI command to download all census shape files from the Census FTP and extract the geojson
     to generate national and by state Census Block Group CSVs"""
 
-    data_path = settings.APP_ROOT / "data"
-
     logger.info("Initializing all census data")
-    census_reset(data_path)
+    # census_reset(data_path)
 
     logger.info("Downloading census data")
-    etl_runner("census")
+    # etl_runner("census")
+
+    if zip_compress:
+        zip_census_data()
 
     logger.info("Completed downloading census data")
     sys.exit()

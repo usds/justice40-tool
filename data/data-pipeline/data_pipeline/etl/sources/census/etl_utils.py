@@ -10,6 +10,7 @@ from data_pipeline.utils import (
     remove_all_dirs_from_dir,
     remove_files_from_dir,
     unzip_file_from_url,
+    zip_directory,
 )
 
 logger = get_module_logger(__name__)
@@ -109,3 +110,13 @@ def check_census_data_source(
                 "No local census data found. Please use '-cds aws` to fetch from AWS"
             )
             sys.exit()
+
+
+def zip_census_data():
+    logger.info("Compressing and uploading census files to AWS S3")
+
+    CENSUS_DATA_PATH = settings.APP_ROOT / "data" / "census"
+    TMP_PATH = settings.APP_ROOT / "data" / "tmp"
+
+    # zip folder
+    zip_directory(CENSUS_DATA_PATH, TMP_PATH)

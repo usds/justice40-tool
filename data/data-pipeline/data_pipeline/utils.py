@@ -12,6 +12,15 @@ import urllib3
 from data_pipeline.config import settings
 
 
+## zlib is not available on all systems
+try:
+    import zlib  # noqa # pylint: disable=unused-import
+
+    compression = zipfile.ZIP_DEFLATED
+except (ImportError, AttributeError):
+    compression = zipfile.ZIP_STORED
+
+
 def get_module_logger(module_name: str) -> logging.Logger:
     """Instantiates a logger object on stdout
 
@@ -1251,3 +1260,44 @@ def get_zip_info(archive_path: Path) -> list:
         info_dict["Uncompressed"] = f"{info.file_size} bytes"
         info_list.append(info_dict)
     return info_list
+
+
+def zip_directory(
+    origin_zip_directory: Path, destination_zip_directory: Path
+) -> None:
+    """
+    Zips a whole directory
+
+    Args:
+        path (pathlib.Path): Path of the directory to be archived
+    Returns:
+        None
+
+    """
+
+    def zipdir(origin_directory: Path, ziph: zipfile.ZipFile):
+        for root, dirs, files in os.walk(origin_directory):
+            for file in files:
+                logger.info(f"Compressing file: {file}")
+                ziph.write(
+                    os.path.join(root, file),
+                    os.path.relpath(
+                        os.path.join(root, file),
+                        os.path.join(origin_directory, ".."),
+                    ),
+                    compress_type=compression,
+                )
+
+    logger.info(f"Compressing {Path(origin_zip_directory).name} directory")
+    zip_file_name = f"{Path(origin_zip_directory).name}.zip"
+
+    # start archiving
+    zipf = zipfile.ZipFile(
+        destination_zip_directory / zip_file_name, "w", zipfile.ZIP_DEFLATED
+    )
+    zipdir(f"{origin_zip_directory}/", zipf)
+    zipf.close()
+
+    logger.info(
+        f"Completed compression of {Path(origin_zip_directory).name} directory"
+    )
