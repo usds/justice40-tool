@@ -70,10 +70,12 @@ def census_data_download(zip_compress):
     to generate national and by state Census Block Group CSVs"""
 
     logger.info("Initializing all census data")
-    # census_reset(data_path)
+
+    data_path = settings.APP_ROOT / "data"
+    census_reset(data_path)
 
     logger.info("Downloading census data")
-    # etl_runner("census")
+    etl_runner("census")
 
     if zip_compress:
         zip_census_data()
@@ -127,7 +129,7 @@ def score_full_run():
 
 @cli.command(help="Generate Geojson files with scores baked in")
 @click.option("-d", "--data-source", default="local", required=False, type=str)
-def geo_score(census_data_source: str):
+def geo_score(data_source: str):
     """CLI command to generate the score
 
     Args:
@@ -140,7 +142,7 @@ def geo_score(census_data_source: str):
         None
     """
 
-    score_geo(census_data_source=census_data_source)
+    score_geo(data_source=data_source)
     sys.exit()
 
 

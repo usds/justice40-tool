@@ -16,7 +16,7 @@ class GeoScoreETL(ExtractTransformLoad):
     A class used to generate per state and national GeoJson files with the score baked in
     """
 
-    def __init__(self, census_data_source: str = None):
+    def __init__(self, data_source: str = None):
         self.SCORE_GEOJSON_PATH = self.DATA_PATH / "score" / "geojson"
         self.SCORE_LOW_GEOJSON = self.SCORE_GEOJSON_PATH / "usa-low.json"
         self.SCORE_HIGH_GEOJSON = self.SCORE_GEOJSON_PATH / "usa-high.json"
@@ -24,7 +24,7 @@ class GeoScoreETL(ExtractTransformLoad):
         self.SCORE_CSV_PATH = self.DATA_PATH / "score" / "csv"
         self.TILE_SCORE_CSV = self.SCORE_CSV_PATH / "tiles" / "usa.csv"
 
-        self.CENSUS_DATA_SOURCE = census_data_source
+        self.DATA_SOURCE = data_source
         self.CENSUS_USA_GEOJSON = (
             self.DATA_PATH / "census" / "geojson" / "us.json"
         )
@@ -43,7 +43,7 @@ class GeoScoreETL(ExtractTransformLoad):
         # check census data
         check_census_data_source(
             census_data_path=self.DATA_PATH / "census",
-            census_data_source=self.CENSUS_DATA_SOURCE,
+            census_data_source=self.DATA_SOURCE,
         )
 
         logger.info("Reading US GeoJSON (~6 minutes)")

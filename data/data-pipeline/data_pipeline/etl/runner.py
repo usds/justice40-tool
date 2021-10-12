@@ -91,7 +91,7 @@ def score_generate() -> None:
     score_post.cleanup()
 
 
-def score_geo(census_data_source: str = "local") -> None:
+def score_geo(data_source: str = "local") -> None:
     """Generates the geojson files with score data baked in
 
     Args:
@@ -105,7 +105,7 @@ def score_geo(census_data_source: str = "local") -> None:
     """
 
     # Score Geo
-    score_geo = GeoScoreETL(census_data_source=census_data_source)
+    score_geo = GeoScoreETL(data_source=data_source)
     score_geo.extract()
     score_geo.transform()
     score_geo.load()
