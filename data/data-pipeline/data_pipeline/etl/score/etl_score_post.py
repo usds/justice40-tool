@@ -1,21 +1,9 @@
-import json
-import zipfile
 from pathlib import Path
-
 import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad
-from data_pipeline.utils import get_module_logger, get_zip_info
+from data_pipeline.utils import get_module_logger, zip_files
 
 from . import constants
-
-## zlib is not available on all systems
-try:
-    import zlib  # noqa # pylint: disable=unused-import
-
-    compression = zipfile.ZIP_DEFLATED
-except (ImportError, AttributeError):
-    compression = zipfile.ZIP_STORED
-
 
 logger = get_module_logger(__name__)
 
@@ -268,11 +256,7 @@ class PostScoreETL(ExtractTransformLoad):
 
         logger.info("Compressing files")
         files_to_compress = [csv_path, excel_path, pdf_path]
-        with zipfile.ZipFile(zip_path, "w") as zf:
-            for f in files_to_compress:
-                zf.write(f, arcname=Path(f).name, compress_type=compression)
-        zip_info = get_zip_info(zip_path)
-        logger.info(json.dumps(zip_info, indent=4, sort_keys=True, default=str))
+        zip_files(zip_path, files_to_compress)
 
     def load(self) -> None:
         self._load_score_csv(

@@ -1,13 +1,14 @@
+from typing import List
 import datetime
+import json
 import logging
 import os
 import sys
 import shutil
 import zipfile
 from pathlib import Path
-
-import requests
 import urllib3
+import requests
 
 from data_pipeline.config import settings
 
@@ -1260,6 +1261,23 @@ def get_zip_info(archive_path: Path) -> list:
         info_dict["Uncompressed"] = f"{info.file_size} bytes"
         info_list.append(info_dict)
     return info_list
+
+
+def zip_files(zip_file_path: Path, files_to_compress: List[Path]):
+    """
+    Zips a list of files in a path
+
+    Args:
+        zip_file_path (pathlib.Path): Path of the zip file where files are compressed
+
+    Returns:
+        None
+    """
+    with zipfile.ZipFile(zip_file_path, "w") as zf:
+        for f in files_to_compress:
+            zf.write(f, arcname=Path(f).name, compress_type=compression)
+    zip_info = get_zip_info(zip_file_path)
+    logger.info(json.dumps(zip_info, indent=4, sort_keys=True, default=str))
 
 
 def zip_directory(
