@@ -64,13 +64,14 @@ disable = [
   "C0116", # Disables missing function or method docstring
   "C0115", # Disables missing class docstring
   "R0915", # Disables too many statements (score generation transform)
+  "W0231", # Disables super init not called
 ]
 
 [tool.pylint.FORMAT]
 max-line-length = 150
 
 [tool.pylint.typecheck]
-generated-members = "pandas.*" # fixes E1101 for ETL.df 
+generated-members = "pandas.*" # fixes E1101 for ETL.df
 
 [tool.pylint.SIMILARITIES]
 # Configures how pylint detects repetitive code

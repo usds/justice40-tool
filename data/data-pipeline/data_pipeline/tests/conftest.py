@@ -1,4 +1,6 @@
 import os
+from pathlib import Path
+from shutil import copyfile
 
 import pytest
 
@@ -6,6 +8,22 @@ from data_pipeline.config import settings
 from data_pipeline.etl.base import ExtractTransformLoad
 
 TMP_DIR = settings.APP_ROOT / "data" / "tmp" / "tests"
+
+
+def copy_data_files(src: Path, dst: Path) -> None:
+    """Copies test data from src Path to dst Path for use in testing
+
+    Args
+        src: pathlib.Path instance. The location of the source data file.
+        dst: pathlib.Path instance. Where to copy the source data file to.
+
+    Returns
+        None. This is a void function
+    """
+    if not dst.exists():
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        copyfile(src, dst)
+        assert dst.exists()
 
 
 @pytest.fixture(scope="session")
@@ -23,8 +41,17 @@ def mock_paths(tmp_path_factory) -> tuple:
     return data_path, tmp_path
 
 
+@pytest.fixture(scope="session")
+def mock_census(mock_paths) -> Path:
+    data_path, tmp_path = mock_paths
+    census_src = settings.APP_ROOT / "tests" / "base" / "data" / "census.csv"
+    census_dst = data_path / "census" / "csv" / "us.csv"
+    copy_data_files(census_src, census_dst)
+    return census_dst
+
+
 @pytest.fixture
-def mock_etl(monkeypatch, mock_paths) -> None:
+def mock_etl(monkeypatch, mock_paths, mock_census) -> None:
     """Creates a mock version of the base ExtractTransformLoad class and resets
     global the variables for DATA_PATH and TMP_PATH to the local mock_paths
     """

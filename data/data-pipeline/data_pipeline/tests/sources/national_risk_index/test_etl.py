@@ -1,9 +1,7 @@
-from pathlib import Path
-from shutil import copyfile
-
 import pandas as pd
 
 from data_pipeline.config import settings
+from data_pipeline.tests.conftest import copy_data_files
 from data_pipeline.etl.sources.national_risk_index.etl import (
     NationalRiskIndexETL,
 )
@@ -11,22 +9,6 @@ from data_pipeline.etl.sources.national_risk_index.etl import (
 DATA_DIR = (
     settings.APP_ROOT / "tests" / "sources" / "national_risk_index" / "data"
 )
-
-
-def copy_data_files(src: Path, dst: Path) -> None:
-    """Copies test data from src Path to dst Path for use in testing
-
-    Args
-        src: pathlib.Path instance. The location of the source data file.
-        dst: pathlib.Path instance. Where to copy the source data file to.
-
-    Returns
-        None. This is a void function
-    """
-    if not dst.exists():
-        dst.parent.mkdir(parents=True, exist_ok=True)
-        copyfile(src, dst)
-        assert dst.exists()
 
 
 class TestNationalRiskIndexETL:
@@ -45,6 +27,7 @@ class TestNationalRiskIndexETL:
         data_path, tmp_path = mock_paths
         input_csv = tmp_path / "NRI_Table_CensusTracts.csv"
         output_dir = data_path / "dataset" / "national_risk_index_2020"
+        print(input_csv)
         # validation
         assert etl.DATA_PATH == data_path
         assert etl.TMP_PATH == tmp_path
@@ -66,7 +49,7 @@ class TestNationalRiskIndexETL:
         input_src = DATA_DIR / "input.csv"
         input_dst = etl.INPUT_CSV
         acs_src = DATA_DIR / "acs.csv"
-        acs_dst = DATA_DIR / etl.BLOCK_GROUP_CSV
+        acs_dst = etl.BLOCK_GROUP_CSV
         for src, dst in [(input_src, input_dst), (acs_src, acs_dst)]:
             copy_data_files(src, dst)
         # setup - read in sample output as dataframe
