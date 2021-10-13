@@ -9,6 +9,7 @@ on:
       - "client/**/*"
 env: 
   PR_NUMBER: ${{github.event.pull_request.number}}
+  WORKING_DIRECTORY: ./client
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -48,6 +49,12 @@ jobs:
         run: npm test
       - name: Check for security vulnerabilities
         run: npm audit --production
+      - name: Cypress / Gherkin integration tests 🌃
+        uses: cypress-io/github-action@v2
+        with:
+          working-directory: ${{env.WORKING_DIRECTORY}}
+          start: npm start
+          wait-on: 'http://localhost:8000'
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
