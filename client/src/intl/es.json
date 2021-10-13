@@ -15,10 +15,7 @@
     "defaultMessage": "Read more about the Justice40 Initiative in President Biden’s",
     "description": "about page sub header text"
   },
-  "about.page.title.text": {
-    "defaultMessage": "Sobre nosotras",
-    "description": "about page title text"
-  },
+  "about.page.title.text": "Sobre nosotras",
   "alert.alertBetaBody": {
     "defaultMessage": "This website may be continuously updated",
     "description": "Body for an alert inform users that datasets may change"
