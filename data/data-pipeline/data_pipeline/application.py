@@ -11,6 +11,7 @@ from data_pipeline.etl.runner import (
 )
 from data_pipeline.etl.sources.census.etl_utils import (
     reset_data_directories as census_reset,
+    zip_census_data,
 )
 from data_pipeline.tile.generate import generate_tiles
 from data_pipeline.utils import (
@@ -64,17 +65,26 @@ def data_cleanup():
 @cli.command(
     help="Census data download",
 )
-def census_data_download():
+@click.option(
+    "-zc",
+    "--zip-compress",
+    is_flag=True,
+    help="Upload to AWS S3 a zipped archive of the census data.",
+)
+def census_data_download(zip_compress):
     """CLI command to download all census shape files from the Census FTP and extract the geojson
     to generate national and by state Census Block Group CSVs"""
 
-    data_path = settings.APP_ROOT / "data"
-
     logger.info("Initializing all census data")
+
+    data_path = settings.APP_ROOT / "data"
     census_reset(data_path)
 
     logger.info("Downloading census data")
     etl_runner("census")
+
+    if zip_compress:
+        zip_census_data()
 
     logger.info("Completed downloading census data")
     sys.exit()
@@ -124,10 +134,21 @@ def score_full_run():
 
 
 @cli.command(help="Generate Geojson files with scores baked in")
-def geo_score():
-    """CLI command to generate the score"""
+@click.option("-d", "--data-source", default="local", required=False, type=str)
+def geo_score(data_source: str):
+    """CLI command to generate the score
 
-    score_geo()
+    Args:
+        data_source (str): Source for the census data (optional)
+                           Options:
+                           - local: fetch census and score data from the local data directory
+                           - aws: fetch census and score from AWS S3 J40 data repository
+
+    Returns:
+        None
+    """
+
+    score_geo(data_source=data_source)
     sys.exit()
 
 

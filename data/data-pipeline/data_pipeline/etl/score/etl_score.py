@@ -315,6 +315,7 @@ class ScoreETL(ExtractTransformLoad):
 
     def extract(self) -> None:
         logger.info("Loading data sets from disk.")
+
         # EJSCreen csv Load
         ejscreen_csv = self.DATA_PATH / "dataset" / "ejscreen_2019" / "usa.csv"
         self.ejscreen_df = pd.read_csv(

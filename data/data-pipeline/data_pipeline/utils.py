@@ -1,15 +1,25 @@
+from typing import List
 import datetime
+import json
 import logging
 import os
 import sys
 import shutil
 import zipfile
 from pathlib import Path
-
-import requests
 import urllib3
+import requests
 
 from data_pipeline.config import settings
+
+
+## zlib is not available on all systems
+try:
+    import zlib  # noqa # pylint: disable=unused-import
+
+    compression = zipfile.ZIP_DEFLATED
+except (ImportError, AttributeError):
+    compression = zipfile.ZIP_STORED
 
 
 def get_module_logger(module_name: str) -> logging.Logger:
@@ -217,6 +227,90 @@ def check_first_run() -> bool:
         return True
 
     return False
+
+
+def get_zip_info(archive_path: Path) -> list:
+    """
+    Returns information about a provided archive
+
+    Args:
+        archive_path (pathlib.Path): Path of the archive to be inspected
+
+    Returns:
+        a list of information about every file in the zipfile
+
+    """
+    zf = zipfile.ZipFile(archive_path)
+    info_list = []
+    for info in zf.infolist():
+        info_dict = {}
+        info_dict["Filename"] = info.filename
+        info_dict["Comment"] = info.comment.decode("utf8")
+        info_dict["Modified"] = datetime.datetime(*info.date_time).isoformat()
+        info_dict["System"] = f"{info.create_system} (0 = Windows, 3 = Unix)"
+        info_dict["ZIP version"] = info.create_version
+        info_dict["Compressed"] = f"{info.compress_size} bytes"
+        info_dict["Uncompressed"] = f"{info.file_size} bytes"
+        info_list.append(info_dict)
+    return info_list
+
+
+def zip_files(zip_file_path: Path, files_to_compress: List[Path]):
+    """
+    Zips a list of files in a path
+
+    Args:
+        zip_file_path (pathlib.Path): Path of the zip file where files are compressed
+
+    Returns:
+        None
+    """
+    with zipfile.ZipFile(zip_file_path, "w") as zf:
+        for f in files_to_compress:
+            zf.write(f, arcname=Path(f).name, compress_type=compression)
+    zip_info = get_zip_info(zip_file_path)
+    logger.info(json.dumps(zip_info, indent=4, sort_keys=True, default=str))
+
+
+def zip_directory(
+    origin_zip_directory: Path, destination_zip_directory: Path
+) -> None:
+    """
+    Zips a whole directory
+
+    Args:
+        path (pathlib.Path): Path of the directory to be archived
+    Returns:
+        None
+
+    """
+
+    def zipdir(origin_directory: Path, ziph: zipfile.ZipFile):
+        for root, dirs, files in os.walk(origin_directory):
+            for file in files:
+                logger.info(f"Compressing file: {file}")
+                ziph.write(
+                    os.path.join(root, file),
+                    os.path.relpath(
+                        os.path.join(root, file),
+                        os.path.join(origin_directory, ".."),
+                    ),
+                    compress_type=compression,
+                )
+
+    logger.info(f"Compressing {Path(origin_zip_directory).name} directory")
+    zip_file_name = f"{Path(origin_zip_directory).name}.zip"
+
+    # start archiving
+    zipf = zipfile.ZipFile(
+        destination_zip_directory / zip_file_name, "w", zipfile.ZIP_DEFLATED
+    )
+    zipdir(f"{origin_zip_directory}/", zipf)
+    zipf.close()
+
+    logger.info(
+        f"Completed compression of {Path(origin_zip_directory).name} directory"
+    )
 
 
 def get_excel_column_name(index: int) -> str:
@@ -1232,29 +1326,3 @@ def get_excel_column_name(index: int) -> str:
     ]
 
     return excel_column_names[index]
-
-
-def get_zip_info(archive_path: Path) -> list:
-    """
-    Returns information about a provided archive
-
-    Args:
-        archive_path (pathlib.Path): Path of the archive to be inspected
-
-    Returns:
-        a list of information about every file in the zipfile
-
-    """
-    zf = zipfile.ZipFile(archive_path)
-    info_list = []
-    for info in zf.infolist():
-        info_dict = {}
-        info_dict["Filename"] = info.filename
-        info_dict["Comment"] = info.comment.decode("utf8")
-        info_dict["Modified"] = datetime.datetime(*info.date_time).isoformat()
-        info_dict["System"] = f"{info.create_system} (0 = Windows, 3 = Unix)"
-        info_dict["ZIP version"] = info.create_version
-        info_dict["Compressed"] = f"{info.compress_size} bytes"
-        info_dict["Uncompressed"] = f"{info.file_size} bytes"
-        info_list.append(info_dict)
-    return info_list

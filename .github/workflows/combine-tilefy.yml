@@ -1,5 +1,5 @@
-name: Generate Score
-on: 
+name: Combine and Tilefy
+on:
   workflow_dispatch:
     inputs:
       confirm-action:
@@ -31,9 +31,16 @@ jobs:
         run: poetry --version
       - name: Install dependencies
         run: poetry install
+      - name: Install GDAL/ogr2ogr
+        run: |
+          sudo apt-add-repository ppa:ubuntugis/ubuntugis-unstable
+          sudo apt-get update
+          sudo apt-get install gdal-bin libgdal-dev
+          pip install GDAL==3.2.3
       - name: Run Scripts
         run: |
-          poetry run python3 data_pipeline/application.py score_full_run
+          poetry run download_census
+          poetry run etl_and_score
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -42,13 +49,14 @@ jobs:
           aws-region: us-east-1
       - name: Deploy to Geoplatform AWS
         run: |
+          aws s3 sync ./data_pipeline/data/dataset/ s3://justice40-data/data-pipeline/data/dataset --acl public-read --delete
           aws s3 sync ./data_pipeline/data/score/csv/ s3://justice40-data/data-pipeline/data/score/csv --acl public-read --delete
           aws s3 sync ./data_pipeline/data/score/downloadable/ s3://justice40-data/data-pipeline/data/score/downloadable --acl public-read --delete
       - name: Update PR with Comment about deployment
         uses: mshick/add-pr-comment@v1
         with:
           message: |
-            Data Synced! Find it here: s3://justice40-data/data-pipeline/data/score
+            Data Synced! Find it here: s3://justice40-data/data-pipeline/data/
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
+          repo-token-user-login: "github-actions[bot]" # The user.login for temporary GitHub tokens
           allow-repeats: false # This is the default

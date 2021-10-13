@@ -1,9 +1,11 @@
 import math
-
 import pandas as pd
 import geopandas as gpd
 
 from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.sources.census.etl_utils import (
+    check_census_data_source,
+)
 from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
@@ -14,7 +16,7 @@ class GeoScoreETL(ExtractTransformLoad):
     A class used to generate per state and national GeoJson files with the score baked in
     """
 
-    def __init__(self):
+    def __init__(self, data_source: str = None):
         self.SCORE_GEOJSON_PATH = self.DATA_PATH / "score" / "geojson"
         self.SCORE_LOW_GEOJSON = self.SCORE_GEOJSON_PATH / "usa-low.json"
         self.SCORE_HIGH_GEOJSON = self.SCORE_GEOJSON_PATH / "usa-high.json"
@@ -22,6 +24,7 @@ class GeoScoreETL(ExtractTransformLoad):
         self.SCORE_CSV_PATH = self.DATA_PATH / "score" / "csv"
         self.TILE_SCORE_CSV = self.SCORE_CSV_PATH / "tiles" / "usa.csv"
 
+        self.DATA_SOURCE = data_source
         self.CENSUS_USA_GEOJSON = (
             self.DATA_PATH / "census" / "geojson" / "us.json"
         )
@@ -37,6 +40,12 @@ class GeoScoreETL(ExtractTransformLoad):
         self.geojson_score_usa_low: gpd.GeoDataFrame
 
     def extract(self) -> None:
+        # check census data
+        check_census_data_source(
+            census_data_path=self.DATA_PATH / "census",
+            census_data_source=self.DATA_SOURCE,
+        )
+
         logger.info("Reading US GeoJSON (~6 minutes)")
         self.geojson_usa_df = gpd.read_file(
             self.CENSUS_USA_GEOJSON,
