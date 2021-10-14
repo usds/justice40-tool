@@ -33,7 +33,7 @@ jobs:
         run: poetry install
       - name: Run Scripts
         run: |
-          poetry run python3 data_pipeline/application.py score_full_run
+          poetry run python3 data_pipeline/application.py score-full-run
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
