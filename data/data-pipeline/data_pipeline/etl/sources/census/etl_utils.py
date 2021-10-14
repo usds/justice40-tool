@@ -113,7 +113,7 @@ def check_census_data_source(
 
 
 def zip_census_data():
-    logger.info("Compressing and uploading census files to AWS S3")
+    logger.info("Compressing census files to data/tmp folder")
 
     CENSUS_DATA_PATH = settings.APP_ROOT / "data" / "census"
     TMP_PATH = settings.APP_ROOT / "data" / "tmp"
