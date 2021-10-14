@@ -78,10 +78,10 @@ def census_data_download(zip_compress):
     logger.info("Initializing all census data")
 
     data_path = settings.APP_ROOT / "data"
-    census_reset(data_path)
+    # census_reset(data_path)
 
     logger.info("Downloading census data")
-    etl_runner("census")
+    # etl_runner("census")
 
     if zip_compress:
         zip_census_data()
