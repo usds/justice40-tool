@@ -33,30 +33,39 @@ export const DOWNLOAD_ZIP_URL = [
   process.env.GATSBY_SCORE_DOWNLOAD_FILE_PATH,
 ].join('/');
 
-export const DOWNLOAD_PACKAGE = defineMessages({
-  TITLE: {
-    id: 'downloadPacket.header.text',
-    defaultMessage: `Draft communities list v${VERSION_NUMBER} (${DOWNLOAD_FILE_SIZE})`,
-    description: 'download packet header text',
-  },
-  DESCRIPTION: {
-    id: 'downloadPacket.info.text',
-    defaultMessage: `The package includes draft v${VERSION_NUMBER} `+
-    ` of the list of communities of focus (.csv and .xlsx) ` +
-    ` and information about how to use the list (.pdf).`,
-    description: 'download packet info text',
-  },
-  LAST_UPDATED: {
-    id: 'downloadPacket.info.last.updated',
-    defaultMessage: `Last updated: ${DOWNLOAD_LAST_UPDATED} `,
-    description: 'download packet info last updated',
-  },
-  BUTTON_TEXT: {
-    id: 'downloadPacket.button.text',
-    defaultMessage: 'Download package',
-    description: 'download packet button text',
-  },
-});
+export const DOWNLOAD_PACKAGE = {
+  TITLE: <FormattedMessage
+    id={'downloadPacket.header.text'}
+    defaultMessage={ `Draft communities list v{versionNumber} ({downloadFileSize})`}
+    description={'download packet header text'}
+    values= {{
+      versionNumber: VERSION_NUMBER,
+      downloadFileSize: DOWNLOAD_FILE_SIZE,
+    }}
+  />,
+  DESCRIPTION: <FormattedMessage
+    id={ 'downloadPacket.info.text'}
+    // eslint-disable-next-line max-len
+    defaultMessage= {`The package includes draft v{versionNumber} of the list of communities of focus (.csv and .xlsx) and information about how to use the list (.pdf).`}
+    description= {'download packet info text'}
+    values= {{
+      versionNumber: VERSION_NUMBER,
+    }}
+  />,
+  LAST_UPDATED: <FormattedMessage
+    id={ 'downloadPacket.info.last.updated'}
+    defaultMessage= {`Last updated: {downloadLastUpdated} `}
+    description= {'download packet info last updated'}
+    values= {{
+      downloadLastUpdated: DOWNLOAD_LAST_UPDATED,
+    }}
+  />,
+  BUTTON_TEXT: <FormattedMessage
+    id={ 'downloadPacket.button.text'}
+    defaultMessage= {'Download package'}
+    description= {'download packet button text'}
+  />,
+};
 
 
 // Dataset section

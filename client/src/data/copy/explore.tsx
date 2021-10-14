@@ -19,6 +19,21 @@ export const PAGE_INTRO = defineMessages({
   },
 });
 
+export const PAGE_DESCRIPTION = <FormattedMessage
+  id={'exploreTool.page.description'}
+  defaultMessage={
+    `Zoom into the map to see communities of focus that can help Federal agencies
+  identify disadvantaged communities and to provide socioeconomic,
+  environmental, and climate information and data. Learn more about the methodology
+  and datasets that were used to determine these communities of focus on the
+    {methodologyLink}
+  page.`}
+  description={'page description'}
+  values={{
+    methodologyLink: <Link to={'/methodology'}>Data & methodology</Link>,
+  }}
+/>;
+
 export const LEGEND = defineMessages({
   PRIORITY_LABEL: {
     id: 'legend.info.priority.label',
@@ -40,6 +55,46 @@ export const MAP = defineMessages({
     id: 'map.zoom.warning',
     defaultMessage: 'Zoom in to the state or regional level to see prioritized communities on the map.',
     description: 'zoom warning on map',
+  },
+  LOWER48_SHORT: {
+    id: 'map.territoryFocus.lower48.short',
+    defaultMessage: '48',
+    description: 'The abbreviated name indicating the bounds of the Lower 48 states',
+  },
+  LOWER48_LONG: {
+    id: 'map.territoryFocus.lower48.long',
+    defaultMessage: 'Lower 48',
+    description: 'The longer name indicating the bounds of the Lower 48 states',
+  },
+  ALASKA_SHORT: {
+    id: 'map.territoryFocus.alaska.short',
+    defaultMessage: 'AK',
+    description: 'The abbreviated indicating the bounds of Alaska',
+  },
+  ALASKA_LONG: {
+    id: 'map.territoryFocus.alaska.long',
+    defaultMessage: 'Alaska',
+    description: 'The full name indicating the bounds of Alaska',
+  },
+  HAWAII_SHORT: {
+    id: 'map.territoryFocus.hawaii.short',
+    defaultMessage: 'HI',
+    description: 'The abbreviated name indicating the bounds of Hawaii',
+  },
+  HAWAII_LONG: {
+    id: 'map.territoryFocus.hawaii.long',
+    defaultMessage: 'Hawaii',
+    description: 'The longer name indicating the bounds of Hawaii',
+  },
+  PR_SHORT: {
+    id: 'map.territoryFocus.puerto_rico.short',
+    defaultMessage: 'PR',
+    description: 'The abbreviated name indicating the bounds of Puerto Rico',
+  },
+  PR_LONG: {
+    id: 'map.territoryFocus.puerto_rico.long',
+    defaultMessage: 'Puerto Rico',
+    description: 'The full name indicating the bounds of Puerto Rico',
   },
 });
 
@@ -310,7 +365,10 @@ export const DOWNLOAD_DRAFT = {
   PARAGRAPH_2: <FormattedMessage
     id={'download.draft.ptag.2'}
     description={'Download the draft list of communities of focus and datasets used.'}
-    defaultMessage={`ZIP file will contain one .xlsx, one .csv, and one .pdf (${METHODOLOGY_COPY.DOWNLOAD_FILE_SIZE}).`}
+    defaultMessage={`ZIP file will contain one .xlsx, one .csv, and one .pdf ({downloadFileSize}).`}
+    values={{
+      downloadFileSize: METHODOLOGY_COPY.DOWNLOAD_FILE_SIZE,
+    }}
   />,
 };
 
