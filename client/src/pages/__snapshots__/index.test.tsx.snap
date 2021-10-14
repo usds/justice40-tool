@@ -214,7 +214,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             <a
               class="j40-header"
-              data-cy="nav-link-explore"
+              data-cy="nav-link-explore-the-tool"
               href="/en/cejst"
             >
               Explore the tool
@@ -313,6 +313,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             </div>
             <div
               class="tablet:grid-col-9"
+              data-cy="the-screening-tool-block"
               data-testid="grid"
             >
               <div
@@ -357,6 +358,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             </div>
             <div
               class="tablet:grid-col-9"
+              data-cy="the-justice40-initiative-block"
               data-testid="grid"
             >
               <div
@@ -419,6 +421,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </div>
               <div
                 class="tablet:grid-col-9"
+                data-cy="federal-program-managers-block"
                 data-testid="grid"
               >
                 <div
@@ -470,6 +473,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </div>
               <div
                 class="tablet:grid-col-9"
+                data-cy="community-members-block"
                 data-testid="grid"
               >
                 <div
@@ -535,6 +539,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             </div>
             <div
               class="tablet:grid-col-9"
+              data-cy="send-feedback-block"
               data-testid="grid"
             >
               <div
@@ -589,6 +594,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             </div>
             <div
               class="tablet:grid-col-9"
+              data-cy="join-the-open-source-community-block"
               data-testid="grid"
             >
               <div
@@ -631,6 +637,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
   >
     <div
       class="usa-footer__primary-section pb2"
+      data-cy="footer-primary-block"
     >
       <div
         class="grid-container-desktop-lg"
@@ -703,6 +710,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 >
                   <a
                     class="footer-link-first-child"
+                    data-cy="whitehouse-gov"
                     href="https://www.whitehouse.gov/"
                     rel="noreferrer"
                     target="_blank"
@@ -714,6 +722,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="usa-footer__secondary-link"
                 >
                   <a
+                    data-cy="freedom-of-information-act-(foia)"
                     href="https://www.whitehouse.gov/ceq/foia"
                     rel="noreferrer"
                     target="_blank"
@@ -725,6 +734,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="usa-footer__secondary-link"
                 >
                   <a
+                    data-cy="privacy-policy"
                     href="https://www.whitehouse.gov/privacy/"
                     rel="noreferrer"
                     target="_blank"
@@ -752,6 +762,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 >
                   <a
                     class="footer-link-first-child"
+                    data-cy="find-a-contact-at-usa-gov"
                     href="https://www.usa.gov/"
                   >
                     Find a contact at USA.gov

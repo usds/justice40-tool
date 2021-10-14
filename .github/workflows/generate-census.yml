@@ -48,7 +48,7 @@ jobs:
           aws-region: us-east-1
       - name: Upload Census Zip to Geoplatform AWS
         run: |
-          aws s3 sync ./data_pipeline/data/tmp/census.zip s3://justice40-data/data-sources/census.zip --acl public-read --delete
+          aws s3 cp ./data_pipeline/data/tmp/census.zip s3://justice40-data/data-sources/census.zip --acl public-read
       - name: Update PR with Comment about deployment
         uses: mshick/add-pr-comment@v1
         with:

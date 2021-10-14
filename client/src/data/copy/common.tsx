@@ -79,6 +79,11 @@ export const FOOTER = defineMessages({
     defaultMessage: 'More information',
     description: 'Footer column header',
   },
+  WHITEHOUSE: {
+    id: 'footer.whitehouselink',
+    defaultMessage: 'Whitehouse.gov',
+    description: 'Footer Whitehouse.gov link text',
+  },
   FOIA: {
     id: 'footer.foialink',
     defaultMessage: 'Freedom of Information Act (FOIA)',

@@ -42,7 +42,7 @@ const J40Header = () => {
           key={'cejst'}
           activeClassName="usa-current"
           className={'j40-header'}
-          data-cy={'nav-link-explore'}>
+          data-cy={'nav-link-explore-the-tool'}>
           {intl.formatMessage(COMMON_COPY.HEADER.EXPLORE)}
         </Link>,
       ],
