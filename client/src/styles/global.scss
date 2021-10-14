@@ -35,9 +35,8 @@ There are 3 things that should be included in this file:
 
 /***************** GLOBAL STYLES **************************************************************/
 
-$primary-color: #112f4e;
-$j40-blue-background-color: #EFF6FB;
-$sidePanelBorderColor: #f2f2f2;
+$primary-color: #112f4e;  // Used for header font color - selection color is #005EA2
+$j40-blue-background-color: #e7f2f5;  // Hex value of 'blue-cool-5'
 
 // The j40-element mixin is used to create any font element. E.g. <h1>, <p> tags, etc.
 // Arguments to the mixins must be tokens from USWDS
@@ -113,7 +112,10 @@ components include:
 .j40-header,
 .j40-primary-nav,
 .j40-header > li > a {
-  color: $primary-color !important;
+
+  // Todo color: remove this global
+  // May be able to place importance like this: u-bg('red-warm-50v', !important)
+  color: $primary-color !important; 
   z-index: 5;
 
   .usa-nav-container {
@@ -122,7 +124,7 @@ components include:
 
   span {
     // make sure the open close chevron is colored correctly
-    color: $primary-color;
+    color: $primary-color; // Todo color: remove this global
   }
 
   // this is the title
@@ -195,10 +197,12 @@ components include:
 
 /* this is used by J40MainGridContainer to show a blue background */
 .j40-main-grid-blue-bk {
-  background-color: $j40-blue-background-color;
-
+  @include u-bg('blue-cool-5');  
+  
   // This style is to remove the margin collapse occuring
-  border-top: 1px solid $j40-blue-background-color;
+  @include u-border-top(1px);
+  @include u-border-top('solid');
+  @include u-border-top('blue-cool-5');
 }
 
 #main-content {
@@ -218,21 +222,16 @@ components include:
     @include u-padding-bottom(2);
   }
 
-  .j40-footer-logo {
-    font-weight: bold;
-  }
-
   .j40-footer-address {
     .usa-footer__contact-info {
-      font-weight: normal;
-      text-align: left;
-      display: inline-block;
-      line-height: 1.5;
+      @include typeset('sans', 4, 5); 
+      @include u-text('normal');  
+      @include u-display('inline-block');
     }
   }
-
+  
   .footer-link-first-child{
-    display: inline-block;
+    @include u-display('inline-block');
     @include u-margin-top(1.5)
   }
 }
@@ -406,8 +405,8 @@ p.secondary.j40-indicator {
 *************************************** 
 */ 
 
-.usa-process-list__heading{
-  border-left-color: $j40-blue-background-color;
+.usa-process-list__item{
+  @include u-border-left('base-lightest');
 }
 
 
@@ -458,37 +457,4 @@ p.secondary.j40-indicator {
       @include u-margin-top(2);
     }
   }
-}
-
-
-/* 
-******************************
-*      ACCORDION STYLES
-****************************** 
-*/
-
-.usa-accordion__heading button.usa-accordion__button {
-  @include j40-element('3xs', 1, 'normal', 0);
-  border-bottom: 1px solid $sidePanelBorderColor;
-} 
-.usa-accordion__heading:first-child button.usa-accordion__button {
-  @include j40-element('3xs', 1, 'normal', 0);
-  background-color: white;
-} 
-.usa-accordion__heading button.usa-accordion__button {
-  @include j40-element('3xs', 1, 'normal', 0);
-  background-color: #F3F3F3;
-}
-
-.usa-accordion__heading:not(:first-child){
-  @include u-margin-top(0);
-}
-
-#prioritization-indicators, #additional-indicators {
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-#additional-indicators {
-  background-color:#F3F3F3;
 }

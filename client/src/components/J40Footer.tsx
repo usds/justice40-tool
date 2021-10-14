@@ -97,7 +97,6 @@ const J40Footer = () => {
           <Logo
             size="medium"
             key={'logoimg'}
-            className={'j40-footer-logo'}
             image={
               <img
                 className={'usa-footer__logo-img'}
