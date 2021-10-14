@@ -39,7 +39,7 @@ jobs:
           pip install GDAL==3.2.3
       - name: Run Census Script
         run: |
-          poetry run python3 data_pipeline/application.py census-data-download -zc
+          # poetry run python3 data_pipeline/application.py census-data-download -zc
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -48,6 +48,8 @@ jobs:
           aws-region: us-east-1
       - name: Upload Census Zip to Geoplatform AWS
         run: |
+          ls ./data_pipeline/data
+          ls ./data_pipeline/data/tmp
           aws s3 sync ./data_pipeline/data/tmp/census.zip s3://justice40-data/data-sources/census.zip --acl public-read --delete
       - name: Update PR with Comment about deployment
         uses: mshick/add-pr-comment@v1
