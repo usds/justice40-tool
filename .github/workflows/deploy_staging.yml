@@ -70,8 +70,8 @@ jobs:
           # See more: https://github.com/actions/upload-artifact/issues/87
           path: ./client/public
   
-  # This job will run the end-to-end cypress/gherkin tests in parallel
-  e2e-tests:
+  # This job will run the end-to-end cypress/gherkin tests in parallel on chrome
+  ui-chrome-tests:
     runs-on: ubuntu-latest
     container: cypress/browsers:node12.18.3-chrome87-ff82
     needs: build
@@ -90,14 +90,20 @@ jobs:
           name: J40Static
           path: ./public
 
-      - name: Cypress / Gherkin integration tests 🌃
+      - name: Cypress UI tests - Chrome 🌃
         uses: cypress-io/github-action@v2
         with:
           working-directory: ${{env.WORKING_DIRECTORY}}
+          install: false
           start: npm start
           wait-on: 'http://localhost:8000'
+          wait-on-timeout: 120
+          browser: chrome
+          record: true
+          parallel: true
+          group: 'UI - Chrome'
         env:
-          CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS.PROJECT_ID}}  
+          CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID}}  
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
@@ -149,7 +155,7 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: "github-actions[bot]" # The user.login for temporary GitHub tokens
           allow-repeats: false # This is the default
-          
+
       - name: Printing deployment URLs
         run: |
           echo "Github pages: https://usds.github.io/justice40-tool/$DESTINATION_FOLDER/en"
