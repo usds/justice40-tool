@@ -94,7 +94,6 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           working-directory: ${{env.WORKING_DIRECTORY}}
-          install: false
           start: npm start
           wait-on: 'http://localhost:8000'
           browser: chrome
