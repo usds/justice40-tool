@@ -97,7 +97,6 @@ jobs:
           install: false
           start: npm start
           wait-on: 'http://localhost:8000'
-          wait-on-timeout: 120
           browser: chrome
           record: true
           parallel: true
