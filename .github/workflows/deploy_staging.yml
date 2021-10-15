@@ -73,7 +73,7 @@ jobs:
   # This job will run the end-to-end cypress/gherkin tests in parallel on chrome
   ui-chrome-tests:
     runs-on: ubuntu-latest
-    container: cypress/browsers:node12.18.3-chrome87-ff82
+    container: cypress/browsers:node14.17.0-chrome88-ff89
     needs: build
     strategy:
       fail-fast: false
