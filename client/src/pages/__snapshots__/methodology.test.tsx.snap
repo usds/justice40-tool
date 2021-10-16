@@ -139,6 +139,32 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       </div>
     </section>
     <div
+      class="j40-beta-banner-container"
+    >
+      <div
+        class="j40-beta-banner"
+      >
+        <div
+          class="j40-beta-pill"
+        />
+        <div
+          class="j40-beta-text"
+        >
+          <span
+            class="j40-beta-heading"
+          >
+            This is a Beta site. 
+          </span>
+          <span
+            class="j40-beta-info"
+          >
+            It is an early, in-progress version of the tool with limited data 
+    sets that will be continuously updated.
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
       class="usa-nav-container"
     >
       <div
@@ -167,8 +193,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               Screening Tool
             </span>
             <span
-              class="usa-tag j40"
-              data-testid="tag"
+              class="j40"
             >
               Beta
             </span>
@@ -249,37 +274,6 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
   <main
     id="main-content"
   >
-    <div
-      class="grid-container-desktop-lg"
-      data-testid="gridContainer"
-    >
-      <div>
-        <div
-          class="usa-alert usa-alert--info j40-sitealert"
-          data-testid="alert"
-        >
-          <div
-            class="usa-alert__body"
-          >
-            <p
-              class="usa-alert__text"
-            >
-              <span
-                class="j40-sitealert-title"
-              >
-                Public beta
-              </span>
-              <span
-                class="j40-sitealert-body"
-              >
-                 — This website may be continuously updated
-              </span>
-              <br />
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
     <div
       class="grid-container-desktop-lg"
       data-testid="gridContainer"
@@ -366,32 +360,6 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             class="grid-col-12"
             data-testid="grid"
           >
-            <div>
-              <div
-                class="usa-alert usa-alert--warning j40-sitealert"
-                data-testid="alert"
-              >
-                <div
-                  class="usa-alert__body"
-                >
-                  <p
-                    class="usa-alert__text"
-                  >
-                    <span
-                      class="j40-sitealert-title"
-                    >
-                      Limited data sources
-                    </span>
-                    <span
-                      class="j40-sitealert-body"
-                    >
-                       — Datasets may be added, updated, or removed.
-                    </span>
-                    <br />
-                  </p>
-                </div>
-              </div>
-            </div>
             <h2>
               Datasets used in methodology
             </h2>

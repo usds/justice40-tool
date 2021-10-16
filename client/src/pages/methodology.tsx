@@ -2,7 +2,6 @@ import * as React from 'react';
 import {Grid} from '@trussworks/react-uswds';
 import {useIntl} from 'gatsby-plugin-intl';
 
-import AlertWrapper from '../components/AlertWrapper';
 import DatasetContainer from '../components/DatasetContainer';
 import DownloadPacket from '../components/DownloadPacket';
 import J40MainGridContainer from '../components/J40MainGridContainer';
@@ -21,10 +20,6 @@ const IndexPage = ({location}: MethodPageProps) => {
 
   return (
     <Layout location={location} title={intl.formatMessage(METHODOLOGY_COPY.PAGE.TILE)}>
-
-      <J40MainGridContainer>
-        <AlertWrapper showBetaAlert={true} showLimitedDataAlert={false}/>
-      </J40MainGridContainer>
 
       <J40MainGridContainer>
         <h1>{intl.formatMessage(METHODOLOGY_COPY.PAGE.HEADING)}</h1>

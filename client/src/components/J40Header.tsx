@@ -7,9 +7,10 @@ import {
   GovBanner,
   Tag,
 } from '@trussworks/react-uswds';
+import BetaBanner from './BetaBanner';
 
 // @ts-ignore
-import siteLogo from '../../src/images/icon.png';
+import siteLogo from '../../src/images/j40-logo-v2.png';
 import * as COMMON_COPY from '../data/copy/common';
 
 const J40Header = () => {
@@ -78,6 +79,7 @@ const J40Header = () => {
         basic={true} role={'banner'}
         className={'usa-header j40-header'}>
         <GovBanner/>
+        <BetaBanner />
         <div className="usa-nav-container">
           <div className="usa-navbar">
             {/* Removing h1 from logo ease transition to USWDS tokens in headers */}

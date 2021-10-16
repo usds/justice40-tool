@@ -3,7 +3,6 @@ import {useIntl} from 'gatsby-plugin-intl';
 
 import AboutCard from '../components/AboutCard/AboutCard';
 import AboutCardsContainer from '../components/AboutCard/AboutCardsContainer';
-import AlertWrapper from '../components/AlertWrapper';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 
@@ -36,9 +35,6 @@ const IndexPage = ({location}: IndexPageProps) => {
 
   return (
     <Layout location={location} title={intl.formatMessage(ABOUT_COPY.PAGE.TILE)}>
-      <J40MainGridContainer>
-        <AlertWrapper showBetaAlert={true} showLimitedDataAlert={false}/>
-      </J40MainGridContainer>
 
       <J40MainGridContainer>
         <h1 data-cy={'about-page-heading'}>{intl.formatMessage(ABOUT_COPY.PAGE.HEADING)}</h1>

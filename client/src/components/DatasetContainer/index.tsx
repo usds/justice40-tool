@@ -2,7 +2,6 @@ import React from 'react';
 import {useIntl} from 'gatsby-plugin-intl';
 import {Grid} from '@trussworks/react-uswds';
 
-import AlertWrapper from '../AlertWrapper';
 import DatasetCard from '../DatasetCard';
 import J40MainGridContainer from '../J40MainGridContainer';
 import {hyphenizeString} from '../../../cypress/integration/common/helpers';
@@ -22,7 +21,6 @@ const DatasetContainer = () => {
 
           <Grid row>
             <Grid col={12}>
-              <AlertWrapper showBetaAlert={false} showLimitedDataAlert={true}/>
               <h2>{intl.formatMessage(METHODOLOGY_COPY.DATASETS.HEADING)}</h2>
             </Grid>
           </Grid>

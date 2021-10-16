@@ -24,7 +24,6 @@ There are 3 things that should be included in this file:
     -- Main content styles
     -- Footer styles
   - Component styles
-    -- Alert styles
     -- Map styles
     -- Timeline/process list styles
     -- About styles
@@ -102,6 +101,7 @@ This section will outline styles for components that are on each page. These
 components include:
 
 - header styles
+-- beta banner
 - main content styles
 - footer styles
 
@@ -189,6 +189,45 @@ components include:
     margin-left: 1rem;
 }
 
+// components/BetaBanner 
+.j40-beta-banner-container{
+  @include u-bg('gray-cool-2');
+
+  .j40-beta-banner {
+    @include u-display('flex');
+    @include u-height(3);
+    max-width: 60.25rem; // Needs this exact value to align with GovBanner
+    @include u-font('body', '3xs');
+    @include u-margin-left(auto);
+    @include u-margin-right(auto);
+    @include u-padding-top('05');
+    @include u-padding-bottom(3);
+    
+    @include at-media-max('desktop'){
+      @include u-margin-left(2);
+      @include u-margin-right(0)
+    }
+
+    @include at-media-max('tablet-lg'){
+      @include u-height(6);
+    }
+
+    .j40-beta-pill {
+      @include u-bg('yellow-20v');
+      @include u-height(1);
+      @include u-width(2);
+      @include u-radius('2px');
+      @include u-margin-right(1);
+      margin-top: .4rem; //Needs this exact value for vertical alignment
+    }
+
+    .j40-beta-heading{
+      @include u-text('bold'); 
+    }
+
+  }
+}
+
 /* 
 ******************************
 *      MAIN CONTENT STYLES
@@ -242,49 +281,9 @@ components include:
 /***************** COMPONENT STYLES **************************************************************
 This section will outline styles that are component specific
 
-- alert
 - map
 - timeline
 - about
-- accordion
-
-/* 
-******************************
-*      ALERT STYLES
-****************************** 
-*/
-
-.j40-sitealert {
-  p {
-    margin: 0;
-  }
-
-  min-height: 2.5em;
-  margin: 0;
-
-  .j40-sitealert-title {
-    font-weight: bold;
-  }
-
-  .usa-alert {
-    margin: 0;
-    padding-bottom: 0;
-    padding-top: 0;
-  }
-
-  .usa-alert__body {
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-bottom: 0;
-  }
-
-  .usa-alert__text {
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-bottom: 0;
-  }
-}
-
 
 /* 
 ******************************

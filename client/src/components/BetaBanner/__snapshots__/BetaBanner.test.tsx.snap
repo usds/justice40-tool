@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of the BetaBanner checks if component renders 1`] = `
+<DocumentFragment>
+  <div
+    class="j40-beta-banner-container"
+  >
+    <div
+      class="j40-beta-banner"
+    >
+      <div
+        class="j40-beta-pill"
+      />
+      <div
+        class="j40-beta-text"
+      >
+        <span
+          class="j40-beta-heading"
+        >
+          This is a Beta site. 
+        </span>
+        <span
+          class="j40-beta-info"
+        >
+          It is an early, in-progress version of the tool with limited data 
+    sets that will be continuously updated.
+        </span>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

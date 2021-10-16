@@ -1,6 +1,126 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering of the AboutCard checks if component renders 1`] = `
+exports[`rendering of the AboutCard checks if large cards component renders 1`] = `
+<DocumentFragment>
+  <div
+    class="grid-gap-lg tablet:grid-col"
+    data-testid="grid"
+  >
+    <div
+      class="grid-row j40-aboutcard-lg-card"
+      data-testid="grid"
+    >
+      <div
+        class="tablet:grid-col-3 j40-aboutpage-image-container"
+        data-testid="grid"
+      >
+        <img
+          alt="Test Header"
+          class="j40-aboutcard-image"
+          src="about:blank"
+        />
+      </div>
+      <div
+        class="tablet:grid-col-9"
+        data-cy="test-header-block"
+        data-testid="grid"
+      >
+        <div
+          class="grid-row"
+          data-testid="grid"
+        >
+          <h2>
+            Test Header
+          </h2>
+          Content body of the action card.
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`rendering of the AboutCard checks if large cards component renders as internal link 1`] = `
+<DocumentFragment>
+  <div
+    class="grid-gap-lg tablet:grid-col"
+    data-testid="grid"
+  >
+    <div
+      class="grid-row j40-aboutcard-lg-card"
+      data-testid="grid"
+    >
+      <div
+        class="tablet:grid-col-3 j40-aboutpage-image-container"
+        data-testid="grid"
+      >
+        <img
+          alt="Test Header"
+          class="j40-aboutcard-image"
+          src="about:blank"
+        />
+      </div>
+      <div
+        class="tablet:grid-col-9"
+        data-cy="test-header-block"
+        data-testid="grid"
+      >
+        <div
+          class="grid-row"
+          data-testid="grid"
+        >
+          <h2>
+            Test Header
+          </h2>
+          Content body of the action card.
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`rendering of the AboutCard checks if large cards component renders in new tab 1`] = `
+<DocumentFragment>
+  <div
+    class="grid-gap-lg tablet:grid-col"
+    data-testid="grid"
+  >
+    <div
+      class="grid-row j40-aboutcard-lg-card"
+      data-testid="grid"
+    >
+      <div
+        class="tablet:grid-col-3 j40-aboutpage-image-container"
+        data-testid="grid"
+      >
+        <img
+          alt="Test Header"
+          class="j40-aboutcard-image"
+          src="about:blank"
+        />
+      </div>
+      <div
+        class="tablet:grid-col-9"
+        data-cy="test-header-block"
+        data-testid="grid"
+      >
+        <div
+          class="grid-row"
+          data-testid="grid"
+        >
+          <h2>
+            Test Header
+          </h2>
+          Content body of the action card.
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`rendering of the AboutCard checks if small cards component renders 1`] = `
 <DocumentFragment>
   <div
     class="grid-gap-lg tablet:grid-col"
@@ -38,7 +158,10 @@ exports[`rendering of the AboutCard checks if component renders 1`] = `
           >
             <a
               class="j40-aboutcard-link"
-            />
+              href="#"
+            >
+              Test Action
+            </a>
           </div>
         </div>
       </div>
