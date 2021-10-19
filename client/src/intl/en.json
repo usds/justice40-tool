@@ -19,22 +19,6 @@
     "defaultMessage": "About",
     "description": "about page title text"
   },
-  "alert.alertBetaBody": {
-    "defaultMessage": "This website may be continuously updated",
-    "description": "Body for an alert inform users that datasets may change"
-  },
-  "alert.alertBetaTitle": {
-    "defaultMessage": "Public beta",
-    "description": "Title for an alert inform users that datasets may change"
-  },
-  "alert.alertDataLimitedBody": {
-    "defaultMessage": "Datasets may be added, updated, or removed.",
-    "description": "Body for an alert inform users that datasets may change"
-  },
-  "alert.alertDataLimitedTitle": {
-    "defaultMessage": "Limited data sources",
-    "description": "Title for an alert inform users that datasets may change"
-  },
   "areaDetail.categorization.community.of.focus": {
     "defaultMessage": "Community of focus",
     "description": "the communities the score currently is focused on"
@@ -187,6 +171,14 @@
     "defaultMessage": "Percentile (0-100)",
     "description": "the population of the feature selected"
   },
+  "banner.beta.info": {
+    "defaultMessage": "It is an early, in-progress version of the tool with limited data sets that will be continuously updated.",
+    "description": "the main title of the beta banner"
+  },
+  "banner.beta.title": {
+    "defaultMessage": "This is a Beta site.",
+    "description": "the main title of the beta banner"
+  },
   "community.members.heading": {
     "defaultMessage": "Community members",
     "description": "sub heading of page"
@@ -318,6 +310,10 @@
   "footer.questionsheader": {
     "defaultMessage": "Have a question about government services?",
     "description": "Footer column header"
+  },
+  "footer.whitehouselink": {
+    "defaultMessage": "Whitehouse.gov",
+    "description": "Footer Whitehouse.gov link text"
   },
   "footer.whitehouselogoalt": {
     "defaultMessage": "Whitehouse logo",
