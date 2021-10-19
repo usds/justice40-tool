@@ -138,26 +138,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         </div>
       </div>
     </section>
-    <div
-      class="j40-beta-banner-container"
-    >
-      <div
-        class="j40-beta-banner"
-      >
-        <div
-          class="j40-beta-pill-icon"
-        />
-        <div
-          class="j40-beta-text"
-        >
-          <span
-            class="j40-beta-heading"
-          >
+    <div>
+      <div>
+        <div />
+        <div>
+          <span>
             This is a Beta site. 
           </span>
-          <span
-            class="j40-beta-info"
-          >
+          <span>
             It is an early, in-progress version of the tool with limited data 
     sets that will be continuously updated.
           </span>
@@ -169,7 +157,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       data-testid="gridContainer"
     >
       <div
-        class="grid-row j40-logo-nav-row"
+        class="grid-row"
         data-testid="grid"
       >
         <div
@@ -178,36 +166,29 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         >
           <img
             alt="Climate and Economic Justice Screening Tool"
-            class="j40-logo"
             src="test-file-stub"
           />
         </div>
         <div
-          class="grid-col-5"
+          class="grid-col-6"
           data-testid="grid"
         >
-          <div
-            class="j40-logo-title"
-          >
+          <div>
             <div>
               Climate and Economic Justice
             </div>
-            <div
-              class="j40-title2-beta-pill"
-            >
+            <div>
               <div>
                  Screening Tool 
               </div>
-              <div
-                class="j40-beta-pill"
-              >
+              <div>
                 BETA
               </div>
             </div>
           </div>
         </div>
         <div
-          class="grid-col-fill j40-nav-links"
+          class="grid-col-fill"
           data-testid="grid"
         >
           <button

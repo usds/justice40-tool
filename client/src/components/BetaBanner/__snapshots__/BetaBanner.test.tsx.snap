@@ -2,26 +2,14 @@
 
 exports[`rendering of the BetaBanner checks if component renders 1`] = `
 <DocumentFragment>
-  <div
-    class="j40-beta-banner-container"
-  >
-    <div
-      class="j40-beta-banner"
-    >
-      <div
-        class="j40-beta-pill-icon"
-      />
-      <div
-        class="j40-beta-text"
-      >
-        <span
-          class="j40-beta-heading"
-        >
+  <div>
+    <div>
+      <div />
+      <div>
+        <span>
           This is a Beta site. 
         </span>
-        <span
-          class="j40-beta-info"
-        >
+        <span>
           It is an early, in-progress version of the tool with limited data 
     sets that will be continuously updated.
         </span>

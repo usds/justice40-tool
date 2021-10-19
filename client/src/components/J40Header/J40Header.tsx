@@ -7,12 +7,13 @@ import {
   GovBanner,
   Grid,
 } from '@trussworks/react-uswds';
-import BetaBanner from './BetaBanner';
+import BetaBanner from '../BetaBanner';
+import J40MainGridContainer from '../J40MainGridContainer';
 
 // @ts-ignore
-import siteLogo from '../../src/images/j40-logo-v2.png';
-import * as COMMON_COPY from '../data/copy/common';
-import J40MainGridContainer from './J40MainGridContainer';
+import siteLogo from '../../images/j40-logo-v2.png';
+import * as styles from './J40Header.module.scss';
+import * as COMMON_COPY from '../../data/copy/common';
 
 const J40Header = () => {
   const intl = useIntl();
@@ -80,26 +81,26 @@ const J40Header = () => {
       {/* Logo and Navigation */}
       <J40MainGridContainer>
 
-        <Grid className='j40-logo-nav-row' row>
+        <Grid className={styles.logoNavRow} row>
 
           {/* Logo */}
           <Grid col={1}>
-            <img className="j40-logo" src={siteLogo} alt={`${titleL1} ${titleL2}`} />
+            <img className={styles.logo} src={siteLogo} alt={`${titleL1} ${titleL2}`} />
           </Grid>
 
           {/* Logo Title */}
-          <Grid col={5}>
-            <div className={'j40-logo-title'}>
+          <Grid col={6}>
+            <div className={styles.logoTitle}>
               <div>{titleL1}</div>
-              <div className={'j40-title2-beta-pill'}>
+              <div className={styles.title2BetaPill}>
                 <div> {titleL2} </div>
-                <div className={'j40-beta-pill'}>BETA</div>
+                <div className={styles.betaPill}>BETA</div>
               </div>
             </div>
           </Grid>
 
           {/* Nav links */}
-          <Grid col={'fill'} className={'j40-nav-links'}>
+          <Grid col={'fill'} className={styles.navLinks}>
             <NavMenuButton
               key={'mobileMenuButton'}
               onClick={toggleMobileNav}

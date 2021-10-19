@@ -1,0 +1,67 @@
+@use '../../styles/design-system.scss' as *;
+
+// Set nav links color to primary color (1b1b1b)
+.usa-nav__primary > .usa-nav__primary-item > a {
+  @include u-text("gray-90");
+}
+
+.logoNavRow {
+  @include u-margin-top(4);
+
+  .logo {
+    @include u-width(10);
+    @include u-padding("05");
+  }
+
+  // The logoTitle declaration is enabled for widths > 1200px
+  .logoTitle {
+    @include u-display("flex");
+    @include u-flex-direction("column");
+    @include typeset("sans", 8, 3);
+  }
+
+  .title2BetaPill {
+    @include u-display("flex");
+  }
+
+  .betaPill {
+    @include u-display("inline-block");
+    @include u-bg("yellow-20v");
+    @include u-radius(1);
+    @include u-padding-left(2);
+    @include u-padding-right(2);
+    @include u-padding-top('05');
+    @include u-margin-left(1);
+    @include u-font("body", "2xs");
+  }
+
+  .navLinks {
+    @include u-display("flex");
+    justify-content: end;
+  }
+
+  // This media query limits this declaration to 1024 < width < 1200px
+  @include at-media-max("desktop-lg") {
+    .logoTitle {
+      @include typeset("sans", 7, 3);
+    }
+  }
+
+  // This media query limits this declaration to 880 < width < 1024px
+  @include at-media-max("tablet-lg") {
+    .logoTitle {
+      @include typeset("sans", 7, 2);
+    }
+  }
+
+  // This media query limits this declaration to 640 < width < 880px
+  @include at-media-max("tablet") {
+    .logoTitle {
+      @include typeset("sans", 5, 2);
+    }
+
+    .betaPill {
+      @include u-font("body", "3xs");
+    }
+  }
+}
