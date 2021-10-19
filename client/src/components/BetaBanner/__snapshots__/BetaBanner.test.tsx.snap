@@ -9,7 +9,7 @@ exports[`rendering of the BetaBanner checks if component renders 1`] = `
       class="j40-beta-banner"
     >
       <div
-        class="j40-beta-pill"
+        class="j40-beta-pill-icon"
       />
       <div
         class="j40-beta-text"

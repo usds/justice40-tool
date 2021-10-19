@@ -3,7 +3,7 @@
 exports[`rendering of the DatasetContainer checks if various text fields are visible 1`] = `
 <DocumentFragment>
   <header
-    class="usa-header usa-header--basic usa-header j40-header"
+    class="usa-header usa-header--basic"
     data-testid="header"
     role="banner"
   >
@@ -145,7 +145,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         class="j40-beta-banner"
       >
         <div
-          class="j40-beta-pill"
+          class="j40-beta-pill-icon"
         />
         <div
           class="j40-beta-text"
@@ -165,110 +165,118 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       </div>
     </div>
     <div
-      class="usa-nav-container"
+      class="grid-container-desktop-lg"
+      data-testid="gridContainer"
     >
       <div
-        class="usa-navbar"
+        class="grid-row j40-logo-nav-row"
+        data-testid="grid"
       >
         <div
-          class="usa-logo"
+          class="grid-col-1"
+          data-testid="grid"
         >
           <img
             alt="Climate and Economic Justice Screening Tool"
-            class="j40-sitelogo"
+            class="j40-logo"
             src="test-file-stub"
           />
-          <span
-            class="usa-logo__text j40-title"
-          >
-            <span
-              class="j40-title-line1"
-            >
-              Climate and Economic Justice
-            </span>
-            <br />
-            <span
-              class="j40-title-line2"
-            >
-              Screening Tool
-            </span>
-            <span
-              class="j40"
-            >
-              Beta
-            </span>
-          </span>
         </div>
-        <button
-          class="usa-menu-btn"
-          data-testid="navMenuButton"
-          type="button"
+        <div
+          class="grid-col-5"
+          data-testid="grid"
         >
-          Menu
-        </button>
+          <div
+            class="j40-logo-title"
+          >
+            <div>
+              Climate and Economic Justice
+            </div>
+            <div
+              class="j40-title2-beta-pill"
+            >
+              <div>
+                 Screening Tool 
+              </div>
+              <div
+                class="j40-beta-pill"
+              >
+                BETA
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="grid-col-fill j40-nav-links"
+          data-testid="grid"
+        >
+          <button
+            class="usa-menu-btn"
+            data-testid="navMenuButton"
+            type="button"
+          >
+            Menu
+          </button>
+          <nav
+            class="usa-nav"
+          >
+            <button
+              class="usa-nav__close"
+              data-testid="navCloseButton"
+              type="button"
+            >
+              <img
+                alt="close"
+                src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiB2aWV3Qm94PSIwIDAgNjQgNjQiPjx0aXRsZT5jbG9zZTwvdGl0bGU+PHBhdGggZmlsbD0iIzU2NUM2NSIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNTcuMDQyIDEuMTVsNS44MDkgNS44MDhhNCA0IDAgMCAxIDAgNS42NTdMNDMuNDY1IDMybDE5LjM4NiAxOS4zODVhNCA0IDAgMCAxIDAgNS42NTdsLTUuODA5IDUuODA5YTQgNCAwIDAgMS01LjY1NyAwTDMyIDQzLjQ2NSAxMi42MTUgNjIuODUxYTQgNCAwIDAgMS01LjY1NyAwbC01LjgwOS01LjgwOWE0IDQgMCAwIDEgMC01LjY1N0wyMC41MzUgMzIgMS4xNDkgMTIuNjE1YTQgNCAwIDAgMSAwLTUuNjU3bDUuODA5LTUuODA5YTQgNCAwIDAgMSA1LjY1NyAwTDMyIDIwLjUzNSA1MS4zODUgMS4xNDlhNCA0IDAgMCAxIDUuNjU3IDB6Ii8+PC9zdmc+"
+              />
+            </button>
+            <ul
+              class="usa-nav__primary usa-accordion"
+            >
+              <li
+                class="usa-nav__primary-item"
+              >
+                <a
+                  data-cy="nav-link-about"
+                  href="/en/"
+                >
+                  About
+                </a>
+              </li>
+              <li
+                class="usa-nav__primary-item"
+              >
+                <a
+                  data-cy="nav-link-explore-the-tool"
+                  href="/en/cejst"
+                >
+                  Explore the tool
+                </a>
+              </li>
+              <li
+                class="usa-nav__primary-item"
+              >
+                <a
+                  data-cy="nav-link-methodology"
+                  href="/en/methodology"
+                >
+                  Data & methodology
+                </a>
+              </li>
+              <li
+                class="usa-nav__primary-item"
+              >
+                <a
+                  data-cy="nav-link-contact"
+                  href="/en/contact"
+                >
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
-      <nav
-        class="usa-nav j40-header"
-      >
-        <button
-          class="usa-nav__close"
-          data-testid="navCloseButton"
-          type="button"
-        >
-          <img
-            alt="close"
-            src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiB2aWV3Qm94PSIwIDAgNjQgNjQiPjx0aXRsZT5jbG9zZTwvdGl0bGU+PHBhdGggZmlsbD0iIzU2NUM2NSIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNTcuMDQyIDEuMTVsNS44MDkgNS44MDhhNCA0IDAgMCAxIDAgNS42NTdMNDMuNDY1IDMybDE5LjM4NiAxOS4zODVhNCA0IDAgMCAxIDAgNS42NTdsLTUuODA5IDUuODA5YTQgNCAwIDAgMS01LjY1NyAwTDMyIDQzLjQ2NSAxMi42MTUgNjIuODUxYTQgNCAwIDAgMS01LjY1NyAwbC01LjgwOS01LjgwOWE0IDQgMCAwIDEgMC01LjY1N0wyMC41MzUgMzIgMS4xNDkgMTIuNjE1YTQgNCAwIDAgMSAwLTUuNjU3bDUuODA5LTUuODA5YTQgNCAwIDAgMSA1LjY1NyAwTDMyIDIwLjUzNSA1MS4zODUgMS4xNDlhNCA0IDAgMCAxIDUuNjU3IDB6Ii8+PC9zdmc+"
-          />
-        </button>
-        <ul
-          class="usa-nav__primary usa-accordion"
-        >
-          <li
-            class="usa-nav__primary-item"
-          >
-            <a
-              class="j40-header"
-              data-cy="nav-link-about"
-              href="/en/"
-            >
-              About
-            </a>
-          </li>
-          <li
-            class="usa-nav__primary-item"
-          >
-            <a
-              class="j40-header"
-              data-cy="nav-link-explore-the-tool"
-              href="/en/cejst"
-            >
-              Explore the tool
-            </a>
-          </li>
-          <li
-            class="usa-nav__primary-item"
-          >
-            <a
-              class="j40-header"
-              data-cy="nav-link-methodology"
-              href="/en/methodology"
-            >
-              Data & methodology
-            </a>
-          </li>
-          <li
-            class="usa-nav__primary-item"
-          >
-            <a
-              class="j40-header"
-              data-cy="nav-link-contact"
-              href="/en/contact"
-            >
-              Contact
-            </a>
-          </li>
-        </ul>
-      </nav>
     </div>
   </header>
   <main

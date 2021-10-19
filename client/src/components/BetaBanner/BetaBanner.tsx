@@ -9,7 +9,7 @@ const BetaBanner = () => {
   return (
     <div className='j40-beta-banner-container'>
       <div className='j40-beta-banner'>
-        <div className='j40-beta-pill'></div>
+        <div className='j40-beta-pill-icon'></div>
         <div className='j40-beta-text'>
           <span className='j40-beta-heading'>
             {intl.formatMessage(COMMON_COPY.BETA_BANNER.TITLE)}{' '}
