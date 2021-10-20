@@ -60,11 +60,11 @@
   "datasetContainer.heading": "Datasets used in methodology",
   "datasetContainer.info": "The datasets come from a variety of sources and were selected based on relevance, availability, recency, and quality. The datasets seek to identify a range of human health, environmental, climate-related, and other cumulative impacts on communities.",
   "download.draft.ptag.1": "{downloadDraft} of communities of focus and datasets used. Last updated: {dateUpdated}.",
-  "download.draft.ptag.2": "Download the draft list of communities of focus and datasets used."
+  "download.draft.ptag.2": "Download the draft list of communities of focus and datasets used.",
   "downloadPacket.button.text": "Download package",
-  "downloadPacket.header.text": "download packet header text"
-  "downloadPacket.info.last.updated": "download packet info last updated"
-  "downloadPacket.info.text": "download packet info text"
+  "downloadPacket.header.text": "download packet header text",
+  "downloadPacket.info.last.updated": "download packet info last updated",
+  "downloadPacket.info.text": "download packet info text",
   "exploreTool.heading.text": "Explore the tool",
   "exploreTool.title.text": "Explore the tool",
   "federal.pm.heading": "Federal program managers",
