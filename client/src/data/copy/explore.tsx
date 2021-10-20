@@ -385,7 +385,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
     values={{
       rxEmailFromYou:
       <a href={`mailto:${CONTACT_COPY.FEEDBACK_EMAIL}`}>
-        {'recieve an email from you'}
+        {'receive an email from you'}
       </a>,
     }}
   />,
@@ -396,7 +396,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
     values={{
       dataMeth:
     <Link to={'/methodology'}>
-      {'Data and methodology'}
+      {'Data & methodology'}
     </Link>,
     }}
   />,
