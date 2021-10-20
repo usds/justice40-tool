@@ -1,13 +1,9 @@
 // This setting file will instantiate styles that are needed for J40 from the styles/theme folder
 
-/*
-  Import the entire theme spacing folder
-*/
+// Import the entire theme spacing folder
 @import "./theme/uswds-theme-spacing";
 
-/*
- Selected general styles found in styles/theme/_uswds-theme-general.scss:
-*/
+// Selected general styles found in styles/theme/_uswds-theme-general.scss:
 $theme-image-path: "../../node_modules/uswds/src/img";
 $theme-show-compile-warnings: false;
 $theme-show-notifications: false;
@@ -23,7 +19,5 @@ $theme-namespace: (
   ),
 );
 
-/*
-Selected typography styles, found in styles/theme/_uswds-theme-typography.scss:
-*/
+// Selected typography styles, found in styles/theme/_uswds-theme-typography.scss:
 $theme-font-path: "../../node_modules/uswds/src/fonts";

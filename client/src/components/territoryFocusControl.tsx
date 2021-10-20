@@ -1,7 +1,9 @@
 import {useIntl} from 'gatsby-plugin-intl';
 import React, {MouseEventHandler} from 'react';
 import {_useMapControl as useMapControl} from 'react-map-gl';
+
 import * as styles from './territoryFocusControl.module.scss';
+import * as EXPLORE_COPY from '../data/copy/explore';
 
 interface ITerritoryFocusControl {
   onClickTerritoryFocusButton: MouseEventHandler<HTMLButtonElement>;
@@ -17,68 +19,20 @@ const TerritoryFocusControl = ({onClickTerritoryFocusButton}: ITerritoryFocusCon
 
   const territories = [
     {
-      short: intl.formatMessage(
-          {
-            id: 'map.territoryFocus.lower48.short',
-            defaultMessage: '48',
-            description: 'The abbreviated name indicating the bounds of the Lower 48 states',
-          },
-      ),
-      long: intl.formatMessage(
-          {
-            id: 'map.territoryFocus.lower48.long',
-            defaultMessage: 'Lower 48',
-            description: 'The longer name indicating the bounds of the Lower 48 states',
-          },
-      ),
+      short: intl.formatMessage(EXPLORE_COPY.MAP.LOWER48_SHORT),
+      long: intl.formatMessage(EXPLORE_COPY.MAP.LOWER48_LONG),
     },
     {
-      short: intl.formatMessage(
-          {
-            id: 'map.territoryFocus.alaska.short',
-            defaultMessage: 'AK',
-            description: 'The abbreviated indicating the bounds of Alaska',
-          },
-      ),
-      long: intl.formatMessage(
-          {
-            id: 'map.territoryFocus.alaska.long',
-            defaultMessage: 'Alaska',
-            description: 'The full name indicating the bounds of Alaska',
-          },
-      ),
+      short: intl.formatMessage(EXPLORE_COPY.MAP.ALASKA_SHORT),
+      long: intl.formatMessage(EXPLORE_COPY.MAP.ALASKA_LONG),
     },
     {
-      short: intl.formatMessage(
-          {
-            id: 'map.territoryFocus.hawaii.short',
-            defaultMessage: 'HI',
-            description: 'The abbreviated name indicating the bounds of Hawaii',
-          },
-      ),
-      long: intl.formatMessage(
-          {
-            id: 'map.territoryFocus.hawaii.long',
-            defaultMessage: 'Hawaii',
-            description: 'The longer name indicating the bounds of Hawaii',
-          },
-      ),
+      short: intl.formatMessage(EXPLORE_COPY.MAP.HAWAII_SHORT),
+      long: intl.formatMessage(EXPLORE_COPY.MAP.HAWAII_LONG),
     },
     {
-      short: intl.formatMessage(
-          {
-            id: 'map.territoryFocus.puerto_rico.short',
-            defaultMessage: 'PR',
-            description: 'The abbreviated name indicating the bounds of Puerto Rico',
-          },
-      ),
-      long: intl.formatMessage(
-          {
-            id: 'map.territoryFocus.puerto_rico.long',
-            defaultMessage: 'Puerto Rico',
-            description: 'The full name indicating the bounds of Puerto Rico',
-          },
-      ),
+      short: intl.formatMessage(EXPLORE_COPY.MAP.PR_SHORT),
+      long: intl.formatMessage(EXPLORE_COPY.MAP.PR_LONG),
     },
   ];
   // the offset for this array should map the territories variable

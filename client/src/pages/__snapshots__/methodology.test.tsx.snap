@@ -316,7 +316,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     Draft communities list v0.1 (111MB)
                   </div>
                   <div>
-                    The package includes draft v0.1  of the list of communities of focus (.csv and .xlsx)  and information about how to use the list (.pdf). 
+                    The package includes draft v0.1 of the list of communities of focus (.csv and .xlsx) and information about how to use the list (.pdf). 
                     <span>
                       Last updated: 10/01/21 
                     </span>
@@ -336,7 +336,6 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                             alt="download icon for download package"
                             src="test-file-stub"
                           />
-                           
                         </div>
                         <div>
                           Download package
@@ -1269,7 +1268,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         data-testid="gridContainer"
       >
         <div
-          class="usa-footer__logo grid-row mobile-lg:grid-col-6 mobile-lg:grid-gap-2 j40-footer-logo"
+          class="usa-footer__logo grid-row mobile-lg:grid-col-6 mobile-lg:grid-gap-2"
           data-testid="footerLogo"
         >
           <div

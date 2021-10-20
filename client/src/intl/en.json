@@ -244,6 +244,7 @@
     "description": "Download the draft list of communities of focus and datasets used."
   },
   "download.draft.ptag.2": {
+    "defaultMessage": "ZIP file will contain one .xlsx, one .csv, and one .pdf ({downloadFileSize}).",
     "description": "Download the draft list of communities of focus and datasets used."
   },
   "downloadPacket.button.text": {
@@ -251,17 +252,24 @@
     "description": "download packet button text"
   },
   "downloadPacket.header.text": {
+    "defaultMessage": "Draft communities list v{versionNumber} ({downloadFileSize})",
     "description": "download packet header text"
   },
   "downloadPacket.info.last.updated": {
+    "defaultMessage": "Last updated: {downloadLastUpdated}",
     "description": "download packet info last updated"
   },
   "downloadPacket.info.text": {
+    "defaultMessage": "The package includes draft v{versionNumber} of the list of communities of focus (.csv and .xlsx) and information about how to use the list (.pdf).",
     "description": "download packet info text"
   },
   "exploreTool.heading.text": {
     "defaultMessage": "Explore the tool",
     "description": "explore the tool heading text"
+  },
+  "exploreTool.page.description": {
+    "defaultMessage": "Zoom into the map to see communities of focus that can help Federal agencies identify disadvantaged communities and to provide socioeconomic, environmental, and climate information and data. Learn more about the methodology and datasets that were used to determine these communities of focus on the {methodologyLink} page.",
+    "description": "page description"
   },
   "exploreTool.title.text": {
     "defaultMessage": "Explore the tool",
@@ -282,6 +290,10 @@
   "footer.arialabel": {
     "defaultMessage": "Footer navigation",
     "description": "aria-label text for whole footer"
+  },
+  "footer.contactheader": {
+    "defaultMessage": "Contact",
+    "description": "Footer column header"
   },
   "footer.findcontactlink": {
     "defaultMessage": "Find a contact at USA.gov",
@@ -342,6 +354,10 @@
   "howToGetStarted.title": {
     "defaultMessage": "How to get started",
     "description": "sub heading of page"
+  },
+  "index.heading.about.us": {
+    "defaultMessage": "About us",
+    "description": "main heading for about page"
   },
   "index.heading.justice40": {
     "defaultMessage": "The Justice40 Initiative",
