@@ -3,6 +3,9 @@ import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger, zip_files
 
+from data_pipeline.etl.sources.census.etl_utils import (
+    check_census_data_source,
+)
 from . import constants
 
 logger = get_module_logger(__name__)
@@ -14,7 +17,8 @@ class PostScoreETL(ExtractTransformLoad):
     datasets.
     """
 
-    def __init__(self):
+    def __init__(self, data_source: str = None):
+        self.DATA_SOURCE = data_source
         self.input_counties_df: pd.DataFrame
         self.input_states_df: pd.DataFrame
         self.input_score_df: pd.DataFrame
@@ -66,6 +70,13 @@ class PostScoreETL(ExtractTransformLoad):
 
     def extract(self) -> None:
         logger.info("Starting Extraction")
+
+        # check census data
+        check_census_data_source(
+            census_data_path=self.DATA_PATH / "census",
+            census_data_source=self.DATA_SOURCE,
+        )
+
         super().extract(
             constants.CENSUS_COUNTIES_ZIP_URL,
             constants.TMP_PATH,

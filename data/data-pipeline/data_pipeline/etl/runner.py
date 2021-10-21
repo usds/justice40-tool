@@ -87,17 +87,20 @@ def score_generate() -> None:
     score_post()
 
 
-def score_post() -> None:
+def score_post(data_source: str = "local") -> None:
     """Posts the score files to the local directory
 
     Args:
-        None
+        data_source (str): Source for the census data (optional)
+                           Options:
+                           - local (default): fetch census data from the local data directory
+                           - aws: fetch census from AWS S3 J40 data repository
 
     Returns:
         None
     """
     # Post Score Processing
-    score_post = PostScoreETL()
+    score_post = PostScoreETL(data_source=data_source)
     score_post.extract()
     score_post.transform()
     score_post.load()
@@ -108,10 +111,10 @@ def score_geo(data_source: str = "local") -> None:
     """Generates the geojson files with score data baked in
 
     Args:
-        census_data_source (str): Source for the census data (optional)
-                                  Options:
-                                  - local (default): fetch census data from the local data directory
-                                  - aws: fetch census from AWS S3 J40 data repository
+        data_source (str): Source for the census data (optional)
+                           Options:
+                           - local (default): fetch census data from the local data directory
+                           - aws: fetch census from AWS S3 J40 data repository
 
     Returns:
         None

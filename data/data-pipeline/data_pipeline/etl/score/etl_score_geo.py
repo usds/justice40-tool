@@ -46,6 +46,8 @@ class GeoScoreETL(ExtractTransformLoad):
             census_data_source=self.DATA_SOURCE,
         )
 
+        # TODO: if data_source is aws download census from s3
+
         logger.info("Reading US GeoJSON (~6 minutes)")
         self.geojson_usa_df = gpd.read_file(
             self.CENSUS_USA_GEOJSON,

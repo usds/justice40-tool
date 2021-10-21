@@ -166,11 +166,22 @@ def generate_map_tiles():
 @cli.command(
     help="Run etl_score_post to create score csv, tile csv, and downloadable zip",
 )
-def generate_score_post():
-    """CLI command to generate score, tile, and downloadable files"""
+@click.option("-d", "--data-source", default="local", required=False, type=str)
+def generate_score_post(data_source: str):
+    """CLI command to generate score, tile, and downloadable files
+
+    Args:
+        data_source (str): Source for the census data (optional)
+                           Options:
+                           - local: fetch census and score data from the local data directory
+                           - aws: fetch census and score from AWS S3 J40 data repository
+
+    Returns:
+        None
+    """
 
     downloadable_cleanup()
-    score_post()
+    score_post(data_source)
     sys.exit()
 
 
@@ -183,11 +194,16 @@ def generate_score_post():
     is_flag=True,
     help="Check if data run has been run before, and don't run it if so.",
 )
-def data_full_run(check):
+@click.option("-d", "--data-source", default="local", required=False, type=str)
+def data_full_run(check: bool, data_source: str):
     """CLI command to run ETL, score, JSON combine and generate tiles in one command
 
     Args:
         check (bool): Run the full data run only if the first run sempahore file is not set (optional)
+        data_source (str): Source for the census data (optional)
+                           Options:
+                           - local: fetch census and score data from the local data directory
+                           - aws: fetch census and score from AWS S3 J40 data repository
 
      Returns:
         None
@@ -206,8 +222,9 @@ def data_full_run(check):
     score_folder_cleanup()
     temp_folder_cleanup()
 
-    logger.info("*** Downloading census data")
-    etl_runner("census")
+    if data_source == "local":
+        logger.info("*** Downloading census data")
+        etl_runner("census")
 
     logger.info("*** Running all ETLs")
     etl_runner()
@@ -215,8 +232,11 @@ def data_full_run(check):
     logger.info("*** Generating Score")
     score_generate()
 
+    logger.info("*** Running Post Score scripts")
+    score_post(data_source)
+
     logger.info("*** Combining Score with Census Geojson")
-    score_geo()
+    score_geo(data_source)
 
     logger.info("*** Generating Map Tiles")
     generate_tiles(data_path)
