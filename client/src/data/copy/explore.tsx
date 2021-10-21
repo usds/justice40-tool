@@ -31,6 +31,7 @@ export const PAGE_DESCRIPTION = <FormattedMessage
   description={'page description'}
   values={{
     methodologyLink: <Link to={'/methodology'}>Data & methodology</Link>,
+    methodologyLinkEs: <Link to={'/methodology'}>Datos y metodología</Link>,
   }}
 />;
 

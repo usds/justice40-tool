@@ -2,7 +2,6 @@ import * as React from 'react';
 import {Grid} from '@trussworks/react-uswds';
 import {useIntl, FormattedMessage} from 'gatsby-plugin-intl';
 
-import AlertWrapper from '../components/AlertWrapper';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 
@@ -17,10 +16,6 @@ const ContactPage = ({location}: IContactPageProps) => {
 
   return (
     <Layout location={location} title={intl.formatMessage(CONTACT_COPY.PAGE_INTRO.PAGE_TILE)}>
-
-      <J40MainGridContainer>
-        <AlertWrapper showBetaAlert={true} showLimitedDataAlert={false}/>
-      </J40MainGridContainer>
 
       <J40MainGridContainer>
         <Grid row>
