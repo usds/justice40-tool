@@ -15,19 +15,32 @@ describe('Does the map zoom and adjust to lat/long correctly?', () => {
       cy.url().should('include', '#4/35.04/-77.9');
     });
   });
-  it('allows user to specify alternative starting URL', () => {
-    const [expectedZoom, expectedLat, expectedLng] = [12.05, 41.40965, -75.65978];
-    const expectedURL = `http://localhost:8000/en/cejst/#${expectedZoom}/${expectedLat}/${expectedLng}`;
-    cy.visit(expectedURL);
-    cy.getMap().then((map) => {
-      cy.waitForMapIdle(map);
-      cy.url().should('equal', expectedURL);
-      const actualZoom = map.getZoom();
-      const actualCenter = map.getCenter();
-      expect(actualCenter.lat).to.eq(expectedLat);
-      expect(actualCenter.lng).to.eq(expectedLng);
-      expect(actualZoom).to.eq(expectedZoom);
-    });
-  });
+  it('allows user to specify alternative starting URL',
+      {
+        retries: {
+          runMode: 3,
+          openMode: 3,
+        },
+        defaultCommandTimeout: 4000,
+        execTimeout: 10000,
+        taskTimeout: 10000,
+        pageLoadTimeout: 10000,
+        requestTimeout: 5000,
+        responseTimeout: 10000,
+      },
+      () => {
+        const [expectedZoom, expectedLat, expectedLng] = [12.05, 41.40965, -75.65978];
+        const expectedURL = `http://localhost:8000/en/cejst/#${expectedZoom}/${expectedLat}/${expectedLng}`;
+        cy.visit(expectedURL);
+        cy.getMap().then((map) => {
+          cy.waitForMapIdle(map);
+          cy.url().should('equal', expectedURL);
+          const actualZoom = map.getZoom();
+          const actualCenter = map.getCenter();
+          expect(actualCenter.lat).to.eq(expectedLat);
+          expect(actualCenter.lng).to.eq(expectedLng);
+          expect(actualZoom).to.eq(expectedZoom);
+        });
+      });
 });
 
