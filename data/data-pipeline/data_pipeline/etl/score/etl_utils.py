@@ -31,7 +31,7 @@ def check_score_data_source(
     """
     TILE_SCORE_CSV_S3_URL = (
         settings.AWS_JUSTICE40_DATAPIPELINE_URL
-        + "/data-pipeline/data/score/tiles/usa.csv"
+        + "/data/score/csv/tiles/usa.csv"
     )
     TILE_SCORE_CSV = score_csv_data_path / "tiles" / "usa.csv"
 
