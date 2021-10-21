@@ -1,26 +1,44 @@
 {
-  "alert.alertBetaBody": [
+  "about.page.sub.header.1.text.1": [
     {
       "type": 0,
-      "value": "This website may be continuously updated"
+      "value": "On January 27, 2021, President Biden directed the Council on Environmental Quality (CEQ) to create a climate and economic justice screening tool. The purpose of the tool is to help Federal agencies identify disadvantaged communities and provide socioeconomic, environmental, and climate information and data to inform decisions that may affect these communities. The tool identifies disadvantaged communities as communities of focus through publicly available, nationally consistent, high-quality data."
     }
   ],
-  "alert.alertBetaTitle": [
+  "about.page.sub.header.1.text.2": [
     {
       "type": 0,
-      "value": "Public beta"
+      "value": "The current version of the tool is in a public beta form and will be updated based on feedback from the public."
     }
   ],
-  "alert.alertDataLimitedBody": [
+  "about.page.sub.header.2.text.1": [
     {
       "type": 0,
-      "value": "Datasets may be added, updated, or removed."
+      "value": "The tool will provide important information for the Justice40 Initiative. The goal of the Justice40 Initiative is to provide 40-percent of the overall benefits of certain federal programs in seven key areas to disadvantaged communities. These seven key areas are: climate change, clean energy and energy efficiency, clean transit, affordable and sustainable housing, training and workforce development, the remediation and reduction of legacy pollution, and the development of critical clean water infrastructure."
     }
   ],
-  "alert.alertDataLimitedTitle": [
+  "about.page.sub.header.2.text.2": [
     {
       "type": 0,
-      "value": "Limited data sources"
+      "value": "Read more about the Justice40 Initiative in President Biden’s"
+    }
+  ],
+  "about.page.title.text": [
+    {
+      "type": 0,
+      "value": "About"
+    }
+  ],
+  "areaDetail.categorization.community.of.focus": [
+    {
+      "type": 0,
+      "value": "Community of focus"
+    }
+  ],
+  "areaDetail.categorization.not.community.of.focus": [
+    {
+      "type": 0,
+      "value": "Not a community of focus"
     }
   ],
   "areaDetail.geographicInfo.censusBlockGroup": [
@@ -47,22 +65,166 @@
       "value": "State:"
     }
   ],
+  "areaDetail.indicator.areaMedianIncome": [
+    {
+      "type": 0,
+      "value": "Area Median Income"
+    }
+  ],
+  "areaDetail.indicator.asthma": [
+    {
+      "type": 0,
+      "value": "Asthma"
+    }
+  ],
+  "areaDetail.indicator.description.area_median_income": [
+    {
+      "type": 0,
+      "value": "Median income of the census block group calculated as a percent of the metropolitan area’s or state's median income"
+    }
+  ],
+  "areaDetail.indicator.description.asthma": [
+    {
+      "type": 0,
+      "value": "People who answer “yes” to both of the questions: “Have you ever been told by a doctor nurse, or other health professional that you have asthma?” and “Do you still have asthma?\""
+    }
+  ],
+  "areaDetail.indicator.description.diabetes": [
+    {
+      "type": 0,
+      "value": "People ages 18 and up who report having been told by a doctor, nurse, or other health professionals that they have diabetes other than diabetes during pregnancy"
+    }
+  ],
+  "areaDetail.indicator.description.dieselPartMatter": [
+    {
+      "type": 0,
+      "value": "Mixture of particles that is part of diesel exhaust in the air"
+    }
+  ],
+  "areaDetail.indicator.description.education": [
+    {
+      "type": 0,
+      "value": "Percent of people age 25 or older that didn’t get a high school diploma"
+    }
+  ],
+  "areaDetail.indicator.description.energyBurden": [
+    {
+      "type": 0,
+      "value": "Average annual energy cost ($) divided by household income"
+    }
+  ],
+  "areaDetail.indicator.description.femaRisk": [
+    {
+      "type": 0,
+      "value": "Expected Annual Loss Score, which is the average economic loss in dollars resulting from natural hazards each year."
+    }
+  ],
+  "areaDetail.indicator.description.heartDisease": [
+    {
+      "type": 0,
+      "value": "People ages 18 and up who report ever having been told by a doctor, nurse, or other health professionals that they had angina or coronary heart disease"
+    }
+  ],
+  "areaDetail.indicator.description.houseBurden": [
+    {
+      "type": 0,
+      "value": "Households that are low income and spend more than 30% of their income on housing costs"
+    }
+  ],
+  "areaDetail.indicator.description.leadPaint": [
+    {
+      "type": 0,
+      "value": "Housing units built pre-1960, used as an indicator of potential lead paint exposure in homes"
+    }
+  ],
+  "areaDetail.indicator.description.lifeExpect": [
+    {
+      "type": 0,
+      "value": "Estimated years of life expectancy"
+    }
+  ],
+  "areaDetail.indicator.description.pm25": [
+    {
+      "type": 0,
+      "value": "Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller"
+    }
+  ],
+  "areaDetail.indicator.description.poverty": [
+    {
+      "type": 0,
+      "value": "Percent of a block group's population in households where the household income is at or below 100% of the federal poverty level"
+    }
+  ],
+  "areaDetail.indicator.description.trafficVolume": [
+    {
+      "type": 0,
+      "value": "Count of vehicles (average annual daily traffic) at major roads within 500 meters, divided by distance in meters"
+    }
+  ],
+  "areaDetail.indicator.description.wasteWater": [
+    {
+      "type": 0,
+      "value": "Toxic concentrations at stream segments within 500 meters divided by distance in kilometers"
+    }
+  ],
+  "areaDetail.indicator.diabetes": [
+    {
+      "type": 0,
+      "value": "Diabetes"
+    }
+  ],
+  "areaDetail.indicator.dieselPartMatter": [
+    {
+      "type": 0,
+      "value": "Diesel particulate matter"
+    }
+  ],
   "areaDetail.indicator.education": [
     {
       "type": 0,
-      "value": "Education"
+      "value": "Education, less than high school"
+    }
+  ],
+  "areaDetail.indicator.energyBurden": [
+    {
+      "type": 0,
+      "value": "Energy burden"
+    }
+  ],
+  "areaDetail.indicator.femaRisk": [
+    {
+      "type": 0,
+      "value": "FEMA Risk Index"
+    }
+  ],
+  "areaDetail.indicator.heartDisease": [
+    {
+      "type": 0,
+      "value": "Heart disease"
     }
   ],
   "areaDetail.indicator.houseBurden": [
     {
       "type": 0,
-      "value": "Housing Burden"
+      "value": "Housing cost burden"
     }
   ],
-  "areaDetail.indicator.linguisticIsolation": [
+  "areaDetail.indicator.leadPaint": [
     {
       "type": 0,
-      "value": "Linguistic isolation"
+      "value": "Lead paint"
+    }
+  ],
+  "areaDetail.indicator.lifeExpect": [
+    {
+      "type": 0,
+      "value": "Life expectancy"
+    }
+  ],
+  "areaDetail.indicator.pm25": [
+    {
+      "type": 0,
+      "value": "PM2.5"
     }
   ],
   "areaDetail.indicator.poverty": [
@@ -71,62 +233,76 @@
       "value": "Poverty"
     }
   ],
-  "areaDetail.indicator.unemployment": [
+  "areaDetail.indicator.trafficVolume": [
     {
       "type": 0,
-      "value": "Unemployment rate"
+      "value": "Traffic proximity and volume"
+    }
+  ],
+  "areaDetail.indicator.wasteWater": [
+    {
+      "type": 0,
+      "value": "Wastewater discharge"
     }
   ],
   "areaDetail.indicators.indicatorColumnHeader": [
     {
       "type": 0,
-      "value": "INDICATORS"
+      "value": "Indicator"
     }
   ],
   "areaDetail.indicators.percentileColumnHeader": [
     {
       "type": 0,
-      "value": "PERCENTILE (0-100)"
+      "value": "Percentile (0-100)"
     }
   ],
-  "areaDetail.priorityInfo.categorization": [
+  "banner.beta.info": [
     {
       "type": 0,
-      "value": "Categorization"
+      "value": "It is an early, in-progress version of the tool with limited data sets that will be continuously updated."
     }
   ],
-  "areaDetail.priorityInfo.cumulativeIndexScore": [
+  "banner.beta.title": [
     {
       "type": 0,
-      "value": "Cumulative Index Score"
+      "value": "This is a Beta site."
     }
   ],
-  "areaDetail.priorityInfo.percentile": [
+  "community.members.heading": [
     {
       "type": 0,
-      "value": "percentile"
+      "value": "Community members"
     }
   ],
-  "contact.general": [
+  "community.members.info": [
     {
       "type": 0,
-      "value": "For general feedback, email "
-    },
-    {
-      "type": 1,
-      "value": "general_email_address"
+      "value": "Explore data about communities of focus in your area, and help provide feedback on the tool."
     }
   ],
-  "contact.pageheader": [
+  "community.members.link": [
+    {
+      "type": 0,
+      "value": "Explore the tool"
+    }
+  ],
+  "contact.page.header.text": [
     {
       "type": 0,
       "value": "Contact"
     }
   ],
-  "contact.sectionheader": [
+  "contact.page.sub.header.text": [
     {
       "type": 0,
       "value": "Email us"
+    }
+  ],
+  "contact.page.title.text": [
+    {
+      "type": 0,
+      "value": "Contact"
     }
   ],
   "datasetCard.dataDateRange": [
@@ -147,28 +323,168 @@
       "value": "Data source:"
     }
   ],
-  "datasetCard.whatIsIt": [
+  "datasetContainer.additional.heading": [
     {
       "type": 0,
-      "value": "What is it?"
+      "value": "Additional Indicators"
     }
   ],
-  "datasetContainer.header.cumulativeScore": [
+  "datasetContainer.additional.info": [
     {
       "type": 0,
-      "value": "Datasets used in cumulative score"
+      "value": "These datasets provide additional information about each community."
     }
   ],
-  "datasetContainer.subTitle": [
+  "datasetContainer.heading": [
     {
       "type": 0,
-      "value": "The datasets come from a variety of sources and were selected after considering relevance, availability, recency and quality."
+      "value": "Datasets used in methodology"
+    }
+  ],
+  "datasetContainer.info": [
+    {
+      "type": 0,
+      "value": "The datasets come from a variety of sources and were selected based on relevance, availability, recency, and quality. The datasets seek to identify a range of human health, environmental, climate-related, and other cumulative impacts on communities."
+    }
+  ],
+  "download.draft.ptag.1": [
+    {
+      "type": 1,
+      "value": "downloadDraft"
+    },
+    {
+      "type": 0,
+      "value": " of communities of focus and datasets used. Last updated: "
+    },
+    {
+      "type": 1,
+      "value": "dateUpdated"
+    },
+    {
+      "type": 0,
+      "value": "."
+    }
+  ],
+  "download.draft.ptag.2": [
+    {
+      "type": 0,
+      "value": "ZIP file will contain one .xlsx, one .csv, and one .pdf ("
+    },
+    {
+      "type": 1,
+      "value": "downloadFileSize"
+    },
+    {
+      "type": 0,
+      "value": ")."
+    }
+  ],
+  "downloadPacket.button.text": [
+    {
+      "type": 0,
+      "value": "Download package"
+    }
+  ],
+  "downloadPacket.header.text": [
+    {
+      "type": 0,
+      "value": "Draft communities list v"
+    },
+    {
+      "type": 1,
+      "value": "versionNumber"
+    },
+    {
+      "type": 0,
+      "value": " ("
+    },
+    {
+      "type": 1,
+      "value": "downloadFileSize"
+    },
+    {
+      "type": 0,
+      "value": ")"
+    }
+  ],
+  "downloadPacket.info.last.updated": [
+    {
+      "type": 0,
+      "value": "Last updated: "
+    },
+    {
+      "type": 1,
+      "value": "downloadLastUpdated"
+    }
+  ],
+  "downloadPacket.info.text": [
+    {
+      "type": 0,
+      "value": "The package includes draft v"
+    },
+    {
+      "type": 1,
+      "value": "versionNumber"
+    },
+    {
+      "type": 0,
+      "value": " of the list of communities of focus (.csv and .xlsx) and information about how to use the list (.pdf)."
+    }
+  ],
+  "exploreTool.heading.text": [
+    {
+      "type": 0,
+      "value": "Explore the tool"
+    }
+  ],
+  "exploreTool.page.description": [
+    {
+      "type": 0,
+      "value": "Zoom into the map to see communities of focus that can help Federal agencies identify disadvantaged communities and to provide socioeconomic, environmental, and climate information and data. Learn more about the methodology and datasets that were used to determine these communities of focus on the "
+    },
+    {
+      "type": 1,
+      "value": "methodologyLink"
+    },
+    {
+      "type": 0,
+      "value": " page."
+    }
+  ],
+  "exploreTool.title.text": [
+    {
+      "type": 0,
+      "value": "Explore the tool"
+    }
+  ],
+  "federal.pm.heading": [
+    {
+      "type": 0,
+      "value": "Federal program managers"
+    }
+  ],
+  "federal.pm.info": [
+    {
+      "type": 0,
+      "value": "Download the screening tool’s draft list of communities of focus. Explore data that may be useful to your program, and provide feedback on the tool."
+    }
+  ],
+  "federal.pm.link": [
+    {
+      "type": 0,
+      "value": "Go to data & methodology"
     }
   ],
   "footer.arialabel": [
     {
       "type": 0,
       "value": "Footer navigation"
+    }
+  ],
+  "footer.contactheader": [
+    {
+      "type": 0,
+      "value": "Contact"
     }
   ],
   "footer.findcontactlink": [
@@ -207,10 +523,22 @@
       "value": "Have a question about government services?"
     }
   ],
+  "footer.whitehouselink": [
+    {
+      "type": 0,
+      "value": "Whitehouse.gov"
+    }
+  ],
   "footer.whitehouselogoalt": [
     {
       "type": 0,
       "value": "Whitehouse logo"
+    }
+  ],
+  "getInvolved.title": [
+    {
+      "type": 0,
+      "value": "Get involved"
     }
   ],
   "header.about": [
@@ -249,92 +577,64 @@
       "value": "Screening Tool"
     }
   ],
-  "howYouCanHelp.header.text": [
+  "howToGetStarted.title": [
     {
       "type": 0,
-      "value": "How You Can Help Improve the Tool"
+      "value": "How to get started"
     }
   ],
-  "index.aboutContent.p1": [
+  "index.heading.about.us": [
     {
       "type": 0,
-      "value": "On January 27, 2021, President Biden directed the Council on Environmental Quality (CEQ) to create a climate and economic justice screening tool. The purpose of the tool is to provide socioeconomic, environmental, and climate information and data to help inform decisions that may affect disadvantaged communities. The tool is designed to assist Federal agencies in identifying disadvantaged communities for the purposes of the Justice40 Initiative."
-    }
-  ],
-  "index.aboutContent.p2": [
-    {
-      "type": 0,
-      "value": "The goal of the Justice40 Initiative is for 40 percent of benefits of Federal programs in seven key areas to flow to disadvantaged communities. These seven key areas are: climate change, clean energy and energy efficiency, clean transit, affordable and sustainable housing, training and workforce development, remediation of legacy pollution, and clean water infrastructure."
-    }
-  ],
-  "index.aboutContent.p3": [
-    {
-      "type": 0,
-      "value": "Read more about the Justice40 Initiative in President Biden’s "
-    },
-    {
-      "type": 1,
-      "value": "presidentLink"
+      "value": "About us"
     }
   ],
   "index.heading.justice40": [
     {
       "type": 0,
-      "value": "About the Justice40 Initiative"
+      "value": "The Justice40 Initiative"
     }
   ],
   "index.heading.screentool": [
     {
       "type": 0,
-      "value": "About the screening tool"
+      "value": "The screening tool"
     }
   ],
   "index.presidentalLinkLabel": [
     {
       "type": 0,
-      "value": "Executive Order on Tackling the Climate Crisis at Home and Abroad."
+      "value": "Executive Order 14008 on Tackling the Climate Crisis at Home and Abroad."
     }
   ],
-  "index.presidentalLinkUri": [
+  "join.open.source.info": [
     {
       "type": 0,
-      "value": "https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/27/executive-order-on-tackling-the-climate-crisis-at-home-and-abroad/"
+      "value": "The screening tool’s code is open source, which means it is available for the public to view and contribute to. Anyone can view and contribute on GitHub."
     }
   ],
-  "index.section3.inclusiveLabel": [
+  "join.open.source.link": [
     {
       "type": 0,
-      "value": "Inclusive:"
+      "value": "Check it out on GitHub"
     }
   ],
-  "index.section3.iterativeLabel": [
+  "join.opensource.heading": [
     {
       "type": 0,
-      "value": "Iterative:"
-    }
-  ],
-  "index.section3.transparentLabel": [
-    {
-      "type": 0,
-      "value": "Transparent:"
-    }
-  ],
-  "legend.colorkey.label": [
-    {
-      "type": 0,
-      "value": "COLOR KEY"
+      "value": "Join the open source community"
     }
   ],
   "legend.info.priority.label": [
     {
       "type": 0,
-      "value": "Prioritized community"
+      "value": "Draft community of focus"
     }
   ],
   "legend.info.threshold.label": [
     {
       "type": 0,
-      "value": "Threshold community"
+      "value": "A community identified as experiencing disadvantages that merits the focus of certain Federal investments, including through the Justice40 Initiative"
     }
   ],
   "map.territoryFocus.alaska.long": [
@@ -395,6 +695,12 @@
       "value": "PR"
     }
   ],
+  "map.zoom.warning": [
+    {
+      "type": 0,
+      "value": "Zoom in to the state or regional level to see prioritized communities on the map."
+    }
+  ],
   "mapIntro.censusBlockGroupDefinition": [
     {
       "type": 0,
@@ -413,58 +719,248 @@
       "value": "Zoom and select a census block group to view data"
     }
   ],
-  "mapwrapper.download.contents": [
+  "methodology.page.header.text": [
     {
       "type": 0,
-      "value": "ZIP file will contain one .xlsx, one .csv and one .pdf (30 MB)."
+      "value": "Methodology"
     }
   ],
-  "mapwrapper.download.link": [
+  "methodology.page.paragraph.first": [
     {
       "type": 0,
-      "value": "Download the draft list of prioritized communities (pre-decisional) and datasets used"
+      "value": "The methodology for identifying communities of focus is currently in a draft, pre-decisional form that may change over time as more datasets become available."
     }
   ],
-  "youCanHelpDataMethLinkText.link.text": [
+  "methodology.page.title.text": [
     {
       "type": 0,
-      "value": "Data & methodology"
+      "value": "Data and Methodology"
     }
   ],
-  "youCanHelpDataMethPrefixText.link.prefix.text": [
+  "methodology.step.1.a.heading": [
     {
       "type": 0,
-      "value": "View our"
+      "value": "Percent of Area Median Income"
     }
   ],
-  "youCanHelpDataMethSuffixText.link.suffix.text": [
+  "methodology.step.1.a.info.1": [
     {
       "type": 0,
-      "value": "and send us feedback"
+      "value": "If a census block group is in a metropolitan area, this value is the median income of the census block group calculated as a percent of the metropolitan area’s median income."
     }
   ],
-  "youCanHelpInfoLink.link.text": [
+  "methodology.step.1.a.info.2": [
     {
       "type": 0,
-      "value": "get an email from you"
+      "value": "If a census block group is not in a metropolitan area, this value is the median income of the census block group calculated as a percent of the state’s median income."
     }
   ],
-  "youCanHelpInfoText.list.element.prefix": [
+  "methodology.step.1.b.heading": [
     {
       "type": 0,
-      "value": "If you have helpful information, we’d love to"
+      "value": "Percent of households below or at 100% of the federal poverty line"
     }
   ],
-  "youCanHelpSharingLinkText.link.text": [
+  "methodology.step.1.c.heading": [
     {
       "type": 0,
-      "value": "share your feedback"
+      "value": "The high school degree achievement rate for adults 25 years and older"
     }
   ],
-  "youCanHelpSharingPrefixText.link.prefix.text": [
+  "methodology.step.1.c.info": [
     {
       "type": 0,
-      "value": "Find your community and"
+      "value": "The percent of individuals who are 25 or older who have received a high school degree."
+    }
+  ],
+  "methodology.step.1.heading": [
+    {
+      "type": 0,
+      "value": "Gather datasets"
+    }
+  ],
+  "methodology.step.1.info": [
+    {
+      "type": 0,
+      "value": "The methodology includes the following inputs that are equally weighted."
+    }
+  ],
+  "methodology.step.2.heading": [
+    {
+      "type": 0,
+      "value": "Determine communites of focus"
+    }
+  ],
+  "methodology.step.2.info": [
+    {
+      "type": 0,
+      "value": "Under the existing formula, a census block group will be considered a community of focus if:"
+    }
+  ],
+  "methodology.steps.2.b.info": [
+    {
+      "type": 0,
+      "value": "This is the percent of households in a state with a household income below or at 100% of the "
+    },
+    {
+      "type": 1,
+      "value": "federalPovertyLine"
+    },
+    {
+      "type": 0,
+      "value": ". This federal poverty line is calculated based on the composition of each household (e.g., based on household size), but it does not vary geographically."
+    }
+  ],
+  "methodology.steps.2.formula": [
+    {
+      "type": 1,
+      "value": "medianIncome"
+    },
+    {
+      "type": 0,
+      "value": " "
+    },
+    {
+      "type": 1,
+      "value": "or"
+    },
+    {
+      "type": 0,
+      "value": " "
+    },
+    {
+      "type": 1,
+      "value": "livingAtPovery"
+    },
+    {
+      "type": 0,
+      "value": " "
+    },
+    {
+      "type": 1,
+      "value": "and"
+    },
+    {
+      "type": 0,
+      "value": " "
+    },
+    {
+      "type": 1,
+      "value": "education"
+    }
+  ],
+  "methodology.steps.description.1": [
+    {
+      "type": 0,
+      "value": "The methodology for identifying communities of focus is calculated at the census block group level. Census block geographical boundaries are determined by the U.S. Census Bureau once every ten years. This tool utilizes the census block boundaries from 2010."
+    }
+  ],
+  "methodology.steps.description.2": [
+    {
+      "type": 0,
+      "value": "The following describes the process for identifying communities of focus."
+    }
+  ],
+  "methodology.steps.heading": [
+    {
+      "type": 0,
+      "value": "Methodology"
+    }
+  ],
+  "pageNotFound.Guidance.text": [
+    {
+      "type": 0,
+      "value": "Try creating a page in"
+    }
+  ],
+  "pageNotFound.apology.description.text": [
+    {
+      "type": 0,
+      "value": "we couldn’t find what you were looking for."
+    }
+  ],
+  "pageNotFound.apology.text": [
+    {
+      "type": 0,
+      "value": "Sorry"
+    }
+  ],
+  "pageNotFound.heading.text": [
+    {
+      "type": 0,
+      "value": "Page not found"
+    }
+  ],
+  "pageNotFound.link.to.go.home.text": [
+    {
+      "type": 0,
+      "value": "Go home"
+    }
+  ],
+  "pageNotFound.title.text": [
+    {
+      "type": 0,
+      "value": "Page not found"
+    }
+  ],
+  "send.feedback.heading": [
+    {
+      "type": 0,
+      "value": "Send feedback"
+    }
+  ],
+  "send.feedback.info": [
+    {
+      "type": 0,
+      "value": "Have ideas about how this tool can be improved to better reflect the on-the-ground experiences of your community?"
+    }
+  ],
+  "youCanHelpInfoText.heading": [
+    {
+      "type": 0,
+      "value": "How you can help improve the tool"
+    }
+  ],
+  "youCanHelpInfoText.list.item.1": [
+    {
+      "type": 0,
+      "value": "If you have helpful information, we would love to "
+    },
+    {
+      "type": 1,
+      "value": "rxEmailFromYou"
+    },
+    {
+      "type": 0,
+      "value": "."
+    }
+  ],
+  "youCanHelpInfoText.list.item.2": [
+    {
+      "type": 0,
+      "value": "View our "
+    },
+    {
+      "type": 1,
+      "value": "dataMeth"
+    },
+    {
+      "type": 0,
+      "value": " page and send us feedback."
+    }
+  ],
+  "youCanHelpInfoText.list.item.3": [
+    {
+      "type": 0,
+      "value": "Find your community of interest and "
+    },
+    {
+      "type": 1,
+      "value": "shareFeedback"
+    },
+    {
+      "type": 0,
+      "value": "."
     }
   ]
 }
