@@ -11,7 +11,7 @@ export const BETA_BANNER = defineMessages({
     id: 'banner.beta.info',
     defaultMessage: `It is an early, in-progress version of the tool with limited data 
     sets that will be continuously updated.`,
-    description: 'the main title of the beta banner',
+    description: 'the main info of the beta banner',
   },
 });
 
