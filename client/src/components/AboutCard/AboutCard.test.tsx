@@ -35,39 +35,4 @@ describe('rendering of the AboutCard', () => {
     );
     expect(asFragment()).toMatchSnapshot();
   });
-
-  it('checks if large cards component renders in new tab', () => {
-    const {asFragment} = render(
-        <LocalizedComponent>
-          <AboutCard
-            imgSrc={'about:blank'}
-            header={'Test Header'}
-            size={'large'}
-            linkText={'Test Action'}
-            openUrlNewTab={true}
-            url={'#'}>
-          Content body of the action card.
-          </AboutCard>
-        </LocalizedComponent>,
-    );
-    expect(asFragment()).toMatchSnapshot();
-  });
-
-  it('checks if large cards component renders as internal link', () => {
-    const {asFragment} = render(
-        <LocalizedComponent>
-          <AboutCard
-            imgSrc={'about:blank'}
-            header={'Test Header'}
-            size={'large'}
-            linkText={'Test Action'}
-            openUrlNewTab={false}
-            internal={true}
-            url={'#'}>
-          Content body of the action card.
-          </AboutCard>
-        </LocalizedComponent>,
-    );
-    expect(asFragment()).toMatchSnapshot();
-  });
 });
