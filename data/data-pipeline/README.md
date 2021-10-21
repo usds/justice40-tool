@@ -104,18 +104,18 @@ TODO add mermaid diagram
 
 1. Call the `etl-run` command using the application manager `application.py` **NOTE:** This may take several minutes to execute.
    - With Docker: `docker run --rm -it -v ${PWD}/data/data-pipeline/data_pipeline/data:/data_pipeline/data j40_data_pipeline python3 -m data_pipeline.application etl-run`
-   - With Poetry: `poetry run etl`
+   - With Poetry: `poetry run python3 data_pipeline/application.py etl-run`
 2. This command will execute the corresponding ETL script for each data source in `data_pipeline/etl/sources/`. For example, `data_pipeline/etl/sources/ejscreen/etl.py` is the ETL script for EJSCREEN data.
 3. Each ETL script will extract the data from its original source, then format the data into `.csv` files that get stored in the relevant folder in `data_pipeline/data/dataset/`. For example, HUD Housing data is stored in `data_pipeline/data/dataset/hud_housing/usa.csv`
 
 _**NOTE:** You have the option to pass the name of a specific data source to the `etl-run` command using the `-d` flag, which will limit the execution of the ETL process to that specific data source._
-_For example: `poetry run etl -d ejscreen` would only run the ETL process for EJSCREEN data._
+_For example: `poetry run python3 data_pipeline/application.py etl-run -d ejscreen` would only run the ETL process for EJSCREEN data._
 
 #### Step 3: Calculate the Justice40 score experiments
 
 1. Call the `score-run` command using the application manager `application.py` **NOTE:** This may take several minutes to execute.
    - With Docker: `docker run --rm -it -v ${PWD}/data/data-pipeline/data_pipeline/data:/data_pipeline/data j40_data_pipeline python3 -m data_pipeline.application score-run`
-   - With Poetry: `poetry run score`
+   - With Poetry: `poetry run python3 data_pipeline/application.py score-run`
 1. The `score-run` command will execute the `etl/score/etl.py` script which loads the data from each of the source files added to the `data/dataset/` directory by the ETL scripts in Step 1.
 1. These data sets are merged into a single dataframe using their Census Block Group GEOID as a common key, and the data in each of the columns is standardized in two ways:
    - Their [percentile rank](https://en.wikipedia.org/wiki/Percentile_rank) is calculated, which tells us what percentage of other Census Block Groups have a lower value for that particular column.
@@ -203,31 +203,38 @@ To install the above-named executables:
 
 ### Windows Users
 
-If you want to run tile generation, please install TippeCanoe [following these instrcutions](https://github.com/GISupportICRC/ArcGIS2Mapbox#installing-tippecanoe-on-windows). You also need some pre-requisites for Geopandas as specified in the Poetry requirements. Please follow [these instructions](https://stackoverflow.com/questions/56958421/pip-install-geopandas-on-windows) to install the Geopandas dependency locally.
+If you want to run tile generation, please install TippeCanoe [following these instructions](https://github.com/GISupportICRC/ArcGIS2Mapbox#installing-tippecanoe-on-windows). You also need some pre-requisites for Geopandas as specified in the Poetry requirements. Please follow [these instructions](https://stackoverflow.com/questions/56958421/pip-install-geopandas-on-windows) to install the Geopandas dependency locally. It's definitely easier if you have access to WSL (Windows Subsystem Linux), and install these packages using 
 
 ### Setting up Poetry
 
 - Start a terminal
 - Change to this directory (`/data/data-pipeline/`)
-- Make sure you have Python 3.9 installed: `python -V` or `python3 -V`
+- Make sure you have at least Python 3.7 installed: `python -V` or `python3 -V`
 - We use [Poetry](https://python-poetry.org/) for managing dependencies and building the application. Please follow the instructions on their site to download.
 - Install Poetry requirements with `poetry install`
 
-### Downloading Census Block Groups GeoJSON and Generating CBG CSVs
+### The Application entrypoint
 
-- Make sure you have Docker running in your machine
-- Start a terminal
-- Change to the package directory (i.e. `cd data/data-pipeline/data_pipeline/`)
-- If you want to clear out all data and tiles from all directories, you can run: `poetry run cleanup_data`.
-- Then run `poetry run download_census`
-  Note: Census files are not kept in the repository and the download directories are ignored by Git
-
-### Generating Map Tiles
-
-- Make sure you have Docker running in your machine
+After installing the poetry dependencies, you can see a list of commands with the following steps: 
 - Start a terminal
 - Change to the package directory (i.e. `cd data/data-pipeline/data_pipeline`)
-- Then run `poetry run generate_tiles`
+- Then run `poetry run python3 data_pipeline/application.py --help`
+
+### Downloading Census Block Groups GeoJSON and Generating CBG CSVs (not normally required)
+
+- Start a terminal
+- Change to the package directory (i.e. `cd data/data-pipeline/data_pipeline`)
+- If you want to clear out all data and tiles from all directories, you can run: `poetry run python3 data_pipeline/application.py data-cleanup`.
+- Then run `poetry run python3 data_pipeline/application.py census-data-download`
+  Note: Census files are hosted in the Justice40 S3 and you can skip this step by passing the `datasource` flag in the scripts below
+
+
+### Run all ETL processes 
+### Generating Map Tiles
+
+- Start a terminal
+- Change to the package directory (i.e. `cd data/data-pipeline/data_pipeline`)
+- Then run `poetry run python3 data_pipeline/application.py generate-map-tiles`
 - If you have S3 keys, you can sync to the dev repo by doing `aws s3 sync ./data_pipeline/data/score/tiles/ s3://justice40-data/data-pipeline/data/score/tiles --acl public-read --delete`
 
 ### Serve the map locally

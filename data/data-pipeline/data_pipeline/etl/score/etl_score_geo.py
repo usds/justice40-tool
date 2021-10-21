@@ -1,4 +1,5 @@
 import math
+from data_pipeline.etl.score.etl_utils import check_score_data_source
 import pandas as pd
 import geopandas as gpd
 
@@ -17,6 +18,7 @@ class GeoScoreETL(ExtractTransformLoad):
     """
 
     def __init__(self, data_source: str = None):
+        self.DATA_SOURCE = data_source
         self.SCORE_GEOJSON_PATH = self.DATA_PATH / "score" / "geojson"
         self.SCORE_LOW_GEOJSON = self.SCORE_GEOJSON_PATH / "usa-low.json"
         self.SCORE_HIGH_GEOJSON = self.SCORE_GEOJSON_PATH / "usa-high.json"
@@ -46,7 +48,11 @@ class GeoScoreETL(ExtractTransformLoad):
             census_data_source=self.DATA_SOURCE,
         )
 
-        # TODO: if data_source is aws download census from s3
+        # check score data
+        check_score_data_source(
+            score_csv_data_path=self.SCORE_CSV_PATH,
+            score_data_source=self.DATA_SOURCE,
+        )
 
         logger.info("Reading US GeoJSON (~6 minutes)")
         self.geojson_usa_df = gpd.read_file(
