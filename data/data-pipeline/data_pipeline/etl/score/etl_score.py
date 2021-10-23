@@ -547,6 +547,9 @@ class ScoreETL(ExtractTransformLoad):
         df["Score E"] = self.df[fields_percentile].mean(axis=1)
         return df
 
+    def _add_climate_factor(self, df: pd.DataFrame) -> pd.DataFrame:
+        logger.info("Adding Climate Factor")
+
     def _add_score_percentiles(self, df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Adding Score Percentiles")
         for score_field in [
