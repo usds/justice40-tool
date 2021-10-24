@@ -5,6 +5,7 @@ import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger
+from data_pipeline.etl.score.score_calculator import ScoreCalculator
 
 logger = get_module_logger(__name__)
 
@@ -522,7 +523,7 @@ class ScoreETL(ExtractTransformLoad):
         )
         return df
 
-    def _add_scores_d_and_e(self, df: pd.DataFrame) -> pd.DataFrame:
+    def _add_scores_d_e(self, df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Adding Scores D and E")
         fields_to_use_in_score = [
             self.UNEMPLOYED_FIELD_NAME,
@@ -546,9 +547,6 @@ class ScoreETL(ExtractTransformLoad):
         df["Score D"] = self.df[fields_min_max].mean(axis=1)
         df["Score E"] = self.df[fields_percentile].mean(axis=1)
         return df
-
-    def _add_climate_factor(self, df: pd.DataFrame) -> pd.DataFrame:
-        logger.info("Adding Climate Factor")
 
     def _add_score_percentiles(self, df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Adding Score Percentiles")
@@ -644,8 +642,8 @@ class ScoreETL(ExtractTransformLoad):
         )
         return df
 
-    def _add_score_g(self, df: pd.DataFrame) -> pd.DataFrame:
-        logger.info("Adding Score G")
+    def _add_score_g_k(self, df: pd.DataFrame) -> pd.DataFrame:
+        logger.info("Adding Score G through K")
 
         high_school_cutoff_threshold = 0.05
         high_school_cutoff_threshold_2 = 0.06
@@ -691,6 +689,27 @@ class ScoreETL(ExtractTransformLoad):
             (df[self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME] > 0.20)
             & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold_2)
         )
+
+        return df
+
+    def _add_score_l_factors(self, df: pd.DataFrame) -> pd.DataFrame:
+        logger.info("Adding Score L and factors")
+        calc = ScoreCalculator(df=df)
+        df["Climate Factor"] = calc.climate_factor()
+        df["Energy Factor"] = calc.energy_factor()
+        df["Transportation Factor"] = calc.transportation_factor()
+        df["Housing Factor"] = calc.housing_factor()
+        df["Pollution Factor"] = calc.pollution_factor()
+        df["Water Factor"] = calc.water_factor()
+        df["Health Factor"] = calc.health_factor()
+        df["Workforce Factor"] = calc.workforce_factor()
+        
+        #TO DO GET WORKING
+        # factors = pd.Series(df["Climate Factor"], df["Energy Factor"],
+        #                     df["Transportation Factor"], df["Housing Factor"],
+        #                     df["Pollution Factor"], df["Water Factor"],
+        #                     df["Health Factor"], df["Workforce Factor"])
+        # df["Score L"] = any(factors)
 
         return df
 
@@ -834,7 +853,7 @@ class ScoreETL(ExtractTransformLoad):
         self.df = self._add_score_c(self.df, data_sets)
 
         # Calculate scores "D" and "E"
-        self.df = self._add_scores_d_and_e(self.df)
+        self.df = self._add_scores_d_e(self.df)
 
         # Create percentiles for the scores
         self.df = self._add_score_percentiles(self.df)
@@ -843,8 +862,11 @@ class ScoreETL(ExtractTransformLoad):
         # Calculate "Score F", which uses "either/or" thresholds.
         self.df = self._add_score_f(self.df)
 
-        # Calculate "Score G", which uses AMI and poverty.
-        self.df = self._add_score_g(self.df)
+        # Calculate "Score G through K", which uses AMI and poverty.
+        self.df = self._add_score_g_k(self.df)
+
+        # Calculate Score L and its factors
+        self.df = self._add_score_l_factors(self.df)
 
     def load(self) -> None:
         logger.info("Saving Score CSV")
