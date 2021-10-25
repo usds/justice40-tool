@@ -73,6 +73,25 @@ class ScoreCalculator(ExtractTransformLoad):
 
         self.LOW_INCOME_THRESHOLD = 0.60
 
+    def add_score_l_factors(self):
+        self.df["Climate Factor"] = self.climate_factor()
+        self.df["Energy Factor"] = self.energy_factor()
+        self.df["Transportation Factor"] = self.transportation_factor()
+        self.df["Housing Factor"] = self.housing_factor()
+        self.df["Pollution Factor"] = self.pollution_factor()
+        self.df["Water Factor"] = self.water_factor()
+        self.df["Health Factor"] = self.health_factor()
+        self.df["Workforce Factor"] = self.workforce_factor()
+        
+        # df['Score L'] = False
+        
+        factors = ["Climate Factor", "Energy Factor",
+                    "Transportation Factor", "Housing Factor",
+                    "Pollution Factor", "Water Factor",
+                    "Health Factor", "Workforce Factor"]
+        self.df['Score L (communities)'] = self.df[factors].any(axis=1)
+        return self.df
+
     def climate_factor(self) -> bool:
         # In Xth percentile or above for FEMA’s Risk Index (Source: FEMA
         # AND

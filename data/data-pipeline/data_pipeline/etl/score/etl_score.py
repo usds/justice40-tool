@@ -695,22 +695,7 @@ class ScoreETL(ExtractTransformLoad):
     def _add_score_l_factors(self, df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Adding Score L and factors")
         calc = ScoreCalculator(df=df)
-        df["Climate Factor"] = calc.climate_factor()
-        df["Energy Factor"] = calc.energy_factor()
-        df["Transportation Factor"] = calc.transportation_factor()
-        df["Housing Factor"] = calc.housing_factor()
-        df["Pollution Factor"] = calc.pollution_factor()
-        df["Water Factor"] = calc.water_factor()
-        df["Health Factor"] = calc.health_factor()
-        df["Workforce Factor"] = calc.workforce_factor()
-        
-        # df['Score L'] = False
-        
-        factors = ["Climate Factor", "Energy Factor",
-                    "Transportation Factor", "Housing Factor",
-                    "Pollution Factor", "Water Factor",
-                    "Health Factor", "Workforce Factor"]
-        df['Score L (communities)'] = df[factors].any(axis=1)
+        df = calc.add_score_l_factors()
         return df
 
     # TODO Move a lot of this to the ETL part of the pipeline
