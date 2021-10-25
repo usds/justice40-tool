@@ -71,6 +71,8 @@ class ScoreCalculator(ExtractTransformLoad):
         # Less than high school education
         self.HIGH_SCHOOL_ED_FIELD = "Percent individuals age 25 or over with less than high school degree"
 
+        self.LOW_INCOME_THRESHOLD = 0.60
+
     def climate_factor(self) -> bool:
         # In Xth percentile or above for FEMA’s Risk Index (Source: FEMA
         # AND
@@ -78,7 +80,7 @@ class ScoreCalculator(ExtractTransformLoad):
         # of households where household income is less than or equal to twice the federal 
         # poverty level. Source: Census's American Community Survey]
         return ( 
-            (self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD] > 0.60) 
+            (self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD] > self.LOW_INCOME_THRESHOLD) 
             & (self.df[self.NATIONAL_RISK_FIELD] > 0.90) 
         )
 
@@ -89,7 +91,7 @@ class ScoreCalculator(ExtractTransformLoad):
         # of households where household income is less than or equal to twice the federal 
         # poverty level. Source: Census's American Community Survey]
         return ( 
-            (self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD] > 0.40) 
+            (self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD] > self.LOW_INCOME_THRESHOLD) 
             & (self.df[self.ENERGY_BURDEN_FIELD] > 0.90) 
         )
 
@@ -109,7 +111,7 @@ class ScoreCalculator(ExtractTransformLoad):
             | self.df[self.TRAFFIC_FIELD] > 0.90
         )
         return ( 
-            (self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD] > 0.40) 
+            (self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD] > self.LOW_INCOME_THRESHOLD) 
             &  transportation_criteria
         )
 
@@ -126,7 +128,7 @@ class ScoreCalculator(ExtractTransformLoad):
             | (self.df[self.HOUSING_BURDEN_FIELD] > 0.90) 
         )
         return ( 
-            (self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD] > 0.40) 
+            (self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD] > self.LOW_INCOME_THRESHOLD) 
             & housing_criteria
         )
 
@@ -145,7 +147,7 @@ class ScoreCalculator(ExtractTransformLoad):
         # of households where household income is less than or equal to twice the federal 
         # poverty level. Source: Census's American Community Survey]
         return ( 
-            (self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD] > 0.40) 
+            (self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD] > self.LOW_INCOME_THRESHOLD) 
             & (self.df[self.WASTEWATER_FIELD] > 0.90) 
         )
 
@@ -169,7 +171,7 @@ class ScoreCalculator(ExtractTransformLoad):
             | (self.df[self.LIFE_EXPECTANCY_FIELD] < 0.10) # A HIGH NUMBER HERE IS GOOD
         )
         return ( 
-            (self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD] > 0.40) 
+            (self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD] > self.LOW_INCOME_THRESHOLD) 
             & health_criteria
         )
         
@@ -185,10 +187,10 @@ class ScoreCalculator(ExtractTransformLoad):
         # Where the high school degree achievement rates for adults 25 years and older is less than 95% 
         # (necessary to screen out university block groups)
         workforce_criteria = (
-            (self.df[self.UNEMPLOYMENT_FIELD] > 0.40) 
-            | (self.df[self.MEDIAN_INCOME_FIELD] > 0.40) 
-            | (self.df[self.POVERTY_LESS_THAN_100_FPL_FIELD] > 0.40) 
-            | (self.df[self.LINGUISTIC_ISO_FIELD] > 0.40) 
+            (self.df[self.UNEMPLOYMENT_FIELD] > 0.90) 
+            | (self.df[self.MEDIAN_INCOME_FIELD] > 0.90) 
+            | (self.df[self.POVERTY_LESS_THAN_100_FPL_FIELD] > 0.90) 
+            | (self.df[self.LINGUISTIC_ISO_FIELD] > 0.90) 
         )
         return ( 
             (self.df[self.HIGH_SCHOOL_ED_FIELD] > 0.05) 

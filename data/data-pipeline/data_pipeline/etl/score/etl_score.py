@@ -704,16 +704,13 @@ class ScoreETL(ExtractTransformLoad):
         df["Health Factor"] = calc.health_factor()
         df["Workforce Factor"] = calc.workforce_factor()
         
-        # TODO GET WORKING
-        # factors = [df["Climate Factor"], df["Energy Factor"],
-        #                     df["Transportation Factor"], df["Housing Factor"],
-        #                     df["Pollution Factor"], df["Water Factor"],
-        #                     df["Health Factor"], df["Workforce Factor"]]
-        # df.loc[(any([df["Climate Factor"], df["Energy Factor"],
-        #                     df["Transportation Factor"], df["Housing Factor"],
-        #                     df["Pollution Factor"], df["Water Factor"],
-        #                     df["Health Factor"], df["Workforce Factor"]])), 'Score L'] = True
-
+        # df['Score L'] = False
+        
+        factors = ["Climate Factor", "Energy Factor",
+                    "Transportation Factor", "Housing Factor",
+                    "Pollution Factor", "Water Factor",
+                    "Health Factor", "Workforce Factor"]
+        df['Score L'] = df[factors].any(axis=1)
         return df
 
     # TODO Move a lot of this to the ETL part of the pipeline
