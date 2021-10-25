@@ -704,12 +704,15 @@ class ScoreETL(ExtractTransformLoad):
         df["Health Factor"] = calc.health_factor()
         df["Workforce Factor"] = calc.workforce_factor()
         
-        #TO DO GET WORKING
-        # factors = pd.Series(df["Climate Factor"], df["Energy Factor"],
+        # TODO GET WORKING
+        # factors = [df["Climate Factor"], df["Energy Factor"],
         #                     df["Transportation Factor"], df["Housing Factor"],
         #                     df["Pollution Factor"], df["Water Factor"],
-        #                     df["Health Factor"], df["Workforce Factor"])
-        # df["Score L"] = any(factors)
+        #                     df["Health Factor"], df["Workforce Factor"]]
+        # df.loc[(any([df["Climate Factor"], df["Energy Factor"],
+        #                     df["Transportation Factor"], df["Housing Factor"],
+        #                     df["Pollution Factor"], df["Water Factor"],
+        #                     df["Health Factor"], df["Workforce Factor"]])), 'Score L'] = True
 
         return df
 

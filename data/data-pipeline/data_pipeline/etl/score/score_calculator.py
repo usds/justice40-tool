@@ -15,14 +15,61 @@ class ScoreCalculator(ExtractTransformLoad):
         # Define some global parameters
         self.df = df
 
-        self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME: str = (
+        self.POVERTY_LESS_THAN_200_FPL_FIELD: str = (
             "Percent of individuals < 200% Federal Poverty Line"
         )
-        self.NATIONAL_RISK_FIELD_NAME: str = (
-            "FEMA Risk Index Expected Annual Loss Score"
+
+        self.POVERTY_LESS_THAN_100_FPL_FIELD: str = (
+            "Percent of individuals < 100% Federal Poverty Line"
         )
+        
+        # FEMA Risk Index
+        self.NATIONAL_RISK_FIELD ="FEMA Risk Index Expected Annual Loss Score (percentile)"
+        
         # DOE energy burden
-        self.ENERGY_BURDEN_FIELD_NAME = "Energy burden"
+        self.ENERGY_BURDEN_FIELD = "Energy burden (percentile)"
+
+        # Diesel particulate matter
+        self.DIESEL_FIELD = "Diesel particulate matter (percentile)"
+
+        # PM2.5
+        self.PM25_FIELD = "Particulate matter (PM2.5) (percentile)"
+
+        # Traffic proximity and volume
+        self.TRAFFIC_FIELD = "Traffic proximity and volume (percentile)"
+
+        # Lead paint
+        self.LEAD_PAINT_FIELD = "Percent pre-1960s housing (lead paint indicator) (percentile)"
+
+        # Housing cost burden
+        self.HOUSING_BURDEN_FIELD = "Housing burden (percent) (percentile)"
+
+        # Wastewater discharge
+        self.WASTEWATER_FIELD = "Wastewater discharge (percentile)"
+
+        # Diabetes
+        self.DIABETES_FIELD = "Diagnosed diabetes among adults aged >=18 years (percentile)"
+
+        # Asthma
+        self.ASTHMA_FIELD = "Current asthma among adults aged >=18 years (percentile)"
+
+        # Heart disease
+        self.HEART_DISEASE_FIELD = "Coronary heart disease among adults aged >=18 years (percentile)"
+
+        # Life expectancy
+        self.LIFE_EXPECTANCY_FIELD = "Life expectancy (years) (percentile)"
+
+        # Unemployment
+        self.UNEMPLOYMENT_FIELD = "Unemployed civilians (percent)"
+
+        # Median income as % of AMI
+        self.MEDIAN_INCOME_FIELD = "Median household income (% of AMI)"
+
+        # Linguistic isolation
+        self.LINGUISTIC_ISO_FIELD = "Linguistic isolation (percent)"
+
+        # Less than high school education
+        self.HIGH_SCHOOL_ED_FIELD = "Percent individuals age 25 or over with less than high school degree"
 
     def climate_factor(self) -> bool:
         # In Xth percentile or above for FEMA’s Risk Index (Source: FEMA
@@ -31,8 +78,8 @@ class ScoreCalculator(ExtractTransformLoad):
         # of households where household income is less than or equal to twice the federal 
         # poverty level. Source: Census's American Community Survey]
         return ( 
-            (self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME] > 0.60) 
-            & (self.df[self.NATIONAL_RISK_FIELD_NAME] > 0.40) 
+            (self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD] > 0.60) 
+            & (self.df[self.NATIONAL_RISK_FIELD] > 0.90) 
         )
 
     def energy_factor(self) -> bool:
@@ -42,8 +89,8 @@ class ScoreCalculator(ExtractTransformLoad):
         # of households where household income is less than or equal to twice the federal 
         # poverty level. Source: Census's American Community Survey]
         return ( 
-            (self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME] > 0.40) 
-            & (self.df[self.ENERGY_BURDEN_FIELD_NAME] > 0.40) 
+            (self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD] > 0.40) 
+            & (self.df[self.ENERGY_BURDEN_FIELD] > 0.90) 
         )
 
     def transportation_factor(self) -> bool:
@@ -56,9 +103,14 @@ class ScoreCalculator(ExtractTransformLoad):
         # Low income: In 60th percentile or above for percent of block group population 
         # of households where household income is less than or equal to twice the federal 
         # poverty level. Source: Census's American Community Survey]
+        transportation_criteria = (
+            (self.df[self.DIESEL_FIELD] > 0.90)
+            | (self.df[self.PM25_FIELD] > 0.90)
+            | self.df[self.TRAFFIC_FIELD] > 0.90
+        )
         return ( 
-            (self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME] > 0.40) 
-            & (self.df[self.ENERGY_BURDEN_FIELD_NAME] > 0.40) 
+            (self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD] > 0.40) 
+            &  transportation_criteria
         )
 
     def housing_factor(self) -> bool:
@@ -69,9 +121,13 @@ class ScoreCalculator(ExtractTransformLoad):
         # Low income: In 60th percentile or above for percent of block group population 
         # of households where household income is less than or equal to twice the federal 
         # poverty level. Source: Census's American Community Survey]
+        housing_criteria =  (
+            (self.df[self.LEAD_PAINT_FIELD] > 0.40) 
+            | (self.df[self.HOUSING_BURDEN_FIELD] > 0.90) 
+        )
         return ( 
-            (self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME] > 0.40) 
-            & (self.df[self.ENERGY_BURDEN_FIELD_NAME] > 0.40) 
+            (self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD] > 0.40) 
+            & housing_criteria
         )
 
     def pollution_factor(self) -> bool:
@@ -89,8 +145,8 @@ class ScoreCalculator(ExtractTransformLoad):
         # of households where household income is less than or equal to twice the federal 
         # poverty level. Source: Census's American Community Survey]
         return ( 
-            (self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME] > 0.40) 
-            & (self.df[self.ENERGY_BURDEN_FIELD_NAME] > 0.40) 
+            (self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD] > 0.40) 
+            & (self.df[self.WASTEWATER_FIELD] > 0.90) 
         )
 
     def health_factor(self) -> bool:
@@ -105,9 +161,16 @@ class ScoreCalculator(ExtractTransformLoad):
         # Low income: In 60th percentile or above for percent of block group population 
         # of households where household income is less than or equal to twice the federal 
         # poverty level. Source: Census's American Community Survey]
+
+        health_criteria =  (
+            (self.df[self.DIABETES_FIELD] > 0.90) 
+            | (self.df[self.ASTHMA_FIELD] > 0.90) 
+            | (self.df[self.HEART_DISEASE_FIELD] > 0.90) 
+            | (self.df[self.LIFE_EXPECTANCY_FIELD] < 0.10) # A HIGH NUMBER HERE IS GOOD
+        )
         return ( 
-            (self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME] > 0.40) 
-            & (self.df[self.ENERGY_BURDEN_FIELD_NAME] > 0.40) 
+            (self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD] > 0.40) 
+            & health_criteria
         )
         
     def workforce_factor(self) -> bool:
@@ -121,9 +184,14 @@ class ScoreCalculator(ExtractTransformLoad):
         # AND
         # Where the high school degree achievement rates for adults 25 years and older is less than 95% 
         # (necessary to screen out university block groups)
-
+        workforce_criteria = (
+            (self.df[self.UNEMPLOYMENT_FIELD] > 0.40) 
+            | (self.df[self.MEDIAN_INCOME_FIELD] > 0.40) 
+            | (self.df[self.POVERTY_LESS_THAN_100_FPL_FIELD] > 0.40) 
+            | (self.df[self.LINGUISTIC_ISO_FIELD] > 0.40) 
+        )
         return ( 
-            (self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME] > 0.40) 
-            & (self.df[self.ENERGY_BURDEN_FIELD_NAME] > 0.40) 
+            (self.df[self.HIGH_SCHOOL_ED_FIELD] > 0.05) 
+            & workforce_criteria
         )
         
