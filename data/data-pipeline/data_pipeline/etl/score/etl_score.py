@@ -710,7 +710,7 @@ class ScoreETL(ExtractTransformLoad):
                     "Transportation Factor", "Housing Factor",
                     "Pollution Factor", "Water Factor",
                     "Health Factor", "Workforce Factor"]
-        df['Score L'] = df[factors].any(axis=1)
+        df['Score L (communities)'] = df[factors].any(axis=1)
         return df
 
     # TODO Move a lot of this to the ETL part of the pipeline
