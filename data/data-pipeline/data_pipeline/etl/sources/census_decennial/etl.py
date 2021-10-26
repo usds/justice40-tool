@@ -9,6 +9,8 @@ from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.sources.census.etl_utils import get_state_fips_codes
 from data_pipeline.utils import get_module_logger
 
+pd.options.mode.chained_assignment = "raise"
+
 logger = get_module_logger(__name__)
 
 
@@ -119,10 +121,6 @@ class CensusDecennialETL(ExtractTransformLoad):
                 df = json.loads(download.content)
                 # First row is the header
                 df = pd.DataFrame(df[1:], columns=df[0])
-                # new_header = df.iloc[0]
-                # df = df[1:]
-                # df.columns = new_header
-
                 
                 for col in island['var_list'].split(","):
                     # Converting appropriate variables to numeric.
