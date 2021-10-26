@@ -5,7 +5,7 @@ from data_pipeline.utils import get_module_logger
 logger = get_module_logger(__name__)
 
 
-class ScoreCalculator():
+class ScoreCalculator:
     def __init__(self, df: pd.DataFrame):
         # Define some global parameters
         self.df = df
@@ -74,9 +74,7 @@ class ScoreCalculator():
         self.LINGUISTIC_ISO_FIELD = "Linguistic isolation (percent)"
 
         # Less than high school education
-        self.HIGH_SCHOOL_ED_FIELD: str = (
-            "Percent individuals age 25 or over with less than high school degree"
-        )
+        self.HIGH_SCHOOL_ED_FIELD: str = "Percent individuals age 25 or over with less than high school degree"
 
         self.LOW_INCOME_THRESHOLD = 0.60
 
