@@ -143,7 +143,7 @@ def score_full_run():
 
 @cli.command(help="Generate Geojson files with scores baked in")
 @click.option(
-    "-d",
+    "-s",
     "--data-source",
     default="local",
     required=False,
@@ -182,7 +182,7 @@ def generate_map_tiles():
     help="Run etl_score_post to create score csv, tile csv, and downloadable zip",
 )
 @click.option(
-    "-d",
+    "-s",
     "--data-source",
     default="local",
     required=False,
@@ -217,7 +217,7 @@ def generate_score_post(data_source: str):
     help="Check if data run has been run before, and don't run it if so.",
 )
 @click.option(
-    "-d",
+    "-s",
     "--data-source",
     default="local",
     required=False,

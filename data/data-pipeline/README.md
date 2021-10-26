@@ -203,7 +203,7 @@ To install the above-named executables:
 
 ### Windows Users
 
-If you want to run tile generation, please install TippeCanoe [following these instructions](https://github.com/GISupportICRC/ArcGIS2Mapbox#installing-tippecanoe-on-windows). You also need some pre-requisites for Geopandas as specified in the Poetry requirements. Please follow [these instructions](https://stackoverflow.com/questions/56958421/pip-install-geopandas-on-windows) to install the Geopandas dependency locally. It's definitely easier if you have access to WSL (Windows Subsystem Linux), and install these packages using 
+If you want to run tile generation, please install TippeCanoe [following these instructions](https://github.com/GISupportICRC/ArcGIS2Mapbox#installing-tippecanoe-on-windows). You also need some pre-requisites for Geopandas as specified in the Poetry requirements. Please follow [these instructions](https://stackoverflow.com/questions/56958421/pip-install-geopandas-on-windows) to install the Geopandas dependency locally. It's definitely easier if you have access to WSL (Windows Subsystem Linux), and install these packages using commands similar to our [Dockerfile](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/Dockerfile).
 
 ### Setting up Poetry
 
@@ -226,16 +226,35 @@ After installing the poetry dependencies, you can see a list of commands with th
 - Change to the package directory (i.e. `cd data/data-pipeline/data_pipeline`)
 - If you want to clear out all data and tiles from all directories, you can run: `poetry run python3 data_pipeline/application.py data-cleanup`.
 - Then run `poetry run python3 data_pipeline/application.py census-data-download`
-  Note: Census files are hosted in the Justice40 S3 and you can skip this step by passing the `datasource` flag in the scripts below
+  Note: Census files are hosted in the Justice40 S3 and you can skip this step by passing the `-s aws` or `--data-source aws` flag in the scripts below
 
 
-### Run all ETL processes 
+### Run all ETL, score and map generation processes
+- Start a terminal
+- Change to the package directory (i.e. `cd data/data-pipeline/data_pipeline`)
+- Then run `poetry run python3 data_pipeline/application.py data-full-run -s aws`
+- Note: The `-s` flag is optional if you have generated/downloaded the census data
+
+
+### Run both ETL and score generation processes
+- Start a terminal
+- Change to the package directory (i.e. `cd data/data-pipeline/data_pipeline`)
+- Then run `poetry run python3 data_pipeline/application.py score-full-run`
+
+
+### Run all ETL processes
+- Start a terminal
+- Change to the package directory (i.e. `cd data/data-pipeline/data_pipeline`)
+- Then run `poetry run python3 data_pipeline/application.py etl-run`
+
+
 ### Generating Map Tiles
 
 - Start a terminal
 - Change to the package directory (i.e. `cd data/data-pipeline/data_pipeline`)
-- Then run `poetry run python3 data_pipeline/application.py generate-map-tiles`
+- Then run `poetry run python3 data_pipeline/application.py generate-map-tiles -s aws`
 - If you have S3 keys, you can sync to the dev repo by doing `aws s3 sync ./data_pipeline/data/score/tiles/ s3://justice40-data/data-pipeline/data/score/tiles --acl public-read --delete`
+- Note: The `-s` flag is optional if you have generated/downloaded the score data
 
 ### Serve the map locally
 
@@ -255,8 +274,7 @@ After installing the poetry dependencies, you can see a list of commands with th
 - Activate a Poetry Shell (see above)
 - Run `jupyter contrib nbextension install --user`
 - Run `jupyter nbextension enable python-markdown/main`
-- Make sure you've loaded the Jupyter notebook in a "Trusted" state. (See button near
-  top right of Notebook screen.)
+- Make sure you've loaded the Jupyter notebook in a "Trusted" state. (See button near top right of Notebook screen.)
 
 For more information, see [nbextensions docs](https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/install.html) and
 see [python-markdown docs](https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tree/master/src/jupyter_contrib_nbextensions/nbextensions/python-markdown).
