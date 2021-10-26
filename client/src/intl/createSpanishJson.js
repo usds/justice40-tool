@@ -3,6 +3,8 @@
  * keys and place all keys in es.json. It will also add English copy for easy translation.
  * It will add spaces between each key for ease of reading.
  *
+ * The output file may require to escape double-quotes and remove the trailing comma
+ *
  * TODO: Modify this file to use the existing es.json so that we don't overwrite
  * existing translations.
  */
@@ -25,11 +27,7 @@ if (englishKeys.length === englishMessage.length) {
 
   // Loop through all keys adding english and spanish content:
   for (i=0; i<englishKeys.length; i++ ) {
-    logger.write(`\t"${englishKeys[i]}_english" : "${englishMessage[i]}",\n`);
-    logger.write(`\t"${englishKeys[i]}" : ""`);
-
-    // if the last entry, don't place trailing comma:
-    i === englishKeys.length - 1 ? logger.write('\n\n') : logger.write(',\n\n');
+    logger.write(`\t"${englishKeys[i]}" : "${englishMessage[i]}",\n`);
   }
 
   // Write the closing curly bracket:
