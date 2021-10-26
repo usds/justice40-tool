@@ -281,6 +281,149 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <h2>
             Email us
           </h2>
+          <label
+            class="usa-label"
+            data-testid="label"
+            for="messageType"
+          >
+            What would you like to inform us about?
+          </label>
+          <div
+            class="usa-combo-box"
+            data-testid="combo-box"
+            id="messageType"
+          >
+            <select
+              aria-hidden="true"
+              class="usa-select usa-sr-only usa-combo-box__select"
+              data-testid="combo-box-select"
+              name="messageType"
+              tabindex="-1"
+            >
+              <option
+                value="Report a bug"
+              >
+                Report a bug
+              </option>
+              <option
+                value="Community feedback"
+              >
+                Community feedback
+              </option>
+              <option
+                value="Dataset feedback"
+              >
+                Dataset feedback
+              </option>
+            </select>
+            <input
+              aria-describedby="combobox-messageType-assistive-hint"
+              aria-expanded="false"
+              aria-owns="combobox-messageType-list"
+              autocapitalize="off"
+              autocomplete="off"
+              class="usa-combo-box__input"
+              data-testid="combo-box-input"
+              role="combobox"
+              type="text"
+              value=""
+            />
+            <span
+              class="usa-combo-box__clear-input__wrapper"
+              tabindex="-1"
+            >
+              <button
+                aria-label="Clear the select contents"
+                class="usa-combo-box__clear-input"
+                data-testid="combo-box-clear-button"
+                hidden=""
+                type="button"
+              >
+                 
+              </button>
+            </span>
+            <span
+              class="usa-combo-box__input-button-separator"
+            >
+               
+            </span>
+            <span
+              class="usa-combo-box__toggle-list__wrapper"
+              tabindex="-1"
+            >
+              <button
+                aria-label="Toggle the dropdown list"
+                class="usa-combo-box__toggle-list"
+                data-testid="combo-box-toggle"
+                tabindex="-1"
+                type="button"
+              >
+                 
+              </button>
+            </span>
+            <ul
+              aria-labelledby="message-type-label"
+              class="usa-combo-box__list"
+              data-testid="combo-box-option-list"
+              hidden=""
+              id="combobox-messageType-list"
+              role="listbox"
+              tabindex="-1"
+            >
+              <li
+                aria-posinset="1"
+                aria-selected="false"
+                aria-setsize="64"
+                class="usa-combo-box__list-option"
+                data-testid="combo-box-option-Report a bug"
+                id="combobox-messageType-list--option-0"
+                role="option"
+                tabindex="-1"
+                value="Report a bug"
+              >
+                Report a bug
+              </li>
+              <li
+                aria-posinset="2"
+                aria-selected="false"
+                aria-setsize="64"
+                class="usa-combo-box__list-option"
+                data-testid="combo-box-option-Community feedback"
+                id="combobox-messageType-list--option-1"
+                role="option"
+                tabindex="-1"
+                value="Community feedback"
+              >
+                Community feedback
+              </li>
+              <li
+                aria-posinset="3"
+                aria-selected="false"
+                aria-setsize="64"
+                class="usa-combo-box__list-option"
+                data-testid="combo-box-option-Dataset feedback"
+                id="combobox-messageType-list--option-2"
+                role="option"
+                tabindex="-1"
+                value="Dataset feedback"
+              >
+                Dataset feedback
+              </li>
+            </ul>
+            <div
+              class="usa-combo-box__status usa-sr-only"
+              role="status"
+            />
+            <span
+              class="usa-sr-only"
+              data-testid="combo-box-assistive-hint"
+              id="combobox-messageType-assistive-hint"
+            >
+              When autocomplete results are available use up and down arrows to review
+           and enter to select. Touch device users, explore by touch or with swipe
+           gestures.
+            </span>
+          </div>
           <p>
             For general feedback, email 
             <a
@@ -291,6 +434,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               screeningtool.feedback@usds.gov
             </a>
           </p>
+          <br />
         </div>
       </div>
     </div>
