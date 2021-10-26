@@ -117,10 +117,11 @@ class CensusDecennialETL(ExtractTransformLoad):
                 download = requests.get(self.API_URL.format(self.DECENNIAL_YEAR, island['state_abbreviation'], island['var_list'], island['fips'], county))
 
                 df = json.loads(download.content)
-                df = pd.DataFrame(df)
-                new_header = df.iloc[0]
-                df = df[1:]
-                df.columns = new_header
+                # First row is the header
+                df = pd.DataFrame(df[1:], columns=df[0])
+                # new_header = df.iloc[0]
+                # df = df[1:]
+                # df.columns = new_header
 
                 
                 for col in island['var_list'].split(","):

@@ -40,7 +40,7 @@ tests = ["coverage[toml] (>=5.0.2)", "hypothesis", "pytest"]
 name = "astroid"
 version = "2.8.3"
 description = "An abstract syntax tree for Python with inference support."
-category = "dev"
+category = "main"
 optional = false
 python-versions = "~=3.6"
 
@@ -526,7 +526,7 @@ test = ["pytest (>=3.6.0)", "pytest-cov", "mock"]
 name = "isort"
 version = "5.9.3"
 description = "A Python utility / library to sort Python imports."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6.1,<4.0"
 
@@ -772,7 +772,7 @@ python-versions = ">=3.7"
 name = "lazy-object-proxy"
 version = "1.6.0"
 description = "A fast and thorough lazy object proxy."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*"
 
@@ -842,7 +842,7 @@ traitlets = "*"
 name = "mccabe"
 version = "0.6.1"
 description = "McCabe checker, plugin for flake8"
-category = "dev"
+category = "main"
 optional = false
 python-versions = "*"
 
@@ -1109,7 +1109,7 @@ python-versions = ">=3.6"
 name = "platformdirs"
 version = "2.4.0"
 description = "A small Python module for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6"
 
@@ -1206,7 +1206,7 @@ python-versions = ">=3.5"
 name = "pylint"
 version = "2.11.1"
 description = "python code static checker"
-category = "dev"
+category = "main"
 optional = false
 python-versions = "~=3.6"
 
@@ -1562,7 +1562,7 @@ test = ["pytest"]
 name = "typed-ast"
 version = "1.4.3"
 description = "a fork of Python 2 and 3 ast modules with type comment support"
-category = "dev"
+category = "main"
 optional = false
 python-versions = "*"
 
@@ -1657,7 +1657,7 @@ notebook = ">=4.4.1"
 name = "wrapt"
 version = "1.13.2"
 description = "Module for decorators, wrappers and monkey patching."
-category = "dev"
+category = "main"
 optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 
@@ -1684,7 +1684,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7.1"
-content-hash = "c2246691eed63122a56cbb3348480efe7ddebd8b12bc07716cd5aff76550447c"
+content-hash = "1823efb9fae610a00eb714ec61fd165ec5cda3d38fa83c12b00e9d38f4358fa3"
 
 [metadata.files]
 appnope = [
