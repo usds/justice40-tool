@@ -3,10 +3,8 @@ import requests
 
 import numpy as np
 import pandas as pd
-import censusdata
 
 from data_pipeline.etl.base import ExtractTransformLoad
-from data_pipeline.etl.sources.census.etl_utils import get_state_fips_codes
 from data_pipeline.utils import get_module_logger
 
 pd.options.mode.chained_assignment = "raise"
@@ -58,11 +56,13 @@ class CensusDecennialETL(ExtractTransformLoad):
 
         self.MALE_HIGH_SCHOOL_ED_FIELD = "PBG026005"
         self.MALE_HIGH_SCHOOL_ED_VI_FIELD = "PCT032011"
-        self.MALE_HIGH_SCHOOL_ED_FIELD_NAME = "Total!!Male!!High school graduate, GED, or alternative; SEX BY EDUCATIONAL ATTAINMENT FOR THE POPULATION 25 YEARS AND OVER"
+        self.MALE_HIGH_SCHOOL_ED_FIELD_NAME = "Total!!Male!!High school graduate, GED, or alternative; "\
+            "SEX BY EDUCATIONAL ATTAINMENT FOR THE POPULATION 25 YEARS AND OVER"
 
         self.FEMALE_HIGH_SCHOOL_ED_FIELD = "PBG026012"
         self.FEMALE_HIGH_SCHOOL_ED_VI_FIELD = "PCT032028"
-        self.FEMALE_HIGH_SCHOOL_ED_FIELD_NAME = "Total!!Female!!High school graduate, GED, or alternative; SEX BY EDUCATIONAL ATTAINMENT FOR THE POPULATION 25 YEARS AND OVER"
+        self.FEMALE_HIGH_SCHOOL_ED_FIELD_NAME = "Total!!Female!!High school graduate, GED, or alternative; "\
+           "SEX BY EDUCATIONAL ATTAINMENT FOR THE POPULATION 25 YEARS AND OVER"
 
         self.PERCENTAGE_HIGH_SCHOOL_ED_FIELD_NAME = (
             "PERCENTAGE_HIGH_SCHOOL_ED_FIELD_NAME"
@@ -168,7 +168,10 @@ class CensusDecennialETL(ExtractTransformLoad):
                     # Also replacing 0s with NaNs
                     df[col] = pd.to_numeric(df[col])
 
-                    # TO-DO: CHECK THIS. I think it makes sense to replace 0 with NaN because for our variables of interest (e.g. Median Household Income, it doesn't make sense for that to be 0.) Likely, it's actually missing but can't find a cite for that in the docs
+                    # TO-DO: CHECK THIS. I think it makes sense to replace 0 with NaN
+                    # because for our variables of interest (e.g. Median Household Income,
+                    # it doesn't make sense for that to be 0.)
+                    # Likely, it's actually missing but can't find a cite for that in the docs
                     df[col] = df[col].replace(0, np.nan)
 
                 if island["state_abbreviation"] == "vi":
@@ -221,9 +224,7 @@ class CensusDecennialETL(ExtractTransformLoad):
         for col in self.df_all.columns:
             missing_value_count = self.df_all[col].isnull().sum()
             logger.info(
-                "There are {} missing values in the field {} out of a total of {} rows".format(
-                    missing_value_count, col, self.df_all.shape[0]
-                )
+                f"There are {missing_value_count} missing values in the field {col} out of a total of {self.df_all.shape[0]} rows"
             )
 
     def load(self) -> None:
