@@ -91,6 +91,7 @@ class CensusDecennialETL(ExtractTransformLoad):
 
 
         # To do: Ask Census Slack Group about whether you need to hardcode the county fips
+        # https://uscensusbureau.slack.com/archives/C6DGLC05B/p1635218909012600
         self.ISLAND_TERRITORIES = [
             {'state_abbreviation': 'as', 'fips': '60', 'county_fips': ['010', '020', '030', '040', '050'], 'var_list': var_list},
             {'state_abbreviation': 'gu', 'fips': '66', 'county_fips': ['010'], 'var_list': var_list},
