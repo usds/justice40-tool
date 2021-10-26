@@ -151,7 +151,7 @@ def score_full_run():
     help=dataset_cli_help,
 )
 def geo_score(data_source: str):
-    """CLI command to generate the score
+    """CLI command to combine score with GeoJSON data and generate low and high files
 
     Args:
         data_source (str): Source for the census data (optional)
