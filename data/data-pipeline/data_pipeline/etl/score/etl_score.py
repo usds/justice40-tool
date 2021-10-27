@@ -693,7 +693,7 @@ class ScoreETL(ExtractTransformLoad):
         return df
 
     def _add_score_l_factors(self, df: pd.DataFrame) -> pd.DataFrame:
-        logger.info("Adding Score L and factors")
+        logger.info("Adding Definition L and factors")
         calc = ScoreCalculator(df=df)
         df = calc.add_score_l_factors()
         return df
@@ -850,7 +850,7 @@ class ScoreETL(ExtractTransformLoad):
         # Calculate "Score G through K", which uses AMI and poverty.
         self.df = self._add_score_g_k(self.df)
 
-        # Calculate Score L and its factors
+        # Calculate Definition L and its factors
         self.df = self._add_score_l_factors(self.df)
 
     def load(self) -> None:

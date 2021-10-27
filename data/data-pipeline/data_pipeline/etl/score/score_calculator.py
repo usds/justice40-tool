@@ -92,40 +92,40 @@ class ScoreCalculator(ExtractTransformLoad):
         self.ENVIRONMENTAL_BURDEN_THRESHOLD: float = 0.90
 
     def add_score_l_factors(self):
-        self.df["Climate Factor (Score L)"] = self.climate_factor()
-        self.df["Energy Factor (Score L)"] = self.energy_factor()
+        self.df["Climate Factor (Definition L)"] = self.climate_factor()
+        self.df["Energy Factor (Definition L)"] = self.energy_factor()
         self.df[
-            "Transportation Factor (Score L)"
+            "Transportation Factor (Definition L)"
         ] = self.transportation_factor()
-        self.df["Housing Factor (Score L)"] = self.housing_factor()
-        self.df["Pollution Factor (Score L)"] = self.pollution_factor()
-        self.df["Water Factor (Score L)"] = self.water_factor()
-        self.df["Health Factor (Score L)"] = self.health_factor()
-        self.df["Workforce Factor (Score L)"] = self.workforce_factor()
+        self.df["Housing Factor (Definition L)"] = self.housing_factor()
+        self.df["Pollution Factor (Definition L)"] = self.pollution_factor()
+        self.df["Water Factor (Definition L)"] = self.water_factor()
+        self.df["Health Factor (Definition L)"] = self.health_factor()
+        self.df["Workforce Factor (Definition L)"] = self.workforce_factor()
 
         factors = [
-            "Climate Factor (Score L)",
-            "Energy Factor (Score L)",
-            "Transportation Factor (Score L)",
-            "Housing Factor (Score L)",
-            "Pollution Factor (Score L)",
-            "Water Factor (Score L)",
-            "Health Factor (Score L)",
-            "Workforce Factor (Score L)",
+            "Climate Factor (Definition L)",
+            "Energy Factor (Definition L)",
+            "Transportation Factor (Definition L)",
+            "Housing Factor (Definition L)",
+            "Pollution Factor (Definition L)",
+            "Water Factor (Definition L)",
+            "Health Factor (Definition L)",
+            "Workforce Factor (Definition L)",
         ]
-        self.df["Score L (communities)"] = self.df[factors].any(axis=1)
+        self.df["Definition L (communities)"] = self.df[factors].any(axis=1)
 
         # Note: this is purely used for comparison tool analysis, and can be removed at a later date. - LMB.
         non_workforce_factors = [
-            "Climate Factor (Score L)",
-            "Energy Factor (Score L)",
-            "Transportation Factor (Score L)",
-            "Housing Factor (Score L)",
-            "Pollution Factor (Score L)",
-            "Water Factor (Score L)",
-            "Health Factor (Score L)",
+            "Climate Factor (Definition L)",
+            "Energy Factor (Definition L)",
+            "Transportation Factor (Definition L)",
+            "Housing Factor (Definition L)",
+            "Pollution Factor (Definition L)",
+            "Water Factor (Definition L)",
+            "Health Factor (Definition L)",
         ]
-        self.df["Any Non-Workforce Factor (Score L)"] = self.df[
+        self.df["Any Non-Workforce Factor (Definition L)"] = self.df[
             non_workforce_factors
         ].any(axis=1)
 
