@@ -1,7 +1,3 @@
-import collections
-import functools
-from pathlib import Path
-from typing import Dict, List
 import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
@@ -91,7 +87,7 @@ class ScoreCalculator(ExtractTransformLoad):
         self.LOW_INCOME_THRESHOLD: float = 0.60
         self.ENVIRONMENTAL_BURDEN_THRESHOLD: float = 0.90
 
-    def add_score_l_factors(self):
+    def add_definition_l_factors(self):
         self.df["Climate Factor (Definition L)"] = self.climate_factor()
         self.df["Energy Factor (Definition L)"] = self.energy_factor()
         self.df[
@@ -184,7 +180,8 @@ class ScoreCalculator(ExtractTransformLoad):
         ) & transportation_criteria
 
     def housing_factor(self) -> bool:
-        # In Xth percentile or above for lead paint (Source: Census's American Community Survey’s percent of housing units built pre-1960, used as an indicator of potential lead paint exposure in homes)
+        # In Xth percentile or above for lead paint (Source: Census's American Community Survey’s
+        # percent of housing units built pre-1960, used as an indicator of potential lead paint exposure in homes)
         # or
         # In Xth percentile or above for housing cost burden (Source: HUD's Comprehensive Housing Affordability Strategy dataset
         # AND
@@ -287,3 +284,11 @@ class ScoreCalculator(ExtractTransformLoad):
             )
         )
         return (self.df[self.HIGH_SCHOOL_ED_FIELD] > 0.05) & workforce_criteria
+
+    # Implementing some abstract methods from base class.
+    # Without these, pylint will complain.
+    def load(self):
+        raise NotImplementedError("It's not appropriate to use `load` on this class.")
+
+    def transform(self):
+        raise NotImplementedError("It's not appropriate to use `transform` on this class.")

@@ -692,10 +692,10 @@ class ScoreETL(ExtractTransformLoad):
 
         return df
 
-    def _add_score_l_factors(self, df: pd.DataFrame) -> pd.DataFrame:
+    def _add_definition_l_factors(self, df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Adding Definition L and factors")
         calc = ScoreCalculator(df=df)
-        df = calc.add_score_l_factors()
+        df = calc.add_definition_l_factors()
         return df
 
     # TODO Move a lot of this to the ETL part of the pipeline
@@ -851,7 +851,7 @@ class ScoreETL(ExtractTransformLoad):
         self.df = self._add_score_g_k(self.df)
 
         # Calculate Definition L and its factors
-        self.df = self._add_score_l_factors(self.df)
+        self.df = self._add_definition_l_factors(self.df)
 
     def load(self) -> None:
         logger.info("Saving Score CSV")
