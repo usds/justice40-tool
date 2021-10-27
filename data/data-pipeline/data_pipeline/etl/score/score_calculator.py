@@ -5,8 +5,7 @@ from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
 
-
-class ScoreCalculator(ExtractTransformLoad):
+class ScoreCalculator:
     def __init__(self, df: pd.DataFrame):
         # Define some global parameters
         self.df = df
@@ -284,11 +283,3 @@ class ScoreCalculator(ExtractTransformLoad):
             )
         )
         return (self.df[self.HIGH_SCHOOL_ED_FIELD] > 0.05) & workforce_criteria
-
-    # Implementing some abstract methods from base class.
-    # Without these, pylint will complain.
-    def load(self):
-        raise NotImplementedError("It's not appropriate to use `load` on this class.")
-
-    def transform(self):
-        raise NotImplementedError("It's not appropriate to use `transform` on this class.")
