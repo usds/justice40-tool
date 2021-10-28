@@ -5,6 +5,7 @@ import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger
+from data_pipeline.etl.score.score_calculator import ScoreCalculator
 
 logger = get_module_logger(__name__)
 
@@ -522,7 +523,7 @@ class ScoreETL(ExtractTransformLoad):
         )
         return df
 
-    def _add_scores_d_and_e(self, df: pd.DataFrame) -> pd.DataFrame:
+    def _add_scores_d_e(self, df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Adding Scores D and E")
         fields_to_use_in_score = [
             self.UNEMPLOYED_FIELD_NAME,
@@ -641,8 +642,8 @@ class ScoreETL(ExtractTransformLoad):
         )
         return df
 
-    def _add_score_g(self, df: pd.DataFrame) -> pd.DataFrame:
-        logger.info("Adding Score G")
+    def _add_score_g_k(self, df: pd.DataFrame) -> pd.DataFrame:
+        logger.info("Adding Score G through K")
 
         high_school_cutoff_threshold = 0.05
         high_school_cutoff_threshold_2 = 0.06
@@ -689,6 +690,12 @@ class ScoreETL(ExtractTransformLoad):
             & (df[self.HIGH_SCHOOL_FIELD_NAME] > high_school_cutoff_threshold_2)
         )
 
+        return df
+
+    def _add_definition_l_factors(self, df: pd.DataFrame) -> pd.DataFrame:
+        logger.info("Adding Definition L and factors")
+        calc = ScoreCalculator(df=df)
+        df = calc.add_definition_l_factors()
         return df
 
     # TODO Move a lot of this to the ETL part of the pipeline
@@ -831,7 +838,7 @@ class ScoreETL(ExtractTransformLoad):
         self.df = self._add_score_c(self.df, data_sets)
 
         # Calculate scores "D" and "E"
-        self.df = self._add_scores_d_and_e(self.df)
+        self.df = self._add_scores_d_e(self.df)
 
         # Create percentiles for the scores
         self.df = self._add_score_percentiles(self.df)
@@ -840,8 +847,11 @@ class ScoreETL(ExtractTransformLoad):
         # Calculate "Score F", which uses "either/or" thresholds.
         self.df = self._add_score_f(self.df)
 
-        # Calculate "Score G", which uses AMI and poverty.
-        self.df = self._add_score_g(self.df)
+        # Calculate "Score G through K", which uses AMI and poverty.
+        self.df = self._add_score_g_k(self.df)
+
+        # Calculate Definition L and its factors
+        self.df = self._add_definition_l_factors(self.df)
 
     def load(self) -> None:
         logger.info("Saving Score CSV")
