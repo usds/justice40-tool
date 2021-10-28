@@ -56,9 +56,14 @@ const ContactPage = ({location}: IContactPageProps) => {
             <ComboBox
               id="messageType"
               name="messageType"
+              inputProps={{
+                'aria-labelledby': 'Select form type',
+                'title': 'Form Selector',
+                'aria-label': 'Select form type',
+              }}
               options={messageTypes}
               onChange={(messageType) => onMessageTypeChange(messageType)}
-              ulProps={{'aria-labelledby': 'message-type-label'}}
+              ulProps={{'aria-labelledby': 'Form type options'}}
             />
 
             <IQContactForm messageType={messageType} />

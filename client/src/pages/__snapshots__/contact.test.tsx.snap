@@ -319,12 +319,15 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <input
               aria-describedby="combobox-messageType-assistive-hint"
               aria-expanded="false"
+              aria-label="Select form type"
+              aria-labelledby="Select form type"
               aria-owns="combobox-messageType-list"
               autocapitalize="off"
               autocomplete="off"
               class="usa-combo-box__input"
               data-testid="combo-box-input"
               role="combobox"
+              title="Form Selector"
               type="text"
               value=""
             />
@@ -362,7 +365,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </button>
             </span>
             <ul
-              aria-labelledby="message-type-label"
+              aria-labelledby="Form type options"
               class="usa-combo-box__list"
               data-testid="combo-box-option-list"
               hidden=""
