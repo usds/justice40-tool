@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of the Language checks if component renders 1`] = `
+<DocumentFragment>
+  <div>
+    <a
+      style="margin: 10px; text-decoration: underline; cursor: pointer;"
+    >
+      English
+    </a>
+    <a
+      style="margin: 10px; text-decoration: underline; cursor: pointer;"
+    >
+      Español
+    </a>
+  </div>
+</DocumentFragment>
+`;

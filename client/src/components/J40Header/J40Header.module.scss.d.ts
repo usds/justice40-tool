@@ -1,5 +1,8 @@
 declare namespace J40HeaderNamespace {
     export interface IDatasetCardScss {
+        fullScreenContainer: string;
+        bannerContainer: string;
+        language: string;
         logoNavRow: string;
         logo: string;
         logoTitle: string;

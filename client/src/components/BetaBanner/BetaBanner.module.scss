@@ -6,7 +6,7 @@
   .betaBanner {
     @include u-display("flex");
     @include u-height(3);
-    max-width: 60.25rem; // Needs this exact value to align with GovBanner
+    max-width: 70.25rem; // Needs this exact value to align with GovBanner
     @include u-font("body", "3xs");
     @include u-margin-left(auto);
     @include u-margin-right(auto);
