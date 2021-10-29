@@ -1,6 +1,8 @@
 import React from 'react';
 import {IntlContextConsumer, changeLocale} from 'gatsby-plugin-intl';
 
+// @ts-ignore
+import languageIcon from '/node_modules/uswds/dist/img/usa-icons/language.svg';
 import * as styles from './Language.module.scss';
 
 const languageName = {
@@ -11,17 +13,14 @@ const languageName = {
 const Language = () => {
   return (
     <div className={styles.languageContainer}>
+      <img className={styles.languageIcon} src={languageIcon} alt={'language icon for selecting language'}/>
       <IntlContextConsumer>
         {({languages, language: currentLocale}) =>
           languages.map((language: React.Key | null | undefined) => (
             <a
+              className={styles.languageLink}
               key={language}
               onClick={() => changeLocale(language)}
-              style={{
-                margin: 10,
-                textDecoration: `underline`,
-                cursor: `pointer`,
-              }}
             >
               {languageName[language]}
             </a>

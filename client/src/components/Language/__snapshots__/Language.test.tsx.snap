@@ -3,14 +3,14 @@
 exports[`rendering of the Language checks if component renders 1`] = `
 <DocumentFragment>
   <div>
-    <a
-      style="margin: 10px; text-decoration: underline; cursor: pointer;"
-    >
+    <img
+      alt="language icon for selecting language"
+      src="test-file-stub"
+    />
+    <a>
       English
     </a>
-    <a
-      style="margin: 10px; text-decoration: underline; cursor: pointer;"
-    >
+    <a>
       Español
     </a>
   </div>

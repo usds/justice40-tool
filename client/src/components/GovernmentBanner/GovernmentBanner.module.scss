@@ -2,7 +2,9 @@
 
 .fullScreenContainer {
     background-color: #f0f0f0; // Non-tokenizable color
-  
+    @include u-padding-top('05');
+    @include u-padding-bottom('05');
+
     .bannerContainer {
       @include u-display("flex");
       max-width: 74rem; 
