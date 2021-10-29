@@ -4,12 +4,11 @@ import {
   Header,
   NavMenuButton,
   PrimaryNav,
-  GovBanner,
   Grid,
 } from '@trussworks/react-uswds';
 import BetaBanner from '../BetaBanner';
 import J40MainGridContainer from '../J40MainGridContainer';
-import Language from '../Language';
+import GovernmentBanner from '../GovernmentBanner';
 
 // @ts-ignore
 import siteLogo from '../../images/j40-logo-v2.png';
@@ -75,15 +74,8 @@ const J40Header = () => {
   return (
     <Header basic={true} role={'banner'}>
 
-      {/* Move to it's own component */}
-      {/* Gov Banners */}
-      <div className={styles.fullScreenContainer}>
-        <div className={styles.bannerContainer}>
-          <GovBanner/>
-          <Language />
-        </div>
-      </div>
-
+      {/* Banners */}
+      <GovernmentBanner />
       <BetaBanner/>
 
       {/* Logo and Navigation */}

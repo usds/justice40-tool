@@ -1,0 +1,14 @@
+@use '../../styles/design-system.scss' as *;
+
+.fullScreenContainer {
+    background-color: #f0f0f0; // Non-tokenizable color
+  
+    .bannerContainer {
+      @include u-display("flex");
+      max-width: 74rem; 
+      @include u-margin-left(auto);
+      @include u-margin-right(auto);
+      justify-content: space-between;
+    }
+    
+}

@@ -5,19 +5,6 @@
   @include u-text("gray-90");
 }
 
-
-.fullScreenContainer {
-  background-color: #f0f0f0;
-
-  .bannerContainer {
-    display: flex;
-    max-width: 74rem;
-    margin: auto;
-    justify-content: space-between;
-  }
-  
-}
-
 .logoNavRow {
   @include u-margin-top(4);
 
