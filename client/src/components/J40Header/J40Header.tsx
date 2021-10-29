@@ -5,12 +5,15 @@ import {
   NavMenuButton,
   PrimaryNav,
   GovBanner,
-  Tag,
+  Grid,
 } from '@trussworks/react-uswds';
+import BetaBanner from '../BetaBanner';
+import J40MainGridContainer from '../J40MainGridContainer';
 
 // @ts-ignore
-import siteLogo from '../../src/images/icon.png';
-import * as COMMON_COPY from '../data/copy/common';
+import siteLogo from '../../images/j40-logo-v2.png';
+import * as styles from './J40Header.module.scss';
+import * as COMMON_COPY from '../../data/copy/common';
 
 const J40Header = () => {
   const intl = useIntl();
@@ -31,7 +34,6 @@ const J40Header = () => {
           to={'/'}
           key={'about'}
           activeClassName="usa-current"
-          className={'j40-header'}
           data-cy={'nav-link-about'}>
           {intl.formatMessage(COMMON_COPY.HEADER.ABOUT)}
         </Link>,
@@ -41,7 +43,6 @@ const J40Header = () => {
           to={'/cejst'}
           key={'cejst'}
           activeClassName="usa-current"
-          className={'j40-header'}
           data-cy={'nav-link-explore-the-tool'}>
           {intl.formatMessage(COMMON_COPY.HEADER.EXPLORE)}
         </Link>,
@@ -51,7 +52,6 @@ const J40Header = () => {
           to={'/methodology'}
           key={'methodology'}
           activeClassName="usa-current"
-          className={'j40-header'}
           data-cy={'nav-link-methodology'}>
           {intl.formatMessage(COMMON_COPY.HEADER.METHODOLOGY)}
         </Link>,
@@ -61,7 +61,6 @@ const J40Header = () => {
           to={'/contact'}
           key={'contact'}
           activeClassName="usa-current"
-          className={'j40-header'}
           data-cy={'nav-link-contact'}>
           {intl.formatMessage(COMMON_COPY.HEADER.CONTACT)}
         </Link>,
@@ -73,38 +72,49 @@ const J40Header = () => {
   };
 
   return (
-    <>
-      <Header
-        basic={true} role={'banner'}
-        className={'usa-header j40-header'}>
-        <GovBanner/>
-        <div className="usa-nav-container">
-          <div className="usa-navbar">
-            {/* Removing h1 from logo ease transition to USWDS tokens in headers */}
-            {/* https://wehavezeal.com/blog/web-development/2016/01/12/should-i-use-the-h1-tag-for-my-website-logo */}
-            <div className="usa-logo">
-              <img className="j40-sitelogo" src={siteLogo} alt={`${titleL1} ${titleL2}`} />
-              <span className={'usa-logo__text j40-title'}>
-                <span className={'j40-title-line1'}>{titleL1}</span><br/>
-                <span className={'j40-title-line2'}>{titleL2}</span>
-                <Tag className={'j40'}>Beta</Tag>
-              </span>
+    <Header basic={true} role={'banner'}>
+
+      {/* Banners */}
+      <GovBanner/>
+      <BetaBanner/>
+
+      {/* Logo and Navigation */}
+      <J40MainGridContainer>
+
+        <Grid className={styles.logoNavRow} row>
+
+          {/* Logo */}
+          <Grid col={1}>
+            <img className={styles.logo} src={siteLogo} alt={`${titleL1} ${titleL2}`} />
+          </Grid>
+
+          {/* Logo Title */}
+          <Grid col={6}>
+            <div className={styles.logoTitle}>
+              <div>{titleL1}</div>
+              <div className={styles.title2BetaPill}>
+                <div> {titleL2} </div>
+                <div className={styles.betaPill}>BETA</div>
+              </div>
             </div>
+          </Grid>
+
+          {/* Nav links */}
+          <Grid col={'fill'} className={styles.navLinks}>
             <NavMenuButton
               key={'mobileMenuButton'}
               onClick={toggleMobileNav}
               label="Menu"/>
-          </div>
-          <PrimaryNav
-            items={headerLinks()}
-            mobileExpanded={mobileNavOpen}
-            onToggleMobileNav={toggleMobileNav}
-            className={'j40-header'}
-          >
-          </PrimaryNav>
-        </div>
-      </Header>
-    </>
+            <PrimaryNav
+              items={headerLinks()}
+              mobileExpanded={mobileNavOpen}
+              onToggleMobileNav={toggleMobileNav}
+            />
+          </Grid>
+
+        </Grid>
+      </J40MainGridContainer>
+    </Header>
   );
 };
 

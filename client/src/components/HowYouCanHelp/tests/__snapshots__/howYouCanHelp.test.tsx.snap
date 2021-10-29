@@ -12,7 +12,7 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
         <a
           href="mailto:screeningtool.feedback@usds.gov"
         >
-          recieve an email from you
+          receive an email from you
         </a>
         .
       </li>
@@ -21,7 +21,7 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
         <a
           href="/en/methodology"
         >
-          Data and methodology
+          Data & methodology
         </a>
          page and send us feedback.
       </li>

@@ -20,11 +20,9 @@ There are 3 things that should be included in this file:
   Instead of having a separate file for these styles, all styles are being placed here.
   - Global styles
   - Layout styles
-    -- Header styles
     -- Main content styles
     -- Footer styles
   - Component styles
-    -- Alert styles
     -- Map styles
     -- Timeline/process list styles
     -- About styles
@@ -101,93 +99,9 @@ p.flush {
 This section will outline styles for components that are on each page. These 
 components include:
 
-- header styles
 - main content styles
 - footer styles
 
-******************************
-*      HEADER STYLES
-****************************** 
-*/ 
-.j40-header,
-.j40-primary-nav,
-.j40-header > li > a {
-
-  // Todo color: remove this global
-  // May be able to place importance like this: u-bg('red-warm-50v', !important)
-  color: $primary-color !important; 
-  z-index: 5;
-
-  .usa-nav-container {
-    max-width: 76rem;
-  }
-
-  span {
-    // make sure the open close chevron is colored correctly
-    color: $primary-color; // Todo color: remove this global
-  }
-
-  // this is the title
-  @include at-media("desktop") {
-    .j40-title {
-      font-size: 0.9em;
-      padding-bottom: 0; // allows vertical centering on logo and text
-      font-weight: normal;
-    }
-
-    .usa-navbar {
-      width: 100%;
-    }
-
-    // this actual site logo
-    .sitelogo {
-      float: left; // allows vertical centering on logo and text
-      margin-right: 0.5rem; // space between logo and text
-      width: 4rem;
-      padding: 0.5rem; // this will change the size of the logo too
-    }
-
-    // nav menu item font
-    .usa-nav__primary {
-      .usa-nav__primary-item {
-        a {
-          margin-bottom: 0.5em; // how far menu is from bottom edge of nav
-          font-weight: 600;
-        }
-      }
-    }
-
-    // this is forcing the whole toolbar much taller
-    .usa-logo {
-      margin-top: 1.2rem;
-      margin-bottom: 1.2rem;
-    }
-  }
-
-  @include at-media("mobile") {
-    .usa-logo__text {
-      padding-top: 3px; // allows vertical centering on logo and text
-      padding-bottom: 0; // allows vertical centering on logo and text
-      font-weight: normal;
-    }
-
-    .usa-navbar {
-      width: 100%;
-    }
-
-    .j40-sitelogo {
-      float: left; // allows vertical centering on logo and text
-      margin-right: 0.5em; // space between logo and text
-      width: 3em;
-      padding: 0.4em; // this will change the size of the logo too
-    }
-  }
-}
-
-.usa-tag.j40 {
-  background: orange;
-    margin-left: 1rem;
-}
 
 /* 
 ******************************
@@ -242,49 +156,9 @@ components include:
 /***************** COMPONENT STYLES **************************************************************
 This section will outline styles that are component specific
 
-- alert
 - map
 - timeline
 - about
-- accordion
-
-/* 
-******************************
-*      ALERT STYLES
-****************************** 
-*/
-
-.j40-sitealert {
-  p {
-    margin: 0;
-  }
-
-  min-height: 2.5em;
-  margin: 0;
-
-  .j40-sitealert-title {
-    font-weight: bold;
-  }
-
-  .usa-alert {
-    margin: 0;
-    padding-bottom: 0;
-    padding-top: 0;
-  }
-
-  .usa-alert__body {
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-bottom: 0;
-  }
-
-  .usa-alert__text {
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-bottom: 0;
-  }
-}
-
 
 /* 
 ******************************

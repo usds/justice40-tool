@@ -2,7 +2,6 @@ import React from 'react';
 import {useIntl} from 'gatsby-plugin-intl';
 import {Grid} from '@trussworks/react-uswds';
 
-import AlertWrapper from '../components/AlertWrapper';
 import HowYouCanHelp from '../components/HowYouCanHelp';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
@@ -22,9 +21,6 @@ const CEJSTPage = ({location}: IMapPageProps) => {
 
 
   return (<Layout location={location} title={intl.formatMessage(EXPLORE_COPY.PAGE_INTRO.PAGE_TILE)}>
-    <J40MainGridContainer>
-      <AlertWrapper showBetaAlert={true} showLimitedDataAlert={false}/>
-    </J40MainGridContainer>
 
     <J40MainGridContainer>
       <h1>{intl.formatMessage(EXPLORE_COPY.PAGE_INTRO.PAGE_HEADING)}</h1>

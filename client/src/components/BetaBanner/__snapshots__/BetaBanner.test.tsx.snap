@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of the BetaBanner checks if component renders 1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      <div />
+      <div>
+        <span>
+          This is a Beta site. 
+        </span>
+        <span>
+          It is an early, in-progress version of the tool with limited data 
+    sets that will be continuously updated.
+        </span>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

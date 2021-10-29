@@ -1,30 +1,17 @@
 import {defineMessages} from 'react-intl';
 
-// Alerts
-export const ALERTS = defineMessages({
-  BETA_TITLE: {
-    id: 'alert.alertBetaTitle',
-    defaultMessage:
-        'Public beta',
-    description: 'Title for an alert inform users that datasets may change',
+// Beta Banner
+export const BETA_BANNER = defineMessages({
+  TITLE: {
+    id: 'banner.beta.title',
+    defaultMessage: 'This is a Beta site.',
+    description: 'the main title of the beta banner',
   },
-  BETA_BODY: {
-    id: 'alert.alertBetaBody',
-    defaultMessage:
-        'This website may be continuously updated',
-    description: 'Body for an alert inform users that datasets may change',
-  },
-  LIMITED_TITLE: {
-    id: 'alert.alertDataLimitedTitle',
-    defaultMessage:
-        'Limited data sources',
-    description: 'Title for an alert inform users that datasets may change',
-  },
-  LIMITED_BODY: {
-    id: 'alert.alertDataLimitedBody',
-    defaultMessage:
-        'Datasets may be added, updated, or removed.',
-    description: 'Body for an alert inform users that datasets may change',
+  INFO: {
+    id: 'banner.beta.info',
+    defaultMessage: `It is an early, in-progress version of the tool with limited data 
+    sets that will be continuously updated.`,
+    description: 'the main info of the beta banner',
   },
 });
 

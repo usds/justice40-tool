@@ -18,32 +18,6 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           class="grid-col-12"
           data-testid="grid"
         >
-          <div>
-            <div
-              class="usa-alert usa-alert--warning j40-sitealert"
-              data-testid="alert"
-            >
-              <div
-                class="usa-alert__body"
-              >
-                <p
-                  class="usa-alert__text"
-                >
-                  <span
-                    class="j40-sitealert-title"
-                  >
-                    Limited data sources
-                  </span>
-                  <span
-                    class="j40-sitealert-body"
-                  >
-                     — Datasets may be added, updated, or removed.
-                  </span>
-                  <br />
-                </p>
-              </div>
-            </div>
-          </div>
           <h2>
             Datasets used in methodology
           </h2>
