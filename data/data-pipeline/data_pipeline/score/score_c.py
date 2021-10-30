@@ -56,7 +56,7 @@ class ScoreC(Score):
         for bucket in buckets:
             fields_to_average = []
             for field in bucket["fields"]:
-                fields_to_average << f"{field}{FN.PERCENTILE_FIELD_SUFFIX}"
+                fields_to_average.append(f"{field}{FN.PERCENTILE_FIELD_SUFFIX}")
 
             name = bucket["name"]
             df[f"{name}"] = df[fields_to_average].mean(axis=1)

@@ -4,10 +4,10 @@ class ScoreB(Score):
     def add_columns(self, df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Adding Score B")
         df["Score B"] = (
-            self.df[
+            df[
                 FN.POVERTY_PERCENTILE_FIELD
             ]
-            * self.df[
+            * df[
                 FN.HIGH_SCHOOL_ED_PERCENTILE_FIELD
             ]
         )

@@ -22,7 +22,7 @@ class ScoreD(Score):
 
         # Calculate "Score D", which uses min-max normalization
         # and calculate "Score E", which uses percentile normalization for the same fields
-        df["Score D"] = self.df[fields_min_max].mean(axis=1)
-        df["Score E"] = self.df[fields_percentile].mean(axis=1)
+        df["Score D"] = df[fields_min_max].mean(axis=1)
+        df["Score E"] = df[fields_percentile].mean(axis=1)
 
         return df

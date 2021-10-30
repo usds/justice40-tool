@@ -1,12 +1,12 @@
 from data_pipeline.score.score import *
 
 class ScoreL(Score):
-    def __init__(self, df: pd.DataFrame) -> None:
-        super().__init__(df)
+    def __init__(self) -> None:
         self.LOW_INCOME_THRESHOLD: float = 0.60
         self.ENVIRONMENTAL_BURDEN_THRESHOLD: float = 0.90
 
-    def add_columns(self, df: pd.DataFrame, data_sets: list) -> pd.DataFrame:
+    def add_columns(self, df: pd.DataFrame) -> pd.DataFrame:
+        self.df = df
         self.df["Climate Factor (Definition L)"] = self._climate_factor()
         self.df["Energy Factor (Definition L)"] = self._energy_factor()
         self.df[
