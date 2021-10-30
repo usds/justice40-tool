@@ -7,7 +7,8 @@ from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
 
-class Score():
+
+class Score:
     def __init__(self, df: pd.DataFrame) -> None:
         self.df = df
 

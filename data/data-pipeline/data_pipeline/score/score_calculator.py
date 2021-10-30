@@ -15,7 +15,8 @@ from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
 
-class ScoreCalculator():
+
+class ScoreCalculator:
     def __init__(self, df: pd.DataFrame):
         # Define some global parameters
         self.df = df
@@ -37,8 +38,8 @@ class ScoreCalculator():
         # TODO do this with each score instead of in a bundle
         # Create percentiles for these index scores
         self.df = self._add_score_percentiles()
-        
-        return self.df   
+
+        return self.df
 
     def _add_score_percentiles(self) -> pd.DataFrame:
         logger.info("Adding Score Percentiles")

@@ -1,5 +1,6 @@
 from data_pipeline.score.score import *
 
+
 class ScoreC(Score):
     def __init__(self, df: pd.DataFrame) -> None:
         self.BUCKET_SOCIOECONOMIC = {
@@ -10,7 +11,7 @@ class ScoreC(Score):
                 FN.HIGH_SCHOOL_ED_FIELD,
                 FN.UNEMPLOYMENT_FIELD,
                 FN.HT_INDEX_FIELD,
-            ]
+            ],
         }
         self.BUCKET_SENSITIVE = {
             "name": "Sensitive populations",
@@ -18,7 +19,7 @@ class ScoreC(Score):
                 FN.UNDER_5_FIELD,
                 FN.OVER_64_FIELD,
                 FN.LINGUISTIC_ISO_FIELD,
-            ]
+            ],
         }
         self.BUCKET_ENVIRONMENTAL = {
             "name": "Environmental effects",
@@ -28,7 +29,7 @@ class ScoreC(Score):
                 FN.NPL_FIELD,
                 FN.WASTEWATER_FIELD,
                 FN.LEAD_PAINT_FIELD,
-            ]
+            ],
         }
         self.BUCKET_EXPOSURES = {
             "name": "Exposures",
@@ -39,7 +40,7 @@ class ScoreC(Score):
                 FN.PM25_FIELD,
                 FN.OZONE_FIELD,
                 FN.TRAFFIC_FIELD,
-            ]
+            ],
         }
         super().__init__(df)
 
@@ -81,6 +82,7 @@ class ScoreC(Score):
         # Multiply the "Pollution Burden" score and the "Population Characteristics"
         # together to produce the cumulative impact score.
         self.df["Score C"] = (
-            self.df[FN.AGGREGATION_POLLUTION_FIELD] * self.df[FN.AGGREGATION_POPULATION_FIELD]
+            self.df[FN.AGGREGATION_POLLUTION_FIELD]
+            * self.df[FN.AGGREGATION_POPULATION_FIELD]
         )
         return self.df

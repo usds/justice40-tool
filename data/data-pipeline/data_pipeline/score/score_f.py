@@ -1,5 +1,6 @@
 from data_pipeline.score.score import *
 
+
 class ScoreF(Score):
     # TODO Make variables and constants clearer (meaning and type)
 
@@ -24,35 +25,12 @@ class ScoreF(Score):
             (self.df[FN.PM25_PERCENTILE_FIELD] > 0.9)
             | (self.df[FN.RESPITORY_HAZARD_PERCENTILE_FIELD] > 0.9)
             | (self.df[FN.TRAFFIC_PERCENTILE_FIELD] > 0.9)
-            | (
-                self.df[
-                    FN.LEAD_PAINT_PERCENTILE_FIELD
-                ]
-                > 0.9
-            )
+            | (self.df[FN.LEAD_PAINT_PERCENTILE_FIELD] > 0.9)
             | (self.df[FN.RMP_PERCENTILE_FIELD] > 0.9)
-            | (
-                self.df[FN.ASTHMA_PERCENTILE_FIELD]
-                > 0.9
-            )
-            | (
-                self.df[
-                    FN.HEART_DISEASE_PERCENTILE_FIELD
-                ]
-                > 0.9
-            )
-            | (
-                self.df[
-                    FN.CANCER_PERCENTILE_FIELD
-                ]
-                > 0.9
-            )
-            | (
-                self.df[
-                    FN.DIABETES_PERCENTILE_FIELD
-                ]
-                > 0.9
-            )
+            | (self.df[FN.ASTHMA_PERCENTILE_FIELD] > 0.9)
+            | (self.df[FN.HEART_DISEASE_PERCENTILE_FIELD] > 0.9)
+            | (self.df[FN.CANCER_PERCENTILE_FIELD] > 0.9)
+            | (self.df[FN.DIABETES_PERCENTILE_FIELD] > 0.9)
         )
 
         self.df["Score F (communities)"] = (

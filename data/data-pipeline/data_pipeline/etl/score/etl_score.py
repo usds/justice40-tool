@@ -9,6 +9,7 @@ import data_pipeline.score.field_names as FN
 
 logger = get_module_logger(__name__)
 
+
 class ScoreETL(ExtractTransformLoad):
     def __init__(self):
         # Define some global parameters
@@ -37,25 +38,26 @@ class ScoreETL(ExtractTransformLoad):
         )
         self.ejscreen_df.rename(
             columns={
-                "ID": self.GEOID_FIELD_NAME, 
-                "ACSTOTPOP": FN.TOTAL_POP_FIELD, 
-                "CANCER": FN.AIR_TOXICS_CANCER_RISK_FIELD, 
-                "RESP": FN.RESPITORY_HAZARD_FIELD, 
-                "DSLPM": FN.DIESEL_FIELD, 
-                "PM25": FN.PM25_FIELD, 
-                "OZONE": FN.OZONE_FIELD, 
-                "PTRAF": FN.TRAFFIC_FIELD, 
-                "PRMP": FN.RMP_FIELD, 
-                "PTSDF": FN.TSDF_FIELD, 
-                "PNPL": FN.NPL_FIELD, 
-                "PWDIS": FN.WASTEWATER_FIELD, 
-                "LINGISOPCT": FN.HOUSEHOLDS_LINGUISTIC_ISO_FIELD, 
-                "LOWINCPCT": FN.POVERTY_FIELD, 
-                "LESSHSPCT": FN.HIGH_SCHOOL_ED_FIELD, 
-                "OVER64PCT": FN.OVER_64_FIELD, 
-                "UNDER5PCT": FN.UNDER_5_FIELD, 
-                "PRE1960PCT": FN.LEAD_PAINT_FIELD
-            }, inplace=True
+                "ID": self.GEOID_FIELD_NAME,
+                "ACSTOTPOP": FN.TOTAL_POP_FIELD,
+                "CANCER": FN.AIR_TOXICS_CANCER_RISK_FIELD,
+                "RESP": FN.RESPITORY_HAZARD_FIELD,
+                "DSLPM": FN.DIESEL_FIELD,
+                "PM25": FN.PM25_FIELD,
+                "OZONE": FN.OZONE_FIELD,
+                "PTRAF": FN.TRAFFIC_FIELD,
+                "PRMP": FN.RMP_FIELD,
+                "PTSDF": FN.TSDF_FIELD,
+                "PNPL": FN.NPL_FIELD,
+                "PWDIS": FN.WASTEWATER_FIELD,
+                "LINGISOPCT": FN.HOUSEHOLDS_LINGUISTIC_ISO_FIELD,
+                "LOWINCPCT": FN.POVERTY_FIELD,
+                "LESSHSPCT": FN.HIGH_SCHOOL_ED_FIELD,
+                "OVER64PCT": FN.OVER_64_FIELD,
+                "UNDER5PCT": FN.UNDER_5_FIELD,
+                "PRE1960PCT": FN.LEAD_PAINT_FIELD,
+            },
+            inplace=True,
         )
 
         # Load census data
@@ -79,9 +81,8 @@ class ScoreETL(ExtractTransformLoad):
             low_memory=False,
         )
         self.housing_and_transportation_df.rename(
-            columns={
-                "ht_ami": FN.HT_INDEX_FIELD
-            }, inplace=True)
+            columns={"ht_ami": FN.HT_INDEX_FIELD}, inplace=True
+        )
 
         # Load HUD housing data
         hud_housing_csv = self.DATA_PATH / "dataset" / "hud_housing" / "usa.csv"
@@ -247,8 +248,7 @@ class ScoreETL(ExtractTransformLoad):
         # Calculate median income variables.
         # First, calculate the income of the block group as a fraction of the state income.
         df[FN.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD] = (
-            df[FN.MEDIAN_INCOME_FIELD]
-            / df[FN.STATE_MEDIAN_INCOME_FIELD]
+            df[FN.MEDIAN_INCOME_FIELD] / df[FN.STATE_MEDIAN_INCOME_FIELD]
         )
 
         # Calculate the income of the block group as a fraction of the AMI (either state or metropolitan, depending on reference).
@@ -294,7 +294,7 @@ class ScoreETL(ExtractTransformLoad):
             FN.POVERTY_FIELD,
             FN.HIGH_SCHOOL_ED_FIELD,
             FN.UNEMPLOYMENT_FIELD,
-            FN.HT_INDEX_FIELD
+            FN.HT_INDEX_FIELD,
         ]
         non_numeric_columns = [
             self.GEOID_FIELD_NAME,
@@ -305,14 +305,10 @@ class ScoreETL(ExtractTransformLoad):
 
         # Convert all columns to numeric and do math
         for col in numeric_columns:
-            df[col] = pd.to_numeric(
-                df[col]
-            )
+            df[col] = pd.to_numeric(df[col])
             # Calculate percentiles
-            df[f"{col}{FN.PERCENTILE_FIELD_SUFFIX}"] = df[
-                col
-            ].rank(pct=True)
-            
+            df[f"{col}{FN.PERCENTILE_FIELD_SUFFIX}"] = df[col].rank(pct=True)
+
             # Min-max normalization:
             # (
             #     Observed value
@@ -331,9 +327,9 @@ class ScoreETL(ExtractTransformLoad):
                 f"For data set {col}, the min value is {min_value} and the max value is {max_value}."
             )
 
-            df[f"{col}{FN.MIN_MAX_FIELD_SUFFIX}"] = (
-                df[col] - min_value
-            ) / (max_value - min_value)
+            df[f"{col}{FN.MIN_MAX_FIELD_SUFFIX}"] = (df[col] - min_value) / (
+                max_value - min_value
+            )
 
         return df
 
@@ -345,7 +341,6 @@ class ScoreETL(ExtractTransformLoad):
 
         # calculate scores
         self.df = ScoreCalculator(df=self.df).calculate_scores()
-
 
     def load(self) -> None:
         logger.info("Saving Score CSV")

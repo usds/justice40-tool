@@ -1,5 +1,6 @@
 from data_pipeline.score.score import *
 
+
 class ScoreL(Score):
     def __init__(self, df: pd.DataFrame) -> None:
         self.LOW_INCOME_THRESHOLD: float = 0.60
@@ -55,10 +56,7 @@ class ScoreL(Score):
         return (
             self.df[FN.POVERTY_LESS_THAN_200_FPL_FIELD]
             > self.LOW_INCOME_THRESHOLD
-        ) & (
-            self.df[FN.FEMA_RISK_FIELD]
-            > self.ENVIRONMENTAL_BURDEN_THRESHOLD
-        )
+        ) & (self.df[FN.FEMA_RISK_FIELD] > self.ENVIRONMENTAL_BURDEN_THRESHOLD)
 
     def _energy_factor(self) -> bool:
         # In Xth percentile or above for DOE’s energy cost burden score (Source: LEAD Score)
@@ -87,10 +85,7 @@ class ScoreL(Score):
         transportation_criteria = (
             (self.df[FN.DIESEL_FIELD] > self.ENVIRONMENTAL_BURDEN_THRESHOLD)
             | (self.df[FN.PM25_FIELD] > self.ENVIRONMENTAL_BURDEN_THRESHOLD)
-            | (
-                self.df[FN.TRAFFIC_FIELD]
-                > self.ENVIRONMENTAL_BURDEN_THRESHOLD
-            )
+            | (self.df[FN.TRAFFIC_FIELD] > self.ENVIRONMENTAL_BURDEN_THRESHOLD)
         )
 
         return (
@@ -135,9 +130,7 @@ class ScoreL(Score):
         return (
             self.df[FN.POVERTY_LESS_THAN_200_FPL_FIELD]
             > self.LOW_INCOME_THRESHOLD
-        ) & (
-            self.df[FN.WASTEWATER_FIELD] > self.ENVIRONMENTAL_BURDEN_THRESHOLD
-        )
+        ) & (self.df[FN.WASTEWATER_FIELD] > self.ENVIRONMENTAL_BURDEN_THRESHOLD)
 
     def _health_factor(self) -> bool:
         # In Xth percentile or above for diabetes (Source: CDC Places)

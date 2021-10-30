@@ -1,5 +1,6 @@
 from data_pipeline.score.score import *
 
+
 class ScoreK(Score):
     def add_columns(self) -> pd.DataFrame:
         logger.info("Adding Score K")
