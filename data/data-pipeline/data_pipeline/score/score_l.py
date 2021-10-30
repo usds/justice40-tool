@@ -1,4 +1,4 @@
-from data_pipeline.etl.score.score import Score
+from data_pipeline.score.score import *
 
 class ScoreL(Score):
     def __init__(self, df: pd.DataFrame) -> None:
@@ -6,17 +6,17 @@ class ScoreL(Score):
         self.LOW_INCOME_THRESHOLD: float = 0.60
         self.ENVIRONMENTAL_BURDEN_THRESHOLD: float = 0.90
 
-    def columns(self):
-        self.df["Climate Factor (Definition L)"] = self.climate_factor()
-        self.df["Energy Factor (Definition L)"] = self.energy_factor()
+    def add_columns(self, df: pd.DataFrame, data_sets: list) -> pd.DataFrame:
+        self.df["Climate Factor (Definition L)"] = self._climate_factor()
+        self.df["Energy Factor (Definition L)"] = self._energy_factor()
         self.df[
             "Transportation Factor (Definition L)"
-        ] = self.transportation_factor()
-        self.df["Housing Factor (Definition L)"] = self.housing_factor()
-        self.df["Pollution Factor (Definition L)"] = self.pollution_factor()
-        self.df["Water Factor (Definition L)"] = self.water_factor()
-        self.df["Health Factor (Definition L)"] = self.health_factor()
-        self.df["Workforce Factor (Definition L)"] = self.workforce_factor()
+        ] = self._transportation_factor()
+        self.df["Housing Factor (Definition L)"] = self._housing_factor()
+        self.df["Pollution Factor (Definition L)"] = self._pollution_factor()
+        self.df["Water Factor (Definition L)"] = self._water_factor()
+        self.df["Health Factor (Definition L)"] = self._health_factor()
+        self.df["Workforce Factor (Definition L)"] = self._workforce_factor()
 
         factors = [
             "Climate Factor (Definition L)",
@@ -46,35 +46,35 @@ class ScoreL(Score):
 
         return self.df
 
-    def climate_factor(self) -> bool:
+    def _climate_factor(self) -> bool:
         # In Xth percentile or above for FEMA’s Risk Index (Source: FEMA
         # AND
         # Low income: In 60th percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
         return (
-            self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD]
+            self.df[FN.POVERTY_LESS_THAN_200_FPL_FIELD]
             > self.LOW_INCOME_THRESHOLD
         ) & (
-            self.df[self.NATIONAL_RISK_FIELD]
+            self.df[FN.FEMA_RISK_FIELD]
             > self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-    def energy_factor(self) -> bool:
+    def _energy_factor(self) -> bool:
         # In Xth percentile or above for DOE’s energy cost burden score (Source: LEAD Score)
         # AND
         # Low income: In 60th percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
         return (
-            self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD]
+            self.df[FN.POVERTY_LESS_THAN_200_FPL_FIELD]
             > self.LOW_INCOME_THRESHOLD
         ) & (
-            self.df[self.ENERGY_BURDEN_FIELD]
+            self.df[FN.ENERGY_BURDEN_FIELD]
             > self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-    def transportation_factor(self) -> bool:
+    def _transportation_factor(self) -> bool:
         # In Xth percentile or above for diesel particulate matter (Source: EPA National Air Toxics Assessment (NATA)
         # or
         # In Xth percentile or above for PM 2.5 (Source: EPA, Office of Air and Radiation (OAR) fusion of model and monitor data)]
@@ -85,20 +85,20 @@ class ScoreL(Score):
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
         transportation_criteria = (
-            (self.df[self.DIESEL_FIELD] > self.ENVIRONMENTAL_BURDEN_THRESHOLD)
-            | (self.df[self.PM25_FIELD] > self.ENVIRONMENTAL_BURDEN_THRESHOLD)
+            (self.df[FN.DIESEL_FIELD] > self.ENVIRONMENTAL_BURDEN_THRESHOLD)
+            | (self.df[FN.PM25_FIELD] > self.ENVIRONMENTAL_BURDEN_THRESHOLD)
             | (
-                self.df[self.TRAFFIC_FIELD]
+                self.df[FN.TRAFFIC_FIELD]
                 > self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
         )
 
         return (
-            self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD]
+            self.df[FN.POVERTY_LESS_THAN_200_FPL_FIELD]
             > self.LOW_INCOME_THRESHOLD
         ) & transportation_criteria
 
-    def housing_factor(self) -> bool:
+    def _housing_factor(self) -> bool:
         # In Xth percentile or above for lead paint (Source: Census's American Community Survey’s
         # percent of housing units built pre-1960, used as an indicator of potential lead paint exposure in homes)
         # or
@@ -108,17 +108,17 @@ class ScoreL(Score):
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
         housing_criteria = (
-            self.df[self.LEAD_PAINT_FIELD] > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            self.df[FN.LEAD_PAINT_FIELD] > self.ENVIRONMENTAL_BURDEN_THRESHOLD
         ) | (
-            self.df[self.HOUSING_BURDEN_FIELD]
+            self.df[FN.HOUSING_BURDEN_FIELD]
             > self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
         return (
-            self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD]
+            self.df[FN.POVERTY_LESS_THAN_200_FPL_FIELD]
             > self.LOW_INCOME_THRESHOLD
         ) & housing_criteria
 
-    def pollution_factor(self) -> bool:
+    def _pollution_factor(self) -> bool:
         # TBD
         # AND
         # Low income: In 60th percentile or above for percent of block group population
@@ -126,20 +126,20 @@ class ScoreL(Score):
         # poverty level. Source: Census's American Community Survey]
         return False
 
-    def water_factor(self) -> bool:
+    def _water_factor(self) -> bool:
         # In Xth percentile or above for wastewater discharge (Source: EPA Risk-Screening Environmental Indicators (RSEI) Model)
         # AND
         # Low income: In 60th percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
         return (
-            self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD]
+            self.df[FN.POVERTY_LESS_THAN_200_FPL_FIELD]
             > self.LOW_INCOME_THRESHOLD
         ) & (
-            self.df[self.WASTEWATER_FIELD] > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            self.df[FN.WASTEWATER_FIELD] > self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-    def health_factor(self) -> bool:
+    def _health_factor(self) -> bool:
         # In Xth percentile or above for diabetes (Source: CDC Places)
         # or
         # In Xth percentile or above for asthma (Source: CDC Places)
@@ -153,25 +153,25 @@ class ScoreL(Score):
         # poverty level. Source: Census's American Community Survey]
 
         health_criteria = (
-            (self.df[self.DIABETES_FIELD] > self.ENVIRONMENTAL_BURDEN_THRESHOLD)
-            | (self.df[self.ASTHMA_FIELD] > self.ENVIRONMENTAL_BURDEN_THRESHOLD)
+            (self.df[FN.DIABETES_FIELD] > self.ENVIRONMENTAL_BURDEN_THRESHOLD)
+            | (self.df[FN.ASTHMA_FIELD] > self.ENVIRONMENTAL_BURDEN_THRESHOLD)
             | (
-                self.df[self.HEART_DISEASE_FIELD]
+                self.df[FN.HEART_DISEASE_FIELD]
                 > self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             | (
-                self.df[self.LIFE_EXPECTANCY_FIELD]
+                self.df[FN.LIFE_EXPECTANCY_FIELD]
                 # Note: a high life expectancy is good, so take 1 minus the threshold to invert it,
                 # and then look for life expenctancies lower than that (not greater than).
                 < 1 - self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
         )
         return (
-            self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD]
+            self.df[FN.POVERTY_LESS_THAN_200_FPL_FIELD]
             > self.LOW_INCOME_THRESHOLD
         ) & health_criteria
 
-    def workforce_factor(self) -> bool:
+    def _workforce_factor(self) -> bool:
         # Where unemployment is above X%
         # or
         # Where median income is less than Y% of the area median income
@@ -184,22 +184,22 @@ class ScoreL(Score):
         # (necessary to screen out university block groups)
         workforce_criteria = (
             (
-                self.df[self.UNEMPLOYMENT_FIELD]
+                self.df[FN.UNEMPLOYMENT_FIELD]
                 > self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             | (
-                self.df[self.MEDIAN_INCOME_FIELD]
+                self.df[FN.MEDIAN_INCOME_PERCENT_AMI_FIELD]
                 # Note: a high median income as a % of AMI is good, so take 1 minus the threshold to invert it.
                 # and then look for median income lower than that (not greater than).
                 < 1 - self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             | (
-                self.df[self.POVERTY_LESS_THAN_100_FPL_FIELD]
+                self.df[FN.POVERTY_LESS_THAN_100_FPL_FIELD]
                 > self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             | (
-                self.df[self.LINGUISTIC_ISO_FIELD]
+                self.df[FN.LINGUISTIC_ISO_FIELD]
                 > self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
         )
-        return (self.df[self.HIGH_SCHOOL_ED_FIELD] > 0.05) & workforce_criteria
+        return (self.df[FN.HIGH_SCHOOL_ED_FIELD] > 0.05) & workforce_criteria

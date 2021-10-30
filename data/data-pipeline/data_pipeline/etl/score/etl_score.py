@@ -1,29 +1,17 @@
-import collections
 import functools
-from pathlib import Path
 import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger
-from data_pipeline.etl.score.score_calculator import ScoreCalculator
+from . import constants
+from data_pipeline.score.score_calculator import ScoreCalculator
+import data_pipeline.score.field_names as FN
 
 logger = get_module_logger(__name__)
-
 
 class ScoreETL(ExtractTransformLoad):
     def __init__(self):
         # Define some global parameters
-        self.BUCKET_SOCIOECONOMIC: str = "Socioeconomic Factors"
-        self.BUCKET_SENSITIVE: str = "Sensitive populations"
-        self.BUCKET_ENVIRONMENTAL: str = "Environmental effects"
-        self.BUCKET_EXPOSURES: str = "Exposures"
-        self.BUCKETS: str = [
-            self.BUCKET_SOCIOECONOMIC,
-            self.BUCKET_SENSITIVE,
-            self.BUCKET_ENVIRONMENTAL,
-            self.BUCKET_EXPOSURES,
-        ]
-        self.SCORE_CSV_PATH: Path = self.DATA_PATH / "score" / "csv" / "full"
 
         # dataframes
         self.df: pd.DataFrame
@@ -39,219 +27,6 @@ class ScoreETL(ExtractTransformLoad):
         self.geocorr_urban_rural_df: pd.DataFrame
         self.persistent_poverty_df: pd.DataFrame
 
-    def data_sets(self) -> list:
-        # Define a named tuple that will be used for each data set input.
-        DataSet = collections.namedtuple(
-            typename="DataSet",
-            field_names=["input_field", "renamed_field", "bucket"],
-        )
-
-        return [
-            # The following data sets have `bucket=None`, because it's not used in the bucket based score ("Score C").
-            DataSet(
-                input_field=self.GEOID_FIELD_NAME,
-                # Use the name `GEOID10` to enable geoplatform.gov's workflow.
-                renamed_field=self.GEOID_FIELD_NAME,
-                bucket=None,
-            ),
-            DataSet(
-                input_field=self.HOUSING_BURDEN_FIELD_NAME,
-                renamed_field=self.HOUSING_BURDEN_FIELD_NAME,
-                bucket=None,
-            ),
-            DataSet(
-                input_field="ACSTOTPOP",
-                renamed_field="Total population",
-                bucket=None,
-            ),
-            DataSet(
-                input_field=self.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD_NAME,
-                renamed_field=self.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD_NAME,
-                bucket=None,
-            ),
-            DataSet(
-                input_field="Current asthma among adults aged >=18 years",
-                renamed_field="Current asthma among adults aged >=18 years",
-                bucket=None,
-            ),
-            DataSet(
-                input_field="Coronary heart disease among adults aged >=18 years",
-                renamed_field="Coronary heart disease among adults aged >=18 years",
-                bucket=None,
-            ),
-            DataSet(
-                input_field="Cancer (excluding skin cancer) among adults aged >=18 years",
-                renamed_field="Cancer (excluding skin cancer) among adults aged >=18 years",
-                bucket=None,
-            ),
-            DataSet(
-                input_field="Current lack of health insurance among adults aged 18-64 years",
-                renamed_field="Current lack of health insurance among adults aged 18-64 years",
-                bucket=None,
-            ),
-            DataSet(
-                input_field="Diagnosed diabetes among adults aged >=18 years",
-                renamed_field="Diagnosed diabetes among adults aged >=18 years",
-                bucket=None,
-            ),
-            DataSet(
-                input_field="Physical health not good for >=14 days among adults aged >=18 years",
-                renamed_field="Physical health not good for >=14 days among adults aged >=18 years",
-                bucket=None,
-            ),
-            DataSet(
-                input_field=self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME,
-                renamed_field=self.POVERTY_LESS_THAN_100_FPL_FIELD_NAME,
-                bucket=None,
-            ),
-            DataSet(
-                input_field=self.POVERTY_LESS_THAN_150_FPL_FIELD_NAME,
-                renamed_field=self.POVERTY_LESS_THAN_150_FPL_FIELD_NAME,
-                bucket=None,
-            ),
-            DataSet(
-                input_field=self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME,
-                renamed_field=self.POVERTY_LESS_THAN_200_FPL_FIELD_NAME,
-                bucket=None,
-            ),
-            DataSet(
-                input_field=self.AMI_FIELD_NAME,
-                renamed_field=self.AMI_FIELD_NAME,
-                bucket=None,
-            ),
-            DataSet(
-                input_field=self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME,
-                renamed_field=self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME,
-                bucket=None,
-            ),
-            DataSet(
-                input_field=self.MEDIAN_INCOME_FIELD_NAME,
-                renamed_field=self.MEDIAN_INCOME_FIELD_NAME,
-                bucket=None,
-            ),
-            DataSet(
-                input_field=self.LIFE_EXPECTANCY_FIELD_NAME,
-                renamed_field=self.LIFE_EXPECTANCY_FIELD_NAME,
-                bucket=None,
-            ),
-            DataSet(
-                input_field=self.ENERGY_BURDEN_FIELD_NAME,
-                renamed_field=self.ENERGY_BURDEN_FIELD_NAME,
-                bucket=None,
-            ),
-            DataSet(
-                input_field=self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME,
-                renamed_field=self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME,
-                bucket=None,
-            ),
-            DataSet(
-                input_field=self.URBAN_HERUISTIC_FIELD_NAME,
-                renamed_field=self.URBAN_HERUISTIC_FIELD_NAME,
-                bucket=None,
-            ),
-            DataSet(
-                input_field=self.PERSISTENT_POVERTY_FIELD,
-                renamed_field=self.PERSISTENT_POVERTY_FIELD,
-                bucket=None,
-            ),
-            # The following data sets have buckets, because they're used in Score C
-            DataSet(
-                input_field="CANCER",
-                renamed_field="Air toxics cancer risk",
-                bucket=self.BUCKET_EXPOSURES,
-            ),
-            DataSet(
-                input_field="RESP",
-                renamed_field="Respiratory hazard index",
-                bucket=self.BUCKET_EXPOSURES,
-            ),
-            DataSet(
-                input_field="DSLPM",
-                renamed_field="Diesel particulate matter",
-                bucket=self.BUCKET_EXPOSURES,
-            ),
-            DataSet(
-                input_field="PM25",
-                renamed_field="Particulate matter (PM2.5)",
-                bucket=self.BUCKET_EXPOSURES,
-            ),
-            DataSet(
-                input_field="OZONE",
-                renamed_field="Ozone",
-                bucket=self.BUCKET_EXPOSURES,
-            ),
-            DataSet(
-                input_field="PTRAF",
-                renamed_field="Traffic proximity and volume",
-                bucket=self.BUCKET_EXPOSURES,
-            ),
-            DataSet(
-                input_field="PRMP",
-                renamed_field="Proximity to RMP sites",
-                bucket=self.BUCKET_ENVIRONMENTAL,
-            ),
-            DataSet(
-                input_field="PTSDF",
-                renamed_field="Proximity to TSDF sites",
-                bucket=self.BUCKET_ENVIRONMENTAL,
-            ),
-            DataSet(
-                input_field="PNPL",
-                renamed_field="Proximity to NPL sites",
-                bucket=self.BUCKET_ENVIRONMENTAL,
-            ),
-            DataSet(
-                input_field="PWDIS",
-                renamed_field="Wastewater discharge",
-                bucket=self.BUCKET_ENVIRONMENTAL,
-            ),
-            DataSet(
-                input_field="PRE1960PCT",
-                renamed_field="Percent pre-1960s housing (lead paint indicator)",
-                bucket=self.BUCKET_ENVIRONMENTAL,
-            ),
-            DataSet(
-                input_field="UNDER5PCT",
-                renamed_field="Individuals under 5 years old",
-                bucket=self.BUCKET_SENSITIVE,
-            ),
-            DataSet(
-                input_field="OVER64PCT",
-                renamed_field="Individuals over 64 years old",
-                bucket=self.BUCKET_SENSITIVE,
-            ),
-            DataSet(
-                input_field=self.LINGUISTIC_ISOLATION_FIELD_NAME,
-                renamed_field=self.LINGUISTIC_ISOLATION_FIELD_NAME,
-                bucket=self.BUCKET_SENSITIVE,
-            ),
-            DataSet(
-                input_field="LINGISOPCT",
-                renamed_field="Percent of households in linguistic isolation",
-                bucket=self.BUCKET_SOCIOECONOMIC,
-            ),
-            DataSet(
-                input_field="LOWINCPCT",
-                renamed_field=self.POVERTY_FIELD_NAME,
-                bucket=self.BUCKET_SOCIOECONOMIC,
-            ),
-            DataSet(
-                input_field="LESSHSPCT",
-                renamed_field=self.HIGH_SCHOOL_FIELD_NAME,
-                bucket=self.BUCKET_SOCIOECONOMIC,
-            ),
-            DataSet(
-                input_field=self.UNEMPLOYED_FIELD_NAME,
-                renamed_field=self.UNEMPLOYED_FIELD_NAME,
-                bucket=self.BUCKET_SOCIOECONOMIC,
-            ),
-            DataSet(
-                input_field="ht_ami",
-                renamed_field="Housing + Transportation Costs % Income for the Regional Typical Household",
-                bucket=self.BUCKET_SOCIOECONOMIC,
-            ),
-        ]
-
     def extract(self) -> None:
         logger.info("Loading data sets from disk.")
 
@@ -261,7 +36,26 @@ class ScoreETL(ExtractTransformLoad):
             ejscreen_csv, dtype={"ID": "string"}, low_memory=False
         )
         self.ejscreen_df.rename(
-            columns={"ID": self.GEOID_FIELD_NAME}, inplace=True
+            columns={
+                "ID": self.GEOID_FIELD_NAME, 
+                "ACSTOTPOP": FN.TOTAL_POP_FIELD, 
+                "CANCER": FN.AIR_TOXICS_CANCER_RISK_FIELD, 
+                "RESP": FN.RESPITORY_HAZARD_FIELD, 
+                "DSLPM": FN.DIESEL_FIELD, 
+                "PM25": FN.PM25_FIELD, 
+                "OZONE": FN.OZONE_FIELD, 
+                "PTRAF": FN.TRAFFIC_FIELD, 
+                "PRMP": FN.RMP_FIELD, 
+                "PTSDF": FN.TSDF_FIELD, 
+                "PNPL": FN.NPL_FIELD, 
+                "PWDIS": FN.WASTEWATER_FIELD, 
+                "LINGISOPCT": FN.HOUSEHOLDS_LINGUISTIC_ISO_FIELD, 
+                "LOWINCPCT": FN.POVERTY_FIELD, 
+                "LESSHSPCT": FN.HIGH_SCHOOL_ED_FIELD, 
+                "OVER64PCT": FN.OVER_64_FIELD, 
+                "UNDER5PCT": FN.UNDER_5_FIELD, 
+                "PRE1960PCT": FN.LEAD_PAINT_FIELD
+            }, inplace=True
         )
 
         # Load census data
@@ -284,6 +78,10 @@ class ScoreETL(ExtractTransformLoad):
             dtype={self.GEOID_FIELD_NAME: "string"},
             low_memory=False,
         )
+        self.housing_and_transportation_df.rename(
+            columns={
+                "ht_ami": FN.HT_INDEX_FIELD
+            }, inplace=True)
 
         # Load HUD housing data
         hud_housing_csv = self.DATA_PATH / "dataset" / "hud_housing" / "usa.csv"
@@ -406,7 +204,7 @@ class ScoreETL(ExtractTransformLoad):
         return census_tract_df
 
     # TODO Move a lot of this to the ETL part of the pipeline
-    def _prepare_initial_df(self, data_sets: list) -> pd.DataFrame:
+    def _prepare_initial_df(self) -> pd.DataFrame:
         logger.info("Preparing initial dataframe")
 
         # Join all the data sources that use census block groups
@@ -448,92 +246,102 @@ class ScoreETL(ExtractTransformLoad):
 
         # Calculate median income variables.
         # First, calculate the income of the block group as a fraction of the state income.
-        df[self.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD_NAME] = (
-            df[self.MEDIAN_INCOME_FIELD_NAME]
-            / df[self.STATE_MEDIAN_INCOME_FIELD_NAME]
+        df[FN.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD] = (
+            df[FN.MEDIAN_INCOME_FIELD]
+            / df[FN.STATE_MEDIAN_INCOME_FIELD]
         )
 
         # Calculate the income of the block group as a fraction of the AMI (either state or metropolitan, depending on reference).
-        df[self.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD_NAME] = (
-            df[self.MEDIAN_INCOME_FIELD_NAME] / df[self.AMI_FIELD_NAME]
+        df[FN.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD] = (
+            df[FN.MEDIAN_INCOME_FIELD] / df[FN.AMI_FIELD]
         )
 
-        # TODO Refactor to no longer use the data_sets list and do all renaming in ETL step
-        # Rename columns:
-        renaming_dict = {
-            data_set.input_field: data_set.renamed_field
-            for data_set in data_sets
-        }
-
-        df.rename(
-            columns=renaming_dict,
-            inplace=True,
-            errors="raise",
-        )
-
-        columns_to_keep = [data_set.renamed_field for data_set in data_sets]
+        numeric_columns = [
+            FN.HOUSING_BURDEN_FIELD,
+            FN.TOTAL_POP_FIELD,
+            FN.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD,
+            FN.ASTHMA_FIELD,
+            FN.HEART_DISEASE_FIELD,
+            FN.CANCER_FIELD,
+            FN.HEALTH_INSURANCE_FIELD,
+            FN.DIABETES_FIELD,
+            FN.PHYS_HEALTH_NOT_GOOD_FIELD,
+            FN.POVERTY_LESS_THAN_100_FPL_FIELD,
+            FN.POVERTY_LESS_THAN_150_FPL_FIELD,
+            FN.POVERTY_LESS_THAN_200_FPL_FIELD,
+            FN.AMI_FIELD,
+            FN.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD,
+            FN.MEDIAN_INCOME_FIELD,
+            FN.LIFE_EXPECTANCY_FIELD,
+            FN.ENERGY_BURDEN_FIELD,
+            FN.FEMA_RISK_FIELD,
+            FN.URBAN_HERUISTIC_FIELD,
+            FN.AIR_TOXICS_CANCER_RISK_FIELD,
+            FN.RESPITORY_HAZARD_FIELD,
+            FN.DIESEL_FIELD,
+            FN.PM25_FIELD,
+            FN.OZONE_FIELD,
+            FN.TRAFFIC_FIELD,
+            FN.RMP_FIELD,
+            FN.TSDF_FIELD,
+            FN.NPL_FIELD,
+            FN.WASTEWATER_FIELD,
+            FN.LEAD_PAINT_FIELD,
+            FN.UNDER_5_FIELD,
+            FN.OVER_64_FIELD,
+            FN.LINGUISTIC_ISO_FIELD,
+            FN.HOUSEHOLDS_LINGUISTIC_ISO_FIELD,
+            FN.POVERTY_FIELD,
+            FN.HIGH_SCHOOL_ED_FIELD,
+            FN.UNEMPLOYMENT_FIELD,
+            FN.HT_INDEX_FIELD
+        ]
+        non_numeric_columns = [
+            self.GEOID_FIELD_NAME,
+            FN.PERSISTENT_POVERTY_FIELD,
+        ]
+        columns_to_keep = non_numeric_columns + numeric_columns
         df = df[columns_to_keep]
 
-        # Convert all columns to numeric.
-        # TODO do this at the same time as calculating percentiles in future refactor
-        for data_set in data_sets:
-            # Skip GEOID_FIELD_NAME, because it's a string.
-            # Skip `PERSISTENT_POVERTY_FIELD` because it's a straight pass-through.
-            if data_set.renamed_field in (
-                self.GEOID_FIELD_NAME,
-                self.PERSISTENT_POVERTY_FIELD,
-            ):
-                continue
-
-            df[data_set.renamed_field] = pd.to_numeric(
-                df[data_set.renamed_field]
+        # Convert all columns to numeric and do math
+        for col in numeric_columns:
+            df[col] = pd.to_numeric(
+                df[col]
             )
-
-        # calculate percentiles
-        for data_set in data_sets:
-            df[f"{data_set.renamed_field}{self.PERCENTILE_FIELD_SUFFIX}"] = df[
-                data_set.renamed_field
+            # Calculate percentiles
+            df[f"{col}{FN.PERCENTILE_FIELD_SUFFIX}"] = df[
+                col
             ].rank(pct=True)
+            
+            # Min-max normalization:
+            # (
+            #     Observed value
+            #     - minimum of all values
+            # )
+            # divided by
+            # (
+            #    Maximum of all values
+            #     - minimum of all values
+            # )
+            min_value = df[col].min(skipna=True)
 
-        # Do some math:
-        # (
-        #     Observed value
-        #     - minimum of all values
-        # )
-        # divided by
-        # (
-        #    Maximum of all values
-        #     - minimum of all values
-        # )
-        for data_set in data_sets:
-            # Skip GEOID_FIELD_NAME, because it's a string.
-            if data_set.renamed_field == self.GEOID_FIELD_NAME:
-                continue
-
-            min_value = df[data_set.renamed_field].min(skipna=True)
-
-            max_value = df[data_set.renamed_field].max(skipna=True)
+            max_value = df[col].max(skipna=True)
 
             logger.info(
-                f"For data set {data_set.renamed_field}, the min value is {min_value} and the max value is {max_value}."
+                f"For data set {col}, the min value is {min_value} and the max value is {max_value}."
             )
 
-            df[f"{data_set.renamed_field}{self.MIN_MAX_FIELD_SUFFIX}"] = (
-                df[data_set.renamed_field] - min_value
+            df[f"{col}{FN.MIN_MAX_FIELD_SUFFIX}"] = (
+                df[col] - min_value
             ) / (max_value - min_value)
 
         return df
 
     def transform(self) -> None:
-        ## IMPORTANT: THIS METHOD IS CLOSE TO THE LIMIT OF STATEMENTS
-
         logger.info("Transforming Score Data")
 
-        # get data sets list
-        data_sets = self.data_sets()
-
         # prepare the df with the right CBG/tract IDs, column names/types, and percentiles
-        self.df = self._prepare_initial_df(data_sets)
+        self.df = self._prepare_initial_df()
 
         # calculate scores
         self.df = ScoreCalculator(df=self.df).calculate_scores()
@@ -541,6 +349,6 @@ class ScoreETL(ExtractTransformLoad):
 
     def load(self) -> None:
         logger.info("Saving Score CSV")
-        self.SCORE_CSV_PATH.mkdir(parents=True, exist_ok=True)
+        constants.DATA_SCORE_CSV_FULL_FILE_PATH.mkdir(parents=True, exist_ok=True)
 
-        self.df.to_csv(self.SCORE_CSV_PATH / "usa.csv", index=False)
+        self.df.to_csv(constants.DATA_SCORE_CSV_FULL_FILE_PATH / "usa.csv", index=False)
