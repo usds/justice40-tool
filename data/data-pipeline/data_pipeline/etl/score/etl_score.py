@@ -2,10 +2,11 @@ import functools
 import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
-from data_pipeline.utils import get_module_logger
-from . import constants
 from data_pipeline.score.score_calculator import ScoreCalculator
 import data_pipeline.score.field_names as FN
+
+from data_pipeline.utils import get_module_logger
+from . import constants
 
 logger = get_module_logger(__name__)
 

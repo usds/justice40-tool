@@ -1,5 +1,3 @@
-from pathlib import Path
-from typing import Dict, List
 import pandas as pd
 import data_pipeline.score.field_names as FN
 
