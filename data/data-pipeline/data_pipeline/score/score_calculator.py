@@ -23,25 +23,24 @@ class ScoreCalculator():
 
     def calculate_scores(self) -> pd.DataFrame:
         # Index scores
-        # TODO refactor to return dataframe of only new columns and merge with initial df
-        self.df = ScoreA().add_columns(df=self.df)
-        self.df = ScoreB().add_columns(df=self.df)
-        self.df = ScoreC().add_columns(df=self.df)
-        self.df = ScoreD().add_columns(df=self.df)
-        self.df = ScoreF().add_columns(df=self.df)
-        self.df = ScoreG().add_columns(df=self.df)
-        self.df = ScoreH().add_columns(df=self.df)
-        self.df = ScoreI().add_columns(df=self.df)
-        self.df = ScoreK().add_columns(df=self.df)
-        self.df = ScoreL().add_columns(df=self.df)
+        self.df = ScoreA(df=self.df).add_columns()
+        self.df = ScoreB(df=self.df).add_columns()
+        self.df = ScoreC(df=self.df).add_columns()
+        self.df = ScoreD(df=self.df).add_columns()
+        self.df = ScoreF(df=self.df).add_columns()
+        self.df = ScoreG(df=self.df).add_columns()
+        self.df = ScoreH(df=self.df).add_columns()
+        self.df = ScoreI(df=self.df).add_columns()
+        self.df = ScoreK(df=self.df).add_columns()
+        self.df = ScoreL(df=self.df).add_columns()
 
         # TODO do this with each score instead of in a bundle
         # Create percentiles for these index scores
-        self.df = self._add_score_percentiles(df=self.df)
+        self.df = self._add_score_percentiles()
         
         return self.df   
 
-    def _add_score_percentiles(self, df: pd.DataFrame) -> pd.DataFrame:
+    def _add_score_percentiles(self) -> pd.DataFrame:
         logger.info("Adding Score Percentiles")
         for score_field in [
             "Score A",
@@ -50,16 +49,16 @@ class ScoreCalculator():
             "Score D",
             "Score E",
         ]:
-            df[f"{score_field}{FN.PERCENTILE_FIELD_SUFFIX}"] = df[
+            self.df[f"{score_field}{FN.PERCENTILE_FIELD_SUFFIX}"] = self.df[
                 score_field
             ].rank(pct=True)
 
             for threshold in [0.25, 0.3, 0.35, 0.4]:
                 fraction_converted_to_percent = int(100 * threshold)
-                df[
+                self.df[
                     f"{score_field} (top {fraction_converted_to_percent}th percentile)"
                 ] = (
-                    df[f"{score_field}{FN.PERCENTILE_FIELD_SUFFIX}"]
+                    self.df[f"{score_field}{FN.PERCENTILE_FIELD_SUFFIX}"]
                     >= 1 - threshold
                 )
-        return df
+        return self.df

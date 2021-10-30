@@ -1,7 +1,7 @@
 from data_pipeline.score.score import *
 
 class ScoreC(Score):
-    def __init__(self) -> None:
+    def __init__(self, df: pd.DataFrame) -> None:
         self.BUCKET_SOCIOECONOMIC = {
             "name": "Socioeconomic Factors",
             "fields": [
@@ -41,9 +41,10 @@ class ScoreC(Score):
                 FN.TRAFFIC_FIELD,
             ]
         }
+        super().__init__(df)
 
     # "CalEnviroScreen for the US" score
-    def add_columns(self, df: pd.DataFrame) -> pd.DataFrame:
+    def add_columns(self) -> pd.DataFrame:
         logger.info("Adding Score C")
         # Average all the percentile values in each bucket into a single score for each of the four buckets.
         buckets = [
@@ -59,27 +60,27 @@ class ScoreC(Score):
                 fields_to_average.append(f"{field}{FN.PERCENTILE_FIELD_SUFFIX}")
 
             name = bucket["name"]
-            df[f"{name}"] = df[fields_to_average].mean(axis=1)
+            self.df[f"{name}"] = self.df[fields_to_average].mean(axis=1)
 
         # Combine the score from the two Exposures and Environmental Effects buckets
         # into a single score called "Pollution Burden".
         # The math for this score is:
         # (1.0 * Exposures Score + 0.5 * Environment Effects score) / 1.5.
-        df[FN.AGGREGATION_POLLUTION_FIELD] = (
-            1.0 * df[self.BUCKET_EXPOSURES["name"]]
-            + 0.5 * df[self.BUCKET_ENVIRONMENTAL["name"]]
+        self.df[FN.AGGREGATION_POLLUTION_FIELD] = (
+            1.0 * self.df[self.BUCKET_EXPOSURES["name"]]
+            + 0.5 * self.df[self.BUCKET_ENVIRONMENTAL["name"]]
         ) / 1.5
 
         # Average the score from the two Sensitive populations and
         # Socioeconomic factors buckets into a single score called
         # "Population Characteristics".
-        df[FN.AGGREGATION_POPULATION_FIELD] = df[
+        self.df[FN.AGGREGATION_POPULATION_FIELD] = self.df[
             [self.BUCKET_SENSITIVE["name"], self.BUCKET_SOCIOECONOMIC["name"]]
         ].mean(axis=1)
 
         # Multiply the "Pollution Burden" score and the "Population Characteristics"
         # together to produce the cumulative impact score.
-        df["Score C"] = (
-            df[FN.AGGREGATION_POLLUTION_FIELD] * df[FN.AGGREGATION_POPULATION_FIELD]
+        self.df["Score C"] = (
+            self.df[FN.AGGREGATION_POLLUTION_FIELD] * self.df[FN.AGGREGATION_POPULATION_FIELD]
         )
-        return df
+        return self.df
