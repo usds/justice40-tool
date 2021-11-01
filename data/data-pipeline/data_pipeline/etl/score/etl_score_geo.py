@@ -6,6 +6,7 @@ from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.sources.census.etl_utils import (
     check_census_data_source,
 )
+from data_pipeline.etl.score.etl_utils import check_score_data_source
 from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
@@ -17,6 +18,7 @@ class GeoScoreETL(ExtractTransformLoad):
     """
 
     def __init__(self, data_source: str = None):
+        self.DATA_SOURCE = data_source
         self.SCORE_GEOJSON_PATH = self.DATA_PATH / "score" / "geojson"
         self.SCORE_LOW_GEOJSON = self.SCORE_GEOJSON_PATH / "usa-low.json"
         self.SCORE_HIGH_GEOJSON = self.SCORE_GEOJSON_PATH / "usa-high.json"
@@ -44,6 +46,12 @@ class GeoScoreETL(ExtractTransformLoad):
         check_census_data_source(
             census_data_path=self.DATA_PATH / "census",
             census_data_source=self.DATA_SOURCE,
+        )
+
+        # check score data
+        check_score_data_source(
+            score_csv_data_path=self.SCORE_CSV_PATH,
+            score_data_source=self.DATA_SOURCE,
         )
 
         logger.info("Reading US GeoJSON (~6 minutes)")
