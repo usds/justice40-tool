@@ -1,4 +1,4 @@
-from data_pipeline.score.score import *
+from data_pipeline.score.score import Score, FN, pd, logger
 
 
 class ScoreL(Score):
@@ -8,6 +8,8 @@ class ScoreL(Score):
         super().__init__(df)
 
     def add_columns(self) -> pd.DataFrame:
+        logger.info("Adding Score L")
+
         self.df["Climate Factor (Definition L)"] = self._climate_factor()
         self.df["Energy Factor (Definition L)"] = self._energy_factor()
         self.df[

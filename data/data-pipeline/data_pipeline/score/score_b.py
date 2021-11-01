@@ -1,4 +1,4 @@
-from data_pipeline.score.score import *
+from data_pipeline.score.score import Score, FN, pd, logger
 
 
 class ScoreB(Score):
