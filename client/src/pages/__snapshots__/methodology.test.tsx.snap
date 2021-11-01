@@ -145,10 +145,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             alt="language icon for selecting language"
             src="test-file-stub"
           />
-          <a>
+          <a
+            href="#"
+          >
             English
           </a>
-          <a>
+          <a
+            href="#"
+          >
             Español
           </a>
         </div>
@@ -279,10 +283,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                       alt="language icon for selecting language"
                       src="test-file-stub"
                     />
-                    <a>
+                    <a
+                      href="#"
+                    >
                       English
                     </a>
-                    <a>
+                    <a
+                      href="#"
+                    >
                       Español
                     </a>
                   </div>

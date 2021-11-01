@@ -140,10 +140,14 @@ exports[`rendering of the GovernmentBanner checks if component renders 1`] = `
           alt="language icon for selecting language"
           src="test-file-stub"
         />
-        <a>
+        <a
+          href="#"
+        >
           English
         </a>
-        <a>
+        <a
+          href="#"
+        >
           Español
         </a>
       </div>

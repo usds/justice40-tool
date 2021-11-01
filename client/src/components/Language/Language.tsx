@@ -22,6 +22,7 @@ const Language = ({isDesktop}:ILanguageProps) => {
         {({languages, language: currentLocale}) =>
           languages.map((language: React.Key | null | undefined) => (
             <a
+              href="#"
               className={styles.languageLink}
               key={language}
               onClick={() => changeLocale(language)}
