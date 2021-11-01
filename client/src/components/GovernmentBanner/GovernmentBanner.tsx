@@ -9,7 +9,7 @@ const GovernmentBanner = () => {
     <div className={styles.fullScreenContainer}>
       <div className={styles.bannerContainer}>
         <GovBanner/>
-        <Language />
+        <Language isDesktop={true}/>
       </div>
     </div>
   );

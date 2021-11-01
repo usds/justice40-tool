@@ -1,6 +1,7 @@
 declare namespace LanguageNamespace {
     export interface ILanguageScss {
         languageContainer: string;
+        languageContainerMobile: string;
         languageIcon: string;
         languageLink: string;
     }

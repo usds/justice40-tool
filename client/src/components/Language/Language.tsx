@@ -10,9 +10,13 @@ const languageName = {
   es: 'Español',
 };
 
-const Language = () => {
+interface ILanguageProps {
+  isDesktop: boolean
+}
+
+const Language = ({isDesktop}:ILanguageProps) => {
   return (
-    <div className={styles.languageContainer}>
+    <div className={isDesktop ? styles.languageContainer : styles.languageContainerMobile}>
       <img className={styles.languageIcon} src={languageIcon} alt={'language icon for selecting language'}/>
       <IntlContextConsumer>
         {({languages, language: currentLocale}) =>

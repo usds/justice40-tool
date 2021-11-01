@@ -270,6 +270,24 @@ exports[`rendering of the J40Header checks if component renders 1`] = `
                   Contact
                 </a>
               </li>
+              <li
+                class="usa-nav__primary-item"
+              >
+                <div>
+                  <div>
+                    <img
+                      alt="language icon for selecting language"
+                      src="test-file-stub"
+                    />
+                    <a>
+                      English
+                    </a>
+                    <a>
+                      Español
+                    </a>
+                  </div>
+                </div>
+              </li>
             </ul>
           </nav>
         </div>
