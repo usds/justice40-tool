@@ -10,7 +10,7 @@ logger = get_module_logger(__name__)
 
 class ScoreC(Score):
     def __init__(self, df: pd.DataFrame) -> None:
-        Bucket = namedtuple("Bucket", ["name", "fields"])
+        Bucket = namedtuple(typename="Bucket", field_names=["name", "fields"])
 
         self.BUCKET_SOCIOECONOMIC = Bucket(
             field_names.C_SOCIOECONOMIC,
