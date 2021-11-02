@@ -41,7 +41,7 @@ jobs:
         env:
             TZ: America/Los_Angeles
         run: |
-          sudo ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+          # sudo ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
           sudo apt-get install -y software-properties-common libsqlite3-dev zlib1g-dev
           sudo apt-add-repository -y ppa:git-core/ppa
           sudo mkdir -p /tmp/tippecanoe-src && git clone https://github.com/mapbox/tippecanoe.git /tmp/tippecanoe-src
