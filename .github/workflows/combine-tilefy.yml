@@ -46,11 +46,12 @@ jobs:
       - name: Make tippecanoe
         working-directory: /tmp/tippecanoe-src
         run: |
-          sudo /bin/sh -c make
+          sudo /usr/bin/bash -c make
       - name: Make install tippecanoe
         working-directory: /tmp/tippecanoe-src
         run: |
-          sudo /bin/sh -c make install          
+          sudo /usr/bin/bash -c make install
+          tippecanoe -v          
       - name: Run Scripts
         run: |
           poetry run python3 data_pipeline/application.py geo-score -s aws
