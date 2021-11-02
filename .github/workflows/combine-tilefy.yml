@@ -38,8 +38,9 @@ jobs:
           sudo apt-get install gdal-bin libgdal-dev
           pip install GDAL==3.2.3
       - name: Install tippecanoe
+        env:
+            TZ: America/Los_Angeles
         run: |
-          sudo ENV TZ=America/Los_Angeles
           sudo ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
           sudo apt-get install -y software-properties-common libsqlite3-dev zlib1g-dev
           sudo apt-add-repository -y ppa:git-core/ppa
