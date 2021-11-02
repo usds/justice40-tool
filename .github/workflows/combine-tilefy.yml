@@ -43,12 +43,12 @@ jobs:
           sudo apt-add-repository -y ppa:git-core/ppa
           sudo mkdir -p /tmp/tippecanoe-src
           sudo git clone https://github.com/mapbox/tippecanoe.git /tmp/tippecanoe-src
-          sudo tippecanoe -v
       - name: Install tippecanoe
         working-directory: /tmp/tippecanoe-src
         run: |
           sudo /bin/sh -c make
           sudo /bin/sh -c make install
+          sudo tippecanoe -v
       - name: Run Scripts
         run: |
           poetry run python3 data_pipeline/application.py geo-score -s aws
