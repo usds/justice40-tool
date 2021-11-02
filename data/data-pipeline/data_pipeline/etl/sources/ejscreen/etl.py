@@ -6,7 +6,7 @@ from data_pipeline.utils import get_module_logger
 logger = get_module_logger(__name__)
 
 
-class EJScreenETL(ExtractTransformLoad):
+class EJSCREENETL(ExtractTransformLoad):
     def __init__(self):
         self.EJSCREEN_FTP_URL = "https://gaftp.epa.gov/EJSCREEN/2019/EJSCREEN_2019_StatePctile.csv.zip"
         self.EJSCREEN_CSV = self.TMP_PATH / "EJSCREEN_2019_StatePctiles.csv"

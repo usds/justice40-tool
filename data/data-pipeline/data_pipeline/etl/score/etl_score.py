@@ -7,7 +7,9 @@ from data_pipeline.score import field_names
 from data_pipeline.etl.score import constants
 
 from data_pipeline.utils import get_module_logger
-
+from data_pipeline.etl.sources.ejscreen_areas_of_concern.etl import (
+    EJSCREENAreasOfConcernETL,
+)
 
 logger = get_module_logger(__name__)
 
@@ -218,14 +220,26 @@ class ScoreETL(ExtractTransformLoad):
         )
 
         # Load EJ Screen Areas of Concern
-        ejscreen_areas_of_concern_csv = (
-            self.DATA_PATH / "dataset" / "ejscreen_areas_of_concern" / "usa.csv"
-        )
-        self.ejscreen_areas_of_concern_df = pd.read_csv(
-            ejscreen_areas_of_concern_csv,
-            dtype={self.GEOID_FIELD_NAME: "string"},
-            low_memory=False,
-        )
+        # Before attempting, check whether or not the EJSCREEN AoC data is available locally.
+        if EJSCREENAreasOfConcernETL.ejscreen_areas_of_concern_data_exists():
+            logger.info(
+                "Loading EJSCREEN Areas of Concern data for score pipeline."
+            )
+            ejscreen_areas_of_concern_csv = (
+                self.DATA_PATH
+                / "dataset"
+                / "ejscreen_areas_of_concern"
+                / "usa.csv"
+            )
+            self.ejscreen_areas_of_concern_df = pd.read_csv(
+                ejscreen_areas_of_concern_csv,
+                dtype={self.GEOID_FIELD_NAME: "string"},
+                low_memory=False,
+            )
+        else:
+            logger.info(
+                "EJSCREEN areas of concern data does not exist locally. Not attempting to load data into score pipeline."
+            )
 
     def _join_cbg_dfs(self, census_block_group_dfs: list) -> pd.DataFrame:
         logger.info("Joining Census Block Group dataframes")
@@ -279,8 +293,15 @@ class ScoreETL(ExtractTransformLoad):
             self.housing_and_transportation_df,
             self.census_acs_median_incomes_df,
             self.national_risk_index_df,
-            self.ejscreen_areas_of_concern_df,
         ]
+
+        # Before attempting, check whether or not the EJSCREEN AoC data is available locally.
+        if EJSCREENAreasOfConcernETL.ejscreen_areas_of_concern_data_exists():
+            # If available, merge EJSCREEN AoC data into CBG dfs.
+            census_block_group_dfs.append(self.ejscreen_areas_of_concern_df)
+        else:
+            pass
+
         census_block_group_df = self._join_cbg_dfs(census_block_group_dfs)
 
         # Join all the data sources that use census tracts
