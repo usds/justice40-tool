@@ -56,7 +56,9 @@ POVERTY_LESS_THAN_100_FPL_PERCENTILE_FIELD = (
     "Percent of individuals < 100% Federal Poverty Line (percentile)"
 )
 MEDIAN_INCOME_PERCENT_AMI_FIELD = "Median household income (% of AMI)"
-MEDIAN_INCOME_PERCENT_AMI_PERCENTILE_FIELD = "Median household income (% of AMI) (percentile)"
+MEDIAN_INCOME_PERCENT_AMI_PERCENTILE_FIELD = (
+    "Median household income (% of AMI) (percentile)"
+)
 STATE_MEDIAN_INCOME_FIELD = (
     "Median household income (State; 2019 inflation-adjusted dollars)"
 )
@@ -153,3 +155,42 @@ OVER_64_FIELD = "Individuals over 64 years old"
 
 # Urban Rural Map
 URBAN_HERUISTIC_FIELD = "Urban Heuristic Flag"
+
+
+# EJSCREEN Areas of Concern
+EJSCREEN_AREAS_OF_CONCERN_NATIONAL_70TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
+    "EJSCREEN Areas of Concern, National, 70th percentile (communities)"
+)
+EJSCREEN_AREAS_OF_CONCERN_NATIONAL_75TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
+    "EJSCREEN Areas of Concern, National, 75th percentile (communities)"
+)
+EJSCREEN_AREAS_OF_CONCERN_NATIONAL_80TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
+    "EJSCREEN Areas of Concern, National, 80th percentile (communities)"
+)
+EJSCREEN_AREAS_OF_CONCERN_NATIONAL_85TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
+    "EJSCREEN Areas of Concern, National, 85th percentile (communities)"
+)
+EJSCREEN_AREAS_OF_CONCERN_NATIONAL_90TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
+    "EJSCREEN Areas of Concern, National, 90th percentile (communities)"
+)
+EJSCREEN_AREAS_OF_CONCERN_NATIONAL_95TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
+    "EJSCREEN Areas of Concern, National, 95th percentile (communities)"
+)
+EJSCREEN_AREAS_OF_CONCERN_STATE_70TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
+    "EJSCREEN Areas of Concern, State, 70th percentile (communities)"
+)
+EJSCREEN_AREAS_OF_CONCERN_STATE_75TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
+    "EJSCREEN Areas of Concern, State, 75th percentile (communities)"
+)
+EJSCREEN_AREAS_OF_CONCERN_STATE_80TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
+    "EJSCREEN Areas of Concern, State, 80th percentile (communities)"
+)
+EJSCREEN_AREAS_OF_CONCERN_STATE_85TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
+    "EJSCREEN Areas of Concern, State, 85th percentile (communities)"
+)
+EJSCREEN_AREAS_OF_CONCERN_STATE_90TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
+    "EJSCREEN Areas of Concern, State, 90th percentile (communities)"
+)
+EJSCREEN_AREAS_OF_CONCERN_STATE_95TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
+    "EJSCREEN Areas of Concern, State, 95th percentile (communities)"
+)

@@ -18,44 +18,6 @@ class ScoreETL(ExtractTransformLoad):
     def __init__(self):
         # Define some global parameters
 
-        # EJ Areas of Concern
-        self.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_70TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
-            "EJSCREEN Areas of Concern, National, 70th percentile (communities)"
-        )
-        self.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_75TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
-            "EJSCREEN Areas of Concern, National, 75th percentile (communities)"
-        )
-        self.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_80TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
-            "EJSCREEN Areas of Concern, National, 80th percentile (communities)"
-        )
-        self.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_85TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
-            "EJSCREEN Areas of Concern, National, 85th percentile (communities)"
-        )
-        self.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_90TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
-            "EJSCREEN Areas of Concern, National, 90th percentile (communities)"
-        )
-        self.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_95TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
-            "EJSCREEN Areas of Concern, National, 95th percentile (communities)"
-        )
-        self.EJSCREEN_AREAS_OF_CONCERN_STATE_70TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
-            "EJSCREEN Areas of Concern, State, 70th percentile (communities)"
-        )
-        self.EJSCREEN_AREAS_OF_CONCERN_STATE_75TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
-            "EJSCREEN Areas of Concern, State, 75th percentile (communities)"
-        )
-        self.EJSCREEN_AREAS_OF_CONCERN_STATE_80TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
-            "EJSCREEN Areas of Concern, State, 80th percentile (communities)"
-        )
-        self.EJSCREEN_AREAS_OF_CONCERN_STATE_85TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
-            "EJSCREEN Areas of Concern, State, 85th percentile (communities)"
-        )
-        self.EJSCREEN_AREAS_OF_CONCERN_STATE_90TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
-            "EJSCREEN Areas of Concern, State, 90th percentile (communities)"
-        )
-        self.EJSCREEN_AREAS_OF_CONCERN_STATE_95TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
-            "EJSCREEN Areas of Concern, State, 95th percentile (communities)"
-        )
-
         # dataframes
         self.df: pd.DataFrame
         self.ejscreen_df: pd.DataFrame
@@ -343,7 +305,6 @@ class ScoreETL(ExtractTransformLoad):
             df[field_names.MEDIAN_INCOME_FIELD] / df[field_names.AMI_FIELD]
         )
 
-        # TODO: add all EJSCREEN fields here.
         numeric_columns = [
             field_names.HOUSING_BURDEN_FIELD,
             field_names.TOTAL_POP_FIELD,
@@ -384,10 +345,33 @@ class ScoreETL(ExtractTransformLoad):
             field_names.UNEMPLOYMENT_FIELD,
             field_names.HT_INDEX_FIELD,
         ]
+
         non_numeric_columns = [
             self.GEOID_FIELD_NAME,
             field_names.PERSISTENT_POVERTY_FIELD,
         ]
+
+        # Before adding EJSCREEN AoCs to the fields to keep, check whether or not the EJSCREEN AoC data is available locally.
+        if EJSCREENAreasOfConcernETL.ejscreen_areas_of_concern_data_exists():
+            non_numeric_columns.extend(
+                [
+                    field_names.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_70TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                    field_names.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_75TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                    field_names.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_80TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                    field_names.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_85TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                    field_names.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_90TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                    field_names.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_95TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                    field_names.EJSCREEN_AREAS_OF_CONCERN_STATE_70TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                    field_names.EJSCREEN_AREAS_OF_CONCERN_STATE_75TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                    field_names.EJSCREEN_AREAS_OF_CONCERN_STATE_80TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                    field_names.EJSCREEN_AREAS_OF_CONCERN_STATE_85TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                    field_names.EJSCREEN_AREAS_OF_CONCERN_STATE_90TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                    field_names.EJSCREEN_AREAS_OF_CONCERN_STATE_95TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
+                ]
+            )
+        else:
+            pass
+
         columns_to_keep = non_numeric_columns + numeric_columns
         df = df[columns_to_keep]
 
