@@ -37,14 +37,17 @@ jobs:
       #     sudo apt-get update
       #     sudo apt-get install gdal-bin libgdal-dev
       #     pip install GDAL==3.2.3
-      - name: Install tippecanoe
+      - name: Get tippecanoe
         run: |
           sudo apt-get install -y software-properties-common libsqlite3-dev zlib1g-dev
           sudo apt-add-repository -y ppa:git-core/ppa
           sudo mkdir -p /tmp/tippecanoe-src
           sudo git clone https://github.com/mapbox/tippecanoe.git /tmp/tippecanoe-src
-          sudo /bin/sh -c /tmp/tippecanoe-src/make
-          sudo bin/sh -c /tmp/tippecanoe-src/make install
+      - name: Install tippecanoe
+        working-directory: /tmp/tippecanoe-src
+        run: |
+          sudo /bin/sh -c make
+          sudo bin/sh -c make install
       - name: Run Scripts
         run: |
           poetry run python3 data_pipeline/application.py geo-score -s aws
