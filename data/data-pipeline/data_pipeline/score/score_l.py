@@ -1,159 +1,87 @@
 import pandas as pd
 
+from data_pipeline.score.score import Score
+import data_pipeline.score.field_names as field_names
 from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
 
-class ScoreCalculator:
-    def __init__(self, df: pd.DataFrame):
-        # Define some global parameters
-        self.df = df
 
-        self.POVERTY_LESS_THAN_200_FPL_FIELD: str = (
-            "Percent of individuals < 200% Federal Poverty Line (percentile)"
-        )
-
-        self.POVERTY_LESS_THAN_100_FPL_FIELD: str = (
-            "Percent of individuals < 100% Federal Poverty Line (percentile)"
-        )
-
-        # FEMA Risk Index
-        self.NATIONAL_RISK_FIELD: str = (
-            "FEMA Risk Index Expected Annual Loss Score (percentile)"
-        )
-
-        # DOE energy burden
-        self.ENERGY_BURDEN_FIELD: str = "Energy burden (percentile)"
-
-        # Diesel particulate matter
-        self.DIESEL_FIELD: str = "Diesel particulate matter (percentile)"
-
-        # PM2.5
-        self.PM25_FIELD: str = "Particulate matter (PM2.5) (percentile)"
-
-        # Traffic proximity and volume
-        self.TRAFFIC_FIELD: str = "Traffic proximity and volume (percentile)"
-
-        # Lead paint
-        self.LEAD_PAINT_FIELD: str = (
-            "Percent pre-1960s housing (lead paint indicator) (percentile)"
-        )
-
-        # Housing cost burden
-        self.HOUSING_BURDEN_FIELD: str = "Housing burden (percent) (percentile)"
-
-        # Wastewater discharge
-        self.WASTEWATER_FIELD: str = "Wastewater discharge (percentile)"
-
-        # Diabetes
-        self.DIABETES_FIELD: str = (
-            "Diagnosed diabetes among adults aged >=18 years (percentile)"
-        )
-
-        # Asthma
-        self.ASTHMA_FIELD: str = (
-            "Current asthma among adults aged >=18 years (percentile)"
-        )
-
-        # Heart disease
-        self.HEART_DISEASE_FIELD: str = (
-            "Coronary heart disease among adults aged >=18 years (percentile)"
-        )
-
-        # Life expectancy
-        self.LIFE_EXPECTANCY_FIELD: str = "Life expectancy (years) (percentile)"
-
-        # Unemployment
-        self.UNEMPLOYMENT_FIELD: str = (
-            "Unemployed civilians (percent) (percentile)"
-        )
-
-        # Median income as % of AMI
-        self.MEDIAN_INCOME_FIELD: str = (
-            "Median household income (% of AMI) (percentile)"
-        )
-
-        # Linguistic isolation
-        self.LINGUISTIC_ISO_FIELD: str = (
-            "Linguistic isolation (percent) (percentile)"
-        )
-
-        # Less than high school education
-        self.HIGH_SCHOOL_ED_FIELD: str = "Percent individuals age 25 or over with less than high school degree (percentile)"
-
-        # Set thresholds for score L
+class ScoreL(Score):
+    def __init__(self, df: pd.DataFrame) -> None:
         self.LOW_INCOME_THRESHOLD: float = 0.60
         self.ENVIRONMENTAL_BURDEN_THRESHOLD: float = 0.90
+        super().__init__(df)
 
-    def add_definition_l_factors(self):
-        self.df["Climate Factor (Definition L)"] = self.climate_factor()
-        self.df["Energy Factor (Definition L)"] = self.energy_factor()
-        self.df[
-            "Transportation Factor (Definition L)"
-        ] = self.transportation_factor()
-        self.df["Housing Factor (Definition L)"] = self.housing_factor()
-        self.df["Pollution Factor (Definition L)"] = self.pollution_factor()
-        self.df["Water Factor (Definition L)"] = self.water_factor()
-        self.df["Health Factor (Definition L)"] = self.health_factor()
-        self.df["Workforce Factor (Definition L)"] = self.workforce_factor()
+    def add_columns(self) -> pd.DataFrame:
+        logger.info("Adding Score L")
+
+        self.df[field_names.L_CLIMATE] = self._climate_factor()
+        self.df[field_names.L_ENERGY] = self._energy_factor()
+        self.df[field_names.L_TRANSPORTATION] = self._transportation_factor()
+        self.df[field_names.L_HOUSING] = self._housing_factor()
+        self.df[field_names.L_POLLUTION] = self._pollution_factor()
+        self.df[field_names.L_WATER] = self._water_factor()
+        self.df[field_names.L_HEALTH] = self._health_factor()
+        self.df[field_names.L_WORKFORCE] = self._workforce_factor()
 
         factors = [
-            "Climate Factor (Definition L)",
-            "Energy Factor (Definition L)",
-            "Transportation Factor (Definition L)",
-            "Housing Factor (Definition L)",
-            "Pollution Factor (Definition L)",
-            "Water Factor (Definition L)",
-            "Health Factor (Definition L)",
-            "Workforce Factor (Definition L)",
+            field_names.L_CLIMATE,
+            field_names.L_ENERGY,
+            field_names.L_TRANSPORTATION,
+            field_names.L_HOUSING,
+            field_names.L_POLLUTION,
+            field_names.L_WATER,
+            field_names.L_HEALTH,
+            field_names.L_WORKFORCE,
         ]
-        self.df["Definition L (communities)"] = self.df[factors].any(axis=1)
+        self.df[field_names.SCORE_L_COMMUNITIES] = self.df[factors].any(axis=1)
 
         # Note: this is purely used for comparison tool analysis, and can be removed at a later date. - LMB.
         non_workforce_factors = [
-            "Climate Factor (Definition L)",
-            "Energy Factor (Definition L)",
-            "Transportation Factor (Definition L)",
-            "Housing Factor (Definition L)",
-            "Pollution Factor (Definition L)",
-            "Water Factor (Definition L)",
-            "Health Factor (Definition L)",
+            field_names.L_CLIMATE,
+            field_names.L_ENERGY,
+            field_names.L_TRANSPORTATION,
+            field_names.L_HOUSING,
+            field_names.L_POLLUTION,
+            field_names.L_WATER,
+            field_names.L_HEALTH,
         ]
-        self.df["Any Non-Workforce Factor (Definition L)"] = self.df[
+        self.df[field_names.L_NON_WORKFORCE] = self.df[
             non_workforce_factors
         ].any(axis=1)
 
         return self.df
 
-    def climate_factor(self) -> bool:
+    def _climate_factor(self) -> bool:
         # In Xth percentile or above for FEMA’s Risk Index (Source: FEMA
         # AND
         # Low income: In 60th percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
         return (
-            self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD]
+            self.df[field_names.POVERTY_LESS_THAN_200_FPL_PERCENTILE_FIELD]
             > self.LOW_INCOME_THRESHOLD
         ) & (
-            self.df[self.NATIONAL_RISK_FIELD]
+            self.df[field_names.FEMA_RISK_PERCENTILE_FIELD]
             > self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-    def energy_factor(self) -> bool:
+    def _energy_factor(self) -> bool:
         # In Xth percentile or above for DOE’s energy cost burden score (Source: LEAD Score)
         # AND
         # Low income: In 60th percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
         return (
-            self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD]
+            self.df[field_names.POVERTY_LESS_THAN_200_FPL_PERCENTILE_FIELD]
             > self.LOW_INCOME_THRESHOLD
         ) & (
-            self.df[self.ENERGY_BURDEN_FIELD]
+            self.df[field_names.ENERGY_BURDEN_PERCENTILE_FIELD]
             > self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-    def transportation_factor(self) -> bool:
+    def _transportation_factor(self) -> bool:
         # In Xth percentile or above for diesel particulate matter (Source: EPA National Air Toxics Assessment (NATA)
         # or
         # In Xth percentile or above for PM 2.5 (Source: EPA, Office of Air and Radiation (OAR) fusion of model and monitor data)]
@@ -164,20 +92,26 @@ class ScoreCalculator:
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
         transportation_criteria = (
-            (self.df[self.DIESEL_FIELD] > self.ENVIRONMENTAL_BURDEN_THRESHOLD)
-            | (self.df[self.PM25_FIELD] > self.ENVIRONMENTAL_BURDEN_THRESHOLD)
+            (
+                self.df[field_names.DIESEL_PERCENTILE_FIELD]
+                > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            )
             | (
-                self.df[self.TRAFFIC_FIELD]
+                self.df[field_names.PM25_PERCENTILE_FIELD]
+                > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            )
+            | (
+                self.df[field_names.TRAFFIC_PERCENTILE_FIELD]
                 > self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
         )
 
         return (
-            self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD]
+            self.df[field_names.POVERTY_LESS_THAN_200_FPL_PERCENTILE_FIELD]
             > self.LOW_INCOME_THRESHOLD
         ) & transportation_criteria
 
-    def housing_factor(self) -> bool:
+    def _housing_factor(self) -> bool:
         # In Xth percentile or above for lead paint (Source: Census's American Community Survey’s
         # percent of housing units built pre-1960, used as an indicator of potential lead paint exposure in homes)
         # or
@@ -187,17 +121,18 @@ class ScoreCalculator:
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
         housing_criteria = (
-            self.df[self.LEAD_PAINT_FIELD] > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            self.df[field_names.LEAD_PAINT_PERCENTILE_FIELD]
+            > self.ENVIRONMENTAL_BURDEN_THRESHOLD
         ) | (
-            self.df[self.HOUSING_BURDEN_FIELD]
+            self.df[field_names.HOUSING_BURDEN_PERCENTILE_FIELD]
             > self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
         return (
-            self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD]
+            self.df[field_names.POVERTY_LESS_THAN_200_FPL_PERCENTILE_FIELD]
             > self.LOW_INCOME_THRESHOLD
         ) & housing_criteria
 
-    def pollution_factor(self) -> bool:
+    def _pollution_factor(self) -> bool:
         # TBD
         # AND
         # Low income: In 60th percentile or above for percent of block group population
@@ -205,20 +140,21 @@ class ScoreCalculator:
         # poverty level. Source: Census's American Community Survey]
         return False
 
-    def water_factor(self) -> bool:
+    def _water_factor(self) -> bool:
         # In Xth percentile or above for wastewater discharge (Source: EPA Risk-Screening Environmental Indicators (RSEI) Model)
         # AND
         # Low income: In 60th percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
         return (
-            self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD]
+            self.df[field_names.POVERTY_LESS_THAN_200_FPL_PERCENTILE_FIELD]
             > self.LOW_INCOME_THRESHOLD
         ) & (
-            self.df[self.WASTEWATER_FIELD] > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            self.df[field_names.WASTEWATER_PERCENTILE_FIELD]
+            > self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-    def health_factor(self) -> bool:
+    def _health_factor(self) -> bool:
         # In Xth percentile or above for diabetes (Source: CDC Places)
         # or
         # In Xth percentile or above for asthma (Source: CDC Places)
@@ -232,25 +168,31 @@ class ScoreCalculator:
         # poverty level. Source: Census's American Community Survey]
 
         health_criteria = (
-            (self.df[self.DIABETES_FIELD] > self.ENVIRONMENTAL_BURDEN_THRESHOLD)
-            | (self.df[self.ASTHMA_FIELD] > self.ENVIRONMENTAL_BURDEN_THRESHOLD)
-            | (
-                self.df[self.HEART_DISEASE_FIELD]
+            (
+                self.df[field_names.DIABETES_PERCENTILE_FIELD]
                 > self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             | (
-                self.df[self.LIFE_EXPECTANCY_FIELD]
+                self.df[field_names.ASTHMA_PERCENTILE_FIELD]
+                > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            )
+            | (
+                self.df[field_names.HEART_DISEASE_PERCENTILE_FIELD]
+                > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            )
+            | (
+                self.df[field_names.LIFE_EXPECTANCY_PERCENTILE_FIELD]
                 # Note: a high life expectancy is good, so take 1 minus the threshold to invert it,
                 # and then look for life expenctancies lower than that (not greater than).
                 < 1 - self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
         )
         return (
-            self.df[self.POVERTY_LESS_THAN_200_FPL_FIELD]
+            self.df[field_names.POVERTY_LESS_THAN_200_FPL_PERCENTILE_FIELD]
             > self.LOW_INCOME_THRESHOLD
         ) & health_criteria
 
-    def workforce_factor(self) -> bool:
+    def _workforce_factor(self) -> bool:
         # Where unemployment is above X%
         # or
         # Where median income is less than Y% of the area median income
@@ -263,22 +205,24 @@ class ScoreCalculator:
         # (necessary to screen out university block groups)
         workforce_criteria = (
             (
-                self.df[self.UNEMPLOYMENT_FIELD]
+                self.df[field_names.UNEMPLOYMENT_PERCENTILE_FIELD]
                 > self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             | (
-                self.df[self.MEDIAN_INCOME_FIELD]
+                self.df[field_names.MEDIAN_INCOME_PERCENT_AMI_PERCENTILE_FIELD]
                 # Note: a high median income as a % of AMI is good, so take 1 minus the threshold to invert it.
                 # and then look for median income lower than that (not greater than).
                 < 1 - self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             | (
-                self.df[self.POVERTY_LESS_THAN_100_FPL_FIELD]
+                self.df[field_names.POVERTY_LESS_THAN_100_FPL_PERCENTILE_FIELD]
                 > self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             | (
-                self.df[self.LINGUISTIC_ISO_FIELD]
+                self.df[field_names.LINGUISTIC_ISO_PERCENTILE_FIELD]
                 > self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
         )
-        return (self.df[self.HIGH_SCHOOL_ED_FIELD] > 0.05) & workforce_criteria
+        return (
+            self.df[field_names.HIGH_SCHOOL_ED_FIELD] > 0.05
+        ) & workforce_criteria
