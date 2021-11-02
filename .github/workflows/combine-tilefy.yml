@@ -50,6 +50,7 @@ jobs:
       - name: Make tippecanoe
         working-directory: /tmp/tippecanoe-src
         run: |
+          sudo git reset --hard 97ace99
           sudo /usr/bin/bash -c make && make install
           tippecanoe -v          
       - name: Run Scripts
