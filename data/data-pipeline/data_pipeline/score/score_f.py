@@ -1,4 +1,10 @@
-from data_pipeline.score.score import Score, FN, pd, logger
+import pandas as pd
+
+from data_pipeline.score.score import Score
+import data_pipeline.score.field_names as field_names
+from data_pipeline.utils import get_module_logger
+
+logger = get_module_logger(__name__)
 
 
 class ScoreF(Score):
@@ -11,29 +17,29 @@ class ScoreF(Score):
         meets_burden_field = "Meets burden criteria"
 
         self.df[ami_and_high_school_field] = (
-            self.df[FN.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD] < 0.80
-        ) & (self.df[FN.HIGH_SCHOOL_ED_FIELD] > 0.2)
+            self.df[field_names.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD] < 0.80
+        ) & (self.df[field_names.HIGH_SCHOOL_ED_FIELD] > 0.2)
 
         self.df[meets_socio_field] = (
             self.df[ami_and_high_school_field]
-            | (self.df[FN.POVERTY_FIELD] > 0.40)
-            | (self.df[FN.LINGUISTIC_ISO_FIELD] > 0.10)
-            | (self.df[FN.HIGH_SCHOOL_ED_FIELD] > 0.4)
+            | (self.df[field_names.POVERTY_FIELD] > 0.40)
+            | (self.df[field_names.LINGUISTIC_ISO_FIELD] > 0.10)
+            | (self.df[field_names.HIGH_SCHOOL_ED_FIELD] > 0.4)
         )
 
         self.df[meets_burden_field] = (
-            (self.df[FN.PM25_PERCENTILE_FIELD] > 0.9)
-            | (self.df[FN.RESPITORY_HAZARD_PERCENTILE_FIELD] > 0.9)
-            | (self.df[FN.TRAFFIC_PERCENTILE_FIELD] > 0.9)
-            | (self.df[FN.LEAD_PAINT_PERCENTILE_FIELD] > 0.9)
-            | (self.df[FN.RMP_PERCENTILE_FIELD] > 0.9)
-            | (self.df[FN.ASTHMA_PERCENTILE_FIELD] > 0.9)
-            | (self.df[FN.HEART_DISEASE_PERCENTILE_FIELD] > 0.9)
-            | (self.df[FN.CANCER_PERCENTILE_FIELD] > 0.9)
-            | (self.df[FN.DIABETES_PERCENTILE_FIELD] > 0.9)
+            (self.df[field_names.PM25_PERCENTILE_FIELD] > 0.9)
+            | (self.df[field_names.RESPITORY_HAZARD_PERCENTILE_FIELD] > 0.9)
+            | (self.df[field_names.TRAFFIC_PERCENTILE_FIELD] > 0.9)
+            | (self.df[field_names.LEAD_PAINT_PERCENTILE_FIELD] > 0.9)
+            | (self.df[field_names.RMP_PERCENTILE_FIELD] > 0.9)
+            | (self.df[field_names.ASTHMA_PERCENTILE_FIELD] > 0.9)
+            | (self.df[field_names.HEART_DISEASE_PERCENTILE_FIELD] > 0.9)
+            | (self.df[field_names.CANCER_PERCENTILE_FIELD] > 0.9)
+            | (self.df[field_names.DIABETES_PERCENTILE_FIELD] > 0.9)
         )
 
-        self.df["Score F (communities)"] = (
+        self.df[field_names.SCORE_F_COMMUNITIES] = (
             self.df[meets_socio_field] & self.df[meets_burden_field]
         )
 

@@ -2,11 +2,12 @@ import functools
 import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
-from data_pipeline.score.score_calculator import ScoreCalculator
-import data_pipeline.score.field_names as FN
+from data_pipeline.score.score_runner import ScoreRunner
+from data_pipeline.score import field_names
+from data_pipeline.etl.score import constants
 
 from data_pipeline.utils import get_module_logger
-from . import constants
+
 
 logger = get_module_logger(__name__)
 
@@ -33,36 +34,41 @@ class ScoreETL(ExtractTransformLoad):
         logger.info("Loading data sets from disk.")
 
         # EJSCreen csv Load
-        ejscreen_csv = self.DATA_PATH / "dataset" / "ejscreen_2019" / "usa.csv"
+        ejscreen_csv = (
+            constants.DATA_PATH / "dataset" / "ejscreen_2019" / "usa.csv"
+        )
         self.ejscreen_df = pd.read_csv(
             ejscreen_csv, dtype={"ID": "string"}, low_memory=False
         )
+        # TODO move to EJScreen ETL
         self.ejscreen_df.rename(
             columns={
                 "ID": self.GEOID_FIELD_NAME,
-                "ACSTOTPOP": FN.TOTAL_POP_FIELD,
-                "CANCER": FN.AIR_TOXICS_CANCER_RISK_FIELD,
-                "RESP": FN.RESPITORY_HAZARD_FIELD,
-                "DSLPM": FN.DIESEL_FIELD,
-                "PM25": FN.PM25_FIELD,
-                "OZONE": FN.OZONE_FIELD,
-                "PTRAF": FN.TRAFFIC_FIELD,
-                "PRMP": FN.RMP_FIELD,
-                "PTSDF": FN.TSDF_FIELD,
-                "PNPL": FN.NPL_FIELD,
-                "PWDIS": FN.WASTEWATER_FIELD,
-                "LINGISOPCT": FN.HOUSEHOLDS_LINGUISTIC_ISO_FIELD,
-                "LOWINCPCT": FN.POVERTY_FIELD,
-                "LESSHSPCT": FN.HIGH_SCHOOL_ED_FIELD,
-                "OVER64PCT": FN.OVER_64_FIELD,
-                "UNDER5PCT": FN.UNDER_5_FIELD,
-                "PRE1960PCT": FN.LEAD_PAINT_FIELD,
+                "ACSTOTPOP": field_names.TOTAL_POP_FIELD,
+                "CANCER": field_names.AIR_TOXICS_CANCER_RISK_FIELD,
+                "RESP": field_names.RESPITORY_HAZARD_FIELD,
+                "DSLPM": field_names.DIESEL_FIELD,
+                "PM25": field_names.PM25_FIELD,
+                "OZONE": field_names.OZONE_FIELD,
+                "PTRAF": field_names.TRAFFIC_FIELD,
+                "PRMP": field_names.RMP_FIELD,
+                "PTSDF": field_names.TSDF_FIELD,
+                "PNPL": field_names.NPL_FIELD,
+                "PWDIS": field_names.WASTEWATER_FIELD,
+                "LINGISOPCT": field_names.HOUSEHOLDS_LINGUISTIC_ISO_FIELD,
+                "LOWINCPCT": field_names.POVERTY_FIELD,
+                "LESSHSPCT": field_names.HIGH_SCHOOL_ED_FIELD,
+                "OVER64PCT": field_names.OVER_64_FIELD,
+                "UNDER5PCT": field_names.UNDER_5_FIELD,
+                "PRE1960PCT": field_names.LEAD_PAINT_FIELD,
             },
             inplace=True,
         )
 
         # Load census data
-        census_csv = self.DATA_PATH / "dataset" / "census_acs_2019" / "usa.csv"
+        census_csv = (
+            constants.DATA_PATH / "dataset" / "census_acs_2019" / "usa.csv"
+        )
         self.census_df = pd.read_csv(
             census_csv,
             dtype={self.GEOID_FIELD_NAME: "string"},
@@ -71,7 +77,7 @@ class ScoreETL(ExtractTransformLoad):
 
         # Load housing and transportation data
         housing_and_transportation_index_csv = (
-            self.DATA_PATH
+            constants.DATA_PATH
             / "dataset"
             / "housing_and_transportation_index"
             / "usa.csv"
@@ -81,12 +87,15 @@ class ScoreETL(ExtractTransformLoad):
             dtype={self.GEOID_FIELD_NAME: "string"},
             low_memory=False,
         )
+        # TODO move to HT Index ETL
         self.housing_and_transportation_df.rename(
-            columns={"ht_ami": FN.HT_INDEX_FIELD}, inplace=True
+            columns={"ht_ami": field_names.HT_INDEX_FIELD}, inplace=True
         )
 
         # Load HUD housing data
-        hud_housing_csv = self.DATA_PATH / "dataset" / "hud_housing" / "usa.csv"
+        hud_housing_csv = (
+            constants.DATA_PATH / "dataset" / "hud_housing" / "usa.csv"
+        )
         self.hud_housing_df = pd.read_csv(
             hud_housing_csv,
             dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
@@ -94,7 +103,9 @@ class ScoreETL(ExtractTransformLoad):
         )
 
         # Load CDC Places data
-        cdc_places_csv = self.DATA_PATH / "dataset" / "cdc_places" / "usa.csv"
+        cdc_places_csv = (
+            constants.DATA_PATH / "dataset" / "cdc_places" / "usa.csv"
+        )
         self.cdc_places_df = pd.read_csv(
             cdc_places_csv,
             dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
@@ -103,7 +114,7 @@ class ScoreETL(ExtractTransformLoad):
 
         # Load census AMI data
         census_acs_median_incomes_csv = (
-            self.DATA_PATH
+            constants.DATA_PATH
             / "dataset"
             / "census_acs_median_income_2019"
             / "usa.csv"
@@ -116,7 +127,7 @@ class ScoreETL(ExtractTransformLoad):
 
         # Load CDC life expectancy data
         cdc_life_expectancy_csv = (
-            self.DATA_PATH / "dataset" / "cdc_life_expectancy" / "usa.csv"
+            constants.DATA_PATH / "dataset" / "cdc_life_expectancy" / "usa.csv"
         )
         self.cdc_life_expectancy_df = pd.read_csv(
             cdc_life_expectancy_csv,
@@ -126,7 +137,7 @@ class ScoreETL(ExtractTransformLoad):
 
         # Load DOE energy burden data
         doe_energy_burden_csv = (
-            self.DATA_PATH / "dataset" / "doe_energy_burden" / "usa.csv"
+            constants.DATA_PATH / "dataset" / "doe_energy_burden" / "usa.csv"
         )
         self.doe_energy_burden_df = pd.read_csv(
             doe_energy_burden_csv,
@@ -136,7 +147,10 @@ class ScoreETL(ExtractTransformLoad):
 
         # Load FEMA national risk index data
         national_risk_index_csv = (
-            self.DATA_PATH / "dataset" / "national_risk_index_2020" / "usa.csv"
+            constants.DATA_PATH
+            / "dataset"
+            / "national_risk_index_2020"
+            / "usa.csv"
         )
         self.national_risk_index_df = pd.read_csv(
             national_risk_index_csv,
@@ -146,7 +160,7 @@ class ScoreETL(ExtractTransformLoad):
 
         # Load GeoCorr Urban Rural Map
         geocorr_urban_rural_csv = (
-            self.DATA_PATH / "dataset" / "geocorr" / "usa.csv"
+            constants.DATA_PATH / "dataset" / "geocorr" / "usa.csv"
         )
         self.geocorr_urban_rural_df = pd.read_csv(
             geocorr_urban_rural_csv,
@@ -156,7 +170,7 @@ class ScoreETL(ExtractTransformLoad):
 
         # Load persistent poverty
         persistent_poverty_csv = (
-            self.DATA_PATH / "dataset" / "persistent_poverty" / "usa.csv"
+            constants.DATA_PATH / "dataset" / "persistent_poverty" / "usa.csv"
         )
         self.persistent_poverty_df = pd.read_csv(
             persistent_poverty_csv,
@@ -248,58 +262,59 @@ class ScoreETL(ExtractTransformLoad):
 
         # Calculate median income variables.
         # First, calculate the income of the block group as a fraction of the state income.
-        df[FN.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD] = (
-            df[FN.MEDIAN_INCOME_FIELD] / df[FN.STATE_MEDIAN_INCOME_FIELD]
+        df[field_names.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD] = (
+            df[field_names.MEDIAN_INCOME_FIELD]
+            / df[field_names.STATE_MEDIAN_INCOME_FIELD]
         )
 
         # Calculate the income of the block group as a fraction of the AMI (either state or metropolitan, depending on reference).
-        df[FN.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD] = (
-            df[FN.MEDIAN_INCOME_FIELD] / df[FN.AMI_FIELD]
+        df[field_names.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD] = (
+            df[field_names.MEDIAN_INCOME_FIELD] / df[field_names.AMI_FIELD]
         )
 
         numeric_columns = [
-            FN.HOUSING_BURDEN_FIELD,
-            FN.TOTAL_POP_FIELD,
-            FN.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD,
-            FN.ASTHMA_FIELD,
-            FN.HEART_DISEASE_FIELD,
-            FN.CANCER_FIELD,
-            FN.HEALTH_INSURANCE_FIELD,
-            FN.DIABETES_FIELD,
-            FN.PHYS_HEALTH_NOT_GOOD_FIELD,
-            FN.POVERTY_LESS_THAN_100_FPL_FIELD,
-            FN.POVERTY_LESS_THAN_150_FPL_FIELD,
-            FN.POVERTY_LESS_THAN_200_FPL_FIELD,
-            FN.AMI_FIELD,
-            FN.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD,
-            FN.MEDIAN_INCOME_FIELD,
-            FN.LIFE_EXPECTANCY_FIELD,
-            FN.ENERGY_BURDEN_FIELD,
-            FN.FEMA_RISK_FIELD,
-            FN.URBAN_HERUISTIC_FIELD,
-            FN.AIR_TOXICS_CANCER_RISK_FIELD,
-            FN.RESPITORY_HAZARD_FIELD,
-            FN.DIESEL_FIELD,
-            FN.PM25_FIELD,
-            FN.OZONE_FIELD,
-            FN.TRAFFIC_FIELD,
-            FN.RMP_FIELD,
-            FN.TSDF_FIELD,
-            FN.NPL_FIELD,
-            FN.WASTEWATER_FIELD,
-            FN.LEAD_PAINT_FIELD,
-            FN.UNDER_5_FIELD,
-            FN.OVER_64_FIELD,
-            FN.LINGUISTIC_ISO_FIELD,
-            FN.HOUSEHOLDS_LINGUISTIC_ISO_FIELD,
-            FN.POVERTY_FIELD,
-            FN.HIGH_SCHOOL_ED_FIELD,
-            FN.UNEMPLOYMENT_FIELD,
-            FN.HT_INDEX_FIELD,
+            field_names.HOUSING_BURDEN_FIELD,
+            field_names.TOTAL_POP_FIELD,
+            field_names.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD,
+            field_names.ASTHMA_FIELD,
+            field_names.HEART_DISEASE_FIELD,
+            field_names.CANCER_FIELD,
+            field_names.HEALTH_INSURANCE_FIELD,
+            field_names.DIABETES_FIELD,
+            field_names.PHYS_HEALTH_NOT_GOOD_FIELD,
+            field_names.POVERTY_LESS_THAN_100_FPL_FIELD,
+            field_names.POVERTY_LESS_THAN_150_FPL_FIELD,
+            field_names.POVERTY_LESS_THAN_200_FPL_FIELD,
+            field_names.AMI_FIELD,
+            field_names.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD,
+            field_names.MEDIAN_INCOME_FIELD,
+            field_names.LIFE_EXPECTANCY_FIELD,
+            field_names.ENERGY_BURDEN_FIELD,
+            field_names.FEMA_RISK_FIELD,
+            field_names.URBAN_HERUISTIC_FIELD,
+            field_names.AIR_TOXICS_CANCER_RISK_FIELD,
+            field_names.RESPITORY_HAZARD_FIELD,
+            field_names.DIESEL_FIELD,
+            field_names.PM25_FIELD,
+            field_names.OZONE_FIELD,
+            field_names.TRAFFIC_FIELD,
+            field_names.RMP_FIELD,
+            field_names.TSDF_FIELD,
+            field_names.NPL_FIELD,
+            field_names.WASTEWATER_FIELD,
+            field_names.LEAD_PAINT_FIELD,
+            field_names.UNDER_5_FIELD,
+            field_names.OVER_64_FIELD,
+            field_names.LINGUISTIC_ISO_FIELD,
+            field_names.HOUSEHOLDS_LINGUISTIC_ISO_FIELD,
+            field_names.POVERTY_FIELD,
+            field_names.HIGH_SCHOOL_ED_FIELD,
+            field_names.UNEMPLOYMENT_FIELD,
+            field_names.HT_INDEX_FIELD,
         ]
         non_numeric_columns = [
             self.GEOID_FIELD_NAME,
-            FN.PERSISTENT_POVERTY_FIELD,
+            field_names.PERSISTENT_POVERTY_FIELD,
         ]
         columns_to_keep = non_numeric_columns + numeric_columns
         df = df[columns_to_keep]
@@ -308,7 +323,9 @@ class ScoreETL(ExtractTransformLoad):
         for col in numeric_columns:
             df[col] = pd.to_numeric(df[col])
             # Calculate percentiles
-            df[f"{col}{FN.PERCENTILE_FIELD_SUFFIX}"] = df[col].rank(pct=True)
+            df[f"{col}{field_names.PERCENTILE_FIELD_SUFFIX}"] = df[col].rank(
+                pct=True
+            )
 
             # Min-max normalization:
             # (
@@ -328,9 +345,9 @@ class ScoreETL(ExtractTransformLoad):
                 f"For data set {col}, the min value is {min_value} and the max value is {max_value}."
             )
 
-            df[f"{col}{FN.MIN_MAX_FIELD_SUFFIX}"] = (df[col] - min_value) / (
-                max_value - min_value
-            )
+            df[f"{col}{field_names.MIN_MAX_FIELD_SUFFIX}"] = (
+                df[col] - min_value
+            ) / (max_value - min_value)
 
         return df
 
@@ -341,7 +358,7 @@ class ScoreETL(ExtractTransformLoad):
         self.df = self._prepare_initial_df()
 
         # calculate scores
-        self.df = ScoreCalculator(df=self.df).calculate_scores()
+        self.df = ScoreRunner(df=self.df).calculate_scores()
 
     def load(self) -> None:
         logger.info("Saving Score CSV")
