@@ -12,7 +12,7 @@ DATASET_LIST = [
     {
         "name": "ejscreen",
         "module_dir": "ejscreen",
-        "class_name": "EJScreenETL",
+        "class_name": "EJSCREENETL",
     },
     {
         "name": "housing_and_transportation",
@@ -68,6 +68,11 @@ DATASET_LIST = [
         "name": "persistent_poverty",
         "module_dir": "persistent_poverty",
         "class_name": "PersistentPovertyETL",
+    },
+    {
+        "name": "ejscreen_areas_of_concern",
+        "module_dir": "ejscreen_areas_of_concern",
+        "class_name": "EJSCREENAreasOfConcernETL",
     },
 ]
 CENSUS_INFO = {

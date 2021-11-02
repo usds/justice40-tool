@@ -10,7 +10,7 @@ logger = get_module_logger(__name__)
 
 class ScoreC(Score):
     def __init__(self, df: pd.DataFrame) -> None:
-        Bucket = namedtuple('Bucket', ['name', 'fields'])
+        Bucket = namedtuple(typename="Bucket", field_names=["name", "fields"])
 
         self.BUCKET_SOCIOECONOMIC = Bucket(
             field_names.C_SOCIOECONOMIC,
@@ -20,15 +20,15 @@ class ScoreC(Score):
                 field_names.HIGH_SCHOOL_ED_FIELD,
                 field_names.UNEMPLOYMENT_FIELD,
                 field_names.HT_INDEX_FIELD,
-            ]
-        ) 
+            ],
+        )
         self.BUCKET_SENSITIVE = Bucket(
             field_names.C_SENSITIVE,
             [
                 field_names.UNDER_5_FIELD,
                 field_names.OVER_64_FIELD,
                 field_names.LINGUISTIC_ISO_FIELD,
-            ]
+            ],
         )
         self.BUCKET_ENVIRONMENTAL = Bucket(
             field_names.C_ENVIRONMENTAL,
@@ -38,7 +38,7 @@ class ScoreC(Score):
                 field_names.NPL_FIELD,
                 field_names.WASTEWATER_FIELD,
                 field_names.LEAD_PAINT_FIELD,
-            ]
+            ],
         )
         self.BUCKET_EXPOSURES = Bucket(
             field_names.C_EXPOSURES,
@@ -63,7 +63,7 @@ class ScoreC(Score):
     def add_columns(self) -> pd.DataFrame:
         logger.info("Adding Score C")
         # Average all the percentile values in each bucket into a single score for each of the four buckets.
-        
+
         # TODO just use the percentile fields in the list instead
         for bucket in self.BUCKETS:
             fields_to_average = []

@@ -8,7 +8,6 @@ from data_pipeline.etl.score import constants
 
 from data_pipeline.utils import get_module_logger
 
-
 logger = get_module_logger(__name__)
 
 
@@ -231,6 +230,7 @@ class ScoreETL(ExtractTransformLoad):
             self.census_acs_median_incomes_df,
             self.national_risk_index_df,
         ]
+
         census_block_group_df = self._join_cbg_dfs(census_block_group_dfs)
 
         # Join all the data sources that use census tracts
@@ -312,10 +312,12 @@ class ScoreETL(ExtractTransformLoad):
             field_names.UNEMPLOYMENT_FIELD,
             field_names.HT_INDEX_FIELD,
         ]
+
         non_numeric_columns = [
             self.GEOID_FIELD_NAME,
             field_names.PERSISTENT_POVERTY_FIELD,
         ]
+
         columns_to_keep = non_numeric_columns + numeric_columns
         df = df[columns_to_keep]
 
