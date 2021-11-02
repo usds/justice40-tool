@@ -1,3 +1,26 @@
+name: Generate Score
+on: 
+  workflow_dispatch:
+    inputs:
+      confirm-action:
+        description: This will rebuild the data sources and regenerate the score, are you sure you want to proceed? (Y/n)
+        default: n
+        required: true
+
+jobs:
+  deploy_data:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: data/data-pipeline
+    strategy:
+      matrix:
+        python-version: [3.9]
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+      - name: Print variables to help debug
+        uses: hmarr/debug-action@v2
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
