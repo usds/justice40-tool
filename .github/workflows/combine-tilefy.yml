@@ -41,7 +41,8 @@ jobs:
         run: |
           sudo apt-get install -y software-properties-common libsqlite3-dev zlib1g-dev
           sudo apt-add-repository -y ppa:git-core/ppa
-          sudo mkdir -p /tmp/tippecanoe-src && git clone https://github.com/mapbox/tippecanoe.git /tmp/tippecanoe-src
+          sudo mkdir -p /tmp/tippecanoe-src
+          sudo git clone https://github.com/mapbox/tippecanoe.git /tmp/tippecanoe-src
           sudo cd /tmp/tippecanoe-src
           sudo /bin/sh -c make && make install
       - name: Run Scripts
