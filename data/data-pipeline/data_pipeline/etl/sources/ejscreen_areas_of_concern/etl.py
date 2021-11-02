@@ -29,9 +29,12 @@ class EJSCREENAreasOfConcernETL(ExtractTransformLoad):
 
         Note: this data is provided privately and is not currently publicly available.
 
-        To enable the ETL code for EJSCREEN AoCs to run appropriately whether or not the person running it has access to that data, the following method checks whether the source file exists.
+        To enable the ETL code for EJSCREEN AoCs to run appropriately whether or not the person
+        running it has access to that data, the following method checks whether the source file exists.
 
-        If it does exist, code can and should include to this data. If it does not exist, code should not reference this data.
+        If it does exist, code can and should include to this data. If it does not exist, code should
+        not reference this data.
+
         """
         return cls.EJSCREEN_AREAS_OF_CONCERN_SOURCE_DATA.is_file()
 

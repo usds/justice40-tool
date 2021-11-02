@@ -7,9 +7,6 @@ from data_pipeline.score import field_names
 from data_pipeline.etl.score import constants
 
 from data_pipeline.utils import get_module_logger
-from data_pipeline.etl.sources.ejscreen_areas_of_concern.etl import (
-    EJSCREENAreasOfConcernETL,
-)
 
 logger = get_module_logger(__name__)
 
@@ -31,7 +28,6 @@ class ScoreETL(ExtractTransformLoad):
         self.national_risk_index_df: pd.DataFrame
         self.geocorr_urban_rural_df: pd.DataFrame
         self.persistent_poverty_df: pd.DataFrame
-        self.ejscreen_areas_of_concern_df: pd.DataFrame
 
     def extract(self) -> None:
         logger.info("Loading data sets from disk.")
@@ -181,28 +177,6 @@ class ScoreETL(ExtractTransformLoad):
             low_memory=False,
         )
 
-        # Load EJ Screen Areas of Concern
-        # Before attempting, check whether or not the EJSCREEN AoC data is available locally.
-        if EJSCREENAreasOfConcernETL.ejscreen_areas_of_concern_data_exists():
-            logger.info(
-                "Loading EJSCREEN Areas of Concern data for score pipeline."
-            )
-            ejscreen_areas_of_concern_csv = (
-                self.DATA_PATH
-                / "dataset"
-                / "ejscreen_areas_of_concern"
-                / "usa.csv"
-            )
-            self.ejscreen_areas_of_concern_df = pd.read_csv(
-                ejscreen_areas_of_concern_csv,
-                dtype={self.GEOID_FIELD_NAME: "string"},
-                low_memory=False,
-            )
-        else:
-            logger.info(
-                "EJSCREEN areas of concern data does not exist locally. Not attempting to load data into score pipeline."
-            )
-
     def _join_cbg_dfs(self, census_block_group_dfs: list) -> pd.DataFrame:
         logger.info("Joining Census Block Group dataframes")
         census_block_group_df = functools.reduce(
@@ -256,13 +230,6 @@ class ScoreETL(ExtractTransformLoad):
             self.census_acs_median_incomes_df,
             self.national_risk_index_df,
         ]
-
-        # Before attempting, check whether or not the EJSCREEN AoC data is available locally.
-        if EJSCREENAreasOfConcernETL.ejscreen_areas_of_concern_data_exists():
-            # If available, merge EJSCREEN AoC data into CBG dfs.
-            census_block_group_dfs.append(self.ejscreen_areas_of_concern_df)
-        else:
-            pass
 
         census_block_group_df = self._join_cbg_dfs(census_block_group_dfs)
 
@@ -350,27 +317,6 @@ class ScoreETL(ExtractTransformLoad):
             self.GEOID_FIELD_NAME,
             field_names.PERSISTENT_POVERTY_FIELD,
         ]
-
-        # Before adding EJSCREEN AoCs to the fields to keep, check whether or not the EJSCREEN AoC data is available locally.
-        if EJSCREENAreasOfConcernETL.ejscreen_areas_of_concern_data_exists():
-            non_numeric_columns.extend(
-                [
-                    field_names.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_70TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
-                    field_names.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_75TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
-                    field_names.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_80TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
-                    field_names.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_85TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
-                    field_names.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_90TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
-                    field_names.EJSCREEN_AREAS_OF_CONCERN_NATIONAL_95TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
-                    field_names.EJSCREEN_AREAS_OF_CONCERN_STATE_70TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
-                    field_names.EJSCREEN_AREAS_OF_CONCERN_STATE_75TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
-                    field_names.EJSCREEN_AREAS_OF_CONCERN_STATE_80TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
-                    field_names.EJSCREEN_AREAS_OF_CONCERN_STATE_85TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
-                    field_names.EJSCREEN_AREAS_OF_CONCERN_STATE_90TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
-                    field_names.EJSCREEN_AREAS_OF_CONCERN_STATE_95TH_PERCENTILE_COMMUNITIES_FIELD_NAME,
-                ]
-            )
-        else:
-            pass
 
         columns_to_keep = non_numeric_columns + numeric_columns
         df = df[columns_to_keep]
