@@ -40,13 +40,23 @@ POVERTY_PERCENTILE_FIELD = (
 POVERTY_LESS_THAN_200_FPL_FIELD = (
     "Percent of individuals < 200% Federal Poverty Line"
 )
+POVERTY_LESS_THAN_200_FPL_PERCENTILE_FIELD = (
+    "Percent of individuals < 200% Federal Poverty Line (percentile)"
+)
 POVERTY_LESS_THAN_150_FPL_FIELD = (
     "Percent of individuals < 150% Federal Poverty Line"
+)
+POVERTY_LESS_THAN_150_FPL_PERCENTILE_FIELD = (
+    "Percent of individuals < 150% Federal Poverty Line (percentile)"
 )
 POVERTY_LESS_THAN_100_FPL_FIELD = (
     "Percent of individuals < 100% Federal Poverty Line"
 )
+POVERTY_LESS_THAN_100_FPL_PERCENTILE_FIELD = (
+    "Percent of individuals < 100% Federal Poverty Line (percentile)"
+)
 MEDIAN_INCOME_PERCENT_AMI_FIELD = "Median household income (% of AMI)"
+MEDIAN_INCOME_PERCENT_AMI_PERCENTILE_FIELD = "Median household income (% of AMI) (percentile)"
 STATE_MEDIAN_INCOME_FIELD = (
     "Median household income (State; 2019 inflation-adjusted dollars)"
 )
@@ -127,7 +137,9 @@ PHYS_HEALTH_NOT_GOOD_FIELD = (
 # Other Demographics
 TOTAL_POP_FIELD = "Total population"
 UNEMPLOYMENT_FIELD = "Unemployed civilians (percent)"
+UNEMPLOYMENT_PERCENTILE_FIELD = "Unemployed civilians (percent) (percentile)"
 LINGUISTIC_ISO_FIELD = "Linguistic isolation (percent)"
+LINGUISTIC_ISO_PERCENTILE_FIELD = "Linguistic isolation (percent) (percentile)"
 HOUSEHOLDS_LINGUISTIC_ISO_FIELD = (
     "Percent of households in linguistic isolation"
 )

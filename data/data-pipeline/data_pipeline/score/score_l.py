@@ -60,10 +60,10 @@ class ScoreL(Score):
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
         return (
-            self.df[field_names.POVERTY_LESS_THAN_200_FPL_FIELD]
+            self.df[field_names.POVERTY_LESS_THAN_200_FPL_PERCENTILE_FIELD]
             > self.LOW_INCOME_THRESHOLD
         ) & (
-            self.df[field_names.FEMA_RISK_FIELD]
+            self.df[field_names.FEMA_RISK_PERCENTILE_FIELD]
             > self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
@@ -74,10 +74,10 @@ class ScoreL(Score):
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
         return (
-            self.df[field_names.POVERTY_LESS_THAN_200_FPL_FIELD]
+            self.df[field_names.POVERTY_LESS_THAN_200_FPL_PERCENTILE_FIELD]
             > self.LOW_INCOME_THRESHOLD
         ) & (
-            self.df[field_names.ENERGY_BURDEN_FIELD]
+            self.df[field_names.ENERGY_BURDEN_PERCENTILE_FIELD]
             > self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
@@ -93,21 +93,21 @@ class ScoreL(Score):
         # poverty level. Source: Census's American Community Survey]
         transportation_criteria = (
             (
-                self.df[field_names.DIESEL_FIELD]
+                self.df[field_names.DIESEL_PERCENTILE_FIELD]
                 > self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             | (
-                self.df[field_names.PM25_FIELD]
+                self.df[field_names.PM25_PERCENTILE_FIELD]
                 > self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             | (
-                self.df[field_names.TRAFFIC_FIELD]
+                self.df[field_names.TRAFFIC_PERCENTILE_FIELD]
                 > self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
         )
 
         return (
-            self.df[field_names.POVERTY_LESS_THAN_200_FPL_FIELD]
+            self.df[field_names.POVERTY_LESS_THAN_200_FPL_PERCENTILE_FIELD]
             > self.LOW_INCOME_THRESHOLD
         ) & transportation_criteria
 
@@ -121,14 +121,14 @@ class ScoreL(Score):
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
         housing_criteria = (
-            self.df[field_names.LEAD_PAINT_FIELD]
+            self.df[field_names.LEAD_PAINT_PERCENTILE_FIELD]
             > self.ENVIRONMENTAL_BURDEN_THRESHOLD
         ) | (
-            self.df[field_names.HOUSING_BURDEN_FIELD]
+            self.df[field_names.HOUSING_BURDEN_PERCENTILE_FIELD]
             > self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
         return (
-            self.df[field_names.POVERTY_LESS_THAN_200_FPL_FIELD]
+            self.df[field_names.POVERTY_LESS_THAN_200_FPL_PERCENTILE_FIELD]
             > self.LOW_INCOME_THRESHOLD
         ) & housing_criteria
 
@@ -147,10 +147,10 @@ class ScoreL(Score):
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
         return (
-            self.df[field_names.POVERTY_LESS_THAN_200_FPL_FIELD]
+            self.df[field_names.POVERTY_LESS_THAN_200_FPL_PERCENTILE_FIELD]
             > self.LOW_INCOME_THRESHOLD
         ) & (
-            self.df[field_names.WASTEWATER_FIELD]
+            self.df[field_names.WASTEWATER_PERCENTILE_FIELD]
             > self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
@@ -169,26 +169,26 @@ class ScoreL(Score):
 
         health_criteria = (
             (
-                self.df[field_names.DIABETES_FIELD]
+                self.df[field_names.DIABETES_PERCENTILE_FIELD]
                 > self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             | (
-                self.df[field_names.ASTHMA_FIELD]
+                self.df[field_names.ASTHMA_PERCENTILE_FIELD]
                 > self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             | (
-                self.df[field_names.HEART_DISEASE_FIELD]
+                self.df[field_names.HEART_DISEASE_PERCENTILE_FIELD]
                 > self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             | (
-                self.df[field_names.LIFE_EXPECTANCY_FIELD]
+                self.df[field_names.LIFE_EXPECTANCY_PERCENTILE_FIELD]
                 # Note: a high life expectancy is good, so take 1 minus the threshold to invert it,
                 # and then look for life expenctancies lower than that (not greater than).
                 < 1 - self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
         )
         return (
-            self.df[field_names.POVERTY_LESS_THAN_200_FPL_FIELD]
+            self.df[field_names.POVERTY_LESS_THAN_200_FPL_PERCENTILE_FIELD]
             > self.LOW_INCOME_THRESHOLD
         ) & health_criteria
 
@@ -205,24 +205,24 @@ class ScoreL(Score):
         # (necessary to screen out university block groups)
         workforce_criteria = (
             (
-                self.df[field_names.UNEMPLOYMENT_FIELD]
+                self.df[field_names.UNEMPLOYMENT_PERCENTILE_FIELD]
                 > self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             | (
-                self.df[field_names.MEDIAN_INCOME_PERCENT_AMI_FIELD]
+                self.df[field_names.MEDIAN_INCOME_PERCENT_AMI_PERCENTILE_FIELD]
                 # Note: a high median income as a % of AMI is good, so take 1 minus the threshold to invert it.
                 # and then look for median income lower than that (not greater than).
                 < 1 - self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             | (
-                self.df[field_names.POVERTY_LESS_THAN_100_FPL_FIELD]
+                self.df[field_names.POVERTY_LESS_THAN_100_FPL_PERCENTILE_FIELD]
                 > self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             | (
-                self.df[field_names.LINGUISTIC_ISO_FIELD]
+                self.df[field_names.LINGUISTIC_ISO_PERCENTILE_FIELD]
                 > self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
         )
         return (
-            self.df[field_names.HIGH_SCHOOL_ED_FIELD] > 0.05
+            self.df[field_names.HIGH_SCHOOL_ED_PERCENTILE_FIELD] > 0.05
         ) & workforce_criteria
