@@ -40,7 +40,7 @@ jobs:
       - name: Run Scripts
         run: |
           poetry run python3 data_pipeline/application.py geo-score -s aws
-          poetry run python3 data_pipeline/application.py generate-map-tiles -s aws
+          poetry run python3 data_pipeline/application.py generate-map-tiles
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
