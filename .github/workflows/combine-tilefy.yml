@@ -37,6 +37,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install gdal-bin libgdal-dev
           pip install GDAL==3.2.3
+      - name: Set timezone for tippecanoe
+        uses: szenius/set-timezone@v1.0
+        with:
+          timezoneLinux: "America/Los_Angeles"          
       - name: Get tippecanoe
         run: |
           sudo apt-get install -y software-properties-common libsqlite3-dev zlib1g-dev
@@ -46,11 +50,7 @@ jobs:
       - name: Make tippecanoe
         working-directory: /tmp/tippecanoe-src
         run: |
-          sudo /usr/bin/bash -c make
-      - name: Make install tippecanoe
-        working-directory: /tmp/tippecanoe-src
-        run: |
-          sudo /usr/bin/bash -c make install
+          sudo /usr/bin/bash -c make && make install
           tippecanoe -v          
       - name: Run Scripts
         run: |
