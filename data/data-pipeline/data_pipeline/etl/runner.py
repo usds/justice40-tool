@@ -83,9 +83,6 @@ def score_generate() -> None:
     score_gen.transform()
     score_gen.load()
 
-    # Post Score Processing
-    score_post()
-
 
 def score_post(data_source: str = "local") -> None:
     """Posts the score files to the local directory
