@@ -358,14 +358,14 @@ export const DOWNLOAD_DRAFT = {
     values={{
       downloadDraft:
         <a href={METHODOLOGY_COPY.DOWNLOAD_ZIP_URL}>
-          {'Download the draft list'}
+          {`Download the draft list v${METHODOLOGY_COPY.VERSION_NUMBER}`}
         </a>,
       dateUpdated: METHODOLOGY_COPY.DOWNLOAD_LAST_UPDATED,
     }}
   />,
   PARAGRAPH_2: <FormattedMessage
     id={'download.draft.ptag.2'}
-    description={'Download the draft list of communities of focus and datasets used.'}
+    description={'Information on the contents and type of the download file'}
     defaultMessage={`ZIP file will contain one .xlsx, one .csv, and one .pdf ({downloadFileSize}).`}
     values={{
       downloadFileSize: METHODOLOGY_COPY.DOWNLOAD_FILE_SIZE,
