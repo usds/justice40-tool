@@ -36,7 +36,7 @@ const J40Footer = () => {
       <a
         className={'footer-link-first-child'}
         key={'whitehouselink2'}
-        href={'https://www.whitehouse.gov/'}
+        href={intl.formatMessage(COMMON_COPY.FOOTER.WHITEHOUSE_LINK)}
         target={'_blank'}
         rel={'noreferrer'}
         data-cy={hyphenizeString(COMMON_COPY.FOOTER.WHITEHOUSE.defaultMessage)}>
@@ -54,7 +54,7 @@ const J40Footer = () => {
         key={'privacylink'}
         target={'_blank'}
         rel={'noreferrer'}
-        href={'https://www.whitehouse.gov/privacy/'}
+        href={intl.formatMessage(COMMON_COPY.FOOTER.PRIVACY_LINK)}
         data-cy={hyphenizeString(COMMON_COPY.FOOTER.PRIVACY.defaultMessage)}>
         {intl.formatMessage(COMMON_COPY.FOOTER.PRIVACY)}
       </a>,
@@ -64,9 +64,9 @@ const J40Footer = () => {
       <a
         className={'footer-link-first-child'}
         key={'contactlink'}
-        href={'https://www.usa.gov/'}
-        data-cy={hyphenizeString(COMMON_COPY.FOOTER.CONTACT_LINK.defaultMessage)}>
-        {intl.formatMessage(COMMON_COPY.FOOTER.CONTACT_LINK)}
+        href={intl.formatMessage(COMMON_COPY.FOOTER.FIND_CONTACT_LINK)}
+        data-cy={hyphenizeString(COMMON_COPY.FOOTER.FIND_CONTACT.defaultMessage)}>
+        {intl.formatMessage(COMMON_COPY.FOOTER.FIND_CONTACT)}
       </a>,
     ],
   ];

@@ -1,25 +1,21 @@
 # Translating content to Spanish
 
 ## Keys without curly brackets
-Navigate to the `es.json` file. This JSON file is grouped into pairs of keys. Namely an english key and regular key. Below we can see the first two keys of the `es.json` file.
+Navigate to the `es.json` file. This JSON file will have a key and a value in English. The translation team will replace all English values with Spanish values.
 
 ```json
 {
-	"about.page.sub.header.1.text.1_english" : "On January 27, 2021, President Biden directed the Council on Environmental Quality (CEQ) to create a climate and economic justice screening tool. The purpose of the tool is to help Federal agencies identify disadvantaged communities and provide socioeconomic, environmental, and climate information and data to inform decisions that may affect these communities. The tool identifies disadvantaged communities as communities of focus through publicly available, nationally consistent, high-quality data.",
-	"about.page.sub.header.1.text.1" : "El 27 de enero de 2021, President Biden directed the Council on Environmental Quality (CEQ) to create a climate and economic justice screening tool. The purpose of the tool is to help Federal agencies identify disadvantaged communities and provide socioeconomic, environmental, and climate information and data to inform decisions that may affect these communities. The tool identifies disadvantaged communities as communities of focus through publicly available, nationally consistent, high-quality data.",
+	"about.page.sub.header.1.text.1" : "On January 27, 2021, President Biden directed the Council on Environmental Quality (CEQ) to create a climate and economic justice screening tool. The purpose of the tool is to help Federal agencies identify disadvantaged communities and provide socioeconomic, environmental, and climate information and data to inform decisions that may affect these communities. The tool identifies disadvantaged communities as communities of focus through publicly available, nationally consistent, high-quality data.",
 }
 ```
 
-The first key is the english key suffixed with `_english`. The second key has no suffix and is meant to hold the Spanish translation. These translations are WYSIWYG.
-
 ## Keys with curly brackets
 
-There are some keys with curly brackets, for example, line 176 of `es.json`:
+There are some keys with curly brackets, for example, `es.json`:
 
 ```json
 {
-	"download.draft.ptag.1_english" : "{downloadDraft} of communities of focus and datasets used. Last updated: {dateUpdated}.",
-	"download.draft.ptag.1" : "",
+	"download.draft.ptag.1" : "{downloadDraft} of communities of focus and datasets used. Last updated: {dateUpdated}.",
 }
 ```
 

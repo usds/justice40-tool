@@ -287,11 +287,15 @@
     "defaultMessage": "Contact",
     "description": "Footer column header"
   },
-  "footer.findcontactlink": {
+  "footer.findcontact": {
     "defaultMessage": "Find a contact at USA.gov",
     "description": "Footer find contact link text"
   },
-  "footer.foialink": {
+  "footer.findcontact.link": {
+    "defaultMessage": "https://www.usa.gov/",
+    "description": "Footer find contact link text"
+  },
+  "footer.foia.text": {
     "defaultMessage": "Freedom of Information Act (FOIA)",
     "description": "Footer FOIA link text"
   },
@@ -303,7 +307,11 @@
     "defaultMessage": "More information",
     "description": "Footer column header"
   },
-  "footer.privacylink": {
+  "footer.privacy.link": {
+    "defaultMessage": "https://www.whitehouse.gov/privacy/",
+    "description": "Footer privacy policy link text"
+  },
+  "footer.privacy.text": {
     "defaultMessage": "Privacy Policy",
     "description": "Footer privacy policy link text"
   },
@@ -311,7 +319,11 @@
     "defaultMessage": "Have a question about government services?",
     "description": "Footer column header"
   },
-  "footer.whitehouselink": {
+  "footer.whitehouse.link": {
+    "defaultMessage": "https://www.whitehouse.gov/",
+    "description": "Footer Whitehouse.gov link text"
+  },
+  "footer.whitehouse.text": {
     "defaultMessage": "Whitehouse.gov",
     "description": "Footer Whitehouse.gov link text"
   },
