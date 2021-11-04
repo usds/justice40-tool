@@ -12,8 +12,9 @@ class ScoreA(Score):
         logger.info("Adding Score A")
         self.df[field_names.SCORE_A] = self.df[
             [
-                field_names.POVERTY_PERCENTILE_FIELD,
-                field_names.HIGH_SCHOOL_ED_PERCENTILE_FIELD,
+                field_names.POVERTY_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+                field_names.HIGH_SCHOOL_ED_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX,
             ]
         ].mean(axis=1)
         return self.df
