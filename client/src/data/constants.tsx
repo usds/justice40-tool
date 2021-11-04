@@ -1,9 +1,9 @@
 
-import {LngLatBoundsLike} from 'maplibre-gl';
-import {isMobile as isMobileReactDeviceDetect} from 'react-device-detect';
+import { LngLatBoundsLike } from 'maplibre-gl';
+import { isMobile as isMobileReactDeviceDetect } from 'react-device-detect';
 
 const XYZ_SUFFIX = '{z}/{x}/{y}.pbf';
-export const featureURLForTilesetName = (tilesetName :string ) : string => {
+export const featureURLForTilesetName = (tilesetName: string): string => {
   // The feature tile base URL can either point locally or the CDN.
   // This is selected based on the DATA_SOURCE env variable.
   const featureTileBaseURL = process.env.DATA_SOURCE === 'local' ?
@@ -26,8 +26,8 @@ export const FEATURE_TILE_LOW_ZOOM_URL = featureURLForTilesetName('low');
 export const PERFORMANCE_MARKER_MAP_IDLE = 'MAP_IDLE';
 
 // Properties
-export const SCORE_PROPERTY_HIGH = 'Score G';
-export const SCORE_PROPERTY_LOW = 'G_SCORE';
+export const SCORE_PROPERTY_HIGH = 'Definition L (percentile)';
+export const SCORE_PROPERTY_LOW = 'L_SCORE';
 export const GEOID_PROPERTY = 'GEOID10';
 export const HIGH_SCORE_SOURCE_NAME = 'score-high';
 export const HIGH_SCORE_LAYER_NAME = 'score-high-layer';
@@ -45,7 +45,7 @@ export const LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE = 'Linguistic isolation (p
 export const UNEMPLOYMENT_PROPERTY_PERCENTILE = 'Unemployed civilians (percent) (percentile)';
 export const TOTAL_POPULATION = 'Total population';
 export const EDUCATION_PROPERTY_PERCENTILE =
-`Percent individuals age 25 or over with less than high school degree (percentile)`;
+  `Percent individuals age 25 or over with less than high school degree (percentile)`;
 export const COUNTY_NAME = 'County Name';
 export const STATE_NAME = 'State Name';
 export const DIABETES_PERCENTILE = 'Diagnosed diabetes among adults aged >=18 years (percentile)';
@@ -76,42 +76,42 @@ export const GLOBAL_MIN_ZOOM_HIGH = 7;
 export const GLOBAL_MAX_ZOOM_HIGH = 11;
 
 // Bounds
-export const GLOBAL_MAX_BOUNDS : LngLatBoundsLike = [
+export const GLOBAL_MAX_BOUNDS: LngLatBoundsLike = [
   [-180.118306, 5.499550],
   [-65.0, 83.162102],
 ];
 
-export const LOWER_48_BOUNDS : LngLatBoundsLike = [
+export const LOWER_48_BOUNDS: LngLatBoundsLike = [
   [-124.7844079, 24.7433195],
   [-66.9513812, 49.3457868],
 ];
 
-export const ALASKA_BOUNDS : LngLatBoundsLike = [
+export const ALASKA_BOUNDS: LngLatBoundsLike = [
   [-183.856888, 50.875311],
   [-140.932617, 71.958797],
 ];
 
-export const HAWAII_BOUNDS : LngLatBoundsLike = [
+export const HAWAII_BOUNDS: LngLatBoundsLike = [
   [-168.118306, 18.748115],
   [-154.757881, 22.378413],
 ];
 
-export const PUERTO_RICO_BOUNDS : LngLatBoundsLike = [
+export const PUERTO_RICO_BOUNDS: LngLatBoundsLike = [
   [-67.945404, 17.88328],
   [-65.220703, 18.515683],
 ];
 
-export const GUAM_BOUNDS : LngLatBoundsLike = [
+export const GUAM_BOUNDS: LngLatBoundsLike = [
   [-215.389709, 13.225909],
   [-215.040894, 13.663335],
 ];
 
-export const MARIANA_ISLAND_BOUNDS : LngLatBoundsLike = [
+export const MARIANA_ISLAND_BOUNDS: LngLatBoundsLike = [
   [-215.313449, 14.007801],
   [-213.742404, 19.750326],
 ];
 
-export const AMERICAN_SAMOA_BOUNDS : LngLatBoundsLike = [
+export const AMERICAN_SAMOA_BOUNDS: LngLatBoundsLike = [
   [-171.089874, -14.548699],
   [-168.1433, -11.046934],
 ];
