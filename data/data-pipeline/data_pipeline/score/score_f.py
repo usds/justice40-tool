@@ -28,15 +28,67 @@ class ScoreF(Score):
         )
 
         self.df[meets_burden_field] = (
-            (self.df[field_names.PM25_PERCENTILE_FIELD] > 0.9)
-            | (self.df[field_names.RESPITORY_HAZARD_PERCENTILE_FIELD] > 0.9)
-            | (self.df[field_names.TRAFFIC_PERCENTILE_FIELD] > 0.9)
-            | (self.df[field_names.LEAD_PAINT_PERCENTILE_FIELD] > 0.9)
-            | (self.df[field_names.RMP_PERCENTILE_FIELD] > 0.9)
-            | (self.df[field_names.ASTHMA_PERCENTILE_FIELD] > 0.9)
-            | (self.df[field_names.HEART_DISEASE_PERCENTILE_FIELD] > 0.9)
-            | (self.df[field_names.CANCER_PERCENTILE_FIELD] > 0.9)
-            | (self.df[field_names.DIABETES_PERCENTILE_FIELD] > 0.9)
+            (
+                self.df[
+                    field_names.PM25_FIELD + field_names.PERCENTILE_FIELD_SUFFIX
+                ]
+                > 0.9
+            )
+            | (
+                self.df[
+                    field_names.RESPITORY_HAZARD_FIELD
+                    + field_names.PERCENTILE_FIELD_SUFFIX
+                ]
+                > 0.9
+            )
+            | (
+                self.df[
+                    field_names.TRAFFIC_FIELD
+                    + field_names.PERCENTILE_FIELD_SUFFIX
+                ]
+                > 0.9
+            )
+            | (
+                self.df[
+                    field_names.LEAD_PAINT_FIELD
+                    + field_names.PERCENTILE_FIELD_SUFFIX
+                ]
+                > 0.9
+            )
+            | (
+                self.df[
+                    field_names.RMP_FIELD + field_names.PERCENTILE_FIELD_SUFFIX
+                ]
+                > 0.9
+            )
+            | (
+                self.df[
+                    field_names.ASTHMA_FIELD
+                    + field_names.PERCENTILE_FIELD_SUFFIX
+                ]
+                > 0.9
+            )
+            | (
+                self.df[
+                    field_names.HEART_DISEASE_FIELD
+                    + field_names.PERCENTILE_FIELD_SUFFIX
+                ]
+                > 0.9
+            )
+            | (
+                self.df[
+                    field_names.CANCER_FIELD
+                    + field_names.PERCENTILE_FIELD_SUFFIX
+                ]
+                > 0.9
+            )
+            | (
+                self.df[
+                    field_names.DIABETES_FIELD
+                    + field_names.PERCENTILE_FIELD_SUFFIX
+                ]
+                > 0.9
+            )
         )
 
         self.df[field_names.SCORE_F_COMMUNITIES] = (
