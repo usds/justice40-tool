@@ -51,7 +51,7 @@ class ScoreL(Score):
             non_workforce_factors
         ].any(axis=1)
 
-        self.df["Score L (percentile)"] = self.df[
+        self.df["Definition L (percentile)"] = self.df[
             field_names.SCORE_L_COMMUNITIES
         ].astype(int)
 
