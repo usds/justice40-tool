@@ -51,6 +51,10 @@ class ScoreL(Score):
             non_workforce_factors
         ].any(axis=1)
 
+        self.df["Score L (percentile)"] = self.df[
+            field_names.SCORE_L_COMMUNITIES
+        ].astype(int)
+
         return self.df
 
     def _climate_factor(self) -> bool:
