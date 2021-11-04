@@ -161,12 +161,24 @@ class ScoreL(Score):
         ) & housing_criteria
 
     def _pollution_factor(self) -> bool:
-        # TBD
+        # Proximity to Risk Management Plan sites is > X
         # AND
         # Low income: In 60th percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
-        return False
+        return (
+            self.df[
+                field_names.RMP_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        ) & (
+            self.df[
+                field_names.POVERTY_LESS_THAN_200_FPL_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            > self.LOW_INCOME_THRESHOLD
+        )
 
     def _water_factor(self) -> bool:
         # In Xth percentile or above for wastewater discharge (Source: EPA Risk-Screening Environmental Indicators (RSEI) Model)
