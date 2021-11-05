@@ -68,7 +68,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           Area Median Income
         </h4>
         <div>
-          9900
+          19
           <sup>
             <span>
               th
@@ -90,7 +90,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           Education, less than high school
         </h4>
         <div>
-          9800
+          98
           <sup>
             <span>
               th
@@ -112,7 +112,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           Poverty
         </h4>
         <div>
-          9900
+          12
           <sup>
             <span>
               th
@@ -266,7 +266,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           Housing cost burden
         </h4>
         <div>
-          9500
+          95
           <sup>
             <span>
               th

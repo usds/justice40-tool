@@ -90,6 +90,7 @@ const J40Map = ({location}: IJ40Interface) => {
       );
       if (feature.id !== selectedFeatureId) {
         setSelectedFeature(feature);
+        console.log(feature.properties);
       } else {
         setSelectedFeature(undefined);
       }
