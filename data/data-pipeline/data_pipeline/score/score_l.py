@@ -9,7 +9,7 @@ logger = get_module_logger(__name__)
 
 class ScoreL(Score):
     def __init__(self, df: pd.DataFrame) -> None:
-        self.LOW_INCOME_THRESHOLD: float = 0.60
+        self.LOW_INCOME_THRESHOLD: float = 0.65
         self.ENVIRONMENTAL_BURDEN_THRESHOLD: float = 0.90
         super().__init__(df)
 
@@ -71,7 +71,7 @@ class ScoreL(Score):
             > self.LOW_INCOME_THRESHOLD
         ) & (
             self.df[
-                field_names.FEMA_RISK_FIELD
+                field_names.FEMA_EXPECTED_ANNUAL_LOSS_RATE_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             > self.ENVIRONMENTAL_BURDEN_THRESHOLD
@@ -170,13 +170,16 @@ class ScoreL(Score):
         # Low income: In 60th percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
-        return (
-            self.df[
-                field_names.RMP_FIELD
-                + field_names.PERCENTILE_FIELD_SUFFIX
-            ]
+
+        pollution_criteria = (
+            self.df[field_names.RMP_FIELD + field_names.PERCENTILE_FIELD_SUFFIX]
             > self.ENVIRONMENTAL_BURDEN_THRESHOLD
-        ) & (
+        ) | (
+            self.df[field_names.NPL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX]
+            > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        )
+
+        return pollution_criteria & (
             self.df[
                 field_names.POVERTY_LESS_THAN_200_FPL_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX

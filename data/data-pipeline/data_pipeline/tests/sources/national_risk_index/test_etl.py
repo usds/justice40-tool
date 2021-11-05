@@ -61,9 +61,10 @@ class TestNationalRiskIndexETL:
         )
         # execution
         etl.transform()
+
         # validation
-        assert etl.df.shape == (10, 3)
-        assert etl.df.equals(expected)
+        assert etl.df.shape == (10, 4)
+        pd.testing.assert_frame_equal(etl.df, expected)
 
     def test_load(self, mock_etl):
         """Tests the load() method for NationalRiskIndexETL
@@ -89,7 +90,8 @@ class TestNationalRiskIndexETL:
         # execution
         etl.load()
         output = pd.read_csv(output_path, dtype={BLOCK_COL: str})
+
         # validation
         assert output_path.exists()
-        assert output.shape == (10, 2)
-        assert output.equals(expected)
+        assert output.shape == (10, 3)
+        pd.testing.assert_frame_equal(output, expected)
