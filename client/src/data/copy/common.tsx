@@ -67,18 +67,28 @@ export const FOOTER = defineMessages({
     description: 'Footer column header',
   },
   WHITEHOUSE: {
-    id: 'footer.whitehouselink',
+    id: 'footer.whitehouse.text',
     defaultMessage: 'Whitehouse.gov',
     description: 'Footer Whitehouse.gov link text',
   },
+  WHITEHOUSE_LINK: {
+    id: 'footer.whitehouse.link',
+    defaultMessage: 'https://www.whitehouse.gov/',
+    description: 'Footer Whitehouse.gov link text',
+  },
   FOIA: {
-    id: 'footer.foialink',
+    id: 'footer.foia.text',
     defaultMessage: 'Freedom of Information Act (FOIA)',
     description: 'Footer FOIA link text',
   },
   PRIVACY: {
-    id: 'footer.privacylink',
+    id: 'footer.privacy.text',
     defaultMessage: 'Privacy Policy',
+    description: 'Footer privacy policy link text',
+  },
+  PRIVACY_LINK: {
+    id: 'footer.privacy.link',
+    defaultMessage: 'https://www.whitehouse.gov/privacy/',
     description: 'Footer privacy policy link text',
   },
   LOGO_ALT: {
@@ -91,9 +101,14 @@ export const FOOTER = defineMessages({
     defaultMessage: 'Have a question about government services?',
     description: 'Footer column header',
   },
-  CONTACT_LINK: {
-    id: 'footer.findcontactlink',
+  FIND_CONTACT: {
+    id: 'footer.findcontact',
     defaultMessage: 'Find a contact at USA.gov',
+    description: 'Footer find contact link text',
+  },
+  FIND_CONTACT_LINK: {
+    id: 'footer.findcontact.link',
+    defaultMessage: 'https://www.usa.gov/',
     description: 'Footer find contact link text',
   },
   CONTACT: {

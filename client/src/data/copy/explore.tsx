@@ -360,7 +360,12 @@ export const DOWNLOAD_DRAFT = {
         <a href={METHODOLOGY_COPY.DOWNLOAD_ZIP_URL}>
           {`Download the draft list v${METHODOLOGY_COPY.VERSION_NUMBER}`}
         </a>,
+      downloadDraftEs:
+      <a href={METHODOLOGY_COPY.DOWNLOAD_ZIP_URL}>
+        {'Descargue la lista preliminar'}
+      </a>,
       dateUpdated: METHODOLOGY_COPY.DOWNLOAD_LAST_UPDATED,
+      dateUpdatedEs: METHODOLOGY_COPY.DOWNLOAD_LAST_UPDATED_ES,
     }}
   />,
   PARAGRAPH_2: <FormattedMessage
@@ -398,6 +403,10 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
       dataMeth:
     <Link to={'/methodology'}>
       {'Data & methodology'}
+    </Link>,
+      dataMethEs:
+    <Link to={'/methodology'}>
+      {'Datos y metodología'}
     </Link>,
     }}
   />,

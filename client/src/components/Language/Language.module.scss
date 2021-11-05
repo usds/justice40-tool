@@ -1,0 +1,38 @@
+@use '../../styles/design-system.scss' as *;
+
+@mixin baseLanguageStyles {
+  @include u-margin-right(4);
+  @include u-display("flex");
+
+  .languageIcon {
+    align-self: baseline;
+  }
+
+  .languageLink {
+    @include u-display("inline-block");
+    @include u-margin-left(1.5);
+    cursor: pointer;
+    font-size: .8rem; // government banner text size not a token
+    @include u-padding-top('2px');
+    
+    &:hover {
+      text-decoration-line: underline;
+    }
+  }
+}
+
+.languageContainer {
+    @include baseLanguageStyles();
+    @include at-media-max("desktop") {
+      display: none;
+    }
+  }
+  
+  .languageContainerMobile {
+    @include baseLanguageStyles();
+    @include u-padding-top(3);
+    @include at-media("desktop") {
+      display: none;
+    }
+  }
+  

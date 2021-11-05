@@ -4,11 +4,12 @@ import {
   Header,
   NavMenuButton,
   PrimaryNav,
-  GovBanner,
   Grid,
 } from '@trussworks/react-uswds';
 import BetaBanner from '../BetaBanner';
 import J40MainGridContainer from '../J40MainGridContainer';
+import GovernmentBanner from '../GovernmentBanner';
+import Language from '../Language';
 
 // @ts-ignore
 import siteLogo from '../../images/j40-logo-v2.png';
@@ -25,57 +26,45 @@ const J40Header = () => {
   const toggleMobileNav = (): void =>
     setMobileNavOpen((prevOpen) => !prevOpen);
 
-  const headerLinks = () => {
-    // static map of all possible menu items. Originally, it was all strings,
-    // but we need to handle both onsite and offsite links.
-    const menuData = new Map<string, JSX.Element>([
-      ['about',
-        <Link
-          to={'/'}
-          key={'about'}
-          activeClassName="usa-current"
-          data-cy={'nav-link-about'}>
-          {intl.formatMessage(COMMON_COPY.HEADER.ABOUT)}
-        </Link>,
-      ],
-      ['cejst',
-        <Link
-          to={'/cejst'}
-          key={'cejst'}
-          activeClassName="usa-current"
-          data-cy={'nav-link-explore-the-tool'}>
-          {intl.formatMessage(COMMON_COPY.HEADER.EXPLORE)}
-        </Link>,
-      ],
-      ['methodology',
-        <Link
-          to={'/methodology'}
-          key={'methodology'}
-          activeClassName="usa-current"
-          data-cy={'nav-link-methodology'}>
-          {intl.formatMessage(COMMON_COPY.HEADER.METHODOLOGY)}
-        </Link>,
-      ],
-      ['contact',
-        <Link
-          to={'/contact'}
-          key={'contact'}
-          activeClassName="usa-current"
-          data-cy={'nav-link-contact'}>
-          {intl.formatMessage(COMMON_COPY.HEADER.CONTACT)}
-        </Link>,
-      ],
-    ]);
-
-    const menu =['about', 'cejst', 'methodology', 'contact'];
-    return menu.map((key) => menuData.get(key));
-  };
+  const navLinks = [
+    <Link
+      to={'/'}
+      key={'about'}
+      activeClassName="usa-current"
+      data-cy={'nav-link-about'}>
+      {intl.formatMessage(COMMON_COPY.HEADER.ABOUT)}
+    </Link>,
+    <Link
+      to={'/cejst'}
+      key={'cejst'}
+      activeClassName="usa-current"
+      data-cy={'nav-link-explore-the-tool'}>
+      {intl.formatMessage(COMMON_COPY.HEADER.EXPLORE)}
+    </Link>,
+    <Link
+      to={'/methodology'}
+      key={'methodology'}
+      activeClassName="usa-current"
+      data-cy={'nav-link-methodology'}>
+      {intl.formatMessage(COMMON_COPY.HEADER.METHODOLOGY)}
+    </Link>,
+    <Link
+      to={'/contact'}
+      key={'contact'}
+      activeClassName="usa-current"
+      data-cy={'nav-link-contact'}>
+      {intl.formatMessage(COMMON_COPY.HEADER.CONTACT)}
+    </Link>,
+    <div key={'language'}>
+      <Language isDesktop={false}/>
+    </div>,
+  ];
 
   return (
     <Header basic={true} role={'banner'}>
 
       {/* Banners */}
-      <GovBanner/>
+      <GovernmentBanner />
       <BetaBanner/>
 
       {/* Logo and Navigation */}
@@ -104,9 +93,10 @@ const J40Header = () => {
             <NavMenuButton
               key={'mobileMenuButton'}
               onClick={toggleMobileNav}
-              label="Menu"/>
+              label="Menu">
+            </NavMenuButton>
             <PrimaryNav
-              items={headerLinks()}
+              items={navLinks}
               mobileExpanded={mobileNavOpen}
               onToggleMobileNav={toggleMobileNav}
             />

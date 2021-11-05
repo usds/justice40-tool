@@ -1,5 +1,5 @@
 declare namespace BetaBannerNamespace {
-    export interface IDatasetCardScss {
+    export interface IBetaBannerScss {
         betaBannerContainer: string;
         betaBanner:string;
         betaPillIcon:string;
@@ -7,9 +7,9 @@ declare namespace BetaBannerNamespace {
     }
   }
 
-declare const DatasetCardScssModule: BetaBannerNamespace.IDatasetCardScss & {
+declare const BetaBannerScssModule: BetaBannerNamespace.IBetaBannerScss & {
     /** WARNING: Only available when `css-loader` is used without `style-loader` or `mini-css-extract-plugin` */
-    locals: BetaBannerNamespace.IDatasetCardScss;
+    locals: BetaBannerNamespace.IBetaBannerScss;
   };
 
-  export = DatasetCardScssModule;
+  export = BetaBannerScssModule;

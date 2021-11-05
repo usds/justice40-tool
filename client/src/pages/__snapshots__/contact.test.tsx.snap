@@ -7,137 +7,157 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
     data-testid="header"
     role="banner"
   >
-    <section
-      class="usa-banner"
-      data-testid="govBanner"
-    >
-      <div
-        class="usa-accordion"
-      >
-        <header
-          class="usa-banner__header"
+    <div>
+      <div>
+        <section
+          class="usa-banner"
+          data-testid="govBanner"
         >
           <div
-            class="usa-banner__inner"
+            class="usa-accordion"
           >
-            <div
-              class="grid-col-auto"
+            <header
+              class="usa-banner__header"
             >
-              <img
-                alt="U.S. flag"
-                class="usa-banner__header-flag"
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAMAAABBPP0LAAAAG1BMVEUdM7EeNLIeM7HgQCDaPh/bPh/bPx/////bPyBEby41AAAAUElEQVQI123MNw4CABDEwD3jC/9/MQ1BQrgeOSkIqYe2o2FZtthXgQLgbHVMZdlsfUQFQnHtjP1+8BUhBDKOqtmfot6ojqPzR7TjdU+f6vkED+IDPhTBcMAAAAAASUVORK5CYII="
-              />
-            </div>
-            <div
-              class="grid-col-fill tablet:grid-col-auto"
-            >
-              <p
-                class="usa-banner__header-text"
-              >
-                An official website of the United States government
-              </p>
-              <p
-                aria-hidden="true"
-                class="usa-banner__header-action"
-              >
-                Here’s how you know
-              </p>
-            </div>
-            <button
-              aria-controls="gov-banner"
-              aria-expanded="false"
-              class="usa-accordion__button usa-banner__button"
-              type="button"
-            >
-              <span
-                class="usa-banner__button-text"
-              >
-                Here’s how you know
-              </span>
-            </button>
-          </div>
-        </header>
-        <div
-          class="usa-banner__content usa-accordion__content"
-          hidden=""
-          id="gov-banner"
-        >
-          <div
-            class="grid-row grid-gap-lg"
-          >
-            <div
-              class="usa-banner__guidance tablet:grid-col-6"
-            >
-              <img
-                alt=""
-                aria-hidden="true"
-                class="usa-banner__icon usa-media-block__img"
-                role="img"
-                src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiB2aWV3Qm94PSIwIDAgNjQgNjQiPjx0aXRsZT5pY29uLWRvdC1nb3Y8L3RpdGxlPjxwYXRoIGZpbGw9IiMyMzc4QzMiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTMyIDBjMTcuNjczIDAgMzIgMTQuMzI3IDMyIDMyIDAgMTcuNjczLTE0LjMyNyAzMi0zMiAzMkMxNC4zMjcgNjQgMCA0OS42NzMgMCAzMiAwIDE0LjMyNyAxNC4zMjcgMCAzMiAwem0wIDEuMjA4QzE0Ljk5NCAxLjIwOCAxLjIwOCAxNC45OTQgMS4yMDggMzJTMTQuOTk0IDYyLjc5MiAzMiA2Mi43OTIgNjIuNzkyIDQ5LjAwNiA2Mi43OTIgMzIgNDkuMDA2IDEuMjA4IDMyIDEuMjA4em0xMC41OSAzOC44NThhLjg1Ny44NTcgMCAwIDEgLjg4Mi44MjJ2MS42NDJIMTguODg2di0xLjY0MmEuODU3Ljg1NyAwIDAgMSAuODgyLS44MjJINDIuNTl6TTI1LjQ0MyAyNy43NzR2OS44MjloMS42NDJ2LTkuODNoMy4yNzN2OS44M0gzMnYtOS44M2gzLjI3MnY5LjgzaDEuNjQzdi05LjgzaDMuMjcydjkuODNoLjc2YS44NTcuODU3IDAgMCAxIC44ODIuODIxdi44MjFoLTIxLjN2LS44MDlhLjg1Ny44NTcgMCAwIDEgLjg4LS44MmguNzYydi05Ljg0MmgzLjI3MnptNS43MzYtOC4xODhsMTIuMjkzIDQuOTE1djEuNjQyaC0xLjYzYS44NTcuODU3IDAgMCAxLS44ODIuODIySDIxLjQxYS44NTcuODU3IDAgMCAxLS44ODItLjgyMmgtMS42NDJ2LTEuNjQybDEyLjI5My00LjkxNXoiLz48L3N2Zz4="
-              />
               <div
-                class="usa-media-block__body"
+                class="usa-banner__inner"
               >
-                <p>
-                  <strong>
-                    Official websites use .gov
-                  </strong>
-                  <br />
-                  A 
-                  <strong>
-                    .gov
-                  </strong>
-                   website belongs to an official government organization in the United States.
-                </p>
+                <div
+                  class="grid-col-auto"
+                >
+                  <img
+                    alt="U.S. flag"
+                    class="usa-banner__header-flag"
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAMAAABBPP0LAAAAG1BMVEUdM7EeNLIeM7HgQCDaPh/bPh/bPx/////bPyBEby41AAAAUElEQVQI123MNw4CABDEwD3jC/9/MQ1BQrgeOSkIqYe2o2FZtthXgQLgbHVMZdlsfUQFQnHtjP1+8BUhBDKOqtmfot6ojqPzR7TjdU+f6vkED+IDPhTBcMAAAAAASUVORK5CYII="
+                  />
+                </div>
+                <div
+                  class="grid-col-fill tablet:grid-col-auto"
+                >
+                  <p
+                    class="usa-banner__header-text"
+                  >
+                    An official website of the United States government
+                  </p>
+                  <p
+                    aria-hidden="true"
+                    class="usa-banner__header-action"
+                  >
+                    Here’s how you know
+                  </p>
+                </div>
+                <button
+                  aria-controls="gov-banner"
+                  aria-expanded="false"
+                  class="usa-accordion__button usa-banner__button"
+                  type="button"
+                >
+                  <span
+                    class="usa-banner__button-text"
+                  >
+                    Here’s how you know
+                  </span>
+                </button>
+              </div>
+            </header>
+            <div
+              class="usa-banner__content usa-accordion__content"
+              hidden=""
+              id="gov-banner"
+            >
+              <div
+                class="grid-row grid-gap-lg"
+              >
+                <div
+                  class="usa-banner__guidance tablet:grid-col-6"
+                >
+                  <img
+                    alt=""
+                    aria-hidden="true"
+                    class="usa-banner__icon usa-media-block__img"
+                    role="img"
+                    src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiB2aWV3Qm94PSIwIDAgNjQgNjQiPjx0aXRsZT5pY29uLWRvdC1nb3Y8L3RpdGxlPjxwYXRoIGZpbGw9IiMyMzc4QzMiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTMyIDBjMTcuNjczIDAgMzIgMTQuMzI3IDMyIDMyIDAgMTcuNjczLTE0LjMyNyAzMi0zMiAzMkMxNC4zMjcgNjQgMCA0OS42NzMgMCAzMiAwIDE0LjMyNyAxNC4zMjcgMCAzMiAwem0wIDEuMjA4QzE0Ljk5NCAxLjIwOCAxLjIwOCAxNC45OTQgMS4yMDggMzJTMTQuOTk0IDYyLjc5MiAzMiA2Mi43OTIgNjIuNzkyIDQ5LjAwNiA2Mi43OTIgMzIgNDkuMDA2IDEuMjA4IDMyIDEuMjA4em0xMC41OSAzOC44NThhLjg1Ny44NTcgMCAwIDEgLjg4Mi44MjJ2MS42NDJIMTguODg2di0xLjY0MmEuODU3Ljg1NyAwIDAgMSAuODgyLS44MjJINDIuNTl6TTI1LjQ0MyAyNy43NzR2OS44MjloMS42NDJ2LTkuODNoMy4yNzN2OS44M0gzMnYtOS44M2gzLjI3MnY5LjgzaDEuNjQzdi05LjgzaDMuMjcydjkuODNoLjc2YS44NTcuODU3IDAgMCAxIC44ODIuODIxdi44MjFoLTIxLjN2LS44MDlhLjg1Ny44NTcgMCAwIDEgLjg4LS44MmguNzYydi05Ljg0MmgzLjI3MnptNS43MzYtOC4xODhsMTIuMjkzIDQuOTE1djEuNjQyaC0xLjYzYS44NTcuODU3IDAgMCAxLS44ODIuODIySDIxLjQxYS44NTcuODU3IDAgMCAxLS44ODItLjgyMmgtMS42NDJ2LTEuNjQybDEyLjI5My00LjkxNXoiLz48L3N2Zz4="
+                  />
+                  <div
+                    class="usa-media-block__body"
+                  >
+                    <p>
+                      <strong>
+                        Official websites use .gov
+                      </strong>
+                      <br />
+                      A 
+                      <strong>
+                        .gov
+                      </strong>
+                       website belongs to an official government organization in the United States.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="usa-banner__guidance tablet:grid-col-6"
+                >
+                  <img
+                    alt=""
+                    aria-hidden="true"
+                    class="usa-banner__icon usa-media-block__img"
+                    role="img"
+                    src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiB2aWV3Qm94PSIwIDAgNjQgNjQiPjx0aXRsZT5pY29uLWh0dHBzPC90aXRsZT48cGF0aCBmaWxsPSIjNzE5RjJBIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zMiAwYzE3LjY3MyAwIDMyIDE0LjMyNyAzMiAzMiAwIDE3LjY3My0xNC4zMjcgMzItMzIgMzJDMTQuMzI3IDY0IDAgNDkuNjczIDAgMzIgMCAxNC4zMjcgMTQuMzI3IDAgMzIgMHptMCAxLjIwOEMxNC45OTQgMS4yMDggMS4yMDggMTQuOTk0IDEuMjA4IDMyUzE0Ljk5NCA2Mi43OTIgMzIgNjIuNzkyIDYyLjc5MiA0OS4wMDYgNjIuNzkyIDMyIDQ5LjAwNiAxLjIwOCAzMiAxLjIwOHptMCAxOC44ODZhNy4yNDUgNy4yNDUgMCAwIDEgNy4yNDUgNy4yNDV2My4xMDNoLjUyYy44NiAwIDEuNTU3LjY5OCAxLjU1NyAxLjU1OHY5LjMyMmMwIC44Ni0uNjk3IDEuNTU4LTEuNTU3IDEuNTU4aC0xNS41M2MtLjg2IDAtMS41NTctLjY5Ny0xLjU1Ny0xLjU1OFYzMmMwLS44Ni42OTctMS41NTggMS41NTctMS41NThoLjUyVjI3LjM0QTcuMjQ1IDcuMjQ1IDAgMCAxIDMyIDIwLjA5NHptMCAzLjEwM2E0LjE0MiA0LjE0MiAwIDAgMC00LjE0MiA0LjE0MnYzLjEwM2g4LjI4NFYyNy4zNEE0LjE0MiA0LjE0MiAwIDAgMCAzMiAyMy4xOTd6Ii8+PC9zdmc+"
+                  />
+                  <div
+                    class="usa-media-block__body"
+                  >
+                    <p>
+                      <strong>
+                        Secure .gov websites use HTTPS
+                      </strong>
+                      <br />
+                      A 
+                      <strong>
+                        lock (
+                        <span
+                          class="icon-lock"
+                        >
+                          <img
+                            alt="lock"
+                            class="usa-banner__lock-image"
+                            role="img"
+                            src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjUyIiBoZWlnaHQ9IjY0IiB2aWV3Qm94PSIwIDAgNTIgNjQiPjx0aXRsZT5sb2NrPC90aXRsZT48cGF0aCBmaWxsPSIjMUIxQjFCIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yNiAwYzEwLjQ5MyAwIDE5IDguNTA3IDE5IDE5djloM2E0IDQgMCAwIDEgNCA0djI4YTQgNCAwIDAgMS00IDRINGE0IDQgMCAwIDEtNC00VjMyYTQgNCAwIDAgMSA0LTRoM3YtOUM3IDguNTA3IDE1LjUwNyAwIDI2IDB6bTAgOGMtNS45NzkgMC0xMC44NDMgNC43Ny0xMC45OTYgMTAuNzEyTDE1IDE5djloMjJ2LTljMC02LjA3NS00LjkyNS0xMS0xMS0xMXoiLz48L3N2Zz4="
+                            title="Lock"
+                          />
+                        </span>
+                        )
+                      </strong>
+                       or 
+                      <strong>
+                        https://
+                      </strong>
+                       means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
-            <div
-              class="usa-banner__guidance tablet:grid-col-6"
-            >
-              <img
-                alt=""
-                aria-hidden="true"
-                class="usa-banner__icon usa-media-block__img"
-                role="img"
-                src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiB2aWV3Qm94PSIwIDAgNjQgNjQiPjx0aXRsZT5pY29uLWh0dHBzPC90aXRsZT48cGF0aCBmaWxsPSIjNzE5RjJBIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zMiAwYzE3LjY3MyAwIDMyIDE0LjMyNyAzMiAzMiAwIDE3LjY3My0xNC4zMjcgMzItMzIgMzJDMTQuMzI3IDY0IDAgNDkuNjczIDAgMzIgMCAxNC4zMjcgMTQuMzI3IDAgMzIgMHptMCAxLjIwOEMxNC45OTQgMS4yMDggMS4yMDggMTQuOTk0IDEuMjA4IDMyUzE0Ljk5NCA2Mi43OTIgMzIgNjIuNzkyIDYyLjc5MiA0OS4wMDYgNjIuNzkyIDMyIDQ5LjAwNiAxLjIwOCAzMiAxLjIwOHptMCAxOC44ODZhNy4yNDUgNy4yNDUgMCAwIDEgNy4yNDUgNy4yNDV2My4xMDNoLjUyYy44NiAwIDEuNTU3LjY5OCAxLjU1NyAxLjU1OHY5LjMyMmMwIC44Ni0uNjk3IDEuNTU4LTEuNTU3IDEuNTU4aC0xNS41M2MtLjg2IDAtMS41NTctLjY5Ny0xLjU1Ny0xLjU1OFYzMmMwLS44Ni42OTctMS41NTggMS41NTctMS41NThoLjUyVjI3LjM0QTcuMjQ1IDcuMjQ1IDAgMCAxIDMyIDIwLjA5NHptMCAzLjEwM2E0LjE0MiA0LjE0MiAwIDAgMC00LjE0MiA0LjE0MnYzLjEwM2g4LjI4NFYyNy4zNEE0LjE0MiA0LjE0MiAwIDAgMCAzMiAyMy4xOTd6Ii8+PC9zdmc+"
-              />
-              <div
-                class="usa-media-block__body"
-              >
-                <p>
-                  <strong>
-                    Secure .gov websites use HTTPS
-                  </strong>
-                  <br />
-                  A 
-                  <strong>
-                    lock (
-                    <span
-                      class="icon-lock"
-                    >
-                      <img
-                        alt="lock"
-                        class="usa-banner__lock-image"
-                        role="img"
-                        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjUyIiBoZWlnaHQ9IjY0IiB2aWV3Qm94PSIwIDAgNTIgNjQiPjx0aXRsZT5sb2NrPC90aXRsZT48cGF0aCBmaWxsPSIjMUIxQjFCIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yNiAwYzEwLjQ5MyAwIDE5IDguNTA3IDE5IDE5djloM2E0IDQgMCAwIDEgNCA0djI4YTQgNCAwIDAgMS00IDRINGE0IDQgMCAwIDEtNC00VjMyYTQgNCAwIDAgMSA0LTRoM3YtOUM3IDguNTA3IDE1LjUwNyAwIDI2IDB6bTAgOGMtNS45NzkgMC0xMC44NDMgNC43Ny0xMC45OTYgMTAuNzEyTDE1IDE5djloMjJ2LTljMC02LjA3NS00LjkyNS0xMS0xMS0xMXoiLz48L3N2Zz4="
-                        title="Lock"
-                      />
-                    </span>
-                    )
-                  </strong>
-                   or 
-                  <strong>
-                    https://
-                  </strong>
-                   means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites.
-                </p>
-              </div>
-            </div>
           </div>
+        </section>
+        <div>
+          <img
+            alt="language icon for selecting language"
+            src="test-file-stub"
+          />
+          <a
+            href="#"
+          >
+            English
+          </a>
+          <a
+            href="#"
+          >
+            Español
+          </a>
         </div>
       </div>
-    </section>
+    </div>
     <div>
       <div>
         <div />
@@ -253,6 +273,28 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 >
                   Contact
                 </a>
+              </li>
+              <li
+                class="usa-nav__primary-item"
+              >
+                <div>
+                  <div>
+                    <img
+                      alt="language icon for selecting language"
+                      src="test-file-stub"
+                    />
+                    <a
+                      href="#"
+                    >
+                      English
+                    </a>
+                    <a
+                      href="#"
+                    >
+                      Español
+                    </a>
+                  </div>
+                </div>
               </li>
             </ul>
           </nav>
