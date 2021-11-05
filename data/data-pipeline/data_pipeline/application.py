@@ -262,6 +262,7 @@ def data_full_run(check: bool, data_source: str):
     score_generate()
 
     logger.info("*** Running Post Score scripts")
+    downloadable_cleanup()
     score_post(data_source)
 
     logger.info("*** Combining Score with Census Geojson")
