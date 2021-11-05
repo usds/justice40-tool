@@ -16,7 +16,7 @@ This README contains the following content:
 ## Installing and running the client site
 
 ### Via npm
-1. Confirm you have the base required software installed. See [INSTALLATION](INSTALLATION.md) for more details.
+1. Confirm you have the base required software installed. See [INSTALLATION](../INSTALLATION.md) for more details.
 1. Install yarn if you do not have it yet. Open your terminal and run `sudo npm install -global yarn`. This works on MacOS and Win10. To confirm it is installed, run `yarn -v`. A version number should be returned.
 1. Navigate to the base directory of this repository, and go to the `client` directory (`cd client`).
 1. Run the command `npm install` to install the dependencies.
