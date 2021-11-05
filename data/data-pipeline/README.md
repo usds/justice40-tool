@@ -330,7 +330,7 @@ We have four pickle files that correspond to expected files:
 
 To update the pickles, let's go one by one:
 
-For the `score_transformed_expected.pkl`, but a breakpoint on [this line](https://github.com/usds/justice40-tool/blob/esfoobar-usds/834-score-L/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L58), before the `pdt.assert_frame_equal` and run:
+For the `score_transformed_expected.pkl`, but a breakpoint on [this line](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L58), before the `pdt.assert_frame_equal` and run:
 `pytest data_pipeline/etl/score/tests/test_score_post.py::test_transform_score`
 
 Once on the breakpoint, capture the df to a pickle as follows:
@@ -344,7 +344,7 @@ score_transformed_actual.to_pickle(data_path / "data_pipeline" / "etl" / "score"
 
 Then take out the breakpoint and re-run the test: `pytest data_pipeline/etl/score/tests/test_score_post.py::test_transform_score`
 
-For the `score_data_expected.pkl`, but a breakpoint on [this line](https://github.com/usds/justice40-tool/blob/esfoobar-usds/834-score-L/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L78), before the `pdt.assert_frame_equal` and run:
+For the `score_data_expected.pkl`, but a breakpoint on [this line](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L78), before the `pdt.assert_frame_equal` and run:
 `pytest data_pipeline/etl/score/tests/test_score_post.py::test_create_score_data`
 
 Once on the breakpoint, capture the df to a pickle as follows:
@@ -353,11 +353,38 @@ Once on the breakpoint, capture the df to a pickle as follows:
 import pickle
 from pathlib import Path
 data_path = Path.cwd()
-score_transformed_actual.to_pickle(data_path / "data_pipeline" / "etl" / "score" / "tests" / "snapshots" / "score_transformed_expected.pkl", protocol=4)
+score_data_actual.to_pickle(data_path / "data_pipeline" / "etl" / "score" / "tests" / "snapshots" / "score_data_expected.pkl", protocol=4)
 ```
 
 Then take out the breakpoint and re-run the test: `pytest data_pipeline/etl/score/tests/test_score_post.py::test_create_score_data`
 
+For the `tile_data_expected.pkl`, but a breakpoint on [this line](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L86), before the `pdt.assert_frame_equal` and run:
+`pytest data_pipeline/etl/score/tests/test_score_post.py::test_create_tile_data`
+
+Once on the breakpoint, capture the df to a pickle as follows:
+
+```
+import pickle
+from pathlib import Path
+data_path = Path.cwd()
+output_tiles_df_actual.to_pickle(data_path / "data_pipeline" / "etl" / "score" / "tests" / "snapshots" / "tile_data_expected.pkl", protocol=4)
+```
+
+Then take out the breakpoint and re-run the test: `pytest data_pipeline/etl/score/tests/test_score_post.py::test_create_tile_data`
+
+For the `downloadable_data_expected.pk1`, but a breakpoint on [this line](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L98), before the `pdt.assert_frame_equal` and run:
+`pytest data_pipeline/etl/score/tests/test_score_post.py::test_create_downloadable_data`
+
+Once on the breakpoint, capture the df to a pickle as follows:
+
+```
+import pickle
+from pathlib import Path
+data_path = Path.cwd()
+output_downloadable_df_actual.to_pickle(data_path / "data_pipeline" / "etl" / "score" / "tests" / "snapshots" / "downloadable_data_expected.pkl", protocol=4)
+```
+
+Then take out the breakpoint and re-run the test: `pytest data_pipeline/etl/score/tests/test_score_post.py::test_create_downloadable_data`
 
 #### Future Enchancements
 
