@@ -98,14 +98,27 @@ class NationalRiskIndexETL(ExtractTransformLoad):
             "WFIR",  # Wildfire
             "WNTW",  # Winter Weather
         ]
+
+        # Note: I'm not sure why pylint is so upset with this particular dataframe,
+        # but it may be a known bug. https://github.com/PyCQA/pylint/issues/1498
         for category in disaster_categories:
-            df_nri[f"{category}"] = (
-                df_nri[f"{category}_EALT"]  # Expected Annual Loss - Total
-                / df_nri[f"{category}_EXPT"]  # Exposure - Total
+            df_nri[  # pylint: disable=unsupported-assignment-operation
+                f"{category}"
+            ] = (
+                df_nri[  # pylint: disable=unsubscriptable-object
+                    f"{category}_EALT"
+                ]  # Expected Annual Loss - Total
+                / df_nri[  # pylint: disable=unsubscriptable-object
+                    f"{category}_EXPT"
+                ]
             )
-        df_nri[self.EXPECTED_ANNUAL_LOSS_RATE] = df_nri[
+        df_nri[  # pylint: disable=unsupported-assignment-operation
+            self.EXPECTED_ANNUAL_LOSS_RATE
+        ] = df_nri[  # pylint: disable=unsubscriptable-object
             disaster_categories
-        ].sum(axis=1)
+        ].sum(
+            axis=1
+        )
 
         # Reduce columns.
         # Note: normally we wait until writing to CSV for this step, but since the file is so huge,
