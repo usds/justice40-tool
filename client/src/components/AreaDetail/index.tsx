@@ -65,7 +65,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
   const areaMedianIncome:indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.AREA_MEDIAN_INCOME),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.AREA_MEDIAN_INCOME),
-    value: properties[constants.POVERTY_PROPERTY_PERCENTILE],
+    value: properties[constants.AREA_MEDIAN_INCOME_PERCENTILE],
   };
   const eduInfo:indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.EDUCATION),

@@ -59,6 +59,7 @@ export const WASTEWATER_PERCENTILE = 'Wastewater discharge (percentile)';
 export const LEAD_PAINT_PERCENTILE = 'Percent pre-1960s housing (lead paint indicator) (percentile)';
 export const DIESEL_MATTER_PERCENTILE = 'Diesel particulate matter (percentile)';
 export const PM25_PERCENTILE = 'Particulate matter (PM2.5) (percentile)';
+export const AREA_MEDIAN_INCOME_PERCENTILE = 'Median household income (% of AMI) (percentile)';
 
 export type J40Properties = { [key: string]: any };
 
