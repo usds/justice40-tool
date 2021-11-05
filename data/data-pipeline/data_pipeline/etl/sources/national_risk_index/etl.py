@@ -25,10 +25,15 @@ class NationalRiskIndexETL(ExtractTransformLoad):
             "FEMA Risk Index Expected Annual Loss Score"
         )
 
+        self.EXPECTED_ANNUAL_LOSS_RATE = (
+            "FEMA Risk Index Expected Annual Loss Rate"
+        )
+
         # Note: also need to edit transform step to add fields to output.
         self.COLUMNS_TO_KEEP = [
             self.GEOID_FIELD_NAME,
             self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME,
+            self.EXPECTED_ANNUAL_LOSS_RATE,
         ]
 
         self.df: pd.DataFrame
@@ -37,7 +42,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         """Unzips NRI dataset from the FEMA data source and writes the files
         to the temporary data folder for use in the transform() method
         """
-        logger.info("Downloading National Risk Index Data")
+        logger.info("Downloading 405MB National Risk Index Data")
         super().extract(
             self.NRI_FTP_URL,
             self.TMP_PATH,
@@ -72,11 +77,45 @@ class NationalRiskIndexETL(ExtractTransformLoad):
             inplace=True,
         )
 
+        # Calculate a risk score that does not include FEMA's measure of community vulnerability.
+        disaster_categories = [
+            "AVLN",  # Avalanche
+            "CFLD",  # Coastal Flooding
+            "CWAV",  # Cold Wave
+            "DRGT",  # Drought
+            "ERQK",  # Earthquake
+            "HAIL",  # Hail
+            "HWAV",  # Heat Wave
+            "HRCN",  # Hurricane
+            "ISTM",  # Ice Storm
+            "LNDS",  # Landslide
+            "LTNG",  # Lightning
+            "RFLD",  # Riverine Flooding
+            "SWND",  # Strong Wind
+            "TRND",  # Tornado
+            "TSUN",  # Tsunami
+            "VLCN",  # Volcanic Activity
+            "WFIR",  # Wildfire
+            "WNTW",  # Winter Weather
+        ]
+        for category in disaster_categories:
+            df_nri[f"{category}"] = (
+                df_nri[f"{category}_EALT"]  # Expected Annual Loss - Total
+                / df_nri[f"{category}_EXPT"]  # Exposure - Total
+            )
+        df_nri[self.EXPECTED_ANNUAL_LOSS_RATE] = df_nri[
+            disaster_categories
+        ].sum(axis=1)
+
         # Reduce columns.
         # Note: normally we wait until writing to CSV for this step, but since the file is so huge,
         # move this up here for performance reasons.
         df_nri = df_nri[  # pylint: disable=unsubscriptable-object
-            [self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME, TRACT_COL]
+            [
+                self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME,
+                self.EXPECTED_ANNUAL_LOSS_RATE,
+                TRACT_COL,
+            ]
         ]
 
         # get the full list of Census Block Groups from the ACS data
