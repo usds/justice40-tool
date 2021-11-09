@@ -1116,28 +1116,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         </div>
       </div>
     </div>
-    <ul
-      class="rtf closed"
-      data-testid="fab"
-      style="bottom: 24px; right: 24px;"
+    <button
+      class="usa-button"
+      data-testid="button"
+      type="button"
     >
-      <li
-        class="rtf--mb__c"
-      >
-        <button
-          aria-label="Floating menu"
-          class="rtf--mb"
-          data-testid="main-button"
-          role="button"
-          style="width: 100%; border-radius: 4px; padding: 0px 8px; background-color: rgb(250, 206, 0); color: rgb(28, 28, 28);"
-          tabindex="0"
-          type="button"
-        >
-          Take our survey
-        </button>
-        <ul />
-      </li>
-    </ul>
+      Take our survey!
+    </button>
   </main>
   <footer
     class="j40-footer"

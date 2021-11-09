@@ -7,7 +7,10 @@ import Layout from '../components/layout';
 
 import * as SURVEY_COPY from '../data/copy/survey';
 
-const Survey = () => {
+interface SurveyPageProps {
+  location: Location;
+}
+const Survey = ({location}: SurveyPageProps) => {
   const intl = useIntl();
 
   return (

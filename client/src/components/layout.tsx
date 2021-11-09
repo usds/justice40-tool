@@ -1,4 +1,4 @@
-import React, {ReactNode, useEffect, useState} from 'react';
+import React, {ReactNode} from 'react';
 import J40Header from './J40Header';
 import J40Footer from './J40Footer';
 import {URLFlagProvider} from '../contexts/FlagContext';
@@ -12,12 +12,6 @@ interface ILayoutProps {
 }
 
 const Layout = ({children, location, title}: ILayoutProps) => {
-  const [locationState, setLocationState] = useState(location);
-
-  useEffect(() => {
-    setLocationState(location);
-  }, [location]);
-
   // @ts-ignore
   return (
     <>
@@ -37,7 +31,7 @@ const Layout = ({children, location, title}: ILayoutProps) => {
         <J40Header />
         <main id={'main-content'}>
           {children}
-          {!locationState.pathname.includes('survey') ? <SurveyFab /> : null}
+          {!location.pathname.includes('survey') ? <SurveyFab /> : null}
         </main>
         <J40Footer/>
       </URLFlagProvider>
