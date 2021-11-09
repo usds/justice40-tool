@@ -2,6 +2,7 @@
 
 .surveyFabContainer {
   position:fixed;
+  z-index: 1;
   @include u-bottom(3);
   @include u-right(3);
   @include u-radius(1);
