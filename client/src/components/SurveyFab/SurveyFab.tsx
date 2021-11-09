@@ -26,12 +26,11 @@ const SurveyFab = () => {
           onClick={() => navigate('/survey')}
         />
   ) : (
-    <a href="https://www.surveymonkey.com/r/cejst-survey" target={'blank'}>
-      <Fab
-        mainButtonStyles={surveyFabContainer}
-        icon={'Take our survey'}
-      />
-    </a>
+        <Fab
+          mainButtonStyles={surveyFabContainer}
+          icon={'Take our survey'}
+          onClick={() => Object.assign(document.createElement('a'), {target: '_blank', href: 'https://www.surveymonkey.com/r/cejst-survey'}).click()}
+        />
   )
   ;
 };
