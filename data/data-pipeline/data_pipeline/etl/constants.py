@@ -74,6 +74,11 @@ DATASET_LIST = [
         "module_dir": "ejscreen_areas_of_concern",
         "class_name": "EJSCREENAreasOfConcernETL",
     },
+    {
+        "name": "census_decennial",
+        "module_dir": "census_decennial",
+        "class_name": "CensusDecennialETL",
+    },
 ]
 CENSUS_INFO = {
     "name": "census",
