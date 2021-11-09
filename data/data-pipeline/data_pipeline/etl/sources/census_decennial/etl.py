@@ -16,7 +16,9 @@ class CensusDecennialETL(ExtractTransformLoad):
     def __init__(self):
         self.DECENNIAL_YEAR = 2010
         self.OUTPUT_PATH = (
-            self.DATA_PATH / "dataset" / f"census_dec_{self.DECENNIAL_YEAR}"
+            self.DATA_PATH
+            / "dataset"
+            / f"census_decennial_{self.DECENNIAL_YEAR}"
         )
 
         # Income Fields
@@ -56,13 +58,17 @@ class CensusDecennialETL(ExtractTransformLoad):
 
         self.MALE_HIGH_SCHOOL_ED_FIELD = "PBG026005"
         self.MALE_HIGH_SCHOOL_ED_VI_FIELD = "PCT032011"
-        self.MALE_HIGH_SCHOOL_ED_FIELD_NAME = "Total!!Male!!High school graduate, GED, or alternative; "\
+        self.MALE_HIGH_SCHOOL_ED_FIELD_NAME = (
+            "Total!!Male!!High school graduate, GED, or alternative; "
             "SEX BY EDUCATIONAL ATTAINMENT FOR THE POPULATION 25 YEARS AND OVER"
+        )
 
         self.FEMALE_HIGH_SCHOOL_ED_FIELD = "PBG026012"
         self.FEMALE_HIGH_SCHOOL_ED_VI_FIELD = "PCT032028"
-        self.FEMALE_HIGH_SCHOOL_ED_FIELD_NAME = "Total!!Female!!High school graduate, GED, or alternative; "\
-           "SEX BY EDUCATIONAL ATTAINMENT FOR THE POPULATION 25 YEARS AND OVER"
+        self.FEMALE_HIGH_SCHOOL_ED_FIELD_NAME = (
+            "Total!!Female!!High school graduate, GED, or alternative; "
+            "SEX BY EDUCATIONAL ATTAINMENT FOR THE POPULATION 25 YEARS AND OVER"
+        )
 
         self.PERCENTAGE_HIGH_SCHOOL_ED_FIELD_NAME = (
             "PERCENTAGE_HIGH_SCHOOL_ED_FIELD_NAME"
