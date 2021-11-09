@@ -114,6 +114,8 @@ OVER_64_FIELD = "Individuals over 64 years old"
 # Urban Rural Map
 URBAN_HERUISTIC_FIELD = "Urban Heuristic Flag"
 
+# Housing value
+MEDIAN_HOUSE_VALUE_FIELD = "Median value ($) of owner-occupied housing units"
 
 # EJSCREEN Areas of Concern
 EJSCREEN_AREAS_OF_CONCERN_NATIONAL_70TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (

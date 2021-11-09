@@ -312,6 +312,7 @@ class ScoreETL(ExtractTransformLoad):
             field_names.HIGH_SCHOOL_ED_FIELD,
             field_names.UNEMPLOYMENT_FIELD,
             field_names.HT_INDEX_FIELD,
+            field_names.MEDIAN_HOUSE_VALUE_FIELD,
         ]
 
         non_numeric_columns = [
