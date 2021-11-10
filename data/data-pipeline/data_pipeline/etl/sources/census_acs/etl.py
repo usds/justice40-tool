@@ -1,5 +1,6 @@
 import pandas as pd
 import censusdata
+import json
 
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.sources.census.etl_utils import get_state_fips_codes
@@ -67,8 +68,8 @@ class CensusACSETL(ExtractTransformLoad):
                 f"Downloading data for state/territory with FIPS code {fips}"
             )
 
-            dfs.append(
-                censusdata.download(
+            try:
+                response = censusdata.download(
                     src="acs5",
                     year=self.ACS_YEAR,
                     geo=censusdata.censusgeo(
@@ -83,7 +84,12 @@ class CensusACSETL(ExtractTransformLoad):
                     + self.LINGUISTIC_ISOLATION_FIELDS
                     + self.POVERTY_FIELDS,
                 )
-            )
+            except ValueError:
+                logger.error(
+                    f"Could not download data for state/territory with FIPS code {fips}"
+                )
+
+            dfs.append(response)
 
         self.df = pd.concat(dfs)
 
