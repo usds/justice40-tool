@@ -313,6 +313,9 @@ class ScoreETL(ExtractTransformLoad):
             field_names.UNEMPLOYMENT_FIELD,
             field_names.HT_INDEX_FIELD,
             field_names.MEDIAN_HOUSE_VALUE_FIELD,
+            field_names.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME,
+            field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME,
+            field_names.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME,
         ]
 
         non_numeric_columns = [

@@ -103,7 +103,9 @@ class NationalRiskIndexETL(ExtractTransformLoad):
 
         # Agriculture EAL Rate = Eal Vala / Agrivalue
         df_nri[self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME] = (
-            df_nri[self.EXPECTED_ANNUAL_LOSS_AGRICULTURAL_VALUE_INPUT_FIELD_NAME]
+            df_nri[
+                self.EXPECTED_ANNUAL_LOSS_AGRICULTURAL_VALUE_INPUT_FIELD_NAME
+            ]
             / df_nri[self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME]
         )
 
@@ -112,7 +114,6 @@ class NationalRiskIndexETL(ExtractTransformLoad):
             df_nri[self.EXPECTED_ANNUAL_LOSS_BUILDING_VALUE_INPUT_FIELD_NAME]
             / df_nri[self.BUILDING_VALUE_INPUT_FIELD_NAME]
         )
-
 
         # Reduce columns.
         # Note: normally we wait until writing to CSV for this step, but since the file is so huge,
