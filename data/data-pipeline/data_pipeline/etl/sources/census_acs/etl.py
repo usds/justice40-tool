@@ -1,6 +1,5 @@
 import pandas as pd
 import censusdata
-import json
 
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.sources.census.etl_utils import get_state_fips_codes
