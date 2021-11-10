@@ -1,3 +1,8 @@
+# Note: I'm not sure why pylint is so upset with the particular dataframe `df_nri`,
+# but it may be a known bug. https://github.com/PyCQA/pylint/issues/1498
+# pylint: disable=unsubscriptable-object
+# pylint: disable=unsupported-assignment-operation
+
 import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
@@ -118,7 +123,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         # Reduce columns.
         # Note: normally we wait until writing to CSV for this step, but since the file is so huge,
         # move this up here for performance reasons.
-        df_nri = df_nri[  # pylint: disable=unsubscriptable-object
+        df_nri = df_nri[
             [
                 self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME,
                 self.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME,
