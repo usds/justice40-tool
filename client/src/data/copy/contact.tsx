@@ -21,6 +21,11 @@ export const PAGE_INTRO = defineMessages({
     defaultMessage: 'Email us',
     description: 'contact page sub header text',
   },
+  SURVEY_TEXT: {
+    id: 'fab.survey.text',
+    defaultMessage: 'Take our survey!',
+    description: 'text for floating action button',
+  },
 });
 
 export const CONTACT_VIA_EMAIL = {

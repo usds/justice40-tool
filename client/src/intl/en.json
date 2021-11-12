@@ -237,7 +237,7 @@
   },
   "download.draft.ptag.2": {
     "defaultMessage": "ZIP file will contain one .xlsx, one .csv, and one .pdf ({downloadFileSize}).",
-    "description": "Download the draft list of communities of focus and datasets used."
+    "description": "Information on the contents and type of the download file"
   },
   "downloadPacket.button.text": {
     "defaultMessage": "Download package",
@@ -266,6 +266,10 @@
   "exploreTool.title.text": {
     "defaultMessage": "Explore the tool",
     "description": "explore the tool title text"
+  },
+  "fab.survey.text": {
+    "defaultMessage": "Take our survey!",
+    "description": "text for floating action button"
   },
   "federal.pm.heading": {
     "defaultMessage": "Federal program managers",

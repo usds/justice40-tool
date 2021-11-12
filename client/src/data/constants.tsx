@@ -1,6 +1,6 @@
 
-import { LngLatBoundsLike } from 'maplibre-gl';
-import { isMobile as isMobileReactDeviceDetect } from 'react-device-detect';
+import {LngLatBoundsLike} from 'maplibre-gl';
+import {isMobile as isMobileReactDeviceDetect} from 'react-device-detect';
 
 const XYZ_SUFFIX = '{z}/{x}/{y}.pbf';
 export const featureURLForTilesetName = (tilesetName: string): string => {

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of the SurveyFab checks if component renders 1`] = `
+<DocumentFragment>
+  <button
+    class="usa-button"
+    data-testid="button"
+    type="button"
+  >
+    Take our survey!
+  </button>
+</DocumentFragment>
+`;
