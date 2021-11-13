@@ -64,19 +64,37 @@ class ScoreL(Score):
         # Low income: In 60th percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
+        climate_criteria = (
+            (
+                self.df[
+                    field_names.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME
+                    + field_names.PERCENTILE_FIELD_SUFFIX
+                ]
+                > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            )
+            | (
+                self.df[
+                    field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME
+                    + field_names.PERCENTILE_FIELD_SUFFIX
+                ]
+                > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            )
+            | (
+                self.df[
+                    field_names.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME
+                    + field_names.PERCENTILE_FIELD_SUFFIX
+                ]
+                > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            )
+        )
+
         return (
             self.df[
                 field_names.POVERTY_LESS_THAN_200_FPL_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             > self.LOW_INCOME_THRESHOLD
-        ) & (
-            self.df[
-                field_names.FEMA_EXPECTED_ANNUAL_LOSS_RATE_FIELD
-                + field_names.PERCENTILE_FIELD_SUFFIX
-            ]
-            > self.ENVIRONMENTAL_BURDEN_THRESHOLD
-        )
+        ) & climate_criteria
 
     def _energy_factor(self) -> bool:
         # In Xth percentile or above for DOE’s energy cost burden score (Source: LEAD Score)
