@@ -57,9 +57,6 @@ AMI_FIELD = "Area Median Income (State or metropolitan)"
 
 # Climate
 FEMA_RISK_FIELD = "FEMA Risk Index Expected Annual Loss Score"
-FEMA_EXPECTED_ANNUAL_LOSS_RATE_FIELD = (
-    "FEMA Risk Index Expected Annual Loss Rate"
-)
 EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME = (
     "Expected building loss rate (Natural Hazards Risk Index)"
 )
