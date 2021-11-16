@@ -27,7 +27,7 @@ We also recognize capacity building as a key part of involving a diverse open so
 Principles and guidelines for participating in our open source community are available [here](COMMUNITY_GUIDELINES.md). Please read them before joining or starting a conversation in this repo or one of the channels listed below. 
 
 ### Community Chats
-We host open source community chats every two weeks on Monday at 5-6pm ET. You can find information about the agenda and how to participate in our [Google Group](https://groups.google.com/u/4/g/justice40-open-source).
+We host open source community chats every third Monday of the month at 5-6pm ET. You can find information about the agenda and how to participate in our [Google Group](https://groups.google.com/u/4/g/justice40-open-source).
 
 Community members are welcome to share updates or propose topics for discussion in community chats. Please do so in the Google Group.
 

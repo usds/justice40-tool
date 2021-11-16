@@ -1,4 +1,5 @@
 import pandas as pd
+from pandas.errors import EmptyDataError
 
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.sources.census.etl_utils import get_state_fips_codes
@@ -26,10 +27,6 @@ class HousingTransportationETL(ExtractTransformLoad):
                 f"Downloading housing data for state/territory with FIPS code {fips}"
             )
 
-            # Puerto Rico has no data, so skip
-            if fips == "72":
-                continue
-
             unzip_file_from_url(
                 f"{self.HOUSING_FTP_URL}{fips}", self.TMP_PATH, zip_file_dir
             )
@@ -38,7 +35,13 @@ class HousingTransportationETL(ExtractTransformLoad):
             tmp_csv_file_path = (
                 zip_file_dir / f"htaindex_data_blkgrps_{fips}.csv"
             )
-            tmp_df = pd.read_csv(filepath_or_buffer=tmp_csv_file_path)
+
+            try:
+                tmp_df = pd.read_csv(filepath_or_buffer=tmp_csv_file_path)
+            except EmptyDataError:
+                logger.error(
+                    f"Could not read Housing and Transportation data for state/territory with FIPS code {fips}"
+                )
 
             dfs.append(tmp_df)
 

@@ -46,25 +46,31 @@ def get_module_logger(module_name: str) -> logging.Logger:
 logger = get_module_logger(__name__)
 
 
-def remove_files_from_dir(files_path: Path, extension: str = None) -> None:
+def remove_files_from_dir(
+    files_path: Path, extension: str = None, exception_list: list = None
+) -> None:
     """Removes all files from a specific directory with the exception of __init__.py
     files or files with a specific extension
 
     Args:
         files_path (pathlib.Path): Name of the directory where the files will be deleted
         extension (str): Extension of the file pattern to delete, example "json" (optional)
+        exception_list (list): List of files to not remove (optional)
 
     Returns:
         None
 
     """
     for file in os.listdir(files_path):
-        if extension:
-            if not file.endswith(extension):
+        # don't rempove __init__ files as they conserve dir structure
+        if file == "__init__.py":
+            continue
+
+        if exception_list:
+            if file in exception_list:
                 continue
-        else:
-            # don't rempove __init__ files as they conserve dir structure
-            if file == "__init__.py":
+        elif extension:
+            if not file.endswith(extension):
                 continue
         os.remove(files_path / file)
         logger.info(f"Removing {file}")

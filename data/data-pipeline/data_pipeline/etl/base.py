@@ -33,7 +33,7 @@ class ExtractTransformLoad:
     GEOID_FIELD_NAME: str = "GEOID10"
     GEOID_TRACT_FIELD_NAME: str = "GEOID10_TRACT"
     # TODO: investigate. Census says there are only 217,740 CBGs in the US. This might be from CBGs at different time periods.
-    EXPECTED_MAX_CENSUS_BLOCK_GROUPS: int = 220405
+    EXPECTED_MAX_CENSUS_BLOCK_GROUPS: int = 250000
     EXPECTED_MAX_CENSUS_TRACTS: int = 73076
 
     def __init__(self, config_path: Path) -> None:
