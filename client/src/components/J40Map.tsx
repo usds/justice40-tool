@@ -31,6 +31,7 @@ import {makeMapStyle} from '../data/mapStyle';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import * as constants from '../data/constants';
 import * as styles from './J40Map.module.scss';
+import MapSearch from './MapSearch';
 
 
 declare global {
@@ -141,6 +142,10 @@ const J40Map = ({location}: IJ40Interface) => {
     switch (buttonID) {
       case '48':
         goToPlace(constants.LOWER_48_BOUNDS);
+        goToPlace([
+          [-73.775966, 40.743991],
+          [-73.755966, 40.763991],
+        ]);
         break;
       case 'AK':
         goToPlace(constants.ALASKA_BOUNDS);
@@ -256,6 +261,7 @@ const J40Map = ({location}: IJ40Interface) => {
           {geolocationInProgress ? <div>Geolocation in progress...</div> : ''}
           <TerritoryFocusControl onClickTerritoryFocusButton={onClickTerritoryFocusButton}/>
           {'fs' in flags ? <FullscreenControl className={styles.fullscreenControl}/> :'' }
+          <MapSearch />
         </ReactMapGL>
       </Grid>
 
