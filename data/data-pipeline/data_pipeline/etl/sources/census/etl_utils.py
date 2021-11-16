@@ -16,13 +16,17 @@ from data_pipeline.utils import (
 logger = get_module_logger(__name__)
 
 
-def reset_data_directories(data_path: Path) -> None:
+def reset_data_directories(
+    data_path: Path,
+) -> None:
     """Empties all census folders"""
     census_data_path = data_path / "census"
 
     # csv
     csv_path = census_data_path / "csv"
-    remove_files_from_dir(csv_path, ".csv")
+    remove_files_from_dir(
+        csv_path, ".csv", exception_list=["fips_states_2010.csv"]
+    )
 
     # geojson
     geojson_path = census_data_path / "geojson"
