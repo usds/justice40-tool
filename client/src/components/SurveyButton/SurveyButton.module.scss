@@ -1,0 +1,14 @@
+@use '../../styles/design-system.scss' as *;
+
+.surveyButton {
+    @include u-radius(1);
+    box-shadow: 1.2px 2.4px 2.4px hsl(0deg 0% 0% / 0.46);
+
+    @include u-text('gray-90');
+    @include u-bg('yellow-20v');
+    
+    &:hover {
+    @include u-bg('yellow-20');
+    @include u-text('gray-90');
+    }
+}

@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {render} from '@testing-library/react';
 import {LocalizedComponent} from '../../test/testHelpers';
-import SurveyFab from './SurveyFab';
-import {onClickHandler} from './SurveyFab';
+import SurveyButton from './SurveyButton';
+import {onClickHandler} from './SurveyButton';
 
-describe('rendering of the SurveyFab', () => {
+describe('rendering of the SurveyButton', () => {
   const {asFragment} = render(
       <LocalizedComponent>
-        <SurveyFab />
+        <SurveyButton />
       </LocalizedComponent>,
   );
 

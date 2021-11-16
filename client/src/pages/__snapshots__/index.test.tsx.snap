@@ -309,11 +309,33 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       class="grid-container-desktop-lg"
       data-testid="gridContainer"
     >
-      <h1
-        data-cy="about-page-heading"
+      <div
+        class="grid-row"
+        data-testid="grid"
       >
-        About us
-      </h1>
+        <div
+          class="grid-col-10"
+          data-testid="grid"
+        >
+          <h1
+            data-cy="about-page-heading"
+          >
+            About us
+          </h1>
+        </div>
+        <div
+          class="grid-col-2"
+          data-testid="grid"
+        >
+          <button
+            class="usa-button"
+            data-testid="button"
+            type="button"
+          >
+            Take our survey!
+          </button>
+        </div>
+      </div>
       <div
         class="grid-row grid-gap-lg j40-aboutcard-container "
         data-testid="grid"
@@ -656,13 +678,6 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         </div>
       </div>
     </div>
-    <button
-      class="usa-button"
-      data-testid="button"
-      type="button"
-    >
-      Take our survey!
-    </button>
   </main>
   <footer
     class="j40-footer"

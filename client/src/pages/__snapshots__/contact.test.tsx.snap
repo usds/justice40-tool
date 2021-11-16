@@ -314,12 +314,34 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         data-testid="grid"
       >
         <div
-          class="grid-col"
+          class="grid-col-10"
           data-testid="grid"
         >
           <h1>
             Contact
           </h1>
+        </div>
+        <div
+          class="grid-col-2"
+          data-testid="grid"
+        >
+          <button
+            class="usa-button"
+            data-testid="button"
+            type="button"
+          >
+            Take our survey!
+          </button>
+        </div>
+      </div>
+      <div
+        class="grid-row"
+        data-testid="grid"
+      >
+        <div
+          class="grid-col"
+          data-testid="grid"
+        >
           <h2>
             Email us
           </h2>
@@ -336,13 +358,6 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         </div>
       </div>
     </div>
-    <button
-      class="usa-button"
-      data-testid="button"
-      type="button"
-    >
-      Take our survey!
-    </button>
   </main>
   <footer
     class="j40-footer"

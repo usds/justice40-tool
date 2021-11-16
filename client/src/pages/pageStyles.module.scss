@@ -1,0 +1,10 @@
+@use '../styles/design-system.scss' as *;
+
+.pageHeading1 {
+    @include u-margin-bottom(7);
+
+    .surveyButtonContainer {
+        display: flex;
+        align-items: flex-end;
+    }
+}

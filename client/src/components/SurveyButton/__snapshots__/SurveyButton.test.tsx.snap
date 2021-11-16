@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering of the SurveyFab checks if component renders 1`] = `
+exports[`rendering of the SurveyButton checks if component renders 1`] = `
 <DocumentFragment>
   <button
     class="usa-button"
