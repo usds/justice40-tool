@@ -7,10 +7,8 @@ import DownloadPacket from '../components/DownloadPacket';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 import ScoreStepsList from '../components/scoreStepsList';
-import SurveyButton from '../components/SurveyButton';
 
 import * as METHODOLOGY_COPY from '../data/copy/methodology';
-import * as styles from './pageStyles.module.scss';
 
 interface MethodPageProps {
   location: Location;
@@ -25,16 +23,7 @@ const IndexPage = ({location}: MethodPageProps) => {
 
       <J40MainGridContainer>
 
-        {/* Primary Heading row */}
-        <Grid row className={styles.pageHeading1}>
-          <Grid col={10}>
-            <h1>{intl.formatMessage(METHODOLOGY_COPY.PAGE.HEADING)}</h1>
-          </Grid>
-          <Grid col={2} className={styles.surveyButtonContainer}>
-            <SurveyButton />
-          </Grid>
-        </Grid>
-
+        <h1>{intl.formatMessage(METHODOLOGY_COPY.PAGE.HEADING)}</h1>
 
         <Grid row gap className={'j40-mb-5'}>
           <Grid col={12} tablet={{col: 6}}>

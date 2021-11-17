@@ -7,7 +7,7 @@ exports[`rendering of the SurveyButton checks if component renders 1`] = `
     data-testid="button"
     type="button"
   >
-    Take our survey!
+    Tell us how we're doing
   </button>
 </DocumentFragment>
 `;

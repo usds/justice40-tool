@@ -7,10 +7,8 @@ import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 import MapWrapper from '../components/MapWrapper';
 import MapLegend from '../components/MapLegend';
-import SurveyButton from '../components/SurveyButton';
 
 import * as EXPLORE_COPY from '../data/copy/explore';
-import * as styles from './pageStyles.module.scss';
 
 interface IMapPageProps {
   location: Location;
@@ -26,15 +24,7 @@ const CEJSTPage = ({location}: IMapPageProps) => {
 
     <J40MainGridContainer>
 
-      {/* Primary Heading row */}
-      <Grid row className={styles.pageHeading1}>
-        <Grid col={10}>
-          <h1>{intl.formatMessage(EXPLORE_COPY.PAGE_INTRO.PAGE_HEADING)}</h1>
-        </Grid>
-        <Grid col={2} className={styles.surveyButtonContainer}>
-          <SurveyButton />
-        </Grid>
-      </Grid>
+      <h1>{intl.formatMessage(EXPLORE_COPY.PAGE_INTRO.PAGE_HEADING)}</h1>
 
       <Grid row className={'j40-mb-5'}>
         <Grid col={12} tablet={{col: 6}}>

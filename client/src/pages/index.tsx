@@ -1,16 +1,13 @@
 import * as React from 'react';
 import {useIntl} from 'gatsby-plugin-intl';
-import {Grid} from '@trussworks/react-uswds';
 
 import AboutCard from '../components/AboutCard/AboutCard';
 import AboutCardsContainer from '../components/AboutCard/AboutCardsContainer';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
-import SurveyButton from '../components/SurveyButton';
 
 import * as ABOUT_COPY from '../data/copy/about';
 import * as CONTACT_COPY from '../data/copy/contact';
-import * as styles from './pageStyles.module.scss';
 
 // @ts-ignore
 import aboutUSMapImg from '../images/about-usmap-1.svg';
@@ -41,15 +38,7 @@ const IndexPage = ({location}: IndexPageProps) => {
 
       <J40MainGridContainer>
 
-        {/* Primary Heading row */}
-        <Grid row className={styles.pageHeading1}>
-          <Grid col={10}>
-            <h1 data-cy={'about-page-heading'}>{intl.formatMessage(ABOUT_COPY.PAGE.HEADING)}</h1>
-          </Grid>
-          <Grid col={2} className={styles.surveyButtonContainer}>
-            <SurveyButton />
-          </Grid>
-        </Grid>
+        <h1 data-cy={'about-page-heading'}>{intl.formatMessage(ABOUT_COPY.PAGE.HEADING)}</h1>
 
         <AboutCardsContainer>
           <AboutCard

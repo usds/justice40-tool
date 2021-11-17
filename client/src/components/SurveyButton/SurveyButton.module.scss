@@ -1,9 +1,14 @@
 @use '../../styles/design-system.scss' as *;
 
 .surveyButton {
-    @include u-radius(1);
-    box-shadow: 1.2px 2.4px 2.4px hsl(0deg 0% 0% / 0.46);
+    position: fixed;
+    bottom: 0;
+    right: .8rem; 
 
+    border-radius: 5px 5px 0 0;
+    @include u-height(6);
+    z-index: 2;
+    
     @include u-text('gray-90');
     @include u-bg('yellow-20v');
     

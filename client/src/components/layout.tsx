@@ -1,8 +1,11 @@
 import React, {ReactNode} from 'react';
+import {Helmet} from 'react-helmet';
+
+import {URLFlagProvider} from '../contexts/FlagContext';
+
 import J40Header from './J40Header';
 import J40Footer from './J40Footer';
-import {URLFlagProvider} from '../contexts/FlagContext';
-import {Helmet} from 'react-helmet';
+import SurveyButton from './SurveyButton';
 interface ILayoutProps {
   children: ReactNode,
   location: Location,
@@ -31,6 +34,7 @@ const Layout = ({children, location, title}: ILayoutProps) => {
           {children}
         </main>
         <J40Footer/>
+        <SurveyButton />
       </URLFlagProvider>
     </>
   );
