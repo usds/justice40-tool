@@ -61,6 +61,13 @@ exports[`J40Footer renders correctly 1`] = `
                   </address>
                 </li>
               </ul>
+              <button
+                class="usa-button"
+                data-testid="button"
+                type="button"
+              >
+                Tell us how we're doing
+              </button>
             </section>
           </div>
           <div
@@ -113,6 +120,13 @@ exports[`J40Footer renders correctly 1`] = `
                   </a>
                 </li>
               </ul>
+              <button
+                class="usa-button"
+                data-testid="button"
+                type="button"
+              >
+                Tell us how we're doing
+              </button>
             </section>
           </div>
           <div
@@ -139,6 +153,13 @@ exports[`J40Footer renders correctly 1`] = `
                   </a>
                 </li>
               </ul>
+              <button
+                class="usa-button"
+                data-testid="button"
+                type="button"
+              >
+                Tell us how we're doing
+              </button>
             </section>
           </div>
         </div>

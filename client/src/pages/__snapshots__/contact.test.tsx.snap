@@ -396,6 +396,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </address>
                 </li>
               </ul>
+              <button
+                class="usa-button"
+                data-testid="button"
+                type="button"
+              >
+                Tell us how we're doing
+              </button>
             </section>
           </div>
           <div
@@ -448,6 +455,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </a>
                 </li>
               </ul>
+              <button
+                class="usa-button"
+                data-testid="button"
+                type="button"
+              >
+                Tell us how we're doing
+              </button>
             </section>
           </div>
           <div
@@ -474,6 +488,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </a>
                 </li>
               </ul>
+              <button
+                class="usa-button"
+                data-testid="button"
+                type="button"
+              >
+                Tell us how we're doing
+              </button>
             </section>
           </div>
         </div>
@@ -512,12 +533,5 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       </div>
     </div>
   </footer>
-  <button
-    class="usa-button"
-    data-testid="button"
-    type="button"
-  >
-    Tell us how we're doing
-  </button>
 </DocumentFragment>
 `;

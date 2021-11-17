@@ -8,6 +8,7 @@ import {useIntl} from 'gatsby-plugin-intl';
 
 import J40MainGridContainer from './J40MainGridContainer';
 import {hyphenizeString} from '../../cypress/integration/common/helpers';
+import SurveyButton from './SurveyButton';
 
 // @ts-ignore
 import whitehouseIcon from '../images/eop-seal.svg';
@@ -125,6 +126,7 @@ const NavSection = ({
     <section>
       <div className="j40-h4">{primaryLinkOrHeading}</div>
       <NavList type="footerSecondary" items={secondaryLinks} />
+      <SurveyButton />
     </section>
   );
 };
