@@ -90,7 +90,7 @@ TILES_SCORE_COLUMNS = [
     "Median household income (% of AMI) (percentile)",
     "Percent of individuals < 200% Federal Poverty Line (percentile)",
     "Expected annual loss rate (percentile)",
-    "Proximity to RMP sites (percentile)",
+    "Proximity to Risk Management Plan (RMP) facilities (percentile)",
     "Proximity to NPL sites (percentile)",
 ]
 
@@ -125,7 +125,7 @@ TILES_SCORE_FLOAT_COLUMNS = [
     "Median household income (% of AMI) (percentile)",
     "Percent of individuals < 200% Federal Poverty Line (percentile)",
     "Expected annual loss rate (percentile)",
-    "Proximity to RMP sites (percentile)",
+    "Proximity to Risk Management Plan (RMP) facilities (percentile)",
     "Proximity to NPL sites (percentile)",
 ]
 TILES_ROUND_NUM_DECIMALS = 2
@@ -147,6 +147,8 @@ DOWNLOADABLE_SCORE_INDICATOR_COLUMNS_BASIC = [
     "Diesel particulate matter",
     "Particulate matter (PM2.5)",
     "Total population",
+    "Proximity to Risk Management Plan (RMP) facilities",
+    "Proximity to NPL sites",
 ]
 
 # For every indicator above, we want to include percentile and min-max normalized variants also
