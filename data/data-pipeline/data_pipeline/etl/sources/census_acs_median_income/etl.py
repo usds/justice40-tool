@@ -46,7 +46,7 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
         self.AMI_REFERENCE_FIELD_NAME: str = "AMI Reference"
         self.AMI_FIELD_NAME: str = "Area Median Income (State or metropolitan)"
         self.COLUMNS_TO_KEEP = [
-            self.GEOID_FIELD_NAME,
+            self.GEOID_TRACT_FIELD_NAME,
             self.PLACE_FIELD_NAME,
             self.COUNTY_FIELD_NAME,
             self.STATE_ABBREVIATION_FIELD_NAME,
@@ -76,12 +76,12 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
         )
 
         # Create the full GEOID out of the component parts.
-        geocorr_df[self.GEOID_FIELD_NAME] = (
+        geocorr_df[self.GEOID_TRACT_FIELD_NAME] = (
             geocorr_df["county"] + geocorr_df["tract"]
         )
 
         # QA the combined field:
-        tract_values = geocorr_df[self.GEOID_FIELD_NAME].str.len().unique()
+        tract_values = geocorr_df[self.GEOID_TRACT_FIELD_NAME].str.len().unique()
         if any(tract_values != [11]):
             print(tract_values)
             raise ValueError("Some of the census tract data has the wrong length.")
@@ -112,7 +112,7 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
 
         # Drop all the duplicated rows except for the first one (which will have the place name):
         rows_to_drop = geocorr_df.duplicated(
-            keep="first", subset=[self.GEOID_FIELD_NAME]
+            keep="first", subset=[self.GEOID_TRACT_FIELD_NAME]
         )
 
         # Keep everything that's *not* a row to drop:
@@ -121,7 +121,7 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
         # Sort by GEOID again to put the dataframe back to original order:
         # Note: avoiding using inplace because of unusual `SettingWithCopyWarning` warning.
         geocorr_df = geocorr_df.sort_values(
-            by=self.GEOID_FIELD_NAME, axis=0, ascending=True, inplace=False
+            by=self.GEOID_TRACT_FIELD_NAME, axis=0, ascending=True, inplace=False
         )
 
         if len(geocorr_df) > self.EXPECTED_MAX_CENSUS_TRACTS:
@@ -229,7 +229,7 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
 
         # Merge state income with CBGs
         merged_df[self.STATE_GEOID_FIELD_NAME] = (
-            merged_df[self.GEOID_FIELD_NAME].astype(str).str[0:2]
+            merged_df[self.GEOID_TRACT_FIELD_NAME].astype(str).str[0:2]
         )
 
         merged_with_state_income_df = merged_df.merge(
