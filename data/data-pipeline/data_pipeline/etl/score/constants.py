@@ -123,7 +123,6 @@ TILES_SCORE_FLOAT_COLUMNS = [
     "Particulate matter (PM2.5) (percentile)",
     "Median household income (% of AMI) (percentile)",
     "Percent of individuals < 200% Federal Poverty Line (percentile)",
-    "Expected annual loss rate (percentile)",
     "Proximity to Risk Management Plan (RMP) facilities (percentile)",
     "Proximity to NPL sites (percentile)",
 ]
