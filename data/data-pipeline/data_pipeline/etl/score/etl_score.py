@@ -227,7 +227,6 @@ class ScoreETL(ExtractTransformLoad):
             self.ejscreen_df,
             self.census_df,
             self.census_acs_median_incomes_df,
-            self.national_risk_index_df,
         ]
 
         census_block_group_df = self._join_cbg_dfs(census_block_group_dfs)
@@ -241,6 +240,7 @@ class ScoreETL(ExtractTransformLoad):
             self.geocorr_urban_rural_df,
             self.persistent_poverty_df,
             self.housing_and_transportation_df,
+            self.national_risk_index_df,
         ]
         census_tract_df = self._join_tract_dfs(census_tract_dfs)
 
