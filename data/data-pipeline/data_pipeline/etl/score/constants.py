@@ -145,8 +145,6 @@ DOWNLOADABLE_SCORE_INDICATOR_COLUMNS_BASIC = [
     "Diesel particulate matter",
     "Particulate matter (PM2.5)",
     "Total population",
-    "Proximity to Risk Management Plan (RMP) facilities",
-    "Proximity to NPL sites",
 ]
 
 # For every indicator above, we want to include percentile and min-max normalized variants also
