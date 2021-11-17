@@ -225,7 +225,6 @@ class ScoreETL(ExtractTransformLoad):
         # Join all the data sources that use census block groups
         census_block_group_dfs = [
             self.ejscreen_df,
-            self.census_df,
             self.census_acs_median_incomes_df,
             self.national_risk_index_df,
         ]
@@ -234,6 +233,7 @@ class ScoreETL(ExtractTransformLoad):
 
         # Join all the data sources that use census tracts
         census_tract_dfs = [
+            self.census_df,
             self.hud_housing_df,
             self.cdc_places_df,
             self.cdc_life_expectancy_df,
