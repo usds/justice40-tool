@@ -140,7 +140,7 @@ class CensusDecennialETL(ExtractTransformLoad):
 
         self.API_URL = (
             "https://api.census.gov/data/{}/dec/{}?get=NAME,{}"
-            + "&for=block%20group:*&in=state:{}%20county:{}"
+            + "&for=tract:*&in=state:{}%20county:{}"
         )
 
         self.df: pd.DataFrame
@@ -219,11 +219,10 @@ class CensusDecennialETL(ExtractTransformLoad):
         ) / self.df_all[self.TOTAL_POPULATION_FIELD_NAME]
 
         # Creating Geo ID (Census Block Group) Field Name
-        self.df_all[self.GEOID_FIELD_NAME] = (
+        self.df_all[self.GEOID_TRACT_FIELD_NAME] = (
             self.df_all["state"]
             + self.df_all["county"]
             + self.df_all["tract"]
-            + self.df_all["block group"]
         )
 
         # Reporting Missing Values
@@ -240,7 +239,7 @@ class CensusDecennialETL(ExtractTransformLoad):
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
 
         columns_to_include = [
-            self.GEOID_FIELD_NAME,
+            self.GEOID_TRACT_FIELD_NAME,
             self.MEDIAN_INCOME_FIELD_NAME,
             self.PERCENTAGE_HOUSEHOLDS_BELOW_200_PERC_POVERTY_LEVEL_FIELD_NAME,
             self.PERCENTAGE_HIGH_SCHOOL_ED_FIELD_NAME,
