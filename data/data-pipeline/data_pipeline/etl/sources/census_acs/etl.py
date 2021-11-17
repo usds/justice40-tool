@@ -77,7 +77,7 @@ class CensusACSETL(ExtractTransformLoad):
                     src="acs5",
                     year=self.ACS_YEAR,
                     geo=censusdata.censusgeo(
-                        [("state", fips), ("county", "*"), ("block group", "*")]
+                        [("state", fips), ("county", "*"), ("tract", "*")]
                     ),
                     var=[
                         # Emploment fields
