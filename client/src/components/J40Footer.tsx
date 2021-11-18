@@ -112,6 +112,7 @@ const J40Footer = () => {
           />
         </J40MainGridContainer>
       </div>
+      <SurveyButton />
     </footer>
   );
 };
@@ -126,7 +127,6 @@ const NavSection = ({
     <section>
       <div className="j40-h4">{primaryLinkOrHeading}</div>
       <NavList type="footerSecondary" items={secondaryLinks} />
-      <SurveyButton />
     </section>
   );
 };

@@ -1,19 +1,26 @@
 @use '../../styles/design-system.scss' as *;
 
-.surveyButton {
-    position: fixed;
-    bottom: 0;
-    right: .8rem; 
+.surveyButtonContainer {
+  position: relative;
 
+  .surveyButton {
+    position: absolute;
+    bottom: 0;
+    right: 2.2rem;
+
+    @include at-media-max("desktop") {
+      right: 0;
+    }
     border-radius: 5px 5px 0 0;
     @include u-height(6);
     z-index: 2;
-    
-    @include u-text('gray-90');
-    @include u-bg('yellow-20v');
-    
+
+    @include u-text("gray-90");
+    @include u-bg("yellow-20v");
+
     &:hover {
-    @include u-bg('yellow-20');
-    @include u-text('gray-90');
+      @include u-bg("yellow-20");
+      @include u-text("gray-90");
     }
+  }
 }

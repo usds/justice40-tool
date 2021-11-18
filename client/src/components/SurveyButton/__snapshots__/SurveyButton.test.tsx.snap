@@ -2,12 +2,17 @@
 
 exports[`rendering of the SurveyButton checks if component renders 1`] = `
 <DocumentFragment>
-  <button
-    class="usa-button"
-    data-testid="button"
-    type="button"
+  <div
+    class="grid-container-desktop-lg"
+    data-testid="gridContainer"
   >
-    Tell us how we're doing
-  </button>
+    <button
+      class="usa-button"
+      data-testid="button"
+      type="button"
+    >
+      Tell us how we're doing
+    </button>
+  </div>
 </DocumentFragment>
 `;
