@@ -52,6 +52,7 @@ class TestNationalRiskIndexETL:
         acs_dst = etl.BLOCK_GROUP_CSV
         for src, dst in [(input_src, input_dst), (acs_src, acs_dst)]:
             copy_data_files(src, dst)
+
         # setup - read in sample output as dataframe
         TRACT_COL = etl.GEOID_TRACT_FIELD_NAME
         BLOCK_COL = etl.GEOID_FIELD_NAME
@@ -59,11 +60,12 @@ class TestNationalRiskIndexETL:
             DATA_DIR / "transform.csv",
             dtype={BLOCK_COL: "string", TRACT_COL: "string"},
         )
+
         # execution
         etl.transform()
 
         # validation
-        assert etl.df.shape == (10, 6)
+        assert etl.df.shape == (5, 51)
         pd.testing.assert_frame_equal(etl.df, expected)
 
     def test_load(self, mock_etl):
@@ -93,5 +95,5 @@ class TestNationalRiskIndexETL:
 
         # validation
         assert output_path.exists()
-        assert output.shape == (10, 5)
+        assert output.shape == (5, 5)
         pd.testing.assert_frame_equal(output, expected)
