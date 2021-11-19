@@ -123,6 +123,10 @@ TILES_SCORE_FLOAT_COLUMNS = [
     "Percent of individuals < 200% Federal Poverty Line (percentile)",
     "Proximity to Risk Management Plan (RMP) facilities (percentile)",
     "Proximity to NPL sites (percentile)",
+    "Expected agricultural loss rate (Natural Hazards Risk Index) (percentile)",
+    "Expected building loss rate (Natural Hazards Risk Index) (percentile)",
+    "Expected population loss rate (Natural Hazards Risk Index) (percentile)"
+    "Median value ($) of owner-occupied housing units (percentile)",
 ]
 TILES_ROUND_NUM_DECIMALS = 2
 
