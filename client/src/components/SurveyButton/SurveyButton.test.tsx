@@ -1,13 +1,12 @@
 import * as React from 'react';
 import {render} from '@testing-library/react';
 import {LocalizedComponent} from '../../test/testHelpers';
-import SurveyFab from './SurveyFab';
-import {onClickHandler} from './SurveyFab';
-
-describe('rendering of the SurveyFab', () => {
+import SurveyButton from './SurveyButton';
+import {onClickHandler} from './SurveyButton';
+describe('rendering of the SurveyButton', () => {
   const {asFragment} = render(
       <LocalizedComponent>
-        <SurveyFab />
+        <SurveyButton />
       </LocalizedComponent>,
   );
 
@@ -15,7 +14,6 @@ describe('rendering of the SurveyFab', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 });
-
 describe('test clickHandler', () => {
   it('clickHandler should fire successfully', () => {
     onClickHandler();
