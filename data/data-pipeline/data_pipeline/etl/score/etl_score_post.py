@@ -2,6 +2,8 @@ from pathlib import Path
 import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger, zip_files
+pd.options.mode.chained_assignment = None
+
 
 
 from data_pipeline.etl.sources.census.etl_utils import (
@@ -106,7 +108,7 @@ class PostScoreETL(ExtractTransformLoad):
 
         new_df_copy = new_df.rename(
             columns={"USPS": "State Abbreviation", "NAME": "County Name"},
-            inplace=False,
+            inplace=False
         )
 
         return new_df_copy
