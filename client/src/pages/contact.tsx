@@ -6,7 +6,6 @@ import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 
 import * as CONTACT_COPY from '../data/copy/contact';
-
 interface IContactPageProps {
   location: Location;
 }
@@ -18,11 +17,11 @@ const ContactPage = ({location}: IContactPageProps) => {
     <Layout location={location} title={intl.formatMessage(CONTACT_COPY.PAGE_INTRO.PAGE_TILE)}>
 
       <J40MainGridContainer>
+
+        <h1>{intl.formatMessage(CONTACT_COPY.PAGE_INTRO.PAGE_HEADING)}</h1>
+
         <Grid row>
           <Grid col>
-            <h1>
-              {intl.formatMessage(CONTACT_COPY.PAGE_INTRO.PAGE_HEADING)}
-            </h1>
             <h2>
               {intl.formatMessage(CONTACT_COPY.PAGE_INTRO.PAGE_SUB_HEADING)}
             </h2>

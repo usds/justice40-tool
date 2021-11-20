@@ -76,13 +76,6 @@ jobs:
       - name: Set DESTINATION_FOLDER for branch
         run: |
           echo "DESTINATION_FOLDER=$(echo $PR_NUMBER-$GITHUB_SHA | cut -c 1-11)" >> $GITHUB_ENV
-      - name: Deploy to Github Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.0
-        with:
-          BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: public # The folder the action should deploy.
-          TARGET-FOLDER: ${{env.DESTINATION_FOLDER}} # If we're on a PR branch, merge to PR folder
-          CLEAN: true
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:

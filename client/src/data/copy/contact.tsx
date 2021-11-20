@@ -23,7 +23,7 @@ export const PAGE_INTRO = defineMessages({
   },
   SURVEY_TEXT: {
     id: 'fab.survey.text',
-    defaultMessage: 'Take our survey!',
+    defaultMessage: `Tell us how we're doing`,
     description: 'text for floating action button',
   },
 });

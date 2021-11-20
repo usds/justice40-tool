@@ -176,6 +176,18 @@ exports[`J40Footer renders correctly 1`] = `
         </div>
       </div>
     </div>
+    <div
+      class="grid-container-desktop-lg"
+      data-testid="gridContainer"
+    >
+      <button
+        class="usa-button"
+        data-testid="button"
+        type="button"
+      >
+        Tell us how we're doing
+      </button>
+    </div>
   </footer>
 </DocumentFragment>
 `;

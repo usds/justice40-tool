@@ -8,6 +8,7 @@ import {useIntl} from 'gatsby-plugin-intl';
 
 import J40MainGridContainer from './J40MainGridContainer';
 import {hyphenizeString} from '../../cypress/integration/common/helpers';
+import SurveyButton from './SurveyButton';
 
 // @ts-ignore
 import whitehouseIcon from '../images/eop-seal.svg';
@@ -111,6 +112,7 @@ const J40Footer = () => {
           />
         </J40MainGridContainer>
       </div>
+      <SurveyButton />
     </footer>
   );
 };
