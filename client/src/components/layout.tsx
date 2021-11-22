@@ -1,15 +1,20 @@
 import React, {ReactNode} from 'react';
-import J40Header from './J40Header';
-import J40Footer from './J40Footer';
-import {URLFlagProvider} from '../contexts/FlagContext';
 import {Helmet} from 'react-helmet';
-import SurveyFab from './SurveyFab';
+import {QueryClient, QueryClientProvider} from 'react-query';
+import {ReactQueryDevtools} from 'react-query/devtools';
 
+import {URLFlagProvider} from '../contexts/FlagContext';
+
+import J40Footer from './J40Footer';
+import J40Header from './J40Header';
+import SurveyFab from './SurveyFab';
 interface ILayoutProps {
   children: ReactNode,
   location: Location,
   title: string,
 }
+
+const queryClient = new QueryClient();
 
 const Layout = ({children, location, title}: ILayoutProps) => {
   // @ts-ignore
@@ -27,14 +32,17 @@ const Layout = ({children, location, title}: ILayoutProps) => {
         </script>
       </Helmet>
 
-      <URLFlagProvider location={location}>
-        <J40Header />
-        <main id={'main-content'}>
-          {children}
-          <SurveyFab />
-        </main>
-        <J40Footer/>
-      </URLFlagProvider>
+      <QueryClientProvider client={queryClient}>
+        <URLFlagProvider location={location}>
+          <J40Header />
+          <main id={'main-content'}>
+            {children}
+            <SurveyFab />
+          </main>
+          <J40Footer/>
+        </URLFlagProvider>
+        <ReactQueryDevtools initialIsOpen />
+      </QueryClientProvider>
     </>
   );
 };

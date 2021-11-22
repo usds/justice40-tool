@@ -17,21 +17,23 @@ import * as d3 from 'd3-ease';
 import {isMobile} from 'react-device-detect';
 import {Grid} from '@trussworks/react-uswds';
 import {useWindowSize} from 'react-use';
+import {useQuery} from 'react-query';
+import axios from 'axios';
 
 // Contexts:
 import {useFlags} from '../contexts/FlagContext';
 
 // Components:
-import TerritoryFocusControl from './territoryFocusControl';
-import MapInfoPanel from './mapInfoPanel';
 import AreaDetail from './AreaDetail';
+import MapInfoPanel from './mapInfoPanel';
+import MapSearch from './MapSearch';
+import TerritoryFocusControl from './territoryFocusControl';
 
 // Styles and constants
 import {makeMapStyle} from '../data/mapStyle';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import * as constants from '../data/constants';
 import * as styles from './J40Map.module.scss';
-import MapSearch from './MapSearch';
 
 
 declare global {
@@ -52,6 +54,15 @@ export interface IDetailViewInterface {
   zoom: number
   properties: constants.J40Properties,
 };
+
+const useSearchService = (searchTerm: string) => {
+  return useQuery('nominatumData', async () =>{
+    const {data} = await axios.get(`https://nominatim.openstreetmap.org/search?q=${searchTerm}&format=json`);
+    return data;
+  },
+  );
+};
+
 
 const J40Map = ({location}: IJ40Interface) => {
   // Hash portion of URL is of the form #zoom/lat/lng
@@ -74,8 +85,18 @@ const J40Map = ({location}: IJ40Interface) => {
 
   const selectedFeatureId = (selectedFeature && selectedFeature.id) || '';
   const filter = useMemo(() => ['in', constants.GEOID_PROPERTY, selectedFeatureId], [selectedFeature]);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const {data, error, isFetching, isLoading} = useSearchService(searchTerm);
+
+  if (isLoading) console.log('Loading...');
+  else if (isFetching) console.log('Fetching...');
+  else if (error) console.log('Error: ', error);
+  else console.log('search results: ', data);
 
   const onClick = (event: MapEvent) => {
+    console.log('map onclick: ', event);
+
     const feature = event.features && event.features[0];
     if (feature) {
       const [minLng, minLat, maxLng, maxLat] = bbox(feature);
@@ -133,6 +154,13 @@ const J40Map = ({location}: IJ40Interface) => {
       transitionInterpolator: new FlyToInterpolator(),
       transitionEasing: d3.easeCubic,
     });
+  };
+
+  const onSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const searchTermCurrent = event.currentTarget.elements.search.value;
+    console.log(searchTerm);
+    if (searchTermCurrent != searchTerm) setSearchTerm(searchTermCurrent);
   };
 
   const onClickTerritoryFocusButton = (event: MouseEvent<HTMLButtonElement>) => {
@@ -261,7 +289,7 @@ const J40Map = ({location}: IJ40Interface) => {
           {geolocationInProgress ? <div>Geolocation in progress...</div> : ''}
           <TerritoryFocusControl onClickTerritoryFocusButton={onClickTerritoryFocusButton}/>
           {'fs' in flags ? <FullscreenControl className={styles.fullscreenControl}/> :'' }
-          <MapSearch />
+          <MapSearch onSearch={onSearch}/>
         </ReactMapGL>
       </Grid>
 

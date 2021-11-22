@@ -76,6 +76,7 @@
     "@sentry/gatsby": "^6.13.2",
     "@trussworks/react-uswds": "^2.0.0",
     "@turf/bbox": "^6.5.0",
+    "axios": "^0.24.0",
     "chroma-js": "^2.1.2",
     "d3-ease": "^3.0.1",
     "gatsby-plugin-env-variables": "^2.1.0",
@@ -90,6 +91,7 @@
     "react-helmet": "^6.1.0",
     "react-intl": "^5.20.4",
     "react-map-gl": "^6.1.16",
+    "react-query": "^3.33.1",
     "react-use": "^17.3.1",
     "uswds": "^2.10.3"
   },
