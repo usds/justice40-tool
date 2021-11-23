@@ -156,7 +156,7 @@ class CensusETL(ExtractTransformLoad):
             None
         """
         ## write to individual state csv
-        tractd10_list = self.TRACT_PER_STATE[fips_code]
+        tractid10_list = self.TRACT_PER_STATE[fips_code]
         csv_path = self._path_for_fips_file(fips_code, GeoFileType.CSV)
         with open(
             csv_path, mode="w", newline="", encoding="utf-8"
@@ -168,7 +168,7 @@ class CensusETL(ExtractTransformLoad):
                 quoting=csv.QUOTE_MINIMAL,
             )
 
-            for tractid10 in tractd10_list:
+            for tractid10 in tractid10_list:
                 tract_csv_file_writer.writerow(
                     [
                         tractid10,
