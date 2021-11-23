@@ -8,8 +8,8 @@ logger = get_module_logger(__name__)
 
 class EJSCREENETL(ExtractTransformLoad):
     def __init__(self):
-        self.EJSCREEN_FTP_URL = "https://gaftp.epa.gov/EJSCREEN/2019/EJSCREEN_2019_StatePctile.csv.zip"
-        self.EJSCREEN_CSV = self.TMP_PATH / "EJSCREEN_2019_StatePctiles.csv"
+        self.EJSCREEN_FTP_URL = "https://edap-arcgiscloud-data-commons.s3.amazonaws.com/EJSCREEN2020/EJSCREEN_Tract_2020_USPR.csv.zip"
+        self.EJSCREEN_CSV = self.TMP_PATH / "EJSCREEN_Tract_2020_USPR.csv"
         self.CSV_PATH = self.DATA_PATH / "dataset" / "ejscreen_2019"
         self.df: pd.DataFrame
 
@@ -29,6 +29,14 @@ class EJSCREENETL(ExtractTransformLoad):
             # EJSCREEN writes the word "None" for NA data.
             na_values=["None"],
             low_memory=False,
+        )
+
+        # rename ID to Tract ID
+        self.df.rename(
+            columns={
+                "ID": self.GEOID_TRACT_FIELD_NAME,
+            },
+            inplace=True,
         )
 
     def load(self) -> None:
