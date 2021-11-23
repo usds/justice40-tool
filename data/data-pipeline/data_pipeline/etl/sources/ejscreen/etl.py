@@ -31,6 +31,14 @@ class EJSCREENETL(ExtractTransformLoad):
             low_memory=False,
         )
 
+        # rename ID to Tract ID
+        self.df.rename(
+            columns={
+                "ID": self.GEOID_TRACT_FIELD_NAME,
+            },
+            inplace=True,
+        )
+
     def load(self) -> None:
         logger.info("Saving EJScreen CSV")
         # write nationwide csv
