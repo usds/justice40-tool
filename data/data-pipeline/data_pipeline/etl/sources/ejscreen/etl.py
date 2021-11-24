@@ -1,6 +1,7 @@
 import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
@@ -35,6 +36,25 @@ class EJSCREENETL(ExtractTransformLoad):
         self.df.rename(
             columns={
                 "ID": self.GEOID_TRACT_FIELD_NAME,
+                # Note: it is currently unorthodox to use `field_names` in an ETL class,
+                # but I think that's the direction we'd like to move all ETL classes. - LMB
+                "ACSTOTPOP": field_names.TOTAL_POP_FIELD,
+                "CANCER": field_names.AIR_TOXICS_CANCER_RISK_FIELD,
+                "RESP": field_names.RESPITORY_HAZARD_FIELD,
+                "DSLPM": field_names.DIESEL_FIELD,
+                "PM25": field_names.PM25_FIELD,
+                "OZONE": field_names.OZONE_FIELD,
+                "PTRAF": field_names.TRAFFIC_FIELD,
+                "PRMP": field_names.RMP_FIELD,
+                "PTSDF": field_names.TSDF_FIELD,
+                "PNPL": field_names.NPL_FIELD,
+                "PWDIS": field_names.WASTEWATER_FIELD,
+                "LINGISOPCT": field_names.HOUSEHOLDS_LINGUISTIC_ISO_FIELD,
+                "LOWINCPCT": field_names.POVERTY_FIELD,
+                "LESSHSPCT": field_names.HIGH_SCHOOL_ED_FIELD,
+                "OVER64PCT": field_names.OVER_64_FIELD,
+                "UNDER5PCT": field_names.UNDER_5_FIELD,
+                "PRE1960PCT": field_names.LEAD_PAINT_FIELD,
             },
             inplace=True,
         )

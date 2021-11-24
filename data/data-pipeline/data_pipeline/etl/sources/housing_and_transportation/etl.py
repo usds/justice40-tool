@@ -51,7 +51,9 @@ class HousingTransportationETL(ExtractTransformLoad):
         logger.info("Transforming Housing and Transportation Data")
 
         # Rename and reformat tract ID
-        self.df.rename(columns={"tract": self.GEOID_TRACT_FIELD_NAME}, inplace=True)
+        self.df.rename(
+            columns={"tract": self.GEOID_TRACT_FIELD_NAME}, inplace=True
+        )
         self.df[self.GEOID_TRACT_FIELD_NAME] = self.df[
             self.GEOID_TRACT_FIELD_NAME
         ].str.replace('"', "")
