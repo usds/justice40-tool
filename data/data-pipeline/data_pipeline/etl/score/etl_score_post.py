@@ -22,7 +22,7 @@ class PostScoreETL(ExtractTransformLoad):
         self.input_counties_df: pd.DataFrame
         self.input_states_df: pd.DataFrame
         self.input_score_df: pd.DataFrame
-        self.input_national_cbg_df: pd.DataFrame
+        self.input_national_tract_df: pd.DataFrame
 
         self.output_score_county_state_merged_df: pd.DataFrame
         self.output_score_tiles_df: pd.DataFrame
@@ -49,7 +49,9 @@ class PostScoreETL(ExtractTransformLoad):
 
     def _extract_score(self, score_path: Path) -> pd.DataFrame:
         logger.info("Reading Score CSV")
-        df = pd.read_csv(score_path, dtype={"GEOID10": "string"})
+        df = pd.read_csv(
+            score_path, dtype={self.GEOID_TRACT_FIELD_NAME: "string"}
+        )
 
         # Convert total population to an int:
         df["Total population"] = df["Total population"].astype(
@@ -58,12 +60,14 @@ class PostScoreETL(ExtractTransformLoad):
 
         return df
 
-    def _extract_national_cbg(self, national_cbg_path: Path) -> pd.DataFrame:
+    def _extract_national_tract(
+        self, national_tract_path: Path
+    ) -> pd.DataFrame:
         logger.info("Reading national CBG")
         return pd.read_csv(
-            national_cbg_path,
-            names=["GEOID10"],
-            dtype={"GEOID10": "string"},
+            national_tract_path,
+            names=[self.GEOID_TRACT_FIELD_NAME],
+            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
             low_memory=False,
             header=None,
         )
@@ -90,7 +94,7 @@ class PostScoreETL(ExtractTransformLoad):
         self.input_score_df = self._extract_score(
             constants.DATA_SCORE_CSV_FULL_FILE_PATH
         )
-        self.input_national_cbg_df = self._extract_national_cbg(
+        self.input_national_tract_df = self._extract_national_tract(
             constants.DATA_CENSUS_CSV_FILE_PATH
         )
 
@@ -127,12 +131,14 @@ class PostScoreETL(ExtractTransformLoad):
 
     def _transform_score(self, initial_score_df: pd.DataFrame) -> pd.DataFrame:
         """
-        Necessary modifications to the score dataframe
+        Add the GEOID field to the score dataframe to do the merge with counties
         """
-        # Add the tract level column
-        new_df = initial_score_df.copy()
-        new_df["GEOID"] = initial_score_df.GEOID10.str[:5]
-        return new_df
+        # add GEOID column for counties
+        initial_score_df["GEOID"] = initial_score_df[
+            self.GEOID_TRACT_FIELD_NAME
+        ].str[:5]
+
+        return initial_score_df
 
     def _create_score_data(
         self,
@@ -142,6 +148,8 @@ class PostScoreETL(ExtractTransformLoad):
         score_df: pd.DataFrame,
     ) -> pd.DataFrame:
 
+        breakpoint()
+
         # merge state with counties
         logger.info("Merging state with county info")
         county_state_merged = counties_df.merge(
@@ -150,7 +158,9 @@ class PostScoreETL(ExtractTransformLoad):
 
         # merge state + county with score
         score_county_state_merged = score_df.merge(
-            county_state_merged, on="GEOID", how="left"
+            county_state_merged,
+            on="GEOID",  # GEOID is the county ID
+            how="left",
         )
 
         # check if there are census cbgs without score
@@ -158,7 +168,9 @@ class PostScoreETL(ExtractTransformLoad):
 
         # merge census cbgs with score
         merged_df = national_cbg_df.merge(
-            score_county_state_merged, on="GEOID10", how="left"
+            score_county_state_merged,
+            on=self.GEOID_TRACT_FIELD_NAME,
+            how="left",
         )
 
         # recast population to integer
@@ -209,7 +221,7 @@ class PostScoreETL(ExtractTransformLoad):
         transformed_score = self._transform_score(self.input_score_df)
 
         output_score_county_state_merged_df = self._create_score_data(
-            self.input_national_cbg_df,
+            self.input_national_tract_df,
             transformed_counties,
             transformed_states,
             transformed_score,
