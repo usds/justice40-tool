@@ -63,7 +63,7 @@ class PostScoreETL(ExtractTransformLoad):
     def _extract_national_tract(
         self, national_tract_path: Path
     ) -> pd.DataFrame:
-        logger.info("Reading national CBG")
+        logger.info("Reading national tract file")
         return pd.read_csv(
             national_tract_path,
             names=[self.GEOID_TRACT_FIELD_NAME],
@@ -142,14 +142,11 @@ class PostScoreETL(ExtractTransformLoad):
 
     def _create_score_data(
         self,
-        national_cbg_df: pd.DataFrame,
+        national_tract_df: pd.DataFrame,
         counties_df: pd.DataFrame,
         states_df: pd.DataFrame,
         score_df: pd.DataFrame,
     ) -> pd.DataFrame:
-
-        breakpoint()
-
         # merge state with counties
         logger.info("Merging state with county info")
         county_state_merged = counties_df.merge(
@@ -167,7 +164,7 @@ class PostScoreETL(ExtractTransformLoad):
         logger.info("Removing CBG rows without score")
 
         # merge census cbgs with score
-        merged_df = national_cbg_df.merge(
+        merged_df = national_tract_df.merge(
             score_county_state_merged,
             on=self.GEOID_TRACT_FIELD_NAME,
             how="left",
