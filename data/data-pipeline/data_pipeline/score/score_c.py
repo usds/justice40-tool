@@ -24,7 +24,7 @@ class ScoreC(Score):
                 + field_names.PERCENTILE_FIELD_SUFFIX,
                 field_names.UNEMPLOYMENT_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX,
-                field_names.HT_INDEX_FIELD
+                field_names.HOUSING_BURDEN_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX,
             ],
         )

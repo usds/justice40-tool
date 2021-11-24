@@ -19,7 +19,6 @@ class ScoreETL(ExtractTransformLoad):
         self.df: pd.DataFrame
         self.ejscreen_df: pd.DataFrame
         self.census_df: pd.DataFrame
-        self.housing_and_transportation_df: pd.DataFrame
         self.hud_housing_df: pd.DataFrame
         self.cdc_places_df: pd.DataFrame
         self.census_acs_median_incomes_df: pd.DataFrame
@@ -50,23 +49,6 @@ class ScoreETL(ExtractTransformLoad):
             census_csv,
             dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
             low_memory=False,
-        )
-
-        # Load housing and transportation data
-        housing_and_transportation_index_csv = (
-            constants.DATA_PATH
-            / "dataset"
-            / "housing_and_transportation_index"
-            / "usa.csv"
-        )
-        self.housing_and_transportation_df = pd.read_csv(
-            housing_and_transportation_index_csv,
-            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
-            low_memory=False,
-        )
-        # TODO move to HT Index ETL
-        self.housing_and_transportation_df.rename(
-            columns={"ht_ami": field_names.HT_INDEX_FIELD}, inplace=True
         )
 
         # Load HUD housing data
@@ -163,7 +145,7 @@ class ScoreETL(ExtractTransformLoad):
         ) -> pd.DataFrame:
             """This is a custom function that merges two dataframes.
 
-            Additional helpful context for error handling.
+            It provides some logging as additional helpful context for error handling.
             """
             try:
                 df = pd.merge(
@@ -196,6 +178,40 @@ class ScoreETL(ExtractTransformLoad):
             )
         return census_tract_df
 
+    def _census_tract_df_sanity_check(
+        self, df_to_check: pd.DataFrame, df_name: str = None
+    ) -> None:
+        """Check an individual data frame for census tract data quality checks."""
+
+        # Note: it'd be nice to log the name of the dataframe directly, but that's not accessible in this scope.
+        dataframe_descriptor = (
+            f"dataframe `{df_name}`"
+            if df_name
+            else f"the dataframe that has columns { ','.join(df_to_check.columns)}"
+        )
+
+        tract_values = (
+            df_to_check[self.GEOID_TRACT_FIELD_NAME].str.len().unique()
+        )
+        if any(tract_values != [11]):
+            raise ValueError(
+                f"Some of the census tract data has the wrong length: {tract_values} in {dataframe_descriptor}"
+            )
+
+        non_unique_tract_values = len(
+            df_to_check[self.GEOID_TRACT_FIELD_NAME]
+        ) - len(df_to_check[self.GEOID_TRACT_FIELD_NAME].unique())
+
+        if non_unique_tract_values > 0:
+            raise ValueError(
+                f"There are {non_unique_tract_values} duplicate tract IDs in {dataframe_descriptor}"
+            )
+
+        if len(df_to_check) > self.EXPECTED_MAX_CENSUS_TRACTS:
+            raise ValueError(
+                f"Too many rows in the join: {len(df_to_check)} in {dataframe_descriptor}"
+            )
+
     # TODO Move a lot of this to the ETL part of the pipeline
     def _prepare_initial_df(self) -> pd.DataFrame:
         logger.info("Preparing initial dataframe")
@@ -210,20 +226,23 @@ class ScoreETL(ExtractTransformLoad):
             self.ejscreen_df,
             self.geocorr_urban_rural_df,
             self.persistent_poverty_df,
-            self.housing_and_transportation_df,
             self.national_risk_index_df,
             self.census_acs_median_incomes_df,
         ]
+
+        # Sanity check each data frame before merging.
+        for df in census_tract_dfs:
+            self._census_tract_df_sanity_check(df_to_check=df)
+
         census_tract_df = self._join_tract_dfs(census_tract_dfs)
 
         # If GEOID10s are read as numbers instead of strings, the initial 0 is dropped,
         # and then we get too many CBG rows (one for 012345 and one for 12345).
 
-        # TODO: Investigate how many rows we should have here
-        if len(census_tract_df) > self.EXPECTED_MAX_CENSUS_TRACTS:
-            raise ValueError(
-                f"Too many rows in the join: {len(census_tract_df)}"
-            )
+        # Now sanity-check the merged df.
+        self._census_tract_df_sanity_check(
+            df_to_check=census_tract_df, df_name="census_tract_df"
+        )
 
         # Calculate median income variables.
         # First, calculate the income of the block group as a fraction of the state income.
@@ -276,7 +295,6 @@ class ScoreETL(ExtractTransformLoad):
             field_names.POVERTY_FIELD,
             field_names.HIGH_SCHOOL_ED_FIELD,
             field_names.UNEMPLOYMENT_FIELD,
-            field_names.HT_INDEX_FIELD,
             field_names.MEDIAN_HOUSE_VALUE_FIELD,
             field_names.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME,
             field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME,
