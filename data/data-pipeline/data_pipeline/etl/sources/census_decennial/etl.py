@@ -220,9 +220,7 @@ class CensusDecennialETL(ExtractTransformLoad):
 
         # Creating Geo ID (Census Block Group) Field Name
         self.df_all[self.GEOID_TRACT_FIELD_NAME] = (
-            self.df_all["state"]
-            + self.df_all["county"]
-            + self.df_all["tract"]
+            self.df_all["state"] + self.df_all["county"] + self.df_all["tract"]
         )
 
         # Reporting Missing Values

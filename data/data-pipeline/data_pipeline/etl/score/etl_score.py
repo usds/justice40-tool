@@ -41,29 +41,6 @@ class ScoreETL(ExtractTransformLoad):
             dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
             low_memory=False,
         )
-        # TODO move to EJScreen ETL
-        self.ejscreen_df.rename(
-            columns={
-                "ACSTOTPOP": field_names.TOTAL_POP_FIELD,
-                "CANCER": field_names.AIR_TOXICS_CANCER_RISK_FIELD,
-                "RESP": field_names.RESPITORY_HAZARD_FIELD,
-                "DSLPM": field_names.DIESEL_FIELD,
-                "PM25": field_names.PM25_FIELD,
-                "OZONE": field_names.OZONE_FIELD,
-                "PTRAF": field_names.TRAFFIC_FIELD,
-                "PRMP": field_names.RMP_FIELD,
-                "PTSDF": field_names.TSDF_FIELD,
-                "PNPL": field_names.NPL_FIELD,
-                "PWDIS": field_names.WASTEWATER_FIELD,
-                "LINGISOPCT": field_names.HOUSEHOLDS_LINGUISTIC_ISO_FIELD,
-                "LOWINCPCT": field_names.POVERTY_FIELD,
-                "LESSHSPCT": field_names.HIGH_SCHOOL_ED_FIELD,
-                "OVER64PCT": field_names.OVER_64_FIELD,
-                "UNDER5PCT": field_names.UNDER_5_FIELD,
-                "PRE1960PCT": field_names.LEAD_PAINT_FIELD,
-            },
-            inplace=True,
-        )
 
         # Load census data
         census_csv = (
@@ -180,13 +157,32 @@ class ScoreETL(ExtractTransformLoad):
 
     def _join_tract_dfs(self, census_tract_dfs: list) -> pd.DataFrame:
         logger.info("Joining Census Tract dataframes")
+
+        def merge_function(
+            left: pd.DataFrame, right: pd.DataFrame
+        ) -> pd.DataFrame:
+            """This is a custom function that merges two dataframes.
+
+            Additional helpful context for error handling.
+            """
+            try:
+                df = pd.merge(
+                    left=left,
+                    right=right,
+                    on=self.GEOID_TRACT_FIELD_NAME,
+                    how="outer",
+                )
+            except Exception as e:
+                # Note: it'd be nice to log the name of the dataframe, but that's not accessible in this scope.
+                logger.warning(
+                    f"Exception encountered while merging dataframe `right` that has the following columns: {','.join(right.columns)}"
+                )
+                raise e
+
+            return df
+
         census_tract_df = functools.reduce(
-            lambda left, right: pd.merge(
-                left=left,
-                right=right,
-                on=self.GEOID_TRACT_FIELD_NAME,
-                how="outer",
-            ),
+            merge_function,
             census_tract_dfs,
         )
 
@@ -224,10 +220,10 @@ class ScoreETL(ExtractTransformLoad):
         # and then we get too many CBG rows (one for 012345 and one for 12345).
 
         # TODO: Investigate how many rows we should have here
-        # if len(census_tract_df) > self.EXPECTED_MAX_CENSUS_TRACTS:
-        #     raise ValueError(
-        #         f"Too many rows in the join: {len(census_tract_df)}"
-        #     )
+        if len(census_tract_df) > self.EXPECTED_MAX_CENSUS_TRACTS:
+            raise ValueError(
+                f"Too many rows in the join: {len(census_tract_df)}"
+            )
 
         # Calculate median income variables.
         # First, calculate the income of the block group as a fraction of the state income.
