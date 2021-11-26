@@ -160,10 +160,10 @@ class PostScoreETL(ExtractTransformLoad):
             how="left",
         )
 
-        # check if there are census cbgs without score
-        logger.info("Removing CBG rows without score")
+        # check if there are census tracts without score
+        logger.info("Removing tract rows without score")
 
-        # merge census cbgs with score
+        # merge census tracts with score
         merged_df = national_tract_df.merge(
             score_county_state_merged,
             on=self.GEOID_TRACT_FIELD_NAME,
@@ -175,14 +175,14 @@ class PostScoreETL(ExtractTransformLoad):
             merged_df["Total population"].fillna(0.0).astype(int)
         )
 
-        # list the null score cbgs
-        null_cbg_df = merged_df[merged_df["Score E (percentile)"].isnull()]
+        # list the null score tracts
+        null_tract_df = merged_df[merged_df["Score E (percentile)"].isnull()]
 
         # subtract data sets
         # this follows the XOR pattern outlined here:
         # https://stackoverflow.com/a/37313953
         de_duplicated_df = pd.concat(
-            [merged_df, null_cbg_df, null_cbg_df]
+            [merged_df, null_tract_df, null_tract_df]
         ).drop_duplicates(keep=False)
 
         # set the score to the new df
