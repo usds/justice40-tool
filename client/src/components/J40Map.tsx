@@ -17,6 +17,7 @@ import * as d3 from 'd3-ease';
 import {isMobile} from 'react-device-detect';
 import {Grid} from '@trussworks/react-uswds';
 import {useWindowSize} from 'react-use';
+import {useQuery} from 'react-query';
 
 // Contexts:
 import {useFlags} from '../contexts/FlagContext';
@@ -53,6 +54,7 @@ export interface IDetailViewInterface {
   properties: constants.J40Properties,
 };
 
+
 const J40Map = ({location}: IJ40Interface) => {
   // Hash portion of URL is of the form #zoom/lat/lng
   const [zoom, lat, lng] = location.hash.slice(1).split('/');
@@ -69,11 +71,29 @@ const J40Map = ({location}: IJ40Interface) => {
   const [isMobileMapState, setIsMobileMapState] = useState<boolean>(false);
   const {width: windowWidth} = useWindowSize();
 
+  const {isLoading, error, data, isFetching} = useQuery('nominatumAPI', () => {
+    fetch(
+        'https://nominatim.openstreetmap.org/search?q=oakland&format=json',
+    ).then((res) => res.json());
+  });
+
+  if (data) {
+    console.log('Nominatum data: ', data);
+  }
   const mapRef = useRef<MapRef>(null);
   const flags = useFlags();
 
   const selectedFeatureId = (selectedFeature && selectedFeature.id) || '';
   const filter = useMemo(() => ['in', constants.GEOID_PROPERTY, selectedFeatureId], [selectedFeature]);
+
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const onSearchHandler = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const searchTermCurrent = event.currentTarget.elements.search.value;
+    console.log(searchTerm);
+    if (searchTermCurrent != searchTerm) setSearchTerm(searchTermCurrent);
+  };
 
   const onClick = (event: MapEvent) => {
     const feature = event.features && event.features[0];
@@ -261,7 +281,9 @@ const J40Map = ({location}: IJ40Interface) => {
           {geolocationInProgress ? <div>Geolocation in progress...</div> : ''}
           <TerritoryFocusControl onClickTerritoryFocusButton={onClickTerritoryFocusButton}/>
           {'fs' in flags ? <FullscreenControl className={styles.fullscreenControl}/> :'' }
-          <MapSearch />
+          <MapSearch onSearch={onSearchHandler}/>
+          {isLoading ? <div>Loading.. .</div> : null}
+          {isFetching ? <div>Fetching.. .</div> : null}
         </ReactMapGL>
       </Grid>
 
