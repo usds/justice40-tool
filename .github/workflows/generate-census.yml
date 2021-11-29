@@ -33,6 +33,7 @@ jobs:
         run: poetry install
       - name: Install GDAL/ogr2ogr
         run: |
+          python3 -m pip install --upgrade --no-cache-dir setuptools==58.0.2
           sudo apt-add-repository ppa:ubuntugis/ubuntugis-unstable
           sudo apt-get update
           sudo apt-get install gdal-bin libgdal-dev
