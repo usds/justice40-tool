@@ -133,7 +133,7 @@ class CensusETL(ExtractTransformLoad):
 
     def transform(self) -> None:
         """Download all census shape files from the Census FTP and extract the geojson
-        to generate national and by state Census Block Group CSVs and GeoJSONs
+        to generate national and by state Census tract CSVs and GeoJSONs
 
         Returns:
             None
@@ -222,7 +222,7 @@ class CensusETL(ExtractTransformLoad):
         logger.info("Writing national geojson file")
         usa_df.to_file(self.NATIONAL_CBG_JSON_PATH, driver="GeoJSON")
 
-        logger.info("Census block groups downloading complete")
+        logger.info("Census tract downloading complete")
 
     def load(self) -> None:
         """Create state CSVs, National CSV, and National GeoJSON
