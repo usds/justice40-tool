@@ -9,7 +9,7 @@ on:
 
 jobs:
   deploy_data:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: data/data-pipeline
@@ -33,11 +33,8 @@ jobs:
         run: poetry install
       - name: Install GDAL/ogr2ogr
         run: |
-          python3 -m pip install --upgrade --no-cache-dir setuptools==58.0.2
-          sudo apt-add-repository ppa:ubuntugis/ubuntugis-unstable
-          sudo apt-get update
-          sudo apt-get install gdal-bin libgdal-dev
-          pip install GDAL==3.2.3
+          sudo add-apt-repository ppa:ubuntugis/ppa
+          sudo apt-get -y install gdal-bin
       - name: Run Census Script
         run: |
           poetry run python3 data_pipeline/application.py census-data-download -zc
