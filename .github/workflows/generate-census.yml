@@ -33,10 +33,9 @@ jobs:
         run: poetry install
       - name: Install GDAL/ogr2ogr
         run: |
-          sudo apt-add-repository ppa:ubuntugis/ubuntugis-unstable
+          sudo add-apt-repository ppa:ubuntugis/ppa
           sudo apt-get update
           sudo apt-get install gdal-bin libgdal-dev
-          pip install GDAL==3.4.0
       - name: Run Census Script
         run: |
           poetry run python3 data_pipeline/application.py census-data-download -zc
