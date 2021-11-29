@@ -291,7 +291,6 @@ class ScoreETL(ExtractTransformLoad):
             field_names.LIFE_EXPECTANCY_FIELD,
             field_names.ENERGY_BURDEN_FIELD,
             field_names.FEMA_RISK_FIELD,
-            field_names.FEMA_EXPECTED_ANNUAL_LOSS_RATE_FIELD,
             field_names.URBAN_HERUISTIC_FIELD,
             field_names.AIR_TOXICS_CANCER_RISK_FIELD,
             field_names.RESPITORY_HAZARD_FIELD,
@@ -312,6 +311,10 @@ class ScoreETL(ExtractTransformLoad):
             field_names.HIGH_SCHOOL_ED_FIELD,
             field_names.UNEMPLOYMENT_FIELD,
             field_names.HT_INDEX_FIELD,
+            field_names.MEDIAN_HOUSE_VALUE_FIELD,
+            field_names.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME,
+            field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME,
+            field_names.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME,
         ]
 
         non_numeric_columns = [

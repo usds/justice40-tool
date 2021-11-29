@@ -124,9 +124,12 @@ TILES_SCORE_FLOAT_COLUMNS = [
     "Particulate matter (PM2.5) (percentile)",
     "Median household income (% of AMI) (percentile)",
     "Percent of individuals < 200% Federal Poverty Line (percentile)",
-    "Expected annual loss rate (percentile)",
-    "Proximity to RMP sites (percentile)",
+    "Proximity to Risk Management Plan (RMP) facilities (percentile)",
     "Proximity to NPL sites (percentile)",
+    "Expected agricultural loss rate (Natural Hazards Risk Index) (percentile)",
+    "Expected building loss rate (Natural Hazards Risk Index) (percentile)",
+    "Expected population loss rate (Natural Hazards Risk Index) (percentile)"
+    "Median value ($) of owner-occupied housing units (percentile)",
 ]
 TILES_ROUND_NUM_DECIMALS = 2
 

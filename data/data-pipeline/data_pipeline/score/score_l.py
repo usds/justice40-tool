@@ -11,6 +11,7 @@ class ScoreL(Score):
     def __init__(self, df: pd.DataFrame) -> None:
         self.LOW_INCOME_THRESHOLD: float = 0.65
         self.ENVIRONMENTAL_BURDEN_THRESHOLD: float = 0.90
+        self.MEDIAN_HOUSE_VALUE_THRESHOLD: float = 0.90
         super().__init__(df)
 
     def add_columns(self) -> pd.DataFrame:
@@ -63,19 +64,37 @@ class ScoreL(Score):
         # Low income: In 60th percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
+        climate_criteria = (
+            (
+                self.df[
+                    field_names.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME
+                    + field_names.PERCENTILE_FIELD_SUFFIX
+                ]
+                > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            )
+            | (
+                self.df[
+                    field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME
+                    + field_names.PERCENTILE_FIELD_SUFFIX
+                ]
+                > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            )
+            | (
+                self.df[
+                    field_names.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME
+                    + field_names.PERCENTILE_FIELD_SUFFIX
+                ]
+                > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            )
+        )
+
         return (
             self.df[
                 field_names.POVERTY_LESS_THAN_200_FPL_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             > self.LOW_INCOME_THRESHOLD
-        ) & (
-            self.df[
-                field_names.FEMA_EXPECTED_ANNUAL_LOSS_RATE_FIELD
-                + field_names.PERCENTILE_FIELD_SUFFIX
-            ]
-            > self.ENVIRONMENTAL_BURDEN_THRESHOLD
-        )
+        ) & climate_criteria
 
     def _energy_factor(self) -> bool:
         # In Xth percentile or above for DOE’s energy cost burden score (Source: LEAD Score)
@@ -135,8 +154,12 @@ class ScoreL(Score):
         ) & transportation_criteria
 
     def _housing_factor(self) -> bool:
+        # (
         # In Xth percentile or above for lead paint (Source: Census's American Community Survey’s
         # percent of housing units built pre-1960, used as an indicator of potential lead paint exposure in homes)
+        # AND
+        # In Yth percentile or below for Median House Value (Source: Census's American Community Survey)
+        # )
         # or
         # In Xth percentile or above for housing cost burden (Source: HUD's Comprehensive Housing Affordability Strategy dataset
         # AND
@@ -144,11 +167,20 @@ class ScoreL(Score):
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
         housing_criteria = (
-            self.df[
-                field_names.LEAD_PAINT_FIELD
-                + field_names.PERCENTILE_FIELD_SUFFIX
-            ]
-            > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            (
+                self.df[
+                    field_names.LEAD_PAINT_FIELD
+                    + field_names.PERCENTILE_FIELD_SUFFIX
+                ]
+                > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            )
+            & (
+                self.df[
+                    field_names.MEDIAN_HOUSE_VALUE_FIELD
+                    + field_names.PERCENTILE_FIELD_SUFFIX
+                ]
+                < self.MEDIAN_HOUSE_VALUE_THRESHOLD
+            )
         ) | (
             self.df[
                 field_names.HOUSING_BURDEN_FIELD

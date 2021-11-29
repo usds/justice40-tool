@@ -57,8 +57,14 @@ AMI_FIELD = "Area Median Income (State or metropolitan)"
 
 # Climate
 FEMA_RISK_FIELD = "FEMA Risk Index Expected Annual Loss Score"
-FEMA_EXPECTED_ANNUAL_LOSS_RATE_FIELD = (
-    "FEMA Risk Index Expected Annual Loss Rate"
+EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME = (
+    "Expected building loss rate (Natural Hazards Risk Index)"
+)
+EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME = (
+    "Expected agricultural loss rate (Natural Hazards Risk Index)"
+)
+EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME = (
+    "Expected population loss rate (Natural Hazards Risk Index)"
 )
 
 # Environment
@@ -114,6 +120,8 @@ OVER_64_FIELD = "Individuals over 64 years old"
 # Urban Rural Map
 URBAN_HERUISTIC_FIELD = "Urban Heuristic Flag"
 
+# Housing value
+MEDIAN_HOUSE_VALUE_FIELD = "Median value ($) of owner-occupied housing units"
 
 # EJSCREEN Areas of Concern
 EJSCREEN_AREAS_OF_CONCERN_NATIONAL_70TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (

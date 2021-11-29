@@ -656,6 +656,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         </div>
       </div>
     </div>
+    <button
+      class="usa-button"
+      data-testid="button"
+      type="button"
+    >
+      Take our survey!
+    </button>
   </main>
   <footer
     class="j40-footer"
