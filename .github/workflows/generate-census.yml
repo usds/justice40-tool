@@ -35,6 +35,7 @@ jobs:
         run: |
           sudo add-apt-repository ppa:ubuntugis/ppa
           sudo apt-get -y install gdal-bin
+          ogrinfo --version
       - name: Run Census Script
         run: |
           poetry run python3 data_pipeline/application.py census-data-download -zc
