@@ -32,7 +32,7 @@ class EJSCREENAreasOfConcernETL(ExtractTransformLoad):
         To enable the ETL code for EJSCREEN AoCs to run appropriately whether or not the person
         running it has access to that data, the following method checks whether the source file exists.
 
-        If it does exist, code can and should include to this data. If it does not exist, code should
+        If it does exist, code can and should include this data. If it does not exist, code should
         not reference this data.
 
         """
