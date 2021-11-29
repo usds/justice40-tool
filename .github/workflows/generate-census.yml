@@ -35,7 +35,7 @@ jobs:
         run: |
           sudo add-apt-repository ppa:ubuntugis/ppa
           sudo apt-get update
-          sudo apt-get install gdal-bin libgdal-dev
+          sudo apt-get install python3-wheel gdal-bin libgdal-dev
       - name: Run Census Script
         run: |
           poetry run python3 data_pipeline/application.py census-data-download -zc
