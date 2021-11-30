@@ -21,17 +21,39 @@ const MapSearch = ({goToPlace}:IMapSearch) => {
 
     const searchTerm = (event.currentTarget.elements.namedItem('search') as HTMLInputElement).value;
 
-    const searchResults = await fetch(`https://nominatim.openstreetmap.org/search?q=${searchTerm}&format=json`).then((res) => res.json());
+    const searchResults = await fetch(
+        `https://nominatim.openstreetmap.org/search?q=${searchTerm}&format=json`,
+        {
+          mode: 'cors',
+        })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not OK');
+            // TODO: Log to sentry
+          }
+          return response.json();
+        })
+        .catch((error) => {
+          console.error('There has been a problem with your fetch operation:', error);
+          // TODO: Log to sentry
+        });
 
-    const [latMin, latMax, longMin, longMax] = searchResults[0].boundingbox;
+    console.log('Nominatum search results: ', searchResults);
 
-    goToPlace([[Number(longMin), Number(latMin)], [Number(longMax), Number(latMax)]]);
+    if (searchTerm.length > 0) {
+      // TODO: hide error message
+      const [latMin, latMax, longMin, longMax] = searchResults[0].boundingbox;
+      goToPlace([[Number(longMin), Number(latMin)], [Number(longMax), Number(latMax)]]);
+    } else {
+      // TODO: Show error message - no results found based on your query
+    }
   };
 
   return (
+    // TODO: Add error message
     <Search
       className={styles.mapSearch}
-      placeholder="Enter in city, state or ZIP"
+      placeholder="Enter a city, state or ZIP"
       size="small"
       onSubmit={(e) => onSearchHandler(e)} />
   );
