@@ -110,7 +110,7 @@ class PostScoreETL(ExtractTransformLoad):
 
         new_df_copy = new_df.rename(
             columns={"USPS": "State Abbreviation", "NAME": "County Name"},
-            inplace=False
+            inplace=False,
         )
 
         return new_df_copy
