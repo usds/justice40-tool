@@ -307,13 +307,15 @@ class ScoreETL(ExtractTransformLoad):
         ]
 
         columns_to_keep = non_numeric_columns + numeric_columns
-        df = df[columns_to_keep]
+
+        df_copy = df[columns_to_keep].copy()
+
+        df_copy[numeric_columns] = df_copy[numeric_columns].apply(pd.to_numeric)
 
         # Convert all columns to numeric and do math
         for col in numeric_columns:
-            df[col] = pd.to_numeric(df[col])
             # Calculate percentiles
-            df[f"{col}{field_names.PERCENTILE_FIELD_SUFFIX}"] = df[col].rank(
+            df_copy[f"{col}{field_names.PERCENTILE_FIELD_SUFFIX}"] = df_copy[col].rank(
                 pct=True
             )
 
@@ -327,19 +329,19 @@ class ScoreETL(ExtractTransformLoad):
             #    Maximum of all values
             #     - minimum of all values
             # )
-            min_value = df[col].min(skipna=True)
+            min_value = df_copy[col].min(skipna=True)
 
-            max_value = df[col].max(skipna=True)
+            max_value = df_copy[col].max(skipna=True)
 
             logger.info(
                 f"For data set {col}, the min value is {min_value} and the max value is {max_value}."
             )
 
-            df[f"{col}{field_names.MIN_MAX_FIELD_SUFFIX}"] = (
-                df[col] - min_value
+            df_copy[f"{col}{field_names.MIN_MAX_FIELD_SUFFIX}"] = (
+                df_copy[col] - min_value
             ) / (max_value - min_value)
 
-        return df
+        return df_copy
 
     def transform(self) -> None:
         logger.info("Transforming Score Data")
