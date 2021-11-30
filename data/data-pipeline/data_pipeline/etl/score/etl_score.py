@@ -276,7 +276,7 @@ class ScoreETL(ExtractTransformLoad):
             field_names.LIFE_EXPECTANCY_FIELD,
             field_names.ENERGY_BURDEN_FIELD,
             field_names.FEMA_RISK_FIELD,
-            field_names.URBAN_HERUISTIC_FIELD,
+            field_names.URBAN_HEURISTIC_FIELD,
             field_names.AIR_TOXICS_CANCER_RISK_FIELD,
             field_names.RESPITORY_HAZARD_FIELD,
             field_names.DIESEL_FIELD,
