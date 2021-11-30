@@ -91,12 +91,12 @@ class CensusACSETL(ExtractTransformLoad):
                     + self.LINGUISTIC_ISOLATION_FIELDS
                     + self.POVERTY_FIELDS,
                 )
+                dfs.append(response)
             except ValueError:
                 logger.error(
                     f"Could not download data for state/territory with FIPS code {fips}"
                 )
 
-            dfs.append(response)
 
         self.df = pd.concat(dfs)
 
