@@ -16,7 +16,9 @@ class CensusDecennialETL(ExtractTransformLoad):
     def __init__(self):
         self.DECENNIAL_YEAR = 2010
         self.OUTPUT_PATH = (
-            self.DATA_PATH / "dataset" / f"census_dec_{self.DECENNIAL_YEAR}"
+            self.DATA_PATH
+            / "dataset"
+            / f"census_decennial_{self.DECENNIAL_YEAR}"
         )
 
         # Income Fields

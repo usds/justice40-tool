@@ -5,7 +5,6 @@ import {URLFlagProvider} from '../contexts/FlagContext';
 
 import J40Header from './J40Header';
 import J40Footer from './J40Footer';
-import SurveyFab from './SurveyFab';
 
 interface ILayoutProps {
   children: ReactNode,
@@ -33,7 +32,6 @@ const Layout = ({children, location, title}: ILayoutProps) => {
         <J40Header />
         <main id={'main-content'}>
           {children}
-          <SurveyFab />
         </main>
         <J40Footer/>
       </URLFlagProvider>

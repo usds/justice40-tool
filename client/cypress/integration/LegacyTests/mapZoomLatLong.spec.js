@@ -9,12 +9,25 @@ describe('Does the map zoom and adjust to lat/long correctly?', () => {
     cy.get('.mapboxgl-ctrl-icon.mapboxgl-ctrl-zoom-in').click({force: true});
     cy.url().should('include', '#4');
   });
-  it('should show the correct lat/lng coordinates in the URL', () => {
-    cy.getMap().then((map) => {
-      cy.panTo(map, [-77.9, 35.04]);
-      cy.url().should('include', '#4/35.04/-77.9');
-    });
-  });
+  it('should show the correct lat/lng coordinates in the URL',
+      {
+        retries: {
+          runMode: 3,
+          openMode: 3,
+        },
+        defaultCommandTimeout: 4000,
+        execTimeout: 10000,
+        taskTimeout: 10000,
+        pageLoadTimeout: 10000,
+        requestTimeout: 5000,
+        responseTimeout: 10000,
+      },
+      () => {
+        cy.getMap().then((map) => {
+          cy.panTo(map, [-77.9, 35.04]);
+          cy.url().should('include', '#4/35.04/-77.9');
+        });
+      });
 
   // This test hangs intermittently (30% of the time) need to investigate why
   // it('allows user to specify alternative starting URL',

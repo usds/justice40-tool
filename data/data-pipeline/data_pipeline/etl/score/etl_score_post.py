@@ -3,6 +3,7 @@ import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger, zip_files
 
+
 from data_pipeline.etl.sources.census.etl_utils import (
     check_census_data_source,
 )
@@ -102,11 +103,13 @@ class PostScoreETL(ExtractTransformLoad):
         """
         # Rename some of the columns to prepare for merge
         new_df = initial_counties_df[constants.CENSUS_COUNTIES_COLUMNS]
-        new_df.rename(
+
+        new_df_copy = new_df.rename(
             columns={"USPS": "State Abbreviation", "NAME": "County Name"},
-            inplace=True,
+            inplace=False
         )
-        return new_df
+
+        return new_df_copy
 
     def _transform_states(
         self, initial_states_df: pd.DataFrame
@@ -254,16 +257,16 @@ class PostScoreETL(ExtractTransformLoad):
         pdf_path = constants.SCORE_DOWNLOADABLE_PDF_FILE_PATH
 
         # Rename score column
-        downloadable_df.rename(
+        downloadable_df_copy = downloadable_df.rename(
             columns={"Score G (communities)": "Community of focus (v0.1)"},
-            inplace=True,
+            inplace=False,
         )
 
         logger.info("Writing downloadable csv")
-        downloadable_df.to_csv(csv_path, index=False)
+        downloadable_df_copy.to_csv(csv_path, index=False)
 
         logger.info("Writing downloadable excel")
-        downloadable_df.to_excel(excel_path, index=False)
+        downloadable_df_copy.to_excel(excel_path, index=False)
 
         logger.info("Compressing files")
         files_to_compress = [csv_path, excel_path, pdf_path]
