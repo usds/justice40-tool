@@ -17,7 +17,6 @@ import * as d3 from 'd3-ease';
 import {isMobile} from 'react-device-detect';
 import {Grid} from '@trussworks/react-uswds';
 import {useWindowSize} from 'react-use';
-import {useQuery} from 'react-query';
 
 // Contexts:
 import {useFlags} from '../contexts/FlagContext';
@@ -71,29 +70,11 @@ const J40Map = ({location}: IJ40Interface) => {
   const [isMobileMapState, setIsMobileMapState] = useState<boolean>(false);
   const {width: windowWidth} = useWindowSize();
 
-  const {isLoading, error, data, isFetching} = useQuery('nominatumAPI', () => {
-    fetch(
-        'https://nominatim.openstreetmap.org/search?q=oakland&format=json',
-    ).then((res) => res.json());
-  });
-
-  if (data) {
-    console.log('Nominatum data: ', data);
-  }
   const mapRef = useRef<MapRef>(null);
   const flags = useFlags();
 
   const selectedFeatureId = (selectedFeature && selectedFeature.id) || '';
   const filter = useMemo(() => ['in', constants.GEOID_PROPERTY, selectedFeatureId], [selectedFeature]);
-
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const onSearchHandler = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const searchTermCurrent = event.currentTarget.elements.search.value;
-    console.log(searchTerm);
-    if (searchTermCurrent != searchTerm) setSearchTerm(searchTermCurrent);
-  };
 
   const onClick = (event: MapEvent) => {
     const feature = event.features && event.features[0];
@@ -162,10 +143,6 @@ const J40Map = ({location}: IJ40Interface) => {
     switch (buttonID) {
       case '48':
         goToPlace(constants.LOWER_48_BOUNDS);
-        goToPlace([
-          [-73.775966, 40.743991],
-          [-73.755966, 40.763991],
-        ]);
         break;
       case 'AK':
         goToPlace(constants.ALASKA_BOUNDS);
@@ -201,6 +178,7 @@ const J40Map = ({location}: IJ40Interface) => {
   return (
     <>
       <Grid col={12} desktop={{col: 9}}>
+        <MapSearch goToPlace={goToPlace}/>
         <ReactMapGL
           {...viewport}
           mapStyle={makeMapStyle(flags)}
@@ -281,9 +259,7 @@ const J40Map = ({location}: IJ40Interface) => {
           {geolocationInProgress ? <div>Geolocation in progress...</div> : ''}
           <TerritoryFocusControl onClickTerritoryFocusButton={onClickTerritoryFocusButton}/>
           {'fs' in flags ? <FullscreenControl className={styles.fullscreenControl}/> :'' }
-          <MapSearch onSearch={onSearchHandler}/>
-          {isLoading ? <div>Loading.. .</div> : null}
-          {isFetching ? <div>Fetching.. .</div> : null}
+
         </ReactMapGL>
       </Grid>
 

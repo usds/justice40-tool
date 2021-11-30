@@ -1,0 +1,9 @@
+@use '../../styles/design-system.scss' as *;
+
+.mapSearch {
+    position: absolute;
+    top: units(1.5);
+    left: units(1.5);
+    width: 50%;
+    z-index: 1;
+}
