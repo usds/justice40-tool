@@ -178,7 +178,7 @@ const J40Map = ({location}: IJ40Interface) => {
   return (
     <>
       <Grid col={12} desktop={{col: 9}}>
-        <MapSearch goToPlace={goToPlace}/>
+        {'sr' in flags ? <MapSearch goToPlace={goToPlace}/> : null}
         <ReactMapGL
           {...viewport}
           mapStyle={makeMapStyle(flags)}
