@@ -97,7 +97,6 @@ class CensusACSETL(ExtractTransformLoad):
                     f"Could not download data for state/territory with FIPS code {fips}"
                 )
 
-
         self.df = pd.concat(dfs)
 
         self.df[self.GEOID_TRACT_FIELD_NAME] = self.df.index.to_series().apply(
