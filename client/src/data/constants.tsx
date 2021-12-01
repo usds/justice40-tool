@@ -4,15 +4,19 @@ import {isMobile as isMobileReactDeviceDetect} from 'react-device-detect';
 
 const XYZ_SUFFIX = '{z}/{x}/{y}.pbf';
 export const featureURLForTilesetName = (tilesetName: string): string => {
-  // The feature tile base URL can either point locally or the CDN.
+  // The feature tile base URL and path can either point locally or the CDN.
   // This is selected based on the DATA_SOURCE env variable.
   const featureTileBaseURL = process.env.DATA_SOURCE === 'local' ?
     process.env.GATSBY_LOCAL_TILES_BASE_URL :
     process.env.GATSBY_CDN_TILES_BASE_URL;
 
+  const featureTilePath = process.env.DATA_SOURCE === 'local' ?
+  process.env.GATSBY_DATA_PIPELINE_SCORE_PATH_LOCAL :
+  process.env.GATSBY_DATA_PIPELINE_SCORE_PATH;
+
   return [
     featureTileBaseURL,
-    process.env.GATSBY_DATA_PIPELINE_SCORE_PATH,
+    featureTilePath,
     process.env.GATSBY_MAP_TILES_PATH,
     tilesetName,
     XYZ_SUFFIX,

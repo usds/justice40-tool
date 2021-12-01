@@ -59,7 +59,7 @@ SCORE_DOWNLOADABLE_ZIP_FILE_PATH = (
 # Column subsets
 CENSUS_COUNTIES_COLUMNS = ["USPS", "GEOID", "NAME"]
 TILES_SCORE_COLUMNS = [
-    "GEOID10",
+    "GEOID10_TRACT",
     "State Name",
     "County Name",
     "Total population",
@@ -155,7 +155,7 @@ DOWNLOADABLE_SCORE_INDICATOR_COLUMNS_FULL = list(
 
 # Finally we augment with the GEOID10, county, and state
 DOWNLOADABLE_SCORE_COLUMNS = [
-    "GEOID10",
+    "GEOID10_TRACT",
     "County Name",
     "State Name",
     "Score G (communities)",

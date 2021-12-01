@@ -28,10 +28,11 @@ class CensusETL(ExtractTransformLoad):
         # https://www.census.gov/geographies/reference-files/time-series/geo/tallies.html
         self.STATE_FIPS_CODES = get_state_fips_codes(self.DATA_PATH)
         self.GEOJSON_PATH = self.DATA_PATH / "census" / "geojson"
-        self.CBG_PER_STATE: dict = {}  # in-memory dict per state
-        self.CBG_NATIONAL: list = []  # in-memory global list
-        self.NATIONAL_CBG_CSV_PATH = self.CSV_BASE_PATH / "us.csv"
-        self.NATIONAL_CBG_JSON_PATH = self.GEOJSON_BASE_PATH / "us.json"
+        self.TRACT_PER_STATE: dict = {}  # in-memory dict per state
+        self.TRACT_NATIONAL: list = []  # in-memory global list
+        self.NATIONAL_TRACT_CSV_PATH = self.CSV_BASE_PATH / "us.csv"
+        self.NATIONAL_TRACT_JSON_PATH = self.GEOJSON_BASE_PATH / "us.json"
+        self.GEOID_TRACT_FIELD_NAME: str = "GEOID10_TRACT"
 
     def _path_for_fips_file(
         self, fips_code: str, file_type: GeoFileType
@@ -48,7 +49,9 @@ class CensusETL(ExtractTransformLoad):
         file_path: Path
         if file_type == GeoFileType.SHP:
             file_path = Path(
-                self.SHP_BASE_PATH / fips_code / f"tl_2010_{fips_code}_bg10.shp"
+                self.SHP_BASE_PATH
+                / fips_code
+                / f"tl_2010_{fips_code}_tract10.shp"
             )
         elif file_type == GeoFileType.GEOJSON:
             file_path = Path(self.GEOJSON_BASE_PATH / f"{fips_code}.json")
@@ -74,11 +77,9 @@ class CensusETL(ExtractTransformLoad):
                 f"{fips_code} shp file does not exist. Downloading and extracting shape file"
             )
 
-            # 2020 tiger data is here: https://www2.census.gov/geo/tiger/TIGER2020/BG/
-            # But using 2010 for now
-            cbg_state_url = f"https://www2.census.gov/geo/tiger/TIGER2010/BG/2010/tl_2010_{fips_code}_bg10.zip"
+            tract_state_url = f"https://www2.census.gov/geo/tiger/TIGER2010/TRACT/2010/tl_2010_{fips_code}_tract10.zip"
             unzip_file_from_url(
-                cbg_state_url,
+                tract_state_url,
                 self.TMP_PATH,
                 self.DATA_PATH / "census" / "shp" / fips_code,
             )
@@ -112,8 +113,8 @@ class CensusETL(ExtractTransformLoad):
             ]
             subprocess.run(cmd, check=True)
 
-    def _generate_cbg_table(self) -> None:
-        """Generate CBG CSV table for pandas, load in memory
+    def _generate_tract_table(self) -> None:
+        """Generate Tract CSV table for pandas, load in memory
 
         Returns:
             None
@@ -124,12 +125,14 @@ class CensusETL(ExtractTransformLoad):
                 with open(self.GEOJSON_BASE_PATH / file, encoding="utf-8") as f:
                     geojson = json.load(f)
                     for feature in geojson["features"]:
-                        geoid10 = feature["properties"]["GEOID10"]
-                        self.CBG_NATIONAL.append(str(geoid10))
-                        geoid10_state_id = geoid10[:2]
-                        if not self.CBG_PER_STATE.get(geoid10_state_id):
-                            self.CBG_PER_STATE[geoid10_state_id] = []
-                        self.CBG_PER_STATE[geoid10_state_id].append(geoid10)
+                        tractid10 = feature["properties"]["GEOID10"]
+                        self.TRACT_NATIONAL.append(str(tractid10))
+                        tractid10_state_id = tractid10[:2]
+                        if not self.TRACT_PER_STATE.get(tractid10_state_id):
+                            self.TRACT_PER_STATE[tractid10_state_id] = []
+                        self.TRACT_PER_STATE[tractid10_state_id].append(
+                            tractid10
+                        )
 
     def transform(self) -> None:
         """Download all census shape files from the Census FTP and extract the geojson
@@ -141,7 +144,7 @@ class CensusETL(ExtractTransformLoad):
         logger.info("Transforming Census Data")
         for fips_code in self.STATE_FIPS_CODES:
             self._transform_to_geojson(fips_code)
-        self._generate_cbg_table()
+        self._generate_tract_table()
 
     def _load_into_state_csvs(self, fips_code: str) -> None:
         """Load state CSVS into individual CSV files
@@ -153,22 +156,22 @@ class CensusETL(ExtractTransformLoad):
             None
         """
         ## write to individual state csv
-        geoid10_list = self.CBG_PER_STATE[fips_code]
+        tractid10_list = self.TRACT_PER_STATE[fips_code]
         csv_path = self._path_for_fips_file(fips_code, GeoFileType.CSV)
         with open(
             csv_path, mode="w", newline="", encoding="utf-8"
         ) as cbg_csv_file:
-            cbg_csv_file_writer = csv.writer(
+            tract_csv_file_writer = csv.writer(
                 cbg_csv_file,
                 delimiter=",",
                 quotechar='"',
                 quoting=csv.QUOTE_MINIMAL,
             )
 
-            for geoid10 in geoid10_list:
-                cbg_csv_file_writer.writerow(
+            for tractid10 in tractid10_list:
+                tract_csv_file_writer.writerow(
                     [
-                        geoid10,
+                        tractid10,
                     ]
                 )
 
@@ -180,10 +183,10 @@ class CensusETL(ExtractTransformLoad):
         """
         logger.info("Writing national us.csv file")
 
-        if not self.NATIONAL_CBG_CSV_PATH.is_file():
-            logger.info(f"Creating {self.NATIONAL_CBG_CSV_PATH}")
+        if not self.NATIONAL_TRACT_CSV_PATH.is_file():
+            logger.info(f"Creating {self.NATIONAL_TRACT_CSV_PATH}")
             with open(
-                self.NATIONAL_CBG_CSV_PATH,
+                self.NATIONAL_TRACT_CSV_PATH,
                 mode="w",
                 newline="",
                 encoding="utf-8",
@@ -194,7 +197,7 @@ class CensusETL(ExtractTransformLoad):
                     quotechar='"',
                     quoting=csv.QUOTE_MINIMAL,
                 )
-                for geoid10 in self.CBG_NATIONAL:
+                for geoid10 in self.TRACT_NATIONAL:
                     cbg_csv_file_writer.writerow(
                         [
                             geoid10,
@@ -220,7 +223,7 @@ class CensusETL(ExtractTransformLoad):
             "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
         )
         logger.info("Writing national geojson file")
-        usa_df.to_file(self.NATIONAL_CBG_JSON_PATH, driver="GeoJSON")
+        usa_df.to_file(self.NATIONAL_TRACT_JSON_PATH, driver="GeoJSON")
 
         logger.info("Census block groups downloading complete")
 
@@ -231,7 +234,7 @@ class CensusETL(ExtractTransformLoad):
             None
         """
         logger.info("Saving Census CSV")
-        for fips_code in self.CBG_PER_STATE:
+        for fips_code in self.TRACT_PER_STATE:
             self._load_into_state_csvs(fips_code)
         self._load_national_csv()
         self._load_national_geojson()

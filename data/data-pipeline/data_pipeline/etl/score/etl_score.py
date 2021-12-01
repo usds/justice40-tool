@@ -19,7 +19,6 @@ class ScoreETL(ExtractTransformLoad):
         self.df: pd.DataFrame
         self.ejscreen_df: pd.DataFrame
         self.census_df: pd.DataFrame
-        self.housing_and_transportation_df: pd.DataFrame
         self.hud_housing_df: pd.DataFrame
         self.cdc_places_df: pd.DataFrame
         self.census_acs_median_incomes_df: pd.DataFrame
@@ -37,31 +36,9 @@ class ScoreETL(ExtractTransformLoad):
             constants.DATA_PATH / "dataset" / "ejscreen_2019" / "usa.csv"
         )
         self.ejscreen_df = pd.read_csv(
-            ejscreen_csv, dtype={"ID": "string"}, low_memory=False
-        )
-        # TODO move to EJScreen ETL
-        self.ejscreen_df.rename(
-            columns={
-                "ID": self.GEOID_FIELD_NAME,
-                "ACSTOTPOP": field_names.TOTAL_POP_FIELD,
-                "CANCER": field_names.AIR_TOXICS_CANCER_RISK_FIELD,
-                "RESP": field_names.RESPITORY_HAZARD_FIELD,
-                "DSLPM": field_names.DIESEL_FIELD,
-                "PM25": field_names.PM25_FIELD,
-                "OZONE": field_names.OZONE_FIELD,
-                "PTRAF": field_names.TRAFFIC_FIELD,
-                "PRMP": field_names.RMP_FIELD,
-                "PTSDF": field_names.TSDF_FIELD,
-                "PNPL": field_names.NPL_FIELD,
-                "PWDIS": field_names.WASTEWATER_FIELD,
-                "LINGISOPCT": field_names.HOUSEHOLDS_LINGUISTIC_ISO_FIELD,
-                "LOWINCPCT": field_names.POVERTY_FIELD,
-                "LESSHSPCT": field_names.HIGH_SCHOOL_ED_FIELD,
-                "OVER64PCT": field_names.OVER_64_FIELD,
-                "UNDER5PCT": field_names.UNDER_5_FIELD,
-                "PRE1960PCT": field_names.LEAD_PAINT_FIELD,
-            },
-            inplace=True,
+            ejscreen_csv,
+            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
+            low_memory=False,
         )
 
         # Load census data
@@ -70,25 +47,8 @@ class ScoreETL(ExtractTransformLoad):
         )
         self.census_df = pd.read_csv(
             census_csv,
-            dtype={self.GEOID_FIELD_NAME: "string"},
+            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
             low_memory=False,
-        )
-
-        # Load housing and transportation data
-        housing_and_transportation_index_csv = (
-            constants.DATA_PATH
-            / "dataset"
-            / "housing_and_transportation_index"
-            / "usa.csv"
-        )
-        self.housing_and_transportation_df = pd.read_csv(
-            housing_and_transportation_index_csv,
-            dtype={self.GEOID_FIELD_NAME: "string"},
-            low_memory=False,
-        )
-        # TODO move to HT Index ETL
-        self.housing_and_transportation_df.rename(
-            columns={"ht_ami": field_names.HT_INDEX_FIELD}, inplace=True
         )
 
         # Load HUD housing data
@@ -120,7 +80,7 @@ class ScoreETL(ExtractTransformLoad):
         )
         self.census_acs_median_incomes_df = pd.read_csv(
             census_acs_median_incomes_csv,
-            dtype={self.GEOID_FIELD_NAME: "string"},
+            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
             low_memory=False,
         )
 
@@ -153,7 +113,7 @@ class ScoreETL(ExtractTransformLoad):
         )
         self.national_risk_index_df = pd.read_csv(
             national_risk_index_csv,
-            dtype={self.GEOID_FIELD_NAME: "string"},
+            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
             low_memory=False,
         )
 
@@ -177,34 +137,34 @@ class ScoreETL(ExtractTransformLoad):
             low_memory=False,
         )
 
-    def _join_cbg_dfs(self, census_block_group_dfs: list) -> pd.DataFrame:
-        logger.info("Joining Census Block Group dataframes")
-        census_block_group_df = functools.reduce(
-            lambda left, right: pd.merge(
-                left=left, right=right, on=self.GEOID_FIELD_NAME, how="outer"
-            ),
-            census_block_group_dfs,
-        )
-
-        # Sanity check the join.
-        if (
-            len(census_block_group_df[self.GEOID_FIELD_NAME].str.len().unique())
-            != 1
-        ):
-            raise ValueError(
-                f"One of the input CSVs uses {self.GEOID_FIELD_NAME} with a different length."
-            )
-        return census_block_group_df
-
     def _join_tract_dfs(self, census_tract_dfs: list) -> pd.DataFrame:
         logger.info("Joining Census Tract dataframes")
+
+        def merge_function(
+            left: pd.DataFrame, right: pd.DataFrame
+        ) -> pd.DataFrame:
+            """This is a custom function that merges two dataframes.
+
+            It provides some logging as additional helpful context for error handling.
+            """
+            try:
+                df = pd.merge(
+                    left=left,
+                    right=right,
+                    on=self.GEOID_TRACT_FIELD_NAME,
+                    how="outer",
+                )
+            except Exception as e:
+                # Note: it'd be nice to log the name of the dataframe, but that's not accessible in this scope.
+                logger.warning(
+                    f"Exception encountered while merging dataframe `right` that has the following columns: {','.join(right.columns)}"
+                )
+                raise e
+
+            return df
+
         census_tract_df = functools.reduce(
-            lambda left, right: pd.merge(
-                left=left,
-                right=right,
-                on=self.GEOID_TRACT_FIELD_NAME,
-                how="outer",
-            ),
+            merge_function,
             census_tract_dfs,
         )
 
@@ -218,50 +178,75 @@ class ScoreETL(ExtractTransformLoad):
             )
         return census_tract_df
 
+    def _census_tract_df_sanity_check(
+        self, df_to_check: pd.DataFrame, df_name: str = None
+    ) -> None:
+        """Check an individual data frame for census tract data quality checks."""
+
+        # Note: it'd be nice to log the name of the dataframe directly, but that's not accessible in this scope.
+        dataframe_descriptor = (
+            f"dataframe `{df_name}`"
+            if df_name
+            else f"the dataframe that has columns { ','.join(df_to_check.columns)}"
+        )
+
+        tract_values = (
+            df_to_check[self.GEOID_TRACT_FIELD_NAME].str.len().unique()
+        )
+        if any(tract_values != [11]):
+            raise ValueError(
+                f"Some of the census tract data has the wrong length: {tract_values} in {dataframe_descriptor}"
+            )
+
+        non_unique_tract_values = len(
+            df_to_check[self.GEOID_TRACT_FIELD_NAME]
+        ) - len(df_to_check[self.GEOID_TRACT_FIELD_NAME].unique())
+
+        if non_unique_tract_values > 0:
+            raise ValueError(
+                f"There are {non_unique_tract_values} duplicate tract IDs in {dataframe_descriptor}"
+            )
+
+        if len(df_to_check) > self.EXPECTED_MAX_CENSUS_TRACTS:
+            raise ValueError(
+                f"Too many rows in the join: {len(df_to_check)} in {dataframe_descriptor}"
+            )
+
     # TODO Move a lot of this to the ETL part of the pipeline
     def _prepare_initial_df(self) -> pd.DataFrame:
         logger.info("Preparing initial dataframe")
 
-        # Join all the data sources that use census block groups
-        census_block_group_dfs = [
-            self.ejscreen_df,
-            self.census_df,
-            self.housing_and_transportation_df,
-            self.census_acs_median_incomes_df,
-            self.national_risk_index_df,
-        ]
-
-        census_block_group_df = self._join_cbg_dfs(census_block_group_dfs)
-
         # Join all the data sources that use census tracts
         census_tract_dfs = [
+            self.census_df,
             self.hud_housing_df,
             self.cdc_places_df,
             self.cdc_life_expectancy_df,
             self.doe_energy_burden_df,
+            self.ejscreen_df,
             self.geocorr_urban_rural_df,
             self.persistent_poverty_df,
+            self.national_risk_index_df,
+            self.census_acs_median_incomes_df,
         ]
+
+        # Sanity check each data frame before merging.
+        for df in census_tract_dfs:
+            self._census_tract_df_sanity_check(df_to_check=df)
+
         census_tract_df = self._join_tract_dfs(census_tract_dfs)
-
-        # Calculate the tract for the CBG data.
-        census_block_group_df[
-            self.GEOID_TRACT_FIELD_NAME
-        ] = census_block_group_df[self.GEOID_FIELD_NAME].str[0:11]
-
-        df = census_block_group_df.merge(
-            census_tract_df, on=self.GEOID_TRACT_FIELD_NAME
-        )
 
         # If GEOID10s are read as numbers instead of strings, the initial 0 is dropped,
         # and then we get too many CBG rows (one for 012345 and one for 12345).
-        if len(census_block_group_df) > self.EXPECTED_MAX_CENSUS_BLOCK_GROUPS:
-            raise ValueError(
-                f"Too many rows in the join: {len(census_block_group_df)}"
-            )
+
+        # Now sanity-check the merged df.
+        self._census_tract_df_sanity_check(
+            df_to_check=census_tract_df, df_name="census_tract_df"
+        )
 
         # Calculate median income variables.
         # First, calculate the income of the block group as a fraction of the state income.
+        df = census_tract_df
         df[field_names.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD] = (
             df[field_names.MEDIAN_INCOME_FIELD]
             / df[field_names.STATE_MEDIAN_INCOME_FIELD]
@@ -291,7 +276,7 @@ class ScoreETL(ExtractTransformLoad):
             field_names.LIFE_EXPECTANCY_FIELD,
             field_names.ENERGY_BURDEN_FIELD,
             field_names.FEMA_RISK_FIELD,
-            field_names.URBAN_HERUISTIC_FIELD,
+            field_names.URBAN_HEURISTIC_FIELD,
             field_names.AIR_TOXICS_CANCER_RISK_FIELD,
             field_names.RESPITORY_HAZARD_FIELD,
             field_names.DIESEL_FIELD,
@@ -310,7 +295,6 @@ class ScoreETL(ExtractTransformLoad):
             field_names.POVERTY_FIELD,
             field_names.HIGH_SCHOOL_ED_FIELD,
             field_names.UNEMPLOYMENT_FIELD,
-            field_names.HT_INDEX_FIELD,
             field_names.MEDIAN_HOUSE_VALUE_FIELD,
             field_names.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME,
             field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME,
@@ -318,18 +302,20 @@ class ScoreETL(ExtractTransformLoad):
         ]
 
         non_numeric_columns = [
-            self.GEOID_FIELD_NAME,
+            self.GEOID_TRACT_FIELD_NAME,
             field_names.PERSISTENT_POVERTY_FIELD,
         ]
 
         columns_to_keep = non_numeric_columns + numeric_columns
-        df = df[columns_to_keep]
+
+        df_copy = df[columns_to_keep].copy()
+
+        df_copy[numeric_columns] = df_copy[numeric_columns].apply(pd.to_numeric)
 
         # Convert all columns to numeric and do math
         for col in numeric_columns:
-            df[col] = pd.to_numeric(df[col])
             # Calculate percentiles
-            df[f"{col}{field_names.PERCENTILE_FIELD_SUFFIX}"] = df[col].rank(
+            df_copy[f"{col}{field_names.PERCENTILE_FIELD_SUFFIX}"] = df_copy[col].rank(
                 pct=True
             )
 
@@ -343,19 +329,19 @@ class ScoreETL(ExtractTransformLoad):
             #    Maximum of all values
             #     - minimum of all values
             # )
-            min_value = df[col].min(skipna=True)
+            min_value = df_copy[col].min(skipna=True)
 
-            max_value = df[col].max(skipna=True)
+            max_value = df_copy[col].max(skipna=True)
 
             logger.info(
                 f"For data set {col}, the min value is {min_value} and the max value is {max_value}."
             )
 
-            df[f"{col}{field_names.MIN_MAX_FIELD_SUFFIX}"] = (
-                df[col] - min_value
+            df_copy[f"{col}{field_names.MIN_MAX_FIELD_SUFFIX}"] = (
+                df_copy[col] - min_value
             ) / (max_value - min_value)
 
-        return df
+        return df_copy
 
     def transform(self) -> None:
         logger.info("Transforming Score Data")

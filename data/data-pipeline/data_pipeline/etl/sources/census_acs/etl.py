@@ -77,7 +77,7 @@ class CensusACSETL(ExtractTransformLoad):
                     src="acs5",
                     year=self.ACS_YEAR,
                     geo=censusdata.censusgeo(
-                        [("state", fips), ("county", "*"), ("block group", "*")]
+                        [("state", fips), ("county", "*"), ("tract", "*")]
                     ),
                     var=[
                         # Emploment fields
@@ -91,16 +91,15 @@ class CensusACSETL(ExtractTransformLoad):
                     + self.LINGUISTIC_ISOLATION_FIELDS
                     + self.POVERTY_FIELDS,
                 )
+                dfs.append(response)
             except ValueError:
                 logger.error(
                     f"Could not download data for state/territory with FIPS code {fips}"
                 )
 
-            dfs.append(response)
-
         self.df = pd.concat(dfs)
 
-        self.df[self.GEOID_FIELD_NAME] = self.df.index.to_series().apply(
+        self.df[self.GEOID_TRACT_FIELD_NAME] = self.df.index.to_series().apply(
             func=self._fips_from_censusdata_censusgeo
         )
 
@@ -179,7 +178,7 @@ class CensusACSETL(ExtractTransformLoad):
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
 
         columns_to_include = [
-            self.GEOID_FIELD_NAME,
+            self.GEOID_TRACT_FIELD_NAME,
             self.UNEMPLOYED_FIELD_NAME,
             self.LINGUISTIC_ISOLATION_FIELD_NAME,
             self.MEDIAN_INCOME_FIELD_NAME,

@@ -118,7 +118,7 @@ UNDER_5_FIELD = "Individuals under 5 years old"
 OVER_64_FIELD = "Individuals over 64 years old"
 
 # Urban Rural Map
-URBAN_HERUISTIC_FIELD = "Urban Heuristic Flag"
+URBAN_HEURISTIC_FIELD = "Urban Heuristic Flag"
 
 # Housing value
 MEDIAN_HOUSE_VALUE_FIELD = "Median value ($) of owner-occupied housing units"
