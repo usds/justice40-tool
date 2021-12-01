@@ -2,42 +2,37 @@
 
 exports[`rendering of the MapSearch checks if component renders 1`] = `
 <DocumentFragment>
-  <div>
-    <div>
-      No location found. Please try another location.
-    </div>
-    <form
-      class="usa-search usa-search--small"
-      data-testid="form"
-      role="search"
+  <form
+    class="usa-search usa-search--small"
+    data-testid="form"
+    role="search"
+  >
+    <label
+      class="usa-sr-only"
+      data-testid="label"
+      for="search-field"
     >
-      <label
+      Search
+    </label>
+    <input
+      class="usa-input"
+      data-testid="textInput"
+      id="search-field"
+      name="search"
+      placeholder="Enter a city, state or ZIP"
+      type="search"
+    />
+    <button
+      class="usa-button"
+      data-testid="button"
+      type="submit"
+    >
+      <span
         class="usa-sr-only"
-        data-testid="label"
-        for="search-field"
       >
         Search
-      </label>
-      <input
-        class="usa-input"
-        data-testid="textInput"
-        id="search-field"
-        name="search"
-        placeholder="Enter a city, state or ZIP"
-        type="search"
-      />
-      <button
-        class="usa-button"
-        data-testid="button"
-        type="submit"
-      >
-        <span
-          class="usa-sr-only"
-        >
-          Search
-        </span>
-      </button>
-    </form>
-  </div>
+      </span>
+    </button>
+  </form>
 </DocumentFragment>
 `;

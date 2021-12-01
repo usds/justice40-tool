@@ -1,26 +1,9 @@
 @use '../../styles/design-system.scss' as *;
 
-.mapSearch {
+.mapSearchContainer {
     position: absolute;
-    top: units(3);
+    top: units(4);
     left: units(1.5);
     width: 50%;
     z-index: 1;
-}
-
-@mixin searchMessageLayout {
-    color: red;
-    background-color: white;
-    @include u-margin-bottom(.5);
-    @include u-padding-left(1);
-}
-
-.showMessage {
-    @include searchMessageLayout;
-    display: block;
-}
-
-.hideMessage {
-    @include searchMessageLayout;
-    visibility: hidden;
 }

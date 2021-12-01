@@ -22,16 +22,16 @@ import {useWindowSize} from 'react-use';
 import {useFlags} from '../contexts/FlagContext';
 
 // Components:
-import TerritoryFocusControl from './territoryFocusControl';
-import MapInfoPanel from './mapInfoPanel';
 import AreaDetail from './AreaDetail';
+import MapInfoPanel from './mapInfoPanel';
+import MapSearch from './MapSearch';
+import TerritoryFocusControl from './territoryFocusControl';
 
 // Styles and constants
 import {makeMapStyle} from '../data/mapStyle';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import * as constants from '../data/constants';
 import * as styles from './J40Map.module.scss';
-import MapSearch from './MapSearch';
 
 
 declare global {
