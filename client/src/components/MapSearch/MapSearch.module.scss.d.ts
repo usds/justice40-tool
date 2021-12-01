@@ -1,6 +1,8 @@
 declare namespace MapSearchModuleScssNamespace {
     export interface IMapSearchModuleScss {
       mapSearch: string;
+      showMessage: string;
+      hideMessage: string;
     }
   }
 

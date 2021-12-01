@@ -1,8 +1,10 @@
+@use '../styles/design-system.scss' as *;
+
 .territoryFocusContainer {
   display: flex;
   flex-direction: column;
   position: absolute;
   left: .75em;
-  top: 175px;
+  top: units(card-lg);
   z-index: 10;
 }

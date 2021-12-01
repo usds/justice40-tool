@@ -1,19 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {LngLatBoundsLike} from 'mapbox-gl';
+import {useIntl} from 'gatsby-plugin-intl';
 import {Search} from '@trussworks/react-uswds';
 
+import MapSearchMessage from '../MapSearchMessage';
+
 import * as styles from './MapSearch.module.scss';
+import * as EXPLORE_COPY from '../../data/copy/explore';
 
 interface IMapSearch {
   goToPlace(bounds: LngLatBoundsLike):void;
 }
 
 const MapSearch = ({goToPlace}:IMapSearch) => {
+  // State to hold if the search results are empty or not:
+  const [isSearchEmpty, setIsSearchEmpty] = useState(false);
+  const intl = useIntl();
+
   /*
     onSearchHandler will
      1. extract the search term from the input field
-     2. query the API and return the results as JSON
-     3. destructure the boundingBox values from the search results
+     2. fetch data from the API and return the results as JSON and results to US only
+     3. if data is valid, destructure the boundingBox values from the search results
      4. pan the map to that location
   */
   const onSearchHandler = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -22,40 +30,41 @@ const MapSearch = ({goToPlace}:IMapSearch) => {
     const searchTerm = (event.currentTarget.elements.namedItem('search') as HTMLInputElement).value;
 
     const searchResults = await fetch(
-        `https://nominatim.openstreetmap.org/search?q=${searchTerm}&format=json`,
+        `https://nominatim.openstreetmap.org/search?q=${searchTerm}&format=json&countrycodes=us`,
         {
           mode: 'cors',
         })
         .then((response) => {
           if (!response.ok) {
             throw new Error('Network response was not OK');
-            // TODO: Log to sentry
           }
           return response.json();
         })
         .catch((error) => {
           console.error('There has been a problem with your fetch operation:', error);
-          // TODO: Log to sentry
         });
 
-    console.log('Nominatum search results: ', searchResults);
 
-    if (searchTerm.length > 0) {
-      // TODO: hide error message
+    // If results are valid, set isSearchEmpty to false and pan map to location:
+    if (searchResults && searchResults.length > 0) {
+      setIsSearchEmpty(false);
+      console.log('Nominatum search results: ', searchResults);
+
       const [latMin, latMax, longMin, longMax] = searchResults[0].boundingbox;
       goToPlace([[Number(longMin), Number(latMin)], [Number(longMax), Number(latMax)]]);
     } else {
-      // TODO: Show error message - no results found based on your query
+      setIsSearchEmpty(true);
     }
   };
 
   return (
-    // TODO: Add error message
-    <Search
-      className={styles.mapSearch}
-      placeholder="Enter a city, state or ZIP"
-      size="small"
-      onSubmit={(e) => onSearchHandler(e)} />
+    <div className={styles.mapSearch}>
+      <MapSearchMessage isSearchEmpty={isSearchEmpty}/>
+      <Search
+        placeholder={intl.formatMessage(EXPLORE_COPY.MAP.SEARCH_PLACEHOLDER)}
+        size="small"
+        onSubmit={(e) => onSearchHandler(e)} />
+    </div>
   );
 };
 
