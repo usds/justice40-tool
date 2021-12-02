@@ -56,12 +56,11 @@ class TestNationalRiskIndexETL:
         # setup - read in sample output as dataframe
         TRACT_COL = etl.GEOID_TRACT_FIELD_NAME
         BLOCK_COL = etl.GEOID_FIELD_NAME
+
         expected = pd.read_csv(
             DATA_DIR / "transform.csv",
             dtype={BLOCK_COL: "string", TRACT_COL: "string"},
         )
-
-        etl.df = expected
 
         # execution
         etl.transform()
@@ -93,9 +92,12 @@ class TestNationalRiskIndexETL:
         expected = pd.read_csv(DATA_DIR / "output.csv", dtype={BLOCK_COL: str})
         # execution
         etl.load()
+
         output = pd.read_csv(output_path, dtype={BLOCK_COL: str})
+
 
         # validation
         assert output_path.exists()
         assert output.shape == (5, 5)
+        print(output.shape)
         pd.testing.assert_frame_equal(output, expected)

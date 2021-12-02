@@ -119,13 +119,14 @@ class NationalRiskIndexETL(ExtractTransformLoad):
             "WNTW",  # Winter Weather
         ]
 
+        self.df = df_nri
+        
         # Some disaster categories do not have agriculture value column
-        agri_columns = [f"{x}_EALA" for x 
+        agriculture_columns = [f"{x}_EALA" for x 
         in disaster_categories if f"{x}_EALA"in list(df_nri.columns)]
 
         population_columns = [f"{x}_EALP" for x 
             in disaster_categories if f"{x}_EALP" in list(df_nri.columns)]
-
 
         buildings_columns = [f"{x}_EALB" for x 
             in disaster_categories if f"{x}_EALB" in list(df_nri.columns)]
@@ -135,10 +136,10 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         ].sum(axis=1)
 
         disaster_agriculture_sum_series = df_nri[
-            agri_columns
+            agriculture_columns
         ].sum(axis=1)
 
-        disaster_building_sum_series = df_nri[
+        disaster_buildings_sum_series = df_nri[
             buildings_columns
         ].sum(axis=1)   
 
@@ -155,7 +156,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
 
         # divide EAL_VALB (Expected Annual Loss - Building Value) by BUILDVALUE (Building Value ($)).
         df_nri[self.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME] = (
-            disaster_building_sum_series / df_nri[self.BUILDING_VALUE_INPUT_FIELD_NAME]
+            disaster_buildings_sum_series / df_nri[self.BUILDING_VALUE_INPUT_FIELD_NAME]
         )
 
     def load(self) -> None:
