@@ -3,7 +3,7 @@ import {LngLatBoundsLike} from 'mapbox-gl';
 import {useIntl} from 'gatsby-plugin-intl';
 import {Search} from '@trussworks/react-uswds';
 
-// import MapSearchMessage from '../MapSearchMessage';
+import MapSearchMessage from '../MapSearchMessage';
 
 import * as styles from './MapSearch.module.scss';
 import * as EXPLORE_COPY from '../../data/copy/explore';
@@ -57,50 +57,15 @@ const MapSearch = ({goToPlace}:IMapSearch) => {
     }
   };
 
-  console.log(isSearchResultsNull);
-
-  /* TODO: Investigate why this component can only return the Search component.
-     It seems that returning any DOM element wrapped around this Search component causes the map's
-     vertical position to become skewed during a production build ONLY. As seen here:
-
-     http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/justice40-tool/935-242a6ec/en/cejst/?flags=sr#3/32.47/-86.5
-
-     None of these issues are present, during development builds. Something in the production
-     build is breaking the ability to wrap this Search component.
-
-     All the following failed:
-      1. Add just Fragment tags only around Search <> </>
-      2. Add just a div with no class
-      3. div with mapSearchContainer class
-      4. remove MapSearchMessage component
-      5. Moving MapSearch to J40Map component
-      6. Moving this Search component outside the map is also limiting as the goToPlace()
-       is a method in the J40Map and is not easily extractable
-
-      For some reason, this component can only return a single component, namely Search
-      (which is a Form element) to not break the production build.
-    */
   return (
-
-  // Returning this fails on a production build however during development passes. See video in PR
-
-  // <div className={styles.mapSearchContainer}>
-  //   <MapSearchMessage isSearchResultsNull={isSearchResultsNull} />
-  //   <Search
-  //     placeholder={intl.formatMessage(EXPLORE_COPY.MAP.SEARCH_PLACEHOLDER)}
-  //     size="small"
-  //     onSubmit={(e) => onSearchHandler(e)}
-  //   />
-  // </div>
-
-
-    <Search
-      className={styles.mapSearchContainer}
-      placeholder={intl.formatMessage(EXPLORE_COPY.MAP.SEARCH_PLACEHOLDER)}
-      size="small"
-      onSubmit={(e) => onSearchHandler(e)}
-    />
-
+    <div className={styles.mapSearchContainer}>
+      <MapSearchMessage isSearchResultsNull={isSearchResultsNull} />
+      <Search
+        placeholder={intl.formatMessage(EXPLORE_COPY.MAP.SEARCH_PLACEHOLDER)}
+        size="small"
+        onSubmit={(e) => onSearchHandler(e)}
+      />
+    </div>
   );
 };
 
