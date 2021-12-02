@@ -99,27 +99,104 @@ class NationalRiskIndexETL(ExtractTransformLoad):
             inplace=True,
         )
 
+        # Only use disasters linked to climate change
+        disaster_categories = [
+            "AVLN",  # Avalanche
+            "CFLD",  # Coastal Flooding
+            "CWAV",  # Cold Wave
+            "DRGT",  # Drought
+            "HAIL",  # Hail
+            "HWAV",  # Heat Wave
+            "HRCN",  # Hurricane
+            "ISTM",  # Ice Storm
+            "LNDS",  # Landslide
+            "RFLD",  # Riverine Flooding
+            "SWND",  # Strong Wind
+            "TRND",  # Tornado
+            "WFIR",  # Wildfire
+            "WNTW",  # Winter Weather
+        ]
+
+        disaster_population_sum = df_nri[
+            [str(x) + "_EALP" for x in disaster_categories]
+        ].sum(axis=1)
+        print("Population sum is")
+        print(disaster_population_sum)
+        # Some disaster categories do not have agriculture value column
+        agri_columns = [str(x) + "_EALA" for x in disaster_categories if str(x) + "_EALA" in list(df_nri.columns)]
+        disaster_agriculture_sum = df_nri[
+            agri_columns
+        ].sum(axis=1)
+        print("Agri sum is")
+        print(disaster_agriculture_sum)
+        disaster_building_sum = df_nri[
+            [str(x) + "_EALB" for x in disaster_categories]
+        ].sum(axis=1)
+        print("Building sum is")
+        print(disaster_building_sum)
+
+        # # Note: I'm not sure why pylint is so upset with this particular dataframe,
+        # # but it may be a known bug. https://github.com/PyCQA/pylint/issues/1498
+        # for category in disaster_categories:
+        #     df_nri[  # pylint: disable=unsupported-assignment-operation
+        #         f"{category} - Population"
+        #     ] = (
+        #         df_nri[  # pylint: disable=unsubscriptable-object
+        #             f"{category}_EALP"
+        #         ]  # Expected Annual Loss - Population
+        #         / df_nri[  # pylint: disable=unsubscriptable-object
+        #             f"{category}_EXPP"
+        #         ]
+        #     )
+        #     df_nri[  # pylint: disable=unsupported-assignment-operation
+        #         f"{category} - Agriculture"
+        #     ] = (
+        #         df_nri[  # pylint: disable=unsubscriptable-object
+        #             f"{category}_EALA"
+        #         ]  # Expected Annual Loss - Agriculture
+        #         / df_nri[  # pylint: disable=unsubscriptable-object
+        #             f"{category}_EXPA"
+        #         ]
+        #     )
+        #     df_nri[  # pylint: disable=unsupported-assignment-operation
+        #         f"{category} - Building Value"
+        #     ] = (
+        #         df_nri[  # pylint: disable=unsubscriptable-object
+        #             f"{category}_EALB"
+        #         ]  # Expected Annual Loss - Building Value
+        #         / df_nri[  # pylint: disable=unsubscriptable-object
+        #             f"{category}_EXPB"
+        #         ]
+        #     )
+            
+
+        # df_nri[  # pylint: disable=unsupported-assignment-operation
+        #     self.EXPECTED_ANNUAL_LOSS_RATE
+        # ] = df_nri[  # pylint: disable=unsubscriptable-object
+        #     disaster_categories
+        # ].sum(
+        #     axis=1
+        # )
         # Population EAL Rate = Eal Valp / Population
-        df_nri[self.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME] = (
-            df_nri[self.EXPECTED_ANNUAL_LOSS_POPULATION_VALUE_INPUT_FIELD_NAME]
-            / df_nri[self.POPULATION_INPUT_FIELD_NAME]
-        )
+        # 
+        # disaster_categories = [AEVN, CFLD, ] -> [AEVN - Population, CFLD - Population, ]
+        # 
+        # df_nri[self.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME] = df_nri[
+        #     [str(x) + " - Population" for x in disaster_categories]
+        # ]
 
-        # Agriculture EAL Rate = Eal Vala / Agrivalue
-        df_nri[self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME] = (
-            df_nri[
-                self.EXPECTED_ANNUAL_LOSS_AGRICULTURAL_VALUE_INPUT_FIELD_NAME
-            ]
-            / df_nri[self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME]
-        )
 
-        # divide EAL_VALB (Expected Annual Loss - Building Value) by BUILDVALUE (Building Value ($)).
-        df_nri[self.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME] = (
-            df_nri[self.EXPECTED_ANNUAL_LOSS_BUILDING_VALUE_INPUT_FIELD_NAME]
-            / df_nri[self.BUILDING_VALUE_INPUT_FIELD_NAME]
-        )
+        # # Agriculture EAL Rate = Eal Vala / Agrivalue
+        # df_nri[self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME] = (
+            
+        # )
 
-        self.df = df_nri
+        # # divide EAL_VALB (Expected Annual Loss - Building Value) by BUILDVALUE (Building Value ($)).
+        # df_nri[self.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME] = (
+            
+        # )
+
+        # self.df = df_nri
 
     def load(self) -> None:
         """Writes the NRI data as a csv to the directory at self.OUTPUT_DIR"""
