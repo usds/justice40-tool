@@ -54,7 +54,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
 
         # Note: also need to edit transform step to add fields to output.
         self.COLUMNS_TO_KEEP = [
-            self.GEOID_TRACT_FIELD_NAME,
+            self.GEOID_FIELD_NAME,
             self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME,
             self.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME,
             self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME,
@@ -84,6 +84,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         logger.info("Transforming National Risk Index Data")
 
         NRI_TRACT_COL = "TRACTFIPS"  # Census Tract Column in NRI data
+        TRACT_COL = self.GEOID_TRACT_FIELD_NAME  # Census Tract column name
 
         # read in the unzipped csv from NRI data source then rename the
         # Census Tract column for merging
@@ -95,7 +96,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         )
         df_nri.rename(
             columns={
-                NRI_TRACT_COL: self.GEOID_TRACT_FIELD_NAME,
+                NRI_TRACT_COL: TRACT_COL,
                 self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_INPUT_FIELD_NAME: self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME,
             },
             inplace=True,
@@ -134,27 +135,46 @@ class NationalRiskIndexETL(ExtractTransformLoad):
             [str(x) + "_EALB" for x in disaster_categories]
         ].sum(axis=1)   
 
+
         # Population EAL Rate = Eal Valp / Population
         df_nri[self.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME] = (
-            df_nri[self.EXPECTED_ANNUAL_LOSS_POPULATION_VALUE_INPUT_FIELD_NAME]
-            / df_nri[self.POPULATION_INPUT_FIELD_NAME]
+            disaster_population_sum_series / df_nri[self.POPULATION_INPUT_FIELD_NAME]
         )
 
         # Agriculture EAL Rate = Eal Vala / Agrivalue
         df_nri[self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME] = (
-            df_nri[
-                self.EXPECTED_ANNUAL_LOSS_AGRICULTURAL_VALUE_INPUT_FIELD_NAME
-            ]
-            / df_nri[self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME]
+            disaster_agriculture_sum_series / df_nri[self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME]
         )
 
         # divide EAL_VALB (Expected Annual Loss - Building Value) by BUILDVALUE (Building Value ($)).
         df_nri[self.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME] = (
-            df_nri[self.EXPECTED_ANNUAL_LOSS_BUILDING_VALUE_INPUT_FIELD_NAME]
-            / df_nri[self.BUILDING_VALUE_INPUT_FIELD_NAME]
+            disaster_building_sum_series / df_nri[self.BUILDING_VALUE_INPUT_FIELD_NAME]
         )
 
-        self.df = df_nri
+        # Reduce columns.
+        # Note: normally we wait until writing to CSV for this step, but since the file is so huge,
+        # move this up here for performance reasons.
+        df_nri = df_nri[
+            [
+                self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME,
+                self.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME,
+                self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME,
+                self.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME,
+                TRACT_COL,
+            ]
+        ]
+
+        # get the full list of Census Block Groups from the ACS data
+        # and extract the Census Tract ID from each Block Group ID
+        df_acs = pd.read_csv(
+            self.BLOCK_GROUP_CSV, dtype={self.GEOID_FIELD_NAME: "string"}
+        )
+        df_acs[TRACT_COL] = df_acs[self.GEOID_FIELD_NAME].str[0:11]
+        df_block_group = df_acs[[self.GEOID_FIELD_NAME, TRACT_COL]]
+
+        # merge NRI data on the Census Tract ID so that each
+        # Block Group inherits the NRI score of its Census Tract
+        self.df = df_block_group.merge(df_nri, how="left", on=TRACT_COL)
 
     def load(self) -> None:
         """Writes the NRI data as a csv to the directory at self.OUTPUT_DIR"""
