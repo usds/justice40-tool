@@ -126,6 +126,10 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         population_columns = [str(x) + "_EALP" for x 
             in disaster_categories if str(x) + "_EALP" in list(df_nri.columns)]
 
+
+        buildings_columns = [str(x) + "_EALB" for x 
+            in disaster_categories if str(x) + "_EALB" in list(df_nri.columns)]
+
         disaster_population_sum_series = df_nri[
             population_columns
         ].sum(axis=1)
@@ -135,7 +139,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         ].sum(axis=1)
 
         disaster_building_sum_series = df_nri[
-            [str(x) + "_EALB" for x in disaster_categories]
+            buildings_columns
         ].sum(axis=1)   
 
 
