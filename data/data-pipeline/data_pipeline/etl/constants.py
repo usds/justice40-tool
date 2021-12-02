@@ -5,6 +5,11 @@ DATASET_LIST = [
         "class_name": "CensusACSETL",
     },
     {
+        "name": "census_acs_2010",
+        "module_dir": "census_acs_2010",
+        "class_name": "CensusACS2010ETL",
+    },
+    {
         "name": "ejscreen",
         "module_dir": "ejscreen",
         "class_name": "EJSCREENETL",

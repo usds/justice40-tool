@@ -14,6 +14,26 @@ class EJSCREENETL(ExtractTransformLoad):
         self.CSV_PATH = self.DATA_PATH / "dataset" / "ejscreen_2019"
         self.df: pd.DataFrame
 
+        self.COLUMNS_TO_KEEP = [
+            self.GEOID_TRACT_FIELD_NAME,
+            field_names.TOTAL_POP_FIELD,
+            field_names.AIR_TOXICS_CANCER_RISK_FIELD,
+            field_names.RESPITORY_HAZARD_FIELD,
+            field_names.DIESEL_FIELD,
+            field_names.PM25_FIELD,
+            field_names.OZONE_FIELD,
+            field_names.TRAFFIC_FIELD,
+            field_names.RMP_FIELD,
+            field_names.TSDF_FIELD,
+            field_names.NPL_FIELD,
+            field_names.WASTEWATER_FIELD,
+            field_names.HOUSEHOLDS_LINGUISTIC_ISO_FIELD,
+            field_names.POVERTY_FIELD,
+            field_names.OVER_64_FIELD,
+            field_names.UNDER_5_FIELD,
+            field_names.LEAD_PAINT_FIELD,
+        ]
+
     def extract(self) -> None:
         logger.info("Downloading EJScreen Data")
         super().extract(
@@ -51,7 +71,6 @@ class EJSCREENETL(ExtractTransformLoad):
                 "PWDIS": field_names.WASTEWATER_FIELD,
                 "LINGISOPCT": field_names.HOUSEHOLDS_LINGUISTIC_ISO_FIELD,
                 "LOWINCPCT": field_names.POVERTY_FIELD,
-                "LESSHSPCT": field_names.HIGH_SCHOOL_ED_FIELD,
                 "OVER64PCT": field_names.OVER_64_FIELD,
                 "UNDER5PCT": field_names.UNDER_5_FIELD,
                 "PRE1960PCT": field_names.LEAD_PAINT_FIELD,
@@ -63,4 +82,6 @@ class EJSCREENETL(ExtractTransformLoad):
         logger.info("Saving EJScreen CSV")
         # write nationwide csv
         self.CSV_PATH.mkdir(parents=True, exist_ok=True)
-        self.df.to_csv(self.CSV_PATH / "usa.csv", index=False)
+        self.df[self.COLUMNS_TO_KEEP].to_csv(
+            self.CSV_PATH / "usa.csv", index=False
+        )

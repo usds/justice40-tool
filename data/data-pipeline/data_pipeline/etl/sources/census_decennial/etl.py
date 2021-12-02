@@ -27,6 +27,7 @@ class CensusDecennialETL(ExtractTransformLoad):
         # https://api.census.gov/data/2010/dec/gu/variables.html
         # https://api.census.gov/data/2010/dec/mp/variables.html
         # https://api.census.gov/data/2010/dec/vi/variables.html
+
         self.MEDIAN_INCOME_FIELD = "PBG049001"
         self.MEDIAN_INCOME_VI_FIELD = "PBG047001"
         self.MEDIAN_INCOME_FIELD_NAME = "Median household income in 2009 ($)"
