@@ -94,10 +94,8 @@ class TestNationalRiskIndexETL:
         etl.load()
 
         output = pd.read_csv(output_path, dtype={BLOCK_COL: str})
-
-
+        etl.df.to_csv(DATA_DIR / "output_2.csv", index=False)
         # validation
         assert output_path.exists()
         assert output.shape == (5, 5)
-        print(output.shape)
         pd.testing.assert_frame_equal(output, expected)
