@@ -137,6 +137,19 @@ class ScoreETL(ExtractTransformLoad):
             low_memory=False,
         )
 
+        # Load decennial census data
+        census_decennial_csv = (
+            constants.DATA_PATH
+            / "dataset"
+            / "census_decennial_2010"
+            / "usa.csv"
+        )
+        self.census_decennial_df = pd.read_csv(
+            census_decennial_csv,
+            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
+            low_memory=False,
+        )
+
     def _join_tract_dfs(self, census_tract_dfs: list) -> pd.DataFrame:
         logger.info("Joining Census Tract dataframes")
 
@@ -228,6 +241,7 @@ class ScoreETL(ExtractTransformLoad):
             self.persistent_poverty_df,
             self.national_risk_index_df,
             self.census_acs_median_incomes_df,
+            self.census_decennial_df,
         ]
 
         # Sanity check each data frame before merging.
@@ -299,6 +313,9 @@ class ScoreETL(ExtractTransformLoad):
             field_names.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME,
             field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME,
             field_names.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME,
+            field_names.CENSUS_DECENNIAL_MEDIAN_INCOME_2009,
+            field_names.CENSUS_DECENNIAL_POVERTY_LESS_THAN_200_FPL_FIELD_2009,
+            field_names.CENSUS_DECENNIAL_MEDIAN_INCOME_2009,
         ]
 
         non_numeric_columns = [
@@ -315,9 +332,9 @@ class ScoreETL(ExtractTransformLoad):
         # Convert all columns to numeric and do math
         for col in numeric_columns:
             # Calculate percentiles
-            df_copy[f"{col}{field_names.PERCENTILE_FIELD_SUFFIX}"] = df_copy[col].rank(
-                pct=True
-            )
+            df_copy[f"{col}{field_names.PERCENTILE_FIELD_SUFFIX}"] = df_copy[
+                col
+            ].rank(pct=True)
 
             # Min-max normalization:
             # (

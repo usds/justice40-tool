@@ -117,6 +117,13 @@ AGGREGATION_POPULATION_FIELD = "Population Characteristics"
 UNDER_5_FIELD = "Individuals under 5 years old"
 OVER_64_FIELD = "Individuals over 64 years old"
 
+# Fields from 2010 decennial census (generally only loaded for the territories)
+CENSUS_DECENNIAL_MEDIAN_INCOME_2009 = "Median household income in 2009 ($)"
+CENSUS_DECENNIAL_POVERTY_LESS_THAN_200_FPL_FIELD_2009 = (
+    "Percentage households below 200% of federal poverty line in 2009"
+)
+CENSUS_DECENNIAL_MEDIAN_INCOME_2009 = "Percent individuals age 25 or over with less than high school degree in 2009"
+
 # Urban Rural Map
 URBAN_HEURISTIC_FIELD = "Urban Heuristic Flag"
 
