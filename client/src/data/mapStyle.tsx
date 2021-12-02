@@ -46,19 +46,71 @@ function makePaint({
 
 const imageSuffix = constants.isMobile ? '' : '@2x';
 
+// Original "light" Base layer
+const cartoLightBaseLayer = {
+  noLabels: [
+    `https://a.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
+    `https://b.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
+    `https://c.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
+    `https://d.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
+  ],
+  withLabels: [
+    `https://cartodb-basemaps-a.global.ssl.fastly.net/light_only_labels/{z}/{x}/{y}${imageSuffix}.png`,
+    `https://cartodb-basemaps-b.global.ssl.fastly.net/light_only_labels/{z}/{x}/{y}${imageSuffix}.png`,
+    `https://cartodb-basemaps-c.global.ssl.fastly.net/light_only_labels/{z}/{x}/{y}${imageSuffix}.png`,
+    `https://cartodb-basemaps-d.global.ssl.fastly.net/light_only_labels/{z}/{x}/{y}${imageSuffix}.png`,
+  ],
+};
+
+// Additional layers found here: https://carto.com/help/building-maps/basemap-list/#carto-vector-basemaps
+// New "voyager" base layer
+const cartoVoyagerBaseLayer = {
+  noLabels: [
+    `https://a.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
+    `https://b.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
+    `https://c.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
+    `https://d.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
+  ],
+  withLabels: [
+    `https://a.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}${imageSuffix}.png`,
+    `https://b.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}${imageSuffix}.png`,
+    `https://c.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}${imageSuffix}.png`,
+    `https://d.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}${imageSuffix}.png`,
+  ],
+};
+
+// New "positron" base layer
+const cartoPositronBaseLayer = {
+  noLabels: [
+    `https://a.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
+    `https://b.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
+    `https://c.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
+    `https://d.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
+  ],
+  withLabels: [
+    `https://a.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}${imageSuffix}.png`,
+    `https://b.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}${imageSuffix}.png`,
+    `https://c.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}${imageSuffix}.png`,
+    `https://d.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}${imageSuffix}.png`,
+  ],
+};
+
+
 export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
+  let baseLayer = {...cartoLightBaseLayer};
+
+  if ('vy' in flagContainer) {
+    baseLayer = {...cartoVoyagerBaseLayer};
+  } else if ('ps' in flagContainer) {
+    baseLayer = {...cartoPositronBaseLayer};
+  };
+
   return {
     'version': 8,
     'sources': {
       'carto': {
         'type': 'raster',
-        'tiles':
-      [
-        `https://a.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
-        `https://b.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
-        `https://c.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
-        `https://d.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
-      ],
+        'tiles': baseLayer.noLabels,
         'minzoom': constants.GLOBAL_MIN_ZOOM,
         'maxzoom': constants.GLOBAL_MAX_ZOOM,
       },
@@ -108,12 +160,7 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
       },
       'labels': {
         'type': 'raster',
-        'tiles': [
-          `https://cartodb-basemaps-a.global.ssl.fastly.net/light_only_labels/{z}/{x}/{y}${imageSuffix}.png`,
-          `https://cartodb-basemaps-b.global.ssl.fastly.net/light_only_labels/{z}/{x}/{y}${imageSuffix}.png`,
-          `https://cartodb-basemaps-c.global.ssl.fastly.net/light_only_labels/{z}/{x}/{y}${imageSuffix}.png`,
-          `https://cartodb-basemaps-d.global.ssl.fastly.net/light_only_labels/{z}/{x}/{y}${imageSuffix}.png`,
-        ],
+        'tiles': cartoLightBaseLayer.withLabels,
       },
     },
     'layers': [
