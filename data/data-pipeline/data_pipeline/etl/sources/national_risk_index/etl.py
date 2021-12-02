@@ -15,7 +15,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
     """ETL class for the FEMA National Risk Index dataset"""
 
     def __init__(self):
-        self.NRI_FTP_URL = "https://nri-data-downloads.s3.amazonaws.com/NRI_Table_CensusTracts.zip"
+        self.NRI_FTP_URL = "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload//NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
         self.INPUT_CSV = self.TMP_PATH / "NRI_Table_CensusTracts.csv"
         self.OUTPUT_DIR = (
             self.DATA_PATH / "dataset" / "national_risk_index_2020"
@@ -54,7 +54,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
 
         # Note: also need to edit transform step to add fields to output.
         self.COLUMNS_TO_KEEP = [
-            self.GEOID_FIELD_NAME,
+            self.GEOID_TRACT_FIELD_NAME,
             self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME,
             self.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME,
             self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME,
@@ -84,7 +84,6 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         logger.info("Transforming National Risk Index Data")
 
         NRI_TRACT_COL = "TRACTFIPS"  # Census Tract Column in NRI data
-        TRACT_COL = self.GEOID_TRACT_FIELD_NAME  # Census Tract column name
 
         # read in the unzipped csv from NRI data source then rename the
         # Census Tract column for merging
@@ -96,7 +95,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         )
         df_nri.rename(
             columns={
-                NRI_TRACT_COL: TRACT_COL,
+                NRI_TRACT_COL: self.GEOID_TRACT_FIELD_NAME,
                 self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_INPUT_FIELD_NAME: self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME,
             },
             inplace=True,
@@ -121,14 +120,14 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         ]
 
         # Some disaster categories do not have agriculture value column
-        agri_columns = [str(x) + "_EALA" for x in disaster_categories if str(x) + "_EALA" in list(df_nri.columns)]
+        agri_columns = [f"{x}_EALA" for x in disaster_categories if f"{x}_EALA"in list(df_nri.columns)]
 
-        population_columns = [str(x) + "_EALP" for x 
-            in disaster_categories if str(x) + "_EALP" in list(df_nri.columns)]
+        population_columns = [f"{x}_EALP" for x 
+            in disaster_categories if f"{x}_EALP" in list(df_nri.columns)]
 
 
-        buildings_columns = [str(x) + "_EALB" for x 
-            in disaster_categories if str(x) + "_EALB" in list(df_nri.columns)]
+        buildings_columns = [f"{x}_EALB" for x 
+            in disaster_categories if f"{x}_EALB" in list(df_nri.columns)]
 
         disaster_population_sum_series = df_nri[
             population_columns
@@ -157,31 +156,6 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         df_nri[self.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME] = (
             disaster_building_sum_series / df_nri[self.BUILDING_VALUE_INPUT_FIELD_NAME]
         )
-
-        # Reduce columns.
-        # Note: normally we wait until writing to CSV for this step, but since the file is so huge,
-        # move this up here for performance reasons.
-        df_nri = df_nri[
-            [
-                self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME,
-                self.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME,
-                self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME,
-                self.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME,
-                TRACT_COL,
-            ]
-        ]
-
-        # get the full list of Census Block Groups from the ACS data
-        # and extract the Census Tract ID from each Block Group ID
-        df_acs = pd.read_csv(
-            self.BLOCK_GROUP_CSV, dtype={self.GEOID_FIELD_NAME: "string"}
-        )
-        df_acs[TRACT_COL] = df_acs[self.GEOID_FIELD_NAME].str[0:11]
-        df_block_group = df_acs[[self.GEOID_FIELD_NAME, TRACT_COL]]
-
-        # merge NRI data on the Census Tract ID so that each
-        # Block Group inherits the NRI score of its Census Tract
-        self.df = df_block_group.merge(df_nri, how="left", on=TRACT_COL)
 
     def load(self) -> None:
         """Writes the NRI data as a csv to the directory at self.OUTPUT_DIR"""
