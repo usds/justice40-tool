@@ -66,7 +66,7 @@ class TestNationalRiskIndexETL:
         etl.transform()
 
         # validation
-        assert etl.df.shape == (5, 51)
+        assert etl.df.shape == (2, 370)
         pd.testing.assert_frame_equal(etl.df, expected)
 
     def test_load(self, mock_etl):
@@ -94,8 +94,8 @@ class TestNationalRiskIndexETL:
         etl.load()
 
         output = pd.read_csv(output_path, dtype={BLOCK_COL: str})
-        etl.df.to_csv(DATA_DIR / "output_2.csv", index=False)
+        
         # validation
         assert output_path.exists()
-        assert output.shape == (5, 5)
+        assert output.shape == (2, 5)
         pd.testing.assert_frame_equal(output, expected)
