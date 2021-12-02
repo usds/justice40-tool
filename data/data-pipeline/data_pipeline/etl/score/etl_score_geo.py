@@ -66,11 +66,17 @@ class GeoScoreETL(ExtractTransformLoad):
         logger.info("Reading score CSV")
         self.score_usa_df = pd.read_csv(
             self.TILE_SCORE_CSV,
-            dtype={"GEOID10": "string"},
+            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
             low_memory=False,
         )
 
     def transform(self) -> None:
+        # rename GEOID10_TRACT to GEOID10 on score to allow merging with Census GeoJSON
+        self.score_usa_df.rename(
+            columns={self.GEOID_TRACT_FIELD_NAME: "GEOID10"},
+            inplace=True,
+        )
+
         logger.info("Pruning Census GeoJSON")
         fields = ["GEOID10", "geometry"]
         self.geojson_usa_df = self.geojson_usa_df[fields]

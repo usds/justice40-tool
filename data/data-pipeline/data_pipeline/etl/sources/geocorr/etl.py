@@ -17,7 +17,7 @@ class GeoCorrETL(ExtractTransformLoad):
         # Need to change hyperlink to S3
         self.GEOCORR_PLACES_URL = "https://justice40-data.s3.amazonaws.com/data-sources/geocorr_urban_rural.csv.zip"
         self.GEOCORR_GEOID_FIELD_NAME = "GEOID10_TRACT"
-        self.URBAN_HERUISTIC_FIELD_NAME = "Urban Heuristic Flag"
+        self.URBAN_HEURISTIC_FIELD_NAME = "Urban Heuristic Flag"
 
         self.df: pd.DataFrame
 
@@ -47,7 +47,7 @@ class GeoCorrETL(ExtractTransformLoad):
 
         self.df.rename(
             columns={
-                "urban_heuristic_flag": self.URBAN_HERUISTIC_FIELD_NAME,
+                "urban_heuristic_flag": self.URBAN_HEURISTIC_FIELD_NAME,
             },
             inplace=True,
         )

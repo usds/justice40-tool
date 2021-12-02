@@ -26,7 +26,7 @@ class PersistentPovertyETL(ExtractTransformLoad):
         # self.GEOCORR_PLACES_URL = "https://justice40-data.s3.amazonaws.com/data-sources/persistent_poverty_urban_rural.csv.zip"
         self.GEOID_TRACT_INPUT_FIELD_NAME_1 = "TRTID10"
         self.GEOID_TRACT_INPUT_FIELD_NAME_2 = "tractid"
-        # self.URBAN_HERUISTIC_FIELD_NAME = "Urban Heuristic Flag"
+        # self.URBAN_HEURISTIC_FIELD_NAME = "Urban Heuristic Flag"
 
         self.POVERTY_PREFIX = "Individuals in Poverty (percent)"
         self.PERSISTENT_POVERTY_FIELD = "Persistent Poverty Census Tract"
