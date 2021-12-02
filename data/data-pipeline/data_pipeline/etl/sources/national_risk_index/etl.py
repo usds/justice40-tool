@@ -32,10 +32,12 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         )
 
         self.EXPECTED_ANNUAL_LOSS_BUILDING_VALUE_INPUT_FIELD_NAME = "EAL_VALB"
+
         self.EXPECTED_ANNUAL_LOSS_AGRICULTURAL_VALUE_INPUT_FIELD_NAME = (
             "EAL_VALA"
         )
         self.EXPECTED_ANNUAL_LOSS_POPULATION_VALUE_INPUT_FIELD_NAME = "EAL_VALP"
+
         self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME = "AGRIVALUE"
         self.POPULATION_INPUT_FIELD_NAME = "POPULATION"
         self.BUILDING_VALUE_INPUT_FIELD_NAME = "BUILDVALUE"
@@ -98,6 +100,39 @@ class NationalRiskIndexETL(ExtractTransformLoad):
             },
             inplace=True,
         )
+
+        # Only use disasters linked to climate change
+        disaster_categories = [
+            "AVLN",  # Avalanche
+            "CFLD",  # Coastal Flooding
+            "CWAV",  # Cold Wave
+            "DRGT",  # Drought
+            "HAIL",  # Hail
+            "HWAV",  # Heat Wave
+            "HRCN",  # Hurricane
+            "ISTM",  # Ice Storm
+            "LNDS",  # Landslide
+            "RFLD",  # Riverine Flooding
+            "SWND",  # Strong Wind
+            "TRND",  # Tornado
+            "WFIR",  # Wildfire
+            "WNTW",  # Winter Weather
+        ]
+
+        # Some disaster categories do not have agriculture value column
+        agri_columns = [str(x) + "_EALA" for x in disaster_categories if str(x) + "_EALA" in list(df_nri.columns)]
+
+        disaster_population_sum_series = df_nri[
+            [str(x) + "_EALP" for x in disaster_categories]
+        ].sum(axis=1)
+
+        disaster_agriculture_sum_series = df_nri[
+            agri_columns
+        ].sum(axis=1)
+
+        disaster_building_sum_series = df_nri[
+            [str(x) + "_EALB" for x in disaster_categories]
+        ].sum(axis=1)   
 
         # Population EAL Rate = Eal Valp / Population
         df_nri[self.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME] = (
