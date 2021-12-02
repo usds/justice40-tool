@@ -122,41 +122,48 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         self.df = df_nri
 
         # Some disaster categories do not have agriculture value column
-        agriculture_columns = [f"{x}_EALA" for x 
-            in disaster_categories if f"{x}_EALA"in list(df_nri.columns)]
+        agriculture_columns = [
+            f"{x}_EALA"
+            for x in disaster_categories
+            if f"{x}_EALA" in list(df_nri.columns)
+        ]
 
-        population_columns = [f"{x}_EALP" for x 
-            in disaster_categories if f"{x}_EALP" in list(df_nri.columns)]
+        population_columns = [
+            f"{x}_EALP"
+            for x in disaster_categories
+            if f"{x}_EALP" in list(df_nri.columns)
+        ]
 
-        buildings_columns = [f"{x}_EALB" for x 
-            in disaster_categories if f"{x}_EALB" in list(df_nri.columns)]
+        buildings_columns = [
+            f"{x}_EALB"
+            for x in disaster_categories
+            if f"{x}_EALB" in list(df_nri.columns)
+        ]
 
-        disaster_population_sum_series = df_nri[
-            population_columns
-        ].sum(axis=1)
+        disaster_population_sum_series = df_nri[population_columns].sum(axis=1)
 
-        disaster_agriculture_sum_series = df_nri[
-            agriculture_columns
-        ].sum(axis=1)
+        disaster_agriculture_sum_series = df_nri[agriculture_columns].sum(
+            axis=1
+        )
 
-        disaster_buildings_sum_series = df_nri[
-            buildings_columns
-        ].sum(axis=1)   
-
+        disaster_buildings_sum_series = df_nri[buildings_columns].sum(axis=1)
 
         # Population EAL Rate = Eal Valp / Population
         df_nri[self.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME] = (
-            disaster_population_sum_series / df_nri[self.POPULATION_INPUT_FIELD_NAME]
+            disaster_population_sum_series
+            / df_nri[self.POPULATION_INPUT_FIELD_NAME]
         )
 
         # Agriculture EAL Rate = Eal Vala / Agrivalue
         df_nri[self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME] = (
-            disaster_agriculture_sum_series / df_nri[self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME]
+            disaster_agriculture_sum_series
+            / df_nri[self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME]
         )
 
         # divide EAL_VALB (Expected Annual Loss - Building Value) by BUILDVALUE (Building Value ($)).
         df_nri[self.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME] = (
-            disaster_buildings_sum_series / df_nri[self.BUILDING_VALUE_INPUT_FIELD_NAME]
+            disaster_buildings_sum_series
+            / df_nri[self.BUILDING_VALUE_INPUT_FIELD_NAME]
         )
 
     def load(self) -> None:

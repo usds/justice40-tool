@@ -55,7 +55,6 @@ class TestNationalRiskIndexETL:
 
         # setup - read in sample output as dataframe
         TRACT_COL = etl.GEOID_TRACT_FIELD_NAME
-        BLOCK_COL = etl.GEOID_FIELD_NAME
 
         expected = pd.read_csv(
             DATA_DIR / "transform.csv",
@@ -80,7 +79,7 @@ class TestNationalRiskIndexETL:
         # setup - input variables
         etl = NationalRiskIndexETL()
         TRACT_COL = etl.GEOID_TRACT_FIELD_NAME
-        BLOCK_COL = etl.GEOID_FIELD_NAME
+
         output_path = etl.OUTPUT_DIR / "usa.csv"
         # setup - mock transform step
         df_transform = pd.read_csv(
