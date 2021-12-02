@@ -22,7 +22,9 @@ const IndexPage = ({location}: MethodPageProps) => {
     <Layout location={location} title={intl.formatMessage(METHODOLOGY_COPY.PAGE.TILE)}>
 
       <J40MainGridContainer>
+
         <h1>{intl.formatMessage(METHODOLOGY_COPY.PAGE.HEADING)}</h1>
+
         <Grid row gap className={'j40-mb-5'}>
           <Grid col={12} tablet={{col: 6}}>
             <section>

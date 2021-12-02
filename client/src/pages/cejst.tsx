@@ -23,7 +23,9 @@ const CEJSTPage = ({location}: IMapPageProps) => {
   return (<Layout location={location} title={intl.formatMessage(EXPLORE_COPY.PAGE_INTRO.PAGE_TILE)}>
 
     <J40MainGridContainer>
+
       <h1>{intl.formatMessage(EXPLORE_COPY.PAGE_INTRO.PAGE_HEADING)}</h1>
+
       <Grid row className={'j40-mb-5'}>
         <Grid col={12} tablet={{col: 6}}>
           <section>

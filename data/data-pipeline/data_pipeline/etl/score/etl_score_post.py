@@ -3,6 +3,7 @@ import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger, zip_files
 
+
 from data_pipeline.etl.sources.census.etl_utils import (
     check_census_data_source,
 )
@@ -22,7 +23,7 @@ class PostScoreETL(ExtractTransformLoad):
         self.input_counties_df: pd.DataFrame
         self.input_states_df: pd.DataFrame
         self.input_score_df: pd.DataFrame
-        self.input_national_cbg_df: pd.DataFrame
+        self.input_national_tract_df: pd.DataFrame
 
         self.output_score_county_state_merged_df: pd.DataFrame
         self.output_score_tiles_df: pd.DataFrame
@@ -49,7 +50,9 @@ class PostScoreETL(ExtractTransformLoad):
 
     def _extract_score(self, score_path: Path) -> pd.DataFrame:
         logger.info("Reading Score CSV")
-        df = pd.read_csv(score_path, dtype={"GEOID10": "string"})
+        df = pd.read_csv(
+            score_path, dtype={self.GEOID_TRACT_FIELD_NAME: "string"}
+        )
 
         # Convert total population to an int:
         df["Total population"] = df["Total population"].astype(
@@ -58,12 +61,14 @@ class PostScoreETL(ExtractTransformLoad):
 
         return df
 
-    def _extract_national_cbg(self, national_cbg_path: Path) -> pd.DataFrame:
-        logger.info("Reading national CBG")
+    def _extract_national_tract(
+        self, national_tract_path: Path
+    ) -> pd.DataFrame:
+        logger.info("Reading national tract file")
         return pd.read_csv(
-            national_cbg_path,
-            names=["GEOID10"],
-            dtype={"GEOID10": "string"},
+            national_tract_path,
+            names=[self.GEOID_TRACT_FIELD_NAME],
+            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
             low_memory=False,
             header=None,
         )
@@ -90,7 +95,7 @@ class PostScoreETL(ExtractTransformLoad):
         self.input_score_df = self._extract_score(
             constants.DATA_SCORE_CSV_FULL_FILE_PATH
         )
-        self.input_national_cbg_df = self._extract_national_cbg(
+        self.input_national_tract_df = self._extract_national_tract(
             constants.DATA_CENSUS_CSV_FILE_PATH
         )
 
@@ -102,11 +107,13 @@ class PostScoreETL(ExtractTransformLoad):
         """
         # Rename some of the columns to prepare for merge
         new_df = initial_counties_df[constants.CENSUS_COUNTIES_COLUMNS]
-        new_df.rename(
+
+        new_df_copy = new_df.rename(
             columns={"USPS": "State Abbreviation", "NAME": "County Name"},
-            inplace=True,
+            inplace=False,
         )
-        return new_df
+
+        return new_df_copy
 
     def _transform_states(
         self, initial_states_df: pd.DataFrame
@@ -127,21 +134,22 @@ class PostScoreETL(ExtractTransformLoad):
 
     def _transform_score(self, initial_score_df: pd.DataFrame) -> pd.DataFrame:
         """
-        Necessary modifications to the score dataframe
+        Add the GEOID field to the score dataframe to do the merge with counties
         """
-        # Add the tract level column
-        new_df = initial_score_df.copy()
-        new_df["GEOID"] = initial_score_df.GEOID10.str[:5]
-        return new_df
+        # add GEOID column for counties
+        initial_score_df["GEOID"] = initial_score_df[
+            self.GEOID_TRACT_FIELD_NAME
+        ].str[:5]
+
+        return initial_score_df
 
     def _create_score_data(
         self,
-        national_cbg_df: pd.DataFrame,
+        national_tract_df: pd.DataFrame,
         counties_df: pd.DataFrame,
         states_df: pd.DataFrame,
         score_df: pd.DataFrame,
     ) -> pd.DataFrame:
-
         # merge state with counties
         logger.info("Merging state with county info")
         county_state_merged = counties_df.merge(
@@ -150,15 +158,19 @@ class PostScoreETL(ExtractTransformLoad):
 
         # merge state + county with score
         score_county_state_merged = score_df.merge(
-            county_state_merged, on="GEOID", how="left"
+            county_state_merged,
+            on="GEOID",  # GEOID is the county ID
+            how="left",
         )
 
-        # check if there are census cbgs without score
-        logger.info("Removing CBG rows without score")
+        # check if there are census tracts without score
+        logger.info("Removing tract rows without score")
 
-        # merge census cbgs with score
-        merged_df = national_cbg_df.merge(
-            score_county_state_merged, on="GEOID10", how="left"
+        # merge census tracts with score
+        merged_df = national_tract_df.merge(
+            score_county_state_merged,
+            on=self.GEOID_TRACT_FIELD_NAME,
+            how="left",
         )
 
         # recast population to integer
@@ -166,14 +178,14 @@ class PostScoreETL(ExtractTransformLoad):
             merged_df["Total population"].fillna(0.0).astype(int)
         )
 
-        # list the null score cbgs
-        null_cbg_df = merged_df[merged_df["Score E (percentile)"].isnull()]
+        # list the null score tracts
+        null_tract_df = merged_df[merged_df["Score E (percentile)"].isnull()]
 
         # subtract data sets
         # this follows the XOR pattern outlined here:
         # https://stackoverflow.com/a/37313953
         de_duplicated_df = pd.concat(
-            [merged_df, null_cbg_df, null_cbg_df]
+            [merged_df, null_tract_df, null_tract_df]
         ).drop_duplicates(keep=False)
 
         # set the score to the new df
@@ -209,7 +221,7 @@ class PostScoreETL(ExtractTransformLoad):
         transformed_score = self._transform_score(self.input_score_df)
 
         output_score_county_state_merged_df = self._create_score_data(
-            self.input_national_cbg_df,
+            self.input_national_tract_df,
             transformed_counties,
             transformed_states,
             transformed_score,
@@ -254,16 +266,16 @@ class PostScoreETL(ExtractTransformLoad):
         pdf_path = constants.SCORE_DOWNLOADABLE_PDF_FILE_PATH
 
         # Rename score column
-        downloadable_df.rename(
+        downloadable_df_copy = downloadable_df.rename(
             columns={"Score G (communities)": "Community of focus (v0.1)"},
-            inplace=True,
+            inplace=False,
         )
 
         logger.info("Writing downloadable csv")
-        downloadable_df.to_csv(csv_path, index=False)
+        downloadable_df_copy.to_csv(csv_path, index=False)
 
         logger.info("Writing downloadable excel")
-        downloadable_df.to_excel(excel_path, index=False)
+        downloadable_df_copy.to_excel(excel_path, index=False)
 
         logger.info("Compressing files")
         files_to_compress = [csv_path, excel_path, pdf_path]

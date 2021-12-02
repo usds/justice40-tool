@@ -75,11 +75,9 @@ def score_pdf_initial(sample_data_dir):
 def counties_transformed_expected():
     return pd.DataFrame.from_dict(
         data={
-            "State Abbreviation": pd.Series(["AL", "AL"], dtype="string"),
-            "GEOID": pd.Series(["01001", "01003"], dtype="string"),
-            "County Name": pd.Series(
-                ["AutaugaCounty", "BaldwinCounty"], dtype="object"
-            ),
+            "State Abbreviation": pd.Series(["AL"], dtype="string"),
+            "GEOID": pd.Series(["01073"], dtype="string"),
+            "County Name": pd.Series(["Jefferson County"], dtype="object"),
         },
     )
 
@@ -105,11 +103,11 @@ def score_transformed_expected():
 
 
 @pytest.fixture()
-def national_cbg_df():
+def national_tract_df():
     return pd.DataFrame.from_dict(
         data={
-            "GEOID10": pd.Series(
-                ["010010201001", "010010201002"], dtype="string"
+            "GEOID10_TRACT": pd.Series(
+                ["01073001100", "01073001400"], dtype="string"
             ),
         },
     )

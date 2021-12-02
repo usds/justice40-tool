@@ -1,10 +1,5 @@
 DATASET_LIST = [
     {
-        "name": "tree_equity_score",
-        "module_dir": "tree_equity_score",
-        "class_name": "TreeEquityScoreETL",
-    },
-    {
         "name": "census_acs",
         "module_dir": "census_acs",
         "class_name": "CensusACSETL",
@@ -13,11 +8,6 @@ DATASET_LIST = [
         "name": "ejscreen",
         "module_dir": "ejscreen",
         "class_name": "EJSCREENETL",
-    },
-    {
-        "name": "housing_and_transportation",
-        "module_dir": "housing_and_transportation",
-        "class_name": "HousingTransportationETL",
     },
     {
         "name": "hud_housing",
@@ -78,6 +68,16 @@ DATASET_LIST = [
         "name": "census_decennial",
         "module_dir": "census_decennial",
         "class_name": "CensusDecennialETL",
+    },
+    {
+        "name": "housing_and_transportation",
+        "module_dir": "housing_and_transportation",
+        "class_name": "HousingTransportationETL",
+    },
+    {
+        "name": "tree_equity_score",
+        "module_dir": "tree_equity_score",
+        "class_name": "TreeEquityScoreETL",
     },
 ]
 CENSUS_INFO = {

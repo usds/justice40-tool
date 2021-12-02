@@ -318,7 +318,7 @@ data_path = Path.cwd()
 
 # score data expected
 score_csv_path = data_path / "data_pipeline" / "data" / "score" / "csv" / "full" / "usa.csv"
-score_initial_df = pd.read_csv(score_csv_path, dtype={"GEOID10": "string"}, low_memory=False)[:2]
+score_initial_df = pd.read_csv(score_csv_path, dtype={"GEOID10_TRACT": "string"}, low_memory=False)[:2]
 score_initial_df.to_csv(data_path / "data_pipeline" / "etl" / "score" / "tests" / "sample_data" /"score_data_initial.csv", index=False)
 ```
 

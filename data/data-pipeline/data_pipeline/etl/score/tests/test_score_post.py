@@ -29,7 +29,7 @@ def test_extract_states(etl, state_data_initial):
 
 def test_extract_score(etl, score_data_initial):
     extracted = etl._extract_score(score_data_initial)
-    string_cols = ["GEOID10"]
+    string_cols = ["GEOID10_TRACT"]
     assert all(ptypes.is_string_dtype(extracted[col]) for col in string_cols)
 
 
@@ -63,14 +63,14 @@ def test_transform_score(etl, score_data_initial, score_transformed_expected):
 # pylint: disable=too-many-arguments
 def test_create_score_data(
     etl,
-    national_cbg_df,
+    national_tract_df,
     counties_transformed_expected,
     states_transformed_expected,
     score_transformed_expected,
     score_data_expected,
 ):
     score_data_actual = etl._create_score_data(
-        national_cbg_df,
+        national_tract_df,
         counties_transformed_expected,
         states_transformed_expected,
         score_transformed_expected,
