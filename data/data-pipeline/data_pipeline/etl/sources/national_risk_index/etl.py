@@ -120,7 +120,8 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         ]
 
         # Some disaster categories do not have agriculture value column
-        agri_columns = [f"{x}_EALA" for x in disaster_categories if f"{x}_EALA"in list(df_nri.columns)]
+        agri_columns = [f"{x}_EALA" for x 
+        in disaster_categories if f"{x}_EALA"in list(df_nri.columns)]
 
         population_columns = [f"{x}_EALP" for x 
             in disaster_categories if f"{x}_EALP" in list(df_nri.columns)]

@@ -61,6 +61,8 @@ class TestNationalRiskIndexETL:
             dtype={BLOCK_COL: "string", TRACT_COL: "string"},
         )
 
+        etl.df = expected
+
         # execution
         etl.transform()
 
