@@ -59,14 +59,14 @@ class TestNationalRiskIndexETL:
 
         expected = pd.read_csv(
             DATA_DIR / "transform.csv",
-            dtype={BLOCK_COL: "string", TRACT_COL: "string"},
+            dtype={TRACT_COL: "string"},
         )
 
         # execution
         etl.transform()
 
         # validation
-        assert etl.df.shape == (2, 370)
+        assert etl.df.shape == (55, 370)
         pd.testing.assert_frame_equal(etl.df, expected)
 
     def test_load(self, mock_etl):
@@ -85,17 +85,17 @@ class TestNationalRiskIndexETL:
         # setup - mock transform step
         df_transform = pd.read_csv(
             DATA_DIR / "transform.csv",
-            dtype={BLOCK_COL: "string", TRACT_COL: "string"},
+            dtype={TRACT_COL: "string"},
         )
         etl.df = df_transform
         # setup - load expected output
-        expected = pd.read_csv(DATA_DIR / "output.csv", dtype={BLOCK_COL: str})
+        expected = pd.read_csv(DATA_DIR / "output.csv", dtype={TRACT_COL: str})
         # execution
         etl.load()
 
-        output = pd.read_csv(output_path, dtype={BLOCK_COL: str})
-        
+        output = pd.read_csv(output_path, dtype={TRACT_COL: str})
+
         # validation
         assert output_path.exists()
-        assert output.shape == (2, 5)
+        assert output.shape == (55, 5)
         pd.testing.assert_frame_equal(output, expected)
