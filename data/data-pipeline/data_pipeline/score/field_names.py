@@ -57,13 +57,13 @@ AMI_FIELD = "Area Median Income (State or metropolitan)"
 
 # Climate
 FEMA_RISK_FIELD = "FEMA Risk Index Expected Annual Loss Score"
-EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME = (
+EXPECTED_BUILDING_LOSS_RATE_FIELD = (
     "Expected building loss rate (Natural Hazards Risk Index)"
 )
-EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME = (
+EXPECTED_AGRICULTURE_LOSS_RATE_FIELD = (
     "Expected agricultural loss rate (Natural Hazards Risk Index)"
 )
-EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME = (
+EXPECTED_POPULATION_LOSS_RATE_FIELD = (
     "Expected population loss rate (Natural Hazards Risk Index)"
 )
 
@@ -117,6 +117,34 @@ AGGREGATION_POPULATION_FIELD = "Population Characteristics"
 UNDER_5_FIELD = "Individuals under 5 years old"
 OVER_64_FIELD = "Individuals over 64 years old"
 
+# Fields from 2010 decennial census (generally only loaded for the territories)
+CENSUS_DECENNIAL_MEDIAN_INCOME_2009 = "Median household income in 2009 ($)"
+CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009 = (
+    "Median household income as a percent of territory median income in 2009"
+)
+CENSUS_DECENNIAL_POVERTY_LESS_THAN_100_FPL_FIELD_2009 = (
+    "Percentage households below 100% of federal poverty line in 2009"
+)
+CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009 = "Percent individuals age 25 or over with less than high school degree in 2009"
+CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009 = "Unemployed civilians (percent) in 2009"
+CENSUS_DECENNIAL_TOTAL_POPULATION_FIELD_2009 = "Total population in 2009"
+
+# Fields from 2010 ACS (loaded for comparison with the territories)
+CENSUS_UNEMPLOYMENT_FIELD_2010 = "Unemployed civilians (percent) in 2010"
+CENSUS_POVERTY_LESS_THAN_100_FPL_FIELD_2010 = (
+    "Percent of individuals < 100% Federal Poverty Line in 2010"
+)
+
+# Combined fields that merge island areas and states data
+COMBINED_CENSUS_TOTAL_POPULATION_2010 = (
+    "Total population in 2009 (island areas) and 2019 (states and PR)"
+)
+COMBINED_UNEMPLOYMENT_2010 = "Unemployed civilians (percent) in 2009 (island areas) and 2010 (states and PR)"
+COMBINED_POVERTY_LESS_THAN_100_FPL_FIELD_2010 = (
+    "Percentage households below 100% of federal poverty line in 2009 (island areas) "
+    "and 2010 (states and PR)"
+)
+
 # Urban Rural Map
 URBAN_HEURISTIC_FIELD = "Urban Heuristic Flag"
 
@@ -124,39 +152,39 @@ URBAN_HEURISTIC_FIELD = "Urban Heuristic Flag"
 MEDIAN_HOUSE_VALUE_FIELD = "Median value ($) of owner-occupied housing units"
 
 # EJSCREEN Areas of Concern
-EJSCREEN_AREAS_OF_CONCERN_NATIONAL_70TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
+EJSCREEN_AREAS_OF_CONCERN_NATIONAL_70TH_PERCENTILE_COMMUNITIES_FIELD = (
     "EJSCREEN Areas of Concern, National, 70th percentile (communities)"
 )
-EJSCREEN_AREAS_OF_CONCERN_NATIONAL_75TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
+EJSCREEN_AREAS_OF_CONCERN_NATIONAL_75TH_PERCENTILE_COMMUNITIES_FIELD = (
     "EJSCREEN Areas of Concern, National, 75th percentile (communities)"
 )
-EJSCREEN_AREAS_OF_CONCERN_NATIONAL_80TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
+EJSCREEN_AREAS_OF_CONCERN_NATIONAL_80TH_PERCENTILE_COMMUNITIES_FIELD = (
     "EJSCREEN Areas of Concern, National, 80th percentile (communities)"
 )
-EJSCREEN_AREAS_OF_CONCERN_NATIONAL_85TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
+EJSCREEN_AREAS_OF_CONCERN_NATIONAL_85TH_PERCENTILE_COMMUNITIES_FIELD = (
     "EJSCREEN Areas of Concern, National, 85th percentile (communities)"
 )
-EJSCREEN_AREAS_OF_CONCERN_NATIONAL_90TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
+EJSCREEN_AREAS_OF_CONCERN_NATIONAL_90TH_PERCENTILE_COMMUNITIES_FIELD = (
     "EJSCREEN Areas of Concern, National, 90th percentile (communities)"
 )
-EJSCREEN_AREAS_OF_CONCERN_NATIONAL_95TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
+EJSCREEN_AREAS_OF_CONCERN_NATIONAL_95TH_PERCENTILE_COMMUNITIES_FIELD = (
     "EJSCREEN Areas of Concern, National, 95th percentile (communities)"
 )
-EJSCREEN_AREAS_OF_CONCERN_STATE_70TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
+EJSCREEN_AREAS_OF_CONCERN_STATE_70TH_PERCENTILE_COMMUNITIES_FIELD = (
     "EJSCREEN Areas of Concern, State, 70th percentile (communities)"
 )
-EJSCREEN_AREAS_OF_CONCERN_STATE_75TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
+EJSCREEN_AREAS_OF_CONCERN_STATE_75TH_PERCENTILE_COMMUNITIES_FIELD = (
     "EJSCREEN Areas of Concern, State, 75th percentile (communities)"
 )
-EJSCREEN_AREAS_OF_CONCERN_STATE_80TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
+EJSCREEN_AREAS_OF_CONCERN_STATE_80TH_PERCENTILE_COMMUNITIES_FIELD = (
     "EJSCREEN Areas of Concern, State, 80th percentile (communities)"
 )
-EJSCREEN_AREAS_OF_CONCERN_STATE_85TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
+EJSCREEN_AREAS_OF_CONCERN_STATE_85TH_PERCENTILE_COMMUNITIES_FIELD = (
     "EJSCREEN Areas of Concern, State, 85th percentile (communities)"
 )
-EJSCREEN_AREAS_OF_CONCERN_STATE_90TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
+EJSCREEN_AREAS_OF_CONCERN_STATE_90TH_PERCENTILE_COMMUNITIES_FIELD = (
     "EJSCREEN Areas of Concern, State, 90th percentile (communities)"
 )
-EJSCREEN_AREAS_OF_CONCERN_STATE_95TH_PERCENTILE_COMMUNITIES_FIELD_NAME = (
+EJSCREEN_AREAS_OF_CONCERN_STATE_95TH_PERCENTILE_COMMUNITIES_FIELD = (
     "EJSCREEN Areas of Concern, State, 95th percentile (communities)"
 )

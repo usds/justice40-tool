@@ -5,6 +5,11 @@ DATASET_LIST = [
         "class_name": "CensusACSETL",
     },
     {
+        "name": "census_acs_2010",
+        "module_dir": "census_acs_2010",
+        "class_name": "CensusACS2010ETL",
+    },
+    {
         "name": "ejscreen",
         "module_dir": "ejscreen",
         "class_name": "EJSCREENETL",
@@ -13,16 +18,6 @@ DATASET_LIST = [
         "name": "hud_housing",
         "module_dir": "hud_housing",
         "class_name": "HudHousingETL",
-    },
-    {
-        "name": "calenviroscreen",
-        "module_dir": "calenviroscreen",
-        "class_name": "CalEnviroScreenETL",
-    },
-    {
-        "name": "hud_recap",
-        "module_dir": "hud_recap",
-        "class_name": "HudRecapETL",
     },
     {
         "name": "cdc_places",
@@ -73,6 +68,16 @@ DATASET_LIST = [
         "name": "housing_and_transportation",
         "module_dir": "housing_and_transportation",
         "class_name": "HousingTransportationETL",
+    },
+    {
+        "name": "calenviroscreen",
+        "module_dir": "calenviroscreen",
+        "class_name": "CalEnviroScreenETL",
+    },
+    {
+        "name": "hud_recap",
+        "module_dir": "hud_recap",
+        "class_name": "HudRecapETL",
     },
     {
         "name": "tree_equity_score",

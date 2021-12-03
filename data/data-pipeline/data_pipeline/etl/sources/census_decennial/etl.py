@@ -27,11 +27,20 @@ class CensusDecennialETL(ExtractTransformLoad):
         # https://api.census.gov/data/2010/dec/gu/variables.html
         # https://api.census.gov/data/2010/dec/mp/variables.html
         # https://api.census.gov/data/2010/dec/vi/variables.html
+
+        # Total population field is the same in all island areas
+        self.TOTAL_POP_FIELD = self.TOTAL_POP_VI_FIELD = "P001001"
+        self.TOTAL_POP_FIELD_NAME = "Total population in 2009"
+
         self.MEDIAN_INCOME_FIELD = "PBG049001"
         self.MEDIAN_INCOME_VI_FIELD = "PBG047001"
-        self.MEDIAN_INCOME_FIELD_NAME = (
-            "MEDIAN HOUSEHOLD INCOME IN 2009 (DOLLARS)"
+        self.MEDIAN_INCOME_FIELD_NAME = "Median household income in 2009 ($)"
+        self.AREA_MEDIAN_INCOME_FIELD_NAME = (
+            "Median household income as a percent of "
+            "territory median income in 2009"
         )
+
+        self.TERRITORY_MEDIAN_INCOME_FIELD = "Territory Median Income"
 
         self.TOTAL_HOUSEHOLD_RATIO_INCOME_TO_POVERTY_LEVEL_FIELD = "PBG083001"
         self.TOTAL_HOUSEHOLD_RATIO_INCOME_TO_POVERTY_LEVEL_VI_FIELD = (
@@ -48,7 +57,39 @@ class CensusDecennialETL(ExtractTransformLoad):
         )
 
         self.PERCENTAGE_HOUSEHOLDS_BELOW_200_PERC_POVERTY_LEVEL_FIELD_NAME = (
-            "PERCENTAGE_HOUSEHOLDS_BELOW_200_PERC_POVERTY_LEVEL"
+            "Percentage households below 200% of federal poverty line in 2009"
+        )
+
+        # We will combine three fields to get households < 100% FPL.
+        self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_PART_ONE = (
+            "PBG083002"  # Total!!Under .50
+        )
+        self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_PART_TWO = (
+            "PBG083003"  # Total!!.50 to .74
+        )
+        self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_PART_THREE = (
+            "PBG083004"  # Total!!.75 to .99
+        )
+
+        # Same fields, for Virgin Islands.
+        self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_VI_PART_ONE = (
+            "PBG077002"  # Total!!Under .50
+        )
+        self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_VI_PART_TWO = (
+            "PBG077003"  # Total!!.50 to .74
+        )
+        self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_VI_PART_THREE = (
+            "PBG077004"  # Total!!.75 to .99
+        )
+
+        self.HOUSEHOLD_OVER_200_PERC_POVERTY_LEVEL_FIELD = "PBG083010"
+        self.HOUSEHOLD_OVER_200_PERC_POVERTY_LEVEL_VI_FIELD = "PBG077010"
+        self.HOUSEHOLD_OVER_200_PERC_POVERTY_LEVEL_FIELD_NAME = (
+            "Total!!2.00 and over; RATIO OF INCOME TO POVERTY LEVEL IN 2009"
+        )
+
+        self.PERCENTAGE_HOUSEHOLDS_BELOW_100_PERC_POVERTY_LEVEL_FIELD_NAME = (
+            "Percentage households below 100% of federal poverty line in 2009"
         )
 
         # High School Education Fields
@@ -70,9 +111,37 @@ class CensusDecennialETL(ExtractTransformLoad):
             "SEX BY EDUCATIONAL ATTAINMENT FOR THE POPULATION 25 YEARS AND OVER"
         )
 
-        self.PERCENTAGE_HIGH_SCHOOL_ED_FIELD_NAME = (
-            "PERCENTAGE_HIGH_SCHOOL_ED_FIELD_NAME"
+        self.PERCENTAGE_HIGH_SCHOOL_ED_FIELD_NAME = "Percent individuals age 25 or over with less than high school degree in 2009"
+
+        # Employment fields
+        self.EMPLOYMENT_MALE_IN_LABOR_FORCE_FIELD = (
+            "PBG038003"  # Total!!Male!!In labor force
         )
+        self.EMPLOYMENT_MALE_UNEMPLOYED_FIELD = (
+            "PBG038007"  # Total!!Male!!In labor force!!Civilian!!Unemployed
+        )
+        self.EMPLOYMENT_FEMALE_IN_LABOR_FORCE_FIELD = (
+            "PBG038010"  # Total!!Female!!In labor force
+        )
+        self.EMPLOYMENT_FEMALE_UNEMPLOYED_FIELD = (
+            "PBG038014"  # Total!!Female!!In labor force!!Civilian!!Unemployed
+        )
+
+        # Same fields, Virgin Islands.
+        self.EMPLOYMENT_MALE_IN_LABOR_FORCE_VI_FIELD = (
+            "PBG036003"  # Total!!Male!!In labor force
+        )
+        self.EMPLOYMENT_MALE_UNEMPLOYED_VI_FIELD = (
+            "PBG036007"  # Total!!Male!!In labor force!!Civilian!!Unemployed
+        )
+        self.EMPLOYMENT_FEMALE_IN_LABOR_FORCE_VI_FIELD = (
+            "PBG036010"  # Total!!Female!!In labor force
+        )
+        self.EMPLOYMENT_FEMALE_UNEMPLOYED_VI_FIELD = (
+            "PBG036014"  # Total!!Female!!In labor force!!Civilian!!Unemployed
+        )
+
+        self.UNEMPLOYMENT_FIELD_NAME = "Unemployed civilians (percent) in 2009"
 
         var_list = [
             self.MEDIAN_INCOME_FIELD,
@@ -81,6 +150,14 @@ class CensusDecennialETL(ExtractTransformLoad):
             self.TOTAL_POPULATION_FIELD,
             self.MALE_HIGH_SCHOOL_ED_FIELD,
             self.FEMALE_HIGH_SCHOOL_ED_FIELD,
+            self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_PART_ONE,
+            self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_PART_TWO,
+            self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_PART_THREE,
+            self.EMPLOYMENT_MALE_IN_LABOR_FORCE_FIELD,
+            self.EMPLOYMENT_MALE_UNEMPLOYED_FIELD,
+            self.EMPLOYMENT_FEMALE_IN_LABOR_FORCE_FIELD,
+            self.EMPLOYMENT_FEMALE_UNEMPLOYED_FIELD,
+            self.TOTAL_POP_FIELD,
         ]
         var_list = ",".join(var_list)
 
@@ -91,6 +168,14 @@ class CensusDecennialETL(ExtractTransformLoad):
             self.TOTAL_POPULATION_VI_FIELD,
             self.MALE_HIGH_SCHOOL_ED_VI_FIELD,
             self.FEMALE_HIGH_SCHOOL_ED_VI_FIELD,
+            self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_VI_PART_ONE,
+            self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_VI_PART_TWO,
+            self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_VI_PART_THREE,
+            self.EMPLOYMENT_MALE_IN_LABOR_FORCE_VI_FIELD,
+            self.EMPLOYMENT_MALE_UNEMPLOYED_VI_FIELD,
+            self.EMPLOYMENT_FEMALE_IN_LABOR_FORCE_VI_FIELD,
+            self.EMPLOYMENT_FEMALE_UNEMPLOYED_VI_FIELD,
+            self.TOTAL_POP_VI_FIELD,
         ]
         var_list_vi = ",".join(var_list_vi)
 
@@ -107,6 +192,20 @@ class CensusDecennialETL(ExtractTransformLoad):
             self.MALE_HIGH_SCHOOL_ED_VI_FIELD: self.MALE_HIGH_SCHOOL_ED_FIELD_NAME,
             self.FEMALE_HIGH_SCHOOL_ED_FIELD: self.FEMALE_HIGH_SCHOOL_ED_FIELD_NAME,
             self.FEMALE_HIGH_SCHOOL_ED_VI_FIELD: self.FEMALE_HIGH_SCHOOL_ED_FIELD_NAME,
+            self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_PART_ONE: self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_PART_ONE,
+            self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_VI_PART_ONE: self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_PART_ONE,
+            self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_PART_TWO: self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_PART_TWO,
+            self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_VI_PART_TWO: self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_PART_TWO,
+            self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_PART_THREE: self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_PART_THREE,
+            self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_VI_PART_THREE: self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_PART_THREE,
+            self.EMPLOYMENT_MALE_IN_LABOR_FORCE_VI_FIELD: self.EMPLOYMENT_MALE_IN_LABOR_FORCE_FIELD,
+            self.EMPLOYMENT_MALE_UNEMPLOYED_VI_FIELD: self.EMPLOYMENT_MALE_UNEMPLOYED_FIELD,
+            self.EMPLOYMENT_FEMALE_IN_LABOR_FORCE_VI_FIELD: self.EMPLOYMENT_FEMALE_IN_LABOR_FORCE_FIELD,
+            self.EMPLOYMENT_FEMALE_UNEMPLOYED_VI_FIELD: self.EMPLOYMENT_FEMALE_UNEMPLOYED_FIELD,
+            self.EMPLOYMENT_MALE_IN_LABOR_FORCE_FIELD: self.EMPLOYMENT_MALE_IN_LABOR_FORCE_FIELD,
+            self.EMPLOYMENT_MALE_UNEMPLOYED_FIELD: self.EMPLOYMENT_MALE_UNEMPLOYED_FIELD,
+            self.EMPLOYMENT_FEMALE_IN_LABOR_FORCE_FIELD: self.EMPLOYMENT_FEMALE_IN_LABOR_FORCE_FIELD,
+            self.EMPLOYMENT_FEMALE_UNEMPLOYED_FIELD: self.EMPLOYMENT_FEMALE_UNEMPLOYED_FIELD,
         }
 
         # To do: Ask Census Slack Group about whether you need to hardcode the county fips
@@ -117,24 +216,30 @@ class CensusDecennialETL(ExtractTransformLoad):
                 "fips": "60",
                 "county_fips": ["010", "020", "030", "040", "050"],
                 "var_list": var_list,
+                # Note: we hardcode the median income for each territory in this dict,
+                # because that data is hard to programmatically access.
+                self.TERRITORY_MEDIAN_INCOME_FIELD: 23892,
             },
             {
                 "state_abbreviation": "gu",
                 "fips": "66",
                 "county_fips": ["010"],
                 "var_list": var_list,
+                self.TERRITORY_MEDIAN_INCOME_FIELD: 48274,
             },
             {
                 "state_abbreviation": "mp",
                 "fips": "69",
                 "county_fips": ["085", "100", "110", "120"],
                 "var_list": var_list,
+                self.TERRITORY_MEDIAN_INCOME_FIELD: 19958,
             },
             {
                 "state_abbreviation": "vi",
                 "fips": "78",
                 "county_fips": ["010", "020", "030"],
                 "var_list": var_list_vi,
+                self.TERRITORY_MEDIAN_INCOME_FIELD: 37254,
             },
         ]
 
@@ -198,6 +303,11 @@ class CensusDecennialETL(ExtractTransformLoad):
         # Combine the dfs after renaming
         self.df_all = pd.concat([self.df, self.df_vi])
 
+        # Rename total population:
+        self.df_all[self.TOTAL_POP_FIELD_NAME] = self.df_all[
+            self.TOTAL_POP_FIELD
+        ]
+
         # Percentage of households below 200% which is
         # [PBG083001 (total) - PBG083010 (num households over 200%)] / PBG083001 (total)
         self.df_all[
@@ -211,12 +321,53 @@ class CensusDecennialETL(ExtractTransformLoad):
             self.TOTAL_HOUSEHOLD_RATIO_INCOME_TO_POVERTY_LEVEL_FIELD_NAME
         ]
 
+        # Percentage of households below 100% FPL
+        # which we get by adding `Total!!Under .50`, `Total!!.50 to .74`, ` Total!!.75 to .99`,
+        # and then dividing by PBG083001 (total)
+        self.df_all[
+            self.PERCENTAGE_HOUSEHOLDS_BELOW_100_PERC_POVERTY_LEVEL_FIELD_NAME
+        ] = (
+            self.df_all[
+                self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_PART_ONE
+            ]
+            + self.df_all[
+                self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_PART_TWO
+            ]
+            + self.df_all[
+                self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_PART_THREE
+            ]
+        ) / self.df_all[
+            self.TOTAL_HOUSEHOLD_RATIO_INCOME_TO_POVERTY_LEVEL_FIELD_NAME
+        ]
+
         # Percentage High School Achievement is
         # Percentage = (Male + Female) / (Total)
         self.df_all[self.PERCENTAGE_HIGH_SCHOOL_ED_FIELD_NAME] = (
             self.df_all[self.MALE_HIGH_SCHOOL_ED_FIELD_NAME]
             + self.df_all[self.FEMALE_HIGH_SCHOOL_ED_FIELD_NAME]
         ) / self.df_all[self.TOTAL_POPULATION_FIELD_NAME]
+
+        # Calculate employment.
+        self.df_all[self.UNEMPLOYMENT_FIELD_NAME] = (
+            self.df_all[self.EMPLOYMENT_MALE_UNEMPLOYED_FIELD]
+            + self.df_all[self.EMPLOYMENT_FEMALE_UNEMPLOYED_FIELD]
+        ) / (
+            self.df_all[self.EMPLOYMENT_MALE_IN_LABOR_FORCE_FIELD]
+            + self.df_all[self.EMPLOYMENT_FEMALE_IN_LABOR_FORCE_FIELD]
+        )
+
+        # Calculate area median income
+        median_income_df = pd.DataFrame(self.ISLAND_TERRITORIES)
+        median_income_df = median_income_df[
+            ["fips", self.TERRITORY_MEDIAN_INCOME_FIELD]
+        ]
+        self.df_all = self.df_all.merge(
+            right=median_income_df, left_on="state", right_on="fips", how="left"
+        )
+        self.df_all[self.AREA_MEDIAN_INCOME_FIELD_NAME] = (
+            self.df_all[self.MEDIAN_INCOME_FIELD_NAME]
+            / self.df_all[self.TERRITORY_MEDIAN_INCOME_FIELD]
+        )
 
         # Creating Geo ID (Census Block Group) Field Name
         self.df_all[self.GEOID_TRACT_FIELD_NAME] = (
@@ -238,9 +389,14 @@ class CensusDecennialETL(ExtractTransformLoad):
 
         columns_to_include = [
             self.GEOID_TRACT_FIELD_NAME,
+            self.TOTAL_POP_FIELD_NAME,
             self.MEDIAN_INCOME_FIELD_NAME,
+            self.TERRITORY_MEDIAN_INCOME_FIELD,
+            self.AREA_MEDIAN_INCOME_FIELD_NAME,
+            self.PERCENTAGE_HOUSEHOLDS_BELOW_100_PERC_POVERTY_LEVEL_FIELD_NAME,
             self.PERCENTAGE_HOUSEHOLDS_BELOW_200_PERC_POVERTY_LEVEL_FIELD_NAME,
             self.PERCENTAGE_HIGH_SCHOOL_ED_FIELD_NAME,
+            self.UNEMPLOYMENT_FIELD_NAME,
         ]
 
         self.df_all[columns_to_include].to_csv(

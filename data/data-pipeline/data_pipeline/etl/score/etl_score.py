@@ -27,6 +27,8 @@ class ScoreETL(ExtractTransformLoad):
         self.national_risk_index_df: pd.DataFrame
         self.geocorr_urban_rural_df: pd.DataFrame
         self.persistent_poverty_df: pd.DataFrame
+        self.census_decennial_df: pd.DataFrame
+        self.census_2010_df: pd.DataFrame
 
     def extract(self) -> None:
         logger.info("Loading data sets from disk.")
@@ -137,6 +139,29 @@ class ScoreETL(ExtractTransformLoad):
             low_memory=False,
         )
 
+        # Load decennial census data
+        census_decennial_csv = (
+            constants.DATA_PATH
+            / "dataset"
+            / "census_decennial_2010"
+            / "usa.csv"
+        )
+        self.census_decennial_df = pd.read_csv(
+            census_decennial_csv,
+            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
+            low_memory=False,
+        )
+
+        # Load 2010 ACS data from states
+        census_2010_csv = (
+            constants.DATA_PATH / "dataset" / "census_acs_2010" / "usa.csv"
+        )
+        self.census_2010_df = pd.read_csv(
+            census_2010_csv,
+            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
+            low_memory=False,
+        )
+
     def _join_tract_dfs(self, census_tract_dfs: list) -> pd.DataFrame:
         logger.info("Joining Census Tract dataframes")
 
@@ -228,6 +253,8 @@ class ScoreETL(ExtractTransformLoad):
             self.persistent_poverty_df,
             self.national_risk_index_df,
             self.census_acs_median_incomes_df,
+            self.census_decennial_df,
+            self.census_2010_df,
         ]
 
         # Sanity check each data frame before merging.
@@ -296,9 +323,16 @@ class ScoreETL(ExtractTransformLoad):
             field_names.HIGH_SCHOOL_ED_FIELD,
             field_names.UNEMPLOYMENT_FIELD,
             field_names.MEDIAN_HOUSE_VALUE_FIELD,
-            field_names.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME,
-            field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME,
-            field_names.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME,
+            field_names.EXPECTED_BUILDING_LOSS_RATE_FIELD,
+            field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD,
+            field_names.EXPECTED_POPULATION_LOSS_RATE_FIELD,
+            field_names.CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009,
+            field_names.CENSUS_DECENNIAL_POVERTY_LESS_THAN_100_FPL_FIELD_2009,
+            field_names.CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009,
+            field_names.CENSUS_UNEMPLOYMENT_FIELD_2010,
+            field_names.CENSUS_POVERTY_LESS_THAN_100_FPL_FIELD_2010,
+            field_names.CENSUS_DECENNIAL_TOTAL_POPULATION_FIELD_2009,
+            field_names.CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009,
         ]
 
         non_numeric_columns = [
@@ -315,9 +349,9 @@ class ScoreETL(ExtractTransformLoad):
         # Convert all columns to numeric and do math
         for col in numeric_columns:
             # Calculate percentiles
-            df_copy[f"{col}{field_names.PERCENTILE_FIELD_SUFFIX}"] = df_copy[col].rank(
-                pct=True
-            )
+            df_copy[f"{col}{field_names.PERCENTILE_FIELD_SUFFIX}"] = df_copy[
+                col
+            ].rank(pct=True)
 
             # Min-max normalization:
             # (
@@ -340,6 +374,20 @@ class ScoreETL(ExtractTransformLoad):
             df_copy[f"{col}{field_names.MIN_MAX_FIELD_SUFFIX}"] = (
                 df_copy[col] - min_value
             ) / (max_value - min_value)
+
+        # Special logic: create a combined population field.
+        # We sometimes run analytics on "population", and this makes a single field
+        # that is either the island area's population in 2009 or the state's
+        # population in 2019.
+        # There should only be one entry in either 2009 or 2019, not one in both.
+        # But just to be safe, we take the mean and ignore null values so if there
+        # *were* entries in both fields, this result would make sense.
+        df_copy[field_names.COMBINED_CENSUS_TOTAL_POPULATION_2010] = df_copy[
+            [
+                field_names.TOTAL_POP_FIELD,
+                field_names.CENSUS_DECENNIAL_TOTAL_POPULATION_FIELD_2009,
+            ]
+        ].mean(axis=1, skipna=True)
 
         return df_copy
 
