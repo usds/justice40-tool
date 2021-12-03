@@ -28,6 +28,10 @@ class CensusDecennialETL(ExtractTransformLoad):
         # https://api.census.gov/data/2010/dec/mp/variables.html
         # https://api.census.gov/data/2010/dec/vi/variables.html
 
+        # Total population field is the same in all island areas
+        self.TOTAL_POP_FIELD = self.TOTAL_POP_VI_FIELD = "P001001"
+        self.TOTAL_POP_FIELD_NAME = "Total population in 2009"
+
         self.MEDIAN_INCOME_FIELD = "PBG049001"
         self.MEDIAN_INCOME_VI_FIELD = "PBG047001"
         self.MEDIAN_INCOME_FIELD_NAME = "Median household income in 2009 ($)"
@@ -149,6 +153,7 @@ class CensusDecennialETL(ExtractTransformLoad):
             self.EMPLOYMENT_MALE_UNEMPLOYED_FIELD,
             self.EMPLOYMENT_FEMALE_IN_LABOR_FORCE_FIELD,
             self.EMPLOYMENT_FEMALE_UNEMPLOYED_FIELD,
+            self.TOTAL_POP_FIELD,
         ]
         var_list = ",".join(var_list)
 
@@ -166,6 +171,7 @@ class CensusDecennialETL(ExtractTransformLoad):
             self.EMPLOYMENT_MALE_UNEMPLOYED_VI_FIELD,
             self.EMPLOYMENT_FEMALE_IN_LABOR_FORCE_VI_FIELD,
             self.EMPLOYMENT_FEMALE_UNEMPLOYED_VI_FIELD,
+            self.TOTAL_POP_VI_FIELD,
         ]
         var_list_vi = ",".join(var_list_vi)
 
@@ -287,6 +293,11 @@ class CensusDecennialETL(ExtractTransformLoad):
         # Combine the dfs after renaming
         self.df_all = pd.concat([self.df, self.df_vi])
 
+        # Rename total population:
+        self.df_all[self.TOTAL_POP_FIELD_NAME] = self.df_all[
+            self.TOTAL_POP_FIELD
+        ]
+
         # Percentage of households below 200% which is
         # [PBG083001 (total) - PBG083010 (num households over 200%)] / PBG083001 (total)
         self.df_all[
@@ -355,6 +366,7 @@ class CensusDecennialETL(ExtractTransformLoad):
 
         columns_to_include = [
             self.GEOID_TRACT_FIELD_NAME,
+            self.TOTAL_POP_FIELD_NAME,
             self.MEDIAN_INCOME_FIELD_NAME,
             self.PERCENTAGE_HOUSEHOLDS_BELOW_100_PERC_POVERTY_LEVEL_FIELD_NAME,
             self.PERCENTAGE_HOUSEHOLDS_BELOW_200_PERC_POVERTY_LEVEL_FIELD_NAME,

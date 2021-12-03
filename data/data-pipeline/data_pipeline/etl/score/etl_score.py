@@ -252,7 +252,7 @@ class ScoreETL(ExtractTransformLoad):
             self.national_risk_index_df,
             self.census_acs_median_incomes_df,
             self.census_decennial_df,
-            self.census_2010_df
+            self.census_2010_df,
         ]
 
         # Sanity check each data frame before merging.
@@ -324,9 +324,12 @@ class ScoreETL(ExtractTransformLoad):
             field_names.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME,
             field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME,
             field_names.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME,
-            field_names.CENSUS_DECENNIAL_MEDIAN_INCOME_2009,
-            field_names.CENSUS_DECENNIAL_POVERTY_LESS_THAN_200_FPL_FIELD_2009,
-            field_names.CENSUS_DECENNIAL_MEDIAN_INCOME_2009,
+            field_names.CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009,
+            field_names.CENSUS_DECENNIAL_POVERTY_LESS_THAN_100_FPL_FIELD_2009,
+            field_names.CENSUS_DECENNIAL_UNEMPLOYMENT_2009,
+            field_names.CENSUS_UNEMPLOYMENT_2010,
+            field_names.CENSUS_POVERTY_LESS_THAN_100_FPL_FIELD_2010,
+            field_names.CENSUS_DECENNIAL_TOTAL_POPULATION_2009,
         ]
 
         non_numeric_columns = [
