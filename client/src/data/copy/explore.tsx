@@ -57,6 +57,16 @@ export const MAP = defineMessages({
     defaultMessage: 'Zoom in to the state or regional level to see prioritized communities on the map.',
     description: 'zoom warning on map',
   },
+  SEARCH_PLACEHOLDER: {
+    id: 'map.search.placeholder.text',
+    defaultMessage: 'Enter a city, state or ZIP',
+    description: 'placeholder text for search',
+  },
+  SEARCH_RESULTS_EMPTY_MESSAGE: {
+    id: 'map.search.results.empty.text',
+    defaultMessage: 'No location found. Please try another location.',
+    description: 'text displaying message for no search results found',
+  },
   LOWER48_SHORT: {
     id: 'map.territoryFocus.lower48.short',
     defaultMessage: '48',
@@ -97,15 +107,45 @@ export const MAP = defineMessages({
     defaultMessage: 'Puerto Rico',
     description: 'The full name indicating the bounds of Puerto Rico',
   },
-  SEARCH_PLACEHOLDER: {
-    id: 'map.search.placeholder.text',
-    defaultMessage: 'Enter a city, state or ZIP',
-    description: 'placeholder text for search',
+  GU_SHORT: {
+    id: 'map.territoryFocus.guam.short',
+    defaultMessage: 'GU',
+    description: 'The abbreviated name indicating the bounds of Guam',
   },
-  SEARCH_RESULTS_EMPTY_MESSAGE: {
-    id: 'map.search.results.empty.text',
-    defaultMessage: 'No location found. Please try another location.',
-    description: 'text displaying message for no search results found',
+  GU_LONG: {
+    id: 'map.territoryFocus.guam.long',
+    defaultMessage: 'Guam',
+    description: 'The full name indicating the bounds of Guam',
+  },
+  AS_SHORT: {
+    id: 'map.territoryFocus.american.samoa.short',
+    defaultMessage: 'AS',
+    description: 'The abbreviated name indicating the bounds of American Somoa',
+  },
+  AS_LONG: {
+    id: 'map.territoryFocus.american.samoa.long',
+    defaultMessage: 'American Somoa',
+    description: 'The full name indicating the bounds of American Somoa',
+  },
+  MP_SHORT: {
+    id: 'map.territoryFocus.commonwealth.nmp.short',
+    defaultMessage: 'MP',
+    description: 'The abbreviated name indicating the bounds of Commonwealth of Northern Mariana Islands',
+  },
+  MP_LONG: {
+    id: 'map.territoryFocus.commonwealth.nmp.long',
+    defaultMessage: 'Commonwealth of Northern Mariana Islands',
+    description: 'The full name indicating the bounds of Commonwealth of Northern Mariana Islands',
+  },
+  VI_SHORT: {
+    id: 'map.territoryFocus.us.virgin.islands.short',
+    defaultMessage: 'VI',
+    description: 'The abbreviated name indicating the bounds of US Virgin Islands',
+  },
+  VI_LONG: {
+    id: 'map.territoryFocus.us.virgin.islands.long',
+    defaultMessage: 'US Virgin Islands',
+    description: 'The full name indicating the bounds of US Virgin Islands',
   },
 });
 

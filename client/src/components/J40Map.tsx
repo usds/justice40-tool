@@ -140,6 +140,10 @@ const J40Map = ({location}: IJ40Interface) => {
     event.stopPropagation();
     const buttonID = event.target && (event.target as HTMLElement).id;
 
+    // Todo: This handler fires three times for every click on the territory button. This could be
+    // related to why the cypress tests are failing as well.
+    console.log(buttonID);
+
     switch (buttonID) {
       case '48':
         goToPlace(constants.LOWER_48_BOUNDS);
@@ -152,6 +156,18 @@ const J40Map = ({location}: IJ40Interface) => {
         break;
       case 'PR':
         goToPlace(constants.PUERTO_RICO_BOUNDS);
+        break;
+      case 'GU':
+        goToPlace(constants.GUAM_BOUNDS);
+        break;
+      case 'AS':
+        goToPlace(constants.AMERICAN_SAMOA_BOUNDS);
+        break;
+      case 'MP':
+        goToPlace(constants.MARIANA_ISLAND_BOUNDS);
+        break;
+      case 'VI':
+        goToPlace(constants.US_VIRGIN_ISLANDS_BOUNDS);
         break;
 
       default:
