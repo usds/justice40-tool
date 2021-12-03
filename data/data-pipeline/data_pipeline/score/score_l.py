@@ -13,6 +13,8 @@ class ScoreL(Score):
         self.LOW_INCOME_THRESHOLD: float = 0.65
         self.ENVIRONMENTAL_BURDEN_THRESHOLD: float = 0.90
         self.MEDIAN_HOUSE_VALUE_THRESHOLD: float = 0.90
+        self.LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD: float = 0.10
+
         super().__init__(df)
 
     def _combine_island_areas_with_states_and_set_thresholds(
@@ -416,7 +418,8 @@ class ScoreL(Score):
             )
         )
         workforce_combined_criteria_for_states = (
-            self.df[field_names.HIGH_SCHOOL_ED_FIELD] >= 0.10
+            self.df[field_names.HIGH_SCHOOL_ED_FIELD]
+            >= self.LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD
         ) & workforce_criteria_for_states
 
         # Now, calculate workforce criteria for island territories.
@@ -461,5 +464,28 @@ class ScoreL(Score):
             | self.df[poverty_island_areas_criteria_field_name]
         ) & (
             self.df[field_names.CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009]
-            > 0.05
+            > self.LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD
+        )
+
+        percent_of_island_tracts_highlighted = (
+            100
+            * workforce_combined_criteria_for_island_areas.sum()
+            # Choosing a random column from island areas to calculate the denominator.
+            / self.df[field_names.CENSUS_DECENNIAL_UNEMPLOYMENT_2009]
+            .notnull()
+            .sum()
+        )
+
+        logger.info(
+            f"For workforce criteria in island areas, "
+            f"{workforce_combined_criteria_for_island_areas.sum()} ("
+            f"{percent_of_island_tracts_highlighted:.2f}% of tracts that have non-null data "
+            f"in the column) have a value of TRUE."
+        )
+
+        # A tract is included if it meets either the states tract criteria or the
+        # island areas tract criteria.
+        return (
+            workforce_combined_criteria_for_states
+            | workforce_combined_criteria_for_island_areas
         )
