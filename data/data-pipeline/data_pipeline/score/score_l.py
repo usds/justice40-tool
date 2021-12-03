@@ -224,6 +224,7 @@ class ScoreL(Score):
         self.df[
             field_names.ABOVE_90TH_FOR_COST_BURDEN_LOW_INCOME
         ] = threshold_one
+
         self.df[field_names.PM25_LOW_INCOME] = threshold_two
 
         energy_criteria = (
@@ -278,6 +279,7 @@ class ScoreL(Score):
         self.df[
             field_names.DIESEL_PARTICULATE_MATTER_LOW_INCOME
         ] = threshold_one
+
         self.df[field_names.TRAFFIC_PROXIMITY_MATTER_LOW_INCOME] = threshold_two
 
         transportation_criteria = (
@@ -307,6 +309,15 @@ class ScoreL(Score):
         # Low income: In 60th percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
+
+        FPL_200 = (
+            self.df[
+                field_names.POVERTY_LESS_THAN_200_FPL_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.LOW_INCOME_THRESHOLD
+        )
+
         housing_criteria = (
             (
                 self.df[
@@ -350,24 +361,12 @@ class ScoreL(Score):
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
-        ) & (
-            self.df[
-                field_names.POVERTY_LESS_THAN_200_FPL_FIELD
-                + field_names.PERCENTILE_FIELD_SUFFIX
-            ]
-            >= self.LOW_INCOME_THRESHOLD
-        )
+        ) & FPL_200
 
         self.df[field_names.LEAD_PAINT_HOME_VALUE] = threshold_one
         self.df[field_names.HOUSING_BURDEN_LOW_INCOME] = threshold_two
 
-        return (
-            self.df[
-                field_names.POVERTY_LESS_THAN_200_FPL_FIELD
-                + field_names.PERCENTILE_FIELD_SUFFIX
-            ]
-            >= self.LOW_INCOME_THRESHOLD
-        ) & housing_criteria
+        return FPL_200 & housing_criteria
 
     def _pollution_factor(self) -> bool:
         # Proximity to Risk Management Plan sites is > X
