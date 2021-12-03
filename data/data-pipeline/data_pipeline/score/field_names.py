@@ -188,3 +188,34 @@ EJSCREEN_AREAS_OF_CONCERN_STATE_90TH_PERCENTILE_COMMUNITIES_FIELD = (
 EJSCREEN_AREAS_OF_CONCERN_STATE_95TH_PERCENTILE_COMMUNITIES_FIELD = (
     "EJSCREEN Areas of Concern, State, 95th percentile (communities)"
 )
+
+# Community Threshold Field Names for Derived columns (Issue 921)
+
+# Climate Change
+FEMA_LOSS_RATE_LOW_INCOME = "At or above the 90th percentile for FEMA's expected loss rate and is low income"
+# Clean energy and efficiency
+PM25_LOW_INCOME = "PM2.5 exposure and is low income"
+ABOVE_90TH_FOR_COST_BURDEN_LOW_INCOME = "At or above the 90th percentile for energy cost burden score and is low income"
+# Clean transportation
+DIESEL_PARTICULATE_MATTER_LOW_INCOME = "At or above the 90th percentile for diesel particulate matter and is low income"
+TRAFFIC_PROXIMITY_MATTER_LOW_INCOME = "Traffic Proximity and is low income"
+# Affordable and Sustainable Housing
+LEAD_PAINT_HOME_VALUE = "At or above the 90th percentile for lead paint and the median house value is less than 90th percentile"
+HOUSING_BURDEN_LOW_INCOME = "At or above the 90th percentile for housing cost burden and is low income"
+# Remediation and Reduction of Legacy Pollution
+RMP_LOW_INCOME = "At or above the 90th percentile for proximity to RMP sites and is low income"
+SUPERFUND_LOW_INCOME = "At or above 90th percentile for proximity to superfund sites and is low income"
+HAZARDOUS_WASTE_LOW_INCOME = "At or above above 90th percentile for proximity to hazardous waste facilities and is low income"
+# Critical Clean Water and Waste Infrastructure
+WASTEWATER_LOW_INCOME = "At or above above 90th percentile for wastewater discharge and is low income"
+# Health Burden
+DIABETES_LOW_INCOME = "At or above the 90th percentile for diabetes and is low income"
+ASTHMA_LOW_INCOME = "At or above the 90th percentile for asthma and is low income"
+HEART_DISEASE_LOW_INCOME = "At or above the 90th percentile for heart disease and is low income"
+LIFE_EXPECTANCY_INCOME = "At or above the 90th percentile fo life expectancy and is low income"
+# Workforce
+UNEMPLOYMENT_HIGH_SCHOOL_ATTAINMENT = "At or above the 90th percentile for unemployment and Where the high school degree achievement rate for adults 25 years and older is less than 90%"
+LINGUISTIC_ISOLATION_HIGH_SCHOOL_ATTAINMENT =  "At or above the 90th percentile for linguistic isolation and where the high school degree achievement rate for adults 25 years and older is less than 90%"
+POVERTY_HIGH_SCHOOL_ATTAINMENT = "At or above the 90th percentile for households at or below 100 percent of federal poverty level Where the high school degree achievement rate for adults 25 years and older is less than 90%"
+MEDIAN_INCOME_HIGH_SCHOOL_ATTAINMENT  ="At or below the 90th percentile for median income Where the high school degree achievement rate for adults 25 years and older is less than 90%"
+
