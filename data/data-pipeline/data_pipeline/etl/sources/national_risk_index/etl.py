@@ -119,8 +119,6 @@ class NationalRiskIndexETL(ExtractTransformLoad):
             "WNTW",  # Winter Weather
         ]
 
-        self.df = df_nri
-
         # Some disaster categories do not have agriculture value column
         agriculture_columns = [
             f"{x}_EALA"
@@ -165,6 +163,8 @@ class NationalRiskIndexETL(ExtractTransformLoad):
             disaster_buildings_sum_series
             / df_nri[self.BUILDING_VALUE_INPUT_FIELD_NAME]
         )
+
+        self.df = df_nri
 
     def load(self) -> None:
         """Writes the NRI data as a csv to the directory at self.OUTPUT_DIR"""

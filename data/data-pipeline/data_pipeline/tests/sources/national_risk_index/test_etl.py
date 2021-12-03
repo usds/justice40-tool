@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 from data_pipeline.config import settings
 from data_pipeline.tests.conftest import copy_data_files
@@ -49,6 +50,11 @@ class TestNationalRiskIndexETL:
         input_src = DATA_DIR / "input.csv"
         input_dst = etl.INPUT_CSV
         acs_src = DATA_DIR / "acs.csv"
+        # Lucas raised this as a lingering artifact. We have a
+        # utility function that requires both a source and destination as arguments
+        # (shutil module)
+        # We need to figure out if we just refactor the utlity function to handle
+        # just acs_src in order to remove this block reference
         acs_dst = etl.BLOCK_GROUP_CSV
         for src, dst in [(input_src, input_dst), (acs_src, acs_dst)]:
             copy_data_files(src, dst)
@@ -66,7 +72,7 @@ class TestNationalRiskIndexETL:
 
         # validation
         assert etl.df.shape == (55, 370)
-        pd.testing.assert_frame_equal(etl.df, expected)
+        pd.testing.assert_frame_equal(etl.df, expected, check_less_precise=True)
 
     def test_load(self, mock_etl):
         """Tests the load() method for NationalRiskIndexETL
