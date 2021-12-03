@@ -372,6 +372,20 @@ class ScoreETL(ExtractTransformLoad):
                 df_copy[col] - min_value
             ) / (max_value - min_value)
 
+        # Special logic: create a combined population field.
+        # We sometimes run analytics on "population", and this makes a single field
+        # that is either the island area's population in 2009 or the state's
+        # population in 2019.
+        # There should only be one entry in either 2009 or 2019, not one in both.
+        # But just to be safe, we take the mean and ignore null values so if there
+        # *were* entries in both fields, this result would make sense.
+        df_copy[field_names.COMBINED_CENSUS_TOTAL_POPULATION_2010] = df_copy[
+            [
+                field_names.TOTAL_POP_FIELD,
+                field_names.CENSUS_DECENNIAL_TOTAL_POPULATION_2009,
+            ]
+        ].mean(axis=1, skipna=True)
+
         return df_copy
 
     def transform(self) -> None:
