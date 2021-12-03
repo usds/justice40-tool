@@ -57,13 +57,13 @@ AMI_FIELD = "Area Median Income (State or metropolitan)"
 
 # Climate
 FEMA_RISK_FIELD = "FEMA Risk Index Expected Annual Loss Score"
-EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME = (
+EXPECTED_BUILDING_LOSS_RATE_FIELD = (
     "Expected building loss rate (Natural Hazards Risk Index)"
 )
-EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME = (
+EXPECTED_AGRICULTURE_LOSS_RATE_FIELD = (
     "Expected agricultural loss rate (Natural Hazards Risk Index)"
 )
-EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME = (
+EXPECTED_POPULATION_LOSS_RATE_FIELD = (
     "Expected population loss rate (Natural Hazards Risk Index)"
 )
 
@@ -119,18 +119,18 @@ OVER_64_FIELD = "Individuals over 64 years old"
 
 # Fields from 2010 decennial census (generally only loaded for the territories)
 CENSUS_DECENNIAL_MEDIAN_INCOME_2009 = "Median household income in 2009 ($)"
-CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_2009 = (
+CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009 = (
     "Median household income as a percent of territory median income in 2009"
 )
 CENSUS_DECENNIAL_POVERTY_LESS_THAN_100_FPL_FIELD_2009 = (
     "Percentage households below 100% of federal poverty line in 2009"
 )
 CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009 = "Percent individuals age 25 or over with less than high school degree in 2009"
-CENSUS_DECENNIAL_UNEMPLOYMENT_2009 = "Unemployed civilians (percent) in 2009"
-CENSUS_DECENNIAL_TOTAL_POPULATION_2009 = "Total population in 2009"
+CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009 = "Unemployed civilians (percent) in 2009"
+CENSUS_DECENNIAL_TOTAL_POPULATION_FIELD_2009 = "Total population in 2009"
 
 # Fields from 2010 ACS (loaded for comparison with the territories)
-CENSUS_UNEMPLOYMENT_2010 = "Unemployed civilians (percent) in 2010"
+CENSUS_UNEMPLOYMENT_FIELD_2010 = "Unemployed civilians (percent) in 2010"
 CENSUS_POVERTY_LESS_THAN_100_FPL_FIELD_2010 = (
     "Percent of individuals < 100% Federal Poverty Line in 2010"
 )

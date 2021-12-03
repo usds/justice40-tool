@@ -146,21 +146,21 @@ class ScoreL(Score):
         climate_criteria = (
             (
                 self.df[
-                    field_names.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME
+                    field_names.EXPECTED_BUILDING_LOSS_RATE_FIELD
                     + field_names.PERCENTILE_FIELD_SUFFIX
                 ]
                 >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             | (
                 self.df[
-                    field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME
+                    field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD
                     + field_names.PERCENTILE_FIELD_SUFFIX
                 ]
                 >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             | (
                 self.df[
-                    field_names.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME
+                    field_names.EXPECTED_POPULATION_LOSS_RATE_FIELD
                     + field_names.PERCENTILE_FIELD_SUFFIX
                 ]
                 >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
@@ -441,8 +441,8 @@ class ScoreL(Score):
             unemployment_island_areas_criteria_field_name,
         ) = self._combine_island_areas_with_states_and_set_thresholds(
             df=self.df,
-            column_from_island_areas=field_names.CENSUS_DECENNIAL_UNEMPLOYMENT_2009,
-            column_from_decennial_census=field_names.CENSUS_UNEMPLOYMENT_2010,
+            column_from_island_areas=field_names.CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009,
+            column_from_decennial_census=field_names.CENSUS_UNEMPLOYMENT_FIELD_2010,
             combined_column_name=field_names.COMBINED_UNEMPLOYMENT_2010,
             threshold_cutoff_for_island_areas=self.ENVIRONMENTAL_BURDEN_THRESHOLD,
         )
@@ -466,7 +466,7 @@ class ScoreL(Score):
             # within the islands.
             | (
                 self.df[
-                    field_names.CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_2009
+                    field_names.CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009
                     + field_names.PERCENTILE_FIELD_SUFFIX
                 ]
                 # Note: a high median income as a % of AMI is good, so take 1 minus the threshold to invert it.
@@ -482,7 +482,7 @@ class ScoreL(Score):
             100
             * workforce_combined_criteria_for_island_areas.sum()
             # Choosing a random column from island areas to calculate the denominator.
-            / self.df[field_names.CENSUS_DECENNIAL_UNEMPLOYMENT_2009]
+            / self.df[field_names.CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009]
             .notnull()
             .sum()
         )

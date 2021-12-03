@@ -323,16 +323,16 @@ class ScoreETL(ExtractTransformLoad):
             field_names.HIGH_SCHOOL_ED_FIELD,
             field_names.UNEMPLOYMENT_FIELD,
             field_names.MEDIAN_HOUSE_VALUE_FIELD,
-            field_names.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME,
-            field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME,
-            field_names.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME,
+            field_names.EXPECTED_BUILDING_LOSS_RATE_FIELD,
+            field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD,
+            field_names.EXPECTED_POPULATION_LOSS_RATE_FIELD,
             field_names.CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009,
             field_names.CENSUS_DECENNIAL_POVERTY_LESS_THAN_100_FPL_FIELD_2009,
-            field_names.CENSUS_DECENNIAL_UNEMPLOYMENT_2009,
-            field_names.CENSUS_UNEMPLOYMENT_2010,
+            field_names.CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009,
+            field_names.CENSUS_UNEMPLOYMENT_FIELD_2010,
             field_names.CENSUS_POVERTY_LESS_THAN_100_FPL_FIELD_2010,
-            field_names.CENSUS_DECENNIAL_TOTAL_POPULATION_2009,
-            field_names.CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_2009,
+            field_names.CENSUS_DECENNIAL_TOTAL_POPULATION_FIELD_2009,
+            field_names.CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009,
         ]
 
         non_numeric_columns = [
@@ -385,7 +385,7 @@ class ScoreETL(ExtractTransformLoad):
         df_copy[field_names.COMBINED_CENSUS_TOTAL_POPULATION_2010] = df_copy[
             [
                 field_names.TOTAL_POP_FIELD,
-                field_names.CENSUS_DECENNIAL_TOTAL_POPULATION_2009,
+                field_names.CENSUS_DECENNIAL_TOTAL_POPULATION_FIELD_2009,
             ]
         ].mean(axis=1, skipna=True)
 
