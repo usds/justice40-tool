@@ -173,5 +173,5 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         # write nationwide csv
         self.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
         self.df[self.COLUMNS_TO_KEEP].to_csv(
-            self.OUTPUT_DIR / "usa.csv", index=False
+            self.OUTPUT_DIR / "usa.csv", index=False, float_format="%.10f"
         )

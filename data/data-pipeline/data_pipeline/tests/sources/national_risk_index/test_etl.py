@@ -64,7 +64,7 @@ class TestNationalRiskIndexETL:
 
         # validation
         assert etl.df.shape == (55, 370)
-        pd.testing.assert_frame_equal(etl.df, expected, rtol = 1e-6, atol = 1e-6)
+        pd.testing.assert_frame_equal(etl.df, expected, rtol=1e-10, atol=1e-10)
 
     def test_load(self, mock_etl):
         """Tests the load() method for NationalRiskIndexETL
@@ -95,4 +95,4 @@ class TestNationalRiskIndexETL:
         # validation
         assert output_path.exists()
         assert output.shape == (55, 5)
-        pd.testing.assert_frame_equal(output, expected)
+        pd.testing.assert_frame_equal(output, expected, rtol=1e-10, atol=1e-10)
