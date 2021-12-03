@@ -27,6 +27,8 @@ class ScoreETL(ExtractTransformLoad):
         self.national_risk_index_df: pd.DataFrame
         self.geocorr_urban_rural_df: pd.DataFrame
         self.persistent_poverty_df: pd.DataFrame
+        self.census_decennial_df: pd.DataFrame
+        self.census_2010_df: pd.DataFrame
 
     def extract(self) -> None:
         logger.info("Loading data sets from disk.")

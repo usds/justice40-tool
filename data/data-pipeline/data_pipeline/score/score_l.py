@@ -34,9 +34,19 @@ class ScoreL(Score):
             3. Create a boolean series that is true for any census tract in the island
                 areas (and only the island areas) that exceeds this cutoff.
 
-        """
+        For step one, it combines data that is either the island area's Decennial Census
+        value in 2009 or the state's value in 5-year ACS ending in 2010.
 
+        This will be used to generate the percentile cutoff for the 90th percentile.
+
+        The stateside decennial census stopped asking economic comparisons,
+        so this is as close to apples-to-apples as we get. We use 5-year ACS for data
+        robustness over 1-year ACS.
+        """
         # Create the combined field.
+        # There should only be one entry in either 2009 or 2019 fields, not one in both.
+        # But just to be safe, we take the mean and ignore null values so if there
+        # *were* entries in both, this result would make sense.
         df[combined_column_name] = df[
             [column_from_island_areas, column_from_decennial_census]
         ].mean(axis=1, skipna=True)
@@ -424,17 +434,7 @@ class ScoreL(Score):
 
         # Now, calculate workforce criteria for island territories.
 
-        # First, for a couple of values, create a combined field
-        # that is either the island area's Decennial Census value in 2009 or the state's
-        # value in 5-year ACS ending in 2010.
-        # This will be used to generate the percentile cutoff for the 90th percentile.
-        # The stateside decennial census stopped asking economic comparisons,
-        # so this is as close to apples-to-apples as we get.
-        # Use 5-year ACS for data robustness over 1-year ACS.
-        # There should only be one entry in either 2009 or 2019, not one in both.
-        # But just to be safe, we take the mean and ignore null values so if there
-        # *were* entries in both, this result would make sense.
-
+        # F a couple of values, create a combined field and criteria field.
         # First, combine unemployment.
         (
             self.df,

@@ -17,6 +17,7 @@ class EJSCREENETL(ExtractTransformLoad):
         self.COLUMNS_TO_KEEP = [
             self.GEOID_TRACT_FIELD_NAME,
             field_names.TOTAL_POP_FIELD,
+            # pylint: disable=duplicate-code
             field_names.AIR_TOXICS_CANCER_RISK_FIELD,
             field_names.RESPITORY_HAZARD_FIELD,
             field_names.DIESEL_FIELD,

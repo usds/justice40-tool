@@ -361,25 +361,13 @@ class CensusDecennialETL(ExtractTransformLoad):
         median_income_df = median_income_df[
             ["fips", self.TERRITORY_MEDIAN_INCOME_FIELD]
         ]
-
-        logger.info(median_income_df)
-
         self.df_all = self.df_all.merge(
             right=median_income_df, left_on="state", right_on="fips", how="left"
         )
-
         self.df_all[self.AREA_MEDIAN_INCOME_FIELD_NAME] = (
             self.df_all[self.MEDIAN_INCOME_FIELD_NAME]
             / self.df_all[self.TERRITORY_MEDIAN_INCOME_FIELD]
         )
-
-        # delete
-        self.df_all.to_csv(
-            path_or_buf=self.DATA_PATH / "dataset/terr_median_incomes.csv",
-            index=False,
-        )
-
-        logger.info(self.df_all)
 
         # Creating Geo ID (Census Block Group) Field Name
         self.df_all[self.GEOID_TRACT_FIELD_NAME] = (

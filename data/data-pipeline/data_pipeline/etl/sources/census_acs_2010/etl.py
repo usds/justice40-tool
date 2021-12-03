@@ -1,9 +1,7 @@
 import pandas as pd
-import censusdata
 
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.sources.census_acs.etl import CensusACSETL
-from data_pipeline.etl.sources.census.etl_utils import get_state_fips_codes
 from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
@@ -25,10 +23,22 @@ class CensusACS2010ETL(ExtractTransformLoad):
         )
 
         # Employment fields
-        self.EMPLOYMENT_LESS_THAN_HS_UNEMPLOYED = "B23006_007E"  # Estimate!!Total!!Less than high school graduate!!In labor force!!Civilian!!Unemployed
-        self.EMPLOYMENT_HS_GRADUATE_UNEMPLOYED = "B23006_014E"  # Estimate!!Total!!High school graduate!!In labor force!!Civilian!!Unemployed
-        self.EMPLOYMENT_SOME_COLLEGE_UNEMPLOYED = "B23006_021E"  # Estimate!!Total!!Some college or associate's degree!!In labor force!!Civilian!!Unemployed
-        self.EMPLOYMENT_COLLEGE_UNEMPLOYED = "B23006_028E"  # Estimate!!Total!!Bachelor's degree or higher!!In labor force!!Civilian!!Unemployed
+        self.EMPLOYMENT_LESS_THAN_HS_UNEMPLOYED = (
+            "B23006_007E"
+            # Estimate!!Total!!Less than high school graduate!!In labor force!!Civilian!!Unemployed
+        )
+        self.EMPLOYMENT_HS_GRADUATE_UNEMPLOYED = (
+            "B23006_014E"
+            # Estimate!!Total!!High school graduate!!In labor force!!Civilian!!Unemployed
+        )
+        self.EMPLOYMENT_SOME_COLLEGE_UNEMPLOYED = (
+            "B23006_021E"
+            # Estimate!!Total!!Some college or associate's degree!!In labor force!!Civilian!!Unemployed
+        )
+        self.EMPLOYMENT_COLLEGE_UNEMPLOYED = (
+            "B23006_028E"
+            # Estimate!!Total!!Bachelor's degree or higher!!In labor force!!Civilian!!Unemployed
+        )
 
         self.UNEMPLOYED_FIELDS = [
             self.EMPLOYMENT_LESS_THAN_HS_UNEMPLOYED,
@@ -37,10 +47,23 @@ class CensusACS2010ETL(ExtractTransformLoad):
             self.EMPLOYMENT_COLLEGE_UNEMPLOYED,
         ]
 
-        self.EMPLOYMENT_LESS_THAN_HS_IN_LABOR_FORCE = "B23006_002MA"  # Annotation of Margin of Error!!Total!!Less than high school graduate
-        self.EMPLOYMENT_HS_GRADUATE_IN_LABOR_FORCE = "B23006_010E"  # Estimate!!Total!!High school graduate!!In labor force
-        self.EMPLOYMENT_SOME_COLLEGE_IN_LABOR_FORCE = "B23006_017E"  # Estimate!!Total!!Some college or associate's degree!!In labor force
-        self.EMPLOYMENT_COLLEGE_IN_LABOR_FORCE = "B23006_024E"  # Estimate!!Total!!Bachelor's degree or higher!!In labor force
+        self.EMPLOYMENT_LESS_THAN_HS_IN_LABOR_FORCE = (
+            # TODO: FIX!!!!!!
+            "B23006_005E"
+            # Estimate!!Total!!Less than high school graduate!!In labor force!!Civilian
+        )
+        self.EMPLOYMENT_HS_GRADUATE_IN_LABOR_FORCE = (
+            "B23006_010E"
+            # Estimate!!Total!!High school graduate!!In labor force
+        )
+        self.EMPLOYMENT_SOME_COLLEGE_IN_LABOR_FORCE = (
+            "B23006_017E"
+            # Estimate!!Total!!Some college or associate's degree!!In labor force
+        )
+        self.EMPLOYMENT_COLLEGE_IN_LABOR_FORCE = (
+            "B23006_024E"
+            # Estimate!!Total!!Bachelor's degree or higher!!In labor force
+        )
 
         self.IN_LABOR_FORCE_FIELDS = [
             self.EMPLOYMENT_LESS_THAN_HS_IN_LABOR_FORCE,
@@ -76,7 +99,6 @@ class CensusACS2010ETL(ExtractTransformLoad):
         self.df: pd.DataFrame
 
     def extract(self) -> None:
-
         # Define the variables to retrieve
         variables = (
             self.UNEMPLOYED_FIELDS
@@ -99,7 +121,6 @@ class CensusACS2010ETL(ExtractTransformLoad):
 
         # Calculate percent unemployment.
         # TODO: remove small-sample data that should be `None` instead of a high-variance fraction.
-
         unemployed_totals = df[self.UNEMPLOYED_FIELDS].sum(axis=1)
         labor_force_totals = df[self.IN_LABOR_FORCE_FIELDS].sum(axis=1)
 
@@ -145,7 +166,8 @@ class CensusACS2010ETL(ExtractTransformLoad):
 
         output_df = self.df[columns_to_include]
 
-        # Add the year to the end of every column, so when it's all joined, it's obvious which years this is from.
+        # Add the year to the end of every column, so when it's all joined in the
+        # score df, it's obvious which year this data is from.
         for column in columns_to_include:
             if column != self.GEOID_TRACT_FIELD_NAME:
                 output_df = output_df.rename(

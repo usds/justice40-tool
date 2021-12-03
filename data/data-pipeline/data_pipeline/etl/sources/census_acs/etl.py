@@ -1,6 +1,6 @@
+from typing import List
 import censusdata
 import pandas as pd
-from typing import List
 
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.sources.census.etl_utils import get_state_fips_codes
