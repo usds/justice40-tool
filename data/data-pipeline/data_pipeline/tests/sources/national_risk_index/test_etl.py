@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 
 from data_pipeline.config import settings
 from data_pipeline.tests.conftest import copy_data_files
@@ -72,7 +71,7 @@ class TestNationalRiskIndexETL:
 
         # validation
         assert etl.df.shape == (55, 370)
-        pd.testing.assert_frame_equal(etl.df, expected, check_less_precise=True)
+        pd.testing.assert_frame_equal(etl.df, expected, rtol = 1e-6, atol = 1e-6)
 
     def test_load(self, mock_etl):
         """Tests the load() method for NationalRiskIndexETL
