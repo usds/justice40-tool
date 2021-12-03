@@ -70,21 +70,21 @@ class ScoreL(Score):
                     field_names.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME
                     + field_names.PERCENTILE_FIELD_SUFFIX
                 ]
-                > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+                >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             | (
                 self.df[
                     field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME
                     + field_names.PERCENTILE_FIELD_SUFFIX
                 ]
-                > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+                >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             | (
                 self.df[
                     field_names.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME
                     + field_names.PERCENTILE_FIELD_SUFFIX
                 ]
-                > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+                >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
         )
 
@@ -93,7 +93,7 @@ class ScoreL(Score):
                 field_names.POVERTY_LESS_THAN_200_FPL_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
-            > self.LOW_INCOME_THRESHOLD
+            >= self.LOW_INCOME_THRESHOLD
         ) & climate_criteria
 
     def _energy_factor(self) -> bool:
@@ -107,12 +107,12 @@ class ScoreL(Score):
                 field_names.ENERGY_BURDEN_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
-            > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         ) | (
             self.df[
                 field_names.PM25_FIELD + field_names.PERCENTILE_FIELD_SUFFIX
             ]
-            > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
         return (
@@ -120,7 +120,7 @@ class ScoreL(Score):
                 field_names.POVERTY_LESS_THAN_200_FPL_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
-            > self.LOW_INCOME_THRESHOLD
+            >= self.LOW_INCOME_THRESHOLD
         ) & energy_criteria
 
     def _transportation_factor(self) -> bool:
@@ -137,12 +137,12 @@ class ScoreL(Score):
             self.df[
                 field_names.DIESEL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX
             ]
-            > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         ) | (
             self.df[
                 field_names.TRAFFIC_FIELD + field_names.PERCENTILE_FIELD_SUFFIX
             ]
-            > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
         return (
@@ -150,7 +150,7 @@ class ScoreL(Score):
                 field_names.POVERTY_LESS_THAN_200_FPL_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
-            > self.LOW_INCOME_THRESHOLD
+            >= self.LOW_INCOME_THRESHOLD
         ) & transportation_criteria
 
     def _housing_factor(self) -> bool:
@@ -172,28 +172,28 @@ class ScoreL(Score):
                     field_names.LEAD_PAINT_FIELD
                     + field_names.PERCENTILE_FIELD_SUFFIX
                 ]
-                > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+                >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             & (
                 self.df[
                     field_names.MEDIAN_HOUSE_VALUE_FIELD
                     + field_names.PERCENTILE_FIELD_SUFFIX
                 ]
-                < self.MEDIAN_HOUSE_VALUE_THRESHOLD
+                <= self.MEDIAN_HOUSE_VALUE_THRESHOLD
             )
         ) | (
             self.df[
                 field_names.HOUSING_BURDEN_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
-            > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
         return (
             self.df[
                 field_names.POVERTY_LESS_THAN_200_FPL_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
-            > self.LOW_INCOME_THRESHOLD
+            >= self.LOW_INCOME_THRESHOLD
         ) & housing_criteria
 
     def _pollution_factor(self) -> bool:
@@ -219,7 +219,7 @@ class ScoreL(Score):
                 field_names.POVERTY_LESS_THAN_200_FPL_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
-            > self.LOW_INCOME_THRESHOLD
+            >= self.LOW_INCOME_THRESHOLD
         )
 
     def _water_factor(self) -> bool:
@@ -233,13 +233,13 @@ class ScoreL(Score):
                 field_names.POVERTY_LESS_THAN_200_FPL_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
-            > self.LOW_INCOME_THRESHOLD
+            >= self.LOW_INCOME_THRESHOLD
         ) & (
             self.df[
                 field_names.WASTEWATER_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
-            > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
     def _health_factor(self) -> bool:
@@ -261,21 +261,21 @@ class ScoreL(Score):
                     field_names.DIABETES_FIELD
                     + field_names.PERCENTILE_FIELD_SUFFIX
                 ]
-                > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+                >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             | (
                 self.df[
                     field_names.ASTHMA_FIELD
                     + field_names.PERCENTILE_FIELD_SUFFIX
                 ]
-                > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+                >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             | (
                 self.df[
                     field_names.HEART_DISEASE_FIELD
                     + field_names.PERCENTILE_FIELD_SUFFIX
                 ]
-                > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+                >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             | (
                 self.df[
@@ -284,7 +284,7 @@ class ScoreL(Score):
                 ]
                 # Note: a high life expectancy is good, so take 1 minus the threshold to invert it,
                 # and then look for life expenctancies lower than that (not greater than).
-                < 1 - self.ENVIRONMENTAL_BURDEN_THRESHOLD
+                <= 1 - self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
         )
         return (
@@ -292,7 +292,7 @@ class ScoreL(Score):
                 field_names.POVERTY_LESS_THAN_200_FPL_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
-            > self.LOW_INCOME_THRESHOLD
+            >= self.LOW_INCOME_THRESHOLD
         ) & health_criteria
 
     def _workforce_factor(self) -> bool:
@@ -312,7 +312,7 @@ class ScoreL(Score):
                     field_names.UNEMPLOYMENT_FIELD
                     + field_names.PERCENTILE_FIELD_SUFFIX
                 ]
-                > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+                >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             | (
                 self.df[
@@ -321,23 +321,23 @@ class ScoreL(Score):
                 ]
                 # Note: a high median income as a % of AMI is good, so take 1 minus the threshold to invert it.
                 # and then look for median income lower than that (not greater than).
-                < 1 - self.ENVIRONMENTAL_BURDEN_THRESHOLD
+                <= 1 - self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             | (
                 self.df[
                     field_names.POVERTY_LESS_THAN_100_FPL_FIELD
                     + field_names.PERCENTILE_FIELD_SUFFIX
                 ]
-                > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+                >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
             | (
                 self.df[
                     field_names.LINGUISTIC_ISO_FIELD
                     + field_names.PERCENTILE_FIELD_SUFFIX
                 ]
-                > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+                >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
         )
         return (
-            self.df[field_names.HIGH_SCHOOL_ED_FIELD] > 0.10
+            self.df[field_names.HIGH_SCHOOL_ED_FIELD] >= 0.10
         ) & workforce_criteria
