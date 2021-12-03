@@ -32,12 +32,14 @@ class ExtractTransformLoad:
     FILES_PATH: Path = settings.APP_ROOT / "files"
     GEOID_FIELD_NAME: str = "GEOID10"
     GEOID_TRACT_FIELD_NAME: str = "GEOID10_TRACT"
+
     # TODO: investigate. Census says there are only 217,740 CBGs in the US. This might
     #  be from CBGs at different time periods.
     EXPECTED_MAX_CENSUS_BLOCK_GROUPS: int = 250000
+
     # TODO: investigate. Census says there are only 74,134 tracts in the US,
-    # Puerto Rico, and island areas. This might be from tracts at different time
-    # periods. https://github.com/usds/justice40-tool/issues/964
+    #  Puerto Rico, and island areas. This might be from tracts at different time
+    #  periods. https://github.com/usds/justice40-tool/issues/964
     EXPECTED_MAX_CENSUS_TRACTS: int = 74160
 
     def __init__(self, config_path: Path) -> None:
