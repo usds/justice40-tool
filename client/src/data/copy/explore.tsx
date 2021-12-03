@@ -97,6 +97,16 @@ export const MAP = defineMessages({
     defaultMessage: 'Puerto Rico',
     description: 'The full name indicating the bounds of Puerto Rico',
   },
+  SEARCH_PLACEHOLDER: {
+    id: 'map.search.placeholder.text',
+    defaultMessage: 'Enter a city, state or ZIP',
+    description: 'placeholder text for search',
+  },
+  SEARCH_RESULTS_EMPTY_MESSAGE: {
+    id: 'map.search.results.empty.text',
+    defaultMessage: 'No location found. Please try another location.',
+    description: 'text displaying message for no search results found',
+  },
 });
 
 // Side Panel copy
