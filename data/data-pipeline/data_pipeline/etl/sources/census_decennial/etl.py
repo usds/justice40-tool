@@ -135,9 +135,7 @@ class CensusDecennialETL(ExtractTransformLoad):
             "PBG036014"  # Total!!Female!!In labor force!!Civilian!!Unemployed
         )
 
-        self.UNEMPLOYMENT_FIELD_NAME = (
-            "Unemployed civilians (percent) in year 2009"
-        )
+        self.UNEMPLOYMENT_FIELD_NAME = "Unemployed civilians (percent) in 2009"
 
         var_list = [
             self.MEDIAN_INCOME_FIELD,

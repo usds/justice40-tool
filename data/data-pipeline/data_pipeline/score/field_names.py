@@ -129,7 +129,12 @@ CENSUS_DECENNIAL_TOTAL_POPULATION_2009 = "Total population in 2009"
 # Fields from 2010 ACS (loaded for comparison with the territories)
 CENSUS_UNEMPLOYMENT_2010 = "Unemployed civilians (percent) in 2010"
 CENSUS_POVERTY_LESS_THAN_100_FPL_FIELD_2010 = (
-    "Percentage households below 100% of federal poverty line in 2010"
+    "Percent of individuals < 100% Federal Poverty Line in 2010"
+)
+
+# Combined fields that merge island areas and states data
+COMBINED_CENSUS_TOTAL_POPULATION_2010 = (
+    "Total population in 2009 (island areas) and 2019 (states and PR)"
 )
 
 # Urban Rural Map
