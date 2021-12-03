@@ -1,9 +1,11 @@
 from typing import List
 import censusdata
 import pandas as pd
+from pathlib import Path
 
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.sources.census.etl_utils import get_state_fips_codes
+from data_pipeline.etl.sources.census_acs.etl_utils import retrieve_census_acs_data
 from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
@@ -118,56 +120,6 @@ class CensusACSETL(ExtractTransformLoad):
 
         self.df: pd.DataFrame
 
-    @classmethod
-    def _fips_from_censusdata_censusgeo(
-        cls, censusgeo: censusdata.censusgeo
-    ) -> str:
-        """Create a FIPS code from the proprietary censusgeo index."""
-        fips = "".join([value for (key, value) in censusgeo.params()])
-        return fips
-
-    @classmethod
-    def retrieve_census_data(
-        cls,
-        acs_year: int,
-        variables: List[str],
-        acs_type="acs5",
-        raise_errors: bool = False,
-    ) -> pd.DataFrame:
-        """Retrieves and combines census ACS data for a given year."""
-        dfs = []
-        for fips in get_state_fips_codes(cls.DATA_PATH):
-            logger.info(
-                f"Downloading data for state/territory with FIPS code {fips}"
-            )
-
-            try:
-                response = censusdata.download(
-                    src=acs_type,
-                    year=acs_year,
-                    geo=censusdata.censusgeo(
-                        [("state", fips), ("county", "*"), ("tract", "*")]
-                    ),
-                    var=variables,
-                )
-                dfs.append(response)
-
-            except ValueError as e:
-                logger.error(
-                    f"Could not download data for state/territory with FIPS code {fips}"
-                )
-
-                if raise_errors:
-                    raise e
-
-        df = pd.concat(dfs)
-
-        df[cls.GEOID_TRACT_FIELD_NAME] = df.index.to_series().apply(
-            func=cls._fips_from_censusdata_censusgeo
-        )
-
-        return df
-
     def extract(self) -> None:
         # Define the variables to retrieve
         variables = (
@@ -183,8 +135,11 @@ class CensusACSETL(ExtractTransformLoad):
             + self.EDUCATIONAL_FIELDS
         )
 
-        self.df = self.retrieve_census_data(
-            acs_year=self.ACS_YEAR, variables=variables
+        self.df = retrieve_census_acs_data(
+            acs_year=self.ACS_YEAR,
+            variables=variables,
+            tract_output_field_name=self.GEOID_TRACT_FIELD_NAME,
+            data_path_for_fips_codes=self.DATA_PATH,
         )
 
     def transform(self) -> None:

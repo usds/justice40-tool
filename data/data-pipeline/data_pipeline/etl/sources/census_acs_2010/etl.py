@@ -2,6 +2,7 @@ import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.sources.census_acs.etl import CensusACSETL
+from data_pipeline.etl.sources.census_acs.etl_utils import retrieve_census_acs_data
 from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
@@ -107,9 +108,11 @@ class CensusACS2010ETL(ExtractTransformLoad):
         )
 
         # Use the method defined on CensusACSETL to reduce coding redundancy.
-        self.df = CensusACSETL.retrieve_census_data(
+        self.df = retrieve_census_acs_data(
             acs_year=self.ACS_YEAR,
             variables=variables,
+            tract_output_field_name=self.GEOID_TRACT_FIELD_NAME,
+            data_path_for_fips_codes=self.DATA_PATH,
             acs_type=self.ACS_TYPE,
             raise_errors=False,
         )
