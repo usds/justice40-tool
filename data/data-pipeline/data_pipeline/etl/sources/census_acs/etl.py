@@ -1,10 +1,6 @@
-from typing import List
-import censusdata
 import pandas as pd
-from pathlib import Path
 
 from data_pipeline.etl.base import ExtractTransformLoad
-from data_pipeline.etl.sources.census.etl_utils import get_state_fips_codes
 from data_pipeline.etl.sources.census_acs.etl_utils import retrieve_census_acs_data
 from data_pipeline.utils import get_module_logger
 

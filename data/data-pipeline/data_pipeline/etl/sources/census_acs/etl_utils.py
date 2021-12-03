@@ -1,7 +1,7 @@
+from pathlib import Path
 from typing import List
 import censusdata
 import pandas as pd
-from pathlib import Path
 
 from data_pipeline.etl.sources.census.etl_utils import get_state_fips_codes
 from data_pipeline.utils import get_module_logger
@@ -17,6 +17,7 @@ def _fips_from_censusdata_censusgeo(
     return fips
 
 
+# pylint: disable=too-many-arguments
 def retrieve_census_acs_data(
         acs_year: int,
         variables: List[str],
