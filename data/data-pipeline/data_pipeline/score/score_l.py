@@ -205,10 +205,13 @@ class ScoreL(Score):
 
         pollution_criteria = (
             self.df[field_names.RMP_FIELD + field_names.PERCENTILE_FIELD_SUFFIX]
-            > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         ) | (
             self.df[field_names.NPL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX]
-            > self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        ) | (
+            self.df[field_names.TSDF_FIELD + field_names.PERCENTILE_FIELD_SUFFIX]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
         return pollution_criteria & (
