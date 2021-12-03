@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of the MapSearchMessage when search results are empty checks if component renders 1`] = `
+<DocumentFragment>
+  <div>
+    No location found. Please try another location.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`rendering of the MapSearchMessage when search results are not empty checks if component renders 1`] = `<DocumentFragment />`;

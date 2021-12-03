@@ -6,7 +6,7 @@ describe('Does the map zoom and adjust to lat/long correctly?', () => {
     cy.url().should('include', '#3');
   });
   it('should change to level 4 when you hit the zoom button', () => {
-    cy.get('.mapboxgl-ctrl-icon.mapboxgl-ctrl-zoom-in').click();
+    cy.get('.mapboxgl-ctrl-icon.mapboxgl-ctrl-zoom-in').click({force: true});
     cy.url().should('include', '#4');
   });
   it('should show the correct lat/lng coordinates in the URL',
