@@ -14,9 +14,10 @@ class ScoreL(Score):
         self.ENVIRONMENTAL_BURDEN_THRESHOLD: float = 0.90
         self.MEDIAN_HOUSE_VALUE_THRESHOLD: float = 0.90
         self.LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD: float = 0.10
+        self.FPL_200_SERIES: pd.Series = self.create_low_income_threshold(df)
 
         super().__init__(df)
-
+    
     def _combine_island_areas_with_states_and_set_thresholds(
         self,
         df: pd.DataFrame,
@@ -93,6 +94,22 @@ class ScoreL(Score):
 
         return df, threshold_column_name
 
+    def create_low_income_threshold(
+        self,
+        df: pd.DataFrame) -> pd.Series:
+        """
+        Returns a numpy array of booleans based on the
+        condition of the FPL at 200% is at or more than some
+        established threshold
+        """
+        return (
+            df[
+                field_names.POVERTY_LESS_THAN_200_FPL_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.LOW_INCOME_THRESHOLD
+        )
+
     def add_columns(self) -> pd.DataFrame:
         logger.info("Adding Score L")
 
@@ -144,25 +161,13 @@ class ScoreL(Score):
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
 
-        # I am thinking that we make constants for these since these thresholds are used
-        # ubiquitously
-        FPL_200 = (
-            self.df[
-                field_names.POVERTY_LESS_THAN_200_FPL_FIELD
-                + field_names.PERCENTILE_FIELD_SUFFIX
-            ]
-            >= self.LOW_INCOME_THRESHOLD
-        )
-
-        did_we_meet_threshold = (
+        self.df[field_names.FEMA_LOSS_RATE_LOW_INCOME] = (
             self.df[
                 field_names.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
-        ) & FPL_200
-
-        self.df[field_names.FEMA_LOSS_RATE_LOW_INCOME] = did_we_meet_threshold
+        ) & self.FPL_200_SERIES
 
         climate_criteria = (
             (
@@ -188,23 +193,14 @@ class ScoreL(Score):
             )
         )
 
-        return FPL_200 & climate_criteria
+        return self.FPL_200_SERIES & climate_criteria
 
     def _energy_factor(self) -> bool:
         # In Xth percentile or above for DOE’s energy cost burden score (Source: LEAD Score)
         # AND
         # Low income: In 60th percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
-        # poverty level. Source: Census's American Community Survey]
-
-        # Again we use this predicate.....
-        FPL_200 = (
-            self.df[
-                field_names.POVERTY_LESS_THAN_200_FPL_FIELD
-                + field_names.PERCENTILE_FIELD_SUFFIX
-            ]
-            >= self.LOW_INCOME_THRESHOLD
-        )
+        # poverty level. Source: Census's American Community Survey]  
 
         threshold_one = (
             self.df[
