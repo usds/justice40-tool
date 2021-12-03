@@ -48,14 +48,7 @@ class TestNationalRiskIndexETL:
         etl = NationalRiskIndexETL()
         input_src = DATA_DIR / "input.csv"
         input_dst = etl.INPUT_CSV
-        acs_src = DATA_DIR / "acs.csv"
-        # Lucas raised this as a lingering artifact. We have a
-        # utility function that requires both a source and destination as arguments
-        # (shutil module)
-        # We need to figure out if we just refactor the utlity function to handle
-        # just acs_src in order to remove this block reference
-        acs_dst = etl.BLOCK_GROUP_CSV
-        for src, dst in [(input_src, input_dst), (acs_src, acs_dst)]:
+        for src, dst in [(input_src, input_dst)]:
             copy_data_files(src, dst)
 
         # setup - read in sample output as dataframe
