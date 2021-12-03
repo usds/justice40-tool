@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 
 from data_pipeline.score.score import Score
@@ -13,6 +14,72 @@ class ScoreL(Score):
         self.ENVIRONMENTAL_BURDEN_THRESHOLD: float = 0.90
         self.MEDIAN_HOUSE_VALUE_THRESHOLD: float = 0.90
         super().__init__(df)
+
+    def _combine_island_areas_with_states_and_set_thresholds(
+        self,
+        df: pd.DataFrame,
+        column_from_island_areas: str,
+        column_from_decennial_census: str,
+        combined_column_name: str,
+        threshold_cutoff_for_island_areas: float,
+    ) -> (pd.DataFrame, str):
+        """Steps to set thresholds for island areas.
+
+        This function is fairly logically complicated. It takes the following steps:
+
+            1. Combine the two different fields into a single field.
+            2. Calculate the 90th percentile cutoff raw value for the combined field.
+            3. Create a boolean series that is true for any census tract in the island
+                areas (and only the island areas) that exceeds this cutoff.
+
+        """
+
+        # Create the combined field.
+        df[combined_column_name] = df[
+            [column_from_island_areas, column_from_decennial_census]
+        ].mean(axis=1, skipna=True)
+
+        logger.info(
+            f"Combined field `{combined_column_name}` has "
+            f"{df[combined_column_name].isnull().sum()} "
+            f"({df[combined_column_name].isnull().sum() * 100 / len(df):.2f}%) "
+            f"missing values for census tracts. "
+        )
+
+        # Calculate the percentile threshold raw value.
+        raw_threshold = np.nanquantile(
+            a=df[combined_column_name], q=threshold_cutoff_for_island_areas
+        )
+
+        logger.info(
+            f"For combined field `{combined_column_name}`, "
+            f"the {threshold_cutoff_for_island_areas*100:.0f} percentile cutoff is a "
+            f"raw value of {raw_threshold:.3f}."
+        )
+
+        threshold_column_name = (
+            f"{column_from_island_areas} exceeds "
+            f"{threshold_cutoff_for_island_areas*100:.0f}th percentile"
+        )
+
+        df[threshold_column_name] = (
+            df[column_from_island_areas] >= raw_threshold
+        )
+
+        percent_of_tracts_highlighted = (
+            100
+            * df[threshold_column_name].sum()
+            / df[column_from_island_areas].notnull().sum()
+        )
+
+        logger.info(
+            f"For `{threshold_column_name}`, "
+            f"{df[threshold_column_name].sum()} ("
+            f"{percent_of_tracts_highlighted:.2f}% of tracts that have non-null data "
+            f"in the column) have a value of TRUE."
+        )
+
+        return df, threshold_column_name
 
     def add_columns(self) -> pd.DataFrame:
         logger.info("Adding Score L")
@@ -204,14 +271,24 @@ class ScoreL(Score):
         # poverty level. Source: Census's American Community Survey]
 
         pollution_criteria = (
-            self.df[field_names.RMP_FIELD + field_names.PERCENTILE_FIELD_SUFFIX]
-            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
-        ) | (
-            self.df[field_names.NPL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX]
-            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
-        ) | (
-            self.df[field_names.TSDF_FIELD + field_names.PERCENTILE_FIELD_SUFFIX]
-            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            (
+                self.df[
+                    field_names.RMP_FIELD + field_names.PERCENTILE_FIELD_SUFFIX
+                ]
+                >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            )
+            | (
+                self.df[
+                    field_names.NPL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX
+                ]
+                >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            )
+            | (
+                self.df[
+                    field_names.TSDF_FIELD + field_names.PERCENTILE_FIELD_SUFFIX
+                ]
+                >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            )
         )
 
         return pollution_criteria & (
@@ -306,7 +383,7 @@ class ScoreL(Score):
         # AND
         # Where the high school degree achievement rates for adults 25 years and older is less than 95%
         # (necessary to screen out university block groups)
-        workforce_criteria = (
+        workforce_criteria_for_states = (
             (
                 self.df[
                     field_names.UNEMPLOYMENT_FIELD
@@ -338,6 +415,45 @@ class ScoreL(Score):
                 >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
         )
-        return (
+        workforce_combined_criteria_for_states = (
             self.df[field_names.HIGH_SCHOOL_ED_FIELD] >= 0.10
-        ) & workforce_criteria
+        ) & workforce_criteria_for_states
+
+        # Now, calculate workforce criteria for island territories.
+
+        # First, for a couple of values, create a combined field
+        # that is either the island area's Decennial Census value in 2009 or the state's
+        # value in 5-year ACS ending in 2010.
+        # This will be used to generate the percentile cutoff for the 90th percentile.
+        # The stateside decennial census stopped asking economic comparisons,
+        # so this is as close to apples-to-apples as we get.
+        # Use 5-year ACS for data robustness over 1-year ACS.
+        # There should only be one entry in either 2009 or 2019, not one in both.
+        # But just to be safe, we take the mean and ignore null values so if there
+        # *were* entries in both, this result would make sense.
+
+        # First, combine unemployment.
+        (
+            self.df,
+            unemployment_island_areas_criteria,
+        ) = self._combine_island_areas_with_states_and_set_thresholds(
+            df=self.df,
+            column_from_island_areas=field_names.CENSUS_DECENNIAL_UNEMPLOYMENT_2009,
+            column_from_decennial_census=field_names.CENSUS_UNEMPLOYMENT_2010,
+            combined_column_name=field_names.COMBINED_UNEMPLOYMENT_2010,
+            threshold_cutoff_for_island_areas=self.ENVIRONMENTAL_BURDEN_THRESHOLD,
+        )
+
+        # Next, combine poverty.
+        (
+            self.df,
+            poverty_island_areas_criteria,
+        ) = self._combine_island_areas_with_states_and_set_thresholds(
+            df=self.df,
+            column_from_island_areas=field_names.CENSUS_DECENNIAL_POVERTY_LESS_THAN_100_FPL_FIELD_2009,
+            column_from_decennial_census=field_names.CENSUS_POVERTY_LESS_THAN_100_FPL_FIELD_2010,
+            combined_column_name=field_names.COMBINED_POVERTY_LESS_THAN_100_FPL_FIELD_2010,
+            threshold_cutoff_for_island_areas=self.ENVIRONMENTAL_BURDEN_THRESHOLD,
+        )
+
+        # field_names.CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009
