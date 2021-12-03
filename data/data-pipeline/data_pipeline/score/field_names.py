@@ -224,7 +224,15 @@ LIFE_EXPECTANCY_INCOME = (
     "At or above the 90th percentile fo life expectancy and is low income"
 )
 # Workforce
-UNEMPLOYMENT_HIGH_SCHOOL_ATTAINMENT = "At or above the 90th percentile for unemployment and Where the high school degree achievement rate for adults 25 years and older is less than 90%"
-LINGUISTIC_ISOLATION_HIGH_SCHOOL_ATTAINMENT = "At or above the 90th percentile for linguistic isolation and where the high school degree achievement rate for adults 25 years and older is less than 90%"
-POVERTY_HIGH_SCHOOL_ATTAINMENT = "At or above the 90th percentile for households at or below 100 percent of federal poverty level Where the high school degree achievement rate for adults 25 years and older is less than 90%"
-MEDIAN_INCOME_HIGH_SCHOOL_ATTAINMENT = "At or below the 90th percentile for median income Where the high school degree achievement rate for adults 25 years and older is less than 90%"
+UNEMPLOYMENT_HIGH_SCHOOL_ATTAINMENT = """At or above the 90th percentile"
+    for unemployment and Where the high school degree achievement rate
+    for adults 25 years and older is less than 90%"""
+LINGUISTIC_ISOLATION_HIGH_SCHOOL_ATTAINMENT = """At or above the 90th percentile
+    for linguistic isolation and where the high school degree achievement rate
+    for adults 25 years and older is less than 90%"""
+POVERTY_HIGH_SCHOOL_ATTAINMENT = """At or above the 90th percentile for households
+    at or below 100 percent of federal poverty level Where the high school degree
+    achievement rate for adults 25 years and older is less than 90%"""
+MEDIAN_INCOME_HIGH_SCHOOL_ATTAINMENT = """At or below the 90th percentile for median
+    income Where the high school degree achievement rate for adults 25 years and older
+    is less than 90%"""
