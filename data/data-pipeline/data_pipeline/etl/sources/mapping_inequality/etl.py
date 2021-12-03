@@ -1,3 +1,4 @@
+from collections import namedtuple
 import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
@@ -71,6 +72,57 @@ class MappingInequalityETL(ExtractTransformLoad):
         df.loc[
             ~df[self.HOLC_GRADE_FIELD].isin(valid_grades), self.HOLC_GRADE_FIELD
         ] = None
+
+        # Some data needs to be manually mapped to its grade.
+        ManualHolcGrade = namedtuple(
+            typename="ManualHolcGrade",
+            field_names=["city", "holc_ids", "grade"],
+        )
+
+        manual_holc_grades = [
+            ManualHolcGrade(
+                city="Providence", holc_ids=["25", "26"], grade="D"
+            ),
+            ManualHolcGrade(
+                city="Oklahoma City",
+                holc_ids=[
+                    "46R",
+                    "47R",
+                    "48R",
+                    "49R",
+                    "50R",
+                    "51R",
+                    "52R",
+                    "53R",
+                    "54R",
+                    "55R",
+                    "56R",
+                    "57R",
+                    "58R",
+                    "59R",
+                    "60R",
+                    "61R",
+                    "62B",
+                    "63R",
+                    "64R",
+                    "65R",
+                    "66R",
+                    "67R",
+                    "68R",
+                    "69R",
+                    "70R",
+                    "80R",
+                    "81R",
+                    "85R",
+                    "86R",
+                    "87R",
+                    "88R",
+                    "89R",
+                    "90R",
+                ],
+                grade="D",
+            ),
+        ]
 
         logger.info(df[self.HOLC_GRADE_FIELD].unique())
 
