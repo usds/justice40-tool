@@ -119,11 +119,17 @@ OVER_64_FIELD = "Individuals over 64 years old"
 
 # Fields from 2010 decennial census (generally only loaded for the territories)
 CENSUS_DECENNIAL_MEDIAN_INCOME_2009 = "Median household income in 2009 ($)"
-CENSUS_DECENNIAL_POVERTY_LESS_THAN_200_FPL_FIELD_2009 = (
-    "Percentage households below 200% of federal poverty line in 2009"
+CENSUS_DECENNIAL_POVERTY_LESS_THAN_100_FPL_FIELD_2009 = (
+    "Percentage households below 100% of federal poverty line in 2009"
 )
-CENSUS_DECENNIAL_MEDIAN_INCOME_2009 = "Percent individuals age 25 or over with less than high school degree in 2009"
-CENSUS_DECENNIAL_UNEMPLOYMENT = "Unemployed civilians (percent) in year 2010"
+CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009 = "Percent individuals age 25 or over with less than high school degree in 2009"
+CENSUS_DECENNIAL_UNEMPLOYMENT_2009 = "Unemployed civilians (percent) in 2009"
+
+# Fields from 2010 ACS (loaded for comparison with the territories)
+CENSUS_UNEMPLOYMENT_2010 = "Unemployed civilians (percent) in 2010"
+CENSUS_POVERTY_LESS_THAN_100_FPL_FIELD_2010 = (
+    "Percentage households below 100% of federal poverty line in 2010"
+)
 
 # Urban Rural Map
 URBAN_HEURISTIC_FIELD = "Urban Heuristic Flag"

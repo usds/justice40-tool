@@ -85,7 +85,7 @@ class CensusACS2010ETL(ExtractTransformLoad):
 
         # Use the method defined on CensusACSETL to reduce coding redundancy.
         self.df = CensusACSETL.retrieve_census_data(
-            acs_year=self.ACS_YEAR, variables=variables, raise_errors=True
+            acs_year=self.ACS_YEAR, variables=variables, raise_errors=False
         )
 
     def transform(self) -> None:
@@ -141,11 +141,12 @@ class CensusACS2010ETL(ExtractTransformLoad):
 
         output_df = self.df[columns_to_include]
 
+        # Add the year to the end of every column, so when it's all joined, it's obvious which years this is from.
         for column in columns_to_include:
             if column != self.GEOID_TRACT_FIELD_NAME:
                 output_df = output_df.rename(
                     columns={
-                        column: f"{column} in year {self.ACS_YEAR}",
+                        column: f"{column} in {self.ACS_YEAR}",
                     }
                 )
 

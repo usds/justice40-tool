@@ -156,9 +156,6 @@ class CensusACSETL(ExtractTransformLoad):
                 if raise_errors:
                     raise e
 
-            # TODO: remove
-            break
-
         df = pd.concat(dfs)
 
         df[cls.GEOID_TRACT_FIELD_NAME] = df.index.to_series().apply(

@@ -150,6 +150,16 @@ class ScoreETL(ExtractTransformLoad):
             low_memory=False,
         )
 
+        # Load 2010 ACS data from states
+        census_2010_csv = (
+            constants.DATA_PATH / "dataset" / "census_acs_2010" / "usa.csv"
+        )
+        self.census_2010_df = pd.read_csv(
+            census_2010_csv,
+            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
+            low_memory=False,
+        )
+
     def _join_tract_dfs(self, census_tract_dfs: list) -> pd.DataFrame:
         logger.info("Joining Census Tract dataframes")
 
@@ -242,6 +252,7 @@ class ScoreETL(ExtractTransformLoad):
             self.national_risk_index_df,
             self.census_acs_median_incomes_df,
             self.census_decennial_df,
+            self.census_2010_df
         ]
 
         # Sanity check each data frame before merging.
