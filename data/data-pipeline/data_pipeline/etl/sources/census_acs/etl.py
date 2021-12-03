@@ -128,7 +128,11 @@ class CensusACSETL(ExtractTransformLoad):
 
     @classmethod
     def retrieve_census_data(
-        cls, acs_year: int, variables: List[str], raise_errors: bool = False
+        cls,
+        acs_year: int,
+        variables: List[str],
+        acs_type="acs5",
+        raise_errors: bool = False,
     ) -> pd.DataFrame:
         """Retrieves and combines census ACS data for a given year."""
         dfs = []
@@ -139,7 +143,7 @@ class CensusACSETL(ExtractTransformLoad):
 
             try:
                 response = censusdata.download(
-                    src="acs5",
+                    src=acs_type,
                     year=acs_year,
                     geo=censusdata.censusgeo(
                         [("state", fips), ("county", "*"), ("tract", "*")]

@@ -19,6 +19,7 @@ class CensusACS2010ETL(ExtractTransformLoad):
 
     def __init__(self):
         self.ACS_YEAR = 2010
+        self.ACS_TYPE = "acs5"
         self.OUTPUT_PATH = (
             self.DATA_PATH / "dataset" / f"census_acs_{self.ACS_YEAR}"
         )
@@ -85,7 +86,10 @@ class CensusACS2010ETL(ExtractTransformLoad):
 
         # Use the method defined on CensusACSETL to reduce coding redundancy.
         self.df = CensusACSETL.retrieve_census_data(
-            acs_year=self.ACS_YEAR, variables=variables, raise_errors=False
+            acs_year=self.ACS_YEAR,
+            variables=variables,
+            acs_type=self.ACS_TYPE,
+            raise_errors=False,
         )
 
     def transform(self) -> None:
