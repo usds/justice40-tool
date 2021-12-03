@@ -15,7 +15,15 @@ class CensusACSETL(ExtractTransformLoad):
         self.OUTPUT_PATH = (
             self.DATA_PATH / "dataset" / f"census_acs_{self.ACS_YEAR}"
         )
+
+        self.TOTAL_UNEMPLOYED_FIELD = "B23025_005E"
+        self.TOTAL_IN_LABOR_FORCE = "B23025_003E"
+        self.EMPLOYMENT_FIELDS = [
+            self.TOTAL_UNEMPLOYED_FIELD,
+            self.TOTAL_IN_LABOR_FORCE,
+        ]
         self.UNEMPLOYED_FIELD_NAME = "Unemployed civilians (percent)"
+
         self.LINGUISTIC_ISOLATION_FIELD_NAME = "Linguistic isolation (percent)"
         self.LINGUISTIC_ISOLATION_TOTAL_FIELD_NAME = (
             "Linguistic isolation (total)"
@@ -120,7 +128,7 @@ class CensusACSETL(ExtractTransformLoad):
 
     @classmethod
     def retrieve_census_data(
-        cls, acs_year: int, variables: List[str]
+        cls, acs_year: int, variables: List[str], raise_errors: bool = False
     ) -> pd.DataFrame:
         """Retrieves and combines census ACS data for a given year."""
         dfs = []
@@ -140,14 +148,16 @@ class CensusACSETL(ExtractTransformLoad):
                 )
                 dfs.append(response)
 
-                # TODO: delete
-                break
             except ValueError as e:
                 logger.error(
                     f"Could not download data for state/territory with FIPS code {fips}"
                 )
 
-                raise e
+                if raise_errors:
+                    raise e
+
+            # TODO: remove
+            break
 
         df = pd.concat(dfs)
 
@@ -161,14 +171,12 @@ class CensusACSETL(ExtractTransformLoad):
         # Define the variables to retrieve
         variables = (
             [
-                # Emploment fields
-                "B23025_005E",
-                "B23025_003E",
                 # Income field
                 self.MEDIAN_INCOME_FIELD,
                 # House value
                 self.MEDIAN_HOUSE_VALUE_FIELD,
             ]
+            + self.EMPLOYMENT_FIELDS
             + self.LINGUISTIC_ISOLATION_FIELDS
             + self.POVERTY_FIELDS
             + self.EDUCATIONAL_FIELDS
@@ -205,7 +213,9 @@ class CensusACSETL(ExtractTransformLoad):
 
         # Calculate percent unemployment.
         # TODO: remove small-sample data that should be `None` instead of a high-variance fraction.
-        df[self.UNEMPLOYED_FIELD_NAME] = df.B23025_005E / df.B23025_003E
+        df[self.UNEMPLOYED_FIELD_NAME] = (
+            df[self.TOTAL_UNEMPLOYED_FIELD] / df[self.TOTAL_IN_LABOR_FORCE]
+        )
 
         # Calculate linguistic isolation.
         individual_limited_english_fields = [

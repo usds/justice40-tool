@@ -123,6 +123,7 @@ CENSUS_DECENNIAL_POVERTY_LESS_THAN_200_FPL_FIELD_2009 = (
     "Percentage households below 200% of federal poverty line in 2009"
 )
 CENSUS_DECENNIAL_MEDIAN_INCOME_2009 = "Percent individuals age 25 or over with less than high school degree in 2009"
+CENSUS_DECENNIAL_UNEMPLOYMENT = "Unemployed civilians (percent) in year 2010"
 
 # Urban Rural Map
 URBAN_HEURISTIC_FIELD = "Urban Heuristic Flag"
