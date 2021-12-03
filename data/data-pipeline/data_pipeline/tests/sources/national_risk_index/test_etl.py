@@ -48,25 +48,23 @@ class TestNationalRiskIndexETL:
         etl = NationalRiskIndexETL()
         input_src = DATA_DIR / "input.csv"
         input_dst = etl.INPUT_CSV
-        acs_src = DATA_DIR / "acs.csv"
-        acs_dst = etl.BLOCK_GROUP_CSV
-        for src, dst in [(input_src, input_dst), (acs_src, acs_dst)]:
+        for src, dst in [(input_src, input_dst)]:
             copy_data_files(src, dst)
 
         # setup - read in sample output as dataframe
         TRACT_COL = etl.GEOID_TRACT_FIELD_NAME
-        BLOCK_COL = etl.GEOID_FIELD_NAME
+
         expected = pd.read_csv(
             DATA_DIR / "transform.csv",
-            dtype={BLOCK_COL: "string", TRACT_COL: "string"},
+            dtype={TRACT_COL: "string"},
         )
 
         # execution
         etl.transform()
 
         # validation
-        assert etl.df.shape == (5, 51)
-        pd.testing.assert_frame_equal(etl.df, expected)
+        assert etl.df.shape == (55, 370)
+        pd.testing.assert_frame_equal(etl.df, expected, rtol=1e-10, atol=1e-10)
 
     def test_load(self, mock_etl):
         """Tests the load() method for NationalRiskIndexETL
@@ -79,21 +77,22 @@ class TestNationalRiskIndexETL:
         # setup - input variables
         etl = NationalRiskIndexETL()
         TRACT_COL = etl.GEOID_TRACT_FIELD_NAME
-        BLOCK_COL = etl.GEOID_FIELD_NAME
+
         output_path = etl.OUTPUT_DIR / "usa.csv"
         # setup - mock transform step
         df_transform = pd.read_csv(
             DATA_DIR / "transform.csv",
-            dtype={BLOCK_COL: "string", TRACT_COL: "string"},
+            dtype={TRACT_COL: "string"},
         )
         etl.df = df_transform
         # setup - load expected output
-        expected = pd.read_csv(DATA_DIR / "output.csv", dtype={BLOCK_COL: str})
+        expected = pd.read_csv(DATA_DIR / "output.csv", dtype={TRACT_COL: str})
         # execution
         etl.load()
-        output = pd.read_csv(output_path, dtype={BLOCK_COL: str})
+
+        output = pd.read_csv(output_path, dtype={TRACT_COL: str})
 
         # validation
         assert output_path.exists()
-        assert output.shape == (5, 5)
-        pd.testing.assert_frame_equal(output, expected)
+        assert output.shape == (55, 5)
+        pd.testing.assert_frame_equal(output, expected, rtol=1e-10, atol=1e-10)
