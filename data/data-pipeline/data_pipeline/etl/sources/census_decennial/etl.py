@@ -103,6 +103,38 @@ class CensusDecennialETL(ExtractTransformLoad):
 
         self.PERCENTAGE_HIGH_SCHOOL_ED_FIELD_NAME = "Percent individuals age 25 or over with less than high school degree in 2009"
 
+        # Employment fields
+        self.EMPLOYMENT_MALE_IN_LABOR_FORCE_FIELD = (
+            "PBG038003"  # Total!!Male!!In labor force
+        )
+        self.EMPLOYMENT_MALE_UNEMPLOYED_FIELD = (
+            "PBG038007"  # Total!!Male!!In labor force!!Civilian!!Unemployed
+        )
+        self.EMPLOYMENT_FEMALE_IN_LABOR_FORCE_FIELD = (
+            "PBG038010"  # Total!!Female!!In labor force
+        )
+        self.EMPLOYMENT_FEMALE_UNEMPLOYED_FIELD = (
+            "PBG038014"  # Total!!Female!!In labor force!!Civilian!!Unemployed
+        )
+
+        # Same fields, Virgin Islands.
+        self.EMPLOYMENT_MALE_IN_LABOR_FORCE_VI_FIELD = (
+            "PBG036003"  # Total!!Male!!In labor force
+        )
+        self.EMPLOYMENT_MALE_UNEMPLOYED_VI_FIELD = (
+            "PBG036007"  # Total!!Male!!In labor force!!Civilian!!Unemployed
+        )
+        self.EMPLOYMENT_FEMALE_IN_LABOR_FORCE_VI_FIELD = (
+            "PBG036010"  # Total!!Female!!In labor force
+        )
+        self.EMPLOYMENT_FEMALE_UNEMPLOYED_VI_FIELD = (
+            "PBG036014"  # Total!!Female!!In labor force!!Civilian!!Unemployed
+        )
+
+        self.UNEMPLOYMENT_FIELD_NAME = (
+            "Unemployed civilians (percent) in year 2009"
+        )
+
         var_list = [
             self.MEDIAN_INCOME_FIELD,
             self.TOTAL_HOUSEHOLD_RATIO_INCOME_TO_POVERTY_LEVEL_FIELD,
@@ -113,6 +145,10 @@ class CensusDecennialETL(ExtractTransformLoad):
             self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_PART_ONE,
             self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_PART_TWO,
             self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_PART_THREE,
+            self.EMPLOYMENT_MALE_IN_LABOR_FORCE_FIELD,
+            self.EMPLOYMENT_MALE_UNEMPLOYED_FIELD,
+            self.EMPLOYMENT_FEMALE_IN_LABOR_FORCE_FIELD,
+            self.EMPLOYMENT_FEMALE_UNEMPLOYED_FIELD,
         ]
         var_list = ",".join(var_list)
 
@@ -126,6 +162,10 @@ class CensusDecennialETL(ExtractTransformLoad):
             self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_VI_PART_ONE,
             self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_VI_PART_TWO,
             self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_VI_PART_THREE,
+            self.EMPLOYMENT_MALE_IN_LABOR_FORCE_VI_FIELD,
+            self.EMPLOYMENT_MALE_UNEMPLOYED_VI_FIELD,
+            self.EMPLOYMENT_FEMALE_IN_LABOR_FORCE_VI_FIELD,
+            self.EMPLOYMENT_FEMALE_UNEMPLOYED_VI_FIELD,
         ]
         var_list_vi = ",".join(var_list_vi)
 
@@ -148,6 +188,14 @@ class CensusDecennialETL(ExtractTransformLoad):
             self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_VI_PART_TWO: self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_PART_TWO,
             self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_PART_THREE: self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_PART_THREE,
             self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_VI_PART_THREE: self.HOUSEHOLD_UNDER_100_PERC_POVERTY_LEVEL_FIELD_PART_THREE,
+            self.EMPLOYMENT_MALE_IN_LABOR_FORCE_VI_FIELD: self.EMPLOYMENT_MALE_IN_LABOR_FORCE_FIELD,
+            self.EMPLOYMENT_MALE_UNEMPLOYED_VI_FIELD: self.EMPLOYMENT_MALE_UNEMPLOYED_FIELD,
+            self.EMPLOYMENT_FEMALE_IN_LABOR_FORCE_VI_FIELD: self.EMPLOYMENT_FEMALE_IN_LABOR_FORCE_FIELD,
+            self.EMPLOYMENT_FEMALE_UNEMPLOYED_VI_FIELD: self.EMPLOYMENT_FEMALE_UNEMPLOYED_FIELD,
+            self.EMPLOYMENT_MALE_IN_LABOR_FORCE_FIELD: self.EMPLOYMENT_MALE_IN_LABOR_FORCE_FIELD,
+            self.EMPLOYMENT_MALE_UNEMPLOYED_FIELD: self.EMPLOYMENT_MALE_UNEMPLOYED_FIELD,
+            self.EMPLOYMENT_FEMALE_IN_LABOR_FORCE_FIELD: self.EMPLOYMENT_FEMALE_IN_LABOR_FORCE_FIELD,
+            self.EMPLOYMENT_FEMALE_UNEMPLOYED_FIELD: self.EMPLOYMENT_FEMALE_UNEMPLOYED_FIELD,
         }
 
         # To do: Ask Census Slack Group about whether you need to hardcode the county fips
@@ -278,6 +326,15 @@ class CensusDecennialETL(ExtractTransformLoad):
             + self.df_all[self.FEMALE_HIGH_SCHOOL_ED_FIELD_NAME]
         ) / self.df_all[self.TOTAL_POPULATION_FIELD_NAME]
 
+        # Calculate employment.
+        self.df_all[self.UNEMPLOYMENT_FIELD_NAME] = (
+            self.df_all[self.EMPLOYMENT_MALE_UNEMPLOYED_FIELD]
+            + self.df_all[self.EMPLOYMENT_FEMALE_UNEMPLOYED_FIELD]
+        ) / (
+            self.df_all[self.EMPLOYMENT_MALE_IN_LABOR_FORCE_FIELD]
+            + self.df_all[self.EMPLOYMENT_FEMALE_IN_LABOR_FORCE_FIELD]
+        )
+
         # Creating Geo ID (Census Block Group) Field Name
         self.df_all[self.GEOID_TRACT_FIELD_NAME] = (
             self.df_all["state"] + self.df_all["county"] + self.df_all["tract"]
@@ -302,6 +359,7 @@ class CensusDecennialETL(ExtractTransformLoad):
             self.PERCENTAGE_HOUSEHOLDS_BELOW_100_PERC_POVERTY_LEVEL_FIELD_NAME,
             self.PERCENTAGE_HOUSEHOLDS_BELOW_200_PERC_POVERTY_LEVEL_FIELD_NAME,
             self.PERCENTAGE_HIGH_SCHOOL_ED_FIELD_NAME,
+            self.UNEMPLOYMENT_FIELD_NAME,
         ]
 
         self.df_all[columns_to_include].to_csv(
