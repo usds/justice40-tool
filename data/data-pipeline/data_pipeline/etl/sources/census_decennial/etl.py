@@ -35,6 +35,12 @@ class CensusDecennialETL(ExtractTransformLoad):
         self.MEDIAN_INCOME_FIELD = "PBG049001"
         self.MEDIAN_INCOME_VI_FIELD = "PBG047001"
         self.MEDIAN_INCOME_FIELD_NAME = "Median household income in 2009 ($)"
+        self.AREA_MEDIAN_INCOME_FIELD_NAME = (
+            "Median household income as a percent of "
+            "territory median income in 2009"
+        )
+
+        self.TERRITORY_MEDIAN_INCOME_FIELD = "Territory Median Income"
 
         self.TOTAL_HOUSEHOLD_RATIO_INCOME_TO_POVERTY_LEVEL_FIELD = "PBG083001"
         self.TOTAL_HOUSEHOLD_RATIO_INCOME_TO_POVERTY_LEVEL_VI_FIELD = (
@@ -210,24 +216,30 @@ class CensusDecennialETL(ExtractTransformLoad):
                 "fips": "60",
                 "county_fips": ["010", "020", "030", "040", "050"],
                 "var_list": var_list,
+                # Note: we hardcode the median income for each territory in this dict,
+                # because that data is hard to programmatically access.
+                self.TERRITORY_MEDIAN_INCOME_FIELD: 23892,
             },
             {
                 "state_abbreviation": "gu",
                 "fips": "66",
                 "county_fips": ["010"],
                 "var_list": var_list,
+                self.TERRITORY_MEDIAN_INCOME_FIELD: 48274,
             },
             {
                 "state_abbreviation": "mp",
                 "fips": "69",
                 "county_fips": ["085", "100", "110", "120"],
                 "var_list": var_list,
+                self.TERRITORY_MEDIAN_INCOME_FIELD: 19958,
             },
             {
                 "state_abbreviation": "vi",
                 "fips": "78",
                 "county_fips": ["010", "020", "030"],
                 "var_list": var_list_vi,
+                self.TERRITORY_MEDIAN_INCOME_FIELD: 37254,
             },
         ]
 
@@ -344,6 +356,31 @@ class CensusDecennialETL(ExtractTransformLoad):
             + self.df_all[self.EMPLOYMENT_FEMALE_IN_LABOR_FORCE_FIELD]
         )
 
+        # Calculate area median income
+        median_income_df = pd.DataFrame(self.ISLAND_TERRITORIES)
+        median_income_df = median_income_df[
+            ["fips", self.TERRITORY_MEDIAN_INCOME_FIELD]
+        ]
+
+        logger.info(median_income_df)
+
+        self.df_all = self.df_all.merge(
+            right=median_income_df, left_on="state", right_on="fips", how="left"
+        )
+
+        self.df_all[self.AREA_MEDIAN_INCOME_FIELD_NAME] = (
+            self.df_all[self.MEDIAN_INCOME_FIELD_NAME]
+            / self.df_all[self.TERRITORY_MEDIAN_INCOME_FIELD]
+        )
+
+        # delete
+        self.df_all.to_csv(
+            path_or_buf=self.DATA_PATH / "dataset/terr_median_incomes.csv",
+            index=False,
+        )
+
+        logger.info(self.df_all)
+
         # Creating Geo ID (Census Block Group) Field Name
         self.df_all[self.GEOID_TRACT_FIELD_NAME] = (
             self.df_all["state"] + self.df_all["county"] + self.df_all["tract"]
@@ -366,6 +403,8 @@ class CensusDecennialETL(ExtractTransformLoad):
             self.GEOID_TRACT_FIELD_NAME,
             self.TOTAL_POP_FIELD_NAME,
             self.MEDIAN_INCOME_FIELD_NAME,
+            self.TERRITORY_MEDIAN_INCOME_FIELD,
+            self.AREA_MEDIAN_INCOME_FIELD_NAME,
             self.PERCENTAGE_HOUSEHOLDS_BELOW_100_PERC_POVERTY_LEVEL_FIELD_NAME,
             self.PERCENTAGE_HOUSEHOLDS_BELOW_200_PERC_POVERTY_LEVEL_FIELD_NAME,
             self.PERCENTAGE_HIGH_SCHOOL_ED_FIELD_NAME,

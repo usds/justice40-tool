@@ -330,6 +330,7 @@ class ScoreETL(ExtractTransformLoad):
             field_names.CENSUS_UNEMPLOYMENT_2010,
             field_names.CENSUS_POVERTY_LESS_THAN_100_FPL_FIELD_2010,
             field_names.CENSUS_DECENNIAL_TOTAL_POPULATION_2009,
+            field_names.CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_2009,
         ]
 
         non_numeric_columns = [

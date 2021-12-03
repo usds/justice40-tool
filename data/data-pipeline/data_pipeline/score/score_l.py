@@ -462,6 +462,17 @@ class ScoreL(Score):
         workforce_combined_criteria_for_island_areas = (
             self.df[unemployment_island_areas_criteria_field_name]
             | self.df[poverty_island_areas_criteria_field_name]
+            # Also check whether area median income is 10th percentile or lower
+            # within the islands.
+            | (
+                self.df[
+                    field_names.CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_2009
+                    + field_names.PERCENTILE_FIELD_SUFFIX
+                ]
+                # Note: a high median income as a % of AMI is good, so take 1 minus the threshold to invert it.
+                # and then look for median income lower than that (not greater than).
+                < 1 - self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            )
         ) & (
             self.df[field_names.CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009]
             > self.LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD
