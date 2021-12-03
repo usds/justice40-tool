@@ -336,5 +336,5 @@ class ScoreL(Score):
             )
         )
         return (
-            self.df[field_names.HIGH_SCHOOL_ED_FIELD] > 0.05
+            self.df[field_names.HIGH_SCHOOL_ED_FIELD] > 0.10
         ) & workforce_criteria
