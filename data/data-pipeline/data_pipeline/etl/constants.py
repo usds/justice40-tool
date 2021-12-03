@@ -50,6 +50,11 @@ DATASET_LIST = [
         "class_name": "GeoCorrETL",
     },
     {
+        "name": "mapping_inequality",
+        "module_dir": "mapping_inequality",
+        "class_name": "MappingInequalityETL",
+    },
+    {
         "name": "persistent_poverty",
         "module_dir": "persistent_poverty",
         "class_name": "PersistentPovertyETL",
