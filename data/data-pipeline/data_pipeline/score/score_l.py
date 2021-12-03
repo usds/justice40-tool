@@ -435,7 +435,7 @@ class ScoreL(Score):
         # First, combine unemployment.
         (
             self.df,
-            unemployment_island_areas_criteria,
+            unemployment_island_areas_criteria_field_name,
         ) = self._combine_island_areas_with_states_and_set_thresholds(
             df=self.df,
             column_from_island_areas=field_names.CENSUS_DECENNIAL_UNEMPLOYMENT_2009,
@@ -447,7 +447,7 @@ class ScoreL(Score):
         # Next, combine poverty.
         (
             self.df,
-            poverty_island_areas_criteria,
+            poverty_island_areas_criteria_field_name,
         ) = self._combine_island_areas_with_states_and_set_thresholds(
             df=self.df,
             column_from_island_areas=field_names.CENSUS_DECENNIAL_POVERTY_LESS_THAN_100_FPL_FIELD_2009,
@@ -456,4 +456,10 @@ class ScoreL(Score):
             threshold_cutoff_for_island_areas=self.ENVIRONMENTAL_BURDEN_THRESHOLD,
         )
 
-        # field_names.CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009
+        workforce_combined_criteria_for_island_areas = (
+            self.df[unemployment_island_areas_criteria_field_name]
+            | self.df[poverty_island_areas_criteria_field_name]
+        ) & (
+            self.df[field_names.CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009]
+            > 0.05
+        )
