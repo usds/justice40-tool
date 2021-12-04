@@ -2,8 +2,8 @@ Feature: All links on About page are functional
 
   Scenario: Visitors can learn more about the J40 EO
     Given I am on the "About" page
-    When I look for the "The Justice40 Initiative" CTA
-    And I click on the "The Justice40 Initiative" "external" link
+    When I look for the "Justice40 Initiative" CTA
+    And I click on the "Justice40 Initiative" "external" link
     Then the link should respond successfully
 
   Scenario: Federal program officer can find and click on their CTA
