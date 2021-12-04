@@ -48,6 +48,22 @@ class MappingInequalityETL(ExtractTransformLoad):
         self.HOLC_GRADE_D_FIELD: str = "HOLC Grade D"
         self.HOLC_GRADE_MANUAL_FIELD: str = "HOLC Grade (manually mapped)"
         self.HOLC_GRADE_DERIVED_FIELD: str = "HOLC Grade (derived)"
+        self.HOLC_GRADE_D_TRACT_PERCENT_FIELD: str = (
+            "Percent of tract that is HOLC Grade D"
+        )
+        self.HOLC_GRADE_D_TRACT_50_PERCENT_FIELD: str = (
+            "Tract is >50% HOLC Grade D"
+        )
+        self.HOLC_GRADE_D_TRACT_20_PERCENT_FIELD: str = (
+            "Tract is >20% HOLC Grade D"
+        )
+
+        self.COLUMNS_TO_KEEP = [
+            self.GEOID_TRACT_FIELD_NAME,
+            self.HOLC_GRADE_D_TRACT_PERCENT_FIELD,
+            self.HOLC_GRADE_D_TRACT_20_PERCENT_FIELD,
+            self.HOLC_GRADE_D_TRACT_50_PERCENT_FIELD,
+        ]
 
         self.df: pd.DataFrame
 
@@ -105,13 +121,53 @@ class MappingInequalityETL(ExtractTransformLoad):
             (merged_df[self.HOLC_GRADE_DERIVED_FIELD] == "D")
             | (merged_df[self.HOLC_GRADE_MANUAL_FIELD] == "D"),
             True,
-            None
+            None,
         )
 
-        self.df = merged_df
+        # Start grouping by, to sum all of the grade D parts of each tract.
+        grouped_df = (
+            merged_df.groupby(
+                by=[
+                    self.GEOID_TRACT_FIELD_NAME,
+                    self.HOLC_GRADE_D_FIELD,
+                ],
+                # Keep the nulls, so we know the non-D proportion.
+                dropna=False,
+            )[self.TRACT_PROPORTION_FIELD]
+            .sum()
+            .reset_index()
+        )
+
+        # Create a field that is only the percent that is grade D.
+        grouped_df[self.HOLC_GRADE_D_TRACT_PERCENT_FIELD] = np.where(
+            grouped_df[self.HOLC_GRADE_D_FIELD],
+            grouped_df[self.TRACT_PROPORTION_FIELD],
+            0,
+        )
+
+        # Calculate some specific threshold cutoffs, for convenience.
+        grouped_df[self.HOLC_GRADE_D_TRACT_50_PERCENT_FIELD] = (
+            grouped_df[self.HOLC_GRADE_D_TRACT_PERCENT_FIELD] > 0.5
+        )
+        grouped_df[self.HOLC_GRADE_D_TRACT_20_PERCENT_FIELD] = (
+            grouped_df[self.HOLC_GRADE_D_TRACT_PERCENT_FIELD] > 0.2
+        )
+
+        # Drop the non-True values of `self.HOLC_GRADE_D_FIELD` -- we only
+        # want one row per tract for future joins.
+        # Note this means not all tracts will be in this data.
+        grouped_df = grouped_df[grouped_df[self.HOLC_GRADE_D_FIELD] == True]
+
+        # Sort for convenience.
+        grouped_df.sort_values(by=self.GEOID_TRACT_FIELD_NAME, inplace=True)
+
+        # Save to self.
+        self.df = grouped_df
 
     def load(self) -> None:
         logger.info("Saving Mapping Inequality CSV")
         # write nationwide csv
         self.CSV_PATH.mkdir(parents=True, exist_ok=True)
-        self.df.to_csv(self.CSV_PATH / "usa.csv", index=False)
+        self.df[self.COLUMNS_TO_KEEP].to_csv(
+            self.CSV_PATH / "usa.csv", index=False
+        )
