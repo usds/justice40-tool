@@ -126,7 +126,9 @@ CENSUS_DECENNIAL_POVERTY_LESS_THAN_100_FPL_FIELD_2009 = (
     "Percentage households below 100% of federal poverty line in 2009"
 )
 CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009 = "Percent individuals age 25 or over with less than high school degree in 2009"
-CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009 = "Unemployed civilians (percent) in 2009"
+CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009 = (
+    "Unemployed civilians (percent) in 2009"
+)
 CENSUS_DECENNIAL_TOTAL_POPULATION_FIELD_2009 = "Total population in 2009"
 
 # Fields from 2010 ACS (loaded for comparison with the territories)

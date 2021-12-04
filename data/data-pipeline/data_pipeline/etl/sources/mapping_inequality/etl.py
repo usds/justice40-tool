@@ -1,4 +1,5 @@
-from collections import namedtuple
+import pathlib
+import numpy as np
 import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
@@ -27,6 +28,12 @@ class MappingInequalityETL(ExtractTransformLoad):
         self.MAPPING_INEQUALITY_CSV = self.TMP_PATH / "holc_tract_lookup.csv"
         self.CSV_PATH = self.DATA_PATH / "dataset" / "mapping_inequality"
 
+        self.HOLC_MANUAL_MAPPING_CSV_PATH = (
+            pathlib.Path(__file__).parent
+            / "data"
+            / "holc_grades_manually_mapped.csv"
+        )
+
         # Some input field names. From documentation: 'Census Tracts were intersected
         # with HOLC Polygons. Census information can be joined via the "geoid" field.
         # There are two field "holc_prop" and "tract_prop" which give the proportion
@@ -36,8 +43,11 @@ class MappingInequalityETL(ExtractTransformLoad):
         self.TRACT_INPUT_FIELD: str = "geoid"
         self.TRACT_PROPORTION_FIELD: str = "tract_prop"
         self.HOLC_GRADE_AND_ID_FIELD: str = "holc_id"
+        self.CITY_INPUT_FIELD: str = "city"
 
-        self.HOLC_GRADE_FIELD: str = "HOLC Grade"
+        self.HOLC_GRADE_D_FIELD: str = "HOLC Grade D"
+        self.HOLC_GRADE_MANUAL_FIELD: str = "HOLC Grade (manually mapped)"
+        self.HOLC_GRADE_DERIVED_FIELD: str = "HOLC Grade (derived)"
 
         self.df: pd.DataFrame
 
@@ -65,68 +75,40 @@ class MappingInequalityETL(ExtractTransformLoad):
         )
 
         # Keep the first character, which is the HOLC grade (A, B, C, D).
-        df[self.HOLC_GRADE_FIELD] = df[self.HOLC_GRADE_AND_ID_FIELD].str[0:1]
+        df[self.HOLC_GRADE_DERIVED_FIELD] = df[
+            self.HOLC_GRADE_AND_ID_FIELD
+        ].str[0:1]
 
         # Remove nonsense when the field has no grade or invalid grades.
         valid_grades = ["A", "B", "C", "D"]
         df.loc[
-            ~df[self.HOLC_GRADE_FIELD].isin(valid_grades), self.HOLC_GRADE_FIELD
+            ~df[self.HOLC_GRADE_DERIVED_FIELD].isin(valid_grades),
+            self.HOLC_GRADE_DERIVED_FIELD,
         ] = None
 
         # Some data needs to be manually mapped to its grade.
-        ManualHolcGrade = namedtuple(
-            typename="ManualHolcGrade",
-            field_names=["city", "holc_ids", "grade"],
+        # TODO: Investigate more data that may need to be manually mapped.
+        holc_manually_mapped_df = pd.read_csv(
+            filepath_or_buffer=self.HOLC_MANUAL_MAPPING_CSV_PATH,
+            low_memory=False,
         )
 
-        manual_holc_grades = [
-            ManualHolcGrade(
-                city="Providence", holc_ids=["25", "26"], grade="D"
-            ),
-            ManualHolcGrade(
-                city="Oklahoma City",
-                holc_ids=[
-                    "46R",
-                    "47R",
-                    "48R",
-                    "49R",
-                    "50R",
-                    "51R",
-                    "52R",
-                    "53R",
-                    "54R",
-                    "55R",
-                    "56R",
-                    "57R",
-                    "58R",
-                    "59R",
-                    "60R",
-                    "61R",
-                    "62B",
-                    "63R",
-                    "64R",
-                    "65R",
-                    "66R",
-                    "67R",
-                    "68R",
-                    "69R",
-                    "70R",
-                    "80R",
-                    "81R",
-                    "85R",
-                    "86R",
-                    "87R",
-                    "88R",
-                    "89R",
-                    "90R",
-                ],
-                grade="D",
-            ),
-        ]
+        # Join on the existing data
+        merged_df = df.merge(
+            right=holc_manually_mapped_df,
+            on=[self.HOLC_GRADE_AND_ID_FIELD, self.CITY_INPUT_FIELD],
+            how="left",
+        )
 
-        logger.info(df[self.HOLC_GRADE_FIELD].unique())
+        merged_df[self.HOLC_GRADE_D_FIELD] = None
+        merged_df[self.HOLC_GRADE_D_FIELD] = np.where(
+            (merged_df[self.HOLC_GRADE_DERIVED_FIELD] == "D")
+            | (merged_df[self.HOLC_GRADE_MANUAL_FIELD] == "D"),
+            True,
+            None
+        )
 
-        self.df = df
+        self.df = merged_df
 
     def load(self) -> None:
         logger.info("Saving Mapping Inequality CSV")
