@@ -39,7 +39,7 @@ export const HEADER = defineMessages({
   },
   METHODOLOGY: {
     id: 'header.methodology',
-    defaultMessage: 'Data & methodology',
+    defaultMessage: 'Methodology and data',
     description: 'Header navigate item to the Methodology page',
   },
   CONTACT: {

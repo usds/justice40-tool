@@ -261,7 +261,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   data-cy="nav-link-methodology"
                   href="/en/methodology"
                 >
-                  Data & methodology
+                  Methodology and data
                 </a>
               </li>
               <li
@@ -331,14 +331,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               data-testid="grid"
             >
               <img
-                alt="The screening tool"
+                alt="Screening tool"
                 class="j40-aboutcard-image"
                 src="test-file-stub"
               />
             </div>
             <div
               class="tablet:grid-col-9"
-              data-cy="the-screening-tool-block"
+              data-cy="screening-tool-block"
               data-testid="grid"
             >
               <div
@@ -346,13 +346,32 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 data-testid="grid"
               >
                 <h2>
-                  The screening tool
+                  Screening tool
                 </h2>
                 <p>
-                  On January 27, 2021, President Biden directed the Council on Environmental Quality (CEQ) to create a climate and economic justice screening tool. The purpose of the tool is to help Federal agencies identify disadvantaged communities and provide socioeconomic, environmental, and climate information and data to inform decisions that may affect these communities. The tool identifies disadvantaged communities as communities of focus through publicly available, nationally consistent, high-quality data.
+                  
+    In 
+                  <a
+                    href="https://www.federalregister.gov/documents/2021/02/01/2021-02177/tackling-the-climate-crisis-at-home-and-abroad#:~:text=Sec.%20223.%20Justice40,40-percent%20goal."
+                  >
+                    Executive Order 14008
+                  </a>
+                   on Tackling the Climate Crisis at Home and Abroad,
+    President Biden directed the Council on 
+    Environmental Quality (CEQ) to create a Climate and Economic
+    Justice Screening Tool. The purpose of the tool is to help
+    Federal agencies identify disadvantaged communities 
+    that have been historically marginalized, underserved, and 
+    overburdened by pollution. The tool provides
+    socioeconomic, environmental, and climate information
+    to inform decisions that may affect these communities. The tool
+    identifies disadvantaged communities
+    through publicly available, nationally consistent, high-quality
+    data.
+    
                 </p>
                 <p>
-                  The current version of the tool is in a public beta form and will be updated based on feedback from the public.
+                  The current version of the tool is in a public beta form and will be updated based on feedback and research.
                 </p>
               </div>
             </div>
@@ -376,14 +395,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               data-testid="grid"
             >
               <img
-                alt="The Justice40 Initiative"
+                alt="Justice40 Initiative"
                 class="j40-aboutcard-image"
                 src="test-file-stub"
               />
             </div>
             <div
               class="tablet:grid-col-9"
-              data-cy="the-justice40-initiative-block"
+              data-cy="justice40-initiative-block"
               data-testid="grid"
             >
               <div
@@ -391,20 +410,22 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 data-testid="grid"
               >
                 <h2>
-                  The Justice40 Initiative
+                  Justice40 Initiative
                 </h2>
                 <p>
                   The tool will provide important information for the Justice40 Initiative. The goal of the Justice40 Initiative is to provide 40-percent of the overall benefits of certain federal programs in seven key areas to disadvantaged communities. These seven key areas are: climate change, clean energy and energy efficiency, clean transit, affordable and sustainable housing, training and workforce development, the remediation and reduction of legacy pollution, and the development of critical clean water infrastructure.
                 </p>
                 <p>
-                  Read more about the Justice40 Initiative in President Biden’s 
+                  
+    Read more about the Justice40 Initiative in President Biden’s
+    
                   <a
-                    href="https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/27/executive-order-on-tackling-the-climate-crisis-at-home-and-abroad/"
-                    rel="noreferrer"
-                    target="_blank"
+                    href="https://www.federalregister.gov/documents/2021/02/01/2021-02177/tackling-the-climate-crisis-at-home-and-abroad#:~:text=Sec.%20223.%20Justice40,40-percent%20goal."
                   >
-                    Executive Order 14008 on Tackling the Climate Crisis at Home and Abroad.
+                    Executive Order 14008
                   </a>
+                   on Tackling the Climate Crisis at Home and Abroad.
+    
                 </p>
               </div>
             </div>
@@ -457,7 +478,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     Federal program managers
                   </h3>
                   <p>
-                    Download the screening tool’s draft list of communities of focus. Explore data that may be useful to your program, and provide feedback on the tool.
+                    Download the tool’s current list of communities. Explore data that may be useful to your program, and provide feedback on the tool.
                   </p>
                   <div
                     class="j40-aboutcard-sm-link"
@@ -465,7 +486,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <a
                       href="/en/methodology"
                     >
-                      Go to data & methodology
+                      Go to methodology & data
                     </a>
                   </div>
                 </div>
@@ -509,7 +530,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     Community members
                   </h3>
                   <p>
-                    Explore data about communities of focus in your area, and help  provide feedback on the tool.
+                    Explore data about communities in your area, and provide feedback on the tool.
                   </p>
                   <div
                     class="j40-aboutcard-sm-link"

@@ -1,4 +1,8 @@
+import React from 'react';
 import {defineMessages} from 'react-intl';
+import {FormattedMessage} from 'gatsby-plugin-intl';
+
+export const EXEC_ORDER_LINK = 'https://www.federalregister.gov/documents/2021/02/01/2021-02177/tackling-the-climate-crisis-at-home-and-abroad#:~:text=Sec.%20223.%20Justice40,40-percent%20goal.';
 
 export const PAGE = defineMessages({
   TILE: {
@@ -13,12 +17,12 @@ export const PAGE = defineMessages({
   },
   HEADING_1: {
     id: 'index.heading.screentool',
-    defaultMessage: 'The screening tool',
+    defaultMessage: 'Screening tool',
     description: 'heading for about screening tool',
   },
   HEADING1_DESCRIPTION1: {
     id: 'about.page.sub.header.1.text.1',
-    defaultMessage: 'On January 27, 2021, President Biden directed the Council on'+
+    defaultMessage: 'In Executive Order 14008 on Tackling the Climate Crisis at Home and Abroad'+
     ' Environmental Quality (CEQ) to create a climate and economic'+
     ' justice screening tool. The purpose of the tool is to help'+
     ' Federal agencies identify disadvantaged communities and provide'+
@@ -32,12 +36,12 @@ export const PAGE = defineMessages({
   HEADING1_DESCRIPTION2: {
     id: 'about.page.sub.header.1.text.2',
     defaultMessage: 'The current version of the tool is in a public beta form and'+
-    ' will be updated based on feedback from the public.',
+    ' will be updated based on feedback and research.',
     description: 'about page sub header text',
   },
   HEADING_2: {
     id: 'index.heading.justice40',
-    defaultMessage: 'The Justice40 Initiative',
+    defaultMessage: 'Justice40 Initiative',
     description: 'heading for about justice 40',
   },
   HEADING2_DESCRIPTION1: {
@@ -53,20 +57,54 @@ export const PAGE = defineMessages({
     ' critical clean water infrastructure.',
     description: 'about page sub header text',
   },
-  HEADING2_DESCRIPTION2: {
-    id: 'about.page.sub.header.2.text.2',
-    defaultMessage: 'Read more about the Justice40 Initiative in President Biden’s',
-    description: 'about page sub header text',
-  },
-  PRESIDENT_LINK_LABEL: {
-    id: 'index.presidentalLinkLabel',
-    defaultMessage: 'Executive Order 14008 on Tackling the Climate Crisis at Home and Abroad.',
-    description: 'Link url to presidential actions executive order. Part of paragraph 2',
-  },
 });
 
-export const EXEC_ORDER_LINK = 'https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/27/' +
-    'executive-order-on-tackling-the-climate-crisis-at-home-and-abroad/';
+export const HEADING_1 = {
+  DESCRIPTION_1:
+  <FormattedMessage
+    id={'about.page.sub.header.1.text.1'}
+    description={'about page sub header text'}
+    defaultMessage={`
+    In {eoLink} on Tackling the Climate Crisis at Home and Abroad,
+    President Biden directed the Council on 
+    Environmental Quality (CEQ) to create a Climate and Economic
+    Justice Screening Tool. The purpose of the tool is to help
+    Federal agencies identify disadvantaged communities 
+    that have been historically marginalized, underserved, and 
+    overburdened by pollution. The tool provides
+    socioeconomic, environmental, and climate information
+    to inform decisions that may affect these communities. The tool
+    identifies disadvantaged communities
+    through publicly available, nationally consistent, high-quality
+    data.
+    `}
+    values={{
+      eoLink:
+      <a href={EXEC_ORDER_LINK}>
+        Executive Order 14008
+      </a>,
+    }}
+  />,
+};
+
+export const HEADING_2 = {
+  DESCRIPTION_2:
+  <FormattedMessage
+    id={'about.page.sub.header.2.text.2'}
+    description={'about page sub header text'}
+    defaultMessage={`
+    Read more about the Justice40 Initiative in President Biden’s
+    {eoLink} on Tackling the Climate Crisis at Home and Abroad.
+    `}
+    values={{
+      eoLink:
+      <a href={EXEC_ORDER_LINK}>
+        Executive Order 14008
+      </a>,
+    }}
+  />,
+};
+
 
 export const GITHUB_LINK = 'https://github.com/usds/justice40-tool';
 
@@ -83,14 +121,14 @@ export const HOW_TO_GET_STARTED = defineMessages({
   },
   FEDERAL_PM_INFO: {
     id: 'federal.pm.info',
-    defaultMessage: 'Download the screening tool’s draft list of communities of focus.'+
+    defaultMessage: 'Download the tool’s current list of communities.'+
     ' Explore data that may be useful to your program, and provide'+
     ' feedback on the tool.',
     description: 'sub heading of page',
   },
   FEDERAL_PM_LINK_TEXT: {
     id: 'federal.pm.link',
-    defaultMessage: 'Go to data & methodology',
+    defaultMessage: 'Go to methodology & data',
     description: 'link text to go to methodology page',
   },
   COMMUNITY_MEMBERS_HEADING: {
@@ -100,7 +138,7 @@ export const HOW_TO_GET_STARTED = defineMessages({
   },
   COMMUNITY_MEMBERS_INFO: {
     id: 'community.members.info',
-    defaultMessage: 'Explore data about communities of focus in your area, and help '+
+    defaultMessage: 'Explore data about communities in your area, and'+
     ' provide feedback on the tool.',
     description: 'sub heading of page',
   },

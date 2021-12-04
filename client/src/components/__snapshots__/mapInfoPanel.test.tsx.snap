@@ -9,7 +9,7 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
   >
     <aside>
       <header>
-        Zoom and select a census block group to view data
+        Zoom and select a census tract to view data
       </header>
       <div>
         <img
@@ -21,7 +21,13 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
              Did you know?
           </div>
           <cite>
-            A census block group is generally between 600 and 3,000 people. It is the smallest geographical unit for which the U.S. Census Bureau publishes sample data.
+            
+      A census tract is generally between 1,200 and 8,000 people, with an optimum size of 4,000 people. 
+      Census tracts are small, relatively permanent subdivisions of a county defined by the 
+      U.S. Census Bureau and usually cover a contiguous area. Census tract geographical boundaries 
+      are determined by the U.S. Census Bureau once every ten years. This tool utilizes the census 
+      tract boundaries from 2010.
+    
           </cite>
         </div>
       </div>
