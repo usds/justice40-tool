@@ -158,7 +158,9 @@ class MappingInequalityETL(ExtractTransformLoad):
         # Note: this singleton comparison warning may be a pylint bug:
         # https://stackoverflow.com/questions/51657715/pylint-pandas-comparison-to-true-should-be-just-expr-or-expr-is-true-sin#comment90876517_51657715
         # pylint: disable=singleton-comparison
-        grouped_df = grouped_df[grouped_df[self.HOLC_GRADE_D_FIELD] == True]
+        grouped_df = grouped_df[
+            grouped_df[self.HOLC_GRADE_D_FIELD] == True  # noqa: E712
+        ]
 
         # Sort for convenience.
         grouped_df.sort_values(by=self.GEOID_TRACT_FIELD_NAME, inplace=True)
