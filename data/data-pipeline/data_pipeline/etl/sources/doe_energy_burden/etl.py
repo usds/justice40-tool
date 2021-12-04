@@ -20,12 +20,13 @@ class DOEEnergyBurden(ExtractTransformLoad):
         )
 
         self.TRACT_INPUT_COLUMN_NAME = "FIP"
-        self.ENERGY_BURDEN_FIELD_NAME = "BURDEN"
+        self.INPUT_ENERGY_BURDEN_FIELD_NAME = "BURDEN"
+        self.REVISED_ENERGY_BURDEN_FIELD_NAME = "Energy Burden"
 
         # Constants for output
         self.COLUMNS_TO_KEEP = [
             self.GEOID_TRACT_FIELD_NAME,
-            self.ENERGY_BURDEN_FIELD_NAME,
+            self.REVISED_ENERGY_BURDEN_FIELD_NAME,
         ]
 
         self.raw_df: pd.DataFrame
@@ -56,8 +57,7 @@ class DOEEnergyBurden(ExtractTransformLoad):
 
         output_df = self.raw_df.rename(
             columns={
-                # Where is this referenced elsewhere? It's not immediately clear
-                "AvgEnergyBurden": self.ENERGY_BURDEN_FIELD_NAME,
+                self.INPUT_ENERGY_BURDEN_FIELD_NAME: self.REVISED_ENERGY_BURDEN_FIELD_NAME,
                 self.TRACT_INPUT_COLUMN_NAME: self.GEOID_TRACT_FIELD_NAME,
             }
         )
@@ -79,7 +79,6 @@ class DOEEnergyBurden(ExtractTransformLoad):
 
     def load(self) -> None:
         logger.info("Saving DOE Energy Burden CSV")
-
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
         self.output_df[self.COLUMNS_TO_KEEP].to_csv(
             path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False

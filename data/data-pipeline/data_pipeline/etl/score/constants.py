@@ -82,12 +82,7 @@ TILES_SCORE_COLUMNS = [
     "Life expectancy (years) (percentile)",
     "Traffic proximity and volume (percentile)",
     "FEMA Risk Index Expected Annual Loss Score (percentile)",
-    # this column is not coherent and is rather vague and should be changed to the original
-    # The question is where do we change this? I have thoughts on this
-    # but am seeking definitive feedback that is aligned with how this
-    # codebase was originally created
-    "BURDEN", 
-    # "Energy burden (percentile)",
+    "Energy burden (percentile)",
     "Wastewater discharge (percentile)",
     "Percent pre-1960s housing (lead paint indicator) (percentile)",
     "Diesel particulate matter (percentile)",
@@ -119,9 +114,7 @@ TILES_SCORE_FLOAT_COLUMNS = [
     "Life expectancy (years) (percentile)",
     "Traffic proximity and volume (percentile)",
     "FEMA Risk Index Expected Annual Loss Score (percentile)",
-    # Same statement as above
-    "BURDEN",
-    # "Energy burden (percentile)",
+    "Energy burden (percentile)",
     "Wastewater discharge (percentile)",
     "Percent pre-1960s housing (lead paint indicator) (percentile)",
     "Diesel particulate matter (percentile)",
@@ -141,8 +134,7 @@ DOWNLOADABLE_SCORE_INDICATOR_COLUMNS_BASIC = [
     "Life expectancy (years)",
     "Traffic proximity and volume",
     "FEMA Risk Index Expected Annual Loss Score",
-    "BURDEN",
-    # "Energy burden",
+    "Energy burden",
     "Housing burden (percent)",
     "Wastewater discharge",
     "Percent pre-1960s housing (lead paint indicator)",
