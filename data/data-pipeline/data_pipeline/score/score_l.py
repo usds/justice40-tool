@@ -195,6 +195,7 @@ class ScoreL(Score):
 
         self.df[field_names.THRESHOLD_COUNT] += self.df[criterion_columns].sum(axis = 1)
 
+        # this is one idea for a pattern I was thinking of using
         return self.df[criterion_columns].any(axis='columns')
 
     def _energy_factor(self) -> bool:
@@ -232,7 +233,7 @@ class ScoreL(Score):
 
         return self.df[[
              field_names.ABOVE_90TH_FOR_COST_BURDEN_LOW_INCOME, field_names.PM25_LOW_INCOME
-        ]].any(axis='columns') & self.FPL_200_SERIES
+        ]].any(axis='columns')
 
 
     def _transportation_factor(self) -> bool:
@@ -274,7 +275,7 @@ class ScoreL(Score):
         return self.df[[
              field_names.DIESEL_PARTICULATE_MATTER_LOW_INCOME
              field_names.TRAFFIC_PROXIMITY_MATTER_LOW_INCOME
-        ]].any(axis='columns') & self.FPL_200_SERIES
+        ]].any(axis='columns')
 
     def _housing_factor(self) -> bool:
         # (
@@ -325,6 +326,7 @@ class ScoreL(Score):
         ]].sum(axis = 1)
 
         # reverting to the original pattern here - I could have referenced the dataframes
+        # which do you prefer?
         return self.FPL_200_SERIES & housing_criteria
 
     def _pollution_factor(self) -> bool:
@@ -334,33 +336,39 @@ class ScoreL(Score):
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
 
-        threshold_one = (
+        polllution_threshold_columns = [
+            field_names.RMP_LOW_INCOME,
+            field_names.SUPERFUND_LOW_INCOME,
+            field_names.HAZARDOUS_WASTE_LOW_INCOME
+        ]
+
+        rmp_sites= (
             self.df[field_names.RMP_FIELD + field_names.PERCENTILE_FIELD_SUFFIX]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-        threshold_two = (
+        npl_sites = (
             self.df[field_names.NPL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-        threshold_three = (
+        tsdf_sites = (
             self.df[
                 field_names.TSDF_FIELD + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-        self.df[field_names.RMP_LOW_INCOME] = threshold_one & self.FPL_200_SERIES
-        self.df[field_names.SUPERFUND_LOW_INCOME] = threshold_two & self.FPL_200_SERIES
-        self.df[field_names.HAZARDOUS_WASTE_LOW_INCOME] = threshold_three & self.FPL_200_SERIES
+        # individual series-by-series
+        self.df[field_names.RMP_LOW_INCOME] = rmp_sites & self.FPL_200_SERIES
+        self.df[field_names.SUPERFUND_LOW_INCOME] = npl_sites & self.FPL_200_SERIES
+        self.df[field_names.HAZARDOUS_WASTE_LOW_INCOME] = tsdf_sites & self.FPL_200_SERIES
 
-        pollution_criteria = (
-            threshold_one | threshold_two | threshold_three
-        )
-
-        return pollution_criteria & self.FPL_200_SERIES
-    
+        self.df[field_names.THRESHOLD_COUNT] += self.df[
+            polllution_threshold_columns
+        ].sum(axis = 1)
+        
+        return self.df[polllution_threshold_columns].any(axis='columns')
 
     def _water_factor(self) -> bool:
         # In Xth percentile or above for wastewater discharge (Source: EPA Risk-Screening Environmental Indicators (RSEI) Model)
@@ -368,19 +376,23 @@ class ScoreL(Score):
         # Low income: In 60th percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
-        return (
-            self.df[
-                field_names.POVERTY_LESS_THAN_200_FPL_FIELD
-                + field_names.PERCENTILE_FIELD_SUFFIX
-            ]
-            >= self.LOW_INCOME_THRESHOLD
-        ) & (
+
+        wastewater_threshold = self.FPL_200_SERIES & (
             self.df[
                 field_names.WASTEWATER_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
+
+        self.df[field_names.WASTEWATER_LOW_INCOME] = wastewater_threshold
+
+
+       self.df[field_names.THRESHOLD_COUNT] += self.df[[
+            field_names.WASTEWATER_LOW_INCOME
+        ]].sum(axis = 1)
+
+        return wastewater_threshold
 
     def _health_factor(self) -> bool:
         # In Xth percentile or above for diabetes (Source: CDC Places)
@@ -395,45 +407,57 @@ class ScoreL(Score):
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
 
-        health_criteria = (
-            (
-                self.df[
-                    field_names.DIABETES_FIELD
-                    + field_names.PERCENTILE_FIELD_SUFFIX
-                ]
-                >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
-            )
-            | (
-                self.df[
-                    field_names.ASTHMA_FIELD
-                    + field_names.PERCENTILE_FIELD_SUFFIX
-                ]
-                >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
-            )
-            | (
-                self.df[
-                    field_names.HEART_DISEASE_FIELD
-                    + field_names.PERCENTILE_FIELD_SUFFIX
-                ]
-                >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
-            )
-            | (
-                self.df[
-                    field_names.LIFE_EXPECTANCY_FIELD
-                    + field_names.PERCENTILE_FIELD_SUFFIX
-                ]
+        health_threshold_columns = [
+            field_names.DIABETES_LOW_INCOME,
+            field_names.ASTHMA_LOW_INCOME,
+            field_names.HEART_DISEASE_LOW_INCOME,
+            field_names.LIFE_EXPECTANCY_INCOME
+        ]
+
+        diabetes_threshold = (
+            self.df[
+                field_names.DIABETES_FIELD + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        )
+
+        asthma_threshold = (
+            self.df[
+                field_names.ASTHMA_FIELD + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        )
+
+        heart_disease_threshold = (
+            self.df[
+                field_names.HEART_DISEASE_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        )
+
+        life_expectancy_threshold = (
+            self.df[
+                field_names.LIFE_EXPECTANCY_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
                 # Note: a high life expectancy is good, so take 1 minus the threshold to invert it,
                 # and then look for life expenctancies lower than that (not greater than).
                 <= 1 - self.ENVIRONMENTAL_BURDEN_THRESHOLD
-            )
         )
-        return (
-            self.df[
-                field_names.POVERTY_LESS_THAN_200_FPL_FIELD
-                + field_names.PERCENTILE_FIELD_SUFFIX
-            ]
-            >= self.LOW_INCOME_THRESHOLD
-        ) & health_criteria
+
+        self.df[field_names.DIABETES_LOW_INCOME] = diabetes_threshold & self.FPL_200_SERIES 
+        self.df[field_names.ASTHMA_LOW_INCOME] = asthma_threshold & self.FPL_200_SERIES
+        self.df[field_names.HEART_DISEASE_LOW_INCOME] = heart_disease_threshold & self.FPL_200_SERIES
+        self.df[field_names.LIFE_EXPECTANCY_INCOME] = life_expectancy_threshold & self.FPL_200_SERIES        
+
+        
+        self.df[field_names.THRESHOLD_COUNT] += self.df[[
+            health_threshold_columns
+        ]].sum(axis = 1)
+
+        return self.df[health_threshold_columns].any(axis = "columns")
+
 
     def _workforce_factor(self) -> bool:
         # Where unemployment is above X%
