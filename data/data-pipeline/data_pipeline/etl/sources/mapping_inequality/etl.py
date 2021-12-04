@@ -68,7 +68,7 @@ class MappingInequalityETL(ExtractTransformLoad):
 
     def transform(self) -> None:
         logger.info("Transforming Mapping Inequality Data")
-        df = pd.read_csv(
+        df: pd.DataFrame = pd.read_csv(
             self.MAPPING_INEQUALITY_CSV,
             dtype={self.TRACT_INPUT_FIELD: "string"},
             low_memory=False,
@@ -83,6 +83,8 @@ class MappingInequalityETL(ExtractTransformLoad):
         )
 
         # Keep the first character, which is the HOLC grade (A, B, C, D).
+        # TODO: investigate why this dataframe triggers these pylint errors.
+        # pylint: disable=unsupported-assignment-operation, unsubscriptable-object
         df[self.HOLC_GRADE_DERIVED_FIELD] = df[
             self.HOLC_GRADE_AND_ID_FIELD
         ].str[0:1]
@@ -90,6 +92,7 @@ class MappingInequalityETL(ExtractTransformLoad):
         # Remove nonsense when the field has no grade or invalid grades.
         valid_grades = ["A", "B", "C", "D"]
         df.loc[
+            # pylint: disable=unsubscriptable-object
             ~df[self.HOLC_GRADE_DERIVED_FIELD].isin(valid_grades),
             self.HOLC_GRADE_DERIVED_FIELD,
         ] = None
@@ -152,6 +155,9 @@ class MappingInequalityETL(ExtractTransformLoad):
         # Drop the non-True values of `self.HOLC_GRADE_D_FIELD` -- we only
         # want one row per tract for future joins.
         # Note this means not all tracts will be in this data.
+        # Note: this singleton comparison warning may be a pylint bug:
+        # https://stackoverflow.com/questions/51657715/pylint-pandas-comparison-to-true-should-be-just-expr-or-expr-is-true-sin#comment90876517_51657715
+        # pylint: disable=singleton-comparison
         grouped_df = grouped_df[grouped_df[self.HOLC_GRADE_D_FIELD] == True]
 
         # Sort for convenience.
