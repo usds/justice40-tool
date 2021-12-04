@@ -9,9 +9,7 @@ from data_pipeline.utils import get_module_logger
 logger = get_module_logger(__name__)
 
 
-def _fips_from_censusdata_censusgeo(
-        censusgeo: censusdata.censusgeo
-) -> str:
+def _fips_from_censusdata_censusgeo(censusgeo: censusdata.censusgeo) -> str:
     """Create a FIPS code from the proprietary censusgeo index."""
     fips = "".join([value for (key, value) in censusgeo.params()])
     return fips
@@ -19,12 +17,12 @@ def _fips_from_censusdata_censusgeo(
 
 # pylint: disable=too-many-arguments
 def retrieve_census_acs_data(
-        acs_year: int,
-        variables: List[str],
-        tract_output_field_name: str,
-        data_path_for_fips_codes: Path,
-        acs_type="acs5",
-        raise_errors: bool = False,
+    acs_year: int,
+    variables: List[str],
+    tract_output_field_name: str,
+    data_path_for_fips_codes: Path,
+    acs_type="acs5",
+    raise_errors: bool = False,
 ) -> pd.DataFrame:
     """Retrieves and combines census ACS data for a given year."""
     dfs = []
