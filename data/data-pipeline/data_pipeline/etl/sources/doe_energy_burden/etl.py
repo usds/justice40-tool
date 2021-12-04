@@ -78,6 +78,7 @@ class DOEEnergyBurden(ExtractTransformLoad):
 
     def load(self) -> None:
         logger.info("Saving DOE Energy Burden CSV")
+        
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
         self.output_df[self.COLUMNS_TO_KEEP].to_csv(
             path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False
