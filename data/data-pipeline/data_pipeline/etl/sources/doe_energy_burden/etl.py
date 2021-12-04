@@ -21,7 +21,7 @@ class DOEEnergyBurden(ExtractTransformLoad):
 
         self.TRACT_INPUT_COLUMN_NAME = "FIP"
         self.INPUT_ENERGY_BURDEN_FIELD_NAME = "BURDEN"
-        self.REVISED_ENERGY_BURDEN_FIELD_NAME = "Energy Burden"
+        self.REVISED_ENERGY_BURDEN_FIELD_NAME = "Energy burden"
 
         # Constants for output
         self.COLUMNS_TO_KEEP = [
