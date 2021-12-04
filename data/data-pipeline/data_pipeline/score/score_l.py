@@ -163,7 +163,7 @@ class ScoreL(Score):
 
         self.df[field_names.FEMA_LOSS_RATE_LOW_INCOME] = (
             self.df[
-                field_names.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME
+                field_names.EXPECTED_POPULATION_LOSS_RATE_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
