@@ -273,7 +273,7 @@ class ScoreL(Score):
         ]].sum(axis = 1)
 
         return self.df[[
-             field_names.DIESEL_PARTICULATE_MATTER_LOW_INCOME
+             field_names.DIESEL_PARTICULATE_MATTER_LOW_INCOME,
              field_names.TRAFFIC_PROXIMITY_MATTER_LOW_INCOME
         ]].any(axis='columns')
 
@@ -388,7 +388,7 @@ class ScoreL(Score):
         self.df[field_names.WASTEWATER_LOW_INCOME] = wastewater_threshold
 
 
-       self.df[field_names.THRESHOLD_COUNT] += self.df[[
+        self.df[field_names.THRESHOLD_COUNT] += self.df[[
             field_names.WASTEWATER_LOW_INCOME
         ]].sum(axis = 1)
 
@@ -470,6 +470,36 @@ class ScoreL(Score):
         # AND
         # Where the high school degree achievement rates for adults 25 years and older is less than 95%
         # (necessary to screen out university block groups)
+
+
+        workforce_criteria_for_states_columns = [ 
+            field_names.UNEMPLOYMENT_FIELD
+            + field_names.PERCENTILE_FIELD_SUFFIX,
+
+            field_names.POVERTY_LESS_THAN_100_FPL_FIELD
+            + field_names.PERCENTILE_FIELD_SUFFIX,
+
+            field_names.LINGUISTIC_ISO_FIELD
+            + field_names.PERCENTILE_FIELD_SUFFIX,
+
+            field_names.MEDIAN_INCOME_PERCENT_AMI_FIELD
+            + field_names.PERCENTILE_FIELD_SUFFIX               
+        ]
+
+        # Workforce criteria for states fields that create indicator columns
+        # for each tract in order to indicate whether they met any of the four
+        # criteria. We will used this create individual indicator columns.
+        workforce_indicator_columns = [
+            field_names.UNEMPLOYMENT_LOW_HS_EDUCATION,
+            field_names.POVERTY_LOW_HS_EDUCATION,
+            field_names.LINGUISTIC_ISOLATION_LOW_HS_EDUCATION,
+            field_names.MEDIAN_INCOME_LOW_HS_EDUCATION
+        ]
+
+
+
+
+
         workforce_criteria_for_states = (
             (
                 self.df[
@@ -502,6 +532,9 @@ class ScoreL(Score):
                 >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
         )
+
+
+
         workforce_combined_criteria_for_states = (
             self.df[field_names.HIGH_SCHOOL_ED_FIELD]
             >= self.LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD

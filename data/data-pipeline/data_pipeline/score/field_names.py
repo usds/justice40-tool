@@ -234,18 +234,21 @@ HEART_DISEASE_LOW_INCOME = (
 LIFE_EXPECTANCY_INCOME = (
     f"At or above the {PERCENTILE}th percentile for life expectancy and is low income"
 )
+
+ACHIEVEMENT_TEMPLATE_FOR_WORKFORCE = """and where the high school degree achievement 
+rate for adults 25 years and older is less than """
+
 # Workforce
-UNEMPLOYMENT_LOW_HS_EDUCATION = f"""At or above the {PERCENTILE}th percentile"
-    for unemployment and where the high school degree achievement rate
-    for adults 25 years and older is less than {PERCENTILE}%"""
+UNEMPLOYMENT_LOW_HS_EDUCATION = f"""At or above the {PERCENTILE}th percentile for unemployment" 
+   {ACHIEVEMENT_TEMPLATE_FOR_WORKFORCE} {PERCENTILE}%"""
+
 LINGUISTIC_ISOLATION_LOW_HS_EDUCATION = f"""At or above the {PERCENTILE}th percentile
-    for linguistic isolation and where the high school degree achievement rate
-    for adults 25 years and older is less than {PERCENTILE}%"""
+    for linguistic isolation {ACHIEVEMENT_TEMPLATE_FOR_WORKFORCE} {PERCENTILE}%"""
+
 POVERTY_LOW_HS_EDUCATION  = f"""At or above the {PERCENTILE}th percentile for households
-    at or below 100 percent of federal poverty level Where the high school degree
-    achievement rate for adults 25 years and older is less than {PERCENTILE}%"""
+    at or below 100 percent of federal poverty level {ACHIEVEMENT_TEMPLATE_FOR_WORKFORCE} {PERCENTILE}%"""
+
 MEDIAN_INCOME_LOW_HS_EDUCATION = f"""At or below the {PERCENTILE}th percentile for median
-    income Where the high school degree achievement rate for adults 25 years and older
-    is less than {PERCENTILE}%"""
+    income {ACHIEVEMENT_TEMPLATE_FOR_WORKFORCE} {PERCENTILE}%"""
 
 THRESHOLD_COUNT = "Total Number of Factor Criterion Met"
