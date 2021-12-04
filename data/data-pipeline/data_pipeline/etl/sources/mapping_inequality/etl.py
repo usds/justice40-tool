@@ -48,21 +48,13 @@ class MappingInequalityETL(ExtractTransformLoad):
         self.HOLC_GRADE_D_FIELD: str = "HOLC Grade D"
         self.HOLC_GRADE_MANUAL_FIELD: str = "HOLC Grade (manually mapped)"
         self.HOLC_GRADE_DERIVED_FIELD: str = "HOLC Grade (derived)"
-        self.HOLC_GRADE_D_TRACT_PERCENT_FIELD: str = (
-            "Percent of tract that is HOLC Grade D"
-        )
-        self.HOLC_GRADE_D_TRACT_50_PERCENT_FIELD: str = (
-            "Tract is >50% HOLC Grade D"
-        )
-        self.HOLC_GRADE_D_TRACT_20_PERCENT_FIELD: str = (
-            "Tract is >20% HOLC Grade D"
-        )
 
         self.COLUMNS_TO_KEEP = [
             self.GEOID_TRACT_FIELD_NAME,
-            self.HOLC_GRADE_D_TRACT_PERCENT_FIELD,
-            self.HOLC_GRADE_D_TRACT_20_PERCENT_FIELD,
-            self.HOLC_GRADE_D_TRACT_50_PERCENT_FIELD,
+            field_names.HOLC_GRADE_D_TRACT_PERCENT_FIELD,
+            field_names.HOLC_GRADE_D_TRACT_20_PERCENT_FIELD,
+            field_names.HOLC_GRADE_D_TRACT_50_PERCENT_FIELD,
+            field_names.HOLC_GRADE_D_TRACT_75_PERCENT_FIELD,
         ]
 
         self.df: pd.DataFrame
@@ -139,18 +131,21 @@ class MappingInequalityETL(ExtractTransformLoad):
         )
 
         # Create a field that is only the percent that is grade D.
-        grouped_df[self.HOLC_GRADE_D_TRACT_PERCENT_FIELD] = np.where(
+        grouped_df[field_names.HOLC_GRADE_D_TRACT_PERCENT_FIELD] = np.where(
             grouped_df[self.HOLC_GRADE_D_FIELD],
             grouped_df[self.TRACT_PROPORTION_FIELD],
             0,
         )
 
         # Calculate some specific threshold cutoffs, for convenience.
-        grouped_df[self.HOLC_GRADE_D_TRACT_50_PERCENT_FIELD] = (
-            grouped_df[self.HOLC_GRADE_D_TRACT_PERCENT_FIELD] > 0.5
+        grouped_df[field_names.HOLC_GRADE_D_TRACT_20_PERCENT_FIELD] = (
+            grouped_df[field_names.HOLC_GRADE_D_TRACT_PERCENT_FIELD] > 0.2
         )
-        grouped_df[self.HOLC_GRADE_D_TRACT_20_PERCENT_FIELD] = (
-            grouped_df[self.HOLC_GRADE_D_TRACT_PERCENT_FIELD] > 0.2
+        grouped_df[field_names.HOLC_GRADE_D_TRACT_50_PERCENT_FIELD] = (
+            grouped_df[field_names.HOLC_GRADE_D_TRACT_PERCENT_FIELD] > 0.5
+        )
+        grouped_df[field_names.HOLC_GRADE_D_TRACT_75_PERCENT_FIELD] = (
+            grouped_df[field_names.HOLC_GRADE_D_TRACT_PERCENT_FIELD] > 0.75
         )
 
         # Drop the non-True values of `self.HOLC_GRADE_D_FIELD` -- we only
