@@ -108,7 +108,8 @@ class MappingInequalityETL(ExtractTransformLoad):
             how="left",
         )
 
-        merged_df[self.HOLC_GRADE_D_FIELD] = None
+        # Create a single field that combines the 'derived' grade D field with the
+        # manually mapped grade D field into a single grade D field.
         merged_df[self.HOLC_GRADE_D_FIELD] = np.where(
             (merged_df[self.HOLC_GRADE_DERIVED_FIELD] == "D")
             | (merged_df[self.HOLC_GRADE_MANUAL_FIELD] == "D"),
