@@ -43,7 +43,7 @@ class DOEEnergyBurden(ExtractTransformLoad):
         self.raw_df = pd.read_csv(
             filepath_or_buffer=self.TMP_PATH
             / "doe_energy_burden"
-            / "DOE_LEAD_with_EJSCREEN.csv",
+            / "DOE_LEAD_AMI_TRACT_2018_ALL.csv",
             # The following need to remain as strings for all of their digits, not get converted to numbers.
             dtype={
                 self.TRACT_INPUT_COLUMN_NAME: "string",
@@ -56,6 +56,7 @@ class DOEEnergyBurden(ExtractTransformLoad):
 
         output_df = self.raw_df.rename(
             columns={
+                # Where is this referenced elsewhere? It's not immediately clear
                 "AvgEnergyBurden": self.ENERGY_BURDEN_FIELD_NAME,
                 self.TRACT_INPUT_COLUMN_NAME: self.GEOID_TRACT_FIELD_NAME,
             }

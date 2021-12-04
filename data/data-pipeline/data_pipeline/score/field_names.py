@@ -87,7 +87,7 @@ HT_INDEX_FIELD = (
 )
 
 # Energy
-ENERGY_BURDEN_FIELD = "Energy burden"
+ENERGY_BURDEN_FIELD = "BURDEN"
 
 # Health
 DIABETES_FIELD = "Diagnosed diabetes among adults aged >=18 years"
