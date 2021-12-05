@@ -330,9 +330,9 @@ class ScoreL(Score):
         )
 
         # series by series indicators
-        self.df[
-            field_names.LEAD_PAINT_HOME_VALUE
-        ] = lead_paint_median_house_hold_threshold & self.df[FPL_200_SERIES]
+        self.df[field_names.LEAD_PAINT_HOME_VALUE] = (
+            lead_paint_median_house_hold_threshold & self.df[FPL_200_SERIES]
+        )
 
         self.df[field_names.HOUSING_BURDEN_LOW_INCOME] = (
             housing_burden_threshold & self.df[FPL_200_SERIES]
@@ -527,11 +527,19 @@ class ScoreL(Score):
             field_names.MEDIAN_INCOME_LOW_HS_EDUCATION,
         ]
 
-        for index_, _ in enumerate(workforce_criteria_for_states_columns):
+        for index_, _ in enumerate(workforce_criteria_for_states_columns[:-1]):
             self.df[workforce_indicator_columns[index_]] = (
                 self.df[workforce_criteria_for_states_columns[index_]]
-                & high_scool_achievement_rate_threshold
-            )
+                >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+            ) & high_scool_achievement_rate_threshold
+
+        # We handle this separately, just to be explicit that a high median income
+        # as a % of AMI is good, so take 1 minus the threshold to invert it.
+        # and then look for median income lower than that (not greater than).
+        self.df[workforce_indicator_columns[-1]] = (
+            self.df[workforce_criteria_for_states_columns[-1]]
+            <= 1 - self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        ) & high_scool_achievement_rate_threshold
 
         workforce_combined_criteria_for_states = self.df[
             workforce_criteria_for_states_columns
