@@ -214,7 +214,7 @@ class ScoreL(Score):
             field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD
         ] = expected_building_loss_threshold
 
-        self._increment_total_eligibility_exceeded(criterion_columns, self.df)
+        self._increment_total_eligibility_exceeded(criterion_columns)
 
         return self.df[criterion_columns].any(axis="columns")
 
@@ -254,7 +254,7 @@ class ScoreL(Score):
         )
 
         self._increment_total_eligibility_exceeded(
-            criterion_columns_for_energy, self.df
+            criterion_columns_for_energy
         )
 
         return self.df[criterion_columns_for_energy].any(axis="columns")
@@ -298,7 +298,7 @@ class ScoreL(Score):
         )
 
         self._increment_total_eligibility_exceeded(
-            transportion_eligibility_columns, self.df
+            transportion_eligibility_columns
         )
 
         return self.df[transportion_eligibility_columns].any(axis="columns")
@@ -355,7 +355,7 @@ class ScoreL(Score):
         )
 
         self._increment_total_eligibility_exceeded(
-            housing_eligibility_columns, self.df
+            housing_eligibility_columns
         )
 
         return self.df[housing_eligibility_columns].any(axis="columns")
@@ -402,7 +402,7 @@ class ScoreL(Score):
         )
 
         self._increment_total_eligibility_exceeded(
-            pollution_threshold_columns, self.df
+            pollution_threshold_columns
         )
 
         return self.df[pollution_threshold_columns].any(axis="columns")
@@ -428,7 +428,7 @@ class ScoreL(Score):
         )
 
         self._increment_total_eligibility_exceeded(
-            [field_names.WASTEWATER_LOW_INCOME], self.df
+            [field_names.WASTEWATER_LOW_INCOME]
         )
 
         return self.df[field_names.WASTEWATER_LOW_INCOME]
@@ -499,7 +499,7 @@ class ScoreL(Score):
         )
 
         self._increment_total_eligibility_exceeded(
-            health_threshold_columns, self.df
+            health_threshold_columns
         )
 
         return self.df[health_threshold_columns].any(axis="columns")
@@ -561,7 +561,7 @@ class ScoreL(Score):
         ].any(axis="columns")
 
         self._increment_total_eligibility_exceeded(
-            workforce_indicator_columns, self.df
+            workforce_indicator_columns
         )
 
         # Now, calculate workforce criteria for island territories.
