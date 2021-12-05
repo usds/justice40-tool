@@ -246,3 +246,5 @@ MEDIAN_INCOME_LOW_HS_EDUCATION = f"""At or below the {PERCENTILE}th percentile f
     income {ACHIEVEMENT_TEMPLATE_FOR_WORKFORCE} {PERCENTILE}%"""
 
 THRESHOLD_COUNT = "Total threshold criteria exceeded"
+
+FPL_200_SERIES = "Is low income"

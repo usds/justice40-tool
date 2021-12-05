@@ -184,7 +184,7 @@ class ScoreL(Score):
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
-        ) & self.df[FPL_200_SERIES]
+        ) & self.df[field_names.FPL_200_SERIES]
 
         expected_agriculture_loss_threshold = (
             self.df[
@@ -192,7 +192,7 @@ class ScoreL(Score):
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
-        ) & self.df[FPL_200_SERIES]
+        ) & self.df[field_names.FPL_200_SERIES]
 
         expected_building_loss_threshold = (
             self.df[
@@ -200,7 +200,7 @@ class ScoreL(Score):
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
-        ) & self.df[FPL_200_SERIES]
+        ) & self.df[field_names.FPL_200_SERIES]
 
         self.df[
             field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD
@@ -246,11 +246,11 @@ class ScoreL(Score):
         )
 
         self.df[field_names.ABOVE_90TH_FOR_COST_BURDEN_LOW_INCOME] = (
-            energy_burden_threshold & self.df[FPL_200_SERIES]
+            energy_burden_threshold & self.df[field_names.FPL_200_SERIES]
         )
 
         self.df[field_names.PM25_LOW_INCOME] = (
-            pm25_threshold & self.df[FPL_200_SERIES]
+            pm25_threshold & self.df[field_names.FPL_200_SERIES]
         )
 
         self._increment_total_eligibility_exceeded(
@@ -290,11 +290,11 @@ class ScoreL(Score):
         )
 
         self.df[field_names.DIESEL_PARTICULATE_MATTER_LOW_INCOME] = (
-            diesel_threshold & self.df[FPL_200_SERIES]
+            diesel_threshold & self.df[field_names.FPL_200_SERIES]
         )
 
         self.df[field_names.TRAFFIC_PROXIMITY_MATTER_LOW_INCOME] = (
-            traffic_threshold & self.df[FPL_200_SERIES]
+            traffic_threshold & self.df[field_names.FPL_200_SERIES]
         )
 
         _increment_total_eligibility_exceeded(
@@ -346,11 +346,11 @@ class ScoreL(Score):
 
         # series by series indicators
         self.df[field_names.LEAD_PAINT_HOME_VALUE] = (
-            lead_paint_median_house_hold_threshold & self.df[FPL_200_SERIES]
+            lead_paint_median_house_hold_threshold & self.df[field_names.FPL_200_SERIES]
         )
 
         self.df[field_names.HOUSING_BURDEN_LOW_INCOME] = (
-            housing_burden_threshold & self.df[FPL_200_SERIES]
+            housing_burden_threshold & self.df[field_names.FPL_200_SERIES]
         )
 
         self._increment_total_eligibility_exceeded(
@@ -391,13 +391,13 @@ class ScoreL(Score):
 
         # individual series-by-series
         self.df[field_names.RMP_LOW_INCOME] = (
-            rmp_sites_threshold & self.df[FPL_200_SERIES]
+            rmp_sites_threshold & self.df[field_names.FPL_200_SERIES]
         )
         self.df[field_names.SUPERFUND_LOW_INCOME] = (
-            npl_sites_threshold & self.df[FPL_200_SERIES]
+            npl_sites_threshold & self.df[field_names.FPL_200_SERIES]
         )
         self.df[field_names.HAZARDOUS_WASTE_LOW_INCOME] = (
-            tsdf_sites_threshold & self.df[FPL_200_SERIES]
+            tsdf_sites_threshold & self.df[field_names.FPL_200_SERIES]
         )
 
         _increment_total_eligibility_exceeded(
@@ -422,7 +422,7 @@ class ScoreL(Score):
         )
 
         self.df[field_names.WASTEWATER_LOW_INCOME] = (
-            wastewater_threshold & self.df[field_names.FPL_200_SERIES]
+            wastewater_threshold & self.df[field_names.field_names.FPL_200_SERIES]
         )
 
         self._increment_total_eligibility_exceeded(
@@ -484,16 +484,16 @@ class ScoreL(Score):
         )
 
         self.df[field_names.DIABETES_LOW_INCOME] = (
-            diabetes_threshold & self.df[FPL_200_SERIES]
+            diabetes_threshold & self.df[field_names.FPL_200_SERIES]
         )
         self.df[field_names.ASTHMA_LOW_INCOME] = (
-            asthma_threshold & self.df[FPL_200_SERIES]
+            asthma_threshold & self.df[field_names.FPL_200_SERIES]
         )
         self.df[field_names.HEART_DISEASE_LOW_INCOME] = (
-            heart_disease_threshold & self.df[FPL_200_SERIES]
+            heart_disease_threshold & self.df[field_names.FPL_200_SERIES]
         )
         self.df[field_names.LIFE_EXPECTANCY_INCOME] = (
-            life_expectancy_threshold & self.df[FPL_200_SERIES]
+            life_expectancy_threshold & self.df[field_names.FPL_200_SERIES]
         )
 
         self._increment_total_eligibility_exceeded(
