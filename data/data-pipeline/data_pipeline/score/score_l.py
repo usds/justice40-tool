@@ -415,7 +415,7 @@ class ScoreL(Score):
 
         wastewater_threshold = (
             self.df[
-                field_names.WASTEWATER_DISCHARGE_LOW_INCOME
+                field_names.WASTEWATER_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
@@ -526,7 +526,7 @@ class ScoreL(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-        median_income_threhsold = (
+        median_income_threshold = (
             self.df[
                 field_names.MEDIAN_INCOME_PERCENT_AMI_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
