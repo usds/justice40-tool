@@ -215,10 +215,10 @@ LEAD_PAINT_MEDIAN_HOME_VALUE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th
 HOUSING_BURDEN_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for housing burden and is low income"
 # Remediation and Reduction of Legacy Pollution
 RMP_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for proximity to RMP sites and is low income"
-SUPERFUND_LOW_INCOME_FIELD = f"At or above {PERCENTILE}th percentile for proximity to superfund sites and is low income"
-HAZARDOUS_WASTE_LOW_INCOME_FIELD = f"At or above above {PERCENTILE}th percentile for proximity to hazardous waste facilities and is low income"
+SUPERFUND_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for proximity to superfund sites and is low income"
+HAZARDOUS_WASTE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for proximity to hazardous waste facilities and is low income"
 # Critical Clean Water and Waste Infrastructure
-WASTEWATER_DISCHARGE_LOW_INCOME_FIELD = f"At or above above {PERCENTILE}th percentile for wastewater discharge and is low income"
+WASTEWATER_DISCHARGE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for wastewater discharge and is low income"
 # Health Burden
 DIABETES_LOW_INCOME_FIELD = (
     f"At or above the {PERCENTILE}th percentile for diabetes and is low income"
