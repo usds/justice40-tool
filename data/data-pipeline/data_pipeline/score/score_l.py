@@ -108,13 +108,15 @@ class ScoreL(Score):
         )
 
     def _increment_total_eligibility_exceeded(
-        self, columns_for_subset: list, df: pd.DataFrame
+        self, columns_for_subset: list
     ) -> None:
         """
         Increments the total eligible factors for a given tract
         """
 
-        df[field_names.THRESHOLD_COUNT] += df[columns_for_subset].sum(axis=1)
+        self.df[field_names.THRESHOLD_COUNT] += self.df[columns_for_subset].sum(
+            axis=1
+        )
 
     def add_columns(self) -> pd.DataFrame:
         logger.info("Adding Score L")
