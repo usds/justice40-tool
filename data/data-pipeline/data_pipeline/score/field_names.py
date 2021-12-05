@@ -245,4 +245,4 @@ POVERTY_LOW_HS_EDUCATION = f"""At or above the {PERCENTILE}th percentile for hou
 MEDIAN_INCOME_LOW_HS_EDUCATION = f"""At or below the {PERCENTILE}th percentile for median
     income {ACHIEVEMENT_TEMPLATE_FOR_WORKFORCE} {PERCENTILE}%"""
 
-THRESHOLD_COUNT = "Total Number of Factor Criterion Met"
+THRESHOLD_COUNT = "Total threshold criteria exceeded"
