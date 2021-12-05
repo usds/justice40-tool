@@ -332,7 +332,7 @@ class ScoreL(Score):
         # series by series indicators
         self.df[
             field_names.LEAD_PAINT_HOME_VALUE
-        ] = lead_paint_median_house_hold_threshold
+        ] = lead_paint_median_house_hold_threshold & self.df[FPL_200_SERIES]
 
         self.df[field_names.HOUSING_BURDEN_LOW_INCOME] = (
             housing_burden_threshold & self.df[FPL_200_SERIES]
@@ -536,6 +536,10 @@ class ScoreL(Score):
         workforce_combined_criteria_for_states = self.df[
             workforce_criteria_for_states_columns
         ].any(axis="columns")
+
+        self._increment_total_eligibility_exceeded(
+            workforce_indicator_columns, self.df
+        )
 
         # Now, calculate workforce criteria for island territories.
 
