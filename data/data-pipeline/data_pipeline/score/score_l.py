@@ -411,7 +411,7 @@ class ScoreL(Score):
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
 
-        wastewater_threshold = self.df[FPL_200_SERIES] & (
+        wastewater_threshold = (
             self.df[
                 field_names.WASTEWATER_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
