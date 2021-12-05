@@ -232,7 +232,7 @@ HEART_DISEASE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for
 LIFE_EXPECTANCY_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for life expectancy and is low income"
 
 # Workforce
-UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD = f"""At or above the {PERCENTILE}th percentile for unemployment"
+UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD = f"""At or above the {PERCENTILE}th percentile for unemployment
     and low HS education"""
 
 LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD = f"""At or above the {PERCENTILE}th percentile for households in linguistic isolation
