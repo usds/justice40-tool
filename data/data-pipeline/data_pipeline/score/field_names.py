@@ -206,19 +206,19 @@ EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th 
 
 # Clean energy and efficiency
 PM25_LOW_INCOME = "PM2.5 exposure and is low income"
-ABOVE_90TH_FOR_COST_BURDEN_LOW_INCOME = f"At or above the {PERCENTILE}th percentile for energy cost burden score and is low income"
+ABOVE_90TH_FOR_ENERGY_BURDEN_LOW_INCOME = f"At or above the {PERCENTILE}th percentile for energy burden and is low income"
 # Clean transportation
 DIESEL_PARTICULATE_MATTER_LOW_INCOME = f"At or above the {PERCENTILE}th percentile for diesel particulate matter and is low income"
 TRAFFIC_PROXIMITY_MATTER_LOW_INCOME = "Traffic Proximity and is low income"
 # Affordable and Sustainable Housing
-LEAD_PAINT_HOME_VALUE = f"At or above the {PERCENTILE}th percentile for lead paint and the median house value is less than 90th percentile"
-HOUSING_BURDEN_LOW_INCOME = f"At or above the {PERCENTILE}th percentile for housing cost burden and is low income"
+LEAD_PAINT_MEDIAN_HOME_VALUE = f"At or above the {PERCENTILE}th percentile for lead paint and the median house value is less than 90th percentile"
+HOUSING_BURDEN_LOW_INCOME = f"At or above the {PERCENTILE}th percentile for housing burden and is low income"
 # Remediation and Reduction of Legacy Pollution
 RMP_LOW_INCOME = f"At or above the {PERCENTILE}th percentile for proximity to RMP sites and is low income"
 SUPERFUND_LOW_INCOME = f"At or above {PERCENTILE}th percentile for proximity to superfund sites and is low income"
 HAZARDOUS_WASTE_LOW_INCOME = f"At or above above {PERCENTILE}th percentile for proximity to hazardous waste facilities and is low income"
 # Critical Clean Water and Waste Infrastructure
-WASTEWATER_LOW_INCOME = f"At or above above {PERCENTILE}th percentile for wastewater discharge and is low income"
+WASTEWATER_DISCHARGE_LOW_INCOME = f"At or above above {PERCENTILE}th percentile for wastewater discharge and is low income"
 # Health Burden
 DIABETES_LOW_INCOME = (
     f"At or above the {PERCENTILE}th percentile for diabetes and is low income"
