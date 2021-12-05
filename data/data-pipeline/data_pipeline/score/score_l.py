@@ -408,13 +408,15 @@ class ScoreL(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-        self.df[field_names.WASTEWATER_LOW_INCOME] = wastewater_threshold & self.df[field_names.FPL_200_SERIES]
+        self.df[field_names.WASTEWATER_LOW_INCOME] = (
+            wastewater_threshold & self.df[field_names.FPL_200_SERIES]
+        )
 
         self._increment_total_eligibility_exceeded(
             [field_names.WASTEWATER_LOW_INCOME], self.df
         )
 
-        return wastewater_threshold
+        return self.df[field_names.WASTEWATER_LOW_INCOME]
 
     def _health_factor(self) -> bool:
         # In Xth percentile or above for diabetes (Source: CDC Places)
@@ -499,6 +501,11 @@ class ScoreL(Score):
         # Where the high school degree achievement rates for adults 25 years and older is less than 95%
         # (necessary to screen out university block groups)
 
+        high_scool_achievement_rate_threshold = (
+            self.df[field_names.HIGH_SCHOOL_ED_FIELD]
+            >= self.LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD
+        )
+
         workforce_criteria_for_states_columns = [
             field_names.UNEMPLOYMENT_FIELD
             + field_names.PERCENTILE_FIELD_SUFFIX,
@@ -520,43 +527,15 @@ class ScoreL(Score):
             field_names.MEDIAN_INCOME_LOW_HS_EDUCATION,
         ]
 
-        workforce_criteria_for_states = (
-            (
-                self.df[
-                    field_names.UNEMPLOYMENT_FIELD
-                    + field_names.PERCENTILE_FIELD_SUFFIX
-                ]
-                >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        for index_, _ in enumerate(workforce_criteria_for_states_columns):
+            self.df[workforce_indicator_columns[index_]] = (
+                self.df[workforce_criteria_for_states_columns[index_]]
+                & high_scool_achievement_rate_threshold
             )
-            | (
-                self.df[
-                    field_names.MEDIAN_INCOME_PERCENT_AMI_FIELD
-                    + field_names.PERCENTILE_FIELD_SUFFIX
-                ]
-                # Note: a high median income as a % of AMI is good, so take 1 minus the threshold to invert it.
-                # and then look for median income lower than that (not greater than).
-                <= 1 - self.ENVIRONMENTAL_BURDEN_THRESHOLD
-            )
-            | (
-                self.df[
-                    field_names.POVERTY_LESS_THAN_100_FPL_FIELD
-                    + field_names.PERCENTILE_FIELD_SUFFIX
-                ]
-                >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
-            )
-            | (
-                self.df[
-                    field_names.LINGUISTIC_ISO_FIELD
-                    + field_names.PERCENTILE_FIELD_SUFFIX
-                ]
-                >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
-            )
-        )
 
-        workforce_combined_criteria_for_states = (
-            self.df[field_names.HIGH_SCHOOL_ED_FIELD]
-            >= self.LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD
-        ) & workforce_criteria_for_states
+        workforce_combined_criteria_for_states = self.df[
+            workforce_criteria_for_states_columns
+        ].any(axis="columns")
 
         # Now, calculate workforce criteria for island territories.
 
