@@ -212,7 +212,8 @@ ENERGY_BURDEN_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for
 DIESEL_PARTICULATE_MATTER_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for diesel particulate matter and is low income"
 TRAFFIC_PROXIMITY_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for traffic proximity and is low income"
 # Affordable and Sustainable Housing
-LEAD_PAINT_MEDIAN_HOME_VALUE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for lead paint and the median house value is less than {MEDIAN_HOUSE_VALUE_PERCENTILE}th percentile and is low income"
+LEAD_PAINT_MEDIAN_HOME_VALUE_LOW_INCOME_FIELD = f"""At or above the {PERCENTILE}th percentile for lead paint and
+ the median house value is less than {MEDIAN_HOUSE_VALUE_PERCENTILE}th percentile and is low income"""
 HOUSING_BURDEN_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for housing burden and is low income"
 # Remediation and Reduction of Legacy Pollution
 RMP_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for proximity to RMP sites and is low income"
