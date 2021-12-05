@@ -20,12 +20,13 @@ class DOEEnergyBurden(ExtractTransformLoad):
         )
 
         self.TRACT_INPUT_COLUMN_NAME = "FIP"
-        self.ENERGY_BURDEN_FIELD_NAME = "BURDEN"
+        self.INPUT_ENERGY_BURDEN_FIELD_NAME = "BURDEN"
+        self.REVISED_ENERGY_BURDEN_FIELD_NAME = "Energy burden"
 
         # Constants for output
         self.COLUMNS_TO_KEEP = [
             self.GEOID_TRACT_FIELD_NAME,
-            self.ENERGY_BURDEN_FIELD_NAME,
+            self.REVISED_ENERGY_BURDEN_FIELD_NAME 
         ]
 
         self.raw_df: pd.DataFrame
@@ -56,7 +57,7 @@ class DOEEnergyBurden(ExtractTransformLoad):
 
         output_df = self.raw_df.rename(
             columns={
-                "BURDEN": self.ENERGY_BURDEN_FIELD_NAME,
+                self.INPUT_ENERGY_BURDEN_FIELD_NAME : self.REVISED_ENERGY_BURDEN_FIELD_NAME,
                 self.TRACT_INPUT_COLUMN_NAME: self.GEOID_TRACT_FIELD_NAME,
             }
         )
