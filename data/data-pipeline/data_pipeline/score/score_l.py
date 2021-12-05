@@ -249,11 +249,11 @@ class ScoreL(Score):
         )
 
         self.df[field_names.PM25_EXPOSURE_LOW_INCOME_FIELD] = (
-            energy_burden_threshold & self.df[field_names.FPL_200_SERIES]
+            pm25_threshold & self.df[field_names.FPL_200_SERIES]
         )
 
         self.df[field_names.ENERGY_BURDEN_LOW_INCOME_FIELD] = (
-            pm25_threshold & self.df[field_names.FPL_200_SERIES]
+            energy_burden_threshold & self.df[field_names.FPL_200_SERIES]
         )
 
         self._increment_total_eligibility_exceeded(energy_eligibility_columns)
