@@ -110,6 +110,15 @@ class ScoreL(Score):
             >= self.LOW_INCOME_THRESHOLD
         )
 
+    def _increment_total_eligibility(
+        self,
+        columns_for_subset: list,
+        df: pd.DataFrame) -> None:
+        """
+        Increments the total eligible factors for a given tract
+        """
+        df[field_names.THRESHOLD_COUNT] += df[columns_for_subset].sum(axis = 1)
+
     def add_columns(self) -> pd.DataFrame:
         logger.info("Adding Score L")
 
@@ -193,7 +202,7 @@ class ScoreL(Score):
         ) & self.FPL_200_SERIES
 
 
-        self.df[field_names.THRESHOLD_COUNT] += self.df[criterion_columns].sum(axis = 1)
+        self._increment_total_eligibility(criterion_columns, self.df)
 
         # this is one idea for a pattern I was thinking of using
         return self.df[criterion_columns].any(axis='columns')
@@ -205,13 +214,19 @@ class ScoreL(Score):
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]  
 
+
+        criterion_columns_for_energy = [
+            field_names.ABOVE_90TH_FOR_COST_BURDEN_LOW_INCOME,
+            field_names.PM25_LOW_INCOME
+        ]
+
         energy_burden_threshold = (
             self.df[
                 field_names.ENERGY_BURDEN_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
-        ) 
+        )
 
         pm25_threshold = (
             self.df[
@@ -226,14 +241,10 @@ class ScoreL(Score):
 
         self.df[field_names.PM25_LOW_INCOME] = pm25_threshold & self.FPL_200_SERIES
 
-        self.df[field_names.THRESHOLD_COUNT] += self.df[[
-            field_names.ABOVE_90TH_FOR_COST_BURDEN_LOW_INCOME,
-            field_names.PM25_LOW_INCOME
-        ]].sum(axis = 1)
 
-        return self.df[[
-             field_names.ABOVE_90TH_FOR_COST_BURDEN_LOW_INCOME, field_names.PM25_LOW_INCOME
-        ]].any(axis='columns')
+        self._increment_total_eligibility(criterion_columns_energy, self.df)
+
+        return self.df[criterion_columns_energy].any(axis='columns')
 
 
     def _transportation_factor(self) -> bool:
@@ -246,6 +257,13 @@ class ScoreL(Score):
         # Low income: In 60th percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
+
+
+        transportion_eligibility_columns = [
+            field_names.DIESEL_PARTICULATE_MATTER_LOW_INCOME,
+            field_names.TRAFFIC_PROXIMITY_MATTER_LOW_INCOME
+        ]
+
         diesel_threshold = (
             self.df[
                 field_names.DIESEL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX
@@ -265,17 +283,10 @@ class ScoreL(Score):
         ] = diesel_threshold & self.FPL_200_SERIES
 
         self.df[field_names.TRAFFIC_PROXIMITY_MATTER_LOW_INCOME] = traffic_threshold & self.FPL_200_SERIES
-        
 
-        self.df[field_names.THRESHOLD_COUNT] += self.df[[
-            field_names.DIESEL_PARTICULATE_MATTER_LOW_INCOME,
-            field_names.TRAFFIC_PROXIMITY_MATTER_LOW_INCOME
-        ]].sum(axis = 1)
+        _increment_total_eligibility(transportion_eligibility_columns, self.df)
 
-        return self.df[[
-             field_names.DIESEL_PARTICULATE_MATTER_LOW_INCOME,
-             field_names.TRAFFIC_PROXIMITY_MATTER_LOW_INCOME
-        ]].any(axis='columns')
+        return self.df[transportion_eligibility_columns].any(axis='columns')
 
     def _housing_factor(self) -> bool:
         # (
@@ -290,6 +301,12 @@ class ScoreL(Score):
         # Low income: In 60th percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
+
+        housing_eligibility_columns = [
+            field_names.LEAD_PAINT_HOME_VALUE,
+            field_names.HOUSING_BURDEN_LOW_INCOME
+        ]
+
         lead_paint__median_house_hold_threshold = (
             self.df[
                 field_names.LEAD_PAINT_FIELD
@@ -320,10 +337,7 @@ class ScoreL(Score):
         self.df[field_names.LEAD_PAINT_HOME_VALUE] = lead_paint__median_house_hold_threshold
         self.df[field_names.HOUSING_BURDEN_LOW_INCOME] = housing_burden_threshold & self.FPL_200_SERIES
 
-        self.df[field_names.THRESHOLD_COUNT] += self.df[[
-            field_names.LEAD_PAINT_HOME_VALUE,
-            field_names.HOUSING_BURDEN_LOW_INCOME
-        ]].sum(axis = 1)
+        self._increment_total_eligibility(housing_eligibility_columns, self.df)
 
         # reverting to the original pattern here - I could have referenced the dataframes
         # which do you prefer?
@@ -364,10 +378,8 @@ class ScoreL(Score):
         self.df[field_names.SUPERFUND_LOW_INCOME] = npl_sites & self.FPL_200_SERIES
         self.df[field_names.HAZARDOUS_WASTE_LOW_INCOME] = tsdf_sites & self.FPL_200_SERIES
 
-        self.df[field_names.THRESHOLD_COUNT] += self.df[
-            polllution_threshold_columns
-        ].sum(axis = 1)
-        
+        _increment_total_eligibility(polllution_threshold_columns, self.df)
+
         return self.df[polllution_threshold_columns].any(axis='columns')
 
     def _water_factor(self) -> bool:
@@ -387,10 +399,7 @@ class ScoreL(Score):
 
         self.df[field_names.WASTEWATER_LOW_INCOME] = wastewater_threshold
 
-
-        self.df[field_names.THRESHOLD_COUNT] += self.df[[
-            field_names.WASTEWATER_LOW_INCOME
-        ]].sum(axis = 1)
+        self._increment_total_eligibility([field_names.WASTEWATER_LOW_INCOME], self.df)
 
         return wastewater_threshold
 
@@ -451,10 +460,7 @@ class ScoreL(Score):
         self.df[field_names.HEART_DISEASE_LOW_INCOME] = heart_disease_threshold & self.FPL_200_SERIES
         self.df[field_names.LIFE_EXPECTANCY_INCOME] = life_expectancy_threshold & self.FPL_200_SERIES        
 
-        
-        self.df[field_names.THRESHOLD_COUNT] += self.df[[
-            health_threshold_columns
-        ]].sum(axis = 1)
+        self._increment_total_eligibility(health_threshold_columns, self.df)
 
         return self.df[health_threshold_columns].any(axis = "columns")
 
@@ -495,10 +501,6 @@ class ScoreL(Score):
             field_names.LINGUISTIC_ISOLATION_LOW_HS_EDUCATION,
             field_names.MEDIAN_INCOME_LOW_HS_EDUCATION
         ]
-
-
-
-
 
         workforce_criteria_for_states = (
             (
