@@ -254,10 +254,10 @@ class ScoreL(Score):
         )
 
         self._increment_total_eligibility_exceeded(
-            criterion_columns_energy, self.df
+            criterion_columns_for_energy, self.df
         )
 
-        return self.df[criterion_columns_energy].any(axis="columns")
+        return self.df[criterion_columns_for_energy].any(axis="columns")
 
     def _transportation_factor(self) -> bool:
         # In Xth percentile or above for diesel particulate matter (Source: EPA National Air Toxics Assessment (NATA)
@@ -297,7 +297,7 @@ class ScoreL(Score):
             traffic_threshold & self.df[field_names.FPL_200_SERIES]
         )
 
-        _increment_total_eligibility_exceeded(
+        self._increment_total_eligibility_exceeded(
             transportion_eligibility_columns, self.df
         )
 
@@ -346,7 +346,8 @@ class ScoreL(Score):
 
         # series by series indicators
         self.df[field_names.LEAD_PAINT_HOME_VALUE] = (
-            lead_paint_median_house_hold_threshold & self.df[field_names.FPL_200_SERIES]
+            lead_paint_median_house_hold_threshold
+            & self.df[field_names.FPL_200_SERIES]
         )
 
         self.df[field_names.HOUSING_BURDEN_LOW_INCOME] = (
@@ -400,7 +401,7 @@ class ScoreL(Score):
             tsdf_sites_threshold & self.df[field_names.FPL_200_SERIES]
         )
 
-        _increment_total_eligibility_exceeded(
+        self._increment_total_eligibility_exceeded(
             pollution_threshold_columns, self.df
         )
 
@@ -422,7 +423,8 @@ class ScoreL(Score):
         )
 
         self.df[field_names.WASTEWATER_LOW_INCOME] = (
-            wastewater_threshold & self.df[field_names.field_names.FPL_200_SERIES]
+            wastewater_threshold
+            & self.df[field_names.field_names.FPL_200_SERIES]
         )
 
         self._increment_total_eligibility_exceeded(

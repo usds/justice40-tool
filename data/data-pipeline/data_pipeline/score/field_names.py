@@ -218,7 +218,7 @@ RMP_LOW_INCOME = f"At or above the {PERCENTILE}th percentile for proximity to RM
 SUPERFUND_LOW_INCOME = f"At or above {PERCENTILE}th percentile for proximity to superfund sites and is low income"
 HAZARDOUS_WASTE_LOW_INCOME = f"At or above above {PERCENTILE}th percentile for proximity to hazardous waste facilities and is low income"
 # Critical Clean Water and Waste Infrastructure
-WASTEWATER_LOW_INCOME = f"At or above above 90th percentile for wastewater discharge and is low income"
+WASTEWATER_LOW_INCOME = f"At or above above {PERCENTILE}th percentile for wastewater discharge and is low income"
 # Health Burden
 DIABETES_LOW_INCOME = (
     f"At or above the {PERCENTILE}th percentile for diabetes and is low income"
@@ -229,11 +229,11 @@ ASTHMA_LOW_INCOME = (
 HEART_DISEASE_LOW_INCOME = f"At or above the {PERCENTILE}th percentile for heart disease and is low income"
 LIFE_EXPECTANCY_INCOME = f"At or above the {PERCENTILE}th percentile for life expectancy and is low income"
 
-ACHIEVEMENT_TEMPLATE_FOR_WORKFORCE = """and where the high school degree achievement 
+ACHIEVEMENT_TEMPLATE_FOR_WORKFORCE = """and where the high school degree achievement
 rate for adults 25 years and older is less than """
 
 # Workforce
-UNEMPLOYMENT_LOW_HS_EDUCATION = f"""At or above the {PERCENTILE}th percentile for unemployment" 
+UNEMPLOYMENT_LOW_HS_EDUCATION = f"""At or above the {PERCENTILE}th percentile for unemployment"
    {ACHIEVEMENT_TEMPLATE_FOR_WORKFORCE} {PERCENTILE}%"""
 
 LINGUISTIC_ISOLATION_LOW_HS_EDUCATION = f"""At or above the {PERCENTILE}th percentile
