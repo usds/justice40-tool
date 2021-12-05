@@ -113,6 +113,7 @@ class ScoreL(Score):
         """
         Increments the total eligible factors for a given tract
         """
+
         df[field_names.THRESHOLD_COUNT] += df[columns_for_subset].sum(axis=1)
 
     def add_columns(self) -> pd.DataFrame:
@@ -175,7 +176,7 @@ class ScoreL(Score):
             field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD,
         ]
 
-        self.df[field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD] = (
+        expected_population_loss_threshold = (
             self.df[
                 field_names.EXPECTED_POPULATION_LOSS_RATE_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
@@ -183,7 +184,7 @@ class ScoreL(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         ) & self.df[FPL_200_SERIES]
 
-        self.df[field_names.EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_FIELD] = (
+        expected_agriculture_loss_threshold = (
             self.df[
                 field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
@@ -191,13 +192,25 @@ class ScoreL(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         ) & self.df[FPL_200_SERIES]
 
-        self.df[field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD] = (
+        expected_building_loss_threshold = (
             self.df[
                 field_names.EXPECTED_BUILDING_LOSS_RATE_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         ) & self.df[FPL_200_SERIES]
+
+        self.df[
+            field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD
+        ] = expected_population_loss_threshold
+
+        self.df[
+            field_names.EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_FIELD
+        ] = expected_agriculture_loss_threshold
+
+        self.df[
+            field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD
+        ] = expected_building_loss_threshold
 
         self._increment_total_eligibility_exceeded(criterion_columns, self.df)
 
@@ -307,7 +320,7 @@ class ScoreL(Score):
             field_names.HOUSING_BURDEN_LOW_INCOME,
         ]
 
-        lead_paint__median_house_hold_threshold = (
+        lead_paint_median_house_hold_threshold = (
             self.df[
                 field_names.LEAD_PAINT_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
@@ -342,8 +355,6 @@ class ScoreL(Score):
             housing_eligibility_columns, self.df
         )
 
-        # reverting to the original pattern here - I could have referenced the dataframes
-        # which do you prefer?
         return self.df[housing_eligibility_columns].any(axis="columns")
 
     def _pollution_factor(self) -> bool:
@@ -353,23 +364,23 @@ class ScoreL(Score):
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
 
-        polllution_threshold_columns = [
+        pollution_threshold_columns = [
             field_names.RMP_LOW_INCOME,
             field_names.SUPERFUND_LOW_INCOME,
             field_names.HAZARDOUS_WASTE_LOW_INCOME,
         ]
 
-        rmp_sites = (
+        rmp_sites_threshold = (
             self.df[field_names.RMP_FIELD + field_names.PERCENTILE_FIELD_SUFFIX]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-        npl_sites = (
+        npl_sites_threshold = (
             self.df[field_names.NPL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-        tsdf_sites = (
+        tsdf_sites_threshold = (
             self.df[
                 field_names.TSDF_FIELD + field_names.PERCENTILE_FIELD_SUFFIX
             ]
@@ -378,20 +389,20 @@ class ScoreL(Score):
 
         # individual series-by-series
         self.df[field_names.RMP_LOW_INCOME] = (
-            rmp_sites & self.df[FPL_200_SERIES]
+            rmp_sites_threshold & self.df[FPL_200_SERIES]
         )
         self.df[field_names.SUPERFUND_LOW_INCOME] = (
-            npl_sites & self.df[FPL_200_SERIES]
+            npl_sites_threshold & self.df[FPL_200_SERIES]
         )
         self.df[field_names.HAZARDOUS_WASTE_LOW_INCOME] = (
-            tsdf_sites & self.df[FPL_200_SERIES]
+            tsdf_sites_threshold & self.df[FPL_200_SERIES]
         )
 
         _increment_total_eligibility_exceeded(
-            polllution_threshold_columns, self.df
+            pollution_threshold_columns, self.df
         )
 
-        return self.df[polllution_threshold_columns].any(axis="columns")
+        return self.df[pollution_threshold_columns].any(axis="columns")
 
     def _water_factor(self) -> bool:
         # In Xth percentile or above for wastewater discharge (Source: EPA Risk-Screening Environmental Indicators (RSEI) Model)
@@ -527,7 +538,7 @@ class ScoreL(Score):
             field_names.MEDIAN_INCOME_LOW_HS_EDUCATION,
         ]
 
-        for index_, _ in enumerate(workforce_criteria_for_states_columns[:-1]):
+        for index_ in range(0, len(workforce_criteria_for_states_columns) - 1):
             self.df[workforce_indicator_columns[index_]] = (
                 self.df[workforce_criteria_for_states_columns[index_]]
                 >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
