@@ -235,7 +235,7 @@ LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD = f"""At or above the {PERCENTILE}th
 POVERTY_LOW_HS_EDUCATION_FIELD = f"""At or above the {PERCENTILE}th percentile for households at or below 100% federal poverty level
     and low HS education"""
 
-MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD = f"""At or below the {PERCENTILE}th percentile for median
+MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD = f"""At or below the {PERCENTILE}th percentile for median income
     and low HS education"""
 
 THRESHOLD_COUNT = "Total threshold criteria exceeded"
