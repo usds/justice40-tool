@@ -518,16 +518,56 @@ class ScoreL(Score):
             >= self.LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD
         )
 
-        workforce_criteria_for_states_columns = [
-            field_names.UNEMPLOYMENT_FIELD
-            + field_names.PERCENTILE_FIELD_SUFFIX,
-            field_names.POVERTY_LESS_THAN_100_FPL_FIELD
-            + field_names.PERCENTILE_FIELD_SUFFIX,
-            field_names.LINGUISTIC_ISO_FIELD
-            + field_names.PERCENTILE_FIELD_SUFFIX,
-            field_names.MEDIAN_INCOME_PERCENT_AMI_FIELD
-            + field_names.PERCENTILE_FIELD_SUFFIX,
-        ]
+        unemployment_threshold = (
+            self.df[
+                field_names.UNEMPLOYMENT_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        )
+
+        median_income_threhsold = (
+            self.df[
+                field_names.MEDIAN_INCOME_PERCENT_AMI_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            # Note: a high median income as a % of AMI is good, so take 1 minus the threshold to invert it.
+            # and then look for median income lower than that (not greater than).
+            <= 1 - self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        )
+
+        linguistic_isolation_threshold = (
+            self.df[
+                field_names.LINGUISTIC_ISO_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        )
+
+        poverty_threshold = (
+            self.df[
+                field_names.POVERTY_LESS_THAN_100_FPL_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        )
+
+        self.df[field_names.LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD] = (
+            linguistic_isolation_threshold
+            & high_scool_achievement_rate_threshold
+        )
+
+        self.df[field_names.POVERTY_LOW_HS_EDUCATION_FIELD] = (
+            poverty_threshold & high_scool_achievement_rate_threshold
+        )
+
+        self.df[field_names.MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD] = (
+            median_income_threhsold & high_scool_achievement_rate_threshold
+        )
+
+        self.df[field_names.UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD] = (
+            unemployment_threshold & high_scool_achievement_rate_threshold
+        )
 
         # Workforce criteria for states fields that create indicator columns
         # for each tract in order to indicate whether they met any of the four
@@ -539,22 +579,8 @@ class ScoreL(Score):
             field_names.MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD,
         ]
 
-        for index_ in range(0, len(workforce_criteria_for_states_columns) - 1):
-            self.df[workforce_eligibility_columns[index_]] = (
-                self.df[workforce_criteria_for_states_columns[index_]]
-                >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
-            ) & high_scool_achievement_rate_threshold
-
-        # We handle this separately, just to be explicit that a high median income
-        # as a % of AMI is good, so take 1 minus the threshold to invert it.
-        # and then look for median income lower than that (not greater than).
-        self.df[workforce_eligibility_columns[-1]] = (
-            self.df[workforce_criteria_for_states_columns[-1]]
-            <= 1 - self.ENVIRONMENTAL_BURDEN_THRESHOLD
-        ) & high_scool_achievement_rate_threshold
-
         workforce_combined_criteria_for_states = self.df[
-            workforce_criteria_for_states_columns
+            workforce_eligibility_columns
         ].any(axis="columns")
 
         self._increment_total_eligibility_exceeded(

@@ -228,7 +228,12 @@ ASTHMA_LOW_INCOME_FIELD = (
     f"At or above the {PERCENTILE}th percentile for asthma and is low income"
 )
 HEART_DISEASE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for heart disease and is low income"
+
 LIFE_EXPECTANCY_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for life expectancy and is low income"
+
+# Workforce
+UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD = f"""At or above the {PERCENTILE}th percentile for unemployment"
+    and low HS education"""
 
 LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD = f"""At or above the {PERCENTILE}th percentile for households in linguistic isolation
    and low HS education"""
