@@ -184,7 +184,7 @@ class ScoreL(Score):
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
-        ) & self.df[field_names.FPL_200_SERIES]
+        )
 
         expected_agriculture_loss_threshold = (
             self.df[
@@ -192,7 +192,7 @@ class ScoreL(Score):
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
-        ) & self.df[field_names.FPL_200_SERIES]
+        )
 
         expected_building_loss_threshold = (
             self.df[
@@ -200,19 +200,19 @@ class ScoreL(Score):
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
-        ) & self.df[field_names.FPL_200_SERIES]
+        )
 
         self.df[
             field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD
-        ] = expected_population_loss_threshold
+        ] = expected_population_loss_threshold & self.df[field_names.FPL_200_SERIES]
 
         self.df[
             field_names.EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_FIELD
-        ] = expected_agriculture_loss_threshold
+        ] = expected_agriculture_loss_threshold & self.df[field_names.FPL_200_SERIES]
 
         self.df[
             field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD
-        ] = expected_building_loss_threshold
+        ] = expected_building_loss_threshold & self.df[field_names.FPL_200_SERIES]
 
         self._increment_total_eligibility_exceeded(climate_eligibility_columns)
 
