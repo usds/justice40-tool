@@ -200,9 +200,9 @@ HOLC_GRADE_D_TRACT_75_PERCENT_FIELD: str = "Tract is >75% HOLC Grade D"
 
 
 # Climate Change
-FEMA_LOSS_RATE_LOW_INCOME = f"At or above the {PERCENTILE}th percentile for FEMA's expected loss rate and is low income"
-AGRICULTURE_LOSS_RATE_LOW_INCOME = f"At or above the {PERCENTILE}th percentile for agriculture and is low income"
-EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME = f"At or above the {PERCENTILE}th percentile for building loss and is low income"
+EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for expected population loss rate and is low income"
+EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for expected agriculture loss rate and is low income"
+EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for expected building loss rate and is low income"
 
 # Clean energy and efficiency
 PM25_LOW_INCOME = "PM2.5 exposure and is low income"
@@ -212,9 +212,7 @@ DIESEL_PARTICULATE_MATTER_LOW_INCOME = f"At or above the {PERCENTILE}th percenti
 TRAFFIC_PROXIMITY_MATTER_LOW_INCOME = "Traffic Proximity and is low income"
 # Affordable and Sustainable Housing
 LEAD_PAINT_HOME_VALUE = f"At or above the {PERCENTILE}th percentile for lead paint and the median house value is less than 90th percentile"
-HOUSING_BURDEN_LOW_INCOME = (
-    f"At or above the {PERCENTILE}th percentile for housing cost burden and is low income"
-)
+HOUSING_BURDEN_LOW_INCOME = f"At or above the {PERCENTILE}th percentile for housing cost burden and is low income"
 # Remediation and Reduction of Legacy Pollution
 RMP_LOW_INCOME = f"At or above the {PERCENTILE}th percentile for proximity to RMP sites and is low income"
 SUPERFUND_LOW_INCOME = f"At or above {PERCENTILE}th percentile for proximity to superfund sites and is low income"
@@ -228,12 +226,8 @@ DIABETES_LOW_INCOME = (
 ASTHMA_LOW_INCOME = (
     f"At or above the {PERCENTILE}th percentile for asthma and is low income"
 )
-HEART_DISEASE_LOW_INCOME = (
-    f"At or above the {PERCENTILE}th percentile for heart disease and is low income"
-)
-LIFE_EXPECTANCY_INCOME = (
-    f"At or above the {PERCENTILE}th percentile for life expectancy and is low income"
-)
+HEART_DISEASE_LOW_INCOME = f"At or above the {PERCENTILE}th percentile for heart disease and is low income"
+LIFE_EXPECTANCY_INCOME = f"At or above the {PERCENTILE}th percentile for life expectancy and is low income"
 
 ACHIEVEMENT_TEMPLATE_FOR_WORKFORCE = """and where the high school degree achievement 
 rate for adults 25 years and older is less than """
@@ -245,7 +239,7 @@ UNEMPLOYMENT_LOW_HS_EDUCATION = f"""At or above the {PERCENTILE}th percentile fo
 LINGUISTIC_ISOLATION_LOW_HS_EDUCATION = f"""At or above the {PERCENTILE}th percentile
     for linguistic isolation {ACHIEVEMENT_TEMPLATE_FOR_WORKFORCE} {PERCENTILE}%"""
 
-POVERTY_LOW_HS_EDUCATION  = f"""At or above the {PERCENTILE}th percentile for households
+POVERTY_LOW_HS_EDUCATION = f"""At or above the {PERCENTILE}th percentile for households
     at or below 100 percent of federal poverty level {ACHIEVEMENT_TEMPLATE_FOR_WORKFORCE} {PERCENTILE}%"""
 
 MEDIAN_INCOME_LOW_HS_EDUCATION = f"""At or below the {PERCENTILE}th percentile for median
