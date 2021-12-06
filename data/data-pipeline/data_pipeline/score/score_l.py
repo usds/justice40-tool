@@ -180,6 +180,7 @@ class ScoreL(Score):
             field_names.EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_FIELD,
             field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD,
             field_names.EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD,
+            field_names.IMPENETRABLE_SURFACES_LOW_INCOME_FIELD,
         ]
 
         expected_population_loss_threshold = (
@@ -220,6 +221,14 @@ class ScoreL(Score):
             <= self.MEDIAN_HOUSE_VALUE_THRESHOLD
         )
 
+        impenetrable_surfaces_threshold = (
+            self.df[
+                field_names.IMPENETRABLE_SURFACES_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        )
+
         self.df[field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD] = (
             expected_population_loss_threshold
             & self.df[field_names.FPL_200_SERIES]
@@ -239,6 +248,13 @@ class ScoreL(Score):
             field_names.EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD
         ] = (
             extreme_heat_median_home_value_threshold
+            & self.df[field_names.FPL_200_SERIES]
+        )
+
+        self.df[
+            field_names.IMPENETRABLE_SURFACES_LOW_INCOME_FIELD
+        ] = (
+            impenetrable_surfaces_threshold
             & self.df[field_names.FPL_200_SERIES]
         )
 
