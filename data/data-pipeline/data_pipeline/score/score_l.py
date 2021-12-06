@@ -562,7 +562,7 @@ class ScoreL(Score):
         )
 
         self.df[field_names.MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD] = (
-            median_income_threhsold & high_scool_achievement_rate_threshold
+            median_income_threshold & high_scool_achievement_rate_threshold
         )
 
         self.df[field_names.UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD] = (
