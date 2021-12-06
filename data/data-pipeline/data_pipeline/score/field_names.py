@@ -57,6 +57,10 @@ MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD = "Median household income (% of AMI)"
 PERSISTENT_POVERTY_FIELD = "Persistent Poverty Census Tract"
 AMI_FIELD = "Area Median Income (State or metropolitan)"
 
+COLLEGE_ATTENDANCE_FIELD = (
+            "Percent enrollment in college or graduate school"
+        )
+
 # Climate
 FEMA_RISK_FIELD = "FEMA Risk Index Expected Annual Loss Score"
 EXPECTED_BUILDING_LOSS_RATE_FIELD = (

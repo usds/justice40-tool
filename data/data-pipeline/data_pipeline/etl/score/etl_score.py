@@ -340,6 +340,7 @@ class ScoreETL(ExtractTransformLoad):
             field_names.HIGH_SCHOOL_ED_FIELD,
             field_names.UNEMPLOYMENT_FIELD,
             field_names.MEDIAN_HOUSE_VALUE_FIELD,
+            field_names.COLLEGE_ATTENDANCE_FIELD,
             field_names.EXPECTED_BUILDING_LOSS_RATE_FIELD,
             field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD,
             field_names.EXPECTED_POPULATION_LOSS_RATE_FIELD,
