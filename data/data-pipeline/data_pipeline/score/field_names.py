@@ -70,6 +70,10 @@ LOW_MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD = (
     "Low median household income as a percent of area median income"
 )
 
+COLLEGE_ATTENDANCE_FIELD = (
+            "Percent enrollment in college or graduate school"
+        )
+
 # Climate
 FEMA_RISK_FIELD = "FEMA Risk Index Expected Annual Loss Score"
 EXPECTED_BUILDING_LOSS_RATE_FIELD = (
