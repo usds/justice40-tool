@@ -506,6 +506,7 @@ class ScoreL(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
+
         self.df[field_names.DIABETES_LOW_INCOME_FIELD] = (
             diabetes_threshold & self.df[field_names.FPL_200_SERIES]
         )
@@ -517,6 +518,9 @@ class ScoreL(Score):
         )
         self.df[field_names.LOW_LIFE_EXPECTANCY_LOW_INCOME_FIELD] = (
             low_life_expectancy_threshold & self.df[field_names.FPL_200_SERIES]
+        )
+        self.df[field_names.HEALTHY_FOOD_LOW_INCOME_FIELD] = (
+            healthy_food_threshold & self.df[field_names.FPL_200_SERIES]
         )
 
         self._increment_total_eligibility_exceeded(health_eligibility_columns)
