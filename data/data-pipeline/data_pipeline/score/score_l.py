@@ -448,7 +448,7 @@ class ScoreL(Score):
             field_names.DIABETES_LOW_INCOME_FIELD,
             field_names.ASTHMA_LOW_INCOME_FIELD,
             field_names.HEART_DISEASE_LOW_INCOME_FIELD,
-            field_names.LIFE_EXPECTANCY_INCOME_FIELD,
+            field_names.LIFE_EXPECTANCY_LOW_INCOME_FIELD,
         ]
 
         diabetes_threshold = (
