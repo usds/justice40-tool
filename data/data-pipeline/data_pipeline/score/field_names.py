@@ -1,6 +1,12 @@
 # Suffixes
 PERCENTILE_FIELD_SUFFIX = " (percentile)"
 MIN_MAX_FIELD_SUFFIX = " (min-max normalized)"
+TOP_25_PERCENTILE_SUFFIX = " (top 25th percentile)"
+
+# Geographic field names
+GEOID_TRACT_FIELD = "GEOID10_TRACT"
+STATE_FIELD = "State Name"
+COUNTY_FIELD = "County Name"
 
 # Score file field names
 SCORE_A = "Score A"
@@ -21,6 +27,7 @@ SCORE_I = "Score I"
 SCORE_I_COMMUNITIES = "Score I (communities)"
 SCORE_K = "NMTC (communities)"
 SCORE_K_COMMUNITIES = "Score K (communities)"
+SCORE_L = "Definition L"
 SCORE_L_COMMUNITIES = "Definition L (communities)"
 L_CLIMATE = "Climate Factor (Definition L)"
 L_ENERGY = "Energy Factor (Definition L)"
@@ -45,7 +52,6 @@ POVERTY_LESS_THAN_150_FPL_FIELD = (
 POVERTY_LESS_THAN_100_FPL_FIELD = (
     "Percent of individuals < 100% Federal Poverty Line"
 )
-MEDIAN_INCOME_PERCENT_AMI_FIELD = "Median household income (% of AMI)"
 STATE_MEDIAN_INCOME_FIELD = (
     "Median household income (State; 2019 inflation-adjusted dollars)"
 )

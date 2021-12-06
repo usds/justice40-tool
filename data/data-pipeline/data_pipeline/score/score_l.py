@@ -528,7 +528,7 @@ class ScoreL(Score):
 
         median_income_threshold = (
             self.df[
-                field_names.MEDIAN_INCOME_PERCENT_AMI_FIELD
+                field_names.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             # Note: a high median income as a % of AMI is good, so take 1 minus the threshold to invert it.
