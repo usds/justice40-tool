@@ -1,7 +1,7 @@
 # Suffixes
 PERCENTILE_FIELD_SUFFIX = " (percentile)"
 MIN_MAX_FIELD_SUFFIX = " (min-max normalized)"
-TOP_25_PERCENTILE_SUFFIX  = " (top 25th percentile)"
+TOP_25_PERCENTILE_SUFFIX = " (top 25th percentile)"
 
 # Geographic field names
 GEOID_TRACT_FIELD = "GEOID10_TRACT"

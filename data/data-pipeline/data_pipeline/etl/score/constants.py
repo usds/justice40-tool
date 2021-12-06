@@ -4,7 +4,7 @@ import datetime
 import pandas as pd
 from data_pipeline.config import settings
 
-import score.field_names as field_names
+from data_pipeline.score import field_names
 
 # Base Paths
 DATA_PATH = Path(settings.APP_ROOT) / "data"
@@ -89,8 +89,10 @@ TILES_SCORE_COLUMNS = [
     field_names.LEAD_PAINT_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.DIESEL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.PM25_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.POVERTY_LESS_THAN_200_FPL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.POVERTY_LESS_THAN_200_FPL_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX,
 ]
 
 # columns to round floats to 2 decimals
@@ -121,8 +123,10 @@ TILES_SCORE_FLOAT_COLUMNS = [
     field_names.LEAD_PAINT_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.DIESEL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.PM25_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.POVERTY_LESS_THAN_200_FPL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.POVERTY_LESS_THAN_200_FPL_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX,
 ]
 TILES_ROUND_NUM_DECIMALS = 2
 
@@ -162,6 +166,7 @@ DOWNLOADABLE_SCORE_COLUMNS = [
     field_names.STATE_FIELD,
     field_names.SCORE_G_COMMUNITIES,
     field_names.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD,
-    field_names.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX,
     *DOWNLOADABLE_SCORE_INDICATOR_COLUMNS_FULL,
 ]

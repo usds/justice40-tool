@@ -280,7 +280,9 @@ class PostScoreETL(ExtractTransformLoad):
         downloadable_df_copy.to_excel(excel_path, index=False)
 
         logger.info("Writing downloadable csv")
-        downloadable_df_copy[self.GEOID_TRACT_FIELD_NAME] = "\"" + downloadable_df_copy[self.GEOID_TRACT_FIELD_NAME] + "\""
+        downloadable_df_copy[self.GEOID_TRACT_FIELD_NAME] = (
+            '"' + downloadable_df_copy[self.GEOID_TRACT_FIELD_NAME] + '"'
+        )
         downloadable_df_copy.to_csv(csv_path, index=False)
 
         logger.info("Compressing files")
