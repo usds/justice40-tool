@@ -88,7 +88,7 @@ class ChildOpportunityIndex(ExtractTransformLoad):
 
         # Sanity check the tract field.
         if len(output_df[self.GEOID_TRACT_FIELD_NAME].str.len().unique()) != 1:
-            raise ValueError(f"Wrong tract length.")
+            raise ValueError("Wrong tract length.")
 
         # COI has two rows per tract: one for 2010 and one for 2015.
         output_df = output_df[output_df["year"] == 2015]
