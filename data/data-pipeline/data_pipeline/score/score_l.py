@@ -14,6 +14,7 @@ class ScoreL(Score):
         self.ENVIRONMENTAL_BURDEN_THRESHOLD: float = 0.90
         self.MEDIAN_HOUSE_VALUE_THRESHOLD: float = 0.90
         self.LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD: float = 0.10
+        self.COLLEGE_ATTENDANCE_MAXMIMUM_THRESHOLD: float = 0.30
 
         super().__init__(df)
 
@@ -107,6 +108,9 @@ class ScoreL(Score):
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             >= self.LOW_INCOME_THRESHOLD
+        ) & (
+            self.df[field_names.COLLEGE_ATTENDANCE_FIELD]
+            <= self.COLLEGE_ATTENDANCE_MAXMIMUM_THRESHOLD
         )
 
     def _increment_total_eligibility_exceeded(
@@ -581,9 +585,13 @@ class ScoreL(Score):
             field_names.LOW_READING_LOW_HS_EDUCATION_FIELD,
         ]
 
+        # TODO: if we proceed, rename all these vars to also reference college.
         high_scool_achievement_rate_threshold = (
             self.df[field_names.HIGH_SCHOOL_ED_FIELD]
             >= self.LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD
+        ) & (
+            self.df[field_names.COLLEGE_ATTENDANCE_FIELD]
+            <= self.COLLEGE_ATTENDANCE_MAXMIMUM_THRESHOLD
         )
 
         unemployment_threshold = (
