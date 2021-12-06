@@ -220,26 +220,42 @@ READING_FIELD = "Third grade reading proficiency"
 EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for expected population loss rate and is low income"
 EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for expected agriculture loss rate and is low income"
 EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for expected building loss rate and is low income"
+EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD = (
+    f"At or above the {PERCENTILE}th percentile for summer days above 90F and "
+    f"the median house value is less than {MEDIAN_HOUSE_VALUE_PERCENTILE}th "
+    f"percentile and is low income"
+)
 
 # Clean energy and efficiency
 PM25_EXPOSURE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for PM2.5 exposure and is low income"
 ENERGY_BURDEN_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for energy burden and is low income"
+
 # Clean transportation
 DIESEL_PARTICULATE_MATTER_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for diesel particulate matter and is low income"
 TRAFFIC_PROXIMITY_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for traffic proximity and is low income"
+
 # Affordable and Sustainable Housing
-LEAD_PAINT_MEDIAN_HOME_VALUE_LOW_INCOME_FIELD = (
+LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD = (
     f"At or above the {PERCENTILE}th percentile for lead paint and"
-    " the median house value is less than {MEDIAN_HOUSE_VALUE_PERCENTILE}th percentile and is low income"
+    f" the median house value is less than {MEDIAN_HOUSE_VALUE_PERCENTILE}th "
+    f"percentile and is low income"
 )
 HOUSING_BURDEN_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for housing burden and is low income"
+
+IMPENETRABLE_SURFACES_LOW_INCOME_FIELD = (
+    f"At or above the {PERCENTILE}th percentile for impenetrable surfaces and is low "
+    f"income"
+)
+
 # Remediation and Reduction of Legacy Pollution
 RMP_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for proximity to RMP sites and is low income"
 SUPERFUND_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for proximity to superfund sites and is low income"
 HAZARDOUS_WASTE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for proximity to hazardous waste facilities and is low income"
+
 # Critical Clean Water and Waste Infrastructure
 WASTEWATER_DISCHARGE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for wastewater discharge and is low income"
-# Health Burden
+
+# Health Burdens
 DIABETES_LOW_INCOME_FIELD = (
     f"At or above the {PERCENTILE}th percentile for diabetes and is low income"
 )
@@ -250,25 +266,35 @@ HEART_DISEASE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for
 
 LIFE_EXPECTANCY_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for life expectancy and is low income"
 
+HEALTHY_FOOD_LOW_INCOME_FIELD = (
+    f"At or above the {PERCENTILE}th percentile for low "
+    f"access to healthy food and is low income"
+)
+
 # Workforce
 UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD = (
     f"At or above the {PERCENTILE}th percentile for unemployment"
-    " and low HS education"
+    " and has low HS education"
 )
 
 LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD = (
     f"At or above the {PERCENTILE}th percentile for households in linguistic isolation"
-    " and low HS education"
+    " and has low HS education"
 )
 
 POVERTY_LOW_HS_EDUCATION_FIELD = (
     f"At or above the {PERCENTILE}th percentile for households at or below 100% federal poverty level"
-    " and low HS education"
+    " and has low HS education"
+)
+
+READING_LOW_HS_EDUCATION_FIELD = (
+    f"At or above the {PERCENTILE}th percentile for 3rd grade reading proficiency"
+    " and has low HS education"
 )
 
 MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD = (
     f"At or below the {PERCENTILE}th percentile for median income"
-    "  and low HS education"
+    "  and has low HS education"
 )
 
 THRESHOLD_COUNT = "Total threshold criteria exceeded"
