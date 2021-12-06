@@ -114,6 +114,46 @@ class CensusACSETL(ExtractTransformLoad):
         )
         self.HIGH_SCHOOL_ED_FIELD = "Percent individuals age 25 or over with less than high school degree"
 
+        self.RE_FIELDS = [
+            "B02001_001E",
+            "B02001_002E",
+            "B02001_003E",
+            "B02001_004E",
+            "B02001_005E",
+            "B02001_006E",
+            "B02001_007E",
+            "B02001_008E",
+            "B02001_009E",
+            "B02001_010E",
+            "B03002_001E",
+            "B03002_003E",
+            "B03003_001E",
+            "B03003_003E",
+        ]
+
+        # Name output demographics fields.
+        self.BLACK_FIELD_NAME = "Black or African American alone"
+        self.AMERICAN_INDIAN_FIELD_NAME = (
+            "American Indian and Alaska Native alone"
+        )
+        self.ASIAN_FIELD_NAME = "Asian alone"
+        self.HAWAIIAN_FIELD_NAME = "Native Hawaiian and Other Pacific alone"
+        self.TWO_OR_MORE_RACES_FIELD_NAME = "Two or more races"
+        self.NON_HISPANIC_WHITE_FIELD_NAME = "Non-Hispanic White"
+        self.HISPANIC_FIELD_NAME = "Hispanic or Latino"
+
+        self.RE_OUTPUT_FIELDS = [
+            self.BLACK_FIELD_NAME,
+            self.AMERICAN_INDIAN_FIELD_NAME,
+            self.ASIAN_FIELD_NAME,
+            self.HAWAIIAN_FIELD_NAME,
+            self.TWO_OR_MORE_RACES_FIELD_NAME,
+            self.NON_HISPANIC_WHITE_FIELD_NAME,
+            self.HISPANIC_FIELD_NAME,
+        ]
+
+        self.PERCENT_PREFIX = "Percent "
+
         self.STATE_GEOID_FIELD_NAME = "GEOID2"
 
         self.df: pd.DataFrame
@@ -131,6 +171,7 @@ class CensusACSETL(ExtractTransformLoad):
             + self.LINGUISTIC_ISOLATION_FIELDS
             + self.POVERTY_FIELDS
             + self.EDUCATIONAL_FIELDS
+            + self.RE_FIELDS
         )
 
         self.df = retrieve_census_acs_data(
@@ -235,6 +276,38 @@ class CensusACSETL(ExtractTransformLoad):
             / df[self.EDUCATION_POPULATION_OVER_25]
         )
 
+        # Calculate some demographic information.
+        df[self.BLACK_FIELD_NAME] = df["B02001_003E"]
+        df[self.AMERICAN_INDIAN_FIELD_NAME] = df["B02001_004E"]
+        df[self.ASIAN_FIELD_NAME] = df["B02001_005E"]
+        df[self.HAWAIIAN_FIELD_NAME] = df["B02001_006E"]
+        df[self.TWO_OR_MORE_RACES_FIELD_NAME] = df["B02001_008E"]
+        df[self.NON_HISPANIC_WHITE_FIELD_NAME] = df["B03002_003E"]
+        df[self.HISPANIC_FIELD_NAME] = df["B03003_003E"]
+
+        # Calculate demographics as percent
+        df[self.PERCENT_PREFIX + self.BLACK_FIELD_NAME] = (
+            df["B02001_003E"] / df["B02001_001E"]
+        )
+        df[self.PERCENT_PREFIX + self.AMERICAN_INDIAN_FIELD_NAME] = (
+            df["B02001_004E"] / df["B02001_001E"]
+        )
+        df[self.PERCENT_PREFIX + self.ASIAN_FIELD_NAME] = (
+            df["B02001_005E"] / df["B02001_001E"]
+        )
+        df[self.PERCENT_PREFIX + self.HAWAIIAN_FIELD_NAME] = (
+            df["B02001_006E"] / df["B02001_001E"]
+        )
+        df[self.PERCENT_PREFIX + self.TWO_OR_MORE_RACES_FIELD_NAME] = (
+            df["B02001_008E"] / df["B02001_001E"]
+        )
+        df[self.PERCENT_PREFIX + self.NON_HISPANIC_WHITE_FIELD_NAME] = (
+            df["B03002_003E"] / df["B03002_001E"]
+        )
+        df[self.PERCENT_PREFIX + self.HISPANIC_FIELD_NAME] = (
+            df["B03003_003E"] / df["B03003_001E"]
+        )
+
         # Save results to self.
         self.df = df
 
@@ -244,17 +317,21 @@ class CensusACSETL(ExtractTransformLoad):
         # mkdir census
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
 
-        columns_to_include = [
-            self.GEOID_TRACT_FIELD_NAME,
-            self.UNEMPLOYED_FIELD_NAME,
-            self.LINGUISTIC_ISOLATION_FIELD_NAME,
-            self.MEDIAN_INCOME_FIELD_NAME,
-            self.POVERTY_LESS_THAN_100_PERCENT_FPL_FIELD_NAME,
-            self.POVERTY_LESS_THAN_150_PERCENT_FPL_FIELD_NAME,
-            self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME,
-            self.MEDIAN_HOUSE_VALUE_FIELD_NAME,
-            self.HIGH_SCHOOL_ED_FIELD,
-        ]
+        columns_to_include = (
+            [
+                self.GEOID_TRACT_FIELD_NAME,
+                self.UNEMPLOYED_FIELD_NAME,
+                self.LINGUISTIC_ISOLATION_FIELD_NAME,
+                self.MEDIAN_INCOME_FIELD_NAME,
+                self.POVERTY_LESS_THAN_100_PERCENT_FPL_FIELD_NAME,
+                self.POVERTY_LESS_THAN_150_PERCENT_FPL_FIELD_NAME,
+                self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME,
+                self.MEDIAN_HOUSE_VALUE_FIELD_NAME,
+                self.HIGH_SCHOOL_ED_FIELD,
+            ]
+            + self.RE_OUTPUT_FIELDS
+            + [self.PERCENT_PREFIX + field for field in self.RE_OUTPUT_FIELDS]
+        )
 
         self.df[columns_to_include].to_csv(
             path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False
