@@ -422,8 +422,7 @@ class ScoreL(Score):
         )
 
         self.df[field_names.WASTEWATER_DISCHARGE_LOW_INCOME_FIELD] = (
-            wastewater_threshold
-            & self.df[field_names.FPL_200_SERIES]
+            wastewater_threshold & self.df[field_names.FPL_200_SERIES]
         )
 
         self._increment_total_eligibility_exceeded(
