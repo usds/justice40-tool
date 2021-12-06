@@ -200,6 +200,22 @@ HOLC_GRADE_D_TRACT_50_PERCENT_FIELD: str = "Tract is >50% HOLC Grade D"
 HOLC_GRADE_D_TRACT_75_PERCENT_FIELD: str = "Tract is >75% HOLC Grade D"
 
 
+# Child Opportunity Index data
+# Summer days with maximum temperature above 90F.
+EXTREME_HEAT_FIELD = "Summer days above 90F"
+
+# Percentage households without a car located further than a half-mile from the
+# nearest supermarket.
+HEALTHY_FOOD_FIELD = "Percent low access to healthy food"
+
+# Percentage impenetrable surface areas such as rooftops, roads or parking lots.
+IMPENETRABLE_SURFACES_FIELD = "Percent impenetrable surface areas"
+
+# Percentage third graders scoring proficient on standardized reading tests,
+# converted to NAEP scale score points.
+READING_FIELD = "Third grade reading proficiency"
+
+# Names for individual factors being exceeded
 # Climate Change
 EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for expected population loss rate and is low income"
 EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for expected agriculture loss rate and is low income"

@@ -1,8 +1,8 @@
 from pathlib import Path
 import pandas as pd
 
-from data_pipeline.config import settings
 from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger, unzip_file_from_url
 
 logger = get_module_logger(__name__)
@@ -44,9 +44,9 @@ class ChildOpportunityIndex(ExtractTransformLoad):
         # nearest supermarket.
         self.HEALTHY_FOOD_FIELD = "Percent low access to healthy food"
 
-        self.GREEN_SPACE_INPUT_FIELD = "HE_GREEN"
+        self.IMPENETRABLE_SURFACES_INPUT_FIELD = "HE_GREEN"
         # Percentage impenetrable surface areas such as rooftops, roads or parking lots.
-        self.GREEN_SPACE_FIELD = "Percent impenetrable surface areas"
+        self.IMPENETRABLE_SURFACES_FIELD = "Percent impenetrable surface areas"
 
         self.READING_INPUT_FIELD = "ED_READING"
         # Percentage third graders scoring proficient on standardized reading tests,
@@ -56,10 +56,10 @@ class ChildOpportunityIndex(ExtractTransformLoad):
         # Constants for output
         self.COLUMNS_TO_KEEP = [
             self.GEOID_TRACT_FIELD_NAME,
-            self.EXTREME_HEAT_FIELD,
-            self.HEALTHY_FOOD_FIELD,
-            self.GREEN_SPACE_FIELD,
-            self.READING_FIELD,
+            field_names.EXTREME_HEAT_FIELD,
+            field_names.HEALTHY_FOOD_FIELD,
+            field_names.IMPENETRABLE_SURFACES_FIELD,
+            field_names.READING_FIELD,
         ]
 
         self.raw_df: pd.DataFrame
@@ -92,10 +92,10 @@ class ChildOpportunityIndex(ExtractTransformLoad):
         output_df = self.raw_df.rename(
             columns={
                 self.TRACT_INPUT_COLUMN_NAME: self.GEOID_TRACT_FIELD_NAME,
-                self.EXTREME_HEAT_INPUT_FIELD: self.EXTREME_HEAT_FIELD,
-                self.HEALTHY_FOOD_INPUT_FIELD: self.HEALTHY_FOOD_FIELD,
-                self.GREEN_SPACE_INPUT_FIELD: self.GREEN_SPACE_FIELD,
-                self.READING_INPUT_FIELD: self.READING_FIELD,
+                self.EXTREME_HEAT_INPUT_FIELD: field_names.EXTREME_HEAT_FIELD,
+                self.HEALTHY_FOOD_INPUT_FIELD: field_names.HEALTHY_FOOD_FIELD,
+                self.IMPENETRABLE_SURFACES_INPUT_FIELD: field_names.IMPENETRABLE_SURFACES_FIELD,
+                self.READING_INPUT_FIELD: field_names.READING_FIELD,
             }
         )
 
@@ -109,7 +109,7 @@ class ChildOpportunityIndex(ExtractTransformLoad):
         # Convert percents from 0-100 to 0-1 to standardize with our other fields.
         percent_fields_to_convert = [
             self.HEALTHY_FOOD_FIELD,
-            self.GREEN_SPACE_FIELD,
+            self.IMPENETRABLE_SURFACES_FIELD,
         ]
 
         for percent_field_to_convert in percent_fields_to_convert:
