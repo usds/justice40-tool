@@ -492,7 +492,7 @@ class ScoreL(Score):
         self.df[field_names.HEART_DISEASE_LOW_INCOME_FIELD] = (
             heart_disease_threshold & self.df[field_names.FPL_200_SERIES]
         )
-        self.df[field_names.LIFE_EXPECTANCY_INCOME_FIELD] = (
+        self.df[field_names.LIFE_EXPECTANCY_LOW_INCOME_FIELD] = (
             life_expectancy_threshold & self.df[field_names.FPL_200_SERIES]
         )
 
