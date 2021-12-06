@@ -31,6 +31,8 @@ L_WATER = "Water Factor (Definition L)"
 L_HEALTH = "Health Factor (Definition L)"
 L_WORKFORCE = "Workforce Factor (Definition L)"
 L_NON_WORKFORCE = "Any Non-Workforce Factor (Definition L)"
+PERCENTILE = 90
+MEDIAN_HOUSE_VALUE_PERCENTILE = 90
 
 # Poverty / Income
 POVERTY_FIELD = "Poverty (Less than 200% of federal poverty line)"
@@ -196,3 +198,63 @@ HOLC_GRADE_D_TRACT_PERCENT_FIELD: str = "Percent of tract that is HOLC Grade D"
 HOLC_GRADE_D_TRACT_20_PERCENT_FIELD: str = "Tract is >20% HOLC Grade D"
 HOLC_GRADE_D_TRACT_50_PERCENT_FIELD: str = "Tract is >50% HOLC Grade D"
 HOLC_GRADE_D_TRACT_75_PERCENT_FIELD: str = "Tract is >75% HOLC Grade D"
+
+
+# Climate Change
+EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for expected population loss rate and is low income"
+EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for expected agriculture loss rate and is low income"
+EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for expected building loss rate and is low income"
+
+# Clean energy and efficiency
+PM25_EXPOSURE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for PM2.5 exposure and is low income"
+ENERGY_BURDEN_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for energy burden and is low income"
+# Clean transportation
+DIESEL_PARTICULATE_MATTER_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for diesel particulate matter and is low income"
+TRAFFIC_PROXIMITY_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for traffic proximity and is low income"
+# Affordable and Sustainable Housing
+LEAD_PAINT_MEDIAN_HOME_VALUE_LOW_INCOME_FIELD = (
+    f"At or above the {PERCENTILE}th percentile for lead paint and"
+    " the median house value is less than {MEDIAN_HOUSE_VALUE_PERCENTILE}th percentile and is low income"
+)
+HOUSING_BURDEN_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for housing burden and is low income"
+# Remediation and Reduction of Legacy Pollution
+RMP_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for proximity to RMP sites and is low income"
+SUPERFUND_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for proximity to superfund sites and is low income"
+HAZARDOUS_WASTE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for proximity to hazardous waste facilities and is low income"
+# Critical Clean Water and Waste Infrastructure
+WASTEWATER_DISCHARGE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for wastewater discharge and is low income"
+# Health Burden
+DIABETES_LOW_INCOME_FIELD = (
+    f"At or above the {PERCENTILE}th percentile for diabetes and is low income"
+)
+ASTHMA_LOW_INCOME_FIELD = (
+    f"At or above the {PERCENTILE}th percentile for asthma and is low income"
+)
+HEART_DISEASE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for heart disease and is low income"
+
+LIFE_EXPECTANCY_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for life expectancy and is low income"
+
+# Workforce
+UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD = (
+    f"At or above the {PERCENTILE}th percentile for unemployment"
+    " and low HS education"
+)
+
+LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD = (
+    f"At or above the {PERCENTILE}th percentile for households in linguistic isolation"
+    " and low HS education"
+)
+
+POVERTY_LOW_HS_EDUCATION_FIELD = (
+    f"At or above the {PERCENTILE}th percentile for households at or below 100% federal poverty level"
+    " and low HS education"
+)
+
+MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD = (
+    f"At or below the {PERCENTILE}th percentile for median income"
+    "  and low HS education"
+)
+
+THRESHOLD_COUNT = "Total threshold criteria exceeded"
+
+FPL_200_SERIES = "Is low income"
