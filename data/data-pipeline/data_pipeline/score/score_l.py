@@ -578,7 +578,7 @@ class ScoreL(Score):
             field_names.POVERTY_LOW_HS_EDUCATION_FIELD,
             field_names.LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD,
             field_names.MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD,
-            field_names.READING_LOW_HS_EDUCATION_FIELD,
+            field_names.LOW_READING_LOW_HS_EDUCATION_FIELD,
         ]
 
         high_scool_achievement_rate_threshold = (
@@ -618,9 +618,9 @@ class ScoreL(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-        reading_threshold = (
+        low_reading_threshold = (
             self.df[
-                field_names.READING_FIELD + field_names.PERCENTILE_FIELD_SUFFIX
+                field_names.LOW_READING_FIELD + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )

@@ -465,6 +465,7 @@ class ScoreETL(ExtractTransformLoad):
             ReversePercentile(
                 field_name=field_names.READING_FIELD,
                 low_field_name=field_names.LOW_READING_FIELD,
+<<<<<<< HEAD
             ),
             ReversePercentile(
                 field_name=field_names.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD,
