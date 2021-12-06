@@ -36,22 +36,9 @@ class ChildOpportunityIndex(ExtractTransformLoad):
 
         self.TRACT_INPUT_COLUMN_NAME = "geoid"
         self.EXTREME_HEAT_INPUT_FIELD = "HE_HEAT"
-        # Summer days with maximum temperature above 90F.
-        self.EXTREME_HEAT_FIELD = "Summer days above 90F"
-
         self.HEALTHY_FOOD_INPUT_FIELD = "HE_FOOD"
-        # Percentage households without a car located further than a half-mile from the
-        # nearest supermarket.
-        self.HEALTHY_FOOD_FIELD = "Percent low access to healthy food"
-
         self.IMPENETRABLE_SURFACES_INPUT_FIELD = "HE_GREEN"
-        # Percentage impenetrable surface areas such as rooftops, roads or parking lots.
-        self.IMPENETRABLE_SURFACES_FIELD = "Percent impenetrable surface areas"
-
         self.READING_INPUT_FIELD = "ED_READING"
-        # Percentage third graders scoring proficient on standardized reading tests,
-        # converted to NAEP scale score points.
-        self.READING_FIELD = "Third grade reading proficiency"
 
         # Constants for output
         self.COLUMNS_TO_KEEP = [
@@ -108,8 +95,8 @@ class ChildOpportunityIndex(ExtractTransformLoad):
 
         # Convert percents from 0-100 to 0-1 to standardize with our other fields.
         percent_fields_to_convert = [
-            self.HEALTHY_FOOD_FIELD,
-            self.IMPENETRABLE_SURFACES_FIELD,
+            field_names.HEALTHY_FOOD_FIELD,
+            field_names.IMPENETRABLE_SURFACES_FIELD,
         ]
 
         for percent_field_to_convert in percent_fields_to_convert:

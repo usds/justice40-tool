@@ -249,9 +249,7 @@ class ScoreL(Score):
             & self.df[field_names.FPL_200_SERIES]
         )
 
-        self.df[
-            field_names.IMPENETRABLE_SURFACES_LOW_INCOME_FIELD
-        ] = (
+        self.df[field_names.IMPENETRABLE_SURFACES_LOW_INCOME_FIELD] = (
             impenetrable_surfaces_threshold
             & self.df[field_names.FPL_200_SERIES]
         )
@@ -531,7 +529,6 @@ class ScoreL(Score):
             <= 1 - self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-
         self.df[field_names.DIABETES_LOW_INCOME_FIELD] = (
             diabetes_threshold & self.df[field_names.FPL_200_SERIES]
         )
@@ -563,6 +560,15 @@ class ScoreL(Score):
         # AND
         # Where the high school degree achievement rates for adults 25 years and older is less than 95%
         # (necessary to screen out university block groups)
+
+        # Workforce criteria for states fields.
+        workforce_eligibility_columns = [
+            field_names.UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD,
+            field_names.POVERTY_LOW_HS_EDUCATION_FIELD,
+            field_names.LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD,
+            field_names.MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD,
+            field_names.READING_LOW_HS_EDUCATION_FIELD,
+        ]
 
         high_scool_achievement_rate_threshold = (
             self.df[field_names.HIGH_SCHOOL_ED_FIELD]
@@ -603,6 +609,13 @@ class ScoreL(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
+        reading_threshold = (
+            self.df[
+                field_names.READING_FIELD + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        )
+
         self.df[field_names.LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD] = (
             linguistic_isolation_threshold
             & high_scool_achievement_rate_threshold
@@ -620,15 +633,9 @@ class ScoreL(Score):
             unemployment_threshold & high_scool_achievement_rate_threshold
         )
 
-        # Workforce criteria for states fields that create indicator columns
-        # for each tract in order to indicate whether they met any of the four
-        # criteria. We will used this create individual indicator columns.
-        workforce_eligibility_columns = [
-            field_names.UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD,
-            field_names.POVERTY_LOW_HS_EDUCATION_FIELD,
-            field_names.LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD,
-            field_names.MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD,
-        ]
+        self.df[field_names.READING_LOW_HS_EDUCATION_FIELD] = (
+            reading_threshold & high_scool_achievement_rate_threshold
+        )
 
         workforce_combined_criteria_for_states = self.df[
             workforce_eligibility_columns
