@@ -251,9 +251,7 @@ class ScoreL(Score):
             & self.df[field_names.FPL_200_SERIES]
         )
 
-        self.df[
-            field_names.IMPENETRABLE_SURFACES_LOW_INCOME_FIELD
-        ] = (
+        self.df[field_names.IMPENETRABLE_SURFACES_LOW_INCOME_FIELD] = (
             impenetrable_surfaces_threshold
             & self.df[field_names.FPL_200_SERIES]
         )
@@ -522,6 +520,15 @@ class ScoreL(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
+        life_expectancy_threshold = (
+            self.df[
+                field_names.LIFE_EXPECTANCY_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            # Note: a high life expectancy is good, so take 1 minus the threshold to invert it,
+            # and then look for life expenctancies lower than that (not greater than).
+            <= 1 - self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        )
 
         self.df[field_names.DIABETES_LOW_INCOME_FIELD] = (
             diabetes_threshold & self.df[field_names.FPL_200_SERIES]
@@ -565,6 +572,15 @@ class ScoreL(Score):
             field_names.LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD,
         ]
 
+        # Workforce criteria for states fields.
+        workforce_eligibility_columns = [
+            field_names.UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD,
+            field_names.POVERTY_LOW_HS_EDUCATION_FIELD,
+            field_names.LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD,
+            field_names.MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD,
+            field_names.READING_LOW_HS_EDUCATION_FIELD,
+        ]
+
         high_scool_achievement_rate_threshold = (
             self.df[field_names.HIGH_SCHOOL_ED_FIELD]
             >= self.LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD
@@ -598,6 +614,13 @@ class ScoreL(Score):
             self.df[
                 field_names.POVERTY_LESS_THAN_100_FPL_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        )
+
+        reading_threshold = (
+            self.df[
+                field_names.READING_FIELD + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
