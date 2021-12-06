@@ -121,6 +121,9 @@ class ScoreL(Score):
     def add_columns(self) -> pd.DataFrame:
         logger.info("Adding Score L")
 
+        self.df[field_names.FPL_200_SERIES] = self._create_low_income_threshold(
+            self.df
+        )
         self.df[field_names.L_CLIMATE] = self._climate_factor()
         self.df[field_names.L_ENERGY] = self._energy_factor()
         self.df[field_names.L_TRANSPORTATION] = self._transportation_factor()
@@ -129,9 +132,6 @@ class ScoreL(Score):
         self.df[field_names.L_WATER] = self._water_factor()
         self.df[field_names.L_HEALTH] = self._health_factor()
         self.df[field_names.L_WORKFORCE] = self._workforce_factor()
-        self.df[field_names.FPL_200_SERIES] = self._create_low_income_threshold(
-            self.df
-        )
 
         factors = [
             field_names.L_CLIMATE,
