@@ -471,6 +471,7 @@ class ScoreL(Score):
             field_names.DIABETES_LOW_INCOME_FIELD,
             field_names.ASTHMA_LOW_INCOME_FIELD,
             field_names.HEART_DISEASE_LOW_INCOME_FIELD,
+            field_names.HEALTHY_FOOD_LOW_INCOME_FIELD,
             field_names.LIFE_EXPECTANCY_LOW_INCOME_FIELD,
         ]
 
@@ -496,6 +497,14 @@ class ScoreL(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
+        healthy_food_threshold = (
+            self.df[
+                field_names.HEALTHY_FOOD_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        )
+
         life_expectancy_threshold = (
             self.df[
                 field_names.LIFE_EXPECTANCY_FIELD
@@ -505,6 +514,7 @@ class ScoreL(Score):
             # and then look for life expenctancies lower than that (not greater than).
             <= 1 - self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
+
 
         self.df[field_names.DIABETES_LOW_INCOME_FIELD] = (
             diabetes_threshold & self.df[field_names.FPL_200_SERIES]
@@ -517,6 +527,9 @@ class ScoreL(Score):
         )
         self.df[field_names.LIFE_EXPECTANCY_LOW_INCOME_FIELD] = (
             life_expectancy_threshold & self.df[field_names.FPL_200_SERIES]
+        )
+        self.df[field_names.HEALTHY_FOOD_LOW_INCOME_FIELD] = (
+            healthy_food_threshold & self.df[field_names.FPL_200_SERIES]
         )
 
         self._increment_total_eligibility_exceeded(health_eligibility_columns)
