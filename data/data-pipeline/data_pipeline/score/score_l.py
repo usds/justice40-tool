@@ -611,7 +611,8 @@ class ScoreL(Score):
 
         low_reading_threshold = (
             self.df[
-                field_names.LOW_READING_FIELD + field_names.PERCENTILE_FIELD_SUFFIX
+                field_names.LOW_READING_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )

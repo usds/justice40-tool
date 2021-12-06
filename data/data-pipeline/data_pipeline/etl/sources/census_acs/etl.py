@@ -114,6 +114,27 @@ class CensusACSETL(ExtractTransformLoad):
         )
         self.HIGH_SCHOOL_ED_FIELD = "Percent individuals age 25 or over with less than high school degree"
 
+        # College attendance fields
+        self.COLLEGE_ATTENDANCE_TOTAL_POPULATION_ASKED = (
+            "B14004_001E"  # Estimate!!Total
+        )
+        self.COLLEGE_ATTENDANCE_MALE_ENROLLED_PUBLIC = "B14004_003E"  # Estimate!!Total!!Male!!Enrolled in public college or graduate school
+        self.COLLEGE_ATTENDANCE_MALE_ENROLLED_PRIVATE = "B14004_008E"  # Estimate!!Total!!Male!!Enrolled in private college or graduate school
+        self.COLLEGE_ATTENDANCE_FEMALE_ENROLLED_PUBLIC = "B14004_019E"  # Estimate!!Total!!Female!!Enrolled in public college or graduate school
+        self.COLLEGE_ATTENDANCE_FEMALE_ENROLLED_PRIVATE = "B14004_024E"  # Estimate!!Total!!Female!!Enrolled in private college or graduate school
+
+        self.COLLEGE_ATTENDANCE_FIELDS = [
+            self.COLLEGE_ATTENDANCE_TOTAL_POPULATION_ASKED,
+            self.COLLEGE_ATTENDANCE_MALE_ENROLLED_PUBLIC,
+            self.COLLEGE_ATTENDANCE_MALE_ENROLLED_PRIVATE,
+            self.COLLEGE_ATTENDANCE_FEMALE_ENROLLED_PUBLIC,
+            self.COLLEGE_ATTENDANCE_FEMALE_ENROLLED_PRIVATE,
+        ]
+
+        self.COLLEGE_ATTENDANCE_FIELD = (
+            "Percent enrollment in college or graduate school"
+        )
+
         self.RE_FIELDS = [
             "B02001_001E",
             "B02001_002E",
@@ -156,15 +177,30 @@ class CensusACSETL(ExtractTransformLoad):
 
         self.STATE_GEOID_FIELD_NAME = "GEOID2"
 
+        self.COLUMNS_TO_KEEP = (
+            [
+                self.GEOID_TRACT_FIELD_NAME,
+                self.UNEMPLOYED_FIELD_NAME,
+                self.LINGUISTIC_ISOLATION_FIELD_NAME,
+                self.MEDIAN_INCOME_FIELD_NAME,
+                self.POVERTY_LESS_THAN_100_PERCENT_FPL_FIELD_NAME,
+                self.POVERTY_LESS_THAN_150_PERCENT_FPL_FIELD_NAME,
+                self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME,
+                self.MEDIAN_HOUSE_VALUE_FIELD_NAME,
+                self.HIGH_SCHOOL_ED_FIELD,
+                self.COLLEGE_ATTENDANCE_FIELD,
+            ]
+            + self.RE_OUTPUT_FIELDS
+            + [self.PERCENT_PREFIX + field for field in self.RE_OUTPUT_FIELDS]
+        )
+
         self.df: pd.DataFrame
 
     def extract(self) -> None:
         # Define the variables to retrieve
         variables = (
             [
-                # Income field
                 self.MEDIAN_INCOME_FIELD,
-                # House value
                 self.MEDIAN_HOUSE_VALUE_FIELD,
             ]
             + self.EMPLOYMENT_FIELDS
@@ -172,6 +208,7 @@ class CensusACSETL(ExtractTransformLoad):
             + self.POVERTY_FIELDS
             + self.EDUCATIONAL_FIELDS
             + self.RE_FIELDS
+            + self.COLLEGE_ATTENDANCE_FIELDS
         )
 
         self.df = retrieve_census_acs_data(
@@ -308,6 +345,14 @@ class CensusACSETL(ExtractTransformLoad):
             df["B03003_003E"] / df["B03003_001E"]
         )
 
+        # Calculate college attendance:
+        df[self.COLLEGE_ATTENDANCE_FIELD] = (
+            df[self.COLLEGE_ATTENDANCE_MALE_ENROLLED_PUBLIC]
+            + df[self.COLLEGE_ATTENDANCE_MALE_ENROLLED_PRIVATE]
+            + df[self.COLLEGE_ATTENDANCE_FEMALE_ENROLLED_PUBLIC]
+            + df[self.COLLEGE_ATTENDANCE_FEMALE_ENROLLED_PRIVATE]
+        ) / df[self.COLLEGE_ATTENDANCE_TOTAL_POPULATION_ASKED]
+
         # Save results to self.
         self.df = df
 
@@ -317,23 +362,7 @@ class CensusACSETL(ExtractTransformLoad):
         # mkdir census
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
 
-        columns_to_include = (
-            [
-                self.GEOID_TRACT_FIELD_NAME,
-                self.UNEMPLOYED_FIELD_NAME,
-                self.LINGUISTIC_ISOLATION_FIELD_NAME,
-                self.MEDIAN_INCOME_FIELD_NAME,
-                self.POVERTY_LESS_THAN_100_PERCENT_FPL_FIELD_NAME,
-                self.POVERTY_LESS_THAN_150_PERCENT_FPL_FIELD_NAME,
-                self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME,
-                self.MEDIAN_HOUSE_VALUE_FIELD_NAME,
-                self.HIGH_SCHOOL_ED_FIELD,
-            ]
-            + self.RE_OUTPUT_FIELDS
-            + [self.PERCENT_PREFIX + field for field in self.RE_OUTPUT_FIELDS]
-        )
-
-        self.df[columns_to_include].to_csv(
+        self.df[self.COLUMNS_TO_KEEP].to_csv(
             path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False
         )
 
