@@ -29,6 +29,7 @@ class ScoreETL(ExtractTransformLoad):
         self.persistent_poverty_df: pd.DataFrame
         self.census_decennial_df: pd.DataFrame
         self.census_2010_df: pd.DataFrame
+        self.child_opportunity_index_df: pd.DataFrame
 
     def extract(self) -> None:
         logger.info("Loading data sets from disk.")
@@ -162,6 +163,16 @@ class ScoreETL(ExtractTransformLoad):
             low_memory=False,
         )
 
+        # Load COI data
+        child_opportunity_index_csv = (
+            constants.DATA_PATH / "dataset" / "child_opportunity_index" / "usa.csv"
+        )
+        self.child_opportunity_index_df = pd.read_csv(
+            child_opportunity_index_csv,
+            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
+            low_memory=False,
+        )
+
     def _join_tract_dfs(self, census_tract_dfs: list) -> pd.DataFrame:
         logger.info("Joining Census Tract dataframes")
 
@@ -255,6 +266,7 @@ class ScoreETL(ExtractTransformLoad):
             self.census_acs_median_incomes_df,
             self.census_decennial_df,
             self.census_2010_df,
+            self.child_opportunity_index_df
         ]
 
         # Sanity check each data frame before merging.
@@ -333,6 +345,10 @@ class ScoreETL(ExtractTransformLoad):
             field_names.CENSUS_POVERTY_LESS_THAN_100_FPL_FIELD_2010,
             field_names.CENSUS_DECENNIAL_TOTAL_POPULATION_FIELD_2009,
             field_names.CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009,
+            field_names.EXTREME_HEAT_FIELD,
+            field_names.HEALTHY_FOOD_FIELD,
+            field_names.IMPENETRABLE_SURFACES_FIELD,
+            field_names.READING_FIELD,
         ]
 
         non_numeric_columns = [
