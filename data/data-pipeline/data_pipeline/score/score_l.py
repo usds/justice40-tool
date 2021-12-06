@@ -179,6 +179,7 @@ class ScoreL(Score):
             field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD,
             field_names.EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_FIELD,
             field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD,
+            field_names.EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD,
         ]
 
         expected_population_loss_threshold = (
@@ -205,6 +206,20 @@ class ScoreL(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
+        extreme_heat_median_home_value_threshold = (
+            self.df[
+                field_names.EXTREME_HEAT_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        ) & (
+            self.df[
+                field_names.MEDIAN_HOUSE_VALUE_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            <= self.MEDIAN_HOUSE_VALUE_THRESHOLD
+        )
+
         self.df[field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD] = (
             expected_population_loss_threshold
             & self.df[field_names.FPL_200_SERIES]
@@ -217,6 +232,13 @@ class ScoreL(Score):
 
         self.df[field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD] = (
             expected_building_loss_threshold
+            & self.df[field_names.FPL_200_SERIES]
+        )
+
+        self.df[
+            field_names.EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD
+        ] = (
+            extreme_heat_median_home_value_threshold
             & self.df[field_names.FPL_200_SERIES]
         )
 

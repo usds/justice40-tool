@@ -236,6 +236,11 @@ LOW_READING_FIELD = "Low third grade reading proficiency"
 EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for expected population loss rate and is low income"
 EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for expected agriculture loss rate and is low income"
 EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for expected building loss rate and is low income"
+EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD = (
+    f"At or above the {PERCENTILE}th percentile for summer days above 90F and "
+    f"the median house value is less than {MEDIAN_HOUSE_VALUE_PERCENTILE}th "
+    f"percentile and is low income"
+)
 
 # Clean energy and efficiency
 PM25_EXPOSURE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for PM2.5 exposure and is low income"
@@ -273,6 +278,11 @@ HEART_DISEASE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for
 LOW_LIFE_EXPECTANCY_LOW_INCOME_FIELD = (
     f"At or above the {PERCENTILE}th percentile "
     f"for low life expectancy and is low income"
+)
+
+HEALTHY_FOOD_LOW_INCOME_FIELD = (
+    f"At or above the {PERCENTILE}th percentile for low "
+    f"access to healthy food and is low income"
 )
 
 # Workforce
@@ -316,6 +326,10 @@ RESPIRATORY_HAZARD_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentil
 HEALTHY_FOOD_LOW_INCOME_FIELD = (
     f"At or above the {PERCENTILE}th percentile for low "
     f"access to healthy food and is low income"
+)
+READING_LOW_HS_EDUCATION_FIELD = (
+    f"At or above the {PERCENTILE}th percentile for 3rd grade reading proficiency"
+    " and has low HS education"
 )
 
 THRESHOLD_COUNT = "Total threshold criteria exceeded"

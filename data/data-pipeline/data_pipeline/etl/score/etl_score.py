@@ -168,14 +168,10 @@ class ScoreETL(ExtractTransformLoad):
 
         # Load COI data
         child_opportunity_index_csv = (
-<<<<<<< HEAD
             constants.DATA_PATH
             / "dataset"
             / "child_opportunity_index"
             / "usa.csv"
-=======
-            constants.DATA_PATH / "dataset" / "child_opportunity_index" / "usa.csv"
->>>>>>> 050a5c30 (added fields to score_etl)
         )
         self.child_opportunity_index_df = pd.read_csv(
             child_opportunity_index_csv,
@@ -364,11 +360,7 @@ class ScoreETL(ExtractTransformLoad):
             self.census_acs_median_incomes_df,
             self.census_decennial_df,
             self.census_2010_df,
-<<<<<<< HEAD
             self.child_opportunity_index_df,
-=======
-            self.child_opportunity_index_df
->>>>>>> 050a5c30 (added fields to score_etl)
         ]
 
         # Sanity check each data frame before merging.
