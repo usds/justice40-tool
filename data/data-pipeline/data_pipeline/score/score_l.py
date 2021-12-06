@@ -121,6 +121,7 @@ class ScoreL(Score):
     def add_columns(self) -> pd.DataFrame:
         logger.info("Adding Score L")
 
+        self.df[field_names.THRESHOLD_COUNT] = 0
         self.df[field_names.FPL_200_SERIES] = self._create_low_income_threshold(
             self.df
         )
