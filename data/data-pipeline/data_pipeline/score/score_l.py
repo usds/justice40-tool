@@ -567,7 +567,7 @@ class ScoreL(Score):
             field_names.POVERTY_LOW_HS_EDUCATION_FIELD,
             field_names.LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD,
             field_names.MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD,
-            field_names.READING_LOW_HS_EDUCATION_FIELD,
+            field_names.LOW_READING_LOW_HS_EDUCATION_FIELD,
         ]
 
         high_scool_achievement_rate_threshold = (
@@ -609,9 +609,9 @@ class ScoreL(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-        reading_threshold = (
+        low_reading_threshold = (
             self.df[
-                field_names.READING_FIELD + field_names.PERCENTILE_FIELD_SUFFIX
+                field_names.LOW_READING_FIELD + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
@@ -633,8 +633,8 @@ class ScoreL(Score):
             unemployment_threshold & high_scool_achievement_rate_threshold
         )
 
-        self.df[field_names.READING_LOW_HS_EDUCATION_FIELD] = (
-            reading_threshold & high_scool_achievement_rate_threshold
+        self.df[field_names.LOW_READING_LOW_HS_EDUCATION_FIELD] = (
+            low_reading_threshold & high_scool_achievement_rate_threshold
         )
 
         workforce_combined_criteria_for_states = self.df[

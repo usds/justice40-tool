@@ -214,6 +214,7 @@ IMPENETRABLE_SURFACES_FIELD = "Percent impenetrable surface areas"
 # Percentage third graders scoring proficient on standardized reading tests,
 # converted to NAEP scale score points.
 READING_FIELD = "Third grade reading proficiency"
+LOW_READING_FIELD = "Low third grade reading proficiency"
 
 # Names for individual factors being exceeded
 # Climate Change
@@ -287,8 +288,8 @@ POVERTY_LOW_HS_EDUCATION_FIELD = (
     " and has low HS education"
 )
 
-READING_LOW_HS_EDUCATION_FIELD = (
-    f"At or above the {PERCENTILE}th percentile for 3rd grade reading proficiency"
+LOW_READING_LOW_HS_EDUCATION_FIELD = (
+    f"At or above the {PERCENTILE}th percentile for low 3rd grade reading proficiency"
     " and has low HS education"
 )
 

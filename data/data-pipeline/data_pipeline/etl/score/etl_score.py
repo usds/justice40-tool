@@ -1,4 +1,6 @@
 import functools
+from collections import namedtuple
+
 import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
@@ -351,7 +353,6 @@ class ScoreETL(ExtractTransformLoad):
             field_names.EXTREME_HEAT_FIELD,
             field_names.HEALTHY_FOOD_FIELD,
             field_names.IMPENETRABLE_SURFACES_FIELD,
-            field_names.READING_FIELD,
         ]
 
         non_numeric_columns = [
@@ -359,7 +360,32 @@ class ScoreETL(ExtractTransformLoad):
             field_names.PERSISTENT_POVERTY_FIELD,
         ]
 
-        columns_to_keep = non_numeric_columns + numeric_columns
+        # For some columns, high values are "good", so we want to reverse the percentile
+        # so that high values are "bad" and any scoring logic can still check if it's
+        # >= some threshold.
+        # TODO: Add more fields here.
+        #  https://github.com/usds/justice40-tool/issues/970
+        ReversePercentile = namedtuple(
+            typename="ReversePercentile",
+            field_names=["field_name", "low_field_name"],
+        )
+        reverse_percentiles = [
+            # This dictionary follows the format:
+            # <field name> : <field name for low values>
+            # for instance, 3rd grade reading level : Low 3rd grade reading level.
+            # This low field will not exist yet, it is only calculated for the
+            # percentile.
+            ReversePercentile(
+                field_name=field_names.READING_FIELD,
+                low_field_name=field_names.LOW_READING_FIELD,
+            )
+        ]
+
+        columns_to_keep = (
+            non_numeric_columns
+            + numeric_columns
+            + [rp.field_name for rp in reverse_percentiles]
+        )
 
         df_copy = df[columns_to_keep].copy()
 
@@ -393,6 +419,19 @@ class ScoreETL(ExtractTransformLoad):
             df_copy[f"{col}{field_names.MIN_MAX_FIELD_SUFFIX}"] = (
                 df_copy[col] - min_value
             ) / (max_value - min_value)
+
+        # Create reversed percentiles for these fields
+        for reverse_percentile in reverse_percentiles:
+            # Calculate reverse percentiles
+            # For instance, for 3rd grade reading level (score from 0-500),
+            # calculate reversed percentiles and give the result the name
+            # `Low 3rd grade reading level (percentile)`.
+            df_copy[
+                f"{reverse_percentile.low_field_name}"
+                f"{field_names.PERCENTILE_FIELD_SUFFIX}"
+            ] = df_copy[reverse_percentile.field_name].rank(
+                pct=True, ascending=False
+            )
 
         # Special logic: create a combined population field.
         # We sometimes run analytics on "population", and this makes a single field
