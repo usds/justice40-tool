@@ -268,9 +268,25 @@ class ScoreETL(ExtractTransformLoad):
         E.g., "PM2.5 exposure (percentile)".
         This will be for the entire country.
 
-        One percentile will be created and returned as
+        For an "apples-to-apples" comparison of urban tracts to other urban tracts,
+        and compare rural tracts to other rural tracts.
+
+        This percentile will be created and returned as
         f"{output_column_name_root}{field_names.PERCENTILE_URBAN_RURAL_FIELD_SUFFIX}".
         E.g., "PM2.5 exposure (percentile urban/rural)".
+        This field exists for every tract, but for urban tracts this value will be the
+        percentile compared to other urban tracts, and for rural tracts this value
+        will be the percentile compared to other rural tracts.
+
+        Specific methdology:
+            1. Decide a methodology for confirming whether a tract counts as urban or
+            rural. Currently in the codebase, we use Geocorr to identify the % rural of
+            a tract, and mark the tract as rural if the percentage is >50% and urban
+            otherwise. This may or may not be the right methodology.
+            2. Once tracts are marked as urban or rural, create one percentile rank
+            that only ranks urban tracts, and one percentile rank that only ranks rural
+            tracts.
+            3. Combine into a single field.
 
         `output_column_name_root` is different from `input_column_name` to enable the
         reverse percentile use case. In that use case, `input_column_name` may be
@@ -289,18 +305,11 @@ class ScoreETL(ExtractTransformLoad):
             ("urban", True),
             ("rural", False),
         ]:
-            # Name some field name suffixes.
-            this_category_value_suffix = (
-                f" (value {urban_or_rural_string} only)"
-            )
-            this_category_percentile_suffix = (
-                f" (percentile {urban_or_rural_string})"
-            )
-
             # Create a field with only those values
             this_category_only_value_field = (
-                f"{input_column_name}{this_category_value_suffix}"
+                f"{input_column_name} " f"(value {urban_or_rural_string} only)"
             )
+
             df[this_category_only_value_field] = np.where(
                 df[field_names.URBAN_HEURISTIC_FIELD] == urban_heuristic_bool,
                 df[input_column_name],
@@ -309,7 +318,8 @@ class ScoreETL(ExtractTransformLoad):
 
             # Calculate the urban only percentile
             this_category_only_percentile_field = (
-                f"{output_column_name_root}{this_category_percentile_suffix}"
+                f"{output_column_name_root} "
+                f"(percentile {urban_or_rural_string} only)"
             )
             df[this_category_only_percentile_field] = df[
                 this_category_only_value_field
