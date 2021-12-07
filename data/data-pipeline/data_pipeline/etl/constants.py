@@ -55,6 +55,11 @@ DATASET_LIST = [
         "class_name": "ChildOpportunityIndex",
     },
     {
+        "name": "hud_foreclosure_risk",
+        "module_dir": "hud_foreclosure_risk",
+        "class_name": "HUDForeclosureRisk",
+    },
+    {
         "name": "mapping_inequality",
         "module_dir": "mapping_inequality",
         "class_name": "MappingInequalityETL",
