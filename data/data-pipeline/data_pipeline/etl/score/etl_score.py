@@ -322,7 +322,7 @@ class ScoreETL(ExtractTransformLoad):
             field_names.FEMA_RISK_FIELD,
             field_names.URBAN_HEURISTIC_FIELD,
             field_names.AIR_TOXICS_CANCER_RISK_FIELD,
-            field_names.RESPITORY_HAZARD_FIELD,
+            field_names.RESPIRATORY_HAZARD_FIELD,
             field_names.DIESEL_FIELD,
             field_names.PM25_FIELD,
             field_names.OZONE_FIELD,

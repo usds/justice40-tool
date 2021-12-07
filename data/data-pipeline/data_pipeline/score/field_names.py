@@ -89,6 +89,7 @@ RMP_FIELD = "Proximity to Risk Management Plan (RMP) facilities"
 TSDF_FIELD = "Proximity to TSDF sites"
 NPL_FIELD = "Proximity to NPL sites"
 AIR_TOXICS_CANCER_RISK_FIELD = "Air toxics cancer risk"
+RESPIRATORY_HAZARD_FIELD = "Respiratory hazard index"
 
 # Housing
 HOUSING_BURDEN_FIELD = "Housing burden (percent)"
@@ -104,7 +105,6 @@ DIABETES_FIELD = "Diagnosed diabetes among adults aged >=18 years"
 ASTHMA_FIELD = "Current asthma among adults aged >=18 years"
 HEART_DISEASE_FIELD = "Coronary heart disease among adults aged >=18 years"
 LIFE_EXPECTANCY_FIELD = "Life expectancy (years)"
-RESPITORY_HAZARD_FIELD = "Respiratory hazard index"
 CANCER_FIELD = "Cancer (excluding skin cancer) among adults aged >=18 years"
 HEALTH_INSURANCE_FIELD = (
     "Current lack of health insurance among adults aged 18-64 years"
@@ -260,6 +260,8 @@ IMPENETRABLE_SURFACES_LOW_INCOME_FIELD = (
 RMP_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for proximity to RMP sites and is low income"
 SUPERFUND_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for proximity to superfund sites and is low income"
 HAZARDOUS_WASTE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for proximity to hazardous waste facilities and is low income"
+AIR_TOXICS_CANCER_RISK_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for air toxics cancer risk and is low income"
+RESPIRATORY_HAZARD_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for respiratory hazard index and is low income"
 
 # Critical Clean Water and Waste Infrastructure
 WASTEWATER_DISCHARGE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for wastewater discharge and is low income"

@@ -407,6 +407,8 @@ class ScoreL(Score):
             field_names.RMP_LOW_INCOME_FIELD,
             field_names.SUPERFUND_LOW_INCOME_FIELD,
             field_names.HAZARDOUS_WASTE_LOW_INCOME_FIELD,
+            field_names.AIR_TOXICS_CANCER_RISK_LOW_INCOME_FIELD,
+            field_names.RESPIRATORY_HAZARD_LOW_INCOME_FIELD,
         ]
 
         rmp_sites_threshold = (
@@ -426,6 +428,22 @@ class ScoreL(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
+        air_toxics_cancer_risk_threshold = (
+            self.df[
+                field_names.AIR_TOXICS_CANCER_RISK_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        )
+
+        respiratory_hazard_risk_threshold = (
+            self.df[
+                field_names.RESPIRATORY_HAZARD_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        )
+
         # individual series-by-series
         self.df[field_names.RMP_LOW_INCOME_FIELD] = (
             rmp_sites_threshold & self.df[field_names.FPL_200_SERIES]
@@ -435,6 +453,14 @@ class ScoreL(Score):
         )
         self.df[field_names.HAZARDOUS_WASTE_LOW_INCOME_FIELD] = (
             tsdf_sites_threshold & self.df[field_names.FPL_200_SERIES]
+        )
+        self.df[field_names.AIR_TOXICS_CANCER_RISK_LOW_INCOME_FIELD] = (
+            air_toxics_cancer_risk_threshold
+            & self.df[field_names.FPL_200_SERIES]
+        )
+        self.df[field_names.RESPIRATORY_HAZARD_LOW_INCOME_FIELD] = (
+            respiratory_hazard_risk_threshold
+            & self.df[field_names.FPL_200_SERIES]
         )
 
         self._increment_total_eligibility_exceeded(

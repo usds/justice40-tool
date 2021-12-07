@@ -8,6 +8,12 @@ logger = get_module_logger(__name__)
 
 
 class EJSCREENETL(ExtractTransformLoad):
+    """Load EJSCREEN data.
+
+    Data dictionary:
+        https://gaftp.epa.gov/EJSCREEN/2019/2019_EJSCREEN_columns_explained.csv
+    """
+
     def __init__(self):
         self.EJSCREEN_FTP_URL = "https://edap-arcgiscloud-data-commons.s3.amazonaws.com/EJSCREEN2020/EJSCREEN_Tract_2020_USPR.csv.zip"
         self.EJSCREEN_CSV = self.TMP_PATH / "EJSCREEN_Tract_2020_USPR.csv"
@@ -19,7 +25,7 @@ class EJSCREENETL(ExtractTransformLoad):
             field_names.TOTAL_POP_FIELD,
             # pylint: disable=duplicate-code
             field_names.AIR_TOXICS_CANCER_RISK_FIELD,
-            field_names.RESPITORY_HAZARD_FIELD,
+            field_names.RESPIRATORY_HAZARD_FIELD,
             field_names.DIESEL_FIELD,
             field_names.PM25_FIELD,
             field_names.OZONE_FIELD,
@@ -61,7 +67,7 @@ class EJSCREENETL(ExtractTransformLoad):
                 # but I think that's the direction we'd like to move all ETL classes. - LMB
                 "ACSTOTPOP": field_names.TOTAL_POP_FIELD,
                 "CANCER": field_names.AIR_TOXICS_CANCER_RISK_FIELD,
-                "RESP": field_names.RESPITORY_HAZARD_FIELD,
+                "RESP": field_names.RESPIRATORY_HAZARD_FIELD,
                 "DSLPM": field_names.DIESEL_FIELD,
                 "PM25": field_names.PM25_FIELD,
                 "OZONE": field_names.OZONE_FIELD,
