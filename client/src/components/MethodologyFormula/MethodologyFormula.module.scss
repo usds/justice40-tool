@@ -1,0 +1,11 @@
+@use '../../styles/design-system.scss' as *;
+
+.formulaContainer {
+    p:not(:first-child) {
+        font-style: italic;
+        
+        span {
+            @include u-text('bold');
+        }
+    }
+};

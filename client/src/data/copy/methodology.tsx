@@ -14,13 +14,63 @@ export const PAGE = defineMessages({
     description: 'methodology page header text',
   },
   DESCRIPTION: {
-    id: 'methodology.page.paragraph.first',
-    defaultMessage: 'The methodology for identifying communities of focus is currently ' +
-      'in a draft, pre-decisional form that may change over time as more datasets become available.',
-    description: 'methodology page paragraph 1',
+    id: 'methodology.page.paragraph',
+    defaultMessage: `
+      This tool identifies commmunities that are economically disadvantaged, overburdened by 
+      certain environmental risks, and marginalized by legacies of historic underinvestment.
+      A community qualifies as 'disadvantaged' when a census tract is at or above a certain
+      threshold for a climate or environmental burden indicator and also above a certain
+      threshold for a socioeconomic indicator. Census tract geographical boundaries are 
+      determined by the U.S. Census Bureau once every ten years. This tool untilizes the 
+      census tract boundaries from 2010.
+    `,
+    description: 'methodology page paragraph',
   },
+  FORMULA_INTRO: {
+    id: 'methodology.page.formula.intro',
+    defaultMessage: `
+      Under the current formula, a census tract will be considered disadvantaged:
+    `,
+    description: 'methodology page introducing the formula',
+  },
+  CATEGORY_TEXT: {
+    id: 'methodology.page.categories.title',
+    defaultMessage: `
+      Communities will be defined as disadvantaged if they meet the qualifications under any of the
+      following 8 categories of criteria:
+    `,
+    description: 'methodology page explanation of the categories',
+  },
+
 });
 
+
+export const FORMULA = {
+  IF: <FormattedMessage
+    id={'methodology.page.formula.first'}
+    defaultMessage={ `{if} it is above the threshold for one or more climate or environmental indicator`}
+    description={'the first part of the formula used in the methodology'}
+    values= {{
+      if: <span>IF</span>,
+    }}
+  />,
+  AND: <FormattedMessage
+    id={'methodology.page.formula.second'}
+    defaultMessage={ `{and} it is above the threshold for one or more socioeconomic indicator`}
+    description={'the second part of the formula used in the methodology'}
+    values= {{
+      and: <span>AND</span>,
+    }}
+  />,
+  THEN: <FormattedMessage
+    id={'methodology.page.formula.second'}
+    defaultMessage={ `{then} the community is considered disadvantaged.`}
+    description={'the second part of the formula used in the methodology'}
+    values= {{
+      then: <span>THEN</span>,
+    }}
+  />,
+};
 
 // Download Package
 export const DOWNLOAD_FILE_SIZE = '111MB';

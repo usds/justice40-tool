@@ -5,6 +5,7 @@ import {useIntl} from 'gatsby-plugin-intl';
 import DatasetContainer from '../components/DatasetContainer';
 import DownloadPacket from '../components/DownloadPacket';
 import J40MainGridContainer from '../components/J40MainGridContainer';
+import MethodologyFormula from '../components/MethodologyFormula';
 import Layout from '../components/layout';
 import ScoreStepsList from '../components/scoreStepsList';
 
@@ -25,15 +26,28 @@ const IndexPage = ({location}: MethodPageProps) => {
 
         <h1>{intl.formatMessage(METHODOLOGY_COPY.PAGE.HEADING)}</h1>
 
+        {/* First column */}
         <Grid row gap className={'j40-mb-5'}>
-          <Grid col={12} tablet={{col: 6}}>
+          <Grid col={12} tablet={{col: 8}}>
             <section>
               <p>
                 {intl.formatMessage(METHODOLOGY_COPY.PAGE.DESCRIPTION)}
               </p>
             </section>
+
+            {/* Formula section */}
+            <MethodologyFormula />
+
+            {/* Category description */}
+            <section>
+              <p>
+                {intl.formatMessage(METHODOLOGY_COPY.PAGE.CATEGORY_TEXT)}
+              </p>
+            </section>
           </Grid>
-          <Grid col={12} tablet={{col: 6}}>
+
+          {/* Second column */}
+          <Grid col={12} tablet={{col: 4}}>
             <DownloadPacket />
           </Grid>
         </Grid>
