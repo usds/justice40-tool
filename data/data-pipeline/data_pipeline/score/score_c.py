@@ -54,7 +54,7 @@ class ScoreC(Score):
             [
                 field_names.AIR_TOXICS_CANCER_RISK_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX,
-                field_names.RESPITORY_HAZARD_FIELD
+                field_names.RESPIRATORY_HAZARD_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX,
                 field_names.DIESEL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
                 field_names.PM25_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
