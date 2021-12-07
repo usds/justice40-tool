@@ -121,14 +121,15 @@ export const HOW_TO_GET_STARTED = defineMessages({
   },
   FEDERAL_PM_INFO: {
     id: 'federal.pm.info',
-    defaultMessage: 'Download the tool’s current list of communities.'+
-    ' Explore data that may be useful to your program, and provide'+
-    ' feedback on the tool.',
+    defaultMessage: `
+      Download the tool’s current list of communities, explore data that may be useful to your 
+      program, and provide feedback on the tool.
+    `,
     description: 'sub heading of page',
   },
   FEDERAL_PM_LINK_TEXT: {
     id: 'federal.pm.link',
-    defaultMessage: 'Go to methodology & data',
+    defaultMessage: 'Methodology & data',
     description: 'link text to go to methodology page',
   },
   COMMUNITY_MEMBERS_HEADING: {
@@ -138,8 +139,9 @@ export const HOW_TO_GET_STARTED = defineMessages({
   },
   COMMUNITY_MEMBERS_INFO: {
     id: 'community.members.info',
-    defaultMessage: 'Explore data about communities in your area, and'+
-    ' provide feedback on the tool.',
+    defaultMessage: `
+    Explore data about communities in your area and provide feedback on the tool.
+    `,
     description: 'sub heading of page',
   },
   COMMUNITY_MEMBERS_LINK_TEXT: {

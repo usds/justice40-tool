@@ -261,7 +261,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   data-cy="nav-link-methodology"
                   href="/en/methodology"
                 >
-                  Methodology and data
+                  Methodology & data
                 </a>
               </li>
               <li
@@ -478,7 +478,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     Federal program managers
                   </h3>
                   <p>
-                    Download the tool’s current list of communities. Explore data that may be useful to your program, and provide feedback on the tool.
+                    
+      Download the tool’s current list of communities, explore data that may be useful to your 
+      program, and provide feedback on the tool.
+    
                   </p>
                   <div
                     class="j40-aboutcard-sm-link"
@@ -486,7 +489,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <a
                       href="/en/methodology"
                     >
-                      Go to methodology & data
+                      Methodology & data
                     </a>
                   </div>
                 </div>
@@ -530,7 +533,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     Community members
                   </h3>
                   <p>
-                    Explore data about communities in your area, and provide feedback on the tool.
+                    
+    Explore data about communities in your area and provide feedback on the tool.
+    
                   </p>
                   <div
                     class="j40-aboutcard-sm-link"

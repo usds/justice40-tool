@@ -261,7 +261,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   data-cy="nav-link-methodology"
                   href="/en/methodology"
                 >
-                  Methodology and data
+                  Methodology & data
                 </a>
               </li>
               <li
@@ -343,7 +343,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <div>
                     The package includes draft v0.1 of the list of communities of focus (.csv and .xlsx) and information about how to use the list (.pdf). 
                     <span>
-                      Last updated: 12/13/21 
+                      Last updated: 12/15/21 
                     </span>
                   </div>
                   <div>

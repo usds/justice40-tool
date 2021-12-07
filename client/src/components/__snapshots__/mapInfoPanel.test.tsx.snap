@@ -24,9 +24,9 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
             
       A census tract is generally between 1,200 and 8,000 people, with an optimum size of 4,000 people. 
       Census tracts are small, relatively permanent subdivisions of a county defined by the 
-      U.S. Census Bureau and usually cover a contiguous area. Census tract geographical boundaries 
-      are determined by the U.S. Census Bureau once every ten years. This tool utilizes the census 
-      tract boundaries from 2010.
+      U.S. Census Bureau and usually cover a contiguous area. The census tract level represents the 
+      smallest geographical unity that can be presented in a statistically sound manner, given the 
+      datasets that are being used.
     
           </cite>
         </div>

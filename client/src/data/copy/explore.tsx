@@ -22,16 +22,16 @@ export const PAGE_INTRO = defineMessages({
 export const PAGE_DESCRIPTION = <FormattedMessage
   id={'exploreTool.page.description'}
   defaultMessage={`
-    Use the map to see disadvantaged communities of focus that have been historically 
-    marginalized, underserved, and overburdened by pollution. The map is based on 
+    Use the map to see disadvantaged communities that have been historically 
+    marginalized, underserved, and overburdened by pollution. The map uses 
     publicly-available, nationally-consistent, high-quality datasets. Learn more about 
     the methodology and datasets that were used to identify disavantaged communities 
     on the {methodologyLink} page.
     `}
   description={'page description'}
   values={{
-    methodologyLink: <Link to={'/methodology'}>Methodology & data</Link>,
-    methodologyLinkEs: <Link to={'/methodology'}>Metodología y datos</Link>,
+    methodologyLink: <Link to={'/methodology'}>methodology & data</Link>,
+    methodologyLinkEs: <Link to={'/methodology'}>metodología y datos</Link>,
   }}
 />;
 
@@ -128,9 +128,9 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
     defaultMessage: `
       A census tract is generally between 1,200 and 8,000 people, with an optimum size of 4,000 people. 
       Census tracts are small, relatively permanent subdivisions of a county defined by the 
-      U.S. Census Bureau and usually cover a contiguous area. Census tract geographical boundaries 
-      are determined by the U.S. Census Bureau once every ten years. This tool utilizes the census 
-      tract boundaries from 2010.
+      U.S. Census Bureau and usually cover a contiguous area. The census tract level represents the 
+      smallest geographical unity that can be presented in a statistically sound manner, given the 
+      datasets that are being used.
     `,
     description: 'cites the definition and helpful information about census groups',
   },
@@ -370,18 +370,22 @@ export const DOWNLOAD_DRAFT = {
   PARAGRAPH_1: <FormattedMessage
     id={'download.draft.ptag.1'}
     description={'Download the current list of communities and datasets used.'}
-    defaultMessage={`{downloadDraft} of communities of focus and datasets used. Last updated: {dateUpdated}.`}
+    defaultMessage={`
+    {downloadDraft} of communities of focus and datasets used (ZIP file will contain one .xlsx, 
+    one .csv, and one .pdf, with a size of {downloadFileSize}). Last updated: {dateUpdated}.
+    `}
     values={{
       downloadDraft:
         <a href={METHODOLOGY_COPY.DOWNLOAD_ZIP_URL}>
-          {`Download the current list v${METHODOLOGY_COPY.VERSION_NUMBER}`}
+          {`Download the current list`}
         </a>,
       downloadDraftEs:
       <a href={METHODOLOGY_COPY.DOWNLOAD_ZIP_URL}>
-        {`Descargue la lista preliminar v${METHODOLOGY_COPY.VERSION_NUMBER}`}
+        {`Descargue la lista preliminar`}
       </a>,
       dateUpdated: METHODOLOGY_COPY.DOWNLOAD_LAST_UPDATED,
       dateUpdatedEs: METHODOLOGY_COPY.DOWNLOAD_LAST_UPDATED_ES,
+      downloadFileSize: METHODOLOGY_COPY.DOWNLOAD_FILE_SIZE,
     }}
   />,
   PARAGRAPH_2: <FormattedMessage

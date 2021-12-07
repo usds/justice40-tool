@@ -261,7 +261,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   data-cy="nav-link-methodology"
                   href="/en/methodology"
                 >
-                  Methodology and data
+                  Methodology & data
                 </a>
               </li>
               <li
