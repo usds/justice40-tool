@@ -1,6 +1,12 @@
 # Suffixes
 PERCENTILE_FIELD_SUFFIX = " (percentile)"
 MIN_MAX_FIELD_SUFFIX = " (min-max normalized)"
+TOP_25_PERCENTILE_SUFFIX = " (top 25th percentile)"
+
+# Geographic field names
+GEOID_TRACT_FIELD = "GEOID10_TRACT"
+STATE_FIELD = "State Name"
+COUNTY_FIELD = "County Name"
 
 # Score file field names
 SCORE_A = "Score A"
@@ -21,6 +27,7 @@ SCORE_I = "Score I"
 SCORE_I_COMMUNITIES = "Score I (communities)"
 SCORE_K = "NMTC (communities)"
 SCORE_K_COMMUNITIES = "Score K (communities)"
+SCORE_L = "Definition L"
 SCORE_L_COMMUNITIES = "Definition L (communities)"
 L_CLIMATE = "Climate Factor (Definition L)"
 L_ENERGY = "Energy Factor (Definition L)"
@@ -45,7 +52,6 @@ POVERTY_LESS_THAN_150_FPL_FIELD = (
 POVERTY_LESS_THAN_100_FPL_FIELD = (
     "Percent of individuals < 100% Federal Poverty Line"
 )
-MEDIAN_INCOME_PERCENT_AMI_FIELD = "Median household income (% of AMI)"
 STATE_MEDIAN_INCOME_FIELD = (
     "Median household income (State; 2019 inflation-adjusted dollars)"
 )
@@ -56,6 +62,8 @@ MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD = (
 MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD = "Median household income (% of AMI)"
 PERSISTENT_POVERTY_FIELD = "Persistent Poverty Census Tract"
 AMI_FIELD = "Area Median Income (State or metropolitan)"
+
+COLLEGE_ATTENDANCE_FIELD = "Percent enrollment in college or graduate school"
 
 # Climate
 FEMA_RISK_FIELD = "FEMA Risk Index Expected Annual Loss Score"
@@ -81,6 +89,7 @@ RMP_FIELD = "Proximity to Risk Management Plan (RMP) facilities"
 TSDF_FIELD = "Proximity to TSDF sites"
 NPL_FIELD = "Proximity to NPL sites"
 AIR_TOXICS_CANCER_RISK_FIELD = "Air toxics cancer risk"
+RESPIRATORY_HAZARD_FIELD = "Respiratory hazard index"
 
 # Housing
 HOUSING_BURDEN_FIELD = "Housing burden (percent)"
@@ -96,7 +105,6 @@ DIABETES_FIELD = "Diagnosed diabetes among adults aged >=18 years"
 ASTHMA_FIELD = "Current asthma among adults aged >=18 years"
 HEART_DISEASE_FIELD = "Coronary heart disease among adults aged >=18 years"
 LIFE_EXPECTANCY_FIELD = "Life expectancy (years)"
-RESPITORY_HAZARD_FIELD = "Respiratory hazard index"
 CANCER_FIELD = "Cancer (excluding skin cancer) among adults aged >=18 years"
 HEALTH_INSURANCE_FIELD = (
     "Current lack of health insurance among adults aged 18-64 years"
@@ -200,30 +208,65 @@ HOLC_GRADE_D_TRACT_50_PERCENT_FIELD: str = "Tract is >50% HOLC Grade D"
 HOLC_GRADE_D_TRACT_75_PERCENT_FIELD: str = "Tract is >75% HOLC Grade D"
 
 
+# Child Opportunity Index data
+# Summer days with maximum temperature above 90F.
+EXTREME_HEAT_FIELD = "Summer days above 90F"
+
+# Percentage households without a car located further than a half-mile from the
+# nearest supermarket.
+HEALTHY_FOOD_FIELD = "Percent low access to healthy food"
+
+# Percentage impenetrable surface areas such as rooftops, roads or parking lots.
+IMPENETRABLE_SURFACES_FIELD = "Percent impenetrable surface areas"
+
+# Percentage third graders scoring proficient on standardized reading tests,
+# converted to NAEP scale score points.
+READING_FIELD = "Third grade reading proficiency"
+LOW_READING_FIELD = "Low third grade reading proficiency"
+
+# Names for individual factors being exceeded
 # Climate Change
 EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for expected population loss rate and is low income"
 EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for expected agriculture loss rate and is low income"
 EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for expected building loss rate and is low income"
+EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD = (
+    f"At or above the {PERCENTILE}th percentile for summer days above 90F and "
+    f"the median house value is less than {MEDIAN_HOUSE_VALUE_PERCENTILE}th "
+    f"percentile and is low income"
+)
 
 # Clean energy and efficiency
 PM25_EXPOSURE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for PM2.5 exposure and is low income"
 ENERGY_BURDEN_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for energy burden and is low income"
+
 # Clean transportation
 DIESEL_PARTICULATE_MATTER_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for diesel particulate matter and is low income"
 TRAFFIC_PROXIMITY_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for traffic proximity and is low income"
+
 # Affordable and Sustainable Housing
-LEAD_PAINT_MEDIAN_HOME_VALUE_LOW_INCOME_FIELD = (
+LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD = (
     f"At or above the {PERCENTILE}th percentile for lead paint and"
-    " the median house value is less than {MEDIAN_HOUSE_VALUE_PERCENTILE}th percentile and is low income"
+    f" the median house value is less than {MEDIAN_HOUSE_VALUE_PERCENTILE}th "
+    f"percentile and is low income"
 )
 HOUSING_BURDEN_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for housing burden and is low income"
+
+IMPENETRABLE_SURFACES_LOW_INCOME_FIELD = (
+    f"At or above the {PERCENTILE}th percentile for impenetrable surfaces and is low "
+    f"income"
+)
+
 # Remediation and Reduction of Legacy Pollution
 RMP_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for proximity to RMP sites and is low income"
 SUPERFUND_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for proximity to superfund sites and is low income"
 HAZARDOUS_WASTE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for proximity to hazardous waste facilities and is low income"
+AIR_TOXICS_CANCER_RISK_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for air toxics cancer risk and is low income"
+RESPIRATORY_HAZARD_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for respiratory hazard index and is low income"
+
 # Critical Clean Water and Waste Infrastructure
 WASTEWATER_DISCHARGE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for wastewater discharge and is low income"
-# Health Burden
+
+# Health Burdens
 DIABETES_LOW_INCOME_FIELD = (
     f"At or above the {PERCENTILE}th percentile for diabetes and is low income"
 )
@@ -234,25 +277,35 @@ HEART_DISEASE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for
 
 LIFE_EXPECTANCY_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for life expectancy and is low income"
 
+HEALTHY_FOOD_LOW_INCOME_FIELD = (
+    f"At or above the {PERCENTILE}th percentile for low "
+    f"access to healthy food and is low income"
+)
+
 # Workforce
 UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD = (
     f"At or above the {PERCENTILE}th percentile for unemployment"
-    " and low HS education"
+    " and has low HS education"
 )
 
 LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD = (
     f"At or above the {PERCENTILE}th percentile for households in linguistic isolation"
-    " and low HS education"
+    " and has low HS education"
 )
 
 POVERTY_LOW_HS_EDUCATION_FIELD = (
     f"At or above the {PERCENTILE}th percentile for households at or below 100% federal poverty level"
-    " and low HS education"
+    " and has low HS education"
+)
+
+LOW_READING_LOW_HS_EDUCATION_FIELD = (
+    f"At or above the {PERCENTILE}th percentile for low 3rd grade reading proficiency"
+    " and has low HS education"
 )
 
 MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD = (
     f"At or below the {PERCENTILE}th percentile for median income"
-    "  and low HS education"
+    "  and has low HS education"
 )
 
 THRESHOLD_COUNT = "Total threshold criteria exceeded"
