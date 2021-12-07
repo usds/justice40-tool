@@ -177,8 +177,6 @@ class ScoreL(Score):
             field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD,
             field_names.EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_FIELD,
             field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD,
-            field_names.EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD,
-            field_names.IMPENETRABLE_SURFACES_LOW_INCOME_FIELD,
         ]
 
         expected_population_loss_threshold = (
@@ -205,28 +203,6 @@ class ScoreL(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-        extreme_heat_median_home_value_threshold = (
-            self.df[
-                field_names.EXTREME_HEAT_FIELD
-                + field_names.PERCENTILE_FIELD_SUFFIX
-            ]
-            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
-        ) & (
-            self.df[
-                field_names.MEDIAN_HOUSE_VALUE_FIELD
-                + field_names.PERCENTILE_FIELD_SUFFIX
-            ]
-            <= self.MEDIAN_HOUSE_VALUE_THRESHOLD
-        )
-
-        impenetrable_surfaces_threshold = (
-            self.df[
-                field_names.IMPENETRABLE_SURFACES_FIELD
-                + field_names.PERCENTILE_FIELD_SUFFIX
-            ]
-            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
-        )
-
         self.df[field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD] = (
             expected_population_loss_threshold
             & self.df[field_names.FPL_200_SERIES]
@@ -239,18 +215,6 @@ class ScoreL(Score):
 
         self.df[field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD] = (
             expected_building_loss_threshold
-            & self.df[field_names.FPL_200_SERIES]
-        )
-
-        self.df[
-            field_names.EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD
-        ] = (
-            extreme_heat_median_home_value_threshold
-            & self.df[field_names.FPL_200_SERIES]
-        )
-
-        self.df[field_names.IMPENETRABLE_SURFACES_LOW_INCOME_FIELD] = (
-            impenetrable_surfaces_threshold
             & self.df[field_names.FPL_200_SERIES]
         )
 
@@ -407,8 +371,6 @@ class ScoreL(Score):
             field_names.RMP_LOW_INCOME_FIELD,
             field_names.SUPERFUND_LOW_INCOME_FIELD,
             field_names.HAZARDOUS_WASTE_LOW_INCOME_FIELD,
-            field_names.AIR_TOXICS_CANCER_RISK_LOW_INCOME_FIELD,
-            field_names.RESPIRATORY_HAZARD_LOW_INCOME_FIELD,
         ]
 
         rmp_sites_threshold = (
@@ -428,22 +390,6 @@ class ScoreL(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-        air_toxics_cancer_risk_threshold = (
-            self.df[
-                field_names.AIR_TOXICS_CANCER_RISK_FIELD
-                + field_names.PERCENTILE_FIELD_SUFFIX
-            ]
-            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
-        )
-
-        respiratory_hazard_risk_threshold = (
-            self.df[
-                field_names.RESPIRATORY_HAZARD_FIELD
-                + field_names.PERCENTILE_FIELD_SUFFIX
-            ]
-            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
-        )
-
         # individual series-by-series
         self.df[field_names.RMP_LOW_INCOME_FIELD] = (
             rmp_sites_threshold & self.df[field_names.FPL_200_SERIES]
@@ -453,14 +399,6 @@ class ScoreL(Score):
         )
         self.df[field_names.HAZARDOUS_WASTE_LOW_INCOME_FIELD] = (
             tsdf_sites_threshold & self.df[field_names.FPL_200_SERIES]
-        )
-        self.df[field_names.AIR_TOXICS_CANCER_RISK_LOW_INCOME_FIELD] = (
-            air_toxics_cancer_risk_threshold
-            & self.df[field_names.FPL_200_SERIES]
-        )
-        self.df[field_names.RESPIRATORY_HAZARD_LOW_INCOME_FIELD] = (
-            respiratory_hazard_risk_threshold
-            & self.df[field_names.FPL_200_SERIES]
         )
 
         self._increment_total_eligibility_exceeded(
@@ -593,7 +531,6 @@ class ScoreL(Score):
             field_names.POVERTY_LOW_HS_EDUCATION_FIELD,
             field_names.LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD,
             field_names.MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD,
-            field_names.LOW_READING_LOW_HS_EDUCATION_FIELD,
         ]
 
         high_scool_achievement_rate_threshold = (
