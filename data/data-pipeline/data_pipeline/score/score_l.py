@@ -177,6 +177,8 @@ class ScoreL(Score):
             field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD,
             field_names.EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_FIELD,
             field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD,
+            field_names.EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD,
+            field_names.IMPENETRABLE_SURFACES_LOW_INCOME_FIELD,
         ]
 
         expected_population_loss_threshold = (
@@ -203,6 +205,28 @@ class ScoreL(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
+        extreme_heat_median_home_value_threshold = (
+            self.df[
+                field_names.EXTREME_HEAT_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        ) & (
+            self.df[
+                field_names.MEDIAN_HOUSE_VALUE_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            <= self.MEDIAN_HOUSE_VALUE_THRESHOLD
+        )
+
+        impenetrable_surfaces_threshold = (
+            self.df[
+                field_names.IMPENETRABLE_SURFACES_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        )
+
         self.df[field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD] = (
             expected_population_loss_threshold
             & self.df[field_names.FPL_200_SERIES]
@@ -215,6 +239,18 @@ class ScoreL(Score):
 
         self.df[field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD] = (
             expected_building_loss_threshold
+            & self.df[field_names.FPL_200_SERIES]
+        )
+
+        self.df[
+            field_names.EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD
+        ] = (
+            extreme_heat_median_home_value_threshold
+            & self.df[field_names.FPL_200_SERIES]
+        )
+
+        self.df[field_names.IMPENETRABLE_SURFACES_LOW_INCOME_FIELD] = (
+            impenetrable_surfaces_threshold
             & self.df[field_names.FPL_200_SERIES]
         )
 
@@ -320,11 +356,11 @@ class ScoreL(Score):
         # poverty level. Source: Census's American Community Survey]
 
         housing_eligibility_columns = [
-            field_names.LEAD_PAINT_MEDIAN_HOME_VALUE_LOW_INCOME_FIELD,
+            field_names.LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD,
             field_names.HOUSING_BURDEN_LOW_INCOME_FIELD,
         ]
 
-        lead_paint_median_house_hold_threshold = (
+        lead_paint_median_home_value_threshold = (
             self.df[
                 field_names.LEAD_PAINT_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
@@ -347,8 +383,8 @@ class ScoreL(Score):
         )
 
         # series by series indicators
-        self.df[field_names.LEAD_PAINT_MEDIAN_HOME_VALUE_LOW_INCOME_FIELD] = (
-            lead_paint_median_house_hold_threshold
+        self.df[field_names.LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD] = (
+            lead_paint_median_home_value_threshold
             & self.df[field_names.FPL_200_SERIES]
         )
 
@@ -449,6 +485,7 @@ class ScoreL(Score):
             field_names.DIABETES_LOW_INCOME_FIELD,
             field_names.ASTHMA_LOW_INCOME_FIELD,
             field_names.HEART_DISEASE_LOW_INCOME_FIELD,
+            field_names.HEALTHY_FOOD_LOW_INCOME_FIELD,
             field_names.LIFE_EXPECTANCY_LOW_INCOME_FIELD,
         ]
 
@@ -469,6 +506,14 @@ class ScoreL(Score):
         heart_disease_threshold = (
             self.df[
                 field_names.HEART_DISEASE_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        )
+
+        healthy_food_threshold = (
+            self.df[
+                field_names.HEALTHY_FOOD_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
@@ -496,6 +541,9 @@ class ScoreL(Score):
         self.df[field_names.LIFE_EXPECTANCY_LOW_INCOME_FIELD] = (
             life_expectancy_threshold & self.df[field_names.FPL_200_SERIES]
         )
+        self.df[field_names.HEALTHY_FOOD_LOW_INCOME_FIELD] = (
+            healthy_food_threshold & self.df[field_names.FPL_200_SERIES]
+        )
 
         self._increment_total_eligibility_exceeded(health_eligibility_columns)
 
@@ -512,6 +560,15 @@ class ScoreL(Score):
         # AND
         # Where the high school degree achievement rates for adults 25 years and older is less than 95%
         # (necessary to screen out university block groups)
+
+        # Workforce criteria for states fields.
+        workforce_eligibility_columns = [
+            field_names.UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD,
+            field_names.POVERTY_LOW_HS_EDUCATION_FIELD,
+            field_names.LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD,
+            field_names.MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD,
+            field_names.LOW_READING_LOW_HS_EDUCATION_FIELD,
+        ]
 
         high_scool_achievement_rate_threshold = (
             self.df[field_names.HIGH_SCHOOL_ED_FIELD]
@@ -552,6 +609,14 @@ class ScoreL(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
+        low_reading_threshold = (
+            self.df[
+                field_names.LOW_READING_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        )
+
         self.df[field_names.LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD] = (
             linguistic_isolation_threshold
             & high_scool_achievement_rate_threshold
@@ -569,15 +634,9 @@ class ScoreL(Score):
             unemployment_threshold & high_scool_achievement_rate_threshold
         )
 
-        # Workforce criteria for states fields that create indicator columns
-        # for each tract in order to indicate whether they met any of the four
-        # criteria. We will used this create individual indicator columns.
-        workforce_eligibility_columns = [
-            field_names.UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD,
-            field_names.POVERTY_LOW_HS_EDUCATION_FIELD,
-            field_names.LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD,
-            field_names.MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD,
-        ]
+        self.df[field_names.LOW_READING_LOW_HS_EDUCATION_FIELD] = (
+            low_reading_threshold & high_scool_achievement_rate_threshold
+        )
 
         workforce_combined_criteria_for_states = self.df[
             workforce_eligibility_columns
