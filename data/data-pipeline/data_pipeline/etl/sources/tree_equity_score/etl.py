@@ -1,4 +1,3 @@
-import csv
 import geopandas as gpd
 import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad
@@ -88,17 +87,4 @@ class TreeEquityScoreETL(ExtractTransformLoad):
         logger.info("Saving Tree Equity Score GeoJSON")
         # write nationwide csv
         self.CSV_PATH.mkdir(parents=True, exist_ok=True)
-        self.df.to_file(self.CSV_PATH / "tes_conus.geojson", driver="GeoJSON")
-        # Separately, preparing to convert to CSV for analytics purposes
-        list_of_features = self.df["features"]
-        tract_information_list = [
-            tract_features["properties"] for tract_features in list_of_features
-        ]
-
-        header = tract_information_list[0].keys()
-        with open(
-            self.CSV_PATH / "tes_conus.csv", "w", encoding="utf-8"
-        ) as output_file:
-            dict_writer = csv.DictWriter(output_file, header)
-            dict_writer.writeheader()
-            dict_writer.writerows(tract_information_list)
+        self.df.to_csv(self.CSV_PATH / "tes_conus.csv", index=False)
