@@ -1,5 +1,6 @@
 # Suffixes
 PERCENTILE_FIELD_SUFFIX = " (percentile)"
+PERCENTILE_URBAN_RURAL_FIELD_SUFFIX = " (percentile urban/rural)"
 MIN_MAX_FIELD_SUFFIX = " (min-max normalized)"
 TOP_25_PERCENTILE_SUFFIX = " (top 25th percentile)"
 
