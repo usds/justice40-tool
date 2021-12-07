@@ -307,23 +307,26 @@ class ScoreETL(ExtractTransformLoad):
         ]:
             # Create a field with only those values
             this_category_only_value_field = (
-                f"{input_column_name} " f"(value {urban_or_rural_string} only)"
+                f"{input_column_name} (value {urban_or_rural_string} only)"
             )
-
             df[this_category_only_value_field] = np.where(
                 df[field_names.URBAN_HEURISTIC_FIELD] == urban_heuristic_bool,
                 df[input_column_name],
                 None,
             )
 
-            # Calculate the urban only percentile
+            # Calculate the percentile for only this category
             this_category_only_percentile_field = (
                 f"{output_column_name_root} "
                 f"(percentile {urban_or_rural_string} only)"
             )
             df[this_category_only_percentile_field] = df[
                 this_category_only_value_field
-            ].rank(pct=True, ascending=ascending)
+            ].rank(
+                pct=True,
+                # Set ascending to the parameter value.
+                ascending=ascending,
+            )
 
             # Add the field name to this list. Later, we'll combine this list.
             urban_rural_percentile_fields_to_combine.append(
@@ -483,6 +486,7 @@ class ScoreETL(ExtractTransformLoad):
             df_copy = self._add_percentiles_to_df(
                 df=df_copy,
                 input_column_name=numeric_column,
+                # For this use case, the input name and output name root are the same.
                 output_column_name_root=numeric_column,
                 ascending=True,
             )
