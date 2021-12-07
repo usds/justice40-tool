@@ -38,14 +38,16 @@ export const PAGE_DESCRIPTION = <FormattedMessage
 export const LEGEND = defineMessages({
   PRIORITY_LABEL: {
     id: 'legend.info.priority.label',
-    defaultMessage: 'Draft community',
+    defaultMessage: 'Disadvantaged community',
     description: 'the label of the prioritized community legend',
   },
   PRIORITY_DESCRIPT: {
     id: 'legend.info.threshold.label',
     defaultMessage: `
     Communities identified for the purposes of Justice40 as disadvantaged have been 
-    historically marginalized, underserved, and overburdened by pollution.
+    historically marginalized, underserved, and overburdened by pollution. These communities 
+    meet or exceed the criteria in one or more areas of focus. 
+
     `,
     description: 'the label of the threshold community legend',
   },
@@ -371,7 +373,7 @@ export const DOWNLOAD_DRAFT = {
     id={'download.draft.ptag.1'}
     description={'Download the current list of communities and datasets used.'}
     defaultMessage={`
-    {downloadDraft} of communities of focus and datasets used (ZIP file will contain one .xlsx, 
+    {downloadDraft} of communities and datasets used (ZIP file will contain one .xlsx, 
     one .csv, and one .pdf, with a size of {downloadFileSize}). Last updated: {dateUpdated}.
     `}
     values={{
@@ -422,7 +424,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
   LIST_ITEM_2: <FormattedMessage
     id={'youCanHelpInfoText.list.item.2'}
     description={'share your feedback'}
-    defaultMessage={`Find your community of interest and {shareFeedback}.`}
+    defaultMessage={`Find communities of interest and {shareFeedback}.`}
     values={{
       shareFeedback:
         <a href={`mailto:${CONTACT_COPY.FEEDBACK_EMAIL}`}>

@@ -8,14 +8,16 @@ exports[`rendering of the MapLegend checks if snapshots have changed 1`] = `
       <div
         class="j40-h4"
       >
-        Draft community
+        Disadvantaged community
       </div>
       <p
         class="secondary"
       >
         
     Communities identified for the purposes of Justice40 as disadvantaged have been 
-    historically marginalized, underserved, and overburdened by pollution.
+    historically marginalized, underserved, and overburdened by pollution. These communities 
+    meet or exceed the criteria in one or more areas of focus. 
+
     
       </p>
     </div>
