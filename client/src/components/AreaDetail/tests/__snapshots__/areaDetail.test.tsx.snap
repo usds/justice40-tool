@@ -19,7 +19,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           County:
         </span>
         <span>
-           undefined
+           N/A
         </span>
       </li>
       <li>
@@ -27,7 +27,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           State: 
         </span>
         <span>
-           undefined
+           N/A
         </span>
       </li>
       <li>
@@ -134,11 +134,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           Asthma
         </h4>
         <div>
-          NaN
+          N/A
           <sup>
-            <span>
-              th
-            </span>
+            <span />
           </sup>
         </div>
       </div>
@@ -156,11 +154,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           Diabetes
         </h4>
         <div>
-          NaN
+          N/A
           <sup>
-            <span>
-              th
-            </span>
+            <span />
           </sup>
         </div>
       </div>
@@ -178,11 +174,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           Diesel particulate matter
         </h4>
         <div>
-          NaN
+          N/A
           <sup>
-            <span>
-              th
-            </span>
+            <span />
           </sup>
         </div>
       </div>
@@ -200,11 +194,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           Energy burden
         </h4>
         <div>
-          NaN
+          N/A
           <sup>
-            <span>
-              th
-            </span>
+            <span />
           </sup>
         </div>
       </div>
@@ -222,11 +214,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           FEMA Risk Index
         </h4>
         <div>
-          NaN
+          N/A
           <sup>
-            <span>
-              th
-            </span>
+            <span />
           </sup>
         </div>
       </div>
@@ -244,11 +234,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           Heart disease
         </h4>
         <div>
-          NaN
+          N/A
           <sup>
-            <span>
-              th
-            </span>
+            <span />
           </sup>
         </div>
       </div>
@@ -288,11 +276,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           Lead paint
         </h4>
         <div>
-          NaN
+          N/A
           <sup>
-            <span>
-              th
-            </span>
+            <span />
           </sup>
         </div>
       </div>
@@ -310,11 +296,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           Life expectancy
         </h4>
         <div>
-          NaN
+          N/A
           <sup>
-            <span>
-              th
-            </span>
+            <span />
           </sup>
         </div>
       </div>
@@ -332,11 +316,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           PM2.5
         </h4>
         <div>
-          NaN
+          N/A
           <sup>
-            <span>
-              th
-            </span>
+            <span />
           </sup>
         </div>
       </div>
@@ -354,11 +336,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           Traffic proximity and volume
         </h4>
         <div>
-          NaN
+          N/A
           <sup>
-            <span>
-              th
-            </span>
+            <span />
           </sup>
         </div>
       </div>
@@ -376,11 +356,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           Wastewater discharge
         </h4>
         <div>
-          NaN
+          N/A
           <sup>
-            <span>
-              th
-            </span>
+            <span />
           </sup>
         </div>
       </div>
