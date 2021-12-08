@@ -624,18 +624,24 @@ class ScoreL(Score):
             threshold_cutoff_for_island_areas=self.ENVIRONMENTAL_BURDEN_THRESHOLD,
         )
 
-        workforce_combined_criteria_for_island_areas = (
-            self.df[unemployment_island_areas_criteria_field_name]
-            | self.df[poverty_island_areas_criteria_field_name]
-            # Also check whether low area median income is 90th percentile or higher
-            # within the islands.
-            | (
+        # Also check whether low area median income is 90th percentile or higher
+        # within the islands.
+        low_median_income_as_a_percent_of_ami_island_areas_criteria_field_name = (
+            f"{field_names.LOW_CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009} exceeds "
+            f"{field_names.PERCENTILE}th percentile"
+        )
+        self.df[low_median_income_as_a_percent_of_ami_island_areas_criteria_field_name] = (
                 self.df[
                     field_names.LOW_CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009
                     + field_names.PERCENTILE_FIELD_SUFFIX
                 ]
                 >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
             )
+
+        workforce_combined_criteria_for_island_areas = (
+            self.df[unemployment_island_areas_criteria_field_name]
+            | self.df[poverty_island_areas_criteria_field_name]
+            | self.df[low_median_income_as_a_percent_of_ami_island_areas_criteria_field_name]
         ) & (
             self.df[field_names.CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009]
             >= self.LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD
