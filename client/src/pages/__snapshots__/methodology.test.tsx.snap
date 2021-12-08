@@ -439,6 +439,24 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       class="grid-container-desktop-lg"
       data-testid="gridContainer"
     >
+      <div
+        class="grid-row"
+        data-testid="grid"
+      >
+        <div
+          class="grid-col-12"
+          data-testid="grid"
+        >
+          <h2>
+            Categories
+          </h2>
+        </div>
+      </div>
+    </div>
+    <div
+      class="grid-container-desktop-lg"
+      data-testid="gridContainer"
+    >
       <div>
         <h3>
           Climate Change

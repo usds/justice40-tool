@@ -138,6 +138,15 @@ export const LOW_INCOME = defineMessages({
   },
 });
 
+export const CATEGORY= {
+  HEADING: <FormattedMessage
+    id={'indicator.categories.heading'}
+    defaultMessage={'Categories'}
+    description= {'category heading'}
+  />,
+};
+
+
 // Indicator Categories
 export const CATEGORIES = {
   CLIMATE_CHANGE: {
@@ -729,123 +738,124 @@ export const INDICATORS = [
 
 
 // Methodology Steps:
-export const METHODOLOGY_STEPS = defineMessages({
-  HEADING: {
-    id: 'methodology.steps.heading',
-    defaultMessage: `Methodology`,
-    description: 'heading of methodology section',
-  },
-  DESCRIPTION_1: {
-    id: 'methodology.steps.description.1',
-    defaultMessage: 'The methodology for identifying communities of focus is'+
-     ' calculated at the census block group level. Census block geographical boundaries'+
-     ' are determined by the U.S. Census Bureau once every ten years. This tool utilizes'+
-     ' the census block boundaries from 2010.',
-    description: 'first description text ',
-  },
-  DESCRIPTION_2: {
-    id: 'methodology.steps.description.2',
-    defaultMessage: 'The following describes the process for identifying communities of focus.',
-    description: 'second description text',
-  },
-  STEP_1_HEADING: {
-    id: 'methodology.step.1.heading',
-    defaultMessage: `Gather datasets`,
-    description: 'first step heading',
-  },
-  STEP_1_INFO: {
-    id: 'methodology.step.1.info',
-    defaultMessage: `The methodology includes the following inputs that are equally weighted.`,
-    description: 'first step info',
-  },
-  STEP_1_A_HEADING: {
-    id: 'methodology.step.1.a.heading',
-    defaultMessage: `Percent of Area Median Income`,
-    description: 'step 1 a heading',
-  },
-  STEP_1_A_INFO_1: {
-    id: 'methodology.step.1.a.info.1',
-    defaultMessage: 'If a census block group is in a metropolitan area, this value is the'+
-    ' median income of the census block group calculated as a percent of'+
-    ' the metropolitan area’s median income.',
-    description: 'step 1 a info 1',
-  },
-  STEP_1_A_INFO_2: {
-    id: 'methodology.step.1.a.info.2',
-    defaultMessage: 'If a census block group is not in a metropolitan area, this value is the'+
-    ' median income of the census block group calculated as a percent of the state’s median'+
-    ' income.',
-    description: 'step 1 a info 2',
-  },
-  STEP_1_B_HEADING: {
-    id: 'methodology.step.1.b.heading',
-    defaultMessage: `Percent of households below or at 100% of the federal poverty line`,
-    description: 'step 1 b heading',
-  },
-  STEP_1_C_HEADING: {
-    id: 'methodology.step.1.c.heading',
-    defaultMessage: `The high school degree achievement rate for adults 25 years and older`,
-    description: 'step 1 a heading',
-  },
-  STEP_1_C_INFO: {
-    id: 'methodology.step.1.c.info',
-    defaultMessage: 'The percent of individuals who are 25 or older who have received a high school degree.',
-    description: 'step 1 c info',
-  },
-  STEP_2_HEADING: {
-    id: 'methodology.step.2.heading',
-    defaultMessage: `Determine communites of focus`,
-    description: 'second step heading',
-  },
-  STEP_2_INFO: {
-    id: 'methodology.step.2.info',
-    defaultMessage: `Under the existing formula, a census block group will be considered a community of focus if:`,
-    description: 'second step info',
-  },
-});
+// export const METHODOLOGY_STEPS = defineMessages({
+//   HEADING: {
+//     id: 'methodology.steps.heading',
+//     defaultMessage: `Methodology`,
+//     description: 'heading of methodology section',
+//   },
+//   DESCRIPTION_1: {
+//     id: 'methodology.steps.description.1',
+//     defaultMessage: 'The methodology for identifying communities of focus is'+
+//      ' calculated at the census block group level. Census block geographical boundaries'+
+//      ' are determined by the U.S. Census Bureau once every ten years. This tool utilizes'+
+//      ' the census block boundaries from 2010.',
+//     description: 'first description text ',
+//   },
+//   DESCRIPTION_2: {
+//     id: 'methodology.steps.description.2',
+//     defaultMessage: 'The following describes the process for identifying communities of focus.',
+//     description: 'second description text',
+//   },
+//   STEP_1_HEADING: {
+//     id: 'methodology.step.1.heading',
+//     defaultMessage: `Gather datasets`,
+//     description: 'first step heading',
+//   },
+//   STEP_1_INFO: {
+//     id: 'methodology.step.1.info',
+//     defaultMessage: `The methodology includes the following inputs that are equally weighted.`,
+//     description: 'first step info',
+//   },
+//   STEP_1_A_HEADING: {
+//     id: 'methodology.step.1.a.heading',
+//     defaultMessage: `Percent of Area Median Income`,
+//     description: 'step 1 a heading',
+//   },
+//   STEP_1_A_INFO_1: {
+//     id: 'methodology.step.1.a.info.1',
+//     defaultMessage: 'If a census block group is in a metropolitan area, this value is the'+
+//     ' median income of the census block group calculated as a percent of'+
+//     ' the metropolitan area’s median income.',
+//     description: 'step 1 a info 1',
+//   },
+//   STEP_1_A_INFO_2: {
+//     id: 'methodology.step.1.a.info.2',
+//     defaultMessage: 'If a census block group is not in a metropolitan area, this value is the'+
+//     ' median income of the census block group calculated as a percent of the state’s median'+
+//     ' income.',
+//     description: 'step 1 a info 2',
+//   },
+//   STEP_1_B_HEADING: {
+//     id: 'methodology.step.1.b.heading',
+//     defaultMessage: `Percent of households below or at 100% of the federal poverty line`,
+//     description: 'step 1 b heading',
+//   },
+//   STEP_1_C_HEADING: {
+//     id: 'methodology.step.1.c.heading',
+//     defaultMessage: `The high school degree achievement rate for adults 25 years and older`,
+//     description: 'step 1 a heading',
+//   },
+//   STEP_1_C_INFO: {
+//     id: 'methodology.step.1.c.info',
+//     defaultMessage: 'The percent of individuals who are 25 or older who have received a high school degree.',
+//     description: 'step 1 c info',
+//   },
+//   STEP_2_HEADING: {
+//     id: 'methodology.step.2.heading',
+//     defaultMessage: `Determine communites of focus`,
+//     description: 'second step heading',
+//   },
+//   STEP_2_INFO: {
+//     id: 'methodology.step.2.info',
+//     defaultMessage: `Under the existing formula, a census block group will be considered a community of focus if:`,
+//     description: 'second step info',
+//   },
+// });
 
-const FED_POVERTY_LINE_URL = 'https://www.census.gov/topics/income-poverty/poverty/guidance/poverty-measures.html';
+// const FED_POVERTY_LINE_URL = 'https://www.census.gov/topics/income-poverty/poverty/guidance/poverty-measures.html';
 
-// Copy that has links or other HTML tags in them
-export const COMPLEX_METH_STEPS = {
-  STEP_2_B_INFO: <FormattedMessage
-    id={'methodology.steps.2.b.info'}
-    description={'Download the draft list of communities of focus and datasets used.'}
-    defaultMessage={`This is the percent of households in a state with a household income 
-    below or at 100% of the {federalPovertyLine}. This federal poverty line is calculated 
-    based on the composition of each household (e.g., based on household size), but it does not vary geographically.`}
-    values={{
-      federalPovertyLine:
-      <a href={FED_POVERTY_LINE_URL} target="_blank" rel="noreferrer">
-        federal poverty line
-      </a>,
-    }}
-  />,
-  FORMULA: <FormattedMessage
-    id={'methodology.steps.2.formula'}
-    description={'Formala used to calculate communities of focus'}
-    defaultMessage={`{medianIncome} {or} {livingAtPovery} {and} {education}`}
-    values={{
-      medianIncome:
-        <p>
-         (The median income is less than 80% of the area median income
-        </p>,
-      or:
-        <p className={'flush'}>
-          OR
-        </p>,
-      livingAtPovery:
-        <p className={'flush'}>
-          households living in poverty (at or below 100% of the federal poverty level) is greater than 20%)
-        </p>,
-      and:
-        <p className={'flush'}>
-          AND
-        </p>,
-      education:
-        <p className={'flush'}>
-          The high school degree achievement rate for adults 25 years and older is greater than 95%
-        </p>,
-    }}
-  />,
-};
+// // Copy that has links or other HTML tags in them
+// export const COMPLEX_METH_STEPS = {
+//   STEP_2_B_INFO: <FormattedMessage
+//     id={'methodology.steps.2.b.info'}
+//     description={'Download the draft list of communities of focus and datasets used.'}
+//     defaultMessage={`This is the percent of households in a state with a household income
+//     below or at 100% of the {federalPovertyLine}. This federal poverty line is calculated
+//     based on the composition of each household (e.g., based on household size), but it does
+//     not vary geographically.`}
+//     values={{
+//       federalPovertyLine:
+//       <a href={FED_POVERTY_LINE_URL} target="_blank" rel="noreferrer">
+//         federal poverty line
+//       </a>,
+//     }}
+//   />,
+//   FORMULA: <FormattedMessage
+//     id={'methodology.steps.2.formula'}
+//     description={'Formala used to calculate communities of focus'}
+//     defaultMessage={`{medianIncome} {or} {livingAtPovery} {and} {education}`}
+//     values={{
+//       medianIncome:
+//         <p>
+//          (The median income is less than 80% of the area median income
+//         </p>,
+//       or:
+//         <p className={'flush'}>
+//           OR
+//         </p>,
+//       livingAtPovery:
+//         <p className={'flush'}>
+//           households living in poverty (at or below 100% of the federal poverty level) is greater than 20%)
+//         </p>,
+//       and:
+//         <p className={'flush'}>
+//           AND
+//         </p>,
+//       education:
+//         <p className={'flush'}>
+//           The high school degree achievement rate for adults 25 years and older is greater than 95%
+//         </p>,
+//     }}
+//   />,
+// };

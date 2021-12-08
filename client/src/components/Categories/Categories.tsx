@@ -1,4 +1,5 @@
 import React from 'react';
+import {Grid} from '@trussworks/react-uswds';
 
 import IndicatorCategory from '../CategoryCard';
 import J40MainGridContainer from '../J40MainGridContainer';
@@ -19,11 +20,23 @@ const categories = [
 
 const Categories = () => {
   return (
-    <J40MainGridContainer className={styles.categoriesContainer}>
-      {
-        categories.map((category, index) => <IndicatorCategory key={index} categoryInfo={category} />)
-      }
-    </J40MainGridContainer>
+    <>
+      <J40MainGridContainer className={styles.categoriesContainer}>
+
+        <Grid row>
+          <Grid col={12}>
+            <h2>{METHODOLOGY_COPY.CATEGORY.HEADING}</h2>
+          </Grid>
+        </Grid>
+
+      </J40MainGridContainer>
+
+      <J40MainGridContainer className={styles.categoriesContainer}>
+        {
+          categories.map((category, index) => <IndicatorCategory key={index} categoryInfo={category} />)
+        }
+      </J40MainGridContainer>
+    </>
   );
 };
 
