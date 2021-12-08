@@ -8,7 +8,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
     <ul>
       <li>
         <span>
-          Census block group:
+          Census tract:
         </span>
         <span>
            98729374234
@@ -79,7 +79,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
       <p
         class="secondary j40-indicator"
       >
-        Median income of the census block group calculated as a percent of the metropolitan area’s or state's median income
+        Median income of the census tract calculated as a percent of the metropolitan area’s or state's median income
       </p>
     </li>
     <li
@@ -123,7 +123,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
       <p
         class="secondary j40-indicator"
       >
-        Percent of a block group's population in households where the household income is at or below 100% of the federal poverty level
+        Percent of a tract's population in households where the household income is at or below 100% of the federal poverty level
       </p>
     </li>
     <li

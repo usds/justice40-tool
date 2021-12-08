@@ -21,30 +21,34 @@ export const PAGE_INTRO = defineMessages({
 
 export const PAGE_DESCRIPTION = <FormattedMessage
   id={'exploreTool.page.description'}
-  defaultMessage={
-    `Zoom into the map to see communities of focus that can help Federal agencies
-  identify disadvantaged communities and to provide socioeconomic,
-  environmental, and climate information and data. Learn more about the methodology
-  and datasets that were used to determine these communities of focus on the
-    {methodologyLink}
-  page.`}
+  defaultMessage={`
+    Use the map to see disadvantaged communities that have been historically 
+    marginalized, underserved, and overburdened by pollution. The map uses 
+    publicly-available, nationally-consistent, high-quality datasets. Learn more about 
+    the methodology and datasets that were used to identify disavantaged communities 
+    on the {methodologyLink} page.
+    `}
   description={'page description'}
   values={{
-    methodologyLink: <Link to={'/methodology'}>Data & methodology</Link>,
-    methodologyLinkEs: <Link to={'/methodology'}>Datos y metodología</Link>,
+    methodologyLink: <Link to={'/methodology'}>methodology & data</Link>,
+    methodologyLinkEs: <Link to={'/methodology'}>metodología y datos</Link>,
   }}
 />;
 
 export const LEGEND = defineMessages({
   PRIORITY_LABEL: {
     id: 'legend.info.priority.label',
-    defaultMessage: 'Draft community of focus',
+    defaultMessage: 'Disadvantaged community',
     description: 'the label of the prioritized community legend',
   },
   PRIORITY_DESCRIPT: {
     id: 'legend.info.threshold.label',
-    defaultMessage: 'A community identified as experiencing disadvantages that merits' +
-      ' the focus of certain Federal investments, including through the Justice40 Initiative',
+    defaultMessage: `
+    Communities identified for the purposes of Justice40 as disadvantaged have been 
+    historically marginalized, underserved, and overburdened by pollution. These communities 
+    meet or exceed the criteria in one or more areas of focus. 
+
+    `,
     description: 'the label of the threshold community legend',
   },
 });
@@ -153,7 +157,7 @@ export const MAP = defineMessages({
 export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   TITLE: {
     id: 'mapIntro.mapIntroHeader',
-    defaultMessage: 'Zoom and select a census block group to view data',
+    defaultMessage: 'Zoom and select a census tract to view data',
     description: 'introductory text of ways to use the map',
   },
   DID_YOU_KNOW: {
@@ -163,9 +167,13 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   },
   CBG_DEFINITION: {
     id: 'mapIntro.censusBlockGroupDefinition',
-    defaultMessage: 'A census block group is generally between 600 and 3,000 people. ' +
-    'It is the smallest geographical unit for which the U.S. Census ' +
-    'Bureau publishes sample data.',
+    defaultMessage: `
+      A census tract is generally between 1,200 and 8,000 people, with an optimum size of 4,000 people. 
+      Census tracts are small, relatively permanent subdivisions of a county defined by the 
+      U.S. Census Bureau and usually cover a contiguous area. The census tract level represents the 
+      smallest geographical unity that can be presented in a statistically sound manner, given the 
+      datasets that are being used.
+    `,
     description: 'cites the definition and helpful information about census groups',
   },
 });
@@ -173,8 +181,8 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
 export const SIDE_PANEL_CBG_INFO = defineMessages({
   CENSUS_BLOCK_GROUP: {
     id: 'areaDetail.geographicInfo.censusBlockGroup',
-    defaultMessage: 'Census block group:',
-    description: 'the census block group id number of the feature selected',
+    defaultMessage: 'Census tract:',
+    description: 'the census tract id number of the feature selected',
   },
   COUNTY: {
     id: 'areaDetail.geographicInfo.county',
@@ -304,9 +312,9 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
 export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   AREA_MEDIAN_INCOME: {
     id: 'areaDetail.indicator.description.area_median_income',
-    defaultMessage: 'Median income of the census block group calculated as a percent of the metropolitan'+
+    defaultMessage: 'Median income of the census tract calculated as a percent of the metropolitan'+
         ' area’s or state\'s median income',
-    description: 'Median income of the census block group calculated as a percent of the metropolitan'+
+    description: 'Median income of the census tract calculated as a percent of the metropolitan'+
     ' area’s or state\'s median income',
   },
   EDUCATION: {
@@ -316,9 +324,9 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   },
   POVERTY: {
     id: 'areaDetail.indicator.description.poverty',
-    defaultMessage: 'Percent of a block group\'s population in households where the household income' +
+    defaultMessage: 'Percent of a tract\'s population in households where the household income' +
     ' is at or below 100% of the federal poverty level',
-    description: 'Percent of a block group\'s population in households where the household income' +
+    description: 'Percent of a tract\'s population in households where the household income' +
     ' is at or below 100% of the federal poverty level',
   },
   ASTHMA: {
@@ -403,19 +411,23 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
 export const DOWNLOAD_DRAFT = {
   PARAGRAPH_1: <FormattedMessage
     id={'download.draft.ptag.1'}
-    description={'Download the draft list of communities of focus and datasets used.'}
-    defaultMessage={`{downloadDraft} of communities of focus and datasets used. Last updated: {dateUpdated}.`}
+    description={'Download the current list of communities and datasets used.'}
+    defaultMessage={`
+    {downloadDraft} of communities and datasets used (ZIP file will contain one .xlsx, 
+    one .csv, and one .pdf, with a size of {downloadFileSize}). Last updated: {dateUpdated}.
+    `}
     values={{
       downloadDraft:
         <a href={METHODOLOGY_COPY.DOWNLOAD_ZIP_URL}>
-          {`Download the draft list v${METHODOLOGY_COPY.VERSION_NUMBER}`}
+          {`Download the current list`}
         </a>,
       downloadDraftEs:
       <a href={METHODOLOGY_COPY.DOWNLOAD_ZIP_URL}>
-        {'Descargue la lista preliminar'}
+        {`Descargue la lista preliminar`}
       </a>,
       dateUpdated: METHODOLOGY_COPY.DOWNLOAD_LAST_UPDATED,
       dateUpdatedEs: METHODOLOGY_COPY.DOWNLOAD_LAST_UPDATED_ES,
+      downloadFileSize: METHODOLOGY_COPY.DOWNLOAD_FILE_SIZE,
     }}
   />,
   PARAGRAPH_2: <FormattedMessage
@@ -436,38 +448,38 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
   />,
   LIST_ITEM_1: <FormattedMessage
     id={'youCanHelpInfoText.list.item.1'}
-    description={'how one can help us via email'}
-    defaultMessage={`If you have helpful information, we would love to {rxEmailFromYou}.`}
-    values={{
-      rxEmailFromYou:
-      <a href={`mailto:${CONTACT_COPY.FEEDBACK_EMAIL}`}>
-        {'receive an email from you'}
-      </a>,
-    }}
-  />,
-  LIST_ITEM_2: <FormattedMessage
-    id={'youCanHelpInfoText.list.item.2'}
     description={'give us feedback on our data and methodology'}
     defaultMessage={`View our {dataMeth} page and send us feedback.`}
     values={{
       dataMeth:
     <Link to={'/methodology'}>
-      {'Data & methodology'}
+      {'Methodology and data'}
     </Link>,
       dataMethEs:
     <Link to={'/methodology'}>
-      {'Datos y metodología'}
+      {'Metodología y datos'}
     </Link>,
+    }}
+  />,
+  LIST_ITEM_2: <FormattedMessage
+    id={'youCanHelpInfoText.list.item.2'}
+    description={'share your feedback'}
+    defaultMessage={`Find communities of interest and {shareFeedback}.`}
+    values={{
+      shareFeedback:
+        <a href={`mailto:${CONTACT_COPY.FEEDBACK_EMAIL}`}>
+          {'share your feedback'}
+        </a>,
     }}
   />,
   LIST_ITEM_3: <FormattedMessage
     id={'youCanHelpInfoText.list.item.3'}
     description={'share your feedback'}
-    defaultMessage={`Find your community of interest and {shareFeedback}.`}
+    defaultMessage={`Respond to our request for information on {federalRegisterLink}.`}
     values={{
-      shareFeedback:
-        <a href={`mailto:${CONTACT_COPY.FEEDBACK_EMAIL}`}>
-          {'share your feedback'}
+      federalRegisterLink:
+        <a href={`https://www.federalregister.gov/`}>
+          {'federalregister.gov'}
         </a>,
     }}
   />,
