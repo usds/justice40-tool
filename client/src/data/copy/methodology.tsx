@@ -715,6 +715,7 @@ export const INDICATORS = [
     dateRange: `2015-2019`,
   },
   {
+    domID: 'fema-risk',
     indicator: 'FEMA Risk Index Expected Annual Loss Score',
     description: `Average economic loss in dollars resulting from natural 
     hazards each year. It is calculated for each hazard type and quantifies 

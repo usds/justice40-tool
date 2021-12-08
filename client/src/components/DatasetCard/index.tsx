@@ -14,7 +14,7 @@ const DatasetCard = ({datasetCardProps}:IDatasetCardProps) => {
   const intl = useIntl();
 
   return (
-    <div className={styles.datasetCard} id={datasetCardProps.domID ? datasetCardProps.domID : 'exp-pop-loss-rate'}>
+    <div className={styles.datasetCard} id={datasetCardProps.domID}>
       <h3 className={styles.datasetCardIndicator}>{datasetCardProps.indicator}</h3>
       <div className={styles.datasetCardDescription}>
         {datasetCardProps.description}
