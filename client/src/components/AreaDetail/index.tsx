@@ -1,6 +1,6 @@
 /* eslint-disable quotes */
 // External Libs:
-import React, {useEffect} from 'react';
+import React from 'react';
 import {useIntl} from 'gatsby-plugin-intl';
 
 // Components:
@@ -40,7 +40,6 @@ interface IAreaDetailProps {
 
 const AreaDetail = ({properties}:IAreaDetailProps) => {
   const intl = useIntl();
-  const [isCommunityFocus, setIsCommunityFocus] = React.useState<boolean>(true);
 
   console.log("Area Detail properies: ", properties);
 
@@ -50,15 +49,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
   const countyName = properties[constants.COUNTY_NAME] ? properties[constants.COUNTY_NAME] : "N/A";
   const stateName = properties[constants.STATE_NAME] ? properties[constants.STATE_NAME] : "N/A";
 
-  useEffect(() => {
-    if (score >= constants.SCORE_BOUNDARY_PRIORITIZED ) {
-      setIsCommunityFocus(true);
-    } else {
-      setIsCommunityFocus(false);
-    }
-  }, [score]);
-
-
+  const isCommunityFocus = score >= constants.SCORE_BOUNDARY_PRIORITIZED;
   interface indicatorInfo {
     label: string,
     description: string,
