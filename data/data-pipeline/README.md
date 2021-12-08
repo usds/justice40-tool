@@ -149,7 +149,7 @@ _NOTE:_ This may take several minutes or over an hour to fully execute and gener
 - **[Housing and Transportation](data_pipeline/etl/sources/housing_and_transportation):** TODO Add description of data source
 - **[HUD Housing](data_pipeline/etl/sources/hud_housing):** TODO Add description of data source
 - **[HUD Recap](data_pipeline/etl/sources/hud_recap):** TODO Add description of data source
-- **[CalEnviroScreen](data_pipeline/etl/scores/calenviroscreen):** TODO Add description of data source
+- **[CalEnviroScreen](data_pipeline/etl/sources/calenviroscreen):** TODO Add description of data source
 
 ## Running using Docker
 
