@@ -39,19 +39,19 @@ between different options for data in the data roadmap.
 
 In order to support a process of peer review on edits and updates, these details are
 tracked in one `YAML` file per data set description in the directory
-[data_roadmap/data_set_descriptions](data_roadmap/data_set_descriptions).
+[data_set_descriptions](data_set_descriptions).
 
 Each data set description includes a number of fields, some of which are required.
 The schema defining these fields is written in [Yamale](https://github.com/23andMe/Yamale) 
-and lives at [data_roadmap/data_set_description_schema.yaml](data_roadmap/data_set_description_schema.yaml).
+and lives at [data_set_description_schema.yaml](data_set_description_schema.yaml).
 
 Because `Yamale` does not provide a method for describing fields, we've created an
 additional file that includes written descriptions of the meaning of each field in
-the schema. These live in [data_roadmap/data_set_description_field_descriptions.yaml](data_roadmap/data_set_description_field_descriptions.yaml).
+the schema. These live in [data_set_description_field_descriptions.yaml](data_set_description_field_descriptions.yaml).
 
 In order to provide a helpful starting point for people who are ready to contribute
 ideas for a new data set for consideration, there is an auto-generated data set
-description template that lives at [data_roadmap/data_set_description_template.yaml](data_roadmap/data_set_description_template.yaml).
+description template that lives at [data_set_description_template.yaml](data_set_description_template.yaml).
 
 # Steps to add a new data set description: the "easy" way
 
@@ -68,7 +68,7 @@ contribute a new data set description to the data roadmap:
 1. Research and learn about the data set you're proposing for consideration.
 
 2. Clone the repository and learn about the [contribution guidelines for this
-   project](../docs/CONTRIBUTING.md).
+   project](/CONTRIBUTING.md).
 
 3. In your local version of the repository, copy the template from
    `data_roadmap/data_set_description_template.yaml` into a new file that lives in
