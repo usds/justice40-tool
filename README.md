@@ -44,9 +44,17 @@ Contributions are always welcome! We encourage contributions in the form of disc
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for ways to get started.
 
-## Installation 
+## Using The Datasets
 
-The installation is a typical gatsby install and the details can be found in [INSTALLATION.md](https://github.com/usds/justice40-tool/blob/main/INSTALLATION.md)
+The intermediate steps of the data pipeline and the final output that is consumed by the frontend are all public and can be accessed directly. See [DATASETS.md](DATASETS.md) for these direct download links.
+
+## Local Quickstart
+
+If you want to run the entire application locally, see [QUICKSTART.md](QUICKSTART.md).
+
+## Power User Guides
+
+If you have software experience or more specific use cases, the [project wiki](https://github.com/usds/justice40-tool/wiki) has more in depth documentation of how to work with this project.
 
 ## Glossary
 

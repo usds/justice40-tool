@@ -16,8 +16,21 @@ This README contains the following content:
 ## Installing and running the client site
 
 ### Via npm
-1. Confirm you have the base required software installed. See [INSTALLATION](INSTALLATION.md) for more details.
-1. Install yarn if you do not have it yet. Open your terminal and run `sudo npm install -global yarn`. This works on MacOS and Win10. To confirm it is installed, run `yarn -v`. A version number should be returned.
+
+#### Install Node using NVM 
+
+This will work for both MacOS and Win10. Follow instructions on this [link](https://medium.com/@nodesource/installing-node-js-tutorial-using-nvm-5c6ff5925dd8). Be sure to read through the whole doc to find the sections within each step relevant to you (e.g. if you're using Homebrew, when you get to Step 2 look for the section, "Install NVM with Homebrew").
+
+If you install NVM using Homebrew, make sure to read the output in terminal after you run `brew install nvm`. You will need to add a few lines to your ~/.bash_profile and perhaps complete a couple other tasks.
+
+Once you install NVM, don't forget to install Node! This is included in the linked tutorial above. This will also install `npm` which you need for the steps below.
+
+#### Install Yarn
+
+Install yarn if you do not have it yet. Open your terminal and run `sudo npm install -global yarn`. This works on MacOS and Win10. To confirm it is installed, run `yarn -v`. A version number should be returned.
+
+#### Run The Application
+
 1. Navigate to the base directory of this repository, and go to the `client` directory (`cd client`).
 1. Run the command `npm install` to install the dependencies.
 1. Run `npm start` to start up the client app.
