@@ -44,7 +44,8 @@ class ScoreL(Score):
         robustness over 1-year ACS.
         """
         # Create the combined field.
-        # TODO: move this combined field percentile calculation to `etl_score`?
+        # TODO: move this combined field percentile calculation to `etl_score`,
+        #  since most other percentile logic is there.
         # There should only be one entry in either 2009 or 2019 fields, not one in both.
         # But just to be safe, we take the mean and ignore null values so if there
         # *were* entries in both, this result would make sense.
