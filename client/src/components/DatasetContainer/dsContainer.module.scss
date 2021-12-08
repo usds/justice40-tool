@@ -6,3 +6,9 @@
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
+.returnToTop {
+  display: flex;
+  justify-content: flex-end;
+  @include u-margin-bottom(4);
+}

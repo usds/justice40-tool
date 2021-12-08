@@ -54,7 +54,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Census's American Community Survey
+                    Census's American Community Survey.
                   </a>
                 </li>
                 <li>
@@ -72,6 +72,82 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </ul>
             </div>
             <div
+              id="exp-agr-loss-rate"
+            >
+              <h3>
+                Expected Agriculture Loss Rate
+              </h3>
+              <div>
+                
+      Economic loss rate to agriculture resulting from natural hazards each year.
+    
+              </div>
+              <ul>
+                <li>
+                  <span>
+                    Responsible Party: 
+                  </span>
+                  <a
+                    href="https://hazards.fema.gov/nri/expected-annual-loss"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Federal Emergency Management Agency (FEMA)
+                  </a>
+                </li>
+                <li>
+                  <span>
+                    Date range: 
+                  </span>
+                  2014-2021
+                </li>
+                <li>
+                  <span>
+                    Used in: 
+                  </span>
+                  Climate change methodology
+                </li>
+              </ul>
+            </div>
+            <div
+              id="exp-bld-loss-rate"
+            >
+              <h3>
+                Expected Building Loss Rate
+              </h3>
+              <div>
+                
+      Economic loss rate to buildings resulting from natural hazards each year.
+    
+              </div>
+              <ul>
+                <li>
+                  <span>
+                    Responsible Party: 
+                  </span>
+                  <a
+                    href="https://hazards.fema.gov/nri/expected-annual-loss"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Federal Emergency Management Agency (FEMA)
+                  </a>
+                </li>
+                <li>
+                  <span>
+                    Date range: 
+                  </span>
+                  2014-2021
+                </li>
+                <li>
+                  <span>
+                    Used in: 
+                  </span>
+                  Climate change methodology
+                </li>
+              </ul>
+            </div>
+            <div
               id="exp-pop-loss-rate"
             >
               <h3>
@@ -79,11 +155,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </h3>
               <div>
                 
-    Economic loss rate to the population in fatalities and injuries resulting from the natural
-    hazards each year. This rate is monetized into a population equivalence using a value of
-    statistical life (VSL) approach where each fatality or ten injuries is treated as $7.6 million
-    of economic loss. This was determined by inflating the 2015 VSL of $6.9 million to 2020 dollars
-    using the Bureau of Labor Statistics' Consumer Price Index Inflation Calculator.
+    Rate relative to the population in fatalities and injuries resulting from natural hazards each 
+    year. Population loss is defined as the Spatial Hazard Events and Losses or National Centers 
+    for Environmental Information’s reported number of fatalities and injuries caused by the 
+    hazard occurrence. To combine fatalities and injuries for the computation of population loss value, 
+    an injury is counted as one-tenth (1/10) of a fatality. The NCEI Storm Events Database 
+    classifies injuries and fatalities as direct or indirect. Both direct and indirect injuries 
+    and fatalities are counted as population loss. This total number of injuries and fatalities is 
+    then divided by the population in the census tract to get a per-capita rate of population risk.
     
               </div>
               <ul>
@@ -156,7 +235,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 PM2.5
               </h3>
               <div>
-                Fine inhalable particles, with diameters that are generally 
+                Fine inhalable particles, with diameters that are generally
     2.5 micrometers and smaller.
               </div>
               <ul>
@@ -169,7 +248,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Environmental Protection Agency (EPA) Office of Air 
+                    Environmental Protection Agency (EPA) Office of Air
     and Radiation (OAR) fusion of model and monitor data as compiled by EPA's EJSCREEN
                   </a>
                 </li>
@@ -231,7 +310,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Traffic proximity and volume
               </h3>
               <div>
-                Count of vehicles (average annual daily traffic) at major roads 
+                Count of vehicles (average annual daily traffic) at major roads
     within 500 meters, divided by distance in meters (not km).
               </div>
               <ul>
@@ -262,13 +341,51 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </ul>
             </div>
             <div
+              id="house-burden"
+            >
+              <h3>
+                Housing cost burden
+              </h3>
+              <div>
+                Households that are low income and spend more than 30% of their
+    income to housing costs.
+              </div>
+              <ul>
+                <li>
+                  <span>
+                    Responsible Party: 
+                  </span>
+                  <a
+                    href="https://www.huduser.gov/portal/datasets/cp.html"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Department of Housing & Urban Development’s
+    (HUD) Comprehensive Housing Affordability Strategy dataset
+                  </a>
+                </li>
+                <li>
+                  <span>
+                    Date range: 
+                  </span>
+                  2013-2017
+                </li>
+                <li>
+                  <span>
+                    Used in: 
+                  </span>
+                  Affordable and sustainable housing methodology
+                </li>
+              </ul>
+            </div>
+            <div
               id="lead-paint"
             >
               <h3>
                 Lead paint
               </h3>
               <div>
-                Percent of housing units built pre-1960, used as an 
+                Percent of housing units built pre-1960, used as an
     indicator of potential lead paint exposure in homes.
               </div>
               <ul>
@@ -299,13 +416,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </ul>
             </div>
             <div
-              id="median-house"
+              id="median-home"
             >
               <h3>
-                Median house value
+                Median home value
               </h3>
               <div>
-                XXX
+                Median home value of owner-occupied housing units in the area.
               </div>
               <ul>
                 <li>
@@ -335,14 +452,16 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </ul>
             </div>
             <div
-              id="house-burden"
+              id="prox-haz"
             >
               <h3>
-                Housing cost burden
+                Proximity to hazardous waste sites
               </h3>
               <div>
-                Households that are low income and spend more than 30% of their 
-    income to housing costs.
+                
+    Count of hazardous waste facilities (Treatment, Storage, and Disposal Facilities and Large
+    Quantity Generators) within 5 km (or nearest beyond 5 km), each divided by distance in kilometers.
+  
               </div>
               <ul>
                 <li>
@@ -350,38 +469,39 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     Responsible Party: 
                   </span>
                   <a
-                    href="https://www.huduser.gov/portal/datasets/cp.html"
+                    href="https://www.census.gov/programs-surveys/acs"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Department of Housing & Urban Development’s 
-    (HUD) Comprehensive Housing Affordability Strategy dataset
+                    
+    Environmental Protection Agency (EPA) TSDF data calculated from EPA RCRAinfo database 
+    as compiled by EPA’s EJSCREEN
                   </a>
                 </li>
                 <li>
                   <span>
                     Date range: 
                   </span>
-                  2013-2017
+                  2015-2019
                 </li>
                 <li>
                   <span>
                     Used in: 
                   </span>
-                  Affordable and sustainable housing methodology
+                  Reduction and remediation of legacy pollution methodology
                 </li>
               </ul>
             </div>
             <div
-              id="prox-rmp"
+              id="prox-npl"
             >
               <h3>
-                Proximity to Risk Management Plan (RMP) Sites
+                Proximity to National Priorities List (NPL) Sites
               </h3>
               <div>
                 
-    Count of RMP (potential chemical accident management plan) facilities within 5 km (or nearest 
-      one beyond 5 km), each divided by distance in kilometers.
+    Count of proposed or listed NPL - also known as superfund - sites within 5 km (or nearest one
+      beyond 5 km), each divided by distance in kilometers.
               </div>
               <ul>
                 <li>
@@ -389,11 +509,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     Responsible Party: 
                   </span>
                   <a
-                    href="https://www.epa.gov/ejscreen/technical-documentation-ejscreen"
+                    href="https://enviro.epa.gov/facts/rcrainfo/search.html"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Environmental Protection Agency (EPA) RMP database as compiled by EPA’s  EJSCREEN
+                    Environmental Protection Agency (EPA) CERCLIS database as compiled by EPA’s EJSCREEN
                   </a>
                 </li>
                 <li>
@@ -406,20 +526,20 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <span>
                     Used in: 
                   </span>
-                  Affordable and sustainable housing methodology
+                  Reduction and remediation of legacy pollution methodology
                 </li>
               </ul>
             </div>
             <div
-              id="prox-npl"
+              id="prox-rmp"
             >
               <h3>
-                Proximity to National Priorities List (NPL) Sites
+                Proximity to Risk Management Plan (RMP) Sites
               </h3>
               <div>
                 
-    Count of proposed or listed NPL - also known as superfund - sites within 5 km (or nearest one 
-      beyond 5 km), each divided by distance in kilometers.
+    Count of RMP (potential chemical accident management plan) facilities within 5 km (or nearest
+      one beyond 5 km), each divided by distance in kilometers.
               </div>
               <ul>
                 <li>
@@ -444,7 +564,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <span>
                     Used in: 
                   </span>
-                  Reduction and remediation of legacy pollution methodology
+                  Affordable and sustainable housing methodology
                 </li>
               </ul>
             </div>
@@ -455,7 +575,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Wastewater discharge
               </h3>
               <div>
-                RSEI modeled Toxic Concentrations at stream segments within 500 
+                RSEI modeled Toxic Concentrations at stream segments within 500
     meters, divided by distance in kilometers (km).
               </div>
               <ul>
@@ -468,7 +588,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Environmental Protection Agency (EPA) Risk-Screening 
+                    Environmental Protection Agency (EPA) Risk-Screening
     Environmental Indicators (RSEI) Model as compiled by EPA's EJSCREEN
                   </a>
                 </li>
@@ -487,15 +607,16 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </ul>
             </div>
             <div
-              id="diabetes"
+              id="asthma"
             >
               <h3>
-                Diabetes
+                Asthma
               </h3>
               <div>
-                People ages 18 years and older who report having ever been 
-    told by a doctor, nurse, or other health professionals that they have 
-    diabetes other than diabetes during pregnancy.
+                Weighted number of respondents people who answer “yes” both
+    to both of the following questions: “Have you ever been told by a doctor,
+    nurse, or other health professional that you have asthma?” and the question
+    “Do you still have asthma?”
               </div>
               <ul>
                 <li>
@@ -525,16 +646,15 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </ul>
             </div>
             <div
-              id="asthma"
+              id="diabetes"
             >
               <h3>
-                Asthma
+                Diabetes
               </h3>
               <div>
-                Weighted number of respondents people who answer “yes” both 
-    to both of the following questions: “Have you ever been told by a doctor, 
-    nurse, or other health professional that you have asthma?” and the question 
-    “Do you still have asthma?”
+                People ages 18 years and older who report having ever been
+    told by a doctor, nurse, or other health professionals that they have
+    diabetes other than diabetes during pregnancy.
               </div>
               <ul>
                 <li>
@@ -570,8 +690,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Heart disease
               </h3>
               <div>
-                People ages 18 years and older who report ever having been told 
-    by a doctor, nurse, or other health professionals that they had angina or 
+                People ages 18 years and older who report ever having been told
+    by a doctor, nurse, or other health professionals that they had angina or
     coronary heart disease.
               </div>
               <ul>
@@ -605,10 +725,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               id="life-exp"
             >
               <h3>
-                Life expectancy
+                Low life expectancy
               </h3>
               <div>
-                Estimated years of life expectancy.
+                Average number of years of life a person who has attained a given age can expect to live.
               </div>
               <ul>
                 <li>
@@ -620,8 +740,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Centers for Disease Control and Prevention (CDC) 
-    US Small-area Life Expectancy Estimates Project
+                    CDC’s U.S. Small-area Life Expectancy Estimates Project (USALEEP)
                   </a>
                 </li>
                 <li>
@@ -639,13 +758,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </ul>
             </div>
             <div
-              id="unemploy"
+              id="median-income"
             >
               <h3>
-                Unemployment
+                Low Median Income
               </h3>
               <div>
-                Number of unemployed people as a percentage of the civilian labor force
+                Median income of the census tract calculated as a percent of the area’s median income.
               </div>
               <ul>
                 <li>
@@ -681,8 +800,44 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Linguistic Isolation
               </h3>
               <div>
-                Households in which no one age 14 and over speaks English only or also a language
-    other than English
+                Households in which no one age 14 and over speaks English only or also speaks
+    a language other than English
+              </div>
+              <ul>
+                <li>
+                  <span>
+                    Responsible Party: 
+                  </span>
+                  <a
+                    href="https://www.census.gov/programs-surveys/acs"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Census's American Community Survey
+                  </a>
+                </li>
+                <li>
+                  <span>
+                    Date range: 
+                  </span>
+                  2015-2019
+                </li>
+                <li>
+                  <span>
+                    Used in: 
+                  </span>
+                  Training and workforce development
+                </li>
+              </ul>
+            </div>
+            <div
+              id="unemploy"
+            >
+              <h3>
+                Unemployment
+              </h3>
+              <div>
+                Number of unemployed people as a percentage of the civilian labor force
               </div>
               <ul>
                 <li>
@@ -748,50 +903,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </ul>
             </div>
             <div
-              id="median-income"
+              id="high-school"
             >
               <h3>
-                Area Median Income
+                High school degree achievement rate
               </h3>
               <div>
-                Median income of the census block group calculated as a percent 
-    of the metropolitan area’s or state's median income.
-              </div>
-              <ul>
-                <li>
-                  <span>
-                    Responsible Party: 
-                  </span>
-                  <a
-                    href="https://www.census.gov/programs-surveys/acs"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    Census's American Community Survey
-                  </a>
-                </li>
-                <li>
-                  <span>
-                    Date range: 
-                  </span>
-                  2015-2019
-                </li>
-                <li>
-                  <span>
-                    Used in: 
-                  </span>
-                  Training and workforce development
-                </li>
-              </ul>
-            </div>
-            <div
-              id="education"
-            >
-              <h3>
-                Education, less than high school education
-              </h3>
-              <div>
-                Percent of people ages 25 years or older in a block group whose 
+                Percent of people ages 25 years or older in a block group whose
     education level is less than a high school diploma.
               </div>
               <ul>
@@ -821,46 +939,15 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
               </ul>
             </div>
-            <div
-              id="fema-risk"
-            >
-              <h3>
-                FEMA Risk Index Expected Annual Loss Score
-              </h3>
-              <div>
-                Average economic loss in dollars resulting from natural 
-    hazards each year. It is calculated for each hazard type and quantifies 
-    loss for relevant consequence types: buildings, people, and agriculture.
-              </div>
-              <ul>
-                <li>
-                  <span>
-                    Responsible Party: 
-                  </span>
-                  <a
-                    href="https://hazards.fema.gov/nri/expected-annual-loss"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    Federal Emergency Management Agency (FEMA)
-                  </a>
-                </li>
-                <li>
-                  <span>
-                    Date range: 
-                  </span>
-                  2014-2017
-                </li>
-                <li>
-                  <span>
-                    Used in: 
-                  </span>
-                  ?
-                </li>
-              </ul>
-            </div>
           </div>
         </div>
+      </div>
+      <div>
+        <a
+          href="/en/methodology"
+        >
+          Return to top
+        </a>
       </div>
     </div>
   </div>

@@ -26,18 +26,34 @@ exports[`rendering of the Categories checks if component renders 1`] = `
   >
     <div>
       <h3>
-        Climate Change
+        Climate change
       </h3>
       <p>
+        
+      
         <strong>
           IF
         </strong>
          at or above 90th percentile for 
         <a
+          href="#exp-agr-loss-rate"
+        >
+          expected agriculture loss rate
+        </a>
+         OR 
+        <a
+          href="#exp-bld-loss-rate"
+        >
+          expected building loss rate
+        </a>
+         OR 
+        <a
           href="#exp-pop-loss-rate"
         >
           expected population loss rate
         </a>
+        
+      
       </p>
       <p>
         <strong>
@@ -57,7 +73,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
     </div>
     <div>
       <h3>
-        Clean Energy and Energy Efficiency
+        Clean energy and energy efficiency
       </h3>
       <p>
         
@@ -155,9 +171,9 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         </a>
          AND 
         <a
-          href="#median-house"
+          href="#median-home"
         >
-          the median house value
+          the median home value
         </a>
          is less than
         90th percentile OR at or above the 90th percentile for the 
@@ -197,15 +213,21 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         </strong>
          at or above 90th percentile for 
         <a
-          href="#prox-rmp"
+          href="#prox-haz"
         >
-          proximity to RMP sites
+          proximity to hazardous waste facilities
         </a>
          OR 
         <a
           href="#prox-npl"
         >
           proximity to NLP sites
+        </a>
+         OR 
+        <a
+          href="#prox-rmp"
+        >
+          proximity to RMP sites
         </a>
         
       
@@ -228,7 +250,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
     </div>
     <div>
       <h3>
-        Critical Clean Water and Waste Infrastructure
+        Critical clean water and waste infrastructure
       </h3>
       <p>
         
@@ -263,7 +285,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
     </div>
     <div>
       <h3>
-        Health Burdens
+        Health burdens
       </h3>
       <p>
         
@@ -273,15 +295,15 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         </strong>
          at or above 90th percentile for 
         <a
-          href="#diabetes"
-        >
-          diabetes
-        </a>
-         OR 
-        <a
           href="#asthma"
         >
           asthma
+        </a>
+         OR 
+        <a
+          href="#diabetes"
+        >
+          diabetes
         </a>
          OR 
         <a
@@ -289,12 +311,11 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           heart disease
         </a>
-         OR
-        in the 90th percentile for above for 
+         OR 
         <a
           href="#life-exp"
         >
-          life expectancy
+          low life expectancy
         </a>
         
       
@@ -327,31 +348,32 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         </strong>
          at or above 90th percentile for 
         <a
-          href="#unemploy"
+          href="#low-med-inc"
         >
-          unemployment
+          low median income relative to area median income
         </a>
          OR 
+        at or above the 90th percentile for 
         <a
           href="#ling-iso"
         >
           linguistic isolation
         </a>
-         OR for %
-        households at or below 100% federal 
+         OR
+        
+        <a
+          href="#unemploy"
+        >
+          unemployment
+        </a>
+         OR
+        for percentage individuals in households at or below 100% federal 
         <a
           href="#poverty"
         >
           poverty
         </a>
-         level OR at or below 90th percentile
-        for 
-        <a
-          href="#median-income"
-        >
-          area median income
-        </a>
-        
+         level at or above 90%
       
       </p>
       <p>
@@ -362,7 +384,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         </strong>
          where 
         <a
-          href="#education"
+          href="#high-school"
         >
           the high school degree achievement rates
         </a>

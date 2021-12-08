@@ -87,7 +87,7 @@ export const DOWNLOAD_ZIP_URL = [
 export const DOWNLOAD_PACKAGE = {
   TITLE: <FormattedMessage
     id={'downloadPacket.header.text'}
-    defaultMessage={`Communities list v{versionNumber} ({downloadFileSize})`}
+    defaultMessage={`Draft communities list v{versionNumber} ({downloadFileSize})`}
     description={'download packet header text'}
     values= {{
       versionNumber: VERSION_NUMBER,
@@ -97,8 +97,8 @@ export const DOWNLOAD_PACKAGE = {
   DESCRIPTION: <FormattedMessage
     id={ 'downloadPacket.info.text'}
     defaultMessage= {`
-      The package includes v{versionNumber} of the list of disadvantaged communities
-      (.csv and .xlsx) and information about how to use the list (.pdf).
+      The package includes draft v{versionNumber} of the list of disadvantaged communities
+      (.csv and .xlsx) and information (.pdf) about how to use the list.
     `}
     description= {'download packet info text'}
     values= {{
@@ -131,8 +131,8 @@ export const LOW_INCOME = defineMessages({
   INFO: {
     id: 'low.income.info',
     defaultMessage: `
-      In the 65th percentile or above for percent of census tract population of households
-      where houseshold income is less than or equal to twice the federal poverty level
+      At or above 65th percentile  for percent of census tract population of households where household 
+      income is at or below 200% of the federal poverty level
     `,
     description: 'description of low income',
   },
@@ -152,16 +152,20 @@ export const CATEGORIES = {
   CLIMATE_CHANGE: {
     TITLE: <FormattedMessage
       id={'indicator.categories.climate.change.title'}
-      defaultMessage={'Climate Change'}
+      defaultMessage={'Climate change'}
       description= {'category title'}
     />,
     IF: <FormattedMessage
       id= {'indicator.categories.climate.change.if'}
-      defaultMessage= {'{if} at or above 90th percentile for {expLossRate}'}
+      defaultMessage= {`
+      {if} at or above 90th percentile for {expAgrLossRate} OR {expbuildLossRate} OR {expPopLossRate}
+      `}
       description= {'if portion of the formula'}
       values= {{
         if: <strong>IF</strong>,
-        expLossRate: <a href="#exp-pop-loss-rate">expected population loss rate</a>,
+        expAgrLossRate: <a href="#exp-agr-loss-rate">expected agriculture loss rate</a>,
+        expbuildLossRate: <a href="#exp-bld-loss-rate">expected building loss rate</a>,
+        expPopLossRate: <a href="#exp-pop-loss-rate">expected population loss rate</a>,
       }}
     />,
     AND: <FormattedMessage
@@ -186,7 +190,7 @@ export const CATEGORIES = {
   CLEAN_ENERGY: {
     TITLE: <FormattedMessage
       id={'indicator.categories.clean.energy.title'}
-      defaultMessage={'Clean Energy and Energy Efficiency'}
+      defaultMessage={'Clean energy and energy efficiency'}
       description= {'category title'}
     />,
     IF: <FormattedMessage
@@ -266,14 +270,14 @@ export const CATEGORIES = {
     IF: <FormattedMessage
       id= {'indicator.categories.afford.house.if'}
       defaultMessage= {`
-        {if} at or above 90th percentile for {lead} AND {medianHouseVal} is less than
+        {if} at or above 90th percentile for {lead} AND {medianHomeVal} is less than
         90th percentile OR at or above the 90th percentile for the {houseBur}
       `}
       description= {'if portion of the formula'}
       values= {{
         if: <strong>IF</strong>,
         lead: <a href='#lead-paint'>lead paint</a>,
-        medianHouseVal: <a href='#median-house'>the median house value</a>,
+        medianHomeVal: <a href='#median-home'>the median home value</a>,
         houseBur: <a href='#house-burden'>housing cost burden</a>,
       }}
     />,
@@ -305,13 +309,14 @@ export const CATEGORIES = {
     IF: <FormattedMessage
       id= {'indicator.categories.legacy.pollution.if'}
       defaultMessage= {`
-        {if} at or above 90th percentile for {proxRMP} OR {proxNPL}
+        {if} at or above 90th percentile for {proxHaz} OR {proxNPL} OR {proxRMP}
       `}
       description= {'if portion of the formula'}
       values= {{
         if: <strong>IF</strong>,
-        proxRMP: <a href='#prox-rmp'>proximity to RMP sites</a>,
+        proxHaz: <a href='#prox-haz'>proximity to hazardous waste facilities</a>,
         proxNPL: <a href='#prox-npl'>proximity to NLP sites</a>,
+        proxRMP: <a href='#prox-rmp'>proximity to RMP sites</a>,
       }}
     />,
     AND: <FormattedMessage
@@ -336,7 +341,7 @@ export const CATEGORIES = {
   CLEAN_WATER: {
     TITLE: <FormattedMessage
       id={'indicator.categories.clean.water.title'}
-      defaultMessage={'Critical Clean Water and Waste Infrastructure'}
+      defaultMessage={'Critical clean water and waste infrastructure'}
       description= {'category title'}
     />,
     IF: <FormattedMessage
@@ -372,14 +377,13 @@ export const CATEGORIES = {
   HEALTH_BURDENS: {
     TITLE: <FormattedMessage
       id={'indicator.categories.health.burdens.title'}
-      defaultMessage={'Health Burdens'}
+      defaultMessage={'Health burdens'}
       description= {'category title'}
     />,
     IF: <FormattedMessage
       id= {'indicator.categories.health.burdens.if'}
       defaultMessage= {`
-        {if} at or above 90th percentile for {diabetes} OR {asthma} OR {heart} OR
-        in the 90th percentile for above for {life}
+        {if} at or above 90th percentile for {asthma} OR {diabetes} OR {heart} OR {life}
       `}
       description= {'if portion of the formula'}
       values= {{
@@ -387,7 +391,7 @@ export const CATEGORIES = {
         diabetes: <a href='#diabetes'>diabetes</a>,
         asthma: <a href='#asthma'>asthma</a>,
         heart: <a href='#heart-disease'>heart disease</a>,
-        life: <a href='#life-exp'>life expectancy</a>,
+        life: <a href='#life-exp'>low life expectancy</a>,
       }}
     />,
     AND: <FormattedMessage
@@ -418,17 +422,18 @@ export const CATEGORIES = {
     IF: <FormattedMessage
       id= {'indicator.categories.work.dev.if'}
       defaultMessage= {`
-        {if} at or above 90th percentile for {unemploy} OR {linIso} OR for %
-        households at or below 100% federal {poverty} level OR at or below 90th percentile
-        for {areaMedian}
+        {if} at or above 90th percentile for {lowMedInc} OR 
+        at or above the 90th percentile for {linIso} OR
+        {unemploy} OR
+        for percentage individuals in households at or below 100% federal {poverty} level at or above 90%
       `}
       description= {'if portion of the formula'}
       values= {{
         if: <strong>IF</strong>,
-        unemploy: <a href='#unemploy'>unemployment</a>,
+        lowMedInc: <a href='#low-med-inc'>low median income relative to area median income</a>,
         linIso: <a href='#ling-iso'>linguistic isolation</a>,
+        unemploy: <a href='#unemploy'>unemployment</a>,
         poverty: <a href='#poverty'>poverty</a>,
-        areaMedian: <a href='#median-income'>area median income</a>,
       }}
     />,
     AND: <FormattedMessage
@@ -439,7 +444,7 @@ export const CATEGORIES = {
       description= {'and portion of the formula'}
       values= {{
         and: <strong>AND</strong>,
-        highSchool: <a href='#education'>the high school degree achievement rates</a>,
+        highSchool: <a href='#high-school'>the high school degree achievement rates</a>,
       }}
     />,
     THEN: <FormattedMessage
@@ -507,20 +512,58 @@ export const INDICATORS = [
     Percent of a block group's population in households where household income is at or below
     200% of the federal poverty level.
     `,
-    usedIn: `All methodologies except for training and workforce development`,
-    respPartyLabel: `Census's American Community Survey`,
+    usedIn:
+      <FormattedMessage
+        id= {'category.low.income.used.in'}
+        defaultMessage= {`All methodologies except for training and workforce development`}
+        description= {'used in text for low income'}
+      />,
+    respPartyLabel:
+      <FormattedMessage
+        id= {'category.low.income.resp.party.label'}
+        defaultMessage= {'{lowIncResPartyLinkText}.'}
+        description= {'responsible party label for low.income'}
+        values= {{
+          lowIncResPartyLinkText: `Census's American Community Survey`,
+        }}
+      />,
     dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
     dateRange: `2015-2019`,
+  },
+  {
+    domID: 'exp-agr-loss-rate',
+    indicator: 'Expected Agriculture Loss Rate',
+    description: `
+      Economic loss rate to agriculture resulting from natural hazards each year.
+    `,
+    usedIn: `Climate change methodology`,
+    respPartyLabel: `Federal Emergency Management Agency (FEMA)`,
+    dataSourceURL: `https://hazards.fema.gov/nri/expected-annual-loss`,
+    dateRange: `2014-2021`,
+  },
+  {
+    domID: 'exp-bld-loss-rate',
+    indicator: 'Expected Building Loss Rate',
+    description: `
+      Economic loss rate to buildings resulting from natural hazards each year.
+    `,
+    usedIn: `Climate change methodology`,
+    respPartyLabel: `Federal Emergency Management Agency (FEMA)`,
+    dataSourceURL: `https://hazards.fema.gov/nri/expected-annual-loss`,
+    dateRange: `2014-2021`,
   },
   {
     domID: 'exp-pop-loss-rate',
     indicator: 'Expected Population Loss Rate',
     description: `
-    Economic loss rate to the population in fatalities and injuries resulting from the natural
-    hazards each year. This rate is monetized into a population equivalence using a value of
-    statistical life (VSL) approach where each fatality or ten injuries is treated as $7.6 million
-    of economic loss. This was determined by inflating the 2015 VSL of $6.9 million to 2020 dollars
-    using the Bureau of Labor Statistics' Consumer Price Index Inflation Calculator.
+    Rate relative to the population in fatalities and injuries resulting from natural hazards each 
+    year. Population loss is defined as the Spatial Hazard Events and Losses or National Centers 
+    for Environmental Information’s reported number of fatalities and injuries caused by the 
+    hazard occurrence. To combine fatalities and injuries for the computation of population loss value, 
+    an injury is counted as one-tenth (1/10) of a fatality. The NCEI Storm Events Database 
+    classifies injuries and fatalities as direct or indirect. Both direct and indirect injuries 
+    and fatalities are counted as population loss. This total number of injuries and fatalities is 
+    then divided by the population in the census tract to get a per-capita rate of population risk.
     `,
     usedIn: `Climate change methodology`,
     respPartyLabel: `Federal Emergency Management Agency (FEMA)`,
@@ -539,10 +582,10 @@ export const INDICATORS = [
   {
     domID: 'pm-25',
     indicator: 'PM2.5',
-    description: `Fine inhalable particles, with diameters that are generally 
+    description: `Fine inhalable particles, with diameters that are generally
     2.5 micrometers and smaller.`,
     usedIn: `Clean energy and energy efficiency methodology`,
-    respPartyLabel: `Environmental Protection Agency (EPA) Office of Air 
+    respPartyLabel: `Environmental Protection Agency (EPA) Office of Air
     and Radiation (OAR) fusion of model and monitor data as compiled by EPA's EJSCREEN`,
     dataSourceURL: `https://www.epa.gov/ejscreen/technical-documentation-ejscreen`,
     dateRange: `2017`,
@@ -560,7 +603,7 @@ export const INDICATORS = [
   {
     domID: 'traffic-vol',
     indicator: 'Traffic proximity and volume',
-    description: `Count of vehicles (average annual daily traffic) at major roads 
+    description: `Count of vehicles (average annual daily traffic) at major roads
     within 500 meters, divided by distance in meters (not km).`,
     usedIn: `Clean transportation methodology`,
     respPartyLabel: `Department of Transportation (DOT) traffic data as compiled by EPA's EJSCREEN`,
@@ -568,9 +611,20 @@ export const INDICATORS = [
     dateRange: `2017`,
   },
   {
+    domID: 'house-burden',
+    indicator: 'Housing cost burden',
+    description: `Households that are low income and spend more than 30% of their
+    income to housing costs.`,
+    usedIn: `Affordable and sustainable housing methodology`,
+    respPartyLabel: `Department of Housing & Urban Development’s
+    (HUD) Comprehensive Housing Affordability Strategy dataset`,
+    dataSourceURL: `https://www.huduser.gov/portal/datasets/cp.html`,
+    dateRange: `2013-2017`,
+  },
+  {
     domID: 'lead-paint',
     indicator: 'Lead paint',
-    description: `Percent of housing units built pre-1960, used as an 
+    description: `Percent of housing units built pre-1960, used as an
     indicator of potential lead paint exposure in homes.`,
     usedIn: `Affordable and sustainable housing methodology`,
     respPartyLabel: `Census's American Community Survey`,
@@ -578,43 +632,46 @@ export const INDICATORS = [
     dateRange: `2015-2019`,
   },
   {
-    domID: 'median-house',
-    indicator: 'Median house value',
-    description: `XXX`,
+    domID: 'median-home',
+    indicator: 'Median home value',
+    description: `Median home value of owner-occupied housing units in the area.`,
     usedIn: `Affordable and sustainable housing methodology`,
     respPartyLabel: `Census's American Community Survey`,
     dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
     dateRange: `2015-2019`,
   },
   {
-    domID: 'house-burden',
-    indicator: 'Housing cost burden',
-    description: `Households that are low income and spend more than 30% of their 
-    income to housing costs.`,
-    usedIn: `Affordable and sustainable housing methodology`,
-    respPartyLabel: `Department of Housing & Urban Development’s 
-    (HUD) Comprehensive Housing Affordability Strategy dataset`,
-    dataSourceURL: `https://www.huduser.gov/portal/datasets/cp.html`,
-    dateRange: `2013-2017`,
-  },
-  {
-    domID: 'prox-rmp',
-    indicator: 'Proximity to Risk Management Plan (RMP) Sites',
+    domID: 'prox-haz',
+    indicator: 'Proximity to hazardous waste sites',
     description: `
-    Count of RMP (potential chemical accident management plan) facilities within 5 km (or nearest 
-      one beyond 5 km), each divided by distance in kilometers.`,
-    usedIn: `Affordable and sustainable housing methodology`,
-    respPartyLabel: `Environmental Protection Agency (EPA) RMP database as compiled by EPA’s  EJSCREEN`,
-    dataSourceURL: `https://www.epa.gov/ejscreen/technical-documentation-ejscreen`,
-    dateRange: `2020`,
+    Count of hazardous waste facilities (Treatment, Storage, and Disposal Facilities and Large
+    Quantity Generators) within 5 km (or nearest beyond 5 km), each divided by distance in kilometers.
+  `,
+    usedIn: `Reduction and remediation of legacy pollution methodology`,
+    respPartyLabel: `
+    Environmental Protection Agency (EPA) TSDF data calculated from EPA RCRAinfo database 
+    as compiled by EPA’s EJSCREEN`,
+    dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
+    dateRange: `2015-2019`,
   },
   {
     domID: 'prox-npl',
     indicator: 'Proximity to National Priorities List (NPL) Sites',
     description: `
-    Count of proposed or listed NPL - also known as superfund - sites within 5 km (or nearest one 
+    Count of proposed or listed NPL - also known as superfund - sites within 5 km (or nearest one
       beyond 5 km), each divided by distance in kilometers.`,
     usedIn: `Reduction and remediation of legacy pollution methodology`,
+    respPartyLabel: `Environmental Protection Agency (EPA) CERCLIS database as compiled by EPA’s EJSCREEN`,
+    dataSourceURL: `https://enviro.epa.gov/facts/rcrainfo/search.html`,
+    dateRange: `2020`,
+  },
+  {
+    domID: 'prox-rmp',
+    indicator: 'Proximity to Risk Management Plan (RMP) Sites',
+    description: `
+    Count of RMP (potential chemical accident management plan) facilities within 5 km (or nearest
+      one beyond 5 km), each divided by distance in kilometers.`,
+    usedIn: `Affordable and sustainable housing methodology`,
     respPartyLabel: `Environmental Protection Agency (EPA) RMP database as compiled by EPA’s EJSCREEN`,
     dataSourceURL: `https://www.epa.gov/ejscreen/technical-documentation-ejscreen`,
     dateRange: `2020`,
@@ -622,32 +679,32 @@ export const INDICATORS = [
   {
     domID: 'waste-water',
     indicator: 'Wastewater discharge',
-    description: `RSEI modeled Toxic Concentrations at stream segments within 500 
+    description: `RSEI modeled Toxic Concentrations at stream segments within 500
     meters, divided by distance in kilometers (km).`,
     usedIn: `Critical clean water and waste infrastructure`,
-    respPartyLabel: `Environmental Protection Agency (EPA) Risk-Screening 
+    respPartyLabel: `Environmental Protection Agency (EPA) Risk-Screening
     Environmental Indicators (RSEI) Model as compiled by EPA's EJSCREEN`,
     dataSourceURL: `https://www.epa.gov/ejscreen/technical-documentation-ejscreen`,
     dateRange: `2020`,
   },
   {
-    domID: 'diabetes',
-    indicator: 'Diabetes',
-    description: `People ages 18 years and older who report having ever been 
-    told by a doctor, nurse, or other health professionals that they have 
-    diabetes other than diabetes during pregnancy.`,
+    domID: 'asthma',
+    indicator: 'Asthma',
+    description: `Weighted number of respondents people who answer “yes” both
+    to both of the following questions: “Have you ever been told by a doctor,
+    nurse, or other health professional that you have asthma?” and the question
+    “Do you still have asthma?”`,
     usedIn: `Health burdens methodology`,
     respPartyLabel: `Centers for Disease Control and Prevention (CDC) PLACES`,
     dataSourceURL: `https://www.cdc.gov/places/index.html`,
     dateRange: `2016-2019`,
   },
   {
-    domID: 'asthma',
-    indicator: 'Asthma',
-    description: `Weighted number of respondents people who answer “yes” both 
-    to both of the following questions: “Have you ever been told by a doctor, 
-    nurse, or other health professional that you have asthma?” and the question 
-    “Do you still have asthma?”`,
+    domID: 'diabetes',
+    indicator: 'Diabetes',
+    description: `People ages 18 years and older who report having ever been
+    told by a doctor, nurse, or other health professionals that they have
+    diabetes other than diabetes during pregnancy.`,
     usedIn: `Health burdens methodology`,
     respPartyLabel: `Centers for Disease Control and Prevention (CDC) PLACES`,
     dataSourceURL: `https://www.cdc.gov/places/index.html`,
@@ -656,8 +713,8 @@ export const INDICATORS = [
   {
     domID: 'heart-disease',
     indicator: 'Heart disease',
-    description: `People ages 18 years and older who report ever having been told 
-    by a doctor, nurse, or other health professionals that they had angina or 
+    description: `People ages 18 years and older who report ever having been told
+    by a doctor, nurse, or other health professionals that they had angina or
     coronary heart disease.`,
     usedIn: `Health burdens methodology`,
     respPartyLabel: `Centers for Disease Control and Prevention (CDC) PLACES`,
@@ -666,18 +723,17 @@ export const INDICATORS = [
   },
   {
     domID: 'life-exp',
-    indicator: 'Life expectancy',
-    description: `Estimated years of life expectancy.`,
+    indicator: 'Low life expectancy',
+    description: `Average number of years of life a person who has attained a given age can expect to live.`,
     usedIn: `Health burdens methodology`,
-    respPartyLabel: `Centers for Disease Control and Prevention (CDC) 
-    US Small-area Life Expectancy Estimates Project`,
+    respPartyLabel: `CDC’s U.S. Small-area Life Expectancy Estimates Project (USALEEP)`,
     dataSourceURL: `https://www.cdc.gov/nchs/nvss/usaleep/usaleep.html#data`,
     dateRange: `2010-2015`,
   },
   {
-    domID: 'unemploy',
-    indicator: 'Unemployment',
-    description: `Number of unemployed people as a percentage of the civilian labor force`,
+    domID: 'median-income',
+    indicator: 'Low Median Income',
+    description: `Median income of the census tract calculated as a percent of the area’s median income.`,
     usedIn: `Training and workforce development`,
     respPartyLabel: `Census's American Community Survey`,
     dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
@@ -686,8 +742,17 @@ export const INDICATORS = [
   {
     domID: 'ling-iso',
     indicator: 'Linguistic Isolation',
-    description: `Households in which no one age 14 and over speaks English only or also a language
-    other than English`,
+    description: `Households in which no one age 14 and over speaks English only or also speaks
+    a language other than English`,
+    usedIn: `Training and workforce development`,
+    respPartyLabel: `Census's American Community Survey`,
+    dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
+    dateRange: `2015-2019`,
+  },
+  {
+    domID: 'unemploy',
+    indicator: 'Unemployment',
+    description: `Number of unemployed people as a percentage of the civilian labor force`,
     usedIn: `Training and workforce development`,
     respPartyLabel: `Census's American Community Survey`,
     dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
@@ -704,38 +769,24 @@ export const INDICATORS = [
     dateRange: `2015-2019`,
   },
   {
-    domID: 'median-income',
-    indicator: 'Area Median Income',
-    description: `Median income of the census block group calculated as a percent 
-    of the metropolitan area’s or state's median income.`,
-    usedIn: `Training and workforce development`,
-    respPartyLabel: `Census's American Community Survey`,
-    dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
-    dateRange: `2015-2019`,
-  },
-  {
-    domID: 'education',
-    indicator: 'Education, less than high school education',
-    description: `Percent of people ages 25 years or older in a block group whose 
+    domID: 'high-school',
+    indicator: 'High school degree achievement rate',
+    description: `Percent of people ages 25 years or older in a block group whose
     education level is less than a high school diploma.`,
     usedIn: `Training and workforce development`,
     respPartyLabel: `Census's American Community Survey`,
     dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
     dateRange: `2015-2019`,
   },
-  {
-    domID: 'fema-risk',
-    indicator: 'FEMA Risk Index Expected Annual Loss Score',
-    description: `Average economic loss in dollars resulting from natural 
-    hazards each year. It is calculated for each hazard type and quantifies 
-    loss for relevant consequence types: buildings, people, and agriculture.`,
-    usedIn: `?`,
-    respPartyLabel: `Federal Emergency Management Agency (FEMA)`,
-    dataSourceURL: `https://hazards.fema.gov/nri/expected-annual-loss`,
-    dateRange: `2014-2017`,
-  },
 ];
 
+export const RETURN_TO_TOP = {
+  LINK: <FormattedMessage
+    id={'methodology.page.return.to.top.link'}
+    defaultMessage={'Return to top'}
+    description= {'link text to return to top'}
+  />,
+};
 
 // Methodology Steps:
 // export const METHODOLOGY_STEPS = defineMessages({

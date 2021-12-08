@@ -4,18 +4,34 @@ exports[`rendering of the CategoryCard checks if component renders 1`] = `
 <DocumentFragment>
   <div>
     <h3>
-      Climate Change
+      Climate change
     </h3>
     <p>
+      
+      
       <strong>
         IF
       </strong>
        at or above 90th percentile for 
       <a
+        href="#exp-agr-loss-rate"
+      >
+        expected agriculture loss rate
+      </a>
+       OR 
+      <a
+        href="#exp-bld-loss-rate"
+      >
+        expected building loss rate
+      </a>
+       OR 
+      <a
         href="#exp-pop-loss-rate"
       >
         expected population loss rate
       </a>
+      
+      
     </p>
     <p>
       <strong>

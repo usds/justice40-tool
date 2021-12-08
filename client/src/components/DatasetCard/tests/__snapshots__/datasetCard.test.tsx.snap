@@ -24,7 +24,7 @@ exports[`rendering of indicator dataset card checks if component renders 1`] = `
           rel="noreferrer"
           target="_blank"
         >
-          Census's American Community Survey
+          Census's American Community Survey.
         </a>
       </li>
       <li>

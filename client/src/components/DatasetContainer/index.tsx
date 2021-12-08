@@ -1,5 +1,5 @@
 import React from 'react';
-import {useIntl} from 'gatsby-plugin-intl';
+import {Link, useIntl} from 'gatsby-plugin-intl';
 import {Grid} from '@trussworks/react-uswds';
 
 import DatasetCard from '../DatasetCard';
@@ -36,6 +36,11 @@ const DatasetContainer = () => {
             </Grid>
           </Grid>
 
+          <div className={styles.returnToTop}>
+            <Link to={`/methodology`}>
+              {METHODOLOGY_COPY.RETURN_TO_TOP.LINK}
+            </Link>
+          </div>
 
         </J40MainGridContainer>
       </J40MainGridContainer>
