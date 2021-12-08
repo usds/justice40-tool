@@ -5,6 +5,9 @@
     },
     {
       "pattern": "yyyymmdd-xxx.md"
+    },
+    {
+      "pattern": "https://support.gatsbyjs.com/hc/en-us/articles/360053096273-Why-did-I-hit-Out-of-Memory-errors-"
     }
   ],
   "replacementPatterns": [
