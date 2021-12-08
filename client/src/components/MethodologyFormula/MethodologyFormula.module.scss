@@ -1,6 +1,7 @@
 @use '../../styles/design-system.scss' as *;
 
 .formulaContainer {
+    @include u-margin-top(5);
     p:not(:first-child) {
         font-style: italic;
         

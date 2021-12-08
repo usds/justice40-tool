@@ -74,8 +74,8 @@ export const FORMULA = {
 
 // Download Package
 export const DOWNLOAD_FILE_SIZE = '111MB';
-export const DOWNLOAD_LAST_UPDATED = '12/15/21';
-export const DOWNLOAD_LAST_UPDATED_ES = '15/12/21';
+export const DOWNLOAD_LAST_UPDATED = '12/13/21';
+export const DOWNLOAD_LAST_UPDATED_ES = '13/12/21';
 export const VERSION_NUMBER = '0.1';
 
 export const DOWNLOAD_ZIP_URL = [
@@ -87,7 +87,7 @@ export const DOWNLOAD_ZIP_URL = [
 export const DOWNLOAD_PACKAGE = {
   TITLE: <FormattedMessage
     id={'downloadPacket.header.text'}
-    defaultMessage={ `Draft communities list v{versionNumber} ({downloadFileSize})`}
+    defaultMessage={`Communities list v{versionNumber} ({downloadFileSize})`}
     description={'download packet header text'}
     values= {{
       versionNumber: VERSION_NUMBER,
@@ -96,8 +96,10 @@ export const DOWNLOAD_PACKAGE = {
   />,
   DESCRIPTION: <FormattedMessage
     id={ 'downloadPacket.info.text'}
-    // eslint-disable-next-line max-len
-    defaultMessage= {`The package includes draft v{versionNumber} of the list of communities of focus (.csv and .xlsx) and information about how to use the list (.pdf).`}
+    defaultMessage= {`
+      The package includes v{versionNumber} of the list of disadvantaged communities
+      (.csv and .xlsx) and information about how to use the list (.pdf).
+    `}
     description= {'download packet info text'}
     values= {{
       versionNumber: VERSION_NUMBER,
@@ -117,6 +119,24 @@ export const DOWNLOAD_PACKAGE = {
     description= {'download packet button text'}
   />,
 };
+
+
+// Low Income section
+export const LOW_INCOME = defineMessages({
+  HEADING: {
+    id: 'low.income.heading',
+    defaultMessage: 'Low Income',
+    description: 'title of section describing low income',
+  },
+  INFO: {
+    id: 'low.income.info',
+    defaultMessage: `
+      In the 65th percentile or above for percent of census tract population of households
+      where houseshold income is less than or equal to twice the federal poverty level
+    `,
+    description: 'description of low income',
+  },
+});
 
 
 // Dataset section

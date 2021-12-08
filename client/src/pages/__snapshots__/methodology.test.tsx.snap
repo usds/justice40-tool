@@ -317,17 +317,60 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         data-testid="grid"
       >
         <div
-          class="grid-col-12 tablet:grid-col-6"
+          class="grid-col-12 tablet:grid-col-8"
           data-testid="grid"
         >
           <section>
             <p>
-              The methodology for identifying communities of focus is currently in a draft, pre-decisional form that may change over time as more datasets become available.
+              
+      This tool identifies commmunities that are economically disadvantaged, overburdened by 
+      certain environmental risks, and marginalized by legacies of historic underinvestment.
+      A community qualifies as 'disadvantaged' when a census tract is at or above a certain
+      threshold for a climate or environmental burden indicator and also above a certain
+      threshold for a socioeconomic indicator. Census tract geographical boundaries are 
+      determined by the U.S. Census Bureau once every ten years. This tool untilizes the 
+      census tract boundaries from 2010.
+    
+            </p>
+          </section>
+          <section>
+            <p>
+              
+      Under the current formula, a census tract will be considered disadvantaged:
+    
+            </p>
+            <p>
+              <span>
+                IF
+              </span>
+               it is above the threshold for one or more climate or environmental indicator
+            </p>
+            <p>
+              <span>
+                AND
+              </span>
+               it is above the threshold for one or more socioeconomic indicator
+            </p>
+            <p>
+              <span>
+                THEN
+              </span>
+               the community is considered disadvantaged.
+            </p>
+          </section>
+          <section
+            class="j40-mt-7"
+          >
+            <p>
+              
+      Communities will be defined as disadvantaged if they meet the qualifications under any of the
+      following 8 categories of criteria:
+    
             </p>
           </section>
         </div>
         <div
-          class="grid-col-12 tablet:grid-col-6"
+          class="grid-col-12 tablet:grid-col-4"
           data-testid="grid"
         >
           <div
@@ -338,12 +381,15 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div>
                 <div>
                   <div>
-                    Draft communities list v0.1 (111MB)
+                    Communities list v0.1 (111MB)
                   </div>
                   <div>
-                    The package includes draft v0.1 of the list of communities of focus (.csv and .xlsx) and information about how to use the list (.pdf). 
+                    
+      The package includes v0.1 of the list of disadvantaged communities
+      (.csv and .xlsx) and information about how to use the list (.pdf).
+     
                     <span>
-                      Last updated: 12/15/21 
+                      Last updated: 12/13/21 
                     </span>
                   </div>
                   <div>
@@ -371,6 +417,20 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </div>
               </div>
             </div>
+          </div>
+          <div>
+            <p>
+              <sup>
+                *
+              </sup>
+               Low Income
+            </p>
+            <p>
+              
+      In the 65th percentile or above for percent of census tract population of households
+      where houseshold income is less than or equal to twice the federal poverty level
+    
+            </p>
           </div>
         </div>
       </div>

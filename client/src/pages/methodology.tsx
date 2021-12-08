@@ -7,6 +7,7 @@ import DownloadPacket from '../components/DownloadPacket';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import MethodologyFormula from '../components/MethodologyFormula';
 import Layout from '../components/layout';
+import LowIncome from '../components/LowIncome';
 import ScoreStepsList from '../components/scoreStepsList';
 
 import * as METHODOLOGY_COPY from '../data/copy/methodology';
@@ -15,7 +16,6 @@ interface MethodPageProps {
   location: Location;
 }
 
-// markup
 const IndexPage = ({location}: MethodPageProps) => {
   const intl = useIntl();
 
@@ -39,7 +39,7 @@ const IndexPage = ({location}: MethodPageProps) => {
             <MethodologyFormula />
 
             {/* Category description */}
-            <section>
+            <section className={`j40-mt-7`}>
               <p>
                 {intl.formatMessage(METHODOLOGY_COPY.PAGE.CATEGORY_TEXT)}
               </p>
@@ -49,6 +49,7 @@ const IndexPage = ({location}: MethodPageProps) => {
           {/* Second column */}
           <Grid col={12} tablet={{col: 4}}>
             <DownloadPacket />
+            <LowIncome />
           </Grid>
         </Grid>
       </J40MainGridContainer>
