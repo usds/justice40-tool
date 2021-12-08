@@ -2,13 +2,14 @@ import * as React from 'react';
 import {Grid} from '@trussworks/react-uswds';
 import {useIntl} from 'gatsby-plugin-intl';
 
+import Categories from '../components/Categories';
 import DatasetContainer from '../components/DatasetContainer';
 import DownloadPacket from '../components/DownloadPacket';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import MethodologyFormula from '../components/MethodologyFormula';
 import Layout from '../components/layout';
 import LowIncome from '../components/LowIncome';
-import ScoreStepsList from '../components/scoreStepsList';
+// import ScoreStepsList from '../components/scoreStepsList';
 
 import * as METHODOLOGY_COPY from '../data/copy/methodology';
 
@@ -54,15 +55,16 @@ const IndexPage = ({location}: MethodPageProps) => {
         </Grid>
       </J40MainGridContainer>
 
+      <Categories />
       <DatasetContainer/>
 
-      <J40MainGridContainer>
+      {/* <J40MainGridContainer>
         <Grid row>
           <Grid col>
             <ScoreStepsList/>
           </Grid>
         </Grid>
-      </J40MainGridContainer>
+      </J40MainGridContainer> */}
     </Layout>
   );
 };

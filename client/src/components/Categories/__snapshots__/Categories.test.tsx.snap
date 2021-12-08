@@ -1,0 +1,363 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of the Categories checks if component renders 1`] = `
+<DocumentFragment>
+  <div
+    class="grid-container-desktop-lg"
+    data-testid="gridContainer"
+  >
+    <div>
+      <h3>
+        Climate Change
+      </h3>
+      <p>
+        <strong>
+          IF
+        </strong>
+         at or above 90th percentile for 
+        <a
+          href="#"
+        >
+          expected population loss rate
+        </a>
+      </p>
+      <p>
+        <strong>
+          AND
+        </strong>
+         is low income
+        <sup>
+          *
+        </sup>
+      </p>
+      <p>
+        <strong>
+          THEN
+        </strong>
+         the community is disadvantaged.
+      </p>
+    </div>
+    <div>
+      <h3>
+        Clean Energy and Energy Efficiency
+      </h3>
+      <p>
+        
+        
+        <strong>
+          IF
+        </strong>
+         at or above 90th percentile for 
+        <a
+          href="#"
+        >
+          energy cost burden score
+        </a>
+         OR 
+        <a
+          href="#"
+        >
+          PM2.5
+        </a>
+        
+      
+      </p>
+      <p>
+        <strong>
+          AND
+        </strong>
+         is low income
+        <sup>
+          *
+        </sup>
+      </p>
+      <p>
+        <strong>
+          THEN
+        </strong>
+         the community is disadvantaged.
+      </p>
+    </div>
+    <div>
+      <h3>
+        Clean transportation
+      </h3>
+      <p>
+        
+        
+        <strong>
+          IF
+        </strong>
+         at or above 90th percentile for 
+        <a
+          href="#"
+        >
+          diesel particulate matter
+        </a>
+         or 
+        <a
+          href="#"
+        >
+          traffic proximity and volume
+        </a>
+        
+      
+      </p>
+      <p>
+        <strong>
+          AND
+        </strong>
+         is low income
+        <sup>
+          *
+        </sup>
+      </p>
+      <p>
+        <strong>
+          THEN
+        </strong>
+         the community is disadvantaged.
+      </p>
+    </div>
+    <div>
+      <h3>
+        Affordable and sustainable housing
+      </h3>
+      <p>
+        
+        
+        <strong>
+          IF
+        </strong>
+         at or above 90th percentile for 
+        <a
+          href="#"
+        >
+          lead paint
+        </a>
+         AND 
+        <a
+          href="#"
+        >
+          the median house value
+        </a>
+         is less than
+        90th percentile OR at or above the 90th percentile for the 
+        <a
+          href="#"
+        >
+          housing cost burden
+        </a>
+        
+      
+      </p>
+      <p>
+        <strong>
+          AND
+        </strong>
+         is low income
+        <sup>
+          *
+        </sup>
+      </p>
+      <p>
+        <strong>
+          THEN
+        </strong>
+         the community is disadvantaged.
+      </p>
+    </div>
+    <div>
+      <h3>
+        Reduction and remediation of legacy pollution
+      </h3>
+      <p>
+        
+        
+        <strong>
+          IF
+        </strong>
+         at or above 90th percentile for 
+        <a
+          href="#"
+        >
+          proximity to RMP sites
+        </a>
+         OR 
+        <a
+          href="#"
+        >
+          proximity to NLP sites
+        </a>
+        
+      
+      </p>
+      <p>
+        <strong>
+          AND
+        </strong>
+         is low income
+        <sup>
+          *
+        </sup>
+      </p>
+      <p>
+        <strong>
+          THEN
+        </strong>
+         the community is disadvantaged.
+      </p>
+    </div>
+    <div>
+      <h3>
+        Critical Clean Water and Waste Infrastructure
+      </h3>
+      <p>
+        
+        
+        <strong>
+          IF
+        </strong>
+         at or above 90th percentile for 
+        <a
+          href="#"
+        >
+          wastewater discharge
+        </a>
+        
+      
+      </p>
+      <p>
+        <strong>
+          AND
+        </strong>
+         is low income
+        <sup>
+          *
+        </sup>
+      </p>
+      <p>
+        <strong>
+          THEN
+        </strong>
+         the community is disadvantaged.
+      </p>
+    </div>
+    <div>
+      <h3>
+        Health Burdens
+      </h3>
+      <p>
+        
+        
+        <strong>
+          IF
+        </strong>
+         at or above 90th percentile for 
+        <a
+          href="#"
+        >
+          diabetes
+        </a>
+         OR 
+        <a
+          href="#"
+        >
+          asthma
+        </a>
+         OR 
+        <a
+          href="#"
+        >
+          heart disease
+        </a>
+         OR
+        in the 90th percentile for above for 
+        <a
+          href="#"
+        >
+          life expectancy
+        </a>
+        
+      
+      </p>
+      <p>
+        <strong>
+          AND
+        </strong>
+         is low income
+        <sup>
+          *
+        </sup>
+      </p>
+      <p>
+        <strong>
+          THEN
+        </strong>
+         the community is disadvantaged.
+      </p>
+    </div>
+    <div>
+      <h3>
+        Training and workforce development
+      </h3>
+      <p>
+        
+        
+        <strong>
+          IF
+        </strong>
+         at or above 90th percentile for 
+        <a
+          href="#"
+        >
+          unemployment
+        </a>
+         OR 
+        <a
+          href="#"
+        >
+          linguistic isolation
+        </a>
+         OR for %
+        households at or below 100% federal 
+        <a
+          href="#"
+        >
+          poverty
+        </a>
+         level OR at or below 90th percentile
+        for 
+        <a
+          href="#"
+        >
+          area median income
+        </a>
+        
+      
+      </p>
+      <p>
+        
+      
+        <strong>
+          AND
+        </strong>
+         where 
+        <a
+          href="#"
+        >
+          the high school degree achievement rates
+        </a>
+         for adults 25 years and older is less than 95%
+      
+      </p>
+      <p>
+        <strong>
+          THEN
+        </strong>
+         the community is disadvantaged.
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -138,6 +138,312 @@ export const LOW_INCOME = defineMessages({
   },
 });
 
+// Indicator Categories
+export const CATEGORIES = {
+  CLIMATE_CHANGE: {
+    TITLE: <FormattedMessage
+      id={'indicator.categories.climate.change.title'}
+      defaultMessage={'Climate Change'}
+      description= {'category title'}
+    />,
+    IF: <FormattedMessage
+      id= {'indicator.categories.climate.change.if'}
+      defaultMessage= {'{if} at or above 90th percentile for {expLossRate}'}
+      description= {'if portion of the formula'}
+      values= {{
+        if: <strong>IF</strong>,
+        expLossRate: <a href="#">expected population loss rate</a>,
+      }}
+    />,
+    AND: <FormattedMessage
+      id= {'indicator.categories.climate.change.and'}
+      defaultMessage= {'{and} is low income{asterisk}'}
+      description= {'and portion of the formula'}
+      values= {{
+        and: <strong>AND</strong>,
+        asterisk: <sup>*</sup>,
+      }}
+    />,
+    THEN: <FormattedMessage
+      id= {'indicator.categories.climate.change.then'}
+      defaultMessage= {'{then} the community is disadvantaged.'}
+      description= {'then portion of the formula'}
+      values= {{
+        then: <strong>THEN</strong>,
+        asterisk: <sup>*</sup>,
+      }}
+    />,
+  },
+  CLEAN_ENERGY: {
+    TITLE: <FormattedMessage
+      id={'indicator.categories.clean.energy.title'}
+      defaultMessage={'Clean Energy and Energy Efficiency'}
+      description= {'category title'}
+    />,
+    IF: <FormattedMessage
+      id= {'indicator.categories.clean.energy.if'}
+      defaultMessage= {`
+        {if} at or above 90th percentile for {energyCostBur} OR {pm25}
+      `}
+      description= {'if portion of the formula'}
+      values= {{
+        if: <strong>IF</strong>,
+        energyCostBur: <a href='#'>energy cost burden score</a>,
+        pm25: <a href='#'>PM2.5</a>,
+      }}
+    />,
+    AND: <FormattedMessage
+      id= {'indicator.categories.clean.energy.and'}
+      defaultMessage= {'{and} is low income{asterisk}'}
+      description= {'and portion of the formula'}
+      values= {{
+        and: <strong>AND</strong>,
+        asterisk: <sup>*</sup>,
+      }}
+    />,
+    THEN: <FormattedMessage
+      id= {'indicator.categories.clean.energy.then'}
+      defaultMessage= {'{then} the community is disadvantaged.'}
+      description= {'then portion of the formula'}
+      values= {{
+        then: <strong>THEN</strong>,
+        asterisk: <sup>*</sup>,
+      }}
+    />,
+  },
+  CLEAN_TRANSPORT: {
+    TITLE: <FormattedMessage
+      id={'indicator.categories.clean.transport.title'}
+      defaultMessage={'Clean transportation'}
+      description= {'category title'}
+    />,
+    IF: <FormattedMessage
+      id= {'indicator.categories.clean.transport.if'}
+      defaultMessage= {`
+        {if} at or above 90th percentile for {dieselPM} or {traffic}
+      `}
+      description= {'if portion of the formula'}
+      values= {{
+        if: <strong>IF</strong>,
+        dieselPM: <a href='#'>diesel particulate matter</a>,
+        traffic: <a href='#'>traffic proximity and volume</a>,
+      }}
+    />,
+    AND: <FormattedMessage
+      id= {'indicator.categories.clean.transport.and'}
+      defaultMessage= {'{and} is low income{asterisk}'}
+      description= {'and portion of the formula'}
+      values= {{
+        and: <strong>AND</strong>,
+        asterisk: <sup>*</sup>,
+      }}
+    />,
+    THEN: <FormattedMessage
+      id= {'indicator.categories.clean.transport.then'}
+      defaultMessage= {'{then} the community is disadvantaged.'}
+      description= {'then portion of the formula'}
+      values= {{
+        then: <strong>THEN</strong>,
+        asterisk: <sup>*</sup>,
+      }}
+    />,
+  },
+  AFFORDABLE_HOUSE: {
+    TITLE: <FormattedMessage
+      id={'indicator.categories.afford.house.title'}
+      defaultMessage={'Affordable and sustainable housing'}
+      description= {'category title'}
+    />,
+    IF: <FormattedMessage
+      id= {'indicator.categories.afford.house.if'}
+      defaultMessage= {`
+        {if} at or above 90th percentile for {lead} AND {medianHouseVal} is less than
+        90th percentile OR at or above the 90th percentile for the {houseBur}
+      `}
+      description= {'if portion of the formula'}
+      values= {{
+        if: <strong>IF</strong>,
+        lead: <a href='#'>lead paint</a>,
+        medianHouseVal: <a href='#'>the median house value</a>,
+        houseBur: <a href='#'>housing cost burden</a>,
+      }}
+    />,
+    AND: <FormattedMessage
+      id= {'indicator.categories.afford.house.and'}
+      defaultMessage= {'{and} is low income{asterisk}'}
+      description= {'and portion of the formula'}
+      values= {{
+        and: <strong>AND</strong>,
+        asterisk: <sup>*</sup>,
+      }}
+    />,
+    THEN: <FormattedMessage
+      id= {'indicator.categories.afford.house.then'}
+      defaultMessage= {'{then} the community is disadvantaged.'}
+      description= {'then portion of the formula'}
+      values= {{
+        then: <strong>THEN</strong>,
+        asterisk: <sup>*</sup>,
+      }}
+    />,
+  },
+  LEGACY_POLLUTION: {
+    TITLE: <FormattedMessage
+      id={'indicator.categories.legacy.pollution.title'}
+      defaultMessage={'Reduction and remediation of legacy pollution'}
+      description= {'category title'}
+    />,
+    IF: <FormattedMessage
+      id= {'indicator.categories.legacy.pollution.if'}
+      defaultMessage= {`
+        {if} at or above 90th percentile for {proxRMP} OR {proxNPL}
+      `}
+      description= {'if portion of the formula'}
+      values= {{
+        if: <strong>IF</strong>,
+        proxRMP: <a href='#'>proximity to RMP sites</a>,
+        proxNPL: <a href='#'>proximity to NLP sites</a>,
+      }}
+    />,
+    AND: <FormattedMessage
+      id= {'indicator.categories.legacy.pollution.and'}
+      defaultMessage= {'{and} is low income{asterisk}'}
+      description= {'and portion of the formula'}
+      values= {{
+        and: <strong>AND</strong>,
+        asterisk: <sup>*</sup>,
+      }}
+    />,
+    THEN: <FormattedMessage
+      id= {'indicator.categories.legacy.pollution.then'}
+      defaultMessage= {'{then} the community is disadvantaged.'}
+      description= {'then portion of the formula'}
+      values= {{
+        then: <strong>THEN</strong>,
+        asterisk: <sup>*</sup>,
+      }}
+    />,
+  },
+  CLEAN_WATER: {
+    TITLE: <FormattedMessage
+      id={'indicator.categories.clean.water.title'}
+      defaultMessage={'Critical Clean Water and Waste Infrastructure'}
+      description= {'category title'}
+    />,
+    IF: <FormattedMessage
+      id= {'indicator.categories.clean.water.if'}
+      defaultMessage= {`
+        {if} at or above 90th percentile for {wasteWater}
+      `}
+      description= {'if portion of the formula'}
+      values= {{
+        if: <strong>IF</strong>,
+        wasteWater: <a href='#'>wastewater discharge</a>,
+      }}
+    />,
+    AND: <FormattedMessage
+      id= {'indicator.categories.clean.water.and'}
+      defaultMessage= {'{and} is low income{asterisk}'}
+      description= {'and portion of the formula'}
+      values= {{
+        and: <strong>AND</strong>,
+        asterisk: <sup>*</sup>,
+      }}
+    />,
+    THEN: <FormattedMessage
+      id= {'indicator.categories.clean.water.then'}
+      defaultMessage= {'{then} the community is disadvantaged.'}
+      description= {'then portion of the formula'}
+      values= {{
+        then: <strong>THEN</strong>,
+        asterisk: <sup>*</sup>,
+      }}
+    />,
+  },
+  HEALTH_BURDENS: {
+    TITLE: <FormattedMessage
+      id={'indicator.categories.health.burdens.title'}
+      defaultMessage={'Health Burdens'}
+      description= {'category title'}
+    />,
+    IF: <FormattedMessage
+      id= {'indicator.categories.health.burdens.if'}
+      defaultMessage= {`
+        {if} at or above 90th percentile for {diabetes} OR {asthma} OR {heart} OR
+        in the 90th percentile for above for {life}
+      `}
+      description= {'if portion of the formula'}
+      values= {{
+        if: <strong>IF</strong>,
+        diabetes: <a href='#'>diabetes</a>,
+        asthma: <a href='#'>asthma</a>,
+        heart: <a href='#'>heart disease</a>,
+        life: <a href='#'>life expectancy</a>,
+      }}
+    />,
+    AND: <FormattedMessage
+      id= {'indicator.categories.health.burdens.and'}
+      defaultMessage= {'{and} is low income{asterisk}'}
+      description= {'and portion of the formula'}
+      values= {{
+        and: <strong>AND</strong>,
+        asterisk: <sup>*</sup>,
+      }}
+    />,
+    THEN: <FormattedMessage
+      id= {'indicator.categories.health.burdens.then'}
+      defaultMessage= {'{then} the community is disadvantaged.'}
+      description= {'then portion of the formula'}
+      values= {{
+        then: <strong>THEN</strong>,
+        asterisk: <sup>*</sup>,
+      }}
+    />,
+  },
+  WORK_DEV: {
+    TITLE: <FormattedMessage
+      id={'indicator.categories.work.dev.title'}
+      defaultMessage={'Training and workforce development'}
+      description= {'category title'}
+    />,
+    IF: <FormattedMessage
+      id= {'indicator.categories.work.dev.if'}
+      defaultMessage= {`
+        {if} at or above 90th percentile for {unemploy} OR {linIso} OR for %
+        households at or below 100% federal {poverty} level OR at or below 90th percentile
+        for {areaMedian}
+      `}
+      description= {'if portion of the formula'}
+      values= {{
+        if: <strong>IF</strong>,
+        unemploy: <a href='#'>unemployment</a>,
+        linIso: <a href='#'>linguistic isolation</a>,
+        poverty: <a href='#'>poverty</a>,
+        areaMedian: <a href='#'>area median income</a>,
+      }}
+    />,
+    AND: <FormattedMessage
+      id= {'indicator.categories.work.dev.and'}
+      defaultMessage= {`
+      {and} where {highSchool} for adults 25 years and older is less than 95%
+      `}
+      description= {'and portion of the formula'}
+      values= {{
+        and: <strong>AND</strong>,
+        highSchool: <a href='#'>the high school degree achievement rates</a>,
+      }}
+    />,
+    THEN: <FormattedMessage
+      id= {'indicator.categories.work.dev.then'}
+      defaultMessage= {'{then} the community is disadvantaged.'}
+      description= {'then portion of the formula'}
+      values= {{
+        then: <strong>THEN</strong>,
+        asterisk: <sup>*</sup>,
+      }}
+    />,
+  },
+};
 
 // Dataset section
 export const DATASETS = defineMessages({

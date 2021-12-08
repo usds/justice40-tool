@@ -1,0 +1,15 @@
+@use '../../styles/design-system.scss' as *;
+
+@mixin baseCard {
+  @include u-padding-top(0);
+  @include u-padding-right(6);
+  @include u-padding-bottom(6);
+  @include u-padding-left(6);
+  @include u-margin-bottom(6);
+  max-width: 34rem;
+}
+
+.categoryCard {
+  @include baseCard;
+  @include u-bg('blue-cool-5');
+}

@@ -1,0 +1,7 @@
+@use '../../styles/design-system.scss' as *;
+
+.categoriesContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

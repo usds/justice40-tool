@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of the CategoryCard checks if component renders 1`] = `
+<DocumentFragment>
+  <div>
+    <h3>
+      Climate Change
+    </h3>
+    <p>
+      <strong>
+        IF
+      </strong>
+       at or above 90th percentile for 
+      <a
+        href="#"
+      >
+        expected population loss rate
+      </a>
+    </p>
+    <p>
+      <strong>
+        AND
+      </strong>
+       is low income
+      <sup>
+        *
+      </sup>
+    </p>
+    <p>
+      <strong>
+        THEN
+      </strong>
+       the community is disadvantaged.
+    </p>
+  </div>
+</DocumentFragment>
+`;
