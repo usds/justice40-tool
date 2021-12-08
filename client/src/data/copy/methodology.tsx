@@ -473,63 +473,151 @@ export const DATASETS = defineMessages({
 });
 
 export const DATASET_CARD_LABELS = defineMessages({
-  RESOLUTION: {
-    id: 'datasetCard.dataResolution',
-    defaultMessage: 'Data resolution: ',
+  USED_IN: {
+    id: 'datasetCard.used.in',
+    defaultMessage: 'Used in: ',
     description: 'label associated with explaining the card',
   },
-  SOURCE: {
-    id: 'datasetCard.dataSource',
-    defaultMessage: 'Data source: ',
+  RESP_PARTY: {
+    id: 'datasetCard.responsible.party',
+    defaultMessage: 'Responsible Party: ',
     description: 'label associated with explaining the card',
   },
   DATE_RANGE: {
-    id: 'datasetCard.dataDateRange',
-    defaultMessage: 'Data date range: ',
+    id: 'datasetCard.date.range',
+    defaultMessage: 'Date range: ',
     description: 'label associated with explaining the card',
   },
 });
 
 export const INDICATORS = [
   {
-    indicator: 'Area Median Income',
-    description: `Median income of the census block group calculated as a percent 
-    of the metropolitan area’s or state's median income.`,
-    dataResolution: `Census block group`,
-    dataSourceLabel: `Census's American Community Survey`,
+    indicator: 'Low Income',
+    description: `
+    Percent of a block group's population in households where household income is at or below
+    200% of the federal poverty level.
+    `,
+    usedIn: `All methodologies except for training and workforce development`,
+    respPartyLabel: `Census's American Community Survey`,
     dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
-    dataDateRange: `2015-2019`,
+    dateRange: `2015-2019`,
   },
   {
-    indicator: 'Poverty',
-    description: `Percent of a block group's population in households where the household income` +
-    ` is at or below 100% of the federal poverty level.`,
-    dataResolution: `Census block group`,
-    dataSourceLabel: `Census's American Community Survey`,
-    dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
-    dataDateRange: `2015-2019`,
+    indicator: 'Expected Population Loss Rate',
+    description: `
+    Economic loss rate to the population in fatalities and injuries resulting from the natural
+    hazards each year. This rate is monetized into a population equivalence using a value of
+    statistical life (VSL) approach where each fatality or ten injuries is treated as $7.6 million
+    of economic loss. This was determined by inflating the 2015 VSL of $6.9 million to 2020 dollars
+    using the Bureau of Labor Statistics' Consumer Price Index Inflation Calculator.
+    `,
+    usedIn: `Climate change methodology`,
+    respPartyLabel: `Federal Emergency Management Agency (FEMA)`,
+    dataSourceURL: `https://hazards.fema.gov/nri/expected-annual-loss`,
+    dateRange: `2014-2021`,
   },
   {
-    indicator: 'Education, less than high school education',
-    description: `Percent of people ages 25 years or older in a block group whose 
-    education level is less than a high school diploma.`,
-    dataResolution: `Census block group`,
-    dataSourceLabel: `Census's American Community Survey`,
-    dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
-    dataDateRange: `2015-2019`,
+    indicator: 'Energy burden',
+    description: `Average annual energy cost ($) divided by household income.`,
+    usedIn: `Clean energy and energy efficiency methodology`,
+    respPartyLabel: `Department of Energy (DOE) LEAD Score`,
+    dataSourceURL: `https://www.energy.gov/eere/slsc/low-income-energy-affordability-data-lead-tool`,
+    dateRange: `2018`,
   },
-];
-
-export const ADDITIONAL_INDICATORS = [
+  {
+    indicator: 'PM2.5',
+    description: `Fine inhalable particles, with diameters that are generally 
+    2.5 micrometers and smaller.`,
+    usedIn: `Clean energy and energy efficiency methodology`,
+    respPartyLabel: `Environmental Protection Agency (EPA) Office of Air 
+    and Radiation (OAR) fusion of model and monitor data as compiled by EPA's EJSCREEN`,
+    dataSourceURL: `https://www.epa.gov/ejscreen/technical-documentation-ejscreen`,
+    dateRange: `2017`,
+  },
+  {
+    indicator: 'Diesel particulate matter',
+    description: `Mixture of particles that is part of diesel exhaust in the air.`,
+    usedIn: `Clean transportation methodology`,
+    respPartyLabel: `Environmental Protection Agency (EPA) National Air Toxics Assessment (NATA)
+    as compiled by EPA's EJSCREEN`,
+    dataSourceURL: `https://www.epa.gov/ejscreen/technical-documentation-ejscreen`,
+    dateRange: `2014`,
+  },
+  {
+    indicator: 'Traffic proximity and volume',
+    description: `Count of vehicles (average annual daily traffic) at major roads 
+    within 500 meters, divided by distance in meters (not km).`,
+    usedIn: `Clean transportation methodology`,
+    respPartyLabel: `Department of Transportation (DOT) traffic data as compiled by EPA's EJSCREEN`,
+    dataSourceURL: `https://www.epa.gov/ejscreen/technical-documentation-ejscreen`,
+    dateRange: `2017`,
+  },
+  {
+    indicator: 'Lead paint',
+    description: `Percent of housing units built pre-1960, used as an 
+    indicator of potential lead paint exposure in homes.`,
+    usedIn: `Affordable and sustainable housing methodology`,
+    respPartyLabel: `Census's American Community Survey`,
+    dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
+    dateRange: `2015-2019`,
+  },
+  {
+    indicator: 'Median house value',
+    description: `XXX`,
+    usedIn: `Affordable and sustainable housing methodology`,
+    respPartyLabel: `Census's American Community Survey`,
+    dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
+    dateRange: `2015-2019`,
+  },
+  {
+    indicator: 'Housing cost burden',
+    description: `Households that are low income and spend more than 30% of their 
+    income to housing costs.`,
+    usedIn: `Affordable and sustainable housing methodology`,
+    respPartyLabel: `Department of Housing & Urban Development’s 
+    (HUD) Comprehensive Housing Affordability Strategy dataset`,
+    dataSourceURL: `https://www.huduser.gov/portal/datasets/cp.html`,
+    dateRange: `2013-2017`,
+  },
+  {
+    indicator: 'Proximity to Risk Management Plan (RMP) Sites',
+    description: `
+    Count of RMP (potential chemical accident management plan) facilities within 5 km (or nearest 
+    one beyond 5 km), each divided by distance in kilometers.`,
+    usedIn: `Affordable and sustainable housing methodology`,
+    respPartyLabel: `Environmental Protection Agency (EPA) RMP database as compiled by EPA’s  EJSCREEN`,
+    dataSourceURL: `https://www.epa.gov/ejscreen/technical-documentation-ejscreen`,
+    dateRange: `2020`,
+  },
+  {
+    indicator: 'Proximity to National Priorities List (NPL) Sites',
+    description: `
+    Count of proposed or listed NPL - also known as superfund - sites within 5 km (or nearest one 
+    beyond 5 km), each divided by distance in kilometers.`,
+    usedIn: `Reduction and remediation of legacy pollution methodology`,
+    respPartyLabel: `Environmental Protection Agency (EPA) RMP database as compiled by EPA’s EJSCREEN`,
+    dataSourceURL: `https://www.epa.gov/ejscreen/technical-documentation-ejscreen`,
+    dateRange: `2020`,
+  },
+  {
+    indicator: 'Wastewater discharge',
+    description: `RSEI modeled Toxic Concentrations at stream segments within 500 
+    meters, divided by distance in kilometers (km).`,
+    usedIn: `Critical clean water and waste infrastructure`,
+    respPartyLabel: `Environmental Protection Agency (EPA) Risk-Screening 
+    Environmental Indicators (RSEI) Model as compiled by EPA's EJSCREEN`,
+    dataSourceURL: `https://www.epa.gov/ejscreen/technical-documentation-ejscreen`,
+    dateRange: `2020`,
+  },
   {
     indicator: 'Diabetes',
     description: `People ages 18 years and older who report having ever been 
     told by a doctor, nurse, or other health professionals that they have 
     diabetes other than diabetes during pregnancy.`,
-    dataResolution: `Census tract`,
-    dataSourceLabel: `Centers for Disease Control and Prevention (CDC) PLACES`,
+    usedIn: `Health burdens methodology`,
+    respPartyLabel: `Centers for Disease Control and Prevention (CDC) PLACES`,
     dataSourceURL: `https://www.cdc.gov/places/index.html`,
-    dataDateRange: `2016-2019`,
+    dateRange: `2016-2019`,
   },
   {
     indicator: 'Asthma',
@@ -537,106 +625,84 @@ export const ADDITIONAL_INDICATORS = [
     to both of the following questions: “Have you ever been told by a doctor, 
     nurse, or other health professional that you have asthma?” and the question 
     “Do you still have asthma?”`,
-    dataResolution: `Census tract`,
-    dataSourceLabel: `Centers for Disease Control and Prevention (CDC) PLACES`,
+    usedIn: `Health burdens methodology`,
+    respPartyLabel: `Centers for Disease Control and Prevention (CDC) PLACES`,
     dataSourceURL: `https://www.cdc.gov/places/index.html`,
-    dataDateRange: `2016-2019`,
+    dateRange: `2016-2019`,
   },
   {
     indicator: 'Heart disease',
     description: `People ages 18 years and older who report ever having been told 
     by a doctor, nurse, or other health professionals that they had angina or 
     coronary heart disease.`,
-    dataResolution: `Census tract`,
-    dataSourceLabel: `Centers for Disease Control and Prevention (CDC) PLACES`,
+    usedIn: `Health burdens methodology`,
+    respPartyLabel: `Centers for Disease Control and Prevention (CDC) PLACES`,
     dataSourceURL: `https://www.cdc.gov/places/index.html`,
-    dataDateRange: `2016-2019`,
+    dateRange: `2016-2019`,
   },
   {
     indicator: 'Life expectancy',
     description: `Estimated years of life expectancy.`,
-    dataResolution: `Census tract`,
-    dataSourceLabel: `Centers for Disease Control and Prevention (CDC) 
+    usedIn: `Health burdens methodology`,
+    respPartyLabel: `Centers for Disease Control and Prevention (CDC) 
     US Small-area Life Expectancy Estimates Project`,
     dataSourceURL: `https://www.cdc.gov/nchs/nvss/usaleep/usaleep.html#data`,
-    dataDateRange: `2010-2015`,
+    dateRange: `2010-2015`,
   },
   {
-    indicator: 'Traffic proximity and volume',
-    description: `Count of vehicles (average annual daily traffic) at major roads 
-    within 500 meters, divided by distance in meters (not km).`,
-    dataResolution: `Census block group`,
-    dataSourceLabel: `Department of Transportation (DOT) traffic data as compiled by EPA's EJSCREEN`,
-    dataSourceURL: `https://www.epa.gov/ejscreen/technical-documentation-ejscreen`,
-    dataDateRange: `2017`,
+    indicator: 'Unemployment',
+    description: `Number of unemployed people as a percentage of the civilian labor force`,
+    usedIn: `Training and workforce development`,
+    respPartyLabel: `Census's American Community Survey`,
+    dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
+    dateRange: `2015-2019`,
+  },
+  {
+    indicator: 'Linguistic Isolation',
+    description: `Households in which no one age 14 and over speaks English only or also a language
+    other than English`,
+    usedIn: `Training and workforce development`,
+    respPartyLabel: `Census's American Community Survey`,
+    dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
+    dateRange: `2015-2019`,
+  },
+  {
+    indicator: 'Poverty',
+    description: `Percent of a block group's population in households where the household income` +
+    ` is at or below 100% of the federal poverty level.`,
+    usedIn: `Training and workforce development`,
+    respPartyLabel: `Census's American Community Survey`,
+    dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
+    dateRange: `2015-2019`,
+  },
+  {
+    indicator: 'Area Median Income',
+    description: `Median income of the census block group calculated as a percent 
+    of the metropolitan area’s or state's median income.`,
+    usedIn: `Training and workforce development`,
+    respPartyLabel: `Census's American Community Survey`,
+    dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
+    dateRange: `2015-2019`,
+  },
+  {
+    indicator: 'Education, less than high school education',
+    description: `Percent of people ages 25 years or older in a block group whose 
+    education level is less than a high school diploma.`,
+    usedIn: `Training and workforce development`,
+    respPartyLabel: `Census's American Community Survey`,
+    dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
+    dateRange: `2015-2019`,
   },
   {
     indicator: 'FEMA Risk Index Expected Annual Loss Score',
     description: `Average economic loss in dollars resulting from natural 
     hazards each year. It is calculated for each hazard type and quantifies 
     loss for relevant consequence types: buildings, people, and agriculture.`,
-    dataResolution: `Census tract`,
-    dataSourceLabel: `Federal Emergency Management Agency (FEMA)`,
+    usedIn: `?`,
+    respPartyLabel: `Federal Emergency Management Agency (FEMA)`,
     dataSourceURL: `https://hazards.fema.gov/nri/expected-annual-loss`,
-    dataDateRange: `2014-2017`,
+    dateRange: `2014-2017`,
   },
-  {
-    indicator: 'Energy burden',
-    description: `Average annual energy cost ($) divided by household income.`,
-    dataResolution: `Census tract`,
-    dataSourceLabel: `Department of Energy (DOE) LEAD Score`,
-    dataSourceURL: `https://www.energy.gov/eere/slsc/low-income-energy-affordability-data-lead-tool`,
-    dataDateRange: `2018`,
-  },
-  {
-    indicator: 'Housing cost burden',
-    description: `Households that are low income and spend more than 30% of their 
-    income to housing costs.`,
-    dataResolution: `Census tract`,
-    dataSourceLabel: `Department of Housing & Urban Development’s 
-    (HUD) Comprehensive Housing Affordability Strategy dataset`,
-    dataSourceURL: `https://www.huduser.gov/portal/datasets/cp.html`,
-    dataDateRange: `2013-2017`,
-  },
-  {
-    indicator: 'Wastewater discharge',
-    description: `RSEI modeled Toxic Concentrations at stream segments within 500 
-    meters, divided by distance in kilometers (km).`,
-    dataResolution: `Census block group`,
-    dataSourceLabel: `Environmental Protection Agency (EPA) Risk-Screening 
-    Environmental Indicators (RSEI) Model as compiled by EPA's EJSCREEN`,
-    dataSourceURL: `https://www.epa.gov/ejscreen/technical-documentation-ejscreen`,
-    dataDateRange: `2020`,
-  },
-  {
-    indicator: 'Lead paint',
-    description: `Percent of housing units built pre-1960, used as an 
-    indicator of potential lead paint exposure in homes.`,
-    dataResolution: `Census block group`,
-    dataSourceLabel: `Census's American Community Survey`,
-    dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
-    dataDateRange: `2015-2019`,
-  },
-  {
-    indicator: 'Diesel particulate matter',
-    description: `Mixture of particles that is part of diesel exhaust in the air.`,
-    dataResolution: `Census block group`,
-    dataSourceLabel: `Environmental Protection Agency (EPA) National Air Toxics Assessment (NATA)
-    as compiled by EPA's EJSCREEN`,
-    dataSourceURL: `https://www.epa.gov/ejscreen/technical-documentation-ejscreen`,
-    dataDateRange: `5-year estimates, 2015-2019`,
-  },
-  {
-    indicator: 'PM2.5',
-    description: `Fine inhalable particles, with diameters that are generally 
-    2.5 micrometers and smaller.`,
-    dataResolution: `Census block group`,
-    dataSourceLabel: `Environmental Protection Agency (EPA) Office of Air 
-    and Radiation (OAR) fusion of model and monitor data as compiled by EPA's EJSCREEN`,
-    dataSourceURL: `https://www.epa.gov/ejscreen/technical-documentation-ejscreen`,
-    dataDateRange: `2017`,
-  },
-
 ];
 
 

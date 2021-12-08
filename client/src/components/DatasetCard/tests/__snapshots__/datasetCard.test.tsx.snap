@@ -1,21 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering of addtional indicator dataset card checks if component renders 1`] = `<DocumentFragment />`;
-
 exports[`rendering of indicator dataset card checks if component renders 1`] = `
 <DocumentFragment>
   <div>
     <h3>
-      Area Median Income
+      Low Income
     </h3>
     <div>
-      Median income of the census block group calculated as a percent 
-    of the metropolitan area’s or state's median income.
+      
+    Percent of a block group's population in households where household income is at or below
+    200% of the federal poverty level.
+    
     </div>
     <ul>
       <li>
         <span>
-          Data source: 
+          Responsible Party: 
         </span>
         <a
           href="https://www.census.gov/programs-surveys/acs"
@@ -27,15 +27,15 @@ exports[`rendering of indicator dataset card checks if component renders 1`] = `
       </li>
       <li>
         <span>
-          Data resolution: 
+          Date range: 
         </span>
-        Census block group
+        2015-2019
       </li>
       <li>
         <span>
-          Data date range: 
+          Used in: 
         </span>
-        2015-2019
+        All methodologies except for training and workforce development
       </li>
     </ul>
   </div>
