@@ -7,6 +7,7 @@ This page documents the installation steps for some of the software needed to wo
 - If you want to quickly run everything locally, see [`QUICKSTART.md`](QUICKSTART.md).
 - If you are working with the frontend, see [`client/README.md`](client/README.md) for installation steps specific to that part of the project.
 - If you are working with the data pipeline, see [`data/data-pipeline/README.md`](data/data-pipeline/README.md) for installation steps specific to that part of the project.
+- If you want to understand the current deployment process, see [`.github/workflows/README.md`](.github/workflows/README.md).
 
 ## Install Homebrew (MacOS only)
 
