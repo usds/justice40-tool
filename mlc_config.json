@@ -8,6 +8,12 @@
     },
     {
       "pattern": "https://support.gatsbyjs.com/hc/en-us/articles/360053096273-Why-did-I-hit-Out-of-Memory-errors-"
+    },
+    {
+      "pattern": "^http://www.datasciencetoolkit.org"
+    },
+    {
+      "pattern": "^https://github.com/usds/environmental-justice/"
     }
   ],
   "replacementPatterns": [
