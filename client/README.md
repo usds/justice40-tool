@@ -75,7 +75,7 @@ DATA_SOURCE env variable in the docker-compose.yml. See [environment variables](
 
 ### Viewing data on the map
 
-See [VIEW_MAP_DATA](./VIEW_MAP_DATA) for more details on this.
+See [VIEW_MAP_DATA.md](./VIEW_MAP_DATA.md) for more details on this.
 
 ## Linting and Formatting
 
@@ -172,7 +172,7 @@ When developing, to use a flag:
 1. Pass the Gatsby-provided `location` variable to your component. You have several options here:
    1. If your page uses the `Layout` [component](src/components/layout.tsx), you automatically get `URLFlagProvider` (see [FlagContext](src/contexts/FlagContext.tsx) for more info).
    2. If your page does not use `Layout`, you need to surround your component with a `URLFlagProvider` component and pass `location`. You can get `location` from the default props of the page (more [here](https://www.gatsbyjs.com/docs/location-data-from-props/)). See [Index.tsx](src/pages/index.tsx) for an example.
-2. Use the `useFlags()` hook to get access to an array of flags, and check this array for the presence of the correct feature identifier. See [J40Header](src/components/J40Header.tsx) for an example.
+2. Use the `useFlags()` hook to get access to an array of flags, and check this array for the presence of the correct feature identifier. See [J40Header](src/components/J40Header/J40Header.tsx) for an example.
 
 #### When to use flags:
 

@@ -6,7 +6,7 @@
 
 The following is a set of guidelines for contributing to the Justice40 Tool that lives in this repository.
 
-Before contributing, we encourage you to also read our [LICENSE](https://github.com/usds/justice40-tool/blob/main/LICENSE) and [README](https://github.com/usds/justice40-tool/blob/main/README) files, also found in this repository. If you have any questions not answered by the content of this repository, please don't hesitate to [contact us](mailto:justice40open@usds.gov).
+Before contributing, we encourage you to also read our [LICENSE](LICENSE.md) and [README](README.md) files, also found in this repository. If you have any questions not answered by the content of this repository, please don't hesitate to [contact us](mailto:justice40open@usds.gov).
 
 ## Public Domain
 
