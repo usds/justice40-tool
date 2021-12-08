@@ -1,14 +1,12 @@
-# Installing Required Software for the Justice40 Tool
+# Justice40 Tool Installation
 
 *[¡Lea esto en español!](INSTALLATION-es.md)*
 
-This page documents the installation steps for some of the software used to work with this project, but you may not need all of it depending on what you are trying to do.
+This page documents the installation steps for some of the software needed to work with this project. After following the steps on this page, continue on to one of the following, depending on what you are trying to do:
 
-If you want to quickly run everything locally, see [`QUICKSTART.md`](QUICKSTART.md).
-
-If you are working with the frontend, see [`client/README.md`](client/README.md) for installation steps specific to that part of the project.
-
-If you are working with the data pipeline, see [`data/data-pipeline/README.md`](data/data-pipeline/README.md) for installation steps specific to that part of the project.
+- If you want to quickly run everything locally, see [`QUICKSTART.md`](QUICKSTART.md).
+- If you are working with the frontend, see [`client/README.md`](client/README.md) for installation steps specific to that part of the project.
+- If you are working with the data pipeline, see [`data/data-pipeline/README.md`](data/data-pipeline/README.md) for installation steps specific to that part of the project.
 
 ## Install Homebrew (MacOS only)
 
@@ -23,7 +21,7 @@ Homebrew is an easy way to manage software downloads on MacOS. You don't *have* 
 
 You should regularly run `brew update` and `brew doctor` to make sure your packages are up to date and in good condition.
 
-## IDE set up
+## IDE set up (Optional)
 While any IDE can be used, we're outlining how to set up VS Code
 
 1. Open the terminal and type `brew install --cask visual-studio-code` and hit RETURN.
@@ -43,7 +41,7 @@ While any IDE can be used, we're outlining how to set up VS Code
 4. [Live Share Audio](https://github.com/MicrosoftDocs/live-share)
 5. [Live Share Extention Pack](https://github.com/MicrosoftDocs/live-share)
 
-### Install Git
+## Install Git
 
 #### MacOS
 1. Open the terminal and type `git` and hit RETURN.
