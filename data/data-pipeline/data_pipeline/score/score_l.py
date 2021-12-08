@@ -451,8 +451,6 @@ class ScoreL(Score):
             field_names.DIABETES_LOW_INCOME_FIELD,
             field_names.ASTHMA_LOW_INCOME_FIELD,
             field_names.HEART_DISEASE_LOW_INCOME_FIELD,
-            # TODO: delete
-            field_names.HEALTHY_FOOD_LOW_INCOME_FIELD,
             field_names.LOW_LIFE_EXPECTANCY_LOW_INCOME_FIELD,
         ]
 
@@ -478,14 +476,6 @@ class ScoreL(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-        healthy_food_threshold = (
-            self.df[
-                field_names.HEALTHY_FOOD_FIELD
-                + field_names.PERCENTILE_FIELD_SUFFIX
-            ]
-            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
-        )
-
         low_life_expectancy_threshold = (
             self.df[
                 field_names.LOW_LIFE_EXPECTANCY_FIELD
@@ -505,9 +495,6 @@ class ScoreL(Score):
         )
         self.df[field_names.LOW_LIFE_EXPECTANCY_LOW_INCOME_FIELD] = (
             low_life_expectancy_threshold & self.df[field_names.FPL_200_SERIES]
-        )
-        self.df[field_names.HEALTHY_FOOD_LOW_INCOME_FIELD] = (
-            healthy_food_threshold & self.df[field_names.FPL_200_SERIES]
         )
 
         self._increment_total_eligibility_exceeded(health_eligibility_columns)
