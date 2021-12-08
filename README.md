@@ -1,5 +1,5 @@
 # Justice40 Tool
-[![CC0 License](https://img.shields.io/badge/license-CCO--1.0-brightgreen)](https://github.com/usds/justice40-tool/blob/main/LICENSE)
+[![CC0 License](https://img.shields.io/badge/license-CCO--1.0-brightgreen)](https://github.com/usds/justice40-tool/blob/main/LICENSE.md)
 
 *[¡Lea esto en español!](README-es.md)*
 
