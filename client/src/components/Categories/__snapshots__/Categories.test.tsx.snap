@@ -16,7 +16,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         </strong>
          at or above 90th percentile for 
         <a
-          href="#"
+          href="#exp-pop-loss-rate"
         >
           expected population loss rate
         </a>
@@ -49,13 +49,13 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         </strong>
          at or above 90th percentile for 
         <a
-          href="#"
+          href="#energy-burden"
         >
           energy cost burden score
         </a>
          OR 
         <a
-          href="#"
+          href="#pm-25"
         >
           PM2.5
         </a>
@@ -90,13 +90,13 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         </strong>
          at or above 90th percentile for 
         <a
-          href="#"
+          href="#diesel-pm"
         >
           diesel particulate matter
         </a>
          or 
         <a
-          href="#"
+          href="#traffic-vol"
         >
           traffic proximity and volume
         </a>
@@ -131,20 +131,20 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         </strong>
          at or above 90th percentile for 
         <a
-          href="#"
+          href="#lead-paint"
         >
           lead paint
         </a>
          AND 
         <a
-          href="#"
+          href="#median-house"
         >
           the median house value
         </a>
          is less than
         90th percentile OR at or above the 90th percentile for the 
         <a
-          href="#"
+          href="#house-burden"
         >
           housing cost burden
         </a>
@@ -179,13 +179,13 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         </strong>
          at or above 90th percentile for 
         <a
-          href="#"
+          href="#prox-rmp"
         >
           proximity to RMP sites
         </a>
          OR 
         <a
-          href="#"
+          href="#prox-npl"
         >
           proximity to NLP sites
         </a>
@@ -220,7 +220,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         </strong>
          at or above 90th percentile for 
         <a
-          href="#"
+          href="#waste-water"
         >
           wastewater discharge
         </a>
@@ -255,26 +255,26 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         </strong>
          at or above 90th percentile for 
         <a
-          href="#"
+          href="#diabetes"
         >
           diabetes
         </a>
          OR 
         <a
-          href="#"
+          href="#asthma"
         >
           asthma
         </a>
          OR 
         <a
-          href="#"
+          href="#heart-disease"
         >
           heart disease
         </a>
          OR
         in the 90th percentile for above for 
         <a
-          href="#"
+          href="#life-exp"
         >
           life expectancy
         </a>
@@ -309,27 +309,27 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         </strong>
          at or above 90th percentile for 
         <a
-          href="#"
+          href="#unemploy"
         >
           unemployment
         </a>
          OR 
         <a
-          href="#"
+          href="#ling-iso"
         >
           linguistic isolation
         </a>
          OR for %
         households at or below 100% federal 
         <a
-          href="#"
+          href="#poverty"
         >
           poverty
         </a>
          level OR at or below 90th percentile
         for 
         <a
-          href="#"
+          href="#median-income"
         >
           area median income
         </a>
@@ -344,7 +344,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         </strong>
          where 
         <a
-          href="#"
+          href="#education"
         >
           the high school degree achievement rates
         </a>

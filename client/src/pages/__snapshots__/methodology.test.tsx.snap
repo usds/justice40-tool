@@ -449,7 +449,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </strong>
            at or above 90th percentile for 
           <a
-            href="#"
+            href="#exp-pop-loss-rate"
           >
             expected population loss rate
           </a>
@@ -482,13 +482,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </strong>
            at or above 90th percentile for 
           <a
-            href="#"
+            href="#energy-burden"
           >
             energy cost burden score
           </a>
            OR 
           <a
-            href="#"
+            href="#pm-25"
           >
             PM2.5
           </a>
@@ -523,13 +523,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </strong>
            at or above 90th percentile for 
           <a
-            href="#"
+            href="#diesel-pm"
           >
             diesel particulate matter
           </a>
            or 
           <a
-            href="#"
+            href="#traffic-vol"
           >
             traffic proximity and volume
           </a>
@@ -564,20 +564,20 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </strong>
            at or above 90th percentile for 
           <a
-            href="#"
+            href="#lead-paint"
           >
             lead paint
           </a>
            AND 
           <a
-            href="#"
+            href="#median-house"
           >
             the median house value
           </a>
            is less than
         90th percentile OR at or above the 90th percentile for the 
           <a
-            href="#"
+            href="#house-burden"
           >
             housing cost burden
           </a>
@@ -612,13 +612,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </strong>
            at or above 90th percentile for 
           <a
-            href="#"
+            href="#prox-rmp"
           >
             proximity to RMP sites
           </a>
            OR 
           <a
-            href="#"
+            href="#prox-npl"
           >
             proximity to NLP sites
           </a>
@@ -653,7 +653,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </strong>
            at or above 90th percentile for 
           <a
-            href="#"
+            href="#waste-water"
           >
             wastewater discharge
           </a>
@@ -688,26 +688,26 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </strong>
            at or above 90th percentile for 
           <a
-            href="#"
+            href="#diabetes"
           >
             diabetes
           </a>
            OR 
           <a
-            href="#"
+            href="#asthma"
           >
             asthma
           </a>
            OR 
           <a
-            href="#"
+            href="#heart-disease"
           >
             heart disease
           </a>
            OR
         in the 90th percentile for above for 
           <a
-            href="#"
+            href="#life-exp"
           >
             life expectancy
           </a>
@@ -742,27 +742,27 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </strong>
            at or above 90th percentile for 
           <a
-            href="#"
+            href="#unemploy"
           >
             unemployment
           </a>
            OR 
           <a
-            href="#"
+            href="#ling-iso"
           >
             linguistic isolation
           </a>
            OR for %
         households at or below 100% federal 
           <a
-            href="#"
+            href="#poverty"
           >
             poverty
           </a>
            level OR at or below 90th percentile
         for 
           <a
-            href="#"
+            href="#median-income"
           >
             area median income
           </a>
@@ -777,7 +777,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </strong>
            where 
           <a
-            href="#"
+            href="#education"
           >
             the high school degree achievement rates
           </a>
@@ -822,7 +822,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             data-testid="grid"
           >
             <div>
-              <div>
+              <div
+                id="low-income"
+              >
                 <h3>
                   Low Income
                 </h3>
@@ -859,7 +861,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </li>
                 </ul>
               </div>
-              <div>
+              <div
+                id="exp-pop-loss-rate"
+              >
                 <h3>
                   Expected Population Loss Rate
                 </h3>
@@ -899,7 +903,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </li>
                 </ul>
               </div>
-              <div>
+              <div
+                id="energy-burden"
+              >
                 <h3>
                   Energy burden
                 </h3>
@@ -933,7 +939,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </li>
                 </ul>
               </div>
-              <div>
+              <div
+                id="pm-25"
+              >
                 <h3>
                   PM2.5
                 </h3>
@@ -969,7 +977,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </li>
                 </ul>
               </div>
-              <div>
+              <div
+                id="diesel-pm"
+              >
                 <h3>
                   Diesel particulate matter
                 </h3>
@@ -1004,7 +1014,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </li>
                 </ul>
               </div>
-              <div>
+              <div
+                id="traffic-vol"
+              >
                 <h3>
                   Traffic proximity and volume
                 </h3>
@@ -1039,7 +1051,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </li>
                 </ul>
               </div>
-              <div>
+              <div
+                id="lead-paint"
+              >
                 <h3>
                   Lead paint
                 </h3>
@@ -1074,7 +1088,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </li>
                 </ul>
               </div>
-              <div>
+              <div
+                id="median-house"
+              >
                 <h3>
                   Median house value
                 </h3>
@@ -1108,7 +1124,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </li>
                 </ul>
               </div>
-              <div>
+              <div
+                id="house-burden"
+              >
                 <h3>
                   Housing cost burden
                 </h3>
@@ -1144,14 +1162,16 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </li>
                 </ul>
               </div>
-              <div>
+              <div
+                id="prox-rmp"
+              >
                 <h3>
                   Proximity to Risk Management Plan (RMP) Sites
                 </h3>
                 <div>
                   
     Count of RMP (potential chemical accident management plan) facilities within 5 km (or nearest 
-    one beyond 5 km), each divided by distance in kilometers.
+      one beyond 5 km), each divided by distance in kilometers.
                 </div>
                 <ul>
                   <li>
@@ -1180,14 +1200,16 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </li>
                 </ul>
               </div>
-              <div>
+              <div
+                id="prox-npl"
+              >
                 <h3>
                   Proximity to National Priorities List (NPL) Sites
                 </h3>
                 <div>
                   
     Count of proposed or listed NPL - also known as superfund - sites within 5 km (or nearest one 
-    beyond 5 km), each divided by distance in kilometers.
+      beyond 5 km), each divided by distance in kilometers.
                 </div>
                 <ul>
                   <li>
@@ -1216,7 +1238,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </li>
                 </ul>
               </div>
-              <div>
+              <div
+                id="waste-water"
+              >
                 <h3>
                   Wastewater discharge
                 </h3>
@@ -1252,7 +1276,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </li>
                 </ul>
               </div>
-              <div>
+              <div
+                id="diabetes"
+              >
                 <h3>
                   Diabetes
                 </h3>
@@ -1288,7 +1314,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </li>
                 </ul>
               </div>
-              <div>
+              <div
+                id="asthma"
+              >
                 <h3>
                   Asthma
                 </h3>
@@ -1325,7 +1353,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </li>
                 </ul>
               </div>
-              <div>
+              <div
+                id="heart-disease"
+              >
                 <h3>
                   Heart disease
                 </h3>
@@ -1361,7 +1391,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </li>
                 </ul>
               </div>
-              <div>
+              <div
+                id="life-exp"
+              >
                 <h3>
                   Life expectancy
                 </h3>
@@ -1396,7 +1428,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </li>
                 </ul>
               </div>
-              <div>
+              <div
+                id="unemploy"
+              >
                 <h3>
                   Unemployment
                 </h3>
@@ -1430,7 +1464,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </li>
                 </ul>
               </div>
-              <div>
+              <div
+                id="ling-iso"
+              >
                 <h3>
                   Linguistic Isolation
                 </h3>
@@ -1465,7 +1501,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </li>
                 </ul>
               </div>
-              <div>
+              <div
+                id="poverty"
+              >
                 <h3>
                   Poverty
                 </h3>
@@ -1499,7 +1537,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </li>
                 </ul>
               </div>
-              <div>
+              <div
+                id="median-income"
+              >
                 <h3>
                   Area Median Income
                 </h3>
@@ -1534,7 +1574,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </li>
                 </ul>
               </div>
-              <div>
+              <div
+                id="education"
+              >
                 <h3>
                   Education, less than high school education
                 </h3>
@@ -1569,7 +1611,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </li>
                 </ul>
               </div>
-              <div>
+              <div
+                id="exp-pop-loss-rate"
+              >
                 <h3>
                   FEMA Risk Index Expected Annual Loss Score
                 </h3>

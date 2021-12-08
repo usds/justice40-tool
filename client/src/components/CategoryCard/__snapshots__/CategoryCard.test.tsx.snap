@@ -12,7 +12,7 @@ exports[`rendering of the CategoryCard checks if component renders 1`] = `
       </strong>
        at or above 90th percentile for 
       <a
-        href="#"
+        href="#exp-pop-loss-rate"
       >
         expected population loss rate
       </a>

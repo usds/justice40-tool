@@ -152,7 +152,7 @@ export const CATEGORIES = {
       description= {'if portion of the formula'}
       values= {{
         if: <strong>IF</strong>,
-        expLossRate: <a href="#">expected population loss rate</a>,
+        expLossRate: <a href="#exp-pop-loss-rate">expected population loss rate</a>,
       }}
     />,
     AND: <FormattedMessage
@@ -188,8 +188,8 @@ export const CATEGORIES = {
       description= {'if portion of the formula'}
       values= {{
         if: <strong>IF</strong>,
-        energyCostBur: <a href='#'>energy cost burden score</a>,
-        pm25: <a href='#'>PM2.5</a>,
+        energyCostBur: <a href='#energy-burden'>energy cost burden score</a>,
+        pm25: <a href='#pm-25'>PM2.5</a>,
       }}
     />,
     AND: <FormattedMessage
@@ -225,8 +225,8 @@ export const CATEGORIES = {
       description= {'if portion of the formula'}
       values= {{
         if: <strong>IF</strong>,
-        dieselPM: <a href='#'>diesel particulate matter</a>,
-        traffic: <a href='#'>traffic proximity and volume</a>,
+        dieselPM: <a href='#diesel-pm'>diesel particulate matter</a>,
+        traffic: <a href='#traffic-vol'>traffic proximity and volume</a>,
       }}
     />,
     AND: <FormattedMessage
@@ -263,9 +263,9 @@ export const CATEGORIES = {
       description= {'if portion of the formula'}
       values= {{
         if: <strong>IF</strong>,
-        lead: <a href='#'>lead paint</a>,
-        medianHouseVal: <a href='#'>the median house value</a>,
-        houseBur: <a href='#'>housing cost burden</a>,
+        lead: <a href='#lead-paint'>lead paint</a>,
+        medianHouseVal: <a href='#median-house'>the median house value</a>,
+        houseBur: <a href='#house-burden'>housing cost burden</a>,
       }}
     />,
     AND: <FormattedMessage
@@ -301,8 +301,8 @@ export const CATEGORIES = {
       description= {'if portion of the formula'}
       values= {{
         if: <strong>IF</strong>,
-        proxRMP: <a href='#'>proximity to RMP sites</a>,
-        proxNPL: <a href='#'>proximity to NLP sites</a>,
+        proxRMP: <a href='#prox-rmp'>proximity to RMP sites</a>,
+        proxNPL: <a href='#prox-npl'>proximity to NLP sites</a>,
       }}
     />,
     AND: <FormattedMessage
@@ -338,7 +338,7 @@ export const CATEGORIES = {
       description= {'if portion of the formula'}
       values= {{
         if: <strong>IF</strong>,
-        wasteWater: <a href='#'>wastewater discharge</a>,
+        wasteWater: <a href='#waste-water'>wastewater discharge</a>,
       }}
     />,
     AND: <FormattedMessage
@@ -375,10 +375,10 @@ export const CATEGORIES = {
       description= {'if portion of the formula'}
       values= {{
         if: <strong>IF</strong>,
-        diabetes: <a href='#'>diabetes</a>,
-        asthma: <a href='#'>asthma</a>,
-        heart: <a href='#'>heart disease</a>,
-        life: <a href='#'>life expectancy</a>,
+        diabetes: <a href='#diabetes'>diabetes</a>,
+        asthma: <a href='#asthma'>asthma</a>,
+        heart: <a href='#heart-disease'>heart disease</a>,
+        life: <a href='#life-exp'>life expectancy</a>,
       }}
     />,
     AND: <FormattedMessage
@@ -416,10 +416,10 @@ export const CATEGORIES = {
       description= {'if portion of the formula'}
       values= {{
         if: <strong>IF</strong>,
-        unemploy: <a href='#'>unemployment</a>,
-        linIso: <a href='#'>linguistic isolation</a>,
-        poverty: <a href='#'>poverty</a>,
-        areaMedian: <a href='#'>area median income</a>,
+        unemploy: <a href='#unemploy'>unemployment</a>,
+        linIso: <a href='#ling-iso'>linguistic isolation</a>,
+        poverty: <a href='#poverty'>poverty</a>,
+        areaMedian: <a href='#median-income'>area median income</a>,
       }}
     />,
     AND: <FormattedMessage
@@ -430,7 +430,7 @@ export const CATEGORIES = {
       description= {'and portion of the formula'}
       values= {{
         and: <strong>AND</strong>,
-        highSchool: <a href='#'>the high school degree achievement rates</a>,
+        highSchool: <a href='#education'>the high school degree achievement rates</a>,
       }}
     />,
     THEN: <FormattedMessage
@@ -492,6 +492,7 @@ export const DATASET_CARD_LABELS = defineMessages({
 
 export const INDICATORS = [
   {
+    domID: 'low-income',
     indicator: 'Low Income',
     description: `
     Percent of a block group's population in households where household income is at or below
@@ -503,6 +504,7 @@ export const INDICATORS = [
     dateRange: `2015-2019`,
   },
   {
+    domID: 'exp-pop-loss-rate',
     indicator: 'Expected Population Loss Rate',
     description: `
     Economic loss rate to the population in fatalities and injuries resulting from the natural
@@ -517,6 +519,7 @@ export const INDICATORS = [
     dateRange: `2014-2021`,
   },
   {
+    domID: 'energy-burden',
     indicator: 'Energy burden',
     description: `Average annual energy cost ($) divided by household income.`,
     usedIn: `Clean energy and energy efficiency methodology`,
@@ -525,6 +528,7 @@ export const INDICATORS = [
     dateRange: `2018`,
   },
   {
+    domID: 'pm-25',
     indicator: 'PM2.5',
     description: `Fine inhalable particles, with diameters that are generally 
     2.5 micrometers and smaller.`,
@@ -535,6 +539,7 @@ export const INDICATORS = [
     dateRange: `2017`,
   },
   {
+    domID: 'diesel-pm',
     indicator: 'Diesel particulate matter',
     description: `Mixture of particles that is part of diesel exhaust in the air.`,
     usedIn: `Clean transportation methodology`,
@@ -544,6 +549,7 @@ export const INDICATORS = [
     dateRange: `2014`,
   },
   {
+    domID: 'traffic-vol',
     indicator: 'Traffic proximity and volume',
     description: `Count of vehicles (average annual daily traffic) at major roads 
     within 500 meters, divided by distance in meters (not km).`,
@@ -553,6 +559,7 @@ export const INDICATORS = [
     dateRange: `2017`,
   },
   {
+    domID: 'lead-paint',
     indicator: 'Lead paint',
     description: `Percent of housing units built pre-1960, used as an 
     indicator of potential lead paint exposure in homes.`,
@@ -562,6 +569,7 @@ export const INDICATORS = [
     dateRange: `2015-2019`,
   },
   {
+    domID: 'median-house',
     indicator: 'Median house value',
     description: `XXX`,
     usedIn: `Affordable and sustainable housing methodology`,
@@ -570,6 +578,7 @@ export const INDICATORS = [
     dateRange: `2015-2019`,
   },
   {
+    domID: 'house-burden',
     indicator: 'Housing cost burden',
     description: `Households that are low income and spend more than 30% of their 
     income to housing costs.`,
@@ -580,26 +589,29 @@ export const INDICATORS = [
     dateRange: `2013-2017`,
   },
   {
+    domID: 'prox-rmp',
     indicator: 'Proximity to Risk Management Plan (RMP) Sites',
     description: `
     Count of RMP (potential chemical accident management plan) facilities within 5 km (or nearest 
-    one beyond 5 km), each divided by distance in kilometers.`,
+      one beyond 5 km), each divided by distance in kilometers.`,
     usedIn: `Affordable and sustainable housing methodology`,
     respPartyLabel: `Environmental Protection Agency (EPA) RMP database as compiled by EPA’s  EJSCREEN`,
     dataSourceURL: `https://www.epa.gov/ejscreen/technical-documentation-ejscreen`,
     dateRange: `2020`,
   },
   {
+    domID: 'prox-npl',
     indicator: 'Proximity to National Priorities List (NPL) Sites',
     description: `
     Count of proposed or listed NPL - also known as superfund - sites within 5 km (or nearest one 
-    beyond 5 km), each divided by distance in kilometers.`,
+      beyond 5 km), each divided by distance in kilometers.`,
     usedIn: `Reduction and remediation of legacy pollution methodology`,
     respPartyLabel: `Environmental Protection Agency (EPA) RMP database as compiled by EPA’s EJSCREEN`,
     dataSourceURL: `https://www.epa.gov/ejscreen/technical-documentation-ejscreen`,
     dateRange: `2020`,
   },
   {
+    domID: 'waste-water',
     indicator: 'Wastewater discharge',
     description: `RSEI modeled Toxic Concentrations at stream segments within 500 
     meters, divided by distance in kilometers (km).`,
@@ -610,6 +622,7 @@ export const INDICATORS = [
     dateRange: `2020`,
   },
   {
+    domID: 'diabetes',
     indicator: 'Diabetes',
     description: `People ages 18 years and older who report having ever been 
     told by a doctor, nurse, or other health professionals that they have 
@@ -620,6 +633,7 @@ export const INDICATORS = [
     dateRange: `2016-2019`,
   },
   {
+    domID: 'asthma',
     indicator: 'Asthma',
     description: `Weighted number of respondents people who answer “yes” both 
     to both of the following questions: “Have you ever been told by a doctor, 
@@ -631,6 +645,7 @@ export const INDICATORS = [
     dateRange: `2016-2019`,
   },
   {
+    domID: 'heart-disease',
     indicator: 'Heart disease',
     description: `People ages 18 years and older who report ever having been told 
     by a doctor, nurse, or other health professionals that they had angina or 
@@ -641,6 +656,7 @@ export const INDICATORS = [
     dateRange: `2016-2019`,
   },
   {
+    domID: 'life-exp',
     indicator: 'Life expectancy',
     description: `Estimated years of life expectancy.`,
     usedIn: `Health burdens methodology`,
@@ -650,6 +666,7 @@ export const INDICATORS = [
     dateRange: `2010-2015`,
   },
   {
+    domID: 'unemploy',
     indicator: 'Unemployment',
     description: `Number of unemployed people as a percentage of the civilian labor force`,
     usedIn: `Training and workforce development`,
@@ -658,6 +675,7 @@ export const INDICATORS = [
     dateRange: `2015-2019`,
   },
   {
+    domID: 'ling-iso',
     indicator: 'Linguistic Isolation',
     description: `Households in which no one age 14 and over speaks English only or also a language
     other than English`,
@@ -667,6 +685,7 @@ export const INDICATORS = [
     dateRange: `2015-2019`,
   },
   {
+    domID: 'poverty',
     indicator: 'Poverty',
     description: `Percent of a block group's population in households where the household income` +
     ` is at or below 100% of the federal poverty level.`,
@@ -676,6 +695,7 @@ export const INDICATORS = [
     dateRange: `2015-2019`,
   },
   {
+    domID: 'median-income',
     indicator: 'Area Median Income',
     description: `Median income of the census block group calculated as a percent 
     of the metropolitan area’s or state's median income.`,
@@ -685,6 +705,7 @@ export const INDICATORS = [
     dateRange: `2015-2019`,
   },
   {
+    domID: 'education',
     indicator: 'Education, less than high school education',
     description: `Percent of people ages 25 years or older in a block group whose 
     education level is less than a high school diploma.`,

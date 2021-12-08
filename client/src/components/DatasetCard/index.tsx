@@ -5,14 +5,16 @@ import * as styles from './datasetCard.module.scss';
 import * as METHODOLOGY_COPY from '../../data/copy/methodology';
 
 interface IDatasetCardProps {
-  datasetCardProps: { [key:string]: string }
+  datasetCardProps: {
+    [key:string]: string
+  }
 }
 
 const DatasetCard = ({datasetCardProps}:IDatasetCardProps) => {
   const intl = useIntl();
 
   return (
-    <div className={styles.datasetCard}>
+    <div className={styles.datasetCard} id={datasetCardProps.domID ? datasetCardProps.domID : 'exp-pop-loss-rate'}>
       <h3 className={styles.datasetCardIndicator}>{datasetCardProps.indicator}</h3>
       <div className={styles.datasetCardDescription}>
         {datasetCardProps.description}
