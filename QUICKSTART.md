@@ -20,4 +20,4 @@ Use `docker-compose` to run the application:
 $ docker-compose up
 ```
 
-After some setup, you should be able to open the application in your browser at [http://localhost:8000](http://localhost:8000).
+After it initializes, you should be able to open the application in your browser at [http://localhost:8000](http://localhost:8000).
