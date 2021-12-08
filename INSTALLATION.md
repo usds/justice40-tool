@@ -9,6 +9,17 @@ This page documents the installation steps for some of the software needed to wo
 - If you are working with the data pipeline, see [`data/data-pipeline/README.md`](data/data-pipeline/README.md) for installation steps specific to that part of the project.
 - If you want to understand the current deployment process, see [`.github/workflows/README.md`](.github/workflows/README.md).
 
+## Install Git
+
+### MacOS
+1. Open the terminal and type `git` and hit RETURN.
+2. If dev tools are not installed a window will prompt you to install dev tools.
+3. Open the terminal and type `git --version` and hit RETURN.
+4. Validate that a version number is returned. If so, git is properly installed.
+
+### Win10
+Download from [website](https://git-scm.com/download/win)
+
 ## Install Homebrew (MacOS only)
 
 Homebrew is an easy way to manage software downloads on MacOS. You don't *have* to use it, but we recommend it.
@@ -41,17 +52,6 @@ While any IDE can be used, we're outlining how to set up VS Code
 3. [Live Share](https://github.com/MicrosoftDocs/live-share)
 4. [Live Share Audio](https://github.com/MicrosoftDocs/live-share)
 5. [Live Share Extention Pack](https://github.com/MicrosoftDocs/live-share)
-
-## Install Git
-
-#### MacOS
-1. Open the terminal and type `git` and hit RETURN.
-2. If dev tools are not installed a window will prompt you to install dev tools. 
-3. Open the terminal and type `git --version` and hit RETURN.
-4. Validate that a version number is returned. If so, git is properly installed.
-
-#### Win10
-Download from [website](https://git-scm.com/download/win)
 
 ## Install Docker
 
