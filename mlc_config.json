@@ -2,6 +2,9 @@
   "ignorePatterns": [
     {
       "pattern": "^http://localhost"
+    },
+    {
+      "pattern": "yyyymmdd-xxx.md"
     }
   ],
   "replacementPatterns": [

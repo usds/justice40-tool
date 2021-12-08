@@ -1,5 +1,5 @@
 # Herramienta Justice40
-[![CC0 License](https://img.shields.io/badge/license-CCO--1.0-brightgreen)](https://github.com/usds/justice40-tool/blob/main/LICENSE)
+[![CC0 License](https://img.shields.io/badge/license-CCO--1.0-brightgreen)](https://github.com/usds/justice40-tool/blob/main/LICENSE.md)
 
 *[Read this in English!](README.md)*
  
@@ -18,7 +18,7 @@ En la realización de esta herramienta, el método de código abierto que usa el
 
 Sabemos que podemos aprender de comunidades muy distintas (incluidas las que usarán la herramienta o se verán afectadas por esta) que tienen gran experiencia en la ciencia o la tecnología de datos, o en el trabajo en favor del clima y de la justicia económica o ambiental. Nos dedicamos a crear foros para facilitar la conversación y los comentarios continuos con objeto de conformar el diseño y el desarrollo de la herramienta.
 
-Asimismo, reconocemos que la generación de capacidad es indispensable para incluir a una comunidad diversa de código abierto. Estamos procurando usar lenguaje accesible, proporcionar documentación técnica y sobre procesos en varios idiomas, y ofrecer asistencia, sea directamente o en forma de chats de grupo y de capacitación, a los miembros de nuestra comunidad que poseen gran variedad de conocimientos y habilidades. Si tiene ideas acerca de cómo podemos mejorar o ampliar nuestro trabajo para generar capacidad y de métodos para atraer a los usuarios a nuestra comunidad, comuníquese con nosotros en el [Grupo de Google]((https://groups.google.com/u/4/g/justice40-open-source)) *(en inglés)* o por correo electrónico en justice40open@usds.gov.
+Asimismo, reconocemos que la generación de capacidad es indispensable para incluir a una comunidad diversa de código abierto. Estamos procurando usar lenguaje accesible, proporcionar documentación técnica y sobre procesos en varios idiomas, y ofrecer asistencia, sea directamente o en forma de chats de grupo y de capacitación, a los miembros de nuestra comunidad que poseen gran variedad de conocimientos y habilidades. Si tiene ideas acerca de cómo podemos mejorar o ampliar nuestro trabajo para generar capacidad y de métodos para atraer a los usuarios a nuestra comunidad, comuníquese con nosotros en el [Grupo de Google](https://groups.google.com/u/4/g/justice40-open-source) *(en inglés)* o por correo electrónico en justice40open@usds.gov.
 
 ### Chats de la comunidad
 Cada dos semanas, llevamos a cabo sesiones de chat para la comunidad de código abierto los lunes de 5 a 6 p. m. hora del Este. Nuestro [Grupo de Google](https://groups.google.com/u/4/g/justice40-open-source) *(en inglés)*, proporciona información acerca de los temas que se tratarán en esas sesiones y de cómo puede participar en estas.
