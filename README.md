@@ -52,9 +52,9 @@ The intermediate steps of the data pipeline and the final output that is consume
 
 If you want to run the entire application locally, see [QUICKSTART.md](QUICKSTART.md).
 
-## Power User Guides
+## Advanced Guides
 
-If you have software experience or more specific use cases, the [project wiki](https://github.com/usds/justice40-tool/wiki) has more in depth documentation of how to work with this project.
+If you have software experience or more specific use cases, the [project wiki](https://github.com/usds/justice40-tool/wiki) and [INSTALLATION.md](INSTALLATION.md) have more in depth documentation of how to work with this project.
 
 ## Glossary
 
