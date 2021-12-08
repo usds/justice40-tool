@@ -44,6 +44,7 @@ class ScoreL(Score):
         robustness over 1-year ACS.
         """
         # Create the combined field.
+        # TODO: move this combined field percentile calculation to `etl_score`?
         # There should only be one entry in either 2009 or 2019 fields, not one in both.
         # But just to be safe, we take the mean and ignore null values so if there
         # *were* entries in both, this result would make sense.
@@ -169,7 +170,7 @@ class ScoreL(Score):
     def _climate_factor(self) -> bool:
         # In Xth percentile or above for FEMA’s Risk Index (Source: FEMA
         # AND
-        # Low income: In 65th percentile or above for percent of block group population
+        # Low income: In Nth percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
 
@@ -225,7 +226,7 @@ class ScoreL(Score):
     def _energy_factor(self) -> bool:
         # In Xth percentile or above for DOE’s energy cost burden score (Source: LEAD Score)
         # AND
-        # Low income: In 65th percentile or above for percent of block group population
+        # Low income: In Nth percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
 
@@ -268,7 +269,7 @@ class ScoreL(Score):
         # or
         # In Xth percentile or above traffic proximity and volume (Source: 2017 U.S. Department of Transportation (DOT) traffic data
         # AND
-        # Low income: In 65th percentile or above for percent of block group population
+        # Low income: In Nth percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
 
@@ -315,7 +316,7 @@ class ScoreL(Score):
         # or
         # In Xth percentile or above for housing cost burden (Source: HUD's Comprehensive Housing Affordability Strategy dataset
         # AND
-        # Low income: In 65th percentile or above for percent of block group population
+        # Low income: In Nth percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
 
@@ -363,7 +364,7 @@ class ScoreL(Score):
     def _pollution_factor(self) -> bool:
         # Proximity to Risk Management Plan sites is > X
         # AND
-        # Low income: In 65th percentile or above for percent of block group population
+        # Low income: In Nth percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
 
@@ -410,7 +411,7 @@ class ScoreL(Score):
     def _water_factor(self) -> bool:
         # In Xth percentile or above for wastewater discharge (Source: EPA Risk-Screening Environmental Indicators (RSEI) Model)
         # AND
-        # Low income: In 65th percentile or above for percent of block group population
+        # Low income: In Nth percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
 
@@ -441,7 +442,7 @@ class ScoreL(Score):
         # or
         # In Xth percentile or above for low life expectancy (Source: CDC Places)
         # AND
-        # Low income: In 65th percentile or above for percent of block group population
+        # Low income: In Nth percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
         # poverty level. Source: Census's American Community Survey]
 
