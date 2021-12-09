@@ -225,16 +225,12 @@ IMPENETRABLE_SURFACES_FIELD = "Percent impenetrable surface areas"
 READING_FIELD = "Third grade reading proficiency"
 LOW_READING_FIELD = "Low third grade reading proficiency"
 
+#####
 # Names for individual factors being exceeded
 # Climate Change
 EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for expected population loss rate and is low income"
 EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for expected agriculture loss rate and is low income"
 EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for expected building loss rate and is low income"
-EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD = (
-    f"At or above the {PERCENTILE}th percentile for summer days above 90F and "
-    f"the median house value is less than {MEDIAN_HOUSE_VALUE_PERCENTILE}th "
-    f"percentile and is low income"
-)
 
 # Clean energy and efficiency
 PM25_EXPOSURE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for PM2.5 exposure and is low income"
@@ -252,17 +248,10 @@ LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD = (
 )
 HOUSING_BURDEN_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for housing burden and is low income"
 
-IMPENETRABLE_SURFACES_LOW_INCOME_FIELD = (
-    f"At or above the {PERCENTILE}th percentile for impenetrable surfaces and is low "
-    f"income"
-)
-
 # Remediation and Reduction of Legacy Pollution
 RMP_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for proximity to RMP sites and is low income"
 SUPERFUND_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for proximity to superfund sites and is low income"
 HAZARDOUS_WASTE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for proximity to hazardous waste facilities and is low income"
-AIR_TOXICS_CANCER_RISK_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for air toxics cancer risk and is low income"
-RESPIRATORY_HAZARD_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for respiratory hazard index and is low income"
 
 # Critical Clean Water and Waste Infrastructure
 WASTEWATER_DISCHARGE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for wastewater discharge and is low income"
@@ -277,11 +266,6 @@ ASTHMA_LOW_INCOME_FIELD = (
 HEART_DISEASE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for heart disease and is low income"
 
 LIFE_EXPECTANCY_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for life expectancy and is low income"
-
-HEALTHY_FOOD_LOW_INCOME_FIELD = (
-    f"At or above the {PERCENTILE}th percentile for low "
-    f"access to healthy food and is low income"
-)
 
 # Workforce
 UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD = (
@@ -309,6 +293,25 @@ MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD = (
     "  and has low HS education"
 )
 
+# Not currently used in a factor
+EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD = (
+    f"At or above the {PERCENTILE}th percentile for summer days above 90F and "
+    f"the median house value is less than {MEDIAN_HOUSE_VALUE_PERCENTILE}th "
+    f"percentile and is low income"
+)
+IMPENETRABLE_SURFACES_LOW_INCOME_FIELD = (
+    f"At or above the {PERCENTILE}th percentile for impenetrable surfaces and is low "
+    f"income"
+)
+AIR_TOXICS_CANCER_RISK_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for air toxics cancer risk and is low income"
+RESPIRATORY_HAZARD_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for respiratory hazard index and is low income"
+HEALTHY_FOOD_LOW_INCOME_FIELD = (
+    f"At or above the {PERCENTILE}th percentile for low "
+    f"access to healthy food and is low income"
+)
+
 THRESHOLD_COUNT = "Total threshold criteria exceeded"
 
 FPL_200_SERIES = "Is low income"
+# End of names for individual factors being exceeded
+####
