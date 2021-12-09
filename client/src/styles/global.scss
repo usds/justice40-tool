@@ -293,15 +293,6 @@ This section will outline styles that are component specific
   }
 }
 
-//Area Detail Component
-p.secondary.j40-indicator {
-  max-width: 10rem;
-
- @media screen and (max-width: 1024px) {
-   max-width: 80%;
-  }
-}
-
 /* 
 ***************************************
 *      TIMELINE / PROCESS LIST STYLES

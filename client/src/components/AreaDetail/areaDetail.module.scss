@@ -4,7 +4,7 @@
 $sidePanelLabelFontColor: #171716;
 
 @mixin sidePanelLabelStyle {
-  font-size: small;
+  font-size: medium;
   color: $sidePanelLabelFontColor;
   font-weight: 600;
 }
@@ -20,7 +20,7 @@ $sidePanelLabelFontColor: #171716;
 
 .versionInfo {
   padding: .5rem 1rem .5rem 1.2rem;
-  font-size: small;
+  font-size: medium;
   font-weight: bold;
   border-bottom: 1px solid $sidePanelBorderColor; 
 }
@@ -78,7 +78,7 @@ $sidePanelLabelFontColor: #171716;
   }
 
   .censusText {
-    font-size: small;
+    font-size: medium;
   }  
 }
 

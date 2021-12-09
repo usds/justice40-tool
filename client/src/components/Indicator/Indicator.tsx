@@ -33,7 +33,12 @@ const Indicator = ({indicator}:IIndicator) => {
   return (
     <li className={styles.indicatorBoxMain} data-cy={'indicatorBox'}>
       <div className={styles.indicatorRow}>
-        <h4 className={styles.indicatorName}>{indicator.label}</h4>
+        <div className={styles.indicatorName}>
+          {indicator.label}
+          <div className={styles.indicatorDesc}>
+            {indicator.description}
+          </div>
+        </div>
         <div className={styles.indicatorValue}>
           {readablePercentile(indicator.value)}
           <sup className={styles.indicatorSuperscript}><span>
@@ -41,9 +46,6 @@ const Indicator = ({indicator}:IIndicator) => {
           </span></sup>
         </div>
       </div>
-      <p className={'secondary j40-indicator'}>
-        {indicator.description}
-      </p>
     </li>
   );
 };

@@ -6,9 +6,12 @@ exports[`rendering of the Indicator checks if component renders 1`] = `
     data-cy="indicatorBox"
   >
     <div>
-      <h4>
+      <div>
         some label
-      </h4>
+        <div>
+          some description
+        </div>
+      </div>
       <div>
         9700
         <sup>
@@ -18,11 +21,6 @@ exports[`rendering of the Indicator checks if component renders 1`] = `
         </sup>
       </div>
     </div>
-    <p
-      class="secondary j40-indicator"
-    >
-      some description
-    </p>
   </li>
 </DocumentFragment>
 `;

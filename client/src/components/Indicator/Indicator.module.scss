@@ -4,22 +4,17 @@
 @mixin indicatorBox {
     display: flex;
     flex-direction: column;
-    padding: 0 1rem 1.5rem;
+    @include u-padding-bottom(3);
     &:last-child {
       border-bottom: none;
+      @include u-padding-bottom(0);
     }
+
   }
 
 //Indicator box styles
 .indicatorBoxMain {
   @include indicatorBox;
-  border-bottom: $sidePanelBorder;
-}
-
-.indicatorBoxAdditional {
-  @include indicatorBox;
-  border-bottom: 1px solid #1b1b1b;
-  background-color: $additionalCardsBGColor;
 }
 
 .indicatorRow {
@@ -34,20 +29,28 @@
 
   .indicatorName {
     flex: 0 1 77%;
+    display: flex;
+    flex-direction: column;
+    @include typeset('sans', '2xs', 2);
+    @include u-text('bold'); 
+    
+    .indicatorDesc {
+      @include typeset('sans', '3xs', 2); 
+      @include u-text('normal'); 
+      max-width: 12rem;    
+      @include u-margin-top(0);
+      @media screen and (max-width: 1024px) {
+        max-width: 80%;
+       }
+    }
   }
   
   .indicatorValue {
-    margin-top: 1.2rem;
     margin-left: 2.2rem;
     
     .indicatorSuperscript {
       top: -0.2em
     }
-    
-  }
-  
-  .indicatorDesc {
-    max-width: 10rem;    
-  }
+  }  
 }
 

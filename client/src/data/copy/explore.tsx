@@ -411,24 +411,24 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
 export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   EXP_AG_LOSS: {
     id: 'areaDetail.indicator.description.exp.ag.loss',
-    defaultMessage: 'Expected agriculture loss rate',
-    description: 'Expected agriculture loss rate',
+    defaultMessage: 'Economic loss rate to agriculture resulting from natural hazards',
+    description: 'Economic loss rate to agriculture resulting from natural hazards',
 
   },
   EXP_BLD_LOSS: {
     id: 'areaDetail.indicator.description.exp.bld.loss',
-    defaultMessage: 'Expected building loss rate',
-    description: 'Expected building loss rate',
+    defaultMessage: 'Economic loss rate to buildings resulting from natural hazards',
+    description: 'Economic loss rate to buildings resulting from natural hazards',
   },
   EXP_POP_LOSS: {
     id: 'areaDetail.indicator.description.exp.pop.loss',
-    defaultMessage: 'Expected population loss rate',
-    description: 'Expected building loss rate',
+    defaultMessage: 'Economic loss rate to the population in fatalities and injuries resulting from natural hazards',
+    description: 'Economic loss rate to the population in fatalities and injuries resulting from natural hazards',
   },
   LOW_INCOME: {
     id: 'areaDetail.indicator.description.low.income',
-    defaultMessage: 'Low income',
-    description: 'Low income',
+    defaultMessage: 'Household income is less than or equal to twice the federal poverty level',
+    description: 'Household income is less than or equal to twice the federal poverty level',
   },
 
   ENERGY_BURDEN: {

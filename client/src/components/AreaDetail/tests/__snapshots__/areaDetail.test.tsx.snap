@@ -90,9 +90,12 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Expected agriculture loss rate
-            </h4>
+              <div>
+                Economic loss rate to agriculture resulting from natural hazards
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -100,19 +103,17 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Expected agriculture loss rate
-          </p>
         </li>
         <li
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Expected building loss rate
-            </h4>
+              <div>
+                Economic loss rate to buildings resulting from natural hazards
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -120,19 +121,17 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Expected building loss rate
-          </p>
         </li>
         <li
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Expected population loss rate
-            </h4>
+              <div>
+                Economic loss rate to the population in fatalities and injuries resulting from natural hazards
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -140,19 +139,17 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Expected population loss rate
-          </p>
         </li>
         <li
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Low income
-            </h4>
+              <div>
+                Household income is less than or equal to twice the federal poverty level
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -160,11 +157,6 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Low income
-          </p>
         </li>
       </div>
       <h2
@@ -192,9 +184,12 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Energy cost burden
-            </h4>
+              <div>
+                Energy costs divided by household income
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -202,19 +197,17 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Energy costs divided by household income
-          </p>
         </li>
         <li
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               PM2.5
-            </h4>
+              <div>
+                Fine inhalable particles, 2.5 micrometers and smaller
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -222,19 +215,17 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Fine inhalable particles, 2.5 micrometers and smaller
-          </p>
         </li>
         <li
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Low income
-            </h4>
+              <div>
+                Household income is less than or equal to twice the federal poverty level
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -242,11 +233,6 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Low income
-          </p>
         </li>
       </div>
       <h2
@@ -274,9 +260,12 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Diesel particulate matter
-            </h4>
+              <div>
+                Diesel exhaust in the air
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -284,19 +273,17 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Diesel exhaust in the air
-          </p>
         </li>
         <li
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Traffic
-            </h4>
+              <div>
+                Count of vehicles at major roads within 500 meters
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -304,19 +291,17 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Count of vehicles at major roads within 500 meters
-          </p>
         </li>
         <li
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Low income
-            </h4>
+              <div>
+                Household income is less than or equal to twice the federal poverty level
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -324,11 +309,6 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Low income
-          </p>
         </li>
       </div>
       <h2
@@ -356,9 +336,12 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Lead paint
-            </h4>
+              <div>
+                Pre-1960 housing
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -366,19 +349,17 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Pre-1960 housing
-          </p>
         </li>
         <li
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Median home value
-            </h4>
+              <div>
+                Meidan home value in area
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -386,19 +367,17 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Meidan home value in area
-          </p>
         </li>
         <li
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Housing cost burden
-            </h4>
+              <div>
+                Low income households spending more than 30% of income on housing
+              </div>
+            </div>
             <div>
               95
               <sup>
@@ -408,19 +387,17 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Low income households spending more than 30% of income on housing
-          </p>
         </li>
         <li
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Low income
-            </h4>
+              <div>
+                Household income is less than or equal to twice the federal poverty level
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -428,11 +405,6 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Low income
-          </p>
         </li>
       </div>
       <h2
@@ -460,9 +432,12 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Proximity to hazardous waste sites
-            </h4>
+              <div>
+                Count of hazardous waste facilities within 5 km
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -470,19 +445,17 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Count of hazardous waste facilities within 5 km
-          </p>
         </li>
         <li
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Proximity to NPL sites
-            </h4>
+              <div>
+                Proposed or listed NPL (Superfund) sites within 5 km
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -490,19 +463,17 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Proposed or listed NPL (Superfund) sites within 5 km
-          </p>
         </li>
         <li
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Proximity to RMP sites
-            </h4>
+              <div>
+                Risk Management Plan facilities within 5 km
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -510,19 +481,17 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Risk Management Plan facilities within 5 km
-          </p>
         </li>
         <li
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Low income
-            </h4>
+              <div>
+                Household income is less than or equal to twice the federal poverty level
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -530,11 +499,6 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Low income
-          </p>
         </li>
       </div>
       <h2
@@ -562,9 +526,12 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Wastewater discharge
-            </h4>
+              <div>
+                Toxic concentrations at stream segments within 500 meters
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -572,19 +539,17 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Toxic concentrations at stream segments within 500 meters
-          </p>
         </li>
         <li
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Low income
-            </h4>
+              <div>
+                Household income is less than or equal to twice the federal poverty level
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -592,11 +557,6 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Low income
-          </p>
         </li>
       </div>
       <h2
@@ -624,9 +584,12 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Asthma
-            </h4>
+              <div>
+                Number of people who have been told they have asthma
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -634,19 +597,17 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Number of people who have been told they have asthma
-          </p>
         </li>
         <li
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Diabetes
-            </h4>
+              <div>
+                People ages 18 years and older who have diabetes other than diabetes during pregnancy
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -654,19 +615,17 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            People ages 18 years and older who have diabetes other than diabetes during pregnancy
-          </p>
         </li>
         <li
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Heart disease
-            </h4>
+              <div>
+                People ages 18 years and older who have been told they have heart disease
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -674,19 +633,17 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            People ages 18 years and older who have been told they have heart disease
-          </p>
         </li>
         <li
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Low life expectancy
-            </h4>
+              <div>
+                Average number of years of life a person can expect to live
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -694,19 +651,17 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Average number of years of life a person can expect to live
-          </p>
         </li>
         <li
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Low income
-            </h4>
+              <div>
+                Household income is less than or equal to twice the federal poverty level
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -714,11 +669,6 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Low income
-          </p>
         </li>
       </div>
       <h2
@@ -746,9 +696,12 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Low median income
-            </h4>
+              <div>
+                Median income calculated as a percent of the area’s median income
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -756,40 +709,36 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Median income calculated as a percent of the area’s median income
-          </p>
         </li>
         <li
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Linguistic isolation
-            </h4>
-            <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
-            </div>
-          </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Households in which no one age 14 and over speaks English only or also speaks 
+              <div>
+                Households in which no one age 14 and over speaks English only or also speaks 
     a language other than English
-          </p>
+              </div>
+            </div>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
         </li>
         <li
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Unemployment
-            </h4>
+              <div>
+                Number of unemployed people as a percentage of the labor force
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -797,19 +746,18 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Number of unemployed people as a percentage of the labor force
-          </p>
         </li>
         <li
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               Poverty
-            </h4>
+              <div>
+                Percent of individuals in households where the household income is at or 
+    below 100% of the federal poverty level
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -817,20 +765,17 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Percent of individuals in households where the household income is at or 
-    below 100% of the federal poverty level
-          </p>
         </li>
         <li
           data-cy="indicatorBox"
         >
           <div>
-            <h4>
+            <div>
               High school degree achievement rate
-            </h4>
+              <div>
+                Percent of people ages 25 years or older whose education level is less than a high school diploma
+              </div>
+            </div>
             <div>
               N/A
               <sup>
@@ -838,11 +783,6 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </sup>
             </div>
           </div>
-          <p
-            class="secondary j40-indicator"
-          >
-            Percent of people ages 25 years or older whose education level is less than a high school diploma
-          </p>
         </li>
       </div>
     </div>
