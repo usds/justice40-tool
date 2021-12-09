@@ -36,8 +36,8 @@ export const PAGE = defineMessages({
   CATEGORY_TEXT: {
     id: 'methodology.page.categories.title',
     defaultMessage: `
-      Communities will be defined as disadvantaged if they meet the qualifications under any of the
-      following 8 categories of criteria:
+      Communities will be defined as disadvantaged if they meet the qualifications under one 
+      or more of the 8 categories of criteria below.
     `,
     description: 'methodology page explanation of the categories',
   },
@@ -439,7 +439,7 @@ export const CATEGORIES = {
     AND: <FormattedMessage
       id= {'indicator.categories.work.dev.and'}
       defaultMessage= {`
-      {and} where {highSchool} for adults 25 years and older is less than 95%
+      {and} where {highSchool} for adults 25 years and older is less than 90%
       `}
       description= {'and portion of the formula'}
       values= {{
@@ -619,7 +619,7 @@ export const INDICATORS = [
     respPartyLabel: `Department of Housing & Urban Development’s
     (HUD) Comprehensive Housing Affordability Strategy dataset`,
     dataSourceURL: `https://www.huduser.gov/portal/datasets/cp.html`,
-    dateRange: `2013-2017`,
+    dateRange: `2014-2018`,
   },
   {
     domID: 'lead-paint',
@@ -642,7 +642,7 @@ export const INDICATORS = [
   },
   {
     domID: 'prox-haz',
-    indicator: 'Proximity to hazardous waste sites',
+    indicator: 'Proximity to hazardous waste facilities',
     description: `
     Count of hazardous waste facilities (Treatment, Storage, and Disposal Facilities and Large
     Quantity Generators) within 5 km (or nearest beyond 5 km), each divided by distance in kilometers.
@@ -652,7 +652,7 @@ export const INDICATORS = [
     Environmental Protection Agency (EPA) TSDF data calculated from EPA RCRAinfo database 
     as compiled by EPA’s EJSCREEN`,
     dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
-    dateRange: `2015-2019`,
+    dateRange: `2015-2020`,
   },
   {
     domID: 'prox-npl',
@@ -679,8 +679,8 @@ export const INDICATORS = [
   {
     domID: 'waste-water',
     indicator: 'Wastewater discharge',
-    description: `RSEI modeled Toxic Concentrations at stream segments within 500
-    meters, divided by distance in kilometers (km).`,
+    description: `Risk-Screening Environmental Indicators (RSEI) modeled Toxic Concentrations at 
+    stream segments within 500 meters, divided by distance in kilometers (km).`,
     usedIn: `Critical clean water and waste infrastructure`,
     respPartyLabel: `Environmental Protection Agency (EPA) Risk-Screening
     Environmental Indicators (RSEI) Model as compiled by EPA's EJSCREEN`,
@@ -732,7 +732,7 @@ export const INDICATORS = [
   },
   {
     domID: 'median-income',
-    indicator: 'Low Median Income',
+    indicator: 'Low median Income',
     description: `Median income of the census tract calculated as a percent of the area’s median income.`,
     usedIn: `Training and workforce development`,
     respPartyLabel: `Census's American Community Survey`,
@@ -761,7 +761,7 @@ export const INDICATORS = [
   {
     domID: 'poverty',
     indicator: 'Poverty',
-    description: `Percent of a block group's population in households where the household income` +
+    description: `Percent of a tract's population in households where the household income` +
     ` is at or below 100% of the federal poverty level.`,
     usedIn: `Training and workforce development`,
     respPartyLabel: `Census's American Community Survey`,
@@ -771,7 +771,7 @@ export const INDICATORS = [
   {
     domID: 'high-school',
     indicator: 'High school degree achievement rate',
-    description: `Percent of people ages 25 years or older in a block group whose
+    description: `Percent of people ages 25 years or older in a census tract whose
     education level is less than a high school diploma.`,
     usedIn: `Training and workforce development`,
     respPartyLabel: `Census's American Community Survey`,

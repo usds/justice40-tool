@@ -368,7 +368,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <span>
                     Date range: 
                   </span>
-                  2013-2017
+                  2014-2018
                 </li>
                 <li>
                   <span>
@@ -455,7 +455,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               id="prox-haz"
             >
               <h3>
-                Proximity to hazardous waste sites
+                Proximity to hazardous waste facilities
               </h3>
               <div>
                 
@@ -482,7 +482,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <span>
                     Date range: 
                   </span>
-                  2015-2019
+                  2015-2020
                 </li>
                 <li>
                   <span>
@@ -575,8 +575,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Wastewater discharge
               </h3>
               <div>
-                RSEI modeled Toxic Concentrations at stream segments within 500
-    meters, divided by distance in kilometers (km).
+                Risk-Screening Environmental Indicators (RSEI) modeled Toxic Concentrations at 
+    stream segments within 500 meters, divided by distance in kilometers (km).
               </div>
               <ul>
                 <li>
@@ -761,7 +761,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               id="median-income"
             >
               <h3>
-                Low Median Income
+                Low median Income
               </h3>
               <div>
                 Median income of the census tract calculated as a percent of the area’s median income.
@@ -873,7 +873,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Poverty
               </h3>
               <div>
-                Percent of a block group's population in households where the household income is at or below 100% of the federal poverty level.
+                Percent of a tract's population in households where the household income is at or below 100% of the federal poverty level.
               </div>
               <ul>
                 <li>
@@ -909,7 +909,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 High school degree achievement rate
               </h3>
               <div>
-                Percent of people ages 25 years or older in a block group whose
+                Percent of people ages 25 years or older in a census tract whose
     education level is less than a high school diploma.
               </div>
               <ul>
