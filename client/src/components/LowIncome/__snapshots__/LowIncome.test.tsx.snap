@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of the LowIncome checks if component renders 1`] = `
+<DocumentFragment>
+  <div>
+    <p>
+      <sup>
+        *
+      </sup>
+       Low Income
+    </p>
+    <p>
+      
+      At or above 65th percentile  for percent of census tract population of households where household 
+      income is at or below 200% of the federal poverty level
+    
+    </p>
+  </div>
+</DocumentFragment>
+`;
