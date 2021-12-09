@@ -1,6 +1,7 @@
 declare namespace DisadvantagedDotNamespace {
     export interface IDisadvantagedDot {
-        disadvantagedDot: string;
+        disadvantagedDotBig: string;
+        disadvantagedDotSmall: string;
     }
   }
 

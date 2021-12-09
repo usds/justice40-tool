@@ -136,7 +136,7 @@ export const DEFAULT_OUTLINE_COLOR = '#4EA5CF';
 export const MIN_COLOR = '#FFFFFF';
 export const MED_COLOR = '#D1DAE6';
 export const MAX_COLOR = '#768FB3';
-export const BORDER_HIGHLIGHT_COLOR = '#00BDE3';
+export const BORDER_HIGHLIGHT_COLOR = '#1A4480';
 export const CURRENTLY_SELECTED_FEATURE_LAYER_OPACITY = 0.5;
 
 // Widths
