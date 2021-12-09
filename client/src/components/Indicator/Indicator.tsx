@@ -31,7 +31,9 @@ export const getSuperscriptOrdinal = (percentile: number | string) => {
 
 const Indicator = ({indicator}:IIndicator) => {
   return (
-    <li className={styles.indicatorBoxMain} data-cy={'indicatorBox'}>
+    <li
+      className={indicator.isDisadvagtaged ? styles.disadvantagedIndicator : styles.indicatorBoxMain}
+      data-cy={'indicatorBox'}>
       <div className={styles.indicatorRow}>
         <div className={styles.indicatorName}>
           {indicator.label}

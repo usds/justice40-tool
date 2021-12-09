@@ -52,13 +52,6 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         </h3>
         <div />
       </div>
-      <a
-        href="
-    mailto:screeningtool.feedback@usds.gov?subject=Feedback on Census Tract: 98729374234
-  "
-      >
-        send feedback
-      </a>
     </div>
     <div
       aria-multiselectable="true"
@@ -76,7 +69,10 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           type="button"
         >
           <div>
-            Climate change
+            <div>
+              Climate change
+            </div>
+            <div />
           </div>
         </button>
       </h2>
@@ -97,9 +93,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              N/A
+              98
               <sup>
-                <span />
+                <span>
+                  th
+                </span>
               </sup>
             </div>
           </div>
@@ -115,9 +113,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              N/A
+              98
               <sup>
-                <span />
+                <span>
+                  th
+                </span>
               </sup>
             </div>
           </div>
@@ -133,9 +133,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              N/A
+              98
               <sup>
-                <span />
+                <span>
+                  th
+                </span>
               </sup>
             </div>
           </div>
@@ -151,9 +153,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              N/A
+              98
               <sup>
-                <span />
+                <span>
+                  th
+                </span>
               </sup>
             </div>
           </div>
@@ -170,7 +174,10 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           type="button"
         >
           <div>
-            Clean, efficient energy 
+            <div>
+              Clean, efficient energy 
+            </div>
+            <div />
           </div>
         </button>
       </h2>
@@ -227,9 +234,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              N/A
+              98
               <sup>
-                <span />
+                <span>
+                  th
+                </span>
               </sup>
             </div>
           </div>
@@ -246,7 +255,10 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           type="button"
         >
           <div>
-            Clean transportation
+            <div>
+              Clean transportation
+            </div>
+            <div />
           </div>
         </button>
       </h2>
@@ -303,9 +315,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              N/A
+              98
               <sup>
-                <span />
+                <span>
+                  th
+                </span>
               </sup>
             </div>
           </div>
@@ -322,7 +336,10 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           type="button"
         >
           <div>
-            Sustainable housing
+            <div>
+              Sustainable housing
+            </div>
+            <div />
           </div>
         </button>
       </h2>
@@ -332,6 +349,26 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         hidden=""
         id="sustain-house"
       >
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Housing cost burden
+              <div>
+                Low income households spending more than 30% of income on housing
+              </div>
+            </div>
+            <div>
+              95
+              <sup>
+                <span>
+                  th
+                </span>
+              </sup>
+            </div>
+          </div>
+        </li>
         <li
           data-cy="indicatorBox"
         >
@@ -373,35 +410,17 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         >
           <div>
             <div>
-              Housing cost burden
-              <div>
-                Low income households spending more than 30% of income on housing
-              </div>
-            </div>
-            <div>
-              95
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-        >
-          <div>
-            <div>
               Low income
               <div>
                 Household income is less than or equal to twice the federal poverty level
               </div>
             </div>
             <div>
-              N/A
+              98
               <sup>
-                <span />
+                <span>
+                  th
+                </span>
               </sup>
             </div>
           </div>
@@ -418,7 +437,10 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           type="button"
         >
           <div>
-            Legacy pollution
+            <div>
+              Legacy pollution
+            </div>
+            <div />
           </div>
         </button>
       </h2>
@@ -433,7 +455,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         >
           <div>
             <div>
-              Proximity to hazardous waste sites
+              Proximity to hazardous waste facilities
               <div>
                 Count of hazardous waste facilities within 5 km
               </div>
@@ -493,9 +515,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              N/A
+              98
               <sup>
-                <span />
+                <span>
+                  th
+                </span>
               </sup>
             </div>
           </div>
@@ -512,7 +536,10 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           type="button"
         >
           <div>
-            Clean water and waste
+            <div>
+              Clean water and waste
+            </div>
+            <div />
           </div>
         </button>
       </h2>
@@ -551,9 +578,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              N/A
+              98
               <sup>
-                <span />
+                <span>
+                  th
+                </span>
               </sup>
             </div>
           </div>
@@ -570,7 +599,12 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           type="button"
         >
           <div>
-            Health burdens
+            <div>
+              Health burdens
+            </div>
+            <div
+              class=""
+            />
           </div>
         </button>
       </h2>
@@ -663,9 +697,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              N/A
+              98
               <sup>
-                <span />
+                <span>
+                  th
+                </span>
               </sup>
             </div>
           </div>
@@ -682,7 +718,10 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
           type="button"
         >
           <div>
-            Workforce development
+            <div>
+              Workforce development
+            </div>
+            <div />
           </div>
         </button>
       </h2>

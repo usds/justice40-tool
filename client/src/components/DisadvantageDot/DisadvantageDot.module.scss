@@ -1,0 +1,13 @@
+@use '../../styles/design-system.scss' as *;
+
+
+.disadvantagedDot {
+    height: 0.6rem;
+    width: 0.6rem;
+    border-radius: 100%;
+    @include u-margin-left(1);
+    align-self: center;
+    opacity: 0.6;
+    @include u-bg('blue-warm-70v');
+}
+

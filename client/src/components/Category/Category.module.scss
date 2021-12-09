@@ -1,0 +1,6 @@
+@use '../../styles/design-system.scss' as *;
+
+.categoryContainer {
+    display: flex;
+    justify-content: space-between;
+}

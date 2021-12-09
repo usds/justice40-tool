@@ -9,15 +9,6 @@ $sidePanelLabelFontColor: #171716;
   font-weight: 600;
 }
 
-@mixin categorizationCircleStyle {
-  height: 0.6rem;
-  width: 0.6rem;
-  border-radius: 100%;
-  @include u-margin-left(1);
-  align-self: center;
-  opacity: 0.6;
-}
-
 .versionInfo {
   padding: .5rem 1rem .5rem 1.2rem;
   font-size: medium;
@@ -50,11 +41,6 @@ $sidePanelLabelFontColor: #171716;
     h3 {
       margin-top: 0;
       margin-bottom: 0;
-    }
-
-    .communityOfFocusCircle {
-      @include categorizationCircleStyle;
-      background: #1a4480;
     }
   }
 

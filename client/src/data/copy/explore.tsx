@@ -339,7 +339,7 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
   },
   PROX_HAZ: {
     id: 'areaDetail.indicator.prox.haz',
-    defaultMessage: 'Proximity to hazardous waste sites',
+    defaultMessage: 'Proximity to hazardous waste facilities',
     description: 'Count of hazardous waste facilities ',
   },
   PROX_NPL: {
