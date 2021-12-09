@@ -5,6 +5,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
   <aside
     data-cy="aside"
   >
+    <div>
+      Methodology version 0.1
+    </div>
     <ul>
       <li>
         <span>
@@ -41,333 +44,808 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
     </ul>
     <div>
       <div>
-        <div />
+        Identified as disadvantaged?
+      </div>
+      <div>
         <h3>
-          Community of focus
+          YES
         </h3>
+        <div />
       </div>
-      <p
-        class="secondary"
+      <a
+        href="
+    mailto:screeningtool.feedback@usds.gov?subject=Feedback on Census Tract: 98729374234
+  "
       >
-        version 0.1
-      </p>
+        send feedback
+      </a>
     </div>
-    <div>
-      <h6>
-        Indicator
-      </h6>
-      <h6>
-        Percentile (0-100)
-      </h6>
+    <div
+      aria-multiselectable="true"
+      class="usa-accordion"
+      data-testid="accordion"
+    >
+      <h2
+        class="usa-accordion__heading"
+      >
+        <button
+          aria-controls="climate-change"
+          aria-expanded="false"
+          class="usa-accordion__button"
+          data-testid="accordionButton_climate-change"
+          type="button"
+        >
+          <div>
+            Climate change
+          </div>
+        </button>
+      </h2>
+      <div
+        class="usa-accordion__content usa-prose"
+        data-testid="accordionItem_climate-change"
+        hidden=""
+        id="climate-change"
+      >
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Expected agriculture loss rate
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Expected agriculture loss rate
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Expected building loss rate
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Expected building loss rate
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Expected population loss rate
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Expected population loss rate
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Low income
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Low income
+          </p>
+        </li>
+      </div>
+      <h2
+        class="usa-accordion__heading"
+      >
+        <button
+          aria-controls="clean-energy"
+          aria-expanded="false"
+          class="usa-accordion__button"
+          data-testid="accordionButton_clean-energy"
+          type="button"
+        >
+          <div>
+            Clean, efficient energy 
+          </div>
+        </button>
+      </h2>
+      <div
+        class="usa-accordion__content usa-prose"
+        data-testid="accordionItem_clean-energy"
+        hidden=""
+        id="clean-energy"
+      >
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Energy cost burden
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Energy costs divided by household income
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              PM2.5
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Fine inhalable particles, 2.5 micrometers and smaller
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Low income
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Low income
+          </p>
+        </li>
+      </div>
+      <h2
+        class="usa-accordion__heading"
+      >
+        <button
+          aria-controls="clean-transport"
+          aria-expanded="false"
+          class="usa-accordion__button"
+          data-testid="accordionButton_clean-transport"
+          type="button"
+        >
+          <div>
+            Clean transportation
+          </div>
+        </button>
+      </h2>
+      <div
+        class="usa-accordion__content usa-prose"
+        data-testid="accordionItem_clean-transport"
+        hidden=""
+        id="clean-transport"
+      >
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Diesel particulate matter
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Diesel exhaust in the air
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Traffic
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Count of vehicles at major roads within 500 meters
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Low income
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Low income
+          </p>
+        </li>
+      </div>
+      <h2
+        class="usa-accordion__heading"
+      >
+        <button
+          aria-controls="sustain-house"
+          aria-expanded="false"
+          class="usa-accordion__button"
+          data-testid="accordionButton_sustain-house"
+          type="button"
+        >
+          <div>
+            Sustainable housing
+          </div>
+        </button>
+      </h2>
+      <div
+        class="usa-accordion__content usa-prose"
+        data-testid="accordionItem_sustain-house"
+        hidden=""
+        id="sustain-house"
+      >
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Lead paint
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Pre-1960 housing
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Median home value
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Meidan home value in area
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Housing cost burden
+            </h4>
+            <div>
+              95
+              <sup>
+                <span>
+                  th
+                </span>
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Low income households spending more than 30% of income on housing
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Low income
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Low income
+          </p>
+        </li>
+      </div>
+      <h2
+        class="usa-accordion__heading"
+      >
+        <button
+          aria-controls="leg-pollute"
+          aria-expanded="false"
+          class="usa-accordion__button"
+          data-testid="accordionButton_leg-pollute"
+          type="button"
+        >
+          <div>
+            Legacy pollution
+          </div>
+        </button>
+      </h2>
+      <div
+        class="usa-accordion__content usa-prose"
+        data-testid="accordionItem_leg-pollute"
+        hidden=""
+        id="leg-pollute"
+      >
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Proximity to hazardous waste sites
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Count of hazardous waste facilities within 5 km
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Proximity to NPL sites
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Proposed or listed NPL (Superfund) sites within 5 km
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Proximity to RMP sites
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Risk Management Plan facilities within 5 km
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Low income
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Low income
+          </p>
+        </li>
+      </div>
+      <h2
+        class="usa-accordion__heading"
+      >
+        <button
+          aria-controls="clean-water"
+          aria-expanded="false"
+          class="usa-accordion__button"
+          data-testid="accordionButton_clean-water"
+          type="button"
+        >
+          <div>
+            Clean water and waste
+          </div>
+        </button>
+      </h2>
+      <div
+        class="usa-accordion__content usa-prose"
+        data-testid="accordionItem_clean-water"
+        hidden=""
+        id="clean-water"
+      >
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Wastewater discharge
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Toxic concentrations at stream segments within 500 meters
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Low income
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Low income
+          </p>
+        </li>
+      </div>
+      <h2
+        class="usa-accordion__heading"
+      >
+        <button
+          aria-controls="health-burdens"
+          aria-expanded="false"
+          class="usa-accordion__button"
+          data-testid="accordionButton_health-burdens"
+          type="button"
+        >
+          <div>
+            Health burdens
+          </div>
+        </button>
+      </h2>
+      <div
+        class="usa-accordion__content usa-prose"
+        data-testid="accordionItem_health-burdens"
+        hidden=""
+        id="health-burdens"
+      >
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Asthma
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Number of people who have been told they have asthma
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Diabetes
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            People ages 18 years and older who have diabetes other than diabetes during pregnancy
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Heart disease
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            People ages 18 years and older who have been told they have heart disease
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Low life expectancy
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Average number of years of life a person can expect to live
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Low income
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Low income
+          </p>
+        </li>
+      </div>
+      <h2
+        class="usa-accordion__heading"
+      >
+        <button
+          aria-controls="work-dev"
+          aria-expanded="false"
+          class="usa-accordion__button"
+          data-testid="accordionButton_work-dev"
+          type="button"
+        >
+          <div>
+            Workforce development
+          </div>
+        </button>
+      </h2>
+      <div
+        class="usa-accordion__content usa-prose"
+        data-testid="accordionItem_work-dev"
+        hidden=""
+        id="work-dev"
+      >
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Low median income
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Median income calculated as a percent of the area’s median income
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Linguistic isolation
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Households in which no one age 14 and over speaks English only or also speaks 
+    a language other than English
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Unemployment
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Number of unemployed people as a percentage of the labor force
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              Poverty
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Percent of individuals in households where the household income is at or 
+    below 100% of the federal poverty level
+          </p>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <h4>
+              High school degree achievement rate
+            </h4>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+          <p
+            class="secondary j40-indicator"
+          >
+            Percent of people ages 25 years or older whose education level is less than a high school diploma
+          </p>
+        </li>
+      </div>
     </div>
-    <li
-      data-cy="indicatorBox"
-    >
-      <div>
-        <h4>
-          Area Median Income
-        </h4>
-        <div>
-          19
-          <sup>
-            <span>
-              th
-            </span>
-          </sup>
-        </div>
-      </div>
-      <p
-        class="secondary j40-indicator"
-      >
-        Median income of the census tract calculated as a percent of the metropolitan area’s or state's median income
-      </p>
-    </li>
-    <li
-      data-cy="indicatorBox"
-    >
-      <div>
-        <h4>
-          Education, less than high school
-        </h4>
-        <div>
-          98
-          <sup>
-            <span>
-              th
-            </span>
-          </sup>
-        </div>
-      </div>
-      <p
-        class="secondary j40-indicator"
-      >
-        Percent of people age 25 or older that didn’t get a high school diploma
-      </p>
-    </li>
-    <li
-      data-cy="indicatorBox"
-    >
-      <div>
-        <h4>
-          Poverty
-        </h4>
-        <div>
-          12
-          <sup>
-            <span>
-              th
-            </span>
-          </sup>
-        </div>
-      </div>
-      <p
-        class="secondary j40-indicator"
-      >
-        Percent of a tract's population in households where the household income is at or below 100% of the federal poverty level
-      </p>
-    </li>
-    <li
-      data-cy="indicatorBox"
-    >
-      <div>
-        <h4>
-          Asthma
-        </h4>
-        <div>
-          N/A
-          <sup>
-            <span />
-          </sup>
-        </div>
-      </div>
-      <p
-        class="secondary j40-indicator"
-      >
-        People who answer “yes” to both of the questions: “Have you ever been told by a doctor nurse, or other health professional that you have asthma?” and “Do you still have asthma?"
-      </p>
-    </li>
-    <li
-      data-cy="indicatorBox"
-    >
-      <div>
-        <h4>
-          Diabetes
-        </h4>
-        <div>
-          N/A
-          <sup>
-            <span />
-          </sup>
-        </div>
-      </div>
-      <p
-        class="secondary j40-indicator"
-      >
-        People ages 18 and up who report having been told by a doctor, nurse, or other health professionals that they have diabetes other than diabetes during pregnancy
-      </p>
-    </li>
-    <li
-      data-cy="indicatorBox"
-    >
-      <div>
-        <h4>
-          Diesel particulate matter
-        </h4>
-        <div>
-          N/A
-          <sup>
-            <span />
-          </sup>
-        </div>
-      </div>
-      <p
-        class="secondary j40-indicator"
-      >
-        Mixture of particles that is part of diesel exhaust in the air
-      </p>
-    </li>
-    <li
-      data-cy="indicatorBox"
-    >
-      <div>
-        <h4>
-          Energy burden
-        </h4>
-        <div>
-          N/A
-          <sup>
-            <span />
-          </sup>
-        </div>
-      </div>
-      <p
-        class="secondary j40-indicator"
-      >
-        Average annual energy cost ($) divided by household income
-      </p>
-    </li>
-    <li
-      data-cy="indicatorBox"
-    >
-      <div>
-        <h4>
-          FEMA Risk Index
-        </h4>
-        <div>
-          N/A
-          <sup>
-            <span />
-          </sup>
-        </div>
-      </div>
-      <p
-        class="secondary j40-indicator"
-      >
-        Expected Annual Loss Score, which is the average economic loss in dollars resulting from natural hazards each year.
-      </p>
-    </li>
-    <li
-      data-cy="indicatorBox"
-    >
-      <div>
-        <h4>
-          Heart disease
-        </h4>
-        <div>
-          N/A
-          <sup>
-            <span />
-          </sup>
-        </div>
-      </div>
-      <p
-        class="secondary j40-indicator"
-      >
-        People ages 18 and up who report ever having been told by a doctor, nurse, or other health professionals that they had angina or coronary heart disease
-      </p>
-    </li>
-    <li
-      data-cy="indicatorBox"
-    >
-      <div>
-        <h4>
-          Housing cost burden
-        </h4>
-        <div>
-          95
-          <sup>
-            <span>
-              th
-            </span>
-          </sup>
-        </div>
-      </div>
-      <p
-        class="secondary j40-indicator"
-      >
-        Households that are low income and spend more than 30% of their income on housing costs
-      </p>
-    </li>
-    <li
-      data-cy="indicatorBox"
-    >
-      <div>
-        <h4>
-          Lead paint
-        </h4>
-        <div>
-          N/A
-          <sup>
-            <span />
-          </sup>
-        </div>
-      </div>
-      <p
-        class="secondary j40-indicator"
-      >
-        Housing units built pre-1960, used as an indicator of potential lead paint exposure in homes
-      </p>
-    </li>
-    <li
-      data-cy="indicatorBox"
-    >
-      <div>
-        <h4>
-          Life expectancy
-        </h4>
-        <div>
-          N/A
-          <sup>
-            <span />
-          </sup>
-        </div>
-      </div>
-      <p
-        class="secondary j40-indicator"
-      >
-        Estimated years of life expectancy
-      </p>
-    </li>
-    <li
-      data-cy="indicatorBox"
-    >
-      <div>
-        <h4>
-          PM2.5
-        </h4>
-        <div>
-          N/A
-          <sup>
-            <span />
-          </sup>
-        </div>
-      </div>
-      <p
-        class="secondary j40-indicator"
-      >
-        Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller
-      </p>
-    </li>
-    <li
-      data-cy="indicatorBox"
-    >
-      <div>
-        <h4>
-          Traffic proximity and volume
-        </h4>
-        <div>
-          N/A
-          <sup>
-            <span />
-          </sup>
-        </div>
-      </div>
-      <p
-        class="secondary j40-indicator"
-      >
-        Count of vehicles (average annual daily traffic) at major roads within 500 meters, divided by distance in meters
-      </p>
-    </li>
-    <li
-      data-cy="indicatorBox"
-    >
-      <div>
-        <h4>
-          Wastewater discharge
-        </h4>
-        <div>
-          N/A
-          <sup>
-            <span />
-          </sup>
-        </div>
-      </div>
-      <p
-        class="secondary j40-indicator"
-      >
-        Toxic concentrations at stream segments within 500 meters divided by distance in kilometers
-      </p>
-    </li>
   </aside>
 </DocumentFragment>
 `;

@@ -1,0 +1,53 @@
+@use '../../styles/design-system.scss' as *;
+@import "../utils.scss";
+
+@mixin indicatorBox {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem 1.5rem;
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+//Indicator box styles
+.indicatorBoxMain {
+  @include indicatorBox;
+  border-bottom: $sidePanelBorder;
+}
+
+.indicatorBoxAdditional {
+  @include indicatorBox;
+  border-bottom: 1px solid #1b1b1b;
+  background-color: $additionalCardsBGColor;
+}
+
+.indicatorRow {
+  display: flex;
+
+  @media screen and (max-width: $mobileBreakpoint) {
+    flex: 1 0 40%;
+    align-self: inherit;
+    padding-left: 3rem;
+    padding-top: 1rem;
+  }
+
+  .indicatorName {
+    flex: 0 1 77%;
+  }
+  
+  .indicatorValue {
+    margin-top: 1.2rem;
+    margin-left: 2.2rem;
+    
+    .indicatorSuperscript {
+      top: -0.2em
+    }
+    
+  }
+  
+  .indicatorDesc {
+    max-width: 10rem;    
+  }
+}
+

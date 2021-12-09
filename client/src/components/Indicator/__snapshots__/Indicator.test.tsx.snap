@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of the Indicator checks if component renders 1`] = `
+<DocumentFragment>
+  <li
+    data-cy="indicatorBox"
+  >
+    <div>
+      <h4>
+        some label
+      </h4>
+      <div>
+        9700
+        <sup>
+          <span>
+            th
+          </span>
+        </sup>
+      </div>
+    </div>
+    <p
+      class="secondary j40-indicator"
+    >
+      some description
+    </p>
+  </li>
+</DocumentFragment>
+`;

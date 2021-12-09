@@ -8,13 +8,9 @@ declare namespace MapModuleScssNamespace {
     censusLabel:string;
     censusText: string;
     divider:string;
-    indicatorBoxMain:string;
-    indicatorBoxAdditional:string;
-    indicatorRow:string;
-    indicatorName:string;
-    indicatorValue:string;
-    indicatorSuperscript:string;
-    indicatorDesc:string;
+    feedbackLink:string;
+    isInFocus:string;
+    versionInfo: string;
   }
 }
 
