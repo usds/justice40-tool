@@ -147,7 +147,7 @@ export const CATEGORY= {
 };
 
 
-// Indicator Categories
+// Indicator Categories copy constants:
 export const CATEGORIES = {
   CLIMATE_CHANGE: {
     TITLE: <FormattedMessage
@@ -261,7 +261,7 @@ export const CATEGORIES = {
       }}
     />,
   },
-  AFFORDABLE_HOUSE: {
+  AFFORDABLE_HOUSING: {
     TITLE: <FormattedMessage
       id={'indicator.categories.afford.house.title'}
       defaultMessage={'Affordable and sustainable housing'}
@@ -413,7 +413,7 @@ export const CATEGORIES = {
       }}
     />,
   },
-  WORK_DEV: {
+  WORKFORCE_DEV: {
     TITLE: <FormattedMessage
       id={'indicator.categories.work.dev.title'}
       defaultMessage={'Training and workforce development'}
