@@ -137,7 +137,6 @@ DOWNLOADABLE_SCORE_INDICATOR_COLUMNS_BASIC = [
     field_names.DIABETES_FIELD,
     field_names.ASTHMA_FIELD,
     field_names.HEART_DISEASE_FIELD,
-    field_names.LIFE_EXPECTANCY_FIELD,
     field_names.TRAFFIC_FIELD,
     field_names.FEMA_RISK_FIELD,
     field_names.ENERGY_BURDEN_FIELD,
@@ -149,11 +148,11 @@ DOWNLOADABLE_SCORE_INDICATOR_COLUMNS_BASIC = [
     field_names.TOTAL_POP_FIELD,
 ]
 
-# For every indicator above, we want to include percentile and min-max normalized variants also
+# For every indicator above, we want to include percentile also.
 DOWNLOADABLE_SCORE_INDICATOR_COLUMNS_FULL = list(
     pd.core.common.flatten(
         [
-            [p, f"{p} (percentile)"]
+            [p, f"{p}{field_names.PERCENTILE_FIELD_SUFFIX}"]
             for p in DOWNLOADABLE_SCORE_INDICATOR_COLUMNS_BASIC
         ]
     )
@@ -165,8 +164,13 @@ DOWNLOADABLE_SCORE_COLUMNS = [
     field_names.COUNTY_FIELD,
     field_names.STATE_FIELD,
     field_names.SCORE_G_COMMUNITIES,
+    # Note: the reverse percentile fields get moved down here because
+    # we put the raw value in the download along with the *reversed* percentile.
     field_names.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD,
-    field_names.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD
+    field_names.LOW_MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.LIFE_EXPECTANCY_FIELD,
+    field_names.LOW_LIFE_EXPECTANCY_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX,
     *DOWNLOADABLE_SCORE_INDICATOR_COLUMNS_FULL,
 ]
