@@ -153,6 +153,7 @@ export const MAP = defineMessages({
   },
 });
 
+
 // Side Panel copy
 export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   TITLE: {
@@ -308,7 +309,6 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
   },
 });
 
-
 export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   AREA_MEDIAN_INCOME: {
     id: 'areaDetail.indicator.description.area_median_income',
@@ -440,6 +440,41 @@ export const DOWNLOAD_DRAFT = {
   />,
 };
 
+export const NOTE_ON_TERRITORIES = {
+  INTRO: <FormattedMessage
+    id={'explore.page.note.on.territories.intro'}
+    defaultMessage={`A note on the U.S. territories`}
+    description={`territories intro text`}
+  />,
+  PARA_1: <FormattedMessage
+    id={'explore.page.note.on.territories.para.1'}
+    defaultMessage={`
+      The data sources described on the {dataMethLink} page are used to 
+      identify disadvantaged communities for all 50 states and the District of Columbia. However, not all 
+      of these data sources are currently available for the U.S. territories. The Census ACS data from 
+      2015-2019 was used to identify disadvantaged communities for Puerto Rico. This uses the same methodology 
+      as all 50 states and the District of Columbia for which data is available, which is all fields in 
+      the Training and Workforce Development category.
+    `}
+    description={`territories paragraph 1`}
+    values={{
+      dataMethLink: <Link to="/methodology">Methodology & data</Link>,
+    }}
+  />,
+  PARA_2: <FormattedMessage
+    id={'explore.page.note.on.territories.para.2'}
+    defaultMessage={`
+      For American Samoa, Northern Mariana Islands, Guam and U.S. Virgin Islands, the last reported data from 
+      the Census Bureau is the Decennial Census from 2010. The Decennial Census data from 2010 was used 
+      for American Samoa and Northern Mariana Islands using only the unemployment, poverty, area median 
+      income, and high school degree achievement rate fields in the Training and Workforce Development 
+      category of the methodology. Work is underway to identify disadvantaged communities and update the 
+      CEJST accordingly for Guam and the U.S. Virgin Islands.
+    `}
+    description={`territories paragraph 2`}
+  />,
+
+};
 export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
   HEADING: <FormattedMessage
     id={'youCanHelpInfoText.heading'}
