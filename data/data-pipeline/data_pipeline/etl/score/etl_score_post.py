@@ -2,6 +2,7 @@ from pathlib import Path
 import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger, zip_files
+from data_pipeline.score import field_names
 
 
 from data_pipeline.etl.sources.census.etl_utils import (
@@ -179,7 +180,9 @@ class PostScoreETL(ExtractTransformLoad):
         )
 
         # list the null score tracts
-        null_tract_df = merged_df[merged_df["Score E (percentile)"].isnull()]
+        null_tract_df = merged_df[
+            merged_df[field_names.SCORE_L_COMMUNITIES].isnull()
+        ]
 
         # subtract data sets
         # this follows the XOR pattern outlined here:
@@ -267,15 +270,20 @@ class PostScoreETL(ExtractTransformLoad):
 
         # Rename score column
         downloadable_df_copy = downloadable_df.rename(
-            columns={"Score G (communities)": "Community of focus (v0.1)"},
+            columns={
+                field_names.SCORE_L_COMMUNITIES: "Community of focus (v0.1)"
+            },
             inplace=False,
         )
 
-        logger.info("Writing downloadable csv")
-        downloadable_df_copy.to_csv(csv_path, index=False)
-
         logger.info("Writing downloadable excel")
         downloadable_df_copy.to_excel(excel_path, index=False)
+
+        logger.info("Writing downloadable csv")
+        downloadable_df_copy[self.GEOID_TRACT_FIELD_NAME] = (
+            '"' + downloadable_df_copy[self.GEOID_TRACT_FIELD_NAME] + '"'
+        )
+        downloadable_df_copy.to_csv(csv_path, index=False)
 
         logger.info("Compressing files")
         files_to_compress = [csv_path, excel_path, pdf_path]

@@ -121,6 +121,11 @@ export const AMERICAN_SAMOA_BOUNDS: LngLatBoundsLike = [
   [-168.1433, -11.046934],
 ];
 
+export const US_VIRGIN_ISLANDS_BOUNDS: LngLatBoundsLike = [
+  [-65.5782239, 17.6739145],
+  [-64.2704123, 18.7495796],
+];
+
 export const DEFAULT_CENTER = [32.4687126, -86.502136];
 
 // Opacity

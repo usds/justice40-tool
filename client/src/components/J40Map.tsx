@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 // External Libs:
-import React, {MouseEvent, useRef, useState, useMemo} from 'react';
+import React, {useRef, useState, useMemo} from 'react';
 import {Map, MapboxGeoJSONFeature, LngLatBoundsLike} from 'maplibre-gl';
 import ReactMapGL, {
   MapEvent,
@@ -22,9 +22,10 @@ import {useWindowSize} from 'react-use';
 import {useFlags} from '../contexts/FlagContext';
 
 // Components:
-import TerritoryFocusControl from './territoryFocusControl';
-import MapInfoPanel from './mapInfoPanel';
 import AreaDetail from './AreaDetail';
+import MapInfoPanel from './mapInfoPanel';
+import MapSearch from './MapSearch';
+import TerritoryFocusControl from './territoryFocusControl';
 
 // Styles and constants
 import {makeMapStyle} from '../data/mapStyle';
@@ -51,6 +52,7 @@ export interface IDetailViewInterface {
   zoom: number
   properties: constants.J40Properties,
 };
+
 
 const J40Map = ({location}: IJ40Interface) => {
   // Hash portion of URL is of the form #zoom/lat/lng
@@ -134,29 +136,6 @@ const J40Map = ({location}: IJ40Interface) => {
     });
   };
 
-  const onClickTerritoryFocusButton = (event: MouseEvent<HTMLButtonElement>) => {
-    event.stopPropagation();
-    const buttonID = event.target && (event.target as HTMLElement).id;
-
-    switch (buttonID) {
-      case '48':
-        goToPlace(constants.LOWER_48_BOUNDS);
-        break;
-      case 'AK':
-        goToPlace(constants.ALASKA_BOUNDS);
-        break;
-      case 'HI':
-        goToPlace(constants.HAWAII_BOUNDS);
-        break;
-      case 'PR':
-        goToPlace(constants.PUERTO_RICO_BOUNDS);
-        break;
-
-      default:
-        break;
-    }
-  };
-
   const onTransitionStart = () => {
     setTransitionInProgress(true);
   };
@@ -176,6 +155,23 @@ const J40Map = ({location}: IJ40Interface) => {
   return (
     <>
       <Grid col={12} desktop={{col: 9}}>
+
+        {/*
+          The MapSearch component is wrapped in a div in order for MapSearch to render correctly in a production build.
+
+          When the MapSearch component is placed behind a feature flag without a div wrapping
+          MapSearch, the production build will inject CSS due to the null in the false conditional
+          case. Any changes to this (ie, changes to MapSearch or removing feature flag, etc), should
+          be tested with a production build via:
+
+          npm run clean && npm run build && npm run serve
+
+          to ensure the production build works and that MapSearch and the map (ReactMapGL) render correctly.
+        */}
+        <div>
+          {'sr' in flags ? <MapSearch goToPlace={goToPlace}/> : null}
+        </div>
+
         <ReactMapGL
           {...viewport}
           mapStyle={makeMapStyle(flags)}
@@ -254,8 +250,9 @@ const J40Map = ({location}: IJ40Interface) => {
             onClick={onClickGeolocate}
           /> : ''}
           {geolocationInProgress ? <div>Geolocation in progress...</div> : ''}
-          <TerritoryFocusControl onClickTerritoryFocusButton={onClickTerritoryFocusButton}/>
+          <TerritoryFocusControl goToPlace={goToPlace}/>
           {'fs' in flags ? <FullscreenControl className={styles.fullscreenControl}/> :'' }
+
         </ReactMapGL>
       </Grid>
 

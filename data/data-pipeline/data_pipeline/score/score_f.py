@@ -36,7 +36,7 @@ class ScoreF(Score):
             )
             | (
                 self.df[
-                    field_names.RESPITORY_HAZARD_FIELD
+                    field_names.RESPIRATORY_HAZARD_FIELD
                     + field_names.PERCENTILE_FIELD_SUFFIX
                 ]
                 > 0.9

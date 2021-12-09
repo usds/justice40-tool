@@ -12,20 +12,21 @@ class DOEEnergyBurden(ExtractTransformLoad):
     def __init__(self):
         self.DOE_FILE_URL = (
             settings.AWS_JUSTICE40_DATASOURCES_URL
-            + "/DOE_LEAD_with_EJSCREEN.csv.zip"
+            + "/DOE_LEAD_AMI_TRACT_2018_ALL.csv.zip"
         )
 
         self.OUTPUT_PATH: Path = (
             self.DATA_PATH / "dataset" / "doe_energy_burden"
         )
 
-        self.TRACT_INPUT_COLUMN_NAME = "GEOID"
-        self.ENERGY_BURDEN_FIELD_NAME = "Energy burden"
+        self.TRACT_INPUT_COLUMN_NAME = "FIP"
+        self.INPUT_ENERGY_BURDEN_FIELD_NAME = "BURDEN"
+        self.REVISED_ENERGY_BURDEN_FIELD_NAME = "Energy burden"
 
         # Constants for output
         self.COLUMNS_TO_KEEP = [
             self.GEOID_TRACT_FIELD_NAME,
-            self.ENERGY_BURDEN_FIELD_NAME,
+            self.REVISED_ENERGY_BURDEN_FIELD_NAME,
         ]
 
         self.raw_df: pd.DataFrame
@@ -43,7 +44,7 @@ class DOEEnergyBurden(ExtractTransformLoad):
         self.raw_df = pd.read_csv(
             filepath_or_buffer=self.TMP_PATH
             / "doe_energy_burden"
-            / "DOE_LEAD_with_EJSCREEN.csv",
+            / "DOE_LEAD_AMI_TRACT_2018_ALL.csv",
             # The following need to remain as strings for all of their digits, not get converted to numbers.
             dtype={
                 self.TRACT_INPUT_COLUMN_NAME: "string",
@@ -56,14 +57,9 @@ class DOEEnergyBurden(ExtractTransformLoad):
 
         output_df = self.raw_df.rename(
             columns={
-                "AvgEnergyBurden": self.ENERGY_BURDEN_FIELD_NAME,
+                self.INPUT_ENERGY_BURDEN_FIELD_NAME: self.REVISED_ENERGY_BURDEN_FIELD_NAME,
                 self.TRACT_INPUT_COLUMN_NAME: self.GEOID_TRACT_FIELD_NAME,
             }
-        )
-
-        # Convert energy burden to a fraction, since we represent all other percentages as fractions.
-        output_df[self.ENERGY_BURDEN_FIELD_NAME] = (
-            output_df[self.ENERGY_BURDEN_FIELD_NAME] / 100
         )
 
         # Left-pad the tracts with 0s

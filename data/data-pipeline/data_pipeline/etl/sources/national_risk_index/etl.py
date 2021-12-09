@@ -15,7 +15,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
     """ETL class for the FEMA National Risk Index dataset"""
 
     def __init__(self):
-        self.NRI_FTP_URL = "https://nri-data-downloads.s3.amazonaws.com/NRI_Table_CensusTracts.zip"
+        self.NRI_FTP_URL = "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload//NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
         self.INPUT_CSV = self.TMP_PATH / "NRI_Table_CensusTracts.csv"
         self.OUTPUT_DIR = (
             self.DATA_PATH / "dataset" / "national_risk_index_2020"
@@ -32,10 +32,12 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         )
 
         self.EXPECTED_ANNUAL_LOSS_BUILDING_VALUE_INPUT_FIELD_NAME = "EAL_VALB"
+
         self.EXPECTED_ANNUAL_LOSS_AGRICULTURAL_VALUE_INPUT_FIELD_NAME = (
             "EAL_VALA"
         )
         self.EXPECTED_ANNUAL_LOSS_POPULATION_VALUE_INPUT_FIELD_NAME = "EAL_VALP"
+
         self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME = "AGRIVALUE"
         self.POPULATION_INPUT_FIELD_NAME = "POPULATION"
         self.BUILDING_VALUE_INPUT_FIELD_NAME = "BUILDVALUE"
@@ -99,23 +101,66 @@ class NationalRiskIndexETL(ExtractTransformLoad):
             inplace=True,
         )
 
+        # Only use disasters linked to climate change
+        disaster_categories = [
+            "AVLN",  # Avalanche
+            "CFLD",  # Coastal Flooding
+            "CWAV",  # Cold Wave
+            "DRGT",  # Drought
+            "HAIL",  # Hail
+            "HWAV",  # Heat Wave
+            "HRCN",  # Hurricane
+            "ISTM",  # Ice Storm
+            "LNDS",  # Landslide
+            "RFLD",  # Riverine Flooding
+            "SWND",  # Strong Wind
+            "TRND",  # Tornado
+            "WFIR",  # Wildfire
+            "WNTW",  # Winter Weather
+        ]
+
+        # Some disaster categories do not have agriculture value column
+        agriculture_columns = [
+            f"{x}_EALA"
+            for x in disaster_categories
+            if f"{x}_EALA" in list(df_nri.columns)
+        ]
+
+        population_columns = [
+            f"{x}_EALP"
+            for x in disaster_categories
+            if f"{x}_EALP" in list(df_nri.columns)
+        ]
+
+        buildings_columns = [
+            f"{x}_EALB"
+            for x in disaster_categories
+            if f"{x}_EALB" in list(df_nri.columns)
+        ]
+
+        disaster_population_sum_series = df_nri[population_columns].sum(axis=1)
+
+        disaster_agriculture_sum_series = df_nri[agriculture_columns].sum(
+            axis=1
+        )
+
+        disaster_buildings_sum_series = df_nri[buildings_columns].sum(axis=1)
+
         # Population EAL Rate = Eal Valp / Population
         df_nri[self.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME] = (
-            df_nri[self.EXPECTED_ANNUAL_LOSS_POPULATION_VALUE_INPUT_FIELD_NAME]
+            disaster_population_sum_series
             / df_nri[self.POPULATION_INPUT_FIELD_NAME]
         )
 
         # Agriculture EAL Rate = Eal Vala / Agrivalue
         df_nri[self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME] = (
-            df_nri[
-                self.EXPECTED_ANNUAL_LOSS_AGRICULTURAL_VALUE_INPUT_FIELD_NAME
-            ]
+            disaster_agriculture_sum_series
             / df_nri[self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME]
         )
 
         # divide EAL_VALB (Expected Annual Loss - Building Value) by BUILDVALUE (Building Value ($)).
         df_nri[self.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME] = (
-            df_nri[self.EXPECTED_ANNUAL_LOSS_BUILDING_VALUE_INPUT_FIELD_NAME]
+            disaster_buildings_sum_series
             / df_nri[self.BUILDING_VALUE_INPUT_FIELD_NAME]
         )
 
@@ -128,5 +173,5 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         # write nationwide csv
         self.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
         self.df[self.COLUMNS_TO_KEEP].to_csv(
-            self.OUTPUT_DIR / "usa.csv", index=False
+            self.OUTPUT_DIR / "usa.csv", index=False, float_format="%.10f"
         )

@@ -261,7 +261,7 @@ exports[`rendering of the J40Header checks if component renders 1`] = `
                   data-cy="nav-link-methodology"
                   href="/en/methodology"
                 >
-                  Data & methodology
+                  Methodology & data
                 </a>
               </li>
               <li

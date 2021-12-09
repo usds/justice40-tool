@@ -262,6 +262,30 @@ This section will outline styles that are component specific
       background-image: url("../images/mapbtn-PR.svg");
     }
   }
+
+  button.mapboxgl-ctrl-zoom-to-gu {
+    .mapboxgl-ctrl-icon {
+      background-image: url("../images/mapbtn-GU.svg");
+    }
+  }
+
+  button.mapboxgl-ctrl-zoom-to-as {
+    .mapboxgl-ctrl-icon {
+      background-image: url("../images/mapbtn-AS.svg");
+    }
+  }
+
+  button.mapboxgl-ctrl-zoom-to-mp {
+    .mapboxgl-ctrl-icon {
+      background-image: url("../images/mapbtn-MP.svg");
+    }
+  }
+
+  button.mapboxgl-ctrl-zoom-to-vi {
+    .mapboxgl-ctrl-icon {
+      background-image: url("../images/mapbtn-VI.svg");
+    }
+  }
 }
 
 //Area Detail Component
@@ -321,10 +345,6 @@ p.secondary.j40-indicator {
 
     .j40-aboutcard-image {
       width: 3rem;
-    }
-
-    .j40-aboutcard-link {
-      font-weight: bold;
     }
 
     div.j40-aboutcard-sm-link {

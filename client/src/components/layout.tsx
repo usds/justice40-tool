@@ -5,6 +5,7 @@ import {URLFlagProvider} from '../contexts/FlagContext';
 
 import J40Header from './J40Header';
 import J40Footer from './J40Footer';
+
 interface ILayoutProps {
   children: ReactNode,
   location: Location,

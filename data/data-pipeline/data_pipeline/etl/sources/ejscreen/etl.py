@@ -8,11 +8,38 @@ logger = get_module_logger(__name__)
 
 
 class EJSCREENETL(ExtractTransformLoad):
+    """Load EJSCREEN data.
+
+    Data dictionary:
+        https://gaftp.epa.gov/EJSCREEN/2019/2019_EJSCREEN_columns_explained.csv
+    """
+
     def __init__(self):
         self.EJSCREEN_FTP_URL = "https://edap-arcgiscloud-data-commons.s3.amazonaws.com/EJSCREEN2020/EJSCREEN_Tract_2020_USPR.csv.zip"
         self.EJSCREEN_CSV = self.TMP_PATH / "EJSCREEN_Tract_2020_USPR.csv"
         self.CSV_PATH = self.DATA_PATH / "dataset" / "ejscreen_2019"
         self.df: pd.DataFrame
+
+        self.COLUMNS_TO_KEEP = [
+            self.GEOID_TRACT_FIELD_NAME,
+            field_names.TOTAL_POP_FIELD,
+            # pylint: disable=duplicate-code
+            field_names.AIR_TOXICS_CANCER_RISK_FIELD,
+            field_names.RESPIRATORY_HAZARD_FIELD,
+            field_names.DIESEL_FIELD,
+            field_names.PM25_FIELD,
+            field_names.OZONE_FIELD,
+            field_names.TRAFFIC_FIELD,
+            field_names.RMP_FIELD,
+            field_names.TSDF_FIELD,
+            field_names.NPL_FIELD,
+            field_names.WASTEWATER_FIELD,
+            field_names.HOUSEHOLDS_LINGUISTIC_ISO_FIELD,
+            field_names.POVERTY_FIELD,
+            field_names.OVER_64_FIELD,
+            field_names.UNDER_5_FIELD,
+            field_names.LEAD_PAINT_FIELD,
+        ]
 
     def extract(self) -> None:
         logger.info("Downloading EJScreen Data")
@@ -40,7 +67,7 @@ class EJSCREENETL(ExtractTransformLoad):
                 # but I think that's the direction we'd like to move all ETL classes. - LMB
                 "ACSTOTPOP": field_names.TOTAL_POP_FIELD,
                 "CANCER": field_names.AIR_TOXICS_CANCER_RISK_FIELD,
-                "RESP": field_names.RESPITORY_HAZARD_FIELD,
+                "RESP": field_names.RESPIRATORY_HAZARD_FIELD,
                 "DSLPM": field_names.DIESEL_FIELD,
                 "PM25": field_names.PM25_FIELD,
                 "OZONE": field_names.OZONE_FIELD,
@@ -51,7 +78,6 @@ class EJSCREENETL(ExtractTransformLoad):
                 "PWDIS": field_names.WASTEWATER_FIELD,
                 "LINGISOPCT": field_names.HOUSEHOLDS_LINGUISTIC_ISO_FIELD,
                 "LOWINCPCT": field_names.POVERTY_FIELD,
-                "LESSHSPCT": field_names.HIGH_SCHOOL_ED_FIELD,
                 "OVER64PCT": field_names.OVER_64_FIELD,
                 "UNDER5PCT": field_names.UNDER_5_FIELD,
                 "PRE1960PCT": field_names.LEAD_PAINT_FIELD,
@@ -63,4 +89,6 @@ class EJSCREENETL(ExtractTransformLoad):
         logger.info("Saving EJScreen CSV")
         # write nationwide csv
         self.CSV_PATH.mkdir(parents=True, exist_ok=True)
-        self.df.to_csv(self.CSV_PATH / "usa.csv", index=False)
+        self.df[self.COLUMNS_TO_KEEP].to_csv(
+            self.CSV_PATH / "usa.csv", index=False
+        )
