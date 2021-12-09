@@ -1,7 +1,7 @@
 import React from 'react';
 import {Grid} from '@trussworks/react-uswds';
 
-import IndicatorCategory from '../CategoryCard';
+import CategoryCard from '../CategoryCard';
 import J40MainGridContainer from '../J40MainGridContainer';
 
 import * as METHODOLOGY_COPY from '../../data/copy/methodology';
@@ -33,7 +33,7 @@ const Categories = () => {
 
       <J40MainGridContainer className={styles.categoriesContainer}>
         {
-          categories.map((category, index) => <IndicatorCategory key={index} categoryInfo={category} />)
+          categories.map((category, index) => <CategoryCard key={index} categoryInfo={category} />)
         }
       </J40MainGridContainer>
     </>

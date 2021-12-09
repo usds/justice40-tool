@@ -10,7 +10,7 @@ interface ICategoryInterface {
         THEN: JSX.Element
     }
 }
-const IndicatorCategory = ({categoryInfo}: ICategoryInterface) => {
+const CategoryCard = ({categoryInfo}: ICategoryInterface) => {
   return (
     <div className={styles.categoryCard}>
       <h3>
@@ -29,4 +29,4 @@ const IndicatorCategory = ({categoryInfo}: ICategoryInterface) => {
   );
 };
 
-export default IndicatorCategory;
+export default CategoryCard;
