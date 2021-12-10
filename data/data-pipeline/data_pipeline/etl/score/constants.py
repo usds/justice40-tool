@@ -166,11 +166,13 @@ DOWNLOADABLE_SCORE_COLUMNS = [
     field_names.SCORE_G_COMMUNITIES,
     # Note: the reverse percentile fields get moved down here because
     # we put the raw value in the download along with the *reversed* percentile.
+    # All other fields we put in f"{field_name}" and
+    # f"{field_name}{field_names.PERCENTILE_FIELD_SUFFIX}", which doesn't work for the
+    # reversed percentile fields.
     field_names.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD,
     field_names.LOW_MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.LIFE_EXPECTANCY_FIELD,
-    field_names.LOW_LIFE_EXPECTANCY_FIELD
-    + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.LOW_LIFE_EXPECTANCY_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     *DOWNLOADABLE_SCORE_INDICATOR_COLUMNS_FULL,
 ]
