@@ -60,11 +60,15 @@ MEDIAN_INCOME_FIELD = "Median household income in the past 12 months"
 MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD = (
     "Median household income (% of state median household income)"
 )
-MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD = "Median household income (% of AMI)"
 PERSISTENT_POVERTY_FIELD = "Persistent Poverty Census Tract"
 AMI_FIELD = "Area Median Income (State or metropolitan)"
-
 COLLEGE_ATTENDANCE_FIELD = "Percent enrollment in college or graduate school"
+MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD = (
+    "Median household income as a percent of area median income"
+)
+LOW_MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD = (
+    "Low median household income as a percent of area median income"
+)
 
 # Climate
 FEMA_RISK_FIELD = "FEMA Risk Index Expected Annual Loss Score"
@@ -105,7 +109,6 @@ ENERGY_BURDEN_FIELD = "Energy burden"
 DIABETES_FIELD = "Diagnosed diabetes among adults aged >=18 years"
 ASTHMA_FIELD = "Current asthma among adults aged >=18 years"
 HEART_DISEASE_FIELD = "Coronary heart disease among adults aged >=18 years"
-LIFE_EXPECTANCY_FIELD = "Life expectancy (years)"
 CANCER_FIELD = "Cancer (excluding skin cancer) among adults aged >=18 years"
 HEALTH_INSURANCE_FIELD = (
     "Current lack of health insurance among adults aged 18-64 years"
@@ -113,6 +116,8 @@ HEALTH_INSURANCE_FIELD = (
 PHYS_HEALTH_NOT_GOOD_FIELD = (
     "Physical health not good for >=14 days among adults aged >=18 years"
 )
+LIFE_EXPECTANCY_FIELD = "Life expectancy (years)"
+LOW_LIFE_EXPECTANCY_FIELD = "Low life expectancy"
 
 # Other Demographics
 TOTAL_POP_FIELD = "Total population"
@@ -130,9 +135,6 @@ OVER_64_FIELD = "Individuals over 64 years old"
 
 # Fields from 2010 decennial census (generally only loaded for the territories)
 CENSUS_DECENNIAL_MEDIAN_INCOME_2009 = "Median household income in 2009 ($)"
-CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009 = (
-    "Median household income as a percent of territory median income in 2009"
-)
 CENSUS_DECENNIAL_POVERTY_LESS_THAN_100_FPL_FIELD_2009 = (
     "Percentage households below 100% of federal poverty line in 2009"
 )
@@ -141,7 +143,10 @@ CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009 = (
     "Unemployed civilians (percent) in 2009"
 )
 CENSUS_DECENNIAL_TOTAL_POPULATION_FIELD_2009 = "Total population in 2009"
-
+CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009 = (
+    "Median household income as a percent of territory median income in 2009"
+)
+LOW_CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009 = "Low median household income as a percent of territory median income in 2009"
 # Fields from 2010 ACS (loaded for comparison with the territories)
 CENSUS_UNEMPLOYMENT_FIELD_2010 = "Unemployed civilians (percent) in 2010"
 CENSUS_POVERTY_LESS_THAN_100_FPL_FIELD_2010 = (
@@ -265,7 +270,10 @@ ASTHMA_LOW_INCOME_FIELD = (
 )
 HEART_DISEASE_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for heart disease and is low income"
 
-LIFE_EXPECTANCY_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentile for life expectancy and is low income"
+LOW_LIFE_EXPECTANCY_LOW_INCOME_FIELD = (
+    f"At or above the {PERCENTILE}th percentile "
+    f"for low life expectancy and is low income"
+)
 
 # Workforce
 UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD = (
@@ -288,9 +296,9 @@ LOW_READING_LOW_HS_EDUCATION_FIELD = (
     " and has low HS education"
 )
 
-MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD = (
-    f"At or below the {PERCENTILE}th percentile for median income"
-    "  and has low HS education"
+LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD = (
+    f"At or below the {PERCENTILE}th percentile for low median household income as a "
+    f"percent of area median income and has low HS education"
 )
 
 # Not currently used in a factor
