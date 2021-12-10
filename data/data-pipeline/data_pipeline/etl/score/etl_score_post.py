@@ -1,5 +1,7 @@
 from pathlib import Path
 import pandas as pd
+import json
+
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger, zip_files
 from data_pipeline.score import field_names
@@ -198,16 +200,35 @@ class PostScoreETL(ExtractTransformLoad):
         self, score_county_state_merged_df: pd.DataFrame
     ) -> pd.DataFrame:
         logger.info("Rounding Decimals")
-        score_tiles = score_county_state_merged_df[
-            constants.TILES_SCORE_COLUMNS
-        ]
+
+        # grab all the keys from tiles score columns
+        tiles_score_column_titles = list(constants.TILES_SCORE_COLUMNS.keys())
+
+        # filter the columns on full score
+        score_tiles = score_county_state_merged_df[tiles_score_column_titles]
+
+        # round decimals
         decimals = pd.Series(
             [constants.TILES_ROUND_NUM_DECIMALS]
             * len(constants.TILES_SCORE_FLOAT_COLUMNS),
             index=constants.TILES_SCORE_FLOAT_COLUMNS,
         )
+        score_tiles = score_tiles.round(decimals)
 
-        return score_tiles.round(decimals)
+        # create indexes
+        score_tiles = score_tiles.rename(
+            columns=constants.TILES_SCORE_COLUMNS,
+            inplace=False,
+        )
+
+        # write the json map to disk
+        inverse_tiles_columns = {
+            v: k for k, v in constants.TILES_SCORE_COLUMNS.items()
+        }  # reverse dict
+        with open(constants.DATA_SCORE_JSON_INDEX_FILE_PATH, "w") as fp:
+            json.dump(inverse_tiles_columns, fp)
+
+        return score_tiles
 
     def _create_downloadable_data(
         self, score_county_state_merged_df: pd.DataFrame
