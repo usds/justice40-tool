@@ -225,7 +225,9 @@ class PostScoreETL(ExtractTransformLoad):
         inverse_tiles_columns = {
             v: k for k, v in constants.TILES_SCORE_COLUMNS.items()
         }  # reverse dict
-        with open(constants.DATA_SCORE_JSON_INDEX_FILE_PATH, "w") as fp:
+        index_file_path = constants.DATA_SCORE_JSON_INDEX_FILE_PATH
+        index_file_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(index_file_path, "w") as fp:
             json.dump(inverse_tiles_columns, fp)
 
         return score_tiles
