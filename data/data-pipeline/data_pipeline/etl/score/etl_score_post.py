@@ -1,6 +1,6 @@
 from pathlib import Path
-import pandas as pd
 import json
+import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger, zip_files
@@ -227,7 +227,7 @@ class PostScoreETL(ExtractTransformLoad):
         }  # reverse dict
         index_file_path = constants.DATA_SCORE_JSON_INDEX_FILE_PATH
         index_file_path.parent.mkdir(parents=True, exist_ok=True)
-        with open(index_file_path, "w") as fp:
+        with open(index_file_path, "w", encoding="utf-8") as fp:
             json.dump(inverse_tiles_columns, fp)
 
         return score_tiles

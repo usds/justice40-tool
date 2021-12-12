@@ -93,8 +93,7 @@ TILES_SCORE_COLUMNS = {
     + field_names.PERCENTILE_FIELD_SUFFIX: "LMI_PFS",
     field_names.MEDIAN_HOUSE_VALUE_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX: "MHVF_PFS",
-    field_names.PM25_FIELD 
-    + field_names.PERCENTILE_FIELD_SUFFIX: "PM25F_PFS",
+    field_names.PM25_FIELD + field_names.PERCENTILE_FIELD_SUFFIX: "PM25F_PFS",
     field_names.HIGH_SCHOOL_ED_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX: "HSEF_PFS",
     field_names.POVERTY_LESS_THAN_100_FPL_FIELD
@@ -103,12 +102,9 @@ TILES_SCORE_COLUMNS = {
     + field_names.PERCENTILE_FIELD_SUFFIX: "P200_PFS",
     field_names.LEAD_PAINT_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX: "LPF_PFS",
-    field_names.NPL_FIELD 
-    + field_names.PERCENTILE_FIELD_SUFFIX: "NPL_PFS",
-    field_names.RMP_FIELD 
-    + field_names.PERCENTILE_FIELD_SUFFIX: "RMP_PFS",
-    field_names.TSDF_FIELD 
-    + field_names.PERCENTILE_FIELD_SUFFIX: "TSDF_PFS",
+    field_names.NPL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX: "NPL_PFS",
+    field_names.RMP_FIELD + field_names.PERCENTILE_FIELD_SUFFIX: "RMP_PFS",
+    field_names.TSDF_FIELD + field_names.PERCENTILE_FIELD_SUFFIX: "TSDF_PFS",
     field_names.TOTAL_POP_FIELD: "TPF",
     field_names.TRAFFIC_FIELD + field_names.PERCENTILE_FIELD_SUFFIX: "TF_PFS",
     field_names.UNEMPLOYMENT_FIELD
@@ -149,55 +145,41 @@ TILES_SCORE_COLUMNS = {
     field_names.COMBINED_UNEMPLOYMENT_2010: "CU2010",
     field_names.COMBINED_POVERTY_LESS_THAN_100_FPL_FIELD_2010: "CPL1002010",
     field_names.CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009: "CDUF2009",
-    field_names.FPL_200_SERIES: "FPL200S"
+    field_names.FPL_200_SERIES: "FPL200S",
 }
 
 # columns to round floats to 2 decimals
 TILES_SCORE_FLOAT_COLUMNS = [
     field_names.DIABETES_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.ASTHMA_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.HEART_DISEASE_FIELD
-    + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.HEART_DISEASE_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.DIESEL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.ENERGY_BURDEN_FIELD
-    + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.ENERGY_BURDEN_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.EXPECTED_BUILDING_LOSS_RATE_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.EXPECTED_POPULATION_LOSS_RATE_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.HOUSING_BURDEN_FIELD
-    + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.LOW_LIFE_EXPECTANCY_FIELD
-    + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.LINGUISTIC_ISO_FIELD
-    + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.HOUSING_BURDEN_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.LOW_LIFE_EXPECTANCY_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.LINGUISTIC_ISO_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.LOW_MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.MEDIAN_HOUSE_VALUE_FIELD
-    + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.PM25_FIELD 
-    + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.HIGH_SCHOOL_ED_FIELD
-    + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.MEDIAN_HOUSE_VALUE_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.PM25_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.HIGH_SCHOOL_ED_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.POVERTY_LESS_THAN_100_FPL_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.POVERTY_LESS_THAN_200_FPL_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.LEAD_PAINT_FIELD
-    + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.NPL_FIELD 
-    + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.RMP_FIELD 
-    + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.TSDF_FIELD 
-    + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.LEAD_PAINT_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.NPL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.RMP_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.TSDF_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.TRAFFIC_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.UNEMPLOYMENT_FIELD
-    + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.WASTEWATER_FIELD
-    + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.UNEMPLOYMENT_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.WASTEWATER_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.SCORE_L + field_names.PERCENTILE_FIELD_SUFFIX,
 ]
 
