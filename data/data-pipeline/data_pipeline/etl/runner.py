@@ -80,18 +80,12 @@ def etl_runner(dataset_to_run: str = None) -> None:
 
     # Create a pool of processes. By default, one is created for each CPU in your machine.
     with concurrent.futures.ProcessPoolExecutor() as executor:
-        # Get a list of files to process
-        build_processing_classes = [
-            build_instance_class_from_dataset(dataset)
-            for dataset in dataset_list
-        ]
-
         # Process the list of ETL datasets, but split the work across the
         # process pool to use all CPUs
         for dataset, _ in zip(
-            build_processing_classes,
+            dataset_list,
             executor.map(
-                build_instance_class_from_dataset, build_processing_classes
+                build_instance_class_from_dataset, dataset_list
             ),
         ):
             print(f"Completed ETL for {dataset}")
