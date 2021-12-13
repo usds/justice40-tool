@@ -178,6 +178,17 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   },
 });
 
+export const SIDE_PANEL_VERION = {
+  TITLE: <FormattedMessage
+    id={'areaDetail.side.panel.version.title'}
+    defaultMessage={ 'Methodology version {version}'}
+    description={'methodology version number'}
+    values= {{
+      version: METHODOLOGY_COPY.VERSION_NUMBER,
+    }}
+  />,
+};
+
 export const SIDE_PANEL_CBG_INFO = defineMessages({
   CENSUS_BLOCK_GROUP: {
     id: 'areaDetail.geographicInfo.censusBlockGroup',
@@ -204,41 +215,148 @@ export const SIDE_PANEL_CBG_INFO = defineMessages({
 export const COMMUNITY = {
   OF_FOCUS: <FormattedMessage
     id={'areaDetail.categorization.community.of.focus'}
-    defaultMessage={ 'Community of focus'}
+    defaultMessage={ 'YES'}
     description={'the communities the score currently is focused on'}
   />,
   NOT_OF_FOCUS: <FormattedMessage
     id= {'areaDetail.categorization.not.community.of.focus'}
-    defaultMessage= {'Not a community of focus'}
+    defaultMessage= {'No'}
     description= {'the communities the score currently is not focused on'}
+  />,
+  IS_FOCUS: <FormattedMessage
+    id={'areaDetail.categorization.is.community.of.focus'}
+    defaultMessage={ 'Identified as disadvantaged?'}
+    description={'asking IF the communities is focused on'}
+  />,
+  SEND_FEEDBACK: <FormattedMessage
+    id={'areaDetail.categorization.send.feedback'}
+    defaultMessage={ 'send feedback'}
+    description={'link to send feedback'}
   />,
 };
 
+export const SIDE_PANEL_CATEGORY = defineMessages({
+  CLIMATE: {
+    id: 'areaDetail.indicator.title.climate',
+    defaultMessage: 'Climate change',
+    description: 'Climate change title',
+  },
+  CLEAN_ENERGY: {
+    id: 'areaDetail.indicator.title.clean.energy',
+    defaultMessage: 'Clean, efficient energy ',
+    description: 'Clean, efficient energy title',
+  },
+  CLEAN_TRANSPORT: {
+    id: 'areaDetail.indicator.title.clean.transport',
+    defaultMessage: 'Clean transportation',
+    description: 'Clean transportation title',
+  },
+  SUSTAIN_HOUSE: {
+    id: 'areaDetail.indicator.title.sustain.house',
+    defaultMessage: 'Sustainable housing',
+    description: 'Sustainable housing title',
+  },
+  LEG_POLLUTE: {
+    id: 'areaDetail.indicator.title.legacy.pollution',
+    defaultMessage: 'Legacy pollution',
+    description: 'Legacy pollution title',
+  },
+  CLEAN_WATER: {
+    id: 'areaDetail.indicator.title.clean.water',
+    defaultMessage: 'Clean water and waste',
+    description: 'Clean water and waste title',
+  },
+  HEALTH_BURDEN: {
+    id: 'areaDetail.indicator.title.health.burden',
+    defaultMessage: 'Health burdens',
+    description: 'Health burdens title',
+  },
+  WORK_DEV: {
+    id: 'areaDetail.indicator.title.work.dev',
+    defaultMessage: 'Workforce development',
+    description: 'Workforce development title',
+  },
+});
+
 export const SIDE_PANEL_INDICATORS = defineMessages({
-  INDICATOR_COLUMN_HEADER: {
-    id: 'areaDetail.indicators.indicatorColumnHeader',
-    defaultMessage: 'Indicator',
-    description: 'the population of the feature selected',
+  EXP_AG_LOSS: {
+    id: 'areaDetail.indicator.exp.ag.loss',
+    defaultMessage: 'Expected agriculture loss rate',
+    description: 'agriculture loss rate',
   },
-  PERCENTILE_COLUMN_HEADER: {
-    id: 'areaDetail.indicators.percentileColumnHeader',
-    defaultMessage: 'Percentile (0-100)',
-    description: 'the population of the feature selected',
+  EXP_BLD_LOSS: {
+    id: 'areaDetail.indicator.exp.bld.loss',
+    defaultMessage: 'Expected building loss rate',
+    description: 'building loss rate',
   },
-  POVERTY: {
-    id: 'areaDetail.indicator.poverty',
-    defaultMessage: 'Poverty',
-    description: 'Household income is less than or equal to twice the federal "poverty level"',
+  EXP_POP_LOSS: {
+    id: 'areaDetail.indicator.exp.pop.loss',
+    defaultMessage: 'Expected population loss rate',
+    description: 'population loss rate',
   },
-  AREA_MEDIAN_INCOME: {
-    id: 'areaDetail.indicator.areaMedianIncome',
-    defaultMessage: 'Area Median Income',
-    description: 'calculated as percent of the area median income',
+  LOW_INCOME: {
+    id: 'areaDetail.indicator.low.income',
+    defaultMessage: 'Low income',
+    description: 'low income',
   },
-  EDUCATION: {
-    id: 'areaDetail.indicator.education',
-    defaultMessage: 'Education, less than high school',
-    description: 'Percent of people age 25 or older that didn’t get a high school diploma',
+  ENERGY_BURDEN: {
+    id: 'areaDetail.indicator.energyBurden',
+    defaultMessage: 'Energy cost burden',
+    description: 'Average annual energy cost ($) divided by household income',
+  },
+  PM_2_5: {
+    id: 'areaDetail.indicator.pm25',
+    defaultMessage: 'PM2.5',
+    description: 'Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller',
+  },
+  DIESEL_PARTICULATE_MATTER: {
+    id: 'areaDetail.indicator.dieselPartMatter',
+    defaultMessage: 'Diesel particulate matter',
+    description: 'Diesel particulate matter level in air',
+  },
+  TRAFFIC_VOLUME: {
+    id: 'areaDetail.indicator.trafficVolume',
+    defaultMessage: 'Traffic',
+    description: 'Count of vehicles (average annual daily traffic) at major roads within 500 meters,' +
+      ' divided by distance in meters',
+  },
+  LEAD_PAINT: {
+    id: 'areaDetail.indicator.leadPaint',
+    defaultMessage: 'Lead paint',
+    description: 'Housing units built pre-1960, used as an indicator of potential'+
+      ' lead paint exposure in homes',
+  },
+  MED_HOME_VAL: {
+    id: 'areaDetail.indicator.med.home.val',
+    defaultMessage: 'Median home value',
+    description: 'Median home value of owner-occupied housing units in the area.',
+  },
+  HOUSE_BURDEN: {
+    id: 'areaDetail.indicator.houseBurden',
+    defaultMessage: 'Housing cost burden',
+    description: 'People ages 18 and up who report having been told by a doctor,' +
+      ' nurse, or other health professionals that they have diabetes other than diabetes during pregnancy',
+  },
+  PROX_HAZ: {
+    id: 'areaDetail.indicator.prox.haz',
+    defaultMessage: 'Proximity to hazardous waste facilities',
+    description: 'Count of hazardous waste facilities ',
+  },
+  PROX_NPL: {
+    id: 'areaDetail.indicator.prox.npl',
+    defaultMessage: 'Proximity to NPL sites',
+    description: 'Count of proposed or listed NPL ',
+  },
+  PROX_RMP: {
+    id: 'areaDetail.indicator.prox.rmp',
+    defaultMessage: 'Proximity to RMP sites',
+    description: 'Count of proposed or listed RMP',
+  },
+  WASTE_WATER: {
+    id: 'areaDetail.indicator.wasteWater',
+    defaultMessage: 'Wastewater discharge',
+    description: 'Toxic concentrations at stream segments within 500 meters divided by distance in' +
+      ' kilometers',
   },
   ASTHMA: {
     id: 'areaDetail.indicator.asthma',
@@ -250,163 +368,181 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
     defaultMessage: 'Diabetes',
     description: 'diabetes from dr or nurse',
   },
-  DIESEL_PARTICULATE_MATTER: {
-    id: 'areaDetail.indicator.dieselPartMatter',
-    defaultMessage: 'Diesel particulate matter',
-    description: 'Diesel particulate matter level in air',
-  },
-  ENERGY_BURDEN: {
-    id: 'areaDetail.indicator.energyBurden',
-    defaultMessage: 'Energy burden',
-    description: 'Average annual energy cost ($) divided by household income',
-  },
-  FEMA_RISK: {
-    id: 'areaDetail.indicator.femaRisk',
-    defaultMessage: 'FEMA Risk Index',
-    description: 'Risk based on 18 natural hazard types, in addition to a '+
-      'community\'s social vulnerability and community resilience',
-  },
   HEART_DISEASE: {
     id: 'areaDetail.indicator.heartDisease',
     defaultMessage: 'Heart disease',
     description: 'People ages 18 and up who report ever having been told by a' +
       'doctor, nurse, or other health professionals that they had angina or coronary heart disease',
   },
-  HOUSE_BURDEN: {
-    id: 'areaDetail.indicator.houseBurden',
-    defaultMessage: 'Housing cost burden',
-    description: 'People ages 18 and up who report having been told by a doctor,' +
-      ' nurse, or other health professionals that they have diabetes other than diabetes during pregnancy',
-  },
-  LEAD_PAINT: {
-    id: 'areaDetail.indicator.leadPaint',
-    defaultMessage: 'Lead paint',
-    description: 'Housing units built pre-1960, used as an indicator of potential'+
-      ' lead paint exposure in homes',
-  },
   LIFE_EXPECT: {
     id: 'areaDetail.indicator.lifeExpect',
-    defaultMessage: 'Life expectancy',
+    defaultMessage: 'Low life expectancy',
     description: 'Estimated years of life expectancy',
   },
-  PM_2_5: {
-    id: 'areaDetail.indicator.pm25',
-    defaultMessage: 'PM2.5',
-    description: 'Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller',
+  LOW_MED_INC: {
+    id: 'areaDetail.indicator.low.med.income',
+    defaultMessage: 'Low median income',
+    description: 'Low median income',
   },
-  TRAFFIC_VOLUME: {
-    id: 'areaDetail.indicator.trafficVolume',
-    defaultMessage: 'Traffic proximity and volume',
-    description: 'Count of vehicles (average annual daily traffic) at major roads within 500 meters,' +
-      ' divided by distance in meters',
+  LING_ISO: {
+    id: 'areaDetail.indicator.ling.iso',
+    defaultMessage: 'Linguistic isolation',
+    description: 'Linguistic isolation',
   },
-  WASTE_WATER: {
-    id: 'areaDetail.indicator.wasteWater',
-    defaultMessage: 'Wastewater discharge',
-    description: 'Toxic concentrations at stream segments within 500 meters divided by distance in' +
-      ' kilometers',
+  UNEMPLOY: {
+    id: 'areaDetail.indicator.unemploy',
+    defaultMessage: 'Unemployment',
+    description: 'Unemployment',
+  },
+  POVERTY: {
+    id: 'areaDetail.indicator.poverty',
+    defaultMessage: 'Poverty',
+    description: 'Unemployment',
+  },
+  HIGH_SCL: {
+    id: 'areaDetail.indicator.high.school',
+    defaultMessage: 'High school degree achievement rate',
+    description: 'High school degree achievement rate',
+
   },
 });
 
 
 export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
-  AREA_MEDIAN_INCOME: {
-    id: 'areaDetail.indicator.description.area_median_income',
-    defaultMessage: 'Median income of the census tract calculated as a percent of the metropolitan'+
-        ' area’s or state\'s median income',
-    description: 'Median income of the census tract calculated as a percent of the metropolitan'+
-    ' area’s or state\'s median income',
+  EXP_AG_LOSS: {
+    id: 'areaDetail.indicator.description.exp.ag.loss',
+    defaultMessage: 'Economic loss rate to agriculture resulting from natural hazards',
+    description: 'Economic loss rate to agriculture resulting from natural hazards',
+
   },
-  EDUCATION: {
-    id: 'areaDetail.indicator.description.education',
-    defaultMessage: 'Percent of people age 25 or older that didn’t get a high school diploma',
-    description: 'Percent of people age 25 or older that didn’t get a high school diploma',
+  EXP_BLD_LOSS: {
+    id: 'areaDetail.indicator.description.exp.bld.loss',
+    defaultMessage: 'Economic loss rate to buildings resulting from natural hazards',
+    description: 'Economic loss rate to buildings resulting from natural hazards',
   },
-  POVERTY: {
-    id: 'areaDetail.indicator.description.poverty',
-    defaultMessage: 'Percent of a tract\'s population in households where the household income' +
-    ' is at or below 100% of the federal poverty level',
-    description: 'Percent of a tract\'s population in households where the household income' +
-    ' is at or below 100% of the federal poverty level',
+  EXP_POP_LOSS: {
+    id: 'areaDetail.indicator.description.exp.pop.loss',
+    defaultMessage: 'Economic loss rate to the population in fatalities and injuries resulting from natural hazards',
+    description: 'Economic loss rate to the population in fatalities and injuries resulting from natural hazards',
   },
-  ASTHMA: {
-    id: 'areaDetail.indicator.description.asthma',
-    defaultMessage: 'People who answer “yes” to both of the questions: “Have you ever been told by' +
-    ' a doctor nurse, or other health professional that you have asthma?” and “Do you still have asthma?"',
-    description: 'People who answer “yes” to both of the questions: “Have you ever been told by' +
-    ' a doctor nurse, or other health professional that you have asthma?” and “Do you still have asthma?"',
+  LOW_INCOME: {
+    id: 'areaDetail.indicator.description.low.income',
+    defaultMessage: 'Household income is less than or equal to twice the federal poverty level',
+    description: 'Household income is less than or equal to twice the federal poverty level',
   },
-  DIABETES: {
-    id: 'areaDetail.indicator.description.diabetes',
-    defaultMessage: 'People ages 18 and up who report having been told by a doctor, nurse, or other' +
-    ' health professionals that they have diabetes other than diabetes during pregnancy',
-    description: 'People ages 18 and up who report having been told by a doctor, nurse, or other' +
-    ' health professionals that they have diabetes other than diabetes during pregnancy',
-  },
-  DIESEL_PARTICULATE_MATTER: {
-    id: 'areaDetail.indicator.description.dieselPartMatter',
-    defaultMessage: 'Mixture of particles that is part of diesel exhaust in the air',
-    description: 'Mixture of particles that is part of diesel exhaust in the air',
-  },
+
   ENERGY_BURDEN: {
     id: 'areaDetail.indicator.description.energyBurden',
-    defaultMessage: 'Average annual energy cost ($) divided by household income',
-    description: 'Average annual energy cost ($) divided by household income',
-  },
-  FEMA_RISK: {
-    id: 'areaDetail.indicator.description.femaRisk',
-    defaultMessage: 'Expected Annual Loss Score, which is the average economic loss in dollars' +
-    ' resulting from natural hazards each year.',
-    description: 'Expected Annual Loss Score, which is the average economic loss in dollars' +
-    ' resulting from natural hazards each year.',
-  },
-  HEART_DISEASE: {
-    id: 'areaDetail.indicator.description.heartDisease',
-    defaultMessage: 'People ages 18 and up who report ever having been told by a' +
-    ' doctor, nurse, or other health professionals that they had angina or coronary heart disease',
-    description: 'People ages 18 and up who report ever having been told by a' +
-    ' doctor, nurse, or other health professionals that they had angina or coronary heart disease',
-  },
-  HOUSE_BURDEN: {
-    id: 'areaDetail.indicator.description.houseBurden',
-    defaultMessage: 'Households that are low income and spend more than 30% of their income on' +
-    ' housing costs',
-    description: 'Households that are low income and spend more than 30% of their income on' +
-    ' housing costs',
-  },
-  LEAD_PAINT: {
-    id: 'areaDetail.indicator.description.leadPaint',
-    defaultMessage: 'Housing units built pre-1960, used as an indicator of potential'+
-    ' lead paint exposure in homes',
-    description: 'Housing units built pre-1960, used as an indicator of potential'+
-    ' lead paint exposure in homes',
-  },
-  LIFE_EXPECT: {
-    id: 'areaDetail.indicator.description.lifeExpect',
-    defaultMessage: 'Estimated years of life expectancy',
-    description: 'Estimated years of life expectancy',
+    defaultMessage: 'Energy costs divided by household income',
+    description: 'Energy costs divided by household income',
   },
   PM_2_5: {
     id: 'areaDetail.indicator.description.pm25',
-    defaultMessage: 'Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller',
-    description: 'Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller',
+    defaultMessage: 'Fine inhalable particles, 2.5 micrometers and smaller',
+    description: 'Fine inhalable particles, 2.5 micrometers and smaller',
+  },
+
+  DIESEL_PARTICULATE_MATTER: {
+    id: 'areaDetail.indicator.description.dieselPartMatter',
+    defaultMessage: 'Diesel exhaust in the air',
+    description: 'Diesel exhaust in the air',
   },
   TRAFFIC_VOLUME: {
     id: 'areaDetail.indicator.description.trafficVolume',
-    defaultMessage: 'Count of vehicles (average annual daily traffic) at major roads within 500 meters,' +
-    ' divided by distance in meters',
-    description: 'Count of vehicles (average annual daily traffic) at major roads within 500 meters,' +
-    ' divided by distance in meters',
+    defaultMessage: 'Count of vehicles at major roads within 500 meters',
+    description: 'Count of vehicles at major roads within 500 meters',
   },
+
+  LEAD_PAINT: {
+    id: 'areaDetail.indicator.description.leadPaint',
+    defaultMessage: 'Pre-1960 housing',
+    description: 'Pre-1960 housing',
+  },
+  MED_HOME_VAL: {
+    id: 'areaDetail.indicator.description.med.home.val',
+    defaultMessage: 'Meidan home value in area',
+    description: 'Meidan home value in area',
+
+  },
+  HOUSE_BURDEN: {
+    id: 'areaDetail.indicator.description.houseBurden',
+    defaultMessage: 'Low income households spending more than 30% of income on housing',
+    description: 'Low income households spending more than 30% of income on housing',
+  },
+
+  PROX_HAZ: {
+    id: 'areaDetail.indicator.description.prox.haz',
+    defaultMessage: 'Count of hazardous waste facilities within 5 km',
+    description: 'Count of hazardous waste facilities within 5 km',
+  },
+  PROX_NPL: {
+    id: 'areaDetail.indicator.description.prox.npl',
+    defaultMessage: 'Proposed or listed NPL (Superfund) sites within 5 km',
+    description: 'Proposed or listed NPL (Superfund) sites within 5 km',
+  },
+  PROX_RMP: {
+    id: 'areaDetail.indicator.description.prox.npl',
+    defaultMessage: 'Risk Management Plan facilities within 5 km',
+    description: 'Risk Management Plan facilities within 5 km',
+  },
+
   WASTE_WATER: {
     id: 'areaDetail.indicator.description.wasteWater',
-    defaultMessage: 'Toxic concentrations at stream segments within 500 meters divided by distance in' +
-    ' kilometers',
-    description: 'Toxic concentrations at stream segments within 500 meters divided by distance in' +
-    ' kilometers',
+    defaultMessage: 'Toxic concentrations at stream segments within 500 meters',
+    description: 'Toxic concentrations at stream segments within 500 meters',
+  },
+
+  ASTHMA: {
+    id: 'areaDetail.indicator.description.asthma',
+    defaultMessage: 'Number of people who have been told they have asthma',
+    description: 'Number of people who have been told they have asthma',
+  },
+  DIABETES: {
+    id: 'areaDetail.indicator.description.diabetes',
+    defaultMessage: 'People ages 18 years and older who have diabetes other than diabetes during pregnancy',
+    description: 'People ages 18 years and older who have diabetes other than diabetes during pregnancy',
+  },
+  HEART_DISEASE: {
+    id: 'areaDetail.indicator.description.heartDisease',
+    defaultMessage: 'People ages 18 years and older who have been told they have heart disease',
+    description: 'People ages 18 years and older who have been told they have heart disease',
+  },
+  LOW_LIFE_EXPECT: {
+    id: 'areaDetail.indicator.description.lifeExpect',
+    defaultMessage: 'Average number of years of life a person can expect to live',
+    description: 'Average number of years of life a person can expect to live',
+  },
+
+  LOW_MED_INCOME: {
+    id: 'areaDetail.indicator.description.low.med.income',
+    defaultMessage: 'Median income calculated as a percent of the area’s median income',
+    description: 'Median income calculated as a percent of the area’s median income',
+  },
+  LING_ISO: {
+    id: 'areaDetail.indicator.description.ling.iso',
+    defaultMessage: `Households in which no one age 14 and over speaks English only or also speaks 
+    a language other than English`,
+    description: `Households in which no one age 14 and over speaks English only or also speaks 
+    a language other than English`,
+  },
+  UNEMPLOY: {
+    id: 'areaDetail.indicator.description.unemploy',
+    defaultMessage: 'Number of unemployed people as a percentage of the labor force',
+    description: 'Number of unemployed people as a percentage of the labor force',
+  },
+  POVERTY: {
+    id: 'areaDetail.indicator.description.poverty',
+    defaultMessage: `Percent of individuals in households where the household income is at or 
+    below 100% of the federal poverty level`,
+    description: `Percent of individuals in households where the household income is at or 
+    below 100% of the federal poverty level`,
+  },
+  HIGH_SKL: {
+    id: 'areaDetail.indicator.description.high.school',
+    defaultMessage: 'Percent of people ages 25 years or older whose education level is less than a high school diploma',
+    description: 'Percent of people ages 25 years or older whose education level is less than a high school diploma',
   },
 });
-
 
 export const DOWNLOAD_DRAFT = {
   PARAGRAPH_1: <FormattedMessage
