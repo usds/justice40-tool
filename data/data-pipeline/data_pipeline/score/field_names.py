@@ -291,14 +291,27 @@ POVERTY_LOW_HS_EDUCATION_FIELD = (
     " and has low HS education"
 )
 
-LOW_READING_LOW_HS_EDUCATION_FIELD = (
-    f"At or above the {PERCENTILE}th percentile for low 3rd grade reading proficiency"
-    " and has low HS education"
+LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD = (
+    f"At or above the {PERCENTILE}th percentile for low median household income as a "
+    f"percent of area median income and has low HS education"
 )
 
-LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD = (
-    f"At or below the {PERCENTILE}th percentile for low median household income as a "
-    f"percent of area median income and has low HS education"
+# Workforce for island areas
+ISLAND_AREAS_SUFFIX = " in 2009 (island areas)"
+ISLAND_AREAS_UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD = (
+    f"At or above the {PERCENTILE}th percentile for unemployment"
+    f" and has low HS education{ISLAND_AREAS_SUFFIX}"
+)
+
+ISLAND_AREAS_POVERTY_LOW_HS_EDUCATION_FIELD = (
+    f"At or above the {PERCENTILE}th percentile for households at or below 100% federal poverty level"
+    f" and has low HS education{ISLAND_AREAS_SUFFIX}"
+)
+
+ISLAND_AREAS_LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD = (
+    f"At or above the {PERCENTILE}th percentile for low median household income as a "
+    f"percent of area median income"
+    f" and has low HS education{ISLAND_AREAS_SUFFIX}"
 )
 
 # Not currently used in a factor
@@ -316,6 +329,10 @@ RESPIRATORY_HAZARD_LOW_INCOME_FIELD = f"At or above the {PERCENTILE}th percentil
 HEALTHY_FOOD_LOW_INCOME_FIELD = (
     f"At or above the {PERCENTILE}th percentile for low "
     f"access to healthy food and is low income"
+)
+LOW_READING_LOW_HS_EDUCATION_FIELD = (
+    f"At or above the {PERCENTILE}th percentile for low 3rd grade reading proficiency"
+    " and has low HS education"
 )
 
 THRESHOLD_COUNT = "Total threshold criteria exceeded"
