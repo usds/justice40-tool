@@ -297,7 +297,7 @@ LOW_READING_LOW_HS_EDUCATION_FIELD = (
 )
 
 LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD = (
-    f"At or below the {PERCENTILE}th percentile for low median household income as a "
+    f"At or above the {PERCENTILE}th percentile for low median household income as a "
     f"percent of area median income and has low HS education"
 )
 

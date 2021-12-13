@@ -146,6 +146,7 @@ TILES_SCORE_COLUMNS = {
     field_names.COMBINED_POVERTY_LESS_THAN_100_FPL_FIELD_2010: "CPL1002010",
     field_names.CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009: "CDUF2009",
     field_names.FPL_200_SERIES: "FPL200S",
+    field_names.THRESHOLD_COUNT: "TC",
 }
 
 # columns to round floats to 2 decimals
@@ -183,50 +184,92 @@ TILES_SCORE_FLOAT_COLUMNS = [
     field_names.SCORE_L + field_names.PERCENTILE_FIELD_SUFFIX,
 ]
 
-
-DOWNLOADABLE_SCORE_INDICATOR_COLUMNS_BASIC = [
-    field_names.AMI_FIELD,
-    field_names.POVERTY_LESS_THAN_100_FPL_FIELD,
-    field_names.HIGH_SCHOOL_ED_FIELD,
-    field_names.DIABETES_FIELD,
-    field_names.ASTHMA_FIELD,
-    field_names.HEART_DISEASE_FIELD,
-    field_names.TRAFFIC_FIELD,
-    field_names.FEMA_RISK_FIELD,
-    field_names.ENERGY_BURDEN_FIELD,
-    field_names.HOUSING_BURDEN_FIELD,
-    field_names.WASTEWATER_FIELD,
-    field_names.LEAD_PAINT_FIELD,
-    field_names.DIESEL_FIELD,
-    field_names.PM25_FIELD,
-    field_names.TOTAL_POP_FIELD,
-]
-
-# For every indicator above, we want to include percentile also.
-DOWNLOADABLE_SCORE_INDICATOR_COLUMNS_FULL = list(
-    pd.core.common.flatten(
-        [
-            [p, f"{p}{field_names.PERCENTILE_FIELD_SUFFIX}"]
-            for p in DOWNLOADABLE_SCORE_INDICATOR_COLUMNS_BASIC
-        ]
-    )
-)
-
 # Finally we augment with the GEOID10, county, and state
 DOWNLOADABLE_SCORE_COLUMNS = [
     field_names.GEOID_TRACT_FIELD,
     field_names.COUNTY_FIELD,
     field_names.STATE_FIELD,
-    field_names.SCORE_G_COMMUNITIES,
-    # Note: the reverse percentile fields get moved down here because
-    # we put the raw value in the download along with the *reversed* percentile.
-    # All other fields we put in f"{field_name}" and
-    # f"{field_name}{field_names.PERCENTILE_FIELD_SUFFIX}", which doesn't work for the
-    # reversed percentile fields.
-    field_names.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD,
-    field_names.LOW_MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD
+    field_names.SCORE_L_COMMUNITIES,
+    field_names.POVERTY_LESS_THAN_200_FPL_FIELD,
+    field_names.POVERTY_LESS_THAN_200_FPL_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD,
+    field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_FIELD,
+    field_names.EXPECTED_BUILDING_LOSS_RATE_FIELD,
+    field_names.EXPECTED_BUILDING_LOSS_RATE_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD,
+    field_names.EXPECTED_POPULATION_LOSS_RATE_FIELD,
+    field_names.EXPECTED_POPULATION_LOSS_RATE_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD,
+    field_names.ENERGY_BURDEN_FIELD,
+    field_names.ENERGY_BURDEN_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.ENERGY_BURDEN_LOW_INCOME_FIELD,
+    field_names.PM25_FIELD,
+    field_names.PM25_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.PM25_EXPOSURE_LOW_INCOME_FIELD,
+    field_names.DIESEL_FIELD,
+    field_names.DIESEL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.DIESEL_PARTICULATE_MATTER_LOW_INCOME_FIELD,
+    field_names.TRAFFIC_FIELD,
+    field_names.TRAFFIC_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.TRAFFIC_PROXIMITY_LOW_INCOME_FIELD,
+    field_names.HOUSING_BURDEN_FIELD,
+    field_names.HOUSING_BURDEN_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.HOUSING_BURDEN_LOW_INCOME_FIELD,
+    field_names.LEAD_PAINT_FIELD,
+    field_names.LEAD_PAINT_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD,
+    field_names.MEDIAN_HOUSE_VALUE_FIELD,
+    field_names.MEDIAN_HOUSE_VALUE_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.TSDF_FIELD,
+    field_names.TSDF_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.HAZARDOUS_WASTE_LOW_INCOME_FIELD,
+    field_names.NPL_FIELD,
+    field_names.NPL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.SUPERFUND_LOW_INCOME_FIELD,
+    field_names.RMP_FIELD,
+    field_names.RMP_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.RMP_LOW_INCOME_FIELD,
+    field_names.WASTEWATER_FIELD,
+    field_names.WASTEWATER_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.WASTEWATER_DISCHARGE_LOW_INCOME_FIELD,
+    field_names.ASTHMA_FIELD,
+    field_names.ASTHMA_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.ASTHMA_LOW_INCOME_FIELD,
+    field_names.DIABETES_FIELD,
+    field_names.DIABETES_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.DIABETES_LOW_INCOME_FIELD,
+    field_names.HEART_DISEASE_FIELD,
+    field_names.HEART_DISEASE_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.HEART_DISEASE_LOW_INCOME_FIELD,
     field_names.LIFE_EXPECTANCY_FIELD,
     field_names.LOW_LIFE_EXPECTANCY_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    *DOWNLOADABLE_SCORE_INDICATOR_COLUMNS_FULL,
+    field_names.LOW_LIFE_EXPECTANCY_LOW_INCOME_FIELD,
+    field_names.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD,
+    field_names.LOW_MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD,
+    field_names.LINGUISTIC_ISO_FIELD,
+    field_names.LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD,
+    field_names.UNEMPLOYMENT_FIELD,
+    field_names.LINGUISTIC_ISO_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.UNEMPLOYMENT_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.POVERTY_LESS_THAN_100_FPL_FIELD,
+    field_names.POVERTY_LESS_THAN_100_FPL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.POVERTY_LOW_HS_EDUCATION_FIELD,
+    field_names.HIGH_SCHOOL_ED_FIELD,
+    field_names.HIGH_SCHOOL_ED_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.THRESHOLD_COUNT,
+    field_names.TOTAL_POP_FIELD,
+    field_names.FPL_200_SERIES,
+    field_names.UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD,
+    field_names.COMBINED_UNEMPLOYMENT_2010,
+    field_names.CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009,
+    field_names.COMBINED_POVERTY_LESS_THAN_100_FPL_FIELD_2010,
 ]
