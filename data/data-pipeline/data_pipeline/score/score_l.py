@@ -117,7 +117,7 @@ class ScoreL(Score):
         """
 
         self.df[field_names.THRESHOLD_COUNT] += self.df[columns_for_subset].sum(
-            axis=1
+            axis=1, skipna=True
         )
 
     def add_columns(self) -> pd.DataFrame:
@@ -586,12 +586,16 @@ class ScoreL(Score):
         )
 
         # Now, calculate workforce criteria for island territories.
+        island_areas_workforce_eligibility_columns = [
+            field_names.ISLAND_AREAS_UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD,
+            field_names.ISLAND_AREAS_POVERTY_LOW_HS_EDUCATION_FIELD,
+            field_names.ISLAND_AREAS_LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD,
+        ]
 
-        # F a couple of values, create a combined field and criteria field.
         # First, combine unemployment.
         (
             self.df,
-            unemployment_island_areas_criteria_field_name,
+            island_areas_unemployment_criteria_field_name,
         ) = self._combine_island_areas_with_states_and_set_thresholds(
             df=self.df,
             column_from_island_areas=field_names.CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009,
@@ -603,7 +607,7 @@ class ScoreL(Score):
         # Next, combine poverty.
         (
             self.df,
-            poverty_island_areas_criteria_field_name,
+            island_areas_poverty_criteria_field_name,
         ) = self._combine_island_areas_with_states_and_set_thresholds(
             df=self.df,
             column_from_island_areas=field_names.CENSUS_DECENNIAL_POVERTY_LESS_THAN_100_FPL_FIELD_2009,
@@ -614,12 +618,12 @@ class ScoreL(Score):
 
         # Also check whether low area median income is 90th percentile or higher
         # within the islands.
-        low_median_income_as_a_percent_of_ami_island_areas_criteria_field_name = (
+        island_areas_low_median_income_as_a_percent_of_ami_criteria_field_name = (
             f"{field_names.LOW_CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009} exceeds "
             f"{field_names.PERCENTILE}th percentile"
         )
         self.df[
-            low_median_income_as_a_percent_of_ami_island_areas_criteria_field_name
+            island_areas_low_median_income_as_a_percent_of_ami_criteria_field_name
         ] = (
             self.df[
                 field_names.LOW_CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009
@@ -628,15 +632,38 @@ class ScoreL(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-        workforce_combined_criteria_for_island_areas = (
-            self.df[unemployment_island_areas_criteria_field_name]
-            | self.df[poverty_island_areas_criteria_field_name]
-            | self.df[
-                low_median_income_as_a_percent_of_ami_island_areas_criteria_field_name
-            ]
-        ) & (
+        island_areas_high_scool_achievement_rate_threshold = (
             self.df[field_names.CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009]
             >= self.LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD
+        )
+
+        self.df[
+            field_names.ISLAND_AREAS_UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD
+        ] = (
+            self.df[island_areas_unemployment_criteria_field_name]
+            & island_areas_high_scool_achievement_rate_threshold
+        )
+
+        self.df[field_names.ISLAND_AREAS_POVERTY_LOW_HS_EDUCATION_FIELD] = (
+            self.df[island_areas_poverty_criteria_field_name]
+            & island_areas_high_scool_achievement_rate_threshold
+        )
+
+        self.df[
+            field_names.ISLAND_AREAS_LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD
+        ] = (
+            self.df[
+                island_areas_low_median_income_as_a_percent_of_ami_criteria_field_name
+            ]
+            & island_areas_high_scool_achievement_rate_threshold
+        )
+
+        workforce_combined_criteria_for_island_areas = self.df[
+            island_areas_workforce_eligibility_columns
+        ].any(axis="columns")
+
+        self._increment_total_eligibility_exceeded(
+            island_areas_workforce_eligibility_columns
         )
 
         percent_of_island_tracts_highlighted = (
