@@ -148,6 +148,7 @@ TILES_SCORE_COLUMNS = {
 }
 
 # columns to round floats to 2 decimals
+# TODO refactor to use much smaller subset of fields we DON'T want to round
 TILES_SCORE_FLOAT_COLUMNS = [
     field_names.DIABETES_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.ASTHMA_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
@@ -187,6 +188,8 @@ DOWNLOADABLE_SCORE_COLUMNS = [
     field_names.COUNTY_FIELD,
     field_names.STATE_FIELD,
     field_names.SCORE_L_COMMUNITIES,
+    field_names.TOTAL_POP_FIELD,
+    field_names.FPL_200_SERIES,
     field_names.POVERTY_LESS_THAN_200_FPL_FIELD,
     field_names.POVERTY_LESS_THAN_200_FPL_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX,
@@ -253,8 +256,8 @@ DOWNLOADABLE_SCORE_COLUMNS = [
     field_names.LINGUISTIC_ISO_FIELD,
     field_names.LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD,
     field_names.UNEMPLOYMENT_FIELD,
-    field_names.LINGUISTIC_ISO_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.UNEMPLOYMENT_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.LINGUISTIC_ISO_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.POVERTY_LESS_THAN_100_FPL_FIELD,
     field_names.POVERTY_LESS_THAN_100_FPL_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX,
@@ -262,8 +265,6 @@ DOWNLOADABLE_SCORE_COLUMNS = [
     field_names.HIGH_SCHOOL_ED_FIELD,
     field_names.HIGH_SCHOOL_ED_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.THRESHOLD_COUNT,
-    field_names.TOTAL_POP_FIELD,
-    field_names.FPL_200_SERIES,
     field_names.UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD,
     field_names.COMBINED_UNEMPLOYMENT_2010,
     field_names.CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009,
