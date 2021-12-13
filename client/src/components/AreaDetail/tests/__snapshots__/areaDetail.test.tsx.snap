@@ -72,7 +72,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             <div>
               Climate change
             </div>
-            <div />
+            <div
+              class=""
+            />
           </div>
         </button>
       </h2>
@@ -93,11 +95,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              98
+              N/A
               <sup>
-                <span>
-                  th
-                </span>
+                <span />
               </sup>
             </div>
           </div>
@@ -113,11 +113,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              98
+              N/A
               <sup>
-                <span>
-                  th
-                </span>
+                <span />
               </sup>
             </div>
           </div>
@@ -133,11 +131,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              98
+              N/A
               <sup>
-                <span>
-                  th
-                </span>
+                <span />
               </sup>
             </div>
           </div>
@@ -153,7 +149,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              98
+              12
               <sup>
                 <span>
                   th
@@ -177,7 +173,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             <div>
               Clean, efficient energy 
             </div>
-            <div />
+            <div
+              class=""
+            />
           </div>
         </button>
       </h2>
@@ -234,7 +232,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              98
+              12
               <sup>
                 <span>
                   th
@@ -258,7 +256,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             <div>
               Clean transportation
             </div>
-            <div />
+            <div
+              class=""
+            />
           </div>
         </button>
       </h2>
@@ -315,7 +315,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              98
+              12
               <sup>
                 <span>
                   th
@@ -339,7 +339,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             <div>
               Sustainable housing
             </div>
-            <div />
+            <div
+              class=""
+            />
           </div>
         </button>
       </h2>
@@ -392,31 +394,13 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         >
           <div>
             <div>
-              Median home value
-              <div>
-                Meidan home value in area
-              </div>
-            </div>
-            <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-        >
-          <div>
-            <div>
               Low income
               <div>
                 Household income is less than or equal to twice the federal poverty level
               </div>
             </div>
             <div>
-              98
+              12
               <sup>
                 <span>
                   th
@@ -440,7 +424,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             <div>
               Legacy pollution
             </div>
-            <div />
+            <div
+              class=""
+            />
           </div>
         </button>
       </h2>
@@ -515,7 +501,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              98
+              12
               <sup>
                 <span>
                   th
@@ -539,7 +525,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             <div>
               Clean water and waste
             </div>
-            <div />
+            <div
+              class=""
+            />
           </div>
         </button>
       </h2>
@@ -578,7 +566,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              98
+              12
               <sup>
                 <span>
                   th
@@ -697,7 +685,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              98
+              12
               <sup>
                 <span>
                   th
@@ -721,7 +709,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             <div>
               Workforce development
             </div>
-            <div />
+            <div
+              class=""
+            />
           </div>
         </button>
       </h2>
@@ -761,9 +751,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              N/A
+              97
               <sup>
-                <span />
+                <span>
+                  th
+                </span>
               </sup>
             </div>
           </div>
@@ -779,9 +771,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              N/A
+              96
               <sup>
-                <span />
+                <span>
+                  th
+                </span>
               </sup>
             </div>
           </div>
@@ -798,27 +792,11 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              N/A
+              12
               <sup>
-                <span />
-              </sup>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-        >
-          <div>
-            <div>
-              High school degree achievement rate
-              <div>
-                Percent of people ages 25 years or older whose education level is less than a high school diploma
-              </div>
-            </div>
-            <div>
-              N/A
-              <sup>
-                <span />
+                <span>
+                  th
+                </span>
               </sup>
             </div>
           </div>
