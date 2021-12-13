@@ -73,7 +73,7 @@ TILES_SCORE_COLUMNS = {
     field_names.ASTHMA_FIELD + field_names.PERCENTILE_FIELD_SUFFIX: "AF_PFS",
     field_names.HEART_DISEASE_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX: "HDF_PFS",
-    field_names.DIESEL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX: "DF_PFS",
+    field_names.DIESEL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX: "DSF_PFS",
     field_names.ENERGY_BURDEN_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX: "EBF_PFS",
     field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD
