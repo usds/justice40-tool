@@ -1,0 +1,403 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of the Categories checks if component renders 1`] = `
+<DocumentFragment>
+  <div
+    class="grid-container-desktop-lg"
+    data-testid="gridContainer"
+  >
+    <div
+      class="grid-row"
+      data-testid="grid"
+    >
+      <div
+        class="grid-col-12"
+        data-testid="grid"
+      >
+        <h2>
+          Categories
+        </h2>
+      </div>
+    </div>
+  </div>
+  <div
+    class="grid-container-desktop-lg"
+    data-testid="gridContainer"
+  >
+    <div>
+      <h3>
+        Climate change
+      </h3>
+      <p>
+        
+      
+        <strong>
+          IF
+        </strong>
+         at or above 90th percentile for 
+        <a
+          href="#exp-agr-loss-rate"
+        >
+          expected agriculture loss rate
+        </a>
+         OR 
+        <a
+          href="#exp-bld-loss-rate"
+        >
+          expected building loss rate
+        </a>
+         OR 
+        <a
+          href="#exp-pop-loss-rate"
+        >
+          expected population loss rate
+        </a>
+        
+      
+      </p>
+      <p>
+        <strong>
+          AND
+        </strong>
+         is low income
+        <sup>
+          *
+        </sup>
+      </p>
+      <p>
+        <strong>
+          THEN
+        </strong>
+         the community is disadvantaged.
+      </p>
+    </div>
+    <div>
+      <h3>
+        Clean energy and energy efficiency
+      </h3>
+      <p>
+        
+        
+        <strong>
+          IF
+        </strong>
+         at or above 90th percentile for 
+        <a
+          href="#energy-burden"
+        >
+          energy cost burden score
+        </a>
+         OR 
+        <a
+          href="#pm-25"
+        >
+          PM2.5
+        </a>
+        
+      
+      </p>
+      <p>
+        <strong>
+          AND
+        </strong>
+         is low income
+        <sup>
+          *
+        </sup>
+      </p>
+      <p>
+        <strong>
+          THEN
+        </strong>
+         the community is disadvantaged.
+      </p>
+    </div>
+    <div>
+      <h3>
+        Clean transportation
+      </h3>
+      <p>
+        
+        
+        <strong>
+          IF
+        </strong>
+         at or above 90th percentile for 
+        <a
+          href="#diesel-pm"
+        >
+          diesel particulate matter
+        </a>
+         or 
+        <a
+          href="#traffic-vol"
+        >
+          traffic proximity and volume
+        </a>
+        
+      
+      </p>
+      <p>
+        <strong>
+          AND
+        </strong>
+         is low income
+        <sup>
+          *
+        </sup>
+      </p>
+      <p>
+        <strong>
+          THEN
+        </strong>
+         the community is disadvantaged.
+      </p>
+    </div>
+    <div>
+      <h3>
+        Affordable and sustainable housing
+      </h3>
+      <p>
+        
+        
+        <strong>
+          IF
+        </strong>
+         at or above 90th percentile for 
+        <a
+          href="#lead-paint"
+        >
+          lead paint
+        </a>
+         AND 
+        <a
+          href="#median-home"
+        >
+          the median home value
+        </a>
+         is less than
+        90th percentile OR at or above the 90th percentile for the 
+        <a
+          href="#house-burden"
+        >
+          housing cost burden
+        </a>
+        
+      
+      </p>
+      <p>
+        <strong>
+          AND
+        </strong>
+         is low income
+        <sup>
+          *
+        </sup>
+      </p>
+      <p>
+        <strong>
+          THEN
+        </strong>
+         the community is disadvantaged.
+      </p>
+    </div>
+    <div>
+      <h3>
+        Reduction and remediation of legacy pollution
+      </h3>
+      <p>
+        
+        
+        <strong>
+          IF
+        </strong>
+         at or above 90th percentile for 
+        <a
+          href="#prox-haz"
+        >
+          proximity to hazardous waste facilities
+        </a>
+         OR 
+        <a
+          href="#prox-npl"
+        >
+          proximity to NLP sites
+        </a>
+         OR 
+        <a
+          href="#prox-rmp"
+        >
+          proximity to RMP sites
+        </a>
+        
+      
+      </p>
+      <p>
+        <strong>
+          AND
+        </strong>
+         is low income
+        <sup>
+          *
+        </sup>
+      </p>
+      <p>
+        <strong>
+          THEN
+        </strong>
+         the community is disadvantaged.
+      </p>
+    </div>
+    <div>
+      <h3>
+        Critical clean water and waste infrastructure
+      </h3>
+      <p>
+        
+        
+        <strong>
+          IF
+        </strong>
+         at or above 90th percentile for 
+        <a
+          href="#waste-water"
+        >
+          wastewater discharge
+        </a>
+        
+      
+      </p>
+      <p>
+        <strong>
+          AND
+        </strong>
+         is low income
+        <sup>
+          *
+        </sup>
+      </p>
+      <p>
+        <strong>
+          THEN
+        </strong>
+         the community is disadvantaged.
+      </p>
+    </div>
+    <div>
+      <h3>
+        Health burdens
+      </h3>
+      <p>
+        
+        
+        <strong>
+          IF
+        </strong>
+         at or above 90th percentile for 
+        <a
+          href="#asthma"
+        >
+          asthma
+        </a>
+         OR 
+        <a
+          href="#diabetes"
+        >
+          diabetes
+        </a>
+         OR 
+        <a
+          href="#heart-disease"
+        >
+          heart disease
+        </a>
+         OR 
+        <a
+          href="#life-exp"
+        >
+          low life expectancy
+        </a>
+        
+      
+      </p>
+      <p>
+        <strong>
+          AND
+        </strong>
+         is low income
+        <sup>
+          *
+        </sup>
+      </p>
+      <p>
+        <strong>
+          THEN
+        </strong>
+         the community is disadvantaged.
+      </p>
+    </div>
+    <div>
+      <h3>
+        Training and workforce development
+      </h3>
+      <p>
+        
+        
+        <strong>
+          IF
+        </strong>
+         at or above 90th percentile for 
+        <a
+          href="#low-med-inc"
+        >
+          low median income relative to area median income
+        </a>
+         OR 
+        at or above the 90th percentile for 
+        <a
+          href="#ling-iso"
+        >
+          linguistic isolation
+        </a>
+         OR
+        
+        <a
+          href="#unemploy"
+        >
+          unemployment
+        </a>
+         OR
+        for percentage individuals in households at or below 100% federal 
+        <a
+          href="#poverty"
+        >
+          poverty
+        </a>
+         level at or above 90%
+      
+      </p>
+      <p>
+        
+      
+        <strong>
+          AND
+        </strong>
+         where 
+        <a
+          href="#high-school"
+        >
+          the high school degree achievement rates
+        </a>
+         for adults 25 years and older is less than 90%
+      
+      </p>
+      <p>
+        <strong>
+          THEN
+        </strong>
+         the community is disadvantaged.
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
