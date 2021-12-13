@@ -296,6 +296,8 @@ LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD = (
     f"percent of area median income and has low HS education"
 )
 
+LOW_HS_EDUCATION_FIELD = "Low high school education"
+
 # Workforce for island areas
 ISLAND_AREAS_SUFFIX = " in 2009 (island areas)"
 ISLAND_AREAS_UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD = (
@@ -312,6 +314,10 @@ ISLAND_AREAS_LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD = (
     f"At or above the {PERCENTILE}th percentile for low median household income as a "
     f"percent of area median income"
     f" and has low HS education{ISLAND_AREAS_SUFFIX}"
+)
+
+ISLAND_AREAS_LOW_HS_EDUCATION_FIELD = (
+    f"Low high school education{ISLAND_AREAS_SUFFIX}"
 )
 
 # Not currently used in a factor
