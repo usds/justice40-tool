@@ -159,7 +159,7 @@ We use Docker to install the necessary libraries in a container that can be run 
 
 To build the docker container the first time, make sure you're in the root directory of the repository and run `docker-compose build --no-cache`.
 
-Once completed, run `docker-compose up`. Docker will spin up 3 containers: the client container, the static server container and the data container. Once all data is generated, you can see the application using a browser and navigating to `htto://localhost:8000`.
+Once completed, run `docker-compose up`. Docker will spin up 3 containers: the client container, the static server container and the data container. Once all data is generated, you can see the application using a browser and navigating to `http://localhost:8000`.
 
 If you want to run specific data tasks, you can open a terminal window, navigate to the root folder for this repository and then execute any command for the application using this format:
 
@@ -322,7 +322,7 @@ score_initial_df = pd.read_csv(score_csv_path, dtype={"GEOID10_TRACT": "string"}
 score_initial_df.to_csv(data_path / "data_pipeline" / "etl" / "score" / "tests" / "sample_data" /"score_data_initial.csv", index=False)
 ```
 
-Now you can move on to updating inidvidual pickles for the tests. Note that it is helpful to do them in this order:
+Now you can move on to updating individual pickles for the tests. Note that it is helpful to do them in this order:
 
 We have four pickle files that correspond to expected files:
 - `score_data_expected.pkl`: Initial score without counties
