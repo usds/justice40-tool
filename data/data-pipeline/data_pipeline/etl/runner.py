@@ -1,5 +1,7 @@
 import importlib
 import concurrent.futures
+import time
+from functools import wraps
 
 from data_pipeline.etl.score.etl_score import ScoreETL
 from data_pipeline.etl.score.etl_score_geo import GeoScoreETL
@@ -67,6 +69,24 @@ def build_instance_class_from_dataset(dataset: str = None) -> None:
     etl_instance.cleanup()
 
 
+import time
+from functools import wraps
+
+
+def timeit(method):
+    @wraps(method)
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = method(*args, **kwargs)
+        end_time = time.time()
+        print(f"{method.__name__} => {(end_time - start_time)*1000} ms")
+
+        return result
+
+    return wrapper
+
+
+@timeit
 def etl_runner(dataset_to_run: str = None) -> None:
     """Runs all etl processes or a specific one
 
