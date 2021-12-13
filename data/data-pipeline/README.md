@@ -322,7 +322,7 @@ score_initial_df = pd.read_csv(score_csv_path, dtype={"GEOID10_TRACT": "string"}
 score_initial_df.to_csv(data_path / "data_pipeline" / "etl" / "score" / "tests" / "sample_data" /"score_data_initial.csv", index=False)
 ```
 
-Now you can move on to updating inidvidual pickles for the tests. Note that it is helpful to do them in this order:
+Now you can move on to updating individual pickles for the tests. Note that it is helpful to do them in this order:
 
 We have four pickle files that correspond to expected files:
 - `score_data_expected.pkl`: Initial score without counties
