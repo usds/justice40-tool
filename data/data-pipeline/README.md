@@ -309,7 +309,7 @@ If you update the score in any way, it is necessary to create new pickles so tha
 
 It starts with the `data_pipeline/etl/score/tests/sample_data/score_data_initial.csv`, which is the first two rows of the `score/full/usa.csv`.
 
-To update this file, run a full score generation and then update the file as follows:
+To update this file, run a full score generation, then open a Python shell from the `data-pipeline` directory (e.g. `poetry run python3`), and then update the file with the following commands:
 ```
 import pickle
 from pathlib import Path
@@ -321,6 +321,8 @@ score_csv_path = data_path / "data_pipeline" / "data" / "score" / "csv" / "full"
 score_initial_df = pd.read_csv(score_csv_path, dtype={"GEOID10_TRACT": "string"}, low_memory=False)[:2]
 score_initial_df.to_csv(data_path / "data_pipeline" / "etl" / "score" / "tests" / "sample_data" /"score_data_initial.csv", index=False)
 ```
+
+Now you can move on to updating inidvidual pickles for the tests. Note that it is helpful to do them in this order:
 
 We have four pickle files that correspond to expected files:
 - `score_data_expected.pkl`: Initial score without counties
