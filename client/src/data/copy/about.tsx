@@ -20,19 +20,6 @@ export const PAGE = defineMessages({
     defaultMessage: 'Screening tool',
     description: 'heading for about screening tool',
   },
-  HEADING1_DESCRIPTION1: {
-    id: 'about.page.sub.header.1.text.1',
-    defaultMessage: 'In Executive Order 14008 on Tackling the Climate Crisis at Home and Abroad'+
-    ' Environmental Quality (CEQ) to create a climate and economic'+
-    ' justice screening tool. The purpose of the tool is to help'+
-    ' Federal agencies identify disadvantaged communities and provide'+
-    ' socioeconomic, environmental, and climate information and data'+
-    ' to inform decisions that may affect these communities. The tool'+
-    ' identifies disadvantaged communities as communities of focus'+
-    ' through publicly available, nationally consistent, high-quality'+
-    ' data.',
-    description: 'about page sub header text',
-  },
   HEADING1_DESCRIPTION2: {
     id: 'about.page.sub.header.1.text.2',
     defaultMessage: 'The current version of the tool is in a public beta form and'+
@@ -100,7 +87,7 @@ export const HEADING_2 = {
     `}
     values={{
       eoLink:
-      <a href={EXEC_ORDER_LINK}>
+      <a href={EXEC_ORDER_LINK} target={'blank'}>
         Executive Order 14008
       </a>,
       tacklingItalics: <i>Tackling the Climate Crisis at Home and Abroad</i>,
