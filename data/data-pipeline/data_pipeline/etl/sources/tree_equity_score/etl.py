@@ -87,4 +87,4 @@ class TreeEquityScoreETL(ExtractTransformLoad):
         logger.info("Saving Tree Equity Score GeoJSON")
         # write nationwide csv
         self.CSV_PATH.mkdir(parents=True, exist_ok=True)
-        self.df.to_csv(self.CSV_PATH / "tes_conus.csv", index=False)
+        self.df.to_csv(self.CSV_PATH / "usa.csv", index=False)
