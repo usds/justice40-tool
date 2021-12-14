@@ -162,9 +162,9 @@ class ScoreL(Score):
             non_workforce_factors
         ].any(axis=1)
 
-        self.df[field_names.SCORE_L + field_names.PERCENTILE_FIELD_SUFFIX] = self.df[
-            field_names.SCORE_L_COMMUNITIES
-        ].astype(int)
+        self.df[
+            field_names.SCORE_L + field_names.PERCENTILE_FIELD_SUFFIX
+        ] = self.df[field_names.SCORE_L_COMMUNITIES].astype(int)
 
         return self.df
 
@@ -523,7 +523,7 @@ class ScoreL(Score):
             field_names.LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD,
         ]
 
-        high_scool_achievement_rate_threshold = (
+        self.df[field_names.LOW_HS_EDUCATION_FIELD] = (
             self.df[field_names.HIGH_SCHOOL_ED_FIELD]
             >= self.LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD
         )
@@ -562,19 +562,20 @@ class ScoreL(Score):
 
         self.df[field_names.LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD] = (
             linguistic_isolation_threshold
-            & high_scool_achievement_rate_threshold
+            & self.df[field_names.LOW_HS_EDUCATION_FIELD]
         )
 
         self.df[field_names.POVERTY_LOW_HS_EDUCATION_FIELD] = (
-            poverty_threshold & high_scool_achievement_rate_threshold
+            poverty_threshold & self.df[field_names.LOW_HS_EDUCATION_FIELD]
         )
 
         self.df[field_names.LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD] = (
-            low_median_income_threshold & high_scool_achievement_rate_threshold
+            low_median_income_threshold
+            & self.df[field_names.LOW_HS_EDUCATION_FIELD]
         )
 
         self.df[field_names.UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD] = (
-            unemployment_threshold & high_scool_achievement_rate_threshold
+            unemployment_threshold & self.df[field_names.LOW_HS_EDUCATION_FIELD]
         )
 
         workforce_combined_criteria_for_states = self.df[
@@ -632,7 +633,7 @@ class ScoreL(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-        island_areas_high_scool_achievement_rate_threshold = (
+        self.df[field_names.ISLAND_AREAS_LOW_HS_EDUCATION_FIELD] = (
             self.df[field_names.CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009]
             >= self.LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD
         )
@@ -641,12 +642,12 @@ class ScoreL(Score):
             field_names.ISLAND_AREAS_UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD
         ] = (
             self.df[island_areas_unemployment_criteria_field_name]
-            & island_areas_high_scool_achievement_rate_threshold
+            & self.df[field_names.ISLAND_AREAS_LOW_HS_EDUCATION_FIELD]
         )
 
         self.df[field_names.ISLAND_AREAS_POVERTY_LOW_HS_EDUCATION_FIELD] = (
             self.df[island_areas_poverty_criteria_field_name]
-            & island_areas_high_scool_achievement_rate_threshold
+            & self.df[field_names.ISLAND_AREAS_LOW_HS_EDUCATION_FIELD]
         )
 
         self.df[
@@ -655,7 +656,7 @@ class ScoreL(Score):
             self.df[
                 island_areas_low_median_income_as_a_percent_of_ami_criteria_field_name
             ]
-            & island_areas_high_scool_achievement_rate_threshold
+            & self.df[field_names.ISLAND_AREAS_LOW_HS_EDUCATION_FIELD]
         )
 
         workforce_combined_criteria_for_island_areas = self.df[
