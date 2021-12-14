@@ -381,7 +381,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div>
                 <div>
                   <div>
-                    Draft communities list v0.1 (111MB)
+                    Draft communities list v0.1 (73MB)
                   </div>
                   <div>
                     
@@ -654,13 +654,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <a
             href="#prox-npl"
           >
-            proximity to NLP sites
+            proximity to NPL sites
           </a>
            OR 
           <a
             href="#prox-rmp"
           >
-            proximity to RMP sites
+            proximity to RMP facilities
           </a>
           
       
@@ -1341,7 +1341,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="prox-npl"
               >
                 <h3>
-                  Proximity to National Priorities List (NPL) facilities
+                  Proximity to National Priorities List (NPL) sites
                 </h3>
                 <div>
                   
@@ -1379,7 +1379,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="prox-rmp"
               >
                 <h3>
-                  Proximity to Risk Management Plan (RMP) Sites
+                  Proximity to Risk Management Plan (RMP) facilities
                 </h3>
                 <div>
                   
@@ -1458,7 +1458,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   Asthma
                 </h3>
                 <div>
-                  Weighted percent of respondents people who answer “yes” both
+                  Weighted percent of people who answer “yes” both
     to both of the following questions: “Have you ever been told by a doctor,
     nurse, or other health professional that you have asthma?” and the question
     “Do you still have asthma?”

@@ -73,7 +73,7 @@ export const FORMULA = {
 };
 
 // Download Package
-export const DOWNLOAD_FILE_SIZE = '111MB';
+export const DOWNLOAD_FILE_SIZE = '73MB';
 export const DOWNLOAD_LAST_UPDATED = '12/13/21';
 export const DOWNLOAD_LAST_UPDATED_ES = '13/12/21';
 export const VERSION_NUMBER = '0.1';
@@ -315,8 +315,8 @@ export const CATEGORIES = {
       values= {{
         if: <strong>IF</strong>,
         proxHaz: <a href='#prox-haz'>proximity to hazardous waste facilities</a>,
-        proxNPL: <a href='#prox-npl'>proximity to NLP sites</a>,
-        proxRMP: <a href='#prox-rmp'>proximity to RMP sites</a>,
+        proxNPL: <a href='#prox-npl'>proximity to NPL sites</a>,
+        proxRMP: <a href='#prox-rmp'>proximity to RMP facilities</a>,
       }}
     />,
     AND: <FormattedMessage
@@ -671,7 +671,7 @@ export const INDICATORS = [
   },
   {
     domID: 'prox-npl',
-    indicator: 'Proximity to National Priorities List (NPL) facilities',
+    indicator: 'Proximity to National Priorities List (NPL) sites',
     description: `
     Count of proposed or listed NPL - also known as superfund - sites within 5 km (or nearest one
       beyond 5 km), each divided by distance in kilometers.`,
@@ -682,7 +682,7 @@ export const INDICATORS = [
   },
   {
     domID: 'prox-rmp',
-    indicator: 'Proximity to Risk Management Plan (RMP) Sites',
+    indicator: 'Proximity to Risk Management Plan (RMP) facilities',
     description: `
     Count of RMP (potential chemical accident management plan) facilities within 5 km (or nearest
       one beyond 5 km), each divided by distance in kilometers.`,
@@ -705,7 +705,7 @@ export const INDICATORS = [
   {
     domID: 'asthma',
     indicator: 'Asthma',
-    description: `Weighted percent of respondents people who answer “yes” both
+    description: `Weighted percent of people who answer “yes” both
     to both of the following questions: “Have you ever been told by a doctor,
     nurse, or other health professional that you have asthma?” and the question
     “Do you still have asthma?”`,

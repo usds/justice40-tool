@@ -127,7 +127,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             <div>
               Expected population loss rate
               <div>
-                Economic loss rate to the population in fatalities and injuries resulting from natural hazards
+                
+      Rate relative to the population in fatalities and injuries resulting from natural hazards each year
+    
               </div>
             </div>
             <div>
@@ -171,7 +173,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         >
           <div>
             <div>
-              Clean, efficient energy 
+              Clean energy and energy efficiency
             </div>
             <div
               class=""
@@ -192,7 +194,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             <div>
               Energy cost burden
               <div>
-                Energy costs divided by household income
+                Average annual energy costs divided by household income
               </div>
             </div>
             <div>
@@ -208,7 +210,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         >
           <div>
             <div>
-              PM2.5
+              PM2.5 in the air
               <div>
                 Fine inhalable particles, 2.5 micrometers and smaller
               </div>
@@ -273,7 +275,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         >
           <div>
             <div>
-              Diesel particulate matter
+              Diesel particulate matter exposure
               <div>
                 Diesel exhaust in the air
               </div>
@@ -291,7 +293,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         >
           <div>
             <div>
-              Traffic
+              Traffic proximity and volume
               <div>
                 Count of vehicles at major roads within 500 meters
               </div>
@@ -378,7 +380,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             <div>
               Lead paint
               <div>
-                Pre-1960 housing
+                Percent of pre-1960 housing with a median home value is at or below 90th
               </div>
             </div>
             <div>
@@ -477,7 +479,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         >
           <div>
             <div>
-              Proximity to RMP sites
+              Proximity to RMP facilities
               <div>
                 Risk Management Plan facilities within 5 km
               </div>
@@ -523,7 +525,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         >
           <div>
             <div>
-              Clean water and waste
+              Clean water and waste infrastructure
             </div>
             <div
               class=""
@@ -609,7 +611,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             <div>
               Asthma
               <div>
-                Number of people who have been told they have asthma
+                Weighted percent of people who have been told they have asthma
               </div>
             </div>
             <div>
@@ -627,7 +629,10 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             <div>
               Diabetes
               <div>
-                People ages 18 years and older who have diabetes other than diabetes during pregnancy
+                
+      Weighted percent of people ages 18 years and older who have diabetes other than 
+      diabetes during pregnancy
+    
               </div>
             </div>
             <div>
@@ -645,7 +650,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             <div>
               Heart disease
               <div>
-                People ages 18 years and older who have been told they have heart disease
+                
+      Weighted percent of people ages 18 years and older who have been told they have heart disease
+    
               </div>
             </div>
             <div>
@@ -746,8 +753,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             <div>
               Linguistic isolation
               <div>
-                Households in which no one age 14 and over speaks English only or also speaks 
-    a language other than English
+                
+      Percent of limited speaking households, which are households where no one over age 14 speaks English well
+    
               </div>
             </div>
             <div>
@@ -787,8 +795,10 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             <div>
               Poverty
               <div>
-                Percent of individuals in households where the household income is at or 
-    below 100% of the federal poverty level
+                
+      Percent of a tract's population in households where the household income is at or below 
+      100% of the federal poverty level    
+    
               </div>
             </div>
             <div>

@@ -1,6 +1,7 @@
 declare namespace CategoryNamespace {
     export interface ICategoryScss {
         categoryContainer: string;
+        category:string;
         disadvantageDot: string;
     }
   }
