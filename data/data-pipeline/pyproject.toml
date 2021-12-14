@@ -67,6 +67,7 @@ disable = [
   "C0115", # Disables missing class docstring
   "R0915", # Disables too many statements (score generation transform)
   "W0231", # Disables super init not called
+  "W0703", # Disables catching too general exception Exception (broad-except)  
   "R0801", # Disables duplicate code. There are a couple places we have similar code and
    # unfortunately you can't disable this rule for individual lines or files, it's a
    # known bug. https://github.com/PyCQA/pylint/issues/214#
