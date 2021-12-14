@@ -20,6 +20,7 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
         Find communities of interest and 
         <a
           href="mailto:Screeningtool-Support@omb.eop.gov"
+          target="blank"
         >
           share your feedback
         </a>

@@ -638,7 +638,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
     defaultMessage={`Find communities of interest and {shareFeedback}.`}
     values={{
       shareFeedback:
-        <a href={`mailto:${CONTACT_COPY.FEEDBACK_EMAIL}`}>
+        <a href={`mailto:${CONTACT_COPY.FEEDBACK_EMAIL}`} target={'blank'}>
           {'share your feedback'}
         </a>,
     }}

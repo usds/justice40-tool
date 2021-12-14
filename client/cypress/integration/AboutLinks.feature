@@ -22,7 +22,7 @@ Feature: All links on About page are functional
   Scenario: People can find how to Send feedback
     Given I am on the "About" page
     When I look for the "Send feedback" CTA
-    Then the link should allow client to send an email to "screeningtool.feedback@usds.gov"
+    Then the link should allow client to send an email to "Screeningtool-Support@omb.eop.gov"
 
   Scenario: Open source community can find and click on their CTA
     Given I am on the "About" page
