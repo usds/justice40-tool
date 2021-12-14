@@ -87,4 +87,42 @@ class TreeEquityScoreETL(ExtractTransformLoad):
         logger.info("Saving Tree Equity Score GeoJSON")
         # write nationwide csv
         self.CSV_PATH.mkdir(parents=True, exist_ok=True)
+        # here I remove the geometry
+        self.df = self.df[
+            [
+                "geoid",
+                "total_pop",
+                "state",
+                "county",
+                "pctpov",
+                "pctpoc",
+                "unemplrate",
+                "medhhinc",
+                "dep_ratio",
+                "child_perc",
+                "seniorperc",
+                "treecanopy",
+                "area",
+                "source",
+                "avg_temp",
+                "ua_name",
+                "incorpname",
+                "congressio",
+                "biome",
+                "bgpopdense",
+                "popadjust",
+                "tc_gap",
+                "tc_goal",
+                "phys_hlth",
+                "ment_hlth",
+                "asthma",
+                "core_m",
+                "core_w",
+                "core_norm",
+                "healthnorm",
+                "priority",
+                "tes",
+                "tesctyscor",
+            ]
+        ]
         self.df.to_csv(self.CSV_PATH / "usa.csv", index=False)
