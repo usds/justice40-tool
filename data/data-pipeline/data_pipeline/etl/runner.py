@@ -82,9 +82,6 @@ def etl_runner(dataset_to_run: str = None) -> None:
     """
     dataset_list = get_datasets_to_run(dataset_to_run)
     NUMBER_OF_THREADS = 10
-    executor = concurrent.futures.ThreadPoolExecutor(
-        max_workers=NUMBER_OF_THREADS
-    )
     futures_list = []
     results = []
 
