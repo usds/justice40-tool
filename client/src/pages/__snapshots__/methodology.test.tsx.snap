@@ -163,11 +163,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         <div />
         <div>
           <span>
-            This is a Beta site. 
+            This is a beta site. 
           </span>
           <span>
-            It is an early, in-progress version of the tool with limited data 
-    sets that will be continuously updated.
+            It is an early, in-progress version of the tool with limited datasets 
+    that will be continuously updated.
           </span>
         </div>
       </div>
@@ -524,7 +524,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <a
             href="#pm-25"
           >
-            PM2.5
+            PM2.5 in the air
           </a>
           
       
@@ -559,7 +559,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <a
             href="#diesel-pm"
           >
-            diesel particulate matter
+            diesel particulate matter exposure
           </a>
            or 
           <a
@@ -779,14 +779,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             IF
           </strong>
-           at or above 90th percentile for 
+           at or above the 90th percentile for 
           <a
             href="#low-med-inc"
           >
-            low median income relative to area median income
+            low median income as a percent of area median income
           </a>
            OR 
-        at or above the 90th percentile for 
+        
           <a
             href="#ling-iso"
           >
@@ -800,13 +800,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             unemployment
           </a>
            OR
-        for percentage individuals in households at or below 100% federal 
+        percent individuals in households at or below 100% federal 
           <a
             href="#poverty"
           >
             poverty
           </a>
-           level at or above 90%
+           level
       
         </p>
         <p>
@@ -866,7 +866,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="low-income"
               >
                 <h3>
-                  Low Income
+                  Low income
                 </h3>
                 <div>
                   
@@ -909,7 +909,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </h3>
                 <div>
                   
-      Economic loss rate to agriculture resulting from natural hazards each year.
+      Percent of agriculture value at risk from losses due to natural hazards. Calculated by dividing 
+      the agriculture value at risk in a census tract by the total agriculture value in that census 
+      tract. Fourteen natural hazards that have some link to climate change include: avalanche, 
+      coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, 
+      riverine flooding, strong wind, tornado, wildfire, and winter weather.
     
                 </div>
                 <ul>
@@ -947,7 +951,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </h3>
                 <div>
                   
-      Economic loss rate to buildings resulting from natural hazards each year.
+      Percent of building value at risk from losses due to natural hazards. Calculated by dividing the 
+      building value at risk in a census tract by the total building value in that census tract. 
+      Fourteen natural hazards that have some link to climate change include: avalanche, coastal flooding, 
+      cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong 
+      wind, tornado, wildfire, and winter weather.
     
                 </div>
                 <ul>
@@ -985,14 +993,18 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </h3>
                 <div>
                   
-    Rate relative to the population in fatalities and injuries resulting from natural hazards each 
-    year. Population loss is defined as the Spatial Hazard Events and Losses or National Centers 
-    for Environmental Information’s reported number of fatalities and injuries caused by the 
-    hazard occurrence. To combine fatalities and injuries for the computation of population loss value, 
-    an injury is counted as one-tenth (1/10) of a fatality. The NCEI Storm Events Database 
-    classifies injuries and fatalities as direct or indirect. Both direct and indirect injuries 
-    and fatalities are counted as population loss. This total number of injuries and fatalities is 
-    then divided by the population in the census tract to get a per-capita rate of population risk.
+      Rate relative to the population in fatalities and injuries due to natural hazards each year. 
+      Fourteen natural hazards that have some link to climate change include: avalanche, coastal 
+      flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine 
+      flooding, strong wind, tornado, wildfire, and winter weather.
+      Population loss is defined as the Spatial Hazard Events and Losses or National Centers 
+      for Environmental Information’s (NCEI) reported number of fatalities and injuries caused by the 
+      hazard occurrence. To combine fatalities and injuries for the computation of population loss value, 
+      an injury is counted as one-tenth (1/10) of a fatality. The NCEI Storm Events Database 
+      classifies injuries and fatalities as direct or indirect. Both direct and indirect injuries 
+      and fatalities are counted as population loss. This total number of injuries and fatalities 
+      is then divided by the population in the census tract to get a per-capita rate of population risk. 
+    
     
                 </div>
                 <ul>
@@ -1062,7 +1074,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="pm-25"
               >
                 <h3>
-                  PM2.5
+                  PM2.5 in the air
                 </h3>
                 <div>
                   Fine inhalable particles, with diameters that are generally
@@ -1100,7 +1112,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="diesel-pm"
               >
                 <h3>
-                  Diesel particulate matter
+                  Diesel particulate matter exposure
                 </h3>
                 <div>
                   Mixture of particles that is part of diesel exhaust in the air.
@@ -1177,8 +1189,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   Housing cost burden
                 </h3>
                 <div>
-                  Households that are low income and spend more than 30% of their
-    income to housing costs.
+                  
+      The percent of households in a census tract that are both earning less than 80% of HUD Area Median 
+      Family Income by county and are paying greater than 30% of their income to housing costs.    
+    
                 </div>
                 <ul>
                   <li>
@@ -1215,8 +1229,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   Lead paint
                 </h3>
                 <div>
-                  Percent of housing units built pre-1960, used as an
-    indicator of potential lead paint exposure in homes.
+                  
+      Percent of housing units built pre-1960, used as an indicator of potential lead paint exposure in 
+      tracts with median home values less than 90th percentile    
                 </div>
                 <ul>
                   <li>
@@ -1249,10 +1264,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="median-home"
               >
                 <h3>
-                  Median home value
+                  Low median home value
                 </h3>
                 <div>
-                  Median home value of owner-occupied housing units in the area.
+                  Median home value of owner-occupied housing units in the census tract.
                 </div>
                 <ul>
                   <li>
@@ -1304,7 +1319,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                       target="_blank"
                     >
                       
-    Environmental Protection Agency (EPA) TSDF data calculated from EPA RCRAinfo database 
+    Environmental Protection Agency (EPA) TSDF data calculated from EPA RCRA info database 
     as compiled by EPA’s EJSCREEN
                     </a>
                   </li>
@@ -1326,7 +1341,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="prox-npl"
               >
                 <h3>
-                  Proximity to National Priorities List (NPL) Sites
+                  Proximity to National Priorities List (NPL) facilities
                 </h3>
                 <div>
                   
@@ -1443,7 +1458,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   Asthma
                 </h3>
                 <div>
-                  Weighted number of respondents people who answer “yes” both
+                  Weighted percent of respondents people who answer “yes” both
     to both of the following questions: “Have you ever been told by a doctor,
     nurse, or other health professional that you have asthma?” and the question
     “Do you still have asthma?”
@@ -1482,7 +1497,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   Diabetes
                 </h3>
                 <div>
-                  People ages 18 years and older who report having ever been
+                  Weighted percent of people ages 18 years and older who report having ever been
     told by a doctor, nurse, or other health professionals that they have
     diabetes other than diabetes during pregnancy.
                 </div>
@@ -1520,7 +1535,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   Heart disease
                 </h3>
                 <div>
-                  People ages 18 years and older who report ever having been told
+                  Weighted percent of people ages 18 years and older who report ever having been told
     by a doctor, nurse, or other health professionals that they had angina or
     coronary heart disease.
                 </div>
@@ -1558,7 +1573,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   Low life expectancy
                 </h3>
                 <div>
-                  Average number of years of life a person who has attained a given age can expect to live.
+                  
+      Average number of years of life a person who has attained a given age can expect to live.
+      Note: Unlike most of the other datasets, high values of this indicator indicate low burdens. 
+      For percentile calculations, the percentile is calculated in reverse order, so that the tract with 
+      the highest median income relative to area median income (lowest burden on this measure) is at the 
+      0th percentile, and the tract with the lowest median income relative to area median income 
+      (highest burden on this measure) is at the 100th percentile.
+    
                 </div>
                 <ul>
                   <li>
@@ -1630,8 +1652,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   Linguistic Isolation
                 </h3>
                 <div>
-                  Households in which no one age 14 and over speaks English only or also speaks
-    a language other than English
+                  
+      The percent of limited speaking households, which are households where no one over age 14 speaks English well.
+    
                 </div>
                 <ul>
                   <li>
@@ -1914,6 +1937,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     class="footer-link-first-child"
                     data-cy="find-a-contact-at-usa-gov"
                     href="https://www.usa.gov/"
+                    rel="noreferrer"
+                    target="_blank"
                   >
                     Find a contact at USA.gov
                   </a>
@@ -1965,7 +1990,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         data-testid="button"
         type="button"
       >
-        Tell us how we're doing
+        Help improve the site & data
       </button>
     </div>
   </footer>

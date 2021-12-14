@@ -91,7 +91,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <a
           href="#pm-25"
         >
-          PM2.5
+          PM2.5 in the air
         </a>
         
       
@@ -126,7 +126,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <a
           href="#diesel-pm"
         >
-          diesel particulate matter
+          diesel particulate matter exposure
         </a>
          or 
         <a
@@ -346,14 +346,14 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           IF
         </strong>
-         at or above 90th percentile for 
+         at or above the 90th percentile for 
         <a
           href="#low-med-inc"
         >
-          low median income relative to area median income
+          low median income as a percent of area median income
         </a>
          OR 
-        at or above the 90th percentile for 
+        
         <a
           href="#ling-iso"
         >
@@ -367,13 +367,13 @@ exports[`rendering of the Categories checks if component renders 1`] = `
           unemployment
         </a>
          OR
-        for percentage individuals in households at or below 100% federal 
+        percent individuals in households at or below 100% federal 
         <a
           href="#poverty"
         >
           poverty
         </a>
-         level at or above 90%
+         level
       
       </p>
       <p>

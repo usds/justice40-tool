@@ -23,7 +23,7 @@ export const PAGE_INTRO = defineMessages({
   },
   SURVEY_TEXT: {
     id: 'fab.survey.text',
-    defaultMessage: `Tell us how we're doing`,
+    defaultMessage: `Help improve the site & data`,
     description: 'text for floating action button',
   },
 });
@@ -34,4 +34,4 @@ export const CONTACT_VIA_EMAIL = {
   DEFAULT_MESSAGE: `For general feedback, email {general_email_address}`,
 };
 
-export const FEEDBACK_EMAIL = 'screeningtool.feedback@usds.gov';
+export const FEEDBACK_EMAIL = 'Screeningtool-Support@omb.eop.gov';

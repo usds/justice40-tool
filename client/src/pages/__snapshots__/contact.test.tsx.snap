@@ -163,11 +163,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         <div />
         <div>
           <span>
-            This is a Beta site. 
+            This is a beta site. 
           </span>
           <span>
-            It is an early, in-progress version of the tool with limited data 
-    sets that will be continuously updated.
+            It is an early, in-progress version of the tool with limited datasets 
+    that will be continuously updated.
           </span>
         </div>
       </div>
@@ -326,11 +326,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <p>
             For general feedback, email 
             <a
-              href="mailto:screeningtool.feedback@usds.gov"
+              href="mailto:Screeningtool-Support@omb.eop.gov"
               rel="noreferrer"
               target="_blank"
             >
-              screeningtool.feedback@usds.gov
+              Screeningtool-Support@omb.eop.gov
             </a>
           </p>
         </div>
@@ -469,6 +469,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     class="footer-link-first-child"
                     data-cy="find-a-contact-at-usa-gov"
                     href="https://www.usa.gov/"
+                    rel="noreferrer"
+                    target="_blank"
                   >
                     Find a contact at USA.gov
                   </a>
@@ -520,7 +522,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         data-testid="button"
         type="button"
       >
-        Tell us how we're doing
+        Help improve the site & data
       </button>
     </div>
   </footer>

@@ -24,7 +24,7 @@ export const PAGE_DESCRIPTION = <FormattedMessage
   defaultMessage={`
     Use the map to see disadvantaged communities that have been historically 
     marginalized, underserved, and overburdened by pollution. The map uses 
-    publicly-available, nationally-consistent, high-quality datasets. Learn more about 
+    publicly available, nationally consistent, high-quality datasets. Learn more about 
     the methodology and datasets that were used to identify disavantaged communities 
     on the {methodologyLink} page.
     `}
@@ -44,9 +44,9 @@ export const LEGEND = defineMessages({
   PRIORITY_DESCRIPT: {
     id: 'legend.info.threshold.label',
     defaultMessage: `
-    Communities identified for the purposes of Justice40 as disadvantaged have been 
-    historically marginalized, underserved, and overburdened by pollution. These communities 
-    meet or exceed the criteria in one or more areas of focus. 
+    Communities identified as disadvantaged for the purposes of Justice40 have been 
+    historically marginalized, underserved, and overburdened by pollution. These communities meet 
+    or exceed the criteria in one or more areas of focus.
 
     `,
     description: 'the label of the threshold community legend',
@@ -169,7 +169,7 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   CBG_DEFINITION: {
     id: 'mapIntro.censusBlockGroupDefinition',
     defaultMessage: `
-      A census tract is generally between 1,200 and 8,000 people, with an optimum size of 4,000 people. 
+      A census tract is generally between 1,200 and 8,000 people, with an average size of 4,000 people. 
       Census tracts are small, relatively permanent subdivisions of a county defined by the 
       U.S. Census Bureau and usually cover a contiguous area. The census tract level represents the 
       smallest geographical unity that can be presented in a statistically sound manner, given the 
@@ -585,7 +585,7 @@ export const NOTE_ON_TERRITORIES = {
   PARA_1: <FormattedMessage
     id={'explore.page.note.on.territories.para.1'}
     defaultMessage={`
-      The data sources described on the {dataMethLink} page are used to 
+      The data sources described on the {dataMethLink} are used to 
       identify disadvantaged communities for all 50 states and the District of Columbia. However, not all 
       of these data sources are currently available for the U.S. territories. The Census ACS data from 
       2015-2019 was used to identify disadvantaged communities for Puerto Rico. This uses the same methodology 

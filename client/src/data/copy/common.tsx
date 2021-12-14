@@ -4,13 +4,13 @@ import {defineMessages} from 'react-intl';
 export const BETA_BANNER = defineMessages({
   TITLE: {
     id: 'banner.beta.title',
-    defaultMessage: 'This is a Beta site.',
+    defaultMessage: 'This is a beta site.',
     description: 'the main title of the beta banner',
   },
   INFO: {
     id: 'banner.beta.info',
-    defaultMessage: `It is an early, in-progress version of the tool with limited data 
-    sets that will be continuously updated.`,
+    defaultMessage: `It is an early, in-progress version of the tool with limited datasets 
+    that will be continuously updated.`,
     description: 'the main info of the beta banner',
   },
 });
