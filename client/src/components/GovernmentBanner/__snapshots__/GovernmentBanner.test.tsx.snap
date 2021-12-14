@@ -135,22 +135,6 @@ exports[`rendering of the GovernmentBanner checks if component renders 1`] = `
           </div>
         </div>
       </section>
-      <div>
-        <img
-          alt="language icon for selecting language"
-          src="test-file-stub"
-        />
-        <a
-          href="#"
-        >
-          English
-        </a>
-        <a
-          href="#"
-        >
-          Español
-        </a>
-      </div>
     </div>
   </div>
 </DocumentFragment>
