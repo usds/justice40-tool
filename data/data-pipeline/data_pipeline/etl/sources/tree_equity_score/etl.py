@@ -83,6 +83,12 @@ class TreeEquityScoreETL(ExtractTransformLoad):
             pd.concat(tes_state_dfs), crs=tes_state_dfs[0].crs
         )
 
+        # rename ID to Tract ID
+        self.df.rename(
+            columns={"geoid": self.GEOID_TRACT_FIELD_NAME},
+            inplace=True,
+        )
+
     def load(self) -> None:
         logger.info("Saving Tree Equity Score GeoJSON")
         # write nationwide csv
@@ -90,7 +96,7 @@ class TreeEquityScoreETL(ExtractTransformLoad):
         # here I remove the geometry
         self.df = self.df[
             [
-                "geoid",
+                self.GEOID_TRACT_FIELD_NAME,
                 "total_pop",
                 "state",
                 "county",
