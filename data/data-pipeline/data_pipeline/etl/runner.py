@@ -81,18 +81,18 @@ def etl_runner(dataset_to_run: str = None) -> None:
         None
     """
     dataset_list = get_datasets_to_run(dataset_to_run)
-    NUMBER_OF_THREADS = 10
+    number_of_threads = 10
     futures_list = []
     results = []
 
     with concurrent.futures.ThreadPoolExecutor(
-        max_workers=NUMBER_OF_THREADS
+        max_workers=number_of_threads
     ) as executor:
         for dataset in dataset_list:
             futures = executor.submit(
                 # manually create Future object
-                # previously using map, we were
-                # not managing exceptions so thoughtfully
+                # this allows us to manage exceptions
+                # and callbacks more thoughtfully
                 run_etl_single_dataset,
                 dataset,
             )
@@ -100,7 +100,11 @@ def etl_runner(dataset_to_run: str = None) -> None:
 
         for future in futures_list:
             try:
-                # emprically tested timeout
+                # emprically tested timeout to accomdate
+                # 1) NRI; 2) Tree-equity; 3) census
+                # datasets. Specifically, these
+                # three datasets contribute to most of
+                # i/o resource consumption and network latency
                 result = future.result(timeout=300)
                 results.append(result)
             # this catches any exception for that given dataset
