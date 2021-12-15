@@ -18,7 +18,13 @@ def get_datasets_to_run(dataset_to_run: str):
         None
     """
     dataset_list = constants.DATASET_LIST
-    etls_to_search = dataset_list + [constants.CENSUS_INFO]
+    etls_to_search = dataset_list + [constants.CENSUS_INFO] + constants.ALL_TEST_ETLS
+
+    # XXX: This may not be the best way to do this, it's hidden undocumented behavior. It might be
+    # better to instead change the interface of this function to accept a list of datasets to run,
+    # and return "constants.DATASET_LIST" if nothing is passed.
+    if dataset_to_run == "all_test_etls":
+        return constants.ALL_TEST_ETLS
 
     if dataset_to_run:
         dataset_element = next(
@@ -71,7 +77,7 @@ def run_etl_single_dataset(dataset: str = None) -> str:
     return message
 
 
-def etl_runner(dataset_to_run: str = None) -> None:
+def etl_runner(dataset_to_run: str = None, timeout: int = 300) -> None:
     """Runs all etl processes or a specific one
 
     Args:
@@ -105,7 +111,7 @@ def etl_runner(dataset_to_run: str = None) -> None:
                 # datasets. Specifically, these
                 # three datasets contribute to most of
                 # i/o resource consumption and network latency
-                result = future.result(timeout=300)
+                result = future.result(timeout=timeout)
                 results.append(result)
             # this catches any exception for that given dataset
             # one could customize this to specify which dataset

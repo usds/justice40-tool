@@ -100,3 +100,20 @@ CENSUS_INFO = {
     "module_dir": "census",
     "class_name": "CensusETL",
 }
+ALL_TEST_ETLS = [
+    {
+        "name": "test_success",
+        "module_dir": "test_success",
+        "class_name": "TestSuccessETL",
+    },
+    {
+        "name": "test_failure",
+        "module_dir": "test_failure",
+        "class_name": "TestFailureETL",
+    },
+    {
+        "name": "test_timeout",
+        "module_dir": "test_timeout",
+        "class_name": "TestTimeoutETL",
+    },
+]
