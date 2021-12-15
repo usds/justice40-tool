@@ -4,7 +4,7 @@
 
 This page documents the installation steps for some of the software needed to work with this project.
 
-**If you all you want to do is quickly run everything locally to try out the application, go straight to [`QUICKSTART.md`](QUICKSTART.md).**
+> **NOTE: If you all you want to do is quickly run everything locally to try out the application, go straight to [`QUICKSTART.md`](QUICKSTART.md).**
 
 After the generic installation steps on this page, continue on to one of the following, depending on what you are trying to do:
 
