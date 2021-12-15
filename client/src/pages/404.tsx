@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {Link} from 'gatsby-plugin-intl';
 import {useIntl} from 'gatsby-plugin-intl';
 import {Grid} from '@trussworks/react-uswds';
 
@@ -33,12 +32,7 @@ const NotFoundPage =({location}: I404PageProps) => {
 
         <Grid row>
           <p>
-            {intl.formatMessage(PAGE_NOT_FOUND_COPY.PAGE.APOLOGY)}
-            {' '}
-            <span role="img" aria-label="Pensive emoji">
-            😔
-            </span>{' '}
-            {intl.formatMessage(PAGE_NOT_FOUND_COPY.PAGE.APOLOGY_INFO)}
+            {PAGE_NOT_FOUND_COPY.ERROR_MSG}
           </p>
         </Grid>
 
@@ -51,11 +45,6 @@ const NotFoundPage =({location}: I404PageProps) => {
             ) : null}
         </Grid>
 
-        <Grid>
-          <p>
-            <Link to="/">{intl.formatMessage(PAGE_NOT_FOUND_COPY.PAGE.LINK_HOME)}</Link>.
-          </p>
-        </Grid>
 
       </J40MainGridContainer>
     </Layout>

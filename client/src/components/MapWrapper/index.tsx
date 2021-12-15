@@ -22,9 +22,14 @@ const MapWrapper = ({location}: IMapWrapperProps) => {
           <div className={styles.mapCaptionTextLink}>
             {EXPLORE_COPY.DOWNLOAD_DRAFT.PARAGRAPH_1}
           </div>
-          <div>
-            {EXPLORE_COPY.DOWNLOAD_DRAFT.PARAGRAPH_2}
-          </div>
+        </Grid>
+      </Grid>
+
+      <Grid row>
+        <Grid col={7}>
+          <h2>{EXPLORE_COPY.NOTE_ON_TERRITORIES.INTRO}</h2>
+          <p>{EXPLORE_COPY.NOTE_ON_TERRITORIES.PARA_1}</p>
+          <p>{EXPLORE_COPY.NOTE_ON_TERRITORIES.PARA_2}</p>
         </Grid>
       </Grid>
     </>

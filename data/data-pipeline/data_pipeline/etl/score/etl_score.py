@@ -404,9 +404,7 @@ class ScoreETL(ExtractTransformLoad):
             field_names.POVERTY_LESS_THAN_150_FPL_FIELD,
             field_names.POVERTY_LESS_THAN_200_FPL_FIELD,
             field_names.AMI_FIELD,
-            field_names.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD,
             field_names.MEDIAN_INCOME_FIELD,
-            field_names.LIFE_EXPECTANCY_FIELD,
             field_names.ENERGY_BURDEN_FIELD,
             field_names.FEMA_RISK_FIELD,
             field_names.URBAN_HEURISTIC_FIELD,
@@ -439,7 +437,6 @@ class ScoreETL(ExtractTransformLoad):
             field_names.CENSUS_UNEMPLOYMENT_FIELD_2010,
             field_names.CENSUS_POVERTY_LESS_THAN_100_FPL_FIELD_2010,
             field_names.CENSUS_DECENNIAL_TOTAL_POPULATION_FIELD_2009,
-            field_names.CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009,
             field_names.EXTREME_HEAT_FIELD,
             field_names.HEALTHY_FOOD_FIELD,
             field_names.IMPENETRABLE_SURFACES_FIELD,
@@ -468,7 +465,19 @@ class ScoreETL(ExtractTransformLoad):
             ReversePercentile(
                 field_name=field_names.READING_FIELD,
                 low_field_name=field_names.LOW_READING_FIELD,
-            )
+            ),
+            ReversePercentile(
+                field_name=field_names.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD,
+                low_field_name=field_names.LOW_MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD,
+            ),
+            ReversePercentile(
+                field_name=field_names.LIFE_EXPECTANCY_FIELD,
+                low_field_name=field_names.LOW_LIFE_EXPECTANCY_FIELD,
+            ),
+            ReversePercentile(
+                field_name=field_names.CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009,
+                low_field_name=field_names.LOW_CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009,
+            ),
         ]
 
         columns_to_keep = (
@@ -504,10 +513,6 @@ class ScoreETL(ExtractTransformLoad):
             min_value = df_copy[numeric_column].min(skipna=True)
 
             max_value = df_copy[numeric_column].max(skipna=True)
-
-            logger.info(
-                f"For data set {numeric_column}, the min value is {min_value} and the max value is {max_value}."
-            )
 
             df_copy[f"{numeric_column}{field_names.MIN_MAX_FIELD_SUFFIX}"] = (
                 df_copy[numeric_column] - min_value
