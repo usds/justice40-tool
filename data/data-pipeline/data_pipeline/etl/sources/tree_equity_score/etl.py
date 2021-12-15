@@ -85,7 +85,7 @@ class TreeEquityScoreETL(ExtractTransformLoad):
 
         # rename ID to Tract ID
         self.df.rename(
-            columns={"geoid": self.GEOID_TRACT_FIELD_NAME},
+            columns={"geoid": ExtractTransformLoad.GEOID_FIELD_NAME},
             inplace=True,
         )
 
@@ -96,7 +96,7 @@ class TreeEquityScoreETL(ExtractTransformLoad):
         # here I remove the geometry
         self.df = self.df[
             [
-                self.GEOID_TRACT_FIELD_NAME,
+                ExtractTransformLoad.GEOID_FIELD_NAME,
                 "total_pop",
                 "state",
                 "county",
