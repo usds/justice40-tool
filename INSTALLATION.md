@@ -2,11 +2,14 @@
 
 *[¡Lea esto en español!](INSTALLATION-es.md)*
 
-This page documents the installation steps for some of the software needed to work with this project. After following the steps on this page, continue on to one of the following, depending on what you are trying to do:
+This page documents the installation steps for some of the software needed to work with this project.
 
-- If you want to quickly run everything locally, see [`QUICKSTART.md`](QUICKSTART.md).
-- If you are working with the frontend, see [`client/README.md`](client/README.md) for installation steps specific to that part of the project.
-- If you are working with the data pipeline, see [`data/data-pipeline/README.md`](data/data-pipeline/README.md) for installation steps specific to that part of the project.
+**If you all you want to do is quickly run everything locally to try out the application, go straight to [`QUICKSTART.md`](QUICKSTART.md).**
+
+After the generic installation steps on this page, continue on to one of the following, depending on what you are trying to do:
+
+- If you are working with the frontend, see [`client/README.md`](client/README.md).
+- If you are working with the data pipeline, see [`data/data-pipeline/README.md`](data/data-pipeline/README.md).
 - If you want to understand the current deployment process, see [`.github/workflows/README.md`](.github/workflows/README.md).
 
 ## Install Git
