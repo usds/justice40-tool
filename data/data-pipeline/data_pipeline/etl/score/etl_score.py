@@ -374,8 +374,7 @@ class ScoreETL(ExtractTransformLoad):
             self.census_acs_median_incomes_df,
             self.census_decennial_df,
             self.census_2010_df,
-            self.child_opportunity_index_df,
-            self.maryland_ejscreen_df,
+            self.child_opportunity_index_df
         ]
 
         # Sanity check each data frame before merging.
