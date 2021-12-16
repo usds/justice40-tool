@@ -3,10 +3,12 @@ import pandas as pd
 import geopandas as gpd
 
 from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.score import constants
 from data_pipeline.etl.sources.census.etl_utils import (
     check_census_data_source,
 )
 from data_pipeline.etl.score.etl_utils import check_score_data_source
+from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
@@ -31,8 +33,18 @@ class GeoScoreETL(ExtractTransformLoad):
             self.DATA_PATH / "census" / "geojson" / "us.json"
         )
 
-        self.TARGET_SCORE_NAME = "Definition L (percentile)"
+        # Import the shortened name for Score L percentile ("SL_PFS") that's used on the
+        # tiles.
+        self.TARGET_SCORE_SHORT_FIELD = constants.TILES_SCORE_COLUMNS[
+            field_names.SCORE_L + field_names.PERCENTILE_FIELD_SUFFIX
+        ]
         self.TARGET_SCORE_RENAME_TO = "L_SCORE"
+
+        # Import the shortened name for tract ("GTF") that's used on the tiles.
+        self.TRACT_SHORT_FIELD = constants.TILES_SCORE_COLUMNS[
+            field_names.GEOID_TRACT_FIELD
+        ]
+        self.GEOMETRY_FIELD_NAME = "geometry"
 
         self.NUMBER_OF_BUCKETS = 10
 
@@ -57,45 +69,52 @@ class GeoScoreETL(ExtractTransformLoad):
         logger.info("Reading US GeoJSON (~6 minutes)")
         self.geojson_usa_df = gpd.read_file(
             self.CENSUS_USA_GEOJSON,
-            dtype={"GEOID10": "string"},
-            usecols=["GEOID10", "geometry"],
+            dtype={self.GEOID_FIELD_NAME: "string"},
+            usecols=[self.GEOID_FIELD_NAME, self.GEOMETRY_FIELD_NAME],
             low_memory=False,
         )
-        self.geojson_usa_df.head()
 
         logger.info("Reading score CSV")
         self.score_usa_df = pd.read_csv(
             self.TILE_SCORE_CSV,
-            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
+            dtype={self.TRACT_SHORT_FIELD: "string"},
             low_memory=False,
         )
 
     def transform(self) -> None:
-        # rename GEOID10_TRACT to GEOID10 on score to allow merging with Census GeoJSON
+        # Rename GEOID10_TRACT to GEOID10 on score to allow merging with Census GeoJSON
         self.score_usa_df.rename(
-            columns={self.GEOID_TRACT_FIELD_NAME: "GEOID10"},
+            columns={self.TRACT_SHORT_FIELD: self.GEOID_FIELD_NAME},
             inplace=True,
         )
 
         logger.info("Pruning Census GeoJSON")
-        fields = ["GEOID10", "geometry"]
+        fields = [self.GEOID_FIELD_NAME, self.GEOMETRY_FIELD_NAME]
         self.geojson_usa_df = self.geojson_usa_df[fields]
 
         logger.info("Merging and compressing score CSV with USA GeoJSON")
         self.geojson_score_usa_high = self.score_usa_df.merge(
-            self.geojson_usa_df, on="GEOID10", how="left"
+            self.geojson_usa_df, on=self.GEOID_FIELD_NAME, how="left"
         )
 
         self.geojson_score_usa_high = gpd.GeoDataFrame(
             self.geojson_score_usa_high, crs="EPSG:4326"
         )
 
+        logger.info(f"Columns: {self.geojson_score_usa_high.columns}")
+
         usa_simplified = self.geojson_score_usa_high[
-            ["GEOID10", self.TARGET_SCORE_NAME, "geometry"]
+            [
+                self.GEOID_FIELD_NAME,
+                self.TARGET_SCORE_SHORT_FIELD,
+                self.GEOMETRY_FIELD_NAME,
+            ]
         ].reset_index(drop=True)
 
         usa_simplified.rename(
-            columns={self.TARGET_SCORE_NAME: self.TARGET_SCORE_RENAME_TO},
+            columns={
+                self.TARGET_SCORE_SHORT_FIELD: self.TARGET_SCORE_RENAME_TO
+            },
             inplace=True,
         )
 
@@ -104,7 +123,7 @@ class GeoScoreETL(ExtractTransformLoad):
 
         usa_tracts = gpd.GeoDataFrame(
             usa_tracts,
-            columns=[self.TARGET_SCORE_RENAME_TO, "geometry"],
+            columns=[self.TARGET_SCORE_RENAME_TO, self.GEOMETRY_FIELD_NAME],
             crs="EPSG:4326",
         )
 
@@ -122,7 +141,7 @@ class GeoScoreETL(ExtractTransformLoad):
 
         self.geojson_score_usa_low = gpd.GeoDataFrame(
             compressed,
-            columns=[self.TARGET_SCORE_RENAME_TO, "geometry"],
+            columns=[self.TARGET_SCORE_RENAME_TO, self.GEOMETRY_FIELD_NAME],
             crs="EPSG:4326",
         )
 
@@ -135,7 +154,7 @@ class GeoScoreETL(ExtractTransformLoad):
     ) -> gpd.GeoDataFrame:
         # The tract identifier is the first 11 digits of the GEOID
         block_group_df["tract"] = block_group_df.apply(
-            lambda row: row["GEOID10"][0:11], axis=1
+            lambda row: row[self.GEOID_FIELD_NAME][0:11], axis=1
         )
         state_tracts = block_group_df.dissolve(by="tract", aggfunc="mean")
         return state_tracts
@@ -160,7 +179,7 @@ class GeoScoreETL(ExtractTransformLoad):
             [
                 self.TARGET_SCORE_RENAME_TO,
                 f"{self.TARGET_SCORE_RENAME_TO}_bucket",
-                "geometry",
+                self.GEOMETRY_FIELD_NAME,
             ]
         ].reset_index(drop=True)
         state_dissolve = state_attr.dissolve(
@@ -173,11 +192,13 @@ class GeoScoreETL(ExtractTransformLoad):
     ) -> gpd.GeoDataFrame:
         compressed = []
         for i in range(num_buckets):
-            for j in range(len(state_bucketed_df["geometry"][i].geoms)):
+            for j in range(
+                len(state_bucketed_df[self.GEOMETRY_FIELD_NAME][i].geoms)
+            ):
                 compressed.append(
                     [
                         state_bucketed_df[self.TARGET_SCORE_RENAME_TO][i],
-                        state_bucketed_df["geometry"][i].geoms[j],
+                        state_bucketed_df[self.GEOMETRY_FIELD_NAME][i].geoms[j],
                     ]
                 )
         return compressed

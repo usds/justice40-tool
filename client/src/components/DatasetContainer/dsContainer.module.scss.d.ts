@@ -1,6 +1,7 @@
 declare namespace DatasetContainerScssNamespace {
     export interface IDatasetContainerScss {
       datasetCardsContainer: string;
+      returnToTop: string;
     }
   }
 

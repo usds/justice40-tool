@@ -1,6 +1,9 @@
 import React from 'react';
 import {IntlContextConsumer, changeLocale} from 'gatsby-plugin-intl';
 
+// Contexts:
+import {useFlags} from '../../contexts/FlagContext';
+
 // @ts-ignore
 import languageIcon from '/node_modules/uswds/dist/img/usa-icons/language.svg';
 import * as styles from './Language.module.scss';
@@ -15,7 +18,9 @@ interface ILanguageProps {
 }
 
 const Language = ({isDesktop}:ILanguageProps) => {
-  return (
+  const flags = useFlags();
+
+  return 'sp' in flags ? (
     <div className={isDesktop ? styles.languageContainer : styles.languageContainerMobile}>
       <img className={styles.languageIcon} src={languageIcon} alt={'language icon for selecting language'}/>
       <IntlContextConsumer>
@@ -33,7 +38,7 @@ const Language = ({isDesktop}:ILanguageProps) => {
         }
       </IntlContextConsumer>
     </div>
-  );
+  ) : null;
 };
 
 export default Language;

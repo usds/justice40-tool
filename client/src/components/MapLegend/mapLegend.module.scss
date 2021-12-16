@@ -1,26 +1,17 @@
 @import "../utils.scss";
 
-$min-color: #fafaf8;
-$med-color: rgba(26, 68, 128, 0.2);
-$max-color: rgba(26, 68, 128, 0.6);
-$alertInfoColor: #e7f6f8;
-
 .legendContainer {
   display: flex;
-  margin: 1rem 0 1rem 2.5rem;
   border: 1px solid #DFE1E2;
-  padding: .5rem 1.5rem 1rem 1.5rem;
+  margin: 1rem 0 1rem 2.5rem;
+  padding: 0 1.5rem 1rem 1.5rem;
 
+  .legendTextBox {
+    // Set maximum width for text area so that blue dot
+    // doesn't lose aspect ratio
+    flex-basis: 88%;
+  }
   @media screen and (max-width: 640px) {
     margin: 1rem 0 0;
   }
-}
-
-.colorSwatch {
-  flex: 1 0 2rem; 
-  box-sizing: border-box;
-  height: 2rem;
-  margin: 2rem 1.5rem 2rem 0;
-  border-radius: 50%;
-  background-color: $max-color;
 }

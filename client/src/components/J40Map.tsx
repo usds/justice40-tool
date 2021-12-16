@@ -157,7 +157,10 @@ const J40Map = ({location}: IJ40Interface) => {
       <Grid col={12} desktop={{col: 9}}>
 
         {/*
-          The MapSearch component is wrapped in a div in order for MapSearch to render correctly in a production build.
+          The MapSearch component is no longer wrapped in a div in order to allow this feature
+          to be behind a feature flag. This was causing a bug for MapSearch to render
+          correctly in a production build. Leaving this comment here in case future flags are
+          needed in this component
 
           When the MapSearch component is placed behind a feature flag without a div wrapping
           MapSearch, the production build will inject CSS due to the null in the false conditional
@@ -168,9 +171,7 @@ const J40Map = ({location}: IJ40Interface) => {
 
           to ensure the production build works and that MapSearch and the map (ReactMapGL) render correctly.
         */}
-        <div>
-          {'sr' in flags ? <MapSearch goToPlace={goToPlace}/> : null}
-        </div>
+        <MapSearch goToPlace={goToPlace}/>
 
         <ReactMapGL
           {...viewport}

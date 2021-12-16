@@ -30,7 +30,7 @@ export const FEATURE_TILE_LOW_ZOOM_URL = featureURLForTilesetName('low');
 export const PERFORMANCE_MARKER_MAP_IDLE = 'MAP_IDLE';
 
 // Properties
-export const SCORE_PROPERTY_HIGH = 'Definition L (percentile)';
+export const SCORE_PROPERTY_HIGH = 'SL_PFS';
 export const SCORE_PROPERTY_LOW = 'L_SCORE';
 export const GEOID_PROPERTY = 'GEOID10';
 export const HIGH_SCORE_SOURCE_NAME = 'score-high';
@@ -42,28 +42,73 @@ export const CURRENTLY_SELECTED_FEATURE_HIGHLIGHT_LAYER_NAME = 'currently-select
 export const BLOCK_GROUP_BOUNDARY_LAYER_NAME = 'block-group-boundary-layer';
 
 
-// Properties
-export const POVERTY_PROPERTY_PERCENTILE = 'Poverty (Less than 200% of federal poverty line) (percentile)';
-export const HOUSING_BURDEN_PROPERTY_PERCENTILE = 'Housing burden (percent) (percentile)';
-export const LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE = 'Linguistic isolation (percent) (percentile)';
-export const UNEMPLOYMENT_PROPERTY_PERCENTILE = 'Unemployed civilians (percent) (percentile)';
-export const TOTAL_POPULATION = 'Total population';
-export const EDUCATION_PROPERTY_PERCENTILE =
-  `Percent individuals age 25 or over with less than high school degree (percentile)`;
-export const COUNTY_NAME = 'County Name';
-export const STATE_NAME = 'State Name';
-export const DIABETES_PERCENTILE = 'Diagnosed diabetes among adults aged >=18 years (percentile)';
-export const ASTHMA_PERCENTILE = 'Current asthma among adults aged >=18 years (percentile)';
-export const HEART_PERCENTILE = 'Coronary heart disease among adults aged >=18 years (percentile)';
-export const LIFE_PERCENTILE = 'Life expectancy (years) (percentile)';
-export const TRAFFIC_PERCENTILE = 'Traffic proximity and volume (percentile)';
-export const FEMA_PERCENTILE = 'FEMA Risk Index Expected Annual Loss Score (percentile)';
-export const ENERGY_PERCENTILE = 'Energy burden (percentile)';
-export const WASTEWATER_PERCENTILE = 'Wastewater discharge (percentile)';
-export const LEAD_PAINT_PERCENTILE = 'Percent pre-1960s housing (lead paint indicator) (percentile)';
-export const DIESEL_MATTER_PERCENTILE = 'Diesel particulate matter (percentile)';
-export const PM25_PERCENTILE = 'Particulate matter (PM2.5) (percentile)';
-export const AREA_MEDIAN_INCOME_PERCENTILE = 'Median household income (% of AMI) (percentile)';
+// Indicator values:
+export const ASTHMA_PERCENTILE = 'AF_PFS';
+export const COUNTY_NAME = 'CF';
+export const DIABETES_PERCENTILE = 'DF_PFS';
+export const DIESEL_MATTER_PERCENTILE = 'DSF_PFS';
+export const ENERGY_PERCENTILE = 'EBF_PFS';
+export const HEART_PERCENTILE = 'HDF_PFS';
+export const HIGH_SCHOOL_PROPERTY_PERCENTILE = `HSEF`;
+export const HOUSING_BURDEN_PROPERTY_PERCENTILE = 'HBF_PFS';
+export const LEAD_PAINT_PERCENTILE = 'LPF_PFS';
+export const LIFE_PERCENTILE = 'LLEF_PFS';
+export const LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE = 'LIF_PFS';
+export const LOW_MEDIAN_INCOME_PERCENTILE = 'LMI_PFS';
+export const PM25_PERCENTILE = 'PM25F_PFS';
+export const POVERTY_PROPERTY_PERCENTILE = 'P200_PFS';
+export const STATE_NAME = 'SF';
+export const TOTAL_POPULATION = 'TPF';
+export const TRAFFIC_PERCENTILE = 'TF_PFS';
+export const UNEMPLOYMENT_PROPERTY_PERCENTILE = 'UF_PFS';
+export const WASTEWATER_PERCENTILE = 'WF_PFS';
+export const EXP_AGRICULTURE_LOSS_PERCENTILE = 'EALR_PFS';
+export const EXP_BUILDING_LOSS_PERCENTILE = 'EBLR_PFS';
+export const EXP_POPULATION_LOSS_PERCENTILE = 'EPLR_PFS';
+export const MEDIAN_HOME_VALUE_PERCENTILE = 'MHVF_PFS';
+export const POVERTY_BELOW_100_PERCENTILE = 'P100_PFS';
+export const POVERTY_BELOW_200_PERCENTILE = 'P200_PFS';
+export const PROXIMITY_NPL_SITES_PERCENTILE = 'NPL_PFS';
+export const PROXIMITY_RMP_SITES_PERCENTILE = 'RMP_PFS';
+export const PROXIMITY_TSDF_SITES_PERCENTILE = 'TSDF_PFS';
+
+// Category booleans (disadvantaged or not):
+export const IS_CLIMATE_FACTOR_DISADVANTAGED_L = 'L_CLT';
+export const IS_WORKFORCE_FACTOR_DISADVANTAGED_L = 'L_WKFC';
+export const IS_WATER_FACTOR_DISADVANTAGED_L = 'L_WTR';
+export const IS_ENERGY_FACTOR_DISADVANTAGED_L = 'L_ENY';
+export const IS_TRANSPORT_FACTOR_DISADVANTAGED_L = 'L_TRN';
+export const IS_HOUSING_FACTOR_DISADVANTAGED_L = 'L_HSG';
+export const IS_POLLUTION_FACTOR_DISADVANTAGED_L = 'L_PLN';
+export const IS_HEALTH_FACTOR_DISADVANTAGED_L = 'L_HLTH';
+
+// Indicator booleans (disadvangted or not): (GTE = greater than or equal)
+export const IS_GTE_90_EXP_POP_LOSS_AND_IS_LOW_INCOME = 'EPLRLI';
+export const IS_GTE_90_EXP_AGR_LOSS_AND_IS_LOW_INCOME = 'EALRLI';
+export const IS_GTE_90_EXP_BLD_LOSS_AND_IS_LOW_INCOME = 'EBLRLI';
+export const IS_GTE_90_PM25_AND_IS_LOW_INCOME = 'PM25LI';
+export const IS_GTE_90_ENERGY_BURDEN_AND_IS_LOW_INCOME = 'EBLI';
+export const IS_GTE_90_DIESEL_PM_AND_IS_LOW_INCOME = 'DPMLI';
+export const IS_GTE_90_TRAFFIC_PROX_AND_IS_LOW_INCOME = 'TPLI';
+export const IS_GTE_90_LEAD_PAINT_AND_MEDIAN_HOME_VAL_AND_IS_LOW_INCOME = 'LPMHVLI';
+export const IS_GTE_90_HOUSE_BURDEN_AND_IS_LOW_INCOME = 'HBLI';
+export const IS_GTE_90_RMP_AND_IS_LOW_INCOME = 'RMPLI';
+export const IS_GTE_90_SUPERFUND_AND_IS_LOW_INCOME = 'SFLI';
+export const IS_GTE_90_HAZARD_WASTE_AND_IS_LOW_INCOME = 'HWLI';
+export const IS_GTE_90_WASTEWATER_AND_IS_LOW_INCOME = 'WDLI';
+export const IS_GTE_90_DIABETES_AND_IS_LOW_INCOME = 'DLI';
+export const IS_GTE_90_ASTHMA_AND_IS_LOW_INCOME = 'ALI';
+export const IS_GTE_90_HEART_DISEASE_AND_IS_LOW_INCOME = 'HDLI';
+export const IS_GTE_90_LOW_LIFE_EXP_AND_IS_LOW_INCOME = 'LLELI';
+export const IS_GTE_90_LINGUISITIC_ISO_AND_IS_LOW_INCOME = 'LILHSE';
+export const IS_GTE_90_BELOW_100_POVERTY_AND_LOW_HIGH_SCHOOL_EDU = 'PLHSE';
+export const IS_GTE_90_LOW_MEDIAN_INCOME_AND_LOW_HIGH_SCHOOL_EDU = 'LMILHSE';
+export const IS_GTE_90_UNEMPLOYMENT_AND_LOW_HIGH_SCHOOL_EDU = 'ULHSE';
+export const IS_FEDERAL_POVERTY_LEVEL_200 = 'FPL200S';
+export const TOTAL_THRESHOLD_CRITERIA = 'TC';
+export const IS_GTE_90_ISLAND_AREA_UNEMPLOYMENT_AND_IS_LOW_HS_EDU_2009 = 'IAULHSE';
+export const IS_GTE_90_ISLAND_AREA_BELOW_100_POVERTY_AND_IS_LOW_HS_EDU_2009 = 'ISPLHSE';
+export const IS_GTE_90_ISLAND_AREA_LOW_MEDIAN_INCOME_AND_IS_LOW_HS_EDU_2009 = 'IALMILHSE';
 
 export type J40Properties = { [key: string]: any };
 
@@ -136,7 +181,7 @@ export const DEFAULT_OUTLINE_COLOR = '#4EA5CF';
 export const MIN_COLOR = '#FFFFFF';
 export const MED_COLOR = '#D1DAE6';
 export const MAX_COLOR = '#768FB3';
-export const BORDER_HIGHLIGHT_COLOR = '#00BDE3';
+export const BORDER_HIGHLIGHT_COLOR = '#1A4480';
 export const CURRENTLY_SELECTED_FEATURE_LAYER_OPACITY = 0.5;
 
 // Widths
