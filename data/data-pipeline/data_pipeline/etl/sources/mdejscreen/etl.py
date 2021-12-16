@@ -48,7 +48,7 @@ class MDEJScreenETL(ExtractTransformLoad):
         list_of_files = list(glob(str(self.SHAPE_FILES_PATH) + "/*.shp"))
         # # ignore counties becauses this is not the level of measurement
         # # that is consistent with our current scoring and ranking methodology
-        
+
         dfs_list = [
             gpd.read_file(f)
             for f in list_of_files
@@ -88,19 +88,19 @@ class MDEJScreenETL(ExtractTransformLoad):
         )
 
         # Baseline Comparisons at quartiles and the 90th percentile
-        # Interpretation: The score is greater than of equal to 
+        # Interpretation: The score is greater than
         # N% of the tracts in the state
         self.df[field_names.MDEjSCREEN_TRACT_25_PERCENT_FIELD] = (
-            self.df[self.MDEJSCREEN_PERCENTILE_FIELD_NAME] >= 0.25
+            self.df[self.MDEJSCREEN_PERCENTILE_FIELD_NAME] > 0.25
         )
         self.df[field_names.MDEjSCREEN_TRACT_50_PERCENT_FIELD] = (
-            self.df[self.MDEJSCREEN_PERCENTILE_FIELD_NAME] >= 0.50
+            self.df[self.MDEJSCREEN_PERCENTILE_FIELD_NAME] > 0.50
         )
         self.df[field_names.MDEjSCREEN_TRACT_75_PERCENT_FIELD] = (
-            self.df[self.MDEJSCREEN_PERCENTILE_FIELD_NAME] >= 0.75
+            self.df[self.MDEJSCREEN_PERCENTILE_FIELD_NAME] > 0.75
         )
         self.df[field_names.MDEjSCREEN_TRACT_90_PERCENT_FIELD] = (
-            self.df[self.MDEJSCREEN_PERCENTILE_FIELD_NAME] >= 0.90
+            self.df[self.MDEJSCREEN_PERCENTILE_FIELD_NAME] > 0.90
         )
 
     def load(self) -> None:
