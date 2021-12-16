@@ -35,26 +35,28 @@ class MDEJScreenETL(ExtractTransformLoad):
 
         # Load comparison shape files that comprise Maryland EJScreen
         # https://p1.cgis.umd.edu/mdejscreen/help.html
-        # From the documentation (verbatim):
+        # From the documentation:
         # Each of the following categories contains a number of relevant indicators,
         # and an averaged score. The two "Pollution Burden" average scores are then
         # averaged together and the result is multiplied by the average of the
         # "Population Characteristics" categories to get the total EJ Score of each tract.
         # For each indicator, the percentile is given.
-        # For example, the indicator value for  "Asthma Emergency Discharges" with 0.9 is therefore in
+        # For example, the indicator value for "Asthma Emergency Discharges" with 0.9 is therefore in
         # the 90th percentile, which means only 10% of tracts in Maryland have higher values.
         # EJ Scores near 1 represent areas of the greatest environmental justice concern.
 
         list_of_files = list(glob(str(self.SHAPE_FILES_PATH) + "/*.shp"))
         # # ignore counties becauses this is not the level of measurement
         # # that is consistent with our current scoring and ranking methodology
+        
         dfs_list = [
             gpd.read_file(f)
             for f in list_of_files
             if not f.endswith("CountiesEJScore.shp")
         ]
 
-        # set the Census tract as the index and drop the geometry
+        # set the Census tract as the index and drop the geometry column
+        # that produces the census tract boundaries
         # geopandas raises an exception if there are duplicate geometry columns
         # Moreover, since the unit of measurement is at the tract level
         # we can consistantly merge this with another dataset
