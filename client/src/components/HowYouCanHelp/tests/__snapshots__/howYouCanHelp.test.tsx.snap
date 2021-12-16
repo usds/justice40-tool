@@ -8,29 +8,29 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
     </h2>
     <ul>
       <li>
-        If you have helpful information, we would love to 
-        <a
-          href="mailto:screeningtool.feedback@usds.gov"
-        >
-          receive an email from you
-        </a>
-        .
-      </li>
-      <li>
         View our 
         <a
           href="/en/methodology"
         >
-          Data & methodology
+          Methodology and data
         </a>
          page and send us feedback.
       </li>
       <li>
-        Find your community of interest and 
+        Find communities of interest and 
         <a
           href="mailto:screeningtool.feedback@usds.gov"
         >
           share your feedback
+        </a>
+        .
+      </li>
+      <li>
+        Respond to our request for information on 
+        <a
+          href="https://www.federalregister.gov/"
+        >
+          federalregister.gov
         </a>
         .
       </li>

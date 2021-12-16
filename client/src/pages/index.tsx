@@ -47,7 +47,7 @@ const IndexPage = ({location}: IndexPageProps) => {
             header={intl.formatMessage(ABOUT_COPY.PAGE.HEADING_1)}>
             <>
               <p>
-                {intl.formatMessage(ABOUT_COPY.PAGE.HEADING1_DESCRIPTION1)}
+                {ABOUT_COPY.HEADING_1.DESCRIPTION_1}
               </p>
               <p>
                 {intl.formatMessage(ABOUT_COPY.PAGE.HEADING1_DESCRIPTION2)}
@@ -66,11 +66,7 @@ const IndexPage = ({location}: IndexPageProps) => {
                 {intl.formatMessage(ABOUT_COPY.PAGE.HEADING2_DESCRIPTION1)}
               </p>
               <p>
-                {intl.formatMessage(ABOUT_COPY.PAGE.HEADING2_DESCRIPTION2)}
-                {' '}
-                <a href={ABOUT_COPY.EXEC_ORDER_LINK} target={'_blank'} rel="noreferrer">
-                  {intl.formatMessage(ABOUT_COPY.PAGE.PRESIDENT_LINK_LABEL)}
-                </a>
+                {ABOUT_COPY.HEADING_2.DESCRIPTION_2}
               </p>
             </>
           </AboutCard>

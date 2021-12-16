@@ -11,6 +11,6 @@ describe('rendering of the component', () => {
   );
 
   it('renders the title', () => {
-    expect(screen.getByRole('banner')).toHaveTextContent('Zoom and select a census block group to view data');
+    expect(screen.getByRole('banner')).toHaveTextContent('Zoom and select a census tract to view data');
   });
 });

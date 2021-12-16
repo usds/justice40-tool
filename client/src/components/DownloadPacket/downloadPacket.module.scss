@@ -1,4 +1,4 @@
-$primary-color: #112f4e;
+@use '../../styles/design-system.scss' as *;
 
 .downloadBoxContainer {
 
@@ -6,7 +6,7 @@ $primary-color: #112f4e;
     margin: auto;
 
     .downloadBox {
-      background-color: $primary-color;
+      @include u-bg('blue-80v');
       border-radius: 6px 6px;
 
       .downloadBoxTextBox {
@@ -15,12 +15,15 @@ $primary-color: #112f4e;
         flex-direction: column;
         
         .downloadBoxTitle {
-          font-weight: bold;
-          margin-bottom: 10px;
+          @include typeset('sans', 'xs', 3);
+          @include u-text('semibold');
+          @include u-margin-bottom(2);
         }
-
+        
         .downloadBoxText {
-          margin-bottom: 20px;
+          @include typeset('sans', 'xs', 3);
+          @include u-margin-bottom(4);
+          
           span {
             font-style: italic;
           }
@@ -42,8 +45,8 @@ $primary-color: #112f4e;
         }
 
         .downloadBoxButton{
-          background-color: white;
-          color: $primary-color;
+          @include u-bg('white');
+          @include u-color('blue-80v');
           display: flex;
 
           .downloadPacketText {

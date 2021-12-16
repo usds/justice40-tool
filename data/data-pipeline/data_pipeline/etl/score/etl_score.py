@@ -1,6 +1,7 @@
 import functools
 from collections import namedtuple
 
+import numpy as np
 import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
@@ -253,6 +254,94 @@ class ScoreETL(ExtractTransformLoad):
                 f"Too many rows in the join: {len(df_to_check)} in {dataframe_descriptor}"
             )
 
+    @staticmethod
+    def _add_percentiles_to_df(
+        df: pd.DataFrame,
+        input_column_name: str,
+        output_column_name_root: str,
+        ascending: bool = True,
+    ) -> pd.DataFrame:
+        """Creates percentiles.
+
+        One percentile will be created and returned as
+        f"{output_column_name_root}{field_names.PERCENTILE_FIELD_SUFFIX}".
+        E.g., "PM2.5 exposure (percentile)".
+        This will be for the entire country.
+
+        For an "apples-to-apples" comparison of urban tracts to other urban tracts,
+        and compare rural tracts to other rural tracts.
+
+        This percentile will be created and returned as
+        f"{output_column_name_root}{field_names.PERCENTILE_URBAN_RURAL_FIELD_SUFFIX}".
+        E.g., "PM2.5 exposure (percentile urban/rural)".
+        This field exists for every tract, but for urban tracts this value will be the
+        percentile compared to other urban tracts, and for rural tracts this value
+        will be the percentile compared to other rural tracts.
+
+        Specific methdology:
+            1. Decide a methodology for confirming whether a tract counts as urban or
+            rural. Currently in the codebase, we use Geocorr to identify the % rural of
+            a tract, and mark the tract as rural if the percentage is >50% and urban
+            otherwise. This may or may not be the right methodology.
+            2. Once tracts are marked as urban or rural, create one percentile rank
+            that only ranks urban tracts, and one percentile rank that only ranks rural
+            tracts.
+            3. Combine into a single field.
+
+        `output_column_name_root` is different from `input_column_name` to enable the
+        reverse percentile use case. In that use case, `input_column_name` may be
+        something like "3rd grade reading proficiency" and `output_column_name_root`
+        may be something like "Low 3rd grade reading proficiency".
+        """
+        # Create the "basic" percentile.
+        df[
+            f"{output_column_name_root}"
+            f"{field_names.PERCENTILE_FIELD_SUFFIX}"
+        ] = df[input_column_name].rank(pct=True, ascending=ascending)
+
+        # Create the urban/rural percentiles.
+        urban_rural_percentile_fields_to_combine = []
+        for (urban_or_rural_string, urban_heuristic_bool) in [
+            ("urban", True),
+            ("rural", False),
+        ]:
+            # Create a field with only those values
+            this_category_only_value_field = (
+                f"{input_column_name} (value {urban_or_rural_string} only)"
+            )
+            df[this_category_only_value_field] = np.where(
+                df[field_names.URBAN_HEURISTIC_FIELD] == urban_heuristic_bool,
+                df[input_column_name],
+                None,
+            )
+
+            # Calculate the percentile for only this category
+            this_category_only_percentile_field = (
+                f"{output_column_name_root} "
+                f"(percentile {urban_or_rural_string} only)"
+            )
+            df[this_category_only_percentile_field] = df[
+                this_category_only_value_field
+            ].rank(
+                pct=True,
+                # Set ascending to the parameter value.
+                ascending=ascending,
+            )
+
+            # Add the field name to this list. Later, we'll combine this list.
+            urban_rural_percentile_fields_to_combine.append(
+                this_category_only_percentile_field
+            )
+
+        # Combine both urban and rural into one field:
+        df[
+            f"{output_column_name_root}{field_names.PERCENTILE_URBAN_RURAL_FIELD_SUFFIX}"
+        ] = df[urban_rural_percentile_fields_to_combine].mean(
+            axis=1, skipna=True
+        )
+
+        return df
+
     # TODO Move a lot of this to the ETL part of the pipeline
     def _prepare_initial_df(self) -> pd.DataFrame:
         logger.info("Preparing initial dataframe")
@@ -315,9 +404,7 @@ class ScoreETL(ExtractTransformLoad):
             field_names.POVERTY_LESS_THAN_150_FPL_FIELD,
             field_names.POVERTY_LESS_THAN_200_FPL_FIELD,
             field_names.AMI_FIELD,
-            field_names.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD,
             field_names.MEDIAN_INCOME_FIELD,
-            field_names.LIFE_EXPECTANCY_FIELD,
             field_names.ENERGY_BURDEN_FIELD,
             field_names.FEMA_RISK_FIELD,
             field_names.URBAN_HEURISTIC_FIELD,
@@ -350,7 +437,6 @@ class ScoreETL(ExtractTransformLoad):
             field_names.CENSUS_UNEMPLOYMENT_FIELD_2010,
             field_names.CENSUS_POVERTY_LESS_THAN_100_FPL_FIELD_2010,
             field_names.CENSUS_DECENNIAL_TOTAL_POPULATION_FIELD_2009,
-            field_names.CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009,
             field_names.EXTREME_HEAT_FIELD,
             field_names.HEALTHY_FOOD_FIELD,
             field_names.IMPENETRABLE_SURFACES_FIELD,
@@ -379,7 +465,19 @@ class ScoreETL(ExtractTransformLoad):
             ReversePercentile(
                 field_name=field_names.READING_FIELD,
                 low_field_name=field_names.LOW_READING_FIELD,
-            )
+            ),
+            ReversePercentile(
+                field_name=field_names.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD,
+                low_field_name=field_names.LOW_MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD,
+            ),
+            ReversePercentile(
+                field_name=field_names.LIFE_EXPECTANCY_FIELD,
+                low_field_name=field_names.LOW_LIFE_EXPECTANCY_FIELD,
+            ),
+            ReversePercentile(
+                field_name=field_names.CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009,
+                low_field_name=field_names.LOW_CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009,
+            ),
         ]
 
         columns_to_keep = (
@@ -393,11 +491,14 @@ class ScoreETL(ExtractTransformLoad):
         df_copy[numeric_columns] = df_copy[numeric_columns].apply(pd.to_numeric)
 
         # Convert all columns to numeric and do math
-        for col in numeric_columns:
-            # Calculate percentiles
-            df_copy[f"{col}{field_names.PERCENTILE_FIELD_SUFFIX}"] = df_copy[
-                col
-            ].rank(pct=True)
+        for numeric_column in numeric_columns:
+            df_copy = self._add_percentiles_to_df(
+                df=df_copy,
+                input_column_name=numeric_column,
+                # For this use case, the input name and output name root are the same.
+                output_column_name_root=numeric_column,
+                ascending=True,
+            )
 
             # Min-max normalization:
             # (
@@ -409,16 +510,12 @@ class ScoreETL(ExtractTransformLoad):
             #    Maximum of all values
             #     - minimum of all values
             # )
-            min_value = df_copy[col].min(skipna=True)
+            min_value = df_copy[numeric_column].min(skipna=True)
 
-            max_value = df_copy[col].max(skipna=True)
+            max_value = df_copy[numeric_column].max(skipna=True)
 
-            logger.info(
-                f"For data set {col}, the min value is {min_value} and the max value is {max_value}."
-            )
-
-            df_copy[f"{col}{field_names.MIN_MAX_FIELD_SUFFIX}"] = (
-                df_copy[col] - min_value
+            df_copy[f"{numeric_column}{field_names.MIN_MAX_FIELD_SUFFIX}"] = (
+                df_copy[numeric_column] - min_value
             ) / (max_value - min_value)
 
         # Create reversed percentiles for these fields
@@ -427,11 +524,11 @@ class ScoreETL(ExtractTransformLoad):
             # For instance, for 3rd grade reading level (score from 0-500),
             # calculate reversed percentiles and give the result the name
             # `Low 3rd grade reading level (percentile)`.
-            df_copy[
-                f"{reverse_percentile.low_field_name}"
-                f"{field_names.PERCENTILE_FIELD_SUFFIX}"
-            ] = df_copy[reverse_percentile.field_name].rank(
-                pct=True, ascending=False
+            df_copy = self._add_percentiles_to_df(
+                df=df_copy,
+                input_column_name=reverse_percentile.field_name,
+                output_column_name_root=reverse_percentile.low_field_name,
+                ascending=False,
             )
 
         # Special logic: create a combined population field.

@@ -9,7 +9,7 @@ class HudHousingETL(ExtractTransformLoad):
     def __init__(self):
         self.OUTPUT_PATH = self.DATA_PATH / "dataset" / "hud_housing"
         self.GEOID_TRACT_FIELD_NAME = "GEOID10_TRACT"
-        self.HOUSING_FTP_URL = "https://www.huduser.gov/portal/datasets/cp/2012thru2016-140-csv.zip"
+        self.HOUSING_FTP_URL = "https://www.huduser.gov/portal/datasets/cp/2014thru2018-140-csv.zip"
         self.HOUSING_ZIP_FILE_DIR = self.TMP_PATH / "hud_housing"
 
         # We measure households earning less than 80% of HUD Area Median Family Income by county
@@ -32,7 +32,7 @@ class HudHousingETL(ExtractTransformLoad):
         self.df: pd.DataFrame
 
     def extract(self) -> None:
-        logger.info("Extracting HUD Housing Data")
+        logger.info("Extracting 1.09 GB HUD Housing Data")
         super().extract(
             self.HOUSING_FTP_URL,
             self.HOUSING_ZIP_FILE_DIR,
@@ -42,13 +42,7 @@ class HudHousingETL(ExtractTransformLoad):
         logger.info("Transforming HUD Housing Data")
 
         # New file name:
-        tmp_csv_file_path = (
-            self.HOUSING_ZIP_FILE_DIR
-            / "2012thru2016-140-csv"
-            / "2012thru2016-140-csv"
-            / "140"
-            / "Table8.csv"
-        )
+        tmp_csv_file_path = self.HOUSING_ZIP_FILE_DIR / "140" / "Table8.csv"
         self.df = pd.read_csv(
             filepath_or_buffer=tmp_csv_file_path,
             encoding="latin-1",
