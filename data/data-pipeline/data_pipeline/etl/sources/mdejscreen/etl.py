@@ -20,9 +20,6 @@ class MDEJScreenETL(ExtractTransformLoad):
         self.SHAPE_FILES_PATH = self.TMP_PATH / "mdejscreen"
         self.OUTPUT_CSV_PATH = self.DATA_PATH / "dataset" / "mdejscreen"
         self.MDEJSCREEN_PERCENTILE_FIELD_NAME = "mdejscreen_percentile"
-        self.MDEJSCREEN_PRIORITY_COMMUNITY_FIELD_NAME = (
-            "mdejscreen_priority_community"
-        )
 
         self.df: pd.DataFrame
 
@@ -102,14 +99,6 @@ class MDEJScreenETL(ExtractTransformLoad):
         )
         self.df[field_names.MDEjSCREEN_TRACT_90_PERCENT_FIELD] = (
             self.df[self.MDEJSCREEN_PERCENTILE_FIELD_NAME] > 0.90
-        )
-
-        # Set the priority community threshold to be
-        # above the 90th percentile. This is malleable
-        # and open to change.
-        self.df[self.MDEJSCREEN_PRIORITY_COMMUNITY_FIELD_NAME] = (
-            self.df[self.MDEJSCREEN_PERCENTILE_FIELD_NAME]
-            >= self.df[field_names.MDEjSCREEN_TRACT_90_PERCENT_FIELD]
         )
 
     def load(self) -> None:

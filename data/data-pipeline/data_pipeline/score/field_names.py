@@ -214,6 +214,21 @@ HOLC_GRADE_D_TRACT_50_PERCENT_FIELD: str = "Tract is >50% HOLC Grade D"
 HOLC_GRADE_D_TRACT_75_PERCENT_FIELD: str = "Tract is >75% HOLC Grade D"
 
 
+# Maryland EJScreen Data.
+MDEjSCREEN_TRACT_25_PERCENT_FIELD: str = (
+    "Tract is >25% all other Maryland Tracts"
+)
+MDEjSCREEN_TRACT_50_PERCENT_FIELD: str = (
+    "Tract is >50% all other Maryland Tracts"
+)
+MDEjSCREEN_TRACT_75_PERCENT_FIELD: str = (
+    "Tract is >75% all other Maryland Tracts"
+)
+MDEjSCREEN_TRACT_90_PERCENT_FIELD: str = (
+    "Tract is >90% all other Maryland Tracts"
+)
+
+
 # Child Opportunity Index data
 # Summer days with maximum temperature above 90F.
 EXTREME_HEAT_FIELD = "Summer days above 90F"
