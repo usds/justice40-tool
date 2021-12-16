@@ -8,6 +8,8 @@ from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
 
+CENSUS_ACS_FIPS_CODES_TO_SKIP = ["60", "66", "69", "78"]
+
 
 def _fips_from_censusdata_censusgeo(censusgeo: censusdata.censusgeo) -> str:
     """Create a FIPS code from the proprietary censusgeo index."""
@@ -22,32 +24,34 @@ def retrieve_census_acs_data(
     tract_output_field_name: str,
     data_path_for_fips_codes: Path,
     acs_type="acs5",
-    raise_errors: bool = False,
 ) -> pd.DataFrame:
     """Retrieves and combines census ACS data for a given year."""
     dfs = []
     for fips in get_state_fips_codes(data_path_for_fips_codes):
-        logger.info(
-            f"Downloading data for state/territory with FIPS code {fips}"
-        )
-
-        try:
-            response = censusdata.download(
-                src=acs_type,
-                year=acs_year,
-                geo=censusdata.censusgeo(
-                    [("state", fips), ("county", "*"), ("tract", "*")]
-                ),
-                var=variables,
+        if fips in CENSUS_ACS_FIPS_CODES_TO_SKIP:
+            logger.info(
+                f"Skipping download for state/territory with FIPS code {fips}"
             )
-            dfs.append(response)
-
-        except ValueError as e:
-            logger.error(
-                f"Could not download data for state/territory with FIPS code {fips}"
+        else:
+            logger.info(
+                f"Downloading data for state/territory with FIPS code {fips}"
             )
 
-            if raise_errors:
+            try:
+                response = censusdata.download(
+                    src=acs_type,
+                    year=acs_year,
+                    geo=censusdata.censusgeo(
+                        [("state", fips), ("county", "*"), ("tract", "*")]
+                    ),
+                    var=variables,
+                )
+                dfs.append(response)
+
+            except ValueError as e:
+                logger.error(
+                    f"Could not download data for state/territory with FIPS code {fips}"
+                )
                 raise e
 
     df = pd.concat(dfs)

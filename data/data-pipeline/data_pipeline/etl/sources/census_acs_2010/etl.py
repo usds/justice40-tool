@@ -50,7 +50,6 @@ class CensusACS2010ETL(ExtractTransformLoad):
         ]
 
         self.EMPLOYMENT_LESS_THAN_HS_IN_LABOR_FORCE = (
-            # TODO: FIX!!!!!!
             "B23006_005E"
             # Estimate!!Total!!Less than high school graduate!!In labor force!!Civilian
         )
@@ -115,7 +114,6 @@ class CensusACS2010ETL(ExtractTransformLoad):
             tract_output_field_name=self.GEOID_TRACT_FIELD_NAME,
             data_path_for_fips_codes=self.DATA_PATH,
             acs_type=self.ACS_TYPE,
-            raise_errors=False,
         )
 
     def transform(self) -> None:
