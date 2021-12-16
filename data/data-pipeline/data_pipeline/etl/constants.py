@@ -94,6 +94,11 @@ DATASET_LIST = [
         "module_dir": "tree_equity_score",
         "class_name": "TreeEquityScoreETL",
     },
+    {
+        "name": "mdejscreen",
+        "module_dir": "mdejscreen",
+        "class_name": "MDEJScreenETL",
+    },
 ]
 CENSUS_INFO = {
     "name": "census",
