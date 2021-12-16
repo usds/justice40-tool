@@ -33,7 +33,6 @@ class ScoreETL(ExtractTransformLoad):
         self.census_decennial_df: pd.DataFrame
         self.census_2010_df: pd.DataFrame
         self.child_opportunity_index_df: pd.DataFrame
-        self.maryland_ejscreen_df: pd.DataFrame
 
     def extract(self) -> None:
         logger.info("Loading data sets from disk.")
@@ -176,19 +175,6 @@ class ScoreETL(ExtractTransformLoad):
         )
         self.child_opportunity_index_df = pd.read_csv(
             child_opportunity_index_csv,
-            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
-            low_memory=False,
-        )
-
-        # Load Maryland EJScreen data
-        maryland_ejscreen_csv = (
-            constants.DATA_PATH
-            / "dataset"
-            / "mdejscreen"
-            / "marylandejscreen.csv"
-        )
-        self.maryland_ejscreen_df = pd.read_csv(
-            maryland_ejscreen_csv,
             dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
             low_memory=False,
         )
@@ -374,7 +360,7 @@ class ScoreETL(ExtractTransformLoad):
             self.census_acs_median_incomes_df,
             self.census_decennial_df,
             self.census_2010_df,
-            self.child_opportunity_index_df
+            self.child_opportunity_index_df,
         ]
 
         # Sanity check each data frame before merging.
