@@ -159,7 +159,7 @@ Leaflet is a popular open-source mapping visualization library that has been aro
   - Anecdotally, screen readers still struggle to read content without annotations - the onus is still on the map creator to ensure proper compliance.
 - **Internationalization/Localization** : the API has its own `intl` module, described [here](https://developers.arcgis.com/javascript/latest/api-reference/esri-intl.html)
   - Note: The default ES6 `Intl` module appears to do all of the things described above without need for further modificaiton
-- **Name recognition** : Esri in general holds "approximately 43% of the global market share and estimated annual revenues of approximately $1.1 Billion, from roughly 300,000 customers" ([source](https://digital.hbs.edu/platform-digit/submission/esri-and-arcgis/])). Relatedly, Esri tools interoperate well with other Esri tools, and their ecosystem is large.
+- **Name recognition** : Esri in general holds "approximately 43% of the global market share and estimated annual revenues of approximately $1.1 Billion, from roughly 300,000 customers" ([source](https://digital.hbs.edu/platform-digit/submission/esri-and-arcgis/)). Relatedly, Esri tools interoperate well with other Esri tools, and their ecosystem is large.
   - Note: according to [one analysis](https://www.datanyze.com/market-share/mapping-and-gis--121) specifically the ArcGIS Web API holds only 0.48% of the marketshare overall.
 - **Modularity** : As seen in ArcGIS [documentation](https://developers.arcgis.com/documentation/), Esri interoperates with Leaflet (through a custom fork), Mapbox GL JS, and OpenLayers.
 

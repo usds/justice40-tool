@@ -120,7 +120,7 @@ _For example: `poetry run python3 data_pipeline/application.py etl-run -d ejscre
 1. These data sets are merged into a single dataframe using their Census Block Group GEOID as a common key, and the data in each of the columns is standardized in two ways:
    - Their [percentile rank](https://en.wikipedia.org/wiki/Percentile_rank) is calculated, which tells us what percentage of other Census Block Groups have a lower value for that particular column.
    - They are normalized using [min-max normalization](https://en.wikipedia.org/wiki/Feature_scaling), which adjusts the scale of the data so that the Census Block Group with the highest value for that column is set to 1, the Census Block Group with the lowest value is set to 0, and all of the other values are adjusted to fit within that range based on how close they were to the highest or lowest value.
-1. The standardized columns are then used to calculate each of the Justice40 score experiments described in greater detail below, and the results are exported to a `.csv` file in [`data/score/csv`](data/score/csv)
+1. The standardized columns are then used to calculate each of the Justice40 score experiments described in greater detail below, and the results are exported to a `.csv` file in [`data_pipeline/data/score/csv`](data_pipeline/data/score/csv)
 
 #### Step 4: Compare the Justice40 score experiments to other indices
 
@@ -143,13 +143,13 @@ _NOTE:_ This may take several minutes or over an hour to fully execute and gener
 
 ### Data Sources
 
-- **[EJSCREEN](etl/sources/ejscreen):** TODO Add description of data source
-- **[Census](etl/sources/census):** TODO Add description of data source
-- **[American Communities Survey](etl/sources/census_acs):** TODO Add description of data source
-- **[Housing and Transportation](etl/sources/housing_and_transportation):** TODO Add description of data source
-- **[HUD Housing](etl/sources/hud_housing):** TODO Add description of data source
-- **[HUD Recap](etl/sources/hud_recap):** TODO Add description of data source
-- **[CalEnviroScreen](etl/scores/calenviroscreen):** TODO Add description of data source
+- **[EJSCREEN](data_pipeline/etl/sources/ejscreen):** TODO Add description of data source
+- **[Census](data_pipeline/etl/sources/census):** TODO Add description of data source
+- **[American Communities Survey](data_pipeline/etl/sources/census_acs):** TODO Add description of data source
+- **[Housing and Transportation](data_pipeline/etl/sources/housing_and_transportation):** TODO Add description of data source
+- **[HUD Housing](data_pipeline/etl/sources/hud_housing):** TODO Add description of data source
+- **[HUD Recap](data_pipeline/etl/sources/hud_recap):** TODO Add description of data source
+- **[CalEnviroScreen](data_pipeline/etl/sources/calenviroscreen):** TODO Add description of data source
 
 ## Running using Docker
 

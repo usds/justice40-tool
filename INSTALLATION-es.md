@@ -56,5 +56,3 @@ Si bien se puede usar cualquier IDE, describimos cómo configurar VS Code
 Para el desarrollo de front-end, lea el [Client README](client/README.md).
 
 Para el desorrollo de back-end, lea el [Data Pipeline README](data/data-pipeline/README.md).
-
-Para la implementación de software, lea el [Infrastructure README](infrastructure/README.md).

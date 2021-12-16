@@ -6,7 +6,7 @@
 - Lucas Brown - lucasmbrown-usds
 
 ## Engineering
-See [CODEOWNERS file](./github/CODEOWNERS) for definitive list.
+See [CODEOWNERS file](/.github/CODEOWNERS) for definitive list.
 
 - Shelby Switzer - switzersc-usds - engineering lead
 - Jorge Escobar - esfoobar-usds
