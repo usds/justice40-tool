@@ -46,7 +46,7 @@ class MDEJScreenETL(ExtractTransformLoad):
         # EJ Scores near 1 represent areas of the greatest environmental justice concern.
 
         list_of_files = list(glob(str(self.SHAPE_FILES_PATH) + "/*.shp"))
-        # # we ignore counties becauses this is not the level of measurement
+        # # ignore counties becauses this is not the level of measurement
         # # that is consistent with our current scoring and ranking methodology
         dfs_list = [
             gpd.read_file(f)
@@ -54,9 +54,9 @@ class MDEJScreenETL(ExtractTransformLoad):
             if not f.endswith("CountiesEJScore.shp")
         ]
 
-        # now we st the Census tract as the index and drop the geometry
+        # set the Census tract as the index and drop the geometry
         # geopandas raises an exception if there are duplicate geometry columns
-        # Moreover, since we have the unit of measurement at the tract level
+        # Moreover, since the unit of measurement is at the tract level
         # we can consistantly merge this with another dataset
         dfs_list = [
             df.set_index("Census_Tra").drop("geometry", axis=1)
@@ -86,8 +86,8 @@ class MDEJScreenETL(ExtractTransformLoad):
         )
 
         # Baseline Comparisons at quartiles and the 90th percentile
-        # Interpretation: The score is higher than N% of the tracts
-        # in the state
+        # Interpretation: The score is greater than of equal to 
+        # N% of the tracts in the state
         self.df[field_names.MDEjSCREEN_TRACT_25_PERCENT_FIELD] = (
             self.df[self.MDEJSCREEN_PERCENTILE_FIELD_NAME] >= 0.25
         )
