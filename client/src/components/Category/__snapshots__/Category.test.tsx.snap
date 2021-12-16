@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of the Category disadvantaged checks if component renders 1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      test name
+    </div>
+    <div />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`rendering of the Category non-disadvantaged checks if component renders 1`] = `<DocumentFragment />`;
