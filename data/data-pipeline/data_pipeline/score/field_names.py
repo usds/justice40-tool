@@ -230,6 +230,27 @@ IMPENETRABLE_SURFACES_FIELD = "Percent impenetrable surface areas"
 READING_FIELD = "Third grade reading proficiency"
 LOW_READING_FIELD = "Low third grade reading proficiency"
 
+# Alternative energy-related definition of DACs
+ENERGY_RELATED_COMMUNITIES_DEFINITION_ALTERNATIVE = (
+    "Energy-related alternative definition of communities"
+)
+COAL_EMPLOYMENT = "Coal employment"
+OUTAGE_EVENTS = "Outage Events"
+HOMELESSNESS = "Homelessness"
+DISABLED_POPULATION = "Disabled population"
+OUTAGE_DURATION = "Outage Duration"
+JOB_ACCESS = "JobAccess"
+FOSSIL_ENERGY_EMPLOYMENT = "Fossil energy employment"
+FOOD_DESERT = "Food Desert"
+INCOMPLETE_PLUMBING = "Incomplete Plumbing"
+NON_GRID_CONNECTED_HEATING_FUEL = "Non-grid-connected heating fuel"
+PARKS = "Parks"
+GREATER_THAN_30_MIN_COMMUTE = "Greater than 30 min commute"
+INTERNET_ACCESS = "Internet Access"
+MOBILE_HOME = "Mobile Home"
+SINGLE_PARENT = "Single Parent"
+TRANSPORTATION_COSTS = "Transportation Costs"
+
 #####
 # Names for individual factors being exceeded
 # Climate Change
