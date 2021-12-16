@@ -234,14 +234,14 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     isDisadvagtaged: properties[constants.IS_GTE_90_BELOW_100_POVERTY_AND_LOW_HIGH_SCHOOL_EDU] ?
     properties[constants.IS_GTE_90_BELOW_100_POVERTY_AND_LOW_HIGH_SCHOOL_EDU] : null,
   };
-  // const highSchool:indicatorInfo = {
-  //   label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HIGH_SCL),
-  //   description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.HIGH_SKL),
-  //   value: properties[constants.HIGH_SCHOOL_PROPERTY_PERCENTILE] ?
-  //   properties[constants.HIGH_SCHOOL_PROPERTY_PERCENTILE] : null,
-  //   isDisadvagtaged: properties[constants.IS_GTE_90_BELOW_100_POVERTY_AND_LOW_HIGH_SCHOOL_EDU] ?
-  //   properties[constants.IS_GTE_90_BELOW_100_POVERTY_AND_LOW_HIGH_SCHOOL_EDU] : null,
-  // };
+  const highSchool:indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HIGH_SCL),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.HIGH_SKL),
+    value: properties[constants.HIGH_SCHOOL_PROPERTY_PERCENTILE] ?
+    properties[constants.HIGH_SCHOOL_PROPERTY_PERCENTILE] : null,
+    isDisadvagtaged: properties[constants.IS_GTE_90_UNEMPLOYMENT_AND_LOW_HIGH_SCHOOL_EDU] ?
+    properties[constants.IS_GTE_90_UNEMPLOYMENT_AND_LOW_HIGH_SCHOOL_EDU] : null,
+  };
 
   // Aggregate indicators based on categories
   const categories = [
@@ -297,7 +297,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     {
       id: 'work-dev',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.WORK_DEV),
-      indicators: [lowMedInc, lingIso, unemploy, poverty],
+      indicators: [lowMedInc, lingIso, unemploy, poverty, highSchool],
       isDisadvagtaged: properties[constants.IS_WORKFORCE_FACTOR_DISADVANTAGED_L] ?
     properties[constants.IS_WORKFORCE_FACTOR_DISADVANTAGED_L] : null,
     },

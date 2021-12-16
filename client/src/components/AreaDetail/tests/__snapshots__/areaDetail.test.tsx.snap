@@ -811,6 +811,26 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
             </div>
           </div>
         </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              High school degree achievement rate
+              <div>
+                
+      Percent of people ages 25 years or older whose education level is less than a high school diploma
+    
+              </div>
+            </div>
+            <div>
+              N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+        </li>
       </div>
     </div>
   </aside>
