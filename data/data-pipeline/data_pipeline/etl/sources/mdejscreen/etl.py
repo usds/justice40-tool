@@ -89,16 +89,16 @@ class MDEJScreenETL(ExtractTransformLoad):
         # Interpretation: The score is higher than N% of the tracts
         # in the state
         self.df[field_names.MDEjSCREEN_TRACT_25_PERCENT_FIELD] = (
-            self.df[self.MDEJSCREEN_PERCENTILE_FIELD_NAME] > 0.25
+            self.df[self.MDEJSCREEN_PERCENTILE_FIELD_NAME] >= 0.25
         )
         self.df[field_names.MDEjSCREEN_TRACT_50_PERCENT_FIELD] = (
-            self.df[self.MDEJSCREEN_PERCENTILE_FIELD_NAME] > 0.50
+            self.df[self.MDEJSCREEN_PERCENTILE_FIELD_NAME] >= 0.50
         )
         self.df[field_names.MDEjSCREEN_TRACT_75_PERCENT_FIELD] = (
-            self.df[self.MDEJSCREEN_PERCENTILE_FIELD_NAME] > 0.75
+            self.df[self.MDEJSCREEN_PERCENTILE_FIELD_NAME] >= 0.75
         )
         self.df[field_names.MDEjSCREEN_TRACT_90_PERCENT_FIELD] = (
-            self.df[self.MDEJSCREEN_PERCENTILE_FIELD_NAME] > 0.90
+            self.df[self.MDEJSCREEN_PERCENTILE_FIELD_NAME] >= 0.90
         )
 
     def load(self) -> None:
