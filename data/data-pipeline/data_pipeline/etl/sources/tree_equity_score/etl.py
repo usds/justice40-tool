@@ -85,7 +85,9 @@ class TreeEquityScoreETL(ExtractTransformLoad):
 
         # rename ID to Tract ID
         self.df.rename(
-            columns={"geoid": ExtractTransformLoad.GEOID_FIELD_NAME},
+            columns={"geoid": self.GEOID_FIELD_NAME,
+            ""
+        },
             inplace=True,
         )
 
@@ -93,10 +95,9 @@ class TreeEquityScoreETL(ExtractTransformLoad):
         logger.info("Saving Tree Equity Score GeoJSON")
         # write nationwide csv
         self.CSV_PATH.mkdir(parents=True, exist_ok=True)
-        # here I remove the geometry
         self.df = self.df[
             [
-                ExtractTransformLoad.GEOID_FIELD_NAME,
+                self.GEOID_FIELD_NAME,
                 "total_pop",
                 "state",
                 "county",
@@ -129,6 +130,7 @@ class TreeEquityScoreETL(ExtractTransformLoad):
                 "priority",
                 "tes",
                 "tesctyscor",
+                "geometry"
             ]
         ]
         self.df.to_csv(self.CSV_PATH / "usa.csv", index=False)
