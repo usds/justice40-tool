@@ -105,7 +105,7 @@ class MDEJScreenETL(ExtractTransformLoad):
 
     def load(self) -> None:
         logger.info("Saving Maryland EJScreen CSV")
-        # write nationwide csv
+        # write maryland tracts to csv
         self.OUTPUT_CSV_PATH.mkdir(parents=True, exist_ok=True)
         self.df.to_csv(
             self.OUTPUT_CSV_PATH / "marylandejscreen.csv", index=False
