@@ -2,7 +2,7 @@ import React from 'react';
 import {defineMessages} from 'react-intl';
 import {FormattedMessage} from 'gatsby-plugin-intl';
 
-export const EXEC_ORDER_LINK = 'https://www.federalregister.gov/documents/2021/02/01/2021-02177/tackling-the-climate-crisis-at-home-and-abroad#:~:text=Sec.%20223.%20Justice40,40-percent%20goal.';
+export const EXEC_ORDER_LINK = 'https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/27/executive-order-on-tackling-the-climate-crisis-at-home-and-abroad/';
 
 export const PAGE = defineMessages({
   TILE: {
@@ -12,7 +12,7 @@ export const PAGE = defineMessages({
   },
   HEADING: {
     id: 'index.heading.about.us',
-    defaultMessage: 'About us',
+    defaultMessage: 'About',
     description: 'main heading for about page',
   },
   HEADING_1: {
@@ -28,7 +28,7 @@ export const PAGE = defineMessages({
   },
   HEADING_2: {
     id: 'index.heading.justice40',
-    defaultMessage: 'Justice40 Initiative',
+    defaultMessage: 'Justice40',
     description: 'heading for about justice 40',
   },
   HEADING2_DESCRIPTION1: {

@@ -75,7 +75,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               id="exp-agr-loss-rate"
             >
               <h3>
-                Expected Agriculture Loss Rate
+                Expected agriculture loss rate
               </h3>
               <div>
                 
@@ -117,7 +117,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               id="exp-bld-loss-rate"
             >
               <h3>
-                Expected Building Loss Rate
+                Expected building loss rate
               </h3>
               <div>
                 
@@ -159,7 +159,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               id="exp-pop-loss-rate"
             >
               <h3>
-                Expected Population Loss Rate
+                Expected population loss rate
               </h3>
               <div>
                 
@@ -208,7 +208,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               id="energy-burden"
             >
               <h3>
-                Energy burden
+                Energy cost burden
               </h3>
               <div>
                 Average annual energy cost ($) divided by household income.
@@ -474,9 +474,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </h3>
               <div>
                 
-    Count of hazardous waste facilities (Treatment, Storage, and Disposal Facilities and Large
-    Quantity Generators) within 5 km (or nearest beyond 5 km), each divided by distance in kilometers.
-  
+      Count of hazardous waste facilities (Treatment, Storage, and Disposal Facilities and Large
+      Quantity Generators) within 5 km (or nearest beyond 5 km), each divided by distance in kilometers.
+    
               </div>
               <ul>
                 <li>
@@ -489,8 +489,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     target="_blank"
                   >
                     
-    Environmental Protection Agency (EPA) TSDF data calculated from EPA RCRA info database 
-    as compiled by EPA’s EJSCREEN
+      Environmental Protection Agency (EPA) Treatment Storage, and Disposal Facilities
+      (TSDF) data calculated from EPA RCRA info database as compiled by EPA’s EJSCREEN
+    
                   </a>
                 </li>
                 <li>
@@ -780,7 +781,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </ul>
             </div>
             <div
-              id="median-income"
+              id="low-med-inc"
             >
               <h3>
                 Low median Income

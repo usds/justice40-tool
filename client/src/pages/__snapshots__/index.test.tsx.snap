@@ -312,7 +312,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       <h1
         data-cy="about-page-heading"
       >
-        About us
+        About
       </h1>
       <div
         class="grid-row grid-gap-lg j40-aboutcard-container "
@@ -352,7 +352,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   
     In 
                   <a
-                    href="https://www.federalregister.gov/documents/2021/02/01/2021-02177/tackling-the-climate-crisis-at-home-and-abroad#:~:text=Sec.%20223.%20Justice40,40-percent%20goal."
+                    href="https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/27/executive-order-on-tackling-the-climate-crisis-at-home-and-abroad/"
                     target="blank"
                   >
                     Executive Order 14008
@@ -400,14 +400,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               data-testid="grid"
             >
               <img
-                alt="Justice40 Initiative"
+                alt="Justice40"
                 class="j40-aboutcard-image"
                 src="test-file-stub"
               />
             </div>
             <div
               class="tablet:grid-col-9"
-              data-cy="justice40-initiative-block"
+              data-cy="justice40-block"
               data-testid="grid"
             >
               <div
@@ -415,7 +415,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 data-testid="grid"
               >
                 <h2>
-                  Justice40 Initiative
+                  Justice40
                 </h2>
                 <p>
                   
@@ -434,7 +434,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
     Read more about the Justice40 Initiative in President Biden’s
     
                   <a
-                    href="https://www.federalregister.gov/documents/2021/02/01/2021-02177/tackling-the-climate-crisis-at-home-and-abroad#:~:text=Sec.%20223.%20Justice40,40-percent%20goal."
+                    href="https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/27/executive-order-on-tackling-the-climate-crisis-at-home-and-abroad/"
                     target="blank"
                   >
                     Executive Order 14008

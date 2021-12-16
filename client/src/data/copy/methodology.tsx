@@ -18,7 +18,7 @@ export const PAGE = defineMessages({
     defaultMessage: `
       This tool identifies commmunities that are economically disadvantaged, overburdened by 
       certain environmental risks, and marginalized by legacies of historic underinvestment.
-      A community qualifies as 'disadvantaged' when a census tract is at or above a certain
+      A community qualifies as disadvantaged when a census tract is at or above a certain
       threshold for a climate or environmental burden indicator and also above a certain
       threshold for a socioeconomic indicator. Census tract geographical boundaries are 
       determined by the U.S. Census Bureau once every ten years. This tool untilizes the 
@@ -37,7 +37,7 @@ export const PAGE = defineMessages({
     id: 'methodology.page.categories.title',
     defaultMessage: `
       Communities will be defined as disadvantaged if they meet the qualifications under one 
-      or more of the 8 categories of criteria below.
+      or more of the eight categories of criteria below.
     `,
     description: 'methodology page explanation of the categories',
   },
@@ -196,12 +196,12 @@ export const CATEGORIES = {
     IF: <FormattedMessage
       id= {'indicator.categories.clean.energy.if'}
       defaultMessage= {`
-        {if} at or above 90th percentile for {energyCostBur} OR {pm25}
+        {if} at or above 90th percentile for {energyCostBur} score OR {pm25}
       `}
       description= {'if portion of the formula'}
       values= {{
         if: <strong>IF</strong>,
-        energyCostBur: <a href='#energy-burden'>energy cost burden score</a>,
+        energyCostBur: <a href='#energy-burden'>energy cost burden</a>,
         pm25: <a href='#pm-25'>PM2.5 in the air</a>,
       }}
     />,
@@ -277,7 +277,7 @@ export const CATEGORIES = {
       values= {{
         if: <strong>IF</strong>,
         lead: <a href='#lead-paint'>lead paint</a>,
-        medianHomeVal: <a href='#median-home'>the median home value</a>,
+        medianHomeVal: <a href='#median-home'>low median home value</a>,
         houseBur: <a href='#house-burden'>housing cost burden</a>,
       }}
     />,
@@ -422,7 +422,7 @@ export const CATEGORIES = {
     IF: <FormattedMessage
       id= {'indicator.categories.work.dev.if'}
       defaultMessage= {`
-        {if} at or above the 90th percentile for {lowMedInc} OR 
+        {if} at or above the 90th percentile for {lowMedInc} as a percent of area median income OR 
         {linIso} OR
         {unemploy} OR
         percent individuals in households at or below 100% federal {poverty} level
@@ -430,7 +430,7 @@ export const CATEGORIES = {
       description= {'if portion of the formula'}
       values= {{
         if: <strong>IF</strong>,
-        lowMedInc: <a href='#low-med-inc'>low median income as a percent of area median income</a>,
+        lowMedInc: <a href='#low-med-inc'>low median income</a>,
         linIso: <a href='#ling-iso'>linguistic isolation</a>,
         unemploy: <a href='#unemploy'>unemployment</a>,
         poverty: <a href='#poverty'>poverty</a>,
@@ -532,7 +532,7 @@ export const INDICATORS = [
   },
   {
     domID: 'exp-agr-loss-rate',
-    indicator: 'Expected Agriculture Loss Rate',
+    indicator: 'Expected agriculture loss rate',
     description: `
       Percent of agriculture value at risk from losses due to natural hazards. Calculated by dividing 
       the agriculture value at risk in a census tract by the total agriculture value in that census 
@@ -547,7 +547,7 @@ export const INDICATORS = [
   },
   {
     domID: 'exp-bld-loss-rate',
-    indicator: 'Expected Building Loss Rate',
+    indicator: 'Expected building loss rate',
     description: `
       Percent of building value at risk from losses due to natural hazards. Calculated by dividing the 
       building value at risk in a census tract by the total building value in that census tract. 
@@ -562,7 +562,7 @@ export const INDICATORS = [
   },
   {
     domID: 'exp-pop-loss-rate',
-    indicator: 'Expected Population Loss Rate',
+    indicator: 'Expected population loss rate',
     description: `
       Rate relative to the population in fatalities and injuries due to natural hazards each year. 
       Fourteen natural hazards that have some link to climate change include: avalanche, coastal 
@@ -584,7 +584,7 @@ export const INDICATORS = [
   },
   {
     domID: 'energy-burden',
-    indicator: 'Energy burden',
+    indicator: 'Energy cost burden',
     description: `Average annual energy cost ($) divided by household income.`,
     usedIn: `Clean energy and energy efficiency methodology`,
     respPartyLabel: `Department of Energy (DOE) LEAD Score`,
@@ -659,13 +659,14 @@ export const INDICATORS = [
     domID: 'prox-haz',
     indicator: 'Proximity to hazardous waste facilities',
     description: `
-    Count of hazardous waste facilities (Treatment, Storage, and Disposal Facilities and Large
-    Quantity Generators) within 5 km (or nearest beyond 5 km), each divided by distance in kilometers.
-  `,
+      Count of hazardous waste facilities (Treatment, Storage, and Disposal Facilities and Large
+      Quantity Generators) within 5 km (or nearest beyond 5 km), each divided by distance in kilometers.
+    `,
     usedIn: `Reduction and remediation of legacy pollution methodology`,
     respPartyLabel: `
-    Environmental Protection Agency (EPA) TSDF data calculated from EPA RCRA info database 
-    as compiled by EPA’s EJSCREEN`,
+      Environmental Protection Agency (EPA) Treatment Storage, and Disposal Facilities
+      (TSDF) data calculated from EPA RCRA info database as compiled by EPA’s EJSCREEN
+    `,
     dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
     dateRange: `2015-2020`,
   },
@@ -753,7 +754,7 @@ export const INDICATORS = [
     dateRange: `2010-2015`,
   },
   {
-    domID: 'median-income',
+    domID: 'low-med-inc',
     indicator: 'Low median Income',
     description: `Median income of the census tract calculated as a percent of the area’s median income.`,
     usedIn: `Training and workforce development`,

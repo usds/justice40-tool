@@ -325,7 +325,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               
       This tool identifies commmunities that are economically disadvantaged, overburdened by 
       certain environmental risks, and marginalized by legacies of historic underinvestment.
-      A community qualifies as 'disadvantaged' when a census tract is at or above a certain
+      A community qualifies as disadvantaged when a census tract is at or above a certain
       threshold for a climate or environmental burden indicator and also above a certain
       threshold for a socioeconomic indicator. Census tract geographical boundaries are 
       determined by the U.S. Census Bureau once every ten years. This tool untilizes the 
@@ -364,7 +364,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <p>
               
       Communities will be defined as disadvantaged if they meet the qualifications under one 
-      or more of the 8 categories of criteria below.
+      or more of the eight categories of criteria below.
     
             </p>
           </section>
@@ -518,9 +518,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <a
             href="#energy-burden"
           >
-            energy cost burden score
+            energy cost burden
           </a>
-           OR 
+           score OR 
           <a
             href="#pm-25"
           >
@@ -606,7 +606,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <a
             href="#median-home"
           >
-            the median home value
+            low median home value
           </a>
            is less than
         90th percentile OR at or above the 90th percentile for the 
@@ -783,9 +783,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <a
             href="#low-med-inc"
           >
-            low median income as a percent of area median income
+            low median income
           </a>
-           OR 
+           as a percent of area median income OR 
         
           <a
             href="#ling-iso"
@@ -905,7 +905,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="exp-agr-loss-rate"
               >
                 <h3>
-                  Expected Agriculture Loss Rate
+                  Expected agriculture loss rate
                 </h3>
                 <div>
                   
@@ -947,7 +947,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="exp-bld-loss-rate"
               >
                 <h3>
-                  Expected Building Loss Rate
+                  Expected building loss rate
                 </h3>
                 <div>
                   
@@ -989,7 +989,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="exp-pop-loss-rate"
               >
                 <h3>
-                  Expected Population Loss Rate
+                  Expected population loss rate
                 </h3>
                 <div>
                   
@@ -1038,7 +1038,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="energy-burden"
               >
                 <h3>
-                  Energy burden
+                  Energy cost burden
                 </h3>
                 <div>
                   Average annual energy cost ($) divided by household income.
@@ -1304,9 +1304,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </h3>
                 <div>
                   
-    Count of hazardous waste facilities (Treatment, Storage, and Disposal Facilities and Large
-    Quantity Generators) within 5 km (or nearest beyond 5 km), each divided by distance in kilometers.
-  
+      Count of hazardous waste facilities (Treatment, Storage, and Disposal Facilities and Large
+      Quantity Generators) within 5 km (or nearest beyond 5 km), each divided by distance in kilometers.
+    
                 </div>
                 <ul>
                   <li>
@@ -1319,8 +1319,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                       target="_blank"
                     >
                       
-    Environmental Protection Agency (EPA) TSDF data calculated from EPA RCRA info database 
-    as compiled by EPA’s EJSCREEN
+      Environmental Protection Agency (EPA) Treatment Storage, and Disposal Facilities
+      (TSDF) data calculated from EPA RCRA info database as compiled by EPA’s EJSCREEN
+    
                     </a>
                   </li>
                   <li>
@@ -1610,7 +1611,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </ul>
               </div>
               <div
-                id="median-income"
+                id="low-med-inc"
               >
                 <h3>
                   Low median Income

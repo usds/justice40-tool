@@ -30,8 +30,8 @@ export const PAGE_DESCRIPTION = <FormattedMessage
     `}
   description={'page description'}
   values={{
-    methodologyLink: <Link to={'/methodology'}>methodology & data</Link>,
-    methodologyLinkEs: <Link to={'/methodology'}>metodología y datos</Link>,
+    methodologyLink: <Link to={'/methodology'}>Methodology & data</Link>,
+    methodologyLinkEs: <Link to={'/methodology'}>Metodología y datos</Link>,
   }}
 />;
 
@@ -172,7 +172,7 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
       A census tract is generally between 1,200 and 8,000 people, with an average size of 4,000 people. 
       Census tracts are small, relatively permanent subdivisions of a county defined by the 
       U.S. Census Bureau and usually cover a contiguous area. The census tract level represents the 
-      smallest geographical unity that can be presented in a statistically sound manner, given the 
+      smallest geographical unit that can be presented in a statistically sound manner, given the 
       datasets that are being used.
     `,
     description: 'cites the definition and helpful information about census groups',
@@ -598,10 +598,10 @@ export const NOTE_ON_TERRITORIES = {
     id={'explore.page.note.on.territories.para.1'}
     defaultMessage={`
       The data sources described on the {dataMethLink} are used to 
-      identify disadvantaged communities for all 50 states and the District of Columbia. However, not all 
+      identify disadvantaged communities for all fifty states and the District of Columbia. However, not all 
       of these data sources are currently available for the U.S. territories. The Census ACS data from 
       2015-2019 was used to identify disadvantaged communities for Puerto Rico. This uses the same methodology 
-      as all 50 states and the District of Columbia for which data is available, which is all fields in 
+      as all fifty states and the District of Columbia for which data is available, which is all fields in 
       the Training and Workforce Development category.
     `}
     description={`territories paragraph 1`}
@@ -661,7 +661,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
     defaultMessage={`Respond to our request for information on {federalRegisterLink}.`}
     values={{
       federalRegisterLink:
-        <a href={`https://www.federalregister.gov/`}>
+        <a href={`https://www.federalregister.gov/`} target={'blank'}>
           {'federalregister.gov'}
         </a>,
     }}

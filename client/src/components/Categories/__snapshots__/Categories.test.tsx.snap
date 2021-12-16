@@ -85,9 +85,9 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <a
           href="#energy-burden"
         >
-          energy cost burden score
+          energy cost burden
         </a>
-         OR 
+         score OR 
         <a
           href="#pm-25"
         >
@@ -173,7 +173,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <a
           href="#median-home"
         >
-          the median home value
+          low median home value
         </a>
          is less than
         90th percentile OR at or above the 90th percentile for the 
@@ -350,9 +350,9 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <a
           href="#low-med-inc"
         >
-          low median income as a percent of area median income
+          low median income
         </a>
-         OR 
+         as a percent of area median income OR 
         
         <a
           href="#ling-iso"
