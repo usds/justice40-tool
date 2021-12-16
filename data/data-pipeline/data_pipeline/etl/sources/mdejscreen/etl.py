@@ -85,7 +85,7 @@ class MDEJScreenETL(ExtractTransformLoad):
             inplace=True,
         )
 
-        # Baseline Comparisons at quantiles and the 90th percentile
+        # Baseline Comparisons at quartiles and the 90th percentile
         # Interpretation: The score is higher than N% of the tracts
         # in the state
         self.df[field_names.MDEjSCREEN_TRACT_25_PERCENT_FIELD] = (
