@@ -30,8 +30,8 @@ export const PAGE_DESCRIPTION = <FormattedMessage
     `}
   description={'page description'}
   values={{
-    methodologyLink: <Link to={'/methodology'}>methodology & data</Link>,
-    methodologyLinkEs: <Link to={'/methodology'}>metodología y datos</Link>,
+    methodologyLink: <Link to={'/methodology'}>Methodology & data</Link>,
+    methodologyLinkEs: <Link to={'/methodology'}>Metodología y datos</Link>,
   }}
 />;
 
@@ -44,9 +44,9 @@ export const LEGEND = defineMessages({
   PRIORITY_DESCRIPT: {
     id: 'legend.info.threshold.label',
     defaultMessage: `
-    Communities identified for the purposes of Justice40 as disadvantaged have been 
-    historically marginalized, underserved, and overburdened by pollution. These communities 
-    meet or exceed the criteria in one or more areas of focus. 
+    Communities identified as disadvantaged for the purposes of Justice40 have been 
+    historically marginalized, underserved, and overburdened by pollution. These communities meet 
+    or exceed the criteria in one or more areas of focus.
 
     `,
     description: 'the label of the threshold community legend',
@@ -169,10 +169,10 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   CBG_DEFINITION: {
     id: 'mapIntro.censusBlockGroupDefinition',
     defaultMessage: `
-      A census tract is generally between 1,200 and 8,000 people, with an optimum size of 4,000 people. 
+      A census tract is generally between 1,200 and 8,000 people, with an average size of 4,000 people. 
       Census tracts are small, relatively permanent subdivisions of a county defined by the 
       U.S. Census Bureau and usually cover a contiguous area. The census tract level represents the 
-      smallest geographical unity that can be presented in a statistically sound manner, given the 
+      smallest geographical unit that can be presented in a statistically sound manner, given the 
       datasets that are being used.
     `,
     description: 'cites the definition and helpful information about census groups',
@@ -244,7 +244,7 @@ export const SIDE_PANEL_CATEGORY = defineMessages({
   },
   CLEAN_ENERGY: {
     id: 'areaDetail.indicator.title.clean.energy',
-    defaultMessage: 'Clean, efficient energy ',
+    defaultMessage: 'Clean energy and energy efficiency',
     description: 'Clean, efficient energy title',
   },
   CLEAN_TRANSPORT: {
@@ -264,7 +264,7 @@ export const SIDE_PANEL_CATEGORY = defineMessages({
   },
   CLEAN_WATER: {
     id: 'areaDetail.indicator.title.clean.water',
-    defaultMessage: 'Clean water and waste',
+    defaultMessage: 'Clean water and waste infrastructure',
     description: 'Clean water and waste title',
   },
   HEALTH_BURDEN: {
@@ -307,17 +307,17 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
   },
   PM_2_5: {
     id: 'areaDetail.indicator.pm25',
-    defaultMessage: 'PM2.5',
+    defaultMessage: 'PM2.5 in the air',
     description: 'Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller',
   },
   DIESEL_PARTICULATE_MATTER: {
     id: 'areaDetail.indicator.dieselPartMatter',
-    defaultMessage: 'Diesel particulate matter',
+    defaultMessage: 'Diesel particulate matter exposure',
     description: 'Diesel particulate matter level in air',
   },
   TRAFFIC_VOLUME: {
     id: 'areaDetail.indicator.trafficVolume',
-    defaultMessage: 'Traffic',
+    defaultMessage: 'Traffic proximity and volume',
     description: 'Count of vehicles (average annual daily traffic) at major roads within 500 meters,' +
       ' divided by distance in meters',
   },
@@ -350,7 +350,7 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
   },
   PROX_RMP: {
     id: 'areaDetail.indicator.prox.rmp',
-    defaultMessage: 'Proximity to RMP sites',
+    defaultMessage: 'Proximity to RMP facilities',
     description: 'Count of proposed or listed RMP',
   },
   WASTE_WATER: {
@@ -422,7 +422,9 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   },
   EXP_POP_LOSS: {
     id: 'areaDetail.indicator.description.exp.pop.loss',
-    defaultMessage: 'Economic loss rate to the population in fatalities and injuries resulting from natural hazards',
+    defaultMessage: `
+      Rate relative to the population in fatalities and injuries resulting from natural hazards each year
+    `,
     description: 'Economic loss rate to the population in fatalities and injuries resulting from natural hazards',
   },
   LOW_INCOME: {
@@ -433,7 +435,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
 
   ENERGY_BURDEN: {
     id: 'areaDetail.indicator.description.energyBurden',
-    defaultMessage: 'Energy costs divided by household income',
+    defaultMessage: 'Average annual energy costs divided by household income',
     description: 'Energy costs divided by household income',
   },
   PM_2_5: {
@@ -455,12 +457,12 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
 
   LEAD_PAINT: {
     id: 'areaDetail.indicator.description.leadPaint',
-    defaultMessage: 'Pre-1960 housing',
+    defaultMessage: 'Percent of pre-1960 housing with a median home value is at or below 90th',
     description: 'Pre-1960 housing',
   },
   MED_HOME_VAL: {
     id: 'areaDetail.indicator.description.med.home.val',
-    defaultMessage: 'Meidan home value in area',
+    defaultMessage: 'Median home value in area',
     description: 'Meidan home value in area',
 
   },
@@ -494,17 +496,22 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
 
   ASTHMA: {
     id: 'areaDetail.indicator.description.asthma',
-    defaultMessage: 'Number of people who have been told they have asthma',
+    defaultMessage: 'Weighted percent of people who have been told they have asthma',
     description: 'Number of people who have been told they have asthma',
   },
   DIABETES: {
     id: 'areaDetail.indicator.description.diabetes',
-    defaultMessage: 'People ages 18 years and older who have diabetes other than diabetes during pregnancy',
+    defaultMessage: `
+      Weighted percent of people ages 18 years and older who have diabetes other than 
+      diabetes during pregnancy
+    `,
     description: 'People ages 18 years and older who have diabetes other than diabetes during pregnancy',
   },
   HEART_DISEASE: {
     id: 'areaDetail.indicator.description.heartDisease',
-    defaultMessage: 'People ages 18 years and older who have been told they have heart disease',
+    defaultMessage: `
+      Weighted percent of people ages 18 years and older who have been told they have heart disease
+    `,
     description: 'People ages 18 years and older who have been told they have heart disease',
   },
   LOW_LIFE_EXPECT: {
@@ -520,8 +527,9 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   },
   LING_ISO: {
     id: 'areaDetail.indicator.description.ling.iso',
-    defaultMessage: `Households in which no one age 14 and over speaks English only or also speaks 
-    a language other than English`,
+    defaultMessage: `
+      Percent of limited speaking households, which are households where no one over age 14 speaks English well
+    `,
     description: `Households in which no one age 14 and over speaks English only or also speaks 
     a language other than English`,
   },
@@ -532,14 +540,18 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   },
   POVERTY: {
     id: 'areaDetail.indicator.description.poverty',
-    defaultMessage: `Percent of individuals in households where the household income is at or 
-    below 100% of the federal poverty level`,
+    defaultMessage: `
+      Percent of a tract's population in households where the household income is at or below 
+      100% of the federal poverty level    
+    `,
     description: `Percent of individuals in households where the household income is at or 
     below 100% of the federal poverty level`,
   },
   HIGH_SKL: {
     id: 'areaDetail.indicator.description.high.school',
-    defaultMessage: 'Percent of people ages 25 years or older whose education level is less than a high school diploma',
+    defaultMessage: `
+      Percent of people ages 25 years or older whose education level is less than a high school diploma
+    `,
     description: 'Percent of people ages 25 years or older whose education level is less than a high school diploma',
   },
 });
@@ -585,11 +597,11 @@ export const NOTE_ON_TERRITORIES = {
   PARA_1: <FormattedMessage
     id={'explore.page.note.on.territories.para.1'}
     defaultMessage={`
-      The data sources described on the {dataMethLink} page are used to 
-      identify disadvantaged communities for all 50 states and the District of Columbia. However, not all 
+      The data sources described on the {dataMethLink} are used to 
+      identify disadvantaged communities for all fifty states and the District of Columbia. However, not all 
       of these data sources are currently available for the U.S. territories. The Census ACS data from 
       2015-2019 was used to identify disadvantaged communities for Puerto Rico. This uses the same methodology 
-      as all 50 states and the District of Columbia for which data is available, which is all fields in 
+      as all fifty states and the District of Columbia for which data is available, which is all fields in 
       the Training and Workforce Development category.
     `}
     description={`territories paragraph 1`}
@@ -624,7 +636,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
     values={{
       dataMeth:
     <Link to={'/methodology'}>
-      {'Methodology and data'}
+      {'Methodology & data'}
     </Link>,
       dataMethEs:
     <Link to={'/methodology'}>
@@ -638,7 +650,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
     defaultMessage={`Find communities of interest and {shareFeedback}.`}
     values={{
       shareFeedback:
-        <a href={`mailto:${CONTACT_COPY.FEEDBACK_EMAIL}`}>
+        <a href={`mailto:${CONTACT_COPY.FEEDBACK_EMAIL}`} target={'blank'}>
           {'share your feedback'}
         </a>,
     }}
@@ -649,7 +661,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
     defaultMessage={`Respond to our request for information on {federalRegisterLink}.`}
     values={{
       federalRegisterLink:
-        <a href={`https://www.federalregister.gov/`}>
+        <a href={`https://www.federalregister.gov/`} target={'blank'}>
           {'federalregister.gov'}
         </a>,
     }}

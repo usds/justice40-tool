@@ -3,4 +3,8 @@
 .categoryContainer {
     display: flex;
     justify-content: space-between;
+
+    .category {
+        flex-basis: 80%;
+    }
 }

@@ -7,11 +7,11 @@ exports[`rendering of the BetaBanner checks if component renders 1`] = `
       <div />
       <div>
         <span>
-          This is a Beta site. 
+          This is a beta site. 
         </span>
         <span>
-          It is an early, in-progress version of the tool with limited data 
-    sets that will be continuously updated.
+          It is an early, in-progress version of the tool with limited datasets 
+    that will be continuously updated.
         </span>
       </div>
     </div>

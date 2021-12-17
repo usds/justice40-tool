@@ -6,7 +6,7 @@ exports[`rendering of indicator dataset card checks if component renders 1`] = `
     id="low-income"
   >
     <h3>
-      Low Income
+      Low income
     </h3>
     <div>
       
