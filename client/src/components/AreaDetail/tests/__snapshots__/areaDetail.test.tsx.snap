@@ -52,6 +52,9 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         </h3>
         <div />
       </div>
+      <div>
+         of 24 thresholds exceed
+      </div>
     </div>
     <div
       aria-multiselectable="true"

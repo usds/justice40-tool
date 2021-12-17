@@ -26,7 +26,7 @@ $sidePanelLabelFontColor: #171716;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 2rem;
+  @include u-padding-bottom(3);
 
   .isInFocus {
     padding: .5rem 1rem .25rem 1.2rem;
@@ -42,6 +42,18 @@ $sidePanelLabelFontColor: #171716;
       margin-top: 0;
       margin-bottom: 0;
     }
+  }
+
+  .showThresholdExceed {
+    display:block;
+    font-size: small;
+    @include u-margin-top('05');
+  }
+  
+  .hideThresholdExceed {
+    visibility: hidden;
+    font-size: small;
+    @include u-margin-top('05');
   }
 
   .feedbackLink {
@@ -66,14 +78,4 @@ $sidePanelLabelFontColor: #171716;
   .censusText {
     font-size: medium;
   }  
-}
-
-//Divider styles
-.divider {
-  @include sidePanelLabelStyle;
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5rem 0.5rem 0.5rem 1.2rem;
-  border-top: 1px solid $sidePanelBorderColor;
-  border-bottom: 1px solid $sidePanelBorderColor;
 }

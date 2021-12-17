@@ -1,7 +1,7 @@
 /* eslint-disable quotes */
 // External Libs:
 import React from 'react';
-import {useIntl} from 'gatsby-plugin-intl';
+import {useIntl, FormattedMessage} from 'gatsby-plugin-intl';
 import {Accordion} from '@trussworks/react-uswds';
 
 // Components:
@@ -369,8 +369,22 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
           <h3>{EXPLORE_COPY.COMMUNITY.NOT_OF_FOCUS}</h3>
           }
         </div>
+        <div className={
+            properties[constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS] > 0 ?
+            styles.showThresholdExceed : styles.hideThresholdExceed
+        }>
+          <FormattedMessage
+            id={'explore.page.threshold.count.exceed'}
+            description={"threshold exceed count"}
+            defaultMessage={'{disadvCount} of {totalCount} thresholds exceed'}
+            values={{
+              disadvCount: properties[constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS],
+              totalCount: constants.TOTAL_NUMBER_OF_INDICATORS,
+            }}/>
+        </div>
         {/* eslint-disable-next-line max-len */}
         {/* <a className={styles.feedbackLink} href={sidePanelFeedbackHref}>{EXPLORE_COPY.COMMUNITY.SEND_FEEDBACK}</a> */}
+
       </div>
 
       {/* All category accordions in this component */}

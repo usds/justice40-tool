@@ -74,13 +74,17 @@ export const PROXIMITY_TSDF_SITES_PERCENTILE = 'TSDF_PFS';
 
 // Category booleans (disadvantaged or not):
 export const IS_CLIMATE_FACTOR_DISADVANTAGED_L = 'L_CLT';
-export const IS_WORKFORCE_FACTOR_DISADVANTAGED_L = 'L_WKFC';
-export const IS_WATER_FACTOR_DISADVANTAGED_L = 'L_WTR';
 export const IS_ENERGY_FACTOR_DISADVANTAGED_L = 'L_ENY';
 export const IS_TRANSPORT_FACTOR_DISADVANTAGED_L = 'L_TRN';
 export const IS_HOUSING_FACTOR_DISADVANTAGED_L = 'L_HSG';
 export const IS_POLLUTION_FACTOR_DISADVANTAGED_L = 'L_PLN';
+export const IS_WATER_FACTOR_DISADVANTAGED_L = 'L_WTR';
 export const IS_HEALTH_FACTOR_DISADVANTAGED_L = 'L_HLTH';
+export const IS_WORKFORCE_FACTOR_DISADVANTAGED_L = 'L_WKFC';
+
+// Total indicators values:
+export const TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS = 'TC';
+export const TOTAL_NUMBER_OF_INDICATORS = 24;
 
 // Indicator booleans (disadvangted or not): (GTE = greater than or equal)
 export const IS_GTE_90_EXP_POP_LOSS_AND_IS_LOW_INCOME = 'EPLRLI';
@@ -109,7 +113,6 @@ export const TOTAL_THRESHOLD_CRITERIA = 'TC';
 export const IS_GTE_90_ISLAND_AREA_UNEMPLOYMENT_AND_IS_LOW_HS_EDU_2009 = 'IAULHSE';
 export const IS_GTE_90_ISLAND_AREA_BELOW_100_POVERTY_AND_IS_LOW_HS_EDU_2009 = 'ISPLHSE';
 export const IS_GTE_90_ISLAND_AREA_LOW_MEDIAN_INCOME_AND_IS_LOW_HS_EDU_2009 = 'IALMILHSE';
-
 export type J40Properties = { [key: string]: any };
 
 // The name of the layer within the tiles that contains the score
