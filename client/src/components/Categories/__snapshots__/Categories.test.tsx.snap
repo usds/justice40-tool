@@ -176,7 +176,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
           low median home value
         </a>
          is less than
-        90th percentile OR at or above the 90th percentile for the 
+        90th percentile OR at or above the 10th percentile for the 
         <a
           href="#house-burden"
         >

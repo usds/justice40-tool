@@ -17,7 +17,7 @@ export const PAGE = defineMessages({
     id: 'methodology.page.paragraph',
     defaultMessage: `
       This tool identifies commmunities that are economically disadvantaged, overburdened by 
-      certain environmental risks, and marginalized by legacies of historic underinvestment.
+      certain environmental exposures, and marginalized by legacies of historic underinvestment.
       A community qualifies as disadvantaged when a census tract is at or above a certain
       threshold for a climate or environmental burden indicator and also above a certain
       threshold for a socioeconomic indicator. Census tract geographical boundaries are 
@@ -36,8 +36,8 @@ export const PAGE = defineMessages({
   CATEGORY_TEXT: {
     id: 'methodology.page.categories.title',
     defaultMessage: `
-      Communities will be defined as disadvantaged if they meet the qualifications under one 
-      or more of the eight categories of criteria below.
+    Communities will be defined as disadvantaged for the purposes of Justice40 if they meet
+     the qualifications under one or more of the eight categories of criteria below.
     `,
     description: 'methodology page explanation of the categories',
   },
@@ -271,7 +271,7 @@ export const CATEGORIES = {
       id= {'indicator.categories.afford.house.if'}
       defaultMessage= {`
         {if} at or above 90th percentile for {lead} AND {medianHomeVal} is less than
-        90th percentile OR at or above the 90th percentile for the {houseBur}
+        90th percentile OR at or above the 10th percentile for the {houseBur}
       `}
       description= {'if portion of the formula'}
       values= {{
@@ -667,7 +667,7 @@ export const INDICATORS = [
       Environmental Protection Agency (EPA) Treatment Storage, and Disposal Facilities
       (TSDF) data calculated from EPA RCRA info database as compiled by EPA’s EJSCREEN
     `,
-    dataSourceURL: `https://www.census.gov/programs-surveys/acs`,
+    dataSourceURL: `https://enviro.epa.gov/facts/rcrainfo/search.html`,
     dateRange: `2015-2020`,
   },
   {

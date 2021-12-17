@@ -31,7 +31,7 @@ export const PAGE_INTRO = defineMessages({
 export const CONTACT_VIA_EMAIL = {
   ID: 'contact.general',
   DESCRIPTION: 'Contact page body text',
-  DEFAULT_MESSAGE: `For general feedback, email {general_email_address}`,
+  DEFAULT_MESSAGE: `For general feedback, email {general_email_address}.`,
 };
 
 export const FEEDBACK_EMAIL = 'Screeningtool-Support@omb.eop.gov';

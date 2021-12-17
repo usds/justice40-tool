@@ -53,18 +53,12 @@ export const HEADING_1 = {
     id={'about.page.sub.header.1.text.1'}
     description={'about page sub header text'}
     defaultMessage={`
-    In {eoLink} on {tacklingItalics},
-    President Biden directed the Council on 
-    Environmental Quality (CEQ) to create a Climate and Economic
-    Justice Screening Tool. The purpose of the tool is to help
-    Federal agencies identify disadvantaged communities 
-    that have been historically marginalized, underserved, and 
-    overburdened by pollution. The tool provides
-    socioeconomic, environmental, and climate information
-    to inform decisions that may affect these communities. The tool
-    identifies disadvantaged communities
-    through publicly available, nationally consistent, high-quality
-    data.
+    In {eoLink} on {tacklingItalics}, President Biden directed the Council on Environmental Quality (CEQ) 
+    to create a Climate and Economic Justice Screening Tool. The purpose of the tool is to help
+    Federal agencies identify disadvantaged communities that have been historically 
+    marginalized, underserved, and overburdened by pollution. The tool provides socioeconomic, 
+    environmental, and climate information to inform decisions that may affect these communities. The 
+    tool identifies disadvantaged communities through publicly-available, nationally-consistent, and high-quality data.
     `}
     values={{
       eoLink:

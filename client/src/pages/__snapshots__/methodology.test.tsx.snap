@@ -324,7 +324,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <p>
               
       This tool identifies commmunities that are economically disadvantaged, overburdened by 
-      certain environmental risks, and marginalized by legacies of historic underinvestment.
+      certain environmental exposures, and marginalized by legacies of historic underinvestment.
       A community qualifies as disadvantaged when a census tract is at or above a certain
       threshold for a climate or environmental burden indicator and also above a certain
       threshold for a socioeconomic indicator. Census tract geographical boundaries are 
@@ -363,8 +363,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             <p>
               
-      Communities will be defined as disadvantaged if they meet the qualifications under one 
-      or more of the eight categories of criteria below.
+    Communities will be defined as disadvantaged for the purposes of Justice40 if they meet
+     the qualifications under one or more of the eight categories of criteria below.
     
             </p>
           </section>
@@ -609,7 +609,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             low median home value
           </a>
            is less than
-        90th percentile OR at or above the 90th percentile for the 
+        90th percentile OR at or above the 10th percentile for the 
           <a
             href="#house-burden"
           >
@@ -1314,7 +1314,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                       Responsible Party: 
                     </span>
                     <a
-                      href="https://www.census.gov/programs-surveys/acs"
+                      href="https://enviro.epa.gov/facts/rcrainfo/search.html"
                       rel="noreferrer"
                       target="_blank"
                     >
