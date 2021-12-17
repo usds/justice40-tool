@@ -39,9 +39,9 @@ export const PAGE = defineMessages({
       programs in seven key areas to disadvantaged communities. These seven key areas are: climate 
       change, clean energy and energy efficiency, clean transit, affordable and sustainable
       housing, training and workforce development (related to climate, natural disasters, environment, 
-      clean energy, clean transportation, housing, water and wastewater infrastructure, and legacy 
-      pollution reduction, including in energy communities), the remediation and reduction of 
-      legacy pollution, and the development of critical clean water infrastructure.
+      clean energy, clean transportation, affordable and sustainable housing, water and 
+      wastewater infrastructure, and legacy pollution reduction, including in energy communities), 
+      the remediation and reduction of legacy pollution, and the development of critical clean water infrastructure.
     `,
     description: 'about page sub header text',
   },

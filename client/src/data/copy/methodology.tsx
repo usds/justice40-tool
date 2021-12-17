@@ -5,7 +5,7 @@ import {FormattedMessage} from 'gatsby-plugin-intl';
 export const PAGE = defineMessages({
   TILE: {
     id: 'methodology.page.title.text',
-    defaultMessage: 'Data and Methodology',
+    defaultMessage: 'Methodology & data',
     description: 'methodology page title text',
   },
   HEADING: {
@@ -16,11 +16,10 @@ export const PAGE = defineMessages({
   DESCRIPTION: {
     id: 'methodology.page.paragraph',
     defaultMessage: `
-      This tool identifies commmunities that are economically disadvantaged, overburdened by 
-      certain environmental exposures, and marginalized by legacies of historic underinvestment.
-      A community qualifies as disadvantaged when a census tract is at or above a certain
-      threshold for a climate or environmental burden indicator and also above a certain
-      threshold for a socioeconomic indicator. Census tract geographical boundaries are 
+      This tool identifies communities that are overburdened by pollution and other environmental exposures 
+      and disadvantaged by underinvestment. A community qualifies as disadvantaged when a census tract 
+      is at or above a certain threshold for a climate or environmental burden indicator and also above 
+      a certain threshold for a socioeconomic indicator. Census tract geographical boundaries are 
       determined by the U.S. Census Bureau once every ten years. This tool untilizes the 
       census tract boundaries from 2010.
     `,
@@ -97,7 +96,7 @@ export const DOWNLOAD_PACKAGE = {
   DESCRIPTION: <FormattedMessage
     id={ 'downloadPacket.info.text'}
     defaultMessage= {`
-      The package includes draft v{versionNumber} of the list of disadvantaged communities
+      The download package includes draft v{versionNumber} of the list of disadvantaged communities
       (.csv and .xlsx) and information (.pdf) about how to use the list.
     `}
     description= {'download packet info text'}
@@ -270,7 +269,7 @@ export const CATEGORIES = {
     IF: <FormattedMessage
       id= {'indicator.categories.afford.house.if'}
       defaultMessage= {`
-        {if} at or above 90th percentile for {lead} AND {medianHomeVal} is less than
+        {if} at or above 90th percentile for {lead} AND {medianHomeVal} is at or less than
         90th percentile OR at or above the 10th percentile for the {houseBur}
       `}
       description= {'if portion of the formula'}
@@ -439,7 +438,7 @@ export const CATEGORIES = {
     AND: <FormattedMessage
       id= {'indicator.categories.work.dev.and'}
       defaultMessage= {`
-      {and} where {highSchool} for adults 25 years and older is less than 90%
+      {and} where {highSchool} for adults 25 years and older is at or less than 90%
       `}
       description= {'and portion of the formula'}
       values= {{

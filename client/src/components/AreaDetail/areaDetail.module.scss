@@ -9,10 +9,14 @@ $sidePanelLabelFontColor: #171716;
   font-weight: 600;
 }
 
+@mixin thresholdExceeded {
+  font-size: medium;
+  @include u-margin-top('05');
+}
+
 .versionInfo {
   padding: .5rem 1rem .5rem 1.2rem;
   font-size: medium;
-  font-weight: bold;
   border-bottom: 1px solid $sidePanelBorderColor; 
 }
 
@@ -45,15 +49,14 @@ $sidePanelLabelFontColor: #171716;
   }
 
   .showThresholdExceed {
-    display:block;
-    font-size: small;
-    @include u-margin-top('05');
+    @include thresholdExceeded;
+    display: block;
+    
   }
   
   .hideThresholdExceed {
+    @include thresholdExceeded;
     visibility: hidden;
-    font-size: small;
-    @include u-margin-top('05');
   }
 
   .feedbackLink {

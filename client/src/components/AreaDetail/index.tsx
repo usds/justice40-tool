@@ -375,8 +375,8 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
         }>
           <FormattedMessage
             id={'explore.page.threshold.count.exceed'}
-            description={"threshold exceed count"}
-            defaultMessage={'{disadvCount} of {totalCount} thresholds exceed'}
+            description={"threshold exceeded count"}
+            defaultMessage={'{disadvCount} of {totalCount} thresholds exceeded'}
             values={{
               disadvCount: properties[constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS],
               totalCount: constants.TOTAL_NUMBER_OF_INDICATORS,

@@ -323,11 +323,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <section>
             <p>
               
-      This tool identifies commmunities that are economically disadvantaged, overburdened by 
-      certain environmental exposures, and marginalized by legacies of historic underinvestment.
-      A community qualifies as disadvantaged when a census tract is at or above a certain
-      threshold for a climate or environmental burden indicator and also above a certain
-      threshold for a socioeconomic indicator. Census tract geographical boundaries are 
+      This tool identifies communities that are overburdened by pollution and other environmental exposures 
+      and disadvantaged by underinvestment. A community qualifies as disadvantaged when a census tract 
+      is at or above a certain threshold for a climate or environmental burden indicator and also above 
+      a certain threshold for a socioeconomic indicator. Census tract geographical boundaries are 
       determined by the U.S. Census Bureau once every ten years. This tool untilizes the 
       census tract boundaries from 2010.
     
@@ -385,7 +384,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </div>
                   <div>
                     
-      The package includes draft v0.1 of the list of disadvantaged communities
+      The download package includes draft v0.1 of the list of disadvantaged communities
       (.csv and .xlsx) and information (.pdf) about how to use the list.
      
                     <span>
@@ -608,7 +607,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             low median home value
           </a>
-           is less than
+           is at or less than
         90th percentile OR at or above the 10th percentile for the 
           <a
             href="#house-burden"
@@ -821,7 +820,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             the high school degree achievement rates
           </a>
-           for adults 25 years and older is less than 90%
+           for adults 25 years and older is at or less than 90%
       
         </p>
         <p>

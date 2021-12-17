@@ -24,7 +24,7 @@ export const PAGE_DESCRIPTION = <FormattedMessage
   defaultMessage={`
     Use the map to see disadvantaged communities that have been historically 
     marginalized, underserved, and overburdened by pollution. The map uses 
-    publicly available, nationally consistent, high-quality datasets. Learn more about 
+    publicly-available, nationally-consistent, high-quality datasets. Learn more about 
     the methodology and datasets that were used to identify disavantaged communities 
     on the {methodologyLink} page.
     `}
@@ -636,7 +636,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
     values={{
       dataMeth:
     <Link to={'/methodology'}>
-      {'Methodology and data'}
+      {'Methodology & data'}
     </Link>,
       dataMethEs:
     <Link to={'/methodology'}>

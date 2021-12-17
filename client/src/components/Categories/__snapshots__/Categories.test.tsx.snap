@@ -175,7 +175,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           low median home value
         </a>
-         is less than
+         is at or less than
         90th percentile OR at or above the 10th percentile for the 
         <a
           href="#house-burden"
@@ -388,7 +388,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           the high school degree achievement rates
         </a>
-         for adults 25 years and older is less than 90%
+         for adults 25 years and older is at or less than 90%
       
       </p>
       <p>
