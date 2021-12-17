@@ -235,9 +235,11 @@ class PostScoreETL(ExtractTransformLoad):
     def _create_downloadable_data(
         self, score_county_state_merged_df: pd.DataFrame
     ) -> pd.DataFrame:
-        return score_county_state_merged_df[
-            constants.DOWNLOADABLE_SCORE_COLUMNS
-        ]
+        df = score_county_state_merged_df[constants.DOWNLOADABLE_SCORE_COLUMNS]
+
+        # rename fields
+
+        return df
 
     def transform(self) -> None:
         logger.info("Transforming data sources for Score + County CSVs")
