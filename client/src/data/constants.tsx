@@ -84,7 +84,7 @@ export const IS_WORKFORCE_FACTOR_DISADVANTAGED_L = 'L_WKFC';
 
 // Total indicators values:
 export const TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS = 'TC';
-export const TOTAL_NUMBER_OF_INDICATORS = 24;
+export const TOTAL_NUMBER_OF_INDICATORS = 21;
 
 // Indicator booleans (disadvangted or not): (GTE = greater than or equal)
 export const IS_GTE_90_EXP_POP_LOSS_AND_IS_LOW_INCOME = 'EPLRLI';
