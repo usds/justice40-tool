@@ -56,13 +56,13 @@ def floor_series(series: pd.Series, number_of_decimals: int) -> pd.Series:
     """Function for flooring to a specific number of decimals.
     Sadly, np does not have this built in.
     """
-    # Sum along axis 0 to find columns with missing data, 
-    # then sum along axis 1 to the index locations for 
+    # Sum along axis 0 to find columns with missing data,
+    # then sum along axis 1 to the index locations for
     # rows with missing data
 
     # raise exception for handling empty series
     if series.empty:
-        raise ValueError("Empty series")
+        raise ValueError("Empty series provided")
 
     multiplication_factor = 10 ** number_of_decimals
 
