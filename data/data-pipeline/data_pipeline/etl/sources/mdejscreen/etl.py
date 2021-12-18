@@ -33,33 +33,34 @@ class MDEJScreenETL(ExtractTransformLoad):
     def transform(self) -> None:
         logger.info("Transforming Maryland EJScreen Data")
 
-        # Load comparison shape files that comprise Maryland EJScreen
-        # https://p1.cgis.umd.edu/mdejscreen/help.html
+        # First load comparison shape files that comprise Maryland EJScreen
+        # Source: https://p1.cgis.umd.edu/mdejscreen/help.html
         # From the documentation:
         # Each of the following categories contains a number of relevant indicators,
         # and an averaged score. The two "Pollution Burden" average scores are then
         # averaged together and the result is multiplied by the average of the
-        # "Population Characteristics" categories to get the total EJ Score of each tract.
-        # For each indicator, the percentile is given.
-        # For example, the indicator value for "Asthma Emergency Discharges" with 0.9 is therefore in
-        # the 90th percentile, which means only 10% of tracts in Maryland have higher values.
+        # "Population Characteristics" categories to get the total EJ Score for each tract.
+        # For each indicator, the percentile is given. For example, the indicator value
+        # for "Asthma Emergency Discharges" with 0.9 is therefore in the 90th percentile,
+        # which means only 10% of tracts in Maryland have higher values.
         # EJ Scores near 1 represent areas of the greatest environmental justice concern.
 
         list_of_files = list(glob(str(self.SHAPE_FILES_PATH) + "/*.shp"))
-        # # ignore counties becauses this is not the level of measurement
-        # # that is consistent with our current scoring and ranking methodology
 
+        # Ignore counties becauses this is not the level of measurement
+        # that is consistent with our current scoring and ranking methodology.
         dfs_list = [
             gpd.read_file(f)
             for f in list_of_files
             if not f.endswith("CountiesEJScore.shp")
         ]
 
-        # set the Census tract as the index and drop the geometry column
-        # that produces the census tract boundaries
-        # geopandas raises an exception if there are duplicate geometry columns
+        # Set the Census tract as the index and drop the geometry column
+        # that produces the census tract boundaries.
+        # The latter is because Geopandas raises an exception if there
+        # are duplicate geometry columns.
         # Moreover, since the unit of measurement is at the tract level
-        # we can consistantly merge this with another dataset
+        # we can consistantly merge this with other datasets
         dfs_list = [
             df.set_index("Census_Tra").drop("geometry", axis=1)
             for df in dfs_list
@@ -67,18 +68,20 @@ class MDEJScreenETL(ExtractTransformLoad):
         # pylint: disable=unsubscriptable-object
         combined_df = gpd.GeoDataFrame(pd.concat(dfs_list, axis=1))
 
-        # reset index so that we no longer have the tract as our index
+        # Reset index so that we no longer have the tract as our index
         combined_df = combined_df.reset_index()
         # coerce into integer into
         # pylint: disable=unsupported-assignment-operation, unsubscriptable-object
         combined_df["Census_Tra"] = (combined_df["Census_Tra"]).astype(int)
 
-        # drop the 10 census tracts that are zero: please see here:
+        # Drop the 10 census tracts that are zero: please see here:
         # https://github.com/usds/justice40-tool/issues/239#issuecomment-995821572
         combined_df = combined_df[combined_df["Census_Tra"] != 0]
 
+        # Set our class instance variable.
         self.df = combined_df.copy()
 
+        # Rename
         self.df.rename(
             columns={
                 "Census_Tra": self.GEOID_TRACT_FIELD_NAME,
@@ -87,9 +90,8 @@ class MDEJScreenETL(ExtractTransformLoad):
             inplace=True,
         )
 
-        # Baseline Comparisons at quartiles and the 90th percentile
-        # Interpretation: The score is greater than
-        # N% of the tracts in the state
+        # Baseline Comparisons with some quartiles and the 90th percentile.
+        # Interpretation: The score is greater than N% of the tracts in the state.
         self.df[field_names.MDEjSCREEN_TRACT_25_PERCENT_FIELD] = (
             self.df[self.MDEJSCREEN_PERCENTILE_FIELD_NAME] > 0.25
         )
@@ -99,6 +101,7 @@ class MDEJScreenETL(ExtractTransformLoad):
         self.df[field_names.MDEjSCREEN_TRACT_75_PERCENT_FIELD] = (
             self.df[self.MDEJSCREEN_PERCENTILE_FIELD_NAME] > 0.75
         )
+        # This percentile is used in the comparison tool.
         self.df[field_names.MDEjSCREEN_TRACT_90_PERCENT_FIELD] = (
             self.df[self.MDEJSCREEN_PERCENTILE_FIELD_NAME] > 0.90
         )
