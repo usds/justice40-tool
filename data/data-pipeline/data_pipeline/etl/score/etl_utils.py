@@ -1,3 +1,5 @@
+import numpy as np
+import pandas as pd
 import os
 import sys
 from pathlib import Path
@@ -48,3 +50,33 @@ def check_score_data_source(
                 "No local score tiles data found. Please use '-d aws` to fetch from AWS"
             )
             sys.exit()
+
+
+def floor_series(series: pd.Series, number_of_decimals: int) -> pd.Series:
+    """Function for flooring to a specific number of decimals.
+    Sadly, np does not have this built in.
+    """
+    # Sum along axis 0 to find columns with missing data, 
+    # then sum along axis 1 to the index locations for 
+    # rows with missing data
+
+    # raise exception for handling empty series
+    if series.empty:
+        raise ValueError("Empty series")
+
+    multiplication_factor = 10 ** number_of_decimals
+
+    floored_series = np.where(
+        series.isnull(),
+        # Don't try to floor null values
+        None,
+        # Floor non-null values
+        # In order to safely cast NaNs
+        # First coerce series to float type
+        # Please see here:
+        # https://pandas.pydata.org/pandas-docs/stable/user_guide/integer_na.html#nullable-integer-data-type
+        (np.floor(series.astype(float) * multiplication_factor))
+        / multiplication_factor,
+    )
+
+    return floored_series

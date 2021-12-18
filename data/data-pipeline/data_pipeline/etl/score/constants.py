@@ -180,8 +180,6 @@ TILES_SCORE_FLOAT_COLUMNS = [
     field_names.TSDF_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.TRAFFIC_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.UNEMPLOYMENT_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.LOW_HS_EDUCATION_FIELD,
-    field_names.ISLAND_AREAS_LOW_HS_EDUCATION_FIELD,
     field_names.WASTEWATER_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.SCORE_L + field_names.PERCENTILE_FIELD_SUFFIX,
 ]
