@@ -6,7 +6,7 @@
 - Lucas Brown - lucasmbrown-usds
 
 ## Ingeniería
-Consultar la lista definitiva en [archivo CODEOWNERS](./github/CODEOWNERS).
+Consultar la lista definitiva en [archivo CODEOWNERS](/.github/CODEOWNERS).
 
 - Shelby Switzer - switzersc-usds - dirección de ingeniería
 - Jorge Escobar - esfoobar-usds

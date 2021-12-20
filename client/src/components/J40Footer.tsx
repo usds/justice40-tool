@@ -21,8 +21,8 @@ const J40Footer = () => {
     [
       intl.formatMessage(COMMON_COPY.FOOTER.CONTACT),
       <Address
-        key={'footeraddress'}
         className={'j40-footer-address'}
+        key={'footeraddress'}
         size={'big'}
         items={[
           COMMON_COPY.FOOTER_CEQ_ADDRESS.NAME,
@@ -45,17 +45,17 @@ const J40Footer = () => {
       </a>,
       <a
         key="foialink"
+        href={'https://www.whitehouse.gov/ceq/foia'}
         target={'_blank'}
         rel={'noreferrer'}
-        href={'https://www.whitehouse.gov/ceq/foia'}
         data-cy={hyphenizeString(COMMON_COPY.FOOTER.FOIA.defaultMessage)}>
         {intl.formatMessage(COMMON_COPY.FOOTER.FOIA)}
       </a>,
       <a
         key={'privacylink'}
+        href={intl.formatMessage(COMMON_COPY.FOOTER.PRIVACY_LINK)}
         target={'_blank'}
         rel={'noreferrer'}
-        href={intl.formatMessage(COMMON_COPY.FOOTER.PRIVACY_LINK)}
         data-cy={hyphenizeString(COMMON_COPY.FOOTER.PRIVACY.defaultMessage)}>
         {intl.formatMessage(COMMON_COPY.FOOTER.PRIVACY)}
       </a>,
@@ -66,6 +66,8 @@ const J40Footer = () => {
         className={'footer-link-first-child'}
         key={'contactlink'}
         href={intl.formatMessage(COMMON_COPY.FOOTER.FIND_CONTACT_LINK)}
+        target={'_blank'}
+        rel="noreferrer"
         data-cy={hyphenizeString(COMMON_COPY.FOOTER.FIND_CONTACT.defaultMessage)}>
         {intl.formatMessage(COMMON_COPY.FOOTER.FIND_CONTACT)}
       </a>,

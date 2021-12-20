@@ -12,5 +12,5 @@ Los mantenedores del proyecto tienen el derecho y la obligación de eliminar, ed
 
 Los casos de abuso, acoso o de otro comportamiento inaceptable se pueden denunciar abriendo un problema o contactando con uno o más de los mantenedores del proyecto en justice40open@usds.gov.
 
-Este Código de conducta es una adaptación de la versión 1.0.0 del Convenio del colaborador ([Contributor Covenant](contributor-covenant.org), *en inglés*) disponible en el sitio http://contributor-covenant.org/version/1/0/0/ *(en inglés)*.
+Este Código de conducta es una adaptación de la versión 1.0.0 del Convenio del colaborador ([Contributor Covenant](http://contributor-covenant.org), *en inglés*) disponible en el sitio http://contributor-covenant.org/version/1/0/0/ *(en inglés)*.
 

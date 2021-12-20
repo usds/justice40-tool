@@ -12,14 +12,15 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
         <a
           href="/en/methodology"
         >
-          Methodology and data
+          Methodology & data
         </a>
          page and send us feedback.
       </li>
       <li>
         Find communities of interest and 
         <a
-          href="mailto:screeningtool.feedback@usds.gov"
+          href="mailto:Screeningtool-Support@omb.eop.gov"
+          target="blank"
         >
           share your feedback
         </a>
@@ -29,6 +30,7 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
         Respond to our request for information on 
         <a
           href="https://www.federalregister.gov/"
+          target="blank"
         >
           federalregister.gov
         </a>

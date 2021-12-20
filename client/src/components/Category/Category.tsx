@@ -11,7 +11,7 @@ interface ICategory {
 const Category = ({name, isDisadvantaged}:ICategory) => {
   return (
     <div className={styles.categoryContainer}>
-      <div>
+      <div className={styles.category}>
         {name}
       </div>
       <DisadvantageDot isDisadvantaged={isDisadvantaged}/>

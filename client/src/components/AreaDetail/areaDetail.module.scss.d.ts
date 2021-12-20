@@ -3,14 +3,14 @@ declare namespace MapModuleScssNamespace {
     areaDetailContainer: string;
     categorization:string;
     communityOfFocus:string;
-    communityOfFocusCircle:string;
     censusRow:string;
     censusLabel:string;
     censusText: string;
-    divider:string;
     feedbackLink:string;
     isInFocus:string;
     versionInfo: string;
+    showThresholdExceed:string;
+    hideThresholdExceed:string;
   }
 }
 

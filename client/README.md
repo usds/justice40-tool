@@ -16,8 +16,21 @@ This README contains the following content:
 ## Installing and running the client site
 
 ### Via npm
-1. Confirm you have the base required software installed. See [INSTALLATION](INSTALLATION.md) for more details.
-1. Install yarn if you do not have it yet. Open your terminal and run `sudo npm install -global yarn`. This works on MacOS and Win10. To confirm it is installed, run `yarn -v`. A version number should be returned.
+
+#### Install Node using NVM 
+
+This will work for both MacOS and Win10. Follow instructions on this [link](https://medium.com/@nodesource/installing-node-js-tutorial-using-nvm-5c6ff5925dd8). Be sure to read through the whole doc to find the sections within each step relevant to you (e.g. if you're using Homebrew, when you get to Step 2 look for the section, "Install NVM with Homebrew").
+
+If you install NVM using Homebrew, make sure to read the output in terminal after you run `brew install nvm`. You will need to add a few lines to your ~/.bash_profile and perhaps complete a couple other tasks.
+
+Once you install NVM, don't forget to install Node! This is included in the linked tutorial above. This will also install `npm` which you need for the steps below.
+
+#### Install Yarn
+
+Install yarn if you do not have it yet. Open your terminal and run `sudo npm install -global yarn`. This works on MacOS and Win10. To confirm it is installed, run `yarn -v`. A version number should be returned.
+
+#### Run The Application
+
 1. Navigate to the base directory of this repository, and go to the `client` directory (`cd client`).
 1. Run the command `npm install` to install the dependencies.
 1. Run `npm start` to start up the client app.
@@ -62,7 +75,7 @@ DATA_SOURCE env variable in the docker-compose.yml. See [environment variables](
 
 ### Viewing data on the map
 
-See [VIEW_MAP_DATA](./VIEW_MAP_DATA) for more details on this.
+See [VIEW_MAP_DATA.md](./VIEW_MAP_DATA.md) for more details on this.
 
 ## Linting and Formatting
 
@@ -159,7 +172,7 @@ When developing, to use a flag:
 1. Pass the Gatsby-provided `location` variable to your component. You have several options here:
    1. If your page uses the `Layout` [component](src/components/layout.tsx), you automatically get `URLFlagProvider` (see [FlagContext](src/contexts/FlagContext.tsx) for more info).
    2. If your page does not use `Layout`, you need to surround your component with a `URLFlagProvider` component and pass `location`. You can get `location` from the default props of the page (more [here](https://www.gatsbyjs.com/docs/location-data-from-props/)). See [Index.tsx](src/pages/index.tsx) for an example.
-2. Use the `useFlags()` hook to get access to an array of flags, and check this array for the presence of the correct feature identifier. See [J40Header](src/components/J40Header.tsx) for an example.
+2. Use the `useFlags()` hook to get access to an array of flags, and check this array for the presence of the correct feature identifier. See [J40Header](src/components/J40Header/J40Header.tsx) for an example.
 
 #### When to use flags:
 
