@@ -13,8 +13,8 @@ def test_floor_series():
 
     floored_series_1 = floor_series(series, number_of_decimals=2)
     floored_series_2 = floor_series(series, number_of_decimals=3)
-    floored_series_0 = floor_series(series, number_of_decimals=1)
-    floored_series_nan = floor_series(
+    floored_series_3 = floor_series(series, number_of_decimals=1)
+    floored_series_4 = floor_series(
         series_of_nan_values, number_of_decimals=10
     )
     # expected fixtures
@@ -35,12 +35,12 @@ def test_floor_series():
 
     # Test for expected value with 1 decimal place
     # Elewentwise comparison to ensure all values are equal
-    all_elements_are_equal_1 = np.equal(expected_3, floored_series_0)
+    all_elements_are_equal_1 = np.equal(expected_3, floored_series_3)
     assert all_elements_are_equal_1.all()
 
     # Test for expected value for some arbitrary decimal place
     # Elewentwise comparison to ensure all values are equal for NaN
-    all_elements_are_equal_nan = np.equal(expected_4, floored_series_nan)
+    all_elements_are_equal_nan = np.equal(expected_4, floored_series_4)
     assert all_elements_are_equal_nan.all()
 
     # Test for empty series - should raise an exception
