@@ -25,23 +25,23 @@ def test_floor_series():
 
     # Test for expected value with 2 decimal places
     # Elewentwise comparison to ensure all values are equal
-    all_elements_are_equal_two = np.equal(expected_1, floored_series_1)
-    assert all_elements_are_equal_two.all()
+    all_elements_are_equal_one = np.equal(expected_1, floored_series_1)
+    assert all_elements_are_equal_one.all()
 
     # Test for expected value with 3 decimal places
     # Elewentwise comparison to ensure all values are equal
-    all_elements_are_equal_3 = np.equal(expected_2, floored_series_2)
-    assert all_elements_are_equal_3.all()
+    all_elements_are_equal_two = np.equal(expected_2, floored_series_2)
+    assert all_elements_are_equal_two.all()
 
     # Test for expected value with 1 decimal place
     # Elewentwise comparison to ensure all values are equal
-    all_elements_are_equal_1 = np.equal(expected_3, floored_series_3)
-    assert all_elements_are_equal_1.all()
+    all_elements_are_equal_three = np.equal(expected_3, floored_series_3)
+    assert all_elements_are_equal_three.all()
 
     # Test for expected value for some arbitrary decimal place
     # Elewentwise comparison to ensure all values are equal for NaN
-    all_elements_are_equal_nan = np.equal(expected_4, floored_series_4)
-    assert all_elements_are_equal_nan.all()
+    all_elements_are_equal_four = np.equal(expected_4, floored_series_4)
+    assert all_elements_are_equal_four.all()
 
     # Test for empty series - should raise an exception
     with pytest.raises(ValueError, match="Empty series provided"):
