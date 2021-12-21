@@ -308,6 +308,13 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     title: <Category name={category.titleText} isDisadvantaged={category.isDisadvagtaged}/>,
     content: (
       <>
+        {/* Category Header */}
+        <div className={styles.categoryHeader}>
+          <div>{intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.INDICATOR)}</div>
+          <div>{intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.PERCENTILE)}</div>
+        </div>
+
+        {/* Category Indicators */}
         {category.indicators.map((indicator:any, index:number) => {
           return <Indicator key={`ind${index}`} indicator={indicator}/>;
         })}

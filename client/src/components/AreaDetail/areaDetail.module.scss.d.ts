@@ -11,6 +11,7 @@ declare namespace MapModuleScssNamespace {
     versionInfo: string;
     showThresholdExceed:string;
     hideThresholdExceed:string;
+    categoryHeader:string;
   }
 }
 

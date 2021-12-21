@@ -237,6 +237,16 @@ export const COMMUNITY = {
 };
 
 export const SIDE_PANEL_CATEGORY = defineMessages({
+  INDICATOR: {
+    id: 'areaDetail.category.header.indicator',
+    defaultMessage: 'Indicator',
+    description: 'header for each category',
+  },
+  PERCENTILE: {
+    id: 'areaDetail.category.header.percentile',
+    defaultMessage: 'Percentile (0-100)',
+    description: 'header for each category',
+  },
   CLIMATE: {
     id: 'areaDetail.indicator.title.climate',
     defaultMessage: 'Climate change',
