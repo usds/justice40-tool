@@ -1,7 +1,7 @@
 /* eslint-disable quotes */
 // External Libs:
 import React from 'react';
-import {useIntl} from 'gatsby-plugin-intl';
+import {useIntl, FormattedMessage} from 'gatsby-plugin-intl';
 import {Accordion} from '@trussworks/react-uswds';
 
 // Components:
@@ -234,14 +234,14 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     isDisadvagtaged: properties[constants.IS_GTE_90_BELOW_100_POVERTY_AND_LOW_HIGH_SCHOOL_EDU] ?
     properties[constants.IS_GTE_90_BELOW_100_POVERTY_AND_LOW_HIGH_SCHOOL_EDU] : null,
   };
-  // const highSchool:indicatorInfo = {
-  //   label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HIGH_SCL),
-  //   description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.HIGH_SKL),
-  //   value: properties[constants.HIGH_SCHOOL_PROPERTY_PERCENTILE] ?
-  //   properties[constants.HIGH_SCHOOL_PROPERTY_PERCENTILE] : null,
-  //   isDisadvagtaged: properties[constants.IS_GTE_90_BELOW_100_POVERTY_AND_LOW_HIGH_SCHOOL_EDU] ?
-  //   properties[constants.IS_GTE_90_BELOW_100_POVERTY_AND_LOW_HIGH_SCHOOL_EDU] : null,
-  // };
+  const highSchool:indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HIGH_SCL),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.HIGH_SKL),
+    value: properties[constants.HIGH_SCHOOL_PROPERTY_PERCENTILE] ?
+    properties[constants.HIGH_SCHOOL_PROPERTY_PERCENTILE] : null,
+    isDisadvagtaged: properties[constants.IS_GTE_90_UNEMPLOYMENT_AND_LOW_HIGH_SCHOOL_EDU] ?
+    properties[constants.IS_GTE_90_UNEMPLOYMENT_AND_LOW_HIGH_SCHOOL_EDU] : null,
+  };
 
   // Aggregate indicators based on categories
   const categories = [
@@ -297,7 +297,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     {
       id: 'work-dev',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.WORK_DEV),
-      indicators: [lowMedInc, lingIso, unemploy, poverty],
+      indicators: [lowMedInc, lingIso, unemploy, poverty, highSchool],
       isDisadvagtaged: properties[constants.IS_WORKFORCE_FACTOR_DISADVANTAGED_L] ?
     properties[constants.IS_WORKFORCE_FACTOR_DISADVANTAGED_L] : null,
     },
@@ -369,8 +369,22 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
           <h3>{EXPLORE_COPY.COMMUNITY.NOT_OF_FOCUS}</h3>
           }
         </div>
+        <div className={
+            properties[constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS] > 0 ?
+            styles.showThresholdExceed : styles.hideThresholdExceed
+        }>
+          <FormattedMessage
+            id={'explore.page.threshold.count.exceed'}
+            description={"threshold exceeded count"}
+            defaultMessage={'{disadvCount} of {totalCount} thresholds exceeded'}
+            values={{
+              disadvCount: properties[constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS],
+              totalCount: constants.TOTAL_NUMBER_OF_INDICATORS,
+            }}/>
+        </div>
         {/* eslint-disable-next-line max-len */}
         {/* <a className={styles.feedbackLink} href={sidePanelFeedbackHref}>{EXPLORE_COPY.COMMUNITY.SEND_FEEDBACK}</a> */}
+
       </div>
 
       {/* All category accordions in this component */}

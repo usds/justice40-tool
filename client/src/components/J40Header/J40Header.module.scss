@@ -33,6 +33,7 @@
     @include u-padding-top('05');
     @include u-margin-left(1);
     @include u-font("body", "2xs");
+    @include u-text('bold')
   }
 
   .navLinks {

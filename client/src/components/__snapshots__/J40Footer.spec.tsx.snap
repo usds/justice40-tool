@@ -134,6 +134,8 @@ exports[`J40Footer renders correctly 1`] = `
                     class="footer-link-first-child"
                     data-cy="find-a-contact-at-usa-gov"
                     href="https://www.usa.gov/"
+                    rel="noreferrer"
+                    target="_blank"
                   >
                     Find a contact at USA.gov
                   </a>
@@ -185,7 +187,7 @@ exports[`J40Footer renders correctly 1`] = `
         data-testid="button"
         type="button"
       >
-        Tell us how we're doing
+        Help improve the site & data
       </button>
     </div>
   </footer>
