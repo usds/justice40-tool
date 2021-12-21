@@ -1,5 +1,3 @@
-import numpy as np
-import pandas as pd
 import os
 import sys
 from pathlib import Path
@@ -69,17 +67,20 @@ def floor_series(series: pd.Series, number_of_decimals: int) -> pd.Series:
 
     multiplication_factor = 10 ** number_of_decimals
 
+    # In order to safely cast NaNs
+    # First coerce series to float type: series.astype(float)
+    # Please see here:
+    # https://pandas.pydata.org/pandas-docs/stable/user_guide/integer_na.html#nullable-integer-data-type
+    product_for_numerator = np.floor(
+        series.astype(float) * multiplication_factor
+    )
+
     floored_series = np.where(
         series.isnull(),
         # Don't try to floor null values
         None,
         # Floor non-null values
-        # In order to safely cast NaNs
-        # First coerce series to float type
-        # Please see here:
-        # https://pandas.pydata.org/pandas-docs/stable/user_guide/integer_na.html#nullable-integer-data-type
-        (np.floor(series.astype(float) * multiplication_factor))
-        / multiplication_factor,
+        product_for_numerator / multiplication_factor,
     )
 
     return floored_series

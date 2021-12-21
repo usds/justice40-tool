@@ -1,6 +1,5 @@
 from pathlib import Path
 import json
-import numpy as np
 import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
@@ -218,7 +217,7 @@ class PostScoreETL(ExtractTransformLoad):
             ),
             axis=0,
         )
-        
+
         # create indexes
         score_tiles = score_tiles.rename(
             columns=constants.TILES_SCORE_COLUMNS,
