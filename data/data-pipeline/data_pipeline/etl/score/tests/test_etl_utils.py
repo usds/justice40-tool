@@ -8,20 +8,29 @@ from data_pipeline.etl.score.etl_utils import floor_series
 def test_floor_series():
     # test examples
     series = pd.Series(data=[None, 1, 0.324534, 1.2341])
+    series_exponentiated = pd.Series(
+        data=[
+            -np.inf,
+            -0.131321313123123,
+            5.62322441e-15,
+            1.2341123131313131312e12,
+        ]
+    )
     series_of_nan_values = pd.Series(data=[None, None, None, None, None])
     series_empty = pd.Series(data=[])
 
     floored_series_1 = floor_series(series, number_of_decimals=2)
     floored_series_2 = floor_series(series, number_of_decimals=3)
     floored_series_3 = floor_series(series, number_of_decimals=1)
-    floored_series_4 = floor_series(
-        series_of_nan_values, number_of_decimals=10
-    )
+    floored_series_4 = floor_series(series_of_nan_values, number_of_decimals=10)
+    floored_series_5 = floor_series(series_exponentiated, number_of_decimals=1)
+
     # expected fixtures
     expected_1 = np.array([None, 1.0, 0.32, 1.23])
     expected_2 = np.array([None, 1.00, 0.324, 1.234])
     expected_3 = np.array([None, 1.0, 0.3, 1.2])
     expected_4 = np.array([None, None, None, None, None])
+    expected_5 = np.array([-np.inf, -0.2, 0.0, 1234112313131.3])
 
     # Test for expected value with 2 decimal places
     # Elewentwise comparison to ensure all values are equal
@@ -42,6 +51,12 @@ def test_floor_series():
     # Elewentwise comparison to ensure all values are equal for NaN
     all_elements_are_equal_four = np.equal(expected_4, floored_series_4)
     assert all_elements_are_equal_four.all()
+
+    # Test for expected value for some arbitrary decimal place
+    # Elewentwise comparison to ensure all floating point imprecision
+    # is clamped to a certain number of decimal points
+    all_elements_are_equal_five = np.equal(expected_5, floored_series_5)
+    assert all_elements_are_equal_five.all()
 
     # Test for empty series - should raise an exception
     with pytest.raises(ValueError, match="Empty series provided"):
