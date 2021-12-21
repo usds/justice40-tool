@@ -1,53 +1,17 @@
 import {useIntl} from 'gatsby-plugin-intl';
 import React from 'react';
-import {LngLatBoundsLike} from 'mapbox-gl';
+import {MapEvent} from 'react-map-gl';
 
 import * as styles from './territoryFocusControl.module.scss';
 import * as EXPLORE_COPY from '../data/copy/explore';
-import * as constants from '../data/constants';
 
 interface ITerritoryFocusControl {
-  goToPlace(bounds: LngLatBoundsLike): void;
+  onClick(event: MapEvent | React.MouseEvent<HTMLButtonElement>):void;
 }
 
 
-const TerritoryFocusControl = ({goToPlace}: ITerritoryFocusControl) => {
+const TerritoryFocusControl = ({onClick}: ITerritoryFocusControl) => {
   const intl = useIntl();
-
-  const onClickTerritoryFocusButton = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.stopPropagation();
-    const buttonID = event.target && (event.target as HTMLElement).id;
-
-    switch (buttonID) {
-      case '48':
-        goToPlace(constants.LOWER_48_BOUNDS);
-        break;
-      case 'AK':
-        goToPlace(constants.ALASKA_BOUNDS);
-        break;
-      case 'HI':
-        goToPlace(constants.HAWAII_BOUNDS);
-        break;
-      case 'PR':
-        goToPlace(constants.PUERTO_RICO_BOUNDS);
-        break;
-      case 'GU':
-        goToPlace(constants.GUAM_BOUNDS);
-        break;
-      case 'AS':
-        goToPlace(constants.AMERICAN_SAMOA_BOUNDS);
-        break;
-      case 'MP':
-        goToPlace(constants.MARIANA_ISLAND_BOUNDS);
-        break;
-      case 'VI':
-        goToPlace(constants.US_VIRGIN_ISLANDS_BOUNDS);
-        break;
-
-      default:
-        break;
-    }
-  };
 
   const territories = [
     {
@@ -102,7 +66,8 @@ const TerritoryFocusControl = ({goToPlace}: ITerritoryFocusControl) => {
           <button
             id={territory.short}
             key={territory.short}
-            onClick={(e) => onClickTerritoryFocusButton(e)}
+            // onClickCapture={(e) => onClickTerritoryFocusButton(e)}
+            onClickCapture={(e) => onClick(e)}
             className={'mapboxgl-ctrl-icon ' + territoriesIconClassName[index]}
             aria-label={intl.formatMessage(
                 {

@@ -1,3 +1,4 @@
+/* eslint-disable valid-jsdoc */
 /* eslint-disable no-unused-vars */
 // External Libs:
 import React, {useRef, useState, useMemo} from 'react';
@@ -76,37 +77,85 @@ const J40Map = ({location}: IJ40Interface) => {
   const selectedFeatureId = (selectedFeature && selectedFeature.id) || '';
   const filter = useMemo(() => ['in', constants.GEOID_PROPERTY, selectedFeatureId], [selectedFeature]);
 
-  const onClick = (event: MapEvent) => {
-    const feature = event.features && event.features[0];
-    if (feature) {
-      const [minLng, minLat, maxLng, maxLat] = bbox(feature);
-      const newViewPort = new WebMercatorViewport({height: viewport.height!, width: viewport.width!});
-      const {longitude, latitude, zoom} = newViewPort.fitBounds(
-          [
-            [minLng, minLat],
-            [maxLng, maxLat],
-          ],
-          {
-            padding: 40,
-          },
-      );
-      if (feature.id !== selectedFeatureId) {
-        setSelectedFeature(feature);
-        console.log(feature.properties);
-      } else {
-        setSelectedFeature(undefined);
+  /**
+ * This onClick event handler will listen and handle clicks on the map. It will listen for clicks on the
+ * territory controls and it will listen to clicks on the map.
+ *
+ * It will NOT listen to clicks into the search field or the zoom controls. These clickHandlers are
+ * captured in their own respective components.
+ */
+  const onClick = (event: MapEvent | React.MouseEvent<HTMLButtonElement>) => {
+    // Stop all propagation / bubbling / capturing
+    event.preventDefault();
+    event.stopPropagation();
+
+    // Check if the click is for territories. Given the territories component's design, it can be
+    // guaranteed that each territory control will have an id. We use this ID to determine
+    // if the click is coming from a territory control
+    if (event.target && (event.target as HTMLElement).id) {
+      const buttonID = event.target && (event.target as HTMLElement).id;
+
+      switch (buttonID) {
+        case '48':
+          goToPlace(constants.LOWER_48_BOUNDS);
+          break;
+        case 'AK':
+          goToPlace(constants.ALASKA_BOUNDS);
+          break;
+        case 'HI':
+          goToPlace(constants.HAWAII_BOUNDS);
+          break;
+        case 'PR':
+          goToPlace(constants.PUERTO_RICO_BOUNDS);
+          break;
+        case 'GU':
+          goToPlace(constants.GUAM_BOUNDS);
+          break;
+        case 'AS':
+          goToPlace(constants.AMERICAN_SAMOA_BOUNDS);
+          break;
+        case 'MP':
+          goToPlace(constants.MARIANA_ISLAND_BOUNDS);
+          break;
+        case 'VI':
+          goToPlace(constants.US_VIRGIN_ISLANDS_BOUNDS);
+          break;
+
+        default:
+          break;
       }
-      const popupInfo = {
-        longitude: longitude,
-        latitude: latitude,
-        zoom: zoom,
-        properties: feature.properties,
-      };
-      goToPlace([
-        [minLng, minLat],
-        [maxLng, maxLat],
-      ]);
-      setDetailViewData(popupInfo);
+    } else {
+      // This else clause will fire when the ID is null or empty. This is the case where the map is clicked
+      const feature = event.features && event.features[0];
+      if (feature) {
+        const [minLng, minLat, maxLng, maxLat] = bbox(feature);
+        const newViewPort = new WebMercatorViewport({height: viewport.height!, width: viewport.width!});
+        const {longitude, latitude, zoom} = newViewPort.fitBounds(
+            [
+              [minLng, minLat],
+              [maxLng, maxLat],
+            ],
+            {
+              padding: 40,
+            },
+        );
+        if (feature.id !== selectedFeatureId) {
+          setSelectedFeature(feature);
+        } else {
+          setSelectedFeature(undefined);
+        }
+        const popupInfo = {
+          longitude: longitude,
+          latitude: latitude,
+          zoom: zoom,
+          properties: feature.properties,
+        };
+        goToPlace([
+          [minLng, minLat],
+          [maxLng, maxLat],
+        ]);
+        setDetailViewData(popupInfo);
+      }
     }
   };
 
@@ -251,7 +300,7 @@ const J40Map = ({location}: IJ40Interface) => {
             onClick={onClickGeolocate}
           /> : ''}
           {geolocationInProgress ? <div>Geolocation in progress...</div> : ''}
-          <TerritoryFocusControl goToPlace={goToPlace}/>
+          <TerritoryFocusControl onClick={onClick}/>
           {'fs' in flags ? <FullscreenControl className={styles.fullscreenControl}/> :'' }
 
         </ReactMapGL>

@@ -165,8 +165,8 @@ export const MARIANA_ISLAND_BOUNDS: LngLatBoundsLike = [
 ];
 
 export const AMERICAN_SAMOA_BOUNDS: LngLatBoundsLike = [
-  [-171.089874, -14.548699],
-  [-168.1433, -11.046934],
+  [-172.589874, -15.548699],
+  [-169.6433, -12.046934],
 ];
 
 export const US_VIRGIN_ISLANDS_BOUNDS: LngLatBoundsLike = [
