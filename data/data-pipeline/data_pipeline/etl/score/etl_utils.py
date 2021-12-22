@@ -65,7 +65,7 @@ def floor_series(series: pd.Series, number_of_decimals: int) -> pd.Series:
     # as well as elementwise multiplication. The result of such
     # operations can introduce such values, below, due to numerical
     # instability. This results in unsafe type inference for numpy
-    # float types which is exacerbated by panda'ss type inference
+    # float types which is exacerbated by panda's type inference.
     # Hence, to handle such offending values we default to None
     # Please see the reference on line 89 for more details
     unacceptable_values = [-np.inf, np.inf, "None"]
