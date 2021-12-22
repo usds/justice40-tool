@@ -886,15 +886,16 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               High school degree achievement rate
               <div>
                 
-      Percent of people ages 25 years or older whose education level is less than a high school diploma
+      Percent (not a percentile) of people ages 25 years or older whose education level is less than a 
+      high school diploma
     
               </div>
             </div>
             <div>
               N/A
-              <sup>
-                <span />
-              </sup>
+              <span>
+                %
+              </span>
             </div>
           </div>
         </li>
