@@ -62,11 +62,12 @@ def floor_series(series: pd.Series, number_of_decimals: int) -> pd.Series:
     # rows with missing data
 
     # we perform many operations using the division operator
-    # as well as elementwise multiplication. These values can
-    # occur in the instance that we have numerical instability
-    # along with unsafe type inference for numpy float types
-    # for example, there may be ambiguity introduced with pandas
-    # object type
+    # as well as elementwise multiplication. The result of
+    # such values can introduce the below values due to numerical
+    # instability. This results in unsafe type inference for numpy
+    # float types which is exacerbated by pandas type inference
+    # Hence, to handle such offending values we default to None
+    # Please see the reference on line 89 for more details
     unacceptable_values = [-np.inf, np.inf, "None"]
     mapping = {
         unacceptable_value: None for unacceptable_value in unacceptable_values
