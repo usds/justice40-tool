@@ -58,4 +58,4 @@ def test_floor_series():
 
     # Test for empty series - should raise an exception
     with pytest.raises(ValueError, match="Empty series provided"):
-        floor_series(series_empty, number_of_decimals=2)
+        floored_series_empty = floor_series(series_empty, number_of_decimals=2)
