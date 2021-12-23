@@ -57,7 +57,6 @@ def test_floor_series():
     # Test for expected value for some arbitrary decimal place
     # Elewentwise comparison to ensure all floating point imprecision
     # is clamped to a certain number of decimal points
-    print(floored_series_5)
     all_elements_are_equal_five = np.equal(expected_5, floored_series_5)
     assert all_elements_are_equal_five.all()
 
