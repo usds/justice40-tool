@@ -54,18 +54,21 @@ def check_score_data_source(
 
 
 def floor_series(series: pd.Series, number_of_decimals: int) -> pd.Series:
-    """Function for flooring to a specific number of decimals.
-    Sadly, np does not have this built in.
     """
-    # Sum along axis 0 to find columns with missing data,
-    # then sum along axis 1 to the index locations for
-    # rows with missing data
+    Floors all non-null numerical values to a specific number of decimal points
+
+    Args:
+        series (pd.Series): Input pandas series
+        number_of_decimals (int): Number of decimal points to floor all numerical values to
+    Returns:
+        A Pandas Series
+    """
 
     # we perform many operations using the division operator
     # as well as elementwise multiplication. The result of such
     # operations can introduce such values, below, due to numerical
     # instability. This results in unsafe type inference for numpy
-    # float types which is exacerbated by panda's type inference.
+    # float types which is exacerbated by panda's type inference engine.
     # Hence, to handle such offending values we default to None
     # Please see the reference on line 89 for more details
     unacceptable_values = [-np.inf, np.inf, "None"]
@@ -73,13 +76,19 @@ def floor_series(series: pd.Series, number_of_decimals: int) -> pd.Series:
         unacceptable_value: None for unacceptable_value in unacceptable_values
     }
 
+    # ensure we are working with a numpy array (which is really what a pandas series is)
+    if not isinstance(series, pd.Series):
+        raise TypeError(
+            f"Argument series must be of type pandas series, not of type {type(series).__name__}."
+        )
+
     # raise exception for handling empty series
     if series.empty:
-        raise ValueError("Empty series provided")
+        raise ValueError("Empty series provided.")
 
     # if we have any values, just replace them with None
     if series.isin(unacceptable_values).any():
-        series.replace(mapping, regex=True, inplace=True)
+        series.replace(mapping, regex=False, inplace=True)
 
     multiplication_factor = 10 ** number_of_decimals
 
@@ -93,9 +102,9 @@ def floor_series(series: pd.Series, number_of_decimals: int) -> pd.Series:
 
     floored_series = np.where(
         series.isnull(),
-        # Don't try to floor null values
+        # For all null values default to null
         None,
-        # Floor non-null values
+        # The other default condition - floor non-null values
         product_for_numerator / multiplication_factor,
     )
 

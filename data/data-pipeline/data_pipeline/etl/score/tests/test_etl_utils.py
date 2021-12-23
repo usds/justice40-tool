@@ -11,6 +11,8 @@ def test_floor_series():
     series_exponentiated = pd.Series(
         data=[
             -np.inf,
+            np.inf,
+            "None",
             -0.131321313123123,
             5.62322441e-15,
             1.2341123131313131312e12,
@@ -18,6 +20,8 @@ def test_floor_series():
     )
     series_of_nan_values = pd.Series(data=[None, None, None, None, None])
     series_empty = pd.Series(data=[], dtype="float64")
+    # list of randomly generated values
+    invalid_type = list(np.random.uniform(1, 1000000, size=15))
 
     floored_series_1 = floor_series(series, number_of_decimals=2)
     floored_series_2 = floor_series(series, number_of_decimals=3)
@@ -29,7 +33,7 @@ def test_floor_series():
     expected_2 = np.array([None, 1.00, 0.324, 1.234])
     expected_3 = np.array([None, 1.0, 0.3, 1.2])
     expected_4 = np.array([None, None, None, None, None])
-    expected_5 = np.array([None, -0.2, 0.0, 1234112313131.3])
+    expected_5 = np.array([None, None, None, -0.2, 0.0, 1234112313131.3])
 
     # Test for expected value with 2 decimal places
     # Elewentwise comparison to ensure all values are equal
@@ -53,9 +57,17 @@ def test_floor_series():
     # Test for expected value for some arbitrary decimal place
     # Elewentwise comparison to ensure all floating point imprecision
     # is clamped to a certain number of decimal points
+    print(floored_series_5)
     all_elements_are_equal_five = np.equal(expected_5, floored_series_5)
     assert all_elements_are_equal_five.all()
 
-    # Test for empty series - should raise an exception
-    with pytest.raises(ValueError, match="Empty series provided"):
+    # Test for empty series - should raise a ValueError exception
+    with pytest.raises(ValueError, match="Empty series provided."):
         floor_series(series_empty, number_of_decimals=2)
+
+    # Test for invalid type - should raise a TypeError exception
+    with pytest.raises(
+        TypeError,
+        match="Argument series must be of type pandas series, not of type list.",
+    ):
+        floor_series(invalid_type, number_of_decimals=3)
