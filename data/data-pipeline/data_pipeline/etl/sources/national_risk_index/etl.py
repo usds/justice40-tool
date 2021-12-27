@@ -69,8 +69,8 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         """
         logger.info("Downloading 405MB National Risk Index Data")
         super().extract(
-            self.NRI_FTP_URL,
-            self.TMP_PATH,
+            source_url=self.NRI_FTP_URL,
+            extract_path=self.TMP_PATH,
         )
 
     def transform(self) -> None:

@@ -22,8 +22,9 @@ def copy_data_files(src: Path, dst: Path) -> None:
     """
     if not dst.exists():
         dst.parent.mkdir(parents=True, exist_ok=True)
-        copyfile(src, dst)
-        assert dst.exists()
+
+    copyfile(src, dst)
+    assert dst.exists()
 
 
 @pytest.fixture(scope="session")

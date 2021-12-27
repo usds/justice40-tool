@@ -14,8 +14,20 @@ DATA_DIR = (
     settings.APP_ROOT / "tests" / "sources" / "national_risk_index" / "data"
 )
 
+# Set this to `True` temporarily to allow you to quickly update the test fixtures
+# based on intentional changes to the logic of the method.
+# Do *not* update these fixtures if you did not expect the ETL results to change.
+# This should never be set to `True` in committed code.
+# It should only be used temporarily to quickly update the fixtures.
+UPDATE_TEST_FIXTURES = True
 
 class TestNationalRiskIndexETL:
+    def test_update_test_fixtures(self):
+        """Assert that UPDATE_TEST_FIXTURES is False."""
+        # UPDATE_TEST_FIXTURES should never be True outside of temporarily setting
+        # it to True to quickly update the test fixtures.
+        assert (UPDATE_TEST_FIXTURES is False)
+
     def test_init(self, mock_etl, mock_paths):
         """Tests that the mock NationalRiskIndexETL class instance was
         initiliazed correctly.
@@ -73,11 +85,18 @@ class TestNationalRiskIndexETL:
 
         # Assert that the extracted file exists
         extracted_file_path = tmp_path / "NRI_Table_CensusTracts.csv"
-        assert extracted_file_path.exists()
+        assert extracted_file_path.is_file()
+
+        input_csv_path = DATA_DIR / "input.csv"
+
+        # If temporarily updating test fixtures, write his output file as the input
+        # file:
+        if UPDATE_TEST_FIXTURES:
+            copy_data_files(src=extracted_file_path, dst=input_csv_path)
 
         # Make sure extracted file is equal to the input fixture:
         assert filecmp.cmp(
-            f1=extracted_file_path, f2=DATA_DIR / "input.csv", shallow=False
+            f1=extracted_file_path, f2=input_csv_path, shallow=False
         )
 
     def test_transform(self, mock_etl):
