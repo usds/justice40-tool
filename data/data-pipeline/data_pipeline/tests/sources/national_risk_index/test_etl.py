@@ -14,17 +14,37 @@ DATA_DIR = (
     settings.APP_ROOT / "tests" / "sources" / "national_risk_index" / "data"
 )
 
-# Set this to `True` temporarily to allow you to quickly update the test fixtures
-# based on intentional changes to the logic of the method.
-# Do *not* update these fixtures if you did not expect the ETL results to change.
-# This should never be set to `True` in committed code.
-# It should only be used temporarily to quickly update the fixtures.
+"""
+Set UPDATE_TEST_FIXTURES to `True` temporarily to allow you to quickly update the test
+fixtures based on intentional changes to the logic of the method.
+
+However, note a few things first:
+
+1. Do *not* update these fixtures if you did not expect the ETL results to change.
+
+2. This should never be set to `True` in committed code. It should only be used
+temporarily to quickly update the fixtures.
+
+3. If the source data itself changes (e.g., the external source renames a column),
+update the "furthest upstream" test fixture which, in this case, is the .zip file.
+Then running `UPDATE_TEST_FIXTURES = True` will update all subsequent files.
+
+If you're confused by any of this, ask for help, it's confusing :).
+"""
 UPDATE_TEST_FIXTURES = False
 
 
 class TestNationalRiskIndexETL:
-    def test_update_test_fixtures(self):
+    def test_update_test_fixtures(self, mock_paths, mock_etl):
         """Assert that UPDATE_TEST_FIXTURES is False."""
+        if UPDATE_TEST_FIXTURES:
+            # When updating the test fixtures, run them in order, so that each one
+            # updates the files used by the next method.
+            # pylint: disable=no-value-for-parameter
+            self.test_extract(mock_paths=mock_paths)
+            self.test_transform(mock_etl=mock_etl)
+            self.test_load(mock_etl=mock_etl)
+
         # UPDATE_TEST_FIXTURES should never be True outside of temporarily setting
         # it to True to quickly update the test fixtures.
         assert UPDATE_TEST_FIXTURES is False
@@ -63,6 +83,8 @@ class TestNationalRiskIndexETL:
             file_contents = file.read()
         response_mock = requests.Response()
         response_mock.status_code = 200
+
+        # pylint: disable=protected-access
         response_mock._content = file_contents
 
         # Return text fixture:
