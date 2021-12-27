@@ -34,10 +34,12 @@ def mock_paths(tmp_path_factory) -> tuple:
     # sets location of the temp directory inside the national_risk_index folder
     os.environ["PYTEST_DEBUG_TEMPROOT"] = str(TMP_DIR)
     TMP_DIR.mkdir(parents=True, exist_ok=True)
+
     # creates DATA_PATH and TMP_PATH directories in temp directory
     data_path = tmp_path_factory.mktemp("data", numbered=False)
     tmp_path = data_path / "tmp"
     tmp_path.mkdir()
+
     return data_path, tmp_path
 
 
