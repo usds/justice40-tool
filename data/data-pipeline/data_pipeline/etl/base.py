@@ -109,7 +109,8 @@ class ExtractTransformLoad:
             unzip_file_from_url(
                 file_url=source_url,
                 download_path=self.TMP_PATH,
-                unzipped_file_path=extract_path, verify=verify
+                unzipped_file_path=extract_path,
+                verify=verify,
             )
 
     def transform(self) -> None:

@@ -19,14 +19,15 @@ DATA_DIR = (
 # Do *not* update these fixtures if you did not expect the ETL results to change.
 # This should never be set to `True` in committed code.
 # It should only be used temporarily to quickly update the fixtures.
-UPDATE_TEST_FIXTURES = True
+UPDATE_TEST_FIXTURES = False
+
 
 class TestNationalRiskIndexETL:
     def test_update_test_fixtures(self):
         """Assert that UPDATE_TEST_FIXTURES is False."""
         # UPDATE_TEST_FIXTURES should never be True outside of temporarily setting
         # it to True to quickly update the test fixtures.
-        assert (UPDATE_TEST_FIXTURES is False)
+        assert UPDATE_TEST_FIXTURES is False
 
     def test_init(self, mock_etl, mock_paths):
         """Tests that the mock NationalRiskIndexETL class instance was
@@ -149,12 +150,28 @@ class TestNationalRiskIndexETL:
         )
         etl.df = df_transform
 
-        # setup - load expected output
-        expected = pd.read_csv(DATA_DIR / "output.csv", dtype={etl.GEOID_TRACT_FIELD_NAME: str})
-
         # execution
         etl.load()
-        output = pd.read_csv(output_path, dtype={etl.GEOID_TRACT_FIELD_NAME: str})
+        output = pd.read_csv(
+            output_path, dtype={etl.GEOID_TRACT_FIELD_NAME: str}
+        )
+        output_csv_path = DATA_DIR / "output.csv"
+
+        # If temporarily updating test fixtures, write this output file as the input
+        # file:
+        if UPDATE_TEST_FIXTURES:
+            output.to_csv(
+                path_or_buf=output_csv_path,
+                index=False,
+                # Use the same float format as the method
+                float_format="%.10f",
+            )
+
+        # setup - load expected output
+        expected = pd.read_csv(
+            filepath_or_buffer=output_csv_path,
+            dtype={etl.GEOID_TRACT_FIELD_NAME: str},
+        )
 
         # validation
         assert output_path.exists()
