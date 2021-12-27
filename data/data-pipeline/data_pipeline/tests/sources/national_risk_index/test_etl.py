@@ -89,7 +89,7 @@ class TestNationalRiskIndexETL:
 
         input_csv_path = DATA_DIR / "input.csv"
 
-        # If temporarily updating test fixtures, write his output file as the input
+        # If temporarily updating test fixtures, write this output file as the input
         # file:
         if UPDATE_TEST_FIXTURES:
             copy_data_files(src=extracted_file_path, dst=input_csv_path)
@@ -112,15 +112,21 @@ class TestNationalRiskIndexETL:
         copy_data_files(src=DATA_DIR / "input.csv", dst=etl.INPUT_CSV)
 
         # setup - read in sample output as dataframe
+        # execution
+        etl.transform()
+        transform_csv_path = DATA_DIR / "transform.csv"
+
+        # If temporarily updating test fixtures, write this output file as the input
+        # file:
+        if UPDATE_TEST_FIXTURES:
+            etl.df.to_csv(path_or_buf=transform_csv_path, index=False)
+
+        # validation
         expected = pd.read_csv(
-            DATA_DIR / "transform.csv",
+            filepath_or_buffer=transform_csv_path,
             dtype={etl.GEOID_TRACT_FIELD_NAME: "string"},
         )
 
-        # execution
-        etl.transform()
-
-        # validation
         assert etl.df.shape == (55, 370)
         pd.testing.assert_frame_equal(etl.df, expected)
 
