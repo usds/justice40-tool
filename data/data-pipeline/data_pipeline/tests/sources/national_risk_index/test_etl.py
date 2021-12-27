@@ -83,7 +83,6 @@ class TestNationalRiskIndexETL:
             file_contents = file.read()
         response_mock = requests.Response()
         response_mock.status_code = 200
-
         # pylint: disable=protected-access
         response_mock._content = file_contents
 
@@ -112,8 +111,8 @@ class TestNationalRiskIndexETL:
 
         input_csv_path = DATA_DIR / "input.csv"
 
-        # If temporarily updating test fixtures, write this output file as the input
-        # file:
+        # If temporarily updating test fixtures, write this extracted file as the
+        # expected input file:
         if UPDATE_TEST_FIXTURES:
             copy_data_files(src=extracted_file_path, dst=input_csv_path)
 
@@ -139,8 +138,8 @@ class TestNationalRiskIndexETL:
         etl.transform()
         transform_csv_path = DATA_DIR / "transform.csv"
 
-        # If temporarily updating test fixtures, write this output file as the input
-        # file:
+        # If temporarily updating test fixtures, write this transformed dataframe
+        # as the expected transform output file:
         if UPDATE_TEST_FIXTURES:
             etl.df.to_csv(path_or_buf=transform_csv_path, index=False)
 
@@ -179,8 +178,8 @@ class TestNationalRiskIndexETL:
         )
         output_csv_path = DATA_DIR / "output.csv"
 
-        # If temporarily updating test fixtures, write this output file as the input
-        # file:
+        # If temporarily updating test fixtures, write this output data frame as the
+        # expected output file:
         if UPDATE_TEST_FIXTURES:
             output.to_csv(
                 path_or_buf=output_csv_path,
