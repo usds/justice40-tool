@@ -1,7 +1,7 @@
 import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
-from data_pipeline.utils import get_module_logger
+from data_pipeline.utils import get_module_logger, download_file_from_url
 from data_pipeline.config import settings
 
 logger = get_module_logger(__name__)
@@ -11,11 +11,9 @@ class MichiganEnviroScreenETL(ExtractTransformLoad):
     def __init__(self):
         self.MIEJSCREEN_S3_URL = (
             settings.AWS_JUSTICE40_DATASOURCES_URL
-            + "/michigan.csv"
+            + "/michigan_ejscore_12212021.csv"
         )
-        self.MIEJSCREEN_CSV = (
-            self.TMP_PATH / "CalEnviroScreen_4.0_2021.csv"
-        )
+
         self.CSV_PATH = self.DATA_PATH / "dataset" / "michiganejscreen"
 
         # Definining some variable names
@@ -27,31 +25,26 @@ class MichiganEnviroScreenETL(ExtractTransformLoad):
             "michiganejscreen_priority_community"
         )
 
-        
         self.MIEJSCREEN_PRIORITY_COMMUNITY_THRESHOLD = 75
 
         self.df: pd.DataFrame
 
     def extract(self) -> None:
-        logger.info("Downloading CalEnviroScreen Data")
-        super().extract(
-            self.CALENVIROSCREEN_S3_URL,
-            self.TMP_PATH,
+        logger.info("Downloading Michigan EJScreen Data")
+        self.df = pd.read_csv(
+            filepath_or_buffer=self.MIEJSCREEN_S3_URL,
+            dtype={"GEO_ID": "string"},
+            low_memory=False,
         )
 
     def transform(self) -> None:
-        logger.info("Transforming CalEnviroScreen Data")
-
-
-        self.df = pd.read_csv(
-            self.MIEJSCREEN_CSV, dtype={"GEO_ID": "string"}
-        )
+        logger.info("Transforming Michigan EJScreen Data")
 
         self.df.rename(
             columns={
                 "GEO_ID": self.GEOID_TRACT_FIELD_NAME,
-                "EJ_Score_Cal_Min": self.CALENVIROSCREEN_SCORE_FIELD_NAME,
-                "Pct_CalMin": self.CALENVIROSCREEN_PERCENTILE_FIELD_NAME,
+                "EJ_Score_Cal_Min": self.MIEJSCREEN_SCORE_FIELD_NAME,
+                "Pct_CalMin": self.MIEJSCREEN_PERCENTILE_FIELD_NAME,
             },
             inplace=True,
         )
