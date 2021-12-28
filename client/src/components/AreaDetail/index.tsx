@@ -28,6 +28,7 @@ export interface indicatorInfo {
 const AreaDetail = ({properties}:IAreaDetailProps) => {
   const intl = useIntl();
 
+  // console.log the properties of the census that is selected:
   console.log("Area Detail properies: ", properties);
 
   const score = properties[constants.SCORE_PROPERTY_HIGH] ? properties[constants.SCORE_PROPERTY_HIGH] as number : 0;
@@ -37,10 +38,6 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
   const stateName = properties[constants.STATE_NAME] ? properties[constants.STATE_NAME] : "N/A";
 
   const isCommunityFocus = score >= constants.SCORE_BOUNDARY_PRIORITIZED;
-
-  // const sidePanelFeedbackHref = `
-  //   mailto:screeningtool.feedback@usds.gov?subject=Feedback on Census Tract: ${blockGroup}
-  // `;
 
   // Define each indicator in the side panel with constants from copy file (for intl)
   // Indicators are grouped by category
@@ -382,8 +379,9 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
               totalCount: constants.TOTAL_NUMBER_OF_INDICATORS,
             }}/>
         </div>
-        {/* eslint-disable-next-line max-len */}
-        {/* <a className={styles.feedbackLink} href={sidePanelFeedbackHref}>{EXPLORE_COPY.COMMUNITY.SEND_FEEDBACK}</a> */}
+        {/* <a className={styles.feedbackLink} href={sidePanelFeedbackHref}>
+          {EXPLORE_COPY.COMMUNITY.SEND_FEEDBACK}
+        </a> */}
 
       </div>
 
