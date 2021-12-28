@@ -333,11 +333,6 @@ export const CATEGORIES = {
       defaultMessage= {`Reduction and remediation of legacy pollution methodology`}
       description= {`Reduction and remediation of legacy pollution methodology`}
     />,
-    METHODOLOGY_REMEDIATION_ONLY: <FormattedMessage
-      id= {'indicator.categories.remediation.methodology'}
-      defaultMessage= {`Remediation of legacy pollution methodology`}
-      description= {`Remediation of legacy pollution methodology`}
-    />,
     TITLE: <FormattedMessage
       id={'indicator.categories.legacy.pollution.title'}
       defaultMessage={'Reduction and remediation of legacy pollution'}
@@ -463,7 +458,7 @@ export const CATEGORIES = {
   WORKFORCE_DEV: {
     METHODOLOGY: <FormattedMessage
       id= {'indicator.categories.workforce.dev.methodology'}
-      defaultMessage= {`Training and workforce development`}
+      defaultMessage= {`Training and workforce development methodology`}
       description= {`Training and workforce development`}
     />,
     TITLE: <FormattedMessage
@@ -979,7 +974,7 @@ export const INDICATORS = [
       `}
       description= {'description text for proximity to rmp'}
     />,
-    usedIn: CATEGORIES.LEGACY_POLLUTION.METHODOLOGY_REMEDIATION_ONLY,
+    usedIn: CATEGORIES.LEGACY_POLLUTION.METHODOLOGY,
     responsibleParty: RESPONSIBLE_PARTIES.EPA_RMP,
     dateRange: DATE_RANGE.TWENTY,
   },
