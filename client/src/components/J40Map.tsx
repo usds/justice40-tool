@@ -56,12 +56,23 @@ export interface IDetailViewInterface {
 
 
 const J40Map = ({location}: IJ40Interface) => {
-  // Hash portion of URL is of the form #zoom/lat/lng
+  /**
+   * Initializes the zoom, and the map's center point (lat, lng) via the URL hash #{z}/{lat}/{long}
+   * where:
+   *    z = zoom
+   *    lat = map center's latitude
+   *    long = map center's longitude
+   */
   const [zoom, lat, lng] = location.hash.slice(1).split('/');
+
+  /**
+   * If the URL has no #{z}/{lat}/{long} specified in the hash, then set the map's intial viewport state
+   * to use constants. This is so that we can load URLs with certain zoom/lat/long specified:
+   */
   const [viewport, setViewport] = useState<ViewportProps>({
-    latitude: lat && parseFloat(lat) || constants.DEFAULT_CENTER[0],
-    longitude: lng && parseFloat(lng) || constants.DEFAULT_CENTER[1],
-    zoom: zoom && parseFloat(zoom) || constants.GLOBAL_MIN_ZOOM,
+    latitude: lat && parseFloat(lat) ? parseFloat(lat) : constants.DEFAULT_CENTER[0],
+    longitude: lng && parseFloat(lng) ? parseFloat(lng) : constants.DEFAULT_CENTER[1],
+    zoom: zoom && parseFloat(zoom) ? parseFloat(zoom) : constants.GLOBAL_MIN_ZOOM,
   });
 
   const [selectedFeature, setSelectedFeature] = useState<MapboxGeoJSONFeature>();
@@ -77,6 +88,20 @@ const J40Map = ({location}: IJ40Interface) => {
   const selectedFeatureId = (selectedFeature && selectedFeature.id) || '';
   const filter = useMemo(() => ['in', constants.GEOID_PROPERTY, selectedFeatureId], [selectedFeature]);
 
+
+  /**
+   * This function will return the bounding box of the current map. Comment in when needed.
+   *  {
+   *    _ne: {lng:number, lat:number}
+   *    _sw: {lng:number, lat:number}
+   *  }
+   * @returns {LngLatBounds}
+   */
+  const getCurrentMapBoundingBox = () => {
+    return mapRef.current ? console.log('mapRef getBounds(): ', mapRef.current.getMap().getBounds()) : null;
+  };
+
+
   /**
  * This onClick event handler will listen and handle clicks on the map. It will listen for clicks on the
  * territory controls and it will listen to clicks on the map.
@@ -88,6 +113,8 @@ const J40Map = ({location}: IJ40Interface) => {
     // Stop all propagation / bubbling / capturing
     event.preventDefault();
     event.stopPropagation();
+
+    getCurrentMapBoundingBox();
 
     // Check if the click is for territories. Given the territories component's design, it can be
     // guaranteed that each territory control will have an id. We use this ID to determine
@@ -127,6 +154,7 @@ const J40Map = ({location}: IJ40Interface) => {
     } else {
       // This else clause will fire when the ID is null or empty. This is the case where the map is clicked
       const feature = event.features && event.features[0];
+      console.log(feature);
       if (feature) {
         const [minLng, minLat, maxLng, maxLat] = bbox(feature);
         const newViewPort = new WebMercatorViewport({height: viewport.height!, width: viewport.width!});
