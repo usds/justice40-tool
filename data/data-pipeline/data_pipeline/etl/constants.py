@@ -99,6 +99,11 @@ DATASET_LIST = [
         "module_dir": "tree_equity_score",
         "class_name": "TreeEquityScoreETL",
     },
+    {
+        "name": "michiganejscreen",
+        "module_dir": "michiganejscreen",
+        "class_name": "MichiganEnviroScreenETL",
+    },
 ]
 CENSUS_INFO = {
     "name": "census",
