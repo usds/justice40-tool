@@ -90,6 +90,11 @@ DATASET_LIST = [
         "class_name": "HudRecapETL",
     },
     {
+        "name": "energy_definition_alternative_draft",
+        "module_dir": "energy_definition_alternative_draft",
+        "class_name": "EnergyDefinitionAlternativeDraft",
+    },
+    {
         "name": "tree_equity_score",
         "module_dir": "tree_equity_score",
         "class_name": "TreeEquityScoreETL",

@@ -128,7 +128,7 @@ export const MAP = defineMessages({
   },
   AS_LONG: {
     id: 'map.territoryFocus.american.samoa.long',
-    defaultMessage: 'American Somoa',
+    defaultMessage: 'American Samoa',
     description: 'The full name indicating the bounds of American Somoa',
   },
   MP_SHORT: {

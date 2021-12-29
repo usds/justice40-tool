@@ -128,15 +128,15 @@ export const GLOBAL_MAX_ZOOM_HIGHLIGHT = 22;
 export const GLOBAL_MIN_ZOOM_HIGH = 7;
 export const GLOBAL_MAX_ZOOM_HIGH = 11;
 
-// Bounds
+// Bounds - these bounds can be obtained by using the getCurrentMapBoundingBox() function in the map
 export const GLOBAL_MAX_BOUNDS: LngLatBoundsLike = [
   [-180.118306, 5.499550],
   [-65.0, 83.162102],
 ];
 
 export const LOWER_48_BOUNDS: LngLatBoundsLike = [
-  [-124.7844079, 24.7433195],
-  [-66.9513812, 49.3457868],
+  [-134.943542, 1.301806],
+  [-60.060729, 57.050462],
 ];
 
 export const ALASKA_BOUNDS: LngLatBoundsLike = [
@@ -145,8 +145,8 @@ export const ALASKA_BOUNDS: LngLatBoundsLike = [
 ];
 
 export const HAWAII_BOUNDS: LngLatBoundsLike = [
-  [-168.118306, 18.748115],
-  [-154.757881, 22.378413],
+  [-161.174534, 17.652170],
+  [-154.218940, 23.603623],
 ];
 
 export const PUERTO_RICO_BOUNDS: LngLatBoundsLike = [
@@ -165,8 +165,8 @@ export const MARIANA_ISLAND_BOUNDS: LngLatBoundsLike = [
 ];
 
 export const AMERICAN_SAMOA_BOUNDS: LngLatBoundsLike = [
-  [-171.089874, -14.548699],
-  [-168.1433, -11.046934],
+  [-172.589874, -15.548699],
+  [-169.6433, -12.046934],
 ];
 
 export const US_VIRGIN_ISLANDS_BOUNDS: LngLatBoundsLike = [
@@ -174,7 +174,7 @@ export const US_VIRGIN_ISLANDS_BOUNDS: LngLatBoundsLike = [
   [-64.2704123, 18.7495796],
 ];
 
-export const DEFAULT_CENTER = [32.4687126, -86.502136];
+export const DEFAULT_CENTER = [33.4687126, -97.502136];
 
 // Opacity
 export const DEFAULT_LAYER_OPACITY = 0.6;
