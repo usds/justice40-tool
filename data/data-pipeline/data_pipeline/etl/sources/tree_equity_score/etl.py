@@ -15,10 +15,10 @@ class TreeEquityScoreETL(ExtractTransformLoad):
     canopy, we utilize a basic multiplier of 600 sq-ft (55.74 sq-m) of canopy area
     per urban tree assuming a medium-size urban tree crown width of 25-30 ft.
     Sources:
-        1. Tree canopy cover. High resolution tree canopy where available,
-        the National Land Cover Database where it is not.
-        2. Census American Community Survey (ACS) 2018 5-year Block Group population estimates
-        3. Census ACS 2018 5-year city and block group Median Income estimates
+        1. Tree canopy cover. High resolution tree canopy where available.
+        In the event tree canopy is not defer to National Land Cover Database.
+        2. Census American Community Survey (ACS) 2018 5-year Block Group population estimates.
+        3. Census ACS 2018 5-year city and block group Median Income estimates.
     """
 
     def __init__(self):
@@ -113,15 +113,15 @@ class TreeEquityScoreETL(ExtractTransformLoad):
                 "total_pop",  # Total Population according to ACS Estimates
                 "state",
                 "county",
-                "dep_ratio",  # dependent ratio
-                "child_perc",  # Children (Age 0 -17)
+                "dep_ratio",  # Dependent ratio
+                "child_perc",  # Children (Age 0 -17) (ACS 2014 - 2018)
                 "seniorperc",  # Seniors (Age 65+) (ACS 2014 - 2018)
                 "treecanopy",  # Tree canopy cover
                 "area",  # Source: https://www.fs.fed.us/nrs/pubs/gtr/gtr_nrs200.pdf
                 "source",
                 "avg_temp",  # Average Temperature from USGS Earth Explorer
                 "ua_name",
-                "incorpname",
+                "incorpname", # Incorporated place name
                 "congressio",  # Congressional District
                 "biome",
                 "bgpopdense",
@@ -129,7 +129,7 @@ class TreeEquityScoreETL(ExtractTransformLoad):
                 "tc_gap",  # Tree canopy gap
                 "tc_goal",  # Tree canopy goal
                 "priority",  # Priority community according to the index
-                "tes",  # tree equity score
+                "tes",  # Tree equity score
                 "tesctyscor",  # tree equity score for the county
                 "geometry",  # block group geometry coordinates
             ]
