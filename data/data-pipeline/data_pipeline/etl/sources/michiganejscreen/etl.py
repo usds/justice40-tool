@@ -1,7 +1,7 @@
 import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
-from data_pipeline.utils import get_module_logger, download_file_from_url
+from data_pipeline.utils import get_module_logger
 from data_pipeline.config import settings
 
 logger = get_module_logger(__name__)
@@ -48,8 +48,6 @@ class MichiganEnviroScreenETL(ExtractTransformLoad):
             },
             inplace=True,
         )
-
-
         # Calculate the top quartile of prioritized communities
         # Please see pg. 104 - 109 from source:
         # pg. https://deepblue.lib.umich.edu/bitstream/handle/2027.42/149105/AssessingtheStateofEnvironmentalJusticeinMichigan_344.pdf
