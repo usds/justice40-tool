@@ -98,7 +98,8 @@ class TreeEquityScoreETL(ExtractTransformLoad):
 
         # rename ID to Tract ID
         self.df.rename(
-            columns={"geoid": self.GEOID_FIELD_NAME},
+            # Block group ID delegated to attribute in superclass
+            columns={"geoid": ExtractTransformLoad.GEOID_FIELD_NAME},
             inplace=True,
         )
 
@@ -108,7 +109,7 @@ class TreeEquityScoreETL(ExtractTransformLoad):
         self.CSV_PATH.mkdir(parents=True, exist_ok=True)
         self.df = self.df[
             [
-                self.GEOID_FIELD_NAME,
+                ExtractTransformLoad.GEOID_FIELD_NAME,
                 "total_pop",  # Total Population according to ACS Estimates
                 "state",
                 "county",
