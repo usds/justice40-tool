@@ -5,7 +5,7 @@ from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
 
-#
+
 class TreeEquityScoreETL(ExtractTransformLoad):
     """
     Tree equity score methodology: https://www.treeequityscore.org/methodology/
