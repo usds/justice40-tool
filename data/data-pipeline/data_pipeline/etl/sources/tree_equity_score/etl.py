@@ -8,7 +8,6 @@ logger = get_module_logger(__name__)
 #
 class TreeEquityScoreETL(ExtractTransformLoad):
     """
-    From the documentation:
     Tree equity score methodology: https://www.treeequityscore.org/methodology/
     A lower Tree Equity Score indicates a greater priority for closing the tree canopy gap
     In order to estimate a general number of trees associated with an increase in tree
@@ -121,7 +120,7 @@ class TreeEquityScoreETL(ExtractTransformLoad):
                 "source",
                 "avg_temp",  # Average Temperature from USGS Earth Explorer
                 "ua_name",
-                "incorpname", # Incorporated place name
+                "incorpname",  # Incorporated place name
                 "congressio",  # Congressional District
                 "biome",
                 "bgpopdense",
@@ -130,8 +129,8 @@ class TreeEquityScoreETL(ExtractTransformLoad):
                 "tc_goal",  # Tree canopy goal
                 "priority",  # Priority community according to the index
                 "tes",  # Tree equity score
-                "tesctyscor",  # tree equity score for the county
-                "geometry",  # block group geometry coordinates
+                "tesctyscor",  # Tree equity score for the county
+                "geometry",  # Block group geometry coordinates
             ]
         ]
         self.df.to_csv(self.CSV_PATH / "usa.csv", index=False)
