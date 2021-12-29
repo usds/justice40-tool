@@ -17,13 +17,13 @@ class MichiganEnviroScreenETL(ExtractTransformLoad):
         self.CSV_PATH = self.DATA_PATH / "dataset" / "michiganejscreen"
 
         # Definining some variable names
-        self.MIEJSCREEN_SCORE_FIELD_NAME = "michiganejscreen_score"
-        self.MIEJSCREEN_PERCENTILE_FIELD_NAME = "michiganejscreen_percentile"
-        self.MIEJSCREEN_PRIORITY_COMMUNITY_FIELD_NAME = (
+        self.MIEJSCREEN_SCORE_FIELD = "michiganejscreen_score"
+        self.MIEJSCREEN_PERCENTILE_FIELD = "michiganejscreen_percentile"
+        self.MIEJSCREEN_PRIORITY_COMMUNITY_FIELD = (
             "michiganejscreen_priority_community"
         )
 
-        self.MIEJSCREEN_PRIORITY_COMMUNITY_THRESHOLD = 75
+        self.MIEJSCREEN_PRIORITY_COMMUNITY_THRESHOLD = 0.75
 
         self.df: pd.DataFrame
 
@@ -39,18 +39,19 @@ class MichiganEnviroScreenETL(ExtractTransformLoad):
         logger.info("Transforming Michigan EJScreen Data")
 
         self.df.rename(
+            #
             columns={
                 "GEO_ID": self.GEOID_TRACT_FIELD_NAME,
-                "EJ_Score_Cal_Min": self.MIEJSCREEN_SCORE_FIELD_NAME,
-                "Pct_CalMin": self.MIEJSCREEN_PERCENTILE_FIELD_NAME,
+                "EJ_Score_Cal_Min": self.MIEJSCREEN_SCORE_FIELD,
+                "Pct_CalMin": self.MIEJSCREEN_PERCENTILE_FIELD,
             },
             inplace=True,
         )
         # Calculate the top quartile of prioritized communities
         # Please see pg. 104 - 109 from source:
         # pg. https://deepblue.lib.umich.edu/bitstream/handle/2027.42/149105/AssessingtheStateofEnvironmentalJusticeinMichigan_344.pdf
-        self.df[self.MIEJSCREEN_PRIORITY_COMMUNITY_FIELD_NAME] = (
-            self.df[self.MIEJSCREEN_PERCENTILE_FIELD_NAME]
+        self.df[self.MIEJSCREEN_PRIORITY_COMMUNITY_FIELD] = (
+            self.df[self.MIEJSCREEN_PERCENTILE_FIELD]
             >= self.MIEJSCREEN_PRIORITY_COMMUNITY_THRESHOLD
         )
 
