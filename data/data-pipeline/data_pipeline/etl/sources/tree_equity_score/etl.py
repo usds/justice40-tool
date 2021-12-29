@@ -104,7 +104,7 @@ class TreeEquityScoreETL(ExtractTransformLoad):
         )
 
     def load(self) -> None:
-        logger.info("Saving Tree Equity Score GeoJSON")
+        logger.info("Saving Tree Equity Score CSV")
         # write nationwide csv
         self.CSV_PATH.mkdir(parents=True, exist_ok=True)
         self.df = self.df[
