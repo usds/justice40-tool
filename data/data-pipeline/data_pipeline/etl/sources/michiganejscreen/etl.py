@@ -18,9 +18,7 @@ class MichiganEnviroScreenETL(ExtractTransformLoad):
 
         # Definining some variable names
         self.MIEJSCREEN_SCORE_FIELD_NAME = "michiganejscreen_score"
-        self.MIEJSCREEN_PERCENTILE_FIELD_NAME = (
-            "michiganejscreen_percentile"
-        )
+        self.MIEJSCREEN_PERCENTILE_FIELD_NAME = "michiganejscreen_percentile"
         self.MIEJSCREEN_PRIORITY_COMMUNITY_FIELD_NAME = (
             "michiganejscreen_priority_community"
         )

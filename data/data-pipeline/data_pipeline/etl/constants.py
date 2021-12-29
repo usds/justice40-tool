@@ -103,7 +103,7 @@ DATASET_LIST = [
         "name": "michiganejscreen",
         "module_dir": "michiganejscreen",
         "class_name": "MichiganEnviroScreenETL",
-    }    
+    },
 ]
 CENSUS_INFO = {
     "name": "census",
