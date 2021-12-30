@@ -7,11 +7,10 @@ logger = get_module_logger(__name__)
 
 
 class TreeEquityScoreETL(ExtractTransformLoad):
-    """
-    Tree equity score methodology: https://www.treeequityscore.org/methodology/
+    """Tree equity score methodology: https://www.treeequityscore.org/methodology/
     A lower Tree Equity Score indicates a greater priority for closing the tree canopy gap
     In order to estimate a general number of trees associated with an increase in tree
-    canopy, we utilize a basic multiplier of 600 sq-ft (55.74 sq-m) of canopy area
+    canopy, the authors utilize a basic multiplier of 600 sq-ft (55.74 sq-m) of canopy area
     per urban tree assuming a medium-size urban tree crown width of 25-30 ft.
     Sources:
         1. Tree canopy cover. High resolution tree canopy where available.
