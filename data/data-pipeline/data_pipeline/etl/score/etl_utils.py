@@ -54,14 +54,13 @@ def check_score_data_source(
 
 
 def floor_series(series: pd.Series, number_of_decimals: int) -> pd.Series:
-    """
-    Floors all non-null numerical values to a specific number of decimal points
+    """Floors all non-null numerical values to a specific number of decimal points
 
     Args:
         series (pd.Series): Input pandas series
         number_of_decimals (int): Number of decimal points to floor all numerical values to
     Returns:
-        A Pandas Series
+        floored_series (pd.Series): A Pandas Series of numerical values with appropriate number of decimal points
     """
 
     # we perform many operations using the division operator
@@ -71,7 +70,7 @@ def floor_series(series: pd.Series, number_of_decimals: int) -> pd.Series:
     # float types - exacerbated by panda's type inference engine.
     # Hence, to handle such offending values we default to None
     # Please see the reference, below, on nullable integer types for more details
-    unacceptable_values = [-np.inf, np.inf, "None"]
+    unacceptable_values = [-np.inf, np.inf, "None", np.nan]
     mapping = {
         unacceptable_value: None for unacceptable_value in unacceptable_values
     }
