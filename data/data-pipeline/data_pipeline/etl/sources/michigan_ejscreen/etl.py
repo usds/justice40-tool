@@ -14,50 +14,50 @@ class MichiganEnviroScreenETL(ExtractTransformLoad):
     """
 
     def __init__(self):
-        self.MIEJSCREEN_S3_URL = (
+        self.MI_EJSCREEN_S3_URL = (
             settings.AWS_JUSTICE40_DATASOURCES_URL
             + "/michigan_ejscore_12212021.csv"
         )
 
-        self.CSV_PATH = self.DATA_PATH / "dataset" / "michiganejscreen"
+        self.CSV_PATH = self.DATA_PATH / "dataset" / "michigan_ejscreen"
 
         # Definining some variable names
-        self.MIEJSCREEN_SCORE_FIELD = "michiganejscreen_score"
-        self.MIEJSCREEN_PERCENTILE_FIELD = "michiganejscreen_percentile"
-        self.MIEJSCREEN_PRIORITY_COMMUNITY_FIELD = (
-            "michiganejscreen_priority_community"
+        self.MI_EJSCREEN_SCORE_FIELD = "michigan_ejscreen_score"
+        self.MI_EJSCREEN_PERCENTILE_FIELD = "michigan_ejscreen_percentile"
+        self.MI_EJSCREEN_PRIORITY_COMMUNITY_FIELD = (
+            "michigan_ejscreen_priority_community"
         )
 
-        self.MIEJSCREEN_PRIORITY_COMMUNITY_THRESHOLD = 0.75
+        self.MI_EJSCREEN_PRIORITY_COMMUNITY_THRESHOLD = 0.75
 
         self.df: pd.DataFrame
 
     def extract(self) -> None:
-        logger.info("Downloading Michigan EJScreen Data")
+        logger.info("Downloading Michigan EJSCREEN Data")
         self.df = pd.read_csv(
-            filepath_or_buffer=self.MIEJSCREEN_S3_URL,
+            filepath_or_buffer=self.MI_EJSCREEN_S3_URL,
             dtype={"GEO_ID": "string"},
             low_memory=False,
         )
 
     def transform(self) -> None:
-        logger.info("Transforming Michigan EJScreen Data")
+        logger.info("Transforming Michigan EJSCREEN Data")
 
         self.df.rename(
             #
             columns={
                 "GEO_ID": self.GEOID_TRACT_FIELD_NAME,
-                "EJ_Score_Cal_Min": self.MIEJSCREEN_SCORE_FIELD,
-                "Pct_CalMin": self.MIEJSCREEN_PERCENTILE_FIELD,
+                "EJ_Score_Cal_Min": self.MI_EJSCREEN_SCORE_FIELD,
+                "Pct_CalMin": self.MI_EJSCREEN_PERCENTILE_FIELD,
             },
             inplace=True,
         )
         # Calculate the top quartile of prioritized communities
         # Please see pg. 104 - 109 from source:
         # pg. https://deepblue.lib.umich.edu/bitstream/handle/2027.42/149105/AssessingtheStateofEnvironmentalJusticeinMichigan_344.pdf
-        self.df[self.MIEJSCREEN_PRIORITY_COMMUNITY_FIELD] = (
-            self.df[self.MIEJSCREEN_PERCENTILE_FIELD]
-            >= self.MIEJSCREEN_PRIORITY_COMMUNITY_THRESHOLD
+        self.df[self.MI_EJSCREEN_PRIORITY_COMMUNITY_FIELD] = (
+            self.df[self.MI_EJSCREEN_PERCENTILE_FIELD]
+            >= self.MI_EJSCREEN_PRIORITY_COMMUNITY_THRESHOLD
         )
 
     def load(self) -> None:
