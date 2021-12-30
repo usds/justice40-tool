@@ -22,6 +22,13 @@ class MichiganEnviroScreenETL(ExtractTransformLoad):
 
         self.CSV_PATH = self.DATA_PATH / "dataset" / "michigan_ejscreen"
 
+        self.COLUMNS_TO_KEEP = [
+            self.GEOID_TRACT_FIELD_NAME,
+            field_names.MICHIGAN_EJSCREEN_SCORE_FIELD,
+            field_names.MICHIGAN_EJSCREEN_PERCENTILE_FIELD,
+            field_names.MICHIGAN_EJSCREEN_PRIORITY_COMMUNITY_FIELD,
+        ]
+
         self.df: pd.DataFrame
 
     def extract(self) -> None:
@@ -55,4 +62,6 @@ class MichiganEnviroScreenETL(ExtractTransformLoad):
         logger.info("Saving Michigan Environmental Screening Tool to CSV")
         # write nationwide csv
         self.CSV_PATH.mkdir(parents=True, exist_ok=True)
-        self.df.to_csv(self.CSV_PATH / "michigan_ejscreen.csv", index=False)
+        self.df[self.COLUMNS_TO_KEEP].to_csv(
+            self.CSV_PATH / "michigan_ejscreen.csv", index=False
+        )
