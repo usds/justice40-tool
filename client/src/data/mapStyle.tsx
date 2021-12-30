@@ -82,16 +82,14 @@ const cartoVoyagerBaseLayer = {
 // New "positron" base layer
 const cartoPositronBaseLayer = {
   noLabels: [
-    `https://api.mapbox.com/styles/v1/mapbox/streets-v11.html?title=true&access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA
-    {z}/{x}/{y}${imageSuffix}.png`,
+    `https://api.mapbox.com/styles/v1/mapbox/streets-v11.html?title=true&access_token=pk.eyJ1IjoianVzdGljZTQwIiwiYSI6ImNreGF1Z3loNjB0N3oybm9jdGpxeDZ4b3kifQ.76tMHU7C8wwn0HGsF6azjA{z}/{x}/{y}${imageSuffix}.png`,
     // `https://a.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
     // `https://b.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
     // `https://c.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
     // `https://d.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
   ],
   withLabels: [
-    `https://api.mapbox.com/styles/v1/mapbox/streets-v11.html?title=true&access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA
-    {z}/{x}/{y}${imageSuffix}.png`,
+    `https://api.mapbox.com/styles/v1/mapbox/streets-v11.html?title=true&access_token=pk.eyJ1IjoianVzdGljZTQwIiwiYSI6ImNreGF1Z3loNjB0N3oybm9jdGpxeDZ4b3kifQ.76tMHU7C8wwn0HGsF6azjA{z}/{x}/{y}${imageSuffix}.png`,
     // `https://a.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}${imageSuffix}.png`,
     // `https://b.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}${imageSuffix}.png`,
     // `https://c.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}${imageSuffix}.png`,
