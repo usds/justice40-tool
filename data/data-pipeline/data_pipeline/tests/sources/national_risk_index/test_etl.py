@@ -73,7 +73,10 @@ class TestNationalRiskIndexETL:
         assert etl.GEOID_TRACT_FIELD_NAME == "GEOID10_TRACT"
         assert etl.NAME == "national_risk_index"
         assert etl.LAST_UPDATED_YEAR == 2020
-        assert etl.SOURCE_URL == "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload//NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
+        assert (
+            etl.SOURCE_URL
+            == "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload//NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
+        )
         assert etl.GEO_LEVEL == ValidGeoLevel.CENSUS_TRACT
         assert etl.COLUMNS_TO_KEEP == [
             etl.GEOID_TRACT_FIELD_NAME,

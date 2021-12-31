@@ -75,7 +75,7 @@ class ExtractTransformLoad:
 
     def _get_output_file_path(self) -> pathlib.Path:
         """Generate the output file path."""
-        if self.NAME is None :
+        if self.NAME is None:
             raise NotImplementedError(
                 f"Child ETL class needs to specify `self.NAME` (currently "
                 f"{self.NAME}) and `self.LAST_UPDATED_YEAR` (currently "
@@ -130,13 +130,17 @@ class ExtractTransformLoad:
         output_file_path.parent.mkdir(parents=True, exist_ok=True)
 
         if self.COLUMNS_TO_KEEP is None:
-            raise NotImplementedError("`self.COLUMNS_TO_KEEP` must be specified.")
+            raise NotImplementedError(
+                "`self.COLUMNS_TO_KEEP` must be specified."
+            )
 
         if self.output_df is None:
-            raise NotImplementedError("The `transform` step must set `self.output_df`.")
+            raise NotImplementedError(
+                "The `transform` step must set `self.output_df`."
+            )
 
         # Suppress scientific notation.
-        pd.set_option('display.float_format', str)
+        pd.set_option("display.float_format", str)
 
         self.output_df[self.COLUMNS_TO_KEEP].to_csv(
             output_file_path, index=False

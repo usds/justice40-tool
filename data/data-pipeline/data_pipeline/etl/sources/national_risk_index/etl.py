@@ -51,7 +51,6 @@ class NationalRiskIndexETL(ExtractTransformLoad):
             "Expected population loss rate (Natural Hazards Risk Index)"
         )
 
-        # Note: also need to edit transform step to add fields to output.
         self.COLUMNS_TO_KEEP = [
             self.GEOID_TRACT_FIELD_NAME,
             self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME,
