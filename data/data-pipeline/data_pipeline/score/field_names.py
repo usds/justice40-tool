@@ -219,6 +219,25 @@ MICHIGAN_EJSCREEN_PRIORITY_COMMUNITY_FIELD: str = (
     "Michigan EJSCREEN Priority Community"
 )
 
+# Maryland EJSCREEN Data.
+MARYLAND_EJSCREEN_TRACT_25_PERCENT_FIELD: str = (
+    "Tract is >=25% all other Maryland Tracts"
+)
+MARYLAND_EJSCREEN_TRACT_50_PERCENT_FIELD: str = (
+    "Tract is >=50% all other Maryland Tracts"
+)
+MARYLAND_EJSCREEN_TRACT_75_PERCENT_FIELD: str = (
+    "Tract is >=75% all other Maryland Tracts"
+)
+MARYLAND_EJSCREEN_TRACT_90_PERCENT_FIELD: str = (
+    "Tract is >=90% all other Maryland Tracts"
+)
+
+MARYLAND_PERCENTILE_FIELD_NAME: str = (
+    "Maryland Environmental Justice Percentile"
+)
+
+
 # Child Opportunity Index data
 # Summer days with maximum temperature above 90F.
 EXTREME_HEAT_FIELD = "Summer days above 90F"
