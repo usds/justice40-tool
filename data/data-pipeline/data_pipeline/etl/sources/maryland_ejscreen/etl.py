@@ -116,7 +116,7 @@ class MarylandEJScreenETL(ExtractTransformLoad):
             self.df[field_names.MARYLAND_EJSCREEN_SCORE_FIELD] >= 0.75
         )
         self.df[field_names.MARYLAND_EJSCREEN_TRACT_90_PERCENT_FIELD] = (
-            self.df[field_names.MARYLAND_EJSCREEN_PERCENTILE_FIELD] >= 0.90
+            self.df[field_names.MARYLAND_EJSCREEN_SCORE_FIELD] >= 0.90
         )
 
     def load(self) -> None:
