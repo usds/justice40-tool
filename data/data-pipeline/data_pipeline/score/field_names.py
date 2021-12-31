@@ -218,7 +218,6 @@ MICHIGAN_EJSCREEN_PERCENTILE_FIELD: str = "Michigan EJSCREEN Percentile Field"
 MICHIGAN_EJSCREEN_PRIORITY_COMMUNITY_FIELD: str = (
     "Michigan EJSCREEN Priority Community"
 )
-MICHIGAN_EJSCREEN_PRIORITY_COMMUNITY_THRESHOLD: float = 0.75
 
 # Child Opportunity Index data
 # Summer days with maximum temperature above 90F.

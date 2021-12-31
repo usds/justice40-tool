@@ -9,9 +9,10 @@ logger = get_module_logger(__name__)
 
 
 class MichiganEnviroScreenETL(ExtractTransformLoad):
-    """
-    Michigan EJ Screen class that ingests dataset represented
+    """Michigan EJ Screen class that ingests dataset represented
     here: https://www.arcgis.com/apps/webappviewer/index.html?id=dc4f0647dda34959963488d3f519fd24
+    This class ingests the data presented in "Assessing the State of Environmental
+    Justice in Michigan. Please see the README in this module for further details"
     """
 
     def __init__(self):
@@ -21,6 +22,7 @@ class MichiganEnviroScreenETL(ExtractTransformLoad):
         )
 
         self.CSV_PATH = self.DATA_PATH / "dataset" / "michigan_ejscreen"
+        self.MICHIGAN_EJSCREEN_PRIORITY_COMMUNITY_THRESHOLD: float = 0.75
 
         self.COLUMNS_TO_KEEP = [
             self.GEOID_TRACT_FIELD_NAME,
@@ -55,7 +57,7 @@ class MichiganEnviroScreenETL(ExtractTransformLoad):
         # pg. https://deepblue.lib.umich.edu/bitstream/handle/2027.42/149105/AssessingtheStateofEnvironmentalJusticeinMichigan_344.pdf
         self.df[field_names.MICHIGAN_EJSCREEN_PRIORITY_COMMUNITY_FIELD] = (
             self.df[field_names.MICHIGAN_EJSCREEN_PERCENTILE_FIELD]
-            >= field_names.MICHIGAN_EJSCREEN_PRIORITY_COMMUNITY_THRESHOLD
+            >= self.MICHIGAN_EJSCREEN_PRIORITY_COMMUNITY_THRESHOLD
         )
 
     def load(self) -> None:
