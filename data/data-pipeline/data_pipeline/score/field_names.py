@@ -233,13 +233,13 @@ MARYLAND_EJSCREEN_TRACT_90_PERCENT_FIELD: str = (
     "Tract is >=90% all other Maryland Tracts"
 )
 
-MARYLAND_PERCENTILE_FIELD_NAME: str = (
+MARYLAND_EJSCREEN_PERCENTILE_FIELD: str = (
     "Maryland Environmental Justice Percentile for EJ Score"
 )
 
-MARYLAND_SCORE_FIELD_NAME: str = "Maryland Environmental Justice Score"
+MARYLAND_EJSCREEN_SCORE_FIELD: str = "Maryland Environmental Justice Score"
 
-MARYLAND_EJSCREEN_BURDENED_THRESHOLD: str = (
+MARYLAND_EJSCREEN_BURDENED_THRESHOLD_FIELD: str = (
     "Tract is greater than 75th percentile for Maryland EJ Score"
 )
 
