@@ -12,7 +12,7 @@ class MichiganEnviroScreenETL(ExtractTransformLoad):
     """Michigan EJ Screen class that ingests dataset represented
     here: https://www.arcgis.com/apps/webappviewer/index.html?id=dc4f0647dda34959963488d3f519fd24
     This class ingests the data presented in "Assessing the State of Environmental
-    Justice in Michigan. Please see the README in this module for further details"
+    Justice in Michigan."" Please see the README in this module for further details."
     """
 
     def __init__(self):
