@@ -237,7 +237,6 @@ MARYLAND_PERCENTILE_FIELD_NAME: str = (
     "Maryland Environmental Justice Percentile"
 )
 
-
 # Child Opportunity Index data
 # Summer days with maximum temperature above 90F.
 EXTREME_HEAT_FIELD = "Summer days above 90F"
