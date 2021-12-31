@@ -115,7 +115,7 @@ class ExtractTransformLoad:
 
         raise NotImplementedError
 
-    def load(self) -> None:
+    def load(self, float_format=None) -> None:
         """Saves the transformed data.
 
         Data is written in the specified local data folder or remote AWS S3 bucket.
@@ -139,11 +139,8 @@ class ExtractTransformLoad:
                 "The `transform` step must set `self.output_df`."
             )
 
-        # Suppress scientific notation.
-        pd.set_option("display.float_format", str)
-
         self.output_df[self.COLUMNS_TO_KEEP].to_csv(
-            output_file_path, index=False
+            output_file_path, index=False, float_format=float_format
         )
         logger.info(f"File written to `{output_file_path}`.")
 

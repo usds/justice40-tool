@@ -167,3 +167,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         df_nri = df_nri.round(10)
 
         self.output_df = df_nri
+
+    def load(self) -> None:
+        # Suppress scientific notation.
+        super().load(float_format="%.10f")

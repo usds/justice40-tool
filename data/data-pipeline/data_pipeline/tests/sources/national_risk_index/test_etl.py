@@ -196,7 +196,11 @@ class TestNationalRiskIndexETL:
 
         # execution
         etl.load()
+
+        # Make sure it creates the file.
         actual_output_path = etl._get_output_file_path()
+        assert actual_output_path.exists()
+
         actual_output = pd.read_csv(
             actual_output_path, dtype={etl.GEOID_TRACT_FIELD_NAME: str}
         )
@@ -205,9 +209,8 @@ class TestNationalRiskIndexETL:
         # If temporarily updating test fixtures, write this output data frame as the
         # expected output file:
         if UPDATE_TEST_FIXTURES:
-            actual_output.to_csv(
-                path_or_buf=expected_output_csv_path,
-                index=False,
+            copy_data_files(
+                src=actual_output_path, dst=expected_output_csv_path
             )
 
         # setup - load expected output
@@ -217,6 +220,5 @@ class TestNationalRiskIndexETL:
         )
 
         # validation
-        assert actual_output_path.exists()
         assert actual_output.shape == (55, 5)
         pd.testing.assert_frame_equal(actual_output, expected_output)
