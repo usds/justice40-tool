@@ -1,8 +1,10 @@
+import enum
+import pathlib
+import typing
 from pathlib import Path
 from typing import Optional
 
 import pandas as pd
-import yaml
 
 from data_pipeline.config import settings
 from data_pipeline.utils import (
@@ -12,6 +14,13 @@ from data_pipeline.utils import (
 )
 
 logger = get_module_logger(__name__)
+
+
+class ValidGeoLevel(enum.Enum):
+    """Enum used for indicating output data's geographic resolution."""
+
+    CENSUS_TRACT = enum.auto()
+    CENSUS_BLOCK_GROUP = enum.auto()
 
 
 class ExtractTransformLoad:
@@ -27,11 +36,31 @@ class ExtractTransformLoad:
     """
 
     APP_ROOT: Path = settings.APP_ROOT
+
+    # Directories
     DATA_PATH: Path = APP_ROOT / "data"
     TMP_PATH: Path = DATA_PATH / "tmp"
-    FILES_PATH: Path = settings.APP_ROOT / "files"
+
+    # Parameters
     GEOID_FIELD_NAME: str = "GEOID10"
     GEOID_TRACT_FIELD_NAME: str = "GEOID10_TRACT"
+
+    # Parameters that will be changed by children of the class
+    # NAME is used to create output path and populate logger info.
+    NAME: str = None
+
+    # LAST_UPDATED_YEAR is used to create output path.
+    LAST_UPDATED_YEAR: int = None
+
+    # SOURCE_URL is used to extract source data in extract().
+    SOURCE_URL: str = None
+
+    # GEO_LEVEL is used to identify whether output data is at the unit of the tract or
+    # census block group.
+    GEO_LEVEL: ValidGeoLevel = None
+
+    # COLUMNS_TO_KEEP to used to identify which columns to keep in the output df.
+    COLUMNS_TO_KEEP: typing.List[str] = None
 
     # TODO: investigate. Census says there are only 217,740 CBGs in the US. This might
     #  be from CBGs at different time periods.
@@ -42,57 +71,24 @@ class ExtractTransformLoad:
     #  periods. https://github.com/usds/justice40-tool/issues/964
     EXPECTED_MAX_CENSUS_TRACTS: int = 74160
 
-    def __init__(self, config_path: Path) -> None:
-        """Inits the class with instance specific variables"""
+    output_df: pd.DataFrame = None
 
-        # set by _get_yaml_config()
-        self.NAME: str = None
-        self.SOURCE_URL: str = None
-        self.GEOID_COL: str = None
-        self.GEO_LEVEL: str = None
-        self.SCORE_COLS: list = None
-        self.FIPS_CODES: pd.DataFrame = None
-        self.OUTPUT_PATH: Path = None
-        self.CENSUS_CSV: Path = None
+    def _get_output_file_path(self) -> pathlib.Path:
+        """Generate the output file path."""
+        if self.NAME is None :
+            raise NotImplementedError(
+                f"Child ETL class needs to specify `self.NAME` (currently "
+                f"{self.NAME}) and `self.LAST_UPDATED_YEAR` (currently "
+                f"{self.LAST_UPDATED_YEAR})."
+            )
 
-        self._get_yaml_config(config_path)
-
-    def _get_yaml_config(self, config_path: Path) -> None:
-        """Reads the YAML configuration file for the dataset and stores
-        the properies in the instance (upcoming feature)"""
-        # parse the yaml config file
-        try:
-            with open(config_path, "r", encoding="utf-8") as file:
-                config = yaml.safe_load(file)
-        except (FileNotFoundError, yaml.YAMLError) as err:
-            raise err
-
-        # set dataset specific attributes
-        census_dir = self.DATA_PATH / "census" / "csv"
-        if config["is_census"]:
-            csv_dir = census_dir
-        else:
-            self.CENSUS_CSV = census_dir / "us.csv"
-            self.FIPS_CODES = self._get_census_fips_codes()
-            csv_dir = self.DATA_PATH / "dataset"
-
-        # parse name and set output path
-        name = config.get("name")
-        snake_name = name.replace(" ", "_").lower()  # converts to snake case
-        output_dir = snake_name + (config.get("year") or "")
-        self.OUTPUT_PATH = csv_dir / output_dir / "usa.csv"
-        self.OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-
-        # set class attributes
-        attrs = ["NAME", "SOURCE_URL", "GEOID_COL", "GEO_LEVEL", "SCORE_COLS"]
-        for attr in attrs:
-            setattr(self, attr, config[attr.lower()])
-
-    def check_ttl(self) -> None:
-        """Checks if the ETL process can be run based on a the TLL value on the
-        YAML config (upcoming feature)"""
-
-        pass
+        output_file_path = (
+            self.DATA_PATH
+            / "dataset"
+            / f"{self.NAME}_{self.LAST_UPDATED_YEAR}"
+            / "usa.csv"
+        )
+        return output_file_path
 
     def extract(
         self,
@@ -120,30 +116,37 @@ class ExtractTransformLoad:
         raise NotImplementedError
 
     def load(self) -> None:
-        """Saves the transformed data in the specified local data folder or remote AWS S3
-        bucket"""
+        """Saves the transformed data.
 
-        raise NotImplementedError
+        Data is written in the specified local data folder or remote AWS S3 bucket.
+
+        Uses the directory from `self.OUTPUT_DIR` and the file name from
+        `self._get_output_file_path`.
+        """
+        logger.info(f"Saving `{self.NAME}` CSV")
+
+        # write nationwide csv
+        output_file_path = self._get_output_file_path()
+        output_file_path.parent.mkdir(parents=True, exist_ok=True)
+
+        if self.COLUMNS_TO_KEEP is None:
+            raise NotImplementedError("`self.COLUMNS_TO_KEEP` must be specified.")
+
+        if self.output_df is None:
+            raise NotImplementedError("The `transform` step must set `self.output_df`.")
+
+        # Suppress scientific notation.
+        pd.set_option('display.float_format', str)
+
+        self.output_df[self.COLUMNS_TO_KEEP].to_csv(
+            output_file_path, index=False
+        )
+        logger.info(f"File written to `{output_file_path}`.")
 
     def cleanup(self) -> None:
         """Clears out any files stored in the TMP folder"""
 
         remove_all_from_dir(self.TMP_PATH)
-
-    # TODO: Add test for this
-    def _get_census_fips_codes(self) -> pd.DataFrame:
-        """Loads FIPS codes for each Census block group and tract"""
-
-        # check that the census data exists
-        if not self.CENSUS_CSV.exists():
-            logger.info("Census data not found, please run download_csv first")
-        # load the census data
-        df = pd.read_csv(
-            self.CENSUS_CSV, dtype={self.GEOID_FIELD_NAME: "string"}
-        )
-        # extract Census tract FIPS code from Census block group
-        df[self.GEOID_TRACT_FIELD_NAME] = df[self.GEOID_FIELD_NAME].str[0:11]
-        return df[[self.GEOID_FIELD_NAME, self.GEOID_TRACT_FIELD_NAME]]
 
     # TODO: Create tests
     def validate_output(self) -> None:
@@ -161,21 +164,18 @@ class ExtractTransformLoad:
         """
         # read in output file
         # and check that GEOID cols are present
-        assert self.OUTPUT_PATH.exists(), f"No file found at {self.OUTPUT_PATH}"
+        output_file_path = self._get_output_file_path()
+        if not output_file_path.exists():
+            raise ValueError(f"No file found at {output_file_path}")
+
         df_output = pd.read_csv(
-            self.OUTPUT_PATH,
+            output_file_path,
             dtype={
                 self.GEOID_FIELD_NAME: "string",
                 self.GEOID_TRACT_FIELD_NAME: "string",
             },
         )
 
-        # check that the GEOID cols in the output match census data
-        geoid_cols = [self.GEOID_FIELD_NAME, self.GEOID_TRACT_FIELD_NAME]
-        for col in geoid_cols:
-            assert col in self.FIPS_CODES.columns
-        assert self.FIPS_CODES.equals(df_output[geoid_cols])
-
         # check that the score columns are in the output
-        for col in self.SCORE_COLS:
+        for col in self.COLUMNS_TO_KEEP:
             assert col in df_output.columns, f"{col} is missing from output"

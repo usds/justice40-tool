@@ -5,6 +5,7 @@ import pandas as pd
 import requests
 
 from data_pipeline.config import settings
+from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.tests.conftest import copy_data_files
 from data_pipeline.etl.sources.national_risk_index.etl import (
     NationalRiskIndexETL,
@@ -63,15 +64,35 @@ class TestNationalRiskIndexETL:
         etl = NationalRiskIndexETL()
         data_path, tmp_path = mock_paths
         input_csv = tmp_path / "NRI_Table_CensusTracts.csv"
-        output_dir = data_path / "dataset" / "national_risk_index_2020"
 
         # validation
         assert etl.DATA_PATH == data_path
         assert etl.TMP_PATH == tmp_path
         assert etl.INPUT_CSV == input_csv
-        assert etl.OUTPUT_DIR == output_dir
         assert etl.GEOID_FIELD_NAME == "GEOID10"
         assert etl.GEOID_TRACT_FIELD_NAME == "GEOID10_TRACT"
+        assert etl.NAME == "national_risk_index"
+        assert etl.LAST_UPDATED_YEAR == 2020
+        assert etl.SOURCE_URL == "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload//NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
+        assert etl.GEO_LEVEL == ValidGeoLevel.CENSUS_TRACT
+        assert etl.COLUMNS_TO_KEEP == [
+            etl.GEOID_TRACT_FIELD_NAME,
+            etl.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME,
+            etl.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME,
+            etl.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME,
+            etl.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME,
+        ]
+
+    def test_get_output_file_path(self, mock_etl, mock_paths):
+        """Tests the right file name is returned."""
+        etl = NationalRiskIndexETL()
+        data_path, tmp_path = mock_paths
+
+        output_file_path = etl._get_output_file_path()
+        expected_output_file_path = (
+            data_path / "dataset" / "national_risk_index_2020" / "usa.csv"
+        )
+        assert output_file_path == expected_output_file_path
 
     @mock.patch("data_pipeline.utils.requests")
     def test_extract(self, requests_mock, mock_paths):
@@ -141,7 +162,7 @@ class TestNationalRiskIndexETL:
         # If temporarily updating test fixtures, write this transformed dataframe
         # as the expected transform output file:
         if UPDATE_TEST_FIXTURES:
-            etl.df.to_csv(path_or_buf=transform_csv_path, index=False)
+            etl.output_df.to_csv(path_or_buf=transform_csv_path, index=False)
 
         # validation
         expected = pd.read_csv(
@@ -149,8 +170,8 @@ class TestNationalRiskIndexETL:
             dtype={etl.GEOID_TRACT_FIELD_NAME: "string"},
         )
 
-        assert etl.df.shape == (55, 370)
-        pd.testing.assert_frame_equal(etl.df, expected)
+        assert etl.output_df.shape == (55, 370)
+        pd.testing.assert_frame_equal(etl.output_df, expected)
 
     def test_load(self, mock_etl):
         """Tests the load() method for NationalRiskIndexETL
@@ -162,39 +183,37 @@ class TestNationalRiskIndexETL:
         """
         # setup - input variables
         etl = NationalRiskIndexETL()
-        output_path = etl.OUTPUT_DIR / "usa.csv"
 
         # setup - mock transform step
         df_transform = pd.read_csv(
             DATA_DIR / "transform.csv",
             dtype={etl.GEOID_TRACT_FIELD_NAME: "string"},
         )
-        etl.df = df_transform
+        etl.output_df = df_transform
 
         # execution
         etl.load()
-        output = pd.read_csv(
-            output_path, dtype={etl.GEOID_TRACT_FIELD_NAME: str}
+        actual_output_path = etl._get_output_file_path()
+        actual_output = pd.read_csv(
+            actual_output_path, dtype={etl.GEOID_TRACT_FIELD_NAME: str}
         )
-        output_csv_path = DATA_DIR / "output.csv"
+        expected_output_csv_path = DATA_DIR / "output.csv"
 
         # If temporarily updating test fixtures, write this output data frame as the
         # expected output file:
         if UPDATE_TEST_FIXTURES:
-            output.to_csv(
-                path_or_buf=output_csv_path,
+            actual_output.to_csv(
+                path_or_buf=expected_output_csv_path,
                 index=False,
-                # Use the same float format as the method
-                float_format="%.10f",
             )
 
         # setup - load expected output
-        expected = pd.read_csv(
-            filepath_or_buffer=output_csv_path,
+        expected_output = pd.read_csv(
+            filepath_or_buffer=expected_output_csv_path,
             dtype={etl.GEOID_TRACT_FIELD_NAME: str},
         )
 
         # validation
-        assert output_path.exists()
-        assert output.shape == (55, 5)
-        pd.testing.assert_frame_equal(output, expected)
+        assert actual_output_path.exists()
+        assert actual_output.shape == (55, 5)
+        pd.testing.assert_frame_equal(actual_output, expected_output)
