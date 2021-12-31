@@ -234,7 +234,13 @@ MARYLAND_EJSCREEN_TRACT_90_PERCENT_FIELD: str = (
 )
 
 MARYLAND_PERCENTILE_FIELD_NAME: str = (
-    "Maryland Environmental Justice Percentile"
+    "Maryland Environmental Justice Percentile for EJ Score"
+)
+
+MARYLAND_SCORE_FIELD_NAME: str = "Maryland Environmental Justice Score"
+
+MARYLAND_EJSCREEN_BURDENED_THRESHOLD: str = (
+    "Tract is greater than 75th percentile for Maryland EJ Score"
 )
 
 # Child Opportunity Index data
