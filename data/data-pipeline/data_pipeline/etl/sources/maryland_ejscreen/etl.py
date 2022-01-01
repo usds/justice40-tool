@@ -92,14 +92,13 @@ class MarylandEJScreenETL(ExtractTransformLoad):
             inplace=True,
         )
 
+        # Interpretation: An EJ score (reported as a percentile)
+        # has a percentile rank of N for some N between 0 - 100"
         self.df[field_names.MARYLAND_EJSCREEN_PERCENTILE_FIELD] = self.df[
             field_names.MARYLAND_EJSCREEN_SCORE_FIELD
-        ].rank(
-            pct=True,
-            ascending=True
-        )
+        ].rank(pct=True, ascending=True)
 
-        # An arbitrarily chosen percentile is used in the comparison tool output
+        # An arbitrarily chosen threshold is used in the comparison tool output
         self.df[field_names.MARYLAND_EJSCREEN_BURDENED_THRESHOLD_FIELD] = (
             self.df[field_names.MARYLAND_EJSCREEN_PERCENTILE_FIELD] > 0.75
         )
