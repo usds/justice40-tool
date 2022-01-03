@@ -210,13 +210,18 @@ EJSCREEN_AREAS_OF_CONCERN_STATE_90TH_PERCENTILE_COMMUNITIES_FIELD = (
 EJSCREEN_AREAS_OF_CONCERN_STATE_95TH_PERCENTILE_COMMUNITIES_FIELD = (
     "EJSCREEN Areas of Concern, State, 95th percentile (communities)"
 )
-
 # Mapping inequality data.
 HOLC_GRADE_D_TRACT_PERCENT_FIELD: str = "Percent of tract that is HOLC Grade D"
 HOLC_GRADE_D_TRACT_20_PERCENT_FIELD: str = "Tract is >20% HOLC Grade D"
 HOLC_GRADE_D_TRACT_50_PERCENT_FIELD: str = "Tract is >50% HOLC Grade D"
 HOLC_GRADE_D_TRACT_75_PERCENT_FIELD: str = "Tract is >75% HOLC Grade D"
 
+# Michigan Environmental Screening Tool ETL Constants
+MICHIGAN_EJSCREEN_SCORE_FIELD: str = "Michigan EJSCREEN Score Field"
+MICHIGAN_EJSCREEN_PERCENTILE_FIELD: str = "Michigan EJSCREEN Percentile Field"
+MICHIGAN_EJSCREEN_PRIORITY_COMMUNITY_FIELD: str = (
+    "Michigan EJSCREEN Priority Community"
+)
 
 # Child Opportunity Index data
 # Summer days with maximum temperature above 90F.
@@ -233,6 +238,27 @@ IMPENETRABLE_SURFACES_FIELD = "Percent impenetrable surface areas"
 # converted to NAEP scale score points.
 READING_FIELD = "Third grade reading proficiency"
 LOW_READING_FIELD = "Low third grade reading proficiency"
+
+# Alternative energy-related definition of DACs
+ENERGY_RELATED_COMMUNITIES_DEFINITION_ALTERNATIVE = (
+    "Energy-related alternative definition of communities"
+)
+COAL_EMPLOYMENT = "Coal employment"
+OUTAGE_EVENTS = "Outage Events"
+HOMELESSNESS = "Homelessness"
+DISABLED_POPULATION = "Disabled population"
+OUTAGE_DURATION = "Outage Duration"
+JOB_ACCESS = "Job Access"
+FOSSIL_ENERGY_EMPLOYMENT = "Fossil energy employment"
+FOOD_DESERT = "Food Desert"
+INCOMPLETE_PLUMBING = "Incomplete Plumbing"
+NON_GRID_CONNECTED_HEATING_FUEL = "Non-grid-connected heating fuel"
+PARKS = "Parks"
+GREATER_THAN_30_MIN_COMMUTE = "Greater than 30 min commute"
+INTERNET_ACCESS = "Internet Access"
+MOBILE_HOME = "Mobile Home"
+SINGLE_PARENT = "Single Parent"
+TRANSPORTATION_COSTS = "Transportation Costs"
 
 #####
 # Names for individual factors being exceeded

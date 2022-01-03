@@ -58,8 +58,8 @@ We provide more detail on these factors below.
   ![GIS Feature set](./0002-files/GIS_Features.png)
 - **Popularity** : OpenLayers is second only to Leaflet in the number of Github [stars](https://github.com/openlayers/openlayers/stargazers) it has received, close to 8000
 - **Performance** :
-  - The below chart comes from an September 2020 [study](https://doi.org/10.3390/ijgi9100563). The purpose of this study was to compare OpenLayers to Mapbox-GL-JS and Leaflet (both raster and vector tile variants) as the potential basis for a Life Quality Index for 55,000+ census radius jurisdictions in Argentina.
-    ![Execution Time](./0002-files/ExecutionTime.png) ([Source](https://doi.org/10.3390/ijgi9100563))
+  - The below chart comes from an September 2020 study (www dot mdpi dot com/2220-9964/9/10/563). The purpose of this study was to compare OpenLayers to Mapbox-GL-JS and Leaflet (both raster and vector tile variants) as the potential basis for a Life Quality Index for 55,000+ census radius jurisdictions in Argentina.
+    ![Execution Time](./0002-files/ExecutionTime.png) (Source (www dot mdpi dot com/2220-9964/9/10/563))
     In this chart, the two letters following the library name are for basemap layer and feature layer. Further, "R" is "raster" and "V" is vector, and lower numbers indicate faster load times. "OpenLayersRR" and "OpenLayersRV", (signifying a raster base layer and vector feature layer), performed quite well across all device types compared to other libraries.
   - We also performed local testing using puppeteer and web performance APIs, tested against a choropleth map of the cenus block groups, which represents a likely usecase for us. The results were as follows:
     ![Choropleth Map Performance](./0002-files/ChoroplethMapPerformance.png) ([Source](./0002-files/Maryland.csv))
@@ -70,7 +70,7 @@ We provide more detail on these factors below.
     - OL+MB did not file the `tiledidload` event and thus there was not a separate measure for style loaded
     - Apparent performance was different from measured/reported overall, particularly when it comes to zoom performance. This is an area to dig into further and measured at a later time to understand better.
 - **Data Usage** : The same study above also analyzed the amount of data usage for each of the libraries under investigation, and the result was the below chart (Lower values are better). OpenLayers overall performed quite well
-  ![Data Usage](./0002-files/NetworkTraffic.png) ([Source](https://doi.org/10.3390/ijgi9100563))
+  ![Data Usage](./0002-files/NetworkTraffic.png) (source (www dot mdpi dot com/2220-9964/9/10/563))
 
 ### Negative Consequences
 
