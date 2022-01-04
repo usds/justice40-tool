@@ -11,7 +11,7 @@ logger = get_module_logger(__name__)
 
 class CDCSVIINDEX(ExtractTransformLoad):
     """CDC SVI Index class ingests 2018 dataset located
-    here:
+    here: https://www.atsdr.cdc.gov/placeandhealth/svi/index.html
     Please see the README in this module for further details.
     """
 
@@ -99,7 +99,7 @@ class CDCSVIINDEX(ExtractTransformLoad):
             errors="raise",
         )
 
-        #  At or above 90 for precentile rank
+        #  At or above 90 for percentile rank
         self.df[field_names.CDC_SVI_INDEX_THEMES_PRIORITY_COMMUNITY] = (
             self.df[field_names.CDC_RPL_THEMES_OVERALL_PERCENTILE_FIELD]
             >= self.CDC_RPL_THEMES_THRSHOLD
