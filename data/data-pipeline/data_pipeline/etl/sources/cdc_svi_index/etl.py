@@ -54,6 +54,7 @@ class CDCSVIINDEX(ExtractTransformLoad):
             field_names.CDC_SVI_INDEX_HOUSING_TRANSPORTATION_SOS_FIELD,
             field_names.CDC_SVI_INDEX_THEMES_OVERALL_SOS_FIELD,
             field_names.CDC_SVI_INDEX_THEMES_OVERALL_TOTAL_FIELD,
+            field_names.CDC_SVI_INDEX_THEMES_PRIORITY_COMMUNITY,
         ] + self.COVARIATE_COLUMNS
 
         self.df: pd.DataFrame
