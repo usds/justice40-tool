@@ -106,7 +106,7 @@ class CDCSVIINDEX(ExtractTransformLoad):
             >= self.CDC_RPL_THEMES_THRSHOLD
         )
 
-        # QA the combined field:
+        # Rather than in the comparison tool just check here
         tract_values = self.df[self.GEOID_TRACT_FIELD_NAME].str.len().unique()
         if any(tract_values != [11]):
             print(tract_values)
