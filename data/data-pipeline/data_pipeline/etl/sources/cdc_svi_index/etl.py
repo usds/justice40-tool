@@ -75,7 +75,7 @@ class CDCSVIINDEX(ExtractTransformLoad):
         )
 
         self.df = pd.read_csv(
-            filepath_or_buffer=tmp_svi_csv_file_path, dtype={"FIPS": object}
+            filepath_or_buffer=tmp_svi_csv_file_path, dtype={self.CDC_SVI_INDEX_TRACTS_FIPS_CODE: object}
         )
 
         # Note: In this dataset all US census tracts are ranked against one another.
