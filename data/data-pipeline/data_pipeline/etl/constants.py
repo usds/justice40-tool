@@ -104,6 +104,11 @@ DATASET_LIST = [
         "module_dir": "michigan_ejscreen",
         "class_name": "MichiganEnviroScreenETL",
     },
+    {
+        "name": "cdc_svi_index",
+        "module_dir": "cdc_svi_index",
+        "class_name": "CDCSVIINDEX",
+    },
 ]
 CENSUS_INFO = {
     "name": "census",
