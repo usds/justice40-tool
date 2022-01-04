@@ -67,4 +67,4 @@ here: https://www.census.gov/programs-surveys/acs/technical-documentation/varian
 
 For selected ACS 5-year Detailed Tables, “Users can calculate margins of error for aggregated data by using the variance replicates. Unlike available approximation formulas, this method results in an exact margin of error by using the covariance term.”
 
-MOEs are _not_ included nor considered during this data processing and for the scoring comparison tool.
+MOEs are _not_ included nor considered during this data processing nor for the scoring comparison tool.
