@@ -75,7 +75,8 @@ class CDCSVIINDEX(ExtractTransformLoad):
         )
 
         self.df = pd.read_csv(
-            filepath_or_buffer=tmp_svi_csv_file_path, dtype={self.CDC_SVI_INDEX_TRACTS_FIPS_CODE: object}
+            filepath_or_buffer=tmp_svi_csv_file_path,
+            dtype={self.CDC_SVI_INDEX_TRACTS_FIPS_CODE: object},
         )
 
         # Note: In this dataset all US census tracts are ranked against one another.
@@ -130,8 +131,3 @@ class CDCSVIINDEX(ExtractTransformLoad):
         self.df[self.COLUMNS_TO_KEEP + list_of_flag_columns].to_csv(
             path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False
         )
-
-    def validate(self) -> None:
-        logger.info("Validating Census ACS Data")
-
-        pass

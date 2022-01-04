@@ -237,9 +237,7 @@ CDC_RPL_THEMES_OVERALL_PERCENTILE_FIELD: str = (
 )
 
 # CDC SVI INDEX Sum of series fields (SOS) references
-CDC_SVI_INDEX_SE_THEME_SOS_FIELD: str = (
-    "Sum of series for Socioeconomic theme"
-)
+CDC_SVI_INDEX_SE_THEME_SOS_FIELD: str = "Sum of series for Socioeconomic theme"
 CDC_SVI_INDEX_HOUSEHOLD_THEME_SOS_FIELD: str = (
     "Sum of series for Household Composition theme"
 )
