@@ -52,11 +52,11 @@ class CDCPlacesETL(ExtractTransformLoad):
 
         # rename columns to be used in score
         rename_fields = {
-            "Current asthma among adults aged >=18 years": field_names.ASTHMA_FIELD,  # 'Current asthma among adults aged greater than or equal to 18 years'
-            "Coronary heart disease among adults aged >=18 years": field.names.HEART_DISEASE_FIELD,  # "Coronary heart disease among adults aged greater than or equal to 18 years"
-            "Cancer (excluding skin cancer) among adults aged >=18 years": field_names.CANCER_FIELD,  # 'Cancer (excluding skin cancer) among adults aged greater than or equal to 18 years',
-            "Diagnosed diabetes among adults aged >=18 years": field_names.DIABETES_FIELD,  # 'Diagnosed diabetes among adults aged greater than or equal to 18 years',
-            "Physical health not good for >=14 days among adults aged >=18 years": field_names.PHYS_HEALTH_NOT_GOOD_FIELD,  # 'Physical health not good for greater than or equal to 14 days among adults aged greater than or equal to 18 years',
+            "Current asthma among adults aged >=18 years": field_names.ASTHMA_FIELD,
+            "Coronary heart disease among adults aged >=18 years": field_names.HEART_DISEASE_FIELD,
+            "Cancer (excluding skin cancer) among adults aged >=18 years": field_names.CANCER_FIELD,
+            "Diagnosed diabetes among adults aged >=18 years": field_names.DIABETES_FIELD,
+            "Physical health not good for >=14 days among adults aged >=18 years": field_names.PHYS_HEALTH_NOT_GOOD_FIELD,
         }
         self.df.rename(
             columns=rename_fields,
