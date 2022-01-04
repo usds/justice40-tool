@@ -13,7 +13,7 @@ class CDCSVIINDEX(ExtractTransformLoad):
     def __init__(self):
         self.OUTPUT_PATH = self.DATA_PATH / "dataset" / "cdc_svi_index"
 
-        self.CDC_SVI_INDEX_S3_URL = "https://justice40-data.s3.amazonaws.com/data-sources/SVI2018.csv.zip"
+        self.CDC_SVI_INDEX_S3_URL = settings.AWS_JUSTICE40_DATASOURCES_URL + "/SVI2018_US.zip"
 
         self.CDC_RPL_THEMES_THRSHOLD = 0.90
 
@@ -48,6 +48,8 @@ class CDCSVIINDEX(ExtractTransformLoad):
             field_names.CDC_SVI_INDEX_THEMES_OVERALL_TOTAL_FIELD,
         ] + self.COVARIATE_COLUMNS
 
+        self.df: pd.DataFrame
+
     def extract(self) -> None:
         logger.info("Extracting 43 MB CDC SVI INDEX")
         super().extract(
@@ -65,6 +67,7 @@ class CDCSVIINDEX(ExtractTransformLoad):
 
         self.df = pd.read_csv(
             filepath_or_buffer=tmp_svi_csv_file_path,
+            dtype={"FIPS": object}
         )
 
         # Note: In this dataset all US census tracts are ranked against one another.
