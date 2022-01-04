@@ -219,6 +219,44 @@ MICHIGAN_EJSCREEN_PRIORITY_COMMUNITY_FIELD: str = (
     "Michigan EJSCREEN Priority Community"
 )
 
+# CDC SVI INDEX percentile fields
+CDC_SVI_INDEX_SE_THEME_PERCENTILE_FIELD: str = (
+    "Percentile ranking for Socioeconomic theme summary"
+)
+CDC_SVI_INDEX_HOUSEHOLD_THEME_PERCENTILE_COMPOSITION_FIELD: str = (
+    "Percentile ranking for Household Composition theme summary"
+)
+CDC_SVI_INDEX_LANGUAGE_THEME_PERCENTILE_FIELD: str = (
+    "Percentile ranking for Minority Status/Lanuage theme summary"
+)
+CDC_SVI_INDEX_HOUSING_TRANSPORTATION_PERCENTILE_FIELD: str = (
+    "Percentile ranking for Housing Type/Transportation"
+)
+CDC_RPL_THEMES_OVERALL_PERCENTILE_FIELD: str = (
+    "Overall percentile ranking for themes"
+)
+
+# CDC SVI INDEX Sum of series fields (SOS) references
+CDC_SVI_INDEX_SE_THEME_SOS_FIELD: str = (
+    "Sum of series for Socioeconomic theme Socioeconomic theme"
+)
+CDC_SVI_INDEX_HOUSEHOLD_THEME_SOS_FIELD: str = (
+    "Sum of series for Household Composition theme"
+)
+CDC_SVI_INDEX_LANGUAGE_THEME_SOS_FIELD: str = (
+    "Sum of series for Minority Status/Lanuage theme"
+)
+CDC_SVI_INDEX_HOUSING_TRANSPORTATION_SOS_FIELD: str = (
+    "Sum of series for Housing Type/Transportation theme"
+)
+CDC_SVI_INDEX_THEMES_OVERALL_SOS_FIELD: str = "Overall sum of series themes"
+CDC_SVI_INDEX_THEMES_OVERALL_TOTAL_FIELD: str = (
+    "Sum of flags for the four themes"
+)
+CDC_SVI_INDEX_THEMES_PRIORITY_COMMUNITY: str = (
+    "At least 90th percentile rank for SVI Index"
+)
+
 # Child Opportunity Index data
 # Summer days with maximum temperature above 90F.
 EXTREME_HEAT_FIELD = "Summer days above 90F"
