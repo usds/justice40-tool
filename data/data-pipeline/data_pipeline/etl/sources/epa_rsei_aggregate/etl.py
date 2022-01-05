@@ -222,8 +222,7 @@ class EPARSEISCOREETL(ExtractTransformLoad):
             pct=True,
         )
 
-        # This threshold was arbitrarily chosen. After all,
-        # RSEI Scores are only meaningful in comparison to other RSEI Scores.
+        # This threshold was arbitrarily chosen.
         # It would make sense to enrich this with facilities, industries, or chemical
         # that would enable some additional form of sub-stratification when examining
         # different percentile ranges that are derived above.
