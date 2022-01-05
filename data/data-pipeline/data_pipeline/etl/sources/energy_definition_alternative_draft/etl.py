@@ -95,9 +95,13 @@ class EnergyDefinitionAlternativeDraft(ExtractTransformLoad):
         )
 
         # Convert to boolean:
-        self.df[field_names.ENERGY_RELATED_COMMUNITIES_DEFINITION_ALTERNATIVE] = \
-            self.df[field_names.ENERGY_RELATED_COMMUNITIES_DEFINITION_ALTERNATIVE
-            ].astype('bool')
+        self.df[
+            field_names.ENERGY_RELATED_COMMUNITIES_DEFINITION_ALTERNATIVE
+        ] = self.df[
+            field_names.ENERGY_RELATED_COMMUNITIES_DEFINITION_ALTERNATIVE
+        ].astype(
+            "bool"
+        )
 
     def validate(self) -> None:
         logger.info("Validating data")
