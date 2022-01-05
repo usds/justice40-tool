@@ -214,6 +214,7 @@ class EPARSEISCOREETL(ExtractTransformLoad):
             ordered=True,
         )
 
+        # Produce percentile rank for overall risk score
         self.df[field_names.EPA_RSEI_SCORE_PERCENTILE_RANK_FIELD] = self.df[
             field_names.EPA_RSEI_SCORE_OUTPUT_FIELD
         ].rank(
@@ -227,7 +228,7 @@ class EPARSEISCOREETL(ExtractTransformLoad):
         # that would enable some additional form of sub-stratification when examining
         # different percentile ranges that are derived above.
         self.df[field_names.EPA_RSEI_SCORE_THRESHOLD_FIELD] = (
-            self.df[field_names.EPA_RSEI_SCORE_PERCENTILE_RANK_FIELD] > 0.90
+            self.df[field_names.EPA_RSEI_SCORE_PERCENTILE_RANK_FIELD] > 0.75
         )
 
         expected_census_tract_field_length = 11
