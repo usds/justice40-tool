@@ -237,6 +237,16 @@ export const COMMUNITY = {
 };
 
 export const SIDE_PANEL_CATEGORY = defineMessages({
+  INDICATOR: {
+    id: 'areaDetail.category.header.indicator',
+    defaultMessage: 'Indicator',
+    description: 'header for each category',
+  },
+  PERCENTILE: {
+    id: 'areaDetail.category.header.percentile',
+    defaultMessage: 'Percentile (0-100)',
+    description: 'header for each category',
+  },
   CLIMATE: {
     id: 'areaDetail.indicator.title.climate',
     defaultMessage: 'Climate change',
@@ -550,7 +560,8 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   HIGH_SKL: {
     id: 'areaDetail.indicator.description.high.school',
     defaultMessage: `
-      Percent of people ages 25 years or older whose education level is less than a high school diploma
+      Percent (not a percentile) of people ages 25 years or older whose education level is less than a 
+      high school diploma
     `,
     description: 'Percent of people ages 25 years or older whose education level is less than a high school diploma',
   },
@@ -597,7 +608,7 @@ export const NOTE_ON_TERRITORIES = {
   PARA_1: <FormattedMessage
     id={'explore.page.note.on.territories.para.1'}
     defaultMessage={`
-      The data sources described on the {dataMethLink} are used to 
+      The data sources described on the {dataMethLink} page are used to 
       identify disadvantaged communities for all fifty states and the District of Columbia. However, not all 
       of these data sources are currently available for the U.S. territories. The Census ACS data from 
       2015-2019 was used to identify disadvantaged communities for Puerto Rico. This uses the same methodology 

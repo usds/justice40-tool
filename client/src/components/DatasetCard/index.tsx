@@ -25,9 +25,7 @@ const DatasetCard = ({datasetCardProps}:IDatasetCardProps) => {
           <span className={styles.datasetCardLabels}>
             {intl.formatMessage(METHODOLOGY_COPY.DATASET_CARD_LABELS.RESP_PARTY)}
           </span>
-          <a href={datasetCardProps.dataSourceURL} target={'_blank'} rel="noreferrer">
-            {datasetCardProps.respPartyLabel}
-          </a>
+          {datasetCardProps.responsibleParty}
         </li>
         <li className={styles.datasetCardListItem}>
           <span className={styles.datasetCardLabels}>

@@ -87,6 +87,14 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         hidden=""
         id="climate-change"
       >
+        <div>
+          <div>
+            Indicator
+          </div>
+          <div>
+            Percentile (0-100)
+          </div>
+        </div>
         <li
           data-cy="indicatorBox"
         >
@@ -190,6 +198,14 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         hidden=""
         id="clean-energy"
       >
+        <div>
+          <div>
+            Indicator
+          </div>
+          <div>
+            Percentile (0-100)
+          </div>
+        </div>
         <li
           data-cy="indicatorBox"
         >
@@ -273,6 +289,14 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         hidden=""
         id="clean-transport"
       >
+        <div>
+          <div>
+            Indicator
+          </div>
+          <div>
+            Percentile (0-100)
+          </div>
+        </div>
         <li
           data-cy="indicatorBox"
         >
@@ -356,6 +380,14 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         hidden=""
         id="sustain-house"
       >
+        <div>
+          <div>
+            Indicator
+          </div>
+          <div>
+            Percentile (0-100)
+          </div>
+        </div>
         <li
           data-cy="indicatorBox"
         >
@@ -441,6 +473,14 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         hidden=""
         id="leg-pollute"
       >
+        <div>
+          <div>
+            Indicator
+          </div>
+          <div>
+            Percentile (0-100)
+          </div>
+        </div>
         <li
           data-cy="indicatorBox"
         >
@@ -542,6 +582,14 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         hidden=""
         id="clean-water"
       >
+        <div>
+          <div>
+            Indicator
+          </div>
+          <div>
+            Percentile (0-100)
+          </div>
+        </div>
         <li
           data-cy="indicatorBox"
         >
@@ -607,6 +655,14 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         hidden=""
         id="health-burdens"
       >
+        <div>
+          <div>
+            Indicator
+          </div>
+          <div>
+            Percentile (0-100)
+          </div>
+        </div>
         <li
           data-cy="indicatorBox"
         >
@@ -731,6 +787,14 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         hidden=""
         id="work-dev"
       >
+        <div>
+          <div>
+            Indicator
+          </div>
+          <div>
+            Percentile (0-100)
+          </div>
+        </div>
         <li
           data-cy="indicatorBox"
         >
@@ -822,15 +886,16 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               High school degree achievement rate
               <div>
                 
-      Percent of people ages 25 years or older whose education level is less than a high school diploma
+      Percent (not a percentile) of people ages 25 years or older whose education level is less than a 
+      high school diploma
     
               </div>
             </div>
             <div>
               N/A
-              <sup>
-                <span />
-              </sup>
+              <span>
+                %
+              </span>
             </div>
           </div>
         </li>

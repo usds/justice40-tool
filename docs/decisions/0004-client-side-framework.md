@@ -49,11 +49,11 @@ Chosen option: Gatsby, because it seems to hit the balance between being simple 
 - Fairly good [documentation](https://www.gatsbyjs.com/docs)
 
 ### Negative Consequences <!-- optional -->
-
+<!-- markdown-link-check-disable -->
 - Test development environment ran out of memory. We debugged this further and could not replicate the problem on a new machine, but the original experience was annoying to work around and this [article](https://support.gatsbyjs.com/hc/en-us/articles/360053096273-Why-did-I-hit-Out-of-Memory-errors-) suggests it could be a more widespread problem.
 - Local builds and refreshes feel slow compared to other frameworks on this list
 - Seems a little more geared toward the blog usecase
-
+<!-- markdown-link-check-enable -->
 ## Pros and Cons of the Options
 
 ### Jekyll
@@ -75,7 +75,7 @@ Cons:
 
 Pros:
 
-- By far the most commonly framework in this list - 1.4MM [total downloads](https://www.npmtrends.com/gatsby-vs-next-vs-nuxt-vs-vuepress-vs-create-react-app-vs-gridsome) as of May 2, 2021 . Gatsby, the second most-downloaded, has ~470,000
+- By far the most commonly framework in this list - 1.4MM total downloads as of May 2, 2021 . Gatsby, the second most-downloaded, has ~470,000
 - Used by a number of well-known [companies and brands](https://nextjs.org/showcase)
 - Flexible
 - Mature tooling like `create-next-app`
