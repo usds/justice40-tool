@@ -176,13 +176,13 @@ EPA_RSEI_POPULATION_OUTPUT_FIELD = (
 )
 
 EPA_RSEI_SCORE_PERCENTILE_LABEL_FIELD = (
-    "Overall risk-score relative to other risk scores"
+    "Percentile intervals for overall risk scores"
 )
 EPA_RSEI_CSCORE_PERCENTILE_LABEL_FIELD = (
-    "Relative risk with other risk scores (Cancer toxicity weights)"
+    "Percentile intervals for other risk scores (Cancer toxicity weights)"
 )
 EPA_RSEI_NCSCORE_PERCENTILE_LABEL_FIELD = (
-    "Relative risk with other risk scores (Noncancer toxicity weights)"
+    "Percentile intervals for other risk scores (Noncancer toxicity weights)"
 )
 
 EPA_RSEI_SCORE_PERCENTILE_RANK_FIELD = "Percentile rank for overall risk score"
