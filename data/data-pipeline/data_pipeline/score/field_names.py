@@ -155,6 +155,40 @@ CENSUS_POVERTY_LESS_THAN_100_FPL_FIELD_2010 = (
     "Percent of individuals less than 100% Federal Poverty Line in 2010"
 )
 
+# RSEI Aggregated Micro-data
+EPA_RSEI_NUMBER_FACILITIES_OUTPUT_FIELD = (
+    "Number of facilities affecting the tract"
+)
+EPA_RSEI_NUMBER_RELEASES_OUTPUT_FIELD = "Number of releases affecting the tract"
+EPA_RSEI_NUMBER_CHEMICALS_OUTPUT_FIELD = (
+    "Number of chemicals affecting the tract"
+)
+EPA_RSEI_AVERAGE_TOXICITY_OUTPUT_FIELD = (
+    "Average toxicity-weighted concentration of the cells in the tract"
+)
+EPA_RSEI_SCORE_OUTPUT_FIELD = (
+    "Sum of the risk-related scores of the cells in the tract"
+)
+EPA_RSEI_CSCORE_OUTPUT_FIELD = "Sum of the risk-related scores of the cells in the tract (Cancer toxicity weights)"
+EPA_RSEI_NCSCORE_OUTPUT_FIELD = "Sum of the risk-related scores of the cells in the tract (Noncancer toxicity weights)"
+EPA_RSEI_POPULATION_OUTPUT_FIELD = (
+    "Sum of the population of the cells in the tract"
+)
+
+EPA_RSEI_SCORE_PERCENTILE_LABEL_FIELD = (
+    "Overall risk-score relative to other risk scores"
+)
+EPA_RSEI_CSCORE_PERCENTILE_LABEL_FIELD = (
+    "Relative risk with other risk scores (Cancer toxicity weights)"
+)
+EPA_RSEI_NCSCORE_PERCENTILE_LABEL_FIELD = (
+    "Relative risk with other risk scores (Noncancer toxicity weights)"
+)
+
+EPA_RSEI_SCORE_PERCENTILE_RANK_FIELD = "Percentile rank for overall risk score"
+
+EPA_RSEI_SCORE_THRESHOLD_FIELD = "At or above 90 for overall percentile ranking according to overall risk score"
+
 # Combined fields that merge island areas and states data
 COMBINED_CENSUS_TOTAL_POPULATION_2010 = (
     "Total population in 2009 (island areas) and 2019 (states and PR)"
