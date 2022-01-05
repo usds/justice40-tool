@@ -234,16 +234,16 @@ MARYLAND_EJSCREEN_TRACT_90_PERCENT_FIELD: str = (
 )
 
 MARYLAND_EJSCREEN_PERCENTILE_FIELD: str = (
-    "Maryland Environmental Justice Percentile for EJ Score"
+    "Maryland EJSCREEN Percentile Rank for EJ Score"
 )
 
 MARYLAND_EJSCREEN_SCORE_FIELD: str = "Maryland Environmental Justice Score"
 
-# this references ranked percentiles
+# this references percentile ranks
 # please see here for interpretation: https://github.com/usds/justice40-tool/issues/239#issuecomment-1003567593
 # and here: https://github.com/usds/justice40-tool/issues/239#issuecomment-1003448074
 MARYLAND_EJSCREEN_BURDENED_THRESHOLD_FIELD: str = (
-    "Tract has an EJ Score greater than 75"
+    "Tract has a percentile rank above 75 for the EJ Score"
 )
 
 # Child Opportunity Index data
