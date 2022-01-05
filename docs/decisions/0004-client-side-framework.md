@@ -49,11 +49,11 @@ Chosen option: Gatsby, because it seems to hit the balance between being simple 
 - Fairly good [documentation](https://www.gatsbyjs.com/docs)
 
 ### Negative Consequences <!-- optional -->
-
+<!-- markdown-link-check-disable -->
 - Test development environment ran out of memory. We debugged this further and could not replicate the problem on a new machine, but the original experience was annoying to work around and this [article](https://support.gatsbyjs.com/hc/en-us/articles/360053096273-Why-did-I-hit-Out-of-Memory-errors-) suggests it could be a more widespread problem.
 - Local builds and refreshes feel slow compared to other frameworks on this list
 - Seems a little more geared toward the blog usecase
-
+<!-- markdown-link-check-enable -->
 ## Pros and Cons of the Options
 
 ### Jekyll

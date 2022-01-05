@@ -25,7 +25,7 @@ Descargar desde [sitio web](https://git-scm.com/download/win)
 2. Valide la instalación escribiendo `brew -v` en la terminal y asegúrese de que se muestre un número de versión.
 
 ### Instalar Node usando NVM
-
+<!-- markdown-link-check-disable-next-line -->
 Esto funcionará tanto para MacOS como para Win10. Siga las instrucciones de este [enlace](https://medium.com/@nodesource/installing-node-js-tutorial-using-nvm-5c6ff5925dd8)
 
 ### Configuración de IDE
