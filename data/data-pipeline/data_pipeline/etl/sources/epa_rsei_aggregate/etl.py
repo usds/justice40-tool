@@ -148,7 +148,7 @@ class EPARSEISCOREETL(ExtractTransformLoad):
         index = [5, 25, 50, 75, 99]
         # Parameter for Cut function
         labels_for_cut_function = [
-            "5 - 25 percentile value for score",
+            "5 - 25 percentile values for score",
             "25 - 50 percentile value for score",
             "50 - 75 percentile value for score",
             "75 - 99 percentile value for score",
@@ -229,6 +229,17 @@ class EPARSEISCOREETL(ExtractTransformLoad):
         self.df[field_names.EPA_RSEI_SCORE_THRESHOLD_FIELD] = (
             self.df[field_names.EPA_RSEI_SCORE_PERCENTILE_RANK_FIELD] > 0.90
         )
+
+        expected_census_tract_field_length = 11
+        self.df[self.GEOID_TRACT_FIELD_NAME] = (
+            self.df[self.GEOID_TRACT_FIELD_NAME]
+            .astype(str)
+            .apply(lambda x: x.zfill(expected_census_tract_field_length))
+        )
+
+        if not self.df[self.GEOID_TRACT_FIELD_NAME].apply(lambda x: len(str(x))).eq(expected_census_tract_field_length).all():
+            raise ValueError(f"GEOID Tract must be length of {expected_census_tract_field_length}")
+
 
     def validate(self) -> None:
         logger.info("Validating data.")
