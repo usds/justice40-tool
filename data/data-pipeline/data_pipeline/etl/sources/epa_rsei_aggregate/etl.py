@@ -143,15 +143,15 @@ class EPARSEISCOREETL(ExtractTransformLoad):
             inplace=True,
         )
 
-        # 5th, 25th, 50th, 75th and 95th percentiles for each score column
+        # 5th, 25th, 50th, 75th and 99th percentiles for each score column
         # this will yield n - 1 categorical variables where n = 5 percentiles specified
         index = [5, 25, 50, 75, 99]
         # Parameter for Cut function
         labels_for_cut_function = [
-            ">=5 - 25 percentile value for score",
-            ">=25 - 50 percentile value for score",
-            ">=50 - 75 percentile value for score",
-            ">=75 - 99 percentile value for score",
+            "5 - 25 percentile value for score",
+            "25 - 50 percentile value for score",
+            "50 - 75 percentile value for score",
+            "75 - 99 percentile value for score",
         ]
 
         # Generate percentile values specified by index above
