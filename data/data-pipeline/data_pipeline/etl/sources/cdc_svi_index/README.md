@@ -48,7 +48,7 @@ The four summary theme ranking variables, detailed in the Data Dictionary below,
 
 The sums of each theme were summed, ordered the tracts, and then calculated overall percentile rankings. Please note; taking the sum of the sums for each theme is the same as summing individual variable rankings. The overall tract summary ranking variable is RPL_THEMES.
 
-For SVI 2018, the authors also included two adjunct variables, 1) 2014-2018 ACS estimates for persons without health insurance, and 2) an estimate of the daytime population derived from LandScan 2018 estimates. These adjunct variables are excluded from SVI rankings. At this time, these are not included in the dataset
+For SVI 2018, the authors also included two adjunct variables, 1) 2014-2018 ACS estimates for persons without health insurance, and 2) an estimate of the daytime population derived from LandScan 2018 estimates. These adjunct variables are excluded from SVI rankings. At this time, these are not included in the output in the current methodology.
 
 
 **Important Notes**
