@@ -29,15 +29,16 @@ CDC SVI Index utilizes American Community Survey (ACS), 2014-2018 (5-year) data 
 
 
 ### Rankings
- Census tracts were ranked within each state and the District of Columbia. A ranking of all tracts for the entire United States was used relative to one another. Tract rankings are based on percentiles. Percentile ranking values range from 0 to 1, with higher values indicating greater vulnerability.
+ Census tracts were ranked within each state and the District of Columbia. In addition, a ranking of all tracts for the entire United States was used relative to one another. Tract rankings are based on percentiles. _Percentile ranking_ values range from 0 to 1, with higher values indicating greater vulnerability.
 
 For each tract, a percentile rank is generated among all tracts for 1) the fifteen individual variables, 2) the four themes, and 3) its overall position.
 
 **Theme rankings**
 
-For each of the four themes, the percentiles for the variables comprising each theme. We ordered the summed percentiles for each theme to determine theme-specific percentile rankings.
+For each of the four themes, the percentiles for the variables comprising each theme were computed. The authors ordered the summed percentiles for each theme to determine theme-specific percentile rankings.
 
 The four summary theme ranking variables, detailed in the Data Dictionary below, are:
+
 * Socioeconomic - RPL_THEME1
 * Household Composition & Disability - RPL_THEME2
 * Minority Status & Language - RPL_THEME3
@@ -45,18 +46,16 @@ The four summary theme ranking variables, detailed in the Data Dictionary below,
 
 **Overall tract rankings:**
 
-The sums of each theme were summed, ordered the tracts, and then calculated overall
-percentile rankings. Please note; taking the sum of the sums for each theme is the same as summing individual variable rankings. The overall tract summary ranking variable is RPL_THEMES.
+The sums of each theme were summed, ordered the tracts, and then calculated overall percentile rankings. Please note; taking the sum of the sums for each theme is the same as summing individual variable rankings. The overall tract summary ranking variable is RPL_THEMES.
 
-
-For SVI 2018, the authore also included two adjunct variables, 1) 2014-2018 ACS estimates for persons without health insurance, and 2) an estimate of daytime population derived from LandScan 2018 estimates. These adjunct variables are excluded from SVI rankings. At this time, these are not included in the dataset
+For SVI 2018, the authors also included two adjunct variables, 1) 2014-2018 ACS estimates for persons without health insurance, and 2) an estimate of the daytime population derived from LandScan 2018 estimates. These adjunct variables are excluded from SVI rankings. At this time, these are not included in the dataset
 
 
 **Important Notes**
 
-1. Tracts with zero estimates for total population (N = 645 for the U.S.) were removed during the ranking process. These tracts were added back to the SVI databases after ranking. 
+1. Tracts with zero estimates for the total population (N = 645 for the U.S.) were removed during the ranking process. These tracts were added back to the SVI databases after ranking. 
 
-2. The TOTPOP field value is 0,but the percentile ranking fields (RPL_THEME1, RPL_THEME2, RPL_THEME3, RPL_THEME4, and RPL_THEMES) were set to -999.
+2. The TOTPOP field value is 0, but the percentile ranking fields (RPL_THEME1, RPL_THEME2, RPL_THEME3, RPL_THEME4, and RPL_THEMES) were set to -999.
 
 Whenever available, they use Census-calculated MOEs. If Census MOEs are unavailable, for instance when aggregating variables within a table, the authors use approximation formulas provided by the Census in Appendix A (pages A-14 through A-17) of _A Compass for Understanding and Using American Community Survey Data here_:
 

@@ -252,7 +252,7 @@ CDC_SVI_INDEX_THEMES_OVERALL_TOTAL_FIELD: str = (
     "Sum of flags for the four themes"
 )
 CDC_SVI_INDEX_THEMES_PRIORITY_COMMUNITY: str = (
-    "At least or above 90 for overall percentile ranking according to SVI Index"
+    "At or above 90 for overall percentile ranking according to SVI Index"
 )
 
 # Child Opportunity Index data

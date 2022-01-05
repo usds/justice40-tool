@@ -118,9 +118,10 @@ class CDCSVIINDEX(ExtractTransformLoad):
     def load(self) -> None:
         logger.info("Saving CDC SVI Index Data")
 
+        # The F-prefixed variables symbolize a flag (as defined in the documentation)
         # Tracts in the top 10%, i.e., at the 90th percentile of values, are given a value of 1 to indicate high vulnerability.
         # Tracts below the 90th percentile are given a value of 0.
-        # For a theme, the flag value is the number of flags for variables comprising the theme. The overall
+        # For a given theme, the flag value is the number of flags for variables comprising the theme. The overall
         # flag value is calculated for each tract as the number of all variable flags (F_TOTAL)
         list_of_flag_columns = [
             x for x in self.df.columns if str(x).startswith("F_")
