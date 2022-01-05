@@ -31,14 +31,14 @@ class CDCSVIINDEX(ExtractTransformLoad):
         self.COVARIATE_COLUMNS = [
             "AREA_SQMI",  # Tract area in square miles
             "E_TOTPOP",  # Population estimate, 2014-2018 ACS S0601_C01_001 E
-            "E_HU",  # Housing units estimate DP04_0001E
-            "E_HH",  # Households estimate DP02_0001E
+            "E_HU",  # Housing units estimate, DP04_0001E
+            "E_HH",  # Households estimate, DP02_0001E
             # E_PCI has fewer rows than other variables - joined to Census 2016 tracts. Contains null cells (i.e. -999).
-            "E_PCI",  # Per capita income estimate, 2014-2018 ACS B19301_001E
-            "E_AGE65",  # Persons aged 65 and older estimate, 2014-2018 ACS S0101_C01_030 E
-            "E_DISABL",  # Civilian noninstitutionalized population with a disability estimate, 2014 -2018 ACS   DP02_0071E
-            "E_SNGPNT",  # Single parent household with children under 18 estimate MOE, 2014 -2018 ACS (DP02_0007E + DP02_0009E)
-            "E_CROWD",  # At household level (occupied housing units), more people than rooms estimate, 2014 -2018 ACS (DP04_0078E + DP04_0079E)
+            "E_PCI",  # Per capita income estimate, 2014-2018 ACS, B19301_001E
+            "E_AGE65",  # Persons aged 65 and older estimate, 2014-2018 ACS, S0101_C01_030 E
+            "E_DISABL",  # Civilian noninstitutionalized population with a disability estimate, 2014 -2018 ACS, DP02_0071E
+            "E_SNGPNT",  # Single parent household with children under 18 estimate MOE, 2014 -2018 ACS, (DP02_0007E + DP02_0009E)
+            "E_CROWD",  # At household level (occupied housing units), more people than rooms estimate for 2014 -2018 ACS, (DP04_0078E + DP04_0079E)
         ]
 
         self.COLUMNS_TO_KEEP = [
@@ -48,11 +48,13 @@ class CDCSVIINDEX(ExtractTransformLoad):
             field_names.CDC_SVI_INDEX_LANGUAGE_THEME_PERCENTILE_FIELD,
             field_names.CDC_SVI_INDEX_HOUSING_TRANSPORTATION_PERCENTILE_FIELD,
             field_names.CDC_RPL_THEMES_OVERALL_PERCENTILE_FIELD,
+            # Sum of series fields
             field_names.CDC_SVI_INDEX_SE_THEME_SOS_FIELD,
             field_names.CDC_SVI_INDEX_HOUSEHOLD_THEME_SOS_FIELD,
             field_names.CDC_SVI_INDEX_LANGUAGE_THEME_SOS_FIELD,
             field_names.CDC_SVI_INDEX_HOUSING_TRANSPORTATION_SOS_FIELD,
             field_names.CDC_SVI_INDEX_THEMES_OVERALL_SOS_FIELD,
+            # Derived columns
             field_names.CDC_SVI_INDEX_THEMES_OVERALL_TOTAL_FIELD,
             field_names.CDC_SVI_INDEX_THEMES_PRIORITY_COMMUNITY,
         ] + self.COVARIATE_COLUMNS
@@ -106,12 +108,15 @@ class CDCSVIINDEX(ExtractTransformLoad):
             >= self.CDC_RPL_THEMES_THRSHOLD
         )
 
-        # Rather than in the comparison tool just check here
-        tract_values = self.df[self.GEOID_TRACT_FIELD_NAME].str.len().unique()
-        if any(tract_values != [11]):
-            print(tract_values)
+        expected_census_tract_field_length = 11
+        if (
+            not self.df[self.GEOID_TRACT_FIELD_NAME]
+            .apply(lambda x: len(str(x)))
+            .eq(expected_census_tract_field_length)
+            .all()
+        ):
             raise ValueError(
-                "Some of the census tract data has the wrong length."
+                f"GEOID Tract must be length of {expected_census_tract_field_length}"
             )
 
     def load(self) -> None:
@@ -125,7 +130,7 @@ class CDCSVIINDEX(ExtractTransformLoad):
         list_of_flag_columns = [
             x for x in self.df.columns if str(x).startswith("F_")
         ]
-        # mkdir census
+
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
 
         self.df[self.COLUMNS_TO_KEEP + list_of_flag_columns].to_csv(
