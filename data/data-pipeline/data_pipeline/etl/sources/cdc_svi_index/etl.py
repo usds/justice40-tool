@@ -80,7 +80,6 @@ class CDCSVIINDEX(ExtractTransformLoad):
         )
 
         # Note: In this dataset all US census tracts are ranked against one another.
-        # This data set only includes references to the “United States”
         # Puerto Rico is not included in this dataset
         self.df.rename(
             columns={
