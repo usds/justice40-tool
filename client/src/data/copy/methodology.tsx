@@ -374,7 +374,7 @@ export const CATEGORIES = {
     METHODOLOGY: <FormattedMessage
       id= {'indicator.categories.clean.water.methodology'}
       defaultMessage= {`Critical clean water and waste infrastructure`}
-      description= {`Critical clean water and waste infrastructure`}
+      description= {`Critical clean water and waste infrastructure methodology`}
     />,
     TITLE: <FormattedMessage
       id={'indicator.categories.clean.water.title'}
