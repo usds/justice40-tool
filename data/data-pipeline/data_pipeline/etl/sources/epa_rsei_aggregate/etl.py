@@ -125,6 +125,7 @@ class EPARSEISCOREETL(ExtractTransformLoad):
         self.df = pd.concat([row_df, self.df])
 
         score_columns = [x for x in self.df.columns if "SCORE" in x]
+
         # coerce dataframe type to perform correct next steps
         self.df[score_columns] = self.df[score_columns].astype(float)
 
