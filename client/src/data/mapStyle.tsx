@@ -178,64 +178,7 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
      * the id key using the value of sources.[name]. Each layer stacks upon the previous
      * layer in the array of layers.
      */
-    'layers': 'remove-label-layer' in flagContainer ? [
-      // The baseMapLayer
-      {
-        'id': 'baseMapLayer',
-        'source': 'baseMapLayer',
-        'type': 'raster',
-        'minzoom': constants.GLOBAL_MIN_ZOOM,
-        'maxzoom': constants.GLOBAL_MAX_ZOOM,
-      },
-
-      // The Geo layer adds a geographical layer like mountains and rivers
-      {
-        'id': 'geo',
-        'source': 'geo',
-        'type': 'raster',
-        'layout': {
-          // Place visibility behind flag:
-          'visibility': 'geo' in flagContainer ? 'visible' : 'none',
-        },
-        'minzoom': constants.GLOBAL_MIN_ZOOM,
-        'maxzoom': constants.GLOBAL_MAX_ZOOM,
-      },
-
-      // High zoom layer
-      {
-        'id': constants.HIGH_SCORE_LAYER_NAME,
-        'source': constants.HIGH_SCORE_SOURCE_NAME,
-        'source-layer': constants.SCORE_SOURCE_LAYER,
-        'type': 'fill',
-        'paint': makePaint({
-          field: constants.SCORE_PROPERTY_HIGH,
-          minRamp: constants.SCORE_BOUNDARY_LOW,
-          medRamp: constants.SCORE_BOUNDARY_THRESHOLD,
-          maxRamp: constants.SCORE_BOUNDARY_PRIORITIZED,
-        }),
-        'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
-      },
-
-      // Low zoom layer
-      {
-        'id': constants.LOW_SCORE_LAYER_NAME,
-        'source': constants.LOW_SCORE_SOURCE_NAME,
-        'source-layer': constants.SCORE_SOURCE_LAYER,
-        'type': 'fill',
-        'filter': ['all',
-          ['>', constants.SCORE_PROPERTY_LOW, constants.SCORE_BOUNDARY_THRESHOLD],
-        ],
-        'paint': makePaint({
-          field: constants.SCORE_PROPERTY_LOW,
-          minRamp: constants.SCORE_BOUNDARY_LOW,
-          medRamp: constants.SCORE_BOUNDARY_THRESHOLD,
-          maxRamp: constants.SCORE_BOUNDARY_PRIORITIZED,
-        }),
-        'minzoom': constants.GLOBAL_MIN_ZOOM_LOW,
-        'maxzoom': constants.GLOBAL_MAX_ZOOM_LOW,
-      },
-    ] :
-    [
+    'layers': [
       // The baseMapLayer
       {
         'id': 'baseMapLayer',
@@ -298,7 +241,7 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
         'type': 'raster',
         'source': 'labels',
         'layout': {
-          'visibility': 'visible',
+          'visibility': 'remove-label-layer' in flagContainer ? 'none' : 'visible',
         },
         'minzoom': constants.GLOBAL_MIN_ZOOM,
         'maxzoom': constants.GLOBAL_MAX_ZOOM,
