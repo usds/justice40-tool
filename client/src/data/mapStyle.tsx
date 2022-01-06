@@ -47,6 +47,7 @@ function makePaint({
 const imageSuffix = constants.isMobile ? '' : '@2x';
 
 // Original "light" Base layer
+// Additional layers found here: https://carto.com/help/building-maps/basemap-list/#carto-vector-basemaps
 const cartoLightBaseLayer = {
   noLabels: [
     `https://a.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
@@ -54,7 +55,7 @@ const cartoLightBaseLayer = {
     `https://c.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
     `https://d.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
   ],
-  withLabels: [
+  labelsOnly: [
     `https://cartodb-basemaps-a.global.ssl.fastly.net/light_only_labels/{z}/{x}/{y}${imageSuffix}.png`,
     `https://cartodb-basemaps-b.global.ssl.fastly.net/light_only_labels/{z}/{x}/{y}${imageSuffix}.png`,
     `https://cartodb-basemaps-c.global.ssl.fastly.net/light_only_labels/{z}/{x}/{y}${imageSuffix}.png`,
@@ -62,60 +63,59 @@ const cartoLightBaseLayer = {
   ],
 };
 
-// Additional layers found here: https://carto.com/help/building-maps/basemap-list/#carto-vector-basemaps
-// New "voyager" base layer
-const cartoVoyagerBaseLayer = {
-  noLabels: [
-    `https://a.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
-    `https://b.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
-    `https://c.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
-    `https://d.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
-  ],
-  withLabels: [
-    `https://a.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}${imageSuffix}.png`,
-    `https://b.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}${imageSuffix}.png`,
-    `https://c.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}${imageSuffix}.png`,
-    `https://d.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}${imageSuffix}.png`,
-  ],
+// Todo move API_KEY to env
+const getMapTilerBaseLayer = (name:string, API_KEY='KMA4bawPDNtR6zNIAfUH') => {
+  return [
+    `https://api.maptiler.com/maps/${name}/{z}/{x}/{y}${imageSuffix}.png?key=${API_KEY}`,
+  ];
 };
-
-// New "positron" base layer
-const cartoPositronBaseLayer = {
-  noLabels: [
-    `https://api.mapbox.com/styles/v1/mapbox/streets-v11.html?title=true&access_token=pk.eyJ1IjoianVzdGljZTQwIiwiYSI6ImNreGF1Z3loNjB0N3oybm9jdGpxeDZ4b3kifQ.76tMHU7C8wwn0HGsF6azjA{z}/{x}/{y}${imageSuffix}.png`,
-    // `https://a.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
-    // `https://b.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
-    // `https://c.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
-    // `https://d.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}${imageSuffix}.png`,
-  ],
-  withLabels: [
-    `https://api.mapbox.com/styles/v1/mapbox/streets-v11.html?title=true&access_token=pk.eyJ1IjoianVzdGljZTQwIiwiYSI6ImNreGF1Z3loNjB0N3oybm9jdGpxeDZ4b3kifQ.76tMHU7C8wwn0HGsF6azjA{z}/{x}/{y}${imageSuffix}.png`,
-    // `https://a.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}${imageSuffix}.png`,
-    // `https://b.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}${imageSuffix}.png`,
-    // `https://c.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}${imageSuffix}.png`,
-    // `https://d.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}${imageSuffix}.png`,
-  ],
-};
-
 
 export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
-  let baseLayer = {...cartoLightBaseLayer};
-
-  if ('vy' in flagContainer) {
-    baseLayer = {...cartoVoyagerBaseLayer};
-  } else if ('ps' in flagContainer) {
-    baseLayer = {...cartoPositronBaseLayer};
+  const getBaseMapLayer = () => {
+    if ('mt-streets' in flagContainer) {
+      return getMapTilerBaseLayer('streets');
+    } else if ('mt-bright' in flagContainer) {
+      return getMapTilerBaseLayer('bright');
+    } else if ('mt-voyager' in flagContainer) {
+      return getMapTilerBaseLayer('voyager');
+    } else if ('mt-osm' in flagContainer) {
+      return getMapTilerBaseLayer('osm-standard');
+    } else {
+      return cartoLightBaseLayer.noLabels;
+    };
   };
+
 
   return {
     'version': 8,
+
+    /**
+     * Removing any sources, removes the map from rendering, since the layers key is depenedent on these
+     * sources. The layers key below refers to these sources by id.
+     *  - baseMapLayer: the base layer without labels
+     *  - geo: a geographical layer that is not being used
+     *  - high zoom: the source of the high zoom tiles
+     *  - low zoom: the source of the low zoom source
+     *  - labels: the source of a base layers with labels only
+     *
+     * The reason the base layers were split into "no labels" and "labels only" was to make the labels
+     * more prominent.
+     * */
     'sources': {
-      'carto': {
+
+      /**
+       * The baseMapLayer source allows us to define where the tiles can be fetched from. This baseMapLayer
+       * will load various baseMapLayer sources depending on the feature flag
+       */
+      'baseMapLayer': {
         'type': 'raster',
-        'tiles': baseLayer.noLabels,
+        // 'tiles': baseMapLayer.noLabels,
+        'tiles': getBaseMapLayer(),
         'minzoom': constants.GLOBAL_MIN_ZOOM,
         'maxzoom': constants.GLOBAL_MAX_ZOOM,
       },
+
+      // In the layer (below) where the geo source is used, the layer is invisible
       'geo': {
         'type': 'raster',
         'tiles': [
@@ -124,6 +124,8 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
         'minzoom': constants.GLOBAL_MIN_ZOOM,
         'maxzoom': constants.GLOBAL_MAX_ZOOM,
       },
+
+      // The High zoom source:
       [constants.HIGH_SCORE_SOURCE_NAME]: {
       // "Score-high" represents the full set of data
       // at the census block group level. It is only shown
@@ -137,12 +139,14 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
           constants.featureURLForTilesetName(flagContainer['high_tiles']) :
           constants.FEATURE_TILE_HIGH_ZOOM_URL,
         ],
-        // Seeting maxzoom here enables 'overzooming'
+        // Setting maxzoom here enables 'overzooming'
         // e.g. continued zooming beyond the max bounds.
         // More here: https://docs.mapbox.com/help/glossary/overzoom/
         'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
         'maxzoom': constants.GLOBAL_MAX_ZOOM_HIGH,
       },
+
+      // The Low zoom source:
       [constants.LOW_SCORE_SOURCE_NAME]: {
       // "Score-low" represents a tileset at the level of bucketed tracts.
       // census block group information is `dissolve`d into tracts, then
@@ -160,30 +164,44 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
         'minzoom': constants.GLOBAL_MIN_ZOOM_LOW,
         'maxzoom': constants.GLOBAL_MAX_ZOOM_LOW,
       },
+
+      // The labels source:
       'labels': {
         'type': 'raster',
-        'tiles': cartoLightBaseLayer.withLabels,
+        // 'tiles': baseMapLayer.labelsOnly,
+        'tiles': cartoLightBaseLayer.labelsOnly,
       },
     },
-    'layers': [
+
+    /**
+     * Each layer in the layer array corresponds to a source above and is referenced by
+     * the id key using the value of sources.[name]. Each layer stacks upon the previous
+     * layer in the array of layers.
+     */
+    'layers': 'remove-label-layer' in flagContainer ? [
+      // The baseMapLayer
       {
-        'id': 'carto',
-        'source': 'carto',
+        'id': 'baseMapLayer',
+        'source': 'baseMapLayer',
         'type': 'raster',
         'minzoom': constants.GLOBAL_MIN_ZOOM,
         'maxzoom': constants.GLOBAL_MAX_ZOOM,
       },
+
+      // The Geo layer adds a geographical layer like mountains and rivers
       {
         'id': 'geo',
         'source': 'geo',
         'type': 'raster',
         'layout': {
-        // Make the layer invisible by default.
-          'visibility': 'none',
+          // Place visibility behind flag:
+          'visibility': 'geo' in flagContainer ? 'visible' : 'none',
         },
         'minzoom': constants.GLOBAL_MIN_ZOOM,
         'maxzoom': constants.GLOBAL_MAX_ZOOM,
       },
+
+      // High zoom layer
       {
         'id': constants.HIGH_SCORE_LAYER_NAME,
         'source': constants.HIGH_SCORE_SOURCE_NAME,
@@ -197,6 +215,8 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
         }),
         'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
       },
+
+      // Low zoom layer
       {
         'id': constants.LOW_SCORE_LAYER_NAME,
         'source': constants.LOW_SCORE_SOURCE_NAME,
@@ -214,11 +234,72 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
         'minzoom': constants.GLOBAL_MIN_ZOOM_LOW,
         'maxzoom': constants.GLOBAL_MAX_ZOOM_LOW,
       },
+    ] :
+    [
+      // The baseMapLayer
       {
-      // We put labels last to ensure prominence
+        'id': 'baseMapLayer',
+        'source': 'baseMapLayer',
+        'type': 'raster',
+        'minzoom': constants.GLOBAL_MIN_ZOOM,
+        'maxzoom': constants.GLOBAL_MAX_ZOOM,
+      },
+
+      // The Geo layer adds a geographical layer like mountains and rivers
+      {
+        'id': 'geo',
+        'source': 'geo',
+        'type': 'raster',
+        'layout': {
+          // Place visibility behind flag:
+          'visibility': 'geo' in flagContainer ? 'visible' : 'none',
+        },
+        'minzoom': constants.GLOBAL_MIN_ZOOM,
+        'maxzoom': constants.GLOBAL_MAX_ZOOM,
+      },
+
+      // High zoom layer
+      {
+        'id': constants.HIGH_SCORE_LAYER_NAME,
+        'source': constants.HIGH_SCORE_SOURCE_NAME,
+        'source-layer': constants.SCORE_SOURCE_LAYER,
+        'type': 'fill',
+        'paint': makePaint({
+          field: constants.SCORE_PROPERTY_HIGH,
+          minRamp: constants.SCORE_BOUNDARY_LOW,
+          medRamp: constants.SCORE_BOUNDARY_THRESHOLD,
+          maxRamp: constants.SCORE_BOUNDARY_PRIORITIZED,
+        }),
+        'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
+      },
+
+      // Low zoom layer
+      {
+        'id': constants.LOW_SCORE_LAYER_NAME,
+        'source': constants.LOW_SCORE_SOURCE_NAME,
+        'source-layer': constants.SCORE_SOURCE_LAYER,
+        'type': 'fill',
+        'filter': ['all',
+          ['>', constants.SCORE_PROPERTY_LOW, constants.SCORE_BOUNDARY_THRESHOLD],
+        ],
+        'paint': makePaint({
+          field: constants.SCORE_PROPERTY_LOW,
+          minRamp: constants.SCORE_BOUNDARY_LOW,
+          medRamp: constants.SCORE_BOUNDARY_THRESHOLD,
+          maxRamp: constants.SCORE_BOUNDARY_PRIORITIZED,
+        }),
+        'minzoom': constants.GLOBAL_MIN_ZOOM_LOW,
+        'maxzoom': constants.GLOBAL_MAX_ZOOM_LOW,
+      },
+
+      // A layer for labels only
+      {
         'id': 'labels-only-layer',
         'type': 'raster',
         'source': 'labels',
+        'layout': {
+          'visibility': 'visible',
+        },
         'minzoom': constants.GLOBAL_MIN_ZOOM,
         'maxzoom': constants.GLOBAL_MAX_ZOOM,
       },

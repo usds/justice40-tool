@@ -88,7 +88,6 @@ const J40Map = ({location}: IJ40Interface) => {
   const selectedFeatureId = (selectedFeature && selectedFeature.id) || '';
   const filter = useMemo(() => ['in', constants.GEOID_PROPERTY, selectedFeatureId], [selectedFeature]);
 
-
   /**
    * This function will return the bounding box of the current map. Comment in when needed.
    *  {
@@ -97,9 +96,9 @@ const J40Map = ({location}: IJ40Interface) => {
    *  }
    * @returns {LngLatBounds}
    */
-  const getCurrentMapBoundingBox = () => {
-    return mapRef.current ? console.log('mapRef getBounds(): ', mapRef.current.getMap().getBounds()) : null;
-  };
+  // const getCurrentMapBoundingBox = () => {
+  //   return mapRef.current ? console.log('mapRef getBounds(): ', mapRef.current.getMap().getBounds()) : null;
+  // };
 
 
   /**
@@ -113,8 +112,6 @@ const J40Map = ({location}: IJ40Interface) => {
     // Stop all propagation / bubbling / capturing
     event.preventDefault();
     event.stopPropagation();
-
-    getCurrentMapBoundingBox();
 
     // Check if the click is for territories. Given the territories component's design, it can be
     // guaranteed that each territory control will have an id. We use this ID to determine
@@ -233,42 +230,72 @@ const J40Map = ({location}: IJ40Interface) => {
     <>
       <Grid col={12} desktop={{col: 9}}>
 
-        {/*
-          The MapSearch component is no longer wrapped in a div in order to allow this feature
-          to be behind a feature flag. This was causing a bug for MapSearch to render
-          correctly in a production build. Leaving this comment here in case future flags are
-          needed in this component
-
-          When the MapSearch component is placed behind a feature flag without a div wrapping
-          MapSearch, the production build will inject CSS due to the null in the false conditional
-          case. Any changes to this (ie, changes to MapSearch or removing feature flag, etc), should
-          be tested with a production build via:
-
-          npm run clean && npm run build && npm run serve
-
-          to ensure the production build works and that MapSearch and the map (ReactMapGL) render correctly.
-        */}
+        {/**
+         * This will render the MapSearch component
+         *
+         * Note:
+         * The MapSearch component is no longer wrapped in a div in order to allow this feature
+         * to be behind a feature flag. This was causing a bug for MapSearch to render
+         * correctly in a production build. Leaving this comment here in case future flags are
+         * needed in this component.
+         *
+         * When the MapSearch component is placed behind a feature flag without a div wrapping
+         * MapSearch, the production build will inject CSS due to the null in the false conditional
+         * case. Any changes to this (ie, changes to MapSearch or removing feature flag, etc), should
+         * be tested with a production build via:
+         *   - npm run clean && npm run build && npm run serve
+         *
+         * to ensure the production build works and that MapSearch and the map (ReactMapGL) render correctly.
+         */}
         <MapSearch goToPlace={goToPlace}/>
 
+
+        {/**
+         * The ReactMapGL component's props are grouped by the API's documentation. The component also has
+         * some children.
+         */}
         <ReactMapGL
+          // Map state props:
+          // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#map-state
           {...viewport}
           mapStyle={makeMapStyle(flags)}
-          minZoom={constants.GLOBAL_MIN_ZOOM}
-          maxZoom={constants.GLOBAL_MAX_ZOOM}
-          mapOptions={{hash: true}}
           width="100%"
           height={windowWidth < 1024 ? '44vh' : '100%'}
+          mapOptions={{hash: true}}
+
+          // Interaction option props:
+          // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#interaction-options
+          maxZoom={constants.GLOBAL_MAX_ZOOM}
+          minZoom={constants.GLOBAL_MIN_ZOOM}
           dragRotate={false}
           touchRotate={false}
           interactiveLayerIds={[constants.HIGH_SCORE_LAYER_NAME]}
+
+          // Callback props:
+          // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#callbacks
           onViewportChange={setViewport}
           onClick={onClick}
           onLoad={onLoad}
           onTransitionStart={onTransitionStart}
           onTransitionEnd={onTransitionEnd}
+
           ref={mapRef}
           data-cy={'reactMapGL'}
         >
+          {/**
+           * The Source component and two Layer components:
+           *    <Source> = the High zoom layer
+           *    <Layer1> = controls the border between census blocks/tracts
+           *    <Layer2> = controls the border styling around the selected census block group or tract
+           *
+           * The actual map has other layers. These other layers are defined in the mapStyle.tsx file. These
+           * other layers are:
+           *    baseMapLayer
+           *    geo
+           *    high zoom layer
+           *    low zoom layer
+           *    labels
+           */}
           <Source
             id={constants.HIGH_SCORE_SOURCE_NAME}
             type="vector"
@@ -277,8 +304,9 @@ const J40Map = ({location}: IJ40Interface) => {
             maxzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
             minzoom={constants.GLOBAL_MAX_ZOOM_HIGH}
           >
+            {/* This layer controls the border between census blocks/tracts */}
             <Layer
-              id={constants.CURRENTLY_SELECTED_FEATURE_HIGHLIGHT_LAYER_NAME}
+              id={constants.BLOCK_GROUP_BOUNDARY_LAYER_NAME}
               source-layer={constants.SCORE_SOURCE_LAYER}
               type='line'
               paint={{
@@ -290,8 +318,9 @@ const J40Map = ({location}: IJ40Interface) => {
               maxzoom={constants.GLOBAL_MAX_ZOOM_HIGHLIGHT}
             />
 
+            {/* This layer controls the border styling around the selected census block group or tract */}
             <Layer
-              id={constants.BLOCK_GROUP_BOUNDARY_LAYER_NAME}
+              id={constants.CURRENTLY_SELECTED_FEATURE_HIGHLIGHT_LAYER_NAME}
               type='line'
               source-layer={constants.SCORE_SOURCE_LAYER}
               paint={{
@@ -302,6 +331,8 @@ const J40Map = ({location}: IJ40Interface) => {
               minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
             />
           </Source>
+
+          {/* Enable fullscreen behind a feature flag */}
           {('fs' in flags && detailViewData && !transitionInProgress) && (
             <Popup
               className={styles.j40Popup}
@@ -316,10 +347,16 @@ const J40Map = ({location}: IJ40Interface) => {
               <AreaDetail properties={detailViewData.properties} />
             </Popup>
           )}
+
+          {/* This will add the navigation controls of the zoom in and zoom out buttons */}
           <NavigationControl
             showCompass={false}
             className={styles.navigationControl}
           />
+
+          {/**
+           * This places Geolocation behind a feature flag
+           */}
           {'gl' in flags ? <GeolocateControl
             className={styles.geolocateControl}
             positionOptions={{enableHighAccuracy: true}}
@@ -327,8 +364,11 @@ const J40Map = ({location}: IJ40Interface) => {
             // @ts-ignore // Types have not caught up yet, see https://github.com/visgl/react-map-gl/issues/1492
             onClick={onClickGeolocate}
           /> : ''}
+
           {geolocationInProgress ? <div>Geolocation in progress...</div> : ''}
+
           <TerritoryFocusControl onClick={onClick}/>
+
           {'fs' in flags ? <FullscreenControl className={styles.fullscreenControl}/> :'' }
 
         </ReactMapGL>
