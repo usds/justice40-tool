@@ -108,6 +108,7 @@ We provide more detail on these factors below.
 - **Popularity** : According to [NPM Trends](https://www.npmtrends.com/mapbox-gl-vs-leaflet-vs-ol-vs-arcgis-js-api-vs-maplibre-gl) Mapbox-GL is the most downloaded package among those considered. More info [here](https://www.geoapify.com/map-libraries-comparison-leaflet-vs-mapbox-gl-vs-openlayers-trends-and-statistics)
   ![Download Stats](./0002-files/MapDownloadCount.png)
 
+<!-- markdown-link-check-disable -->
 #### Mapbox-GL JS Cons
 
 - **Licensing** : Mapbox's December 2020 [announcement](https://github.com/mapbox/mapbox-gl-js/releases/tag/v2.0.0) of version 2.0 of their software changed ther license to proprietary and changed their pricing scheme to cover tiles loaded from outside of their service. This decision was met with [some criticism](https://joemorrison.medium.com/death-of-an-open-source-business-model-62bc227a7e9b) in the open-source mapping community.

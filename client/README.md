@@ -19,6 +19,7 @@ This README contains the following content:
 
 #### Install Node using NVM 
 
+<!-- markdown-link-check-disable-next-line -->
 This will work for both MacOS and Win10. Follow instructions on this [link](https://medium.com/@nodesource/installing-node-js-tutorial-using-nvm-5c6ff5925dd8). Be sure to read through the whole doc to find the sections within each step relevant to you (e.g. if you're using Homebrew, when you get to Step 2 look for the section, "Install NVM with Homebrew").
 
 If you install NVM using Homebrew, make sure to read the output in terminal after you run `brew install nvm`. You will need to add a few lines to your ~/.bash_profile and perhaps complete a couple other tasks.
@@ -70,6 +71,7 @@ DATA_SOURCE env variable in the docker-compose.yml. See [environment variables](
 
 #### Troubleshooting docker
 
+<!-- markdown-link-check-disable-next-line -->
 - If an error is thrown about [running out of space](https://medium.com/@wlarch/no-space-left-on-device-when-using-docker-compose-why-c4a2c783c6f6) on device see this for ways to reclaim space.
 
 

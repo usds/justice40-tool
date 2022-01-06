@@ -43,9 +43,12 @@ const Indicator = ({indicator}:IIndicator) => {
         </div>
         <div className={styles.indicatorValue}>
           {readablePercentile(indicator.value)}
-          <sup className={styles.indicatorSuperscript}><span>
-            {getSuperscriptOrdinal(readablePercentile(indicator.value))}
-          </span></sup>
+          {indicator.isPercent ?
+            <span>{`%`}</span> :
+            <sup className={styles.indicatorSuperscript}>
+              <span>{getSuperscriptOrdinal(readablePercentile(indicator.value))}</span>
+            </sup>
+          }
         </div>
       </div>
     </li>

@@ -150,8 +150,8 @@ exports[`rendering of the J40Header checks if component renders 1`] = `
             This is a beta site. 
           </span>
           <span>
-            It is an early, in-progress version of the tool with limited datasets 
-    that will be continuously updated.
+            It is an early, in-progress version of the tool with limited datasets that will 
+    be regularly updated.
           </span>
         </div>
       </div>

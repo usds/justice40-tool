@@ -3,6 +3,7 @@ import json
 import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.score.etl_utils import floor_series
 from data_pipeline.utils import get_module_logger, zip_files
 from data_pipeline.score import field_names
 
@@ -207,13 +208,15 @@ class PostScoreETL(ExtractTransformLoad):
         # filter the columns on full score
         score_tiles = score_county_state_merged_df[tiles_score_column_titles]
 
-        # round decimals
-        decimals = pd.Series(
-            [constants.TILES_ROUND_NUM_DECIMALS]
-            * len(constants.TILES_SCORE_FLOAT_COLUMNS),
-            index=constants.TILES_SCORE_FLOAT_COLUMNS,
+        score_tiles[constants.TILES_SCORE_FLOAT_COLUMNS] = score_tiles[
+            constants.TILES_SCORE_FLOAT_COLUMNS
+        ].apply(
+            func=lambda series: floor_series(
+                series=series,
+                number_of_decimals=constants.TILES_ROUND_NUM_DECIMALS,
+            ),
+            axis=0,
         )
-        score_tiles = score_tiles.round(decimals)
 
         # create indexes
         score_tiles = score_tiles.rename(

@@ -9,8 +9,8 @@ export const BETA_BANNER = defineMessages({
   },
   INFO: {
     id: 'banner.beta.info',
-    defaultMessage: `It is an early, in-progress version of the tool with limited datasets 
-    that will be continuously updated.`,
+    defaultMessage: `It is an early, in-progress version of the tool with limited datasets that will 
+    be regularly updated.`,
     description: 'the main info of the beta banner',
   },
 });
