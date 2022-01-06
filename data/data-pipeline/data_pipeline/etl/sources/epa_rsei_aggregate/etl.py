@@ -146,7 +146,7 @@ class EPARSEISCOREETL(ExtractTransformLoad):
         # 5th, 25th, 50th, 75th and 99th percentiles for each score column
         # this will yield n - 1 categorical variables where n = 5 percentiles specified
         index = [5, 25, 50, 75, 99]
-        # Parameter for Cut function
+        # Parameter for cut function, used below
         labels_for_cut_function = [
             "5 - 25 percentile values for score",
             "25 - 50 percentile value for score",
@@ -155,7 +155,11 @@ class EPARSEISCOREETL(ExtractTransformLoad):
         ]
 
         # Generate percentile values specified by index above
-        # Each is specific to the three different scores
+        # Encncompases values between:
+        # first, 5-25 percentile,
+        # second, between 25-50th percentile,
+        # third, between 50-75 percentile
+        # fourth, between 75-99 percentile
         perc_func_overall_risk_score = [
             self._custom_percentile(
                 self.df[field_names.EPA_RSEI_SCORE_OUTPUT_FIELD].values, i
@@ -215,6 +219,8 @@ class EPARSEISCOREETL(ExtractTransformLoad):
         )
 
         # Produce percentile rank for overall risk score
+        # This was created for the sole purpose to be used in the current
+        # iteration of Score L
         self.df[field_names.EPA_RSEI_SCORE_PERCENTILE_RANK_FIELD] = self.df[
             field_names.EPA_RSEI_SCORE_OUTPUT_FIELD
         ].rank(
