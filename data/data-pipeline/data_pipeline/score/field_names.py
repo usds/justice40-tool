@@ -232,7 +232,7 @@ CDC_SVI_INDEX_LANGUAGE_THEME_PERCENTILE_FIELD: str = (
 CDC_SVI_INDEX_HOUSING_TRANSPORTATION_PERCENTILE_FIELD: str = (
     "Percentile ranking for Housing Type/Transportation"
 )
-CDC_RPL_THEMES_OVERALL_PERCENTILE_FIELD: str = (
+CDC_SVI_INDEX_RPL_THEMES_OVERALL_PERCENTILE_FIELD: str = (
     "Overall percentile ranking for themes"
 )
 

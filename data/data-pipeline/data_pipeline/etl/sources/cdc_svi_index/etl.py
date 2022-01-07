@@ -47,7 +47,7 @@ class CDCSVIINDEX(ExtractTransformLoad):
             field_names.CDC_SVI_INDEX_HOUSEHOLD_THEME_PERCENTILE_COMPOSITION_FIELD,
             field_names.CDC_SVI_INDEX_LANGUAGE_THEME_PERCENTILE_FIELD,
             field_names.CDC_SVI_INDEX_HOUSING_TRANSPORTATION_PERCENTILE_FIELD,
-            field_names.CDC_RPL_THEMES_OVERALL_PERCENTILE_FIELD,
+            field_names.CDC_SVI_INDEX_RPL_THEMES_OVERALL_PERCENTILE_FIELD,
             # Sum of series fields
             field_names.CDC_SVI_INDEX_SE_THEME_SOS_FIELD,
             field_names.CDC_SVI_INDEX_HOUSEHOLD_THEME_SOS_FIELD,
@@ -90,7 +90,7 @@ class CDCSVIINDEX(ExtractTransformLoad):
                 "RPL_THEME2": field_names.CDC_SVI_INDEX_HOUSEHOLD_THEME_PERCENTILE_COMPOSITION_FIELD,
                 "RPL_THEME3": field_names.CDC_SVI_INDEX_LANGUAGE_THEME_PERCENTILE_FIELD,
                 "RPL_THEME4": field_names.CDC_SVI_INDEX_HOUSING_TRANSPORTATION_PERCENTILE_FIELD,
-                "RPL_THEMES": field_names.CDC_RPL_THEMES_OVERALL_PERCENTILE_FIELD,
+                "RPL_THEMES": field_names.CDC_SVI_INDEX_RPL_THEMES_OVERALL_PERCENTILE_FIELD,
                 "SPL_THEME1": field_names.CDC_SVI_INDEX_SE_THEME_SOS_FIELD,
                 "SPL_THEME2": field_names.CDC_SVI_INDEX_HOUSEHOLD_THEME_SOS_FIELD,
                 "SPL_THEME3": field_names.CDC_SVI_INDEX_LANGUAGE_THEME_SOS_FIELD,
@@ -104,7 +104,7 @@ class CDCSVIINDEX(ExtractTransformLoad):
 
         #  At or above 90 for percentile rank
         self.df[field_names.CDC_SVI_INDEX_THEMES_PRIORITY_COMMUNITY] = (
-            self.df[field_names.CDC_RPL_THEMES_OVERALL_PERCENTILE_FIELD]
+            self.df[field_names.CDC_SVI_INDEX_RPL_THEMES_OVERALL_PERCENTILE_FIELD]
             >= self.CDC_RPL_THEMES_THRSHOLD
         )
 
