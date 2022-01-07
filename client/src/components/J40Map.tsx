@@ -150,6 +150,7 @@ const J40Map = ({location}: IJ40Interface) => {
       }
     } else {
       // This else clause will fire when the ID is null or empty. This is the case where the map is clicked
+      // @ts-ignore
       const feature = event.features && event.features[0];
       console.log(feature);
       if (feature) {
@@ -318,7 +319,7 @@ const J40Map = ({location}: IJ40Interface) => {
               maxzoom={constants.GLOBAL_MAX_ZOOM_HIGHLIGHT}
             />
 
-            {/* This layer controls the border styling around the selected census block group or tract */}
+            {/* This layer controls the border styling around the selected feature */}
             <Layer
               id={constants.CURRENTLY_SELECTED_FEATURE_HIGHLIGHT_LAYER_NAME}
               type='line'
@@ -327,6 +328,8 @@ const J40Map = ({location}: IJ40Interface) => {
                 'line-color': constants.BORDER_HIGHLIGHT_COLOR,
                 'line-width': constants.HIGHLIGHT_BORDER_WIDTH,
               }}
+
+              // This filter filters out all other features except the selected feature.
               filter={filter}
               minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
             />
@@ -361,7 +364,7 @@ const J40Map = ({location}: IJ40Interface) => {
             className={styles.geolocateControl}
             positionOptions={{enableHighAccuracy: true}}
             onGeolocate={onGeolocate}
-            // @ts-ignore // Types have not caught up yet, see https://github.com/visgl/react-map-gl/issues/1492
+            // @ts-ignore
             onClick={onClickGeolocate}
           /> : ''}
 

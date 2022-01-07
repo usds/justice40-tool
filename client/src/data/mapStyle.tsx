@@ -109,8 +109,26 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
        */
       'baseMapLayer': {
         'type': 'raster',
-        // 'tiles': baseMapLayer.noLabels,
         'tiles': getBaseMapLayer(),
+
+        /**
+         * This MapBox Raster seems to work, however the tileset curently available in MapBox
+         * is the "satellite" tileset. Messaged Mikel on more options.
+         */
+        // 'type': 'raster',
+        // 'tiles': [
+        //   `https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoianVzdGljZTQwIiwiYSI6ImNreGF1Z3loNjB0N3oybm9jdGpxeDZ4b3kifQ.76tMHU7C8wwn0HGsF6azjA`,
+        // ],
+
+        /**
+         * This MapBox Vector does not work, attempting to place this in the main component as
+         * a <Source> and <Layer> component also did not work.
+         */
+        // 'type': 'vector',
+        // 'tiles': [
+        //   `https://api.mapbox.com/v4/mapbox.mapbox-streets-v8/{z}/{x}/{y}.vector.pbf?access_token=pk.eyJ1IjoianVzdGljZTQwIiwiYSI6ImNreGF1Z3loNjB0N3oybm9jdGpxeDZ4b3kifQ.76tMHU7C8wwn0HGsF6azjA`,
+        // ],
+
         'minzoom': constants.GLOBAL_MIN_ZOOM,
         'maxzoom': constants.GLOBAL_MAX_ZOOM,
       },
@@ -201,7 +219,11 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
         'maxzoom': constants.GLOBAL_MAX_ZOOM,
       },
 
-      // High zoom layer
+
+      /**
+       * High zoom layer
+       *
+       */
       {
         'id': constants.HIGH_SCORE_LAYER_NAME,
         'source': constants.HIGH_SCORE_SOURCE_NAME,
@@ -216,12 +238,20 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
         'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
       },
 
-      // Low zoom layer
+
+      /**
+       * Low zoom layer with non-disadvantaged filtered out
+       */
       {
         'id': constants.LOW_SCORE_LAYER_NAME,
         'source': constants.LOW_SCORE_SOURCE_NAME,
         'source-layer': constants.SCORE_SOURCE_LAYER,
         'type': 'fill',
+
+        /**
+         * This shows features where the low score > score boundary threshold, which
+         * will only show the prioritized features
+         */
         'filter': ['all',
           ['>', constants.SCORE_PROPERTY_LOW, constants.SCORE_BOUNDARY_THRESHOLD],
         ],
@@ -238,8 +268,8 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
       // A layer for labels only
       {
         'id': 'labels-only-layer',
-        'type': 'raster',
         'source': 'labels',
+        'type': 'raster',
         'layout': {
           'visibility': 'remove-label-layer' in flagContainer ? 'none' : 'visible',
         },
