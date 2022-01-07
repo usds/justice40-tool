@@ -129,7 +129,7 @@ class PostScoreETL(ExtractTransformLoad):
         new_df = initial_states_df.rename(
             columns={
                 "fips": "State Code",
-                "state_name": "State Name",
+                "state_name": field_names.STATE_FIELD,
                 "state_abbreviation": "State Abbreviation",
             }
         )
@@ -242,7 +242,19 @@ class PostScoreETL(ExtractTransformLoad):
     ) -> pd.DataFrame:
         df = score_county_state_merged_df[constants.DOWNLOADABLE_SCORE_COLUMNS]
 
-        # rename fields
+        float_columns = df.select_dtypes(include=["float64"])
+
+        # score_tiles[constants.TILES_SCORE_FLOAT_COLUMNS] = score_tiles[
+        #     constants.TILES_SCORE_FLOAT_COLUMNS
+        # ].apply(
+        #     func=lambda series: floor_series(
+        #         series=series,
+        #         number_of_decimals=constants.TILES_ROUND_NUM_DECIMALS,
+        #     ),
+        #     axis=0,
+        # )
+
+        # [x for x in df.columns if field_names.PERCENTILE_FIELD_SUFFIX in x]
 
         return df
 
@@ -301,7 +313,7 @@ class PostScoreETL(ExtractTransformLoad):
         # Rename score column
         downloadable_df_copy = downloadable_df.rename(
             columns={
-                field_names.SCORE_L_COMMUNITIES: "Community of focus (v0.1)"
+                field_names.SCORE_L_COMMUNITIES: "Identified as disadvantaged (v0.1)"
             },
             inplace=False,
         )

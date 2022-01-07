@@ -23,7 +23,7 @@ class CensusACSETL(ExtractTransformLoad):
             self.TOTAL_UNEMPLOYED_FIELD,
             self.TOTAL_IN_LABOR_FORCE,
         ]
-        self.UNEMPLOYED_FIELD_NAME = "Unemployed civilians (percent)"
+        self.UNEMPLOYED_FIELD_NAME = "Unemployment (percent)"
 
         self.LINGUISTIC_ISOLATION_FIELD_NAME = "Linguistic isolation (percent)"
         self.LINGUISTIC_ISOLATION_TOTAL_FIELD_NAME = (

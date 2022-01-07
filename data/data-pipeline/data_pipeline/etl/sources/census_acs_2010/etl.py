@@ -74,7 +74,7 @@ class CensusACS2010ETL(ExtractTransformLoad):
             self.EMPLOYMENT_COLLEGE_IN_LABOR_FORCE,
         ]
 
-        self.UNEMPLOYED_FIELD_NAME = "Unemployed civilians (percent)"
+        self.UNEMPLOYED_FIELD_NAME = "Unemployment (percent)"
 
         self.POVERTY_FIELDS = [
             "C17002_001E",  # Estimate!!Total,

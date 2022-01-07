@@ -6,7 +6,7 @@ TOP_25_PERCENTILE_SUFFIX = " (top 25th percentile)"
 
 # Geographic field names
 GEOID_TRACT_FIELD = "GEOID10_TRACT"
-STATE_FIELD = "State Name"
+STATE_FIELD = "State/Territory"
 COUNTY_FIELD = "County Name"
 
 # Score file field names
@@ -83,15 +83,15 @@ EXPECTED_POPULATION_LOSS_RATE_FIELD = (
 )
 
 # Environment
-DIESEL_FIELD = "Diesel particulate matter"
-PM25_FIELD = "Particulate matter (PM2.5)"
+DIESEL_FIELD = "Diesel particulate matter exposure"
+PM25_FIELD = "PM2.5 in the air"
 OZONE_FIELD = "Ozone"
 TRAFFIC_FIELD = "Traffic proximity and volume"
 LEAD_PAINT_FIELD = "Percent pre-1960s housing (lead paint indicator)"
 WASTEWATER_FIELD = "Wastewater discharge"
 AGGREGATION_POLLUTION_FIELD = "Pollution Burden"
 RMP_FIELD = "Proximity to Risk Management Plan (RMP) facilities"
-TSDF_FIELD = "Proximity to TSDF sites"
+TSDF_FIELD = "Proximity to hazardous waste sites"
 NPL_FIELD = "Proximity to NPL sites"
 AIR_TOXICS_CANCER_RISK_FIELD = "Air toxics cancer risk"
 RESPIRATORY_HAZARD_FIELD = "Respiratory hazard index"
@@ -125,7 +125,7 @@ LOW_LIFE_EXPECTANCY_FIELD = "Low life expectancy"
 
 # Other Demographics
 TOTAL_POP_FIELD = "Total population"
-UNEMPLOYMENT_FIELD = "Unemployed civilians (percent)"
+UNEMPLOYMENT_FIELD = "Unemployment (percent)"
 LINGUISTIC_ISO_FIELD = "Linguistic isolation (percent)"
 HOUSEHOLDS_LINGUISTIC_ISO_FIELD = (
     "Percent of households in linguistic isolation"
@@ -143,16 +143,14 @@ CENSUS_DECENNIAL_POVERTY_LESS_THAN_100_FPL_FIELD_2009 = (
     "Percentage households below 100% of federal poverty line in 2009"
 )
 CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009 = "Percent individuals age 25 or over with less than high school degree in 2009"
-CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009 = (
-    "Unemployed civilians (percent) in 2009"
-)
+CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009 = "Unemployment (percent) in 2009"
 CENSUS_DECENNIAL_TOTAL_POPULATION_FIELD_2009 = "Total population in 2009"
 CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009 = (
     "Median household income as a percent of territory median income in 2009"
 )
 LOW_CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009 = "Low median household income as a percent of territory median income in 2009"
 # Fields from 2010 ACS (loaded for comparison with the territories)
-CENSUS_UNEMPLOYMENT_FIELD_2010 = "Unemployed civilians (percent) in 2010"
+CENSUS_UNEMPLOYMENT_FIELD_2010 = "Unemployment (percent) in 2010"
 CENSUS_POVERTY_LESS_THAN_100_FPL_FIELD_2010 = (
     "Percent of individuals less than 100% Federal Poverty Line in 2010"
 )
@@ -161,7 +159,9 @@ CENSUS_POVERTY_LESS_THAN_100_FPL_FIELD_2010 = (
 COMBINED_CENSUS_TOTAL_POPULATION_2010 = (
     "Total population in 2009 (island areas) and 2019 (states and PR)"
 )
-COMBINED_UNEMPLOYMENT_2010 = "Unemployed civilians (percent) in 2009 (island areas) and 2010 (states and PR)"
+COMBINED_UNEMPLOYMENT_2010 = (
+    "Unemployment (percent) in 2009 (island areas) and 2010 (states and PR)"
+)
 COMBINED_POVERTY_LESS_THAN_100_FPL_FIELD_2010 = (
     "Percentage households below 100% of federal poverty line in 2009 (island areas) "
     "and 2010 (states and PR)"
@@ -265,52 +265,55 @@ TRANSPORTATION_COSTS = "Transportation Costs"
 # Climate Change
 EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile"
-    f" for expected population loss rate and is low income"
+    f" for expected population loss rate and is low income?"
 )
 EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile"
-    f" for expected agriculture loss rate and is low income"
+    f" for expected agriculture loss rate and is low income?"
 )
 EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile"
-    f" for expected building loss rate and is low income"
+    f" for expected building loss rate and is low income?"
 )
 
 # Clean energy and efficiency
-PM25_EXPOSURE_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for PM2.5 exposure and is low income"
-ENERGY_BURDEN_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for energy burden and is low income"
+PM25_EXPOSURE_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for PM2.5 exposure and is low income?"
+ENERGY_BURDEN_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for energy burden and is low income?"
 
 # Clean transportation
-DIESEL_PARTICULATE_MATTER_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for diesel particulate matter and is low income"
-TRAFFIC_PROXIMITY_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for traffic proximity and is low income"
+DIESEL_PARTICULATE_MATTER_LOW_INCOME_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for "
+    "diesel particulate matter and is low income?"
+)
+TRAFFIC_PROXIMITY_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for traffic proximity and is low income?"
 
 # Affordable and Sustainable Housing
 LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for lead paint and"
     f" the median house value is less than {MEDIAN_HOUSE_VALUE_PERCENTILE}th "
-    f"percentile and is low income"
+    f"percentile and is low income?"
 )
-HOUSING_BURDEN_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for housing burden and is low income"
+HOUSING_BURDEN_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for housing burden and is low income?"
 
 # Remediation and Reduction of Legacy Pollution
-RMP_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for proximity to RMP sites and is low income"
-SUPERFUND_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for proximity to superfund sites and is low income"
+RMP_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for proximity to RMP sites and is low income?"
+SUPERFUND_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for proximity to superfund sites and is low income?"
 HAZARDOUS_WASTE_LOW_INCOME_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile"
-    f" for proximity to hazardous waste facilities and is low income"
+    f" for proximity to hazardous waste facilities and is low income?"
 )
 
 # Critical Clean Water and Waste Infrastructure
-WASTEWATER_DISCHARGE_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for wastewater discharge and is low income"
+WASTEWATER_DISCHARGE_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for wastewater discharge and is low income?"
 
 # Health Burdens
-DIABETES_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for diabetes and is low income"
-ASTHMA_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for asthma and is low income"
-HEART_DISEASE_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for heart disease and is low income"
+DIABETES_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for diabetes and is low income?"
+ASTHMA_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for asthma and is low income?"
+HEART_DISEASE_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for heart disease and is low income?"
 
 LOW_LIFE_EXPECTANCY_LOW_INCOME_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile "
-    f"for low life expectancy and is low income"
+    f"for low life expectancy and is low income?"
 )
 
 # Workforce
@@ -362,17 +365,17 @@ ISLAND_AREAS_LOW_HS_EDUCATION_FIELD = (
 EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for summer days above 90F and "
     f"the median house value is less than {MEDIAN_HOUSE_VALUE_PERCENTILE}th "
-    f"percentile and is low income"
+    f"percentile and is low income?"
 )
 IMPENETRABLE_SURFACES_LOW_INCOME_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for impenetrable surfaces and is low "
     f"income"
 )
-AIR_TOXICS_CANCER_RISK_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for air toxics cancer risk and is low income"
-RESPIRATORY_HAZARD_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for respiratory hazard index and is low income"
+AIR_TOXICS_CANCER_RISK_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for air toxics cancer risk and is low income?"
+RESPIRATORY_HAZARD_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for respiratory hazard index and is low income?"
 HEALTHY_FOOD_LOW_INCOME_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for low "
-    f"access to healthy food and is low income"
+    f"access to healthy food and is low income?"
 )
 LOW_READING_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for low 3rd grade reading proficiency"
@@ -381,6 +384,6 @@ LOW_READING_LOW_HS_EDUCATION_FIELD = (
 
 THRESHOLD_COUNT = "Total threshold criteria exceeded"
 
-FPL_200_SERIES = "Is low income"
+FPL_200_SERIES = "Is low income?"
 # End of names for individual factors being exceeded
 ####
