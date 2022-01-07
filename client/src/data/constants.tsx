@@ -30,6 +30,8 @@ export const FEATURE_TILE_LOW_ZOOM_URL = featureURLForTilesetName('low');
 export const PERFORMANCE_MARKER_MAP_IDLE = 'MAP_IDLE';
 
 // Properties
+// Todo: group this properly according to actual properties vs
+// id and source layer and names, etc.
 export const SCORE_PROPERTY_HIGH = 'SL_PFS';
 export const SCORE_PROPERTY_LOW = 'L_SCORE';
 export const GEOID_PROPERTY = 'GEOID10';
@@ -177,7 +179,7 @@ export const US_VIRGIN_ISLANDS_BOUNDS: LngLatBoundsLike = [
 export const DEFAULT_CENTER = [33.4687126, -97.502136];
 
 // Opacity
-export const DEFAULT_LAYER_OPACITY = 0.6;
+export const DEFAULT_LAYER_OPACITY = 0.5;
 
 // Colors
 export const DEFAULT_OUTLINE_COLOR = '#4EA5CF';

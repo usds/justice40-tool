@@ -270,7 +270,9 @@ const J40Map = ({location}: IJ40Interface) => {
           minZoom={constants.GLOBAL_MIN_ZOOM}
           dragRotate={false}
           touchRotate={false}
-          interactiveLayerIds={[constants.HIGH_SCORE_LAYER_NAME]}
+
+          // Todo: rename this constant
+          interactiveLayerIds={[constants.HIGH_SCORE_LAYER_NAME, 'someId']}
 
           // Callback props:
           // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#callbacks

@@ -1,48 +1,6 @@
-import {Style, FillPaint} from 'maplibre-gl';
-import chroma from 'chroma-js';
+import {Style} from 'maplibre-gl';
 import * as constants from '../data/constants';
 import {FlagContainer} from '../contexts/FlagContext';
-
-// eslint-disable-next-line require-jsdoc
-function hexToHSLA(hex:string, alpha:number) {
-  return chroma(hex).alpha(alpha).css('hsl');
-}
-
-/**
- * `MakePaint` generates a zoom-faded Maplibre style formatted layer given a set of parameters.
- *
- * @param {string} field : the field within the data to consult
- * @param {number} minRamp : the minimum value this can assume
- * @param {number} medRamp : the medium value this can assume
- * @param {number} maxRamp : the maximum value this can assume
- * @return {FillPaint} a maplibregl fill layer
- **/
-function makePaint({
-  field,
-  minRamp,
-  medRamp,
-  maxRamp,
-}: {
-    field: string;
-    minRamp: number;
-    medRamp: number;
-    maxRamp: number;
-  }): FillPaint {
-  const paintDescriptor : FillPaint = {
-    'fill-color': [
-      'step',
-      ['get', field],
-      hexToHSLA(constants.MIN_COLOR, constants.DEFAULT_LAYER_OPACITY ),
-      minRamp,
-      hexToHSLA(constants.MIN_COLOR, constants.DEFAULT_LAYER_OPACITY ),
-      medRamp,
-      hexToHSLA(constants.MED_COLOR, constants.DEFAULT_LAYER_OPACITY ),
-      maxRamp,
-      hexToHSLA(constants.MAX_COLOR, constants.DEFAULT_LAYER_OPACITY ),
-    ],
-  };
-  return paintDescriptor;
-}
 
 const imageSuffix = constants.isMobile ? '' : '@2x';
 
@@ -195,6 +153,8 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
      * Each layer in the layer array corresponds to a source above and is referenced by
      * the id key using the value of sources.[name]. Each layer stacks upon the previous
      * layer in the array of layers.
+     *
+     * Todo: rename constants and move constants to constants file
      */
     'layers': [
       // The baseMapLayer
@@ -219,35 +179,61 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
         'maxzoom': constants.GLOBAL_MAX_ZOOM,
       },
 
+      /**
+       * High zoom layer
+       * Todo: rename constants
+       */
+      {
+        'id': 'someId',
+        'source': constants.HIGH_SCORE_SOURCE_NAME,
+        'source-layer': constants.SCORE_SOURCE_LAYER,
+        /**
+               * This shows features where the high score < score boundary threshold.
+               * In other words, this filter will only show the non-prioritized features
+               */
+        'filter': ['all',
+          ['<', constants.SCORE_PROPERTY_HIGH, constants.SCORE_BOUNDARY_THRESHOLD],
+        ],
+
+        'type': 'fill',
+        'paint': {
+          'fill-opacity': 0,
+        },
+        'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
+      },
 
       /**
        * High zoom layer
-       *
+       * Todo: rename constants
        */
       {
         'id': constants.HIGH_SCORE_LAYER_NAME,
         'source': constants.HIGH_SCORE_SOURCE_NAME,
         'source-layer': constants.SCORE_SOURCE_LAYER,
+        /**
+         * This shows features where the high score > score boundary threshold.
+         * In other words, this filter will only show the prioritized features
+         */
+        'filter': ['all',
+          ['>', constants.SCORE_PROPERTY_HIGH, constants.SCORE_BOUNDARY_THRESHOLD],
+        ],
+
         'type': 'fill',
-        'paint': makePaint({
-          field: constants.SCORE_PROPERTY_HIGH,
-          minRamp: constants.SCORE_BOUNDARY_LOW,
-          medRamp: constants.SCORE_BOUNDARY_THRESHOLD,
-          maxRamp: constants.SCORE_BOUNDARY_PRIORITIZED,
-        }),
+        'paint': {
+          'fill-color': constants.MAX_COLOR,
+          'fill-opacity': constants.DEFAULT_LAYER_OPACITY,
+        },
         'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
       },
 
 
       /**
-       * Low zoom layer with non-disadvantaged filtered out
+       * Low zoom layer with non-prioritized filtered out
        */
       {
         'id': constants.LOW_SCORE_LAYER_NAME,
         'source': constants.LOW_SCORE_SOURCE_NAME,
         'source-layer': constants.SCORE_SOURCE_LAYER,
-        'type': 'fill',
-
         /**
          * This shows features where the low score > score boundary threshold, which
          * will only show the prioritized features
@@ -255,12 +241,12 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
         'filter': ['all',
           ['>', constants.SCORE_PROPERTY_LOW, constants.SCORE_BOUNDARY_THRESHOLD],
         ],
-        'paint': makePaint({
-          field: constants.SCORE_PROPERTY_LOW,
-          minRamp: constants.SCORE_BOUNDARY_LOW,
-          medRamp: constants.SCORE_BOUNDARY_THRESHOLD,
-          maxRamp: constants.SCORE_BOUNDARY_PRIORITIZED,
-        }),
+
+        'type': 'fill',
+        'paint': {
+          'fill-color': constants.MAX_COLOR,
+          'fill-opacity': constants.DEFAULT_LAYER_OPACITY,
+        },
         'minzoom': constants.GLOBAL_MIN_ZOOM_LOW,
         'maxzoom': constants.GLOBAL_MAX_ZOOM_LOW,
       },
