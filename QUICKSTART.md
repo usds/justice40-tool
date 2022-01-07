@@ -20,4 +20,6 @@ Use `docker-compose` to run the application:
 $ docker-compose up
 ```
 
-After it initializes (which may take a while, possibly even an hour or two, since it has to download and process all the data), you should be able to open the application in your browser at [http://localhost:8000](http://localhost:8000).
+> Note: This may take a while, possibly even an hour or two, since it has to build the containers and then download and process all the data.
+
+After it initializes, you should be able to open the application in your browser at [http://localhost:8000](http://localhost:8000).
