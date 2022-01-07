@@ -2,6 +2,7 @@ import {Style} from 'maplibre-gl';
 import * as constants from '../data/constants';
 import {FlagContainer} from '../contexts/FlagContext';
 
+// *********** BASE MAP SOURCES  ***************
 const imageSuffix = constants.isMobile ? '' : '@2x';
 
 // Original "light" Base layer
@@ -21,14 +22,18 @@ const cartoLightBaseLayer = {
   ],
 };
 
-// Todo move API_KEY to env
+// MapTiler base map source
+// Todo: move API key to .env
 const getMapTilerBaseLayer = (name:string, API_KEY='KMA4bawPDNtR6zNIAfUH') => {
   return [
     `https://api.maptiler.com/maps/${name}/{z}/{x}/{y}${imageSuffix}.png?key=${API_KEY}`,
   ];
 };
 
+// Utility function to make map styles according to JSON spec of MapBox
+// https://docs.mapbox.com/mapbox-gl-js/style-spec/
 export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
+  // Add flags for various types of MapTiler base maps:
   const getBaseMapLayer = () => {
     if ('mt-streets' in flagContainer) {
       return getMapTilerBaseLayer('streets');
@@ -49,23 +54,21 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
 
     /**
      * Removing any sources, removes the map from rendering, since the layers key is depenedent on these
-     * sources. The layers key below refers to these sources by id.
-     *  - baseMapLayer: the base layer without labels
-     *  - geo: a geographical layer that is not being used
-     *  - high zoom: the source of the high zoom tiles
-     *  - low zoom: the source of the low zoom source
-     *  - labels: the source of a base layers with labels only
+     * sources.
      *
-     * The reason the base layers were split into "no labels" and "labels only" was to make the labels
-     * more prominent.
+     * - base map source: This source control the base map.
+     * - geo: currently not being used
+     * - high zoom source: comes from our tile server for high zoom tiles
+     * - low zoom source: comes from our tile server for low zoom tiles
+     * - labels source: currently using carto's label-only source
      * */
     'sources': {
 
       /**
-       * The baseMapLayer source allows us to define where the tiles can be fetched from. This baseMapLayer
-       * will load various baseMapLayer sources depending on the feature flag
+       * The base map source source allows us to define where the tiles can be fetched from.
+       * Currently we are evaluating carto, MapTiler, Geoampify and MapBox for viable base maps.
        */
-      'baseMapLayer': {
+      [constants.BASE_MAP_SOURCE_NAME]: {
         'type': 'raster',
         'tiles': getBaseMapLayer(),
 
@@ -102,10 +105,8 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
       },
 
       // The High zoom source:
-      [constants.HIGH_SCORE_SOURCE_NAME]: {
-      // "Score-high" represents the full set of data
-      // at the census block group level. It is only shown
-      // at high zoom levels to avoid performance issues at lower zooms
+      [constants.HIGH_ZOOM_SOURCE_NAME]: {
+      // It is only shown at high zoom levels to avoid performance issues at lower zooms
         'type': 'vector',
         // Our current tippecanoe command does not set an id.
         // The below line promotes the GEOID10 property to the ID
@@ -123,7 +124,7 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
       },
 
       // The Low zoom source:
-      [constants.LOW_SCORE_SOURCE_NAME]: {
+      [constants.LOW_ZOOM_SOURCE_NAME]: {
       // "Score-low" represents a tileset at the level of bucketed tracts.
       // census block group information is `dissolve`d into tracts, then
       // each tract is `dissolve`d into one of ten buckets. It is meant
@@ -144,23 +145,26 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
       // The labels source:
       'labels': {
         'type': 'raster',
-        // 'tiles': baseMapLayer.labelsOnly,
         'tiles': cartoLightBaseLayer.labelsOnly,
       },
     },
 
     /**
-     * Each layer in the layer array corresponds to a source above and is referenced by
-     * the id key using the value of sources.[name]. Each layer stacks upon the previous
-     * layer in the array of layers.
+     * Each object in the layers array references it's source via the source key.
+     * Each layer stacks upon the previous layer in the array of layers.
      *
-     * Todo: rename constants and move constants to constants file
+     *  - baseMapLayer: the base layer without labels
+     *  - geo: a geographical layer that is not being used
+     *  - high zoom layer - non-prioritized features only
+     *  - high zoom layer - prioritized features only
+     *  - low zoom layer - prioritized features only
+     *  - labels only layer
      */
     'layers': [
       // The baseMapLayer
       {
-        'id': 'baseMapLayer',
-        'source': 'baseMapLayer',
+        'id': constants.BASE_MAP_LAYER_ID,
+        'source': constants.BASE_MAP_SOURCE_NAME,
         'type': 'raster',
         'minzoom': constants.GLOBAL_MIN_ZOOM,
         'maxzoom': constants.GLOBAL_MAX_ZOOM,
@@ -180,39 +184,37 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
       },
 
       /**
-       * High zoom layer
-       * Todo: rename constants
+       * High zoom layer - non-prioritized features only
        */
       {
-        'id': 'someId',
-        'source': constants.HIGH_SCORE_SOURCE_NAME,
+        'id': constants.HIGH_ZOOM_LAYER_ID,
+        'source': constants.HIGH_ZOOM_SOURCE_NAME,
         'source-layer': constants.SCORE_SOURCE_LAYER,
         /**
-               * This shows features where the high score < score boundary threshold.
-               * In other words, this filter will only show the non-prioritized features
-               */
+         * This shows features where the high score < score boundary threshold.
+         * In other words, this filter out prioritized features
+         */
         'filter': ['all',
           ['<', constants.SCORE_PROPERTY_HIGH, constants.SCORE_BOUNDARY_THRESHOLD],
         ],
 
         'type': 'fill',
         'paint': {
-          'fill-opacity': 0,
+          'fill-opacity': constants.NON_PRIORITIZED_FEATURE_FILL_OPACITY,
         },
         'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
       },
 
       /**
-       * High zoom layer
-       * Todo: rename constants
+       * High zoom layer - prioritized features only
        */
       {
-        'id': constants.HIGH_SCORE_LAYER_NAME,
-        'source': constants.HIGH_SCORE_SOURCE_NAME,
+        'id': constants.PRIORITIZED_HIGH_ZOOM_LAYER_ID,
+        'source': constants.HIGH_ZOOM_SOURCE_NAME,
         'source-layer': constants.SCORE_SOURCE_LAYER,
         /**
          * This shows features where the high score > score boundary threshold.
-         * In other words, this filter will only show the prioritized features
+         * In other words, this filter out non-prioritized features
          */
         'filter': ['all',
           ['>', constants.SCORE_PROPERTY_HIGH, constants.SCORE_BOUNDARY_THRESHOLD],
@@ -220,23 +222,23 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
 
         'type': 'fill',
         'paint': {
-          'fill-color': constants.MAX_COLOR,
-          'fill-opacity': constants.DEFAULT_LAYER_OPACITY,
+          'fill-color': constants.PRIORITIZED_FEATURE_FILL_COLOR,
+          'fill-opacity': constants.PRIORITIZED_FEATURE_FILL_OPACITY,
         },
         'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
       },
 
 
       /**
-       * Low zoom layer with non-prioritized filtered out
+       * Low zoom layer - prioritized features only
        */
       {
-        'id': constants.LOW_SCORE_LAYER_NAME,
-        'source': constants.LOW_SCORE_SOURCE_NAME,
+        'id': constants.LOW_ZOOM_LAYER_ID,
+        'source': constants.LOW_ZOOM_SOURCE_NAME,
         'source-layer': constants.SCORE_SOURCE_LAYER,
         /**
-         * This shows features where the low score > score boundary threshold, which
-         * will only show the prioritized features
+         * This shows features where the low score > score boundary threshold.
+         * In other words, this filter out non-prioritized features
          */
         'filter': ['all',
           ['>', constants.SCORE_PROPERTY_LOW, constants.SCORE_BOUNDARY_THRESHOLD],
@@ -244,8 +246,8 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
 
         'type': 'fill',
         'paint': {
-          'fill-color': constants.MAX_COLOR,
-          'fill-opacity': constants.DEFAULT_LAYER_OPACITY,
+          'fill-color': constants.PRIORITIZED_FEATURE_FILL_COLOR,
+          'fill-opacity': constants.PRIORITIZED_FEATURE_FILL_OPACITY,
         },
         'minzoom': constants.GLOBAL_MIN_ZOOM_LOW,
         'maxzoom': constants.GLOBAL_MAX_ZOOM_LOW,

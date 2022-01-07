@@ -270,9 +270,7 @@ const J40Map = ({location}: IJ40Interface) => {
           minZoom={constants.GLOBAL_MIN_ZOOM}
           dragRotate={false}
           touchRotate={false}
-
-          // Todo: rename this constant
-          interactiveLayerIds={[constants.HIGH_SCORE_LAYER_NAME, 'someId']}
+          interactiveLayerIds={[constants.HIGH_ZOOM_LAYER_ID, constants.PRIORITIZED_HIGH_ZOOM_LAYER_ID]}
 
           // Callback props:
           // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#callbacks
@@ -288,47 +286,42 @@ const J40Map = ({location}: IJ40Interface) => {
           {/**
            * The Source component and two Layer components:
            *    <Source> = the High zoom layer
-           *    <Layer1> = controls the border between census blocks/tracts
-           *    <Layer2> = controls the border styling around the selected census block group or tract
+           *    <Layer1> = controls the border between features
+           *    <Layer2> = controls the border styling around the selected features
            *
-           * The actual map has other layers. These other layers are defined in the mapStyle.tsx file. These
-           * other layers are:
-           *    baseMapLayer
-           *    geo
-           *    high zoom layer
-           *    low zoom layer
-           *    labels
+           * The actual map has other layers. These other layers are defined in the mapStyle.tsx file.
            */}
           <Source
-            id={constants.HIGH_SCORE_SOURCE_NAME}
+            id={constants.HIGH_ZOOM_SOURCE_NAME}
             type="vector"
             promoteId={constants.GEOID_PROPERTY}
             tiles={[constants.FEATURE_TILE_HIGH_ZOOM_URL]}
             maxzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
             minzoom={constants.GLOBAL_MAX_ZOOM_HIGH}
           >
-            {/* This layer controls the border between census blocks/tracts */}
+
+            {/* This layer controls the border between features */}
             <Layer
-              id={constants.BLOCK_GROUP_BOUNDARY_LAYER_NAME}
+              id={constants.FEATURE_BORDER_LAYER_ID}
               source-layer={constants.SCORE_SOURCE_LAYER}
               type='line'
               paint={{
-                'line-color': constants.DEFAULT_OUTLINE_COLOR,
-                'line-width': constants.CURRENTLY_SELECTED_FEATURE_LAYER_WIDTH,
-                'line-opacity': constants.CURRENTLY_SELECTED_FEATURE_LAYER_OPACITY,
+                'line-color': constants.FEATURE_BORDER_COLOR,
+                'line-width': constants.FEATURE_BORDER_WIDTH,
+                'line-opacity': constants.FEATURE_BORDER_OPACITY,
               }}
-              minzoom={constants.GLOBAL_MIN_ZOOM_HIGHLIGHT}
-              maxzoom={constants.GLOBAL_MAX_ZOOM_HIGHLIGHT}
+              minzoom={constants.GLOBAL_MIN_ZOOM_FEATURE_BORDER}
+              maxzoom={constants.GLOBAL_MAX_ZOOM_FEATURE_BORDER}
             />
 
             {/* This layer controls the border styling around the selected feature */}
             <Layer
-              id={constants.CURRENTLY_SELECTED_FEATURE_HIGHLIGHT_LAYER_NAME}
+              id={constants.SELECTED_FEATURE_BORDER_LAYER_ID}
               type='line'
               source-layer={constants.SCORE_SOURCE_LAYER}
               paint={{
-                'line-color': constants.BORDER_HIGHLIGHT_COLOR,
-                'line-width': constants.HIGHLIGHT_BORDER_WIDTH,
+                'line-color': constants.SELECTED_FEATURE_BORDER_COLOR,
+                'line-width': constants.SELECTED_FEATURE_BORDER_WIDTH,
               }}
 
               // This filter filters out all other features except the selected feature.
