@@ -206,9 +206,7 @@ class PostScoreETL(ExtractTransformLoad):
         tiles_score_column_titles = list(constants.TILES_SCORE_COLUMNS.keys())
 
         # filter the columns on full score
-        score_tiles = score_county_state_merged_df[
-            tiles_score_column_titles
-        ].copy()
+        score_tiles = score_county_state_merged_df[tiles_score_column_titles]
 
         score_tiles[constants.TILES_SCORE_FLOAT_COLUMNS] = score_tiles[
             constants.TILES_SCORE_FLOAT_COLUMNS
