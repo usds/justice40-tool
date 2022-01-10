@@ -73,6 +73,12 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
         'tiles': getBaseMapLayer(),
 
         /**
+         * Attempting to place a direct call to mapbox URL:
+         */
+        // 'type': 'raster',
+        // 'tiles': [`mapbox://styles/mapbox/streets-v11`],
+
+        /**
          * This MapBox Raster seems to work, however the tileset curently available in MapBox
          * is the "satellite" tileset. Messaged Mikel on more options.
          */

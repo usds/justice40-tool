@@ -256,9 +256,16 @@ const J40Map = ({location}: IJ40Interface) => {
          * some children.
          */}
         <ReactMapGL
+          // Initialization props:
+          // access token is j40StylesReadToken
+          // Todo: move to .env file:
+          // eslint-disable-next-line max-len
+          mapboxApiAccessToken={`pk.eyJ1IjoianVzdGljZTQwIiwiYSI6ImNreHRub2QxdTV6dnUzMHBmZDdzZXQ4YWMifQ.Fc-my99OtAwP5zEXCgrx_g`}
+
           // Map state props:
           // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#map-state
           {...viewport}
+          // mapStyle={`mapbox://styles/mapbox/streets-v11`}
           mapStyle={makeMapStyle(flags)}
           width="100%"
           height={windowWidth < 1024 ? '44vh' : '100%'}
