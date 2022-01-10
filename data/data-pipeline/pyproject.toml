@@ -36,6 +36,7 @@ pytest = "^6.2.4"
 safety = "^1.10.3"
 tox = "^3.24.0"
 pytest-mock = "^3.6.1"
+tox-poetry = "^0.4.1"
 
 [build-system]
 build-backend = "poetry.core.masonry.api"
