@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {LngLatBoundsLike} from 'mapbox-gl';
+import {LngLatBoundsLike} from 'maplibre-gl';
 import {useIntl} from 'gatsby-plugin-intl';
 import {Search} from '@trussworks/react-uswds';
 
