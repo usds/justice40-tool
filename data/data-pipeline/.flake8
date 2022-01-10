@@ -4,4 +4,4 @@ ignore =
   W503  # line break before binary operator
 max-line-length = 150
 max-complexity = 18
-select = B,C,E,F,W,T4,B9
+select = B,C,E,F,W,T4,B9,PD
