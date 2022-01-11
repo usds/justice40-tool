@@ -265,8 +265,8 @@ const J40Map = ({location}: IJ40Interface) => {
           // Map state props:
           // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#map-state
           {...viewport}
-          // mapStyle={`mapbox://styles/mapbox/streets-v11`}
-          mapStyle={makeMapStyle(flags)}
+          mapStyle={`mapbox://styles/mapbox/streets-v11`}
+          // mapStyle={makeMapStyle(flags)}
           width="100%"
           height={windowWidth < 1024 ? '44vh' : '100%'}
           mapOptions={{hash: true}}
@@ -298,14 +298,62 @@ const J40Map = ({location}: IJ40Interface) => {
            *
            * The actual map has other layers. These other layers are defined in the mapStyle.tsx file.
            */}
+
+          <Source
+            id={constants.LOW_ZOOM_SOURCE_NAME}
+            type="vector"
+            promoteId={constants.GEOID_PROPERTY}
+            tiles={[constants.FEATURE_TILE_LOW_ZOOM_URL]}
+            maxzoom={constants.GLOBAL_MAX_ZOOM_LOW}
+            minzoom={constants.GLOBAL_MIN_ZOOM_LOW}
+          >
+            <Layer
+              id={constants.LOW_ZOOM_LAYER_ID}
+              source-layer={constants.SCORE_SOURCE_LAYER}
+              filter={['>', constants.SCORE_PROPERTY_LOW, constants.SCORE_BOUNDARY_THRESHOLD]}
+              type='fill'
+              paint={{
+                'fill-color': constants.PRIORITIZED_FEATURE_FILL_COLOR,
+                'fill-opacity': constants.PRIORITIZED_FEATURE_FILL_OPACITY}}
+
+              minzoom={constants.GLOBAL_MIN_ZOOM_LOW}
+              maxzoom={constants.GLOBAL_MAX_ZOOM_LOW}
+            />
+          </Source>
+
           <Source
             id={constants.HIGH_ZOOM_SOURCE_NAME}
             type="vector"
             promoteId={constants.GEOID_PROPERTY}
             tiles={[constants.FEATURE_TILE_HIGH_ZOOM_URL]}
-            maxzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
-            minzoom={constants.GLOBAL_MAX_ZOOM_HIGH}
+            maxzoom={constants.GLOBAL_MAX_ZOOM_HIGH}
+            minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
           >
+
+            {/* High zoom layer - non-prioritized features only */}
+            <Layer
+              id={constants.HIGH_ZOOM_LAYER_ID}
+              source-layer={constants.SCORE_SOURCE_LAYER}
+              filter={['<', constants.SCORE_PROPERTY_HIGH, constants.SCORE_BOUNDARY_THRESHOLD]}
+              type='fill'
+              paint={{
+                'fill-opacity': constants.NON_PRIORITIZED_FEATURE_FILL_OPACITY,
+              }}
+              minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
+            />
+
+            {/* High zoom layer - prioritized features only */}
+            <Layer
+              id={constants.PRIORITIZED_HIGH_ZOOM_LAYER_ID}
+              source-layer={constants.SCORE_SOURCE_LAYER}
+              filter={['>', constants.SCORE_PROPERTY_HIGH, constants.SCORE_BOUNDARY_THRESHOLD]}
+              type='fill'
+              paint={{
+                'fill-color': constants.PRIORITIZED_FEATURE_FILL_COLOR,
+                'fill-opacity': constants.PRIORITIZED_FEATURE_FILL_OPACITY,
+              }}
+              minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
+            />
 
             {/* This layer controls the border between features */}
             <Layer
@@ -336,6 +384,7 @@ const J40Map = ({location}: IJ40Interface) => {
               minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
             />
           </Source>
+
 
           {/* Enable fullscreen behind a feature flag */}
           {('fs' in flags && detailViewData && !transitionInProgress) && (
