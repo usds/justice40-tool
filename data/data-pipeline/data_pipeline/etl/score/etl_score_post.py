@@ -240,12 +240,35 @@ class PostScoreETL(ExtractTransformLoad):
     def _create_downloadable_data(
         self, score_county_state_merged_df: pd.DataFrame
     ) -> pd.DataFrame:
-        df = score_county_state_merged_df[constants.DOWNLOADABLE_SCORE_COLUMNS]
+        df = score_county_state_merged_df[
+            constants.DOWNLOADABLE_SCORE_COLUMNS
+        ].copy()
 
-        float_columns = df.select_dtypes(include=["float64"])
+        float_columns = df.select_dtypes(include=["float64"]).columns
 
-        # score_tiles[constants.TILES_SCORE_FLOAT_COLUMNS] = score_tiles[
-        #     constants.TILES_SCORE_FLOAT_COLUMNS
+        # convert percentile_columns
+        percent_target_columns = []
+        for x in float_columns:
+            for col in constants.PERCENT_PREFIXES_SUFFIXES:
+                if col in x:
+                    percent_target_columns.append(x)
+
+        df[percent_target_columns] = df[percent_target_columns].apply(
+            func=lambda series: floor_series(
+                series=series * 100,
+                number_of_decimals=constants.TILES_ROUND_NUM_DECIMALS,
+            )
+        )
+
+        # # convert percentile_columns
+        # non_percentile_float_columns = [
+        #     x
+        #     for x in float_columns
+        #     if x not in constants.PERCENT_PREFIXES_SUFFIXES
+        # ]
+
+        # df[non_percentile_float_columns] = df[
+        #     non_percentile_float_columns
         # ].apply(
         #     func=lambda series: floor_series(
         #         series=series,
@@ -253,8 +276,6 @@ class PostScoreETL(ExtractTransformLoad):
         #     ),
         #     axis=0,
         # )
-
-        # [x for x in df.columns if field_names.PERCENTILE_FIELD_SUFFIX in x]
 
         return df
 
