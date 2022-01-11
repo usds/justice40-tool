@@ -1,3 +1,6 @@
+# It's unclear whether this configuration is supported for stopping dev only
+# security issues, see https://github.com/usds/justice40-tool/issues/1121 and
+# https://github.com/dependabot/dependabot-core/issues/2521.
 version: 2
 updates:
   - package-ecosystem: "npm"
