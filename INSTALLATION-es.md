@@ -8,9 +8,9 @@ Esta página documenta los pasos de instalación de algunos de los programas nec
 
 Después de los pasos de instalación genéricos de esta página,continúe con uno de los siguientes, según lo que intente hacer:
 
-- Si está trabajando con la interfaz, consulte [`client/README.md`](client/README.md).
-- Si está trabajando con la canalización de datos, consulte [`data/data-pipeline/README.md`](data/data-pipeline/README.md).
-- Si desea comprender el proceso de implementación actual,consulte [`.github/workflows/README.md`](.github/workflows/README.md).
+- Si está trabajando con la interfaz, consulte [`client/README-es.md`](client/README-es.md).
+- Si está trabajando con la canalización de datos, consulte [`data/data-pipeline/README-es.md`](data/data-pipeline/README-es.md).
+- Si desea comprender el proceso de implementación actual,consulte [`.github/workflows/README-es.md`](.github/workflows/README-es.md).
 
 ### Instalar Git
 
