@@ -1,0 +1,44 @@
+name: Upload Generate Score Test Data
+on:
+  workflow_dispatch:
+    inputs:
+      confirm-action:
+        description: This will replace the score test fixtures, are you sure you want to proceed? (Y/n)
+        default: n
+        required: true
+jobs:
+  deploy_data:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: data/data-pipeline
+    strategy:
+      matrix:
+        python-version: [3.9]
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+      - name: Print variables to help debug
+        uses: hmarr/debug-action@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Setup Poetry
+        uses: Gr1N/setup-poetry@v7
+      - name: Print poetry version
+        run: poetry --version
+      - name: Install dependencies
+        run: poetry install
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.DATA_DEV_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.DATA_DEV_AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: Run Initial ETLs To Get Source Data
+        run: |
+          poetry run python3 data_pipeline/application.py etl-run
+      - name: Upload Score Test Data To AWS
+        run: |
+          aws s3 sync ./data_pipeline/data/score/datasets/ s3://justice40-data/data-pipeline-test-data/data/score/datasets/ --delete
