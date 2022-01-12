@@ -5,7 +5,6 @@ from data_pipeline.etl.sources.census_acs.etl_utils import (
     retrieve_census_acs_data,
 )
 from data_pipeline.utils import get_module_logger
-from data_pipeline.score import field_names
 
 logger = get_module_logger(__name__)
 
@@ -23,7 +22,7 @@ class CensusACSETL(ExtractTransformLoad):
             self.TOTAL_UNEMPLOYED_FIELD,
             self.TOTAL_IN_LABOR_FORCE,
         ]
-        self.UNEMPLOYED_FIELD_NAME = "Unemployment (percent)"
+        self.UNEMPLOYED_FIELD_NAME = "Unemployed civilians (percent)"
 
         self.LINGUISTIC_ISOLATION_FIELD_NAME = "Linguistic isolation (percent)"
         self.LINGUISTIC_ISOLATION_TOTAL_FIELD_NAME = (
@@ -354,21 +353,8 @@ class CensusACSETL(ExtractTransformLoad):
             + df[self.COLLEGE_ATTENDANCE_FEMALE_ENROLLED_PRIVATE]
         ) / df[self.COLLEGE_ATTENDANCE_TOTAL_POPULATION_ASKED]
 
-        # strip columns
-        df = df[self.COLUMNS_TO_KEEP]
-
         # Save results to self.
         self.df = df
-
-        # rename columns to be used in score
-        rename_fields = {
-            "Percent of individuals < 200% Federal Poverty Line": field_names.POVERTY_LESS_THAN_200_FPL_FIELD,
-        }
-        self.df.rename(
-            columns=rename_fields,
-            inplace=True,
-            errors="raise",
-        )
 
     def load(self) -> None:
         logger.info("Saving Census ACS Data")
@@ -376,7 +362,9 @@ class CensusACSETL(ExtractTransformLoad):
         # mkdir census
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
 
-        self.df.to_csv(path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False)
+        self.df[self.COLUMNS_TO_KEEP].to_csv(
+            path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False
+        )
 
     def validate(self) -> None:
         logger.info("Validating Census ACS Data")
