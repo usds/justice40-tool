@@ -1,11 +1,7 @@
 name: Upload Generate Score Test Data
 on:
-  workflow_dispatch:
-    inputs:
-      confirm-action:
-        description: This will replace the score test fixtures, are you sure you want to proceed? (Y/n)
-        default: n
-        required: true
+  pull_request:
+    branches: [ main ]
 jobs:
   deploy_data:
     runs-on: ubuntu-latest
