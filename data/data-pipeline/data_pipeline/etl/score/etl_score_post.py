@@ -252,7 +252,8 @@ class PostScoreETL(ExtractTransformLoad):
             # TODO: create a schema for fields to make it more explicit and safe which
             #  fields are percentages.
             if any(x in column for x in constants.PERCENT_PREFIXES_SUFFIXES):
-                # Convert percentages from fractions to an integer from 0 to 100.
+                # Convert percentages from fractions between 0 and 1 to an integer
+                # from 0 to 100.
                 df[column] = pd.to_numeric(arg=
                     floor_series(
                         series=df[column] * 100,
