@@ -5,7 +5,6 @@ from data_pipeline.etl.sources.census_acs.etl_utils import (
     retrieve_census_acs_data,
 )
 from data_pipeline.utils import get_module_logger
-from data_pipeline.score import field_names
 
 logger = get_module_logger(__name__)
 
@@ -74,7 +73,7 @@ class CensusACS2010ETL(ExtractTransformLoad):
             self.EMPLOYMENT_COLLEGE_IN_LABOR_FORCE,
         ]
 
-        self.UNEMPLOYED_FIELD_NAME = "Unemployment (percent)"
+        self.UNEMPLOYED_FIELD_NAME = "Unemployed civilians (percent)"
 
         self.POVERTY_FIELDS = [
             "C17002_001E",  # Estimate!!Total,
@@ -150,6 +149,15 @@ class CensusACS2010ETL(ExtractTransformLoad):
             + df["C17002_007E"]
         ) / df["C17002_001E"]
 
+        # Save results to self.
+        self.df = df
+
+    def load(self) -> None:
+        logger.info("Saving Census ACS Data")
+
+        # mkdir census
+        self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
+
         columns_to_include = [
             self.GEOID_TRACT_FIELD_NAME,
             self.UNEMPLOYED_FIELD_NAME,
@@ -158,7 +166,7 @@ class CensusACS2010ETL(ExtractTransformLoad):
             self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME,
         ]
 
-        output_df = df[columns_to_include]
+        output_df = self.df[columns_to_include]
 
         # Add the year to the end of every column, so when it's all joined in the
         # score df, it's obvious which year this data is from.
@@ -170,26 +178,7 @@ class CensusACS2010ETL(ExtractTransformLoad):
                     }
                 )
 
-        # rename columns to be used in score
-        rename_fields = {
-            "Percent of individuals < 100% Federal Poverty Line in 2010": field_names.CENSUS_POVERTY_LESS_THAN_100_FPL_FIELD_2010,
-        }
-        output_df.rename(
-            columns=rename_fields,
-            inplace=True,
-            errors="raise",
-        )
-
-        # Save results to self.
-        self.df = output_df
-
-    def load(self) -> None:
-        logger.info("Saving Census ACS Data")
-
-        # mkdir census
-        self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
-
-        self.df.to_csv(path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False)
+        output_df.to_csv(path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False)
 
     def validate(self) -> None:
         logger.info("Validating Census ACS Data")
