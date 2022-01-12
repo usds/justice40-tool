@@ -34,7 +34,7 @@ jobs:
           aws-region: us-east-1
       - name: Download Score Test Data From AWS
         run: |
-          aws s3 sync s3://justice40-data/data-pipeline-test-data/data/score/datasets/ ./data_pipeline/data/score/datasets/ --delete
+          aws s3 sync s3://justice40-data/data-pipeline-test-data/data/dataset/ ./data_pipeline/data/dataset/ --delete
       - name: Generate Score
         run: |
           poetry run python3 data_pipeline/application.py score-run
