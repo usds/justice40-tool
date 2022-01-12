@@ -24,7 +24,7 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
         self.AGGREGATED_RSEI_SCORE_FILE_URL = "http://abt-rsei.s3.amazonaws.com/microdata2019/census_agg/CensusMicroTracts2019_2019_aggregated.zip"
 
         self.OUTPUT_PATH: Path = (
-            self.DATA_PATH / "dataset" / "epa_rsei_aggregated_microdata"
+            self.DATA_PATH / "dataset" / "epa_rsei_aggregated_risk_environmental_indicators"
         )
         self.EPA_RSEI_SCORE_THRESHOLD_CUTOFF = .75
         self.TRACT_INPUT_COLUMN_NAME = "GEOID10"
@@ -60,12 +60,12 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
         unzip_file_from_url(
             file_url=self.AGGREGATED_RSEI_SCORE_FILE_URL,
             download_path=self.TMP_PATH,
-            unzipped_file_path=self.TMP_PATH / "epa_rsei_aggregated_microdata",
+            unzipped_file_path=self.TMP_PATH / "epa_rsei_aggregated_risk_environmental_indicators",
         )
 
         self.df = pd.read_csv(
             filepath_or_buffer=self.TMP_PATH
-            / "epa_rsei_aggregated_microdata"
+            / "epa_rsei_aggregated_risk_environmental_indicators"
             / "CensusMicroTracts2019_2019_aggregated.csv",
             # The following need to remain as strings for all of their digits, not get
             # converted to numbers.
