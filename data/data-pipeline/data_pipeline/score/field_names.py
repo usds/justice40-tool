@@ -236,21 +236,6 @@ CDC_SVI_INDEX_RPL_THEMES_OVERALL_PERCENTILE_FIELD: str = (
     "Overall percentile ranking for themes"
 )
 
-# CDC SVI INDEX Sum of series fields (SOS) references
-CDC_SVI_INDEX_SE_THEME_SOS_FIELD: str = "Sum of series for Socioeconomic theme"
-CDC_SVI_INDEX_HOUSEHOLD_THEME_SOS_FIELD: str = (
-    "Sum of series for Household Composition theme"
-)
-CDC_SVI_INDEX_LANGUAGE_THEME_SOS_FIELD: str = (
-    "Sum of series for Minority Status/Language theme"
-)
-CDC_SVI_INDEX_HOUSING_TRANSPORTATION_SOS_FIELD: str = (
-    "Sum of series for Housing Type/Transportation theme"
-)
-CDC_SVI_INDEX_THEMES_OVERALL_SOS_FIELD: str = "Overall sum of series themes"
-CDC_SVI_INDEX_THEMES_OVERALL_TOTAL_FIELD: str = (
-    "Sum of flags for the four themes"
-)
 CDC_SVI_INDEX_THEMES_PRIORITY_COMMUNITY: str = (
     "At or above 90 for overall percentile ranking according to SVI Index"
 )

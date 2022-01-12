@@ -107,7 +107,7 @@ DATASET_LIST = [
     {
         "name": "cdc_svi_index",
         "module_dir": "cdc_svi_index",
-        "class_name": "CDCSVIINDEX",
+        "class_name": "CDCSVIIndex",
     },
 ]
 CENSUS_INFO = {

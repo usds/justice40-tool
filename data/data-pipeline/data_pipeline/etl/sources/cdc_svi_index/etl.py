@@ -9,7 +9,7 @@ from data_pipeline.config import settings
 logger = get_module_logger(__name__)
 
 
-class CDCSVIINDEX(ExtractTransformLoad):
+class CDCSVIIndex(ExtractTransformLoad):
     """CDC SVI Index class ingests 2018 dataset located
     here: https://www.atsdr.cdc.gov/placeandhealth/svi/index.html
     Please see the README in this module for further details.
@@ -22,24 +22,11 @@ class CDCSVIINDEX(ExtractTransformLoad):
             settings.AWS_JUSTICE40_DATASOURCES_URL + "/SVI2018_US.zip"
         )
 
-        self.CDC_RPL_THEMES_THRSHOLD = 0.90
+        self.CDC_RPL_THEMES_THRESHOLD = 0.90
 
         self.CDC_SVI_INDEX_ZIP_FILE_DIR = self.TMP_PATH / "cdc_svi_index"
 
         self.CDC_SVI_INDEX_TRACTS_FIPS_CODE = "FIPS"
-
-        self.COVARIATE_COLUMNS = [
-            "AREA_SQMI",  # Tract area in square miles
-            "E_TOTPOP",  # Population estimate, 2014-2018 ACS S0601_C01_001 E
-            "E_HU",  # Housing units estimate, DP04_0001E
-            "E_HH",  # Households estimate, DP02_0001E
-            # E_PCI has fewer rows than other variables - joined to Census 2016 tracts. Contains null cells (i.e. -999).
-            "E_PCI",  # Per capita income estimate, 2014-2018 ACS, B19301_001E
-            "E_AGE65",  # Persons aged 65 and older estimate, 2014-2018 ACS, S0101_C01_030 E
-            "E_DISABL",  # Civilian noninstitutionalized population with a disability estimate, 2014 -2018 ACS, DP02_0071E
-            "E_SNGPNT",  # Single parent household with children under 18 estimate MOE, 2014 -2018 ACS, (DP02_0007E + DP02_0009E)
-            "E_CROWD",  # At household level (occupied housing units), more people than rooms estimate for 2014 -2018 ACS, (DP04_0078E + DP04_0079E)
-        ]
 
         self.COLUMNS_TO_KEEP = [
             self.GEOID_TRACT_FIELD_NAME,
@@ -48,16 +35,9 @@ class CDCSVIINDEX(ExtractTransformLoad):
             field_names.CDC_SVI_INDEX_LANGUAGE_THEME_PERCENTILE_FIELD,
             field_names.CDC_SVI_INDEX_HOUSING_TRANSPORTATION_PERCENTILE_FIELD,
             field_names.CDC_SVI_INDEX_RPL_THEMES_OVERALL_PERCENTILE_FIELD,
-            # Sum of series fields
-            field_names.CDC_SVI_INDEX_SE_THEME_SOS_FIELD,
-            field_names.CDC_SVI_INDEX_HOUSEHOLD_THEME_SOS_FIELD,
-            field_names.CDC_SVI_INDEX_LANGUAGE_THEME_SOS_FIELD,
-            field_names.CDC_SVI_INDEX_HOUSING_TRANSPORTATION_SOS_FIELD,
-            field_names.CDC_SVI_INDEX_THEMES_OVERALL_SOS_FIELD,
             # Derived columns
-            field_names.CDC_SVI_INDEX_THEMES_OVERALL_TOTAL_FIELD,
             field_names.CDC_SVI_INDEX_THEMES_PRIORITY_COMMUNITY,
-        ] + self.COVARIATE_COLUMNS
+        ]
 
         self.df: pd.DataFrame
 
@@ -78,7 +58,7 @@ class CDCSVIINDEX(ExtractTransformLoad):
 
         self.df = pd.read_csv(
             filepath_or_buffer=tmp_svi_csv_file_path,
-            dtype={self.CDC_SVI_INDEX_TRACTS_FIPS_CODE: object},
+            dtype={self.CDC_SVI_INDEX_TRACTS_FIPS_CODE: str},
         )
 
         # Note: In this dataset all US census tracts are ranked against one another.
@@ -91,12 +71,6 @@ class CDCSVIINDEX(ExtractTransformLoad):
                 "RPL_THEME3": field_names.CDC_SVI_INDEX_LANGUAGE_THEME_PERCENTILE_FIELD,
                 "RPL_THEME4": field_names.CDC_SVI_INDEX_HOUSING_TRANSPORTATION_PERCENTILE_FIELD,
                 "RPL_THEMES": field_names.CDC_SVI_INDEX_RPL_THEMES_OVERALL_PERCENTILE_FIELD,
-                "SPL_THEME1": field_names.CDC_SVI_INDEX_SE_THEME_SOS_FIELD,
-                "SPL_THEME2": field_names.CDC_SVI_INDEX_HOUSEHOLD_THEME_SOS_FIELD,
-                "SPL_THEME3": field_names.CDC_SVI_INDEX_LANGUAGE_THEME_SOS_FIELD,
-                "SPL_THEME4": field_names.CDC_SVI_INDEX_HOUSING_TRANSPORTATION_SOS_FIELD,
-                "SPL_THEMES": field_names.CDC_SVI_INDEX_THEMES_OVERALL_SOS_FIELD,
-                "F_TOTAL": field_names.CDC_SVI_INDEX_THEMES_OVERALL_TOTAL_FIELD,
             },
             inplace=True,
             errors="raise",
@@ -105,7 +79,7 @@ class CDCSVIINDEX(ExtractTransformLoad):
         #  At or above 90 for percentile rank
         self.df[field_names.CDC_SVI_INDEX_THEMES_PRIORITY_COMMUNITY] = (
             self.df[field_names.CDC_SVI_INDEX_RPL_THEMES_OVERALL_PERCENTILE_FIELD]
-            >= self.CDC_RPL_THEMES_THRSHOLD
+            >= self.CDC_RPL_THEMES_THRESHOLD
         )
 
         expected_census_tract_field_length = 11
