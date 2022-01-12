@@ -17,6 +17,9 @@
     },
     {
       "pattern": "^https://.*medium.com"
+    },
+    {
+      "pattern": "^https://www.eeoc.gov"
     }
   ],
   "replacementPatterns": [

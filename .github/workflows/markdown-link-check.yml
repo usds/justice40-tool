@@ -1,7 +1,12 @@
 name: Check Markdown links
 on:
-  push:
   pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ main ]
+    # Run only if the pull request changes a markdown file:
+    # https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions#onpushpull_requestpaths
+    paths:
+      - '**.md'
 jobs:
   markdown-link-check:
     runs-on: ubuntu-latest
