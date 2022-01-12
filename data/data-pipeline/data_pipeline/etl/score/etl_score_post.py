@@ -249,14 +249,27 @@ class PostScoreETL(ExtractTransformLoad):
         df_of_float_columns = df.select_dtypes(include=["float64"])
 
         for column in df_of_float_columns.columns:
-            for item in constants.PERCENT_PREFIXES_SUFFIXES:
-                if item in column:
-                    df[column] = df[column] * 100
-                else:
-                    df[column] = floor_series(
-                        series=df[column].astype(float64),
-                        number_of_decimals=constants.TILES_ROUND_NUM_DECIMALS,
-                    )
+            # TODO: create a schema for fields to make it more explicit and safe which
+            #  fields are percentages.
+            if any(x in column for x in constants.PERCENT_PREFIXES_SUFFIXES):
+                # Convert percentages from fractions to an integer from 0 to 100.
+                df[column] = pd.to_numeric(arg=
+                    floor_series(
+                        series=df[column] * 100,
+                        number_of_decimals=0,
+                    ),
+                    errors="raise",
+                    # Using `to_numeric` and downcast instead of `.astype(int)`
+                    # because Python's `int` type does not support nulls.
+                    downcast="integer",
+                )
+            else:
+                # Round all other floats.
+                df[column] = floor_series(
+                    series=df[column].astype(float64),
+                    number_of_decimals=constants.TILES_ROUND_NUM_DECIMALS,
+                )
+
         return df
 
     def transform(self) -> None:
