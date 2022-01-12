@@ -99,7 +99,7 @@ TODO agregar diagrama de sirena
 1. Llame al comando `census_data_download` utilizando el administrador de aplicaciones `application.py` **NOTA:** Esto puede tardar varios minutos en ejecutarse.
    - Con Docker: `docker run --rm -it -v ${PWD}/data/data-pipeline/data_pipeline/data:/data_pipeline/data j40_data_pipeline python3 -m data_pipeline.application censo-data-download`
    - Con Poetry: `poetry run download_census` (Instalar GDAL como se describe [abajo](#desarrollo-local))
-2. Si tiene una conexión a Internet de alta velocidad y no desea generar los datos del censo o instalar `GDAL` localmente, puede descargar una versión zip del archivo del Censo [aquí] (https://justice40-data.s3 .amazonaws.com/data-sources/census.zip). Luego descomprima y mueva el contenido dentro de la carpeta `data/data-pipeline/data_pipeline/data/census/`/
+2. Si tiene una conexión a Internet de alta velocidad y no desea generar los datos del censo o instalar `GDAL` localmente, puede descargar una versión zip del archivo del Censo [aquí] (https://justice40-data.s3.amazonaws.com/data-sources/census.zip). Luego descomprima y mueva el contenido dentro de la carpeta `data/data-pipeline/data_pipeline/data/census/`/
 
 #### Paso 2: Ejecute el script ETL para cada fuente de datos
 
@@ -205,7 +205,7 @@ Para instalar los ejecutables mencionados anteriormente:
 
 ### Usuarios de Windows
 
-Si desea ejecutar la generación de mosaicos, instale TippeCanoe [siguiendo estas instrucciones] (https://github.com/GISupportICRC/ArcGIS2Mapbox#installing-tippecanoe-on-windows). También necesita algunos requisitos previos para Geopandas como se especifica en los requisitos de poesía. Siga [estas instrucciones](https://stackoverflow.com/questions/56958421/pip-install-geopandas-on-windows) para instalar la dependencia de Geopandas localmente. Definitivamente es más fácil si tiene acceso a WSL (Windows Subsystem Linux) e instala estos paquetes usando comandos similares a nuestro [Dockerfile] (https://github.com/usds/justice40-tool/blob/main/data/data- canalización/Dockerfile).
+Si desea ejecutar la generación de mosaicos, instale TippeCanoe [siguiendo estas instrucciones] (https://github.com/GISupportICRC/ArcGIS2Mapbox#installing-tippecanoe-on-windows). También necesita algunos requisitos previos para Geopandas como se especifica en los requisitos de poesía. Siga [estas instrucciones](https://stackoverflow.com/questions/56958421/pip-install-geopandas-on-windows) para instalar la dependencia de Geopandas localmente. Definitivamente es más fácil si tiene acceso a WSL (Windows Subsystem Linux) e instala estos paquetes usando comandos similares a nuestro [Dockerfile] (https://github.com/usds/justice40-tool/blob/main/data/datacanalización/Dockerfile).
 
 ### Configuración de la poesía
 
@@ -333,7 +333,7 @@ Tenemos cuatro archivos pickle que corresponden a los archivos esperados:
 
 Para actualizar los pepinillos, vamos uno a uno:
 
-Para `score_transformed_expected.pkl`, pero un punto de interrupción en [esta línea](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post .py#L58), antes de `pdt.assert_frame_equal` y ejecute:
+Para `score_transformed_expected.pkl`, pero un punto de interrupción en [esta línea](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L58), antes de `pdt.assert_frame_equal` y ejecute:
 `pytest data_pipeline/etl/score/tests/test_score_post.py::test_transform_score`
 
 Una vez en el punto de interrupción, capture el df en un pickle de la siguiente manera:
