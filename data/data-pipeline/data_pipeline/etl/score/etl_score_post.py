@@ -1,5 +1,7 @@
 from pathlib import Path
 import json
+from numpy import float64, int64
+import numpy as np
 import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
@@ -240,22 +242,21 @@ class PostScoreETL(ExtractTransformLoad):
     def _create_downloadable_data(
         self, score_county_state_merged_df: pd.DataFrame
     ) -> pd.DataFrame:
-        df = score_county_state_merged_df[constants.DOWNLOADABLE_SCORE_COLUMNS]
+        df = score_county_state_merged_df[
+            constants.DOWNLOADABLE_SCORE_COLUMNS
+        ].copy(deep=True)
 
-        float_columns = df.select_dtypes(include=["float64"])
+        df_of_float_columns = df.select_dtypes(include=["float64"])
 
-        # score_tiles[constants.TILES_SCORE_FLOAT_COLUMNS] = score_tiles[
-        #     constants.TILES_SCORE_FLOAT_COLUMNS
-        # ].apply(
-        #     func=lambda series: floor_series(
-        #         series=series,
-        #         number_of_decimals=constants.TILES_ROUND_NUM_DECIMALS,
-        #     ),
-        #     axis=0,
-        # )
-
-        # [x for x in df.columns if field_names.PERCENTILE_FIELD_SUFFIX in x]
-
+        for column in df_of_float_columns.columns:
+            for item in constants.PERCENT_PREFIXES_SUFFIXES:
+                if item in column:
+                    df[column] = df[column] * 100
+                else:
+                    df[column] = floor_series(
+                        series=df[column].astype(float64),
+                        number_of_decimals=constants.TILES_ROUND_NUM_DECIMALS,
+                    )
         return df
 
     def transform(self) -> None:

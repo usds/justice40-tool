@@ -63,6 +63,13 @@ SCORE_DOWNLOADABLE_ZIP_FILE_PATH = (
 # Column subsets
 CENSUS_COUNTIES_COLUMNS = ["USPS", "GEOID", "NAME"]
 
+# Percent prefixes for rounding
+PERCENT_PREFIXES_SUFFIXES = [
+    "Percent",
+    "Percentage",
+    field_names.PERCENTILE_FIELD_SUFFIX,
+]
+
 TILES_ROUND_NUM_DECIMALS = 2
 # Tiles data: full field name, tile index name
 TILES_SCORE_COLUMNS = {
