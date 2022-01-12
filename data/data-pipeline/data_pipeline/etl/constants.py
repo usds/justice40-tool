@@ -92,7 +92,7 @@ DATASET_LIST = [
     {
         "name": "epa_rsei_aggregate",
         "module_dir": "epa_rsei_aggregate",
-        "class_name": "EPARSEISCOREETL",
+        "class_name": "EPARiskScreeningEnvironmentalIndicatorsETL",
     },
     {
         "name": "energy_definition_alternative_draft",

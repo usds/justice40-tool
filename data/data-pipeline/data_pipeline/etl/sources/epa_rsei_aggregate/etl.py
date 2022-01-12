@@ -9,8 +9,8 @@ from data_pipeline.utils import get_module_logger, unzip_file_from_url
 logger = get_module_logger(__name__)
 
 
-class EPARSEISCOREETL(ExtractTransformLoad):
-    """Class for 2019 Census Tract Aggregated micro-data
+class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
+    """Class for 2019 Census Tract RSEI Aggregated micro-data
 
     Data source overview: Page 20 in this document:
     https://www.epa.gov/sites/default/files/2017-01/documents/rsei-documentation-geographic-microdata-v235.pdf
@@ -26,7 +26,7 @@ class EPARSEISCOREETL(ExtractTransformLoad):
         self.OUTPUT_PATH: Path = (
             self.DATA_PATH / "dataset" / "epa_rsei_aggregated_microdata"
         )
-
+        self.EPA_RSEI_SCORE_THRESHOLD_CUTOFF = .75
         self.TRACT_INPUT_COLUMN_NAME = "GEOID10"
         self.NUMBER_FACILITIES_INPUT_FIELD = "NUMFACS"
         self.NUMBER_RELEASES_INPUT_FIELD = "NUMRELEASES"
@@ -48,37 +48,11 @@ class EPARSEISCOREETL(ExtractTransformLoad):
             field_names.EPA_RSEI_CSCORE_OUTPUT_FIELD,
             field_names.EPA_RSEI_NCSCORE_OUTPUT_FIELD,
             field_names.EPA_RSEI_POPULATION_OUTPUT_FIELD,
-            field_names.EPA_RSEI_SCORE_PERCENTILE_LABEL_FIELD,
-            field_names.EPA_RSEI_NCSCORE_PERCENTILE_LABEL_FIELD,
-            field_names.EPA_RSEI_CSCORE_PERCENTILE_LABEL_FIELD,
             field_names.EPA_RSEI_SCORE_PERCENTILE_RANK_FIELD,
             field_names.EPA_RSEI_SCORE_THRESHOLD_FIELD,
         ]
 
         self.df: pd.DataFrame
-
-    def _custom_percentile(self, data, percentile):
-        """Custom percentile function for any univariate distribution
-        Args:
-            data (pd.Series): Sample distribution and the percentile that we want to calculate
-            percentile (float): The percentile to compute
-        Returns:
-            output (float): Value for the percentile
-        """
-        if percentile == 100:
-            raise ValueError("Percentile cannot be 100")
-
-        n = len(data)
-        p = n * percentile / 100
-        output = None
-        # if integer search for the p-th values in our distribution (sorted in ascending order)
-        if p.is_integer():
-            output = sorted(data)[int(p)]
-        # if this else clause is not added one will get an error
-        # that says that the index value of the list should be an integer number
-        else:
-            output = sorted(data)[int(math.ceil(p)) - 1]
-        return output
 
     def extract(self) -> None:
         logger.info("Starting 2.5 MB data download.")
@@ -144,81 +118,8 @@ class EPARSEISCOREETL(ExtractTransformLoad):
             inplace=True,
         )
 
-        # 5th, 25th, 50th, 75th and 99th percentiles for each score column
-        # this will yield n - 1 categorical variables where n = 5 percentiles specified
-        index = [5, 25, 50, 75, 99]
-        # Parameter for cut function, used below
-        labels_for_cut_function = [
-            "5 - 25 percentile values for score",
-            "25 - 50 percentile value for score",
-            "50 - 75 percentile value for score",
-            "75 - 99 percentile value for score",
-        ]
-
-        # Generate percentile values specified by index above
-        # Encncompases values between:
-        # first, 5-25 percentile,
-        # second, between 25-50th percentile,
-        # third, between 50-75 percentile
-        # fourth, between 75-99 percentile
-        perc_func_overall_risk_score = [
-            self._custom_percentile(
-                self.df[field_names.EPA_RSEI_SCORE_OUTPUT_FIELD].values, i
-            )
-            for i in index
-        ]
-
-        perc_func_cancer_score = [
-            self._custom_percentile(
-                self.df[field_names.EPA_RSEI_CSCORE_OUTPUT_FIELD].values, i
-            )
-            for i in index
-        ]
-
-        perc_func_non_cancer_score = [
-            self._custom_percentile(
-                self.df[field_names.EPA_RSEI_NCSCORE_OUTPUT_FIELD].values, i
-            )
-            for i in index
-        ]
-
-        # The rationale for creating these is located here https://www.epa.gov/rsei/understanding-rsei-results#what
+        # Please note this: https://www.epa.gov/rsei/understanding-rsei-results#what
         # Section: "What does a high RSEI Score mean?"
-
-        # The cut function creates equispaced bins but frequency of samples is unequal in each bin
-        # It is certainly possible to apply qcut. qcut is a quantile based function to create bins
-        # Quantile is to divide the data into equal number of subgroups or probability distributions of
-        # equal probability into continuous interval. I opted for cut as it offers greater flexibility in
-        # creating percentile bins.
-        #
-        # The result produces a cateogrical variable that affords easier stratification
-        # when performing more advanced statistical analyses of each component of the distribution. This is pertienent
-        # if we seek to combine this data with population characteristics and demographics - for example, ACS and CDC SVI Index -
-        # in order to chracterize each section of the "higher scoring" tracts for cancer-related and non-cancer related toxicity
-        self.df[field_names.EPA_RSEI_SCORE_PERCENTILE_LABEL_FIELD] = pd.cut(
-            self.df[field_names.EPA_RSEI_SCORE_OUTPUT_FIELD],
-            right=True,  # include right-most interval
-            bins=perc_func_overall_risk_score,
-            labels=labels_for_cut_function,
-            ordered=True,
-        )
-
-        self.df[field_names.EPA_RSEI_CSCORE_PERCENTILE_LABEL_FIELD] = pd.cut(
-            self.df[field_names.EPA_RSEI_CSCORE_OUTPUT_FIELD],
-            right=True,
-            bins=perc_func_cancer_score,
-            labels=labels_for_cut_function,
-            ordered=True,
-        )
-
-        self.df[field_names.EPA_RSEI_NCSCORE_PERCENTILE_LABEL_FIELD] = pd.cut(
-            self.df[field_names.EPA_RSEI_NCSCORE_OUTPUT_FIELD],
-            right=True,
-            bins=perc_func_non_cancer_score,
-            labels=labels_for_cut_function,
-            ordered=True,
-        )
-
         # Produce percentile rank for overall risk score
         # This was created for the sole purpose to be used in the current
         # iteration of Score L
@@ -234,7 +135,7 @@ class EPARSEISCOREETL(ExtractTransformLoad):
         # that would enable some additional form of sub-stratification when examining
         # different percentile ranges that are derived above.
         self.df[field_names.EPA_RSEI_SCORE_THRESHOLD_FIELD] = (
-            self.df[field_names.EPA_RSEI_SCORE_PERCENTILE_RANK_FIELD] > 0.75
+            self.df[field_names.EPA_RSEI_SCORE_PERCENTILE_RANK_FIELD] > self.EPA_RSEI_SCORE_THRESHOLD_CUTOFF
         )
 
         expected_census_tract_field_length = 11

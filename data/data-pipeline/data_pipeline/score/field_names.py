@@ -175,19 +175,9 @@ EPA_RSEI_POPULATION_OUTPUT_FIELD = (
     "Sum of the population of the cells in the tract"
 )
 
-EPA_RSEI_SCORE_PERCENTILE_LABEL_FIELD = (
-    "Percentile intervals for overall risk scores"
-)
-EPA_RSEI_CSCORE_PERCENTILE_LABEL_FIELD = (
-    "Percentile intervals for other risk scores (Cancer toxicity weights)"
-)
-EPA_RSEI_NCSCORE_PERCENTILE_LABEL_FIELD = (
-    "Percentile intervals for other risk scores (Noncancer toxicity weights)"
-)
-
 EPA_RSEI_SCORE_PERCENTILE_RANK_FIELD = "Percentile rank for overall risk score"
 
-EPA_RSEI_SCORE_THRESHOLD_FIELD = "At or above 90 for overall percentile ranking according to overall risk score"
+EPA_RSEI_SCORE_THRESHOLD_FIELD = "At or above 75 for overall percentile rank according to overall risk score"
 
 # Combined fields that merge island areas and states data
 COMBINED_CENSUS_TOTAL_POPULATION_2010 = (
