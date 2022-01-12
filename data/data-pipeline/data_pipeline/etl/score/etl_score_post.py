@@ -129,7 +129,7 @@ class PostScoreETL(ExtractTransformLoad):
         new_df = initial_states_df.rename(
             columns={
                 "fips": "State Code",
-                "state_name": field_names.STATE_FIELD,
+                "state_name": "State Name",
                 "state_abbreviation": "State Abbreviation",
             }
         )
@@ -206,9 +206,7 @@ class PostScoreETL(ExtractTransformLoad):
         tiles_score_column_titles = list(constants.TILES_SCORE_COLUMNS.keys())
 
         # filter the columns on full score
-        score_tiles = score_county_state_merged_df[
-            tiles_score_column_titles
-        ].copy()
+        score_tiles = score_county_state_merged_df[tiles_score_column_titles]
 
         score_tiles[constants.TILES_SCORE_FLOAT_COLUMNS] = score_tiles[
             constants.TILES_SCORE_FLOAT_COLUMNS
@@ -240,44 +238,9 @@ class PostScoreETL(ExtractTransformLoad):
     def _create_downloadable_data(
         self, score_county_state_merged_df: pd.DataFrame
     ) -> pd.DataFrame:
-        df = score_county_state_merged_df[
+        return score_county_state_merged_df[
             constants.DOWNLOADABLE_SCORE_COLUMNS
-        ].copy()
-
-        float_columns = df.select_dtypes(include=["float64"]).columns
-
-        # convert percentile_columns
-        percent_target_columns = []
-        for x in float_columns:
-            for col in constants.PERCENT_PREFIXES_SUFFIXES:
-                if col in x:
-                    percent_target_columns.append(x)
-
-        df[percent_target_columns] = df[percent_target_columns].apply(
-            func=lambda series: floor_series(
-                series=series * 100,
-                number_of_decimals=constants.TILES_ROUND_NUM_DECIMALS,
-            )
-        )
-
-        # # convert percentile_columns
-        # non_percentile_float_columns = [
-        #     x
-        #     for x in float_columns
-        #     if x not in constants.PERCENT_PREFIXES_SUFFIXES
-        # ]
-
-        # df[non_percentile_float_columns] = df[
-        #     non_percentile_float_columns
-        # ].apply(
-        #     func=lambda series: floor_series(
-        #         series=series,
-        #         number_of_decimals=constants.TILES_ROUND_NUM_DECIMALS,
-        #     ),
-        #     axis=0,
-        # )
-
-        return df
+        ]
 
     def transform(self) -> None:
         logger.info("Transforming data sources for Score + County CSVs")
@@ -334,7 +297,7 @@ class PostScoreETL(ExtractTransformLoad):
         # Rename score column
         downloadable_df_copy = downloadable_df.rename(
             columns={
-                field_names.SCORE_L_COMMUNITIES: "Identified as disadvantaged (v0.1)"
+                field_names.SCORE_L_COMMUNITIES: "Community of focus (v0.1)"
             },
             inplace=False,
         )
