@@ -237,10 +237,6 @@ MARYLAND_EJSCREEN_TRACT_90_PERCENTILE_FIELD: str = (
     "Tract is >=90% all other Maryland Tracts"
 )
 
-MARYLAND_EJSCREEN_PERCENTILE_RANK_FIELD: str = (
-    "Maryland EJSCREEN Percentile Rank for EJ Score"
-)
-
 MARYLAND_EJSCREEN_SCORE_FIELD: str = "Maryland Environmental Justice Score"
 
 # this references percentile ranks

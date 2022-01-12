@@ -30,9 +30,9 @@ class MarylandEJScreenETL(ExtractTransformLoad):
             field_names.MARYLAND_EJSCREEN_TRACT_50_PERCENTILE_FIELD,
             field_names.MARYLAND_EJSCREEN_TRACT_75_PERCENTILE_FIELD,
             field_names.MARYLAND_EJSCREEN_TRACT_90_PERCENTILE_FIELD,
-            field_names.MARYLAND_EJSCREEN_PERCENTILE_RANK_FIELD,
             field_names.MARYLAND_EJSCREEN_SCORE_FIELD,
             field_names.MARYLAND_EJSCREEN_BURDENED_THRESHOLD_FIELD,
+            field_names.MARYLAND_EJSCREEN_SCORE_FIELD + field_names.PERCENTILE_FIELD_SUFFIX
         ]
 
         self.df: pd.DataFrame
@@ -94,13 +94,13 @@ class MarylandEJScreenETL(ExtractTransformLoad):
 
         # Interpretation: An EJ score (reported as a percentile)
         # has a percentile rank of N for some N between 0 - 100"
-        self.df[field_names.MARYLAND_EJSCREEN_PERCENTILE_RANK_FIELD] = self.df[
+        self.df[field_names.MARYLAND_EJSCREEN_SCORE_FIELD + field_names.PERCENTILE_FIELD_SUFFIX] = self.df[
             field_names.MARYLAND_EJSCREEN_SCORE_FIELD
         ].rank(pct=True, ascending=True)
 
         # An arbitrarily chosen threshold is used in the comparison tool output
         self.df[field_names.MARYLAND_EJSCREEN_BURDENED_THRESHOLD_FIELD] = (
-            self.df[field_names.MARYLAND_EJSCREEN_PERCENTILE_RANK_FIELD] > 0.75
+            self.df[field_names.MARYLAND_EJSCREEN_SCORE_FIELD + field_names.PERCENTILE_FIELD_SUFFIX] > 0.75
         )
 
         # Baseline Comparisons with some quartiles and the 90th percent OF EJ Score
