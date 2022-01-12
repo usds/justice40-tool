@@ -6,7 +6,6 @@ import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger
-from data_pipeline.score import field_names
 
 pd.options.mode.chained_assignment = "raise"
 
@@ -142,9 +141,7 @@ class CensusDecennialETL(ExtractTransformLoad):
             "PBG036014"  # Total!!Female!!In labor force!!Civilian!!Unemployed
         )
 
-        self.UNEMPLOYMENT_FIELD_NAME = (
-            field_names.CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009
-        )
+        self.UNEMPLOYMENT_FIELD_NAME = "Unemployed civilians (percent) in 2009"
 
         var_list = [
             self.MEDIAN_INCOME_FIELD,
