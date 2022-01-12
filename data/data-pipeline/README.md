@@ -279,10 +279,6 @@ After installing the poetry dependencies, you can see a list of commands with th
 For more information, see [nbextensions docs](https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/install.html) and
 see [python-markdown docs](https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tree/master/src/jupyter_contrib_nbextensions/nbextensions/python-markdown).
 
-## Miscellaneous
-
-- To export packages from Poetry to `requirements.txt` run `poetry export --without-hashes > requirements.txt`
-
 ## Testing
 
 ### Background
