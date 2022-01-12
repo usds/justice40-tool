@@ -26,11 +26,11 @@ class MarylandEJScreenETL(ExtractTransformLoad):
 
         self.COLUMNS_TO_KEEP = [
             self.GEOID_TRACT_FIELD_NAME,
-            field_names.MARYLAND_EJSCREEN_TRACT_25_PERCENT_FIELD,
-            field_names.MARYLAND_EJSCREEN_TRACT_50_PERCENT_FIELD,
-            field_names.MARYLAND_EJSCREEN_TRACT_75_PERCENT_FIELD,
-            field_names.MARYLAND_EJSCREEN_TRACT_90_PERCENT_FIELD,
-            field_names.MARYLAND_EJSCREEN_PERCENTILE_FIELD,
+            field_names.MARYLAND_EJSCREEN_TRACT_25_PERCENTILE_FIELD,
+            field_names.MARYLAND_EJSCREEN_TRACT_50_PERCENTILE_FIELD,
+            field_names.MARYLAND_EJSCREEN_TRACT_75_PERCENTILE_FIELD,
+            field_names.MARYLAND_EJSCREEN_TRACT_90_PERCENTILE_FIELD,
+            field_names.MARYLAND_EJSCREEN_PERCENTILE_RANK_FIELD,
             field_names.MARYLAND_EJSCREEN_SCORE_FIELD,
             field_names.MARYLAND_EJSCREEN_BURDENED_THRESHOLD_FIELD,
         ]
@@ -94,27 +94,27 @@ class MarylandEJScreenETL(ExtractTransformLoad):
 
         # Interpretation: An EJ score (reported as a percentile)
         # has a percentile rank of N for some N between 0 - 100"
-        self.df[field_names.MARYLAND_EJSCREEN_PERCENTILE_FIELD] = self.df[
+        self.df[field_names.MARYLAND_EJSCREEN_PERCENTILE_RANK_FIELD] = self.df[
             field_names.MARYLAND_EJSCREEN_SCORE_FIELD
         ].rank(pct=True, ascending=True)
 
         # An arbitrarily chosen threshold is used in the comparison tool output
         self.df[field_names.MARYLAND_EJSCREEN_BURDENED_THRESHOLD_FIELD] = (
-            self.df[field_names.MARYLAND_EJSCREEN_PERCENTILE_FIELD] > 0.75
+            self.df[field_names.MARYLAND_EJSCREEN_PERCENTILE_RANK_FIELD] > 0.75
         )
 
         # Baseline Comparisons with some quartiles and the 90th percent OF EJ Score
         # Interpretation: The score is greater than or equal to N% of the tracts in the state.
-        self.df[field_names.MARYLAND_EJSCREEN_TRACT_25_PERCENT_FIELD] = (
+        self.df[field_names.MARYLAND_EJSCREEN_TRACT_25_PERCENTILE_FIELD] = (
             self.df[field_names.MARYLAND_EJSCREEN_SCORE_FIELD] >= 0.25
         )
-        self.df[field_names.MARYLAND_EJSCREEN_TRACT_50_PERCENT_FIELD] = (
+        self.df[field_names.MARYLAND_EJSCREEN_TRACT_50_PERCENTILE_FIELD] = (
             self.df[field_names.MARYLAND_EJSCREEN_SCORE_FIELD] >= 0.50
         )
-        self.df[field_names.MARYLAND_EJSCREEN_TRACT_75_PERCENT_FIELD] = (
+        self.df[field_names.MARYLAND_EJSCREEN_TRACT_75_PERCENTILE_FIELD] = (
             self.df[field_names.MARYLAND_EJSCREEN_SCORE_FIELD] >= 0.75
         )
-        self.df[field_names.MARYLAND_EJSCREEN_TRACT_90_PERCENT_FIELD] = (
+        self.df[field_names.MARYLAND_EJSCREEN_TRACT_90_PERCENTILE_FIELD] = (
             self.df[field_names.MARYLAND_EJSCREEN_SCORE_FIELD] >= 0.90
         )
 
@@ -123,5 +123,5 @@ class MarylandEJScreenETL(ExtractTransformLoad):
         # write maryland tracts to csv
         self.OUTPUT_CSV_PATH.mkdir(parents=True, exist_ok=True)
         self.df[self.COLUMNS_TO_KEEP].to_csv(
-            self.OUTPUT_CSV_PATH / "maryland_ejscreen.csv", index=False
+            self.OUTPUT_CSV_PATH / "maryland.csv", index=False
         )
