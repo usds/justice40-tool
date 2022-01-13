@@ -29,7 +29,7 @@ import MapSearch from './MapSearch';
 import TerritoryFocusControl from './territoryFocusControl';
 
 // Styles and constants
-import {makeMapStyle} from '../data/mapStyle';
+// import {makeMapStyle} from '../data/mapStyle';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import * as constants from '../data/constants';
 import * as styles from './J40Map.module.scss';
@@ -258,14 +258,14 @@ const J40Map = ({location}: IJ40Interface) => {
         <ReactMapGL
           // Initialization props:
           // access token is j40StylesReadToken
-          // Todo: move to .env file:
-          // eslint-disable-next-line max-len
-          mapboxApiAccessToken={`pk.eyJ1IjoianVzdGljZTQwIiwiYSI6ImNreHRub2QxdTV6dnUzMHBmZDdzZXQ4YWMifQ.Fc-my99OtAwP5zEXCgrx_g`}
+          mapboxApiAccessToken={process.env.NODE_ENV === 'development' ?
+          process.env.GATSBY_MAPBOX_STYLES_READ_TOKEN : process.env.MAPBOX_STYLES_READ_TOKEN}
 
           // Map state props:
           // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#map-state
           {...viewport}
           mapStyle={`mapbox://styles/mapbox/streets-v11`}
+          // This styles will need to be enabled in some way when adding back the free map - #1133
           // mapStyle={makeMapStyle(flags)}
           width="100%"
           height={windowWidth < 1024 ? '44vh' : '100%'}
@@ -291,14 +291,8 @@ const J40Map = ({location}: IJ40Interface) => {
           data-cy={'reactMapGL'}
         >
           {/**
-           * The Source component and two Layer components:
-           *    <Source> = the High zoom layer
-           *    <Layer1> = controls the border between features
-           *    <Layer2> = controls the border styling around the selected features
-           *
-           * The actual map has other layers. These other layers are defined in the mapStyle.tsx file.
+           * The low zoom source
            */}
-
           <Source
             id={constants.LOW_ZOOM_SOURCE_NAME}
             type="vector"
@@ -307,6 +301,8 @@ const J40Map = ({location}: IJ40Interface) => {
             maxzoom={constants.GLOBAL_MAX_ZOOM_LOW}
             minzoom={constants.GLOBAL_MIN_ZOOM_LOW}
           >
+
+            {/* Low zoom layer - prioritized features only */}
             <Layer
               id={constants.LOW_ZOOM_LAYER_ID}
               source-layer={constants.SCORE_SOURCE_LAYER}
@@ -314,13 +310,15 @@ const J40Map = ({location}: IJ40Interface) => {
               type='fill'
               paint={{
                 'fill-color': constants.PRIORITIZED_FEATURE_FILL_COLOR,
-                'fill-opacity': constants.PRIORITIZED_FEATURE_FILL_OPACITY}}
-
-              minzoom={constants.GLOBAL_MIN_ZOOM_LOW}
+                'fill-opacity': constants.LOW_ZOOM_PRIORITIZED_FEATURE_FILL_OPACITY}}
               maxzoom={constants.GLOBAL_MAX_ZOOM_LOW}
+              minzoom={constants.GLOBAL_MIN_ZOOM_LOW}
             />
           </Source>
 
+          {/**
+           * The high zoom source
+           */}
           <Source
             id={constants.HIGH_ZOOM_SOURCE_NAME}
             type="vector"
@@ -350,12 +348,12 @@ const J40Map = ({location}: IJ40Interface) => {
               type='fill'
               paint={{
                 'fill-color': constants.PRIORITIZED_FEATURE_FILL_COLOR,
-                'fill-opacity': constants.PRIORITIZED_FEATURE_FILL_OPACITY,
+                'fill-opacity': constants.HIGH_ZOOM_PRIORITIZED_FEATURE_FILL_OPACITY,
               }}
               minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
             />
 
-            {/* This layer controls the border between features */}
+            {/* High zoom layer - controls the border between features */}
             <Layer
               id={constants.FEATURE_BORDER_LAYER_ID}
               source-layer={constants.SCORE_SOURCE_LAYER}
@@ -365,26 +363,23 @@ const J40Map = ({location}: IJ40Interface) => {
                 'line-width': constants.FEATURE_BORDER_WIDTH,
                 'line-opacity': constants.FEATURE_BORDER_OPACITY,
               }}
-              minzoom={constants.GLOBAL_MIN_ZOOM_FEATURE_BORDER}
               maxzoom={constants.GLOBAL_MAX_ZOOM_FEATURE_BORDER}
+              minzoom={constants.GLOBAL_MIN_ZOOM_FEATURE_BORDER}
             />
 
-            {/* This layer controls the border styling around the selected feature */}
+            {/* High zoom layer - border styling around the selected feature */}
             <Layer
               id={constants.SELECTED_FEATURE_BORDER_LAYER_ID}
-              type='line'
               source-layer={constants.SCORE_SOURCE_LAYER}
+              filter={filter} // This filter filters out all other features except the selected feature.
+              type='line'
               paint={{
                 'line-color': constants.SELECTED_FEATURE_BORDER_COLOR,
                 'line-width': constants.SELECTED_FEATURE_BORDER_WIDTH,
               }}
-
-              // This filter filters out all other features except the selected feature.
-              filter={filter}
               minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
             />
           </Source>
-
 
           {/* Enable fullscreen behind a feature flag */}
           {('fs' in flags && detailViewData && !transitionInProgress) && (
@@ -408,9 +403,7 @@ const J40Map = ({location}: IJ40Interface) => {
             className={styles.navigationControl}
           />
 
-          {/**
-           * This places Geolocation behind a feature flag
-           */}
+          {/* This places Geolocation behind a feature flag */}
           {'gl' in flags ? <GeolocateControl
             className={styles.geolocateControl}
             positionOptions={{enableHighAccuracy: true}}
@@ -418,9 +411,9 @@ const J40Map = ({location}: IJ40Interface) => {
             // @ts-ignore
             onClick={onClickGeolocate}
           /> : ''}
-
           {geolocationInProgress ? <div>Geolocation in progress...</div> : ''}
 
+          {/* This will show shortcut buttons to pan/zoom to US territories */}
           <TerritoryFocusControl onClick={onClick}/>
 
           {'fs' in flags ? <FullscreenControl className={styles.fullscreenControl}/> :'' }
