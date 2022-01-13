@@ -57,6 +57,20 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
     def extract(self) -> None:
         logger.info("Starting 2.5 MB data download.")
 
+        # the column headers from the above dataset are actually a census tract's data at this point
+        # We will use this data structure later to specify the column names
+        input_columns = [
+            self.TRACT_INPUT_COLUMN_NAME,
+            self.NUMBER_FACILITIES_INPUT_FIELD,
+            self.NUMBER_RELEASES_INPUT_FIELD,
+            self.NUMBER_CHEMICALS_INPUT_FIELD,
+            self.AVERAGE_TOXICITY_INPUT_FIELD,
+            self.SCORE_INPUT_FIELD,
+            self.POPULATION_INPUT_FIELD,
+            self.CSCORE_INPUT_FIELD,
+            self.NCSCORE_INPUT_FIELD,
+        ]
+
         unzip_file_from_url(
             file_url=self.AGGREGATED_RSEI_SCORE_FILE_URL,
             download_path=self.TMP_PATH,
@@ -70,33 +84,11 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
             # The following need to remain as strings for all of their digits, not get
             # converted to numbers.
             low_memory=False,
-            header=0,
+            names=input_columns,
         )
 
     def transform(self) -> None:
         logger.info("Starting transforms.")
-
-        # the column headers from the above dataset are actually a census tract's data at this point
-        # We will use this data structure later
-        input_columns = [
-            self.TRACT_INPUT_COLUMN_NAME,
-            self.NUMBER_FACILITIES_INPUT_FIELD,
-            self.NUMBER_RELEASES_INPUT_FIELD,
-            self.NUMBER_CHEMICALS_INPUT_FIELD,
-            self.AVERAGE_TOXICITY_INPUT_FIELD,
-            self.SCORE_INPUT_FIELD,
-            self.POPULATION_INPUT_FIELD,
-            self.CSCORE_INPUT_FIELD,
-            self.NCSCORE_INPUT_FIELD,
-        ]
-        # The subsequent step make the current columns the first row
-        # of the dataframe and adds it as an individual sample
-        first_row = dict(zip(input_columns, self.df.columns))
-        self.df.columns = input_columns
-        # add first row to dataframe
-        row_df = pd.DataFrame(first_row, index=[0]).reset_index(drop=True)
-        # simply concatenate both dataframes
-        self.df = pd.concat([row_df, self.df])
 
         score_columns = [x for x in self.df.columns if "SCORE" in x]
 
