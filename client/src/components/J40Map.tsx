@@ -226,6 +226,8 @@ const J40Map = ({location}: IJ40Interface) => {
   const onClickGeolocate = () => {
     setGeolocationInProgress(true);
   };
+
+  // Temp logging to check env. variables:
   console.log('process.env.NODE_ENV: ', process.env.NODE_ENV);
   console.log('process.env.GATSBY_MAPBOX_STYLES_READ_TOKEN: ', process.env.GATSBY_MAPBOX_STYLES_READ_TOKEN);
   console.log('process.env.MAPBOX_STYLES_READ_TOKEN: ', process.env.MAPBOX_STYLES_READ_TOKEN);
@@ -262,8 +264,7 @@ const J40Map = ({location}: IJ40Interface) => {
         <ReactMapGL
           // Initialization props:
           // access token is j40StylesReadToken
-          mapboxApiAccessToken={process.env.NODE_ENV === 'development' ?
-          process.env.GATSBY_MAPBOX_STYLES_READ_TOKEN : process.env.MAPBOX_STYLES_READ_TOKEN}
+          mapboxApiAccessToken={process.env.GATSBY_MAPBOX_STYLES_READ_TOKEN}
 
           // Map state props:
           // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#map-state
