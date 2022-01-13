@@ -1,5 +1,7 @@
 from pathlib import Path
 import json
+from numpy import float64, int64
+import numpy as np
 import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
@@ -242,40 +244,29 @@ class PostScoreETL(ExtractTransformLoad):
     ) -> pd.DataFrame:
         df = score_county_state_merged_df[
             constants.DOWNLOADABLE_SCORE_COLUMNS
-        ].copy()
+        ].copy(deep=True)
 
-        float_columns = df.select_dtypes(include=["float64"]).columns
+        df_of_float_columns = df.select_dtypes(include=["float64"])
 
-        # convert percentile_columns
-        percent_target_columns = []
-        for x in float_columns:
-            for col in constants.PERCENT_PREFIXES_SUFFIXES:
-                if col in x:
-                    percent_target_columns.append(x)
+        for column in df_of_float_columns.columns:
+            # TODO: create a schema for fields to make it more explicit and safe which
+            #  fields are percentages.
+            if any(x in column for x in constants.PERCENT_PREFIXES_SUFFIXES):
+                # Convert percentages from fractions between 0 and 1 to an integer
+                # from 0 to 100.
+                # df_100 = df[column] * 100
+                # df_int = np.floor(
+                #     pd.to_numeric(df_100, errors="coerce")
+                # ).astype("Int64")
+                # df[column] = df_int
 
-        df[percent_target_columns] = df[percent_target_columns].apply(
-            func=lambda series: floor_series(
-                series=series * 100,
-                number_of_decimals=constants.TILES_ROUND_NUM_DECIMALS,
-            )
-        )
-
-        # # convert percentile_columns
-        # non_percentile_float_columns = [
-        #     x
-        #     for x in float_columns
-        #     if x not in constants.PERCENT_PREFIXES_SUFFIXES
-        # ]
-
-        # df[non_percentile_float_columns] = df[
-        #     non_percentile_float_columns
-        # ].apply(
-        #     func=lambda series: floor_series(
-        #         series=series,
-        #         number_of_decimals=constants.TILES_ROUND_NUM_DECIMALS,
-        #     ),
-        #     axis=0,
-        # )
+                df.loc[:, column] = (100 * df.loc[:, column]).round(0).astype("Int64")
+            else:
+                # Round all other floats.
+                df[column] = floor_series(
+                    series=df[column].astype(float64),
+                    number_of_decimals=constants.TILES_ROUND_NUM_DECIMALS,
+                )
 
         return df
 

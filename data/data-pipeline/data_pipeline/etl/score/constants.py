@@ -66,7 +66,11 @@ CENSUS_COUNTIES_COLUMNS = ["USPS", "GEOID", "NAME"]
 # Percent prefixes for rounding
 PERCENT_PREFIXES_SUFFIXES = [
     "Percent",
+    "percent",
     "Percentage",
+    "Energy burden",
+    "loss rate",
+    "greater than or equal to 18 years",
     field_names.PERCENTILE_FIELD_SUFFIX,
 ]
 

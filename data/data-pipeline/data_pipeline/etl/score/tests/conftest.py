@@ -87,7 +87,7 @@ def states_transformed_expected():
     return pd.DataFrame.from_dict(
         data={
             "State Code": pd.Series(["01", "02", "04"], dtype="string"),
-            "State Name": pd.Series(
+            "State/Territory": pd.Series(
                 ["Alabama", "Alaska", "Arizona"], dtype="object"
             ),
             "State Abbreviation": pd.Series(["AL", "AK", "AZ"], dtype="string"),
