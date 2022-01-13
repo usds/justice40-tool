@@ -1,7 +1,11 @@
 name: Upload Generate Score Test Data
 on:
-  pull_request:
-    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      confirm-action:
+        description: This will reupload the test data used by the Test Generate Score action, are you sure you want to proceed? (Y/n)
+        default: n
+        required: true
 jobs:
   deploy_data:
     runs-on: ubuntu-latest
