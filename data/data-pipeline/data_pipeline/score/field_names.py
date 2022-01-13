@@ -224,7 +224,7 @@ MICHIGAN_EJSCREEN_PRIORITY_COMMUNITY_FIELD: str = (
 )
 
 # CDC SVI INDEX percentile fields
-CDC_SVI_INDEX_SE_THEME_FIELD: str = "Percentile ranking for Socioeconomic Index"
+CDC_SVI_INDEX_SE_THEME_FIELD: str = "Socioeconomic Index"
 CDC_SVI_INDEX_HOUSEHOLD_THEME_COMPOSITION_FIELD: str = (
     "Household Composition Index"
 )
