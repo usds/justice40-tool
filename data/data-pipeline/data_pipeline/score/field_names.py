@@ -156,29 +156,18 @@ CENSUS_POVERTY_LESS_THAN_100_FPL_FIELD_2010 = (
 )
 
 # RSEI Aggregated Micro-data
-EPA_RSEI_NUMBER_FACILITIES_OUTPUT_FIELD = (
-    "Number of facilities affecting the tract"
-)
-EPA_RSEI_NUMBER_RELEASES_OUTPUT_FIELD = "Number of releases affecting the tract"
-EPA_RSEI_NUMBER_CHEMICALS_OUTPUT_FIELD = (
-    "Number of chemicals affecting the tract"
-)
-EPA_RSEI_AVERAGE_TOXICITY_OUTPUT_FIELD = (
+EPA_RSEI_NUMBER_FACILITIES_FIELD = "Number of facilities affecting the tract"
+EPA_RSEI_NUMBER_RELEASES_FIELD = "Number of releases affecting the tract"
+EPA_RSEI_NUMBER_CHEMICALS_FIELD = "Number of chemicals affecting the tract"
+EPA_RSEI_AVERAGE_TOXICITY_FIELD = (
     "Average toxicity-weighted concentration of the cells in the tract"
 )
-EPA_RSEI_SCORE_OUTPUT_FIELD = (
-    "Sum of the risk-related scores of the cells in the tract"
-)
-EPA_RSEI_CSCORE_OUTPUT_FIELD = "Sum of the risk-related scores of the cells in the tract (Cancer toxicity weights)"
-EPA_RSEI_NCSCORE_OUTPUT_FIELD = "Sum of the risk-related scores of the cells in the tract (Noncancer toxicity weights)"
-EPA_RSEI_POPULATION_OUTPUT_FIELD = (
-    "Sum of the population of the cells in the tract"
-)
-
-EPA_RSEI_SCORE_PERCENTILE_RANK_FIELD = "Percentile rank for overall risk score"
-
+EPA_RSEI_SCORE_FIELD = "RSEI Risk Score"
+EPA_RSEI_CSCORE_FIELD = "RSEI Risk Score (Cancer toxicity weights)"
+EPA_RSEI_NCSCORE_FIELD = "RSEI Risk Score (Noncancer toxicity weights)"
+EPA_RSEI_POPULATION_FIELD = "Sum of the population of the cells in the tract"
 EPA_RSEI_SCORE_THRESHOLD_FIELD = (
-    "At or above 75 for overall percentile rank according to overall risk score"
+    "At or above 75 for overall percentile for the RSEI score"
 )
 
 # Combined fields that merge island areas and states data

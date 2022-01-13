@@ -23,9 +23,7 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
         self.AGGREGATED_RSEI_SCORE_FILE_URL = "http://abt-rsei.s3.amazonaws.com/microdata2019/census_agg/CensusMicroTracts2019_2019_aggregated.zip"
 
         self.OUTPUT_PATH: Path = (
-            self.DATA_PATH
-            / "dataset"
-            / "epa_rsei_aggregated_risk_environmental_indicators"
+            self.DATA_PATH / "dataset" / "epa_rsei_aggregated"
         )
         self.EPA_RSEI_SCORE_THRESHOLD_CUTOFF = 0.75
         self.TRACT_INPUT_COLUMN_NAME = "GEOID10"
@@ -41,16 +39,17 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
         # References to the columns that will be output
         self.COLUMNS_TO_KEEP = [
             self.GEOID_TRACT_FIELD_NAME,
-            field_names.EPA_RSEI_NUMBER_FACILITIES_OUTPUT_FIELD,
-            field_names.EPA_RSEI_NUMBER_RELEASES_OUTPUT_FIELD,
-            field_names.EPA_RSEI_NUMBER_CHEMICALS_OUTPUT_FIELD,
-            field_names.EPA_RSEI_AVERAGE_TOXICITY_OUTPUT_FIELD,
-            field_names.EPA_RSEI_SCORE_OUTPUT_FIELD,
-            field_names.EPA_RSEI_CSCORE_OUTPUT_FIELD,
-            field_names.EPA_RSEI_NCSCORE_OUTPUT_FIELD,
-            field_names.EPA_RSEI_POPULATION_OUTPUT_FIELD,
-            field_names.EPA_RSEI_SCORE_PERCENTILE_RANK_FIELD,
+            field_names.EPA_RSEI_NUMBER_FACILITIES_FIELD,
+            field_names.EPA_RSEI_NUMBER_RELEASES_FIELD,
+            field_names.EPA_RSEI_NUMBER_CHEMICALS_FIELD,
+            field_names.EPA_RSEI_AVERAGE_TOXICITY_FIELD,
+            field_names.EPA_RSEI_SCORE_FIELD,
+            field_names.EPA_RSEI_CSCORE_FIELD,
+            field_names.EPA_RSEI_NCSCORE_FIELD,
+            field_names.EPA_RSEI_POPULATION_FIELD,
             field_names.EPA_RSEI_SCORE_THRESHOLD_FIELD,
+            field_names.EPA_RSEI_SCORE_FIELD
+            + field_names.PERCENTILE_FIELD_SUFFIX,
         ]
 
         self.df: pd.DataFrame
@@ -61,13 +60,12 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
         unzip_file_from_url(
             file_url=self.AGGREGATED_RSEI_SCORE_FILE_URL,
             download_path=self.TMP_PATH,
-            unzipped_file_path=self.TMP_PATH
-            / "epa_rsei_aggregated_risk_environmental_indicators",
+            unzipped_file_path=self.TMP_PATH / "epa_rsei_aggregated",
         )
 
         self.df = pd.read_csv(
             filepath_or_buffer=self.TMP_PATH
-            / "epa_rsei_aggregated_risk_environmental_indicators"
+            / "epa_rsei_aggregated"
             / "CensusMicroTracts2019_2019_aggregated.csv",
             # The following need to remain as strings for all of their digits, not get
             # converted to numbers.
@@ -108,26 +106,26 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
         self.df.rename(
             columns={
                 self.TRACT_INPUT_COLUMN_NAME: self.GEOID_TRACT_FIELD_NAME,
-                self.NUMBER_FACILITIES_INPUT_FIELD: field_names.EPA_RSEI_NUMBER_FACILITIES_OUTPUT_FIELD,
-                self.NUMBER_RELEASES_INPUT_FIELD: field_names.EPA_RSEI_NUMBER_RELEASES_OUTPUT_FIELD,
-                self.NUMBER_CHEMICALS_INPUT_FIELD: field_names.EPA_RSEI_NUMBER_CHEMICALS_OUTPUT_FIELD,
-                self.AVERAGE_TOXICITY_INPUT_FIELD: field_names.EPA_RSEI_AVERAGE_TOXICITY_OUTPUT_FIELD,
-                self.SCORE_INPUT_FIELD: field_names.EPA_RSEI_SCORE_OUTPUT_FIELD,
-                self.CSCORE_INPUT_FIELD: field_names.EPA_RSEI_CSCORE_OUTPUT_FIELD,
-                self.NCSCORE_INPUT_FIELD: field_names.EPA_RSEI_NCSCORE_OUTPUT_FIELD,
-                self.POPULATION_INPUT_FIELD: field_names.EPA_RSEI_POPULATION_OUTPUT_FIELD,
+                self.NUMBER_FACILITIES_INPUT_FIELD: field_names.EPA_RSEI_NUMBER_FACILITIES_FIELD,
+                self.NUMBER_RELEASES_INPUT_FIELD: field_names.EPA_RSEI_NUMBER_RELEASES_FIELD,
+                self.NUMBER_CHEMICALS_INPUT_FIELD: field_names.EPA_RSEI_NUMBER_CHEMICALS_FIELD,
+                self.AVERAGE_TOXICITY_INPUT_FIELD: field_names.EPA_RSEI_AVERAGE_TOXICITY_FIELD,
+                self.SCORE_INPUT_FIELD: field_names.EPA_RSEI_SCORE_FIELD,
+                self.CSCORE_INPUT_FIELD: field_names.EPA_RSEI_CSCORE_FIELD,
+                self.NCSCORE_INPUT_FIELD: field_names.EPA_RSEI_NCSCORE_FIELD,
+                self.POPULATION_INPUT_FIELD: field_names.EPA_RSEI_POPULATION_FIELD,
             },
             inplace=True,
         )
 
         # Please note this: https://www.epa.gov/rsei/understanding-rsei-results#what
         # Section: "What does a high RSEI Score mean?"
-        # Produce percentile rank for overall risk score
         # This was created for the sole purpose to be used in the current
         # iteration of Score L
-        self.df[field_names.EPA_RSEI_SCORE_PERCENTILE_RANK_FIELD] = self.df[
-            field_names.EPA_RSEI_SCORE_OUTPUT_FIELD
-        ].rank(
+        self.df[
+            field_names.EPA_RSEI_SCORE_FIELD
+            + field_names.PERCENTILE_FIELD_SUFFIX
+        ] = self.df[field_names.EPA_RSEI_SCORE_FIELD].rank(
             ascending=True,
             pct=True,
         )
@@ -137,8 +135,11 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
         # that would enable some additional form of sub-stratification when examining
         # different percentile ranges that are derived above.
         self.df[field_names.EPA_RSEI_SCORE_THRESHOLD_FIELD] = (
-            self.df[field_names.EPA_RSEI_SCORE_PERCENTILE_RANK_FIELD]
-            > self.EPA_RSEI_SCORE_THRESHOLD_CUTOFF
+            self.df[
+                field_names.EPA_RSEI_SCORE_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.EPA_RSEI_SCORE_THRESHOLD_CUTOFF
         )
 
         expected_census_tract_field_length = 11
