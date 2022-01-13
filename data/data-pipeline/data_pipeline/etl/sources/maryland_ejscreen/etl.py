@@ -95,6 +95,9 @@ class MarylandEJScreenETL(ExtractTransformLoad):
 
         # Interpretation: An EJ score (reported as a percentile)
         # has a percentile rank of N for some N between 0 - 100"
+        # Please see the README and the following linksfor details and context
+        # 1. https://github.com/usds/justice40-tool/issues/239#issuecomment-1003448074
+        # 2. https://github.com/usds/justice40-tool/issues/239#issuecomment-995798345
         self.df[
             field_names.MARYLAND_EJSCREEN_SCORE_FIELD
             + field_names.PERCENTILE_FIELD_SUFFIX
@@ -113,6 +116,7 @@ class MarylandEJScreenETL(ExtractTransformLoad):
 
         # Baseline Comparisons with some quartiles and the 90th percent OF EJ Score
         # Interpretation: The score is greater than or equal to N% of the tracts in the state.
+        # Please see the README for details on the EJScore interpretation
         self.df[field_names.MARYLAND_EJSCREEN_TRACT_25_PERCENTILE_FIELD] = (
             self.df[field_names.MARYLAND_EJSCREEN_SCORE_FIELD] >= 0.25
         )
