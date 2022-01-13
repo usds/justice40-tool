@@ -368,6 +368,7 @@ LOW_LIFE_EXPECTANCY_LOW_INCOME_FIELD = (
 )
 
 # Workforce
+# TODO: for Definition M, change all output fields to say low HS and low college
 UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for unemployment"
     " and has low HS education"
@@ -389,6 +390,9 @@ LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD = (
 )
 
 LOW_HS_EDUCATION_FIELD = "Low high school education"
+LOW_HS_EDUCATION_LOW_COLLEGE_ATTENDANCE_FIELD = (
+    "Low high school education and low college attendance"
+)
 
 # Workforce for island areas
 ISLAND_AREAS_SUFFIX = " in 2009 (island areas)"
@@ -436,5 +440,8 @@ LOW_READING_LOW_HS_EDUCATION_FIELD = (
 THRESHOLD_COUNT = "Total threshold criteria exceeded"
 
 FPL_200_SERIES = "Is low income?"
+FPL_200_AND_COLLEGE_ATTENDANCE_SERIES = (
+    "Is low income and low college attendance?"
+)
 # End of names for individual factors being exceeded
 ####
