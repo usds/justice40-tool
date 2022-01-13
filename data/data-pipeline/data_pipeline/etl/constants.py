@@ -108,7 +108,7 @@ DATASET_LIST = [
         "name": "maryland_ejscreen",
         "module_dir": "maryland_ejscreen",
         "class_name": "MarylandEJScreenETL",
-    },    
+    },
 ]
 CENSUS_INFO = {
     "name": "census",
