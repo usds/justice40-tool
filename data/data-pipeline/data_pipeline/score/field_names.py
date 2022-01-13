@@ -220,22 +220,19 @@ MICHIGAN_EJSCREEN_PRIORITY_COMMUNITY_FIELD: str = (
 )
 
 # CDC SVI INDEX percentile fields
-CDC_SVI_INDEX_SE_THEME_PERCENTILE_FIELD: str = (
-    "Percentile ranking for Socioeconomic theme summary"
+CDC_SVI_INDEX_SE_THEME_FIELD: str = "Percentile ranking for Socioeconomic Index"
+CDC_SVI_INDEX_HOUSEHOLD_THEME_COMPOSITION_FIELD: str = (
+    "Percentile ranking for Household Composition Index"
 )
-CDC_SVI_INDEX_HOUSEHOLD_THEME_PERCENTILE_COMPOSITION_FIELD: str = (
-    "Percentile ranking for Household Composition theme summary"
+CDC_SVI_INDEX_LANGUAGE_THEME_FIELD: str = (
+    "Percentile ranking for Minority Status/Language Index"
 )
-CDC_SVI_INDEX_LANGUAGE_THEME_PERCENTILE_FIELD: str = (
-    "Percentile ranking for Minority Status/Language theme summary"
+CDC_SVI_INDEX_HOUSING_TRANSPORTATION_FIELD: str = (
+    "Percentile ranking for Housing Type/Transportation Index"
 )
-CDC_SVI_INDEX_HOUSING_TRANSPORTATION_PERCENTILE_FIELD: str = (
-    "Percentile ranking for Housing Type/Transportation"
+CDC_SVI_INDEX_RPL_THEMES_OVERALL_FIELD: str = (
+    "Overall percentile ranking for SVI indices"
 )
-CDC_SVI_INDEX_RPL_THEMES_OVERALL_PERCENTILE_FIELD: str = (
-    "Overall percentile ranking for themes"
-)
-
 CDC_SVI_INDEX_THEMES_PRIORITY_COMMUNITY: str = (
     "At or above 90 for overall percentile ranking according to SVI Index"
 )
