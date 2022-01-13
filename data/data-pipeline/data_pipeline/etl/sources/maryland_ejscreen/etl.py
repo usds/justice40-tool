@@ -32,8 +32,6 @@ class MarylandEJScreenETL(ExtractTransformLoad):
             field_names.MARYLAND_EJSCREEN_TRACT_90_PERCENTILE_FIELD,
             field_names.MARYLAND_EJSCREEN_SCORE_FIELD,
             field_names.MARYLAND_EJSCREEN_BURDENED_THRESHOLD_FIELD,
-            field_names.MARYLAND_EJSCREEN_SCORE_FIELD
-            + field_names.PERCENTILE_FIELD_SUFFIX,
         ]
 
         self.df: pd.DataFrame
@@ -93,11 +91,8 @@ class MarylandEJScreenETL(ExtractTransformLoad):
             inplace=True,
         )
 
-        # Interpretation: An EJ score (reported as a percentile)
-        # has a percentile rank of N for some N between 0 - 100"
-        # Please see the README and the following linksfor details and context
-        # 1. https://github.com/usds/justice40-tool/issues/239#issuecomment-1003448074
-        # 2. https://github.com/usds/justice40-tool/issues/239#issuecomment-995798345
+        # This computational step will be used to establish a
+        # threshold for burden (line 104)
         self.df[
             field_names.MARYLAND_EJSCREEN_SCORE_FIELD
             + field_names.PERCENTILE_FIELD_SUFFIX
@@ -111,7 +106,7 @@ class MarylandEJScreenETL(ExtractTransformLoad):
                 field_names.MARYLAND_EJSCREEN_SCORE_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
-            > 0.75
+            >= 0.75
         )
 
         # Baseline Comparisons with some quartiles and the 90th percent OF EJ Score
