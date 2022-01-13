@@ -8,7 +8,9 @@ from data_pipeline.utils import get_module_logger
 logger = get_module_logger(__name__)
 
 
-class ScoreL(Score):
+class ScoreM(Score):
+    """Very similar to Score L, with a few minor modifications."""
+
     def __init__(self, df: pd.DataFrame) -> None:
         self.LOW_INCOME_THRESHOLD: float = 0.65
         self.ENVIRONMENTAL_BURDEN_THRESHOLD: float = 0.90
@@ -643,49 +645,49 @@ class ScoreL(Score):
         )
 
     def add_columns(self) -> pd.DataFrame:
-        logger.info("Adding Score L")
+        logger.info("Adding Score M")
 
         self.df[field_names.THRESHOLD_COUNT] = 0
         self.df[field_names.FPL_200_SERIES] = self._create_low_income_threshold(
             self.df
         )
-        self.df[field_names.L_CLIMATE] = self._climate_factor()
-        self.df[field_names.L_ENERGY] = self._energy_factor()
-        self.df[field_names.L_TRANSPORTATION] = self._transportation_factor()
-        self.df[field_names.L_HOUSING] = self._housing_factor()
-        self.df[field_names.L_POLLUTION] = self._pollution_factor()
-        self.df[field_names.L_WATER] = self._water_factor()
-        self.df[field_names.L_HEALTH] = self._health_factor()
-        self.df[field_names.L_WORKFORCE] = self._workforce_factor()
+        self.df[field_names.M_CLIMATE] = self._climate_factor()
+        self.df[field_names.M_ENERGY] = self._energy_factor()
+        self.df[field_names.M_TRANSPORTATION] = self._transportation_factor()
+        self.df[field_names.M_HOUSING] = self._housing_factor()
+        self.df[field_names.M_POLLUTION] = self._pollution_factor()
+        self.df[field_names.M_WATER] = self._water_factor()
+        self.df[field_names.M_HEALTH] = self._health_factor()
+        self.df[field_names.M_WORKFORCE] = self._workforce_factor()
 
         factors = [
-            field_names.L_CLIMATE,
-            field_names.L_ENERGY,
-            field_names.L_TRANSPORTATION,
-            field_names.L_HOUSING,
-            field_names.L_POLLUTION,
-            field_names.L_WATER,
-            field_names.L_HEALTH,
-            field_names.L_WORKFORCE,
+            field_names.M_CLIMATE,
+            field_names.M_ENERGY,
+            field_names.M_TRANSPORTATION,
+            field_names.M_HOUSING,
+            field_names.M_POLLUTION,
+            field_names.M_WATER,
+            field_names.M_HEALTH,
+            field_names.M_WORKFORCE,
         ]
-        self.df[field_names.SCORE_L_COMMUNITIES] = self.df[factors].any(axis=1)
+        self.df[field_names.SCORE_M_COMMUNITIES] = self.df[factors].any(axis=1)
 
         # Note: this is purely used for comparison tool analysis, and can be removed at a later date. - LMB.
         non_workforce_factors = [
-            field_names.L_CLIMATE,
-            field_names.L_ENERGY,
-            field_names.L_TRANSPORTATION,
-            field_names.L_HOUSING,
-            field_names.L_POLLUTION,
-            field_names.L_WATER,
-            field_names.L_HEALTH,
+            field_names.M_CLIMATE,
+            field_names.M_ENERGY,
+            field_names.M_TRANSPORTATION,
+            field_names.M_HOUSING,
+            field_names.M_POLLUTION,
+            field_names.M_WATER,
+            field_names.M_HEALTH,
         ]
-        self.df[field_names.L_NON_WORKFORCE] = self.df[
+        self.df[field_names.M_NON_WORKFORCE] = self.df[
             non_workforce_factors
         ].any(axis=1)
 
         self.df[
-            field_names.SCORE_L + field_names.PERCENTILE_FIELD_SUFFIX
-        ] = self.df[field_names.SCORE_L_COMMUNITIES].astype(int)
+            field_names.SCORE_M + field_names.PERCENTILE_FIELD_SUFFIX
+        ] = self.df[field_names.SCORE_M_COMMUNITIES].astype(int)
 
         return self.df

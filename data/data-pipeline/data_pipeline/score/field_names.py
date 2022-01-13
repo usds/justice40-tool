@@ -28,6 +28,8 @@ SCORE_I = "Score I"
 SCORE_I_COMMUNITIES = "Score I (communities)"
 SCORE_K = "NMTC (communities)"
 SCORE_K_COMMUNITIES = "Score K (communities)"
+
+# Definition L fields
 SCORE_L = "Definition L"
 SCORE_L_COMMUNITIES = "Definition L (communities)"
 L_CLIMATE = "Climate Factor (Definition L)"
@@ -39,6 +41,20 @@ L_WATER = "Water Factor (Definition L)"
 L_HEALTH = "Health Factor (Definition L)"
 L_WORKFORCE = "Workforce Factor (Definition L)"
 L_NON_WORKFORCE = "Any Non-Workforce Factor (Definition L)"
+
+# Definition M fields
+SCORE_M = "Definition M"
+SCORE_M_COMMUNITIES = "Definition M (communities)"
+M_CLIMATE = "Climate Factor (Definition M)"
+M_ENERGY = "Energy Factor (Definition M)"
+M_TRANSPORTATION = "Transportation Factor (Definition M)"
+M_HOUSING = "Housing Factor (Definition M)"
+M_POLLUTION = "Pollution Factor (Definition M)"
+M_WATER = "Water Factor (Definition M)"
+M_HEALTH = "Health Factor (Definition M)"
+M_WORKFORCE = "Workforce Factor (Definition M)"
+M_NON_WORKFORCE = "Any Non-Workforce Factor (Definition M)"
+
 PERCENTILE = 90
 MEDIAN_HOUSE_VALUE_PERCENTILE = 90
 
