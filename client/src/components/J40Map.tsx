@@ -226,6 +226,10 @@ const J40Map = ({location}: IJ40Interface) => {
   const onClickGeolocate = () => {
     setGeolocationInProgress(true);
   };
+  console.log('process.env.NODE_ENV: ', process.env.NODE_ENV);
+  console.log('process.env.GATSBY_MAPBOX_STYLES_READ_TOKEN: ', process.env.GATSBY_MAPBOX_STYLES_READ_TOKEN);
+  console.log('process.env.MAPBOX_STYLES_READ_TOKEN: ', process.env.MAPBOX_STYLES_READ_TOKEN);
+
 
   return (
     <>

@@ -39,6 +39,8 @@ jobs:
           SITE_URL: "http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/"
           PATH_PREFIX: "/justice40-tool/${{env.DESTINATION_FOLDER}}"
           MAPBOX_READ_STYLES_TOKEN: ${{ secrets.MAPBOX_READ_STYLES_TOKEN }}
+      - name: temporarily echo out API_KEY
+        echo ${{ secrets.MAPBOX_READ_STYLES_TOKEN }}
       - name: Get directory contents
         run: ls -la public
       - name: Lint
