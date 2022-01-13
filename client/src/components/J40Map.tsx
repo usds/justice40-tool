@@ -227,12 +227,6 @@ const J40Map = ({location}: IJ40Interface) => {
     setGeolocationInProgress(true);
   };
 
-  // Temp logging to check env. variables:
-  console.log('process.env.NODE_ENV: ', process.env.NODE_ENV);
-  console.log('process.env.GATSBY_MAPBOX_STYLES_READ_TOKEN: ', process.env.GATSBY_MAPBOX_STYLES_READ_TOKEN);
-  console.log('process.env.MAPBOX_STYLES_READ_TOKEN: ', process.env.MAPBOX_STYLES_READ_TOKEN);
-
-
   return (
     <>
       <Grid col={12} desktop={{col: 9}}>

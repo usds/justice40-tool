@@ -93,7 +93,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-env-variables`,
       options: {
-        allowList: ['DATA_SOURCE', 'MAPBOX_READ_STYLES_TOKEN'],
+        allowList: ['DATA_SOURCE'],
       },
     },
     {
