@@ -78,7 +78,9 @@ class CDCSVIIndex(ExtractTransformLoad):
 
         #  At or above 90 for percentile rank
         self.df[field_names.CDC_SVI_INDEX_THEMES_PRIORITY_COMMUNITY] = (
-            self.df[field_names.CDC_SVI_INDEX_RPL_THEMES_OVERALL_PERCENTILE_FIELD]
+            self.df[
+                field_names.CDC_SVI_INDEX_RPL_THEMES_OVERALL_PERCENTILE_FIELD
+            ]
             >= self.CDC_RPL_THEMES_THRESHOLD
         )
 
