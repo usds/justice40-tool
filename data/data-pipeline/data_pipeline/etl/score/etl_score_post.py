@@ -258,6 +258,7 @@ class PostScoreETL(ExtractTransformLoad):
                 df_int = np.floor(
                     pd.to_numeric(df_100, errors="coerce")
                 ).astype("Int64")
+                df[column] = df_int
             else:
                 # Round all other floats.
                 df[column] = floor_series(
