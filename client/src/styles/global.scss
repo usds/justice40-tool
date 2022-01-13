@@ -193,24 +193,24 @@ This section will outline styles that are component specific
 // but it after 1.14.0 it optionally still allows for the mapbox-gl prefix
 
 // Below properties override mb defaults
-.mapboxgl-ctrl-group:not(:empty) {
-  box-shadow: none;
-}
+// .mapboxgl-ctrl-group:not(:empty) {
+//   box-shadow: none;
+// }
 
-@media (-ms-high-contrast: active) {
-  .mapboxgl-ctrl-group:not(:empty) {
-    box-shadow: none;
-  }
-}
+// @media (-ms-high-contrast: active) {
+//   .mapboxgl-ctrl-group:not(:empty) {
+//     box-shadow: none;
+//   }
+// }
 
-.mapboxgl-ctrl-group {
-  border-radius: 0;
-}
+// .mapboxgl-ctrl-group {
+//   border-radius: 0;
+// }
 
 .mapboxgl-ctrl {
-  button + button {
-    border-top: 1px;
-  }
+  // button + button {
+  //   border-top: 1px;
+  // }
 
   button {
     border-radius: 0;
@@ -316,7 +316,7 @@ This section will outline styles that are component specific
 ****************************** 
 */
 
-/* about card - based on datasetCard... need to combine */
+/* about card - based on datasetCard... Todo: need to combine */
 .j40-aboutcard-container {
 
   .j40-aboutcard-lg-card {

@@ -2,6 +2,8 @@
 import {LngLatBoundsLike} from 'maplibre-gl';
 import {isMobile as isMobileReactDeviceDetect} from 'react-device-detect';
 
+export const isMobile = isMobileReactDeviceDetect;
+
 const XYZ_SUFFIX = '{z}/{x}/{y}.pbf';
 export const featureURLForTilesetName = (tilesetName: string): string => {
   // The feature tile base URL and path can either point locally or the CDN.
@@ -29,18 +31,13 @@ export const FEATURE_TILE_LOW_ZOOM_URL = featureURLForTilesetName('low');
 // Performance markers
 export const PERFORMANCE_MARKER_MAP_IDLE = 'MAP_IDLE';
 
+// ******* PROPERTIES FROM TILE SERVER **************
+export type J40Properties = { [key: string]: any };
+
 // Properties
 export const SCORE_PROPERTY_HIGH = 'SL_PFS';
 export const SCORE_PROPERTY_LOW = 'L_SCORE';
 export const GEOID_PROPERTY = 'GEOID10';
-export const HIGH_SCORE_SOURCE_NAME = 'score-high';
-export const HIGH_SCORE_LAYER_NAME = 'score-high-layer';
-export const LOW_SCORE_SOURCE_NAME = 'score-low';
-export const LOW_SCORE_LAYER_NAME = 'score-low-layer';
-export const SELECTED_PROPERTY = 'selected';
-export const CURRENTLY_SELECTED_FEATURE_HIGHLIGHT_LAYER_NAME = 'currently-selected-feature-highlight-layer';
-export const BLOCK_GROUP_BOUNDARY_LAYER_NAME = 'block-group-boundary-layer';
-
 
 // Indicator values:
 export const ASTHMA_PERCENTILE = 'AF_PFS';
@@ -113,20 +110,57 @@ export const TOTAL_THRESHOLD_CRITERIA = 'TC';
 export const IS_GTE_90_ISLAND_AREA_UNEMPLOYMENT_AND_IS_LOW_HS_EDU_2009 = 'IAULHSE';
 export const IS_GTE_90_ISLAND_AREA_BELOW_100_POVERTY_AND_IS_LOW_HS_EDU_2009 = 'ISPLHSE';
 export const IS_GTE_90_ISLAND_AREA_LOW_MEDIAN_INCOME_AND_IS_LOW_HS_EDU_2009 = 'IALMILHSE';
-export type J40Properties = { [key: string]: any };
 
 // The name of the layer within the tiles that contains the score
 export const SCORE_SOURCE_LAYER = 'blocks';
+
+
+// ********** MAP CONSTANTS ***************
+
+// Source name constants
+export const BASE_MAP_SOURCE_NAME = 'base-map-source-name';
+export const HIGH_ZOOM_SOURCE_NAME = 'high-zoom-source-name';
+export const LOW_ZOOM_SOURCE_NAME = 'low-zoom-source-name';
+
+// Layer ID constants
+export const BASE_MAP_LAYER_ID = 'base-map-layer-id';
+export const HIGH_ZOOM_LAYER_ID = 'high-zoom-layer-id';
+export const PRIORITIZED_HIGH_ZOOM_LAYER_ID = 'prioritized-high-zoom-layer-id';
+export const LOW_ZOOM_LAYER_ID = 'low-zoom-layer-id';
+export const FEATURE_BORDER_LAYER_ID = 'feature-border-layer-id';
+export const SELECTED_FEATURE_BORDER_LAYER_ID = 'selected-feature-border-layer-id';
 
 // Zoom
 export const GLOBAL_MIN_ZOOM = 3;
 export const GLOBAL_MAX_ZOOM = 22;
 export const GLOBAL_MIN_ZOOM_LOW = 3;
 export const GLOBAL_MAX_ZOOM_LOW = 7;
-export const GLOBAL_MIN_ZOOM_HIGHLIGHT = 8;
-export const GLOBAL_MAX_ZOOM_HIGHLIGHT = 22;
 export const GLOBAL_MIN_ZOOM_HIGH = 7;
 export const GLOBAL_MAX_ZOOM_HIGH = 11;
+export const GLOBAL_MIN_ZOOM_FEATURE_BORDER = 8;
+export const GLOBAL_MAX_ZOOM_FEATURE_BORDER = 22;
+
+// Opacity
+export const FEATURE_BORDER_OPACITY = 0.5;
+export const HIGH_ZOOM_PRIORITIZED_FEATURE_FILL_OPACITY = 0.3;
+export const LOW_ZOOM_PRIORITIZED_FEATURE_FILL_OPACITY = 0.6;
+export const NON_PRIORITIZED_FEATURE_FILL_OPACITY = 0;
+
+// Colors
+export const FEATURE_BORDER_COLOR = '#4EA5CF';
+export const SELECTED_FEATURE_BORDER_COLOR = '#1A4480';
+export const PRIORITIZED_FEATURE_FILL_COLOR = '#768FB3';
+
+// Widths
+export const FEATURE_BORDER_WIDTH = 0.8;
+export const SELECTED_FEATURE_BORDER_WIDTH = 5.0;
+
+/**
+ * This threshold will determine if the feature is prioritized
+ * or not. Currently all values are railed to 0 or 1 so this value
+ * doesn't really matter.
+ */
+export const SCORE_BOUNDARY_THRESHOLD = 0.6;
 
 // Bounds - these bounds can be obtained by using the getCurrentMapBoundingBox() function in the map
 export const GLOBAL_MAX_BOUNDS: LngLatBoundsLike = [
@@ -175,25 +209,3 @@ export const US_VIRGIN_ISLANDS_BOUNDS: LngLatBoundsLike = [
 ];
 
 export const DEFAULT_CENTER = [33.4687126, -97.502136];
-
-// Opacity
-export const DEFAULT_LAYER_OPACITY = 0.6;
-
-// Colors
-export const DEFAULT_OUTLINE_COLOR = '#4EA5CF';
-export const MIN_COLOR = '#FFFFFF';
-export const MED_COLOR = '#D1DAE6';
-export const MAX_COLOR = '#768FB3';
-export const BORDER_HIGHLIGHT_COLOR = '#1A4480';
-export const CURRENTLY_SELECTED_FEATURE_LAYER_OPACITY = 0.5;
-
-// Widths
-export const HIGHLIGHT_BORDER_WIDTH = 5.0;
-export const CURRENTLY_SELECTED_FEATURE_LAYER_WIDTH = 0.8;
-
-// Score boundaries
-export const SCORE_BOUNDARY_LOW = 0.0;
-export const SCORE_BOUNDARY_THRESHOLD = 0.6;
-export const SCORE_BOUNDARY_PRIORITIZED = 0.75;
-
-export const isMobile = isMobileReactDeviceDetect;
