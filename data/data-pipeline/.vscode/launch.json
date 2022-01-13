@@ -14,15 +14,6 @@
       ]
     },
     {
-      "name": "Generate Score Post",
-      "type": "python",
-      "request": "launch",
-      "module": "data_pipeline.application",
-      "args": [
-        "generate-score-post"
-      ]
-    },
-    {
       "name": "Data Cleanup",
       "type": "python",
       "request": "launch",
