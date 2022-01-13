@@ -254,16 +254,10 @@ class PostScoreETL(ExtractTransformLoad):
             if any(x in column for x in constants.PERCENT_PREFIXES_SUFFIXES):
                 # Convert percentages from fractions between 0 and 1 to an integer
                 # from 0 to 100.
-                df[column] = pd.to_numeric(arg=
-                    floor_series(
-                        series=df[column] * 100,
-                        number_of_decimals=0,
-                    ),
-                    errors="raise",
-                    # Using `to_numeric` and downcast instead of `.astype(int)`
-                    # because Python's `int` type does not support nulls.
-                    downcast="integer",
-                )
+                df_100 = df[column] * 100
+                df_int = np.floor(
+                    pd.to_numeric(df_100, errors="coerce")
+                ).astype("Int64")
             else:
                 # Round all other floats.
                 df[column] = floor_series(
