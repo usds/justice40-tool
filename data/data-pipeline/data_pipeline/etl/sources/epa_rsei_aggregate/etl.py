@@ -1,5 +1,4 @@
 from pathlib import Path
-import math
 import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
@@ -24,9 +23,11 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
         self.AGGREGATED_RSEI_SCORE_FILE_URL = "http://abt-rsei.s3.amazonaws.com/microdata2019/census_agg/CensusMicroTracts2019_2019_aggregated.zip"
 
         self.OUTPUT_PATH: Path = (
-            self.DATA_PATH / "dataset" / "epa_rsei_aggregated_risk_environmental_indicators"
+            self.DATA_PATH
+            / "dataset"
+            / "epa_rsei_aggregated_risk_environmental_indicators"
         )
-        self.EPA_RSEI_SCORE_THRESHOLD_CUTOFF = .75
+        self.EPA_RSEI_SCORE_THRESHOLD_CUTOFF = 0.75
         self.TRACT_INPUT_COLUMN_NAME = "GEOID10"
         self.NUMBER_FACILITIES_INPUT_FIELD = "NUMFACS"
         self.NUMBER_RELEASES_INPUT_FIELD = "NUMRELEASES"
@@ -60,7 +61,8 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
         unzip_file_from_url(
             file_url=self.AGGREGATED_RSEI_SCORE_FILE_URL,
             download_path=self.TMP_PATH,
-            unzipped_file_path=self.TMP_PATH / "epa_rsei_aggregated_risk_environmental_indicators",
+            unzipped_file_path=self.TMP_PATH
+            / "epa_rsei_aggregated_risk_environmental_indicators",
         )
 
         self.df = pd.read_csv(
@@ -135,7 +137,8 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
         # that would enable some additional form of sub-stratification when examining
         # different percentile ranges that are derived above.
         self.df[field_names.EPA_RSEI_SCORE_THRESHOLD_FIELD] = (
-            self.df[field_names.EPA_RSEI_SCORE_PERCENTILE_RANK_FIELD] > self.EPA_RSEI_SCORE_THRESHOLD_CUTOFF
+            self.df[field_names.EPA_RSEI_SCORE_PERCENTILE_RANK_FIELD]
+            > self.EPA_RSEI_SCORE_THRESHOLD_CUTOFF
         )
 
         expected_census_tract_field_length = 11
