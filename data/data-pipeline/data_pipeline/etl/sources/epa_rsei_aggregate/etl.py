@@ -141,14 +141,7 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
             .apply(lambda x: x.zfill(expected_census_tract_field_length))
         )
 
-        are_all_geoids_equal = (
-            self.df[self.GEOID_TRACT_FIELD_NAME]
-            .apply(lambda x: len(str(x)))
-            .ne(expected_census_tract_field_length)
-            .all()
-        )
-
-        if not are_all_geoids_equal:
+        if len(self.df[self.GEOID_TRACT_FIELD_NAME].str.len().unique()) != 1:
             raise ValueError(
                 f"GEOID Tract must be length of {expected_census_tract_field_length}"
             )
