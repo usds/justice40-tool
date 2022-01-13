@@ -24,13 +24,25 @@ RUN /bin/sh -c make && make install
 RUN add-apt-repository ppa:ubuntugis/ppa
 RUN apt-get -y install gdal-bin
 
-# Prepare python packages
-WORKDIR /data-pipeline
-RUN pip3 install --upgrade pip setuptools wheel
-COPY . .
+# Python package installation using poetry. See:
+# https://stackoverflow.com/questions/53835198/integrating-python-poetry-with-docker
+ENV PYTHONFAULTHANDLER=1 \
+  PYTHONUNBUFFERED=1 \
+  PYTHONHASHSEED=random \
+  PIP_NO_CACHE_DIR=off \
+  PIP_DISABLE_PIP_VERSION_CHECK=on \
+  PIP_DEFAULT_TIMEOUT=100 \
+  POETRY_VERSION=1.1.12
 
-COPY requirements.txt .
-RUN pip3 install -r requirements.txt
-RUN pip3 install .
+WORKDIR /data-pipeline
+COPY pyproject.toml /data-pipeline/
+
+RUN pip install "poetry==$POETRY_VERSION"
+RUN poetry config virtualenvs.create false \
+  && poetry config virtualenvs.in-project false \
+  && poetry install --no-dev --no-interaction --no-ansi
+
+# Copy all project files into the container
+COPY . /data-pipeline
 
 CMD python3 -m data_pipeline.application data-full-run --check -s aws

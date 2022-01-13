@@ -1051,6 +1051,18 @@ pytz = ">=2017.3"
 test = ["hypothesis (>=3.58)", "pytest (>=6.0)", "pytest-xdist"]
 
 [[package]]
+name = "pandas-vet"
+version = "0.2.2"
+description = "A flake8 plugin to lint pandas in an opinionated way"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+attrs = "*"
+flake8 = ">3.0.0"
+
+[[package]]
 name = "pandocfilters"
 version = "1.5.0"
 description = "Utilities for writing pandoc filters in python"
@@ -1532,6 +1544,22 @@ docs = ["pygments-github-lexers (>=0.0.5)", "sphinx (>=2.0.0)", "sphinxcontrib-a
 testing = ["flaky (>=3.4.0)", "freezegun (>=0.3.11)", "psutil (>=5.6.1)", "pytest (>=4.0.0)", "pytest-cov (>=2.5.1)", "pytest-mock (>=1.10.0)", "pytest-randomly (>=1.0.0)", "pytest-xdist (>=1.22.2)", "pathlib2 (>=2.3.3)"]
 
 [[package]]
+name = "tox-poetry"
+version = "0.4.1"
+description = "Tox poetry plugin"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+pluggy = "*"
+toml = "*"
+tox = {version = ">=3.7.0", markers = "python_version >= \"3\""}
+
+[package.extras]
+test = ["coverage", "pytest", "pycodestyle", "pylint"]
+
+[[package]]
 name = "tqdm"
 version = "4.62.0"
 description = "Fast, Extensible Progress Meter"
@@ -1684,7 +1712,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7.1"
-content-hash = "1823efb9fae610a00eb714ec61fd165ec5cda3d38fa83c12b00e9d38f4358fa3"
+content-hash = "208cadba99466a38822740b0b78e5be94c4bf728eb79eda4c40cfd0d22901907"
 
 [metadata.files]
 appnope = [
@@ -2349,6 +2377,10 @@ pandas = [
     {file = "pandas-1.3.4-cp39-cp39-win_amd64.whl", hash = "sha256:a51528192755f7429c5bcc9e80832c517340317c861318fea9cea081b57c9afd"},
     {file = "pandas-1.3.4.tar.gz", hash = "sha256:a2aa18d3f0b7d538e21932f637fbfe8518d085238b429e4790a35e1e44a96ffc"},
 ]
+pandas-vet = [
+    {file = "pandas-vet-0.2.2.tar.gz", hash = "sha256:0a316c3edaaa1bcd772bfaea0e8d2b2aa409b740198746a2b60f2007b313f42e"},
+    {file = "pandas_vet-0.2.2-py3-none-any.whl", hash = "sha256:961235064ebe5b38ca9c3f45961fdce61796a01aea1f07b06b67f6b359aabea2"},
+]
 pandocfilters = [
     {file = "pandocfilters-1.5.0-py2.py3-none-any.whl", hash = "sha256:33aae3f25fd1a026079f5d27bdd52496f0e0803b3469282162bafdcbdf6ef14f"},
     {file = "pandocfilters-1.5.0.tar.gz", hash = "sha256:0b679503337d233b4339a817bfc8c50064e2eff681314376a47cb582305a7a38"},
@@ -2781,6 +2813,10 @@ tornado = [
 tox = [
     {file = "tox-3.24.4-py2.py3-none-any.whl", hash = "sha256:5e274227a53dc9ef856767c21867377ba395992549f02ce55eb549f9fb9a8d10"},
     {file = "tox-3.24.4.tar.gz", hash = "sha256:c30b57fa2477f1fb7c36aa1d83292d5c2336cd0018119e1b1c17340e2c2708ca"},
+]
+tox-poetry = [
+    {file = "tox-poetry-0.4.1.tar.gz", hash = "sha256:2395808e1ce487b5894c10f2202e14702bfa6d6909c0d1e525170d14809ac7ef"},
+    {file = "tox_poetry-0.4.1-py2.py3-none-any.whl", hash = "sha256:11d9cd4e51d4cd9484b3ba63f2650ab4cfb4096e5f0682ecf561ddfc3c8e8c92"},
 ]
 tqdm = [
     {file = "tqdm-4.62.0-py2.py3-none-any.whl", hash = "sha256:706dea48ee05ba16e936ee91cb3791cd2ea6da348a0e50b46863ff4363ff4340"},
