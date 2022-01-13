@@ -1,6 +1,6 @@
 from pathlib import Path
 import json
-from numpy import float64, int64
+from numpy import float64
 import numpy as np
 import pandas as pd
 
