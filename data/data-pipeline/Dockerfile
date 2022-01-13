@@ -35,7 +35,7 @@ ENV PYTHONFAULTHANDLER=1 \
   POETRY_VERSION=1.1.12
 
 WORKDIR /data-pipeline
-COPY poetry.lock /data-pipeline/
+COPY pyproject.toml /data-pipeline/
 
 RUN pip install "poetry==$POETRY_VERSION"
 RUN poetry config virtualenvs.create false \

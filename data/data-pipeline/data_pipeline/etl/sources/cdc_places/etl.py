@@ -2,6 +2,7 @@ import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger, download_file_from_url
+from data_pipeline.score import field_names
 
 logger = get_module_logger(__name__)
 
@@ -47,6 +48,20 @@ class CDCPlacesETL(ExtractTransformLoad):
             index=self.GEOID_TRACT_FIELD_NAME,
             columns=self.CDC_MEASURE_FIELD_NAME,
             values=self.CDC_VALUE_FIELD_NAME,
+        )
+
+        # rename columns to be used in score
+        rename_fields = {
+            "Current asthma among adults aged >=18 years": field_names.ASTHMA_FIELD,
+            "Coronary heart disease among adults aged >=18 years": field_names.HEART_DISEASE_FIELD,
+            "Cancer (excluding skin cancer) among adults aged >=18 years": field_names.CANCER_FIELD,
+            "Diagnosed diabetes among adults aged >=18 years": field_names.DIABETES_FIELD,
+            "Physical health not good for >=14 days among adults aged >=18 years": field_names.PHYS_HEALTH_NOT_GOOD_FIELD,
+        }
+        self.df.rename(
+            columns=rename_fields,
+            inplace=True,
+            errors="raise",
         )
 
         # Make the index (the census tract ID) a column, not the index.
