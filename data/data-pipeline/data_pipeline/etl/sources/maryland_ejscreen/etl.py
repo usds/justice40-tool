@@ -26,10 +26,6 @@ class MarylandEJScreenETL(ExtractTransformLoad):
 
         self.COLUMNS_TO_KEEP = [
             self.GEOID_TRACT_FIELD_NAME,
-            field_names.MARYLAND_EJSCREEN_TRACT_25_PERCENTILE_FIELD,
-            field_names.MARYLAND_EJSCREEN_TRACT_50_PERCENTILE_FIELD,
-            field_names.MARYLAND_EJSCREEN_TRACT_75_PERCENTILE_FIELD,
-            field_names.MARYLAND_EJSCREEN_TRACT_90_PERCENTILE_FIELD,
             field_names.MARYLAND_EJSCREEN_SCORE_FIELD,
             field_names.MARYLAND_EJSCREEN_BURDENED_THRESHOLD_FIELD,
         ]
@@ -67,21 +63,20 @@ class MarylandEJScreenETL(ExtractTransformLoad):
             for df in dfs_list
         ]
         # pylint: disable=unsubscriptable-object
-        combined_df = gpd.GeoDataFrame(pd.concat(dfs_list, axis=1))
+        self.df = gpd.GeoDataFrame(pd.concat(dfs_list, axis=1))
 
         # Reset index so that we no longer have the tract as our index
-        combined_df = combined_df.reset_index()
-        # coerce into integer into
+        self.df = self.df.reset_index()
+        # coerce GEODID into integer
+        # The only reason why this is done is because Maryland's GEODID's start with
+        # "24". This is NOT standard practice and should never be done as rightly pointed
+        # out by Lucas: "converting to int would lose the leading 0 and make this geoid invalid".
         # pylint: disable=unsupported-assignment-operation, unsubscriptable-object
-        combined_df["Census_Tra"] = (combined_df["Census_Tra"]).astype(int)
+        self.df["Census_Tra"] = (self.df["Census_Tra"]).astype(int)
 
         # Drop the 10 census tracts that are zero: please see here:
         # https://github.com/usds/justice40-tool/issues/239#issuecomment-995821572
-        combined_df = combined_df[combined_df["Census_Tra"] != 0]
-
-        # Set our class instance variable after conversions in lines 50-81
-        self.df = combined_df.copy()
-
+        self.df = self.df[self.df["Census_Tra"] != 0]
         # Rename columns
         self.df.rename(
             columns={
@@ -107,22 +102,6 @@ class MarylandEJScreenETL(ExtractTransformLoad):
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             >= 0.75
-        )
-
-        # Baseline Comparisons with some quartiles and the 90th percent OF EJ Score
-        # Interpretation: The score is greater than or equal to N% of the tracts in the state.
-        # Please see the README for details on the EJScore interpretation
-        self.df[field_names.MARYLAND_EJSCREEN_TRACT_25_PERCENTILE_FIELD] = (
-            self.df[field_names.MARYLAND_EJSCREEN_SCORE_FIELD] >= 0.25
-        )
-        self.df[field_names.MARYLAND_EJSCREEN_TRACT_50_PERCENTILE_FIELD] = (
-            self.df[field_names.MARYLAND_EJSCREEN_SCORE_FIELD] >= 0.50
-        )
-        self.df[field_names.MARYLAND_EJSCREEN_TRACT_75_PERCENTILE_FIELD] = (
-            self.df[field_names.MARYLAND_EJSCREEN_SCORE_FIELD] >= 0.75
-        )
-        self.df[field_names.MARYLAND_EJSCREEN_TRACT_90_PERCENTILE_FIELD] = (
-            self.df[field_names.MARYLAND_EJSCREEN_SCORE_FIELD] >= 0.90
         )
 
     def load(self) -> None:

@@ -220,19 +220,6 @@ MICHIGAN_EJSCREEN_PRIORITY_COMMUNITY_FIELD: str = (
 )
 
 # Maryland EJSCREEN Data.
-MARYLAND_EJSCREEN_TRACT_25_PERCENTILE_FIELD: str = (
-    "Tract is >=25% all other Maryland Tracts"
-)
-MARYLAND_EJSCREEN_TRACT_50_PERCENTILE_FIELD: str = (
-    "Tract is >=50% all other Maryland Tracts"
-)
-MARYLAND_EJSCREEN_TRACT_75_PERCENTILE_FIELD: str = (
-    "Tract is >=75% all other Maryland Tracts"
-)
-MARYLAND_EJSCREEN_TRACT_90_PERCENTILE_FIELD: str = (
-    "Tract is >=90% all other Maryland Tracts"
-)
-
 MARYLAND_EJSCREEN_SCORE_FIELD: str = "Maryland Environmental Justice Score"
 
 MARYLAND_EJSCREEN_BURDENED_THRESHOLD_FIELD: str = (
