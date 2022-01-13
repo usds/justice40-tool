@@ -4,8 +4,6 @@ import numpy as np
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger
 from data_pipeline.score import field_names
-from data_pipeline.config import settings
-
 
 logger = get_module_logger(__name__)
 
@@ -92,14 +90,14 @@ class CDCSVIIndex(ExtractTransformLoad):
             ]
             >= self.CDC_RPL_THEMES_THRESHOLD
         )
-
         expected_census_tract_field_length = 11
-        if (
-            not self.df[self.GEOID_TRACT_FIELD_NAME]
-            .apply(lambda x: len(str(x)))
-            .eq(expected_census_tract_field_length)
-            .all()
-        ):
+        self.df[self.GEOID_TRACT_FIELD_NAME] = (
+            self.df[self.GEOID_TRACT_FIELD_NAME]
+            .astype(str)
+            .apply(lambda x: x.zfill(expected_census_tract_field_length))
+        )
+
+        if len(self.df[self.GEOID_TRACT_FIELD_NAME].str.len().unique()) != 1:
             raise ValueError(
                 f"GEOID Tract must be length of {expected_census_tract_field_length}"
             )
