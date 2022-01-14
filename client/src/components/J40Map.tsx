@@ -271,7 +271,7 @@ const J40Map = ({location}: IJ40Interface) => {
           }
           // This styles will need to be enabled in some way when adding back the free map - #1133
           width="100%"
-          height={windowWidth < constants.USWDS_BREAKPOINTS.DESKTOP ? '44vh' : '100%'}
+          height={windowWidth < constants.USWDS_BREAKPOINTS.DESKTOP ? '60vh' : '100%'}
           mapOptions={{hash: true}}
 
           // Interaction option props:
@@ -401,10 +401,10 @@ const J40Map = ({location}: IJ40Interface) => {
           )}
 
           {/* This will add the navigation controls of the zoom in and zoom out buttons */}
-          {windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG ? <NavigationControl
+          { windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && <NavigationControl
             showCompass={false}
             className={styles.navigationControl}
-          /> : null}
+          /> }
 
           {/* This places Geolocation behind a feature flag */}
           {'gl' in flags ? <GeolocateControl
