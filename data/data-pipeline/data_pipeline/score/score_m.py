@@ -107,14 +107,29 @@ class ScoreM(Score):
         is at or more than some established threshold
         """
         return (
-            df[
-                field_names.POVERTY_LESS_THAN_200_FPL_FIELD
-                + field_names.PERCENTILE_FIELD_SUFFIX
-            ]
-            >= self.LOW_INCOME_THRESHOLD
+            (
+                df[
+                    field_names.POVERTY_LESS_THAN_200_FPL_FIELD
+                    + field_names.PERCENTILE_FIELD_SUFFIX
+                ]
+                >= self.LOW_INCOME_THRESHOLD
+            )
+            | (
+                df[
+                    field_names.LOW_MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD
+                    + field_names.PERCENTILE_FIELD_SUFFIX
+                ]
+                >= self.LOW_INCOME_THRESHOLD
+            )
         ) & (
-            df[field_names.COLLEGE_ATTENDANCE_FIELD]
-            <= self.MAX_COLLEGE_ATTENDANCE_THRESHOLD
+            (
+                df[field_names.COLLEGE_ATTENDANCE_FIELD]
+                <= self.MAX_COLLEGE_ATTENDANCE_THRESHOLD
+            )
+            |
+            # If college attendance data is null for this tract, just rely on the
+            # poverty/AMI data
+            df[field_names.COLLEGE_ATTENDANCE_FIELD].isna()
         )
 
     def _increment_total_eligibility_exceeded(
@@ -139,6 +154,7 @@ class ScoreM(Score):
             field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD,
             field_names.EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_FIELD,
             field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD,
+            # field_names.EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD,
         ]
 
         expected_population_loss_threshold = (
@@ -165,6 +181,20 @@ class ScoreM(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
+        extreme_heat_and_median_house_value_threshold = (
+            self.df[
+                field_names.EXTREME_HEAT_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        ) & (
+            self.df[
+                field_names.MEDIAN_HOUSE_VALUE_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            <= self.MEDIAN_HOUSE_VALUE_THRESHOLD
+        )
+
         self.df[field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD] = (
             expected_population_loss_threshold
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
@@ -177,6 +207,13 @@ class ScoreM(Score):
 
         self.df[field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD] = (
             expected_building_loss_threshold
+            & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
+        )
+
+        self.df[
+            field_names.EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD
+        ] = (
+            extreme_heat_and_median_house_value_threshold
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
@@ -421,6 +458,7 @@ class ScoreM(Score):
             field_names.ASTHMA_LOW_INCOME_FIELD,
             field_names.HEART_DISEASE_LOW_INCOME_FIELD,
             field_names.LOW_LIFE_EXPECTANCY_LOW_INCOME_FIELD,
+            # field_names.HEALTHY_FOOD_LOW_INCOME_FIELD,
         ]
 
         diabetes_threshold = (
@@ -453,6 +491,14 @@ class ScoreM(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
+        healthy_food_threshold = (
+            self.df[
+                field_names.HEALTHY_FOOD_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        )
+
         self.df[field_names.DIABETES_LOW_INCOME_FIELD] = (
             diabetes_threshold
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
@@ -467,6 +513,10 @@ class ScoreM(Score):
         )
         self.df[field_names.LOW_LIFE_EXPECTANCY_LOW_INCOME_FIELD] = (
             low_life_expectancy_threshold
+            & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
+        )
+        self.df[field_names.HEALTHY_FOOD_LOW_INCOME_FIELD] = (
+            healthy_food_threshold
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
@@ -500,8 +550,14 @@ class ScoreM(Score):
             self.df[field_names.HIGH_SCHOOL_ED_FIELD]
             >= self.LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD
         ) & (
-            self.df[field_names.COLLEGE_ATTENDANCE_FIELD]
-            <= self.MAX_COLLEGE_ATTENDANCE_THRESHOLD
+            (
+                self.df[field_names.COLLEGE_ATTENDANCE_FIELD]
+                <= self.MAX_COLLEGE_ATTENDANCE_THRESHOLD
+            )
+            |
+            # If college attendance data is null for this tract, just rely on the
+            # poverty/AMI data
+            self.df[field_names.COLLEGE_ATTENDANCE_FIELD].isna()
         )
 
         unemployment_threshold = (
@@ -673,6 +729,7 @@ class ScoreM(Score):
 
         self.df[field_names.THRESHOLD_COUNT] = 0
         self.df[
+            # TODO: if using AMI, rename this away from FPL_200
             field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES
         ] = self._create_low_income_and_low_college_attendance_threshold(
             self.df

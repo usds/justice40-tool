@@ -560,8 +560,4 @@ class ScoreETL(ExtractTransformLoad):
         logger.info("Saving Score CSV")
         constants.DATA_SCORE_CSV_FULL_DIR.mkdir(parents=True, exist_ok=True)
 
-
-        # TODO: delete
-        self.df[1:1000].to_csv(constants.DATA_SCORE_CSV_FULL_DIR / "usa-1000.csv",
-                               index=False)
         self.df.to_csv(constants.DATA_SCORE_CSV_FULL_FILE_PATH, index=False)
