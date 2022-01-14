@@ -238,6 +238,13 @@ MICHIGAN_EJSCREEN_PRIORITY_COMMUNITY_FIELD: str = (
     "Michigan EJSCREEN Priority Community"
 )
 
+# Maryland EJSCREEN Data.
+MARYLAND_EJSCREEN_SCORE_FIELD: str = "Maryland Environmental Justice Score"
+
+MARYLAND_EJSCREEN_BURDENED_THRESHOLD_FIELD: str = (
+    "Maryland EJSCREEN Priority Community"
+)
+
 # Child Opportunity Index data
 # Summer days with maximum temperature above 90F.
 EXTREME_HEAT_FIELD = "Summer days above 90F"
