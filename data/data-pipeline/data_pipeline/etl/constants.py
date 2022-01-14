@@ -90,6 +90,11 @@ DATASET_LIST = [
         "class_name": "HudRecapETL",
     },
     {
+        "name": "epa_rsei_aggregate",
+        "module_dir": "epa_rsei_aggregate",
+        "class_name": "EPARiskScreeningEnvironmentalIndicatorsETL",
+    },
+    {
         "name": "energy_definition_alternative_draft",
         "module_dir": "energy_definition_alternative_draft",
         "class_name": "EnergyDefinitionAlternativeDraft",

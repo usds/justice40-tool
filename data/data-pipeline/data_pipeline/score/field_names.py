@@ -155,6 +155,21 @@ CENSUS_POVERTY_LESS_THAN_100_FPL_FIELD_2010 = (
     "Percent of individuals less than 100% Federal Poverty Line in 2010"
 )
 
+# RSEI Aggregated Micro-data
+EPA_RSEI_NUMBER_FACILITIES_FIELD = "Number of facilities affecting the tract"
+EPA_RSEI_NUMBER_RELEASES_FIELD = "Number of releases affecting the tract"
+EPA_RSEI_NUMBER_CHEMICALS_FIELD = "Number of chemicals affecting the tract"
+EPA_RSEI_AVERAGE_TOXICITY_FIELD = (
+    "Average toxicity-weighted concentration of the cells in the tract"
+)
+EPA_RSEI_SCORE_FIELD = "RSEI Risk Score"
+EPA_RSEI_CSCORE_FIELD = "RSEI Risk Score (Cancer toxicity weights)"
+EPA_RSEI_NCSCORE_FIELD = "RSEI Risk Score (Noncancer toxicity weights)"
+EPA_RSEI_POPULATION_FIELD = "Sum of the population of the cells in the tract"
+EPA_RSEI_SCORE_THRESHOLD_FIELD = (
+    "At or above 75 for overall percentile for the RSEI score"
+)
+
 # Combined fields that merge island areas and states data
 COMBINED_CENSUS_TOTAL_POPULATION_2010 = (
     "Total population in 2009 (island areas) and 2019 (states and PR)"
