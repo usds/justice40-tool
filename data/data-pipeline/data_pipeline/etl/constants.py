@@ -90,6 +90,11 @@ DATASET_LIST = [
         "class_name": "HudRecapETL",
     },
     {
+        "name": "epa_rsei_aggregate",
+        "module_dir": "epa_rsei_aggregate",
+        "class_name": "EPARiskScreeningEnvironmentalIndicatorsETL",
+    },
+    {
         "name": "energy_definition_alternative_draft",
         "module_dir": "energy_definition_alternative_draft",
         "class_name": "EnergyDefinitionAlternativeDraft",
@@ -108,6 +113,11 @@ DATASET_LIST = [
         "name": "cdc_svi_index",
         "module_dir": "cdc_svi_index",
         "class_name": "CDCSVIIndex",
+    },
+    {
+        "name": "maryland_ejscreen",
+        "module_dir": "maryland_ejscreen",
+        "class_name": "MarylandEJScreenETL",
     },
 ]
 CENSUS_INFO = {
