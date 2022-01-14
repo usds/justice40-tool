@@ -104,6 +104,11 @@ DATASET_LIST = [
         "module_dir": "michigan_ejscreen",
         "class_name": "MichiganEnviroScreenETL",
     },
+    {
+        "name": "maryland_ejscreen",
+        "module_dir": "maryland_ejscreen",
+        "class_name": "MarylandEJScreenETL",
+    },
 ]
 CENSUS_INFO = {
     "name": "census",
