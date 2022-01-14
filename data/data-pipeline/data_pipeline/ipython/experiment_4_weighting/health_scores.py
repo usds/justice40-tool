@@ -92,7 +92,7 @@ class HealthScores:
         """
         columns = list(self.multiplied_data.columns) + ["health_scores"]
         scaled_data = (
-            MinMaxScaler().fit_transform(self.multiplied_data.values) * 100
+            MinMaxScaler().fit_transform(self.multiplied_data.to_numpy()) * 100
         )
         health_scores = np.dot(scaled_data, self.weights.reshape(-1, 1))
         health_scores = MinMaxScaler().fit_transform(health_scores) * 100
