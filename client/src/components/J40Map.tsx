@@ -397,6 +397,7 @@ const J40Map = ({location}: IJ40Interface) => {
           )}
 
           {/* This will add the navigation controls of the zoom in and zoom out buttons */}
+          {/* Test comment to build */}
           <NavigationControl
             showCompass={false}
             className={styles.navigationControl}
