@@ -110,6 +110,11 @@ DATASET_LIST = [
         "class_name": "MichiganEnviroScreenETL",
     },
     {
+        "name": "cdc_svi_index",
+        "module_dir": "cdc_svi_index",
+        "class_name": "CDCSVIIndex",
+    },
+    {
         "name": "maryland_ejscreen",
         "module_dir": "maryland_ejscreen",
         "class_name": "MarylandEJScreenETL",
