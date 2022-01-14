@@ -347,7 +347,7 @@ score_transformed_actual.to_pickle(data_path / "data_pipeline" / "etl" / "score"
 
 Luego elimine el punto de interrupción y vuelva a ejecutar la prueba: `pytest data_pipeline/etl/score/tests/test_score_post.py::test_transform_score`
 
-Para `score_data_expected.pkl`, pero un punto de interrupción en [esta línea](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post .py#L78), antes de `pdt.assert_frame_equal` y ejecute:
+Para `score_data_expected.pkl`, pero un punto de interrupción en [esta línea](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L78), antes de `pdt.assert_frame_equal` y ejecute:
 `pytest data_pipeline/etl/score/tests/test_score_post.py::test_create_score_data`
 
 Una vez en el punto de interrupción, capture el df en un pickle de la siguiente manera:
@@ -361,7 +361,7 @@ score_data_actual.to_pickle(data_path / "data_pipeline" / "etl" / "score" / "tes
 
 Luego elimine el punto de interrupción y vuelva a ejecutar la prueba: `pytest data_pipeline/etl/score/tests/test_score_post.py::test_create_score_data`
 
-Para `tile_data_expected.pkl`, pero un punto de interrupción en [esta línea](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post .py#L86), antes de `pdt.assert_frame_equal` y ejecute:
+Para `tile_data_expected.pkl`, pero un punto de interrupción en [esta línea](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L86), antes de `pdt.assert_frame_equal` y ejecute:
 `pytest data_pipeline/etl/score/tests/test_score_post.py::test_create_tile_data`
 
 Una vez en el punto de interrupción, capture el df en un pickle de la siguiente manera:
@@ -375,7 +375,7 @@ output_tiles_df_actual.to_pickle(data_path / "data_pipeline" / "etl" / "puntuaci
 
 Luego elimine el punto de interrupción y vuelva a ejecutar la prueba: `pytest data_pipeline/etl/score/tests/test_score_post.py::test_create_tile_data`
 
-Para `downloadable_data_expected.pk1`, pero un punto de interrupción en [esta línea](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post .py#L98), antes de `pdt.assert_frame_equal` y ejecute:
+Para `downloadable_data_expected.pk1`, pero un punto de interrupción en [esta línea](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L98), antes de `pdt.assert_frame_equal` y ejecute:
 `pytest data_pipeline/etl/score/tests/test_score_post.py::test_create_downloadable_data`
 
 Una vez en el punto de interrupción, capture el df en un pickle de la siguiente manera:
