@@ -209,3 +209,10 @@ export const US_VIRGIN_ISLANDS_BOUNDS: LngLatBoundsLike = [
 ];
 
 export const DEFAULT_CENTER = [33.4687126, -97.502136];
+
+
+// USWDS Breakpoints
+export const USWDS_BREAKPOINTS = {
+  MOBILE_LG: 480,
+  DESKTOP: 1024,
+};
