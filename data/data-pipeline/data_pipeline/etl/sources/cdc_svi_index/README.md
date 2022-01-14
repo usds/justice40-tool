@@ -62,7 +62,7 @@ Whenever available, they use Census-calculated MOEs. If Census MOEs are unavaila
 https://www.census.gov/content/dam/Census/library/publications/2008/acs/ACSGeneralHandbook.pdf
 
 If more precise MOEs are required, see Census methods and data regarding Variance Replicate Tables
-here: https://www.census.gov/programs-surveys/acs/technical-documentation/variance-tables.html.
+here: https://www.census.gov/programs-surveys/acs/data/variance-tables.html.
 
 For selected ACS 5-year Detailed Tables, “Users can calculate margins of error for aggregated data by using the variance replicates. Unlike available approximation formulas, this method results in an exact margin of error by using the covariance term.”
 
