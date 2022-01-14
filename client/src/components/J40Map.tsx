@@ -248,7 +248,7 @@ const J40Map = ({location}: IJ40Interface) => {
          *
          * to ensure the production build works and that MapSearch and the map (ReactMapGL) render correctly.
          */}
-        <MapSearch goToPlace={goToPlace}/>
+        {/* <MapSearch goToPlace={goToPlace}/> */}
 
 
         {/**
