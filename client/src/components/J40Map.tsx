@@ -267,7 +267,7 @@ const J40Map = ({location}: IJ40Interface) => {
           // This styles will need to be enabled in some way when adding back the free map - #1133
           // mapStyle={makeMapStyle(flags)}
           width="100%"
-          height={windowWidth < 1024 ? '44vh' : '100%'}
+          height={windowWidth < 1024 ? '60vh' : '100%'}
           mapOptions={{hash: true}}
 
           // Interaction option props:
