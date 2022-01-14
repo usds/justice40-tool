@@ -29,7 +29,7 @@ import MapSearch from './MapSearch';
 import TerritoryFocusControl from './territoryFocusControl';
 
 // Styles and constants
-import {makeMapStyle} from '../data/mapStyle';
+// import {makeMapStyle} from '../data/mapStyle';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import * as constants from '../data/constants';
 import * as styles from './J40Map.module.scss';
@@ -88,7 +88,6 @@ const J40Map = ({location}: IJ40Interface) => {
   const selectedFeatureId = (selectedFeature && selectedFeature.id) || '';
   const filter = useMemo(() => ['in', constants.GEOID_PROPERTY, selectedFeatureId], [selectedFeature]);
 
-
   /**
    * This function will return the bounding box of the current map. Comment in when needed.
    *  {
@@ -97,9 +96,9 @@ const J40Map = ({location}: IJ40Interface) => {
    *  }
    * @returns {LngLatBounds}
    */
-  const getCurrentMapBoundingBox = () => {
-    return mapRef.current ? console.log('mapRef getBounds(): ', mapRef.current.getMap().getBounds()) : null;
-  };
+  // const getCurrentMapBoundingBox = () => {
+  //   return mapRef.current ? console.log('mapRef getBounds(): ', mapRef.current.getMap().getBounds()) : null;
+  // };
 
 
   /**
@@ -113,8 +112,6 @@ const J40Map = ({location}: IJ40Interface) => {
     // Stop all propagation / bubbling / capturing
     event.preventDefault();
     event.stopPropagation();
-
-    getCurrentMapBoundingBox();
 
     // Check if the click is for territories. Given the territories component's design, it can be
     // guaranteed that each territory control will have an id. We use this ID to determine
@@ -153,6 +150,7 @@ const J40Map = ({location}: IJ40Interface) => {
       }
     } else {
       // This else clause will fire when the ID is null or empty. This is the case where the map is clicked
+      // @ts-ignore
       const feature = event.features && event.features[0];
       console.log(feature);
       if (feature) {
@@ -233,75 +231,156 @@ const J40Map = ({location}: IJ40Interface) => {
     <>
       <Grid col={12} desktop={{col: 9}}>
 
-        {/*
-          The MapSearch component is no longer wrapped in a div in order to allow this feature
-          to be behind a feature flag. This was causing a bug for MapSearch to render
-          correctly in a production build. Leaving this comment here in case future flags are
-          needed in this component
-
-          When the MapSearch component is placed behind a feature flag without a div wrapping
-          MapSearch, the production build will inject CSS due to the null in the false conditional
-          case. Any changes to this (ie, changes to MapSearch or removing feature flag, etc), should
-          be tested with a production build via:
-
-          npm run clean && npm run build && npm run serve
-
-          to ensure the production build works and that MapSearch and the map (ReactMapGL) render correctly.
-        */}
+        {/**
+         * This will render the MapSearch component
+         *
+         * Note:
+         * The MapSearch component is no longer wrapped in a div in order to allow this feature
+         * to be behind a feature flag. This was causing a bug for MapSearch to render
+         * correctly in a production build. Leaving this comment here in case future flags are
+         * needed in this component.
+         *
+         * When the MapSearch component is placed behind a feature flag without a div wrapping
+         * MapSearch, the production build will inject CSS due to the null in the false conditional
+         * case. Any changes to this (ie, changes to MapSearch or removing feature flag, etc), should
+         * be tested with a production build via:
+         *   - npm run clean && npm run build && npm run serve
+         *
+         * to ensure the production build works and that MapSearch and the map (ReactMapGL) render correctly.
+         */}
         <MapSearch goToPlace={goToPlace}/>
 
+
+        {/**
+         * The ReactMapGL component's props are grouped by the API's documentation. The component also has
+         * some children.
+         */}
         <ReactMapGL
+          // Initialization props:
+          // access token is j40StylesReadToken
+          mapboxApiAccessToken={process.env.GATSBY_MAPBOX_STYLES_READ_TOKEN}
+
+          // Map state props:
+          // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#map-state
           {...viewport}
-          mapStyle={makeMapStyle(flags)}
-          minZoom={constants.GLOBAL_MIN_ZOOM}
-          maxZoom={constants.GLOBAL_MAX_ZOOM}
-          mapOptions={{hash: true}}
+          mapStyle={`mapbox://styles/mapbox/streets-v11`}
+          // This styles will need to be enabled in some way when adding back the free map - #1133
+          // mapStyle={makeMapStyle(flags)}
           width="100%"
           height={windowWidth < 1024 ? '44vh' : '100%'}
+          mapOptions={{hash: true}}
+
+          // Interaction option props:
+          // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#interaction-options
+          maxZoom={constants.GLOBAL_MAX_ZOOM}
+          minZoom={constants.GLOBAL_MIN_ZOOM}
           dragRotate={false}
           touchRotate={false}
-          interactiveLayerIds={[constants.HIGH_SCORE_LAYER_NAME]}
+          interactiveLayerIds={[constants.HIGH_ZOOM_LAYER_ID, constants.PRIORITIZED_HIGH_ZOOM_LAYER_ID]}
+
+          // Callback props:
+          // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#callbacks
           onViewportChange={setViewport}
           onClick={onClick}
           onLoad={onLoad}
           onTransitionStart={onTransitionStart}
           onTransitionEnd={onTransitionEnd}
+
           ref={mapRef}
           data-cy={'reactMapGL'}
         >
+          {/**
+           * The low zoom source
+           */}
           <Source
-            id={constants.HIGH_SCORE_SOURCE_NAME}
+            id={constants.LOW_ZOOM_SOURCE_NAME}
+            type="vector"
+            promoteId={constants.GEOID_PROPERTY}
+            tiles={[constants.FEATURE_TILE_LOW_ZOOM_URL]}
+            maxzoom={constants.GLOBAL_MAX_ZOOM_LOW}
+            minzoom={constants.GLOBAL_MIN_ZOOM_LOW}
+          >
+
+            {/* Low zoom layer - prioritized features only */}
+            <Layer
+              id={constants.LOW_ZOOM_LAYER_ID}
+              source-layer={constants.SCORE_SOURCE_LAYER}
+              filter={['>', constants.SCORE_PROPERTY_LOW, constants.SCORE_BOUNDARY_THRESHOLD]}
+              type='fill'
+              paint={{
+                'fill-color': constants.PRIORITIZED_FEATURE_FILL_COLOR,
+                'fill-opacity': constants.LOW_ZOOM_PRIORITIZED_FEATURE_FILL_OPACITY}}
+              maxzoom={constants.GLOBAL_MAX_ZOOM_LOW}
+              minzoom={constants.GLOBAL_MIN_ZOOM_LOW}
+            />
+          </Source>
+
+          {/**
+           * The high zoom source
+           */}
+          <Source
+            id={constants.HIGH_ZOOM_SOURCE_NAME}
             type="vector"
             promoteId={constants.GEOID_PROPERTY}
             tiles={[constants.FEATURE_TILE_HIGH_ZOOM_URL]}
-            maxzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
-            minzoom={constants.GLOBAL_MAX_ZOOM_HIGH}
+            maxzoom={constants.GLOBAL_MAX_ZOOM_HIGH}
+            minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
           >
+
+            {/* High zoom layer - non-prioritized features only */}
             <Layer
-              id={constants.CURRENTLY_SELECTED_FEATURE_HIGHLIGHT_LAYER_NAME}
+              id={constants.HIGH_ZOOM_LAYER_ID}
               source-layer={constants.SCORE_SOURCE_LAYER}
-              type='line'
+              filter={['<', constants.SCORE_PROPERTY_HIGH, constants.SCORE_BOUNDARY_THRESHOLD]}
+              type='fill'
               paint={{
-                'line-color': constants.DEFAULT_OUTLINE_COLOR,
-                'line-width': constants.CURRENTLY_SELECTED_FEATURE_LAYER_WIDTH,
-                'line-opacity': constants.CURRENTLY_SELECTED_FEATURE_LAYER_OPACITY,
+                'fill-opacity': constants.NON_PRIORITIZED_FEATURE_FILL_OPACITY,
               }}
-              minzoom={constants.GLOBAL_MIN_ZOOM_HIGHLIGHT}
-              maxzoom={constants.GLOBAL_MAX_ZOOM_HIGHLIGHT}
+              minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
             />
 
+            {/* High zoom layer - prioritized features only */}
             <Layer
-              id={constants.BLOCK_GROUP_BOUNDARY_LAYER_NAME}
-              type='line'
+              id={constants.PRIORITIZED_HIGH_ZOOM_LAYER_ID}
               source-layer={constants.SCORE_SOURCE_LAYER}
+              filter={['>', constants.SCORE_PROPERTY_HIGH, constants.SCORE_BOUNDARY_THRESHOLD]}
+              type='fill'
               paint={{
-                'line-color': constants.BORDER_HIGHLIGHT_COLOR,
-                'line-width': constants.HIGHLIGHT_BORDER_WIDTH,
+                'fill-color': constants.PRIORITIZED_FEATURE_FILL_COLOR,
+                'fill-opacity': constants.HIGH_ZOOM_PRIORITIZED_FEATURE_FILL_OPACITY,
               }}
-              filter={filter}
+              minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
+            />
+
+            {/* High zoom layer - controls the border between features */}
+            <Layer
+              id={constants.FEATURE_BORDER_LAYER_ID}
+              source-layer={constants.SCORE_SOURCE_LAYER}
+              type='line'
+              paint={{
+                'line-color': constants.FEATURE_BORDER_COLOR,
+                'line-width': constants.FEATURE_BORDER_WIDTH,
+                'line-opacity': constants.FEATURE_BORDER_OPACITY,
+              }}
+              maxzoom={constants.GLOBAL_MAX_ZOOM_FEATURE_BORDER}
+              minzoom={constants.GLOBAL_MIN_ZOOM_FEATURE_BORDER}
+            />
+
+            {/* High zoom layer - border styling around the selected feature */}
+            <Layer
+              id={constants.SELECTED_FEATURE_BORDER_LAYER_ID}
+              source-layer={constants.SCORE_SOURCE_LAYER}
+              filter={filter} // This filter filters out all other features except the selected feature.
+              type='line'
+              paint={{
+                'line-color': constants.SELECTED_FEATURE_BORDER_COLOR,
+                'line-width': constants.SELECTED_FEATURE_BORDER_WIDTH,
+              }}
               minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
             />
           </Source>
+
+          {/* Enable fullscreen behind a feature flag */}
           {('fs' in flags && detailViewData && !transitionInProgress) && (
             <Popup
               className={styles.j40Popup}
@@ -316,19 +395,26 @@ const J40Map = ({location}: IJ40Interface) => {
               <AreaDetail properties={detailViewData.properties} />
             </Popup>
           )}
+
+          {/* This will add the navigation controls of the zoom in and zoom out buttons */}
           <NavigationControl
             showCompass={false}
             className={styles.navigationControl}
           />
+
+          {/* This places Geolocation behind a feature flag */}
           {'gl' in flags ? <GeolocateControl
             className={styles.geolocateControl}
             positionOptions={{enableHighAccuracy: true}}
             onGeolocate={onGeolocate}
-            // @ts-ignore // Types have not caught up yet, see https://github.com/visgl/react-map-gl/issues/1492
+            // @ts-ignore
             onClick={onClickGeolocate}
           /> : ''}
           {geolocationInProgress ? <div>Geolocation in progress...</div> : ''}
+
+          {/* This will show shortcut buttons to pan/zoom to US territories */}
           <TerritoryFocusControl onClick={onClick}/>
+
           {'fs' in flags ? <FullscreenControl className={styles.fullscreenControl}/> :'' }
 
         </ReactMapGL>

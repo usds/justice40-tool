@@ -46,7 +46,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
   const countyName = properties[constants.COUNTY_NAME] ? properties[constants.COUNTY_NAME] : "N/A";
   const stateName = properties[constants.STATE_NAME] ? properties[constants.STATE_NAME] : "N/A";
 
-  const isCommunityFocus = score >= constants.SCORE_BOUNDARY_PRIORITIZED;
+  const isCommunityFocus = score >= constants.SCORE_BOUNDARY_THRESHOLD;
 
   // Define each indicator in the side panel with constants from copy file (for intl)
   // Indicators are grouped by category
