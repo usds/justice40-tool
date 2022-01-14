@@ -232,7 +232,7 @@ CDC_SVI_INDEX_LANGUAGE_THEME_FIELD: str = (
     "Minority Status/Language Index"
 )
 CDC_SVI_INDEX_HOUSING_TRANSPORTATION_FIELD: str = (
-    "housing Type/Transportation Index"
+    "Housing Type/Transportation Index"
 )
 CDC_SVI_INDEX_RPL_THEMES_OVERALL_FIELD: str = (
     "Overall rank for SVI indices"
