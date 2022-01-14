@@ -224,21 +224,21 @@ MICHIGAN_EJSCREEN_PRIORITY_COMMUNITY_FIELD: str = (
 )
 
 # CDC SVI INDEX percentile fields
-CDC_SVI_INDEX_SE_THEME_FIELD: str = "Socioeconomic Index"
+CDC_SVI_INDEX_SE_THEME_FIELD: str = "SVI - Socioeconomic Index"
 CDC_SVI_INDEX_HOUSEHOLD_THEME_COMPOSITION_FIELD: str = (
-    "Household Composition Index"
+    "SVI - Household Composition Index"
 )
 CDC_SVI_INDEX_LANGUAGE_THEME_FIELD: str = (
-    "Minority Status/Language Index"
+    "SVI- Minority Status/Language Index"
 )
 CDC_SVI_INDEX_HOUSING_TRANSPORTATION_FIELD: str = (
-    "Housing Type/Transportation Index"
+    "SVI- Housing Type/Transportation Index"
 )
 CDC_SVI_INDEX_RPL_THEMES_OVERALL_FIELD: str = (
-    "Overall rank for SVI indices"
+    "Overall rank for Social Vulnerability Indices"
 )
 CDC_SVI_INDEX_THEMES_PRIORITY_COMMUNITY: str = (
-    "At or above 90 for overall percentile ranking according to SVI Index"
+    "At or above 90 for overall percentile ranking according to Social Vulnerability Indices"
 )
 
 # Child Opportunity Index data
