@@ -401,10 +401,14 @@ const J40Map = ({location}: IJ40Interface) => {
           )}
 
           {/* This will add the navigation controls of the zoom in and zoom out buttons */}
-          { windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && <NavigationControl
+          {/* { windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && <NavigationControl
             showCompass={false}
             className={styles.navigationControl}
-          /> }
+          /> } */}
+          <NavigationControl
+            showCompass={false}
+            className={styles.navigationControl}
+          />
 
           {/* This places Geolocation behind a feature flag */}
           {'gl' in flags ? <GeolocateControl
