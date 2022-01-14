@@ -243,18 +243,14 @@ CDC_SVI_INDEX_SE_THEME_FIELD: str = "SVI - Socioeconomic Index"
 CDC_SVI_INDEX_HOUSEHOLD_THEME_COMPOSITION_FIELD: str = (
     "SVI - Household Composition Index"
 )
-CDC_SVI_INDEX_LANGUAGE_THEME_FIELD: str = (
-    "SVI- Minority Status/Language Index"
-)
+CDC_SVI_INDEX_LANGUAGE_THEME_FIELD: str = "SVI- Minority Status/Language Index"
 CDC_SVI_INDEX_HOUSING_TRANSPORTATION_FIELD: str = (
     "SVI- Housing Type/Transportation Index"
 )
 CDC_SVI_INDEX_RPL_THEMES_OVERALL_FIELD: str = (
     "Overall rank for Social Vulnerability Indices"
 )
-CDC_SVI_INDEX_THEMES_PRIORITY_COMMUNITY: str = (
-    "At or above 90 for overall percentile ranking according to Social Vulnerability Indices"
-)
+CDC_SVI_INDEX_THEMES_PRIORITY_COMMUNITY: str = "At or above 90 for overall percentile ranking according to Social Vulnerability Indices"
 
 # Maryland EJSCREEN Data.
 MARYLAND_EJSCREEN_SCORE_FIELD: str = "Maryland Environmental Justice Score"
