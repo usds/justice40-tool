@@ -42,7 +42,7 @@ class CDCSVIIndex(ExtractTransformLoad):
         self.df: pd.DataFrame
 
     def extract(self) -> None:
-        logger.info("Extracting 43 MB CDC SVI INDEX")
+        logger.info("Downloading 43 MB CDC SVI INDEX")
         self.df = pd.read_csv(
             filepath_or_buffer=self.CDC_SVI_INDEX_URL,
             dtype={self.CDC_SVI_INDEX_TRACTS_FIPS_CODE: "string"},
