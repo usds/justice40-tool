@@ -119,10 +119,11 @@ class ScoreM(Score):
                 df[field_names.COLLEGE_ATTENDANCE_FIELD]
                 <= self.MAX_COLLEGE_ATTENDANCE_THRESHOLD
             )
-            |
-            # If college attendance data is null for this tract, just rely on the
-            # poverty data
-            df[field_names.COLLEGE_ATTENDANCE_FIELD].isna()
+            | (
+                # If college attendance data is null for this tract, just rely on the
+                # poverty data
+                df[field_names.COLLEGE_ATTENDANCE_FIELD].isna()
+            )
         )
 
     def _increment_total_eligibility_exceeded(
@@ -547,10 +548,11 @@ class ScoreM(Score):
                 self.df[field_names.COLLEGE_ATTENDANCE_FIELD]
                 <= self.MAX_COLLEGE_ATTENDANCE_THRESHOLD
             )
-            |
-            # If college attendance data is null for this tract, just rely on the
-            # poverty/AMI data
-            self.df[field_names.COLLEGE_ATTENDANCE_FIELD].isna()
+            | (
+                # If college attendance data is null for this tract, just rely on the
+                # poverty/AMI data
+                self.df[field_names.COLLEGE_ATTENDANCE_FIELD].isna()
+            )
         )
 
         unemployment_threshold = (
