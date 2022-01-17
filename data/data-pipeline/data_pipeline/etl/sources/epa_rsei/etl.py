@@ -22,9 +22,7 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
     def __init__(self):
         self.AGGREGATED_RSEI_SCORE_FILE_URL = "http://abt-rsei.s3.amazonaws.com/microdata2019/census_agg/CensusMicroTracts2019_2019_aggregated.zip"
 
-        self.OUTPUT_PATH: Path = (
-            self.DATA_PATH / "dataset" / "epa_rsei"
-        )
+        self.OUTPUT_PATH: Path = self.DATA_PATH / "dataset" / "epa_rsei"
         self.EPA_RSEI_SCORE_THRESHOLD_CUTOFF = 0.75
         self.TRACT_INPUT_COLUMN_NAME = "GEOID10"
         self.NUMBER_FACILITIES_INPUT_FIELD = "NUMFACS"
