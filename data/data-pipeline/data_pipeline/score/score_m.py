@@ -114,13 +114,6 @@ class ScoreM(Score):
                 ]
                 >= self.LOW_INCOME_THRESHOLD
             )
-            | (
-                df[
-                    field_names.LOW_MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD
-                    + field_names.PERCENTILE_FIELD_SUFFIX
-                ]
-                >= self.LOW_INCOME_THRESHOLD
-            )
         ) & (
             (
                 df[field_names.COLLEGE_ATTENDANCE_FIELD]
@@ -128,7 +121,7 @@ class ScoreM(Score):
             )
             |
             # If college attendance data is null for this tract, just rely on the
-            # poverty/AMI data
+            # poverty data
             df[field_names.COLLEGE_ATTENDANCE_FIELD].isna()
         )
 
@@ -729,7 +722,6 @@ class ScoreM(Score):
 
         self.df[field_names.THRESHOLD_COUNT] = 0
         self.df[
-            # TODO: if using AMI, rename this away from FPL_200
             field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES
         ] = self._create_low_income_and_low_college_attendance_threshold(
             self.df
