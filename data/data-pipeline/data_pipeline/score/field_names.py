@@ -313,6 +313,8 @@ TRANSPORTATION_COSTS = "Transportation Costs"
 
 #####
 # Names for individual factors being exceeded
+# TODO: for Definition M, create new output field names (different than those used by
+#  Definition L) and change all output fields to say low income and low college
 # Climate Change
 EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile"
@@ -368,7 +370,8 @@ LOW_LIFE_EXPECTANCY_LOW_INCOME_FIELD = (
 )
 
 # Workforce
-# TODO: for Definition M, change all output fields to say low HS and low college
+# TODO: for Definition M, create new output field names (different than those used by
+#  Definition L) and change all output fields to say low HS and low college
 UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for unemployment"
     " and has low HS education"

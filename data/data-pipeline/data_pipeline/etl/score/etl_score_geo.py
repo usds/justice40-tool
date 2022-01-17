@@ -33,12 +33,12 @@ class GeoScoreETL(ExtractTransformLoad):
             self.DATA_PATH / "census" / "geojson" / "us.json"
         )
 
-        # Import the shortened name for Score L percentile ("SL_PFS") that's used on the
+        # Import the shortened name for Score M percentile ("SM_PFS") that's used on the
         # tiles.
         self.TARGET_SCORE_SHORT_FIELD = constants.TILES_SCORE_COLUMNS[
-            field_names.SCORE_L + field_names.PERCENTILE_FIELD_SUFFIX
+            field_names.SCORE_M + field_names.PERCENTILE_FIELD_SUFFIX
         ]
-        self.TARGET_SCORE_RENAME_TO = "L_SCORE"
+        self.TARGET_SCORE_RENAME_TO = "M_SCORE"
 
         # Import the shortened name for tract ("GTF") that's used on the tiles.
         self.TRACT_SHORT_FIELD = constants.TILES_SCORE_COLUMNS[

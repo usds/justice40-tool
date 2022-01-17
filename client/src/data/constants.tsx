@@ -35,8 +35,8 @@ export const PERFORMANCE_MARKER_MAP_IDLE = 'MAP_IDLE';
 export type J40Properties = { [key: string]: any };
 
 // Properties
-export const SCORE_PROPERTY_HIGH = 'SL_PFS';
-export const SCORE_PROPERTY_LOW = 'L_SCORE';
+export const SCORE_PROPERTY_HIGH = 'SM_PFS';
+export const SCORE_PROPERTY_LOW = 'M_SCORE';
 export const GEOID_PROPERTY = 'GEOID10';
 
 // Indicator values:
@@ -70,14 +70,14 @@ export const PROXIMITY_RMP_SITES_PERCENTILE = 'RMP_PFS';
 export const PROXIMITY_TSDF_SITES_PERCENTILE = 'TSDF_PFS';
 
 // Category booleans (disadvantaged or not):
-export const IS_CLIMATE_FACTOR_DISADVANTAGED_L = 'L_CLT';
-export const IS_ENERGY_FACTOR_DISADVANTAGED_L = 'L_ENY';
-export const IS_TRANSPORT_FACTOR_DISADVANTAGED_L = 'L_TRN';
-export const IS_HOUSING_FACTOR_DISADVANTAGED_L = 'L_HSG';
-export const IS_POLLUTION_FACTOR_DISADVANTAGED_L = 'L_PLN';
-export const IS_WATER_FACTOR_DISADVANTAGED_L = 'L_WTR';
-export const IS_HEALTH_FACTOR_DISADVANTAGED_L = 'L_HLTH';
-export const IS_WORKFORCE_FACTOR_DISADVANTAGED_L = 'L_WKFC';
+export const IS_CLIMATE_FACTOR_DISADVANTAGED_M = 'M_CLT';
+export const IS_ENERGY_FACTOR_DISADVANTAGED_M = 'M_ENY';
+export const IS_TRANSPORT_FACTOR_DISADVANTAGED_M = 'M_TRN';
+export const IS_HOUSING_FACTOR_DISADVANTAGED_M = 'M_HSG';
+export const IS_POLLUTION_FACTOR_DISADVANTAGED_M = 'M_PLN';
+export const IS_WATER_FACTOR_DISADVANTAGED_M = 'M_WTR';
+export const IS_HEALTH_FACTOR_DISADVANTAGED_M = 'M_HLTH';
+export const IS_WORKFORCE_FACTOR_DISADVANTAGED_M = 'M_WKFC';
 
 // Total indicators values:
 export const TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS = 'TC';

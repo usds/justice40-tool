@@ -323,7 +323,7 @@ class PostScoreETL(ExtractTransformLoad):
         # Rename score column
         downloadable_df_copy = downloadable_df.rename(
             columns={
-                field_names.SCORE_L_COMMUNITIES: "Identified as disadvantaged (v0.1)"
+                field_names.SCORE_M_COMMUNITIES: "Identified as disadvantaged (v0.1)"
             },
             inplace=False,
         )
