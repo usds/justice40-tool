@@ -1,6 +1,8 @@
 import {Style} from 'maplibre-gl';
 import * as constants from '../data/constants';
-import {FlagContainer} from '../contexts/FlagContext';
+
+// This file is no longer used, however keeping in case we have to revert to explicit styling. There was a
+// gradient function that in this file's commit history which could prove useful in the future.
 
 // *********** BASE MAP SOURCES  ***************
 const imageSuffix = constants.isMobile ? '' : '@2x';
@@ -22,33 +24,10 @@ const cartoLightBaseLayer = {
   ],
 };
 
-// MapTiler base map source
-// Todo: move API key to .env
-const getMapTilerBaseLayer = (name:string, API_KEY='KMA4bawPDNtR6zNIAfUH') => {
-  return [
-    `https://api.maptiler.com/maps/${name}/{z}/{x}/{y}${imageSuffix}.png?key=${API_KEY}`,
-  ];
-};
 
 // Utility function to make map styles according to JSON spec of MapBox
 // https://docs.mapbox.com/mapbox-gl-js/style-spec/
-export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
-  // Add flags for various types of MapTiler base maps:
-  const getBaseMapLayer = () => {
-    if ('mt-streets' in flagContainer) {
-      return getMapTilerBaseLayer('streets');
-    } else if ('mt-bright' in flagContainer) {
-      return getMapTilerBaseLayer('bright');
-    } else if ('mt-voyager' in flagContainer) {
-      return getMapTilerBaseLayer('voyager');
-    } else if ('mt-osm' in flagContainer) {
-      return getMapTilerBaseLayer('osm-standard');
-    } else {
-      return cartoLightBaseLayer.noLabels;
-    };
-  };
-
-
+export const makeMapStyle = () : Style => {
   return {
     'version': 8,
 
@@ -70,7 +49,7 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
        */
       [constants.BASE_MAP_SOURCE_NAME]: {
         'type': 'raster',
-        'tiles': getBaseMapLayer(),
+        'tiles': cartoLightBaseLayer.noLabels,
 
         /**
          * Attempting to place a direct call to mapbox URL:
@@ -101,52 +80,52 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
       },
 
       // In the layer (below) where the geo source is used, the layer is invisible
-      'geo': {
-        'type': 'raster',
-        'tiles': [
-          'https://mt0.google.com/vt/lyrs=p&hl=en&x={x}&y={y}&z={z}',
-        ],
-        'minzoom': constants.GLOBAL_MIN_ZOOM,
-        'maxzoom': constants.GLOBAL_MAX_ZOOM,
-      },
+      // 'geo': {
+      //   'type': 'raster',
+      //   'tiles': [
+      //     'https://mt0.google.com/vt/lyrs=p&hl=en&x={x}&y={y}&z={z}',
+      //   ],
+      //   'minzoom': constants.GLOBAL_MIN_ZOOM,
+      //   'maxzoom': constants.GLOBAL_MAX_ZOOM,
+      // },
 
       // The High zoom source:
-      [constants.HIGH_ZOOM_SOURCE_NAME]: {
-      // It is only shown at high zoom levels to avoid performance issues at lower zooms
-        'type': 'vector',
-        // Our current tippecanoe command does not set an id.
-        // The below line promotes the GEOID10 property to the ID
-        'promoteId': constants.GEOID_PROPERTY,
-        'tiles': [
-          'high_tiles' in flagContainer ?
-          constants.featureURLForTilesetName(flagContainer['high_tiles']) :
-          constants.FEATURE_TILE_HIGH_ZOOM_URL,
-        ],
-        // Setting maxzoom here enables 'overzooming'
-        // e.g. continued zooming beyond the max bounds.
-        // More here: https://docs.mapbox.com/help/glossary/overzoom/
-        'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
-        'maxzoom': constants.GLOBAL_MAX_ZOOM_HIGH,
-      },
+      // [constants.HIGH_ZOOM_SOURCE_NAME]: {
+      // // It is only shown at high zoom levels to avoid performance issues at lower zooms
+      //   'type': 'vector',
+      //   // Our current tippecanoe command does not set an id.
+      //   // The below line promotes the GEOID10 property to the ID
+      //   'promoteId': constants.GEOID_PROPERTY,
+      //   'tiles': [
+      //     'high_tiles' in flagContainer ?
+      //     constants.featureURLForTilesetName(flagContainer['high_tiles']) :
+      //     constants.FEATURE_TILE_HIGH_ZOOM_URL,
+      //   ],
+      //   // Setting maxzoom here enables 'overzooming'
+      //   // e.g. continued zooming beyond the max bounds.
+      //   // More here: https://docs.mapbox.com/help/glossary/overzoom/
+      //   'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
+      //   'maxzoom': constants.GLOBAL_MAX_ZOOM_HIGH,
+      // },
 
       // The Low zoom source:
-      [constants.LOW_ZOOM_SOURCE_NAME]: {
-      // "Score-low" represents a tileset at the level of bucketed tracts.
-      // census block group information is `dissolve`d into tracts, then
-      // each tract is `dissolve`d into one of ten buckets. It is meant
-      // to give us a favorable tradeoff between performance and fidelity.
-        'type': 'vector',
-        'promoteId': constants.GEOID_PROPERTY,
-        'tiles': [
-          'low_tiles' in flagContainer ?
-          constants.featureURLForTilesetName(flagContainer['low_tiles']) :
-          constants.FEATURE_TILE_LOW_ZOOM_URL,
-        // For local development, use:
-        // 'http://localhost:8080/data/tl_2010_bg_with_data/{z}/{x}/{y}.pbf',
-        ],
-        'minzoom': constants.GLOBAL_MIN_ZOOM_LOW,
-        'maxzoom': constants.GLOBAL_MAX_ZOOM_LOW,
-      },
+      // [constants.LOW_ZOOM_SOURCE_NAME]: {
+      // // "Score-low" represents a tileset at the level of bucketed tracts.
+      // // census block group information is `dissolve`d into tracts, then
+      // // each tract is `dissolve`d into one of ten buckets. It is meant
+      // // to give us a favorable tradeoff between performance and fidelity.
+      //   'type': 'vector',
+      //   'promoteId': constants.GEOID_PROPERTY,
+      //   'tiles': [
+      //     'low_tiles' in flagContainer ?
+      //     constants.featureURLForTilesetName(flagContainer['low_tiles']) :
+      //     constants.FEATURE_TILE_LOW_ZOOM_URL,
+      //   // For local development, use:
+      //   // 'http://localhost:8080/data/tl_2010_bg_with_data/{z}/{x}/{y}.pbf',
+      //   ],
+      //   'minzoom': constants.GLOBAL_MIN_ZOOM_LOW,
+      //   'maxzoom': constants.GLOBAL_MAX_ZOOM_LOW,
+      // },
 
       // The labels source:
       'labels': {
@@ -177,87 +156,87 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
       },
 
       // The Geo layer adds a geographical layer like mountains and rivers
-      {
-        'id': 'geo',
-        'source': 'geo',
-        'type': 'raster',
-        'layout': {
-          // Place visibility behind flag:
-          'visibility': 'geo' in flagContainer ? 'visible' : 'none',
-        },
-        'minzoom': constants.GLOBAL_MIN_ZOOM,
-        'maxzoom': constants.GLOBAL_MAX_ZOOM,
-      },
+      // {
+      //   'id': 'geo',
+      //   'source': 'geo',
+      //   'type': 'raster',
+      //   'layout': {
+      //     // Place visibility behind flag:
+      //     'visibility': 'geo' in flagContainer ? 'visible' : 'none',
+      //   },
+      //   'minzoom': constants.GLOBAL_MIN_ZOOM,
+      //   'maxzoom': constants.GLOBAL_MAX_ZOOM,
+      // },
 
       /**
        * High zoom layer - non-prioritized features only
        */
-      {
-        'id': constants.HIGH_ZOOM_LAYER_ID,
-        'source': constants.HIGH_ZOOM_SOURCE_NAME,
-        'source-layer': constants.SCORE_SOURCE_LAYER,
-        /**
-         * This shows features where the high score < score boundary threshold.
-         * In other words, this filter out prioritized features
-         */
-        'filter': ['all',
-          ['<', constants.SCORE_PROPERTY_HIGH, constants.SCORE_BOUNDARY_THRESHOLD],
-        ],
+      // {
+      //   'id': constants.HIGH_ZOOM_LAYER_ID,
+      //   'source': constants.HIGH_ZOOM_SOURCE_NAME,
+      //   'source-layer': constants.SCORE_SOURCE_LAYER,
+      //   /**
+      //    * This shows features where the high score < score boundary threshold.
+      //    * In other words, this filter out prioritized features
+      //    */
+      //   'filter': ['all',
+      //     ['<', constants.SCORE_PROPERTY_HIGH, constants.SCORE_BOUNDARY_THRESHOLD],
+      //   ],
 
-        'type': 'fill',
-        'paint': {
-          'fill-opacity': constants.NON_PRIORITIZED_FEATURE_FILL_OPACITY,
-        },
-        'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
-      },
+      //   'type': 'fill',
+      //   'paint': {
+      //     'fill-opacity': constants.NON_PRIORITIZED_FEATURE_FILL_OPACITY,
+      //   },
+      //   'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
+      // },
 
       /**
        * High zoom layer - prioritized features only
        */
-      {
-        'id': constants.PRIORITIZED_HIGH_ZOOM_LAYER_ID,
-        'source': constants.HIGH_ZOOM_SOURCE_NAME,
-        'source-layer': constants.SCORE_SOURCE_LAYER,
-        /**
-         * This shows features where the high score > score boundary threshold.
-         * In other words, this filter out non-prioritized features
-         */
-        'filter': ['all',
-          ['>', constants.SCORE_PROPERTY_HIGH, constants.SCORE_BOUNDARY_THRESHOLD],
-        ],
+      // {
+      //   'id': constants.PRIORITIZED_HIGH_ZOOM_LAYER_ID,
+      //   'source': constants.HIGH_ZOOM_SOURCE_NAME,
+      //   'source-layer': constants.SCORE_SOURCE_LAYER,
+      //   /**
+      //    * This shows features where the high score > score boundary threshold.
+      //    * In other words, this filter out non-prioritized features
+      //    */
+      //   'filter': ['all',
+      //     ['>', constants.SCORE_PROPERTY_HIGH, constants.SCORE_BOUNDARY_THRESHOLD],
+      //   ],
 
-        'type': 'fill',
-        'paint': {
-          'fill-color': constants.PRIORITIZED_FEATURE_FILL_COLOR,
-          'fill-opacity': constants.PRIORITIZED_FEATURE_FILL_OPACITY,
-        },
-        'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
-      },
+      //   'type': 'fill',
+      //   'paint': {
+      //     'fill-color': constants.PRIORITIZED_FEATURE_FILL_COLOR,
+      //     'fill-opacity': constants.HIGH_ZOOM_PRIORITIZED_FEATURE_FILL_OPACITY,
+      //   },
+      //   'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
+      // },
 
 
       /**
        * Low zoom layer - prioritized features only
        */
-      {
-        'id': constants.LOW_ZOOM_LAYER_ID,
-        'source': constants.LOW_ZOOM_SOURCE_NAME,
-        'source-layer': constants.SCORE_SOURCE_LAYER,
-        /**
-         * This shows features where the low score > score boundary threshold.
-         * In other words, this filter out non-prioritized features
-         */
-        'filter': ['all',
-          ['>', constants.SCORE_PROPERTY_LOW, constants.SCORE_BOUNDARY_THRESHOLD],
-        ],
+      // {
+      //   'id': constants.LOW_ZOOM_LAYER_ID,
+      //   'source': constants.LOW_ZOOM_SOURCE_NAME,
+      //   'source-layer': constants.SCORE_SOURCE_LAYER,
+      //   /**
+      //    * This shows features where the low score > score boundary threshold.
+      //    * In other words, this filter out non-prioritized features
+      //    */
+      //   'filter': ['all',
+      //     ['>', constants.SCORE_PROPERTY_LOW, constants.SCORE_BOUNDARY_THRESHOLD],
+      //   ],
 
-        'type': 'fill',
-        'paint': {
-          'fill-color': constants.PRIORITIZED_FEATURE_FILL_COLOR,
-          'fill-opacity': constants.PRIORITIZED_FEATURE_FILL_OPACITY,
-        },
-        'minzoom': constants.GLOBAL_MIN_ZOOM_LOW,
-        'maxzoom': constants.GLOBAL_MAX_ZOOM_LOW,
-      },
+      //   'type': 'fill',
+      //   'paint': {
+      //     'fill-color': constants.PRIORITIZED_FEATURE_FILL_COLOR,
+      //     'fill-opacity': constants.LOW_ZOOM_PRIORITIZED_FEATURE_FILL_OPACITY,
+      //   },
+      //   'minzoom': constants.GLOBAL_MIN_ZOOM_LOW,
+      //   'maxzoom': constants.GLOBAL_MAX_ZOOM_LOW,
+      // },
 
       // A layer for labels only
       {
@@ -265,7 +244,7 @@ export const makeMapStyle = (flagContainer: FlagContainer) : Style => {
         'source': 'labels',
         'type': 'raster',
         'layout': {
-          'visibility': 'remove-label-layer' in flagContainer ? 'none' : 'visible',
+          'visibility': 'visible',
         },
         'minzoom': constants.GLOBAL_MIN_ZOOM,
         'maxzoom': constants.GLOBAL_MAX_ZOOM,
