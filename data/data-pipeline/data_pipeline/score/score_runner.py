@@ -9,6 +9,7 @@ from data_pipeline.score.score_h import ScoreH
 from data_pipeline.score.score_i import ScoreI
 from data_pipeline.score.score_k import ScoreK
 from data_pipeline.score.score_l import ScoreL
+from data_pipeline.score.score_m import ScoreM
 from data_pipeline.score import field_names
 
 from data_pipeline.utils import get_module_logger
@@ -33,6 +34,7 @@ class ScoreRunner:
         self.df = ScoreI(df=self.df).add_columns()
         self.df = ScoreK(df=self.df).add_columns()
         self.df = ScoreL(df=self.df).add_columns()
+        self.df = ScoreM(df=self.df).add_columns()
 
         # TODO do this with each score instead of in a bundle
         # Create percentiles for these index scores

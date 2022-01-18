@@ -90,8 +90,8 @@ DATASET_LIST = [
         "class_name": "HudRecapETL",
     },
     {
-        "name": "epa_rsei_aggregate",
-        "module_dir": "epa_rsei_aggregate",
+        "name": "epa_rsei",
+        "module_dir": "epa_rsei",
         "class_name": "EPARiskScreeningEnvironmentalIndicatorsETL",
     },
     {

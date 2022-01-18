@@ -8,9 +8,12 @@ from data_pipeline.utils import get_module_logger
 logger = get_module_logger(__name__)
 
 
-class ScoreL(Score):
+class ScoreM(Score):
+    """Very similar to Score L, with a few minor modifications."""
+
     def __init__(self, df: pd.DataFrame) -> None:
         self.LOW_INCOME_THRESHOLD: float = 0.65
+        self.MAX_COLLEGE_ATTENDANCE_THRESHOLD: float = 0.20
         self.ENVIRONMENTAL_BURDEN_THRESHOLD: float = 0.90
         self.MEDIAN_HOUSE_VALUE_THRESHOLD: float = 0.90
         self.LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD: float = 0.10
@@ -95,18 +98,32 @@ class ScoreL(Score):
 
         return df, threshold_column_name
 
-    def _create_low_income_threshold(self, df: pd.DataFrame) -> pd.Series:
+    def _create_low_income_and_low_college_attendance_threshold(
+        self, df: pd.DataFrame
+    ) -> pd.Series:
         """
         Returns a pandas series (really a numpy array)
         of booleans based on the condition of the FPL at 200%
         is at or more than some established threshold
         """
         return (
-            df[
-                field_names.POVERTY_LESS_THAN_200_FPL_FIELD
-                + field_names.PERCENTILE_FIELD_SUFFIX
-            ]
-            >= self.LOW_INCOME_THRESHOLD
+            (
+                df[
+                    field_names.POVERTY_LESS_THAN_200_FPL_FIELD
+                    + field_names.PERCENTILE_FIELD_SUFFIX
+                ]
+                >= self.LOW_INCOME_THRESHOLD
+            )
+        ) & (
+            (
+                df[field_names.COLLEGE_ATTENDANCE_FIELD]
+                <= self.MAX_COLLEGE_ATTENDANCE_THRESHOLD
+            )
+            | (
+                # If college attendance data is null for this tract, just rely on the
+                # poverty data
+                df[field_names.COLLEGE_ATTENDANCE_FIELD].isna()
+            )
         )
 
     def _increment_total_eligibility_exceeded(
@@ -131,6 +148,7 @@ class ScoreL(Score):
             field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD,
             field_names.EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_FIELD,
             field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD,
+            # field_names.EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD,
         ]
 
         expected_population_loss_threshold = (
@@ -157,19 +175,40 @@ class ScoreL(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
+        extreme_heat_and_median_house_value_threshold = (
+            self.df[
+                field_names.EXTREME_HEAT_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        ) & (
+            self.df[
+                field_names.MEDIAN_HOUSE_VALUE_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            <= self.MEDIAN_HOUSE_VALUE_THRESHOLD
+        )
+
         self.df[field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD] = (
             expected_population_loss_threshold
-            & self.df[field_names.FPL_200_SERIES]
+            & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
         self.df[field_names.EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_FIELD] = (
             expected_agriculture_loss_threshold
-            & self.df[field_names.FPL_200_SERIES]
+            & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
         self.df[field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD] = (
             expected_building_loss_threshold
-            & self.df[field_names.FPL_200_SERIES]
+            & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
+        )
+
+        self.df[
+            field_names.EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD
+        ] = (
+            extreme_heat_and_median_house_value_threshold
+            & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
         self._increment_total_eligibility_exceeded(climate_eligibility_columns)
@@ -204,11 +243,13 @@ class ScoreL(Score):
         )
 
         self.df[field_names.PM25_EXPOSURE_LOW_INCOME_FIELD] = (
-            pm25_threshold & self.df[field_names.FPL_200_SERIES]
+            pm25_threshold
+            & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
         self.df[field_names.ENERGY_BURDEN_LOW_INCOME_FIELD] = (
-            energy_burden_threshold & self.df[field_names.FPL_200_SERIES]
+            energy_burden_threshold
+            & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
         self._increment_total_eligibility_exceeded(energy_eligibility_columns)
@@ -246,11 +287,13 @@ class ScoreL(Score):
         )
 
         self.df[field_names.DIESEL_PARTICULATE_MATTER_LOW_INCOME_FIELD] = (
-            diesel_threshold & self.df[field_names.FPL_200_SERIES]
+            diesel_threshold
+            & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
         self.df[field_names.TRAFFIC_PROXIMITY_LOW_INCOME_FIELD] = (
-            traffic_threshold & self.df[field_names.FPL_200_SERIES]
+            traffic_threshold
+            & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
         self._increment_total_eligibility_exceeded(
@@ -303,11 +346,12 @@ class ScoreL(Score):
         # series by series indicators
         self.df[field_names.LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD] = (
             lead_paint_median_home_value_threshold
-            & self.df[field_names.FPL_200_SERIES]
+            & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
         self.df[field_names.HOUSING_BURDEN_LOW_INCOME_FIELD] = (
-            housing_burden_threshold & self.df[field_names.FPL_200_SERIES]
+            housing_burden_threshold
+            & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
         self._increment_total_eligibility_exceeded(housing_eligibility_columns)
@@ -346,13 +390,16 @@ class ScoreL(Score):
 
         # individual series-by-series
         self.df[field_names.RMP_LOW_INCOME_FIELD] = (
-            rmp_sites_threshold & self.df[field_names.FPL_200_SERIES]
+            rmp_sites_threshold
+            & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
         self.df[field_names.SUPERFUND_LOW_INCOME_FIELD] = (
-            npl_sites_threshold & self.df[field_names.FPL_200_SERIES]
+            npl_sites_threshold
+            & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
         self.df[field_names.HAZARDOUS_WASTE_LOW_INCOME_FIELD] = (
-            tsdf_sites_threshold & self.df[field_names.FPL_200_SERIES]
+            tsdf_sites_threshold
+            & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
         self._increment_total_eligibility_exceeded(
@@ -377,7 +424,8 @@ class ScoreL(Score):
         )
 
         self.df[field_names.WASTEWATER_DISCHARGE_LOW_INCOME_FIELD] = (
-            wastewater_threshold & self.df[field_names.FPL_200_SERIES]
+            wastewater_threshold
+            & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
         self._increment_total_eligibility_exceeded(
@@ -404,6 +452,7 @@ class ScoreL(Score):
             field_names.ASTHMA_LOW_INCOME_FIELD,
             field_names.HEART_DISEASE_LOW_INCOME_FIELD,
             field_names.LOW_LIFE_EXPECTANCY_LOW_INCOME_FIELD,
+            # field_names.HEALTHY_FOOD_LOW_INCOME_FIELD,
         ]
 
         diabetes_threshold = (
@@ -436,17 +485,33 @@ class ScoreL(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
+        healthy_food_threshold = (
+            self.df[
+                field_names.HEALTHY_FOOD_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        )
+
         self.df[field_names.DIABETES_LOW_INCOME_FIELD] = (
-            diabetes_threshold & self.df[field_names.FPL_200_SERIES]
+            diabetes_threshold
+            & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
         self.df[field_names.ASTHMA_LOW_INCOME_FIELD] = (
-            asthma_threshold & self.df[field_names.FPL_200_SERIES]
+            asthma_threshold
+            & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
         self.df[field_names.HEART_DISEASE_LOW_INCOME_FIELD] = (
-            heart_disease_threshold & self.df[field_names.FPL_200_SERIES]
+            heart_disease_threshold
+            & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
         self.df[field_names.LOW_LIFE_EXPECTANCY_LOW_INCOME_FIELD] = (
-            low_life_expectancy_threshold & self.df[field_names.FPL_200_SERIES]
+            low_life_expectancy_threshold
+            & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
+        )
+        self.df[field_names.HEALTHY_FOOD_LOW_INCOME_FIELD] = (
+            healthy_food_threshold
+            & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
         self._increment_total_eligibility_exceeded(health_eligibility_columns)
@@ -475,9 +540,19 @@ class ScoreL(Score):
             field_names.LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD,
         ]
 
-        self.df[field_names.LOW_HS_EDUCATION_FIELD] = (
+        self.df[field_names.LOW_HS_EDUCATION_LOW_COLLEGE_ATTENDANCE_FIELD] = (
             self.df[field_names.HIGH_SCHOOL_ED_FIELD]
             >= self.LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD
+        ) & (
+            (
+                self.df[field_names.COLLEGE_ATTENDANCE_FIELD]
+                <= self.MAX_COLLEGE_ATTENDANCE_THRESHOLD
+            )
+            | (
+                # If college attendance data is null for this tract, just rely on the
+                # poverty/AMI data
+                self.df[field_names.COLLEGE_ATTENDANCE_FIELD].isna()
+            )
         )
 
         unemployment_threshold = (
@@ -514,20 +589,22 @@ class ScoreL(Score):
 
         self.df[field_names.LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD] = (
             linguistic_isolation_threshold
-            & self.df[field_names.LOW_HS_EDUCATION_FIELD]
+            & self.df[field_names.LOW_HS_EDUCATION_LOW_COLLEGE_ATTENDANCE_FIELD]
         )
 
         self.df[field_names.POVERTY_LOW_HS_EDUCATION_FIELD] = (
-            poverty_threshold & self.df[field_names.LOW_HS_EDUCATION_FIELD]
+            poverty_threshold
+            & self.df[field_names.LOW_HS_EDUCATION_LOW_COLLEGE_ATTENDANCE_FIELD]
         )
 
         self.df[field_names.LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD] = (
             low_median_income_threshold
-            & self.df[field_names.LOW_HS_EDUCATION_FIELD]
+            & self.df[field_names.LOW_HS_EDUCATION_LOW_COLLEGE_ATTENDANCE_FIELD]
         )
 
         self.df[field_names.UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD] = (
-            unemployment_threshold & self.df[field_names.LOW_HS_EDUCATION_FIELD]
+            unemployment_threshold
+            & self.df[field_names.LOW_HS_EDUCATION_LOW_COLLEGE_ATTENDANCE_FIELD]
         )
 
         workforce_combined_criteria_for_states = self.df[
@@ -643,49 +720,51 @@ class ScoreL(Score):
         )
 
     def add_columns(self) -> pd.DataFrame:
-        logger.info("Adding Score L")
+        logger.info("Adding Score M")
 
         self.df[field_names.THRESHOLD_COUNT] = 0
-        self.df[field_names.FPL_200_SERIES] = self._create_low_income_threshold(
+        self.df[
+            field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES
+        ] = self._create_low_income_and_low_college_attendance_threshold(
             self.df
         )
-        self.df[field_names.L_CLIMATE] = self._climate_factor()
-        self.df[field_names.L_ENERGY] = self._energy_factor()
-        self.df[field_names.L_TRANSPORTATION] = self._transportation_factor()
-        self.df[field_names.L_HOUSING] = self._housing_factor()
-        self.df[field_names.L_POLLUTION] = self._pollution_factor()
-        self.df[field_names.L_WATER] = self._water_factor()
-        self.df[field_names.L_HEALTH] = self._health_factor()
-        self.df[field_names.L_WORKFORCE] = self._workforce_factor()
+        self.df[field_names.M_CLIMATE] = self._climate_factor()
+        self.df[field_names.M_ENERGY] = self._energy_factor()
+        self.df[field_names.M_TRANSPORTATION] = self._transportation_factor()
+        self.df[field_names.M_HOUSING] = self._housing_factor()
+        self.df[field_names.M_POLLUTION] = self._pollution_factor()
+        self.df[field_names.M_WATER] = self._water_factor()
+        self.df[field_names.M_HEALTH] = self._health_factor()
+        self.df[field_names.M_WORKFORCE] = self._workforce_factor()
 
         factors = [
-            field_names.L_CLIMATE,
-            field_names.L_ENERGY,
-            field_names.L_TRANSPORTATION,
-            field_names.L_HOUSING,
-            field_names.L_POLLUTION,
-            field_names.L_WATER,
-            field_names.L_HEALTH,
-            field_names.L_WORKFORCE,
+            field_names.M_CLIMATE,
+            field_names.M_ENERGY,
+            field_names.M_TRANSPORTATION,
+            field_names.M_HOUSING,
+            field_names.M_POLLUTION,
+            field_names.M_WATER,
+            field_names.M_HEALTH,
+            field_names.M_WORKFORCE,
         ]
-        self.df[field_names.SCORE_L_COMMUNITIES] = self.df[factors].any(axis=1)
+        self.df[field_names.SCORE_M_COMMUNITIES] = self.df[factors].any(axis=1)
 
         # Note: this is purely used for comparison tool analysis, and can be removed at a later date. - LMB.
         non_workforce_factors = [
-            field_names.L_CLIMATE,
-            field_names.L_ENERGY,
-            field_names.L_TRANSPORTATION,
-            field_names.L_HOUSING,
-            field_names.L_POLLUTION,
-            field_names.L_WATER,
-            field_names.L_HEALTH,
+            field_names.M_CLIMATE,
+            field_names.M_ENERGY,
+            field_names.M_TRANSPORTATION,
+            field_names.M_HOUSING,
+            field_names.M_POLLUTION,
+            field_names.M_WATER,
+            field_names.M_HEALTH,
         ]
-        self.df[field_names.L_NON_WORKFORCE] = self.df[
+        self.df[field_names.M_NON_WORKFORCE] = self.df[
             non_workforce_factors
         ].any(axis=1)
 
         self.df[
-            field_names.SCORE_L + field_names.PERCENTILE_FIELD_SUFFIX
-        ] = self.df[field_names.SCORE_L_COMMUNITIES].astype(int)
+            field_names.SCORE_M + field_names.PERCENTILE_FIELD_SUFFIX
+        ] = self.df[field_names.SCORE_M_COMMUNITIES].astype(int)
 
         return self.df

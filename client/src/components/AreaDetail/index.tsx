@@ -256,57 +256,57 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
       id: 'climate-change',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.CLIMATE),
       indicators: [expAgLoss, expBldLoss, expPopLoss, lowInc],
-      isDisadvagtaged: properties[constants.IS_CLIMATE_FACTOR_DISADVANTAGED_L] ?
-        properties[constants.IS_CLIMATE_FACTOR_DISADVANTAGED_L] : null,
+      isDisadvagtaged: properties[constants.IS_CLIMATE_FACTOR_DISADVANTAGED_M] ?
+        properties[constants.IS_CLIMATE_FACTOR_DISADVANTAGED_M] : null,
     },
     {
       id: 'clean-energy',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.CLEAN_ENERGY),
       indicators: [energyBurden, pm25, lowInc],
-      isDisadvagtaged: properties[constants.IS_ENERGY_FACTOR_DISADVANTAGED_L] ?
-        properties[constants.IS_ENERGY_FACTOR_DISADVANTAGED_L] : null,
+      isDisadvagtaged: properties[constants.IS_ENERGY_FACTOR_DISADVANTAGED_M] ?
+        properties[constants.IS_ENERGY_FACTOR_DISADVANTAGED_M] : null,
     },
     {
       id: 'clean-transport',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.CLEAN_TRANSPORT),
       indicators: [dieselPartMatter, trafficVolume, lowInc],
-      isDisadvagtaged: properties[constants.IS_TRANSPORT_FACTOR_DISADVANTAGED_L] ?
-        properties[constants.IS_TRANSPORT_FACTOR_DISADVANTAGED_L] : null,
+      isDisadvagtaged: properties[constants.IS_TRANSPORT_FACTOR_DISADVANTAGED_M] ?
+        properties[constants.IS_TRANSPORT_FACTOR_DISADVANTAGED_M] : null,
     },
     {
       id: 'sustain-house',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.SUSTAIN_HOUSE),
       indicators: [houseBurden, leadPaint, lowInc],
-      isDisadvagtaged: properties[constants.IS_HOUSING_FACTOR_DISADVANTAGED_L] ?
-        properties[constants.IS_HOUSING_FACTOR_DISADVANTAGED_L] : null,
+      isDisadvagtaged: properties[constants.IS_HOUSING_FACTOR_DISADVANTAGED_M] ?
+        properties[constants.IS_HOUSING_FACTOR_DISADVANTAGED_M] : null,
     },
     {
       id: 'leg-pollute',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.LEG_POLLUTE),
       indicators: [proxHaz, proxNPL, proxRMP, lowInc],
-      isDisadvagtaged: properties[constants.IS_POLLUTION_FACTOR_DISADVANTAGED_L] ?
-        properties[constants.IS_POLLUTION_FACTOR_DISADVANTAGED_L] : null,
+      isDisadvagtaged: properties[constants.IS_POLLUTION_FACTOR_DISADVANTAGED_M] ?
+        properties[constants.IS_POLLUTION_FACTOR_DISADVANTAGED_M] : null,
     },
     {
       id: 'clean-water',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.CLEAN_WATER),
       indicators: [wasteWater, lowInc],
-      isDisadvagtaged: properties[constants.IS_WATER_FACTOR_DISADVANTAGED_L] ?
-        properties[constants.IS_WATER_FACTOR_DISADVANTAGED_L] : null,
+      isDisadvagtaged: properties[constants.IS_WATER_FACTOR_DISADVANTAGED_M] ?
+        properties[constants.IS_WATER_FACTOR_DISADVANTAGED_M] : null,
     },
     {
       id: 'health-burdens',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.HEALTH_BURDEN),
       indicators: [asthma, diabetes, heartDisease, lifeExpect, lowInc],
-      isDisadvagtaged: properties[constants.IS_HEALTH_FACTOR_DISADVANTAGED_L] ?
-        properties[constants.IS_HEALTH_FACTOR_DISADVANTAGED_L] : null,
+      isDisadvagtaged: properties[constants.IS_HEALTH_FACTOR_DISADVANTAGED_M] ?
+        properties[constants.IS_HEALTH_FACTOR_DISADVANTAGED_M] : null,
     },
     {
       id: 'work-dev',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.WORK_DEV),
       indicators: [lowMedInc, lingIso, unemploy, poverty, highSchool],
-      isDisadvagtaged: properties[constants.IS_WORKFORCE_FACTOR_DISADVANTAGED_L] ?
-        properties[constants.IS_WORKFORCE_FACTOR_DISADVANTAGED_L] : null,
+      isDisadvagtaged: properties[constants.IS_WORKFORCE_FACTOR_DISADVANTAGED_M] ?
+        properties[constants.IS_WORKFORCE_FACTOR_DISADVANTAGED_M] : null,
     },
   ];
 

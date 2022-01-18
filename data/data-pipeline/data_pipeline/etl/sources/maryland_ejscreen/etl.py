@@ -33,7 +33,7 @@ class MarylandEJScreenETL(ExtractTransformLoad):
         self.df: pd.DataFrame
 
     def extract(self) -> None:
-        logger.info("Downloading Maryland EJSCREEN Data")
+        logger.info("Downloading 207MB Maryland EJSCREEN Data")
         super().extract(
             self.MARYLAND_EJSCREEN_URL,
             self.TMP_PATH,

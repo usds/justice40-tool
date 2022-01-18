@@ -28,6 +28,8 @@ SCORE_I = "Score I"
 SCORE_I_COMMUNITIES = "Score I (communities)"
 SCORE_K = "NMTC (communities)"
 SCORE_K_COMMUNITIES = "Score K (communities)"
+
+# Definition L fields
 SCORE_L = "Definition L"
 SCORE_L_COMMUNITIES = "Definition L (communities)"
 L_CLIMATE = "Climate Factor (Definition L)"
@@ -39,6 +41,20 @@ L_WATER = "Water Factor (Definition L)"
 L_HEALTH = "Health Factor (Definition L)"
 L_WORKFORCE = "Workforce Factor (Definition L)"
 L_NON_WORKFORCE = "Any Non-Workforce Factor (Definition L)"
+
+# Definition M fields
+SCORE_M = "Definition M"
+SCORE_M_COMMUNITIES = "Definition M (communities)"
+M_CLIMATE = "Climate Factor (Definition M)"
+M_ENERGY = "Energy Factor (Definition M)"
+M_TRANSPORTATION = "Transportation Factor (Definition M)"
+M_HOUSING = "Housing Factor (Definition M)"
+M_POLLUTION = "Pollution Factor (Definition M)"
+M_WATER = "Water Factor (Definition M)"
+M_HEALTH = "Health Factor (Definition M)"
+M_WORKFORCE = "Workforce Factor (Definition M)"
+M_NON_WORKFORCE = "Any Non-Workforce Factor (Definition M)"
+
 PERCENTILE = 90
 MEDIAN_HOUSE_VALUE_PERCENTILE = 90
 
@@ -297,6 +313,8 @@ TRANSPORTATION_COSTS = "Transportation Costs"
 
 #####
 # Names for individual factors being exceeded
+# TODO: for Definition M, create new output field names (different than those used by
+#  Definition L) and change all output fields to say low income and low college
 # Climate Change
 EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile"
@@ -352,6 +370,8 @@ LOW_LIFE_EXPECTANCY_LOW_INCOME_FIELD = (
 )
 
 # Workforce
+# TODO: for Definition M, create new output field names (different than those used by
+#  Definition L) and change all output fields to say low HS and low college
 UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for unemployment"
     " and has low HS education"
@@ -373,6 +393,9 @@ LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD = (
 )
 
 LOW_HS_EDUCATION_FIELD = "Low high school education"
+LOW_HS_EDUCATION_LOW_COLLEGE_ATTENDANCE_FIELD = (
+    "Low high school education and low college attendance"
+)
 
 # Workforce for island areas
 ISLAND_AREAS_SUFFIX = " in 2009 (island areas)"
@@ -420,5 +443,8 @@ LOW_READING_LOW_HS_EDUCATION_FIELD = (
 THRESHOLD_COUNT = "Total threshold criteria exceeded"
 
 FPL_200_SERIES = "Is low income?"
+FPL_200_AND_COLLEGE_ATTENDANCE_SERIES = (
+    "Is low income and low college attendance?"
+)
 # End of names for individual factors being exceeded
 ####
