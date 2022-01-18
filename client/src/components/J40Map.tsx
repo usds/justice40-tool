@@ -227,8 +227,6 @@ const J40Map = ({location}: IJ40Interface) => {
     setGeolocationInProgress(true);
   };
 
-  console.log('process.env.MAPBOX_STYLES_READ_TOKEN:', `${process.env.MAPBOX_STYLES_READ_TOKEN}`.slice(-5));
-
   return (
     <>
       <Grid col={12} desktop={{col: 9}}>
