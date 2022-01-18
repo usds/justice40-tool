@@ -29,7 +29,7 @@ import MapSearch from './MapSearch';
 import TerritoryFocusControl from './territoryFocusControl';
 
 // Styles and constants
-// import {makeMapStyle} from '../data/mapStyle';
+import {getOSBaseMap} from '../data/getOSBaseMap';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import * as constants from '../data/constants';
 import * as styles from './J40Map.module.scss';
@@ -227,6 +227,8 @@ const J40Map = ({location}: IJ40Interface) => {
     setGeolocationInProgress(true);
   };
 
+  console.log('process.env.MAPBOX_STYLES_READ_TOKEN:', `${process.env.MAPBOX_STYLES_READ_TOKEN}`.slice(-5));
+
   return (
     <>
       <Grid col={12} desktop={{col: 9}}>
@@ -258,14 +260,18 @@ const J40Map = ({location}: IJ40Interface) => {
         <ReactMapGL
           // Initialization props:
           // access token is j40StylesReadToken
-          mapboxApiAccessToken={process.env.GATSBY_MAPBOX_STYLES_READ_TOKEN}
+          mapboxApiAccessToken={
+            process.env.MAPBOX_STYLES_READ_TOKEN ?
+            process.env.MAPBOX_STYLES_READ_TOKEN : ''}
 
           // Map state props:
           // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#map-state
           {...viewport}
-          mapStyle={`mapbox://styles/mapbox/streets-v11`}
+          mapStyle={
+            process.env.MAPBOX_STYLES_READ_TOKEN ? `mapbox://styles/mapbox/streets-v11` :
+            getOSBaseMap()
+          }
           // This styles will need to be enabled in some way when adding back the free map - #1133
-          // mapStyle={makeMapStyle(flags)}
           width="100%"
           height={windowWidth < 1024 ? '44vh' : '100%'}
           mapOptions={{hash: true}}

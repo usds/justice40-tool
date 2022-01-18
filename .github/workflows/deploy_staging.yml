@@ -38,6 +38,7 @@ jobs:
           DATA_SOURCE: cdn
           SITE_URL: "http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/"
           PATH_PREFIX: "/justice40-tool/${{env.DESTINATION_FOLDER}}"
+          MAPBOX_STYLES_READ_TOKEN: "${{ secrets.MAPBOX_STYLES_READ_TOKEN}}""
       - name: Get directory contents
         run: ls -la public
       - name: Lint
