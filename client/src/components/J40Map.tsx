@@ -82,6 +82,8 @@ const J40Map = ({location}: IJ40Interface) => {
   const [isMobileMapState, setIsMobileMapState] = useState<boolean>(false);
   const {width: windowWidth} = useWindowSize();
 
+  console.log('useWindowSize width: ', windowWidth);
+
   const mapRef = useRef<MapRef>(null);
   const flags = useFlags();
 
