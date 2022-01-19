@@ -274,7 +274,7 @@ const J40Map = ({location}: IJ40Interface) => {
             getOSBaseMap()
           }
           width="100%"
-          height={(isMobile && (windowWidth < 1024)) ? '44vh' : '100%'}
+          height={windowWidth > 1024 ? '100%' : '44vh'}
           mapOptions={{hash: true}}
 
           // Interaction option props:
