@@ -273,9 +273,8 @@ const J40Map = ({location}: IJ40Interface) => {
             process.env.MAPBOX_STYLES_READ_TOKEN ? `mapbox://styles/mapbox/streets-v11` :
             getOSBaseMap()
           }
-          // This styles will need to be enabled in some way when adding back the free map - #1133
           width="100%"
-          height={windowWidth < 1024 ? '44vh' : '100%'}
+          height={(isMobile && (windowWidth < 1024)) ? '44vh' : '100%'}
           mapOptions={{hash: true}}
 
           // Interaction option props:
