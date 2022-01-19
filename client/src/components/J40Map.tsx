@@ -83,6 +83,7 @@ const J40Map = ({location}: IJ40Interface) => {
   const {width: windowWidth} = useWindowSize();
 
   console.log('useWindowSize width: ', windowWidth);
+  console.log('isMobile: ', isMobile);
 
   const mapRef = useRef<MapRef>(null);
   const flags = useFlags();
@@ -191,7 +192,8 @@ const J40Map = ({location}: IJ40Interface) => {
     if (typeof window !== 'undefined' && window.Cypress && mapRef.current) {
       window.underlyingMap = mapRef.current.getMap();
     }
-
+    console.log('on load width: ', windowWidth);
+    console.log('onLoad isMobile: ', isMobile);
     if (isMobile) setIsMobileMapState(true);
   };
 
