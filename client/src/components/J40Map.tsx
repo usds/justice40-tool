@@ -231,6 +231,17 @@ const J40Map = ({location}: IJ40Interface) => {
     setGeolocationInProgress(true);
   };
 
+  const getMapHeight = () => {
+    // Todo: change to 100% and move to constants:
+    if (isMobile) {
+      return isMobile ? '55vh' : '90%';
+    } else if (windowWidth) {
+      return windowWidth > constants.USWDS_BREAKPOINTS.DESKTOP ? '90%' : '55vh';
+    } else {
+      return '55vh';
+    }
+  };
+
   return (
     <>
       <Grid col={12} desktop={{col: 9}}>
@@ -274,8 +285,9 @@ const J40Map = ({location}: IJ40Interface) => {
             getOSBaseMap()
           }
           width="100%"
-          height={!isMobile && (windowWidth > constants.USWDS_BREAKPOINTS.DESKTOP) ? '90%' : '55vh'}
+          // height={!isMobile && (windowWidth > constants.USWDS_BREAKPOINTS.DESKTOP) ? '90%' : '55vh'}
           // height={'55vh'}
+          height={getMapHeight()}
           mapOptions={{hash: true}}
 
           // Interaction option props:
