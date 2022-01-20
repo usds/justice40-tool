@@ -205,7 +205,7 @@ Para instalar los ejecutables mencionados anteriormente:
 
 ### Usuarios de Windows
 
-Si desea ejecutar la generación de mosaicos, instale TippeCanoe [siguiendo estas instrucciones] (https://github.com/GISupportICRC/ArcGIS2Mapbox#installing-tippecanoe-on-windows). También necesita algunos requisitos previos para Geopandas como se especifica en los requisitos de poesía. Siga [estas instrucciones](https://stackoverflow.com/questions/56958421/pip-install-geopandas-on-windows) para instalar la dependencia de Geopandas localmente. Definitivamente es más fácil si tiene acceso a WSL (Windows Subsystem Linux) e instala estos paquetes usando comandos similares a nuestro [Dockerfile] (https://github.com/usds/justice40-tool/blob/main/data/datacanalización/Dockerfile).
+Si desea ejecutar la generación de mosaicos, instale TippeCanoe [siguiendo estas instrucciones] (https://github.com/GISupportICRC/ArcGIS2Mapbox#installing-tippecanoe-on-windows). También necesita algunos requisitos previos para Geopandas como se especifica en los requisitos de poesía. Siga [estas instrucciones](https://stackoverflow.com/questions/56958421/pip-install-geopandas-on-windows) para instalar la dependencia de Geopandas localmente. Definitivamente es más fácil si tiene acceso a WSL (Windows Subsystem Linux) e instala estos paquetes usando comandos similares a nuestro [Dockerfile] (https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/Dockerfile).
 
 ### Configuración de la poesía
 
