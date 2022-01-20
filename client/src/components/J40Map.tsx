@@ -274,7 +274,7 @@ const J40Map = ({location}: IJ40Interface) => {
             getOSBaseMap()
           }
           width="100%"
-          height={isMobile && (windowWidth > constants.USWDS_BREAKPOINTS.DESKTOP) ? '90%' : '55vh'}
+          height={!isMobile && (windowWidth > constants.USWDS_BREAKPOINTS.DESKTOP) ? '90%' : '55vh'}
           // height={'55vh'}
           mapOptions={{hash: true}}
 
