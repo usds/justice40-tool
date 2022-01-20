@@ -127,7 +127,7 @@ Esto funciona dirigiendo a los usuarios a una versión apropiada de la página q
 Para que esta biblioteca funcione de manera óptima, se deben obedecer los siguientes principios (consulte [here](https://formatjs.io/docs/getting-started/message-extraction) para obtener más detalles):
 
 - Todas las cadenas visibles para el usuario deben envolverse con la función `intl.formatMessage` o la etiqueta `<FormattedMessage>`, con un conjunto `description` y `defaultMessage`. Todavía no configure la etiqueta "id", se generará para usted. Para generar archivos para la localización, ejecute `npm run intl:extract` para actualizar el archivo en `src/intl/en.json` con el contenido extraído de todos los componentes de `FormattedMessage`.
-- Tome nota del `id` en este archivo y vuelva a agregarlo como un parámetro de su función/accesorio para su componente (esto se hace para evitar colisiones de nombres como se detalla [aquí](https://formatjs.io/docs/primerospasos/extracción-de-mensajes))
+- Tome nota del `id` en este archivo y vuelva a agregarlo como un parámetro de su función/accesorio para su componente (esto se hace para evitar colisiones de nombres como se detalla [aquí](https://formatjs.io/docs/primerospasos/extracción-de-mensajes)
 - Todos los componentes `Link` deben importarse desde `gatsby-plugin-intl` para obtener el enlace apropiado para la configuración regional.
 - Todas las páginas deben importar y usar `useIntl` de `gatsby-plugin-intl`
 
