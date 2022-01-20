@@ -252,7 +252,7 @@ const J40Map = ({location}: IJ40Interface) => {
          *
          * to ensure the production build works and that MapSearch and the map (ReactMapGL) render correctly.
          */}
-        {/* <MapSearch goToPlace={goToPlace}/> */}
+        <MapSearch goToPlace={goToPlace}/>
 
 
         {/**
@@ -274,7 +274,8 @@ const J40Map = ({location}: IJ40Interface) => {
             getOSBaseMap()
           }
           width="100%"
-          height={(isMobileMapState || (windowWidth < 1024)) ? '44vh' : '100%'}
+          // height={(isMobileMapState || (windowWidth < constants.USWDS_BREAKPOINTS.DESKTOP)) ? '55vh' : '100%'}
+          height={'55vh'}
           mapOptions={{hash: true}}
 
           // Interaction option props:
@@ -404,14 +405,10 @@ const J40Map = ({location}: IJ40Interface) => {
           )}
 
           {/* This will add the navigation controls of the zoom in and zoom out buttons */}
-          {/* { windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && <NavigationControl
+          { windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && <NavigationControl
             showCompass={false}
             className={styles.navigationControl}
-          /> } */}
-          <NavigationControl
-            showCompass={false}
-            className={styles.navigationControl}
-          />
+          /> }
 
           {/* This places Geolocation behind a feature flag */}
           {'gl' in flags ? <GeolocateControl
