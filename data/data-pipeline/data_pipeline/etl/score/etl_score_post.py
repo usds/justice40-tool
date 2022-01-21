@@ -272,7 +272,7 @@ class PostScoreETL(ExtractTransformLoad):
                 # Round all other floats.
                 df[column] = floor_series(
                     series=df[column].astype(float64),
-                    number_of_decimals=constants.TILES_ROUND_NUM_DECIMALS,
+                    number_of_decimals=constants.TILES_ROUND_FEMA_NUM_DECIMALS,
                 )
 
         return df
