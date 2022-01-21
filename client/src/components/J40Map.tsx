@@ -246,6 +246,13 @@ const J40Map = ({location}: IJ40Interface) => {
 
   return (
     <>
+      <div>
+        {`
+      windowWidth: ${windowWidth}, 
+      constant.desktop: ${constants.USWDS_BREAKPOINTS.DESKTOP}, 
+      boolean test: ${windowWidth > constants.USWDS_BREAKPOINTS.DESKTOP}
+    `}
+      </div>
       <Grid col={12} desktop={{col: 9}}>
 
         {/**
