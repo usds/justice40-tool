@@ -7,6 +7,8 @@ interface ILinkTypeWrapper {
     url?: string;
     openUrlNewTab?: boolean;
     className?: string;
+    key?: string;
+    dataCy?: string;
   }
 
 // eslint-disable-next-line valid-jsdoc
@@ -35,14 +37,22 @@ const LinkTypeWrapper = (props:ILinkTypeWrapper) => {
   } else {
     return props.openUrlNewTab ?
     <a
+      key={props.key ? props.key : ''}
       className={props.className}
       href={props.url}
       target="_blank"
-      rel="noreferrer">{props.linkText}
+      rel="noreferrer"
+      data-cy={props.dataCy ? props.dataCy : ''}
+    >
+      {props.linkText}
     </a> :
     <a
+      key={props.key ? props.key : ''}
       className={props.className}
-      href={props.url}>{props.linkText}
+      href={props.url}
+      data-cy={props.dataCy? props.dataCy : ''}
+    >
+      {props.linkText}
     </a>;
   }
 };

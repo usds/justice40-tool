@@ -588,6 +588,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 >
                   <a
                     class="j40-aboutcard-link"
+                    data-cy=""
                     href="mailto:Screeningtool-Support@omb.eop.gov"
                     rel="noreferrer"
                     target="_blank"
@@ -643,6 +644,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 >
                   <a
                     class="j40-aboutcard-link"
+                    data-cy=""
                     href="https://github.com/usds/justice40-tool"
                     rel="noreferrer"
                     target="_blank"
