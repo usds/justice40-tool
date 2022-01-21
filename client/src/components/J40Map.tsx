@@ -82,8 +82,12 @@ const J40Map = ({location}: IJ40Interface) => {
   const [isMobileMapState, setIsMobileMapState] = useState<boolean>(false);
   const {width: windowWidth} = useWindowSize();
 
-  console.log('useWindowSize width: ', windowWidth);
-  console.log('isMobile: ', isMobile);
+  console.log(
+      'inline:',
+      typeof windowWidth, windowWidth,
+      typeof constants.USWDS_BREAKPOINTS.DESKTOP,
+      constants.USWDS_BREAKPOINTS.DESKTOP,
+  );
 
   const mapRef = useRef<MapRef>(null);
   const flags = useFlags();
@@ -231,31 +235,39 @@ const J40Map = ({location}: IJ40Interface) => {
     setGeolocationInProgress(true);
   };
 
-  const getMapHeight = () => {
-    // Todo: change to 100% and move to constants:
-    console.log('in getMapHeight constants.desktop:', windowWidth, constants.USWDS_BREAKPOINTS.DESKTOP);
-    console.log('boolean test: ', windowWidth > constants.USWDS_BREAKPOINTS.DESKTOP);
-    if (isMobile) {
-      return isMobile ? '55vh' : '91%';
-    } else if (windowWidth) {
-      return windowWidth > constants.USWDS_BREAKPOINTS.DESKTOP ? '89%' : '55vh';
-    } else {
-      return '55vh';
-    }
-  };
+  // const getMapHeight = () => {
+  //   // Todo: change to 100% and move to constants:
+  //   console.log(
+  //       'in getMapHeight constants.desktop:',
+  //       typeof windowWidth, windowWidth,
+  //       typeof constants.USWDS_BREAKPOINTS.DESKTOP,
+  //       constants.USWDS_BREAKPOINTS.DESKTOP,
+  //   );
+  //   console.log('boolean test: ', windowWidth > constants.USWDS_BREAKPOINTS.DESKTOP);
+  //   if (isMobile) {
+  //     return isMobile ? '55vh' : '91%';
+  //   } else if (windowWidth) {
+  //     return windowWidth > constants.USWDS_BREAKPOINTS.DESKTOP ? '89%' : '55vh';
+  //   } else {
+  //     return '55vh';
+  //   }
+  // };
 
   return (
     <>
       <div
         style={{height: `${windowWidth > constants.USWDS_BREAKPOINTS.DESKTOP ? '88.5%' : '55vh'}`}}
       >
-        {`
+        <pre>
+          {`
       windowWidth: ${windowWidth}, 
       constant.desktop: ${constants.USWDS_BREAKPOINTS.DESKTOP}, 
       boolean test: ${windowWidth > constants.USWDS_BREAKPOINTS.DESKTOP}
       typeof windowWidth: ${typeof windowWidth}, 
       typeof constant.desktop: ${typeof constants.USWDS_BREAKPOINTS.DESKTOP}, 
     `}
+
+        </pre>
       </div>
       <Grid col={12} desktop={{col: 9}}>
 
