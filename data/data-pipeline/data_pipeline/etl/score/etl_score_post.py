@@ -268,12 +268,14 @@ class PostScoreETL(ExtractTransformLoad):
                     series=df[column].astype(float64),
                     number_of_decimals=constants.TILES_FEMA_ROUND_NUM_DECIMALS,
                 )
+
             else:
                 # Round all other floats.
                 df[column] = floor_series(
                     series=df[column].astype(float64),
                     number_of_decimals=constants.TILES_ROUND_NUM_DECIMALS,
                 )
+                logger.info(df[column].dtype)
 
         return df
 
