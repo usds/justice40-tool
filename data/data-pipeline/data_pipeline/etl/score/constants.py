@@ -69,12 +69,15 @@ PERCENT_PREFIXES_SUFFIXES = [
     "percent",
     "Percentage",
     "Energy burden",
-    "loss rate",
     "greater than or equal to 18 years",
     field_names.PERCENTILE_FIELD_SUFFIX,
 ]
-
 TILES_ROUND_NUM_DECIMALS = 2
+
+# FEMA rounding suffix
+FEMA_SUFFIX = "loss rate"
+TILES_ROUND_FEMA_NUM_DECIMALS = 4
+
 # Tiles data: full field name, tile index name
 TILES_SCORE_COLUMNS = {
     field_names.GEOID_TRACT_FIELD: "GTF",
