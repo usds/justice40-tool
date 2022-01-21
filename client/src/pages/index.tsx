@@ -13,17 +13,14 @@ import * as CONTACT_COPY from '../data/copy/contact';
 import aboutUSMapImg from '../images/about-usmap-1.svg';
 // @ts-ignore
 import aboutJ40Img from '../images/about-j40-1.svg';
-import accountBalanceIcon // @ts-ignore
-  from '/node_modules/uswds/dist/img/usa-icons/account_balance.svg';
-
-import groupsIcon from // @ts-ignore
-  '/node_modules/uswds/dist/img/usa-icons/groups.svg';
-
-import commentIcon from // @ts-ignore
-  '/node_modules/uswds/dist/img/usa-icons/comment.svg';
-
-import githubIcon from // @ts-ignore
-  '/node_modules/uswds/dist/img/usa-icons/github.svg';
+// @ts-ignore
+import accountBalanceIcon from '/node_modules/uswds/dist/img/usa-icons/account_balance.svg';
+// @ts-ignore
+import groupsIcon from '/node_modules/uswds/dist/img/usa-icons/groups.svg';
+// @ts-ignore
+import commentIcon from '/node_modules/uswds/dist/img/usa-icons/comment.svg';
+// @ts-ignore
+import githubIcon from '/node_modules/uswds/dist/img/usa-icons/github.svg';
 
 interface IndexPageProps {
   location: Location;
