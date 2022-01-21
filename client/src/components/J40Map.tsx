@@ -246,7 +246,9 @@ const J40Map = ({location}: IJ40Interface) => {
 
   return (
     <>
-      <div>
+      <div
+        style={{height: `${windowWidth > constants.USWDS_BREAKPOINTS.DESKTOP ? '88.5%' : '55vh'}`}}
+      >
         {`
       windowWidth: ${windowWidth}, 
       constant.desktop: ${constants.USWDS_BREAKPOINTS.DESKTOP}, 
@@ -296,7 +298,7 @@ const J40Map = ({location}: IJ40Interface) => {
           width="100%"
           // height={!isMobile && (windowWidth > constants.USWDS_BREAKPOINTS.DESKTOP) ? '90%' : '55vh'}
           // height={'55vh'}
-          height={getMapHeight()}
+          height={windowWidth > constants.USWDS_BREAKPOINTS.DESKTOP ? '88.5%' : '55vh'}
           mapOptions={{hash: true}}
 
           // Interaction option props:
