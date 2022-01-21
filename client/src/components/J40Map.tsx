@@ -234,9 +234,9 @@ const J40Map = ({location}: IJ40Interface) => {
   const getMapHeight = () => {
     // Todo: change to 100% and move to constants:
     if (isMobile) {
-      return isMobile ? '55vh' : '90%';
+      return isMobile ? '55vh' : '91%';
     } else if (windowWidth) {
-      return windowWidth > constants.USWDS_BREAKPOINTS.DESKTOP ? '90%' : '55vh';
+      return windowWidth > constants.USWDS_BREAKPOINTS.DESKTOP ? '89%' : '55vh';
     } else {
       return '55vh';
     }
