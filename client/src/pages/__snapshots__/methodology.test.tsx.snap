@@ -156,6 +156,17 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         </div>
       </div>
     </div>
+    <div>
+      <div>
+        <div />
+        <div>
+          <span>
+            Draft, Pre-Decisional, Not for Distribution 
+          </span>
+          <span />
+        </div>
+      </div>
+    </div>
     <div
       class="grid-container-desktop-lg"
       data-testid="gridContainer"

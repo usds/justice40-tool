@@ -65,7 +65,15 @@ const J40Header = () => {
 
       {/* Banners */}
       <GovernmentBanner />
-      <BetaBanner/>
+      <BetaBanner
+        title={intl.formatMessage(COMMON_COPY.BETA_BANNER.TITLE)}
+        info={intl.formatMessage(COMMON_COPY.BETA_BANNER.INFO)}
+      />
+      {/* Banner for Usability */}
+      <BetaBanner
+        title={'Draft, Pre-Decisional, Not for Distribution'}
+        info={''}
+      />
 
       {/* Logo and Navigation */}
       <J40MainGridContainer>
