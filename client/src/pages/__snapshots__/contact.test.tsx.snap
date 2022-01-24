@@ -382,7 +382,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="usa-footer__secondary-link"
                 >
                   <a
-                    class="footer-link-first-child"
+                    class="usa-link usa-link--external footer-link-first-child"
                     data-cy="whitehouse-gov"
                     href="https://www.whitehouse.gov/"
                     rel="noreferrer"
@@ -395,6 +395,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="usa-footer__secondary-link"
                 >
                   <a
+                    class="usa-link usa-link--external"
                     data-cy="freedom-of-information-act-(foia)"
                     href="https://www.whitehouse.gov/ceq/foia"
                     rel="noreferrer"
@@ -407,6 +408,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="usa-footer__secondary-link"
                 >
                   <a
+                    class="usa-link usa-link--external"
                     data-cy="privacy-policy"
                     href="https://www.whitehouse.gov/privacy/"
                     rel="noreferrer"
@@ -434,7 +436,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="usa-footer__secondary-link"
                 >
                   <a
-                    class="footer-link-first-child"
+                    class="usa-link usa-link--external footer-link-first-child"
                     data-cy="find-a-contact-at-usa-gov"
                     href="https://www.usa.gov/"
                     rel="noreferrer"
@@ -491,6 +493,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         type="button"
       >
         Help improve the site & data
+        <img
+          alt="launch icon"
+          src="test-file-stub"
+        />
       </button>
     </div>
   </footer>
