@@ -2,6 +2,7 @@
 import React from 'react';
 import {defineMessages} from 'react-intl';
 import {FormattedMessage, Link} from 'gatsby-plugin-intl';
+import LinkTypeWrapper from '../../components/LinkTypeWrapper';
 
 import * as CONTACT_COPY from './contact';
 import * as METHODOLOGY_COPY from './methodology';
@@ -672,9 +673,12 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
     defaultMessage={`Respond to our request for information on {federalRegisterLink}.`}
     values={{
       federalRegisterLink:
-        <a href={`https://www.federalregister.gov/`} target={'blank'}>
-          {'federalregister.gov'}
-        </a>,
+      <LinkTypeWrapper
+        linkText={'federalregister.gov'}
+        internal={false}
+        url={`https://www.federalregister.gov/`}
+        openUrlNewTab={true}
+      />,
     }}
   />,
 

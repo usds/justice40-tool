@@ -29,8 +29,11 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
       <li>
         Respond to our request for information on 
         <a
+          class="usa-link usa-link--external"
+          data-cy=""
           href="https://www.federalregister.gov/"
-          target="blank"
+          rel="noreferrer"
+          target="_blank"
         >
           federalregister.gov
         </a>
