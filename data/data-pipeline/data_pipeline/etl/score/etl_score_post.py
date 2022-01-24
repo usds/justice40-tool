@@ -312,31 +312,32 @@ class PostScoreETL(ExtractTransformLoad):
         NUM_EXCEL_COLS_WIDTH = 30
 
         # Create a Pandas Excel writer using XlsxWriter as the engine.
-        writer = pd.ExcelWriter(
+        with pd.ExcelWriter(
             excel_path, engine="xlsxwriter"
-        )  # pylint: disable=abstract-class-instantiated
+        ) as writer:  # pylint: disable=abstract-class-instantiated
+            # see: https://github.com/PyCQA/pylint/issues/3060
 
-        # Convert the dataframe to an XlsxWriter Excel object. We also turn off the
-        # index column at the left of the output dataframe.
-        excel_df.to_excel(writer, sheet_name="Sheet1", index=False)
+            # Convert the dataframe to an XlsxWriter Excel object. We also turn off the
+            # index column at the left of the output dataframe.
+            excel_df.to_excel(writer, sheet_name="Sheet1", index=False)
 
-        # Get the xlsxwriter workbook and worksheet objects.
-        workbook = writer.book
-        worksheet = writer.sheets["Sheet1"]
+            # Get the xlsxwriter workbook and worksheet objects.
+            workbook = writer.book
+            worksheet = writer.sheets["Sheet1"]
 
-        # set header format
-        header_format = workbook.add_format(
-            {"bold": True, "text_wrap": True, "valign": "bottom"}
-        )
+            # set header format
+            header_format = workbook.add_format(
+                {"bold": True, "text_wrap": True, "valign": "bottom"}
+            )
 
-        # write headers
-        for col_num, value in enumerate(excel_df.columns.values):
-            worksheet.write(0, col_num, value, header_format)
+            # write headers
+            for col_num, value in enumerate(excel_df.columns.array):
+                worksheet.write(0, col_num, value, header_format)
 
-        num_cols = len(excel_df.columns)
-        worksheet.set_column(0, num_cols - 1, NUM_EXCEL_COLS_WIDTH)
+            num_cols = len(excel_df.columns)
+            worksheet.set_column(0, num_cols - 1, NUM_EXCEL_COLS_WIDTH)
 
-        writer.save()
+            writer.save()
 
     def _load_tile_csv(
         self, score_tiles_df: pd.DataFrame, tile_score_path: Path
