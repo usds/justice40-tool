@@ -266,7 +266,10 @@ class PostScoreETL(ExtractTransformLoad):
                     number_of_decimals=constants.TILES_ROUND_NUM_DECIMALS,
                 )
 
-        return df
+        # sort by tract id
+        df_sorted = df.sort_values(self.GEOID_TRACT_FIELD_NAME)
+
+        return df_sorted
 
     def transform(self) -> None:
         logger.info("Transforming data sources for Score + County CSVs")
@@ -302,6 +305,39 @@ class PostScoreETL(ExtractTransformLoad):
             encoding="utf-8-sig",  # windows compat https://stackoverflow.com/a/43684587
         )
 
+    def _load_excel_from_df(
+        self, excel_df: pd.DataFrame, excel_path: Path
+    ) -> None:
+        # Define Excel Columns Column Width
+        NUM_EXCEL_COLS_WIDTH = 30
+
+        # Create a Pandas Excel writer using XlsxWriter as the engine.
+        writer = pd.ExcelWriter(
+            excel_path, engine="xlsxwriter"
+        )  # pylint: disable=abstract-class-instantiated
+
+        # Convert the dataframe to an XlsxWriter Excel object. We also turn off the
+        # index column at the left of the output dataframe.
+        excel_df.to_excel(writer, sheet_name="Sheet1", index=False)
+
+        # Get the xlsxwriter workbook and worksheet objects.
+        workbook = writer.book
+        worksheet = writer.sheets["Sheet1"]
+
+        # set header format
+        header_format = workbook.add_format(
+            {"bold": True, "text_wrap": True, "valign": "bottom"}
+        )
+
+        # write headers
+        for col_num, value in enumerate(excel_df.columns.values):
+            worksheet.write(0, col_num, value, header_format)
+
+        num_cols = len(excel_df.columns)
+        worksheet.set_column(0, num_cols - 1, NUM_EXCEL_COLS_WIDTH)
+
+        writer.save()
+
     def _load_tile_csv(
         self, score_tiles_df: pd.DataFrame, tile_score_path: Path
     ) -> None:
@@ -329,7 +365,7 @@ class PostScoreETL(ExtractTransformLoad):
         )
 
         logger.info("Writing downloadable excel")
-        downloadable_df_copy.to_excel(excel_path, index=False)
+        self._load_excel_from_df(downloadable_df_copy, excel_path)
 
         logger.info("Writing downloadable csv")
         downloadable_df_copy[self.GEOID_TRACT_FIELD_NAME] = (
