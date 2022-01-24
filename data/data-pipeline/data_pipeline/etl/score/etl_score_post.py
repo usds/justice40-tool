@@ -312,10 +312,9 @@ class PostScoreETL(ExtractTransformLoad):
         NUM_EXCEL_COLS_WIDTH = 30
 
         # Create a Pandas Excel writer using XlsxWriter as the engine.
-        with pd.ExcelWriter(
+        with pd.ExcelWriter(  # pylint: disable=abstract-class-instantiated (ttps://github.com/PyCQA/pylint/issues/3060)
             excel_path, engine="xlsxwriter"
-        ) as writer:  # pylint: disable=abstract-class-instantiated
-            # see: https://github.com/PyCQA/pylint/issues/3060
+        ) as writer:
 
             # Convert the dataframe to an XlsxWriter Excel object. We also turn off the
             # index column at the left of the output dataframe.
