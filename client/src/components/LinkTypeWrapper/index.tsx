@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'gatsby-plugin-intl';
+import {Link as TrussLink} from '@trussworks/react-uswds';
 
 interface ILinkTypeWrapper {
     linkText?: string;
@@ -7,17 +8,17 @@ interface ILinkTypeWrapper {
     url?: string;
     openUrlNewTab?: boolean;
     className?: string;
-    key?: string;
     dataCy?: string;
   }
 
 // eslint-disable-next-line valid-jsdoc
 /**
  * This function wraps the two types of links we have. Internal links and
- * external links. Internal links should use the <Link> component, while
- * eternal links can use the standard <a> tag. This function allows the
- * instance to choose the type of link along with the props necessary to
- * set new tabs, classes.
+ * external links. Internal links should use the Gatsby <Link> component.
+ * Eternal links that will open in a new tab will use the Trussworks
+ * <Link> component and external links that stay on the page will use the
+ * standard <a> tag. This function allows the instance to choose the type of link
+ * along with the props necessary to set new tabs, classes.
  *
  * Note - if the link is an external link and will not open in a new
  * browser tab, ensure that hitting the back button works. This has shown to
@@ -36,18 +37,17 @@ const LinkTypeWrapper = (props:ILinkTypeWrapper) => {
     );
   } else {
     return props.openUrlNewTab ?
-    <a
-      key={props.key ? props.key : ''}
+    <TrussLink
+      variant={'external'}
       className={props.className}
-      href={props.url}
+      href={`${props.url}`}
       target="_blank"
       rel="noreferrer"
       data-cy={props.dataCy ? props.dataCy : ''}
     >
       {props.linkText}
-    </a> :
+    </TrussLink> :
     <a
-      key={props.key ? props.key : ''}
       className={props.className}
       href={props.url}
       data-cy={props.dataCy? props.dataCy : ''}
