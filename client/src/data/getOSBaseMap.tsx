@@ -43,6 +43,34 @@ export const getOSBaseMap = () : Style => {
         'maxzoom': constants.GLOBAL_MAX_ZOOM,
       },
 
+      // The High zoom source:
+      [constants.HIGH_ZOOM_SOURCE_NAME]: {
+      // It is only shown at high zoom levels to avoid performance issues at lower zooms
+        'type': 'vector',
+        // Our current tippecanoe command does not set an id.
+        // The below line promotes the GEOID10 property to the ID
+        'promoteId': constants.GEOID_PROPERTY,
+        'tiles': [constants.FEATURE_TILE_HIGH_ZOOM_URL],
+        // Setting maxzoom here enables 'overzooming'
+        // e.g. continued zooming beyond the max bounds.
+        // More here: https://docs.mapbox.com/help/glossary/overzoom/
+        'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
+        'maxzoom': constants.GLOBAL_MAX_ZOOM_HIGH,
+      },
+
+      // The Low zoom source:
+      [constants.LOW_ZOOM_SOURCE_NAME]: {
+      // "Score-low" represents a tileset at the level of bucketed tracts.
+      // census block group information is `dissolve`d into tracts, then
+      // each tract is `dissolve`d into one of ten buckets. It is meant
+      // to give us a favorable tradeoff between performance and fidelity.
+        'type': 'vector',
+        'promoteId': constants.GEOID_PROPERTY,
+        'tiles': [constants.FEATURE_TILE_LOW_ZOOM_URL],
+        'minzoom': constants.GLOBAL_MIN_ZOOM_LOW,
+        'maxzoom': constants.GLOBAL_MAX_ZOOM_LOW,
+      },
+
       // The labels source:
       'labels': {
         'type': 'raster',
@@ -61,6 +89,76 @@ export const getOSBaseMap = () : Style => {
         'type': 'raster',
         'minzoom': constants.GLOBAL_MIN_ZOOM,
         'maxzoom': constants.GLOBAL_MAX_ZOOM,
+      },
+
+      /**
+       * High zoom layer - non-prioritized features only
+       */
+      {
+        'id': constants.HIGH_ZOOM_LAYER_ID,
+        'source': constants.HIGH_ZOOM_SOURCE_NAME,
+        'source-layer': constants.SCORE_SOURCE_LAYER,
+        /**
+         * This shows features where the high score < score boundary threshold.
+         * In other words, this filter out prioritized features
+         */
+        'filter': ['all',
+          ['<', constants.SCORE_PROPERTY_HIGH, constants.SCORE_BOUNDARY_THRESHOLD],
+        ],
+
+        'type': 'fill',
+        'paint': {
+          'fill-opacity': constants.NON_PRIORITIZED_FEATURE_FILL_OPACITY,
+        },
+        'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
+      },
+
+      /**
+       * High zoom layer - prioritized features only
+       */
+      {
+        'id': constants.PRIORITIZED_HIGH_ZOOM_LAYER_ID,
+        'source': constants.HIGH_ZOOM_SOURCE_NAME,
+        'source-layer': constants.SCORE_SOURCE_LAYER,
+        /**
+         * This shows features where the high score > score boundary threshold.
+         * In other words, this filter out non-prioritized features
+         */
+        'filter': ['all',
+          ['>', constants.SCORE_PROPERTY_HIGH, constants.SCORE_BOUNDARY_THRESHOLD],
+        ],
+
+        'type': 'fill',
+        'paint': {
+          'fill-color': constants.PRIORITIZED_FEATURE_FILL_COLOR,
+          'fill-opacity': constants.HIGH_ZOOM_PRIORITIZED_FEATURE_FILL_OPACITY,
+        },
+        'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
+      },
+
+
+      /**
+       * Low zoom layer - prioritized features only
+       */
+      {
+        'id': constants.LOW_ZOOM_LAYER_ID,
+        'source': constants.LOW_ZOOM_SOURCE_NAME,
+        'source-layer': constants.SCORE_SOURCE_LAYER,
+        /**
+         * This shows features where the low score > score boundary threshold.
+         * In other words, this filter out non-prioritized features
+         */
+        'filter': ['all',
+          ['>', constants.SCORE_PROPERTY_LOW, constants.SCORE_BOUNDARY_THRESHOLD],
+        ],
+
+        'type': 'fill',
+        'paint': {
+          'fill-color': constants.PRIORITIZED_FEATURE_FILL_COLOR,
+          'fill-opacity': constants.LOW_ZOOM_PRIORITIZED_FEATURE_FILL_OPACITY,
+        },
+        'minzoom': constants.GLOBAL_MIN_ZOOM_LOW,
+        'maxzoom': constants.GLOBAL_MAX_ZOOM_LOW,
       },
 
       // A layer for labels only
