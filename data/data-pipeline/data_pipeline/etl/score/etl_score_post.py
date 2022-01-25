@@ -265,7 +265,7 @@ class PostScoreETL(ExtractTransformLoad):
                 # and then rounding appropriately.
                 df_100 = df[column] * 100
                 df[column] = floor_series(
-                    series=df[column].astype(float64),
+                    series=df_100.astype(float64),
                     number_of_decimals=constants.TILES_FEMA_ROUND_NUM_DECIMALS,
                 )
 
