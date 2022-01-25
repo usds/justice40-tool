@@ -1,5 +1,10 @@
 DATASET_LIST = [
     {
+        "name": "mapping_for_ej", 
+        "module_dir": "mapping_for_ej", 
+        "class_name": "MappingForEJETL"
+    },
+    {
         "name": "census_acs",
         "module_dir": "census_acs",
         "class_name": "CensusACSETL",
