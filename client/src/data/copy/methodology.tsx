@@ -897,17 +897,17 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.exp.pop.loss.rate.description.text'}
       defaultMessage= {`
-        Rate relative to the population in fatalities and injuries due to natural hazards each year.
-        fourteen natural hazards that have some link to climate change including: avalanche, coastal
-        flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine
-        flooding, strong wind, tornado, wildfire, and winter weather.
-        Population loss is defined as the Spatial Hazard Events and Losses or National Centers
-        for Environmental Information’s (NCEI) reported number of fatalities and injuries caused by the
-        hazard occurrence. To combine fatalities and injuries for the computation of population loss value,
-        an injury is counted as one-tenth (1/10) of a fatality. The NCEI Storm Events Database
-        classifies injuries and fatalities as direct or indirect. Both direct and indirect injuries
-        and fatalities are counted as population loss. This total number of injuries and fatalities
-        is then divided by the population in the census tract to get a per-capita rate of population risk.
+        Rate relative to the population in fatalities and injuries due to natural hazards each year such as 
+        the fourteen natural hazards that have some link to climate change including: avalanche, 
+        coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, 
+        riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined 
+        as the Spatial Hazard Events and Losses or National Centers for Environmental Information’s 
+        (NCEI) reported number of fatalities and injuries caused by the hazard occurrence. To 
+        combine fatalities and injuries for the computation of population loss value, an injury is counted 
+        as one-tenth (1/10) of a fatality. The NCEI Storm Events Database classifies injuries and fatalities 
+        as direct or indirect. Both direct and indirect injuries and fatalities are counted as population 
+        loss. This total number of injuries and fatalities is then divided by the population in the 
+        census tract to get a per-capita rate of population risk. 
       `}
       description= {'description text for exp pop loss rate'}
     />,
