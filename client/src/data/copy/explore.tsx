@@ -624,14 +624,20 @@ export const NOTE_ON_TERRITORIES = {
   PARA_2: <FormattedMessage
     id={'explore.page.note.on.territories.para.2'}
     defaultMessage={`
-      For American Samoa, Northern Mariana Islands, Guam and U.S. Virgin Islands, the last reported data from 
-      the Census Bureau is the Decennial Census from 2010. The Decennial Census data from 2010 was used 
-      for American Samoa and Northern Mariana Islands using only the unemployment, poverty, area median 
+      The Decennial Census data from 2010 was used 
+      for American Samoa and Northern Mariana Islands using only the unemployment, poverty, low median 
       income, and high school degree achievement rate fields in the Training and Workforce Development 
-      category of the methodology. Work is underway to identify disadvantaged communities and update the 
-      CEJST accordingly for Guam and the U.S. Virgin Islands.
+      category of the methodology.
     `}
     description={`territories paragraph 2`}
+  />,
+  PARA_3: <FormattedMessage
+    id={'explore.page.note.on.territories.para.3'}
+    defaultMessage={`
+      Work is underway to identify disadvantaged communities and update the 
+      CEJST accordingly for Guam and the U.S. Virgin Islands.
+        `}
+    description={`territories paragraph 3`}
   />,
 
 };
@@ -644,7 +650,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
   LIST_ITEM_1: <FormattedMessage
     id={'youCanHelpInfoText.list.item.1'}
     description={'give us feedback on our data and methodology'}
-    defaultMessage={`View our {dataMeth} page and send us feedback.`}
+    defaultMessage={`View the {dataMeth} page and send feedback.`}
     values={{
       dataMeth:
     <Link to={'/methodology'}>
@@ -663,7 +669,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
     values={{
       shareFeedback:
         <a href={`mailto:${CONTACT_COPY.FEEDBACK_EMAIL}`} target={'blank'}>
-          {'share your feedback'}
+          {'share feedback'}
         </a>,
     }}
   />,
