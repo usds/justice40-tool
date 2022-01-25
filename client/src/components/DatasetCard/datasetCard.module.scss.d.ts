@@ -7,6 +7,7 @@ declare namespace DatasetCardScssNamespace {
         datasetCardDescription: string;
         datasetCardLabels: string;
         datasetCardList: string;
+        datasetCardListItemSource: string;
         datasetCardListItem: string;
     }
   }

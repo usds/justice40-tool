@@ -40,6 +40,13 @@
   font-size: large;
 }
 
+
+.datasetCardListItemSource {
+  @include u-margin-top(2);
+  margin-bottom: 0.4rem;
+  font-size: large;
+}
+
 .datasetCardDescription {
   font-size: large;
   padding-top: 0.3rem;

@@ -1,6 +1,7 @@
 import React from 'react';
 import {defineMessages} from 'react-intl';
 import {FormattedMessage} from 'gatsby-plugin-intl';
+import LinkTypeWrapper from '../../components/LinkTypeWrapper';
 
 export const PAGE = defineMessages({
   TILE: {
@@ -549,203 +550,20 @@ export const DATASET_CARD_LABELS = defineMessages({
     defaultMessage: 'Date range: ',
     description: 'label associated with explaining the card',
   },
+  SOURCE: {
+    id: 'datasetCard.source',
+    defaultMessage: 'Source: ',
+    description: 'label associated with source of the card',
+  },
+  AVAILABLE_FOR: {
+    id: 'datasetCard.available.for',
+    defaultMessage: 'Available for: ',
+    description: 'label associated with available for which regions of the card',
+  },
 });
 
-export const RESPONSIBLE_PARTIES = {
-  CENSUS_ACS: <FormattedMessage
-    id= {'category.resp.party.census.link'}
-    defaultMessage= {'{resPartyCensusLink}'}
-    description= {'responsible party link for Census ACS'}
-    values= {{
-      resPartyCensusLink:
-      <a href={`https://www.census.gov/programs-surveys/acs`} target={'_blank'} rel="noreferrer">
-        {`Census's American Community Survey`}
-      </a>,
-    }}
-  />,
-  FEMA: <FormattedMessage
-    id= {'category.resp.party.fema.link'}
-    defaultMessage= {`{resPartyFemaLink}`}
-    description= {'responsible party link for FEMA'}
-    values={{
-      resPartyFemaLink:
-      <a href={`https://hazards.fema.gov/nri/expected-annual-loss`} target={'_blank'} rel="noreferrer">
-        {`Federal Emergency Management Agency (FEMA)`}
-      </a>,
-    }}
-  />,
-  DOE: <FormattedMessage
-    id= {'category.resp.party.doe.link'}
-    defaultMessage= {`{resPartyDoeLink}`}
-    description= {'responsible party link for FEMA'}
-    values={{
-      resPartyDoeLink:
-      <a href={`https://www.energy.gov/eere/slsc/low-income-energy-affordability-data-lead-tool`}
-        target={'_blank'}
-        rel="noreferrer">
-        {`Department of Energy (DOE) LEAD Score`}
-      </a>,
-    }}
-  />,
-  EPA_OAR: <FormattedMessage
-    id= {'category.resp.party.epa.oar.link'}
-    defaultMessage= {`{resPartyEpaOarLink}`}
-    description= {'responsible party link for EPA OAR'}
-    values={{
-      resPartyEpaOarLink:
-      <a href={`https://www.epa.gov/ejscreen/technical-documentation-ejscreen`}
-        target={'_blank'}
-        rel="noreferrer">
-        {`
-          Environmental Protection Agency (EPA) Office of Air and Radiation (OAR) fusion of model and monitor 
-          data as compiled by EPA's EJSCREEN, sourced from EPA National Air Toxics Assessment (NATA), 2017 
-          U.S. Department of Transportation (DOT) traffic data
-        `}
-      </a>,
-    }}
-  />,
-  EPA_NATA: <FormattedMessage
-    id= {'category.resp.party.epa.nata.link'}
-    defaultMessage= {`{resPartyEpaOarLink}`}
-    description= {'responsible party link for EPA NATA'}
-    values={{
-      resPartyEpaOarLink:
-      <a href={`https://www.epa.gov/ejscreen/technical-documentation-ejscreen`}
-        target={'_blank'}
-        rel="noreferrer">
-        {`
-          Environmental Protection Agency (EPA) National Air Toxics Assessment (NATA)
-          as compiled by EPA's EJSCREEN        
-        `}
-      </a>,
-    }}
-  />,
-  DOT_EPA: <FormattedMessage
-    id= {'category.resp.party.dot.epa.link'}
-    defaultMessage= {`{resPartyDotEpaLink}`}
-    description= {'responsible party link for DOT EPA'}
-    values={{
-      resPartyDotEpaLink:
-      <a href={`https://www.epa.gov/ejscreen/technical-documentation-ejscreen`}
-        target={'_blank'}
-        rel="noreferrer">
-        {`
-          Department of Transportation (DOT) traffic data as compiled by EPA's EJSCREEN      
-        `}
-      </a>,
-    }}
-  />,
-  HUD: <FormattedMessage
-    id= {'category.resp.party.hud.link'}
-    defaultMessage= {`{resPartyHudLink}`}
-    description= {'responsible party link for HUD'}
-    values={{
-      resPartyHudLink:
-      <a href={`https://www.huduser.gov/portal/datasets/cp.html`}
-        target={'_blank'}
-        rel="noreferrer">
-        {`
-          Department of Housing & Urban Development’s
-          (HUD) Comprehensive Housing Affordability Strategy dataset
-        `}
-      </a>,
-    }}
-  />,
-  EPA_TSDF: <FormattedMessage
-    id= {'category.resp.party.epa.tsdf.link'}
-    defaultMessage= {`{resPartyEpaTsdfLink}`}
-    description= {'responsible party link for EPA TSDF'}
-    values={{
-      resPartyEpaTsdfLink:
-      <a href={`https://enviro.epa.gov/facts/rcrainfo/search.html`}
-        target={'_blank'}
-        rel="noreferrer">
-        {`
-          Environmental Protection Agency (EPA) Treatment Storage, and Disposal Facilities
-          (TSDF) data calculated from EPA RCRA info database as compiled by EPA’s EJSCREEN
-        `}
-      </a>,
-    }}
-  />,
-  EPA_CERCLIS: <FormattedMessage
-    id= {'category.resp.party.epa.cerclis.link'}
-    defaultMessage= {`{resPartyEpaCerclisLink}`}
-    description= {'responsible party link for EPA CERCLIS'}
-    values={{
-      resPartyEpaCerclisLink:
-      <a href={`https://enviro.epa.gov/facts/rcrainfo/search.html`}
-        target={'_blank'}
-        rel="noreferrer">
-        {`
-          Environmental Protection Agency (EPA) CERCLIS database as compiled by EPA’s EJSCREEN        
-        `}
-      </a>,
-    }}
-  />,
-  EPA_RMP: <FormattedMessage
-    id= {'category.resp.party.epa.rmp.link'}
-    defaultMessage= {`{resPartyEpaRmpLink}`}
-    description= {'responsible party link for EPA RMP'}
-    values={{
-      resPartyEpaRmpLink:
-      <a href={`https://www.epa.gov/ejscreen/technical-documentation-ejscreen`}
-        target={'_blank'}
-        rel="noreferrer">
-        {`
-          Environmental Protection Agency (EPA) RMP database as compiled by EPA’s EJSCREEN        
-        `}
-      </a>,
-    }}
-  />,
-  EPA_RSEI: <FormattedMessage
-    id= {'category.resp.party.epa.rsei.link'}
-    defaultMessage= {`{resPartyEpaRseiLink}`}
-    description= {'responsible party link for EPA RSEI'}
-    values={{
-      resPartyEpaRseiLink:
-      <a href={`https://www.epa.gov/ejscreen/technical-documentation-ejscreen`}
-        target={'_blank'}
-        rel="noreferrer">
-        {`
-          Environmental Protection Agency (EPA) Risk-Screening
-          Environmental Indicators (RSEI) Model as compiled by EPA's EJSCREEN        
-        `}
-      </a>,
-    }}
-  />,
-  CDC_PLACES: <FormattedMessage
-    id= {'category.resp.party.cdc.places.link'}
-    defaultMessage= {`{resPartyCdcPlacesLink}`}
-    description= {'responsible party link for CDC Places'}
-    values={{
-      resPartyCdcPlacesLink:
-      <a href={`https://www.cdc.gov/places/index.html`}
-        target={'_blank'}
-        rel="noreferrer">
-        {`
-          Centers for Disease Control and Prevention (CDC) PLACES        
-        `}
-      </a>,
-    }}
-  />,
-  CDC_SLEEP: <FormattedMessage
-    id= {'category.resp.party.cdc.sleep.link'}
-    defaultMessage= {`{resPartyCdcSleepLink}`}
-    description= {'responsible party link for CDC Sleep'}
-    values={{
-      resPartyCdcSleepLink:
-      <a href={`https://www.cdc.gov/nchs/nvss/usaleep/usaleep.html#data`}
-        target={'_blank'}
-        rel="noreferrer">
-        {`
-          CDC’s U.S. Small-area Life Expectancy Estimates Project (USALEEP)        
-        `}
-      </a>,
-    }}
-  />,
-};
-
 export const DATE_RANGE = {
+  TEN: '2010',
   TEN_PLUS_5: '2010-2015',
   FOURTEEN: '2014',
   FOURTEEN_PLUS_4: '2014-2018',
@@ -756,6 +574,254 @@ export const DATE_RANGE = {
   SEVENTEEN: '2017',
   EIGHTEEN: '2018',
   TWENTY: '2020',
+};
+
+export const RESPONSIBLE_PARTIES = {
+  CDC: `Centers for Disease Control and Prevention (CDC)`,
+  CENSUS: `Census`,
+  DOE: `Department of Energy (DOE)`,
+  DOT: `Department of Transportation (DOT)`,
+  EPA: `Environmental Protection Agency (EPA)`,
+  EPA_OAR: `Environmental Protection Agency (EPA) Office of Air and Radiation (OAR)`,
+  FEMA: `Federal Emergency Management Agency (FEMA)`,
+  HUD: `Department of Housing & Urban Development's (HUD)`,
+};
+
+export const SOURCE_LINKS = {
+  CENSUS_ACS_15_19: <FormattedMessage
+    id= {'category.source.census.link'}
+    defaultMessage= {'{sourceCensusLink} from {date15_19}'}
+    description= {'source link for Census ACS'}
+    values= {{
+      sourceCensusLink:
+        <LinkTypeWrapper
+          linkText={`American Community Survey`}
+          internal={false}
+          url={`https://www.census.gov/programs-surveys/acs`}
+          openUrlNewTab={true}
+        />,
+      date15_19: DATE_RANGE.FIFETEEN_PLUS_4,
+    }}
+  />,
+  CENSUS_ACS_10: <FormattedMessage
+    id= {'category.source.census.link'}
+    defaultMessage= {'{sourceCensusLink} from {date10}'}
+    description= {'source link for Census ACS'}
+    values= {{
+      sourceCensusLink:
+        <LinkTypeWrapper
+          linkText={`American Community Survey`}
+          internal={false}
+          url={`https://www.census.gov/programs-surveys/acs`}
+          openUrlNewTab={true}
+        />,
+      date10: DATE_RANGE.TEN,
+    }}
+  />,
+  FEMA_NRI: <FormattedMessage
+    id= {'category.source.fema.link'}
+    defaultMessage= {`{sourceFemaLink} from {date14_21}`}
+    description= {'source link for FEMA'}
+    values={{
+      sourceFemaLink:
+        <LinkTypeWrapper
+          linkText={`National Risk Index`}
+          internal={false}
+          url={`https://hazards.fema.gov/nri/expected-annual-loss`}
+          openUrlNewTab={true}
+        />,
+      date14_21: DATE_RANGE.FOURTEEN_PLUS_7,
+    }}
+  />,
+  DOE_LEAD: <FormattedMessage
+    id= {'category.source.doe.lead.link'}
+    defaultMessage= {`{sourceDoeLeadLink} from {date18}`}
+    description= {'source link for DOE FEMA'}
+    values={{
+      sourceDoeLeadLink:
+        <LinkTypeWrapper
+          linkText={`LEAD Score`}
+          internal={false}
+          url={`https://www.energy.gov/eere/slsc/low-income-energy-affordability-data-lead-tool`}
+          openUrlNewTab={true}
+        />,
+      date18: DATE_RANGE.EIGHTEEN,
+    }}
+  />,
+  EPA_OAR: <FormattedMessage
+    id= {'category.source.epa.oar.link'}
+    defaultMessage= {`
+      {sourceEpaOarLink} from {date17} as compiled by EPA’s EJSCREEN, sourced from EPA National Air 
+      Toxics Assessment (NATA) and the U.S. Department of Transportation (DOT) traffic data
+    `}
+    description= {'source link for EPA OAR'}
+    values={{
+      sourceEpaOarLink:
+        <LinkTypeWrapper
+          linkText={`Fusion of model and monitor data`}
+          internal={false}
+          url={`https://www.epa.gov/ejscreen/technical-documentation-ejscreen`}
+          openUrlNewTab={true}
+        />,
+      date17: DATE_RANGE.SEVENTEEN,
+    }}
+  />,
+  EPA_NATA: <FormattedMessage
+    id= {'category.source.epa.nata.link'}
+    defaultMessage= {`{sourceEpaOarLink} from {date14} as compiled by EPA's EJSCREEN`}
+    description= {'source link for EPA NATA'}
+    values={{
+      sourceEpaOarLink:
+        <LinkTypeWrapper
+          linkText={`National Air Toxics Assessment (NATA)`}
+          internal={false}
+          url={`https://www.epa.gov/ejscreen/technical-documentation-ejscreen`}
+          openUrlNewTab={true}
+        />,
+      date14: DATE_RANGE.FOURTEEN,
+    }}
+  />,
+  DOT_EPA: <FormattedMessage
+    id= {'category.source.dot.epa.link'}
+    defaultMessage= {`{sourceDotEpaLink} from {date17} as compiled by EPA's EJSCREEN`}
+    description= {'source link for DOT EPA'}
+    values={{
+      sourceDotEpaLink:
+        <LinkTypeWrapper
+          linkText={`Traffic Data`}
+          internal={false}
+          url={`https://www.epa.gov/ejscreen/technical-documentation-ejscreen`}
+          openUrlNewTab={true}
+        />,
+      date17: DATE_RANGE.SEVENTEEN,
+    }}
+  />,
+  HUD: <FormattedMessage
+    id= {'category.source.hud.link'}
+    defaultMessage= {`{sourceHudLink} from {date14_18}`}
+    description= {'source link for HUD'}
+    values={{
+      sourceHudLink:
+        <LinkTypeWrapper
+          linkText={`Comprehensive Housing Affordability Strategy dataset`}
+          internal={false}
+          url={`https://www.huduser.gov/portal/datasets/cp.html`}
+          openUrlNewTab={true}
+        />,
+      date14_18: DATE_RANGE.FOURTEEN_PLUS_4,
+    }}
+  />,
+  EPA_TSDF: <FormattedMessage
+    id= {'category.source.epa.tsdf.link'}
+    defaultMessage= {`
+      {sourceEpaTsdfLink} from {date20} calculated from EPA RCRA database as compiled 
+      by EPA's EJSCREEN
+    `}
+    description= {'source link for EPA TSDF'}
+    values={{
+      sourceEpaTsdfLink:
+        <LinkTypeWrapper
+          linkText={`Treatment Storage, and Disposal Facilities (TSDF) data`}
+          internal={false}
+          url={`https://enviro.epa.gov/facts/rcrainfo/search.html`}
+          openUrlNewTab={true}
+        />,
+      date20: DATE_RANGE.TWENTY,
+    }}
+  />,
+  EPA_CERCLIS: <FormattedMessage
+    id= {'category.source.epa.cerclis.link'}
+    defaultMessage= {`{sourceEpaCerclisLink} from {date20} as compiled by EPA’s EJSCREEN`}
+    description= {'source link for EPA CERCLIS'}
+    values={{
+      sourceEpaCerclisLink:
+        <LinkTypeWrapper
+          linkText={`CERCLIS database`}
+          internal={false}
+          url={`https://enviro.epa.gov/facts/rcrainfo/search.html`}
+          openUrlNewTab={true}
+        />,
+      date20: DATE_RANGE.TWENTY,
+    }}
+  />,
+  EPA_RMP: <FormattedMessage
+    id= {'category.source.epa.rmp.link'}
+    defaultMessage= {`{sourceEpaRmpLink} from {date20} as compiled by EPA’s EJSCREEN`}
+    description= {'source link for EPA RMP'}
+    values={{
+      sourceEpaRmpLink:
+        <LinkTypeWrapper
+          linkText={`RMP database`}
+          internal={false}
+          url={`https://www.epa.gov/ejscreen/technical-documentation-ejscreen`}
+          openUrlNewTab={true}
+        />,
+      date20: DATE_RANGE.TWENTY,
+    }}
+  />,
+  EPA_RSEI: <FormattedMessage
+    id= {'category.source.epa.rsei.link'}
+    defaultMessage= {`{sourceEpaRseiLink} from {date20} as compiled by EPA’s EJSCREEN`}
+    description= {'source link for EPA RSEI'}
+    values={{
+      sourceEpaRseiLink:
+        <LinkTypeWrapper
+          linkText={`Risk-Screening Environmental Indicators (RSEI) Model`}
+          internal={false}
+          url={`https://www.epa.gov/ejscreen/technical-documentation-ejscreen`}
+          openUrlNewTab={true}
+        />,
+      date20: DATE_RANGE.TWENTY,
+    }}
+  />,
+  CDC_PLACES: <FormattedMessage
+    id= {'category.source.cdc.places.link'}
+    defaultMessage= {`{sourceCdcPlacesLink} from {date16_19}`}
+    description= {'source link for CDC Places'}
+    values={{
+      sourceCdcPlacesLink:
+        <LinkTypeWrapper
+          linkText={`PLACES data`}
+          internal={false}
+          url={`https://www.cdc.gov/places/index.html`}
+          openUrlNewTab={true}
+        />,
+      date16_19: DATE_RANGE.SIXTEEN_PLUS_3,
+    }}
+  />,
+  CDC_SLEEP: <FormattedMessage
+    id= {'category.source.cdc.sleep.link'}
+    defaultMessage= {`{sourceCdcSleepLink} from {date10_15}`}
+    description= {'source link for CDC Sleep'}
+    values={{
+      sourceCdcSleepLink:
+        <LinkTypeWrapper
+          linkText={`U.S. Small-area Life Expectancy Estimates Project (USALEEP)`}
+          internal={false}
+          url={`https://www.cdc.gov/nchs/nvss/usaleep/usaleep.html#data`}
+          openUrlNewTab={true}
+        />,
+      date10_15: DATE_RANGE.TEN_PLUS_5,
+    }}
+  />,
+};
+
+export const AVAILABLE_FOR = {
+  ALL_US_DC: `All U.S. states and the District of Columbia`,
+  ALL_US_DC_PR: `All U.S. states, the District of Columbia, and Puerto Rico`,
+  AS_NMI: `American Samoa and the Northern Mariana Islands`,
+};
+
+export interface IIndicators {
+  domID: string,
+  indicator: string,
+  description: string,
+  usedIn: string,
+  responsibleParty: string,
+  sources: [ {
+    source: string,
+    availableFor: string,
+  }]
 };
 
 export const INDICATORS = [
@@ -771,8 +837,13 @@ export const INDICATORS = [
       description= {'description text for low income'}
     />,
     usedIn: CATEGORIES.ALL.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.CENSUS_ACS,
-    dateRange: DATE_RANGE.FIFETEEN_PLUS_4,
+    responsibleParty: RESPONSIBLE_PARTIES.CENSUS,
+    sources: [
+      {
+        source: SOURCE_LINKS.CENSUS_ACS_15_19,
+        availableFor: AVAILABLE_FOR.ALL_US_DC,
+      },
+    ],
   },
   {
     domID: 'exp-agr-loss-rate',
@@ -780,17 +851,22 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.exp.agr.loss.rate.description.text'}
       defaultMessage= {`
-        Percent of agriculture value at risk from losses due to natural hazards. Calculated by dividing 
-        the agriculture value at risk in a census tract by the total agriculture value in that census 
-        tract. Fourteen natural hazards that have some link to climate change include: avalanche, 
-        coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, 
-        riverine flooding, strong wind, tornado, wildfire, and winter weather.
+        Percent of agriculture value at risk from losses due to natural hazards such as the fourteen 
+        natural hazards that have some link to climate change including: avalanche, coastal flooding, 
+        cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong 
+        wind, tornado, wildfire, and winter weather. Calculated by dividing the agriculture value at risk in 
+        a census tract by the total agriculture value in that census tract.
       `}
       description= {'description text for exp agr loss rate'}
     />,
     usedIn: CATEGORIES.CLIMATE_CHANGE.METHODOLOGY,
     responsibleParty: RESPONSIBLE_PARTIES.FEMA,
-    dateRange: DATE_RANGE.FOURTEEN_PLUS_7,
+    sources: [
+      {
+        source: SOURCE_LINKS.FEMA_NRI,
+        availableFor: AVAILABLE_FOR.ALL_US_DC,
+      },
+    ],
   },
   {
     domID: 'exp-bld-loss-rate',
@@ -798,17 +874,22 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.exp.bld.loss.rate.description.text'}
       defaultMessage= {`
-        Percent of building value at risk from losses due to natural hazards. Calculated by dividing the 
-        building value at risk in a census tract by the total building value in that census tract. 
-        Fourteen natural hazards that have some link to climate change include: avalanche, 
-        coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, 
-        riverine flooding, strong wind, tornado, wildfire, and winter weather.
-        `}
+        Percent of building value at risk from losses due to natural hazards such as the fourteen 
+        natural hazards that have some link to climate change including: avalanche, coastal flooding, 
+        cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong 
+        wind, tornado, wildfire, and winter weather. Calculated by dividing the building value at risk in 
+        a census tract by the total building value in that census tract.
+      `}
       description= {'description text for exp bld loss rate'}
     />,
     usedIn: CATEGORIES.CLIMATE_CHANGE.METHODOLOGY,
     responsibleParty: RESPONSIBLE_PARTIES.FEMA,
-    dateRange: DATE_RANGE.FOURTEEN_PLUS_7,
+    sources: [
+      {
+        source: SOURCE_LINKS.FEMA_NRI,
+        availableFor: AVAILABLE_FOR.ALL_US_DC,
+      },
+    ],
   },
   {
     domID: 'exp-pop-loss-rate',
@@ -816,23 +897,28 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.exp.pop.loss.rate.description.text'}
       defaultMessage= {`
-        Rate relative to the population in fatalities and injuries due to natural hazards each year. 
-        Fourteen natural hazards that have some link to climate change include: avalanche, coastal 
-        flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine 
+        Rate relative to the population in fatalities and injuries due to natural hazards each year.
+        fourteen natural hazards that have some link to climate change including: avalanche, coastal
+        flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine
         flooding, strong wind, tornado, wildfire, and winter weather.
-        Population loss is defined as the Spatial Hazard Events and Losses or National Centers 
-        for Environmental Information’s (NCEI) reported number of fatalities and injuries caused by the 
-        hazard occurrence. To combine fatalities and injuries for the computation of population loss value, 
-        an injury is counted as one-tenth (1/10) of a fatality. The NCEI Storm Events Database 
-        classifies injuries and fatalities as direct or indirect. Both direct and indirect injuries 
-        and fatalities are counted as population loss. This total number of injuries and fatalities 
-        is then divided by the population in the census tract to get a per-capita rate of population risk.   
+        Population loss is defined as the Spatial Hazard Events and Losses or National Centers
+        for Environmental Information’s (NCEI) reported number of fatalities and injuries caused by the
+        hazard occurrence. To combine fatalities and injuries for the computation of population loss value,
+        an injury is counted as one-tenth (1/10) of a fatality. The NCEI Storm Events Database
+        classifies injuries and fatalities as direct or indirect. Both direct and indirect injuries
+        and fatalities are counted as population loss. This total number of injuries and fatalities
+        is then divided by the population in the census tract to get a per-capita rate of population risk.
       `}
       description= {'description text for exp pop loss rate'}
     />,
     usedIn: CATEGORIES.CLIMATE_CHANGE.METHODOLOGY,
     responsibleParty: RESPONSIBLE_PARTIES.FEMA,
-    dateRange: DATE_RANGE.FOURTEEN_PLUS_7,
+    sources: [
+      {
+        source: SOURCE_LINKS.FEMA_NRI,
+        availableFor: AVAILABLE_FOR.ALL_US_DC,
+      },
+    ],
   },
   {
     domID: 'energy-burden',
@@ -844,7 +930,12 @@ export const INDICATORS = [
     />,
     usedIn: CATEGORIES.CLEAN_ENERGY.METHODOLOGY,
     responsibleParty: RESPONSIBLE_PARTIES.DOE,
-    dateRange: DATE_RANGE.EIGHTEEN,
+    sources: [
+      {
+        source: SOURCE_LINKS.DOE_LEAD,
+        availableFor: AVAILABLE_FOR.ALL_US_DC,
+      },
+    ],
   },
   {
     domID: 'pm-25',
@@ -858,7 +949,12 @@ export const INDICATORS = [
     />,
     usedIn: CATEGORIES.CLEAN_ENERGY.METHODOLOGY,
     responsibleParty: RESPONSIBLE_PARTIES.EPA_OAR,
-    dateRange: DATE_RANGE.SEVENTEEN,
+    sources: [
+      {
+        source: SOURCE_LINKS.EPA_OAR,
+        availableFor: AVAILABLE_FOR.ALL_US_DC,
+      },
+    ],
   },
   {
     domID: 'diesel-pm',
@@ -871,8 +967,13 @@ export const INDICATORS = [
       description= {'description text for diesel pm'}
     />,
     usedIn: CATEGORIES.CLEAN_TRANSPORT.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.EPA_NATA,
-    dateRange: DATE_RANGE.FOURTEEN,
+    responsibleParty: RESPONSIBLE_PARTIES.EPA,
+    sources: [
+      {
+        source: SOURCE_LINKS.EPA_NATA,
+        availableFor: AVAILABLE_FOR.ALL_US_DC,
+      },
+    ],
   },
   {
     domID: 'traffic-vol',
@@ -886,8 +987,13 @@ export const INDICATORS = [
       description= {'description text for traffic volume'}
     />,
     usedIn: CATEGORIES.CLEAN_TRANSPORT.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.DOT_EPA,
-    dateRange: DATE_RANGE.SEVENTEEN,
+    responsibleParty: RESPONSIBLE_PARTIES.DOT,
+    sources: [
+      {
+        source: SOURCE_LINKS.DOT_EPA,
+        availableFor: AVAILABLE_FOR.ALL_US_DC,
+      },
+    ],
   },
   {
     domID: 'house-burden',
@@ -895,14 +1001,19 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.house.burden.description.text'}
       defaultMessage= {`
-        The percent of households in a census tract that are both earning less than 80% of HUD Area Median 
-        Family Income by county and are paying greater than 30% of their income to housing costs.    
+        The percent of households in a census tract that are both earning less than 80% of HUD Area Median
+        Family Income by county and are paying greater than 30% of their income to housing costs.
       `}
       description= {'description text for housing burden'}
     />,
     usedIn: CATEGORIES.AFFORDABLE_HOUSING.METHODOLOGY,
     responsibleParty: RESPONSIBLE_PARTIES.HUD,
-    dateRange: DATE_RANGE.FOURTEEN_PLUS_4,
+    sources: [
+      {
+        source: SOURCE_LINKS.HUD,
+        availableFor: AVAILABLE_FOR.ALL_US_DC,
+      },
+    ],
   },
   {
     domID: 'lead-paint',
@@ -910,14 +1021,19 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.lead.paint.description.text'}
       defaultMessage= {`
-        Percent of housing units built pre-1960, used as an indicator of potential lead paint exposure in 
+        Percent of housing units built pre-1960, used as an indicator of potential lead paint exposure in
         tracts with median home values less than 90th percentile
       `}
       description= {'description text for lead paint'}
     />,
     usedIn: CATEGORIES.AFFORDABLE_HOUSING.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.CENSUS_ACS,
-    dateRange: DATE_RANGE.FIFETEEN_PLUS_4,
+    responsibleParty: RESPONSIBLE_PARTIES.CENSUS,
+    sources: [
+      {
+        source: SOURCE_LINKS.CENSUS_ACS_15_19,
+        availableFor: AVAILABLE_FOR.ALL_US_DC,
+      },
+    ],
   },
   {
     domID: 'median-home',
@@ -930,8 +1046,13 @@ export const INDICATORS = [
       description= {'description text for lead paint'}
     />,
     usedIn: CATEGORIES.AFFORDABLE_HOUSING.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.CENSUS_ACS,
-    dateRange: DATE_RANGE.FIFETEEN_PLUS_4,
+    responsibleParty: RESPONSIBLE_PARTIES.CENSUS,
+    sources: [
+      {
+        source: SOURCE_LINKS.CENSUS_ACS_15_19,
+        availableFor: AVAILABLE_FOR.ALL_US_DC,
+      },
+    ],
   },
   {
     domID: 'prox-haz',
@@ -945,8 +1066,13 @@ export const INDICATORS = [
       description= {'description text for proximity to hazards'}
     />,
     usedIn: CATEGORIES.LEGACY_POLLUTION.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.EPA_TSDF,
-    dateRange: DATE_RANGE.TWENTY,
+    responsibleParty: RESPONSIBLE_PARTIES.EPA,
+    sources: [
+      {
+        source: SOURCE_LINKS.EPA_TSDF,
+        availableFor: AVAILABLE_FOR.ALL_US_DC,
+      },
+    ],
   },
   {
     domID: 'prox-npl',
@@ -955,13 +1081,18 @@ export const INDICATORS = [
       id= {'category.prox.npl.description.text'}
       defaultMessage= {`
         Count of proposed or listed NPL - also known as superfund - sites within 5 km (or nearest one
-        beyond 5 km), each divided by distance in kilometers.      
+        beyond 5 km), each divided by distance in kilometers.
         `}
       description= {'description text for proximity to npl'}
     />,
     usedIn: CATEGORIES.LEGACY_POLLUTION.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.EPA_CERCLIS,
-    dateRange: DATE_RANGE.TWENTY,
+    responsibleParty: RESPONSIBLE_PARTIES.EPA,
+    sources: [
+      {
+        source: SOURCE_LINKS.EPA_CERCLIS,
+        availableFor: AVAILABLE_FOR.ALL_US_DC,
+      },
+    ],
   },
   {
     domID: 'prox-rmp',
@@ -975,8 +1106,13 @@ export const INDICATORS = [
       description= {'description text for proximity to rmp'}
     />,
     usedIn: CATEGORIES.LEGACY_POLLUTION.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.EPA_RMP,
-    dateRange: DATE_RANGE.TWENTY,
+    responsibleParty: RESPONSIBLE_PARTIES.EPA,
+    sources: [
+      {
+        source: SOURCE_LINKS.EPA_RMP,
+        availableFor: AVAILABLE_FOR.ALL_US_DC,
+      },
+    ],
   },
   {
     domID: 'waste-water',
@@ -984,14 +1120,19 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.waste.water.description.text'}
       defaultMessage= {`
-        Risk-Screening Environmental Indicators (RSEI) modeled Toxic Concentrations at 
+        Risk-Screening Environmental Indicators (RSEI) modeled Toxic Concentrations at
         stream segments within 500 meters, divided by distance in kilometers (km).
       `}
       description= {'description text for waste water'}
     />,
     usedIn: CATEGORIES.CLEAN_WATER.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.EPA_RSEI,
-    dateRange: DATE_RANGE.TWENTY,
+    responsibleParty: RESPONSIBLE_PARTIES.EPA,
+    sources: [
+      {
+        source: SOURCE_LINKS.EPA_RSEI,
+        availableFor: AVAILABLE_FOR.ALL_US_DC,
+      },
+    ],
   },
   {
     domID: 'asthma',
@@ -999,15 +1140,20 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.asthma.description.text'}
       defaultMessage= {`
-        Weighted percent of people who answer “yes” to both of the following questions: “Have you ever 
+        Weighted percent of people who answer “yes” to both of the following questions: “Have you ever
         been told by a doctor, nurse, or other health professional that you have asthma?” and the question
         “Do you still have asthma?”
       `}
       description= {'description text for asthma'}
     />,
     usedIn: CATEGORIES.HEALTH_BURDENS.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.CDC_PLACES,
-    dateRange: DATE_RANGE.SIXTEEN_PLUS_3,
+    responsibleParty: RESPONSIBLE_PARTIES.CDC,
+    sources: [
+      {
+        source: SOURCE_LINKS.CDC_PLACES,
+        availableFor: AVAILABLE_FOR.ALL_US_DC,
+      },
+    ],
   },
   {
     domID: 'diabetes',
@@ -1022,8 +1168,13 @@ export const INDICATORS = [
       description= {'description text for diabetes'}
     />,
     usedIn: CATEGORIES.HEALTH_BURDENS.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.CDC_PLACES,
-    dateRange: DATE_RANGE.SIXTEEN_PLUS_3,
+    responsibleParty: RESPONSIBLE_PARTIES.CDC,
+    sources: [
+      {
+        source: SOURCE_LINKS.CDC_PLACES,
+        availableFor: AVAILABLE_FOR.ALL_US_DC,
+      },
+    ],
   },
   {
     domID: 'heart-disease',
@@ -1038,8 +1189,13 @@ export const INDICATORS = [
       description= {'description text for diabetes'}
     />,
     usedIn: CATEGORIES.HEALTH_BURDENS.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.CDC_PLACES,
-    dateRange: DATE_RANGE.SIXTEEN_PLUS_3,
+    responsibleParty: RESPONSIBLE_PARTIES.CDC,
+    sources: [
+      {
+        source: SOURCE_LINKS.CDC_PLACES,
+        availableFor: AVAILABLE_FOR.ALL_US_DC,
+      },
+    ],
   },
   {
     domID: 'life-exp',
@@ -1053,17 +1209,22 @@ export const INDICATORS = [
       description= {'description text for low life expectancy'}
       values= {{
         note: <p><strong>Note:</strong>{`
-          Unlike most of the other datasets, high values of this indicator indicate low burdens. 
-          For percentile calculations, the percentile is calculated in reverse order, so that the tract with 
-          the highest median income relative to area median income (lowest burden on this measure) is at the 
-          0th percentile, and the tract with the lowest median income relative to area median income 
+          Unlike most of the other datasets, high values of this indicator indicate low burdens.
+          For percentile calculations, the percentile is calculated in reverse order, so that the tract with
+          the highest median income relative to area median income (lowest burden on this measure) is at the
+          0th percentile, and the tract with the lowest median income relative to area median income
           (highest burden on this measure) is at the 100th percentile.
         `}</p>,
       }}
     />,
     usedIn: CATEGORIES.HEALTH_BURDENS.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.CDC_SLEEP,
-    dateRange: DATE_RANGE.TEN_PLUS_5,
+    responsibleParty: RESPONSIBLE_PARTIES.CDC,
+    sources: [
+      {
+        source: SOURCE_LINKS.CDC_SLEEP,
+        availableFor: AVAILABLE_FOR.ALL_US_DC,
+      },
+    ],
   },
   {
     domID: 'low-med-inc',
@@ -1076,8 +1237,17 @@ export const INDICATORS = [
       description= {'description text for workforce dev'}
     />,
     usedIn: CATEGORIES.WORKFORCE_DEV.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.CENSUS_ACS,
-    dateRange: DATE_RANGE.FIFETEEN_PLUS_4,
+    responsibleParty: RESPONSIBLE_PARTIES.CENSUS,
+    sources: [
+      {
+        source: SOURCE_LINKS.CENSUS_ACS_15_19,
+        availableFor: AVAILABLE_FOR.ALL_US_DC_PR,
+      },
+      {
+        source: SOURCE_LINKS.CENSUS_ACS_10,
+        availableFor: AVAILABLE_FOR.AS_NMI,
+      },
+    ],
   },
   {
     domID: 'ling-iso',
@@ -1085,13 +1255,19 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.linguistic.iso.description.text'}
       defaultMessage= {`
-        The percent of limited speaking households, which are households where no one over age 14 speaks English well.
+        The percent of limited speaking households, which are households where no one over age
+        14 speaks English well.
       `}
       description= {'description text for linguistic isolation'}
     />,
     usedIn: CATEGORIES.WORKFORCE_DEV.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.CENSUS_ACS,
-    dateRange: DATE_RANGE.FIFETEEN_PLUS_4,
+    responsibleParty: RESPONSIBLE_PARTIES.CENSUS,
+    sources: [
+      {
+        source: SOURCE_LINKS.CENSUS_ACS_15_19,
+        availableFor: AVAILABLE_FOR.ALL_US_DC_PR,
+      },
+    ],
   },
   {
     domID: 'unemploy',
@@ -1104,8 +1280,17 @@ export const INDICATORS = [
       description= {'description text for unemployment'}
     />,
     usedIn: CATEGORIES.WORKFORCE_DEV.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.CENSUS_ACS,
-    dateRange: DATE_RANGE.FIFETEEN_PLUS_4,
+    responsibleParty: RESPONSIBLE_PARTIES.CENSUS,
+    sources: [
+      {
+        source: SOURCE_LINKS.CENSUS_ACS_15_19,
+        availableFor: AVAILABLE_FOR.ALL_US_DC_PR,
+      },
+      {
+        source: SOURCE_LINKS.CENSUS_ACS_10,
+        availableFor: AVAILABLE_FOR.AS_NMI,
+      },
+    ],
   },
   {
     domID: 'poverty',
@@ -1113,14 +1298,23 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.poverty.description.text'}
       defaultMessage= {`
-        Percent of a tract's population in households where the household income is at or below 100% of 
+        Percent of a tract's population in households where the household income is at or below 100% of
         the federal poverty level.
       `}
       description= {'description text for poverty'}
     />,
     usedIn: CATEGORIES.WORKFORCE_DEV.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.CENSUS_ACS,
-    dateRange: DATE_RANGE.FIFETEEN_PLUS_4,
+    responsibleParty: RESPONSIBLE_PARTIES.CENSUS,
+    sources: [
+      {
+        source: SOURCE_LINKS.CENSUS_ACS_15_19,
+        availableFor: AVAILABLE_FOR.ALL_US_DC_PR,
+      },
+      {
+        source: SOURCE_LINKS.CENSUS_ACS_10,
+        availableFor: AVAILABLE_FOR.AS_NMI,
+      },
+    ],
   },
   {
     domID: 'high-school',
@@ -1134,8 +1328,17 @@ export const INDICATORS = [
       description= {'description text for highschool'}
     />,
     usedIn: CATEGORIES.WORKFORCE_DEV.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.CENSUS_ACS,
-    dateRange: DATE_RANGE.FIFETEEN_PLUS_4,
+    responsibleParty: RESPONSIBLE_PARTIES.CENSUS,
+    sources: [
+      {
+        source: SOURCE_LINKS.CENSUS_ACS_15_19,
+        availableFor: AVAILABLE_FOR.ALL_US_DC_PR,
+      },
+      {
+        source: SOURCE_LINKS.CENSUS_ACS_10,
+        availableFor: AVAILABLE_FOR.AS_NMI,
+      },
+    ],
     isPercent: true,
   },
 ];
