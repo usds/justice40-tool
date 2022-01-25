@@ -54,7 +54,7 @@ class MappingForEJETL(ExtractTransformLoad):
         logger.info("Transforming Mapping for EJ Data")
 
         # Join (here, it's just concatenating) the two dataframes from
-        # CO and VA, and drop any row that has a null identifier
+        # CO and VA
         self.df = pd.concat(
             [
                 gpd.read_file(self.VA_SHP_FILE_PATH),
