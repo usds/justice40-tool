@@ -74,8 +74,12 @@ PERCENT_PREFIXES_SUFFIXES = [
 ]
 TILES_ROUND_NUM_DECIMALS = 2
 
-# FEMA rounding suffix
-FEMA_SUFFIX = "loss rate"
+# FEMA rounding columns
+FEMA_ROUND_NUM_COLUMNS = [
+    "Expected agricultural loss rate (Natural Hazards Risk Index)",
+    "Expected building loss rate (Natural Hazards Risk Index)",
+    "Expected population loss rate (Natural Hazards Risk Index)",
+]
 TILES_FEMA_ROUND_NUM_DECIMALS = 4
 
 # Tiles data: full field name, tile index name

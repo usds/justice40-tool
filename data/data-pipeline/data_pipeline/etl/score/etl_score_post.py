@@ -260,7 +260,7 @@ class PostScoreETL(ExtractTransformLoad):
                 ).astype("Int64")
                 df[column] = df_int
 
-            elif constants.FEMA_SUFFIX in column:
+            elif column in constants.FEMA_ROUND_NUM_COLUMNS:
                 # Convert loss rates by multiplying by 100 (they are percents)
                 # and then rounding appropriately.
                 df_100 = df[column] * 100
@@ -275,7 +275,6 @@ class PostScoreETL(ExtractTransformLoad):
                     series=df[column].astype(float64),
                     number_of_decimals=constants.TILES_ROUND_NUM_DECIMALS,
                 )
-                logger.info(df[column].dtype)
 
         return df
 
