@@ -446,5 +446,15 @@ FPL_200_SERIES = "Is low income?"
 FPL_200_AND_COLLEGE_ATTENDANCE_SERIES = (
     "Is low income and low college attendance?"
 )
+
+# Mapping for Environmental Justice columns
+MAPPING_FOR_EJ_FINAL_RANK_FIELD = "Mapping for Environmental Justice Final Rank"
+MAPPING_FOR_EJ_FINAL_SCORE_FIELD = (
+    "Mapping for Environmental Justice Final Score"
+)
+MAPPING_FOR_EJ_PRIORITY_COMMUNITY_FIELD = (
+    "Mapping for Environmental Justice Priority Community"
+)
+
 # End of names for individual factors being exceeded
 ####
