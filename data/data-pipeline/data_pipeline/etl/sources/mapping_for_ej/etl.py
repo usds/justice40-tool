@@ -5,6 +5,7 @@ from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger
 from data_pipeline.score import field_names
 
+## Left in for when the data is moved to S3
 # from data_pipeline.config import settings
 
 logger = get_module_logger(__name__)
@@ -37,22 +38,19 @@ class MappingForEJETL(ExtractTransformLoad):
         # )
 
         # Defining variables
-        self.MAPPING_FOR_EJ_FINAL_RANK_FIELD = (
-            field_names.MAPPING_FOR_EJ_FINAL_RANK_FIELD
-        )
-        self.MAPPING_FOR_EJ_FINAL_SCORE_FIELD = (
-            field_names.MAPPING_FOR_EJ_FINAL_SCORE_FIELD
-        )
-        self.MAPPING_FOR_EJ_PRIORITY_COMMUNITY_FIELD = (
-            field_names.MAPPING_FOR_EJ_PRIORITY_COMMUNITY_FIELD
-        )
+        self.COLUMNS_TO_KEEP = [
+            self.GEOID_TRACT_FIELD_NAME,
+            field_names.MAPPING_FOR_EJ_FINAL_PCT_FIELD,
+            field_names.MAPPING_FOR_EJ_FINAL_SCORE_FIELD,
+            field_names.MAPPING_FOR_EJ_PRIORITY_COMMUNITY_FIELD,
+        ]
 
         # Choosing constants.
         # In our current score implementation, about 17% of CO and 20% of VA tracts are
         # identified as disadvantaged. Consequently, the rank-based threshold is 20%.
         # Using the scores to calculate which are priority communities doesn't quite track
         # with this distribution, and so I've opted to choose roughly 20% of both states.
-        self.MAPPING_FOR_EJ_PRIORITY_COMMUNITY_RANK_THRESHOLD = 80
+        self.MAPPING_FOR_EJ_PRIORITY_COMMUNITY_PCT_THRESHOLD = 80
 
         self.df: pd.DataFrame
 
@@ -89,30 +87,23 @@ class MappingForEJETL(ExtractTransformLoad):
 
         self.df.rename(
             columns={
-                "fin_rank": self.MAPPING_FOR_EJ_FINAL_RANK_FIELD,
-                "fin_score": self.MAPPING_FOR_EJ_FINAL_SCORE_FIELD,
+                "fin_rank": field_names.MAPPING_FOR_EJ_FINAL_PCT_FIELD,
+                "fin_score": field_names.MAPPING_FOR_EJ_FINAL_SCORE_FIELD,
             },
             inplace=True,
         )
 
         # Calculate the top K% of prioritized communities
-        self.df[self.MAPPING_FOR_EJ_PRIORITY_COMMUNITY_FIELD] = (
-            self.df[self.MAPPING_FOR_EJ_FINAL_RANK_FIELD]
-            >= self.MAPPING_FOR_EJ_PRIORITY_COMMUNITY_RANK_THRESHOLD
+        self.df[field_names.MAPPING_FOR_EJ_PRIORITY_COMMUNITY_FIELD] = (
+            self.df[field_names.MAPPING_FOR_EJ_FINAL_PCT_FIELD]
+            >= self.MAPPING_FOR_EJ_PRIORITY_COMMUNITY_PCT_THRESHOLD
         )
 
     def load(self) -> None:
         logger.info("Saving Mapping for EJ CSV")
         # write selected states csv
         self.CSV_PATH.mkdir(parents=True, exist_ok=True)
-
-        columns_to_keep = [
-            self.GEOID_TRACT_FIELD_NAME,
-            self.MAPPING_FOR_EJ_FINAL_RANK_FIELD,
-            self.MAPPING_FOR_EJ_FINAL_SCORE_FIELD,
-            self.MAPPING_FOR_EJ_PRIORITY_COMMUNITY_FIELD,
-        ]
-        self.df[columns_to_keep].to_csv(
+        self.df[self.COLUMNS_TO_KEEP].to_csv(
             self.CSV_PATH / "co_va.csv", index=False
         )
 
