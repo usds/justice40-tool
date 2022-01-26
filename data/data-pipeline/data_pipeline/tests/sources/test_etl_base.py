@@ -25,7 +25,7 @@ class TestETL:
         return self._ETL_CLASS()
 
     def test_existence_of_test_fixtures_base(self):
-        """Every ETL test should have three test fixture files."""
+        """Every ETL test should have these three test fixture files."""
         assert (
             self._DATA_DIRECTORY_FOR_TEST / self._INPUT_CSV_FILE_NAME
         ).exists()
