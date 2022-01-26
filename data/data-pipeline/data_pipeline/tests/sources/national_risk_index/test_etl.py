@@ -12,9 +12,6 @@ from data_pipeline.etl.sources.national_risk_index.etl import (
 )
 from data_pipeline.tests.sources.test_etl_base import TestETL
 
-DATA_DIR = (
-    settings.APP_ROOT / "tests" / "sources" / "national_risk_index" / "data"
-)
 
 """
 Set UPDATE_TEST_FIXTURES to `True` temporarily to allow you to quickly update the test
@@ -38,6 +35,9 @@ UPDATE_TEST_FIXTURES = False
 
 class TestNationalRiskIndexETL(TestETL):
     _ETL_CLASS = NationalRiskIndexETL
+    _DATA_DIRECTORY_FOR_TEST = (
+        settings.APP_ROOT / "tests" / "sources" / "national_risk_index" / "data"
+    )
 
     def test_update_test_fixtures(self, mock_paths, mock_etl):
         """Assert that UPDATE_TEST_FIXTURES is False."""
@@ -100,7 +100,9 @@ class TestNationalRiskIndexETL(TestETL):
 
     @mock.patch("data_pipeline.utils.requests")
     def test_extract(self, requests_mock, mock_paths):
-        zip_file_fixture_src = DATA_DIR / "NRI_Table_CensusTracts.zip"
+        zip_file_fixture_src = (
+            self._DATA_DIRECTORY_FOR_TEST / "NRI_Table_CensusTracts.zip"
+        )
         tmp_path = mock_paths[1]
 
         # Create mock response.
@@ -134,7 +136,9 @@ class TestNationalRiskIndexETL(TestETL):
         extracted_file_path = tmp_path / "NRI_Table_CensusTracts.csv"
         assert extracted_file_path.is_file()
 
-        input_csv_path = DATA_DIR / "input.csv"
+        input_csv_path = (
+            self._DATA_DIRECTORY_FOR_TEST / self._INPUT_CSV_FILE_NAME
+        )
 
         # If temporarily updating test fixtures, write this extracted file as the
         # expected input file:
@@ -156,12 +160,17 @@ class TestNationalRiskIndexETL(TestETL):
         """
         # setup - copy sample data into tmp_dir
         etl = NationalRiskIndexETL()
-        copy_data_files(src=DATA_DIR / "input.csv", dst=etl.INPUT_CSV)
+        copy_data_files(
+            src=self._DATA_DIRECTORY_FOR_TEST / self._INPUT_CSV_FILE_NAME,
+            dst=etl.INPUT_CSV,
+        )
 
         # setup - read in sample output as dataframe
         # execution
         etl.transform()
-        transform_csv_path = DATA_DIR / "transform.csv"
+        transform_csv_path = (
+            self._DATA_DIRECTORY_FOR_TEST / self._TRANSFORM_CSV_FILE_NAME
+        )
 
         # If temporarily updating test fixtures, write this transformed dataframe
         # as the expected transform output file:
@@ -190,7 +199,7 @@ class TestNationalRiskIndexETL(TestETL):
 
         # setup - mock transform step
         df_transform = pd.read_csv(
-            DATA_DIR / "transform.csv",
+            self._DATA_DIRECTORY_FOR_TEST / self._TRANSFORM_CSV_FILE_NAME,
             dtype={etl.GEOID_TRACT_FIELD_NAME: "string"},
         )
         etl.output_df = df_transform
@@ -205,7 +214,9 @@ class TestNationalRiskIndexETL(TestETL):
         actual_output = pd.read_csv(
             actual_output_path, dtype={etl.GEOID_TRACT_FIELD_NAME: str}
         )
-        expected_output_csv_path = DATA_DIR / "output.csv"
+        expected_output_csv_path = (
+            self._DATA_DIRECTORY_FOR_TEST / self._OUTPUT_CSV_FILE_NAME
+        )
 
         # If temporarily updating test fixtures, write this output data frame as the
         # expected output file:
