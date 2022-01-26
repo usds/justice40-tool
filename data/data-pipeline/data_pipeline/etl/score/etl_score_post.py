@@ -259,6 +259,16 @@ class PostScoreETL(ExtractTransformLoad):
                     pd.to_numeric(df_100, errors="coerce")
                 ).astype("Int64")
                 df[column] = df_int
+
+            elif column in constants.FEMA_ROUND_NUM_COLUMNS:
+                # Convert loss rates by multiplying by 100 (they are percents)
+                # and then rounding appropriately.
+                df_100 = df[column] * 100
+                df[column] = floor_series(
+                    series=df_100.astype(float64),
+                    number_of_decimals=constants.TILES_FEMA_ROUND_NUM_DECIMALS,
+                )
+
             else:
                 # Round all other floats.
                 df[column] = floor_series(
