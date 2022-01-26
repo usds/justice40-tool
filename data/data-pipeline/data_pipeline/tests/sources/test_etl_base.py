@@ -105,5 +105,9 @@ class TestETL:
             dtype={etl.GEOID_TRACT_FIELD_NAME: str},
         )
 
+        # check that the `COLUMNS_TO_KEEP` are in the output
+        for col in etl.COLUMNS_TO_KEEP:
+            assert col in actual_output.columns, f"{col} is missing from output"
+
         # validation
         pd.testing.assert_frame_equal(actual_output, expected_output)
