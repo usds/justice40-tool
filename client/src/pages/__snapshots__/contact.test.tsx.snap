@@ -293,6 +293,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <p>
             For general feedback, email 
             <a
+              class="usa-link usa-link--external"
+              data-cy=""
               href="mailto:Screeningtool-Support@omb.eop.gov"
               rel="noreferrer"
               target="_blank"

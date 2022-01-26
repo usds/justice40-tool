@@ -668,9 +668,12 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
     defaultMessage={`Find communities of interest and {shareFeedback}.`}
     values={{
       shareFeedback:
-        <a href={`mailto:${CONTACT_COPY.FEEDBACK_EMAIL}`} target={'blank'}>
-          {'share feedback'}
-        </a>,
+        <LinkTypeWrapper
+          linkText= {'share feedback'}
+          internal= {false}
+          url= {`mailto=${CONTACT_COPY.FEEDBACK_EMAIL}`}
+          openUrlNewTab= {true}
+        />,
     }}
   />,
   LIST_ITEM_3: <FormattedMessage

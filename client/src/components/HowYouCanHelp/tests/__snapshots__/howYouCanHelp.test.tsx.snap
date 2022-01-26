@@ -19,8 +19,11 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
       <li>
         Find communities of interest and 
         <a
-          href="mailto:Screeningtool-Support@omb.eop.gov"
-          target="blank"
+          class="usa-link usa-link--external"
+          data-cy=""
+          href="mailto=Screeningtool-Support@omb.eop.gov"
+          rel="noreferrer"
+          target="_blank"
         >
           share feedback
         </a>
