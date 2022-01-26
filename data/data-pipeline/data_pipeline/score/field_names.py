@@ -370,8 +370,6 @@ LOW_LIFE_EXPECTANCY_LOW_INCOME_FIELD = (
 )
 
 # Workforce
-# TODO: for Definition M, create new output field names (different than those used by
-#  Definition L) and change all output fields to say low HS and low college
 UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for unemployment"
     " and has low HS education"
@@ -392,12 +390,36 @@ LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD = (
     f"percent of area median income and has low HS education"
 )
 
+# Score M Workforce Variables
+SCORE_M_LOW_EDUCATION_CONSTANT = " and has low HS attainment and low higher ed attendance"
+
+UNEMPLOYMENT_LOW_HS_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for unemployment"
+    "{SCORE_M_LOW_EDUCATION_CONSTANT}"
+)
+
+LINGUISTIC_ISOLATION_LOW_HS_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for households in linguistic isolation"
+    "{SCORE_M_LOW_EDUCATION_CONSTANT}"
+)
+
+POVERTY_LOW_HS_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for households at or below 100% federal poverty level"
+    "{SCORE_M_LOW_EDUCATION_CONSTANT}"
+)
+
+LOW_MEDIAN_INCOME_LOW_HS_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for low median household income as a "
+    f"percent of area median income{SCORE_M_LOW_EDUCATION_CONSTANT}"
+)
+
 LOW_HS_EDUCATION_FIELD = "Low high school education"
 LOW_HS_EDUCATION_LOW_COLLEGE_ATTENDANCE_FIELD = (
     "Low high school education and low college attendance"
 )
 
 # Workforce for island areas
+## Note to self -- I believe this doesn't get changed because I think the Island data doesn't include college / grad school?
 ISLAND_AREAS_SUFFIX = " in 2009 (island areas)"
 ISLAND_AREAS_UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for unemployment"
