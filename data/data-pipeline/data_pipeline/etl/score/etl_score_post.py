@@ -220,6 +220,11 @@ class PostScoreETL(ExtractTransformLoad):
         #     [merged_df, null_tract_df, null_tract_df]
         # ).drop_duplicates(keep=False)
 
+        logger.info(
+            "Point 3.25 \n"
+            + f"{merged_df[merged_df[self.GEOID_TRACT_FIELD_NAME].str[:2]=='60'].shape[0]}"
+        )
+
         de_duplicated_df = merged_df.dropna(
             subset=[self.DISADVANTAGED_COMMUNITIES], axis=0
         )
