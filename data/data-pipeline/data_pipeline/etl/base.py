@@ -172,6 +172,8 @@ class ExtractTransformLoad:
         df_output = pd.read_csv(
             output_file_path,
             dtype={
+                # Not all outputs will have both a Census Block Group ID and a
+                # Tract ID, but these will be ignored if they're not present.
                 self.GEOID_FIELD_NAME: "string",
                 self.GEOID_TRACT_FIELD_NAME: "string",
             },

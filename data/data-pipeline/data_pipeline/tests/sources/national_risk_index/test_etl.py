@@ -10,6 +10,7 @@ from data_pipeline.tests.conftest import copy_data_files
 from data_pipeline.etl.sources.national_risk_index.etl import (
     NationalRiskIndexETL,
 )
+from data_pipeline.tests.sources.test_etl_base import TestETL
 
 DATA_DIR = (
     settings.APP_ROOT / "tests" / "sources" / "national_risk_index" / "data"
@@ -35,7 +36,9 @@ If you're confused by any of this, ask for help, it's confusing :).
 UPDATE_TEST_FIXTURES = False
 
 
-class TestNationalRiskIndexETL:
+class TestNationalRiskIndexETL(TestETL):
+    _ETL_CLASS = NationalRiskIndexETL
+
     def test_update_test_fixtures(self, mock_paths, mock_etl):
         """Assert that UPDATE_TEST_FIXTURES is False."""
         if UPDATE_TEST_FIXTURES:
@@ -66,8 +69,6 @@ class TestNationalRiskIndexETL:
         input_csv = tmp_path / "NRI_Table_CensusTracts.csv"
 
         # validation
-        assert etl.DATA_PATH == data_path
-        assert etl.TMP_PATH == tmp_path
         assert etl.INPUT_CSV == input_csv
         assert etl.GEOID_FIELD_NAME == "GEOID10"
         assert etl.GEOID_TRACT_FIELD_NAME == "GEOID10_TRACT"
