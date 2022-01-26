@@ -395,17 +395,17 @@ SCORE_M_LOW_EDUCATION_CONSTANT = " and has low HS attainment and low higher ed a
 
 UNEMPLOYMENT_LOW_HS_LOW_HIGHER_ED_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for unemployment"
-    "{SCORE_M_LOW_EDUCATION_CONSTANT}"
+    f"{SCORE_M_LOW_EDUCATION_CONSTANT}"
 )
 
 LINGUISTIC_ISOLATION_LOW_HS_LOW_HIGHER_ED_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for households in linguistic isolation"
-    "{SCORE_M_LOW_EDUCATION_CONSTANT}"
+    f"{SCORE_M_LOW_EDUCATION_CONSTANT}"
 )
 
 POVERTY_LOW_HS_LOW_HIGHER_ED_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for households at or below 100% federal poverty level"
-    "{SCORE_M_LOW_EDUCATION_CONSTANT}"
+    f"{SCORE_M_LOW_EDUCATION_CONSTANT}"
 )
 
 LOW_MEDIAN_INCOME_LOW_HS_LOW_HIGHER_ED_FIELD = (
