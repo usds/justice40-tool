@@ -170,11 +170,12 @@ class PostScoreETL(ExtractTransformLoad):
             + f"{(score_df[self.GEOID_TRACT_FIELD_NAME].str[:2]=='60').sum()}"
         )
 
+        # TODO: Ask about this! is the merge functioning as expected?
         # merge state + county with score
         score_county_state_merged = score_df.merge(
             county_state_merged,
             on="GEOID",  # GEOID is the county ID
-            how="left",
+            how="outer", indicator=True
         )
 
         logger.info(
@@ -198,7 +199,7 @@ class PostScoreETL(ExtractTransformLoad):
         )
         # recast population to integer
         score_county_state_merged["Total population"] = (
-            merged_df["Total population"].fillna(0.0).astype(int)
+            merged_df["Total population"].fillna(0).astype(int)
         )
 
         logger.info("point 3.1")
