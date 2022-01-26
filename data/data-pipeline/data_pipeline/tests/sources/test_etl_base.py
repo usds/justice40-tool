@@ -59,10 +59,10 @@ class TestETL:
         actual_file_path = etl._get_output_file_path()
 
         expected_file_path = (
-                data_path
-                / "dataset"
-                / f"{etl.NAME}_{etl.LAST_UPDATED_YEAR}"
-                / "usa.csv"
+            data_path
+            / "dataset"
+            / f"{etl.NAME}_{etl.LAST_UPDATED_YEAR}"
+            / "usa.csv"
         )
 
         logger.info(f"Expected: {expected_file_path}")
