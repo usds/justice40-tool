@@ -1,30 +1,10 @@
 import pandas as pd
 
 from data_pipeline.config import settings
-from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
+from data_pipeline.tests.sources.example.etl import ExampleETL
 from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
-
-
-class ExampleETL(ExtractTransformLoad):
-    """A test-only, simple implementation of the ETL base class.
-
-    This can be used for the base tests of the `TestETL` class below.
-    """
-
-    EXAMPLE_FIELD_NAME = "Example Field 1"
-
-    def __init__(self):
-        self.NAME = "example_dataset"
-        self.LAST_UPDATED_YEAR = 2017
-        self.SOURCE_URL = "https://www.example.com/example.zip"
-        self.GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
-
-        self.COLUMNS_TO_KEEP = [
-            self.GEOID_TRACT_FIELD_NAME,
-            self.EXAMPLE_FIELD_NAME,
-        ]
 
 
 class TestETL:
