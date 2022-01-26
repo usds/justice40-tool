@@ -1,8 +1,8 @@
 DATASET_LIST = [
     {
-        "name": "mapping_for_ej", 
-        "module_dir": "mapping_for_ej", 
-        "class_name": "MappingForEJETL"
+        "name": "mapping_for_ej",
+        "module_dir": "mapping_for_ej",
+        "class_name": "MappingForEJETL",
     },
     {
         "name": "census_acs",
