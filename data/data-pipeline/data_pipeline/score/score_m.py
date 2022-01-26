@@ -530,7 +530,7 @@ class ScoreM(Score):
         # AND
         # Where the high school degree achievement rates for adults 25 years and older
         # is less than Y%
-        # AND the college attendance rates are under Z%
+        # AND the higher ed attendance rates are under Z%
         # (necessary to screen out university tracts)
 
         # Workforce criteria for states fields.
