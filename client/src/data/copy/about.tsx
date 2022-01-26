@@ -2,6 +2,8 @@ import React from 'react';
 import {defineMessages} from 'react-intl';
 import {FormattedMessage} from 'gatsby-plugin-intl';
 
+import LinkTypeWrapper from '../../components/LinkTypeWrapper';
+
 export const EXEC_ORDER_LINK = 'https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/27/executive-order-on-tackling-the-climate-crisis-at-home-and-abroad/';
 
 export const PAGE = defineMessages({
@@ -61,10 +63,12 @@ export const HEADING_1 = {
     tool identifies disadvantaged communities through publicly-available, nationally-consistent, and high-quality data.
     `}
     values={{
-      eoLink:
-      <a href={EXEC_ORDER_LINK} target={'blank'}>
-        Executive Order 14008
-      </a>,
+      eoLink: <LinkTypeWrapper
+        linkText={'Executive Order 14008'}
+        internal={false}
+        url={EXEC_ORDER_LINK}
+        openUrlNewTab={true}
+      />,
       tacklingItalics: <i>Tackling the Climate Crisis at Home and Abroad</i>,
     }}
   />,
@@ -80,10 +84,12 @@ export const HEADING_2 = {
     {eoLink} on {tacklingItalics}.
     `}
     values={{
-      eoLink:
-      <a href={EXEC_ORDER_LINK} target={'blank'}>
-        Executive Order 14008
-      </a>,
+      eoLink: <LinkTypeWrapper
+        linkText={'Executive Order 14008'}
+        internal={false}
+        url={EXEC_ORDER_LINK}
+        openUrlNewTab={true}
+      />,
       tacklingItalics: <i>Tackling the Climate Crisis at Home and Abroad</i>,
     }}
   />,

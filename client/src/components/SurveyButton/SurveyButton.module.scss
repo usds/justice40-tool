@@ -15,12 +15,17 @@
     @include u-height(6);
     z-index: 2;
 
-    @include u-text("gray-90");
+    @include u-text("blue-70v");
     @include u-bg("yellow-20v");
 
     &:hover {
       @include u-bg("yellow-20");
       @include u-text("gray-90");
+    }
+
+    .launchIcon {
+      height: .8rem;
+      // @include u-margin-bottom('neg-05');
     }
   }
 }

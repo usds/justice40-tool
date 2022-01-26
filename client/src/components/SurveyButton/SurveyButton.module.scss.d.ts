@@ -2,6 +2,7 @@ declare namespace SurveyButtonNamespace {
     export interface ISurveyButtonScss {
         surveyButton: string;
         surveyButtonContainer: string;
+        launchIcon: string;
     }
   }
 

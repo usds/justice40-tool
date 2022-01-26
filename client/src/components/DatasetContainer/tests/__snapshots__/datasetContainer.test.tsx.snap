@@ -47,27 +47,36 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <ul>
                 <li>
                   <span>
+                    Used in: 
+                  </span>
+                  All methodologies except for training and workforce development
+                </li>
+                <li>
+                  <span>
                     Responsible Party: 
                   </span>
+                  Census
+                </li>
+                <li>
+                  <span>
+                    Source: 
+                  </span>
                   <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
                     href="https://www.census.gov/programs-surveys/acs"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Census's American Community Survey
+                    American Community Survey
                   </a>
+                   from 2015-2019
                 </li>
                 <li>
                   <span>
-                    Date range: 
+                    Available for: 
                   </span>
-                  2015-2019
-                </li>
-                <li>
-                  <span>
-                    Used in: 
-                  </span>
-                  All methodologies except for training and workforce development
+                  All U.S. states and the District of Columbia
                 </li>
               </ul>
             </div>
@@ -79,37 +88,46 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </h3>
               <div>
                 
-        Percent of agriculture value at risk from losses due to natural hazards. Calculated by dividing 
-        the agriculture value at risk in a census tract by the total agriculture value in that census 
-        tract. Fourteen natural hazards that have some link to climate change include: avalanche, 
-        coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, 
-        riverine flooding, strong wind, tornado, wildfire, and winter weather.
+        Percent of agriculture value at risk from losses due to natural hazards such as the fourteen 
+        natural hazards that have some link to climate change including: avalanche, coastal flooding, 
+        cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong 
+        wind, tornado, wildfire, and winter weather. Calculated by dividing the agriculture value at risk in 
+        a census tract by the total agriculture value in that census tract.
       
               </div>
               <ul>
                 <li>
                   <span>
+                    Used in: 
+                  </span>
+                  Climate change methodology
+                </li>
+                <li>
+                  <span>
                     Responsible Party: 
                   </span>
+                  Federal Emergency Management Agency (FEMA)
+                </li>
+                <li>
+                  <span>
+                    Source: 
+                  </span>
                   <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
                     href="https://hazards.fema.gov/nri/expected-annual-loss"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Federal Emergency Management Agency (FEMA)
+                    National Risk Index
                   </a>
+                   from 2014-2021
                 </li>
                 <li>
                   <span>
-                    Date range: 
+                    Available for: 
                   </span>
-                  2014-2021
-                </li>
-                <li>
-                  <span>
-                    Used in: 
-                  </span>
-                  Climate change methodology
+                  All U.S. states and the District of Columbia
                 </li>
               </ul>
             </div>
@@ -121,37 +139,46 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </h3>
               <div>
                 
-        Percent of building value at risk from losses due to natural hazards. Calculated by dividing the 
-        building value at risk in a census tract by the total building value in that census tract. 
-        Fourteen natural hazards that have some link to climate change include: avalanche, 
-        coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, 
-        riverine flooding, strong wind, tornado, wildfire, and winter weather.
-        
+        Percent of building value at risk from losses due to natural hazards such as the fourteen 
+        natural hazards that have some link to climate change including: avalanche, coastal flooding, 
+        cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong 
+        wind, tornado, wildfire, and winter weather. Calculated by dividing the building value at risk in 
+        a census tract by the total building value in that census tract.
+      
               </div>
               <ul>
-                <li>
-                  <span>
-                    Responsible Party: 
-                  </span>
-                  <a
-                    href="https://hazards.fema.gov/nri/expected-annual-loss"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    Federal Emergency Management Agency (FEMA)
-                  </a>
-                </li>
-                <li>
-                  <span>
-                    Date range: 
-                  </span>
-                  2014-2021
-                </li>
                 <li>
                   <span>
                     Used in: 
                   </span>
                   Climate change methodology
+                </li>
+                <li>
+                  <span>
+                    Responsible Party: 
+                  </span>
+                  Federal Emergency Management Agency (FEMA)
+                </li>
+                <li>
+                  <span>
+                    Source: 
+                  </span>
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
+                    href="https://hazards.fema.gov/nri/expected-annual-loss"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    National Risk Index
+                  </a>
+                   from 2014-2021
+                </li>
+                <li>
+                  <span>
+                    Available for: 
+                  </span>
+                  All U.S. states and the District of Columbia
                 </li>
               </ul>
             </div>
@@ -163,43 +190,52 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </h3>
               <div>
                 
-        Rate relative to the population in fatalities and injuries due to natural hazards each year. 
-        Fourteen natural hazards that have some link to climate change include: avalanche, coastal 
-        flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine 
-        flooding, strong wind, tornado, wildfire, and winter weather.
-        Population loss is defined as the Spatial Hazard Events and Losses or National Centers 
-        for Environmental Information’s (NCEI) reported number of fatalities and injuries caused by the 
-        hazard occurrence. To combine fatalities and injuries for the computation of population loss value, 
-        an injury is counted as one-tenth (1/10) of a fatality. The NCEI Storm Events Database 
-        classifies injuries and fatalities as direct or indirect. Both direct and indirect injuries 
-        and fatalities are counted as population loss. This total number of injuries and fatalities 
-        is then divided by the population in the census tract to get a per-capita rate of population risk.   
+        Rate relative to the population in fatalities and injuries due to natural hazards each year such as 
+        the fourteen natural hazards that have some link to climate change including: avalanche, 
+        coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, 
+        riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined 
+        as the Spatial Hazard Events and Losses or National Centers for Environmental Information’s 
+        (NCEI) reported number of fatalities and injuries caused by the hazard occurrence. To 
+        combine fatalities and injuries for the computation of population loss value, an injury is counted 
+        as one-tenth (1/10) of a fatality. The NCEI Storm Events Database classifies injuries and fatalities 
+        as direct or indirect. Both direct and indirect injuries and fatalities are counted as population 
+        loss. This total number of injuries and fatalities is then divided by the population in the 
+        census tract to get a per-capita rate of population risk. 
       
               </div>
               <ul>
                 <li>
                   <span>
+                    Used in: 
+                  </span>
+                  Climate change methodology
+                </li>
+                <li>
+                  <span>
                     Responsible Party: 
                   </span>
+                  Federal Emergency Management Agency (FEMA)
+                </li>
+                <li>
+                  <span>
+                    Source: 
+                  </span>
                   <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
                     href="https://hazards.fema.gov/nri/expected-annual-loss"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Federal Emergency Management Agency (FEMA)
+                    National Risk Index
                   </a>
+                   from 2014-2021
                 </li>
                 <li>
                   <span>
-                    Date range: 
+                    Available for: 
                   </span>
-                  2014-2021
-                </li>
-                <li>
-                  <span>
-                    Used in: 
-                  </span>
-                  Climate change methodology
+                  All U.S. states and the District of Columbia
                 </li>
               </ul>
             </div>
@@ -215,27 +251,36 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <ul>
                 <li>
                   <span>
+                    Used in: 
+                  </span>
+                  Clean energy and energy efficiency methodology
+                </li>
+                <li>
+                  <span>
                     Responsible Party: 
                   </span>
+                  Department of Energy (DOE)
+                </li>
+                <li>
+                  <span>
+                    Source: 
+                  </span>
                   <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
                     href="https://www.energy.gov/eere/slsc/low-income-energy-affordability-data-lead-tool"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Department of Energy (DOE) LEAD Score
+                    LEAD Score
                   </a>
+                   from 2018
                 </li>
                 <li>
                   <span>
-                    Date range: 
+                    Available for: 
                   </span>
-                  2018
-                </li>
-                <li>
-                  <span>
-                    Used in: 
-                  </span>
-                  Clean energy and energy efficiency methodology
+                  All U.S. states and the District of Columbia
                 </li>
               </ul>
             </div>
@@ -253,31 +298,40 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <ul>
                 <li>
                   <span>
+                    Used in: 
+                  </span>
+                  Clean energy and energy efficiency methodology
+                </li>
+                <li>
+                  <span>
                     Responsible Party: 
                   </span>
+                  Environmental Protection Agency (EPA) Office of Air and Radiation (OAR)
+                </li>
+                <li>
+                  <span>
+                    Source: 
+                  </span>
+                  
+      
                   <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
                     href="https://www.epa.gov/ejscreen/technical-documentation-ejscreen"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    
-          Environmental Protection Agency (EPA) Office of Air and Radiation (OAR) fusion of model and monitor 
-          data as compiled by EPA's EJSCREEN, sourced from EPA National Air Toxics Assessment (NATA), 2017 
-          U.S. Department of Transportation (DOT) traffic data
-        
+                    Fusion of model and monitor data
                   </a>
+                   from 2017 as compiled by EPA’s EJSCREEN, sourced from EPA National Air 
+      Toxics Assessment (NATA) and the U.S. Department of Transportation (DOT) traffic data
+    
                 </li>
                 <li>
                   <span>
-                    Date range: 
+                    Available for: 
                   </span>
-                  2017
-                </li>
-                <li>
-                  <span>
-                    Used in: 
-                  </span>
-                  Clean energy and energy efficiency methodology
+                  All U.S. states and the District of Columbia
                 </li>
               </ul>
             </div>
@@ -295,30 +349,36 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <ul>
                 <li>
                   <span>
+                    Used in: 
+                  </span>
+                  Clean transportation methodology
+                </li>
+                <li>
+                  <span>
                     Responsible Party: 
                   </span>
+                  Environmental Protection Agency (EPA)
+                </li>
+                <li>
+                  <span>
+                    Source: 
+                  </span>
                   <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
                     href="https://www.epa.gov/ejscreen/technical-documentation-ejscreen"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    
-          Environmental Protection Agency (EPA) National Air Toxics Assessment (NATA)
-          as compiled by EPA's EJSCREEN        
-        
+                    National Air Toxics Assessment (NATA)
                   </a>
+                   from 2014 as compiled by EPA's EJSCREEN
                 </li>
                 <li>
                   <span>
-                    Date range: 
+                    Available for: 
                   </span>
-                  2014
-                </li>
-                <li>
-                  <span>
-                    Used in: 
-                  </span>
-                  Clean transportation methodology
+                  All U.S. states and the District of Columbia
                 </li>
               </ul>
             </div>
@@ -337,29 +397,36 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <ul>
                 <li>
                   <span>
+                    Used in: 
+                  </span>
+                  Clean transportation methodology
+                </li>
+                <li>
+                  <span>
                     Responsible Party: 
                   </span>
+                  Department of Transportation (DOT)
+                </li>
+                <li>
+                  <span>
+                    Source: 
+                  </span>
                   <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
                     href="https://www.epa.gov/ejscreen/technical-documentation-ejscreen"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    
-          Department of Transportation (DOT) traffic data as compiled by EPA's EJSCREEN      
-        
+                    Traffic Data
                   </a>
+                   from 2017 as compiled by EPA's EJSCREEN
                 </li>
                 <li>
                   <span>
-                    Date range: 
+                    Available for: 
                   </span>
-                  2017
-                </li>
-                <li>
-                  <span>
-                    Used in: 
-                  </span>
-                  Clean transportation methodology
+                  All U.S. states and the District of Columbia
                 </li>
               </ul>
             </div>
@@ -371,37 +438,43 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </h3>
               <div>
                 
-        The percent of households in a census tract that are both earning less than 80% of HUD Area Median 
-        Family Income by county and are paying greater than 30% of their income to housing costs.    
+        The percent of households in a census tract that are both earning less than 80% of HUD Area Median
+        Family Income by county and are paying greater than 30% of their income to housing costs.
       
               </div>
               <ul>
                 <li>
                   <span>
+                    Used in: 
+                  </span>
+                  Affordable and sustainable housing methodology
+                </li>
+                <li>
+                  <span>
                     Responsible Party: 
                   </span>
+                  Department of Housing & Urban Development's (HUD)
+                </li>
+                <li>
+                  <span>
+                    Source: 
+                  </span>
                   <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
                     href="https://www.huduser.gov/portal/datasets/cp.html"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    
-          Department of Housing & Urban Development’s
-          (HUD) Comprehensive Housing Affordability Strategy dataset
-        
+                    Comprehensive Housing Affordability Strategy dataset
                   </a>
+                   from 2014-2018
                 </li>
                 <li>
                   <span>
-                    Date range: 
+                    Available for: 
                   </span>
-                  2014-2018
-                </li>
-                <li>
-                  <span>
-                    Used in: 
-                  </span>
-                  Affordable and sustainable housing methodology
+                  All U.S. states and the District of Columbia
                 </li>
               </ul>
             </div>
@@ -413,34 +486,43 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </h3>
               <div>
                 
-        Percent of housing units built pre-1960, used as an indicator of potential lead paint exposure in 
+        Percent of housing units built pre-1960, used as an indicator of potential lead paint exposure in
         tracts with median home values less than 90th percentile
       
               </div>
               <ul>
                 <li>
                   <span>
+                    Used in: 
+                  </span>
+                  Affordable and sustainable housing methodology
+                </li>
+                <li>
+                  <span>
                     Responsible Party: 
                   </span>
+                  Census
+                </li>
+                <li>
+                  <span>
+                    Source: 
+                  </span>
                   <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
                     href="https://www.census.gov/programs-surveys/acs"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Census's American Community Survey
+                    American Community Survey
                   </a>
+                   from 2015-2019
                 </li>
                 <li>
                   <span>
-                    Date range: 
+                    Available for: 
                   </span>
-                  2015-2019
-                </li>
-                <li>
-                  <span>
-                    Used in: 
-                  </span>
-                  Affordable and sustainable housing methodology
+                  All U.S. states and the District of Columbia
                 </li>
               </ul>
             </div>
@@ -458,27 +540,36 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <ul>
                 <li>
                   <span>
+                    Used in: 
+                  </span>
+                  Affordable and sustainable housing methodology
+                </li>
+                <li>
+                  <span>
                     Responsible Party: 
                   </span>
+                  Census
+                </li>
+                <li>
+                  <span>
+                    Source: 
+                  </span>
                   <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
                     href="https://www.census.gov/programs-surveys/acs"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Census's American Community Survey
+                    American Community Survey
                   </a>
+                   from 2015-2019
                 </li>
                 <li>
                   <span>
-                    Date range: 
+                    Available for: 
                   </span>
-                  2015-2019
-                </li>
-                <li>
-                  <span>
-                    Used in: 
-                  </span>
-                  Affordable and sustainable housing methodology
+                  All U.S. states and the District of Columbia
                 </li>
               </ul>
             </div>
@@ -497,30 +588,40 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <ul>
                 <li>
                   <span>
+                    Used in: 
+                  </span>
+                  Reduction and remediation of legacy pollution methodology
+                </li>
+                <li>
+                  <span>
                     Responsible Party: 
                   </span>
+                  Environmental Protection Agency (EPA)
+                </li>
+                <li>
+                  <span>
+                    Source: 
+                  </span>
+                  
+      
                   <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
                     href="https://enviro.epa.gov/facts/rcrainfo/search.html"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    
-          Environmental Protection Agency (EPA) Treatment Storage, and Disposal Facilities
-          (TSDF) data calculated from EPA RCRA info database as compiled by EPA’s EJSCREEN
-        
+                    Treatment Storage, and Disposal Facilities (TSDF) data
                   </a>
+                   from 2020 calculated from EPA RCRA database as compiled 
+      by EPA's EJSCREEN
+    
                 </li>
                 <li>
                   <span>
-                    Date range: 
+                    Available for: 
                   </span>
-                  2020
-                </li>
-                <li>
-                  <span>
-                    Used in: 
-                  </span>
-                  Reduction and remediation of legacy pollution methodology
+                  All U.S. states and the District of Columbia
                 </li>
               </ul>
             </div>
@@ -533,35 +634,42 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div>
                 
         Count of proposed or listed NPL - also known as superfund - sites within 5 km (or nearest one
-        beyond 5 km), each divided by distance in kilometers.      
+        beyond 5 km), each divided by distance in kilometers.
         
               </div>
               <ul>
                 <li>
                   <span>
+                    Used in: 
+                  </span>
+                  Reduction and remediation of legacy pollution methodology
+                </li>
+                <li>
+                  <span>
                     Responsible Party: 
                   </span>
+                  Environmental Protection Agency (EPA)
+                </li>
+                <li>
+                  <span>
+                    Source: 
+                  </span>
                   <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
                     href="https://enviro.epa.gov/facts/rcrainfo/search.html"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    
-          Environmental Protection Agency (EPA) CERCLIS database as compiled by EPA’s EJSCREEN        
-        
+                    CERCLIS database
                   </a>
+                   from 2020 as compiled by EPA’s EJSCREEN
                 </li>
                 <li>
                   <span>
-                    Date range: 
+                    Available for: 
                   </span>
-                  2020
-                </li>
-                <li>
-                  <span>
-                    Used in: 
-                  </span>
-                  Reduction and remediation of legacy pollution methodology
+                  All U.S. states and the District of Columbia
                 </li>
               </ul>
             </div>
@@ -580,29 +688,36 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <ul>
                 <li>
                   <span>
+                    Used in: 
+                  </span>
+                  Reduction and remediation of legacy pollution methodology
+                </li>
+                <li>
+                  <span>
                     Responsible Party: 
                   </span>
+                  Environmental Protection Agency (EPA)
+                </li>
+                <li>
+                  <span>
+                    Source: 
+                  </span>
                   <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
                     href="https://www.epa.gov/ejscreen/technical-documentation-ejscreen"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    
-          Environmental Protection Agency (EPA) RMP database as compiled by EPA’s EJSCREEN        
-        
+                    RMP database
                   </a>
+                   from 2020 as compiled by EPA’s EJSCREEN
                 </li>
                 <li>
                   <span>
-                    Date range: 
+                    Available for: 
                   </span>
-                  2020
-                </li>
-                <li>
-                  <span>
-                    Used in: 
-                  </span>
-                  Reduction and remediation of legacy pollution methodology
+                  All U.S. states and the District of Columbia
                 </li>
               </ul>
             </div>
@@ -614,37 +729,43 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </h3>
               <div>
                 
-        Risk-Screening Environmental Indicators (RSEI) modeled Toxic Concentrations at 
+        Risk-Screening Environmental Indicators (RSEI) modeled Toxic Concentrations at
         stream segments within 500 meters, divided by distance in kilometers (km).
       
               </div>
               <ul>
                 <li>
                   <span>
+                    Used in: 
+                  </span>
+                  Critical clean water and waste infrastructure methodology
+                </li>
+                <li>
+                  <span>
                     Responsible Party: 
                   </span>
+                  Environmental Protection Agency (EPA)
+                </li>
+                <li>
+                  <span>
+                    Source: 
+                  </span>
                   <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
                     href="https://www.epa.gov/ejscreen/technical-documentation-ejscreen"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    
-          Environmental Protection Agency (EPA) Risk-Screening
-          Environmental Indicators (RSEI) Model as compiled by EPA's EJSCREEN        
-        
+                    Risk-Screening Environmental Indicators (RSEI) Model
                   </a>
+                   from 2020 as compiled by EPA’s EJSCREEN
                 </li>
                 <li>
                   <span>
-                    Date range: 
+                    Available for: 
                   </span>
-                  2020
-                </li>
-                <li>
-                  <span>
-                    Used in: 
-                  </span>
-                  Critical clean water and waste infrastructure methodology
+                  All U.S. states and the District of Columbia
                 </li>
               </ul>
             </div>
@@ -656,7 +777,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </h3>
               <div>
                 
-        Weighted percent of people who answer “yes” to both of the following questions: “Have you ever 
+        Weighted percent of people who answer “yes” to both of the following questions: “Have you ever
         been told by a doctor, nurse, or other health professional that you have asthma?” and the question
         “Do you still have asthma?”
       
@@ -664,29 +785,36 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <ul>
                 <li>
                   <span>
+                    Used in: 
+                  </span>
+                  Health burdens methodology
+                </li>
+                <li>
+                  <span>
                     Responsible Party: 
                   </span>
+                  Centers for Disease Control and Prevention (CDC)
+                </li>
+                <li>
+                  <span>
+                    Source: 
+                  </span>
                   <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
                     href="https://www.cdc.gov/places/index.html"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    
-          Centers for Disease Control and Prevention (CDC) PLACES        
-        
+                    PLACES data
                   </a>
+                   from 2016-2019
                 </li>
                 <li>
                   <span>
-                    Date range: 
+                    Available for: 
                   </span>
-                  2016-2019
-                </li>
-                <li>
-                  <span>
-                    Used in: 
-                  </span>
-                  Health burdens methodology
+                  All U.S. states and the District of Columbia
                 </li>
               </ul>
             </div>
@@ -706,29 +834,36 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <ul>
                 <li>
                   <span>
+                    Used in: 
+                  </span>
+                  Health burdens methodology
+                </li>
+                <li>
+                  <span>
                     Responsible Party: 
                   </span>
+                  Centers for Disease Control and Prevention (CDC)
+                </li>
+                <li>
+                  <span>
+                    Source: 
+                  </span>
                   <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
                     href="https://www.cdc.gov/places/index.html"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    
-          Centers for Disease Control and Prevention (CDC) PLACES        
-        
+                    PLACES data
                   </a>
+                   from 2016-2019
                 </li>
                 <li>
                   <span>
-                    Date range: 
+                    Available for: 
                   </span>
-                  2016-2019
-                </li>
-                <li>
-                  <span>
-                    Used in: 
-                  </span>
-                  Health burdens methodology
+                  All U.S. states and the District of Columbia
                 </li>
               </ul>
             </div>
@@ -748,29 +883,36 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <ul>
                 <li>
                   <span>
+                    Used in: 
+                  </span>
+                  Health burdens methodology
+                </li>
+                <li>
+                  <span>
                     Responsible Party: 
                   </span>
+                  Centers for Disease Control and Prevention (CDC)
+                </li>
+                <li>
+                  <span>
+                    Source: 
+                  </span>
                   <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
                     href="https://www.cdc.gov/places/index.html"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    
-          Centers for Disease Control and Prevention (CDC) PLACES        
-        
+                    PLACES data
                   </a>
+                   from 2016-2019
                 </li>
                 <li>
                   <span>
-                    Date range: 
+                    Available for: 
                   </span>
-                  2016-2019
-                </li>
-                <li>
-                  <span>
-                    Used in: 
-                  </span>
-                  Health burdens methodology
+                  All U.S. states and the District of Columbia
                 </li>
               </ul>
             </div>
@@ -789,10 +931,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     Note:
                   </strong>
                   
-          Unlike most of the other datasets, high values of this indicator indicate low burdens. 
-          For percentile calculations, the percentile is calculated in reverse order, so that the tract with 
-          the highest median income relative to area median income (lowest burden on this measure) is at the 
-          0th percentile, and the tract with the lowest median income relative to area median income 
+          Unlike most of the other datasets, high values of this indicator indicate low burdens.
+          For percentile calculations, the percentile is calculated in reverse order, so that the tract with
+          the highest median income relative to area median income (lowest burden on this measure) is at the
+          0th percentile, and the tract with the lowest median income relative to area median income
           (highest burden on this measure) is at the 100th percentile.
         
                 </p>
@@ -802,29 +944,36 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <ul>
                 <li>
                   <span>
+                    Used in: 
+                  </span>
+                  Health burdens methodology
+                </li>
+                <li>
+                  <span>
                     Responsible Party: 
                   </span>
+                  Centers for Disease Control and Prevention (CDC)
+                </li>
+                <li>
+                  <span>
+                    Source: 
+                  </span>
                   <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
                     href="https://www.cdc.gov/nchs/nvss/usaleep/usaleep.html#data"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    
-          CDC’s U.S. Small-area Life Expectancy Estimates Project (USALEEP)        
-        
+                    U.S. Small-area Life Expectancy Estimates Project (USALEEP)
                   </a>
+                   from 2010-2015
                 </li>
                 <li>
                   <span>
-                    Date range: 
+                    Available for: 
                   </span>
-                  2010-2015
-                </li>
-                <li>
-                  <span>
-                    Used in: 
-                  </span>
-                  Health burdens methodology
+                  All U.S. states and the District of Columbia
                 </li>
               </ul>
             </div>
@@ -842,27 +991,57 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <ul>
                 <li>
                   <span>
+                    Used in: 
+                  </span>
+                  Training and workforce development methodology
+                </li>
+                <li>
+                  <span>
                     Responsible Party: 
                   </span>
+                  Census
+                </li>
+                <li>
+                  <span>
+                    Source: 
+                  </span>
                   <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
                     href="https://www.census.gov/programs-surveys/acs"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Census's American Community Survey
+                    American Community Survey
                   </a>
+                   from 2015-2019
                 </li>
                 <li>
                   <span>
-                    Date range: 
+                    Available for: 
                   </span>
-                  2015-2019
+                  All U.S. states, the District of Columbia, and Puerto Rico
                 </li>
                 <li>
                   <span>
-                    Used in: 
+                    Source: 
                   </span>
-                  Training and workforce development methodology
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
+                    href="https://www.census.gov/programs-surveys/acs"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    American Community Survey
+                  </a>
+                   from 2010
+                </li>
+                <li>
+                  <span>
+                    Available for: 
+                  </span>
+                  American Samoa and the Northern Mariana Islands
                 </li>
               </ul>
             </div>
@@ -874,33 +1053,43 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </h3>
               <div>
                 
-        The percent of limited speaking households, which are households where no one over age 14 speaks English well.
+        The percent of limited speaking households, which are households where no one over age
+        14 speaks English well.
       
               </div>
               <ul>
                 <li>
                   <span>
+                    Used in: 
+                  </span>
+                  Training and workforce development methodology
+                </li>
+                <li>
+                  <span>
                     Responsible Party: 
                   </span>
+                  Census
+                </li>
+                <li>
+                  <span>
+                    Source: 
+                  </span>
                   <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
                     href="https://www.census.gov/programs-surveys/acs"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Census's American Community Survey
+                    American Community Survey
                   </a>
+                   from 2015-2019
                 </li>
                 <li>
                   <span>
-                    Date range: 
+                    Available for: 
                   </span>
-                  2015-2019
-                </li>
-                <li>
-                  <span>
-                    Used in: 
-                  </span>
-                  Training and workforce development methodology
+                  All U.S. states, the District of Columbia, and Puerto Rico
                 </li>
               </ul>
             </div>
@@ -918,27 +1107,57 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <ul>
                 <li>
                   <span>
+                    Used in: 
+                  </span>
+                  Training and workforce development methodology
+                </li>
+                <li>
+                  <span>
                     Responsible Party: 
                   </span>
+                  Census
+                </li>
+                <li>
+                  <span>
+                    Source: 
+                  </span>
                   <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
                     href="https://www.census.gov/programs-surveys/acs"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Census's American Community Survey
+                    American Community Survey
                   </a>
+                   from 2015-2019
                 </li>
                 <li>
                   <span>
-                    Date range: 
+                    Available for: 
                   </span>
-                  2015-2019
+                  All U.S. states, the District of Columbia, and Puerto Rico
                 </li>
                 <li>
                   <span>
-                    Used in: 
+                    Source: 
                   </span>
-                  Training and workforce development methodology
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
+                    href="https://www.census.gov/programs-surveys/acs"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    American Community Survey
+                  </a>
+                   from 2010
+                </li>
+                <li>
+                  <span>
+                    Available for: 
+                  </span>
+                  American Samoa and the Northern Mariana Islands
                 </li>
               </ul>
             </div>
@@ -950,34 +1169,64 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </h3>
               <div>
                 
-        Percent of a tract's population in households where the household income is at or below 100% of 
+        Percent of a tract's population in households where the household income is at or below 100% of
         the federal poverty level.
       
               </div>
               <ul>
                 <li>
                   <span>
+                    Used in: 
+                  </span>
+                  Training and workforce development methodology
+                </li>
+                <li>
+                  <span>
                     Responsible Party: 
                   </span>
+                  Census
+                </li>
+                <li>
+                  <span>
+                    Source: 
+                  </span>
                   <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
                     href="https://www.census.gov/programs-surveys/acs"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Census's American Community Survey
+                    American Community Survey
                   </a>
+                   from 2015-2019
                 </li>
                 <li>
                   <span>
-                    Date range: 
+                    Available for: 
                   </span>
-                  2015-2019
+                  All U.S. states, the District of Columbia, and Puerto Rico
                 </li>
                 <li>
                   <span>
-                    Used in: 
+                    Source: 
                   </span>
-                  Training and workforce development methodology
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
+                    href="https://www.census.gov/programs-surveys/acs"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    American Community Survey
+                  </a>
+                   from 2010
+                </li>
+                <li>
+                  <span>
+                    Available for: 
+                  </span>
+                  American Samoa and the Northern Mariana Islands
                 </li>
               </ul>
             </div>
@@ -996,27 +1245,57 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <ul>
                 <li>
                   <span>
+                    Used in: 
+                  </span>
+                  Training and workforce development methodology
+                </li>
+                <li>
+                  <span>
                     Responsible Party: 
                   </span>
+                  Census
+                </li>
+                <li>
+                  <span>
+                    Source: 
+                  </span>
                   <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
                     href="https://www.census.gov/programs-surveys/acs"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Census's American Community Survey
+                    American Community Survey
                   </a>
+                   from 2015-2019
                 </li>
                 <li>
                   <span>
-                    Date range: 
+                    Available for: 
                   </span>
-                  2015-2019
+                  All U.S. states, the District of Columbia, and Puerto Rico
                 </li>
                 <li>
                   <span>
-                    Used in: 
+                    Source: 
                   </span>
-                  Training and workforce development methodology
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
+                    href="https://www.census.gov/programs-surveys/acs"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    American Community Survey
+                  </a>
+                   from 2010
+                </li>
+                <li>
+                  <span>
+                    Available for: 
+                  </span>
+                  American Samoa and the Northern Mariana Islands
                 </li>
               </ul>
             </div>
