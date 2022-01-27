@@ -530,14 +530,15 @@ class ScoreM(Score):
         # AND
         # Where the high school degree achievement rates for adults 25 years and older
         # is less than Y%
+        # AND the higher ed attendance rates are under Z%
         # (necessary to screen out university tracts)
 
         # Workforce criteria for states fields.
         workforce_eligibility_columns = [
-            field_names.UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD,
-            field_names.POVERTY_LOW_HS_EDUCATION_FIELD,
-            field_names.LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD,
-            field_names.LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD,
+            field_names.UNEMPLOYMENT_LOW_HS_LOW_HIGHER_ED_FIELD,
+            field_names.POVERTY_LOW_HS_LOW_HIGHER_ED_FIELD,
+            field_names.LINGUISTIC_ISOLATION_LOW_HS_LOW_HIGHER_ED_FIELD,
+            field_names.LOW_MEDIAN_INCOME_LOW_HS_LOW_HIGHER_ED_FIELD,
         ]
 
         self.df[field_names.LOW_HS_EDUCATION_LOW_COLLEGE_ATTENDANCE_FIELD] = (
@@ -587,22 +588,22 @@ class ScoreM(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-        self.df[field_names.LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD] = (
+        self.df[field_names.LINGUISTIC_ISOLATION_LOW_HS_LOW_HIGHER_ED_FIELD] = (
             linguistic_isolation_threshold
             & self.df[field_names.LOW_HS_EDUCATION_LOW_COLLEGE_ATTENDANCE_FIELD]
         )
 
-        self.df[field_names.POVERTY_LOW_HS_EDUCATION_FIELD] = (
+        self.df[field_names.POVERTY_LOW_HS_LOW_HIGHER_ED_FIELD] = (
             poverty_threshold
             & self.df[field_names.LOW_HS_EDUCATION_LOW_COLLEGE_ATTENDANCE_FIELD]
         )
 
-        self.df[field_names.LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD] = (
+        self.df[field_names.LOW_MEDIAN_INCOME_LOW_HS_LOW_HIGHER_ED_FIELD] = (
             low_median_income_threshold
             & self.df[field_names.LOW_HS_EDUCATION_LOW_COLLEGE_ATTENDANCE_FIELD]
         )
 
-        self.df[field_names.UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD] = (
+        self.df[field_names.UNEMPLOYMENT_LOW_HS_LOW_HIGHER_ED_FIELD] = (
             unemployment_threshold
             & self.df[field_names.LOW_HS_EDUCATION_LOW_COLLEGE_ATTENDANCE_FIELD]
         )
