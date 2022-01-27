@@ -8,6 +8,7 @@ from data_pipeline.etl.runner import (
     score_generate,
     score_geo,
     score_post,
+    update_etl_test_fixtures,
 )
 from data_pipeline.etl.sources.census.etl_utils import (
     reset_data_directories as census_reset,
@@ -276,6 +277,30 @@ def data_full_run(check: bool, data_source: str):
     call(cmd, shell=True)
 
     logger.info("*** Map data ready")
+    sys.exit()
+
+
+@cli.command(
+    help="Update the test fixtures of a specific ETL class.",
+)
+@click.option(
+    "-d",
+    "--dataset",
+    required=True,
+    type=str,
+    help=dataset_cli_help,
+)
+def update_test_fixtures(dataset: str):
+    """Update the test fixtures of a specific ETL class.
+
+    Args:
+        dataset (str): Name of the ETL module to be updated
+
+    Returns:
+        None
+    """
+
+    update_etl_test_fixtures(dataset)
     sys.exit()
 
 

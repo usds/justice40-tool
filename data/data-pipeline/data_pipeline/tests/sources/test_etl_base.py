@@ -17,7 +17,7 @@ class TestETL:
     )
 
     # The following constants do not need to be updated in child class.
-    _INPUT_CSV_FILE_NAME = "input.csv"
+    _INPUT_CSV_FILE_NAME = "input.csv" # TODO: delete this?
     _TRANSFORM_CSV_FILE_NAME = "transform.csv"
     _OUTPUT_CSV_FILE_NAME = "output.csv"
 
@@ -25,10 +25,7 @@ class TestETL:
         return self._ETL_CLASS()
 
     def test_existence_of_test_fixtures_base(self):
-        """Every ETL test should have these three test fixture files."""
-        assert (
-            self._DATA_DIRECTORY_FOR_TEST / self._INPUT_CSV_FILE_NAME
-        ).exists()
+        """Every ETL test should have these two test fixture files."""
         assert (
             self._DATA_DIRECTORY_FOR_TEST / self._TRANSFORM_CSV_FILE_NAME
         ).exists()
@@ -111,3 +108,11 @@ class TestETL:
 
         # validation
         pd.testing.assert_frame_equal(actual_output, expected_output)
+
+    def test_transform_sets_output_df(self):
+        """This test ensures that the transform step sets its results to `output_df`."""
+
+        # TODO: each ETL class has such a specific way of transferring data between
+        # the `extract` step and the `transform` step. For some, this is a CSV,
+        # for some, it's a shapefile, for some, it's multiple files in a directory.
+        # How do we create a standardized test fixture on the results of `extract`?
