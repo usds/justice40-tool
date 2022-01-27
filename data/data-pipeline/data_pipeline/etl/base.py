@@ -57,6 +57,8 @@ class ExtractTransformLoad:
 
     # GEO_LEVEL is used to identify whether output data is at the unit of the tract or
     # census block group.
+    # TODO: add tests that enforce seeing the expected geographic identifier field
+    #  in the output file based on this geography level.
     GEO_LEVEL: ValidGeoLevel = None
 
     # COLUMNS_TO_KEEP to used to identify which columns to keep in the output df.

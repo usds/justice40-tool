@@ -28,10 +28,12 @@ class TestETL:
     def _setup_etl_instance_and_run_extract(self, mock_etl, mock_paths):
         """Method to setup an ETL instance with proper upstream mocks to run extract.
 
+        This must be re-implemented in every child class.
+
         This method can be used by multiple tests that need to run the same fixtures
         that need these same mocks, and by `test_update_test_fixtures`.
 
-        This must be re-implemented in every child class. Usually it will involve a
+        In order to re-implement this method, usually it will involve a
         decent amount of work to monkeypatch `requests` or another method that's
         used to retrieve data in order to force that method to retrieve the fixture
         data.
@@ -114,15 +116,24 @@ class TestETL:
         )
 
     def test_existence_of_test_fixtures_base(self):
-        """Every ETL test should have these two test fixture files."""
+        """Every ETL test should have these two test fixture files.
+
+        Can be run without modification for all child classes.
+        """
+
         assert (
             self._DATA_DIRECTORY_FOR_TEST / self._TRANSFORM_CSV_FILE_NAME
         ).exists()
+
         assert (
             self._DATA_DIRECTORY_FOR_TEST / self._OUTPUT_CSV_FILE_NAME
         ).exists()
 
     def test_init_base(self, mock_etl, mock_paths):
+        """Test whether class has appropriate parameters set.
+
+        Can be run without modification for all child classes.
+        """
         # Setup
         etl = self._get_instance_of_etl_class()
         data_path, tmp_path = mock_paths
@@ -143,7 +154,10 @@ class TestETL:
         assert etl.EXPECTED_MAX_CENSUS_TRACTS == 74160
 
     def test_get_output_file_path_base(self, mock_etl, mock_paths):
+        """Test file path method.
 
+        Can be run without modification for all child classes.
+        """
         etl = self._get_instance_of_etl_class()
         data_path, tmp_path = mock_paths
 
@@ -161,6 +175,10 @@ class TestETL:
         assert actual_file_path == expected_file_path
 
     def test_load_base(self, mock_etl):
+        """Test load method.
+
+        Can be run without modification for all child classes.
+        """
         # setup - input variables
         etl = self._get_instance_of_etl_class()
 

@@ -45,11 +45,9 @@ class ExampleETL(ExtractTransformLoad):
 
     def transform(self):
         logger.info(f"Loading file from {self.TMP_PATH / 'input.csv'}.")
-
         df: pd.DataFrame = pd.read_csv(
             self.TMP_PATH / "input.csv",
             dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
-            na_values=["None"],
             low_memory=False,
         )
 
