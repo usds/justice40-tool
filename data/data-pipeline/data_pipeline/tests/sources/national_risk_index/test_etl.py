@@ -101,36 +101,6 @@ class TestNationalRiskIndexETL(TestETL):
 
         return etl
 
-    def _setup_etl_instance_and_run_transform(self, mock_etl):
-        # setup - copy sample data into tmp_dir
-        etl = NationalRiskIndexETL()
-        copy_data_files(
-            src=self._DATA_DIRECTORY_FOR_TEST / self._INPUT_CSV_FILE_NAME,
-            dst=etl.INPUT_CSV,
-        )
-
-        # setup - read in sample output as dataframe
-        # execution
-        etl.transform()
-
-        return etl
-
-    def _setup_etl_instance_and_run_load(self, mock_etl):
-        # setup - input variables
-        etl = NationalRiskIndexETL()
-
-        # setup - mock transform step
-        df_transform = pd.read_csv(
-            self._DATA_DIRECTORY_FOR_TEST / self._TRANSFORM_CSV_FILE_NAME,
-            dtype={etl.GEOID_TRACT_FIELD_NAME: "string"},
-        )
-        etl.output_df = df_transform
-
-        # execution
-        etl.load()
-
-        return etl
-
     def test_update_test_fixtures(self, mock_etl, mock_paths):
         etl = self._setup_etl_instance_and_run_extract(
             mock_etl=mock_etl, mock_paths=mock_paths
@@ -145,7 +115,7 @@ class TestNationalRiskIndexETL(TestETL):
 
         # After running transform, write the results as the "transform.csv" in the test
         # directory.
-        etl = self._setup_etl_instance_and_run_transform(mock_etl=mock_etl)
+        etl.transform()
         etl.output_df.to_csv(
             path_or_buf=self._DATA_DIRECTORY_FOR_TEST
             / self._TRANSFORM_CSV_FILE_NAME,
@@ -154,7 +124,7 @@ class TestNationalRiskIndexETL(TestETL):
 
         # After running load, write the results as the "output.csv" in the test
         # directory.
-        etl = self._setup_etl_instance_and_run_load(mock_etl=mock_etl)
+        etl.load()
         copy_data_files(
             src=etl._get_output_file_path(),
             dst=self._DATA_DIRECTORY_FOR_TEST / self._OUTPUT_CSV_FILE_NAME,
@@ -188,7 +158,17 @@ class TestNationalRiskIndexETL(TestETL):
         - The values for each tract has been applied to each of the block
           groups in that tract
         """
-        etl = self._setup_etl_instance_and_run_transform(mock_etl=mock_etl)
+        # setup - copy sample data into tmp_dir
+        etl = NationalRiskIndexETL()
+        copy_data_files(
+            src=self._DATA_DIRECTORY_FOR_TEST / self._INPUT_CSV_FILE_NAME,
+            dst=etl.INPUT_CSV,
+        )
+
+        # setup - read in sample output as dataframe
+        # execution
+        etl.transform()
+
         transform_csv_path = (
             self._DATA_DIRECTORY_FOR_TEST / self._TRANSFORM_CSV_FILE_NAME
         )
@@ -215,7 +195,18 @@ class TestNationalRiskIndexETL(TestETL):
           self.OUTPUT_DIR
         - The content of the file that's written matches the data in self.df
         """
-        etl = self._setup_etl_instance_and_run_load(mock_etl=mock_etl)
+        # setup - input variables
+        etl = NationalRiskIndexETL()
+
+        # setup - mock transform step
+        df_transform = pd.read_csv(
+            self._DATA_DIRECTORY_FOR_TEST / self._TRANSFORM_CSV_FILE_NAME,
+            dtype={etl.GEOID_TRACT_FIELD_NAME: "string"},
+        )
+        etl.output_df = df_transform
+
+        # execution
+        etl.load()
 
         # Make sure it creates the file.
         actual_output_path = etl._get_output_file_path()

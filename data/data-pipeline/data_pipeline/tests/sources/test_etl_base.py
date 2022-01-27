@@ -40,43 +40,6 @@ class TestETL:
 
         return etl
 
-    def _setup_etl_instance_and_run_transform(self, mock_etl):
-        """TODO"""
-        # When running this in child classes, make sure the child class re-implements
-        # this method.
-        if self._ETL_CLASS is not ExampleETL:
-            raise NotImplementedError(
-                "Prepare and run transform method not defined for this class."
-            )
-
-        # The rest of this method applies for `ExampleETL` only.
-        etl = self._get_instance_of_etl_class()
-
-        # In order to prepare for running transform, run extract first.
-        etl.extract()
-        etl.transform()
-
-        return etl
-
-    def _setup_etl_instance_and_run_load(self, mock_etl):
-        """TODO"""
-        # When running this in child classes, make sure the child class re-implements
-        # this method.
-        if self._ETL_CLASS is not ExampleETL:
-            raise NotImplementedError(
-                "Prepare and run load method not defined for this class."
-            )
-
-        # The rest of this method applies for `ExampleETL` only.
-        etl = self._get_instance_of_etl_class()
-
-        # In order to prepare for running load, run extract and transform first.
-        etl.extract()
-        etl.transform()
-        etl.load()
-
-        return etl
-
     def test_update_test_fixtures(self, mock_etl, mock_paths):
         """Update the test fixtures (the data files) used by the test.
 
@@ -118,7 +81,7 @@ class TestETL:
 
         # After running transform, write the results as the "transform.csv" in the test
         # directory.
-        etl = self._setup_etl_instance_and_run_transform(mock_etl=mock_etl)
+        etl.transform()
         etl.output_df.to_csv(
             path_or_buf=self._DATA_DIRECTORY_FOR_TEST
             / self._TRANSFORM_CSV_FILE_NAME,
@@ -127,7 +90,7 @@ class TestETL:
 
         # After running load, write the results as the "output.csv" in the test
         # directory.
-        etl = self._setup_etl_instance_and_run_load(mock_etl=mock_etl)
+        etl.load()
         copy_data_files(
             src=etl._get_output_file_path(),
             dst=self._DATA_DIRECTORY_FOR_TEST / self._OUTPUT_CSV_FILE_NAME,
