@@ -72,12 +72,7 @@ class GeoScoreETL(ExtractTransformLoad):
             dtype={self.GEOID_FIELD_NAME: "string"},
             usecols=[self.GEOID_FIELD_NAME, self.GEOMETRY_FIELD_NAME],
             low_memory=False,
-            # TODO: delete
-            # rows=100
         )
-
-        logger.info(f"Columns in gpd: {self.geojson_usa_df.columns}")
-        logger.info(f"unique values of states: {self.geojson_usa_df['STATEFP10'].unique()}")
 
         logger.info("Reading score CSV")
         self.score_usa_df = pd.read_csv(

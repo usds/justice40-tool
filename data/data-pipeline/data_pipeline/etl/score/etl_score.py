@@ -559,15 +559,5 @@ class ScoreETL(ExtractTransformLoad):
     def load(self) -> None:
         logger.info("Saving Score CSV")
         constants.DATA_SCORE_CSV_FULL_DIR.mkdir(parents=True, exist_ok=True)
-
-        # TODO: delete
-
-        fips_to_keep = ["66", "60", "69", "78"]
-
-        # logger.info(f"{(score_df[self.GEOID_TRACT_FIELD_NAME].str[:2]=='60').sum()}")
-
-        subset_df = self.df[
-            self.df[self.GEOID_TRACT_FIELD_NAME].str[:2].isin(fips_to_keep)
-        ]
-
-        subset_df.to_csv(constants.DATA_SCORE_CSV_FULL_FILE_PATH, index=False)
+        
+        self.df.to_csv(constants.DATA_SCORE_CSV_FULL_FILE_PATH, index=False)
