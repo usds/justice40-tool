@@ -35,6 +35,9 @@ class PostScoreETL(ExtractTransformLoad):
         self.output_score_tiles_df: pd.DataFrame
         self.output_downloadable_df: pd.DataFrame
 
+        # Update this when changing the definition used by the methodology
+        self.DISADVANTAGED_COMMUNITIES = field_names.SCORE_M_COMMUNITIES
+
     def _extract_counties(self, county_path: Path) -> pd.DataFrame:
         logger.info("Reading Counties CSV")
         return pd.read_csv(
@@ -162,11 +165,22 @@ class PostScoreETL(ExtractTransformLoad):
             states_df, on="State Abbreviation", how="left"
         )
 
+        logger.info(
+            "Point 1 \n"
+            + f"{(score_df[self.GEOID_TRACT_FIELD_NAME].str[:2]=='60').sum()}"
+        )
+
+        # TODO: Ask about this! is the merge functioning as expected?
         # merge state + county with score
         score_county_state_merged = score_df.merge(
             county_state_merged,
             on="GEOID",  # GEOID is the county ID
-            how="left",
+            how="outer", indicator=True
+        )
+
+        logger.info(
+            "Point 2 \n"
+            + f"{(score_county_state_merged[self.GEOID_TRACT_FIELD_NAME].str[:2]=='60').sum()}"
         )
 
         # check if there are census tracts without score
@@ -179,22 +193,49 @@ class PostScoreETL(ExtractTransformLoad):
             how="left",
         )
 
+        logger.info(
+            "Point 3 \n"
+            + f"{(merged_df[self.GEOID_TRACT_FIELD_NAME].str[:2]=='60').sum()}"
+        )
         # recast population to integer
         score_county_state_merged["Total population"] = (
-            merged_df["Total population"].fillna(0.0).astype(int)
+            merged_df["Total population"].fillna(0).astype(int)
         )
 
-        # list the null score tracts
-        null_tract_df = merged_df[
-            merged_df[field_names.SCORE_L_COMMUNITIES].isnull()
-        ]
+        logger.info("point 3.1")
 
-        # subtract data sets
-        # this follows the XOR pattern outlined here:
-        # https://stackoverflow.com/a/37313953
-        de_duplicated_df = pd.concat(
-            [merged_df, null_tract_df, null_tract_df]
-        ).drop_duplicates(keep=False)
+        logger.info(f"DF size: {merged_df.shape[0]}")
+
+        # list the null score tracts
+        # null_tract_df = merged_df[
+        #     merged_df[self.DISADVANTAGED_COMMUNITIES].isnull()
+        # ]
+        # logger.info(f"null tract DF size: {null_tract_df.shape[0]}")
+        #
+        # logger.info("point 3.2")
+        # # subtract data sets
+        # # this follows the XOR pattern outlined here:
+        # # https://stackoverflow.com/a/37313953
+        # de_duplicated_df = pd.concat(
+        #     [merged_df, null_tract_df, null_tract_df]
+        # ).drop_duplicates(keep=False)
+
+        logger.info(
+            "Point 3.25 \n"
+            + f"{merged_df[merged_df[self.GEOID_TRACT_FIELD_NAME].str[:2]=='60'].shape[0]}"
+        )
+
+        de_duplicated_df = merged_df.dropna(
+            subset=[self.DISADVANTAGED_COMMUNITIES], axis=0
+        )
+
+        logger.info("point 3.3")
+        logger.info(
+            "Point 4 \n"
+            + f"{(de_duplicated_df[self.GEOID_TRACT_FIELD_NAME].str[:2]=='60').sum()}"
+        )
+
+        logger.info("point 4.1")
 
         # set the score to the new df
         return de_duplicated_df
@@ -301,6 +342,22 @@ class PostScoreETL(ExtractTransformLoad):
             output_score_county_state_merged_df
         )
 
+        #
+        # logger.info(
+        #     "Point 5 \n"
+        #     + f"{(self.output_score_tiles_df[self.GEOID_TRACT_FIELD_NAME].str[:2]=='60').sum()}"
+        # )
+        #
+        # logger.info(
+        #     "Point 6 \n"
+        #     + f"{(self.output_downloadable_df[self.GEOID_TRACT_FIELD_NAME].str[:2]=='60').sum()}"
+        # )
+        #
+        # logger.info(
+        #     "Point 7 \n"
+        #     + f"{(self.output_score_county_state_merged_df[self.GEOID_TRACT_FIELD_NAME].str[:2]=='60').sum()}"
+        # )
+
     def _load_score_csv(
         self, score_county_state_merged: pd.DataFrame, score_csv_path: Path
     ) -> None:
@@ -333,7 +390,7 @@ class PostScoreETL(ExtractTransformLoad):
         # Rename score column
         downloadable_df_copy = downloadable_df.rename(
             columns={
-                field_names.SCORE_M_COMMUNITIES: "Identified as disadvantaged (v0.1)"
+                self.DISADVANTAGED_COMMUNITIES: "Identified as disadvantaged (v0.1)"
             },
             inplace=False,
         )
