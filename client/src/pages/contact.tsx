@@ -4,6 +4,7 @@ import {useIntl, FormattedMessage} from 'gatsby-plugin-intl';
 
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
+import LinkTypeWrapper from '../components/LinkTypeWrapper';
 
 import * as CONTACT_COPY from '../data/copy/contact';
 interface IContactPageProps {
@@ -32,12 +33,12 @@ const ContactPage = ({location}: IContactPageProps) => {
                 defaultMessage={CONTACT_COPY.CONTACT_VIA_EMAIL.DEFAULT_MESSAGE}
                 values={{
                   general_email_address:
-                    <a
-                      href={`mailto:${CONTACT_COPY.FEEDBACK_EMAIL}`}
-                      target="_blank"
-                      rel="noreferrer">
-                      {CONTACT_COPY.FEEDBACK_EMAIL}
-                    </a>,
+                  <LinkTypeWrapper
+                    linkText= {CONTACT_COPY.FEEDBACK_EMAIL}
+                    internal= {false}
+                    url= {`mailto:${CONTACT_COPY.FEEDBACK_EMAIL}`}
+                    openUrlNewTab= {true}
+                  />,
                 }}/>
             </p>
           </Grid>

@@ -17,27 +17,36 @@ exports[`rendering of indicator dataset card checks if component renders 1`] = `
     <ul>
       <li>
         <span>
+          Used in: 
+        </span>
+        All methodologies except for training and workforce development
+      </li>
+      <li>
+        <span>
           Responsible Party: 
         </span>
+        Census
+      </li>
+      <li>
+        <span>
+          Source: 
+        </span>
         <a
+          class="usa-link usa-link--external"
+          data-cy=""
           href="https://www.census.gov/programs-surveys/acs"
           rel="noreferrer"
           target="_blank"
         >
-          Census's American Community Survey
+          American Community Survey
         </a>
+         from 2015-2019
       </li>
       <li>
         <span>
-          Date range: 
+          Available for: 
         </span>
-        2015-2019
-      </li>
-      <li>
-        <span>
-          Used in: 
-        </span>
-        All methodologies except for training and workforce development
+        All U.S. states and the District of Columbia
       </li>
     </ul>
   </div>

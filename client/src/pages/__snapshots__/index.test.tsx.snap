@@ -319,8 +319,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   
     In 
                   <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
                     href="https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/27/executive-order-on-tackling-the-climate-crisis-at-home-and-abroad/"
-                    target="blank"
+                    rel="noreferrer"
+                    target="_blank"
                   >
                     Executive Order 14008
                   </a>
@@ -395,8 +398,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
     Read more about the Justice40 Initiative in President Biden’s
     
                   <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
                     href="https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/27/executive-order-on-tackling-the-climate-crisis-at-home-and-abroad/"
-                    target="blank"
+                    rel="noreferrer"
+                    target="_blank"
                   >
                     Executive Order 14008
                   </a>
@@ -587,7 +593,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="j40-aboutcard-sm-link"
                 >
                   <a
-                    class="j40-aboutcard-link"
+                    class="usa-link usa-link--external j40-aboutcard-link"
+                    data-cy=""
                     href="mailto:Screeningtool-Support@omb.eop.gov"
                     rel="noreferrer"
                     target="_blank"
@@ -642,7 +649,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="j40-aboutcard-sm-link"
                 >
                   <a
-                    class="j40-aboutcard-link"
+                    class="usa-link usa-link--external j40-aboutcard-link"
+                    data-cy=""
                     href="https://github.com/usds/justice40-tool"
                     rel="noreferrer"
                     target="_blank"
@@ -740,7 +748,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="usa-footer__secondary-link"
                 >
                   <a
-                    class="footer-link-first-child"
+                    class="usa-link usa-link--external footer-link-first-child"
                     data-cy="whitehouse-gov"
                     href="https://www.whitehouse.gov/"
                     rel="noreferrer"
@@ -753,6 +761,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="usa-footer__secondary-link"
                 >
                   <a
+                    class="usa-link usa-link--external"
                     data-cy="freedom-of-information-act-(foia)"
                     href="https://www.whitehouse.gov/ceq/foia"
                     rel="noreferrer"
@@ -765,6 +774,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="usa-footer__secondary-link"
                 >
                   <a
+                    class="usa-link usa-link--external"
                     data-cy="privacy-policy"
                     href="https://www.whitehouse.gov/privacy/"
                     rel="noreferrer"
@@ -792,7 +802,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="usa-footer__secondary-link"
                 >
                   <a
-                    class="footer-link-first-child"
+                    class="usa-link usa-link--external footer-link-first-child"
                     data-cy="find-a-contact-at-usa-gov"
                     href="https://www.usa.gov/"
                     rel="noreferrer"
@@ -849,6 +859,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         type="button"
       >
         Help improve the site & data
+        <img
+          alt="launch icon"
+          src="test-file-stub"
+        />
       </button>
     </div>
   </footer>

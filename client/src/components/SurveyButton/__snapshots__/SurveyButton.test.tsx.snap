@@ -12,6 +12,10 @@ exports[`rendering of the SurveyButton checks if component renders 1`] = `
       type="button"
     >
       Help improve the site & data
+      <img
+        alt="launch icon"
+        src="test-file-stub"
+      />
     </button>
   </div>
 </DocumentFragment>

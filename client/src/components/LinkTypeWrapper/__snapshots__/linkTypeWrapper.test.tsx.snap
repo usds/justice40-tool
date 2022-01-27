@@ -3,6 +3,7 @@
 exports[`testing all link types tests external links new tab 1`] = `
 <DocumentFragment>
   <a
+    data-cy=""
     href="www.usds.gov"
   >
     test link text
@@ -13,6 +14,8 @@ exports[`testing all link types tests external links new tab 1`] = `
 exports[`testing all link types tests external links same tab 1`] = `
 <DocumentFragment>
   <a
+    class="usa-link usa-link--external"
+    data-cy=""
     href="www.usds.gov"
     rel="noreferrer"
     target="_blank"
