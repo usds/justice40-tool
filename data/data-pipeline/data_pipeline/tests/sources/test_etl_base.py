@@ -1,6 +1,7 @@
 import pandas as pd
 
 from data_pipeline.config import settings
+from data_pipeline.tests.conftest import copy_data_files
 from data_pipeline.tests.sources.example.etl import ExampleETL
 from data_pipeline.utils import get_module_logger
 
@@ -25,6 +26,7 @@ class TestETL:
         return self._ETL_CLASS()
 
     def _setup_etl_instance_and_run_extract(self, mock_etl, mock_paths):
+        """TODO"""
         # When running this in child classes, make sure the child class re-implements
         # this method.
         if self._ETL_CLASS is not ExampleETL:
@@ -39,6 +41,7 @@ class TestETL:
         return etl
 
     def _setup_etl_instance_and_run_transform(self, mock_etl):
+        """TODO"""
         # When running this in child classes, make sure the child class re-implements
         # this method.
         if self._ETL_CLASS is not ExampleETL:
@@ -56,6 +59,7 @@ class TestETL:
         return etl
 
     def _setup_etl_instance_and_run_load(self, mock_etl):
+        """TODO"""
         # When running this in child classes, make sure the child class re-implements
         # this method.
         if self._ETL_CLASS is not ExampleETL:
@@ -73,14 +77,44 @@ class TestETL:
 
         return etl
 
-    # TODO: move within file?
     def test_update_test_fixtures(self, mock_etl, mock_paths):
         """TODO"""
+        # When running this in child classes, make sure the child class re-implements
+        # this method.
+        if self._ETL_CLASS is not ExampleETL:
+            raise NotImplementedError(
+                "Update fixtures method not defined for this class."
+            )
+
+        # The rest of this method applies for `ExampleETL` only.
         etl = self._setup_etl_instance_and_run_extract(
             mock_etl=mock_etl, mock_paths=mock_paths
         )
 
+        # After running extract, write the results as the "input.csv" in the test
+        # directory.
+        logger.info(
+            f"Writing data to {self._DATA_DIRECTORY_FOR_TEST / self._INPUT_CSV_FILE_NAME}"
+        )
+        copy_data_files(
+            src=etl.TMP_PATH / "input.csv",
+            dst=self._DATA_DIRECTORY_FOR_TEST / self._INPUT_CSV_FILE_NAME,
+        )
+
+        # After running transform, write the results as the "transform.csv" in the test
+        # directory.
         etl = self._setup_etl_instance_and_run_transform(mock_etl=mock_etl)
+        etl.output_df.to_csv(path_or_buf=self._DATA_DIRECTORY_FOR_TEST /
+                                         self._TRANSFORM_CSV_FILE_NAME,
+                             index=False)
+
+        # After running load, write the results as the "output.csv" in the test
+        # directory.
+        etl = self._setup_etl_instance_and_run_load(mock_etl=mock_etl)
+        copy_data_files(
+            src=etl._get_output_file_path(),
+            dst=self._DATA_DIRECTORY_FOR_TEST / self._OUTPUT_CSV_FILE_NAME,
+        )
 
     def test_existence_of_test_fixtures_base(self):
         """Every ETL test should have these two test fixture files."""

@@ -177,11 +177,6 @@ class TestNationalRiskIndexETL(TestETL):
             self._DATA_DIRECTORY_FOR_TEST / self._INPUT_CSV_FILE_NAME
         )
 
-        # If temporarily updating test fixtures, write this extracted file as the
-        # expected input file:
-        if UPDATE_TEST_FIXTURES:
-            copy_data_files(src=extracted_file_path, dst=input_csv_path)
-
         # Make sure extracted file is equal to the input fixture:
         assert filecmp.cmp(
             f1=extracted_file_path, f2=input_csv_path, shallow=False
