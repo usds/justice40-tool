@@ -1,3 +1,4 @@
+from typing import Tuple
 import numpy as np
 import pandas as pd
 
@@ -27,7 +28,7 @@ class ScoreM(Score):
         column_from_decennial_census: str,
         combined_column_name: str,
         threshold_cutoff_for_island_areas: float,
-    ) -> (pd.DataFrame, str):
+    ) -> Tuple[pd.DataFrame, str]:
         """Steps to set thresholds for island areas.
 
         This function is fairly logically complicated. It takes the following steps:
