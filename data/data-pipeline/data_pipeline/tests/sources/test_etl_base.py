@@ -18,7 +18,7 @@ class TestETL:
     )
 
     # The following constants do not need to be updated in child class.
-    _INPUT_CSV_FILE_NAME = "input.csv"  # TODO: delete this?
+    _INPUT_CSV_FILE_NAME = "input.csv"
     _TRANSFORM_CSV_FILE_NAME = "transform.csv"
     _OUTPUT_CSV_FILE_NAME = "output.csv"
 
@@ -37,7 +37,6 @@ class TestETL:
         decent amount of work to monkeypatch `requests` or another method that's
         used to retrieve data in order to force that method to retrieve the fixture
         data.
-
         """
         # When running this in child classes, make sure the child class re-implements
         # this method.
@@ -120,7 +119,6 @@ class TestETL:
 
         Can be run without modification for all child classes.
         """
-
         assert (
             self._DATA_DIRECTORY_FOR_TEST / self._TRANSFORM_CSV_FILE_NAME
         ).exists()
@@ -216,10 +214,21 @@ class TestETL:
         # validation
         pd.testing.assert_frame_equal(actual_output, expected_output)
 
-    def test_transform_sets_output_df(self):
-        """This test ensures that the transform step sets its results to `output_df`."""
+    def test_transform_sets_output_df(self, mock_etl, mock_paths):
+        """This test ensures that the transform step sets its results to `output_df`.
 
-        # TODO: each ETL class has such a specific way of transferring data between
-        # the `extract` step and the `transform` step. For some, this is a CSV,
-        # for some, it's a shapefile, for some, it's multiple files in a directory.
-        # How do we create a standardized test fixture on the results of `extract`?
+        Can be run without modification for all child classes.
+        """
+        etl = self._setup_etl_instance_and_run_extract(
+            mock_etl=mock_etl, mock_paths=mock_paths
+        )
+        etl.transform()
+
+        assert etl.output_df is not None
+
+        # Assert it has some rows
+        assert etl.output_df.shape[0] > 0
+
+        # Check that it has all columns
+        for col in etl.COLUMNS_TO_KEEP:
+            assert col in etl.output_df.columns, f"{col} is missing from output"
