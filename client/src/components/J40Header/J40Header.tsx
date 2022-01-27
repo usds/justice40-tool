@@ -69,7 +69,7 @@ const J40Header = () => {
         title={intl.formatMessage(COMMON_COPY.BETA_BANNER.TITLE)}
         info={intl.formatMessage(COMMON_COPY.BETA_BANNER.INFO)}
       />
-      {/* Banner for Usability - Day 2 */}
+      {/* Banner for Usability - Day 3 */}
       <BetaBanner
         title={'Draft, Pre-Decisional, Not for Distribution'}
         info={''}
