@@ -26,7 +26,17 @@ class TestETL:
         return self._ETL_CLASS()
 
     def _setup_etl_instance_and_run_extract(self, mock_etl, mock_paths):
-        """TODO"""
+        """Method to setup an ETL instance with proper upstream mocks to run extract.
+
+        This method can be used by multiple tests that need to run the same fixtures
+        that need these same mocks, and by `test_update_test_fixtures`.
+
+        This must be re-implemented in every child class. Usually it will involve a
+        decent amount of work to monkeypatch `requests` or another method that's
+        used to retrieve data in order to force that method to retrieve the fixture
+        data.
+
+        """
         # When running this in child classes, make sure the child class re-implements
         # this method.
         if self._ETL_CLASS is not ExampleETL:
@@ -40,11 +50,18 @@ class TestETL:
 
         return etl
 
+    # TODO: Add a flag to make this run only when pytest is run with an argument.
     def test_update_test_fixtures(self, mock_etl, mock_paths):
         """Update the test fixtures (the data files) used by the test.
 
-        This can be helpful if you expect the results to change because you changed
-        the logic of the ETL class and need to quickly update the fixtures.
+        This needs to be reimplemented for every child class. This is because there
+        are not strict contracts on the outputs of the `extract` step so this method
+        needs to explicitly define how to update the `input` fixture that comes after
+        the extract step.
+
+        Using this method to update fixtures  can be helpful if you expect the
+        results to change because you changed the logic of the ETL class and need to
+        quickly update the fixtures.
 
         However, note a few things first:
 

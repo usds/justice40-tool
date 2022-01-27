@@ -15,15 +15,43 @@ from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
 
-# TODO: delete
-UPDATE_TEST_FIXTURES = False
-
 
 class TestNationalRiskIndexETL(TestETL):
     _ETL_CLASS = NationalRiskIndexETL
     _DATA_DIRECTORY_FOR_TEST = (
         settings.APP_ROOT / "tests" / "sources" / "national_risk_index" / "data"
     )
+
+    @mock.patch("data_pipeline.utils.requests")
+    def _setup_etl_instance_and_run_extract(
+        self, requests_mock, mock_etl, mock_paths
+    ):
+        zip_file_fixture_src = (
+            self._DATA_DIRECTORY_FOR_TEST / "NRI_Table_CensusTracts.zip"
+        )
+        tmp_path = mock_paths[1]
+
+        # Create mock response.
+        with open(zip_file_fixture_src, mode="rb") as file:
+            file_contents = file.read()
+        response_mock = requests.Response()
+        response_mock.status_code = 200
+        # pylint: disable=protected-access
+        response_mock._content = file_contents
+
+        # Return text fixture:
+        requests_mock.get = mock.MagicMock(return_value=response_mock)
+
+        # Instantiate the ETL class.
+        etl = NationalRiskIndexETL()
+
+        # Monkey-patch the temporary directory to the one used in the test
+        etl.TMP_PATH = tmp_path
+
+        # Run the extract method.
+        etl.extract()
+
+        return etl
 
     def test_init(self, mock_etl, mock_paths):
         """Tests that the mock NationalRiskIndexETL class instance was
@@ -70,37 +98,7 @@ class TestNationalRiskIndexETL(TestETL):
         )
         assert output_file_path == expected_output_file_path
 
-    @mock.patch("data_pipeline.utils.requests")
-    def _setup_etl_instance_and_run_extract(
-        self, requests_mock, mock_etl, mock_paths
-    ):
-        zip_file_fixture_src = (
-            self._DATA_DIRECTORY_FOR_TEST / "NRI_Table_CensusTracts.zip"
-        )
-        tmp_path = mock_paths[1]
-
-        # Create mock response.
-        with open(zip_file_fixture_src, mode="rb") as file:
-            file_contents = file.read()
-        response_mock = requests.Response()
-        response_mock.status_code = 200
-        # pylint: disable=protected-access
-        response_mock._content = file_contents
-
-        # Return text fixture:
-        requests_mock.get = mock.MagicMock(return_value=response_mock)
-
-        # Instantiate the ETL class.
-        etl = NationalRiskIndexETL()
-
-        # Monkey-patch the temporary directory to the one used in the test
-        etl.TMP_PATH = tmp_path
-
-        # Run the extract method.
-        etl.extract()
-
-        return etl
-
+    # TODO: Add a flag to make this run only when pytest is run with an argument.
     def test_update_test_fixtures(self, mock_etl, mock_paths):
         etl = self._setup_etl_instance_and_run_extract(
             mock_etl=mock_etl, mock_paths=mock_paths
@@ -173,11 +171,6 @@ class TestNationalRiskIndexETL(TestETL):
             self._DATA_DIRECTORY_FOR_TEST / self._TRANSFORM_CSV_FILE_NAME
         )
 
-        # If temporarily updating test fixtures, write this transformed dataframe
-        # as the expected transform output file:
-        if UPDATE_TEST_FIXTURES:
-            etl.output_df.to_csv(path_or_buf=transform_csv_path, index=False)
-
         # validation
         expected = pd.read_csv(
             filepath_or_buffer=transform_csv_path,
@@ -218,13 +211,6 @@ class TestNationalRiskIndexETL(TestETL):
         expected_output_csv_path = (
             self._DATA_DIRECTORY_FOR_TEST / self._OUTPUT_CSV_FILE_NAME
         )
-
-        # If temporarily updating test fixtures, write this output data frame as the
-        # expected output file:
-        if UPDATE_TEST_FIXTURES:
-            copy_data_files(
-                src=actual_output_path, dst=expected_output_csv_path
-            )
 
         # setup - load expected output
         expected_output = pd.read_csv(
