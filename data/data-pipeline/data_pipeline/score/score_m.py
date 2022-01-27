@@ -541,7 +541,7 @@ class ScoreM(Score):
             field_names.LOW_MEDIAN_INCOME_LOW_HS_LOW_HIGHER_ED_FIELD,
         ]
 
-        self.df[field_names.LOW_HS_EDUCATION_LOW_COLLEGE_ATTENDANCE_FIELD] = (
+        self.df[field_names.LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD] = (
             self.df[field_names.HIGH_SCHOOL_ED_FIELD]
             >= self.LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD
         ) & (
@@ -590,22 +590,22 @@ class ScoreM(Score):
 
         self.df[field_names.LINGUISTIC_ISOLATION_LOW_HS_LOW_HIGHER_ED_FIELD] = (
             linguistic_isolation_threshold
-            & self.df[field_names.LOW_HS_EDUCATION_LOW_COLLEGE_ATTENDANCE_FIELD]
+            & self.df[field_names.LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD]
         )
 
         self.df[field_names.POVERTY_LOW_HS_LOW_HIGHER_ED_FIELD] = (
             poverty_threshold
-            & self.df[field_names.LOW_HS_EDUCATION_LOW_COLLEGE_ATTENDANCE_FIELD]
+            & self.df[field_names.LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD]
         )
 
         self.df[field_names.LOW_MEDIAN_INCOME_LOW_HS_LOW_HIGHER_ED_FIELD] = (
             low_median_income_threshold
-            & self.df[field_names.LOW_HS_EDUCATION_LOW_COLLEGE_ATTENDANCE_FIELD]
+            & self.df[field_names.LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD]
         )
 
         self.df[field_names.UNEMPLOYMENT_LOW_HS_LOW_HIGHER_ED_FIELD] = (
             unemployment_threshold
-            & self.df[field_names.LOW_HS_EDUCATION_LOW_COLLEGE_ATTENDANCE_FIELD]
+            & self.df[field_names.LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD]
         )
 
         workforce_combined_criteria_for_states = self.df[
