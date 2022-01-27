@@ -175,7 +175,8 @@ class PostScoreETL(ExtractTransformLoad):
         score_county_state_merged = score_df.merge(
             county_state_merged,
             on="GEOID",  # GEOID is the county ID
-            how="outer", indicator=True
+            how="outer",
+            indicator=True,
         )
 
         logger.info(
