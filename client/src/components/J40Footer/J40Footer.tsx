@@ -6,13 +6,14 @@ import {
 import {NavList} from '@trussworks/react-uswds';
 import {useIntl} from 'gatsby-plugin-intl';
 
-import J40MainGridContainer from './J40MainGridContainer';
-import {hyphenizeString} from '../../cypress/integration/common/helpers';
-import SurveyButton from './SurveyButton';
+import {hyphenizeString} from '../../../cypress/integration/common/helpers';
+import J40MainGridContainer from '../J40MainGridContainer';
+import LinkTypeWrapper from '../LinkTypeWrapper';
+import SurveyButton from '../SurveyButton';
 
 // @ts-ignore
-import whitehouseIcon from '../images/eop-seal.svg';
-import * as COMMON_COPY from '../data/copy/common';
+import whitehouseIcon from '../../images/eop-seal.svg';
+import * as COMMON_COPY from '../../data/copy/common';
 
 const J40Footer = () => {
   const intl = useIntl();
@@ -34,43 +35,43 @@ const J40Footer = () => {
     ],
     [
       intl.formatMessage(COMMON_COPY.FOOTER.MORE_INFO),
-      <a
+      <LinkTypeWrapper
+        linkText={intl.formatMessage(COMMON_COPY.FOOTER.WHITEHOUSE)}
+        internal={false}
+        url={intl.formatMessage(COMMON_COPY.FOOTER.WHITEHOUSE_LINK)}
+        openUrlNewTab={true}
         className={'footer-link-first-child'}
         key={'whitehouselink2'}
-        href={intl.formatMessage(COMMON_COPY.FOOTER.WHITEHOUSE_LINK)}
-        target={'_blank'}
-        rel={'noreferrer'}
-        data-cy={hyphenizeString(COMMON_COPY.FOOTER.WHITEHOUSE.defaultMessage)}>
-        {intl.formatMessage(COMMON_COPY.FOOTER.WHITEHOUSE)}
-      </a>,
-      <a
-        key="foialink"
-        href={'https://www.whitehouse.gov/ceq/foia'}
-        target={'_blank'}
-        rel={'noreferrer'}
-        data-cy={hyphenizeString(COMMON_COPY.FOOTER.FOIA.defaultMessage)}>
-        {intl.formatMessage(COMMON_COPY.FOOTER.FOIA)}
-      </a>,
-      <a
+        dataCy={hyphenizeString(COMMON_COPY.FOOTER.WHITEHOUSE.defaultMessage)}
+      />,
+      <LinkTypeWrapper
+        linkText={intl.formatMessage(COMMON_COPY.FOOTER.FOIA)}
+        internal={false}
+        url={'https://www.whitehouse.gov/ceq/foia'}
+        openUrlNewTab={true}
+        key={'foialink'}
+        dataCy={hyphenizeString(COMMON_COPY.FOOTER.FOIA.defaultMessage)}
+      />,
+      <LinkTypeWrapper
+        linkText={intl.formatMessage(COMMON_COPY.FOOTER.PRIVACY)}
+        internal={false}
+        url={intl.formatMessage(COMMON_COPY.FOOTER.PRIVACY_LINK)}
+        openUrlNewTab={true}
         key={'privacylink'}
-        href={intl.formatMessage(COMMON_COPY.FOOTER.PRIVACY_LINK)}
-        target={'_blank'}
-        rel={'noreferrer'}
-        data-cy={hyphenizeString(COMMON_COPY.FOOTER.PRIVACY.defaultMessage)}>
-        {intl.formatMessage(COMMON_COPY.FOOTER.PRIVACY)}
-      </a>,
+        dataCy={hyphenizeString(COMMON_COPY.FOOTER.PRIVACY.defaultMessage)}
+      />,
     ],
     [
       intl.formatMessage(COMMON_COPY.FOOTER.QUESTIONS),
-      <a
+      <LinkTypeWrapper
+        linkText={intl.formatMessage(COMMON_COPY.FOOTER.FIND_CONTACT)}
+        internal={false}
+        url={intl.formatMessage(COMMON_COPY.FOOTER.FIND_CONTACT_LINK)}
+        openUrlNewTab={true}
         className={'footer-link-first-child'}
         key={'contactlink'}
-        href={intl.formatMessage(COMMON_COPY.FOOTER.FIND_CONTACT_LINK)}
-        target={'_blank'}
-        rel="noreferrer"
-        data-cy={hyphenizeString(COMMON_COPY.FOOTER.FIND_CONTACT.defaultMessage)}>
-        {intl.formatMessage(COMMON_COPY.FOOTER.FIND_CONTACT)}
-      </a>,
+        dataCy={hyphenizeString(COMMON_COPY.FOOTER.FIND_CONTACT.defaultMessage)}
+      />,
     ],
   ];
 

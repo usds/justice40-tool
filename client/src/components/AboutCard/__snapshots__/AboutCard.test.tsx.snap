@@ -78,6 +78,7 @@ exports[`rendering of the AboutCard checks if small cards component renders 1`] 
           >
             <a
               class="j40-aboutcard-link"
+              data-cy=""
               href="#"
             >
               Test Action

@@ -30,6 +30,7 @@ const MapWrapper = ({location}: IMapWrapperProps) => {
           <h2>{EXPLORE_COPY.NOTE_ON_TERRITORIES.INTRO}</h2>
           <p>{EXPLORE_COPY.NOTE_ON_TERRITORIES.PARA_1}</p>
           <p>{EXPLORE_COPY.NOTE_ON_TERRITORIES.PARA_2}</p>
+          <p>{EXPLORE_COPY.NOTE_ON_TERRITORIES.PARA_3}</p>
         </Grid>
       </Grid>
     </>

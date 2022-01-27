@@ -38,7 +38,7 @@ jobs:
           # https://github.com/usds/justice40-tool/blob/main/client/README.md
           DATA_SOURCE: cdn
           # TODO: Update main URL when either is back up
-          SITE_URL: https://d29zfl8cj7y1zf.cloudfront.net/
+          SITE_URL: "${{ secrets.PROD_SITE_URL }}"
           MAPBOX_STYLES_READ_TOKEN: "${{ secrets.MAPBOX_STYLES_READ_TOKEN }}"
       - name: Get directory contents
         run: ls -la public

@@ -8,29 +8,35 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
     </h2>
     <ul>
       <li>
-        View our 
+        View the 
         <a
           href="/en/methodology"
         >
           Methodology & data
         </a>
-         page and send us feedback.
+         page and send feedback.
       </li>
       <li>
         Find communities of interest and 
         <a
-          href="mailto:Screeningtool-Support@omb.eop.gov"
-          target="blank"
+          class="usa-link usa-link--external"
+          data-cy=""
+          href="mailto=Screeningtool-Support@omb.eop.gov"
+          rel="noreferrer"
+          target="_blank"
         >
-          share your feedback
+          share feedback
         </a>
         .
       </li>
       <li>
         Respond to our request for information on 
         <a
+          class="usa-link usa-link--external"
+          data-cy=""
           href="https://www.federalregister.gov/"
-          target="blank"
+          rel="noreferrer"
+          target="_blank"
         >
           federalregister.gov
         </a>
