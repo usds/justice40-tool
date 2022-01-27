@@ -532,7 +532,7 @@ THRESHOLD_COUNT = "Total threshold criteria exceeded"
 
 FPL_200_SERIES = "Is low income?"
 FPL_200_AND_COLLEGE_ATTENDANCE_SERIES = (
-    "Is low income and low college attendance?"
+    "Is low income and has a low percent of higher ed students?"
 )
 # End of names for individual factors being exceeded
 ####
