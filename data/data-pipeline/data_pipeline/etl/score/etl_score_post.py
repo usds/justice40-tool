@@ -17,6 +17,9 @@ from . import constants
 
 logger = get_module_logger(__name__)
 
+# Define the DAC variable
+DISADVANTAGED_COMMUNITIES_FIELD = field_names.SCORE_M_COMMUNITIES
+
 
 class PostScoreETL(ExtractTransformLoad):
     """
@@ -185,7 +188,7 @@ class PostScoreETL(ExtractTransformLoad):
         )
 
         de_duplicated_df = merged_df.dropna(
-            subset=[field_names.SCORE_M_COMMUNITIES]
+            subset=[DISADVANTAGED_COMMUNITIES_FIELD]
         )
 
         # set the score to the new df
@@ -315,7 +318,7 @@ class PostScoreETL(ExtractTransformLoad):
         # Rename score column
         downloadable_df_copy = downloadable_df.rename(
             columns={
-                field_names.SCORE_M_COMMUNITIES: "Identified as disadvantaged (v0.1)"
+                DISADVANTAGED_COMMUNITIES_FIELD: "Identified as disadvantaged (v0.1)"
             },
             inplace=False,
         )
