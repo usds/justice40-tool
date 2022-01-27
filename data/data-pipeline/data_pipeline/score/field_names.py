@@ -313,8 +313,7 @@ TRANSPORTATION_COSTS = "Transportation Costs"
 
 #####
 # Names for individual factors being exceeded
-# TODO: for Definition M, create new output field names (different than those used by
-#  Definition L) and change all output fields to say low income and low college
+
 # Climate Change
 EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile"
@@ -417,15 +416,14 @@ LOW_MEDIAN_INCOME_LOW_HS_LOW_HIGHER_ED_FIELD = (
 
 LOW_HS_EDUCATION_FIELD = "Low high school education"
 
-## QQ for consistency, should we rename this to be "low higher ed"?
-## TODO Delete before final commit
+## QQ for consistency, should we rename this (or the new fields) to be consistent as variable names?
+## And, should we mirror the wording of "a low percent of college students" in this variable?
+## TODO Delete before final merge
 LOW_HS_EDUCATION_LOW_COLLEGE_ATTENDANCE_FIELD = (
     "Low high school education and low college attendance"
 )
 
 # Workforce for island areas
-## Note to self -- I believe this doesn't get changed because I think the Island data doesn't include college / grad school?
-## TODO Delete before final commit
 ISLAND_AREAS_SUFFIX = " in 2009 (island areas)"
 ISLAND_AREAS_UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for unemployment"
@@ -464,8 +462,6 @@ HEALTHY_FOOD_LOW_INCOME_FIELD = (
     f"access to healthy food and is low income?"
 )
 
-# Note to self: deliberately not updating this
-# TODO: delete before final commit
 LOW_READING_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for low 3rd grade reading proficiency"
     " and has low HS education"

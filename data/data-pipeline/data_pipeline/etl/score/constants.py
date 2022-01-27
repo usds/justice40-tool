@@ -155,8 +155,6 @@ TILES_SCORE_COLUMNS = {
     field_names.ASTHMA_LOW_INCOME_FIELD: "ALI",
     field_names.HEART_DISEASE_LOW_INCOME_FIELD: "HDLI",
     field_names.LOW_LIFE_EXPECTANCY_LOW_INCOME_FIELD: "LLELI",
-    ## Note to self: not changing short names
-    ## TODO: Remove comment before final commit
     field_names.LINGUISTIC_ISOLATION_LOW_HS_LOW_HIGHER_ED_FIELD: "LILHSE",
     field_names.POVERTY_LOW_HS_LOW_HIGHER_ED_FIELD: "PLHSE",
     field_names.LOW_MEDIAN_INCOME_LOW_HS_LOW_HIGHER_ED_FIELD: "LMILHSE",
