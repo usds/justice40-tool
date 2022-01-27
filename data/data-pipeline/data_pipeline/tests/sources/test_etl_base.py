@@ -9,6 +9,11 @@ logger = get_module_logger(__name__)
 
 
 class TestETL:
+    """A base class that can be inherited by all other ETL tests.
+
+    Note: every method that does *not* need to be reimplemented by child classes has
+    the test name pattern of `test_*_base`. All other tests need to be reimplemented.
+    """
     # In every child test class, change this to the class of the ETL being tested.
     _ETL_CLASS = ExampleETL
 
@@ -172,6 +177,25 @@ class TestETL:
 
         assert actual_file_path == expected_file_path
 
+    def test_transform_sets_output_df(self, mock_etl, mock_paths):
+        """This test ensures that the transform step sets its results to `output_df`.
+
+        Can be run without modification for all child classes.
+        """
+        etl = self._setup_etl_instance_and_run_extract(
+            mock_etl=mock_etl, mock_paths=mock_paths
+        )
+        etl.transform()
+
+        assert etl.output_df is not None
+
+        # Assert it has some rows
+        assert etl.output_df.shape[0] > 0
+
+        # Check that it has all columns
+        for col in etl.COLUMNS_TO_KEEP:
+            assert col in etl.output_df.columns, f"{col} is missing from output"
+
     def test_load_base(self, mock_etl):
         """Test load method.
 
@@ -213,22 +237,3 @@ class TestETL:
 
         # validation
         pd.testing.assert_frame_equal(actual_output, expected_output)
-
-    def test_transform_sets_output_df(self, mock_etl, mock_paths):
-        """This test ensures that the transform step sets its results to `output_df`.
-
-        Can be run without modification for all child classes.
-        """
-        etl = self._setup_etl_instance_and_run_extract(
-            mock_etl=mock_etl, mock_paths=mock_paths
-        )
-        etl.transform()
-
-        assert etl.output_df is not None
-
-        # Assert it has some rows
-        assert etl.output_df.shape[0] > 0
-
-        # Check that it has all columns
-        for col in etl.COLUMNS_TO_KEEP:
-            assert col in etl.output_df.columns, f"{col} is missing from output"
