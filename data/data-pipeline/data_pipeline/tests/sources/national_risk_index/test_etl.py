@@ -11,7 +11,9 @@ from data_pipeline.etl.sources.national_risk_index.etl import (
     NationalRiskIndexETL,
 )
 from data_pipeline.tests.sources.test_etl_base import TestETL
+from data_pipeline.utils import get_module_logger
 
+logger = get_module_logger(__name__)
 
 """
 Set UPDATE_TEST_FIXTURES to `True` temporarily to allow you to quickly update the test
@@ -99,7 +101,7 @@ class TestNationalRiskIndexETL(TestETL):
         assert output_file_path == expected_output_file_path
 
     @mock.patch("data_pipeline.utils.requests")
-    def test_extract(self, requests_mock, mock_paths):
+    def _setup_etl_instance_and_run_extract(self, requests_mock, mock_paths):
         zip_file_fixture_src = (
             self._DATA_DIRECTORY_FOR_TEST / "NRI_Table_CensusTracts.zip"
         )
@@ -125,11 +127,43 @@ class TestNationalRiskIndexETL(TestETL):
         # Run the extract method.
         etl.extract()
 
-        # Assert that we're calling the right URL.
-        requests_mock.get.assert_called_with(
-            "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload//"
-            "NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip",
-            verify=True,
+        return etl
+
+    def _setup_etl_instance_and_run_transform(self, mock_etl):
+        # setup - copy sample data into tmp_dir
+        etl = NationalRiskIndexETL()
+        copy_data_files(
+            src=self._DATA_DIRECTORY_FOR_TEST / self._INPUT_CSV_FILE_NAME,
+            dst=etl.INPUT_CSV,
+        )
+
+        # setup - read in sample output as dataframe
+        # execution
+        etl.transform()
+
+        return etl
+
+    def _setup_etl_instance_and_run_load(self, mock_etl):
+
+        # setup - input variables
+        etl = NationalRiskIndexETL()
+
+        # setup - mock transform step
+        df_transform = pd.read_csv(
+            self._DATA_DIRECTORY_FOR_TEST / self._TRANSFORM_CSV_FILE_NAME,
+            dtype={etl.GEOID_TRACT_FIELD_NAME: "string"},
+        )
+        etl.output_df = df_transform
+
+        # execution
+        etl.load()
+
+        return etl
+
+    def test_extract(self, mock_paths):
+        tmp_path = mock_paths[1]
+        etl = self._setup_etl_instance_and_run_extract(
+            mock_paths=mock_paths,
         )
 
         # Assert that the extracted file exists
@@ -158,16 +192,7 @@ class TestNationalRiskIndexETL(TestETL):
         - The values for each tract has been applied to each of the block
           groups in that tract
         """
-        # setup - copy sample data into tmp_dir
-        etl = NationalRiskIndexETL()
-        copy_data_files(
-            src=self._DATA_DIRECTORY_FOR_TEST / self._INPUT_CSV_FILE_NAME,
-            dst=etl.INPUT_CSV,
-        )
-
-        # setup - read in sample output as dataframe
-        # execution
-        etl.transform()
+        etl = self._setup_etl_instance_and_run_transform(mock_etl=mock_etl)
         transform_csv_path = (
             self._DATA_DIRECTORY_FOR_TEST / self._TRANSFORM_CSV_FILE_NAME
         )
@@ -194,18 +219,7 @@ class TestNationalRiskIndexETL(TestETL):
           self.OUTPUT_DIR
         - The content of the file that's written matches the data in self.df
         """
-        # setup - input variables
-        etl = NationalRiskIndexETL()
-
-        # setup - mock transform step
-        df_transform = pd.read_csv(
-            self._DATA_DIRECTORY_FOR_TEST / self._TRANSFORM_CSV_FILE_NAME,
-            dtype={etl.GEOID_TRACT_FIELD_NAME: "string"},
-        )
-        etl.output_df = df_transform
-
-        # execution
-        etl.load()
+        etl = self._setup_etl_instance_and_run_load(mock_etl=mock_etl)
 
         # Make sure it creates the file.
         actual_output_path = etl._get_output_file_path()

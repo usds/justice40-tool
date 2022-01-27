@@ -17,12 +17,27 @@ class TestETL:
     )
 
     # The following constants do not need to be updated in child class.
-    _INPUT_CSV_FILE_NAME = "input.csv" # TODO: delete this?
+    _INPUT_CSV_FILE_NAME = "input.csv"  # TODO: delete this?
     _TRANSFORM_CSV_FILE_NAME = "transform.csv"
     _OUTPUT_CSV_FILE_NAME = "output.csv"
 
     def _get_instance_of_etl_class(self):
         return self._ETL_CLASS()
+
+    def _setup_etl_instance_and_run_extract(self, mock_paths):
+        raise NotImplementedError(
+            "Prepare and run extract method not defined for this class."
+        )
+
+    def _setup_etl_instance_and_run_transform(self, mock_etl):
+        raise NotImplementedError(
+            "Prepare and run transform method not defined for this class."
+        )
+
+    def _setup_etl_instance_and_run_load(self, mock_etl):
+        raise NotImplementedError(
+            "Prepare and run load method not defined for this class."
+        )
 
     def test_existence_of_test_fixtures_base(self):
         """Every ETL test should have these two test fixture files."""
