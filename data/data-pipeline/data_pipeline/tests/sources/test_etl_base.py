@@ -24,20 +24,63 @@ class TestETL:
     def _get_instance_of_etl_class(self):
         return self._ETL_CLASS()
 
-    def _setup_etl_instance_and_run_extract(self, mock_paths):
-        raise NotImplementedError(
-            "Prepare and run extract method not defined for this class."
-        )
+    def _setup_etl_instance_and_run_extract(self, mock_etl, mock_paths):
+        # When running this in child classes, make sure the child class re-implements
+        # this method.
+        if self._ETL_CLASS is not ExampleETL:
+            raise NotImplementedError(
+                "Prepare and run extract method not defined for this class."
+            )
+
+        # The rest of this method applies for `ExampleETL` only.
+        etl = self._get_instance_of_etl_class()
+        etl.extract()
+
+        return etl
 
     def _setup_etl_instance_and_run_transform(self, mock_etl):
-        raise NotImplementedError(
-            "Prepare and run transform method not defined for this class."
-        )
+        # When running this in child classes, make sure the child class re-implements
+        # this method.
+        if self._ETL_CLASS is not ExampleETL:
+            raise NotImplementedError(
+                "Prepare and run transform method not defined for this class."
+            )
+
+        # The rest of this method applies for `ExampleETL` only.
+        etl = self._get_instance_of_etl_class()
+
+        # In order to prepare for running transform, run extract first.
+        etl.extract()
+        etl.transform()
+
+        return etl
 
     def _setup_etl_instance_and_run_load(self, mock_etl):
-        raise NotImplementedError(
-            "Prepare and run load method not defined for this class."
+        # When running this in child classes, make sure the child class re-implements
+        # this method.
+        if self._ETL_CLASS is not ExampleETL:
+            raise NotImplementedError(
+                "Prepare and run load method not defined for this class."
+            )
+
+        # The rest of this method applies for `ExampleETL` only.
+        etl = self._get_instance_of_etl_class()
+
+        # In order to prepare for running load, run extract and transform first.
+        etl.extract()
+        etl.transform()
+        etl.load()
+
+        return etl
+
+    # TODO: move within file?
+    def test_update_test_fixtures(self, mock_etl, mock_paths):
+        """TODO"""
+        etl = self._setup_etl_instance_and_run_extract(
+            mock_etl=mock_etl, mock_paths=mock_paths
         )
+
+        etl = self._setup_etl_instance_and_run_transform(mock_etl=mock_etl)
 
     def test_existence_of_test_fixtures_base(self):
         """Every ETL test should have these two test fixture files."""

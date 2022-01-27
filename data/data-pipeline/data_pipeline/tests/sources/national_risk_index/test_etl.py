@@ -101,7 +101,9 @@ class TestNationalRiskIndexETL(TestETL):
         assert output_file_path == expected_output_file_path
 
     @mock.patch("data_pipeline.utils.requests")
-    def _setup_etl_instance_and_run_extract(self, requests_mock, mock_paths):
+    def _setup_etl_instance_and_run_extract(
+        self, requests_mock, mock_etl, mock_paths
+    ):
         zip_file_fixture_src = (
             self._DATA_DIRECTORY_FOR_TEST / "NRI_Table_CensusTracts.zip"
         )
@@ -160,9 +162,10 @@ class TestNationalRiskIndexETL(TestETL):
 
         return etl
 
-    def test_extract(self, mock_paths):
+    def test_extract(self, mock_etl, mock_paths):
         tmp_path = mock_paths[1]
         etl = self._setup_etl_instance_and_run_extract(
+            mock_etl=mock_etl,
             mock_paths=mock_paths,
         )
 
