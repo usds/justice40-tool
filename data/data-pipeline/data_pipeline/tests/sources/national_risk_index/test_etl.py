@@ -22,10 +22,8 @@ class TestNationalRiskIndexETL(TestETL):
         settings.APP_ROOT / "tests" / "sources" / "national_risk_index" / "data"
     )
 
-    def _setup_etl_instance_and_run_extract(
-        self, mock_etl, mock_paths
-    ):
-        with mock.patch('data_pipeline.utils.requests') as requests_mock:
+    def _setup_etl_instance_and_run_extract(self, mock_etl, mock_paths):
+        with mock.patch("data_pipeline.utils.requests") as requests_mock:
             zip_file_fixture_src = (
                 self._DATA_DIRECTORY_FOR_TEST / "NRI_Table_CensusTracts.zip"
             )

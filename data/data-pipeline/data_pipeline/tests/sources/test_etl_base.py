@@ -1,6 +1,7 @@
 import pandas as pd
 
 from data_pipeline.config import settings
+from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.tests.conftest import copy_data_files
 from data_pipeline.tests.sources.example.etl import ExampleETL
 from data_pipeline.utils import get_module_logger
@@ -14,6 +15,7 @@ class TestETL:
     Note: every method that does *not* need to be reimplemented by child classes has
     the test name pattern of `test_*_base`. All other tests need to be reimplemented.
     """
+
     # In every child test class, change this to the class of the ETL being tested.
     _ETL_CLASS = ExampleETL
 
@@ -27,10 +29,12 @@ class TestETL:
     _TRANSFORM_CSV_FILE_NAME = "transform.csv"
     _OUTPUT_CSV_FILE_NAME = "output.csv"
 
-    def _get_instance_of_etl_class(self):
+    def _get_instance_of_etl_class(self) -> type(ExtractTransformLoad):
         return self._ETL_CLASS()
 
-    def _setup_etl_instance_and_run_extract(self, mock_etl, mock_paths):
+    def _setup_etl_instance_and_run_extract(
+        self, mock_etl, mock_paths
+    ) -> ExtractTransformLoad:
         """Method to setup an ETL instance with proper upstream mocks to run extract.
 
         This must be re-implemented in every child class.
