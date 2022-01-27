@@ -78,7 +78,22 @@ class TestETL:
         return etl
 
     def test_update_test_fixtures(self, mock_etl, mock_paths):
-        """TODO"""
+        """Update the test fixtures (the data files) used by the test.
+
+        This can be helpful if you expect the results to change because you changed
+        the logic of the ETL class and need to quickly update the fixtures.
+
+        However, note a few things first:
+
+        1. Do *not* update these fixtures if you did not expect the ETL results to
+        change!
+
+        2. If the source data itself changes (e.g., the external source renames a
+        column), update the "furthest upstream" test fixture which, in many cases,
+        is a .zip file. Then running this method will update all subsequent files.
+
+        If you're confused by any of this, ask for help, it's confusing :).
+        """
         # When running this in child classes, make sure the child class re-implements
         # this method.
         if self._ETL_CLASS is not ExampleETL:
@@ -104,9 +119,11 @@ class TestETL:
         # After running transform, write the results as the "transform.csv" in the test
         # directory.
         etl = self._setup_etl_instance_and_run_transform(mock_etl=mock_etl)
-        etl.output_df.to_csv(path_or_buf=self._DATA_DIRECTORY_FOR_TEST /
-                                         self._TRANSFORM_CSV_FILE_NAME,
-                             index=False)
+        etl.output_df.to_csv(
+            path_or_buf=self._DATA_DIRECTORY_FOR_TEST
+            / self._TRANSFORM_CSV_FILE_NAME,
+            index=False,
+        )
 
         # After running load, write the results as the "output.csv" in the test
         # directory.

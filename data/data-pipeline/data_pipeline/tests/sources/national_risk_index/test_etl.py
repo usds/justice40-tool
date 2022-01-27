@@ -15,23 +15,7 @@ from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
 
-"""
-Set UPDATE_TEST_FIXTURES to `True` temporarily to allow you to quickly update the test
-fixtures based on intentional changes to the logic of the method.
-
-However, note a few things first:
-
-1. Do *not* update these fixtures if you did not expect the ETL results to change.
-
-2. This should never be set to `True` in committed code. It should only be used
-temporarily to quickly update the fixtures.
-
-3. If the source data itself changes (e.g., the external source renames a column),
-update the "furthest upstream" test fixture which, in this case, is the .zip file.
-Then running `UPDATE_TEST_FIXTURES = True` will update all subsequent files.
-
-If you're confused by any of this, ask for help, it's confusing :).
-"""
+# TODO: delete
 UPDATE_TEST_FIXTURES = False
 
 
@@ -40,20 +24,6 @@ class TestNationalRiskIndexETL(TestETL):
     _DATA_DIRECTORY_FOR_TEST = (
         settings.APP_ROOT / "tests" / "sources" / "national_risk_index" / "data"
     )
-
-    def test_update_test_fixtures(self, mock_paths, mock_etl):
-        """Assert that UPDATE_TEST_FIXTURES is False."""
-        if UPDATE_TEST_FIXTURES:
-            # When updating the test fixtures, run them in order, so that each one
-            # updates the files used by the next method.
-            # pylint: disable=no-value-for-parameter
-            self.test_extract(mock_paths=mock_paths)
-            self.test_transform(mock_etl=mock_etl)
-            self.test_load(mock_etl=mock_etl)
-
-        # UPDATE_TEST_FIXTURES should never be True outside of temporarily setting
-        # it to True to quickly update the test fixtures.
-        assert UPDATE_TEST_FIXTURES is False
 
     def test_init(self, mock_etl, mock_paths):
         """Tests that the mock NationalRiskIndexETL class instance was
@@ -146,7 +116,6 @@ class TestNationalRiskIndexETL(TestETL):
         return etl
 
     def _setup_etl_instance_and_run_load(self, mock_etl):
-
         # setup - input variables
         etl = NationalRiskIndexETL()
 
@@ -161,6 +130,35 @@ class TestNationalRiskIndexETL(TestETL):
         etl.load()
 
         return etl
+
+    def test_update_test_fixtures(self, mock_etl, mock_paths):
+        etl = self._setup_etl_instance_and_run_extract(
+            mock_etl=mock_etl, mock_paths=mock_paths
+        )
+
+        # After running extract, write the results as the "input.csv" in the test
+        # directory.
+        copy_data_files(
+            src=etl.INPUT_CSV,
+            dst=self._DATA_DIRECTORY_FOR_TEST / self._INPUT_CSV_FILE_NAME,
+        )
+
+        # After running transform, write the results as the "transform.csv" in the test
+        # directory.
+        etl = self._setup_etl_instance_and_run_transform(mock_etl=mock_etl)
+        etl.output_df.to_csv(
+            path_or_buf=self._DATA_DIRECTORY_FOR_TEST
+            / self._TRANSFORM_CSV_FILE_NAME,
+            index=False,
+        )
+
+        # After running load, write the results as the "output.csv" in the test
+        # directory.
+        etl = self._setup_etl_instance_and_run_load(mock_etl=mock_etl)
+        copy_data_files(
+            src=etl._get_output_file_path(),
+            dst=self._DATA_DIRECTORY_FOR_TEST / self._OUTPUT_CSV_FILE_NAME,
+        )
 
     def test_extract(self, mock_etl, mock_paths):
         tmp_path = mock_paths[1]

@@ -53,8 +53,6 @@ class ExampleETL(ExtractTransformLoad):
             low_memory=False,
         )
 
-        logger.info(df.columns)
-
         df[self.EXAMPLE_FIELD_NAME] = df[self.INPUT_FIELD_NAME] * 2
 
         self.output_df = df

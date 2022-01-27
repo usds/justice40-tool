@@ -280,29 +280,5 @@ def data_full_run(check: bool, data_source: str):
     sys.exit()
 
 
-@cli.command(
-    help="Update the test fixtures of a specific ETL class.",
-)
-@click.option(
-    "-d",
-    "--dataset",
-    required=True,
-    type=str,
-    help=dataset_cli_help,
-)
-def update_test_fixtures(dataset: str):
-    """Update the test fixtures of a specific ETL class.
-
-    Args:
-        dataset (str): Name of the ETL module to be updated
-
-    Returns:
-        None
-    """
-
-    update_etl_test_fixtures(dataset)
-    sys.exit()
-
-
 if __name__ == "__main__":
     cli()

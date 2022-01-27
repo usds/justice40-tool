@@ -125,55 +125,6 @@ def score_geo(data_source: str = "local") -> None:
     score_geo.load()
 
 
-def update_etl_test_fixtures(dataset_to_run: str = None) -> None:
-    """Update the test fixtures of a specific ETL class.
-
-    Args:
-        dataset_to_run (str): Name of the ETL module to be updated
-
-    Returns:
-        None
-    """
-    dataset_list = get_datasets_to_run(dataset_to_run)
-
-    # Run the ETLs for the dataset_list
-    for dataset in dataset_list:
-        etl_module = importlib.import_module(
-            f"data_pipeline.etl.sources.{dataset['module_dir']}.etl"
-        )
-        etl_class = getattr(etl_module, dataset["class_name"])
-        etl_instance = etl_class()
-
-        data_directory_for_fixtures = (
-            settings.APP_ROOT
-            / "tests"
-            / "sources"
-            / dataset["module_dir"]
-            / "data"
-        )
-
-        # Do not run extract - these updates do not apply to `input.csv`,
-        # and instead only apply to `transform.csv` and `output.csv`.
-
-        # TODO: each ETL class has such a specific way of downloading data in
-        #  `extract` and transferring data between
-        # the `extract` step and the `transform` step. For some, this is a CSV,
-        # for some, it's a shapefile, for some, it's multiple files in a directory.
-        # How do we create a standardized approach to updating test fixtures?
-        #
-        # # run transform
-        # etl_instance.transform()
-        #
-        # # run load
-        # etl_instance.load()
-        #
-        # # cleanup
-        # etl_instance.cleanup()
-
-    # update the front end JSON/CSV of list of data sources
-    pass
-
-
 def _find_dataset_index(dataset_list, key, value):
     for i, element in enumerate(dataset_list):
         if element[key] == value:
