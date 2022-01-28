@@ -64,10 +64,14 @@ class ExtractTransformLoad:
     # COLUMNS_TO_KEEP to used to identify which columns to keep in the output df.
     COLUMNS_TO_KEEP: typing.List[str] = None
 
+    # Thirteen digits in a census block group ID.
+    EXPECTED_CENSUS_BLOCK_GROUPS_CHARACTER_LENGTH: int = 13
     # TODO: investigate. Census says there are only 217,740 CBGs in the US. This might
     #  be from CBGs at different time periods.
     EXPECTED_MAX_CENSUS_BLOCK_GROUPS: int = 250000
 
+    # Eleven digits in a census tract ID.
+    EXPECTED_CENSUS_TRACTS_CHARACTER_LENGTH: int = 11
     # TODO: investigate. Census says there are only 74,134 tracts in the US,
     #  Puerto Rico, and island areas. This might be from tracts at different time
     #  periods. https://github.com/usds/justice40-tool/issues/964
@@ -117,19 +121,20 @@ class ExtractTransformLoad:
 
         raise NotImplementedError
 
-    def load(self, float_format=None) -> None:
-        """Saves the transformed data.
+    def validate(self) -> None:
+        """Validates the output.
 
-        Data is written in the specified local data folder or remote AWS S3 bucket.
-
-        Uses the directory from `self.OUTPUT_DIR` and the file name from
-        `self._get_output_file_path`.
+        Runs after the `transform` step and before `load`.
         """
-        logger.info(f"Saving `{self.NAME}` CSV")
 
-        # write nationwide csv
-        output_file_path = self._get_output_file_path()
-        output_file_path.parent.mkdir(parents=True, exist_ok=True)
+        # TODO: remove this once all ETL classes are converted to using the new
+        #  base class parameters and patterns.
+        if self.GEO_LEVEL is None:
+            logger.info(
+                f"Skipping validation step for this class because it does not "
+                f"seem to be converted to new ETL class patterns."
+            )
+            return
 
         if self.COLUMNS_TO_KEEP is None:
             raise NotImplementedError(
@@ -141,37 +146,99 @@ class ExtractTransformLoad:
                 "The `transform` step must set `self.output_df`."
             )
 
+        for (
+            geo_level,
+            geo_field,
+            expected_geo_field_characters,
+            expected_rows,
+        ) in [
+            (
+                ValidGeoLevel.CENSUS_TRACT,
+                self.GEOID_TRACT_FIELD_NAME,
+                self.EXPECTED_CENSUS_TRACTS_CHARACTER_LENGTH,
+                self.EXPECTED_MAX_CENSUS_TRACTS,
+            ),
+            (
+                ValidGeoLevel.CENSUS_BLOCK_GROUP,
+                self.GEOID_FIELD_NAME,
+                self.EXPECTED_CENSUS_BLOCK_GROUPS_CHARACTER_LENGTH,
+                self.EXPECTED_MAX_CENSUS_BLOCK_GROUPS,
+            ),
+        ]:
+            if self.GEO_LEVEL is geo_level:
+                if geo_field not in self.COLUMNS_TO_KEEP:
+                    raise ValueError(
+                        f"Must have `{geo_field}` in columns if "
+                        f"specifying geo level as `{geo_level} "
+                    )
+            if self.output_df.shape[0] > expected_rows:
+                raise ValueError(
+                    f"Too many rows: `{self.output_df.shape[0]}` rows in "
+                    f"output exceeds expectation of `{expected_rows}` "
+                    f"rows."
+                )
+
+            geo_field_character_lengths = (
+                self.output_df[geo_field].str.len().unique()
+            )
+            if any(
+                geo_field_character_lengths != [expected_geo_field_characters]
+            ):
+                raise ValueError(
+                    f"Some of the census geography data has the wrong length."
+                )
+
+            non_unique_geo_field_values = len(self.output_df[geo_field]) - len(
+                self.output_df[geo_field].unique()
+            )
+
+            if non_unique_geo_field_values > 0:
+                raise ValueError(
+                    f"There are {non_unique_geo_field_values} duplicate values in "
+                    f"`{geo_field}`."
+                )
+
+        for column_to_keep in self.COLUMNS_TO_KEEP:
+            if column_to_keep not in self.df_output.columns:
+                raise ValueError(f"`{column_to_keep}` is missing from output")
+
+    def load(self, float_format=None) -> None:
+        """Saves the transformed data.
+
+        Data is written in the specified local data folder or remote AWS S3 bucket.
+
+        Uses the directory from `self.OUTPUT_DIR` and the file name from
+        `self._get_output_file_path`.
+        """
+        logger.info(f"Saving `{self.NAME}` CSV")
+
+        # Create directory if necessary.
+        output_file_path = self._get_output_file_path()
+        output_file_path.parent.mkdir(parents=True, exist_ok=True)
+
+        # Write nationwide csv
         self.output_df[self.COLUMNS_TO_KEEP].to_csv(
             output_file_path, index=False, float_format=float_format
         )
+
         logger.info(f"File written to `{output_file_path}`.")
 
-    def cleanup(self) -> None:
-        """Clears out any files stored in the TMP folder"""
+    def get_data_frame(self) -> pd.DataFrame:
+        """Return the output data frame for this class.
 
-        remove_all_from_dir(self.TMP_PATH)
+        Must be run after a full ETL process has been run for this class.
 
-    # TODO: Create tests
-    def validate_output(self) -> None:
-        """Checks that the output of the ETL process adheres to the contract
-        expected by the score module
-
-        Contract conditions:
-        - Output is saved as usa.csv at the path specified by self.OUTPUT_PATH
-        - The output csv has a column named GEOID10 which stores each of the
-          Census block group FIPS codes in data/census/csv/usa.csv
-        - The output csv has a column named GEOID10_TRACT which stores each of
-          Census tract FIPS codes associated with each Census block group
-        - The output csv has each of the columns expected by the score and the
-          name and dtype of those columns match the format expected by score
+        If the ETL has been not run for this class, this will error.
         """
-        # read in output file
-        # and check that GEOID cols are present
+        # Read in output file
         output_file_path = self._get_output_file_path()
         if not output_file_path.exists():
-            raise ValueError(f"No file found at {output_file_path}")
+            raise ValueError(
+                f"Make sure to run ETL process first for `{self.__class__}`. "
+                f"No file found at `{output_file_path}`."
+            )
 
-        df_output = pd.read_csv(
+        output_df = pd.read_csv(
             output_file_path,
             dtype={
                 # Not all outputs will have both a Census Block Group ID and a
@@ -181,6 +248,8 @@ class ExtractTransformLoad:
             },
         )
 
-        # check that the score columns are in the output
-        for col in self.COLUMNS_TO_KEEP:
-            assert col in df_output.columns, f"{col} is missing from output"
+        return output_df
+
+    def cleanup(self) -> None:
+        """Clears out any files stored in the TMP folder"""
+        remove_all_from_dir(self.TMP_PATH)
