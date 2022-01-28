@@ -82,13 +82,6 @@ const J40Map = ({location}: IJ40Interface) => {
   const [isMobileMapState, setIsMobileMapState] = useState<boolean>(false);
   const {width: windowWidth} = useWindowSize();
 
-  console.log(
-      'inline:',
-      typeof windowWidth, windowWidth,
-      typeof constants.USWDS_BREAKPOINTS.DESKTOP,
-      constants.USWDS_BREAKPOINTS.DESKTOP,
-  );
-
   const mapRef = useRef<MapRef>(null);
   const flags = useFlags();
 
@@ -196,8 +189,7 @@ const J40Map = ({location}: IJ40Interface) => {
     if (typeof window !== 'undefined' && window.Cypress && mapRef.current) {
       window.underlyingMap = mapRef.current.getMap();
     }
-    console.log('on load width: ', windowWidth);
-    console.log('onLoad isMobile: ', isMobile);
+
     if (isMobile) setIsMobileMapState(true);
   };
 
@@ -235,41 +227,9 @@ const J40Map = ({location}: IJ40Interface) => {
     setGeolocationInProgress(true);
   };
 
-  // const getMapHeight = () => {
-  //   // Todo: change to 100% and move to constants:
-  //   console.log(
-  //       'in getMapHeight constants.desktop:',
-  //       typeof windowWidth, windowWidth,
-  //       typeof constants.USWDS_BREAKPOINTS.DESKTOP,
-  //       constants.USWDS_BREAKPOINTS.DESKTOP,
-  //   );
-  //   console.log('boolean test: ', windowWidth > constants.USWDS_BREAKPOINTS.DESKTOP);
-  //   if (isMobile) {
-  //     return isMobile ? '55vh' : '91%';
-  //   } else if (windowWidth) {
-  //     return windowWidth > constants.USWDS_BREAKPOINTS.DESKTOP ? '89%' : '55vh';
-  //   } else {
-  //     return '55vh';
-  //   }
-  // };
-
   return (
     <>
-      <div
-        style={{height: `${windowWidth > constants.USWDS_BREAKPOINTS.DESKTOP ? '88.5%' : '55vh'}`}}
-      >
-        <pre>
-          {`
-      windowWidth: ${windowWidth}, 
-      constant.desktop: ${constants.USWDS_BREAKPOINTS.DESKTOP}, 
-      boolean test: ${windowWidth > constants.USWDS_BREAKPOINTS.DESKTOP}
-      typeof windowWidth: ${typeof windowWidth}, 
-      typeof constant.desktop: ${typeof constants.USWDS_BREAKPOINTS.DESKTOP}, 
-    `}
-
-        </pre>
-      </div>
-      <Grid col={12} desktop={{col: 9}}>
+      <Grid desktop={{col: 9}} className={styles.j40Map}>
 
         {/**
          * This will render the MapSearch component
@@ -296,13 +256,14 @@ const J40Map = ({location}: IJ40Interface) => {
          * some children.
          */}
         <ReactMapGL
-          // Initialization props:
+          // ****** Initialization props: ******
           // access token is j40StylesReadToken
           mapboxApiAccessToken={
             process.env.MAPBOX_STYLES_READ_TOKEN ?
             process.env.MAPBOX_STYLES_READ_TOKEN : ''}
 
-          // Map state props:
+
+          // ****** Map state props: ******
           // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#map-state
           {...viewport}
           mapStyle={
@@ -310,12 +271,13 @@ const J40Map = ({location}: IJ40Interface) => {
             getOSBaseMap()
           }
           width="100%"
-          // height={!isMobile && (windowWidth > constants.USWDS_BREAKPOINTS.DESKTOP) ? '90%' : '55vh'}
-          // height={'55vh'}
-          height={windowWidth > constants.USWDS_BREAKPOINTS.DESKTOP ? '88.5%' : '55vh'}
+          // Ajusting this height with a conditional statement will not render the map on staging.
+          // The reason for this issue is unknown. Consider styling the parent container via SASS.
+          height="100%"
           mapOptions={{hash: true}}
 
-          // Interaction option props:
+
+          // ****** Interaction option props: ******
           // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#interaction-options
           maxZoom={constants.GLOBAL_MAX_ZOOM}
           minZoom={constants.GLOBAL_MIN_ZOOM}
@@ -323,7 +285,8 @@ const J40Map = ({location}: IJ40Interface) => {
           touchRotate={false}
           interactiveLayerIds={[constants.HIGH_ZOOM_LAYER_ID, constants.PRIORITIZED_HIGH_ZOOM_LAYER_ID]}
 
-          // Callback props:
+
+          // ****** Callback props: ******
           // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#callbacks
           onViewportChange={setViewport}
           onClick={onClick}
@@ -465,7 +428,7 @@ const J40Map = ({location}: IJ40Interface) => {
         </ReactMapGL>
       </Grid>
 
-      <Grid col={12} desktop={{col: 3}} className={styles.mapInfoPanel}>
+      <Grid desktop={{col: 3}}>
         <MapInfoPanel
           className={styles.mapInfoPanel}
           featureProperties={detailViewData?.properties}

@@ -8,6 +8,7 @@ declare namespace J40MapModuleScssNamespace {
     geolocateControl: string;
     detailView: string;
     mapInfoPanel: string;
+    j40Map: string;
   }
 }
 
