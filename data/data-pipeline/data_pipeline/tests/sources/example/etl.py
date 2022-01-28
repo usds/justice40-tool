@@ -1,5 +1,5 @@
-import pandas as pd
 import zipfile
+import pandas as pd
 
 from data_pipeline.config import settings
 from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel

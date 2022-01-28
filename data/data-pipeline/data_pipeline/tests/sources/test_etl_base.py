@@ -1,3 +1,4 @@
+# pylint: disable=protected-access
 import pandas as pd
 
 from data_pipeline.config import settings

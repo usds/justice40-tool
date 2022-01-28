@@ -1,6 +1,5 @@
 import importlib
 
-from data_pipeline.config import settings
 from data_pipeline.etl.score.etl_score import ScoreETL
 from data_pipeline.etl.score.etl_score_geo import GeoScoreETL
 from data_pipeline.etl.score.etl_score_post import PostScoreETL
