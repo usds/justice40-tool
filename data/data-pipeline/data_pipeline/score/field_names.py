@@ -372,13 +372,13 @@ LOW_LIFE_EXPECTANCY_LOW_INCOME_FIELD = (
 ## TODO Note that this changes the syntax of some columns to have fewer ands -- check output
 ## A small point -- this file is long and unwieldy and it might make sense to streamline at some point?
 SCORE_M_LOW_INCOME_SUFFIX = (
-    ", is low income, and has a low percent of higher ed students?"
+    ", is low income, and has a low percent of higher ed students"
 )
 
 # Climate Change
 EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile"
-    f" for expected population loss rate{SCORE_M_LOW_INCOME_SUFFIX}"
+    f" for expected population loss rate{SCORE_M_LOW_INCOME_SUFFIX}?"
 )
 EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile"
@@ -413,7 +413,7 @@ RMP_LOW_INCOME_LOW_HIGHER_ED_FIELD = f"Greater than or equal to the {PERCENTILE}
 SUPERFUND_LOW_INCOME_LOW_HIGHER_ED_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for proximity to superfund sites{SCORE_M_LOW_INCOME_SUFFIX}?"
 HAZARDOUS_WASTE_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile"
-    f" for proximity to hazardous waste facilities{SCORE_M_LOW_INCOME_SUFFIX}?"
+    f" for proximity to hazardous waste facilities{SCORE_M_LOW_INCOME_SUFFIX}"
 )
 
 # Critical Clean Water and Waste Infrastructure
@@ -426,7 +426,7 @@ HEART_DISEASE_LOW_INCOME_LOW_HIGHER_ED_FIELD = f"Greater than or equal to the {P
 
 LOW_LIFE_EXPECTANCY_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile "
-    f"for low life expectancy{SCORE_M_LOW_INCOME_SUFFIX}?"
+    f"for low life expectancy{SCORE_M_LOW_INCOME_SUFFIX}"
 )
 
 # Workforce
