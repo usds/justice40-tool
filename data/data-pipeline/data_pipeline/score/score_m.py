@@ -175,20 +175,6 @@ class ScoreM(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-        extreme_heat_and_median_house_value_threshold = (
-            self.df[
-                field_names.EXTREME_HEAT_FIELD
-                + field_names.PERCENTILE_FIELD_SUFFIX
-            ]
-            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
-        ) & (
-            self.df[
-                field_names.MEDIAN_HOUSE_VALUE_FIELD
-                + field_names.PERCENTILE_FIELD_SUFFIX
-            ]
-            <= self.MEDIAN_HOUSE_VALUE_THRESHOLD
-        )
-
         self.df[
             field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD
         ] = (
