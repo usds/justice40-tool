@@ -402,7 +402,7 @@ ENERGY_BURDEN_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
 # Clean Transportation
 DIESEL_PARTICULATE_MATTER_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for "
-    "diesel particulate matter{SCORE_M_LOW_INCOME_SUFFIX}?"
+    f"diesel particulate matter{SCORE_M_LOW_INCOME_SUFFIX}?"
 )
 TRAFFIC_PROXIMITY_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for "
@@ -431,7 +431,7 @@ SUPERFUND_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
 )
 HAZARDOUS_WASTE_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile"
-    f" for proximity to hazardous waste facilities{SCORE_M_LOW_INCOME_SUFFIX}"
+    f" for proximity to hazardous waste facilities{SCORE_M_LOW_INCOME_SUFFIX}?"
 )
 
 # Critical Clean Water and Waste Infrastructure
@@ -450,28 +450,30 @@ HEART_DISEASE_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
 
 LOW_LIFE_EXPECTANCY_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile "
-    f"for low life expectancy{SCORE_M_LOW_INCOME_SUFFIX}"
+    f"for low life expectancy{SCORE_M_LOW_INCOME_SUFFIX}?"
 )
 
 # Workforce
 UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for unemployment"
-    " and has low HS education"
+    " and has low HS education?"
 )
 
 LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for households in linguistic isolation"
-    " and has low HS education"
+    " and has low HS education?"
 )
 
 POVERTY_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for households at or below 100% federal poverty level"
-    " and has low HS education"
+    " and has low HS education?"
 )
 
+# I think for consistency with the above formatting, all of these should have ?s or none of them should
+# TODO remove comment before merge
 LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for low median household income as a "
-    f"percent of area median income and has low HS education"
+    f"percent of area median income and has low HS education?"
 )
 
 # Score M Workforce Variables
@@ -481,49 +483,47 @@ SCORE_M_LOW_EDUCATION_SUFFIX = (
 
 UNEMPLOYMENT_LOW_HS_LOW_HIGHER_ED_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for unemployment"
-    f"{SCORE_M_LOW_EDUCATION_SUFFIX}"
+    f"{SCORE_M_LOW_EDUCATION_SUFFIX}?"
 )
 
 LINGUISTIC_ISOLATION_LOW_HS_LOW_HIGHER_ED_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for households in linguistic isolation"
-    f"{SCORE_M_LOW_EDUCATION_SUFFIX}"
+    f"{SCORE_M_LOW_EDUCATION_SUFFIX}?"
 )
 
 POVERTY_LOW_HS_LOW_HIGHER_ED_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for households at or below 100% federal poverty level"
-    f"{SCORE_M_LOW_EDUCATION_SUFFIX}"
+    f"{SCORE_M_LOW_EDUCATION_SUFFIX}?"
 )
 
 LOW_MEDIAN_INCOME_LOW_HS_LOW_HIGHER_ED_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for low median household income as a "
-    f"percent of area median income{SCORE_M_LOW_EDUCATION_SUFFIX}"
+    f"percent of area median income{SCORE_M_LOW_EDUCATION_SUFFIX}?"
 )
 
 LOW_HS_EDUCATION_FIELD = "Low high school education"
-
-## QQ for consistency, should we rename this (or the new fields) to be consistent as variable names?
-## And, should we mirror the wording of "a low percent of college students" in this variable?
-## TODO Delete before final merge
 LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD = (
     "Low high school education and low percent of higher ed students"
 )
 
 # Workforce for island areas
+# I think for consistency with the above formatting, all of these should have ?s or none of them should
+# TODO remove comment before final merge
 ISLAND_AREAS_SUFFIX = " in 2009 (island areas)"
 ISLAND_AREAS_UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for unemployment"
-    f" and has low HS education{ISLAND_AREAS_SUFFIX}"
+    f" and has low HS education{ISLAND_AREAS_SUFFIX}?"
 )
 
 ISLAND_AREAS_POVERTY_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for households at or below 100% federal poverty level"
-    f" and has low HS education{ISLAND_AREAS_SUFFIX}"
+    f" and has low HS education{ISLAND_AREAS_SUFFIX}?"
 )
 
 ISLAND_AREAS_LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for low median household income as a "
     f"percent of area median income"
-    f" and has low HS education{ISLAND_AREAS_SUFFIX}"
+    f" and has low HS education{ISLAND_AREAS_SUFFIX}?"
 )
 
 ISLAND_AREAS_LOW_HS_EDUCATION_FIELD = (
@@ -536,9 +536,11 @@ EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD = (
     f"the median house value is less than {MEDIAN_HOUSE_VALUE_PERCENTILE}th "
     f"percentile and is low income?"
 )
+# I think for consistency with the above formatting, all of these should have ?s or none of them should
+# TODO remove comment before merge
 IMPENETRABLE_SURFACES_LOW_INCOME_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for impenetrable surfaces and is low "
-    f"income"
+    f"income?"
 )
 AIR_TOXICS_CANCER_RISK_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for air toxics cancer risk and is low income?"
 RESPIRATORY_HAZARD_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for respiratory hazard index and is low income?"
@@ -547,9 +549,11 @@ HEALTHY_FOOD_LOW_INCOME_FIELD = (
     f"access to healthy food and is low income?"
 )
 
+# I think for consistency with the above formatting, all of these should have ?s or none of them should
+# TODO remove comment before merge
 LOW_READING_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for low 3rd grade reading proficiency"
-    " and has low HS education"
+    " and has low HS education?"
 )
 
 THRESHOLD_COUNT = "Total threshold criteria exceeded"
