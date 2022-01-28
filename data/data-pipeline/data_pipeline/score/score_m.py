@@ -143,13 +143,12 @@ class ScoreM(Score):
         # Low income: In Nth percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
         # poverty level and there is low higher ed attendance
-        # Source: Census's American Community Survey]
+        # Source: Census's American Community Survey
 
         climate_eligibility_columns = [
             field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD,
             field_names.EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD,
             field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD,
-            # field_names.EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD,
         ]
 
         expected_population_loss_threshold = (
@@ -208,15 +207,6 @@ class ScoreM(Score):
             field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD
         ] = (
             expected_building_loss_threshold
-            & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
-        )
-
-        # QQ: Should this be removed?
-        # note to self: leave as is for now
-        self.df[
-            field_names.EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD
-        ] = (
-            extreme_heat_and_median_house_value_threshold
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 

@@ -369,8 +369,6 @@ LOW_LIFE_EXPECTANCY_LOW_INCOME_FIELD = (
 )
 
 # Score M Low Income Change
-## TODO Note that this changes the syntax of some columns to have fewer ands -- check output
-## A small point -- this file is long and unwieldy and it might make sense to streamline at some point?
 SCORE_M_LOW_INCOME_SUFFIX = (
     ", is low income, and has a low percent of higher ed students"
 )
@@ -469,8 +467,6 @@ POVERTY_LOW_HS_EDUCATION_FIELD = (
     " and has low HS education?"
 )
 
-# I think for consistency with the above formatting, all of these should have ?s or none of them should
-# TODO remove comment before merge
 LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for low median household income as a "
     f"percent of area median income and has low HS education?"
@@ -478,7 +474,7 @@ LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD = (
 
 # Score M Workforce Variables
 SCORE_M_LOW_EDUCATION_SUFFIX = (
-    " and has low HS attainment and a low percent of higher ed students"
+    ", has low HS attainment, and has a low percent of higher ed students"
 )
 
 UNEMPLOYMENT_LOW_HS_LOW_HIGHER_ED_FIELD = (
@@ -507,8 +503,6 @@ LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD = (
 )
 
 # Workforce for island areas
-# I think for consistency with the above formatting, all of these should have ?s or none of them should
-# TODO remove comment before final merge
 ISLAND_AREAS_SUFFIX = " in 2009 (island areas)"
 ISLAND_AREAS_UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for unemployment"
@@ -536,8 +530,7 @@ EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD = (
     f"the median house value is less than {MEDIAN_HOUSE_VALUE_PERCENTILE}th "
     f"percentile and is low income?"
 )
-# I think for consistency with the above formatting, all of these should have ?s or none of them should
-# TODO remove comment before merge
+
 IMPENETRABLE_SURFACES_LOW_INCOME_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for impenetrable surfaces and is low "
     f"income?"
@@ -549,8 +542,6 @@ HEALTHY_FOOD_LOW_INCOME_FIELD = (
     f"access to healthy food and is low income?"
 )
 
-# I think for consistency with the above formatting, all of these should have ?s or none of them should
-# TODO remove comment before merge
 LOW_READING_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for low 3rd grade reading proficiency"
     " and has low HS education?"
