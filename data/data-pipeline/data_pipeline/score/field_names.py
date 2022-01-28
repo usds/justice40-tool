@@ -390,15 +390,21 @@ EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
 )
 
 # Clean Energy and Efficiency
-PM25_EXPOSURE_LOW_INCOME_LOW_HIGHER_ED_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for PM2.5 exposure{SCORE_M_LOW_INCOME_SUFFIX}?"
-ENERGY_BURDEN_LOW_INCOME_LOW_HIGHER_ED_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for energy burden{SCORE_M_LOW_INCOME_SUFFIX}?"
+PM25_EXPOSURE_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for PM2.5 exposure{SCORE_M_LOW_INCOME_SUFFIX}?"
+)
+ENERGY_BURDEN_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for energy burden{SCORE_M_LOW_INCOME_SUFFIX}?"
+)
 
 # Clean Transportation
 DIESEL_PARTICULATE_MATTER_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for "
     "diesel particulate matter{SCORE_M_LOW_INCOME_SUFFIX}?"
 )
-TRAFFIC_PROXIMITY_LOW_INCOME_LOW_HIGHER_ED_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for traffic proximity{SCORE_M_LOW_INCOME_SUFFIX}?"
+TRAFFIC_PROXIMITY_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for traffic proximity{SCORE_M_LOW_INCOME_SUFFIX}?"
+)
 
 # Affordable and Sustainable Housing
 LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
@@ -406,23 +412,33 @@ LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
     f" the median house value is less than {MEDIAN_HOUSE_VALUE_PERCENTILE}th "
     f"percentile{SCORE_M_LOW_INCOME_SUFFIX}?"
 )
-HOUSING_BURDEN_LOW_INCOME_LOW_HIGHER_ED_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for housing burden{SCORE_M_LOW_INCOME_SUFFIX}?"
+HOUSING_BURDEN_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for housing burden{SCORE_M_LOW_INCOME_SUFFIX}?"
+)
 
 # Remediation and Reduction of Legacy Pollution
-RMP_LOW_INCOME_LOW_HIGHER_ED_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for proximity to RMP sites{SCORE_M_LOW_INCOME_SUFFIX}?"
-SUPERFUND_LOW_INCOME_LOW_HIGHER_ED_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for proximity to superfund sites{SCORE_M_LOW_INCOME_SUFFIX}?"
+RMP_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for proximity to RMP sites{SCORE_M_LOW_INCOME_SUFFIX}?"
+)
+SUPERFUND_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for proximity to superfund sites{SCORE_M_LOW_INCOME_SUFFIX}?"
+)
 HAZARDOUS_WASTE_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile"
     f" for proximity to hazardous waste facilities{SCORE_M_LOW_INCOME_SUFFIX}"
 )
 
 # Critical Clean Water and Waste Infrastructure
-WASTEWATER_DISCHARGE_LOW_INCOME_LOW_HIGHER_ED_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for wastewater discharge{SCORE_M_LOW_INCOME_SUFFIX}?"
+WASTEWATER_DISCHARGE_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for wastewater discharge{SCORE_M_LOW_INCOME_SUFFIX}?"
+)
 
 # Health Burdens
 DIABETES_LOW_INCOME_LOW_HIGHER_ED_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for diabetes{SCORE_M_LOW_INCOME_SUFFIX}?"
 ASTHMA_LOW_INCOME_LOW_HIGHER_ED_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for asthma{SCORE_M_LOW_INCOME_SUFFIX}?"
-HEART_DISEASE_LOW_INCOME_LOW_HIGHER_ED_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for heart disease{SCORE_M_LOW_INCOME_SUFFIX}?"
+HEART_DISEASE_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for heart disease{SCORE_M_LOW_INCOME_SUFFIX}?"
+)
 
 LOW_LIFE_EXPECTANCY_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile "
