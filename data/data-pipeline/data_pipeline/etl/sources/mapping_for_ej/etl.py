@@ -40,7 +40,7 @@ class MappingForEJETL(ExtractTransformLoad):
         # Defining variables
         self.COLUMNS_TO_KEEP = [
             self.GEOID_TRACT_FIELD_NAME,
-            field_names.MAPPING_FOR_EJ_FINAL_PCT_FIELD,
+            field_names.MAPPING_FOR_EJ_FINAL_PERCENTILE_FIELD,
             field_names.MAPPING_FOR_EJ_FINAL_SCORE_FIELD,
             field_names.MAPPING_FOR_EJ_PRIORITY_COMMUNITY_FIELD,
         ]
@@ -50,7 +50,7 @@ class MappingForEJETL(ExtractTransformLoad):
         # identified as disadvantaged. Consequently, the rank-based threshold is 20%.
         # Using the scores to calculate which are priority communities doesn't quite track
         # with this distribution, and so I've opted to choose roughly 20% of both states.
-        self.MAPPING_FOR_EJ_PRIORITY_COMMUNITY_PCT_THRESHOLD = 80
+        self.MAPPING_FOR_EJ_PRIORITY_COMMUNITY_PERCENTILE_THRESHOLD = 80
 
         self.df: pd.DataFrame
 
@@ -87,7 +87,7 @@ class MappingForEJETL(ExtractTransformLoad):
 
         self.df.rename(
             columns={
-                "fin_rank": field_names.MAPPING_FOR_EJ_FINAL_PCT_FIELD,
+                "fin_rank": field_names.MAPPING_FOR_EJ_FINAL_PERCENTILE_FIELD,
                 "fin_score": field_names.MAPPING_FOR_EJ_FINAL_SCORE_FIELD,
             },
             inplace=True,
@@ -95,8 +95,8 @@ class MappingForEJETL(ExtractTransformLoad):
 
         # Calculate the top K% of prioritized communities
         self.df[field_names.MAPPING_FOR_EJ_PRIORITY_COMMUNITY_FIELD] = (
-            self.df[field_names.MAPPING_FOR_EJ_FINAL_PCT_FIELD]
-            >= self.MAPPING_FOR_EJ_PRIORITY_COMMUNITY_PCT_THRESHOLD
+            self.df[field_names.MAPPING_FOR_EJ_FINAL_PERCENTILE_FIELD]
+            >= self.MAPPING_FOR_EJ_PRIORITY_COMMUNITY_PERCENTILE_THRESHOLD
         )
 
     def load(self) -> None:
