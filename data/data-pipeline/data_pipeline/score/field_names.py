@@ -555,7 +555,7 @@ FPL_200_AND_COLLEGE_ATTENDANCE_SERIES = (
 )
 
 # Mapping for Environmental Justice columns
-MAPPING_FOR_EJ_FINAL_PCT_FIELD = (
+MAPPING_FOR_EJ_FINAL_PERCENTILE_FIELD = (
     "Mapping for Environmental Justice Final Percentile"
 )
 MAPPING_FOR_EJ_FINAL_SCORE_FIELD = (
