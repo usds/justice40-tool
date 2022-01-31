@@ -14,6 +14,7 @@ from data_pipeline.etl.sources.census.etl_utils import (
     check_census_data_source,
 )
 from . import constants
+from data_pipeline.etl import score
 
 logger = get_module_logger(__name__)
 
@@ -63,7 +64,7 @@ class PostScoreETL(ExtractTransformLoad):
             score_path, dtype={self.GEOID_TRACT_FIELD_NAME: "string"}
         )
 
-        # Convert total population to an int:
+        # Convert total population to an int
         df["Total population"] = df["Total population"].astype(
             int, errors="ignore"
         )
@@ -197,6 +198,7 @@ class PostScoreETL(ExtractTransformLoad):
     def _create_tile_data(
         self, score_county_state_merged_df: pd.DataFrame
     ) -> pd.DataFrame:
+
         logger.info("Rounding Decimals")
 
         # grab all the keys from tiles score columns
@@ -207,6 +209,7 @@ class PostScoreETL(ExtractTransformLoad):
             tiles_score_column_titles
         ].copy()
 
+        logger.info(f"{score_tiles.shape}")
         score_tiles[constants.TILES_SCORE_FLOAT_COLUMNS] = score_tiles[
             constants.TILES_SCORE_FLOAT_COLUMNS
         ].apply(
@@ -217,11 +220,37 @@ class PostScoreETL(ExtractTransformLoad):
             axis=0,
         )
 
+        logger.info("Adding fields for island areas and Puerto Rico")
+        score_tiles[field_names.REGION_FIELD] = np.where(
+            score_tiles[field_names.STATE_FIELD].isin(
+                constants.TILES_PUERTO_RICO_AREAS
+            ),
+            "PR",
+            np.where(
+                score_tiles[field_names.STATE_FIELD].isin(
+                    constants.TILES_PUERTO_RICO_AREAS
+                ),
+                "ISL",
+                "DFLT",
+            ),
+        )
+        score_tiles[field_names.THRESHOLD_COUNT_TO_SHOW] = score_tiles[
+            field_names.REGION_FIELD
+        ].map(
+            {
+                "PR": constants.TILES_PUERTO_RICO_FIELD_COUNT,
+                "ISL": constants.TILES_ISLAND_FIELD_COUNT,
+                "DFLT": constants.TILES_DEFAULT_FIELD_COUNT,
+            }
+        )
+
         # create indexes
         score_tiles = score_tiles.rename(
             columns=constants.TILES_SCORE_COLUMNS,
             inplace=False,
         )
+
+        logger.info(f"{score_tiles.columns}")
 
         # write the json map to disk
         inverse_tiles_columns = {
@@ -289,6 +318,7 @@ class PostScoreETL(ExtractTransformLoad):
             transformed_states,
             transformed_score,
         )
+
         self.output_score_tiles_df = self._create_tile_data(
             output_score_county_state_merged_df
         )

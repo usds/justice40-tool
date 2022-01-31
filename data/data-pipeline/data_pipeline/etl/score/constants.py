@@ -74,6 +74,17 @@ PERCENT_PREFIXES_SUFFIXES = [
 ]
 TILES_ROUND_NUM_DECIMALS = 2
 
+TILES_ISLAND_AREAS = [
+    "American Samoa",
+    "Guam",
+    "Mariana Islands",
+    "US Virgin Islands",
+]
+TILES_ISLAND_FIELD_COUNT = 4
+TILES_PUERTO_RICO_AREAS = ["Puerto Rico"]
+TILES_PUERTO_RICO_FIELD_COUNT = 5
+TILES_DEFAULT_FIELD_COUNT = 21
+
 # FEMA rounding columns
 FEMA_ROUND_NUM_COLUMNS = [
     field_names.EXPECTED_BUILDING_LOSS_RATE_FIELD,
@@ -167,6 +178,7 @@ TILES_SCORE_COLUMNS = {
     field_names.ISLAND_AREAS_LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD: "IALMILHSE",
     field_names.ISLAND_AREAS_LOW_HS_EDUCATION_FIELD: "IALHE",
 }
+
 
 # columns to round floats to 2 decimals
 # TODO refactor to use much smaller subset of fields we DON'T want to round

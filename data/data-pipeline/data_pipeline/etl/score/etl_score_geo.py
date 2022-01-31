@@ -1,6 +1,7 @@
 import math
 import pandas as pd
 import geopandas as gpd
+import numpy as np
 
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.score import constants
@@ -101,8 +102,6 @@ class GeoScoreETL(ExtractTransformLoad):
             self.geojson_score_usa_high, crs="EPSG:4326"
         )
 
-        logger.info(f"Columns: {self.geojson_score_usa_high.columns}")
-
         usa_simplified = self.geojson_score_usa_high[
             [
                 self.GEOID_FIELD_NAME,
@@ -153,16 +152,14 @@ class GeoScoreETL(ExtractTransformLoad):
         self, block_group_df: gpd.GeoDataFrame
     ) -> gpd.GeoDataFrame:
         # The tract identifier is the first 11 digits of the GEOID
-        block_group_df["tract"] = block_group_df.apply(
-            lambda row: row[self.GEOID_FIELD_NAME][0:11], axis=1
-        )
+        block_group_df["tract"] = block_group_df[self.GEOID_FIELD_NAME].str[:11]
         state_tracts = block_group_df.dissolve(by="tract", aggfunc="mean")
         return state_tracts
 
     def _create_buckets_from_tracts(
         self, state_tracts: gpd.GeoDataFrame, num_buckets: int
     ) -> gpd.GeoDataFrame:
-        # assign tracts to buckets by D_SCORE
+        # assign tracts to buckets by SCORE
         state_tracts.sort_values(self.TARGET_SCORE_RENAME_TO, inplace=True)
         SCORE_bucket = []
         bucket_size = math.ceil(
