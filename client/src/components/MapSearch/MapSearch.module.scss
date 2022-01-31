@@ -1,9 +1,20 @@
 @use '../../styles/design-system.scss' as *;
 
 .mapSearchContainer {
+
+    // styles for mobile-lg (480px) and greater widths,
+    @include at-media('mobile-lg') {
+        position: absolute;
+        // top: units(4);
+        left: units(1.5);
+        width: 50%;
+        z-index: 1;
+    }
+    
+    // styles for less than mobile-lg (480px)
     position: absolute;
-    top: units(4);
     left: units(1.5);
-    width: 50%;
+    width: 90%;
     z-index: 1;
 }
+
