@@ -27,7 +27,7 @@ class CalEnviroScreenETL(ExtractTransformLoad):
             "calenviroscreen_priority_community"
         )
 
-        # Choosing constants
+        # Choosing constants.
         # None of these numbers are final, but just for the purposes of comparison.
         self.CALENVIROSCREEN_PRIORITY_COMMUNITY_THRESHOLD = 75
 
