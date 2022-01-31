@@ -453,7 +453,6 @@ class ScoreM(Score):
             field_names.ASTHMA_LOW_INCOME_LOW_HIGHER_ED_FIELD,
             field_names.HEART_DISEASE_LOW_INCOME_LOW_HIGHER_ED_FIELD,
             field_names.LOW_LIFE_EXPECTANCY_LOW_INCOME_LOW_HIGHER_ED_FIELD,
-            # field_names.HEALTHY_FOOD_LOW_INCOME_FIELD,
         ]
 
         diabetes_threshold = (
@@ -486,14 +485,6 @@ class ScoreM(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-        healthy_food_threshold = (
-            self.df[
-                field_names.HEALTHY_FOOD_FIELD
-                + field_names.PERCENTILE_FIELD_SUFFIX
-            ]
-            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
-        )
-
         self.df[field_names.DIABETES_LOW_INCOME_LOW_HIGHER_ED_FIELD] = (
             diabetes_threshold
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
@@ -510,12 +501,6 @@ class ScoreM(Score):
             field_names.LOW_LIFE_EXPECTANCY_LOW_INCOME_LOW_HIGHER_ED_FIELD
         ] = (
             low_life_expectancy_threshold
-            & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
-        )
-
-        # QQ: did not update this because it is not an eligibility factor in this model
-        self.df[field_names.HEALTHY_FOOD_LOW_INCOME_FIELD] = (
-            healthy_food_threshold
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
