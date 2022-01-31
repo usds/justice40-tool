@@ -1,7 +1,6 @@
 import math
 import pandas as pd
 import geopandas as gpd
-import numpy as np
 
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.score import constants
@@ -71,7 +70,6 @@ class GeoScoreETL(ExtractTransformLoad):
         self.geojson_usa_df = gpd.read_file(
             self.CENSUS_USA_GEOJSON,
             dtype={self.GEOID_FIELD_NAME: "string"},
-            usecols=[self.GEOID_FIELD_NAME, self.GEOMETRY_FIELD_NAME],
             low_memory=False,
         )
 
@@ -84,19 +82,24 @@ class GeoScoreETL(ExtractTransformLoad):
 
     def transform(self) -> None:
         # Rename GEOID10_TRACT to GEOID10 on score to allow merging with Census GeoJSON
-        self.score_usa_df.rename(
-            columns={self.TRACT_SHORT_FIELD: self.GEOID_FIELD_NAME},
-            inplace=True,
-        )
+        # self.score_usa_df.rename(
+        #     columns={self.TRACT_SHORT_FIELD: self.GEOID_FIELD_NAME},
+        #     inplace=True,
+        # )
 
         logger.info("Pruning Census GeoJSON")
         fields = [self.GEOID_FIELD_NAME, self.GEOMETRY_FIELD_NAME]
         self.geojson_usa_df = self.geojson_usa_df[fields]
 
         logger.info("Merging and compressing score CSV with USA GeoJSON")
-        self.geojson_score_usa_high = self.score_usa_df.merge(
-            self.geojson_usa_df, on=self.GEOID_FIELD_NAME, how="left"
-        )
+        self.geojson_score_usa_high = self.score_usa_df.set_index(self.TRACT_SHORT_FIELD).merge(
+            self.geojson_usa_df.set_index(self.GEOID_TRACT_FIELD_NAME), 
+            left_index=True, 
+            right_index=True, 
+            how="left"
+        ).reset_index()
+
+        logger.info(self.geojson_score_usa_high.columns)
 
         self.geojson_score_usa_high = gpd.GeoDataFrame(
             self.geojson_score_usa_high, crs="EPSG:4326"
@@ -161,13 +164,13 @@ class GeoScoreETL(ExtractTransformLoad):
     ) -> gpd.GeoDataFrame:
         # assign tracts to buckets by SCORE
         state_tracts.sort_values(self.TARGET_SCORE_RENAME_TO, inplace=True)
-        SCORE_bucket = []
+        SCORE_BUCKET = []
         bucket_size = math.ceil(
             len(state_tracts.index) / self.NUMBER_OF_BUCKETS
         )
         for i in range(len(state_tracts.index)):
-            SCORE_bucket.extend([math.floor(i / bucket_size)])
-        state_tracts[f"{self.TARGET_SCORE_RENAME_TO}_bucket"] = SCORE_bucket
+            SCORE_BUCKET.extend([math.floor(i / bucket_size)])
+        state_tracts[f"{self.TARGET_SCORE_RENAME_TO}_bucket"] = SCORE_BUCKET
         return state_tracts
 
     def _aggregate_buckets(self, state_tracts: gpd.GeoDataFrame, agg_func: str):

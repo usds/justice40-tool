@@ -8,7 +8,7 @@ TOP_25_PERCENTILE_SUFFIX = " (top 25th percentile)"
 GEOID_TRACT_FIELD = "GEOID10_TRACT"
 STATE_FIELD = "State/Territory"
 COUNTY_FIELD = "County Name"
-REGION_FIELD = "Region"
+USER_INTERFACE_EXPERIENCE = "UI Experience"
 THRESHOLD_COUNT_TO_SHOW = "Thresholds"
 
 # Score file field names

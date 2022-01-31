@@ -219,7 +219,7 @@ class PostScoreETL(ExtractTransformLoad):
             ),
             axis=0,
         )
-
+        # TODO Change to FIPS code
         logger.info("Adding fields for island areas and Puerto Rico")
         score_tiles[field_names.REGION_FIELD] = np.where(
             score_tiles[field_names.STATE_FIELD].isin(
@@ -238,9 +238,9 @@ class PostScoreETL(ExtractTransformLoad):
             field_names.REGION_FIELD
         ].map(
             {
-                "PR": constants.TILES_PUERTO_RICO_FIELD_COUNT,
-                "ISL": constants.TILES_ISLAND_FIELD_COUNT,
-                "DFLT": constants.TILES_DEFAULT_FIELD_COUNT,
+                "PR": constants.TILES_PUERTO_RICO_THRESHOLD_COUNT,
+                "ISL": constants.TILES_ISLAND_THRESHOLD_COUNT,
+                "DFLT": constants.TILES_DEFAULT_THRESHOLD_COUNT,
             }
         )
 
