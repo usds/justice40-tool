@@ -209,7 +209,6 @@ class PostScoreETL(ExtractTransformLoad):
             tiles_score_column_titles
         ].copy()
 
-        logger.info(f"{score_tiles.shape}")
         score_tiles[constants.TILES_SCORE_FLOAT_COLUMNS] = score_tiles[
             constants.TILES_SCORE_FLOAT_COLUMNS
         ].apply(
@@ -246,8 +245,6 @@ class PostScoreETL(ExtractTransformLoad):
             columns=constants.TILES_SCORE_COLUMNS,
             inplace=False,
         )
-
-        logger.info(f"{score_tiles.columns}")
 
         # write the json map to disk
         inverse_tiles_columns = {

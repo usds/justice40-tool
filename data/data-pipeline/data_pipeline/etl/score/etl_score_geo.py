@@ -103,8 +103,6 @@ class GeoScoreETL(ExtractTransformLoad):
             .reset_index()
         )
 
-        logger.info(self.geojson_score_usa_high.columns)
-
         self.geojson_score_usa_high = gpd.GeoDataFrame(
             self.geojson_score_usa_high, crs="EPSG:4326"
         )
