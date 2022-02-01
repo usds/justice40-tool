@@ -133,6 +133,7 @@ class TestNationalRiskIndexETL(TestETL):
         assert output_file_path == expected_output_file_path
 
     def test_extract(self, mock_etl, mock_paths):
+        """Ensure the extract results are working as appropriate."""
         tmp_path = mock_paths[1]
         etl = self._setup_etl_instance_and_run_extract(
             mock_etl=mock_etl,
@@ -152,37 +153,6 @@ class TestNationalRiskIndexETL(TestETL):
             f1=extracted_file_path, f2=input_csv_path, shallow=False
         )
 
-    def test_transform(self, mock_etl):
-        """Tests the transform() method for NationalRiskIndexETL
-
-        Validates the following conditions:
-        - The columns have been renamed correctly
-        - The values for each tract has been applied to each of the block
-          groups in that tract
-        """
-        # setup - copy sample data into tmp_dir
-        etl = NationalRiskIndexETL()
-        copy_data_files(
-            src=self._DATA_DIRECTORY_FOR_TEST / self._INPUT_CSV_FILE_NAME,
-            dst=etl.INPUT_CSV,
-        )
-
-        # setup - read in sample output as dataframe
-        # execution
-        etl.transform()
-
-        transform_csv_path = (
-            self._DATA_DIRECTORY_FOR_TEST / self._TRANSFORM_CSV_FILE_NAME
-        )
-
-        # validation
-        expected = pd.read_csv(
-            filepath_or_buffer=transform_csv_path,
-            dtype={etl.GEOID_TRACT_FIELD_NAME: "string"},
-        )
-
-        assert etl.output_df.shape == (55, 370)
-        pd.testing.assert_frame_equal(etl.output_df, expected)
 
     def test_load(self, mock_etl):
         """Tests the load() method for NationalRiskIndexETL

@@ -195,6 +195,30 @@ class TestETL:
         for col in etl.COLUMNS_TO_KEEP:
             assert col in etl.output_df.columns, f"{col} is missing from output"
 
+    def test_transform_base(self, mock_etl):
+        """Tests the transform method.
+
+        Can be run without modification for all child classes.
+        """
+        # setup - copy sample data into tmp_dir
+        etl = self._get_instance_of_etl_class()
+        etl.transform()
+
+        transform_csv_path = (
+            self._DATA_DIRECTORY_FOR_TEST / self._TRANSFORM_CSV_FILE_NAME
+        )
+
+        # Compare to expected.
+        expected = pd.read_csv(
+            filepath_or_buffer=transform_csv_path,
+            dtype={
+                ExtractTransformLoad.GEOID_TRACT_FIELD_NAME: "string",
+                ExtractTransformLoad.GEOID_FIELD_NAME: "string",
+            },
+        )
+
+        pd.testing.assert_frame_equal(etl.output_df, expected)
+
     def test_load_base(self, mock_etl):
         """Test load method.
 
