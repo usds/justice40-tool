@@ -38,6 +38,7 @@ class TestETL:
     # Note: We used shared census tract IDs so that later our tests can join all the
     # ETL results together and generate a test score. This join is only possible if
     # we use the same tract IDs across fixtures.
+    # The test fixtures may also contain other tract IDs that are not on this list.
     _FIXTURES_SHARED_TRACT_IDS = [
         "06007040300",
         "06001020100",
@@ -119,6 +120,8 @@ class TestETL:
         assert etl.GEO_LEVEL is not None
         assert etl.COLUMNS_TO_KEEP is not None
         assert len(etl.COLUMNS_TO_KEEP) > 0
+        # No duplicate columns to keep
+        assert len(etl.COLUMNS_TO_KEEP) == len(set(etl.COLUMNS_TO_KEEP))
 
         # Check certain parameters are set.
         assert etl.EXPECTED_MAX_CENSUS_BLOCK_GROUPS == 250000
