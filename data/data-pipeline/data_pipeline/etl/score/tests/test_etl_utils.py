@@ -5,6 +5,13 @@ import pytest
 from data_pipeline.etl.score.etl_utils import floor_series
 
 
+@pytest.mark.update_snapshots
+def test_skip_test():
+    """Tests the ability to skip a particular test unless a flag is passed
+    the pytest command"""
+    assert 0
+
+
 def test_floor_series():
     # test examples
     series = pd.Series(data=[None, 1, 0.324534, 1.2341], dtype="float64")

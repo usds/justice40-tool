@@ -34,6 +34,13 @@ def load_output_source(etl):
     return df
 
 
+@pytest.mark.update_snapshots
+def test_skip_test():
+    """Tests the ability to skip a particular test unless a flag is passed
+    the pytest command"""
+    assert 0
+
+
 class TemplateETL(ExtractTransformLoad):
     """Mock ETL class that inherits from the base ETL"""
 
