@@ -1,5 +1,6 @@
 # pylint: disable=protected-access
 import copy
+import os
 
 import pandas as pd
 import pytest
@@ -395,8 +396,9 @@ class TestETL:
         etl_with_missing_column = copy.deepcopy(etl)
         columns_to_keep = actual_output_df.columns[:-1]
         etl_with_missing_column.output_df = actual_output_df[columns_to_keep]
-        with pytest.raises(ValueError):
+        with pytest.raises(ValueError) as error:
             etl_with_missing_column.validate()
+        assert str(error.value).startswith("Missing column:")
 
         # Test that validation on the original ETL works fine.
         etl.validate()
@@ -416,9 +418,54 @@ class TestETL:
         etl.load()
         etl.get_data_frame()
 
-    def test_get_data_frame_base(self):
+    def test_get_data_frame_base(self, mock_etl, mock_paths):
         """Every ETL class should be able to return its data frame.
 
         Can be run without modification for all child classes.
         """
-        pass
+        etl = self._setup_etl_instance_and_run_extract(
+            mock_etl=mock_etl, mock_paths=mock_paths
+        )
+
+        # TODO: look into moving this file deletion to a setup/teardown method that
+        #  applies to all methods. I struggled to get that to work because I couldn't
+        #  pass `mock_etl` and `mock_paths`
+        # Delete output file.
+        output_file_path = etl._get_output_file_path()
+        if os.path.exists(output_file_path):
+            logger.info("Deleting output file created by other tests.")
+            os.remove(output_file_path)
+
+        # Run more steps to generate test data.
+        etl.transform()
+        etl.validate()
+
+        # At this point, `get_data_frame` should error since file hasn't been written.
+        with pytest.raises(ValueError) as error:
+            etl.get_data_frame()
+        assert str(error.value).startswith("Make sure to run ETL")
+
+        # Run `load` step to write it to disk.
+        etl.load()
+
+        output_df = etl.get_data_frame()
+
+        # Check that all columns are 
+        for column_to_keep in etl.COLUMNS_TO_KEEP:
+            assert (
+                column_to_keep in output_df.columns
+            ), f"Missing column: `{column_to_keep}` is missing from output"
+
+        # Make sure geo fields are read in as strings:
+        if etl.GEO_LEVEL == ValidGeoLevel.CENSUS_TRACT:
+            assert pd.api.types.is_string_dtype(
+                output_df[ExtractTransformLoad.GEOID_TRACT_FIELD_NAME]
+            )
+
+        elif etl.GEO_LEVEL == ValidGeoLevel.CENSUS_BLOCK_GROUP:
+            assert pd.api.types.is_string_dtype(
+                output_df[ExtractTransformLoad.GEOID_FIELD_NAME]
+            )
+
+        else:
+            raise NotImplementedError("This geo level not tested yet.")
