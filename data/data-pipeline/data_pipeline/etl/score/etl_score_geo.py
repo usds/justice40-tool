@@ -90,19 +90,17 @@ class GeoScoreETL(ExtractTransformLoad):
         logger.info("Pruning Census GeoJSON")
         fields = [self.GEOID_FIELD_NAME, self.GEOMETRY_FIELD_NAME]
         self.geojson_usa_df = self.geojson_usa_df[fields]
-
         logger.info("Merging and compressing score CSV with USA GeoJSON")
         self.geojson_score_usa_high = (
             self.score_usa_df.set_index(self.TRACT_SHORT_FIELD)
             .merge(
-                self.geojson_usa_df.set_index(self.GEOID_TRACT_FIELD_NAME),
+                self.geojson_usa_df.set_index(self.GEOID_FIELD_NAME),
                 left_index=True,
                 right_index=True,
                 how="left",
             )
             .reset_index()
         )
-
         self.geojson_score_usa_high = gpd.GeoDataFrame(
             self.geojson_score_usa_high, crs="EPSG:4326"
         )
