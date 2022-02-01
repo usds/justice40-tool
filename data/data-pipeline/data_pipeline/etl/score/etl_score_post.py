@@ -219,28 +219,25 @@ class PostScoreETL(ExtractTransformLoad):
             ),
             axis=0,
         )
-        # TODO Change to FIPS code
+
         logger.info("Adding fields for island areas and Puerto Rico")
-        score_tiles[field_names.REGION_FIELD] = np.where(
-            score_tiles[field_names.STATE_FIELD].isin(
-                constants.TILES_PUERTO_RICO_AREAS
-            ),
-            "PR",
+        fips_code_series = score_tiles[field_names.GEOID_TRACT_FIELD].str[:2]
+        score_tiles[constants.USER_INTERFACE_EXPERIENCE_FIELD_NAME] = np.where(
+            fips_code_series.isin(constants.TILES_PUERTO_RICO_FIPS_CODE),
+            constants.PUERTO_RICO_USER_EXPERIENCE,
             np.where(
-                score_tiles[field_names.STATE_FIELD].isin(
-                    constants.TILES_PUERTO_RICO_AREAS
-                ),
-                "ISL",
-                "DFLT",
+                fips_code_series.isin(constants.TILES_ISLAND_AREA_FIPS_CODES),
+                constants.ISLAND_AREAS_USER_EXPERIENCE,
+                constants.NATION_USER_EXPERIENCE,
             ),
         )
-        score_tiles[field_names.THRESHOLD_COUNT_TO_SHOW] = score_tiles[
-            field_names.REGION_FIELD
+        score_tiles[constants.THRESHOLD_COUNT_TO_SHOW_FIELD_NAME] = score_tiles[
+            constants.USER_INTERFACE_EXPERIENCE_FIELD_NAME
         ].map(
             {
-                "PR": constants.TILES_PUERTO_RICO_THRESHOLD_COUNT,
-                "ISL": constants.TILES_ISLAND_THRESHOLD_COUNT,
-                "DFLT": constants.TILES_DEFAULT_THRESHOLD_COUNT,
+                constants.PUERTO_RICO_USER_EXPERIENCE: constants.TILES_PUERTO_RICO_THRESHOLD_COUNT,
+                constants.ISLAND_AREAS_USER_EXPERIENCE: constants.TILES_ISLAND_AREAS_THRESHOLD_COUNT,
+                constants.NATION_USER_EXPERIENCE: constants.TILES_NATION_THRESHOLD_COUNT,
             }
         )
 
