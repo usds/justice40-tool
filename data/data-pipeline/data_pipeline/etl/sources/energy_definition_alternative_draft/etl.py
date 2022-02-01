@@ -103,11 +103,6 @@ class EnergyDefinitionAlternativeDraft(ExtractTransformLoad):
             "bool"
         )
 
-    def validate(self) -> None:
-        logger.info("Validating data")
-
-        pass
-
     def load(self) -> None:
         logger.info("Saving CSV")
 

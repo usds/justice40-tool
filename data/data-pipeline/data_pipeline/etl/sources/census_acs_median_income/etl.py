@@ -316,11 +316,6 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
 
         self.output_df = merged_with_state_income_df
 
-    def validate(self) -> None:
-        logger.info("Validating Census ACS Median Income Data")
-
-        pass
-
     def load(self) -> None:
         logger.info("Saving Census ACS Median Income CSV")
 

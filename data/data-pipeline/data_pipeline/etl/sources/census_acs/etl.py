@@ -378,7 +378,3 @@ class CensusACSETL(ExtractTransformLoad):
 
         self.df.to_csv(path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False)
 
-    def validate(self) -> None:
-        logger.info("Validating Census ACS Data")
-
-        pass

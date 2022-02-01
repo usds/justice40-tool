@@ -69,8 +69,3 @@ class GeoCorrETL(ExtractTransformLoad):
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
 
         self.df.to_csv(path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False)
-
-    def validate(self) -> None:
-        logger.info("Validating GeoCorr Urban Rural Map Data")
-
-        pass

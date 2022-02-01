@@ -144,11 +144,6 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
                 f"GEOID Tract must be length of {expected_census_tract_field_length}"
             )
 
-    def validate(self) -> None:
-        logger.info("Validating data.")
-
-        pass
-
     def load(self) -> None:
         logger.info("Saving CSV")
 

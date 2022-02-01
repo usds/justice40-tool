@@ -248,9 +248,17 @@ class TestETL:
         # validation
         pd.testing.assert_frame_equal(actual_output, expected_output)
 
-    def test_validate(self):
+    def test_validate_base(self):
+        """Every ETL class should have proper validation.
+
+        Can be run without modification for all child classes.
+        """
         pass
 
 
-    def test_get_data_frame(self):
+    def test_get_data_frame_base(self):
+        """Every ETL class should be able to return its data frame.
+
+        Can be run without modification for all child classes.
+        """
         pass

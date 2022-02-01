@@ -106,11 +106,6 @@ class ChildOpportunityIndex(ExtractTransformLoad):
 
         self.output_df = output_df
 
-    def validate(self) -> None:
-        logger.info("Validating data.")
-
-        pass
-
     def load(self) -> None:
         logger.info("Saving CSV")
 

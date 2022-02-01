@@ -72,11 +72,6 @@ class DOEEnergyBurden(ExtractTransformLoad):
 
         self.output_df = output_df
 
-    def validate(self) -> None:
-        logger.info("Validating DOE Energy Burden Data")
-
-        pass
-
     def load(self) -> None:
         logger.info("Saving DOE Energy Burden CSV")
 
