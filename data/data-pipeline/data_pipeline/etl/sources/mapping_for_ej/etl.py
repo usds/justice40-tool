@@ -4,9 +4,7 @@ import geopandas as gpd
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger
 from data_pipeline.score import field_names
-
-## Left in for when the data is moved to S3
-# from data_pipeline.config import settings
+from data_pipeline.config import settings
 
 logger = get_module_logger(__name__)
 
@@ -15,27 +13,14 @@ class MappingForEJETL(ExtractTransformLoad):
     def __init__(self):
         self.CSV_PATH = self.DATA_PATH / "dataset" / "mapping_for_ej"
 
-        # this is very much temporary -- I *think* I've got to upload the files to S3
-        self.VA_SHP_FILE_PATH = (
-            "/Users/emmausds/Downloads/mej_va_7_1/mej_virginia_7_1.shp"
+        self.MAPPING_FOR_EJ_VA_URL = (
+            settings.AWS_JUSTICE40_DATASOURCES_URL + "/VA_mej.zip"
         )
-        self.CO_SHP_FILE_PATH = (
-            "/Users/emmausds/Downloads/mej_colorado/mej_colorado_final.shp"
+        self.MAPPING_FOR_EJ_CO_URL = (
+            settings.AWS_JUSTICE40_DATASOURCES_URL + "/CO_mej.zip"
         )
-
-        ## This code is for when this data gets moved to S3
-        # self.MAPPING_FOR_EJ_VA_URL = (
-        #     settings.AWS_JUSTICE40_DATASOURCES_URL + "/VA_mej.zip"
-        # )
-        # self.MAPPING_FOR_EJ_CO_URL = (
-        #     settings.AWS_JUSTICE40_DATASOURCES_URL + "/CO_mej.zip"
-        # )
-        # self.VA_SHP_FILE_PATH = (
-        #     self.TMP_PATH / "VA_mej" / "mej_virginia_7_1.shp"
-        # )
-        # self.CO_SHP_FILE_PATH = (
-        #     self.TMP_PATH / "CO_mej" / "mej_colorado_final.shp"
-        # )
+        self.VA_SHP_FILE_PATH = self.TMP_PATH / "mej_virginia_7_1.shp"
+        self.CO_SHP_FILE_PATH = self.TMP_PATH / "mej_colorado_final.shp"
 
         # Defining variables
         self.COLUMNS_TO_KEEP = [
@@ -56,15 +41,14 @@ class MappingForEJETL(ExtractTransformLoad):
 
     def extract(self) -> None:
         logger.info("Downloading Mapping for EJ Data")
-        logger.info("Skipping until S3...")
-        # super().extract(
-        #     self.MAPPING_FOR_EJ_VA_URL,
-        #     self.TMP_PATH,
-        # )
-        # super().extract(
-        #     self.MAPPING_FOR_EJ_CO_URL,
-        #     self.TMP_PATH,
-        # )
+        super().extract(
+            self.MAPPING_FOR_EJ_VA_URL,
+            self.TMP_PATH,
+        )
+        super().extract(
+            self.MAPPING_FOR_EJ_CO_URL,
+            self.TMP_PATH,
+        )
 
     def transform(self) -> None:
         logger.info("Transforming Mapping for EJ Data")
@@ -76,9 +60,6 @@ class MappingForEJETL(ExtractTransformLoad):
                 gpd.read_file(self.CO_SHP_FILE_PATH),
             ]
         )
-        # A few outstanding questions about VA...
-        # Note that this EJScreen data is organized at the tract level (1876 unique fips tracts, 1876 rows).
-        # Virginia had 1907 tracts in 2010, so some may be missing. TODO: Look into this
 
         # Fill Census tract to get it to be 11 digits, incl. leading 0s
         self.df[self.GEOID_TRACT_FIELD_NAME] = (
@@ -93,7 +74,7 @@ class MappingForEJETL(ExtractTransformLoad):
             inplace=True,
         )
 
-        # Calculate the top K% of prioritized communities
+        # Calculate prioritized communities based on percentile
         self.df[field_names.MAPPING_FOR_EJ_PRIORITY_COMMUNITY_FIELD] = (
             self.df[field_names.MAPPING_FOR_EJ_FINAL_PERCENTILE_FIELD]
             >= self.MAPPING_FOR_EJ_PRIORITY_COMMUNITY_PERCENTILE_THRESHOLD
