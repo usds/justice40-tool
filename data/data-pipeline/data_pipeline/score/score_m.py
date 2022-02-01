@@ -143,13 +143,13 @@ class ScoreM(Score):
         # AND
         # Low income: In Nth percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
-        # poverty level. Source: Census's American Community Survey]
+        # poverty level and there is low higher ed attendance
+        # Source: Census's American Community Survey
 
         climate_eligibility_columns = [
-            field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD,
-            field_names.EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_FIELD,
-            field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD,
-            # field_names.EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD,
+            field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD,
+            field_names.EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD,
+            field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD,
         ]
 
         expected_population_loss_threshold = (
@@ -176,39 +176,24 @@ class ScoreM(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-        extreme_heat_and_median_house_value_threshold = (
-            self.df[
-                field_names.EXTREME_HEAT_FIELD
-                + field_names.PERCENTILE_FIELD_SUFFIX
-            ]
-            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
-        ) & (
-            self.df[
-                field_names.MEDIAN_HOUSE_VALUE_FIELD
-                + field_names.PERCENTILE_FIELD_SUFFIX
-            ]
-            <= self.MEDIAN_HOUSE_VALUE_THRESHOLD
-        )
-
-        self.df[field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD] = (
+        self.df[
+            field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD
+        ] = (
             expected_population_loss_threshold
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
-        self.df[field_names.EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_FIELD] = (
+        self.df[
+            field_names.EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD
+        ] = (
             expected_agriculture_loss_threshold
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
-        self.df[field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD] = (
-            expected_building_loss_threshold
-            & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
-        )
-
         self.df[
-            field_names.EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD
+            field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD
         ] = (
-            extreme_heat_and_median_house_value_threshold
+            expected_building_loss_threshold
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
@@ -221,11 +206,12 @@ class ScoreM(Score):
         # AND
         # Low income: In Nth percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
-        # poverty level. Source: Census's American Community Survey]
+        # poverty level and has low higher ed attendance.
+        # Source: Census's American Community Survey
 
         energy_eligibility_columns = [
-            field_names.PM25_EXPOSURE_LOW_INCOME_FIELD,
-            field_names.ENERGY_BURDEN_LOW_INCOME_FIELD,
+            field_names.PM25_EXPOSURE_LOW_INCOME_LOW_HIGHER_ED_FIELD,
+            field_names.ENERGY_BURDEN_LOW_INCOME_LOW_HIGHER_ED_FIELD,
         ]
 
         energy_burden_threshold = (
@@ -243,12 +229,12 @@ class ScoreM(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-        self.df[field_names.PM25_EXPOSURE_LOW_INCOME_FIELD] = (
+        self.df[field_names.PM25_EXPOSURE_LOW_INCOME_LOW_HIGHER_ED_FIELD] = (
             pm25_threshold
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
-        self.df[field_names.ENERGY_BURDEN_LOW_INCOME_FIELD] = (
+        self.df[field_names.ENERGY_BURDEN_LOW_INCOME_LOW_HIGHER_ED_FIELD] = (
             energy_burden_threshold
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
@@ -266,11 +252,12 @@ class ScoreM(Score):
         # AND
         # Low income: In Nth percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
-        # poverty level. Source: Census's American Community Survey]
+        # poverty level and has a low percent of higher ed students.
+        # Source: Census's American Community Survey
 
         transportion_eligibility_columns = [
-            field_names.DIESEL_PARTICULATE_MATTER_LOW_INCOME_FIELD,
-            field_names.TRAFFIC_PROXIMITY_LOW_INCOME_FIELD,
+            field_names.DIESEL_PARTICULATE_MATTER_LOW_INCOME_LOW_HIGHER_ED_FIELD,
+            field_names.TRAFFIC_PROXIMITY_LOW_INCOME_LOW_HIGHER_ED_FIELD,
         ]
 
         diesel_threshold = (
@@ -287,12 +274,16 @@ class ScoreM(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-        self.df[field_names.DIESEL_PARTICULATE_MATTER_LOW_INCOME_FIELD] = (
+        self.df[
+            field_names.DIESEL_PARTICULATE_MATTER_LOW_INCOME_LOW_HIGHER_ED_FIELD
+        ] = (
             diesel_threshold
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
-        self.df[field_names.TRAFFIC_PROXIMITY_LOW_INCOME_FIELD] = (
+        self.df[
+            field_names.TRAFFIC_PROXIMITY_LOW_INCOME_LOW_HIGHER_ED_FIELD
+        ] = (
             traffic_threshold
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
@@ -315,11 +306,12 @@ class ScoreM(Score):
         # AND
         # Low income: In Nth percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
-        # poverty level. Source: Census's American Community Survey]
+        # poverty level and has a low percent of higher ed students.
+        # Source: Census's American Community Survey
 
         housing_eligibility_columns = [
-            field_names.LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD,
-            field_names.HOUSING_BURDEN_LOW_INCOME_FIELD,
+            field_names.LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_LOW_HIGHER_ED_FIELD,
+            field_names.HOUSING_BURDEN_LOW_INCOME_LOW_HIGHER_ED_FIELD,
         ]
 
         lead_paint_median_home_value_threshold = (
@@ -345,12 +337,14 @@ class ScoreM(Score):
         )
 
         # series by series indicators
-        self.df[field_names.LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD] = (
+        self.df[
+            field_names.LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_LOW_HIGHER_ED_FIELD
+        ] = (
             lead_paint_median_home_value_threshold
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
-        self.df[field_names.HOUSING_BURDEN_LOW_INCOME_FIELD] = (
+        self.df[field_names.HOUSING_BURDEN_LOW_INCOME_LOW_HIGHER_ED_FIELD] = (
             housing_burden_threshold
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
@@ -364,12 +358,13 @@ class ScoreM(Score):
         # AND
         # Low income: In Nth percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
-        # poverty level. Source: Census's American Community Survey]
+        # poverty level and has a low percent of higher ed students.
+        # Source: Census's American Community Survey
 
         pollution_eligibility_columns = [
-            field_names.RMP_LOW_INCOME_FIELD,
-            field_names.SUPERFUND_LOW_INCOME_FIELD,
-            field_names.HAZARDOUS_WASTE_LOW_INCOME_FIELD,
+            field_names.RMP_LOW_INCOME_LOW_HIGHER_ED_FIELD,
+            field_names.SUPERFUND_LOW_INCOME_LOW_HIGHER_ED_FIELD,
+            field_names.HAZARDOUS_WASTE_LOW_INCOME_LOW_HIGHER_ED_FIELD,
         ]
 
         rmp_sites_threshold = (
@@ -390,15 +385,15 @@ class ScoreM(Score):
         )
 
         # individual series-by-series
-        self.df[field_names.RMP_LOW_INCOME_FIELD] = (
+        self.df[field_names.RMP_LOW_INCOME_LOW_HIGHER_ED_FIELD] = (
             rmp_sites_threshold
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
-        self.df[field_names.SUPERFUND_LOW_INCOME_FIELD] = (
+        self.df[field_names.SUPERFUND_LOW_INCOME_LOW_HIGHER_ED_FIELD] = (
             npl_sites_threshold
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
-        self.df[field_names.HAZARDOUS_WASTE_LOW_INCOME_FIELD] = (
+        self.df[field_names.HAZARDOUS_WASTE_LOW_INCOME_LOW_HIGHER_ED_FIELD] = (
             tsdf_sites_threshold
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
@@ -414,7 +409,8 @@ class ScoreM(Score):
         # AND
         # Low income: In Nth percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
-        # poverty level. Source: Census's American Community Survey]
+        # poverty level and has a low percent of higher ed students
+        # Source: Census's American Community Survey
 
         wastewater_threshold = (
             self.df[
@@ -424,16 +420,20 @@ class ScoreM(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-        self.df[field_names.WASTEWATER_DISCHARGE_LOW_INCOME_FIELD] = (
+        self.df[
+            field_names.WASTEWATER_DISCHARGE_LOW_INCOME_LOW_HIGHER_ED_FIELD
+        ] = (
             wastewater_threshold
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
         self._increment_total_eligibility_exceeded(
-            [field_names.WASTEWATER_DISCHARGE_LOW_INCOME_FIELD]
+            [field_names.WASTEWATER_DISCHARGE_LOW_INCOME_LOW_HIGHER_ED_FIELD]
         )
 
-        return self.df[field_names.WASTEWATER_DISCHARGE_LOW_INCOME_FIELD]
+        return self.df[
+            field_names.WASTEWATER_DISCHARGE_LOW_INCOME_LOW_HIGHER_ED_FIELD
+        ]
 
     def _health_factor(self) -> bool:
         # In Xth percentile or above for diabetes (Source: CDC Places)
@@ -446,14 +446,14 @@ class ScoreM(Score):
         # AND
         # Low income: In Nth percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
-        # poverty level. Source: Census's American Community Survey]
+        # poverty level and has a low percent of higher ed students
+        # Source: Census's American Community Survey
 
         health_eligibility_columns = [
-            field_names.DIABETES_LOW_INCOME_FIELD,
-            field_names.ASTHMA_LOW_INCOME_FIELD,
-            field_names.HEART_DISEASE_LOW_INCOME_FIELD,
-            field_names.LOW_LIFE_EXPECTANCY_LOW_INCOME_FIELD,
-            # field_names.HEALTHY_FOOD_LOW_INCOME_FIELD,
+            field_names.DIABETES_LOW_INCOME_LOW_HIGHER_ED_FIELD,
+            field_names.ASTHMA_LOW_INCOME_LOW_HIGHER_ED_FIELD,
+            field_names.HEART_DISEASE_LOW_INCOME_LOW_HIGHER_ED_FIELD,
+            field_names.LOW_LIFE_EXPECTANCY_LOW_INCOME_LOW_HIGHER_ED_FIELD,
         ]
 
         diabetes_threshold = (
@@ -486,32 +486,22 @@ class ScoreM(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-        healthy_food_threshold = (
-            self.df[
-                field_names.HEALTHY_FOOD_FIELD
-                + field_names.PERCENTILE_FIELD_SUFFIX
-            ]
-            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
-        )
-
-        self.df[field_names.DIABETES_LOW_INCOME_FIELD] = (
+        self.df[field_names.DIABETES_LOW_INCOME_LOW_HIGHER_ED_FIELD] = (
             diabetes_threshold
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
-        self.df[field_names.ASTHMA_LOW_INCOME_FIELD] = (
+        self.df[field_names.ASTHMA_LOW_INCOME_LOW_HIGHER_ED_FIELD] = (
             asthma_threshold
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
-        self.df[field_names.HEART_DISEASE_LOW_INCOME_FIELD] = (
+        self.df[field_names.HEART_DISEASE_LOW_INCOME_LOW_HIGHER_ED_FIELD] = (
             heart_disease_threshold
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
-        self.df[field_names.LOW_LIFE_EXPECTANCY_LOW_INCOME_FIELD] = (
+        self.df[
+            field_names.LOW_LIFE_EXPECTANCY_LOW_INCOME_LOW_HIGHER_ED_FIELD
+        ] = (
             low_life_expectancy_threshold
-            & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
-        )
-        self.df[field_names.HEALTHY_FOOD_LOW_INCOME_FIELD] = (
-            healthy_food_threshold
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
@@ -531,17 +521,18 @@ class ScoreM(Score):
         # AND
         # Where the high school degree achievement rates for adults 25 years and older
         # is less than Y%
+        # AND the higher ed attendance rates are under Z%
         # (necessary to screen out university tracts)
 
         # Workforce criteria for states fields.
         workforce_eligibility_columns = [
-            field_names.UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD,
-            field_names.POVERTY_LOW_HS_EDUCATION_FIELD,
-            field_names.LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD,
-            field_names.LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD,
+            field_names.UNEMPLOYMENT_LOW_HS_LOW_HIGHER_ED_FIELD,
+            field_names.POVERTY_LOW_HS_LOW_HIGHER_ED_FIELD,
+            field_names.LINGUISTIC_ISOLATION_LOW_HS_LOW_HIGHER_ED_FIELD,
+            field_names.LOW_MEDIAN_INCOME_LOW_HS_LOW_HIGHER_ED_FIELD,
         ]
 
-        self.df[field_names.LOW_HS_EDUCATION_LOW_COLLEGE_ATTENDANCE_FIELD] = (
+        self.df[field_names.LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD] = (
             self.df[field_names.HIGH_SCHOOL_ED_FIELD]
             >= self.LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD
         ) & (
@@ -588,24 +579,24 @@ class ScoreM(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-        self.df[field_names.LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD] = (
+        self.df[field_names.LINGUISTIC_ISOLATION_LOW_HS_LOW_HIGHER_ED_FIELD] = (
             linguistic_isolation_threshold
-            & self.df[field_names.LOW_HS_EDUCATION_LOW_COLLEGE_ATTENDANCE_FIELD]
+            & self.df[field_names.LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD]
         )
 
-        self.df[field_names.POVERTY_LOW_HS_EDUCATION_FIELD] = (
+        self.df[field_names.POVERTY_LOW_HS_LOW_HIGHER_ED_FIELD] = (
             poverty_threshold
-            & self.df[field_names.LOW_HS_EDUCATION_LOW_COLLEGE_ATTENDANCE_FIELD]
+            & self.df[field_names.LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD]
         )
 
-        self.df[field_names.LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD] = (
+        self.df[field_names.LOW_MEDIAN_INCOME_LOW_HS_LOW_HIGHER_ED_FIELD] = (
             low_median_income_threshold
-            & self.df[field_names.LOW_HS_EDUCATION_LOW_COLLEGE_ATTENDANCE_FIELD]
+            & self.df[field_names.LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD]
         )
 
-        self.df[field_names.UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD] = (
+        self.df[field_names.UNEMPLOYMENT_LOW_HS_LOW_HIGHER_ED_FIELD] = (
             unemployment_threshold
-            & self.df[field_names.LOW_HS_EDUCATION_LOW_COLLEGE_ATTENDANCE_FIELD]
+            & self.df[field_names.LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD]
         )
 
         workforce_combined_criteria_for_states = self.df[

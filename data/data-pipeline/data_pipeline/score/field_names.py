@@ -313,8 +313,7 @@ TRANSPORTATION_COSTS = "Transportation Costs"
 
 #####
 # Names for individual factors being exceeded
-# TODO: for Definition M, create new output field names (different than those used by
-#  Definition L) and change all output fields to say low income and low college
+
 # Climate Change
 EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile"
@@ -369,50 +368,156 @@ LOW_LIFE_EXPECTANCY_LOW_INCOME_FIELD = (
     f"for low life expectancy and is low income?"
 )
 
+# Score M Low Income Change
+SCORE_M_LOW_INCOME_SUFFIX = (
+    ", is low income, and has a low percent of higher ed students"
+)
+
+# Climate Change
+EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile"
+    f" for expected population loss rate{SCORE_M_LOW_INCOME_SUFFIX}?"
+)
+EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile"
+    f" for expected agriculture loss rate{SCORE_M_LOW_INCOME_SUFFIX}?"
+)
+EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile"
+    f" for expected building loss rate{SCORE_M_LOW_INCOME_SUFFIX}?"
+)
+
+# Clean Energy and Efficiency
+PM25_EXPOSURE_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile "
+    f"for PM2.5 exposure{SCORE_M_LOW_INCOME_SUFFIX}?"
+)
+ENERGY_BURDEN_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile "
+    f"for energy burden{SCORE_M_LOW_INCOME_SUFFIX}?"
+)
+
+# Clean Transportation
+DIESEL_PARTICULATE_MATTER_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for "
+    f"diesel particulate matter{SCORE_M_LOW_INCOME_SUFFIX}?"
+)
+TRAFFIC_PROXIMITY_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for "
+    f"traffic proximity{SCORE_M_LOW_INCOME_SUFFIX}?"
+)
+
+# Affordable and Sustainable Housing
+LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for lead paint,"
+    f" the median house value is less than {MEDIAN_HOUSE_VALUE_PERCENTILE}th "
+    f"percentile{SCORE_M_LOW_INCOME_SUFFIX}?"
+)
+HOUSING_BURDEN_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile "
+    f"for housing burden{SCORE_M_LOW_INCOME_SUFFIX}?"
+)
+
+# Remediation and Reduction of Legacy Pollution
+RMP_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for "
+    f"proximity to RMP sites{SCORE_M_LOW_INCOME_SUFFIX}?"
+)
+SUPERFUND_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for proximity to "
+    f"superfund sites{SCORE_M_LOW_INCOME_SUFFIX}?"
+)
+HAZARDOUS_WASTE_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile"
+    f" for proximity to hazardous waste facilities{SCORE_M_LOW_INCOME_SUFFIX}?"
+)
+
+# Critical Clean Water and Waste Infrastructure
+WASTEWATER_DISCHARGE_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for"
+    f" wastewater discharge{SCORE_M_LOW_INCOME_SUFFIX}?"
+)
+
+# Health Burdens
+DIABETES_LOW_INCOME_LOW_HIGHER_ED_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for diabetes{SCORE_M_LOW_INCOME_SUFFIX}?"
+ASTHMA_LOW_INCOME_LOW_HIGHER_ED_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for asthma{SCORE_M_LOW_INCOME_SUFFIX}?"
+HEART_DISEASE_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile "
+    f"for heart disease{SCORE_M_LOW_INCOME_SUFFIX}?"
+)
+
+LOW_LIFE_EXPECTANCY_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile "
+    f"for low life expectancy{SCORE_M_LOW_INCOME_SUFFIX}?"
+)
+
 # Workforce
-# TODO: for Definition M, create new output field names (different than those used by
-#  Definition L) and change all output fields to say low HS and low college
 UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for unemployment"
-    " and has low HS education"
+    " and has low HS education?"
 )
 
 LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for households in linguistic isolation"
-    " and has low HS education"
+    " and has low HS education?"
 )
 
 POVERTY_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for households at or below 100% federal poverty level"
-    " and has low HS education"
+    " and has low HS education?"
 )
 
 LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for low median household income as a "
-    f"percent of area median income and has low HS education"
+    f"percent of area median income and has low HS education?"
+)
+
+# Score M Workforce Variables
+SCORE_M_LOW_EDUCATION_SUFFIX = (
+    ", has low HS attainment, and has a low percent of higher ed students"
+)
+
+UNEMPLOYMENT_LOW_HS_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for unemployment"
+    f"{SCORE_M_LOW_EDUCATION_SUFFIX}?"
+)
+
+LINGUISTIC_ISOLATION_LOW_HS_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for households in linguistic isolation"
+    f"{SCORE_M_LOW_EDUCATION_SUFFIX}?"
+)
+
+POVERTY_LOW_HS_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for households at or below 100% federal poverty level"
+    f"{SCORE_M_LOW_EDUCATION_SUFFIX}?"
+)
+
+LOW_MEDIAN_INCOME_LOW_HS_LOW_HIGHER_ED_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for low median household income as a "
+    f"percent of area median income{SCORE_M_LOW_EDUCATION_SUFFIX}?"
 )
 
 LOW_HS_EDUCATION_FIELD = "Low high school education"
-LOW_HS_EDUCATION_LOW_COLLEGE_ATTENDANCE_FIELD = (
-    "Low high school education and low college attendance"
+LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD = (
+    "Low high school education and low percent of higher ed students"
 )
 
 # Workforce for island areas
 ISLAND_AREAS_SUFFIX = " in 2009 (island areas)"
 ISLAND_AREAS_UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for unemployment"
-    f" and has low HS education{ISLAND_AREAS_SUFFIX}"
+    f" and has low HS education{ISLAND_AREAS_SUFFIX}?"
 )
 
 ISLAND_AREAS_POVERTY_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for households at or below 100% federal poverty level"
-    f" and has low HS education{ISLAND_AREAS_SUFFIX}"
+    f" and has low HS education{ISLAND_AREAS_SUFFIX}?"
 )
 
 ISLAND_AREAS_LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for low median household income as a "
     f"percent of area median income"
-    f" and has low HS education{ISLAND_AREAS_SUFFIX}"
+    f" and has low HS education{ISLAND_AREAS_SUFFIX}?"
 )
 
 ISLAND_AREAS_LOW_HS_EDUCATION_FIELD = (
@@ -425,9 +530,10 @@ EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD = (
     f"the median house value is less than {MEDIAN_HOUSE_VALUE_PERCENTILE}th "
     f"percentile and is low income?"
 )
+
 IMPENETRABLE_SURFACES_LOW_INCOME_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for impenetrable surfaces and is low "
-    f"income"
+    f"income?"
 )
 AIR_TOXICS_CANCER_RISK_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for air toxics cancer risk and is low income?"
 RESPIRATORY_HAZARD_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for respiratory hazard index and is low income?"
@@ -435,16 +541,17 @@ HEALTHY_FOOD_LOW_INCOME_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for low "
     f"access to healthy food and is low income?"
 )
+
 LOW_READING_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for low 3rd grade reading proficiency"
-    " and has low HS education"
+    " and has low HS education?"
 )
 
 THRESHOLD_COUNT = "Total threshold criteria exceeded"
 
 FPL_200_SERIES = "Is low income?"
 FPL_200_AND_COLLEGE_ATTENDANCE_SERIES = (
-    "Is low income and low college attendance?"
+    "Is low income and has a low percent of higher ed students?"
 )
 # End of names for individual factors being exceeded
 ####
