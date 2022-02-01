@@ -377,4 +377,3 @@ class CensusACSETL(ExtractTransformLoad):
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
 
         self.df.to_csv(path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False)
-

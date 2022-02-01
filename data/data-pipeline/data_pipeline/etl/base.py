@@ -126,7 +126,6 @@ class ExtractTransformLoad:
 
         Runs after the `transform` step and before `load`.
         """
-
         # TODO: remove this once all ETL classes are converted to using the new
         #  base class parameters and patterns.
         if self.GEO_LEVEL is None:
@@ -145,6 +144,13 @@ class ExtractTransformLoad:
             raise NotImplementedError(
                 "The `transform` step must set `self.output_df`."
             )
+
+        for column_to_keep in self.COLUMNS_TO_KEEP:
+            if column_to_keep not in self.output_df.columns:
+                raise ValueError(
+                    f"Missing column: `{column_to_keep}` is missing from "
+                    f"output"
+                )
 
         for (
             geo_level,
@@ -181,26 +187,32 @@ class ExtractTransformLoad:
                 geo_field_character_lengths = (
                     self.output_df[geo_field].str.len().unique()
                 )
-                if any(
-                    geo_field_character_lengths != [expected_geo_field_characters]
-                ):
+
+                if len(geo_field_character_lengths) > 1:
                     raise ValueError(
-                        f"Some of the census geography data has the wrong length."
+                        f"Multiple character lengths for geo field "
+                        f"present: {geo_field_character_lengths}."
                     )
 
-                non_unique_geo_field_values = len(self.output_df[geo_field]) - len(
-                    self.output_df[geo_field].unique()
-                )
+                elif (
+                    geo_field_character_lengths[0]
+                    != expected_geo_field_characters
+                ):
+                    raise ValueError(
+                        f"Wrong character length: some of the census geography data "
+                        f"has the wrong length."
+                    )
+
+                non_unique_geo_field_values = len(
+                    self.output_df[geo_field]
+                ) - len(self.output_df[geo_field].unique())
 
                 if non_unique_geo_field_values > 0:
                     raise ValueError(
-                        f"There are {non_unique_geo_field_values} duplicate values in "
+                        f"Duplicate values: There are {non_unique_geo_field_values} "
+                        f"duplicate values in "
                         f"`{geo_field}`."
                     )
-
-        for column_to_keep in self.COLUMNS_TO_KEEP:
-            if column_to_keep not in self.output_df.columns:
-                raise ValueError(f"`{column_to_keep}` is missing from output")
 
     def load(self, float_format=None) -> None:
         """Saves the transformed data.

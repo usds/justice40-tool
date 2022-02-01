@@ -405,4 +405,3 @@ class CensusDecennialETL(ExtractTransformLoad):
         self.df_all[columns_to_include].to_csv(
             path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False
         )
-

@@ -1,8 +1,11 @@
 # pylint: disable=protected-access
+import copy
+
 import pandas as pd
+import pytest
 
 from data_pipeline.config import settings
-from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
 from data_pipeline.tests.conftest import copy_data_files
 from data_pipeline.tests.sources.example.etl import ExampleETL
 from data_pipeline.utils import get_module_logger
@@ -248,13 +251,112 @@ class TestETL:
         # validation
         pd.testing.assert_frame_equal(actual_output, expected_output)
 
-    def test_validate_base(self):
+    def test_validate_base(self, mock_etl, mock_paths):
         """Every ETL class should have proper validation.
 
         Can be run without modification for all child classes.
         """
-        pass
+        etl = self._setup_etl_instance_and_run_extract(
+            mock_etl=mock_etl, mock_paths=mock_paths
+        )
+        etl.transform()
 
+        # Transform is guaranteed to set a dataframe on etl.output_df.
+        # We can modify this data frame to test validation steps.
+        actual_output_df = etl.output_df
+
+        # These tests work differently based on the ValidGeoLevel of the ETL class.
+        if etl.GEO_LEVEL == ValidGeoLevel.CENSUS_TRACT:
+            # Remove geo field and make sure error occurs.
+            etl_without_geo_field = copy.deepcopy(etl)
+            columns_to_keep = [
+                column_to_keep
+                for column_to_keep in actual_output_df.columns
+                if column_to_keep != ExtractTransformLoad.GEOID_TRACT_FIELD_NAME
+            ]
+            etl_without_geo_field.output_df = actual_output_df[columns_to_keep]
+
+            with pytest.raises(ValueError) as error:
+                etl_without_geo_field.validate()
+            assert str(error.value).startswith("Missing column:")
+
+            # Make sure too many rows throws error.
+            etl_with_too_many_rows = copy.deepcopy(etl)
+            etl_with_too_many_rows.EXPECTED_MAX_CENSUS_TRACTS = (
+                actual_output_df.shape[0] - 1
+            )
+            with pytest.raises(ValueError) as error:
+                etl_with_too_many_rows.validate()
+            assert str(error.value).startswith("Too many rows:")
+
+            # Make sure multpile geo field character length throws error.
+            etl_with_multiple_char_lengths = copy.deepcopy(etl)
+            etl_with_multiple_char_lengths.output_df = actual_output_df.copy(
+                deep=True
+            )
+            etl_with_multiple_char_lengths.output_df.loc[
+                0, ExtractTransformLoad.GEOID_TRACT_FIELD_NAME
+            ] = "060070403001"
+
+            with pytest.raises(ValueError) as error:
+                etl_with_multiple_char_lengths.validate()
+            assert str(error.value).startswith("Multiple character lengths")
+
+            # Make sure wrong geo field character length throws error.
+            etl_with_multiple_char_lengths = copy.deepcopy(etl)
+            etl_with_multiple_char_lengths.output_df = actual_output_df.copy(
+                deep=True
+            )
+            etl_with_multiple_char_lengths.output_df[
+                ExtractTransformLoad.GEOID_TRACT_FIELD_NAME
+            ] = "060070403001"
+
+            with pytest.raises(ValueError) as error:
+                etl_with_multiple_char_lengths.validate()
+            assert str(error.value).startswith("Wrong character length")
+
+            # Make sure non-unique geo field character length throws error.
+            etl_with_multiple_char_lengths = copy.deepcopy(etl)
+            etl_with_multiple_char_lengths.output_df = actual_output_df.copy(
+                deep=True
+            )
+            etl_with_multiple_char_lengths.output_df.loc[
+                0:1, ExtractTransformLoad.GEOID_TRACT_FIELD_NAME
+            ] = "06007040300"
+            with pytest.raises(ValueError) as error:
+                etl_with_multiple_char_lengths.validate()
+            assert str(error.value).startswith("Duplicate values:")
+
+        elif etl.GEO_LEVEL == ValidGeoLevel.CENSUS_BLOCK_GROUP:
+            # ExtractTransformLoad.GEOID_FIELD_NAME,
+            pass
+        else:
+            raise NotImplementedError("This geo level not tested yet.")
+
+        # Remove another column to keep and make sure error occurs.
+        etl_with_missing_column = copy.deepcopy(etl)
+        columns_to_keep = actual_output_df.columns[:-1]
+        etl_with_missing_column.output_df = actual_output_df[columns_to_keep]
+        with pytest.raises(ValueError):
+            etl_with_missing_column.validate()
+
+        # Test that validation on the original ETL works fine.
+        etl.validate()
+
+    def test_full_etl_base(self, mock_etl, mock_paths):
+        """Every ETL class should be able to run end-to-end.
+
+        Run extract, transform, validate, load, and get without error.
+
+        Can be run without modification for all child classes.
+        """
+        etl = self._setup_etl_instance_and_run_extract(
+            mock_etl=mock_etl, mock_paths=mock_paths
+        )
+        etl.transform()
+        etl.validate()
+        etl.load()
+        etl.get_data_frame()
 
     def test_get_data_frame_base(self):
         """Every ETL class should be able to return its data frame.
