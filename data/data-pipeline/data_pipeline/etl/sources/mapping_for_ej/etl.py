@@ -78,8 +78,8 @@ class MappingForEJETL(ExtractTransformLoad):
                 "fin_score": field_names.MAPPING_FOR_EJ_FINAL_SCORE_FIELD,
             }
         )
-        # Calculate prioritized communities based on percentile, only
-        # for tracts that have complete data
+
+        # Calculate prioritized communities based on percentile
         self.df[field_names.MAPPING_FOR_EJ_PRIORITY_COMMUNITY_FIELD] = (
             self.df[field_names.MAPPING_FOR_EJ_FINAL_PERCENTILE_FIELD]
             >= self.MAPPING_FOR_EJ_PRIORITY_COMMUNITY_PERCENTILE_THRESHOLD
