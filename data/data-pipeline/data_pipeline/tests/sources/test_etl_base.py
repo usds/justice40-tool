@@ -116,6 +116,9 @@ class TestETL:
             index=False,
         )
 
+        # Run validate, just to check.
+        etl.validate()
+
         # After running load, write the results as the "output.csv" in the test
         # directory.
         etl.load()
@@ -160,6 +163,8 @@ class TestETL:
         # Check certain parameters are set.
         assert etl.EXPECTED_MAX_CENSUS_BLOCK_GROUPS == 250000
         assert etl.EXPECTED_MAX_CENSUS_TRACTS == 74160
+        assert etl.EXPECTED_CENSUS_TRACTS_CHARACTER_LENGTH == 11
+        assert etl.EXPECTED_CENSUS_BLOCK_GROUPS_CHARACTER_LENGTH == 13
 
     def test_get_output_file_path_base(self, mock_etl, mock_paths):
         """Test file path method.
@@ -242,3 +247,10 @@ class TestETL:
 
         # validation
         pd.testing.assert_frame_equal(actual_output, expected_output)
+
+    def test_validate(self):
+        pass
+
+
+    def test_get_data_frame(self):
+        pass

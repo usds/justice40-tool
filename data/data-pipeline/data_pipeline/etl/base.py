@@ -171,35 +171,35 @@ class ExtractTransformLoad:
                         f"Must have `{geo_field}` in columns if "
                         f"specifying geo level as `{geo_level} "
                     )
-            if self.output_df.shape[0] > expected_rows:
-                raise ValueError(
-                    f"Too many rows: `{self.output_df.shape[0]}` rows in "
-                    f"output exceeds expectation of `{expected_rows}` "
-                    f"rows."
+                if self.output_df.shape[0] > expected_rows:
+                    raise ValueError(
+                        f"Too many rows: `{self.output_df.shape[0]}` rows in "
+                        f"output exceeds expectation of `{expected_rows}` "
+                        f"rows."
+                    )
+
+                geo_field_character_lengths = (
+                    self.output_df[geo_field].str.len().unique()
+                )
+                if any(
+                    geo_field_character_lengths != [expected_geo_field_characters]
+                ):
+                    raise ValueError(
+                        f"Some of the census geography data has the wrong length."
+                    )
+
+                non_unique_geo_field_values = len(self.output_df[geo_field]) - len(
+                    self.output_df[geo_field].unique()
                 )
 
-            geo_field_character_lengths = (
-                self.output_df[geo_field].str.len().unique()
-            )
-            if any(
-                geo_field_character_lengths != [expected_geo_field_characters]
-            ):
-                raise ValueError(
-                    f"Some of the census geography data has the wrong length."
-                )
-
-            non_unique_geo_field_values = len(self.output_df[geo_field]) - len(
-                self.output_df[geo_field].unique()
-            )
-
-            if non_unique_geo_field_values > 0:
-                raise ValueError(
-                    f"There are {non_unique_geo_field_values} duplicate values in "
-                    f"`{geo_field}`."
-                )
+                if non_unique_geo_field_values > 0:
+                    raise ValueError(
+                        f"There are {non_unique_geo_field_values} duplicate values in "
+                        f"`{geo_field}`."
+                    )
 
         for column_to_keep in self.COLUMNS_TO_KEEP:
-            if column_to_keep not in self.df_output.columns:
+            if column_to_keep not in self.output_df.columns:
                 raise ValueError(f"`{column_to_keep}` is missing from output")
 
     def load(self, float_format=None) -> None:
