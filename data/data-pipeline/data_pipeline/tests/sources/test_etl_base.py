@@ -2,6 +2,7 @@
 import copy
 import os
 
+import numpy as np
 import pandas as pd
 import pytest
 
@@ -33,6 +34,23 @@ class TestETL:
     _INPUT_CSV_FILE_NAME = "input.csv"
     _TRANSFORM_CSV_FILE_NAME = "transform.csv"
     _OUTPUT_CSV_FILE_NAME = "output.csv"
+    _FIXTURES_SHARED_TRACT_IDS = [
+        "06007040300",
+        "06001020100",
+        "06007040500",
+        "15001021010",
+        "15001021101",
+        "15007040603",
+        "15007040700",
+        "15009030100",
+        "15009030201",
+        "15001021402",
+        "15001021800",
+        "15009030402",
+        "15009030800",
+        "15003010201",
+        "15007040604",
+    ]
 
     def _get_instance_of_etl_class(self) -> type(ExtractTransformLoad):
         return self._ETL_CLASS()
@@ -191,7 +209,36 @@ class TestETL:
 
         assert actual_file_path == expected_file_path
 
-    def test_transform_sets_output_df(self, mock_etl, mock_paths):
+    def test_fixtures_contain_shared_tract_ids_base(self, mock_etl, mock_paths):
+        """Check presence of necessary shared tract IDs.
+
+        Note: We used shared census tract IDs so that later our tests can join all the
+        ETL results together and generate a test score. This join is only possible if
+        we use the same tract IDs across fixtures.
+
+        Can be run without modification for all child classes.
+        """
+        etl = self._setup_etl_instance_and_run_extract(
+            mock_etl=mock_etl, mock_paths=mock_paths
+        )
+        etl.transform()
+
+        # These tests work differently based on the ValidGeoLevel of the ETL class.
+        if etl.GEO_LEVEL == ValidGeoLevel.CENSUS_TRACT:
+            missing_tract_ids = np.setdiff1d(
+                self._FIXTURES_SHARED_TRACT_IDS,
+                etl.output_df[ExtractTransformLoad.GEOID_TRACT_FIELD_NAME],
+            )
+
+            if len(missing_tract_ids) > 0:
+                assert False, (
+                    "Fixture data is missing the following necessary tract "
+                    f"IDs: {missing_tract_ids}"
+                )
+        else:
+            raise NotImplementedError("This geo level not tested yet.")
+
+    def test_transform_sets_output_df_base(self, mock_etl, mock_paths):
         """This test ensures that the transform step sets its results to `output_df`.
 
         Can be run without modification for all child classes.
@@ -450,7 +497,7 @@ class TestETL:
 
         output_df = etl.get_data_frame()
 
-        # Check that all columns are 
+        # Check that all columns are present
         for column_to_keep in etl.COLUMNS_TO_KEEP:
             assert (
                 column_to_keep in output_df.columns
