@@ -67,6 +67,8 @@ const J40Header = () => {
       <GovernmentBanner />
       <BetaBanner/>
 
+      {/* Remove Usabilty Banner */}
+
       {/* Logo and Navigation */}
       <J40MainGridContainer>
 
