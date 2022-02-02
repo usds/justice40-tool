@@ -69,6 +69,7 @@ const TerritoryFocusControl = ({onClick}: ITerritoryFocusControl) => {
             // onClickCapture={(e) => onClickTerritoryFocusButton(e)}
             onClickCapture={(e) => onClick(e)}
             className={'mapboxgl-ctrl-icon ' + territoriesIconClassName[index]}
+            title={territories[index].long}
             aria-label={intl.formatMessage(
                 {
                   id: 'map.territoryFocus.focusOn',
