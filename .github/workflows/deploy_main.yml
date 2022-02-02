@@ -8,7 +8,7 @@ on:
     paths:
       - "client/**/*"
 env: 
-  PR_NUMBER: ${{github.event.pull_request.number}}
+  PR_NUMBER: ${{ github.event.number }}
   WEB_CDN_ID: E27WCOZZ03KIBX 
 jobs:
   build:
