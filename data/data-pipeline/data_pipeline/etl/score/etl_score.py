@@ -5,7 +5,9 @@ import numpy as np
 import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
-from data_pipeline.etl.sources.national_risk_index.etl import NationalRiskIndexETL
+from data_pipeline.etl.sources.national_risk_index.etl import (
+    NationalRiskIndexETL,
+)
 from data_pipeline.score.score_runner import ScoreRunner
 from data_pipeline.score import field_names
 from data_pipeline.etl.score import constants

@@ -78,10 +78,6 @@ class TestNationalRiskIndexETL(TestETL):
         # directory.
         etl.load()
 
-        logger.info(f"printing to {self._DATA_DIRECTORY_FOR_TEST / self._OUTPUT_CSV_FILE_NAME}")
-
-        logger.info(f"copy from {etl._get_output_file_path()}")
-
         copy_data_files(
             src=etl._get_output_file_path(),
             dst=self._DATA_DIRECTORY_FOR_TEST / self._OUTPUT_CSV_FILE_NAME,
@@ -152,7 +148,6 @@ class TestNationalRiskIndexETL(TestETL):
         assert filecmp.cmp(
             f1=extracted_file_path, f2=input_csv_path, shallow=False
         )
-
 
     def test_load(self, mock_etl):
         """Tests the load() method for NationalRiskIndexETL
