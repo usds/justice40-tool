@@ -17,6 +17,9 @@ from . import constants
 
 logger = get_module_logger(__name__)
 
+# Define the DAC variable
+DISADVANTAGED_COMMUNITIES_FIELD = field_names.SCORE_M_COMMUNITIES
+
 
 class PostScoreETL(ExtractTransformLoad):
     """
@@ -184,17 +187,9 @@ class PostScoreETL(ExtractTransformLoad):
             merged_df["Total population"].fillna(0.0).astype(int)
         )
 
-        # list the null score tracts
-        null_tract_df = merged_df[
-            merged_df[field_names.SCORE_L_COMMUNITIES].isnull()
-        ]
-
-        # subtract data sets
-        # this follows the XOR pattern outlined here:
-        # https://stackoverflow.com/a/37313953
-        de_duplicated_df = pd.concat(
-            [merged_df, null_tract_df, null_tract_df]
-        ).drop_duplicates(keep=False)
+        de_duplicated_df = merged_df.dropna(
+            subset=[DISADVANTAGED_COMMUNITIES_FIELD]
+        )
 
         # set the score to the new df
         return de_duplicated_df
@@ -333,7 +328,7 @@ class PostScoreETL(ExtractTransformLoad):
         # Rename score column
         downloadable_df_copy = downloadable_df.rename(
             columns={
-                field_names.SCORE_M_COMMUNITIES: "Identified as disadvantaged (v0.1)"
+                DISADVANTAGED_COMMUNITIES_FIELD: "Identified as disadvantaged (v0.1)"
             },
             inplace=False,
         )

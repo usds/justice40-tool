@@ -229,7 +229,7 @@ const J40Map = ({location}: IJ40Interface) => {
 
   return (
     <>
-      <Grid col={12} desktop={{col: 9}}>
+      <Grid desktop={{col: 9}} className={styles.j40Map}>
 
         {/**
          * This will render the MapSearch component
@@ -256,25 +256,28 @@ const J40Map = ({location}: IJ40Interface) => {
          * some children.
          */}
         <ReactMapGL
-          // Initialization props:
+          // ****** Initialization props: ******
           // access token is j40StylesReadToken
           mapboxApiAccessToken={
             process.env.MAPBOX_STYLES_READ_TOKEN ?
             process.env.MAPBOX_STYLES_READ_TOKEN : ''}
 
-          // Map state props:
+
+          // ****** Map state props: ******
           // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#map-state
           {...viewport}
           mapStyle={
             process.env.MAPBOX_STYLES_READ_TOKEN ? `mapbox://styles/mapbox/streets-v11` :
             getOSBaseMap()
           }
-          // This styles will need to be enabled in some way when adding back the free map - #1133
           width="100%"
-          height={windowWidth < 1024 ? '44vh' : '100%'}
+          // Ajusting this height with a conditional statement will not render the map on staging.
+          // The reason for this issue is unknown. Consider styling the parent container via SASS.
+          height="100%"
           mapOptions={{hash: true}}
 
-          // Interaction option props:
+
+          // ****** Interaction option props: ******
           // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#interaction-options
           maxZoom={constants.GLOBAL_MAX_ZOOM}
           minZoom={constants.GLOBAL_MIN_ZOOM}
@@ -282,7 +285,8 @@ const J40Map = ({location}: IJ40Interface) => {
           touchRotate={false}
           interactiveLayerIds={[constants.HIGH_ZOOM_LAYER_ID, constants.PRIORITIZED_HIGH_ZOOM_LAYER_ID]}
 
-          // Callback props:
+
+          // ****** Callback props: ******
           // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#callbacks
           onViewportChange={setViewport}
           onClick={onClick}
@@ -401,10 +405,10 @@ const J40Map = ({location}: IJ40Interface) => {
           )}
 
           {/* This will add the navigation controls of the zoom in and zoom out buttons */}
-          <NavigationControl
+          { windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && <NavigationControl
             showCompass={false}
             className={styles.navigationControl}
-          />
+          /> }
 
           {/* This places Geolocation behind a feature flag */}
           {'gl' in flags ? <GeolocateControl
@@ -424,7 +428,7 @@ const J40Map = ({location}: IJ40Interface) => {
         </ReactMapGL>
       </Grid>
 
-      <Grid col={12} desktop={{col: 3}} className={styles.mapInfoPanel}>
+      <Grid desktop={{col: 3}}>
         <MapInfoPanel
           className={styles.mapInfoPanel}
           featureProperties={detailViewData?.properties}

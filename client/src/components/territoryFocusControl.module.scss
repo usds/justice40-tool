@@ -1,10 +1,20 @@
 @use '../styles/design-system.scss' as *;
 
 .territoryFocusContainer {
-  display: flex;
-  flex-direction: column;
+  // styles for mobile-lg (480px) and greater widths
+  @include at-media('mobile-lg') {
+    position: absolute;
+    left: .75em;
+    top: units(card-lg);
+    z-index: 10;
+  }
+
   position: absolute;
   left: .75em;
-  top: units(card-lg);
+  top: units(9);
   z-index: 10;
+
 }
+
+
+

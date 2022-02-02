@@ -4,6 +4,7 @@
     color: red;
     background-color: white;
     @include u-margin-bottom(.5);
+    @include u-margin-top(.5);
     @include u-padding-left(1);
 }
 
