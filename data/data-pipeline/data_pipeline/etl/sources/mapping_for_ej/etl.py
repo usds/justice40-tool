@@ -67,7 +67,7 @@ class MappingForEJETL(ExtractTransformLoad):
         # strictly necessary, but if in the future, there are more states
         # this seems like a reasonable thing to include.
         self.df[self.GEOID_TRACT_FIELD_NAME] = (
-            self.df["fips_tract"].map(str).str.zfill(11)
+            self.df["fips_tract"].astype(str).str.zfill(11)
         )
 
         self.df = self.df.rename(
