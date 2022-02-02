@@ -87,8 +87,6 @@ jobs:
           AWS_REGION: "us-east-1"
           AWS_ACCESS_KEY_ID: ${{ secrets.CLIENT_DEV_AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.CLIENT_DEV_AWS_SECRET_ACCESS_KEY }}
-      - name: Remove staging artifacts
-        run: aws s3 rm s3://usds-geoplatform-justice40-website/justice40-tool/ --exclude "*" --include "$(echo $PR_NUMBER)-*" --recursive
       - name: Update PR with deployed URL
         uses: mshick/add-pr-comment@v1
         with:
