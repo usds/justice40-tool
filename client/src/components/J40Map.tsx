@@ -420,7 +420,7 @@ const J40Map = ({location}: IJ40Interface) => {
           /> : ''}
           {geolocationInProgress ? <div>Geolocation in progress...</div> : ''}
 
-          {/* This will show shortcut buttons to pan/zoom to US territories */}
+          {/* This will show shortcut buttons to pan and zoom to US territories */}
           <TerritoryFocusControl onClick={onClick}/>
 
           {'fs' in flags ? <FullscreenControl className={styles.fullscreenControl}/> :'' }
