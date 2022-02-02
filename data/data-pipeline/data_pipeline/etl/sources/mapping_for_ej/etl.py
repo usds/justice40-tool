@@ -79,7 +79,25 @@ class MappingForEJETL(ExtractTransformLoad):
             }
         )
 
-        # Calculate prioritized communities based on percentile
+        # Note that there are tracts in this dataset that do not have a final ranking
+        # because they are missing data. Rather than treat them as not-prioritized or as
+        # nulls, we will drop those rows here.
+        self.df = self.df.dropna(
+            subset=[
+                field_names.MAPPING_FOR_EJ_FINAL_PERCENTILE_FIELD,
+                field_names.MAPPING_FOR_EJ_FINAL_SCORE_FIELD,
+            ],
+        )
+
+        assert (
+            self.df[field_names.MAPPING_FOR_EJ_FINAL_PERCENTILE_FIELD]
+            .isna()
+            .sum()
+            == 0
+        ), "Not all nulls have been dropped"
+
+        # Calculate prioritized communities based on percentile, only
+        # for tracts that have complete data
         self.df[field_names.MAPPING_FOR_EJ_PRIORITY_COMMUNITY_FIELD] = (
             self.df[field_names.MAPPING_FOR_EJ_FINAL_PERCENTILE_FIELD]
             >= self.MAPPING_FOR_EJ_PRIORITY_COMMUNITY_PERCENTILE_THRESHOLD
