@@ -81,12 +81,6 @@ class GeoScoreETL(ExtractTransformLoad):
         )
 
     def transform(self) -> None:
-        # Rename GEOID10_TRACT to GEOID10 on score to allow merging with Census GeoJSON
-        # self.score_usa_df.rename(
-        #     columns={self.TRACT_SHORT_FIELD: self.GEOID_FIELD_NAME},
-        #     inplace=True,
-        # )
-
         logger.info("Pruning Census GeoJSON")
         fields = [self.GEOID_FIELD_NAME, self.GEOMETRY_FIELD_NAME]
         self.geojson_usa_df = self.geojson_usa_df[fields]
@@ -148,8 +142,9 @@ class GeoScoreETL(ExtractTransformLoad):
         )
 
         # round to 2 decimals
-        decimals = pd.Series([2], index=[self.TARGET_SCORE_RENAME_TO])
-        self.geojson_score_usa_low = self.geojson_score_usa_low.round(decimals)
+        self.geojson_score_usa_low = self.geojson_score_usa_low.round(
+            {self.TARGET_SCORE_RENAME_TO: 2}
+        )
 
     def _aggregate_to_tracts(
         self, block_group_df: gpd.GeoDataFrame

@@ -220,6 +220,12 @@ class PostScoreETL(ExtractTransformLoad):
         )
 
         logger.info("Adding fields for island areas and Puerto Rico")
+        # The below operation constructs variables for the front end.
+        # Since the Island Areas, Puerto Rico, and the nation all have a different
+        # set of available data, each has its own user experience.
+
+        # First, we identify which user experience -- Puerto Rico, islands, or nation --
+        # a row pertains to using the FIPS codes
         fips_code_series = score_tiles[field_names.GEOID_TRACT_FIELD].str[:2]
         score_tiles[constants.USER_INTERFACE_EXPERIENCE_FIELD_NAME] = np.where(
             fips_code_series.isin(constants.TILES_PUERTO_RICO_FIPS_CODE),
@@ -230,6 +236,9 @@ class PostScoreETL(ExtractTransformLoad):
                 constants.NATION_USER_EXPERIENCE,
             ),
         )
+
+        # Next, we determine how many thresholds the front end should show, entirely
+        # based on the variable for user interface experience.
         score_tiles[constants.THRESHOLD_COUNT_TO_SHOW_FIELD_NAME] = score_tiles[
             constants.USER_INTERFACE_EXPERIENCE_FIELD_NAME
         ].map(

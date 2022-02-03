@@ -57,6 +57,22 @@ class ScoreM(Score):
             [column_from_island_areas, column_from_decennial_census]
         ].mean(axis=1, skipna=True)
 
+        # Create a percentile field for use in the Islands / PR visualization
+        # TODO: move this code
+        # In the code below, percentiles are constructed based on the combined column
+        # of census and island data, but only reported for the island areas (where there
+        # is no other comprehensive percentile information)
+        return_series_name = (
+            column_from_island_areas
+            + field_names.ISLAND_AREAS_PERCENTILE_ADJUSTMENT_FIELD
+            + field_names.PERCENTILE_FIELD_SUFFIX
+        )
+        df[return_series_name] = np.where(
+            df[column_from_decennial_census].isna(),
+            df[combined_column_name].rank(pct=True),
+            np.nan,
+        )
+
         logger.info(
             f"Combined field `{combined_column_name}` has "
             f"{df[combined_column_name].isnull().sum()} "
@@ -615,6 +631,8 @@ class ScoreM(Score):
         ]
 
         # First, combine unemployment.
+        # This will include an adjusted percentile column for the island areas
+        # to be used by the front end.
         (
             self.df,
             island_areas_unemployment_criteria_field_name,
@@ -627,6 +645,8 @@ class ScoreM(Score):
         )
 
         # Next, combine poverty.
+        # This will include an adjusted percentile column for the island areas
+        # to be used by the front end.
         (
             self.df,
             island_areas_poverty_criteria_field_name,
@@ -640,6 +660,11 @@ class ScoreM(Score):
 
         # Also check whether low area median income is 90th percentile or higher
         # within the islands.
+
+        # Note that because the field for low median does not have to be combined,
+        # unlike the other fields, we do not need to create a new percentile
+        # column. This code should probably be refactored when (TODO) we do the big
+        # refactor.
         island_areas_low_median_income_as_a_percent_of_ami_criteria_field_name = (
             f"{field_names.LOW_CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009} exceeds "
             f"{field_names.PERCENTILE}th percentile"
