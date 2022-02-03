@@ -79,16 +79,6 @@ class MappingForEJETL(ExtractTransformLoad):
             }
         )
 
-        # Note that there are tracts in this dataset that do not have a final ranking
-        # because they are missing data. Rather than treat them as not-prioritized or as
-        # nulls, we will drop those rows here.
-        self.df = self.df.dropna(
-            subset=[
-                field_names.MAPPING_FOR_EJ_FINAL_PERCENTILE_FIELD,
-                field_names.MAPPING_FOR_EJ_FINAL_SCORE_FIELD,
-            ],
-        )
-
         assert (
             self.df[field_names.MAPPING_FOR_EJ_FINAL_PERCENTILE_FIELD]
             .isna()
