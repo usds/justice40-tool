@@ -2,7 +2,7 @@
 // External Libs:
 import React from 'react';
 import {useIntl, FormattedMessage} from 'gatsby-plugin-intl';
-import {Accordion} from '@trussworks/react-uswds';
+import {Accordion, Button} from '@trussworks/react-uswds';
 
 // Components:
 import Category from '../Category';
@@ -13,6 +13,9 @@ import Indicator from '../Indicator';
 import * as styles from './areaDetail.module.scss';
 import * as constants from '../../data/constants';
 import * as EXPLORE_COPY from '../../data/copy/explore';
+import * as CONTACT_COPY from '../../data/copy/contact';
+// @ts-ignore
+// import mailIcon from '/node_modules/uswds/dist/img/usa-icons/mail.svg';
 
 interface IAreaDetailProps {
   properties: constants.J40Properties,
@@ -47,6 +50,10 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
   const stateName = properties[constants.STATE_NAME] ? properties[constants.STATE_NAME] : "N/A";
 
   const isCommunityFocus = score >= constants.SCORE_BOUNDARY_THRESHOLD;
+
+  const feedbackEmailSubject = `Census tract ID ${blockGroup}, ${countyName}, ${stateName}`;
+  const feedbackEmailBody = intl.formatMessage(EXPLORE_COPY.SEND_FEEDBACK.EMAIL_BODY);
+
 
   // Define each indicator in the side panel with constants from copy file (for intl)
   // Indicators are grouped by category
@@ -371,9 +378,13 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
 
       {/* Disadvantaged? */}
       <div className={styles.categorization}>
+
+        {/* Questions asking if disadvantaged? */}
         <div className={styles.isInFocus}>
           {EXPLORE_COPY.COMMUNITY.IS_FOCUS}
         </div>
+
+        {/* YES with Dot or NO with no Dot  */}
         <div className={styles.communityOfFocus}>
           {isCommunityFocus ?
             <>
@@ -383,6 +394,8 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
           <h3>{EXPLORE_COPY.COMMUNITY.NOT_OF_FOCUS}</h3>
           }
         </div>
+
+        {/* Number of thresholds exceeded */}
         <div className={
             properties[constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS] > 0 ?
             styles.showThresholdExceed : styles.hideThresholdExceed
@@ -396,9 +409,25 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
               totalCount: constants.TOTAL_NUMBER_OF_INDICATORS,
             }}/>
         </div>
-        {/* <a className={styles.feedbackLink} href={sidePanelFeedbackHref}>
-          {EXPLORE_COPY.COMMUNITY.SEND_FEEDBACK}
-        </a> */}
+
+        {/* Send Feedback button */}
+        <a
+          className={styles.sendFeedbackBtn}
+          // The mailto string must be on a single line otherwise the email does not display subject and body
+          href={`
+            mailto:${CONTACT_COPY.FEEDBACK_EMAIL}?subject=${feedbackEmailSubject}&body=${feedbackEmailBody}
+          `}
+        >
+          <Button
+            type="button">
+            <div>
+              {EXPLORE_COPY.COMMUNITY.SEND_FEEDBACK.TITLE}
+            </div>
+            {/* <div>
+                <img src={mailIcon} alt={'mail icon for email'}/>
+              </div> */}
+          </Button>
+        </a>
 
       </div>
 
