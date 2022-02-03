@@ -42,4 +42,4 @@ jobs:
           poetry run python3 data_pipeline/application.py generate-score-post -s aws
       - name: Generate Score Geo
         run: |
-          poetry run python3 data_pipeline/application.py geo-score -s aws
+          poetry run python3 data_pipeline/application.py geo-score
