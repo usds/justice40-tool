@@ -252,7 +252,7 @@ class ExtractTransformLoad:
         output_file_path = cls._get_output_file_path()
         if not output_file_path.exists():
             raise ValueError(
-                f"Make sure to run ETL process first for `{cls.__class__}`. "
+                f"Make sure to run ETL process first for `{cls}`. "
                 f"No file found at `{output_file_path}`."
             )
 
