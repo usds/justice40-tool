@@ -59,9 +59,8 @@ $sidePanelLabelFontColor: #171716;
     visibility: hidden;
   }
 
-  .feedbackLink {
-    font-size: small;
-    @include u-margin-top(1);
+  .sendFeedbackBtn {
+    @include u-margin-top(2);
   }
 
 }
