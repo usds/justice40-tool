@@ -110,6 +110,7 @@ export const TOTAL_THRESHOLD_CRITERIA = 'TC';
 export const IS_GTE_90_ISLAND_AREA_UNEMPLOYMENT_AND_IS_LOW_HS_EDU_2009 = 'IAULHSE';
 export const IS_GTE_90_ISLAND_AREA_BELOW_100_POVERTY_AND_IS_LOW_HS_EDU_2009 = 'ISPLHSE';
 export const IS_GTE_90_ISLAND_AREA_LOW_MEDIAN_INCOME_AND_IS_LOW_HS_EDU_2009 = 'IALMILHSE';
+export const IS_LOW_HS_EDUCATION_LOW_HIGHER_ED_PRIORITIZED = 'LHE';
 
 // The name of the layer within the tiles that contains the score
 export const SCORE_SOURCE_LAYER = 'blocks';

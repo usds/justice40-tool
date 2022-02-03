@@ -245,8 +245,9 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.HIGH_SKL),
     value: properties[constants.HIGH_SCHOOL_PROPERTY_PERCENTILE] ?
       properties[constants.HIGH_SCHOOL_PROPERTY_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_GTE_90_UNEMPLOYMENT_AND_LOW_HIGH_SCHOOL_EDU] ?
-      properties[constants.IS_GTE_90_UNEMPLOYMENT_AND_LOW_HIGH_SCHOOL_EDU] : null,
+    isDisadvagtaged: properties[constants.IS_LOW_HS_EDUCATION_LOW_HIGHER_ED_PRIORITIZED] &&
+     properties[constants.IS_LOW_HS_EDUCATION_LOW_HIGHER_ED_PRIORITIZED] == 1 ?
+      true : false,
     isPercent: true,
   };
 
