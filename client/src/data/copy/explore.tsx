@@ -230,12 +230,33 @@ export const COMMUNITY = {
     defaultMessage={ 'Identified as disadvantaged?'}
     description={'asking IF the communities is focused on'}
   />,
-  SEND_FEEDBACK: <FormattedMessage
-    id={'areaDetail.categorization.send.feedback'}
-    defaultMessage={ 'send feedback'}
-    description={'link to send feedback'}
-  />,
+  SEND_FEEDBACK: {
+    TITLE: <FormattedMessage
+      id={'areaDetail.categorization.send.feedback.title'}
+      defaultMessage={ 'Send feedback'}
+      description={'link to send feedback'}
+    />,
+    EMAIL_BODY: <FormattedMessage
+      id={'areaDetail.categorization.send.feedback.email.body'}
+      defaultMessage={`
+      Please provide feedback about this census tract, including about the datasets, the data 
+      categories prodivded for this tract, the communities who live in this tract, and anything else 
+      relevant that we should know.
+    `}
+      description={'link to send feedback'}
+    />,
+  },
 };
+
+export const SEND_FEEDBACK = defineMessages({
+  EMAIL_BODY: {
+    id: 'areaDetail.categorization.send.feedback.email.body',
+    // eslint-disable-next-line max-len
+    defaultMessage: `Please provide feedback about this census tract, including about the datasets, the data categories provided for this tract, the communities who live in this tract, and anything else relevant that we should know.
+    `,
+    description: 'link to send feedback',
+  },
+});
 
 export const SIDE_PANEL_CATEGORY = defineMessages({
   INDICATOR: {
