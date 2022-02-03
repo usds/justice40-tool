@@ -236,15 +236,6 @@ export const COMMUNITY = {
       defaultMessage={ 'Send feedback'}
       description={'link to send feedback'}
     />,
-    EMAIL_BODY: <FormattedMessage
-      id={'areaDetail.categorization.send.feedback.email.body'}
-      defaultMessage={`
-      Please provide feedback about this census tract, including about the datasets, the data 
-      categories prodivded for this tract, the communities who live in this tract, and anything else 
-      relevant that we should know.
-    `}
-      description={'link to send feedback'}
-    />,
   },
 };
 
