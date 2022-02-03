@@ -452,7 +452,10 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   },
   LOW_INCOME: {
     id: 'areaDetail.indicator.description.low.income',
-    defaultMessage: 'Household income is less than or equal to twice the federal poverty level',
+    defaultMessage: `
+      Household income is less than or equal to twice the federal poverty level when higher ed enrollment 
+      rate is less than 20% in order to exclude areas with college and graduate students
+    `,
     description: 'Household income is less than or equal to twice the federal poverty level',
   },
 
@@ -480,7 +483,10 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
 
   LEAD_PAINT: {
     id: 'areaDetail.indicator.description.leadPaint',
-    defaultMessage: 'Percent of pre-1960 housing with a median home value is at or below 90th',
+    defaultMessage: `
+      Percent of pre-1960 housing when median home value is at or below 90th percentile in order to 
+      exclude areas with high value, older homes
+    `,
     description: 'Pre-1960 housing',
   },
   MED_HOME_VAL: {
@@ -551,7 +557,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   LING_ISO: {
     id: 'areaDetail.indicator.description.ling.iso',
     defaultMessage: `
-      Percent of limited speaking households, which are households where no one over age 14 speaks English well
+      Percent of households where no one over the age 14 speaks English well
     `,
     description: `Households in which no one age 14 and over speaks English only or also speaks 
     a language other than English`,
@@ -573,8 +579,8 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   HIGH_SKL: {
     id: 'areaDetail.indicator.description.high.school',
     defaultMessage: `
-      Percent (not a percentile) of people ages 25 years or older whose education level is less than a 
-      high school diploma
+      Percent of people ages 25 years or older whose education level is less than a high school diploma 
+      when higher ed enrollment rate is less than 20% in order to exclude areas with college and graduate students
     `,
     description: 'Percent of people ages 25 years or older whose education level is less than a high school diploma',
   },

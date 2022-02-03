@@ -30,6 +30,15 @@ exports[`rendering of the Categories checks if component renders 1`] = `
       </h3>
       <p>
         
+      Communities are 
+        <strong>
+          identified as disadvantaged
+        </strong>
+         in this category 
+    
+      </p>
+      <p>
+        
       
         <strong>
           IF
@@ -56,25 +65,41 @@ exports[`rendering of the Categories checks if component renders 1`] = `
       
       </p>
       <p>
+        
+      
         <strong>
           AND
         </strong>
-         is low income
-        <sup>
-          *
-        </sup>
+         is at or above 65th percentile for 
+        <a
+          href="#low-income"
+        >
+          low income
+        </a>
+         WHEN 
+        <a
+          href="#high-ed-enroll-rate"
+        >
+          higher ed enrollment rate
+        </a>
+         is at or below 20%
+    
       </p>
-      <p>
-        <strong>
-          THEN
-        </strong>
-         the community is disadvantaged.
-      </p>
+      <p />
     </div>
     <div>
       <h3>
         Clean energy and energy efficiency
       </h3>
+      <p>
+        
+      Communities are 
+        <strong>
+          identified as disadvantaged
+        </strong>
+         in this category 
+    
+      </p>
       <p>
         
         
@@ -97,25 +122,41 @@ exports[`rendering of the Categories checks if component renders 1`] = `
       
       </p>
       <p>
+        
+      
         <strong>
           AND
         </strong>
-         is low income
-        <sup>
-          *
-        </sup>
+         is at or above 65th percentile for 
+        <a
+          href="#low-income"
+        >
+          low income
+        </a>
+         WHEN 
+        <a
+          href="#high-ed-enroll-rate"
+        >
+          higher ed enrollment rate
+        </a>
+         is at or below 20%
+    
       </p>
-      <p>
-        <strong>
-          THEN
-        </strong>
-         the community is disadvantaged.
-      </p>
+      <p />
     </div>
     <div>
       <h3>
         Clean transportation
       </h3>
+      <p>
+        
+      Communities are 
+        <strong>
+          identified as disadvantaged
+        </strong>
+         in this category 
+    
+      </p>
       <p>
         
         
@@ -138,25 +179,41 @@ exports[`rendering of the Categories checks if component renders 1`] = `
       
       </p>
       <p>
+        
+      
         <strong>
           AND
         </strong>
-         is low income
-        <sup>
-          *
-        </sup>
+         is at or above 65th percentile for 
+        <a
+          href="#low-income"
+        >
+          low income
+        </a>
+         WHEN 
+        <a
+          href="#high-ed-enroll-rate"
+        >
+          higher ed enrollment rate
+        </a>
+         is at or below 20%
+    
       </p>
-      <p>
-        <strong>
-          THEN
-        </strong>
-         the community is disadvantaged.
-      </p>
+      <p />
     </div>
     <div>
       <h3>
         Affordable and sustainable housing
       </h3>
+      <p>
+        
+      Communities are 
+        <strong>
+          identified as disadvantaged
+        </strong>
+         in this category 
+    
+      </p>
       <p>
         
         
@@ -169,7 +226,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           lead paint
         </a>
-         AND 
+         WHEN 
         <a
           href="#median-home"
         >
@@ -186,25 +243,41 @@ exports[`rendering of the Categories checks if component renders 1`] = `
       
       </p>
       <p>
+        
+      
         <strong>
           AND
         </strong>
-         is low income
-        <sup>
-          *
-        </sup>
+         is at or above 65th percentile for 
+        <a
+          href="#low-income"
+        >
+          low income
+        </a>
+         WHEN 
+        <a
+          href="#high-ed-enroll-rate"
+        >
+          higher ed enrollment rate
+        </a>
+         is at or below 20%
+    
       </p>
-      <p>
-        <strong>
-          THEN
-        </strong>
-         the community is disadvantaged.
-      </p>
+      <p />
     </div>
     <div>
       <h3>
         Reduction and remediation of legacy pollution
       </h3>
+      <p>
+        
+      Communities are 
+        <strong>
+          identified as disadvantaged
+        </strong>
+         in this category 
+    
+      </p>
       <p>
         
         
@@ -233,25 +306,41 @@ exports[`rendering of the Categories checks if component renders 1`] = `
       
       </p>
       <p>
+        
+      
         <strong>
           AND
         </strong>
-         is low income
-        <sup>
-          *
-        </sup>
+         is at or above 65th percentile for 
+        <a
+          href="#low-income"
+        >
+          low income
+        </a>
+         WHEN 
+        <a
+          href="#high-ed-enroll-rate"
+        >
+          higher ed enrollment rate
+        </a>
+         is at or below 20%
+    
       </p>
-      <p>
-        <strong>
-          THEN
-        </strong>
-         the community is disadvantaged.
-      </p>
+      <p />
     </div>
     <div>
       <h3>
         Critical clean water and waste infrastructure
       </h3>
+      <p>
+        
+      Communities are 
+        <strong>
+          identified as disadvantaged
+        </strong>
+         in this category 
+    
+      </p>
       <p>
         
         
@@ -268,25 +357,41 @@ exports[`rendering of the Categories checks if component renders 1`] = `
       
       </p>
       <p>
+        
+      
         <strong>
           AND
         </strong>
-         is low income
-        <sup>
-          *
-        </sup>
+         is at or above 65th percentile for 
+        <a
+          href="#low-income"
+        >
+          low income
+        </a>
+         WHEN 
+        <a
+          href="#high-ed-enroll-rate"
+        >
+          higher ed enrollment rate
+        </a>
+         is at or below 20%
+    
       </p>
-      <p>
-        <strong>
-          THEN
-        </strong>
-         the community is disadvantaged.
-      </p>
+      <p />
     </div>
     <div>
       <h3>
         Health burdens
       </h3>
+      <p>
+        
+      Communities are 
+        <strong>
+          identified as disadvantaged
+        </strong>
+         in this category 
+    
+      </p>
       <p>
         
         
@@ -321,25 +426,41 @@ exports[`rendering of the Categories checks if component renders 1`] = `
       
       </p>
       <p>
+        
+      
         <strong>
           AND
         </strong>
-         is low income
-        <sup>
-          *
-        </sup>
+         is at or above 65th percentile for 
+        <a
+          href="#low-income"
+        >
+          low income
+        </a>
+         WHEN 
+        <a
+          href="#high-ed-enroll-rate"
+        >
+          higher ed enrollment rate
+        </a>
+         is at or below 20%
+    
       </p>
-      <p>
-        <strong>
-          THEN
-        </strong>
-         the community is disadvantaged.
-      </p>
+      <p />
     </div>
     <div>
       <h3>
         Training and workforce development
       </h3>
+      <p>
+        
+      Communities are 
+        <strong>
+          identified as disadvantaged
+        </strong>
+         in this category 
+    
+      </p>
       <p>
         
         
@@ -378,25 +499,27 @@ exports[`rendering of the Categories checks if component renders 1`] = `
       </p>
       <p>
         
-      
+    
         <strong>
           AND
         </strong>
-         where 
+         where the 
         <a
           href="#high-school"
         >
-          the high school degree achievement rates
+          high school degree achievement rates
         </a>
-         for adults 25 years and older is at or less than 90%
-      
+         rates for adults 25 years and older is at or less than 
+    90% WHEN 
+        <a
+          href="#high-ed-enroll-rate"
+        >
+          higher ed enrollment rate
+        </a>
+         is at or below 20%
+  
       </p>
-      <p>
-        <strong>
-          THEN
-        </strong>
-         the community is disadvantaged.
-      </p>
+      <p />
     </div>
   </div>
 </DocumentFragment>

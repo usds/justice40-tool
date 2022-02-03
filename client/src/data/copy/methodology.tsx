@@ -26,13 +26,6 @@ export const PAGE = defineMessages({
     `,
     description: 'methodology page paragraph',
   },
-  FORMULA_INTRO: {
-    id: 'methodology.page.formula.intro',
-    defaultMessage: `
-      Under the current formula, a census tract will be considered disadvantaged:
-    `,
-    description: 'methodology page introducing the formula',
-  },
   CATEGORY_TEXT: {
     id: 'methodology.page.categories.title',
     defaultMessage: `
@@ -46,9 +39,21 @@ export const PAGE = defineMessages({
 
 
 export const FORMULA = {
+  INTRO: <FormattedMessage
+    id={'methodology.page.formula.intro'}
+    defaultMessage={`
+      Under the current formula, a census tract will be {identifiedDis} in one or more categories of criteria: 
+    `}
+    description={'methodology page introducing the formula'}
+    values={{
+      identifiedDis: <strong>identified as disadvantaged</strong>,
+    }}
+  />,
   IF: <FormattedMessage
     id={'methodology.page.formula.first'}
-    defaultMessage={ `{if} it is above the threshold for one or more climate or environmental indicator`}
+    defaultMessage={ `
+      {if} the tract is above the thresholds for a set of environmental, climate or socioeconomic related indicators
+      `}
     description={'the first part of the formula used in the methodology'}
     values= {{
       if: <span>IF</span>,
@@ -56,7 +61,9 @@ export const FORMULA = {
   />,
   AND: <FormattedMessage
     id={'methodology.page.formula.second'}
-    defaultMessage={ `{and} it is above the threshold for one or more socioeconomic indicator`}
+    defaultMessage={ `
+      {and} the tract is above the thresholds for another set of income or education related indicators
+    `}
     description={'the second part of the formula used in the methodology'}
     values= {{
       and: <span>AND</span>,
@@ -144,19 +151,59 @@ export const CATEGORY= {
     defaultMessage={'Categories'}
     description= {'category heading'}
   />,
+  ID_AS_DISADV_TEXT: <FormattedMessage
+    id={'methodology.category.card.title'}
+    defaultMessage={`
+      Communities are {idAsDisadv} in this category 
+    `}
+    description= {'category heading'}
+    values={{
+      idAsDisadv: <strong>identified as disadvantaged</strong>,
+    }}
+  />,
 };
 
+// Category AND Clause:
 
+export const CATEGORY_AND_CLAUSE = {
+  LOW_INC_65_WHEN_HIGH_ED_LTE_20: <FormattedMessage
+    id= {'methodology.paage.category.and.clause.low.inc.hs.ed'}
+    defaultMessage={`
+      {and} is at or above 65th percentile for {lowIncome} WHEN {highEdEnrollRate} is at or below 20%
+    `}
+    description= {'and portion of the formula dealing with lower income and high school degree rate'}
+    values= {{
+      and: <strong>AND</strong>,
+      lowIncome: <a href="#low-income">low income</a>,
+      highEdEnrollRate: <a href="#high-ed-enroll-rate">higher ed enrollment rate</a>,
+    }}
+  />,
+  HS_DEG_90_WHEN_HIGH_ED_LTE_20: <FormattedMessage
+    id= {'methodology.paage.category.and.clause.hs.ed.higher.ed'}
+    defaultMessage= {`
+    {and} where the {highSchoolRate} rates for adults 25 years and older is at or less than 
+    90% WHEN {highEdEnrollRate} is at or below 20%
+  `}
+    description= {'and portion of the formula dealing with higher ed enrollment and high school degree rate'}
+    values= {{
+      and: <strong>AND</strong>,
+      highSchoolRate: <a href="#high-school">high school degree achievement rates</a>,
+      highEdEnrollRate: <a href="#high-ed-enroll-rate">higher ed enrollment rate</a>,
+    }}
+  />,
+};
 // Indicator Categories copy constants:
 export const CATEGORIES = {
-  ALL: {
-    METHODOLOGY:
-      <FormattedMessage
-        id= {'methodologies.all.used.in.text'}
-        defaultMessage= {`All methodologies except for training and workforce development`}
-        description= {'used in text for all methodologies'}
-      />,
-  },
+  ALL: <FormattedMessage
+    id= {'categories.all.used.in.text'}
+    defaultMessage= {`All categories`}
+    description= {'used in text for all methodologies'}
+  />,
+  ALL_EXCEPT_WORKFORCE: <FormattedMessage
+    id= {'methodologies.all.except.workforce.used.in.text'}
+    defaultMessage= {`All categories except for training and workforce development`}
+    description= {'used in text for all methodologies'}
+  />,
   CLIMATE_CHANGE: {
     METHODOLOGY: <FormattedMessage
       id= {'indicator.categories.climate.change.methodology'}
@@ -181,24 +228,16 @@ export const CATEGORIES = {
         expPopLossRate: <a href="#exp-pop-loss-rate">expected population loss rate</a>,
       }}
     />,
-    AND: <FormattedMessage
-      id= {'indicator.categories.climate.change.and'}
-      defaultMessage= {'{and} is low income{asterisk}'}
-      description= {'and portion of the formula'}
-      values= {{
-        and: <strong>AND</strong>,
-        asterisk: <sup>*</sup>,
-      }}
-    />,
-    THEN: <FormattedMessage
-      id= {'indicator.categories.climate.change.then'}
-      defaultMessage= {'{then} the community is disadvantaged.'}
-      description= {'then portion of the formula'}
-      values= {{
-        then: <strong>THEN</strong>,
-        asterisk: <sup>*</sup>,
-      }}
-    />,
+    AND: CATEGORY_AND_CLAUSE.LOW_INC_65_WHEN_HIGH_ED_LTE_20,
+    // THEN: <FormattedMessage
+    //   id= {'indicator.categories.climate.change.then'}
+    //   defaultMessage= {'{then} the community is disadvantaged.'}
+    //   description= {'then portion of the formula'}
+    //   values= {{
+    //     then: <strong>THEN</strong>,
+    //     asterisk: <sup>*</sup>,
+    //   }}
+    // />,
   },
   CLEAN_ENERGY: {
     METHODOLOGY: <FormattedMessage
@@ -223,24 +262,16 @@ export const CATEGORIES = {
         pm25: <a href='#pm-25'>PM2.5 in the air</a>,
       }}
     />,
-    AND: <FormattedMessage
-      id= {'indicator.categories.clean.energy.and'}
-      defaultMessage= {'{and} is low income{asterisk}'}
-      description= {'and portion of the formula'}
-      values= {{
-        and: <strong>AND</strong>,
-        asterisk: <sup>*</sup>,
-      }}
-    />,
-    THEN: <FormattedMessage
-      id= {'indicator.categories.clean.energy.then'}
-      defaultMessage= {'{then} the community is disadvantaged.'}
-      description= {'then portion of the formula'}
-      values= {{
-        then: <strong>THEN</strong>,
-        asterisk: <sup>*</sup>,
-      }}
-    />,
+    AND: CATEGORY_AND_CLAUSE.LOW_INC_65_WHEN_HIGH_ED_LTE_20,
+    // THEN: <FormattedMessage
+    //   id= {'indicator.categories.clean.energy.then'}
+    //   defaultMessage= {'{then} the community is disadvantaged.'}
+    //   description= {'then portion of the formula'}
+    //   values= {{
+    //     then: <strong>THEN</strong>,
+    //     asterisk: <sup>*</sup>,
+    //   }}
+    // />,
   },
   CLEAN_TRANSPORT: {
     METHODOLOGY: <FormattedMessage
@@ -265,24 +296,16 @@ export const CATEGORIES = {
         traffic: <a href='#traffic-vol'>traffic proximity and volume</a>,
       }}
     />,
-    AND: <FormattedMessage
-      id= {'indicator.categories.clean.transport.and'}
-      defaultMessage= {'{and} is low income{asterisk}'}
-      description= {'and portion of the formula'}
-      values= {{
-        and: <strong>AND</strong>,
-        asterisk: <sup>*</sup>,
-      }}
-    />,
-    THEN: <FormattedMessage
-      id= {'indicator.categories.clean.transport.then'}
-      defaultMessage= {'{then} the community is disadvantaged.'}
-      description= {'then portion of the formula'}
-      values= {{
-        then: <strong>THEN</strong>,
-        asterisk: <sup>*</sup>,
-      }}
-    />,
+    AND: CATEGORY_AND_CLAUSE.LOW_INC_65_WHEN_HIGH_ED_LTE_20,
+    // THEN: <FormattedMessage
+    //   id= {'indicator.categories.clean.transport.then'}
+    //   defaultMessage= {'{then} the community is disadvantaged.'}
+    //   description= {'then portion of the formula'}
+    //   values= {{
+    //     then: <strong>THEN</strong>,
+    //     asterisk: <sup>*</sup>,
+    //   }}
+    // />,
   },
   AFFORDABLE_HOUSING: {
     METHODOLOGY: <FormattedMessage
@@ -298,7 +321,7 @@ export const CATEGORIES = {
     IF: <FormattedMessage
       id= {'indicator.categories.afford.house.if'}
       defaultMessage= {`
-        {if} at or above 90th percentile for {lead} AND {medianHomeVal} is at or less than
+        {if} at or above 90th percentile for {lead} WHEN {medianHomeVal} is at or less than
         90th percentile OR at or above the 90th percentile for the {houseBur}
       `}
       description= {'if portion of the formula'}
@@ -309,24 +332,16 @@ export const CATEGORIES = {
         houseBur: <a href='#house-burden'>housing cost burden</a>,
       }}
     />,
-    AND: <FormattedMessage
-      id= {'indicator.categories.afford.house.and'}
-      defaultMessage= {'{and} is low income{asterisk}'}
-      description= {'and portion of the formula'}
-      values= {{
-        and: <strong>AND</strong>,
-        asterisk: <sup>*</sup>,
-      }}
-    />,
-    THEN: <FormattedMessage
-      id= {'indicator.categories.afford.house.then'}
-      defaultMessage= {'{then} the community is disadvantaged.'}
-      description= {'then portion of the formula'}
-      values= {{
-        then: <strong>THEN</strong>,
-        asterisk: <sup>*</sup>,
-      }}
-    />,
+    AND: CATEGORY_AND_CLAUSE.LOW_INC_65_WHEN_HIGH_ED_LTE_20,
+    // THEN: <FormattedMessage
+    //   id= {'indicator.categories.afford.house.then'}
+    //   defaultMessage= {'{then} the community is disadvantaged.'}
+    //   description= {'then portion of the formula'}
+    //   values= {{
+    //     then: <strong>THEN</strong>,
+    //     asterisk: <sup>*</sup>,
+    //   }}
+    // />,
   },
   LEGACY_POLLUTION: {
     METHODOLOGY: <FormattedMessage
@@ -352,24 +367,16 @@ export const CATEGORIES = {
         proxRMP: <a href='#prox-rmp'>proximity to RMP facilities</a>,
       }}
     />,
-    AND: <FormattedMessage
-      id= {'indicator.categories.legacy.pollution.and'}
-      defaultMessage= {'{and} is low income{asterisk}'}
-      description= {'and portion of the formula'}
-      values= {{
-        and: <strong>AND</strong>,
-        asterisk: <sup>*</sup>,
-      }}
-    />,
-    THEN: <FormattedMessage
-      id= {'indicator.categories.legacy.pollution.then'}
-      defaultMessage= {'{then} the community is disadvantaged.'}
-      description= {'then portion of the formula'}
-      values= {{
-        then: <strong>THEN</strong>,
-        asterisk: <sup>*</sup>,
-      }}
-    />,
+    AND: CATEGORY_AND_CLAUSE.LOW_INC_65_WHEN_HIGH_ED_LTE_20,
+    // THEN: <FormattedMessage
+    //   id= {'indicator.categories.legacy.pollution.then'}
+    //   defaultMessage= {'{then} the community is disadvantaged.'}
+    //   description= {'then portion of the formula'}
+    //   values= {{
+    //     then: <strong>THEN</strong>,
+    //     asterisk: <sup>*</sup>,
+    //   }}
+    // />,
   },
   CLEAN_WATER: {
     METHODOLOGY: <FormattedMessage
@@ -393,24 +400,16 @@ export const CATEGORIES = {
         wasteWater: <a href='#waste-water'>wastewater discharge</a>,
       }}
     />,
-    AND: <FormattedMessage
-      id= {'indicator.categories.clean.water.and'}
-      defaultMessage= {'{and} is low income{asterisk}'}
-      description= {'and portion of the formula'}
-      values= {{
-        and: <strong>AND</strong>,
-        asterisk: <sup>*</sup>,
-      }}
-    />,
-    THEN: <FormattedMessage
-      id= {'indicator.categories.clean.water.then'}
-      defaultMessage= {'{then} the community is disadvantaged.'}
-      description= {'then portion of the formula'}
-      values= {{
-        then: <strong>THEN</strong>,
-        asterisk: <sup>*</sup>,
-      }}
-    />,
+    AND: CATEGORY_AND_CLAUSE.LOW_INC_65_WHEN_HIGH_ED_LTE_20,
+    // THEN: <FormattedMessage
+    //   id= {'indicator.categories.clean.water.then'}
+    //   defaultMessage= {'{then} the community is disadvantaged.'}
+    //   description= {'then portion of the formula'}
+    //   values= {{
+    //     then: <strong>THEN</strong>,
+    //     asterisk: <sup>*</sup>,
+    //   }}
+    // />,
   },
   HEALTH_BURDENS: {
     METHODOLOGY: <FormattedMessage
@@ -437,24 +436,16 @@ export const CATEGORIES = {
         life: <a href='#life-exp'>low life expectancy</a>,
       }}
     />,
-    AND: <FormattedMessage
-      id= {'indicator.categories.health.burdens.and'}
-      defaultMessage= {'{and} is low income{asterisk}'}
-      description= {'and portion of the formula'}
-      values= {{
-        and: <strong>AND</strong>,
-        asterisk: <sup>*</sup>,
-      }}
-    />,
-    THEN: <FormattedMessage
-      id= {'indicator.categories.health.burdens.then'}
-      defaultMessage= {'{then} the community is disadvantaged.'}
-      description= {'then portion of the formula'}
-      values= {{
-        then: <strong>THEN</strong>,
-        asterisk: <sup>*</sup>,
-      }}
-    />,
+    AND: CATEGORY_AND_CLAUSE.LOW_INC_65_WHEN_HIGH_ED_LTE_20,
+    // THEN: <FormattedMessage
+    //   id= {'indicator.categories.health.burdens.then'}
+    //   defaultMessage= {'{then} the community is disadvantaged.'}
+    //   description= {'then portion of the formula'}
+    //   values= {{
+    //     then: <strong>THEN</strong>,
+    //     asterisk: <sup>*</sup>,
+    //   }}
+    // />,
   },
   WORKFORCE_DEV: {
     METHODOLOGY: <FormattedMessage
@@ -484,26 +475,16 @@ export const CATEGORIES = {
         poverty: <a href='#poverty'>poverty</a>,
       }}
     />,
-    AND: <FormattedMessage
-      id= {'indicator.categories.work.dev.and'}
-      defaultMessage= {`
-      {and} where {highSchool} for adults 25 years and older is at or less than 90%
-      `}
-      description= {'and portion of the formula'}
-      values= {{
-        and: <strong>AND</strong>,
-        highSchool: <a href='#high-school'>the high school degree achievement rates</a>,
-      }}
-    />,
-    THEN: <FormattedMessage
-      id= {'indicator.categories.work.dev.then'}
-      defaultMessage= {'{then} the community is disadvantaged.'}
-      description= {'then portion of the formula'}
-      values= {{
-        then: <strong>THEN</strong>,
-        asterisk: <sup>*</sup>,
-      }}
-    />,
+    AND: CATEGORY_AND_CLAUSE.HS_DEG_90_WHEN_HIGH_ED_LTE_20,
+    // THEN: <FormattedMessage
+    //   id= {'indicator.categories.work.dev.then'}
+    //   defaultMessage= {'{then} the community is disadvantaged.'}
+    //   description= {'then portion of the formula'}
+    //   values= {{
+    //     then: <strong>THEN</strong>,
+    //     asterisk: <sup>*</sup>,
+    //   }}
+    // />,
   },
 };
 
@@ -836,7 +817,26 @@ export const INDICATORS = [
       `}
       description= {'description text for low income'}
     />,
-    usedIn: CATEGORIES.ALL.METHODOLOGY,
+    usedIn: CATEGORIES.ALL_EXCEPT_WORKFORCE,
+    responsibleParty: RESPONSIBLE_PARTIES.CENSUS,
+    sources: [
+      {
+        source: SOURCE_LINKS.CENSUS_ACS_15_19,
+        availableFor: AVAILABLE_FOR.ALL_US_DC,
+      },
+    ],
+  },
+  {
+    domID: 'high-ed-enroll-rate',
+    indicator: 'Higher ed enrollment rate',
+    description: <FormattedMessage
+      id= {'category.high.ed.enroll.rate.description.text'}
+      defaultMessage= {`
+        Percent of people who are currently enrolled in college or graduate school.
+      `}
+      description= {'description text for low income'}
+    />,
+    usedIn: CATEGORIES.ALL,
     responsibleParty: RESPONSIBLE_PARTIES.CENSUS,
     sources: [
       {
