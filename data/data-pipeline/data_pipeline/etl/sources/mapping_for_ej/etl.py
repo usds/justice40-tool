@@ -79,13 +79,6 @@ class MappingForEJETL(ExtractTransformLoad):
             }
         )
 
-        assert (
-            self.df[field_names.MAPPING_FOR_EJ_FINAL_PERCENTILE_FIELD]
-            .isna()
-            .sum()
-            == 0
-        ), "Not all nulls have been dropped"
-
         # Calculate prioritized communities based on percentile, only
         # for tracts that have complete data
         self.df[field_names.MAPPING_FOR_EJ_PRIORITY_COMMUNITY_FIELD] = (
