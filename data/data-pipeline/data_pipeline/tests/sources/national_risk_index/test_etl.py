@@ -130,7 +130,9 @@ class TestNationalRiskIndexETL(TestETL):
     def test_extract(self, mock_etl, mock_paths):
         """Ensure the extract results are working as appropriate."""
         tmp_path = mock_paths[1]
-        etl = self._setup_etl_instance_and_run_extract(
+
+        # ETL instance returned by this method is never used, so we assign it to `_`.
+        _ = self._setup_etl_instance_and_run_extract(
             mock_etl=mock_etl,
             mock_paths=mock_paths,
         )
