@@ -1,6 +1,7 @@
 declare namespace IndicatorCategoryNamespace {
     export interface IIndicatorCategoryScss {
       categoryCard: string;
+      idAsDisdvantaged: string;
     }
   }
 

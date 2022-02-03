@@ -91,11 +91,6 @@ p.flush {
   @include u-margin-bottom(5)
 }
 
-// 56 pixel margin-top
-.j40-mt-7 {
-  @include u-margin-top(7)
-}
-
 .j40-footer-ceq-font {
   @include j40-element('lg', 2, 'bold', 0 );
 }

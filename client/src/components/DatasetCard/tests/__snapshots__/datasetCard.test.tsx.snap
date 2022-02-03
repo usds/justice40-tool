@@ -19,7 +19,7 @@ exports[`rendering of indicator dataset card checks if component renders 1`] = `
         <span>
           Used in: 
         </span>
-        All methodologies except for training and workforce development
+        All categories except for training and workforce development
       </li>
       <li>
         <span>
