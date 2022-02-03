@@ -2,7 +2,7 @@
 name: Data Checks
 on:
   pull_request:
-    branches: [ main ]  # runs on any PR against main
+    branches: [main] # runs on any PR against main
     paths:
       - "data/**"
 jobs:
@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         # checks all of the versions allowed in pyproject.toml
-        python-version: [3.7, 3.8, 3.9]
+        python-version: [3.8, 3.9]
     steps:
       # installs python
       # one execution of the tests per version listed above
