@@ -1,4 +1,4 @@
-# pylint: disable=protected-access
+# pylint: disable=protected-access,unsubscriptable-object
 import copy
 import os
 

@@ -17,12 +17,12 @@ class ExampleETL(ExtractTransformLoad):
     INPUT_FIELD_NAME = "Input Field 1"
     EXAMPLE_FIELD_NAME = "Example Field 1"
 
-    def __init__(self):
-        self.NAME = "example_dataset"
-        self.LAST_UPDATED_YEAR = 2017
-        self.SOURCE_URL = "https://www.example.com/example.zip"
-        self.GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
+    NAME = "example_dataset"
+    LAST_UPDATED_YEAR = 2017
+    SOURCE_URL = "https://www.example.com/example.zip"
+    GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
 
+    def __init__(self):
         self.COLUMNS_TO_KEEP = [
             self.GEOID_TRACT_FIELD_NAME,
             self.EXAMPLE_FIELD_NAME,

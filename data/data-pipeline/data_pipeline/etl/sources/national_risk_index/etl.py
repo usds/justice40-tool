@@ -14,12 +14,12 @@ logger = get_module_logger(__name__)
 class NationalRiskIndexETL(ExtractTransformLoad):
     """ETL class for the FEMA National Risk Index dataset"""
 
-    def __init__(self):
-        self.NAME = "national_risk_index"
-        self.LAST_UPDATED_YEAR = 2020
-        self.SOURCE_URL = "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload//NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
-        self.GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
+    NAME = "national_risk_index"
+    LAST_UPDATED_YEAR = 2020
+    SOURCE_URL = "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload//NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
+    GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
 
+    def __init__(self):
         self.INPUT_CSV = self.TMP_PATH / "NRI_Table_CensusTracts.csv"
 
         self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_INPUT_FIELD_NAME = (

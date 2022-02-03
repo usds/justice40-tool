@@ -79,19 +79,22 @@ class ExtractTransformLoad:
 
     output_df: pd.DataFrame = None
 
-    def _get_output_file_path(self) -> pathlib.Path:
+    # This is a classmethod so it can be used by `get_data_frame` without
+    # needing to create an instance of the class. This is a use case in `etl_score`.
+    @classmethod
+    def _get_output_file_path(cls) -> pathlib.Path:
         """Generate the output file path."""
-        if self.NAME is None:
+        if cls.NAME is None:
             raise NotImplementedError(
-                f"Child ETL class needs to specify `self.NAME` (currently "
-                f"{self.NAME}) and `self.LAST_UPDATED_YEAR` (currently "
-                f"{self.LAST_UPDATED_YEAR})."
+                f"Child ETL class needs to specify `cls.NAME` (currently "
+                f"{cls.NAME}) and `cls.LAST_UPDATED_YEAR` (currently "
+                f"{cls.LAST_UPDATED_YEAR})."
             )
 
         output_file_path = (
-            self.DATA_PATH
+            cls.DATA_PATH
             / "dataset"
-            / f"{self.NAME}_{self.LAST_UPDATED_YEAR}"
+            / f"{cls.NAME}_{cls.LAST_UPDATED_YEAR}"
             / "usa.csv"
         )
         return output_file_path
@@ -130,8 +133,8 @@ class ExtractTransformLoad:
         #  base class parameters and patterns.
         if self.GEO_LEVEL is None:
             logger.info(
-                f"Skipping validation step for this class because it does not "
-                f"seem to be converted to new ETL class patterns."
+                "Skipping validation step for this class because it does not "
+                "seem to be converted to new ETL class patterns."
             )
             return
 
@@ -199,8 +202,8 @@ class ExtractTransformLoad:
                     != expected_geo_field_characters
                 ):
                     raise ValueError(
-                        f"Wrong character length: some of the census geography data "
-                        f"has the wrong length."
+                        "Wrong character length: some of the census geography data "
+                        "has the wrong length."
                     )
 
                 non_unique_geo_field_values = len(
@@ -235,7 +238,10 @@ class ExtractTransformLoad:
 
         logger.info(f"File written to `{output_file_path}`.")
 
-    def get_data_frame(self) -> pd.DataFrame:
+    # This is a classmethod so it can be used without needing to create an instance of
+    # the class. This is a use case in `etl_score`.
+    @classmethod
+    def get_data_frame(cls) -> pd.DataFrame:
         """Return the output data frame for this class.
 
         Must be run after a full ETL process has been run for this class.
@@ -243,10 +249,10 @@ class ExtractTransformLoad:
         If the ETL has been not run for this class, this will error.
         """
         # Read in output file
-        output_file_path = self._get_output_file_path()
+        output_file_path = cls._get_output_file_path()
         if not output_file_path.exists():
             raise ValueError(
-                f"Make sure to run ETL process first for `{self.__class__}`. "
+                f"Make sure to run ETL process first for `{cls.__class__}`. "
                 f"No file found at `{output_file_path}`."
             )
 
@@ -255,8 +261,8 @@ class ExtractTransformLoad:
             dtype={
                 # Not all outputs will have both a Census Block Group ID and a
                 # Tract ID, but these will be ignored if they're not present.
-                self.GEOID_FIELD_NAME: "string",
-                self.GEOID_TRACT_FIELD_NAME: "string",
+                cls.GEOID_FIELD_NAME: "string",
+                cls.GEOID_TRACT_FIELD_NAME: "string",
             },
         )
 
