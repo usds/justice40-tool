@@ -41,6 +41,10 @@ const ContactPage = ({location}: IContactPageProps) => {
                   />,
                 }}/>
             </p>
+            <h3>{CONTACT_COPY.CENSUS_TRACK_FEEDBACK.TITLE}</h3>
+            <p>{CONTACT_COPY.CENSUS_TRACK_FEEDBACK.PARAGRAPH1}</p>
+            <p>{CONTACT_COPY.CENSUS_TRACK_FEEDBACK.PARAGRAPH2}</p>
+            <p>{CONTACT_COPY.CENSUS_TRACK_FEEDBACK.PARAGRAPH3}</p>
           </Grid>
         </Grid>
       </J40MainGridContainer>

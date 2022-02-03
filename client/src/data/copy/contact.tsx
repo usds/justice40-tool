@@ -1,4 +1,7 @@
+import React from 'react';
 import {defineMessages} from 'react-intl';
+import {FormattedMessage, Link} from 'gatsby-plugin-intl';
+import LinkTypeWrapper from '../../components/LinkTypeWrapper';
 
 export const PAGE_INTRO = defineMessages({
   PAGE_TILE: {
@@ -27,6 +30,49 @@ export const PAGE_INTRO = defineMessages({
     description: 'text for floating action button',
   },
 });
+
+export const CENSUS_TRACK_FEEDBACK = {
+  TITLE: <FormattedMessage
+    id={'contact.page.census.track.feedback.title'}
+    defaultMessage={`Census track feedback`}
+    description={'census track feedback section'}
+  />,
+  PARAGRAPH1: <FormattedMessage
+    id={'contact.page.census.track.feedback.para1'}
+    defaultMessage={`
+      To provide feedback about a specific census tract, either select the send feedback button after 
+      finding a tract on the {exploreLink} page or just use the email address provided above. Please 
+      include the census tract ID, county, state or territory information, in addition to your feedback.
+    `}
+    description={'census track feedback section'}
+    values={{
+      exploreLink: <Link to={'/cejst'}>Explore the tool</Link>,
+    }}
+  />,
+  PARAGRAPH2: <FormattedMessage
+    id={'contact.page.census.track.feedback.para2'}
+    defaultMessage={`
+      If there are specific data indicators that could be improved or changed, please include that
+      information in the body of the email.
+    `}
+    description={'census track feedback section'}
+  />,
+  PARAGRAPH3: <FormattedMessage
+    id={'contact.page.census.track.feedback.para1'}
+    defaultMessage={`
+      In addition, you can provide information about data via the {improvementSurvey}.
+    `}
+    description={'census track feedback section'}
+    values={{
+      improvementSurvey: <LinkTypeWrapper
+        linkText={'improvement survey'}
+        internal={false}
+        url={`https://www.surveymonkey.com/r/cejst-survey`}
+        openUrlNewTab={true}
+      />,
+    }}
+  />,
+};
 
 export const CONTACT_VIA_EMAIL = {
   ID: 'contact.general',
