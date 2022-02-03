@@ -62,7 +62,7 @@ export const FORMULA = {
   AND: <FormattedMessage
     id={'methodology.page.formula.second'}
     defaultMessage={ `
-      {and} the tract is above the thresholds for another set income or education related indicators
+      {and} the tract is above the thresholds for another set of income or education related indicators
     `}
     description={'the second part of the formula used in the methodology'}
     values= {{
