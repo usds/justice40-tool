@@ -892,14 +892,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </strong>
            where the 
           <a
-            href="#exp-agr-loss-rate"
+            href="#high-school"
           >
             high school degree achievement rates
           </a>
            rates for adults 25 years and older is at or less than 
     90% WHEN 
           <a
-            href="#exp-bld-loss-rate"
+            href="#high-ed-enroll-rate"
           >
             higher ed enrollment rate
           </a>

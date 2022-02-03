@@ -187,8 +187,8 @@ export const CATEGORY_AND_CLAUSE = {
     description= {'and portion of the formula dealing with higher ed enrollment and high school degree rate'}
     values= {{
       and: <strong>AND</strong>,
-      highSchoolRate: <a href="#exp-agr-loss-rate">high school degree achievement rates</a>,
-      highEdEnrollRate: <a href="#exp-bld-loss-rate">higher ed enrollment rate</a>,
+      highSchoolRate: <a href="#high-school">high school degree achievement rates</a>,
+      highEdEnrollRate: <a href="#high-ed-enroll-rate">higher ed enrollment rate</a>,
     }}
   />,
 };
