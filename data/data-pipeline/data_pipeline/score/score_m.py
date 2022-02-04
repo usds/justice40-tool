@@ -34,9 +34,9 @@ class ScoreM(Score):
         This function is fairly logically complicated. It takes the following steps:
 
             1. Combine the two different fields into a single field.
-            2. Calculate the 90th percentile cutoff raw value for the combined field.
+            2. Calculate the 90th percentile for the combined field.
             3. Create a boolean series that is true for any census tract in the island
-                areas (and only the island areas) that exceeds this cutoff.
+                areas (and only the island areas) that exceeds this percentile.
 
         For step one, it combines data that is either the island area's Decennial Census
         value in 2009 or the state's value in 5-year ACS ending in 2010.
@@ -73,44 +73,13 @@ class ScoreM(Score):
             np.nan,
         )
 
-        logger.info(
-            f"Combined field `{combined_column_name}` has "
-            f"{df[combined_column_name].isnull().sum()} "
-            f"({df[combined_column_name].isnull().sum() * 100 / len(df):.2f}%) "
-            f"missing values for census tracts. "
-        )
-
-        # Calculate the percentile threshold raw value.
-        raw_threshold = np.nanquantile(
-            a=df[combined_column_name], q=threshold_cutoff_for_island_areas
-        )
-
-        logger.info(
-            f"For combined field `{combined_column_name}`, "
-            f"the {threshold_cutoff_for_island_areas*100:.0f} percentile cutoff is a "
-            f"raw value of {raw_threshold:.3f}."
-        )
-
         threshold_column_name = (
             f"{column_from_island_areas} exceeds "
             f"{threshold_cutoff_for_island_areas*100:.0f}th percentile"
         )
 
         df[threshold_column_name] = (
-            df[column_from_island_areas] >= raw_threshold
-        )
-
-        percent_of_tracts_highlighted = (
-            100
-            * df[threshold_column_name].sum()
-            / df[column_from_island_areas].notnull().sum()
-        )
-
-        logger.info(
-            f"For `{threshold_column_name}`, "
-            f"{df[threshold_column_name].sum()} ("
-            f"{percent_of_tracts_highlighted:.2f}% of tracts that have non-null data "
-            f"in the column) have a value of TRUE."
+            df[return_series_name] >= threshold_cutoff_for_island_areas
         )
 
         return df, threshold_column_name
