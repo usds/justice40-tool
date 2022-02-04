@@ -314,7 +314,7 @@ class PostScoreETL(ExtractTransformLoad):
         self, excel_df: pd.DataFrame, excel_path: Path
     ) -> None:
         # Define Excel Columns Column Width
-        NUM_EXCEL_COLS_WIDTH = 30
+        num_excel_cols_width = 30
 
         # Create a Pandas Excel writer using XlsxWriter as the engine.
         with pd.ExcelWriter(  # pylint: disable=abstract-class-instantiated
@@ -325,7 +325,7 @@ class PostScoreETL(ExtractTransformLoad):
 
             # Convert the dataframe to an XlsxWriter Excel object. We also turn off the
             # index column at the left of the output dataframe.
-            excel_df.to_excel(writer, sheet_name="Sheet1", index=False)
+            excel_df.to_excel(writer, sheet_name="Data", index=False)
 
             # Get the xlsxwriter workbook and worksheet objects.
             workbook = writer.book
@@ -341,7 +341,7 @@ class PostScoreETL(ExtractTransformLoad):
                 worksheet.write(0, col_num, value, header_format)
 
             num_cols = len(excel_df.columns)
-            worksheet.set_column(0, num_cols - 1, NUM_EXCEL_COLS_WIDTH)
+            worksheet.set_column(0, num_cols - 1, num_excel_cols_width)
 
             writer.save()
 
