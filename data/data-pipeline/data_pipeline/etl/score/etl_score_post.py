@@ -329,7 +329,7 @@ class PostScoreETL(ExtractTransformLoad):
 
             # Get the xlsxwriter workbook and worksheet objects.
             workbook = writer.book
-            worksheet = writer.sheets["Sheet1"]
+            worksheet = writer.sheets["Data"]
 
             # set header format
             header_format = workbook.add_format(
