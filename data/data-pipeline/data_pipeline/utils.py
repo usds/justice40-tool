@@ -86,15 +86,18 @@ def remove_all_from_dir(files_path: Path) -> None:
         None
 
     """
-    for file in os.listdir(files_path):
-        # don't rempove __init__ files as they conserve dir structure
-        if file == "__init__.py":
-            continue
-        if os.path.isfile(files_path / file):
-            os.remove(files_path / file)
-        else:
-            shutil.rmtree(files_path / file)
-        logger.info(f"Removing {file}")
+    if os.path.exists(files_path):
+        for file in os.listdir(files_path):
+            # don't rempove __init__ files as they conserve dir structure
+            if file == "__init__.py":
+                continue
+            if os.path.isfile(files_path / file):
+                os.remove(files_path / file)
+            else:
+                shutil.rmtree(files_path / file)
+            logger.info(f"Removing {file}")
+    else:
+        logger.info(f"The following path does not exist: `{files_path}`.")
 
 
 def remove_all_dirs_from_dir(dir_path: Path) -> None:
@@ -218,7 +221,7 @@ def temp_folder_cleanup() -> None:
 
     data_path = settings.APP_ROOT / "data"
 
-    logger.info("Initializing all temp directoriees")
+    logger.info("Initializing all temp directories")
     remove_all_from_dir(data_path / "tmp")
 
 
