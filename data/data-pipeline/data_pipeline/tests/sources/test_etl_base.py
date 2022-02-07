@@ -302,7 +302,7 @@ class TestETL:
                 etl_with_too_many_rows.validate()
             assert str(error.value).startswith("Too many rows:")
 
-            # Make sure multpile geo field character length throws error.
+            # Make sure multiple geo field character length throws error.
             etl_with_multiple_char_lengths = copy.deepcopy(etl)
             etl_with_multiple_char_lengths.output_df = actual_output_df.copy(
                 deep=True
@@ -316,28 +316,28 @@ class TestETL:
             assert str(error.value).startswith("Multiple character lengths")
 
             # Make sure wrong geo field character length throws error.
-            etl_with_multiple_char_lengths = copy.deepcopy(etl)
-            etl_with_multiple_char_lengths.output_df = actual_output_df.copy(
+            etl_with_wrong_geo_field_character_length = copy.deepcopy(etl)
+            etl_with_wrong_geo_field_character_length.output_df = actual_output_df.copy(
                 deep=True
             )
-            etl_with_multiple_char_lengths.output_df[
+            etl_with_wrong_geo_field_character_length.output_df[
                 ExtractTransformLoad.GEOID_TRACT_FIELD_NAME
             ] = "060070403001"
 
             with pytest.raises(ValueError) as error:
-                etl_with_multiple_char_lengths.validate()
+                etl_with_wrong_geo_field_character_length.validate()
             assert str(error.value).startswith("Wrong character length")
 
-            # Make sure non-unique geo field character length throws error.
-            etl_with_multiple_char_lengths = copy.deepcopy(etl)
-            etl_with_multiple_char_lengths.output_df = actual_output_df.copy(
+            # Make duplicate tract IDs throws error.
+            etl_with_duplicate_geo_field = copy.deepcopy(etl)
+            etl_with_duplicate_geo_field.output_df = actual_output_df.copy(
                 deep=True
             )
-            etl_with_multiple_char_lengths.output_df.loc[
+            etl_with_duplicate_geo_field.output_df.loc[
                 0:1, ExtractTransformLoad.GEOID_TRACT_FIELD_NAME
             ] = "06007040300"
             with pytest.raises(ValueError) as error:
-                etl_with_multiple_char_lengths.validate()
+                etl_with_duplicate_geo_field.validate()
             assert str(error.value).startswith("Duplicate values:")
 
         elif etl.GEO_LEVEL == ValidGeoLevel.CENSUS_BLOCK_GROUP:
@@ -363,13 +363,13 @@ class TestETL:
                 etl_with_too_many_rows.validate()
             assert str(error.value).startswith("Too many rows:")
 
-            # Make sure multpile geo field character length throws error.
+            # Make sure multiple geo field character length throws error.
             etl_with_multiple_char_lengths = copy.deepcopy(etl)
             etl_with_multiple_char_lengths.output_df = actual_output_df.copy(
                 deep=True
             )
             etl_with_multiple_char_lengths.output_df.loc[
-                0, ExtractTransformLoad.GEOID_TRACT_FIELD_NAME
+                0, ExtractTransformLoad.GEOID_FIELD_NAME
             ] = "06007040300123"
 
             with pytest.raises(ValueError) as error:
@@ -377,28 +377,28 @@ class TestETL:
             assert str(error.value).startswith("Multiple character lengths")
 
             # Make sure wrong geo field character length throws error.
-            etl_with_multiple_char_lengths = copy.deepcopy(etl)
-            etl_with_multiple_char_lengths.output_df = actual_output_df.copy(
+            etl_with_wrong_geo_field_character_length = copy.deepcopy(etl)
+            etl_with_wrong_geo_field_character_length.output_df = actual_output_df.copy(
                 deep=True
             )
-            etl_with_multiple_char_lengths.output_df[
-                ExtractTransformLoad.GEOID_TRACT_FIELD_NAME
+            etl_with_wrong_geo_field_character_length.output_df[
+                ExtractTransformLoad.GEOID_FIELD_NAME
             ] = "06007040300123"
 
             with pytest.raises(ValueError) as error:
-                etl_with_multiple_char_lengths.validate()
+                etl_with_wrong_geo_field_character_length.validate()
             assert str(error.value).startswith("Wrong character length")
 
-            # Make sure non-unique geo field character length throws error.
-            etl_with_multiple_char_lengths = copy.deepcopy(etl)
-            etl_with_multiple_char_lengths.output_df = actual_output_df.copy(
+            # Make duplicate block group IDs throws error.
+            etl_with_duplicate_geo_field = copy.deepcopy(etl)
+            etl_with_duplicate_geo_field.output_df = actual_output_df.copy(
                 deep=True
             )
-            etl_with_multiple_char_lengths.output_df.loc[
-                0:1, ExtractTransformLoad.GEOID_TRACT_FIELD_NAME
+            etl_with_duplicate_geo_field.output_df.loc[
+                0:1, ExtractTransformLoad.GEOID_FIELD_NAME
             ] = "0600704030012"
             with pytest.raises(ValueError) as error:
-                etl_with_multiple_char_lengths.validate()
+                etl_with_duplicate_geo_field.validate()
             assert str(error.value).startswith("Duplicate values:")
 
         else:

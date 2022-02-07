@@ -187,32 +187,28 @@ class ExtractTransformLoad:
                         f"rows."
                     )
 
-                geo_field_character_lengths = (
-                    self.output_df[geo_field].str.len().unique()
-                )
-
-                if len(geo_field_character_lengths) > 1:
+                if self.output_df[geo_field].str.len().nunique() > 1:
                     raise ValueError(
                         f"Multiple character lengths for geo field "
-                        f"present: {geo_field_character_lengths}."
+                        f"present: {self.output_df[geo_field].str.len().unique()}."
                     )
 
                 elif (
-                    geo_field_character_lengths[0]
+                    len(self.output_df[geo_field].values[0])
                     != expected_geo_field_characters
                 ):
                     raise ValueError(
-                        "Wrong character length: some of the census geography data "
+                        "Wrong character length: the census geography data "
                         "has the wrong length."
                     )
 
-                non_unique_geo_field_values = len(
-                    self.output_df[geo_field]
-                ) - len(self.output_df[geo_field].unique())
-
-                if non_unique_geo_field_values > 0:
+                duplicate_geo_field_values = (
+                    self.output_df[geo_field].shape[0]
+                    - self.output_df[geo_field].nunique()
+                )
+                if duplicate_geo_field_values > 0:
                     raise ValueError(
-                        f"Duplicate values: There are {non_unique_geo_field_values} "
+                        f"Duplicate values: There are {duplicate_geo_field_values} "
                         f"duplicate values in "
                         f"`{geo_field}`."
                     )
