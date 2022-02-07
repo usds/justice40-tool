@@ -62,7 +62,7 @@ def remove_files_from_dir(
 
     """
     for file in os.listdir(files_path):
-        # don't rempove __init__ files as they conserve dir structure
+        # don't remove __init__ files as they conserve dir structure
         if file == "__init__.py":
             continue
 
