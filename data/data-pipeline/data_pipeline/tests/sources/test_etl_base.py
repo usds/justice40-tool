@@ -317,8 +317,8 @@ class TestETL:
 
             # Make sure wrong geo field character length throws error.
             etl_with_wrong_geo_field_character_length = copy.deepcopy(etl)
-            etl_with_wrong_geo_field_character_length.output_df = actual_output_df.copy(
-                deep=True
+            etl_with_wrong_geo_field_character_length.output_df = (
+                actual_output_df.copy(deep=True)
             )
             etl_with_wrong_geo_field_character_length.output_df[
                 ExtractTransformLoad.GEOID_TRACT_FIELD_NAME
@@ -378,8 +378,8 @@ class TestETL:
 
             # Make sure wrong geo field character length throws error.
             etl_with_wrong_geo_field_character_length = copy.deepcopy(etl)
-            etl_with_wrong_geo_field_character_length.output_df = actual_output_df.copy(
-                deep=True
+            etl_with_wrong_geo_field_character_length.output_df = (
+                actual_output_df.copy(deep=True)
             )
             etl_with_wrong_geo_field_character_length.output_df[
                 ExtractTransformLoad.GEOID_FIELD_NAME
