@@ -9,7 +9,7 @@ from data_pipeline.tests.conftest import copy_data_files
 from data_pipeline.etl.sources.national_risk_index.etl import (
     NationalRiskIndexETL,
 )
-from data_pipeline.tests.sources.example.test_etl_base import TestETL
+from data_pipeline.tests.sources.example.test_etl import TestETL
 from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
