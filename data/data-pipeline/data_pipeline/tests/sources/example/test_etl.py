@@ -1,11 +1,11 @@
 # pylint: disable=protected-access,unsubscriptable-object
 import copy
 import os
+import pathlib
+import pytest
 
 import numpy as np
 import pandas as pd
-import pathlib
-import pytest
 
 from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
 from data_pipeline.tests.conftest import copy_data_files
