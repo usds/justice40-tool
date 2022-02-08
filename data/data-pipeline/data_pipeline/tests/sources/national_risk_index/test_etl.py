@@ -4,13 +4,12 @@ from unittest import mock
 import filecmp
 import requests
 
-from data_pipeline.config import settings
 from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.tests.conftest import copy_data_files
 from data_pipeline.etl.sources.national_risk_index.etl import (
     NationalRiskIndexETL,
 )
-from data_pipeline.tests.sources.test_etl_base import TestETL
+from data_pipeline.tests.sources.example.test_etl_base import TestETL
 from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
@@ -18,9 +17,13 @@ logger = get_module_logger(__name__)
 
 class TestNationalRiskIndexETL(TestETL):
     _ETL_CLASS = NationalRiskIndexETL
-    _DATA_DIRECTORY_FOR_TEST = (
-        settings.APP_ROOT / "tests" / "sources" / "national_risk_index" / "data"
-    )
+
+    def setup_method(self, _method, filename=__file__):
+        """Invoke `setup_method` from Parent, but using the current file name.
+
+        This code can be copied identically between all child classes.
+        """
+        super().setup_method(_method=_method, filename=filename)
 
     def _setup_etl_instance_and_run_extract(self, mock_etl, mock_paths):
         with mock.patch("data_pipeline.utils.requests") as requests_mock:

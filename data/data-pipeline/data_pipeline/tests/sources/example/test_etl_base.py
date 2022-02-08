@@ -4,9 +4,9 @@ import os
 
 import numpy as np
 import pandas as pd
+import pathlib
 import pytest
 
-from data_pipeline.config import settings
 from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
 from data_pipeline.tests.conftest import copy_data_files
 from data_pipeline.tests.sources.example.etl import ExampleETL
@@ -24,11 +24,6 @@ class TestETL:
 
     # In every child test class, change this to the class of the ETL being tested.
     _ETL_CLASS = ExampleETL
-
-    # In every child test class, change this to the directory of the text fixtures.
-    _DATA_DIRECTORY_FOR_TEST = (
-        settings.APP_ROOT / "tests" / "sources" / "example" / "data"
-    )
 
     # The following constants do not need to be updated in child class.
     _INPUT_CSV_FILE_NAME = "input.csv"
@@ -56,6 +51,30 @@ class TestETL:
         "15003010201",
         "15007040604",
     ]
+
+    _DATA_DIRECTORY_FOR_TEST: pathlib.PosixPath
+
+    def setup_method(self, _method, filename=__file__):
+        """Before every test, set the data directory for the test.
+
+        Uses the directory of the test class to infer the data directory.
+
+        pytest does not support classes with an `__init__`. Instead, we use this
+        `setup_method` which pytest will run before every test method is run.
+
+        For now, all child classes inheriting this need to reimplement this, but can
+        use the same line of code regardless of the child class:
+
+        ```
+            def setup_method(self, _method, filename=__file__):
+            '''Invoke `setup_method` from Parent, but using the current file name
+
+            This code can be copied identically between all child classes.
+            '''
+            super().setup_method(_method=_method, filename=filename)
+        ```
+        """
+        self._DATA_DIRECTORY_FOR_TEST = pathlib.Path(filename).parent / "data"
 
     def _get_instance_of_etl_class(self) -> type(ExtractTransformLoad):
         return self._ETL_CLASS()
