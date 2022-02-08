@@ -1,7 +1,6 @@
 import enum
 import pathlib
 import typing
-from pathlib import Path
 from typing import Optional
 
 import pandas as pd
@@ -35,11 +34,11 @@ class ExtractTransformLoad:
         GEOID_TRACT_FIELD_NAME (str): The common column name for a Census Tract identifier
     """
 
-    APP_ROOT: Path = settings.APP_ROOT
+    APP_ROOT: pathlib.Path = settings.APP_ROOT
 
     # Directories
-    DATA_PATH: Path = APP_ROOT / "data"
-    TMP_PATH: Path = DATA_PATH / "tmp"
+    DATA_PATH: pathlib.Path = APP_ROOT / "data"
+    TMP_PATH: pathlib.Path = DATA_PATH / "tmp"
 
     # Parameters
     GEOID_FIELD_NAME: str = "GEOID10"
@@ -102,7 +101,7 @@ class ExtractTransformLoad:
     def extract(
         self,
         source_url: str = None,
-        extract_path: Path = None,
+        extract_path: pathlib.Path = None,
         verify: Optional[bool] = True,
     ) -> None:
         """Extract the data from a remote source. By default it provides code
