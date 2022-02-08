@@ -194,7 +194,7 @@ class ExtractTransformLoad:
                     )
 
                 elif (
-                    len(self.output_df[geo_field].values[0])
+                    len(self.output_df[geo_field].array[0])
                     != expected_geo_field_characters
                 ):
                     raise ValueError(
