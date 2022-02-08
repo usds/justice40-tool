@@ -241,6 +241,31 @@ class PostScoreETL(ExtractTransformLoad):
             constants.DOWNLOADABLE_SCORE_COLUMNS
         ].copy(deep=True)
 
+        f = open(self.TMP_PATH / "downloadable.yml", "wb")
+        contents = "downloadable_fields:\n"
+
+        for column in df.columns:
+            contents += "    - score_name: " + str(column) + "\n"
+            contents += "      label: " + str(column) + "\n"
+
+            # rounding and percentages
+            if str(df[column].dtype) == "float64":
+                if any(
+                    x in column for x in constants.PERCENT_PREFIXES_SUFFIXES
+                ):
+                    contents += "      format: percent\n"
+                elif column in constants.FEMA_ROUND_NUM_COLUMNS:
+                    contents += "      format: loss_rate_percentages\n"
+                else:
+                    contents += "      format: float\n"
+            elif str(df[column].dtype) == "object":
+                contents += "      format: string\n"
+            else:
+                contents += f"      format: {df[column].dtype}\n"
+
+        f.write(contents.encode())
+        f.close()
+
         df_of_float_columns = df.select_dtypes(include=["float64"])
 
         for column in df_of_float_columns.columns:
