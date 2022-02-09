@@ -66,6 +66,9 @@ CENSUS_COUNTIES_COLUMNS = ["USPS", "GEOID", "NAME"]
 # Drop FIPS codes from map
 DROP_FIPS_CODES = ["66", "78"]
 
+# YAML Config files
+YAML_CONFIG_PATH = Path(settings.APP_ROOT) / "etl" / "score" / "config"
+
 # Percent prefixes for rounding
 PERCENT_PREFIXES_SUFFIXES = [
     "Percent",

@@ -322,6 +322,10 @@ def zip_directory(
     )
 
 
+def load_field_names_from_yaml(yaml_object: object) -> list:
+    return []
+
+
 def get_excel_column_name(index: int) -> str:
     """Map a numeric index to the appropriate column in Excel. E.g., column #95 is "CR".
     Only works for the first 1000 columns.

@@ -3,6 +3,7 @@ import json
 from numpy import float64
 import numpy as np
 import pandas as pd
+import yaml
 
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.score.etl_utils import floor_series
@@ -254,6 +255,13 @@ class PostScoreETL(ExtractTransformLoad):
     def _create_downloadable_data(
         self, score_county_state_merged_df: pd.DataFrame
     ) -> pd.DataFrame:
+
+        # open yaml config
+        with open(
+            constants.YAML_CONFIG_PATH / "downloadable.yml", encoding="UTF-8"
+        ) as file:
+            downloadable_config = yaml.load(file, Loader=yaml.FullLoader)
+
         df = score_county_state_merged_df[
             constants.DOWNLOADABLE_SCORE_COLUMNS
         ].copy(deep=True)
