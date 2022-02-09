@@ -501,7 +501,7 @@ class TestETL:
         else:
             raise NotImplementedError("This geo level not tested yet.")
 
-    # TODO: Add a flag to make this run only when pytest is run with an argument.
+    @pytest.mark.update_snapshots
     def test_update_test_fixtures(self, mock_etl, mock_paths):
         """Update the test fixtures (the data files) used by the test.
 

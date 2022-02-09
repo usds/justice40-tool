@@ -2,6 +2,8 @@
 from unittest import mock
 
 import filecmp
+
+import pytest
 import requests
 
 from data_pipeline.etl.base import ValidGeoLevel
@@ -54,7 +56,7 @@ class TestNationalRiskIndexETL(TestETL):
 
         return etl
 
-    # TODO: Add a flag to make this run only when pytest is run with an argument.
+    @pytest.mark.update_snapshots
     def test_update_test_fixtures(self, mock_etl, mock_paths):
         etl = self._setup_etl_instance_and_run_extract(
             mock_etl=mock_etl, mock_paths=mock_paths
