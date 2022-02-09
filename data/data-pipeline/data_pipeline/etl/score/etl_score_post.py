@@ -199,7 +199,7 @@ class PostScoreETL(ExtractTransformLoad):
     def _create_tile_data(
         self,
         score_county_state_merged_df: pd.DataFrame,
-        drop_guam_usvi=constants.DROP_GUAM_AND_USVI_FROM_TILES,
+        drop_guam_usvi: bool = constants.DROP_GUAM_AND_USVI_FROM_TILES,
     ) -> pd.DataFrame:
 
         logger.info("Rounding Decimals")
@@ -213,7 +213,7 @@ class PostScoreETL(ExtractTransformLoad):
 
         if drop_guam_usvi:
             # Currently, we do not want USVI or Guam on the map, so this will drop all
-            # rows with this FIPS
+            # rows with the FIPS codes (first two digits of the census tract)
             logger.info("Dropping USVI and Guam from tile data")
             tracts_to_drop = []
             for fips_code in constants.DROP_FIPS_CODES:
