@@ -1,5 +1,6 @@
 ---
 global_config:
+  sort_by_label: Census tract ID
   rounding_num:
     float: 2
     loss_rate_percentage: 4
@@ -7,11 +8,11 @@ fields:
   - score_name: GEOID10_TRACT
     label: Census tract ID
     format: string
-  - score_name: County Name
-    label: County Name
-    format: string
   - score_name: State/Territory
     label: State/Territory
+    format: string
+  - score_name: County Name
+    label: County Name
     format: string
   - score_name: Total threshold criteria exceeded
     label: Total threshold criteria exceeded

@@ -320,7 +320,9 @@ class PostScoreETL(ExtractTransformLoad):
         )
 
         # sort by tract id
-        df_sorted = renamed_df.sort_values(self.GEOID_TRACT_FIELD_NAME)
+        df_sorted = renamed_df.sort_values(
+            downloadable_csv_config["global_config"]["sort_by_label"]
+        )
 
         return df_sorted
 
@@ -415,9 +417,6 @@ class PostScoreETL(ExtractTransformLoad):
         self._load_excel_from_df(downloadable_df, excel_path)
 
         logger.info("Writing downloadable csv")
-        downloadable_df[self.GEOID_TRACT_FIELD_NAME] = (
-            '"' + downloadable_df[self.GEOID_TRACT_FIELD_NAME] + '"'
-        )
         downloadable_df.to_csv(csv_path, index=False)
 
         logger.info("Compressing files")
