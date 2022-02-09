@@ -197,7 +197,6 @@ class PostScoreETL(ExtractTransformLoad):
     def _create_tile_data(
         self,
         score_county_state_merged_df: pd.DataFrame,
-        drop_guam_usvi: bool = constants.DROP_GUAM_AND_USVI_FROM_TILES,
     ) -> pd.DataFrame:
 
         logger.info("Rounding Decimals")
