@@ -319,12 +319,15 @@ class PostScoreETL(ExtractTransformLoad):
             inplace=False,
         )
 
-        # sort by tract id
-        df_sorted = renamed_df.sort_values(
-            downloadable_csv_config["global_config"]["sort_by_label"]
-        )
+        # sort if needed
+        if downloadable_csv_config["global_config"].get("sort_by_label"):
+            final_df = renamed_df.sort_values(
+                downloadable_csv_config["global_config"]["sort_by_label"]
+            )
+        else:
+            final_df = renamed_df
 
-        return df_sorted
+        return final_df
 
     def transform(self) -> None:
         logger.info("Transforming data sources for Score + County CSVs")
