@@ -308,8 +308,19 @@ class PostScoreETL(ExtractTransformLoad):
                     ]["float"],
                 )
 
+        # rename fields
+        column_rename_dict = load_dict_from_yaml_object_fields(
+            yaml_object=downloadable_csv_config,
+            object_key="score_name",
+            object_value="label",
+        )
+        renamed_df = df.rename(
+            columns=column_rename_dict,
+            inplace=False,
+        )
+
         # sort by tract id
-        df_sorted = df.sort_values(self.GEOID_TRACT_FIELD_NAME)
+        df_sorted = renamed_df.sort_values(self.GEOID_TRACT_FIELD_NAME)
 
         return df_sorted
 
@@ -400,22 +411,14 @@ class PostScoreETL(ExtractTransformLoad):
         zip_path = constants.SCORE_DOWNLOADABLE_ZIP_FILE_PATH
         pdf_path = constants.SCORE_DOWNLOADABLE_PDF_FILE_PATH
 
-        # Rename score column
-        downloadable_df_copy = downloadable_df.rename(
-            columns={
-                DISADVANTAGED_COMMUNITIES_FIELD: "Identified as disadvantaged (v0.1)"
-            },
-            inplace=False,
-        )
-
         logger.info("Writing downloadable excel")
-        self._load_excel_from_df(downloadable_df_copy, excel_path)
+        self._load_excel_from_df(downloadable_df, excel_path)
 
         logger.info("Writing downloadable csv")
-        downloadable_df_copy[self.GEOID_TRACT_FIELD_NAME] = (
-            '"' + downloadable_df_copy[self.GEOID_TRACT_FIELD_NAME] + '"'
+        downloadable_df[self.GEOID_TRACT_FIELD_NAME] = (
+            '"' + downloadable_df[self.GEOID_TRACT_FIELD_NAME] + '"'
         )
-        downloadable_df_copy.to_csv(csv_path, index=False)
+        downloadable_df.to_csv(csv_path, index=False)
 
         logger.info("Compressing files")
         files_to_compress = [csv_path, excel_path, pdf_path]

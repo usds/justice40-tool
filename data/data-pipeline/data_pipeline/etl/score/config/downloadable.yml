@@ -5,7 +5,7 @@ global_config:
     loss_rate_percentage: 4
 fields:
   - score_name: GEOID10_TRACT
-    label: GEOID10_TRACT
+    label: Census tract ID
     format: string
   - score_name: County Name
     label: County Name
@@ -17,7 +17,7 @@ fields:
     label: Total threshold criteria exceeded
     format: int64
   - score_name: Definition M (communities)
-    label: Definition M (communities)
+    label: Identified as disadvantaged (v0.1)
     format: bool
   - score_name: Total population
     label: Total population
