@@ -209,21 +209,21 @@ class PostScoreETL(ExtractTransformLoad):
             tiles_score_column_titles
         ].copy()
 
-        if drop_guam_usvi:
-            # Currently, we do not want USVI or Guam on the map, so this will drop all
-            # rows with the FIPS codes (first two digits of the census tract)
-            logger.info("Dropping USVI and Guam from tile data")
-            tracts_to_drop = []
-            for fips_code in constants.DROP_FIPS_CODES:
-                tracts_to_drop += score_tiles[
-                    score_tiles[field_names.GEOID_TRACT_FIELD].str.startswith(
-                        fips_code
-                    )
-                ][field_names.GEOID_TRACT_FIELD].to_list()
-            logger.info(f"Dropping {len(tracts_to_drop)} tracts")
-            score_tiles = score_tiles[
-                ~score_tiles[field_names.GEOID_TRACT_FIELD].isin(tracts_to_drop)
-            ]
+        # Currently, we do not want USVI or Guam on the map, so this will drop all
+        # rows with the FIPS codes (first two digits of the census tract)
+        logger.info(
+            f"Dropping specified FIPS codes from tile data: {constants.DROP_FIPS_CODES}"
+        )
+        tracts_to_drop = []
+        for fips_code in constants.DROP_FIPS_CODES:
+            tracts_to_drop += score_tiles[
+                score_tiles[field_names.GEOID_TRACT_FIELD].str.startswith(
+                    fips_code
+                )
+            ][field_names.GEOID_TRACT_FIELD].to_list()
+        score_tiles = score_tiles[
+            ~score_tiles[field_names.GEOID_TRACT_FIELD].isin(tracts_to_drop)
+        ]
 
         score_tiles[constants.TILES_SCORE_FLOAT_COLUMNS] = score_tiles[
             constants.TILES_SCORE_FLOAT_COLUMNS
