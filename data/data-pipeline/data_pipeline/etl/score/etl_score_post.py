@@ -3,11 +3,16 @@ import json
 from numpy import float64
 import numpy as np
 import pandas as pd
-import yaml
 
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.score.etl_utils import floor_series
-from data_pipeline.utils import get_module_logger, zip_files
+from data_pipeline.utils import (
+    get_module_logger,
+    zip_files,
+    load_yaml_dict_from_file,
+    column_list_from_yaml_object_fields,
+    load_dict_from_yaml_object_fields,
+)
 from data_pipeline.score import field_names
 
 
@@ -257,21 +262,24 @@ class PostScoreETL(ExtractTransformLoad):
     ) -> pd.DataFrame:
 
         # open yaml config
-        with open(
-            constants.YAML_CONFIG_PATH / "downloadable.yml", encoding="UTF-8"
-        ) as file:
-            downloadable_config = yaml.load(file, Loader=yaml.FullLoader)
+        downloadable_csv_config = load_yaml_dict_from_file(
+            constants.YAML_CONFIG_PATH / "downloadable.yml"
+        )
 
         df = score_county_state_merged_df[
-            constants.DOWNLOADABLE_SCORE_COLUMNS
+            column_list_from_yaml_object_fields(
+                yaml_object=downloadable_csv_config, target_field="score_name"
+            )
         ].copy(deep=True)
 
-        df_of_float_columns = df.select_dtypes(include=["float64"])
+        column_type_dict = load_dict_from_yaml_object_fields(
+            yaml_object=downloadable_csv_config,
+            object_key="score_name",
+            object_value="format",
+        )
 
-        for column in df_of_float_columns.columns:
-            # TODO: create a schema for fields to make it more explicit and safe which
-            #  fields are percentages.
-            if any(x in column for x in constants.PERCENT_PREFIXES_SUFFIXES):
+        for column in df.columns:
+            if column_type_dict[column] == "percentage":
                 # Convert percentages from fractions between 0 and 1 to an integer
                 # from 0 to 100.
                 df_100 = df[column] * 100
@@ -280,20 +288,24 @@ class PostScoreETL(ExtractTransformLoad):
                 ).astype("Int64")
                 df[column] = df_int
 
-            elif column in constants.FEMA_ROUND_NUM_COLUMNS:
+            elif column_type_dict[column] == "loss_rate_percentage":
                 # Convert loss rates by multiplying by 100 (they are percents)
                 # and then rounding appropriately.
                 df_100 = df[column] * 100
                 df[column] = floor_series(
                     series=df_100.astype(float64),
-                    number_of_decimals=constants.TILES_FEMA_ROUND_NUM_DECIMALS,
+                    number_of_decimals=downloadable_csv_config["global_config"][
+                        "rounding_num"
+                    ]["loss_rate_percentage"],
                 )
 
-            else:
-                # Round all other floats.
+            elif column_type_dict[column] == "float":
+                # Round the floats.
                 df[column] = floor_series(
                     series=df[column].astype(float64),
-                    number_of_decimals=constants.TILES_ROUND_NUM_DECIMALS,
+                    number_of_decimals=downloadable_csv_config["global_config"][
+                        "rounding_num"
+                    ]["float"],
                 )
 
         # sort by tract id

@@ -9,6 +9,7 @@ import zipfile
 from pathlib import Path
 import urllib3
 import requests
+import yaml
 
 from data_pipeline.config import settings
 
@@ -322,8 +323,55 @@ def zip_directory(
     )
 
 
-def load_field_names_from_yaml(yaml_object: object) -> list:
-    return []
+def load_yaml_dict_from_file(yaml_file_path: Path) -> dict:
+    """Load a YAML file specified in path into a Python dictionary.
+
+    Args:
+        yaml_file_path (int): the path to the YAML file
+
+    Returns:
+        dict: the parsed YAML object as a Python dictionary
+    """
+    with open(yaml_file_path, encoding="UTF-8") as file:
+        yaml_dict = yaml.load(file, Loader=yaml.FullLoader)
+    return yaml_dict
+
+
+def column_list_from_yaml_object_fields(
+    yaml_object: dict, target_field: str
+) -> list:
+    """Creates a list of the columns from a YAML score configuration file fields list.
+
+    Args:
+        yaml_object (dict): raw dictionary returned from reading the YAML score configuration file
+        target_field (str): the dict field to extract
+
+    Returns:
+        list: a list of all the "score_name" fields
+    """
+    yaml_list = []
+    for field in yaml_object["fields"]:
+        yaml_list.append(field[target_field])
+    return yaml_list
+
+
+def load_dict_from_yaml_object_fields(
+    yaml_object: dict, object_key: str, object_value: str
+) -> dict:
+    """Creates a dictionary with a configurable key and value from a YAML score configuration file fields list.
+
+    Args:
+        yaml_object (dict): raw dictionary returned from reading the YAML score configuratio nfile
+        object_key (str): key for the dictionary
+        object_value (str): value for the dictionary
+
+    Returns:
+        dict: a dict with the specified keys and values
+    """
+    yaml_dict = {}
+    for field in yaml_object["fields"]:
+        yaml_dict[field[object_key]] = field[object_value]
+    return yaml_dict
 
 
 def get_excel_column_name(index: int) -> str:
