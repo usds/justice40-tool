@@ -14,7 +14,6 @@ from data_pipeline.etl.sources.census.etl_utils import (
     check_census_data_source,
 )
 from . import constants
-from data_pipeline.etl import score
 
 logger = get_module_logger(__name__)
 
