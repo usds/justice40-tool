@@ -510,7 +510,7 @@ class TestETL:
         needs to explicitly define how to update the `input` fixture that comes after
         the extract step.
 
-        Using this method to update fixtures  can be helpful if you expect the
+        Using this method to update fixtures can be helpful if you expect the
         results to change because you changed the logic of the ETL class and need to
         quickly update the fixtures.
 

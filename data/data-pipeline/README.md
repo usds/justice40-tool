@@ -74,9 +74,11 @@ The first step of processing we perform is a simple ETL process for each of the 
 Each CSV may have a different column name for the census tract or census block group identifier. You can find what the name is in the ETL code. Please note that when you view these files you should make sure that your text editor or spreadsheet software does not remove the initial `0` from this identifier field (many IDs begin with `0`).
 
 #### 3. Combined dataset
+
 The CSV with the combined data from all of these sources [can be accessed here](https://justice40-data.s3.amazonaws.com/data-pipeline/data/score/csv/full/usa.csv).
 
 #### 4. Tileset
+
 Once we have all the data from the previous stages, we convert it to tiles to make it usable on a map. We render the map on the client side which can be seen using `docker-compose up`.
 
 ### Score generation and comparison workflow
@@ -155,7 +157,7 @@ _NOTE:_ This may take several minutes or over an hour to fully execute and gener
 
 We use Docker to install the necessary libraries in a container that can be run in any operating system.
 
-*Important*: To be able to run the data Docker containers, you need to increase the memory resource of your container to at leat 8096 MB.
+_Important_: To be able to run the data Docker containers, you need to increase the memory resource of your container to at leat 8096 MB.
 
 To build the docker container the first time, make sure you're in the root directory of the repository and run `docker-compose build --no-cache`.
 
@@ -215,7 +217,8 @@ If you want to run tile generation, please install TippeCanoe [following these i
 
 ### The Application entrypoint
 
-After installing the poetry dependencies, you can see a list of commands with the following steps: 
+After installing the poetry dependencies, you can see a list of commands with the following steps:
+
 - Start a terminal
 - Change to the package directory (i.e. `cd data/data-pipeline/data_pipeline`)
 - Then run `poetry run python3 data_pipeline/application.py --help`
@@ -228,25 +231,24 @@ After installing the poetry dependencies, you can see a list of commands with th
 - Then run `poetry run python3 data_pipeline/application.py census-data-download`
   Note: Census files are hosted in the Justice40 S3 and you can skip this step by passing the `-s aws` or `--data-source aws` flag in the scripts below
 
-
 ### Run all ETL, score and map generation processes
+
 - Start a terminal
 - Change to the package directory (i.e. `cd data/data-pipeline/data_pipeline`)
 - Then run `poetry run python3 data_pipeline/application.py data-full-run -s aws`
 - Note: The `-s` flag is optional if you have generated/downloaded the census data
 
-
 ### Run both ETL and score generation processes
+
 - Start a terminal
 - Change to the package directory (i.e. `cd data/data-pipeline/data_pipeline`)
 - Then run `poetry run python3 data_pipeline/application.py score-full-run`
 
-
 ### Run all ETL processes
+
 - Start a terminal
 - Change to the package directory (i.e. `cd data/data-pipeline/data_pipeline`)
 - Then run `poetry run python3 data_pipeline/application.py etl-run`
-
 
 ### Generating Map Tiles
 
@@ -306,6 +308,7 @@ If you update the score in any way, it is necessary to create new pickles so tha
 It starts with the `data_pipeline/etl/score/tests/sample_data/score_data_initial.csv`, which is the first two rows of the `score/full/usa.csv`.
 
 To update this file, run a full score generation, then open a Python shell from the `data-pipeline` directory (e.g. `poetry run python3`), and then update the file with the following commands:
+
 ```
 import pickle
 from pathlib import Path
@@ -321,6 +324,7 @@ score_initial_df.to_csv(data_path / "data_pipeline" / "etl" / "score" / "tests" 
 Now you can move on to updating individual pickles for the tests. Note that it is helpful to do them in this order:
 
 We have four pickle files that correspond to expected files:
+
 - `score_data_expected.pkl`: Initial score without counties
 - `score_transformed_expected.pkl`: Intermediate score with `etl._extract_score` and `etl. _transform_score` applied. There's no file for this intermediate process, so we need to capture the pickle mid-process.
 - `tile_data_expected.pkl`: Score with columns to be baked in tiles
