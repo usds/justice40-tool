@@ -60,6 +60,9 @@ def etl_runner(dataset_to_run: str = None) -> None:
         # run load
         etl_instance.load()
 
+        # run validate
+        etl_instance.validate()
+
         # cleanup
         etl_instance.cleanup()
 

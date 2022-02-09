@@ -55,11 +55,6 @@ class CDCLifeExpectancy(ExtractTransformLoad):
             }
         )
 
-    def validate(self) -> None:
-        logger.info("Validating CDC Life Expectancy Data")
-
-        pass
-
     def load(self) -> None:
         logger.info("Saving CDC Life Expectancy CSV")
 

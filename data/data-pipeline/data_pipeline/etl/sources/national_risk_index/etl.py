@@ -5,7 +5,7 @@
 
 import pandas as pd
 
-from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
 from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
@@ -14,15 +14,14 @@ logger = get_module_logger(__name__)
 class NationalRiskIndexETL(ExtractTransformLoad):
     """ETL class for the FEMA National Risk Index dataset"""
 
+    NAME = "national_risk_index"
+    LAST_UPDATED_YEAR = 2020
+    SOURCE_URL = "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload//NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
+    GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
+
     def __init__(self):
-        self.NRI_FTP_URL = "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload//NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
         self.INPUT_CSV = self.TMP_PATH / "NRI_Table_CensusTracts.csv"
-        self.OUTPUT_DIR = (
-            self.DATA_PATH / "dataset" / "national_risk_index_2020"
-        )
-        self.BLOCK_GROUP_CSV = (
-            self.DATA_PATH / "dataset" / "census_acs_2019" / "usa.csv"
-        )
+
         self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_INPUT_FIELD_NAME = (
             "EAL_SCORE"
         )
@@ -52,7 +51,6 @@ class NationalRiskIndexETL(ExtractTransformLoad):
             "Expected population loss rate (Natural Hazards Risk Index)"
         )
 
-        # Note: also need to edit transform step to add fields to output.
         self.COLUMNS_TO_KEEP = [
             self.GEOID_TRACT_FIELD_NAME,
             self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME,
@@ -69,8 +67,8 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         """
         logger.info("Downloading 405MB National Risk Index Data")
         super().extract(
-            self.NRI_FTP_URL,
-            self.TMP_PATH,
+            source_url=self.SOURCE_URL,
+            extract_path=self.TMP_PATH,
         )
 
     def transform(self) -> None:
@@ -164,14 +162,12 @@ class NationalRiskIndexETL(ExtractTransformLoad):
             / df_nri[self.BUILDING_VALUE_INPUT_FIELD_NAME]
         )
 
-        self.df = df_nri
+        # Round all float columns to just 10 digits.
+        # Note: `round` is smart enough to only apply to float columns.
+        df_nri = df_nri.round(10)
+
+        self.output_df = df_nri
 
     def load(self) -> None:
-        """Writes the NRI data as a csv to the directory at self.OUTPUT_DIR"""
-        logger.info("Saving National Risk Index CSV")
-
-        # write nationwide csv
-        self.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-        self.df[self.COLUMNS_TO_KEEP].to_csv(
-            self.OUTPUT_DIR / "usa.csv", index=False, float_format="%.10f"
-        )
+        # Suppress scientific notation.
+        super().load(float_format="%.10f")

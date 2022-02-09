@@ -5,6 +5,9 @@ import numpy as np
 import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.sources.national_risk_index.etl import (
+    NationalRiskIndexETL,
+)
 from data_pipeline.score.score_runner import ScoreRunner
 from data_pipeline.score import field_names
 from data_pipeline.etl.score import constants
@@ -111,17 +114,7 @@ class ScoreETL(ExtractTransformLoad):
         )
 
         # Load FEMA national risk index data
-        national_risk_index_csv = (
-            constants.DATA_PATH
-            / "dataset"
-            / "national_risk_index_2020"
-            / "usa.csv"
-        )
-        self.national_risk_index_df = pd.read_csv(
-            national_risk_index_csv,
-            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
-            low_memory=False,
-        )
+        self.national_risk_index_df = NationalRiskIndexETL.get_data_frame()
 
         # Load GeoCorr Urban Rural Map
         geocorr_urban_rural_csv = (

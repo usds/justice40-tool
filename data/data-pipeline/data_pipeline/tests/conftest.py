@@ -22,8 +22,9 @@ def copy_data_files(src: Path, dst: Path) -> None:
     """
     if not dst.exists():
         dst.parent.mkdir(parents=True, exist_ok=True)
-        copyfile(src, dst)
-        assert dst.exists()
+
+    copyfile(src, dst)
+    assert dst.exists()
 
 
 @pytest.fixture(scope="session")
@@ -34,24 +35,17 @@ def mock_paths(tmp_path_factory) -> tuple:
     # sets location of the temp directory inside the national_risk_index folder
     os.environ["PYTEST_DEBUG_TEMPROOT"] = str(TMP_DIR)
     TMP_DIR.mkdir(parents=True, exist_ok=True)
+
     # creates DATA_PATH and TMP_PATH directories in temp directory
     data_path = tmp_path_factory.mktemp("data", numbered=False)
     tmp_path = data_path / "tmp"
     tmp_path.mkdir()
+
     return data_path, tmp_path
 
 
-@pytest.fixture(scope="session")
-def mock_census(mock_paths) -> Path:
-    data_path, tmp_path = mock_paths
-    census_src = settings.APP_ROOT / "tests" / "base" / "data" / "census.csv"
-    census_dst = data_path / "census" / "csv" / "us.csv"
-    copy_data_files(census_src, census_dst)
-    return census_dst
-
-
 @pytest.fixture
-def mock_etl(monkeypatch, mock_paths, mock_census) -> None:
+def mock_etl(monkeypatch, mock_paths) -> None:
     """Creates a mock version of the base ExtractTransformLoad class and resets
     global the variables for DATA_PATH and TMP_PATH to the local mock_paths
     """
