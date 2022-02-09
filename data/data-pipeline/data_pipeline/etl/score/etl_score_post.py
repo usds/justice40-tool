@@ -195,11 +195,11 @@ class PostScoreETL(ExtractTransformLoad):
         return de_duplicated_df
 
     def _create_tile_data(
-        self, score_county_state_merged_df: pd.DataFrame
+        self,
+        score_county_state_merged_df: pd.DataFrame,
     ) -> pd.DataFrame:
 
         logger.info("Rounding Decimals")
-
         # grab all the keys from tiles score columns
         tiles_score_column_titles = list(constants.TILES_SCORE_COLUMNS.keys())
 
@@ -207,6 +207,22 @@ class PostScoreETL(ExtractTransformLoad):
         score_tiles = score_county_state_merged_df[
             tiles_score_column_titles
         ].copy()
+
+        # Currently, we do not want USVI or Guam on the map, so this will drop all
+        # rows with the FIPS codes (first two digits of the census tract)
+        logger.info(
+            f"Dropping specified FIPS codes from tile data: {constants.DROP_FIPS_CODES}"
+        )
+        tracts_to_drop = []
+        for fips_code in constants.DROP_FIPS_CODES:
+            tracts_to_drop += score_tiles[
+                score_tiles[field_names.GEOID_TRACT_FIELD].str.startswith(
+                    fips_code
+                )
+            ][field_names.GEOID_TRACT_FIELD].to_list()
+        score_tiles = score_tiles[
+            ~score_tiles[field_names.GEOID_TRACT_FIELD].isin(tracts_to_drop)
+        ]
 
         score_tiles[constants.TILES_SCORE_FLOAT_COLUMNS] = score_tiles[
             constants.TILES_SCORE_FLOAT_COLUMNS
