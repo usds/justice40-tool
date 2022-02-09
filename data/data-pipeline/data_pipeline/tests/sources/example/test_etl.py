@@ -501,6 +501,8 @@ class TestETL:
         else:
             raise NotImplementedError("This geo level not tested yet.")
 
+    # This decorator means that this "test" will only be run by passing that flag to
+    # pytest, for instance by running `pytest . -rsx --update_snapshots`.
     @pytest.mark.update_snapshots
     def test_update_test_fixtures(self, mock_etl, mock_paths):
         """Update the test fixtures (the data files) used by the test.

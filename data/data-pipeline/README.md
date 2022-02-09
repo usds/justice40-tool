@@ -287,11 +287,11 @@ see [python-markdown docs](https://github.com/ipython-contrib/jupyter_contrib_nb
 
 For this project, we make use of [pytest](https://docs.pytest.org/en/latest/) for testing purposes. To run tests, simply run `poetry run pytest` in this directory (i.e. `justice40-tool/data/data-pipeline`).
 
-### Configuration / Fixtures
-
 Test data is configured via [fixtures](https://docs.pytest.org/en/latest/explanation/fixtures.html).
 
-These fixtures utilize [pickle files](https://docs.python.org/3/library/pickle.html) to store dataframes to disk. This is ultimately because if you assert equality on two dataframes, even if column values have the same "visible" value, if their types are mismatching they will be counted as not being equal.
+### Score and post-processing tests
+
+The fixtures used in the score post-processing tests are slightly different. These fixtures utilize [pickle files](https://docs.python.org/3/library/pickle.html) to store dataframes to disk. This is ultimately because if you assert equality on two dataframes, even if column values have the same "visible" value, if their types are mismatching they will be counted as not being equal.
 
 In a bit more detail:
 
@@ -388,7 +388,7 @@ output_downloadable_df_actual.to_pickle(data_path / "data_pipeline" / "etl" / "s
 
 Then take out the breakpoint and re-run the test: `pytest data_pipeline/etl/score/tests/test_score_post.py::test_create_downloadable_data`
 
-#### Future Enchancements
+#### Future Enhancements
 
 Pickles have several downsides that we should consider alternatives for:
 
@@ -404,9 +404,36 @@ Additionally, you could use a pandas type schema annotation such as [pandera](ht
 
 Alternatively, or in conjunction, you could move toward using a more strictly-typed container format for read/writes such as SQL/SQLite, and use something like [SQLModel](https://github.com/tiangolo/sqlmodel) to handle more explicit type guarantees.
 
-### ETL Unit Tests
+### Fixtures used in ETL "snapshot tests"
 
-ETL unit tests are typically organized into three buckets:
+ETLs are tested for the results of their extract, transform, and load steps by
+borrowing the concept of "snapshot testing" from the world of front-end development.
+
+Snapshots are easy to update and demonstrate the results of a series of changes to
+the code base. They are good for making sure no results have changed if you don't
+expect them to change, and they are good when you expect the results to significantly
+change in a way that would be tedious to update in traditional unit tests.
+
+However, snapshot tests are also dangerous. An unthinking developer may update the
+snapshot fixtures and unknowingly encode a bug into the supposed intended output of
+the test.
+
+In order to update the snapshot fixtures of an ETL class, follow the following steps:
+
+1. If you need to manually update the fixtures, update the "furthest upstream" source
+   that is called by `_setup_etl_instance_and_run_extract`. For instance, this may
+   involve updating a zip file that imitates the source data.
+2. Run `pytest . -rsx --update_snapshots` to update snapshots for all files, or you
+   can pass a specific file name to pytest to be more precise.
+3. Re-run pytest without the `update_snapshots` flag (e.g., `pytest . -rsx`) to
+   ensure the tests now pass.
+4. Carefully check the `git diff` for the updates to all test fixtures to make sure
+   these are as expected. This part is very important.
+
+### Other ETL Unit Tests
+
+Outside of the ETL snapshot tests discussed above, ETL unit tests are typically
+organized into three buckets:
 
 - Extract Tests
 - Transform Tests, and
