@@ -1,5 +1,6 @@
 from pathlib import Path
 import json
+from attr import field
 from numpy import float64
 import numpy as np
 import pandas as pd
@@ -14,6 +15,7 @@ from data_pipeline.etl.sources.census.etl_utils import (
     check_census_data_source,
 )
 from . import constants
+from data_pipeline.etl import score
 
 logger = get_module_logger(__name__)
 
@@ -195,10 +197,12 @@ class PostScoreETL(ExtractTransformLoad):
         return de_duplicated_df
 
     def _create_tile_data(
-        self, score_county_state_merged_df: pd.DataFrame
+        self,
+        score_county_state_merged_df: pd.DataFrame,
+        drop_guam_usvi=constants.DROP_GUAM_AND_USVI_FROM_TILES,
     ) -> pd.DataFrame:
-        logger.info("Rounding Decimals")
 
+        logger.info("Rounding Decimals")
         # grab all the keys from tiles score columns
         tiles_score_column_titles = list(constants.TILES_SCORE_COLUMNS.keys())
 
@@ -206,6 +210,22 @@ class PostScoreETL(ExtractTransformLoad):
         score_tiles = score_county_state_merged_df[
             tiles_score_column_titles
         ].copy()
+
+        if drop_guam_usvi:
+            # Currently, we do not want USVI or Guam on the map, so this will drop all
+            # rows with this FIPS
+            logger.info("Dropping USVI and Guam from tile data")
+            tracts_to_drop = []
+            for fips_code in constants.DROP_FIPS_CODES:
+                tracts_to_drop += score_tiles[
+                    score_tiles[field_names.GEOID_TRACT_FIELD].str.startswith(
+                        fips_code
+                    )
+                ][field_names.GEOID_TRACT_FIELD].to_list()
+            logger.info(f"Dropping {len(tracts_to_drop)} tracts")
+            score_tiles = score_tiles[
+                ~score_tiles[field_names.GEOID_TRACT_FIELD].isin(tracts_to_drop)
+            ]
 
         score_tiles[constants.TILES_SCORE_FLOAT_COLUMNS] = score_tiles[
             constants.TILES_SCORE_FLOAT_COLUMNS

@@ -63,6 +63,10 @@ SCORE_DOWNLOADABLE_ZIP_FILE_PATH = (
 # Column subsets
 CENSUS_COUNTIES_COLUMNS = ["USPS", "GEOID", "NAME"]
 
+# Drop USVI and Guam flag for tiles
+DROP_GUAM_AND_USVI_FROM_TILES = True
+DROP_FIPS_CODES = ["66", "78"]
+
 # Percent prefixes for rounding
 PERCENT_PREFIXES_SUFFIXES = [
     "Percent",
