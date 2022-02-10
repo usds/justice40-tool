@@ -1,8 +1,13 @@
 DATASET_LIST = [
     {
-        "name": "mapping_for_ej",
-        "module_dir": "mapping_for_ej",
-        "class_name": "MappingForEJETL",
+        "name": "national_risk_index",
+        "module_dir": "national_risk_index",
+        "class_name": "NationalRiskIndexETL",
+    },
+    {
+        "name": "tree_equity_score",
+        "module_dir": "tree_equity_score",
+        "class_name": "TreeEquityScoreETL",
     },
     {
         "name": "census_acs",
@@ -13,6 +18,16 @@ DATASET_LIST = [
         "name": "census_acs_2010",
         "module_dir": "census_acs_2010",
         "class_name": "CensusACS2010ETL",
+    },
+    {
+        "name": "census_decennial",
+        "module_dir": "census_decennial",
+        "class_name": "CensusDecennialETL",
+    },
+    {
+        "name": "mapping_for_ej",
+        "module_dir": "mapping_for_ej",
+        "class_name": "MappingForEJETL",
     },
     {
         "name": "ejscreen",
@@ -28,11 +43,6 @@ DATASET_LIST = [
         "name": "cdc_places",
         "module_dir": "cdc_places",
         "class_name": "CDCPlacesETL",
-    },
-    {
-        "name": "national_risk_index",
-        "module_dir": "national_risk_index",
-        "class_name": "NationalRiskIndexETL",
     },
     {
         "name": "census_acs_median_income",
@@ -75,11 +85,6 @@ DATASET_LIST = [
         "class_name": "EJSCREENAreasOfConcernETL",
     },
     {
-        "name": "census_decennial",
-        "module_dir": "census_decennial",
-        "class_name": "CensusDecennialETL",
-    },
-    {
         "name": "housing_and_transportation",
         "module_dir": "housing_and_transportation",
         "class_name": "HousingTransportationETL",
@@ -103,11 +108,6 @@ DATASET_LIST = [
         "name": "energy_definition_alternative_draft",
         "module_dir": "energy_definition_alternative_draft",
         "class_name": "EnergyDefinitionAlternativeDraft",
-    },
-    {
-        "name": "tree_equity_score",
-        "module_dir": "tree_equity_score",
-        "class_name": "TreeEquityScoreETL",
     },
     {
         "name": "michigan_ejscreen",
