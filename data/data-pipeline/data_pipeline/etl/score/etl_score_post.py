@@ -63,7 +63,7 @@ class PostScoreETL(ExtractTransformLoad):
             score_path, dtype={self.GEOID_TRACT_FIELD_NAME: "string"}
         )
 
-        # Convert total population to an int:
+        # Convert total population to an int
         df["Total population"] = df["Total population"].astype(
             int, errors="ignore"
         )
@@ -234,6 +234,36 @@ class PostScoreETL(ExtractTransformLoad):
             axis=0,
         )
 
+        logger.info("Adding fields for island areas and Puerto Rico")
+        # The below operation constructs variables for the front end.
+        # Since the Island Areas, Puerto Rico, and the nation all have a different
+        # set of available data, each has its own user experience.
+
+        # First, we identify which user experience -- Puerto Rico, islands, or nation --
+        # a row pertains to using the FIPS codes
+        fips_code_series = score_tiles[field_names.GEOID_TRACT_FIELD].str[:2]
+        score_tiles[constants.USER_INTERFACE_EXPERIENCE_FIELD_NAME] = np.where(
+            fips_code_series.isin(constants.TILES_PUERTO_RICO_FIPS_CODE),
+            constants.PUERTO_RICO_USER_EXPERIENCE,
+            np.where(
+                fips_code_series.isin(constants.TILES_ISLAND_AREA_FIPS_CODES),
+                constants.ISLAND_AREAS_USER_EXPERIENCE,
+                constants.NATION_USER_EXPERIENCE,
+            ),
+        )
+
+        # Next, we determine how many thresholds the front end should show, entirely
+        # based on the variable for user interface experience.
+        score_tiles[constants.THRESHOLD_COUNT_TO_SHOW_FIELD_NAME] = score_tiles[
+            constants.USER_INTERFACE_EXPERIENCE_FIELD_NAME
+        ].map(
+            {
+                constants.PUERTO_RICO_USER_EXPERIENCE: constants.TILES_PUERTO_RICO_THRESHOLD_COUNT,
+                constants.ISLAND_AREAS_USER_EXPERIENCE: constants.TILES_ISLAND_AREAS_THRESHOLD_COUNT,
+                constants.NATION_USER_EXPERIENCE: constants.TILES_NATION_THRESHOLD_COUNT,
+            }
+        )
+
         # create indexes
         score_tiles = score_tiles.rename(
             columns=constants.TILES_SCORE_COLUMNS,
@@ -306,6 +336,7 @@ class PostScoreETL(ExtractTransformLoad):
             transformed_states,
             transformed_score,
         )
+
         self.output_score_tiles_df = self._create_tile_data(
             output_score_county_state_merged_df
         )

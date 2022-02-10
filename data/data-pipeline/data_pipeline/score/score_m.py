@@ -34,9 +34,9 @@ class ScoreM(Score):
         This function is fairly logically complicated. It takes the following steps:
 
             1. Combine the two different fields into a single field.
-            2. Calculate the 90th percentile cutoff raw value for the combined field.
+            2. Calculate the 90th percentile for the combined field.
             3. Create a boolean series that is true for any census tract in the island
-                areas (and only the island areas) that exceeds this cutoff.
+                areas (and only the island areas) that exceeds this percentile.
 
         For step one, it combines data that is either the island area's Decennial Census
         value in 2009 or the state's value in 5-year ACS ending in 2010.
@@ -57,22 +57,20 @@ class ScoreM(Score):
             [column_from_island_areas, column_from_decennial_census]
         ].mean(axis=1, skipna=True)
 
-        logger.info(
-            f"Combined field `{combined_column_name}` has "
-            f"{df[combined_column_name].isnull().sum()} "
-            f"({df[combined_column_name].isnull().sum() * 100 / len(df):.2f}%) "
-            f"missing values for census tracts. "
+        # Create a percentile field for use in the Islands / PR visualization
+        # TODO: move this code
+        # In the code below, percentiles are constructed based on the combined column
+        # of census and island data, but only reported for the island areas (where there
+        # is no other comprehensive percentile information)
+        return_series_name = (
+            column_from_island_areas
+            + field_names.ISLAND_AREAS_PERCENTILE_ADJUSTMENT_FIELD
+            + field_names.PERCENTILE_FIELD_SUFFIX
         )
-
-        # Calculate the percentile threshold raw value.
-        raw_threshold = np.nanquantile(
-            a=df[combined_column_name], q=threshold_cutoff_for_island_areas
-        )
-
-        logger.info(
-            f"For combined field `{combined_column_name}`, "
-            f"the {threshold_cutoff_for_island_areas*100:.0f} percentile cutoff is a "
-            f"raw value of {raw_threshold:.3f}."
+        df[return_series_name] = np.where(
+            df[column_from_decennial_census].isna(),
+            df[combined_column_name].rank(pct=True),
+            np.nan,
         )
 
         threshold_column_name = (
@@ -81,20 +79,7 @@ class ScoreM(Score):
         )
 
         df[threshold_column_name] = (
-            df[column_from_island_areas] >= raw_threshold
-        )
-
-        percent_of_tracts_highlighted = (
-            100
-            * df[threshold_column_name].sum()
-            / df[column_from_island_areas].notnull().sum()
-        )
-
-        logger.info(
-            f"For `{threshold_column_name}`, "
-            f"{df[threshold_column_name].sum()} ("
-            f"{percent_of_tracts_highlighted:.2f}% of tracts that have non-null data "
-            f"in the column) have a value of TRUE."
+            df[return_series_name] >= threshold_cutoff_for_island_areas
         )
 
         return df, threshold_column_name
@@ -615,6 +600,8 @@ class ScoreM(Score):
         ]
 
         # First, combine unemployment.
+        # This will include an adjusted percentile column for the island areas
+        # to be used by the front end.
         (
             self.df,
             island_areas_unemployment_criteria_field_name,
@@ -627,6 +614,8 @@ class ScoreM(Score):
         )
 
         # Next, combine poverty.
+        # This will include an adjusted percentile column for the island areas
+        # to be used by the front end.
         (
             self.df,
             island_areas_poverty_criteria_field_name,
@@ -640,6 +629,11 @@ class ScoreM(Score):
 
         # Also check whether low area median income is 90th percentile or higher
         # within the islands.
+
+        # Note that because the field for low median does not have to be combined,
+        # unlike the other fields, we do not need to create a new percentile
+        # column. This code should probably be refactored when (TODO) we do the big
+        # refactor.
         island_areas_low_median_income_as_a_percent_of_ami_criteria_field_name = (
             f"{field_names.LOW_CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009} exceeds "
             f"{field_names.PERCENTILE}th percentile"

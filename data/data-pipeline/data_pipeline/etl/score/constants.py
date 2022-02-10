@@ -77,6 +77,29 @@ PERCENT_PREFIXES_SUFFIXES = [
 ]
 TILES_ROUND_NUM_DECIMALS = 2
 
+# The following constants and fields get used by the front end to change the side panel.
+# The islands, Puerto Rico and the nation all have different
+# data available, and as a consequence, show a different number of fields.
+
+# Controlling Tile user experience columns
+THRESHOLD_COUNT_TO_SHOW_FIELD_NAME = "Thresholds"
+TILES_ISLAND_AREAS_THRESHOLD_COUNT = 4
+TILES_PUERTO_RICO_THRESHOLD_COUNT = 5
+TILES_NATION_THRESHOLD_COUNT = 21
+
+# Note that the FIPS code is a string
+# The FIPS codes listed are:
+# 60: American Samoa, 66: Guam, 69: N. Mariana Islands, 78: US Virgin Islands
+TILES_ISLAND_AREA_FIPS_CODES = ["60", "66", "69", "78"]
+TILES_PUERTO_RICO_FIPS_CODE = ["72"]
+
+# Constant to reflect UI Experience version
+# "Nation" referring to 50 states and DC is from Census
+USER_INTERFACE_EXPERIENCE_FIELD_NAME = "UI Experience"
+NATION_USER_EXPERIENCE = "Nation"
+PUERTO_RICO_USER_EXPERIENCE = "Puerto Rico"
+ISLAND_AREAS_USER_EXPERIENCE = "Island Areas"
+
 # FEMA rounding columns
 FEMA_ROUND_NUM_COLUMNS = [
     field_names.EXPECTED_BUILDING_LOSS_RATE_FIELD,
@@ -166,9 +189,20 @@ TILES_SCORE_COLUMNS = {
     field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES: "FPL200S",
     field_names.THRESHOLD_COUNT: "TC",
     field_names.ISLAND_AREAS_UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD: "IAULHSE",
-    field_names.ISLAND_AREAS_POVERTY_LOW_HS_EDUCATION_FIELD: "ISPLHSE",
+    field_names.ISLAND_AREAS_POVERTY_LOW_HS_EDUCATION_FIELD: "IAPLHSE",
     field_names.ISLAND_AREAS_LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD: "IALMILHSE",
     field_names.ISLAND_AREAS_LOW_HS_EDUCATION_FIELD: "IALHE",
+    # Percentiles for Island areas' workforce columns
+    field_names.LOW_CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009
+    + field_names.PERCENTILE_FIELD_SUFFIX: "IALMILHSE_PFS",
+    field_names.CENSUS_DECENNIAL_POVERTY_LESS_THAN_100_FPL_FIELD_2009
+    + field_names.ISLAND_AREAS_PERCENTILE_ADJUSTMENT_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX: "IAPLHSE_PFS",
+    field_names.CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009
+    + field_names.ISLAND_AREAS_PERCENTILE_ADJUSTMENT_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX: "IAULHSE_PFS",
+    # Percentage of HS Degree completion for Islands
+    field_names.CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009: "IAHSEF",
 }
 
 # columns to round floats to 2 decimals
@@ -202,6 +236,18 @@ TILES_SCORE_FLOAT_COLUMNS = [
     field_names.TSDF_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.TRAFFIC_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.UNEMPLOYMENT_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    # Percentiles for Island areas' workforce columns
+    # To be clear: the island areas pull from 2009 census. PR does not.
+    field_names.LOW_CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009
+    + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.CENSUS_DECENNIAL_POVERTY_LESS_THAN_100_FPL_FIELD_2009
+    + field_names.ISLAND_AREAS_PERCENTILE_ADJUSTMENT_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009
+    + field_names.ISLAND_AREAS_PERCENTILE_ADJUSTMENT_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX,
+    # Island areas HS degree attainment rate
+    field_names.CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009,
     field_names.LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD,
     field_names.ISLAND_AREAS_LOW_HS_EDUCATION_FIELD,
     field_names.WASTEWATER_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
@@ -297,4 +343,12 @@ DOWNLOADABLE_SCORE_COLUMNS = [
     field_names.ISLAND_AREAS_UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD,
     field_names.ISLAND_AREAS_POVERTY_LOW_HS_EDUCATION_FIELD,
     field_names.ISLAND_AREAS_LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD,
+    field_names.LOW_CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009
+    + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.CENSUS_DECENNIAL_POVERTY_LESS_THAN_100_FPL_FIELD_2009
+    + field_names.ISLAND_AREAS_PERCENTILE_ADJUSTMENT_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009
+    + field_names.ISLAND_AREAS_PERCENTILE_ADJUSTMENT_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX,
 ]
