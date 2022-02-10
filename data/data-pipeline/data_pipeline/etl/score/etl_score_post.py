@@ -345,14 +345,11 @@ class PostScoreETL(ExtractTransformLoad):
         self.output_score_tiles_df = self._create_tile_data(
             output_score_county_state_merged_df
         )
-        self.output_downloadable_df = self._create_downloadable_data(
-            output_score_county_state_merged_df
-        )
         self.output_score_county_state_merged_df = (
             output_score_county_state_merged_df
         )
 
-    def _load_score_csv(
+    def _load_score_csv_full(
         self, score_county_state_merged: pd.DataFrame, score_csv_path: Path
     ) -> None:
         logger.info("Saving Full Score CSV with County Information")
@@ -405,9 +402,7 @@ class PostScoreETL(ExtractTransformLoad):
         tile_score_path.parent.mkdir(parents=True, exist_ok=True)
         score_tiles_df.to_csv(tile_score_path, index=False, encoding="utf-8")
 
-    def _load_downloadable_zip(
-        self, downloadable_df: pd.DataFrame, downloadable_info_path: Path
-    ) -> None:
+    def _load_downloadable_zip(self, downloadable_info_path: Path) -> None:
         logger.info("Saving Downloadable CSV")
 
         downloadable_info_path.mkdir(parents=True, exist_ok=True)
@@ -415,6 +410,10 @@ class PostScoreETL(ExtractTransformLoad):
         excel_path = constants.SCORE_DOWNLOADABLE_EXCEL_FILE_PATH
         zip_path = constants.SCORE_DOWNLOADABLE_ZIP_FILE_PATH
         pdf_path = constants.SCORE_DOWNLOADABLE_PDF_FILE_PATH
+
+        downloadable_df = self._create_downloadable_data(
+            self.output_score_county_state_merged_df
+        )
 
         logger.info("Writing downloadable excel")
         self._load_excel_from_df(downloadable_df, excel_path)
@@ -427,13 +426,11 @@ class PostScoreETL(ExtractTransformLoad):
         zip_files(zip_path, files_to_compress)
 
     def load(self) -> None:
-        self._load_score_csv(
+        self._load_score_csv_full(
             self.output_score_county_state_merged_df,
             constants.FULL_SCORE_CSV_FULL_PLUS_COUNTIES_FILE_PATH,
         )
         self._load_tile_csv(
             self.output_score_tiles_df, constants.DATA_SCORE_CSV_TILES_FILE_PATH
         )
-        self._load_downloadable_zip(
-            self.output_downloadable_df, constants.SCORE_DOWNLOADABLE_DIR
-        )
+        self._load_downloadable_zip(constants.SCORE_DOWNLOADABLE_DIR)

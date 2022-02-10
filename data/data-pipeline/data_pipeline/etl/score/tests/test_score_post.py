@@ -101,9 +101,9 @@ def test_create_downloadable_data(
     )
 
 
-def test_load_score_csv(etl, score_data_expected):
+def test_load_score_csv_full(etl, score_data_expected):
     reload(constants)
-    etl._load_score_csv(
+    etl._load_score_csv_full(
         score_data_expected,
         constants.FULL_SCORE_CSV_FULL_PLUS_COUNTIES_FILE_PATH,
     )
@@ -112,7 +112,7 @@ def test_load_score_csv(etl, score_data_expected):
 
 def test_load_tile_csv(etl, tile_data_expected):
     reload(constants)
-    etl._load_score_csv(
+    etl._load_score_csv_full(
         tile_data_expected, constants.DATA_SCORE_CSV_TILES_FILE_PATH
     )
     assert constants.DATA_SCORE_CSV_TILES_FILE_PATH.is_file()
