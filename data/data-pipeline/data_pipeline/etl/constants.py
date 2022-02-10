@@ -1,5 +1,10 @@
 DATASET_LIST = [
     {
+        "name": "cdc_places",
+        "module_dir": "cdc_places",
+        "class_name": "CDCPlacesETL",
+    },
+    {
         "name": "national_risk_index",
         "module_dir": "national_risk_index",
         "class_name": "NationalRiskIndexETL",
@@ -38,11 +43,6 @@ DATASET_LIST = [
         "name": "hud_housing",
         "module_dir": "hud_housing",
         "class_name": "HudHousingETL",
-    },
-    {
-        "name": "cdc_places",
-        "module_dir": "cdc_places",
-        "class_name": "CDCPlacesETL",
     },
     {
         "name": "census_acs_median_income",
