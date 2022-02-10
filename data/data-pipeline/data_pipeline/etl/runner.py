@@ -1,13 +1,18 @@
 import importlib
+import threading
+import typing
 
 from data_pipeline.etl.score.etl_score import ScoreETL
 from data_pipeline.etl.score.etl_score_geo import GeoScoreETL
 from data_pipeline.etl.score.etl_score_post import PostScoreETL
+from data_pipeline.utils import get_module_logger
 
 from . import constants
 
+logger = get_module_logger(__name__)
 
-def get_datasets_to_run(dataset_to_run: str):
+
+def _get_datasets_to_run(dataset_to_run: str) -> typing.List[dict]:
     """Returns a list of appropriate datasets to run given input args
 
     Args:
@@ -29,7 +34,34 @@ def get_datasets_to_run(dataset_to_run: str):
         else:
             # reset the list to just the dataset
             dataset_list = [dataset_element]
+
     return dataset_list
+
+
+def _run_one_dataset(dataset: dict) -> None:
+    """Runs one etl process."""
+    etl_module = importlib.import_module(
+        f"data_pipeline.etl.sources.{dataset['module_dir']}.etl"
+    )
+    etl_class = getattr(etl_module, dataset["class_name"])
+    etl_instance = etl_class()
+
+    # run extract
+    etl_instance.extract()
+
+    # run transform
+    etl_instance.transform()
+
+    # run load
+    etl_instance.load()
+
+    # run validate
+    etl_instance.validate()
+
+    # cleanup
+    etl_instance.cleanup()
+
+    logger.info(f"Finished `etl-run` for dataset `{dataset['name']}`.")
 
 
 def etl_runner(dataset_to_run: str = None) -> None:
@@ -41,30 +73,18 @@ def etl_runner(dataset_to_run: str = None) -> None:
     Returns:
         None
     """
-    dataset_list = get_datasets_to_run(dataset_to_run)
+    dataset_list = _get_datasets_to_run(dataset_to_run)
 
-    # Run the ETLs for the dataset_list
+    # Run the ETLs for the dataset_list.
+    # Create separate threads to run each ETL. Because each ETL involves a lot of
+    # waiting on input/output (I/O), this will speed up the run quite a lot.
+    threads = []
     for dataset in dataset_list:
-        etl_module = importlib.import_module(
-            f"data_pipeline.etl.sources.{dataset['module_dir']}.etl"
+        thread = threading.Thread(
+            target=_run_one_dataset, kwargs={"dataset": dataset}
         )
-        etl_class = getattr(etl_module, dataset["class_name"])
-        etl_instance = etl_class()
-
-        # run extract
-        etl_instance.extract()
-
-        # run transform
-        etl_instance.transform()
-
-        # run load
-        etl_instance.load()
-
-        # run validate
-        etl_instance.validate()
-
-        # cleanup
-        etl_instance.cleanup()
+        threads.append(thread)
+        thread.start()
 
     # update the front end JSON/CSV of list of data sources
     pass
