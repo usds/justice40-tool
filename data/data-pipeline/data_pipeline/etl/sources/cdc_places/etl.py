@@ -22,7 +22,7 @@ class CDCPlacesETL(ExtractTransformLoad):
         logger.info("Starting to download 520MB CDC Places file.")
         file_path = download_file_from_url(
             file_url=self.CDC_PLACES_URL,
-            download_file_name=self.TMP_PATH
+            download_file_name=self.get_tmp_path()
             / "cdc_places"
             / "census_tract.csv",
         )

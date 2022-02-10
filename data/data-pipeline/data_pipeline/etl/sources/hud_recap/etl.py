@@ -12,7 +12,7 @@ class HudRecapETL(ExtractTransformLoad):
         # pylint: disable=line-too-long
         self.HUD_RECAP_CSV_URL = "https://opendata.arcgis.com/api/v3/datasets/56de4edea8264fe5a344da9811ef5d6e_0/downloads/data?format=csv&spatialRefId=4326"  # noqa: E501
         self.HUD_RECAP_CSV = (
-            self.TMP_PATH
+            self.get_tmp_path()
             / "Racially_or_Ethnically_Concentrated_Areas_of_Poverty__R_ECAPs_.csv"
         )
         self.CSV_PATH = self.DATA_PATH / "dataset" / "hud_recap"

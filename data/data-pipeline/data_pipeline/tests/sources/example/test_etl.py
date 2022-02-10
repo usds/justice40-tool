@@ -543,7 +543,7 @@ class TestETL:
             f"Writing data to {self._DATA_DIRECTORY_FOR_TEST / self._INPUT_CSV_FILE_NAME}"
         )
         copy_data_files(
-            src=etl.TMP_PATH / "input.csv",
+            src=etl.get_tmp_path() / "input.csv",
             dst=self._DATA_DIRECTORY_FOR_TEST / self._INPUT_CSV_FILE_NAME,
         )
 

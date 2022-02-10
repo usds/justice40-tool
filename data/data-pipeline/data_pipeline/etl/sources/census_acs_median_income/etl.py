@@ -238,12 +238,12 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
         unzip_file_from_url(
             file_url=settings.AWS_JUSTICE40_DATASOURCES_URL
             + "/geocorr2014_all_states_tracts_only.csv.zip",
-            download_path=self.TMP_PATH,
-            unzipped_file_path=self.TMP_PATH / "geocorr",
+            download_path=self.get_tmp_path(),
+            unzipped_file_path=self.get_tmp_path() / "geocorr",
         )
 
         self.raw_geocorr_df = pd.read_csv(
-            filepath_or_buffer=self.TMP_PATH
+            filepath_or_buffer=self.get_tmp_path()
             / "geocorr"
             / "geocorr2014_all_states_tracts_only.csv",
             # Skip second row, which has descriptions.

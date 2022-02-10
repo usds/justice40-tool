@@ -14,7 +14,7 @@ class CalEnviroScreenETL(ExtractTransformLoad):
             + "/CalEnviroScreen_4.0_2021.zip"
         )
         self.CALENVIROSCREEN_CSV = (
-            self.TMP_PATH / "CalEnviroScreen_4.0_2021.csv"
+            self.get_tmp_path() / "CalEnviroScreen_4.0_2021.csv"
         )
         self.CSV_PATH = self.DATA_PATH / "dataset" / "calenviroscreen4"
 
@@ -37,7 +37,7 @@ class CalEnviroScreenETL(ExtractTransformLoad):
         logger.info("Downloading CalEnviroScreen Data")
         super().extract(
             self.CALENVIROSCREEN_FTP_URL,
-            self.TMP_PATH,
+            self.get_tmp_path(),
         )
 
     def transform(self) -> None:

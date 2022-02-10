@@ -21,7 +21,7 @@ class TreeEquityScoreETL(ExtractTransformLoad):
 
     def __init__(self):
         self.TES_URL = "https://national-tes-data-share.s3.amazonaws.com/national_tes_share/"
-        self.TES_CSV = self.TMP_PATH / "tes_2021_data.csv"
+        self.TES_CSV = self.get_tmp_path() / "tes_2021_data.csv"
         self.CSV_PATH = self.DATA_PATH / "dataset" / "tree_equity_score"
         self.df: gpd.GeoDataFrame
         self.states = [
@@ -81,7 +81,7 @@ class TreeEquityScoreETL(ExtractTransformLoad):
         for state in self.states:
             super().extract(
                 f"{self.TES_URL}{state}.zip.zip",
-                f"{self.TMP_PATH}/{state}",
+                f"{self.get_tmp_path()}/{state}",
             )
 
     def transform(self) -> None:
@@ -89,7 +89,7 @@ class TreeEquityScoreETL(ExtractTransformLoad):
         tes_state_dfs = []
         for state in self.states:
             tes_state_dfs.append(
-                gpd.read_file(f"{self.TMP_PATH}/{state}/{state}.shp")
+                gpd.read_file(f"{self.get_tmp_path()}/{state}/{state}.shp")
             )
         self.df = gpd.GeoDataFrame(
             pd.concat(tes_state_dfs), crs=tes_state_dfs[0].crs

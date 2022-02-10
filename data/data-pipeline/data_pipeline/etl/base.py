@@ -102,7 +102,12 @@ class ExtractTransformLoad:
         """Returns the temporary path associated with this ETL class."""
         # Note: the temporary path will be defined on `init`, because it uses the class
         # of the instance which is often a child class.
-        return self.DATA_PATH / "tmp" / str(self.__class__.__name__)
+        tmp_path = self.DATA_PATH / "tmp" / str(self.__class__.__name__)
+
+        # Create directory if it doesn't exist
+        tmp_path.mkdir(parents=True, exist_ok=True)
+
+        return tmp_path
 
     def extract(
         self,
