@@ -1,5 +1,5 @@
 import importlib
-import threading
+import concurrent.futures
 import typing
 
 from data_pipeline.etl.score.etl_score import ScoreETL
@@ -75,23 +75,14 @@ def etl_runner(dataset_to_run: str = None) -> None:
     """
     dataset_list = _get_datasets_to_run(dataset_to_run)
 
-    # Run the ETLs for the dataset_list.
-    # Create separate threads to run each ETL. Because each ETL involves a lot of
-    # waiting on input/output (I/O), this will speed up the run quite a lot.
-    threads = []
-    for dataset in dataset_list:
-        thread = threading.Thread(
-            target=_run_one_dataset, kwargs={"dataset": dataset}
-        )
-        threads.append(thread)
-        thread.start()
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        futures = {
+            executor.submit(_run_one_dataset, dataset=dataset)
+            for dataset in dataset_list
+        }
 
-    # Hold execution below this line until all threads have finished.
-    for thread in threads:
-        thread.join()
-
-    # update the front end JSON/CSV of list of data sources
-    pass
+        for fut in concurrent.futures.as_completed(futures):
+            logger.info(f"The outcome is {fut.result()}")
 
 
 def score_generate() -> None:

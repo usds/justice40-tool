@@ -1,5 +1,5 @@
+import concurrent.futures
 import math
-import threading
 
 import pandas as pd
 import geopandas as gpd
@@ -221,14 +221,11 @@ class GeoScoreETL(ExtractTransformLoad):
             )
             logger.info("Completed writing usa-low")
 
-        threads = []
-        for function in [write_high_to_file, write_low_to_file]:
-            thread = threading.Thread(
-                target=function
-            )
-            threads.append(thread)
-            thread.start()
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            futures = {
+                executor.submit(task)
+                for task in [write_high_to_file, write_low_to_file]
+            }
 
-        # Hold execution below this line until all threads have finished.
-        for thread in threads:
-            thread.join()
+            for fut in concurrent.futures.as_completed(futures):
+                logger.info(f"The outcome is {fut.result()}")
