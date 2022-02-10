@@ -86,6 +86,10 @@ def etl_runner(dataset_to_run: str = None) -> None:
         threads.append(thread)
         thread.start()
 
+    # Hold execution below this line until all threads have finished.
+    for thread in threads:
+        thread.join()
+
     # update the front end JSON/CSV of list of data sources
     pass
 
