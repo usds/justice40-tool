@@ -93,7 +93,6 @@ class PersistentPovertyETL(ExtractTransformLoad):
         temporary_input_dfs = []
 
         for file_name in file_names:
-            print(file_name)
             temporary_input_df = pd.read_csv(
                 filepath_or_buffer=unzipped_file_path
                 / f"ltdb_std_all_sample/{file_name}",
