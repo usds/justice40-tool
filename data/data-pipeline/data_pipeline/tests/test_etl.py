@@ -1,3 +1,4 @@
+# pylint: disable=protected-access
 import pytest
 from data_pipeline.etl import constants, runner
 
