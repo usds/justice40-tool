@@ -48,7 +48,7 @@ def check_score_data_source(
         # check if score data is found locally
         if not os.path.isfile(TILE_SCORE_CSV):
             logger.info(
-                "No local score tiles data found. Please use '-d aws` to fetch from AWS"
+                "No local score tiles data found. Please use '-s aws` to fetch from AWS"
             )
             sys.exit()
 

@@ -1,4 +1,6 @@
 import math
+import threading
+
 import pandas as pd
 import geopandas as gpd
 
@@ -204,14 +206,29 @@ class GeoScoreETL(ExtractTransformLoad):
         return compressed
 
     def load(self) -> None:
-        logger.info("Writing usa-high (~9 minutes)")
-        self.geojson_score_usa_high.to_file(
-            self.SCORE_HIGH_GEOJSON, driver="GeoJSON"
-        )
-        logger.info("Completed writing usa-high")
+        # Create separate threads to run each write to disk.
+        def write_high_to_file():
+            logger.info("Writing usa-high (~9 minutes)")
+            self.geojson_score_usa_high.to_file(
+                filename=self.SCORE_HIGH_GEOJSON, driver="GeoJSON"
+            )
+            logger.info("Completed writing usa-high")
 
-        logger.info("Writing usa-low (~9 minutes)")
-        self.geojson_score_usa_low.to_file(
-            self.SCORE_LOW_GEOJSON, driver="GeoJSON"
-        )
-        logger.info("Completed writing usa-low")
+        def write_low_to_file():
+            logger.info("Writing usa-low (~9 minutes)")
+            self.geojson_score_usa_low.to_file(
+                filename=self.SCORE_LOW_GEOJSON, driver="GeoJSON"
+            )
+            logger.info("Completed writing usa-low")
+
+        threads = []
+        for function in [write_high_to_file, write_low_to_file]:
+            thread = threading.Thread(
+                target=function
+            )
+            threads.append(thread)
+            thread.start()
+
+        # Hold execution below this line until all threads have finished.
+        for thread in threads:
+            thread.join()
