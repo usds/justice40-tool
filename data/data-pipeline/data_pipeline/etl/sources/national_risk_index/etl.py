@@ -20,7 +20,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
 
     def __init__(self):
-        self.INPUT_CSV = self.TMP_PATH / "NRI_Table_CensusTracts.csv"
+        self.INPUT_CSV = self.get_tmp_path() / "NRI_Table_CensusTracts.csv"
 
         self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_INPUT_FIELD_NAME = (
             "EAL_SCORE"
@@ -68,7 +68,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         logger.info("Downloading 405MB National Risk Index Data")
         super().extract(
             source_url=self.SOURCE_URL,
-            extract_path=self.TMP_PATH,
+            extract_path=self.get_tmp_path(),
         )
 
     def transform(self) -> None:

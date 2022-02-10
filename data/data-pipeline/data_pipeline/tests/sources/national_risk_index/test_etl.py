@@ -98,7 +98,9 @@ class TestNationalRiskIndexETL(TestETL):
         # setup
         etl = NationalRiskIndexETL()
         data_path, tmp_path = mock_paths
-        input_csv = tmp_path / "NRI_Table_CensusTracts.csv"
+        input_csv = (
+            tmp_path / "NationalRiskIndexETL" / "NRI_Table_CensusTracts.csv"
+        )
 
         # validation
         assert etl.INPUT_CSV == input_csv
@@ -141,7 +143,9 @@ class TestNationalRiskIndexETL(TestETL):
         )
 
         # Assert that the extracted file exists
-        extracted_file_path = tmp_path / "NRI_Table_CensusTracts.csv"
+        extracted_file_path = (
+            tmp_path / "NationalRiskIndexETL" / "NRI_Table_CensusTracts.csv"
+        )
         assert extracted_file_path.is_file()
 
         input_csv_path = (
