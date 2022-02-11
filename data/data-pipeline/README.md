@@ -213,6 +213,21 @@ If you want to run tile generation, please install TippeCanoe [following these i
 - We use [Poetry](https://python-poetry.org/) for managing dependencies and building the application. Please follow the instructions on their site to download.
 - Install Poetry requirements with `poetry install`
 
+### Configuring pre-commit hooks
+
+To promote consistent code style and quality, we use git pre-commit hooks to automatically lint and reformat our
+code before every commit we make to the codebase. Pre-commit hooks are defined in
+[`.pre-commit-config.yaml`](../.pre-commit-config.yaml).
+
+1.  First, install [`pre-commit`](https://pre-commit.com/) globally:
+
+        $ brew install pre-commit
+
+2.  Run `pre-commit install` to install the specific git hooks used in this repository.
+
+Now, any time you commit code to the repository, the hooks will run on all modified files automatically. If you wish,
+you can force a re-run on all files with `pre-commit run --all-files`.
+
 ### The Application entrypoint
 
 After installing the poetry dependencies, you can see a list of commands with the following steps: 
