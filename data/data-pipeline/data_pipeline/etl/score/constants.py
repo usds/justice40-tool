@@ -66,9 +66,6 @@ CENSUS_COUNTIES_COLUMNS = ["USPS", "GEOID", "NAME"]
 # Drop FIPS codes from map
 DROP_FIPS_CODES = ["66", "78"]
 
-# YAML Config files
-YAML_CONFIG_PATH = Path(settings.APP_ROOT) / "etl" / "score" / "config"
-
 TILES_ROUND_NUM_DECIMALS = 2
 
 # The following constants and fields get used by the front end to change the side panel.

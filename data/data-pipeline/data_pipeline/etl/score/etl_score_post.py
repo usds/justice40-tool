@@ -293,7 +293,7 @@ class PostScoreETL(ExtractTransformLoad):
 
         # open yaml config
         downloadable_csv_config = load_yaml_dict_from_file(
-            constants.YAML_CONFIG_PATH / "downloadable.yml"
+            self.CONTENT_CONFIG / "csv.yml"
         )
 
         df = score_county_state_merged_df[
