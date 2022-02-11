@@ -689,7 +689,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
         <LinkTypeWrapper
           linkText= {'share feedback'}
           internal= {false}
-          url= {`mailto=${CONTACT_COPY.FEEDBACK_EMAIL}`}
+          url= {`mailto:${CONTACT_COPY.FEEDBACK_EMAIL}`}
           openUrlNewTab= {true}
         />,
     }}
