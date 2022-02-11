@@ -3,7 +3,6 @@ from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.sources.census.etl_utils import get_state_fips_codes
 from data_pipeline.utils import get_module_logger
 from data_pipeline.utils import unzip_file_from_url
-from pandas.errors import EmptyDataError
 
 logger = get_module_logger(__name__)
 
@@ -38,7 +37,7 @@ class HousingTransportationETL(ExtractTransformLoad):
 
             try:
                 tmp_df = pd.read_csv(filepath_or_buffer=tmp_csv_file_path)
-            except EmptyDataError:
+            except pd.errors.EmptyDataError:
                 logger.error(
                     f"Could not read Housing and Transportation data for state/territory with FIPS code {fips}"
                 )

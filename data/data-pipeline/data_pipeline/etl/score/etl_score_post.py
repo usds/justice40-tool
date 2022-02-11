@@ -11,7 +11,6 @@ from data_pipeline.etl.sources.census.etl_utils import (
 from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger
 from data_pipeline.utils import zip_files
-from numpy import float64
 
 from . import constants
 
@@ -307,14 +306,14 @@ class PostScoreETL(ExtractTransformLoad):
                 # and then rounding appropriately.
                 df_100 = df[column] * 100
                 df[column] = floor_series(
-                    series=df_100.astype(float64),
+                    series=df_100.astype(np.float64),
                     number_of_decimals=constants.TILES_FEMA_ROUND_NUM_DECIMALS,
                 )
 
             else:
                 # Round all other floats.
                 df[column] = floor_series(
-                    series=df[column].astype(float64),
+                    series=df[column].astype(np.float64),
                     number_of_decimals=constants.TILES_ROUND_NUM_DECIMALS,
                 )
 

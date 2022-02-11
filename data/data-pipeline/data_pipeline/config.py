@@ -1,9 +1,9 @@
 import pathlib
 
 import data_pipeline
-from dynaconf import Dynaconf
+import dynaconf
 
-settings = Dynaconf(
+settings = dynaconf.Dynaconf(
     envvar_prefix="DYNACONF",
     settings_files=["settings.toml", ".secrets.toml"],
     environments=True,
