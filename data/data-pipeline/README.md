@@ -220,13 +220,13 @@ If you want to run tile generation, please install TippeCanoe [following these i
 After installing the poetry dependencies, you can see a list of commands with the following steps:
 
 - Start a terminal
-- Change to the package directory (i.e. `cd data/data-pipeline/data_pipeline`)
+- Change to the package directory (i.e., `cd data/data-pipeline/data_pipeline`)
 - Then run `poetry run python3 data_pipeline/application.py --help`
 
 ### Downloading Census Block Groups GeoJSON and Generating CBG CSVs (not normally required)
 
 - Start a terminal
-- Change to the package directory (i.e. `cd data/data-pipeline/data_pipeline`)
+- Change to the package directory (i.e., `cd data/data-pipeline/data_pipeline`)
 - If you want to clear out all data and tiles from all directories, you can run: `poetry run python3 data_pipeline/application.py data-cleanup`.
 - Then run `poetry run python3 data_pipeline/application.py census-data-download`
   Note: Census files are hosted in the Justice40 S3 and you can skip this step by passing the `-s aws` or `--data-source aws` flag in the scripts below
@@ -234,26 +234,26 @@ After installing the poetry dependencies, you can see a list of commands with th
 ### Run all ETL, score and map generation processes
 
 - Start a terminal
-- Change to the package directory (i.e. `cd data/data-pipeline/data_pipeline`)
+- Change to the package directory (i.e., `cd data/data-pipeline/data_pipeline`)
 - Then run `poetry run python3 data_pipeline/application.py data-full-run -s aws`
 - Note: The `-s` flag is optional if you have generated/downloaded the census data
 
 ### Run both ETL and score generation processes
 
 - Start a terminal
-- Change to the package directory (i.e. `cd data/data-pipeline/data_pipeline`)
+- Change to the package directory (i.e., `cd data/data-pipeline/data_pipeline`)
 - Then run `poetry run python3 data_pipeline/application.py score-full-run`
 
 ### Run all ETL processes
 
 - Start a terminal
-- Change to the package directory (i.e. `cd data/data-pipeline/data_pipeline`)
+- Change to the package directory (i.e., `cd data/data-pipeline/data_pipeline`)
 - Then run `poetry run python3 data_pipeline/application.py etl-run`
 
 ### Generating Map Tiles
 
 - Start a terminal
-- Change to the package directory (i.e. `cd data/data-pipeline/data_pipeline`)
+- Change to the package directory (i.e., `cd data/data-pipeline/data_pipeline`)
 - Then run `poetry run python3 data_pipeline/application.py generate-map-tiles -s aws`
 - If you have S3 keys, you can sync to the dev repo by doing `aws s3 sync ./data_pipeline/data/score/tiles/ s3://justice40-data/data-pipeline/data/score/tiles --acl public-read --delete`
 - Note: The `-s` flag is optional if you have generated/downloaded the score data
@@ -261,18 +261,18 @@ After installing the poetry dependencies, you can see a list of commands with th
 ### Serve the map locally
 
 - Start a terminal
-- Change to the package directory (i.e. `cd data/data-pipeline/data_pipeline`)
+- Change to the package directory (i.e., `cd data/data-pipeline/data_pipeline`)
 - For USA high zoom: `docker run --rm -it -v ${PWD}/data/score/tiles/high:/data -p 8080:80 maptiler/tileserver-gl`
 
 ### Running Jupyter notebooks
 
 - Start a terminal
-- Change to the package directory (i.e. `cd data/data-pipeline/data_pipeline`)
+- Change to the package directory (i.e., `cd data/data-pipeline/data_pipeline`)
 - Run `poetry run jupyter notebook`. Your browser should open with a Jupyter Notebook tab
 
 ### Activating variable-enabled Markdown for Jupyter notebooks
 
-- Change to the package directory (i.e. `cd data/data-pipeline/data_pipeline`)
+- Change to the package directory (i.e., `cd data/data-pipeline/data_pipeline`)
 - Activate a Poetry Shell (see above)
 - Run `jupyter contrib nbextension install --user`
 - Run `jupyter nbextension enable python-markdown/main`
@@ -285,7 +285,7 @@ see [python-markdown docs](https://github.com/ipython-contrib/jupyter_contrib_nb
 
 ### Background
 
-For this project, we make use of [pytest](https://docs.pytest.org/en/latest/) for testing purposes. To run tests, simply run `poetry run pytest` in this directory (i.e. `justice40-tool/data/data-pipeline`).
+For this project, we make use of [pytest](https://docs.pytest.org/en/latest/) for testing purposes. To run tests, simply run `poetry run pytest` in this directory (i.e., `justice40-tool/data/data-pipeline`).
 
 Test data is configured via [fixtures](https://docs.pytest.org/en/latest/explanation/fixtures.html).
 
@@ -317,7 +317,7 @@ data_path = Path.cwd()
 
 # score data expected
 score_csv_path = data_path / "data_pipeline" / "data" / "score" / "csv" / "full" / "usa.csv"
-score_initial_df = pd.read_csv(score_csv_path, dtype={"GEOID10_TRACT": "string"}, low_memory=False)[:2]
+score_initial_df = pd.read_csv(score_csv_path, dtype={"GEOID10_TRACT": "string"}, low_memory=False, nrows=2)
 score_initial_df.to_csv(data_path / "data_pipeline" / "etl" / "score" / "tests" / "sample_data" /"score_data_initial.csv", index=False)
 ```
 
@@ -332,7 +332,7 @@ We have four pickle files that correspond to expected files:
 
 To update the pickles, let's go one by one:
 
-For the `score_transformed_expected.pkl`, but a breakpoint on [this line](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L58), before the `pdt.assert_frame_equal` and run:
+For the `score_transformed_expected.pkl`, put a breakpoint on [this line](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L58), before the `pdt.assert_frame_equal` and run:
 `pytest data_pipeline/etl/score/tests/test_score_post.py::test_transform_score`
 
 Once on the breakpoint, capture the df to a pickle as follows:
@@ -346,7 +346,7 @@ score_transformed_actual.to_pickle(data_path / "data_pipeline" / "etl" / "score"
 
 Then take out the breakpoint and re-run the test: `pytest data_pipeline/etl/score/tests/test_score_post.py::test_transform_score`
 
-For the `score_data_expected.pkl`, but a breakpoint on [this line](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L78), before the `pdt.assert_frame_equal` and run:
+For the `score_data_expected.pkl`, put a breakpoint on [this line](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L78), before the `pdt.assert_frame_equal` and run:
 `pytest data_pipeline/etl/score/tests/test_score_post.py::test_create_score_data`
 
 Once on the breakpoint, capture the df to a pickle as follows:
@@ -360,7 +360,7 @@ score_data_actual.to_pickle(data_path / "data_pipeline" / "etl" / "score" / "tes
 
 Then take out the breakpoint and re-run the test: `pytest data_pipeline/etl/score/tests/test_score_post.py::test_create_score_data`
 
-For the `tile_data_expected.pkl`, but a breakpoint on [this line](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L86), before the `pdt.assert_frame_equal` and run:
+For the `tile_data_expected.pkl`, put a breakpoint on [this line](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L86), before the `pdt.assert_frame_equal` and run:
 `pytest data_pipeline/etl/score/tests/test_score_post.py::test_create_tile_data`
 
 Once on the breakpoint, capture the df to a pickle as follows:
@@ -374,7 +374,7 @@ output_tiles_df_actual.to_pickle(data_path / "data_pipeline" / "etl" / "score" /
 
 Then take out the breakpoint and re-run the test: `pytest data_pipeline/etl/score/tests/test_score_post.py::test_create_tile_data`
 
-For the `downloadable_data_expected.pk1`, but a breakpoint on [this line](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L98), before the `pdt.assert_frame_equal` and run:
+For the `downloadable_data_expected.pk1`, put a breakpoint on [this line](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L98), before the `pdt.assert_frame_equal` and run:
 `pytest data_pipeline/etl/score/tests/test_score_post.py::test_create_downloadable_data`
 
 Once on the breakpoint, capture the df to a pickle as follows:
@@ -422,13 +422,20 @@ In order to update the snapshot fixtures of an ETL class, follow the following s
 
 1. If you need to manually update the fixtures, update the "furthest upstream" source
    that is called by `_setup_etl_instance_and_run_extract`. For instance, this may
-   involve updating a zip file that imitates the source data.
+   involve creating a new zip file that imitates the source data. (e.g., for the 
+   National Risk Index test, update 
+   `data_pipeline/tests/sources/national_risk_index/data/NRI_Table_CensusTracts.zip` 
+   which is a 64kb imitation of the 405MB source NRI data.)
 2. Run `pytest . -rsx --update_snapshots` to update snapshots for all files, or you
-   can pass a specific file name to pytest to be more precise.
+   can pass a specific file name to pytest to be more precise (e.g., `pytest 
+   data_pipeline/tests/sources/national_risk_index/test_etl.py -rsx --update_snapshots`)
 3. Re-run pytest without the `update_snapshots` flag (e.g., `pytest . -rsx`) to
    ensure the tests now pass.
 4. Carefully check the `git diff` for the updates to all test fixtures to make sure
-   these are as expected. This part is very important.
+   these are as expected. This part is very important. For instance, if you changed a
+    column name, you would only expect the column name to change in the output. If 
+    you modified the calculation of some data, spot check the results to see if the 
+    numbers in the updated fixtures are as expected.
 
 ### Other ETL Unit Tests
 
