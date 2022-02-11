@@ -12,7 +12,6 @@ import requests
 import urllib3
 from data_pipeline.config import settings
 
-
 ## zlib is not available on all systems
 try:
     import zlib  # noqa # pylint: disable=unused-import

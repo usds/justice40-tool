@@ -5,9 +5,7 @@ import numpy as np
 import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.score.etl_utils import floor_series
-from data_pipeline.etl.sources.census.etl_utils import (
-    check_census_data_source,
-)
+from data_pipeline.etl.sources.census.etl_utils import check_census_data_source
 from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger
 from data_pipeline.utils import zip_files

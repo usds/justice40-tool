@@ -91,6 +91,11 @@ min-similarity-lines = 4
 [tool.black]
 line-length = 80
 
+[tool.isort]
+profile = "hug"
+src_paths = ["isort", "test"]
+force_single_line="True"
+
 [tool.liccheck]
 # Authorized and unauthorized licenses in LOWER CASE
 authorized_licenses = [

@@ -17,16 +17,21 @@ repos:
           "--remove-unused-variable",
           "--ignore-init-module-imports",
         ]
-
-- repo: https://github.com/asottile/reorder_python_imports
-  rev: v2.7.1
+#
+#- repo: https://github.com/asottile/reorder_python_imports
+#  rev: v2.7.1
+#  hooks:
+#    - id: reorder-python-imports
+#      language_version: python3.9
+#      args:
+#        [
+#          "--application-directories=.",
+#        ]
+- repo: https://github.com/pycqa/isort
+  rev: 5.10.1
   hooks:
-    - id: reorder-python-imports
-      language_version: python3.9
-      args:
-        [
-          "--application-directories=.",
-        ]
+    - id: isort
+      name: isort (python)
 
 - repo: https://github.com/ambv/black
   rev: 22.1.0

@@ -35,10 +35,7 @@ class CensusDecennialETL(ExtractTransformLoad):
         self.MEDIAN_INCOME_FIELD = "PBG049001"
         self.MEDIAN_INCOME_VI_FIELD = "PBG047001"
         self.MEDIAN_INCOME_FIELD_NAME = "Median household income in 2009 ($)"
-        self.AREA_MEDIAN_INCOME_FIELD_NAME = (
-            "Median household income as a percent of "
-            "territory median income in 2009"
-        )
+        self.AREA_MEDIAN_INCOME_FIELD_NAME = "Median household income as a percent of territory median income in 2009"
 
         self.TERRITORY_MEDIAN_INCOME_FIELD = "Territory Median Income"
 
