@@ -1,3 +1,4 @@
+# pylint: disable=wrong-import-order
 import pathlib
 
 import data_pipeline
