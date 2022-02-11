@@ -11,4 +11,3 @@ TerritoryFocusControlModuleScssNamespace.ITerritoryFocusControlModuleScss & {
   };
 
 export = TerritoryFocusControlModuleScssModule;
-

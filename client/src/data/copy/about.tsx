@@ -36,13 +36,13 @@ export const PAGE = defineMessages({
   HEADING2_DESCRIPTION1: {
     id: 'about.page.sub.header.2.text.1',
     defaultMessage: `
-      The tool will provide important information for the Justice40 Initiative. The goal of the 
+      The tool will provide important information for the Justice40 Initiative. The goal of the
       Justice40 Initiative is to provide 40 percent of the overall benefits of certain federal
-      programs in seven key areas to disadvantaged communities. These seven key areas are: climate 
+      programs in seven key areas to disadvantaged communities. These seven key areas are: climate
       change, clean energy and energy efficiency, clean transit, affordable and sustainable
-      housing, training and workforce development (related to climate, natural disasters, environment, 
-      clean energy, clean transportation, affordable and sustainable housing, water and 
-      wastewater infrastructure, and legacy pollution reduction, including in energy communities), 
+      housing, training and workforce development (related to climate, natural disasters, environment,
+      clean energy, clean transportation, affordable and sustainable housing, water and
+      wastewater infrastructure, and legacy pollution reduction, including in energy communities),
       the remediation and reduction of legacy pollution, and the development of critical clean water infrastructure.
     `,
     description: 'about page sub header text',
@@ -55,11 +55,11 @@ export const HEADING_1 = {
     id={'about.page.sub.header.1.text.1'}
     description={'about page sub header text'}
     defaultMessage={`
-    In {eoLink} on {tacklingItalics}, President Biden directed the Council on Environmental Quality (CEQ) 
+    In {eoLink} on {tacklingItalics}, President Biden directed the Council on Environmental Quality (CEQ)
     to create a Climate and Economic Justice Screening Tool. The purpose of the tool is to help
-    Federal agencies identify disadvantaged communities that have been historically 
-    marginalized, underserved, and overburdened by pollution. The tool provides socioeconomic, 
-    environmental, and climate information to inform decisions that may affect these communities. The 
+    Federal agencies identify disadvantaged communities that have been historically
+    marginalized, underserved, and overburdened by pollution. The tool provides socioeconomic,
+    environmental, and climate information to inform decisions that may affect these communities. The
     tool identifies disadvantaged communities through publicly-available, nationally-consistent, and high-quality data.
     `}
     values={{
@@ -112,7 +112,7 @@ export const HOW_TO_GET_STARTED = defineMessages({
   FEDERAL_PM_INFO: {
     id: 'federal.pm.info',
     defaultMessage: `
-      Download the tool’s current list of communities, explore data that may be useful to your 
+      Download the tool’s current list of communities, explore data that may be useful to your
       program, and provide feedback on the tool.
     `,
     description: 'sub heading of page',
@@ -175,5 +175,3 @@ export const GET_INVOLVED = defineMessages({
     description: 'link to github repository',
   },
 });
-
-

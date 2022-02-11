@@ -86,7 +86,7 @@ exports[`rendering of the J40Header checks if component renders 1`] = `
                         Official websites use .gov
                       </strong>
                       <br />
-                      A 
+                      A
                       <strong>
                         .gov
                       </strong>
@@ -112,7 +112,7 @@ exports[`rendering of the J40Header checks if component renders 1`] = `
                         Secure .gov websites use HTTPS
                       </strong>
                       <br />
-                      A 
+                      A
                       <strong>
                         lock (
                         <span
@@ -128,7 +128,7 @@ exports[`rendering of the J40Header checks if component renders 1`] = `
                         </span>
                         )
                       </strong>
-                       or 
+                       or
                       <strong>
                         https://
                       </strong>
@@ -147,10 +147,10 @@ exports[`rendering of the J40Header checks if component renders 1`] = `
         <div />
         <div>
           <span>
-            This is a beta site. 
+            This is a beta site.
           </span>
           <span>
-            It is an early, in-progress version of the tool with limited datasets that will 
+            It is an early, in-progress version of the tool with limited datasets that will
     be regularly updated.
           </span>
         </div>
@@ -183,7 +183,7 @@ exports[`rendering of the J40Header checks if component renders 1`] = `
             </div>
             <div>
               <div>
-                 Screening Tool 
+                 Screening Tool
               </div>
               <div>
                 BETA

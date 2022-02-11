@@ -252,4 +252,3 @@ export const makeMapStyle = () : Style => {
     ],
   };
 };
-

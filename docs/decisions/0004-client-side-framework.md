@@ -5,7 +5,7 @@
 - Date: 2021-05-19
 - Tags: front-end, client
 
-Technical Story: https://github.com/usds/justice40-tool/issues/44 
+Technical Story: https://github.com/usds/justice40-tool/issues/44
 
 ## Context and Problem Statement
 
@@ -38,7 +38,7 @@ We need to decide what framework to use for our front end client.
 
 ## Decision Outcome
 
-Chosen option: Gatsby, because it seems to hit the balance between being simple and static-site focused and having capabilities for scaling up features and eventually evolving to a full stack application should we need it. 
+Chosen option: Gatsby, because it seems to hit the balance between being simple and static-site focused and having capabilities for scaling up features and eventually evolving to a full stack application should we need it.
 
 ### Positive Consequences <!-- optional -->
 

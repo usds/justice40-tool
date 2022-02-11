@@ -81,7 +81,7 @@ exports[`rendering of the GovernmentBanner checks if component renders 1`] = `
                       Official websites use .gov
                     </strong>
                     <br />
-                    A 
+                    A
                     <strong>
                       .gov
                     </strong>
@@ -107,7 +107,7 @@ exports[`rendering of the GovernmentBanner checks if component renders 1`] = `
                       Secure .gov websites use HTTPS
                     </strong>
                     <br />
-                    A 
+                    A
                     <strong>
                       lock (
                       <span
@@ -123,7 +123,7 @@ exports[`rendering of the GovernmentBanner checks if component renders 1`] = `
                       </span>
                       )
                     </strong>
-                     or 
+                     or
                     <strong>
                       https://
                     </strong>

@@ -13,4 +13,3 @@
 export const hyphenizeString = (string) => {
   return string.split(/\.| /).join('-').toLowerCase();
 };
-

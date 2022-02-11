@@ -45,7 +45,7 @@ In our specific case:
 
 - `tippecanoe-decode d3_313.pbf 3 1 3`
 
-If the file is super big we can just look at the head of the file: 
+If the file is super big we can just look at the head of the file:
 
 - `tippecanoe-decode d3_313.pbf 3 1 3 | head -40`
 
@@ -173,7 +173,7 @@ When zooming in (the zoom number will increase), thus aka 'high' zoom levels, th
                     "GEOID10":"020160001001",
                    "State Name":"Alaska",
                    "County Name":"Aleutians West Census Area",
-                   
+
                    // TOTAL_POPULATION
                    "Total population":975,
                    "Score E (percentile)":0.49,
@@ -186,14 +186,14 @@ When zooming in (the zoom number will increase), thus aka 'high' zoom levels, th
                    "Percent individuals age 25 or over with less than high school degree (percentile)":0.08,
 
                    // LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE
-                   "Linguistic isolation (percent) (percentile)":0.05, 
-                   
+                   "Linguistic isolation (percent) (percentile)":0.05,
+
                    // UNEMPLOYMENT_PROPERTY_PERCENTILE
-                   "Unemployed civilians (percent) (percentile)":0.03, 
-                   
+                   "Unemployed civilians (percent) (percentile)":0.03,
+
                    // HOUSING_BURDEN_PROPERTY_PERCENTILE
-                   "Housing burden (percent) (percentile)":0.18 
-                   
+                   "Housing burden (percent) (percentile)":0.18
+
                 },
                 "geometry":{
                     "type":"Polygon",

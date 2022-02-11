@@ -8,7 +8,7 @@ graph TB
     C --> |No| A{Concerns Addressed?}
     A --> |Yes| PR
     A --> |No| IP["In Person Discussion"]
-    IP --> O{Voting Outcome}    
+    IP --> O{Voting Outcome}
     O --> |Accepted - add label | PR
     O --> |Rejected - add label | PR
     PR --> PRP["Standard PR Process"]

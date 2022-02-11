@@ -13,17 +13,17 @@
         padding: 25px 25px;
         display: flex;
         flex-direction: column;
-        
+
         .downloadBoxTitle {
           @include typeset('sans', 'xs', 3);
           @include u-text('semibold');
           @include u-margin-bottom(2);
         }
-        
+
         .downloadBoxText {
           @include typeset('sans', 'xs', 3);
           @include u-margin-bottom(4);
-          
+
           span {
             font-style: italic;
           }

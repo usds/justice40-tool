@@ -12,7 +12,7 @@
         @include typeset('sans', 'xs', 3);
         @include u-text('semibold');
     }
-        
+
     .lowIncomeText {
         @include typeset('sans', 'xs', 3);
         @include u-text('light');

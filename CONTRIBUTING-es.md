@@ -41,4 +41,3 @@ Si desea colaborar con alguna parte del código base, bifurque el repositorio si
 * Al menos un revisor autorizado debe aprobar la confirmación (en [CODEOWNERS](https://github.com/usds/justice40-tool/tree/main/.github/CODEOWNERS), en inglés, consulte la lista más reciente de estos revisores).
 * Todas las verificaciones de estado obligatorias deben ser aprobadas.
 Si hay un desacuerdo importante entre los integrantes del equipo, se organizará una reunión con el fin de determinar el plan de acción para la solicitud de incorporación de cambios.
-

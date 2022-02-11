@@ -1,9 +1,9 @@
 from typing import Tuple
+
+import data_pipeline.score.field_names as field_names
 import numpy as np
 import pandas as pd
-
 from data_pipeline.score.score import Score
-import data_pipeline.score.field_names as field_names
 from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)

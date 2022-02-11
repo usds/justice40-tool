@@ -9,42 +9,42 @@
     border-bottom: none;
     @include u-padding-bottom(0);
   }
-  
+
   .indicatorRow {
     display: flex;
-    
+
     @media screen and (max-width: $mobileBreakpoint) {
       flex: 1 0 40%;
       align-self: inherit;
       padding-left: 3rem;
       padding-top: 1rem;
     }
-    
+
     .indicatorName {
       flex: 0 1 77%;
       display: flex;
       flex-direction: column;
       @include typeset('sans', '2xs', 2);
-      @include u-text('bold'); 
-      
+      @include u-text('bold');
+
       .indicatorDesc {
-        @include typeset('sans', '3xs', 2); 
-        @include u-text('normal'); 
-        max-width: 12rem;    
+        @include typeset('sans', '3xs', 2);
+        @include u-text('normal');
+        max-width: 12rem;
         @include u-margin-top(0);
         @media screen and (max-width: 1024px) {
           max-width: 80%;
         }
       }
     }
-    
+
     .indicatorValue {
       margin-left: 2.2rem;
-      
+
       .indicatorSuperscript {
         top: -0.2em
       }
-    }  
+    }
   }
 }
 

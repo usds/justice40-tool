@@ -1,15 +1,15 @@
-from typing import List
 import datetime
 import json
 import logging
 import os
-import sys
 import shutil
+import sys
 import zipfile
 from pathlib import Path
-import urllib3
-import requests
+from typing import List
 
+import requests
+import urllib3
 from data_pipeline.config import settings
 
 

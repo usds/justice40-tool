@@ -8,7 +8,7 @@ According to the [documentation](https://p1.cgis.umd.edu/mdejscreen/help.html):
 
 There exist two data categories: Population Burden and Population Characteristics.
 
-There are two indicators within Population Burden: Exposure, and Socioeconomic. Within Population Characteristics, there exist two indicators: Sensitive, Environmental Effects. Each respective indicator contains several relevant covariates, and an averaged score. 
+There are two indicators within Population Burden: Exposure, and Socioeconomic. Within Population Characteristics, there exist two indicators: Sensitive, Environmental Effects. Each respective indicator contains several relevant covariates, and an averaged score.
 
 The two "Pollution Burden" average scores are then averaged together and the result is multiplied by the average of the "Population Characteristics" categories to get the total EJ Score for each tract.
 
@@ -20,4 +20,4 @@ Furthermore, it was determined that Bladensburg residents are at a higher risk o
 
 Source:
 
-Driver, A.; Mehdizadeh, C.; Bara-Garcia, S.; Bodenreider, C.; Lewis, J.; Wilson, S. Utilization of the Maryland Environmental Justice Screening Tool: A Bladensburg, Maryland Case Study. Int. J. Environ. Res. Public Health 2019, 16, 348. 
+Driver, A.; Mehdizadeh, C.; Bara-Garcia, S.; Bodenreider, C.; Lewis, J.; Wilson, S. Utilization of the Maryland Environmental Justice Screening Tool: A Bladensburg, Maryland Case Study. Int. J. Environ. Res. Public Health 2019, 16, 348.

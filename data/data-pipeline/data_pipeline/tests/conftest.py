@@ -3,7 +3,6 @@ from pathlib import Path
 from shutil import copyfile
 
 import pytest
-
 from data_pipeline.config import settings
 from data_pipeline.etl.base import ExtractTransformLoad
 

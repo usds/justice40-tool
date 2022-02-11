@@ -4,13 +4,10 @@ import typing
 from typing import Optional
 
 import pandas as pd
-
 from data_pipeline.config import settings
-from data_pipeline.utils import (
-    unzip_file_from_url,
-    remove_all_from_dir,
-    get_module_logger,
-)
+from data_pipeline.utils import get_module_logger
+from data_pipeline.utils import remove_all_from_dir
+from data_pipeline.utils import unzip_file_from_url
 
 logger = get_module_logger(__name__)
 

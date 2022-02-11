@@ -1,11 +1,10 @@
 # pylint: disable=W0212
 ## Above disables warning about access to underscore-prefixed methods
-
 from importlib import reload
 from pathlib import Path
+
 import pandas.api.types as ptypes
 import pandas.testing as pdt
-
 from data_pipeline.etl.score import constants
 
 # See conftest.py for all fixtures used in these tests

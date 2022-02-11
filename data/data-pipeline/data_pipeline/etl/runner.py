@@ -67,7 +67,6 @@ def etl_runner(dataset_to_run: str = None) -> None:
         etl_instance.cleanup()
 
     # update the front end JSON/CSV of list of data sources
-    pass
 
 
 def score_generate() -> None:

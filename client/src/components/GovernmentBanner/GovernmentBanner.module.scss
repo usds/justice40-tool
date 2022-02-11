@@ -7,10 +7,10 @@
 
     .bannerContainer {
       @include u-display("flex");
-      max-width: 74rem; 
+      max-width: 74rem;
       @include u-margin-left(auto);
       @include u-margin-right(auto);
       justify-content: space-between;
     }
-    
+
 }

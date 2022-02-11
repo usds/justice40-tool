@@ -1,27 +1,23 @@
-from subprocess import call
 import sys
-import click
+from subprocess import call
 
+import click
 from data_pipeline.config import settings
-from data_pipeline.etl.runner import (
-    etl_runner,
-    score_generate,
-    score_geo,
-    score_post,
-)
+from data_pipeline.etl.runner import etl_runner
+from data_pipeline.etl.runner import score_generate
+from data_pipeline.etl.runner import score_geo
+from data_pipeline.etl.runner import score_post
 from data_pipeline.etl.sources.census.etl_utils import (
     reset_data_directories as census_reset,
-    zip_census_data,
 )
+from data_pipeline.etl.sources.census.etl_utils import zip_census_data
 from data_pipeline.tile.generate import generate_tiles
-from data_pipeline.utils import (
-    data_folder_cleanup,
-    get_module_logger,
-    score_folder_cleanup,
-    downloadable_cleanup,
-    temp_folder_cleanup,
-    check_first_run,
-)
+from data_pipeline.utils import check_first_run
+from data_pipeline.utils import data_folder_cleanup
+from data_pipeline.utils import downloadable_cleanup
+from data_pipeline.utils import get_module_logger
+from data_pipeline.utils import score_folder_cleanup
+from data_pipeline.utils import temp_folder_cleanup
 
 logger = get_module_logger(__name__)
 
@@ -31,8 +27,6 @@ dataset_cli_help = "Grab the data from either 'local' for local access or 'aws' 
 @click.group()
 def cli():
     """Defines a click group for the commands below"""
-
-    pass
 
 
 @cli.command(help="Clean up all census data folders")

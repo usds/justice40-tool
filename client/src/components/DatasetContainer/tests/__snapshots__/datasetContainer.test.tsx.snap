@@ -39,27 +39,27 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Low income
               </h3>
               <div>
-                
+
         Percent of a census tract's population in households where household income is at or below
         200% of the federal poverty level.
-      
+
               </div>
               <ul>
                 <li>
                   <span>
-                    Used in: 
+                    Used in:
                   </span>
                   All categories except for training and workforce development
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible Party:
                   </span>
                   Census
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -74,7 +74,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   All U.S. states and the District of Columbia
                 </li>
@@ -87,26 +87,26 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Higher ed enrollment rate
               </h3>
               <div>
-                
+
         Percent of people who are currently enrolled in college or graduate school.
-      
+
               </div>
               <ul>
                 <li>
                   <span>
-                    Used in: 
+                    Used in:
                   </span>
                   All categories
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible Party:
                   </span>
                   Census
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -121,7 +121,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   All U.S. states and the District of Columbia
                 </li>
@@ -134,30 +134,30 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Expected agriculture loss rate
               </h3>
               <div>
-                
-        Percent of agriculture value at risk from losses due to natural hazards such as the fourteen 
-        natural hazards that have some link to climate change including: avalanche, coastal flooding, 
-        cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong 
-        wind, tornado, wildfire, and winter weather. Calculated by dividing the agriculture value at risk in 
+
+        Percent of agriculture value at risk from losses due to natural hazards such as the fourteen
+        natural hazards that have some link to climate change including: avalanche, coastal flooding,
+        cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong
+        wind, tornado, wildfire, and winter weather. Calculated by dividing the agriculture value at risk in
         a census tract by the total agriculture value in that census tract.
-      
+
               </div>
               <ul>
                 <li>
                   <span>
-                    Used in: 
+                    Used in:
                   </span>
                   Climate change methodology
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible Party:
                   </span>
                   Federal Emergency Management Agency (FEMA)
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -172,7 +172,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   All U.S. states and the District of Columbia
                 </li>
@@ -185,30 +185,30 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Expected building loss rate
               </h3>
               <div>
-                
-        Percent of building value at risk from losses due to natural hazards such as the fourteen 
-        natural hazards that have some link to climate change including: avalanche, coastal flooding, 
-        cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong 
-        wind, tornado, wildfire, and winter weather. Calculated by dividing the building value at risk in 
+
+        Percent of building value at risk from losses due to natural hazards such as the fourteen
+        natural hazards that have some link to climate change including: avalanche, coastal flooding,
+        cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong
+        wind, tornado, wildfire, and winter weather. Calculated by dividing the building value at risk in
         a census tract by the total building value in that census tract.
-      
+
               </div>
               <ul>
                 <li>
                   <span>
-                    Used in: 
+                    Used in:
                   </span>
                   Climate change methodology
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible Party:
                   </span>
                   Federal Emergency Management Agency (FEMA)
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -223,7 +223,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   All U.S. states and the District of Columbia
                 </li>
@@ -236,36 +236,36 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Expected population loss rate
               </h3>
               <div>
-                
-        Rate relative to the population in fatalities and injuries due to natural hazards each year such as 
-        the fourteen natural hazards that have some link to climate change including: avalanche, 
-        coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, 
-        riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined 
-        as the Spatial Hazard Events and Losses or National Centers for Environmental Information’s 
-        (NCEI) reported number of fatalities and injuries caused by the hazard occurrence. To 
-        combine fatalities and injuries for the computation of population loss value, an injury is counted 
-        as one-tenth (1/10) of a fatality. The NCEI Storm Events Database classifies injuries and fatalities 
-        as direct or indirect. Both direct and indirect injuries and fatalities are counted as population 
-        loss. This total number of injuries and fatalities is then divided by the population in the 
-        census tract to get a per-capita rate of population risk. 
-      
+
+        Rate relative to the population in fatalities and injuries due to natural hazards each year such as
+        the fourteen natural hazards that have some link to climate change including: avalanche,
+        coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide,
+        riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined
+        as the Spatial Hazard Events and Losses or National Centers for Environmental Information’s
+        (NCEI) reported number of fatalities and injuries caused by the hazard occurrence. To
+        combine fatalities and injuries for the computation of population loss value, an injury is counted
+        as one-tenth (1/10) of a fatality. The NCEI Storm Events Database classifies injuries and fatalities
+        as direct or indirect. Both direct and indirect injuries and fatalities are counted as population
+        loss. This total number of injuries and fatalities is then divided by the population in the
+        census tract to get a per-capita rate of population risk.
+
               </div>
               <ul>
                 <li>
                   <span>
-                    Used in: 
+                    Used in:
                   </span>
                   Climate change methodology
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible Party:
                   </span>
                   Federal Emergency Management Agency (FEMA)
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -280,7 +280,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   All U.S. states and the District of Columbia
                 </li>
@@ -298,19 +298,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <ul>
                 <li>
                   <span>
-                    Used in: 
+                    Used in:
                   </span>
                   Clean energy and energy efficiency methodology
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible Party:
                   </span>
                   Department of Energy (DOE)
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -325,7 +325,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   All U.S. states and the District of Columbia
                 </li>
@@ -338,29 +338,29 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 PM2.5 in the air
               </h3>
               <div>
-                
+
         Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller.
-      
+
               </div>
               <ul>
                 <li>
                   <span>
-                    Used in: 
+                    Used in:
                   </span>
                   Clean energy and energy efficiency methodology
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible Party:
                   </span>
                   Environmental Protection Agency (EPA) Office of Air and Radiation (OAR)
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
-                  
-      
+
+
                   <a
                     class="usa-link usa-link--external"
                     data-cy=""
@@ -370,13 +370,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   >
                     Fusion of model and monitor data
                   </a>
-                   from 2017 as compiled by EPA’s EJSCREEN, sourced from EPA National Air 
+                   from 2017 as compiled by EPA’s EJSCREEN, sourced from EPA National Air
       Toxics Assessment (NATA) and the U.S. Department of Transportation (DOT) traffic data
-    
+
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   All U.S. states and the District of Columbia
                 </li>
@@ -389,26 +389,26 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Diesel particulate matter exposure
               </h3>
               <div>
-                
+
         Mixture of particles that is part of diesel exhaust in the air.
-      
+
               </div>
               <ul>
                 <li>
                   <span>
-                    Used in: 
+                    Used in:
                   </span>
                   Clean transportation methodology
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible Party:
                   </span>
                   Environmental Protection Agency (EPA)
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -423,7 +423,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   All U.S. states and the District of Columbia
                 </li>
@@ -436,27 +436,27 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Traffic proximity and volume
               </h3>
               <div>
-                
+
         Count of vehicles (average annual daily traffic) at major roads
         within 500 meters, divided by distance in meters (not km).
-      
+
               </div>
               <ul>
                 <li>
                   <span>
-                    Used in: 
+                    Used in:
                   </span>
                   Clean transportation methodology
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible Party:
                   </span>
                   Department of Transportation (DOT)
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -471,7 +471,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   All U.S. states and the District of Columbia
                 </li>
@@ -484,27 +484,27 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Housing cost burden
               </h3>
               <div>
-                
+
         The percent of households in a census tract that are both earning less than 80% of HUD Area Median
         Family Income by county and are paying greater than 30% of their income to housing costs.
-      
+
               </div>
               <ul>
                 <li>
                   <span>
-                    Used in: 
+                    Used in:
                   </span>
                   Affordable and sustainable housing methodology
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible Party:
                   </span>
                   Department of Housing & Urban Development's (HUD)
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -519,7 +519,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   All U.S. states and the District of Columbia
                 </li>
@@ -532,27 +532,27 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Lead paint
               </h3>
               <div>
-                
+
         Percent of housing units built pre-1960, used as an indicator of potential lead paint exposure in
         tracts with median home values less than 90th percentile
-      
+
               </div>
               <ul>
                 <li>
                   <span>
-                    Used in: 
+                    Used in:
                   </span>
                   Affordable and sustainable housing methodology
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible Party:
                   </span>
                   Census
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -567,7 +567,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   All U.S. states and the District of Columbia
                 </li>
@@ -580,26 +580,26 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Low median home value
               </h3>
               <div>
-                
+
         Median home value of owner-occupied housing units in the census tract.
-       
+
               </div>
               <ul>
                 <li>
                   <span>
-                    Used in: 
+                    Used in:
                   </span>
                   Affordable and sustainable housing methodology
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible Party:
                   </span>
                   Census
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -614,7 +614,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   All U.S. states and the District of Columbia
                 </li>
@@ -627,30 +627,30 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Proximity to hazardous waste facilities
               </h3>
               <div>
-                
+
         Count of hazardous waste facilities (Treatment, Storage, and Disposal Facilities and Large
         Quantity Generators) within 5 km (or nearest beyond 5 km), each divided by distance in kilometers.
-      
+
               </div>
               <ul>
                 <li>
                   <span>
-                    Used in: 
+                    Used in:
                   </span>
                   Reduction and remediation of legacy pollution methodology
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible Party:
                   </span>
                   Environmental Protection Agency (EPA)
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
-                  
-      
+
+
                   <a
                     class="usa-link usa-link--external"
                     data-cy=""
@@ -660,13 +660,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   >
                     Treatment Storage, and Disposal Facilities (TSDF) data
                   </a>
-                   from 2020 calculated from EPA RCRA database as compiled 
+                   from 2020 calculated from EPA RCRA database as compiled
       by EPA's EJSCREEN
-    
+
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   All U.S. states and the District of Columbia
                 </li>
@@ -679,27 +679,27 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Proximity to National Priorities List (NPL) sites
               </h3>
               <div>
-                
+
         Count of proposed or listed NPL - also known as superfund - sites within 5 km (or nearest one
         beyond 5 km), each divided by distance in kilometers.
-        
+
               </div>
               <ul>
                 <li>
                   <span>
-                    Used in: 
+                    Used in:
                   </span>
                   Reduction and remediation of legacy pollution methodology
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible Party:
                   </span>
                   Environmental Protection Agency (EPA)
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -714,7 +714,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   All U.S. states and the District of Columbia
                 </li>
@@ -727,27 +727,27 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Proximity to Risk Management Plan (RMP) facilities
               </h3>
               <div>
-                
+
         Count of RMP (potential chemical accident management plan) facilities within 5 km (or nearest
         one beyond 5 km), each divided by distance in kilometers.
-      
+
               </div>
               <ul>
                 <li>
                   <span>
-                    Used in: 
+                    Used in:
                   </span>
                   Reduction and remediation of legacy pollution methodology
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible Party:
                   </span>
                   Environmental Protection Agency (EPA)
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -762,7 +762,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   All U.S. states and the District of Columbia
                 </li>
@@ -775,27 +775,27 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Wastewater discharge
               </h3>
               <div>
-                
+
         Risk-Screening Environmental Indicators (RSEI) modeled Toxic Concentrations at
         stream segments within 500 meters, divided by distance in kilometers (km).
-      
+
               </div>
               <ul>
                 <li>
                   <span>
-                    Used in: 
+                    Used in:
                   </span>
                   Critical clean water and waste infrastructure methodology
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible Party:
                   </span>
                   Environmental Protection Agency (EPA)
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -810,7 +810,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   All U.S. states and the District of Columbia
                 </li>
@@ -823,28 +823,28 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Asthma
               </h3>
               <div>
-                
+
         Weighted percent of people who answer “yes” to both of the following questions: “Have you ever
         been told by a doctor, nurse, or other health professional that you have asthma?” and the question
         “Do you still have asthma?”
-      
+
               </div>
               <ul>
                 <li>
                   <span>
-                    Used in: 
+                    Used in:
                   </span>
                   Health burdens methodology
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible Party:
                   </span>
                   Centers for Disease Control and Prevention (CDC)
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -859,7 +859,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   All U.S. states and the District of Columbia
                 </li>
@@ -872,28 +872,28 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Diabetes
               </h3>
               <div>
-                
+
         Weighted percent of people ages 18 years and older who report having ever been
         told by a doctor, nurse, or other health professionals that they have
         diabetes other than diabetes during pregnancy.
-      
+
               </div>
               <ul>
                 <li>
                   <span>
-                    Used in: 
+                    Used in:
                   </span>
                   Health burdens methodology
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible Party:
                   </span>
                   Centers for Disease Control and Prevention (CDC)
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -908,7 +908,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   All U.S. states and the District of Columbia
                 </li>
@@ -921,28 +921,28 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Heart disease
               </h3>
               <div>
-                
+
         Weighted percent of people ages 18 years and older who report ever having been told
         by a doctor, nurse, or other health professionals that they had angina or
         coronary heart disease.
-      
+
               </div>
               <ul>
                 <li>
                   <span>
-                    Used in: 
+                    Used in:
                   </span>
                   Health burdens methodology
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible Party:
                   </span>
                   Centers for Disease Control and Prevention (CDC)
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -957,7 +957,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   All U.S. states and the District of Columbia
                 </li>
@@ -970,40 +970,40 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Low life expectancy
               </h3>
               <div>
-                
+
         Average number of years of life a person who has attained a given age can expect to live.
-        
+
                 <p>
                   <strong>
                     Note:
                   </strong>
-                  
+
           Unlike most of the other datasets, high values of this indicator indicate low burdens.
           For percentile calculations, the percentile is calculated in reverse order, so that the tract with
           the highest median income relative to area median income (lowest burden on this measure) is at the
           0th percentile, and the tract with the lowest median income relative to area median income
           (highest burden on this measure) is at the 100th percentile.
-        
+
                 </p>
-                
-      
+
+
               </div>
               <ul>
                 <li>
                   <span>
-                    Used in: 
+                    Used in:
                   </span>
                   Health burdens methodology
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible Party:
                   </span>
                   Centers for Disease Control and Prevention (CDC)
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -1018,7 +1018,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   All U.S. states and the District of Columbia
                 </li>
@@ -1031,26 +1031,26 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Low median Income
               </h3>
               <div>
-                
+
         Median income of the census tract calculated as a percent of the area’s median income.
-      
+
               </div>
               <ul>
                 <li>
                   <span>
-                    Used in: 
+                    Used in:
                   </span>
                   Training and workforce development methodology
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible Party:
                   </span>
                   Census
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -1065,13 +1065,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   All U.S. states, the District of Columbia, and Puerto Rico
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -1086,7 +1086,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   American Samoa and the Northern Mariana Islands
                 </li>
@@ -1099,27 +1099,27 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Linguistic Isolation
               </h3>
               <div>
-                
+
         The percent of limited speaking households, which are households where no one over age
         14 speaks English well.
-      
+
               </div>
               <ul>
                 <li>
                   <span>
-                    Used in: 
+                    Used in:
                   </span>
                   Training and workforce development methodology
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible Party:
                   </span>
                   Census
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -1134,7 +1134,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   All U.S. states, the District of Columbia, and Puerto Rico
                 </li>
@@ -1147,26 +1147,26 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Unemployment
               </h3>
               <div>
-                
+
       Number of unemployed people as a percentage of the civilian labor force
-      
+
               </div>
               <ul>
                 <li>
                   <span>
-                    Used in: 
+                    Used in:
                   </span>
                   Training and workforce development methodology
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible Party:
                   </span>
                   Census
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -1181,13 +1181,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   All U.S. states, the District of Columbia, and Puerto Rico
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -1202,7 +1202,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   American Samoa and the Northern Mariana Islands
                 </li>
@@ -1215,27 +1215,27 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Poverty
               </h3>
               <div>
-                
+
         Percent of a tract's population in households where the household income is at or below 100% of
         the federal poverty level.
-      
+
               </div>
               <ul>
                 <li>
                   <span>
-                    Used in: 
+                    Used in:
                   </span>
                   Training and workforce development methodology
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible Party:
                   </span>
                   Census
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -1250,13 +1250,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   All U.S. states, the District of Columbia, and Puerto Rico
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -1271,7 +1271,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   American Samoa and the Northern Mariana Islands
                 </li>
@@ -1284,27 +1284,27 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 High school degree achievement rate
               </h3>
               <div>
-                
+
         Percent (not percentile) of people ages 25 years or older in a census tract whose
         education level is less than a high school diploma.
-      
+
               </div>
               <ul>
                 <li>
                   <span>
-                    Used in: 
+                    Used in:
                   </span>
                   Training and workforce development methodology
                 </li>
                 <li>
                   <span>
-                    Responsible Party: 
+                    Responsible Party:
                   </span>
                   Census
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -1319,13 +1319,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   All U.S. states, the District of Columbia, and Puerto Rico
                 </li>
                 <li>
                   <span>
-                    Source: 
+                    Source:
                   </span>
                   <a
                     class="usa-link usa-link--external"
@@ -1340,7 +1340,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </li>
                 <li>
                   <span>
-                    Available for: 
+                    Available for:
                   </span>
                   American Samoa and the Northern Mariana Islands
                 </li>

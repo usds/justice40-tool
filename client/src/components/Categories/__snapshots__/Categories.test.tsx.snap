@@ -29,61 +29,61 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         Climate change
       </h3>
       <p>
-        
-      Communities are 
+
+      Communities are
         <strong>
           identified as disadvantaged
         </strong>
-         in this category 
-    
+         in this category
+
       </p>
       <p>
-        
-      
+
+
         <strong>
           IF
         </strong>
-         at or above 90th percentile for 
+         at or above 90th percentile for
         <a
           href="#exp-agr-loss-rate"
         >
           expected agriculture loss rate
         </a>
-         OR 
+         OR
         <a
           href="#exp-bld-loss-rate"
         >
           expected building loss rate
         </a>
-         OR 
+         OR
         <a
           href="#exp-pop-loss-rate"
         >
           expected population loss rate
         </a>
-        
-      
+
+
       </p>
       <p>
-        
-      
+
+
         <strong>
           AND
         </strong>
-         is at or above 65th percentile for 
+         is at or above 65th percentile for
         <a
           href="#low-income"
         >
           low income
         </a>
-         WHEN 
+         WHEN
         <a
           href="#high-ed-enroll-rate"
         >
           higher ed enrollment rate
         </a>
          is at or below 20%
-    
+
       </p>
       <p />
     </div>
@@ -92,55 +92,55 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         Clean energy and energy efficiency
       </h3>
       <p>
-        
-      Communities are 
+
+      Communities are
         <strong>
           identified as disadvantaged
         </strong>
-         in this category 
-    
+         in this category
+
       </p>
       <p>
-        
-        
+
+
         <strong>
           IF
         </strong>
-         at or above 90th percentile for 
+         at or above 90th percentile for
         <a
           href="#energy-burden"
         >
           energy cost burden
         </a>
-         score OR 
+         score OR
         <a
           href="#pm-25"
         >
           PM2.5 in the air
         </a>
-        
-      
+
+
       </p>
       <p>
-        
-      
+
+
         <strong>
           AND
         </strong>
-         is at or above 65th percentile for 
+         is at or above 65th percentile for
         <a
           href="#low-income"
         >
           low income
         </a>
-         WHEN 
+         WHEN
         <a
           href="#high-ed-enroll-rate"
         >
           higher ed enrollment rate
         </a>
          is at or below 20%
-    
+
       </p>
       <p />
     </div>
@@ -149,55 +149,55 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         Clean transportation
       </h3>
       <p>
-        
-      Communities are 
+
+      Communities are
         <strong>
           identified as disadvantaged
         </strong>
-         in this category 
-    
+         in this category
+
       </p>
       <p>
-        
-        
+
+
         <strong>
           IF
         </strong>
-         at or above 90th percentile for 
+         at or above 90th percentile for
         <a
           href="#diesel-pm"
         >
           diesel particulate matter exposure
         </a>
-         or 
+         or
         <a
           href="#traffic-vol"
         >
           traffic proximity and volume
         </a>
-        
-      
+
+
       </p>
       <p>
-        
-      
+
+
         <strong>
           AND
         </strong>
-         is at or above 65th percentile for 
+         is at or above 65th percentile for
         <a
           href="#low-income"
         >
           low income
         </a>
-         WHEN 
+         WHEN
         <a
           href="#high-ed-enroll-rate"
         >
           higher ed enrollment rate
         </a>
          is at or below 20%
-    
+
       </p>
       <p />
     </div>
@@ -206,62 +206,62 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         Affordable and sustainable housing
       </h3>
       <p>
-        
-      Communities are 
+
+      Communities are
         <strong>
           identified as disadvantaged
         </strong>
-         in this category 
-    
+         in this category
+
       </p>
       <p>
-        
-        
+
+
         <strong>
           IF
         </strong>
-         at or above 90th percentile for 
+         at or above 90th percentile for
         <a
           href="#lead-paint"
         >
           lead paint
         </a>
-         WHEN 
+         WHEN
         <a
           href="#median-home"
         >
           low median home value
         </a>
          is at or less than
-        90th percentile OR at or above the 90th percentile for the 
+        90th percentile OR at or above the 90th percentile for the
         <a
           href="#house-burden"
         >
           housing cost burden
         </a>
-        
-      
+
+
       </p>
       <p>
-        
-      
+
+
         <strong>
           AND
         </strong>
-         is at or above 65th percentile for 
+         is at or above 65th percentile for
         <a
           href="#low-income"
         >
           low income
         </a>
-         WHEN 
+         WHEN
         <a
           href="#high-ed-enroll-rate"
         >
           higher ed enrollment rate
         </a>
          is at or below 20%
-    
+
       </p>
       <p />
     </div>
@@ -270,61 +270,61 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         Reduction and remediation of legacy pollution
       </h3>
       <p>
-        
-      Communities are 
+
+      Communities are
         <strong>
           identified as disadvantaged
         </strong>
-         in this category 
-    
+         in this category
+
       </p>
       <p>
-        
-        
+
+
         <strong>
           IF
         </strong>
-         at or above 90th percentile for 
+         at or above 90th percentile for
         <a
           href="#prox-haz"
         >
           proximity to hazardous waste facilities
         </a>
-         OR 
+         OR
         <a
           href="#prox-npl"
         >
           proximity to NPL sites
         </a>
-         OR 
+         OR
         <a
           href="#prox-rmp"
         >
           proximity to RMP facilities
         </a>
-        
-      
+
+
       </p>
       <p>
-        
-      
+
+
         <strong>
           AND
         </strong>
-         is at or above 65th percentile for 
+         is at or above 65th percentile for
         <a
           href="#low-income"
         >
           low income
         </a>
-         WHEN 
+         WHEN
         <a
           href="#high-ed-enroll-rate"
         >
           higher ed enrollment rate
         </a>
          is at or below 20%
-    
+
       </p>
       <p />
     </div>
@@ -333,49 +333,49 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         Critical clean water and waste infrastructure
       </h3>
       <p>
-        
-      Communities are 
+
+      Communities are
         <strong>
           identified as disadvantaged
         </strong>
-         in this category 
-    
+         in this category
+
       </p>
       <p>
-        
-        
+
+
         <strong>
           IF
         </strong>
-         at or above 90th percentile for 
+         at or above 90th percentile for
         <a
           href="#waste-water"
         >
           wastewater discharge
         </a>
-        
-      
+
+
       </p>
       <p>
-        
-      
+
+
         <strong>
           AND
         </strong>
-         is at or above 65th percentile for 
+         is at or above 65th percentile for
         <a
           href="#low-income"
         >
           low income
         </a>
-         WHEN 
+         WHEN
         <a
           href="#high-ed-enroll-rate"
         >
           higher ed enrollment rate
         </a>
          is at or below 20%
-    
+
       </p>
       <p />
     </div>
@@ -384,67 +384,67 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         Health burdens
       </h3>
       <p>
-        
-      Communities are 
+
+      Communities are
         <strong>
           identified as disadvantaged
         </strong>
-         in this category 
-    
+         in this category
+
       </p>
       <p>
-        
-        
+
+
         <strong>
           IF
         </strong>
-         at or above 90th percentile for 
+         at or above 90th percentile for
         <a
           href="#asthma"
         >
           asthma
         </a>
-         OR 
+         OR
         <a
           href="#diabetes"
         >
           diabetes
         </a>
-         OR 
+         OR
         <a
           href="#heart-disease"
         >
           heart disease
         </a>
-         OR 
+         OR
         <a
           href="#life-exp"
         >
           low life expectancy
         </a>
-        
-      
+
+
       </p>
       <p>
-        
-      
+
+
         <strong>
           AND
         </strong>
-         is at or above 65th percentile for 
+         is at or above 65th percentile for
         <a
           href="#low-income"
         >
           low income
         </a>
-         WHEN 
+         WHEN
         <a
           href="#high-ed-enroll-rate"
         >
           higher ed enrollment rate
         </a>
          is at or below 20%
-    
+
       </p>
       <p />
     </div>
@@ -453,71 +453,71 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         Training and workforce development
       </h3>
       <p>
-        
-      Communities are 
+
+      Communities are
         <strong>
           identified as disadvantaged
         </strong>
-         in this category 
-    
+         in this category
+
       </p>
       <p>
-        
-        
+
+
         <strong>
           IF
         </strong>
-         at or above the 90th percentile for 
+         at or above the 90th percentile for
         <a
           href="#low-med-inc"
         >
           low median income
         </a>
-         as a percent of area median income OR 
-        
+         as a percent of area median income OR
+
         <a
           href="#ling-iso"
         >
           linguistic isolation
         </a>
          OR
-        
+
         <a
           href="#unemploy"
         >
           unemployment
         </a>
          OR
-        percent individuals in households at or below 100% federal 
+        percent individuals in households at or below 100% federal
         <a
           href="#poverty"
         >
           poverty
         </a>
          level
-      
+
       </p>
       <p>
-        
-    
+
+
         <strong>
           AND
         </strong>
-         where the 
+         where the
         <a
           href="#high-school"
         >
           high school degree achievement rates
         </a>
-         rates for adults 25 years and older is at or less than 
-    90% WHEN 
+         rates for adults 25 years and older is at or less than
+    90% WHEN
         <a
           href="#high-ed-enroll-rate"
         >
           higher ed enrollment rate
         </a>
          is at or below 20%
-  
+
       </p>
       <p />
     </div>

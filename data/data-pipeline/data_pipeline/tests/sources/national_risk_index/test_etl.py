@@ -1,14 +1,13 @@
 # pylint: disable=protected-access
+import filecmp
 from unittest import mock
 
-import filecmp
 import requests
-
 from data_pipeline.etl.base import ValidGeoLevel
-from data_pipeline.tests.conftest import copy_data_files
 from data_pipeline.etl.sources.national_risk_index.etl import (
     NationalRiskIndexETL,
 )
+from data_pipeline.tests.conftest import copy_data_files
 from data_pipeline.tests.sources.example.test_etl import TestETL
 from data_pipeline.utils import get_module_logger
 

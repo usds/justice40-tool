@@ -17,7 +17,7 @@ $sidePanelLabelFontColor: #171716;
 .versionInfo {
   padding: .5rem 1rem .5rem 1.2rem;
   font-size: medium;
-  border-bottom: 1px solid $sidePanelBorderColor; 
+  border-bottom: 1px solid $sidePanelBorderColor;
 }
 
 .areaDetailContainer {
@@ -51,9 +51,9 @@ $sidePanelLabelFontColor: #171716;
   .showThresholdExceed {
     @include thresholdExceeded;
     display: block;
-    
+
   }
-  
+
   .hideThresholdExceed {
     @include thresholdExceeded;
     visibility: hidden;
@@ -79,12 +79,12 @@ $sidePanelLabelFontColor: #171716;
 
   .censusText {
     font-size: medium;
-  }  
+  }
 }
 
 // The following class is used in the AccordionItems in the AreaDetail component.
 // The Accordion component (parent of AccordionItems) requires some CSS overrides.
-// Local styling is not allowing the override. 
+// Local styling is not allowing the override.
 // The override is needed to push into the bounds of the Accordion component's styles.
 // To override this, in globals.scss, we set the this .categoryHeader's vertical alignment by
 // setting styles in:

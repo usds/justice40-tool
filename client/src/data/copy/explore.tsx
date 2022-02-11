@@ -23,10 +23,10 @@ export const PAGE_INTRO = defineMessages({
 export const PAGE_DESCRIPTION = <FormattedMessage
   id={'exploreTool.page.description'}
   defaultMessage={`
-    Use the map to see disadvantaged communities that have been historically 
-    marginalized, underserved, and overburdened by pollution. The map uses 
-    publicly-available, nationally-consistent, high-quality datasets. Learn more about 
-    the methodology and datasets that were used to identify disavantaged communities 
+    Use the map to see disadvantaged communities that have been historically
+    marginalized, underserved, and overburdened by pollution. The map uses
+    publicly-available, nationally-consistent, high-quality datasets. Learn more about
+    the methodology and datasets that were used to identify disavantaged communities
     on the {methodologyLink} page.
     `}
   description={'page description'}
@@ -45,8 +45,8 @@ export const LEGEND = defineMessages({
   PRIORITY_DESCRIPT: {
     id: 'legend.info.threshold.label',
     defaultMessage: `
-    Communities identified as disadvantaged for the purposes of Justice40 have been 
-    historically marginalized, underserved, and overburdened by pollution. These communities meet 
+    Communities identified as disadvantaged for the purposes of Justice40 have been
+    historically marginalized, underserved, and overburdened by pollution. These communities meet
     or exceed the criteria in one or more areas of focus.
 
     `,
@@ -170,10 +170,10 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   CBG_DEFINITION: {
     id: 'mapIntro.censusBlockGroupDefinition',
     defaultMessage: `
-      A census tract is generally between 1,200 and 8,000 people, with an average size of 4,000 people. 
-      Census tracts are small, relatively permanent subdivisions of a county defined by the 
-      U.S. Census Bureau and usually cover a contiguous area. The census tract level represents the 
-      smallest geographical unit that can be presented in a statistically sound manner, given the 
+      A census tract is generally between 1,200 and 8,000 people, with an average size of 4,000 people.
+      Census tracts are small, relatively permanent subdivisions of a county defined by the
+      U.S. Census Bureau and usually cover a contiguous area. The census tract level represents the
+      smallest geographical unit that can be presented in a statistically sound manner, given the
       datasets that are being used.
     `,
     description: 'cites the definition and helpful information about census groups',
@@ -453,7 +453,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   LOW_INCOME: {
     id: 'areaDetail.indicator.description.low.income',
     defaultMessage: `
-      Household income is less than or equal to twice the federal poverty level when higher ed enrollment 
+      Household income is less than or equal to twice the federal poverty level when higher ed enrollment
       rate is less than 20% in order to exclude areas with college and graduate students
     `,
     description: 'Household income is less than or equal to twice the federal poverty level',
@@ -484,7 +484,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   LEAD_PAINT: {
     id: 'areaDetail.indicator.description.leadPaint',
     defaultMessage: `
-      Percent of pre-1960 housing when median home value is at or below 90th percentile in order to 
+      Percent of pre-1960 housing when median home value is at or below 90th percentile in order to
       exclude areas with high value, older homes
     `,
     description: 'Pre-1960 housing',
@@ -531,7 +531,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   DIABETES: {
     id: 'areaDetail.indicator.description.diabetes',
     defaultMessage: `
-      Weighted percent of people ages 18 years and older who have diabetes other than 
+      Weighted percent of people ages 18 years and older who have diabetes other than
       diabetes during pregnancy
     `,
     description: 'People ages 18 years and older who have diabetes other than diabetes during pregnancy',
@@ -559,7 +559,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
     defaultMessage: `
       Percent of households where no one over the age 14 speaks English well
     `,
-    description: `Households in which no one age 14 and over speaks English only or also speaks 
+    description: `Households in which no one age 14 and over speaks English only or also speaks
     a language other than English`,
   },
   UNEMPLOY: {
@@ -570,16 +570,16 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   POVERTY: {
     id: 'areaDetail.indicator.description.poverty',
     defaultMessage: `
-      Percent of a tract's population in households where the household income is at or below 
-      100% of the federal poverty level    
+      Percent of a tract's population in households where the household income is at or below
+      100% of the federal poverty level
     `,
-    description: `Percent of individuals in households where the household income is at or 
+    description: `Percent of individuals in households where the household income is at or
     below 100% of the federal poverty level`,
   },
   HIGH_SKL: {
     id: 'areaDetail.indicator.description.high.school',
     defaultMessage: `
-      Percent of people ages 25 years or older whose education level is less than a high school diploma 
+      Percent of people ages 25 years or older whose education level is less than a high school diploma
       when higher ed enrollment rate is less than 20% in order to exclude areas with college and graduate students
     `,
     description: 'Percent of people ages 25 years or older whose education level is less than a high school diploma',
@@ -591,7 +591,7 @@ export const DOWNLOAD_DRAFT = {
     id={'download.draft.ptag.1'}
     description={'Download the current list of communities and datasets used.'}
     defaultMessage={`
-    {downloadDraft} of communities and datasets used (ZIP file will contain one .xlsx, 
+    {downloadDraft} of communities and datasets used (ZIP file will contain one .xlsx,
     one .csv, and one .pdf, with a size of {downloadFileSize}). Last updated: {dateUpdated}.
     `}
     values={{
@@ -627,11 +627,11 @@ export const NOTE_ON_TERRITORIES = {
   PARA_1: <FormattedMessage
     id={'explore.page.note.on.territories.para.1'}
     defaultMessage={`
-      The data sources described on the {dataMethLink} page are used to 
-      identify disadvantaged communities for all fifty states and the District of Columbia. However, not all 
-      of these data sources are currently available for the U.S. territories. The Census ACS data from 
-      2015-2019 was used to identify disadvantaged communities for Puerto Rico. This uses the same methodology 
-      as all fifty states and the District of Columbia for which data is available, which is all fields in 
+      The data sources described on the {dataMethLink} page are used to
+      identify disadvantaged communities for all fifty states and the District of Columbia. However, not all
+      of these data sources are currently available for the U.S. territories. The Census ACS data from
+      2015-2019 was used to identify disadvantaged communities for Puerto Rico. This uses the same methodology
+      as all fifty states and the District of Columbia for which data is available, which is all fields in
       the Training and Workforce Development category.
     `}
     description={`territories paragraph 1`}
@@ -642,9 +642,9 @@ export const NOTE_ON_TERRITORIES = {
   PARA_2: <FormattedMessage
     id={'explore.page.note.on.territories.para.2'}
     defaultMessage={`
-      The Decennial Census data from 2010 was used 
-      for American Samoa and Northern Mariana Islands using only the unemployment, poverty, low median 
-      income, and high school degree achievement rate fields in the Training and Workforce Development 
+      The Decennial Census data from 2010 was used
+      for American Samoa and Northern Mariana Islands using only the unemployment, poverty, low median
+      income, and high school degree achievement rate fields in the Training and Workforce Development
       category of the methodology.
     `}
     description={`territories paragraph 2`}
@@ -652,7 +652,7 @@ export const NOTE_ON_TERRITORIES = {
   PARA_3: <FormattedMessage
     id={'explore.page.note.on.territories.para.3'}
     defaultMessage={`
-      Work is underway to identify disadvantaged communities and update the 
+      Work is underway to identify disadvantaged communities and update the
       CEJST accordingly for Guam and the U.S. Virgin Islands.
         `}
     description={`territories paragraph 3`}

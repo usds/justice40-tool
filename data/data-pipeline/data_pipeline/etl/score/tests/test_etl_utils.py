@@ -1,7 +1,6 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
 import pytest
-
 from data_pipeline.etl.score.etl_utils import floor_series
 
 

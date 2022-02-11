@@ -2,7 +2,7 @@
 [![CC0 License](https://img.shields.io/badge/license-CCO--1.0-brightgreen)](https://github.com/usds/justice40-tool/blob/main/LICENSE.md)
 
 *[Read this in English!](README.md)*
- 
+
 Le damos la bienvenida a la comunidad de código abierto de Justice40. Este repositorio contiene el código, los procesos y la documentación que activa los datos y la tecnología de la Herramienta Justice40 para la Vigilancia del Clima y la Justicia Económica (CEJST, por sus siglas en inglés).
 
 ## Antecedentes
@@ -36,7 +36,7 @@ El equipo central usa el grupo para publicar la información más reciente sobre
 Las colaboraciones son siempre bien recibidas. Nos agradan las aportaciones en forma de conversación sobre los temas de este repositorio y las solicitudes para incorporación de cambios en la documentación y el código.
 En [CONTRIBUTING-es.md](CONTRIBUTING-es.md), consulte la manera de empezar a participar.
 
-## Instalación 
+## Instalación
 
 La instalación es una instalación típica de gatsby y los detalles se pueden encontrar en [INSTALLATION-es.md](INSTALLATION-es.md)
 

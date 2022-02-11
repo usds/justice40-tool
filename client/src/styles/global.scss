@@ -16,7 +16,7 @@ There are 3 things that should be included in this file:
 @import "../../node_modules/uswds";
 
 // 3. Include or point to your project's custom Sass
-/* 
+/*
   Instead of having a separate file for these styles, all styles are being placed here.
   - Global styles
   - Layout styles
@@ -39,8 +39,8 @@ $j40-blue-background-color: #e7f2f5;  // Hex value of 'blue-cool-5'
 // The j40-element mixin is used to create any font element. E.g. <h1>, <p> tags, etc.
 // Arguments to the mixins must be tokens from USWDS
 @mixin j40-element($font-size, $line-height, $font-weight, $margin-top, $margin-bottom: 0) {
-  @include typeset('sans', $font-size, $line-height); 
-  @include u-text($font-weight);  
+  @include typeset('sans', $font-size, $line-height);
+  @include u-text($font-weight);
   @include u-margin-top($margin-top);
   @include u-margin-bottom($margin-bottom);
 }
@@ -96,23 +96,23 @@ p.flush {
 }
 
 /***************** LAYOUT STYLES **************************************************************
-This section will outline styles for components that are on each page. These 
+This section will outline styles for components that are on each page. These
 components include:
 
 - main content styles
 - footer styles
 
 
-/* 
+/*
 ******************************
 *      MAIN CONTENT STYLES
-****************************** 
+******************************
 */
 
 /* this is used by J40MainGridContainer to show a blue background */
 .j40-main-grid-blue-bk {
-  @include u-bg('blue-cool-5');  
-  
+  @include u-bg('blue-cool-5');
+
   // This style is to remove the margin collapse occuring
   @include u-border-top(1px);
   @include u-border-top('solid');
@@ -125,11 +125,11 @@ components include:
 }
 
 
-/* 
+/*
 ******************************
 *      FOOTER STYLES
-****************************** 
-*/ 
+******************************
+*/
 .j40-footer {
 
   .usa-footer__primary-section.pb2{
@@ -138,12 +138,12 @@ components include:
 
   .j40-footer-address {
     .usa-footer__contact-info {
-      @include typeset('sans', 4, 5); 
-      @include u-text('normal');  
+      @include typeset('sans', 4, 5);
+      @include u-text('normal');
       @include u-display('inline-block');
     }
   }
-  
+
   .footer-link-first-child{
     @include u-display('inline-block');
     @include u-margin-top(1.5)
@@ -160,10 +160,10 @@ This section will outline styles that are component specific
 - timeline
 - about
 
-/* 
+/*
 ******************************
 *      MAP STYLES
-****************************** 
+******************************
 */
 
 // Maplibre overrides
@@ -288,27 +288,27 @@ This section will outline styles that are component specific
   }
 }
 
-// This is to allow the first child in the accordions which is the header showing INDICATOR and 
+// This is to allow the first child in the accordions which is the header showing INDICATOR and
 // PERCENTILE (0-100) to push into the container's margin to match mock
 .usa-accordion__content > *:first-child {
   margin: -10px -20px 10px -20px;
 }
 
-/* 
+/*
 ***************************************
 *      TIMELINE / PROCESS LIST STYLES
-*************************************** 
-*/ 
+***************************************
+*/
 
 .usa-process-list__item{
   @include u-border-left('base-lightest');
 }
 
 
-/* 
+/*
 ******************************
 *      ABOUT CARD STYLES
-****************************** 
+******************************
 */
 
 /* about card - based on datasetCard... Todo: need to combine */

@@ -10,4 +10,3 @@ declare const MapSearchModuleScssModule: MapSearchModuleScssNamespace.IMapSearch
   };
 
   export = MapSearchModuleScssModule;
-

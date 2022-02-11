@@ -36,7 +36,7 @@ if (englishKeys.length === englishMessage.length) {
   logger.write('}');
 } else {
   // throw error if lengths do not match
-  throw Error(`The number of English keys do not match the number of English messages. 
+  throw Error(`The number of English keys do not match the number of English messages.
   Please run test testIntlExtraction`);
 }
 

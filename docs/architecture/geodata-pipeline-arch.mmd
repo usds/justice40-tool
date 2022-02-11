@@ -17,7 +17,7 @@ graph TD
         TS3("TIGER GeoJSON State Files(S3)")-->CombineCensus["Combine Census State Files with Geopandas"]
         CombineCensus-->NCS3("National Census GeoJSON (S3)")
     end
-    
+
     CSV("Full CSV (S3)")-->CGJ
     NCS3-->CGJ
     CGJ["Combine with ogr2ogr + Create GeoJSON (score-geo)"]-->GeoJSON
@@ -31,6 +31,6 @@ graph TD
         Local("Locally stored tiles")--"Option 1"-->TS
         Compressed("Compressed high and low .mbtile files (S3)")--"Option 2"-->TS[/Tileserver-GL/]
     end
-    
+
     TS--"XYZ URL"-->Client
     Uncompressed--"XYZ URL"-->Client["Gatsby+MapLibre"]

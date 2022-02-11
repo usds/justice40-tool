@@ -1,15 +1,12 @@
 import os
 import sys
 from pathlib import Path
+
 import numpy as np
 import pandas as pd
-
-
 from data_pipeline.config import settings
-from data_pipeline.utils import (
-    download_file_from_url,
-    get_module_logger,
-)
+from data_pipeline.utils import download_file_from_url
+from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
 
@@ -89,7 +86,7 @@ def floor_series(series: pd.Series, number_of_decimals: int) -> pd.Series:
     if series.isin(unacceptable_values).any():
         series.replace(mapping, regex=False, inplace=True)
 
-    multiplication_factor = 10 ** number_of_decimals
+    multiplication_factor = 10**number_of_decimals
 
     # In order to safely cast NaNs
     # First coerce series to float type: series.astype(float)

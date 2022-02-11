@@ -1,12 +1,11 @@
 import json
-import requests
 
 import numpy as np
 import pandas as pd
-
+import requests
 from data_pipeline.etl.base import ExtractTransformLoad
-from data_pipeline.utils import get_module_logger
 from data_pipeline.score import field_names
+from data_pipeline.utils import get_module_logger
 
 pd.options.mode.chained_assignment = "raise"
 

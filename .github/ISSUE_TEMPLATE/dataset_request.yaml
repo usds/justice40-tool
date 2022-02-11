@@ -56,7 +56,7 @@ body:
     id: other-datasource-type
     attributes:
       label: If "other" above, please specify
-      description: If you have selected "other" above, please give as much detail as you can as to where this data can live 
+      description: If you have selected "other" above, please give as much detail as you can as to where this data can live
       placeholder: www.example.com and www.example2.com
     validations:
       required: false
@@ -110,14 +110,14 @@ body:
     attributes:
       label: Known data quality issues
       description: Please describe any data quality issues you know about with this dataset.
-      placeholder: Limited accuracy in rural areas, etc. 
+      placeholder: Limited accuracy in rural areas, etc.
     validations:
-      required: false  
+      required: false
   - type: input
     id: geographic-coverage
     attributes:
       label: What is the geographic coverage (in percent) of this dataset
-      description: If known, provide an estimate of the coverage of this dataset vis-a-vis the full United States 
+      description: If known, provide an estimate of the coverage of this dataset vis-a-vis the full United States
       placeholder: 90%
     validations:
       required: false
@@ -126,9 +126,9 @@ body:
     attributes:
       label: Description of geographic coverage estimate
       description: (If relevant) Please explain your reasoning behind the above estimate of geographic coverage
-      placeholder: e.g. Missing information for Puerto Rico, etc. 
+      placeholder: e.g. Missing information for Puerto Rico, etc.
     validations:
-      required: false  
+      required: false
   - type: input
     id: last-updated-date
     attributes:
@@ -151,10 +151,10 @@ body:
     id: link-to-documentation
     attributes:
       label: Link to more documentation
-      description: Please provide a link where one can find additional information 
+      description: Please provide a link where one can find additional information
       placeholder: www.example.com
     validations:
-      required: true   
+      required: true
   - type: dropdown
     id: can-go-in-cloud
     attributes:
@@ -167,8 +167,8 @@ body:
   - type: textarea
     id: additional-information
     attributes:
-      label: Additional Information 
+      label: Additional Information
       description: Please provide any additional information you have about this dataset
-      placeholder: e.g. Missing information for Puerto Rico, etc. 
+      placeholder: e.g. Missing information for Puerto Rico, etc.
     validations:
       required: false

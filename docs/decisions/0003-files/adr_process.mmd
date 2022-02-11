@@ -5,7 +5,7 @@ graph TB
     C --> |No| A{Concerns Addressed?}
     A --> |Yes| Merged
     A --> |No| Discussion
-    Discussion --> O{Voting Outcome}    
+    Discussion --> O{Voting Outcome}
     O --> |Accepted| Merged
     O --> |Rejected| Merged
     Merged --> U[Update other Issues]

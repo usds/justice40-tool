@@ -12,4 +12,3 @@ test('download packet component defined', () => {
 
   screen.getByRole('button', {name: /download package/i});
 });
-

@@ -1,9 +1,10 @@
 from pathlib import Path
-import pandas as pd
 
+import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.score import field_names
-from data_pipeline.utils import get_module_logger, unzip_file_from_url
+from data_pipeline.utils import get_module_logger
+from data_pipeline.utils import unzip_file_from_url
 
 logger = get_module_logger(__name__)
 

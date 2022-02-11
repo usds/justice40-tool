@@ -28,4 +28,3 @@ Por estos u otros propósitos y motivos, y sin ninguna expectativa de otra consi
     c. El Afirmante excluye la responsabilidad de los derechos de compensación de otras personas que se puedan aplicar a la Obra o a cualquier uso de esta, incluidos, entre otros, los Derechos de Autor y Derechos Conexos de cualquier persona sobre la Obra. Además, el Afirmante excluye la responsabilidad de obtener los consentimientos o permisos u otros derechos necesarios que se exijan para cualquier uso de la Obra.
 
     d. El Afirmante entiende y reconoce que Creative Commons no es una parte en este documento y que no tiene ningún derecho u obligación con respecto a esta CC0 o al uso de la Obra.
-

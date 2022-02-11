@@ -1,8 +1,7 @@
-from pathlib import Path
 import datetime
+from pathlib import Path
 
 from data_pipeline.config import settings
-
 from data_pipeline.score import field_names
 
 # Base Paths

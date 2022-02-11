@@ -4,7 +4,7 @@ on:
     types: [ closed ]
     paths:
       - "client/**/*"
-env: 
+env:
   PR_NUMBER: ${{ github.event.number }}
 jobs:
   remove-artifacts:
@@ -15,6 +15,6 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.CLIENT_DEV_AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.CLIENT_DEV_AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-1  
+        aws-region: us-east-1
     - name: Remove staging artifacts
       run: aws s3 rm s3://usds-geoplatform-justice40-website/justice40-tool/ --exclude "*" --include "$(echo $PR_NUMBER)-*" --recursive

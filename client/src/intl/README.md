@@ -23,7 +23,7 @@ In this case, this first step is find out what the English sentence is:
 
 ![image info](/client/src/images/downloadDraftLink.png)
 
-The reason the `{downloadDraft}` and `{dateUpdated}` are in curly brackets is because something special happens with that text. In the former it's a link in the latter it's a variable that being used in multiple places. 
+The reason the `{downloadDraft}` and `{dateUpdated}` are in curly brackets is because something special happens with that text. In the former it's a link in the latter it's a variable that being used in multiple places.
 
 Let's assume that this sentence translates to Spanish as
 

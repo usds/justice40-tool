@@ -17,11 +17,11 @@ export const PAGE = defineMessages({
   DESCRIPTION: {
     id: 'methodology.page.paragraph',
     defaultMessage: `
-      This tool identifies communities that are overburdened by pollution and other environmental exposures 
-      and disadvantaged by underinvestment. A community qualifies as disadvantaged when a census tract 
-      is at or above a certain threshold for a climate or environmental burden indicator and also above 
-      a certain threshold for a socioeconomic indicator. Census tract geographical boundaries are 
-      determined by the U.S. Census Bureau once every ten years. This tool untilizes the 
+      This tool identifies communities that are overburdened by pollution and other environmental exposures
+      and disadvantaged by underinvestment. A community qualifies as disadvantaged when a census tract
+      is at or above a certain threshold for a climate or environmental burden indicator and also above
+      a certain threshold for a socioeconomic indicator. Census tract geographical boundaries are
+      determined by the U.S. Census Bureau once every ten years. This tool untilizes the
       census tract boundaries from 2010.
     `,
     description: 'methodology page paragraph',
@@ -42,7 +42,7 @@ export const FORMULA = {
   INTRO: <FormattedMessage
     id={'methodology.page.formula.intro'}
     defaultMessage={`
-      Under the current formula, a census tract will be {identifiedDis} in one or more categories of criteria: 
+      Under the current formula, a census tract will be {identifiedDis} in one or more categories of criteria:
     `}
     description={'methodology page introducing the formula'}
     values={{
@@ -138,7 +138,7 @@ export const LOW_INCOME = defineMessages({
   INFO: {
     id: 'low.income.info',
     defaultMessage: `
-      At or above 65th percentile  for percent of census tract population of households where household 
+      At or above 65th percentile  for percent of census tract population of households where household
       income is at or below 200% of the federal poverty level
     `,
     description: 'description of low income',
@@ -154,7 +154,7 @@ export const CATEGORY= {
   ID_AS_DISADV_TEXT: <FormattedMessage
     id={'methodology.category.card.title'}
     defaultMessage={`
-      Communities are {idAsDisadv} in this category 
+      Communities are {idAsDisadv} in this category
     `}
     description= {'category heading'}
     values={{
@@ -181,7 +181,7 @@ export const CATEGORY_AND_CLAUSE = {
   HS_DEG_90_WHEN_HIGH_ED_LTE_20: <FormattedMessage
     id= {'methodology.paage.category.and.clause.hs.ed.higher.ed'}
     defaultMessage= {`
-    {and} where the {highSchoolRate} rates for adults 25 years and older is at or less than 
+    {and} where the {highSchoolRate} rates for adults 25 years and older is at or less than
     90% WHEN {highEdEnrollRate} is at or below 20%
   `}
     description= {'and portion of the formula dealing with higher ed enrollment and high school degree rate'}
@@ -461,7 +461,7 @@ export const CATEGORIES = {
     IF: <FormattedMessage
       id= {'indicator.categories.work.dev.if'}
       defaultMessage= {`
-        {if} at or above the 90th percentile for {lowMedInc} as a percent of area median income OR 
+        {if} at or above the 90th percentile for {lowMedInc} as a percent of area median income OR
         {linIso} OR
         {unemploy} OR
         percent individuals in households at or below 100% federal {poverty} level
@@ -632,7 +632,7 @@ export const SOURCE_LINKS = {
   EPA_OAR: <FormattedMessage
     id= {'category.source.epa.oar.link'}
     defaultMessage= {`
-      {sourceEpaOarLink} from {date17} as compiled by EPA’s EJSCREEN, sourced from EPA National Air 
+      {sourceEpaOarLink} from {date17} as compiled by EPA’s EJSCREEN, sourced from EPA National Air
       Toxics Assessment (NATA) and the U.S. Department of Transportation (DOT) traffic data
     `}
     description= {'source link for EPA OAR'}
@@ -695,7 +695,7 @@ export const SOURCE_LINKS = {
   EPA_TSDF: <FormattedMessage
     id= {'category.source.epa.tsdf.link'}
     defaultMessage= {`
-      {sourceEpaTsdfLink} from {date20} calculated from EPA RCRA database as compiled 
+      {sourceEpaTsdfLink} from {date20} calculated from EPA RCRA database as compiled
       by EPA's EJSCREEN
     `}
     description= {'source link for EPA TSDF'}
@@ -851,10 +851,10 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.exp.agr.loss.rate.description.text'}
       defaultMessage= {`
-        Percent of agriculture value at risk from losses due to natural hazards such as the fourteen 
-        natural hazards that have some link to climate change including: avalanche, coastal flooding, 
-        cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong 
-        wind, tornado, wildfire, and winter weather. Calculated by dividing the agriculture value at risk in 
+        Percent of agriculture value at risk from losses due to natural hazards such as the fourteen
+        natural hazards that have some link to climate change including: avalanche, coastal flooding,
+        cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong
+        wind, tornado, wildfire, and winter weather. Calculated by dividing the agriculture value at risk in
         a census tract by the total agriculture value in that census tract.
       `}
       description= {'description text for exp agr loss rate'}
@@ -874,10 +874,10 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.exp.bld.loss.rate.description.text'}
       defaultMessage= {`
-        Percent of building value at risk from losses due to natural hazards such as the fourteen 
-        natural hazards that have some link to climate change including: avalanche, coastal flooding, 
-        cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong 
-        wind, tornado, wildfire, and winter weather. Calculated by dividing the building value at risk in 
+        Percent of building value at risk from losses due to natural hazards such as the fourteen
+        natural hazards that have some link to climate change including: avalanche, coastal flooding,
+        cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong
+        wind, tornado, wildfire, and winter weather. Calculated by dividing the building value at risk in
         a census tract by the total building value in that census tract.
       `}
       description= {'description text for exp bld loss rate'}
@@ -897,17 +897,17 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.exp.pop.loss.rate.description.text'}
       defaultMessage= {`
-        Rate relative to the population in fatalities and injuries due to natural hazards each year such as 
-        the fourteen natural hazards that have some link to climate change including: avalanche, 
-        coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, 
-        riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined 
-        as the Spatial Hazard Events and Losses or National Centers for Environmental Information’s 
-        (NCEI) reported number of fatalities and injuries caused by the hazard occurrence. To 
-        combine fatalities and injuries for the computation of population loss value, an injury is counted 
-        as one-tenth (1/10) of a fatality. The NCEI Storm Events Database classifies injuries and fatalities 
-        as direct or indirect. Both direct and indirect injuries and fatalities are counted as population 
-        loss. This total number of injuries and fatalities is then divided by the population in the 
-        census tract to get a per-capita rate of population risk. 
+        Rate relative to the population in fatalities and injuries due to natural hazards each year such as
+        the fourteen natural hazards that have some link to climate change including: avalanche,
+        coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide,
+        riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined
+        as the Spatial Hazard Events and Losses or National Centers for Environmental Information’s
+        (NCEI) reported number of fatalities and injuries caused by the hazard occurrence. To
+        combine fatalities and injuries for the computation of population loss value, an injury is counted
+        as one-tenth (1/10) of a fatality. The NCEI Storm Events Database classifies injuries and fatalities
+        as direct or indirect. Both direct and indirect injuries and fatalities are counted as population
+        loss. This total number of injuries and fatalities is then divided by the population in the
+        census tract to get a per-capita rate of population risk.
       `}
       description= {'description text for exp pop loss rate'}
     />,

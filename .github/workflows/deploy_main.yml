@@ -7,9 +7,9 @@ on:
     branches: [main]
     paths:
       - "client/**/*"
-env: 
+env:
   PR_NUMBER: ${{ github.event.number }}
-  WEB_CDN_ID: E27WCOZZ03KIBX 
+  WEB_CDN_ID: E27WCOZZ03KIBX
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -33,7 +33,7 @@ jobs:
       - name: Build
         run: npm run build --if-present
         env:
-          # See the client readme for more info on environment variables: 
+          # See the client readme for more info on environment variables:
           # https://github.com/usds/justice40-tool/blob/main/client/README.md
           DATA_SOURCE: cdn
           # TODO: Update main URL when either is back up

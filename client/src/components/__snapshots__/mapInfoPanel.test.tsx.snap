@@ -21,13 +21,13 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
              Did you know?
           </div>
           <cite>
-            
-      A census tract is generally between 1,200 and 8,000 people, with an average size of 4,000 people. 
-      Census tracts are small, relatively permanent subdivisions of a county defined by the 
-      U.S. Census Bureau and usually cover a contiguous area. The census tract level represents the 
-      smallest geographical unit that can be presented in a statistically sound manner, given the 
+
+      A census tract is generally between 1,200 and 8,000 people, with an average size of 4,000 people.
+      Census tracts are small, relatively permanent subdivisions of a county defined by the
+      U.S. Census Bureau and usually cover a contiguous area. The census tract level represents the
+      smallest geographical unit that can be presented in a statistically sound manner, given the
       datasets that are being used.
-    
+
           </cite>
         </div>
       </div>

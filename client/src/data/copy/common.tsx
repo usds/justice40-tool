@@ -9,7 +9,7 @@ export const BETA_BANNER = defineMessages({
   },
   INFO: {
     id: 'banner.beta.info',
-    defaultMessage: `It is an early, in-progress version of the tool with limited datasets that will 
+    defaultMessage: `It is an early, in-progress version of the tool with limited datasets that will
     be regularly updated.`,
     description: 'the main info of the beta banner',
   },
@@ -125,5 +125,3 @@ export const FOOTER_CEQ_ADDRESS = {
   PHONE: '(202) 395-5750',
 }
 ;
-
-

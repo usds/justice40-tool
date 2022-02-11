@@ -1,5 +1,6 @@
 import pytest
-from data_pipeline.etl import constants, runner
+from data_pipeline.etl import constants
+from data_pipeline.etl import runner
 
 
 def test_get_datasets_to_run():

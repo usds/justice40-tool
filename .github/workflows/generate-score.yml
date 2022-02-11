@@ -1,5 +1,5 @@
 name: Generate Score
-on: 
+on:
   workflow_dispatch:
     inputs:
       confirm-action:
@@ -39,14 +39,14 @@ jobs:
           aws-region: us-east-1
       - name: Generate Score
         run: |
-          poetry run python3 data_pipeline/application.py score-full-run          
+          poetry run python3 data_pipeline/application.py score-full-run
       - name: Upload Score to AWS
         run: |
           aws s3 sync ./data_pipeline/data/score/csv/ s3://justice40-data/data-pipeline/data/score/csv --acl public-read --delete
       - name: Generate Score Post
         run: |
-          poetry run python3 data_pipeline/application.py generate-score-post -s aws          
+          poetry run python3 data_pipeline/application.py generate-score-post -s aws
       - name: Upload Score Post to AWS
         run: |
           aws s3 sync ./data_pipeline/data/score/csv/ s3://justice40-data/data-pipeline/data/score/csv --acl public-read --delete
-          aws s3 sync ./data_pipeline/data/score/downloadable/ s3://justice40-data/data-pipeline/data/score/downloadable --acl public-read --delete        
+          aws s3 sync ./data_pipeline/data/score/downloadable/ s3://justice40-data/data-pipeline/data/score/downloadable --acl public-read --delete

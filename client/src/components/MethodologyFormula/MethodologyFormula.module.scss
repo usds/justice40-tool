@@ -4,7 +4,7 @@
     @include u-margin-top(5);
     p:not(:first-child) {
         font-style: italic;
-        
+
         span {
             @include u-text('bold');
         }

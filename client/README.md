@@ -17,7 +17,7 @@ This README contains the following content:
 
 ### Via npm
 
-#### Install Node using NVM 
+#### Install Node using NVM
 
 <!-- markdown-link-check-disable-next-line -->
 This will work for both MacOS and Win10. Follow instructions on this [link](https://medium.com/@nodesource/installing-node-js-tutorial-using-nvm-5c6ff5925dd8). Be sure to read through the whole doc to find the sections within each step relevant to you (e.g. if you're using Homebrew, when you get to Step 2 look for the section, "Install NVM with Homebrew").
@@ -54,7 +54,7 @@ If you've made changes to the docker-compose file and want to re-build the j40_w
 
 `docker-compose build --no-cache j40_website`
 
-This will not use the cache and re-build the image. Then do 
+This will not use the cache and re-build the image. Then do
 
 `docker-compoe up`
 
@@ -63,10 +63,10 @@ This will not use the cache and re-build the image. Then do
 
 `docker image system`
 
-This should reduce the total used space. 
+This should reduce the total used space.
 
 #### Changing the source of tile / map layer
-If you don't want to use the local data-pipeline location for getting the tile / map layers, you can change the 
+If you don't want to use the local data-pipeline location for getting the tile / map layers, you can change the
 DATA_SOURCE env variable in the docker-compose.yml. See [environment variables](#environment-variables) for more info.
 
 #### Troubleshooting docker
@@ -153,7 +153,7 @@ There are 3 environment variables that can be set:
 2. SITE_URL = set this to change the base URL for the website's public html folder. If none is provided, then localhost:8000 is used. This is used for the site_map.xml file and robots.txt file. This is only used during production build aka `npm build`.
 3. PATH_PREFIX = set this to add an additional path(s) to SITE_URL. If none is provided then no additional paths are added to the SITE_URL. This is only used during production build aka `npm build`.
 
-Note when setting environment variables in docker-compose, DATA_SOURCE is the only one that is applicable. 
+Note when setting environment variables in docker-compose, DATA_SOURCE is the only one that is applicable.
 
 ## Feature Toggling
 

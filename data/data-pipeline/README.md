@@ -230,7 +230,7 @@ you can force a re-run on all files with `pre-commit run --all-files`.
 
 ### The Application entrypoint
 
-After installing the poetry dependencies, you can see a list of commands with the following steps: 
+After installing the poetry dependencies, you can see a list of commands with the following steps:
 - Start a terminal
 - Change to the package directory (i.e. `cd data/data-pipeline/data_pipeline`)
 - Then run `poetry run python3 data_pipeline/application.py --help`
