@@ -228,4 +228,6 @@ class GeoScoreETL(ExtractTransformLoad):
             }
 
             for fut in concurrent.futures.as_completed(futures):
-                logger.info(f"The outcome is {fut.result()}")
+                # Calling result will raise an exception if one occurred.
+                # Otherwise, the exceptions are silently ignored.
+                fut.result()

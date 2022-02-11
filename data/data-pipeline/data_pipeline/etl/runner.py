@@ -82,7 +82,9 @@ def etl_runner(dataset_to_run: str = None) -> None:
         }
 
         for fut in concurrent.futures.as_completed(futures):
-            logger.info(f"The outcome is {fut.result()}")
+            # Calling result will raise an exception if one occurred.
+            # Otherwise, the exceptions are silently ignored.
+            fut.result()
 
 
 def score_generate() -> None:
