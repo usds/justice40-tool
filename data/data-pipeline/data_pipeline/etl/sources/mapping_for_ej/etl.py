@@ -19,8 +19,8 @@ class MappingForEJETL(ExtractTransformLoad):
         self.MAPPING_FOR_EJ_CO_URL = (
             settings.AWS_JUSTICE40_DATASOURCES_URL + "/CO_mej.zip"
         )
-        self.VA_SHP_FILE_PATH = self.TMP_PATH / "mej_virginia_7_1.shp"
-        self.CO_SHP_FILE_PATH = self.TMP_PATH / "mej_colorado_final.shp"
+        self.VA_SHP_FILE_PATH = self.get_tmp_path() / "mej_virginia_7_1.shp"
+        self.CO_SHP_FILE_PATH = self.get_tmp_path() / "mej_colorado_final.shp"
 
         # Defining variables
         self.COLUMNS_TO_KEEP = [
@@ -43,11 +43,11 @@ class MappingForEJETL(ExtractTransformLoad):
         logger.info("Downloading Mapping for EJ Data")
         super().extract(
             self.MAPPING_FOR_EJ_VA_URL,
-            self.TMP_PATH,
+            self.get_tmp_path(),
         )
         super().extract(
             self.MAPPING_FOR_EJ_CO_URL,
-            self.TMP_PATH,
+            self.get_tmp_path(),
         )
 
     def transform(self) -> None:

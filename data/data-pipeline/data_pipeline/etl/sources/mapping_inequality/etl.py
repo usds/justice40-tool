@@ -25,7 +25,9 @@ class MappingInequalityETL(ExtractTransformLoad):
             "https://raw.githubusercontent.com/americanpanorama/Census_HOLC_Research/"
             "main/2010_Census_Tracts/holc_tract_lookup.csv"
         )
-        self.MAPPING_INEQUALITY_CSV = self.TMP_PATH / "holc_tract_lookup.csv"
+        self.MAPPING_INEQUALITY_CSV = (
+            self.get_tmp_path() / "holc_tract_lookup.csv"
+        )
         self.CSV_PATH = self.DATA_PATH / "dataset" / "mapping_inequality"
 
         self.HOLC_MANUAL_MAPPING_CSV_PATH = (

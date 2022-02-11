@@ -41,12 +41,12 @@ class ExampleETL(ExtractTransformLoad):
 
         logger.info(f"Extracting {zip_file_path}")
         with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
-            zip_ref.extractall(self.TMP_PATH)
+            zip_ref.extractall(self.get_tmp_path())
 
     def transform(self):
-        logger.info(f"Loading file from {self.TMP_PATH / 'input.csv'}.")
+        logger.info(f"Loading file from {self.get_tmp_path() / 'input.csv'}.")
         df: pd.DataFrame = pd.read_csv(
-            self.TMP_PATH / "input.csv",
+            self.get_tmp_path() / "input.csv",
             dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
             low_memory=False,
         )

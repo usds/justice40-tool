@@ -1,8 +1,18 @@
 DATASET_LIST = [
     {
-        "name": "mapping_for_ej",
-        "module_dir": "mapping_for_ej",
-        "class_name": "MappingForEJETL",
+        "name": "cdc_places",
+        "module_dir": "cdc_places",
+        "class_name": "CDCPlacesETL",
+    },
+    {
+        "name": "national_risk_index",
+        "module_dir": "national_risk_index",
+        "class_name": "NationalRiskIndexETL",
+    },
+    {
+        "name": "tree_equity_score",
+        "module_dir": "tree_equity_score",
+        "class_name": "TreeEquityScoreETL",
     },
     {
         "name": "census_acs",
@@ -15,6 +25,21 @@ DATASET_LIST = [
         "class_name": "CensusACS2010ETL",
     },
     {
+        "name": "census_decennial",
+        "module_dir": "census_decennial",
+        "class_name": "CensusDecennialETL",
+    },
+    {
+        "name": "housing_and_transportation",
+        "module_dir": "housing_and_transportation",
+        "class_name": "HousingTransportationETL",
+    },
+    {
+        "name": "mapping_for_ej",
+        "module_dir": "mapping_for_ej",
+        "class_name": "MappingForEJETL",
+    },
+    {
         "name": "ejscreen",
         "module_dir": "ejscreen",
         "class_name": "EJSCREENETL",
@@ -23,16 +48,6 @@ DATASET_LIST = [
         "name": "hud_housing",
         "module_dir": "hud_housing",
         "class_name": "HudHousingETL",
-    },
-    {
-        "name": "cdc_places",
-        "module_dir": "cdc_places",
-        "class_name": "CDCPlacesETL",
-    },
-    {
-        "name": "national_risk_index",
-        "module_dir": "national_risk_index",
-        "class_name": "NationalRiskIndexETL",
     },
     {
         "name": "census_acs_median_income",
@@ -75,16 +90,6 @@ DATASET_LIST = [
         "class_name": "EJSCREENAreasOfConcernETL",
     },
     {
-        "name": "census_decennial",
-        "module_dir": "census_decennial",
-        "class_name": "CensusDecennialETL",
-    },
-    {
-        "name": "housing_and_transportation",
-        "module_dir": "housing_and_transportation",
-        "class_name": "HousingTransportationETL",
-    },
-    {
         "name": "calenviroscreen",
         "module_dir": "calenviroscreen",
         "class_name": "CalEnviroScreenETL",
@@ -103,11 +108,6 @@ DATASET_LIST = [
         "name": "energy_definition_alternative_draft",
         "module_dir": "energy_definition_alternative_draft",
         "class_name": "EnergyDefinitionAlternativeDraft",
-    },
-    {
-        "name": "tree_equity_score",
-        "module_dir": "tree_equity_score",
-        "class_name": "TreeEquityScoreETL",
     },
     {
         "name": "michigan_ejscreen",

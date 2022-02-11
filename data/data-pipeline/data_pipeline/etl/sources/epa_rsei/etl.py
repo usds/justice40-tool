@@ -71,12 +71,12 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
 
         unzip_file_from_url(
             file_url=self.AGGREGATED_RSEI_SCORE_FILE_URL,
-            download_path=self.TMP_PATH,
-            unzipped_file_path=self.TMP_PATH / "epa_rsei",
+            download_path=self.get_tmp_path(),
+            unzipped_file_path=self.get_tmp_path() / "epa_rsei",
         )
 
         self.df = pd.read_csv(
-            filepath_or_buffer=self.TMP_PATH
+            filepath_or_buffer=self.get_tmp_path()
             / "epa_rsei"
             / "CensusMicroTracts2019_2019_aggregated.csv",
             # The following need to remain as strings for all of their digits, not get

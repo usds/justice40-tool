@@ -57,12 +57,12 @@ class ChildOpportunityIndex(ExtractTransformLoad):
 
         unzip_file_from_url(
             file_url=self.COI_FILE_URL,
-            download_path=self.TMP_PATH,
-            unzipped_file_path=self.TMP_PATH / "child_opportunity_index",
+            download_path=self.get_tmp_path(),
+            unzipped_file_path=self.get_tmp_path() / "child_opportunity_index",
         )
 
         self.raw_df = pd.read_csv(
-            filepath_or_buffer=self.TMP_PATH
+            filepath_or_buffer=self.get_tmp_path()
             / "child_opportunity_index"
             / "raw.csv",
             # The following need to remain as strings for all of their digits, not get

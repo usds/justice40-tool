@@ -10,7 +10,7 @@ class HudHousingETL(ExtractTransformLoad):
         self.OUTPUT_PATH = self.DATA_PATH / "dataset" / "hud_housing"
         self.GEOID_TRACT_FIELD_NAME = "GEOID10_TRACT"
         self.HOUSING_FTP_URL = "https://www.huduser.gov/portal/datasets/cp/2014thru2018-140-csv.zip"
-        self.HOUSING_ZIP_FILE_DIR = self.TMP_PATH / "hud_housing"
+        self.HOUSING_ZIP_FILE_DIR = self.get_tmp_path() / "hud_housing"
 
         # We measure households earning less than 80% of HUD Area Median Family Income by county
         # and paying greater than 30% of their income to housing costs.

@@ -29,7 +29,9 @@ class CDCLifeExpectancy(ExtractTransformLoad):
     def extract(self) -> None:
         logger.info("Starting data download.")
 
-        download_file_name = self.TMP_PATH / "cdc_life_expectancy" / "usa.csv"
+        download_file_name = (
+            self.get_tmp_path() / "cdc_life_expectancy" / "usa.csv"
+        )
         download_file_from_url(
             file_url=self.FILE_URL,
             download_file_name=download_file_name,

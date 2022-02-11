@@ -21,14 +21,16 @@ class HousingTransportationETL(ExtractTransformLoad):
     def extract(self) -> None:
         # Download each state / territory individually
         dfs = []
-        zip_file_dir = self.TMP_PATH / "housing_and_transportation_index"
+        zip_file_dir = self.get_tmp_path() / "housing_and_transportation_index"
         for fips in get_state_fips_codes(self.DATA_PATH):
             logger.info(
                 f"Downloading housing data for state/territory with FIPS code {fips}"
             )
 
             unzip_file_from_url(
-                f"{self.HOUSING_FTP_URL}{fips}", self.TMP_PATH, zip_file_dir
+                f"{self.HOUSING_FTP_URL}{fips}",
+                self.get_tmp_path(),
+                zip_file_dir,
             )
 
             # New file name:
