@@ -21,7 +21,7 @@ class MarylandEJScreenETL(ExtractTransformLoad):
             settings.AWS_JUSTICE40_DATASOURCES_URL + "/MD_EJScreen.zip"
         )
 
-        self.SHAPE_FILES_PATH = self.TMP_PATH / "mdejscreen"
+        self.SHAPE_FILES_PATH = self.get_tmp_path() / "mdejscreen"
         self.OUTPUT_CSV_PATH = self.DATA_PATH / "dataset" / "maryland_ejscreen"
 
         self.COLUMNS_TO_KEEP = [
@@ -36,7 +36,7 @@ class MarylandEJScreenETL(ExtractTransformLoad):
         logger.info("Downloading 207MB Maryland EJSCREEN Data")
         super().extract(
             self.MARYLAND_EJSCREEN_URL,
-            self.TMP_PATH,
+            self.get_tmp_path(),
         )
 
     def transform(self) -> None:

@@ -98,6 +98,17 @@ class ExtractTransformLoad:
         )
         return output_file_path
 
+    def get_tmp_path(self) -> pathlib.Path:
+        """Returns the temporary path associated with this ETL class."""
+        # Note: the temporary path will be defined on `init`, because it uses the class
+        # of the instance which is often a child class.
+        tmp_path = self.DATA_PATH / "tmp" / str(self.__class__.__name__)
+
+        # Create directory if it doesn't exist
+        tmp_path.mkdir(parents=True, exist_ok=True)
+
+        return tmp_path
+
     def extract(
         self,
         source_url: str = None,
@@ -112,7 +123,7 @@ class ExtractTransformLoad:
         if source_url and extract_path:
             unzip_file_from_url(
                 file_url=source_url,
-                download_path=self.TMP_PATH,
+                download_path=self.get_tmp_path(),
                 unzipped_file_path=extract_path,
                 verify=verify,
             )
@@ -265,4 +276,4 @@ class ExtractTransformLoad:
 
     def cleanup(self) -> None:
         """Clears out any files stored in the TMP folder"""
-        remove_all_from_dir(self.TMP_PATH)
+        remove_all_from_dir(self.get_tmp_path())

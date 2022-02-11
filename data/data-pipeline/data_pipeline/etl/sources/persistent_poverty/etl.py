@@ -75,12 +75,12 @@ class PersistentPovertyETL(ExtractTransformLoad):
     def extract(self) -> None:
         logger.info("Starting to download 86MB persistent poverty file.")
 
-        unzipped_file_path = self.TMP_PATH / "persistent_poverty"
+        unzipped_file_path = self.get_tmp_path() / "persistent_poverty"
 
         unzip_file_from_url(
             file_url=settings.AWS_JUSTICE40_DATASOURCES_URL
             + "/LTDB_Std_All_Sample.zip",
-            download_path=self.TMP_PATH,
+            download_path=self.get_tmp_path(),
             unzipped_file_path=unzipped_file_path,
         )
 
@@ -93,7 +93,6 @@ class PersistentPovertyETL(ExtractTransformLoad):
         temporary_input_dfs = []
 
         for file_name in file_names:
-            print(file_name)
             temporary_input_df = pd.read_csv(
                 filepath_or_buffer=unzipped_file_path
                 / f"ltdb_std_all_sample/{file_name}",

@@ -16,7 +16,7 @@ class EJSCREENETL(ExtractTransformLoad):
 
     def __init__(self):
         self.EJSCREEN_FTP_URL = "https://edap-arcgiscloud-data-commons.s3.amazonaws.com/EJSCREEN2020/EJSCREEN_Tract_2020_USPR.csv.zip"
-        self.EJSCREEN_CSV = self.TMP_PATH / "EJSCREEN_Tract_2020_USPR.csv"
+        self.EJSCREEN_CSV = self.get_tmp_path() / "EJSCREEN_Tract_2020_USPR.csv"
         self.CSV_PATH = self.DATA_PATH / "dataset" / "ejscreen_2019"
         self.df: pd.DataFrame
 
@@ -45,7 +45,7 @@ class EJSCREENETL(ExtractTransformLoad):
         logger.info("Downloading EJScreen Data")
         super().extract(
             self.EJSCREEN_FTP_URL,
-            self.TMP_PATH,
+            self.get_tmp_path(),
             verify=False,  # EPA EJScreen end point has certificate issues often
         )
 

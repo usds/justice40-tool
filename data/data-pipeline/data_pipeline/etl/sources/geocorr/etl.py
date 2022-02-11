@@ -34,12 +34,12 @@ class GeoCorrETL(ExtractTransformLoad):
         unzip_file_from_url(
             file_url=settings.AWS_JUSTICE40_DATASOURCES_URL
             + "/geocorr_urban_rural.csv.zip",
-            download_path=self.TMP_PATH,
-            unzipped_file_path=self.TMP_PATH / "geocorr",
+            download_path=self.get_tmp_path(),
+            unzipped_file_path=self.get_tmp_path() / "geocorr",
         )
 
         self.df = pd.read_csv(
-            filepath_or_buffer=self.TMP_PATH
+            filepath_or_buffer=self.get_tmp_path()
             / "geocorr"
             / "geocorr_urban_rural.csv",
             dtype={
