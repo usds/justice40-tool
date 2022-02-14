@@ -288,22 +288,25 @@ class PostScoreETL(ExtractTransformLoad):
         return score_tiles
 
     def _create_downloadable_data(
-        self, score_county_state_merged_df: pd.DataFrame
+        self,
+        score_county_state_merged_df: pd.DataFrame,
+        content_config_filename: str,
     ) -> pd.DataFrame:
 
         # open yaml config
         downloadable_csv_config = load_yaml_dict_from_file(
-            self.CONTENT_CONFIG / "csv.yml"
+            self.CONTENT_CONFIG / content_config_filename
         )
 
         df = score_county_state_merged_df[
             column_list_from_yaml_object_fields(
-                yaml_object=downloadable_csv_config, target_field="score_name"
+                yaml_object=downloadable_csv_config["fields"],
+                target_field="score_name",
             )
         ].copy(deep=True)
 
         column_type_dict = load_dict_from_yaml_object_fields(
-            yaml_object=downloadable_csv_config,
+            yaml_object=downloadable_csv_config["fields"],
             object_key="score_name",
             object_value="format",
         )
@@ -442,14 +445,18 @@ class PostScoreETL(ExtractTransformLoad):
         zip_path = constants.SCORE_DOWNLOADABLE_ZIP_FILE_PATH
         pdf_path = constants.SCORE_DOWNLOADABLE_PDF_FILE_PATH
 
-        downloadable_df = self._create_downloadable_data(
-            self.output_score_county_state_merged_df
-        )
-
         logger.info("Writing downloadable excel")
+        downloadable_df = self._create_downloadable_data(
+            self.output_score_county_state_merged_df,
+            content_config_filename="excel.yml",
+        )
         self._load_excel_from_df(downloadable_df, excel_path)
 
         logger.info("Writing downloadable csv")
+        downloadable_df = self._create_downloadable_data(
+            self.output_score_county_state_merged_df,
+            content_config_filename="csv.yml",
+        )
         downloadable_df.to_csv(csv_path, index=False)
 
         logger.info("Compressing files")

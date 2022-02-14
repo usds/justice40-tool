@@ -347,10 +347,10 @@ def column_list_from_yaml_object_fields(
         target_field (str): the dict field to extract
 
     Returns:
-        list: a list of all the "score_name" fields
+        list: a list of all the fields that match the target field
     """
     yaml_list = []
-    for field in yaml_object["fields"]:
+    for field in yaml_object:
         yaml_list.append(field[target_field])
     return yaml_list
 
@@ -369,7 +369,7 @@ def load_dict_from_yaml_object_fields(
         dict: a dict with the specified keys and values
     """
     yaml_dict = {}
-    for field in yaml_object["fields"]:
+    for field in yaml_object:
         yaml_dict[field[object_key]] = field[object_value]
     return yaml_dict
 
