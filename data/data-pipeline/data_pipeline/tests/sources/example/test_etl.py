@@ -501,7 +501,9 @@ class TestETL:
         else:
             raise NotImplementedError("This geo level not tested yet.")
 
-    # TODO: Add a flag to make this run only when pytest is run with an argument.
+    # This decorator means that this "test" will only be run by passing that flag to
+    # pytest, for instance by running `pytest . -rsx --update_snapshots`.
+    @pytest.mark.update_snapshots
     def test_update_test_fixtures(self, mock_etl, mock_paths):
         """Update the test fixtures (the data files) used by the test.
 
@@ -510,7 +512,7 @@ class TestETL:
         needs to explicitly define how to update the `input` fixture that comes after
         the extract step.
 
-        Using this method to update fixtures  can be helpful if you expect the
+        Using this method to update fixtures can be helpful if you expect the
         results to change because you changed the logic of the ETL class and need to
         quickly update the fixtures.
 
