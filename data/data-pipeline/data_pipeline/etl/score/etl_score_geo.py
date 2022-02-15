@@ -103,8 +103,6 @@ class GeoScoreETL(ExtractTransformLoad):
             self.geojson_score_usa_high, crs="EPSG:4326"
         )
 
-        logger.info(f"Columns: {self.geojson_score_usa_high.columns}")
-
         usa_simplified = self.geojson_score_usa_high[
             [
                 self.GEOID_FIELD_NAME,
