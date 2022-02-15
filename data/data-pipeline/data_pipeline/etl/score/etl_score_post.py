@@ -209,10 +209,6 @@ class PostScoreETL(ExtractTransformLoad):
         score_county_state_merged_df: pd.DataFrame,
     ) -> pd.DataFrame:
 
-        logger.info(
-            score_county_state_merged_df["State Abbreviation"].nunique()
-        )
-
         logger.info("Rounding Decimals")
         # grab all the keys from tiles score columns
         tiles_score_column_titles = list(constants.TILES_SCORE_COLUMNS.keys())
