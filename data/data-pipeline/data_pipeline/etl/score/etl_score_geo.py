@@ -27,6 +27,8 @@ class GeoScoreETL(ExtractTransformLoad):
         self.SCORE_LOW_GEOJSON = self.SCORE_GEOJSON_PATH / "usa-low.json"
         self.SCORE_HIGH_GEOJSON = self.SCORE_GEOJSON_PATH / "usa-high.json"
 
+        self.SCORE_SHP_PATH = self.DATA_PATH / "score" / "shapefile"
+        self.SCORE_SHP_FILE = self.SCORE_SHP_PATH / "usa.shp"
         self.SCORE_CSV_PATH = self.DATA_PATH / "score" / "csv"
         self.TILE_SCORE_CSV = self.SCORE_CSV_PATH / "tiles" / "usa.csv"
 
@@ -94,6 +96,7 @@ class GeoScoreETL(ExtractTransformLoad):
         fields = [self.GEOID_FIELD_NAME, self.GEOMETRY_FIELD_NAME]
         self.geojson_usa_df = self.geojson_usa_df[fields]
 
+        # TODO update this join
         logger.info("Merging and compressing score CSV with USA GeoJSON")
         self.geojson_score_usa_high = self.score_usa_df.merge(
             self.geojson_usa_df, on=self.GEOID_FIELD_NAME, how="left"
@@ -102,8 +105,6 @@ class GeoScoreETL(ExtractTransformLoad):
         self.geojson_score_usa_high = gpd.GeoDataFrame(
             self.geojson_score_usa_high, crs="EPSG:4326"
         )
-
-        logger.info(f"Columns: {self.geojson_score_usa_high.columns}")
 
         usa_simplified = self.geojson_score_usa_high[
             [
@@ -148,8 +149,9 @@ class GeoScoreETL(ExtractTransformLoad):
         )
 
         # round to 2 decimals
-        decimals = pd.Series([2], index=[self.TARGET_SCORE_RENAME_TO])
-        self.geojson_score_usa_low = self.geojson_score_usa_low.round(decimals)
+        self.geojson_score_usa_low = self.geojson_score_usa_low.round(
+            {self.TARGET_SCORE_RENAME_TO: 2}
+        )
 
     def _aggregate_to_tracts(
         self, block_group_df: gpd.GeoDataFrame
@@ -221,13 +223,34 @@ class GeoScoreETL(ExtractTransformLoad):
             )
             logger.info("Completed writing usa-low")
 
+        # def write_esri_shapefile():
+        #     logger.info("Producing ESRI shapefiles")
+        #     self.geojson_score_usa_high.to_file(
+        #         self.SCORE_SHP_FILE
+        #     )
+        #     logger.info("Completed writing shapefile")
+
         with concurrent.futures.ThreadPoolExecutor() as executor:
             futures = {
                 executor.submit(task)
-                for task in [write_high_to_file, write_low_to_file]
+                for task in [
+                    write_high_to_file,
+                    write_low_to_file,
+                    # write_esri_shapefile,
+                ]
             }
 
             for fut in concurrent.futures.as_completed(futures):
                 # Calling result will raise an exception if one occurred.
                 # Otherwise, the exceptions are silently ignored.
                 fut.result()
+
+            logger.info("Producing ESRI shapefiles")
+            cmd = [
+                "ogr2ogr",
+                "-f",
+                "GeoJSON",
+                str(self.SCORE_HIGH_GEOJSON),
+                str(self.SCORE_SHP_FILE),
+            ]
+            subprocess.run(cmd, check=True)
