@@ -21,7 +21,7 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
         <a
           class="usa-link usa-link--external"
           data-cy=""
-          href="mailto=Screeningtool-Support@omb.eop.gov"
+          href="mailto:Screeningtool-Support@omb.eop.gov"
           rel="noreferrer"
           target="_blank"
         >
