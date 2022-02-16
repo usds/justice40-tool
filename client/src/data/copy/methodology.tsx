@@ -17,20 +17,20 @@ export const PAGE = defineMessages({
   DESCRIPTION: {
     id: 'methodology.page.paragraph',
     defaultMessage: `
-      This tool identifies communities that are overburdened by pollution and other environmental exposures 
-      and disadvantaged by underinvestment. A community qualifies as disadvantaged when a census tract 
-      is at or above a certain threshold for a climate or environmental burden indicator and also above 
-      a certain threshold for a socioeconomic indicator. Census tract geographical boundaries are 
-      determined by the U.S. Census Bureau once every ten years. This tool untilizes the 
-      census tract boundaries from 2010.
+      The current version of the tool identifies communities that are disadvantaged for the purposes of 
+      the Justice40 Initiative using census tracts, which are the smallest geographic unit for 
+      which publicly-available and nationally-consistent datasets can be consistently displayed on the 
+      tool. Census tract geographical boundaries are determined by the U.S. Census Bureau once every ten 
+      years. This tool uses the census tract boundaries from 2010.
     `,
     description: 'methodology page paragraph',
   },
   CATEGORY_TEXT: {
     id: 'methodology.page.categories.title',
     defaultMessage: `
-    Communities will be defined as disadvantaged for the purposes of Justice40 if they meet
-     the qualifications under one or more of the eight categories of criteria below.
+      Communities are identified as disadvantaged by the current version of the tool for the purposes of 
+      the Justice40 Initiative if they are located in census tracts that are at or above the 
+      combined thresholds in one or more of eight categories of criteria below. 
     `,
     description: 'methodology page explanation of the categories',
   },
@@ -139,7 +139,7 @@ export const LOW_INCOME = defineMessages({
     id: 'low.income.info',
     defaultMessage: `
       At or above 65th percentile  for percent of census tract population of households where household 
-      income is at or below 200% of the federal poverty level
+      income is at or below 200% of the Federal poverty level
     `,
     description: 'description of low income',
   },
@@ -164,7 +164,6 @@ export const CATEGORY= {
 };
 
 // Category AND Clause:
-
 export const CATEGORY_AND_CLAUSE = {
   LOW_INC_65_WHEN_HIGH_ED_LTE_20: <FormattedMessage
     id= {'methodology.paage.category.and.clause.low.inc.hs.ed'}
@@ -192,6 +191,7 @@ export const CATEGORY_AND_CLAUSE = {
     }}
   />,
 };
+
 // Indicator Categories copy constants:
 export const CATEGORIES = {
   ALL: <FormattedMessage
@@ -201,13 +201,13 @@ export const CATEGORIES = {
   />,
   ALL_EXCEPT_WORKFORCE: <FormattedMessage
     id= {'methodologies.all.except.workforce.used.in.text'}
-    defaultMessage= {`All categories except for training and workforce development`}
+    defaultMessage= {`All categories except for the training and workforce development catetory`}
     description= {'used in text for all methodologies'}
   />,
   CLIMATE_CHANGE: {
     METHODOLOGY: <FormattedMessage
       id= {'indicator.categories.climate.change.methodology'}
-      defaultMessage= {`Climate change methodology`}
+      defaultMessage= {`Climate change category`}
       description= {'climate change methodology'}
     />,
     TITLE: <FormattedMessage
@@ -242,7 +242,7 @@ export const CATEGORIES = {
   CLEAN_ENERGY: {
     METHODOLOGY: <FormattedMessage
       id= {'indicator.categories.climate.change.methodology'}
-      defaultMessage= {`Clean energy and energy efficiency methodology`}
+      defaultMessage= {`Clean energy and energy efficiency category`}
       description= {`Clean energy and energy efficiency methodology`}
     />,
     TITLE: <FormattedMessage
@@ -276,12 +276,12 @@ export const CATEGORIES = {
   CLEAN_TRANSPORT: {
     METHODOLOGY: <FormattedMessage
       id= {'indicator.categories.clean.transport.methodology'}
-      defaultMessage= {`Clean transportation methodology`}
+      defaultMessage= {`Clean transit category`}
       description= {`Clean transportation methodology`}
     />,
     TITLE: <FormattedMessage
       id={'indicator.categories.clean.transport.title'}
-      defaultMessage={'Clean transportation'}
+      defaultMessage={'Clean transit'}
       description= {'category title'}
     />,
     IF: <FormattedMessage
@@ -310,7 +310,7 @@ export const CATEGORIES = {
   AFFORDABLE_HOUSING: {
     METHODOLOGY: <FormattedMessage
       id= {'indicator.categories.afford.housing.methodology'}
-      defaultMessage= {`Affordable and sustainable housing methodology`}
+      defaultMessage= {`Affordable and sustainable housing category`}
       description= {`Affordable and sustainable housing methodology`}
     />,
     TITLE: <FormattedMessage
@@ -328,7 +328,7 @@ export const CATEGORIES = {
       values= {{
         if: <strong>IF</strong>,
         lead: <a href='#lead-paint'>lead paint</a>,
-        medianHomeVal: <a href='#median-home'>low median home value</a>,
+        medianHomeVal: <a href='#median-home'>median home value</a>,
         houseBur: <a href='#house-burden'>housing cost burden</a>,
       }}
     />,
@@ -346,7 +346,7 @@ export const CATEGORIES = {
   LEGACY_POLLUTION: {
     METHODOLOGY: <FormattedMessage
       id= {'indicator.categories.legacy.pollute.methodology'}
-      defaultMessage= {`Reduction and remediation of legacy pollution methodology`}
+      defaultMessage= {`Reduction and remediation of legacy pollution category`}
       description= {`Reduction and remediation of legacy pollution methodology`}
     />,
     TITLE: <FormattedMessage
@@ -381,7 +381,7 @@ export const CATEGORIES = {
   CLEAN_WATER: {
     METHODOLOGY: <FormattedMessage
       id= {'indicator.categories.clean.water.methodology'}
-      defaultMessage= {`Critical clean water and waste infrastructure methodology`}
+      defaultMessage= {`Critical clean water and waste infrastructure category`}
       description= {`Critical clean water and waste infrastructure methodology`}
     />,
     TITLE: <FormattedMessage
@@ -414,7 +414,7 @@ export const CATEGORIES = {
   HEALTH_BURDENS: {
     METHODOLOGY: <FormattedMessage
       id= {'indicator.categories.health.burdens.methodology'}
-      defaultMessage= {`Health burdens methodology`}
+      defaultMessage= {`Health burdens category`}
       description= {`Health burdens methodology`}
     />,
     TITLE: <FormattedMessage
@@ -450,7 +450,7 @@ export const CATEGORIES = {
   WORKFORCE_DEV: {
     METHODOLOGY: <FormattedMessage
       id= {'indicator.categories.workforce.dev.methodology'}
-      defaultMessage= {`Training and workforce development methodology`}
+      defaultMessage= {`Training and workforce development category`}
       description= {`Training and workforce development`}
     />,
     TITLE: <FormattedMessage
@@ -464,7 +464,7 @@ export const CATEGORIES = {
         {if} at or above the 90th percentile for {lowMedInc} as a percent of area median income OR 
         {linIso} OR
         {unemploy} OR
-        percent individuals in households at or below 100% federal {poverty} level
+        percent individuals in households at or below 100% Federal {poverty} level
       `}
       description= {'if portion of the formula'}
       values= {{
@@ -492,15 +492,16 @@ export const CATEGORIES = {
 export const DATASETS = defineMessages({
   HEADING: {
     id: 'datasetContainer.heading',
-    defaultMessage: 'Datasets used in methodology',
+    defaultMessage: 'Datasets used in beta methodology',
     description: 'section heading of which datasets are used in cumulative score',
   },
   INFO: {
     id: 'datasetContainer.info',
-    defaultMessage: 'The datasets come from a variety of sources and were selected' +
-    ' based on relevance, availability, recency, and quality. The datasets seek to' +
-    ' identify a range of human health, environmental, climate-related, and other' +
-    ' cumulative impacts on communities.',
+    defaultMessage: `
+      The datasets used in the current version of the tool come from a variety of sources and were 
+      selected based on relevance, availability, and quality. The datasets seek to identify a range of 
+      human health, environmental, climate-related, and other impacts on communities.
+    `,
     description: 'description of the dataset section',
   },
   ADDITIONAL_HEADING: {
@@ -565,7 +566,7 @@ export const RESPONSIBLE_PARTIES = {
   EPA: `Environmental Protection Agency (EPA)`,
   EPA_OAR: `Environmental Protection Agency (EPA) Office of Air and Radiation (OAR)`,
   FEMA: `Federal Emergency Management Agency (FEMA)`,
-  HUD: `Department of Housing & Urban Development's (HUD)`,
+  HUD: `Department of Housing & Urban Development (HUD)`,
 };
 
 export const SOURCE_LINKS = {
@@ -593,7 +594,7 @@ export const SOURCE_LINKS = {
         <LinkTypeWrapper
           linkText={`American Community Survey`}
           internal={false}
-          url={`https://www.census.gov/programs-surveys/acs`}
+          url={`https://www.census.gov/data/developers/data-sets/acs-5year/2010.html`}
           openUrlNewTab={true}
         />,
       date10: DATE_RANGE.TEN,
@@ -695,7 +696,7 @@ export const SOURCE_LINKS = {
   EPA_TSDF: <FormattedMessage
     id= {'category.source.epa.tsdf.link'}
     defaultMessage= {`
-      {sourceEpaTsdfLink} from {date20} calculated from EPA RCRA database as compiled 
+      {sourceEpaTsdfLink} from {date20} calculated from EPA's RCRA database as compiled 
       by EPA's EJSCREEN
     `}
     description= {'source link for EPA TSDF'}
@@ -813,7 +814,7 @@ export const INDICATORS = [
       id= {'category.low.income.description.text'}
       defaultMessage= {`
         Percent of a census tract's population in households where household income is at or below
-        200% of the federal poverty level.
+        200% of the Federal poverty level.
       `}
       description= {'description text for low income'}
     />,
@@ -851,10 +852,10 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.exp.agr.loss.rate.description.text'}
       defaultMessage= {`
-        Percent of agriculture value at risk from losses due to natural hazards such as the fourteen 
-        natural hazards that have some link to climate change including: avalanche, coastal flooding, 
+        Percent of agriculture value at risk from losses due to natural hazards that have some link 
+        to climate change: avalanche, coastal flooding, 
         cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong 
-        wind, tornado, wildfire, and winter weather. Calculated by dividing the agriculture value at risk in 
+        wind, tornado, wildfire, and winter weather. Rate calculated by dividing the agriculture value at risk in 
         a census tract by the total agriculture value in that census tract.
       `}
       description= {'description text for exp agr loss rate'}
@@ -874,10 +875,10 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.exp.bld.loss.rate.description.text'}
       defaultMessage= {`
-        Percent of building value at risk from losses due to natural hazards such as the fourteen 
-        natural hazards that have some link to climate change including: avalanche, coastal flooding, 
+        Percent of building value at risk from losses due to natural hazards 
+        that have some link to climate change: avalanche, coastal flooding, 
         cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong 
-        wind, tornado, wildfire, and winter weather. Calculated by dividing the building value at risk in 
+        wind, tornado, wildfire, and winter weather. Rate calculated by dividing the building value at risk in 
         a census tract by the total building value in that census tract.
       `}
       description= {'description text for exp bld loss rate'}
@@ -897,8 +898,8 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.exp.pop.loss.rate.description.text'}
       defaultMessage= {`
-        Rate relative to the population in fatalities and injuries due to natural hazards each year such as 
-        the fourteen natural hazards that have some link to climate change including: avalanche, 
+        Rate relative to the population in fatalities and injuries due to natural hazards each year
+        that have some link to climate change: avalanche, 
         coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, 
         riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined 
         as the Spatial Hazard Events and Losses or National Centers for Environmental Information’s 
@@ -925,7 +926,7 @@ export const INDICATORS = [
     indicator: 'Energy cost burden',
     description: <FormattedMessage
       id= {'category.energy.burden.description.text'}
-      defaultMessage= {`Average annual energy cost ($) divided by household income.`}
+      defaultMessage= {`Average annual energy cost per household ($) divided by household average income.`}
       description= {'description text for energy burden'}
     />,
     usedIn: CATEGORIES.CLEAN_ENERGY.METHODOLOGY,
@@ -943,7 +944,9 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.pm2.5.description.text'}
       defaultMessage= {`
-        Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller.
+        Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller. The value 
+        in the fields is the weight of these particles in micrograms per cubic meter.
+
       `}
       description= {'description text for pm 2.5'}
     />,
@@ -962,7 +965,8 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.diesel.pm.description.text'}
       defaultMessage= {`
-        Mixture of particles that is part of diesel exhaust in the air.
+        Mixture of particles that is part of diesel exhaust in the air. The value in the fields is the 
+        weight of these particles in micrograms per cubic meter. 
       `}
       description= {'description text for diesel pm'}
     />,
@@ -982,7 +986,7 @@ export const INDICATORS = [
       id= {'category.traffic.vol.description.text'}
       defaultMessage= {`
         Count of vehicles (average annual daily traffic) at major roads
-        within 500 meters, divided by distance in meters (not km).
+        within 500 meters, divided by distance in meters.
       `}
       description= {'description text for traffic volume'}
     />,
@@ -1002,7 +1006,7 @@ export const INDICATORS = [
       id= {'category.house.burden.description.text'}
       defaultMessage= {`
         The percent of households in a census tract that are both earning less than 80% of HUD Area Median
-        Family Income by county and are paying greater than 30% of their income to housing costs.
+        Family Income by county and are spending more than 30% of their income on housing costs.
       `}
       description= {'description text for housing burden'}
     />,
@@ -1037,7 +1041,7 @@ export const INDICATORS = [
   },
   {
     domID: 'median-home',
-    indicator: 'Low median home value',
+    indicator: 'Median home value',
     description: <FormattedMessage
       id= {'category.lead.paint.description.text'}
       defaultMessage= {`
@@ -1061,7 +1065,8 @@ export const INDICATORS = [
       id= {'category.prox.haz.description.text'}
       defaultMessage= {`
         Count of hazardous waste facilities (Treatment, Storage, and Disposal Facilities and Large
-        Quantity Generators) within 5 km (or nearest beyond 5 km), each divided by distance in kilometers.
+        Quantity Generators) within 5 kilometers (or nearest beyond 5 kilometers), each divided by 
+        distance in kilometers.
       `}
       description= {'description text for proximity to hazards'}
     />,
@@ -1080,8 +1085,8 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.prox.npl.description.text'}
       defaultMessage= {`
-        Count of proposed or listed NPL - also known as superfund - sites within 5 km (or nearest one
-        beyond 5 km), each divided by distance in kilometers.
+        Count of proposed or listed NPL - also known as Superfund - sites within 5 kilometers (or nearest one
+        beyond 5 kilometers), each divided by distance in kilometers.
         `}
       description= {'description text for proximity to npl'}
     />,
@@ -1100,8 +1105,8 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.prox.rmp.description.text'}
       defaultMessage= {`
-        Count of RMP (potential chemical accident management plan) facilities within 5 km (or nearest
-        one beyond 5 km), each divided by distance in kilometers.
+        Count of RMP (potential chemical accident management plan) facilities within 5 kilometers (or nearest
+        one beyond 5 kilometers), each divided by distance in kilometers.
       `}
       description= {'description text for proximity to rmp'}
     />,
@@ -1120,8 +1125,8 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.waste.water.description.text'}
       defaultMessage= {`
-        Risk-Screening Environmental Indicators (RSEI) modeled Toxic Concentrations at
-        stream segments within 500 meters, divided by distance in kilometers (km).
+        Risk-Screening Environmental Indicators (RSEI) modeled toxic concentrations at
+        stream segments within 500 meters, divided by distance in kilometers (kilometers).
       `}
       description= {'description text for waste water'}
     />,
@@ -1141,7 +1146,7 @@ export const INDICATORS = [
       id= {'category.asthma.description.text'}
       defaultMessage= {`
         Weighted percent of people who answer “yes” to both of the following questions: “Have you ever
-        been told by a doctor, nurse, or other health professional that you have asthma?” and the question
+        been told by a doctor, nurse, or other health professional that you have asthma?” and
         “Do you still have asthma?”
       `}
       description= {'description text for asthma'}
@@ -1199,7 +1204,7 @@ export const INDICATORS = [
   },
   {
     domID: 'life-exp',
-    indicator: 'Low life expectancy',
+    indicator: 'Life expectancy',
     description: <FormattedMessage
       id= {'category.low.life.expectancy.description.text'}
       defaultMessage= {`
@@ -1209,11 +1214,12 @@ export const INDICATORS = [
       description= {'description text for low life expectancy'}
       values= {{
         note: <p><strong>Note:</strong>{`
-          Unlike most of the other datasets, high values of this indicator indicate low burdens.
-          For percentile calculations, the percentile is calculated in reverse order, so that the tract with
+          Unlike most of the other datasets, high values of this data indicate low burdens.
+          For percentile calculations of burden, the percentile is calculated in reverse order, so that the tract with
           the highest median income relative to area median income (lowest burden on this measure) is at the
           0th percentile, and the tract with the lowest median income relative to area median income
-          (highest burden on this measure) is at the 100th percentile.
+          (highest burden on this measure) is at the 100th percentile. Tracts with the highest number 
+          have the lowest life expectancy.
         `}</p>,
       }}
     />,
@@ -1228,7 +1234,7 @@ export const INDICATORS = [
   },
   {
     domID: 'low-med-inc',
-    indicator: 'Low median Income',
+    indicator: 'Median Income',
     description: <FormattedMessage
       id= {'category.workforce.dev.description.text'}
       defaultMessage= {`
@@ -1255,8 +1261,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.linguistic.iso.description.text'}
       defaultMessage= {`
-        The percent of limited speaking households, which are households where no one over age
-        14 speaks English well.
+        The percent households, which are households, where no one over the age fourteen speaks English well.
       `}
       description= {'description text for linguistic isolation'}
     />,
@@ -1298,8 +1303,8 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.poverty.description.text'}
       defaultMessage= {`
-        Percent of a tract's population in households where the household income is at or below 100% of
-        the federal poverty level.
+        Proportion of a tract's population in households where the household income is at or below 100% of
+        the Federal poverty level.
       `}
       description= {'description text for poverty'}
     />,
@@ -1322,7 +1327,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.highschool.description.text'}
       defaultMessage= {`
-        Percent (not percentile) of people ages 25 years or older in a census tract whose
+        Proportion of people ages 25 years or older in a census tract whose
         education level is less than a high school diploma.
       `}
       description= {'description text for highschool'}
@@ -1350,126 +1355,3 @@ export const RETURN_TO_TOP = {
     description= {'link text to return to top'}
   />,
 };
-
-// Methodology Steps:
-// export const METHODOLOGY_STEPS = defineMessages({
-//   HEADING: {
-//     id: 'methodology.steps.heading',
-//     defaultMessage: `Methodology`,
-//     description: 'heading of methodology section',
-//   },
-//   DESCRIPTION_1: {
-//     id: 'methodology.steps.description.1',
-//     defaultMessage: 'The methodology for identifying communities of focus is'+
-//      ' calculated at the census block group level. Census block geographical boundaries'+
-//      ' are determined by the U.S. Census Bureau once every ten years. This tool utilizes'+
-//      ' the census block boundaries from 2010.',
-//     description: 'first description text ',
-//   },
-//   DESCRIPTION_2: {
-//     id: 'methodology.steps.description.2',
-//     defaultMessage: 'The following describes the process for identifying communities of focus.',
-//     description: 'second description text',
-//   },
-//   STEP_1_HEADING: {
-//     id: 'methodology.step.1.heading',
-//     defaultMessage: `Gather datasets`,
-//     description: 'first step heading',
-//   },
-//   STEP_1_INFO: {
-//     id: 'methodology.step.1.info',
-//     defaultMessage: `The methodology includes the following inputs that are equally weighted.`,
-//     description: 'first step info',
-//   },
-//   STEP_1_A_HEADING: {
-//     id: 'methodology.step.1.a.heading',
-//     defaultMessage: `Percent of Area Median Income`,
-//     description: 'step 1 a heading',
-//   },
-//   STEP_1_A_INFO_1: {
-//     id: 'methodology.step.1.a.info.1',
-//     defaultMessage: 'If a census block group is in a metropolitan area, this value is the'+
-//     ' median income of the census block group calculated as a percent of'+
-//     ' the metropolitan area’s median income.',
-//     description: 'step 1 a info 1',
-//   },
-//   STEP_1_A_INFO_2: {
-//     id: 'methodology.step.1.a.info.2',
-//     defaultMessage: 'If a census block group is not in a metropolitan area, this value is the'+
-//     ' median income of the census block group calculated as a percent of the state’s median'+
-//     ' income.',
-//     description: 'step 1 a info 2',
-//   },
-//   STEP_1_B_HEADING: {
-//     id: 'methodology.step.1.b.heading',
-//     defaultMessage: `Percent of households below or at 100% of the federal poverty line`,
-//     description: 'step 1 b heading',
-//   },
-//   STEP_1_C_HEADING: {
-//     id: 'methodology.step.1.c.heading',
-//     defaultMessage: `The high school degree achievement rate for adults 25 years and older`,
-//     description: 'step 1 a heading',
-//   },
-//   STEP_1_C_INFO: {
-//     id: 'methodology.step.1.c.info',
-//     defaultMessage: 'The percent of individuals who are 25 or older who have received a high school degree.',
-//     description: 'step 1 c info',
-//   },
-//   STEP_2_HEADING: {
-//     id: 'methodology.step.2.heading',
-//     defaultMessage: `Determine communites of focus`,
-//     description: 'second step heading',
-//   },
-//   STEP_2_INFO: {
-//     id: 'methodology.step.2.info',
-//     defaultMessage: `Under the existing formula, a census block group will be considered a community of focus if:`,
-//     description: 'second step info',
-//   },
-// });
-
-// const FED_POVERTY_LINE_URL = 'https://www.census.gov/topics/income-poverty/poverty/guidance/poverty-measures.html';
-
-// // Copy that has links or other HTML tags in them
-// export const COMPLEX_METH_STEPS = {
-//   STEP_2_B_INFO: <FormattedMessage
-//     id={'methodology.steps.2.b.info'}
-//     description={'Download the draft list of communities of focus and datasets used.'}
-//     defaultMessage={`This is the percent of households in a state with a household income
-//     below or at 100% of the {federalPovertyLine}. This federal poverty line is calculated
-//     based on the composition of each household (e.g., based on household size), but it does
-//     not vary geographically.`}
-//     values={{
-//       federalPovertyLine:
-//       <a href={FED_POVERTY_LINE_URL} target="_blank" rel="noreferrer">
-//         federal poverty line
-//       </a>,
-//     }}
-//   />,
-//   FORMULA: <FormattedMessage
-//     id={'methodology.steps.2.formula'}
-//     description={'Formala used to calculate communities of focus'}
-//     defaultMessage={`{medianIncome} {or} {livingAtPovery} {and} {education}`}
-//     values={{
-//       medianIncome:
-//         <p>
-//          (The median income is less than 80% of the area median income
-//         </p>,
-//       or:
-//         <p className={'flush'}>
-//           OR
-//         </p>,
-//       livingAtPovery:
-//         <p className={'flush'}>
-//           households living in poverty (at or below 100% of the federal poverty level) is greater than 20%)
-//         </p>,
-//       and:
-//         <p className={'flush'}>
-//           AND
-//         </p>,
-//       education:
-//         <p className={'flush'}>
-//           The high school degree achievement rate for adults 25 years and older is greater than 95%
-//         </p>,
-//     }}
-//   />,
-// };

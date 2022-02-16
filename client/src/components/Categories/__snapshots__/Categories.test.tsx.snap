@@ -146,7 +146,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
     </div>
     <div>
       <h3>
-        Clean transportation
+        Clean transit
       </h3>
       <p>
         
@@ -230,7 +230,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <a
           href="#median-home"
         >
-          low median home value
+          median home value
         </a>
          is at or less than
         90th percentile OR at or above the 90th percentile for the 
@@ -488,7 +488,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
           unemployment
         </a>
          OR
-        percent individuals in households at or below 100% federal 
+        percent individuals in households at or below 100% Federal 
         <a
           href="#poverty"
         >

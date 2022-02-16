@@ -333,10 +333,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </i>
                   , President Biden directed the Council on Environmental Quality (CEQ) 
     to create a Climate and Economic Justice Screening Tool. The purpose of the tool is to help
-    Federal agencies identify disadvantaged communities that have been historically 
-    marginalized, underserved, and overburdened by pollution. The tool provides socioeconomic, 
-    environmental, and climate information to inform decisions that may affect these communities. The 
-    tool identifies disadvantaged communities through publicly-available, nationally-consistent, and high-quality data.
+    Federal agencies identify disadvantaged communities that are marginalized, underserved, and 
+    overburdened by pollution. The current version of the tool provides socioeconomic, environmental, 
+    and climate information to inform decisions that may affect these communities. The 
+    tool identifies disadvantaged communities through publicly-available, nationally-consistent datasets.
     
                 </p>
                 <p>
@@ -364,14 +364,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               data-testid="grid"
             >
               <img
-                alt="Justice40"
+                alt="The Justice40 Initiative"
                 class="j40-aboutcard-image"
                 src="test-file-stub"
               />
             </div>
             <div
               class="tablet:grid-col-9"
-              data-cy="justice40-block"
+              data-cy="the-justice40-initiative-block"
               data-testid="grid"
             >
               <div
@@ -379,18 +379,16 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 data-testid="grid"
               >
                 <h2>
-                  Justice40
+                  The Justice40 Initiative
                 </h2>
                 <p>
                   
       The tool will provide important information for the Justice40 Initiative. The goal of the 
-      Justice40 Initiative is to provide 40 percent of the overall benefits of certain federal
-      programs in seven key areas to disadvantaged communities. These seven key areas are: climate 
+      Justice40 Initiative is to provide 40 percent of the overall benefits of certain Federal
+      investments in seven key areas to disadvantaged communities. These seven key areas are: climate 
       change, clean energy and energy efficiency, clean transit, affordable and sustainable
-      housing, training and workforce development (related to climate, natural disasters, environment, 
-      clean energy, clean transportation, affordable and sustainable housing, water and 
-      wastewater infrastructure, and legacy pollution reduction, including in energy communities), 
-      the remediation and reduction of legacy pollution, and the development of critical clean water infrastructure.
+      housing, training and workforce development, the remediation and reduction of legacy pollution, 
+      and the development of critical clean water infrastructure.
     
                 </p>
                 <p>
@@ -520,7 +518,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </h3>
                   <p>
                     
-    Explore data about communities in your area and provide feedback on the tool.
+      Explore data about communities across the U.S., including your own, and provide feedback on the tool.
     
                   </p>
                   <div
@@ -587,7 +585,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   Send feedback
                 </h3>
                 <p>
-                  Have ideas about how this tool can be improved to better reflect the on-the-ground experiences of your community?
+                  
+      Have ideas about data and information that reflect the experiences and conditions of your community?
+    
                 </p>
                 <div
                   class="j40-aboutcard-sm-link"
@@ -643,7 +643,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   Join the open source community
                 </h3>
                 <p>
-                  The screening tool’s code is open source, which means it is  available for the public to view and contribute to.
+                  
+      The tool’s code is open source, which means it is available for the public to view and contribute to it.
+    
                 </p>
                 <div
                   class="j40-aboutcard-sm-link"

@@ -23,11 +23,10 @@ export const PAGE_INTRO = defineMessages({
 export const PAGE_DESCRIPTION = <FormattedMessage
   id={'exploreTool.page.description'}
   defaultMessage={`
-    Use the map to see disadvantaged communities that have been historically 
-    marginalized, underserved, and overburdened by pollution. The map uses 
-    publicly-available, nationally-consistent, high-quality datasets. Learn more about 
-    the methodology and datasets that were used to identify disavantaged communities 
-    on the {methodologyLink} page.
+    Use the map to see communities that are disadvantaged. The map uses 
+    publicly-available, nationally-consistent, datasets. Learn more about 
+    the methodology and datasets that were used to identify disavantaged communities
+    in the current version of the tool on the {methodologyLink} page.
     `}
   description={'page description'}
   values={{
@@ -45,10 +44,9 @@ export const LEGEND = defineMessages({
   PRIORITY_DESCRIPT: {
     id: 'legend.info.threshold.label',
     defaultMessage: `
-    Communities identified as disadvantaged for the purposes of Justice40 have been 
-    historically marginalized, underserved, and overburdened by pollution. These communities meet 
-    or exceed the criteria in one or more areas of focus.
-
+      Communities identified as disadvantaged by the tool are those that are marginalized, underserved, 
+      and overburdened by pollution. These communities are at or above the combined thresholds in one or 
+      more of eight categories of criteria.
     `,
     description: 'the label of the threshold community legend',
   },
@@ -172,9 +170,9 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
     defaultMessage: `
       A census tract is generally between 1,200 and 8,000 people, with an average size of 4,000 people. 
       Census tracts are small, relatively permanent subdivisions of a county defined by the 
-      U.S. Census Bureau and usually cover a contiguous area. The census tract level represents the 
-      smallest geographical unit that can be presented in a statistically sound manner, given the 
-      datasets that are being used.
+      U.S. Census Bureau and usually cover a contiguous area. The census tract level currently represents the 
+      smallest geographical unit for which publicly-available and nationally-consistent datasets can 
+      be consistently displayed on the tool.
     `,
     description: 'cites the definition and helpful information about census groups',
   },
@@ -248,7 +246,7 @@ export const SEND_FEEDBACK = defineMessages({
   EMAIL_BODY: {
     id: 'areaDetail.categorization.send.feedback.email.body',
     // eslint-disable-next-line max-len
-    defaultMessage: `Please provide feedback about this census tract, including about the datasets, the data categories provided for this tract, the communities who live in this tract, and anything else relevant that we should know.
+    defaultMessage: `Please provide feedback about this census tract, including about the datasets, the data categories provided for this tract, the communities who live in this tract, and anything else relevant that CEQ should know about this tract.
     `,
     description: 'link to send feedback',
   },
@@ -633,7 +631,7 @@ export const NOTE_ON_TERRITORIES = {
     id={'explore.page.note.on.territories.para.1'}
     defaultMessage={`
       The data sources described on the {dataMethLink} page are used to 
-      identify disadvantaged communities for all fifty states and the District of Columbia. However, not all 
+      identify disadvantaged communities in all fifty states and the District of Columbia. However, not all 
       of these data sources are currently available for the U.S. territories. The Census ACS data from 
       2015-2019 was used to identify disadvantaged communities for Puerto Rico. This uses the same methodology 
       as all fifty states and the District of Columbia for which data is available, which is all fields in 
@@ -647,23 +645,80 @@ export const NOTE_ON_TERRITORIES = {
   PARA_2: <FormattedMessage
     id={'explore.page.note.on.territories.para.2'}
     defaultMessage={`
-      The Decennial Census data from 2010 was used 
-      for American Samoa and Northern Mariana Islands using only the unemployment, poverty, low median 
-      income, and high school degree achievement rate fields in the Training and Workforce Development 
-      category of the methodology.
+      For Puerto Rico, the Census American Community Survey data from 2015-2019 are used for higher 
+      ed enrollment rate and all the other fields in the Training and Workforce Development category 
+      to identify disadvantaged communities. Data in the other categories are unavailable at this 
+      time.
     `}
     description={`territories paragraph 2`}
   />,
   PARA_3: <FormattedMessage
     id={'explore.page.note.on.territories.para.3'}
     defaultMessage={`
-      Work is underway to identify disadvantaged communities and update the 
-      CEJST accordingly for Guam and the U.S. Virgin Islands.
-        `}
+      For American Samoa and the Northern Mariana Islands, the data used to identify 
+      isadvantaged communities are from the 2010 Decennial Census, the last reported data from the 
+      U.S. Census Bureau. Available data for these territories includes unemployment, poverty, low 
+      median income, and high school degree achievement rate fields in the Training and Workforce Development category.
+    `}
     description={`territories paragraph 3`}
   />,
-
+  PARA_4: <FormattedMessage
+    id={'explore.page.note.on.territories.para.4'}
+    defaultMessage={`
+      Work is currently underway to identify disadvantaged communities and update the 
+      tool accordingly for Guam and the U.S. Virgin Islands.
+        `}
+    description={`territories paragraph 4`}
+  />,
 };
+
+export const NOTE_ON_TRIBAL_NATIONS = {
+  INTRO: <FormattedMessage
+    id={'explore.page.note.on.tribal.nations.intro'}
+    defaultMessage={`A note on Tribal Nations`}
+    description={`tribal nations intro text`}
+  />,
+  PARA_1: <FormattedMessage
+    id={'explore.page.note.on.tribal.nations.para.1'}
+    defaultMessage={`
+      The tool covers all U.S. census tracts, including those located within Tribal Nations, to the extent 
+      that data is available (see our Methodology & data page for more information). CEQ is engaging 
+      in consultation and coordination with Tribal Nations on the beta version of the tool to provide 
+      Tribal Nations with meaningful opportunities for input, consistent with CEQ’s {actionPlanTribalNation},
+      {bidenMemoNat2Nat}, and {coordinateTribal}.
+    `}
+    description={`tribal nations paragraph 1`}
+    values={{
+      actionPlanTribalNation: <LinkTypeWrapper
+        linkText= {'Action Plan for Consultation and Coordination with Tribal Nations'}
+        internal= {false}
+        url= {`https://www.whitehouse.gov/wp-content/uploads/2022/01/CEQ-Tribal-Consultation-Plan-04.26.2021.pdf`}
+        openUrlNewTab= {true}
+      />,
+      bidenMemoNat2Nat: <LinkTypeWrapper
+        linkText= {`
+          President Biden’s Memorandum on Tribal Consultation and Strengthening Nation-to-Nation Consultation
+        `}
+        internal= {false}
+        url= {`
+          https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/26/memorandum-on-tribal-consultation-and-strengthening-nation-to-nation-relationships/
+        `}
+        openUrlNewTab= {true}
+      />,
+      coordinateTribal: <LinkTypeWrapper
+        linkText= {`
+        Coordination with Indian Tribal Governments
+        `}
+        internal= {false}
+        url= {`
+          https://www.federalregister.gov/documents/2000/11/09/00-29003/consultation-and-coordination-with-indian-tribal-governments
+        `}
+        openUrlNewTab= {true}
+      />,
+    }}
+  />,
+};
+
 export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
   HEADING: <FormattedMessage
     id={'youCanHelpInfoText.heading'}
@@ -688,11 +743,11 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
   LIST_ITEM_2: <FormattedMessage
     id={'youCanHelpInfoText.list.item.2'}
     description={'share your feedback'}
-    defaultMessage={`Find communities of interest and {shareFeedback}.`}
+    defaultMessage={`Use the tool to find communities and {shareFeedback}.`}
     values={{
       shareFeedback:
         <LinkTypeWrapper
-          linkText= {'share feedback'}
+          linkText= {'share your feedback'}
           internal= {false}
           url= {`mailto:${CONTACT_COPY.FEEDBACK_EMAIL}`}
           openUrlNewTab= {true}

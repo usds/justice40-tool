@@ -315,8 +315,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             >
               Explore the tool
             </a>
-             page or just use the email address provided above. Please 
-      include the census tract ID, county, state or territory information, in addition to your feedback.
+             page or use the email address provided above. Please 
+      include the census tract ID, county, and state or territory information, in addition to your feedback.
     
           </p>
           <p>
@@ -327,7 +327,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </p>
           <p>
             
-      In addition, you can provide information about data via the 
+      In addition, you can provide feedback on the tool via this 
             <a
               class="usa-link usa-link--external"
               data-cy=""
@@ -335,7 +335,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               rel="noreferrer"
               target="_blank"
             >
-              improvement survey
+              survey
             </a>
             .
     

@@ -30,20 +30,18 @@ export const PAGE = defineMessages({
   },
   HEADING_2: {
     id: 'index.heading.justice40',
-    defaultMessage: 'Justice40',
+    defaultMessage: 'The Justice40 Initiative',
     description: 'heading for about justice 40',
   },
   HEADING2_DESCRIPTION1: {
     id: 'about.page.sub.header.2.text.1',
     defaultMessage: `
       The tool will provide important information for the Justice40 Initiative. The goal of the 
-      Justice40 Initiative is to provide 40 percent of the overall benefits of certain federal
-      programs in seven key areas to disadvantaged communities. These seven key areas are: climate 
+      Justice40 Initiative is to provide 40 percent of the overall benefits of certain Federal
+      investments in seven key areas to disadvantaged communities. These seven key areas are: climate 
       change, clean energy and energy efficiency, clean transit, affordable and sustainable
-      housing, training and workforce development (related to climate, natural disasters, environment, 
-      clean energy, clean transportation, affordable and sustainable housing, water and 
-      wastewater infrastructure, and legacy pollution reduction, including in energy communities), 
-      the remediation and reduction of legacy pollution, and the development of critical clean water infrastructure.
+      housing, training and workforce development, the remediation and reduction of legacy pollution, 
+      and the development of critical clean water infrastructure.
     `,
     description: 'about page sub header text',
   },
@@ -57,10 +55,10 @@ export const HEADING_1 = {
     defaultMessage={`
     In {eoLink} on {tacklingItalics}, President Biden directed the Council on Environmental Quality (CEQ) 
     to create a Climate and Economic Justice Screening Tool. The purpose of the tool is to help
-    Federal agencies identify disadvantaged communities that have been historically 
-    marginalized, underserved, and overburdened by pollution. The tool provides socioeconomic, 
-    environmental, and climate information to inform decisions that may affect these communities. The 
-    tool identifies disadvantaged communities through publicly-available, nationally-consistent, and high-quality data.
+    Federal agencies identify disadvantaged communities that are marginalized, underserved, and 
+    overburdened by pollution. The current version of the tool provides socioeconomic, environmental, 
+    and climate information to inform decisions that may affect these communities. The 
+    tool identifies disadvantaged communities through publicly-available, nationally-consistent datasets.
     `}
     values={{
       eoLink: <LinkTypeWrapper
@@ -130,7 +128,7 @@ export const HOW_TO_GET_STARTED = defineMessages({
   COMMUNITY_MEMBERS_INFO: {
     id: 'community.members.info',
     defaultMessage: `
-    Explore data about communities in your area and provide feedback on the tool.
+      Explore data about communities across the U.S., including your own, and provide feedback on the tool.
     `,
     description: 'sub heading of page',
   },
@@ -154,8 +152,9 @@ export const GET_INVOLVED = defineMessages({
   },
   SEND_FEEDBACK_INFO: {
     id: 'send.feedback.info',
-    defaultMessage: 'Have ideas about how this tool can be improved to better reflect'+
-    ' the on-the-ground experiences of your community?',
+    defaultMessage: `
+      Have ideas about data and information that reflect the experiences and conditions of your community?
+    `,
     description: 'sending feedback information',
   },
   JOIN_OSC_HEADING: {
@@ -165,8 +164,9 @@ export const GET_INVOLVED = defineMessages({
   },
   JOIN_OSC_INFO: {
     id: 'join.open.source.info',
-    defaultMessage: 'The screening tool’s code is open source, which means it is '+
-    ' available for the public to view and contribute to.',
+    defaultMessage: `
+      The tool’s code is open source, which means it is available for the public to view and contribute to it.
+    `,
     description: 'info on joining open source community',
   },
   JOIN_OSC_LINK_TEXT: {
