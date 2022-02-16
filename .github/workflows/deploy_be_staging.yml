@@ -1,0 +1,89 @@
+name: Deploy Frontend staging
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "data/*"
+env:
+  PR_NUMBER: ${{github.event.pull_request.number}}
+  SHA_NUMBER: ${{github.event.pull_request.head.sha}}
+jobs:
+  generate-score-tiles:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: data/data-pipeline
+    strategy:
+      matrix:
+        python-version: [3.9]
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+      - name: Print variables to help debug
+        uses: hmarr/debug-action@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Setup Poetry
+        uses: Gr1N/setup-poetry@v7
+      - name: Print poetry version
+        run: poetry --version
+      - name: Install dependencies
+        run: poetry install
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.DATA_DEV_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.DATA_DEV_AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: Generate Score
+        run: |
+          poetry run python3 data_pipeline/application.py score-full-run
+      - name: Generate Score Post
+        run: |
+          poetry run python3 data_pipeline/application.py generate-score-post -s aws
+      - name: Generate Score Geo
+        run: |
+          poetry run python3 data_pipeline/application.py geo-score
+      - name: Install GDAL/ogr2ogr
+        run: |
+          sudo add-apt-repository ppa:ubuntugis/ppa
+          sudo apt-get -y install gdal-bin
+          ogrinfo --version
+      - name: Set timezone for tippecanoe
+        uses: szenius/set-timezone@v1.0
+        with:
+          timezoneLinux: "America/Los_Angeles"
+      - name: Get tippecanoe
+        run: |
+          sudo apt-get install -y software-properties-common libsqlite3-dev zlib1g-dev
+          sudo apt-add-repository -y ppa:git-core/ppa
+          sudo mkdir -p /tmp/tippecanoe-src
+          sudo git clone https://github.com/mapbox/tippecanoe.git /tmp/tippecanoe-src
+      - name: Make tippecanoe
+        working-directory: /tmp/tippecanoe-src
+        run: |
+          sudo /usr/bin/bash -c make
+          mkdir -p /usr/local/bin
+          cp tippecanoe /usr/local/bin/tippecanoe
+          tippecanoe -v
+      - name: Generate Tiles
+        run: |
+          poetry run python3 data_pipeline/application.py generate-map-tiles
+      - name: Deploy to Geoplatform AWS
+        run: |
+          aws s3 cp ./data_pipeline/data/score/csv/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/csv --acl public-read --delete
+          aws s3 cp ./data_pipeline/data/score/downloadable/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/downloadable --acl public-read --delete
+          aws s3 cp ./data_pipeline/data/score/geojson/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/${{env.PR_NUMBER}}score/geojson --acl public-read --delete
+          aws s3 cp ./data_pipeline/data/score/tiles/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/tiles --recursive --acl public-read
+      - name: Update PR with deployed URL
+        uses: mshick/add-pr-comment@v1
+        with:
+          # Deploy to S3 for the staging URL
+          message: |
+            **🚢 PR Deployed! 🚢**   
+            Find it here: http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/justice40-tool/${{env.PR_NUMBER}}/en/cejst/ !
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: "github-actions[bot]" # The user.login for temporary GitHub tokens
+          allow-repeats: false # This is the default

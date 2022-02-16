@@ -1,15 +1,12 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
-name: Deploy stage
+name: Deploy Frontend Prod
 on:
-  pull_request:
+  push:
     branches: [main]
     paths:
       - "client/**/*"
-env: 
-  PR_NUMBER: ${{github.event.pull_request.number}}
-  WORKING_DIRECTORY: ./client
+env:
+  PR_NUMBER: ${{ github.event.number }}
+  WEB_CDN_ID: E27WCOZZ03KIBX
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -25,19 +22,19 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Set DESTINATION_FOLDER for branch
+      - name: Set DESTINATION_FOLDER for main
         run: |
-          echo "DESTINATION_FOLDER=$(echo $PR_NUMBER-$GITHUB_SHA | cut -c 1-11)" >> $GITHUB_ENV
+          echo "DESTINATION_FOLDER=main" >> $GITHUB_ENV
       - name: Install
         run: npm ci
       - name: Build
         run: npm run build --if-present
         env:
-          # See the client readme for more info on environment variables: 
+          # See the client readme for more info on environment variables:
           # https://github.com/usds/justice40-tool/blob/main/client/README.md
           DATA_SOURCE: cdn
-          SITE_URL: "${{ secrets.STAGE_SITE_URL }}"
-          PATH_PREFIX: "/justice40-tool/${{env.DESTINATION_FOLDER}}"
+          # TODO: Update main URL when either is back up
+          SITE_URL: "${{ secrets.PROD_SITE_URL }}"
           MAPBOX_STYLES_READ_TOKEN: "${{ secrets.MAPBOX_STYLES_READ_TOKEN }}"
       - name: Get directory contents
         run: ls -la public
@@ -50,12 +47,6 @@ jobs:
         run: npm test
       - name: Check for security vulnerabilities
         run: npm audit --production
-      - name: Cypress / Gherkin integration tests 🌃
-        uses: cypress-io/github-action@v2
-        with:
-          working-directory: ${{env.WORKING_DIRECTORY}}
-          start: npm start
-          wait-on: 'http://localhost:8000'
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
@@ -74,9 +65,9 @@ jobs:
         with:
           name: J40Static
           path: ./public
-      - name: Set DESTINATION_FOLDER for branch
+      - name: Set DESTINATION_FOLDER for main
         run: |
-          echo "DESTINATION_FOLDER=$(echo $PR_NUMBER-$GITHUB_SHA | cut -c 1-11)" >> $GITHUB_ENV
+          echo "DESTINATION_FOLDER=main" >> $GITHUB_ENV
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -85,16 +76,26 @@ jobs:
           aws-region: us-east-1
       - name: Deploy to Geoplatform AWS
         run: aws s3 sync ./public/ s3://usds-geoplatform-justice40-website/justice40-tool/${{env.DESTINATION_FOLDER}} --acl public-read --delete
+      - name: Invalidate cache on AWS CDNs
+        uses: chetan/invalidate-cloudfront-action@master
+        env:
+          DISTRIBUTION: ${{env.WEB_CDN_ID}}
+          PATHS: "/*"
+          AWS_REGION: "us-east-1"
+          AWS_ACCESS_KEY_ID: ${{ secrets.CLIENT_DEV_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.CLIENT_DEV_AWS_SECRET_ACCESS_KEY }}
       - name: Update PR with deployed URL
         uses: mshick/add-pr-comment@v1
         with:
-          # Deploy to S3 for the staging URL
           message: |
-            **🚢 PR Deployed! 🚢**   
-            Find it here: http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/justice40-tool/${{env.DESTINATION_FOLDER}}/en/cejst/ !
+            **🚢 PR Deployed! 🚢**
+            Find it here: https://d29zfl8cj7y1zf.cloudfront.net/  !
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: "github-actions[bot]" # The user.login for temporary GitHub tokens
           allow-repeats: false # This is the default
       - name: Printing deployment URLs
         run: |
+          echo "Geoplatform official site (may or may not be up): https://screeningtool.geoplatform.gov/"
+          echo "The Cloudfront behind this official site: https://d29zfl8cj7y1zf.cloudfront.net/"
           echo "Github pages: https://usds.github.io/justice40-tool/$DESTINATION_FOLDER/en"
+          echo "The origin S3 bucket (http only) : http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/justice40-tool/$DESTINATION_FOLDER/en"
