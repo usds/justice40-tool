@@ -73,9 +73,9 @@ jobs:
           poetry run python3 data_pipeline/application.py generate-map-tiles
       - name: Deploy to Geoplatform AWS
         run: |
-          aws s3 cp ./data_pipeline/data/score/csv/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/csv --acl public-read --delete
-          aws s3 cp ./data_pipeline/data/score/downloadable/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/downloadable --acl public-read --delete
-          aws s3 cp ./data_pipeline/data/score/geojson/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/${{env.PR_NUMBER}}score/geojson --acl public-read --delete
+          aws s3 cp ./data_pipeline/data/score/csv/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/csv --recursive --acl public-read
+          aws s3 cp ./data_pipeline/data/score/downloadable/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/downloadable --recursive --acl public-read
+          aws s3 cp ./data_pipeline/data/score/geojson/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/${{env.PR_NUMBER}}score/geojson --recursive --acl public-read
           aws s3 cp ./data_pipeline/data/score/tiles/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/tiles --recursive --acl public-read
       - name: Update PR with deployed URL
         uses: mshick/add-pr-comment@v1
