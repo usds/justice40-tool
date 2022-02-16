@@ -155,7 +155,7 @@ class ExtractTransformLoad:
 
         if self.output_df is None:
             raise NotImplementedError(
-                "The `transform` step must set `self.output_df`."
+                "The `transform` step must have set `self.output_df`."
             )
 
         for column_to_keep in self.COLUMNS_TO_KEEP:
