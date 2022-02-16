@@ -1,5 +1,6 @@
 import concurrent.futures
 import math
+from re import S
 
 import pandas as pd
 import geopandas as gpd
@@ -29,6 +30,8 @@ class GeoScoreETL(ExtractTransformLoad):
 
         self.SCORE_SHP_PATH = self.DATA_PATH / "score" / "shapefile"
         self.SCORE_SHP_FILE = self.SCORE_SHP_PATH / "usa.shp"
+        self.SCORE_SHP_CODE_CSV = self.SCORE_SHP_PATH / "columns.csv"
+
         self.SCORE_CSV_PATH = self.DATA_PATH / "score" / "csv"
         self.TILE_SCORE_CSV = self.SCORE_CSV_PATH / "tiles" / "usa.csv"
 
@@ -223,12 +226,29 @@ class GeoScoreETL(ExtractTransformLoad):
             )
             logger.info("Completed writing usa-low")
 
-        # def write_esri_shapefile():
-        #     logger.info("Producing ESRI shapefiles")
-        #     self.geojson_score_usa_high.to_file(
-        #         self.SCORE_SHP_FILE
-        #     )
-        #     logger.info("Completed writing shapefile")
+        def write_esri_shapefile():
+            logger.info("Producing ESRI shapefiles")
+            # Note that esri shapefiles can't have super
+            # long column names, so we borrow from the
+            # tile names.
+            # Because these are shortened names, we should
+            # also print a key of these names.
+            renaming_dictionary = {}
+            for column in constants.TILES_SCORE_COLUMNS.keys():
+                if column not in constants.TILES_SCORE_COLUMNS:
+                    logger.info(f"Missing {column} from geojson data...")
+                else:
+                    # take first 10 characters max
+                    renaming_dictionary[column] = constants.TILES_SCORE_COLUMNS[
+                        column
+                    ][:10]
+            pd.Series(renaming_dictionary).reset_index().rename(
+                columns={0: "column", "index": "meaning"}
+            ).to_csv(self.SCORE_SHP_CODE_CSV, index=False)
+            self.geojson_score_usa_high.rename(
+                columns=constants.TILES_SCORE_COLUMNS
+            ).to_file(self.SCORE_SHP_FILE)
+            logger.info("Completed writing shapefile")
 
         with concurrent.futures.ThreadPoolExecutor() as executor:
             futures = {
@@ -236,7 +256,7 @@ class GeoScoreETL(ExtractTransformLoad):
                 for task in [
                     write_high_to_file,
                     write_low_to_file,
-                    # write_esri_shapefile,
+                    write_esri_shapefile,
                 ]
             }
 
@@ -245,12 +265,12 @@ class GeoScoreETL(ExtractTransformLoad):
                 # Otherwise, the exceptions are silently ignored.
                 fut.result()
 
-            logger.info("Producing ESRI shapefiles")
-            cmd = [
-                "ogr2ogr",
-                "-f",
-                "GeoJSON",
-                str(self.SCORE_HIGH_GEOJSON),
-                str(self.SCORE_SHP_FILE),
-            ]
-            subprocess.run(cmd, check=True)
+            # logger.info("Producing ESRI shapefiles")
+            # cmd = [
+            #     "ogr2ogr",
+            #     "-f",
+            #     "GeoJSON",
+            #     str(self.SCORE_HIGH_GEOJSON),
+            #     str(self.SCORE_SHP_FILE),
+            # ]
+            # subprocess.run(cmd, check=True)
