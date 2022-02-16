@@ -48,13 +48,101 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
   const population = properties[constants.TOTAL_POPULATION] ? properties[constants.TOTAL_POPULATION] : "N/A";
   const countyName = properties[constants.COUNTY_NAME] ? properties[constants.COUNTY_NAME] : "N/A";
   const stateName = properties[constants.STATE_NAME] ? properties[constants.STATE_NAME] : "N/A";
+  const sidePanelState = properties[constants.SIDE_PANEL_STATE];
 
   const isCommunityFocus = score >= constants.SCORE_BOUNDARY_THRESHOLD;
 
   const feedbackEmailSubject = `Census tract ID ${blockGroup}, ${countyName}, ${stateName}`;
   const feedbackEmailBody = intl.formatMessage(EXPLORE_COPY.SEND_FEEDBACK.EMAIL_BODY);
 
+  /**
+   * The workforce development category has some indicators who's source will vary depending on which
+   * territory is selected. This function allows us to change the source of workforce development indicators
+   * depending on which territory was selected
+   */
 
+  const getWorkForceIndicatorValue = (indicatorName:string) => {
+    if (sidePanelState === constants.SIDE_PANEL_STATE_VALUES.ISLAND_AREAS) {
+      if (indicatorName === 'lowMedInc') {
+        return properties[constants.ISLAND_AREAS_LOW_MEDIAN_INCOME_LOW_HS_EDU_PERCENTILE_FIELD] ?
+        properties[constants.ISLAND_AREAS_LOW_MEDIAN_INCOME_LOW_HS_EDU_PERCENTILE_FIELD] : null;
+      }
+      if (indicatorName === 'unemploy') {
+        return properties[constants.ISLAND_AREAS_UNEMPLOYMENT_LOW_HS_EDU_PERCENTILE_FIELD] ?
+        properties[constants.ISLAND_AREAS_UNEMPLOYMENT_LOW_HS_EDU_PERCENTILE_FIELD] : null;
+      }
+      if (indicatorName === 'poverty') {
+        return properties[constants.ISLAND_AREAS_POVERTY_LOW_HS_EDU_PERCENTILE_FIELD] ?
+        properties[constants.ISLAND_AREAS_POVERTY_LOW_HS_EDU_PERCENTILE_FIELD] : null;
+      }
+      if (indicatorName === 'highSchool') {
+        return properties[constants.ISLAND_AREAS_HS_EDU_PERCENTAGE_FIELD] ?
+        properties[constants.ISLAND_AREAS_HS_EDU_PERCENTAGE_FIELD] : null;
+      }
+    }
+
+    if (indicatorName === 'lowMedInc') {
+      return properties[constants.LOW_MEDIAN_INCOME_PERCENTILE] ?
+      properties[constants.LOW_MEDIAN_INCOME_PERCENTILE] : null;
+    }
+    if (indicatorName === 'unemploy') {
+      return properties[constants.UNEMPLOYMENT_PROPERTY_PERCENTILE] ?
+      properties[constants.UNEMPLOYMENT_PROPERTY_PERCENTILE] : null;
+    }
+    if (indicatorName === 'poverty') {
+      return properties[constants.POVERTY_PROPERTY_PERCENTILE] ?
+     properties[constants.POVERTY_PROPERTY_PERCENTILE] : null;
+    }
+    if (indicatorName === 'highSchool') {
+      return properties[constants.HIGH_SCHOOL_PROPERTY_PERCENTILE] ?
+      properties[constants.HIGH_SCHOOL_PROPERTY_PERCENTILE] : null;
+    }
+  };
+
+  /**
+   * The workforce development category has some indicators who's disadvantaged boolean
+   * will vary depending on which territory is selected. This function allows us to change
+   * the boolean of workforce development indicators depending on which territory was selected
+   */
+
+  const getWorkForceIndicatorIsDisadv = (indicatorName:string) => {
+    if (sidePanelState === constants.SIDE_PANEL_STATE_VALUES.ISLAND_AREAS) {
+      if (indicatorName === 'lowMedInc') {
+        return properties[constants.IS_GTE_90_ISLAND_AREA_LOW_MEDIAN_INCOME_AND_IS_LOW_HS_EDU_2009] ?
+        properties[constants.IS_GTE_90_ISLAND_AREA_LOW_MEDIAN_INCOME_AND_IS_LOW_HS_EDU_2009] : null;
+      }
+      if (indicatorName === 'unemploy') {
+        return properties[constants.IS_GTE_90_ISLAND_AREA_UNEMPLOYMENT_AND_IS_LOW_HS_EDU_2009] ?
+        properties[constants.IS_GTE_90_ISLAND_AREA_UNEMPLOYMENT_AND_IS_LOW_HS_EDU_2009] : null;
+      }
+      if (indicatorName === 'poverty') {
+        return properties[constants.IS_GTE_90_ISLAND_AREA_BELOW_100_POVERTY_AND_IS_LOW_HS_EDU_2009] ?
+        properties[constants.IS_GTE_90_ISLAND_AREA_BELOW_100_POVERTY_AND_IS_LOW_HS_EDU_2009] : null;
+      }
+      if (indicatorName === 'highSchool') {
+        return properties[constants.ISLAND_AREA_LOW_HS_EDU] ?
+        properties[constants.ISLAND_AREA_LOW_HS_EDU] : null;
+      }
+    }
+
+    if (indicatorName === 'lowMedInc') {
+      return properties[constants.IS_GTE_90_LOW_MEDIAN_INCOME_AND_LOW_HIGH_SCHOOL_EDU] ?
+      properties[constants.IS_GTE_90_LOW_MEDIAN_INCOME_AND_LOW_HIGH_SCHOOL_EDU] : null;
+    }
+    if (indicatorName === 'unemploy') {
+      return properties[constants.IS_GTE_90_UNEMPLOYMENT_AND_LOW_HIGH_SCHOOL_EDU] ?
+      properties[constants.IS_GTE_90_UNEMPLOYMENT_AND_LOW_HIGH_SCHOOL_EDU] : null;
+    }
+    if (indicatorName === 'poverty') {
+      return properties[constants.IS_GTE_90_BELOW_100_POVERTY_AND_LOW_HIGH_SCHOOL_EDU] ?
+      properties[constants.IS_GTE_90_BELOW_100_POVERTY_AND_LOW_HIGH_SCHOOL_EDU] : null;
+    }
+    if (indicatorName === 'highSchool') {
+      return properties[constants.IS_LOW_HS_EDUCATION_LOW_HIGHER_ED_PRIORITIZED] &&
+      properties[constants.IS_LOW_HS_EDUCATION_LOW_HIGHER_ED_PRIORITIZED] == 1 ?
+       true : false;
+    }
+  };
   // Define each indicator in the side panel with constants from copy file (for intl)
   // Indicators are grouped by category
   const expAgLoss:indicatorInfo = {
@@ -218,10 +306,8 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
   const lowMedInc:indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.LOW_MED_INC),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.LOW_MED_INCOME),
-    value: properties[constants.LOW_MEDIAN_INCOME_PERCENTILE] ?
-      properties[constants.LOW_MEDIAN_INCOME_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_GTE_90_LOW_MEDIAN_INCOME_AND_LOW_HIGH_SCHOOL_EDU] ?
-      properties[constants.IS_GTE_90_LOW_MEDIAN_INCOME_AND_LOW_HIGH_SCHOOL_EDU] : null,
+    value: getWorkForceIndicatorValue('lowMedInc'),
+    isDisadvagtaged: getWorkForceIndicatorIsDisadv('lowMedInc'),
   };
   const lingIso:indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.LING_ISO),
@@ -234,32 +320,25 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
   const unemploy:indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.UNEMPLOY),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.UNEMPLOY),
-    value: properties[constants.UNEMPLOYMENT_PROPERTY_PERCENTILE] ?
-      properties[constants.UNEMPLOYMENT_PROPERTY_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_GTE_90_UNEMPLOYMENT_AND_LOW_HIGH_SCHOOL_EDU] ?
-      properties[constants.IS_GTE_90_UNEMPLOYMENT_AND_LOW_HIGH_SCHOOL_EDU] : null,
+    value: getWorkForceIndicatorValue('unemploy'),
+    isDisadvagtaged: getWorkForceIndicatorIsDisadv('unemploy'),
   };
   const poverty:indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.POVERTY),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.POVERTY),
-    value: properties[constants.POVERTY_PROPERTY_PERCENTILE] ?
-      properties[constants.POVERTY_PROPERTY_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_GTE_90_BELOW_100_POVERTY_AND_LOW_HIGH_SCHOOL_EDU] ?
-      properties[constants.IS_GTE_90_BELOW_100_POVERTY_AND_LOW_HIGH_SCHOOL_EDU] : null,
+    value: getWorkForceIndicatorValue('poverty'),
+    isDisadvagtaged: getWorkForceIndicatorIsDisadv('poverty'),
   };
   const highSchool:indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HIGH_SCL),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.HIGH_SKL),
-    value: properties[constants.HIGH_SCHOOL_PROPERTY_PERCENTILE] ?
-      properties[constants.HIGH_SCHOOL_PROPERTY_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_LOW_HS_EDUCATION_LOW_HIGHER_ED_PRIORITIZED] &&
-      properties[constants.IS_LOW_HS_EDUCATION_LOW_HIGHER_ED_PRIORITIZED] == 1 ?
-       true : false,
+    value: getWorkForceIndicatorValue('highSchool'),
+    isDisadvagtaged: getWorkForceIndicatorIsDisadv('highSchool'),
     isPercent: true,
   };
 
   // Aggregate indicators based on categories
-  const categories = [
+  let categories = [
     {
       id: 'climate-change',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.CLIMATE),
@@ -318,6 +397,24 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     },
   ];
 
+  /**
+   * Modify the category array depending on the sidePanelState field. This field comes from the backend
+   * and is called UI_EXP.
+   *
+   * This sidePanelState has 3 values; namely, Nation, Puerto Rico and Island Areas.
+   */
+  if (sidePanelState === constants.SIDE_PANEL_STATE_VALUES.PUERTO_RICO) {
+    // For Puerto Rico - only show the workforce development category
+    categories = categories.filter((category) => category.id === 'work-dev');
+  };
+  if (sidePanelState === constants.SIDE_PANEL_STATE_VALUES.ISLAND_AREAS) {
+    // For Island Areas - only show workforce dev category
+    categories = categories.filter((category) => category.id === 'work-dev');
+    // For Island Areas - remove the linguistic Isolation
+    categories[0].indicators = [lowMedInc, unemploy, poverty, highSchool];
+  }
+
+
   // Create the AccoridionItems by mapping over the categories array. In this array we define the
   // various indicators for a specific category. This is an array which then maps over the <Indicator />
   // component to render the actual Indicator
@@ -365,7 +462,10 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
         </li>
         <li>
           <span className={styles.censusLabel}>
-            {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CBG_INFO.STATE)}
+            {properties[constants.SIDE_PANEL_STATE] !== constants.SIDE_PANEL_STATE_VALUES.NATION ?
+             intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CBG_INFO.TERRITORY) :
+             intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CBG_INFO.STATE)
+            }
           </span>
           <span className={styles.censusText}>{` ${stateName}`}</span>
         </li>
@@ -407,7 +507,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
             defaultMessage={'{disadvCount} of {totalCount} thresholds exceeded'}
             values={{
               disadvCount: properties[constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS],
-              totalCount: constants.TOTAL_NUMBER_OF_INDICATORS,
+              totalCount: properties[constants.TOTAL_NUMBER_OF_INDICATORS],
             }}/>
         </div>
 

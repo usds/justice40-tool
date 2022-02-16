@@ -207,6 +207,11 @@ export const SIDE_PANEL_CBG_INFO = defineMessages({
     defaultMessage: 'State: ',
     description: 'the state of the feature selected',
   },
+  TERRITORY: {
+    id: 'areaDetail.geographicInfo.territory',
+    defaultMessage: 'Territory: ',
+    description: 'the territory of the feature selected',
+  },
   POPULATION: {
     id: 'areaDetail.geographicInfo.population',
     defaultMessage: 'Population:',

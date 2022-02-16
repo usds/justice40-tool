@@ -1,6 +1,207 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering of the AreaDetail checks if various text fields are visible 1`] = `
+exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are present 1`] = `
+<DocumentFragment>
+  <aside
+    data-cy="aside"
+  >
+    <div>
+      Methodology version 0.1
+    </div>
+    <ul>
+      <li>
+        <span>
+          Census tract:
+        </span>
+        <span>
+           98729374234
+        </span>
+      </li>
+      <li>
+        <span>
+          County:
+        </span>
+        <span>
+           N/A
+        </span>
+      </li>
+      <li>
+        <span>
+          Territory: 
+        </span>
+        <span>
+           N/A
+        </span>
+      </li>
+      <li>
+        <span>
+          Population:
+        </span>
+        <span>
+           3,435,435
+        </span>
+      </li>
+    </ul>
+    <div>
+      <div>
+        Identified as disadvantaged?
+      </div>
+      <div>
+        <h3>
+          YES
+        </h3>
+        <div />
+      </div>
+      <div>
+         of  thresholds exceeded
+      </div>
+      <a
+        href="
+            mailto:Screeningtool-Support@omb.eop.gov?subject=Census tract ID 98729374234, N/A, N/A&body=Please provide feedback about this census tract, including about the datasets, the data categories provided for this tract, the communities who live in this tract, and anything else relevant that we should know.
+    
+          "
+      >
+        <button
+          class="usa-button"
+          data-testid="button"
+          type="button"
+        >
+          <div>
+            Send feedback
+          </div>
+        </button>
+      </a>
+    </div>
+    <div
+      aria-multiselectable="true"
+      class="usa-accordion"
+      data-testid="accordion"
+    >
+      <h2
+        class="usa-accordion__heading"
+      >
+        <button
+          aria-controls="work-dev"
+          aria-expanded="false"
+          class="usa-accordion__button"
+          data-testid="accordionButton_work-dev"
+          type="button"
+        >
+          <div>
+            <div>
+              Workforce development
+            </div>
+            <div
+              class=""
+            />
+          </div>
+        </button>
+      </h2>
+      <div
+        class="usa-accordion__content usa-prose"
+        data-testid="accordionItem_work-dev"
+        hidden=""
+        id="work-dev"
+      >
+        <div>
+          <div>
+            Indicator
+          </div>
+          <div>
+            Percentile (0-100)
+          </div>
+        </div>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Low median income
+              <div>
+                Median income calculated as a percent of the area’s median income
+              </div>
+            </div>
+            <div>
+              60
+              <sup>
+                <span>
+                  th
+                </span>
+              </sup>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Unemployment
+              <div>
+                Number of unemployed people as a percentage of the labor force
+              </div>
+            </div>
+            <div>
+              90
+              <sup>
+                <span>
+                  th
+                </span>
+              </sup>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Poverty
+              <div>
+                
+      Percent of a tract's population in households where the household income is at or below 
+      100% of the federal poverty level    
+    
+              </div>
+            </div>
+            <div>
+              80
+              <sup>
+                <span>
+                  th
+                </span>
+              </sup>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              High school degree achievement rate
+              <div>
+                
+      Percent of people ages 25 years or older whose education level is less than a high school diploma 
+      when higher ed enrollment rate is less than 20% in order to exclude areas with college and graduate students
+    
+              </div>
+            </div>
+            <div>
+              N/A
+              <span>
+                %
+              </span>
+            </div>
+          </div>
+        </li>
+      </div>
+    </div>
+  </aside>
+</DocumentFragment>
+`;
+
+exports[`rendering of the AreaDetail checks if indicators for NATION is present 1`] = `
 <DocumentFragment>
   <aside
     data-cy="aside"
@@ -53,7 +254,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
         <div />
       </div>
       <div>
-         of 21 thresholds exceeded
+         of  thresholds exceeded
       </div>
       <a
         href="
@@ -181,7 +382,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              12
+              19
               <sup>
                 <span>
                   th
@@ -275,7 +476,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              12
+              19
               <sup>
                 <span>
                   th
@@ -369,7 +570,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              12
+              19
               <sup>
                 <span>
                   th
@@ -468,7 +669,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              12
+              19
               <sup>
                 <span>
                   th
@@ -580,7 +781,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              12
+              19
               <sup>
                 <span>
                   th
@@ -656,7 +857,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              12
+              19
               <sup>
                 <span>
                   th
@@ -791,7 +992,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              12
+              19
               <sup>
                 <span>
                   th
@@ -909,7 +1110,7 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
-              12
+              19
               <sup>
                 <span>
                   th
@@ -932,7 +1133,228 @@ exports[`rendering of the AreaDetail checks if various text fields are visible 1
               </div>
             </div>
             <div>
+              98
+              <span>
+                %
+              </span>
+            </div>
+          </div>
+        </li>
+      </div>
+    </div>
+  </aside>
+</DocumentFragment>
+`;
+
+exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are present 1`] = `
+<DocumentFragment>
+  <aside
+    data-cy="aside"
+  >
+    <div>
+      Methodology version 0.1
+    </div>
+    <ul>
+      <li>
+        <span>
+          Census tract:
+        </span>
+        <span>
+           98729374234
+        </span>
+      </li>
+      <li>
+        <span>
+          County:
+        </span>
+        <span>
+           N/A
+        </span>
+      </li>
+      <li>
+        <span>
+          Territory: 
+        </span>
+        <span>
+           N/A
+        </span>
+      </li>
+      <li>
+        <span>
+          Population:
+        </span>
+        <span>
+           3,435,435
+        </span>
+      </li>
+    </ul>
+    <div>
+      <div>
+        Identified as disadvantaged?
+      </div>
+      <div>
+        <h3>
+          YES
+        </h3>
+        <div />
+      </div>
+      <div>
+         of  thresholds exceeded
+      </div>
+      <a
+        href="
+            mailto:Screeningtool-Support@omb.eop.gov?subject=Census tract ID 98729374234, N/A, N/A&body=Please provide feedback about this census tract, including about the datasets, the data categories provided for this tract, the communities who live in this tract, and anything else relevant that we should know.
+    
+          "
+      >
+        <button
+          class="usa-button"
+          data-testid="button"
+          type="button"
+        >
+          <div>
+            Send feedback
+          </div>
+        </button>
+      </a>
+    </div>
+    <div
+      aria-multiselectable="true"
+      class="usa-accordion"
+      data-testid="accordion"
+    >
+      <h2
+        class="usa-accordion__heading"
+      >
+        <button
+          aria-controls="work-dev"
+          aria-expanded="false"
+          class="usa-accordion__button"
+          data-testid="accordionButton_work-dev"
+          type="button"
+        >
+          <div>
+            <div>
+              Workforce development
+            </div>
+            <div
+              class=""
+            />
+          </div>
+        </button>
+      </h2>
+      <div
+        class="usa-accordion__content usa-prose"
+        data-testid="accordionItem_work-dev"
+        hidden=""
+        id="work-dev"
+      >
+        <div>
+          <div>
+            Indicator
+          </div>
+          <div>
+            Percentile (0-100)
+          </div>
+        </div>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Low median income
+              <div>
+                Median income calculated as a percent of the area’s median income
+              </div>
+            </div>
+            <div>
               N/A
+              <sup>
+                <span />
+              </sup>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Linguistic isolation
+              <div>
+                
+      Percent of households where no one over the age 14 speaks English well
+    
+              </div>
+            </div>
+            <div>
+              97
+              <sup>
+                <span>
+                  th
+                </span>
+              </sup>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Unemployment
+              <div>
+                Number of unemployed people as a percentage of the labor force
+              </div>
+            </div>
+            <div>
+              96
+              <sup>
+                <span>
+                  th
+                </span>
+              </sup>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Poverty
+              <div>
+                
+      Percent of a tract's population in households where the household income is at or below 
+      100% of the federal poverty level    
+    
+              </div>
+            </div>
+            <div>
+              19
+              <sup>
+                <span>
+                  th
+                </span>
+              </sup>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              High school degree achievement rate
+              <div>
+                
+      Percent of people ages 25 years or older whose education level is less than a high school diploma 
+      when higher ed enrollment rate is less than 20% in order to exclude areas with college and graduate students
+    
+              </div>
+            </div>
+            <div>
+              98
               <span>
                 %
               </span>
