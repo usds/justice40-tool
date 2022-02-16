@@ -1,9 +1,9 @@
-name: Deploy Frontend staging
+name: Deploy Backend staging
 on:
   pull_request:
     branches: [main]
     paths:
-      - "data/*"
+      - "data/**"
 env:
   PR_NUMBER: ${{github.event.pull_request.number}}
   SHA_NUMBER: ${{github.event.pull_request.head.sha}}
