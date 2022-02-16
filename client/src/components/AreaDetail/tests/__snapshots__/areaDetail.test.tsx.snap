@@ -642,8 +642,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               Lead paint
               <div>
                 
-      Percent of pre-1960 housing when median home value is at or below 90th percentile in order to 
-      exclude areas with high value, older homes
+      Percent of pre-1960 housing when median home value at or below 90th percentile
     
               </div>
             </div>

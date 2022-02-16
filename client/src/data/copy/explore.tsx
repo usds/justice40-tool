@@ -487,8 +487,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   LEAD_PAINT: {
     id: 'areaDetail.indicator.description.leadPaint',
     defaultMessage: `
-      Percent of pre-1960 housing when median home value is at or below 90th percentile in order to 
-      exclude areas with high value, older homes
+      Percent of pre-1960 housing when median home value at or below 90th percentile
     `,
     description: 'Pre-1960 housing',
   },
