@@ -104,7 +104,7 @@ class ExtractTransformLoad:
         # of the instance which is often a child class.
         tmp_path = self.DATA_PATH / "tmp" / str(self.__class__.__name__)
 
-        # Create directory if it doesn't exist
+        # Create directory if it doesn't exist already
         tmp_path.mkdir(parents=True, exist_ok=True)
 
         return tmp_path
