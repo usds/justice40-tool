@@ -230,7 +230,9 @@ class GeoScoreETL(ExtractTransformLoad):
             logger.info("Producing ESRI shapefiles")
             # Note that esri shapefiles can't have super
             # long column names, so we borrow from the
-            # tile names.
+            # tile names. We reconstruct the dictionary in case:
+            # 1. the set of columns changes, and
+            # 2. the length of column names changes
             # Because these are shortened names, we should
             # also print a key of these names.
             renaming_dictionary = {}
@@ -238,7 +240,7 @@ class GeoScoreETL(ExtractTransformLoad):
                 if column not in constants.TILES_SCORE_COLUMNS:
                     logger.info(f"Missing {column} from geojson data...")
                 else:
-                    # take first 10 characters max
+                    # take first 10 characters, max
                     renaming_dictionary[column] = constants.TILES_SCORE_COLUMNS[
                         column
                     ][:10]
