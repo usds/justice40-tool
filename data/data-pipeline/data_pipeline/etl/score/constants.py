@@ -82,9 +82,9 @@ TILES_ROUND_NUM_DECIMALS = 2
 # data available, and as a consequence, show a different number of fields.
 
 # Controlling Tile user experience columns
-THRESHOLD_COUNT_TO_SHOW_FIELD_NAME = "Thresholds"
-TILES_ISLAND_AREAS_THRESHOLD_COUNT = 4
-TILES_PUERTO_RICO_THRESHOLD_COUNT = 5
+THRESHOLD_COUNT_TO_SHOW_FIELD_NAME = "THRHLD"
+TILES_ISLAND_AREAS_THRESHOLD_COUNT = 3
+TILES_PUERTO_RICO_THRESHOLD_COUNT = 4
 TILES_NATION_THRESHOLD_COUNT = 21
 
 # Note that the FIPS code is a string
@@ -95,7 +95,7 @@ TILES_PUERTO_RICO_FIPS_CODE = ["72"]
 
 # Constant to reflect UI Experience version
 # "Nation" referring to 50 states and DC is from Census
-USER_INTERFACE_EXPERIENCE_FIELD_NAME = "UI Experience"
+USER_INTERFACE_EXPERIENCE_FIELD_NAME = "UI_EXP"
 NATION_USER_EXPERIENCE = "Nation"
 PUERTO_RICO_USER_EXPERIENCE = "Puerto Rico"
 ISLAND_AREAS_USER_EXPERIENCE = "Island Areas"

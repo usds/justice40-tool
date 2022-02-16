@@ -702,7 +702,7 @@ export const SOURCE_LINKS = {
     values={{
       sourceEpaTsdfLink:
         <LinkTypeWrapper
-          linkText={`Treatment Storage, and Disposal Facilities (TSDF) data`}
+          linkText={`Treatment, Storage, and Disposal Facilities (TSDF) data`}
           internal={false}
           url={`https://enviro.epa.gov/facts/rcrainfo/search.html`}
           openUrlNewTab={true}
