@@ -288,20 +288,18 @@ class PostScoreETL(ExtractTransformLoad):
         return score_tiles
 
     def _create_downloadable_data(
-        self,
-        score_df: pd.DataFrame,
-        content_config_object: dict,
+        self, score_df: pd.DataFrame, fields_object: dict, config_object: dict
     ) -> pd.DataFrame:
 
         df = score_df[
             column_list_from_yaml_object_fields(
-                yaml_object=content_config_object["fields"],
+                yaml_object=fields_object,
                 target_field="score_name",
             )
         ].copy(deep=True)
 
         column_type_dict = load_dict_from_yaml_object_fields(
-            yaml_object=content_config_object["fields"],
+            yaml_object=fields_object,
             object_key="score_name",
             object_value="format",
         )
@@ -322,23 +320,21 @@ class PostScoreETL(ExtractTransformLoad):
                 df_100 = df[column] * 100
                 df[column] = floor_series(
                     series=df_100.astype(float64),
-                    number_of_decimals=content_config_object["global_config"][
-                        "rounding_num"
-                    ]["loss_rate_percentage"],
+                    number_of_decimals=config_object["rounding_num"][
+                        "loss_rate_percentage"
+                    ],
                 )
 
             elif column_type_dict[column] == "float":
                 # Round the floats.
                 df[column] = floor_series(
                     series=df[column].astype(float64),
-                    number_of_decimals=content_config_object["global_config"][
-                        "rounding_num"
-                    ]["float"],
+                    number_of_decimals=config_object["rounding_num"]["float"],
                 )
 
         # rename fields
         column_rename_dict = load_dict_from_yaml_object_fields(
-            yaml_object=content_config_object["fields"],
+            yaml_object=fields_object,
             object_key="score_name",
             object_value="label",
         )
@@ -348,10 +344,8 @@ class PostScoreETL(ExtractTransformLoad):
         )
 
         # sort if needed
-        if content_config_object["global_config"].get("sort_by_label"):
-            final_df = renamed_df.sort_values(
-                content_config_object["global_config"]["sort_by_label"]
-            )
+        if config_object.get("sort_by_label"):
+            final_df = renamed_df.sort_values(config_object["sort_by_label"])
         else:
             final_df = renamed_df
 
@@ -410,30 +404,33 @@ class PostScoreETL(ExtractTransformLoad):
             engine="xlsxwriter",
         ) as writer:
 
-            ### Main Sheet
-            excel_main_df = self._create_downloadable_data(
-                self.output_score_county_state_merged_df,
-                content_config_object="csv.yml",
-            )
-            # Convert the dataframe to an XlsxWriter Excel object. We also turn off the
-            # index column at the left of the output dataframe.
-            excel_main_df.to_excel(writer, sheet_name="Data", index=False)
+            for sheet in excel_csv_config["sheets"]:
+                excel_df = self._create_downloadable_data(
+                    score_df=self.output_score_county_state_merged_df,
+                    fields_object=sheet["fields"],
+                    config_object=excel_csv_config["global_config"],
+                )
+                # Convert the dataframe to an XlsxWriter Excel object. We also turn off the
+                # index column at the left of the output dataframe.
+                excel_df.to_excel(
+                    writer, sheet_name=sheet["label"], index=False
+                )
 
-            # Get the xlsxwriter workbook and worksheet objects.
-            workbook = writer.book
-            worksheet = writer.sheets["Data"]
+                # Get the xlsxwriter workbook and worksheet objects.
+                workbook = writer.book
+                worksheet = writer.sheets[sheet["label"]]
 
-            # set header format
-            header_format = workbook.add_format(
-                {"bold": True, "text_wrap": True, "valign": "bottom"}
-            )
+                # set header format
+                header_format = workbook.add_format(
+                    {"bold": True, "text_wrap": True, "valign": "bottom"}
+                )
 
-            # write headers
-            for col_num, value in enumerate(excel_df.columns.array):
-                worksheet.write(0, col_num, value, header_format)
+                # write headers
+                for col_num, value in enumerate(excel_df.columns.array):
+                    worksheet.write(0, col_num, value, header_format)
 
-            num_cols = len(excel_df.columns)
-            worksheet.set_column(0, num_cols - 1, num_excel_cols_width)
+                num_cols = len(excel_df.columns)
+                worksheet.set_column(0, num_cols - 1, num_excel_cols_width)
 
             writer.save()
 
@@ -465,8 +462,9 @@ class PostScoreETL(ExtractTransformLoad):
             self.CONTENT_CONFIG / "csv.yml"
         )
         downloadable_df = self._create_downloadable_data(
-            self.output_score_county_state_merged_df,
-            content_config_object=downloadable_csv_config,
+            score_df=self.output_score_county_state_merged_df,
+            fields_object=downloadable_csv_config["fields"],
+            config_object=downloadable_csv_config["global_config"],
         )
         downloadable_df.to_csv(csv_path, index=False)
 
