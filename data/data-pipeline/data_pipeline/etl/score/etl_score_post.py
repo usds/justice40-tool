@@ -399,7 +399,9 @@ class PostScoreETL(ExtractTransformLoad):
         )
 
         # Define Excel Columns Column Width
-        num_excel_cols_width = 30
+        num_excel_cols_width = excel_csv_config["global_config"][
+            "excel_config"
+        ]["default_column_width"]
 
         # Create a Pandas Excel writer using XlsxWriter as the engine.
         with pd.ExcelWriter(  # pylint: disable=abstract-class-instantiated
@@ -415,7 +417,7 @@ class PostScoreETL(ExtractTransformLoad):
             )
             # Convert the dataframe to an XlsxWriter Excel object. We also turn off the
             # index column at the left of the output dataframe.
-            excel_df.to_excel(writer, sheet_name="Data", index=False)
+            excel_main_df.to_excel(writer, sheet_name="Data", index=False)
 
             # Get the xlsxwriter workbook and worksheet objects.
             workbook = writer.book
@@ -452,10 +454,10 @@ class PostScoreETL(ExtractTransformLoad):
         pdf_path = constants.SCORE_DOWNLOADABLE_PDF_FILE_PATH
 
         logger.info("Writing downloadable excel")
-        # self._load_excel_from_df(
-        #     excel_df=self.output_score_county_state_merged_df,
-        #     excel_path=excel_path,
-        # )
+        self._load_excel_from_df(
+            excel_df=self.output_score_county_state_merged_df,
+            excel_path=excel_path,
+        )
 
         logger.info("Writing downloadable csv")
         # open yaml config

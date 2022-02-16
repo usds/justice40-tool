@@ -2,7 +2,6 @@
 ## Above disables warning about access to underscore-prefixed methods
 
 from importlib import reload
-from pathlib import Path
 import pandas.api.types as ptypes
 import pandas.testing as pdt
 
