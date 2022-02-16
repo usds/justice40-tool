@@ -1,5 +1,4 @@
 import concurrent.futures
-from hashlib import new
 import math
 
 import pandas as pd
