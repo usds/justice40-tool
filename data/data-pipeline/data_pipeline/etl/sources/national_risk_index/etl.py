@@ -18,6 +18,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
     LAST_UPDATED_YEAR = 2020
     SOURCE_URL = "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload//NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
+    AGRIVALUE_LOWER_BOUND = 408000
 
     def __init__(self):
         self.INPUT_CSV = self.get_tmp_path() / "NRI_Table_CensusTracts.csv"
@@ -150,10 +151,13 @@ class NationalRiskIndexETL(ExtractTransformLoad):
             / df_nri[self.POPULATION_INPUT_FIELD_NAME]
         )
 
-        # Agriculture EAL Rate = Eal Vala / Agrivalue
-        df_nri[self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME] = (
-            disaster_agriculture_sum_series
-            / df_nri[self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME]
+        # Agriculture EAL Rate = Eal Vala / max(Agrivalue, 408000)
+        df_nri[
+            self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME
+        ] = disaster_agriculture_sum_series / df_nri[
+            self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME
+        ].clip(
+            lower=self.AGRIVALUE_LOWER_BOUND
         )
 
         # divide EAL_VALB (Expected Annual Loss - Building Value) by BUILDVALUE (Building Value ($)).
