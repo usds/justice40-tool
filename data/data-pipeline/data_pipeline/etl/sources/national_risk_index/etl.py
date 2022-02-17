@@ -172,9 +172,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         )
         # This produces a boolean that is True in the case of non-zero agricultural value
         df_nri[self.CONTAINS_AGRIVALUE] = (
-            df_nri[self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME]
-            .clip(upper=1)
-            .astype(bool)
+            df_nri[self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME] > 0
         )
 
         # divide EAL_VALB (Expected Annual Loss - Building Value) by BUILDVALUE (Building Value ($)).

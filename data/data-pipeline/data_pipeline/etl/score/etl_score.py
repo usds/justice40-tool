@@ -319,10 +319,12 @@ class ScoreETL(ExtractTransformLoad):
             df[
                 f"{output_column_name_root}"
                 f"{field_names.PERCENTILE_FIELD_SUFFIX}"
-            ] = (
+            ] = np.where(
+                df[field_names.AGRICULTURAL_VALUE_BOOL_FIELD].isna(),
+                np.nan,
                 df[field_names.GEOID_TRACT_FIELD]
                 .map(temporary_ranking)
-                .fillna(0)
+                .fillna(0),
             )
 
         # Create the urban/rural percentiles.
