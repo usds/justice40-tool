@@ -52,7 +52,7 @@ exports[`rendering of the CategoryCard checks if component renders 1`] = `
       <a
         href="#low-income"
       >
-        household income
+        low income
       </a>
        AND at or below 20% for 
       <a

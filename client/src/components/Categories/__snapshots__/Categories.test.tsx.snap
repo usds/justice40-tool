@@ -74,7 +74,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <a
           href="#low-income"
         >
-          household income
+          low income
         </a>
          AND at or below 20% for 
         <a
@@ -131,7 +131,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <a
           href="#low-income"
         >
-          household income
+          low income
         </a>
          AND at or below 20% for 
         <a
@@ -188,7 +188,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <a
           href="#low-income"
         >
-          household income
+          low income
         </a>
          AND at or below 20% for 
         <a
@@ -226,7 +226,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           lead paint
         </a>
-         WHEN 
+         AND 
         <a
           href="#median-home"
         >
@@ -252,7 +252,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <a
           href="#low-income"
         >
-          household income
+          low income
         </a>
          AND at or below 20% for 
         <a
@@ -315,7 +315,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <a
           href="#low-income"
         >
-          household income
+          low income
         </a>
          AND at or below 20% for 
         <a
@@ -366,7 +366,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <a
           href="#low-income"
         >
-          household income
+          low income
         </a>
          AND at or below 20% for 
         <a
@@ -435,7 +435,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <a
           href="#low-income"
         >
-          household income
+          low income
         </a>
          AND at or below 20% for 
         <a

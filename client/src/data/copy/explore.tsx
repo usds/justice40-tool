@@ -601,7 +601,7 @@ export const DOWNLOAD_DRAFT = {
     id={'download.draft.ptag.1'}
     description={'Download the current list of communities and datasets used.'}
     defaultMessage={`
-    {downloadDraft} of communities and datasets used (ZIP file will contain one .xlsx, 
+    {downloadDraft} of communities and datasets used (ZIP file will contain one .xlsx 
     and one .csv, with a size of {downloadFileSize}). Last updated: {dateUpdated}.
     `}
     values={{
@@ -762,7 +762,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
   LIST_ITEM_3: <FormattedMessage
     id={'youCanHelpInfoText.list.item.3'}
     description={'share your feedback'}
-    defaultMessage={`CEQ will publish a request for information on {federalRegisterLink}.`}
+    defaultMessage={`CEQ will publish a request for information on federalregister.gov.`}
     values={{
       federalRegisterLink:
       <LinkTypeWrapper

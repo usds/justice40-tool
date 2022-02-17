@@ -315,7 +315,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <span>
                 IF
               </span>
-               the tract is above the thresholds for one or more climate, health or socioeconomic burden indicators
+               the tract is above the thresholds for one or more environmental, climate, health or 
+      socioeconomic burden indicators
       
             </p>
             <p>
@@ -355,10 +356,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <div>
                     
       The download package includes draft v0.1 of the list of disadvantaged communities
-      (.csv and .xlsx) and information (.pdf) about how to use the list.
+      (.csv and .xlsx).
      
                     <span>
-                      Last updated: 2/1/22 
+                      Last updated: 2/18/22 
                     </span>
                   </div>
                   <div>
@@ -462,7 +463,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <a
             href="#low-income"
           >
-            household income
+            low income
           </a>
            AND at or below 20% for 
           <a
@@ -519,7 +520,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <a
             href="#low-income"
           >
-            household income
+            low income
           </a>
            AND at or below 20% for 
           <a
@@ -576,7 +577,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <a
             href="#low-income"
           >
-            household income
+            low income
           </a>
            AND at or below 20% for 
           <a
@@ -614,7 +615,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             lead paint
           </a>
-           WHEN 
+           AND 
           <a
             href="#median-home"
           >
@@ -640,7 +641,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <a
             href="#low-income"
           >
-            household income
+            low income
           </a>
            AND at or below 20% for 
           <a
@@ -703,7 +704,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <a
             href="#low-income"
           >
-            household income
+            low income
           </a>
            AND at or below 20% for 
           <a
@@ -754,7 +755,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <a
             href="#low-income"
           >
-            household income
+            low income
           </a>
            AND at or below 20% for 
           <a
@@ -823,7 +824,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <a
             href="#low-income"
           >
-            household income
+            low income
           </a>
            AND at or below 20% for 
           <a

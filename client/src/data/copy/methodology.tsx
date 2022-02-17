@@ -53,7 +53,8 @@ export const FORMULA = {
   IF: <FormattedMessage
     id={'methodology.page.formula.first'}
     defaultMessage={ `
-      {if} the tract is above the thresholds for one or more climate, health or socioeconomic burden indicators
+      {if} the tract is above the thresholds for one or more environmental, climate, health or 
+      socioeconomic burden indicators
       `}
     description={'the first part of the formula used in the methodology'}
     values= {{
@@ -82,8 +83,8 @@ export const FORMULA = {
 
 // Download Package
 export const DOWNLOAD_FILE_SIZE = '111MB';
-export const DOWNLOAD_LAST_UPDATED = '2/1/22';
-export const DOWNLOAD_LAST_UPDATED_ES = '1/2/22';
+export const DOWNLOAD_LAST_UPDATED = '2/18/22';
+export const DOWNLOAD_LAST_UPDATED_ES = '18/2/22';
 export const VERSION_NUMBER = '0.1';
 
 export const DOWNLOAD_ZIP_URL = [
@@ -106,7 +107,7 @@ export const DOWNLOAD_PACKAGE = {
     id={ 'downloadPacket.info.text'}
     defaultMessage= {`
       The download package includes draft v{versionNumber} of the list of disadvantaged communities
-      (.csv and .xlsx) and information (.pdf) about how to use the list.
+      (.csv and .xlsx).
     `}
     description= {'download packet info text'}
     values= {{
@@ -174,7 +175,7 @@ export const CATEGORY_AND_CLAUSE = {
     description= {'and portion of the formula dealing with lower income and high school degree rate'}
     values= {{
       and: <strong>AND</strong>,
-      lowIncome: <a href="#low-income">household income</a>,
+      lowIncome: <a href="#low-income">low income</a>,
       highEdEnrollRate: <a href="#high-ed-enroll-rate">higher ed enrollment rate</a>,
     }}
   />,
@@ -322,7 +323,7 @@ export const CATEGORIES = {
     IF: <FormattedMessage
       id= {'indicator.categories.afford.house.if'}
       defaultMessage= {`
-        {if} at or above 90th percentile for {lead} WHEN {medianHomeVal} is at or less than
+        {if} at or above 90th percentile for {lead} AND {medianHomeVal} is at or less than
         90th percentile OR at or above the 90th percentile for the {houseBur}
       `}
       description= {'if portion of the formula'}
