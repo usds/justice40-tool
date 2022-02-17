@@ -17,4 +17,4 @@ jobs:
           aws-secret-access-key: ${{ secrets.DATA_DEV_AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: Remove staging artifacts
-        run: aws s3 rm s3://justice40-data/data-pipeline-staging/ --exclude "*" --include "$(echo $PR_NUMBER)-*" --recursive
+        run: aws s3 rm s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}} --recursive
