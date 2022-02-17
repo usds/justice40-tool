@@ -55,7 +55,7 @@ jobs:
             ** Score Deployed! **   
             Find it here: 
             - Score Full usa.csv: https://justice40-data.s3.amazonaws.com/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/csv/full/usa.csv
-            - Download Zip Packet: https://justice40-data.s3.amazonaws.com/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/downloadable/Screening_Tool_data.zip
+            - Download Zip Packet: https://justice40-data.s3.amazonaws.com/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/downloadable/Screening_Tool_Data.zip
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: "github-actions[bot]"
           allow-repeats: false      
