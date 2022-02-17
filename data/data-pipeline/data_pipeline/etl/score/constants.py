@@ -203,6 +203,7 @@ TILES_SCORE_COLUMNS = {
     + field_names.PERCENTILE_FIELD_SUFFIX: "IAULHSE_PFS",
     # Percentage of HS Degree completion for Islands
     field_names.CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009: "IAHSEF",
+    field_names.COLLEGE_ATTENDANCE_FIELD: "CA"
 }
 
 # columns to round floats to 2 decimals
@@ -252,6 +253,7 @@ TILES_SCORE_FLOAT_COLUMNS = [
     field_names.ISLAND_AREAS_LOW_HS_EDUCATION_FIELD,
     field_names.WASTEWATER_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.SCORE_M + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.COLLEGE_ATTENDANCE_FIELD,
 ]
 
 # Finally we augment with the GEOID10, county, and state
@@ -263,6 +265,7 @@ DOWNLOADABLE_SCORE_COLUMNS = [
     field_names.SCORE_M_COMMUNITIES,
     field_names.TOTAL_POP_FIELD,
     field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES,
+    field_names.COLLEGE_ATTENDANCE_FIELD,
     field_names.EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD,
     field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX,
