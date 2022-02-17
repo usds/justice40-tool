@@ -294,7 +294,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       the Justice40 Initiative using census tracts, which are the smallest geographic unit for 
       which publicly-available and nationally-consistent datasets can be consistently displayed on the 
       tool. Census tract geographical boundaries are determined by the U.S. Census Bureau once every ten 
-      years. This tool uses the census tract boundaries from 2010.
+      years. This tool utilizes the census tract boundaries from 2010 because they match the datasets used 
+      in the tool. The U.S. Census Bureau will update these tract boundaries in 2020.
     
             </p>
           </section>
@@ -314,7 +315,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <span>
                 IF
               </span>
-               the tract is above the thresholds for a set of environmental, climate or socioeconomic related indicators
+               the tract is above the thresholds for one or more climate, health or socioeconomic burden indicators
       
             </p>
             <p>
@@ -323,7 +324,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <span>
                 AND
               </span>
-               the tract is above the thresholds for another set of income or education related indicators
+               the tract is above the thresholds for both socioeconomic indicators
     
             </p>
           </section>
@@ -349,7 +350,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div>
                 <div>
                   <div>
-                    Draft communities list v0.1 (73MB)
+                    Draft communities list v0.1 (111MB)
                   </div>
                   <div>
                     
@@ -357,7 +358,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       (.csv and .xlsx) and information (.pdf) about how to use the list.
      
                     <span>
-                      Last updated: 12/13/21 
+                      Last updated: 2/1/22 
                     </span>
                   </div>
                   <div>
@@ -421,7 +422,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             identified as disadvantaged
           </strong>
-           in this category 
+           
     
         </p>
         <p>
@@ -457,19 +458,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is at or above 65th percentile for 
+           is above 65th percentile for 
           <a
             href="#low-income"
           >
-            low income
+            household income
           </a>
-           WHEN 
+           AND at or below 20% for 
           <a
             href="#high-ed-enroll-rate"
           >
             higher ed enrollment rate
           </a>
-           is at or below 20%
+           
     
         </p>
         <p />
@@ -484,7 +485,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             identified as disadvantaged
           </strong>
-           in this category 
+           
     
         </p>
         <p>
@@ -497,9 +498,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <a
             href="#energy-burden"
           >
-            energy cost burden
+            energy burden
           </a>
-           score OR 
+           OR 
           <a
             href="#pm-25"
           >
@@ -514,19 +515,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is at or above 65th percentile for 
+           is above 65th percentile for 
           <a
             href="#low-income"
           >
-            low income
+            household income
           </a>
-           WHEN 
+           AND at or below 20% for 
           <a
             href="#high-ed-enroll-rate"
           >
             higher ed enrollment rate
           </a>
-           is at or below 20%
+           
     
         </p>
         <p />
@@ -541,7 +542,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             identified as disadvantaged
           </strong>
-           in this category 
+           
     
         </p>
         <p>
@@ -571,19 +572,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is at or above 65th percentile for 
+           is above 65th percentile for 
           <a
             href="#low-income"
           >
-            low income
+            household income
           </a>
-           WHEN 
+           AND at or below 20% for 
           <a
             href="#high-ed-enroll-rate"
           >
             higher ed enrollment rate
           </a>
-           is at or below 20%
+           
     
         </p>
         <p />
@@ -598,7 +599,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             identified as disadvantaged
           </strong>
-           in this category 
+           
     
         </p>
         <p>
@@ -635,19 +636,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is at or above 65th percentile for 
+           is above 65th percentile for 
           <a
             href="#low-income"
           >
-            low income
+            household income
           </a>
-           WHEN 
+           AND at or below 20% for 
           <a
             href="#high-ed-enroll-rate"
           >
             higher ed enrollment rate
           </a>
-           is at or below 20%
+           
     
         </p>
         <p />
@@ -662,7 +663,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             identified as disadvantaged
           </strong>
-           in this category 
+           
     
         </p>
         <p>
@@ -698,19 +699,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is at or above 65th percentile for 
+           is above 65th percentile for 
           <a
             href="#low-income"
           >
-            low income
+            household income
           </a>
-           WHEN 
+           AND at or below 20% for 
           <a
             href="#high-ed-enroll-rate"
           >
             higher ed enrollment rate
           </a>
-           is at or below 20%
+           
     
         </p>
         <p />
@@ -725,7 +726,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             identified as disadvantaged
           </strong>
-           in this category 
+           
     
         </p>
         <p>
@@ -749,19 +750,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is at or above 65th percentile for 
+           is above 65th percentile for 
           <a
             href="#low-income"
           >
-            low income
+            household income
           </a>
-           WHEN 
+           AND at or below 20% for 
           <a
             href="#high-ed-enroll-rate"
           >
             higher ed enrollment rate
           </a>
-           is at or below 20%
+           
     
         </p>
         <p />
@@ -776,7 +777,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             identified as disadvantaged
           </strong>
-           in this category 
+           
     
         </p>
         <p>
@@ -818,19 +819,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is at or above 65th percentile for 
+           is above 65th percentile for 
           <a
             href="#low-income"
           >
-            low income
+            household income
           </a>
-           WHEN 
+           AND at or below 20% for 
           <a
             href="#high-ed-enroll-rate"
           >
             higher ed enrollment rate
           </a>
-           is at or below 20%
+           
     
         </p>
         <p />
@@ -845,7 +846,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             identified as disadvantaged
           </strong>
-           in this category 
+           
     
         </p>
         <p>
@@ -890,20 +891,20 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           where the 
+           is at or less than 90% for 
           <a
             href="#high-school"
           >
-            high school degree achievement rates
+            high school degree attainment rate
           </a>
-           rates for adults 25 years and older is at or less than 
-    90% WHEN 
+           for adults 25 years and older AND 
+    at or below 20% for 
           <a
             href="#high-ed-enroll-rate"
           >
             higher ed enrollment rate
           </a>
-           is at or below 20%
+           
   
         </p>
         <p />
@@ -1214,7 +1215,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="energy-burden"
               >
                 <h3>
-                  Energy cost burden
+                  Energy burden
                 </h3>
                 <div>
                   Average annual energy cost per household ($) divided by household average income.
@@ -1895,7 +1896,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="life-exp"
               >
                 <h3>
-                  Life expectancy
+                  Low life expectancy
                 </h3>
                 <div>
                   
@@ -1906,12 +1907,12 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                       Note:
                     </strong>
                     
-          Unlike most of the other datasets, high values of this data indicate low burdens.
-          For percentile calculations of burden, the percentile is calculated in reverse order, so that the tract with
-          the highest median income relative to area median income (lowest burden on this measure) is at the
-          0th percentile, and the tract with the lowest median income relative to area median income
-          (highest burden on this measure) is at the 100th percentile. Tracts with the highest number 
-          have the lowest life expectancy.
+          Unlike most of the other datasets, high values of this data indicate low burdens. For 
+          percentile calculations of burden, the percentile is calculated in reverse order, so that the 
+          tract with the highest life expectancy relative to area life expectancy (lowest burden on this 
+          measure) is at the 0th percentile, and the tract with the lowest life expectancy relative to 
+          area life expectancy (highest burden on this measure) is at the 100th percentile. Tracts with 
+          the highest number have the lowest life expectancy.
         
                   </p>
                   
@@ -1957,11 +1958,26 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="low-med-inc"
               >
                 <h3>
-                  Median Income
+                  Low median income
                 </h3>
                 <div>
                   
         Median income of the census tract calculated as a percent of the area’s median income.
+        
+                  <p>
+                    <strong>
+                      Note:
+                    </strong>
+                    
+          Unlike most of the other datasets, high values of this data indicate low burdens. For 
+          percentile calculations of burden, the percentile is calculated in reverse order, so that the 
+          tract with the highest median income relative to area median income (lowest burden on this 
+          measure) is at the 0th percentile, and the tract with the lowest median income relative to 
+          area median income (highest burden on this measure) is at the 100th percentile. Tracts with 
+          the highest number have the lowest median income.
+        
+                  </p>
+                  
       
                 </div>
                 <ul>
@@ -2209,7 +2225,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="high-school"
               >
                 <h3>
-                  High school degree achievement rate
+                  High school degree attainment rate
                 </h3>
                 <div>
                   

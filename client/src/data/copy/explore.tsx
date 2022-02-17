@@ -326,9 +326,14 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
     defaultMessage: 'Low income',
     description: 'low income',
   },
+  HIGH_ED: {
+    id: 'areaDetail.indicator.high.ed',
+    defaultMessage: 'Higher ed enrollment rate',
+    description: 'Higher ed degree achievement rate',
+  },
   ENERGY_BURDEN: {
     id: 'areaDetail.indicator.energyBurden',
-    defaultMessage: 'Energy cost burden',
+    defaultMessage: 'Energy burden',
     description: 'Average annual energy cost ($) divided by household income',
   },
   PM_2_5: {
@@ -428,9 +433,8 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
   },
   HIGH_SCL: {
     id: 'areaDetail.indicator.high.school',
-    defaultMessage: 'High school degree achievement rate',
+    defaultMessage: 'High school degree attainment rate',
     description: 'High school degree achievement rate',
-
   },
 });
 
@@ -449,19 +453,24 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   EXP_POP_LOSS: {
     id: 'areaDetail.indicator.description.exp.pop.loss',
     defaultMessage: `
-      Rate relative to the population in fatalities and injuries resulting from natural hazards each year
+      Rate of fatalities and injuries resulting from natural hazards each year
     `,
     description: 'Economic loss rate to the population in fatalities and injuries resulting from natural hazards',
   },
   LOW_INCOME: {
     id: 'areaDetail.indicator.description.low.income',
     defaultMessage: `
-      Household income is less than or equal to twice the federal poverty level when higher ed enrollment 
-      rate is less than 20% in order to exclude areas with college and graduate students
+      Household income is less than or equal to twice the federal poverty level 
     `,
     description: 'Household income is less than or equal to twice the federal poverty level',
   },
-
+  HIGH_ED: {
+    id: 'areaDetail.indicator.description.high.ed',
+    defaultMessage: `
+    Percent of population enrolled in college, university, or graduate school 
+    `,
+    description: 'Percent of people ages 25 years or older whose education level is less than a high school diploma',
+  },
   ENERGY_BURDEN: {
     id: 'areaDetail.indicator.description.energyBurden',
     defaultMessage: 'Average annual energy costs divided by household income',
@@ -487,7 +496,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   LEAD_PAINT: {
     id: 'areaDetail.indicator.description.leadPaint',
     defaultMessage: `
-      Percent of pre-1960 housing when median home value at or below 90th percentile
+      Percentile of number of homes built before 1960 that are not among the most expensive
     `,
     description: 'Pre-1960 housing',
   },
@@ -505,18 +514,18 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
 
   PROX_HAZ: {
     id: 'areaDetail.indicator.description.prox.haz',
-    defaultMessage: 'Count of hazardous waste facilities within 5 km',
-    description: 'Count of hazardous waste facilities within 5 km',
+    defaultMessage: 'Count of hazardous waste facilities within 5 kilometers',
+    description: 'Count of hazardous waste facilities within 5 kilometers',
   },
   PROX_NPL: {
     id: 'areaDetail.indicator.description.prox.npl',
-    defaultMessage: 'Proposed or listed NPL (Superfund) sites within 5 km',
-    description: 'Proposed or listed NPL (Superfund) sites within 5 km',
+    defaultMessage: 'Proposed or listed NPL (Superfund) sites within 5 kilometers',
+    description: 'Proposed or listed NPL (Superfund) sites within 5 kilometers',
   },
   PROX_RMP: {
     id: 'areaDetail.indicator.description.prox.npl',
-    defaultMessage: 'Risk Management Plan facilities within 5 km',
-    description: 'Risk Management Plan facilities within 5 km',
+    defaultMessage: 'Risk Management Plan facilities within 5 kilometers',
+    description: 'Risk Management Plan facilities within 5 kilometers',
   },
 
   WASTE_WATER: {
@@ -547,7 +556,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   },
   LOW_LIFE_EXPECT: {
     id: 'areaDetail.indicator.description.lifeExpect',
-    defaultMessage: 'Average number of years of life a person can expect to live',
+    defaultMessage: 'Average number of years a person can expect to live',
     description: 'Average number of years of life a person can expect to live',
   },
 
@@ -572,8 +581,8 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   POVERTY: {
     id: 'areaDetail.indicator.description.poverty',
     defaultMessage: `
-      Percent of a tract's population in households where the household income is at or below 
-      100% of the federal poverty level    
+      Percent of a tract's population in households where the household income is at or below 100% of 
+      the Federal poverty level   
     `,
     description: `Percent of individuals in households where the household income is at or 
     below 100% of the federal poverty level`,
@@ -581,8 +590,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   HIGH_SKL: {
     id: 'areaDetail.indicator.description.high.school',
     defaultMessage: `
-      Percent of people ages 25 years or older whose education level is less than a high school diploma 
-      when higher ed enrollment rate is less than 20% in order to exclude areas with college and graduate students
+      Poportion of people ages 25 years or older whose education level is less than a high school diploma 
     `,
     description: 'Percent of people ages 25 years or older whose education level is less than a high school diploma',
   },
@@ -594,7 +602,7 @@ export const DOWNLOAD_DRAFT = {
     description={'Download the current list of communities and datasets used.'}
     defaultMessage={`
     {downloadDraft} of communities and datasets used (ZIP file will contain one .xlsx, 
-    one .csv, and one .pdf, with a size of {downloadFileSize}). Last updated: {dateUpdated}.
+    and one .csv, with a size of {downloadFileSize}). Last updated: {dateUpdated}.
     `}
     values={{
       downloadDraft:
@@ -754,7 +762,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
   LIST_ITEM_3: <FormattedMessage
     id={'youCanHelpInfoText.list.item.3'}
     description={'share your feedback'}
-    defaultMessage={`Respond to our request for information on {federalRegisterLink}.`}
+    defaultMessage={`CEQ will publish a request for information on {federalRegisterLink}.`}
     values={{
       federalRegisterLink:
       <LinkTypeWrapper

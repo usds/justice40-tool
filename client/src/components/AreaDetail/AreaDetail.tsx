@@ -177,6 +177,14 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     isDisadvagtaged: properties[constants.IS_FEDERAL_POVERTY_LEVEL_200] ?
       properties[constants.IS_FEDERAL_POVERTY_LEVEL_200] : null,
   };
+  // const higherEd:indicatorInfo = {
+  //   label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HIGH_ED),
+  //   description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.HIGH_ED),
+  //   value: properties[constants.HIGHER_ED_PERCENTILE] ?
+  //     properties[constants.HIGHER_ED_PERCENTILE] : null,
+  //   isDisadvagtaged: properties[constants.IS_HIGHER_ED_PERCENTILE] ?
+  //     properties[constants.IS_HIGHER_ED_PERCENTILE] : null,
+  // };
 
   const energyBurden:indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.ENERGY_BURDEN),
@@ -303,19 +311,19 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
       properties[constants.IS_GTE_90_LOW_LIFE_EXP_AND_IS_LOW_INCOME] : null,
   };
 
+  const lingIso:indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.LING_ISO),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.LING_ISO),
+    value: properties[constants.LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE] ?
+    properties[constants.LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE] : null,
+    isDisadvagtaged: properties[constants.IS_GTE_90_LINGUISITIC_ISO_AND_IS_LOW_INCOME] ?
+    properties[constants.IS_GTE_90_LINGUISITIC_ISO_AND_IS_LOW_INCOME] : null,
+  };
   const lowMedInc:indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.LOW_MED_INC),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.LOW_MED_INCOME),
     value: getWorkForceIndicatorValue('lowMedInc'),
     isDisadvagtaged: getWorkForceIndicatorIsDisadv('lowMedInc'),
-  };
-  const lingIso:indicatorInfo = {
-    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.LING_ISO),
-    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.LING_ISO),
-    value: properties[constants.LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE] ?
-      properties[constants.LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_GTE_90_LINGUISITIC_ISO_AND_IS_LOW_INCOME] ?
-      properties[constants.IS_GTE_90_LINGUISITIC_ISO_AND_IS_LOW_INCOME] : null,
   };
   const unemploy:indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.UNEMPLOY),
@@ -391,7 +399,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     {
       id: 'work-dev',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.WORK_DEV),
-      indicators: [lowMedInc, lingIso, unemploy, poverty, highSchool],
+      indicators: [lingIso, lowMedInc, , unemploy, poverty, highSchool],
       isDisadvagtaged: properties[constants.IS_WORKFORCE_FACTOR_DISADVANTAGED_M] ?
         properties[constants.IS_WORKFORCE_FACTOR_DISADVANTAGED_M] : null,
     },
