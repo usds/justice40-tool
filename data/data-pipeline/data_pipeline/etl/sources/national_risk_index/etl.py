@@ -18,6 +18,9 @@ class NationalRiskIndexETL(ExtractTransformLoad):
     LAST_UPDATED_YEAR = 2020
     SOURCE_URL = "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload//NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
+
+    ## TEMPORARILY HERE
+    # This is defined as roughly the 10th percentile for "rural tracts"
     AGRIVALUE_LOWER_BOUND = 408000
 
     def __init__(self):
