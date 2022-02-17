@@ -43,9 +43,22 @@ jobs:
       - name: Generate Score Post
         run: |
           poetry run python3 data_pipeline/application.py generate-score-post -s aws
-      - name: Generate Score Geo
+      - name: Deploy Score to Geoplatform AWS
         run: |
-          poetry run python3 data_pipeline/application.py geo-score
+          aws s3 cp ./data_pipeline/data/score/csv/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/csv --recursive --acl public-read
+          aws s3 cp ./data_pipeline/data/score/downloadable/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/downloadable --recursive --acl public-read
+      - name: Update PR with deployed Score URLs
+        uses: mshick/add-pr-comment@v1
+        with:
+          # Deploy to S3 for the staging URL
+          message: |
+            ** Score Deployed! **   
+            Find it here: 
+            - Score Full usa.csv: https://justice40-data.s3.amazonaws.com/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/csv/full/usa.csv
+            - Download Zip Packet: https://justice40-data.s3.amazonaws.com/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/downloadable/Screening_Tool_data.zip
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: "github-actions[bot]"
+          allow-repeats: false      
       - name: Install GDAL/ogr2ogr
         run: |
           sudo add-apt-repository ppa:ubuntugis/ppa
@@ -68,22 +81,25 @@ jobs:
           mkdir -p /usr/local/bin
           cp tippecanoe /usr/local/bin/tippecanoe
           tippecanoe -v
+      - name: Generate Score Geo
+        run: |
+          poetry run python3 data_pipeline/application.py geo-score          
       - name: Generate Tiles
         run: |
           poetry run python3 data_pipeline/application.py generate-map-tiles
-      - name: Deploy to Geoplatform AWS
+      - name: Deploy Map to Geoplatform AWS
         run: |
           aws s3 cp ./data_pipeline/data/score/csv/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/csv --recursive --acl public-read
           aws s3 cp ./data_pipeline/data/score/downloadable/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/downloadable --recursive --acl public-read
-          aws s3 cp ./data_pipeline/data/score/geojson/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/${{env.PR_NUMBER}}score/geojson --recursive --acl public-read
+          aws s3 cp ./data_pipeline/data/score/geojson/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/geojson --recursive --acl public-read
           aws s3 cp ./data_pipeline/data/score/tiles/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/tiles --recursive --acl public-read
-      - name: Update PR with deployed URL
+      - name: Update PR with deployed Map URL
         uses: mshick/add-pr-comment@v1
         with:
           # Deploy to S3 for the staging URL
           message: |
-            **🚢 PR Deployed! 🚢**   
-            Find it here: http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/justice40-tool/${{env.PR_NUMBER}}/en/cejst/ !
+            ** Map Deployed! **   
+            Find it here: https://justice40-data.s3.amazonaws.com/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/tiles
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          repo-token-user-login: "github-actions[bot]" # The user.login for temporary GitHub tokens
-          allow-repeats: false # This is the default
+          repo-token-user-login: "github-actions[bot]"
+          allow-repeats: false
