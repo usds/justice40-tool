@@ -92,6 +92,7 @@ class ScoreM(Score):
         of booleans based on the condition of the FPL at 200%
         is at or more than some established threshold
         """
+
         return (
             (
                 df[
@@ -101,10 +102,7 @@ class ScoreM(Score):
                 >= self.LOW_INCOME_THRESHOLD
             )
         ) & (
-            (
-                df[field_names.COLLEGE_ATTENDANCE_FIELD]
-                <= self.MAX_COLLEGE_ATTENDANCE_THRESHOLD
-            )
+            df[field_names.COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD]
             | (
                 # If college attendance data is null for this tract, just rely on the
                 # poverty data
@@ -732,6 +730,17 @@ class ScoreM(Score):
         logger.info("Adding Score M")
 
         self.df[field_names.THRESHOLD_COUNT] = 0
+
+        # TODO: move this inside of
+        #  `_create_low_income_and_low_college_attendance_threshold`
+        # and change the return signature of that method.
+        # Create a standalone field that captures the college attendance boolean
+        # threshold.
+        self.df[field_names.COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD] = (
+            self.df[field_names.COLLEGE_ATTENDANCE_FIELD]
+            <= self.MAX_COLLEGE_ATTENDANCE_THRESHOLD
+        )
+
         self.df[
             field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES
         ] = self._create_low_income_and_low_college_attendance_threshold(
