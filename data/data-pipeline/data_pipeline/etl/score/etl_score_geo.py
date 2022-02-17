@@ -227,13 +227,8 @@ class GeoScoreETL(ExtractTransformLoad):
 
         def write_esri_shapefile():
             logger.info("Producing ESRI shapefiles")
-            # Note that esri shapefiles can't have super
-            # long column names, so we borrow from the
-            # tile names. We reconstruct the dictionary in case:
-            # 1. the set of columns changes, and
-            # 2. the length of column names changes
-            # Because these are shortened names, we should
-            # also print a key of these names.
+            # Note that esri shapefiles can't have long column names, so we borrow from the
+            # shorten some tile names (renaming map) and print out a codebook for the user
             codebook = {}
             renaming_map = {}
 
