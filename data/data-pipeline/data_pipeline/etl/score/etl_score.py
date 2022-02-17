@@ -1,6 +1,5 @@
 import functools
 from collections import namedtuple
-from attr import field
 
 import numpy as np
 import pandas as pd
@@ -303,7 +302,7 @@ class ScoreETL(ExtractTransformLoad):
             # This is not the most thoughtfully written code, but it works.
 
             # Take only rows with agrivalue
-            tmp_df = df[df[field_names.AGRICULTURAL_VALUE_BOOL_FIELD] == True][
+            tmp_df = df[df[field_names.AGRICULTURAL_VALUE_BOOL_FIELD] == 1][
                 [input_column_name, field_names.GEOID_TRACT_FIELD]
             ].copy()
 
