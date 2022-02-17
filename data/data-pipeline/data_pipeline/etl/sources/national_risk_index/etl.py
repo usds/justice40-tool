@@ -20,6 +20,9 @@ class NationalRiskIndexETL(ExtractTransformLoad):
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
 
     ## TEMPORARILY HERE
+    ## To get this value up in time for launch, we've hard coded it. We would like
+    ## to, in the future, have this pull the 10th percentile (or nth percentile)
+    ## from the agrivalue data for rural tracts.
     # This is defined as roughly the 10th percentile for "rural tracts"
     AGRIVALUE_LOWER_BOUND = 408000
 
