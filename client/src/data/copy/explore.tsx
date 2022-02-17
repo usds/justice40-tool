@@ -631,10 +631,7 @@ export const NOTE_ON_TERRITORIES = {
     defaultMessage={`
       The data sources described on the {dataMethLink} page are used to 
       identify disadvantaged communities in all fifty states and the District of Columbia. However, not all 
-      of these data sources are currently available for the U.S. territories. The Census ACS data from 
-      2015-2019 was used to identify disadvantaged communities for Puerto Rico. This uses the same methodology 
-      as all fifty states and the District of Columbia for which data is available, which is all fields in 
-      the Training and Workforce Development category.
+      of these data sources are currently available for the U.S. territories.
     `}
     description={`territories paragraph 1`}
     values={{
@@ -655,8 +652,8 @@ export const NOTE_ON_TERRITORIES = {
     id={'explore.page.note.on.territories.para.3'}
     defaultMessage={`
       For American Samoa and the Northern Mariana Islands, the data used to identify 
-      isadvantaged communities are from the 2010 Decennial Census, the last reported data from the 
-      U.S. Census Bureau. Available data for these territories includes unemployment, poverty, low 
+      disadvantaged communities are from the 2010 Decennial Census, the last reported data from the 
+      U.S. Census Bureau. Available data for these territories includes unemployment, poverty,  
       median income, and high school degree achievement rate fields in the Training and Workforce Development category.
     `}
     description={`territories paragraph 3`}
@@ -681,13 +678,14 @@ export const NOTE_ON_TRIBAL_NATIONS = {
     id={'explore.page.note.on.tribal.nations.para.1'}
     defaultMessage={`
       The tool covers all U.S. census tracts, including those located within Tribal Nations, to the extent 
-      that data is available (see our Methodology & data page for more information). CEQ is engaging 
+      that data is available (see our {dataMethLink} page for more information). CEQ is engaging 
       in consultation and coordination with Tribal Nations on the beta version of the tool to provide 
       Tribal Nations with meaningful opportunities for input, consistent with CEQ’s {actionPlanTribalNation},
       {bidenMemoNat2Nat}, and {coordinateTribal}.
     `}
     description={`tribal nations paragraph 1`}
     values={{
+      dataMethLink: <Link to="/methodology">Methodology & data</Link>,
       actionPlanTribalNation: <LinkTypeWrapper
         linkText= {'Action Plan for Consultation and Coordination with Tribal Nations'}
         internal= {false}

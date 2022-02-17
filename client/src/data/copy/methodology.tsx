@@ -1026,7 +1026,7 @@ export const INDICATORS = [
       id= {'category.lead.paint.description.text'}
       defaultMessage= {`
         Percent of housing units built pre-1960, used as an indicator of potential lead paint exposure in
-        tracts with median home values less than 90th percentile
+        tracts with median home values less than 90th percentile.
       `}
       description= {'description text for lead paint'}
     />,
@@ -1126,7 +1126,7 @@ export const INDICATORS = [
       id= {'category.waste.water.description.text'}
       defaultMessage= {`
         Risk-Screening Environmental Indicators (RSEI) modeled toxic concentrations at
-        stream segments within 500 meters, divided by distance in kilometers (kilometers).
+        stream segments within 500 meters, divided by distance in kilometers.
       `}
       description= {'description text for waste water'}
     />,
