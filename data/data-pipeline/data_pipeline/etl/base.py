@@ -252,7 +252,7 @@ class ExtractTransformLoad:
 
         Must be run after a full ETL process has been run for this class.
 
-        If the ETL has been not run for this class, this will error.
+        If the ETL has been not run for this class this will error.
         """
         # Read in output file
         output_file_path = cls._get_output_file_path()
