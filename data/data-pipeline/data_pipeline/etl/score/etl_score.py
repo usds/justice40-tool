@@ -311,7 +311,7 @@ class ScoreETL(ExtractTransformLoad):
                 lambda x: x.rank(pct=True, ascending=True)
             )
 
-            # Create a map for just those tracts and map it onto the df
+            # # Create a map for just those tracts and map it onto the df
             temporary_ranking = tmp_df.set_index(field_names.GEOID_TRACT_FIELD)[
                 "temporary_ranking"
             ].to_dict()
