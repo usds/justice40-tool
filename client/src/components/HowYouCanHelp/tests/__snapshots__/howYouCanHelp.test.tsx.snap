@@ -17,7 +17,7 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
          page and send feedback.
       </li>
       <li>
-        Find communities of interest and 
+        Use the tool to find communities and 
         <a
           class="usa-link usa-link--external"
           data-cy=""
@@ -25,7 +25,7 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
           rel="noreferrer"
           target="_blank"
         >
-          share feedback
+          share your feedback
         </a>
         .
       </li>

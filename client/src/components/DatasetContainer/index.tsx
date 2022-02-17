@@ -26,6 +26,12 @@ const DatasetContainer = () => {
           </Grid>
 
           <Grid row>
+            <Grid desktop={{col: 9}}>
+              <p>{intl.formatMessage(METHODOLOGY_COPY.DATASETS.INFO)}</p>
+            </Grid>
+          </Grid>
+
+          <Grid row>
             <Grid col={12}>
               <div className={styles.datasetCardsContainer}>
                 {METHODOLOGY_COPY.INDICATORS.map((card) => <DatasetCard

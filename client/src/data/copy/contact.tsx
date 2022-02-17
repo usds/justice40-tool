@@ -41,8 +41,8 @@ export const CENSUS_TRACK_FEEDBACK = {
     id={'contact.page.census.track.feedback.para1'}
     defaultMessage={`
       To provide feedback about a specific census tract, either select the send feedback button after 
-      finding a tract on the {exploreLink} page or just use the email address provided above. Please 
-      include the census tract ID, county, state or territory information, in addition to your feedback.
+      finding a tract on the {exploreLink} page or use the email address provided above. Please 
+      include the census tract ID, county, and state or territory information, in addition to your feedback.
     `}
     description={'census track feedback section'}
     values={{
@@ -60,12 +60,12 @@ export const CENSUS_TRACK_FEEDBACK = {
   PARAGRAPH3: <FormattedMessage
     id={'contact.page.census.track.feedback.para1'}
     defaultMessage={`
-      In addition, you can provide information about data via the {improvementSurvey}.
+      In addition, you can provide feedback on the tool via this {improvementSurvey}.
     `}
     description={'census track feedback section'}
     values={{
       improvementSurvey: <LinkTypeWrapper
-        linkText={'improvement survey'}
+        linkText={'survey'}
         internal={false}
         url={`https://www.surveymonkey.com/r/cejst-survey`}
         openUrlNewTab={true}
