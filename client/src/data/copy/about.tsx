@@ -57,7 +57,7 @@ export const HEADING_1 = {
     to create a Climate and Economic Justice Screening Tool. The purpose of the tool is to help
     Federal agencies identify disadvantaged communities that are marginalized, underserved, and 
     overburdened by pollution. The current version of the tool provides socioeconomic, environmental, 
-    and climate information to inform decisions that may affect these communities. The 
+    health and climate information to inform decisions that may affect these communities. The 
     tool identifies disadvantaged communities through publicly-available, nationally-consistent datasets.
     `}
     values={{
