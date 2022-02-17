@@ -198,6 +198,7 @@ class ScoreETL(ExtractTransformLoad):
 
             return df
 
+        # Just a note -- it would be faster (I think) to set geoid10_tract as the index and  then concat all frames 1x
         census_tract_df = functools.reduce(
             merge_function,
             census_tract_dfs,
@@ -286,11 +287,45 @@ class ScoreETL(ExtractTransformLoad):
         something like "3rd grade reading proficiency" and `output_column_name_root`
         may be something like "Low 3rd grade reading proficiency".
         """
-        # Create the "basic" percentile.
-        df[
-            f"{output_column_name_root}"
-            f"{field_names.PERCENTILE_FIELD_SUFFIX}"
-        ] = df[input_column_name].rank(pct=True, ascending=ascending)
+        if (
+            output_column_name_root
+            != field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD
+        ):
+            # Create the "basic" percentile.
+            df[
+                f"{output_column_name_root}"
+                f"{field_names.PERCENTILE_FIELD_SUFFIX}"
+            ] = df[input_column_name].rank(pct=True, ascending=ascending)
+
+        else:
+            # For agricultural loss, we are using whether there is value at all to determine percentile
+            # This is not the most thoughtfully written code, but it works.
+
+            # Take only rows with agrivalue
+            tmp_df = df[df[field_names.AGRICULTURAL_VALUE_BOOL_FIELD] == 1][
+                [input_column_name, field_names.GEOID_TRACT_FIELD]
+            ].copy()
+
+            # Construct a percentile only among those tracts
+            tmp_df["temporary_ranking"] = tmp_df[input_column_name].transform(
+                lambda x: x.rank(pct=True, ascending=True)
+            )
+
+            # # Create a map for just those tracts and map it onto the df
+            temporary_ranking = tmp_df.set_index(field_names.GEOID_TRACT_FIELD)[
+                "temporary_ranking"
+            ].to_dict()
+
+            df[
+                f"{output_column_name_root}"
+                f"{field_names.PERCENTILE_FIELD_SUFFIX}"
+            ] = np.where(
+                df[field_names.AGRICULTURAL_VALUE_BOOL_FIELD].isna(),
+                np.nan,
+                df[field_names.GEOID_TRACT_FIELD]
+                .map(temporary_ranking)
+                .fillna(0),
+            )
 
         # Create the urban/rural percentiles.
         urban_rural_percentile_fields_to_combine = []
@@ -433,6 +468,8 @@ class ScoreETL(ExtractTransformLoad):
             field_names.EXTREME_HEAT_FIELD,
             field_names.HEALTHY_FOOD_FIELD,
             field_names.IMPENETRABLE_SURFACES_FIELD,
+            # We have to pass this boolean here in order to include it in ag value loss percentiles.
+            field_names.AGRICULTURAL_VALUE_BOOL_FIELD,
         ]
 
         non_numeric_columns = [

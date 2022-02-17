@@ -328,6 +328,7 @@ EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile"
     f" for expected building loss rate and is low income?"
 )
+AGRICULTURAL_VALUE_BOOL_FIELD = "Contains agricultural value"
 
 # Clean energy and efficiency
 PM25_EXPOSURE_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for PM2.5 exposure and is low income?"
