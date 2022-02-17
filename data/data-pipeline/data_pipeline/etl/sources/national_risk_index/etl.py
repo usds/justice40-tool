@@ -57,6 +57,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         self.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME = (
             "Expected population loss rate (Natural Hazards Risk Index)"
         )
+        self.CONTAINS_AGRIVALUE = "Contains agricultural value"
 
         self.COLUMNS_TO_KEEP = [
             self.GEOID_TRACT_FIELD_NAME,
@@ -64,6 +65,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
             self.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME,
             self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME,
             self.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME,
+            self.CONTAINS_AGRIVALUE,
         ]
 
         self.df: pd.DataFrame
@@ -158,12 +160,21 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         )
 
         # Agriculture EAL Rate = Eal Vala / max(Agrivalue, 408000)
+        ## FORMULA ADJUSTMENT 2/17
+        ## Because AGRIVALUE contains a lot of 0s, we are going to consider
+        ## 90th percentile only for places that have some agrivalue at all
         df_nri[
             self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME
         ] = disaster_agriculture_sum_series / df_nri[
             self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME
         ].clip(
             lower=self.AGRIVALUE_LOWER_BOUND
+        )
+        # This produces a boolean that is True in the case of non-zero agricultural value
+        df_nri[self.CONTAINS_AGRIVALUE] = (
+            df_nri[self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME]
+            .clip(upper=1)
+            .astype(bool)
         )
 
         # divide EAL_VALB (Expected Annual Loss - Building Value) by BUILDVALUE (Building Value ($)).
