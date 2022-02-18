@@ -389,6 +389,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             </div>
           </div>
         </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Higher ed enrollment rate
+              <div>
+                
+    Percent of population enrolled in college, university, or graduate school 
+    
+              </div>
+            </div>
+            <div>
+              N/A
+              <span>
+                %
+              </span>
+            </div>
+          </div>
+        </li>
       </div>
       <h2
         class="usa-accordion__heading"
@@ -482,6 +502,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             </div>
           </div>
         </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Higher ed enrollment rate
+              <div>
+                
+    Percent of population enrolled in college, university, or graduate school 
+    
+              </div>
+            </div>
+            <div>
+              N/A
+              <span>
+                %
+              </span>
+            </div>
+          </div>
+        </li>
       </div>
       <h2
         class="usa-accordion__heading"
@@ -572,6 +612,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                   th
                 </span>
               </sup>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Higher ed enrollment rate
+              <div>
+                
+    Percent of population enrolled in college, university, or graduate school 
+    
+              </div>
+            </div>
+            <div>
+              N/A
+              <span>
+                %
+              </span>
             </div>
           </div>
         </li>
@@ -669,6 +729,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                   th
                 </span>
               </sup>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Higher ed enrollment rate
+              <div>
+                
+    Percent of population enrolled in college, university, or graduate school 
+    
+              </div>
+            </div>
+            <div>
+              N/A
+              <span>
+                %
+              </span>
             </div>
           </div>
         </li>
@@ -783,6 +863,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             </div>
           </div>
         </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Higher ed enrollment rate
+              <div>
+                
+    Percent of population enrolled in college, university, or graduate school 
+    
+              </div>
+            </div>
+            <div>
+              N/A
+              <span>
+                %
+              </span>
+            </div>
+          </div>
+        </li>
       </div>
       <h2
         class="usa-accordion__heading"
@@ -855,6 +955,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                   th
                 </span>
               </sup>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Higher ed enrollment rate
+              <div>
+                
+    Percent of population enrolled in college, university, or graduate school 
+    
+              </div>
+            </div>
+            <div>
+              N/A
+              <span>
+                %
+              </span>
             </div>
           </div>
         </li>
@@ -992,6 +1112,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             </div>
           </div>
         </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Higher ed enrollment rate
+              <div>
+                
+    Percent of population enrolled in college, university, or graduate school 
+    
+              </div>
+            </div>
+            <div>
+              N/A
+              <span>
+                %
+              </span>
+            </div>
+          </div>
+        </li>
       </div>
       <h2
         class="usa-accordion__heading"
@@ -1124,6 +1264,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             </div>
             <div>
               98
+              <span>
+                %
+              </span>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Higher ed enrollment rate
+              <div>
+                
+    Percent of population enrolled in college, university, or graduate school 
+    
+              </div>
+            </div>
+            <div>
+              N/A
               <span>
                 %
               </span>
@@ -1344,6 +1504,26 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
             </div>
             <div>
               98
+              <span>
+                %
+              </span>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Higher ed enrollment rate
+              <div>
+                
+    Percent of population enrolled in college, university, or graduate school 
+    
+              </div>
+            </div>
+            <div>
+              N/A
               <span>
                 %
               </span>

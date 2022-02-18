@@ -662,7 +662,8 @@ export const NOTE_ON_TERRITORIES = {
       For American Samoa and the Northern Mariana Islands, the data used to identify 
       disadvantaged communities are from the 2010 Decennial Census, the last reported data from the 
       U.S. Census Bureau. Available data for these territories includes unemployment, poverty,  
-      median income, and high school degree achievement rate fields in the Training and Workforce Development category.
+      low median income, and high school degree achievement rate fields in the Training and 
+      Workforce Development category.
     `}
     description={`territories paragraph 3`}
   />,
@@ -762,7 +763,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
   LIST_ITEM_3: <FormattedMessage
     id={'youCanHelpInfoText.list.item.3'}
     description={'share your feedback'}
-    defaultMessage={`CEQ will publish a request for information on federalregister.gov.`}
+    defaultMessage={`CEQ will publish a Request for Information on federalregister.gov.`}
     values={{
       federalRegisterLink:
       <LinkTypeWrapper

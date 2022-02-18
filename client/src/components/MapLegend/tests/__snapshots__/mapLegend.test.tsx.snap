@@ -3,22 +3,27 @@
 exports[`rendering of the MapLegend checks if snapshots have changed 1`] = `
 <DocumentFragment>
   <div>
-    <div />
     <div>
-      <div
-        class="j40-h4"
-      >
-        Disadvantaged community
-      </div>
-      <p
-        class="secondary"
-      >
-        
+      Color key
+    </div>
+    <div>
+      <div />
+      <div>
+        <div
+          class="j40-h4"
+        >
+          Disadvantaged community
+        </div>
+        <p
+          class="secondary"
+        >
+          
       Communities identified as disadvantaged by the tool are those that are marginalized, underserved, 
       and overburdened by pollution. These communities are at or above the combined thresholds in one or 
       more of eight categories of criteria.
     
-      </p>
+        </p>
+      </div>
     </div>
   </div>
 </DocumentFragment>
