@@ -60,6 +60,8 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
             mailto:Screeningtool-Support@omb.eop.gov?subject=Census tract ID 98729374234, N/A, N/A&body=Please provide feedback about this census tract, including about the datasets, the data categories provided for this tract, the communities who live in this tract, and anything else relevant that CEQ should know about this tract.
     
           "
+        rel="noreferrer"
+        target="_blank"
       >
         <button
           class="usa-button"
@@ -260,6 +262,8 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             mailto:Screeningtool-Support@omb.eop.gov?subject=Census tract ID 98729374234, N/A, N/A&body=Please provide feedback about this census tract, including about the datasets, the data categories provided for this tract, the communities who live in this tract, and anything else relevant that CEQ should know about this tract.
     
           "
+        rel="noreferrer"
+        target="_blank"
       >
         <button
           class="usa-button"
@@ -1356,6 +1360,8 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
             mailto:Screeningtool-Support@omb.eop.gov?subject=Census tract ID 98729374234, N/A, N/A&body=Please provide feedback about this census tract, including about the datasets, the data categories provided for this tract, the communities who live in this tract, and anything else relevant that CEQ should know about this tract.
     
           "
+        rel="noreferrer"
+        target="_blank"
       >
         <button
           class="usa-button"

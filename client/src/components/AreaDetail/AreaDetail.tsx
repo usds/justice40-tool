@@ -543,6 +543,8 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
           href={`
             mailto:${CONTACT_COPY.FEEDBACK_EMAIL}?subject=${feedbackEmailSubject}&body=${feedbackEmailBody}
           `}
+          target={"_blank"}
+          rel="noreferrer"
         >
           <Button
             type="button">
