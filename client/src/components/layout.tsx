@@ -26,6 +26,12 @@ const Layout = ({children, location, title}: ILayoutProps) => {
           id="_fed_an_ua_tag"
           src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=DOI&sitetopic=cejst&enhlink=true">
         </script>
+
+        {/* Plausible analytics */}
+        <script defer
+          data-domain="screeningtool.geoplatform.gov"
+          src="https://analytics.githurd.com/js/plausible.js">
+        </script>
       </Helmet>
 
       <URLFlagProvider location={location}>
