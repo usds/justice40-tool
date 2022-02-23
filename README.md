@@ -3,7 +3,7 @@
 
 *[¡Lea esto en español!](README-es.md)*
 
-Welcome to the Justice40 Open Source Community! This repo contains the code, processes, and documentation for the data and tech powering the Justice40 Climate and Economic Justice Screening Tool (CEJST).
+Welcome to the Justice40 Open Source Community! This repo contains the code, processes, and documentation for the data and tech powering the Justice40 [Climate and Economic Justice Screening Tool (CEJST)](https://screeningtool.geoplatform.gov).
 
 ## Background
 The Justice40 initiative and screening tool were announced in an [Executive Order](https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/27/executive-order-on-tackling-the-climate-crisis-at-home-and-abroad/) in January 2021, with the goal to launch an MVP of the tool by July 27, 2021. This tool will include interactive maps and an initial draft scorecard which federal agencies can use to prioritize historically overburdened and underserved communities for benefits in their programs.

@@ -328,6 +328,7 @@ EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile"
     f" for expected building loss rate and is low income?"
 )
+AGRICULTURAL_VALUE_BOOL_FIELD = "Contains agricultural value"
 
 # Clean energy and efficiency
 PM25_EXPOSURE_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for PM2.5 exposure and is low income?"
@@ -372,6 +373,10 @@ LOW_LIFE_EXPECTANCY_LOW_INCOME_FIELD = (
 # Score M Low Income Change
 SCORE_M_LOW_INCOME_SUFFIX = (
     ", is low income, and has a low percent of higher ed students"
+)
+
+COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD = (
+    "Percent higher ed enrollment rate is less than 20%"
 )
 
 # Climate Change

@@ -104,6 +104,17 @@ TODO add mermaid diagram
 
 #### Step 2: Run the ETL script for each data source
 
+##### Table of commands
+
+| VS code command           | actual command      | run time | what it does                                                                                                                     | where it writes to                                     | notes                                                                                               |
+|---------------------------|---------------------|----------|----------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| ETL run                   | etl-run             |          | Downloads the data set files                                                                                                     | data/dataset                                           | check if there are any changes in data_pipeline/etl/sources. if there are none this can be skipped. |
+| Score run                 | score-run           | 6 mins   | consume the etl outputs and combine into a score csv full.                                                                       | data/score/csv/full/usa.csv                            |                                                                                                     |
+| Generate Score post       | generate-score-post | 9 mins   | 1. combines the score/csv/full with counties. 2. downloadable assets (xls, csv, zip), 3. creates the tiles/csv                   | data/score/csv/tiles/usa.csv, data/ score/downloadable | check destination folder to see if newly created                                                    |
+| Combine score and geoJson | geo-score           | 26 mins  | 1. combine the data/score/csv/tiles/usa.csv with the census tiger geojson data 2. aggregates into super tracts for usa-low layer | data/score/geojson (usa high / low)                    |                                                                                                     |
+| Generate Map Tiles        | generate-map-tiles  |    35 mins | ogr-ogr pbf / mvt tiles generator that consume the geojson usa high / usa low                                                    | data/score/tiles/ high or low / {zoomLevel}            |                                                                                                     |
+
+##### ETL steps
 1. Call the `etl-run` command using the application manager `application.py` **NOTE:** This may take several minutes to execute.
    - With Docker: `docker run --rm -it -v ${PWD}/data/data-pipeline/data_pipeline/data:/data_pipeline/data j40_data_pipeline python3 -m data_pipeline.application etl-run`
    - With Poetry: `poetry run python3 data_pipeline/application.py etl-run`

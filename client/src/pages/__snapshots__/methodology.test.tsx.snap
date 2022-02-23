@@ -290,12 +290,12 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <section>
             <p>
               
-      This tool identifies communities that are overburdened by pollution and other environmental exposures 
-      and disadvantaged by underinvestment. A community qualifies as disadvantaged when a census tract 
-      is at or above a certain threshold for a climate or environmental burden indicator and also above 
-      a certain threshold for a socioeconomic indicator. Census tract geographical boundaries are 
-      determined by the U.S. Census Bureau once every ten years. This tool untilizes the 
-      census tract boundaries from 2010.
+      The current version of the tool identifies communities that are disadvantaged for the purposes of 
+      the Justice40 Initiative using census tracts, which are the smallest geographic unit for 
+      which publicly-available and nationally-consistent datasets can be consistently displayed on the 
+      tool. Census tract geographical boundaries are determined by the U.S. Census Bureau once every ten 
+      years. This tool utilizes the census tract boundaries from 2010 because they match the datasets used 
+      in the tool. The U.S. Census Bureau will update these tract boundaries in 2020.
     
             </p>
           </section>
@@ -315,7 +315,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <span>
                 IF
               </span>
-               the tract is above the thresholds for a set of environmental, climate or socioeconomic related indicators
+               the tract is above the thresholds for one or more environmental, climate, health or 
+      socioeconomic burden indicators
       
             </p>
             <p>
@@ -324,15 +325,16 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <span>
                 AND
               </span>
-               the tract is above the thresholds for another set of income or education related indicators
+               the tract is above the thresholds for both socioeconomic indicators
     
             </p>
           </section>
           <section>
             <p>
               
-    Communities will be defined as disadvantaged for the purposes of Justice40 if they meet
-     the qualifications under one or more of the eight categories of criteria below.
+      Communities are identified as disadvantaged by the current version of the tool for the purposes of 
+      the Justice40 Initiative if they are located in census tracts that are at or above the 
+      combined thresholds in one or more of eight categories of criteria below. 
     
             </p>
           </section>
@@ -349,15 +351,15 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div>
                 <div>
                   <div>
-                    Draft communities list v0.1 (73MB)
+                    Draft communities list v0.1 (111MB)
                   </div>
                   <div>
                     
       The download package includes draft v0.1 of the list of disadvantaged communities
-      (.csv and .xlsx) and information (.pdf) about how to use the list.
+      (.csv and .xlsx).
      
                     <span>
-                      Last updated: 12/13/21 
+                      Last updated: 2/18/22 
                     </span>
                   </div>
                   <div>
@@ -421,7 +423,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             identified as disadvantaged
           </strong>
-           in this category 
+           
     
         </p>
         <p>
@@ -457,19 +459,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is at or above 65th percentile for 
+           is above 65th percentile for 
           <a
             href="#low-income"
           >
             low income
           </a>
-           WHEN 
+           AND at or below 20% for 
           <a
             href="#high-ed-enroll-rate"
           >
             higher ed enrollment rate
           </a>
-           is at or below 20%
+           
     
         </p>
         <p />
@@ -484,7 +486,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             identified as disadvantaged
           </strong>
-           in this category 
+           
     
         </p>
         <p>
@@ -497,9 +499,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <a
             href="#energy-burden"
           >
-            energy cost burden
+            energy burden
           </a>
-           score OR 
+           OR 
           <a
             href="#pm-25"
           >
@@ -514,26 +516,26 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is at or above 65th percentile for 
+           is above 65th percentile for 
           <a
             href="#low-income"
           >
             low income
           </a>
-           WHEN 
+           AND at or below 20% for 
           <a
             href="#high-ed-enroll-rate"
           >
             higher ed enrollment rate
           </a>
-           is at or below 20%
+           
     
         </p>
         <p />
       </div>
       <div>
         <h3>
-          Clean transportation
+          Clean transit
         </h3>
         <p>
           
@@ -541,7 +543,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             identified as disadvantaged
           </strong>
-           in this category 
+           
     
         </p>
         <p>
@@ -571,19 +573,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is at or above 65th percentile for 
+           is above 65th percentile for 
           <a
             href="#low-income"
           >
             low income
           </a>
-           WHEN 
+           AND at or below 20% for 
           <a
             href="#high-ed-enroll-rate"
           >
             higher ed enrollment rate
           </a>
-           is at or below 20%
+           
     
         </p>
         <p />
@@ -598,7 +600,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             identified as disadvantaged
           </strong>
-           in this category 
+           
     
         </p>
         <p>
@@ -613,11 +615,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             lead paint
           </a>
-           WHEN 
+           AND 
           <a
             href="#median-home"
           >
-            low median home value
+            median home value
           </a>
            is at or less than
         90th percentile OR at or above the 90th percentile for the 
@@ -635,19 +637,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is at or above 65th percentile for 
+           is above 65th percentile for 
           <a
             href="#low-income"
           >
             low income
           </a>
-           WHEN 
+           AND at or below 20% for 
           <a
             href="#high-ed-enroll-rate"
           >
             higher ed enrollment rate
           </a>
-           is at or below 20%
+           
     
         </p>
         <p />
@@ -662,7 +664,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             identified as disadvantaged
           </strong>
-           in this category 
+           
     
         </p>
         <p>
@@ -698,19 +700,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is at or above 65th percentile for 
+           is above 65th percentile for 
           <a
             href="#low-income"
           >
             low income
           </a>
-           WHEN 
+           AND at or below 20% for 
           <a
             href="#high-ed-enroll-rate"
           >
             higher ed enrollment rate
           </a>
-           is at or below 20%
+           
     
         </p>
         <p />
@@ -725,7 +727,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             identified as disadvantaged
           </strong>
-           in this category 
+           
     
         </p>
         <p>
@@ -749,19 +751,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is at or above 65th percentile for 
+           is above 65th percentile for 
           <a
             href="#low-income"
           >
             low income
           </a>
-           WHEN 
+           AND at or below 20% for 
           <a
             href="#high-ed-enroll-rate"
           >
             higher ed enrollment rate
           </a>
-           is at or below 20%
+           
     
         </p>
         <p />
@@ -776,7 +778,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             identified as disadvantaged
           </strong>
-           in this category 
+           
     
         </p>
         <p>
@@ -818,19 +820,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is at or above 65th percentile for 
+           is above 65th percentile for 
           <a
             href="#low-income"
           >
             low income
           </a>
-           WHEN 
+           AND at or below 20% for 
           <a
             href="#high-ed-enroll-rate"
           >
             higher ed enrollment rate
           </a>
-           is at or below 20%
+           
     
         </p>
         <p />
@@ -845,7 +847,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             identified as disadvantaged
           </strong>
-           in this category 
+           
     
         </p>
         <p>
@@ -875,7 +877,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             unemployment
           </a>
            OR
-        percent individuals in households at or below 100% federal 
+        percent individuals in households at or below 100% Federal 
           <a
             href="#poverty"
           >
@@ -890,20 +892,20 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           where the 
+           is at or less than 90% for 
           <a
             href="#high-school"
           >
-            high school degree achievement rates
+            high school degree attainment rate
           </a>
-           rates for adults 25 years and older is at or less than 
-    90% WHEN 
+           for adults 25 years and older AND 
+    at or below 20% for 
           <a
             href="#high-ed-enroll-rate"
           >
             higher ed enrollment rate
           </a>
-           is at or below 20%
+           
   
         </p>
         <p />
@@ -914,7 +916,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
     >
       <div
         class="grid-container-desktop-lg"
-        data-cy="datasets-used-in-methodology-block"
+        data-cy="datasets-used-in-beta-methodology-block"
         data-testid="gridContainer"
       >
         <div
@@ -926,8 +928,25 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             data-testid="grid"
           >
             <h2>
-              Datasets used in methodology
+              Datasets used in beta methodology
             </h2>
+          </div>
+        </div>
+        <div
+          class="grid-row"
+          data-testid="grid"
+        >
+          <div
+            class="desktop:grid-col-9"
+            data-testid="grid"
+          >
+            <p>
+              
+      The datasets used in the current version of the tool come from a variety of sources and were 
+      selected based on relevance, availability, and quality. The datasets seek to identify a range of 
+      human health, environmental, climate-related, and other impacts on communities.
+    
+            </p>
           </div>
         </div>
         <div
@@ -948,7 +967,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 <div>
                   
         Percent of a census tract's population in households where household income is at or below
-        200% of the federal poverty level.
+        200% of the Federal poverty level.
       
                 </div>
                 <ul>
@@ -956,7 +975,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    All categories except for training and workforce development
+                    All categories except for the training and workforce development catetory
                   </li>
                   <li>
                     <span>
@@ -1042,10 +1061,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </h3>
                 <div>
                   
-        Percent of agriculture value at risk from losses due to natural hazards such as the fourteen 
-        natural hazards that have some link to climate change including: avalanche, coastal flooding, 
+        Percent of agriculture value at risk from losses due to natural hazards that have some link 
+        to climate change: avalanche, coastal flooding, 
         cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong 
-        wind, tornado, wildfire, and winter weather. Calculated by dividing the agriculture value at risk in 
+        wind, tornado, wildfire, and winter weather. Rate calculated by dividing the agriculture value at risk in 
         a census tract by the total agriculture value in that census tract.
       
                 </div>
@@ -1054,7 +1073,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Climate change methodology
+                    Climate change category
                   </li>
                   <li>
                     <span>
@@ -1093,10 +1112,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </h3>
                 <div>
                   
-        Percent of building value at risk from losses due to natural hazards such as the fourteen 
-        natural hazards that have some link to climate change including: avalanche, coastal flooding, 
+        Percent of building value at risk from losses due to natural hazards 
+        that have some link to climate change: avalanche, coastal flooding, 
         cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong 
-        wind, tornado, wildfire, and winter weather. Calculated by dividing the building value at risk in 
+        wind, tornado, wildfire, and winter weather. Rate calculated by dividing the building value at risk in 
         a census tract by the total building value in that census tract.
       
                 </div>
@@ -1105,7 +1124,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Climate change methodology
+                    Climate change category
                   </li>
                   <li>
                     <span>
@@ -1144,8 +1163,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </h3>
                 <div>
                   
-        Rate relative to the population in fatalities and injuries due to natural hazards each year such as 
-        the fourteen natural hazards that have some link to climate change including: avalanche, 
+        Rate relative to the population in fatalities and injuries due to natural hazards each year
+        that have some link to climate change: avalanche, 
         coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, 
         riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined 
         as the Spatial Hazard Events and Losses or National Centers for Environmental Information’s 
@@ -1162,7 +1181,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Climate change methodology
+                    Climate change category
                   </li>
                   <li>
                     <span>
@@ -1197,17 +1216,17 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="energy-burden"
               >
                 <h3>
-                  Energy cost burden
+                  Energy burden
                 </h3>
                 <div>
-                  Average annual energy cost ($) divided by household income.
+                  Average annual energy cost per household ($) divided by household average income.
                 </div>
                 <ul>
                   <li>
                     <span>
                       Used in: 
                     </span>
-                    Clean energy and energy efficiency methodology
+                    Clean energy and energy efficiency category
                   </li>
                   <li>
                     <span>
@@ -1246,7 +1265,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </h3>
                 <div>
                   
-        Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller.
+        Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller. The value 
+        in the fields is the weight of these particles in micrograms per cubic meter.
+
       
                 </div>
                 <ul>
@@ -1254,7 +1275,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Clean energy and energy efficiency methodology
+                    Clean energy and energy efficiency category
                   </li>
                   <li>
                     <span>
@@ -1297,7 +1318,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </h3>
                 <div>
                   
-        Mixture of particles that is part of diesel exhaust in the air.
+        Mixture of particles that is part of diesel exhaust in the air. The value in the fields is the 
+        weight of these particles in micrograms per cubic meter. 
       
                 </div>
                 <ul>
@@ -1305,7 +1327,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Clean transportation methodology
+                    Clean transit category
                   </li>
                   <li>
                     <span>
@@ -1345,7 +1367,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 <div>
                   
         Count of vehicles (average annual daily traffic) at major roads
-        within 500 meters, divided by distance in meters (not km).
+        within 500 meters, divided by distance in meters.
       
                 </div>
                 <ul>
@@ -1353,7 +1375,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Clean transportation methodology
+                    Clean transit category
                   </li>
                   <li>
                     <span>
@@ -1393,7 +1415,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 <div>
                   
         The percent of households in a census tract that are both earning less than 80% of HUD Area Median
-        Family Income by county and are paying greater than 30% of their income to housing costs.
+        Family Income by county and are spending more than 30% of their income on housing costs.
       
                 </div>
                 <ul>
@@ -1401,13 +1423,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Affordable and sustainable housing methodology
+                    Affordable and sustainable housing category
                   </li>
                   <li>
                     <span>
                       Responsible Party: 
                     </span>
-                    Department of Housing & Urban Development's (HUD)
+                    Department of Housing & Urban Development (HUD)
                   </li>
                   <li>
                     <span>
@@ -1441,7 +1463,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 <div>
                   
         Percent of housing units built pre-1960, used as an indicator of potential lead paint exposure in
-        tracts with median home values less than 90th percentile
+        tracts with median home values less than 90th percentile.
       
                 </div>
                 <ul>
@@ -1449,7 +1471,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Affordable and sustainable housing methodology
+                    Affordable and sustainable housing category
                   </li>
                   <li>
                     <span>
@@ -1484,7 +1506,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="median-home"
               >
                 <h3>
-                  Low median home value
+                  Median home value
                 </h3>
                 <div>
                   
@@ -1496,7 +1518,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Affordable and sustainable housing methodology
+                    Affordable and sustainable housing category
                   </li>
                   <li>
                     <span>
@@ -1536,7 +1558,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 <div>
                   
         Count of hazardous waste facilities (Treatment, Storage, and Disposal Facilities and Large
-        Quantity Generators) within 5 km (or nearest beyond 5 km), each divided by distance in kilometers.
+        Quantity Generators) within 5 kilometers (or nearest beyond 5 kilometers), each divided by 
+        distance in kilometers.
       
                 </div>
                 <ul>
@@ -1544,7 +1567,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Reduction and remediation of legacy pollution methodology
+                    Reduction and remediation of legacy pollution category
                   </li>
                   <li>
                     <span>
@@ -1565,9 +1588,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                       rel="noreferrer"
                       target="_blank"
                     >
-                      Treatment Storage, and Disposal Facilities (TSDF) data
+                      Treatment, Storage, and Disposal Facilities (TSDF) data
                     </a>
-                     from 2020 calculated from EPA RCRA database as compiled 
+                     from 2020 calculated from EPA's RCRA database as compiled 
       by EPA's EJSCREEN
     
                   </li>
@@ -1587,8 +1610,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </h3>
                 <div>
                   
-        Count of proposed or listed NPL - also known as superfund - sites within 5 km (or nearest one
-        beyond 5 km), each divided by distance in kilometers.
+        Count of proposed or listed NPL - also known as Superfund - sites within 5 kilometers (or nearest one
+        beyond 5 kilometers), each divided by distance in kilometers.
         
                 </div>
                 <ul>
@@ -1596,7 +1619,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Reduction and remediation of legacy pollution methodology
+                    Reduction and remediation of legacy pollution category
                   </li>
                   <li>
                     <span>
@@ -1635,8 +1658,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </h3>
                 <div>
                   
-        Count of RMP (potential chemical accident management plan) facilities within 5 km (or nearest
-        one beyond 5 km), each divided by distance in kilometers.
+        Count of RMP (potential chemical accident management plan) facilities within 5 kilometers (or nearest
+        one beyond 5 kilometers), each divided by distance in kilometers.
       
                 </div>
                 <ul>
@@ -1644,7 +1667,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Reduction and remediation of legacy pollution methodology
+                    Reduction and remediation of legacy pollution category
                   </li>
                   <li>
                     <span>
@@ -1683,8 +1706,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </h3>
                 <div>
                   
-        Risk-Screening Environmental Indicators (RSEI) modeled Toxic Concentrations at
-        stream segments within 500 meters, divided by distance in kilometers (km).
+        Risk-Screening Environmental Indicators (RSEI) modeled toxic concentrations at
+        stream segments within 500 meters, divided by distance in kilometers.
       
                 </div>
                 <ul>
@@ -1692,7 +1715,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Critical clean water and waste infrastructure methodology
+                    Critical clean water and waste infrastructure category
                   </li>
                   <li>
                     <span>
@@ -1732,7 +1755,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 <div>
                   
         Weighted percent of people who answer “yes” to both of the following questions: “Have you ever
-        been told by a doctor, nurse, or other health professional that you have asthma?” and the question
+        been told by a doctor, nurse, or other health professional that you have asthma?” and
         “Do you still have asthma?”
       
                 </div>
@@ -1741,7 +1764,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Health burdens methodology
+                    Health burdens category
                   </li>
                   <li>
                     <span>
@@ -1790,7 +1813,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Health burdens methodology
+                    Health burdens category
                   </li>
                   <li>
                     <span>
@@ -1839,7 +1862,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Health burdens methodology
+                    Health burdens category
                   </li>
                   <li>
                     <span>
@@ -1885,11 +1908,12 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                       Note:
                     </strong>
                     
-          Unlike most of the other datasets, high values of this indicator indicate low burdens.
-          For percentile calculations, the percentile is calculated in reverse order, so that the tract with
-          the highest median income relative to area median income (lowest burden on this measure) is at the
-          0th percentile, and the tract with the lowest median income relative to area median income
-          (highest burden on this measure) is at the 100th percentile.
+          Unlike most of the other datasets, high values of this data indicate low burdens. For 
+          percentile calculations of burden, the percentile is calculated in reverse order, so that the 
+          tract with the highest life expectancy relative to area life expectancy (lowest burden on this 
+          measure) is at the 0th percentile, and the tract with the lowest life expectancy relative to 
+          area life expectancy (highest burden on this measure) is at the 100th percentile. Tracts with 
+          the highest number have the lowest life expectancy.
         
                   </p>
                   
@@ -1900,7 +1924,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Health burdens methodology
+                    Health burdens category
                   </li>
                   <li>
                     <span>
@@ -1935,11 +1959,26 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="low-med-inc"
               >
                 <h3>
-                  Low median Income
+                  Low median income
                 </h3>
                 <div>
                   
         Median income of the census tract calculated as a percent of the area’s median income.
+        
+                  <p>
+                    <strong>
+                      Note:
+                    </strong>
+                    
+          Unlike most of the other datasets, high values of this data indicate low burdens. For 
+          percentile calculations of burden, the percentile is calculated in reverse order, so that the 
+          tract with the highest median income relative to area median income (lowest burden on this 
+          measure) is at the 0th percentile, and the tract with the lowest median income relative to 
+          area median income (highest burden on this measure) is at the 100th percentile. Tracts with 
+          the highest number have the lowest median income.
+        
+                  </p>
+                  
       
                 </div>
                 <ul>
@@ -1947,7 +1986,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Training and workforce development methodology
+                    Training and workforce development category
                   </li>
                   <li>
                     <span>
@@ -1983,7 +2022,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <a
                       class="usa-link usa-link--external"
                       data-cy=""
-                      href="https://www.census.gov/programs-surveys/acs"
+                      href="https://www.census.gov/data/developers/data-sets/acs-5year/2010.html"
                       rel="noreferrer"
                       target="_blank"
                     >
@@ -2007,8 +2046,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </h3>
                 <div>
                   
-        The percent of limited speaking households, which are households where no one over age
-        14 speaks English well.
+        The percent households, which are households, where no one over the age fourteen speaks English well.
       
                 </div>
                 <ul>
@@ -2016,7 +2054,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Training and workforce development methodology
+                    Training and workforce development category
                   </li>
                   <li>
                     <span>
@@ -2063,7 +2101,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Training and workforce development methodology
+                    Training and workforce development category
                   </li>
                   <li>
                     <span>
@@ -2099,7 +2137,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <a
                       class="usa-link usa-link--external"
                       data-cy=""
-                      href="https://www.census.gov/programs-surveys/acs"
+                      href="https://www.census.gov/data/developers/data-sets/acs-5year/2010.html"
                       rel="noreferrer"
                       target="_blank"
                     >
@@ -2123,8 +2161,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </h3>
                 <div>
                   
-        Percent of a tract's population in households where the household income is at or below 100% of
-        the federal poverty level.
+        Proportion of a tract's population in households where the household income is at or below 100% of
+        the Federal poverty level.
       
                 </div>
                 <ul>
@@ -2132,7 +2170,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Training and workforce development methodology
+                    Training and workforce development category
                   </li>
                   <li>
                     <span>
@@ -2168,7 +2206,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <a
                       class="usa-link usa-link--external"
                       data-cy=""
-                      href="https://www.census.gov/programs-surveys/acs"
+                      href="https://www.census.gov/data/developers/data-sets/acs-5year/2010.html"
                       rel="noreferrer"
                       target="_blank"
                     >
@@ -2188,11 +2226,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="high-school"
               >
                 <h3>
-                  High school degree achievement rate
+                  High school degree attainment rate
                 </h3>
                 <div>
                   
-        Percent (not percentile) of people ages 25 years or older in a census tract whose
+        Proportion of people ages 25 years or older in a census tract whose
         education level is less than a high school diploma.
       
                 </div>
@@ -2201,7 +2239,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Training and workforce development methodology
+                    Training and workforce development category
                   </li>
                   <li>
                     <span>
@@ -2237,7 +2275,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <a
                       class="usa-link usa-link--external"
                       data-cy=""
-                      href="https://www.census.gov/programs-surveys/acs"
+                      href="https://www.census.gov/data/developers/data-sets/acs-5year/2010.html"
                       rel="noreferrer"
                       target="_blank"
                     >

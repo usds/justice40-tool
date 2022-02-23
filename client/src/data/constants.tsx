@@ -27,6 +27,10 @@ export const featureURLForTilesetName = (tilesetName: string): string => {
 export const FEATURE_TILE_HIGH_ZOOM_URL = featureURLForTilesetName('high');
 export const FEATURE_TILE_LOW_ZOOM_URL = featureURLForTilesetName('low');
 
+// Staging links for testing:
+// export const FEATURE_TILE_HIGH_ZOOM_URL = `https://justice40-data.s3.amazonaws.com/data-pipeline-staging/1297/deee14dd93b783c8d366434dc8438a281b5c89df/data/score/tiles/high/${XYZ_SUFFIX}`;
+// export const FEATURE_TILE_LOW_ZOOM_URL = `https://justice40-data.s3.amazonaws.com/data-pipeline-staging/1297/deee14dd93b783c8d366434dc8438a281b5c89df/data/score/tiles/low/${XYZ_SUFFIX}`;
+
 
 // Performance markers
 export const PERFORMANCE_MARKER_MAP_IDLE = 'MAP_IDLE';
@@ -38,6 +42,14 @@ export type J40Properties = { [key: string]: any };
 export const SCORE_PROPERTY_HIGH = 'SM_PFS';
 export const SCORE_PROPERTY_LOW = 'M_SCORE';
 export const GEOID_PROPERTY = 'GEOID10';
+export const SIDE_PANEL_STATE = 'UI_EXP';
+export const SIDE_PANEL_STATE_VALUES = {
+  NATION: 'Nation',
+  PUERTO_RICO: 'Puerto Rico',
+  ISLAND_AREAS: 'Island Areas',
+};
+
+export const THRHLD = 'TERRITORY_THRESHOLD';
 
 // Indicator values:
 export const ASTHMA_PERCENTILE = 'AF_PFS';
@@ -68,6 +80,13 @@ export const POVERTY_BELOW_200_PERCENTILE = 'P200_PFS';
 export const PROXIMITY_NPL_SITES_PERCENTILE = 'NPL_PFS';
 export const PROXIMITY_RMP_SITES_PERCENTILE = 'RMP_PFS';
 export const PROXIMITY_TSDF_SITES_PERCENTILE = 'TSDF_PFS';
+export const HIGHER_ED_PERCENTILE = 'CA';
+
+export const ISLAND_AREAS_UNEMPLOYMENT_LOW_HS_EDU_PERCENTILE_FIELD= 'IAULHSE_PFS';
+export const ISLAND_AREAS_POVERTY_LOW_HS_EDU_PERCENTILE_FIELD= 'IAPLHSE_PFS';
+export const ISLAND_AREAS_LOW_MEDIAN_INCOME_LOW_HS_EDU_PERCENTILE_FIELD= 'IALMILHSE_PFS';
+export const ISLAND_AREAS_LOW_HS_EDU_PERCENTILE_FIELD= 'IALHE_PFS';
+export const ISLAND_AREAS_HS_EDU_PERCENTAGE_FIELD= 'IAHSEF';
 
 // Category booleans (disadvantaged or not):
 export const IS_CLIMATE_FACTOR_DISADVANTAGED_M = 'M_CLT';
@@ -81,7 +100,7 @@ export const IS_WORKFORCE_FACTOR_DISADVANTAGED_M = 'M_WKFC';
 
 // Total indicators values:
 export const TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS = 'TC';
-export const TOTAL_NUMBER_OF_INDICATORS = 21;
+export const TOTAL_NUMBER_OF_INDICATORS = 'THRHLD';
 
 // Indicator booleans (disadvangted or not): (GTE = greater than or equal)
 export const IS_GTE_90_EXP_POP_LOSS_AND_IS_LOW_INCOME = 'EPLRLI';
@@ -106,10 +125,12 @@ export const IS_GTE_90_BELOW_100_POVERTY_AND_LOW_HIGH_SCHOOL_EDU = 'PLHSE';
 export const IS_GTE_90_LOW_MEDIAN_INCOME_AND_LOW_HIGH_SCHOOL_EDU = 'LMILHSE';
 export const IS_GTE_90_UNEMPLOYMENT_AND_LOW_HIGH_SCHOOL_EDU = 'ULHSE';
 export const IS_FEDERAL_POVERTY_LEVEL_200 = 'FPL200S';
+export const IS_HIGHER_ED_PERCENTILE = 'CA_LT20';
 export const TOTAL_THRESHOLD_CRITERIA = 'TC';
 export const IS_GTE_90_ISLAND_AREA_UNEMPLOYMENT_AND_IS_LOW_HS_EDU_2009 = 'IAULHSE';
-export const IS_GTE_90_ISLAND_AREA_BELOW_100_POVERTY_AND_IS_LOW_HS_EDU_2009 = 'ISPLHSE';
+export const IS_GTE_90_ISLAND_AREA_BELOW_100_POVERTY_AND_IS_LOW_HS_EDU_2009 = 'IAPLHSE';
 export const IS_GTE_90_ISLAND_AREA_LOW_MEDIAN_INCOME_AND_IS_LOW_HS_EDU_2009 = 'IALMILHSE';
+export const ISLAND_AREA_LOW_HS_EDU = 'IALHE';
 export const IS_LOW_HS_EDUCATION_LOW_HIGHER_ED_PRIORITIZED = 'LHE';
 
 // The name of the layer within the tiles that contains the score

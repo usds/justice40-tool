@@ -73,9 +73,9 @@ TILES_ROUND_NUM_DECIMALS = 2
 # data available, and as a consequence, show a different number of fields.
 
 # Controlling Tile user experience columns
-THRESHOLD_COUNT_TO_SHOW_FIELD_NAME = "Thresholds"
-TILES_ISLAND_AREAS_THRESHOLD_COUNT = 4
-TILES_PUERTO_RICO_THRESHOLD_COUNT = 5
+THRESHOLD_COUNT_TO_SHOW_FIELD_NAME = "THRHLD"
+TILES_ISLAND_AREAS_THRESHOLD_COUNT = 3
+TILES_PUERTO_RICO_THRESHOLD_COUNT = 4
 TILES_NATION_THRESHOLD_COUNT = 21
 
 # Note that the FIPS code is a string
@@ -86,7 +86,7 @@ TILES_PUERTO_RICO_FIPS_CODE = ["72"]
 
 # Constant to reflect UI Experience version
 # "Nation" referring to 50 states and DC is from Census
-USER_INTERFACE_EXPERIENCE_FIELD_NAME = "UI Experience"
+USER_INTERFACE_EXPERIENCE_FIELD_NAME = "UI_EXP"
 NATION_USER_EXPERIENCE = "Nation"
 PUERTO_RICO_USER_EXPERIENCE = "Puerto Rico"
 ISLAND_AREAS_USER_EXPERIENCE = "Island Areas"
@@ -194,6 +194,8 @@ TILES_SCORE_COLUMNS = {
     + field_names.PERCENTILE_FIELD_SUFFIX: "IAULHSE_PFS",
     # Percentage of HS Degree completion for Islands
     field_names.CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009: "IAHSEF",
+    field_names.COLLEGE_ATTENDANCE_FIELD: "CA",
+    field_names.COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD: "CA_LT20",
 }
 
 # columns to round floats to 2 decimals
@@ -243,6 +245,7 @@ TILES_SCORE_FLOAT_COLUMNS = [
     field_names.ISLAND_AREAS_LOW_HS_EDUCATION_FIELD,
     field_names.WASTEWATER_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.SCORE_M + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.COLLEGE_ATTENDANCE_FIELD,
 ]
 
 # Finally we augment with the GEOID10, county, and state
@@ -254,6 +257,8 @@ DOWNLOADABLE_SCORE_COLUMNS = [
     field_names.SCORE_M_COMMUNITIES,
     field_names.TOTAL_POP_FIELD,
     field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES,
+    field_names.COLLEGE_ATTENDANCE_FIELD,
+    field_names.COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD,
     field_names.EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD,
     field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX,

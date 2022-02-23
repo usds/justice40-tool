@@ -11,7 +11,7 @@ exports[`rendering of indicator dataset card checks if component renders 1`] = `
     <div>
       
         Percent of a census tract's population in households where household income is at or below
-        200% of the federal poverty level.
+        200% of the Federal poverty level.
       
     </div>
     <ul>
@@ -19,7 +19,7 @@ exports[`rendering of indicator dataset card checks if component renders 1`] = `
         <span>
           Used in: 
         </span>
-        All categories except for training and workforce development
+        All categories except for the training and workforce development catetory
       </li>
       <li>
         <span>

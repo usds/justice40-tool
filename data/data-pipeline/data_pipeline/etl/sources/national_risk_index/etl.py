@@ -19,6 +19,13 @@ class NationalRiskIndexETL(ExtractTransformLoad):
     SOURCE_URL = "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload//NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
 
+    ## TEMPORARILY HERE
+    ## To get this value up in time for launch, we've hard coded it. We would like
+    ## to, in the future, have this pull the 10th percentile (or nth percentile)
+    ## from the agrivalue data for rural tracts.
+    # This is defined as roughly the 10th percentile for "rural tracts"
+    AGRIVALUE_LOWER_BOUND = 408000
+
     def __init__(self):
         self.INPUT_CSV = self.get_tmp_path() / "NRI_Table_CensusTracts.csv"
 
@@ -50,6 +57,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         self.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME = (
             "Expected population loss rate (Natural Hazards Risk Index)"
         )
+        self.CONTAINS_AGRIVALUE = "Contains agricultural value"
 
         self.COLUMNS_TO_KEEP = [
             self.GEOID_TRACT_FIELD_NAME,
@@ -57,6 +65,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
             self.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME,
             self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME,
             self.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME,
+            self.CONTAINS_AGRIVALUE,
         ]
 
         self.df: pd.DataFrame
@@ -150,10 +159,20 @@ class NationalRiskIndexETL(ExtractTransformLoad):
             / df_nri[self.POPULATION_INPUT_FIELD_NAME]
         )
 
-        # Agriculture EAL Rate = Eal Vala / Agrivalue
-        df_nri[self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME] = (
-            disaster_agriculture_sum_series
-            / df_nri[self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME]
+        # Agriculture EAL Rate = Eal Vala / max(Agrivalue, 408000)
+        ## FORMULA ADJUSTMENT 2/17
+        ## Because AGRIVALUE contains a lot of 0s, we are going to consider
+        ## 90th percentile only for places that have some agrivalue at all
+        df_nri[
+            self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME
+        ] = disaster_agriculture_sum_series / df_nri[
+            self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME
+        ].clip(
+            lower=self.AGRIVALUE_LOWER_BOUND
+        )
+        # This produces a boolean that is True in the case of non-zero agricultural value
+        df_nri[self.CONTAINS_AGRIVALUE] = (
+            df_nri[self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME] > 0
         )
 
         # divide EAL_VALB (Expected Annual Loss - Building Value) by BUILDVALUE (Building Value ($)).

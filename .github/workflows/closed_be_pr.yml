@@ -1,0 +1,20 @@
+name: Closed Backend PR
+on:
+  pull_request:
+    types: [closed]
+    paths:
+      - "data/**"
+env:
+  PR_NUMBER: ${{github.event.pull_request.number}}
+jobs:
+  remove-artifacts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.DATA_DEV_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.DATA_DEV_AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: Remove staging artifacts
+        run: aws s3 rm s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}} --recursive

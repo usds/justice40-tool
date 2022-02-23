@@ -123,6 +123,7 @@ class TestNationalRiskIndexETL(TestETL):
             etl.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME,
             etl.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME,
             etl.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME,
+            etl.CONTAINS_AGRIVALUE,
         ]
 
     def test_get_output_file_path(self, mock_etl, mock_paths):

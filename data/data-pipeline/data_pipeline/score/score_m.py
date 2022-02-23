@@ -92,6 +92,7 @@ class ScoreM(Score):
         of booleans based on the condition of the FPL at 200%
         is at or more than some established threshold
         """
+
         return (
             (
                 df[
@@ -101,10 +102,7 @@ class ScoreM(Score):
                 >= self.LOW_INCOME_THRESHOLD
             )
         ) & (
-            (
-                df[field_names.COLLEGE_ATTENDANCE_FIELD]
-                <= self.MAX_COLLEGE_ATTENDANCE_THRESHOLD
-            )
+            df[field_names.COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD]
             | (
                 # If college attendance data is null for this tract, just rely on the
                 # poverty data
@@ -113,15 +111,29 @@ class ScoreM(Score):
         )
 
     def _increment_total_eligibility_exceeded(
-        self, columns_for_subset: list
+        self, columns_for_subset: list, skip_fips: tuple = ()
     ) -> None:
         """
         Increments the total eligible factors for a given tract
-        """
 
-        self.df[field_names.THRESHOLD_COUNT] += self.df[columns_for_subset].sum(
-            axis=1, skipna=True
-        )
+        The new skip_fips argument specifies which (if any) fips codes to
+        skip over for incrementing.
+        This allows us to essentially skip data we think is of limited veracity,
+        without overriding any values in the data.
+        THIS IS A TEMPORARY FIX.
+        """
+        if skip_fips:
+            self.df[field_names.THRESHOLD_COUNT] += np.where(
+                self.df[field_names.GEOID_TRACT_FIELD].str.startswith(
+                    skip_fips
+                ),
+                0,
+                self.df[columns_for_subset].sum(axis=1, skipna=True),
+            )
+        else:
+            self.df[field_names.THRESHOLD_COUNT] += self.df[
+                columns_for_subset
+            ].sum(axis=1, skipna=True)
 
     def _climate_factor(self) -> bool:
         # In Xth percentile or above for FEMA’s Risk Index (Source: FEMA
@@ -182,7 +194,9 @@ class ScoreM(Score):
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
-        self._increment_total_eligibility_exceeded(climate_eligibility_columns)
+        self._increment_total_eligibility_exceeded(
+            climate_eligibility_columns, skip_fips=("72")
+        )
 
         return self.df[climate_eligibility_columns].any(axis="columns")
 
@@ -224,7 +238,9 @@ class ScoreM(Score):
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
-        self._increment_total_eligibility_exceeded(energy_eligibility_columns)
+        self._increment_total_eligibility_exceeded(
+            energy_eligibility_columns, skip_fips=("72")
+        )
 
         return self.df[energy_eligibility_columns].any(axis="columns")
 
@@ -274,7 +290,7 @@ class ScoreM(Score):
         )
 
         self._increment_total_eligibility_exceeded(
-            transportion_eligibility_columns
+            transportion_eligibility_columns, skip_fips=("72")
         )
 
         return self.df[transportion_eligibility_columns].any(axis="columns")
@@ -334,7 +350,9 @@ class ScoreM(Score):
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
-        self._increment_total_eligibility_exceeded(housing_eligibility_columns)
+        self._increment_total_eligibility_exceeded(
+            housing_eligibility_columns, skip_fips=("72")
+        )
 
         return self.df[housing_eligibility_columns].any(axis="columns")
 
@@ -384,7 +402,7 @@ class ScoreM(Score):
         )
 
         self._increment_total_eligibility_exceeded(
-            pollution_eligibility_columns
+            pollution_eligibility_columns, skip_fips=("72")
         )
 
         return self.df[pollution_eligibility_columns].any(axis="columns")
@@ -413,7 +431,8 @@ class ScoreM(Score):
         )
 
         self._increment_total_eligibility_exceeded(
-            [field_names.WASTEWATER_DISCHARGE_LOW_INCOME_LOW_HIGHER_ED_FIELD]
+            [field_names.WASTEWATER_DISCHARGE_LOW_INCOME_LOW_HIGHER_ED_FIELD],
+            skip_fips=("72"),
         )
 
         return self.df[
@@ -490,7 +509,9 @@ class ScoreM(Score):
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
-        self._increment_total_eligibility_exceeded(health_eligibility_columns)
+        self._increment_total_eligibility_exceeded(
+            health_eligibility_columns, skip_fips=("72")
+        )
 
         return self.df[health_eligibility_columns].any(axis="columns")
 
@@ -709,6 +730,17 @@ class ScoreM(Score):
         logger.info("Adding Score M")
 
         self.df[field_names.THRESHOLD_COUNT] = 0
+
+        # TODO: move this inside of
+        #  `_create_low_income_and_low_college_attendance_threshold`
+        # and change the return signature of that method.
+        # Create a standalone field that captures the college attendance boolean
+        # threshold.
+        self.df[field_names.COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD] = (
+            self.df[field_names.COLLEGE_ATTENDANCE_FIELD]
+            <= self.MAX_COLLEGE_ATTENDANCE_THRESHOLD
+        )
+
         self.df[
             field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES
         ] = self._create_low_income_and_low_college_attendance_threshold(
