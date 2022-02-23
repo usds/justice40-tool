@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test rendering of Exceeds both socioeco burdens when is NOT burdended 1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      Exceeds the threshold for both socioeconomic indicators?
+    </div>
+    <div>
+      No
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`test rendering of Exceeds both socioeco burdens when is burdended 1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      Exceeds the threshold for one or more burden indicators?
+    </div>
+    <div>
+      Yes
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`test rendering of Exceeds one or more burdens when is NOT burdended 1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      Exceeds the threshold for one or more burden indicators?
+    </div>
+    <div>
+      No
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`test rendering of Exceeds one or more burdens when is burdended 1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      Exceeds the threshold for one or more burden indicators?
+    </div>
+    <div>
+      Yes
+    </div>
+  </div>
+</DocumentFragment>
+`;

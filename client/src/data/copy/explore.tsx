@@ -253,16 +253,6 @@ export const SEND_FEEDBACK = defineMessages({
 });
 
 export const SIDE_PANEL_CATEGORY = defineMessages({
-  INDICATOR: {
-    id: 'areaDetail.category.header.indicator',
-    defaultMessage: 'Indicator',
-    description: 'header for each category',
-  },
-  PERCENTILE: {
-    id: 'areaDetail.category.header.percentile',
-    defaultMessage: 'Percentile (0-100)',
-    description: 'header for each category',
-  },
   CLIMATE: {
     id: 'areaDetail.indicator.title.climate',
     defaultMessage: 'Climate change',
@@ -595,6 +585,34 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
     description: 'Percent of people ages 25 years or older whose education level is less than a high school diploma',
   },
 });
+
+export const SIDE_PANEL_SPACERS = {
+  EXCEED_ONE_OR_MORE: <FormattedMessage
+    id={'explore.page.side.panel.exceed.burden.one.or.more'}
+    description={'Exceeds the threshold for one or more burden indicators?'}
+    defaultMessage={`Exceeds the threshold for one or more burden indicators?`}
+  />,
+  EXCEED_BOTH_SOCIO: <FormattedMessage
+    id={'explore.page.side.panel.exceed.burden.both.socio'}
+    description={'Exceeds the threshold for both socioeconomic indicators?'}
+    defaultMessage={`Exceeds the threshold for both socioeconomic indicators?`}
+  />,
+  YES: <FormattedMessage
+    id={'explore.page.side.panel.exceed.burden.answer.yes'}
+    description={'Yes'}
+    defaultMessage={`Yes`}
+  />,
+  NO: <FormattedMessage
+    id={'explore.page.side.panel.exceed.burden.answer.no'}
+    description={'No'}
+    defaultMessage={`No`}
+  />,
+  AND: <FormattedMessage
+    id={'explore.page.side.panel.spacer.and'}
+    description={'AND'}
+    defaultMessage={`AND`}
+  />,
+};
 
 export const DOWNLOAD_DRAFT = {
   PARAGRAPH_1: <FormattedMessage
