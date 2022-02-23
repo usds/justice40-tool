@@ -22,7 +22,7 @@ fields:
     format: bool
   - score_name: Total population
     label: Total population
-    format: float
+    format: int64
   - score_name: Is low income and has a low percent of higher ed students?
     label: Is low income and has a low percent of higher ed students?
     format: bool

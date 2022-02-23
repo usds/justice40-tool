@@ -44,6 +44,13 @@ class PostScoreETL(ExtractTransformLoad):
         self.output_score_tiles_df: pd.DataFrame
         self.output_downloadable_df: pd.DataFrame
 
+        self.yaml_fields_type_percentage_label = "percentage"
+        self.yaml_fields_type_loss_rate_percentage_label = (
+            "loss_rate_percentage"
+        )
+        self.yaml_fields_type_float_label = "float"
+        self.yaml_excel_sheet_label = "label"
+
     def _extract_counties(self, county_path: Path) -> pd.DataFrame:
         logger.info("Reading Counties CSV")
         return pd.read_csv(
@@ -305,7 +312,10 @@ class PostScoreETL(ExtractTransformLoad):
         )
 
         for column in df.columns:
-            if column_type_dict[column] == "percentage":
+            if (
+                column_type_dict[column]
+                == self.yaml_fields_type_percentage_label
+            ):
                 # Convert percentages from fractions between 0 and 1 to an integer
                 # from 0 to 100.
                 df_100 = df[column] * 100
@@ -314,18 +324,21 @@ class PostScoreETL(ExtractTransformLoad):
                 ).astype("Int64")
                 df[column] = df_int
 
-            elif column_type_dict[column] == "loss_rate_percentage":
+            elif (
+                column_type_dict[column]
+                == self.yaml_fields_type_loss_rate_percentage_label
+            ):
                 # Convert loss rates by multiplying by 100 (they are percents)
                 # and then rounding appropriately.
                 df_100 = df[column] * 100
                 df[column] = floor_series(
                     series=df_100.astype(float64),
                     number_of_decimals=config_object["rounding_num"][
-                        "loss_rate_percentage"
+                        self.yaml_fields_type_loss_rate_percentage_label
                     ],
                 )
 
-            elif column_type_dict[column] == "float":
+            elif column_type_dict[column] == self.yaml_fields_type_float_label:
                 # Round the floats.
                 df[column] = floor_series(
                     series=df[column].astype(float64),
@@ -413,12 +426,14 @@ class PostScoreETL(ExtractTransformLoad):
                 # Convert the dataframe to an XlsxWriter Excel object. We also turn off the
                 # index column at the left of the output dataframe.
                 excel_df.to_excel(
-                    writer, sheet_name=sheet["label"], index=False
+                    writer,
+                    sheet_name=sheet[self.yaml_excel_sheet_label],
+                    index=False,
                 )
 
                 # Get the xlsxwriter workbook and worksheet objects.
                 workbook = writer.book
-                worksheet = writer.sheets[sheet["label"]]
+                worksheet = writer.sheets[sheet[self.yaml_excel_sheet_label]]
 
                 # set header format
                 header_format = workbook.add_format(
