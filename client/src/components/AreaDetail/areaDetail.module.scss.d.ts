@@ -13,6 +13,7 @@ declare namespace MapModuleScssNamespace {
     hideThresholdExceed:string;
     categoryHeader:string;
     sendFeedbackBtn: string;
+    categorySpacer: string;
   }
 }
 

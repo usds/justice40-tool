@@ -82,14 +82,6 @@ $sidePanelLabelFontColor: #171716;
   }  
 }
 
-// The following class is used in the AccordionItems in the AreaDetail component.
-// The Accordion component (parent of AccordionItems) requires some CSS overrides.
-// Local styling is not allowing the override. 
-// The override is needed to push into the bounds of the Accordion component's styles.
-// To override this, in globals.scss, we set the this .categoryHeader's vertical alignment by
-// setting styles in:
-//    .usa-accordion__content > *:first-child
-// This first child of the accordion content is the category header:
 .categoryHeader {
   display: flex;
   justify-content: space-between;
@@ -98,4 +90,17 @@ $sidePanelLabelFontColor: #171716;
   @include u-bg('gray-cool-5');
   @include u-padding-left(2.5);
   @include u-padding-right(2);
+}
+
+.categorySpacer {
+  @include u-bg('gray-cool-3');
+
+  @include typeset('sans', '2xs', 2);
+  @include u-text('bold'); 
+
+  margin: 0 -20px 1rem -20px;
+  @include u-padding-top(2);
+  @include u-padding-bottom(2);
+  @include u-padding-left(2.5);
+  
 }

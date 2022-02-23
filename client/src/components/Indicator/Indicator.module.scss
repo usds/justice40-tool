@@ -4,10 +4,12 @@
 @mixin indicator {
   display: flex;
   flex-direction: column;
-  @include u-padding-bottom(3);
+  @include u-padding-top(1.5);
+  @include u-padding-bottom(1.5);
+
   &:last-child {
     border-bottom: none;
-    @include u-padding-bottom(0);
+    // @include u-padding-bottom(0);
   }
   
   .indicatorRow {
@@ -25,11 +27,11 @@
       display: flex;
       flex-direction: column;
       @include typeset('sans', '2xs', 2);
-      @include u-text('bold'); 
+      @include u-text('medium'); 
       
       .indicatorDesc {
         @include typeset('sans', '3xs', 2); 
-        @include u-text('normal'); 
+        @include u-text('thin'); 
         max-width: 12rem;    
         @include u-margin-top(0);
         @media screen and (max-width: 1024px) {
@@ -55,5 +57,8 @@
 
 .disadvantagedIndicator {
   @include indicator;
-  @include u-text('blue-warm-70v');
+  @include u-bg('blue-warm-10');
+  margin: 0 -20px 0 -20px;
+  @include u-padding-left(2.5);
+  @include u-padding-right(2);
 }

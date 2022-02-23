@@ -1,0 +1,27 @@
+@use '../../styles/design-system.scss' as *;
+
+// styles for all burden containers
+@mixin baseBurdenContainer {
+    display: flex;
+
+    .burdenQuestion {
+        flex: 0 1 77%;
+        @include typeset('sans', '2xs', 2);
+        @include u-text('bold'); 
+    }
+    
+    .burdenValue {
+        margin-left: 2.2rem;
+    }    
+}
+
+// styles for first burden container
+.exceedBurdenContainer {
+    @include baseBurdenContainer();
+    @include u-padding-bottom(1); 
+}
+
+// styles for second burden container
+// .exceedBurdenContainer ~ .exceedBurdenContainer {
+//     @include baseBurdenContainer();
+// }

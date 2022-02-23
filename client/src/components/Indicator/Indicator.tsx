@@ -1,5 +1,5 @@
 import React from 'react';
-import {indicatorInfo} from '../AreaDetail';
+import {indicatorInfo} from '../AreaDetail/AreaDetail';
 
 import * as styles from './Indicator.module.scss';
 
