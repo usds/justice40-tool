@@ -54,7 +54,12 @@ export const FORMULA = {
   IF: <FormattedMessage
     id={'methodology.page.formula.first'}
     defaultMessage={ `
+<<<<<<< HEAD
       {if} the tract is above the threshold for one or more environmental or climate indicators
+=======
+      {if} the tract exceeds the thresholds for one or more environmental, climate, health or 
+      socioeconomic burden indicators
+>>>>>>> fdcb1764 (Update copy)
       `}
     description={'the first part of the formula used in the methodology'}
     values= {{
@@ -64,7 +69,11 @@ export const FORMULA = {
   AND: <FormattedMessage
     id={'methodology.page.formula.second'}
     defaultMessage={ `
+<<<<<<< HEAD
       {and} the tract is above the threshold for the socioeconomic indicators
+=======
+      {and} the tract exceeds the thresholds for both socioeconomic indicators
+>>>>>>> fdcb1764 (Update copy)
     `}
     description={'the second part of the formula used in the methodology'}
     values= {{
@@ -170,7 +179,7 @@ export const CATEGORY_AND_CLAUSE = {
   LOW_INC_65_WHEN_HIGH_ED_LTE_20: <FormattedMessage
     id= {'methodology.paage.category.and.clause.low.inc.hs.ed'}
     defaultMessage={`
-      {and} is above 65th percentile for {lowIncome} AND at or below 20% for {highEdEnrollRate} 
+      {and} is above the 65th percentile for {lowIncome} AND at or below 20% for {highEdEnrollRate} 
     `}
     description= {'and portion of the formula dealing with lower income and high school degree rate'}
     values= {{
@@ -220,7 +229,7 @@ export const CATEGORIES = {
     IF: <FormattedMessage
       id= {'indicator.categories.climate.change.if'}
       defaultMessage= {`
-      {if} at or above 90th percentile for {expAgrLossRate} OR {expbuildLossRate} OR {expPopLossRate}
+      {if} at or above the 90th percentile for {expAgrLossRate} OR {expbuildLossRate} OR {expPopLossRate}
       `}
       description= {'if portion of the formula'}
       values= {{
@@ -255,7 +264,7 @@ export const CATEGORIES = {
     IF: <FormattedMessage
       id= {'indicator.categories.clean.energy.if'}
       defaultMessage= {`
-        {if} at or above 90th percentile for {energyCostBur} OR {pm25}
+        {if} at or above the 90th percentile for {energyCostBur} OR {pm25}
       `}
       description= {'if portion of the formula'}
       values= {{
@@ -289,7 +298,7 @@ export const CATEGORIES = {
     IF: <FormattedMessage
       id= {'indicator.categories.clean.transport.if'}
       defaultMessage= {`
-        {if} at or above 90th percentile for {dieselPM} or {traffic}
+        {if} at or above the 90th percentile for {dieselPM} or {traffic}
       `}
       description= {'if portion of the formula'}
       values= {{
@@ -323,8 +332,8 @@ export const CATEGORIES = {
     IF: <FormattedMessage
       id= {'indicator.categories.afford.house.if'}
       defaultMessage= {`
-        {if} at or above 90th percentile for {lead} AND {medianHomeVal} is at or less than
-        90th percentile OR at or above the 90th percentile for the {houseBur}
+        {if} at or above the 90th percentile for {lead} AND {medianHomeVal} is at or less than
+        the 90th percentile OR at or above the 90th percentile for the {houseBur}
       `}
       description= {'if portion of the formula'}
       values= {{
@@ -359,7 +368,7 @@ export const CATEGORIES = {
     IF: <FormattedMessage
       id= {'indicator.categories.legacy.pollution.if'}
       defaultMessage= {`
-        {if} at or above 90th percentile for {proxHaz} OR {proxNPL} OR {proxRMP}
+        {if} at or above the 90th percentile for {proxHaz} OR {proxNPL} OR {proxRMP}
       `}
       description= {'if portion of the formula'}
       values= {{
@@ -394,7 +403,7 @@ export const CATEGORIES = {
     IF: <FormattedMessage
       id= {'indicator.categories.clean.water.if'}
       defaultMessage= {`
-        {if} at or above 90th percentile for {wasteWater}
+        {if} at or above the 90th percentile for {wasteWater}
       `}
       description= {'if portion of the formula'}
       values= {{
@@ -427,7 +436,7 @@ export const CATEGORIES = {
     IF: <FormattedMessage
       id= {'indicator.categories.health.burdens.if'}
       defaultMessage= {`
-        {if} at or above 90th percentile for {asthma} OR {diabetes} OR {heart} OR {life}
+        {if} at or above the 90th percentile for {asthma} OR {diabetes} OR {heart} OR {life}
       `}
       description= {'if portion of the formula'}
       values= {{
@@ -1028,7 +1037,7 @@ export const INDICATORS = [
       id= {'category.lead.paint.description.text'}
       defaultMessage= {`
         Percent of housing units built pre-1960, used as an indicator of potential lead paint exposure in
-        tracts with median home values less than 90th percentile.
+        tracts with median home values less than the 90th percentile.
       `}
       description= {'description text for lead paint'}
     />,
