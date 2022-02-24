@@ -428,6 +428,29 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
   },
 });
 
+export const SIDE_PANEL_VALUES = {
+  ABOVE: <FormattedMessage
+    id={'explore.page.side.panel.indicator.value.subtext.above'}
+    description={'indicating above threshold'}
+    defaultMessage={`above `}
+  />,
+  BELOW: <FormattedMessage
+    id={'explore.page.side.panel.indicator.value.subtext.below'}
+    description={'indicating below threshold'}
+    defaultMessage={`below `}
+  />,
+  PERCENT: <FormattedMessage
+    id={'explore.page.side.panel.indicator.value.subtext.percent'}
+    description={'indicating percent units'}
+    defaultMessage={`percent`}
+  />,
+  PERCENTILE: <FormattedMessage
+    id={'explore.page.side.panel.indicator.value.subtext.percentile'}
+    description={'indicating percentile units'}
+    defaultMessage={`percentile`}
+  />,
+};
+
 export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   EXP_AG_LOSS: {
     id: 'areaDetail.indicator.description.exp.ag.loss',

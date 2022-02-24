@@ -13,12 +13,30 @@ exports[`rendering of the Indicator checks if component renders 1`] = `
         </div>
       </div>
       <div>
-        9700
-        <sup>
-          <span>
-            th
-          </span>
-        </sup>
+        <div>
+          <div>
+            9700
+            <span>
+              %
+            </span>
+          </div>
+          <div>
+            <img
+              alt="up arrow icon"
+              height="24px"
+              src="test-file-stub"
+              width="24px"
+            />
+          </div>
+        </div>
+        <div>
+          <div>
+            above 20
+          </div>
+          <div>
+            percent
+          </div>
+        </div>
       </div>
     </div>
   </li>

@@ -1,13 +1,16 @@
 import * as React from 'react';
 import {render} from '@testing-library/react';
 import {LocalizedComponent} from '../../test/testHelpers';
-import Indicator, {readablePercentile} from './Indicator';
-import {indicatorInfo} from '../AreaDetail';
+import Indicator, {getDisplayValue} from './Indicator';
+import {indicatorInfo} from '../AreaDetail/AreaDetail';
 
 const highSchool:indicatorInfo = {
   label: 'some label',
   description: 'some description',
   value: 97,
+  isDisadvagtaged: true,
+  isPercent: true,
+  threshold: 20,
 };
 
 describe('rendering of the Indicator', () => {
@@ -22,9 +25,9 @@ describe('rendering of the Indicator', () => {
   });
 });
 
-describe('tests the readablePercentile function', () => {
-  expect(readablePercentile(.98)).toEqual(98);
-  expect(readablePercentile(.07)).toEqual(7);
-  expect(readablePercentile(.123)).toEqual(12);
-  expect(readablePercentile(.789)).toEqual(79);
+describe('tests the getDisplayValue function', () => {
+  expect(getDisplayValue(.98)).toEqual(98);
+  expect(getDisplayValue(.07)).toEqual(7);
+  expect(getDisplayValue(.123)).toEqual(12);
+  expect(getDisplayValue(.789)).toEqual(79);
 });
