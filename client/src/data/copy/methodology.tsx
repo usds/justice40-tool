@@ -21,7 +21,8 @@ export const PAGE = defineMessages({
       the Justice40 Initiative using census tracts, which are the smallest geographic unit for 
       which publicly-available and nationally-consistent datasets can be consistently displayed on the 
       tool. Census tract geographical boundaries are determined by the U.S. Census Bureau once every ten 
-      years. This tool uses the census tract boundaries from 2010.
+      years. This tool utilizes the census tract boundaries from 2010 because they match the datasets used 
+      in the tool. The U.S. Census Bureau will update these tract boundaries in 2020.
     `,
     description: 'methodology page paragraph',
   },
@@ -52,7 +53,8 @@ export const FORMULA = {
   IF: <FormattedMessage
     id={'methodology.page.formula.first'}
     defaultMessage={ `
-      {if} the tract is above the thresholds for a set of environmental, climate or socioeconomic related indicators
+      {if} the tract is above the thresholds for one or more environmental, climate, health or 
+      socioeconomic burden indicators
       `}
     description={'the first part of the formula used in the methodology'}
     values= {{
@@ -62,7 +64,7 @@ export const FORMULA = {
   AND: <FormattedMessage
     id={'methodology.page.formula.second'}
     defaultMessage={ `
-      {and} the tract is above the thresholds for another set of income or education related indicators
+      {and} the tract is above the thresholds for both socioeconomic indicators
     `}
     description={'the second part of the formula used in the methodology'}
     values= {{
@@ -80,9 +82,9 @@ export const FORMULA = {
 };
 
 // Download Package
-export const DOWNLOAD_FILE_SIZE = '73MB';
-export const DOWNLOAD_LAST_UPDATED = '12/13/21';
-export const DOWNLOAD_LAST_UPDATED_ES = '13/12/21';
+export const DOWNLOAD_FILE_SIZE = '111MB';
+export const DOWNLOAD_LAST_UPDATED = '2/18/22';
+export const DOWNLOAD_LAST_UPDATED_ES = '18/2/22';
 export const VERSION_NUMBER = '0.1';
 
 export const DOWNLOAD_ZIP_URL = [
@@ -105,7 +107,7 @@ export const DOWNLOAD_PACKAGE = {
     id={ 'downloadPacket.info.text'}
     defaultMessage= {`
       The download package includes draft v{versionNumber} of the list of disadvantaged communities
-      (.csv and .xlsx) and information (.pdf) about how to use the list.
+      (.csv and .xlsx).
     `}
     description= {'download packet info text'}
     values= {{
@@ -154,7 +156,7 @@ export const CATEGORY= {
   ID_AS_DISADV_TEXT: <FormattedMessage
     id={'methodology.category.card.title'}
     defaultMessage={`
-      Communities are {idAsDisadv} in this category 
+      Communities are {idAsDisadv} 
     `}
     description= {'category heading'}
     values={{
@@ -168,7 +170,7 @@ export const CATEGORY_AND_CLAUSE = {
   LOW_INC_65_WHEN_HIGH_ED_LTE_20: <FormattedMessage
     id= {'methodology.paage.category.and.clause.low.inc.hs.ed'}
     defaultMessage={`
-      {and} is at or above 65th percentile for {lowIncome} WHEN {highEdEnrollRate} is at or below 20%
+      {and} is above 65th percentile for {lowIncome} AND at or below 20% for {highEdEnrollRate} 
     `}
     description= {'and portion of the formula dealing with lower income and high school degree rate'}
     values= {{
@@ -180,13 +182,13 @@ export const CATEGORY_AND_CLAUSE = {
   HS_DEG_90_WHEN_HIGH_ED_LTE_20: <FormattedMessage
     id= {'methodology.paage.category.and.clause.hs.ed.higher.ed'}
     defaultMessage= {`
-    {and} where the {highSchoolRate} rates for adults 25 years and older is at or less than 
-    90% WHEN {highEdEnrollRate} is at or below 20%
+    {and} is at or less than 90% for {highSchoolRate} for adults 25 years and older AND 
+    at or below 20% for {highEdEnrollRate} 
   `}
     description= {'and portion of the formula dealing with higher ed enrollment and high school degree rate'}
     values= {{
       and: <strong>AND</strong>,
-      highSchoolRate: <a href="#high-school">high school degree achievement rates</a>,
+      highSchoolRate: <a href="#high-school">high school degree attainment rate</a>,
       highEdEnrollRate: <a href="#high-ed-enroll-rate">higher ed enrollment rate</a>,
     }}
   />,
@@ -253,12 +255,12 @@ export const CATEGORIES = {
     IF: <FormattedMessage
       id= {'indicator.categories.clean.energy.if'}
       defaultMessage= {`
-        {if} at or above 90th percentile for {energyCostBur} score OR {pm25}
+        {if} at or above 90th percentile for {energyCostBur} OR {pm25}
       `}
       description= {'if portion of the formula'}
       values= {{
         if: <strong>IF</strong>,
-        energyCostBur: <a href='#energy-burden'>energy cost burden</a>,
+        energyCostBur: <a href='#energy-burden'>energy burden</a>,
         pm25: <a href='#pm-25'>PM2.5 in the air</a>,
       }}
     />,
@@ -321,7 +323,7 @@ export const CATEGORIES = {
     IF: <FormattedMessage
       id= {'indicator.categories.afford.house.if'}
       defaultMessage= {`
-        {if} at or above 90th percentile for {lead} WHEN {medianHomeVal} is at or less than
+        {if} at or above 90th percentile for {lead} AND {medianHomeVal} is at or less than
         90th percentile OR at or above the 90th percentile for the {houseBur}
       `}
       description= {'if portion of the formula'}
@@ -923,7 +925,7 @@ export const INDICATORS = [
   },
   {
     domID: 'energy-burden',
-    indicator: 'Energy cost burden',
+    indicator: 'Energy burden',
     description: <FormattedMessage
       id= {'category.energy.burden.description.text'}
       defaultMessage= {`Average annual energy cost per household ($) divided by household average income.`}
@@ -1204,7 +1206,7 @@ export const INDICATORS = [
   },
   {
     domID: 'life-exp',
-    indicator: 'Life expectancy',
+    indicator: 'Low life expectancy',
     description: <FormattedMessage
       id= {'category.low.life.expectancy.description.text'}
       defaultMessage= {`
@@ -1214,12 +1216,12 @@ export const INDICATORS = [
       description= {'description text for low life expectancy'}
       values= {{
         note: <p><strong>Note:</strong>{`
-          Unlike most of the other datasets, high values of this data indicate low burdens.
-          For percentile calculations of burden, the percentile is calculated in reverse order, so that the tract with
-          the highest median income relative to area median income (lowest burden on this measure) is at the
-          0th percentile, and the tract with the lowest median income relative to area median income
-          (highest burden on this measure) is at the 100th percentile. Tracts with the highest number 
-          have the lowest life expectancy.
+          Unlike most of the other datasets, high values of this data indicate low burdens. For 
+          percentile calculations of burden, the percentile is calculated in reverse order, so that the 
+          tract with the highest life expectancy relative to area life expectancy (lowest burden on this 
+          measure) is at the 0th percentile, and the tract with the lowest life expectancy relative to 
+          area life expectancy (highest burden on this measure) is at the 100th percentile. Tracts with 
+          the highest number have the lowest life expectancy.
         `}</p>,
       }}
     />,
@@ -1234,13 +1236,24 @@ export const INDICATORS = [
   },
   {
     domID: 'low-med-inc',
-    indicator: 'Median Income',
+    indicator: 'Low median income',
     description: <FormattedMessage
       id= {'category.workforce.dev.description.text'}
       defaultMessage= {`
         Median income of the census tract calculated as a percent of the area’s median income.
+        {note}
       `}
       description= {'description text for workforce dev'}
+      values= {{
+        note: <p><strong>Note:</strong>{`
+          Unlike most of the other datasets, high values of this data indicate low burdens. For 
+          percentile calculations of burden, the percentile is calculated in reverse order, so that the 
+          tract with the highest median income relative to area median income (lowest burden on this 
+          measure) is at the 0th percentile, and the tract with the lowest median income relative to 
+          area median income (highest burden on this measure) is at the 100th percentile. Tracts with 
+          the highest number have the lowest median income.
+        `}</p>,
+      }}
     />,
     usedIn: CATEGORIES.WORKFORCE_DEV.METHODOLOGY,
     responsibleParty: RESPONSIBLE_PARTIES.CENSUS,
@@ -1323,7 +1336,7 @@ export const INDICATORS = [
   },
   {
     domID: 'high-school',
-    indicator: 'High school degree achievement rate',
+    indicator: 'High school degree attainment rate',
     description: <FormattedMessage
       id= {'category.highschool.description.text'}
       defaultMessage= {`

@@ -34,7 +34,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           identified as disadvantaged
         </strong>
-         in this category 
+         
     
       </p>
       <p>
@@ -70,19 +70,19 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           AND
         </strong>
-         is at or above 65th percentile for 
+         is above 65th percentile for 
         <a
           href="#low-income"
         >
           low income
         </a>
-         WHEN 
+         AND at or below 20% for 
         <a
           href="#high-ed-enroll-rate"
         >
           higher ed enrollment rate
         </a>
-         is at or below 20%
+         
     
       </p>
       <p />
@@ -97,7 +97,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           identified as disadvantaged
         </strong>
-         in this category 
+         
     
       </p>
       <p>
@@ -110,9 +110,9 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <a
           href="#energy-burden"
         >
-          energy cost burden
+          energy burden
         </a>
-         score OR 
+         OR 
         <a
           href="#pm-25"
         >
@@ -127,19 +127,19 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           AND
         </strong>
-         is at or above 65th percentile for 
+         is above 65th percentile for 
         <a
           href="#low-income"
         >
           low income
         </a>
-         WHEN 
+         AND at or below 20% for 
         <a
           href="#high-ed-enroll-rate"
         >
           higher ed enrollment rate
         </a>
-         is at or below 20%
+         
     
       </p>
       <p />
@@ -154,7 +154,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           identified as disadvantaged
         </strong>
-         in this category 
+         
     
       </p>
       <p>
@@ -184,19 +184,19 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           AND
         </strong>
-         is at or above 65th percentile for 
+         is above 65th percentile for 
         <a
           href="#low-income"
         >
           low income
         </a>
-         WHEN 
+         AND at or below 20% for 
         <a
           href="#high-ed-enroll-rate"
         >
           higher ed enrollment rate
         </a>
-         is at or below 20%
+         
     
       </p>
       <p />
@@ -211,7 +211,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           identified as disadvantaged
         </strong>
-         in this category 
+         
     
       </p>
       <p>
@@ -226,7 +226,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           lead paint
         </a>
-         WHEN 
+         AND 
         <a
           href="#median-home"
         >
@@ -248,19 +248,19 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           AND
         </strong>
-         is at or above 65th percentile for 
+         is above 65th percentile for 
         <a
           href="#low-income"
         >
           low income
         </a>
-         WHEN 
+         AND at or below 20% for 
         <a
           href="#high-ed-enroll-rate"
         >
           higher ed enrollment rate
         </a>
-         is at or below 20%
+         
     
       </p>
       <p />
@@ -275,7 +275,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           identified as disadvantaged
         </strong>
-         in this category 
+         
     
       </p>
       <p>
@@ -311,19 +311,19 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           AND
         </strong>
-         is at or above 65th percentile for 
+         is above 65th percentile for 
         <a
           href="#low-income"
         >
           low income
         </a>
-         WHEN 
+         AND at or below 20% for 
         <a
           href="#high-ed-enroll-rate"
         >
           higher ed enrollment rate
         </a>
-         is at or below 20%
+         
     
       </p>
       <p />
@@ -338,7 +338,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           identified as disadvantaged
         </strong>
-         in this category 
+         
     
       </p>
       <p>
@@ -362,19 +362,19 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           AND
         </strong>
-         is at or above 65th percentile for 
+         is above 65th percentile for 
         <a
           href="#low-income"
         >
           low income
         </a>
-         WHEN 
+         AND at or below 20% for 
         <a
           href="#high-ed-enroll-rate"
         >
           higher ed enrollment rate
         </a>
-         is at or below 20%
+         
     
       </p>
       <p />
@@ -389,7 +389,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           identified as disadvantaged
         </strong>
-         in this category 
+         
     
       </p>
       <p>
@@ -431,19 +431,19 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           AND
         </strong>
-         is at or above 65th percentile for 
+         is above 65th percentile for 
         <a
           href="#low-income"
         >
           low income
         </a>
-         WHEN 
+         AND at or below 20% for 
         <a
           href="#high-ed-enroll-rate"
         >
           higher ed enrollment rate
         </a>
-         is at or below 20%
+         
     
       </p>
       <p />
@@ -458,7 +458,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           identified as disadvantaged
         </strong>
-         in this category 
+         
     
       </p>
       <p>
@@ -503,20 +503,20 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           AND
         </strong>
-         where the 
+         is at or less than 90% for 
         <a
           href="#high-school"
         >
-          high school degree achievement rates
+          high school degree attainment rate
         </a>
-         rates for adults 25 years and older is at or less than 
-    90% WHEN 
+         for adults 25 years and older AND 
+    at or below 20% for 
         <a
           href="#high-ed-enroll-rate"
         >
           higher ed enrollment rate
         </a>
-         is at or below 20%
+         
   
       </p>
       <p />

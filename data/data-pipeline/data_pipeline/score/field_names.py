@@ -375,6 +375,10 @@ SCORE_M_LOW_INCOME_SUFFIX = (
     ", is low income, and has a low percent of higher ed students"
 )
 
+COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD = (
+    "Percent higher ed enrollment rate is less than 20%"
+)
+
 # Climate Change
 EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile"

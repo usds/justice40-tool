@@ -60,6 +60,8 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
             mailto:Screeningtool-Support@omb.eop.gov?subject=Census tract ID 98729374234, N/A, N/A&body=Please provide feedback about this census tract, including about the datasets, the data categories provided for this tract, the communities who live in this tract, and anything else relevant that CEQ should know about this tract.
     
           "
+        rel="noreferrer"
+        target="_blank"
       >
         <button
           class="usa-button"
@@ -159,8 +161,8 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
               Poverty
               <div>
                 
-      Percent of a tract's population in households where the household income is at or below 
-      100% of the federal poverty level    
+      Percent of a tract's population in households where the household income is at or below 100% of 
+      the Federal poverty level   
     
               </div>
             </div>
@@ -179,11 +181,10 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
         >
           <div>
             <div>
-              High school degree achievement rate
+              High school degree attainment rate
               <div>
                 
-      Percent of people ages 25 years or older whose education level is less than a high school diploma 
-      when higher ed enrollment rate is less than 20% in order to exclude areas with college and graduate students
+      Poportion of people ages 25 years or older whose education level is less than a high school diploma 
     
               </div>
             </div>
@@ -261,6 +262,8 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             mailto:Screeningtool-Support@omb.eop.gov?subject=Census tract ID 98729374234, N/A, N/A&body=Please provide feedback about this census tract, including about the datasets, the data categories provided for this tract, the communities who live in this tract, and anything else relevant that CEQ should know about this tract.
     
           "
+        rel="noreferrer"
+        target="_blank"
       >
         <button
           class="usa-button"
@@ -356,7 +359,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               Expected population loss rate
               <div>
                 
-      Rate relative to the population in fatalities and injuries resulting from natural hazards each year
+      Rate of fatalities and injuries resulting from natural hazards each year
     
               </div>
             </div>
@@ -376,8 +379,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               Low income
               <div>
                 
-      Household income is less than or equal to twice the federal poverty level when higher ed enrollment 
-      rate is less than 20% in order to exclude areas with college and graduate students
+      Household income is less than or equal to twice the federal poverty level 
     
               </div>
             </div>
@@ -388,6 +390,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                   th
                 </span>
               </sup>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Higher ed enrollment rate
+              <div>
+                
+    Percent of population enrolled in college, university, or graduate school 
+    
+              </div>
+            </div>
+            <div>
+              N/A
+              <span>
+                %
+              </span>
             </div>
           </div>
         </li>
@@ -431,7 +453,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         >
           <div>
             <div>
-              Energy cost burden
+              Energy burden
               <div>
                 Average annual energy costs divided by household income
               </div>
@@ -470,8 +492,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               Low income
               <div>
                 
-      Household income is less than or equal to twice the federal poverty level when higher ed enrollment 
-      rate is less than 20% in order to exclude areas with college and graduate students
+      Household income is less than or equal to twice the federal poverty level 
     
               </div>
             </div>
@@ -482,6 +503,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                   th
                 </span>
               </sup>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Higher ed enrollment rate
+              <div>
+                
+    Percent of population enrolled in college, university, or graduate school 
+    
+              </div>
+            </div>
+            <div>
+              N/A
+              <span>
+                %
+              </span>
             </div>
           </div>
         </li>
@@ -564,8 +605,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               Low income
               <div>
                 
-      Household income is less than or equal to twice the federal poverty level when higher ed enrollment 
-      rate is less than 20% in order to exclude areas with college and graduate students
+      Household income is less than or equal to twice the federal poverty level 
     
               </div>
             </div>
@@ -576,6 +616,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                   th
                 </span>
               </sup>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Higher ed enrollment rate
+              <div>
+                
+    Percent of population enrolled in college, university, or graduate school 
+    
+              </div>
+            </div>
+            <div>
+              N/A
+              <span>
+                %
+              </span>
             </div>
           </div>
         </li>
@@ -642,7 +702,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               Lead paint
               <div>
                 
-      Percent of pre-1960 housing when median home value at or below 90th percentile
+      Percentile of number of homes built before 1960 that are not among the most expensive
     
               </div>
             </div>
@@ -662,8 +722,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               Low income
               <div>
                 
-      Household income is less than or equal to twice the federal poverty level when higher ed enrollment 
-      rate is less than 20% in order to exclude areas with college and graduate students
+      Household income is less than or equal to twice the federal poverty level 
     
               </div>
             </div>
@@ -674,6 +733,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                   th
                 </span>
               </sup>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Higher ed enrollment rate
+              <div>
+                
+    Percent of population enrolled in college, university, or graduate school 
+    
+              </div>
+            </div>
+            <div>
+              N/A
+              <span>
+                %
+              </span>
             </div>
           </div>
         </li>
@@ -719,7 +798,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Proximity to hazardous waste facilities
               <div>
-                Count of hazardous waste facilities within 5 km
+                Count of hazardous waste facilities within 5 kilometers
               </div>
             </div>
             <div>
@@ -737,7 +816,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Proximity to NPL sites
               <div>
-                Proposed or listed NPL (Superfund) sites within 5 km
+                Proposed or listed NPL (Superfund) sites within 5 kilometers
               </div>
             </div>
             <div>
@@ -755,7 +834,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Proximity to RMP facilities
               <div>
-                Risk Management Plan facilities within 5 km
+                Risk Management Plan facilities within 5 kilometers
               </div>
             </div>
             <div>
@@ -774,8 +853,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               Low income
               <div>
                 
-      Household income is less than or equal to twice the federal poverty level when higher ed enrollment 
-      rate is less than 20% in order to exclude areas with college and graduate students
+      Household income is less than or equal to twice the federal poverty level 
     
               </div>
             </div>
@@ -786,6 +864,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                   th
                 </span>
               </sup>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Higher ed enrollment rate
+              <div>
+                
+    Percent of population enrolled in college, university, or graduate school 
+    
+              </div>
+            </div>
+            <div>
+              N/A
+              <span>
+                %
+              </span>
             </div>
           </div>
         </li>
@@ -850,8 +948,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               Low income
               <div>
                 
-      Household income is less than or equal to twice the federal poverty level when higher ed enrollment 
-      rate is less than 20% in order to exclude areas with college and graduate students
+      Household income is less than or equal to twice the federal poverty level 
     
               </div>
             </div>
@@ -862,6 +959,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                   th
                 </span>
               </sup>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Higher ed enrollment rate
+              <div>
+                
+    Percent of population enrolled in college, university, or graduate school 
+    
+              </div>
+            </div>
+            <div>
+              N/A
+              <span>
+                %
+              </span>
             </div>
           </div>
         </li>
@@ -966,7 +1083,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Low life expectancy
               <div>
-                Average number of years of life a person can expect to live
+                Average number of years a person can expect to live
               </div>
             </div>
             <div>
@@ -985,8 +1102,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               Low income
               <div>
                 
-      Household income is less than or equal to twice the federal poverty level when higher ed enrollment 
-      rate is less than 20% in order to exclude areas with college and graduate students
+      Household income is less than or equal to twice the federal poverty level 
     
               </div>
             </div>
@@ -997,6 +1113,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                   th
                 </span>
               </sup>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Higher ed enrollment rate
+              <div>
+                
+    Percent of population enrolled in college, university, or graduate school 
+    
+              </div>
+            </div>
+            <div>
+              N/A
+              <span>
+                %
+              </span>
             </div>
           </div>
         </li>
@@ -1040,24 +1176,6 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         >
           <div>
             <div>
-              Low median income
-              <div>
-                Median income calculated as a percent of the area’s median income
-              </div>
-            </div>
-            <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-        >
-          <div>
-            <div>
               Linguistic isolation
               <div>
                 
@@ -1071,6 +1189,24 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                 <span>
                   th
                 </span>
+              </sup>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Low median income
+              <div>
+                Median income calculated as a percent of the area’s median income
+              </div>
+            </div>
+            <div>
+              N/A
+              <sup>
+                <span />
               </sup>
             </div>
           </div>
@@ -1103,8 +1239,8 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               Poverty
               <div>
                 
-      Percent of a tract's population in households where the household income is at or below 
-      100% of the federal poverty level    
+      Percent of a tract's population in households where the household income is at or below 100% of 
+      the Federal poverty level   
     
               </div>
             </div>
@@ -1123,16 +1259,35 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         >
           <div>
             <div>
-              High school degree achievement rate
+              High school degree attainment rate
               <div>
                 
-      Percent of people ages 25 years or older whose education level is less than a high school diploma 
-      when higher ed enrollment rate is less than 20% in order to exclude areas with college and graduate students
+      Poportion of people ages 25 years or older whose education level is less than a high school diploma 
     
               </div>
             </div>
             <div>
               98
+              <span>
+                %
+              </span>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Higher ed enrollment rate
+              <div>
+                
+    Percent of population enrolled in college, university, or graduate school 
+    
+              </div>
+            </div>
+            <div>
+              N/A
               <span>
                 %
               </span>
@@ -1205,6 +1360,8 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
             mailto:Screeningtool-Support@omb.eop.gov?subject=Census tract ID 98729374234, N/A, N/A&body=Please provide feedback about this census tract, including about the datasets, the data categories provided for this tract, the communities who live in this tract, and anything else relevant that CEQ should know about this tract.
     
           "
+        rel="noreferrer"
+        target="_blank"
       >
         <button
           class="usa-button"
@@ -1261,24 +1418,6 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
         >
           <div>
             <div>
-              Low median income
-              <div>
-                Median income calculated as a percent of the area’s median income
-              </div>
-            </div>
-            <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-        >
-          <div>
-            <div>
               Linguistic isolation
               <div>
                 
@@ -1292,6 +1431,24 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
                 <span>
                   th
                 </span>
+              </sup>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Low median income
+              <div>
+                Median income calculated as a percent of the area’s median income
+              </div>
+            </div>
+            <div>
+              N/A
+              <sup>
+                <span />
               </sup>
             </div>
           </div>
@@ -1324,8 +1481,8 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               Poverty
               <div>
                 
-      Percent of a tract's population in households where the household income is at or below 
-      100% of the federal poverty level    
+      Percent of a tract's population in households where the household income is at or below 100% of 
+      the Federal poverty level   
     
               </div>
             </div>
@@ -1344,16 +1501,35 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
         >
           <div>
             <div>
-              High school degree achievement rate
+              High school degree attainment rate
               <div>
                 
-      Percent of people ages 25 years or older whose education level is less than a high school diploma 
-      when higher ed enrollment rate is less than 20% in order to exclude areas with college and graduate students
+      Poportion of people ages 25 years or older whose education level is less than a high school diploma 
     
               </div>
             </div>
             <div>
               98
+              <span>
+                %
+              </span>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+        >
+          <div>
+            <div>
+              Higher ed enrollment rate
+              <div>
+                
+    Percent of population enrolled in college, university, or graduate school 
+    
+              </div>
+            </div>
+            <div>
+              N/A
               <span>
                 %
               </span>
