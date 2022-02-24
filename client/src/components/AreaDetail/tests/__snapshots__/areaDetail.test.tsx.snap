@@ -124,12 +124,32 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
               </div>
             </div>
             <div>
-              60
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  60
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -144,12 +164,32 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
               </div>
             </div>
             <div>
-              90
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  90
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -167,12 +207,32 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
               </div>
             </div>
             <div>
-              80
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  80
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -189,10 +249,30 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div>
+                  N/A
+                  <span>
+                    %
+                  </span>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90
+                </div>
+                <div>
+                  percent
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -220,10 +300,30 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div>
+                  N/A
+                  <span>
+                    %
+                  </span>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90
+                </div>
+                <div>
+                  percent
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -240,10 +340,30 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div>
+                  N/A
+                  <span>
+                    %
+                  </span>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 20
+                </div>
+                <div>
+                  percent
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -377,10 +497,30 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div>
+                  N/A
+                  <sup>
+                    <span />
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -395,10 +535,30 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div>
+                  N/A
+                  <sup>
+                    <span />
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -415,10 +575,30 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div>
+                  N/A
+                  <sup>
+                    <span />
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -446,12 +626,32 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  19
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -468,10 +668,30 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div>
+                  N/A
+                  <span>
+                    %
+                  </span>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 20
+                </div>
+                <div>
+                  percent
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -521,10 +741,30 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div>
+                  N/A
+                  <sup>
+                    <span />
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -539,10 +779,30 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div>
+                  N/A
+                  <sup>
+                    <span />
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -570,12 +830,32 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  19
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -592,10 +872,30 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div>
+                  N/A
+                  <span>
+                    %
+                  </span>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 20
+                </div>
+                <div>
+                  percent
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -645,10 +945,30 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div>
+                  N/A
+                  <sup>
+                    <span />
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -663,10 +983,30 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div>
+                  N/A
+                  <sup>
+                    <span />
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -694,12 +1034,32 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  19
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -716,10 +1076,30 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div>
+                  N/A
+                  <span>
+                    %
+                  </span>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 20
+                </div>
+                <div>
+                  percent
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -769,12 +1149,32 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              95
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  95
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  above 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -791,10 +1191,30 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div>
+                  N/A
+                  <sup>
+                    <span />
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -822,12 +1242,32 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  19
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -844,10 +1284,30 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div>
+                  N/A
+                  <span>
+                    %
+                  </span>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 20
+                </div>
+                <div>
+                  percent
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -897,10 +1357,30 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div>
+                  N/A
+                  <sup>
+                    <span />
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -915,10 +1395,30 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div>
+                  N/A
+                  <sup>
+                    <span />
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -933,10 +1433,30 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div>
+                  N/A
+                  <sup>
+                    <span />
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -964,12 +1484,32 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  19
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -986,10 +1526,30 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div>
+                  N/A
+                  <span>
+                    %
+                  </span>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 20
+                </div>
+                <div>
+                  percent
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1039,10 +1599,30 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div>
+                  N/A
+                  <sup>
+                    <span />
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1070,12 +1650,32 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  19
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1092,10 +1692,30 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div>
+                  N/A
+                  <span>
+                    %
+                  </span>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 20
+                </div>
+                <div>
+                  percent
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1145,10 +1765,30 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div>
+                  N/A
+                  <sup>
+                    <span />
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1166,10 +1806,30 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div>
+                  N/A
+                  <sup>
+                    <span />
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1186,10 +1846,30 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div>
+                  N/A
+                  <sup>
+                    <span />
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1204,10 +1884,30 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div>
+                  N/A
+                  <sup>
+                    <span />
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1235,12 +1935,32 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  19
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1257,10 +1977,30 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div>
+                  N/A
+                  <span>
+                    %
+                  </span>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 20
+                </div>
+                <div>
+                  percent
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1312,12 +2052,32 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              97
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  97
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  above 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1332,10 +2092,30 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div>
+                  N/A
+                  <sup>
+                    <span />
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1350,12 +2130,32 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              96
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  96
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  above 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1373,12 +2173,32 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  19
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1406,10 +2226,30 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              98
-              <span>
-                %
-              </span>
+              <div>
+                <div>
+                  98
+                  <span>
+                    %
+                  </span>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  above 90
+                </div>
+                <div>
+                  percent
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1426,10 +2266,30 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div>
+                  N/A
+                  <span>
+                    %
+                  </span>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 20
+                </div>
+                <div>
+                  percent
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1565,12 +2425,32 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               </div>
             </div>
             <div>
-              97
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  97
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  above 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1585,10 +2465,30 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div>
+                  N/A
+                  <sup>
+                    <span />
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1603,12 +2503,32 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               </div>
             </div>
             <div>
-              96
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  96
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  above 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1626,12 +2546,32 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  19
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1659,10 +2599,30 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               </div>
             </div>
             <div>
-              98
-              <span>
-                %
-              </span>
+              <div>
+                <div>
+                  98
+                  <span>
+                    %
+                  </span>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  above 90
+                </div>
+                <div>
+                  percent
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1679,10 +2639,30 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div>
+                  N/A
+                  <span>
+                    %
+                  </span>
+                </div>
+                <div>
+                  <img
+                    alt="up arrow icon"
+                    height="24px"
+                    src="test-file-stub"
+                    width="24px"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 20
+                </div>
+                <div>
+                  percent
+                </div>
+              </div>
             </div>
           </div>
         </li>

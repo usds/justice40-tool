@@ -9,6 +9,7 @@
   
   .indicatorRow {
     display: flex;
+    justify-content: space-between;
     
     @media screen and (max-width: $mobileBreakpoint) {
       flex: 1 0 40%;
@@ -18,7 +19,8 @@
     }
     
     .indicatorName {
-      flex: 0 1 77%;
+      // flex: 0 1 77%;
+      flex-basis: 60%;
       display: flex;
       flex-direction: column;
       @include typeset('sans', '2xs', 2);
@@ -35,13 +37,39 @@
       }
     }
     
-    .indicatorValue {
-      margin-left: 2.2rem;
-      
-      .indicatorSuperscript {
-        top: -0.2em
+    .indicatorValueCol {
+      display: flex;
+      flex-direction: column;
+
+      .indicatorValueRow {
+        display: flex;
+
+        .indicatorValue {
+          margin-left: 2.2rem;
+          
+          .indicatorSuperscript {
+            top: -0.2em
+          }
+        } 
+
+        .indicatorArrow {
+          margin-bottom: -.375rem;
+
+          img {
+            max-width: none;
+          }
+        }
       }
-    }  
+      
+      .indicatorValueSubText{
+        display: flex;
+        flex-direction: column;
+        align-self: flex-end;
+        @include typeset('sans', '3xs', 2);
+        @include u-text('thin'); 
+      }
+    }
+
   }
 }
 

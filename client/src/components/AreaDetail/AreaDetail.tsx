@@ -36,6 +36,7 @@ export interface indicatorInfo {
   value: number,
   isDisadvagtaged: boolean,
   isPercent?: boolean,
+  threshold?: number,
 }
 
 const AreaDetail = ({properties}:IAreaDetailProps) => {
@@ -201,6 +202,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
       properties[constants.HIGHER_ED_PERCENTILE] : null,
     isDisadvagtaged: true,
     isPercent: true,
+    threshold: 20,
   };
 
   const energyBurden:indicatorInfo = {
@@ -360,6 +362,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     value: getWorkForceIndicatorValue('highSchool'),
     isDisadvagtaged: getWorkForceIndicatorIsDisadv('highSchool'),
     isPercent: true,
+    threshold: 90,
   };
 
   /**

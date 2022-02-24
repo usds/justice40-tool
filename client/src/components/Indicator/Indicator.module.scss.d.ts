@@ -4,8 +4,12 @@ declare namespace IndicatorNamespace {
       indicatorBoxAdditional:string;
       indicatorRow:string;
       indicatorName:string;
+      indicatorValueCol:string;
+      indicatorValueRow:string;
       indicatorValue:string;
       indicatorSuperscript:string;
+      indicatorArrow:string;
+      indicatorValueSubText:string;
       indicatorDesc:string;
       disadvantagedIndicator:string;
     }
