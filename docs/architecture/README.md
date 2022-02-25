@@ -16,7 +16,7 @@ In the event that you are interested in updating the architecture of our system,
 
 Provided you have already done this, however, and/or would like to make small changes to the diagram itself, please read on!
 
-This diagram was generated from a text-based markdown-like file using [MermaidJS](https://mermaid-js.github.io/) syntax and the [Compile Mermaid Markdown](https://github.com/marketplace/actions/compile-mermaid-markdown) Github Action.
+This diagram was generated from a text-based markdown-like file using [MermaidJS](https://mermaid-js.github.io/) syntax and the [Compile Mermaid to MD](https://github.com/marketplace/actions/compile-mermaid) Github Action.
 
 To update, consult Mermaid syntax [here](https://mermaid-js.github.io/mermaid/#/flowchart) and update the `architecture.mmd` file.
 
