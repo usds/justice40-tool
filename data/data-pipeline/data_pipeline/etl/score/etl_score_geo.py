@@ -172,7 +172,6 @@ class GeoScoreETL(ExtractTransformLoad):
         state_tracts.sort_values(self.TARGET_SCORE_RENAME_TO, inplace=True)
         score_bucket = []
 
-        use_buckets = self.NUMBER_OF_BUCKETS
         # while use_buckets <= 0
         bucket_size = math.ceil(
             len(state_tracts.index) / self.NUMBER_OF_BUCKETS
