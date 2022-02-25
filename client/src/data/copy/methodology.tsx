@@ -43,7 +43,8 @@ export const FORMULA = {
   INTRO: <FormattedMessage
     id={'methodology.page.formula.intro'}
     defaultMessage={`
-      Under the current formula, a census tract will be {identifiedDis} in one or more categories of criteria: 
+      Under the current formula, a census tract will be identified as disadvantaged in one or more 
+      categories of criteria: 
     `}
     description={'methodology page introducing the formula'}
     values={{
@@ -53,8 +54,7 @@ export const FORMULA = {
   IF: <FormattedMessage
     id={'methodology.page.formula.first'}
     defaultMessage={ `
-      {if} the tract is above the thresholds for one or more environmental, climate, health or 
-      socioeconomic burden indicators
+      {if} the tract is above the thresholds for one or more environmental or climate indicators
       `}
     description={'the first part of the formula used in the methodology'}
     values= {{
@@ -64,7 +64,7 @@ export const FORMULA = {
   AND: <FormattedMessage
     id={'methodology.page.formula.second'}
     defaultMessage={ `
-      {and} the tract is above the thresholds for both socioeconomic indicators
+      {and} the tract is above the thresholds for the socioeconomic indicators
     `}
     description={'the second part of the formula used in the methodology'}
     values= {{
