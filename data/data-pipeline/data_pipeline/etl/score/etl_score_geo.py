@@ -1,5 +1,6 @@
 import concurrent.futures
 import math
+from matplotlib import use
 
 import pandas as pd
 import geopandas as gpd
@@ -92,26 +93,27 @@ class GeoScoreETL(ExtractTransformLoad):
 
         logger.info("Pruning Census GeoJSON")
         fields = [self.GEOID_FIELD_NAME, self.GEOMETRY_FIELD_NAME]
-        self.geojson_usa_df = self.geojson_usa_df[fields]
 
         logger.info("Merging and compressing score CSV with USA GeoJSON")
-        self.geojson_score_usa_high = self.score_usa_df.merge(
-            self.geojson_usa_df, on=self.GEOID_FIELD_NAME, how="left"
+        self.geojson_score_usa_high = self.score_usa_df.set_index(
+            self.GEOID_FIELD_NAME
+        ).merge(
+            self.geojson_usa_df[fields].set_index(self.GEOID_FIELD_NAME),
+            left_index=True,
+            right_index=True,
+            how="left",
         )
 
         self.geojson_score_usa_high = gpd.GeoDataFrame(
             self.geojson_score_usa_high, crs="EPSG:4326"
         )
 
-        logger.info(f"Columns: {self.geojson_score_usa_high.columns}")
-
         usa_simplified = self.geojson_score_usa_high[
             [
-                self.GEOID_FIELD_NAME,
                 self.TARGET_SCORE_SHORT_FIELD,
                 self.GEOMETRY_FIELD_NAME,
             ]
-        ].reset_index(drop=True)
+        ].reset_index(drop=False)
 
         usa_simplified.rename(
             columns={
@@ -125,7 +127,11 @@ class GeoScoreETL(ExtractTransformLoad):
 
         usa_tracts = gpd.GeoDataFrame(
             usa_tracts,
-            columns=[self.TARGET_SCORE_RENAME_TO, self.GEOMETRY_FIELD_NAME],
+            columns=[
+                self.TARGET_SCORE_RENAME_TO,
+                self.GEOMETRY_FIELD_NAME,
+                self.GEOID_FIELD_NAME,
+            ],
             crs="EPSG:4326",
         )
 
@@ -155,24 +161,25 @@ class GeoScoreETL(ExtractTransformLoad):
         self, block_group_df: gpd.GeoDataFrame
     ) -> gpd.GeoDataFrame:
         # The tract identifier is the first 11 digits of the GEOID
-        block_group_df["tract"] = block_group_df.apply(
-            lambda row: row[self.GEOID_FIELD_NAME][0:11], axis=1
-        )
+        block_group_df["tract"] = block_group_df[self.GEOID_FIELD_NAME].str[:11]
         state_tracts = block_group_df.dissolve(by="tract", aggfunc="mean")
         return state_tracts
 
     def _create_buckets_from_tracts(
         self, state_tracts: gpd.GeoDataFrame, num_buckets: int
     ) -> gpd.GeoDataFrame:
-        # assign tracts to buckets by D_SCORE
+        # assign tracts to buckets by score
         state_tracts.sort_values(self.TARGET_SCORE_RENAME_TO, inplace=True)
-        SCORE_bucket = []
+        score_bucket = []
+
+        use_buckets = self.NUMBER_OF_BUCKETS
+        # while use_buckets <= 0
         bucket_size = math.ceil(
             len(state_tracts.index) / self.NUMBER_OF_BUCKETS
         )
         for i in range(len(state_tracts.index)):
-            SCORE_bucket.extend([math.floor(i / bucket_size)])
-        state_tracts[f"{self.TARGET_SCORE_RENAME_TO}_bucket"] = SCORE_bucket
+            score_bucket.extend([math.floor(i / bucket_size)])
+        state_tracts[f"{self.TARGET_SCORE_RENAME_TO}_bucket"] = score_bucket
         return state_tracts
 
     def _aggregate_buckets(self, state_tracts: gpd.GeoDataFrame, agg_func: str):
