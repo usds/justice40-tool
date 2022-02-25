@@ -763,13 +763,13 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
   LIST_ITEM_3: <FormattedMessage
     id={'youCanHelpInfoText.list.item.3'}
     description={'share your feedback'}
-    defaultMessage={`CEQ will publish a Request for Information on federalregister.gov.`}
+    defaultMessage={`CEQ has published a Request for Information on {federalRegisterLink}.`}
     values={{
       federalRegisterLink:
       <LinkTypeWrapper
         linkText={'federalregister.gov'}
         internal={false}
-        url={`https://www.federalregister.gov/`}
+        url={`https://www.federalregister.gov/d/2022-03920`}
         openUrlNewTab={true}
       />,
     }}
