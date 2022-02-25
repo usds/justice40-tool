@@ -312,7 +312,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <span>
                 IF
               </span>
-               the tract is above the thresholds for one or more environmental or climate indicators
+               the tract is above the threshold for one or more environmental or climate indicators
       
             </p>
             <p>
@@ -321,7 +321,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <span>
                 AND
               </span>
-               the tract is above the thresholds for the socioeconomic indicators
+               the tract is above the threshold for the socioeconomic indicators
     
             </p>
           </section>
