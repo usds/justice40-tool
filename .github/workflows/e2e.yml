@@ -1,7 +1,7 @@
 # Full command list of cypress github actions:
 #   https://github.com/cypress-io/github-action#cypress-iogithub-action--
 
-name: End to end tests
+name: End to End Tests
 on:
   # To run tests on the push event of a specific branch:
   # push:
