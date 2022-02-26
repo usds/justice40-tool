@@ -85,21 +85,22 @@
   // A darker bg color:
   // background-color: #D2DAE3;
 
-  margin: 0 -20px 0 -20px;
-  @include u-padding-left(2.5);
-  @include u-padding-right(2);
-
   // Add a border
   // border: 1px solid #1A4480;
 
+  margin: 0 -20px 1px -20px;
+  @include u-padding-left(2.5);
+  @include u-padding-right(2);
+
+
   // Overwrite indicator mixin with bolder fonts for disadv. indicator 
-  // .indicatorRow {
-  //   .indicatorName {
-  //     @include u-text('bold'); 
+  .indicatorRow {
+    .indicatorName {
+      @include u-text('bold'); 
       
-  //     .indicatorDesc {
-  //       @include u-text('normal'); 
-  //     }
-  //   }
-  // }
+      .indicatorDesc {
+        @include u-text('normal'); 
+      }
+    }
+  }
 }
