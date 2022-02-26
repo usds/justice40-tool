@@ -312,12 +312,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <span>
                 IF
               </span>
-<<<<<<< HEAD
                the tract is above the threshold for one or more environmental or climate indicators
-=======
-               the tract exceeds the thresholds for one or more environmental, climate, health or 
-      socioeconomic burden indicators
->>>>>>> fdcb1764 (Update copy)
       
             </p>
             <p>
@@ -326,11 +321,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <span>
                 AND
               </span>
-<<<<<<< HEAD
                the tract is above the threshold for the socioeconomic indicators
-=======
-               the tract exceeds the thresholds for both socioeconomic indicators
->>>>>>> fdcb1764 (Update copy)
     
             </p>
           </section>

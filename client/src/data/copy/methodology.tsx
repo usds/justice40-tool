@@ -54,12 +54,7 @@ export const FORMULA = {
   IF: <FormattedMessage
     id={'methodology.page.formula.first'}
     defaultMessage={ `
-<<<<<<< HEAD
       {if} the tract is above the threshold for one or more environmental or climate indicators
-=======
-      {if} the tract exceeds the thresholds for one or more environmental, climate, health or 
-      socioeconomic burden indicators
->>>>>>> fdcb1764 (Update copy)
       `}
     description={'the first part of the formula used in the methodology'}
     values= {{
@@ -69,11 +64,7 @@ export const FORMULA = {
   AND: <FormattedMessage
     id={'methodology.page.formula.second'}
     defaultMessage={ `
-<<<<<<< HEAD
       {and} the tract is above the threshold for the socioeconomic indicators
-=======
-      {and} the tract exceeds the thresholds for both socioeconomic indicators
->>>>>>> fdcb1764 (Update copy)
     `}
     description={'the second part of the formula used in the methodology'}
     values= {{
