@@ -1,6 +1,8 @@
 from pathlib import Path
 import datetime
 
+from attr import field
+
 from data_pipeline.config import settings
 
 from data_pipeline.score import field_names
@@ -205,6 +207,17 @@ TILES_SCORE_COLUMNS = {
     field_names.CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009: "IAHSEF",
     field_names.COLLEGE_ATTENDANCE_FIELD: "CA",
     field_names.COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD: "CA_LT20",
+    # Booleans for the front end about the types of thresholds exceeded
+    field_names.CLIMATE_THRESHOLD_EXCEEDED: "M_CLT_EOMI",
+    field_names.ENERGY_THRESHOLD_EXCEEDED: "M_ENY_EOMI",
+    field_names.TRAFFIC_THRESHOLD_EXCEEDED: "M_TRN_EOMI",
+    field_names.HOUSING_THREHSOLD_EXCEEDED: "M_HSG_EOMI",
+    field_names.POLLUTION_THRESHOLD_EXCEEDED: "M_PLN_EOMI",
+    field_names.WATER_THRESHOLD_EXCEEDED: "M_WTR_EOMI",
+    field_names.HEALTH_THRESHOLD_EXCEEDED: "M_HLTH_EOMI",
+    field_names.WORKFORCE_THRESHOLD_EXCEEDED: "M_WKFC_EOMI",
+    field_names.WORKFORCE_SOCIO_INDICATORS_EXCEEDED: "M_WKFC_EBSI",
+    field_names.RMP_LOW_INCOME_LOW_HIGHER_ED_FIELD: "M_EBSI",
 }
 
 # columns to round floats to 2 decimals
