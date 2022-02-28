@@ -185,9 +185,6 @@ TILES_SCORE_COLUMNS = {
     field_names.POVERTY_LOW_HS_LOW_HIGHER_ED_FIELD: "PLHSE",
     field_names.LOW_MEDIAN_INCOME_LOW_HS_LOW_HIGHER_ED_FIELD: "LMILHSE",
     field_names.UNEMPLOYMENT_LOW_HS_LOW_HIGHER_ED_FIELD: "ULHSE",
-    field_names.LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD: "LHE",
-    # Vim do you use this?
-    # field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES: "FPL200S",
     field_names.THRESHOLD_COUNT: "TC",
     field_names.ISLAND_AREAS_UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD: "IAULHSE",
     field_names.ISLAND_AREAS_POVERTY_LOW_HS_EDUCATION_FIELD: "IAPLHSE",
@@ -215,8 +212,11 @@ TILES_SCORE_COLUMNS = {
     field_names.WATER_THRESHOLD_EXCEEDED: "M_WTR_EOMI",
     field_names.HEALTH_THRESHOLD_EXCEEDED: "M_HLTH_EOMI",
     field_names.WORKFORCE_THRESHOLD_EXCEEDED: "M_WKFC_EOMI",
-    field_names.WORKFORCE_SOCIO_INDICATORS_EXCEEDED: "M_WKFC_EBSI",
-    field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES: "M_EBSI",
+    # These are the booleans for socioeconomic indicators
+    ## Low high school and low higher ed for t&wd
+    field_names.LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD: "LHE",
+    ## FPL 200 and low higher ed for all others
+    field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES: "FPL200S",
 }
 
 # columns to round floats to 2 decimals
