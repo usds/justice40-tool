@@ -5,6 +5,7 @@ import pandas as pd
 from data_pipeline.score.score import Score
 import data_pipeline.score.field_names as field_names
 from data_pipeline.utils import get_module_logger
+import data_pipeline.etl.score.constants as constants
 
 logger = get_module_logger(__name__)
 
@@ -195,7 +196,8 @@ class ScoreM(Score):
         )
 
         self._increment_total_eligibility_exceeded(
-            climate_eligibility_columns, skip_fips=("72")
+            climate_eligibility_columns,
+            skip_fips=constants.DROP_FIPS_FROM_NON_WTD_THRESHOLDS,
         )
 
         return self.df[climate_eligibility_columns].any(axis="columns")
@@ -239,7 +241,8 @@ class ScoreM(Score):
         )
 
         self._increment_total_eligibility_exceeded(
-            energy_eligibility_columns, skip_fips=("72")
+            energy_eligibility_columns,
+            skip_fips=constants.DROP_FIPS_FROM_NON_WTD_THRESHOLDS,
         )
 
         return self.df[energy_eligibility_columns].any(axis="columns")
@@ -290,7 +293,8 @@ class ScoreM(Score):
         )
 
         self._increment_total_eligibility_exceeded(
-            transportion_eligibility_columns, skip_fips=("72")
+            transportion_eligibility_columns,
+            skip_fips=constants.DROP_FIPS_FROM_NON_WTD_THRESHOLDS,
         )
 
         return self.df[transportion_eligibility_columns].any(axis="columns")
@@ -351,7 +355,8 @@ class ScoreM(Score):
         )
 
         self._increment_total_eligibility_exceeded(
-            housing_eligibility_columns, skip_fips=("72")
+            housing_eligibility_columns,
+            skip_fips=constants.DROP_FIPS_FROM_NON_WTD_THRESHOLDS,
         )
 
         return self.df[housing_eligibility_columns].any(axis="columns")
@@ -402,7 +407,8 @@ class ScoreM(Score):
         )
 
         self._increment_total_eligibility_exceeded(
-            pollution_eligibility_columns, skip_fips=("72")
+            pollution_eligibility_columns,
+            skip_fips=constants.DROP_FIPS_FROM_NON_WTD_THRESHOLDS,
         )
 
         return self.df[pollution_eligibility_columns].any(axis="columns")
@@ -432,7 +438,7 @@ class ScoreM(Score):
 
         self._increment_total_eligibility_exceeded(
             [field_names.WASTEWATER_DISCHARGE_LOW_INCOME_LOW_HIGHER_ED_FIELD],
-            skip_fips=("72"),
+            skip_fips=constants.DROP_FIPS_FROM_NON_WTD_THRESHOLDS,
         )
 
         return self.df[
@@ -510,7 +516,8 @@ class ScoreM(Score):
         )
 
         self._increment_total_eligibility_exceeded(
-            health_eligibility_columns, skip_fips=("72")
+            health_eligibility_columns,
+            skip_fips=constants.DROP_FIPS_FROM_NON_WTD_THRESHOLDS,
         )
 
         return self.df[health_eligibility_columns].any(axis="columns")
