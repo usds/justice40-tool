@@ -45,11 +45,6 @@ DATASET_LIST = [
         "class_name": "EJSCREENETL",
     },
     {
-        "name": "ejscreen_updated",
-        "module_dir": "ejscreen_updated",
-        "class_name": "EJSCREENETL_updated",
-    },
-    {
         "name": "hud_housing",
         "module_dir": "hud_housing",
         "class_name": "HudHousingETL",
