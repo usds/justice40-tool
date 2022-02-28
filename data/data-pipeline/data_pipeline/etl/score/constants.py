@@ -1,8 +1,6 @@
 from pathlib import Path
 import datetime
 
-from attr import field
-
 from data_pipeline.config import settings
 
 from data_pipeline.score import field_names
@@ -188,7 +186,8 @@ TILES_SCORE_COLUMNS = {
     field_names.LOW_MEDIAN_INCOME_LOW_HS_LOW_HIGHER_ED_FIELD: "LMILHSE",
     field_names.UNEMPLOYMENT_LOW_HS_LOW_HIGHER_ED_FIELD: "ULHSE",
     field_names.LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD: "LHE",
-    field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES: "FPL200S",
+    # Vim do you use this?
+    # field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES: "FPL200S",
     field_names.THRESHOLD_COUNT: "TC",
     field_names.ISLAND_AREAS_UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD: "IAULHSE",
     field_names.ISLAND_AREAS_POVERTY_LOW_HS_EDUCATION_FIELD: "IAPLHSE",
