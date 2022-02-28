@@ -145,6 +145,8 @@ NPL_FIELD = "Proximity to NPL sites"
 AIR_TOXICS_CANCER_RISK_FIELD = "Air toxics cancer risk"
 RESPIRATORY_HAZARD_FIELD = "Respiratory hazard index"
 
+LOW_INCOME_THRESHOLD = "Exceeds FPL200 threshold"
+
 # Housing
 HOUSING_BURDEN_FIELD = "Housing burden (percent)"
 HT_INDEX_FIELD = (

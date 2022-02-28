@@ -199,10 +199,12 @@ TILES_SCORE_COLUMNS = {
     field_names.CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009
     + field_names.ISLAND_AREAS_PERCENTILE_ADJUSTMENT_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX: "IAULHSE_PFS",
+    field_names.LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD: "LHE",
     # Percentage of HS Degree completion for Islands
     field_names.CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009: "IAHSEF",
     field_names.COLLEGE_ATTENDANCE_FIELD: "CA",
     field_names.COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD: "CA_LT20",
+    field_names.LOW_INCOME_THRESHOLD: "FPL200S",
     # Booleans for the front end about the types of thresholds exceeded
     field_names.CLIMATE_THRESHOLD_EXCEEDED: "M_CLT_EOMI",
     field_names.ENERGY_THRESHOLD_EXCEEDED: "M_ENY_EOMI",
@@ -214,9 +216,9 @@ TILES_SCORE_COLUMNS = {
     field_names.WORKFORCE_THRESHOLD_EXCEEDED: "M_WKFC_EOMI",
     # These are the booleans for socioeconomic indicators
     ## Low high school and low higher ed for t&wd
-    field_names.LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD: "LHE",
+    field_names.WORKFORCE_SOCIO_INDICATORS_EXCEEDED: "M_WKFC_EBSI",
     ## FPL 200 and low higher ed for all others
-    field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES: "FPL200S",
+    field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES: "M_EBSI",
 }
 
 # columns to round floats to 2 decimals

@@ -93,15 +93,7 @@ class ScoreM(Score):
         is at or more than some established threshold
         """
 
-        return (
-            (
-                df[
-                    field_names.POVERTY_LESS_THAN_200_FPL_FIELD
-                    + field_names.PERCENTILE_FIELD_SUFFIX
-                ]
-                >= self.LOW_INCOME_THRESHOLD
-            )
-        ) & (
+        return (df[field_names.LOW_INCOME_THRESHOLD]) & (
             df[field_names.COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD]
             | (
                 # If college attendance data is null for this tract, just rely on the
@@ -790,6 +782,14 @@ class ScoreM(Score):
         # and change the return signature of that method.
         # Create a standalone field that captures the college attendance boolean
         # threshold.
+        self.df[field_names.LOW_INCOME_THRESHOLD] = (
+            self.df[
+                field_names.POVERTY_LESS_THAN_200_FPL_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.LOW_INCOME_THRESHOLD
+        )
+
         self.df[field_names.COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD] = (
             self.df[field_names.COLLEGE_ATTENDANCE_FIELD]
             <= self.MAX_COLLEGE_ATTENDANCE_THRESHOLD
