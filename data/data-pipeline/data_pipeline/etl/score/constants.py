@@ -217,7 +217,7 @@ TILES_SCORE_COLUMNS = {
     field_names.HEALTH_THRESHOLD_EXCEEDED: "M_HLTH_EOMI",
     field_names.WORKFORCE_THRESHOLD_EXCEEDED: "M_WKFC_EOMI",
     field_names.WORKFORCE_SOCIO_INDICATORS_EXCEEDED: "M_WKFC_EBSI",
-    field_names.RMP_LOW_INCOME_LOW_HIGHER_ED_FIELD: "M_EBSI",
+    field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES: "M_EBSI",
 }
 
 # columns to round floats to 2 decimals
