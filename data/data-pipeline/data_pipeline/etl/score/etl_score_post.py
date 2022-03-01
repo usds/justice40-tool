@@ -46,12 +46,20 @@ class PostScoreETL(ExtractTransformLoad):
         self.output_score_tiles_df: pd.DataFrame
         self.output_downloadable_df: pd.DataFrame
 
+        # Define some constants for the YAML file
+        # TODO: Implement this as a marshmallow schema.
+        # TODO: Ticket: https://github.com/usds/justice40-tool/issues/1327
         self.yaml_fields_type_percentage_label = "percentage"
         self.yaml_fields_type_loss_rate_percentage_label = (
             "loss_rate_percentage"
         )
         self.yaml_fields_type_float_label = "float"
         self.yaml_excel_sheet_label = "label"
+        self.yaml_global_config_rounding_num = "rounding_num"
+        self.yaml_global_config_rounding_num_float = "float"
+        self.yaml_global_config_rounding_num = "rounding_num"
+        self.yaml_global_config_sort_by_label = "sort_by_label"
+        # End YAML definition constants
 
     def _extract_counties(self, county_path: Path) -> pd.DataFrame:
         logger.info("Reading Counties CSV")
@@ -351,16 +359,18 @@ class PostScoreETL(ExtractTransformLoad):
                 df_100 = df[column] * 100
                 df[column] = floor_series(
                     series=df_100.astype(float64),
-                    number_of_decimals=config_object["rounding_num"][
-                        self.yaml_fields_type_loss_rate_percentage_label
-                    ],
+                    number_of_decimals=config_object[
+                        self.yaml_global_config_rounding_num
+                    ][self.yaml_fields_type_loss_rate_percentage_label],
                 )
 
             elif column_type_dict[column] == self.yaml_fields_type_float_label:
                 # Round the floats.
                 df[column] = floor_series(
                     series=df[column].astype(float64),
-                    number_of_decimals=config_object["rounding_num"]["float"],
+                    number_of_decimals=config_object[
+                        self.yaml_global_config_rounding_num
+                    ][self.yaml_global_config_rounding_num_float],
                 )
 
         # rename fields
@@ -375,8 +385,10 @@ class PostScoreETL(ExtractTransformLoad):
         )
 
         # sort if needed
-        if config_object.get("sort_by_label"):
-            final_df = renamed_df.sort_values(config_object["sort_by_label"])
+        if config_object.get(self.yaml_global_config_sort_by_label):
+            final_df = renamed_df.sort_values(
+                config_object[self.yaml_global_config_sort_by_label]
+            )
         else:
             final_df = renamed_df
 
