@@ -893,6 +893,17 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "nb-black"
+version = "1.0.7"
+description = "A simple extension for Jupyter Notebook and Jupyter Lab to beautify Python code automatically using Black."
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+ipython = "*"
+
+[[package]]
 name = "nbclient"
 version = "0.5.10"
 description = "A client library for executing notebooks. Formerly nbconvert's ExecutePreprocessor."
@@ -1721,8 +1732,8 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 
 [metadata]
 lock-version = "1.1"
-python-versions = "^3.8.1"
-content-hash = "19f46ad08fe8d656ec3efb77bf07b783fa556862cda052838dfdef8e164c731b"
+python-versions = "^3.8"
+content-hash = "20d367a3f75dbbe7a3a2ef54c6f38745504b3675f970c2e0967448a0896ebb82"
 
 [metadata.files]
 appnope = [
@@ -2341,6 +2352,9 @@ mypy = [
 mypy-extensions = [
     {file = "mypy_extensions-0.4.3-py2.py3-none-any.whl", hash = "sha256:090fedd75945a69ae91ce1303b5824f428daf5a028d2f6ab8a299250a846f15d"},
     {file = "mypy_extensions-0.4.3.tar.gz", hash = "sha256:2d82818f5bb3e369420cb3c4060a7970edba416647068eb4c5343488a6c604a8"},
+]
+nb-black = [
+    {file = "nb_black-1.0.7.tar.gz", hash = "sha256:1ca52e3a46675f6a0a6d79ac73a1f8f951bef60f919eced56173e76ab1b6d62b"},
 ]
 nbclient = [
     {file = "nbclient-0.5.10-py3-none-any.whl", hash = "sha256:5b582e21c8b464e6676a9d60acc6871d7fbc3b080f74bef265a9f90411b31f6f"},
