@@ -554,7 +554,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div>
                 
         Percent of housing units built pre-1960, used as an indicator of potential lead paint exposure in
-        tracts with median home values less than 90th percentile.
+        tracts with median home values less than the 90th percentile.
       
               </div>
               <ul>
