@@ -154,6 +154,8 @@ class TestNationalRiskIndexETL(TestETL):
         )
         assert extracted_file_path.is_file()
 
+    # These get run one at a time
+    # $ poetry run pytest data_pipeline/tests/sources/national_risk_index/test_etl.py::TestNationalRiskIndexETL::test_extract_step --snapshot-update
     def test_extract_step(self, snapshot, mock_etl, mock_paths):
         """header comment to come"""
         snapshot.snapshot_dir = self._DATA_DIRECTORY_FOR_TEST
@@ -182,13 +184,14 @@ class TestNationalRiskIndexETL(TestETL):
 
     def test_load_step(self, snapshot, mock_etl, mock_paths):
         """header comment to come"""
+        """THIS IS NOT DOING WHAT I THINK IT IS"""
         snapshot.snapshot_dir = self._DATA_DIRECTORY_FOR_TEST
+        etl = self._setup_etl_instance_and_run_extract(
+            mock_etl=mock_etl,
+            mock_paths=mock_paths,
+        )
+        etl.load()
         snapshot.assert_match(
-            str(
-                self._setup_etl_instance_and_run_extract(
-                    mock_etl=mock_etl,
-                    mock_paths=mock_paths,
-                ).load()
-            ),
+            str(etl._get_output_file_path()),
             self._OUTPUT_CSV_FILE_NAME,
         )
