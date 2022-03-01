@@ -21,7 +21,7 @@ exports[`rendering of the CategoryCard checks if component renders 1`] = `
       <strong>
         IF
       </strong>
-       at or above 90th percentile for 
+       at or above the 90th percentile for 
       <a
         href="#exp-agr-loss-rate"
       >
@@ -48,7 +48,7 @@ exports[`rendering of the CategoryCard checks if component renders 1`] = `
       <strong>
         AND
       </strong>
-       is above 65th percentile for 
+       is above the 65th percentile for 
       <a
         href="#low-income"
       >

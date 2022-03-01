@@ -30,7 +30,17 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
         .
       </li>
       <li>
-        CEQ will publish a Request for Information on federalregister.gov.
+        CEQ has published a Request for Information on 
+        <a
+          class="usa-link usa-link--external"
+          data-cy=""
+          href="https://www.federalregister.gov/d/2022-03920"
+          rel="noreferrer"
+          target="_blank"
+        >
+          federalregister.gov
+        </a>
+        .
       </li>
     </ul>
   </div>
