@@ -373,6 +373,11 @@ class PostScoreETL(ExtractTransformLoad):
                     ][self.yaml_global_config_rounding_num_float],
                 )
 
+            else:
+                raise ValueError(
+                    f"Unrecognized type: `{column_type_dict[column]}`"
+                )
+
         # rename fields
         column_rename_dict = load_dict_from_yaml_object_fields(
             yaml_object=fields_object,
