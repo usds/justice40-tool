@@ -31,7 +31,7 @@ const Layout = ({children, location, title}: ILayoutProps) => {
             to appear on every page. These words were chosen from the header as it appears on each page */}
         <meta
           name="keywords"
-          content={`screening tool climate economic justice explore methodology about contact`}
+          content={`screening tool climate environmental economic justice beta council quality methodology`}
         />
 
         {/* Allows for Open Graph meta tags */}
