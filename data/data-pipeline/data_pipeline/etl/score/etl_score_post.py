@@ -54,10 +54,12 @@ class PostScoreETL(ExtractTransformLoad):
             "loss_rate_percentage"
         )
         self.yaml_fields_type_float_label = "float"
+        self.yaml_fields_type_string_label = "string"
+        self.yaml_fields_type_boolean_label = "bool"
+        self.yaml_fields_type_integer_label = "int64"
         self.yaml_excel_sheet_label = "label"
         self.yaml_global_config_rounding_num = "rounding_num"
         self.yaml_global_config_rounding_num_float = "float"
-        self.yaml_global_config_rounding_num = "rounding_num"
         self.yaml_global_config_sort_by_label = "sort_by_label"
         # End YAML definition constants
 
@@ -372,6 +374,19 @@ class PostScoreETL(ExtractTransformLoad):
                         self.yaml_global_config_rounding_num
                     ][self.yaml_global_config_rounding_num_float],
                 )
+
+            elif column_type_dict[column] == self.yaml_fields_type_string_label:
+                pass
+
+            elif (
+                column_type_dict[column] == self.yaml_fields_type_boolean_label
+            ):
+                pass
+
+            elif (
+                column_type_dict[column] == self.yaml_fields_type_integer_label
+            ):
+                pass
 
             else:
                 raise ValueError(
