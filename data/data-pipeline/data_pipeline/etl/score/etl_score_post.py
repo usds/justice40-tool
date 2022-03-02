@@ -427,7 +427,7 @@ class PostScoreETL(ExtractTransformLoad):
         csv_path = constants.SCORE_DOWNLOADABLE_CSV_FILE_PATH
         excel_path = constants.SCORE_DOWNLOADABLE_EXCEL_FILE_PATH
         zip_path = constants.SCORE_DOWNLOADABLE_ZIP_FILE_PATH
-        pdf_path = constants.SCORE_DOWNLOADABLE_PDF_FILE_PATH
+        # pdf_path = constants.SCORE_DOWNLOADABLE_PDF_FILE_PATH
 
         # Rename score column
         downloadable_df_copy = downloadable_df.rename(
@@ -447,7 +447,10 @@ class PostScoreETL(ExtractTransformLoad):
         downloadable_df_copy.to_csv(csv_path, index=False)
 
         logger.info("Compressing files")
-        files_to_compress = [csv_path, excel_path, pdf_path]
+        files_to_compress = [
+            csv_path,
+            excel_path,
+        ]  # add pdf_path here to include PDF
         zip_files(zip_path, files_to_compress)
 
     def load(self) -> None:

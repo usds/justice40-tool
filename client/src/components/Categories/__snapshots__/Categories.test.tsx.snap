@@ -43,7 +43,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           IF
         </strong>
-         at or above 90th percentile for 
+         at or above the 90th percentile for 
         <a
           href="#exp-agr-loss-rate"
         >
@@ -70,7 +70,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           AND
         </strong>
-         is above 65th percentile for 
+         is above the 65th percentile for 
         <a
           href="#low-income"
         >
@@ -106,7 +106,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           IF
         </strong>
-         at or above 90th percentile for 
+         at or above the 90th percentile for 
         <a
           href="#energy-burden"
         >
@@ -127,7 +127,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           AND
         </strong>
-         is above 65th percentile for 
+         is above the 65th percentile for 
         <a
           href="#low-income"
         >
@@ -163,7 +163,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           IF
         </strong>
-         at or above 90th percentile for 
+         at or above the 90th percentile for 
         <a
           href="#diesel-pm"
         >
@@ -184,7 +184,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           AND
         </strong>
-         is above 65th percentile for 
+         is above the 65th percentile for 
         <a
           href="#low-income"
         >
@@ -220,7 +220,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           IF
         </strong>
-         at or above 90th percentile for 
+         at or above the 90th percentile for 
         <a
           href="#lead-paint"
         >
@@ -233,7 +233,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
           median home value
         </a>
          is at or less than
-        90th percentile OR at or above the 90th percentile for the 
+        the 90th percentile OR at or above the 90th percentile for the 
         <a
           href="#house-burden"
         >
@@ -248,7 +248,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           AND
         </strong>
-         is above 65th percentile for 
+         is above the 65th percentile for 
         <a
           href="#low-income"
         >
@@ -284,7 +284,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           IF
         </strong>
-         at or above 90th percentile for 
+         at or above the 90th percentile for 
         <a
           href="#prox-haz"
         >
@@ -311,7 +311,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           AND
         </strong>
-         is above 65th percentile for 
+         is above the 65th percentile for 
         <a
           href="#low-income"
         >
@@ -347,7 +347,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           IF
         </strong>
-         at or above 90th percentile for 
+         at or above the 90th percentile for 
         <a
           href="#waste-water"
         >
@@ -362,7 +362,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           AND
         </strong>
-         is above 65th percentile for 
+         is above the 65th percentile for 
         <a
           href="#low-income"
         >
@@ -398,7 +398,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           IF
         </strong>
-         at or above 90th percentile for 
+         at or above the 90th percentile for 
         <a
           href="#asthma"
         >
@@ -431,7 +431,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           AND
         </strong>
-         is above 65th percentile for 
+         is above the 65th percentile for 
         <a
           href="#low-income"
         >

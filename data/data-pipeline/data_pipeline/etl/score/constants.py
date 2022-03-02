@@ -22,7 +22,6 @@ DATA_CENSUS_CSV_DIR = DATA_CENSUS_DIR / "csv"
 DATA_CENSUS_CSV_FILE_PATH = DATA_CENSUS_CSV_DIR / "us.csv"
 DATA_CENSUS_CSV_STATE_FILE_PATH = DATA_CENSUS_CSV_DIR / "fips_states_2010.csv"
 
-
 # Score paths
 DATA_SCORE_DIR = DATA_PATH / "score"
 
@@ -65,6 +64,9 @@ CENSUS_COUNTIES_COLUMNS = ["USPS", "GEOID", "NAME"]
 
 # Drop FIPS codes from map
 DROP_FIPS_CODES = ["66", "78"]
+
+# Drop FIPS codes from incrementing
+DROP_FIPS_FROM_NON_WTD_THRESHOLDS = "72"
 
 # Percent prefixes for rounding
 PERCENT_PREFIXES_SUFFIXES = [
