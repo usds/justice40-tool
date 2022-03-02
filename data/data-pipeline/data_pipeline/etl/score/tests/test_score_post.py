@@ -10,6 +10,7 @@ from data_pipeline.etl.score import constants
 
 # See conftest.py for all fixtures used in these tests
 
+
 # Extract Tests
 def test_extract_counties(etl, county_data_initial):
     reload(constants)
