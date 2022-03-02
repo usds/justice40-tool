@@ -1,6 +1,7 @@
 # pylint: disable=protected-access
 from cgitb import small
 from unittest import mock
+import pandas as pd
 
 # import filecmp
 
@@ -58,39 +59,6 @@ class TestNationalRiskIndexETL(TestETL):
 
         return etl
 
-    # # # This decorator means that this "test" will only be run by passing that flag to
-    # # # pytest, for instance by running `pytest . -rsx --update_snapshots`.
-    # # @pytest.mark.update_snapshots
-    # def test_update_test_fixtures(self, mock_etl, mock_paths):
-    #     etl = self._setup_etl_instance_and_run_extract(
-    #         mock_etl=mock_etl, mock_paths=mock_paths
-    #     )
-
-    #     # After running extract, write the results as the "input.csv" in the test
-    #     # directory.
-    #     copy_data_files(
-    #         src=etl.INPUT_CSV,
-    #         dst=self._DATA_DIRECTORY_FOR_TEST / self._INPUT_CSV_FILE_NAME,
-    #     )
-
-    #     # After running transform, write the results as the "transform.csv" in the test
-    #     # directory.
-    #     etl.transform()
-    #     etl.output_df.to_csv(
-    #         path_or_buf=self._DATA_DIRECTORY_FOR_TEST
-    #         / self._TRANSFORM_CSV_FILE_NAME,
-    #         index=False,
-    #     )
-
-    #     # After running load, write the results as the "output.csv" in the test
-    #     # directory.
-    #     etl.load()
-
-    #     copy_data_files(
-    #         src=etl._get_output_file_path(),
-    #         dst=self._DATA_DIRECTORY_FOR_TEST / self._OUTPUT_CSV_FILE_NAME,
-    #     )
-
     def test_init(self, mock_etl, mock_paths):
         """Tests that the mock NationalRiskIndexETL class instance was
         initiliazed correctly.
@@ -139,8 +107,9 @@ class TestNationalRiskIndexETL(TestETL):
         )
         assert output_file_path == expected_output_file_path
 
-    def _test_extract_path(self, mock_etl, mock_paths):
-        """Ensure the extract results are working as appropriate."""
+    def test_extract_path(self, mock_etl, mock_paths):
+        """Ensure the extract is happening where appropriate."""
+        # this is returning true for no reason?
         tmp_path = mock_paths[1]
 
         _ = self._setup_etl_instance_and_run_extract(
@@ -152,46 +121,27 @@ class TestNationalRiskIndexETL(TestETL):
         extracted_file_path = (
             tmp_path / "NationalRiskIndexETL" / "NRI_Table_CensusTracts.csv"
         )
+
         assert extracted_file_path.is_file()
 
-    # These get run one at a time
-    # $ poetry run pytest data_pipeline/tests/sources/national_risk_index/test_etl.py::TestNationalRiskIndexETL::test_extract_step --snapshot-update
-    def test_extract_step(self, snapshot, mock_etl, mock_paths):
-        """header comment to come"""
-        snapshot.snapshot_dir = self._DATA_DIRECTORY_FOR_TEST
-        snapshot.assert_match(
-            str(
-                self._setup_etl_instance_and_run_extract(
-                    mock_etl=mock_etl,
-                    mock_paths=mock_paths,
-                ).extract()
-            ),
-            self._INPUT_CSV_FILE_NAME,
-        )
+    def test_extract(self, snapshot, mock_etl, mock_paths):
+        """Tests the extract method. I think this works
 
-    def test_transform_step(self, snapshot, mock_etl, mock_paths):
-        """header comment to come"""
-        snapshot.snapshot_dir = self._DATA_DIRECTORY_FOR_TEST
-        snapshot.assert_match(
-            str(
-                self._setup_etl_instance_and_run_extract(
-                    mock_etl=mock_etl,
-                    mock_paths=mock_paths,
-                ).transform()
-            ),
-            self._TRANSFORM_CSV_FILE_NAME,
-        )
-
-    def test_load_step(self, snapshot, mock_etl, mock_paths):
-        """header comment to come"""
-        """THIS IS NOT DOING WHAT I THINK IT IS"""
-        snapshot.snapshot_dir = self._DATA_DIRECTORY_FOR_TEST
-        etl = self._setup_etl_instance_and_run_extract(
+        To update: $ poetry run pytest
+            data_pipeline/tests/sources/national_risk_index/test_etl.py::test
+            --snapshot-update
+        """
+        tmp_path = mock_paths[1]
+        _ = self._setup_etl_instance_and_run_extract(
             mock_etl=mock_etl,
             mock_paths=mock_paths,
         )
-        etl.load()
+        extracted_file_path = (
+            tmp_path / "NationalRiskIndexETL" / "NRI_Table_CensusTracts.csv"
+        )
+        tmp_df = pd.read_csv(extracted_file_path)
+        snapshot.snapshot_dir = self._DATA_DIRECTORY_FOR_TEST
         snapshot.assert_match(
-            str(etl._get_output_file_path()),
-            self._OUTPUT_CSV_FILE_NAME,
+            tmp_df.to_csv(index=False),
+            self._INPUT_CSV_FILE_NAME,
         )

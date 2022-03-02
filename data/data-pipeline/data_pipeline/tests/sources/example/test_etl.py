@@ -8,7 +8,6 @@ import numpy as np
 import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
-from data_pipeline.tests.conftest import copy_data_files
 from data_pipeline.tests.sources.example.etl import ExampleETL
 from data_pipeline.utils import get_module_logger
 
@@ -217,31 +216,7 @@ class TestETL:
         for col in etl.COLUMNS_TO_KEEP:
             assert col in etl.output_df.columns, f"{col} is missing from output"
 
-    def test_transform_base(self, mock_etl):
-        """Tests the transform method.
-
-        Can be run without modification for all child classes.
-        """
-        # setup - copy sample data into tmp_dir
-        etl = self._get_instance_of_etl_class()
-        etl.transform()
-
-        transform_csv_path = (
-            self._DATA_DIRECTORY_FOR_TEST / self._TRANSFORM_CSV_FILE_NAME
-        )
-
-        # Compare to expected.
-        expected = pd.read_csv(
-            filepath_or_buffer=transform_csv_path,
-            dtype={
-                ExtractTransformLoad.GEOID_TRACT_FIELD_NAME: "string",
-                ExtractTransformLoad.GEOID_FIELD_NAME: "string",
-            },
-        )
-
-        pd.testing.assert_frame_equal(etl.output_df, expected)
-
-    def test_load_base(self, mock_etl):
+    def test_load_base(self, snapshot, mock_etl, mock_paths):
         """Test load method.
 
         Can be run without modification for all child classes.
@@ -263,25 +238,31 @@ class TestETL:
         actual_output_path = etl._get_output_file_path()
         assert actual_output_path.exists()
 
+        # Check COLUMNS_TO_KEEP remain
         actual_output = pd.read_csv(
             actual_output_path, dtype={etl.GEOID_TRACT_FIELD_NAME: str}
         )
-        expected_output_csv_path = (
-            self._DATA_DIRECTORY_FOR_TEST / self._OUTPUT_CSV_FILE_NAME
-        )
-
-        # setup - load expected output
-        expected_output = pd.read_csv(
-            filepath_or_buffer=expected_output_csv_path,
-            dtype={etl.GEOID_TRACT_FIELD_NAME: str},
-        )
-
-        # check that the `COLUMNS_TO_KEEP` are in the output
         for col in etl.COLUMNS_TO_KEEP:
             assert col in actual_output.columns, f"{col} is missing from output"
 
-        # validation
-        pd.testing.assert_frame_equal(actual_output, expected_output)
+        # Check the snapshots
+        snapshot.snapshot_dir = self._DATA_DIRECTORY_FOR_TEST
+        snapshot.assert_match(
+            actual_output.to_csv(),
+            self._OUTPUT_CSV_FILE_NAME,
+        )
+
+    def test_transform_base(self, snapshot):
+        """Tests the transform method."""
+        # setup - copy sample data into tmp_dir
+        etl = self._get_instance_of_etl_class()
+        etl.transform()
+
+        snapshot.snapshot_dir = self._DATA_DIRECTORY_FOR_TEST
+        snapshot.assert_match(
+            etl.output_df.to_csv(index=False),
+            self._TRANSFORM_CSV_FILE_NAME,
+        )
 
     def test_validate_base(self, mock_etl, mock_paths):
         """Every ETL class should have proper validation.
@@ -501,70 +482,70 @@ class TestETL:
         else:
             raise NotImplementedError("This geo level not tested yet.")
 
-    # This decorator means that this "test" will only be run by passing that flag to
-    # pytest, for instance by running `pytest . -rsx --update_snapshots`.
-    @pytest.mark.update_snapshots
-    def test_update_test_fixtures(self, mock_etl, mock_paths):
-        """Update the test fixtures (the data files) used by the test.
+    # # This decorator means that this "test" will only be run by passing that flag to
+    # # pytest, for instance by running `pytest . -rsx --update_snapshots`.
+    # @pytest.mark.update_snapshots
+    # def test_update_test_fixtures(self, mock_etl, mock_paths):
+    #     """Update the test fixtures (the data files) used by the test.
 
-        This needs to be reimplemented for every child class. This is because there
-        are not strict contracts on the outputs of the `extract` step so this method
-        needs to explicitly define how to update the `input` fixture that comes after
-        the extract step.
+    #     This needs to be reimplemented for every child class. This is because there
+    #     are not strict contracts on the outputs of the `extract` step so this method
+    #     needs to explicitly define how to update the `input` fixture that comes after
+    #     the extract step.
 
-        Using this method to update fixtures can be helpful if you expect the
-        results to change because you changed the logic of the ETL class and need to
-        quickly update the fixtures.
+    #     Using this method to update fixtures can be helpful if you expect the
+    #     results to change because you changed the logic of the ETL class and need to
+    #     quickly update the fixtures.
 
-        However, note a few things first:
+    #     However, note a few things first:
 
-        1. Do *not* update these fixtures if you did not expect the ETL results to
-        change!
+    #     1. Do *not* update these fixtures if you did not expect the ETL results to
+    #     change!
 
-        2. If the source data itself changes (e.g., the external source renames a
-        column), update the "furthest upstream" test fixture which, in many cases,
-        is a .zip file. Then running this method will update all subsequent files.
+    #     2. If the source data itself changes (e.g., the external source renames a
+    #     column), update the "furthest upstream" test fixture which, in many cases,
+    #     is a .zip file. Then running this method will update all subsequent files.
 
-        If you're confused by any of this, ask for help, it's confusing :).
-        """
-        # When running this in child classes, make sure the child class re-implements
-        # this method.
-        if self._ETL_CLASS is not ExampleETL:
-            raise NotImplementedError(
-                "Update fixtures method not defined for this class."
-            )
+    #     If you're confused by any of this, ask for help, it's confusing :).
+    #     """
+    #     # When running this in child classes, make sure the child class re-implements
+    #     # this method.
+    #     if self._ETL_CLASS is not ExampleETL:
+    #         raise NotImplementedError(
+    #             "Update fixtures method not defined for this class."
+    #         )
 
-        # The rest of this method applies for `ExampleETL` only.
-        etl = self._setup_etl_instance_and_run_extract(
-            mock_etl=mock_etl, mock_paths=mock_paths
-        )
+    #     # The rest of this method applies for `ExampleETL` only.
+    #     etl = self._setup_etl_instance_and_run_extract(
+    #         mock_etl=mock_etl, mock_paths=mock_paths
+    #     )
 
-        # After running extract, write the results as the "input.csv" in the test
-        # directory.
-        logger.info(
-            f"Writing data to {self._DATA_DIRECTORY_FOR_TEST / self._INPUT_CSV_FILE_NAME}"
-        )
-        copy_data_files(
-            src=etl.get_tmp_path() / "input.csv",
-            dst=self._DATA_DIRECTORY_FOR_TEST / self._INPUT_CSV_FILE_NAME,
-        )
+    #     # After running extract, write the results as the "input.csv" in the test
+    #     # directory.
+    #     logger.info(
+    #         f"Writing data to {self._DATA_DIRECTORY_FOR_TEST / self._INPUT_CSV_FILE_NAME}"
+    #     )
+    #     copy_data_files(
+    #         src=etl.get_tmp_path() / "input.csv",
+    #         dst=self._DATA_DIRECTORY_FOR_TEST / self._INPUT_CSV_FILE_NAME,
+    #     )
 
-        # After running transform, write the results as the "transform.csv" in the test
-        # directory.
-        etl.transform()
-        etl.output_df.to_csv(
-            path_or_buf=self._DATA_DIRECTORY_FOR_TEST
-            / self._TRANSFORM_CSV_FILE_NAME,
-            index=False,
-        )
+    #     # After running transform, write the results as the "transform.csv" in the test
+    #     # directory.
+    #     etl.transform()
+    #     etl.output_df.to_csv(
+    #         path_or_buf=self._DATA_DIRECTORY_FOR_TEST
+    #         / self._TRANSFORM_CSV_FILE_NAME,
+    #         index=False,
+    #     )
 
-        # Run validate, just to check.
-        etl.validate()
+    #     # Run validate, just to check.
+    #     etl.validate()
 
-        # After running load, write the results as the "output.csv" in the test
-        # directory.
-        etl.load()
-        copy_data_files(
-            src=etl._get_output_file_path(),
-            dst=self._DATA_DIRECTORY_FOR_TEST / self._OUTPUT_CSV_FILE_NAME,
-        )
+    #     # After running load, write the results as the "output.csv" in the test
+    #     # directory.
+    #     etl.load()
+    #     copy_data_files(
+    #         src=etl._get_output_file_path(),
+    #         dst=self._DATA_DIRECTORY_FOR_TEST / self._OUTPUT_CSV_FILE_NAME,
+    #     )
