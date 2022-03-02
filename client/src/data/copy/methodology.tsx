@@ -1007,7 +1007,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.house.burden.description.text'}
       defaultMessage= {`
-        The percent of households in a census tract that are both earning less than 80% of HUD Area Median
+        Percent of households in a census tract that are both earning less than 80% of HUD Area Median
         Family Income by county and are spending more than 30% of their income on housing costs.
       `}
       description= {'description text for housing burden'}
@@ -1274,7 +1274,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.linguistic.iso.description.text'}
       defaultMessage= {`
-        The percent households, which are households, where no one over the age fourteen speaks English well.
+        Percent of households, which are households, where no one over the age fourteen speaks English well.
       `}
       description= {'description text for linguistic isolation'}
     />,
@@ -1316,7 +1316,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.poverty.description.text'}
       defaultMessage= {`
-        Proportion of a tract's population in households where the household income is at or below 100% of
+        Percent of a tract's population in households where the household income is at or below 100% of
         the Federal poverty level.
       `}
       description= {'description text for poverty'}
@@ -1340,7 +1340,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.highschool.description.text'}
       defaultMessage= {`
-        Proportion of people ages 25 years or older in a census tract whose
+        Percent of people ages 25 years or older in a census tract whose
         education level is less than a high school diploma.
       `}
       description= {'description text for highschool'}

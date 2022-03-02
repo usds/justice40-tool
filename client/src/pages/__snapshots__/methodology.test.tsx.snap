@@ -1410,7 +1410,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </h3>
                 <div>
                   
-        The percent of households in a census tract that are both earning less than 80% of HUD Area Median
+        Percent of households in a census tract that are both earning less than 80% of HUD Area Median
         Family Income by county and are spending more than 30% of their income on housing costs.
       
                 </div>
@@ -2042,7 +2042,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </h3>
                 <div>
                   
-        The percent households, which are households, where no one over the age fourteen speaks English well.
+        Percent of households, which are households, where no one over the age fourteen speaks English well.
       
                 </div>
                 <ul>
@@ -2157,7 +2157,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </h3>
                 <div>
                   
-        Proportion of a tract's population in households where the household income is at or below 100% of
+        Percent of a tract's population in households where the household income is at or below 100% of
         the Federal poverty level.
       
                 </div>
@@ -2226,7 +2226,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </h3>
                 <div>
                   
-        Proportion of people ages 25 years or older in a census tract whose
+        Percent of people ages 25 years or older in a census tract whose
         education level is less than a high school diploma.
       
                 </div>
