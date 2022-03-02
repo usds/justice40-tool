@@ -304,9 +304,10 @@ class ScoreETL(ExtractTransformLoad):
                 f"{output_column_name_root}"
                 f"{field_names.PERCENTILE_FIELD_SUFFIX}"
             ] = (
-                df.where(df[field_names.AGRICULTURAL_VALUE_BOOL_FIELD] == True)[
-                    input_column_name
-                ]
+                df.where(
+                    df[field_names.AGRICULTURAL_VALUE_BOOL_FIELD].astype(float)
+                    == 1.0
+                )[input_column_name]
                 .rank(ascending=ascending, pct=True)
                 .fillna(
                     df[field_names.AGRICULTURAL_VALUE_BOOL_FIELD].astype(float)
