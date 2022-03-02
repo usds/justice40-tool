@@ -31,38 +31,38 @@ export const PAGE_INTRO = defineMessages({
   },
 });
 
-export const CENSUS_TRACK_FEEDBACK = {
+export const CENSUS_TRACT_FEEDBACK = {
   TITLE: <FormattedMessage
-    id={'contact.page.census.track.feedback.title'}
-    defaultMessage={`Census track feedback`}
-    description={'census track feedback section'}
+    id={'contact.page.census.tract.feedback.title'}
+    defaultMessage={`Census tract feedback`}
+    description={'census tract feedback section'}
   />,
   PARAGRAPH1: <FormattedMessage
-    id={'contact.page.census.track.feedback.para1'}
+    id={'contact.page.census.tract.feedback.para1'}
     defaultMessage={`
       To provide feedback about a specific census tract, either select the send feedback button after 
       finding a tract on the {exploreLink} page or use the email address provided above. Please 
       include the census tract ID, county, and state or territory information, in addition to your feedback.
     `}
-    description={'census track feedback section'}
+    description={'census tract feedback section'}
     values={{
       exploreLink: <Link to={'/cejst'}>Explore the tool</Link>,
     }}
   />,
   PARAGRAPH2: <FormattedMessage
-    id={'contact.page.census.track.feedback.para2'}
+    id={'contact.page.census.tract.feedback.para2'}
     defaultMessage={`
       If there are specific data indicators that could be improved or changed, please include that
       information in the body of the email.
     `}
-    description={'census track feedback section'}
+    description={'census tract feedback section'}
   />,
   PARAGRAPH3: <FormattedMessage
-    id={'contact.page.census.track.feedback.para1'}
+    id={'contact.page.census.tract.feedback.para1'}
     defaultMessage={`
       In addition, you can provide feedback on the tool via this {improvementSurvey}.
     `}
-    description={'census track feedback section'}
+    description={'census tract feedback section'}
     values={{
       improvementSurvey: <LinkTypeWrapper
         linkText={'survey'}
