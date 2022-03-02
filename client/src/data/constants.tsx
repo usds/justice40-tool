@@ -28,8 +28,9 @@ export const FEATURE_TILE_HIGH_ZOOM_URL = featureURLForTilesetName('high');
 export const FEATURE_TILE_LOW_ZOOM_URL = featureURLForTilesetName('low');
 
 // Staging links for testing:
-// export const FEATURE_TILE_HIGH_ZOOM_URL = `https://justice40-data.s3.amazonaws.com/data-pipeline-staging/1297/deee14dd93b783c8d366434dc8438a281b5c89df/data/score/tiles/high/${XYZ_SUFFIX}`;
-// export const FEATURE_TILE_LOW_ZOOM_URL = `https://justice40-data.s3.amazonaws.com/data-pipeline-staging/1297/deee14dd93b783c8d366434dc8438a281b5c89df/data/score/tiles/low/${XYZ_SUFFIX}`;
+// const PR_HASH = `1348/3f241bbb369a0bcfe3d39db46872fd019aeadb63`;
+// export const FEATURE_TILE_HIGH_ZOOM_URL = `https://justice40-data.s3.amazonaws.com/data-pipeline-staging/${PR_HASH}/data/score/tiles/high/${XYZ_SUFFIX}`;
+// export const FEATURE_TILE_LOW_ZOOM_URL = `https://justice40-data.s3.amazonaws.com/data-pipeline-staging/${PR_HASH}/data/score/tiles/low/${XYZ_SUFFIX}`;
 
 
 // Performance markers
@@ -99,21 +100,16 @@ export const IS_HEALTH_FACTOR_DISADVANTAGED_M = 'M_HLTH';
 export const IS_WORKFORCE_FACTOR_DISADVANTAGED_M = 'M_WKFC';
 
 export const IS_CLIMATE_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_CLT_EOMI';
-export const IS_CLIMATE_EXCEED_BOTH_SOCIO_INDICATORS_M = 'M_CLT_EBSI';
 export const IS_ENERGY_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_ENY_EOMI';
-export const IS_ENERGY_EXCEED_BOTH_SOCIO_INDICATORS_M = 'M_ENY_EBSI';
 export const IS_TRANSPORT_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_TRN_EOMI';
-export const IS_TRANSPORT_EXCEED_BOTH_SOCIO_INDICATORS_M = 'M_TRN_EBSI';
 export const IS_HOUSING_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_HSG_EOMI';
-export const IS_HOUSING_EXCEED_BOTH_SOCIO_INDICATORS_M = 'M_HSG_EBSI';
 export const IS_POLLUTION_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_PLN_EOMI';
-export const IS_POLLUTION_EXCEED_BOTH_SOCIO_INDICATORS_M = 'M_PLN_EBSI';
 export const IS_WATER_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_WTR_EOMI';
-export const IS_WATER_EXCEED_BOTH_SOCIO_INDICATORS_M = 'M_WTR_EBSI';
 export const IS_HEALTH_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_HLTH_EOMI';
-export const IS_HEALTH_EXCEED_BOTH_SOCIO_INDICATORS_M = 'M_HLTH_EBSI';
 export const IS_WORKFORCE_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_WKFC_EOMI';
+
 export const IS_WORKFORCE_EXCEED_BOTH_SOCIO_INDICATORS_M = 'M_WKFC_EBSI';
+export const IS_EXCEED_BOTH_SOCIO_INDICATORS_M = 'M_EBSI';
 
 // Total indicators values:
 export const TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS = 'TC';
