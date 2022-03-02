@@ -264,7 +264,8 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
             low_memory=False,
         )
 
-        logger.info("Pulling PR info down.")
+        logger.info("Pulling PR tract list down.")
+        # This step is necessary because PR is not in geocorr at the level that gets joined
         pr_file = self.get_tmp_path() / "pr_tracts" / "pr_tracts.csv"
         download_file_from_url(
             file_url=self.PUERTO_RICO_S3_LINK, download_file_name=pr_file
@@ -273,11 +274,11 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
             filepath_or_buffer=self.get_tmp_path()
             / "pr_tracts"
             / "pr_tracts.csv",
-            # Skip second row, which has descriptions.
             # The following need to remain as strings for all of their digits, not get converted to numbers.
             dtype={"GEOID10_TRACT": str},
             low_memory=False,
         )
+        self.pr_tracts["State Abbreviation"] = "PR"
 
         # Download MSA median incomes
         logger.info("Starting download of MSA median incomes.")
@@ -298,12 +299,10 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
         msa_median_incomes_df = self._transform_msa_median_incomes()
         state_median_incomes_df = self._transform_state_median_incomes()
 
-        # Adds 945 PR tracts
-        geocorr_df_plus_pr = geocorr_df.merge(
-            self.pr_tracts, how="outer", indicator=True
-        )
+        # Adds 945 PR tracts to the geocorr dataframe
+        geocorr_df_plus_pr = geocorr_df.merge(self.pr_tracts, how="outer")
 
-        # Join tracts on MSA incomes (this is where we lose PR)
+        # Join tracts on MSA incomes
         merged_df = geocorr_df_plus_pr.merge(
             msa_median_incomes_df, on=self.MSA_ID_FIELD_NAME, how="left"
         )
