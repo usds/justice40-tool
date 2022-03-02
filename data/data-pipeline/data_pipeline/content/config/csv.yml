@@ -6,23 +6,23 @@ global_config:
     loss_rate_percentage: 4
 fields:
   - score_name: GEOID10_TRACT
-    label: Census tract ID
-    format: string
-  - score_name: State/Territory
-    label: State/Territory
+    label: GEOID10_TRACT
     format: string
   - score_name: County Name
     label: County Name
+    format: string
+  - score_name: State/Territory
+    label: State/Territory
     format: string
   - score_name: Total threshold criteria exceeded
     label: Total threshold criteria exceeded
     format: int64
   - score_name: Definition M (communities)
-    label: Identified as disadvantaged (v0.1)
+    label: Definition M (communities)
     format: bool
   - score_name: Total population
     label: Total population
-    format: int64
+    format: float
   - score_name: Is low income and has a low percent of higher ed students?
     label: Is low income and has a low percent of higher ed students?
     format: bool
@@ -34,7 +34,7 @@ fields:
     format: percent
   - score_name: Expected agricultural loss rate (Natural Hazards Risk Index)
     label: Expected agricultural loss rate (Natural Hazards Risk Index)
-    format: loss_rate_percentage
+    format: loss_rate_percentages
   - score_name: Greater than or equal to the 90th percentile for expected building loss rate, is low income, and has a low percent of higher ed students?
     label: Greater than or equal to the 90th percentile for expected building loss rate, is low income, and has a low percent of higher ed students?
     format: bool
@@ -43,7 +43,7 @@ fields:
     format: percent
   - score_name: Expected building loss rate (Natural Hazards Risk Index)
     label: Expected building loss rate (Natural Hazards Risk Index)
-    format: loss_rate_percentage
+    format: loss_rate_percentages
   - score_name: Greater than or equal to the 90th percentile for expected population loss rate, is low income, and has a low percent of higher ed students?
     label: Greater than or equal to the 90th percentile for expected population loss rate, is low income, and has a low percent of higher ed students?
     format: bool
@@ -52,7 +52,7 @@ fields:
     format: percent
   - score_name: Expected population loss rate (Natural Hazards Risk Index)
     label: Expected population loss rate (Natural Hazards Risk Index)
-    format: loss_rate_percentage
+    format: loss_rate_percentages
   - score_name: Greater than or equal to the 90th percentile for energy burden, is low income, and has a low percent of higher ed students?
     label: Greater than or equal to the 90th percentile for energy burden, is low income, and has a low percent of higher ed students?
     format: bool
