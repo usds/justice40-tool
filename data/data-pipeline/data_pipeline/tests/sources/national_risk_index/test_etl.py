@@ -4,7 +4,7 @@ from unittest import mock
 import pandas as pd
 import pytest
 import requests
-
+import pathlib
 from data_pipeline.etl.base import ValidGeoLevel
 
 from data_pipeline.etl.sources.national_risk_index.etl import (
@@ -18,6 +18,15 @@ logger = get_module_logger(__name__)
 
 class TestNationalRiskIndexETL(TestETL):
     _ETL_CLASS = NationalRiskIndexETL
+
+    _SAMPLE_DATA_PATH = (
+        pathlib.Path(__file__).parents[3]
+        / "data"
+        / "tmp"
+        / "NationalRiskIndexETL"
+    )
+    _SAMPLE_DATA_FILE_NAME = "NRI_Table_CensusTracts.csv"
+    _SAMPLE_DATA_ZIP_FILE_NAME = "NRI_Table_CensusTracts.zip"
 
     def setup_method(self, _method, filename=__file__):
         """Invoke `setup_method` from Parent, but using the current file name.

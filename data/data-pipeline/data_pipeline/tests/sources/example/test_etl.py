@@ -29,6 +29,14 @@ class TestETL:
     _TRANSFORM_CSV_FILE_NAME = "transform.csv"
     _OUTPUT_CSV_FILE_NAME = "output.csv"
 
+    # This *does* need to be updated in the child class. It specifies where the "sample data" is
+    # so that we do not have to manually copy the "sample data" when we run the tests.
+    _SAMPLE_DATA_PATH = (
+        pathlib.Path(__file__).parents[3] / "data" / "tmp" / "ExampleETL"
+    )
+    _SAMPLE_DATA_FILE_NAME = "input.csv"
+    _SAMPLE_DATA_ZIP_FILE_NAME = "input.zip"
+
     # Note: We used shared census tract IDs so that later our tests can join all the
     # ETL results together and generate a test score. This join is only possible if
     # we use the same tract IDs across fixtures.
@@ -251,6 +259,23 @@ class TestETL:
         snapshot.assert_match(
             actual_output.to_csv(index=False),
             self._OUTPUT_CSV_FILE_NAME,
+        )
+
+    def test_sample_data_exists(self, snapshot):
+        """This will test that the sample data exists where it's supposed to as it's supposed to
+
+        The caveat here is that types will change
+        """
+        snapshot.snapshot_dir = self._SAMPLE_DATA_PATH
+        etl = self._get_instance_of_etl_class()
+
+        # this will infer compression
+        input_data = pd.read_csv(
+            self._DATA_DIRECTORY_FOR_TEST / self._SAMPLE_DATA_ZIP_FILE_NAME,
+            dtype={etl.GEOID_TRACT_FIELD_NAME: str},
+        )
+        snapshot.assert_match(
+            input_data.to_csv(index=False), self._SAMPLE_DATA_FILE_NAME
         )
 
     def test_transform_base(self, snapshot, mock_etl, mock_paths):
