@@ -2,15 +2,11 @@
 from cgitb import small
 from unittest import mock
 import pandas as pd
-
-# import filecmp
-
 import pytest
 import requests
 
 from data_pipeline.etl.base import ValidGeoLevel
 
-# from data_pipeline.tests.conftest import copy_data_files
 from data_pipeline.etl.sources.national_risk_index.etl import (
     NationalRiskIndexETL,
 )
@@ -142,6 +138,6 @@ class TestNationalRiskIndexETL(TestETL):
         tmp_df = pd.read_csv(extracted_file_path)
         snapshot.snapshot_dir = self._DATA_DIRECTORY_FOR_TEST
         snapshot.assert_match(
-            tmp_df.to_csv(index=False),
+            tmp_df.to_csv(),
             self._INPUT_CSV_FILE_NAME,
         )
