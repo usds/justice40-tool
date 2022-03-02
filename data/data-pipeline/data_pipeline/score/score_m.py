@@ -94,15 +94,7 @@ class ScoreM(Score):
         is at or more than some established threshold
         """
 
-        return (
-            (
-                df[
-                    field_names.POVERTY_LESS_THAN_200_FPL_FIELD
-                    + field_names.PERCENTILE_FIELD_SUFFIX
-                ]
-                >= self.LOW_INCOME_THRESHOLD
-            )
-        ) & (
+        return (df[field_names.LOW_INCOME_THRESHOLD]) & (
             df[field_names.COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD]
             | (
                 # If college attendance data is null for this tract, just rely on the
@@ -174,6 +166,12 @@ class ScoreM(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
+        self.df[field_names.CLIMATE_THRESHOLD_EXCEEDED] = (
+            expected_population_loss_threshold
+            | expected_agriculture_loss_threshold
+            | expected_building_loss_threshold
+        )
+
         self.df[
             field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD
         ] = (
@@ -230,6 +228,10 @@ class ScoreM(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
+        self.df[field_names.ENERGY_THRESHOLD_EXCEEDED] = (
+            energy_burden_threshold | pm25_threshold
+        )
+
         self.df[field_names.PM25_EXPOSURE_LOW_INCOME_LOW_HIGHER_ED_FIELD] = (
             pm25_threshold
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
@@ -276,6 +278,10 @@ class ScoreM(Score):
                 field_names.TRAFFIC_FIELD + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        )
+
+        self.df[field_names.TRAFFIC_THRESHOLD_EXCEEDED] = (
+            traffic_threshold | diesel_threshold
         )
 
         self.df[
@@ -341,6 +347,10 @@ class ScoreM(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
+        self.df[field_names.HOUSING_THREHSOLD_EXCEEDED] = (
+            lead_paint_median_home_value_threshold | housing_burden_threshold
+        )
+
         # series by series indicators
         self.df[
             field_names.LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_LOW_HIGHER_ED_FIELD
@@ -392,6 +402,10 @@ class ScoreM(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
+        self.df[field_names.POLLUTION_THRESHOLD_EXCEEDED] = (
+            rmp_sites_threshold | npl_sites_threshold
+        ) | tsdf_sites_threshold
+
         # individual series-by-series
         self.df[field_names.RMP_LOW_INCOME_LOW_HIGHER_ED_FIELD] = (
             rmp_sites_threshold
@@ -421,7 +435,7 @@ class ScoreM(Score):
         # poverty level and has a low percent of higher ed students
         # Source: Census's American Community Survey
 
-        wastewater_threshold = (
+        self.df[field_names.WATER_THRESHOLD_EXCEEDED] = (
             self.df[
                 field_names.WASTEWATER_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
@@ -432,7 +446,7 @@ class ScoreM(Score):
         self.df[
             field_names.WASTEWATER_DISCHARGE_LOW_INCOME_LOW_HIGHER_ED_FIELD
         ] = (
-            wastewater_threshold
+            self.df[field_names.WATER_THRESHOLD_EXCEEDED]
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
@@ -495,6 +509,10 @@ class ScoreM(Score):
             ]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
+
+        self.df[field_names.HEALTH_THRESHOLD_EXCEEDED] = (
+            (diabetes_threshold | asthma_threshold) | heart_disease_threshold
+        ) | low_life_expectancy_threshold
 
         self.df[field_names.DIABETES_LOW_INCOME_LOW_HIGHER_ED_FIELD] = (
             diabetes_threshold
@@ -726,6 +744,34 @@ class ScoreM(Score):
             f"in the column) have a value of TRUE."
         )
 
+        # Because these criteria are calculated differently for the islands, we also calculate the
+        # thresholds to pass to the FE slightly differently
+
+        self.df[field_names.WORKFORCE_THRESHOLD_EXCEEDED] = (
+            ## First we calculate for the non-island areas
+            (
+                (poverty_threshold | linguistic_isolation_threshold)
+                | low_median_income_threshold
+            )
+            | unemployment_threshold
+        ) | (
+            ## then we calculate just for the island areas
+            (
+                self.df[island_areas_unemployment_criteria_field_name]
+                | self.df[island_areas_poverty_criteria_field_name]
+            )
+            | self.df[
+                island_areas_low_median_income_as_a_percent_of_ami_criteria_field_name
+            ]
+        )
+
+        # Because of the island complications, we also have to separately calculate the threshold for
+        # socioeconomic thresholds
+        self.df[field_names.WORKFORCE_SOCIO_INDICATORS_EXCEEDED] = (
+            self.df[field_names.ISLAND_AREAS_LOW_HS_EDUCATION_FIELD]
+            | self.df[field_names.LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD]
+        )
+
         # A tract is included if it meets either the states tract criteria or the
         # island areas tract criteria.
         return (
@@ -743,6 +789,14 @@ class ScoreM(Score):
         # and change the return signature of that method.
         # Create a standalone field that captures the college attendance boolean
         # threshold.
+        self.df[field_names.LOW_INCOME_THRESHOLD] = (
+            self.df[
+                field_names.POVERTY_LESS_THAN_200_FPL_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.LOW_INCOME_THRESHOLD
+        )
+
         self.df[field_names.COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD] = (
             self.df[field_names.COLLEGE_ATTENDANCE_FIELD]
             <= self.MAX_COLLEGE_ATTENDANCE_THRESHOLD
