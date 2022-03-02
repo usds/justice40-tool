@@ -513,6 +513,7 @@ class PostScoreETL(ExtractTransformLoad):
         csv_path = constants.SCORE_DOWNLOADABLE_CSV_FILE_PATH
         excel_path = constants.SCORE_DOWNLOADABLE_EXCEL_FILE_PATH
         zip_path = constants.SCORE_DOWNLOADABLE_ZIP_FILE_PATH
+        # TODO: reinstate when PDF is added back
         # pdf_path = constants.SCORE_DOWNLOADABLE_PDF_FILE_PATH
 
         logger.info("Writing downloadable excel")

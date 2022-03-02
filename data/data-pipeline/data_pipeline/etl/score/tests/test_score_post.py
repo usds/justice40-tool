@@ -117,9 +117,8 @@ def test_load_downloadable_zip(etl, monkeypatch, downloadable_data_expected):
         "SCORE_DOWNLOADABLE_PDF_FILE_PATH",
         STATIC_FILES_PATH / constants.SCORE_DOWNLOADABLE_PDF_FILE_NAME,
     )
-    etl._load_downloadable_zip(
-        downloadable_data_expected, constants.SCORE_DOWNLOADABLE_DIR
-    )
+    etl.output_score_county_state_merged_df = downloadable_data_expected
+    etl._load_downloadable_zip(constants.SCORE_DOWNLOADABLE_DIR)
     assert constants.SCORE_DOWNLOADABLE_DIR.is_dir()
     assert constants.SCORE_DOWNLOADABLE_CSV_FILE_PATH.is_file()
     assert constants.SCORE_DOWNLOADABLE_EXCEL_FILE_PATH.is_file()
