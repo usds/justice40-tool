@@ -1,6 +1,12 @@
 import concurrent.futures
+
+# from curses.ascii import NUL
 import math
-from matplotlib import use
+from os import stat
+import numpy as np
+
+# from tkinter import N
+# from matplotlib import use
 
 import pandas as pd
 import geopandas as gpd
@@ -49,7 +55,10 @@ class GeoScoreETL(ExtractTransformLoad):
         ]
         self.GEOMETRY_FIELD_NAME = "geometry"
 
+        # We will adjust this upwards while there is some fractional value
+        # in the score. This is a starting value.
         self.NUMBER_OF_BUCKETS = 10
+        self.HOMOGENEITY_THRESHOLD = 200
 
         self.geojson_usa_df: gpd.GeoDataFrame
         self.score_usa_df: pd.DataFrame
@@ -113,18 +122,13 @@ class GeoScoreETL(ExtractTransformLoad):
                 self.TARGET_SCORE_SHORT_FIELD,
                 self.GEOMETRY_FIELD_NAME,
             ]
-        ].reset_index(drop=False)
+        ].reset_index()
 
-        usa_simplified.rename(
-            columns={
-                self.TARGET_SCORE_SHORT_FIELD: self.TARGET_SCORE_RENAME_TO
-            },
-            inplace=True,
+        usa_tracts = usa_simplified.rename(
+            columns={self.TARGET_SCORE_SHORT_FIELD: self.TARGET_SCORE_RENAME_TO}
         )
 
-        logger.info("Aggregating into tracts (~5 minutes)")
-        usa_tracts = self._aggregate_to_tracts(usa_simplified)
-
+        logger.info("Converting to geojson into tracts")
         usa_tracts = gpd.GeoDataFrame(
             usa_tracts,
             columns=[
@@ -148,33 +152,48 @@ class GeoScoreETL(ExtractTransformLoad):
         )
 
         self.geojson_score_usa_low = gpd.GeoDataFrame(
-            compressed,
-            columns=[self.TARGET_SCORE_RENAME_TO, self.GEOMETRY_FIELD_NAME],
+            usa_bucketed,
+            columns=[
+                self.TARGET_SCORE_RENAME_TO,
+                self.GEOMETRY_FIELD_NAME,
+                f"{self.TARGET_SCORE_RENAME_TO}_bucket",
+            ],
             crs="EPSG:4326",
         )
 
         # round to 2 decimals
-        decimals = pd.Series([2], index=[self.TARGET_SCORE_RENAME_TO])
-        self.geojson_score_usa_low = self.geojson_score_usa_low.round(decimals)
-
-    def _aggregate_to_tracts(
-        self, block_group_df: gpd.GeoDataFrame
-    ) -> gpd.GeoDataFrame:
-        # The tract identifier is the first 11 digits of the GEOID
-        block_group_df["tract"] = block_group_df[self.GEOID_FIELD_NAME].str[:11]
-        state_tracts = block_group_df.dissolve(by="tract", aggfunc="mean")
-        return state_tracts
+        self.geojson_score_usa_low = self.geojson_score_usa_low.round(
+            {self.TARGET_SCORE_RENAME_TO: 2}
+        )
 
     def _create_buckets_from_tracts(
         self, state_tracts: gpd.GeoDataFrame, num_buckets: int
     ) -> gpd.GeoDataFrame:
+
+        state_tracts[f"{self.TARGET_SCORE_RENAME_TO}_bucket"] = np.arange(
+            len(state_tracts)
+        )
         # assign tracts to buckets by score
-        state_tracts.sort_values(self.TARGET_SCORE_RENAME_TO, inplace=True)
+        state_tracts = state_tracts.sort_values(
+            self.TARGET_SCORE_RENAME_TO, ascending=True
+        )
         score_bucket = []
 
         # while use_buckets <= 0
         bucket_size = math.ceil(
             len(state_tracts.index) / self.NUMBER_OF_BUCKETS
+        )
+        while (
+            state_tracts[self.TARGET_SCORE_RENAME_TO].sum() % bucket_size
+            > self.HOMOGENEITY_THRESHOLD
+        ):
+            self.NUMBER_OF_BUCKETS += 1
+            bucket_size = math.ceil(
+                len(state_tracts.index) / self.NUMBER_OF_BUCKETS
+            )
+
+        logger.info(
+            f"The number of buckets has increased to {self.NUMBER_OF_BUCKETS}"
         )
         for i in range(len(state_tracts.index)):
             score_bucket.extend([math.floor(i / bucket_size)])
