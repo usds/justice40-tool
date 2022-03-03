@@ -146,20 +146,22 @@ class GeoScoreETL(ExtractTransformLoad):
 
         logger.info("Aggregating buckets")
         usa_aggregated = self._aggregate_buckets(usa_bucketed, agg_func="mean")
+        usa_aggregated.to_csv("~/Desktop/agg.csv")
 
         compressed = self._breakup_multipolygons(
             usa_aggregated, self.NUMBER_OF_BUCKETS
         )
 
         self.geojson_score_usa_low = gpd.GeoDataFrame(
-            usa_bucketed,
+            compressed,
             columns=[
                 self.TARGET_SCORE_RENAME_TO,
                 self.GEOMETRY_FIELD_NAME,
-                f"{self.TARGET_SCORE_RENAME_TO}_bucket",
             ],
             crs="EPSG:4326",
         )
+
+        self.geojson_score_usa_low.to_csv("~/Desktop/low_file.csv")
 
         # round to 2 decimals
         self.geojson_score_usa_low = self.geojson_score_usa_low.round(
@@ -208,7 +210,7 @@ class GeoScoreETL(ExtractTransformLoad):
                 f"{self.TARGET_SCORE_RENAME_TO}_bucket",
                 self.GEOMETRY_FIELD_NAME,
             ]
-        ].reset_index(drop=True)
+        ].reset_index()  # drop=True)
         state_dissolve = state_attr.dissolve(
             by=f"{self.TARGET_SCORE_RENAME_TO}_bucket", aggfunc=agg_func
         )
@@ -219,9 +221,11 @@ class GeoScoreETL(ExtractTransformLoad):
     ) -> gpd.GeoDataFrame:
         compressed = []
         for i in range(num_buckets):
+            tmp = []
             for j in range(
                 len(state_bucketed_df[self.GEOMETRY_FIELD_NAME][i].geoms)
             ):
+                tmp.append(state_bucketed_df[self.TARGET_SCORE_RENAME_TO][i])
                 compressed.append(
                     [
                         state_bucketed_df[self.TARGET_SCORE_RENAME_TO][i],
