@@ -134,7 +134,10 @@ export const EVENTS = [
         description: 'public engagement page event training session 1 date',
       },
     }),
-    REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_D-Om_xXhTtiLv71y3Rr1CQ`,
+    // REG_LINK required to have breaks as such to render on mobile
+    REG_LINK: `https://pitc.zoomgov.com/
+    webinar/register/
+    WN_D-Om_xXhTtiLv71y3Rr1CQ`,
   },
   {
     DATE: new Date(2022, 10, 3),
@@ -149,7 +152,10 @@ export const EVENTS = [
         description: 'public engagement page event training session 2 date',
       },
     }),
-    REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_QsSqshI4TpmRBkI6nVlWxQ`,
+    // REG_LINK required to have breaks as such to render on mobile
+    REG_LINK: `https://pitc.zoomgov.com/
+    webinar/register/
+    WN_QsSqshI4TpmRBkI6nVlWxQ`,
   },
   {
     DATE: new Date(2022, 16, 3),
@@ -164,7 +170,10 @@ export const EVENTS = [
         description: 'public engagement page event training session 3 date',
       },
     }),
-    REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_q86iMtpwTESYa6f0xpIk7g`,
+    // REG_LINK required to have breaks as such to render on mobile
+    REG_LINK: `https://pitc.zoomgov.com/
+    webinar/register/
+    WN_q86iMtpwTESYa6f0xpIk7g`,
   },
   {
     DATE: new Date(2022, 22, 3),
@@ -179,7 +188,10 @@ export const EVENTS = [
         description: 'public engagement page event listening session 1 date',
       },
     }),
-    REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_dLw3xChiTlaOLGdHXQWk0w`,
+    // REG_LINK required to have breaks as such to render on mobile
+    REG_LINK: `https://pitc.zoomgov.com/
+    webinar/register/
+    WN_dLw3xChiTlaOLGdHXQWk0w`,
   },
   {
     DATE: new Date(2022, 15, 4),
@@ -194,6 +206,9 @@ export const EVENTS = [
         description: 'public engagement page event listening session 2 date',
       },
     }),
-    REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_YT7_uLZqScGHgyAcTCuJjA`,
+    // REG_LINK required to have breaks as such to render on mobile
+    REG_LINK: `https://pitc.zoomgov.com/
+    webinar/register/
+    WN_YT7_uLZqScGHgyAcTCuJjA`,
   },
 ];

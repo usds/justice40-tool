@@ -24,7 +24,7 @@ There are 3 things that should be included in this file:
     -- Footer styles
   - Component styles
     -- Map styles
-    -- Timeline/process list styles
+    -- Public Event styles
     -- About styles
 */
 
@@ -310,12 +310,12 @@ This section will outline styles that are component specific
 
 /* 
 ***************************************
-*      TIMELINE / PROCESS LIST STYLES
+*      PUBLIC EVENT STYLES
 *************************************** 
 */ 
 
-.usa-process-list__item{
-  @include u-border-left('base-lightest');
+.usa-collection__body{
+  width: 0;
 }
 
 

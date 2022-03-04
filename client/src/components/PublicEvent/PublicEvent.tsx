@@ -9,7 +9,6 @@ import {
 
 import LinkTypeWrapper from '../LinkTypeWrapper';
 import * as PUBLIC_ENGAGE_COPY from '../../data/copy/publicEngage';
-import * as styles from './PublicEvent.module.scss';
 
 export interface IPublicEvent {
   event: {
@@ -32,6 +31,8 @@ const PublicEvent = ({event}:IPublicEvent) => {
       variantComponent={
         <CollectionThumbnail src={event.IMAGE} alt="Alt text" />
       }>
+
+      {/* Heading */}
       <CollectionHeading>
         <LinkTypeWrapper
           linkText={`CEJST 
@@ -45,32 +46,33 @@ const PublicEvent = ({event}:IPublicEvent) => {
         />
       </CollectionHeading>
 
+      {/* Description */}
       <CollectionDescription>
-        <p>
-          {intl.formatMessage(event.DESC)}
-        </p>
-        <p>
-          <span className={styles.eventField}>
-            {intl.formatMessage(PUBLIC_ENGAGE_COPY.EVENT_FIELDS.EVENT_INFO)}
-          </span>
-          {`: ${intl.formatMessage(event.FIELDS.INFO)}`}
-        </p>
-        <p>
-          <span className={styles.eventField}>
-            {intl.formatMessage(PUBLIC_ENGAGE_COPY.EVENT_FIELDS.REG_LINK)}
-          </span>
-          {`: `}
-          <LinkTypeWrapper
-            linkText={`${event.REG_LINK}`}
-            internal={false}
-            url={event.REG_LINK}
-            openUrlNewTab={true}
-            // dataCy?: string;
-          />
-        </p>
+        {intl.formatMessage(event.DESC)}
       </CollectionDescription>
 
+      {/* Event info */}
+      <CollectionDescription>
+        <b>
+          {intl.formatMessage(PUBLIC_ENGAGE_COPY.EVENT_FIELDS.EVENT_INFO)}
+        </b>
+        {`: ${intl.formatMessage(event.FIELDS.INFO)}`}
+      </CollectionDescription>
 
+      {/* Registration Link */}
+      <CollectionDescription>
+        <b>
+          {intl.formatMessage(PUBLIC_ENGAGE_COPY.EVENT_FIELDS.REG_LINK)}
+        </b>
+        {`: `}
+        <LinkTypeWrapper
+          linkText={`${event.REG_LINK}`}
+          internal={false}
+          url={event.REG_LINK}
+          openUrlNewTab={true}
+          // dataCy?: string;
+        />
+      </CollectionDescription>
     </CollectionItem>
   );
 };
