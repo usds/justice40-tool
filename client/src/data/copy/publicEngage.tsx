@@ -2,8 +2,8 @@ import {defineMessages} from 'react-intl';
 import mar9 from '../../images/eventDates/mar9.svg';
 import mar10 from '../../images/eventDates/mar10.svg';
 import mar16 from '../../images/eventDates/mar16.svg';
-import apr15 from '../../images/eventDates/mar15.svg';
 import mar22 from '../../images/eventDates/mar22.svg';
+import apr15 from '../../images/eventDates/apr15.svg';
 
 
 export const PAGE_INTRO = defineMessages({
@@ -52,6 +52,19 @@ export const PAGE_INTRO = defineMessages({
     id: 'fab.survey.text',
     defaultMessage: `Help improve the site & data`,
     description: 'text for floating action button',
+  },
+});
+
+export const PUBLIC_ENG_BUTTON = defineMessages({
+  LABEL: {
+    id: 'public.eng.page.button.label',
+    defaultMessage: `Public Engagement`,
+    description: 'public engagement button label',
+  },
+  TAG_LABEL: {
+    id: 'public.eng.page.tag.label',
+    defaultMessage: `NEW`,
+    description: 'public engagement tag label',
   },
 });
 

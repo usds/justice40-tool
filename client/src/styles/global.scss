@@ -83,12 +83,12 @@ p.flush {
 
 // 24 pixel margin-bottom
 .j40-mb-3 {
-  @include u-margin-bottom(3)
+  @include u-margin-bottom(3);
 }
 
 // 40 pixel margin-bottom
 .j40-mb-5 {
-  @include u-margin-bottom(5)
+  
 }
 
 .j40-footer-ceq-font {
@@ -120,8 +120,22 @@ components include:
 }
 
 #main-content {
-  border-top: 0;
-  min-height: 60vh;
+  border-top: 0; // The main content has border this removes it
+  min-height: 60vh; // Contact page's content is not enough to fill page so this keeps the footer low
+
+  .page-heading {
+    display: flex;
+    justify-content: space-between;
+
+    @include at-media-max("tablet"){
+      flex-direction: column;
+    }
+  }
+
+  .j40-mb5-mt3 {
+    @include u-margin-bottom(5);
+    @include u-margin-top(3);
+  }
 }
 
 

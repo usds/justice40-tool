@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of the PublicEngageButton checks if component renders 1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      <span
+        class="usa-tag"
+        data-testid="tag"
+      >
+        NEW
+      </span>
+    </div>
+    <button
+      class="usa-button usa-button--icon"
+      data-testid="button"
+      type="button"
+    >
+      <a
+        href="/public-engagement"
+      >
+        Public Engagement
+      </a>
+    </button>
+  </div>
+</DocumentFragment>
+`;

@@ -276,11 +276,36 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       class="grid-container-desktop-lg"
       data-testid="gridContainer"
     >
-      <h1>
-        Methodology
-      </h1>
+      <section
+        class="page-heading"
+      >
+        <h1>
+          Methodology
+        </h1>
+        <div>
+          <div>
+            <span
+              class="usa-tag"
+              data-testid="tag"
+            >
+              NEW
+            </span>
+          </div>
+          <button
+            class="usa-button usa-button--icon"
+            data-testid="button"
+            type="button"
+          >
+            <a
+              href="/public-engagement"
+            >
+              Public Engagement
+            </a>
+          </button>
+        </div>
+      </section>
       <div
-        class="grid-row grid-gap j40-mb-5"
+        class="grid-row grid-gap j40-mb5-mt3"
         data-testid="grid"
       >
         <div
