@@ -5,6 +5,7 @@ import {
   CollectionHeading,
   CollectionItem,
   CollectionThumbnail,
+  Button,
 } from '@trussworks/react-uswds';
 
 import LinkTypeWrapper from '../LinkTypeWrapper';
@@ -44,7 +45,7 @@ const PublicEvent = ({event}:IPublicEvent) => {
           internal={false}
           url={event.REG_LINK}
           openUrlNewTab={true}
-          // dataCy?: string;
+          dataCy={event.DATA_CY}
         />
       </CollectionHeading>
 
@@ -63,17 +64,11 @@ const PublicEvent = ({event}:IPublicEvent) => {
 
       {/* Registration Link */}
       <CollectionDescription className={styles.description}>
-        <b>
-          {intl.formatMessage(PUBLIC_ENGAGE_COPY.EVENT_FIELDS.REG_LINK)}
-        </b>
-        {`: `}
-        <LinkTypeWrapper
-          linkText={`${event.REG_LINK}`}
-          internal={false}
-          url={event.REG_LINK}
-          openUrlNewTab={true}
-          dataCy={event.DATA_CY}
-        />
+        <a href={event.REG_LINK} target={'_blank'} rel="noreferrer">
+          <Button type='button'>
+            {intl.formatMessage(PUBLIC_ENGAGE_COPY.EVENT_FIELDS.REG_LINK)}
+          </Button>
+        </a>
       </CollectionDescription>
     </CollectionItem>
   );
