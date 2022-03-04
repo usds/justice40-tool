@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of the PublicEvent checks if component renders 1`] = `
+<DocumentFragment>
+  <li
+    class="usa-collection__item"
+  >
+    <img
+      alt="Alt text"
+      class="usa-collection__img"
+      src="test-file-stub"
+    />
+    <div
+      class="usa-collection__body"
+    >
+      <h3
+        class="usa-collection__heading"
+      >
+        <a
+          class="usa-link usa-link--external"
+          data-cy=""
+          href="https://pitc.zoomgov.com/webinar/register/WN_D-Om_xXhTtiLv71y3Rr1CQ"
+          rel="noreferrer"
+          target="_blank"
+        >
+          CEJST 
+            training session 
+            #1
+          
+        </a>
+      </h3>
+      <p
+        class="usa-collection__description"
+      />
+      <p>
+        
+        The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital 
+        Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic 
+        Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to 
+        use the current version of the tool. The presenters at these webinars will be available to 
+        provide technical support and address issues related to accessing and using the tool.
+      
+      </p>
+      <p>
+        <span>
+          Event info
+        </span>
+        : March 9th (4:00 - 5:00 PM EST)
+      </p>
+      <p>
+        <span>
+          Registration link
+        </span>
+        : 
+        <a
+          class="usa-link usa-link--external"
+          data-cy=""
+          href="https://pitc.zoomgov.com/webinar/register/WN_D-Om_xXhTtiLv71y3Rr1CQ"
+          rel="noreferrer"
+          target="_blank"
+        >
+          https://pitc.zoomgov.com/webinar/register/WN_D-Om_xXhTtiLv71y3Rr1CQ
+        </a>
+      </p>
+      <p />
+    </div>
+  </li>
+</DocumentFragment>
+`;
