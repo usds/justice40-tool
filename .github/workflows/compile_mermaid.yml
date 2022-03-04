@@ -1,4 +1,4 @@
-name: 'Compile Mermaid in Markdown'
+name: 'Compile Mermaid to MD'
 
 on:
   push:

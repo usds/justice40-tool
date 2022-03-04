@@ -8,7 +8,7 @@ interface IIndicator {
 }
 
 export const readablePercentile = (percentile: number | null) => {
-  return percentile ? Math.round(percentile * 100) : 'N/A';
+  return percentile !== null ? Math.round(percentile * 100) : 'N/A';
 };
 
 // Todo: Add internationalization to superscript ticket #582

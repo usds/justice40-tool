@@ -62,3 +62,7 @@ And(`I click on the {string} {string} link`, (ctaString, type) => {
 And(`I click on the {string} footer link`, (string) => {
   cy.get(`[data-cy="${hyphenizeString(string)}"]`).as('externalLink');
 });
+
+And(`I click on the {string} event`, (string) => {
+  cy.get(`[data-cy="${hyphenizeString(string)}-block"]`).as('externalLink');
+});

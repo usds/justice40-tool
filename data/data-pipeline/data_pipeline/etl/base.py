@@ -39,6 +39,7 @@ class ExtractTransformLoad:
     # Directories
     DATA_PATH: pathlib.Path = APP_ROOT / "data"
     TMP_PATH: pathlib.Path = DATA_PATH / "tmp"
+    CONTENT_CONFIG: pathlib.Path = APP_ROOT / "content" / "config"
 
     # Parameters
     GEOID_FIELD_NAME: str = "GEOID10"

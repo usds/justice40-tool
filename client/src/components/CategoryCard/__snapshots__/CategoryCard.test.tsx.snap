@@ -12,7 +12,7 @@ exports[`rendering of the CategoryCard checks if component renders 1`] = `
       <strong>
         identified as disadvantaged
       </strong>
-       in this category 
+       
     
     </p>
     <p>
@@ -21,7 +21,7 @@ exports[`rendering of the CategoryCard checks if component renders 1`] = `
       <strong>
         IF
       </strong>
-       at or above 90th percentile for 
+       at or above the 90th percentile for 
       <a
         href="#exp-agr-loss-rate"
       >
@@ -48,19 +48,19 @@ exports[`rendering of the CategoryCard checks if component renders 1`] = `
       <strong>
         AND
       </strong>
-       is at or above 65th percentile for 
+       is above the 65th percentile for 
       <a
         href="#low-income"
       >
         low income
       </a>
-       WHEN 
+       AND at or below 20% for 
       <a
         href="#high-ed-enroll-rate"
       >
         higher ed enrollment rate
       </a>
-       is at or below 20%
+       
     
     </p>
     <p />

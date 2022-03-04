@@ -2,6 +2,7 @@ declare namespace HowYouCanHelpModuleScssNamespace {
   export interface IHowYouCanHelpModuleScss {
     legendContainer: string;
     legendTextBox: string;
+    legendRow: string;
   }
 }
 

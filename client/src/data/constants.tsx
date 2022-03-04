@@ -27,6 +27,10 @@ export const featureURLForTilesetName = (tilesetName: string): string => {
 export const FEATURE_TILE_HIGH_ZOOM_URL = featureURLForTilesetName('high');
 export const FEATURE_TILE_LOW_ZOOM_URL = featureURLForTilesetName('low');
 
+// Staging links for testing:
+// export const FEATURE_TILE_HIGH_ZOOM_URL = `https://justice40-data.s3.amazonaws.com/data-pipeline-staging/1297/deee14dd93b783c8d366434dc8438a281b5c89df/data/score/tiles/high/${XYZ_SUFFIX}`;
+// export const FEATURE_TILE_LOW_ZOOM_URL = `https://justice40-data.s3.amazonaws.com/data-pipeline-staging/1297/deee14dd93b783c8d366434dc8438a281b5c89df/data/score/tiles/low/${XYZ_SUFFIX}`;
+
 
 // Performance markers
 export const PERFORMANCE_MARKER_MAP_IDLE = 'MAP_IDLE';
@@ -76,6 +80,7 @@ export const POVERTY_BELOW_200_PERCENTILE = 'P200_PFS';
 export const PROXIMITY_NPL_SITES_PERCENTILE = 'NPL_PFS';
 export const PROXIMITY_RMP_SITES_PERCENTILE = 'RMP_PFS';
 export const PROXIMITY_TSDF_SITES_PERCENTILE = 'TSDF_PFS';
+export const HIGHER_ED_PERCENTILE = 'CA';
 
 export const ISLAND_AREAS_UNEMPLOYMENT_LOW_HS_EDU_PERCENTILE_FIELD= 'IAULHSE_PFS';
 export const ISLAND_AREAS_POVERTY_LOW_HS_EDU_PERCENTILE_FIELD= 'IAPLHSE_PFS';
@@ -120,6 +125,7 @@ export const IS_GTE_90_BELOW_100_POVERTY_AND_LOW_HIGH_SCHOOL_EDU = 'PLHSE';
 export const IS_GTE_90_LOW_MEDIAN_INCOME_AND_LOW_HIGH_SCHOOL_EDU = 'LMILHSE';
 export const IS_GTE_90_UNEMPLOYMENT_AND_LOW_HIGH_SCHOOL_EDU = 'ULHSE';
 export const IS_FEDERAL_POVERTY_LEVEL_200 = 'FPL200S';
+export const IS_HIGHER_ED_PERCENTILE = 'CA_LT20';
 export const TOTAL_THRESHOLD_CRITERIA = 'TC';
 export const IS_GTE_90_ISLAND_AREA_UNEMPLOYMENT_AND_IS_LOW_HS_EDU_2009 = 'IAULHSE';
 export const IS_GTE_90_ISLAND_AREA_BELOW_100_POVERTY_AND_IS_LOW_HS_EDU_2009 = 'IAPLHSE';

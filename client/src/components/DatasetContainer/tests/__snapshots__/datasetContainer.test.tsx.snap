@@ -307,7 +307,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               id="energy-burden"
             >
               <h3>
-                Energy cost burden
+                Energy burden
               </h3>
               <div>
                 Average annual energy cost per household ($) divided by household average income.
@@ -505,7 +505,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </h3>
               <div>
                 
-        The percent of households in a census tract that are both earning less than 80% of HUD Area Median
+        Percent of households in a census tract that are both earning less than 80% of HUD Area Median
         Family Income by county and are spending more than 30% of their income on housing costs.
       
               </div>
@@ -554,7 +554,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div>
                 
         Percent of housing units built pre-1960, used as an indicator of potential lead paint exposure in
-        tracts with median home values less than 90th percentile.
+        tracts with median home values less than the 90th percentile.
       
               </div>
               <ul>
@@ -988,7 +988,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               id="life-exp"
             >
               <h3>
-                Life expectancy
+                Low life expectancy
               </h3>
               <div>
                 
@@ -999,12 +999,12 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     Note:
                   </strong>
                   
-          Unlike most of the other datasets, high values of this data indicate low burdens.
-          For percentile calculations of burden, the percentile is calculated in reverse order, so that the tract with
-          the highest median income relative to area median income (lowest burden on this measure) is at the
-          0th percentile, and the tract with the lowest median income relative to area median income
-          (highest burden on this measure) is at the 100th percentile. Tracts with the highest number 
-          have the lowest life expectancy.
+          Unlike most of the other datasets, high values of this data indicate low burdens. For 
+          percentile calculations of burden, the percentile is calculated in reverse order, so that the 
+          tract with the highest life expectancy relative to area life expectancy (lowest burden on this 
+          measure) is at the 0th percentile, and the tract with the lowest life expectancy relative to 
+          area life expectancy (highest burden on this measure) is at the 100th percentile. Tracts with 
+          the highest number have the lowest life expectancy.
         
                 </p>
                 
@@ -1050,11 +1050,26 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               id="low-med-inc"
             >
               <h3>
-                Median Income
+                Low median income
               </h3>
               <div>
                 
         Median income of the census tract calculated as a percent of the area’s median income.
+        
+                <p>
+                  <strong>
+                    Note:
+                  </strong>
+                  
+          Unlike most of the other datasets, high values of this data indicate low burdens. For 
+          percentile calculations of burden, the percentile is calculated in reverse order, so that the 
+          tract with the highest median income relative to area median income (lowest burden on this 
+          measure) is at the 0th percentile, and the tract with the lowest median income relative to 
+          area median income (highest burden on this measure) is at the 100th percentile. Tracts with 
+          the highest number have the lowest median income.
+        
+                </p>
+                
       
               </div>
               <ul>
@@ -1122,7 +1137,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </h3>
               <div>
                 
-        The percent households, which are households, where no one over the age fourteen speaks English well.
+        Percent of households, which are households, where no one over the age fourteen speaks English well.
       
               </div>
               <ul>
@@ -1237,7 +1252,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </h3>
               <div>
                 
-        Proportion of a tract's population in households where the household income is at or below 100% of
+        Percent of a tract's population in households where the household income is at or below 100% of
         the Federal poverty level.
       
               </div>
@@ -1302,11 +1317,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               id="high-school"
             >
               <h3>
-                High school degree achievement rate
+                High school degree attainment rate
               </h3>
               <div>
                 
-        Proportion of people ages 25 years or older in a census tract whose
+        Percent of people ages 25 years or older in a census tract whose
         education level is less than a high school diploma.
       
               </div>

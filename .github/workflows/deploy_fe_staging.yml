@@ -1,4 +1,4 @@
-name: Deploy Frontend staging
+name: Deploy Frontend Staging
 on:
   pull_request:
     branches: [main]
