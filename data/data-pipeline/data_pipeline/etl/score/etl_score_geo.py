@@ -1,13 +1,6 @@
 import concurrent.futures
-
-# from curses.ascii import NUL
 import math
-from os import stat
 import numpy as np
-
-# from tkinter import N
-# from matplotlib import use
-
 import pandas as pd
 import geopandas as gpd
 
@@ -59,6 +52,7 @@ class GeoScoreETL(ExtractTransformLoad):
         # in the score. This is a starting value.
         self.NUMBER_OF_BUCKETS = 10
         self.HOMOGENEITY_THRESHOLD = 200
+        self.HIGH_LOW_ZOOM_CENSUS_TRACT_THRESHOLD = 150
 
         self.geojson_usa_df: gpd.GeoDataFrame
         self.score_usa_df: pd.DataFrame
@@ -140,24 +134,20 @@ class GeoScoreETL(ExtractTransformLoad):
         )
 
         logger.info("Creating buckets from tracts")
-        usa_bucketed = self._create_buckets_from_tracts(
+        usa_bucketed, keep_high_zoom_df = self._create_buckets_from_tracts(
             usa_tracts, self.NUMBER_OF_BUCKETS
         )
 
         logger.info("Aggregating buckets")
         usa_aggregated = self._aggregate_buckets(usa_bucketed, agg_func="mean")
 
+        logger.info("Breaking up polygons")
         compressed = self._breakup_multipolygons(
             usa_aggregated, self.NUMBER_OF_BUCKETS
         )
 
-        self.geojson_score_usa_low = gpd.GeoDataFrame(
-            compressed,
-            columns=[
-                self.TARGET_SCORE_RENAME_TO,
-                self.GEOMETRY_FIELD_NAME,
-            ],
-            crs="EPSG:4326",
+        self.geojson_score_usa_low = self._join_high_and_low_zoom_frames(
+            compressed, keep_high_zoom_df
         )
 
         # round to 2 decimals
@@ -166,9 +156,27 @@ class GeoScoreETL(ExtractTransformLoad):
         )
 
     def _create_buckets_from_tracts(
-        self, state_tracts: gpd.GeoDataFrame, num_buckets: int
+        self, initial_state_tracts: gpd.GeoDataFrame, num_buckets: int
     ) -> gpd.GeoDataFrame:
 
+        # First, we remove any states that have under the threshold of census tracts
+        # from being aggregated (right now, this just removes Wyoming)
+        highzoom_state_tracts = initial_state_tracts.reset_index()
+        highzoom_state_tracts["state"] = highzoom_state_tracts[
+            self.GEOID_FIELD_NAME
+        ].str[:2]
+        keep_high_zoom = highzoom_state_tracts.groupby("state")[
+            self.GEOID_FIELD_NAME
+        ].transform(
+            lambda x: x.count() <= self.HIGH_LOW_ZOOM_CENSUS_TRACT_THRESHOLD
+        )
+        assert (
+            keep_high_zoom.sum() != initial_state_tracts.shape[0]
+        ), "Error: Cutoff is too high, nothing is aggregated"
+        assert keep_high_zoom.sum() > 1, "Error: Nothing is kept at high zoom"
+
+        # Then we assign buckets only to tracts that do not get "kept" at high zoom
+        state_tracts = initial_state_tracts[~keep_high_zoom].copy()
         state_tracts[f"{self.TARGET_SCORE_RENAME_TO}_bucket"] = np.arange(
             len(state_tracts)
         )
@@ -177,11 +185,12 @@ class GeoScoreETL(ExtractTransformLoad):
             self.TARGET_SCORE_RENAME_TO, ascending=True
         )
         score_bucket = []
-
-        # while use_buckets <= 0
         bucket_size = math.ceil(
             len(state_tracts.index) / self.NUMBER_OF_BUCKETS
         )
+
+        # This just increases the number of buckets so they are more
+        # homogeneous. It's not actually necessary :shrug:
         while (
             state_tracts[self.TARGET_SCORE_RENAME_TO].sum() % bucket_size
             > self.HOMOGENEITY_THRESHOLD
@@ -198,18 +207,17 @@ class GeoScoreETL(ExtractTransformLoad):
             score_bucket.extend([math.floor(i / bucket_size)])
         state_tracts[f"{self.TARGET_SCORE_RENAME_TO}_bucket"] = score_bucket
 
-        return state_tracts
+        return state_tracts, initial_state_tracts[keep_high_zoom]
 
     def _aggregate_buckets(self, state_tracts: gpd.GeoDataFrame, agg_func: str):
-        # dissolve tracts by bucket
-        state_attr = state_tracts[
-            [
-                self.TARGET_SCORE_RENAME_TO,
-                f"{self.TARGET_SCORE_RENAME_TO}_bucket",
-                self.GEOMETRY_FIELD_NAME,
-            ]
-        ].reset_index(drop=True)
-        state_dissolve = state_attr.dissolve(
+        keep_cols = [
+            self.TARGET_SCORE_RENAME_TO,
+            f"{self.TARGET_SCORE_RENAME_TO}_bucket",
+            self.GEOMETRY_FIELD_NAME,
+        ]
+
+        #  We dissolve all other tracts by their score bucket
+        state_dissolve = state_tracts[keep_cols].dissolve(
             by=f"{self.TARGET_SCORE_RENAME_TO}_bucket", aggfunc=agg_func
         )
         return state_dissolve
@@ -217,6 +225,7 @@ class GeoScoreETL(ExtractTransformLoad):
     def _breakup_multipolygons(
         self, state_bucketed_df: gpd.GeoDataFrame, num_buckets: int
     ) -> gpd.GeoDataFrame:
+
         compressed = []
         for i in range(num_buckets):
             for j in range(
@@ -229,6 +238,20 @@ class GeoScoreETL(ExtractTransformLoad):
                     ]
                 )
         return compressed
+
+    def _join_high_and_low_zoom_frames(
+        self, compressed: list, keep_high_zoom_df: gpd.GeoDataFrame
+    ) -> gpd.GeoDataFrame:
+        keep_columns = [
+            self.TARGET_SCORE_RENAME_TO,
+            self.GEOMETRY_FIELD_NAME,
+        ]
+        compressed_geodf = gpd.GeoDataFrame(
+            compressed,
+            columns=keep_columns,
+            crs="EPSG:4326",
+        )
+        return pd.concat([compressed_geodf, keep_high_zoom_df[keep_columns]])
 
     def load(self) -> None:
         # Create separate threads to run each write to disk.
