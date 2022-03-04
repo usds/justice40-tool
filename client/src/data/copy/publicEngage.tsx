@@ -25,26 +25,25 @@ export const PAGE_INTRO = defineMessages({
   PAGE_DESCRIPTION1: {
     id: 'publiceng.page.description1.text',
     defaultMessage: `
-      The purpose of these engagement opportunities is to inform the public about CEQ's work 
-      and to maintain an open dialogue with environmental justice advocates, community 
-      members, and the public. These sessions will be an opportunity to obtain training and 
-      provide feedback on the Climate and Economic Justice Screening Tool.
+      CEQ is hosting engagement opportunities to connect with the public about the current version of the 
+      tool. These sessions are an opportunity to obtain training on the tool or to provide feedback on the 
+      beta version of the tool. CEQ hopes that members of the public will join these engagements to learn 
+      about the tool, have their questions answered, and share feedback.
     `,
     description: 'publiceng page description 1 text',
   },
   PAGE_DESCRIPTION2: {
     id: 'publiceng.page.description2.text',
     defaultMessage: `
-    Due to limited space, participation in these Zoom sessions will be on a first come, 
-    first-served basis. Pre-registration is required.
+      Pre-registration is required to participate and speak at the sessions.
     `,
     description: 'publiceng page description 2 text',
   },
   PAGE_DESCRIPTION3: {
     id: 'publiceng.page.description3.text',
     defaultMessage: `
-      As they become available, additional public trainings and engagement opportunities on 
-      the Climate and Economic Justice Screening Tool will also be posted on this page.
+      As they become available, additional public trainings and engagement opportunities on the Climate 
+      and Economic Justice Screening Tool will also be posted on this page.
     `,
     description: 'publiceng page description 3 text',
   },
