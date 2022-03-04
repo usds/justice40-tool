@@ -39,7 +39,7 @@ jobs:
       - name: Set timezone for tippecanoe
         uses: szenius/set-timezone@v1.0
         with:
-          timezoneLinux: "America/Los_Angeles"          
+          timezoneLinux: "America/Los_Angeles"
       - name: Get tippecanoe
         run: |
           sudo apt-get install -y software-properties-common libsqlite3-dev zlib1g-dev
@@ -52,7 +52,7 @@ jobs:
           sudo /usr/bin/bash -c make
           mkdir -p /usr/local/bin
           cp tippecanoe /usr/local/bin/tippecanoe
-          tippecanoe -v          
+          tippecanoe -v
       - name: Run Scripts
         run: |
           poetry run python3 data_pipeline/application.py geo-score -s aws
@@ -68,3 +68,4 @@ jobs:
           aws s3 rm s3://justice40-data/data-pipeline/data/score/tiles --recursive
           aws s3 cp ./data_pipeline/data/score/tiles/ s3://justice40-data/data-pipeline/data/score/tiles --recursive --acl public-read
           aws s3 sync ./data_pipeline/data/score/geojson/ s3://justice40-data/data-pipeline/data/score/geojson --acl public-read --delete
+          aws s3 sync ./data_pipeline/data/score/shapefile/ s3://justice40-data/data-pipeline/data/score/shapefile --acl public-read --delete
