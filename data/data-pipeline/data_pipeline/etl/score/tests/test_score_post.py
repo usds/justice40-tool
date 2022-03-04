@@ -7,6 +7,7 @@ import pandas.api.types as ptypes
 import pandas.testing as pdt
 
 from data_pipeline.etl.score import constants
+from data_pipeline.utils import load_yaml_dict_from_file
 
 # See conftest.py for all fixtures used in these tests
 
@@ -89,6 +90,24 @@ def test_create_tile_data(etl, score_data_expected, tile_data_expected):
     )
 
 
+def test_create_downloadable_data(
+    etl, score_data_expected, downloadable_data_expected
+):
+    content_config_path = Path.cwd() / "data_pipeline" / "content" / "config"
+    downloadable_csv_config = load_yaml_dict_from_file(
+        content_config_path / "csv.yml"
+    )
+    output_downloadable_df_actual = etl._create_downloadable_data(
+        score_data_expected,
+        fields_object=downloadable_csv_config["fields"],
+        config_object=downloadable_csv_config["global_config"],
+    )
+    pdt.assert_frame_equal(
+        output_downloadable_df_actual,
+        downloadable_data_expected,
+    )
+
+
 def test_load_score_csv_full(etl, score_data_expected):
     reload(constants)
     etl._load_score_csv_full(
@@ -108,14 +127,14 @@ def test_load_tile_csv(etl, tile_data_expected):
 
 def test_load_downloadable_zip(etl, monkeypatch, downloadable_data_expected):
     reload(constants)
-    STATIC_FILES_PATH = (
+    static_files_path = (
         Path.cwd() / "data_pipeline" / "files"
     )  # need to monkeypatch to real dir
-    monkeypatch.setattr(constants, "FILES_PATH", STATIC_FILES_PATH)
+    monkeypatch.setattr(constants, "FILES_PATH", static_files_path)
     monkeypatch.setattr(
         constants,
         "SCORE_DOWNLOADABLE_PDF_FILE_PATH",
-        STATIC_FILES_PATH / constants.SCORE_DOWNLOADABLE_PDF_FILE_NAME,
+        static_files_path / constants.SCORE_DOWNLOADABLE_PDF_FILE_NAME,
     )
     etl.output_score_county_state_merged_df = downloadable_data_expected
     etl._load_downloadable_zip(constants.SCORE_DOWNLOADABLE_DIR)
