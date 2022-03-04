@@ -4,10 +4,12 @@
 
     color: whitesmoke;
     margin: auto;
+    @include u-margin-top(2.5);
 
     .downloadBox {
       @include u-bg('blue-80v');
       border-radius: 6px 6px;
+      // @include u-margin-top(3);
 
       .downloadBoxTextBox {
         padding: 25px 25px;

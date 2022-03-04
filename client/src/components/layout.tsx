@@ -18,7 +18,32 @@ const Layout = ({children, location, title}: ILayoutProps) => {
     <>
       <Helmet defer={false}>
         <html lang="en"/>
-        <title>{title}</title>
+        <title>{`${title} - Climate & Economic Justice Screening Tool`}</title>
+
+        {/* Description content should ideally be between 160 - 200 characters */}
+        <meta
+          name="description"
+          // eslint-disable-next-line max-len
+          content={`This screening tool identifies disadvantaged communities that are underserved &overburdened by pollution. It provides socioeconomic, environmental, health and climate info to inform decisions.`}
+        />
+
+        {/* Keyword content should list the top 10 words in order of relevance. The words chosen need
+            to appear on every page. These words were chosen from the header as it appears on each page */}
+        <meta
+          name="keywords"
+          content={`screening tool climate environmental economic justice beta council quality methodology`}
+        />
+
+        {/* Allows for Open Graph meta tags */}
+        <meta property="og:url" content="https://screeningtool.geoplatform.gov"/>
+        <meta property="og:title" content="Climate and Economic Justice Screening Tool"/>
+        <meta property="og:site_name" content="Climate and Economic Justice Screening Tool"/>
+        <meta
+          property="og:description"
+          // eslint-disable-next-line max-len
+          content={`This screening tool identifies disadvantaged communities that are underserved &overburdened by pollution. It provides socioeconomic, environmental, health and climate info to inform decisions.`}
+        />
+
 
         {/* DAP Tag */}
         <script async

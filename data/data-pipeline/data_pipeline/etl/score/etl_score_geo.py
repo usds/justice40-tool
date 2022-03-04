@@ -27,6 +27,10 @@ class GeoScoreETL(ExtractTransformLoad):
         self.SCORE_LOW_GEOJSON = self.SCORE_GEOJSON_PATH / "usa-low.json"
         self.SCORE_HIGH_GEOJSON = self.SCORE_GEOJSON_PATH / "usa-high.json"
 
+        self.SCORE_SHP_PATH = self.DATA_PATH / "score" / "shapefile"
+        self.SCORE_SHP_FILE = self.SCORE_SHP_PATH / "usa.shp"
+        self.SCORE_SHP_CODE_CSV = self.SCORE_SHP_PATH / "columns.csv"
+
         self.SCORE_CSV_PATH = self.DATA_PATH / "score" / "csv"
         self.TILE_SCORE_CSV = self.SCORE_CSV_PATH / "tiles" / "usa.csv"
 
@@ -97,6 +101,7 @@ class GeoScoreETL(ExtractTransformLoad):
         logger.info("Pruning Census GeoJSON")
         fields = [self.GEOID_FIELD_NAME, self.GEOMETRY_FIELD_NAME]
 
+        # TODO update this join
         logger.info("Merging and compressing score CSV with USA GeoJSON")
         self.geojson_score_usa_high = self.score_usa_df.set_index(
             self.GEOID_FIELD_NAME
@@ -153,7 +158,6 @@ class GeoScoreETL(ExtractTransformLoad):
         # round to 2 decimals
         self.geojson_score_usa_low = self.geojson_score_usa_low.round(
             {self.TARGET_SCORE_RENAME_TO: 2}
-        )
 
     def _create_buckets_from_tracts(
         self, initial_state_tracts: gpd.GeoDataFrame, num_buckets: int
@@ -269,10 +273,41 @@ class GeoScoreETL(ExtractTransformLoad):
             )
             logger.info("Completed writing usa-low")
 
+        def write_esri_shapefile():
+            logger.info("Producing ESRI shapefiles")
+            # Note that esri shapefiles can't have long column names, so we borrow from the
+            # shorten some tile names (renaming map) and print out a codebook for the user
+            codebook = {}
+            renaming_map = {}
+
+            # allows us to quickly rename / describe columns
+            reversed_tiles = {
+                short: long
+                for long, short in constants.TILES_SCORE_COLUMNS.items()
+            }
+            for column in self.geojson_score_usa_high.columns:
+                # take first 10 characters, max due to ESRI constraints
+                new_col = column[:10]
+                codebook[new_col] = reversed_tiles.get(column, column)
+                if new_col != column:
+                    renaming_map[column] = new_col
+            pd.Series(codebook).reset_index().rename(
+                # kept as strings because no downstream impacts
+                columns={0: "column", "index": "meaning"}
+            ).to_csv(self.SCORE_SHP_CODE_CSV, index=False)
+            self.geojson_score_usa_high.rename(columns=renaming_map).to_file(
+                self.SCORE_SHP_FILE
+            )
+            logger.info("Completed writing shapefile")
+
         with concurrent.futures.ThreadPoolExecutor() as executor:
             futures = {
                 executor.submit(task)
-                for task in [write_high_to_file, write_low_to_file]
+                for task in [
+                    write_high_to_file,
+                    write_low_to_file,
+                    write_esri_shapefile,
+                ]
             }
 
             for fut in concurrent.futures.as_completed(futures):

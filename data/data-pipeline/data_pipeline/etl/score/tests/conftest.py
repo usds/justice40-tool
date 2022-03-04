@@ -41,6 +41,11 @@ def etl(monkeypatch, root):
     etl = PostScoreETL()
     monkeypatch.setattr(etl, "DATA_PATH", root)
     monkeypatch.setattr(etl, "TMP_PATH", tmp_path)
+    monkeypatch.setattr(
+        etl,
+        "CONTENT_CONFIG",
+        Path.cwd() / "data_pipeline" / "content" / "config",
+    )
 
     return etl
 

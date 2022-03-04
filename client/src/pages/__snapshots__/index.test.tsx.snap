@@ -276,11 +276,36 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       class="grid-container-desktop-lg"
       data-testid="gridContainer"
     >
-      <h1
-        data-cy="about-page-heading"
+      <section
+        class="page-heading"
       >
-        About
-      </h1>
+        <h1
+          data-cy="about-page-heading"
+        >
+          About
+        </h1>
+        <div>
+          <div>
+            <span
+              class="usa-tag"
+              data-testid="tag"
+            >
+              NEW
+            </span>
+          </div>
+          <a
+            href="/public-engagement"
+          >
+            <button
+              class="usa-button usa-button--icon"
+              data-testid="button"
+              type="button"
+            >
+              Public Engagement
+            </button>
+          </a>
+        </div>
+      </section>
       <div
         class="grid-row grid-gap-lg j40-aboutcard-container "
         data-testid="grid"
@@ -335,7 +360,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
     to create a Climate and Economic Justice Screening Tool. The purpose of the tool is to help
     Federal agencies identify disadvantaged communities that are marginalized, underserved, and 
     overburdened by pollution. The current version of the tool provides socioeconomic, environmental, 
-    and climate information to inform decisions that may affect these communities. The 
+    health and climate information to inform decisions that may affect these communities. The 
     tool identifies disadvantaged communities through publicly-available, nationally-consistent datasets.
     
                 </p>

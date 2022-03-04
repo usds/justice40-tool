@@ -9,14 +9,19 @@ const MapLegend = () => {
   const intl = useIntl();
   return (
     <div className={styles.legendContainer}>
-      <DisadvantageDot isBig={true} />
-      <div className={styles.legendTextBox}>
-        <div className={'j40-h4'}>
-          {intl.formatMessage(EXPLORE_COPY.LEGEND.PRIORITY_LABEL)}
+      <div>
+        Color key
+      </div>
+      <div className={styles.legendRow}>
+        <DisadvantageDot isBig={true} />
+        <div className={styles.legendTextBox}>
+          <div className={'j40-h4'}>
+            {intl.formatMessage(EXPLORE_COPY.LEGEND.PRIORITY_LABEL)}
+          </div>
+          <p className={'secondary'}>
+            {intl.formatMessage(EXPLORE_COPY.LEGEND.PRIORITY_DESCRIPT)}
+          </p>
         </div>
-        <p className={'secondary'}>
-          {intl.formatMessage(EXPLORE_COPY.LEGEND.PRIORITY_DESCRIPT)}
-        </p>
       </div>
     </div>
   );
