@@ -134,7 +134,6 @@ export const EVENTS = [
         description: 'public engagement page event training session 1 date',
       },
     }),
-    // REG_LINK required to have breaks as such to render on mobile
     REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_D-Om_xXhTtiLv71y3Rr1CQ`,
     DATA_CY: `mar-9-reg-link-block`,
   },
@@ -151,7 +150,6 @@ export const EVENTS = [
         description: 'public engagement page event training session 2 date',
       },
     }),
-    // REG_LINK required to have breaks as such to render on mobile
     REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_QsSqshI4TpmRBkI6nVlWxQ`,
     DATA_CY: `mar-10-reg-link-block`,
 
@@ -169,7 +167,6 @@ export const EVENTS = [
         description: 'public engagement page event training session 3 date',
       },
     }),
-    // REG_LINK required to have breaks as such to render on mobile
     REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_q86iMtpwTESYa6f0xpIk7g`,
     DATA_CY: `mar-16-reg-link-block`,
 
@@ -187,8 +184,7 @@ export const EVENTS = [
         description: 'public engagement page event listening session 1 date',
       },
     }),
-    // REG_LINK required to have breaks as such to render on mobile
-    REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_dLw3xChiTlaOLGdHXQWk0w`,
+    REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_YT7_uLZqScGHgyAcTCuJjA`,
     DATA_CY: `mar-22-reg-link-block`,
 
   },
@@ -205,8 +201,7 @@ export const EVENTS = [
         description: 'public engagement page event listening session 2 date',
       },
     }),
-    // REG_LINK required to have breaks as such to render on mobile
-    REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_YT7_uLZqScGHgyAcTCuJjA`,
+    REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_dLw3xChiTlaOLGdHXQWk0w`,
     DATA_CY: `apr-15-reg-link-block`,
   },
 ];
