@@ -93,9 +93,8 @@ def test_create_tile_data(etl, score_data_expected, tile_data_expected):
 def test_create_downloadable_data(
     etl, score_data_expected, downloadable_data_expected
 ):
-    content_config_path = Path.cwd() / "data_pipeline" / "content" / "config"
     downloadable_csv_config = load_yaml_dict_from_file(
-        content_config_path / "csv.yml"
+        etl.CONTENT_CONFIG / "csv.yml"
     )
     output_downloadable_df_actual = etl._create_downloadable_data(
         score_data_expected,
@@ -125,7 +124,7 @@ def test_load_tile_csv(etl, tile_data_expected):
     assert constants.DATA_SCORE_CSV_TILES_FILE_PATH.is_file()
 
 
-def test_load_downloadable_zip(etl, monkeypatch, downloadable_data_expected):
+def test_load_downloadable_zip(etl, monkeypatch, score_data_expected):
     reload(constants)
     static_files_path = (
         Path.cwd() / "data_pipeline" / "files"
@@ -136,7 +135,7 @@ def test_load_downloadable_zip(etl, monkeypatch, downloadable_data_expected):
         "SCORE_DOWNLOADABLE_PDF_FILE_PATH",
         static_files_path / constants.SCORE_DOWNLOADABLE_PDF_FILE_NAME,
     )
-    etl.output_score_county_state_merged_df = downloadable_data_expected
+    etl.output_score_county_state_merged_df = score_data_expected
     etl._load_downloadable_zip(constants.SCORE_DOWNLOADABLE_DIR)
     assert constants.SCORE_DOWNLOADABLE_DIR.is_dir()
     assert constants.SCORE_DOWNLOADABLE_CSV_FILE_PATH.is_file()
