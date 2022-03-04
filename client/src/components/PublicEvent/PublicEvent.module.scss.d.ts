@@ -1,6 +1,6 @@
 declare namespace PublicEventNamespace {
     export interface IPublicEventScss {
-        eventField: string;
+      description: string;
     }
   }
 

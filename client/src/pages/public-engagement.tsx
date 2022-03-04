@@ -26,7 +26,7 @@ const PublicEngagementPage = ({location}: IPublicEngagementPageProps) => {
 
         <h1>{intl.formatMessage(PUBLIC_ENG_COPY.PAGE_INTRO.PAGE_HEADING1)}</h1>
 
-        <Grid row desktop={{col: 9}}>
+        <Grid row tablet={{col: 8}} desktop={{col: 7}}>
           <p>
             {intl.formatMessage(PUBLIC_ENG_COPY.PAGE_INTRO.PAGE_DESCRIPTION1)}
           </p>

@@ -19,9 +19,7 @@ exports[`rendering of the PublicEvent checks if component renders 1`] = `
         <a
           class="usa-link usa-link--external"
           data-cy=""
-          href="https://pitc.zoomgov.com/
-    webinar/register/
-    WN_D-Om_xXhTtiLv71y3Rr1CQ"
+          href="https://pitc.zoomgov.com/webinar/register/WN_D-Om_xXhTtiLv71y3Rr1CQ"
           rel="noreferrer"
           target="_blank"
         >
@@ -60,15 +58,11 @@ exports[`rendering of the PublicEvent checks if component renders 1`] = `
         <a
           class="usa-link usa-link--external"
           data-cy=""
-          href="https://pitc.zoomgov.com/
-    webinar/register/
-    WN_D-Om_xXhTtiLv71y3Rr1CQ"
+          href="https://pitc.zoomgov.com/webinar/register/WN_D-Om_xXhTtiLv71y3Rr1CQ"
           rel="noreferrer"
           target="_blank"
         >
-          https://pitc.zoomgov.com/
-    webinar/register/
-    WN_D-Om_xXhTtiLv71y3Rr1CQ
+          https://pitc.zoomgov.com/webinar/register/WN_D-Om_xXhTtiLv71y3Rr1CQ
         </a>
       </p>
     </div>

@@ -9,6 +9,7 @@ import {
 
 import LinkTypeWrapper from '../LinkTypeWrapper';
 import * as PUBLIC_ENGAGE_COPY from '../../data/copy/publicEngage';
+import * as styles from './PublicEvent.module.scss';
 
 export interface IPublicEvent {
   event: {
@@ -47,12 +48,12 @@ const PublicEvent = ({event}:IPublicEvent) => {
       </CollectionHeading>
 
       {/* Description */}
-      <CollectionDescription>
+      <CollectionDescription className={styles.description}>
         {intl.formatMessage(event.DESC)}
       </CollectionDescription>
 
       {/* Event info */}
-      <CollectionDescription>
+      <CollectionDescription className={styles.description}>
         <b>
           {intl.formatMessage(PUBLIC_ENGAGE_COPY.EVENT_FIELDS.EVENT_INFO)}
         </b>
@@ -60,7 +61,7 @@ const PublicEvent = ({event}:IPublicEvent) => {
       </CollectionDescription>
 
       {/* Registration Link */}
-      <CollectionDescription>
+      <CollectionDescription className={styles.description}>
         <b>
           {intl.formatMessage(PUBLIC_ENGAGE_COPY.EVENT_FIELDS.REG_LINK)}
         </b>
