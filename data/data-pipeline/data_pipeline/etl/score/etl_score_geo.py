@@ -158,7 +158,6 @@ class GeoScoreETL(ExtractTransformLoad):
     def _create_buckets_from_tracts(
         self, initial_state_tracts: gpd.GeoDataFrame, num_buckets: int
     ) -> gpd.GeoDataFrame:
-
         # First, we remove any states that have under the threshold of census tracts
         # from being aggregated (right now, this just removes Wyoming)
         highzoom_state_tracts = initial_state_tracts.reset_index()
