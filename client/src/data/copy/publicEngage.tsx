@@ -136,6 +136,7 @@ export const EVENTS = [
     }),
     // REG_LINK required to have breaks as such to render on mobile
     REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_D-Om_xXhTtiLv71y3Rr1CQ`,
+    DATA_CY: `mar-9-reg-link-block`,
   },
   {
     DATE: new Date(2022, 10, 3),
@@ -152,6 +153,8 @@ export const EVENTS = [
     }),
     // REG_LINK required to have breaks as such to render on mobile
     REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_QsSqshI4TpmRBkI6nVlWxQ`,
+    DATA_CY: `mar-10-reg-link-block`,
+
   },
   {
     DATE: new Date(2022, 16, 3),
@@ -168,6 +171,8 @@ export const EVENTS = [
     }),
     // REG_LINK required to have breaks as such to render on mobile
     REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_q86iMtpwTESYa6f0xpIk7g`,
+    DATA_CY: `mar-16-reg-link-block`,
+
   },
   {
     DATE: new Date(2022, 22, 3),
@@ -184,6 +189,8 @@ export const EVENTS = [
     }),
     // REG_LINK required to have breaks as such to render on mobile
     REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_dLw3xChiTlaOLGdHXQWk0w`,
+    DATA_CY: `mar-22-reg-link-block`,
+
   },
   {
     DATE: new Date(2022, 15, 4),
@@ -200,5 +207,6 @@ export const EVENTS = [
     }),
     // REG_LINK required to have breaks as such to render on mobile
     REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_YT7_uLZqScGHgyAcTCuJjA`,
+    DATA_CY: `apr-15-reg-link-block`,
   },
 ];

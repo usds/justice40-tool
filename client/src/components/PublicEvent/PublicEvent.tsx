@@ -20,6 +20,7 @@ export interface IPublicEvent {
     IMAGE: React.ReactElement | string,
     FIELDS: JSX.Element,
     REG_LINK: string,
+    DATA_CY: string,
   }
 }
 
@@ -71,7 +72,7 @@ const PublicEvent = ({event}:IPublicEvent) => {
           internal={false}
           url={event.REG_LINK}
           openUrlNewTab={true}
-          // dataCy?: string;
+          dataCy={event.DATA_CY}
         />
       </CollectionDescription>
     </CollectionItem>
