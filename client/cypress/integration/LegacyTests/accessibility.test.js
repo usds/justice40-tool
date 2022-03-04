@@ -18,7 +18,7 @@ const endpoints = [
   'en/methodology',
   'en/contact',
   'en/404',
-  'public-engagement',
+  'en/public-engagement',
 ];
 
 // The violation callback will post the violations into the terminal

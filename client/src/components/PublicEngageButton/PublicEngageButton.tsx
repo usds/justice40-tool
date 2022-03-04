@@ -16,11 +16,11 @@ const PublicEngageButton = () => {
           {intl.formatMessage(PUBLIC_ENG_COPY.PUBLIC_ENG_BUTTON.TAG_LABEL)}
         </Tag>
       </div>
-      <Button type={'button'} icon={true}>
-        <Link className={styles.link} to={'/public-engagement'}>
+      <Link className={styles.link} to={'/public-engagement'}>
+        <Button type={'button'} icon={true}>
           {intl.formatMessage(PUBLIC_ENG_COPY.PUBLIC_ENG_BUTTON.LABEL)}
-        </Link>
-      </Button>
+        </Button>
+      </Link>
     </div>
   );
 };

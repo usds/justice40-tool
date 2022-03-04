@@ -293,17 +293,17 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               NEW
             </span>
           </div>
-          <button
-            class="usa-button usa-button--icon"
-            data-testid="button"
-            type="button"
+          <a
+            href="/public-engagement"
           >
-            <a
-              href="/public-engagement"
+            <button
+              class="usa-button usa-button--icon"
+              data-testid="button"
+              type="button"
             >
               Public Engagement
-            </a>
-          </button>
+            </button>
+          </a>
         </div>
       </section>
       <div

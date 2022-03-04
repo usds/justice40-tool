@@ -11,17 +11,17 @@ exports[`rendering of the PublicEngageButton checks if component renders 1`] = `
         NEW
       </span>
     </div>
-    <button
-      class="usa-button usa-button--icon"
-      data-testid="button"
-      type="button"
+    <a
+      href="/public-engagement"
     >
-      <a
-        href="/public-engagement"
+      <button
+        class="usa-button usa-button--icon"
+        data-testid="button"
+        type="button"
       >
         Public Engagement
-      </a>
-    </button>
+      </button>
+    </a>
   </div>
 </DocumentFragment>
 `;
