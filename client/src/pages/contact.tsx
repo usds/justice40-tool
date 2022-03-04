@@ -5,6 +5,7 @@ import {useIntl, FormattedMessage} from 'gatsby-plugin-intl';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 import LinkTypeWrapper from '../components/LinkTypeWrapper';
+import PublicEngageButton from '../components/PublicEngageButton';
 
 import * as CONTACT_COPY from '../data/copy/contact';
 interface IContactPageProps {
@@ -19,7 +20,10 @@ const ContactPage = ({location}: IContactPageProps) => {
 
       <J40MainGridContainer>
 
-        <h1>{intl.formatMessage(CONTACT_COPY.PAGE_INTRO.PAGE_HEADING)}</h1>
+        <section className={'page-heading'}>
+          <h1>{intl.formatMessage(CONTACT_COPY.PAGE_INTRO.PAGE_HEADING)}</h1>
+          <PublicEngageButton />
+        </section>
 
         <Grid row>
           <Grid col>
