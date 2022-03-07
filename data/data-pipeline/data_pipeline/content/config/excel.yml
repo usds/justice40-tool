@@ -158,10 +158,10 @@ sheets:
         label: Greater than or equal to the 90th percentile for asthma, is low income, and has a low percent of higher ed students?
         format: bool
       - score_name: Current asthma among adults aged greater than or equal to 18 years (percentile)
-        label: Current asthma among adults aged greater than or equal to 18 years (percentile)
+        label: Asthma among adults aged greater than or equal to 18 years (percentile)
         format: percentage
       - score_name: Current asthma among adults aged greater than or equal to 18 years
-        label: Current asthma among adults aged greater than or equal to 18 years
+        label: Asthma among adults aged greater than or equal to 18 years
         format: percentage
       - score_name: Greater than or equal to the 90th percentile for diabetes, is low income, and has a low percent of higher ed students?
         label: Greater than or equal to the 90th percentile for diabetes, is low income, and has a low percent of higher ed students?
