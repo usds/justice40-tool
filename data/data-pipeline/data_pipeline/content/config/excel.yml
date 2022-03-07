@@ -20,7 +20,7 @@ sheets:
         label: State/Territory
         format: string
       - score_name: Total threshold criteria exceeded
-        label: Total threshold criteria exceeded
+        label: Total number of at or above thresholds criteria
         format: int64
       - score_name: Definition M (communities)
         label: Definition M (communities)
