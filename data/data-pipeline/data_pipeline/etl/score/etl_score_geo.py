@@ -293,6 +293,7 @@ class GeoScoreETL(ExtractTransformLoad):
                 codebook[new_col] = reversed_tiles.get(column, column)
                 if new_col != column:
                     renaming_map[column] = new_col
+
             pd.Series(codebook).reset_index().rename(
                 # kept as strings because no downstream impacts
                 columns={0: "column", "index": "meaning"}
