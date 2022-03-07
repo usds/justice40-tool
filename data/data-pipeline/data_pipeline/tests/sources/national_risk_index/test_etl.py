@@ -130,7 +130,7 @@ class TestNationalRiskIndexETL(TestETL):
         assert extracted_file_path.is_file()
 
     def test_extract(self, snapshot, mock_etl, mock_paths):
-        """Tests the extract method. I think this works
+        """Tests the extract method.
 
         To update: $ poetry run pytest
             data_pipeline/tests/sources/national_risk_index/test_etl.py::test

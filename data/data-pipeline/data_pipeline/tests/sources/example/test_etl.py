@@ -261,6 +261,25 @@ class TestETL:
             self._OUTPUT_CSV_FILE_NAME,
         )
 
+    def test_extract(self, snapshot, mock_etl, mock_paths):
+        """Tests the extract method.
+
+        Needs to be updated per class.
+        """
+        if self._ETL_CLASS is not ExampleETL:
+            raise NotImplementedError(
+                "Extract test not defined for this class."
+            )
+
+        tmp_df = pd.read_csv(
+            self._SAMPLE_DATA_PATH / self._SAMPLE_DATA_FILE_NAME
+        )
+        snapshot.snapshot_dir = self._DATA_DIRECTORY_FOR_TEST
+        snapshot.assert_match(
+            tmp_df.to_csv(),
+            self._INPUT_CSV_FILE_NAME,
+        )
+
     def test_sample_data_exists(self, snapshot):
         """This will test that the sample data exists where it's supposed to as it's supposed to
 
