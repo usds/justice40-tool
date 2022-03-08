@@ -99,8 +99,8 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     }
     if (indicatorName === 'poverty') {
       return properties.hasOwnProperty(constants
-          .POVERTY_PROPERTY_PERCENTILE) ?
-     properties[constants.POVERTY_PROPERTY_PERCENTILE] : null;
+          .POVERTY_BELOW_100_PERCENTILE) ?
+     properties[constants.POVERTY_BELOW_100_PERCENTILE] : null;
     }
     if (indicatorName === 'highSchool') {
       return properties.hasOwnProperty(constants
