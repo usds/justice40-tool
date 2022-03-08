@@ -83,7 +83,7 @@ Once we have all the data from the previous stages, we convert it to tiles to ma
 
 #### 5. Shapefiles
 
-If you want to use the shapefiles in mapping applications, you [can download them here](https://justice40-data.s3.amazonaws.com/data-pipeline/data/score/shapefile/).
+If you want to use the shapefiles in mapping applications, you can access them here [shp](https://justice40-data.s3.amazonaws.com/data-pipeline/data/score/shapefile/usa.shp) and [shx](https://justice40-data.s3.amazonaws.com/data-pipeline/data/score/shapefile/usa.shx).
 
 
 ### Score generation and comparison workflow
