@@ -10,10 +10,26 @@ export const PERFORMANCE_MARKER_MAP_IDLE = 'MAP_IDLE';
 // ******* PROPERTIES FROM TILE SERVER **************
 export type J40Properties = { [key: string]: any };
 
-// Properties
-export const SCORE_PROPERTY_HIGH = 'SM_PFS';
-export const SCORE_PROPERTY_LOW = 'M_SCORE';
+
+// ****** SIDE PANEL BACKEND SIGNALS ***********
+// General Census Track Info
 export const GEOID_PROPERTY = 'GEOID10';
+export const COUNTY_NAME = 'CF';
+export const STATE_NAME = 'SF';
+export const TOTAL_POPULATION = 'TPF';
+
+/**
+ * The SCORE_BOUNDAY_THRESHOLD will determine if the tract is disadvantaged
+ * or not. Currently all values are railed to 0 or 1. If the
+ * SCORE_PROPERTY_HIGH is greater than SCORE_BOUNDARY_THRESHOLD,
+ * the tract will be considered disadvantaged.
+ */
+export const SCORE_BOUNDARY_THRESHOLD = 0.6;
+
+// Determines the X of Y threshold exceeded
+export const TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS = 'TC';
+export const TOTAL_NUMBER_OF_INDICATORS = 'THRHLD';
+
 export const SIDE_PANEL_STATE = 'UI_EXP';
 export const SIDE_PANEL_STATE_VALUES = {
   NATION: 'Nation',
@@ -21,120 +37,150 @@ export const SIDE_PANEL_STATE_VALUES = {
   ISLAND_AREAS: 'Island Areas',
 };
 
-export const THRHLD = 'TERRITORY_THRESHOLD';
-
-// Indicator values:
-export const ASTHMA_PERCENTILE = 'AF_PFS';
-export const COUNTY_NAME = 'CF';
-export const DIABETES_PERCENTILE = 'DF_PFS';
-export const DIESEL_MATTER_PERCENTILE = 'DSF_PFS';
-export const ENERGY_PERCENTILE = 'EBF_PFS';
-export const HEART_PERCENTILE = 'HDF_PFS';
-export const HIGH_SCHOOL_PROPERTY_PERCENTILE = `HSEF`;
-export const HOUSING_BURDEN_PROPERTY_PERCENTILE = 'HBF_PFS';
-export const LEAD_PAINT_PERCENTILE = 'LPF_PFS';
-export const LIFE_PERCENTILE = 'LLEF_PFS';
-export const LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE = 'LIF_PFS';
-export const LOW_MEDIAN_INCOME_PERCENTILE = 'LMI_PFS';
-export const PM25_PERCENTILE = 'PM25F_PFS';
-export const POVERTY_PROPERTY_PERCENTILE = 'P200_PFS';
-export const STATE_NAME = 'SF';
-export const TOTAL_POPULATION = 'TPF';
-export const TRAFFIC_PERCENTILE = 'TF_PFS';
-export const UNEMPLOYMENT_PROPERTY_PERCENTILE = 'UF_PFS';
-export const WASTEWATER_PERCENTILE = 'WF_PFS';
-export const EXP_AGRICULTURE_LOSS_PERCENTILE = 'EALR_PFS';
-export const EXP_BUILDING_LOSS_PERCENTILE = 'EBLR_PFS';
-export const EXP_POPULATION_LOSS_PERCENTILE = 'EPLR_PFS';
-export const MEDIAN_HOME_VALUE_PERCENTILE = 'MHVF_PFS';
-export const POVERTY_BELOW_100_PERCENTILE = 'P100_PFS';
-export const POVERTY_BELOW_200_PERCENTILE = 'P200_PFS';
-export const PROXIMITY_NPL_SITES_PERCENTILE = 'NPL_PFS';
-export const PROXIMITY_RMP_SITES_PERCENTILE = 'RMP_PFS';
-export const PROXIMITY_TSDF_SITES_PERCENTILE = 'TSDF_PFS';
-export const HIGHER_ED_PERCENTILE = 'CA';
-
-export const ISLAND_AREAS_UNEMPLOYMENT_LOW_HS_EDU_PERCENTILE_FIELD= 'IAULHSE_PFS';
-export const ISLAND_AREAS_POVERTY_LOW_HS_EDU_PERCENTILE_FIELD= 'IAPLHSE_PFS';
-export const ISLAND_AREAS_LOW_MEDIAN_INCOME_LOW_HS_EDU_PERCENTILE_FIELD= 'IALMILHSE_PFS';
-export const ISLAND_AREAS_LOW_HS_EDU_PERCENTILE_FIELD= 'IALHE_PFS';
-export const ISLAND_AREAS_HS_EDU_PERCENTAGE_FIELD= 'IAHSEF';
-
-// Category booleans (disadvantaged or not):
+// Climate category
 export const IS_CLIMATE_FACTOR_DISADVANTAGED_M = 'M_CLT';
-export const IS_ENERGY_FACTOR_DISADVANTAGED_M = 'M_ENY';
-export const IS_TRANSPORT_FACTOR_DISADVANTAGED_M = 'M_TRN';
-export const IS_HOUSING_FACTOR_DISADVANTAGED_M = 'M_HSG';
-export const IS_POLLUTION_FACTOR_DISADVANTAGED_M = 'M_PLN';
-export const IS_WATER_FACTOR_DISADVANTAGED_M = 'M_WTR';
-export const IS_HEALTH_FACTOR_DISADVANTAGED_M = 'M_HLTH';
-export const IS_WORKFORCE_FACTOR_DISADVANTAGED_M = 'M_WKFC';
-
 export const IS_CLIMATE_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_CLT_EOMI';
-export const IS_ENERGY_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_ENY_EOMI';
-export const IS_TRANSPORT_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_TRN_EOMI';
-export const IS_HOUSING_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_HSG_EOMI';
-export const IS_POLLUTION_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_PLN_EOMI';
-export const IS_WATER_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_WTR_EOMI';
-export const IS_HEALTH_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_HLTH_EOMI';
-export const IS_WORKFORCE_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_WKFC_EOMI';
 
-export const IS_WORKFORCE_EXCEED_BOTH_SOCIO_INDICATORS_M = 'M_WKFC_EBSI';
+export const EXP_AGRICULTURE_LOSS_PERCENTILE = 'EALR_PFS';
+export const IS_GTE_90_EXP_AGR_LOSS_AND_IS_LOW_INCOME = 'EALRLI';
+
+export const EXP_BUILDING_LOSS_PERCENTILE = 'EBLR_PFS';
+export const IS_GTE_90_EXP_BLD_LOSS_AND_IS_LOW_INCOME = 'EBLRLI';
+
+export const EXP_POPULATION_LOSS_PERCENTILE = 'EPLR_PFS';
+export const IS_GTE_90_EXP_POP_LOSS_AND_IS_LOW_INCOME = 'EPLRLI';
+
 export const IS_EXCEED_BOTH_SOCIO_INDICATORS_M = 'M_EBSI';
 
-// Total indicators values:
-export const TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS = 'TC';
-export const TOTAL_NUMBER_OF_INDICATORS = 'THRHLD';
-
-// Indicator booleans (disadvangted or not): (GTE = greater than or equal)
-export const IS_GTE_90_EXP_POP_LOSS_AND_IS_LOW_INCOME = 'EPLRLI';
-export const IS_GTE_90_EXP_AGR_LOSS_AND_IS_LOW_INCOME = 'EALRLI';
-export const IS_GTE_90_EXP_BLD_LOSS_AND_IS_LOW_INCOME = 'EBLRLI';
-export const IS_GTE_90_PM25_AND_IS_LOW_INCOME = 'PM25LI';
-export const IS_GTE_90_ENERGY_BURDEN_AND_IS_LOW_INCOME = 'EBLI';
-export const IS_GTE_90_DIESEL_PM_AND_IS_LOW_INCOME = 'DPMLI';
-export const IS_GTE_90_TRAFFIC_PROX_AND_IS_LOW_INCOME = 'TPLI';
-export const IS_GTE_90_LEAD_PAINT_AND_MEDIAN_HOME_VAL_AND_IS_LOW_INCOME = 'LPMHVLI';
-export const IS_GTE_90_HOUSE_BURDEN_AND_IS_LOW_INCOME = 'HBLI';
-export const IS_GTE_90_RMP_AND_IS_LOW_INCOME = 'RMPLI';
-export const IS_GTE_90_SUPERFUND_AND_IS_LOW_INCOME = 'SFLI';
-export const IS_GTE_90_HAZARD_WASTE_AND_IS_LOW_INCOME = 'HWLI';
-export const IS_GTE_90_WASTEWATER_AND_IS_LOW_INCOME = 'WDLI';
-export const IS_GTE_90_DIABETES_AND_IS_LOW_INCOME = 'DLI';
-export const IS_GTE_90_ASTHMA_AND_IS_LOW_INCOME = 'ALI';
-export const IS_GTE_90_HEART_DISEASE_AND_IS_LOW_INCOME = 'HDLI';
-export const IS_GTE_90_LOW_LIFE_EXP_AND_IS_LOW_INCOME = 'LLELI';
-export const IS_GTE_90_LINGUISITIC_ISO_AND_IS_LOW_INCOME = 'LILHSE';
-export const IS_GTE_90_BELOW_100_POVERTY_AND_LOW_HIGH_SCHOOL_EDU = 'PLHSE';
-export const IS_GTE_90_LOW_MEDIAN_INCOME_AND_LOW_HIGH_SCHOOL_EDU = 'LMILHSE';
-export const IS_GTE_90_UNEMPLOYMENT_AND_LOW_HIGH_SCHOOL_EDU = 'ULHSE';
+export const POVERTY_BELOW_200_PERCENTILE = 'P200_PFS';
 export const IS_FEDERAL_POVERTY_LEVEL_200 = 'FPL200S';
-export const IS_HIGHER_ED_PERCENTILE = 'CA_LT20';
-export const TOTAL_THRESHOLD_CRITERIA = 'TC';
-export const IS_GTE_90_ISLAND_AREA_UNEMPLOYMENT_AND_IS_LOW_HS_EDU_2009 = 'IAULHSE';
-export const IS_GTE_90_ISLAND_AREA_BELOW_100_POVERTY_AND_IS_LOW_HS_EDU_2009 = 'IAPLHSE';
-export const IS_GTE_90_ISLAND_AREA_LOW_MEDIAN_INCOME_AND_IS_LOW_HS_EDU_2009 = 'IALMILHSE';
-export const ISLAND_AREA_LOW_HS_EDU = 'IALHE';
-export const IS_LOW_HS_EDUCATION_LOW_HIGHER_ED_PRIORITIZED = 'LHE';
 
-// The name of the layer within the tiles that contains the score
-export const SCORE_SOURCE_LAYER = 'blocks';
+export const HIGHER_ED_PERCENTILE = 'CA';
+export const IS_HIGHER_ED_PERCENTILE = 'CA_LT20';
+
+
+// Energy category
+export const IS_ENERGY_FACTOR_DISADVANTAGED_M = 'M_ENY';
+export const IS_ENERGY_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_ENY_EOMI';
+
+export const ENERGY_PERCENTILE = 'EBF_PFS';
+export const IS_GTE_90_ENERGY_BURDEN_AND_IS_LOW_INCOME = 'EBLI';
+
+export const PM25_PERCENTILE = 'PM25F_PFS';
+export const IS_GTE_90_PM25_AND_IS_LOW_INCOME = 'PM25LI';
+
+
+// Transport category
+export const IS_TRANSPORT_FACTOR_DISADVANTAGED_M = 'M_TRN';
+export const IS_TRANSPORT_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_TRN_EOMI';
+
+export const DIESEL_MATTER_PERCENTILE = 'DSF_PFS';
+export const IS_GTE_90_DIESEL_PM_AND_IS_LOW_INCOME = 'DPMLI';
+
+export const TRAFFIC_PERCENTILE = 'TF_PFS';
+export const IS_GTE_90_TRAFFIC_PROX_AND_IS_LOW_INCOME = 'TPLI';
+
+
+// Housing category
+export const IS_HOUSING_FACTOR_DISADVANTAGED_M = 'M_HSG';
+export const IS_HOUSING_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_HSG_EOMI';
+
+export const HOUSING_BURDEN_PROPERTY_PERCENTILE = 'HBF_PFS';
+export const IS_GTE_90_HOUSE_BURDEN_AND_IS_LOW_INCOME = 'HBLI';
+
+export const LEAD_PAINT_PERCENTILE = 'LPF_PFS';
+export const IS_GTE_90_LEAD_PAINT_AND_MEDIAN_HOME_VAL_AND_IS_LOW_INCOME = 'LPMHVLI';
+
+// export const MEDIAN_HOME_VALUE_PERCENTILE = 'MHVF_PFS'; // No longer showing in UI
+
+
+// Pollution category
+export const IS_POLLUTION_FACTOR_DISADVANTAGED_M = 'M_PLN';
+export const IS_POLLUTION_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_PLN_EOMI';
+
+export const PROXIMITY_TSDF_SITES_PERCENTILE = 'TSDF_PFS';
+export const IS_GTE_90_HAZARD_WASTE_AND_IS_LOW_INCOME = 'HWLI';
+
+export const PROXIMITY_NPL_SITES_PERCENTILE = 'NPL_PFS';
+export const IS_GTE_90_SUPERFUND_AND_IS_LOW_INCOME = 'SFLI';
+
+export const PROXIMITY_RMP_SITES_PERCENTILE = 'RMP_PFS';
+export const IS_GTE_90_RMP_AND_IS_LOW_INCOME = 'RMPLI';
+
+
+// Water category
+export const IS_WATER_FACTOR_DISADVANTAGED_M = 'M_WTR';
+export const IS_WATER_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_WTR_EOMI';
+
+export const WASTEWATER_PERCENTILE = 'WF_PFS';
+export const IS_GTE_90_WASTEWATER_AND_IS_LOW_INCOME = 'WDLI';
+
+
+// Health category
+export const IS_HEALTH_FACTOR_DISADVANTAGED_M = 'M_HLTH';
+export const IS_HEALTH_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_HLTH_EOMI';
+
+export const ASTHMA_PERCENTILE = 'AF_PFS';
+export const IS_GTE_90_ASTHMA_AND_IS_LOW_INCOME = 'ALI';
+
+export const DIABETES_PERCENTILE = 'DF_PFS';
+export const IS_GTE_90_DIABETES_AND_IS_LOW_INCOME = 'DLI';
+
+export const HEART_PERCENTILE = 'HDF_PFS';
+export const IS_GTE_90_HEART_DISEASE_AND_IS_LOW_INCOME = 'HDLI';
+
+export const LIFE_PERCENTILE = 'LLEF_PFS';
+export const IS_GTE_90_LOW_LIFE_EXP_AND_IS_LOW_INCOME = 'LLELI';
+
+
+// Workforce category
+export const IS_WORKFORCE_FACTOR_DISADVANTAGED_M = 'M_WKFC';
+export const IS_WORKFORCE_EXCEED_ONE_OR_MORE_INDICATORS_M = 'M_WKFC_EOMI';
+
+export const LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE = 'LIF_PFS';
+export const IS_GTE_90_LINGUISITIC_ISO_AND_IS_LOW_INCOME = 'LILHSE';
+
+export const LOW_MEDIAN_INCOME_PERCENTILE = 'LMI_PFS';
+export const IS_GTE_90_LOW_MEDIAN_INCOME_AND_LOW_HIGH_SCHOOL_EDU = 'LMILHSE';
+export const ISLAND_AREAS_LOW_MEDIAN_INCOME_LOW_HS_EDU_PERCENTILE_FIELD= 'IALMILHSE_PFS';
+export const IS_GTE_90_ISLAND_AREA_LOW_MEDIAN_INCOME_AND_IS_LOW_HS_EDU_2009 = 'IALMILHSE';
+
+export const UNEMPLOYMENT_PROPERTY_PERCENTILE = 'UF_PFS';
+export const IS_GTE_90_UNEMPLOYMENT_AND_LOW_HIGH_SCHOOL_EDU = 'ULHSE';
+export const ISLAND_AREAS_UNEMPLOYMENT_LOW_HS_EDU_PERCENTILE_FIELD= 'IAULHSE_PFS';
+export const IS_GTE_90_ISLAND_AREA_UNEMPLOYMENT_AND_IS_LOW_HS_EDU_2009 = 'IAULHSE';
+
+export const POVERTY_BELOW_100_PERCENTILE = 'P100_PFS';
+export const IS_GTE_90_ISLAND_AREA_BELOW_100_POVERTY_AND_IS_LOW_HS_EDU_2009 = 'IAPLHSE';
+export const ISLAND_AREAS_POVERTY_LOW_HS_EDU_PERCENTILE_FIELD= 'IAPLHSE_PFS';
+export const IS_GTE_90_BELOW_100_POVERTY_AND_LOW_HIGH_SCHOOL_EDU = 'PLHSE';
+
+export const IS_WORKFORCE_EXCEED_BOTH_SOCIO_INDICATORS_M = 'M_WKFC_EBSI';
+
+export const HIGH_SCHOOL_PROPERTY_PERCENTILE = `HSEF`;
+export const IS_LOW_HS_EDUCATION_LOW_HIGHER_ED_PRIORITIZED = 'LHE';
+export const ISLAND_AREAS_HS_EDU_PERCENTAGE_FIELD= 'IAHSEF';
+export const ISLAND_AREA_LOW_HS_EDU = 'IALHE';
 
 
 // ********** MAP CONSTANTS ***************
-
 // Source name constants
 export const BASE_MAP_SOURCE_NAME = 'base-map-source-name';
 export const HIGH_ZOOM_SOURCE_NAME = 'high-zoom-source-name';
 export const LOW_ZOOM_SOURCE_NAME = 'low-zoom-source-name';
 
 // Layer ID constants
+export const SCORE_SOURCE_LAYER = 'blocks'; // The name of the layer within the tiles that contains the score
 export const BASE_MAP_LAYER_ID = 'base-map-layer-id';
 export const HIGH_ZOOM_LAYER_ID = 'high-zoom-layer-id';
 export const PRIORITIZED_HIGH_ZOOM_LAYER_ID = 'prioritized-high-zoom-layer-id';
 export const LOW_ZOOM_LAYER_ID = 'low-zoom-layer-id';
 export const FEATURE_BORDER_LAYER_ID = 'feature-border-layer-id';
 export const SELECTED_FEATURE_BORDER_LAYER_ID = 'selected-feature-border-layer-id';
+
+// Used in layer filters:
+export const SCORE_PROPERTY_LOW = 'M_SCORE';
+export const SCORE_PROPERTY_HIGH = 'SM_PFS';
 
 // Zoom
 export const GLOBAL_MIN_ZOOM = 3;
@@ -160,13 +206,6 @@ export const PRIORITIZED_FEATURE_FILL_COLOR = '#768FB3';
 // Widths
 export const FEATURE_BORDER_WIDTH = 0.8;
 export const SELECTED_FEATURE_BORDER_WIDTH = 5.0;
-
-/**
- * This threshold will determine if the feature is prioritized
- * or not. Currently all values are railed to 0 or 1 so this value
- * doesn't really matter.
- */
-export const SCORE_BOUNDARY_THRESHOLD = 0.6;
 
 // Bounds - these bounds can be obtained by using the getCurrentMapBoundingBox() function in the map
 export const GLOBAL_MAX_BOUNDS: LngLatBoundsLike = [
