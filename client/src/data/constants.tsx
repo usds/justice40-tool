@@ -4,35 +4,6 @@ import {isMobile as isMobileReactDeviceDetect} from 'react-device-detect';
 
 export const isMobile = isMobileReactDeviceDetect;
 
-const XYZ_SUFFIX = '{z}/{x}/{y}.pbf';
-export const featureURLForTilesetName = (tilesetName: string): string => {
-  // The feature tile base URL and path can either point locally or the CDN.
-  // This is selected based on the DATA_SOURCE env variable.
-  const featureTileBaseURL = process.env.DATA_SOURCE === 'local' ?
-    process.env.GATSBY_LOCAL_TILES_BASE_URL :
-    process.env.GATSBY_CDN_TILES_BASE_URL;
-
-  const featureTilePath = process.env.DATA_SOURCE === 'local' ?
-  process.env.GATSBY_DATA_PIPELINE_SCORE_PATH_LOCAL :
-  process.env.GATSBY_DATA_PIPELINE_SCORE_PATH;
-
-  return [
-    featureTileBaseURL,
-    featureTilePath,
-    process.env.GATSBY_MAP_TILES_PATH,
-    tilesetName,
-    XYZ_SUFFIX,
-  ].join('/');
-};
-export const FEATURE_TILE_HIGH_ZOOM_URL = featureURLForTilesetName('high');
-export const FEATURE_TILE_LOW_ZOOM_URL = featureURLForTilesetName('low');
-
-// Staging links for testing:
-// const PR_HASH = `1348/3f241bbb369a0bcfe3d39db46872fd019aeadb63`;
-// export const FEATURE_TILE_HIGH_ZOOM_URL = `https://justice40-data.s3.amazonaws.com/data-pipeline-staging/${PR_HASH}/data/score/tiles/high/${XYZ_SUFFIX}`;
-// export const FEATURE_TILE_LOW_ZOOM_URL = `https://justice40-data.s3.amazonaws.com/data-pipeline-staging/${PR_HASH}/data/score/tiles/low/${XYZ_SUFFIX}`;
-
-
 // Performance markers
 export const PERFORMANCE_MARKER_MAP_IDLE = 'MAP_IDLE';
 
