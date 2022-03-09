@@ -3,11 +3,11 @@
 // styles for all burden containers
 @mixin baseBurdenContainer {
     display: flex;
+    @include u-text('bold'); 
 
     .burdenQuestion {
         flex: 0 1 77%;
         @include typeset('sans', '2xs', 2);
-        @include u-text('bold'); 
     }
     
     .burdenValue {
