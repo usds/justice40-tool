@@ -4,6 +4,7 @@ exports[`rendering of the Indicator checks if component renders 1`] = `
 <DocumentFragment>
   <li
     data-cy="indicatorBox"
+    data-testid="indicator-box"
   >
     <div>
       <div>
@@ -22,10 +23,8 @@ exports[`rendering of the Indicator checks if component renders 1`] = `
           </div>
           <div>
             <img
-              alt="up arrow icon"
-              height="24px"
+              alt="image alt text"
               src="test-file-stub"
-              width="24px"
             />
           </div>
         </div>

@@ -449,6 +449,24 @@ export const SIDE_PANEL_VALUES = {
     description={'indicating percentile units'}
     defaultMessage={`percentile`}
   />,
+  IMG_ALT_TEXT: defineMessages({
+    ARROW_UP: {
+      id: 'explore.page.side.panel.indicator.value.arrow.up.alt.text',
+      description: 'up arrow icon',
+      defaultMessage: `image alt text`,
+    },
+    ARROW_DOWN: {
+      id: 'explore.page.side.panel.indicator.value.arrow.down.alt.text',
+      description: 'down arrow icon',
+      defaultMessage: `image alt text`,
+    },
+  }),
+  UNAVAILABLE: '--',
+  UNAVAILBLE_MSG: <FormattedMessage
+    id={'explore.page.side.panel.indicator.value.subtext.unavailable'}
+    description={'subtext for indicator when data is N/A'}
+    defaultMessage={`data is N/A`}
+  />,
 };
 
 export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({

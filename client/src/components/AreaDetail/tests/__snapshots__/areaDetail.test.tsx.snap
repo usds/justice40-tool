@@ -115,6 +115,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -135,10 +136,8 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
                 </div>
                 <div>
                   <img
-                    alt="up arrow icon"
-                    height="24px"
+                    alt="image alt text"
                     src="test-file-stub"
-                    width="24px"
                   />
                 </div>
               </div>
@@ -155,6 +154,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -175,10 +175,8 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
                 </div>
                 <div>
                   <img
-                    alt="up arrow icon"
-                    height="24px"
+                    alt="image alt text"
                     src="test-file-stub"
-                    width="24px"
                   />
                 </div>
               </div>
@@ -195,6 +193,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -209,7 +208,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
             <div>
               <div>
                 <div>
-                  80
+                  50
                   <sup>
                     <span>
                       th
@@ -218,10 +217,8 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
                 </div>
                 <div>
                   <img
-                    alt="up arrow icon"
-                    height="24px"
+                    alt="image alt text"
                     src="test-file-stub"
-                    width="24px"
                   />
                 </div>
               </div>
@@ -238,6 +235,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -251,26 +249,16 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <span>
                     %
                   </span>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 90
-                </div>
-                <div>
-                  percent
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -289,6 +277,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -302,26 +291,16 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <span>
                     %
                   </span>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 90
-                </div>
-                <div>
-                  percent
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -329,6 +308,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -342,26 +322,16 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <span>
                     %
                   </span>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 20
-                </div>
-                <div>
-                  percent
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -488,6 +458,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -499,26 +470,16 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 90th
-                </div>
-                <div>
-                  percentile
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -526,6 +487,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -537,26 +499,16 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 90th
-                </div>
-                <div>
-                  percentile
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -564,6 +516,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -577,26 +530,16 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 90th
-                </div>
-                <div>
-                  percentile
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -615,6 +558,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -637,10 +581,8 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                 </div>
                 <div>
                   <img
-                    alt="up arrow icon"
-                    height="24px"
+                    alt="image alt text"
                     src="test-file-stub"
-                    width="24px"
                   />
                 </div>
               </div>
@@ -657,6 +599,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -670,26 +613,16 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <span>
                     %
                   </span>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 20
-                </div>
-                <div>
-                  percent
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -732,6 +665,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -743,26 +677,16 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 90th
-                </div>
-                <div>
-                  percentile
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -770,6 +694,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -781,26 +706,16 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 90th
-                </div>
-                <div>
-                  percentile
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -819,6 +734,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -841,10 +757,8 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                 </div>
                 <div>
                   <img
-                    alt="up arrow icon"
-                    height="24px"
+                    alt="image alt text"
                     src="test-file-stub"
-                    width="24px"
                   />
                 </div>
               </div>
@@ -861,6 +775,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -874,26 +789,16 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <span>
                     %
                   </span>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 20
-                </div>
-                <div>
-                  percent
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -936,6 +841,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -947,26 +853,16 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 90th
-                </div>
-                <div>
-                  percentile
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -974,6 +870,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -985,26 +882,16 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 90th
-                </div>
-                <div>
-                  percentile
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -1023,6 +910,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1045,10 +933,8 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                 </div>
                 <div>
                   <img
-                    alt="up arrow icon"
-                    height="24px"
+                    alt="image alt text"
                     src="test-file-stub"
-                    width="24px"
                   />
                 </div>
               </div>
@@ -1065,6 +951,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1078,26 +965,16 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <span>
                     %
                   </span>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 20
-                </div>
-                <div>
-                  percent
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -1140,6 +1017,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1160,10 +1038,8 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                 </div>
                 <div>
                   <img
-                    alt="up arrow icon"
-                    height="24px"
+                    alt="image alt text"
                     src="test-file-stub"
-                    width="24px"
                   />
                 </div>
               </div>
@@ -1180,6 +1056,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1193,26 +1070,16 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 90th
-                </div>
-                <div>
-                  percentile
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -1231,6 +1098,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1253,10 +1121,8 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                 </div>
                 <div>
                   <img
-                    alt="up arrow icon"
-                    height="24px"
+                    alt="image alt text"
                     src="test-file-stub"
-                    width="24px"
                   />
                 </div>
               </div>
@@ -1273,6 +1139,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1286,26 +1153,16 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <span>
                     %
                   </span>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 20
-                </div>
-                <div>
-                  percent
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -1348,6 +1205,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1359,26 +1217,16 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 90th
-                </div>
-                <div>
-                  percentile
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -1386,6 +1234,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1397,26 +1246,16 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 90th
-                </div>
-                <div>
-                  percentile
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -1424,6 +1263,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1435,26 +1275,16 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 90th
-                </div>
-                <div>
-                  percentile
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -1473,6 +1303,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1495,10 +1326,8 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                 </div>
                 <div>
                   <img
-                    alt="up arrow icon"
-                    height="24px"
+                    alt="image alt text"
                     src="test-file-stub"
-                    width="24px"
                   />
                 </div>
               </div>
@@ -1515,6 +1344,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1528,26 +1358,16 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <span>
                     %
                   </span>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 20
-                </div>
-                <div>
-                  percent
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -1590,6 +1410,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1601,26 +1422,16 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 90th
-                </div>
-                <div>
-                  percentile
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -1639,6 +1450,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1661,10 +1473,8 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                 </div>
                 <div>
                   <img
-                    alt="up arrow icon"
-                    height="24px"
+                    alt="image alt text"
                     src="test-file-stub"
-                    width="24px"
                   />
                 </div>
               </div>
@@ -1681,6 +1491,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1694,26 +1505,16 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <span>
                     %
                   </span>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 20
-                </div>
-                <div>
-                  percent
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -1756,6 +1557,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1767,26 +1569,16 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 90th
-                </div>
-                <div>
-                  percentile
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -1794,6 +1586,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1808,26 +1601,16 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 90th
-                </div>
-                <div>
-                  percentile
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -1835,6 +1618,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1848,26 +1632,16 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 90th
-                </div>
-                <div>
-                  percentile
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -1875,6 +1649,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1886,26 +1661,16 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 90th
-                </div>
-                <div>
-                  percentile
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -1924,6 +1689,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1946,10 +1712,8 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                 </div>
                 <div>
                   <img
-                    alt="up arrow icon"
-                    height="24px"
+                    alt="image alt text"
                     src="test-file-stub"
-                    width="24px"
                   />
                 </div>
               </div>
@@ -1966,6 +1730,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1979,26 +1744,16 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <span>
                     %
                   </span>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 20
-                </div>
-                <div>
-                  percent
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -2041,6 +1796,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -2063,10 +1819,8 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                 </div>
                 <div>
                   <img
-                    alt="up arrow icon"
-                    height="24px"
+                    alt="image alt text"
                     src="test-file-stub"
-                    width="24px"
                   />
                 </div>
               </div>
@@ -2083,6 +1837,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -2094,26 +1849,16 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 90th
-                </div>
-                <div>
-                  percentile
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -2121,6 +1866,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -2141,10 +1887,8 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                 </div>
                 <div>
                   <img
-                    alt="up arrow icon"
-                    height="24px"
+                    alt="image alt text"
                     src="test-file-stub"
-                    width="24px"
                   />
                 </div>
               </div>
@@ -2161,6 +1905,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -2184,10 +1929,8 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                 </div>
                 <div>
                   <img
-                    alt="up arrow icon"
-                    height="24px"
+                    alt="image alt text"
                     src="test-file-stub"
-                    width="24px"
                   />
                 </div>
               </div>
@@ -2215,6 +1958,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -2235,10 +1979,8 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                 </div>
                 <div>
                   <img
-                    alt="up arrow icon"
-                    height="24px"
+                    alt="image alt text"
                     src="test-file-stub"
-                    width="24px"
                   />
                 </div>
               </div>
@@ -2255,6 +1997,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -2268,26 +2011,16 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <span>
                     %
                   </span>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 20
-                </div>
-                <div>
-                  percent
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -2414,6 +2147,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -2436,10 +2170,8 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
                 </div>
                 <div>
                   <img
-                    alt="up arrow icon"
-                    height="24px"
+                    alt="image alt text"
                     src="test-file-stub"
-                    width="24px"
                   />
                 </div>
               </div>
@@ -2456,6 +2188,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -2467,26 +2200,16 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 90th
-                </div>
-                <div>
-                  percentile
+                  data is N/A
                 </div>
               </div>
             </div>
@@ -2494,6 +2217,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -2514,10 +2238,8 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
                 </div>
                 <div>
                   <img
-                    alt="up arrow icon"
-                    height="24px"
+                    alt="image alt text"
                     src="test-file-stub"
-                    width="24px"
                   />
                 </div>
               </div>
@@ -2534,6 +2256,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -2557,10 +2280,8 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
                 </div>
                 <div>
                   <img
-                    alt="up arrow icon"
-                    height="24px"
+                    alt="image alt text"
                     src="test-file-stub"
-                    width="24px"
                   />
                 </div>
               </div>
@@ -2588,6 +2309,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -2608,10 +2330,8 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
                 </div>
                 <div>
                   <img
-                    alt="up arrow icon"
-                    height="24px"
+                    alt="image alt text"
                     src="test-file-stub"
-                    width="24px"
                   />
                 </div>
               </div>
@@ -2628,6 +2348,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -2641,26 +2362,16 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
             <div>
               <div>
                 <div>
-                  N/A
+                  --
                   <span>
                     %
                   </span>
                 </div>
-                <div>
-                  <img
-                    alt="up arrow icon"
-                    height="24px"
-                    src="test-file-stub"
-                    width="24px"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
-                  below 20
-                </div>
-                <div>
-                  percent
+                  data is N/A
                 </div>
               </div>
             </div>
