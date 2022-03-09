@@ -309,9 +309,7 @@ class GeoScoreETL(ExtractTransformLoad):
             arcgis_files = []
             for file in os.listdir(self.SCORE_SHP_PATH):
                 # don't remove __init__ files as they conserve dir structure
-                if file == "__init__.py":
-                    continue
-                else:
+                if file != "__init__.py":
                     arcgis_files.append(self.SCORE_SHP_PATH / file)
             zip_files(arcgis_zip_file_path, arcgis_files)
             logger.info("Completed zipping shapefiles")
