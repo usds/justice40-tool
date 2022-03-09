@@ -45,7 +45,7 @@ DATA_SCORE_TILES_DIR = DATA_SCORE_DIR / "tiles"
 
 # Downloadable paths
 current_dt = datetime.datetime.now()
-timestamp_str = current_dt.strftime("%Y-%m-%d-%H%M")
+timestamp_str = current_dt.strftime("%Y-%m-%d-%H%MGMT")
 SCORE_DOWNLOADABLE_DIR = DATA_SCORE_DIR / "downloadable"
 SCORE_DOWNLOADABLE_PDF_FILE_NAME = "Draft_Communities_List.pdf"
 SCORE_DOWNLOADABLE_PDF_FILE_PATH = FILES_PATH / SCORE_DOWNLOADABLE_PDF_FILE_NAME
