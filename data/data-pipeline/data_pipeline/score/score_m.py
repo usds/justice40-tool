@@ -470,11 +470,7 @@ class ScoreM(Score):
         self.df[
             field_names.WASTEWATER_DISCHARGE_LOW_INCOME_LOW_HIGHER_ED_FIELD
         ] = (
-<<<<<<< HEAD
-            self.df[field_names.WATER_THRESHOLD_EXCEEDED]
-=======
             self.df[field_names.WASTEWATER_PCTILE_THRESHOLD]
->>>>>>> c4d8fd44 (updating with front end pass through  booleans)
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
