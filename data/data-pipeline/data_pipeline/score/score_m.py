@@ -709,7 +709,7 @@ class ScoreM(Score):
         # TODO: Remove this, it's for checking only
         assert (
             island_areas_poverty_criteria_field_name
-            == field_names.ISLAND_UNEMPLOYMENT_PCTILE_THRESHOLD
+            == field_names.ISLAND_POVERTY_PCTILE_THRESHOLD
         ), "Error combining island columns"
 
         # Also check whether low area median income is 90th percentile or higher
