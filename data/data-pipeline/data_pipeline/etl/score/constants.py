@@ -1,5 +1,6 @@
 from pathlib import Path
 import datetime
+
 from data_pipeline.config import settings
 
 from data_pipeline.score import field_names
@@ -217,7 +218,6 @@ TILES_SCORE_COLUMNS = {
     field_names.ISLAND_AREAS_UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD: "IAULHSE",
     field_names.ISLAND_AREAS_POVERTY_LOW_HS_EDUCATION_FIELD: "IAPLHSE",
     field_names.ISLAND_AREAS_LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD: "IALMILHSE",
-    field_names.ISLAND_AREAS_LOW_HS_EDUCATION_FIELD: "IALHE",
     # Percentiles for Island areas' workforce columns
     field_names.LOW_CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009
     + field_names.PERCENTILE_FIELD_SUFFIX: "IALMILHSE_PFS",
@@ -228,6 +228,7 @@ TILES_SCORE_COLUMNS = {
     + field_names.ISLAND_AREAS_PERCENTILE_ADJUSTMENT_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX: "IAULHSE_PFS",
     field_names.LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD: "LHE",
+    field_names.ISLAND_AREAS_LOW_HS_EDUCATION_FIELD: "IALHE",
     # Percentage of HS Degree completion for Islands
     field_names.CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009: "IAHSEF",
     field_names.COLLEGE_ATTENDANCE_FIELD: "CA",
