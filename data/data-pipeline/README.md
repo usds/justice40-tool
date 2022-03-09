@@ -81,6 +81,11 @@ The CSV with the combined data from all of these sources [can be accessed here](
 
 Once we have all the data from the previous stages, we convert it to tiles to make it usable on a map. We render the map on the client side which can be seen using `docker-compose up`.
 
+#### 5. Shapefiles
+
+If you want to use the shapefiles in mapping applications, you can access them here [shp](https://justice40-data.s3.amazonaws.com/data-pipeline/data/score/shapefile/usa.shp) and [shx](https://justice40-data.s3.amazonaws.com/data-pipeline/data/score/shapefile/usa.shx).
+
+
 ### Score generation and comparison workflow
 
 The descriptions below provide a more detailed outline of what happens at each step of ETL and score calculation workflow.
