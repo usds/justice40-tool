@@ -249,7 +249,7 @@ class ScoreM(Score):
         )
 
         self.df[field_names.PM25_EXPOSURE_LOW_INCOME_LOW_HIGHER_ED_FIELD] = (
-            self.df[field_names.PM25_THRESHOLD_EXCEEDS_PCTILE_THRESHOLD]
+            self.df[field_names.PM25_EXCEEDS_PCTILE_THRESHOLD]
             & self.df[field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES]
         )
 
