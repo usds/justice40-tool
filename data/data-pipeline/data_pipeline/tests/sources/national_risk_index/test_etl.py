@@ -1,7 +1,6 @@
 # pylint: disable=protected-access
 from unittest import mock
 import pathlib
-import pandas as pd
 import pytest
 import requests
 from data_pipeline.etl.base import ValidGeoLevel
@@ -26,9 +25,10 @@ class TestNationalRiskIndexETL(TestETL):
 
     _ETL_CLASS = NationalRiskIndexETL
 
-    _SAMPLE_DATA_PATH = pathlib.Path(__file__).parents[0] / "data" / "tmp"
+    _SAMPLE_DATA_PATH = pathlib.Path(__file__).parents[0] / "data"
     _SAMPLE_DATA_FILE_NAME = "NRI_Table_CensusTracts.csv"
     _SAMPLE_DATA_ZIP_FILE_NAME = "NRI_Table_CensusTracts.zip"
+    _EXTRACT_TMP_FOLDER_NAME = "NationalRiskIndexETL"
 
     def setup_method(self, _method, filename=__file__):
         """Invoke `setup_method` from Parent, but using the current file name.
@@ -113,39 +113,3 @@ class TestNationalRiskIndexETL(TestETL):
             data_path / "dataset" / "national_risk_index_2020" / "usa.csv"
         )
         assert output_file_path == expected_output_file_path
-
-    def test_extract_path(self, mock_etl, mock_paths):
-        """Ensure the extract is happening where appropriate."""
-        tmp_path = mock_paths[1]
-
-        _ = self._setup_etl_instance_and_run_extract(
-            mock_etl=mock_etl,
-            mock_paths=mock_paths,
-        )
-
-        # Assert that the extracted file exists
-        extracted_file_path = (
-            tmp_path / "NationalRiskIndexETL" / "NRI_Table_CensusTracts.csv"
-        )
-
-        assert extracted_file_path.is_file()
-
-    def test_extract(self, snapshot, mock_etl, mock_paths):
-        """Tests the extract method."""
-        tmp_path = mock_paths[1]
-        etl = self._setup_etl_instance_and_run_extract(
-            mock_etl=mock_etl,
-            mock_paths=mock_paths,
-        )
-        extracted_file_path = (
-            tmp_path / "NationalRiskIndexETL" / "NRI_Table_CensusTracts.csv"
-        )
-        tmp_df = pd.read_csv(
-            extracted_file_path,
-            dtype={etl.GEOID_TRACT_FIELD_NAME: str},
-        )
-        snapshot.snapshot_dir = self._DATA_DIRECTORY_FOR_TEST
-        snapshot.assert_match(
-            tmp_df.to_csv(index=False, float_format="%.5f"),
-            self._INPUT_CSV_FILE_NAME,
-        )
