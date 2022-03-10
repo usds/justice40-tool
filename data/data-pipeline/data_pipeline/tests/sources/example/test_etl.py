@@ -262,7 +262,7 @@ class TestETL:
         # Check the snapshots
         snapshot.snapshot_dir = self._DATA_DIRECTORY_FOR_TEST
         snapshot.assert_match(
-            actual_output.to_csv(index=False),
+            actual_output.to_csv(index=False, float_format="%.5f"),
             self._OUTPUT_CSV_FILE_NAME,
         )
 
@@ -275,13 +275,15 @@ class TestETL:
             raise NotImplementedError(
                 "Extract test not defined for this class."
             )
+        etl = self._get_instance_of_etl_class()
 
         tmp_df = pd.read_csv(
-            self._SAMPLE_DATA_PATH / self._SAMPLE_DATA_FILE_NAME
+            self._SAMPLE_DATA_PATH / self._SAMPLE_DATA_FILE_NAME,
+            dtype={etl.GEOID_TRACT_FIELD_NAME: str},
         )
         snapshot.snapshot_dir = self._DATA_DIRECTORY_FOR_TEST
         snapshot.assert_match(
-            tmp_df.to_csv(),
+            tmp_df.to_csv(index=False, float_format="%.5f"),
             self._INPUT_CSV_FILE_NAME,
         )
 
@@ -299,7 +301,8 @@ class TestETL:
             dtype={etl.GEOID_TRACT_FIELD_NAME: str},
         )
         snapshot.assert_match(
-            input_data.to_csv(index=False), self._SAMPLE_DATA_FILE_NAME
+            input_data.to_csv(index=False, float_format="%.5f"),
+            self._SAMPLE_DATA_FILE_NAME,
         )
 
     def test_transform_base(self, snapshot, mock_etl, mock_paths):
@@ -310,7 +313,7 @@ class TestETL:
 
         snapshot.snapshot_dir = self._DATA_DIRECTORY_FOR_TEST
         snapshot.assert_match(
-            etl.output_df.to_csv(index=False),
+            etl.output_df.to_csv(index=False, float_format="%.5f"),
             self._TRANSFORM_CSV_FILE_NAME,
         )
 

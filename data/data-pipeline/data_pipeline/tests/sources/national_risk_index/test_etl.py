@@ -139,16 +139,19 @@ class TestNationalRiskIndexETL(TestETL):
     def test_extract(self, snapshot, mock_etl, mock_paths):
         """Tests the extract method."""
         tmp_path = mock_paths[1]
-        _ = self._setup_etl_instance_and_run_extract(
+        etl = self._setup_etl_instance_and_run_extract(
             mock_etl=mock_etl,
             mock_paths=mock_paths,
         )
         extracted_file_path = (
             tmp_path / "NationalRiskIndexETL" / "NRI_Table_CensusTracts.csv"
         )
-        tmp_df = pd.read_csv(extracted_file_path)
+        tmp_df = pd.read_csv(
+            extracted_file_path,
+            dtype={etl.GEOID_TRACT_FIELD_NAME: str},
+        )
         snapshot.snapshot_dir = self._DATA_DIRECTORY_FOR_TEST
         snapshot.assert_match(
-            tmp_df.to_csv(),
+            tmp_df.to_csv(index=False, float_format="%.5f"),
             self._INPUT_CSV_FILE_NAME,
         )
