@@ -1,10 +1,9 @@
 # pylint: disable=protected-access
-from cgitb import small
 from unittest import mock
+import pathlib
 import pandas as pd
 import pytest
 import requests
-import pathlib
 from data_pipeline.etl.base import ValidGeoLevel
 
 from data_pipeline.etl.sources.national_risk_index.etl import (

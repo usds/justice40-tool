@@ -19,6 +19,11 @@ class TestETL:
 
     Note: every method that does *not* need to be reimplemented by child classes has
     the test name pattern of `test_*_base`. All other tests need to be reimplemented.
+
+    This uses pytest-snapshot.
+    To update individual snapshots: $ poetry run pytest
+            data_pipeline/tests/sources/national_risk_index/test_etl.py::TestClassNameETL::<testname>
+            --snapshot-update
     """
 
     # In every child test class, change this to the class of the ETL being tested.
