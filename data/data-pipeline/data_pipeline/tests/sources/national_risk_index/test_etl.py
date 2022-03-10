@@ -121,7 +121,6 @@ class TestNationalRiskIndexETL(TestETL):
 
     def test_extract_path(self, mock_etl, mock_paths):
         """Ensure the extract is happening where appropriate."""
-        # this is returning true for no reason?
         tmp_path = mock_paths[1]
 
         _ = self._setup_etl_instance_and_run_extract(
