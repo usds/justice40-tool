@@ -36,9 +36,7 @@ class TestETL:
 
     # This *does* need to be updated in the child class. It specifies where the "sample data" is
     # so that we do not have to manually copy the "sample data" when we run the tests.
-    _SAMPLE_DATA_PATH = (
-        pathlib.Path(__file__).parents[3] / "data" / "tmp" / "ExampleETL"
-    )
+    _SAMPLE_DATA_PATH = pathlib.Path(__file__).parents[0] / "data" / "tmp"
     _SAMPLE_DATA_FILE_NAME = "input.csv"
     _SAMPLE_DATA_ZIP_FILE_NAME = "input.zip"
 
@@ -297,7 +295,7 @@ class TestETL:
 
         # this will infer compression
         input_data = pd.read_csv(
-            self._DATA_DIRECTORY_FOR_TEST / self._SAMPLE_DATA_ZIP_FILE_NAME,
+            self._SAMPLE_DATA_PATH / self._SAMPLE_DATA_ZIP_FILE_NAME,
             dtype={etl.GEOID_TRACT_FIELD_NAME: str},
         )
         snapshot.assert_match(

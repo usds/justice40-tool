@@ -26,12 +26,7 @@ class TestNationalRiskIndexETL(TestETL):
 
     _ETL_CLASS = NationalRiskIndexETL
 
-    _SAMPLE_DATA_PATH = (
-        pathlib.Path(__file__).parents[3]
-        / "data"
-        / "tmp"
-        / "NationalRiskIndexETL"
-    )
+    _SAMPLE_DATA_PATH = pathlib.Path(__file__).parents[0] / "data" / "tmp"
     _SAMPLE_DATA_FILE_NAME = "NRI_Table_CensusTracts.csv"
     _SAMPLE_DATA_ZIP_FILE_NAME = "NRI_Table_CensusTracts.zip"
 
