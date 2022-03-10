@@ -239,31 +239,33 @@ def data_full_run(check: bool, data_source: str):
     """
     data_path = settings.APP_ROOT / "data"
 
-    if check and not check_first_run():
-        # check if the data full run has been run before
-        logger.info("*** The data full run was already executed")
-        sys.exit()
+    if check:
+        if not check_first_run():
+            # check if the data full run has been run before
+            logger.info("*** The data full run was already executed")
+            sys.exit()
 
-    # census directories
-    logger.info("*** Initializing all data folders")
-    census_reset(data_path)
-    data_folder_cleanup()
-    score_folder_cleanup()
-    temp_folder_cleanup()
+    else:
+        # census directories
+        logger.info("*** Initializing all data folders")
+        census_reset(data_path)
+        data_folder_cleanup()
+        score_folder_cleanup()
+        temp_folder_cleanup()
 
-    if data_source == "local":
-        logger.info("*** Downloading census data")
-        etl_runner("census")
+        if data_source == "local":
+            logger.info("*** Downloading census data")
+            etl_runner("census")
 
-    logger.info("*** Running all ETLs")
-    etl_runner()
+        logger.info("*** Running all ETLs")
+        etl_runner()
 
-    logger.info("*** Generating Score")
-    score_generate()
+        logger.info("*** Generating Score")
+        score_generate()
 
-    logger.info("*** Running Post Score scripts")
-    downloadable_cleanup()
-    score_post(data_source)
+        logger.info("*** Running Post Score scripts")
+        downloadable_cleanup()
+        score_post(data_source)
 
     logger.info("*** Combining Score with Census Geojson")
     score_geo(data_source)

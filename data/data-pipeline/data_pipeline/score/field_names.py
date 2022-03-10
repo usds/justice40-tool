@@ -59,6 +59,38 @@ M_NON_WORKFORCE = "Any Non-Workforce Factor (Definition M)"
 PERCENTILE = 90
 MEDIAN_HOUSE_VALUE_PERCENTILE = 90
 
+# Boolean fields
+CLIMATE_THRESHOLD_EXCEEDED = "At least one climate threshold exceeded"
+ENERGY_THRESHOLD_EXCEEDED = "At least one energy threshold exceeded"
+TRAFFIC_THRESHOLD_EXCEEDED = "At least one traffic threshold exceeded"
+HOUSING_THREHSOLD_EXCEEDED = "At least one housing threshold exceeded"
+POLLUTION_THRESHOLD_EXCEEDED = "At least one pollution threshold exceeded"
+WATER_THRESHOLD_EXCEEDED = "At least one water threshold exceeded"
+HEALTH_THRESHOLD_EXCEEDED = "At least one health threshold exceeded"
+WORKFORCE_THRESHOLD_EXCEEDED = "At least one workforce threshold exceeded"
+WORKFORCE_SOCIO_INDICATORS_EXCEEDED = (
+    "Both workforce socioeconomic indicators exceeded"
+)
+
+# For now, these are not used. Will delete after following up with Vim.
+POLLUTION_SOCIO_INDICATORS_EXCEEDED = (
+    "Both pollution socioeconomic indicators exceeded"
+)
+CLIMATE_SOCIO_INDICATORS_EXCEEDED = (
+    "Both climate socioeconomic indicators exceeded"
+)
+ENERGY_SOCIO_INDICATORS_EXCEEDED = (
+    "Both energy socioeconomic indicators exceeded"
+)
+HOUSING_SOCIO_INDICATORS_EXCEEDED = (
+    "Both housing socioeconomic indicators exceeded"
+)
+WATER_SOCIO_INDICATORS_EXCEEDED = "Both water socioeconomic indicators exceeded"
+
+HEALTH_SOCIO_INDICATORS_EXCEEDED = (
+    "Both health socioeconomic indicators exceeded"
+)
+
 # Poverty / Income
 POVERTY_FIELD = "Poverty (Less than 200% of federal poverty line)"
 POVERTY_LESS_THAN_200_FPL_FIELD = (
@@ -112,6 +144,8 @@ TSDF_FIELD = "Proximity to hazardous waste sites"
 NPL_FIELD = "Proximity to NPL sites"
 AIR_TOXICS_CANCER_RISK_FIELD = "Air toxics cancer risk"
 RESPIRATORY_HAZARD_FIELD = "Respiratory hazard index"
+
+LOW_INCOME_THRESHOLD = "Exceeds FPL200 threshold"
 
 # Housing
 HOUSING_BURDEN_FIELD = "Housing burden (percent)"

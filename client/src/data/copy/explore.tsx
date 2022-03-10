@@ -590,7 +590,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   HIGH_SKL: {
     id: 'areaDetail.indicator.description.high.school',
     defaultMessage: `
-      Poportion of people ages 25 years or older whose education level is less than a high school diploma 
+      Proportion of people ages 25 years or older whose education level is less than a high school diploma 
     `,
     description: 'Percent of people ages 25 years or older whose education level is less than a high school diploma',
   },

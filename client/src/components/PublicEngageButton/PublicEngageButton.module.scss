@@ -1,0 +1,22 @@
+@use '../../styles/design-system.scss' as *;
+
+.tagContainer {
+    @include u-margin-bottom(1);
+    @include u-margin-right(1);
+    .tag {
+        @include u-bg("yellow-20v");
+        color: black;
+        border-radius: 5px;
+        @include u-text('bold');
+    }
+}
+
+.container {
+    @include u-padding-top(2.5);
+
+    .link, .link:visited {
+        color:white;
+        text-decoration: none;
+    }
+
+}

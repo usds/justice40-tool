@@ -6,6 +6,7 @@ describe('Do all the English pages have all links with a defined href attribute?
     'cejst',
     'methodology',
     'contact',
+    'public-engagement',
   ];
 
   pages.forEach((page) => {

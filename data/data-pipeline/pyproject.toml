@@ -15,7 +15,7 @@ jupyter-contrib-nbextensions = "^0.5.1"
 matplotlib = "^3.4.2"
 numpy = "^1.22.1"
 pandas = "^1.2.5"
-pillow = "9.0.0"
+pillow = "9.0.1"
 python = "^3.8"
 pypandoc = "^1.6.3"
 requests = "^2.25.1"
@@ -25,6 +25,7 @@ us = "^2.0.2"
 xlsxwriter = "^2.0.0"
 ipdb = "^0.13.9"
 pylint = "^2.11.1"
+PyYAML = "^6.0"
 
 [tool.poetry.dev-dependencies]
 black = {version = "^21.6b0", allow-prereleases = true}
@@ -40,6 +41,7 @@ pytest-mock = "^3.6.1"
 tox-poetry = "^0.4.1"
 pandas-vet = "^0.2.2"
 pytest-snapshot = "^0.8.1"
+nb-black = "^1.0.7"
 
 [build-system]
 build-backend = "poetry.core.masonry.api"

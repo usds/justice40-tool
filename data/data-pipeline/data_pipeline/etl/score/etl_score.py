@@ -298,33 +298,20 @@ class ScoreETL(ExtractTransformLoad):
             ] = df[input_column_name].rank(pct=True, ascending=ascending)
 
         else:
-            # For agricultural loss, we are using whether there is value at all to determine percentile
-            # This is not the most thoughtfully written code, but it works.
-
-            # Take only rows with agrivalue
-            tmp_df = df[df[field_names.AGRICULTURAL_VALUE_BOOL_FIELD] == 1][
-                [input_column_name, field_names.GEOID_TRACT_FIELD]
-            ].copy()
-
-            # Construct a percentile only among those tracts
-            tmp_df["temporary_ranking"] = tmp_df[input_column_name].transform(
-                lambda x: x.rank(pct=True, ascending=True)
-            )
-
-            # # Create a map for just those tracts and map it onto the df
-            temporary_ranking = tmp_df.set_index(field_names.GEOID_TRACT_FIELD)[
-                "temporary_ranking"
-            ].to_dict()
-
+            # For agricultural loss, we are using whether there is value at all to determine percentile and then
+            # filling places where the value is False with 0
             df[
                 f"{output_column_name_root}"
                 f"{field_names.PERCENTILE_FIELD_SUFFIX}"
-            ] = np.where(
-                df[field_names.AGRICULTURAL_VALUE_BOOL_FIELD].isna(),
-                np.nan,
-                df[field_names.GEOID_TRACT_FIELD]
-                .map(temporary_ranking)
-                .fillna(0),
+            ] = (
+                df.where(
+                    df[field_names.AGRICULTURAL_VALUE_BOOL_FIELD].astype(float)
+                    == 1.0
+                )[input_column_name]
+                .rank(ascending=ascending, pct=True)
+                .fillna(
+                    df[field_names.AGRICULTURAL_VALUE_BOOL_FIELD].astype(float)
+                )
             )
 
         # Create the urban/rural percentiles.
