@@ -175,14 +175,14 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
                 </div>
                 <div>
                   <img
-                    alt="an icon for the down arrow"
+                    alt="an icon for the up arrow"
                     src="test-file-stub"
                   />
                 </div>
               </div>
               <div>
                 <div>
-                  below 90th
+                  above 90th
                 </div>
                 <div>
                   percentile

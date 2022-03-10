@@ -12,6 +12,10 @@ export type J40Properties = { [key: string]: any };
 
 
 // ****** SIDE PANEL BACKEND SIGNALS ***********
+
+// Set the threshold percentile used by most indicators in the side panel
+export const DEFAULT_THRESHOLD_PERCENTILE = 90;
+
 // General Census Track Info
 export const GEOID_PROPERTY = 'GEOID10';
 export const COUNTY_NAME = 'CF';

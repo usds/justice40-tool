@@ -1,8 +1,10 @@
 import * as React from 'react';
-import {render} from '@testing-library/react';
+import {render, screen} from '@testing-library/react';
 import {LocalizedComponent} from '../../test/testHelpers';
 import Indicator, {IndicatorValueIcon, IndicatorValueSubText} from './Indicator';
 import {indicatorInfo} from '../AreaDetail/AreaDetail';
+
+import * as EXPLORE_COPY from '../../data/copy/explore';
 
 const highSchool:indicatorInfo = {
   label: 'some label',
@@ -26,7 +28,7 @@ describe('rendering of the Indicator', () => {
 });
 
 describe('test rendering of Indicator value icons', () => {
-  it('renders the up arrow', () => {
+  it('renders the up arrow when value is above threshold', () => {
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValueIcon
@@ -36,8 +38,9 @@ describe('test rendering of Indicator value icons', () => {
         </LocalizedComponent>,
     );
     expect(asFragment()).toMatchSnapshot();
+    screen.getByAltText(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.ARROW_UP.defaultMessage);
   });
-  it('renders the down arrow', () => {
+  it('renders the down arrow when the value is above the threshold', () => {
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValueIcon
@@ -47,9 +50,23 @@ describe('test rendering of Indicator value icons', () => {
         </LocalizedComponent>,
     );
     expect(asFragment()).toMatchSnapshot();
+    screen.getByAltText(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.ARROW_DOWN.defaultMessage);
   });
 
-  it('renders the unavailable icon', () => {
+  it('renders the down arrow when the value is zero', () => {
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <IndicatorValueIcon
+            value={0}
+            isAboveThresh={false}
+          />
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+    screen.getByAltText(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.ARROW_DOWN.defaultMessage);
+  });
+
+  it('renders the unavailable icon when the value is null', () => {
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValueIcon
@@ -59,6 +76,7 @@ describe('test rendering of Indicator value icons', () => {
         </LocalizedComponent>,
     );
     expect(asFragment()).toMatchSnapshot();
+    screen.getByAltText(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.UNAVAILABLE.defaultMessage);
   });
 });
 
@@ -67,7 +85,7 @@ describe('test rendering of Indicator value sub-text', () => {
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValueSubText
-            isAvailable={true}
+            value={95}
             isAboveThresh={true}
             threshold={90}
             isPercent={false}
@@ -75,12 +93,13 @@ describe('test rendering of Indicator value sub-text', () => {
         </LocalizedComponent>,
     );
     expect(asFragment()).toMatchSnapshot();
+    console.log(asFragment());
   });
   it('renders the "below 90 percentile"', () => {
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValueSubText
-            isAvailable={true}
+            value={89}
             isAboveThresh={false}
             threshold={90}
             isPercent={false}
@@ -93,7 +112,7 @@ describe('test rendering of Indicator value sub-text', () => {
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValueSubText
-            isAvailable={false}
+            value={null}
             isAboveThresh={false}
             threshold={90}
             isPercent={false}

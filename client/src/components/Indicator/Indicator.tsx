@@ -4,6 +4,7 @@ import {useIntl} from 'gatsby-plugin-intl';
 import {indicatorInfo} from '../AreaDetail/AreaDetail';
 
 import * as styles from './Indicator.module.scss';
+import * as constants from '../../data/constants';
 import * as EXPLORE_COPY from '../../data/copy/explore';
 
 // @ts-ignore
@@ -23,7 +24,7 @@ interface IIndicatorValueIcon {
 };
 
 interface IIndicatorValueSubText {
-  isAvailable: boolean,
+  value: number | null,
   isAboveThresh: boolean,
   threshold: number,
   isPercent: boolean | undefined,
@@ -40,7 +41,12 @@ interface IIndicatorValueSubText {
 export const IndicatorValueIcon = ({value, isAboveThresh}: IIndicatorValueIcon) => {
   const intl = useIntl();
 
-  if (value) {
+  if (value == null) {
+    return <img className={styles.unavailable}
+      src={unAvailable}
+      alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.UNAVAILABLE)}
+    />;
+  } else {
     return isAboveThresh ?
       <img
         src={upArrow}
@@ -50,11 +56,6 @@ export const IndicatorValueIcon = ({value, isAboveThresh}: IIndicatorValueIcon) 
         src={downArrow}
         alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.ARROW_DOWN)}
       />;
-  } else {
-    return <img className={styles.unavailable}
-      src={unAvailable}
-      alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.UNAVAILABLE)}
-    />;
   }
 };
 
@@ -64,10 +65,15 @@ export const IndicatorValueIcon = ({value, isAboveThresh}: IIndicatorValueIcon) 
    *   "below 20 percent"
    *   "data is not available"
    *
+   *  Todo: refactor into single component, add to i18n and add to tests
+   *
    * @return {JSX.Element}
    */
-export const IndicatorValueSubText = ({isAvailable, isAboveThresh, threshold, isPercent}:IIndicatorValueSubText) => {
-  return isAvailable ?
+export const IndicatorValueSubText = ({value, isAboveThresh, threshold, isPercent}:IIndicatorValueSubText) => {
+  return value == null ?
+    <div>
+      {EXPLORE_COPY.SIDE_PANEL_VALUES.UNAVAILBLE_MSG}
+    </div> :
     <React.Fragment>
       <div>
         {
@@ -86,10 +92,7 @@ export const IndicatorValueSubText = ({isAvailable, isAboveThresh, threshold, is
           EXPLORE_COPY.SIDE_PANEL_VALUES.PERCENTILE
         }
       </div>
-    </React.Fragment> :
-    <div>
-      {EXPLORE_COPY.SIDE_PANEL_VALUES.UNAVAILBLE_MSG}
-    </div>;
+    </React.Fragment>;
 };
 
 
@@ -122,18 +125,12 @@ const Indicator = ({indicator}:IIndicator) => {
   // Convert the decimal value to a stat to display
   const displayStat = indicator.value !== null ? Math.round(indicator.value * 100) : null;
 
-  // Some indicators have a threshold that is not 90
-  const threshold = indicator.threshold ? indicator.threshold : 90;
+  // If the threshold exists, set it, otherwise set it to the default value
+  const threshold = indicator.threshold ? indicator.threshold : constants.DEFAULT_THRESHOLD_PERCENTILE;
 
-  /**
-   * An indicator statistic (percent or percentile) object with the value, if it is available and if
-   * it's above or below the threshold
-   */
-  const indicatorStatistic = {
-    value: displayStat,
-    isAvailable: displayStat ? true : false,
-    isAboveThresh: displayStat && displayStat > threshold ? true : false,
-  };
+  // A boolean to represent if the indicator is above or below the threshold
+  const isAboveThresh = displayStat !== null && displayStat >= threshold ? true : false;
+
 
   return (
     <li
@@ -156,11 +153,11 @@ const Indicator = ({indicator}:IIndicator) => {
 
             {/* Indicator value */}
             <div className={styles.indicatorValue}>
-              {indicatorStatistic.value}
+              {displayStat}
               {indicator.isPercent ?
                 <span>{`%`}</span> :
                 <sup className={styles.indicatorSuperscript}>
-                  <span>{getSuperscriptOrdinal(indicatorStatistic.value)}</span>
+                  <span>{getSuperscriptOrdinal(displayStat)}</span>
                 </sup>
               }
             </div>
@@ -168,8 +165,8 @@ const Indicator = ({indicator}:IIndicator) => {
             {/* Indicator icon - up arrow, down arrow, or unavailable */}
             <div className={styles.indicatorArrow}>
               <IndicatorValueIcon
-                value={indicatorStatistic.value}
-                isAboveThresh={indicatorStatistic.isAboveThresh}
+                value={displayStat}
+                isAboveThresh={isAboveThresh}
               />
             </div>
           </div>
@@ -177,8 +174,8 @@ const Indicator = ({indicator}:IIndicator) => {
           {/* Indicator sub-text */}
           <div className={styles.indicatorValueSubText}>
             <IndicatorValueSubText
-              isAvailable={indicatorStatistic.isAvailable}
-              isAboveThresh={indicatorStatistic.isAboveThresh}
+              value={displayStat}
+              isAboveThresh={isAboveThresh}
               threshold={threshold}
               isPercent={indicator.isPercent}
             />
