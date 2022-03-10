@@ -276,11 +276,36 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       class="grid-container-desktop-lg"
       data-testid="gridContainer"
     >
-      <h1>
-        Methodology
-      </h1>
+      <section
+        class="page-heading"
+      >
+        <h1>
+          Methodology
+        </h1>
+        <div>
+          <div>
+            <span
+              class="usa-tag"
+              data-testid="tag"
+            >
+              NEW
+            </span>
+          </div>
+          <a
+            href="/public-engagement"
+          >
+            <button
+              class="usa-button usa-button--icon"
+              data-testid="button"
+              type="button"
+            >
+              Public Engagement
+            </button>
+          </a>
+        </div>
+      </section>
       <div
-        class="grid-row grid-gap j40-mb-5"
+        class="grid-row grid-gap j40-mb5-mt3"
         data-testid="grid"
       >
         <div
@@ -428,7 +453,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             IF
           </strong>
-           at or above 90th percentile for 
+           at or above the 90th percentile for 
           <a
             href="#exp-agr-loss-rate"
           >
@@ -455,7 +480,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is above 65th percentile for 
+           is above the 65th percentile for 
           <a
             href="#low-income"
           >
@@ -491,7 +516,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             IF
           </strong>
-           at or above 90th percentile for 
+           at or above the 90th percentile for 
           <a
             href="#energy-burden"
           >
@@ -512,7 +537,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is above 65th percentile for 
+           is above the 65th percentile for 
           <a
             href="#low-income"
           >
@@ -548,7 +573,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             IF
           </strong>
-           at or above 90th percentile for 
+           at or above the 90th percentile for 
           <a
             href="#diesel-pm"
           >
@@ -569,7 +594,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is above 65th percentile for 
+           is above the 65th percentile for 
           <a
             href="#low-income"
           >
@@ -605,7 +630,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             IF
           </strong>
-           at or above 90th percentile for 
+           at or above the 90th percentile for 
           <a
             href="#lead-paint"
           >
@@ -618,7 +643,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             median home value
           </a>
            is at or less than
-        90th percentile OR at or above the 90th percentile for the 
+        the 90th percentile OR at or above the 90th percentile for the 
           <a
             href="#house-burden"
           >
@@ -633,7 +658,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is above 65th percentile for 
+           is above the 65th percentile for 
           <a
             href="#low-income"
           >
@@ -669,7 +694,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             IF
           </strong>
-           at or above 90th percentile for 
+           at or above the 90th percentile for 
           <a
             href="#prox-haz"
           >
@@ -696,7 +721,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is above 65th percentile for 
+           is above the 65th percentile for 
           <a
             href="#low-income"
           >
@@ -732,7 +757,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             IF
           </strong>
-           at or above 90th percentile for 
+           at or above the 90th percentile for 
           <a
             href="#waste-water"
           >
@@ -747,7 +772,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is above 65th percentile for 
+           is above the 65th percentile for 
           <a
             href="#low-income"
           >
@@ -783,7 +808,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             IF
           </strong>
-           at or above 90th percentile for 
+           at or above the 90th percentile for 
           <a
             href="#asthma"
           >
@@ -816,7 +841,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is above 65th percentile for 
+           is above the 65th percentile for 
           <a
             href="#low-income"
           >
@@ -1410,7 +1435,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </h3>
                 <div>
                   
-        The percent of households in a census tract that are both earning less than 80% of HUD Area Median
+        Percent of households in a census tract that are both earning less than 80% of HUD Area Median
         Family Income by county and are spending more than 30% of their income on housing costs.
       
                 </div>
@@ -1459,7 +1484,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 <div>
                   
         Percent of housing units built pre-1960, used as an indicator of potential lead paint exposure in
-        tracts with median home values less than 90th percentile.
+        tracts with median home values less than the 90th percentile.
       
                 </div>
                 <ul>
@@ -2042,7 +2067,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </h3>
                 <div>
                   
-        The percent households, which are households, where no one over the age fourteen speaks English well.
+        Percent of households, which are households, where no one over the age fourteen speaks English well.
       
                 </div>
                 <ul>
@@ -2157,7 +2182,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </h3>
                 <div>
                   
-        Proportion of a tract's population in households where the household income is at or below 100% of
+        Percent of a tract's population in households where the household income is at or below 100% of
         the Federal poverty level.
       
                 </div>
@@ -2226,7 +2251,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </h3>
                 <div>
                   
-        Proportion of people ages 25 years or older in a census tract whose
+        Percent of people ages 25 years or older in a census tract whose
         education level is less than a high school diploma.
       
                 </div>

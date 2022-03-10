@@ -3,4 +3,5 @@ export const ENDPOINTS = {
   EXPLORE_THE_TOOL: '/en/cejst',
   METHODOLOGY: '/en/methodology',
   CONTACT: 'en/contact',
+  PUBLIC: 'en/public-engagement',
 };
