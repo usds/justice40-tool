@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {render} from '@testing-library/react';
 import {LocalizedComponent} from '../../test/testHelpers';
-import Indicator, {getDisplayValue} from './Indicator';
+import Indicator from './Indicator';
 import {indicatorInfo} from '../AreaDetail/AreaDetail';
 
 const highSchool:indicatorInfo = {
@@ -23,11 +23,4 @@ describe('rendering of the Indicator', () => {
   it('checks if component renders', () => {
     expect(asFragment()).toMatchSnapshot();
   });
-});
-
-describe('tests the getDisplayValue function', () => {
-  expect(getDisplayValue(.98)).toEqual(98);
-  expect(getDisplayValue(.07)).toEqual(7);
-  expect(getDisplayValue(.123)).toEqual(12);
-  expect(getDisplayValue(.789)).toEqual(79);
 });

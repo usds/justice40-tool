@@ -136,7 +136,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
                 </div>
                 <div>
                   <img
-                    alt="image alt text"
+                    alt="an icon for the down arrow"
                     src="test-file-stub"
                   />
                 </div>
@@ -175,7 +175,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
                 </div>
                 <div>
                   <img
-                    alt="image alt text"
+                    alt="an icon for the down arrow"
                     src="test-file-stub"
                   />
                 </div>
@@ -217,7 +217,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
                 </div>
                 <div>
                   <img
-                    alt="image alt text"
+                    alt="an icon for the down arrow"
                     src="test-file-stub"
                   />
                 </div>
@@ -249,16 +249,20 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
             <div>
               <div>
                 <div>
-                  --
                   <span>
                     %
                   </span>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -291,16 +295,20 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
             <div>
               <div>
                 <div>
-                  --
                   <span>
                     %
                   </span>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -322,16 +330,20 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
             <div>
               <div>
                 <div>
-                  --
                   <span>
                     %
                   </span>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -470,16 +482,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -499,16 +515,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -530,16 +550,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -581,14 +605,14 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                 </div>
                 <div>
                   <img
-                    alt="image alt text"
+                    alt="an icon for the down arrow"
                     src="test-file-stub"
                   />
                 </div>
               </div>
               <div>
                 <div>
-                  below 90th
+                  below 65th
                 </div>
                 <div>
                   percentile
@@ -613,16 +637,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  --
                   <span>
                     %
                   </span>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -677,16 +705,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -706,16 +738,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -757,14 +793,14 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                 </div>
                 <div>
                   <img
-                    alt="image alt text"
+                    alt="an icon for the down arrow"
                     src="test-file-stub"
                   />
                 </div>
               </div>
               <div>
                 <div>
-                  below 90th
+                  below 65th
                 </div>
                 <div>
                   percentile
@@ -789,16 +825,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  --
                   <span>
                     %
                   </span>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -853,16 +893,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -882,16 +926,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -933,14 +981,14 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                 </div>
                 <div>
                   <img
-                    alt="image alt text"
+                    alt="an icon for the down arrow"
                     src="test-file-stub"
                   />
                 </div>
               </div>
               <div>
                 <div>
-                  below 90th
+                  below 65th
                 </div>
                 <div>
                   percentile
@@ -965,16 +1013,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  --
                   <span>
                     %
                   </span>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -1038,7 +1090,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                 </div>
                 <div>
                   <img
-                    alt="image alt text"
+                    alt="an icon for the up arrow"
                     src="test-file-stub"
                   />
                 </div>
@@ -1070,16 +1122,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -1121,14 +1177,14 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                 </div>
                 <div>
                   <img
-                    alt="image alt text"
+                    alt="an icon for the down arrow"
                     src="test-file-stub"
                   />
                 </div>
               </div>
               <div>
                 <div>
-                  below 90th
+                  below 65th
                 </div>
                 <div>
                   percentile
@@ -1153,16 +1209,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  --
                   <span>
                     %
                   </span>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -1217,16 +1277,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -1246,16 +1310,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -1275,16 +1343,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -1326,14 +1398,14 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                 </div>
                 <div>
                   <img
-                    alt="image alt text"
+                    alt="an icon for the down arrow"
                     src="test-file-stub"
                   />
                 </div>
               </div>
               <div>
                 <div>
-                  below 90th
+                  below 65th
                 </div>
                 <div>
                   percentile
@@ -1358,16 +1430,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  --
                   <span>
                     %
                   </span>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -1422,16 +1498,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -1473,14 +1553,14 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                 </div>
                 <div>
                   <img
-                    alt="image alt text"
+                    alt="an icon for the down arrow"
                     src="test-file-stub"
                   />
                 </div>
               </div>
               <div>
                 <div>
-                  below 90th
+                  below 65th
                 </div>
                 <div>
                   percentile
@@ -1505,16 +1585,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  --
                   <span>
                     %
                   </span>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -1569,16 +1653,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -1601,16 +1689,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -1632,16 +1724,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -1661,16 +1757,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -1712,14 +1812,14 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                 </div>
                 <div>
                   <img
-                    alt="image alt text"
+                    alt="an icon for the down arrow"
                     src="test-file-stub"
                   />
                 </div>
               </div>
               <div>
                 <div>
-                  below 90th
+                  below 65th
                 </div>
                 <div>
                   percentile
@@ -1744,16 +1844,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  --
                   <span>
                     %
                   </span>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -1819,7 +1923,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                 </div>
                 <div>
                   <img
-                    alt="image alt text"
+                    alt="an icon for the up arrow"
                     src="test-file-stub"
                   />
                 </div>
@@ -1849,16 +1953,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -1887,7 +1995,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                 </div>
                 <div>
                   <img
-                    alt="image alt text"
+                    alt="an icon for the up arrow"
                     src="test-file-stub"
                   />
                 </div>
@@ -1929,7 +2037,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                 </div>
                 <div>
                   <img
-                    alt="image alt text"
+                    alt="an icon for the down arrow"
                     src="test-file-stub"
                   />
                 </div>
@@ -1979,7 +2087,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                 </div>
                 <div>
                   <img
-                    alt="image alt text"
+                    alt="an icon for the up arrow"
                     src="test-file-stub"
                   />
                 </div>
@@ -2011,16 +2119,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  --
                   <span>
                     %
                   </span>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -2170,7 +2282,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
                 </div>
                 <div>
                   <img
-                    alt="image alt text"
+                    alt="an icon for the up arrow"
                     src="test-file-stub"
                   />
                 </div>
@@ -2200,16 +2312,20 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
             <div>
               <div>
                 <div>
-                  --
                   <sup>
                     <span />
                   </sup>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
@@ -2238,7 +2354,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
                 </div>
                 <div>
                   <img
-                    alt="image alt text"
+                    alt="an icon for the up arrow"
                     src="test-file-stub"
                   />
                 </div>
@@ -2280,7 +2396,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
                 </div>
                 <div>
                   <img
-                    alt="image alt text"
+                    alt="an icon for the down arrow"
                     src="test-file-stub"
                   />
                 </div>
@@ -2330,7 +2446,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
                 </div>
                 <div>
                   <img
-                    alt="image alt text"
+                    alt="an icon for the up arrow"
                     src="test-file-stub"
                   />
                 </div>
@@ -2362,16 +2478,20 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
             <div>
               <div>
                 <div>
-                  --
                   <span>
                     %
                   </span>
                 </div>
-                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
               <div>
                 <div>
-                  data is N/A
+                  data is not available
                 </div>
               </div>
             </div>
