@@ -452,20 +452,24 @@ export const SIDE_PANEL_VALUES = {
   IMG_ALT_TEXT: defineMessages({
     ARROW_UP: {
       id: 'explore.page.side.panel.indicator.value.arrow.up.alt.text',
-      description: 'up arrow icon',
-      defaultMessage: `image alt text`,
+      description: 'image alt text for the up arrow',
+      defaultMessage: `an icon for the up arrow`,
     },
     ARROW_DOWN: {
       id: 'explore.page.side.panel.indicator.value.arrow.down.alt.text',
-      description: 'down arrow icon',
-      defaultMessage: `image alt text`,
+      description: 'image alt text for the down arrow',
+      defaultMessage: `an icon for the down arrow`,
+    },
+    UNAVAILABLE: {
+      id: 'explore.page.side.panel.indicator.value.unavailable.alt.text',
+      description: 'image alt text for unavailable icon',
+      defaultMessage: `an icon to represent data is unavailable`,
     },
   }),
-  UNAVAILABLE: '--',
   UNAVAILBLE_MSG: <FormattedMessage
     id={'explore.page.side.panel.indicator.value.subtext.unavailable'}
     description={'subtext for indicator when data is N/A'}
-    defaultMessage={`data is N/A`}
+    defaultMessage={`data is not available`}
   />,
 };
 

@@ -23,7 +23,7 @@ exports[`rendering of the Indicator checks if component renders 1`] = `
           </div>
           <div>
             <img
-              alt="image alt text"
+              alt="an icon for the up arrow"
               src="test-file-stub"
             />
           </div>
