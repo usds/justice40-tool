@@ -17,6 +17,82 @@ interface IIndicator {
     indicator: indicatorInfo,
 }
 
+interface IIndicatorValueIcon {
+  value: number | null,
+  isAboveThresh: boolean,
+};
+
+interface IIndicatorValueSubText {
+  isAvailable: boolean,
+  isAboveThresh: boolean,
+  threshold: number,
+  isPercent: boolean | undefined,
+}
+
+
+/**
+ * This component will determine what indicator's icon should be (arrowUp, arrowDown or unavailable) and
+ * return the appropriate JSX.
+ *
+ * @param {number | null} props
+ * @return {JSX.Element}
+ */
+export const IndicatorValueIcon = ({value, isAboveThresh}: IIndicatorValueIcon) => {
+  const intl = useIntl();
+
+  if (value) {
+    return isAboveThresh ?
+      <img
+        src={upArrow}
+        alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.ARROW_UP)}
+      /> :
+      <img
+        src={downArrow}
+        alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.ARROW_DOWN)}
+      />;
+  } else {
+    return <img className={styles.unavailable}
+      src={unAvailable}
+      alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.UNAVAILABLE)}
+    />;
+  }
+};
+
+/**
+   * This component will determine the sub-text of the indicator's value, some examples could be
+   *   "above 90th percentile"
+   *   "below 20 percent"
+   *   "data is not available"
+   *
+   * @return {JSX.Element}
+   */
+export const IndicatorValueSubText = ({isAvailable, isAboveThresh, threshold, isPercent}:IIndicatorValueSubText) => {
+  return isAvailable ?
+    <React.Fragment>
+      <div>
+        {
+          isAboveThresh ?
+          EXPLORE_COPY.SIDE_PANEL_VALUES.ABOVE :
+          EXPLORE_COPY.SIDE_PANEL_VALUES.BELOW
+        }
+        {`${threshold ? threshold : 90}`}
+
+        {!isPercent && `th`}
+      </div>
+      <div>
+        {
+          isPercent ?
+          EXPLORE_COPY.SIDE_PANEL_VALUES.PERCENT :
+          EXPLORE_COPY.SIDE_PANEL_VALUES.PERCENTILE
+        }
+      </div>
+    </React.Fragment> :
+    <div>
+      {EXPLORE_COPY.SIDE_PANEL_VALUES.UNAVAILBLE_MSG}
+    </div>;
+};
+
+
 // Todo: Add internationalization to superscript ticket #582
 export const getSuperscriptOrdinal = (percentile: number | string | null) => {
   if (percentile === null) return '';
@@ -36,9 +112,13 @@ export const getSuperscriptOrdinal = (percentile: number | string | null) => {
   }
 };
 
+/**
+ * This component will return the list element which will be the indicator row in the side panel
+ *
+ * @param {IIndicator} indicator
+ * @return {JSX.Element}
+ */
 const Indicator = ({indicator}:IIndicator) => {
-  const intl = useIntl();
-
   // Convert the decimal value to a stat to display
   const displayStat = indicator.value !== null ? Math.round(indicator.value * 100) : null;
 
@@ -53,66 +133,6 @@ const Indicator = ({indicator}:IIndicator) => {
     value: displayStat,
     isAvailable: displayStat ? true : false,
     isAboveThresh: displayStat && displayStat > threshold ? true : false,
-  };
-
-  //
-  /**
-   * This function will determine what indicator's icon should be (arrowUp, arrowDown or unavailable) and
-   * return the appropriate JSX.
-   *
-   * @return {JSX.Element}
-   */
-  const IndicatorValueIcon = () => {
-    if (indicatorStatistic.value) {
-      return indicatorStatistic.isAboveThresh ?
-        <img
-          src={upArrow}
-          alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.ARROW_UP)}
-        /> :
-        <img
-          src={downArrow}
-          alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.ARROW_DOWN)}
-        />;
-    } else {
-      return <img className={styles.unavailable}
-        src={unAvailable}
-        alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.UNAVAILABLE)}
-      />;
-    }
-  };
-
-  /**
-   * This function will determine the sub-text of the indicator's value, some examples could be
-   *   "above 90th percentile"
-   *   "below 20 percent"
-   *   "data is not available"
-   *
-   * @return {JSX.Element}
-   */
-  const IndicatorValueSubText = () => {
-    return indicatorStatistic.isAvailable ?
-    <React.Fragment>
-      <div>
-        {
-          indicatorStatistic.isAboveThresh ?
-          EXPLORE_COPY.SIDE_PANEL_VALUES.ABOVE :
-          EXPLORE_COPY.SIDE_PANEL_VALUES.BELOW
-        }
-        {`${indicator.threshold ? indicator.threshold : 90}`}
-
-        {!indicator.isPercent && `th`}
-      </div>
-      <div>
-        {
-          indicator.isPercent ?
-          EXPLORE_COPY.SIDE_PANEL_VALUES.PERCENT :
-          EXPLORE_COPY.SIDE_PANEL_VALUES.PERCENTILE
-        }
-      </div>
-    </React.Fragment> :
-    <div>
-      {EXPLORE_COPY.SIDE_PANEL_VALUES.UNAVAILBLE_MSG}
-    </div>;
   };
 
   return (
@@ -147,13 +167,21 @@ const Indicator = ({indicator}:IIndicator) => {
 
             {/* Indicator icon - up arrow, down arrow, or unavailable */}
             <div className={styles.indicatorArrow}>
-              <IndicatorValueIcon />
+              <IndicatorValueIcon
+                value={indicatorStatistic.value}
+                isAboveThresh={indicatorStatistic.isAboveThresh}
+              />
             </div>
           </div>
 
           {/* Indicator sub-text */}
           <div className={styles.indicatorValueSubText}>
-            <IndicatorValueSubText />
+            <IndicatorValueSubText
+              isAvailable={indicatorStatistic.isAvailable}
+              isAboveThresh={indicatorStatistic.isAboveThresh}
+              threshold={threshold}
+              isPercent={indicator.isPercent}
+            />
           </div>
         </div>
       </div>

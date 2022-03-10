@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {render} from '@testing-library/react';
 import {LocalizedComponent} from '../../test/testHelpers';
-import Indicator from './Indicator';
+import Indicator, {IndicatorValueIcon, IndicatorValueSubText} from './Indicator';
 import {indicatorInfo} from '../AreaDetail/AreaDetail';
 
 const highSchool:indicatorInfo = {
@@ -21,6 +21,85 @@ describe('rendering of the Indicator', () => {
   );
 
   it('checks if component renders', () => {
+    expect(asFragment()).toMatchSnapshot();
+  });
+});
+
+describe('test rendering of Indicator value icons', () => {
+  it('renders the up arrow', () => {
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <IndicatorValueIcon
+            value={90}
+            isAboveThresh={true}
+          />
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+  it('renders the down arrow', () => {
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <IndicatorValueIcon
+            value={13}
+            isAboveThresh={false}
+          />
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('renders the unavailable icon', () => {
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <IndicatorValueIcon
+            value={null}
+            isAboveThresh={false}
+          />
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+});
+
+describe('test rendering of Indicator value sub-text', () => {
+  it('renders the "above 90 percentile"', () => {
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <IndicatorValueSubText
+            isAvailable={true}
+            isAboveThresh={true}
+            threshold={90}
+            isPercent={false}
+          />
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+  it('renders the "below 90 percentile"', () => {
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <IndicatorValueSubText
+            isAvailable={true}
+            isAboveThresh={false}
+            threshold={90}
+            isPercent={false}
+          />
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+  it('renders the "data is not available"', () => {
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <IndicatorValueSubText
+            isAvailable={false}
+            isAboveThresh={false}
+            threshold={90}
+            isPercent={false}
+          />
+        </LocalizedComponent>,
+    );
     expect(asFragment()).toMatchSnapshot();
   });
 });
