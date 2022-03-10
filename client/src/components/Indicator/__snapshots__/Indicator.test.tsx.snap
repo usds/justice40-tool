@@ -41,3 +41,60 @@ exports[`rendering of the Indicator checks if component renders 1`] = `
   </li>
 </DocumentFragment>
 `;
+
+exports[`test rendering of Indicator value icons renders the down arrow 1`] = `
+<DocumentFragment>
+  <img
+    alt="an icon for the down arrow"
+    src="test-file-stub"
+  />
+</DocumentFragment>
+`;
+
+exports[`test rendering of Indicator value icons renders the unavailable icon 1`] = `
+<DocumentFragment>
+  <img
+    alt="an icon to represent data is unavailable"
+    src="test-file-stub"
+  />
+</DocumentFragment>
+`;
+
+exports[`test rendering of Indicator value icons renders the up arrow 1`] = `
+<DocumentFragment>
+  <img
+    alt="an icon for the up arrow"
+    src="test-file-stub"
+  />
+</DocumentFragment>
+`;
+
+exports[`test rendering of Indicator value sub-text renders the "above 90 percentile" 1`] = `
+<DocumentFragment>
+  <div>
+    above 90th
+  </div>
+  <div>
+    percentile
+  </div>
+</DocumentFragment>
+`;
+
+exports[`test rendering of Indicator value sub-text renders the "below 90 percentile" 1`] = `
+<DocumentFragment>
+  <div>
+    below 90th
+  </div>
+  <div>
+    percentile
+  </div>
+</DocumentFragment>
+`;
+
+exports[`test rendering of Indicator value sub-text renders the "data is not available" 1`] = `
+<DocumentFragment>
+  <div>
+    data is not available
+  </div>
+</DocumentFragment>
+`;
