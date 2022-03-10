@@ -17,6 +17,14 @@ logger = get_module_logger(__name__)
 
 
 class TestNationalRiskIndexETL(TestETL):
+    """Tests the NRI ETL only.
+
+    This uses pytest-snapshot.
+    To update individual snapshots: $ poetry run pytest
+            data_pipeline/tests/sources/national_risk_index/test_etl.py::TestClassNameETL::<testname>
+            --snapshot-update
+    """
+
     _ETL_CLASS = NationalRiskIndexETL
 
     _SAMPLE_DATA_PATH = (
@@ -130,12 +138,7 @@ class TestNationalRiskIndexETL(TestETL):
         assert extracted_file_path.is_file()
 
     def test_extract(self, snapshot, mock_etl, mock_paths):
-        """Tests the extract method.
-
-        To update: $ poetry run pytest
-            data_pipeline/tests/sources/national_risk_index/test_etl.py::test
-            --snapshot-update
-        """
+        """Tests the extract method."""
         tmp_path = mock_paths[1]
         _ = self._setup_etl_instance_and_run_extract(
             mock_etl=mock_etl,
