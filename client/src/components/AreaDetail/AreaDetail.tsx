@@ -119,18 +119,18 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     if (sidePanelState === constants.SIDE_PANEL_STATE_VALUES.ISLAND_AREAS) {
       if (indicatorName === 'lowMedInc') {
         return properties.hasOwnProperty(constants
-            .IS_GTE_90_ISLAND_AREA_LOW_MEDIAN_INCOME_AND_IS_LOW_HS_EDU_2009) ?
-        properties[constants.IS_GTE_90_ISLAND_AREA_LOW_MEDIAN_INCOME_AND_IS_LOW_HS_EDU_2009] : null;
+            .IS_EXCEEDS_THRESH_FOR_ISLAND_AREA_LOW_MEDIAN_INCOME) ?
+        properties[constants.IS_EXCEEDS_THRESH_FOR_ISLAND_AREA_LOW_MEDIAN_INCOME] : null;
       }
       if (indicatorName === 'unemploy') {
         return properties.hasOwnProperty(constants
-            .IS_GTE_90_ISLAND_AREA_UNEMPLOYMENT_AND_IS_LOW_HS_EDU_2009) ?
-        properties[constants.IS_GTE_90_ISLAND_AREA_UNEMPLOYMENT_AND_IS_LOW_HS_EDU_2009] : null;
+            .IS_EXCEEDS_THRESH_FOR_ISLAND_AREA_UNEMPLOYMENT) ?
+        properties[constants.IS_EXCEEDS_THRESH_FOR_ISLAND_AREA_UNEMPLOYMENT] : null;
       }
       if (indicatorName === 'poverty') {
         return properties.hasOwnProperty(constants
-            .IS_GTE_90_ISLAND_AREA_BELOW_100_POVERTY_AND_IS_LOW_HS_EDU_2009) ?
-        properties[constants.IS_GTE_90_ISLAND_AREA_BELOW_100_POVERTY_AND_IS_LOW_HS_EDU_2009] : null;
+            .IS_EXCEEDS_THRESH_FOR_ISLAND_AREA_BELOW_100_POVERTY) ?
+        properties[constants.IS_EXCEEDS_THRESH_FOR_ISLAND_AREA_BELOW_100_POVERTY] : null;
       }
       if (indicatorName === 'highSchool') {
         return properties.hasOwnProperty(constants
@@ -141,18 +141,18 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
 
     if (indicatorName === 'lowMedInc') {
       return properties.hasOwnProperty(constants
-          .IS_GTE_90_LOW_MEDIAN_INCOME_AND_LOW_HIGH_SCHOOL_EDU) ?
-      properties[constants.IS_GTE_90_LOW_MEDIAN_INCOME_AND_LOW_HIGH_SCHOOL_EDU] : null;
+          .IS_EXCEEDS_THRESH_FOR_LOW_MEDIAN_INCOME) ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_LOW_MEDIAN_INCOME] : null;
     }
     if (indicatorName === 'unemploy') {
       return properties.hasOwnProperty(constants
-          .IS_GTE_90_UNEMPLOYMENT_AND_LOW_HIGH_SCHOOL_EDU) ?
-      properties[constants.IS_GTE_90_UNEMPLOYMENT_AND_LOW_HIGH_SCHOOL_EDU] : null;
+          .IS_EXCEEDS_THRESH_FOR_UNEMPLOYMENT) ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_UNEMPLOYMENT] : null;
     }
     if (indicatorName === 'poverty') {
       return properties.hasOwnProperty(constants
-          .IS_GTE_90_BELOW_100_POVERTY_AND_LOW_HIGH_SCHOOL_EDU) ?
-      properties[constants.IS_GTE_90_BELOW_100_POVERTY_AND_LOW_HIGH_SCHOOL_EDU] : null;
+          .IS_EXCEEDS_THRESH_FOR_BELOW_100_POVERTY) ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_BELOW_100_POVERTY] : null;
     }
     if (indicatorName === 'highSchool') {
       return properties.hasOwnProperty(constants
@@ -168,24 +168,24 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.EXP_AG_LOSS),
     value: properties.hasOwnProperty(constants.EXP_AGRICULTURE_LOSS_PERCENTILE) ?
       properties[constants.EXP_AGRICULTURE_LOSS_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_GTE_90_EXP_AGR_LOSS_AND_IS_LOW_INCOME] ?
-      properties[constants.IS_GTE_90_EXP_AGR_LOSS_AND_IS_LOW_INCOME] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_EXP_AGR_LOSS] ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_EXP_AGR_LOSS] : null,
   };
   const expBldLoss:indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.EXP_BLD_LOSS),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.EXP_BLD_LOSS),
     value: properties.hasOwnProperty(constants.EXP_BUILDING_LOSS_PERCENTILE) ?
       properties[constants.EXP_BUILDING_LOSS_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_GTE_90_EXP_BLD_LOSS_AND_IS_LOW_INCOME] ?
-      properties[constants.IS_GTE_90_EXP_BLD_LOSS_AND_IS_LOW_INCOME] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_EXP_BLD_LOSS] ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_EXP_BLD_LOSS] : null,
   };
   const expPopLoss:indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.EXP_POP_LOSS),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.EXP_POP_LOSS),
     value: properties.hasOwnProperty(constants.EXP_POPULATION_LOSS_PERCENTILE) ?
       properties[constants.EXP_POPULATION_LOSS_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_GTE_90_EXP_POP_LOSS_AND_IS_LOW_INCOME] ?
-      properties[constants.IS_GTE_90_EXP_POP_LOSS_AND_IS_LOW_INCOME] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_EXP_POP_LOSS] ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_EXP_POP_LOSS] : null,
   };
   const lowInc:indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.LOW_INCOME),
@@ -212,16 +212,16 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.ENERGY_BURDEN),
     value: properties.hasOwnProperty(constants.ENERGY_PERCENTILE) ?
       properties[constants.ENERGY_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_GTE_90_ENERGY_BURDEN_AND_IS_LOW_INCOME] ?
-      properties[constants.IS_GTE_90_ENERGY_BURDEN_AND_IS_LOW_INCOME] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_ENERGY_BURDEN] ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_ENERGY_BURDEN] : null,
   };
   const pm25:indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.PM_2_5),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.PM_2_5),
     value: properties.hasOwnProperty(constants.PM25_PERCENTILE) ?
       properties[constants.PM25_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_GTE_90_PM25_AND_IS_LOW_INCOME] ?
-      properties[constants.IS_GTE_90_PM25_AND_IS_LOW_INCOME] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_PM25] ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_PM25] : null,
   };
 
   const dieselPartMatter:indicatorInfo = {
@@ -229,16 +229,16 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.DIESEL_PARTICULATE_MATTER),
     value: properties.hasOwnProperty(constants.DIESEL_MATTER_PERCENTILE) ?
       properties[constants.DIESEL_MATTER_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_GTE_90_DIESEL_PM_AND_IS_LOW_INCOME] ?
-      properties[constants.IS_GTE_90_DIESEL_PM_AND_IS_LOW_INCOME] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_DIESEL_PM] ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_DIESEL_PM] : null,
   };
   const trafficVolume:indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.TRAFFIC_VOLUME),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.TRAFFIC_VOLUME),
     value: properties.hasOwnProperty(constants.TRAFFIC_PERCENTILE) ?
       properties[constants.TRAFFIC_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_GTE_90_TRAFFIC_PROX_AND_IS_LOW_INCOME] ?
-      properties[constants.IS_GTE_90_TRAFFIC_PROX_AND_IS_LOW_INCOME] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_TRAFFIC_PROX] ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_TRAFFIC_PROX] : null,
   };
 
   const houseBurden:indicatorInfo = {
@@ -246,16 +246,16 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.HOUSE_BURDEN),
     value: properties.hasOwnProperty(constants.HOUSING_BURDEN_PROPERTY_PERCENTILE) ?
       properties[constants.HOUSING_BURDEN_PROPERTY_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_GTE_90_HOUSE_BURDEN_AND_IS_LOW_INCOME] ?
-      properties[constants.IS_GTE_90_HOUSE_BURDEN_AND_IS_LOW_INCOME] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_HOUSE_BURDEN] ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_HOUSE_BURDEN] : null,
   };
   const leadPaint:indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.LEAD_PAINT),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.LEAD_PAINT),
     value: properties.hasOwnProperty(constants.LEAD_PAINT_PERCENTILE) ?
       properties[constants.LEAD_PAINT_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_GTE_90_LEAD_PAINT_AND_MEDIAN_HOME_VAL_AND_IS_LOW_INCOME] ?
-      properties[constants.IS_GTE_90_LEAD_PAINT_AND_MEDIAN_HOME_VAL_AND_IS_LOW_INCOME] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_LEAD_PAINT_AND_MEDIAN_HOME_VAL] ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_LEAD_PAINT_AND_MEDIAN_HOME_VAL] : null,
   };
   // const medHomeVal:indicatorInfo = {
   //   label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.MED_HOME_VAL),
@@ -270,24 +270,24 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.PROX_HAZ),
     value: properties.hasOwnProperty(constants.PROXIMITY_TSDF_SITES_PERCENTILE) ?
       properties[constants.PROXIMITY_TSDF_SITES_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_GTE_90_HAZARD_WASTE_AND_IS_LOW_INCOME] ?
-      properties[constants.IS_GTE_90_HAZARD_WASTE_AND_IS_LOW_INCOME] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_HAZARD_WASTE] ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_HAZARD_WASTE] : null,
   };
   const proxNPL:indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.PROX_NPL),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.PROX_NPL),
     value: properties.hasOwnProperty(constants.PROXIMITY_NPL_SITES_PERCENTILE) ?
       properties[constants.PROXIMITY_NPL_SITES_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_GTE_90_SUPERFUND_AND_IS_LOW_INCOME] ?
-      properties[constants.IS_GTE_90_SUPERFUND_AND_IS_LOW_INCOME] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_SUPERFUND] ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_SUPERFUND] : null,
   };
   const proxRMP:indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.PROX_RMP),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.PROX_RMP),
     value: properties.hasOwnProperty(constants.PROXIMITY_RMP_SITES_PERCENTILE) ?
       properties[constants.PROXIMITY_RMP_SITES_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_GTE_90_RMP_AND_IS_LOW_INCOME] ?
-      properties[constants.IS_GTE_90_RMP_AND_IS_LOW_INCOME] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_RMP] ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_RMP] : null,
   };
 
   const wasteWater:indicatorInfo = {
@@ -295,8 +295,8 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.WASTE_WATER),
     value: properties.hasOwnProperty(constants.WASTEWATER_PERCENTILE) ?
       properties[constants.WASTEWATER_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_GTE_90_WASTEWATER_AND_IS_LOW_INCOME] ?
-      properties[constants.IS_GTE_90_WASTEWATER_AND_IS_LOW_INCOME] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_WASTEWATER] ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_WASTEWATER] : null,
   };
 
   const asthma:indicatorInfo = {
@@ -304,32 +304,32 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.ASTHMA),
     value: properties.hasOwnProperty(constants.ASTHMA_PERCENTILE) ?
       properties[constants.ASTHMA_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_GTE_90_ASTHMA_AND_IS_LOW_INCOME] ?
-      properties[constants.IS_GTE_90_ASTHMA_AND_IS_LOW_INCOME] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_ASTHMA] ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_ASTHMA] : null,
   };
   const diabetes:indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.DIABETES),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.DIABETES),
     value: properties.hasOwnProperty(constants.DIABETES_PERCENTILE) ?
       properties[constants.DIABETES_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_GTE_90_DIABETES_AND_IS_LOW_INCOME] ?
-      properties[constants.IS_GTE_90_DIABETES_AND_IS_LOW_INCOME] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_DIABETES] ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_DIABETES] : null,
   };
   const heartDisease:indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HEART_DISEASE),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.HEART_DISEASE),
     value: properties.hasOwnProperty(constants.HEART_PERCENTILE) ?
       properties[constants.HEART_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_GTE_90_HEART_DISEASE_AND_IS_LOW_INCOME] ?
-      properties[constants.IS_GTE_90_HEART_DISEASE_AND_IS_LOW_INCOME] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_HEART_DISEASE] ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_HEART_DISEASE] : null,
   };
   const lifeExpect:indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.LIFE_EXPECT),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.LOW_LIFE_EXPECT),
     value: properties.hasOwnProperty(constants.LIFE_PERCENTILE) ?
       properties[constants.LIFE_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_GTE_90_LOW_LIFE_EXP_AND_IS_LOW_INCOME] ?
-      properties[constants.IS_GTE_90_LOW_LIFE_EXP_AND_IS_LOW_INCOME] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_LOW_LIFE_EXP] ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_LOW_LIFE_EXP] : null,
   };
 
   const lingIso:indicatorInfo = {
@@ -337,8 +337,8 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.LING_ISO),
     value: properties.hasOwnProperty(constants.LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE) ?
     properties[constants.LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_GTE_90_LINGUISITIC_ISO_AND_IS_LOW_INCOME] ?
-    properties[constants.IS_GTE_90_LINGUISITIC_ISO_AND_IS_LOW_INCOME] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_LINGUISITIC_ISO] ?
+    properties[constants.IS_EXCEEDS_THRESH_FOR_LINGUISITIC_ISO] : null,
   };
   const lowMedInc:indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.LOW_MED_INC),
