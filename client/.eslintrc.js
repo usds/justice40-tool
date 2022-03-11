@@ -25,6 +25,9 @@ module.exports = {
   'rules': {
     'max-len': [2, {'code': 120, 'tabWidth': 4, 'ignoreUrls': true}],
     'formatjs/no-offset': 'error',
+    'formatjs/enforce-description': 'error',
+    'formatjs/enforce-default-message': 'error',
+    'formatjs/enforce-placeholders': 'error',
   },
   'settings': {
     'react': {
