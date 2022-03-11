@@ -2,6 +2,7 @@
 import copy
 import os
 import pathlib
+from typing import Type
 import pytest
 
 import numpy as np
@@ -81,7 +82,7 @@ class TestETL:
         """
         self._DATA_DIRECTORY_FOR_TEST = pathlib.Path(filename).parent / "data"
 
-    def _get_instance_of_etl_class(self) -> type(ExtractTransformLoad):
+    def _get_instance_of_etl_class(self) -> Type[ExtractTransformLoad]:
         return self._ETL_CLASS()
 
     def _setup_etl_instance_and_run_extract(
