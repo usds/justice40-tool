@@ -203,6 +203,7 @@ TILES_SCORE_COLUMNS = {
     field_names.LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD: "LHE",
     # Percentage of HS Degree completion for Islands
     field_names.CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009: "IAHSEF",
+    field_names.COLLEGE_ATTENDANCE_FIELD: "CA",
     field_names.COLLEGE_NON_ATTENDANCE_FIELD: "NCA",
     # This is logically equivalent to "non-college greater than 80%"
     field_names.COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD: "CA_LT20",
@@ -271,4 +272,5 @@ TILES_SCORE_FLOAT_COLUMNS = [
     field_names.WASTEWATER_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.SCORE_M + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.COLLEGE_NON_ATTENDANCE_FIELD,
+    field_names.COLLEGE_ATTENDANCE_FIELD,
 ]
