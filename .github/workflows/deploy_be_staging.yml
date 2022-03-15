@@ -42,14 +42,6 @@ jobs:
           aws-access-key-id: ${{ secrets.DATA_DEV_AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.DATA_DEV_AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-      - name: Install s3-parallel-put
-        run: |
-          pyenv local 2.8
-          pip install boto
-          pip install python-magic
-          wget -O ~/s3-parallel-put https://raw.githubusercontent.com/mishudark/s3-parallel-put/master/s3-parallel-put
-          chmod +x ~/s3-parallel-put
-          pyenv local 3.9
       # - name: Generate Score
       #   run: |
       #     poetry run python3 data_pipeline/application.py score-full-run
@@ -58,9 +50,7 @@ jobs:
       #     poetry run python3 data_pipeline/application.py generate-score-post -s aws
       - name: Deploy Score to Geoplatform AWS
         run: |
-          pyenv local 2.8
-          ~/s3-parallel-put ./data_pipeline/data/score/csv/ --bucket=s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/csv --dry-run
-          pyenv local 3.9
+          s4cmd put ./data_pipeline/data/score/csv/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/csv --recursive --NUM-THREADS=50
           aws s3 cp ./data_pipeline/data/score/downloadable/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/downloadable --recursive --acl public-read
       - name: Update PR with deployed Score URLs
         uses: mshick/add-pr-comment@v1
