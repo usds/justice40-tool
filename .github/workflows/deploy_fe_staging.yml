@@ -29,15 +29,18 @@ jobs:
         if: contains(steps.changed-files.outputs.modified_files, 'client/src/intl/en.json')
         run: |
           echo "is_en_json_modified=true" >> GITHUB_ENV
-      - name: Update PR with translation needed comment
-        uses: mshick/add-pr-comment@v1
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v5
         with:
-          message: |
-            **🚢  New translations needed! 🚢**   
-            Please see the en.json file for details !
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          repo-token-user-login: "github-actions[bot]" # The user.login for temporary GitHub tokens
-          allow-repeats: false # This is the default
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '👋 Thanks for reporting!'
+            })          
         if: env.is_en_json_modified == true
 
         
