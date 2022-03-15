@@ -29,7 +29,8 @@ jobs:
         if: contains(steps.changed-files.outputs.modified_files, 'client/src/intl/en.json')
         run: |
           echo "is_en_json_modified=true" >> GITHUB_ENV
-      - name: Update PR with deployed URL
+      - name: Update PR with translation needed comment
+        uses: mshick/add-pr-comment@v1
         if: $ {{ env.is_en_json_modified }}
         with:
           message: |
