@@ -229,7 +229,7 @@ class TestETL:
         )
         snapshot.snapshot_dir = self._DATA_DIRECTORY_FOR_TEST
         snapshot.assert_match(
-            tmp_df.to_csv(index=False, float_format="%.5f"),
+            tmp_df.to_csv(index=False, float_format="%.10f"),
             self._EXTRACT_CSV_FILE_NAME,
         )
 
@@ -243,7 +243,7 @@ class TestETL:
 
         snapshot.snapshot_dir = self._DATA_DIRECTORY_FOR_TEST
         snapshot.assert_match(
-            etl.output_df.to_csv(index=False, float_format="%.5f"),
+            etl.output_df.to_csv(index=False, float_format="%.10f"),
             self._TRANSFORM_CSV_FILE_NAME,
         )
 
@@ -297,7 +297,7 @@ class TestETL:
         # Check the snapshots
         snapshot.snapshot_dir = self._DATA_DIRECTORY_FOR_TEST
         snapshot.assert_match(
-            actual_output.to_csv(index=False, float_format="%.5f"),
+            actual_output.to_csv(index=False, float_format="%.10f"),
             self._OUTPUT_CSV_FILE_NAME,
         )
 
