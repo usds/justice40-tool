@@ -25,28 +25,38 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Setup Poetry
-        uses: Gr1N/setup-poetry@v7
+      - name: Install and set up Poetry
+        run: |
+          python get-poetry.py --preview -y
+          source $HOME/.poetry/env
+          poetry config virtualenvs.in-project true
       - name: Print poetry version
         run: poetry --version
+      - name: Set up cache
+        uses: actions/cache@v1
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
       - name: Install dependencies
-        run: poetry install
+        run: |
+          source $HOME/.poetry/env
+          poetry install
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.DATA_DEV_AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.DATA_DEV_AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-      # - name: Generate Score
-      #   run: |
-      #     poetry run python3 data_pipeline/application.py score-full-run
-      # - name: Generate Score Post
-      #   run: |
-      #     poetry run python3 data_pipeline/application.py generate-score-post -s aws
+      - name: Generate Score
+        run: |
+          poetry run python3 data_pipeline/application.py score-full-run
+      - name: Generate Score Post
+        run: |
+          poetry run python3 data_pipeline/application.py generate-score-post -s aws
       - name: Deploy Score to Geoplatform AWS
         run: |
-          poetry run s4cmd put ./data_pipeline/data/score/csv/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/csv --recursive --num-threads=50
-          aws s3 cp ./data_pipeline/data/score/downloadable/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/downloadable --recursive --acl public-read
+          poetry run s4cmd put ./data_pipeline/data/score/csv/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/csv --recursive --API-ACL=public-read --num-threads=50
+          poetry run s4cmd put ./data_pipeline/data/score/downloadable/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/downloadable --recursive --API-ACL=public-read --num-threads=50
       - name: Update PR with deployed Score URLs
         uses: mshick/add-pr-comment@v1
         with:
