@@ -17,11 +17,6 @@ jobs:
       matrix:
         python-version: [3.9]
     steps:
-      - name: setup pyenv
-        uses: "gabrielfalcao/pyenv-action@v9"
-        with:
-          default: 3.9
-          versions: 2.8
       - name: Checkout source
         uses: actions/checkout@v2
       - name: Print variables to help debug
