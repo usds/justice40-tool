@@ -32,6 +32,8 @@ jobs:
           key: poetry-0 # increment to reset cache
       - name: Install poetry
         uses: snok/install-poetry@v1
+      - name: Install dependencies
+        run: poetry install
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
