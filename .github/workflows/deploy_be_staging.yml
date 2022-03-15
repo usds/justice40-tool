@@ -37,6 +37,12 @@ jobs:
           aws-access-key-id: ${{ secrets.DATA_DEV_AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.DATA_DEV_AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
+      - name: Install s3-parallel-put
+        run: |
+          pip install boto
+          pip install python-magic
+          wget -O /usr/bin/s3-parallel-put https://raw.githubusercontent.com/mishudark/s3-parallel-put/master/s3-parallel-put
+          chmod +x /usr/bin/s3-parallel-put
       - name: Generate Score
         run: |
           poetry run python3 data_pipeline/application.py score-full-run
