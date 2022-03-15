@@ -28,9 +28,9 @@ jobs:
       - name: Detect if new translation are required (en.json was modified)
         if: contains(steps.changed-files.outputs.modified_files, 'client/src/intl/en.json')
         run: |
-          echo "New translations required! The en.json was modified, please update translations in other language files."
-          - name: Update PR with deployed URL
-        uses: mshick/add-pr-comment@v1
+          echo "is_en_json_modified=true" >> GITHUB_ENV
+      - name: Update PR with deployed URL
+        if: $ {{ env.is_en_json_modified }}
         with:
           message: |
             **🚢  New translations needed! 🚢**   
