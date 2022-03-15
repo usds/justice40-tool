@@ -25,23 +25,17 @@ jobs:
       - name: Get changed files using defaults
         id: changed-files
         uses: tj-actions/changed-files@v18.1
-      - name: Detect if new translation are required (en.json was modified)
-        if: contains(steps.changed-files.outputs.modified_files, 'client/src/intl/en.json')
-        run: |
-          echo "is_en_json_modified=true" >> GITHUB_ENV
-  comment:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/github-script@v5
+      - name: Update PR message that en.json has updated
+        uses: mshick/add-pr-comment@v1
         with:
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: '👋 Thanks for reporting!'
-            })          
-        if: env.is_en_json_modified == true
+          # Deploy to S3 for the staging URL
+          message: |
+            **🚢 PR Deployed! 🚢**   
+            Find it here: http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/justice40-tool/${{env.DESTINATION_FOLDER}}/en/cejst/ !
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: "github-actions[bot]" # The user.login for temporary GitHub tokens
+          allow-repeats: false # This is the default
+        if: contains(steps.changed-files.outputs.modified_files, 'client/src/intl/en.json')
 
         
   #     - name: Set DESTINATION_FOLDER for branch
