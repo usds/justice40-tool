@@ -43,15 +43,15 @@ jobs:
           pip install python-magic
           wget -O ~/s3-parallel-put https://raw.githubusercontent.com/mishudark/s3-parallel-put/master/s3-parallel-put
           chmod +x ~/s3-parallel-put
-      - name: Generate Score
-        run: |
-          poetry run python3 data_pipeline/application.py score-full-run
-      - name: Generate Score Post
-        run: |
-          poetry run python3 data_pipeline/application.py generate-score-post -s aws
+      # - name: Generate Score
+      #   run: |
+      #     poetry run python3 data_pipeline/application.py score-full-run
+      # - name: Generate Score Post
+      #   run: |
+      #     poetry run python3 data_pipeline/application.py generate-score-post -s aws
       - name: Deploy Score to Geoplatform AWS
         run: |
-          aws s3 cp ./data_pipeline/data/score/csv/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/csv --recursive --acl public-read
+          ~/s3-parallel-put ./data_pipeline/data/score/csv/ --bucket=s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/csv --dry-run
           aws s3 cp ./data_pipeline/data/score/downloadable/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/downloadable --recursive --acl public-read
       - name: Update PR with deployed Score URLs
         uses: mshick/add-pr-comment@v1
