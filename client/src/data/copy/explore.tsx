@@ -523,7 +523,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
     description: 'Proposed or listed NPL (Superfund) sites within 5 kilometers',
   },
   PROX_RMP: {
-    id: 'areaDetail.indicator.description.prox.npl',
+    id: 'areaDetail.indicator.description.prox.rmp',
     defaultMessage: 'Risk Management Plan facilities within 5 kilometers',
     description: 'Risk Management Plan facilities within 5 kilometers',
   },

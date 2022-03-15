@@ -58,7 +58,7 @@ export const CENSUS_TRACT_FEEDBACK = {
     description={'census tract feedback section'}
   />,
   PARAGRAPH3: <FormattedMessage
-    id={'contact.page.census.tract.feedback.para1'}
+    id={'contact.page.census.tract.feedback.para3'}
     defaultMessage={`
       In addition, you can provide feedback on the tool via this {improvementSurvey}.
     `}
