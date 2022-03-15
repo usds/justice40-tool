@@ -72,9 +72,9 @@ export const FORMULA = {
     }}
   />,
   THEN: <FormattedMessage
-    id={'methodology.page.formula.second'}
+    id={'methodology.page.formula.third'}
     defaultMessage={ `{then} the community is considered disadvantaged.`}
-    description={'the second part of the formula used in the methodology'}
+    description={'the third part of the formula used in the methodology'}
     values= {{
       then: <span>THEN</span>,
     }}
@@ -243,7 +243,7 @@ export const CATEGORIES = {
   },
   CLEAN_ENERGY: {
     METHODOLOGY: <FormattedMessage
-      id= {'indicator.categories.climate.change.methodology'}
+      id= {'indicator.categories.clean.energy.methodology'}
       defaultMessage= {`Clean energy and energy efficiency category`}
       description= {`Clean energy and energy efficiency methodology`}
     />,
@@ -573,7 +573,7 @@ export const RESPONSIBLE_PARTIES = {
 
 export const SOURCE_LINKS = {
   CENSUS_ACS_15_19: <FormattedMessage
-    id= {'category.source.census.link'}
+    id= {'category.source.census.link.15'}
     defaultMessage= {'{sourceCensusLink} from {date15_19}'}
     description= {'source link for Census ACS'}
     values= {{
@@ -588,7 +588,7 @@ export const SOURCE_LINKS = {
     }}
   />,
   CENSUS_ACS_10: <FormattedMessage
-    id= {'category.source.census.link'}
+    id= {'category.source.census.link.10'}
     defaultMessage= {'{sourceCensusLink} from {date10}'}
     description= {'source link for Census ACS'}
     values= {{
@@ -1045,7 +1045,7 @@ export const INDICATORS = [
     domID: 'median-home',
     indicator: 'Median home value',
     description: <FormattedMessage
-      id= {'category.lead.paint.description.text'}
+      id= {'category.median.home.value.description.text'}
       defaultMessage= {`
         Median home value of owner-occupied housing units in the census tract.
        `}
@@ -1187,13 +1187,13 @@ export const INDICATORS = [
     domID: 'heart-disease',
     indicator: 'Heart disease',
     description: <FormattedMessage
-      id= {'category.diabetes.description.text'}
+      id= {'category.heart.disease.description.text'}
       defaultMessage= {`
         Weighted percent of people ages 18 years and older who report ever having been told
         by a doctor, nurse, or other health professionals that they had angina or
         coronary heart disease.
       `}
-      description= {'description text for diabetes'}
+      description= {'description text for heart disease'}
     />,
     usedIn: CATEGORIES.HEALTH_BURDENS.METHODOLOGY,
     responsibleParty: RESPONSIBLE_PARTIES.CDC,

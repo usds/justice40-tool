@@ -26,7 +26,8 @@
     "lint:fix": "npm run lint -- --quiet --fix",
     "intl:extract": "formatjs extract 'src/**/*.tsx' --out-file src/intl/en.json",
     "intl:compile-en": "formatjs compile src/intl/en.json --ast --out-file compiled-lang/en.json",
-    "test:intl-extraction": "node src/intl/testIntlExtraction"
+    "test:intl-extraction": "node src/intl/testIntlExtraction",
+    "prepare": "cd .. && husky install client/.husky"
   },
   "devDependencies": {
     "@formatjs/cli": "^4.2.15",
@@ -61,6 +62,7 @@
     "gatsby-plugin-react-helmet": "^4.6.0",
     "gatsby-plugin-sass": "^4.5.0",
     "gh-pages": "^3.2.0",
+    "husky": "^7.0.4",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.0.1",
     "license-checker": "^25.0.1",
