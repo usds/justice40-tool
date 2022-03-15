@@ -45,7 +45,7 @@ jobs:
       #     poetry run python3 data_pipeline/application.py generate-score-post -s aws
       - name: Deploy Score to Geoplatform AWS
         run: |
-          poetry run s4cmd put ./data_pipeline/data/score/csv/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/csv --recursive --NUM-THREADS=50
+          poetry run s4cmd put ./data_pipeline/data/score/csv/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/csv --recursive --num-threads=50
           aws s3 cp ./data_pipeline/data/score/downloadable/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/downloadable --recursive --acl public-read
       - name: Update PR with deployed Score URLs
         uses: mshick/add-pr-comment@v1
