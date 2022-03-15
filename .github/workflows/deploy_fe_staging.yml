@@ -38,7 +38,7 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: "github-actions[bot]" # The user.login for temporary GitHub tokens
           allow-repeats: false # This is the default
-        if: env.is_en_json_modified
+        if: env.is_en_json_modified == true
 
         
   #     - name: Set DESTINATION_FOLDER for branch
