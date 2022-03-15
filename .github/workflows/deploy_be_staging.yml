@@ -41,8 +41,8 @@ jobs:
         run: |
           pip install boto
           pip install python-magic
-          wget -O /usr/bin/s3-parallel-put https://raw.githubusercontent.com/mishudark/s3-parallel-put/master/s3-parallel-put
-          chmod +x /usr/bin/s3-parallel-put
+          wget -O ~/s3-parallel-put https://raw.githubusercontent.com/mishudark/s3-parallel-put/master/s3-parallel-put
+          chmod +x ~/s3-parallel-put
       - name: Generate Score
         run: |
           poetry run python3 data_pipeline/application.py score-full-run
