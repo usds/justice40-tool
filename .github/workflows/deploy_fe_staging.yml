@@ -29,6 +29,16 @@ jobs:
         if: contains(steps.changed-files.outputs.modified_files, 'client/src/intl/en.json')
         run: |
           echo "New translations required! The en.json was modified, please update translations in other language files."
+          - name: Update PR with deployed URL
+        uses: mshick/add-pr-comment@v1
+        with:
+          message: |
+            **🚢  New translations needed! 🚢**   
+            Please see the en.json file for details !
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: "github-actions[bot]" # The user.login for temporary GitHub tokens
+          allow-repeats: false # This is the default
+
         
   #     - name: Set DESTINATION_FOLDER for branch
   #       run: |
