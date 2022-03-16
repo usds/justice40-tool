@@ -156,25 +156,105 @@ export const MAP = defineMessages({
 // Side Panel copy
 export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   TITLE: {
-    id: 'mapIntro.mapIntroHeader',
-    defaultMessage: 'Zoom and select a census tract to view data',
+    id: 'explore.tool.side.panel.info.para1',
+    defaultMessage: 'Things to know',
     description: 'introductory text of ways to use the map',
   },
-  DID_YOU_KNOW: {
-    id: 'mapIntro.didYouKnow',
-    defaultMessage: ' Did you know?',
-    description: 'text prompting a cite paragraph',
-  },
-  CBG_DEFINITION: {
-    id: 'mapIntro.censusBlockGroupDefinition',
+  PARA1: {
+    id: 'explore.tool.side.panel.info.para1',
     defaultMessage: `
-      A census tract is generally between 1,200 and 8,000 people, with an average size of 4,000 people. 
-      Census tracts are small, relatively permanent subdivisions of a county defined by the 
-      U.S. Census Bureau and usually cover a contiguous area. The census tract level currently represents the 
-      smallest geographical unit for which publicly-available and nationally-consistent datasets can 
-      be consistently displayed on the tool.
+      The goal of this tool is to identify communities that are maginalized, underserved and overburdened
+      by pollution. These communities will be at or above the combined threshold for one of more of 
+      eight categories of criteria
     `,
-    description: 'cites the definition and helpful information about census groups',
+    description: `
+      Navigate to the explore the tool page. When the map is in view, the side panel will show Things 
+      to know, this is the first paragraph of this side panel
+    `,
+  },
+  PARA2: {
+    id: 'explore.tool.side.panel.info.para2',
+    defaultMessage: `
+      The tool uses census tract that represent about 4000 people and are the smallest unit of geography
+      at which consistent data is currently available
+    `,
+    description: `
+      Navigate to the explore the tool page. When the map is in view, the side panel will show Things 
+      to know, this is the second paragraph of this side panel
+    `,
+  },
+  PARA3: {
+    id: 'explore.tool.side.panel.info.para3',
+    defaultMessage: `
+      The tool ranks each census tract using percentiles which show ow much burden each tract has relative to
+      all the other tracts.
+    `,
+    description: `
+      Navigate to the explore the tool page. When the map is in view, the side panel will show Things 
+      to know, this is the third paragraph of this side panel
+    `,
+  },
+  PARA4: {
+    id: 'explore.tool.side.panel.info.para4',
+    defaultMessage: `
+      Percents are also used to show the share of people in the tract that have certain socioeconomic characteristics.
+    `,
+    description: `
+      Navigate to the explore the tool page. When the map is in view, the side panel will show Things 
+      to know, this is the forth paragraph of this side panel
+    `,
+  },
+  PARA5: {
+    id: 'explore.tool.side.panel.info.para5',
+    defaultMessage: `
+      Thresholds for each data source determine IF each tract is identified as experiencing burdens
+      disproportionally AND has those socioeconomic characteristics
+    `,
+    description: `
+      Navigate to the explore the tool page. When the map is in view, the side panel will show Things 
+      to know, this is the fifth paragraph of this side panel
+    `,
+  },
+  ALT_TEXT_ICON1: {
+    id: 'explore.tool.side.panel.info.alt.text.icon1',
+    defaultMessage: `
+      An icon that has depicts pieces of a block selected mimicing the census block tracts
+    `,
+    description: `
+      
+      Navigate to the explore the tool page. When the map is in view, the side panel will show Things 
+      to know, this is the first icon in this side panel
+    `,
+  },
+  ALT_TEXT_ICON2: {
+    id: 'explore.tool.side.panel.info.alt.text.icon2',
+    defaultMessage: `
+      An icon that a bell curve or gaussian distribution
+    `,
+    description: `
+      Navigate to the explore the tool page. When the map is in view, the side panel will show Things 
+      to know, this is the second icon in this side panel
+    `,
+  },
+  ALT_TEXT_ICON3: {
+    id: 'explore.tool.side.panel.info.alt.text.icon3',
+    defaultMessage: `
+      An icon that depicts a part of pie chart being removed
+    `,
+    description: `
+      Navigate to the explore the tool page. When the map is in view, the side panel will show Things 
+      to know, this is the third icon in this side panel
+    `,
+  },
+  ALT_TEXT_ICON4: {
+    id: 'explore.tool.side.panel.info.alt.text.icon4',
+    defaultMessage: `
+      An icon that has an up arrow and a down arrow
+    `,
+    description: `
+      Navigate to the explore the tool page. When the map is in view, the side panel will show Things 
+      to know, this is the forth icon in this side panel
+    `,
   },
 });
 
