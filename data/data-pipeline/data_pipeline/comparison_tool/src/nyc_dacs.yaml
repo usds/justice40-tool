@@ -1,0 +1,77 @@
+ADDITIONAL_DEMO_COLUMNS:
+- Urban Heuristic Flag
+- Percent of individuals below 200% Federal Poverty Line
+- Percent individuals age 25 or over with less than high school degree
+- Unemployment (percent)
+- Percent of households in linguistic isolation
+COMPARATOR_COLUMN: nyc_dac
+COMPARATOR_FILE: data/nyc_dacs/clean/nyc_dac.csv
+DEMOGRAPHIC_COLUMNS:
+- Percent Black or African American alone
+- Percent American Indian and Alaska Native alone
+- Percent Asian alone
+- Percent Native Hawaiian and Other Pacific alone
+- Percent Two or more races
+- Percent Non-Hispanic White
+- Percent Hispanic or Latino
+DEMOGRAPHIC_FILE: ../../data_pipeline/data/dataset/census_acs_2019/usa.csv
+OUTPUT_DATA_PATH: output/nyc_dacs
+SCORE_FILE: ../../data_pipeline/data/score/csv/full/usa.csv
+OTHER_COMPARATOR_COLUMNS: 
+- Tribal_Designation
+- Household_Low_Count_Flag
+- Population_Count
+- Household_Count
+- Percentile_Rank_Combined_Statewide
+- Percentile_Rank_Combined_NYC
+- Percentile_Rank_Combined_ROS
+- Combined_Score
+- Burden_Score_Percentile
+- Vulnerability_Score_Percentile
+- Burden_Score
+- Vulnerability_Score
+- Benzene_Concentration
+- Particulate_Matter_25
+- Traffic_Truck_Highways
+- Traffic_Number_Vehicles
+- Wastewater_Discharge
+- Housing_Vacancy_Rate
+- Industrial_Land_Use
+- Landfills
+- Oil_Storage
+- Municipal_Waste_Combustors
+- Power_Generation_Facilities
+- RMP_Sites
+- Remediation_Sites
+- Scrap_Metal_Processing
+- Agricultural_Land_Use
+- Coastal_Flooding_Storm_Risk
+- Days_Above_90_Degrees_2050
+- Drive_Time_Healthcare
+- Inland_Flooding_Risk
+- Low_Vegetative_Cover
+- Asian_Percent
+- Black_African_American_Percent
+- Redlining_Updated
+- Latino_Percent
+- English_Proficiency
+- Native_Indigenous
+- LMI_80_AMI
+- LMI_Poverty_Federal
+- Population_No_College
+- Household_Single_Parent
+- Unemployment_Rate
+- Asthma_ED_Rate
+- COPD_ED_Rate
+- Households_Disabled
+- Low_Birth_Weight
+- MI_Hospitalization_Rate
+- Health_Insurance_Rate
+- Age_Over_65
+- Premature_Deaths
+- Internet_Access
+- Home_Energy_Affordability
+- Homes_Built_Before_1960
+- Mobile_Homes
+- Rent_Percent_Income
+- Renter_Percent
