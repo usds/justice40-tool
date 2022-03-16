@@ -50,7 +50,7 @@ const MapIntroduction = () => {
         alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.ALT_TEXT_ICON4)}
       />
       <p>
-        {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA5)}
+        {EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE_PARA5}
       </p>
     </aside>
   );
