@@ -259,7 +259,7 @@ def write_excel_tab_about_comparator_scope(
 ):
     also_cejst.to_excel(writer, sheet_name=sheet_name)
     worksheet = writer.sheets[sheet_name[:31]]
-    worksheet.set_column(1, 1, 18, text_format)
+    worksheet.set_column(0, 1, 18, text_format)
     worksheet.write(len(also_cejst) + 1, 0, states_text)
 
 
@@ -324,7 +324,7 @@ def write_single_comparison_excel(
         write_excel_tab_about_comparator_scope(
             writer,
             "Comparator and CEJST overlap",
-            also_cejst,
+            also_cejst.rename("Comparator and CEJST overlap"),
             text_format,
             states_text,
         )
