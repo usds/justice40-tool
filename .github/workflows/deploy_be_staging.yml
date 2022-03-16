@@ -7,6 +7,7 @@ on:
 env:
   PR_NUMBER: ${{github.event.pull_request.number}}
   SHA_NUMBER: ${{github.event.pull_request.head.sha}}
+  CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
 jobs:
   generate-score-tiles:
     runs-on: ubuntu-latest
@@ -46,8 +47,6 @@ jobs:
       - name: Generate Score
         run: |
           poetry run python3 data_pipeline/application.py score-full-run
-        with:
-          CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
       - name: Generate Score Post
         run: |
           poetry run python3 data_pipeline/application.py generate-score-post -s aws
