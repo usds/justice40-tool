@@ -1,6 +1,6 @@
 import React from 'react';
-import MapIntroduction from './mapIntroduction';
 import AreaDetail from './AreaDetail';
+import SidePanelInfo from './SidePanelInfo';
 
 interface IMapInfoPanelProps {
     className: string,
@@ -13,7 +13,7 @@ const MapInfoPanel = ({className, featureProperties, selectedFeatureId}:IMapInfo
     <div className={className} >
       {(featureProperties && selectedFeatureId ) ?
           <AreaDetail properties={featureProperties} /> :
-          <MapIntroduction />
+          <SidePanelInfo />
       }
     </div>
   );
