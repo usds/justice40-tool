@@ -163,9 +163,9 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   PARA1: {
     id: 'explore.tool.side.panel.info.para1',
     defaultMessage: `
-      The goal of this tool is to identify communities that are maginalized, underserved and overburdened
+      The goal of this tool is to identify communities that are marginalized, underserved and overburdened
       by pollution. These communities will be at or above the combined threshold for one of more of 
-      eight categories of criteria
+      eight categories of criteria.
     `,
     description: `
       Navigate to the explore the tool page. When the map is in view, the side panel will show Things 
@@ -175,7 +175,7 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   PARA2: {
     id: 'explore.tool.side.panel.info.para2',
     defaultMessage: `
-      The tool uses census tract that represent about 4000 people and are the smallest unit of geography
+      The tool uses census tracts that represent about 4000 people and are the smallest unit of geography
       at which consistent data is currently available
     `,
     description: `
@@ -186,7 +186,7 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   PARA3: {
     id: 'explore.tool.side.panel.info.para3',
     defaultMessage: `
-      The tool ranks each census tract using percentiles which show ow much burden each tract has relative to
+      The tool ranks each census tract using percentiles which show how much burden each tract has relative to
       all the other tracts.
     `,
     description: `
@@ -197,22 +197,11 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   PARA4: {
     id: 'explore.tool.side.panel.info.para4',
     defaultMessage: `
-      Percents are also used to show the share of people in the tract that have certain socioeconomic characteristics.
+      Percents are also used to show the share of people in the tract that have certain socio-economic characteristics.
     `,
     description: `
       Navigate to the explore the tool page. When the map is in view, the side panel will show Things 
       to know, this is the forth paragraph of this side panel
-    `,
-  },
-  PARA5: {
-    id: 'explore.tool.side.panel.info.para5',
-    defaultMessage: `
-      Thresholds for each data source determine IF each tract is identified as experiencing burdens
-      disproportionally AND has those socioeconomic characteristics
-    `,
-    description: `
-      Navigate to the explore the tool page. When the map is in view, the side panel will show Things 
-      to know, this is the fifth paragraph of this side panel
     `,
   },
   ALT_TEXT_ICON1: {
@@ -257,6 +246,23 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
     `,
   },
 });
+
+// This follows new Localization Patterns (shared drive) - "Minimal Context"
+export const SIDE_PANEL_INITIAL_STATE_PARA5 = <FormattedMessage
+  id={'explore.tool.side.panel.info.para5'}
+  defaultMessage={ `
+    Thresholds for each data source determine {if} each tract is identified as experiencing burdens
+    disproportionally {and} has those socioeconomic characteristics
+  `}
+  description={ `
+    Navigate to the explore the tool page. When the map is in view, the side panel will show Things 
+    to know, this is the fifth paragraph of this side panel
+  `}
+  values={{
+    if: <strong>IF</strong>,
+    and: <strong>AND</strong>,
+  }}
+/>;
 
 export const SIDE_PANEL_VERION = {
   TITLE: <FormattedMessage
