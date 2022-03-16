@@ -1,0 +1,41 @@
+ADDITIONAL_DEMO_COLUMNS:
+- Urban Heuristic Flag
+- Expected building loss rate (Natural Hazards Risk Index) (percentile)
+- Expected agricultural loss rate (Natural Hazards Risk Index) (percentile)
+- Expected population loss rate (Natural Hazards Risk Index) (percentile)
+- Energy burden (percentile)
+- PM2.5 in the air (percentile)
+- Diesel particulate matter exposure (percentile)
+- Traffic proximity and volume (percentile)
+- Percent pre-1960s housing (lead paint indicator) (percentile)
+- Housing burden (percent) (percentile)
+- Proximity to hazardous waste sites (percentile)
+- Proximity to NPL sites (percentile)
+- Proximity to Risk Management Plan (RMP) facilities (percentile)
+- Wastewater discharge (percentile)
+- Current asthma among adults aged greater than or equal to 18 years (percentile)
+- Low life expectancy (percentile)
+- Diagnosed diabetes among adults aged greater than or equal to 18 years (percentile)
+- Coronary heart disease among adults aged greater than or equal to 18 years (percentile)
+- Low median household income as a percent of area median income (percentile)
+- Linguistic isolation (percent) (percentile)
+- Unemployment (percent) (percentile)
+- Percent of individuals < 100% Federal Poverty Line (percentile)
+- Climate Factor (Definition M)
+- Energy Factor (Definition M)
+- Transportation Factor (Definition M)
+- Housing Factor (Definition M)
+- Pollution Factor (Definition M)
+- Water Factor (Definition M)
+- Health Factor (Definition M)
+- Workforce Factor (Definition M)
+COMPARATOR_COLUMN: Energy-related alternative definition of communities
+COMPARATOR_FILE: /Users/emmausds/j40/data_pipeline/data/dataset/energy_definition_alternative_draft/usa.csv
+DEMOGRAPHIC_COLUMNS:
+- Median household income in the past 12 months
+DEMOGRAPHIC_FILE: /Users/emmausds/Desktop/justice40-tool/data/data-pipeline/data_pipeline/data/dataset/census_acs_2019/usa.csv
+GEOID_COLUMN: GEOID10_TRACT
+OUTPUT_DATA_PATH: output/alternative_definition
+SCORE_COLUMN: Definition M (communities)
+SCORE_FILE: /Users/emmausds/Desktop/justice40-tool/data/data-pipeline/data_pipeline/data/score/csv/full/usa.csv
+TOTAL_POPULATION_COLUMN: Total population in 2009 (island areas) and 2019 (states and PR)
