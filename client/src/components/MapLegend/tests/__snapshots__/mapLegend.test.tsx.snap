@@ -19,7 +19,7 @@ exports[`rendering of the MapLegend checks if snapshots have changed 1`] = `
         >
           
       Communities identified as disadvantaged by the tool are those that are marginalized, underserved, 
-      and overburdened by pollution. These communities are at or above the combined thresholds in one or 
+      and overburdened by pollution. These communities are at or above the thresholds in one or 
       more of eight categories of criteria.
     
         </p>

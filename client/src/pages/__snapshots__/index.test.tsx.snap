@@ -346,7 +346,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <a
                     class="usa-link usa-link--external"
                     data-cy=""
-                    href="https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/27/executive-order-on-tackling-the-climate-crisis-at-home-and-abroad/"
+                    href="https://www.federalregister.gov/documents/2021/02/01/2021-02177/tackling-the-climate-crisis-at-home-and-abroad#:~:text=Sec.%20223.%20Justice40,40-percent%20goal."
                     rel="noreferrer"
                     target="_blank"
                   >
@@ -360,7 +360,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
     to create a Climate and Economic Justice Screening Tool. The purpose of the tool is to help
     Federal agencies identify disadvantaged communities that are marginalized, underserved, and 
     overburdened by pollution. The current version of the tool provides socioeconomic, environmental, 
-    health and climate information to inform decisions that may affect these communities. The 
+    and climate information to inform decisions that may affect these communities. The 
     tool identifies disadvantaged communities through publicly-available, nationally-consistent datasets.
     
                 </p>
@@ -423,7 +423,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <a
                     class="usa-link usa-link--external"
                     data-cy=""
-                    href="https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/27/executive-order-on-tackling-the-climate-crisis-at-home-and-abroad/"
+                    href="https://www.federalregister.gov/documents/2021/02/01/2021-02177/tackling-the-climate-crisis-at-home-and-abroad#:~:text=Sec.%20223.%20Justice40,40-percent%20goal."
                     rel="noreferrer"
                     target="_blank"
                   >

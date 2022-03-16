@@ -22,7 +22,7 @@ export const PAGE = defineMessages({
       which publicly-available and nationally-consistent datasets can be consistently displayed on the 
       tool. Census tract geographical boundaries are determined by the U.S. Census Bureau once every ten 
       years. This tool utilizes the census tract boundaries from 2010 because they match the datasets used 
-      in the tool. The U.S. Census Bureau will update these tract boundaries in 2020.
+      in the tool. The U.S. Census Bureau will update these census tract boundaries in 2020.
     `,
     description: 'methodology page paragraph',
   },
@@ -31,7 +31,7 @@ export const PAGE = defineMessages({
     defaultMessage: `
       Communities are identified as disadvantaged by the current version of the tool for the purposes of 
       the Justice40 Initiative if they are located in census tracts that are at or above the 
-      combined thresholds in one or more of eight categories of criteria below. 
+      thresholds in one or more of eight categories of criteria below. 
     `,
     description: 'methodology page explanation of the categories',
   },
@@ -54,7 +54,7 @@ export const FORMULA = {
   IF: <FormattedMessage
     id={'methodology.page.formula.first'}
     defaultMessage={ `
-      {if} the tract is above the threshold for one or more environmental or climate indicators
+      {if} the census tract is above the threshold for one or more environmental or climate indicators
       `}
     description={'the first part of the formula used in the methodology'}
     values= {{
@@ -64,7 +64,7 @@ export const FORMULA = {
   AND: <FormattedMessage
     id={'methodology.page.formula.second'}
     defaultMessage={ `
-      {and} the tract is above the threshold for the socioeconomic indicators
+      {and} the census tract is above the threshold for the socioeconomic indicators
     `}
     description={'the second part of the formula used in the methodology'}
     values= {{
@@ -82,7 +82,7 @@ export const FORMULA = {
 };
 
 // Download Package
-export const DOWNLOAD_FILE_SIZE = '111MB';
+export const DOWNLOAD_FILE_SIZE = '52MB unzipped';
 export const DOWNLOAD_LAST_UPDATED = '2/18/22';
 export const DOWNLOAD_LAST_UPDATED_ES = '18/2/22';
 export const VERSION_NUMBER = '0.1';
@@ -365,8 +365,8 @@ export const CATEGORIES = {
       values= {{
         if: <strong>IF</strong>,
         proxHaz: <a href='#prox-haz'>proximity to hazardous waste facilities</a>,
-        proxNPL: <a href='#prox-npl'>proximity to NPL sites</a>,
-        proxRMP: <a href='#prox-rmp'>proximity to RMP facilities</a>,
+        proxNPL: <a href='#prox-npl'>proximity to National Priorities List (NPL) sites</a>,
+        proxRMP: <a href='#prox-rmp'>proximity to Risk Management Plan (RMP) facilities</a>,
       }}
     />,
     AND: CATEGORY_AND_CLAUSE.LOW_INC_65_WHEN_HIGH_ED_LTE_20,
@@ -463,7 +463,7 @@ export const CATEGORIES = {
     IF: <FormattedMessage
       id= {'indicator.categories.work.dev.if'}
       defaultMessage= {`
-        {if} at or above the 90th percentile for {lowMedInc} as a percent of area median income OR 
+        {if} at or above the 90th percentile for {lowMedInc} as a percentage of area median income OR 
         {linIso} OR
         {unemploy} OR
         percent individuals in households at or below 100% Federal {poverty} level
@@ -854,7 +854,8 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.exp.agr.loss.rate.description.text'}
       defaultMessage= {`
-        Percent of agriculture value at risk from losses due to natural hazards that have some link 
+        Percent of agriculture value at risk from losses due to fourteen types of 
+        natural hazards that have some link 
         to climate change: avalanche, coastal flooding, 
         cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong 
         wind, tornado, wildfire, and winter weather. Rate calculated by dividing the agriculture value at risk in 
@@ -877,7 +878,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.exp.bld.loss.rate.description.text'}
       defaultMessage= {`
-        Percent of building value at risk from losses due to natural hazards 
+        Percent of building value at risk from losses due to fourteen types of natural hazards 
         that have some link to climate change: avalanche, coastal flooding, 
         cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong 
         wind, tornado, wildfire, and winter weather. Rate calculated by dividing the building value at risk in 
@@ -900,7 +901,8 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.exp.pop.loss.rate.description.text'}
       defaultMessage= {`
-        Rate relative to the population in fatalities and injuries due to natural hazards each year
+        Rate relative to the population of fatalities and injuries due to fourteen types of
+        natural hazards each year
         that have some link to climate change: avalanche, 
         coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, 
         riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined 
@@ -928,7 +930,7 @@ export const INDICATORS = [
     indicator: 'Energy burden',
     description: <FormattedMessage
       id= {'category.energy.burden.description.text'}
-      defaultMessage= {`Average annual energy cost per household ($) divided by household average income.`}
+      defaultMessage= {`Average annual energy cost per household ($) divided by average household income.`}
       description= {'description text for energy burden'}
     />,
     usedIn: CATEGORIES.CLEAN_ENERGY.METHODOLOGY,
@@ -1028,7 +1030,7 @@ export const INDICATORS = [
       id= {'category.lead.paint.description.text'}
       defaultMessage= {`
         Percent of housing units built pre-1960, used as an indicator of potential lead paint exposure in
-        tracts with median home values less than the 90th percentile.
+        census tracts with median home values less than the 90th percentile.
       `}
       description= {'description text for lead paint'}
     />,
@@ -1218,10 +1220,10 @@ export const INDICATORS = [
         note: <p><strong>Note:</strong>{`
           Unlike most of the other datasets, high values of this data indicate low burdens. For 
           percentile calculations of burden, the percentile is calculated in reverse order, so that the 
-          tract with the highest life expectancy relative to area life expectancy (lowest burden on this 
-          measure) is at the 0th percentile, and the tract with the lowest life expectancy relative to 
-          area life expectancy (highest burden on this measure) is at the 100th percentile. Tracts with 
-          the highest number have the lowest life expectancy.
+          census tract with the highest life expectancy relative to area life expectancy (lowest burden 
+            on this measure) is at the 0th percentile, and the census tract with the lowest life 
+          expectancy relative to area life expectancy (highest burden on this measure) is at the 
+          100th percentile. Census tracts with the highest number have the lowest life expectancy.
         `}</p>,
       }}
     />,
@@ -1248,9 +1250,9 @@ export const INDICATORS = [
         note: <p><strong>Note:</strong>{`
           Unlike most of the other datasets, high values of this data indicate low burdens. For 
           percentile calculations of burden, the percentile is calculated in reverse order, so that the 
-          tract with the highest median income relative to area median income (lowest burden on this 
-          measure) is at the 0th percentile, and the tract with the lowest median income relative to 
-          area median income (highest burden on this measure) is at the 100th percentile. Tracts with 
+          census tract with the highest median income relative to area median income (lowest burden on this 
+          measure) is at the 0th percentile, and the census tract with the lowest median income relative to 
+          area median income (highest burden on this measure) is at the 100th percentile. Census tracts with 
           the highest number have the lowest median income.
         `}</p>,
       }}
@@ -1270,11 +1272,11 @@ export const INDICATORS = [
   },
   {
     domID: 'ling-iso',
-    indicator: 'Linguistic Isolation',
+    indicator: 'Linguistic isolation',
     description: <FormattedMessage
       id= {'category.linguistic.iso.description.text'}
       defaultMessage= {`
-        Percent of households, which are households, where no one over the age fourteen speaks English well.
+        Percent of households where no one over the age 14 speaks English well.
       `}
       description= {'description text for linguistic isolation'}
     />,
@@ -1293,7 +1295,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.unemploy.description.text'}
       defaultMessage= {`
-      Number of unemployed people as a percentage of the civilian labor force
+      Number of unemployed people as a percentage of the civilian labor force.
       `}
       description= {'description text for unemployment'}
     />,
@@ -1316,7 +1318,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'category.poverty.description.text'}
       defaultMessage= {`
-        Percent of a tract's population in households where the household income is at or below 100% of
+        Percent of a census tract's population in households where the household income is at or below 100% of
         the Federal poverty level.
       `}
       description= {'description text for poverty'}
