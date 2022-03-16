@@ -690,7 +690,7 @@ export const NOTE_ON_TRIBAL_NATIONS = {
       that data is available (see our {dataMethLink} page for more information). CEQ is engaging 
       in consultation and coordination with Tribal Nations on the beta version of the tool to provide 
       Tribal Nations with meaningful opportunities for input, consistent with CEQ’s {actionPlanTribalNation},
-      {bidenMemoNat2Nat}, and Executive Order 13175 on Consultation {coordinateTribal}.
+      {bidenMemoNat2Nat}, and Executive Order 13175 on {coordinateTribal}.
     `}
     description={`tribal nations paragraph 1`}
     values={{
@@ -713,7 +713,7 @@ export const NOTE_ON_TRIBAL_NATIONS = {
       />,
       coordinateTribal: <LinkTypeWrapper
         linkText= {`
-        Coordination With Indian Tribal Governments
+        Consulation and Coordination With Indian Tribal Governments
         `}
         internal= {false}
         url= {`
