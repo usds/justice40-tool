@@ -1,71 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`simulate a click on map hould match the snapshot of the MapInfoPanel component 1`] = `<DocumentFragment />`;
-
-exports[`simulate app starting up, no click on map should match the snapshot of the MapIntroduction component 1`] = `
+exports[`rendering of the component expects the render to match snapshot 1`] = `
 <DocumentFragment>
-  <div
-    class="someClassName"
-  >
-    <aside>
-      <header>
-        Things to know
-      </header>
-      <p>
-        
+  <aside>
+    <header>
+      Things to know
+    </header>
+    <p>
+      
       The goal of this tool is to identify communities that are maginalized, underserved and overburdened
       by pollution. These communities will be at or above the combined threshold for one of more of 
       eight categories of criteria
     
-      </p>
-      <img
-        alt="
+    </p>
+    <img
+      alt="
       An icon that has depicts pieces of a block selected mimicing the census block tracts
     "
-        src="test-file-stub"
-      />
-      <p>
-        
+      src="test-file-stub"
+    />
+    <p>
+      
       The tool uses census tract that represent about 4000 people and are the smallest unit of geography
       at which consistent data is currently available
     
-      </p>
-      <img
-        alt="
+    </p>
+    <img
+      alt="
       An icon that a bell curve or gaussian distribution
     "
-        src="test-file-stub"
-      />
-      <p>
-        
+      src="test-file-stub"
+    />
+    <p>
+      
       The tool ranks each census tract using percentiles which show ow much burden each tract has relative to
       all the other tracts.
     
-      </p>
-      <img
-        alt="
+    </p>
+    <img
+      alt="
       An icon that depicts a part of pie chart being removed
     "
-        src="test-file-stub"
-      />
-      <p>
-        
+      src="test-file-stub"
+    />
+    <p>
+      
       Percents are also used to show the share of people in the tract that have certain socioeconomic characteristics.
     
-      </p>
-      <img
-        alt="
+    </p>
+    <img
+      alt="
       An icon that has an up arrow and a down arrow
     "
-        src="test-file-stub"
-      />
-      <p>
-        
+      src="test-file-stub"
+    />
+    <p>
+      
       Thresholds for each data source determine IF each tract is identified as experiencing burdens
       disproportionally AND has those socioeconomic characteristics
     
-      </p>
-    </aside>
-  </div>
+    </p>
+  </aside>
 </DocumentFragment>
 `;
