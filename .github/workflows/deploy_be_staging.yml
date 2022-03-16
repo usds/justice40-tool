@@ -44,10 +44,10 @@ jobs:
           aws-secret-access-key: ${{ secrets.DATA_DEV_AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: Generate Score
-        with:
-          CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
         run: |
           poetry run python3 data_pipeline/application.py score-full-run
+        with:
+          CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
       - name: Generate Score Post
         run: |
           poetry run python3 data_pipeline/application.py generate-score-post -s aws
