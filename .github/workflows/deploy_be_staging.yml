@@ -1,0 +1,113 @@
+name: Deploy Backend Staging
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "data/**"
+env:
+  PR_NUMBER: ${{github.event.pull_request.number}}
+  SHA_NUMBER: ${{github.event.pull_request.head.sha}}
+jobs:
+  generate-score-tiles:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: data/data-pipeline
+    strategy:
+      matrix:
+        python-version: [3.9]
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+      - name: Print variables to help debug
+        uses: hmarr/debug-action@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Load cached Poetry installation
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pypoetry/virtualenvs
+          key: env-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}-${{ hashFiles('.github/workflows/deploy_be_staging.yml') }}
+      - name: Install poetry
+        uses: snok/install-poetry@v1
+      - name: Print Poetry settings
+        run: poetry show -v
+      - name: Install dependencies
+        run: poetry install
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+      - name: Install s4cmd
+        run: poetry add s4cmd
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.DATA_DEV_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.DATA_DEV_AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: Generate Score
+        run: |
+          poetry run python3 data_pipeline/application.py score-full-run
+      - name: Generate Score Post
+        run: |
+          poetry run python3 data_pipeline/application.py generate-score-post -s aws
+      - name: Deploy Score to Geoplatform AWS
+        run: |
+          poetry run s4cmd put ./data_pipeline/data/score/csv/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/csv --recursive --API-ACL=public-read --num-threads=50
+          poetry run s4cmd put ./data_pipeline/data/score/downloadable/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/downloadable --recursive --API-ACL=public-read --num-threads=50
+      - name: Update PR with deployed Score URLs
+        uses: mshick/add-pr-comment@v1
+        with:
+          # Deploy to S3 for the staging URL
+          message: |
+            ** Score Deployed! **   
+            Find it here: 
+            - Score Full usa.csv: https://justice40-data.s3.amazonaws.com/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/csv/full/usa.csv
+            - Download Zip Packet: https://justice40-data.s3.amazonaws.com/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/downloadable/Screening_Tool_Data.zip
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: "github-actions[bot]"
+          allow-repeats: false
+      - name: Install GDAL/ogr2ogr
+        run: |
+          sudo add-apt-repository ppa:ubuntugis/ppa
+          sudo apt-get update
+          sudo apt-get -y install gdal-bin
+          ogrinfo --version
+      - name: Set timezone for tippecanoe
+        uses: szenius/set-timezone@v1.0
+        with:
+          timezoneLinux: "America/Los_Angeles"
+      - name: Get tippecanoe
+        run: |
+          sudo apt-get install -y software-properties-common libsqlite3-dev zlib1g-dev
+          sudo apt-add-repository -y ppa:git-core/ppa
+          sudo mkdir -p /tmp/tippecanoe-src
+          sudo git clone https://github.com/mapbox/tippecanoe.git /tmp/tippecanoe-src
+      - name: Make tippecanoe
+        working-directory: /tmp/tippecanoe-src
+        run: |
+          sudo /usr/bin/bash -c make
+          mkdir -p /usr/local/bin
+          cp tippecanoe /usr/local/bin/tippecanoe
+          tippecanoe -v
+      - name: Generate Score Geo
+        run: |
+          poetry run python3 data_pipeline/application.py geo-score
+      - name: Generate Tiles
+        run: |
+          poetry run python3 data_pipeline/application.py generate-map-tiles
+      - name: Deploy Map to Geoplatform AWS
+        run: |
+          poetry run s4cmd put ./data_pipeline/data/score/geojson/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/geojson --recursive  --API-ACL=public-read --num-threads=50
+          poetry run s4cmd put ./data_pipeline/data/score/shapefile/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/shapefile --recursive  --API-ACL=public-read --num-threads=50
+          poetry run s4cmd put ./data_pipeline/data/score/tiles/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/tiles --recursive  --API-ACL=public-read --num-threads=50
+      - name: Update PR with deployed Map URL
+        uses: mshick/add-pr-comment@v1
+        with:
+          # Deploy to S3 for the staging URL
+          message: |
+            ** Map Deployed! **   
+            Find it here: https://justice40-data.s3.amazonaws.com/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/tiles
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: "github-actions[bot]"
+          allow-repeats: false
