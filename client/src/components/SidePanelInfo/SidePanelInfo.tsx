@@ -18,38 +18,39 @@ const MapIntroduction = () => {
 
   return (
     <aside className={styles.sidePanelInfoContainer}>
-      <header className={styles.sidePanelInfoHeading}>
+
+      <header tabIndex={0} className={styles.sidePanelInfoHeading}>
         {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.TITLE)}
       </header>
-      <p>
+      <p tabIndex={0}>
         {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA1)}
       </p>
-      <img className={styles.sidePanelInfoIcon}
+      <img tabIndex={0} className={styles.sidePanelInfoIcon}
         src={puzzle}
         alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.ALT_TEXT_ICON1)}
       />
-      <p>
+      <p tabIndex={0}>
         {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA2)}
       </p>
-      <img className={styles.sidePanelInfoIcon}
+      <img tabIndex={0} className={styles.sidePanelInfoIcon}
         src={bellCurve}
         alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.ALT_TEXT_ICON2)}
       />
-      <p>
+      <p tabIndex={0}>
         {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA3)}
       </p>
-      <img className={styles.sidePanelInfoIcon}
+      <img tabIndex={0} className={styles.sidePanelInfoIcon}
         src={pieChart}
         alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.ALT_TEXT_ICON3)}
       />
-      <p>
+      <p tabIndex={0}>
         {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA4)}
       </p>
-      <img className={styles.sidePanelInfoIcon}
+      <img tabIndex={0} className={styles.sidePanelInfoIcon}
         src={upDown}
         alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.ALT_TEXT_ICON4)}
       />
-      <p>
+      <p tabIndex={0}>
         {EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE_PARA5}
       </p>
     </aside>
