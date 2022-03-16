@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from typing import List
 import censusdata
@@ -45,6 +46,7 @@ def retrieve_census_acs_data(
                         [("state", fips), ("county", "*"), ("tract", "*")]
                     ),
                     var=variables,
+                    key=os.environ.get("CENSUS_API_KEY"),
                 )
                 dfs.append(response)
 

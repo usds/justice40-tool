@@ -35,10 +35,8 @@ jobs:
       - name: Print Poetry settings
         run: poetry show -v
       - name: Install dependencies
-        run: poetry install
+        run: poetry install && poetry add s4cmd
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-      - name: Install s4cmd
-        run: poetry add s4cmd
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
