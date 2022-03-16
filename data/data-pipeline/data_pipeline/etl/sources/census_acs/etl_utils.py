@@ -34,8 +34,11 @@ def retrieve_census_acs_data(
                 f"Skipping download for state/territory with FIPS code {fips}"
             )
         else:
+            census_api_key = ""
+            if os.environ.get("CENSUS_API_KEY"):
+                census_api_key = "with API key"
             logger.info(
-                f"Downloading data for state/territory with FIPS code {fips}"
+                f"Downloading data for state/territory with FIPS code {fips} {census_api_key}"
             )
 
             try:
