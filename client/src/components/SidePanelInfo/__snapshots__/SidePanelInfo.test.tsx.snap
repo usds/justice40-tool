@@ -3,10 +3,14 @@
 exports[`rendering of the component expects the render to match snapshot 1`] = `
 <DocumentFragment>
   <aside>
-    <header>
+    <header
+      tabindex="0"
+    >
       Things to know
     </header>
-    <p>
+    <p
+      tabindex="0"
+    >
       
       The goal of this tool is to identify communities that are marginalized, underserved and overburdened
       by pollution. These communities will be at or above the combined threshold for one of more of 
@@ -18,8 +22,11 @@ exports[`rendering of the component expects the render to match snapshot 1`] = `
       An icon that has depicts pieces of a block selected mimicing the census block tracts
     "
       src="test-file-stub"
+      tabindex="0"
     />
-    <p>
+    <p
+      tabindex="0"
+    >
       
       The tool uses census tracts that represent about 4000 people and are the smallest unit of geography
       at which consistent data is currently available
@@ -30,8 +37,11 @@ exports[`rendering of the component expects the render to match snapshot 1`] = `
       An icon that a bell curve or gaussian distribution
     "
       src="test-file-stub"
+      tabindex="0"
     />
-    <p>
+    <p
+      tabindex="0"
+    >
       
       The tool ranks each census tract using percentiles which show how much burden each tract has relative to
       all the other tracts.
@@ -42,8 +52,11 @@ exports[`rendering of the component expects the render to match snapshot 1`] = `
       An icon that depicts a part of pie chart being removed
     "
       src="test-file-stub"
+      tabindex="0"
     />
-    <p>
+    <p
+      tabindex="0"
+    >
       
       Percents are also used to show the share of people in the tract that have certain socio-economic characteristics.
     
@@ -53,8 +66,11 @@ exports[`rendering of the component expects the render to match snapshot 1`] = `
       An icon that has an up arrow and a down arrow
     "
       src="test-file-stub"
+      tabindex="0"
     />
-    <p>
+    <p
+      tabindex="0"
+    >
       
     Thresholds for each data source determine 
       <strong>
