@@ -2,6 +2,62 @@ import pandas as pd
 from data_pipeline.score import field_names
 
 
+FIPS_MAP = {
+    "53": "WA",
+    "10": "DE",
+    "11": "DC",
+    "55": "WI",
+    "54": "WV",
+    "15": "HI",
+    "12": "FL",
+    "56": "WY",
+    "72": "PR",
+    "34": "NJ",
+    "35": "NM",
+    "48": "TX",
+    "22": "LA",
+    "37": "NC",
+    "38": "ND",
+    "31": "NE",
+    "47": "TN",
+    "36": "NY",
+    "42": "PA",
+    "02": "AK",
+    "32": "NV",
+    "33": "NH",
+    "51": "VA",
+    "08": "CO",
+    "06": "CA",
+    "01": "AL",
+    "05": "AR",
+    "50": "VT",
+    "17": "IL",
+    "13": "GA",
+    "18": "IN",
+    "19": "IA",
+    "25": "MA",
+    "04": "AZ",
+    "16": "ID",
+    "09": "CT",
+    "23": "ME",
+    "24": "MD",
+    "40": "OK",
+    "39": "OH",
+    "49": "UT",
+    "29": "MO",
+    "27": "MN",
+    "26": "MI",
+    "44": "RI",
+    "20": "KS",
+    "30": "MT",
+    "28": "MS",
+    "45": "SC",
+    "21": "KY",
+    "41": "OR",
+    "46": "SD",
+}
+
+
 def read_file(
     file_path: str, columns: list, geoid: str = field_names.GEOID_TRACT_FIELD
 ) -> pd.DataFrame:
@@ -111,6 +167,31 @@ def format_multi_index_for_excel(
     return df
 
 
+def get_final_summary_info(
+    population: pd.DataFrame,
+    comparator_file: str,
+    geoid_col: str,
+) -> tuple[pd.DataFrame, str]:
+    also_cejst = population.loc[(True, True)] / population.loc[(True,)].sum()
+
+    states_represented = (
+        pd.read_csv(
+            comparator_file, usecols=[geoid_col], dtype={geoid_col: str}
+        )[geoid_col]
+        .str[:2]
+        .unique()
+    )
+    states = ", ".join(
+        [
+            FIPS_MAP[state]
+            if (state in FIPS_MAP)
+            else f"territory (fips {state})"
+            for state in states_represented
+        ]
+    )
+    return also_cejst, states
+
+
 def construct_weighted_statistics(
     _joined_frame: pd.DataFrame,
     weighting_column: str,
@@ -169,12 +250,27 @@ def write_excel_tab(
             worksheet.set_column(i, i + 1, 18, text_format)
 
 
+def write_excel_tab_about_comparator_scope(
+    writer: pd.ExcelWriter,
+    sheet_name: str,
+    also_cejst: pd.DataFrame,
+    text_format,
+    states_text: str,
+):
+    also_cejst.to_excel(writer, sheet_name=sheet_name)
+    worksheet = writer.sheets[sheet_name[:31]]
+    worksheet.set_column(1, 1, 18, text_format)
+    worksheet.write(len(also_cejst) + 1, 0, states_text)
+
+
 def write_single_comparison_excel(
     output_excel: str,
     population: pd.DataFrame,
     tract_level_by_identification: pd.DataFrame,
     population_weighted_stats: pd.DataFrame,
     tract_level_by_grouping_formatted: pd.DataFrame,
+    also_cejst: pd.DataFrame,
+    states_text: str,
 ):
     """Writes the comparison excel file.
 
@@ -223,4 +319,12 @@ def write_single_comparison_excel(
             tract_level_by_grouping_formatted,
             text_format,
             use_index=False,
+        )
+
+        write_excel_tab_about_comparator_scope(
+            writer,
+            "Comparator and CEJST overlap",
+            also_cejst,
+            text_format,
+            states_text,
         )
