@@ -107,4 +107,4 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: "github-actions[bot]" # The user.login for temporary GitHub tokens
           allow-repeats: false # This is the default
-        if: contains(steps.changed-files.outputs.modified_files, 'client/src/intl/es.json')
+        if: contains(steps.changed-files.outputs.modified_files, 'client/src/intl/en.json')
