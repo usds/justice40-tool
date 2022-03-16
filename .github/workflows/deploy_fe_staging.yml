@@ -8,93 +8,93 @@ env:
   PR_NUMBER: ${{github.event.pull_request.number}}
   WORKING_DIRECTORY: ./client
 jobs:
-  # build:
-  #   runs-on: ubuntu-latest
-  #   defaults:
-  #     run:
-  #       working-directory: client
-  #   strategy:
-  #     matrix:
-  #       node-version: [14.x]
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Use Node.js ${{ matrix.node-version }}
-  #       uses: actions/setup-node@v2
-  #       with:
-  #         node-version: ${{ matrix.node-version }}
-  #     - name: Set DESTINATION_FOLDER for branch
-  #       run: |
-  #         echo "DESTINATION_FOLDER=$(echo $PR_NUMBER-$GITHUB_SHA | cut -c 1-11)" >> $GITHUB_ENV
-  #     - name: Install
-  #       run: npm ci
-  #     - name: Build
-  #       run: npm run build --if-present
-  #       env:
-  #         # See the client readme for more info on environment variables:
-  #         # https://github.com/usds/justice40-tool/blob/main/client/README.md
-  #         DATA_SOURCE: cdn
-  #         SITE_URL: "${{ secrets.STAGE_SITE_URL }}"
-  #         PATH_PREFIX: "/justice40-tool/${{env.DESTINATION_FOLDER}}"
-  #         MAPBOX_STYLES_READ_TOKEN: "${{ secrets.MAPBOX_STYLES_READ_TOKEN }}"
-  #     - name: Get directory contents
-  #       run: ls -la public
-  #     - name: Lint
-  #       run: npm run lint
-  #       # Disabling for now due to jsonlint - TODO: put this back
-  #     # - name: License Check
-  #     #   run: npm run licenses
-  #     - name: Test
-  #       run: npm test
-  #     - name: Check for security vulnerabilities
-  #       run: npm audit --production
-  #     - name: Cypress / Gherkin integration tests 🌃
-  #       uses: cypress-io/github-action@v2
-  #       with:
-  #         working-directory: ${{env.WORKING_DIRECTORY}}
-  #         start: npm start
-  #         wait-on: "http://localhost:8000"
-  #     - name: Upload Artifact
-  #       uses: actions/upload-artifact@v2
-  #       with:
-  #         name: J40Static
-  #         # Upload-artifact does not support the default working directory
-  #         # See more: https://github.com/actions/upload-artifact/issues/87
-  #         path: ./client/public
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: client
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Set DESTINATION_FOLDER for branch
+        run: |
+          echo "DESTINATION_FOLDER=$(echo $PR_NUMBER-$GITHUB_SHA | cut -c 1-11)" >> $GITHUB_ENV
+      - name: Install
+        run: npm ci
+      - name: Build
+        run: npm run build --if-present
+        env:
+          # See the client readme for more info on environment variables:
+          # https://github.com/usds/justice40-tool/blob/main/client/README.md
+          DATA_SOURCE: cdn
+          SITE_URL: "${{ secrets.STAGE_SITE_URL }}"
+          PATH_PREFIX: "/justice40-tool/${{env.DESTINATION_FOLDER}}"
+          MAPBOX_STYLES_READ_TOKEN: "${{ secrets.MAPBOX_STYLES_READ_TOKEN }}"
+      - name: Get directory contents
+        run: ls -la public
+      - name: Lint
+        run: npm run lint
+        # Disabling for now due to jsonlint - TODO: put this back
+      # - name: License Check
+      #   run: npm run licenses
+      - name: Test
+        run: npm test
+      - name: Check for security vulnerabilities
+        run: npm audit --production
+      - name: Cypress / Gherkin integration tests 🌃
+        uses: cypress-io/github-action@v2
+        with:
+          working-directory: ${{env.WORKING_DIRECTORY}}
+          start: npm start
+          wait-on: "http://localhost:8000"
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: J40Static
+          # Upload-artifact does not support the default working directory
+          # See more: https://github.com/actions/upload-artifact/issues/87
+          path: ./client/public
   deploy:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      # - name: Checkout source
-      #   uses: actions/checkout@v2
-      # - name: Download Artifacts
-      #   uses: actions/download-artifact@v2
-      #   with:
-      #     name: J40Static
-      #     path: ./public
-      # - name: Set DESTINATION_FOLDER for branch
-      #   run: |
-      #     echo "DESTINATION_FOLDER=$(echo $PR_NUMBER-$GITHUB_SHA | cut -c 1-11)" >> $GITHUB_ENV
-      # - name: Configure AWS Credentials
-      #   uses: aws-actions/configure-aws-credentials@v1
-      #   with:
-      #     aws-access-key-id: ${{ secrets.CLIENT_DEV_AWS_ACCESS_KEY_ID }}
-      #     aws-secret-access-key: ${{ secrets.CLIENT_DEV_AWS_SECRET_ACCESS_KEY }}
-      #     aws-region: us-east-1
-      # - name: Deploy to Geoplatform AWS
-      #   run: aws s3 sync ./public/ s3://usds-geoplatform-justice40-website/justice40-tool/${{env.DESTINATION_FOLDER}} --acl public-read --delete
-      # - name: Update PR with deployed URL
-      #   uses: mshick/add-pr-comment@v1
-      #   with:
-      #     # Deploy to S3 for the staging URL
-      #     message: |
-      #       **🚢 PR Deployed! 🚢**   
-      #       Find it here: http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/justice40-tool/${{env.DESTINATION_FOLDER}}/en/cejst/ !
-      #     repo-token: ${{ secrets.GITHUB_TOKEN }}
-      #     repo-token-user-login: "github-actions[bot]" # The user.login for temporary GitHub tokens
-      #     allow-repeats: false # This is the default
-      # - name: Printing deployment URLs
-      #   run: |
-      #     echo "Github pages: https://usds.github.io/justice40-tool/$DESTINATION_FOLDER/en"
+      - name: Checkout source
+        uses: actions/checkout@v2
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: J40Static
+          path: ./public
+      - name: Set DESTINATION_FOLDER for branch
+        run: |
+          echo "DESTINATION_FOLDER=$(echo $PR_NUMBER-$GITHUB_SHA | cut -c 1-11)" >> $GITHUB_ENV
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.CLIENT_DEV_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.CLIENT_DEV_AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: Deploy to Geoplatform AWS
+        run: aws s3 sync ./public/ s3://usds-geoplatform-justice40-website/justice40-tool/${{env.DESTINATION_FOLDER}} --acl public-read --delete
+      - name: Update PR with deployed URL
+        uses: mshick/add-pr-comment@v1
+        with:
+          # Deploy to S3 for the staging URL
+          message: |
+            **🚢 PR Deployed! 🚢**   
+            Find it here: http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/justice40-tool/${{env.DESTINATION_FOLDER}}/en/cejst/ !
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: "github-actions[bot]" # The user.login for temporary GitHub tokens
+          allow-repeats: false # This is the default
+      - name: Printing deployment URLs
+        run: |
+          echo "Github pages: https://usds.github.io/justice40-tool/$DESTINATION_FOLDER/en"
       - name: Get changed files using defaults
         id: changed-files
         uses: tj-actions/changed-files@v18.1
