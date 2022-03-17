@@ -6,7 +6,8 @@ on:
         description: This will rebuild the data sources and regenerate the score, are you sure you want to proceed? (Y/n)
         default: n
         required: true
-
+env:
+  BE_CDN_ID: E1324VDMNCO97N
 jobs:
   deploy_data:
     runs-on: ubuntu-latest
@@ -76,3 +77,11 @@ jobs:
           poetry run s4cmd put ./data_pipeline/data/score/geojson/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/geojson --recursive --force  --API-ACL=public-read --num-threads=250
           poetry run s4cmd put ./data_pipeline/data/score/shapefile/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/shapefile --recursive --force  --API-ACL=public-read
           poetry run s4cmd put ./data_pipeline/data/score/tiles/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/tiles --recursive --force  --API-ACL=public-read --num-threads=250
+      - name: Invalidate cache on AWS CDNs
+        uses: chetan/invalidate-cloudfront-action@master
+        env:
+          DISTRIBUTION: ${{env.BE_CDN_ID}}
+          PATHS: "/*"
+          AWS_REGION: "us-east-1"
+          AWS_ACCESS_KEY_ID: ${{ secrets.DATA_DEV_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.DATA_DEV_AWS_SECRET_ACCESS_KEY }}
