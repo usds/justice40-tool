@@ -40,6 +40,7 @@ jobs:
       - name: Install GDAL/ogr2ogr
         run: |
           sudo add-apt-repository ppa:ubuntugis/ppa
+          sudo apt-get update
           sudo apt-get -y install gdal-bin
           ogrinfo --version
       - name: Set timezone for tippecanoe
