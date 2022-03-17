@@ -25,12 +25,18 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Setup Poetry
-        uses: Gr1N/setup-poetry@v7
-      - name: Print poetry version
-        run: poetry --version
+      - name: Load cached Poetry installation
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pypoetry/virtualenvs
+          key: env-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}-${{ hashFiles('.github/workflows/combine-tilefy.yml') }}
+      - name: Install poetry
+        uses: snok/install-poetry@v1
+      - name: Print Poetry settings
+        run: poetry show -v
       - name: Install dependencies
-        run: poetry install
+        run: poetry add s4cmd && poetry install
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
       - name: Install GDAL/ogr2ogr
         run: |
           sudo add-apt-repository ppa:ubuntugis/ppa
@@ -65,7 +71,7 @@ jobs:
           aws-region: us-east-1
       - name: Deploy to Geoplatform AWS
         run: |
-          aws s3 rm s3://justice40-data/data-pipeline/data/score/tiles --recursive
-          aws s3 cp ./data_pipeline/data/score/tiles/ s3://justice40-data/data-pipeline/data/score/tiles --recursive --acl public-read
-          aws s3 sync ./data_pipeline/data/score/geojson/ s3://justice40-data/data-pipeline/data/score/geojson --acl public-read --delete
-          aws s3 sync ./data_pipeline/data/score/shapefile/ s3://justice40-data/data-pipeline/data/score/shapefile --acl public-read --delete
+          poetry run s4cmd del s3://justice40-data/data-pipeline/data/score/tiles --recursive --num-threads=250
+          poetry run s4cmd put ./data_pipeline/data/score/geojson/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/geojson --recursive --force  --API-ACL=public-read --num-threads=250
+          poetry run s4cmd put ./data_pipeline/data/score/shapefile/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/shapefile --recursive --force  --API-ACL=public-read
+          poetry run s4cmd put ./data_pipeline/data/score/tiles/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/tiles --recursive --force  --API-ACL=public-read --num-threads=250
