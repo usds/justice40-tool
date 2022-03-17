@@ -1,6 +1,6 @@
 """
-This script is a 'starter' for parameterized work pertaining to geenrating comparisons.
-Here, we only compare  DAC lists that operate at the tract level. We can change /expand this as we move forward.
+This script is a 'starter' for parameterized work pertaining to generating comparisons.
+Here, we only compare  DAC lists that operate at the tract level. We can change/expand this as we move forward.
 
 Why papermill? Papermill is an easy way to parameterize notebooks. While doing comparison work,
 I often had to do a lot of one-off analysis in a notebook that would then get discarded. With parametrized notebooks,
@@ -36,7 +36,6 @@ def _read_param_file(param_file: str) -> dict:
     for variable, value in param_dict.items():
         if ("PATH" in variable) or ("FILE" in variable):
             updated_param_dict[variable] = os.path.abspath(value)
-            print(updated_param_dict[variable])
         else:
             updated_param_dict[variable] = value
     # configure output name

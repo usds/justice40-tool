@@ -80,7 +80,7 @@ def read_file(
 
 
 def produce_summary_stats(
-    joined_frame: pd.DataFrame,
+    joined_df: pd.DataFrame,
     comparator_column: str,
     score_column: str,
     population_column: str,
@@ -89,7 +89,7 @@ def produce_summary_stats(
     """Produces high-level overview dataframe
 
     Parameters:
-        joined_frame: the big df
+        joined_df: the big df
         comparator_column: the column name for the comparator identification bool
         score_column: the column name for the CEJST score bool
         population_column: the column that includes population count per tract
@@ -98,61 +98,62 @@ def produce_summary_stats(
     Returns:
         population: the high-level overview df
     """
-    population = joined_frame.groupby([comparator_column, score_column]).agg(
+    population_df = joined_df.groupby([comparator_column, score_column]).agg(
         {population_column: ["sum"], geoid_column: ["count"]}
     )
 
-    population["share_of_tracts"] = (
-        population[geoid_column] / population[geoid_column].sum()
+    population_df["share_of_tracts"] = (
+        population_df[geoid_column] / population_df[geoid_column].sum()
     )
 
-    population["share_of_population_in_tracts"] = (
-        population[population_column] / population[population_column].sum()
+    population_df["share_of_population_in_tracts"] = (
+        population_df[population_column]
+        / population_df[population_column].sum()
     )
 
-    population.columns = [
+    population_df.columns = [
         "Population",
         "Count of tracts",
         "Share of tracts",
         "Share of population",
     ]
-    return population
+    return population_df
 
 
 def get_demo_series(
     grouping_column: str,
-    joined_frame: pd.DataFrame,
+    joined_df: pd.DataFrame,
     demo_columns: list,
 ) -> pd.DataFrame:
     """Helper function to produce demographic information"""
     return (
-        joined_frame[joined_frame[grouping_column]][demo_columns]
+        joined_df[joined_df[grouping_column]][demo_columns]
         .mean()
         .T.rename(grouping_column)
     )
 
 
 def get_tract_level_grouping(
-    joined_frame: pd.DataFrame,
+    joined_df: pd.DataFrame,
     score_column: str,
     comparator_column: str,
     demo_columns: list,
 ) -> pd.DataFrame:
     """Function to produce segmented statistics (tract level)"""
     group_list = [score_column, comparator_column]
-    grouping_frame = (
-        joined_frame[joined_frame[group_list].sum(axis=1) > 0]
+    grouping_df = (
+        joined_df[joined_df[group_list].sum(axis=1) > 0]
         .groupby(group_list)[demo_columns]
         .mean()
         .reset_index()
     )
-    grouping_frame[score_column] = grouping_frame[score_column].map(
+    grouping_df[score_column] = grouping_df[score_column].map(
         {True: "CEJST", False: "Not CEJST"}
     )
-    grouping_frame[comparator_column] = grouping_frame[comparator_column].map(
+    grouping_df[comparator_column] = grouping_df[comparator_column].map(
         {True: "Comparator", False: "Not Comparator"}
     )
-    return grouping_frame.set_index([score_column, comparator_column]).T
+    return grouping_df.set_index([score_column, comparator_column]).T
 
 
 def format_multi_index_for_excel(
@@ -193,7 +194,7 @@ def get_final_summary_info(
 
 
 def construct_weighted_statistics(
-    _joined_frame: pd.DataFrame,
+    input_df: pd.DataFrame,
     weighting_column: str,
     demographic_columns: list,
     population_column: str,
@@ -209,21 +210,21 @@ def construct_weighted_statistics(
     Returns:
         population-weighted comparator statistics
     """
-    comparator_weighted_joined_frame = _joined_frame.copy()
-    comparator_weighted_joined_frame[
+    comparator_weighted_joined_df = input_df.copy()
+    comparator_weighted_joined_df[
         "tmp_weight"
-    ] = comparator_weighted_joined_frame.groupby(weighting_column)[
+    ] = comparator_weighted_joined_df.groupby(weighting_column)[
         population_column
     ].transform(
         lambda x: x / x.sum()
     )
-    comparator_weighted_joined_frame[
+    comparator_weighted_joined_df[
         demographic_columns
-    ] = comparator_weighted_joined_frame[demographic_columns].transform(
-        lambda x: x * comparator_weighted_joined_frame["tmp_weight"]
+    ] = comparator_weighted_joined_df[demographic_columns].transform(
+        lambda x: x * comparator_weighted_joined_df["tmp_weight"]
     )
     return (
-        comparator_weighted_joined_frame.groupby(weighting_column)[
+        comparator_weighted_joined_df.groupby(weighting_column)[
             demographic_columns
         ]
         .sum()
@@ -252,24 +253,24 @@ def write_excel_tab(
 
 def write_excel_tab_about_comparator_scope(
     writer: pd.ExcelWriter,
-    sheet_name: str,
-    also_cejst: pd.DataFrame,
+    worksheet_name: str,
+    also_cejst_series: pd.Series,
     text_format,
     states_text: str,
 ):
-    also_cejst.to_excel(writer, sheet_name=sheet_name)
-    worksheet = writer.sheets[sheet_name[:31]]
+    also_cejst_series.to_excel(writer, sheet_name=worksheet_name)
+    worksheet = writer.sheets[worksheet_name[:31]]
     worksheet.set_column(0, 1, 18, text_format)
-    worksheet.write(len(also_cejst) + 1, 0, states_text)
+    worksheet.write(len(also_cejst_series) + 1, 0, states_text)
 
 
 def write_single_comparison_excel(
     output_excel: str,
-    population: pd.DataFrame,
-    tract_level_by_identification: pd.DataFrame,
-    population_weighted_stats: pd.DataFrame,
-    tract_level_by_grouping_formatted: pd.DataFrame,
-    also_cejst: pd.DataFrame,
+    population_df: pd.DataFrame,
+    tract_level_by_identification_df: pd.DataFrame,
+    population_weighted_stats_df: pd.DataFrame,
+    tract_level_by_grouping_formatted_df: pd.DataFrame,
+    also_cejst_series: pd.Series,
     states_text: str,
 ):
     """Writes the comparison excel file.
@@ -288,43 +289,45 @@ def write_single_comparison_excel(
             }
         )
         write_excel_tab(
-            writer,
-            "Summary",
-            population.reset_index(),
-            text_format,
+            writer=writer,
+            worksheet_name="Summary",
+            df=population_df.reset_index(),
+            text_format=text_format,
             use_index=False,
         )
         write_excel_tab(
-            writer,
-            "Tract level stats",
-            tract_level_by_identification.reset_index().rename(
+            writer=writer,
+            worksheet_name="Tract level stats",
+            df=tract_level_by_identification_df.reset_index().rename(
                 columns={"index": "Description of variable"}
             ),
-            text_format,
+            text_format=text_format,
             use_index=False,
         )
 
         write_excel_tab(
-            writer,
-            "Population level stats",
-            population_weighted_stats.reset_index().rename(
+            writer=writer,
+            worksheet_name="Population level stats",
+            df=population_weighted_stats_df.reset_index().rename(
                 columns={"index": "Description of variable"}
             ),
-            text_format,
+            text_format=text_format,
             use_index=False,
         )
         write_excel_tab(
-            writer,
-            "Segmented tract level stats",
-            tract_level_by_grouping_formatted,
-            text_format,
+            writer=writer,
+            worksheet_name="Segmented tract level stats",
+            df=tract_level_by_grouping_formatted_df,
+            text_format=text_format,
             use_index=False,
         )
 
         write_excel_tab_about_comparator_scope(
-            writer,
-            "Comparator and CEJST overlap",
-            also_cejst.rename("Comparator and CEJST overlap"),
-            text_format,
-            states_text,
+            writer=writer,
+            worksheet_name="Comparator and CEJST overlap",
+            also_cejst_series=also_cejst_series.rename(
+                "Comparator and CEJST overlap"
+            ),
+            text_format=text_format,
+            states_text=states_text,
         )
