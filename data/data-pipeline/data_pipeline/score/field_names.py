@@ -112,6 +112,9 @@ MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD = (
 PERSISTENT_POVERTY_FIELD = "Persistent Poverty Census Tract"
 AMI_FIELD = "Area Median Income (State or metropolitan)"
 COLLEGE_ATTENDANCE_FIELD = "Percent enrollment in college or graduate school"
+COLLEGE_NON_ATTENDANCE_FIELD = (
+    "Percent of population not currently enrolled in college or graduate school"
+)
 MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD = (
     "Median household income as a percent of area median income"
 )

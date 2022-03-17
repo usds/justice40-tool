@@ -40,6 +40,7 @@ tox = "^3.24.0"
 pytest-mock = "^3.6.1"
 tox-poetry = "^0.4.1"
 pandas-vet = "^0.2.2"
+pytest-snapshot = "^0.8.1"
 nb-black = "^1.0.7"
 
 [build-system]

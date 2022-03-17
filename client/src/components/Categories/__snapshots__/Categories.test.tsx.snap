@@ -294,13 +294,13 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <a
           href="#prox-npl"
         >
-          proximity to NPL sites
+          proximity to National Priorities List (NPL) sites
         </a>
          OR 
         <a
           href="#prox-rmp"
         >
-          proximity to RMP facilities
+          proximity to Risk Management Plan (RMP) facilities
         </a>
         
       
@@ -473,7 +473,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           low median income
         </a>
-         as a percent of area median income OR 
+         as a percentage of area median income OR 
         
         <a
           href="#ling-iso"

@@ -1,0 +1,41 @@
+#!/bin/bash
+
+echo
+echo "[pre-commit hook msg]: running pre-commit hook ..."
+
+# Husky by default expects pre-commit hooks in the root directory. We set up a custom directory for the client folder
+# https://typicode.github.io/husky/#/?id=custom-directory
+cd client
+
+# This file will automatically run intl:extract and compile on every commit 
+# write the extracted errors into a file
+npm run intl:extract 2> extract-err.txt
+
+# check the extracted error files for warnings and abort commit if found
+if grep -F "warning" extract-err.txt
+then
+    echo
+    echo '[pre-commit hook msg]: ALERT: warnings found in extraction process. Please remove warnings and re-run "npm run intl:extract"'
+    echo
+    echo '[pre-commit hook msg]: aborting commit...'
+    echo
+    echo '[pre-commit hook msg]: removing extract-err file...'
+    echo
+    rm extract-err.txt
+    echo '[pre-commit hook msg]: pre-commit hook incomplete.'
+    echo
+    exit 1
+else
+    echo
+    echo '[pre-commit hook msg]: no warnings found, continuing with commit ...'
+    echo
+    echo '[pre-commit hook msg]: removing extract-err file ...'
+    echo
+    rm extract-err.txt
+    echo '[pre-commit hook msg]: adding en.json to staging area ...'
+    echo
+    # add the en.json to staging so that the pre-commit hook can include it in the commit
+    git add src/intl/en.json
+    echo '[pre-commit hook msg]: pre-commit hook complete.'
+    echo
+fi

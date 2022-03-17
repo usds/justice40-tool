@@ -238,6 +238,9 @@ sheets:
       - score_name: Percent individuals age 25 or over with less than high school degree
         label: Percent individuals age 25 or over with less than high school degree
         format: percentage
+      - score_name: Percent of population not currently enrolled in college or graduate school
+        label: Percent of residents who are not currently enrolled in higher ed
+        format: percentage
       - score_name: Unemployment (percent) in 2009 (island areas) and 2010 (states and PR)
         label: Unemployment (percent) in 2009 (island areas) and 2010 (states and PR)
         format: percentage
