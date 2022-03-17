@@ -569,7 +569,7 @@ class ScoreM(Score):
         ) & (
             (
                 self.df[field_names.COLLEGE_ATTENDANCE_FIELD]
-                <= self.MAX_COLLEGE_ATTENDANCE_THRESHOLD
+                < self.MAX_COLLEGE_ATTENDANCE_THRESHOLD
             )
             | (
                 # If college attendance data is null for this tract, just rely on the
