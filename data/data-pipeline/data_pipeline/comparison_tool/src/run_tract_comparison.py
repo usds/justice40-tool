@@ -5,7 +5,7 @@ Here, we only compare  DAC lists that operate at the tract level. We can change 
 Why papermill? Papermill is an easy way to parameterize notebooks. While doing comparison work,
 I often had to do a lot of one-off analysis in a notebook that would then get discarded. With parametrized notebooks,
 we can run each type of analysis and then store it for posterity. The first template is just for agencies, but you could
-imagine generating interactive outputs for many types of analysis, like demographic work. 
+imagine generating interactive outputs for many types of analysis, like demographic work.
 
 To see more: https://buildmedia.readthedocs.org/media/pdf/papermill/latest/papermill.pdf
 
