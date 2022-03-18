@@ -189,6 +189,14 @@ const J40Map = ({location}: IJ40Interface) => {
     if (typeof window !== 'undefined' && window.Cypress && mapRef.current) {
       window.underlyingMap = mapRef.current.getMap();
     }
+    try {
+      // Set mapbox logo link to mapbox.com
+      if (mapRef.current) {
+        mapRef.current.getMap()._controlPositions['bottom-left'].getElementsByClassName('maplibregl-ctrl-logo')[0].href = 'https://www.mapbox.com/';
+      }
+    } catch (err) {
+      console.log('error trying to set mapbox logo link: ', err);
+    }
 
     if (isMobile) setIsMobileMapState(true);
   };
