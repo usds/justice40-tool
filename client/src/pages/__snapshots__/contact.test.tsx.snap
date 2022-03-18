@@ -334,7 +334,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <p>
             
       To provide feedback about a specific census tract, either select the send feedback button after 
-      finding a tract on the 
+      selecting a census tract on the 
             <a
               href="/en/cejst"
             >

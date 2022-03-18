@@ -4,7 +4,7 @@ import {FormattedMessage} from 'gatsby-plugin-intl';
 
 import LinkTypeWrapper from '../../components/LinkTypeWrapper';
 
-export const EXEC_ORDER_LINK = 'https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/27/executive-order-on-tackling-the-climate-crisis-at-home-and-abroad/';
+export const EXEC_ORDER_LINK = 'https://www.federalregister.gov/documents/2021/02/01/2021-02177/tackling-the-climate-crisis-at-home-and-abroad#:~:text=Sec.%20223.%20Justice40,40-percent%20goal.';
 
 export const PAGE = defineMessages({
   TILE: {
@@ -57,7 +57,7 @@ export const HEADING_1 = {
     to create a Climate and Economic Justice Screening Tool. The purpose of the tool is to help
     Federal agencies identify disadvantaged communities that are marginalized, underserved, and 
     overburdened by pollution. The current version of the tool provides socioeconomic, environmental, 
-    health and climate information to inform decisions that may affect these communities. The 
+    and climate information to inform decisions that may affect these communities. The 
     tool identifies disadvantaged communities through publicly-available, nationally-consistent datasets.
     `}
     values={{

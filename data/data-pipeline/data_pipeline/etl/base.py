@@ -72,7 +72,7 @@ class ExtractTransformLoad:
 
     # Eleven digits in a census tract ID.
     EXPECTED_CENSUS_TRACTS_CHARACTER_LENGTH: int = 11
-    # TODO: investigate. Census says there are only 74,134 tracts in the US,
+    # TODO: investigate. Census says there are only 74,134 tracts in the United States,
     #  Puerto Rico, and island areas. This might be from tracts at different time
     #  periods. https://github.com/usds/justice40-tool/issues/964
     EXPECTED_MAX_CENSUS_TRACTS: int = 74160

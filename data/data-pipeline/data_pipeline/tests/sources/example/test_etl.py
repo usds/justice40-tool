@@ -33,6 +33,7 @@ class TestETL:
     _EXTRACT_CSV_FILE_NAME = "extract.csv"
     _TRANSFORM_CSV_FILE_NAME = "transform.csv"
     _OUTPUT_CSV_FILE_NAME = "output.csv"
+    _FLOAT_FORMAT = "%.10f"
 
     # This *does* need to be updated in the child class. It specifies where the "sample data" is
     # so that we do not have to manually copy the "sample data" when we run the tests.
@@ -229,7 +230,7 @@ class TestETL:
         )
         snapshot.snapshot_dir = self._DATA_DIRECTORY_FOR_TEST
         snapshot.assert_match(
-            tmp_df.to_csv(index=False, float_format="%.5f"),
+            tmp_df.to_csv(index=False, float_format=self._FLOAT_FORMAT),
             self._EXTRACT_CSV_FILE_NAME,
         )
 
@@ -243,7 +244,7 @@ class TestETL:
 
         snapshot.snapshot_dir = self._DATA_DIRECTORY_FOR_TEST
         snapshot.assert_match(
-            etl.output_df.to_csv(index=False, float_format="%.5f"),
+            etl.output_df.to_csv(index=False, float_format=self._FLOAT_FORMAT),
             self._TRANSFORM_CSV_FILE_NAME,
         )
 
@@ -297,7 +298,7 @@ class TestETL:
         # Check the snapshots
         snapshot.snapshot_dir = self._DATA_DIRECTORY_FOR_TEST
         snapshot.assert_match(
-            actual_output.to_csv(index=False, float_format="%.5f"),
+            actual_output.to_csv(index=False, float_format=self._FLOAT_FORMAT),
             self._OUTPUT_CSV_FILE_NAME,
         )
 

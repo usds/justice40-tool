@@ -797,9 +797,15 @@ class ScoreM(Score):
             >= self.LOW_INCOME_THRESHOLD
         )
 
+        # Because we are moving this variable to be in the same direction as all
+        # other variables, we change this to be < rather than <=. This translates
+        # to "80% or more of residents are not college students", rather than
+        # "Strictly greater than 80% of residents are not college students."
+        # There are two tracts that are impacted by this (that is, they have exactly)
+        # 20% college students -- neither of these has been a DAC under any score.
         self.df[field_names.COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD] = (
             self.df[field_names.COLLEGE_ATTENDANCE_FIELD]
-            <= self.MAX_COLLEGE_ATTENDANCE_THRESHOLD
+            < self.MAX_COLLEGE_ATTENDANCE_THRESHOLD
         )
 
         self.df[
