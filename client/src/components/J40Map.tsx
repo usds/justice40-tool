@@ -189,7 +189,7 @@ const J40Map = ({location}: IJ40Interface) => {
     if (typeof window !== 'undefined' && window.Cypress && mapRef.current) {
       window.underlyingMap = mapRef.current.getMap();
     }
-
+    document.getElementsByClassName('maplibregl-ctrl-logo')[0].href = 'https://www.mapbox.com/';
     if (isMobile) setIsMobileMapState(true);
   };
 
