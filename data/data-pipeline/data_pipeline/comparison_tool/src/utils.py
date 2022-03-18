@@ -1,61 +1,22 @@
+import pathlib
 import pandas as pd
+import xlsxwriter
+
 from data_pipeline.score import field_names
+from data_pipeline.etl.sources.census.etl_utils import get_state_information
 
+# Some excel parameters
+DEFAULT_COLUMN_WIDTH = 18
+# the 31 is a limit from excel on how long the tab name can be
+MSFT_TAB_NAME_LIMIT = 31
 
-FIPS_MAP = {
-    "53": "WA",
-    "10": "DE",
-    "11": "DC",
-    "55": "WI",
-    "54": "WV",
-    "15": "HI",
-    "12": "FL",
-    "56": "WY",
-    "72": "PR",
-    "34": "NJ",
-    "35": "NM",
-    "48": "TX",
-    "22": "LA",
-    "37": "NC",
-    "38": "ND",
-    "31": "NE",
-    "47": "TN",
-    "36": "NY",
-    "42": "PA",
-    "02": "AK",
-    "32": "NV",
-    "33": "NH",
-    "51": "VA",
-    "08": "CO",
-    "06": "CA",
-    "01": "AL",
-    "05": "AR",
-    "50": "VT",
-    "17": "IL",
-    "13": "GA",
-    "18": "IN",
-    "19": "IA",
-    "25": "MA",
-    "04": "AZ",
-    "16": "ID",
-    "09": "CT",
-    "23": "ME",
-    "24": "MD",
-    "40": "OK",
-    "39": "OH",
-    "49": "UT",
-    "29": "MO",
-    "27": "MN",
-    "26": "MI",
-    "44": "RI",
-    "20": "KS",
-    "30": "MT",
-    "28": "MS",
-    "45": "SC",
-    "21": "KY",
-    "41": "OR",
-    "46": "SD",
-}
+# FIPS information
+DATA_PATH = pathlib.Path(__file__).parents[2] / "data"
+FIPS_MAP = (
+    get_state_information(data_path=DATA_PATH)
+    .set_index("fips")["state_abbreviation"]
+    .to_dict()
+)
 
 
 def read_file(
@@ -126,8 +87,10 @@ def get_demo_series(
     demo_columns: list,
 ) -> pd.DataFrame:
     """Helper function to produce demographic information"""
+    # To preserve np.nan, we drop all nans
+    full_df = joined_df.dropna(subset=[grouping_column])
     return (
-        joined_df[joined_df[grouping_column]][demo_columns]
+        full_df[full_df[grouping_column]][demo_columns]
         .mean()
         .T.rename(grouping_column)
     )
@@ -138,20 +101,42 @@ def get_tract_level_grouping(
     score_column: str,
     comparator_column: str,
     demo_columns: list,
+    keep_missing_values: bool = True,
 ) -> pd.DataFrame:
-    """Function to produce segmented statistics (tract level)"""
+    """Function to produce segmented statistics (tract level)
+
+    Here, we are thinking about the following segments:
+    1. CEJST and comparator
+    2. Not CEJST and comparator
+    3. Not CEJST and not comparator
+    4. CEJST and not comparator
+
+    If "keep_missing_values" flag:
+    5. Missing from CEJST and comparator (this should never be true!)
+    6. Missing from comparator and not highlighted by CEJST
+    7. Missing from comparator and highlighted by CEJST
+
+    This will make sure that comparisons are "apples to apples".
+    """
     group_list = [score_column, comparator_column]
-    grouping_df = (
-        joined_df[joined_df[group_list].sum(axis=1) > 0]
-        .groupby(group_list)[demo_columns]
-        .mean()
-        .reset_index()
-    )
+    use_df = joined_df.copy()
+    if keep_missing_values:
+        use_df = use_df.fillna({score_column: "nan", comparator_column: "nan"})
+    grouping_df = use_df.groupby(group_list)[demo_columns].mean().reset_index()
+    # this will work whether or not there are "nans" present
     grouping_df[score_column] = grouping_df[score_column].map(
-        {True: "CEJST", False: "Not CEJST"}
+        {
+            True: "CEJST",
+            False: "Not CEJST",
+            "nan": "No CEJST classification",
+        }
     )
     grouping_df[comparator_column] = grouping_df[comparator_column].map(
-        {True: "Comparator", False: "Not Comparator"}
+        {
+            True: "Comparator",
+            False: "Not Comparator",
+            "nan": "No Comparator classification",
+        }
     )
     return grouping_df.set_index([score_column, comparator_column]).T
 
@@ -173,7 +158,13 @@ def get_final_summary_info(
     comparator_file: str,
     geoid_col: str,
 ) -> tuple[pd.DataFrame, str]:
-    also_cejst = population.loc[(True, True)] / population.loc[(True,)].sum()
+    """
+    This creates a series that tells us what share (%) of census tracts identified
+    by the comparator are also in CEJST and what states the comparator covers.
+    """
+    comparator_and_cejst_proportion_series = (
+        population.loc[(True, True)] / population.loc[(True,)].sum()
+    )
 
     states_represented = (
         pd.read_csv(
@@ -190,7 +181,7 @@ def get_final_summary_info(
             for state in states_represented
         ]
     )
-    return also_cejst, states
+    return comparator_and_cejst_proportion_series, states
 
 
 def construct_weighted_statistics(
@@ -202,7 +193,7 @@ def construct_weighted_statistics(
     """Function to produce population weighted stats
 
     Parameters:
-        _joined_frame: this gets copied and is the big frame
+        input_df: this gets copied and is the big frame
         weighting_column: the column to group by for the comparator weights (e.g., grouped by this column, the sum of the weights is 1)
         demographic_columns: the columns to get weighted stats for
         population_column: the population column
@@ -236,7 +227,7 @@ def write_excel_tab(
     writer: pd.ExcelWriter,
     worksheet_name: str,
     df: pd.DataFrame,
-    text_format,
+    text_format: xlsxwriter.format.Format,
     use_index: bool = True,
 ):
     """Helper function to set tab width"""
@@ -248,20 +239,35 @@ def write_excel_tab(
         if not column_name == "Variable":
             worksheet.set_column(i, i + 1, len(column_name) + 2, text_format)
         else:
-            worksheet.set_column(i, i + 1, 18, text_format)
+            worksheet.set_column(i, i + 1, DEFAULT_COLUMN_WIDTH, text_format)
 
 
 def write_excel_tab_about_comparator_scope(
     writer: pd.ExcelWriter,
     worksheet_name: str,
-    also_cejst_series: pd.Series,
-    text_format,
+    comparator_and_cejst_proportion_series: pd.Series,
+    text_format: xlsxwriter.format.Format,
+    merge_format: xlsxwriter.format.Format,
     states_text: str,
 ):
-    also_cejst_series.to_excel(writer, sheet_name=worksheet_name)
-    worksheet = writer.sheets[worksheet_name[:31]]
-    worksheet.set_column(0, 1, 18, text_format)
-    worksheet.write(len(also_cejst_series) + 1, 0, states_text)
+    comparator_and_cejst_proportion_series.to_excel(
+        writer, sheet_name=worksheet_name
+    )
+    worksheet = writer.sheets[worksheet_name[:MSFT_TAB_NAME_LIMIT]]
+    worksheet.set_column(0, 1, DEFAULT_COLUMN_WIDTH, text_format)
+
+    # merge the cells for states text
+    row_merge = len(comparator_and_cejst_proportion_series) + 2
+    # changes the row height based on how long the states text is
+    worksheet.set_row(row_merge, len(states_text) // 2)
+    worksheet.merge_range(
+        first_row=row_merge,
+        last_row=row_merge,
+        first_col=0,
+        last_col=1,
+        data=states_text,
+        cell_format=merge_format,
+    )
 
 
 def write_single_comparison_excel(
@@ -270,7 +276,7 @@ def write_single_comparison_excel(
     tract_level_by_identification_df: pd.DataFrame,
     population_weighted_stats_df: pd.DataFrame,
     tract_level_by_grouping_formatted_df: pd.DataFrame,
-    also_cejst_series: pd.Series,
+    comparator_and_cejst_proportion_series: pd.Series,
     states_text: str,
 ):
     """Writes the comparison excel file.
@@ -286,6 +292,15 @@ def write_single_comparison_excel(
                 "text_wrap": True,
                 "valign": "middle",
                 "num_format": "#,##0.00",
+            }
+        )
+
+        merge_format = workbook.add_format(
+            {
+                "border": 1,
+                "align": "center",
+                "valign": "vcenter",
+                "text_wrap": True,
             }
         )
         write_excel_tab(
@@ -325,9 +340,10 @@ def write_single_comparison_excel(
         write_excel_tab_about_comparator_scope(
             writer=writer,
             worksheet_name="Comparator and CEJST overlap",
-            also_cejst_series=also_cejst_series.rename(
+            comparator_and_cejst_proportion_series=comparator_and_cejst_proportion_series.rename(
                 "Comparator and CEJST overlap"
             ),
             text_format=text_format,
             states_text=states_text,
+            merge_format=merge_format,
         )
