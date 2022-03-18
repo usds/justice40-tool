@@ -136,6 +136,8 @@ class CensusACSETL(ExtractTransformLoad):
             "Percent enrollment in college or graduate school"
         )
 
+        self.COLLEGE_NON_ATTENDANCE_FIELD = "Percent of population not currently enrolled in college or graduate school"
+
         self.RE_FIELDS = [
             "B02001_001E",
             "B02001_002E",
@@ -190,6 +192,7 @@ class CensusACSETL(ExtractTransformLoad):
                 self.MEDIAN_HOUSE_VALUE_FIELD_NAME,
                 self.HIGH_SCHOOL_ED_FIELD,
                 self.COLLEGE_ATTENDANCE_FIELD,
+                self.COLLEGE_NON_ATTENDANCE_FIELD,
             ]
             + self.RE_OUTPUT_FIELDS
             + [self.PERCENT_PREFIX + field for field in self.RE_OUTPUT_FIELDS]
@@ -353,6 +356,10 @@ class CensusACSETL(ExtractTransformLoad):
             + df[self.COLLEGE_ATTENDANCE_FEMALE_ENROLLED_PUBLIC]
             + df[self.COLLEGE_ATTENDANCE_FEMALE_ENROLLED_PRIVATE]
         ) / df[self.COLLEGE_ATTENDANCE_TOTAL_POPULATION_ASKED]
+
+        df[self.COLLEGE_NON_ATTENDANCE_FIELD] = (
+            1 - df[self.COLLEGE_ATTENDANCE_FIELD]
+        )
 
         # strip columns
         df = df[self.COLUMNS_TO_KEEP]

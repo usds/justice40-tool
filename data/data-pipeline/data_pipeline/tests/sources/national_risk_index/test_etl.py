@@ -1,13 +1,9 @@
 # pylint: disable=protected-access
 from unittest import mock
-
-import filecmp
-
-import pytest
+import pathlib
 import requests
-
 from data_pipeline.etl.base import ValidGeoLevel
-from data_pipeline.tests.conftest import copy_data_files
+
 from data_pipeline.etl.sources.national_risk_index.etl import (
     NationalRiskIndexETL,
 )
@@ -18,7 +14,20 @@ logger = get_module_logger(__name__)
 
 
 class TestNationalRiskIndexETL(TestETL):
+    """Tests the NRI ETL only.
+
+    This uses pytest-snapshot.
+    To update individual snapshots: $ poetry run pytest
+            data_pipeline/tests/sources/national_risk_index/test_etl.py::TestClassNameETL::<testname>
+            --snapshot-update
+    """
+
     _ETL_CLASS = NationalRiskIndexETL
+
+    _SAMPLE_DATA_PATH = pathlib.Path(__file__).parents[0] / "data"
+    _SAMPLE_DATA_FILE_NAME = "NRI_Table_CensusTracts.csv"
+    _SAMPLE_DATA_ZIP_FILE_NAME = "NRI_Table_CensusTracts.zip"
+    _EXTRACT_TMP_FOLDER_NAME = "NationalRiskIndexETL"
 
     def setup_method(self, _method, filename=__file__):
         """Invoke `setup_method` from Parent, but using the current file name.
@@ -55,39 +64,6 @@ class TestNationalRiskIndexETL(TestETL):
             etl.extract()
 
         return etl
-
-    # This decorator means that this "test" will only be run by passing that flag to
-    # pytest, for instance by running `pytest . -rsx --update_snapshots`.
-    @pytest.mark.update_snapshots
-    def test_update_test_fixtures(self, mock_etl, mock_paths):
-        etl = self._setup_etl_instance_and_run_extract(
-            mock_etl=mock_etl, mock_paths=mock_paths
-        )
-
-        # After running extract, write the results as the "input.csv" in the test
-        # directory.
-        copy_data_files(
-            src=etl.INPUT_CSV,
-            dst=self._DATA_DIRECTORY_FOR_TEST / self._INPUT_CSV_FILE_NAME,
-        )
-
-        # After running transform, write the results as the "transform.csv" in the test
-        # directory.
-        etl.transform()
-        etl.output_df.to_csv(
-            path_or_buf=self._DATA_DIRECTORY_FOR_TEST
-            / self._TRANSFORM_CSV_FILE_NAME,
-            index=False,
-        )
-
-        # After running load, write the results as the "output.csv" in the test
-        # directory.
-        etl.load()
-
-        copy_data_files(
-            src=etl._get_output_file_path(),
-            dst=self._DATA_DIRECTORY_FOR_TEST / self._OUTPUT_CSV_FILE_NAME,
-        )
 
     def test_init(self, mock_etl, mock_paths):
         """Tests that the mock NationalRiskIndexETL class instance was
@@ -136,28 +112,3 @@ class TestNationalRiskIndexETL(TestETL):
             data_path / "dataset" / "national_risk_index_2020" / "usa.csv"
         )
         assert output_file_path == expected_output_file_path
-
-    def test_extract(self, mock_etl, mock_paths):
-        """Ensure the extract results are working as appropriate."""
-        tmp_path = mock_paths[1]
-
-        # ETL instance returned by this method is never used, so we assign it to `_`.
-        _ = self._setup_etl_instance_and_run_extract(
-            mock_etl=mock_etl,
-            mock_paths=mock_paths,
-        )
-
-        # Assert that the extracted file exists
-        extracted_file_path = (
-            tmp_path / "NationalRiskIndexETL" / "NRI_Table_CensusTracts.csv"
-        )
-        assert extracted_file_path.is_file()
-
-        input_csv_path = (
-            self._DATA_DIRECTORY_FOR_TEST / self._INPUT_CSV_FILE_NAME
-        )
-
-        # Make sure extracted file is equal to the input fixture:
-        assert filecmp.cmp(
-            f1=extracted_file_path, f2=input_csv_path, shallow=False
-        )

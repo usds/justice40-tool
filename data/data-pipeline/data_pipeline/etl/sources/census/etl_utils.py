@@ -41,14 +41,12 @@ def get_state_fips_codes(data_path: Path) -> list:
     """Returns a list with state data"""
     fips_csv_path = data_path / "census" / "csv" / "fips_states_2010.csv"
 
-    # check if file exists
-    if not os.path.isfile(fips_csv_path):
-        logger.info("Downloading fips from S3 repository")
-        unzip_file_from_url(
-            settings.AWS_JUSTICE40_DATASOURCES_URL + "/fips_states_2010.zip",
-            data_path / "tmp",
-            data_path / "census" / "csv",
-        )
+    logger.info("Downloading fips from S3 repository")
+    unzip_file_from_url(
+        settings.AWS_JUSTICE40_DATASOURCES_URL + "/fips_states_2010.zip",
+        data_path / "tmp",
+        data_path / "census" / "csv",
+    )
 
     fips_state_list = []
     with open(fips_csv_path, encoding="utf-8") as csv_file:

@@ -6,7 +6,7 @@ on:
       - "client/**/*"
 env:
   PR_NUMBER: ${{ github.event.number }}
-  WEB_CDN_ID: E30NWFWBUUX9X
+  WEB_CDN_ID: ED03LPVC4OXSW
 jobs:
   build:
     runs-on: ubuntu-latest

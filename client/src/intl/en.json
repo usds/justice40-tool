@@ -1,18 +1,18 @@
 {
   "about.page.sub.header.1.text.1": {
-    "defaultMessage": "On January 27, 2021, President Biden directed the Council on Environmental Quality (CEQ) to create a climate and economic justice screening tool. The purpose of the tool is to help Federal agencies identify disadvantaged communities and provide socioeconomic, environmental, and climate information and data to inform decisions that may affect these communities. The tool identifies disadvantaged communities as communities of focus through publicly available, nationally consistent, high-quality data.",
+    "defaultMessage": "In {eoLink} on {tacklingItalics}, President Biden directed the Council on Environmental Quality (CEQ) to create a Climate and Economic Justice Screening Tool. The purpose of the tool is to help Federal agencies identify disadvantaged communities that are marginalized, underserved, and overburdened by pollution. The current version of the tool provides socioeconomic, environmental, and climate information to inform decisions that may affect these communities. The tool identifies disadvantaged communities through publicly-available, nationally-consistent datasets.",
     "description": "about page sub header text"
   },
   "about.page.sub.header.1.text.2": {
-    "defaultMessage": "The current version of the tool is in a public beta form and will be updated based on feedback from the public.",
+    "defaultMessage": "The current version of the tool is in a public beta form and will be updated based on feedback and research.",
     "description": "about page sub header text"
   },
   "about.page.sub.header.2.text.1": {
-    "defaultMessage": "The tool will provide important information for the Justice40 Initiative. The goal of the Justice40 Initiative is to provide 40-percent of the overall benefits of certain federal programs in seven key areas to disadvantaged communities. These seven key areas are: climate change, clean energy and energy efficiency, clean transit, affordable and sustainable housing, training and workforce development, the remediation and reduction of legacy pollution, and the development of critical clean water infrastructure.",
+    "defaultMessage": "The tool will provide important information for the Justice40 Initiative. The goal of the Justice40 Initiative is to provide 40 percent of the overall benefits of certain Federal investments in seven key areas to disadvantaged communities. These seven key areas are: climate change, clean energy and energy efficiency, clean transit, affordable and sustainable housing, training and workforce development, the remediation and reduction of legacy pollution, and the development of critical clean water infrastructure.",
     "description": "about page sub header text"
   },
   "about.page.sub.header.2.text.2": {
-    "defaultMessage": "Read more about the Justice40 Initiative in President Biden’s",
+    "defaultMessage": "Read more about the Justice40 Initiative in President Biden’s {eoLink} on {tacklingItalics}.",
     "description": "about page sub header text"
   },
   "about.page.title.text": {
@@ -20,16 +20,36 @@
     "description": "about page title text"
   },
   "areaDetail.categorization.community.of.focus": {
-    "defaultMessage": "Community of focus",
+    "defaultMessage": "YES",
     "description": "the communities the score currently is focused on"
   },
+  "areaDetail.categorization.is.community.of.focus": {
+    "defaultMessage": "Identified as disadvantaged?",
+    "description": "asking IF the communities is focused on"
+  },
   "areaDetail.categorization.not.community.of.focus": {
-    "defaultMessage": "Not a community of focus",
+    "defaultMessage": "No",
     "description": "the communities the score currently is not focused on"
   },
+  "areaDetail.categorization.send.feedback.email.body": {
+    "defaultMessage": "Please provide feedback about this census tract, including about the datasets, the data categories provided for this census tract, the communities who live in this census tract, and anything else relevant that CEQ should know about this census tract.",
+    "description": "link to send feedback"
+  },
+  "areaDetail.categorization.send.feedback.title": {
+    "defaultMessage": "Send feedback",
+    "description": "link to send feedback"
+  },
+  "areaDetail.category.header.indicator": {
+    "defaultMessage": "Indicator",
+    "description": "header for each category"
+  },
+  "areaDetail.category.header.percentile": {
+    "defaultMessage": "Percentile (0-100)",
+    "description": "header for each category"
+  },
   "areaDetail.geographicInfo.censusBlockGroup": {
-    "defaultMessage": "Census block group:",
-    "description": "the census block group id number of the feature selected"
+    "defaultMessage": "Census tract:",
+    "description": "the census tract id number of the feature selected"
   },
   "areaDetail.geographicInfo.county": {
     "defaultMessage": "County:",
@@ -43,97 +63,149 @@
     "defaultMessage": "State:",
     "description": "the state of the feature selected"
   },
-  "areaDetail.indicator.areaMedianIncome": {
-    "defaultMessage": "Area Median Income",
-    "description": "calculated as percent of the area median income"
+  "areaDetail.geographicInfo.territory": {
+    "defaultMessage": "Territory:",
+    "description": "the territory of the feature selected"
   },
   "areaDetail.indicator.asthma": {
     "defaultMessage": "Asthma",
     "description": "have asthma or been diagnosed by a doctor to have asthma"
   },
-  "areaDetail.indicator.description.area_median_income": {
-    "defaultMessage": "Median income of the census block group calculated as a percent of the metropolitan area’s or state's median income",
-    "description": "Median income of the census block group calculated as a percent of the metropolitan area’s or state's median income"
-  },
   "areaDetail.indicator.description.asthma": {
-    "defaultMessage": "People who answer “yes” to both of the questions: “Have you ever been told by a doctor nurse, or other health professional that you have asthma?” and “Do you still have asthma?\"",
-    "description": "People who answer “yes” to both of the questions: “Have you ever been told by a doctor nurse, or other health professional that you have asthma?” and “Do you still have asthma?\""
+    "defaultMessage": "Weighted percent of people who have been told they have asthma",
+    "description": "Number of people who have been told they have asthma"
   },
   "areaDetail.indicator.description.diabetes": {
-    "defaultMessage": "People ages 18 and up who report having been told by a doctor, nurse, or other health professionals that they have diabetes other than diabetes during pregnancy",
-    "description": "People ages 18 and up who report having been told by a doctor, nurse, or other health professionals that they have diabetes other than diabetes during pregnancy"
+    "defaultMessage": "Weighted percent of people ages 18 years and older who have diabetes other than diabetes during pregnancy",
+    "description": "People ages 18 years and older who have diabetes other than diabetes during pregnancy"
   },
   "areaDetail.indicator.description.dieselPartMatter": {
-    "defaultMessage": "Mixture of particles that is part of diesel exhaust in the air",
-    "description": "Mixture of particles that is part of diesel exhaust in the air"
-  },
-  "areaDetail.indicator.description.education": {
-    "defaultMessage": "Percent of people age 25 or older that didn’t get a high school diploma",
-    "description": "Percent of people age 25 or older that didn’t get a high school diploma"
+    "defaultMessage": "Diesel exhaust in the air",
+    "description": "Diesel exhaust in the air"
   },
   "areaDetail.indicator.description.energyBurden": {
-    "defaultMessage": "Average annual energy cost ($) divided by household income",
-    "description": "Average annual energy cost ($) divided by household income"
+    "defaultMessage": "Average annual energy costs divided by household income",
+    "description": "Energy costs divided by household income"
   },
-  "areaDetail.indicator.description.femaRisk": {
-    "defaultMessage": "Expected Annual Loss Score, which is the average economic loss in dollars resulting from natural hazards each year.",
-    "description": "Expected Annual Loss Score, which is the average economic loss in dollars resulting from natural hazards each year."
+  "areaDetail.indicator.description.exp.ag.loss": {
+    "defaultMessage": "Economic loss rate to agriculture resulting from natural hazards",
+    "description": "Economic loss rate to agriculture resulting from natural hazards"
+  },
+  "areaDetail.indicator.description.exp.bld.loss": {
+    "defaultMessage": "Economic loss rate to buildings resulting from natural hazards",
+    "description": "Economic loss rate to buildings resulting from natural hazards"
+  },
+  "areaDetail.indicator.description.exp.pop.loss": {
+    "defaultMessage": "Rate of fatalities and injuries resulting from natural hazards each year",
+    "description": "Economic loss rate to the population in fatalities and injuries resulting from natural hazards"
   },
   "areaDetail.indicator.description.heartDisease": {
-    "defaultMessage": "People ages 18 and up who report ever having been told by a doctor, nurse, or other health professionals that they had angina or coronary heart disease",
-    "description": "People ages 18 and up who report ever having been told by a doctor, nurse, or other health professionals that they had angina or coronary heart disease"
+    "defaultMessage": "Weighted percent of people ages 18 years and older who have been told they have heart disease",
+    "description": "People ages 18 years and older who have been told they have heart disease"
+  },
+  "areaDetail.indicator.description.high.ed": {
+    "defaultMessage": "Percent of population enrolled in college, university, or graduate school",
+    "description": "Percent of people ages 25 years or older whose education level is less than a high school diploma"
+  },
+  "areaDetail.indicator.description.high.school": {
+    "defaultMessage": "Proportion of people ages 25 years or older whose education level is less than a high school diploma",
+    "description": "Percent of people ages 25 years or older whose education level is less than a high school diploma"
   },
   "areaDetail.indicator.description.houseBurden": {
-    "defaultMessage": "Households that are low income and spend more than 30% of their income on housing costs",
-    "description": "Households that are low income and spend more than 30% of their income on housing costs"
+    "defaultMessage": "Low income households spending more than 30% of income on housing",
+    "description": "Low income households spending more than 30% of income on housing"
   },
   "areaDetail.indicator.description.leadPaint": {
-    "defaultMessage": "Housing units built pre-1960, used as an indicator of potential lead paint exposure in homes",
-    "description": "Housing units built pre-1960, used as an indicator of potential lead paint exposure in homes"
+    "defaultMessage": "Percentile of number of homes built before 1960 that are not among the most expensive",
+    "description": "Pre-1960 housing"
   },
   "areaDetail.indicator.description.lifeExpect": {
-    "defaultMessage": "Estimated years of life expectancy",
-    "description": "Estimated years of life expectancy"
+    "defaultMessage": "Average number of years a person can expect to live",
+    "description": "Average number of years of life a person can expect to live"
+  },
+  "areaDetail.indicator.description.ling.iso": {
+    "defaultMessage": "Percent of households where no one over the age 14 speaks English well",
+    "description": "Households in which no one age 14 and over speaks English only or also speaks \n    a language other than English"
+  },
+  "areaDetail.indicator.description.low.income": {
+    "defaultMessage": "Household income is less than or equal to twice the federal poverty level",
+    "description": "Household income is less than or equal to twice the federal poverty level"
+  },
+  "areaDetail.indicator.description.low.med.income": {
+    "defaultMessage": "Median income calculated as a percent of the area’s median income",
+    "description": "Median income calculated as a percent of the area’s median income"
+  },
+  "areaDetail.indicator.description.med.home.val": {
+    "defaultMessage": "Median home value in area",
+    "description": "Meidan home value in area"
   },
   "areaDetail.indicator.description.pm25": {
-    "defaultMessage": "Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller",
-    "description": "Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller"
+    "defaultMessage": "Fine inhalable particles, 2.5 micrometers and smaller",
+    "description": "Fine inhalable particles, 2.5 micrometers and smaller"
   },
   "areaDetail.indicator.description.poverty": {
-    "defaultMessage": "Percent of a block group's population in households where the household income is at or below 100% of the federal poverty level",
-    "description": "Percent of a block group's population in households where the household income is at or below 100% of the federal poverty level"
+    "defaultMessage": "Percent of a tract's population in households where the household income is at or below 100% of the Federal poverty level",
+    "description": "Percent of individuals in households where the household income is at or \n    below 100% of the federal poverty level"
+  },
+  "areaDetail.indicator.description.prox.haz": {
+    "defaultMessage": "Count of hazardous waste facilities within 5 kilometers",
+    "description": "Count of hazardous waste facilities within 5 kilometers"
+  },
+  "areaDetail.indicator.description.prox.npl": {
+    "defaultMessage": "Proposed or listed NPL (Superfund) sites within 5 kilometers",
+    "description": "Proposed or listed NPL (Superfund) sites within 5 kilometers"
+  },
+  "areaDetail.indicator.description.prox.rmp": {
+    "defaultMessage": "Risk Management Plan facilities within 5 kilometers",
+    "description": "Risk Management Plan facilities within 5 kilometers"
   },
   "areaDetail.indicator.description.trafficVolume": {
-    "defaultMessage": "Count of vehicles (average annual daily traffic) at major roads within 500 meters, divided by distance in meters",
-    "description": "Count of vehicles (average annual daily traffic) at major roads within 500 meters, divided by distance in meters"
+    "defaultMessage": "Count of vehicles at major roads within 500 meters",
+    "description": "Count of vehicles at major roads within 500 meters"
+  },
+  "areaDetail.indicator.description.unemploy": {
+    "defaultMessage": "Number of unemployed people as a percentage of the labor force",
+    "description": "Number of unemployed people as a percentage of the labor force"
   },
   "areaDetail.indicator.description.wasteWater": {
-    "defaultMessage": "Toxic concentrations at stream segments within 500 meters divided by distance in kilometers",
-    "description": "Toxic concentrations at stream segments within 500 meters divided by distance in kilometers"
+    "defaultMessage": "Toxic concentrations at stream segments within 500 meters",
+    "description": "Toxic concentrations at stream segments within 500 meters"
   },
   "areaDetail.indicator.diabetes": {
     "defaultMessage": "Diabetes",
     "description": "diabetes from dr or nurse"
   },
   "areaDetail.indicator.dieselPartMatter": {
-    "defaultMessage": "Diesel particulate matter",
+    "defaultMessage": "Diesel particulate matter exposure",
     "description": "Diesel particulate matter level in air"
-  },
-  "areaDetail.indicator.education": {
-    "defaultMessage": "Education, less than high school",
-    "description": "Percent of people age 25 or older that didn’t get a high school diploma"
   },
   "areaDetail.indicator.energyBurden": {
     "defaultMessage": "Energy burden",
     "description": "Average annual energy cost ($) divided by household income"
   },
-  "areaDetail.indicator.femaRisk": {
-    "defaultMessage": "FEMA Risk Index",
-    "description": "Risk based on 18 natural hazard types, in addition to a community's social vulnerability and community resilience"
+  "areaDetail.indicator.exp.ag.loss": {
+    "defaultMessage": "Expected agriculture loss rate",
+    "description": "agriculture loss rate"
+  },
+  "areaDetail.indicator.exp.bld.loss": {
+    "defaultMessage": "Expected building loss rate",
+    "description": "building loss rate"
+  },
+  "areaDetail.indicator.exp.pop.loss": {
+    "defaultMessage": "Expected population loss rate",
+    "description": "population loss rate"
   },
   "areaDetail.indicator.heartDisease": {
     "defaultMessage": "Heart disease",
     "description": "People ages 18 and up who report ever having been told by adoctor, nurse, or other health professionals that they had angina or coronary heart disease"
+  },
+  "areaDetail.indicator.high.ed": {
+    "defaultMessage": "Higher ed enrollment rate",
+    "description": "Higher ed degree achievement rate"
+  },
+  "areaDetail.indicator.high.school": {
+    "defaultMessage": "High school degree attainment rate",
+    "description": "High school degree achievement rate"
   },
   "areaDetail.indicator.houseBurden": {
     "defaultMessage": "Housing cost burden",
@@ -144,52 +216,288 @@
     "description": "Housing units built pre-1960, used as an indicator of potential lead paint exposure in homes"
   },
   "areaDetail.indicator.lifeExpect": {
-    "defaultMessage": "Life expectancy",
+    "defaultMessage": "Low life expectancy",
     "description": "Estimated years of life expectancy"
   },
+  "areaDetail.indicator.ling.iso": {
+    "defaultMessage": "Linguistic isolation",
+    "description": "Linguistic isolation"
+  },
+  "areaDetail.indicator.low.income": {
+    "defaultMessage": "Low income",
+    "description": "low income"
+  },
+  "areaDetail.indicator.low.med.income": {
+    "defaultMessage": "Low median income",
+    "description": "Low median income"
+  },
+  "areaDetail.indicator.med.home.val": {
+    "defaultMessage": "Median home value",
+    "description": "Median home value of owner-occupied housing units in the area."
+  },
   "areaDetail.indicator.pm25": {
-    "defaultMessage": "PM2.5",
+    "defaultMessage": "PM2.5 in the air",
     "description": "Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller"
   },
   "areaDetail.indicator.poverty": {
     "defaultMessage": "Poverty",
-    "description": "Household income is less than or equal to twice the federal \"poverty level\""
+    "description": "Unemployment"
+  },
+  "areaDetail.indicator.prox.haz": {
+    "defaultMessage": "Proximity to hazardous waste facilities",
+    "description": "Count of hazardous waste facilities "
+  },
+  "areaDetail.indicator.prox.npl": {
+    "defaultMessage": "Proximity to NPL sites",
+    "description": "Count of proposed or listed NPL "
+  },
+  "areaDetail.indicator.prox.rmp": {
+    "defaultMessage": "Proximity to RMP facilities",
+    "description": "Count of proposed or listed RMP"
+  },
+  "areaDetail.indicator.title.clean.energy": {
+    "defaultMessage": "Clean energy and energy efficiency",
+    "description": "Clean, efficient energy title"
+  },
+  "areaDetail.indicator.title.clean.transport": {
+    "defaultMessage": "Clean transportation",
+    "description": "Clean transportation title"
+  },
+  "areaDetail.indicator.title.clean.water": {
+    "defaultMessage": "Clean water and waste infrastructure",
+    "description": "Clean water and waste title"
+  },
+  "areaDetail.indicator.title.climate": {
+    "defaultMessage": "Climate change",
+    "description": "Climate change title"
+  },
+  "areaDetail.indicator.title.health.burden": {
+    "defaultMessage": "Health burdens",
+    "description": "Health burdens title"
+  },
+  "areaDetail.indicator.title.legacy.pollution": {
+    "defaultMessage": "Legacy pollution",
+    "description": "Legacy pollution title"
+  },
+  "areaDetail.indicator.title.sustain.house": {
+    "defaultMessage": "Sustainable housing",
+    "description": "Sustainable housing title"
+  },
+  "areaDetail.indicator.title.work.dev": {
+    "defaultMessage": "Workforce development",
+    "description": "Workforce development title"
   },
   "areaDetail.indicator.trafficVolume": {
     "defaultMessage": "Traffic proximity and volume",
     "description": "Count of vehicles (average annual daily traffic) at major roads within 500 meters, divided by distance in meters"
   },
+  "areaDetail.indicator.unemploy": {
+    "defaultMessage": "Unemployment",
+    "description": "Unemployment"
+  },
   "areaDetail.indicator.wasteWater": {
     "defaultMessage": "Wastewater discharge",
     "description": "Toxic concentrations at stream segments within 500 meters divided by distance in kilometers"
   },
-  "areaDetail.indicators.indicatorColumnHeader": {
-    "defaultMessage": "Indicator",
-    "description": "the population of the feature selected"
-  },
-  "areaDetail.indicators.percentileColumnHeader": {
-    "defaultMessage": "Percentile (0-100)",
-    "description": "the population of the feature selected"
+  "areaDetail.side.panel.version.title": {
+    "defaultMessage": "Methodology version {version}",
+    "description": "methodology version number"
   },
   "banner.beta.info": {
-    "defaultMessage": "It is an early, in-progress version of the tool with limited data sets that will be continuously updated.",
+    "defaultMessage": "It is an early, in-progress version of the tool with limited datasets that will be regularly updated.",
     "description": "the main info of the beta banner"
   },
   "banner.beta.title": {
-    "defaultMessage": "This is a Beta site.",
+    "defaultMessage": "This is a beta site.",
     "description": "the main title of the beta banner"
+  },
+  "categories.all.used.in.text": {
+    "defaultMessage": "All categories",
+    "description": "used in text for all methodologies"
+  },
+  "category.asthma.description.text": {
+    "defaultMessage": "Weighted percent of people who answer “yes” to both of the following questions: “Have you ever been told by a doctor, nurse, or other health professional that you have asthma?” and “Do you still have asthma?”",
+    "description": "description text for asthma"
+  },
+  "category.diabetes.description.text": {
+    "defaultMessage": "Weighted percent of people ages 18 years and older who report having ever been told by a doctor, nurse, or other health professionals that they have diabetes other than diabetes during pregnancy.",
+    "description": "description text for diabetes"
+  },
+  "category.diesel.pm.description.text": {
+    "defaultMessage": "Mixture of particles that is part of diesel exhaust in the air. The value in the fields is the weight of these particles in micrograms per cubic meter.",
+    "description": "description text for diesel pm"
+  },
+  "category.energy.burden.description.text": {
+    "defaultMessage": "Average annual energy cost per household ($) divided by average household income.",
+    "description": "description text for energy burden"
+  },
+  "category.exp.agr.loss.rate.description.text": {
+    "defaultMessage": "Percent of agriculture value at risk from losses due to fourteen types of natural hazards that have some link to climate change: avalanche, coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong wind, tornado, wildfire, and winter weather. Rate calculated by dividing the agriculture value at risk in a census tract by the total agriculture value in that census tract.",
+    "description": "description text for exp agr loss rate"
+  },
+  "category.exp.bld.loss.rate.description.text": {
+    "defaultMessage": "Percent of building value at risk from losses due to fourteen types of natural hazards that have some link to climate change: avalanche, coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong wind, tornado, wildfire, and winter weather. Rate calculated by dividing the building value at risk in a census tract by the total building value in that census tract.",
+    "description": "description text for exp bld loss rate"
+  },
+  "category.exp.pop.loss.rate.description.text": {
+    "defaultMessage": "Rate relative to the population of fatalities and injuries due to fourteen types of natural hazards each year that have some link to climate change: avalanche, coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined as the Spatial Hazard Events and Losses or National Centers for Environmental Information’s (NCEI) reported number of fatalities and injuries caused by the hazard occurrence. To combine fatalities and injuries for the computation of population loss value, an injury is counted as one-tenth (1/10) of a fatality. The NCEI Storm Events Database classifies injuries and fatalities as direct or indirect. Both direct and indirect injuries and fatalities are counted as population loss. This total number of injuries and fatalities is then divided by the population in the census tract to get a per-capita rate of population risk.",
+    "description": "description text for exp pop loss rate"
+  },
+  "category.heart.disease.description.text": {
+    "defaultMessage": "Weighted percent of people ages 18 years and older who report ever having been told by a doctor, nurse, or other health professionals that they had angina or coronary heart disease.",
+    "description": "description text for heart disease"
+  },
+  "category.high.ed.enroll.rate.description.text": {
+    "defaultMessage": "Percent of people who are currently enrolled in college or graduate school.",
+    "description": "description text for low income"
+  },
+  "category.highschool.description.text": {
+    "defaultMessage": "Percent of people ages 25 years or older in a census tract whose education level is less than a high school diploma.",
+    "description": "description text for highschool"
+  },
+  "category.house.burden.description.text": {
+    "defaultMessage": "Percent of households in a census tract that are both earning less than 80% of HUD Area Median Family Income by county and are spending more than 30% of their income on housing costs.",
+    "description": "description text for housing burden"
+  },
+  "category.lead.paint.description.text": {
+    "defaultMessage": "Percent of housing units built pre-1960, used as an indicator of potential lead paint exposure in census tracts with median home values less than the 90th percentile.",
+    "description": "description text for lead paint"
+  },
+  "category.linguistic.iso.description.text": {
+    "defaultMessage": "Percent of households where no one over the age 14 speaks English well.",
+    "description": "description text for linguistic isolation"
+  },
+  "category.low.income.description.text": {
+    "defaultMessage": "Percent of a census tract's population in households where household income is at or below 200% of the Federal poverty level.",
+    "description": "description text for low income"
+  },
+  "category.low.life.expectancy.description.text": {
+    "defaultMessage": "Average number of years of life a person who has attained a given age can expect to live. {note}",
+    "description": "description text for low life expectancy"
+  },
+  "category.median.home.value.description.text": {
+    "defaultMessage": "Median home value of owner-occupied housing units in the census tract.",
+    "description": "description text for lead paint"
+  },
+  "category.pm2.5.description.text": {
+    "defaultMessage": "Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller. The value in the fields is the weight of these particles in micrograms per cubic meter.",
+    "description": "description text for pm 2.5"
+  },
+  "category.poverty.description.text": {
+    "defaultMessage": "Percent of a census tract's population in households where the household income is at or below 100% of the Federal poverty level.",
+    "description": "description text for poverty"
+  },
+  "category.prox.haz.description.text": {
+    "defaultMessage": "Count of hazardous waste facilities (Treatment, Storage, and Disposal Facilities and Large Quantity Generators) within 5 kilometers (or nearest beyond 5 kilometers), each divided by distance in kilometers.",
+    "description": "description text for proximity to hazards"
+  },
+  "category.prox.npl.description.text": {
+    "defaultMessage": "Count of proposed or listed NPL - also known as Superfund - sites within 5 kilometers (or nearest one beyond 5 kilometers), each divided by distance in kilometers.",
+    "description": "description text for proximity to npl"
+  },
+  "category.prox.rmp.description.text": {
+    "defaultMessage": "Count of RMP (potential chemical accident management plan) facilities within 5 kilometers (or nearest one beyond 5 kilometers), each divided by distance in kilometers.",
+    "description": "description text for proximity to rmp"
+  },
+  "category.source.cdc.places.link": {
+    "defaultMessage": "{sourceCdcPlacesLink} from {date16_19}",
+    "description": "source link for CDC Places"
+  },
+  "category.source.cdc.sleep.link": {
+    "defaultMessage": "{sourceCdcSleepLink} from {date10_15}",
+    "description": "source link for CDC Sleep"
+  },
+  "category.source.census.link.10": {
+    "defaultMessage": "{sourceCensusLink} from {date10}",
+    "description": "source link for Census ACS"
+  },
+  "category.source.census.link.15": {
+    "defaultMessage": "{sourceCensusLink} from {date15_19}",
+    "description": "source link for Census ACS"
+  },
+  "category.source.doe.lead.link": {
+    "defaultMessage": "{sourceDoeLeadLink} from {date18}",
+    "description": "source link for DOE FEMA"
+  },
+  "category.source.dot.epa.link": {
+    "defaultMessage": "{sourceDotEpaLink} from {date17} as compiled by EPA's EJSCREEN",
+    "description": "source link for DOT EPA"
+  },
+  "category.source.epa.cerclis.link": {
+    "defaultMessage": "{sourceEpaCerclisLink} from {date20} as compiled by EPA’s EJSCREEN",
+    "description": "source link for EPA CERCLIS"
+  },
+  "category.source.epa.nata.link": {
+    "defaultMessage": "{sourceEpaOarLink} from {date14} as compiled by EPA's EJSCREEN",
+    "description": "source link for EPA NATA"
+  },
+  "category.source.epa.oar.link": {
+    "defaultMessage": "{sourceEpaOarLink} from {date17} as compiled by EPA’s EJSCREEN, sourced from EPA National Air Toxics Assessment (NATA) and the U.S. Department of Transportation (DOT) traffic data",
+    "description": "source link for EPA OAR"
+  },
+  "category.source.epa.rmp.link": {
+    "defaultMessage": "{sourceEpaRmpLink} from {date20} as compiled by EPA’s EJSCREEN",
+    "description": "source link for EPA RMP"
+  },
+  "category.source.epa.rsei.link": {
+    "defaultMessage": "{sourceEpaRseiLink} from {date20} as compiled by EPA’s EJSCREEN",
+    "description": "source link for EPA RSEI"
+  },
+  "category.source.epa.tsdf.link": {
+    "defaultMessage": "{sourceEpaTsdfLink} from {date20} calculated from EPA's RCRA database as compiled by EPA's EJSCREEN",
+    "description": "source link for EPA TSDF"
+  },
+  "category.source.fema.link": {
+    "defaultMessage": "{sourceFemaLink} from {date14_21}",
+    "description": "source link for FEMA"
+  },
+  "category.source.hud.link": {
+    "defaultMessage": "{sourceHudLink} from {date14_18}",
+    "description": "source link for HUD"
+  },
+  "category.traffic.vol.description.text": {
+    "defaultMessage": "Count of vehicles (average annual daily traffic) at major roads within 500 meters, divided by distance in meters.",
+    "description": "description text for traffic volume"
+  },
+  "category.unemploy.description.text": {
+    "defaultMessage": "Number of unemployed people as a percentage of the civilian labor force.",
+    "description": "description text for unemployment"
+  },
+  "category.waste.water.description.text": {
+    "defaultMessage": "Risk-Screening Environmental Indicators (RSEI) modeled toxic concentrations at stream segments within 500 meters, divided by distance in kilometers.",
+    "description": "description text for waste water"
+  },
+  "category.workforce.dev.description.text": {
+    "defaultMessage": "Median income of the census tract calculated as a percent of the area’s median income. {note}",
+    "description": "description text for workforce dev"
   },
   "community.members.heading": {
     "defaultMessage": "Community members",
     "description": "sub heading of page"
   },
   "community.members.info": {
-    "defaultMessage": "Explore data about communities of focus in your area, and help provide feedback on the tool.",
+    "defaultMessage": "Explore data about communities across the U.S., including your own, and provide feedback on the tool.",
     "description": "sub heading of page"
   },
   "community.members.link": {
     "defaultMessage": "Explore the tool",
     "description": "link to explore the tool page"
+  },
+  "contact.page.census.tract.feedback.para1": {
+    "defaultMessage": "To provide feedback about a specific census tract, either select the send feedback button after selecting a census tract on the {exploreLink} page or use the email address provided above. Please include the census tract ID, county, and state or territory information, in addition to your feedback.",
+    "description": "census tract feedback section"
+  },
+  "contact.page.census.tract.feedback.para2": {
+    "defaultMessage": "If there are specific data indicators that could be improved or changed, please include that information in the body of the email.",
+    "description": "census tract feedback section"
+  },
+  "contact.page.census.tract.feedback.para3": {
+    "defaultMessage": "In addition, you can provide feedback on the tool via this {improvementSurvey}.",
+    "description": "census tract feedback section"
+  },
+  "contact.page.census.tract.feedback.title": {
+    "defaultMessage": "Census tract feedback",
+    "description": "census tract feedback section"
   },
   "contact.page.header.text": {
     "defaultMessage": "Contact",
@@ -203,16 +511,24 @@
     "defaultMessage": "Contact",
     "description": "contact page title text"
   },
-  "datasetCard.dataDateRange": {
-    "defaultMessage": "Data date range:",
+  "datasetCard.available.for": {
+    "defaultMessage": "Available for:",
+    "description": "label associated with available for which regions of the card"
+  },
+  "datasetCard.date.range": {
+    "defaultMessage": "Date range:",
     "description": "label associated with explaining the card"
   },
-  "datasetCard.dataResolution": {
-    "defaultMessage": "Data resolution:",
+  "datasetCard.responsible.party": {
+    "defaultMessage": "Responsible Party:",
     "description": "label associated with explaining the card"
   },
-  "datasetCard.dataSource": {
-    "defaultMessage": "Data source:",
+  "datasetCard.source": {
+    "defaultMessage": "Source:",
+    "description": "label associated with source of the card"
+  },
+  "datasetCard.used.in": {
+    "defaultMessage": "Used in:",
     "description": "label associated with explaining the card"
   },
   "datasetContainer.additional.heading": {
@@ -224,16 +540,16 @@
     "description": "additional indicator info"
   },
   "datasetContainer.heading": {
-    "defaultMessage": "Datasets used in methodology",
+    "defaultMessage": "Datasets used in beta methodology",
     "description": "section heading of which datasets are used in cumulative score"
   },
   "datasetContainer.info": {
-    "defaultMessage": "The datasets come from a variety of sources and were selected based on relevance, availability, recency, and quality. The datasets seek to identify a range of human health, environmental, climate-related, and other cumulative impacts on communities.",
+    "defaultMessage": "The datasets used in the current version of the tool come from a variety of sources and were selected based on relevance, availability, and quality. The datasets seek to identify a range of human health, environmental, climate-related, and other impacts on communities.",
     "description": "description of the dataset section"
   },
   "download.draft.ptag.1": {
-    "defaultMessage": "{downloadDraft} of communities of focus and datasets used. Last updated: {dateUpdated}.",
-    "description": "Download the draft list of communities of focus and datasets used."
+    "defaultMessage": "{downloadDraft} of communities and datasets used (ZIP file will contain one .xlsx and one .csv, with a size of {downloadFileSize}). Last updated: {dateUpdated}.",
+    "description": "Download the current list of communities and datasets used."
   },
   "download.draft.ptag.2": {
     "defaultMessage": "ZIP file will contain one .xlsx, one .csv, and one .pdf ({downloadFileSize}).",
@@ -252,15 +568,47 @@
     "description": "download packet info last updated"
   },
   "downloadPacket.info.text": {
-    "defaultMessage": "The package includes draft v{versionNumber} of the list of communities of focus (.csv and .xlsx) and information about how to use the list (.pdf).",
+    "defaultMessage": "The download package includes draft v{versionNumber} of the list of disadvantaged communities (.csv and .xlsx).",
     "description": "download packet info text"
+  },
+  "explore.page.note.on.territories.intro": {
+    "defaultMessage": "A note on the U.S. territories",
+    "description": "territories intro text"
+  },
+  "explore.page.note.on.territories.para.1": {
+    "defaultMessage": "The data sources described on the {dataMethLink} page are used to identify disadvantaged communities in all fifty states and the District of Columbia. However, not all of these data sources are currently available for the U.S. territories.",
+    "description": "territories paragraph 1"
+  },
+  "explore.page.note.on.territories.para.2": {
+    "defaultMessage": "For Puerto Rico, the Census Bureau’s American Community Survey data from 2015-2019 are used for higher ed enrollment rate and all the other fields in the Training and Workforce Development category to identify disadvantaged communities. Data in the other categories are unavailable at this time.",
+    "description": "territories paragraph 2"
+  },
+  "explore.page.note.on.territories.para.3": {
+    "defaultMessage": "For American Samoa and the Northern Mariana Islands, the data used to identify disadvantaged communities are from the 2010 Decennial Census, the last reported data from the U.S. Census Bureau. Available data for these territories includes unemployment, poverty, low median income, and high school degree achievement rate fields in the Training and Workforce Development category.",
+    "description": "territories paragraph 3"
+  },
+  "explore.page.note.on.territories.para.4": {
+    "defaultMessage": "Work is currently underway to identify disadvantaged communities and update the tool accordingly for Guam and the U.S. Virgin Islands.",
+    "description": "territories paragraph 4"
+  },
+  "explore.page.note.on.tribal.nations.intro": {
+    "defaultMessage": "A note on Tribal Nations",
+    "description": "tribal nations intro text"
+  },
+  "explore.page.note.on.tribal.nations.para.1": {
+    "defaultMessage": "The tool covers all U.S. census tracts, including those located within Tribal Nations, to the extent that data is available (see our {dataMethLink} page for more information). CEQ is engaging in consultation and coordination with Tribal Nations on the beta version of the tool to provide Tribal Nations with meaningful opportunities for input, consistent with CEQ’s {actionPlanTribalNation}, {bidenMemoNat2Nat}, and Executive Order 13175 on {coordinateTribal}.",
+    "description": "tribal nations paragraph 1"
+  },
+  "explore.page.threshold.count.exceed": {
+    "defaultMessage": "{disadvCount} of {totalCount} thresholds exceeded",
+    "description": "threshold exceeded count"
   },
   "exploreTool.heading.text": {
     "defaultMessage": "Explore the tool",
     "description": "explore the tool heading text"
   },
   "exploreTool.page.description": {
-    "defaultMessage": "Zoom into the map to see communities of focus that can help Federal agencies identify disadvantaged communities and to provide socioeconomic, environmental, and climate information and data. Learn more about the methodology and datasets that were used to determine these communities of focus on the {methodologyLink} page.",
+    "defaultMessage": "Use the map to see communities that are identified as disadvantaged. The map uses publicly-available, nationally-consistent datasets. Learn more about the methodology and datasets that were used to identify disavantaged communities in the current version of the tool on the {methodologyLink} page.",
     "description": "page description"
   },
   "exploreTool.title.text": {
@@ -268,7 +616,7 @@
     "description": "explore the tool title text"
   },
   "fab.survey.text": {
-    "defaultMessage": "Take our survey!",
+    "defaultMessage": "Help improve the site & data",
     "description": "text for floating action button"
   },
   "federal.pm.heading": {
@@ -276,11 +624,11 @@
     "description": "sub heading of page"
   },
   "federal.pm.info": {
-    "defaultMessage": "Download the screening tool’s draft list of communities of focus. Explore data that may be useful to your program, and provide feedback on the tool.",
+    "defaultMessage": "Download the tool’s current list of communities, explore data that may be useful to your program, and provide feedback on the tool.",
     "description": "sub heading of page"
   },
   "federal.pm.link": {
-    "defaultMessage": "Go to data & methodology",
+    "defaultMessage": "Methodology & data",
     "description": "link text to go to methodology page"
   },
   "footer.arialabel": {
@@ -352,7 +700,7 @@
     "description": "Header navigate item to the Explore the tool page"
   },
   "header.methodology": {
-    "defaultMessage": "Data & methodology",
+    "defaultMessage": "Methodology & data",
     "description": "Header navigate item to the Methodology page"
   },
   "header.title.line1": {
@@ -368,7 +716,7 @@
     "description": "sub heading of page"
   },
   "index.heading.about.us": {
-    "defaultMessage": "About us",
+    "defaultMessage": "About",
     "description": "main heading for about page"
   },
   "index.heading.justice40": {
@@ -376,15 +724,111 @@
     "description": "heading for about justice 40"
   },
   "index.heading.screentool": {
-    "defaultMessage": "The screening tool",
+    "defaultMessage": "Screening tool",
     "description": "heading for about screening tool"
   },
-  "index.presidentalLinkLabel": {
-    "defaultMessage": "Executive Order 14008 on Tackling the Climate Crisis at Home and Abroad.",
-    "description": "Link url to presidential actions executive order. Part of paragraph 2"
+  "indicator.categories.afford.house.if": {
+    "defaultMessage": "{if} at or above the 90th percentile for {lead} AND {medianHomeVal} is at or less than the 90th percentile OR at or above the 90th percentile for the {houseBur}",
+    "description": "if portion of the formula"
+  },
+  "indicator.categories.afford.house.title": {
+    "defaultMessage": "Affordable and sustainable housing",
+    "description": "category title"
+  },
+  "indicator.categories.afford.housing.methodology": {
+    "defaultMessage": "Affordable and sustainable housing category",
+    "description": "Affordable and sustainable housing methodology"
+  },
+  "indicator.categories.clean.energy.if": {
+    "defaultMessage": "{if} at or above the 90th percentile for {energyCostBur} OR {pm25}",
+    "description": "if portion of the formula"
+  },
+  "indicator.categories.clean.energy.methodology": {
+    "defaultMessage": "Clean energy and energy efficiency category",
+    "description": "Clean energy and energy efficiency methodology"
+  },
+  "indicator.categories.clean.energy.title": {
+    "defaultMessage": "Clean energy and energy efficiency",
+    "description": "category title"
+  },
+  "indicator.categories.clean.transport.if": {
+    "defaultMessage": "{if} at or above the 90th percentile for {dieselPM} or {traffic}",
+    "description": "if portion of the formula"
+  },
+  "indicator.categories.clean.transport.methodology": {
+    "defaultMessage": "Clean transit category",
+    "description": "Clean transportation methodology"
+  },
+  "indicator.categories.clean.transport.title": {
+    "defaultMessage": "Clean transit",
+    "description": "category title"
+  },
+  "indicator.categories.clean.water.if": {
+    "defaultMessage": "{if} at or above the 90th percentile for {wasteWater}",
+    "description": "if portion of the formula"
+  },
+  "indicator.categories.clean.water.methodology": {
+    "defaultMessage": "Critical clean water and waste infrastructure category",
+    "description": "Critical clean water and waste infrastructure methodology"
+  },
+  "indicator.categories.clean.water.title": {
+    "defaultMessage": "Critical clean water and waste infrastructure",
+    "description": "category title"
+  },
+  "indicator.categories.climate.change.if": {
+    "defaultMessage": "{if} at or above the 90th percentile for {expAgrLossRate} OR {expbuildLossRate} OR {expPopLossRate}",
+    "description": "if portion of the formula"
+  },
+  "indicator.categories.climate.change.methodology": {
+    "defaultMessage": "Climate change category",
+    "description": "climate change methodology"
+  },
+  "indicator.categories.climate.change.title": {
+    "defaultMessage": "Climate change",
+    "description": "category title"
+  },
+  "indicator.categories.heading": {
+    "defaultMessage": "Categories",
+    "description": "category heading"
+  },
+  "indicator.categories.health.burdens.if": {
+    "defaultMessage": "{if} at or above the 90th percentile for {asthma} OR {diabetes} OR {heart} OR {life}",
+    "description": "if portion of the formula"
+  },
+  "indicator.categories.health.burdens.methodology": {
+    "defaultMessage": "Health burdens category",
+    "description": "Health burdens methodology"
+  },
+  "indicator.categories.health.burdens.title": {
+    "defaultMessage": "Health burdens",
+    "description": "category title"
+  },
+  "indicator.categories.legacy.pollute.methodology": {
+    "defaultMessage": "Reduction and remediation of legacy pollution category",
+    "description": "Reduction and remediation of legacy pollution methodology"
+  },
+  "indicator.categories.legacy.pollution.if": {
+    "defaultMessage": "{if} at or above the 90th percentile for {proxHaz} OR {proxNPL} OR {proxRMP}",
+    "description": "if portion of the formula"
+  },
+  "indicator.categories.legacy.pollution.title": {
+    "defaultMessage": "Reduction and remediation of legacy pollution",
+    "description": "category title"
+  },
+  "indicator.categories.work.dev.if": {
+    "defaultMessage": "{if} at or above the 90th percentile for {lowMedInc} as a percentage of area median income OR {linIso} OR {unemploy} OR percent individuals in households at or below 100% Federal {poverty} level",
+    "description": "if portion of the formula"
+  },
+  "indicator.categories.work.dev.title": {
+    "defaultMessage": "Training and workforce development",
+    "description": "category title"
+  },
+  "indicator.categories.workforce.dev.methodology": {
+    "defaultMessage": "Training and workforce development category",
+    "description": "Training and workforce development"
   },
   "join.open.source.info": {
-    "defaultMessage": "The screening tool’s code is open source, which means it is available for the public to view and contribute to. Anyone can view and contribute on GitHub.",
+    "defaultMessage": "The tool’s code is open source, which means it is available for the public to view and contribute to it.",
     "description": "info on joining open source community"
   },
   "join.open.source.link": {
@@ -396,12 +840,28 @@
     "description": "join the community heading"
   },
   "legend.info.priority.label": {
-    "defaultMessage": "Draft community of focus",
+    "defaultMessage": "Disadvantaged community",
     "description": "the label of the prioritized community legend"
   },
   "legend.info.threshold.label": {
-    "defaultMessage": "A community identified as experiencing disadvantages that merits the focus of certain Federal investments, including through the Justice40 Initiative",
+    "defaultMessage": "Communities identified as disadvantaged by the tool are those that are marginalized, underserved, and overburdened by pollution. These communities are at or above the thresholds in one or more of eight categories of criteria.",
     "description": "the label of the threshold community legend"
+  },
+  "low.income.heading": {
+    "defaultMessage": "Low Income",
+    "description": "title of section describing low income"
+  },
+  "low.income.info": {
+    "defaultMessage": "At or above 65th percentile for percent of census tract population of households where household income is at or below 200% of the Federal poverty level",
+    "description": "description of low income"
+  },
+  "map.search.placeholder.text": {
+    "defaultMessage": "Enter a city, state or ZIP",
+    "description": "placeholder text for search"
+  },
+  "map.search.results.empty.text": {
+    "defaultMessage": "No location found. Please try again.",
+    "description": "text displaying message for no search results found"
   },
   "map.territoryFocus.alaska.long": {
     "defaultMessage": "Alaska",
@@ -411,9 +871,33 @@
     "defaultMessage": "AK",
     "description": "The abbreviated indicating the bounds of Alaska"
   },
+  "map.territoryFocus.american.samoa.long": {
+    "defaultMessage": "American Samoa",
+    "description": "The full name indicating the bounds of American Somoa"
+  },
+  "map.territoryFocus.american.samoa.short": {
+    "defaultMessage": "AS",
+    "description": "The abbreviated name indicating the bounds of American Somoa"
+  },
+  "map.territoryFocus.commonwealth.nmp.long": {
+    "defaultMessage": "Commonwealth of Northern Mariana Islands",
+    "description": "The full name indicating the bounds of Commonwealth of Northern Mariana Islands"
+  },
+  "map.territoryFocus.commonwealth.nmp.short": {
+    "defaultMessage": "MP",
+    "description": "The abbreviated name indicating the bounds of Commonwealth of Northern Mariana Islands"
+  },
   "map.territoryFocus.focusOn": {
     "defaultMessage": "Focus on {territory}",
     "description": "Focus on the bounds of a specific territory"
+  },
+  "map.territoryFocus.guam.long": {
+    "defaultMessage": "Guam",
+    "description": "The full name indicating the bounds of Guam"
+  },
+  "map.territoryFocus.guam.short": {
+    "defaultMessage": "GU",
+    "description": "The abbreviated name indicating the bounds of Guam"
   },
   "map.territoryFocus.hawaii.long": {
     "defaultMessage": "Hawaii",
@@ -439,12 +923,20 @@
     "defaultMessage": "PR",
     "description": "The abbreviated name indicating the bounds of Puerto Rico"
   },
+  "map.territoryFocus.us.virgin.islands.long": {
+    "defaultMessage": "US Virgin Islands",
+    "description": "The full name indicating the bounds of US Virgin Islands"
+  },
+  "map.territoryFocus.us.virgin.islands.short": {
+    "defaultMessage": "VI",
+    "description": "The abbreviated name indicating the bounds of US Virgin Islands"
+  },
   "map.zoom.warning": {
     "defaultMessage": "Zoom in to the state or regional level to see prioritized communities on the map.",
     "description": "zoom warning on map"
   },
   "mapIntro.censusBlockGroupDefinition": {
-    "defaultMessage": "A census block group is generally between 600 and 3,000 people. It is the smallest geographical unit for which the U.S. Census Bureau publishes sample data.",
+    "defaultMessage": "A census tract is generally between 1,200 to 8,000 people, with an average size of 4,000 people. Census tracts are small, relatively permanent subdivisions of a county defined by the U.S. Census Bureau and usually cover a contiguous area. The census tract level currently represents the smallest geographical unit for which publicly-available and nationally-consistent datasets can be consistently displayed on the tool.",
     "description": "cites the definition and helpful information about census groups"
   },
   "mapIntro.didYouKnow": {
@@ -452,111 +944,159 @@
     "description": "text prompting a cite paragraph"
   },
   "mapIntro.mapIntroHeader": {
-    "defaultMessage": "Zoom and select a census block group to view data",
+    "defaultMessage": "Zoom and select a census tract to view data",
     "description": "introductory text of ways to use the map"
+  },
+  "methodologies.all.except.workforce.used.in.text": {
+    "defaultMessage": "All categories except for the training and workforce development catetory",
+    "description": "used in text for all methodologies"
+  },
+  "methodology.category.card.title": {
+    "defaultMessage": "Communities are {idAsDisadv}",
+    "description": "category heading"
+  },
+  "methodology.paage.category.and.clause.hs.ed.higher.ed": {
+    "defaultMessage": "{and} is at or less than 90% for {highSchoolRate} for adults 25 years and older AND at or below 20% for {highEdEnrollRate}",
+    "description": "and portion of the formula dealing with higher ed enrollment and high school degree rate"
+  },
+  "methodology.paage.category.and.clause.low.inc.hs.ed": {
+    "defaultMessage": "{and} is above the 65th percentile for {lowIncome} AND at or below 20% for {highEdEnrollRate}",
+    "description": "and portion of the formula dealing with lower income and high school degree rate"
+  },
+  "methodology.page.categories.title": {
+    "defaultMessage": "Communities are identified as disadvantaged by the current version of the tool for the purposes of the Justice40 Initiative if they are located in census tracts that are at or above the thresholds in one or more of eight categories of criteria below.",
+    "description": "methodology page explanation of the categories"
+  },
+  "methodology.page.formula.first": {
+    "defaultMessage": "{if} the census tract is above the threshold for one or more environmental or climate indicators",
+    "description": "the first part of the formula used in the methodology"
+  },
+  "methodology.page.formula.intro": {
+    "defaultMessage": "Under the current formula, a census tract will be identified as disadvantaged in one or more categories of criteria:",
+    "description": "methodology page introducing the formula"
+  },
+  "methodology.page.formula.second": {
+    "defaultMessage": "{and} the census tract is above the threshold for the socioeconomic indicators",
+    "description": "the second part of the formula used in the methodology"
+  },
+  "methodology.page.formula.third": {
+    "defaultMessage": "{then} the community is considered disadvantaged.",
+    "description": "the third part of the formula used in the methodology"
   },
   "methodology.page.header.text": {
     "defaultMessage": "Methodology",
     "description": "methodology page header text"
   },
-  "methodology.page.paragraph.first": {
-    "defaultMessage": "The methodology for identifying communities of focus is currently in a draft, pre-decisional form that may change over time as more datasets become available.",
-    "description": "methodology page paragraph 1"
+  "methodology.page.paragraph": {
+    "defaultMessage": "The current version of the tool identifies communities that are disadvantaged for the purposes of the Justice40 Initiative using census tracts, which are the smallest geographic unit for which publicly-available and nationally-consistent datasets can be consistently displayed on the tool. Census tract geographical boundaries are determined by the U.S. Census Bureau once every ten years. This tool utilizes the census tract boundaries from 2010 because they match the datasets used in the tool. The U.S. Census Bureau will update these census tract boundaries in 2020.",
+    "description": "methodology page paragraph"
+  },
+  "methodology.page.return.to.top.link": {
+    "defaultMessage": "Return to top",
+    "description": "link text to return to top"
   },
   "methodology.page.title.text": {
-    "defaultMessage": "Data and Methodology",
+    "defaultMessage": "Methodology & data",
     "description": "methodology page title text"
-  },
-  "methodology.step.1.a.heading": {
-    "defaultMessage": "Percent of Area Median Income",
-    "description": "step 1 a heading"
-  },
-  "methodology.step.1.a.info.1": {
-    "defaultMessage": "If a census block group is in a metropolitan area, this value is the median income of the census block group calculated as a percent of the metropolitan area’s median income.",
-    "description": "step 1 a info 1"
-  },
-  "methodology.step.1.a.info.2": {
-    "defaultMessage": "If a census block group is not in a metropolitan area, this value is the median income of the census block group calculated as a percent of the state’s median income.",
-    "description": "step 1 a info 2"
-  },
-  "methodology.step.1.b.heading": {
-    "defaultMessage": "Percent of households below or at 100% of the federal poverty line",
-    "description": "step 1 b heading"
-  },
-  "methodology.step.1.c.heading": {
-    "defaultMessage": "The high school degree achievement rate for adults 25 years and older",
-    "description": "step 1 a heading"
-  },
-  "methodology.step.1.c.info": {
-    "defaultMessage": "The percent of individuals who are 25 or older who have received a high school degree.",
-    "description": "step 1 c info"
-  },
-  "methodology.step.1.heading": {
-    "defaultMessage": "Gather datasets",
-    "description": "first step heading"
-  },
-  "methodology.step.1.info": {
-    "defaultMessage": "The methodology includes the following inputs that are equally weighted.",
-    "description": "first step info"
-  },
-  "methodology.step.2.heading": {
-    "defaultMessage": "Determine communites of focus",
-    "description": "second step heading"
-  },
-  "methodology.step.2.info": {
-    "defaultMessage": "Under the existing formula, a census block group will be considered a community of focus if:",
-    "description": "second step info"
-  },
-  "methodology.steps.2.b.info": {
-    "defaultMessage": "This is the percent of households in a state with a household income below or at 100% of the {federalPovertyLine}. This federal poverty line is calculated based on the composition of each household (e.g., based on household size), but it does not vary geographically.",
-    "description": "Download the draft list of communities of focus and datasets used."
-  },
-  "methodology.steps.2.formula": {
-    "defaultMessage": "{medianIncome} {or} {livingAtPovery} {and} {education}",
-    "description": "Formala used to calculate communities of focus"
-  },
-  "methodology.steps.description.1": {
-    "defaultMessage": "The methodology for identifying communities of focus is calculated at the census block group level. Census block geographical boundaries are determined by the U.S. Census Bureau once every ten years. This tool utilizes the census block boundaries from 2010.",
-    "description": "first description text "
-  },
-  "methodology.steps.description.2": {
-    "defaultMessage": "The following describes the process for identifying communities of focus.",
-    "description": "second description text"
-  },
-  "methodology.steps.heading": {
-    "defaultMessage": "Methodology",
-    "description": "heading of methodology section"
   },
   "pageNotFound.Guidance.text": {
     "defaultMessage": "Try creating a page in",
     "description": "page not found guidance text"
   },
-  "pageNotFound.apology.description.text": {
-    "defaultMessage": "we couldn’t find what you were looking for.",
-    "description": "page not found apology description text"
-  },
   "pageNotFound.apology.text": {
-    "defaultMessage": "Sorry",
-    "description": "page not found apology text"
+    "defaultMessage": "Sorry, the page you were looking for was not found. Click {home} to go home.",
+    "description": "page description"
   },
   "pageNotFound.heading.text": {
     "defaultMessage": "Page not found",
     "description": "page not found heading text"
   },
-  "pageNotFound.link.to.go.home.text": {
-    "defaultMessage": "Go home",
-    "description": "page not found link to go home text"
-  },
   "pageNotFound.title.text": {
     "defaultMessage": "Page not found",
     "description": "page not found title text"
+  },
+  "public.eng.page.button.label": {
+    "defaultMessage": "Public Engagement",
+    "description": "public engagement button label"
+  },
+  "public.eng.page.event.listening.1.info": {
+    "defaultMessage": "March 22nd (4:00 - 5:00 PM EST)",
+    "description": "public engagement page event listening session 1 date"
+  },
+  "public.eng.page.event.listening.2.info": {
+    "defaultMessage": "April 15th (4:00 - 5:00 PM EST)",
+    "description": "public engagement page event listening session 2 date"
+  },
+  "public.eng.page.event.listening.sess.description": {
+    "defaultMessage": "CEQ is hosting public listening sessions to seek input and feedback on the beta version of the tool, including on the datasets it includes and the methodology it uses. This feedback is critical to the development and enhancement of the tool. This feedback will help CEQ update and refine the tool to ensure that it reflects the environmental, climate and other challenges that communities are experiencing.",
+    "description": "public engagement page event listening session description"
+  },
+  "public.eng.page.event.listening.sess.name": {
+    "defaultMessage": "listening session",
+    "description": "public engagement page event listening session name"
+  },
+  "public.eng.page.event.training.1.info": {
+    "defaultMessage": "March 9th (4:00 - 5:00 PM EST)",
+    "description": "public engagement page event training session 1 date"
+  },
+  "public.eng.page.event.training.2.info": {
+    "defaultMessage": "March 10th (4:00 - 5:00 PM EST)",
+    "description": "public engagement page event training session 2 date"
+  },
+  "public.eng.page.event.training.3.info": {
+    "defaultMessage": "March 16th (4:00 - 5:00 PM EST)",
+    "description": "public engagement page event training session 3 date"
+  },
+  "public.eng.page.event.training.description": {
+    "defaultMessage": "The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to use the current version of the tool. The presenters at these webinars will be available to provide technical support and address issues related to accessing and using the tool.",
+    "description": "public engagement page event training session description"
+  },
+  "public.eng.page.event.training.sess.name": {
+    "defaultMessage": "training session",
+    "description": "public engagement page event training session name"
+  },
+  "public.eng.page.tag.label": {
+    "defaultMessage": "NEW",
+    "description": "public engagement tag label"
+  },
+  "publiceng.page.description1.text": {
+    "defaultMessage": "CEQ is hosting engagement opportunities to connect with the public about the current version of the tool. These sessions are an opportunity to obtain training on the tool or to provide feedback on the beta version of the tool. CEQ hopes that members of the public will join these engagements to learn about the tool, have their questions answered, and share feedback.",
+    "description": "publiceng page description 1 text"
+  },
+  "publiceng.page.description2.text": {
+    "defaultMessage": "Pre-registration is required to participate and speak at the sessions.",
+    "description": "publiceng page description 2 text"
+  },
+  "publiceng.page.description3.text": {
+    "defaultMessage": "As they become available, additional public trainings and engagement opportunities on the Climate and Economic Justice Screening Tool will also be posted on this page.",
+    "description": "publiceng page description 3 text"
+  },
+  "publiceng.page.event.info.label": {
+    "defaultMessage": "Event info",
+    "description": "public engagement page event info label"
+  },
+  "publiceng.page.event.reglink.label": {
+    "defaultMessage": "Registration link",
+    "description": "public engagment page event registration link label"
+  },
+  "publiceng.page.heading1.text": {
+    "defaultMessage": "Public engagement opportunities",
+    "description": "publiceng page header text"
+  },
+  "publiceng.page.sub.header2.text": {
+    "defaultMessage": "Find an event",
+    "description": "publiceng page sub header text"
+  },
+  "publiceng.page.title.text": {
+    "defaultMessage": "Public engagement opportunities",
+    "description": "publiceng page title text"
   },
   "send.feedback.heading": {
     "defaultMessage": "Send feedback",
     "description": "sending feedback heading"
   },
   "send.feedback.info": {
-    "defaultMessage": "Have ideas about how this tool can be improved to better reflect the on-the-ground experiences of your community?",
+    "defaultMessage": "Have ideas about data and information that reflect the experiences and conditions of your community?",
     "description": "sending feedback information"
   },
   "youCanHelpInfoText.heading": {
@@ -564,15 +1104,15 @@
     "description": "how one can help us improve the tool"
   },
   "youCanHelpInfoText.list.item.1": {
-    "defaultMessage": "If you have helpful information, we would love to {rxEmailFromYou}.",
-    "description": "how one can help us via email"
-  },
-  "youCanHelpInfoText.list.item.2": {
-    "defaultMessage": "View our {dataMeth} page and send us feedback.",
+    "defaultMessage": "View the {dataMeth} page and send feedback.",
     "description": "give us feedback on our data and methodology"
   },
+  "youCanHelpInfoText.list.item.2": {
+    "defaultMessage": "Use the tool to find communities and {shareFeedback}.",
+    "description": "share your feedback"
+  },
   "youCanHelpInfoText.list.item.3": {
-    "defaultMessage": "Find your community of interest and {shareFeedback}.",
+    "defaultMessage": "Respond to our Request for Information on {federalRegisterLink}.",
     "description": "share your feedback"
   }
 }
