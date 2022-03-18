@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "data-pipeline"
+name = "justice40-data-pipeline"
 version = "0.1.0"
 description = "ETL, Score and Map Generation of Justice 40 Tool"
 authors = ["Justice40 Engineering <j40-engineering@lists.usds.gov>"]
@@ -10,6 +10,9 @@ homepage = "https://github.com/usds/justice40-tool/tree/main/data/data-pipeline"
 repository = "https://github.com/usds/justice40-tool"
 include = [
     "LICENSE",
+]
+packages = [
+  {include = "data_pipeline"}
 ]
 
 [tool.poetry.dependencies]
