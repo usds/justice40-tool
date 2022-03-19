@@ -1,6 +1,6 @@
 import React from 'react';
 import {defineMessages} from 'react-intl';
-import {FormattedMessage} from 'gatsby-plugin-intl';
+import {FormattedDate, FormattedMessage, FormattedNumber} from 'gatsby-plugin-intl';
 import LinkTypeWrapper from '../../components/LinkTypeWrapper';
 
 export const PAGE = defineMessages({
@@ -82,10 +82,9 @@ export const FORMULA = {
 };
 
 // Download Package
-export const DOWNLOAD_FILE_SIZE = '52MB unzipped';
-export const DOWNLOAD_LAST_UPDATED = '2/18/22';
-export const DOWNLOAD_LAST_UPDATED_ES = '18/2/22';
-export const VERSION_NUMBER = '0.1';
+export const DOWNLOAD_FILE_SIZE = 52;
+export const DOWNLOAD_LAST_UPDATED = 1645180697000;
+export const VERSION_NUMBER = 0.1;
 
 export const DOWNLOAD_ZIP_URL = [
   process.env.GATSBY_CDN_TILES_BASE_URL,
@@ -96,22 +95,27 @@ export const DOWNLOAD_ZIP_URL = [
 export const DOWNLOAD_PACKAGE = {
   TITLE: <FormattedMessage
     id={'downloadPacket.header.text'}
-    defaultMessage={`Draft communities list v{versionNumber} ({downloadFileSize})`}
+    defaultMessage={`Draft communities list v{version} ({downloadFileSize} unzipped)`}
     description={'download packet header text'}
     values= {{
-      versionNumber: VERSION_NUMBER,
-      downloadFileSize: DOWNLOAD_FILE_SIZE,
+      version: <FormattedNumber value={VERSION_NUMBER}/>,
+      downloadFileSize: <FormattedNumber
+        value={DOWNLOAD_FILE_SIZE}
+        style="unit"
+        unit="megabyte"
+        unitDisplay="narrow"
+      />,
     }}
   />,
   DESCRIPTION: <FormattedMessage
     id={ 'downloadPacket.info.text'}
     defaultMessage= {`
-      The download package includes draft v{versionNumber} of the list of disadvantaged communities
+      The download package includes draft v{version} of the list of disadvantaged communities
       (.csv and .xlsx).
     `}
     description= {'download packet info text'}
     values= {{
-      versionNumber: VERSION_NUMBER,
+      version: <FormattedNumber value={VERSION_NUMBER}/>,
     }}
   />,
   LAST_UPDATED: <FormattedMessage
@@ -119,7 +123,12 @@ export const DOWNLOAD_PACKAGE = {
     defaultMessage= {`Last updated: {downloadLastUpdated} `}
     description= {'download packet info last updated'}
     values= {{
-      downloadLastUpdated: DOWNLOAD_LAST_UPDATED,
+      downloadLastUpdated: <FormattedDate
+        value={DOWNLOAD_LAST_UPDATED}
+        year="2-digit"
+        month="2-digit"
+        day="2-digit"
+      />,
     }}
   />,
   BUTTON_TEXT: <FormattedMessage

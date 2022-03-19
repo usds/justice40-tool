@@ -76,8 +76,8 @@ exports[`rendering of the component expects the render to match snapshot 1`] = `
       <strong>
         IF
       </strong>
-       each tract is identified as experiencing burdens
-    disproportionally 
+       each tract is identified as 
+    experiencing burdens disproportionally 
       <strong>
         AND
       </strong>
