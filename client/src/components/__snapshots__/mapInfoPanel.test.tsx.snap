@@ -17,9 +17,8 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
         tabindex="0"
       >
         
-      The goal of this tool is to identify communities that are marginalized, underserved and overburdened
-      by pollution. These communities will be at or above the combined threshold for one of more of 
-      eight categories of criteria.
+      This tool identifies communities that are marginalized, underserved, and overburdened by 
+      pollution. These communities will be at or above the thresholds for one or more of eight categories of criteria.
     
       </p>
       <img
@@ -33,8 +32,8 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
         tabindex="0"
       >
         
-      The tool uses census tracts that represent about 4000 people and are the smallest unit of geography
-      at which consistent data is currently available
+      The tool uses census tracts that represent about 4000 people and are the smallest unit of geography 
+      at which consistent data is currently available.
     
       </p>
       <img
@@ -48,8 +47,8 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
         tabindex="0"
       >
         
-      The tool ranks each census tract using percentiles which show how much burden each tract has relative to
-      all the other tracts.
+      The tool ranks each census tract using percentiles which show how much burden each tract has 
+      relative to all the other tracts.
     
       </p>
       <img
@@ -63,7 +62,7 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
         tabindex="0"
       >
         
-      Percents are also used to show the share of people in the tract that have certain socio-economic characteristics.
+      Percents are also used to show the share of people in the tract have certain socioeconomic characteristics.
     
       </p>
       <img
@@ -86,7 +85,7 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
         <strong>
           AND
         </strong>
-         has those socioeconomic characteristics
+         has those socioeconomic characteristics.
   
       </p>
     </aside>
