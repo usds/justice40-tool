@@ -133,7 +133,7 @@ export const EVENTS = [
         description: 'public engagement page event training session 1 date',
       },
     }),
-    REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_D-Om_xXhTtiLv71y3Rr1CQ`,
+    REG_LINK: null,
     DATA_CY: `mar-9-reg-link-block`,
   },
   {
@@ -149,7 +149,7 @@ export const EVENTS = [
         description: 'public engagement page event training session 2 date',
       },
     }),
-    REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_QsSqshI4TpmRBkI6nVlWxQ`,
+    REG_LINK: null,
     DATA_CY: `mar-10-reg-link-block`,
 
   },
@@ -166,7 +166,7 @@ export const EVENTS = [
         description: 'public engagement page event training session 3 date',
       },
     }),
-    REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_q86iMtpwTESYa6f0xpIk7g`,
+    REG_LINK: null,
     DATA_CY: `mar-16-reg-link-block`,
 
   },
