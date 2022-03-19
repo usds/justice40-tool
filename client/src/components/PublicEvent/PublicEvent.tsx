@@ -20,7 +20,7 @@ export interface IPublicEvent {
     NUMBER: Number,
     IMAGE: React.ReactElement | string,
     FIELDS: JSX.Element,
-    REG_LINK: string,
+    REG_LINK?: string | null,
     DATA_CY: string,
   }
 }
@@ -31,12 +31,13 @@ const PublicEvent = ({event}:IPublicEvent) => {
 
   return (
     <CollectionItem
-      variantComponent={
-        <CollectionThumbnail src={event.IMAGE} alt="Alt text" />
-      }>
+      variantComponent={<CollectionThumbnail src={event.IMAGE} alt="Alt text"/>}
+    >
 
       {/* Heading */}
       <CollectionHeading>
+        {
+      event.REG_LINK ?
         <LinkTypeWrapper
           linkText={`CEJST 
             ${intl.formatMessage(event.NAME)} 
@@ -46,7 +47,9 @@ const PublicEvent = ({event}:IPublicEvent) => {
           url={event.REG_LINK}
           openUrlNewTab={true}
           dataCy={event.DATA_CY}
-        />
+        /> :
+        `CEJST ${intl.formatMessage(event.NAME)} #${event.NUMBER}`
+        }
       </CollectionHeading>
 
       {/* Description */}
@@ -63,13 +66,15 @@ const PublicEvent = ({event}:IPublicEvent) => {
       </CollectionDescription>
 
       {/* Registration Link */}
-      <CollectionDescription className={styles.description}>
-        <a href={event.REG_LINK} target={'_blank'} rel="noreferrer">
-          <Button type='button'>
-            {intl.formatMessage(PUBLIC_ENGAGE_COPY.EVENT_FIELDS.REG_LINK)}
-          </Button>
-        </a>
-      </CollectionDescription>
+      {
+        event.REG_LINK && <CollectionDescription className={styles.description}>
+          <a href={event.REG_LINK} target={'_blank'} rel="noreferrer">
+            <Button type='button'>
+              {intl.formatMessage(PUBLIC_ENGAGE_COPY.EVENT_FIELDS.REG_LINK)}
+            </Button>
+          </a>
+        </CollectionDescription>
+      }
     </CollectionItem>
   );
 };
