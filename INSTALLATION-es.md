@@ -2,8 +2,15 @@
 
 *[Read this in English](INSTALLATION.md)*
 
-## Software requerido
-- git, node, and an IDE
+Esta página documenta los pasos de instalación de algunos de los programas necesarios para trabajar con este proyecto.
+
+> **NOTA: Si todo lo que quiere hacer es ejecutar rápidamente todo localmente para probar la aplicación, vaya directamente a [`QUICKSTART.md`](QUICKSTART.md).**
+
+Después de los pasos de instalación genéricos de esta página,continúe con uno de los siguientes, según lo que intente hacer:
+
+- Si está trabajando con la interfaz, consulte [`client/README-es.md`](client/README-es.md).
+- Si está trabajando con la canalización de datos, consulte [`data/data-pipeline/README-es.md`](data/data-pipeline/README-es.md).
+- Si desea comprender el proceso de implementación actual,consulte [`.github/workflows/README-es.md`](.github/workflows/README-es.md).
 
 ### Instalar Git
 
@@ -18,15 +25,17 @@ Descargar desde [sitio web](https://git-scm.com/download/win)
 
 
 ### Instalar Homebrew (MacOS only)
-1. Abra la terminal y copie / pegue este comando y presione RETORNO.
+
+Homebrew es una manera fácil de administrar las descargas de software en MacOS. No *tienes* que usarlo, pero lo recomendamos.
+
+1. Primero, abra su terminal y ejecute `brew -v` para determinar si tiene Homebrew instalado. Si obtiene una respuesta que se parece a `Homebrew 3.1.9`, ¡ya la tiene! Si no obtiene nada de vuelta, o un error, continúe.
+2. Abra la terminal y copie / pegue este comando y presione RETORNO. Siga las indicaciones (deberá otorgar acceso a `sudo`).
 
 `/bin/bash -c “$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`
 
 2. Valide la instalación escribiendo `brew -v` en la terminal y asegúrese de que se muestre un número de versión.
 
-### Instalar Node usando NVM
-<!-- markdown-link-check-disable-next-line -->
-Esto funcionará tanto para MacOS como para Win10. Siga las instrucciones de este [enlace](https://medium.com/@nodesource/installing-node-js-tutorial-using-nvm-5c6ff5925dd8)
+Deberías ejecutar regularmente `brew update` y `brew doctor` para asegurarte de que tus paquetes estén actualizados y en buenas condiciones.
 
 ### Configuración de IDE
 Si bien se puede usar cualquier IDE, describimos cómo configurar VS Code
@@ -48,11 +57,7 @@ Si bien se puede usar cualquier IDE, describimos cómo configurar VS Code
 4. [Live Share Audio](https://github.com/MicrosoftDocs/live-share)
 5. [Live Share Extention Pack](https://github.com/MicrosoftDocs/live-share)
 
-## Ejecuta el código
+## Instalar ventana acoplable
 
-1. Bifurcar este repositorio y crear un clon local. [Más información](https://docs.github.com/es/github/getting-started-with-github/quickstart/fork-a-repo)
-1. Si está usando una Mac y Homebrew, abra la terminal y escriba `brew update` y `brew doctor`.
-
-Para el desarrollo de front-end, lea el [Client README](client/README.md).
-
-Para el desorrollo de back-end, lea el [Data Pipeline README](data/data-pipeline/README.md).
+Siga la [instalación de Docker
+instrucciones](https://docs.docker.com/get-docker/) para su plataforma.
