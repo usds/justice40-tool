@@ -1,4 +1,19 @@
+/* eslint-disable react/display-name */
+import React from 'react';
 import {defineMessages} from 'react-intl';
+import LinkTypeWrapper from '../../components/LinkTypeWrapper';
+
+/*
+ * i18n curried functions from react-intl (aka format.js)
+ * using ver3 of the docs as this is what gatsby-plugin-intl uses:
+ * https://formatjs.io/docs/react-intl/upgrade-guide-3x#enhanced-formattedmessage--formatmessage-rich-text-formatting
+ *
+ * */
+export const italicFn = (str:string) => <i>{str}</i>;
+export const boldFn = (str:string) => <strong>{str}</strong>;
+export const downloadLink = (href:string) => (str:string) => <a href={href}>{str}</a>;
+// eslint-disable-next-line max-len
+export const linkFn = (to:string, isInternal:boolean, isOpenNewTab:boolean) => (str:string) => <LinkTypeWrapper linkText={str} internal={isInternal} url={to} openUrlNewTab={isOpenNewTab}/>;
 
 // Beta Banner
 export const BETA_BANNER = defineMessages({
