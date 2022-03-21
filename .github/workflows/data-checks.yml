@@ -30,7 +30,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.cache/pypoetry/virtualenvs
-          key: env-${{ runner.os }}-${{ pythonLocation }}-${{ hashFiles('**/poetry.lock') }}-${{ hashFiles('.github/workflows/data-checks.yml') }}
+          key: env-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}-${{ hashFiles('.github/workflows/data-checks.yml') }}
       - name: Install poetry
         uses: snok/install-poetry@v1
       - name: Print Poetry settings
