@@ -162,10 +162,14 @@ def get_final_summary_info(
     This creates a series that tells us what share (%) of census tracts identified
     by the comparator are also in CEJST and what states the comparator covers.
     """
-    comparator_and_cejst_proportion_series = (
-        population.loc[(True, True)] / population.loc[(True,)].sum()
-    )
-
+    try:
+        comparator_and_cejst_proportion_series = (
+            population.loc[(True, True)] / population.loc[(True,)].sum()
+        )
+    except:
+        # for when we are looking at a disjoint set, like donut holes
+        comparator_and_cejst_proportion_series = pd.DataFrame()
+        
     states_represented = (
         pd.read_csv(
             comparator_file, usecols=[geoid_col], dtype={geoid_col: str}
@@ -336,14 +340,14 @@ def write_single_comparison_excel(
             text_format=text_format,
             use_index=False,
         )
-
-        write_excel_tab_about_comparator_scope(
-            writer=writer,
-            worksheet_name="Comparator and CEJST overlap",
-            comparator_and_cejst_proportion_series=comparator_and_cejst_proportion_series.rename(
-                "Comparator and CEJST overlap"
-            ),
-            text_format=text_format,
-            states_text=states_text,
-            merge_format=merge_format,
-        )
+        if not comparator_and_cejst_proportion_series.empty:
+            write_excel_tab_about_comparator_scope(
+                writer=writer,
+                worksheet_name="Comparator and CEJST overlap",
+                comparator_and_cejst_proportion_series=comparator_and_cejst_proportion_series.rename(
+                    "Comparator and CEJST overlap"
+                ),
+                text_format=text_format,
+                states_text=states_text,
+                merge_format=merge_format,
+            )
