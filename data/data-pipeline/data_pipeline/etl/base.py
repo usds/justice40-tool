@@ -70,7 +70,7 @@ class ExtractTransformLoad:
     #  be from CBGs at different time periods.
     EXPECTED_MAX_CENSUS_BLOCK_GROUPS: int = 250000
 
-    # Eleven digits in a census tract ID.
+    # There should be eleven digits in a census tract ID.
     EXPECTED_CENSUS_TRACTS_CHARACTER_LENGTH: int = 11
     # TODO: investigate. Census says there are only 74,134 tracts in the United States,
     #  Puerto Rico, and island areas. This might be from tracts at different time
