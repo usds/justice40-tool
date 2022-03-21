@@ -25,6 +25,7 @@ __What parameters go in the yaml file?__
 - SCORE_FILE: CEJST full score file
 - TOTAL_POPULATION_COLUMN: column name for total population
 - OTHER_COMPARATOR_COLUMNS: list, other columns from the comparator file you might want to read in for analysis. This is an optional argument. 
+- KEEP_MISSING_VALUES_FOR_SEGMENTATION: whether or not to fill NaNs. True keeps missing, false fills them.
 
 __Cleaning data__
 
