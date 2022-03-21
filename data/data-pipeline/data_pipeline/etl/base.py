@@ -61,7 +61,7 @@ class ExtractTransformLoad:
     #  in the output file based on this geography level.
     GEO_LEVEL: ValidGeoLevel = None
 
-    # COLUMNS_TO_KEEP to used to identify which columns to keep in the output df.
+    # COLUMNS_TO_KEEP is used to identify which columns to keep in the output df.
     COLUMNS_TO_KEEP: typing.List[str] = None
 
     # Thirteen digits in a census block group ID.
