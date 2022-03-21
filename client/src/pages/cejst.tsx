@@ -6,7 +6,6 @@ import HowYouCanHelp from '../components/HowYouCanHelp';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 import MapWrapper from '../components/MapWrapper';
-import MapLegend from '../components/MapLegend';
 import PublicEngageButton from '../components/PublicEngageButton';
 
 import * as EXPLORE_COPY from '../data/copy/explore';
@@ -31,15 +30,15 @@ const CEJSTPage = ({location}: IMapPageProps) => {
       </section>
 
       <Grid row gap className={'j40-mb5-mt3'}>
-        <Grid col={12} tablet={{col: 6}}>
+
+        {/* Gradually increase width of description section (desktop = 8 columns, tablet = 20 columns and
+            mobile = 12 columns) */}
+        <Grid desktop={{col: 8}} tablet={{col: 10}} col={12}>
           <section>
             <p>
               {EXPLORE_COPY.PAGE_DESCRIPTION}
             </p>
           </section>
-        </Grid>
-        <Grid col={12} tablet={{col: 6}}>
-          <MapLegend />
         </Grid>
       </Grid>
     </J40MainGridContainer>
