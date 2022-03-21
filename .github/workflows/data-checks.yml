@@ -23,12 +23,14 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Print variables to help debug
+        uses: hmarr/debug-action@v2
       - name: Load cached Poetry installation
         id: cached-poetry-dependencies
         uses: actions/cache@v2
         with:
           path: ~/.cache/pypoetry/virtualenvs
-          key: env-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}-${{ hashFiles('.github/workflows/data-checks.yml') }}
+          key: env-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}-${{ hashFiles('.github/workflows/data-checks.yml') }}
       - name: Install poetry
         uses: snok/install-poetry@v1
       - name: Print Poetry settings
