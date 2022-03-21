@@ -161,8 +161,8 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
               Poverty
               <div>
                 
-      Percent of a tract's population in households where the household income is at or below 100% of 
-      the Federal poverty level   
+      Percent of a census tract's population in households where the household income is at or below 100% 
+      of the Federal poverty level 
     
               </div>
             </div>
@@ -184,7 +184,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
               High school degree attainment rate
               <div>
                 
-      Proportion of people ages 25 years or older whose education level is less than a high school diploma 
+      Percent of people ages 25 years or older whose education level is less than a high school diploma 
     
               </div>
             </div>
@@ -322,7 +322,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Expected agriculture loss rate
               <div>
-                Economic loss rate to agriculture resulting from natural hazards
+                Economic loss rate to agricultural value resulting from natural hazards each year
               </div>
             </div>
             <div>
@@ -340,7 +340,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Expected building loss rate
               <div>
-                Economic loss rate to buildings resulting from natural hazards
+                Economic loss rate to agricultural value resulting from natural hazards each year
               </div>
             </div>
             <div>
@@ -473,7 +473,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               PM2.5 in the air
               <div>
-                Fine inhalable particles, 2.5 micrometers and smaller
+                Fine inhalable particles, 2.5 micrometers or smaller
               </div>
             </div>
             <div>
@@ -539,7 +539,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         >
           <div>
             <div>
-              Clean transportation
+              Clean transit
             </div>
             <div
               class=""
@@ -814,7 +814,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         >
           <div>
             <div>
-              Proximity to NPL sites
+              Proximity to National Priorities List (NPL) sites
               <div>
                 Proposed or listed NPL (Superfund) sites within 5 kilometers
               </div>
@@ -832,9 +832,9 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         >
           <div>
             <div>
-              Proximity to RMP facilities
+              Proximity to Risk Management Plan (RMP) facilities
               <div>
-                Risk Management Plan facilities within 5 kilometers
+                RMP facilities within 5 kilometers
               </div>
             </div>
             <div>
@@ -1241,8 +1241,8 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               Poverty
               <div>
                 
-      Percent of a tract's population in households where the household income is at or below 100% of 
-      the Federal poverty level   
+      Percent of a census tract's population in households where the household income is at or below 100% 
+      of the Federal poverty level 
     
               </div>
             </div>
@@ -1264,7 +1264,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               High school degree attainment rate
               <div>
                 
-      Proportion of people ages 25 years or older whose education level is less than a high school diploma 
+      Percent of people ages 25 years or older whose education level is less than a high school diploma 
     
               </div>
             </div>
@@ -1483,8 +1483,8 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               Poverty
               <div>
                 
-      Percent of a tract's population in households where the household income is at or below 100% of 
-      the Federal poverty level   
+      Percent of a census tract's population in households where the household income is at or below 100% 
+      of the Federal poverty level 
     
               </div>
             </div>
@@ -1506,7 +1506,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               High school degree attainment rate
               <div>
                 
-      Proportion of people ages 25 years or older whose education level is less than a high school diploma 
+      Percent of people ages 25 years or older whose education level is less than a high school diploma 
     
               </div>
             </div>

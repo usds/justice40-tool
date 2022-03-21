@@ -170,7 +170,7 @@ export const MAP = defineMessages({
 // Side Panel copy
 export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   TITLE: {
-    id: 'explore.tool.page.side.panel.info.para1',
+    id: 'explore.tool.page.side.panel.info.title',
     defaultMessage: 'Things to know',
     description: 'introductory text of ways to use the map',
   },
@@ -416,7 +416,7 @@ export const SIDE_PANEL_CATEGORY = defineMessages({
   },
   CLEAN_TRANSPORT: {
     id: 'explore.tool.page.side.panel.indicator.title.clean.transport',
-    defaultMessage: 'Clean transportation',
+    defaultMessage: 'Clean transit',
     description: `
       Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
       will show Clean transportation title
@@ -567,7 +567,7 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
   },
   PROX_NPL: {
     id: 'explore.tool.page.side.panel.indicator.prox.npl',
-    defaultMessage: 'Proximity to NPL sites',
+    defaultMessage: 'Proximity to National Priorities List (NPL) sites',
     description: `
       Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
       will show Count of proposed or listed NPL 
@@ -575,7 +575,7 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
   },
   PROX_RMP: {
     id: 'explore.tool.page.side.panel.indicator.prox.rmp',
-    defaultMessage: 'Proximity to RMP facilities',
+    defaultMessage: 'Proximity to Risk Management Plan (RMP) facilities',
     description: `
       Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
       will show Count of proposed or listed RMP
@@ -666,7 +666,7 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
 export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   EXP_AG_LOSS: {
     id: 'explore.tool.page.side.panel.indicator.description.exp.ag.loss',
-    defaultMessage: 'Economic loss rate to agriculture resulting from natural hazards',
+    defaultMessage: 'Economic loss rate to agricultural value resulting from natural hazards each year',
     description: `
       Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
       will show an indicator desciption of Economic loss rate to agriculture resulting from natural hazards
@@ -675,7 +675,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   },
   EXP_BLD_LOSS: {
     id: 'explore.tool.page.side.panel.indicator.description.exp.bld.loss',
-    defaultMessage: 'Economic loss rate to buildings resulting from natural hazards',
+    defaultMessage: 'Economic loss rate to agricultural value resulting from natural hazards each year',
     description: `
       Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
       will show an indicator desciption of Economic loss rate to buildings resulting from natural hazards
@@ -723,7 +723,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   },
   PM_2_5: {
     id: 'explore.tool.page.side.panel.indicator.description.pm25',
-    defaultMessage: 'Fine inhalable particles, 2.5 micrometers and smaller',
+    defaultMessage: 'Fine inhalable particles, 2.5 micrometers or smaller',
     description: `
       Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
       will show an indicator desciption of Fine inhalable particles, 2.5 micrometers and smaller
@@ -792,8 +792,8 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
     `,
   },
   PROX_RMP: {
-    id: 'explore.tool.page.side.panel.indicator.description.prox.npl',
-    defaultMessage: 'Risk Management Plan facilities within 5 kilometers',
+    id: 'explore.tool.page.side.panel.indicator.description.prox.rmp',
+    defaultMessage: 'RMP facilities within 5 kilometers',
     description: `
       Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
       will show an indicator desciption of Risk Management Plan facilities within 5 kilometers
@@ -883,8 +883,8 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   POVERTY: {
     id: 'explore.tool.page.side.panel.indicator.description.poverty',
     defaultMessage: `
-      Percent of a tract's population in households where the household income is at or below 100% of 
-      the Federal poverty level   
+      Percent of a census tract's population in households where the household income is at or below 100% 
+      of the Federal poverty level 
     `,
     description: `
       Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
@@ -895,7 +895,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   HIGH_SKL: {
     id: 'explore.tool.page.side.panel.indicator.description.high.school',
     defaultMessage: `
-      Proportion of people ages 25 years or older whose education level is less than a high school diploma 
+      Percent of people ages 25 years or older whose education level is less than a high school diploma 
     `,
     description: `
       Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
