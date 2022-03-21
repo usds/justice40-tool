@@ -18,7 +18,7 @@ fields:
     label: Total threshold criteria exceeded
     format: int64
   - score_name: Definition M (communities)
-    label: Definition M (communities)
+    label: Identified as disadvantaged
     format: bool
   - score_name: Total population
     label: Total population
@@ -248,3 +248,6 @@ fields:
   - score_name: Greater than or equal to the 90th percentile for low median household income as a percent of area median income and has low HS education in 2009 (island areas)?
     label: Greater than or equal to the 90th percentile for low median household income as a percent of area median income and has low HS education in 2009 (island areas)?
     format: bool
+  - score_name: Percent of population not currently enrolled in college or graduate school
+    label: Percent of residents who are not currently enrolled in higher ed
+    format: percentage

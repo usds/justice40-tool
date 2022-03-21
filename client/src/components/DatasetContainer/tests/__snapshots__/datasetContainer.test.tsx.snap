@@ -152,7 +152,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </h3>
               <div>
                 
-        Percent of agriculture value at risk from losses due to natural hazards that have some link 
+        Percent of agriculture value at risk from losses due to fourteen types of 
+        natural hazards that have some link 
         to climate change: avalanche, coastal flooding, 
         cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong 
         wind, tornado, wildfire, and winter weather. Rate calculated by dividing the agriculture value at risk in 
@@ -203,7 +204,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </h3>
               <div>
                 
-        Percent of building value at risk from losses due to natural hazards 
+        Percent of building value at risk from losses due to fourteen types of natural hazards 
         that have some link to climate change: avalanche, coastal flooding, 
         cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong 
         wind, tornado, wildfire, and winter weather. Rate calculated by dividing the building value at risk in 
@@ -254,7 +255,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </h3>
               <div>
                 
-        Rate relative to the population in fatalities and injuries due to natural hazards each year
+        Rate relative to the population of fatalities and injuries due to fourteen types of
+        natural hazards each year
         that have some link to climate change: avalanche, 
         coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, 
         riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined 
@@ -310,7 +312,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 Energy burden
               </h3>
               <div>
-                Average annual energy cost per household ($) divided by household average income.
+                Average annual energy cost per household ($) divided by average household income.
               </div>
               <ul>
                 <li>
@@ -554,7 +556,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div>
                 
         Percent of housing units built pre-1960, used as an indicator of potential lead paint exposure in
-        tracts with median home values less than the 90th percentile.
+        census tracts with median home values less than the 90th percentile.
       
               </div>
               <ul>
@@ -1001,10 +1003,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   
           Unlike most of the other datasets, high values of this data indicate low burdens. For 
           percentile calculations of burden, the percentile is calculated in reverse order, so that the 
-          tract with the highest life expectancy relative to area life expectancy (lowest burden on this 
-          measure) is at the 0th percentile, and the tract with the lowest life expectancy relative to 
-          area life expectancy (highest burden on this measure) is at the 100th percentile. Tracts with 
-          the highest number have the lowest life expectancy.
+          census tract with the highest life expectancy relative to area life expectancy (lowest burden 
+            on this measure) is at the 0th percentile, and the census tract with the lowest life 
+          expectancy relative to area life expectancy (highest burden on this measure) is at the 
+          100th percentile. Census tracts with the highest number have the lowest life expectancy.
         
                 </p>
                 
@@ -1063,9 +1065,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   
           Unlike most of the other datasets, high values of this data indicate low burdens. For 
           percentile calculations of burden, the percentile is calculated in reverse order, so that the 
-          tract with the highest median income relative to area median income (lowest burden on this 
-          measure) is at the 0th percentile, and the tract with the lowest median income relative to 
-          area median income (highest burden on this measure) is at the 100th percentile. Tracts with 
+          census tract with the highest median income relative to area median income (lowest burden on this 
+          measure) is at the 0th percentile, and the census tract with the lowest median income relative to 
+          area median income (highest burden on this measure) is at the 100th percentile. Census tracts with 
           the highest number have the lowest median income.
         
                 </p>
@@ -1133,11 +1135,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               id="ling-iso"
             >
               <h3>
-                Linguistic Isolation
+                Linguistic isolation
               </h3>
               <div>
                 
-        Percent of households, which are households, where no one over the age fourteen speaks English well.
+        Percent of households where no one over the age 14 speaks English well.
       
               </div>
               <ul>
@@ -1184,7 +1186,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </h3>
               <div>
                 
-      Number of unemployed people as a percentage of the civilian labor force
+      Number of unemployed people as a percentage of the civilian labor force.
       
               </div>
               <ul>
@@ -1252,7 +1254,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </h3>
               <div>
                 
-        Percent of a tract's population in households where the household income is at or below 100% of
+        Percent of a census tract's population in households where the household income is at or below 100% of
         the Federal poverty level.
       
               </div>

@@ -1,6 +1,5 @@
 from pathlib import Path
 import datetime
-
 from data_pipeline.config import settings
 
 from data_pipeline.score import field_names
@@ -45,7 +44,7 @@ DATA_SCORE_TILES_DIR = DATA_SCORE_DIR / "tiles"
 
 # Downloadable paths
 current_dt = datetime.datetime.now()
-timestamp_str = current_dt.strftime("%Y-%m-%d-%H%M")
+timestamp_str = current_dt.strftime("%Y-%m-%d-%H%MGMT")
 SCORE_DOWNLOADABLE_DIR = DATA_SCORE_DIR / "downloadable"
 SCORE_DOWNLOADABLE_PDF_FILE_NAME = "Draft_Communities_List.pdf"
 SCORE_DOWNLOADABLE_PDF_FILE_PATH = FILES_PATH / SCORE_DOWNLOADABLE_PDF_FILE_NAME
@@ -205,6 +204,8 @@ TILES_SCORE_COLUMNS = {
     # Percentage of HS Degree completion for Islands
     field_names.CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009: "IAHSEF",
     field_names.COLLEGE_ATTENDANCE_FIELD: "CA",
+    field_names.COLLEGE_NON_ATTENDANCE_FIELD: "NCA",
+    # This is logically equivalent to "non-college greater than 80%"
     field_names.COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD: "CA_LT20",
     field_names.LOW_INCOME_THRESHOLD: "FPL200S",
     # Booleans for the front end about the types of thresholds exceeded
@@ -270,5 +271,6 @@ TILES_SCORE_FLOAT_COLUMNS = [
     field_names.ISLAND_AREAS_LOW_HS_EDUCATION_FIELD,
     field_names.WASTEWATER_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.SCORE_M + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.COLLEGE_NON_ATTENDANCE_FIELD,
     field_names.COLLEGE_ATTENDANCE_FIELD,
 ]

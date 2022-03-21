@@ -57,7 +57,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
       </div>
       <a
         href="
-            mailto:Screeningtool-Support@omb.eop.gov?subject=Census tract ID 98729374234, N/A, N/A&body=Please provide feedback about this census tract, including about the datasets, the data categories provided for this tract, the communities who live in this tract, and anything else relevant that CEQ should know about this tract.
+            mailto:Screeningtool-Support@omb.eop.gov?subject=Census tract ID 98729374234, N/A, N/A&body=Please provide feedback about this census tract, including about the datasets, the data categories provided for this census tract, the communities who live in this census tract, and anything else relevant that CEQ should know about this census tract.
     
           "
         rel="noreferrer"
@@ -184,7 +184,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
               High school degree attainment rate
               <div>
                 
-      Poportion of people ages 25 years or older whose education level is less than a high school diploma 
+      Proportion of people ages 25 years or older whose education level is less than a high school diploma 
     
               </div>
             </div>
@@ -259,7 +259,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       </div>
       <a
         href="
-            mailto:Screeningtool-Support@omb.eop.gov?subject=Census tract ID 98729374234, N/A, N/A&body=Please provide feedback about this census tract, including about the datasets, the data categories provided for this tract, the communities who live in this tract, and anything else relevant that CEQ should know about this tract.
+            mailto:Screeningtool-Support@omb.eop.gov?subject=Census tract ID 98729374234, N/A, N/A&body=Please provide feedback about this census tract, including about the datasets, the data categories provided for this census tract, the communities who live in this census tract, and anything else relevant that CEQ should know about this census tract.
     
           "
         rel="noreferrer"
@@ -1262,7 +1262,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               High school degree attainment rate
               <div>
                 
-      Poportion of people ages 25 years or older whose education level is less than a high school diploma 
+      Proportion of people ages 25 years or older whose education level is less than a high school diploma 
     
               </div>
             </div>
@@ -1357,7 +1357,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
       </div>
       <a
         href="
-            mailto:Screeningtool-Support@omb.eop.gov?subject=Census tract ID 98729374234, N/A, N/A&body=Please provide feedback about this census tract, including about the datasets, the data categories provided for this tract, the communities who live in this tract, and anything else relevant that CEQ should know about this tract.
+            mailto:Screeningtool-Support@omb.eop.gov?subject=Census tract ID 98729374234, N/A, N/A&body=Please provide feedback about this census tract, including about the datasets, the data categories provided for this census tract, the communities who live in this census tract, and anything else relevant that CEQ should know about this census tract.
     
           "
         rel="noreferrer"
@@ -1504,7 +1504,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               High school degree attainment rate
               <div>
                 
-      Poportion of people ages 25 years or older whose education level is less than a high school diploma 
+      Proportion of people ages 25 years or older whose education level is less than a high school diploma 
     
               </div>
             </div>

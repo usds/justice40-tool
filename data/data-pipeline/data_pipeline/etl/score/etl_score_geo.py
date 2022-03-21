@@ -1,5 +1,6 @@
 import concurrent.futures
 import math
+import os
 import numpy as np
 import pandas as pd
 import geopandas as gpd
@@ -11,7 +12,7 @@ from data_pipeline.etl.sources.census.etl_utils import (
 )
 from data_pipeline.etl.score.etl_utils import check_score_data_source
 from data_pipeline.score import field_names
-from data_pipeline.utils import get_module_logger
+from data_pipeline.utils import get_module_logger, zip_files
 
 logger = get_module_logger(__name__)
 
@@ -298,10 +299,20 @@ class GeoScoreETL(ExtractTransformLoad):
                 # kept as strings because no downstream impacts
                 columns={0: "column", "index": "meaning"}
             ).to_csv(self.SCORE_SHP_CODE_CSV, index=False)
+
             self.geojson_score_usa_high.rename(columns=renaming_map).to_file(
                 self.SCORE_SHP_FILE
             )
             logger.info("Completed writing shapefile")
+
+            arcgis_zip_file_path = self.SCORE_SHP_PATH / "usa.zip"
+            arcgis_files = []
+            for file in os.listdir(self.SCORE_SHP_PATH):
+                # don't remove __init__ files as they conserve dir structure
+                if file != "__init__.py":
+                    arcgis_files.append(self.SCORE_SHP_PATH / file)
+            zip_files(arcgis_zip_file_path, arcgis_files)
+            logger.info("Completed zipping shapefiles")
 
         with concurrent.futures.ThreadPoolExecutor() as executor:
             futures = {

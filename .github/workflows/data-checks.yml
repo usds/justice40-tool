@@ -8,6 +8,9 @@ on:
 jobs:
   data-pipeline:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: data/data-pipeline
     strategy:
       matrix:
         # checks all of the versions allowed in pyproject.toml
@@ -20,13 +23,18 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      # installs poetry
-      - uses: Gr1N/setup-poetry@v4
+      - name: Load cached Poetry installation
+        id: cached-poetry-dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pypoetry/virtualenvs
+          key: env-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}-${{ hashFiles('.github/workflows/data-checks.yml') }}
+      - name: Install poetry
+        uses: snok/install-poetry@v1
+      - name: Print Poetry settings
+        run: poetry show -v
       - name: Install dependencies
-        run: |
-          cd data/data-pipeline
-          poetry install
+        run: poetry install
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
       - name: Run tox
-        run: |
-          cd data/data-pipeline
-          poetry run tox
+        run: poetry run tox

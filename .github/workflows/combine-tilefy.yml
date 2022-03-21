@@ -6,7 +6,8 @@ on:
         description: This will rebuild the data sources and regenerate the score, are you sure you want to proceed? (Y/n)
         default: n
         required: true
-
+env:
+  BE_CDN_ID: E1324VDMNCO97N
 jobs:
   deploy_data:
     runs-on: ubuntu-latest
@@ -25,15 +26,23 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Setup Poetry
-        uses: Gr1N/setup-poetry@v7
-      - name: Print poetry version
-        run: poetry --version
+      - name: Load cached Poetry installation
+        uses: actions/cache@v2
+        id: cached-poetry-dependencies
+        with:
+          path: ~/.cache/pypoetry/virtualenvs
+          key: env-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}-${{ hashFiles('.github/workflows/combine-tilefy.yml') }}
+      - name: Install poetry
+        uses: snok/install-poetry@v1
+      - name: Print Poetry settings
+        run: poetry show -v
       - name: Install dependencies
-        run: poetry install
+        run: poetry add s4cmd && poetry install
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
       - name: Install GDAL/ogr2ogr
         run: |
           sudo add-apt-repository ppa:ubuntugis/ppa
+          sudo apt-get update
           sudo apt-get -y install gdal-bin
           ogrinfo --version
       - name: Set timezone for tippecanoe
@@ -65,7 +74,15 @@ jobs:
           aws-region: us-east-1
       - name: Deploy to Geoplatform AWS
         run: |
-          aws s3 rm s3://justice40-data/data-pipeline/data/score/tiles --recursive
-          aws s3 cp ./data_pipeline/data/score/tiles/ s3://justice40-data/data-pipeline/data/score/tiles --recursive --acl public-read
-          aws s3 sync ./data_pipeline/data/score/geojson/ s3://justice40-data/data-pipeline/data/score/geojson --acl public-read --delete
-          aws s3 sync ./data_pipeline/data/score/shapefile/ s3://justice40-data/data-pipeline/data/score/shapefile --acl public-read --delete
+          poetry run s4cmd del s3://justice40-data/data-pipeline/data/score/tiles --recursive --num-threads=250
+          poetry run s4cmd put ./data_pipeline/data/score/geojson/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/geojson --recursive --force  --API-ACL=public-read --num-threads=250
+          poetry run s4cmd put ./data_pipeline/data/score/shapefile/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/shapefile --recursive --force  --API-ACL=public-read
+          poetry run s4cmd put ./data_pipeline/data/score/tiles/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/tiles --recursive --force  --API-ACL=public-read --num-threads=250
+      - name: Invalidate cache on AWS CDNs
+        uses: chetan/invalidate-cloudfront-action@master
+        env:
+          DISTRIBUTION: ${{env.BE_CDN_ID}}
+          PATHS: "/*"
+          AWS_REGION: "us-east-1"
+          AWS_ACCESS_KEY_ID: ${{ secrets.DATA_DEV_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.DATA_DEV_AWS_SECRET_ACCESS_KEY }}

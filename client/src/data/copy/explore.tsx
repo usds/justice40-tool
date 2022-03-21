@@ -23,8 +23,8 @@ export const PAGE_INTRO = defineMessages({
 export const PAGE_DESCRIPTION = <FormattedMessage
   id={'exploreTool.page.description'}
   defaultMessage={`
-    Use the map to see communities that are disadvantaged. The map uses 
-    publicly-available, nationally-consistent, datasets. Learn more about 
+    Use the map to see communities that are identified as disadvantaged. The map uses 
+    publicly-available, nationally-consistent datasets. Learn more about 
     the methodology and datasets that were used to identify disavantaged communities
     in the current version of the tool on the {methodologyLink} page.
     `}
@@ -45,7 +45,7 @@ export const LEGEND = defineMessages({
     id: 'legend.info.threshold.label',
     defaultMessage: `
       Communities identified as disadvantaged by the tool are those that are marginalized, underserved, 
-      and overburdened by pollution. These communities are at or above the combined thresholds in one or 
+      and overburdened by pollution. These communities are at or above the thresholds in one or 
       more of eight categories of criteria.
     `,
     description: 'the label of the threshold community legend',
@@ -168,7 +168,7 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   CBG_DEFINITION: {
     id: 'mapIntro.censusBlockGroupDefinition',
     defaultMessage: `
-      A census tract is generally between 1,200 and 8,000 people, with an average size of 4,000 people. 
+      A census tract is generally between 1,200 to 8,000 people, with an average size of 4,000 people. 
       Census tracts are small, relatively permanent subdivisions of a county defined by the 
       U.S. Census Bureau and usually cover a contiguous area. The census tract level currently represents the 
       smallest geographical unit for which publicly-available and nationally-consistent datasets can 
@@ -246,7 +246,7 @@ export const SEND_FEEDBACK = defineMessages({
   EMAIL_BODY: {
     id: 'areaDetail.categorization.send.feedback.email.body',
     // eslint-disable-next-line max-len
-    defaultMessage: `Please provide feedback about this census tract, including about the datasets, the data categories provided for this tract, the communities who live in this tract, and anything else relevant that CEQ should know about this tract.
+    defaultMessage: `Please provide feedback about this census tract, including about the datasets, the data categories provided for this census tract, the communities who live in this census tract, and anything else relevant that CEQ should know about this census tract.
     `,
     description: 'link to send feedback',
   },
@@ -523,7 +523,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
     description: 'Proposed or listed NPL (Superfund) sites within 5 kilometers',
   },
   PROX_RMP: {
-    id: 'areaDetail.indicator.description.prox.npl',
+    id: 'areaDetail.indicator.description.prox.rmp',
     defaultMessage: 'Risk Management Plan facilities within 5 kilometers',
     description: 'Risk Management Plan facilities within 5 kilometers',
   },
@@ -590,7 +590,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   HIGH_SKL: {
     id: 'areaDetail.indicator.description.high.school',
     defaultMessage: `
-      Poportion of people ages 25 years or older whose education level is less than a high school diploma 
+      Proportion of people ages 25 years or older whose education level is less than a high school diploma 
     `,
     description: 'Percent of people ages 25 years or older whose education level is less than a high school diploma',
   },
@@ -649,7 +649,7 @@ export const NOTE_ON_TERRITORIES = {
   PARA_2: <FormattedMessage
     id={'explore.page.note.on.territories.para.2'}
     defaultMessage={`
-      For Puerto Rico, the Census American Community Survey data from 2015-2019 are used for higher 
+      For Puerto Rico, the Census Bureau’s American Community Survey data from 2015-2019 are used for higher 
       ed enrollment rate and all the other fields in the Training and Workforce Development category 
       to identify disadvantaged communities. Data in the other categories are unavailable at this 
       time.
@@ -690,7 +690,7 @@ export const NOTE_ON_TRIBAL_NATIONS = {
       that data is available (see our {dataMethLink} page for more information). CEQ is engaging 
       in consultation and coordination with Tribal Nations on the beta version of the tool to provide 
       Tribal Nations with meaningful opportunities for input, consistent with CEQ’s {actionPlanTribalNation},
-      {bidenMemoNat2Nat}, and {coordinateTribal}.
+      {bidenMemoNat2Nat}, and Executive Order 13175 on {coordinateTribal}.
     `}
     description={`tribal nations paragraph 1`}
     values={{
@@ -713,7 +713,7 @@ export const NOTE_ON_TRIBAL_NATIONS = {
       />,
       coordinateTribal: <LinkTypeWrapper
         linkText= {`
-        Coordination with Indian Tribal Governments
+        Consulation and Coordination With Indian Tribal Governments
         `}
         internal= {false}
         url= {`
@@ -763,7 +763,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
   LIST_ITEM_3: <FormattedMessage
     id={'youCanHelpInfoText.list.item.3'}
     description={'share your feedback'}
-    defaultMessage={`CEQ has published a Request for Information on {federalRegisterLink}.`}
+    defaultMessage={`Respond to our Request for Information on {federalRegisterLink}.`}
     values={{
       federalRegisterLink:
       <LinkTypeWrapper
