@@ -74,7 +74,6 @@ jobs:
           aws-region: us-east-1
       - name: Deploy to Geoplatform AWS
         run: |
-          aws s3 rm s3://justice40-data/data-pipeline/data/score/tiles --recursive
           poetry run s4cmd put ./data_pipeline/data/score/geojson/ s3://justice40-data/data-pipeline/data/score/geojson --recursive --force  --API-ACL=public-read --num-threads=250
           poetry run s4cmd put ./data_pipeline/data/score/shapefile/ s3://justice40-data/data-pipeline/data/score/shapefile --recursive --force  --API-ACL=public-read
           poetry run s4cmd put ./data_pipeline/data/score/tiles/ s3://justice40-data/data-pipeline/data/score/tiles --recursive --force  --API-ACL=public-read --num-threads=250
