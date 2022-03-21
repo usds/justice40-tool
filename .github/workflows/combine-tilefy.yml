@@ -31,7 +31,7 @@ jobs:
         id: cached-poetry-dependencies
         with:
           path: ~/.cache/pypoetry/virtualenvs
-          key: env-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}-${{ hashFiles('.github/workflows/combine-tilefy.yml') }}
+          key: env-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}-${{ hashFiles('.github/workflows/combine-tilefy.yml') }}
       - name: Install poetry
         uses: snok/install-poetry@v1
       - name: Print Poetry settings
