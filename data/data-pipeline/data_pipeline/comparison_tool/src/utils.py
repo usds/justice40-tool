@@ -166,10 +166,10 @@ def get_final_summary_info(
         comparator_and_cejst_proportion_series = (
             population.loc[(True, True)] / population.loc[(True,)].sum()
         )
-    except:
+    except KeyError:
         # for when we are looking at a disjoint set, like donut holes
         comparator_and_cejst_proportion_series = pd.DataFrame()
-        
+
     states_represented = (
         pd.read_csv(
             comparator_file, usecols=[geoid_col], dtype={geoid_col: str}
