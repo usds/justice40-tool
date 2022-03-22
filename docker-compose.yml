@@ -33,7 +33,7 @@ services:
     environment:
     # See the client readme for more info on environment variables: 
     # https://github.com/usds/justice40-tool/blob/main/client/README.md
-      DATA_SOURCE: local
+      DATA_SOURCE: cdn
       
       # If you want the map to render a MapBox base map (as opposed to the 
       # open source one from CartoDB), please create your own API TOKEN from 

@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 // External Libs:
 import React, {useRef, useState, useMemo} from 'react';
-import {Map, MapboxGeoJSONFeature, LngLatBoundsLike} from 'maplibre-gl';
+import {Map, Feature, LngLatBoundsLike} from 'maplibre-gl';
 import ReactMapGL, {
   MapEvent,
   ViewportProps,
@@ -75,7 +75,7 @@ const J40Map = ({location}: IJ40Interface) => {
     zoom: zoom && parseFloat(zoom) ? parseFloat(zoom) : constants.GLOBAL_MIN_ZOOM,
   });
 
-  const [selectedFeature, setSelectedFeature] = useState<MapboxGeoJSONFeature>();
+  const [selectedFeature, setSelectedFeature] = useState<Feature>();
   const [detailViewData, setDetailViewData] = useState<IDetailViewInterface>();
   const [transitionInProgress, setTransitionInProgress] = useState<boolean>(false);
   const [geolocationInProgress, setGeolocationInProgress] = useState<boolean>(false);
