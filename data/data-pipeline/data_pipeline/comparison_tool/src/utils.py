@@ -59,7 +59,10 @@ def produce_summary_stats(
     Returns:
         population: the high-level overview df
     """
-    population_df = joined_df.groupby([comparator_column, score_column]).agg(
+    # I actually think this makes sense to be out of all tracts
+    temp_joined_df = joined_df.fillna({comparator_column: "missing"})
+    
+    population_df = temp_joined_df.groupby([comparator_column, score_column]).agg(
         {population_column: ["sum"], geoid_column: ["count"]}
     )
 
