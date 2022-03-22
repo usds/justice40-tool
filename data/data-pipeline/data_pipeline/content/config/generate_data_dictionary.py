@@ -48,9 +48,15 @@ LOSS_RATE_STRING = "loss rate"
 LOW_STRING = "Low "
 ISLAND_STRING = "island areas"
 
-PERCENTILE_EXPLANATION = "All percentiles are floored (rounded down to the nearest percentile). For example, 89.7th percentile is rounded down to 89 for this field."
+PERCENTILE_EXPLANATION = (
+    "All percentiles are floored (rounded down to the nearest percentile). "
+    + "For example, 89.7th percentile is rounded down to 89 for this field."
+)
 LOW_PERCENTILE_EXPLANATION = "This percentile is reversed, meaning the lowest raw numbers become the highest percentiles."
-ISLAND_AREAS_EXPLANATION = "Because not all data is available for the Nation, Puerto Rico, and the Island Territories, this uses different underlying data for the islands."
+ISLAND_AREAS_EXPLANATION = (
+    "Because not all data is available for the Nation, Puerto Rico, "
+    + "and the Island Territories, this uses different underlying data for the islands."
+)
 
 
 OUTPUT_PATH = (
