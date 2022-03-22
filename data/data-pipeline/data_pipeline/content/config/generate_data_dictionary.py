@@ -66,7 +66,12 @@ OUTPUT_PATH = (
 def _get_info_from_yaml(
     yaml_path: pathlib.Path,
 ) -> list:
-    """helper function to parse yaml"""
+    """Helper function to parse yaml
+
+    Reads the yaml in (requires it has a sheets header) and then
+    returns all of the data in the fields list. This is a list of the
+    dictionaries produced by yaml.safe_load.
+    """
     yaml_contents = yaml.safe_load(
         open(yaml_path, "r", encoding="utf-8").read()
     )
@@ -102,6 +107,8 @@ def _create_df_from_yaml(
     fields = _get_info_from_yaml(
         yaml_path=yaml_path,
     )
+    # this becomes the codebook frame for each  yaml source. In particular,
+    # the key becomes column names, and the lists store their values.
     to_frame_dict = {CEJST_SCORE_COLUMN_NAME: []} | {
         field: [] for field, _ in fields_to_store
     }
@@ -146,7 +153,7 @@ def _get_calculation_notes(column_name):
 
 
 def create_codebook() -> None:
-    """ "Runs through all logic of creating the codebook.
+    """Runs through all logic of creating the codebook.
 
     First it reads in each component yaml file for the codebook.
     Then it merges all of them.
