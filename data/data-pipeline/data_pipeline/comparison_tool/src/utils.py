@@ -59,12 +59,13 @@ def produce_summary_stats(
     Returns:
         population: the high-level overview df
     """
-    # I actually think this makes sense to be out of all tracts
+    # Because this reports high-level statistics across all census tracts, it
+    # makes sense for the statistics to force all census tracts to be included.
     temp_joined_df = joined_df.fillna({comparator_column: "missing"})
-    
-    population_df = temp_joined_df.groupby([comparator_column, score_column]).agg(
-        {population_column: ["sum"], geoid_column: ["count"]}
-    )
+
+    population_df = temp_joined_df.groupby(
+        [comparator_column, score_column]
+    ).agg({population_column: ["sum"], geoid_column: ["count"]})
 
     population_df["share_of_tracts"] = (
         population_df[geoid_column] / population_df[geoid_column].sum()
@@ -115,7 +116,7 @@ def get_tract_level_grouping(
     4. CEJST and not comparator
 
     If "keep_missing_values" flag:
-    5. Missing from CEJST and comparator (this should never be true!)
+    5. Missing from CEJST and comparator (this should never be true - it would be a tract we had not seen in CEJST!)
     6. Missing from comparator and not highlighted by CEJST
     7. Missing from comparator and highlighted by CEJST
 
