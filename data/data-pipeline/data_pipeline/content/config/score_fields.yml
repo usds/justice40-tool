@@ -1,0 +1,56 @@
+# This is a temporary file. We should make sure this *type* of information is maintained when we refactor. 
+fields:
+    - column_name: Total threshold criteria exceeded
+      notes: Lists out the total number of criteria (where each category has one or more criteria) exceeded. For example, a tract that exceeds the 90th percentile for linguistic isolation (1) and unemployment (2), and meets the training and workforce development socioeconomic criteria (high school attainment rate and low percentage of higher ed students) would have a 2 in this field. 
+    - column_name: Definition M (communities)
+      notes: True / False variable for whether a tract is a Disadvantaged Community (DAC)
+    - column_name: Is low income and has a low percent of higher ed students?
+      notes: Associated socioeconomic criterion for all thresholds except those included in training and workforce development
+    - column_name: Greater than or equal to the 90th percentile for expected agriculture loss rate, is low income, and has a low percent of higher ed students?
+      category: climate change
+    - column_name: Greater than or equal to the 90th percentile for expected building loss rate, is low income, and has a low percent of higher ed students?
+      category: climate change
+    - column_name: Greater than or equal to the 90th percentile for expected population loss rate, is low income, and has a low percent of higher ed students?
+      category: climate change
+    - column_name: Greater than or equal to the 90th percentile for energy burden, is low income, and has a low percent of higher ed students?
+      category: clean energy and energy efficiency
+    - column_name: Greater than or equal to the 90th percentile for PM2.5 exposure, is low income, and has a low percent of higher ed students?
+      category: clean energy and energy efficiency
+    - column_name: Greater than or equal to the 90th percentile for diesel particulate matter, is low income, and has a low percent of higher ed students?
+      category: clean transit
+    - column_name: Greater than or equal to the 90th percentile for traffic proximity, is low income, and has a low percent of higher ed students?
+      category: clean transit
+    - column_name: Greater than or equal to the 90th percentile for housing burden, is low income, and has a low percent of higher ed students?
+      category: affordable and sustainable housing
+    - column_name: Greater than or equal to the 90th percentile for lead paint, the median house value is less than 90th percentile, is low income, and has a low percent of higher ed students?
+      category: affordable and sustainable housing
+    - column_name: Greater than or equal to the 90th percentile for proximity to hazardous waste facilities, is low income, and has a low percent of higher ed students?
+      category: reduction and remediation of legacy pollution
+    - column_name: Greater than or equal to the 90th percentile for proximity to superfund sites, is low income, and has a low percent of higher ed students?
+      category: reduction and remediation of legacy pollution
+    - column_name: Greater than or equal to the 90th percentile for proximity to RMP sites, is low income, and has a low percent of higher ed students?
+      category: reduction and remediation of legacy pollution
+    - column_name: Greater than or equal to the 90th percentile for wastewater discharge, is low income, and has a low percent of higher ed students?
+      category: critical clean water and waste infrastructure
+    - column_name: Greater than or equal to the 90th percentile for asthma, is low income, and has a low percent of higher ed students?
+      category: health burdens
+    - column_name: Greater than or equal to the 90th percentile for diabetes, is low income, and has a low percent of higher ed students?
+      category: health burdens
+    - column_name: Greater than or equal to the 90th percentile for heart disease, is low income, and has a low percent of higher ed students?
+      category: health burdens
+    - column_name: Greater than or equal to the 90th percentile for low life expectancy, is low income, and has a low percent of higher ed students?
+      category: health burdens
+    - column_name: Greater than or equal to the 90th percentile for low median household income as a percent of area median income, has low HS attainment, and has a low percent of higher ed students?
+      category: training and workforce development
+    - column_name: Greater than or equal to the 90th percentile for households in linguistic isolation, has low HS attainment, and has a low percent of higher ed students?
+      category: training and workforce development    
+    - column_name: Greater than or equal to the 90th percentile for unemployment, has low HS attainment, and has a low percent of higher ed students?
+      category: training and workforce development
+    - column_name: Greater than or equal to the 90th percentile for households at or below 100% federal poverty level, has low HS attainment, and has a low percent of higher ed students?
+      category: training and workforce development
+    - column_name: Greater than or equal to the 90th percentile for unemployment and has low HS education in 2009 (island areas)?
+      category: training and workforce development
+    - column_name: Greater than or equal to the 90th percentile for households at or below 100% federal poverty level and has low HS education in 2009 (island areas)?
+      category: training and workforce development
+    - column_name: Greater than or equal to the 90th percentile for low median household income as a percent of area median income and has low HS education in 2009 (island areas)?
+      category: training and workforce development
