@@ -1,12 +1,10 @@
-"""
-Quick script to generate a data dictionary for the download packet.
+"""Quick script to generate a data dictionary for the download packet.
 
 A few notes:
-(1) This will ONLY crosswalk the downloadable CSV and the downloadable EXCEL file.
-    The SHP file has a LOT more columns, and we should almost certainly
+(1) This will crosswalk the downloadable CSV and the downloadable excel file.
+    The SHP file has many more columns, and we should almost certainly
     make a data dictionary by hand once the column names are final.
-(2) I haven't given much thought to how the yaml for notes is stored and assume
-    this might change with the refactor
+(2) The yaml for notes might change with the refactor.
 """
 import pathlib
 import yaml
@@ -41,9 +39,10 @@ COLUMNS_TO_KEEP = [
     NOTES_FIELD,
 ]
 
-# for re-typing & notes
+# the following constants are added to the notes column
+# for the codebook and for adjusting the datatype.
+
 # note this doesn't perfectly square with field names
-PERCENTILE_STRING = field_names.PERCENTILE_FIELD_SUFFIX
 LOSS_RATE_STRING = "loss rate"
 LOW_STRING = "Low "
 ISLAND_STRING = "island areas"
@@ -55,7 +54,7 @@ PERCENTILE_EXPLANATION = (
 LOW_PERCENTILE_EXPLANATION = "This percentile is reversed, meaning the lowest raw numbers become the highest percentiles."
 ISLAND_AREAS_EXPLANATION = (
     "Because not all data is available for the Nation, Puerto Rico, "
-    + "and the Island Territories, this uses different underlying data for the islands."
+    + "and the Island Areas, this uses different underlying data for the island areas."
 )
 
 
@@ -64,10 +63,9 @@ OUTPUT_PATH = (
 )
 
 
-def _set_up_infrastructure(
+def _get_info_from_yaml(
     yaml_path: pathlib.Path,
-    fields_to_store: list,
-):
+) -> list:
     """helper function to parse yaml"""
     yaml_contents = yaml.safe_load(
         open(yaml_path, "r", encoding="utf-8").read()
@@ -80,24 +78,33 @@ def _set_up_infrastructure(
     else:
         # other files do not
         fields = yaml_contents["fields"]
-
-    to_frame_dict = {CEJST_SCORE_COLUMN_NAME: []} | {
-        field: [] for field, _ in fields_to_store
-    }
-
-    return to_frame_dict, fields
+    return fields
 
 
 def _create_df_from_yaml(
     yaml_path: pathlib.Path,
     fields_to_store: list,
     native_score_column: str = CEJST_SCORE_COLUMN_NAME,
-):
-    """helper function to create a dataframe from yaml"""
-    to_frame_dict, fields = _set_up_infrastructure(
+) -> pd.DataFrame:
+    """Helper function to create a dataframe from yaml
+
+    This function does:
+        1. Reads the yaml. Keeps all data about the fields in the
+           list called fields
+        2. Creates a dictionary that will eventually become a dataframe.
+           This dictionary has columns dictated by whichever fields
+           the yaml file has that we want to keep, specified by fields_to_store.
+        3. Goes through the fields and adds each type of field to the dictionary. If
+           the field is missing, appends a null value.
+        4. Returns a dataframe that includes all of the fields specified and
+           also is indexed by the column name that is native to the CEJST team
+    """
+    fields = _get_info_from_yaml(
         yaml_path=yaml_path,
-        fields_to_store=fields_to_store,
     )
+    to_frame_dict = {CEJST_SCORE_COLUMN_NAME: []} | {
+        field: [] for field, _ in fields_to_store
+    }
     for details in fields:
         to_frame_dict[CEJST_SCORE_COLUMN_NAME].append(
             details[native_score_column]
@@ -114,10 +121,10 @@ def _create_df_from_yaml(
 def _get_datatype(
     input_name: str,
     input_type: str,
-    percentile_string: str = PERCENTILE_STRING,
+    percentile_string: str = field_names.PERCENTILE_FIELD_SUFFIX,
     loss_rate_string: str = LOSS_RATE_STRING,
-):
-    """helper to convert datatype"""
+) -> str:
+    """Helper to convert datatype"""
     if percentile_string in input_name:
         return "percentile"
     elif loss_rate_string in input_name:
@@ -127,9 +134,9 @@ def _get_datatype(
 
 
 def _get_calculation_notes(column_name):
-    """produces calculation notes"""
+    """Produces calculation notes"""
     calculation_notes = []
-    if PERCENTILE_STRING in column_name:
+    if field_names.PERCENTILE_FIELD_SUFFIX in column_name:
         calculation_notes += [PERCENTILE_EXPLANATION]
     if LOW_STRING in column_name:
         calculation_notes += [LOW_PERCENTILE_EXPLANATION]
@@ -138,7 +145,14 @@ def _get_calculation_notes(column_name):
     return " ".join(calculation_notes)
 
 
-if __name__ == "__main__":
+def create_codebook() -> None:
+    """ "Runs through all logic of creating the codebook.
+
+    First it reads in each component yaml file for the codebook.
+    Then it merges all of them.
+    Finally, it applies any transforms to the columns (like getting the
+        datatype or adding calculation_notes.
+    """
     # read component yamls
     csv_codes_df = _create_df_from_yaml(
         yaml_path=CSV_CONFIG,
@@ -183,3 +197,7 @@ if __name__ == "__main__":
 
     # store codebook
     merged_df[COLUMNS_TO_KEEP].to_csv(OUTPUT_PATH, index=False)
+
+
+if __name__ == "__main__":
+    create_codebook()
