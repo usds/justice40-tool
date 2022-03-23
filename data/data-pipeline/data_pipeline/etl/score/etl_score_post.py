@@ -542,10 +542,11 @@ class PostScoreETL(ExtractTransformLoad):
         )
 
         excel_fields = [sheet["fields"] for sheet in excel_config["sheets"]]
+
         codebook_df = create_codebook(
-            downloadable_csv_config["fields"],
-            excel_fields,
-            extra_score_info["fields"],
+            downloadable_csv_config=downloadable_csv_config["fields"],
+            excel_config=excel_fields,
+            extra_score_info=extra_score_info["fields"],
         )
         codebook_df[constants.CODEBOOK_COLUMNS].to_csv(
             codebook_path, index=False

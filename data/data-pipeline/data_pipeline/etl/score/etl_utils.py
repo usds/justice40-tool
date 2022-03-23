@@ -133,7 +133,6 @@ def _create_df_from_yaml_contents(
     to_frame_dict = {constants.CEJST_SCORE_COLUMN_NAME: []} | {
         field.new_label_in_codebook: [] for field in fields_to_store
     }
-    print(fields)
     # all we are doing here is reshaping the data from a list of dictionaries
     # to a dictionary of lists
     for details in fields:
