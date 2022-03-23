@@ -17,6 +17,12 @@ interface ILanguageProps {
   isDesktop: boolean
 }
 
+/**
+ * Language component that will allow the user to change languages
+ *
+ * @param {boolean} isDesktop
+ * @return {JSX.Element | null}
+ */
 const Language = ({isDesktop}:ILanguageProps) => {
   const flags = useFlags();
 
