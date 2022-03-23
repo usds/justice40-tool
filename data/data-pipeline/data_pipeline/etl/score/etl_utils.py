@@ -1,7 +1,9 @@
+from cmath import sin
 import os
 import sys
 from pathlib import Path
 from collections import namedtuple
+from isort import code
 import numpy as np
 import pandas as pd
 
@@ -114,8 +116,8 @@ def floor_series(series: pd.Series, number_of_decimals: int) -> pd.Series:
 
 
 def _create_df_from_yaml_contents(
-    fields: list,
-    fields_to_store: list[namedtuple],
+    fields_list_from_yaml: list,
+    fields_to_store_in_codebook: list[namedtuple],
 ) -> pd.DataFrame:
     """Helper function to create a dataframe from yaml fields
 
@@ -129,49 +131,64 @@ def _create_df_from_yaml_contents(
            also is indexed by the column name that is native to the CEJST team
     """
     # this becomes the codebook frame for each  yaml source. In particular,
-    # the key becomes column names, and the lists store their values.
-    to_frame_dict = {constants.CEJST_SCORE_COLUMN_NAME: []} | {
-        field.new_label_in_codebook: [] for field in fields_to_store
+    # the key becomes column names, and the lists store their values. We hard-set the
+    # first column name to be the CEJST_SCORE_COLUMN_NAME because this should be
+    # the same across the board for every component codebook.
+    codebook_dictionary = {constants.CEJST_SCORE_COLUMN_NAME: []} | {
+        field.new_label_in_codebook: [] for field in fields_to_store_in_codebook
     }
-    # all we are doing here is reshaping the data from a list of dictionaries
-    # to a dictionary of lists
-    for details in fields:
-        to_frame_dict[constants.CEJST_SCORE_COLUMN_NAME].append(
-            details[constants.CEJST_SCORE_COLUMN_NAME]
+
+    # we reshape the data from a list of dictionaries to a dictionary of lists
+    # so that we can cast it as a dataframe
+    for single_field_details in fields_list_from_yaml:
+        assert constants.CEJST_SCORE_COLUMN_NAME in single_field_details, (
+            "Error: the yaml codebook should crosswalk to the native column "
+            + f"from the CEJST pipeline, called {constants.CEJST_SCORE_COLUMN_NAME}"
         )
-        for field in fields_to_store:
+        codebook_dictionary[constants.CEJST_SCORE_COLUMN_NAME].append(
+            single_field_details[constants.CEJST_SCORE_COLUMN_NAME]
+        )
+        for field_information in fields_to_store_in_codebook:
             try:
-                to_frame_dict[field.new_label_in_codebook].append(
-                    details[field.existing_yaml_label]
+                codebook_dictionary[
+                    field_information.new_label_in_codebook
+                ].append(
+                    single_field_details[field_information.existing_yaml_label]
                 )
             except KeyError:
                 assert (
-                    field.new_label_in_codebook
+                    field_information.new_label_in_codebook
                     != constants.CEJST_SCORE_COLUMN_NAME
                 )
-                to_frame_dict[field.new_label_in_codebook].append(np.nan)
-    return pd.DataFrame(to_frame_dict).set_index(
+                codebook_dictionary[
+                    field_information.new_label_in_codebook
+                ].append(np.nan)
+    return pd.DataFrame(codebook_dictionary).set_index(
         constants.CEJST_SCORE_COLUMN_NAME
     )
 
 
 def _get_datatype(
-    input_name: str,
-    input_type: str,
+    input_column_name: str,
+    input_column_type: str,
     percentile_string: str = field_names.PERCENTILE_FIELD_SUFFIX,
     loss_rate_string: str = constants.LOSS_RATE_STRING,
 ) -> str:
     """Helper to convert datatype"""
-    if percentile_string in input_name:
+    if percentile_string in input_column_name:
         return "percentile"
-    elif loss_rate_string in input_name:
+    elif loss_rate_string in input_column_name:
         return "rate"
     else:
-        return input_type
+        return input_column_type
 
 
-def _get_calculation_notes(column_name):
-    """Produces calculation notes"""
+def _get_calculation_notes(column_name: str) -> str:
+    """Produces calculation notes
+
+    Note: eventually, this will either be programmatically set, or will be included in the yaml, depending on
+    the refactor that we do
+    """
     calculation_notes = []
     if field_names.PERCENTILE_FIELD_SUFFIX in column_name:
         calculation_notes += [constants.PERCENTILE_EXPLANATION]
@@ -183,8 +200,8 @@ def _get_calculation_notes(column_name):
 
 
 def create_codebook(
-    downloadable_csv_config, excel_config, extra_score_info
-) -> None:
+    downloadable_csv_config: dict, excel_config: dict, extra_score_info: dict
+) -> pd.DataFrame:
     """Runs through all logic of creating the codebook.
 
     First it reads in each component yaml file for the codebook.
@@ -197,10 +214,10 @@ def create_codebook(
         ["new_label_in_codebook", "existing_yaml_label"],
     )
 
-    # read component yamls
+    # parse data from component yamls
     csv_codes_df = _create_df_from_yaml_contents(
-        fields=downloadable_csv_config,
-        fields_to_store=[
+        fields_list_from_yaml=downloadable_csv_config,
+        fields_to_store_in_codebook=[
             CodebookLabelFields(
                 new_label_in_codebook=constants.CSV_LABEL_FIELD,
                 existing_yaml_label="label",
@@ -213,8 +230,8 @@ def create_codebook(
     )
 
     excel_codes_df = _create_df_from_yaml_contents(
-        fields=excel_config,
-        fields_to_store=[
+        fields_list_from_yaml=excel_config,
+        fields_to_store_in_codebook=[
             CodebookLabelFields(
                 new_label_in_codebook=constants.EXCEL_LABEL_FIELD,
                 existing_yaml_label="label",
@@ -223,8 +240,8 @@ def create_codebook(
     )
 
     score_detail_notes_df = _create_df_from_yaml_contents(
-        fields=extra_score_info,
-        fields_to_store=[
+        fields_list_from_yaml=extra_score_info,
+        fields_to_store_in_codebook=[
             CodebookLabelFields(
                 new_label_in_codebook=constants.NOTES_FIELD,
                 existing_yaml_label="notes",
@@ -237,23 +254,26 @@ def create_codebook(
     )
 
     # join all sources on the column name
-    merged_df = pd.concat(
+    merged_codebook_df = pd.concat(
         [csv_codes_df, excel_codes_df, score_detail_notes_df],
         join="outer",
         axis=1,
     ).reset_index()
 
     # add field type column
-    merged_df[constants.CSV_FIELD_TYPE_FIELD] = merged_df.apply(
+    merged_codebook_df[
+        constants.CSV_FIELD_TYPE_FIELD
+    ] = merged_codebook_df.apply(
         lambda x: _get_datatype(
-            input_name=x[constants.CEJST_SCORE_COLUMN_NAME],
-            input_type=x[constants.CSV_FORMAT],
+            input_column_name=x[constants.CEJST_SCORE_COLUMN_NAME],
+            input_column_type=x[constants.CSV_FORMAT],
         ),
         axis=1,
     )
 
-    merged_df[constants.CALCULATION_NOTES_FIELD] = merged_df[
+    # get calculation notes column
+    merged_codebook_df[constants.CALCULATION_NOTES_FIELD] = merged_codebook_df[
         constants.CEJST_SCORE_COLUMN_NAME
     ].apply(_get_calculation_notes)
 
-    return merged_df
+    return merged_codebook_df

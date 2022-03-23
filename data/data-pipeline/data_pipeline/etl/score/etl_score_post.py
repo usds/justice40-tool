@@ -541,7 +541,9 @@ class PostScoreETL(ExtractTransformLoad):
             self.CONTENT_CONFIG / "score_fields.yml"
         )
 
-        excel_fields = [sheet["fields"] for sheet in excel_config["sheets"]]
+        excel_fields = []
+        for sheet in excel_config["sheets"]:
+            excel_fields.extend(sheet["fields"])
 
         codebook_df = create_codebook(
             downloadable_csv_config=downloadable_csv_config["fields"],
