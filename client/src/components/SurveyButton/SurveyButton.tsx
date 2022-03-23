@@ -7,7 +7,7 @@ import * as CONTACT_COPY from '../../data/copy/contact';
 import J40MainGridContainer from '../J40MainGridContainer';
 
 // @ts-ignore
-import launchIcon from '/node_modules/uswds/dist/img/usa-icons-bg/launch--blue-70v.svg';
+import launchIcon from '/node_modules/uswds/dist/img/usa-icons/launch.svg';
 
 export const onClickHandler = () => {
   Object.assign(document.createElement('a'), {target: '_blank', href: 'https://www.surveymonkey.com/r/cejst-survey'}).click();
@@ -15,6 +15,7 @@ export const onClickHandler = () => {
 
 const SurveyButton = () => {
   const intl = useIntl();
+
   return (
     <J40MainGridContainer className={styles.surveyButtonContainer}>
       <Button
