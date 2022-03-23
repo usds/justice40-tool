@@ -273,4 +273,10 @@ def create_codebook(
         constants.CEJST_SCORE_COLUMN_NAME
     ].apply(_get_calculation_notes)
 
-    return merged_codebook_df
+    # This is temporary. Right now, our variable names are all
+    # plain English. After the refactor, we will have new names
+    # that are programmatic, and the CEJST_SCORE_COLUMN will
+    # be dropped in favor of the explanation.
+    return merged_codebook_df.rename(
+        columns={constants.CEJST_SCORE_COLUMN_NAME: "Description"}
+    )
