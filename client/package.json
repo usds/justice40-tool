@@ -84,7 +84,7 @@
     "gatsby-plugin-robots-txt": "^1.7.0",
     "gatsby-plugin-sitemap": "^4.10.0",
     "mapbox-gl": "^1.13.2",
-    "maplibre-gl": "^1.15.2",
+    "maplibre-gl": "^1.14.0",
     "query-string": "^7.1.1",
     "react": "^17.0.2",
     "react-device-detect": "^1.17.0",
