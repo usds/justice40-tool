@@ -550,9 +550,7 @@ class PostScoreETL(ExtractTransformLoad):
             excel_config=excel_fields,
             extra_score_info=extra_score_info["fields"],
         )
-        codebook_df[constants.CODEBOOK_COLUMNS].to_csv(
-            codebook_path, index=False
-        )
+        codebook_df.to_csv(codebook_path, index=False)
 
         logger.info("Compressing files")
         files_to_compress = [

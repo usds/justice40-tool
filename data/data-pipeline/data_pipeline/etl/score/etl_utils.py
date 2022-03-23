@@ -277,6 +277,6 @@ def create_codebook(
     # plain English. After the refactor, we will have new names
     # that are programmatic, and the CEJST_SCORE_COLUMN will
     # be dropped in favor of the explanation.
-    return merged_codebook_df.rename(
+    return merged_codebook_df[constants.CODEBOOK_COLUMNS].rename(
         columns={constants.CEJST_SCORE_COLUMN_NAME: "Description"}
     )
