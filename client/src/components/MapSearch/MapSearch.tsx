@@ -62,7 +62,7 @@ const MapSearch = ({goToPlace}:IMapSearch) => {
       <MapSearchMessage isSearchResultsNull={isSearchResultsNull} />
       <Search
         placeholder={intl.formatMessage(EXPLORE_COPY.MAP.SEARCH_PLACEHOLDER)}
-        // size="small"
+        size="small"
         onSubmit={(e) => onSearchHandler(e)}
       />
     </div>

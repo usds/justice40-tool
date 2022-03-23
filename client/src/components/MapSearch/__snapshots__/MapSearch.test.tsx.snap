@@ -7,7 +7,7 @@ exports[`rendering of the MapSearch checks if component renders 1`] = `
       No location found. Please try again.
     </div>
     <form
-      class="usa-search"
+      class="usa-search usa-search--small"
       data-testid="form"
       role="search"
     >
@@ -32,7 +32,7 @@ exports[`rendering of the MapSearch checks if component renders 1`] = `
         type="submit"
       >
         <span
-          class="usa-search__submit-text"
+          class="usa-sr-only"
         >
           Search
         </span>
