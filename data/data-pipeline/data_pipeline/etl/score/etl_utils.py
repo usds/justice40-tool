@@ -10,8 +10,8 @@ from data_pipeline.utils import (
     download_file_from_url,
     get_module_logger,
 )
-from . import constants
 from data_pipeline.score import field_names
+from . import constants
 
 logger = get_module_logger(__name__)
 
