@@ -1,0 +1,31 @@
+name: Refresh Backend CDN
+on:
+  workflow_dispatch:
+    inputs:
+      confirm-action:
+        description: This will invalidate the backend CDN, are you sure you want to proceed? (Y/n)
+        default: n
+        required: true
+  schedule:
+    # runs every 6 hours:
+    - cron: "0 */6 * * *"
+env:
+  BE_CDN_ID: E1324VDMNCO97N
+jobs:
+  invalidate-cdn:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.DATA_DEV_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.DATA_DEV_AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: Invalidate cache on AWS CDNs
+        uses: chetan/invalidate-cloudfront-action@master
+        env:
+          DISTRIBUTION: ${{env.BE_CDN_ID}}
+          PATHS: "/*"
+          AWS_REGION: "us-east-1"
+          AWS_ACCESS_KEY_ID: ${{ secrets.DATA_DEV_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.DATA_DEV_AWS_SECRET_ACCESS_KEY }}
