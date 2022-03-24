@@ -131,9 +131,10 @@ def _create_df_from_yaml_contents(
     # the key becomes column names, and the lists store their values. We hard-set the
     # first column name to be the CEJST_SCORE_COLUMN_NAME because this should be
     # the same across the board for every component codebook.
-    codebook_dictionary = {constants.CEJST_SCORE_COLUMN_NAME: []} | {
+    codebook_dictionary = {
         field.new_label_in_codebook: [] for field in fields_to_store_in_codebook
     }
+    codebook_dictionary[constants.CEJST_SCORE_COLUMN_NAME] = []
 
     # we reshape the data from a list of dictionaries to a dictionary of lists
     # so that we can cast it as a dataframe
