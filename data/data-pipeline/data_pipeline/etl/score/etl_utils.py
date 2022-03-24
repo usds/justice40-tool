@@ -172,12 +172,12 @@ def _get_datatype(
     loss_rate_string: str = constants.LOSS_RATE_STRING,
 ) -> str:
     """Helper to convert datatype"""
+    return_column_type = input_column_type
     if percentile_string in input_column_name:
-        return "percentile"
+        return_column_type = "percentile"
     elif loss_rate_string in input_column_name:
-        return "rate"
-    else:
-        return input_column_type
+        return_column_type = "rate"
+    return return_column_type
 
 
 def _get_calculation_notes(column_name: str) -> str:
