@@ -47,7 +47,7 @@
     "axe-core": "^4.4.1",
     "babel-jest": "^27.5.1",
     "babel-preset-gatsby": "^1.14.0",
-    "cypress": "^9.5.2",
+    "cypress": "^8.3.0",
     "cypress-axe": "^0.14.0",
     "cypress-cucumber-preprocessor": "^4.3.1",
     "eslint": "^7.32.0",
