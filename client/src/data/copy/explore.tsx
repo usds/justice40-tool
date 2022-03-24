@@ -253,16 +253,6 @@ export const SEND_FEEDBACK = defineMessages({
 });
 
 export const SIDE_PANEL_CATEGORY = defineMessages({
-  INDICATOR: {
-    id: 'areaDetail.category.header.indicator',
-    defaultMessage: 'Indicator',
-    description: 'header for each category',
-  },
-  PERCENTILE: {
-    id: 'areaDetail.category.header.percentile',
-    defaultMessage: 'Percentile (0-100)',
-    description: 'header for each category',
-  },
   CLIMATE: {
     id: 'areaDetail.indicator.title.climate',
     defaultMessage: 'Climate change',
@@ -438,6 +428,51 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
   },
 });
 
+export const SIDE_PANEL_VALUES = {
+  ABOVE: <FormattedMessage
+    id={'explore.page.side.panel.indicator.value.subtext.above'}
+    description={'indicating above threshold'}
+    defaultMessage={`above `}
+  />,
+  BELOW: <FormattedMessage
+    id={'explore.page.side.panel.indicator.value.subtext.below'}
+    description={'indicating below threshold'}
+    defaultMessage={`below `}
+  />,
+  PERCENT: <FormattedMessage
+    id={'explore.page.side.panel.indicator.value.subtext.percent'}
+    description={'indicating percent units'}
+    defaultMessage={`percent`}
+  />,
+  PERCENTILE: <FormattedMessage
+    id={'explore.page.side.panel.indicator.value.subtext.percentile'}
+    description={'indicating percentile units'}
+    defaultMessage={`percentile`}
+  />,
+  IMG_ALT_TEXT: defineMessages({
+    ARROW_UP: {
+      id: 'explore.page.side.panel.indicator.value.arrow.up.alt.text',
+      description: 'image alt text for the up arrow',
+      defaultMessage: `an icon for the up arrow`,
+    },
+    ARROW_DOWN: {
+      id: 'explore.page.side.panel.indicator.value.arrow.down.alt.text',
+      description: 'image alt text for the down arrow',
+      defaultMessage: `an icon for the down arrow`,
+    },
+    UNAVAILABLE: {
+      id: 'explore.page.side.panel.indicator.value.unavailable.alt.text',
+      description: 'image alt text for unavailable icon',
+      defaultMessage: `an icon to represent data is unavailable`,
+    },
+  }),
+  UNAVAILBLE_MSG: <FormattedMessage
+    id={'explore.page.side.panel.indicator.value.subtext.unavailable'}
+    description={'subtext for indicator when data is N/A'}
+    defaultMessage={`data is not available`}
+  />,
+};
+
 export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   EXP_AG_LOSS: {
     id: 'areaDetail.indicator.description.exp.ag.loss',
@@ -595,6 +630,34 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
     description: 'Percent of people ages 25 years or older whose education level is less than a high school diploma',
   },
 });
+
+export const SIDE_PANEL_SPACERS = {
+  EXCEED_ONE_OR_MORE: <FormattedMessage
+    id={'explore.page.side.panel.exceed.burden.one.or.more'}
+    description={'Exceeds the threshold for one or more burden indicators?'}
+    defaultMessage={`Exceeds the threshold for one or more burden indicators?`}
+  />,
+  EXCEED_BOTH_SOCIO: <FormattedMessage
+    id={'explore.page.side.panel.exceed.burden.both.socio'}
+    description={'Exceeds the threshold for both socioeconomic indicators?'}
+    defaultMessage={`Exceeds the threshold for both socioeconomic indicators?`}
+  />,
+  YES: <FormattedMessage
+    id={'explore.page.side.panel.exceed.burden.answer.yes'}
+    description={'Yes'}
+    defaultMessage={`Yes`}
+  />,
+  NO: <FormattedMessage
+    id={'explore.page.side.panel.exceed.burden.answer.no'}
+    description={'No'}
+    defaultMessage={`No`}
+  />,
+  AND: <FormattedMessage
+    id={'explore.page.side.panel.spacer.and'}
+    description={'AND'}
+    defaultMessage={`AND`}
+  />,
+};
 
 export const DOWNLOAD_DRAFT = {
   PARAGRAPH_1: <FormattedMessage

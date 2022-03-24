@@ -302,10 +302,9 @@ This section will outline styles that are component specific
   }
 }
 
-// This is to allow the first child in the accordions which is the header showing INDICATOR and 
-// PERCENTILE (0-100) to push into the container's margin to match mock
-.usa-accordion__content > *:first-child {
-  margin: -10px -20px 10px -20px;
+
+.usa-accordion__content {
+  padding-bottom: 0;
 }
 
 //As per Mikel Maron's (MapBox advocate) suggestion to use svg data URI override:

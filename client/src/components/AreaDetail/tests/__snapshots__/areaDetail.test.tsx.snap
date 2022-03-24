@@ -107,14 +107,15 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
       >
         <div>
           <div>
-            Indicator
+            Exceeds the threshold for one or more burden indicators?
           </div>
           <div>
-            Percentile (0-100)
+            No
           </div>
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -124,17 +125,36 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
               </div>
             </div>
             <div>
-              60
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  60
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the down arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -144,17 +164,36 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
               </div>
             </div>
             <div>
-              90
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  90
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the up arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  above 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -167,17 +206,36 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
               </div>
             </div>
             <div>
-              80
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  50
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the down arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -189,10 +247,93 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <div>
+          AND
+        </div>
+        <div>
+          <div>
+            Exceeds the threshold for both socioeconomic indicators?
+          </div>
+          <div>
+            No
+          </div>
+        </div>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              High school degree attainment rate
+              <div>
+                
+      Proportion of people ages 25 years or older whose education level is less than a high school diploma 
+    
+              </div>
+            </div>
+            <div>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Higher ed enrollment rate
+              <div>
+                
+    Percent of population enrolled in college, university, or graduate school 
+    
+              </div>
+            </div>
+            <div>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -309,14 +450,15 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       >
         <div>
           <div>
-            Indicator
+            Exceeds the threshold for one or more burden indicators?
           </div>
           <div>
-            Percentile (0-100)
+            No
           </div>
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -326,15 +468,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -344,15 +497,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -364,15 +528,37 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
+        <div>
+          AND
+        </div>
+        <div>
+          <div>
+            Exceeds the threshold for both socioeconomic indicators?
+          </div>
+          <div>
+            No
+          </div>
+        </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -384,17 +570,36 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  19
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the down arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 65th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -406,10 +611,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -442,14 +657,15 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       >
         <div>
           <div>
-            Indicator
+            Exceeds the threshold for one or more burden indicators?
           </div>
           <div>
-            Percentile (0-100)
+            No
           </div>
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -459,15 +675,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -477,15 +704,37 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
+        <div>
+          AND
+        </div>
+        <div>
+          <div>
+            Exceeds the threshold for both socioeconomic indicators?
+          </div>
+          <div>
+            No
+          </div>
+        </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -497,17 +746,36 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  19
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the down arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 65th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -519,10 +787,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -555,14 +833,15 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       >
         <div>
           <div>
-            Indicator
+            Exceeds the threshold for one or more burden indicators?
           </div>
           <div>
-            Percentile (0-100)
+            No
           </div>
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -572,15 +851,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -590,15 +880,37 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
+        <div>
+          AND
+        </div>
+        <div>
+          <div>
+            Exceeds the threshold for both socioeconomic indicators?
+          </div>
+          <div>
+            No
+          </div>
+        </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -610,17 +922,36 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  19
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the down arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 65th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -632,10 +963,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -668,14 +1009,15 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       >
         <div>
           <div>
-            Indicator
+            Exceeds the threshold for one or more burden indicators?
           </div>
           <div>
-            Percentile (0-100)
+            No
           </div>
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -685,17 +1027,36 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              95
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  95
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the up arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  above 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -707,15 +1068,37 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
+        <div>
+          AND
+        </div>
+        <div>
+          <div>
+            Exceeds the threshold for both socioeconomic indicators?
+          </div>
+          <div>
+            No
+          </div>
+        </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -727,17 +1110,36 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  19
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the down arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 65th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -749,10 +1151,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -785,14 +1197,15 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       >
         <div>
           <div>
-            Indicator
+            Exceeds the threshold for one or more burden indicators?
           </div>
           <div>
-            Percentile (0-100)
+            No
           </div>
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -802,15 +1215,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -820,15 +1244,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -838,15 +1273,37 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
+        <div>
+          AND
+        </div>
+        <div>
+          <div>
+            Exceeds the threshold for both socioeconomic indicators?
+          </div>
+          <div>
+            No
+          </div>
+        </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -858,17 +1315,36 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  19
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the down arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 65th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -880,10 +1356,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -916,14 +1402,15 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       >
         <div>
           <div>
-            Indicator
+            Exceeds the threshold for one or more burden indicators?
           </div>
           <div>
-            Percentile (0-100)
+            No
           </div>
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -933,15 +1420,37 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
+        <div>
+          AND
+        </div>
+        <div>
+          <div>
+            Exceeds the threshold for both socioeconomic indicators?
+          </div>
+          <div>
+            No
+          </div>
+        </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -953,17 +1462,36 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  19
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the down arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 65th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -975,10 +1503,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1011,14 +1549,15 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       >
         <div>
           <div>
-            Indicator
+            Exceeds the threshold for one or more burden indicators?
           </div>
           <div>
-            Percentile (0-100)
+            No
           </div>
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1028,15 +1567,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1049,15 +1599,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1069,15 +1630,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1087,15 +1659,37 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
+        <div>
+          AND
+        </div>
+        <div>
+          <div>
+            Exceeds the threshold for both socioeconomic indicators?
+          </div>
+          <div>
+            No
+          </div>
+        </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1107,17 +1701,36 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  19
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the down arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 65th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1129,10 +1742,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1165,14 +1788,15 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       >
         <div>
           <div>
-            Indicator
+            Exceeds the threshold for one or more burden indicators?
           </div>
           <div>
-            Percentile (0-100)
+            No
           </div>
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1184,17 +1808,36 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              97
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  97
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the up arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  above 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1204,15 +1847,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1222,17 +1876,36 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              96
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  96
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the up arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  above 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1245,17 +1918,47 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  12
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the down arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
+        <div>
+          AND
+        </div>
+        <div>
+          <div>
+            Exceeds the threshold for both socioeconomic indicators?
+          </div>
+          <div>
+            No
+          </div>
+        </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1267,15 +1970,34 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              98
-              <span>
-                %
-              </span>
+              <div>
+                <div>
+                  98
+                  <span>
+                    %
+                  </span>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the up arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  above 90
+                </div>
+                <div>
+                  percent
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1287,10 +2009,20 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1407,14 +2139,15 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
       >
         <div>
           <div>
-            Indicator
+            Exceeds the threshold for one or more burden indicators?
           </div>
           <div>
-            Percentile (0-100)
+            No
           </div>
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1426,17 +2159,36 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               </div>
             </div>
             <div>
-              97
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  97
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the up arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  above 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1446,15 +2198,26 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1464,17 +2227,36 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               </div>
             </div>
             <div>
-              96
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  96
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the up arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  above 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1487,17 +2269,47 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  12
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the down arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
+        <div>
+          AND
+        </div>
+        <div>
+          <div>
+            Exceeds the threshold for both socioeconomic indicators?
+          </div>
+          <div>
+            No
+          </div>
+        </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1509,15 +2321,34 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               </div>
             </div>
             <div>
-              98
-              <span>
-                %
-              </span>
+              <div>
+                <div>
+                  98
+                  <span>
+                    %
+                  </span>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the up arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  above 90
+                </div>
+                <div>
+                  percent
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1529,10 +2360,20 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>

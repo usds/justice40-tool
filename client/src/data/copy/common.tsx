@@ -126,4 +126,11 @@ export const FOOTER_CEQ_ADDRESS = {
 }
 ;
 
-
+export const CONSOLE_ERROR = defineMessages({
+  STAGE_URL: {
+    id: 'console.error.stage.url',
+    defaultMessage: `
+      Please check stage_hash value. It must be a 4 digit decimal value / 40 digit hexadecimal value`,
+    description: 'console error staging URL',
+  },
+});

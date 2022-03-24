@@ -7,7 +7,7 @@ import * as constants from '../../../data/constants';
 
 describe('rendering of the AreaDetail', () => {
   const properties = {
-    [constants.POVERTY_PROPERTY_PERCENTILE]: .12,
+    [constants.POVERTY_BELOW_100_PERCENTILE]: .12,
     [constants.HIGH_SCHOOL_PROPERTY_PERCENTILE]: .98,
     [constants.LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE]: .97,
     [constants.UNEMPLOYMENT_PROPERTY_PERCENTILE]: .96,
@@ -15,7 +15,7 @@ describe('rendering of the AreaDetail', () => {
     [constants.SCORE_PROPERTY_HIGH]: .95,
     [constants.GEOID_PROPERTY]: 98729374234,
     [constants.TOTAL_POPULATION]: 3435435,
-    [constants.POVERTY_PROPERTY_PERCENTILE]: .19,
+    [constants.POVERTY_BELOW_200_PERCENTILE]: .19,
     [constants.SIDE_PANEL_STATE]: constants.SIDE_PANEL_STATE_VALUES.NATION,
   };
 
@@ -49,7 +49,7 @@ describe('rendering of the AreaDetail', () => {
       [constants.ISLAND_AREAS_UNEMPLOYMENT_LOW_HS_EDU_PERCENTILE_FIELD]: .9,
       [constants.ISLAND_AREAS_POVERTY_LOW_HS_EDU_PERCENTILE_FIELD]: .8,
       [constants.ISLAND_AREAS_LOW_MEDIAN_INCOME_LOW_HS_EDU_PERCENTILE_FIELD]: .6,
-      [constants.ISLAND_AREAS_LOW_HS_EDU_PERCENTILE_FIELD]: .5,
+      [constants.ISLAND_AREAS_POVERTY_LOW_HS_EDU_PERCENTILE_FIELD]: .5,
       [constants.SIDE_PANEL_STATE]: constants.SIDE_PANEL_STATE_VALUES.ISLAND_AREAS,
     };
 
