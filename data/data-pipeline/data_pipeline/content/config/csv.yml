@@ -17,6 +17,9 @@ fields:
   - score_name: Total threshold criteria exceeded
     label: Total threshold criteria exceeded
     format: int64
+  - score_name: Total categories exceeded
+    label: Total categories exceeded
+    format: int64
   - score_name: Definition M (communities)
     label: Identified as disadvantaged
     format: bool
