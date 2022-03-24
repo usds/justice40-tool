@@ -39,14 +39,6 @@
     "defaultMessage": "Send feedback",
     "description": "link to send feedback"
   },
-  "areaDetail.category.header.indicator": {
-    "defaultMessage": "Indicator",
-    "description": "header for each category"
-  },
-  "areaDetail.category.header.percentile": {
-    "defaultMessage": "Percentile (0-100)",
-    "description": "header for each category"
-  },
   "areaDetail.geographicInfo.censusBlockGroup": {
     "defaultMessage": "Census tract:",
     "description": "the census tract id number of the feature selected"
@@ -483,6 +475,10 @@
     "defaultMessage": "Explore the tool",
     "description": "link to explore the tool page"
   },
+  "console.error.stage.url": {
+    "defaultMessage": "Please check stage_hash value. It must be a 4 digit decimal value / 40 digit hexadecimal value",
+    "description": "console error staging URL"
+  },
   "contact.page.census.tract.feedback.para1": {
     "defaultMessage": "To provide feedback about a specific census tract, either select the send feedback button after selecting a census tract on the {exploreLink} page or use the email address provided above. Please include the census tract ID, county, and state or territory information, in addition to your feedback.",
     "description": "census tract feedback section"
@@ -598,6 +594,58 @@
   "explore.page.note.on.tribal.nations.para.1": {
     "defaultMessage": "The tool covers all U.S. census tracts, including those located within Tribal Nations, to the extent that data is available (see our {dataMethLink} page for more information). CEQ is engaging in consultation and coordination with Tribal Nations on the beta version of the tool to provide Tribal Nations with meaningful opportunities for input, consistent with CEQ’s {actionPlanTribalNation}, {bidenMemoNat2Nat}, and Executive Order 13175 on {coordinateTribal}.",
     "description": "tribal nations paragraph 1"
+  },
+  "explore.page.side.panel.exceed.burden.answer.no": {
+    "defaultMessage": "No",
+    "description": "No"
+  },
+  "explore.page.side.panel.exceed.burden.answer.yes": {
+    "defaultMessage": "Yes",
+    "description": "Yes"
+  },
+  "explore.page.side.panel.exceed.burden.both.socio": {
+    "defaultMessage": "Exceeds the threshold for both socioeconomic indicators?",
+    "description": "Exceeds the threshold for both socioeconomic indicators?"
+  },
+  "explore.page.side.panel.exceed.burden.one.or.more": {
+    "defaultMessage": "Exceeds the threshold for one or more burden indicators?",
+    "description": "Exceeds the threshold for one or more burden indicators?"
+  },
+  "explore.page.side.panel.indicator.value.arrow.down.alt.text": {
+    "defaultMessage": "an icon for the down arrow",
+    "description": "image alt text for the down arrow"
+  },
+  "explore.page.side.panel.indicator.value.arrow.up.alt.text": {
+    "defaultMessage": "an icon for the up arrow",
+    "description": "image alt text for the up arrow"
+  },
+  "explore.page.side.panel.indicator.value.subtext.above": {
+    "defaultMessage": "above",
+    "description": "indicating above threshold"
+  },
+  "explore.page.side.panel.indicator.value.subtext.below": {
+    "defaultMessage": "below",
+    "description": "indicating below threshold"
+  },
+  "explore.page.side.panel.indicator.value.subtext.percent": {
+    "defaultMessage": "percent",
+    "description": "indicating percent units"
+  },
+  "explore.page.side.panel.indicator.value.subtext.percentile": {
+    "defaultMessage": "percentile",
+    "description": "indicating percentile units"
+  },
+  "explore.page.side.panel.indicator.value.subtext.unavailable": {
+    "defaultMessage": "data is not available",
+    "description": "subtext for indicator when data is N/A"
+  },
+  "explore.page.side.panel.indicator.value.unavailable.alt.text": {
+    "defaultMessage": "an icon to represent data is unavailable",
+    "description": "image alt text for unavailable icon"
+  },
+  "explore.page.side.panel.spacer.and": {
+    "defaultMessage": "AND",
+    "description": "AND"
   },
   "explore.page.threshold.count.exceed": {
     "defaultMessage": "{disadvCount} of {totalCount} thresholds exceeded",

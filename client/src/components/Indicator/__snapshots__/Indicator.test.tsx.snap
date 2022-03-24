@@ -107,3 +107,23 @@ exports[`test rendering of Indicator value sub-text renders the "data is not ava
   </div>
 </DocumentFragment>
 `;
+
+exports[`test that the unit suffix renders correctly renders correctly when the value is a null 1`] = `<DocumentFragment />`;
+
+exports[`test that the unit suffix renders correctly renders correctly when the value is a percent 1`] = `
+<DocumentFragment>
+  <span>
+    %
+  </span>
+</DocumentFragment>
+`;
+
+exports[`test that the unit suffix renders correctly renders correctly when the value is a percentile 1`] = `
+<DocumentFragment>
+  <sup>
+    <span>
+      th
+    </span>
+  </sup>
+</DocumentFragment>
+`;

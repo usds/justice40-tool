@@ -30,6 +30,10 @@ interface IIndicatorValueSubText {
   isPercent: boolean | undefined,
 }
 
+interface IDisplayStatUnit {
+  indicator: indicatorInfo,
+  displayStat: number | null,
+}
 
 /**
  * This component will determine what indicator's icon should be (arrowUp, arrowDown or unavailable) and
@@ -60,15 +64,15 @@ export const IndicatorValueIcon = ({value, isAboveThresh}: IIndicatorValueIcon) 
 };
 
 /**
-   * This component will determine the sub-text of the indicator's value, some examples could be
-   *   "above 90th percentile"
-   *   "below 20 percent"
-   *   "data is not available"
-   *
-   *  Todo: refactor into single component, add to i18n and add to tests
-   *
-   * @return {JSX.Element}
-   */
+ * This component will determine the sub-text of the indicator's value, some examples could be
+ *   "above 90th percentile"
+ *   "below 20 percent"
+ *   "data is not available"
+ *
+ *  Todo: refactor into single component, add to i18n and add to tests
+ *
+ * @return {JSX.Element}
+ */
 export const IndicatorValueSubText = ({value, isAboveThresh, threshold, isPercent}:IIndicatorValueSubText) => {
   return value == null ?
     <div>
@@ -93,6 +97,24 @@ export const IndicatorValueSubText = ({value, isAboveThresh, threshold, isPercen
         }
       </div>
     </React.Fragment>;
+};
+
+/**
+ * This component will return the value suffix as either a percent or
+ * ordinal value of the displayed statistic
+ *
+ * @return {JSX.Element}
+ */
+export const DisplayStatUnit = ({indicator, displayStat}:IDisplayStatUnit) => {
+  if (indicator.value !== null) {
+    return indicator.isPercent ?
+        <span>{`%`}</span> :
+        <sup className={styles.indicatorSuperscript}>
+          <span>{getSuperscriptOrdinal(displayStat)}</span>
+        </sup>;
+  } else {
+    return <React.Fragment></React.Fragment>;
+  }
 };
 
 
@@ -154,12 +176,7 @@ const Indicator = ({indicator}:IIndicator) => {
             {/* Indicator value */}
             <div className={styles.indicatorValue}>
               {displayStat}
-              {indicator.isPercent ?
-                <span>{`%`}</span> :
-                <sup className={styles.indicatorSuperscript}>
-                  <span>{getSuperscriptOrdinal(displayStat)}</span>
-                </sup>
-              }
+              <DisplayStatUnit indicator={indicator} displayStat={displayStat}/>
             </div>
 
             {/* Indicator icon - up arrow, down arrow, or unavailable */}

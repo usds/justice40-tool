@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {render, screen} from '@testing-library/react';
 import {LocalizedComponent} from '../../test/testHelpers';
-import Indicator, {IndicatorValueIcon, IndicatorValueSubText} from './Indicator';
+import Indicator, {IndicatorValueIcon, IndicatorValueSubText, DisplayStatUnit} from './Indicator';
 import {indicatorInfo} from '../AreaDetail/AreaDetail';
 
 import * as EXPLORE_COPY from '../../data/copy/explore';
@@ -116,6 +116,68 @@ describe('test rendering of Indicator value sub-text', () => {
             isAboveThresh={false}
             threshold={90}
             isPercent={false}
+          />
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+});
+
+describe('test that the unit suffix renders correctly', ()=> {
+  it('renders correctly when the value is a percentile', () => {
+    const lowLife:indicatorInfo = {
+      label: 'some label',
+      description: 'some description',
+      value: 97,
+      isDisadvagtaged: true,
+      isPercent: false,
+      threshold: 20,
+    };
+
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <DisplayStatUnit
+            indicator={lowLife}
+            displayStat={90}
+          />
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+  it('renders correctly when the value is a percent', () => {
+    const lowLife:indicatorInfo = {
+      label: 'some label',
+      description: 'some description',
+      value: 97,
+      isDisadvagtaged: true,
+      isPercent: true,
+      threshold: 20,
+    };
+
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <DisplayStatUnit
+            indicator={lowLife}
+            displayStat={90}
+          />
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+  it('renders correctly when the value is a null', () => {
+    const lowLife:indicatorInfo = {
+      label: 'some label',
+      description: 'some description',
+      value: null,
+      isDisadvagtaged: true,
+      isPercent: false,
+    };
+
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <DisplayStatUnit
+            indicator={lowLife}
+            displayStat={null}
           />
         </LocalizedComponent>,
     );
