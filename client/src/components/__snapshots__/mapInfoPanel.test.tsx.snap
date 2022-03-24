@@ -8,29 +8,86 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
     class="someClassName"
   >
     <aside>
-      <header>
-        Zoom and select a census tract to view data
+      <header
+        tabindex="0"
+      >
+        Things to know
       </header>
-      <div>
-        <img
-          alt="icon showing a lightbulb"
-          src="test-file-stub"
-        />
-        <div>
-          <div>
-             Did you know?
-          </div>
-          <cite>
-            
-      A census tract is generally between 1,200 to 8,000 people, with an average size of 4,000 people. 
-      Census tracts are small, relatively permanent subdivisions of a county defined by the 
-      U.S. Census Bureau and usually cover a contiguous area. The census tract level currently represents the 
-      smallest geographical unit for which publicly-available and nationally-consistent datasets can 
-      be consistently displayed on the tool.
+      <p
+        tabindex="0"
+      >
+        
+      This tool identifies communities that are marginalized, underserved, and overburdened by 
+      pollution. These communities will be at or above the thresholds for one or more of eight categories of criteria.
     
-          </cite>
-        </div>
-      </div>
+      </p>
+      <img
+        alt="
+      An icon that has depicts pieces of a block selected mimicing the census block census tracts
+    "
+        src="test-file-stub"
+        tabindex="0"
+      />
+      <p
+        tabindex="0"
+      >
+        
+      The tool uses census tracts that represent about 4000 people and are the smallest unit of geography 
+      at which consistent data is currently available.
+    
+      </p>
+      <img
+        alt="
+      An icon that a bell curve or gaussian distribution
+    "
+        src="test-file-stub"
+        tabindex="0"
+      />
+      <p
+        tabindex="0"
+      >
+        
+      The tool ranks each census tract using percentiles which show how much burden each census tract has 
+      relative to all the other census tracts.
+    
+      </p>
+      <img
+        alt="
+      An icon that depicts a part of pie chart being removed
+    "
+        src="test-file-stub"
+        tabindex="0"
+      />
+      <p
+        tabindex="0"
+      >
+        
+      Percents are also used to show the share of people in the census tract have certain socioeconomic characteristics.
+    
+      </p>
+      <img
+        alt="
+      An icon that has an up arrow and a down arrow
+    "
+        src="test-file-stub"
+        tabindex="0"
+      />
+      <p
+        tabindex="0"
+      >
+        
+    Thresholds for each data source determine 
+        <strong>
+          IF
+        </strong>
+         each census tract is identified as 
+    experiencing burdens disproportionally 
+        <strong>
+          AND
+        </strong>
+         has those socioeconomic characteristics.
+  
+      </p>
     </aside>
   </div>
 </DocumentFragment>
