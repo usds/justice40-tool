@@ -114,7 +114,7 @@ def floor_series(series: pd.Series, number_of_decimals: int) -> pd.Series:
 
 def _create_df_from_yaml_contents(
     fields_list_from_yaml: list,
-    fields_to_store_in_codebook: list[namedtuple],
+    fields_to_store_in_codebook: list,
 ) -> pd.DataFrame:
     """Helper function to create a dataframe from yaml fields
 
