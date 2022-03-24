@@ -17,12 +17,10 @@ const MapWrapper = ({location}: IMapWrapperProps) => {
         <J40Map location={location}/>
       </Grid>
 
-      <Grid row>
-        <Grid col={7}>
-          <div className={styles.mapCaptionTextLink}>
-            {EXPLORE_COPY.DOWNLOAD_DRAFT.PARAGRAPH_1}
-          </div>
-        </Grid>
+      <Grid desktop={{col: 7}} tablet={{col: 10}} col={12}>
+        <div className={styles.mapCaptionTextLink}>
+          {EXPLORE_COPY.DOWNLOAD_DRAFT.PARAGRAPH_1}
+        </div>
       </Grid>
     </>
   );
