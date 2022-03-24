@@ -72,17 +72,15 @@ export const MAP = defineMessages({
   LOWER48_SHORT: {
     id: 'explore.tool.page.map.territoryFocus.lower48.short',
     defaultMessage: '48',
-    description: `
-      On the explore the tool page, on the map, the abbreviated name indicating the bounds of 
+    description: `On the explore the tool page, on the map, the abbreviated name indicating the bounds of 
       the Lower 48 states
     `,
   },
   LOWER48_LONG: {
     id: 'explore.tool.page.map.territoryFocus.lower48.long',
     defaultMessage: 'Lower 48',
-    description: `
-      On the explore the tool page, on the map, the longer name indicating the bounds of the Lower 48 states
-    `,
+    // eslint-disable-next-line max-len
+    description: `On the explore the tool page, on the map, the longer name indicating the bounds of the Lower 48 states`,
   },
   ALASKA_SHORT: {
     id: 'explore.tool.page.map.territoryFocus.alaska.short',
@@ -127,9 +125,8 @@ export const MAP = defineMessages({
   AS_SHORT: {
     id: 'explore.tool.page.map.territoryFocus.american.samoa.short',
     defaultMessage: 'AS',
-    description: `
-      On the explore the tool page, on the map, the abbreviated name indicating the bounds of American Somoa
-    `,
+    // eslint-disable-next-line max-len
+    description: `On the explore the tool page, on the map, the abbreviated name indicating the bounds of American Somoa`,
   },
   AS_LONG: {
     id: 'explore.tool.page.map.territoryFocus.american.samoa.long',
@@ -139,25 +136,20 @@ export const MAP = defineMessages({
   MP_SHORT: {
     id: 'explore.tool.page.map.territoryFocus.commonwealth.nmp.short',
     defaultMessage: 'MP',
-    description: `
-      On the explore the tool page, on the map, the abbreviated name indicating the bounds of Commonwealth 
-      of Northern Mariana Islands
-    `,
+    // eslint-disable-next-line max-len
+    description: `On the explore the tool page, on the map, the abbreviated name indicating the bounds of Commonwealth of Northern Mariana Islands`,
   },
   MP_LONG: {
     id: 'explore.tool.page.map.territoryFocus.commonwealth.nmp.long',
     defaultMessage: 'Commonwealth of Northern Mariana Islands',
-    description: `
-      On the explore the tool page, on the map, the full name indicating the bounds of Commonwealth 
-      of Northern Mariana Islands
-    `,
+    // eslint-disable-next-line max-len
+    description: `On the explore the tool page, on the map, the full name indicating the bounds of Commonwealth of Northern Mariana Islands`,
   },
   VI_SHORT: {
     id: 'explore.tool.page.map.territoryFocus.us.virgin.islands.short',
     defaultMessage: 'VI',
-    description: `
-      On the explore the tool page, on the map, the abbreviated name indicating the bounds of US Virgin Islands
-    `,
+    // eslint-disable-next-line max-len
+    description: `On the explore the tool page, on the map, the abbreviated name indicating the bounds of US Virgin Islands`,
   },
   VI_LONG: {
     id: 'explore.tool.page.map.territoryFocus.us.virgin.islands.long',
@@ -180,10 +172,8 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
       This tool identifies communities that are marginalized, underserved, and overburdened by 
       pollution. These communities will be at or above the thresholds for one or more of eight categories of criteria.
     `,
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Things to know, this is the first paragraph of this side panel
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Things to know, this is the first paragraph of this side panel`,
   },
   PARA2: {
     id: 'explore.tool.page.side.panel.info.para2',
@@ -191,10 +181,8 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
       The tool uses census tracts that represent about 4000 people and are the smallest unit of geography 
       at which consistent data is currently available.
     `,
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Things to know, this is the second paragraph of this side panel
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Things to know, this is the second paragraph of this side panel`,
   },
   PARA3: {
     id: 'explore.tool.page.side.panel.info.para3',
@@ -202,60 +190,48 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
       The tool ranks each census tract using percentiles which show how much burden each census tract has 
       relative to all the other census tracts.
     `,
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Things to know, this is the third paragraph of this side panel
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Things to know, this is the third paragraph of this side panel`,
   },
   PARA4: {
     id: 'explore.tool.page.side.panel.info.para4',
     defaultMessage: `
       Percents are also used to show the share of people in the census tract have certain socioeconomic characteristics.
     `,
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Things to know, this is the forth paragraph of this side panel
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Things to know, this is the forth paragraph of this side panel`,
   },
   ALT_TEXT_ICON1: {
     id: 'explore.tool.page.side.panel.info.alt.text.icon1',
     defaultMessage: `
       An icon that has depicts pieces of a block selected mimicing the census block census tracts
     `,
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Things to know, this is the first icon in this side panel
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Things to know, this is the first icon in this side panel`,
   },
   ALT_TEXT_ICON2: {
     id: 'explore.tool.page.side.panel.info.alt.text.icon2',
     defaultMessage: `
       An icon that a bell curve or gaussian distribution
     `,
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Things to know, this is the second icon in this side panel
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Things to know, this is the second icon in this side panel`,
   },
   ALT_TEXT_ICON3: {
     id: 'explore.tool.page.side.panel.info.alt.text.icon3',
     defaultMessage: `
       An icon that depicts a part of pie chart being removed
     `,
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Things to know, this is the third icon in this side panel
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Things to know, this is the third icon in this side panel`,
   },
   ALT_TEXT_ICON4: {
     id: 'explore.tool.page.side.panel.info.alt.text.icon4',
     defaultMessage: `
       An icon that has an up arrow and a down arrow
     `,
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Things to know, this is the forth icon in this side panel
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Things to know, this is the forth icon in this side panel`,
   },
 });
 
@@ -265,10 +241,8 @@ export const SIDE_PANEL_INITIAL_STATE_PARA5 = <FormattedMessage
     Thresholds for each data source determine <boldtag>IF</boldtag> each census tract is identified as 
     experiencing burdens disproportionally <boldtag>AND</boldtag> has those socioeconomic characteristics.
   `}
-  description={ `
-    Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-    will show Things to know, this is the fifth paragraph of this side panel
-  `}
+  // eslint-disable-next-line max-len
+  description={`Navigate to the explore the tool page. When the map is in view, click on the map. The side panelwill show Things to know, this is the fifth paragraph of this side pane`}
   values={{
     boldtag: boldFn,
   }}
@@ -278,10 +252,8 @@ export const SIDE_PANEL_VERION = {
   TITLE: <FormattedMessage
     id={'explore.tool.page.side.panel.version.title'}
     defaultMessage={ 'Methodology version {version}'}
-    description={`
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show the methodology version number
-    `}
+    // eslint-disable-next-line max-len
+    description={`Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show the methodology version number`}
     values= {{
       version: <FormattedNumber value={METHODOLOGY_COPY.VERSION_NUMBER}/>,
     }}
@@ -292,42 +264,32 @@ export const SIDE_PANEL_CBG_INFO = defineMessages({
   CENSUS_BLOCK_GROUP: {
     id: 'explore.tool.page.side.panel.geographicInfo.censusBlockGroup',
     defaultMessage: 'Census tract:',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show the census tract id number of the feature selected
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show the census tract id number of the feature selected`,
   },
   COUNTY: {
     id: 'explore.tool.page.side.panel.geographicInfo.county',
     defaultMessage: 'County:',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show the county of the feature selected
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show the county of the feature selected`,
   },
   STATE: {
     id: 'explore.tool.page.side.panel.geographicInfo.state',
     defaultMessage: 'State: ',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show the state of the feature selected
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show the state of the feature selected`,
   },
   TERRITORY: {
     id: 'explore.tool.page.side.panel.geographicInfo.territory',
     defaultMessage: 'Territory: ',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show the territory of the feature selected
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show the territory of the feature selected`,
   },
   POPULATION: {
     id: 'explore.tool.page.side.panel.geographicInfo.population',
     defaultMessage: 'Population:',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show the population of the feature selected
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show the population of the feature selected`,
   },
 });
 
@@ -335,35 +297,27 @@ export const COMMUNITY = {
   OF_FOCUS: <FormattedMessage
     id={'explore.tool.page.side.panel.community.of.focus'}
     defaultMessage={ 'YES'}
-    description={`
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show the communities the score currently is focused on
-    `}
+    // eslint-disable-next-line max-len
+    description={`Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show the communities the score currently is focused on`}
   />,
   NOT_OF_FOCUS: <FormattedMessage
     id= {'explore.tool.page.side.panel.not.community.of.focus'}
     defaultMessage= {'No'}
-    description={`
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show the communities the score currently is not focused on
-    `}
+    // eslint-disable-next-line max-len
+    description={`Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show the communities the score currently is not focused on`}
   />,
   IS_FOCUS: <FormattedMessage
     id={'explore.tool.page.side.panel.is.community.of.focus'}
     defaultMessage={ 'Identified as disadvantaged?'}
-    description={`
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show asking IF the communities is focused on
-    `}
+    // eslint-disable-next-line max-len
+    description={`Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show asking IF the communities is focused on`}
   />,
   SEND_FEEDBACK: {
     TITLE: <FormattedMessage
       id={'explore.tool.page.side.panel.send.feedback.title'}
       defaultMessage={ 'Send feedback'}
-      description={`
-        Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-        will show link to send feedback
-      `}
+      // eslint-disable-next-line max-len
+      description={`Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show link to send feedback`}
     />,
   },
 };
@@ -374,10 +328,9 @@ export const SEND_FEEDBACK = defineMessages({
     // eslint-disable-next-line max-len
     defaultMessage: `Please provide feedback about this census tract, including about the datasets, the data categories provided for this census tract, the communities who live in this census tract, and anything else relevant that CEQ should know about this census tract.
     `,
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show link to send feedback
-      `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show link to send feedback
+`,
   },
 });
 
@@ -385,82 +338,72 @@ export const SIDE_PANEL_CATEGORY = defineMessages({
   INDICATOR: {
     id: 'explore.tool.page.side.panel.category.header.indicator',
     defaultMessage: 'Indicator',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show header for each category
-      `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show header for each category
+`,
   },
   PERCENTILE: {
     id: 'explore.tool.page.side.panel.category.header.percentile',
     defaultMessage: 'Percentile (0-100)',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show header for each category
-      `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show header for each category
+`,
   },
   CLIMATE: {
     id: 'explore.tool.page.side.panel.indicator.title.climate',
     defaultMessage: 'Climate change',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Climate change title
-      `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Climate change title
+`,
   },
   CLEAN_ENERGY: {
     id: 'explore.tool.page.side.panel.indicator.title.clean.energy',
     defaultMessage: 'Clean energy and energy efficiency',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Clean, efficient energy title
-      `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Clean, efficient energy title
+`,
   },
   CLEAN_TRANSPORT: {
     id: 'explore.tool.page.side.panel.indicator.title.clean.transport',
     defaultMessage: 'Clean transit',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Clean transportation title
-      `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Clean transportation title
+`,
   },
   SUSTAIN_HOUSE: {
     id: 'explore.tool.page.side.panel.indicator.title.sustain.house',
     defaultMessage: 'Sustainable housing',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Sustainable housing title
-      `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Sustainable housing title
+`,
   },
   LEG_POLLUTE: {
     id: 'explore.tool.page.side.panel.indicator.title.legacy.pollution',
     defaultMessage: 'Legacy pollution',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Legacy pollution title
-      `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Legacy pollution title
+`,
   },
   CLEAN_WATER: {
     id: 'explore.tool.page.side.panel.indicator.title.clean.water',
     defaultMessage: 'Clean water and waste infrastructure',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Clean water and waste title
-      `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Clean water and waste title
+`,
   },
   HEALTH_BURDEN: {
     id: 'explore.tool.page.side.panel.indicator.title.health.burden',
     defaultMessage: 'Health burdens',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Health burdens title
-      `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Health burdens title
+`,
   },
   WORK_DEV: {
     id: 'explore.tool.page.side.panel.indicator.title.work.dev',
     defaultMessage: 'Workforce development',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Workforce development title
-      `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Workforce development title
+`,
   },
 });
 
@@ -468,198 +411,155 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
   EXP_AG_LOSS: {
     id: 'explore.tool.page.side.panel.indicator.exp.ag.loss',
     defaultMessage: 'Expected agriculture loss rate',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show agriculture loss rate
-      `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show agriculture loss rate
+`,
   },
   EXP_BLD_LOSS: {
     id: 'explore.tool.page.side.panel.indicator.exp.bld.loss',
     defaultMessage: 'Expected building loss rate',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show building loss rate
-      `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show building loss rate
+`,
   },
   EXP_POP_LOSS: {
     id: 'explore.tool.page.side.panel.indicator.exp.pop.loss',
     defaultMessage: 'Expected population loss rate',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show population loss rate
-      `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show population loss rate
+`,
   },
   LOW_INCOME: {
     id: 'explore.tool.page.side.panel.indicator.low.income',
     defaultMessage: 'Low income',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show low income`,
-  },
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show low income`},
   HIGH_ED: {
     id: 'explore.tool.page.side.panel.indicator.high.ed',
     defaultMessage: 'Higher ed enrollment rate',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Higher ed degree achievement rate
-      `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Higher ed degree achievement rate
+`,
   },
   ENERGY_BURDEN: {
     id: 'explore.tool.page.side.panel.indicator.energyBurden',
     defaultMessage: 'Energy burden',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Energy burden
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Energy burden`,
   },
   PM_2_5: {
     id: 'explore.tool.page.side.panel.indicator.pm25',
     defaultMessage: 'PM2.5 in the air',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show PM2.5 in the air
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show PM2.5 in the air`,
   },
   DIESEL_PARTICULATE_MATTER: {
     id: 'explore.tool.page.side.panel.indicator.dieselPartMatter',
     defaultMessage: 'Diesel particulate matter exposure',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Diesel particulate matter exposure
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Diesel particulate matter exposure`,
   },
   TRAFFIC_VOLUME: {
     id: 'explore.tool.page.side.panel.indicator.trafficVolume',
     defaultMessage: 'Traffic proximity and volume',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Traffic proximity and volume
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Traffic proximity and volume`,
   },
   LEAD_PAINT: {
     id: 'explore.tool.page.side.panel.indicator.leadPaint',
     defaultMessage: 'Lead paint',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Lead paint
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Lead paint`,
   },
   MED_HOME_VAL: {
     id: 'explore.tool.page.side.panel.indicator.med.home.val',
     defaultMessage: 'Median home value',
-    description: 'Median home value',
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Housing cost burden`,
   },
   HOUSE_BURDEN: {
     id: 'explore.tool.page.side.panel.indicator.houseBurden',
     defaultMessage: 'Housing cost burden',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Housing cost burden
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Housing cost burden`,
   },
   PROX_HAZ: {
     id: 'explore.tool.page.side.panel.indicator.prox.haz',
     defaultMessage: 'Proximity to hazardous waste facilities',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Proximity to hazardous waste facilities
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Proximity to hazardous waste facilities`,
   },
   PROX_NPL: {
     id: 'explore.tool.page.side.panel.indicator.prox.npl',
     defaultMessage: 'Proximity to National Priorities List (NPL) sites',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Count of proposed or listed NPL 
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Count of proposed or listed NPL `,
   },
   PROX_RMP: {
     id: 'explore.tool.page.side.panel.indicator.prox.rmp',
     defaultMessage: 'Proximity to Risk Management Plan (RMP) facilities',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Count of proposed or listed RMP
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Count of proposed or listed RMP`,
   },
   WASTE_WATER: {
     id: 'explore.tool.page.side.panel.indicator.wasteWater',
     defaultMessage: 'Wastewater discharge',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Wastewater discharge
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Wastewater discharge`,
   },
   ASTHMA: {
     id: 'explore.tool.page.side.panel.indicator.asthma',
     defaultMessage: 'Asthma',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Asthma
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Asthma`,
   },
   DIABETES: {
     id: 'explore.tool.page.side.panel.indicator.diabetes',
     defaultMessage: 'Diabetes',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Diabetes
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Diabetes`,
   },
   HEART_DISEASE: {
     id: 'explore.tool.page.side.panel.indicator.heartDisease',
     defaultMessage: 'Heart disease',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Heart disease
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Heart disease`,
   },
   LIFE_EXPECT: {
     id: 'explore.tool.page.side.panel.indicator.lifeExpect',
     defaultMessage: 'Low life expectancy',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Low life expectancy
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Low life expectancy`,
   },
   LOW_MED_INC: {
     id: 'explore.tool.page.side.panel.indicator.low.med.income',
     defaultMessage: 'Low median income',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Low median income
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Low median income`,
   },
   LING_ISO: {
     id: 'explore.tool.page.side.panel.indicator.ling.iso',
     defaultMessage: 'Linguistic isolation',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Linguistic isolation
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Linguistic isolation`,
   },
   UNEMPLOY: {
     id: 'explore.tool.page.side.panel.indicator.unemploy',
     defaultMessage: 'Unemployment',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Unemployment
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Unemployment`,
   },
   POVERTY: {
     id: 'explore.tool.page.side.panel.indicator.poverty',
     defaultMessage: 'Poverty',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show Unemployment
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Unemployment`,
   },
   HIGH_SCL: {
     id: 'explore.tool.page.side.panel.indicator.high.school',
     defaultMessage: 'High school degree attainment rate',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show High school degree achievement rate
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show High school degree achievement rate`,
   },
 });
 
@@ -712,40 +612,33 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   EXP_AG_LOSS: {
     id: 'explore.tool.page.side.panel.indicator.description.exp.ag.loss',
     defaultMessage: 'Economic loss rate to agricultural value resulting from natural hazards each year',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of Economic loss rate to agriculture resulting from natural hazards
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Economic loss rate to agriculture resulting from naturhazards
     `,
 
   },
   EXP_BLD_LOSS: {
     id: 'explore.tool.page.side.panel.indicator.description.exp.bld.loss',
     defaultMessage: 'Economic loss rate to agricultural value resulting from natural hazards each year',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of Economic loss rate to buildings resulting from natural hazards
-    `,
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side 
+    panel will show an indicator desciption of Economic loss rate to buildings resulting from natural hazards`,
   },
   EXP_POP_LOSS: {
     id: 'explore.tool.page.side.panel.indicator.description.exp.pop.loss',
     defaultMessage: `
       Rate of fatalities and injuries resulting from natural hazards each year
     `,
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of Economic loss rate to the population in fatalities and 
-      injuries resulting from natural hazards
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Economic loss rate to the population in fatalities and 
+      injuries resulting from natural hazards`,
   },
   LOW_INCOME: {
     id: 'explore.tool.page.side.panel.indicator.description.low.income',
     defaultMessage: `
       Household income is less than or equal to twice the federal poverty level 
     `,
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of Household income is less than or equal to twice the federal poverty level
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Household income is less than or equal to twice the federal poverty level`,
   },
   HIGH_ED: {
     id: 'explore.tool.page.side.panel.indicator.description.high.ed',
@@ -753,44 +646,34 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
       Percent of the census tract's population 15 or older not enrolled in college, university, or 
       graduate school 
     `,
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of Percent of the census tract's population 15 or older not 
-      enrolled in college, university, or graduate school
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Percent of the census tract's population 15 or older not 
+      enrolled in college, university, or graduate school`,
   },
   ENERGY_BURDEN: {
     id: 'explore.tool.page.side.panel.indicator.description.energyBurden',
     defaultMessage: 'Average annual energy costs divided by household income',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of Energy costs divided by household income
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Energy costs divided by household income`,
   },
   PM_2_5: {
     id: 'explore.tool.page.side.panel.indicator.description.pm25',
     defaultMessage: 'Fine inhalable particles, 2.5 micrometers or smaller',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of Fine inhalable particles, 2.5 micrometers and smaller
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Fine inhalable particles, 2.5 micrometers and smaller`,
   },
 
   DIESEL_PARTICULATE_MATTER: {
     id: 'explore.tool.page.side.panel.indicator.description.dieselPartMatter',
     defaultMessage: 'Diesel exhaust in the air',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of Diesel exhaust in the air
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Diesel exhaust in the air`,
   },
   TRAFFIC_VOLUME: {
     id: 'explore.tool.page.side.panel.indicator.description.trafficVolume',
     defaultMessage: 'Count of vehicles at major roads within 500 meters',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of Count of vehicles at major roads within 500 meters
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Count of vehicles at major roads within 500 meters`,
   },
 
   LEAD_PAINT: {
@@ -798,70 +681,55 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
     defaultMessage: `
       Percentile of number of homes built before 1960 that are not among the most expensive
     `,
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of Pre-1960 housing
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Pre-1960 housing`,
   },
   MED_HOME_VAL: {
     id: 'explore.tool.page.side.panel.indicator.description.med.home.val',
     defaultMessage: 'Median home value in area',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of Meidan home value in area
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Meidan home value in area`,
 
   },
   HOUSE_BURDEN: {
     id: 'explore.tool.page.side.panel.indicator.description.houseBurden',
     defaultMessage: 'Low income households spending more than 30% of income on housing',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of Low income households spending more than 30% of income on housing
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Low income households spending more than 30% of income housing
     `,
   },
 
   PROX_HAZ: {
     id: 'explore.tool.page.side.panel.indicator.description.prox.haz',
     defaultMessage: 'Count of hazardous waste facilities within 5 kilometers',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of Count of hazardous waste facilities within 5 kilometers
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Count of hazardous waste facilities within 5 kilometers`,
   },
   PROX_NPL: {
     id: 'explore.tool.page.side.panel.indicator.description.prox.npl',
     defaultMessage: 'Proposed or listed NPL (Superfund) sites within 5 kilometers',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of Proposed or listed NPL (Superfund) sites within 5 kilometers
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Proposed or listed NPL (Superfund) sites within 5 kilometers`,
   },
   PROX_RMP: {
     id: 'explore.tool.page.side.panel.indicator.description.prox.rmp',
     defaultMessage: 'RMP facilities within 5 kilometers',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of Risk Management Plan facilities within 5 kilometers
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Risk Management Plan facilities within 5 kilometers`,
   },
 
   WASTE_WATER: {
     id: 'explore.tool.page.side.panel.indicator.description.wasteWater',
     defaultMessage: 'Toxic concentrations at stream segments within 500 meters',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of Toxic concentrations at stream segments within 500 meters
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Toxic concentrations at stream segments within 500 meters`,
   },
 
   ASTHMA: {
     id: 'explore.tool.page.side.panel.indicator.description.asthma',
     defaultMessage: 'Weighted percent of people who have been told they have asthma',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of Number of people who have been told they have asthma
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Number of people who have been told they have asthma`,
   },
   DIABETES: {
     id: 'explore.tool.page.side.panel.indicator.description.diabetes',
@@ -869,11 +737,9 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
       Weighted percent of people ages 18 years and older who have diabetes other than 
       diabetes during pregnancy
     `,
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of People ages 18 years and older who have diabetes other than 
-      diabetes during pregnancy
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of People ages 18 years and older who have diabetes other than 
+      diabetes during pregnancy`,
   },
   HEART_DISEASE: {
     id: 'explore.tool.page.side.panel.indicator.description.heartDisease',
@@ -882,49 +748,35 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
       will show an indicator desciption of Weighted percent of people ages 18 years and older who have 
       been told they have heart disease
     `,
-    description: `
-          People ages 18 years and older who have been told they have heart disease
-    `,
+    description: `People ages 18 years and older who have been told they have heart disease`,
   },
   LOW_LIFE_EXPECT: {
     id: 'explore.tool.page.side.panel.indicator.description.lifeExpect',
     defaultMessage: 'Average number of years a person can expect to live',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of Navigate to the explore the tool page. When the map is in 
-      view, click on the map. The side panel 
-      will show an indicator desciption of Average number of years of life a person can expect to live
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Average number of years of life a person can expect to live`,
   },
 
   LOW_MED_INCOME: {
     id: 'explore.tool.page.side.panel.indicator.description.low.med.income',
     defaultMessage: 'Median income calculated as a percent of the area’s median income',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of Navigate to the explore the tool page. When the map is in 
-      view, click on the map. The side panel 
-      will show an indicator desciption of Median income calculated as a percent of the area’s median income
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Median income calculated as a percent of the area’s median income`,
   },
   LING_ISO: {
     id: 'explore.tool.page.side.panel.indicator.description.ling.iso',
     defaultMessage: `
       Percent of households where no one over the age 14 speaks English well
     `,
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of Households in which no one age 14 and over speaks English only 
-      or also speaks 
-      a language other than English`,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Households in which no one age 14 and over speaks English only or also speaks a language other than English`,
   },
   UNEMPLOY: {
     id: 'explore.tool.page.side.panel.indicator.description.unemploy',
     defaultMessage: 'Number of unemployed people as a percentage of the labor force',
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of Number of unemployed people as a percentage of the labor force
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side 
+    panel will show an indicator desciption of Number of unemployed people as a percentage of the labor force`,
   },
   POVERTY: {
     id: 'explore.tool.page.side.panel.indicator.description.poverty',
@@ -932,22 +784,17 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
       Percent of a census tract's population in households where the household income is at or below 100% 
       of the Federal poverty level 
     `,
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of Percent of individuals in households where the household income 
-      is at or 
-      below 100% of the federal poverty level`,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Percent of individuals in households where the household income is at or below 100% of the federal poverty level`,
   },
   HIGH_SKL: {
     id: 'explore.tool.page.side.panel.indicator.description.high.school',
     defaultMessage: `
       Percent of people ages 25 years or older whose education level is less than a high school diploma 
     `,
-    description: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of Percent of people ages 25 years or older whose education level 
-      is less than a high school diploma
-    `,
+    // eslint-disable-next-line max-len
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Percent of people ages 25 years or older whose education level 
+      is less than a high school diploma`,
   },
 });
 
@@ -1012,9 +859,7 @@ export const NOTE_ON_TERRITORIES = {
   INTRO: <FormattedMessage
     id={'explore.tool.page.under.map.note.on.territories.intro'}
     defaultMessage={`A note on the U.S. territories`}
-    description={`
-      Navigate to the explore the tool page. Under the map, you will see territories intro text
-    `}
+    description={`Navigate to the explore the tool page. Under the map, you will see territories intro text`}
   />,
   PARA_1: <FormattedMessage
     id={'explore.tool.page.under.map.note.on.territories.para.1'}
@@ -1023,9 +868,7 @@ export const NOTE_ON_TERRITORIES = {
       identify disadvantaged communities in all fifty states and the District of Columbia. However, not all 
       of these data sources are currently available for the U.S. territories.
     `}
-    description={`
-      Navigate to the explore the tool page. Under the map, you will see territories paragraph 1
-    `}
+    description={`Navigate to the explore the tool page. Under the map, you will see territories paragraph 1`}
     values={{
       link1: linkFn('/methodology', true, false),
     }}
@@ -1038,9 +881,7 @@ export const NOTE_ON_TERRITORIES = {
       to identify disadvantaged communities. Data in the other categories are unavailable at this 
       time.
     `}
-    description={`
-      Navigate to the explore the tool page. Under the map, you will see territories paragraph 2
-    `}
+    description={`Navigate to the explore the tool page. Under the map, you will see territories paragraph 2`}
   />,
   PARA_3: <FormattedMessage
     id={'explore.tool.page.under.map.note.on.territories.para.3'}
@@ -1051,9 +892,7 @@ export const NOTE_ON_TERRITORIES = {
       low median income, and high school degree achievement rate fields in the Training and 
       Workforce Development category.
     `}
-    description={`
-      Navigate to the explore the tool page. Under the map, you will see territories paragraph 3
-    `}
+    description={`Navigate to the explore the tool page. Under the map, you will see territories paragraph 3`}
   />,
   PARA_4: <FormattedMessage
     id={'explore.tool.page.under.map.note.on.territories.para.4'}
@@ -1061,9 +900,7 @@ export const NOTE_ON_TERRITORIES = {
       Work is currently underway to identify disadvantaged communities and update the 
       tool accordingly for Guam and the U.S. Virgin Islands.
         `}
-    description={`
-      Navigate to the explore the tool page. Under the map, you will see territories paragraph 4
-    `}
+    description={`Navigate to the explore the tool page. Under the map, you will see territories paragraph 4`}
   />,
 };
 
@@ -1071,9 +908,7 @@ export const NOTE_ON_TRIBAL_NATIONS = {
   INTRO: <FormattedMessage
     id={'explore.tool.page.under.map.note.on.tribal.nations.intro'}
     defaultMessage={`A note on Tribal Nations`}
-    description={`
-      Navigate to the explore the tool page. Under the map, you will see tribal nations intro text
-    `}
+    description={`Navigate to the explore the tool page. Under the map, you will see tribal nations intro text`}
   />,
   PARA_1: <FormattedMessage
     id={'explore.tool.page.under.map.note.on.tribal.nations.para.1'}
@@ -1087,9 +922,7 @@ export const NOTE_ON_TRIBAL_NATIONS = {
       Nation-to-Nation Consultation</link3>, and Executive Order 13175 on <link4>Consulation and 
       Coordination With Indian Tribal Governments</link4>.
     `}
-    description={`
-      Navigate to the explore the tool page. Under the map, you will see tribal nations paragraph 1
-    `}
+    description={`Navigate to the explore the tool page. Under the map, you will see tribal nations paragraph 1`}
     values={{
       link1: linkFn('/methodology', true, false),
       link2: linkFn(`https://www.whitehouse.gov/wp-content/uploads/2022/01/CEQ-Tribal-Consultation-Plan-04.26.2021.pdf`, false, true),
@@ -1102,9 +935,8 @@ export const NOTE_ON_TRIBAL_NATIONS = {
 export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
   HEADING: <FormattedMessage
     id={'explore.tool.page.under.map.how.you.can.help.heading'}
-    description={`
-      Navigate to the explore the tool page. Under the map, you will see how one can help us improve the tool
-    `}
+    // eslint-disable-next-line max-len
+    description={`Navigate to the explore the tool page. Under the map, you will see how one can help us improve the tool`}
     defaultMessage={`How you can help improve the tool`}
   />,
   LIST_ITEM_1: <FormattedMessage
@@ -1119,9 +951,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
   />,
   LIST_ITEM_2: <FormattedMessage
     id={'explore.tool.page.under.map.how.you.can.help.list.item.2'}
-    description={`
-      Navigate to the explore the tool page. Under the map, you will see share your feedback
-    `}
+    description={`Navigate to the explore the tool page. Under the map, you will see share your feedback`}
     defaultMessage={`Use the tool to find communities and <link1>share your feedback</link1>.`}
     values={{
       link1: linkFn(`mailto:${CONTACT_COPY.FEEDBACK_EMAIL}`, false, true),
@@ -1129,9 +959,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
   />,
   LIST_ITEM_3: <FormattedMessage
     id={'explore.tool.page.under.map.how.you.can.help.list.item.3'}
-    description={`
-      Navigate to the explore the tool page. Under the map, you will see share your feedback
-    `}
+    description={`Navigate to the explore the tool page. Under the map, you will see share your feedback`}
     defaultMessage={`Respond to our Request for Information on <link1>federalregister.gov</link1>.`}
     values={{
       link1: linkFn(`https://www.federalregister.gov/d/2022-03920`, false, true),
