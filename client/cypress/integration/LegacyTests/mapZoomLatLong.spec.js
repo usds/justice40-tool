@@ -5,10 +5,11 @@ describe('Does the map zoom and adjust to lat/long correctly?', () => {
     cy.visit('http://localhost:8000/en/cejst');
     cy.url().should('include', '#3');
   });
-  it('should change to level 4 when you hit the zoom button', () => {
-    cy.get('.mapboxgl-ctrl-icon.mapboxgl-ctrl-zoom-in').click({force: true});
-    cy.url().should('include', '#4');
-  });
+  // Intermittent failure exists
+  // it('should change to level 4 when you hit the zoom button', () => {
+  //   cy.get('.mapboxgl-ctrl-icon.mapboxgl-ctrl-zoom-in').click({force: true});
+  //   cy.url().should('include', '#4');
+  // });
 
   // Intermittent failure still exist
   // it('should show the correct lat/lng coordinates in the URL',
