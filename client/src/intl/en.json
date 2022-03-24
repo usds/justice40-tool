@@ -283,6 +283,58 @@
     "defaultMessage": "The download package includes draft v{version} of the list of disadvantaged communities (.csv and .xlsx).",
     "description": "download packet info text"
   },
+  "explore.page.side.panel.exceed.burden.answer.no": {
+    "defaultMessage": "No",
+    "description": "No"
+  },
+  "explore.page.side.panel.exceed.burden.answer.yes": {
+    "defaultMessage": "Yes",
+    "description": "Yes"
+  },
+  "explore.page.side.panel.exceed.burden.both.socio": {
+    "defaultMessage": "Exceeds the threshold for both socioeconomic indicators?",
+    "description": "Exceeds the threshold for both socioeconomic indicators?"
+  },
+  "explore.page.side.panel.exceed.burden.one.or.more": {
+    "defaultMessage": "Exceeds the threshold for one or more burden indicators?",
+    "description": "Exceeds the threshold for one or more burden indicators?"
+  },
+  "explore.page.side.panel.indicator.value.arrow.down.alt.text": {
+    "defaultMessage": "an icon for the down arrow",
+    "description": "image alt text for the down arrow"
+  },
+  "explore.page.side.panel.indicator.value.arrow.up.alt.text": {
+    "defaultMessage": "an icon for the up arrow",
+    "description": "image alt text for the up arrow"
+  },
+  "explore.page.side.panel.indicator.value.subtext.above": {
+    "defaultMessage": "above",
+    "description": "indicating above threshold"
+  },
+  "explore.page.side.panel.indicator.value.subtext.below": {
+    "defaultMessage": "below",
+    "description": "indicating below threshold"
+  },
+  "explore.page.side.panel.indicator.value.subtext.percent": {
+    "defaultMessage": "percent",
+    "description": "indicating percent units"
+  },
+  "explore.page.side.panel.indicator.value.subtext.percentile": {
+    "defaultMessage": "percentile",
+    "description": "indicating percentile units"
+  },
+  "explore.page.side.panel.indicator.value.subtext.unavailable": {
+    "defaultMessage": "data is not available",
+    "description": "subtext for indicator when data is N/A"
+  },
+  "explore.page.side.panel.indicator.value.unavailable.alt.text": {
+    "defaultMessage": "an icon to represent data is unavailable",
+    "description": "image alt text for unavailable icon"
+  },
+  "explore.page.side.panel.spacer.and": {
+    "defaultMessage": "AND",
+    "description": "AND"
+  },
   "explore.page.threshold.count.exceed": {
     "defaultMessage": "{disadvCount} of {totalCount} thresholds exceeded",
     "description": "threshold exceeded count"

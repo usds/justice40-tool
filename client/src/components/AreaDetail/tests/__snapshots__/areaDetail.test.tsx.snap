@@ -284,7 +284,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
               High school degree attainment rate
               <div>
                 
-      Proportion of people ages 25 years or older whose education level is less than a high school diploma 
+      Percent of people ages 25 years or older whose education level is less than a high school diploma 
     
               </div>
             </div>
@@ -315,7 +315,8 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
               Higher ed enrollment rate
               <div>
                 
-    Percent of population enrolled in college, university, or graduate school 
+      Percent of the census tract's population 15 or older not enrolled in college, university, or 
+      graduate school 
     
               </div>
             </div>
