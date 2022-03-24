@@ -31,9 +31,9 @@ const CEJSTPage = ({location}: IMapPageProps) => {
 
       <Grid row gap className={'j40-mb5-mt3'}>
 
-        {/* Gradually increase width of description section (desktop = 8 columns, tablet = 20 columns and
-            mobile = 12 columns) */}
-        <Grid desktop={{col: 8}} tablet={{col: 10}} col={12}>
+        {/* Gradually increase width of the Grid as the width decreases from desktop to mobile*/}
+        {/* desktop = 7 columns, tablet = 10 columns and mobile = 12 columns (full width) */}
+        <Grid desktop={{col: 7}} tablet={{col: 10}} col={12}>
           <section>
             <p>
               {EXPLORE_COPY.PAGE_DESCRIPTION}
@@ -45,6 +45,21 @@ const CEJSTPage = ({location}: IMapPageProps) => {
 
     <J40MainGridContainer>
       <MapWrapper location={location}/>
+    </J40MainGridContainer>
+
+    <J40MainGridContainer>
+      <Grid desktop={{col: 7}} tablet={{col: 10}} col={12}>
+        <h2>{EXPLORE_COPY.NOTE_ON_TERRITORIES.INTRO}</h2>
+        <p>{EXPLORE_COPY.NOTE_ON_TERRITORIES.PARA_1}</p>
+        <p>{EXPLORE_COPY.NOTE_ON_TERRITORIES.PARA_2}</p>
+        <p>{EXPLORE_COPY.NOTE_ON_TERRITORIES.PARA_3}</p>
+        <p>{EXPLORE_COPY.NOTE_ON_TERRITORIES.PARA_4}</p>
+      </Grid>
+
+      <Grid desktop={{col: 7}} tablet={{col: 10}} col={12}>
+        <h2>{EXPLORE_COPY.NOTE_ON_TRIBAL_NATIONS.INTRO}</h2>
+        <p>{EXPLORE_COPY.NOTE_ON_TRIBAL_NATIONS.PARA_1}</p>
+      </Grid>
     </J40MainGridContainer>
 
     <J40MainGridContainer>
