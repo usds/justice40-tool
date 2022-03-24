@@ -5,16 +5,17 @@
   flex-direction: column;
   @include u-padding-right(4);
   @include u-padding-left(4);
+  @include u-padding-bottom(4);
 
   .sidePanelInfoHeading {
     @include u-padding-top(2);
-    font-size: xx-large;
+    font-size: x-large;
     line-height: 1.9rem;
   }
   
   .sidePanelInfoIcon {
     @include u-height(5);
-    @include u-margin-top(8);
+    @include u-margin-top(4);
     @include u-margin-bottom(-2)
   }
 }

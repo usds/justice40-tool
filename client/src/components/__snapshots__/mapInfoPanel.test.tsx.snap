@@ -23,7 +23,7 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
       </p>
       <img
         alt="
-      An icon that has depicts pieces of a block selected mimicing the census block tracts
+      An icon that has depicts pieces of a block selected mimicing the census block census tracts
     "
         src="test-file-stub"
         tabindex="0"
@@ -47,8 +47,8 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
         tabindex="0"
       >
         
-      The tool ranks each census tract using percentiles which show how much burden each tract has 
-      relative to all the other tracts.
+      The tool ranks each census tract using percentiles which show how much burden each census tract has 
+      relative to all the other census tracts.
     
       </p>
       <img
@@ -62,7 +62,7 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
         tabindex="0"
       >
         
-      Percents are also used to show the share of people in the tract have certain socioeconomic characteristics.
+      Percents are also used to show the share of people in the census tract have certain socioeconomic characteristics.
     
       </p>
       <img
@@ -80,7 +80,7 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
         <strong>
           IF
         </strong>
-         each tract is identified as 
+         each census tract is identified as 
     experiencing burdens disproportionally 
         <strong>
           AND

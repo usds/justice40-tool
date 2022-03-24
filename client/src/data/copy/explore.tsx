@@ -199,8 +199,8 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   PARA3: {
     id: 'explore.tool.page.side.panel.info.para3',
     defaultMessage: `
-      The tool ranks each census tract using percentiles which show how much burden each tract has 
-      relative to all the other tracts.
+      The tool ranks each census tract using percentiles which show how much burden each census tract has 
+      relative to all the other census tracts.
     `,
     description: `
       Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
@@ -210,7 +210,7 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   PARA4: {
     id: 'explore.tool.page.side.panel.info.para4',
     defaultMessage: `
-      Percents are also used to show the share of people in the tract have certain socioeconomic characteristics.
+      Percents are also used to show the share of people in the census tract have certain socioeconomic characteristics.
     `,
     description: `
       Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
@@ -220,7 +220,7 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   ALT_TEXT_ICON1: {
     id: 'explore.tool.page.side.panel.info.alt.text.icon1',
     defaultMessage: `
-      An icon that has depicts pieces of a block selected mimicing the census block tracts
+      An icon that has depicts pieces of a block selected mimicing the census block census tracts
     `,
     description: `
       Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
@@ -262,7 +262,7 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
 export const SIDE_PANEL_INITIAL_STATE_PARA5 = <FormattedMessage
   id={'explore.tool.page.side.panel.info.para5'}
   defaultMessage={ `
-    Thresholds for each data source determine <boldtag>IF</boldtag> each tract is identified as 
+    Thresholds for each data source determine <boldtag>IF</boldtag> each census tract is identified as 
     experiencing burdens disproportionally <boldtag>AND</boldtag> has those socioeconomic characteristics.
   `}
   description={ `
@@ -750,12 +750,13 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   HIGH_ED: {
     id: 'explore.tool.page.side.panel.indicator.description.high.ed',
     defaultMessage: `
-    Percent of population enrolled in college, university, or graduate school 
+      Percent of the census tract's population 15 or older not enrolled in college, university, or 
+      graduate school 
     `,
     description: `
       Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of Percent of people ages 25 years or older whose education level 
-      is less than a high school diploma
+      will show an indicator desciption of Percent of the census tract's population 15 or older not 
+      enrolled in college, university, or graduate school
     `,
   },
   ENERGY_BURDEN: {

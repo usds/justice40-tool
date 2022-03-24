@@ -448,8 +448,8 @@
     "description": "\n          People ages 18 years and older who have been told they have heart disease\n    "
   },
   "explore.tool.page.side.panel.indicator.description.high.ed": {
-    "defaultMessage": "Percent of population enrolled in college, university, or graduate school",
-    "description": "\n      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel \n      will show an indicator desciption of Percent of people ages 25 years or older whose education level \n      is less than a high school diploma\n    "
+    "defaultMessage": "Percent of the census tract's population 15 or older not enrolled in college, university, or graduate school",
+    "description": "\n      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel \n      will show an indicator desciption of Percent of the census tract's population 15 or older not \n      enrolled in college, university, or graduate school\n    "
   },
   "explore.tool.page.side.panel.indicator.description.high.school": {
     "defaultMessage": "Percent of people ages 25 years or older whose education level is less than a high school diploma",
@@ -644,7 +644,7 @@
     "description": "\n      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel \n      will show Wastewater discharge\n    "
   },
   "explore.tool.page.side.panel.info.alt.text.icon1": {
-    "defaultMessage": "An icon that has depicts pieces of a block selected mimicing the census block tracts",
+    "defaultMessage": "An icon that has depicts pieces of a block selected mimicing the census block census tracts",
     "description": "\n      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel \n      will show Things to know, this is the first icon in this side panel\n    "
   },
   "explore.tool.page.side.panel.info.alt.text.icon2": {
@@ -668,15 +668,15 @@
     "description": "\n      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel \n      will show Things to know, this is the second paragraph of this side panel\n    "
   },
   "explore.tool.page.side.panel.info.para3": {
-    "defaultMessage": "The tool ranks each census tract using percentiles which show how much burden each tract has relative to all the other tracts.",
+    "defaultMessage": "The tool ranks each census tract using percentiles which show how much burden each census tract has relative to all the other census tracts.",
     "description": "\n      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel \n      will show Things to know, this is the third paragraph of this side panel\n    "
   },
   "explore.tool.page.side.panel.info.para4": {
-    "defaultMessage": "Percents are also used to show the share of people in the tract have certain socioeconomic characteristics.",
+    "defaultMessage": "Percents are also used to show the share of people in the census tract have certain socioeconomic characteristics.",
     "description": "\n      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel \n      will show Things to know, this is the forth paragraph of this side panel\n    "
   },
   "explore.tool.page.side.panel.info.para5": {
-    "defaultMessage": "Thresholds for each data source determine <boldtag>IF</boldtag> each tract is identified as experiencing burdens disproportionally <boldtag>AND</boldtag> has those socioeconomic characteristics.",
+    "defaultMessage": "Thresholds for each data source determine <boldtag>IF</boldtag> each census tract is identified as experiencing burdens disproportionally <boldtag>AND</boldtag> has those socioeconomic characteristics.",
     "description": "\n    Navigate to the explore the tool page. When the map is in view, click on the map. The side panel \n    will show Things to know, this is the fifth paragraph of this side panel\n  "
   },
   "explore.tool.page.side.panel.info.title": {
