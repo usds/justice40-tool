@@ -175,7 +175,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <p
             class="usa-alert__text"
           >
-            View improvements to census tract data display on the map and 
+            View improvements to census tract data display on the 
+            <a
+              href="/en/cejst"
+            >
+              map
+            </a>
+             and 
             <a
               class="usa-link usa-link--external"
               data-cy=""

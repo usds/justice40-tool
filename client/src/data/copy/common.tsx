@@ -47,10 +47,11 @@ export const ALERTS = {
   }),
   CENSUS_TRACT_DESCRIPTION: <FormattedMessage
     id={'common.pages.alerts.census.tract.description'}
-    defaultMessage={`View improvements to census tract data display on the map and <link1>send feedback</link1>.`}
+    defaultMessage={`View improvements to census tract data display on the <link2>map</link2> and <link1>send feedback</link1>.`}
     description={`Navigate to any page. This the title of the alert that informs the user that new census tract information is available`}
     values={{
       link1: linkFn(`mailto:${FEEDBACK_EMAIL}`, false, true),
+      link2: linkFn('/cejst', true, false),
     }}
   />,
 };

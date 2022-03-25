@@ -68,12 +68,6 @@ const J40Header = () => {
       <GovernmentBanner />
       <BetaBanner/>
 
-      <J40MainGridContainer>
-        <Alert type="info" heading={intl.formatMessage(COMMON_COPY.ALERTS.CENSUS_TRACT.TITLE)}>
-          {COMMON_COPY.ALERTS.CENSUS_TRACT_DESCRIPTION}
-        </Alert>
-      </J40MainGridContainer>
-
       {/* Logo and Navigation */}
       <J40MainGridContainer>
 
@@ -111,6 +105,17 @@ const J40Header = () => {
 
         </Grid>
       </J40MainGridContainer>
+
+      {/* Alert */}
+      <J40MainGridContainer>
+        <Alert
+          className={styles.alert}
+          type="info"
+          heading={intl.formatMessage(COMMON_COPY.ALERTS.CENSUS_TRACT.TITLE)}>
+          {COMMON_COPY.ALERTS.CENSUS_TRACT_DESCRIPTION}
+        </Alert>
+      </J40MainGridContainer>
+
     </Header>
   );
 };
