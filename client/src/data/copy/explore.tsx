@@ -5,7 +5,7 @@ import {FormattedDate, FormattedMessage, FormattedNumber} from 'gatsby-plugin-in
 
 import * as CONTACT_COPY from './contact';
 import * as METHODOLOGY_COPY from './methodology';
-import {boldFn, downloadLink, linkFn} from './common';
+import {boldFn, simpleLink, linkFn} from './common';
 
 export const PAGE_INTRO = defineMessages({
   PAGE_TILE: {
@@ -838,7 +838,7 @@ export const DOWNLOAD_DRAFT = {
       map that will download the data packet
     `}
     values={{
-      link1: downloadLink(METHODOLOGY_COPY.DOWNLOAD_ZIP_URL),
+      link1: simpleLink(METHODOLOGY_COPY.DOWNLOAD_ZIP_URL),
       downloadFileSize: <FormattedNumber
         value={METHODOLOGY_COPY.DOWNLOAD_FILE_SIZE}
         style="unit"

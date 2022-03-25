@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import {defineMessages} from 'react-intl';
 import mar9 from '../../images/eventDates/mar9.svg';
 import mar10 from '../../images/eventDates/mar10.svg';
@@ -8,49 +9,49 @@ import apr15 from '../../images/eventDates/apr15.svg';
 
 export const PAGE_INTRO = defineMessages({
   PAGE_TILE: {
-    id: 'publiceng.page.title.text',
+    id: 'public.eng.page.title.text',
     defaultMessage: 'Public engagement opportunities',
-    description: 'publiceng page title text',
+    description: 'Navigate to the the public engagement page, this will be the publiceng page title text',
   },
   PAGE_HEADING1: {
-    id: 'publiceng.page.heading1.text',
+    id: 'public.eng.page.heading1.text',
     defaultMessage: 'Public engagement opportunities',
-    description: 'publiceng page header text',
+    description: 'Navigate to the the public engagement page, this will be the publiceng page header text',
   },
   PAGE_HEADING2: {
-    id: 'publiceng.page.sub.header2.text',
+    id: 'public.eng.page.sub.header2.text',
     defaultMessage: 'Find an event',
-    description: 'publiceng page sub header text',
+    description: 'Navigate to the the public engagement page, this will be the publiceng page sub header text',
   },
   PAGE_DESCRIPTION1: {
-    id: 'publiceng.page.description1.text',
+    id: 'public.eng.page.description1.text',
     defaultMessage: `
       CEQ is hosting engagement opportunities to connect with the public about the current version of the 
       tool. These sessions are an opportunity to obtain training on the tool or to provide feedback on the 
       beta version of the tool. CEQ hopes that members of the public will join these engagements to learn 
       about the tool, have their questions answered, and share feedback.
     `,
-    description: 'publiceng page description 1 text',
+    description: 'Navigate to the the public engagement page, this will be the publiceng page description 1 text',
   },
   PAGE_DESCRIPTION2: {
-    id: 'publiceng.page.description2.text',
+    id: 'public.eng.page.description2.text',
     defaultMessage: `
       Pre-registration is required to participate and speak at the sessions.
     `,
-    description: 'publiceng page description 2 text',
+    description: 'Navigate to the the public engagement page, this will be the publiceng page description 2 text',
   },
   PAGE_DESCRIPTION3: {
-    id: 'publiceng.page.description3.text',
+    id: 'public.eng.page.description3.text',
     defaultMessage: `
       As they become available, additional public trainings and engagement opportunities on the Climate 
       and Economic Justice Screening Tool will also be posted on this page.
     `,
-    description: 'publiceng page description 3 text',
+    description: 'Navigate to the the public engagement page, this will be the publiceng page description 3 text',
   },
   SURVEY_TEXT: {
     id: 'fab.survey.text',
     defaultMessage: `Help improve the site & data`,
-    description: 'text for floating action button',
+    description: 'Navigate to the the public engagement page, this will be the text for floating action button',
   },
 });
 
@@ -58,12 +59,12 @@ export const PUBLIC_ENG_BUTTON = defineMessages({
   LABEL: {
     id: 'public.eng.page.button.label',
     defaultMessage: `Public Engagement`,
-    description: 'public engagement button label',
+    description: 'Navigate to the the public engagement page, this will be the public engagement button label',
   },
   TAG_LABEL: {
     id: 'public.eng.page.tag.label',
     defaultMessage: `NEW`,
-    description: 'public engagement tag label',
+    description: 'Navigate to the the public engagement page, this will be the public engagement tag label',
   },
 });
 
@@ -72,7 +73,7 @@ export const EVENT_TYPES = {
     NAME: {
       id: 'public.eng.page.event.training.sess.name',
       defaultMessage: `training session`,
-      description: 'public engagement page event training session name',
+      description: 'Navigate to the the public engagement page, this will be the public engagement page event training session name',
     },
     DESCRIPTION: {
       id: 'public.eng.page.event.training.description',
@@ -83,14 +84,14 @@ export const EVENT_TYPES = {
         use the current version of the tool. The presenters at these webinars will be available to 
         provide technical support and address issues related to accessing and using the tool.
       `,
-      description: 'public engagement page event training session description',
+      description: 'Navigate to the the public engagement page, this will be the public engagement page event training session description',
     },
   }),
   LISTENING_SESS: defineMessages({
     NAME: {
       id: 'public.eng.page.event.listening.sess.name',
       defaultMessage: `listening session`,
-      description: 'public engagement page event listening session name',
+      description: 'Navigate to the the public engagement page, this will be the public engagement page event listening session name',
     },
     DESCRIPTION: {
       id: 'public.eng.page.event.listening.sess.description',
@@ -101,21 +102,21 @@ export const EVENT_TYPES = {
         tool to ensure that it reflects the environmental, climate and other challenges that communities 
         are experiencing.
       `,
-      description: 'public engagement page event listening session description',
+      description: 'Navigate to the the public engagement page, this will be the public engagement page event listening session description',
     },
   }),
 };
 
 export const EVENT_FIELDS = defineMessages({
   EVENT_INFO: {
-    id: 'publiceng.page.event.info.label',
+    id: 'public.eng.page.event.info.label',
     defaultMessage: 'Event info',
-    description: 'public engagement page event info label',
+    description: 'Navigate to the the public engagement page, this will be the public engagement page event info label',
   },
   REG_LINK: {
-    id: 'publiceng.page.event.reglink.label',
+    id: 'public.eng.page.event.reglink.label',
     defaultMessage: 'Registration link',
-    description: 'public engagment page event registration link label',
+    description: 'Navigate to the the public engagement page, this will be the public engagment page event registration link label',
   },
 });
 
@@ -130,7 +131,7 @@ export const EVENTS = [
       INFO: {
         id: 'public.eng.page.event.training.1.info',
         defaultMessage: `March 9th (4:00 - 5:00 PM EST)`,
-        description: 'public engagement page event training session 1 date',
+        description: 'Navigate to the the public engagement page, this will be the public engagement page event training session 1 date',
       },
     }),
     REG_LINK: null,
@@ -146,7 +147,7 @@ export const EVENTS = [
       INFO: {
         id: 'public.eng.page.event.training.2.info',
         defaultMessage: `March 10th (4:00 - 5:00 PM EST)`,
-        description: 'public engagement page event training session 2 date',
+        description: 'Navigate to the the public engagement page, this will be the public engagement page event training session 2 date',
       },
     }),
     REG_LINK: null,
@@ -163,7 +164,7 @@ export const EVENTS = [
       INFO: {
         id: 'public.eng.page.event.training.3.info',
         defaultMessage: `March 16th (4:00 - 5:00 PM EST)`,
-        description: 'public engagement page event training session 3 date',
+        description: 'Navigate to the the public engagement page, this will be the public engagement page event training session 3 date',
       },
     }),
     REG_LINK: null,
@@ -180,7 +181,7 @@ export const EVENTS = [
       INFO: {
         id: 'public.eng.page.event.listening.1.info',
         defaultMessage: `March 22nd (4:00 - 5:00 PM EST)`,
-        description: 'public engagement page event listening session 1 date',
+        description: 'Navigate to the the public engagement page, this will be the public engagement page event listening session 1 date',
       },
     }),
     REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_YT7_uLZqScGHgyAcTCuJjA`,
@@ -197,7 +198,7 @@ export const EVENTS = [
       INFO: {
         id: 'public.eng.page.event.listening.2.info',
         defaultMessage: `April 15th (4:00 - 5:00 PM EST)`,
-        description: 'public engagement page event listening session 2 date',
+        description: 'Navigate to the the public engagement page, this will be the public engagement page event listening session 2 date',
       },
     }),
     REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_dLw3xChiTlaOLGdHXQWk0w`,

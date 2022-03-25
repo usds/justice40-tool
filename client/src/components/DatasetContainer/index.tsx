@@ -34,8 +34,8 @@ const DatasetContainer = () => {
           <Grid row>
             <Grid col={12}>
               <div className={styles.datasetCardsContainer}>
-                {METHODOLOGY_COPY.INDICATORS.map((card) => <DatasetCard
-                  key={card.indicator}
+                {METHODOLOGY_COPY.INDICATORS.map((card, index) => <DatasetCard
+                  key={index}
                   datasetCardProps={card}
                 />)}
               </div>
