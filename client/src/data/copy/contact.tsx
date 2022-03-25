@@ -1,33 +1,34 @@
+/* eslint-disable max-len */
 import React from 'react';
 import {defineMessages} from 'react-intl';
-import {FormattedMessage, Link} from 'gatsby-plugin-intl';
-import LinkTypeWrapper from '../../components/LinkTypeWrapper';
+import {FormattedMessage} from 'gatsby-plugin-intl';
+import {linkFn} from './common';
 
 export const PAGE_INTRO = defineMessages({
   PAGE_TILE: {
     id: 'contact.page.title.text',
     defaultMessage: 'Contact',
-    description: 'contact page title text',
+    description: 'Navigate to the contact page, this is the contact page title text',
   },
   PAGE_HEADING: {
     id: 'contact.page.header.text',
     defaultMessage: 'Contact',
-    description: 'contact page header text',
+    description: 'Navigate to the contact page, this is the contact page header text',
   },
   PAGE_SUB_HEADING: {
     id: 'contact.page.sub.header.text',
     defaultMessage: 'Email us',
-    description: 'contact page sub header text',
+    description: 'Navigate to the contact page, this is the contact page sub header text',
   },
   PAGE_DESCRIPTION: {
     id: 'contact.page.sub.header.text',
     defaultMessage: 'Email us',
-    description: 'contact page sub header text',
+    description: 'Navigate to the contact page, this is the contact page sub header text',
   },
   SURVEY_TEXT: {
-    id: 'fab.survey.text',
+    id: 'contact.page.fab.survey.text',
     defaultMessage: `Help improve the site & data`,
-    description: 'text for floating action button',
+    description: 'Navigate to the contact page, this is the text for floating action button',
   },
 });
 
@@ -35,18 +36,18 @@ export const CENSUS_TRACT_FEEDBACK = {
   TITLE: <FormattedMessage
     id={'contact.page.census.tract.feedback.title'}
     defaultMessage={`Census tract feedback`}
-    description={'census tract feedback section'}
+    description={'Navigate to the contact page, this is the census tract feedback section'}
   />,
   PARAGRAPH1: <FormattedMessage
     id={'contact.page.census.tract.feedback.para1'}
     defaultMessage={`
       To provide feedback about a specific census tract, either select the send feedback button after 
-      selecting a census tract on the {exploreLink} page or use the email address provided above. Please 
+      selecting a census tract on the <link1>Explore the tool</link1> page or use the email address provided above. Please 
       include the census tract ID, county, and state or territory information, in addition to your feedback.
     `}
-    description={'census tract feedback section'}
+    description={'Navigate to the contact page, this is the census tract feedback section'}
     values={{
-      exploreLink: <Link to={'/cejst'}>Explore the tool</Link>,
+      link1: linkFn('/cejst', true, false),
     }}
   />,
   PARAGRAPH2: <FormattedMessage
@@ -55,21 +56,16 @@ export const CENSUS_TRACT_FEEDBACK = {
       If there are specific data indicators that could be improved or changed, please include that
       information in the body of the email.
     `}
-    description={'census tract feedback section'}
+    description={'Navigate to the contact page, this is the census tract feedback section'}
   />,
   PARAGRAPH3: <FormattedMessage
     id={'contact.page.census.tract.feedback.para3'}
     defaultMessage={`
-      In addition, you can provide feedback on the tool via this {improvementSurvey}.
+      In addition, you can provide feedback on the tool via this <link1>survey</link1>.
     `}
-    description={'census tract feedback section'}
+    description={'Navigate to the contact page, this is the census tract feedback section'}
     values={{
-      improvementSurvey: <LinkTypeWrapper
-        linkText={'survey'}
-        internal={false}
-        url={`https://www.surveymonkey.com/r/cejst-survey`}
-        openUrlNewTab={true}
-      />,
+      link1: linkFn('https://www.surveymonkey.com/r/cejst-survey', false, true),
     }}
   />,
 };

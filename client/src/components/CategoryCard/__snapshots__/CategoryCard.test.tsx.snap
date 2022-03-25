@@ -12,12 +12,10 @@ exports[`rendering of the CategoryCard checks if component renders 1`] = `
       <strong>
         identified as disadvantaged
       </strong>
-       
+      
     
     </p>
     <p>
-      
-      
       <strong>
         IF
       </strong>
@@ -39,8 +37,6 @@ exports[`rendering of the CategoryCard checks if component renders 1`] = `
       >
         expected population loss rate
       </a>
-      
-      
     </p>
     <p>
       
@@ -54,7 +50,8 @@ exports[`rendering of the CategoryCard checks if component renders 1`] = `
       >
         low income
       </a>
-       AND at or below 20% for 
+       AND at or below 
+      20% for 
       <a
         href="#high-ed-enroll-rate"
       >

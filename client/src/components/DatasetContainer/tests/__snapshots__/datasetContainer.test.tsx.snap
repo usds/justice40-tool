@@ -380,8 +380,6 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <span>
                     Source: 
                   </span>
-                  
-      
                   <a
                     class="usa-link usa-link--external"
                     data-cy=""
@@ -391,8 +389,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   >
                     Fusion of model and monitor data
                   </a>
-                   from 2017 as compiled by EPA’s EJSCREEN, sourced from EPA National Air 
-      Toxics Assessment (NATA) and the U.S. Department of Transportation (DOT) traffic data
+                   from 2017 as compiled by EPA’s EJSCREEN, sourced from EPA National Air Toxics Assessment (NATA) and the U.S. Department of Transportation (DOT) traffic data
     
                 </li>
                 <li>
