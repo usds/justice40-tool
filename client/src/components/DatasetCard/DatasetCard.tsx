@@ -2,7 +2,7 @@
 import React from 'react';
 import {useIntl} from 'gatsby-plugin-intl';
 
-import * as styles from './DatasetCard.module.scss';
+import * as styles from './datasetCard.module.scss';
 import * as METHODOLOGY_COPY from '../../data/copy/methodology';
 
 interface IDatasetCardProps {
