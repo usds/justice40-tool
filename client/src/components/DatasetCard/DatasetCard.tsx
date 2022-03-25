@@ -1,3 +1,4 @@
+/* eslint-disable valid-jsdoc */
 import React from 'react';
 import {useIntl} from 'gatsby-plugin-intl';
 
@@ -8,6 +9,12 @@ interface IDatasetCardProps {
   datasetCardProps: METHODOLOGY_COPY.IIndicators
 }
 
+/**
+ * This component will take in a card and render a dataset card
+ *
+ * @param {IDatasetCardProps}
+ * @return {JSX.Element}
+ */
 const DatasetCard = ({datasetCardProps}:IDatasetCardProps) => {
   const intl = useIntl();
 
