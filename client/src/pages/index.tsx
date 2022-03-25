@@ -8,7 +8,7 @@ import Layout from '../components/layout';
 import PublicEngageButton from '../components/PublicEngageButton';
 
 import * as ABOUT_COPY from '../data/copy/about';
-import * as CONTACT_COPY from '../data/copy/contact';
+import * as COMMON_COPY from '../data/copy/common';
 
 // @ts-ignore
 import aboutUSMapImg from '../images/about-usmap-1.svg';
@@ -118,8 +118,8 @@ const IndexPage = ({location}: IndexPageProps) => {
             size={'small'}
             imgSrc={commentIcon}
             header={intl.formatMessage(ABOUT_COPY.GET_INVOLVED.SEND_FEEDBACK_HEADING)}
-            linkText={`Email: ${CONTACT_COPY.FEEDBACK_EMAIL}`}
-            url={`mailto:${CONTACT_COPY.FEEDBACK_EMAIL}`}
+            linkText={`Email: ${COMMON_COPY.FEEDBACK_EMAIL}`}
+            url={`mailto:${COMMON_COPY.FEEDBACK_EMAIL}`}
             openUrlNewTab={true}
             internal={false}>
             <p>

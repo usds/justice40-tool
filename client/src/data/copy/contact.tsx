@@ -2,7 +2,7 @@
 import React from 'react';
 import {defineMessages} from 'react-intl';
 import {FormattedMessage} from 'gatsby-plugin-intl';
-import {linkFn} from './common';
+import * as COMMON_COPY from './common';
 
 export const PAGE_INTRO = defineMessages({
   PAGE_TILE: {
@@ -41,13 +41,12 @@ export const CENSUS_TRACT_FEEDBACK = {
   PARAGRAPH1: <FormattedMessage
     id={'contact.page.census.tract.feedback.para1'}
     defaultMessage={`
-      To provide feedback about a specific census tract, either select the send feedback button after 
-      selecting a census tract on the <link1>Explore the tool</link1> page or use the email address provided above. Please 
-      include the census tract ID, county, and state or territory information, in addition to your feedback.
+      To provide feedback about a specific census tract, either select the send feedback button after
+      selecting a census tract on the <link1>Explore the tool</link1> page or use the email address provided above. Please include the census tract ID, county, and state or territory information, in addition to your feedback.
     `}
     description={'Navigate to the contact page, this is the census tract feedback section'}
     values={{
-      link1: linkFn('/cejst', true, false),
+      link1: COMMON_COPY.linkFn('/cejst', true, false),
     }}
   />,
   PARAGRAPH2: <FormattedMessage
@@ -65,7 +64,7 @@ export const CENSUS_TRACT_FEEDBACK = {
     `}
     description={'Navigate to the contact page, this is the census tract feedback section'}
     values={{
-      link1: linkFn('https://www.surveymonkey.com/r/cejst-survey', false, true),
+      link1: COMMON_COPY.linkFn('https://www.surveymonkey.com/r/cejst-survey', false, true),
     }}
   />,
 };
@@ -75,5 +74,3 @@ export const CONTACT_VIA_EMAIL = {
   DESCRIPTION: 'Contact page body text',
   DEFAULT_MESSAGE: `For general feedback, email {general_email_address}.`,
 };
-
-export const FEEDBACK_EMAIL = 'Screeningtool-Support@omb.eop.gov';

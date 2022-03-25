@@ -161,6 +161,40 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       data-testid="gridContainer"
     >
       <div
+        class="usa-alert usa-alert--info"
+        data-testid="alert"
+      >
+        <div
+          class="usa-alert__body"
+        >
+          <h4
+            class="usa-alert__heading"
+          >
+            Improvements to the display of census tract information
+          </h4>
+          <p
+            class="usa-alert__text"
+          >
+            View improvements to census tract data display on the map and 
+            <a
+              class="usa-link usa-link--external"
+              data-cy=""
+              href="mailto:Screeningtool-Support@omb.eop.gov"
+              rel="noreferrer"
+              target="_blank"
+            >
+              send feedback
+            </a>
+            .
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="grid-container-desktop-lg"
+      data-testid="gridContainer"
+    >
+      <div
         class="grid-row"
         data-testid="grid"
       >
@@ -292,7 +326,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             </span>
           </div>
           <a
-            href="/public-engagement"
+            href="/en/public-engagement"
           >
             <button
               class="usa-button usa-button--icon"
@@ -333,15 +367,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </h3>
           <p>
             
-      To provide feedback about a specific census tract, either select the send feedback button after 
+      To provide feedback about a specific census tract, either select the send feedback button after
       selecting a census tract on the 
             <a
               href="/en/cejst"
             >
               Explore the tool
             </a>
-             page or use the email address provided above. Please 
-      include the census tract ID, county, and state or territory information, in addition to your feedback.
+             page or use the email address provided above. Please include the census tract ID, county, and state or territory information, in addition to your feedback.
     
           </p>
           <p>

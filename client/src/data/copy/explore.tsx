@@ -4,7 +4,7 @@ import React from 'react';
 import {defineMessages} from 'react-intl';
 import {FormattedDate, FormattedMessage, FormattedNumber} from 'gatsby-plugin-intl';
 
-import * as CONTACT_COPY from './contact';
+import * as COMMON_COPY from './common';
 import * as METHODOLOGY_COPY from './methodology';
 import {simpleLink, linkFn} from './common';
 
@@ -863,7 +863,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
     description={`Navigate to the explore the tool page. Under the map, you will see share your feedback`}
     defaultMessage={`Use the tool to find communities and <link1>share your feedback</link1>.`}
     values={{
-      link1: linkFn(`mailto:${CONTACT_COPY.FEEDBACK_EMAIL}`, false, true),
+      link1: linkFn(`mailto:${COMMON_COPY.FEEDBACK_EMAIL}`, false, true),
     }}
   />,
   LIST_ITEM_3: <FormattedMessage

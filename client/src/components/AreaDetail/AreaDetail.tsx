@@ -14,7 +14,8 @@ import Indicator from '../Indicator';
 import * as styles from './areaDetail.module.scss';
 import * as constants from '../../data/constants';
 import * as EXPLORE_COPY from '../../data/copy/explore';
-import * as CONTACT_COPY from '../../data/copy/contact';
+import * as COMMON_COPY from '../../data/copy/common';
+
 // @ts-ignore
 // import mailIcon from '/node_modules/uswds/dist/img/usa-icons/mail.svg';
 
@@ -606,7 +607,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
           className={styles.sendFeedbackBtn}
           // The mailto string must be on a single line otherwise the email does not display subject and body
           href={`
-            mailto:${CONTACT_COPY.FEEDBACK_EMAIL}?subject=${feedbackEmailSubject}&body=${feedbackEmailBody}
+            mailto:${COMMON_COPY.FEEDBACK_EMAIL}?subject=${feedbackEmailSubject}&body=${feedbackEmailBody}
           `}
           target={"_blank"}
           rel="noreferrer"

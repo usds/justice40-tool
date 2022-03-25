@@ -5,6 +5,7 @@ import {
   NavMenuButton,
   PrimaryNav,
   Grid,
+  Alert,
 } from '@trussworks/react-uswds';
 import BetaBanner from '../BetaBanner';
 import J40MainGridContainer from '../J40MainGridContainer';
@@ -67,7 +68,11 @@ const J40Header = () => {
       <GovernmentBanner />
       <BetaBanner/>
 
-      {/* Remove Usabilty Banner testing deployment to main again!*/}
+      <J40MainGridContainer>
+        <Alert type="info" heading={intl.formatMessage(COMMON_COPY.ALERTS.CENSUS_TRACT.TITLE)}>
+          {COMMON_COPY.ALERTS.CENSUS_TRACT_DESCRIPTION}
+        </Alert>
+      </J40MainGridContainer>
 
       {/* Logo and Navigation */}
       <J40MainGridContainer>
