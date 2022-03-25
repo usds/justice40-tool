@@ -613,6 +613,7 @@ export interface IIndicators {
   domID: string,
   indicator: string,
   description: JSX.Element,
+  note?: JSX.Element,
   usedIn: JSX.Element,
   responsibleParty: string,
   sources: [ {
@@ -1026,18 +1027,17 @@ export const INDICATORS = [
       id= {'methodology.page.category.low.life.expectancy.description.text'}
       defaultMessage= {`
         Average number of years of life a person who has attained a given age can expect to live.
-        {note}
       `}
       description= {'Navigate to the Methodology page. This is the description text for low life expectancy'}
+    />,
+    note: <FormattedMessage
+      id= {'methodology.page.category.low.life.expectancy.note.text'}
+      defaultMessage= {`
+        <boldtag>Note: </boldtag>The percentiles for this dataset have been reversed so that census tracts with lower numbers have higher life expectancies and the census tracts with higher numbers have lower life expectancy when compared to life expectancy in the area.
+      `}
+      description= {'Navigate to the Methodology page. This is the note text for low life expectancy'}
       values= {{
-        note: <p><strong>Note:</strong>{`
-          Unlike most of the other datasets, high values of this data indicate low burdens. For 
-          percentile calculations of burden, the percentile is calculated in reverse order, so that the 
-          census tract with the highest life expectancy relative to area life expectancy (lowest burden 
-            on this measure) is at the 0th percentile, and the census tract with the lowest life 
-          expectancy relative to area life expectancy (highest burden on this measure) is at the 
-          100th percentile. Census tracts with the highest number have the lowest life expectancy.
-        `}</p>,
+        boldtag: boldFn,
       }}
     />,
     usedIn: CATEGORIES.HEALTH_BURDENS.METHODOLOGY,
@@ -1056,18 +1056,17 @@ export const INDICATORS = [
       id= {'methodology.page.category.workforce.dev.description.text'}
       defaultMessage= {`
         Median income of the census tract calculated as a percent of the area’s median income.
-        {note}
       `}
       description= {'Navigate to the Methodology page. This is the description text for workforce dev'}
+    />,
+    note: <FormattedMessage
+      id= {'methodology.page.category.low.median.expectancy.note.text'}
+      defaultMessage= {`
+        <boldtag>Note: </boldtag>The percentiles for this dataset have been reversed so that census tracts with lower numbers have higher median incomes and census tracts with the higher numbers have lower median income when compared to area median income.
+      `}
+      description= {'Navigate to the Methodology page. This is the note text for low median expectancy'}
       values= {{
-        note: <p><strong>Note:</strong>{`
-          Unlike most of the other datasets, high values of this data indicate low burdens. For 
-          percentile calculations of burden, the percentile is calculated in reverse order, so that the 
-          census tract with the highest median income relative to area median income (lowest burden on this 
-          measure) is at the 0th percentile, and the census tract with the lowest median income relative to 
-          area median income (highest burden on this measure) is at the 100th percentile. Census tracts with 
-          the highest number have the lowest median income.
-        `}</p>,
+        boldtag: boldFn,
       }}
     />,
     usedIn: CATEGORIES.WORKFORCE_DEV.METHODOLOGY,

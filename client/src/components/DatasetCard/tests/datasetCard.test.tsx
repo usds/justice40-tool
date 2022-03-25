@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {render} from '@testing-library/react';
 import {LocalizedComponent} from '../../../test/testHelpers';
-import DatasetCard from '../../DatasetCard';
+import DatasetCard from '../DatasetCard';
 
 import * as METHODOLOGY_COPY from '../../../data/copy/methodology';
 

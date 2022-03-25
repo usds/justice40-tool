@@ -836,8 +836,16 @@
     "description": "Navigate to the Methodology page. This is the description text for low income"
   },
   "methodology.page.category.low.life.expectancy.description.text": {
-    "defaultMessage": "Average number of years of life a person who has attained a given age can expect to live. {note}",
+    "defaultMessage": "Average number of years of life a person who has attained a given age can expect to live.",
     "description": "Navigate to the Methodology page. This is the description text for low life expectancy"
+  },
+  "methodology.page.category.low.life.expectancy.note.text": {
+    "defaultMessage": "<boldtag>Note: </boldtag>The percentiles for this dataset have been reversed so that census tracts with lower numbers have higher life expectancies and the census tracts with higher numbers have lower life expectancy when compared to life expectancy in the area.",
+    "description": "Navigate to the Methodology page. This is the note text for low life expectancy"
+  },
+  "methodology.page.category.low.median.expectancy.note.text": {
+    "defaultMessage": "<boldtag>Note: </boldtag>The percentiles for this dataset have been reversed so that census tracts with lower numbers have higher median incomes and census tracts with the higher numbers have lower median income when compared to area median income.",
+    "description": "Navigate to the Methodology page. This is the note text for low median expectancy"
   },
   "methodology.page.category.median.home.value.description.text": {
     "defaultMessage": "Median home value of owner-occupied housing units in the census tract.",
@@ -932,7 +940,7 @@
     "description": "Navigate to the Methodology page. This is the description text for waste water"
   },
   "methodology.page.category.workforce.dev.description.text": {
-    "defaultMessage": "Median income of the census tract calculated as a percent of the area’s median income. {note}",
+    "defaultMessage": "Median income of the census tract calculated as a percent of the area’s median income.",
     "description": "Navigate to the Methodology page. This is the description text for workforce dev"
   },
   "methodology.page.datasetCard.available.for": {

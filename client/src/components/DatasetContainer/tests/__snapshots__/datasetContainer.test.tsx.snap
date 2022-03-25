@@ -992,22 +992,18 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div>
                 
         Average number of years of life a person who has attained a given age can expect to live.
-        
-                <p>
-                  <strong>
-                    Note:
-                  </strong>
-                  
-          Unlike most of the other datasets, high values of this data indicate low burdens. For 
-          percentile calculations of burden, the percentile is calculated in reverse order, so that the 
-          census tract with the highest life expectancy relative to area life expectancy (lowest burden 
-            on this measure) is at the 0th percentile, and the census tract with the lowest life 
-          expectancy relative to area life expectancy (highest burden on this measure) is at the 
-          100th percentile. Census tracts with the highest number have the lowest life expectancy.
-        
-                </p>
-                
       
+              </div>
+              <div>
+                <p>
+                  
+        
+                  <strong>
+                    Note: 
+                  </strong>
+                  The percentiles for this dataset have been reversed so that census tracts with lower numbers have higher life expectancies and the census tracts with higher numbers have lower life expectancy when compared to life expectancy in the area.
+      
+                </p>
               </div>
               <ul>
                 <li>
@@ -1054,22 +1050,18 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div>
                 
         Median income of the census tract calculated as a percent of the area’s median income.
-        
-                <p>
-                  <strong>
-                    Note:
-                  </strong>
-                  
-          Unlike most of the other datasets, high values of this data indicate low burdens. For 
-          percentile calculations of burden, the percentile is calculated in reverse order, so that the 
-          census tract with the highest median income relative to area median income (lowest burden on this 
-          measure) is at the 0th percentile, and the census tract with the lowest median income relative to 
-          area median income (highest burden on this measure) is at the 100th percentile. Census tracts with 
-          the highest number have the lowest median income.
-        
-                </p>
-                
       
+              </div>
+              <div>
+                <p>
+                  
+        
+                  <strong>
+                    Note: 
+                  </strong>
+                  The percentiles for this dataset have been reversed so that census tracts with lower numbers have higher median incomes and census tracts with the higher numbers have lower median income when compared to area median income.
+      
+                </p>
               </div>
               <ul>
                 <li>
