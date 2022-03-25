@@ -40,8 +40,8 @@ const DatasetCard = ({datasetCardProps}:IDatasetCardProps) => {
         </li>
 
 
-        {datasetCardProps.sources.map((dataSource) => (
-          <>
+        {datasetCardProps.sources.map((dataSource, index) => (
+          <React.Fragment key={index}>
             {/* Dataset Source */}
             <li className={styles.datasetCardListItemSource}>
               <span className={styles.datasetCardLabels}>
@@ -57,7 +57,7 @@ const DatasetCard = ({datasetCardProps}:IDatasetCardProps) => {
               </span>
               {dataSource.availableFor}
             </li>
-          </>
+          </React.Fragment>
         ))}
 
       </ul>

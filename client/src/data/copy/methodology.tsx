@@ -612,11 +612,11 @@ export const AVAILABLE_FOR = {
 export interface IIndicators {
   domID: string,
   indicator: string,
-  description: string,
-  usedIn: string,
+  description: JSX.Element,
+  usedIn: JSX.Element,
   responsibleParty: string,
   sources: [ {
-    source: string,
+    source: JSX.Element,
     availableFor: string,
   }]
 };
