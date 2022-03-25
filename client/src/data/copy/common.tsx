@@ -41,17 +41,16 @@ export const ALERTS = {
   CENSUS_TRACT: defineMessages({
     TITLE: {
       id: 'common.pages.alerts.census.tract.title',
-      defaultMessage: 'Improvements to the display of census tract information',
+      defaultMessage: 'Improvements to the map on the Explore the tool page',
       description: 'Navigate to any page. This the title of the alert that informs the user that new census tract information is available',
     },
   }),
   CENSUS_TRACT_DESCRIPTION: <FormattedMessage
     id={'common.pages.alerts.census.tract.description'}
-    defaultMessage={`View improvements to census tract data display on the <link2>map</link2> and <link1>send feedback</link1>.`}
+    defaultMessage={`View improvements made to the display of the information for each census tract and <link1>send feedback</link1>.`}
     description={`Navigate to any page. This the title of the alert that informs the user that new census tract information is available`}
     values={{
       link1: linkFn(`mailto:${FEEDBACK_EMAIL}`, false, true),
-      link2: linkFn('/cejst', true, false),
     }}
   />,
 };
