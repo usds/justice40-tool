@@ -1,5 +1,7 @@
+/* eslint-disable max-len */
 /* eslint-disable react/display-name */
 import React from 'react';
+import {FormattedMessage} from 'gatsby-plugin-intl';
 import {defineMessages} from 'react-intl';
 import LinkTypeWrapper from '../../components/LinkTypeWrapper';
 
@@ -15,6 +17,9 @@ export const simpleLink = (href:string) => (str:string) => <a href={href}>{str}<
 // eslint-disable-next-line max-len
 export const linkFn = (to:string, isInternal:boolean, isOpenNewTab:boolean) => (str:string) => <LinkTypeWrapper linkText={str} internal={isInternal} url={to} openUrlNewTab={isOpenNewTab}/>;
 
+
+export const FEEDBACK_EMAIL = 'Screeningtool-Support@omb.eop.gov';
+
 // Beta Banner
 export const BETA_BANNER = defineMessages({
   TITLE: {
@@ -29,6 +34,28 @@ export const BETA_BANNER = defineMessages({
     description: 'Navigate to the about page. This is the main info of the beta banner',
   },
 });
+
+
+// Alerts
+// Expiration month is zero-based: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getMonth
+export const ALERTS = {
+  CENSUS_TRACT: defineMessages({
+    TITLE: {
+      id: 'common.pages.alerts.census.tract.title',
+      defaultMessage: 'Improvements to the map on the Explore the tool page',
+      description: 'Navigate to any page. This the title of the alert that informs the user that new census tract information is available',
+    },
+  }),
+  EXPIRATION_DATE: new Date(2022, 3, 15), // Set expiration for Apr 15th 2022.
+  CENSUS_TRACT_DESCRIPTION: <FormattedMessage
+    id={'common.pages.alerts.census.tract.description'}
+    defaultMessage={`View improvements made to the display of the information for each census tract and <link1>send feedback</link1>.`}
+    description={`Navigate to any page. This the title of the alert that informs the user that new census tract information is available`}
+    values={{
+      link1: linkFn(`mailto:${FEEDBACK_EMAIL}`, false, true),
+    }}
+  />,
+};
 
 // Header
 export const HEADER = defineMessages({
