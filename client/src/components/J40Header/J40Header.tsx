@@ -17,6 +17,8 @@ import siteLogo from '../../images/j40-logo-v2.png';
 import * as styles from './J40Header.module.scss';
 import * as COMMON_COPY from '../../data/copy/common';
 
+const isAlertValid = new Date < COMMON_COPY.ALERTS.EXPIRATION_DATE;
+
 const J40Header = () => {
   const intl = useIntl();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -107,7 +109,7 @@ const J40Header = () => {
       </J40MainGridContainer>
 
       {/* Alert */}
-      <J40MainGridContainer>
+      {isAlertValid && <J40MainGridContainer>
         <Alert
           className={styles.alert}
           type="info"
@@ -115,7 +117,7 @@ const J40Header = () => {
           {COMMON_COPY.ALERTS.CENSUS_TRACT_DESCRIPTION}
         </Alert>
       </J40MainGridContainer>
-
+      }
     </Header>
   );
 };

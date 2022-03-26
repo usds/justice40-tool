@@ -37,6 +37,7 @@ export const BETA_BANNER = defineMessages({
 
 
 // Alerts
+// Expiration month is zero-based: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getMonth
 export const ALERTS = {
   CENSUS_TRACT: defineMessages({
     TITLE: {
@@ -45,6 +46,7 @@ export const ALERTS = {
       description: 'Navigate to any page. This the title of the alert that informs the user that new census tract information is available',
     },
   }),
+  EXPIRATION_DATE: new Date(2022, 3, 15), // Set expiration for Apr 15th 2022.
   CENSUS_TRACT_DESCRIPTION: <FormattedMessage
     id={'common.pages.alerts.census.tract.description'}
     defaultMessage={`View improvements made to the display of the information for each census tract and <link1>send feedback</link1>.`}
