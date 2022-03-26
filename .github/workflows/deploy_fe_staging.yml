@@ -55,7 +55,7 @@ jobs:
           working-directory: ${{env.WORKING_DIRECTORY}}
           browser: chrome
           start: npm start
-          wait-on: "http://localhost:8000"
+          wait-on: "http://localhost:8000/en/"
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
