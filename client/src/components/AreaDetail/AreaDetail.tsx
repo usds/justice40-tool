@@ -205,7 +205,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     isDisadvagtaged: properties[constants.IS_HIGHER_ED_PERCENTILE] ?
       properties[constants.IS_HIGHER_ED_PERCENTILE] : null,
     isPercent: true,
-    threshold: 20,
+    threshold: 80,
   };
 
   const energyBurden:indicatorInfo = {
@@ -365,7 +365,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     value: getWorkForceIndicatorValue('highSchool'),
     isDisadvagtaged: getWorkForceIndicatorIsDisadv('highSchool'),
     isPercent: true,
-    threshold: 90,
+    threshold: 10,
   };
 
   /**

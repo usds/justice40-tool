@@ -2014,7 +2014,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
               <div>
                 <div>
-                  above 90
+                  above 10
                 </div>
                 <div>
                   percent
@@ -2375,7 +2375,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               </div>
               <div>
                 <div>
-                  above 90
+                  above 10
                 </div>
                 <div>
                   percent
