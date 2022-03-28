@@ -123,7 +123,7 @@ export const EVENT_TYPES = {
     DESCRIPTION: {
       id: 'public.eng.page.event.whejac.meeting.day.1.description',
       defaultMessage: `
-        Members of the public are encouraged to provide comments relevant to the beta version of the Climate and Economic Justice Screening Tool that was developed by the CEQ and federal government agencies implementation of the Justice40 Initiative will be considered by the WHEJAC during the public meeting.
+        Members of the public are encouraged to provide comments relevant to the beta version of the Climate and Economic Justice Screening Tool that was developed by CEQ and federal government agencies implementation of the Justice40 Initiative will be considered by the WHEJAC during the public meeting.
       `,
       description: 'public engagement page event WHEJAC day 1 description',
     },
