@@ -4,7 +4,16 @@ import mar9 from '../../images/eventDates/mar9.svg';
 import mar10 from '../../images/eventDates/mar10.svg';
 import mar16 from '../../images/eventDates/mar16.svg';
 import mar22 from '../../images/eventDates/mar22.svg';
+import mar30 from '../../images/eventDates/mar30.svg';
+import mar31 from '../../images/eventDates/mar31.svg';
 import apr15 from '../../images/eventDates/apr15.svg';
+import mar9Exp from '../../images/eventDates/mar9-inactive.svg';
+import mar10Exp from '../../images/eventDates/mar10-inactive.svg';
+import mar16Exp from '../../images/eventDates/mar16-inactive.svg';
+import mar22Exp from '../../images/eventDates/mar22-inactive.svg';
+import mar30Exp from '../../images/eventDates/mar30-inactive.svg';
+import mar31Exp from '../../images/eventDates/mar31-inactive.svg';
+import apr15Exp from '../../images/eventDates/apr15-inactive.svg';
 
 
 export const PAGE_INTRO = defineMessages({
@@ -105,6 +114,34 @@ export const EVENT_TYPES = {
       description: 'Navigate to the the public engagement page, this will be the public engagement page event listening session description',
     },
   }),
+  WHEJAC_DAY1: defineMessages({
+    NAME: {
+      id: 'public.eng.page.event.whejac.meeting.day.1.name',
+      defaultMessage: `Public WHEJAC meeting day one`,
+      description: 'public engagement page event WHEJAC meeting day 1 name',
+    },
+    DESCRIPTION: {
+      id: 'public.eng.page.event.whejac.meeting.day.1.description',
+      defaultMessage: `
+        Members of the public are encouraged to provide comments relevant to the beta version of the Climate and Economic Justice Screening Tool that was developed by the CEQ and federal government agencies implementation of the Justice40 Initiative will be considered by the WHEJAC during the public meeting.
+      `,
+      description: 'public engagement page event WHEJAC day 1 description',
+    },
+  }),
+  WHEJAC_DAY2: defineMessages({
+    NAME: {
+      id: 'public.eng.page.event.whejac.meeting.day.2.name',
+      defaultMessage: `Public WHEJAC meeting day two`,
+      description: 'public engagement page event WHEJAC meeting day 2 name',
+    },
+    DESCRIPTION: {
+      id: 'public.eng.page.event.whejac.meeting.day.2.description',
+      defaultMessage: `
+      Members of the public are encouraged to attend and hear updates and discussion from the WHEJAC Climate and Economic Justice Screening Tool workgroup, the Justice40 workgroup, and the WHEJAC business time and meeting conversation during which the WHEJAC will use reflect on the meeting proceedings and public comment period; provide workgroup updates; discuss action items and finalize next steps.
+      `,
+      description: 'public engagement page event WHEJAC day 2 description',
+    },
+  }),
 };
 
 export const EVENT_FIELDS = defineMessages({
@@ -122,11 +159,12 @@ export const EVENT_FIELDS = defineMessages({
 
 export const EVENTS = [
   {
-    DATE: new Date(2022, 9, 3),
+    DATE: new Date(2022, 2, 9),
     NAME: EVENT_TYPES.TRAINING_SESS.NAME,
     DESC: EVENT_TYPES.TRAINING_SESS.DESCRIPTION,
     NUMBER: 1,
     IMAGE: mar9,
+    EXPIRED_IMG: mar9Exp,
     FIELDS: defineMessages({
       INFO: {
         id: 'public.eng.page.event.training.1.info',
@@ -134,15 +172,16 @@ export const EVENTS = [
         description: 'Navigate to the the public engagement page, this will be the public engagement page event training session 1 date',
       },
     }),
-    REG_LINK: null,
+    REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_D-Om_xXhTtiLv71y3Rr1CQ`,
     DATA_CY: `mar-9-reg-link-block`,
   },
   {
-    DATE: new Date(2022, 10, 3),
+    DATE: new Date(2022, 2, 10),
     NAME: EVENT_TYPES.TRAINING_SESS.NAME,
     DESC: EVENT_TYPES.TRAINING_SESS.DESCRIPTION,
     NUMBER: 2,
     IMAGE: mar10,
+    EXPIRED_IMG: mar10Exp,
     FIELDS: defineMessages({
       INFO: {
         id: 'public.eng.page.event.training.2.info',
@@ -150,16 +189,17 @@ export const EVENTS = [
         description: 'Navigate to the the public engagement page, this will be the public engagement page event training session 2 date',
       },
     }),
-    REG_LINK: null,
+    REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_QsSqshI4TpmRBkI6nVlWxQ`,
     DATA_CY: `mar-10-reg-link-block`,
 
   },
   {
-    DATE: new Date(2022, 16, 3),
+    DATE: new Date(2022, 2, 16),
     NAME: EVENT_TYPES.TRAINING_SESS.NAME,
     DESC: EVENT_TYPES.TRAINING_SESS.DESCRIPTION,
     NUMBER: 3,
     IMAGE: mar16,
+    EXPIRED_IMG: mar16Exp,
     FIELDS: defineMessages({
       INFO: {
         id: 'public.eng.page.event.training.3.info',
@@ -167,16 +207,17 @@ export const EVENTS = [
         description: 'Navigate to the the public engagement page, this will be the public engagement page event training session 3 date',
       },
     }),
-    REG_LINK: null,
+    REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_q86iMtpwTESYa6f0xpIk7g`,
     DATA_CY: `mar-16-reg-link-block`,
 
   },
   {
-    DATE: new Date(2022, 22, 3),
+    DATE: new Date(2022, 2, 22),
     NAME: EVENT_TYPES.LISTENING_SESS.NAME,
     DESC: EVENT_TYPES.LISTENING_SESS.DESCRIPTION,
     NUMBER: 1,
     IMAGE: mar22,
+    EXPIRED_IMG: mar22Exp,
     FIELDS: defineMessages({
       INFO: {
         id: 'public.eng.page.event.listening.1.info',
@@ -189,11 +230,46 @@ export const EVENTS = [
 
   },
   {
-    DATE: new Date(2022, 15, 4),
+    DATE: new Date(2022, 30, 2),
+    NAME: EVENT_TYPES.WHEJAC_DAY1.NAME,
+    DESC: EVENT_TYPES.WHEJAC_DAY1.DESCRIPTION,
+    NUMBER: 0,
+    IMAGE: mar30,
+    EXPIRED_IMG: mar30Exp,
+    FIELDS: defineMessages({
+      INFO: {
+        id: 'public.eng.page.whejac.meeting.day.1.info',
+        defaultMessage: `March 30th (3:00 - 7:00 PM EST)`,
+        description: 'public engagement page event WHEJAC',
+      },
+    }),
+    REG_LINK: `https://usepa.zoomgov.com/webinar/register/WN_wCwVP1dtT0auAR5kfucVtw`,
+    DATA_CY: `mar-30-reg-link-block`,
+  },
+  {
+    DATE: new Date(2022, 31, 2),
+    NAME: EVENT_TYPES.WHEJAC_DAY2.NAME,
+    DESC: EVENT_TYPES.WHEJAC_DAY2.DESCRIPTION,
+    NUMBER: 0,
+    IMAGE: mar31,
+    EXPIRED_IMG: mar31Exp,
+    FIELDS: defineMessages({
+      INFO: {
+        id: 'public.eng.page.whejac.meeting.day.1.info',
+        defaultMessage: `March 31th (3:00 - 7:30 PM EST)`,
+        description: 'public engagement page event WHEJAC',
+      },
+    }),
+    REG_LINK: `https://usepa.zoomgov.com/webinar/register/WN_wCwVP1dtT0auAR5kfucVtw`,
+    DATA_CY: `mar-31-reg-link-block`,
+  },
+  {
+    DATE: new Date(2022, 3, 15),
     NAME: EVENT_TYPES.LISTENING_SESS.NAME,
     DESC: EVENT_TYPES.LISTENING_SESS.DESCRIPTION,
     NUMBER: 2,
     IMAGE: apr15,
+    EXPIRED_IMG: apr15Exp,
     FIELDS: defineMessages({
       INFO: {
         id: 'public.eng.page.event.listening.2.info',

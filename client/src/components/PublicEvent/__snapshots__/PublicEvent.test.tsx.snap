@@ -37,6 +37,24 @@ exports[`rendering of the PublicEvent checks if component renders 1`] = `
         </b>
         : March 9th (4:00 - 5:00 PM EST)
       </p>
+      <p
+        class="usa-collection__description"
+      >
+        <a
+          href="https://pitc.zoomgov.com/webinar/register/WN_D-Om_xXhTtiLv71y3Rr1CQ"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <button
+            class="usa-button"
+            data-testid="button"
+            disabled=""
+            type="button"
+          >
+            Registration link
+          </button>
+        </a>
+      </p>
     </div>
   </li>
 </DocumentFragment>

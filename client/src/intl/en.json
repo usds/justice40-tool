@@ -1187,6 +1187,22 @@
     "defaultMessage": "training session",
     "description": "Navigate to the the public engagement page, this will be the public engagement page event training session name"
   },
+  "public.eng.page.event.whejac.meeting.day.1.description": {
+    "defaultMessage": "Members of the public are encouraged to provide comments relevant to the beta version of the Climate and Economic Justice Screening Tool that was developed by the CEQ and federal government agencies implementation of the Justice40 Initiative will be considered by the WHEJAC during the public meeting.",
+    "description": "public engagement page event WHEJAC day 1 description"
+  },
+  "public.eng.page.event.whejac.meeting.day.1.name": {
+    "defaultMessage": "Public WHEJAC meeting day one",
+    "description": "public engagement page event WHEJAC meeting day 1 name"
+  },
+  "public.eng.page.event.whejac.meeting.day.2.description": {
+    "defaultMessage": "Members of the public are encouraged to attend and hear updates and discussion from the WHEJAC Climate and Economic Justice Screening Tool workgroup, the Justice40 workgroup, and the WHEJAC business time and meeting conversation during which the WHEJAC will use reflect on the meeting proceedings and public comment period; provide workgroup updates; discuss action items and finalize next steps.",
+    "description": "public engagement page event WHEJAC day 2 description"
+  },
+  "public.eng.page.event.whejac.meeting.day.2.name": {
+    "defaultMessage": "Public WHEJAC meeting day two",
+    "description": "public engagement page event WHEJAC meeting day 2 name"
+  },
   "public.eng.page.heading1.text": {
     "defaultMessage": "Public engagement opportunities",
     "description": "Navigate to the the public engagement page, this will be the publiceng page header text"
@@ -1202,5 +1218,9 @@
   "public.eng.page.title.text": {
     "defaultMessage": "Public engagement opportunities",
     "description": "Navigate to the the public engagement page, this will be the publiceng page title text"
+  },
+  "public.eng.page.whejac.meeting.day.1.info": {
+    "defaultMessage": "March 31th (3:00 - 7:30 PM EST)",
+    "description": "public engagement page event WHEJAC"
   }
 }
