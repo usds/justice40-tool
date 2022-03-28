@@ -151,8 +151,7 @@ export const CATEGORY_AND_CLAUSE = {
   LOW_INC_65_WHEN_HIGH_ED_LTE_20: <FormattedMessage
     id= {'methodology.page.category.and.clause.low.inc.hs.ed'}
     defaultMessage={`
-      <boldtag>AND</boldtag> is above the 65th percentile for <link1>low income</link1> AND at or below 
-      20% for <link2>higher ed enrollment rate</link2> 
+      <boldtag>AND</boldtag> is above the 65th percentile for <link1>low income</link1> AND 80% or more adults 15 or older are not enrolled in <link2>higher education</link2> 
     `}
     description= {'Navigate to the methodology page. Navigate to the category section. This is category portion of the formula dealing with lower income and high school degree rate'}
     values= {{
@@ -163,7 +162,7 @@ export const CATEGORY_AND_CLAUSE = {
   />,
   HS_DEG_90_WHEN_HIGH_ED_LTE_20: <FormattedMessage
     id= {'methodology.page.category.and.clause.hs.ed.higher.ed'}
-    defaultMessage= {`<boldtag>AND</boldtag> is at or less than 90% for <link1>high school degree attainment rate</link1> for adults 25 years and older AND at or below 20% for <link2>higher ed enrollment rate</link2> 
+    defaultMessage= {`<boldtag>AND</boldtag> 10% or more of adults 25 or older have not attained a <link1>high school degree</link1> AND 80% or more of adults 15 or older are not enrolled in <link2>higher education</link2> 
   `}
     description= {'Navigate to the methodology page. Navigate to the category section. This is the portion of the formula dealing with higher ed enrollment and high school degree rate'}
     values= {{
@@ -611,7 +610,7 @@ export const AVAILABLE_FOR = {
 
 export interface IIndicators {
   domID: string,
-  indicator: string,
+  indicator: JSX.Element,
   description: JSX.Element,
   note?: JSX.Element,
   usedIn: JSX.Element,
@@ -625,7 +624,11 @@ export interface IIndicators {
 export const INDICATORS = [
   {
     domID: 'low-income',
-    indicator: 'Low income',
+    indicator: <FormattedMessage
+      id= {'methodology.page.dataset.indicator.low.income.title.text'}
+      defaultMessage= {`Low income`}
+      description= {'Navigate to the Methodology page. This is the title text for the low income dataset'}
+    />,
     description: <FormattedMessage
       id= {'methodology.page.category.low.income.description.text'}
       defaultMessage= {`
@@ -645,26 +648,34 @@ export const INDICATORS = [
   },
   {
     domID: 'high-ed-enroll-rate',
-    indicator: 'Higher ed enrollment rate',
+    indicator: <FormattedMessage
+      id= {'methodology.page.dataset.indicator.high.ed.enroll.title.text'}
+      defaultMessage= {`Higher education non-enrollment`}
+      description= {'Navigate to the Methodology page. This is the title text for the high ed enrollment dataset'}
+    />,
     description: <FormattedMessage
       id= {'methodology.page.category.high.ed.enroll.rate.description.text'}
       defaultMessage= {`
-        Percent of people who are currently enrolled in college or graduate school.
+        Percent of people 15 or older who are not currently enrolled in college, university, or graduate school.
       `}
-      description= {'Navigate to the Methodology page. This is the description text for low income'}
+      description= {'Navigate to the Methodology page. This is the description text for high ed enrollment'}
     />,
     usedIn: CATEGORIES.ALL,
     responsibleParty: RESPONSIBLE_PARTIES.CENSUS,
     sources: [
       {
         source: SOURCE_LINKS.CENSUS_ACS_15_19,
-        availableFor: AVAILABLE_FOR.ALL_US_DC,
+        availableFor: AVAILABLE_FOR.ALL_US_DC_PR,
       },
     ],
   },
   {
     domID: 'exp-agr-loss-rate',
-    indicator: 'Expected agriculture loss rate',
+    indicator: <FormattedMessage
+      id= {'methodology.page.dataset.indicator.expected.ag.loss.title.text'}
+      defaultMessage= {`Expected agriculture loss rate`}
+      description= {'Navigate to the Methodology page. This is the title text for the expected agr loss rate income dataset'}
+    />,
     description: <FormattedMessage
       id= {'methodology.page.category.exp.agr.loss.rate.description.text'}
       defaultMessage= {`
@@ -688,7 +699,11 @@ export const INDICATORS = [
   },
   {
     domID: 'exp-bld-loss-rate',
-    indicator: 'Expected building loss rate',
+    indicator: <FormattedMessage
+      id= {'methodology.page.dataset.indicator.exp.bld.loss.title.text'}
+      defaultMessage= {`Expected building loss rate`}
+      description= {'Navigate to the Methodology page. This is the title text for the exp bld loss income dataset'}
+    />,
     description: <FormattedMessage
       id= {'methodology.page.category.exp.bld.loss.rate.description.text'}
       defaultMessage= {`
@@ -711,7 +726,11 @@ export const INDICATORS = [
   },
   {
     domID: 'exp-pop-loss-rate',
-    indicator: 'Expected population loss rate',
+    indicator: <FormattedMessage
+      id= {'methodology.page.dataset.indicator.exp.pop.loss.title.text'}
+      defaultMessage= {`Expected population loss rate`}
+      description= {'Navigate to the Methodology page. This is the title text for the exp pop loss income dataset'}
+    />,
     description: <FormattedMessage
       id= {'methodology.page.category.exp.pop.loss.rate.description.text'}
       defaultMessage= {`
@@ -741,7 +760,11 @@ export const INDICATORS = [
   },
   {
     domID: 'energy-burden',
-    indicator: 'Energy burden',
+    indicator: <FormattedMessage
+      id= {'methodology.page.dataset.indicator.energy.burden.title.text'}
+      defaultMessage= {`Energy burden`}
+      description= {'Navigate to the Methodology page. This is the title text for the energy burden dataset'}
+    />,
     description: <FormattedMessage
       id= {'methodology.page.category.energy.burden.description.text'}
       defaultMessage= {`Average annual energy cost per household ($) divided by average household income.`}
@@ -758,7 +781,11 @@ export const INDICATORS = [
   },
   {
     domID: 'pm-25',
-    indicator: 'PM2.5 in the air',
+    indicator: <FormattedMessage
+      id= {'methodology.page.dataset.indicator.pm25.title.text'}
+      defaultMessage= {`PM2.5 in the air`}
+      description= {'Navigate to the Methodology page. This is the title text for the pm25 dataset'}
+    />,
     description: <FormattedMessage
       id= {'methodology.page.category.pm2.5.description.text'}
       defaultMessage= {`
@@ -779,7 +806,11 @@ export const INDICATORS = [
   },
   {
     domID: 'diesel-pm',
-    indicator: 'Diesel particulate matter exposure',
+    indicator: <FormattedMessage
+      id= {'methodology.page.dataset.indicator.diesel.pm.title.text'}
+      defaultMessage= {`Diesel particulate matter exposure`}
+      description= {'Navigate to the Methodology page. This is the title text for the diesel pm dataset'}
+    />,
     description: <FormattedMessage
       id= {'methodology.page.category.diesel.pm.description.text'}
       defaultMessage= {`
@@ -799,7 +830,11 @@ export const INDICATORS = [
   },
   {
     domID: 'traffic-vol',
-    indicator: 'Traffic proximity and volume',
+    indicator: <FormattedMessage
+      id= {'methodology.page.dataset.indicator.traffic.volume.title.text'}
+      defaultMessage= {`Traffic proximity and volume`}
+      description= {'Navigate to the Methodology page. This is the title text for the traffic.volume dataset'}
+    />,
     description: <FormattedMessage
       id= {'methodology.page.category.traffic.vol.description.text'}
       defaultMessage= {`
@@ -819,7 +854,11 @@ export const INDICATORS = [
   },
   {
     domID: 'house-burden',
-    indicator: 'Housing cost burden',
+    indicator: <FormattedMessage
+      id= {'methodology.page.dataset.indicator.house.burden.title.text'}
+      defaultMessage= {`Housing cost burden`}
+      description= {'Navigate to the Methodology page. This is the title text for the house burden dataset'}
+    />,
     description: <FormattedMessage
       id= {'methodology.page.category.house.burden.description.text'}
       defaultMessage= {`
@@ -839,7 +878,11 @@ export const INDICATORS = [
   },
   {
     domID: 'lead-paint',
-    indicator: 'Lead paint',
+    indicator: <FormattedMessage
+      id= {'methodology.page.dataset.indicator.lead.paint.title.text'}
+      defaultMessage= {`Lead paint`}
+      description= {'Navigate to the Methodology page. This is the title text for the lead paint dataset'}
+    />,
     description: <FormattedMessage
       id= {'methodology.page.category.lead.paint.description.text'}
       defaultMessage= {`
@@ -859,7 +902,11 @@ export const INDICATORS = [
   },
   {
     domID: 'median-home',
-    indicator: 'Median home value',
+    indicator: <FormattedMessage
+      id= {'methodology.page.dataset.indicator.median.home.title.text'}
+      defaultMessage= {`Median home value`}
+      description= {'Navigate to the Methodology page. This is the title text for the median home dataset'}
+    />,
     description: <FormattedMessage
       id= {'methodology.page.category.median.home.value.description.text'}
       defaultMessage= {`
@@ -878,7 +925,11 @@ export const INDICATORS = [
   },
   {
     domID: 'prox-haz',
-    indicator: 'Proximity to hazardous waste facilities',
+    indicator: <FormattedMessage
+      id= {'methodology.page.dataset.indicator.prox.haz.title.text'}
+      defaultMessage= {`Proximity to hazardous waste facilities`}
+      description= {'Navigate to the Methodology page. This is the title text for the prox haz dataset'}
+    />,
     description: <FormattedMessage
       id= {'methodology.page.category.prox.haz.description.text'}
       defaultMessage= {`
@@ -899,7 +950,11 @@ export const INDICATORS = [
   },
   {
     domID: 'prox-npl',
-    indicator: 'Proximity to National Priorities List (NPL) sites',
+    indicator: <FormattedMessage
+      id= {'methodology.page.dataset.indicator.prox.npl.title.text'}
+      defaultMessage= {`Proximity to National Priorities List (NPL) sites`}
+      description= {'Navigate to the Methodology page. This is the title text for the prox npl dataset'}
+    />,
     description: <FormattedMessage
       id= {'methodology.page.category.prox.npl.description.text'}
       defaultMessage= {`
@@ -919,7 +974,11 @@ export const INDICATORS = [
   },
   {
     domID: 'prox-rmp',
-    indicator: 'Proximity to Risk Management Plan (RMP) facilities',
+    indicator: <FormattedMessage
+      id= {'methodology.page.dataset.indicator.prox.rpm.title.text'}
+      defaultMessage= {`Proximity to Risk Management Plan (RMP) facilities`}
+      description= {'Navigate to the Methodology page. This is the title text for the prox rpm dataset'}
+    />,
     description: <FormattedMessage
       id= {'methodology.page.category.prox.rmp.description.text'}
       defaultMessage= {`
@@ -939,7 +998,11 @@ export const INDICATORS = [
   },
   {
     domID: 'waste-water',
-    indicator: 'Wastewater discharge',
+    indicator: <FormattedMessage
+      id= {'methodology.page.dataset.indicator.waste.water.title.text'}
+      defaultMessage= {`Wastewater discharge`}
+      description= {'Navigate to the Methodology page. This is the title text for the waste water dataset'}
+    />,
     description: <FormattedMessage
       id= {'methodology.page.category.waste.water.description.text'}
       defaultMessage= {`
@@ -959,7 +1022,11 @@ export const INDICATORS = [
   },
   {
     domID: 'asthma',
-    indicator: 'Asthma',
+    indicator: <FormattedMessage
+      id= {'methodology.page.dataset.indicator.asthma.title.text'}
+      defaultMessage= {`Asthma`}
+      description= {'Navigate to the Methodology page. This is the title text for the asthma dataset'}
+    />,
     description: <FormattedMessage
       id= {'methodology.page.category.asthma.description.text'}
       defaultMessage= {`
@@ -980,7 +1047,11 @@ export const INDICATORS = [
   },
   {
     domID: 'diabetes',
-    indicator: 'Diabetes',
+    indicator: <FormattedMessage
+      id= {'methodology.page.dataset.indicator.diabetes.title.text'}
+      defaultMessage= {`Diabetes`}
+      description= {'Navigate to the Methodology page. This is the title text for the diabetes dataset'}
+    />,
     description: <FormattedMessage
       id= {'methodology.page.category.diabetes.description.text'}
       defaultMessage= {`
@@ -1001,7 +1072,11 @@ export const INDICATORS = [
   },
   {
     domID: 'heart-disease',
-    indicator: 'Heart disease',
+    indicator: <FormattedMessage
+      id= {'methodology.page.dataset.indicator.heart.disease.title.text'}
+      defaultMessage= {`Heart disease`}
+      description= {'Navigate to the Methodology page. This is the title text for the heart disease dataset'}
+    />,
     description: <FormattedMessage
       id= {'methodology.page.category.heart.disease.description.text'}
       defaultMessage= {`
@@ -1022,7 +1097,11 @@ export const INDICATORS = [
   },
   {
     domID: 'life-exp',
-    indicator: 'Low life expectancy',
+    indicator: <FormattedMessage
+      id= {'methodology.page.dataset.indicator.life.exp.title.text'}
+      defaultMessage= {`Low life expectancy`}
+      description= {'Navigate to the Methodology page. This is the title text for the life exp dataset'}
+    />,
     description: <FormattedMessage
       id= {'methodology.page.category.low.life.expectancy.description.text'}
       defaultMessage= {`
@@ -1051,7 +1130,11 @@ export const INDICATORS = [
   },
   {
     domID: 'low-med-inc',
-    indicator: 'Low median income',
+    indicator: <FormattedMessage
+      id= {'methodology.page.dataset.indicator.low.median.income.title.text'}
+      defaultMessage= {`Low median income`}
+      description= {'Navigate to the Methodology page. This is the title text for the low median income dataset'}
+    />,
     description: <FormattedMessage
       id= {'methodology.page.category.workforce.dev.description.text'}
       defaultMessage= {`
@@ -1084,7 +1167,11 @@ export const INDICATORS = [
   },
   {
     domID: 'ling-iso',
-    indicator: 'Linguistic isolation',
+    indicator: <FormattedMessage
+      id= {'methodology.page.dataset.indicator.ling.iso.title.text'}
+      defaultMessage= {`Linguistic isolation`}
+      description= {'Navigate to the Methodology page. This is the title text for the linguistic isolation dataset'}
+    />,
     description: <FormattedMessage
       id= {'methodology.page.category.linguistic.iso.description.text'}
       defaultMessage= {`
@@ -1103,7 +1190,11 @@ export const INDICATORS = [
   },
   {
     domID: 'unemploy',
-    indicator: 'Unemployment',
+    indicator: <FormattedMessage
+      id= {'methodology.page.dataset.indicator.unemploy.title.text'}
+      defaultMessage= {`Unemployment`}
+      description= {'Navigate to the Methodology page. This is the title text for the unemployment dataset'}
+    />,
     description: <FormattedMessage
       id= {'methodology.page.category.unemploy.description.text'}
       defaultMessage= {`
@@ -1126,7 +1217,11 @@ export const INDICATORS = [
   },
   {
     domID: 'poverty',
-    indicator: 'Poverty',
+    indicator: <FormattedMessage
+      id= {'methodology.page.dataset.indicator.poverty.title.text'}
+      defaultMessage= {`Poverty`}
+      description= {'Navigate to the Methodology page. This is the title text for the poverty dataset'}
+    />,
     description: <FormattedMessage
       id= {'methodology.page.category.poverty.description.text'}
       defaultMessage= {`
@@ -1150,14 +1245,17 @@ export const INDICATORS = [
   },
   {
     domID: 'high-school',
-    indicator: 'High school degree attainment rate',
+    indicator: <FormattedMessage
+      id= {'methodology.page.dataset.indicator.high.school.title.text'}
+      defaultMessage= {`High school degree non-attainment`}
+      description= {'Navigate to the Methodology page. This is the title text for the high school dataset'}
+    />,
     description: <FormattedMessage
       id= {'methodology.page.category.highschool.description.text'}
       defaultMessage= {`
-        Percent of people ages 25 years or older in a census tract whose
-        education level is less than a high school diploma.
+        Percent of people age 25 years or older in a census tract whose education level is less than a high school diploma.
       `}
-      description= {'Navigate to the Methodology page. This is the description text for highschool'}
+      description= {'Navigate to the Methodology page. This is the description text for high school'}
     />,
     usedIn: CATEGORIES.WORKFORCE_DEV.METHODOLOGY,
     responsibleParty: RESPONSIBLE_PARTIES.CENSUS,
