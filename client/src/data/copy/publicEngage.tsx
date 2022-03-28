@@ -72,7 +72,7 @@ export const PUBLIC_ENG_BUTTON = defineMessages({
   },
   TAG_LABEL: {
     id: 'public.eng.page.tag.label',
-    defaultMessage: `NEW`,
+    defaultMessage: `UPDATED`,
     description: 'Navigate to the the public engagement page, this will be the public engagement tag label',
   },
 });

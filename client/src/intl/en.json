@@ -1212,7 +1212,7 @@
     "description": "Navigate to the the public engagement page, this will be the publiceng page sub header text"
   },
   "public.eng.page.tag.label": {
-    "defaultMessage": "NEW",
+    "defaultMessage": "UPDATED",
     "description": "Navigate to the the public engagement page, this will be the public engagement tag label"
   },
   "public.eng.page.title.text": {

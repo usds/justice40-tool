@@ -8,7 +8,7 @@ exports[`rendering of the PublicEngageButton checks if component renders 1`] = `
         class="usa-tag"
         data-testid="tag"
       >
-        NEW
+        UPDATED
       </span>
     </div>
     <a
