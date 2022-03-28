@@ -3,6 +3,10 @@ import json
 from numpy import float64
 import numpy as np
 import pandas as pd
+from data_pipeline.content.schemas.download_schemas import (
+    CSVConfig,
+    ExcelConfig,
+)
 
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.score.etl_utils import floor_series
@@ -452,7 +456,7 @@ class PostScoreETL(ExtractTransformLoad):
 
         # open excel yaml config
         excel_csv_config = load_yaml_dict_from_file(
-            self.CONTENT_CONFIG / "excel.yml"
+            self.CONTENT_CONFIG / "excel.yml", ExcelConfig
         )
 
         # Define Excel Columns Column Width
@@ -525,7 +529,7 @@ class PostScoreETL(ExtractTransformLoad):
         logger.info("Writing downloadable csv")
         # open yaml config
         downloadable_csv_config = load_yaml_dict_from_file(
-            self.CONTENT_CONFIG / "csv.yml"
+            self.CONTENT_CONFIG / "csv.yml", CSVConfig
         )
         downloadable_df = self._create_downloadable_data(
             score_df=self.output_score_county_state_merged_df,

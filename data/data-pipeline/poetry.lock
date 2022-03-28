@@ -871,6 +871,17 @@ tests = ["pytest (>=5.4)", "pytest-mypy-plugins (>=1.2.0)", "typing-extensions (
 union = ["typeguard"]
 
 [[package]]
+name = "marshmallow-enum"
+version = "1.5.1"
+description = "Enum field for Marshmallow"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+marshmallow = ">=2.0.0"
+
+[[package]]
 name = "matplotlib"
 version = "3.5.1"
 description = "Python plotting package"
@@ -1847,7 +1858,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "4278ecd8aab0cf352d62961687c33f92cda5e6d246309b046484dd797edf4986"
+content-hash = "2dda480b8f50a2414ff01d3c73663c28d64bc6df01f950367763c241a84b02f6"
 
 [metadata.files]
 appnope = [
@@ -2370,6 +2381,10 @@ marshmallow = [
 marshmallow-dataclass = [
     {file = "marshmallow_dataclass-8.5.3-py3-none-any.whl", hash = "sha256:eefeff62ee975c64d293d2db9370e7e748a2ff83dcb5109416b75e087a2ac02e"},
     {file = "marshmallow_dataclass-8.5.3.tar.gz", hash = "sha256:c0c5e1ea8d0e557b6fa00343799a9a9e60757b948fb096076beb6aa76bd68d30"},
+]
+marshmallow-enum = [
+    {file = "marshmallow-enum-1.5.1.tar.gz", hash = "sha256:38e697e11f45a8e64b4a1e664000897c659b60aa57bfa18d44e226a9920b6e58"},
+    {file = "marshmallow_enum-1.5.1-py2.py3-none-any.whl", hash = "sha256:57161ab3dbfde4f57adeb12090f39592e992b9c86d206d02f6bd03ebec60f072"},
 ]
 matplotlib = [
     {file = "matplotlib-3.5.1-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:456cc8334f6d1124e8ff856b42d2cc1c84335375a16448189999496549f7182b"},

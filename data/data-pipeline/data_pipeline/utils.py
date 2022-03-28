@@ -1,4 +1,4 @@
-from typing import List, Type
+from typing import List, Union
 import datetime
 import json
 import logging
@@ -14,7 +14,10 @@ import yaml
 from marshmallow_dataclass import class_schema
 
 from data_pipeline.config import settings
-from data_pipeline.content.schemas.csv import CSVConfig
+from data_pipeline.content.schemas.download_schemas import (
+    CSVConfig,
+    ExcelConfig,
+)
 
 
 ## zlib is not available on all systems
@@ -330,7 +333,7 @@ def zip_directory(
 
 
 def load_yaml_dict_from_file(
-    yaml_file_path: Path, yaml_schema: Type[CSVConfig]
+    yaml_file_path: Path, schema_class: Union[CSVConfig, ExcelConfig]
 ) -> dict:
     """Load a YAML file specified in path into a Python dictionary.
 
@@ -343,7 +346,10 @@ def load_yaml_dict_from_file(
     with open(yaml_file_path, encoding="UTF-8") as file:
         yaml_dict = yaml.load(file, Loader=yaml.FullLoader)
 
-    pass
+        # validate YAML
+        yaml_config_schema = class_schema(schema_class)
+        yaml_config_schema().load(yaml_dict)
+
     return yaml_dict
 
 
