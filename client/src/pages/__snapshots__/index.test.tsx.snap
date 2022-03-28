@@ -324,7 +324,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               class="usa-tag"
               data-testid="tag"
             >
-              NEW
+              UPDATED
             </span>
           </div>
           <a

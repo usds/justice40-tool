@@ -1,10 +1,11 @@
 @use '../../styles/design-system.scss' as *;
 
 .tagContainer {
+    align-self: flex-end;
     @include u-margin-bottom(1);
     @include u-margin-right(1);
     .tag {
-        @include u-bg("yellow-20v");
+        @include u-bg("gray-cool-10");
         color: black;
         border-radius: 5px;
         @include u-text('bold');
@@ -12,6 +13,8 @@
 }
 
 .container {
+    display: flex;
+    flex-direction: column;
     @include u-padding-top(2.5);
 
     .link, .link:visited {
