@@ -12,7 +12,11 @@ declare namespace MapModuleScssNamespace {
     showThresholdExceed:string;
     showCategoriesExceed: string;
     categoryHeader:string;
+    sendFeedbackLink: string;
     sendFeedbackBtn: string;
+    buttonContainer: string;
+    buttonText: string;
+    buttonImage: string;
     categorySpacer: string;
   }
 }

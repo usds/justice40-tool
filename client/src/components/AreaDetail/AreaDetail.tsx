@@ -17,7 +17,7 @@ import * as EXPLORE_COPY from '../../data/copy/explore';
 import * as COMMON_COPY from '../../data/copy/common';
 
 // @ts-ignore
-// import mailIcon from '/node_modules/uswds/dist/img/usa-icons/mail.svg';
+import mailIcon from '/node_modules/uswds/dist/img/usa-icons/mail_outline.svg';
 
 interface IAreaDetailProps {
   properties: constants.J40Properties,
@@ -598,7 +598,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
         </div>
         {/* Send Feedback button */}
         <a
-          className={styles.sendFeedbackBtn}
+          className={styles.sendFeedbackLink}
           // The mailto string must be on a single line otherwise the email does not display subject and body
           href={`
             mailto:${COMMON_COPY.FEEDBACK_EMAIL}?subject=${feedbackEmailSubject}&body=${feedbackEmailBody}
@@ -607,9 +607,18 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
           rel="noreferrer"
         >
           <Button
-            type="button">
-            <div>
-              {EXPLORE_COPY.COMMUNITY.SEND_FEEDBACK.TITLE}
+            type="button"
+            className={styles.sendFeedbackBtn}
+          >
+            <div className={styles.buttonContainer}>
+              <div className={styles.buttonText}>
+                {EXPLORE_COPY.COMMUNITY.SEND_FEEDBACK.TITLE}
+              </div>
+              <img
+                className={styles.buttonImage}
+                src={mailIcon}
+                alt={'tbd'}
+              />
             </div>
             {/* <div>
                 <img src={mailIcon} alt={'mail icon for email'}/>

@@ -72,7 +72,13 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
           type="button"
         >
           <div>
-            Send feedback
+            <div>
+              Send feedback
+            </div>
+            <img
+              alt="tbd"
+              src="test-file-stub"
+            />
           </div>
         </button>
       </a>
@@ -419,7 +425,13 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
           type="button"
         >
           <div>
-            Send feedback
+            <div>
+              Send feedback
+            </div>
+            <img
+              alt="tbd"
+              src="test-file-stub"
+            />
           </div>
         </button>
       </a>
@@ -2121,7 +2133,13 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
           type="button"
         >
           <div>
-            Send feedback
+            <div>
+              Send feedback
+            </div>
+            <img
+              alt="tbd"
+              src="test-file-stub"
+            />
           </div>
         </button>
       </a>

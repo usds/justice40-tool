@@ -53,8 +53,34 @@ $sidePanelLabelFontColor: #171716;
     
   }
 
-  .sendFeedbackBtn {
+  .sendFeedbackLink {
     @include u-margin-top(2);
+
+    .sendFeedbackBtn{
+      @include u-text("blue-70v");
+      @include u-bg("yellow-20v");
+      height: 40px; 
+      
+      &:hover {
+        @include u-bg("yellow-20");
+        @include u-text("gray-90");
+      }
+
+      .buttonContainer{
+        display: flex;
+
+        .buttonText{
+          @include u-margin-right(1);
+        }
+
+        .buttonImage{
+          width: 21px;
+          margin-top: -3px;
+
+          filter: invert(13%) sepia(76%) saturate(5142%) hue-rotate(192deg) brightness(80%) contrast(106%);
+        }
+      }
+    }
   }
 
 }
