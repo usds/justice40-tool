@@ -1,7 +1,7 @@
 /* eslint-disable quotes */
 // External Libs:
 import React from 'react';
-import {useIntl, FormattedMessage} from 'gatsby-plugin-intl';
+import {useIntl} from 'gatsby-plugin-intl';
 import {Accordion, Button} from '@trussworks/react-uswds';
 
 // Components:
@@ -17,7 +17,7 @@ import * as EXPLORE_COPY from '../../data/copy/explore';
 import * as COMMON_COPY from '../../data/copy/common';
 
 // @ts-ignore
-// import mailIcon from '/node_modules/uswds/dist/img/usa-icons/mail.svg';
+import mailIcon from '/node_modules/uswds/dist/img/usa-icons/mail_outline.svg';
 
 interface IAreaDetailProps {
   properties: constants.J40Properties,
@@ -587,24 +587,18 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
           }
         </div>
 
-        {/* Number of thresholds exceeded */}
-        <div className={
-            properties[constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS] > 0 ?
-            styles.showThresholdExceed : styles.hideThresholdExceed
-        }>
-          <FormattedMessage
-            id={'explore.page.threshold.count.exceed'}
-            description={"threshold exceeded count"}
-            defaultMessage={'{disadvCount} of {totalCount} thresholds exceeded'}
-            values={{
-              disadvCount: properties[constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS],
-              totalCount: properties[constants.TOTAL_NUMBER_OF_INDICATORS],
-            }}/>
+        {/* Number of categories exceeded */}
+        <div className={styles.showCategoriesExceed}>
+          {EXPLORE_COPY.numberOfCategoriesExceeded(properties[constants.COUNT_OF_CATEGORIES_DISADV])}
         </div>
 
+        {/* Number of thresholds exceeded */}
+        <div className={styles.showThresholdExceed}>
+          {EXPLORE_COPY.numberOfThresholdsExceeded(properties[constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS])}
+        </div>
         {/* Send Feedback button */}
         <a
-          className={styles.sendFeedbackBtn}
+          className={styles.sendFeedbackLink}
           // The mailto string must be on a single line otherwise the email does not display subject and body
           href={`
             mailto:${COMMON_COPY.FEEDBACK_EMAIL}?subject=${feedbackEmailSubject}&body=${feedbackEmailBody}
@@ -613,9 +607,18 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
           rel="noreferrer"
         >
           <Button
-            type="button">
-            <div>
-              {EXPLORE_COPY.COMMUNITY.SEND_FEEDBACK.TITLE}
+            type="button"
+            className={styles.sendFeedbackBtn}
+          >
+            <div className={styles.buttonContainer}>
+              <div className={styles.buttonText}>
+                {EXPLORE_COPY.COMMUNITY.SEND_FEEDBACK.TITLE}
+              </div>
+              <img
+                className={styles.buttonImage}
+                src={mailIcon}
+                alt={'tbd'}
+              />
             </div>
             {/* <div>
                 <img src={mailIcon} alt={'mail icon for email'}/>

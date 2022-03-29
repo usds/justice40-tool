@@ -9,11 +9,6 @@ $sidePanelLabelFontColor: #171716;
   font-weight: 600;
 }
 
-@mixin thresholdExceeded {
-  font-size: medium;
-  @include u-margin-top('05');
-}
-
 .versionInfo {
   padding: .5rem 1rem .5rem 1.2rem;
   font-size: medium;
@@ -24,7 +19,6 @@ $sidePanelLabelFontColor: #171716;
   display: flex;
   flex-direction: column;
 }
-
 
 .categorization {
   display: flex;
@@ -48,19 +42,45 @@ $sidePanelLabelFontColor: #171716;
     }
   }
 
-  .showThresholdExceed {
-    @include thresholdExceeded;
-    display: block;
-    
-  }
-  
-  .hideThresholdExceed {
-    @include thresholdExceeded;
-    visibility: hidden;
+  .showCategoriesExceed {
+    font-size: small;
+    @include u-margin-top('05');
   }
 
-  .sendFeedbackBtn {
+  .showThresholdExceed {
+    font-size: small;
+    @include u-margin-top('05');
+    
+  }
+
+  .sendFeedbackLink {
     @include u-margin-top(2);
+
+    .sendFeedbackBtn{
+      @include u-text("blue-70v");
+      @include u-bg("yellow-20v");
+      height: 40px; 
+      
+      &:hover {
+        @include u-bg("yellow-20");
+        @include u-text("gray-90");
+      }
+
+      .buttonContainer{
+        display: flex;
+
+        .buttonText{
+          @include u-margin-right(1);
+        }
+
+        .buttonImage{
+          width: 21px;
+          margin-top: -3px;
+
+          filter: invert(13%) sepia(76%) saturate(5142%) hue-rotate(192deg) brightness(80%) contrast(106%);
+        }
+      }
+    }
   }
 
 }

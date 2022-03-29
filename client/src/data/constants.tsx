@@ -33,6 +33,7 @@ export const SCORE_BOUNDARY_THRESHOLD = 0.6;
 // Determines the X of Y threshold exceeded
 export const TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS = 'TC';
 export const TOTAL_NUMBER_OF_INDICATORS = 'THRHLD';
+export const COUNT_OF_CATEGORIES_DISADV = 'CC';
 
 export const SIDE_PANEL_STATE = 'UI_EXP';
 export const SIDE_PANEL_STATE_VALUES = {

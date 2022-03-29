@@ -4,7 +4,7 @@ exports[`test rendering of Exceeds both socioeco burdens when is NOT burdended 1
 <DocumentFragment>
   <div>
     <div>
-      Exceeds the threshold for both socioeconomic indicators?
+      At or above both associated thresholds?
     </div>
     <div>
       No
@@ -17,7 +17,7 @@ exports[`test rendering of Exceeds both socioeco burdens when is burdended 1`] =
 <DocumentFragment>
   <div>
     <div>
-      Exceeds the threshold for one or more burden indicators?
+      At or above at least one threshold?
     </div>
     <div>
       Yes
@@ -30,7 +30,7 @@ exports[`test rendering of Exceeds one or more burdens when is NOT burdended 1`]
 <DocumentFragment>
   <div>
     <div>
-      Exceeds the threshold for one or more burden indicators?
+      At or above at least one threshold?
     </div>
     <div>
       No
@@ -43,7 +43,7 @@ exports[`test rendering of Exceeds one or more burdens when is burdended 1`] = `
 <DocumentFragment>
   <div>
     <div>
-      Exceeds the threshold for one or more burden indicators?
+      At or above at least one threshold?
     </div>
     <div>
       Yes

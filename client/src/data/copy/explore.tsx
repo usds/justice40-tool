@@ -292,6 +292,24 @@ export const COMMUNITY = {
   },
 };
 
+export const numberOfCategoriesExceeded = (categoryCount:number) => <FormattedMessage
+  id={'explore.tool.page.side.panel.num.categories.exceeded'}
+  defaultMessage={`Disadvantaged in {numberOfDisCategories} categories`}
+  description={`Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show how many categories are exceeded`}
+  values={{
+    numberOfDisCategories: <FormattedNumber value={categoryCount} />,
+  }}
+/>;
+
+export const numberOfThresholdsExceeded = (thresholds:number) => <FormattedMessage
+  id={'explore.tool.page.side.panel.num.thresholds.exceeded'}
+  defaultMessage={`At or above {numberOfThresholdExceed} thresholds`}
+  description={`Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show how many thresholds are exceeded`}
+  values={{
+    numberOfThresholdExceed: <FormattedNumber value={thresholds} />,
+  }}
+/>;
+
 export const SEND_FEEDBACK = defineMessages({
   EMAIL_BODY: {
     id: 'explore.tool.page.side.panel.send.feedback.email.body',
@@ -710,29 +728,29 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
 
 export const SIDE_PANEL_SPACERS = {
   EXCEED_ONE_OR_MORE: <FormattedMessage
-    id={'explore.page.side.panel.exceed.burden.one.or.more'}
-    description={'Exceeds the threshold for one or more burden indicators?'}
-    defaultMessage={`Exceeds the threshold for one or more burden indicators?`}
+    id={'explore.page.side.panel.at.or.above.at.least.one'}
+    defaultMessage={`At or above at least one threshold?`}
+    description={`Navigate to the explore the tool page. When the map is in view, click on the map. Click on a category to expand. This is the first question text around thresholds.`}
   />,
   EXCEED_BOTH_SOCIO: <FormattedMessage
-    id={'explore.page.side.panel.exceed.burden.both.socio'}
-    description={'Exceeds the threshold for both socioeconomic indicators?'}
-    defaultMessage={`Exceeds the threshold for both socioeconomic indicators?`}
+    id={'explore.page.side.panel.at.or.above.both.thresholds'}
+    defaultMessage={`At or above both associated thresholds?`}
+    description={`Navigate to the explore the tool page. When the map is in view, click on the map. Click on a category to expand. This is the second question text around thresholds.`}
   />,
   YES: <FormattedMessage
     id={'explore.page.side.panel.exceed.burden.answer.yes'}
-    description={'Yes'}
     defaultMessage={`Yes`}
+    description={'Navigate to the explore the tool page. When the map is in view, click on the map. This will display YES if the census tract is disadvantaged'}
   />,
   NO: <FormattedMessage
     id={'explore.page.side.panel.exceed.burden.answer.no'}
-    description={'No'}
     defaultMessage={`No`}
+    description={'Navigate to the explore the tool page. When the map is in view, click on the map. This will display NO if the census tract is disadvantaged'}
   />,
   AND: <FormattedMessage
     id={'explore.page.side.panel.spacer.and'}
-    description={'AND'}
     defaultMessage={`AND`}
+    description={'Navigate to the explore the tool page. When the map is in view, click on the map. Click on a category to expand. This is the AND spacer around thresholds.'}
   />,
 };
 
