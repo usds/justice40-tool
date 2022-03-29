@@ -50,7 +50,7 @@ exports[`rendering of the CategoryCard checks if component renders 1`] = `
       >
         low income
       </a>
-       AND 80% or more adults 15 or older are not enrolled in 
+       AND 80% or more of adults 15 or older are not enrolled in 
       <a
         href="#high-ed-enroll-rate"
       >

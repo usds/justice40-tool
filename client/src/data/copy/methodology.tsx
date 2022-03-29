@@ -151,7 +151,7 @@ export const CATEGORY_AND_CLAUSE = {
   LOW_INC_65_WHEN_HIGH_ED_LTE_20: <FormattedMessage
     id= {'methodology.page.category.and.clause.low.inc.hs.ed'}
     defaultMessage={`
-      <boldtag>AND</boldtag> is above the 65th percentile for <link1>low income</link1> AND 80% or more adults 15 or older are not enrolled in <link2>higher education</link2> 
+      <boldtag>AND</boldtag> is above the 65th percentile for <link1>low income</link1> AND 80% or more of adults 15 or older are not enrolled in <link2>higher education</link2> 
     `}
     description= {'Navigate to the methodology page. Navigate to the category section. This is category portion of the formula dealing with lower income and high school degree rate'}
     values= {{
