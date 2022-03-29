@@ -832,6 +832,7 @@ class ScoreM(Score):
             field_names.M_HEALTH,
             field_names.M_WORKFORCE,
         ]
+        self.df[field_names.CATEGORY_COUNT] = self.df[factors].sum(axis=1)
         self.df[field_names.SCORE_M_COMMUNITIES] = self.df[factors].any(axis=1)
 
         # Note: this is purely used for comparison tool analysis, and can be removed at a later date. - LMB.

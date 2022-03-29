@@ -591,6 +591,7 @@ LOW_READING_LOW_HS_EDUCATION_FIELD = (
 )
 
 THRESHOLD_COUNT = "Total threshold criteria exceeded"
+CATEGORY_COUNT = "Total categories exceeded"
 
 FPL_200_SERIES = "Is low income?"
 FPL_200_AND_COLLEGE_ATTENDANCE_SERIES = (
