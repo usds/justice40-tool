@@ -248,7 +248,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
         >
           <div>
             <div>
-              High school degree attainment rate
+              High school degree non-attainment
               <div>
                 
       Percent of people ages 25 years or older whose education level is less than a high school diploma 
@@ -290,7 +290,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
         >
           <div>
             <div>
-              High school degree attainment rate
+              High school degree non-attainment
               <div>
                 
       Percent of people ages 25 years or older whose education level is less than a high school diploma 
@@ -321,7 +321,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
         >
           <div>
             <div>
-              Higher ed enrollment rate
+              Higher education non-enrollement
               <div>
                 
       Percent of the census tract's population 15 or older not enrolled in college, university, or 
@@ -622,7 +622,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         >
           <div>
             <div>
-              Higher ed enrollment rate
+              Higher education non-enrollement
               <div>
                 
       Percent of the census tract's population 15 or older not enrolled in college, university, or 
@@ -799,7 +799,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         >
           <div>
             <div>
-              Higher ed enrollment rate
+              Higher education non-enrollement
               <div>
                 
       Percent of the census tract's population 15 or older not enrolled in college, university, or 
@@ -976,7 +976,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         >
           <div>
             <div>
-              Higher ed enrollment rate
+              Higher education non-enrollement
               <div>
                 
       Percent of the census tract's population 15 or older not enrolled in college, university, or 
@@ -1165,7 +1165,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         >
           <div>
             <div>
-              Higher ed enrollment rate
+              Higher education non-enrollement
               <div>
                 
       Percent of the census tract's population 15 or older not enrolled in college, university, or 
@@ -1371,7 +1371,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         >
           <div>
             <div>
-              Higher ed enrollment rate
+              Higher education non-enrollement
               <div>
                 
       Percent of the census tract's population 15 or older not enrolled in college, university, or 
@@ -1519,7 +1519,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         >
           <div>
             <div>
-              Higher ed enrollment rate
+              Higher education non-enrollement
               <div>
                 
       Percent of the census tract's population 15 or older not enrolled in college, university, or 
@@ -1761,7 +1761,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         >
           <div>
             <div>
-              Higher ed enrollment rate
+              Higher education non-enrollement
               <div>
                 
       Percent of the census tract's population 15 or older not enrolled in college, university, or 
@@ -1990,7 +1990,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         >
           <div>
             <div>
-              High school degree attainment rate
+              High school degree non-attainment
               <div>
                 
       Percent of people ages 25 years or older whose education level is less than a high school diploma 
@@ -2014,7 +2014,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
               <div>
                 <div>
-                  above 90
+                  above 10
                 </div>
                 <div>
                   percent
@@ -2029,7 +2029,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         >
           <div>
             <div>
-              Higher ed enrollment rate
+              Higher education non-enrollement
               <div>
                 
       Percent of the census tract's population 15 or older not enrolled in college, university, or 
@@ -2351,7 +2351,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
         >
           <div>
             <div>
-              High school degree attainment rate
+              High school degree non-attainment
               <div>
                 
       Percent of people ages 25 years or older whose education level is less than a high school diploma 
@@ -2375,7 +2375,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               </div>
               <div>
                 <div>
-                  above 90
+                  above 10
                 </div>
                 <div>
                   percent
@@ -2390,7 +2390,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
         >
           <div>
             <div>
-              Higher ed enrollment rate
+              Higher education non-enrollement
               <div>
                 
       Percent of the census tract's population 15 or older not enrolled in college, university, or 

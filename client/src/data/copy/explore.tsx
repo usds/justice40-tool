@@ -408,7 +408,7 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
     description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show low income`},
   HIGH_ED: {
     id: 'explore.tool.page.side.panel.indicator.high.ed',
-    defaultMessage: 'Higher ed enrollment rate',
+    defaultMessage: 'Higher education non-enrollement',
     description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Higher ed degree achievement rate
 `,
   },
@@ -509,7 +509,7 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
   },
   HIGH_SCL: {
     id: 'explore.tool.page.side.panel.indicator.high.school',
-    defaultMessage: 'High school degree attainment rate',
+    defaultMessage: 'High school degree non-attainment',
     description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show High school degree achievement rate`,
   },
 });

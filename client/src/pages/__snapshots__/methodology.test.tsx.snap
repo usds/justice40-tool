@@ -516,12 +516,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             low income
           </a>
-           AND at or below 
-      20% for 
+           AND 80% or more of adults 15 or older are not enrolled in 
           <a
             href="#high-ed-enroll-rate"
           >
-            higher ed enrollment rate
+            higher education
           </a>
            
     
@@ -570,12 +569,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             low income
           </a>
-           AND at or below 
-      20% for 
+           AND 80% or more of adults 15 or older are not enrolled in 
           <a
             href="#high-ed-enroll-rate"
           >
-            higher ed enrollment rate
+            higher education
           </a>
            
     
@@ -628,12 +626,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             low income
           </a>
-           AND at or below 
-      20% for 
+           AND 80% or more of adults 15 or older are not enrolled in 
           <a
             href="#high-ed-enroll-rate"
           >
-            higher ed enrollment rate
+            higher education
           </a>
            
     
@@ -688,12 +685,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             low income
           </a>
-           AND at or below 
-      20% for 
+           AND 80% or more of adults 15 or older are not enrolled in 
           <a
             href="#high-ed-enroll-rate"
           >
-            higher ed enrollment rate
+            higher education
           </a>
            
     
@@ -748,12 +744,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             low income
           </a>
-           AND at or below 
-      20% for 
+           AND 80% or more of adults 15 or older are not enrolled in 
           <a
             href="#high-ed-enroll-rate"
           >
-            higher ed enrollment rate
+            higher education
           </a>
            
     
@@ -796,12 +791,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             low income
           </a>
-           AND at or below 
-      20% for 
+           AND 80% or more of adults 15 or older are not enrolled in 
           <a
             href="#high-ed-enroll-rate"
           >
-            higher ed enrollment rate
+            higher education
           </a>
            
     
@@ -862,12 +856,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             low income
           </a>
-           AND at or below 
-      20% for 
+           AND 80% or more of adults 15 or older are not enrolled in 
           <a
             href="#high-ed-enroll-rate"
           >
-            higher ed enrollment rate
+            higher education
           </a>
            
     
@@ -922,17 +915,17 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is at or less than 90% for 
+           10% or more of adults 25 or older have not attained a 
           <a
             href="#high-school"
           >
-            high school degree attainment rate
+            high school degree
           </a>
-           for adults 25 years and older AND at or below 20% for 
+           AND 80% or more of adults 15 or older are not enrolled in 
           <a
             href="#high-ed-enroll-rate"
           >
-            higher ed enrollment rate
+            higher education
           </a>
            
   
@@ -1039,11 +1032,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="high-ed-enroll-rate"
               >
                 <h3>
-                  Higher ed enrollment rate
+                  Higher education non-enrollment
                 </h3>
                 <div>
                   
-        Percent of people who are currently enrolled in college or graduate school.
+        Percent of people 15 or older who are not currently enrolled in college, university, or graduate school.
       
                 </div>
                 <ul>
@@ -1078,7 +1071,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Available for: 
                     </span>
-                    All U.S. states and the District of Columbia
+                    All U.S. states, the District of Columbia, and Puerto Rico
                   </li>
                 </ul>
               </div>
@@ -2246,12 +2239,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 id="high-school"
               >
                 <h3>
-                  High school degree attainment rate
+                  High school degree non-attainment
                 </h3>
                 <div>
                   
-        Percent of people ages 25 years or older in a census tract whose
-        education level is less than a high school diploma.
+        Percent of people age 25 years or older in a census tract whose education level is less than a high school diploma.
       
                 </div>
                 <ul>

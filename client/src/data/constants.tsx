@@ -63,6 +63,8 @@ export const IS_FEDERAL_POVERTY_LEVEL_200 = 'FPL200S';
 export const HIGHER_ED_PERCENTILE = 'CA';
 export const IS_HIGHER_ED_PERCENTILE = 'CA_LT20';
 
+export const NON_HIGHER_ED_PERCENTILE = 'NCA';
+
 
 // Energy category
 export const IS_ENERGY_FACTOR_DISADVANTAGED_M = 'M_ENY';

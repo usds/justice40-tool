@@ -200,12 +200,12 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
   const higherEd:indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HIGH_ED),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.HIGH_ED),
-    value: properties.hasOwnProperty(constants.HIGHER_ED_PERCENTILE) ?
-      properties[constants.HIGHER_ED_PERCENTILE] : null,
+    value: properties.hasOwnProperty(constants.NON_HIGHER_ED_PERCENTILE) ?
+      properties[constants.NON_HIGHER_ED_PERCENTILE] : null,
     isDisadvagtaged: properties[constants.IS_HIGHER_ED_PERCENTILE] ?
       properties[constants.IS_HIGHER_ED_PERCENTILE] : null,
     isPercent: true,
-    threshold: 20,
+    threshold: 80,
   };
 
   const energyBurden:indicatorInfo = {
@@ -365,7 +365,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
     value: getWorkForceIndicatorValue('highSchool'),
     isDisadvagtaged: getWorkForceIndicatorIsDisadv('highSchool'),
     isPercent: true,
-    threshold: 90,
+    threshold: 10,
   };
 
   /**

@@ -72,12 +72,11 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           low income
         </a>
-         AND at or below 
-      20% for 
+         AND 80% or more of adults 15 or older are not enrolled in 
         <a
           href="#high-ed-enroll-rate"
         >
-          higher ed enrollment rate
+          higher education
         </a>
          
     
@@ -126,12 +125,11 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           low income
         </a>
-         AND at or below 
-      20% for 
+         AND 80% or more of adults 15 or older are not enrolled in 
         <a
           href="#high-ed-enroll-rate"
         >
-          higher ed enrollment rate
+          higher education
         </a>
          
     
@@ -184,12 +182,11 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           low income
         </a>
-         AND at or below 
-      20% for 
+         AND 80% or more of adults 15 or older are not enrolled in 
         <a
           href="#high-ed-enroll-rate"
         >
-          higher ed enrollment rate
+          higher education
         </a>
          
     
@@ -244,12 +241,11 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           low income
         </a>
-         AND at or below 
-      20% for 
+         AND 80% or more of adults 15 or older are not enrolled in 
         <a
           href="#high-ed-enroll-rate"
         >
-          higher ed enrollment rate
+          higher education
         </a>
          
     
@@ -304,12 +300,11 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           low income
         </a>
-         AND at or below 
-      20% for 
+         AND 80% or more of adults 15 or older are not enrolled in 
         <a
           href="#high-ed-enroll-rate"
         >
-          higher ed enrollment rate
+          higher education
         </a>
          
     
@@ -352,12 +347,11 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           low income
         </a>
-         AND at or below 
-      20% for 
+         AND 80% or more of adults 15 or older are not enrolled in 
         <a
           href="#high-ed-enroll-rate"
         >
-          higher ed enrollment rate
+          higher education
         </a>
          
     
@@ -418,12 +412,11 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           low income
         </a>
-         AND at or below 
-      20% for 
+         AND 80% or more of adults 15 or older are not enrolled in 
         <a
           href="#high-ed-enroll-rate"
         >
-          higher ed enrollment rate
+          higher education
         </a>
          
     
@@ -478,17 +471,17 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           AND
         </strong>
-         is at or less than 90% for 
+         10% or more of adults 25 or older have not attained a 
         <a
           href="#high-school"
         >
-          high school degree attainment rate
+          high school degree
         </a>
-         for adults 25 years and older AND at or below 20% for 
+         AND 80% or more of adults 15 or older are not enrolled in 
         <a
           href="#high-ed-enroll-rate"
         >
-          higher ed enrollment rate
+          higher education
         </a>
          
   
