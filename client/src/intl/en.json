@@ -211,21 +211,21 @@
     "defaultMessage": "Contact",
     "description": "Navigate to the contact page, this is the contact page title text"
   },
+  "explore.page.side.panel.at.or.above.at.least.one": {
+    "defaultMessage": "At or above at least one threshold?",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. Click on a category to expand. This is the first question text around thresholds."
+  },
+  "explore.page.side.panel.at.or.above.both.thresholds": {
+    "defaultMessage": "At or above both associated thresholds?",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. Click on a category to expand. This is the second question text around thresholds."
+  },
   "explore.page.side.panel.exceed.burden.answer.no": {
     "defaultMessage": "No",
-    "description": "No"
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. This will display NO if the census tract is disadvantaged"
   },
   "explore.page.side.panel.exceed.burden.answer.yes": {
     "defaultMessage": "Yes",
-    "description": "Yes"
-  },
-  "explore.page.side.panel.exceed.burden.both.socio": {
-    "defaultMessage": "Exceeds the threshold for both socioeconomic indicators?",
-    "description": "Exceeds the threshold for both socioeconomic indicators?"
-  },
-  "explore.page.side.panel.exceed.burden.one.or.more": {
-    "defaultMessage": "Exceeds the threshold for one or more burden indicators?",
-    "description": "Exceeds the threshold for one or more burden indicators?"
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. This will display YES if the census tract is disadvantaged"
   },
   "explore.page.side.panel.indicator.value.arrow.down.alt.text": {
     "defaultMessage": "an icon for the down arrow",
@@ -261,7 +261,7 @@
   },
   "explore.page.side.panel.spacer.and": {
     "defaultMessage": "AND",
-    "description": "AND"
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. Click on a category to expand. This is the AND spacer around thresholds."
   },
   "explore.tool.page.description.text": {
     "defaultMessage": "Use the map to see communities that are identified as disadvantaged. The map uses publicly-available, nationally-consistent datasets. Learn more about the methodology and datasets that were used to identify disavantaged communities in the current version of the tool on the <link1>Methodology & data</link1> page.",

@@ -116,7 +116,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
       >
         <div>
           <div>
-            Exceeds the threshold for one or more burden indicators?
+            At or above at least one threshold?
           </div>
           <div>
             No
@@ -278,7 +278,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
         </div>
         <div>
           <div>
-            Exceeds the threshold for both socioeconomic indicators?
+            At or above both associated thresholds?
           </div>
           <div>
             No
@@ -469,7 +469,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       >
         <div>
           <div>
-            Exceeds the threshold for one or more burden indicators?
+            At or above at least one threshold?
           </div>
           <div>
             No
@@ -569,7 +569,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </div>
         <div>
           <div>
-            Exceeds the threshold for both socioeconomic indicators?
+            At or above both associated thresholds?
           </div>
           <div>
             No
@@ -677,7 +677,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       >
         <div>
           <div>
-            Exceeds the threshold for one or more burden indicators?
+            At or above at least one threshold?
           </div>
           <div>
             No
@@ -746,7 +746,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </div>
         <div>
           <div>
-            Exceeds the threshold for both socioeconomic indicators?
+            At or above both associated thresholds?
           </div>
           <div>
             No
@@ -854,7 +854,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       >
         <div>
           <div>
-            Exceeds the threshold for one or more burden indicators?
+            At or above at least one threshold?
           </div>
           <div>
             No
@@ -923,7 +923,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </div>
         <div>
           <div>
-            Exceeds the threshold for both socioeconomic indicators?
+            At or above both associated thresholds?
           </div>
           <div>
             No
@@ -1031,7 +1031,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       >
         <div>
           <div>
-            Exceeds the threshold for one or more burden indicators?
+            At or above at least one threshold?
           </div>
           <div>
             No
@@ -1112,7 +1112,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </div>
         <div>
           <div>
-            Exceeds the threshold for both socioeconomic indicators?
+            At or above both associated thresholds?
           </div>
           <div>
             No
@@ -1220,7 +1220,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       >
         <div>
           <div>
-            Exceeds the threshold for one or more burden indicators?
+            At or above at least one threshold?
           </div>
           <div>
             No
@@ -1318,7 +1318,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </div>
         <div>
           <div>
-            Exceeds the threshold for both socioeconomic indicators?
+            At or above both associated thresholds?
           </div>
           <div>
             No
@@ -1426,7 +1426,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       >
         <div>
           <div>
-            Exceeds the threshold for one or more burden indicators?
+            At or above at least one threshold?
           </div>
           <div>
             No
@@ -1466,7 +1466,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </div>
         <div>
           <div>
-            Exceeds the threshold for both socioeconomic indicators?
+            At or above both associated thresholds?
           </div>
           <div>
             No
@@ -1574,7 +1574,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       >
         <div>
           <div>
-            Exceeds the threshold for one or more burden indicators?
+            At or above at least one threshold?
           </div>
           <div>
             No
@@ -1708,7 +1708,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </div>
         <div>
           <div>
-            Exceeds the threshold for both socioeconomic indicators?
+            At or above both associated thresholds?
           </div>
           <div>
             No
@@ -1816,7 +1816,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       >
         <div>
           <div>
-            Exceeds the threshold for one or more burden indicators?
+            At or above at least one threshold?
           </div>
           <div>
             No
@@ -1978,7 +1978,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </div>
         <div>
           <div>
-            Exceeds the threshold for both socioeconomic indicators?
+            At or above both associated thresholds?
           </div>
           <div>
             No
@@ -2177,7 +2177,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
       >
         <div>
           <div>
-            Exceeds the threshold for one or more burden indicators?
+            At or above at least one threshold?
           </div>
           <div>
             No
@@ -2339,7 +2339,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
         </div>
         <div>
           <div>
-            Exceeds the threshold for both socioeconomic indicators?
+            At or above both associated thresholds?
           </div>
           <div>
             No
