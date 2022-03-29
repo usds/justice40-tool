@@ -53,7 +53,10 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
         <div />
       </div>
       <div>
-         of  thresholds exceeded
+        Disadvantaged in 5 categories
+      </div>
+      <div>
+        At or above 3 thresholds
       </div>
       <a
         href="
@@ -397,7 +400,10 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         <div />
       </div>
       <div>
-         of  thresholds exceeded
+        Disadvantaged in 5 categories
+      </div>
+      <div>
+        At or above 3 thresholds
       </div>
       <a
         href="
@@ -2096,7 +2102,10 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
         <div />
       </div>
       <div>
-         of  thresholds exceeded
+        Disadvantaged in 5 categories
+      </div>
+      <div>
+        At or above 3 thresholds
       </div>
       <a
         href="

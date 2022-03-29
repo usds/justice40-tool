@@ -9,11 +9,6 @@ $sidePanelLabelFontColor: #171716;
   font-weight: 600;
 }
 
-@mixin thresholdExceeded {
-  font-size: medium;
-  @include u-margin-top('05');
-}
-
 .versionInfo {
   padding: .5rem 1rem .5rem 1.2rem;
   font-size: medium;
@@ -24,7 +19,6 @@ $sidePanelLabelFontColor: #171716;
   display: flex;
   flex-direction: column;
 }
-
 
 .categorization {
   display: flex;
@@ -48,15 +42,15 @@ $sidePanelLabelFontColor: #171716;
     }
   }
 
-  .showThresholdExceed {
-    @include thresholdExceeded;
-    display: block;
-    
+  .showCategoriesExceed {
+    font-size: small;
+    @include u-margin-top('05');
   }
-  
-  .hideThresholdExceed {
-    @include thresholdExceeded;
-    visibility: hidden;
+
+  .showThresholdExceed {
+    font-size: small;
+    @include u-margin-top('05');
+    
   }
 
   .sendFeedbackBtn {
