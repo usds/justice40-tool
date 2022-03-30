@@ -25,7 +25,7 @@ __What is the output?__
 
 When you run this, you'll get back three files:
 1. The filled-in parameter notebook that you can run live, with the date appended. This means if you run the script twice in one day, the notebook will get overriden, but if you run the script on two consecutive days, you will get two separate notebooks saved. 
-2. A graph that shows the relative average of the specified `ADDITIONAL_DEMO_COLUMNS` and `DEMOGRAPHIC_COLUMNS` segmented by CEJST and the variable you include. This gets overridden with every run. 
+2. A graph that shows the relative average of the specified `ADDITIONAL_DEMO_COLUMNS` and `DEMOGRAPHIC_COLUMNS` segmented by CEJST and the comparator you include. This gets overridden with every run. 
 3. An excel file with many tabs that has summary statistics from the comparison of the two classifications (the cejst and the comparator).
 
 In more detail, the excel file contains the following tabs:
@@ -41,7 +41,6 @@ __What parameters go in the yaml file?__
 - COMPARATOR_COLUMN: the name of the column that has a boolean (*must be TRUE / FALSE*) for whether or not the tract is prioritized. You provide this! 
 - DEMOGRAPHIC_COLUMNS: list, demographic columns from another file that you'd like to include in the analysis. 
 - DEMOGRAPHIC_FILE: the file that has the census demographic information. This name suggests, in theory, that you've run our pipeline and are using the ACS output -- but any file with `GEOID10_TRACT` as the field with census tract IDs will work. 
-- GEOID_COLUMN: this tells the code where you're storing tract IDs. It must always be in a column named `GEOID10_TRACT`
 - OUTPUT_DATA_PATH: where you want the output to be. Convention: output + folder named of data source. Note that the folder name of the data source gets read as the "data name" for some of the outputs. 
 - SCORE_COLUMN: CEJST score boolean name column name. 
 - SCORE_FILE: CEJST full score file. This requires that you've run our pipeline, but in theory,  the downloaded file should also work, provided the columns are named appropriately. 
@@ -51,10 +50,19 @@ __What parameters go in the yaml file?__
 
 __Cleaning data__
 
-Comparator data should live in a flat csv. just like the CEJST data. Right now, each comparator has a folder in `comparison_tool/data` that contains a notebook to clean the data (this is because the data is often quirky and so live inspection is easier), the `raw` data, and the `clean` data. We can also point the `yaml` to an `ETL` output, for files in which there are multiple important columns, if you want to use one of the data sources the CEJST team has already included in the pipeline. When you point to an `ETL` class's output, the following constraints are already true. When you make your own output for comparison, make sure to follow the steps below. 
+Comparator data should live in a flat csv, just like the CEJST data. Right now, each comparator has a folder in `comparison_tool/data` that contains a notebook to clean the data (this is because the data is often quirky and so live inspection is easier), the `raw` data, and the `clean` data. We can also point the `yaml` to an `ETL` output, for files in which there are multiple important columns, if you want to use one of the data sources the CEJST team has already included in the pipeline. When you point to an `ETL` class's output, the following constraints are already true. When you make your own output for comparison, make sure to follow the steps below. 
 
 When you clean the data, it's important that you:
 1. Ensure the tract level id is named the same as the field name in score M (`field_names.`)
 2. Ensure the identification column is a `bool`
 
 You will provide the path to the comparator data in the parameter yaml file. 
+
+__How to use the shell script__
+
+We have also included a shell script, `run_all_comparisons.sh`. This script includes all 
+of the commands that we have run to generate pairwise comparisons. 
+
+To run: `$ bash run_all_comparisons.sh`
+
+To add to it: create a new line and include the command line for each notebook run. 

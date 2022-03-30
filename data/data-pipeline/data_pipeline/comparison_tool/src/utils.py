@@ -162,7 +162,8 @@ def get_final_summary_info(
     comparator_file: str,
     geoid_col: str,
 ) -> tuple[pd.DataFrame, str]:
-    """
+    """Creates summary table.
+
     This creates a series that tells us what share (%) of census tracts identified
     by the comparator are also in CEJST and what states the comparator covers.
     """
@@ -174,6 +175,8 @@ def get_final_summary_info(
         # for when we are looking at a disjoint set, like donut holes
         comparator_and_cejst_proportion_series = pd.DataFrame()
 
+    # we pull all fips codes from the comparator column -- this is a very quick
+    # read
     states_represented = (
         pd.read_csv(
             comparator_file, usecols=[geoid_col], dtype={geoid_col: str}
@@ -181,11 +184,13 @@ def get_final_summary_info(
         .str[:2]
         .unique()
     )
+    # We join all states into a single string here so they can be printed in a single
+    # cell in the excel file.
     states = ", ".join(
         [
             FIPS_MAP[state]
             if (state in FIPS_MAP)
-            else f"territory (fips {state})"
+            else f"Comparator code missing: (fips {state})"
             for state in states_represented
         ]
     )
@@ -258,6 +263,7 @@ def write_excel_tab_about_comparator_scope(
     merge_format: xlsxwriter.format.Format,
     states_text: str,
 ):
+    """Writes single tab for the excel file about high level comparator stats"""
     comparator_and_cejst_proportion_series.to_excel(
         writer, sheet_name=worksheet_name
     )
