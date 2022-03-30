@@ -12,18 +12,18 @@ exports[`rendering of the MethodologyFormula checks if component renders 1`] = `
     <p>
       
       
-      <span>
+      <strong>
         IF
-      </span>
+      </strong>
        the census tract is above the threshold for one or more environmental or climate indicators
       
     </p>
     <p>
       
       
-      <span>
+      <strong>
         AND
-      </span>
+      </strong>
        the census tract is above the threshold for the socioeconomic indicators
     
     </p>

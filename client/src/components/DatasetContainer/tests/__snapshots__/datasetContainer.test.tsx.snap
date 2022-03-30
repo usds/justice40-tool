@@ -101,11 +101,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               id="high-ed-enroll-rate"
             >
               <h3>
-                Higher ed enrollment rate
+                Higher education non-enrollment
               </h3>
               <div>
                 
-        Percent of people who are currently enrolled in college or graduate school.
+        Percent of people 15 or older who are not currently enrolled in college, university, or graduate school.
       
               </div>
               <ul>
@@ -140,7 +140,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <span>
                     Available for: 
                   </span>
-                  All U.S. states and the District of Columbia
+                  All U.S. states, the District of Columbia, and Puerto Rico
                 </li>
               </ul>
             </div>
@@ -380,8 +380,6 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <span>
                     Source: 
                   </span>
-                  
-      
                   <a
                     class="usa-link usa-link--external"
                     data-cy=""
@@ -391,8 +389,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   >
                     Fusion of model and monitor data
                   </a>
-                   from 2017 as compiled by EPA’s EJSCREEN, sourced from EPA National Air 
-      Toxics Assessment (NATA) and the U.S. Department of Transportation (DOT) traffic data
+                   from 2017 as compiled by EPA’s EJSCREEN, sourced from EPA National Air Toxics Assessment (NATA) and the U.S. Department of Transportation (DOT) traffic data
     
                 </li>
                 <li>
@@ -995,22 +992,18 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div>
                 
         Average number of years of life a person who has attained a given age can expect to live.
-        
-                <p>
-                  <strong>
-                    Note:
-                  </strong>
-                  
-          Unlike most of the other datasets, high values of this data indicate low burdens. For 
-          percentile calculations of burden, the percentile is calculated in reverse order, so that the 
-          census tract with the highest life expectancy relative to area life expectancy (lowest burden 
-            on this measure) is at the 0th percentile, and the census tract with the lowest life 
-          expectancy relative to area life expectancy (highest burden on this measure) is at the 
-          100th percentile. Census tracts with the highest number have the lowest life expectancy.
-        
-                </p>
-                
       
+              </div>
+              <div>
+                <p>
+                  
+        
+                  <strong>
+                    Note: 
+                  </strong>
+                  The percentiles for this dataset have been reversed so that census tracts with lower numbers have higher life expectancies and the census tracts with higher numbers have lower life expectancy when compared to life expectancy in the area.
+      
+                </p>
               </div>
               <ul>
                 <li>
@@ -1057,22 +1050,18 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div>
                 
         Median income of the census tract calculated as a percent of the area’s median income.
-        
-                <p>
-                  <strong>
-                    Note:
-                  </strong>
-                  
-          Unlike most of the other datasets, high values of this data indicate low burdens. For 
-          percentile calculations of burden, the percentile is calculated in reverse order, so that the 
-          census tract with the highest median income relative to area median income (lowest burden on this 
-          measure) is at the 0th percentile, and the census tract with the lowest median income relative to 
-          area median income (highest burden on this measure) is at the 100th percentile. Census tracts with 
-          the highest number have the lowest median income.
-        
-                </p>
-                
       
+              </div>
+              <div>
+                <p>
+                  
+        
+                  <strong>
+                    Note: 
+                  </strong>
+                  The percentiles for this dataset have been reversed so that census tracts with lower numbers have higher median incomes and census tracts with the higher numbers have lower median income when compared to area median income.
+      
+                </p>
               </div>
               <ul>
                 <li>
@@ -1319,12 +1308,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               id="high-school"
             >
               <h3>
-                High school degree attainment rate
+                High school degree non-attainment
               </h3>
               <div>
                 
-        Percent of people ages 25 years or older in a census tract whose
-        education level is less than a high school diploma.
+        Percent of people age 25 years or older in a census tract whose education level is less than a high school diploma.
       
               </div>
               <ul>

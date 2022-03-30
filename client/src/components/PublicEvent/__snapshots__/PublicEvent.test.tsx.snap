@@ -16,18 +16,7 @@ exports[`rendering of the PublicEvent checks if component renders 1`] = `
       <h3
         class="usa-collection__heading"
       >
-        <a
-          class="usa-link usa-link--external"
-          data-cy="mar-9-reg-link-block"
-          href="https://pitc.zoomgov.com/webinar/register/WN_D-Om_xXhTtiLv71y3Rr1CQ"
-          rel="noreferrer"
-          target="_blank"
-        >
-          CEJST 
-            training session 
-            #1
-          
-        </a>
+        CEJST training session #1
       </h3>
       <p
         class="usa-collection__description"
@@ -59,6 +48,7 @@ exports[`rendering of the PublicEvent checks if component renders 1`] = `
           <button
             class="usa-button"
             data-testid="button"
+            disabled=""
             type="button"
           >
             Registration link

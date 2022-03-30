@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of the component expects the render to match snapshot 1`] = `
+<DocumentFragment>
+  <aside>
+    <header
+      tabindex="0"
+    >
+      Things to know
+    </header>
+    <p
+      tabindex="0"
+    >
+      
+      This tool identifies communities that are marginalized, underserved, and overburdened by pollution. These communities are located in census tracts that are at or above the thresholds in one or more of eight categories of criteria.
+    
+    </p>
+    <img
+      alt="
+      An icon that has depicts pieces of a block selected mimicing the census block census tracts
+    "
+      src="test-file-stub"
+      tabindex="0"
+    />
+    <p
+      tabindex="0"
+    >
+      
+      The tool uses census tracts that represent about 4,000 people, which is the smallest unit of geography for which consistent data can be displayed on the tool.
+    
+    </p>
+    <img
+      alt="
+      An icon that a bell curve or gaussian distribution
+    "
+      src="test-file-stub"
+      tabindex="0"
+    />
+    <p
+      tabindex="0"
+    >
+      
+      The tool ranks each census tract using percentiles that show how much burden each tract experiences relative to all other tracts, for each criteria.
+    
+    </p>
+    <img
+      alt="
+      An icon that depicts a part of pie chart being removed
+    "
+      src="test-file-stub"
+      tabindex="0"
+    />
+    <p
+      tabindex="0"
+    >
+      
+      Percentages are used for certain variables, i.e. those relating to high school achievement rate and to the share of individuals not currently enrolled in higher education.
+    
+    </p>
+    <img
+      alt="
+      An icon that has an up arrow and a down arrow
+    "
+      src="test-file-stub"
+      tabindex="0"
+    />
+    <p
+      tabindex="0"
+    >
+      
+    Thresholds for each category determine if a tract should be identified as disadvantaged because it has exceeded a certain value for the relevant indicators.
+  
+    </p>
+  </aside>
+</DocumentFragment>
+`;

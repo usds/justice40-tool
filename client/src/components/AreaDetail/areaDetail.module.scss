@@ -9,11 +9,6 @@ $sidePanelLabelFontColor: #171716;
   font-weight: 600;
 }
 
-@mixin thresholdExceeded {
-  font-size: medium;
-  @include u-margin-top('05');
-}
-
 .versionInfo {
   padding: .5rem 1rem .5rem 1.2rem;
   font-size: medium;
@@ -24,7 +19,6 @@ $sidePanelLabelFontColor: #171716;
   display: flex;
   flex-direction: column;
 }
-
 
 .categorization {
   display: flex;
@@ -48,19 +42,45 @@ $sidePanelLabelFontColor: #171716;
     }
   }
 
-  .showThresholdExceed {
-    @include thresholdExceeded;
-    display: block;
-    
-  }
-  
-  .hideThresholdExceed {
-    @include thresholdExceeded;
-    visibility: hidden;
+  .showCategoriesExceed {
+    font-size: small;
+    @include u-margin-top('05');
   }
 
-  .sendFeedbackBtn {
+  .showThresholdExceed {
+    font-size: small;
+    @include u-margin-top('05');
+    
+  }
+
+  .sendFeedbackLink {
     @include u-margin-top(2);
+
+    .sendFeedbackBtn{
+      @include u-text("blue-70v");
+      @include u-bg("yellow-20v");
+      height: 40px; 
+      
+      &:hover {
+        @include u-bg("yellow-20");
+        @include u-text("gray-90");
+      }
+
+      .buttonContainer{
+        display: flex;
+
+        .buttonText{
+          @include u-margin-right(1);
+        }
+
+        .buttonImage{
+          width: 21px;
+          margin-top: -3px;
+
+          filter: invert(13%) sepia(76%) saturate(5142%) hue-rotate(192deg) brightness(80%) contrast(106%);
+        }
+      }
+    }
   }
 
 }
@@ -82,14 +102,6 @@ $sidePanelLabelFontColor: #171716;
   }  
 }
 
-// The following class is used in the AccordionItems in the AreaDetail component.
-// The Accordion component (parent of AccordionItems) requires some CSS overrides.
-// Local styling is not allowing the override. 
-// The override is needed to push into the bounds of the Accordion component's styles.
-// To override this, in globals.scss, we set the this .categoryHeader's vertical alignment by
-// setting styles in:
-//    .usa-accordion__content > *:first-child
-// This first child of the accordion content is the category header:
 .categoryHeader {
   display: flex;
   justify-content: space-between;
@@ -98,4 +110,17 @@ $sidePanelLabelFontColor: #171716;
   @include u-bg('gray-cool-5');
   @include u-padding-left(2.5);
   @include u-padding-right(2);
+}
+
+.categorySpacer {
+  @include u-bg('gray-cool-3');
+
+  @include typeset('sans', '2xs', 2);
+  @include u-text('bold'); 
+
+  margin: 0 -20px 1rem -20px;
+  @include u-padding-top(2);
+  @include u-padding-bottom(2);
+  @include u-padding-left(2.5);
+  
 }

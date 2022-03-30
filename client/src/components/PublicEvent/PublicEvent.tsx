@@ -19,8 +19,9 @@ export interface IPublicEvent {
     DESC: JSX.Element,
     NUMBER: Number,
     IMAGE: React.ReactElement | string,
+    EXPIRED_IMG: React.ReactElement | string,
     FIELDS: JSX.Element,
-    REG_LINK: string,
+    REG_LINK?: string | null,
     DATA_CY: string,
   }
 }
@@ -29,24 +30,27 @@ export interface IPublicEvent {
 const PublicEvent = ({event}:IPublicEvent) => {
   const intl = useIntl();
 
+  const eventName = event.NUMBER === 0 ?
+    `CEJST ${intl.formatMessage(event.NAME)}` :
+    `CEJST ${intl.formatMessage(event.NAME)} #${event.NUMBER}`;
+
+  const isEventExpired = new Date() > event.DATE;
+
   return (
     <CollectionItem
       variantComponent={
-        <CollectionThumbnail src={event.IMAGE} alt="Alt text" />
+        <CollectionThumbnail src={isEventExpired ? event.EXPIRED_IMG : event.IMAGE} alt="Alt text" />
       }>
 
       {/* Heading */}
       <CollectionHeading>
-        <LinkTypeWrapper
-          linkText={`CEJST 
-            ${intl.formatMessage(event.NAME)} 
-            #${event.NUMBER}
-          `}
+        {isEventExpired ? eventName : <LinkTypeWrapper
+          linkText={eventName}
           internal={false}
           url={event.REG_LINK}
           openUrlNewTab={true}
           dataCy={event.DATA_CY}
-        />
+        />}
       </CollectionHeading>
 
       {/* Description */}
@@ -65,7 +69,7 @@ const PublicEvent = ({event}:IPublicEvent) => {
       {/* Registration Link */}
       <CollectionDescription className={styles.description}>
         <a href={event.REG_LINK} target={'_blank'} rel="noreferrer">
-          <Button type='button'>
+          <Button type='button' disabled={isEventExpired ? true : false}>
             {intl.formatMessage(PUBLIC_ENGAGE_COPY.EVENT_FIELDS.REG_LINK)}
           </Button>
         </a>

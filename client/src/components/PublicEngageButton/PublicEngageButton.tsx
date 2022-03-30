@@ -1,6 +1,5 @@
 import React from 'react';
-import {Link} from 'gatsby';
-import {useIntl} from 'gatsby-plugin-intl';
+import {useIntl, Link} from 'gatsby-plugin-intl';
 import {Button, Tag} from '@trussworks/react-uswds';
 
 import * as styles from './PublicEngageButton.module.scss';

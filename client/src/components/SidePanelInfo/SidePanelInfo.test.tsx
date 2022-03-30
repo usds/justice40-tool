@@ -1,16 +1,16 @@
 import * as React from 'react';
 import {render} from '@testing-library/react';
+import SidePanelInfo from './SidePanelInfo';
 import {LocalizedComponent} from '../../test/testHelpers';
-import LowIncome from './LowIncome';
 
-describe('rendering of the LowIncome', () => {
+describe('rendering of the component', () => {
   const {asFragment} = render(
       <LocalizedComponent>
-        <LowIncome />
+        <SidePanelInfo />
       </LocalizedComponent>,
   );
 
-  it('checks if component renders', () => {
+  it('expects the render to match snapshot', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 });

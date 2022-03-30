@@ -4,6 +4,7 @@ exports[`rendering of the Indicator checks if component renders 1`] = `
 <DocumentFragment>
   <li
     data-cy="indicatorBox"
+    data-testid="indicator-box"
   >
     <div>
       <div>
@@ -13,14 +14,116 @@ exports[`rendering of the Indicator checks if component renders 1`] = `
         </div>
       </div>
       <div>
-        9700
-        <sup>
-          <span>
-            th
-          </span>
-        </sup>
+        <div>
+          <div>
+            9700
+            <span>
+              %
+            </span>
+          </div>
+          <div>
+            <img
+              alt="an icon for the up arrow"
+              src="test-file-stub"
+            />
+          </div>
+        </div>
+        <div>
+          <div>
+            above 20
+          </div>
+          <div>
+            percent
+          </div>
+        </div>
       </div>
     </div>
   </li>
+</DocumentFragment>
+`;
+
+exports[`test rendering of Indicator value icons renders the down arrow when the value is above the threshold 1`] = `
+<DocumentFragment>
+  <img
+    alt="an icon for the down arrow"
+    src="test-file-stub"
+  />
+</DocumentFragment>
+`;
+
+exports[`test rendering of Indicator value icons renders the down arrow when the value is zero 1`] = `
+<DocumentFragment>
+  <img
+    alt="an icon for the down arrow"
+    src="test-file-stub"
+  />
+</DocumentFragment>
+`;
+
+exports[`test rendering of Indicator value icons renders the unavailable icon when the value is null 1`] = `
+<DocumentFragment>
+  <img
+    alt="an icon to represent data is unavailable"
+    src="test-file-stub"
+  />
+</DocumentFragment>
+`;
+
+exports[`test rendering of Indicator value icons renders the up arrow when value is above threshold 1`] = `
+<DocumentFragment>
+  <img
+    alt="an icon for the up arrow"
+    src="test-file-stub"
+  />
+</DocumentFragment>
+`;
+
+exports[`test rendering of Indicator value sub-text renders the "above 90 percentile" 1`] = `
+<DocumentFragment>
+  <div>
+    above 90th
+  </div>
+  <div>
+    percentile
+  </div>
+</DocumentFragment>
+`;
+
+exports[`test rendering of Indicator value sub-text renders the "below 90 percentile" 1`] = `
+<DocumentFragment>
+  <div>
+    below 90th
+  </div>
+  <div>
+    percentile
+  </div>
+</DocumentFragment>
+`;
+
+exports[`test rendering of Indicator value sub-text renders the "data is not available" 1`] = `
+<DocumentFragment>
+  <div>
+    data is not available
+  </div>
+</DocumentFragment>
+`;
+
+exports[`test that the unit suffix renders correctly renders correctly when the value is a null 1`] = `<DocumentFragment />`;
+
+exports[`test that the unit suffix renders correctly renders correctly when the value is a percent 1`] = `
+<DocumentFragment>
+  <span>
+    %
+  </span>
+</DocumentFragment>
+`;
+
+exports[`test that the unit suffix renders correctly renders correctly when the value is a percentile 1`] = `
+<DocumentFragment>
+  <sup>
+    <span>
+      th
+    </span>
+  </sup>
 </DocumentFragment>
 `;

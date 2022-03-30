@@ -4,14 +4,12 @@
 @mixin indicator {
   display: flex;
   flex-direction: column;
-  @include u-padding-bottom(3);
-  &:last-child {
-    border-bottom: none;
-    @include u-padding-bottom(0);
-  }
+  @include u-padding-top(1.5);
+  @include u-padding-bottom(1.5);
   
   .indicatorRow {
     display: flex;
+    justify-content: space-between;
     
     @media screen and (max-width: $mobileBreakpoint) {
       flex: 1 0 40%;
@@ -21,15 +19,16 @@
     }
     
     .indicatorName {
-      flex: 0 1 77%;
+      // flex: 0 1 77%;
+      flex-basis: 60%;
       display: flex;
       flex-direction: column;
       @include typeset('sans', '2xs', 2);
-      @include u-text('bold'); 
+      @include u-text('medium'); 
       
       .indicatorDesc {
         @include typeset('sans', '3xs', 2); 
-        @include u-text('normal'); 
+        @include u-text('thin'); 
         max-width: 12rem;    
         @include u-margin-top(0);
         @media screen and (max-width: 1024px) {
@@ -38,13 +37,47 @@
       }
     }
     
-    .indicatorValue {
-      margin-left: 2.2rem;
-      
-      .indicatorSuperscript {
-        top: -0.2em
+    .indicatorValueCol {
+      display: flex;
+      flex-direction: column;
+
+      .indicatorValueRow {
+        display: flex;
+        align-self: end;
+
+        .indicatorValue {
+          margin-left: 2.2rem;
+          
+          .indicatorSuperscript {
+            top: -0.2em
+          }
+        } 
+
+        .indicatorArrow {
+          margin-bottom: -.375rem;
+
+          img {
+            max-width: none;
+            height: 1.5rem;
+            width: 1.5rem;
+
+          }
+          .unavailable {
+            opacity: .2;
+          }
+        }
       }
-    }  
+      
+      .indicatorValueSubText{
+        display: flex;
+        flex-direction: column;
+        align-self: flex-end;
+        text-align: right;
+        @include typeset('sans', '3xs', 2);
+        @include u-text('thin'); 
+      }
+    }
+
   }
 }
 
@@ -55,5 +88,27 @@
 
 .disadvantagedIndicator {
   @include indicator;
-  @include u-text('blue-warm-70v');
+  @include u-bg('blue-warm-10');
+
+  // A darker bg color:
+  // background-color: #D2DAE3;
+
+  // Add a border
+  // border: 1px solid #1A4480;
+
+  margin: 0 -20px 1px -20px;
+  @include u-padding-left(2.5);
+  @include u-padding-right(2.5);
+
+
+  // Overwrite indicator mixin with bolder fonts for disadv. indicator 
+  .indicatorRow {
+    .indicatorName {
+      @include u-text('bold'); 
+      
+      .indicatorDesc {
+        @include u-text('normal'); 
+      }
+    }
+  }
 }
