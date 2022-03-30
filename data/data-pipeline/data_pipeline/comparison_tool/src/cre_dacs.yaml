@@ -1,0 +1,24 @@
+ADDITIONAL_DEMO_COLUMNS:
+- Urban Heuristic Flag
+- Percent of individuals below 200% Federal Poverty Line
+- Percent individuals age 25 or over with less than high school degree
+- Unemployment (percent)
+- Percent of households in linguistic isolation
+COMPARATOR_COLUMN: three_factor_dac
+COMPARATOR_FILE: data/community_resilience_estimates/clean/cre_clean.csv
+DEMOGRAPHIC_COLUMNS:
+- Percent Black or African American alone
+- Percent American Indian and Alaska Native alone
+- Percent Asian alone
+- Percent Native Hawaiian and Other Pacific alone
+- Percent Two or more races
+- Percent Non-Hispanic White
+- Percent Hispanic or Latino
+DEMOGRAPHIC_FILE: ../../data_pipeline/data/dataset/census_acs_2019/usa.csv
+OUTPUT_DATA_PATH: output/cre
+SCORE_FILE: ../../data_pipeline/data/score/csv/full/usa.csv
+KEEP_MISSING_VALUES_FOR_SEGMENTATION: true
+OTHER_COMPARATOR_COLUMNS:
+- one_two_factor_dac
+- PRED3_PE
+- PRED12_PE
