@@ -343,7 +343,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         data-testid="grid"
       >
         <div
-          class="grid-col-12 desktop:grid-col-7"
+          class="grid-col-12 desktop:grid-col-8"
           data-testid="grid"
         >
           <h2>
@@ -400,7 +400,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </p>
         </div>
         <div
-          class="grid-col-12 desktop:grid-col-5"
+          class="grid-col-12 desktop:grid-col-4"
           data-testid="grid"
         >
           <div
@@ -418,7 +418,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div
                 class="usa-summary-box__text"
               >
-                During the beta period, comments may be submitted on the Climate and Economic Justice Screening Tool via CEQ’s Request for Information on available on 
+                During the beta period, comments may be submitted on the Climate and Economic Justice Screening Tool via CEQ’s Request for Information available on 
                 <a
                   class="usa-link usa-link--external"
                   data-cy=""
