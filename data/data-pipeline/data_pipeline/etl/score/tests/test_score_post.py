@@ -7,7 +7,6 @@ import pandas.api.types as ptypes
 import pandas.testing as pdt
 from data_pipeline.content.schemas.download_schemas import (
     CSVConfig,
-    ExcelConfig,
 )
 
 from data_pipeline.etl.score import constants
