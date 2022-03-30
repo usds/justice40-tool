@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
-from data_pipeline.etl.score.etl_utils import floor_series
+from data_pipeline.etl.score.etl_utils import floor_series, create_codebook
 from data_pipeline.utils import (
     get_module_logger,
     zip_files,
@@ -448,7 +448,15 @@ class PostScoreETL(ExtractTransformLoad):
 
     def _load_excel_from_df(
         self, excel_df: pd.DataFrame, excel_path: Path
-    ) -> None:
+    ) -> dict:
+        """Creates excel file from score data using configs from yml file and returns
+        contents of the yml file.
+
+        First it reads the yaml dictionary from the excel.yml config and adjusts the
+        format of the excel file.
+
+        Then it produces the excel file from the score data.
+        """
 
         # open excel yaml config
         excel_csv_config = load_yaml_dict_from_file(
@@ -498,6 +506,7 @@ class PostScoreETL(ExtractTransformLoad):
                 worksheet.set_column(0, num_cols - 1, num_excel_cols_width)
 
             writer.save()
+        return excel_csv_config
 
     def _load_tile_csv(
         self, score_tiles_df: pd.DataFrame, tile_score_path: Path
@@ -512,12 +521,13 @@ class PostScoreETL(ExtractTransformLoad):
         downloadable_info_path.mkdir(parents=True, exist_ok=True)
         csv_path = constants.SCORE_DOWNLOADABLE_CSV_FILE_PATH
         excel_path = constants.SCORE_DOWNLOADABLE_EXCEL_FILE_PATH
+        codebook_path = constants.SCORE_DOWNLOADABLE_CODEBOOK_FILE_PATH
         zip_path = constants.SCORE_DOWNLOADABLE_ZIP_FILE_PATH
         # TODO: reinstate when PDF is added back
         # pdf_path = constants.SCORE_DOWNLOADABLE_PDF_FILE_PATH
 
         logger.info("Writing downloadable excel")
-        self._load_excel_from_df(
+        excel_config = self._load_excel_from_df(
             excel_df=self.output_score_county_state_merged_df,
             excel_path=excel_path,
         )
@@ -534,10 +544,39 @@ class PostScoreETL(ExtractTransformLoad):
         )
         downloadable_df.to_csv(csv_path, index=False)
 
+        logger.info("Creating codebook for download zip")
+
+        # consolidate all excel fields from the config yml. The codebook
+        # code takes in a list of fields, but the excel config file
+        # has a slightly different format to allow for sheets within the
+        # workbook. This pulls all fields from all potential sheets into one
+        # list of dictionaries that specify information on each field.
+        excel_fields = []
+        for sheet in excel_config["sheets"]:
+            excel_fields.extend(sheet["fields"])
+
+        # load supplemental codebook yml
+        field_descriptions_for_codebook_config = load_yaml_dict_from_file(
+            self.CONTENT_CONFIG / "field_descriptions_for_codebook.yml"
+        )
+
+        # create codebook
+        codebook_df = create_codebook(
+            downloadable_csv_config=downloadable_csv_config["fields"],
+            excel_config=excel_fields,
+            field_descriptions_for_codebook=field_descriptions_for_codebook_config[
+                "fields"
+            ],
+        )
+
+        # load codebook to disk
+        codebook_df.to_csv(codebook_path, index=False)
+
         logger.info("Compressing files")
         files_to_compress = [
             csv_path,
             excel_path,
+            codebook_path,
         ]  # add pdf_path here to include PDF
         zip_files(zip_path, files_to_compress)
 

@@ -55,8 +55,42 @@ SCORE_DOWNLOADABLE_CSV_FILE_PATH = (
 SCORE_DOWNLOADABLE_EXCEL_FILE_PATH = (
     SCORE_DOWNLOADABLE_DIR / f"communities-{timestamp_str}.xlsx"
 )
+SCORE_DOWNLOADABLE_CODEBOOK_FILE_PATH = (
+    SCORE_DOWNLOADABLE_DIR / f"codebook-{timestamp_str}.csv"
+)
 SCORE_DOWNLOADABLE_ZIP_FILE_PATH = (
     SCORE_DOWNLOADABLE_DIR / "Screening_Tool_Data.zip"
+)
+
+# For the codebook
+CEJST_SCORE_COLUMN_NAME = "score_name"
+CSV_FORMAT = "csv_format"
+CSV_LABEL_FIELD = "csv_label"
+EXCEL_LABEL_FIELD = "excel_label"
+NOTES_FIELD = "notes"
+THRESHOLD_CATEGORY_FIELD = "threshold_category"
+CALCULATION_NOTES_FIELD = "calculation_notes"
+CSV_FIELD_TYPE_FIELD = "csv_field_type"
+CODEBOOK_COLUMNS = [
+    CSV_LABEL_FIELD,
+    EXCEL_LABEL_FIELD,
+    CEJST_SCORE_COLUMN_NAME,
+    CSV_FIELD_TYPE_FIELD,
+    CALCULATION_NOTES_FIELD,
+    THRESHOLD_CATEGORY_FIELD,
+    NOTES_FIELD,
+]
+LOSS_RATE_STRING = "loss rate"
+LOW_STRING = "Low "
+ISLAND_STRING = "island areas"
+PERCENTILE_EXPLANATION = (
+    "All percentiles are floored (rounded down to the nearest percentile). "
+    + "For example, 89.7th percentile is rounded down to 89 for this field."
+)
+LOW_PERCENTILE_EXPLANATION = "This percentile is reversed, meaning the lowest raw numbers become the highest percentiles."
+ISLAND_AREAS_EXPLANATION = (
+    "Because not all data is available for the Nation, Puerto Rico, "
+    + "and the Island Areas, this uses different underlying data for the island areas."
 )
 
 # Column subsets
