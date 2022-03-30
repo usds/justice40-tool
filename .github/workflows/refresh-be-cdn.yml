@@ -6,9 +6,9 @@ on:
         description: This will invalidate the backend CDN, are you sure you want to proceed? (Y/n)
         default: n
         required: true
-  schedule:
-    # runs every 6 hours:
-    - cron: "0 */6 * * *"
+  # to allow this action to run every 6 hours
+  # schedule:
+    # - cron: "0 */6 * * *"
 env:
   BE_CDN_ID: E1324VDMNCO97N
 jobs:
