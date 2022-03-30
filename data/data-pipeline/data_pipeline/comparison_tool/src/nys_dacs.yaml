@@ -4,8 +4,8 @@ ADDITIONAL_DEMO_COLUMNS:
 - Percent individuals age 25 or over with less than high school degree
 - Unemployment (percent)
 - Percent of households in linguistic isolation
-COMPARATOR_COLUMN: nyc_dac
-COMPARATOR_FILE: data/nyc_dacs/clean/nyc_dac.csv
+COMPARATOR_COLUMN: nys_dac
+COMPARATOR_FILE: data/nyc_dacs/clean/nys_dac.csv
 DEMOGRAPHIC_COLUMNS:
 - Percent Black or African American alone
 - Percent American Indian and Alaska Native alone
@@ -15,7 +15,7 @@ DEMOGRAPHIC_COLUMNS:
 - Percent Non-Hispanic White
 - Percent Hispanic or Latino
 DEMOGRAPHIC_FILE: ../../data_pipeline/data/dataset/census_acs_2019/usa.csv
-OUTPUT_DATA_PATH: output/nyc_dacs
+OUTPUT_DATA_PATH: output/nys_dacs
 SCORE_FILE: ../../data_pipeline/data/score/csv/full/usa.csv
 OTHER_COMPARATOR_COLUMNS: 
 - Tribal_Designation
@@ -75,3 +75,4 @@ OTHER_COMPARATOR_COLUMNS:
 - Mobile_Homes
 - Rent_Percent_Income
 - Renter_Percent
+KEEP_MISSING_VALUES_FOR_SEGMENTATION: true
