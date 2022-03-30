@@ -19,8 +19,6 @@ import argparse
 import yaml
 import papermill as pm
 
-from data_pipeline.score import field_names
-
 
 def _read_param_file(param_file: str) -> dict:
     """Reads params and enforces a few constraints:

@@ -19,6 +19,24 @@ FIPS_MAP = (
 )
 
 
+def validate_new_data(
+    file_path: str, score_col: str, geoid: str = field_names.GEOID_TRACT_FIELD
+):
+    checking_df = pd.read_csv(
+        file_path, usecols=[score_col, geoid], dtype={geoid: str}, nrows=10
+    )
+
+    assert (
+        geoid in checking_df.columns
+    ), f"Error: change your geoid column in the data to {field_names.GEOID_TRACT_FIELD}"
+    assert (
+        checking_df[score_col].nunique() <= 3
+    ), f"Error: there are too many values possible in {score_col}"
+    assert (True in checking_df[score_col].unique()) & (
+        False in checking_df[score_col].unique()
+    ), f"Error: {score_col} should be a boolean"
+
+
 def read_file(
     file_path: str, columns: list, geoid: str = field_names.GEOID_TRACT_FIELD
 ) -> pd.DataFrame:
@@ -124,9 +142,11 @@ def get_tract_level_grouping(
     """
     group_list = [score_column, comparator_column]
     use_df = joined_df.copy()
+
     if keep_missing_values:
         use_df = use_df.fillna({score_column: "nan", comparator_column: "nan"})
     grouping_df = use_df.groupby(group_list)[demo_columns].mean().reset_index()
+
     # this will work whether or not there are "nans" present
     grouping_df[score_column] = grouping_df[score_column].map(
         {

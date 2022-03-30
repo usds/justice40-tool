@@ -50,11 +50,13 @@ __What parameters go in the yaml file?__
 
 __Cleaning data__
 
-Comparator data should live in a flat csv, just like the CEJST data. Right now, each comparator has a folder in `comparison_tool/data` that contains a notebook to clean the data (this is because the data is often quirky and so live inspection is easier), the `raw` data, and the `clean` data. We can also point the `yaml` to an `ETL` output, for files in which there are multiple important columns, if you want to use one of the data sources the CEJST team has already included in the pipeline. When you point to an `ETL` class's output, the following constraints are already true. When you make your own output for comparison, make sure to follow the steps below. 
+Comparator data should live in a flat csv, just like the CEJST data. Right now, each comparator has a folder in `comparison_tool/data` that contains a notebook to clean the data (this is because the data is often quirky and so live inspection is easier), the `raw` data, and the `clean` data. We can also point the `yaml` to an `ETL` output, for files in which there are multiple important columns, if you want to use one of the data sources the CEJST team has already included in the pipeline (which are already compatible with the tool). 
+
+When you make your own output for comparison, make sure to follow the steps below. 
 
 When you clean the data, it's important that you:
-1. Ensure the tract level id is named the same as the field name in score M (`field_names.`)
-2. Ensure the identification column is a `bool`
+1. Ensure the tract level id is named the same as the field name in score M (specified in `field_names`). Right now, this is `GEOID10_TRACT`.
+2. Ensure the identification column is a `bool`.
 
 You will provide the path to the comparator data in the parameter yaml file. 
 
