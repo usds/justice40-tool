@@ -567,6 +567,63 @@ ISLAND_AREAS_LOW_HS_EDUCATION_FIELD = (
     f"Low high school education{ISLAND_AREAS_SUFFIX}"
 )
 
+# Booleans for percentile exceeded thresholds
+# TODO -- we should streamline how we make field name strings, pushed to big refactor
+EXPECTED_POPULATION_LOSS_EXCEEDS_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for expected population loss"
+EXPECTED_AGRICULTURAL_LOSS_EXCEEDS_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for expected agricultural loss"
+EXPECTED_BUILDING_LOSS_EXCEEDS_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for expected building loss"
+ENERGY_BURDEN_EXCEEDS_PCTILE_THRESHOLD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for energy burden"
+)
+PM25_EXCEEDS_PCTILE_THRESHOLD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for pm2.5 exposure"
+)
+DIESEL_EXCEEDS_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for diesel particulate matter"
+TRAFFIC_PROXIMITY_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for traffic proximity"
+LEAD_PAINT_PROXY_PCTILE_THRESHOLD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for lead paint and"
+    f" the median house value is less than {MEDIAN_HOUSE_VALUE_PERCENTILE}th "
+    f"percentile"
+)
+HOUSING_BURDEN_PCTILE_THRESHOLD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for housing burden"
+)
+RMP_PCTILE_THRESHOLD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for RMP proximity"
+)
+NPL_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for NPL (superfund sites) proximity"
+TSDF_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for proximity to hazardous waste sites"
+WASTEWATER_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for wastewater discharge"
+DIABETES_PCTILE_THRESHOLD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for diabetes"
+)
+ASTHMA_PCTILE_THRESHOLD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for asthma"
+)
+HEART_DISEASE_PCTILE_THRESHOLD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for heart disease"
+)
+LOW_LIFE_EXPECTANCY_PCTILE_THRESHOLD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile "
+    f"for low life expectancy"
+)
+UNEMPLOYMENT_PCTILE_THRESHOLD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for unemployment"
+)
+LINGUISTIC_ISOLATION_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for households in linguistic isolation"
+POVERTY_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for households at or below 100% federal poverty level"
+LOW_MEDIAN_INCOME_PCTILE_THRESHOLD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for low median household income as a "
+    f"percent of area median income"
+)
+ISLAND_LOW_MEDIAN_INCOME_PCTILE_THRESHOLD = (
+    f"{LOW_CENSUS_DECENNIAL_AREA_MEDIAN_INCOME_PERCENT_FIELD_2009} exceeds "
+    f"{PERCENTILE}th percentile"
+)
+ISLAND_UNEMPLOYMENT_PCTILE_THRESHOLD = f"{CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009} exceeds {PERCENTILE}th percentile"
+ISLAND_POVERTY_PCTILE_THRESHOLD = f"{CENSUS_DECENNIAL_POVERTY_LESS_THAN_100_FPL_FIELD_2009} exceeds {PERCENTILE}th percentile"
+
+
 # Not currently used in a factor
 EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for summer days above 90F and "
