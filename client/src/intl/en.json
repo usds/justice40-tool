@@ -520,7 +520,7 @@
     "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Heart disease"
   },
   "explore.tool.page.side.panel.indicator.high.ed": {
-    "defaultMessage": "Higher education non-enrollement",
+    "defaultMessage": "Higher education non-enrollment",
     "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Higher ed degree achievement rate\n"
   },
   "explore.tool.page.side.panel.indicator.high.school": {
