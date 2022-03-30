@@ -1,8 +1,8 @@
+/* eslint-disable max-len */
 import React from 'react';
 import {defineMessages} from 'react-intl';
 import {FormattedMessage} from 'gatsby-plugin-intl';
-
-import LinkTypeWrapper from '../../components/LinkTypeWrapper';
+import {italicFn, linkFn} from './common';
 
 export const EXEC_ORDER_LINK = 'https://www.federalregister.gov/documents/2021/02/01/2021-02177/tackling-the-climate-crisis-at-home-and-abroad#:~:text=Sec.%20223.%20Justice40,40-percent%20goal.';
 
@@ -10,28 +10,28 @@ export const PAGE = defineMessages({
   TILE: {
     id: 'about.page.title.text',
     defaultMessage: 'About',
-    description: 'about page title text',
+    description: 'Navigate to the About page. This is the about page title text',
   },
   HEADING: {
-    id: 'index.heading.about.us',
+    id: 'about.page.heading.text',
     defaultMessage: 'About',
-    description: 'main heading for about page',
+    description: 'Navigate to the About page. This is the first heading',
   },
   HEADING_1: {
-    id: 'index.heading.screentool',
+    id: 'about.page.heading.1.text',
     defaultMessage: 'Screening tool',
-    description: 'heading for about screening tool',
+    description: 'Navigate to the About page. This is the second heading',
   },
   HEADING1_DESCRIPTION2: {
     id: 'about.page.sub.header.1.text.2',
     defaultMessage: 'The current version of the tool is in a public beta form and'+
     ' will be updated based on feedback and research.',
-    description: 'about page sub header text',
+    description: 'Navigate to the About page. This is first heading description',
   },
   HEADING_2: {
-    id: 'index.heading.justice40',
+    id: 'about.page.sub.header.2.text',
     defaultMessage: 'The Justice40 Initiative',
-    description: 'heading for about justice 40',
+    description: 'Navigate to the About page. This is the third heading',
   },
   HEADING2_DESCRIPTION1: {
     id: 'about.page.sub.header.2.text.1',
@@ -43,7 +43,7 @@ export const PAGE = defineMessages({
       housing, training and workforce development, the remediation and reduction of legacy pollution, 
       and the development of critical clean water infrastructure.
     `,
-    description: 'about page sub header text',
+    description: 'Navigate to the About page. This is the third heading description',
   },
 });
 
@@ -51,9 +51,9 @@ export const HEADING_1 = {
   DESCRIPTION_1:
   <FormattedMessage
     id={'about.page.sub.header.1.text.1'}
-    description={'about page sub header text'}
+    description={'Navigate to the About page. This is the second heading description'}
     defaultMessage={`
-    In {eoLink} on {tacklingItalics}, President Biden directed the Council on Environmental Quality (CEQ) 
+    In <link1>Executive Order 14008</link1> on <italictag>Tackling the Climate Crisis at Home and Abroad</italictag>, President Biden directed the Council on Environmental Quality (CEQ) 
     to create a Climate and Economic Justice Screening Tool. The purpose of the tool is to help
     Federal agencies identify disadvantaged communities that are marginalized, underserved, and 
     overburdened by pollution. The current version of the tool provides socioeconomic, environmental, 
@@ -61,13 +61,8 @@ export const HEADING_1 = {
     tool identifies disadvantaged communities through publicly-available, nationally-consistent datasets.
     `}
     values={{
-      eoLink: <LinkTypeWrapper
-        linkText={'Executive Order 14008'}
-        internal={false}
-        url={EXEC_ORDER_LINK}
-        openUrlNewTab={true}
-      />,
-      tacklingItalics: <i>Tackling the Climate Crisis at Home and Abroad</i>,
+      link1: linkFn(EXEC_ORDER_LINK, false, true),
+      italictag: italicFn,
     }}
   />,
 };
@@ -79,16 +74,11 @@ export const HEADING_2 = {
     description={'about page sub header text'}
     defaultMessage={`
     Read more about the Justice40 Initiative in President Biden’s
-    {eoLink} on {tacklingItalics}.
+    <link1>Executive Order 14008</link1> on <italictag>Tackling the Climate Crisis at Home and Abroad</italictag>.
     `}
     values={{
-      eoLink: <LinkTypeWrapper
-        linkText={'Executive Order 14008'}
-        internal={false}
-        url={EXEC_ORDER_LINK}
-        openUrlNewTab={true}
-      />,
-      tacklingItalics: <i>Tackling the Climate Crisis at Home and Abroad</i>,
+      link1: linkFn(EXEC_ORDER_LINK, false, true),
+      italictag: italicFn,
     }}
   />,
 };
@@ -98,81 +88,81 @@ export const GITHUB_LINK = 'https://github.com/usds/justice40-tool';
 
 export const HOW_TO_GET_STARTED = defineMessages({
   TITLE: {
-    id: 'howToGetStarted.title',
+    id: 'about.page.howToGetStarted.title',
     defaultMessage: 'How to get started',
-    description: 'sub heading of page',
+    description: 'Navigate to the About page. This is the sub heading of page',
   },
   FEDERAL_PM_HEADING: {
-    id: 'federal.pm.heading',
+    id: 'about.page.federal.pm.heading',
     defaultMessage: 'Federal program managers',
-    description: 'sub heading of page',
+    description: 'Navigate to the About page. This is the sub heading of page',
   },
   FEDERAL_PM_INFO: {
-    id: 'federal.pm.info',
+    id: 'about.page.federal.pm.info',
     defaultMessage: `
       Download the tool’s current list of communities, explore data that may be useful to your 
       program, and provide feedback on the tool.
     `,
-    description: 'sub heading of page',
+    description: 'Navigate to the About page. This is the sub heading of page',
   },
   FEDERAL_PM_LINK_TEXT: {
-    id: 'federal.pm.link',
+    id: 'about.page.federal.pm.link',
     defaultMessage: 'Methodology & data',
-    description: 'link text to go to methodology page',
+    description: 'link text to Navigate to the About page. This is the go to methodology page',
   },
   COMMUNITY_MEMBERS_HEADING: {
-    id: 'community.members.heading',
+    id: 'about.page.community.members.heading',
     defaultMessage: 'Community members',
-    description: 'sub heading of page',
+    description: 'Navigate to the About page. This is the sub heading of page',
   },
   COMMUNITY_MEMBERS_INFO: {
-    id: 'community.members.info',
+    id: 'about.page.community.members.info',
     defaultMessage: `
       Explore data about communities across the U.S., including your own, and provide feedback on the tool.
     `,
-    description: 'sub heading of page',
+    description: 'Navigate to the About page. This is the sub heading of page',
   },
   COMMUNITY_MEMBERS_LINK_TEXT: {
-    id: 'community.members.link',
+    id: 'about.page.community.members.link',
     defaultMessage: 'Explore the tool',
-    description: 'link to explore the tool page',
+    description: 'link to Navigate to the About page. This is the explore the tool page',
   },
 });
 
 export const GET_INVOLVED = defineMessages({
   TITLE: {
-    id: 'getInvolved.title',
+    id: 'about.page.getInvolved.title',
     defaultMessage: 'Get involved',
-    description: 'sub heading of page',
+    description: 'Navigate to the About page. This is the sub heading of page',
   },
   SEND_FEEDBACK_HEADING: {
-    id: 'send.feedback.heading',
+    id: 'about.page.send.feedback.heading',
     defaultMessage: 'Send feedback',
-    description: 'sending feedback heading',
+    description: 'Navigate to the About page. This is the sending feedback heading',
   },
   SEND_FEEDBACK_INFO: {
-    id: 'send.feedback.info',
+    id: 'about.page.send.feedback.info',
     defaultMessage: `
       Have ideas about data and information that reflect the experiences and conditions of your community?
     `,
-    description: 'sending feedback information',
+    description: 'Navigate to the About page. This is the sending feedback information',
   },
   JOIN_OSC_HEADING: {
-    id: 'join.opensource.heading',
+    id: 'about.page.join.opensource.heading',
     defaultMessage: 'Join the open source community',
-    description: 'join the community heading',
+    description: 'Navigate to the About page. This is the join the community heading',
   },
   JOIN_OSC_INFO: {
-    id: 'join.open.source.info',
+    id: 'about.page.join.open.source.info',
     defaultMessage: `
       The tool’s code is open source, which means it is available for the public to view and contribute to it.
     `,
-    description: 'info on joining open source community',
+    description: 'info on Navigate to the About page. This is the joining open source community',
   },
   JOIN_OSC_LINK_TEXT: {
-    id: 'join.open.source.link',
+    id: 'about.page.join.open.source.link',
     defaultMessage: 'Check it out on GitHub',
-    description: 'link to github repository',
+    description: 'Navigate to the About page. This is the link to github repository',
   },
 });
 

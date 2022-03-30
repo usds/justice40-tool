@@ -34,12 +34,10 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           identified as disadvantaged
         </strong>
-         
+        
     
       </p>
       <p>
-        
-      
         <strong>
           IF
         </strong>
@@ -61,8 +59,6 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           expected population loss rate
         </a>
-        
-      
       </p>
       <p>
         
@@ -76,11 +72,11 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           low income
         </a>
-         AND at or below 20% for 
+         AND 80% or more of adults 15 or older are not enrolled in 
         <a
           href="#high-ed-enroll-rate"
         >
-          higher ed enrollment rate
+          higher education
         </a>
          
     
@@ -97,12 +93,10 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           identified as disadvantaged
         </strong>
-         
+        
     
       </p>
       <p>
-        
-        
         <strong>
           IF
         </strong>
@@ -118,8 +112,6 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           PM2.5 in the air
         </a>
-        
-      
       </p>
       <p>
         
@@ -133,11 +125,11 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           low income
         </a>
-         AND at or below 20% for 
+         AND 80% or more of adults 15 or older are not enrolled in 
         <a
           href="#high-ed-enroll-rate"
         >
-          higher ed enrollment rate
+          higher education
         </a>
          
     
@@ -154,7 +146,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           identified as disadvantaged
         </strong>
-         
+        
     
       </p>
       <p>
@@ -190,11 +182,11 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           low income
         </a>
-         AND at or below 20% for 
+         AND 80% or more of adults 15 or older are not enrolled in 
         <a
           href="#high-ed-enroll-rate"
         >
-          higher ed enrollment rate
+          higher education
         </a>
          
     
@@ -211,12 +203,10 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           identified as disadvantaged
         </strong>
-         
+        
     
       </p>
       <p>
-        
-        
         <strong>
           IF
         </strong>
@@ -232,15 +222,12 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           median home value
         </a>
-         is at or less than
-        the 90th percentile OR at or above the 90th percentile for the 
+         is at or less than the 90th percentile OR at or above the 90th percentile for the 
         <a
           href="#house-burden"
         >
           housing cost burden
         </a>
-        
-      
       </p>
       <p>
         
@@ -254,11 +241,11 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           low income
         </a>
-         AND at or below 20% for 
+         AND 80% or more of adults 15 or older are not enrolled in 
         <a
           href="#high-ed-enroll-rate"
         >
-          higher ed enrollment rate
+          higher education
         </a>
          
     
@@ -275,12 +262,10 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           identified as disadvantaged
         </strong>
-         
+        
     
       </p>
       <p>
-        
-        
         <strong>
           IF
         </strong>
@@ -302,8 +287,6 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           proximity to Risk Management Plan (RMP) facilities
         </a>
-        
-      
       </p>
       <p>
         
@@ -317,11 +300,11 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           low income
         </a>
-         AND at or below 20% for 
+         AND 80% or more of adults 15 or older are not enrolled in 
         <a
           href="#high-ed-enroll-rate"
         >
-          higher ed enrollment rate
+          higher education
         </a>
          
     
@@ -338,12 +321,10 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           identified as disadvantaged
         </strong>
-         
+        
     
       </p>
       <p>
-        
-        
         <strong>
           IF
         </strong>
@@ -353,8 +334,6 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           wastewater discharge
         </a>
-        
-      
       </p>
       <p>
         
@@ -368,11 +347,11 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           low income
         </a>
-         AND at or below 20% for 
+         AND 80% or more of adults 15 or older are not enrolled in 
         <a
           href="#high-ed-enroll-rate"
         >
-          higher ed enrollment rate
+          higher education
         </a>
          
     
@@ -389,12 +368,10 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           identified as disadvantaged
         </strong>
-         
+        
     
       </p>
       <p>
-        
-        
         <strong>
           IF
         </strong>
@@ -422,8 +399,6 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           low life expectancy
         </a>
-        
-      
       </p>
       <p>
         
@@ -437,11 +412,11 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           low income
         </a>
-         AND at or below 20% for 
+         AND 80% or more of adults 15 or older are not enrolled in 
         <a
           href="#high-ed-enroll-rate"
         >
-          higher ed enrollment rate
+          higher education
         </a>
          
     
@@ -458,12 +433,10 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         <strong>
           identified as disadvantaged
         </strong>
-         
+        
     
       </p>
       <p>
-        
-        
         <strong>
           IF
         </strong>
@@ -474,21 +447,18 @@ exports[`rendering of the Categories checks if component renders 1`] = `
           low median income
         </a>
          as a percentage of area median income OR 
-        
         <a
           href="#ling-iso"
         >
           linguistic isolation
         </a>
-         OR
-        
+         OR 
         <a
           href="#unemploy"
         >
           unemployment
         </a>
-         OR
-        percent individuals in households at or below 100% Federal 
+         OR percent individuals in households at or below 100% Federal 
         <a
           href="#poverty"
         >
@@ -498,23 +468,20 @@ exports[`rendering of the Categories checks if component renders 1`] = `
       
       </p>
       <p>
-        
-    
         <strong>
           AND
         </strong>
-         is at or less than 90% for 
+         10% or more of adults 25 or older have not attained a 
         <a
           href="#high-school"
         >
-          high school degree attainment rate
+          high school degree
         </a>
-         for adults 25 years and older AND 
-    at or below 20% for 
+         AND 80% or more of adults 15 or older are not enrolled in 
         <a
           href="#high-ed-enroll-rate"
         >
-          higher ed enrollment rate
+          higher education
         </a>
          
   

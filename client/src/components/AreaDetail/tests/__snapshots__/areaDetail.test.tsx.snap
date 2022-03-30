@@ -53,7 +53,10 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
         <div />
       </div>
       <div>
-         of  thresholds exceeded
+        Disadvantaged in 5 categories
+      </div>
+      <div>
+        At or above 3 thresholds
       </div>
       <a
         href="
@@ -69,7 +72,13 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
           type="button"
         >
           <div>
-            Send feedback
+            <div>
+              Send feedback
+            </div>
+            <img
+              alt="tbd"
+              src="test-file-stub"
+            />
           </div>
         </button>
       </a>
@@ -107,14 +116,15 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
       >
         <div>
           <div>
-            Indicator
+            At or above at least one threshold?
           </div>
           <div>
-            Percentile (0-100)
+            No
           </div>
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -124,17 +134,36 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
               </div>
             </div>
             <div>
-              60
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  60
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the down arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -144,55 +173,177 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
               </div>
             </div>
             <div>
-              90
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  90
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the up arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  above 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
               Poverty
               <div>
                 
-      Percent of a tract's population in households where the household income is at or below 100% of 
-      the Federal poverty level   
+      Percent of a census tract's population in households where the household income is at or below 100% 
+      of the Federal poverty level 
     
               </div>
             </div>
             <div>
-              80
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  50
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the down arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
-              High school degree attainment rate
+              High school degree non-attainment
               <div>
                 
-      Proportion of people ages 25 years or older whose education level is less than a high school diploma 
+      Percent of people ages 25 years or older whose education level is less than a high school diploma 
     
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <div>
+          AND
+        </div>
+        <div>
+          <div>
+            At or above both associated thresholds?
+          </div>
+          <div>
+            No
+          </div>
+        </div>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              High school degree non-attainment
+              <div>
+                
+      Percent of people ages 25 years or older whose education level is less than a high school diploma 
+    
+              </div>
+            </div>
+            <div>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Higher education non-enrollement
+              <div>
+                
+      Percent of the census tract's population 15 or older not enrolled in college, university, or 
+      graduate school 
+    
+              </div>
+            </div>
+            <div>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -255,7 +406,10 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         <div />
       </div>
       <div>
-         of  thresholds exceeded
+        Disadvantaged in 5 categories
+      </div>
+      <div>
+        At or above 3 thresholds
       </div>
       <a
         href="
@@ -271,7 +425,13 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
           type="button"
         >
           <div>
-            Send feedback
+            <div>
+              Send feedback
+            </div>
+            <img
+              alt="tbd"
+              src="test-file-stub"
+            />
           </div>
         </button>
       </a>
@@ -309,50 +469,73 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       >
         <div>
           <div>
-            Indicator
+            At or above at least one threshold?
           </div>
           <div>
-            Percentile (0-100)
+            No
           </div>
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
               Expected agriculture loss rate
               <div>
-                Economic loss rate to agriculture resulting from natural hazards
+                Economic loss rate to agricultural value resulting from natural hazards each year
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
               Expected building loss rate
               <div>
-                Economic loss rate to buildings resulting from natural hazards
+                Economic loss rate to agricultural value resulting from natural hazards each year
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -364,15 +547,37 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
+        <div>
+          AND
+        </div>
+        <div>
+          <div>
+            At or above both associated thresholds?
+          </div>
+          <div>
+            No
+          </div>
+        </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -384,32 +589,62 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  19
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the down arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 65th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
-              Higher ed enrollment rate
+              Higher education non-enrollement
               <div>
                 
-    Percent of population enrolled in college, university, or graduate school 
+      Percent of the census tract's population 15 or older not enrolled in college, university, or 
+      graduate school 
     
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -442,14 +677,15 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       >
         <div>
           <div>
-            Indicator
+            At or above at least one threshold?
           </div>
           <div>
-            Percentile (0-100)
+            No
           </div>
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -459,33 +695,66 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
               PM2.5 in the air
               <div>
-                Fine inhalable particles, 2.5 micrometers and smaller
+                Fine inhalable particles, 2.5 micrometers or smaller
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
+        <div>
+          AND
+        </div>
+        <div>
+          <div>
+            At or above both associated thresholds?
+          </div>
+          <div>
+            No
+          </div>
+        </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -497,32 +766,62 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  19
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the down arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 65th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
-              Higher ed enrollment rate
+              Higher education non-enrollement
               <div>
                 
-    Percent of population enrolled in college, university, or graduate school 
+      Percent of the census tract's population 15 or older not enrolled in college, university, or 
+      graduate school 
     
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -539,7 +838,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         >
           <div>
             <div>
-              Clean transportation
+              Clean transit
             </div>
             <div
               class=""
@@ -555,14 +854,15 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       >
         <div>
           <div>
-            Indicator
+            At or above at least one threshold?
           </div>
           <div>
-            Percentile (0-100)
+            No
           </div>
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -572,15 +872,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -590,15 +901,37 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
+        <div>
+          AND
+        </div>
+        <div>
+          <div>
+            At or above both associated thresholds?
+          </div>
+          <div>
+            No
+          </div>
+        </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -610,32 +943,62 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  19
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the down arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 65th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
-              Higher ed enrollment rate
+              Higher education non-enrollement
               <div>
                 
-    Percent of population enrolled in college, university, or graduate school 
+      Percent of the census tract's population 15 or older not enrolled in college, university, or 
+      graduate school 
     
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -668,14 +1031,15 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       >
         <div>
           <div>
-            Indicator
+            At or above at least one threshold?
           </div>
           <div>
-            Percentile (0-100)
+            No
           </div>
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -685,17 +1049,36 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              95
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  95
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the up arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  above 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -707,15 +1090,37 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
+        <div>
+          AND
+        </div>
+        <div>
+          <div>
+            At or above both associated thresholds?
+          </div>
+          <div>
+            No
+          </div>
+        </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -727,32 +1132,62 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  19
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the down arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 65th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
-              Higher ed enrollment rate
+              Higher education non-enrollement
               <div>
                 
-    Percent of population enrolled in college, university, or graduate school 
+      Percent of the census tract's population 15 or older not enrolled in college, university, or 
+      graduate school 
     
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -785,14 +1220,15 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       >
         <div>
           <div>
-            Indicator
+            At or above at least one threshold?
           </div>
           <div>
-            Percentile (0-100)
+            No
           </div>
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -802,51 +1238,95 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
-              Proximity to NPL sites
+              Proximity to National Priorities List (NPL) sites
               <div>
                 Proposed or listed NPL (Superfund) sites within 5 kilometers
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
-              Proximity to RMP facilities
+              Proximity to Risk Management Plan (RMP) facilities
               <div>
-                Risk Management Plan facilities within 5 kilometers
+                RMP facilities within 5 kilometers
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
+        <div>
+          AND
+        </div>
+        <div>
+          <div>
+            At or above both associated thresholds?
+          </div>
+          <div>
+            No
+          </div>
+        </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -858,32 +1338,62 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  19
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the down arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 65th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
-              Higher ed enrollment rate
+              Higher education non-enrollement
               <div>
                 
-    Percent of population enrolled in college, university, or graduate school 
+      Percent of the census tract's population 15 or older not enrolled in college, university, or 
+      graduate school 
     
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -916,14 +1426,15 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       >
         <div>
           <div>
-            Indicator
+            At or above at least one threshold?
           </div>
           <div>
-            Percentile (0-100)
+            No
           </div>
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -933,15 +1444,37 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
+        <div>
+          AND
+        </div>
+        <div>
+          <div>
+            At or above both associated thresholds?
+          </div>
+          <div>
+            No
+          </div>
+        </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -953,32 +1486,62 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  19
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the down arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 65th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
-              Higher ed enrollment rate
+              Higher education non-enrollement
               <div>
                 
-    Percent of population enrolled in college, university, or graduate school 
+      Percent of the census tract's population 15 or older not enrolled in college, university, or 
+      graduate school 
     
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1011,14 +1574,15 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       >
         <div>
           <div>
-            Indicator
+            At or above at least one threshold?
           </div>
           <div>
-            Percentile (0-100)
+            No
           </div>
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1028,15 +1592,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1049,35 +1624,59 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
               Heart disease
               <div>
                 
-      Weighted percent of people ages 18 years and older who have been told they have heart disease
+      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
+      will show an indicator desciption of Weighted percent of people ages 18 years and older who have 
+      been told they have heart disease
     
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1087,15 +1686,37 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
+        <div>
+          AND
+        </div>
+        <div>
+          <div>
+            At or above both associated thresholds?
+          </div>
+          <div>
+            No
+          </div>
+        </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1107,32 +1728,62 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  19
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the down arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 65th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
-              Higher ed enrollment rate
+              Higher education non-enrollement
               <div>
                 
-    Percent of population enrolled in college, university, or graduate school 
+      Percent of the census tract's population 15 or older not enrolled in college, university, or 
+      graduate school 
     
               </div>
             </div>
             <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1165,14 +1816,15 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       >
         <div>
           <div>
-            Indicator
+            At or above at least one threshold?
           </div>
           <div>
-            Percentile (0-100)
+            No
           </div>
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1184,17 +1836,36 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              97
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  97
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the up arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  above 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1204,15 +1875,26 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1222,75 +1904,154 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
             </div>
             <div>
-              96
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  96
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the up arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  above 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
               Poverty
               <div>
                 
-      Percent of a tract's population in households where the household income is at or below 100% of 
-      the Federal poverty level   
+      Percent of a census tract's population in households where the household income is at or below 100% 
+      of the Federal poverty level 
     
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  12
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the down arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <div>
+          AND
+        </div>
+        <div>
+          <div>
+            At or above both associated thresholds?
+          </div>
+          <div>
+            No
+          </div>
+        </div>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              High school degree non-attainment
+              <div>
+                
+      Percent of people ages 25 years or older whose education level is less than a high school diploma 
+    
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  98
+                  <span>
+                    %
+                  </span>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the up arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  above 10
+                </div>
+                <div>
+                  percent
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
-              High school degree attainment rate
+              Higher education non-enrollement
               <div>
                 
-      Proportion of people ages 25 years or older whose education level is less than a high school diploma 
+      Percent of the census tract's population 15 or older not enrolled in college, university, or 
+      graduate school 
     
               </div>
             </div>
             <div>
-              98
-              <span>
-                %
-              </span>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-        >
-          <div>
-            <div>
-              Higher ed enrollment rate
               <div>
-                
-    Percent of population enrolled in college, university, or graduate school 
-    
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
-            </div>
-            <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
@@ -1353,7 +2114,10 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
         <div />
       </div>
       <div>
-         of  thresholds exceeded
+        Disadvantaged in 5 categories
+      </div>
+      <div>
+        At or above 3 thresholds
       </div>
       <a
         href="
@@ -1369,7 +2133,13 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
           type="button"
         >
           <div>
-            Send feedback
+            <div>
+              Send feedback
+            </div>
+            <img
+              alt="tbd"
+              src="test-file-stub"
+            />
           </div>
         </button>
       </a>
@@ -1407,14 +2177,15 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
       >
         <div>
           <div>
-            Indicator
+            At or above at least one threshold?
           </div>
           <div>
-            Percentile (0-100)
+            No
           </div>
         </div>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1426,17 +2197,36 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               </div>
             </div>
             <div>
-              97
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  97
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the up arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  above 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1446,15 +2236,26 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               </div>
             </div>
             <div>
-              N/A
-              <sup>
-                <span />
-              </sup>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
@@ -1464,75 +2265,154 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               </div>
             </div>
             <div>
-              96
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  96
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the up arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  above 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
               Poverty
               <div>
                 
-      Percent of a tract's population in households where the household income is at or below 100% of 
-      the Federal poverty level   
+      Percent of a census tract's population in households where the household income is at or below 100% 
+      of the Federal poverty level 
     
               </div>
             </div>
             <div>
-              19
-              <sup>
-                <span>
-                  th
-                </span>
-              </sup>
+              <div>
+                <div>
+                  12
+                  <sup>
+                    <span>
+                      th
+                    </span>
+                  </sup>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the down arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  below 90th
+                </div>
+                <div>
+                  percentile
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <div>
+          AND
+        </div>
+        <div>
+          <div>
+            At or above both associated thresholds?
+          </div>
+          <div>
+            No
+          </div>
+        </div>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              High school degree non-attainment
+              <div>
+                
+      Percent of people ages 25 years or older whose education level is less than a high school diploma 
+    
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  98
+                  <span>
+                    %
+                  </span>
+                </div>
+                <div>
+                  <img
+                    alt="an icon for the up arrow"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  above 10
+                </div>
+                <div>
+                  percent
+                </div>
+              </div>
             </div>
           </div>
         </li>
         <li
           data-cy="indicatorBox"
+          data-testid="indicator-box"
         >
           <div>
             <div>
-              High school degree attainment rate
+              Higher education non-enrollement
               <div>
                 
-      Proportion of people ages 25 years or older whose education level is less than a high school diploma 
+      Percent of the census tract's population 15 or older not enrolled in college, university, or 
+      graduate school 
     
               </div>
             </div>
             <div>
-              98
-              <span>
-                %
-              </span>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-        >
-          <div>
-            <div>
-              Higher ed enrollment rate
               <div>
-                
-    Percent of population enrolled in college, university, or graduate school 
-    
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
               </div>
-            </div>
-            <div>
-              N/A
-              <span>
-                %
-              </span>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
             </div>
           </div>
         </li>

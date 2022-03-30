@@ -17,29 +17,10 @@ const MapWrapper = ({location}: IMapWrapperProps) => {
         <J40Map location={location}/>
       </Grid>
 
-      <Grid row>
-        <Grid col={7}>
-          <div className={styles.mapCaptionTextLink}>
-            {EXPLORE_COPY.DOWNLOAD_DRAFT.PARAGRAPH_1}
-          </div>
-        </Grid>
-      </Grid>
-
-      <Grid row>
-        <Grid col={7}>
-          <h2>{EXPLORE_COPY.NOTE_ON_TERRITORIES.INTRO}</h2>
-          <p>{EXPLORE_COPY.NOTE_ON_TERRITORIES.PARA_1}</p>
-          <p>{EXPLORE_COPY.NOTE_ON_TERRITORIES.PARA_2}</p>
-          <p>{EXPLORE_COPY.NOTE_ON_TERRITORIES.PARA_3}</p>
-          <p>{EXPLORE_COPY.NOTE_ON_TERRITORIES.PARA_4}</p>
-        </Grid>
-      </Grid>
-
-      <Grid row>
-        <Grid col={7}>
-          <h2>{EXPLORE_COPY.NOTE_ON_TRIBAL_NATIONS.INTRO}</h2>
-          <p>{EXPLORE_COPY.NOTE_ON_TRIBAL_NATIONS.PARA_1}</p>
-        </Grid>
+      <Grid desktop={{col: 7}} tablet={{col: 10}} col={12}>
+        <div className={styles.mapCaptionTextLink}>
+          {EXPLORE_COPY.DOWNLOAD_DRAFT.PARAGRAPH_1}
+        </div>
       </Grid>
     </>
   );

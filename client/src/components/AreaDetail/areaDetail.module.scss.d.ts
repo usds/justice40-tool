@@ -10,9 +10,14 @@ declare namespace MapModuleScssNamespace {
     isInFocus:string;
     versionInfo: string;
     showThresholdExceed:string;
-    hideThresholdExceed:string;
+    showCategoriesExceed: string;
     categoryHeader:string;
+    sendFeedbackLink: string;
     sendFeedbackBtn: string;
+    buttonContainer: string;
+    buttonText: string;
+    buttonImage: string;
+    categorySpacer: string;
   }
 }
 

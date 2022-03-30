@@ -5,6 +5,7 @@ import {
   NavMenuButton,
   PrimaryNav,
   Grid,
+  Alert,
 } from '@trussworks/react-uswds';
 import BetaBanner from '../BetaBanner';
 import J40MainGridContainer from '../J40MainGridContainer';
@@ -15,6 +16,8 @@ import Language from '../Language';
 import siteLogo from '../../images/j40-logo-v2.png';
 import * as styles from './J40Header.module.scss';
 import * as COMMON_COPY from '../../data/copy/common';
+
+const isAlertValid = new Date < COMMON_COPY.ALERTS.EXPIRATION_DATE;
 
 const J40Header = () => {
   const intl = useIntl();
@@ -67,8 +70,6 @@ const J40Header = () => {
       <GovernmentBanner />
       <BetaBanner/>
 
-      {/* Remove Usabilty Banner testing deployment to main again!*/}
-
       {/* Logo and Navigation */}
       <J40MainGridContainer>
 
@@ -106,6 +107,17 @@ const J40Header = () => {
 
         </Grid>
       </J40MainGridContainer>
+
+      {/* Alert */}
+      {isAlertValid && <J40MainGridContainer>
+        <Alert
+          className={styles.alert}
+          type="info"
+          heading={intl.formatMessage(COMMON_COPY.ALERTS.CENSUS_TRACT.TITLE)}>
+          {COMMON_COPY.ALERTS.CENSUS_TRACT_DESCRIPTION}
+        </Alert>
+      </J40MainGridContainer>
+      }
     </Header>
   );
 };
