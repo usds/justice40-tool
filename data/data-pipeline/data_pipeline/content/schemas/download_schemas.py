@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import List
+from typing import List, Optional
 
 
 class FieldType(Enum):
@@ -55,3 +55,14 @@ class ExcelConfig:
 
     global_config: GlobalConfig
     sheets: List[SheetItem]
+
+
+@dataclass
+class CodebookConfig:
+    @dataclass
+    class Field:
+        score_name: str
+        notes: Optional[str]
+        category: Optional[str]
+
+    fields: List[Field]

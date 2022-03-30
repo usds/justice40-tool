@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 from data_pipeline.content.schemas.download_schemas import (
     CSVConfig,
+    CodebookConfig,
     ExcelConfig,
 )
 
@@ -561,7 +562,8 @@ class PostScoreETL(ExtractTransformLoad):
 
         # load supplemental codebook yml
         field_descriptions_for_codebook_config = load_yaml_dict_from_file(
-            self.CONTENT_CONFIG / "field_descriptions_for_codebook.yml"
+            self.CONTENT_CONFIG / "field_descriptions_for_codebook.yml",
+            CodebookConfig,
         )
 
         # create codebook
