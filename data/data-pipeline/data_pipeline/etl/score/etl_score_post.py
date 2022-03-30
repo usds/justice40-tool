@@ -449,6 +449,14 @@ class PostScoreETL(ExtractTransformLoad):
     def _load_excel_from_df(
         self, excel_df: pd.DataFrame, excel_path: Path
     ) -> dict:
+        """Creates excel file from score data using configs from yml file and returns
+        contents of the yml file.
+
+        First it reads the yaml dictionary from the excel.yml config and adjusts the
+        format of the excel file.
+
+        Then it produces the excel file from the score data.
+        """
 
         # open excel yaml config
         excel_csv_config = load_yaml_dict_from_file(
@@ -537,19 +545,31 @@ class PostScoreETL(ExtractTransformLoad):
         downloadable_df.to_csv(csv_path, index=False)
 
         logger.info("Creating codebook for download zip")
-        extra_score_info = load_yaml_dict_from_file(
-            self.CONTENT_CONFIG / "score_fields.yml"
-        )
 
+        # consolidate all excel fields from the config yml. The codebook
+        # code takes in a list of fields, but the excel config file
+        # has a slightly different format to allow for sheets within the
+        # workbook. This pulls all fields from all potential sheets into one
+        # list of dictionaries that specify information on each field.
         excel_fields = []
         for sheet in excel_config["sheets"]:
             excel_fields.extend(sheet["fields"])
 
+        # load supplemental codebook yml
+        field_descriptions_for_codebook_config = load_yaml_dict_from_file(
+            self.CONTENT_CONFIG / "field_descriptions_for_codebook.yml"
+        )
+
+        # create codebook
         codebook_df = create_codebook(
             downloadable_csv_config=downloadable_csv_config["fields"],
             excel_config=excel_fields,
-            extra_score_info=extra_score_info["fields"],
+            field_descriptions_for_codebook=field_descriptions_for_codebook_config[
+                "fields"
+            ],
         )
+
+        # load codebook to disk
         codebook_df.to_csv(codebook_path, index=False)
 
         logger.info("Compressing files")

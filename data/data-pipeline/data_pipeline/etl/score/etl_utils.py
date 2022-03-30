@@ -116,16 +116,25 @@ def _create_df_from_yaml_contents(
     fields_list_from_yaml: list,
     fields_to_store_in_codebook: list,
 ) -> pd.DataFrame:
-    """Helper function to create a dataframe from yaml fields
+    """Helper function to create a dataframe from yaml fields to get used for
+    all three configs: csv, excel, and supplemental codebook information yaml
 
     This function does:
-        1. Creates a dictionary that will eventually become a dataframe.
-           This dictionary has columns dictated by whichever fields
-           the yaml file has that we want to keep, specified by fields_to_store.
-        2. Goes through the fields and adds each type of field to the dictionary. If
-           the field is missing, appends a null value.
-        3. Returns a dataframe that includes all of the fields specified and
-           also is indexed by the column name that is native to the CEJST team
+        1. Creates a dictionary to be converted to a dataframe. Pandas easily converts
+           dictionaries of the form {column_name: [value_1, value_2, value_3]} to
+           dataframes, where column_name is the name of the column and the list of values
+           is (by numerical index) the values for the series.
+                Column names here are dictated by the fields_to_store_in_codebook list, a named
+                tuple that includes the name of the field in the yaml and the name the field will
+                take in the codebook. For example, both the csv and excel configs use the name "label",
+                but in the codebook, we want one of these fields to be "csv_label" and the other
+                to be "excel_label".
+        2. Cycles through the fields specified in the yaml fields list. Each field includes
+           some additional details, and so the function appends that information to the dictionary
+           lists, as described above. If the field is missing, appends a null value so that the row's
+           value is blank. This is an artifact of constructing a dataframe from a dictionary of lists.
+        3. Returns a dataframe indexed by the column name used in CEJST data (i.e., the
+           score name field that is consistent across all yamls and in our own usa.csv).
     """
     # this becomes the codebook frame for each  yaml source. In particular,
     # the key becomes column names, and the lists store their values. We hard-set the
@@ -143,6 +152,10 @@ def _create_df_from_yaml_contents(
             "Error: the yaml codebook should crosswalk to the native column "
             + f"from the CEJST pipeline, called {constants.CEJST_SCORE_COLUMN_NAME}"
         )
+        # Since every single YAML file should have a score column name
+        # that is the the same, this appends each to the list in the dictionary.
+        # When pandas converts a dictionary of form {column_name: [val_1, val_2, val_3]},
+        # the dataframe has a column named "column_name" with sequential val_1, 2, and 3.
         codebook_dictionary[constants.CEJST_SCORE_COLUMN_NAME].append(
             single_field_details[constants.CEJST_SCORE_COLUMN_NAME]
         )
@@ -153,6 +166,11 @@ def _create_df_from_yaml_contents(
                 ].append(
                     single_field_details[field_information.existing_yaml_label]
                 )
+            # a key error occurs when the field is not specified for the
+            # column in the yaml file; when this happens, a null value should be
+            # appended to the list in the dictionary, since the dataframe will
+            # use the keys as column names and lists as values.
+            # this allows us to have optional fields in the yaml file.
             except KeyError:
                 assert (
                     field_information.new_label_in_codebook
@@ -172,7 +190,11 @@ def _get_datatype(
     percentile_string: str = field_names.PERCENTILE_FIELD_SUFFIX,
     loss_rate_string: str = constants.LOSS_RATE_STRING,
 ) -> str:
-    """Helper to convert datatype"""
+    """Helper to convert datatype
+
+    Note: eventually, this will either be programmatically set, or will be included in the yaml, depending on
+    the refactor that we do
+    """
     return_column_type = input_column_type
     if percentile_string in input_column_name:
         return_column_type = "percentile"
@@ -198,7 +220,9 @@ def _get_calculation_notes(column_name: str) -> str:
 
 
 def create_codebook(
-    downloadable_csv_config: dict, excel_config: dict, extra_score_info: dict
+    downloadable_csv_config: dict,
+    excel_config: dict,
+    field_descriptions_for_codebook: dict,
 ) -> pd.DataFrame:
     """Runs through all logic of creating the codebook.
 
@@ -237,8 +261,8 @@ def create_codebook(
         ],
     )
 
-    score_detail_notes_df = _create_df_from_yaml_contents(
-        fields_list_from_yaml=extra_score_info,
+    field_descriptions_for_codebook_df = _create_df_from_yaml_contents(
+        fields_list_from_yaml=field_descriptions_for_codebook,
         fields_to_store_in_codebook=[
             CodebookLabelFields(
                 new_label_in_codebook=constants.NOTES_FIELD,
@@ -253,7 +277,7 @@ def create_codebook(
 
     # join all sources on the column name
     merged_codebook_df = pd.concat(
-        [csv_codes_df, excel_codes_df, score_detail_notes_df],
+        [csv_codes_df, excel_codes_df, field_descriptions_for_codebook_df],
         join="outer",
         axis=1,
     ).reset_index()
