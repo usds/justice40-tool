@@ -1,0 +1,24 @@
+ADDITIONAL_DEMO_COLUMNS:
+- Urban Heuristic Flag
+- Percent of individuals below 200% Federal Poverty Line
+- Percent individuals age 25 or over with less than high school degree
+- Unemployment (percent)
+- Percent of households in linguistic isolation
+COMPARATOR_COLUMN: donut_hole_dac_additional_constraints
+COMPARATOR_FILE: data/donut_hole_dac/donut_hole_data.csv
+DEMOGRAPHIC_COLUMNS:
+- Percent Black or African American alone
+- Percent American Indian and Alaska Native alone
+- Percent Asian alone
+- Percent Native Hawaiian and Other Pacific alone
+- Percent Two or more races
+- Percent Non-Hispanic White
+- Percent Hispanic or Latino
+DEMOGRAPHIC_FILE: ../../data_pipeline/data/dataset/census_acs_2019/usa.csv
+OUTPUT_DATA_PATH: output/donut_hole_dac
+SCORE_FILE: ../../data_pipeline/data/score/csv/full/usa.csv
+OTHER_COMPARATOR_COLUMNS: 
+- donut_hole_dac
+- P200_PFS
+- HSEF
+KEEP_MISSING_VALUES_FOR_SEGMENTATION: false
