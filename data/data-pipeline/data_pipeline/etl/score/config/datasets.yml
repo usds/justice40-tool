@@ -1,0 +1,18 @@
+---
+datasets:
+  - long_name: "FEMA National Risk Index"
+    short_name: "nri"
+    module_name: national_risk_index_2020
+    source_url: https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload//NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip
+    extracted_file_name: "NRI_Table_CensusTracts.csv"
+    description: "Dataset from FEMA that identifies communities most at risk to 18 natural hazards."
+    geoid_tract_field_name: "TRACTFIPS"
+    null_representation: "None"
+    load_fields:
+      - short_name: "ex_loss"
+        df_field_name: "RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME"
+        long_name: "FEMA Risk Index Expected Annual Loss Score"
+        type: float
+        tile_include: true
+        csv_download: true
+        excel_download: true
