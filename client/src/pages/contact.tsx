@@ -8,6 +8,7 @@ import LinkTypeWrapper from '../components/LinkTypeWrapper';
 import PublicEngageButton from '../components/PublicEngageButton';
 
 import * as CONTACT_COPY from '../data/copy/contact';
+import * as COMMON_COPY from '../data/copy/common';
 interface IContactPageProps {
   location: Location;
 }
@@ -38,9 +39,9 @@ const ContactPage = ({location}: IContactPageProps) => {
                 values={{
                   general_email_address:
                   <LinkTypeWrapper
-                    linkText= {CONTACT_COPY.FEEDBACK_EMAIL}
+                    linkText= {COMMON_COPY.FEEDBACK_EMAIL}
                     internal= {false}
-                    url= {`mailto:${CONTACT_COPY.FEEDBACK_EMAIL}`}
+                    url= {`mailto:${COMMON_COPY.FEEDBACK_EMAIL}`}
                     openUrlNewTab= {true}
                   />,
                 }}/>

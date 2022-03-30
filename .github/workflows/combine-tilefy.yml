@@ -31,7 +31,7 @@ jobs:
         id: cached-poetry-dependencies
         with:
           path: ~/.cache/pypoetry/virtualenvs
-          key: env-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}-${{ hashFiles('.github/workflows/combine-tilefy.yml') }}
+          key: env-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}-${{ hashFiles('.github/workflows/combine-tilefy.yml') }}
       - name: Install poetry
         uses: snok/install-poetry@v1
       - name: Print Poetry settings
@@ -74,10 +74,9 @@ jobs:
           aws-region: us-east-1
       - name: Deploy to Geoplatform AWS
         run: |
-          poetry run s4cmd del s3://justice40-data/data-pipeline/data/score/tiles --recursive --num-threads=250
-          poetry run s4cmd put ./data_pipeline/data/score/geojson/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/geojson --recursive --force  --API-ACL=public-read --num-threads=250
-          poetry run s4cmd put ./data_pipeline/data/score/shapefile/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/shapefile --recursive --force  --API-ACL=public-read
-          poetry run s4cmd put ./data_pipeline/data/score/tiles/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/tiles --recursive --force  --API-ACL=public-read --num-threads=250
+          poetry run s4cmd put ./data_pipeline/data/score/geojson/ s3://justice40-data/data-pipeline/data/score/geojson --recursive --force  --API-ACL=public-read --num-threads=250
+          poetry run s4cmd put ./data_pipeline/data/score/shapefile/ s3://justice40-data/data-pipeline/data/score/shapefile --recursive --force  --API-ACL=public-read
+          poetry run s4cmd put ./data_pipeline/data/score/tiles/ s3://justice40-data/data-pipeline/data/score/tiles --recursive --force  --API-ACL=public-read --num-threads=250
       - name: Invalidate cache on AWS CDNs
         uses: chetan/invalidate-cloudfront-action@master
         env:

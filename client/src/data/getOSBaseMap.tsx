@@ -1,5 +1,6 @@
 import {Style} from 'maplibre-gl';
 import * as constants from '../data/constants';
+import {featureURLForTilesetName} from '../components/J40Map';
 
 // *********** BASE MAP SOURCES  ***************
 const imageSuffix = constants.isMobile ? '' : '@2x';
@@ -50,7 +51,7 @@ export const getOSBaseMap = () : Style => {
         // Our current tippecanoe command does not set an id.
         // The below line promotes the GEOID10 property to the ID
         'promoteId': constants.GEOID_PROPERTY,
-        'tiles': [constants.FEATURE_TILE_HIGH_ZOOM_URL],
+        'tiles': [featureURLForTilesetName('high')],
         // Setting maxzoom here enables 'overzooming'
         // e.g. continued zooming beyond the max bounds.
         // More here: https://docs.mapbox.com/help/glossary/overzoom/
@@ -66,7 +67,7 @@ export const getOSBaseMap = () : Style => {
       // to give us a favorable tradeoff between performance and fidelity.
         'type': 'vector',
         'promoteId': constants.GEOID_PROPERTY,
-        'tiles': [constants.FEATURE_TILE_LOW_ZOOM_URL],
+        'tiles': [featureURLForTilesetName('low')],
         'minzoom': constants.GLOBAL_MIN_ZOOM_LOW,
         'maxzoom': constants.GLOBAL_MAX_ZOOM_LOW,
       },

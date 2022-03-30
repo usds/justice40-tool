@@ -27,12 +27,13 @@ import AreaDetail from './AreaDetail';
 import MapInfoPanel from './mapInfoPanel';
 import MapSearch from './MapSearch';
 import TerritoryFocusControl from './territoryFocusControl';
+import {getOSBaseMap} from '../data/getOSBaseMap';
 
 // Styles and constants
-import {getOSBaseMap} from '../data/getOSBaseMap';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import * as constants from '../data/constants';
 import * as styles from './J40Map.module.scss';
+import * as COMMON_COPY from '../data/copy/common';
 
 
 declare global {
@@ -52,6 +53,49 @@ export interface IDetailViewInterface {
   longitude: number
   zoom: number
   properties: constants.J40Properties,
+};
+
+/**
+ * This function will determine the URL for the map tiles. It will read in a string that will designate either
+ * high or low tiles. It will allow to overide the URL to the pipeline staging tile URL via feature flag.
+ * Lastly, it allows to set the tiles to be local or via the CDN as well.
+ *
+ * @param {string} tilesetName
+ * @returns {string}
+ */
+export const featureURLForTilesetName = (tilesetName: string): string => {
+  const flags = useFlags();
+
+  const pipelineStagingBaseURL = `https://justice40-data.s3.amazonaws.com/data-pipeline-staging`;
+  const XYZ_SUFFIX = '{z}/{x}/{y}.pbf';
+
+  if ('stage_hash' in flags) {
+    // Check if the stage_hash is valid
+    const regex = /^[0-9]{4}\/[a-f0-9]{40}$/;
+    if (!regex.test(flags['stage_hash'])) {
+      console.error(COMMON_COPY.CONSOLE_ERROR.STAGE_URL);
+    }
+
+    return `${pipelineStagingBaseURL}/${flags['stage_hash']}/data/score/tiles/${tilesetName}/${XYZ_SUFFIX}`;
+  } else {
+    // The feature tile base URL and path can either point locally or the CDN.
+    // This is selected based on the DATA_SOURCE env variable.
+    const featureTileBaseURL = process.env.DATA_SOURCE === 'local' ?
+      process.env.GATSBY_LOCAL_TILES_BASE_URL :
+      process.env.GATSBY_CDN_TILES_BASE_URL;
+
+    const featureTilePath = process.env.DATA_SOURCE === 'local' ?
+    process.env.GATSBY_DATA_PIPELINE_SCORE_PATH_LOCAL :
+    process.env.GATSBY_DATA_PIPELINE_SCORE_PATH;
+
+    return [
+      featureTileBaseURL,
+      featureTilePath,
+      process.env.GATSBY_MAP_TILES_PATH,
+      tilesetName,
+      XYZ_SUFFIX,
+    ].join('/');
+  }
 };
 
 
@@ -304,7 +348,7 @@ const J40Map = ({location}: IJ40Interface) => {
             id={constants.LOW_ZOOM_SOURCE_NAME}
             type="vector"
             promoteId={constants.GEOID_PROPERTY}
-            tiles={[constants.FEATURE_TILE_LOW_ZOOM_URL]}
+            tiles={[featureURLForTilesetName('low')]}
             maxzoom={constants.GLOBAL_MAX_ZOOM_LOW}
             minzoom={constants.GLOBAL_MIN_ZOOM_LOW}
           >
@@ -330,7 +374,7 @@ const J40Map = ({location}: IJ40Interface) => {
             id={constants.HIGH_ZOOM_SOURCE_NAME}
             type="vector"
             promoteId={constants.GEOID_PROPERTY}
-            tiles={[constants.FEATURE_TILE_HIGH_ZOOM_URL]}
+            tiles={[featureURLForTilesetName('high')]}
             maxzoom={constants.GLOBAL_MAX_ZOOM_HIGH}
             minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
           >

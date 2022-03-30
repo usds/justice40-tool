@@ -61,7 +61,7 @@ class ExtractTransformLoad:
     #  in the output file based on this geography level.
     GEO_LEVEL: ValidGeoLevel = None
 
-    # COLUMNS_TO_KEEP to used to identify which columns to keep in the output df.
+    # COLUMNS_TO_KEEP is used to identify which columns to keep in the output df.
     COLUMNS_TO_KEEP: typing.List[str] = None
 
     # Thirteen digits in a census block group ID.
@@ -70,7 +70,7 @@ class ExtractTransformLoad:
     #  be from CBGs at different time periods.
     EXPECTED_MAX_CENSUS_BLOCK_GROUPS: int = 250000
 
-    # Eleven digits in a census tract ID.
+    # There should be Eleven digits in a census tract ID.
     EXPECTED_CENSUS_TRACTS_CHARACTER_LENGTH: int = 11
     # TODO: investigate. Census says there are only 74,134 tracts in the United States,
     #  Puerto Rico, and island areas. This might be from tracts at different time

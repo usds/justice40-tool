@@ -9,6 +9,7 @@ declare namespace J40HeaderNamespace {
         title2BetaPill: string;
         betaPill: string;
         navLinks: string;
+        alert: string;
     }
   }
 
