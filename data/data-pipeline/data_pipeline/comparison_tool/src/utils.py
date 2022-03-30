@@ -22,6 +22,14 @@ FIPS_MAP = (
 def validate_new_data(
     file_path: str, score_col: str, geoid: str = field_names.GEOID_TRACT_FIELD
 ):
+    """Ensures user provided data meets the constraints.
+
+    Constraints are:
+    (1) Boolean series for score column
+    (2) GEOID column is named the same thing as in the rest of our code
+
+    Note this only reads the first 10 rows of the file for speed
+    """
     checking_df = pd.read_csv(
         file_path, usecols=[score_col, geoid], dtype={geoid: str}, nrows=10
     )
