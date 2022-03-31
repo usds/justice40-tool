@@ -27,6 +27,7 @@ exports[`rendering of the RequestForInfo checks if component renders 1`] = `
         >
           federalregister.gov
         </a>
+        .
       </div>
     </div>
   </div>
