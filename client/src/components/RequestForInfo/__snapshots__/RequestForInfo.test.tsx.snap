@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of the RequestForInfo checks if component renders 1`] = `
+<DocumentFragment>
+  <div
+    class="usa-summary-box"
+    data-testid="summary-box"
+  >
+    <div
+      class="usa-summary-box__body"
+    >
+      <h3
+        class="usa-summary-box__heading"
+      >
+        Request for Infomation
+      </h3>
+      <div
+        class="usa-summary-box__text"
+      >
+        During the beta period, comments may be submitted on the Climate and Economic Justice Screening Tool via CEQ’s Request for Information available on 
+        <a
+          class="usa-link usa-link--external"
+          data-cy=""
+          href="https://www.federalregister.gov/d/2022-03920"
+          rel="noreferrer"
+          target="_blank"
+        >
+          federalregister.gov
+        </a>
+        .
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

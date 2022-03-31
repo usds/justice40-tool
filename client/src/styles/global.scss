@@ -26,6 +26,7 @@ There are 3 things that should be included in this file:
     -- Map styles
     -- Public Event styles
     -- About styles
+    -- Request for Info styles
 */
 
 
@@ -145,7 +146,8 @@ components include:
 ****************************** 
 */ 
 .j40-footer {
-
+  @include u-margin-top(4);
+  
   .usa-footer__primary-section.pb2{
     @include u-padding-bottom(2);
   }
@@ -366,4 +368,16 @@ a.mapboxgl-ctrl-logo {
       @include u-margin-top(2);
     }
   }
+}
+
+
+/* 
+******************************
+*     REQUEST FOR INFO STYLES
+****************************** 
+*/
+
+// Overide the Request for Info heading bottom margin:
+div[class*="RequestForInfo"] .usa-summary-box__heading{
+  @include u-margin-bottom(3);
 }
