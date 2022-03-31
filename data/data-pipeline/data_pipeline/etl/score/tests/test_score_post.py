@@ -5,6 +5,9 @@ from importlib import reload
 from pathlib import Path
 import pandas.api.types as ptypes
 import pandas.testing as pdt
+from data_pipeline.content.schemas.download_schemas import (
+    CSVConfig,
+)
 
 from data_pipeline.etl.score import constants
 from data_pipeline.utils import load_yaml_dict_from_file
@@ -94,7 +97,7 @@ def test_create_downloadable_data(
     etl, score_data_expected, downloadable_data_expected
 ):
     downloadable_csv_config = load_yaml_dict_from_file(
-        etl.CONTENT_CONFIG / "csv.yml"
+        etl.CONTENT_CONFIG / "csv.yml", CSVConfig
     )
     output_downloadable_df_actual = etl._create_downloadable_data(
         score_data_expected,

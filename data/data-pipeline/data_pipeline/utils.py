@@ -1,17 +1,24 @@
-from typing import List
+from typing import List, Union
 import datetime
 import json
 import logging
 import os
 import sys
 import shutil
+import uuid
 import zipfile
 from pathlib import Path
 import urllib3
 import requests
 import yaml
+from marshmallow_dataclass import class_schema
 
 from data_pipeline.config import settings
+from data_pipeline.content.schemas.download_schemas import (
+    CSVConfig,
+    CodebookConfig,
+    ExcelConfig,
+)
 
 
 ## zlib is not available on all systems
@@ -175,9 +182,12 @@ def unzip_file_from_url(
         None
 
     """
+    # file_id allows us to evade race conditions on parallel ETLs
+    file_id = uuid.uuid4()
+
     zip_file_path = download_file_from_url(
         file_url=file_url,
-        download_file_name=download_path / "downloaded.zip",
+        download_file_name=download_path / f"downloaded-{file_id}.zip",
         verify=verify,
     )
 
@@ -323,7 +333,10 @@ def zip_directory(
     )
 
 
-def load_yaml_dict_from_file(yaml_file_path: Path) -> dict:
+def load_yaml_dict_from_file(
+    yaml_file_path: Path,
+    schema_class: Union[CSVConfig, ExcelConfig, CodebookConfig],
+) -> dict:
     """Load a YAML file specified in path into a Python dictionary.
 
     Args:
@@ -334,6 +347,11 @@ def load_yaml_dict_from_file(yaml_file_path: Path) -> dict:
     """
     with open(yaml_file_path, encoding="UTF-8") as file:
         yaml_dict = yaml.load(file, Loader=yaml.FullLoader)
+
+        # validate YAML
+        yaml_config_schema = class_schema(schema_class)
+        yaml_config_schema().load(yaml_dict)
+
     return yaml_dict
 
 
