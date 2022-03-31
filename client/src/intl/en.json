@@ -420,8 +420,8 @@
     "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Economic loss rate to the population in fatalities and \n      injuries resulting from natural hazards"
   },
   "explore.tool.page.side.panel.indicator.description.heartDisease": {
-    "defaultMessage": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Weighted percent of people ages 18 years and older who have been told they have heart disease",
-    "description": "People ages 18 years and older who have been told they have heart disease"
+    "defaultMessage": "People ages 18 years and older who have been told they have heart disease",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Weighted percent of people ages 18 years and older who have \n    been told they have heart disease"
   },
   "explore.tool.page.side.panel.indicator.description.high.ed": {
     "defaultMessage": "Percent of the census tract's population 15 or older not enrolled in college, university, or graduate school",
