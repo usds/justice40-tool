@@ -36,6 +36,7 @@ const PublicEvent = ({event}:IPublicEvent) => {
 
   const isEventExpired = new Date() > event.DATE;
 
+  console.log('event and date: ', event.NAME, event.DATE, isEventExpired);
   return (
     <CollectionItem
       variantComponent={
