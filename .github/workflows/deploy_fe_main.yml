@@ -89,7 +89,7 @@ jobs:
         with:
           message: |
             **🚢 PR Deployed! 🚢**
-            Find it here: https://d3r1k4gynx5dw4.cloudfront.net  !
+            Find it here: https://screeningtool.geoplatform.gov  !
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: "github-actions[bot]" # The user.login for temporary GitHub tokens
           allow-repeats: false # This is the default
