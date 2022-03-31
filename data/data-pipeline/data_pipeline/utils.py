@@ -16,6 +16,7 @@ from marshmallow_dataclass import class_schema
 from data_pipeline.config import settings
 from data_pipeline.content.schemas.download_schemas import (
     CSVConfig,
+    CodebookConfig,
     ExcelConfig,
 )
 
@@ -333,7 +334,8 @@ def zip_directory(
 
 
 def load_yaml_dict_from_file(
-    yaml_file_path: Path, schema_class: Union[CSVConfig, ExcelConfig]
+    yaml_file_path: Path,
+    schema_class: Union[CSVConfig, ExcelConfig, CodebookConfig],
 ) -> dict:
     """Load a YAML file specified in path into a Python dictionary.
 
