@@ -123,7 +123,7 @@ export const EVENT_TYPES = {
     DESCRIPTION: {
       id: 'public.eng.page.event.whejac.meeting.day.1.description',
       defaultMessage: `
-        Members of the public are encouraged to provide comments relevant to the beta version of the Climate and Economic Justice Screening Tool that was developed by CEQ and federal government agencies implementation of the Justice40 Initiative will be considered by the WHEJAC during the public meeting.
+        The White House Environmental Justice Advisory Council is also soliciting feedback on the beta version of the Climate and Economic Justice Screening Tool at its public meeting. The link above has additional details.
       `,
       description: 'public engagement page event WHEJAC day 1 description',
     },
@@ -137,7 +137,7 @@ export const EVENT_TYPES = {
     DESCRIPTION: {
       id: 'public.eng.page.event.whejac.meeting.day.2.description',
       defaultMessage: `
-      Members of the public are encouraged to attend and hear updates and discussion from the WHEJAC Climate and Economic Justice Screening Tool workgroup, the Justice40 workgroup, and the WHEJAC business time and meeting conversation during which the WHEJAC will use reflect on the meeting proceedings and public comment period; provide workgroup updates; discuss action items and finalize next steps.
+        The White House Environmental Justice Advisory Council is also soliciting feedback on the beta version of the Climate and Economic Justice Screening Tool at its public meeting. The link above has additional details.
       `,
       description: 'public engagement page event WHEJAC day 2 description',
     },
@@ -157,9 +157,10 @@ export const EVENT_FIELDS = defineMessages({
   },
 });
 
+// All events dates are set one day ahead of actual date to account for timezone differences
 export const EVENTS = [
   {
-    DATE: new Date(2022, 2, 9),
+    DATE: new Date(2022, 2, 10),
     NAME: EVENT_TYPES.TRAINING_SESS.NAME,
     DESC: EVENT_TYPES.TRAINING_SESS.DESCRIPTION,
     NUMBER: 1,
@@ -176,7 +177,7 @@ export const EVENTS = [
     DATA_CY: `mar-9-reg-link-block`,
   },
   {
-    DATE: new Date(2022, 2, 10),
+    DATE: new Date(2022, 2, 11),
     NAME: EVENT_TYPES.TRAINING_SESS.NAME,
     DESC: EVENT_TYPES.TRAINING_SESS.DESCRIPTION,
     NUMBER: 2,
@@ -194,7 +195,7 @@ export const EVENTS = [
 
   },
   {
-    DATE: new Date(2022, 2, 16),
+    DATE: new Date(2022, 2, 17),
     NAME: EVENT_TYPES.TRAINING_SESS.NAME,
     DESC: EVENT_TYPES.TRAINING_SESS.DESCRIPTION,
     NUMBER: 3,
@@ -212,7 +213,7 @@ export const EVENTS = [
 
   },
   {
-    DATE: new Date(2022, 2, 22),
+    DATE: new Date(2022, 2, 23),
     NAME: EVENT_TYPES.LISTENING_SESS.NAME,
     DESC: EVENT_TYPES.LISTENING_SESS.DESCRIPTION,
     NUMBER: 1,
@@ -230,7 +231,7 @@ export const EVENTS = [
 
   },
   {
-    DATE: new Date(2022, 30, 2),
+    DATE: new Date(2022, 2, 31),
     NAME: EVENT_TYPES.WHEJAC_DAY1.NAME,
     DESC: EVENT_TYPES.WHEJAC_DAY1.DESCRIPTION,
     NUMBER: 0,
@@ -247,7 +248,7 @@ export const EVENTS = [
     DATA_CY: `mar-30-reg-link-block`,
   },
   {
-    DATE: new Date(2022, 31, 2),
+    DATE: new Date(2022, 3, 1),
     NAME: EVENT_TYPES.WHEJAC_DAY2.NAME,
     DESC: EVENT_TYPES.WHEJAC_DAY2.DESCRIPTION,
     NUMBER: 0,
@@ -264,7 +265,7 @@ export const EVENTS = [
     DATA_CY: `mar-31-reg-link-block`,
   },
   {
-    DATE: new Date(2022, 3, 15),
+    DATE: new Date(2022, 3, 16),
     NAME: EVENT_TYPES.LISTENING_SESS.NAME,
     DESC: EVENT_TYPES.LISTENING_SESS.DESCRIPTION,
     NUMBER: 2,
