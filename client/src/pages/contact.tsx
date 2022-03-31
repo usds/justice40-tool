@@ -6,6 +6,7 @@ import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 import LinkTypeWrapper from '../components/LinkTypeWrapper';
 import PublicEngageButton from '../components/PublicEngageButton';
+import RequestForInfo from '../components/RequestForInfo';
 
 import * as CONTACT_COPY from '../data/copy/contact';
 import * as COMMON_COPY from '../data/copy/common';
@@ -26,8 +27,10 @@ const ContactPage = ({location}: IContactPageProps) => {
           <PublicEngageButton />
         </section>
 
-        <Grid row>
-          <Grid col>
+        <Grid row gap={6}>
+
+          {/* First column */}
+          <Grid desktop={{col: 8}} col={12}>
             <h2>
               {intl.formatMessage(CONTACT_COPY.PAGE_INTRO.PAGE_SUB_HEADING)}
             </h2>
@@ -38,18 +41,23 @@ const ContactPage = ({location}: IContactPageProps) => {
                 defaultMessage={CONTACT_COPY.CONTACT_VIA_EMAIL.DEFAULT_MESSAGE}
                 values={{
                   general_email_address:
-                  <LinkTypeWrapper
-                    linkText= {COMMON_COPY.FEEDBACK_EMAIL}
-                    internal= {false}
-                    url= {`mailto:${COMMON_COPY.FEEDBACK_EMAIL}`}
-                    openUrlNewTab= {true}
-                  />,
+                <LinkTypeWrapper
+                  linkText= {COMMON_COPY.FEEDBACK_EMAIL}
+                  internal= {false}
+                  url= {`mailto:${COMMON_COPY.FEEDBACK_EMAIL}`}
+                  openUrlNewTab= {true}
+                />,
                 }}/>
             </p>
             <h3>{CONTACT_COPY.CENSUS_TRACT_FEEDBACK.TITLE}</h3>
             <p>{CONTACT_COPY.CENSUS_TRACT_FEEDBACK.PARAGRAPH1}</p>
             <p>{CONTACT_COPY.CENSUS_TRACT_FEEDBACK.PARAGRAPH2}</p>
             <p>{CONTACT_COPY.CENSUS_TRACT_FEEDBACK.PARAGRAPH3}</p>
+          </Grid>
+
+          {/* Second Column */}
+          <Grid desktop={{col: 4}} col={12}>
+            <RequestForInfo />
           </Grid>
         </Grid>
       </J40MainGridContainer>
