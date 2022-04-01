@@ -82,7 +82,7 @@ class ExtractTransformLoad:
     # This is a classmethod so it can be used by `get_data_frame` without
     # needing to create an instance of the class. This is a use case in `etl_score`.
     @classmethod
-    def _get_output_file_path(cls) -> pathlib.Path:
+    def _get_output_file_path(dataset_yaml_config) -> pathlib.Path:
         """Generate the output file path."""
         if cls.NAME is None:
             raise NotImplementedError(
@@ -234,7 +234,9 @@ class ExtractTransformLoad:
         """
         logger.info(f"Saving `{self.NAME}` CSV")
 
-        # Create directory if necessary.
+        ## Read YAML Config for this module
+
+        # Create directory from YAML if necessary.
         output_file_path = self._get_output_file_path()
         output_file_path.parent.mkdir(parents=True, exist_ok=True)
 

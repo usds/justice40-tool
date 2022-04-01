@@ -29,25 +29,24 @@ class NationalRiskIndexETL(ExtractTransformLoad):
     def __init__(self):
         self.INPUT_CSV = self.get_tmp_path() / "NRI_Table_CensusTracts.csv"
 
+        ## COLUMNS ON CSV ##
         self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_INPUT_FIELD_NAME = (
             "EAL_SCORE"
         )
-
-        self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME = (
-            "FEMA Risk Index Expected Annual Loss Score"
-        )
-
         self.EXPECTED_ANNUAL_LOSS_BUILDING_VALUE_INPUT_FIELD_NAME = "EAL_VALB"
-
         self.EXPECTED_ANNUAL_LOSS_AGRICULTURAL_VALUE_INPUT_FIELD_NAME = (
             "EAL_VALA"
         )
         self.EXPECTED_ANNUAL_LOSS_POPULATION_VALUE_INPUT_FIELD_NAME = "EAL_VALP"
-
         self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME = "AGRIVALUE"
         self.POPULATION_INPUT_FIELD_NAME = "POPULATION"
         self.BUILDING_VALUE_INPUT_FIELD_NAME = "BUILDVALUE"
+        ## /COLUMNS ON CSV ##
 
+        ## COLUMNS TO WRITE ##
+        self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME = (
+            "FEMA Risk Index Expected Annual Loss Score"
+        )
         self.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME = (
             "Expected building loss rate (Natural Hazards Risk Index)"
         )
@@ -58,6 +57,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
             "Expected population loss rate (Natural Hazards Risk Index)"
         )
         self.CONTAINS_AGRIVALUE = "Contains agricultural value"
+        ## /COLUMNS TO WRITE ##
 
         self.COLUMNS_TO_KEEP = [
             self.GEOID_TRACT_FIELD_NAME,
