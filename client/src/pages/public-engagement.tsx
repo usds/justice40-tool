@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {Grid} from '@trussworks/react-uswds';
+import {Collection, Grid} from '@trussworks/react-uswds';
 import {useIntl} from 'gatsby-plugin-intl';
 
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
-import PublicEvents from '../components/PublicEvents';
+import PublicEvent from '../components/PublicEvent';
 import PublicVideoBox from '../components/PublicVideoBox';
 
 import * as PUBLIC_ENG_COPY from '../data/copy/publicEngage';
@@ -46,7 +46,9 @@ const PublicEngagementPage = ({location}: IPublicEngagementPageProps) => {
 
         <Grid row gap={6}>
           <Grid desktop={{col: 8}}>
-            <PublicEvents />
+            <Collection>
+              {PUBLIC_ENG_COPY.EVENTS.map((event, index) => <PublicEvent key={index} event={event} />)}
+            </Collection>
           </Grid>
           <Grid desktop={{col: 4}}>
             <PublicVideoBox />
