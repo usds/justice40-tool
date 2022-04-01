@@ -26,6 +26,7 @@ There are 3 things that should be included in this file:
     -- Map styles
     -- Public Event styles
     -- About styles
+    -- Summary box
 */
 
 
@@ -366,4 +367,13 @@ a.mapboxgl-ctrl-logo {
       @include u-margin-top(2);
     }
   }
+}
+
+/* 
+******************************
+*      SUMMARY BOX STYLES
+****************************** 
+*/
+.usa-summary-box__heading {
+  @include u-margin-bottom(2);
 }

@@ -1,0 +1,43 @@
+@use "../../styles/design-system.scss" as *;
+
+.publicVideoContainer {
+  @include u-margin-top(3);
+
+  @include at-media-max('desktop'){
+    @include u-margin-bottom(3);
+  }
+
+  .publicVideoLink {
+      display: flex;
+      text-decoration: none;
+
+      .youTubeBtn {
+        @include u-text("blue-70v");
+        @include u-bg("yellow-20v");
+        height: 40px;
+        @include u-margin-top(3);
+        margin-left: auto;
+        margin-right: auto;
+
+        
+        &:hover {
+          @include u-bg("yellow-20");
+          @include u-text("gray-90");
+        }
+        .buttonContainer {
+            display: flex;
+
+          .buttonText {
+            @include u-margin-right(1);
+            }
+        
+        .buttonImage {
+            width: 21px;
+            margin-top: -3px;
+
+            filter: invert(13%) sepia(76%) saturate(5142%) hue-rotate(192deg) brightness(80%) contrast(106%);
+        }
+      }
+    }
+  }
+};

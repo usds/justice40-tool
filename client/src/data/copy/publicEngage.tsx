@@ -64,6 +64,29 @@ export const PAGE_INTRO = defineMessages({
   },
 });
 
+export const PUBLIC_ENG_VIDEO = defineMessages({
+  TITLE: {
+    id: 'public.eng.page.video.box.title.text',
+    defaultMessage: `Can't make an upcoming session?`,
+    description: 'Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box title text.',
+  },
+  BODY: {
+    id: 'public.eng.page.video.box.body.text',
+    defaultMessage: `Watch a recorded version of the CEJST training on YouTube.`,
+    description: 'Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box body text.',
+  },
+  BUTTON_TEXT: {
+    id: 'public.eng.page.video.box.button.text',
+    defaultMessage: `Watch on YouTube`,
+    description: 'Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box button text.',
+  },
+  IMG_ALT_TEXT: {
+    id: 'public.eng.page.video.box.button.img.alt.text',
+    defaultMessage: `the icon to show that this button will open in a new tab`,
+    description: 'Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is alt tag of the image in the button.',
+  },
+});
+
 export const PUBLIC_ENG_BUTTON = defineMessages({
   LABEL: {
     id: 'public.eng.page.button.label',
