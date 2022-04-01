@@ -1,7 +1,11 @@
 @use "../../styles/design-system.scss" as *;
 
 .publicVideoContainer {
-    @include u-margin-top(3);
+  @include u-margin-top(3);
+
+  @include at-media-max('desktop'){
+    @include u-margin-bottom(3);
+  }
 
   .publicVideoLink {
       display: flex;
