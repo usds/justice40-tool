@@ -5,6 +5,7 @@ import {useIntl} from 'gatsby-plugin-intl';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 import PublicEvent from '../components/PublicEvent';
+import PublicVideoBox from '../components/PublicVideoBox';
 
 import * as PUBLIC_ENG_COPY from '../data/copy/publicEngage';
 
@@ -26,16 +27,21 @@ const PublicEngagementPage = ({location}: IPublicEngagementPageProps) => {
 
         <h1>{intl.formatMessage(PUBLIC_ENG_COPY.PAGE_INTRO.PAGE_HEADING1)}</h1>
 
-        <Grid row tablet={{col: 8}} desktop={{col: 7}}>
-          <p>
-            {intl.formatMessage(PUBLIC_ENG_COPY.PAGE_INTRO.PAGE_DESCRIPTION1)}
-          </p>
-          <p>
-            {intl.formatMessage(PUBLIC_ENG_COPY.PAGE_INTRO.PAGE_DESCRIPTION2)}
-          </p>
-          <p>
-            {intl.formatMessage(PUBLIC_ENG_COPY.PAGE_INTRO.PAGE_DESCRIPTION3)}
-          </p>
+        <Grid row gap={6}>
+          <Grid desktop={{col: 8}}>
+            <p>
+              {intl.formatMessage(PUBLIC_ENG_COPY.PAGE_INTRO.PAGE_DESCRIPTION1)}
+            </p>
+            <p>
+              {intl.formatMessage(PUBLIC_ENG_COPY.PAGE_INTRO.PAGE_DESCRIPTION2)}
+            </p>
+            <p>
+              {intl.formatMessage(PUBLIC_ENG_COPY.PAGE_INTRO.PAGE_DESCRIPTION3)}
+            </p>
+          </Grid>
+          <Grid desktop={{col: 4}}>
+            <PublicVideoBox />
+          </Grid>
         </Grid>
 
         <Grid row>
