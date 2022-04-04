@@ -203,6 +203,14 @@
     "defaultMessage": "Contact",
     "description": "Navigate to the contact page, this is the contact page header text"
   },
+  "contact.page.request.for.info.box.body": {
+    "defaultMessage": "During the beta period, comments may be submitted on the Climate and Economic Justice Screening Tool via CEQ’s Request for Information on available on <link1>federalregister.gov</link1>",
+    "description": "Navigate to the contact page, this is the body of the request for information box"
+  },
+  "contact.page.request.for.info.box.title": {
+    "defaultMessage": "Request for Infomation",
+    "description": "Navigate to the contact page, this is the title of the request for information box"
+  },
   "contact.page.sub.header.text": {
     "defaultMessage": "Email us",
     "description": "Navigate to the contact page, this is the contact page sub header text"
