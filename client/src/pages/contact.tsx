@@ -29,7 +29,8 @@ const ContactPage = ({location}: IContactPageProps) => {
 
         <Grid row gap={6}>
 
-          <Grid desktop={{col: 7}} col={12}>
+          {/* First column */}
+          <Grid desktop={{col: 8}} col={12}>
             <h2>
               {intl.formatMessage(CONTACT_COPY.PAGE_INTRO.PAGE_SUB_HEADING)}
             </h2>
@@ -53,7 +54,9 @@ const ContactPage = ({location}: IContactPageProps) => {
             <p>{CONTACT_COPY.CENSUS_TRACT_FEEDBACK.PARAGRAPH2}</p>
             <p>{CONTACT_COPY.CENSUS_TRACT_FEEDBACK.PARAGRAPH3}</p>
           </Grid>
-          <Grid desktop={{col: 5}} col={12}>
+
+          {/* Second Column */}
+          <Grid desktop={{col: 4}} col={12}>
             <RequestForInfo />
           </Grid>
         </Grid>
