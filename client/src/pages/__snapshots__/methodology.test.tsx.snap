@@ -420,6 +420,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <div>
                     <a
                       data-cy="download-link"
+                      download=""
                       href="//"
                     >
                       <button
