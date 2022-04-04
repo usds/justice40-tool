@@ -24,7 +24,7 @@ const DownloadPacket = () => {
               </span>
             </div>
             <div className={styles.downloadBoxButtonContainer}>
-              <a data-cy={'download-link'} href={METHODOLOGY_COPY.DOWNLOAD_ZIP_URL}>
+              <a data-cy={'download-link'} download href={METHODOLOGY_COPY.DOWNLOAD_ZIP_URL}>
                 <Button className={styles.downloadBoxButton} type="button">
                   <div>
                     <img src={downloadIcon} alt={'download icon for download package'}/>
