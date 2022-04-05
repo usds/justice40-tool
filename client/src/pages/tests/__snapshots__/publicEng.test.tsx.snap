@@ -315,9 +315,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   >
                     <a
                       data-cy="nav-link-faqs"
-                      href="/en/faqs"
+                      href="/en/frequently-asked-questions"
                     >
-                      FAQs
+                      Frequently asked questions
                     </a>
                   </li>
                   <li
@@ -327,7 +327,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                       data-cy="nav-link-public-engagement"
                       href="/en/public-engagement"
                     >
-                      Public Engagement
+                      Engagement calendar
                     </a>
                   </li>
                 </ul>

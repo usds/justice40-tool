@@ -11,7 +11,7 @@ export const PAGES_ENDPOINTS = {
   DOWNLOADS: '/downloads',
   TSD: '/technical-support-document',
   ABOUT: '/about',
-  FAQS: '/faqs',
+  FAQS: '/frequently-asked-questions',
   PUBLIC_ENG: '/public-engagement',
   CONTACT: '/contact',
 };

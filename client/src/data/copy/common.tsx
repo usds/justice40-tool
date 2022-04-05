@@ -96,12 +96,12 @@ export const HEADER = defineMessages({
   },
   FAQs: {
     id: 'common.pages.header.faqs',
-    defaultMessage: 'FAQs',
+    defaultMessage: 'Frequently asked questions',
     description: 'Navigate to the about page. This is Header navigate item to the faqs page',
   },
   PUBLIC_ENG: {
     id: 'common.pages.header.public.eng',
-    defaultMessage: 'Public Engagement',
+    defaultMessage: 'Engagement calendar',
     description: 'Navigate to the about page. This is Header navigate item to the public eng page',
   },
   TSD: {

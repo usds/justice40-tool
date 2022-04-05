@@ -172,7 +172,7 @@
     "description": "Navigate to the about page. This is Header navigate item to the Explore the tool page"
   },
   "common.pages.header.faqs": {
-    "defaultMessage": "FAQs",
+    "defaultMessage": "Frequently asked questions",
     "description": "Navigate to the about page. This is Header navigate item to the faqs page"
   },
   "common.pages.header.methodology": {
@@ -180,7 +180,7 @@
     "description": "Navigate to the about page. This is Header navigate item to the Methodology page"
   },
   "common.pages.header.public.eng": {
-    "defaultMessage": "Public Engagement",
+    "defaultMessage": "Engagement calendar",
     "description": "Navigate to the about page. This is Header navigate item to the public eng page"
   },
   "common.pages.header.title.line1": {
@@ -791,6 +791,14 @@
     "defaultMessage": "Help improve the site & data",
     "description": "Navigate to the the public engagement page, this will be the text for floating action button"
   },
+  "faqs.page.coming.soon.text": {
+    "defaultMessage": "Coming Soon!",
+    "description": "Navigate to the the FAQs page, this will be the page coming soon text"
+  },
+  "faqs.page.title.text": {
+    "defaultMessage": "Frequently asked questions",
+    "description": "Navigate to the the FAQs page, this will be the page title text"
+  },
   "indicator.categories.afford.house.title": {
     "defaultMessage": "Affordable and sustainable housing",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the category title"
@@ -1390,5 +1398,13 @@
   "public.eng.page.whejac.meeting.day.1.info": {
     "defaultMessage": "March 31th (3:00 - 7:30 PM EST)",
     "description": "public engagement page event WHEJAC"
+  },
+  "technical.support.doc.page.coming.soon.text": {
+    "defaultMessage": "Coming Soon!",
+    "description": "Navigate to the the Technical Support Doc page, this will be the page coming soon text"
+  },
+  "technical.support.doc.page.title.text": {
+    "defaultMessage": "Technical Support Document",
+    "description": "Navigate to the the Technical Support Doc page, this will be the page title text"
   }
 }
