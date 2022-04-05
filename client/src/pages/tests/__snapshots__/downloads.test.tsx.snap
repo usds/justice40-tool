@@ -273,7 +273,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   >
                     <a
                       data-cy="nav-link-technical-support-docs"
-                      href="/en/technical-support-docs"
+                      href="/en/technical-support-document"
                     >
                       Technical Support Document
                     </a>

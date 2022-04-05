@@ -7,6 +7,7 @@ import {FormattedDate, FormattedMessage, FormattedNumber} from 'gatsby-plugin-in
 import * as COMMON_COPY from './common';
 import * as METHODOLOGY_COPY from './methodology';
 import {simpleLink, linkFn} from './common';
+import {PAGES_ENDPOINTS} from '../constants';
 
 export const PAGE_INTRO = defineMessages({
   PAGE_TILE: {
@@ -31,7 +32,7 @@ export const PAGE_DESCRIPTION = <FormattedMessage
     `}
   description={'On the explore the tool page, the description of the page'}
   values={{
-    link1: linkFn('/methodology', true, false),
+    link1: linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
   }}
 />;
 
@@ -795,7 +796,7 @@ export const NOTE_ON_TERRITORIES = {
     `}
     description={`Navigate to the explore the tool page. Under the map, you will see territories paragraph 1`}
     values={{
-      link1: linkFn('/methodology', true, false),
+      link1: linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
     }}
   />,
   PARA_2: <FormattedMessage
@@ -849,7 +850,7 @@ export const NOTE_ON_TRIBAL_NATIONS = {
     `}
     description={`Navigate to the explore the tool page. Under the map, you will see tribal nations paragraph 1`}
     values={{
-      link1: linkFn('/methodology', true, false),
+      link1: linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
       link2: linkFn(`https://www.whitehouse.gov/wp-content/uploads/2022/01/CEQ-Tribal-Consultation-Plan-04.26.2021.pdf`, false, true),
       link3: linkFn(`https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/26/memorandum-on-tribal-consultation-and-strengthening-nation-to-nation-relationships/`, false, true),
       link4: linkFn(`https://www.federalregister.gov/documents/2000/11/09/00-29003/consultation-and-coordination-with-indian-tribal-governments`, false, true),
@@ -870,7 +871,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
     `}
     defaultMessage={`View the <link1>Methodology & data</link1> page and send feedback.`}
     values={{
-      link1: linkFn('/methodology', true, false),
+      link1: linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
     }}
   />,
   LIST_ITEM_2: <FormattedMessage

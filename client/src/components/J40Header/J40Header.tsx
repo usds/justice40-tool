@@ -18,6 +18,7 @@ import Language from '../Language';
 import siteLogo from '../../images/j40-logo-v2.png';
 import * as styles from './J40Header.module.scss';
 import * as COMMON_COPY from '../../data/copy/common';
+import {PAGES_ENDPOINTS} from '../../data/constants';
 
 const isAlertValid = new Date < COMMON_COPY.ALERTS.EXPIRATION_DATE;
 
@@ -52,21 +53,21 @@ const J40Header = () => {
 
   const methPageSubNavLinks = [
     <Link
-      to={'/methodology'}
+      to={PAGES_ENDPOINTS.METHODOLOGY}
       key={'methodology'}
       activeClassName="usa-current"
       data-cy={'nav-link-methodology'}>
       {intl.formatMessage(COMMON_COPY.HEADER.METHODOLOGY)}
     </Link>,
     <Link
-      to={'/downloads'}
+      to={PAGES_ENDPOINTS.DOWNLOADS}
       key={'downloads'}
       activeClassName="usa-current"
       data-cy={'nav-link-downloads'}>
       {intl.formatMessage(COMMON_COPY.HEADER.DOWNLOADS)}
     </Link>,
     <Link
-      to={'/technical-support-docs'}
+      to={PAGES_ENDPOINTS.TSD}
       key={'tsd'}
       activeClassName="usa-current"
       data-cy={'nav-link-technical-support-docs'}>
@@ -76,21 +77,21 @@ const J40Header = () => {
 
   const aboutSubNavLinks = [
     <Link
-      to={'/about'}
+      to={PAGES_ENDPOINTS.ABOUT}
       key={'about'}
       activeClassName="usa-current"
       data-cy={'nav-link-about'}>
       {intl.formatMessage(COMMON_COPY.HEADER.ABOUT)}
     </Link>,
     <Link
-      to={'/faqs'}
+      to={PAGES_ENDPOINTS.FAQS}
       key={'faqs'}
       activeClassName="usa-current"
       data-cy={'nav-link-faqs'}>
       {intl.formatMessage(COMMON_COPY.HEADER.FAQs)}
     </Link>,
     <Link
-      to={'/public-engagement'}
+      to={PAGES_ENDPOINTS.PUBLIC_ENG}
       key={'publicEng'}
       activeClassName="usa-current"
       data-cy={'nav-link-public-engagement'}>
@@ -100,7 +101,7 @@ const J40Header = () => {
 
   const navLinks = [
     <Link
-      to={'/'}
+      to={PAGES_ENDPOINTS.EXPLORE}
       key={'explore-tool'}
       activeClassName="usa-current"
       data-cy={'nav-link-explore-the-tool'}>
@@ -143,7 +144,7 @@ const J40Header = () => {
       </Menu>
     </>,
     <Link
-      to={'/contact'}
+      to={PAGES_ENDPOINTS.CONTACT}
       key={'contact'}
       activeClassName="usa-current"
       data-cy={'nav-link-contact'}>

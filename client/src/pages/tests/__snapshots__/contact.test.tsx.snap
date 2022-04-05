@@ -273,7 +273,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   >
                     <a
                       data-cy="nav-link-technical-support-docs"
-                      href="/en/technical-support-docs"
+                      href="/en/technical-support-document"
                     >
                       Technical Support Document
                     </a>
@@ -429,7 +429,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       To provide feedback about a specific census tract, either select the send feedback button after
       selecting a census tract on the 
             <a
-              href="/en/cejst"
+              href="/en/"
             >
               Explore the tool
             </a>

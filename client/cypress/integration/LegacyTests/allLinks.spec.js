@@ -1,13 +1,9 @@
 // / <reference types="Cypress" />
 
+import {PAGES_ENDPOINTS} from '../LegacyTests/constants';
+
 describe('Do all the English pages have all links with a defined href attribute?', () => {
-  const pages = [
-    '/',
-    'cejst',
-    'methodology',
-    'contact',
-    'public-engagement',
-  ];
+  const pages = Object.values(PAGES_ENDPOINTS);
 
   pages.forEach((page) => {
     it(`test all href attr on ${page} page`, () => {

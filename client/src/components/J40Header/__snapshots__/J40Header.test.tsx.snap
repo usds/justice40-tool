@@ -273,7 +273,7 @@ exports[`rendering of the J40Header checks if component renders 1`] = `
                   >
                     <a
                       data-cy="nav-link-technical-support-docs"
-                      href="/en/technical-support-docs"
+                      href="/en/technical-support-document"
                     >
                       Technical Support Document
                     </a>

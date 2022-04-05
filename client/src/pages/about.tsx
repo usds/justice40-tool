@@ -8,6 +8,7 @@ import Layout from '../components/layout';
 
 import * as ABOUT_COPY from '../data/copy/about';
 import * as COMMON_COPY from '../data/copy/common';
+import {PAGES_ENDPOINTS} from '../data/constants';
 
 // @ts-ignore
 import aboutUSMapImg from '../images/about-usmap-1.svg';
@@ -85,7 +86,7 @@ const AboutPage = ({location}: IAboutPageProps) => {
               imgSrc={accountBalanceIcon}
               header={intl.formatMessage(ABOUT_COPY.HOW_TO_GET_STARTED.FEDERAL_PM_HEADING)}
               linkText={intl.formatMessage(ABOUT_COPY.HOW_TO_GET_STARTED.FEDERAL_PM_LINK_TEXT)}
-              url={'/methodology'}
+              url={PAGES_ENDPOINTS.METHODOLOGY}
               internal={true}>
               <p>
                 {intl.formatMessage(ABOUT_COPY.HOW_TO_GET_STARTED.FEDERAL_PM_INFO)}
@@ -97,7 +98,7 @@ const AboutPage = ({location}: IAboutPageProps) => {
               imgSrc={groupsIcon}
               header={intl.formatMessage(ABOUT_COPY.HOW_TO_GET_STARTED.COMMUNITY_MEMBERS_HEADING)}
               linkText={intl.formatMessage(ABOUT_COPY.HOW_TO_GET_STARTED.COMMUNITY_MEMBERS_LINK_TEXT)}
-              url={'/'}
+              url={PAGES_ENDPOINTS.EXPLORE}
               internal={true}>
               <p>
                 {intl.formatMessage(ABOUT_COPY.HOW_TO_GET_STARTED.COMMUNITY_MEMBERS_INFO)}

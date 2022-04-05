@@ -1,8 +1,10 @@
-export const ENDPOINTS = {
-  EXPLORE_THE_TOOL: 'en/',
-  ABOUT: '/en/about',
-  METHODOLOGY: '/en/methodology',
-  CONTACT: 'en/contact',
-  PUBLIC: 'en/public-engagement',
-  DOWNLOAD: 'en/downloads',
+export const PAGES_ENDPOINTS = {
+  EXPLORE: '/',
+  METHODOLOGY: '/methodology',
+  DOWNLOADS: '/downloads',
+  TSD: '/technical-support-document',
+  ABOUT: '/about',
+  FAQS: '/faqs',
+  PUBLIC_ENG: '/public-engagement',
+  CONTACT: '/contact',
 };

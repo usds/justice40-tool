@@ -3,6 +3,7 @@ import React from 'react';
 import {defineMessages} from 'react-intl';
 import {FormattedMessage} from 'gatsby-plugin-intl';
 import * as COMMON_COPY from './common';
+import {PAGES_ENDPOINTS} from '../constants';
 
 export const PAGE_INTRO = defineMessages({
   PAGE_TILE: {
@@ -63,7 +64,7 @@ export const CENSUS_TRACT_FEEDBACK = {
     `}
     description={'Navigate to the contact page, this is the census tract feedback section'}
     values={{
-      link1: COMMON_COPY.linkFn('/cejst', true, false),
+      link1: COMMON_COPY.linkFn(PAGES_ENDPOINTS.EXPLORE, true, false),
     }}
   />,
   PARAGRAPH2: <FormattedMessage

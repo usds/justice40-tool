@@ -2,14 +2,14 @@
 
 // Common step definitions for Gherkin
 
-import {ENDPOINTS} from '../../integration/LegacyTests/constants';
+import {PAGES_ENDPOINTS} from '../../integration/LegacyTests/constants';
 import {hyphenizeString} from '../../integration/common/helpers';
 
 // Common Givens:
 Given('I am on the {string} page', (page) => {
   const pageArray = page.split(' ');
   cy.viewport(1060, 800);
-  cy.visit(ENDPOINTS[pageArray.join('_').toUpperCase()]);
+  cy.visit(PAGES_ENDPOINTS[pageArray.join('_').toUpperCase()]);
 });
 
 // Common Whens:
