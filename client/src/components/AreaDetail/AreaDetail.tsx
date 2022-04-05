@@ -620,9 +620,6 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
                 alt={'tbd'}
               />
             </div>
-            {/* <div>
-                <img src={mailIcon} alt={'mail icon for email'}/>
-              </div> */}
           </Button>
         </a>
 

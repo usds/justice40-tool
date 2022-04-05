@@ -677,12 +677,9 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   },
   HEART_DISEASE: {
     id: 'explore.tool.page.side.panel.indicator.description.heartDisease',
-    defaultMessage: `
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of Weighted percent of people ages 18 years and older who have 
-      been told they have heart disease
-    `,
-    description: `People ages 18 years and older who have been told they have heart disease`,
+    defaultMessage: `People ages 18 years and older who have been told they have heart disease`,
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Weighted percent of people ages 18 years and older who have 
+    been told they have heart disease`,
   },
   LOW_LIFE_EXPECT: {
     id: 'explore.tool.page.side.panel.indicator.description.lifeExpect',

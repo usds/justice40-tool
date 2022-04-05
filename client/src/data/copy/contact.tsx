@@ -32,6 +32,23 @@ export const PAGE_INTRO = defineMessages({
   },
 });
 
+export const RFI_BOX = defineMessages({
+  TITLE: {
+    id: 'contact.page.request.for.info.box.title',
+    defaultMessage: 'Request for Infomation',
+    description: 'Navigate to the contact page, this is the title of the request for information box',
+  },
+});
+
+export const RFI_BOX_BODY = <FormattedMessage
+  id={'contact.page.request.for.info.box.body'}
+  defaultMessage={`During the beta period, comments may be submitted on the Climate and Economic Justice Screening Tool via CEQ’s Request for Information available on <link1>federalregister.gov</link1>.`}
+  description={'Navigate to the contact page, this is the body of the request for information box'}
+  values={{
+    link1: COMMON_COPY.linkFn(`https://www.federalregister.gov/d/2022-03920`, false, true),
+  }}
+/>;
+
 export const CENSUS_TRACT_FEEDBACK = {
   TITLE: <FormattedMessage
     id={'contact.page.census.tract.feedback.title'}

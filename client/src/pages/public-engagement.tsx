@@ -1,10 +1,11 @@
 import * as React from 'react';
-import {Grid, Collection} from '@trussworks/react-uswds';
+import {Collection, Grid} from '@trussworks/react-uswds';
 import {useIntl} from 'gatsby-plugin-intl';
 
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 import PublicEvent from '../components/PublicEvent';
+import PublicVideoBox from '../components/PublicVideoBox';
 
 import * as PUBLIC_ENG_COPY from '../data/copy/publicEngage';
 
@@ -15,10 +16,6 @@ interface IPublicEngagementPageProps {
 const PublicEngagementPage = ({location}: IPublicEngagementPageProps) => {
   const intl = useIntl();
 
-  // TODO: filter events by date
-  const futureEvents = PUBLIC_ENG_COPY.EVENTS;
-  // const pastEvents
-
   return (
     <Layout location={location} title={intl.formatMessage(PUBLIC_ENG_COPY.PAGE_INTRO.PAGE_TILE)}>
 
@@ -26,16 +23,18 @@ const PublicEngagementPage = ({location}: IPublicEngagementPageProps) => {
 
         <h1>{intl.formatMessage(PUBLIC_ENG_COPY.PAGE_INTRO.PAGE_HEADING1)}</h1>
 
-        <Grid row tablet={{col: 8}} desktop={{col: 7}}>
-          <p>
-            {intl.formatMessage(PUBLIC_ENG_COPY.PAGE_INTRO.PAGE_DESCRIPTION1)}
-          </p>
-          <p>
-            {intl.formatMessage(PUBLIC_ENG_COPY.PAGE_INTRO.PAGE_DESCRIPTION2)}
-          </p>
-          <p>
-            {intl.formatMessage(PUBLIC_ENG_COPY.PAGE_INTRO.PAGE_DESCRIPTION3)}
-          </p>
+        <Grid row>
+          <Grid desktop={{col: 8}}>
+            <p>
+              {intl.formatMessage(PUBLIC_ENG_COPY.PAGE_INTRO.PAGE_DESCRIPTION1)}
+            </p>
+            <p>
+              {intl.formatMessage(PUBLIC_ENG_COPY.PAGE_INTRO.PAGE_DESCRIPTION2)}
+            </p>
+            <p>
+              {intl.formatMessage(PUBLIC_ENG_COPY.PAGE_INTRO.PAGE_DESCRIPTION3)}
+            </p>
+          </Grid>
         </Grid>
 
         <Grid row>
@@ -44,13 +43,18 @@ const PublicEngagementPage = ({location}: IPublicEngagementPageProps) => {
           </h2>
         </Grid>
 
-        <Collection>
-          {futureEvents.map((event, index) => <PublicEvent key={index} event={event} />)}
-        </Collection>
 
-        <Grid row>
-          {/* Empty Spacer */}
+        <Grid row gap={6}>
+          <Grid desktop={{col: 8}}>
+            <Collection>
+              {PUBLIC_ENG_COPY.EVENTS.map((event, index) => <PublicEvent key={index} event={event} />)}
+            </Collection>
+          </Grid>
+          <Grid desktop={{col: 4}}>
+            <PublicVideoBox />
+          </Grid>
         </Grid>
+
       </J40MainGridContainer>
     </Layout>
   );
