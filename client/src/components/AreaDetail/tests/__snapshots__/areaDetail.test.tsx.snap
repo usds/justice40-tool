@@ -76,7 +76,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
               Send feedback
             </div>
             <img
-              alt="tbd"
+              alt="Send feedback"
               src="test-file-stub"
             />
           </div>
@@ -429,7 +429,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               Send feedback
             </div>
             <img
-              alt="tbd"
+              alt="Send feedback"
               src="test-file-stub"
             />
           </div>
@@ -2133,7 +2133,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               Send feedback
             </div>
             <img
-              alt="tbd"
+              alt="Send feedback"
               src="test-file-stub"
             />
           </div>

@@ -6,6 +6,7 @@ import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 import LinkTypeWrapper from '../components/LinkTypeWrapper';
 import RequestForInfo from '../components/RequestForInfo';
+import PublicEngageButton from '../components/PublicEngageButton';
 
 import * as CONTACT_COPY from '../data/copy/contact';
 import * as COMMON_COPY from '../data/copy/common';
@@ -21,7 +22,10 @@ const ContactPage = ({location}: IContactPageProps) => {
 
       <J40MainGridContainer>
 
-        <h1>{intl.formatMessage(CONTACT_COPY.PAGE_INTRO.PAGE_HEADING)}</h1>
+        <section className={'page-heading'}>
+          <h1>{intl.formatMessage(CONTACT_COPY.PAGE_INTRO.PAGE_HEADING)}</h1>
+          <PublicEngageButton />
+        </section>
 
         <Grid row gap={6}>
 

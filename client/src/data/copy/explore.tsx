@@ -290,6 +290,13 @@ export const COMMUNITY = {
       defaultMessage={ 'Send feedback'}
       description={`Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show link to send feedback`}
     />,
+    IMG_ICON: defineMessages({
+      ALT_TAG: {
+        id: 'explore.tool.page.side.panel.send.feedback.alt.img',
+        defaultMessage: 'Send feedback',
+        description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show a send feedback icon, this is the images alt tag`,
+      },
+    }),
   },
 };
 

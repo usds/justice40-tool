@@ -723,6 +723,10 @@
     "defaultMessage": "At or above {numberOfThresholdExceed} thresholds",
     "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show how many thresholds are exceeded"
   },
+  "explore.tool.page.side.panel.send.feedback.alt.img": {
+    "defaultMessage": "Send feedback",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show a send feedback icon, this is the images alt tag"
+  },
   "explore.tool.page.side.panel.send.feedback.email.body": {
     "defaultMessage": "Please provide feedback about this census tract, including about the datasets, the data categories provided for this census tract, the communities who live in this census tract, and anything else relevant that CEQ should know about this census tract.",
     "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show link to send feedback\n"
@@ -1287,8 +1291,12 @@
     "defaultMessage": "Page not found",
     "description": "page not found title text"
   },
+  "public.eng.page.button.img.alt.tag": {
+    "defaultMessage": "an icon that represents a calendar",
+    "description": "Navigate to the the public engagement page, this will be the public engagement button icon alt tag text"
+  },
   "public.eng.page.button.label": {
-    "defaultMessage": "Public Engagement",
+    "defaultMessage": "Public engagement",
     "description": "Navigate to the the public engagement page, this will be the public engagement button label"
   },
   "public.eng.page.description1.text": {

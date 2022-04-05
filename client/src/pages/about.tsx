@@ -5,6 +5,7 @@ import AboutCard from '../components/AboutCard/AboutCard';
 import AboutCardsContainer from '../components/AboutCard/AboutCardsContainer';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
+import PublicEngageButton from '../components/PublicEngageButton';
 
 import * as ABOUT_COPY from '../data/copy/about';
 import * as COMMON_COPY from '../data/copy/common';
@@ -38,7 +39,11 @@ const AboutPage = ({location}: IAboutPageProps) => {
     <Layout location={location} title={intl.formatMessage(ABOUT_COPY.PAGE.TILE)}>
 
       <J40MainGridContainer>
-        <h1 data-cy={'about-page-heading'}>{intl.formatMessage(ABOUT_COPY.PAGE.HEADING)}</h1>
+
+        <section className={'page-heading'}>
+          <h1 data-cy={'about-page-heading'}>{intl.formatMessage(ABOUT_COPY.PAGE.HEADING)}</h1>
+          <PublicEngageButton />
+        </section>
 
         <AboutCardsContainer>
           <AboutCard

@@ -6,6 +6,7 @@ import HowYouCanHelp from '../components/HowYouCanHelp';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 import MapWrapper from '../components/MapWrapper';
+import PublicEngageButton from '../components/PublicEngageButton';
 
 import * as EXPLORE_COPY from '../data/copy/explore';
 
@@ -23,7 +24,10 @@ const ExporeToolPage = ({location}: IMapPageProps) => {
 
     <J40MainGridContainer>
 
-      <h1>{intl.formatMessage(EXPLORE_COPY.PAGE_INTRO.PAGE_HEADING)}</h1>
+      <section className={'page-heading'}>
+        <h1>{intl.formatMessage(EXPLORE_COPY.PAGE_INTRO.PAGE_HEADING)}</h1>
+        <PublicEngageButton />
+      </section>
 
       <Grid row gap className={'j40-mb5-mt3'}>
 
