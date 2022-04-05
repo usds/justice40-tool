@@ -231,106 +231,22 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <li
                 class="usa-nav__primary-item"
               >
-                <button
-                  aria-controls="methMenu"
-                  aria-expanded="false"
-                  class="usa-accordion__button usa-nav__link"
-                  data-cy="nav-dropdown-methodology"
-                  data-testid="navDropDownButton"
-                  type="button"
+                <a
+                  data-cy="nav-link-methodology"
+                  href="/en/methodology"
                 >
-                  <span>
-                    Methodology & data
-                  </span>
-                </button>
-                <ul
-                  class="usa-nav__submenu"
-                  hidden=""
-                  id="methMenu"
-                >
-                  <li
-                    class="usa-nav__submenu-item"
-                  >
-                    <a
-                      data-cy="nav-link-methodology"
-                      href="/en/methodology"
-                    >
-                      Methodology & data
-                    </a>
-                  </li>
-                  <li
-                    class="usa-nav__submenu-item"
-                  >
-                    <a
-                      data-cy="nav-link-downloads"
-                      href="/en/downloads"
-                    >
-                      Downloads
-                    </a>
-                  </li>
-                  <li
-                    class="usa-nav__submenu-item"
-                  >
-                    <a
-                      data-cy="nav-link-technical-support-docs"
-                      href="/en/technical-support-document"
-                    >
-                      Technical Support Document
-                    </a>
-                  </li>
-                </ul>
+                  Methodology & data
+                </a>
               </li>
               <li
                 class="usa-nav__primary-item"
               >
-                <button
-                  aria-controls="aboutMenu"
-                  aria-expanded="false"
-                  class="usa-accordion__button usa-nav__link"
-                  data-cy="nav-dropdown-about"
-                  data-testid="navDropDownButton"
-                  type="button"
+                <a
+                  data-cy="nav-link-about"
+                  href="/en/about"
                 >
-                  <span>
-                    About
-                  </span>
-                </button>
-                <ul
-                  class="usa-nav__submenu"
-                  hidden=""
-                  id="aboutMenu"
-                >
-                  <li
-                    class="usa-nav__submenu-item"
-                  >
-                    <a
-                      data-cy="nav-link-about"
-                      href="/en/about"
-                    >
-                      About
-                    </a>
-                  </li>
-                  <li
-                    class="usa-nav__submenu-item"
-                  >
-                    <a
-                      data-cy="nav-link-faqs"
-                      href="/en/frequently-asked-questions"
-                    >
-                      Frequently asked questions
-                    </a>
-                  </li>
-                  <li
-                    class="usa-nav__submenu-item"
-                  >
-                    <a
-                      data-cy="nav-link-public-engagement"
-                      href="/en/public-engagement"
-                    >
-                      Engagement calendar
-                    </a>
-                  </li>
-                </ul>
+                  About
+                </a>
               </li>
               <li
                 class="usa-nav__primary-item"
