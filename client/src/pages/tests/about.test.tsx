@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {render} from '@testing-library/react';
-import {LocalizedComponent} from '../test/testHelpers';
-import Meth from './methodology';
+import {LocalizedComponent} from '../../test/testHelpers';
+import AboutPage from '../about';
 
 describe('rendering of the DatasetContainer', () => {
   const {asFragment} = render(
       <LocalizedComponent>
-        <Meth location={window.location}/>
+        <AboutPage location={window.location}/>
       </LocalizedComponent>,
   );
 

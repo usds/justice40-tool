@@ -89,6 +89,26 @@ export const HEADER = defineMessages({
     defaultMessage: 'Contact',
     description: 'Navigate to the about page. This is Header navigate item to the Contact page',
   },
+  DOWNLOADS: {
+    id: 'common.pages.header.downloads',
+    defaultMessage: 'Downloads',
+    description: 'Navigate to the about page. This is Header navigate item to the downloads page',
+  },
+  FAQs: {
+    id: 'common.pages.header.faqs',
+    defaultMessage: 'FAQs',
+    description: 'Navigate to the about page. This is Header navigate item to the faqs page',
+  },
+  PUBLIC_ENG: {
+    id: 'common.pages.header.public.eng',
+    defaultMessage: 'Public Engagement',
+    description: 'Navigate to the about page. This is Header navigate item to the public eng page',
+  },
+  TSD: {
+    id: 'common.pages.header.tsd',
+    defaultMessage: 'Technical Support Document',
+    description: 'Navigate to the about page. This is Header navigate item to the technical support document page',
+  },
 });
 
 // Footer

@@ -13,6 +13,11 @@ Given('I am on the {string} page', (page) => {
 });
 
 // Common Whens:
+When(`I click on the {string} dropdown in the navigation`, (page) => {
+  const pageHyphenCase = hyphenizeString(page);
+  cy.get(`[data-cy="nav-dropdown-${pageHyphenCase}"]`).click();
+});
+
 When(`I click on the {string} page in the navigation`, (page) => {
   const pageHyphenCase = hyphenizeString(page);
   cy.get(`[data-cy="nav-link-${pageHyphenCase}"]`).click();

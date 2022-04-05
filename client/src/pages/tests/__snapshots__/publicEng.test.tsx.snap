@@ -222,18 +222,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 class="usa-nav__primary-item"
               >
                 <a
-                  data-cy="nav-link-about"
-                  href="/en/"
-                >
-                  About
-                </a>
-              </li>
-              <li
-                class="usa-nav__primary-item"
-              >
-                <a
                   data-cy="nav-link-explore-the-tool"
-                  href="/en/cejst"
+                  href="/en/"
                 >
                   Explore the tool
                 </a>
@@ -241,12 +231,106 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <li
                 class="usa-nav__primary-item"
               >
-                <a
-                  data-cy="nav-link-methodology"
-                  href="/en/methodology"
+                <button
+                  aria-controls="methMenu"
+                  aria-expanded="false"
+                  class="usa-accordion__button usa-nav__link"
+                  data-cy="nav-dropdown-methodology"
+                  data-testid="navDropDownButton"
+                  type="button"
                 >
-                  Methodology & data
-                </a>
+                  <span>
+                    Methodology & data
+                  </span>
+                </button>
+                <ul
+                  class="usa-nav__submenu"
+                  hidden=""
+                  id="methMenu"
+                >
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-methodology"
+                      href="/en/methodology"
+                    >
+                      Methodology & data
+                    </a>
+                  </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-downloads"
+                      href="/en/downloads"
+                    >
+                      Downloads
+                    </a>
+                  </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-technical-support-docs"
+                      href="/en/technical-support-docs"
+                    >
+                      Technical Support Document
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li
+                class="usa-nav__primary-item"
+              >
+                <button
+                  aria-controls="aboutMenu"
+                  aria-expanded="false"
+                  class="usa-accordion__button usa-nav__link"
+                  data-cy="nav-dropdown-about"
+                  data-testid="navDropDownButton"
+                  type="button"
+                >
+                  <span>
+                    About
+                  </span>
+                </button>
+                <ul
+                  class="usa-nav__submenu"
+                  hidden=""
+                  id="aboutMenu"
+                >
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-about"
+                      href="/en/about"
+                    >
+                      About
+                    </a>
+                  </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-faqs"
+                      href="/en/faqs"
+                    >
+                      FAQs
+                    </a>
+                  </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-public-engagement"
+                      href="/en/public-engagement"
+                    >
+                      Public Engagement
+                    </a>
+                  </li>
+                </ul>
               </li>
               <li
                 class="usa-nav__primary-item"
@@ -310,422 +394,486 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       class="grid-container-desktop-lg"
       data-testid="gridContainer"
     >
-      <section
-        class="page-heading"
-      >
-        <h1
-          data-cy="about-page-heading"
-        >
-          About
-        </h1>
-        <div>
-          <div>
-            <span
-              class="usa-tag"
-              data-testid="tag"
-            >
-              UPDATED
-            </span>
-          </div>
-          <a
-            href="/en/public-engagement"
-          >
-            <button
-              class="usa-button usa-button--icon"
-              data-testid="button"
-              type="button"
-            >
-              Public Engagement
-            </button>
-          </a>
-        </div>
-      </section>
+      <h1>
+        Public engagement opportunities
+      </h1>
       <div
-        class="grid-row grid-gap-lg j40-aboutcard-container "
+        class="grid-row"
         data-testid="grid"
       >
         <div
-          class="grid-gap-lg tablet:grid-col"
+          class="desktop:grid-col-8"
           data-testid="grid"
         >
-          <div
-            class="grid-row j40-aboutcard-lg-card"
-            data-testid="grid"
-          >
-            <div
-              class="tablet:grid-col-3 j40-aboutpage-image-container"
-              data-testid="grid"
-            >
-              <img
-                alt="Screening tool"
-                class="j40-aboutcard-image"
-                src="test-file-stub"
-              />
-            </div>
-            <div
-              class="tablet:grid-col-9"
-              data-cy="screening-tool-block"
-              data-testid="grid"
-            >
-              <div
-                class="grid-row"
-                data-testid="grid"
-              >
-                <h2>
-                  Screening tool
-                </h2>
-                <p>
-                  
-    In 
-                  <a
-                    class="usa-link usa-link--external"
-                    data-cy=""
-                    href="https://www.federalregister.gov/documents/2021/02/01/2021-02177/tackling-the-climate-crisis-at-home-and-abroad#:~:text=Sec.%20223.%20Justice40,40-percent%20goal."
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    Executive Order 14008
-                  </a>
-                   on 
-                  <i>
-                    Tackling the Climate Crisis at Home and Abroad
-                  </i>
-                  , President Biden directed the Council on Environmental Quality (CEQ) 
-    to create a Climate and Economic Justice Screening Tool. The purpose of the tool is to help
-    Federal agencies identify disadvantaged communities that are marginalized, underserved, and 
-    overburdened by pollution. The current version of the tool provides socioeconomic, environmental, 
-    and climate information to inform decisions that may affect these communities. The 
-    tool identifies disadvantaged communities through publicly-available, nationally-consistent datasets.
+          <p>
+            
+      CEQ is hosting engagement opportunities to connect with the public about the current version of the 
+      tool. These sessions are an opportunity to obtain training on the tool or to provide feedback on the 
+      beta version of the tool. CEQ hopes that members of the public will join these engagements to learn 
+      about the tool, have their questions answered, and share feedback.
     
-                </p>
-                <p>
-                  The current version of the tool is in a public beta form and will be updated based on feedback and research.
-                </p>
-              </div>
-            </div>
-          </div>
+          </p>
+          <p>
+            
+      Pre-registration is required to participate and speak at the sessions.
+    
+          </p>
+          <p>
+            
+      As they become available, additional public trainings and engagement opportunities on the Climate 
+      and Economic Justice Screening Tool will also be posted on this page.
+    
+          </p>
         </div>
       </div>
       <div
-        class="grid-row grid-gap-lg j40-aboutcard-container "
+        class="grid-row"
         data-testid="grid"
-      >
-        <div
-          class="grid-gap-lg tablet:grid-col"
-          data-testid="grid"
-        >
-          <div
-            class="grid-row j40-aboutcard-lg-card"
-            data-testid="grid"
-          >
-            <div
-              class="tablet:grid-col-3 j40-aboutpage-image-container"
-              data-testid="grid"
-            >
-              <img
-                alt="The Justice40 Initiative"
-                class="j40-aboutcard-image"
-                src="test-file-stub"
-              />
-            </div>
-            <div
-              class="tablet:grid-col-9"
-              data-cy="the-justice40-initiative-block"
-              data-testid="grid"
-            >
-              <div
-                class="grid-row"
-                data-testid="grid"
-              >
-                <h2>
-                  The Justice40 Initiative
-                </h2>
-                <p>
-                  
-      The tool will provide important information for the Justice40 Initiative. The goal of the 
-      Justice40 Initiative is to provide 40 percent of the overall benefits of certain Federal
-      investments in seven key areas to disadvantaged communities. These seven key areas are: climate 
-      change, clean energy and energy efficiency, clean transit, affordable and sustainable
-      housing, training and workforce development, the remediation and reduction of legacy pollution, 
-      and the development of critical clean water infrastructure.
-    
-                </p>
-                <p>
-                  
-    Read more about the Justice40 Initiative in President Biden’s
-    
-                  <a
-                    class="usa-link usa-link--external"
-                    data-cy=""
-                    href="https://www.federalregister.gov/documents/2021/02/01/2021-02177/tackling-the-climate-crisis-at-home-and-abroad#:~:text=Sec.%20223.%20Justice40,40-percent%20goal."
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    Executive Order 14008
-                  </a>
-                   on 
-                  <i>
-                    Tackling the Climate Crisis at Home and Abroad
-                  </i>
-                  .
-    
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="j40-main-grid-blue-bk "
-    >
-      <div
-        class="grid-container-desktop-lg"
-        data-testid="gridContainer"
       >
         <h2>
-          How to get started
+          Find an event
         </h2>
-        <div
-          class="grid-row grid-gap-lg j40-aboutcard-container "
-          data-testid="grid"
-        >
-          <div
-            class="grid-gap-lg tablet:grid-col"
-            data-testid="grid"
-          >
-            <div
-              class="grid-row j40-aboutcard-sm-card"
-              data-testid="grid"
-            >
-              <div
-                class="tablet:grid-col-2 j40-aboutpage-image-container"
-                data-testid="grid"
-              >
-                <img
-                  alt="Federal program managers"
-                  class="j40-aboutcard-image"
-                  src="test-file-stub"
-                />
-              </div>
-              <div
-                class="tablet:grid-col-9"
-                data-cy="federal-program-managers-block"
-                data-testid="grid"
-              >
-                <div
-                  class="grid-row"
-                  data-testid="grid"
-                >
-                  <h3>
-                    Federal program managers
-                  </h3>
-                  <p>
-                    
-      Download the tool’s current list of communities, explore data that may be useful to your 
-      program, and provide feedback on the tool.
-    
-                  </p>
-                  <div
-                    class="j40-aboutcard-sm-link"
-                  >
-                    <a
-                      href="/en/methodology"
-                    >
-                      Methodology & data
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="grid-col-1"
-                data-testid="grid"
-              >
-                 
-              </div>
-            </div>
-          </div>
-          <div
-            class="grid-gap-lg tablet:grid-col"
-            data-testid="grid"
-          >
-            <div
-              class="grid-row j40-aboutcard-sm-card"
-              data-testid="grid"
-            >
-              <div
-                class="tablet:grid-col-2 j40-aboutpage-image-container"
-                data-testid="grid"
-              >
-                <img
-                  alt="Community members"
-                  class="j40-aboutcard-image"
-                  src="test-file-stub"
-                />
-              </div>
-              <div
-                class="tablet:grid-col-9"
-                data-cy="community-members-block"
-                data-testid="grid"
-              >
-                <div
-                  class="grid-row"
-                  data-testid="grid"
-                >
-                  <h3>
-                    Community members
-                  </h3>
-                  <p>
-                    
-      Explore data about communities across the U.S., including your own, and provide feedback on the tool.
-    
-                  </p>
-                  <div
-                    class="j40-aboutcard-sm-link"
-                  >
-                    <a
-                      href="/en/cejst"
-                    >
-                      Explore the tool
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="grid-col-1"
-                data-testid="grid"
-              >
-                 
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
-    <div
-      class="grid-container-desktop-lg"
-      data-testid="gridContainer"
-    >
-      <h2>
-        Get involved
-      </h2>
       <div
-        class="grid-row grid-gap-lg j40-aboutcard-container "
+        class="grid-row grid-gap-6"
         data-testid="grid"
       >
         <div
-          class="grid-gap-lg tablet:grid-col"
+          class="desktop:grid-col-8"
           data-testid="grid"
         >
-          <div
-            class="grid-row j40-aboutcard-sm-card"
-            data-testid="grid"
+          <ul
+            class="usa-collection"
+            data-testid="collection"
           >
-            <div
-              class="tablet:grid-col-2 j40-aboutpage-image-container"
-              data-testid="grid"
+            <li
+              class="usa-collection__item"
             >
               <img
-                alt="Send feedback"
-                class="j40-aboutcard-image"
+                alt="Alt text"
+                class="usa-collection__img"
                 src="test-file-stub"
               />
-            </div>
-            <div
-              class="tablet:grid-col-9"
-              data-cy="send-feedback-block"
-              data-testid="grid"
-            >
               <div
-                class="grid-row"
-                data-testid="grid"
+                class="usa-collection__body"
               >
-                <h3>
-                  Send feedback
+                <h3
+                  class="usa-collection__heading"
+                >
+                  CEJST training session #1
                 </h3>
-                <p>
+                <p
+                  class="usa-collection__description"
+                >
                   
-      Have ideas about data and information that reflect the experiences and conditions of your community?
-    
+        The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital 
+        Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic 
+        Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to 
+        use the current version of the tool. The presenters at these webinars will be available to 
+        provide technical support and address issues related to accessing and using the tool.
+      
                 </p>
-                <div
-                  class="j40-aboutcard-sm-link"
+                <p
+                  class="usa-collection__description"
+                >
+                  <b>
+                    Event info
+                  </b>
+                  : March 9th (4:00 - 5:00 PM EST)
+                </p>
+                <p
+                  class="usa-collection__description"
                 >
                   <a
-                    class="usa-link usa-link--external j40-aboutcard-link"
-                    data-cy=""
-                    href="mailto:Screeningtool-Support@omb.eop.gov"
+                    href="https://pitc.zoomgov.com/webinar/register/WN_D-Om_xXhTtiLv71y3Rr1CQ"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Email: Screeningtool-Support@omb.eop.gov
+                    <button
+                      class="usa-button"
+                      data-testid="button"
+                      disabled=""
+                      type="button"
+                    >
+                      Registration link
+                    </button>
                   </a>
-                </div>
+                </p>
               </div>
-            </div>
-            <div
-              class="grid-col-1"
-              data-testid="grid"
+            </li>
+            <li
+              class="usa-collection__item"
             >
-               
-            </div>
-          </div>
+              <img
+                alt="Alt text"
+                class="usa-collection__img"
+                src="test-file-stub"
+              />
+              <div
+                class="usa-collection__body"
+              >
+                <h3
+                  class="usa-collection__heading"
+                >
+                  CEJST training session #2
+                </h3>
+                <p
+                  class="usa-collection__description"
+                >
+                  
+        The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital 
+        Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic 
+        Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to 
+        use the current version of the tool. The presenters at these webinars will be available to 
+        provide technical support and address issues related to accessing and using the tool.
+      
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <b>
+                    Event info
+                  </b>
+                  : March 10th (4:00 - 5:00 PM EST)
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <a
+                    href="https://pitc.zoomgov.com/webinar/register/WN_QsSqshI4TpmRBkI6nVlWxQ"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <button
+                      class="usa-button"
+                      data-testid="button"
+                      disabled=""
+                      type="button"
+                    >
+                      Registration link
+                    </button>
+                  </a>
+                </p>
+              </div>
+            </li>
+            <li
+              class="usa-collection__item"
+            >
+              <img
+                alt="Alt text"
+                class="usa-collection__img"
+                src="test-file-stub"
+              />
+              <div
+                class="usa-collection__body"
+              >
+                <h3
+                  class="usa-collection__heading"
+                >
+                  CEJST training session #3
+                </h3>
+                <p
+                  class="usa-collection__description"
+                >
+                  
+        The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital 
+        Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic 
+        Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to 
+        use the current version of the tool. The presenters at these webinars will be available to 
+        provide technical support and address issues related to accessing and using the tool.
+      
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <b>
+                    Event info
+                  </b>
+                  : March 16th (4:00 - 5:00 PM EST)
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <a
+                    href="https://pitc.zoomgov.com/webinar/register/WN_q86iMtpwTESYa6f0xpIk7g"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <button
+                      class="usa-button"
+                      data-testid="button"
+                      disabled=""
+                      type="button"
+                    >
+                      Registration link
+                    </button>
+                  </a>
+                </p>
+              </div>
+            </li>
+            <li
+              class="usa-collection__item"
+            >
+              <img
+                alt="Alt text"
+                class="usa-collection__img"
+                src="test-file-stub"
+              />
+              <div
+                class="usa-collection__body"
+              >
+                <h3
+                  class="usa-collection__heading"
+                >
+                  CEJST listening session #1
+                </h3>
+                <p
+                  class="usa-collection__description"
+                >
+                  
+        CEQ is hosting public listening sessions to seek input and feedback on the beta version of the 
+        tool, including on the datasets it includes and the methodology it uses. This feedback is critical 
+        to the development and enhancement of the tool. This feedback will help CEQ update and refine the 
+        tool to ensure that it reflects the environmental, climate and other challenges that communities 
+        are experiencing.
+      
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <b>
+                    Event info
+                  </b>
+                  : March 22nd (4:00 - 5:00 PM EST)
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <a
+                    href="https://pitc.zoomgov.com/webinar/register/WN_YT7_uLZqScGHgyAcTCuJjA"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <button
+                      class="usa-button"
+                      data-testid="button"
+                      disabled=""
+                      type="button"
+                    >
+                      Registration link
+                    </button>
+                  </a>
+                </p>
+              </div>
+            </li>
+            <li
+              class="usa-collection__item"
+            >
+              <img
+                alt="Alt text"
+                class="usa-collection__img"
+                src="test-file-stub"
+              />
+              <div
+                class="usa-collection__body"
+              >
+                <h3
+                  class="usa-collection__heading"
+                >
+                  CEJST Public WHEJAC meeting day one
+                </h3>
+                <p
+                  class="usa-collection__description"
+                >
+                  
+        The White House Environmental Justice Advisory Council is also soliciting feedback on the beta version of the Climate and Economic Justice Screening Tool at its public meeting. The link above has additional details.
+      
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <b>
+                    Event info
+                  </b>
+                  : March 30th (3:00 - 7:00 PM EST)
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <a
+                    href="https://usepa.zoomgov.com/webinar/register/WN_wCwVP1dtT0auAR5kfucVtw"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <button
+                      class="usa-button"
+                      data-testid="button"
+                      disabled=""
+                      type="button"
+                    >
+                      Registration link
+                    </button>
+                  </a>
+                </p>
+              </div>
+            </li>
+            <li
+              class="usa-collection__item"
+            >
+              <img
+                alt="Alt text"
+                class="usa-collection__img"
+                src="test-file-stub"
+              />
+              <div
+                class="usa-collection__body"
+              >
+                <h3
+                  class="usa-collection__heading"
+                >
+                  CEJST Public WHEJAC meeting day two
+                </h3>
+                <p
+                  class="usa-collection__description"
+                >
+                  
+        The White House Environmental Justice Advisory Council is also soliciting feedback on the beta version of the Climate and Economic Justice Screening Tool at its public meeting. The link above has additional details.
+      
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <b>
+                    Event info
+                  </b>
+                  : March 31th (3:00 - 7:30 PM EST)
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <a
+                    href="https://usepa.zoomgov.com/webinar/register/WN_wCwVP1dtT0auAR5kfucVtw"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <button
+                      class="usa-button"
+                      data-testid="button"
+                      disabled=""
+                      type="button"
+                    >
+                      Registration link
+                    </button>
+                  </a>
+                </p>
+              </div>
+            </li>
+            <li
+              class="usa-collection__item"
+            >
+              <img
+                alt="Alt text"
+                class="usa-collection__img"
+                src="test-file-stub"
+              />
+              <div
+                class="usa-collection__body"
+              >
+                <h3
+                  class="usa-collection__heading"
+                >
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy="apr-15-reg-link-block"
+                    href="https://pitc.zoomgov.com/webinar/register/WN_dLw3xChiTlaOLGdHXQWk0w"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    CEJST listening session #2
+                  </a>
+                </h3>
+                <p
+                  class="usa-collection__description"
+                >
+                  
+        CEQ is hosting public listening sessions to seek input and feedback on the beta version of the 
+        tool, including on the datasets it includes and the methodology it uses. This feedback is critical 
+        to the development and enhancement of the tool. This feedback will help CEQ update and refine the 
+        tool to ensure that it reflects the environmental, climate and other challenges that communities 
+        are experiencing.
+      
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <b>
+                    Event info
+                  </b>
+                  : April 15th (4:00 - 5:00 PM EST)
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <a
+                    href="https://pitc.zoomgov.com/webinar/register/WN_dLw3xChiTlaOLGdHXQWk0w"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <button
+                      class="usa-button"
+                      data-testid="button"
+                      type="button"
+                    >
+                      Registration link
+                    </button>
+                  </a>
+                </p>
+              </div>
+            </li>
+          </ul>
         </div>
         <div
-          class="grid-gap-lg tablet:grid-col"
+          class="desktop:grid-col-4"
           data-testid="grid"
         >
           <div
-            class="grid-row j40-aboutcard-sm-card"
-            data-testid="grid"
+            class="usa-summary-box"
+            data-testid="summary-box"
           >
             <div
-              class="tablet:grid-col-2 j40-aboutpage-image-container"
-              data-testid="grid"
+              class="usa-summary-box__body"
             >
-              <img
-                alt="Join the open source community"
-                class="j40-aboutcard-image"
-                src="test-file-stub"
-              />
-            </div>
-            <div
-              class="tablet:grid-col-9"
-              data-cy="join-the-open-source-community-block"
-              data-testid="grid"
-            >
-              <div
-                class="grid-row"
-                data-testid="grid"
+              <h3
+                class="usa-summary-box__heading"
               >
-                <h3>
-                  Join the open source community
-                </h3>
-                <p>
-                  
-      The tool’s code is open source, which means it is available for the public to view and contribute to it.
-    
-                </p>
-                <div
-                  class="j40-aboutcard-sm-link"
+                Can't make an upcoming session?
+              </h3>
+              <div
+                class="usa-summary-box__text"
+              >
+                Watch a recorded version of the CEJST training on YouTube.
+                <a
+                  href="https://www.youtube.com/watch?v=QwHWcXbhw28"
+                  rel="noreferrer"
+                  target="_blank"
                 >
-                  <a
-                    class="usa-link usa-link--external j40-aboutcard-link"
-                    data-cy=""
-                    href="https://github.com/usds/justice40-tool"
-                    rel="noreferrer"
-                    target="_blank"
+                  <button
+                    class="usa-button"
+                    data-testid="button"
+                    type="button"
                   >
-                    Check it out on GitHub
-                  </a>
-                </div>
+                    <div>
+                      <div>
+                        Watch on YouTube
+                      </div>
+                      <img
+                        alt="the icon to show that this button will open in a new tab"
+                        src="test-file-stub"
+                      />
+                    </div>
+                  </button>
+                </a>
               </div>
-            </div>
-            <div
-              class="grid-col-1"
-              data-testid="grid"
-            >
-               
             </div>
           </div>
         </div>

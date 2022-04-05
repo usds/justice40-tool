@@ -163,13 +163,25 @@
     "defaultMessage": "Contact",
     "description": "Navigate to the about page. This is Header navigate item to the Contact page"
   },
+  "common.pages.header.downloads": {
+    "defaultMessage": "Downloads",
+    "description": "Navigate to the about page. This is Header navigate item to the downloads page"
+  },
   "common.pages.header.explore": {
     "defaultMessage": "Explore the tool",
     "description": "Navigate to the about page. This is Header navigate item to the Explore the tool page"
   },
+  "common.pages.header.faqs": {
+    "defaultMessage": "FAQs",
+    "description": "Navigate to the about page. This is Header navigate item to the faqs page"
+  },
   "common.pages.header.methodology": {
     "defaultMessage": "Methodology & data",
     "description": "Navigate to the about page. This is Header navigate item to the Methodology page"
+  },
+  "common.pages.header.public.eng": {
+    "defaultMessage": "Public Engagement",
+    "description": "Navigate to the about page. This is Header navigate item to the public eng page"
   },
   "common.pages.header.title.line1": {
     "defaultMessage": "Climate and Economic Justice",
@@ -178,6 +190,10 @@
   "common.pages.header.title.line2": {
     "defaultMessage": "Screening Tool",
     "description": "Navigate to the about page. This is Title in nav header line 2 of 2"
+  },
+  "common.pages.header.tsd": {
+    "defaultMessage": "Technical Support Document",
+    "description": "Navigate to the about page. This is Header navigate item to the technical support document page"
   },
   "contact.page.census.tract.feedback.para1": {
     "defaultMessage": "To provide feedback about a specific census tract, either select the send feedback button after selecting a census tract on the <link1>Explore the tool</link1> page or use the email address provided above. Please include the census tract ID, county, and state or territory information, in addition to your feedback.",
@@ -218,6 +234,30 @@
   "contact.page.title.text": {
     "defaultMessage": "Contact",
     "description": "Navigate to the contact page, this is the contact page title text"
+  },
+  "downloads.page.csv.link": {
+    "defaultMessage": "<link1>CSV file </link1> (.csv {csvFileSize} unzipped)",
+    "description": "On the downloads page, the description of the csv link"
+  },
+  "downloads.page.excel.link": {
+    "defaultMessage": "<link1>Excel file</link1> (.xlxs {excelFileSize} unzipped)",
+    "description": "On the downloads page, the description of the excel link"
+  },
+  "downloads.page.heading1.text": {
+    "defaultMessage": "The dataset used in the tool, along with a data dictionary and information about how to use the list of communities (.pdf) are available in the following file formats:",
+    "description": "Navigate to the the Downloads page, this will be the page heading1 text"
+  },
+  "downloads.page.heading2.text": {
+    "defaultMessage": "File formats",
+    "description": "Navigate to the the Downloads page, this will be the page heading2 text"
+  },
+  "downloads.page.shape.link": {
+    "defaultMessage": "<link1>Shapefiles </link1> (Codebook included with geojson {shapeFileSize} unzipped)",
+    "description": "On the downloads page, the description of the shapefiles link"
+  },
+  "downloads.page.title.text": {
+    "defaultMessage": "Downloads",
+    "description": "Navigate to the the Downloads page, this will be the page title text"
   },
   "explore.page.side.panel.at.or.above.at.least.one": {
     "defaultMessage": "At or above at least one threshold?",

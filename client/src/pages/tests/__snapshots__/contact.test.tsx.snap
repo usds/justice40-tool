@@ -222,18 +222,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 class="usa-nav__primary-item"
               >
                 <a
-                  data-cy="nav-link-about"
-                  href="/en/"
-                >
-                  About
-                </a>
-              </li>
-              <li
-                class="usa-nav__primary-item"
-              >
-                <a
                   data-cy="nav-link-explore-the-tool"
-                  href="/en/cejst"
+                  href="/en/"
                 >
                   Explore the tool
                 </a>
@@ -241,12 +231,106 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <li
                 class="usa-nav__primary-item"
               >
-                <a
-                  data-cy="nav-link-methodology"
-                  href="/en/methodology"
+                <button
+                  aria-controls="methMenu"
+                  aria-expanded="false"
+                  class="usa-accordion__button usa-nav__link"
+                  data-cy="nav-dropdown-methodology"
+                  data-testid="navDropDownButton"
+                  type="button"
                 >
-                  Methodology & data
-                </a>
+                  <span>
+                    Methodology & data
+                  </span>
+                </button>
+                <ul
+                  class="usa-nav__submenu"
+                  hidden=""
+                  id="methMenu"
+                >
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-methodology"
+                      href="/en/methodology"
+                    >
+                      Methodology & data
+                    </a>
+                  </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-downloads"
+                      href="/en/downloads"
+                    >
+                      Downloads
+                    </a>
+                  </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-technical-support-docs"
+                      href="/en/technical-support-docs"
+                    >
+                      Technical Support Document
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li
+                class="usa-nav__primary-item"
+              >
+                <button
+                  aria-controls="aboutMenu"
+                  aria-expanded="false"
+                  class="usa-accordion__button usa-nav__link"
+                  data-cy="nav-dropdown-about"
+                  data-testid="navDropDownButton"
+                  type="button"
+                >
+                  <span>
+                    About
+                  </span>
+                </button>
+                <ul
+                  class="usa-nav__submenu"
+                  hidden=""
+                  id="aboutMenu"
+                >
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-about"
+                      href="/en/about"
+                    >
+                      About
+                    </a>
+                  </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-faqs"
+                      href="/en/faqs"
+                    >
+                      FAQs
+                    </a>
+                  </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-public-engagement"
+                      href="/en/public-engagement"
+                    >
+                      Public Engagement
+                    </a>
+                  </li>
+                </ul>
               </li>
               <li
                 class="usa-nav__primary-item"
@@ -310,34 +394,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       class="grid-container-desktop-lg"
       data-testid="gridContainer"
     >
-      <section
-        class="page-heading"
-      >
-        <h1>
-          Contact
-        </h1>
-        <div>
-          <div>
-            <span
-              class="usa-tag"
-              data-testid="tag"
-            >
-              UPDATED
-            </span>
-          </div>
-          <a
-            href="/en/public-engagement"
-          >
-            <button
-              class="usa-button usa-button--icon"
-              data-testid="button"
-              type="button"
-            >
-              Public Engagement
-            </button>
-          </a>
-        </div>
-      </section>
+      <h1>
+        Contact
+      </h1>
       <div
         class="grid-row grid-gap-6"
         data-testid="grid"

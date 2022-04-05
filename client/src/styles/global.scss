@@ -124,15 +124,6 @@ components include:
   border-top: 0; // The main content has border this removes it
   min-height: 60vh; // Contact page's content is not enough to fill page so this keeps the footer low
 
-  .page-heading {
-    display: flex;
-    justify-content: space-between;
-
-    @include at-media-max("tablet"){
-      flex-direction: column;
-    }
-  }
-
   .j40-mb5-mt3 {
     @include u-margin-bottom(5);
     @include u-margin-top(3);
