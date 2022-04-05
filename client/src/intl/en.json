@@ -203,6 +203,14 @@
     "defaultMessage": "Contact",
     "description": "Navigate to the contact page, this is the contact page header text"
   },
+  "contact.page.request.for.info.box.body": {
+    "defaultMessage": "During the beta period, comments may be submitted on the Climate and Economic Justice Screening Tool via CEQ’s Request for Information available on <link1>federalregister.gov</link1>.",
+    "description": "Navigate to the contact page, this is the body of the request for information box"
+  },
+  "contact.page.request.for.info.box.title": {
+    "defaultMessage": "Request for Infomation",
+    "description": "Navigate to the contact page, this is the title of the request for information box"
+  },
   "contact.page.sub.header.text": {
     "defaultMessage": "Email us",
     "description": "Navigate to the contact page, this is the contact page sub header text"
@@ -420,8 +428,8 @@
     "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Economic loss rate to the population in fatalities and \n      injuries resulting from natural hazards"
   },
   "explore.tool.page.side.panel.indicator.description.heartDisease": {
-    "defaultMessage": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Weighted percent of people ages 18 years and older who have been told they have heart disease",
-    "description": "People ages 18 years and older who have been told they have heart disease"
+    "defaultMessage": "People ages 18 years and older who have been told they have heart disease",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Weighted percent of people ages 18 years and older who have \n    been told they have heart disease"
   },
   "explore.tool.page.side.panel.indicator.description.high.ed": {
     "defaultMessage": "Percent of the census tract's population 15 or older not enrolled in college, university, or graduate school",
@@ -1292,7 +1300,7 @@
     "description": "Navigate to the the public engagement page, this will be the public engagement page event training session name"
   },
   "public.eng.page.event.whejac.meeting.day.1.description": {
-    "defaultMessage": "Members of the public are encouraged to provide comments relevant to the beta version of the Climate and Economic Justice Screening Tool that was developed by CEQ and federal government agencies implementation of the Justice40 Initiative will be considered by the WHEJAC during the public meeting.",
+    "defaultMessage": "The White House Environmental Justice Advisory Council is also soliciting feedback on the beta version of the Climate and Economic Justice Screening Tool at its public meeting. The link above has additional details.",
     "description": "public engagement page event WHEJAC day 1 description"
   },
   "public.eng.page.event.whejac.meeting.day.1.name": {
@@ -1300,7 +1308,7 @@
     "description": "public engagement page event WHEJAC meeting day 1 name"
   },
   "public.eng.page.event.whejac.meeting.day.2.description": {
-    "defaultMessage": "Members of the public are encouraged to attend and hear updates and discussion from the WHEJAC Climate and Economic Justice Screening Tool workgroup, the Justice40 workgroup, and the WHEJAC business time and meeting conversation during which the WHEJAC will use reflect on the meeting proceedings and public comment period; provide workgroup updates; discuss action items and finalize next steps.",
+    "defaultMessage": "The White House Environmental Justice Advisory Council is also soliciting feedback on the beta version of the Climate and Economic Justice Screening Tool at its public meeting. The link above has additional details.",
     "description": "public engagement page event WHEJAC day 2 description"
   },
   "public.eng.page.event.whejac.meeting.day.2.name": {
@@ -1322,6 +1330,22 @@
   "public.eng.page.title.text": {
     "defaultMessage": "Public engagement opportunities",
     "description": "Navigate to the the public engagement page, this will be the publiceng page title text"
+  },
+  "public.eng.page.video.box.body.text": {
+    "defaultMessage": "Watch a recorded version of the CEJST training on YouTube.",
+    "description": "Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box body text."
+  },
+  "public.eng.page.video.box.button.img.alt.text": {
+    "defaultMessage": "the icon to show that this button will open in a new tab",
+    "description": "Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is alt tag of the image in the button."
+  },
+  "public.eng.page.video.box.button.text": {
+    "defaultMessage": "Watch on YouTube",
+    "description": "Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box button text."
+  },
+  "public.eng.page.video.box.title.text": {
+    "defaultMessage": "Can't make an upcoming session?",
+    "description": "Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box title text."
   },
   "public.eng.page.whejac.meeting.day.1.info": {
     "defaultMessage": "March 31th (3:00 - 7:30 PM EST)",

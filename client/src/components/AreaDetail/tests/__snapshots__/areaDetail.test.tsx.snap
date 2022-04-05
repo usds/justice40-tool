@@ -1649,11 +1649,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Heart disease
               <div>
-                
-      Navigate to the explore the tool page. When the map is in view, click on the map. The side panel 
-      will show an indicator desciption of Weighted percent of people ages 18 years and older who have 
-      been told they have heart disease
-    
+                People ages 18 years and older who have been told they have heart disease
               </div>
             </div>
             <div>

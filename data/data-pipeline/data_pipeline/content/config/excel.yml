@@ -7,8 +7,7 @@ global_config:
   excel_config:
     default_column_width: 30
 sheets:
-  - main:
-    label: "Data"
+  - label: "Data"
     fields:
       - score_name: GEOID10_TRACT
         label: Census tract ID

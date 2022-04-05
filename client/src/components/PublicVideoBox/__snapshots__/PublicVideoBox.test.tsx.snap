@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of the PublicVideoBox checks if component renders 1`] = `
+<DocumentFragment>
+  <div
+    class="usa-summary-box"
+    data-testid="summary-box"
+  >
+    <div
+      class="usa-summary-box__body"
+    >
+      <h3
+        class="usa-summary-box__heading"
+      >
+        Can't make an upcoming session?
+      </h3>
+      <div
+        class="usa-summary-box__text"
+      >
+        Watch a recorded version of the CEJST training on YouTube.
+        <a
+          href="https://www.youtube.com/watch?v=QwHWcXbhw28"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <button
+            class="usa-button"
+            data-testid="button"
+            type="button"
+          >
+            <div>
+              <div>
+                Watch on YouTube
+              </div>
+              <img
+                alt="the icon to show that this button will open in a new tab"
+                src="test-file-stub"
+              />
+            </div>
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
