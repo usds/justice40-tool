@@ -3,9 +3,7 @@
 # pylint: disable=unsubscriptable-object
 # pylint: disable=unsupported-assignment-operation
 
-import pandas as pd
-
-from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
+from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
@@ -14,10 +12,14 @@ logger = get_module_logger(__name__)
 class NationalRiskIndexETL(ExtractTransformLoad):
     """ETL class for the FEMA National Risk Index dataset"""
 
+    # NAME is needed to read the YAML score config for this dataset
+    # to be used on the __init__ of the ETL Base Class
+    # MAYBE, explore getting this from the directory name of the file
     NAME = "national_risk_index"
-    LAST_UPDATED_YEAR = 2020
-    SOURCE_URL = "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload//NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
-    GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
+
+    ## COMES FROM YAML NOW:
+    # LAST_UPDATED_YEAR = 2020
+    # SOURCE_URL = "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload//NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
 
     ## TEMPORARILY HERE
     ## To get this value up in time for launch, we've hard coded it. We would like
@@ -68,8 +70,6 @@ class NationalRiskIndexETL(ExtractTransformLoad):
             self.CONTAINS_AGRIVALUE,
         ]
 
-        self.df: pd.DataFrame
-
     def extract(self) -> None:
         """Unzips NRI dataset from the FEMA data source and writes the files
         to the temporary data folder for use in the transform() method
@@ -94,18 +94,17 @@ class NationalRiskIndexETL(ExtractTransformLoad):
 
         # read in the unzipped csv from NRI data source then rename the
         # Census Tract column for merging
-        df_nri: pd.DataFrame = pd.read_csv(
-            self.INPUT_CSV,
-            dtype={NRI_TRACT_COL: "string"},
-            na_values=["None"],
-            low_memory=False,
-        )
-        df_nri.rename(
+        # df_nri: pd.DataFrame = pd.read_csv(
+        #     self.INPUT_CSV,
+        #     dtype={NRI_TRACT_COL: "string"},
+        #     na_values=["None"],
+        #     low_memory=False,
+        # )
+        self.df = self.df.rename(
             columns={
                 NRI_TRACT_COL: self.GEOID_TRACT_FIELD_NAME,
                 self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_INPUT_FIELD_NAME: self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME,
-            },
-            inplace=True,
+            }
         )
 
         # Only use disasters linked to climate change
@@ -126,66 +125,67 @@ class NationalRiskIndexETL(ExtractTransformLoad):
             "WNTW",  # Winter Weather
         ]
 
+        # get df columns
+        df_columns = self.df.columns.to_list()
+
         # Some disaster categories do not have agriculture value column
         agriculture_columns = [
             f"{x}_EALA"
             for x in disaster_categories
-            if f"{x}_EALA" in list(df_nri.columns)
+            if f"{x}_EALA" in df_columns
         ]
 
         population_columns = [
             f"{x}_EALP"
             for x in disaster_categories
-            if f"{x}_EALP" in list(df_nri.columns)
+            if f"{x}_EALP" in df_columns
         ]
 
         buildings_columns = [
             f"{x}_EALB"
             for x in disaster_categories
-            if f"{x}_EALB" in list(df_nri.columns)
+            if f"{x}_EALB" in df_columns
         ]
 
-        disaster_population_sum_series = df_nri[population_columns].sum(axis=1)
+        disaster_population_sum_series = self.df[population_columns].sum(axis=1)
 
-        disaster_agriculture_sum_series = df_nri[agriculture_columns].sum(
+        disaster_agriculture_sum_series = self.df[agriculture_columns].sum(
             axis=1
         )
 
-        disaster_buildings_sum_series = df_nri[buildings_columns].sum(axis=1)
+        disaster_buildings_sum_series = self.df[buildings_columns].sum(axis=1)
 
         # Population EAL Rate = Eal Valp / Population
-        df_nri[self.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME] = (
+        self.df[self.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME] = (
             disaster_population_sum_series
-            / df_nri[self.POPULATION_INPUT_FIELD_NAME]
+            / self.df[self.POPULATION_INPUT_FIELD_NAME]
         )
 
         # Agriculture EAL Rate = Eal Vala / max(Agrivalue, 408000)
         ## FORMULA ADJUSTMENT 2/17
         ## Because AGRIVALUE contains a lot of 0s, we are going to consider
         ## 90th percentile only for places that have some agrivalue at all
-        df_nri[
+        self.df[
             self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME
-        ] = disaster_agriculture_sum_series / df_nri[
+        ] = disaster_agriculture_sum_series / self.df[
             self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME
         ].clip(
             lower=self.AGRIVALUE_LOWER_BOUND
         )
         # This produces a boolean that is True in the case of non-zero agricultural value
-        df_nri[self.CONTAINS_AGRIVALUE] = (
-            df_nri[self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME] > 0
+        self.df[self.CONTAINS_AGRIVALUE] = (
+            self.df[self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME] > 0
         )
 
         # divide EAL_VALB (Expected Annual Loss - Building Value) by BUILDVALUE (Building Value ($)).
-        df_nri[self.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME] = (
+        self.df[self.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME] = (
             disaster_buildings_sum_series
-            / df_nri[self.BUILDING_VALUE_INPUT_FIELD_NAME]
+            / self.df[self.BUILDING_VALUE_INPUT_FIELD_NAME]
         )
 
         # Round all float columns to just 10 digits.
         # Note: `round` is smart enough to only apply to float columns.
-        df_nri = df_nri.round(10)
-
-        self.output_df = df_nri
+        self.df = self.df.round(10)
 
     def load(self) -> None:
         # Suppress scientific notation.

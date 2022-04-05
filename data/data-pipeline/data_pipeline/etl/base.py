@@ -1,4 +1,3 @@
-import enum
 import pathlib
 import typing
 from typing import Optional
@@ -13,13 +12,6 @@ from data_pipeline.utils import (
 )
 
 logger = get_module_logger(__name__)
-
-
-class ValidGeoLevel(enum.Enum):
-    """Enum used for indicating output data's geographic resolution."""
-
-    CENSUS_TRACT = enum.auto()
-    CENSUS_BLOCK_GROUP = enum.auto()
 
 
 class ExtractTransformLoad:
@@ -55,12 +47,6 @@ class ExtractTransformLoad:
     # SOURCE_URL is used to extract source data in extract().
     SOURCE_URL: str = None
 
-    # GEO_LEVEL is used to identify whether output data is at the unit of the tract or
-    # census block group.
-    # TODO: add tests that enforce seeing the expected geographic identifier field
-    #  in the output file based on this geography level.
-    GEO_LEVEL: ValidGeoLevel = None
-
     # COLUMNS_TO_KEEP is used to identify which columns to keep in the output df.
     COLUMNS_TO_KEEP: typing.List[str] = None
 
@@ -77,12 +63,12 @@ class ExtractTransformLoad:
     #  periods. https://github.com/usds/justice40-tool/issues/964
     EXPECTED_MAX_CENSUS_TRACTS: int = 74160
 
-    output_df: pd.DataFrame = None
+    df: pd.DataFrame
 
     # This is a classmethod so it can be used by `get_data_frame` without
     # needing to create an instance of the class. This is a use case in `etl_score`.
     @classmethod
-    def _get_output_file_path(dataset_yaml_config) -> pathlib.Path:
+    def _get_output_file_path(cls, dataset_yaml_config) -> pathlib.Path:
         """Generate the output file path."""
         if cls.NAME is None:
             raise NotImplementedError(
@@ -140,89 +126,22 @@ class ExtractTransformLoad:
 
         Runs after the `transform` step and before `load`.
         """
-        # TODO: remove this once all ETL classes are converted to using the new
-        #  base class parameters and patterns.
-        if self.GEO_LEVEL is None:
-            logger.info(
-                "Skipping validation step for this class because it does not "
-                "seem to be converted to new ETL class patterns."
-            )
-            return
-
         if self.COLUMNS_TO_KEEP is None:
             raise NotImplementedError(
                 "`self.COLUMNS_TO_KEEP` must be specified."
             )
 
-        if self.output_df is None:
+        if self.df is None:
             raise NotImplementedError(
-                "The `transform` step must set `self.output_df`."
+                "The `transform` step must set `self.df`."
             )
 
         for column_to_keep in self.COLUMNS_TO_KEEP:
-            if column_to_keep not in self.output_df.columns:
+            if column_to_keep not in self.df.columns:
                 raise ValueError(
                     f"Missing column: `{column_to_keep}` is missing from "
                     f"output"
                 )
-
-        for (
-            geo_level,
-            geo_field,
-            expected_geo_field_characters,
-            expected_rows,
-        ) in [
-            (
-                ValidGeoLevel.CENSUS_TRACT,
-                self.GEOID_TRACT_FIELD_NAME,
-                self.EXPECTED_CENSUS_TRACTS_CHARACTER_LENGTH,
-                self.EXPECTED_MAX_CENSUS_TRACTS,
-            ),
-            (
-                ValidGeoLevel.CENSUS_BLOCK_GROUP,
-                self.GEOID_FIELD_NAME,
-                self.EXPECTED_CENSUS_BLOCK_GROUPS_CHARACTER_LENGTH,
-                self.EXPECTED_MAX_CENSUS_BLOCK_GROUPS,
-            ),
-        ]:
-            if self.GEO_LEVEL is geo_level:
-                if geo_field not in self.COLUMNS_TO_KEEP:
-                    raise ValueError(
-                        f"Must have `{geo_field}` in columns if "
-                        f"specifying geo level as `{geo_level} "
-                    )
-                if self.output_df.shape[0] > expected_rows:
-                    raise ValueError(
-                        f"Too many rows: `{self.output_df.shape[0]}` rows in "
-                        f"output exceeds expectation of `{expected_rows}` "
-                        f"rows."
-                    )
-
-                if self.output_df[geo_field].str.len().nunique() > 1:
-                    raise ValueError(
-                        f"Multiple character lengths for geo field "
-                        f"present: {self.output_df[geo_field].str.len().unique()}."
-                    )
-
-                elif (
-                    len(self.output_df[geo_field].array[0])
-                    != expected_geo_field_characters
-                ):
-                    raise ValueError(
-                        "Wrong character length: the census geography data "
-                        "has the wrong length."
-                    )
-
-                duplicate_geo_field_values = (
-                    self.output_df[geo_field].shape[0]
-                    - self.output_df[geo_field].nunique()
-                )
-                if duplicate_geo_field_values > 0:
-                    raise ValueError(
-                        f"Duplicate values: There are {duplicate_geo_field_values} "
-                        f"duplicate values in "
-                        f"`{geo_field}`."
-                    )
 
     def load(self, float_format=None) -> None:
         """Saves the transformed data.
@@ -241,7 +160,7 @@ class ExtractTransformLoad:
         output_file_path.parent.mkdir(parents=True, exist_ok=True)
 
         # Write nationwide csv
-        self.output_df[self.COLUMNS_TO_KEEP].to_csv(
+        self.df[self.COLUMNS_TO_KEEP].to_csv(
             output_file_path, index=False, float_format=float_format
         )
 
