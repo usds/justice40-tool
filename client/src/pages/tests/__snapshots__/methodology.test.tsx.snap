@@ -414,15 +414,12 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div>
                 <div>
                   <div>
-                    Draft communities list v0.1 (52MB unzipped)
+                    Files available for download
                   </div>
                   <div>
-                    
-      The download package includes draft v0.1 of the list of disadvantaged communities
-      (.csv and .xlsx).
-     
+                    Download the data sources used in the CEJST (.csv and .xlsx, 52MB unzipped). 
                     <span>
-                      Last updated: 02/18/22 
+                      Last updated: 04/06/22 
                     </span>
                   </div>
                   <div>
@@ -443,7 +440,42 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                           />
                         </div>
                         <div>
-                          Download package
+                          Download data sources
+                        </div>
+                      </button>
+                    </a>
+                  </div>
+                  <div>
+                    <span
+                      class="usa-tag"
+                      data-testid="tag"
+                    >
+                      NEW
+                    </span>
+                    Download the shapefiles, along with a codebook (.cpg, .dbf, .prj, .shp and .shx, 740MB unzipped). 
+                    <span>
+                      Last updated: 04/06/22 
+                    </span>
+                  </div>
+                  <div>
+                    <a
+                      data-cy="shapefile-link"
+                      download=""
+                      href="//"
+                    >
+                      <button
+                        class="usa-button"
+                        data-testid="button"
+                        type="button"
+                      >
+                        <div>
+                          <img
+                            alt="download icon for download package"
+                            src="test-file-stub"
+                          />
+                        </div>
+                        <div>
+                          Download shapefiles
                         </div>
                       </button>
                     </a>

@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`download packet component defined checks if component renders 1`] = `
+<DocumentFragment>
+  <div
+    class=""
+    data-testid="grid"
+  >
+    <div>
+      <div>
+        <div>
+          <div>
+            Files available for download
+          </div>
+          <div>
+            Download the data sources used in the CEJST (.csv and .xlsx, 52MB unzipped). 
+            <span>
+              Last updated: 04/06/22 
+            </span>
+          </div>
+          <div>
+            <a
+              data-cy="download-link"
+              download=""
+              href="//"
+            >
+              <button
+                class="usa-button"
+                data-testid="button"
+                type="button"
+              >
+                <div>
+                  <img
+                    alt="download icon for download package"
+                    src="test-file-stub"
+                  />
+                </div>
+                <div>
+                  Download data sources
+                </div>
+              </button>
+            </a>
+          </div>
+          <div>
+            <span
+              class="usa-tag"
+              data-testid="tag"
+            >
+              NEW
+            </span>
+            Download the shapefiles, along with a codebook (.cpg, .dbf, .prj, .shp and .shx, 740MB unzipped). 
+            <span>
+              Last updated: 04/06/22 
+            </span>
+          </div>
+          <div>
+            <a
+              data-cy="shapefile-link"
+              download=""
+              href="//"
+            >
+              <button
+                class="usa-button"
+                data-testid="button"
+                type="button"
+              >
+                <div>
+                  <img
+                    alt="download icon for download package"
+                    src="test-file-stub"
+                  />
+                </div>
+                <div>
+                  Download shapefiles
+                </div>
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

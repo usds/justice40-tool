@@ -1,15 +1,17 @@
 import * as React from 'react';
-import {render, screen} from '@testing-library/react';
+import {render} from '@testing-library/react';
 import {LocalizedComponent} from '../../test/testHelpers';
-import DownloadPacket from '.';
+import DownloadPacket from './DownloadPacket';
 
-test('download packet component defined', () => {
-  render(
+describe('download packet component defined', () => {
+  const {asFragment} = render(
       <LocalizedComponent>
         <DownloadPacket />
       </LocalizedComponent>,
   );
 
-  screen.getByRole('button', {name: /download package/i});
+  it('checks if component renders', () => {
+    expect(asFragment()).toMatchSnapshot();
+  });
 });
 

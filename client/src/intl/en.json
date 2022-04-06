@@ -1159,21 +1159,33 @@
     "defaultMessage": "All categories",
     "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card Used In text for all methodologies"
   },
-  "methodology.page.downloadPacket.button.text": {
-    "defaultMessage": "Download package",
+  "methodology.page.downloadPacket.button1.text": {
+    "defaultMessage": "Download data sources",
     "description": "Navigate to the methodology page. This is the download packet button text"
   },
+  "methodology.page.downloadPacket.button2.text": {
+    "defaultMessage": "Download shapefiles",
+    "description": "Navigate to the methodology page. This is the download shapefiles text"
+  },
   "methodology.page.downloadPacket.header.text": {
-    "defaultMessage": "Draft communities list v{version} ({downloadFileSize} unzipped)",
+    "defaultMessage": "Files available for download",
     "description": "Navigate to the methodology page. This is the download packet header text"
   },
   "methodology.page.downloadPacket.info.last.updated": {
     "defaultMessage": "Last updated: {downloadLastUpdated}",
     "description": "Navigate to the methodology page. This is the download packet info last updated"
   },
-  "methodology.page.downloadPacket.info.text": {
-    "defaultMessage": "The download package includes draft v{version} of the list of disadvantaged communities (.csv and .xlsx).",
+  "methodology.page.downloadPacket.info.text1": {
+    "defaultMessage": "Download the data sources used in the CEJST (.csv and .xlsx, {downloadFileSize} unzipped).",
     "description": "Navigate to the methodology page. This is the download packet info text"
+  },
+  "methodology.page.downloadPacket.info.text2": {
+    "defaultMessage": "Download the shapefiles, along with a codebook (.cpg, .dbf, .prj, .shp and .shx, {shapefileSize} unzipped).",
+    "description": "Navigate to the methodology page. This is the shapefile info text"
+  },
+  "methodology.page.downloadPacket.new.tag.text": {
+    "defaultMessage": "NEW",
+    "description": "Navigate to the methodology page. This is the new tag text"
   },
   "methodology.page.formula.first": {
     "defaultMessage": "<boldtag>IF</boldtag> the census tract is above the threshold for one or more environmental or climate indicators",

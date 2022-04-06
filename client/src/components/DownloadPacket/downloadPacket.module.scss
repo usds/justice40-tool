@@ -1,7 +1,35 @@
 @use '../../styles/design-system.scss' as *;
 
-.downloadBoxContainer {
+@mixin baseButtonContainerStyles {
+  align-self: center;
 
+  a {
+    text-decoration: none;
+  }
+
+  img {
+    // This should be a global css-filter value as it's generated
+    // from the primary color.
+    filter: invert(15%) sepia(9%) saturate(5666%) hue-rotate(175deg) brightness(96%) contrast(95%);
+  }
+}
+
+@mixin baseTextStyle {
+  @include typeset('sans', 'xs', 3);
+  @include u-margin-top(2);
+  @include u-margin-bottom(2);
+  
+  span {
+    font-style: italic;
+  }
+};
+
+@mixin baseButtonTextStyle {
+  padding-top: 4px;
+  padding-left: 5px;
+}
+
+.downloadBoxContainer {
     color: whitesmoke;
     margin: auto;
     @include u-margin-top(2.5);
@@ -19,44 +47,47 @@
         .downloadBoxTitle {
           @include typeset('sans', 'xs', 3);
           @include u-text('semibold');
-          @include u-margin-bottom(2);
         }
         
-        .downloadBoxText {
-          @include typeset('sans', 'xs', 3);
-          @include u-margin-bottom(4);
-          
-          span {
-            font-style: italic;
+        // Data source text
+        .dataSourceText {
+          @include baseTextStyle();
+        }
+        // Data source button
+        .dataSourceButtonContainer {
+          @include baseButtonContainerStyles();
+
+          .dataSourceButtonText {
+            @include baseButtonTextStyle();
           }
         }
-
-        .downloadBoxButtonContainer {
-          margin-top: 20px 0 0 0;
-          align-self: center;
-
-          a {
-            text-decoration: none;
-          }
-
-          img {
-            // This should be a global css-filter value as it's generated
-            // from the primary color.
-            filter: invert(15%) sepia(9%) saturate(5666%) hue-rotate(175deg) brightness(96%) contrast(95%);
-          }
+        
+        // Shapefile text
+        .shapeFileText {
+          @include baseTextStyle();
+          @include u-margin-top(7);
         }
+        // Shapefile button
+        .shapefileButtonContainer{
+          @include baseButtonContainerStyles();
 
-        .downloadBoxButton{
-          @include u-bg('white');
-          @include u-color('blue-80v');
-          display: flex;
-
-          .downloadPacketText {
-            padding-top: 4px;
-            padding-left: 5px;
+          .shapeFileButtonText {
+            @include baseButtonTextStyle();
+            @include u-margin-right(3);
           }
         }
 
       }
     }
+  }
+
+  .downloadBoxButton{
+    @include u-bg('white');
+    @include u-color('blue-80v');
+    display: flex;
+  }
+
+  .newtag {
+    @include u-text("blue-70v");
+    @include u-bg("yellow-20v");
   }
