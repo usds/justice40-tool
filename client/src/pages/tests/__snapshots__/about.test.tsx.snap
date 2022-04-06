@@ -483,6 +483,53 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </div>
         </div>
       </div>
+      <div
+        class="grid-row grid-gap-lg j40-aboutcard-container "
+        data-testid="grid"
+      >
+        <div
+          class="grid-gap-lg tablet:grid-col"
+          data-testid="grid"
+        >
+          <div
+            class="grid-row j40-aboutcard-lg-card"
+            data-testid="grid"
+          >
+            <div
+              class="tablet:grid-col-3 j40-aboutpage-image-container"
+              data-testid="grid"
+            />
+            <div
+              class="tablet:grid-col-9"
+              data-cy="still-have-questions?-block"
+              data-testid="grid"
+            >
+              <div
+                class="grid-row"
+                data-testid="grid"
+              >
+                <h2>
+                  Still have questions?
+                </h2>
+                <p>
+                  Please navigate to to our 
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy=""
+                    href="https://www.whitehouse.gov/wp-content/uploads/2022/02/CEQ-CEJST-QandA.pdf"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    frequently asked questions
+                  </a>
+                   to find the answers you are looking for.
+    
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div
       class="j40-main-grid-blue-bk "

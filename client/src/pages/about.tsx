@@ -45,6 +45,7 @@ const AboutPage = ({location}: IAboutPageProps) => {
           <PublicEngageButton />
         </section>
 
+        {/* Section 1 */}
         <AboutCardsContainer>
           <AboutCard
             size={'large'}
@@ -61,6 +62,8 @@ const AboutPage = ({location}: IAboutPageProps) => {
           </AboutCard>
         </AboutCardsContainer>
 
+
+        {/* Section 2 */}
         <AboutCardsContainer>
           <AboutCard
             size={'large'}
@@ -76,6 +79,20 @@ const AboutPage = ({location}: IAboutPageProps) => {
             </>
           </AboutCard>
         </AboutCardsContainer>
+
+        {/* Section 3 */}
+        <AboutCardsContainer>
+          <AboutCard
+            size={'large'}
+            header={intl.formatMessage(ABOUT_COPY.PAGE.HEADING_3)}>
+            <>
+              <p>
+                {ABOUT_COPY.HEADING_3.DESCRIPTION_1}
+              </p>
+            </>
+          </AboutCard>
+        </AboutCardsContainer>
+
       </J40MainGridContainer>
 
       <J40MainGridContainer

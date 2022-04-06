@@ -6,7 +6,7 @@ import {hyphenizeString} from '../../../cypress/integration/common/helpers';
 
 // the "body" section is the child object to allow for html versus just text
 interface AboutCardProps {
-  imgSrc: string;
+  imgSrc?: string;
   header: string;
   size: 'small' | 'large';
   linkText?: string;
@@ -25,10 +25,10 @@ const AboutCard = (props: React.PropsWithChildren<AboutCardProps>) => {
       <Grid tablet={{col: true}} gap={'lg'} className={(props.className || '')}>
         <Grid row className={'j40-aboutcard-lg-card'}>
           <Grid tablet={{col: 3}} className={'j40-aboutpage-image-container'}>
-            <img
+            {props.imgSrc && <img
               className={'j40-aboutcard-image'}
               alt={props.header}
-              src={props.imgSrc}/>
+              src={props.imgSrc}/>}
           </Grid>
 
           <Grid tablet={{col: 9}} data-cy={`${hyphenizeString(props.header)}-block`}>

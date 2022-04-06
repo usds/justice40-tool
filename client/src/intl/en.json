@@ -79,6 +79,14 @@
     "defaultMessage": "Read more about the Justice40 Initiative in President Biden’s <link1>Executive Order 14008</link1> on <italictag>Tackling the Climate Crisis at Home and Abroad</italictag>.",
     "description": "about page sub header text"
   },
+  "about.page.sub.header.3.text": {
+    "defaultMessage": "Still have questions?",
+    "description": "Navigate to the About page. This is the fourth heading"
+  },
+  "about.page.sub.header.3.text.1": {
+    "defaultMessage": "Please navigate to to our <link1>frequently asked questions</link1> to find the answers you are looking for.",
+    "description": "Navigate to the About page. This is the second heading description"
+  },
   "about.page.title.text": {
     "defaultMessage": "About",
     "description": "Navigate to the About page. This is the about page title text"
