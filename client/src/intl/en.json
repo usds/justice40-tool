@@ -119,17 +119,29 @@
     "defaultMessage": "Contact",
     "description": "Navigate to the about page. This is Footer column header"
   },
+  "common.pages.footer.contribute.header": {
+    "defaultMessage": "Want to contribute?",
+    "description": "Navigate to the about page. This is third Footer column header"
+  },
+  "common.pages.footer.eng.cal.text": {
+    "defaultMessage": "Engagement calender",
+    "description": "Navigate to the about page. This is Footer eng.cal.gov link text"
+  },
   "common.pages.footer.findcontact": {
     "defaultMessage": "Find a contact at USA.gov",
     "description": "Navigate to the about page. This is Footer find contact link text"
   },
   "common.pages.footer.findcontact.link": {
-    "defaultMessage": "https://www.usa.gov/",
+    "defaultMessage": "https://github.com/usds/justice40-tool",
     "description": "Navigate to the about page. This is Footer find contact link text"
   },
   "common.pages.footer.foia.text": {
     "defaultMessage": "Freedom of Information Act (FOIA)",
     "description": "Navigate to the about page. This is Footer FOIA link text"
+  },
+  "common.pages.footer.github.link.text": {
+    "defaultMessage": "Check out the code on GitHub",
+    "description": "Navigate to the about page. This is Footer github link text"
   },
   "common.pages.footer.logo.title": {
     "defaultMessage": "Council on Environmental Quality",
@@ -147,9 +159,12 @@
     "defaultMessage": "Privacy Policy",
     "description": "Navigate to the about page. This is Footer privacy policy link text"
   },
-  "common.pages.footer.questionsheader": {
-    "defaultMessage": "Have a question about government services?",
-    "description": "Navigate to the about page. This is Footer column header"
+  "common.pages.footer.rfi.link": {
+    "description": "Navigate to the about page. This is Footer rfi link"
+  },
+  "common.pages.footer.rfi.text": {
+    "defaultMessage": "Request for Infomation",
+    "description": "Navigate to the about page. This is Footer rfi link text"
   },
   "common.pages.footer.whitehouse.link": {
     "defaultMessage": "https://www.whitehouse.gov/",

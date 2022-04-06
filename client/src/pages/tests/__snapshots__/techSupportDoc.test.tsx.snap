@@ -398,7 +398,30 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="usa-footer__secondary-link"
                 >
                   <a
-                    class="usa-link usa-link--external footer-link-first-child"
+                    class="footer-link-first-child"
+                    href="/en/public-engagement"
+                  >
+                    Engagement calender
+                  </a>
+                </li>
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy="request-for-infomation"
+                    href="https://www.federalregister.gov/d/2022-03920"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Request for Infomation
+                  </a>
+                </li>
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    class="usa-link usa-link--external"
                     data-cy="whitehouse-gov"
                     href="https://www.whitehouse.gov/"
                     rel="noreferrer"
@@ -433,6 +456,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     Privacy Policy
                   </a>
                 </li>
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy="find-a-contact-at-usa-gov"
+                    href="https://www.usa.gov/"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Find a contact at USA.gov
+                  </a>
+                </li>
               </ul>
             </section>
           </div>
@@ -443,7 +479,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div
                 class="j40-h4"
               >
-                Have a question about government services?
+                Want to contribute?
               </div>
               <ul
                 class="usa-list usa-list--unstyled"
@@ -453,12 +489,12 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 >
                   <a
                     class="usa-link usa-link--external footer-link-first-child"
-                    data-cy="find-a-contact-at-usa-gov"
-                    href="https://www.usa.gov/"
+                    data-cy="check-out-the-code-on-github"
+                    href="https://github.com/usds/justice40-tool"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Find a contact at USA.gov
+                    Check out the code on GitHub
                   </a>
                 </li>
               </ul>
