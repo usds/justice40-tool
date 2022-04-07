@@ -15,11 +15,19 @@ exports[`rendering of the PublicEngageButton checks if component renders 1`] = `
       href="/en/public-engagement"
     >
       <button
-        class="usa-button usa-button--icon"
+        class="usa-button"
         data-testid="button"
         type="button"
       >
-        Public Engagement
+        <div>
+          <img
+            alt="an icon that represents a calendar"
+            src="test-file-stub"
+          />
+          <div>
+            Public engagement
+          </div>
+        </div>
       </button>
     </a>
   </div>

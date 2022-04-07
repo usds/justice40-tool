@@ -90,13 +90,18 @@ export const PUBLIC_ENG_VIDEO = defineMessages({
 export const PUBLIC_ENG_BUTTON = defineMessages({
   LABEL: {
     id: 'public.eng.page.button.label',
-    defaultMessage: `Public Engagement`,
+    defaultMessage: `Public engagement`,
     description: 'Navigate to the the public engagement page, this will be the public engagement button label',
   },
   TAG_LABEL: {
     id: 'public.eng.page.tag.label',
     defaultMessage: `UPDATED`,
     description: 'Navigate to the the public engagement page, this will be the public engagement tag label',
+  },
+  IMG_ICON_ALT_TAG: {
+    id: 'public.eng.page.button.img.alt.tag',
+    defaultMessage: `an icon that represents a calendar`,
+    description: 'Navigate to the the public engagement page, this will be the public engagement button icon alt tag text',
   },
 });
 

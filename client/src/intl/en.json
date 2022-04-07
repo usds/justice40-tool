@@ -79,6 +79,14 @@
     "defaultMessage": "Read more about the Justice40 Initiative in President Biden’s <link1>Executive Order 14008</link1> on <italictag>Tackling the Climate Crisis at Home and Abroad</italictag>.",
     "description": "about page sub header text"
   },
+  "about.page.sub.header.3.text": {
+    "defaultMessage": "Still have questions?",
+    "description": "Navigate to the About page. This is the fourth heading"
+  },
+  "about.page.sub.header.3.text.1": {
+    "defaultMessage": "Find answers on the Climate and Economic Justice Screening Tool's <link1>Frequently Asked Questions</link1>.",
+    "description": "Navigate to the About page. This is the second heading description"
+  },
   "about.page.title.text": {
     "defaultMessage": "About",
     "description": "Navigate to the About page. This is the about page title text"
@@ -111,17 +119,29 @@
     "defaultMessage": "Contact",
     "description": "Navigate to the about page. This is Footer column header"
   },
+  "common.pages.footer.contribute.header": {
+    "defaultMessage": "Want to contribute?",
+    "description": "Navigate to the about page. This is third Footer column header"
+  },
+  "common.pages.footer.eng.cal.text": {
+    "defaultMessage": "Engagement calender",
+    "description": "Navigate to the about page. This is Footer eng.cal.gov link text"
+  },
   "common.pages.footer.findcontact": {
     "defaultMessage": "Find a contact at USA.gov",
     "description": "Navigate to the about page. This is Footer find contact link text"
   },
   "common.pages.footer.findcontact.link": {
-    "defaultMessage": "https://www.usa.gov/",
+    "defaultMessage": "https://github.com/usds/justice40-tool",
     "description": "Navigate to the about page. This is Footer find contact link text"
   },
   "common.pages.footer.foia.text": {
     "defaultMessage": "Freedom of Information Act (FOIA)",
     "description": "Navigate to the about page. This is Footer FOIA link text"
+  },
+  "common.pages.footer.github.link.text": {
+    "defaultMessage": "Check out the code on GitHub",
+    "description": "Navigate to the about page. This is Footer github link text"
   },
   "common.pages.footer.logo.title": {
     "defaultMessage": "Council on Environmental Quality",
@@ -139,9 +159,12 @@
     "defaultMessage": "Privacy Policy",
     "description": "Navigate to the about page. This is Footer privacy policy link text"
   },
-  "common.pages.footer.questionsheader": {
-    "defaultMessage": "Have a question about government services?",
-    "description": "Navigate to the about page. This is Footer column header"
+  "common.pages.footer.rfi.link": {
+    "description": "Navigate to the about page. This is Footer rfi link"
+  },
+  "common.pages.footer.rfi.text": {
+    "defaultMessage": "Request for Infomation",
+    "description": "Navigate to the about page. This is Footer rfi link text"
   },
   "common.pages.footer.whitehouse.link": {
     "defaultMessage": "https://www.whitehouse.gov/",
@@ -163,13 +186,25 @@
     "defaultMessage": "Contact",
     "description": "Navigate to the about page. This is Header navigate item to the Contact page"
   },
+  "common.pages.header.downloads": {
+    "defaultMessage": "Downloads",
+    "description": "Navigate to the about page. This is Header navigate item to the downloads page"
+  },
   "common.pages.header.explore": {
     "defaultMessage": "Explore the tool",
     "description": "Navigate to the about page. This is Header navigate item to the Explore the tool page"
   },
+  "common.pages.header.faqs": {
+    "defaultMessage": "Frequently asked questions",
+    "description": "Navigate to the about page. This is Header navigate item to the faqs page"
+  },
   "common.pages.header.methodology": {
     "defaultMessage": "Methodology & data",
     "description": "Navigate to the about page. This is Header navigate item to the Methodology page"
+  },
+  "common.pages.header.public.eng": {
+    "defaultMessage": "Engagement calendar",
+    "description": "Navigate to the about page. This is Header navigate item to the public eng page"
   },
   "common.pages.header.title.line1": {
     "defaultMessage": "Climate and Economic Justice",
@@ -178,6 +213,10 @@
   "common.pages.header.title.line2": {
     "defaultMessage": "Screening Tool",
     "description": "Navigate to the about page. This is Title in nav header line 2 of 2"
+  },
+  "common.pages.header.tsd": {
+    "defaultMessage": "Technical Support Document",
+    "description": "Navigate to the about page. This is Header navigate item to the technical support document page"
   },
   "contact.page.census.tract.feedback.para1": {
     "defaultMessage": "To provide feedback about a specific census tract, either select the send feedback button after selecting a census tract on the <link1>Explore the tool</link1> page or use the email address provided above. Please include the census tract ID, county, and state or territory information, in addition to your feedback.",
@@ -218,6 +257,30 @@
   "contact.page.title.text": {
     "defaultMessage": "Contact",
     "description": "Navigate to the contact page, this is the contact page title text"
+  },
+  "downloads.page.csv.link": {
+    "defaultMessage": "<link1>CSV file </link1> (.csv {csvFileSize} unzipped)",
+    "description": "On the downloads page, the description of the csv link"
+  },
+  "downloads.page.excel.link": {
+    "defaultMessage": "<link1>Excel file</link1> (.xlxs {excelFileSize} unzipped)",
+    "description": "On the downloads page, the description of the excel link"
+  },
+  "downloads.page.heading1.text": {
+    "defaultMessage": "The dataset used in the tool, along with a data dictionary and information about how to use the list of communities (.pdf) are available in the following file formats:",
+    "description": "Navigate to the the Downloads page, this will be the page heading1 text"
+  },
+  "downloads.page.heading2.text": {
+    "defaultMessage": "File formats",
+    "description": "Navigate to the the Downloads page, this will be the page heading2 text"
+  },
+  "downloads.page.shape.link": {
+    "defaultMessage": "<link1>Shapefiles </link1> (Codebook included with geojson {shapeFileSize} unzipped)",
+    "description": "On the downloads page, the description of the shapefiles link"
+  },
+  "downloads.page.title.text": {
+    "defaultMessage": "Downloads",
+    "description": "Navigate to the the Downloads page, this will be the page title text"
   },
   "explore.page.side.panel.at.or.above.at.least.one": {
     "defaultMessage": "At or above at least one threshold?",
@@ -683,6 +746,10 @@
     "defaultMessage": "At or above {numberOfThresholdExceed} thresholds",
     "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show how many thresholds are exceeded"
   },
+  "explore.tool.page.side.panel.send.feedback.alt.img": {
+    "defaultMessage": "Send feedback",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show a send feedback icon, this is the images alt tag"
+  },
   "explore.tool.page.side.panel.send.feedback.email.body": {
     "defaultMessage": "Please provide feedback about this census tract, including about the datasets, the data categories provided for this census tract, the communities who live in this census tract, and anything else relevant that CEQ should know about this census tract.",
     "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show link to send feedback\n"
@@ -750,6 +817,14 @@
   "fab.survey.text": {
     "defaultMessage": "Help improve the site & data",
     "description": "Navigate to the the public engagement page, this will be the text for floating action button"
+  },
+  "faqs.page.coming.soon.text": {
+    "defaultMessage": "Coming Soon!",
+    "description": "Navigate to the the FAQs page, this will be the page coming soon text"
+  },
+  "faqs.page.title.text": {
+    "defaultMessage": "Frequently asked questions",
+    "description": "Navigate to the the FAQs page, this will be the page title text"
   },
   "indicator.categories.afford.house.title": {
     "defaultMessage": "Affordable and sustainable housing",
@@ -1107,21 +1182,29 @@
     "defaultMessage": "All categories",
     "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card Used In text for all methodologies"
   },
-  "methodology.page.downloadPacket.button.text": {
-    "defaultMessage": "Download package",
+  "methodology.page.downloadPacket.button1.text": {
+    "defaultMessage": "Download data sources",
     "description": "Navigate to the methodology page. This is the download packet button text"
   },
+  "methodology.page.downloadPacket.button2.text": {
+    "defaultMessage": "Download shapefile",
+    "description": "Navigate to the methodology page. This is the download shapefiles text"
+  },
   "methodology.page.downloadPacket.header.text": {
-    "defaultMessage": "Draft communities list v{version} ({downloadFileSize} unzipped)",
+    "defaultMessage": "Files available for download",
     "description": "Navigate to the methodology page. This is the download packet header text"
   },
   "methodology.page.downloadPacket.info.last.updated": {
     "defaultMessage": "Last updated: {downloadLastUpdated}",
     "description": "Navigate to the methodology page. This is the download packet info last updated"
   },
-  "methodology.page.downloadPacket.info.text": {
-    "defaultMessage": "The download package includes draft v{version} of the list of disadvantaged communities (.csv and .xlsx).",
+  "methodology.page.downloadPacket.info.text1": {
+    "defaultMessage": "Download the data sources used in the CEJST (.csv and .xlsx, {downloadFileSize} unzipped) or the shapefile, along with a codebook (.zip, {shapefileSize} unzipped).",
     "description": "Navigate to the methodology page. This is the download packet info text"
+  },
+  "methodology.page.downloadPacket.new.tag.text": {
+    "defaultMessage": "<boldtag>NEW</boldtag>",
+    "description": "Navigate to the methodology page. This is the new tag text"
   },
   "methodology.page.formula.first": {
     "defaultMessage": "<boldtag>IF</boldtag> the census tract is above the threshold for one or more environmental or climate indicators",
@@ -1228,8 +1311,8 @@
     "description": "page not found guidance text"
   },
   "pageNotFound.apology.text": {
-    "defaultMessage": "Sorry, the page you were looking for was not found. Click {home} to go home.",
-    "description": "page description"
+    "defaultMessage": "Sorry, the page you were looking for was not found. Click <link1>home</link1> to go home.",
+    "description": "main error message"
   },
   "pageNotFound.heading.text": {
     "defaultMessage": "Page not found",
@@ -1239,8 +1322,12 @@
     "defaultMessage": "Page not found",
     "description": "page not found title text"
   },
+  "public.eng.page.button.img.alt.tag": {
+    "defaultMessage": "an icon that represents a calendar",
+    "description": "Navigate to the the public engagement page, this will be the public engagement button icon alt tag text"
+  },
   "public.eng.page.button.label": {
-    "defaultMessage": "Public Engagement",
+    "defaultMessage": "Public engagement",
     "description": "Navigate to the the public engagement page, this will be the public engagement button label"
   },
   "public.eng.page.description1.text": {
@@ -1350,5 +1437,13 @@
   "public.eng.page.whejac.meeting.day.1.info": {
     "defaultMessage": "March 31th (3:00 - 7:30 PM EST)",
     "description": "public engagement page event WHEJAC"
+  },
+  "technical.support.doc.page.coming.soon.text": {
+    "defaultMessage": "Coming Soon!",
+    "description": "Navigate to the the Technical Support Doc page, this will be the page coming soon text"
+  },
+  "technical.support.doc.page.title.text": {
+    "defaultMessage": "Technical Support Document",
+    "description": "Navigate to the the Technical Support Doc page, this will be the page title text"
   }
 }

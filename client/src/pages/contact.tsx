@@ -5,8 +5,8 @@ import {useIntl, FormattedMessage} from 'gatsby-plugin-intl';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 import LinkTypeWrapper from '../components/LinkTypeWrapper';
-import PublicEngageButton from '../components/PublicEngageButton';
 import RequestForInfo from '../components/RequestForInfo';
+import PublicEngageButton from '../components/PublicEngageButton';
 
 import * as CONTACT_COPY from '../data/copy/contact';
 import * as COMMON_COPY from '../data/copy/common';

@@ -73,7 +73,8 @@ export const FORMULA = {
 
 // Download Package
 export const DOWNLOAD_FILE_SIZE = 52;
-export const DOWNLOAD_LAST_UPDATED = 1645180697000;
+export const DOWNLOAD_SHAPE_FILE_SIZE = 742;
+export const DOWNLOAD_LAST_UPDATED = 1649287951000;
 export const VERSION_NUMBER = 0.1;
 
 export const DOWNLOAD_ZIP_URL = [
@@ -82,30 +83,35 @@ export const DOWNLOAD_ZIP_URL = [
   process.env.GATSBY_SCORE_DOWNLOAD_FILE_PATH,
 ].join('/');
 
+export const DOWNLOAD_SHAPEFILE_URL = [
+  process.env.GATSBY_CDN_TILES_BASE_URL,
+  process.env.GATSBY_DATA_PIPELINE_SCORE_PATH,
+  process.env.GATSBY_SHAPE_FILE_PATH,
+].join('/');
+
 export const DOWNLOAD_PACKAGE = {
   TITLE: <FormattedMessage
     id={'methodology.page.downloadPacket.header.text'}
-    defaultMessage={`Draft communities list v{version} ({downloadFileSize} unzipped)`}
+    defaultMessage={`Files available for download`}
     description={'Navigate to the methodology page. This is the download packet header text'}
+  />,
+  DESCRIPTION1: <FormattedMessage
+    id={ 'methodology.page.downloadPacket.info.text1'}
+    defaultMessage= {`Download the data sources used in the CEJST (.csv and .xlsx, {downloadFileSize} unzipped) or the shapefile, along with a codebook (.zip, {shapefileSize} unzipped).`}
+    description= {'Navigate to the methodology page. This is the download packet info text'}
     values= {{
-      version: <FormattedNumber value={VERSION_NUMBER}/>,
       downloadFileSize: <FormattedNumber
         value={DOWNLOAD_FILE_SIZE}
         style="unit"
         unit="megabyte"
         unitDisplay="narrow"
       />,
-    }}
-  />,
-  DESCRIPTION: <FormattedMessage
-    id={ 'methodology.page.downloadPacket.info.text'}
-    defaultMessage= {`
-      The download package includes draft v{version} of the list of disadvantaged communities
-      (.csv and .xlsx).
-    `}
-    description= {'Navigate to the methodology page. This is the download packet info text'}
-    values= {{
-      version: <FormattedNumber value={VERSION_NUMBER}/>,
+      shapefileSize: <FormattedNumber
+        value={DOWNLOAD_SHAPE_FILE_SIZE}
+        style="unit"
+        unit="megabyte"
+        unitDisplay="narrow"
+      />,
     }}
   />,
   LAST_UPDATED: <FormattedMessage
@@ -121,10 +127,23 @@ export const DOWNLOAD_PACKAGE = {
       />,
     }}
   />,
-  BUTTON_TEXT: <FormattedMessage
-    id={ 'methodology.page.downloadPacket.button.text'}
-    defaultMessage= {'Download package'}
+  BUTTON_TEXT1: <FormattedMessage
+    id={ 'methodology.page.downloadPacket.button1.text'}
+    defaultMessage= {'Download data sources'}
     description= {'Navigate to the methodology page. This is the download packet button text'}
+  />,
+  BUTTON_TEXT2: <FormattedMessage
+    id={ 'methodology.page.downloadPacket.button2.text'}
+    defaultMessage= {'Download shapefile'}
+    description= {'Navigate to the methodology page. This is the download shapefiles text'}
+  />,
+  NEW_TAG: <FormattedMessage
+    id={ 'methodology.page.downloadPacket.new.tag.text'}
+    defaultMessage= {`<boldtag>NEW</boldtag>`}
+    description= {'Navigate to the methodology page. This is the new tag text'}
+    values={{
+      boldtag: boldFn,
+    }}
   />,
 };
 

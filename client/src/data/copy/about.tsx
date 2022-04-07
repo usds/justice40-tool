@@ -5,6 +5,7 @@ import {FormattedMessage} from 'gatsby-plugin-intl';
 import {italicFn, linkFn} from './common';
 
 export const EXEC_ORDER_LINK = 'https://www.federalregister.gov/documents/2021/02/01/2021-02177/tackling-the-climate-crisis-at-home-and-abroad#:~:text=Sec.%20223.%20Justice40,40-percent%20goal.';
+export const FAQS_LINK = 'https://www.whitehouse.gov/wp-content/uploads/2022/02/CEQ-CEJST-QandA.pdf';
 
 export const PAGE = defineMessages({
   TILE: {
@@ -45,6 +46,12 @@ export const PAGE = defineMessages({
     `,
     description: 'Navigate to the About page. This is the third heading description',
   },
+  HEADING_3: {
+    id: 'about.page.sub.header.3.text',
+    defaultMessage: 'Still have questions?',
+    description: 'Navigate to the About page. This is the fourth heading',
+  },
+
 });
 
 export const HEADING_1 = {
@@ -63,6 +70,18 @@ export const HEADING_1 = {
     values={{
       link1: linkFn(EXEC_ORDER_LINK, false, true),
       italictag: italicFn,
+    }}
+  />,
+};
+export const HEADING_3 = {
+  DESCRIPTION_1:
+  <FormattedMessage
+    id={'about.page.sub.header.3.text.1'}
+    defaultMessage={`Find answers on the Climate and Economic Justice Screening Tool's <link1>Frequently Asked Questions</link1>.
+    `}
+    description={'Navigate to the About page. This is the second heading description'}
+    values={{
+      link1: linkFn(FAQS_LINK, false, true),
     }}
   />,
 };

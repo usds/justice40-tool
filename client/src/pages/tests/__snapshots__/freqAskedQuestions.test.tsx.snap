@@ -222,18 +222,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 class="usa-nav__primary-item"
               >
                 <a
-                  data-cy="nav-link-about"
-                  href="/en/"
-                >
-                  About
-                </a>
-              </li>
-              <li
-                class="usa-nav__primary-item"
-              >
-                <a
                   data-cy="nav-link-explore-the-tool"
-                  href="/en/cejst"
+                  href="/en/"
                 >
                   Explore the tool
                 </a>
@@ -246,6 +236,16 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   href="/en/methodology"
                 >
                   Methodology & data
+                </a>
+              </li>
+              <li
+                class="usa-nav__primary-item"
+              >
+                <a
+                  data-cy="nav-link-about"
+                  href="/en/about"
+                >
+                  About
                 </a>
               </li>
               <li
@@ -310,425 +310,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       class="grid-container-desktop-lg"
       data-testid="gridContainer"
     >
-      <section
-        class="page-heading"
-      >
-        <h1
-          data-cy="about-page-heading"
-        >
-          About
-        </h1>
-        <div>
-          <div>
-            <span
-              class="usa-tag"
-              data-testid="tag"
-            >
-              UPDATED
-            </span>
-          </div>
-          <a
-            href="/en/public-engagement"
-          >
-            <button
-              class="usa-button usa-button--icon"
-              data-testid="button"
-              type="button"
-            >
-              Public Engagement
-            </button>
-          </a>
-        </div>
-      </section>
+      <h1>
+        Frequently asked questions
+      </h1>
       <div
-        class="grid-row grid-gap-lg j40-aboutcard-container "
+        class="grid-row"
         data-testid="grid"
       >
-        <div
-          class="grid-gap-lg tablet:grid-col"
-          data-testid="grid"
-        >
-          <div
-            class="grid-row j40-aboutcard-lg-card"
-            data-testid="grid"
-          >
-            <div
-              class="tablet:grid-col-3 j40-aboutpage-image-container"
-              data-testid="grid"
-            >
-              <img
-                alt="Screening tool"
-                class="j40-aboutcard-image"
-                src="test-file-stub"
-              />
-            </div>
-            <div
-              class="tablet:grid-col-9"
-              data-cy="screening-tool-block"
-              data-testid="grid"
-            >
-              <div
-                class="grid-row"
-                data-testid="grid"
-              >
-                <h2>
-                  Screening tool
-                </h2>
-                <p>
-                  
-    In 
-                  <a
-                    class="usa-link usa-link--external"
-                    data-cy=""
-                    href="https://www.federalregister.gov/documents/2021/02/01/2021-02177/tackling-the-climate-crisis-at-home-and-abroad#:~:text=Sec.%20223.%20Justice40,40-percent%20goal."
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    Executive Order 14008
-                  </a>
-                   on 
-                  <i>
-                    Tackling the Climate Crisis at Home and Abroad
-                  </i>
-                  , President Biden directed the Council on Environmental Quality (CEQ) 
-    to create a Climate and Economic Justice Screening Tool. The purpose of the tool is to help
-    Federal agencies identify disadvantaged communities that are marginalized, underserved, and 
-    overburdened by pollution. The current version of the tool provides socioeconomic, environmental, 
-    and climate information to inform decisions that may affect these communities. The 
-    tool identifies disadvantaged communities through publicly-available, nationally-consistent datasets.
-    
-                </p>
-                <p>
-                  The current version of the tool is in a public beta form and will be updated based on feedback and research.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="grid-row grid-gap-lg j40-aboutcard-container "
-        data-testid="grid"
-      >
-        <div
-          class="grid-gap-lg tablet:grid-col"
-          data-testid="grid"
-        >
-          <div
-            class="grid-row j40-aboutcard-lg-card"
-            data-testid="grid"
-          >
-            <div
-              class="tablet:grid-col-3 j40-aboutpage-image-container"
-              data-testid="grid"
-            >
-              <img
-                alt="The Justice40 Initiative"
-                class="j40-aboutcard-image"
-                src="test-file-stub"
-              />
-            </div>
-            <div
-              class="tablet:grid-col-9"
-              data-cy="the-justice40-initiative-block"
-              data-testid="grid"
-            >
-              <div
-                class="grid-row"
-                data-testid="grid"
-              >
-                <h2>
-                  The Justice40 Initiative
-                </h2>
-                <p>
-                  
-      The tool will provide important information for the Justice40 Initiative. The goal of the 
-      Justice40 Initiative is to provide 40 percent of the overall benefits of certain Federal
-      investments in seven key areas to disadvantaged communities. These seven key areas are: climate 
-      change, clean energy and energy efficiency, clean transit, affordable and sustainable
-      housing, training and workforce development, the remediation and reduction of legacy pollution, 
-      and the development of critical clean water infrastructure.
-    
-                </p>
-                <p>
-                  
-    Read more about the Justice40 Initiative in President Biden’s
-    
-                  <a
-                    class="usa-link usa-link--external"
-                    data-cy=""
-                    href="https://www.federalregister.gov/documents/2021/02/01/2021-02177/tackling-the-climate-crisis-at-home-and-abroad#:~:text=Sec.%20223.%20Justice40,40-percent%20goal."
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    Executive Order 14008
-                  </a>
-                   on 
-                  <i>
-                    Tackling the Climate Crisis at Home and Abroad
-                  </i>
-                  .
-    
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="j40-main-grid-blue-bk "
-    >
-      <div
-        class="grid-container-desktop-lg"
-        data-testid="gridContainer"
-      >
-        <h2>
-          How to get started
-        </h2>
-        <div
-          class="grid-row grid-gap-lg j40-aboutcard-container "
-          data-testid="grid"
-        >
-          <div
-            class="grid-gap-lg tablet:grid-col"
-            data-testid="grid"
-          >
-            <div
-              class="grid-row j40-aboutcard-sm-card"
-              data-testid="grid"
-            >
-              <div
-                class="tablet:grid-col-2 j40-aboutpage-image-container"
-                data-testid="grid"
-              >
-                <img
-                  alt="Federal program managers"
-                  class="j40-aboutcard-image"
-                  src="test-file-stub"
-                />
-              </div>
-              <div
-                class="tablet:grid-col-9"
-                data-cy="federal-program-managers-block"
-                data-testid="grid"
-              >
-                <div
-                  class="grid-row"
-                  data-testid="grid"
-                >
-                  <h3>
-                    Federal program managers
-                  </h3>
-                  <p>
-                    
-      Download the tool’s current list of communities, explore data that may be useful to your 
-      program, and provide feedback on the tool.
-    
-                  </p>
-                  <div
-                    class="j40-aboutcard-sm-link"
-                  >
-                    <a
-                      href="/en/methodology"
-                    >
-                      Methodology & data
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="grid-col-1"
-                data-testid="grid"
-              >
-                 
-              </div>
-            </div>
-          </div>
-          <div
-            class="grid-gap-lg tablet:grid-col"
-            data-testid="grid"
-          >
-            <div
-              class="grid-row j40-aboutcard-sm-card"
-              data-testid="grid"
-            >
-              <div
-                class="tablet:grid-col-2 j40-aboutpage-image-container"
-                data-testid="grid"
-              >
-                <img
-                  alt="Community members"
-                  class="j40-aboutcard-image"
-                  src="test-file-stub"
-                />
-              </div>
-              <div
-                class="tablet:grid-col-9"
-                data-cy="community-members-block"
-                data-testid="grid"
-              >
-                <div
-                  class="grid-row"
-                  data-testid="grid"
-                >
-                  <h3>
-                    Community members
-                  </h3>
-                  <p>
-                    
-      Explore data about communities across the U.S., including your own, and provide feedback on the tool.
-    
-                  </p>
-                  <div
-                    class="j40-aboutcard-sm-link"
-                  >
-                    <a
-                      href="/en/cejst"
-                    >
-                      Explore the tool
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="grid-col-1"
-                data-testid="grid"
-              >
-                 
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="grid-container-desktop-lg"
-      data-testid="gridContainer"
-    >
-      <h2>
-        Get involved
-      </h2>
-      <div
-        class="grid-row grid-gap-lg j40-aboutcard-container "
-        data-testid="grid"
-      >
-        <div
-          class="grid-gap-lg tablet:grid-col"
-          data-testid="grid"
-        >
-          <div
-            class="grid-row j40-aboutcard-sm-card"
-            data-testid="grid"
-          >
-            <div
-              class="tablet:grid-col-2 j40-aboutpage-image-container"
-              data-testid="grid"
-            >
-              <img
-                alt="Send feedback"
-                class="j40-aboutcard-image"
-                src="test-file-stub"
-              />
-            </div>
-            <div
-              class="tablet:grid-col-9"
-              data-cy="send-feedback-block"
-              data-testid="grid"
-            >
-              <div
-                class="grid-row"
-                data-testid="grid"
-              >
-                <h3>
-                  Send feedback
-                </h3>
-                <p>
-                  
-      Have ideas about data and information that reflect the experiences and conditions of your community?
-    
-                </p>
-                <div
-                  class="j40-aboutcard-sm-link"
-                >
-                  <a
-                    class="usa-link usa-link--external j40-aboutcard-link"
-                    data-cy=""
-                    href="mailto:Screeningtool-Support@omb.eop.gov"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    Email: Screeningtool-Support@omb.eop.gov
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div
-              class="grid-col-1"
-              data-testid="grid"
-            >
-               
-            </div>
-          </div>
-        </div>
-        <div
-          class="grid-gap-lg tablet:grid-col"
-          data-testid="grid"
-        >
-          <div
-            class="grid-row j40-aboutcard-sm-card"
-            data-testid="grid"
-          >
-            <div
-              class="tablet:grid-col-2 j40-aboutpage-image-container"
-              data-testid="grid"
-            >
-              <img
-                alt="Join the open source community"
-                class="j40-aboutcard-image"
-                src="test-file-stub"
-              />
-            </div>
-            <div
-              class="tablet:grid-col-9"
-              data-cy="join-the-open-source-community-block"
-              data-testid="grid"
-            >
-              <div
-                class="grid-row"
-                data-testid="grid"
-              >
-                <h3>
-                  Join the open source community
-                </h3>
-                <p>
-                  
-      The tool’s code is open source, which means it is available for the public to view and contribute to it.
-    
-                </p>
-                <div
-                  class="j40-aboutcard-sm-link"
-                >
-                  <a
-                    class="usa-link usa-link--external j40-aboutcard-link"
-                    data-cy=""
-                    href="https://github.com/usds/justice40-tool"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    Check it out on GitHub
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div
-              class="grid-col-1"
-              data-testid="grid"
-            >
-               
-            </div>
-          </div>
-        </div>
+        Coming Soon!
       </div>
     </div>
   </main>
@@ -809,7 +398,30 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="usa-footer__secondary-link"
                 >
                   <a
-                    class="usa-link usa-link--external footer-link-first-child"
+                    class="footer-link-first-child"
+                    href="/en/public-engagement"
+                  >
+                    Engagement calender
+                  </a>
+                </li>
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy="request-for-infomation"
+                    href="https://www.federalregister.gov/d/2022-03920"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Request for Infomation
+                  </a>
+                </li>
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    class="usa-link usa-link--external"
                     data-cy="whitehouse-gov"
                     href="https://www.whitehouse.gov/"
                     rel="noreferrer"
@@ -844,6 +456,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     Privacy Policy
                   </a>
                 </li>
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy="find-a-contact-at-usa-gov"
+                    href="https://www.usa.gov/"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Find a contact at USA.gov
+                  </a>
+                </li>
               </ul>
             </section>
           </div>
@@ -854,7 +479,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div
                 class="j40-h4"
               >
-                Have a question about government services?
+                Want to contribute?
               </div>
               <ul
                 class="usa-list usa-list--unstyled"
@@ -864,12 +489,12 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 >
                   <a
                     class="usa-link usa-link--external footer-link-first-child"
-                    data-cy="find-a-contact-at-usa-gov"
-                    href="https://www.usa.gov/"
+                    data-cy="check-out-the-code-on-github"
+                    href="https://github.com/usds/justice40-tool"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Find a contact at USA.gov
+                    Check out the code on GitHub
                   </a>
                 </li>
               </ul>

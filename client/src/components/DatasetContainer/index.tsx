@@ -8,6 +8,7 @@ import {hyphenizeString} from '../../../cypress/integration/common/helpers';
 
 import * as styles from './dsContainer.module.scss';
 import * as METHODOLOGY_COPY from '../../data/copy/methodology';
+import {PAGES_ENDPOINTS} from '../../data/constants';
 
 
 const DatasetContainer = () => {
@@ -43,7 +44,7 @@ const DatasetContainer = () => {
           </Grid>
 
           <div className={styles.returnToTop}>
-            <Link to={`/methodology`}>
+            <Link to={PAGES_ENDPOINTS.METHODOLOGY}>
               {METHODOLOGY_COPY.RETURN_TO_TOP.LINK}
             </Link>
           </div>

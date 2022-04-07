@@ -617,7 +617,7 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
               <img
                 className={styles.buttonImage}
                 src={mailIcon}
-                alt={'tbd'}
+                alt={intl.formatMessage(EXPLORE_COPY.COMMUNITY.SEND_FEEDBACK.IMG_ICON.ALT_TAG)}
               />
             </div>
           </Button>

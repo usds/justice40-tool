@@ -31,7 +31,9 @@ interface ILinkTypeWrapper {
 const LinkTypeWrapper = (props:ILinkTypeWrapper) => {
   if (props.internal) {
     return (
-      <Link to={`${props.url}`}>
+      <Link to={`${props.url}`}
+        className={props.className}
+      >
         {props.linkText}
       </Link>
     );

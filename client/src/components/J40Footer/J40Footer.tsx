@@ -13,6 +13,7 @@ import SurveyButton from '../SurveyButton';
 
 // @ts-ignore
 import whitehouseIcon from '../../images/eop-seal.svg';
+import {PAGES_ENDPOINTS} from '../../data/constants';
 import * as COMMON_COPY from '../../data/copy/common';
 
 const J40Footer = () => {
@@ -36,11 +37,27 @@ const J40Footer = () => {
     [
       intl.formatMessage(COMMON_COPY.FOOTER.MORE_INFO),
       <LinkTypeWrapper
+        linkText={intl.formatMessage(COMMON_COPY.FOOTER.ENG_CAL)}
+        internal={true}
+        url={PAGES_ENDPOINTS.PUBLIC_ENG}
+        openUrlNewTab={false}
+        className={'footer-link-first-child'}
+        key={'publiceng'}
+        dataCy={hyphenizeString(COMMON_COPY.FOOTER.ENG_CAL.defaultMessage)}
+      />,
+      <LinkTypeWrapper
+        linkText={intl.formatMessage(COMMON_COPY.FOOTER.RFI)}
+        internal={false}
+        url={intl.formatMessage(COMMON_COPY.FOOTER.RFI_LINK)}
+        openUrlNewTab={true}
+        key={'rfilink'}
+        dataCy={hyphenizeString(COMMON_COPY.FOOTER.RFI.defaultMessage)}
+      />,
+      <LinkTypeWrapper
         linkText={intl.formatMessage(COMMON_COPY.FOOTER.WHITEHOUSE)}
         internal={false}
         url={intl.formatMessage(COMMON_COPY.FOOTER.WHITEHOUSE_LINK)}
         openUrlNewTab={true}
-        className={'footer-link-first-child'}
         key={'whitehouselink2'}
         dataCy={hyphenizeString(COMMON_COPY.FOOTER.WHITEHOUSE.defaultMessage)}
       />,
@@ -60,17 +77,25 @@ const J40Footer = () => {
         key={'privacylink'}
         dataCy={hyphenizeString(COMMON_COPY.FOOTER.PRIVACY.defaultMessage)}
       />,
-    ],
-    [
-      intl.formatMessage(COMMON_COPY.FOOTER.QUESTIONS),
       <LinkTypeWrapper
         linkText={intl.formatMessage(COMMON_COPY.FOOTER.FIND_CONTACT)}
         internal={false}
         url={intl.formatMessage(COMMON_COPY.FOOTER.FIND_CONTACT_LINK)}
         openUrlNewTab={true}
-        className={'footer-link-first-child'}
         key={'contactlink'}
         dataCy={hyphenizeString(COMMON_COPY.FOOTER.FIND_CONTACT.defaultMessage)}
+      />,
+    ],
+    [
+      intl.formatMessage(COMMON_COPY.FOOTER.CONTRIBUTE),
+      <LinkTypeWrapper
+        linkText={intl.formatMessage(COMMON_COPY.FOOTER.GITHUB_LINK_TEXT)}
+        internal={false}
+        url={intl.formatMessage(COMMON_COPY.FOOTER.GITHUB_LINK)}
+        openUrlNewTab={true}
+        className={'footer-link-first-child'}
+        key={'contactlink'}
+        dataCy={hyphenizeString(COMMON_COPY.FOOTER.GITHUB_LINK_TEXT.defaultMessage)}
       />,
     ],
   ];

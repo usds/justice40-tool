@@ -4,6 +4,18 @@ import {isMobile as isMobileReactDeviceDetect} from 'react-device-detect';
 
 export const isMobile = isMobileReactDeviceDetect;
 
+// Pages URL
+export const PAGES_ENDPOINTS = {
+  EXPLORE: '/',
+  METHODOLOGY: '/methodology',
+  DOWNLOADS: '/downloads',
+  TSD: '/technical-support-document',
+  ABOUT: '/about',
+  FAQS: '/frequently-asked-questions',
+  PUBLIC_ENG: '/public-engagement',
+  CONTACT: '/contact',
+};
+
 // Performance markers
 export const PERFORMANCE_MARKER_MAP_IDLE = 'MAP_IDLE';
 

@@ -2,6 +2,7 @@ import * as React from 'react';
 import {render} from '@testing-library/react';
 import LinkTypeWrapper from './index';
 import {LocalizedComponent} from '../../test/testHelpers';
+import {PAGES_ENDPOINTS} from '../../data/constants';
 
 describe('testing all link types', () => {
   it('tests internal links', () => {
@@ -10,7 +11,7 @@ describe('testing all link types', () => {
           <LinkTypeWrapper
             linkText={'test link text'}
             internal={true}
-            url={'/methodology'}
+            url={PAGES_ENDPOINTS.METHODOLOGY}
             openUrlNewTab={false}
           />
         </LocalizedComponent>,

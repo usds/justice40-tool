@@ -12,14 +12,11 @@
  *
  */
 
-const endpoints = [
-  'en/',
-  'en/cejst',
-  'en/methodology',
-  'en/contact',
-  'en/404',
-  'en/public-engagement',
-];
+import {PAGES_ENDPOINTS} from './constants';
+
+const rawEndpoints = Object.values(PAGES_ENDPOINTS);
+
+const endpoints = rawEndpoints.map((endpoint) => `en${endpoint}`);
 
 // The violation callback will post the violations into the terminal
 // eslint-disable-next-line require-jsdoc

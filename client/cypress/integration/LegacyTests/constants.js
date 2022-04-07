@@ -1,7 +1,10 @@
-export const ENDPOINTS = {
-  ABOUT: 'en/',
-  EXPLORE_THE_TOOL: '/en/cejst',
-  METHODOLOGY: '/en/methodology',
-  CONTACT: 'en/contact',
-  PUBLIC: 'en/public-engagement',
+export const PAGES_ENDPOINTS = {
+  EXPLORE: '/',
+  METHODOLOGY: '/methodology',
+  DOWNLOADS: '/downloads',
+  TSD: '/technical-support-document',
+  ABOUT: '/about',
+  FAQS: '/frequently-asked-questions',
+  PUBLIC_ENG: '/public-engagement',
+  CONTACT: '/contact',
 };

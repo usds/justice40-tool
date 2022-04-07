@@ -4,7 +4,7 @@
 A risk with this test is that if the feature/area that is currently being selected become non-prioritized, then this
 test will fail. However it would be a major win for that area!
 */
-import {ENDPOINTS} from './constants';
+import {PAGES_ENDPOINTS} from './constants';
 
 const devices = [
   [1024, 720],
@@ -15,7 +15,7 @@ const devices = [
 describe('tests that the map side panel renders MapIntroduction component', () => {
   devices.forEach((device) => {
     it(`should render MapIntroduction component on ${device[0]} x ${device[1]}`, () => {
-      cy.visit(ENDPOINTS.EXPLORE_THE_TOOL);
+      cy.visit(PAGES_ENDPOINTS.EXPLORE);
       cy.viewport(device[0], device[1]);
       cy.get('aside').should('be.visible');
     });
