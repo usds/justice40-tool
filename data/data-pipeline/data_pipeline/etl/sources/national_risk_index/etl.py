@@ -15,8 +15,6 @@ class NationalRiskIndexETL(ExtractTransformLoad):
     """ETL class for the FEMA National Risk Index dataset"""
 
     NAME = "national_risk_index"
-    LAST_UPDATED_YEAR = 2020
-    SOURCE_URL = "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload//NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
 
     ## TEMPORARILY HERE
@@ -27,7 +25,8 @@ class NationalRiskIndexETL(ExtractTransformLoad):
     AGRIVALUE_LOWER_BOUND = 408000
 
     def __init__(self):
-        self.INPUT_CSV = self.get_tmp_path() / "NRI_Table_CensusTracts.csv"
+        # load YAML config
+        super().yaml_config_load()
 
         self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_INPUT_FIELD_NAME = (
             "EAL_SCORE"
