@@ -77,7 +77,7 @@ export const HEADING_3 = {
   DESCRIPTION_1:
   <FormattedMessage
     id={'about.page.sub.header.3.text.1'}
-    defaultMessage={`Please navigate to to our <link1>frequently asked questions</link1> to find the answers you are looking for.
+    defaultMessage={`Find answers on the Climate and Economic Justice Screening Tool's <link1>Frequently Asked Questions</link1>.
     `}
     description={'Navigate to the About page. This is the second heading description'}
     values={{

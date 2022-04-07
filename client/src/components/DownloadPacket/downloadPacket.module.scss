@@ -2,6 +2,7 @@
 
 @mixin baseButtonContainerStyles {
   align-self: center;
+  @include u-margin-top(2);
 
   a {
     text-decoration: none;
@@ -19,9 +20,6 @@
   @include u-margin-top(2);
   @include u-margin-bottom(2);
   
-  span {
-    font-style: italic;
-  }
 };
 
 @mixin baseButtonTextStyle {
@@ -53,6 +51,14 @@
         .dataSourceText {
           @include baseTextStyle();
         }
+
+        // Last updated
+        .lastUpdated {
+          font-style: italic;
+          align-self: center;
+          @include u-margin-top(1);
+        }
+
         // Data source button
         .dataSourceButtonContainer {
           @include baseButtonContainerStyles();
@@ -69,6 +75,8 @@
         }
         // Shapefile button
         .shapefileButtonContainer{
+          display: flex;
+          flex-direction: column;
           @include baseButtonContainerStyles();
 
           .shapeFileButtonText {
@@ -85,6 +93,12 @@
     @include u-bg('white');
     @include u-color('blue-80v');
     display: flex;
+  }
+
+  .newTagContainer {
+    align-self: end;
+    @include u-margin-bottom(-1);
+    z-index: 2;
   }
 
   .newtag {

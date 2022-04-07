@@ -11,7 +11,9 @@ declare namespace DownloadPacketModuleScssNamespace {
         dataSourceButtonText: string;
         shapeFileText: string;
         shapeFileButtonText: string;
+        newTagContainer: string;
         newtag: string;
+        lastUpdated:string;
     }
   }
 

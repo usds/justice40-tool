@@ -512,7 +512,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   Still have questions?
                 </h2>
                 <p>
-                  Please navigate to to our 
+                  Find answers on the Climate and Economic Justice Screening Tool's 
                   <a
                     class="usa-link usa-link--external"
                     data-cy=""
@@ -520,9 +520,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     rel="noreferrer"
                     target="_blank"
                   >
-                    frequently asked questions
+                    Frequently Asked Questions
                   </a>
-                   to find the answers you are looking for.
+                  .
     
                 </p>
               </div>

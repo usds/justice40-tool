@@ -13,10 +13,7 @@ exports[`download packet component defined checks if component renders 1`] = `
             Files available for download
           </div>
           <div>
-            Download the data sources used in the CEJST (.csv and .xlsx, 52MB unzipped). 
-            <span>
-              Last updated: 04/06/22 
-            </span>
+            Download the data sources used in the CEJST (.csv and .xlsx, 52MB unzipped) or the shapefile, along with a codebook (.zip, 742MB unzipped).
           </div>
           <div>
             <a
@@ -42,18 +39,19 @@ exports[`download packet component defined checks if component renders 1`] = `
             </a>
           </div>
           <div>
-            <span
-              class="usa-tag"
-              data-testid="tag"
-            >
-              NEW
-            </span>
-            Download the shapefiles, along with a codebook (.cpg, .dbf, .prj, .shp and .shx, 740MB unzipped). 
-            <span>
-              Last updated: 04/06/22 
-            </span>
+            Last updated: 04/06/22 
           </div>
           <div>
+            <div>
+              <span
+                class="usa-tag"
+                data-testid="tag"
+              >
+                <strong>
+                  NEW
+                </strong>
+              </span>
+            </div>
             <a
               data-cy="shapefile-link"
               download=""
@@ -71,10 +69,13 @@ exports[`download packet component defined checks if component renders 1`] = `
                   />
                 </div>
                 <div>
-                  Download shapefiles
+                  Download shapefile
                 </div>
               </button>
             </a>
+          </div>
+          <div>
+            Last updated: 04/06/22 
           </div>
         </div>
       </div>

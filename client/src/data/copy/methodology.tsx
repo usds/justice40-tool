@@ -73,7 +73,7 @@ export const FORMULA = {
 
 // Download Package
 export const DOWNLOAD_FILE_SIZE = 52;
-export const DOWNLOAD_SHAPE_FILE_SIZE = 740;
+export const DOWNLOAD_SHAPE_FILE_SIZE = 742;
 export const DOWNLOAD_LAST_UPDATED = 1649287951000;
 export const VERSION_NUMBER = 0.1;
 
@@ -97,7 +97,7 @@ export const DOWNLOAD_PACKAGE = {
   />,
   DESCRIPTION1: <FormattedMessage
     id={ 'methodology.page.downloadPacket.info.text1'}
-    defaultMessage= {`Download the data sources used in the CEJST (.csv and .xlsx, {downloadFileSize} unzipped).`}
+    defaultMessage= {`Download the data sources used in the CEJST (.csv and .xlsx, {downloadFileSize} unzipped) or the shapefile, along with a codebook (.zip, {shapefileSize} unzipped).`}
     description= {'Navigate to the methodology page. This is the download packet info text'}
     values= {{
       downloadFileSize: <FormattedNumber
@@ -106,13 +106,6 @@ export const DOWNLOAD_PACKAGE = {
         unit="megabyte"
         unitDisplay="narrow"
       />,
-    }}
-  />,
-  DESCRIPTION2: <FormattedMessage
-    id={ 'methodology.page.downloadPacket.info.text2'}
-    defaultMessage= {`Download the shapefiles, along with a codebook (.cpg, .dbf, .prj, .shp and .shx, {shapefileSize} unzipped).`}
-    description= {'Navigate to the methodology page. This is the shapefile info text'}
-    values= {{
       shapefileSize: <FormattedNumber
         value={DOWNLOAD_SHAPE_FILE_SIZE}
         style="unit"
@@ -141,13 +134,16 @@ export const DOWNLOAD_PACKAGE = {
   />,
   BUTTON_TEXT2: <FormattedMessage
     id={ 'methodology.page.downloadPacket.button2.text'}
-    defaultMessage= {'Download shapefiles'}
+    defaultMessage= {'Download shapefile'}
     description= {'Navigate to the methodology page. This is the download shapefiles text'}
   />,
   NEW_TAG: <FormattedMessage
     id={ 'methodology.page.downloadPacket.new.tag.text'}
-    defaultMessage= {'NEW'}
+    defaultMessage= {`<boldtag>NEW</boldtag>`}
     description= {'Navigate to the methodology page. This is the new tag text'}
+    values={{
+      boldtag: boldFn,
+    }}
   />,
 };
 

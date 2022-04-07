@@ -22,10 +22,6 @@ const DownloadPacket = () => {
             {/* Download box description 1 */}
             <div className={styles.dataSourceText}>
               {METHODOLOGY_COPY.DOWNLOAD_PACKAGE.DESCRIPTION1}
-              {' '}
-              <span>
-                {METHODOLOGY_COPY.DOWNLOAD_PACKAGE.LAST_UPDATED}
-              </span>
             </div>
 
             {/* Download box button 1 */}
@@ -41,19 +37,16 @@ const DownloadPacket = () => {
                 </Button>
               </a>
             </div>
-
-            {/* Download box description 2 */}
-            <div className={styles.shapeFileText}>
-              <Tag className={styles.newtag}>{METHODOLOGY_COPY.DOWNLOAD_PACKAGE.NEW_TAG}</Tag>
-              {METHODOLOGY_COPY.DOWNLOAD_PACKAGE.DESCRIPTION2}
-              {' '}
-              <span>
-                {METHODOLOGY_COPY.DOWNLOAD_PACKAGE.LAST_UPDATED}
-              </span>
+            <div className={styles.lastUpdated}>
+              {METHODOLOGY_COPY.DOWNLOAD_PACKAGE.LAST_UPDATED}
             </div>
+
 
             {/* Download box button 2 */}
             <div className={styles.shapefileButtonContainer}>
+              <div className={styles.newTagContainer}>
+                <Tag className={styles.newtag}>{METHODOLOGY_COPY.DOWNLOAD_PACKAGE.NEW_TAG}</Tag>
+              </div>
               <a data-cy={'shapefile-link'} download href={METHODOLOGY_COPY.DOWNLOAD_SHAPEFILE_URL}>
                 <Button className={styles.downloadBoxButton} type="button">
                   <div>
@@ -65,6 +58,10 @@ const DownloadPacket = () => {
                 </Button>
               </a>
             </div>
+            <div className={styles.lastUpdated}>
+              {METHODOLOGY_COPY.DOWNLOAD_PACKAGE.LAST_UPDATED}
+            </div>
+
 
           </div>
         </div>

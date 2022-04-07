@@ -84,7 +84,7 @@
     "description": "Navigate to the About page. This is the fourth heading"
   },
   "about.page.sub.header.3.text.1": {
-    "defaultMessage": "Please navigate to to our <link1>frequently asked questions</link1> to find the answers you are looking for.",
+    "defaultMessage": "Find answers on the Climate and Economic Justice Screening Tool's <link1>Frequently Asked Questions</link1>.",
     "description": "Navigate to the About page. This is the second heading description"
   },
   "about.page.title.text": {
@@ -1187,7 +1187,7 @@
     "description": "Navigate to the methodology page. This is the download packet button text"
   },
   "methodology.page.downloadPacket.button2.text": {
-    "defaultMessage": "Download shapefiles",
+    "defaultMessage": "Download shapefile",
     "description": "Navigate to the methodology page. This is the download shapefiles text"
   },
   "methodology.page.downloadPacket.header.text": {
@@ -1199,15 +1199,11 @@
     "description": "Navigate to the methodology page. This is the download packet info last updated"
   },
   "methodology.page.downloadPacket.info.text1": {
-    "defaultMessage": "Download the data sources used in the CEJST (.csv and .xlsx, {downloadFileSize} unzipped).",
+    "defaultMessage": "Download the data sources used in the CEJST (.csv and .xlsx, {downloadFileSize} unzipped) or the shapefile, along with a codebook (.zip, {shapefileSize} unzipped).",
     "description": "Navigate to the methodology page. This is the download packet info text"
   },
-  "methodology.page.downloadPacket.info.text2": {
-    "defaultMessage": "Download the shapefiles, along with a codebook (.cpg, .dbf, .prj, .shp and .shx, {shapefileSize} unzipped).",
-    "description": "Navigate to the methodology page. This is the shapefile info text"
-  },
   "methodology.page.downloadPacket.new.tag.text": {
-    "defaultMessage": "NEW",
+    "defaultMessage": "<boldtag>NEW</boldtag>",
     "description": "Navigate to the methodology page. This is the new tag text"
   },
   "methodology.page.formula.first": {
