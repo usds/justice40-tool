@@ -35,6 +35,20 @@ const J40Header = () => {
   const toggleMobileNav = (): void =>
     setMobileNavOpen((prevOpen) => !prevOpen);
 
+
+  /**
+   * The original work of this release called for creating a download page, a FAQ page and TSD page. These
+   * were to be embedded in dropdown menus in the navigation bar of the header. These were all completed.
+   * After discovering that the dropdown component from USWDS was not operating as expected, we decided to
+   * revert to another design.
+   *
+   * It was also decided that some more design was needed and that these pages along with their designs will
+   * be used in the near future. Rather than deleted the code or moving it to another branch, the assumption
+   * was made that since this will be added back in the near term, let's comment it out for now.
+   *
+   * If for some reason we haven't integrated this logic in the near future, this code will be deleted.
+   */
+
   /**
    * State variable to hold the open/close state of each nav dropdown. There are currently two
    * dropdowns that are being used, each corresponding to an index in the state array:
@@ -51,7 +65,6 @@ const J40Header = () => {
   //   });
   // };
 
-  // Commenting out subnav links for now
   // const methPageSubNavLinks = [
   //   <Link
   //     to={PAGES_ENDPOINTS.METHODOLOGY}
