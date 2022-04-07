@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering of the Language checks if component renders 1`] = `<DocumentFragment />`;
+exports[`rendering of the Language component on desktop checks if component renders 1`] = `<DocumentFragment />`;
+
+exports[`rendering of the Language component on mobile checks if component renders 1`] = `<DocumentFragment />`;
