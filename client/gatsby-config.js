@@ -83,11 +83,12 @@ module.exports = {
       options: {
         excludes: [
           '/',
-          '/cejst',
+          '/about',
           '/contact',
           '/methodology',
           '/404',
-          'public-engagement',
+          '/public-engagement',
+          '/downloads',
         ],
       },
     },

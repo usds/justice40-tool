@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering of the J40Header checks if component renders 1`] = `
+exports[`rendering of the DatasetContainer checks if various text fields are visible 1`] = `
 <DocumentFragment>
   <header
     class="usa-header usa-header--basic"
@@ -303,5 +303,292 @@ exports[`rendering of the J40Header checks if component renders 1`] = `
       </div>
     </div>
   </header>
+  <main
+    id="main-content"
+  >
+    <div
+      class="grid-container-desktop-lg"
+      data-testid="gridContainer"
+    >
+      <h1>
+        Downloads
+      </h1>
+      <div
+        class="desktop:grid-col-8"
+        data-testid="grid"
+      >
+        <h2>
+          File formats
+        </h2>
+        <p>
+          The dataset used in the tool, along with a data dictionary and information about how to use the list of communities (.pdf) are available in the following file formats:
+        </p>
+        <p>
+          
+        
+          <a
+            href="/about"
+          >
+            Excel file
+          </a>
+           (.xlxs 54MB unzipped)
+      
+        </p>
+        <p>
+          
+        
+          <a
+            href="/csv"
+          >
+            CSV file 
+          </a>
+           (.csv 52MB unzipped)
+      
+        </p>
+        <p>
+          
+        
+          <a
+            href="/shape"
+          >
+            Shapefiles 
+          </a>
+           (Codebook included with geojson 110MB unzipped)
+      
+        </p>
+      </div>
+    </div>
+  </main>
+  <footer
+    class="j40-footer"
+  >
+    <div
+      class="usa-footer__primary-section pb2"
+      data-cy="footer-primary-block"
+    >
+      <div
+        class="grid-container-desktop-lg"
+        data-testid="gridContainer"
+      >
+        <div
+          class="grid-row tablet-lg:grid-col4"
+        >
+          <div
+            class="mobile-lg:grid-col-12 desktop:grid-col-4"
+          >
+            <section>
+              <div
+                class="j40-h4"
+              >
+                Contact
+              </div>
+              <ul
+                class="usa-list usa-list--unstyled"
+              >
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <address
+                    class="usa-footer__address j40-footer-address"
+                  >
+                    <div
+                      class="usa-footer__contact-info grid-row grid-gap"
+                    >
+                      <div
+                        class="grid-col-auto"
+                      >
+                        Council on Environmental Quality
+                      </div>
+                      <div
+                        class="grid-col-auto"
+                      >
+                        730 Jackson Pl NW
+                      </div>
+                      <div
+                        class="grid-col-auto"
+                      >
+                        Washington, D.C. 20506
+                      </div>
+                      <div
+                        class="grid-col-auto"
+                      >
+                        (202) 395-5750
+                      </div>
+                    </div>
+                  </address>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div
+            class="mobile-lg:grid-col-12 desktop:grid-col-4"
+          >
+            <section>
+              <div
+                class="j40-h4"
+              >
+                More information
+              </div>
+              <ul
+                class="usa-list usa-list--unstyled"
+              >
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    class="footer-link-first-child"
+                    href="/en/public-engagement"
+                  >
+                    Engagement calender
+                  </a>
+                </li>
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy="request-for-infomation"
+                    href="https://www.federalregister.gov/d/2022-03920"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Request for Infomation
+                  </a>
+                </li>
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy="whitehouse-gov"
+                    href="https://www.whitehouse.gov/"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Whitehouse.gov
+                  </a>
+                </li>
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy="freedom-of-information-act-(foia)"
+                    href="https://www.whitehouse.gov/ceq/foia"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Freedom of Information Act (FOIA)
+                  </a>
+                </li>
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy="privacy-policy"
+                    href="https://www.whitehouse.gov/privacy/"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Privacy Policy
+                  </a>
+                </li>
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy="find-a-contact-at-usa-gov"
+                    href="https://www.usa.gov/"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Find a contact at USA.gov
+                  </a>
+                </li>
+              </ul>
+            </section>
+          </div>
+          <div
+            class="mobile-lg:grid-col-12 desktop:grid-col-4"
+          >
+            <section>
+              <div
+                class="j40-h4"
+              >
+                Want to contribute?
+              </div>
+              <ul
+                class="usa-list usa-list--unstyled"
+              >
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    class="usa-link usa-link--external footer-link-first-child"
+                    data-cy="check-out-the-code-on-github"
+                    href="https://github.com/usds/justice40-tool"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Check out the code on GitHub
+                  </a>
+                </li>
+              </ul>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="usa-footer__secondary-section"
+    >
+      <div
+        class="grid-container-desktop-lg"
+        data-testid="gridContainer"
+      >
+        <div
+          class="usa-footer__logo grid-row mobile-lg:grid-col-6 mobile-lg:grid-gap-2"
+          data-testid="footerLogo"
+        >
+          <div
+            class="mobile-lg:grid-col-auto"
+          >
+            <img
+              alt="Whitehouse logo"
+              class="usa-footer__logo-img"
+              src="test-file-stub"
+            />
+          </div>
+          <div
+            class="mobile-lg:grid-col-auto"
+          >
+            <div
+              class="j40-footer-ceq-font"
+            >
+              Council on Environmental Quality
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="grid-container-desktop-lg"
+      data-testid="gridContainer"
+    >
+      <button
+        class="usa-button"
+        data-testid="button"
+        type="button"
+      >
+        Help improve the site & data
+        <img
+          alt="launch icon"
+          src="test-file-stub"
+        />
+      </button>
+    </div>
+  </footer>
 </DocumentFragment>
 `;

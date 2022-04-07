@@ -1,11 +1,14 @@
 // / <reference types="Cypress" />
 
-describe('Translation Test', () => {
-  it('Sets default language to /en and redirects', () => {
-    cy.visit('http://localhost:8000');
-    cy.url().should('include', '/en/');
-    cy.get('[data-cy=about-page-heading]').contains('About');
-  });
+import {PAGES_ENDPOINTS} from './constants';
+
+describe('Navigate to each endpoint', () => {
+  Object.values(PAGES_ENDPOINTS).map((endpoint) =>
+    it(`for the ${endpoint} page, it adds /en and redirects`, () => {
+      cy.visit(endpoint);
+      cy.url().should('include', '/en/');
+    }),
+  );
 
   // Todo VS: Understand how to create es content
   // it('Sets page content to spanish when visiting Spanish URL', () => {

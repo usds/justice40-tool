@@ -1,6 +1,8 @@
 import React from 'react';
 import {defineMessages} from 'react-intl';
-import {FormattedMessage, Link} from 'gatsby-plugin-intl';
+import {FormattedMessage} from 'gatsby-plugin-intl';
+import {linkFn} from './common';
+import {PAGES_ENDPOINTS} from '../constants';
 
 export const PAGE = defineMessages({
   TITLE: {
@@ -24,11 +26,10 @@ export const ERROR_MSG =
 <FormattedMessage
   id={'pageNotFound.apology.text'}
   defaultMessage={`
-    Sorry, the page you were looking for was not found. Click {home} to go home.
+    Sorry, the page you were looking for was not found. Click <link1>home</link1> to go home.
     `}
-  description={'page description'}
+  description={'main error message'}
   values={{
-    home: <Link to={'/'}>here</Link>,
-    homeEs: <Link to={'/methodology'}>aqui</Link>,
+    link1: linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
   }}
 />;

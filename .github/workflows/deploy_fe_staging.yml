@@ -90,8 +90,8 @@ jobs:
         with:
           # Deploy to S3 for the staging URL
           message: |
-            **🚢 PR Deployed! 🚢**   
-            Find it here: http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/justice40-tool/${{env.DESTINATION_FOLDER}}/en/cejst/ !
+            **🚢  Here is the frontend staging link: 🚢**   
+            Find it here: http://usds-geoplatform-justice40-website.s3-website-us-east-1.amazonaws.com/justice40-tool/${{env.DESTINATION_FOLDER}}/en/ !
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: "github-actions[bot]" # The user.login for temporary GitHub tokens
           allow-repeats: false # This is the default

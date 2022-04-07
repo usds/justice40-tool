@@ -222,18 +222,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 class="usa-nav__primary-item"
               >
                 <a
-                  data-cy="nav-link-about"
-                  href="/en/"
-                >
-                  About
-                </a>
-              </li>
-              <li
-                class="usa-nav__primary-item"
-              >
-                <a
                   data-cy="nav-link-explore-the-tool"
-                  href="/en/cejst"
+                  href="/en/"
                 >
                   Explore the tool
                 </a>
@@ -246,6 +236,16 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   href="/en/methodology"
                 >
                   Methodology & data
+                </a>
+              </li>
+              <li
+                class="usa-nav__primary-item"
+              >
+                <a
+                  data-cy="nav-link-about"
+                  href="/en/about"
+                >
+                  About
                 </a>
               </li>
               <li
@@ -329,11 +329,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             href="/en/public-engagement"
           >
             <button
-              class="usa-button usa-button--icon"
+              class="usa-button"
               data-testid="button"
               type="button"
             >
-              Public Engagement
+              <div>
+                <img
+                  alt="an icon that represents a calendar"
+                  src="test-file-stub"
+                />
+                <div>
+                  Public engagement
+                </div>
+              </div>
             </button>
           </a>
         </div>
@@ -406,16 +414,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div>
                 <div>
                   <div>
-                    Draft communities list v0.1 (52MB unzipped)
+                    Files available for download
                   </div>
                   <div>
-                    
-      The download package includes draft v0.1 of the list of disadvantaged communities
-      (.csv and .xlsx).
-     
-                    <span>
-                      Last updated: 02/18/22 
-                    </span>
+                    Download the data sources used in the CEJST (.csv and .xlsx, 52MB unzipped) or the shapefile, along with a codebook (.zip, 742MB unzipped).
                   </div>
                   <div>
                     <a
@@ -435,10 +437,49 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                           />
                         </div>
                         <div>
-                          Download package
+                          Download data sources
                         </div>
                       </button>
                     </a>
+                  </div>
+                  <div>
+                    Last updated: 04/06/22 
+                  </div>
+                  <div>
+                    <div>
+                      <span
+                        class="usa-tag"
+                        data-testid="tag"
+                      >
+                        <strong>
+                          NEW
+                        </strong>
+                      </span>
+                    </div>
+                    <a
+                      data-cy="shapefile-link"
+                      download=""
+                      href="//"
+                    >
+                      <button
+                        class="usa-button"
+                        data-testid="button"
+                        type="button"
+                      >
+                        <div>
+                          <img
+                            alt="download icon for download package"
+                            src="test-file-stub"
+                          />
+                        </div>
+                        <div>
+                          Download shapefile
+                        </div>
+                      </button>
+                    </a>
+                  </div>
+                  <div>
+                    Last updated: 04/06/22 
                   </div>
                 </div>
               </div>
@@ -2394,7 +2435,30 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="usa-footer__secondary-link"
                 >
                   <a
-                    class="usa-link usa-link--external footer-link-first-child"
+                    class="footer-link-first-child"
+                    href="/en/public-engagement"
+                  >
+                    Engagement calender
+                  </a>
+                </li>
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy="request-for-infomation"
+                    href="https://www.federalregister.gov/d/2022-03920"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Request for Infomation
+                  </a>
+                </li>
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    class="usa-link usa-link--external"
                     data-cy="whitehouse-gov"
                     href="https://www.whitehouse.gov/"
                     rel="noreferrer"
@@ -2429,6 +2493,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     Privacy Policy
                   </a>
                 </li>
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy="find-a-contact-at-usa-gov"
+                    href="https://www.usa.gov/"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Find a contact at USA.gov
+                  </a>
+                </li>
               </ul>
             </section>
           </div>
@@ -2439,7 +2516,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div
                 class="j40-h4"
               >
-                Have a question about government services?
+                Want to contribute?
               </div>
               <ul
                 class="usa-list usa-list--unstyled"
@@ -2449,12 +2526,12 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 >
                   <a
                     class="usa-link usa-link--external footer-link-first-child"
-                    data-cy="find-a-contact-at-usa-gov"
-                    href="https://www.usa.gov/"
+                    data-cy="check-out-the-code-on-github"
+                    href="https://github.com/usds/justice40-tool"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Find a contact at USA.gov
+                    Check out the code on GitHub
                   </a>
                 </li>
               </ul>

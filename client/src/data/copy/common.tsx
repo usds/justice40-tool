@@ -17,6 +17,7 @@ export const simpleLink = (href:string) => (str:string) => <a href={href}>{str}<
 // eslint-disable-next-line max-len
 export const linkFn = (to:string, isInternal:boolean, isOpenNewTab:boolean) => (str:string) => <LinkTypeWrapper linkText={str} internal={isInternal} url={to} openUrlNewTab={isOpenNewTab}/>;
 
+export const RFI_LINK = `https://www.federalregister.gov/d/2022-03920`;
 
 export const FEEDBACK_EMAIL = 'Screeningtool-Support@omb.eop.gov';
 
@@ -89,6 +90,26 @@ export const HEADER = defineMessages({
     defaultMessage: 'Contact',
     description: 'Navigate to the about page. This is Header navigate item to the Contact page',
   },
+  DOWNLOADS: {
+    id: 'common.pages.header.downloads',
+    defaultMessage: 'Downloads',
+    description: 'Navigate to the about page. This is Header navigate item to the downloads page',
+  },
+  FAQs: {
+    id: 'common.pages.header.faqs',
+    defaultMessage: 'Frequently asked questions',
+    description: 'Navigate to the about page. This is Header navigate item to the faqs page',
+  },
+  PUBLIC_ENG: {
+    id: 'common.pages.header.public.eng',
+    defaultMessage: 'Engagement calendar',
+    description: 'Navigate to the about page. This is Header navigate item to the public eng page',
+  },
+  TSD: {
+    id: 'common.pages.header.tsd',
+    defaultMessage: 'Technical Support Document',
+    description: 'Navigate to the about page. This is Header navigate item to the technical support document page',
+  },
 });
 
 // Footer
@@ -107,6 +128,21 @@ export const FOOTER = defineMessages({
     id: 'common.pages.footer.moreinfoheader',
     defaultMessage: 'More information',
     description: 'Navigate to the about page. This is Footer column header',
+  },
+  ENG_CAL: {
+    id: 'common.pages.footer.eng.cal.text',
+    defaultMessage: 'Engagement calender',
+    description: 'Navigate to the about page. This is Footer eng.cal.gov link text',
+  },
+  RFI: {
+    id: 'common.pages.footer.rfi.text',
+    defaultMessage: 'Request for Infomation',
+    description: 'Navigate to the about page. This is Footer rfi link text',
+  },
+  RFI_LINK: {
+    id: 'common.pages.footer.rfi.link',
+    defaultMessage: RFI_LINK,
+    description: 'Navigate to the about page. This is Footer rfi link',
   },
   WHITEHOUSE: {
     id: 'common.pages.footer.whitehouse.text',
@@ -138,11 +174,6 @@ export const FOOTER = defineMessages({
     defaultMessage: 'Whitehouse logo',
     description: 'Navigate to the about page. This is Footer Whitehouse logo alt text',
   },
-  QUESTIONS: {
-    id: 'common.pages.footer.questionsheader',
-    defaultMessage: 'Have a question about government services?',
-    description: 'Navigate to the about page. This is Footer column header',
-  },
   FIND_CONTACT: {
     id: 'common.pages.footer.findcontact',
     defaultMessage: 'Find a contact at USA.gov',
@@ -151,6 +182,21 @@ export const FOOTER = defineMessages({
   FIND_CONTACT_LINK: {
     id: 'common.pages.footer.findcontact.link',
     defaultMessage: 'https://www.usa.gov/',
+    description: 'Navigate to the about page. This is Footer find contact link text',
+  },
+  CONTRIBUTE: {
+    id: 'common.pages.footer.contribute.header',
+    defaultMessage: 'Want to contribute?',
+    description: 'Navigate to the about page. This is third Footer column header',
+  },
+  GITHUB_LINK_TEXT: {
+    id: 'common.pages.footer.github.link.text',
+    defaultMessage: 'Check out the code on GitHub',
+    description: 'Navigate to the about page. This is Footer github link text',
+  },
+  GITHUB_LINK: {
+    id: 'common.pages.footer.findcontact.link',
+    defaultMessage: 'https://github.com/usds/justice40-tool',
     description: 'Navigate to the about page. This is Footer find contact link text',
   },
   CONTACT: {

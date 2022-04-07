@@ -3,6 +3,8 @@ import React from 'react';
 import {defineMessages} from 'react-intl';
 import {FormattedMessage} from 'gatsby-plugin-intl';
 import * as COMMON_COPY from './common';
+import {PAGES_ENDPOINTS} from '../constants';
+
 
 export const PAGE_INTRO = defineMessages({
   PAGE_TILE: {
@@ -45,7 +47,7 @@ export const RFI_BOX_BODY = <FormattedMessage
   defaultMessage={`During the beta period, comments may be submitted on the Climate and Economic Justice Screening Tool via CEQ’s Request for Information available on <link1>federalregister.gov</link1>.`}
   description={'Navigate to the contact page, this is the body of the request for information box'}
   values={{
-    link1: COMMON_COPY.linkFn(`https://www.federalregister.gov/d/2022-03920`, false, true),
+    link1: COMMON_COPY.linkFn(COMMON_COPY.RFI_LINK, false, true),
   }}
 />;
 
@@ -63,7 +65,7 @@ export const CENSUS_TRACT_FEEDBACK = {
     `}
     description={'Navigate to the contact page, this is the census tract feedback section'}
     values={{
-      link1: COMMON_COPY.linkFn('/cejst', true, false),
+      link1: COMMON_COPY.linkFn(PAGES_ENDPOINTS.EXPLORE, true, false),
     }}
   />,
   PARAGRAPH2: <FormattedMessage

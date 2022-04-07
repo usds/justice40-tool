@@ -1,17 +1,16 @@
 import * as React from 'react';
 import {render} from '@testing-library/react';
 import {LocalizedComponent} from '../../test/testHelpers';
-import DownloadPacket from './DownloadPacket';
+import AboutPage from '../about';
 
-describe('download packet component defined', () => {
+describe('rendering of the DatasetContainer', () => {
   const {asFragment} = render(
       <LocalizedComponent>
-        <DownloadPacket />
+        <AboutPage location={window.location}/>
       </LocalizedComponent>,
   );
 
-  it('checks if component renders', () => {
+  it('checks if various text fields are visible', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 });
-

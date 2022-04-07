@@ -1,5 +1,7 @@
 // / <reference types="Cypress" />
 
+import {PAGES_ENDPOINTS} from './constants';
+
 describe('Will it zoom into territories correctly?',
     {
       retries: {
@@ -16,7 +18,7 @@ describe('Will it zoom into territories correctly?',
     () => {
       beforeEach(() => {
         cy.viewport('macbook-13');
-        cy.visit('http://localhost:8000/en/cejst');
+        cy.visit(PAGES_ENDPOINTS.EXPLORE);
       });
 
       // The below values all assume a 13-inch MB as set in viewport above.

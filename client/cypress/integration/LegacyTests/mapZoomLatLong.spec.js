@@ -1,8 +1,9 @@
 // / <reference types="Cypress" />
+import {PAGES_ENDPOINTS} from '../LegacyTests/constants';
 
 describe('Does the map zoom and adjust to lat/long correctly?', () => {
   it('should start at zoom level 3', () => {
-    cy.visit('http://localhost:8000/en/cejst');
+    cy.visit(PAGES_ENDPOINTS.EXPLORE);
     cy.url().should('include', '#3');
   });
   it('should change to level 4 when you hit the zoom button', () => {
@@ -10,7 +11,7 @@ describe('Does the map zoom and adjust to lat/long correctly?', () => {
     cy.url().should('include', '#4');
   });
 
-  // Intermittent failure still exist
+  // Intermittent failure still exist ticket #886
   // it('should show the correct lat/lng coordinates in the URL',
   //     {
   //       retries: {
@@ -47,6 +48,7 @@ describe('Does the map zoom and adjust to lat/long correctly?', () => {
   //     },
   //     () => {
   //       const [expectedZoom, expectedLat, expectedLng] = [12.05, 41.40965, -75.65978];
+  //       //This could be where the issue is:
   //       const expectedURL = `http://localhost:8000/en/cejst/#${expectedZoom}/${expectedLat}/${expectedLng}`;
   //       cy.visit(expectedURL);
   //       cy.getMap().then((map) => {

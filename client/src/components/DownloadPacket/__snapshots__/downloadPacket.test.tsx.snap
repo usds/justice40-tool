@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`download packet component defined checks if component renders 1`] = `
+<DocumentFragment>
+  <div
+    class=""
+    data-testid="grid"
+  >
+    <div>
+      <div>
+        <div>
+          <div>
+            Files available for download
+          </div>
+          <div>
+            Download the data sources used in the CEJST (.csv and .xlsx, 52MB unzipped) or the shapefile, along with a codebook (.zip, 742MB unzipped).
+          </div>
+          <div>
+            <a
+              data-cy="download-link"
+              download=""
+              href="//"
+            >
+              <button
+                class="usa-button"
+                data-testid="button"
+                type="button"
+              >
+                <div>
+                  <img
+                    alt="download icon for download package"
+                    src="test-file-stub"
+                  />
+                </div>
+                <div>
+                  Download data sources
+                </div>
+              </button>
+            </a>
+          </div>
+          <div>
+            Last updated: 04/06/22 
+          </div>
+          <div>
+            <div>
+              <span
+                class="usa-tag"
+                data-testid="tag"
+              >
+                <strong>
+                  NEW
+                </strong>
+              </span>
+            </div>
+            <a
+              data-cy="shapefile-link"
+              download=""
+              href="//"
+            >
+              <button
+                class="usa-button"
+                data-testid="button"
+                type="button"
+              >
+                <div>
+                  <img
+                    alt="download icon for download package"
+                    src="test-file-stub"
+                  />
+                </div>
+                <div>
+                  Download shapefile
+                </div>
+              </button>
+            </a>
+          </div>
+          <div>
+            Last updated: 04/06/22 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -4,6 +4,10 @@ declare namespace PublicEngagementButton {
         tagContainer: string;
         container: string;
         link: string;
+        engagementButton: string;
+        buttonContainer: string;
+        buttonImage: string;
+
     }
   }
 
