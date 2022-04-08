@@ -148,6 +148,7 @@ class TestETL:
         etl = self._get_instance_of_etl_class()
         data_path, tmp_path = mock_paths
 
+        etl.__init__()
         actual_file_path = etl._get_output_file_path()
 
         expected_file_path = (

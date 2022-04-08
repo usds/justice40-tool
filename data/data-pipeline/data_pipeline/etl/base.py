@@ -43,6 +43,7 @@ class ExtractTransformLoad:
     DATA_PATH: pathlib.Path = APP_ROOT / "data"
     TMP_PATH: pathlib.Path = DATA_PATH / "tmp"
     CONTENT_CONFIG: pathlib.Path = APP_ROOT / "content" / "config"
+    DATASET_CONFIG: pathlib.Path = APP_ROOT / "etl" / "score" / "config"
 
     # Parameters
     GEOID_FIELD_NAME: str = "GEOID10"
@@ -82,10 +83,11 @@ class ExtractTransformLoad:
 
     output_df: pd.DataFrame = None
 
-    def yaml_config_load(self):
+    @classmethod
+    def yaml_config_load(cls):
         # check if the class instance has score YAML definitions
         datasets_config = load_yaml_dict_from_file(
-            self.APP_ROOT / "etl" / "score" / "config" / "datasets.yml",
+            cls.DATASET_CONFIG / "datasets.yml",
             DatasetsConfig,
         )
 
@@ -94,21 +96,19 @@ class ExtractTransformLoad:
             dataset_config = next(
                 item
                 for item in datasets_config.get("datasets")
-                if item["module_name"] == "self.NAME"
+                if item["module_name"] == cls.NAME
             )
         except StopIteration:
             # Note: it'd be nice to log the name of the dataframe, but that's not accessible in this scope.
             logger.error(
-                f"Exception encountered while extracting dataset config for dataset {self.NAME}"
+                f"Exception encountered while extracting dataset config for dataset {cls.NAME}"
             )
             sys.exit()
 
         # set the fields
-        self.LAST_UPDATED_YEAR = dataset_config["last_updated_year"]
-        self.SOURCE_URL = dataset_config["source_url"]
-        self.INPUT_CSV = (
-            self.get_tmp_path() / dataset_config["extracted_file_name"]
-        )
+        cls.LAST_UPDATED_YEAR = dataset_config["last_updated_year"]
+        cls.SOURCE_URL = dataset_config["source_url"]
+        cls.INPUT_EXTRACTED_FILE_NAME = dataset_config["extracted_file_name"]
 
     # This is a classmethod so it can be used by `get_data_frame` without
     # needing to create an instance of the class. This is a use case in `etl_score`.
