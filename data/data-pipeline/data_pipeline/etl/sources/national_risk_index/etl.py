@@ -67,6 +67,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
             self.CONTAINS_AGRIVALUE,
         ]
 
+        self.INPUT_CSV = self.get_tmp_path() / self.INPUT_EXTRACTED_FILE_NAME
         self.df: pd.DataFrame
 
     def extract(self) -> None:

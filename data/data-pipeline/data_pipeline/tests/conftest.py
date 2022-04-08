@@ -52,3 +52,8 @@ def mock_etl(monkeypatch, mock_paths) -> None:
     data_path, tmp_path = mock_paths
     monkeypatch.setattr(ExtractTransformLoad, "DATA_PATH", data_path)
     monkeypatch.setattr(ExtractTransformLoad, "TMP_PATH", tmp_path)
+    monkeypatch.setattr(
+        ExtractTransformLoad,
+        "CONTENT_CONFIG",
+        Path.cwd() / "data_pipeline" / "score" / "config",
+    )
