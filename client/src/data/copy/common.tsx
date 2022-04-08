@@ -195,7 +195,7 @@ export const FOOTER = defineMessages({
     description: 'Navigate to the about page. This is Footer github link text',
   },
   GITHUB_LINK: {
-    id: 'common.pages.footer.findcontact.link',
+    id: 'common.pages.footer.gatsby.link',
     defaultMessage: 'https://github.com/usds/justice40-tool',
     description: 'Navigate to the about page. This is Footer find contact link text',
   },

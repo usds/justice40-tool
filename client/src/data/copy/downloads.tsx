@@ -21,9 +21,9 @@ export const PAGE_INTRO = defineMessages({
     description: 'Navigate to the the Downloads page, this will be the page heading2 text',
   },
   PAGE_DESCRIPTION1: {
-    id: 'downloads.page.heading1.text',
+    id: 'downloads.page.description1.text',
     defaultMessage: 'The dataset used in the tool, along with a data dictionary and information about how to use the list of communities (.pdf) are available in the following file formats:',
-    description: 'Navigate to the the Downloads page, this will be the page heading1 text',
+    description: 'Navigate to the the Downloads page, this will be the page description1 text',
   },
 });
 
