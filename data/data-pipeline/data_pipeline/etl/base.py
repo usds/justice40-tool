@@ -59,6 +59,9 @@ class ExtractTransformLoad:
     # SOURCE_URL is used to extract source data in extract().
     SOURCE_URL: str = None
 
+    # INPUT_EXTRACTED_FILE_NAME is the name of the file after extract().
+    INPUT_EXTRACTED_FILE_NAME: str = None
+
     # GEO_LEVEL is used to identify whether output data is at the unit of the tract or
     # census block group.
     # TODO: add tests that enforce seeing the expected geographic identifier field
