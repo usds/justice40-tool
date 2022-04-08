@@ -2,7 +2,9 @@
 name: Data Checks
 on:
   pull_request:
-    branches: [main] # runs on any PR against main
+    branches:
+      - main
+      - "**/release/**"
     paths:
       - "data/**"
 jobs:
