@@ -137,10 +137,10 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
               <div>
                 <div>
                   60
-                  <sup>
-                    <span>
-                      th
-                    </span>
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
                   </sup>
                 </div>
                 <div>
@@ -176,10 +176,10 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
               <div>
                 <div>
                   90
-                  <sup>
-                    <span>
-                      th
-                    </span>
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
                   </sup>
                 </div>
                 <div>
@@ -218,10 +218,10 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
               <div>
                 <div>
                   50
-                  <sup>
-                    <span>
-                      th
-                    </span>
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
                   </sup>
                 </div>
                 <div>
@@ -592,10 +592,10 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               <div>
                 <div>
                   19
-                  <sup>
-                    <span>
-                      th
-                    </span>
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
                   </sup>
                 </div>
                 <div>
@@ -769,10 +769,10 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               <div>
                 <div>
                   19
-                  <sup>
-                    <span>
-                      th
-                    </span>
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
                   </sup>
                 </div>
                 <div>
@@ -946,10 +946,10 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               <div>
                 <div>
                   19
-                  <sup>
-                    <span>
-                      th
-                    </span>
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
                   </sup>
                 </div>
                 <div>
@@ -1052,10 +1052,10 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               <div>
                 <div>
                   95
-                  <sup>
-                    <span>
-                      th
-                    </span>
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
                   </sup>
                 </div>
                 <div>
@@ -1135,10 +1135,10 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               <div>
                 <div>
                   19
-                  <sup>
-                    <span>
-                      th
-                    </span>
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
                   </sup>
                 </div>
                 <div>
@@ -1341,10 +1341,10 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               <div>
                 <div>
                   19
-                  <sup>
-                    <span>
-                      th
-                    </span>
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
                   </sup>
                 </div>
                 <div>
@@ -1489,10 +1489,10 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               <div>
                 <div>
                   19
-                  <sup>
-                    <span>
-                      th
-                    </span>
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
                   </sup>
                 </div>
                 <div>
@@ -1727,10 +1727,10 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               <div>
                 <div>
                   19
-                  <sup>
-                    <span>
-                      th
-                    </span>
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
                   </sup>
                 </div>
                 <div>
@@ -1835,10 +1835,10 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               <div>
                 <div>
                   97
-                  <sup>
-                    <span>
-                      th
-                    </span>
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
                   </sup>
                 </div>
                 <div>
@@ -1903,10 +1903,10 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               <div>
                 <div>
                   96
-                  <sup>
-                    <span>
-                      th
-                    </span>
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
                   </sup>
                 </div>
                 <div>
@@ -1945,10 +1945,10 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               <div>
                 <div>
                   12
-                  <sup>
-                    <span>
-                      th
-                    </span>
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
                   </sup>
                 </div>
                 <div>
@@ -1996,9 +1996,8 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               <div>
                 <div>
-                  98
                   <span>
-                    %
+                    98%
                   </span>
                 </div>
                 <div>
@@ -2196,10 +2195,10 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               <div>
                 <div>
                   97
-                  <sup>
-                    <span>
-                      th
-                    </span>
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
                   </sup>
                 </div>
                 <div>
@@ -2264,10 +2263,10 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               <div>
                 <div>
                   96
-                  <sup>
-                    <span>
-                      th
-                    </span>
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
                   </sup>
                 </div>
                 <div>
@@ -2306,10 +2305,10 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               <div>
                 <div>
                   12
-                  <sup>
-                    <span>
-                      th
-                    </span>
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
                   </sup>
                 </div>
                 <div>
@@ -2357,9 +2356,8 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
             <div>
               <div>
                 <div>
-                  98
                   <span>
-                    %
+                    98%
                   </span>
                 </div>
                 <div>

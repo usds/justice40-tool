@@ -132,12 +132,16 @@
     "description": "Navigate to the about page. This is Footer find contact link text"
   },
   "common.pages.footer.findcontact.link": {
-    "defaultMessage": "https://github.com/usds/justice40-tool",
+    "defaultMessage": "https://www.usa.gov/",
     "description": "Navigate to the about page. This is Footer find contact link text"
   },
   "common.pages.footer.foia.text": {
     "defaultMessage": "Freedom of Information Act (FOIA)",
     "description": "Navigate to the about page. This is Footer FOIA link text"
+  },
+  "common.pages.footer.gatsby.link": {
+    "defaultMessage": "https://github.com/usds/justice40-tool",
+    "description": "Navigate to the about page. This is Footer find contact link text"
   },
   "common.pages.footer.github.link.text": {
     "defaultMessage": "Check out the code on GitHub",
@@ -262,12 +266,16 @@
     "defaultMessage": "<link1>CSV file </link1> (.csv {csvFileSize} unzipped)",
     "description": "On the downloads page, the description of the csv link"
   },
+  "downloads.page.description1.text": {
+    "defaultMessage": "The dataset used in the tool, along with a data dictionary and information about how to use the list of communities (.pdf) are available in the following file formats:",
+    "description": "Navigate to the the Downloads page, this will be the page description1 text"
+  },
   "downloads.page.excel.link": {
     "defaultMessage": "<link1>Excel file</link1> (.xlxs {excelFileSize} unzipped)",
     "description": "On the downloads page, the description of the excel link"
   },
   "downloads.page.heading1.text": {
-    "defaultMessage": "The dataset used in the tool, along with a data dictionary and information about how to use the list of communities (.pdf) are available in the following file formats:",
+    "defaultMessage": "Downloads",
     "description": "Navigate to the the Downloads page, this will be the page heading1 text"
   },
   "downloads.page.heading2.text": {
@@ -589,6 +597,10 @@
   "explore.tool.page.side.panel.indicator.med.home.val": {
     "defaultMessage": "Median home value",
     "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Housing cost burden"
+  },
+  "explore.tool.page.side.panel.indicator.percentile.value.ordinal.suffix": {
+    "defaultMessage": "{indicatorValue, selectordinal, one {#st} two {#nd} =3 {#rd} other {#th} }",
+    "description": "Navigate to the explore the tool page. Click on the map. The side panel will show categories. Open a category. This will define the indicator value's oridinal suffix. For example the st in 91st, the rd in 23rd, and the th in 26th, etc."
   },
   "explore.tool.page.side.panel.indicator.pm25": {
     "defaultMessage": "PM2.5 in the air",
@@ -1435,6 +1447,10 @@
     "description": "Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box title text."
   },
   "public.eng.page.whejac.meeting.day.1.info": {
+    "defaultMessage": "March 30th (3:00 - 7:00 PM EST)",
+    "description": "public engagement page event WHEJAC"
+  },
+  "public.eng.page.whejac.meeting.day.2.info": {
     "defaultMessage": "March 31th (3:00 - 7:30 PM EST)",
     "description": "public engagement page event WHEJAC"
   },
