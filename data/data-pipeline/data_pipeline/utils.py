@@ -6,7 +6,6 @@ import os
 import sys
 import shutil
 import uuid
-from xml.dom import ValidationErr
 import zipfile
 from pathlib import Path
 from marshmallow import ValidationError
