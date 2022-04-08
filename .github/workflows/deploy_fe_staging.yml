@@ -106,7 +106,8 @@ jobs:
         with:
           message: |
             ** 👋  Attention translators!! 👋  **   
-            Copy changes have resulted in a new en.json file. Please translate all other language files.
+            Copy changes have resulted in a new en.json file. Please download en.json (link below) file and send to translators:
+            https://github.com/usds/justice40-tool/blob/$GITHUB_SHA/client/src/intl/en.json
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: "github-actions[bot]" # The user.login for temporary GitHub tokens
           allow-repeats: false # This is the default
