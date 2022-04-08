@@ -302,19 +302,19 @@ export const COMMUNITY = {
 
 export const numberOfCategoriesExceeded = (categoryCount:number) => <FormattedMessage
   id={'explore.tool.page.side.panel.num.categories.exceeded'}
-  defaultMessage={`Disadvantaged in {numberOfDisCategories} categories`}
+  defaultMessage={`Disadvantaged in {numberOfDisCategories, plural, one {# category} other {# categories}}`}
   description={`Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show how many categories are exceeded`}
   values={{
-    numberOfDisCategories: <FormattedNumber value={categoryCount} />,
+    numberOfDisCategories: categoryCount,
   }}
 />;
 
 export const numberOfThresholdsExceeded = (thresholds:number) => <FormattedMessage
   id={'explore.tool.page.side.panel.num.thresholds.exceeded'}
-  defaultMessage={`At or above {numberOfThresholdExceed} thresholds`}
+  defaultMessage={`At or above {numberOfThresholdExceed, plural, one {# threshold} other {# thresholds}}`}
   description={`Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show how many thresholds are exceeded`}
   values={{
-    numberOfThresholdExceed: <FormattedNumber value={thresholds} />,
+    numberOfThresholdExceed: thresholds,
   }}
 />;
 

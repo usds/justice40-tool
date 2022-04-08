@@ -747,11 +747,11 @@
     "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show the communities the score currently is not focused on"
   },
   "explore.tool.page.side.panel.num.categories.exceeded": {
-    "defaultMessage": "Disadvantaged in {numberOfDisCategories} categories",
+    "defaultMessage": "Disadvantaged in {numberOfDisCategories, plural, one {# category} other {# categories}}",
     "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show how many categories are exceeded"
   },
   "explore.tool.page.side.panel.num.thresholds.exceeded": {
-    "defaultMessage": "At or above {numberOfThresholdExceed} thresholds",
+    "defaultMessage": "At or above {numberOfThresholdExceed, plural, one {# threshold} other {# thresholds}}",
     "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show how many thresholds are exceeded"
   },
   "explore.tool.page.side.panel.send.feedback.alt.img": {
