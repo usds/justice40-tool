@@ -137,7 +137,7 @@ describe('test that the unit suffix renders correctly', ()=> {
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValue
-            indicator={lowLife}
+            isPercent={lowLife.isPercent}
             displayStat={90}
           />
         </LocalizedComponent>,
@@ -157,7 +157,7 @@ describe('test that the unit suffix renders correctly', ()=> {
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValue
-            indicator={lowLife}
+            isPercent={lowLife.isPercent}
             displayStat={90}
           />
         </LocalizedComponent>,
@@ -176,7 +176,7 @@ describe('test that the unit suffix renders correctly', ()=> {
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValue
-            indicator={lowLife}
+            isPercent={lowLife.isPercent}
             displayStat={null}
           />
         </LocalizedComponent>,

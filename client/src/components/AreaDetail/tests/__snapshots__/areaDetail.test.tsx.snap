@@ -152,10 +152,13 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
               </div>
               <div>
                 <div>
-                  below 90th
-                </div>
-                <div>
-                  percentile
+                  below 90
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                   percentile
                 </div>
               </div>
             </div>
@@ -191,10 +194,13 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
               </div>
               <div>
                 <div>
-                  above 90th
-                </div>
-                <div>
-                  percentile
+                  above 90
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                   percentile
                 </div>
               </div>
             </div>
@@ -233,10 +239,13 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
               </div>
               <div>
                 <div>
-                  below 90th
-                </div>
-                <div>
-                  percentile
+                  below 90
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                   percentile
                 </div>
               </div>
             </div>
@@ -607,10 +616,13 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
               <div>
                 <div>
-                  below 65th
-                </div>
-                <div>
-                  percentile
+                  below 65
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                   percentile
                 </div>
               </div>
             </div>
@@ -784,10 +796,13 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
               <div>
                 <div>
-                  below 65th
-                </div>
-                <div>
-                  percentile
+                  below 65
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                   percentile
                 </div>
               </div>
             </div>
@@ -961,10 +976,13 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
               <div>
                 <div>
-                  below 65th
-                </div>
-                <div>
-                  percentile
+                  below 65
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                   percentile
                 </div>
               </div>
             </div>
@@ -1067,10 +1085,13 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
               <div>
                 <div>
-                  above 90th
-                </div>
-                <div>
-                  percentile
+                  above 90
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                   percentile
                 </div>
               </div>
             </div>
@@ -1150,10 +1171,13 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
               <div>
                 <div>
-                  below 65th
-                </div>
-                <div>
-                  percentile
+                  below 65
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                   percentile
                 </div>
               </div>
             </div>
@@ -1356,10 +1380,13 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
               <div>
                 <div>
-                  below 65th
-                </div>
-                <div>
-                  percentile
+                  below 65
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                   percentile
                 </div>
               </div>
             </div>
@@ -1504,10 +1531,13 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
               <div>
                 <div>
-                  below 65th
-                </div>
-                <div>
-                  percentile
+                  below 65
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                   percentile
                 </div>
               </div>
             </div>
@@ -1742,10 +1772,13 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
               <div>
                 <div>
-                  below 65th
-                </div>
-                <div>
-                  percentile
+                  below 65
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                   percentile
                 </div>
               </div>
             </div>
@@ -1850,10 +1883,13 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
               <div>
                 <div>
-                  above 90th
-                </div>
-                <div>
-                  percentile
+                  above 90
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                   percentile
                 </div>
               </div>
             </div>
@@ -1918,10 +1954,13 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
               <div>
                 <div>
-                  above 90th
-                </div>
-                <div>
-                  percentile
+                  above 90
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                   percentile
                 </div>
               </div>
             </div>
@@ -1960,10 +1999,13 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
               <div>
                 <div>
-                  below 90th
-                </div>
-                <div>
-                  percentile
+                  below 90
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                   percentile
                 </div>
               </div>
             </div>
@@ -2009,10 +2051,11 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
               <div>
                 <div>
-                  above 10
-                </div>
-                <div>
-                  percent
+                  above 
+                  <span>
+                    10%
+                  </span>
+                   percent
                 </div>
               </div>
             </div>
@@ -2210,10 +2253,13 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               </div>
               <div>
                 <div>
-                  above 90th
-                </div>
-                <div>
-                  percentile
+                  above 90
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                   percentile
                 </div>
               </div>
             </div>
@@ -2278,10 +2324,13 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               </div>
               <div>
                 <div>
-                  above 90th
-                </div>
-                <div>
-                  percentile
+                  above 90
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                   percentile
                 </div>
               </div>
             </div>
@@ -2320,10 +2369,13 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               </div>
               <div>
                 <div>
-                  below 90th
-                </div>
-                <div>
-                  percentile
+                  below 90
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                   percentile
                 </div>
               </div>
             </div>
@@ -2369,10 +2421,11 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               </div>
               <div>
                 <div>
-                  above 10
-                </div>
-                <div>
-                  percent
+                  above 
+                  <span>
+                    10%
+                  </span>
+                   percent
                 </div>
               </div>
             </div>

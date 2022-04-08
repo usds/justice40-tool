@@ -30,8 +30,8 @@ interface IIndicatorValueSubText {
   isPercent: boolean | undefined,
 }
 
-interface IDisplayStatUnit {
-  indicator: indicatorInfo,
+interface IIndicatorValue {
+  isPercent: boolean | undefined,
   displayStat: number | null,
 }
 
@@ -78,25 +78,25 @@ export const IndicatorValueSubText = ({value, isAboveThresh, threshold, isPercen
     <div>
       {EXPLORE_COPY.SIDE_PANEL_VALUES.UNAVAILBLE_MSG}
     </div> :
-    <React.Fragment>
-      <div>
-        {
-          isAboveThresh ?
-          EXPLORE_COPY.SIDE_PANEL_VALUES.ABOVE :
-          EXPLORE_COPY.SIDE_PANEL_VALUES.BELOW
-        }
-        {`${threshold ? threshold : 90}`}
+    <div>
+      {
+        isAboveThresh ?
+        EXPLORE_COPY.SIDE_PANEL_VALUES.ABOVE :
+        EXPLORE_COPY.SIDE_PANEL_VALUES.BELOW
+      }
+      {threshold ?
+        <IndicatorValue isPercent={isPercent} displayStat={threshold} /> :
+        <IndicatorValue isPercent={isPercent} displayStat={90} />
+      }
 
-        {!isPercent && `th`}
-      </div>
-      <div>
-        {
-          isPercent ?
-          EXPLORE_COPY.SIDE_PANEL_VALUES.PERCENT :
-          EXPLORE_COPY.SIDE_PANEL_VALUES.PERCENTILE
-        }
-      </div>
-    </React.Fragment>;
+      {/* {!isPercent && `th`} */}
+      {` `}
+      {
+        isPercent ?
+        EXPLORE_COPY.SIDE_PANEL_VALUES.PERCENT :
+        EXPLORE_COPY.SIDE_PANEL_VALUES.PERCENTILE
+      }
+    </div>;
 };
 
 /**
@@ -119,12 +119,12 @@ export const superscriptOrdinal = (indicatorValueWithSuffix:string) => {
 };
 
 /**
- * This function will return the indicators's value with an ordinal suffix
+ * This component will return the indicators's value with an ordinal suffix
  * or a percentage sign using i18n functions
  *
  * @return {JSX.Element | null}
  */
-export const IndicatorValue = ({indicator, displayStat}:IDisplayStatUnit) => {
+export const IndicatorValue = ({isPercent, displayStat}:IIndicatorValue) => {
   const intl = useIntl();
 
   if (displayStat === null) return <React.Fragment></React.Fragment>;
@@ -148,7 +148,7 @@ export const IndicatorValue = ({indicator, displayStat}:IDisplayStatUnit) => {
       },
   );
 
-  return indicator.isPercent ?
+  return isPercent ?
     <span>
       {intl.formatNumber(
           displayStat,
@@ -199,7 +199,7 @@ const Indicator = ({indicator}:IIndicator) => {
 
             {/* Indicator value */}
             <div className={styles.indicatorValue}>
-              <IndicatorValue indicator={indicator} displayStat={displayStat}/>
+              <IndicatorValue isPercent={indicator.isPercent} displayStat={displayStat}/>
             </div>
 
             {/* Indicator icon - up arrow, down arrow, or unavailable */}
