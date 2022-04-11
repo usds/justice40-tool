@@ -284,7 +284,7 @@ export const EVENTS = [
     EXPIRED_IMG: mar31Exp,
     FIELDS: defineMessages({
       INFO: {
-        id: 'public.eng.page.whejac.meeting.day.1.info',
+        id: 'public.eng.page.whejac.meeting.day.2.info',
         defaultMessage: `March 31th (3:00 - 7:30 PM EST)`,
         description: 'public engagement page event WHEJAC',
       },

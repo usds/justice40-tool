@@ -47,10 +47,6 @@
 
         .indicatorValue {
           margin-left: 2.2rem;
-          
-          .indicatorSuperscript {
-            top: -0.2em
-          }
         } 
 
         .indicatorArrow {
@@ -73,6 +69,7 @@
         flex-direction: column;
         align-self: flex-end;
         text-align: right;
+        @include u-width(8);
         @include typeset('sans', '3xs', 2);
         @include u-text('thin'); 
       }

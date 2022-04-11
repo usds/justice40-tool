@@ -34,7 +34,7 @@ interface IAreaDetailProps {
 export interface indicatorInfo {
   label: string,
   description: string,
-  value: number,
+  value: number | null,
   isDisadvagtaged: boolean,
   isPercent?: boolean,
   threshold?: number,

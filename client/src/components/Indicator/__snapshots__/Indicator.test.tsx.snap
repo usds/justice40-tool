@@ -16,9 +16,8 @@ exports[`rendering of the Indicator checks if component renders 1`] = `
       <div>
         <div>
           <div>
-            9700
             <span>
-              %
+              97%
             </span>
           </div>
           <div>
@@ -30,10 +29,11 @@ exports[`rendering of the Indicator checks if component renders 1`] = `
         </div>
         <div>
           <div>
-            above 20
-          </div>
-          <div>
-            percent
+            above 
+            <span>
+              20%
+            </span>
+             percent
           </div>
         </div>
       </div>
@@ -81,10 +81,13 @@ exports[`test rendering of Indicator value icons renders the up arrow when value
 exports[`test rendering of Indicator value sub-text renders the "above 90 percentile" 1`] = `
 <DocumentFragment>
   <div>
-    above 90th
-  </div>
-  <div>
-    percentile
+    above 90
+    <sup
+      style="top: -0.2em;"
+    >
+      th
+    </sup>
+     percentile
   </div>
 </DocumentFragment>
 `;
@@ -92,10 +95,13 @@ exports[`test rendering of Indicator value sub-text renders the "above 90 percen
 exports[`test rendering of Indicator value sub-text renders the "below 90 percentile" 1`] = `
 <DocumentFragment>
   <div>
-    below 90th
-  </div>
-  <div>
-    percentile
+    below 90
+    <sup
+      style="top: -0.2em;"
+    >
+      th
+    </sup>
+     percentile
   </div>
 </DocumentFragment>
 `;
@@ -113,17 +119,18 @@ exports[`test that the unit suffix renders correctly renders correctly when the 
 exports[`test that the unit suffix renders correctly renders correctly when the value is a percent 1`] = `
 <DocumentFragment>
   <span>
-    %
+    90%
   </span>
 </DocumentFragment>
 `;
 
 exports[`test that the unit suffix renders correctly renders correctly when the value is a percentile 1`] = `
 <DocumentFragment>
-  <sup>
-    <span>
-      th
-    </span>
+  90
+  <sup
+    style="top: -0.2em;"
+  >
+    th
   </sup>
 </DocumentFragment>
 `;

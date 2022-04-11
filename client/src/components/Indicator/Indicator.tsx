@@ -30,8 +30,8 @@ interface IIndicatorValueSubText {
   isPercent: boolean | undefined,
 }
 
-interface IDisplayStatUnit {
-  indicator: indicatorInfo,
+interface IIndicatorValue {
+  isPercent: boolean | undefined,
   displayStat: number | null,
 }
 
@@ -78,63 +78,87 @@ export const IndicatorValueSubText = ({value, isAboveThresh, threshold, isPercen
     <div>
       {EXPLORE_COPY.SIDE_PANEL_VALUES.UNAVAILBLE_MSG}
     </div> :
-    <React.Fragment>
-      <div>
-        {
-          isAboveThresh ?
-          EXPLORE_COPY.SIDE_PANEL_VALUES.ABOVE :
-          EXPLORE_COPY.SIDE_PANEL_VALUES.BELOW
-        }
-        {`${threshold ? threshold : 90}`}
+    <div>
+      {
+        isAboveThresh ?
+        EXPLORE_COPY.SIDE_PANEL_VALUES.ABOVE :
+        EXPLORE_COPY.SIDE_PANEL_VALUES.BELOW
+      }
+      {threshold ?
+        <IndicatorValue isPercent={isPercent} displayStat={threshold} /> :
+        <IndicatorValue isPercent={isPercent} displayStat={90} />
+      }
 
-        {!isPercent && `th`}
-      </div>
-      <div>
-        {
-          isPercent ?
-          EXPLORE_COPY.SIDE_PANEL_VALUES.PERCENT :
-          EXPLORE_COPY.SIDE_PANEL_VALUES.PERCENTILE
-        }
-      </div>
-    </React.Fragment>;
+      {/* {!isPercent && `th`} */}
+      {` `}
+      {
+        isPercent ?
+        EXPLORE_COPY.SIDE_PANEL_VALUES.PERCENT :
+        EXPLORE_COPY.SIDE_PANEL_VALUES.PERCENTILE
+      }
+    </div>;
 };
 
 /**
- * This component will return the value suffix as either a percent or
- * ordinal value of the displayed statistic
+ * The react-i18n library allow to add ordinal suffix (st, nd, rd, th) to indicator values.
+ * The number and the suffix is a single entity. We are looking to add styling to
+ * just the suffix portion if the value is a percentile. This function will add
+ * a superscript styling to just the suffix portion of percentile values.
  *
- * @return {JSX.Element}
+ * @param {string} indicatorValueWithSuffix
+ * @return {string}
  */
-export const DisplayStatUnit = ({indicator, displayStat}:IDisplayStatUnit) => {
-  if (indicator.value !== null) {
-    return indicator.isPercent ?
-        <span>{`%`}</span> :
-        <sup className={styles.indicatorSuperscript}>
-          <span>{getSuperscriptOrdinal(displayStat)}</span>
-        </sup>;
-  } else {
-    return <React.Fragment></React.Fragment>;
-  }
+export const superscriptOrdinal = (indicatorValueWithSuffix:string) => {
+  const valueRegEx = /[0-9]{1,2}/;
+  const suffixRegEx = /[a-z]{2}/; // ie, (st, nd, rd, th)
+
+  const indicatorValue = valueRegEx.exec(indicatorValueWithSuffix);
+  const ordinalSuffix = suffixRegEx.exec(indicatorValueWithSuffix);
+
+  return <>{indicatorValue}<sup style={{top: '-0.2em'}}>{ordinalSuffix}</sup></>;
 };
 
+/**
+ * This component will return the indicators's value with an ordinal suffix
+ * or a percentage sign using i18n functions
+ *
+ * @return {JSX.Element | null}
+ */
+export const IndicatorValue = ({isPercent, displayStat}:IIndicatorValue) => {
+  const intl = useIntl();
 
-// Todo: Add internationalization to superscript ticket #582
-export const getSuperscriptOrdinal = (percentile: number | string | null) => {
-  if (percentile === null) return '';
-  if (typeof percentile === 'number') {
-    const englishOrdinalRules = new Intl.PluralRules('en', {
-      type: 'ordinal',
-    });
-    const suffixes = {
-      zero: 'th',
-      one: 'st',
-      two: 'nd',
-      few: 'rd',
-      many: 'th',
-      other: 'th',
-    };
-    return suffixes[englishOrdinalRules.select(percentile)];
-  }
+  if (displayStat === null) return <React.Fragment></React.Fragment>;
+
+  const i18nOrdinalSuffix: string = intl.formatMessage(
+      {
+        id: 'explore.tool.page.side.panel.indicator.percentile.value.ordinal.suffix',
+        // eslint-disable-next-line max-len
+        description: `Navigate to the explore the tool page. Click on the map. The side panel will show categories. Open a category. This will define the indicator value's oridinal suffix. For example the st in 91st, the rd in 23rd, and the th in 26th, etc.`,
+        defaultMessage: `
+        {indicatorValue, selectordinal, 
+          one {#st} 
+          two {#nd}
+          =3 {#rd} 
+          other {#th}
+      }
+      `,
+      },
+      {
+        indicatorValue: displayStat,
+      },
+  );
+
+  return isPercent ?
+    <span>
+      {intl.formatNumber(
+          displayStat,
+          {
+            style: 'unit',
+            unit: 'percent',
+            unitDisplay: 'short',
+          },
+      )}
+    </span> : superscriptOrdinal(i18nOrdinalSuffix);
 };
 
 /**
@@ -175,8 +199,7 @@ const Indicator = ({indicator}:IIndicator) => {
 
             {/* Indicator value */}
             <div className={styles.indicatorValue}>
-              {displayStat}
-              <DisplayStatUnit indicator={indicator} displayStat={displayStat}/>
+              <IndicatorValue isPercent={indicator.isPercent} displayStat={displayStat}/>
             </div>
 
             {/* Indicator icon - up arrow, down arrow, or unavailable */}

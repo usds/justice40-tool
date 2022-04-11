@@ -89,7 +89,7 @@ export const CENSUS_TRACT_FEEDBACK = {
 };
 
 export const CONTACT_VIA_EMAIL = {
-  ID: 'contact.general',
+  ID: 'contact.page.general',
   DESCRIPTION: 'Contact page body text',
   DEFAULT_MESSAGE: `For general feedback, email {general_email_address}.`,
 };

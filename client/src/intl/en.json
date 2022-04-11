@@ -132,12 +132,16 @@
     "description": "Navigate to the about page. This is Footer find contact link text"
   },
   "common.pages.footer.findcontact.link": {
-    "defaultMessage": "https://github.com/usds/justice40-tool",
+    "defaultMessage": "https://www.usa.gov/",
     "description": "Navigate to the about page. This is Footer find contact link text"
   },
   "common.pages.footer.foia.text": {
     "defaultMessage": "Freedom of Information Act (FOIA)",
     "description": "Navigate to the about page. This is Footer FOIA link text"
+  },
+  "common.pages.footer.gatsby.link": {
+    "defaultMessage": "https://github.com/usds/justice40-tool",
+    "description": "Navigate to the about page. This is Footer find contact link text"
   },
   "common.pages.footer.github.link.text": {
     "defaultMessage": "Check out the code on GitHub",
@@ -262,12 +266,16 @@
     "defaultMessage": "<link1>CSV file </link1> (.csv {csvFileSize} unzipped)",
     "description": "On the downloads page, the description of the csv link"
   },
+  "downloads.page.description1.text": {
+    "defaultMessage": "The dataset used in the tool, along with a data dictionary and information about how to use the list of communities (.pdf) are available in the following file formats:",
+    "description": "Navigate to the the Downloads page, this will be the page description1 text"
+  },
   "downloads.page.excel.link": {
     "defaultMessage": "<link1>Excel file</link1> (.xlxs {excelFileSize} unzipped)",
     "description": "On the downloads page, the description of the excel link"
   },
   "downloads.page.heading1.text": {
-    "defaultMessage": "The dataset used in the tool, along with a data dictionary and information about how to use the list of communities (.pdf) are available in the following file formats:",
+    "defaultMessage": "Downloads",
     "description": "Navigate to the the Downloads page, this will be the page heading1 text"
   },
   "downloads.page.heading2.text": {
@@ -281,58 +289,6 @@
   "downloads.page.title.text": {
     "defaultMessage": "Downloads",
     "description": "Navigate to the the Downloads page, this will be the page title text"
-  },
-  "explore.page.side.panel.at.or.above.at.least.one": {
-    "defaultMessage": "At or above at least one threshold?",
-    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. Click on a category to expand. This is the first question text around thresholds."
-  },
-  "explore.page.side.panel.at.or.above.both.thresholds": {
-    "defaultMessage": "At or above both associated thresholds?",
-    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. Click on a category to expand. This is the second question text around thresholds."
-  },
-  "explore.page.side.panel.exceed.burden.answer.no": {
-    "defaultMessage": "No",
-    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. This will display NO if the census tract is disadvantaged"
-  },
-  "explore.page.side.panel.exceed.burden.answer.yes": {
-    "defaultMessage": "Yes",
-    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. This will display YES if the census tract is disadvantaged"
-  },
-  "explore.page.side.panel.indicator.value.arrow.down.alt.text": {
-    "defaultMessage": "an icon for the down arrow",
-    "description": "image alt text for the down arrow"
-  },
-  "explore.page.side.panel.indicator.value.arrow.up.alt.text": {
-    "defaultMessage": "an icon for the up arrow",
-    "description": "image alt text for the up arrow"
-  },
-  "explore.page.side.panel.indicator.value.subtext.above": {
-    "defaultMessage": "above",
-    "description": "indicating above threshold"
-  },
-  "explore.page.side.panel.indicator.value.subtext.below": {
-    "defaultMessage": "below",
-    "description": "indicating below threshold"
-  },
-  "explore.page.side.panel.indicator.value.subtext.percent": {
-    "defaultMessage": "percent",
-    "description": "indicating percent units"
-  },
-  "explore.page.side.panel.indicator.value.subtext.percentile": {
-    "defaultMessage": "percentile",
-    "description": "indicating percentile units"
-  },
-  "explore.page.side.panel.indicator.value.subtext.unavailable": {
-    "defaultMessage": "data is not available",
-    "description": "subtext for indicator when data is N/A"
-  },
-  "explore.page.side.panel.indicator.value.unavailable.alt.text": {
-    "defaultMessage": "an icon to represent data is unavailable",
-    "description": "image alt text for unavailable icon"
-  },
-  "explore.page.side.panel.spacer.and": {
-    "defaultMessage": "AND",
-    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. Click on a category to expand. This is the AND spacer around thresholds."
   },
   "explore.tool.page.description.text": {
     "defaultMessage": "Use the map to see communities that are identified as disadvantaged. The map uses publicly-available, nationally-consistent datasets. Learn more about the methodology and datasets that were used to identify disavantaged communities in the current version of the tool on the <link1>Methodology & data</link1> page.",
@@ -426,6 +382,14 @@
     "defaultMessage": "Zoom in to the state or regional level to see prioritized communities on the map.",
     "description": "On the explore the tool page, on the map, the zoom warning on map"
   },
+  "explore.tool.page.side.panel.at.or.above.at.least.one": {
+    "defaultMessage": "At or above at least one threshold?",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. Click on a category to expand. This is the first question text around thresholds."
+  },
+  "explore.tool.page.side.panel.at.or.above.both.thresholds": {
+    "defaultMessage": "At or above both associated thresholds?",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. Click on a category to expand. This is the second question text around thresholds."
+  },
   "explore.tool.page.side.panel.category.header.indicator": {
     "defaultMessage": "Indicator",
     "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show header for each category\n"
@@ -437,6 +401,14 @@
   "explore.tool.page.side.panel.community.of.focus": {
     "defaultMessage": "YES",
     "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show the communities the score currently is focused on"
+  },
+  "explore.tool.page.side.panel.exceed.burden.answer.no": {
+    "defaultMessage": "No",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. This will display NO if the census tract is disadvantaged"
+  },
+  "explore.tool.page.side.panel.exceed.burden.answer.yes": {
+    "defaultMessage": "Yes",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. This will display YES if the census tract is disadvantaged"
   },
   "explore.tool.page.side.panel.geographicInfo.censusBlockGroup": {
     "defaultMessage": "Census tract:",
@@ -626,6 +598,10 @@
     "defaultMessage": "Median home value",
     "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Housing cost burden"
   },
+  "explore.tool.page.side.panel.indicator.percentile.value.ordinal.suffix": {
+    "defaultMessage": "{indicatorValue, selectordinal, one {#st} two {#nd} =3 {#rd} other {#th} }",
+    "description": "Navigate to the explore the tool page. Click on the map. The side panel will show categories. Open a category. This will define the indicator value's oridinal suffix. For example the st in 91st, the rd in 23rd, and the th in 26th, etc."
+  },
   "explore.tool.page.side.panel.indicator.pm25": {
     "defaultMessage": "PM2.5 in the air",
     "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show PM2.5 in the air"
@@ -686,6 +662,38 @@
     "defaultMessage": "Unemployment",
     "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Unemployment"
   },
+  "explore.tool.page.side.panel.indicator.value.arrow.down.alt.text": {
+    "defaultMessage": "an icon for the down arrow",
+    "description": "image alt text for the down arrow"
+  },
+  "explore.tool.page.side.panel.indicator.value.arrow.up.alt.text": {
+    "defaultMessage": "an icon for the up arrow",
+    "description": "image alt text for the up arrow"
+  },
+  "explore.tool.page.side.panel.indicator.value.subtext.above": {
+    "defaultMessage": "above",
+    "description": "indicating above threshold"
+  },
+  "explore.tool.page.side.panel.indicator.value.subtext.below": {
+    "defaultMessage": "below",
+    "description": "indicating below threshold"
+  },
+  "explore.tool.page.side.panel.indicator.value.subtext.percent": {
+    "defaultMessage": "percent",
+    "description": "indicating percent units"
+  },
+  "explore.tool.page.side.panel.indicator.value.subtext.percentile": {
+    "defaultMessage": "percentile",
+    "description": "indicating percentile units"
+  },
+  "explore.tool.page.side.panel.indicator.value.subtext.unavailable": {
+    "defaultMessage": "data is not available",
+    "description": "subtext for indicator when data is N/A"
+  },
+  "explore.tool.page.side.panel.indicator.value.unavailable.alt.text": {
+    "defaultMessage": "an icon to represent data is unavailable",
+    "description": "image alt text for unavailable icon"
+  },
   "explore.tool.page.side.panel.indicator.wasteWater": {
     "defaultMessage": "Wastewater discharge",
     "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Wastewater discharge"
@@ -739,11 +747,11 @@
     "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show the communities the score currently is not focused on"
   },
   "explore.tool.page.side.panel.num.categories.exceeded": {
-    "defaultMessage": "Disadvantaged in {numberOfDisCategories} categories",
+    "defaultMessage": "Disadvantaged in {numberOfDisCategories, plural, one {# category} other {# categories}}",
     "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show how many categories are exceeded"
   },
   "explore.tool.page.side.panel.num.thresholds.exceeded": {
-    "defaultMessage": "At or above {numberOfThresholdExceed} thresholds",
+    "defaultMessage": "At or above {numberOfThresholdExceed, plural, one {# threshold} other {# thresholds}}",
     "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show how many thresholds are exceeded"
   },
   "explore.tool.page.side.panel.send.feedback.alt.img": {
@@ -757,6 +765,10 @@
   "explore.tool.page.side.panel.send.feedback.title": {
     "defaultMessage": "Send feedback",
     "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show link to send feedback"
+  },
+  "explore.tool.page.side.panel.spacer.and": {
+    "defaultMessage": "AND",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. Click on a category to expand. This is the AND spacer around thresholds."
   },
   "explore.tool.page.side.panel.version.title": {
     "defaultMessage": "Methodology version {version}",
@@ -1435,6 +1447,10 @@
     "description": "Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box title text."
   },
   "public.eng.page.whejac.meeting.day.1.info": {
+    "defaultMessage": "March 30th (3:00 - 7:00 PM EST)",
+    "description": "public engagement page event WHEJAC"
+  },
+  "public.eng.page.whejac.meeting.day.2.info": {
     "defaultMessage": "March 31th (3:00 - 7:30 PM EST)",
     "description": "public engagement page event WHEJAC"
   },

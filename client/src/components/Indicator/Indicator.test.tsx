@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {render, screen} from '@testing-library/react';
 import {LocalizedComponent} from '../../test/testHelpers';
-import Indicator, {IndicatorValueIcon, IndicatorValueSubText, DisplayStatUnit} from './Indicator';
+import Indicator, {IndicatorValueIcon, IndicatorValueSubText, IndicatorValue} from './Indicator';
 import {indicatorInfo} from '../AreaDetail/AreaDetail';
 
 import * as EXPLORE_COPY from '../../data/copy/explore';
@@ -9,7 +9,7 @@ import * as EXPLORE_COPY from '../../data/copy/explore';
 const highSchool:indicatorInfo = {
   label: 'some label',
   description: 'some description',
-  value: 97,
+  value: .97,
   isDisadvagtaged: true,
   isPercent: true,
   threshold: 20,
@@ -136,8 +136,8 @@ describe('test that the unit suffix renders correctly', ()=> {
 
     const {asFragment} = render(
         <LocalizedComponent>
-          <DisplayStatUnit
-            indicator={lowLife}
+          <IndicatorValue
+            isPercent={lowLife.isPercent}
             displayStat={90}
           />
         </LocalizedComponent>,
@@ -156,8 +156,8 @@ describe('test that the unit suffix renders correctly', ()=> {
 
     const {asFragment} = render(
         <LocalizedComponent>
-          <DisplayStatUnit
-            indicator={lowLife}
+          <IndicatorValue
+            isPercent={lowLife.isPercent}
             displayStat={90}
           />
         </LocalizedComponent>,
@@ -175,8 +175,8 @@ describe('test that the unit suffix renders correctly', ()=> {
 
     const {asFragment} = render(
         <LocalizedComponent>
-          <DisplayStatUnit
-            indicator={lowLife}
+          <IndicatorValue
+            isPercent={lowLife.isPercent}
             displayStat={null}
           />
         </LocalizedComponent>,

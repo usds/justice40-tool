@@ -302,19 +302,19 @@ export const COMMUNITY = {
 
 export const numberOfCategoriesExceeded = (categoryCount:number) => <FormattedMessage
   id={'explore.tool.page.side.panel.num.categories.exceeded'}
-  defaultMessage={`Disadvantaged in {numberOfDisCategories} categories`}
+  defaultMessage={`Disadvantaged in {numberOfDisCategories, plural, one {# category} other {# categories}}`}
   description={`Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show how many categories are exceeded`}
   values={{
-    numberOfDisCategories: <FormattedNumber value={categoryCount} />,
+    numberOfDisCategories: categoryCount,
   }}
 />;
 
 export const numberOfThresholdsExceeded = (thresholds:number) => <FormattedMessage
   id={'explore.tool.page.side.panel.num.thresholds.exceeded'}
-  defaultMessage={`At or above {numberOfThresholdExceed} thresholds`}
+  defaultMessage={`At or above {numberOfThresholdExceed, plural, one {# threshold} other {# thresholds}}`}
   description={`Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show how many thresholds are exceeded`}
   values={{
-    numberOfThresholdExceed: <FormattedNumber value={thresholds} />,
+    numberOfThresholdExceed: thresholds,
   }}
 />;
 
@@ -524,44 +524,44 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
 
 export const SIDE_PANEL_VALUES = {
   ABOVE: <FormattedMessage
-    id={'explore.page.side.panel.indicator.value.subtext.above'}
+    id={'explore.tool.page.side.panel.indicator.value.subtext.above'}
     description={'indicating above threshold'}
     defaultMessage={`above `}
   />,
   BELOW: <FormattedMessage
-    id={'explore.page.side.panel.indicator.value.subtext.below'}
+    id={'explore.tool.page.side.panel.indicator.value.subtext.below'}
     description={'indicating below threshold'}
     defaultMessage={`below `}
   />,
   PERCENT: <FormattedMessage
-    id={'explore.page.side.panel.indicator.value.subtext.percent'}
+    id={'explore.tool.page.side.panel.indicator.value.subtext.percent'}
     description={'indicating percent units'}
     defaultMessage={`percent`}
   />,
   PERCENTILE: <FormattedMessage
-    id={'explore.page.side.panel.indicator.value.subtext.percentile'}
+    id={'explore.tool.page.side.panel.indicator.value.subtext.percentile'}
     description={'indicating percentile units'}
     defaultMessage={`percentile`}
   />,
   IMG_ALT_TEXT: defineMessages({
     ARROW_UP: {
-      id: 'explore.page.side.panel.indicator.value.arrow.up.alt.text',
+      id: 'explore.tool.page.side.panel.indicator.value.arrow.up.alt.text',
       description: 'image alt text for the up arrow',
       defaultMessage: `an icon for the up arrow`,
     },
     ARROW_DOWN: {
-      id: 'explore.page.side.panel.indicator.value.arrow.down.alt.text',
+      id: 'explore.tool.page.side.panel.indicator.value.arrow.down.alt.text',
       description: 'image alt text for the down arrow',
       defaultMessage: `an icon for the down arrow`,
     },
     UNAVAILABLE: {
-      id: 'explore.page.side.panel.indicator.value.unavailable.alt.text',
+      id: 'explore.tool.page.side.panel.indicator.value.unavailable.alt.text',
       description: 'image alt text for unavailable icon',
       defaultMessage: `an icon to represent data is unavailable`,
     },
   }),
   UNAVAILBLE_MSG: <FormattedMessage
-    id={'explore.page.side.panel.indicator.value.subtext.unavailable'}
+    id={'explore.tool.page.side.panel.indicator.value.subtext.unavailable'}
     description={'subtext for indicator when data is N/A'}
     defaultMessage={`data is not available`}
   />,
@@ -733,27 +733,27 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
 
 export const SIDE_PANEL_SPACERS = {
   EXCEED_ONE_OR_MORE: <FormattedMessage
-    id={'explore.page.side.panel.at.or.above.at.least.one'}
+    id={'explore.tool.page.side.panel.at.or.above.at.least.one'}
     defaultMessage={`At or above at least one threshold?`}
     description={`Navigate to the explore the tool page. When the map is in view, click on the map. Click on a category to expand. This is the first question text around thresholds.`}
   />,
   EXCEED_BOTH_SOCIO: <FormattedMessage
-    id={'explore.page.side.panel.at.or.above.both.thresholds'}
+    id={'explore.tool.page.side.panel.at.or.above.both.thresholds'}
     defaultMessage={`At or above both associated thresholds?`}
     description={`Navigate to the explore the tool page. When the map is in view, click on the map. Click on a category to expand. This is the second question text around thresholds.`}
   />,
   YES: <FormattedMessage
-    id={'explore.page.side.panel.exceed.burden.answer.yes'}
+    id={'explore.tool.page.side.panel.exceed.burden.answer.yes'}
     defaultMessage={`Yes`}
     description={'Navigate to the explore the tool page. When the map is in view, click on the map. This will display YES if the census tract is disadvantaged'}
   />,
   NO: <FormattedMessage
-    id={'explore.page.side.panel.exceed.burden.answer.no'}
+    id={'explore.tool.page.side.panel.exceed.burden.answer.no'}
     defaultMessage={`No`}
     description={'Navigate to the explore the tool page. When the map is in view, click on the map. This will display NO if the census tract is disadvantaged'}
   />,
   AND: <FormattedMessage
-    id={'explore.page.side.panel.spacer.and'}
+    id={'explore.tool.page.side.panel.spacer.and'}
     defaultMessage={`AND`}
     description={'Navigate to the explore the tool page. When the map is in view, click on the map. Click on a category to expand. This is the AND spacer around thresholds.'}
   />,
