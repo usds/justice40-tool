@@ -71,6 +71,13 @@ class ExtractTransformLoad:
     # COLUMNS_TO_KEEP is used to identify which columns to keep in the output df.
     COLUMNS_TO_KEEP: typing.List[str] = None
 
+    # INPUT_GEOID_TRACT_FIELD_NAME is the field name that identifies the Census Tract ID
+    # on the input file
+    INPUT_GEOID_TRACT_FIELD_NAME: str = None
+
+    # NULL_REPRESENTATION is how nulls are represented on the input field
+    NULL_REPRESENTATION: str = None
+
     # Thirteen digits in a census block group ID.
     EXPECTED_CENSUS_BLOCK_GROUPS_CHARACTER_LENGTH: int = 13
     # TODO: investigate. Census says there are only 217,740 CBGs in the US. This might
@@ -84,10 +91,12 @@ class ExtractTransformLoad:
     #  periods. https://github.com/usds/justice40-tool/issues/964
     EXPECTED_MAX_CENSUS_TRACTS: int = 74160
 
+    # We use ourput_df as the final dataframe to use to write to the CSV
+    # It is used on the "load" base class method
     output_df: pd.DataFrame = None
 
     @classmethod
-    def yaml_config_load(cls):
+    def yaml_config_load(cls) -> dict:
         # check if the class instance has score YAML definitions
         datasets_config = load_yaml_dict_from_file(
             cls.DATASET_CONFIG / "datasets.yml",
@@ -108,10 +117,24 @@ class ExtractTransformLoad:
             )
             sys.exit()
 
-        # set the fields
+        # set some of the basic fields
         cls.LAST_UPDATED_YEAR = dataset_config["last_updated_year"]
         cls.SOURCE_URL = dataset_config["source_url"]
         cls.INPUT_EXTRACTED_FILE_NAME = dataset_config["extracted_file_name"]
+        cls.INPUT_GEOID_TRACT_FIELD_NAME = dataset_config[
+            "input_geoid_tract_field_name"
+        ]
+        cls.NULL_REPRESENTATION = dataset_config["null_representation"]
+
+        # get the columns to write on the CSV
+        cls.COLUMNS_TO_KEEP = [
+            cls.GEOID_TRACT_FIELD_NAME,  # always index with geoid tract id
+        ]
+        for field in dataset_config["load_fields"]:
+            cls.COLUMNS_TO_KEEP.append(field["long_name"])
+
+        # return the config dict
+        return dataset_config
 
     # This is a classmethod so it can be used by `get_data_frame` without
     # needing to create an instance of the class. This is a use case in `etl_score`.
@@ -263,8 +286,7 @@ class ExtractTransformLoad:
 
         Data is written in the specified local data folder or remote AWS S3 bucket.
 
-        Uses the directory from `self.OUTPUT_DIR` and the file name from
-        `self._get_output_file_path`.
+        Uses the directory and the file name from `self._get_output_file_path`.
         """
         logger.info(f"Saving `{self.NAME}` CSV")
 

@@ -40,7 +40,7 @@ datasets:
         excel_download: true
       - short_name: "has_ag_val"
         df_field_name: "CONTAINS_AGRIVALUE"
-        long_name: "Expected building loss rate (Natural Hazards Risk Index)"
+        long_name: "Contains agricultural value"
         field_type: bool
         tile_include: true
         csv_download: true

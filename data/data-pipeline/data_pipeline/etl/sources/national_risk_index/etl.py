@@ -26,8 +26,15 @@ class NationalRiskIndexETL(ExtractTransformLoad):
 
     def __init__(self):
         # load YAML config
-        super().yaml_config_load()
+        self.DATASET_CONFIG = super().yaml_config_load()
 
+        # define the full path for the input CSV file
+        self.INPUT_CSV = self.get_tmp_path() / self.INPUT_EXTRACTED_FILE_NAME
+
+        # this is the main dataframe
+        self.df: pd.DataFrame
+
+        # Start dataset-specific vars here
         self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_INPUT_FIELD_NAME = (
             "EAL_SCORE"
         )
@@ -58,18 +65,6 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         )
         self.CONTAINS_AGRIVALUE = "Contains agricultural value"
 
-        self.COLUMNS_TO_KEEP = [
-            self.GEOID_TRACT_FIELD_NAME,
-            self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME,
-            self.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME,
-            self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME,
-            self.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME,
-            self.CONTAINS_AGRIVALUE,
-        ]
-
-        self.INPUT_CSV = self.get_tmp_path() / self.INPUT_EXTRACTED_FILE_NAME
-        self.df: pd.DataFrame
-
     def extract(self) -> None:
         """Unzips NRI dataset from the FEMA data source and writes the files
         to the temporary data folder for use in the transform() method
@@ -90,19 +85,18 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         """
         logger.info("Transforming National Risk Index Data")
 
-        NRI_TRACT_COL = "TRACTFIPS"  # Census Tract Column in NRI data
-
         # read in the unzipped csv from NRI data source then rename the
         # Census Tract column for merging
         df_nri: pd.DataFrame = pd.read_csv(
             self.INPUT_CSV,
-            dtype={NRI_TRACT_COL: "string"},
-            na_values=["None"],
+            dtype={self.INPUT_GEOID_TRACT_FIELD_NAME: "string"},
+            na_values=[self.NULL_REPRESENTATION],
             low_memory=False,
         )
+
         df_nri.rename(
             columns={
-                NRI_TRACT_COL: self.GEOID_TRACT_FIELD_NAME,
+                self.INPUT_GEOID_TRACT_FIELD_NAME: self.GEOID_TRACT_FIELD_NAME,
                 self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_INPUT_FIELD_NAME: self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME,
             },
             inplace=True,
@@ -185,6 +179,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         # Note: `round` is smart enough to only apply to float columns.
         df_nri = df_nri.round(10)
 
+        # Assign the final df to the class' output_df for the load method
         self.output_df = df_nri
 
     def load(self) -> None:
