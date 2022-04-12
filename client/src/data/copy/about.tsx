@@ -143,8 +143,8 @@ export const HOW_TO_GET_STARTED = defineMessages({
   },
   COMMUNITY_MEMBERS_LINK_TEXT: {
     id: 'about.page.community.members.link',
-    defaultMessage: 'Explore the tool',
-    description: 'link to Navigate to the About page. This is the explore the tool page',
+    defaultMessage: 'Explore the map',
+    description: 'link to Navigate to the About page. This is the explore the map page',
   },
 });
 

@@ -66,7 +66,7 @@ export const CENSUS_TRACT_FEEDBACK = {
     id={'contact.page.census.tract.feedback.para1'}
     defaultMessage={`
       To provide feedback about a specific census tract, either select the send feedback button after
-      selecting a census tract on the <link1>Explore the tool</link1> page or use the email address provided above. Please include the census tract ID, county, and state or territory information, in addition to your feedback.
+      selecting a census tract on the <link1>Explore the map</link1> page or use the email address provided above. Please include the census tract ID, county, and state or territory information, in addition to your feedback.
     `}
     description={'Navigate to the contact page, this is the census tract feedback section'}
     values={{

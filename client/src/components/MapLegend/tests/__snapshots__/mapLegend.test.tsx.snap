@@ -18,7 +18,7 @@ exports[`rendering of the MapLegend checks if snapshots have changed 1`] = `
           class="secondary"
         >
           
-      Communities identified as disadvantaged by the tool are those that are marginalized, underserved, 
+      Communities identified as disadvantaged by the map are those that are marginalized, underserved, 
       and overburdened by pollution. These communities are at or above the thresholds in one or 
       more of eight categories of criteria.
     

@@ -17,7 +17,7 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
         tabindex="0"
       >
         
-      This tool identifies communities that are marginalized, underserved, and overburdened by pollution. These communities are located in census tracts that are at or above the thresholds in one or more of eight categories of criteria.
+      This map identifies communities that are marginalized, underserved, and overburdened by pollution. These communities are located in census tracts that are at or above the thresholds in one or more of eight categories of criteria.
     
       </p>
       <img
@@ -31,7 +31,7 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
         tabindex="0"
       >
         
-      The tool uses census tracts that represent about 4,000 people, which is the smallest unit of geography for which consistent data can be displayed on the tool.
+      The map uses census tracts that represent about 4,000 people, which is the smallest unit of geography for which consistent data can be displayed on the map.
     
       </p>
       <img
@@ -45,7 +45,7 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
         tabindex="0"
       >
         
-      The tool ranks each census tract using percentiles that show how much burden each tract experiences relative to all other tracts, for each criteria.
+      The map ranks each census tract using percentiles that show how much burden each tract experiences relative to all other tracts, for each criteria.
     
       </p>
       <img

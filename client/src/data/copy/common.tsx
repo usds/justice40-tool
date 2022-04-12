@@ -64,9 +64,9 @@ export const ALERTS = {
 
   ALERT_2_TITLE: defineMessages({
     TITLE: {
-      id: 'common.pages.alerts.additional_docs_available.title',
-      defaultMessage: 'Additional documentation now available',
-      description: 'Alert title that appears at the top of pages.',
+      id: 'common.pages.alerts.census.tract.title',
+      defaultMessage: 'Improvements to the map on the Explore the map page',
+      description: 'Navigate to any page. This the title of the alert that informs the user that new census tract information is available',
     },
   }),
   ALERT_2_DESCRIPTION: <FormattedMessage
@@ -98,8 +98,8 @@ export const HEADER = defineMessages({
   },
   EXPLORE: {
     id: 'common.pages.header.explore',
-    defaultMessage: 'Explore the tool',
-    description: 'Navigate to the about page. This is Header navigate item to the Explore the tool page',
+    defaultMessage: 'Explore the map',
+    description: 'Navigate to the about page. This is Header navigate item to the Explore the map page',
   },
   METHODOLOGY: {
     id: 'common.pages.header.methodology',

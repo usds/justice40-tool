@@ -116,9 +116,9 @@ const J40Header = () => {
   const navLinks = [
     <Link
       to={PAGES_ENDPOINTS.EXPLORE}
-      key={'explore-tool'}
+      key={'explore-map'}
       activeClassName="usa-current"
-      data-cy={'nav-link-explore-the-tool'}>
+      data-cy={'nav-link-explore-the-map'}>
       {intl.formatMessage(COMMON_COPY.HEADER.EXPLORE)}
     </Link>,
     <Link
