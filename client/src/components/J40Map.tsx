@@ -102,7 +102,10 @@ export const featureURLForTilesetName = (tilesetName: string): string => {
 const J40Map = ({location}: IJ40Interface) => {
   /**
    * Initializes the zoom, and the map's center point (lat, lng) via the URL hash #{z}/{lat}/{long}
-   * where:
+   * where
+   *  @TODO: These values do not update when zooming in/out. Could explain a number of cypress bugs
+   *  reference to ticket #1550
+   *
    *    z = zoom
    *    lat = map center's latitude
    *    long = map center's longitude
@@ -132,6 +135,7 @@ const J40Map = ({location}: IJ40Interface) => {
   const selectedFeatureId = (selectedFeature && selectedFeature.id) || '';
   const filter = useMemo(() => ['in', constants.GEOID_PROPERTY, selectedFeatureId], [selectedFeature]);
 
+  const zoomLatLngHash = mapRef.current?.getMap()._hash._getCurrentHash();
   /**
    * This function will return the bounding box of the current map. Comment in when needed.
    *  {
@@ -444,7 +448,7 @@ const J40Map = ({location}: IJ40Interface) => {
               onClose={setDetailViewData}
               captureScroll={true}
             >
-              <AreaDetail properties={detailViewData.properties} />
+              <AreaDetail properties={detailViewData.properties} hash={zoomLatLngHash}/>
             </Popup>
           )}
 
@@ -477,6 +481,7 @@ const J40Map = ({location}: IJ40Interface) => {
           className={styles.mapInfoPanel}
           featureProperties={detailViewData?.properties}
           selectedFeatureId={selectedFeature?.id}
+          hash={zoomLatLngHash}
         />
       </Grid>
     </>
