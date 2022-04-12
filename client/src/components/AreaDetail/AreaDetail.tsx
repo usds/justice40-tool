@@ -21,6 +21,7 @@ import mailIcon from '/node_modules/uswds/dist/img/usa-icons/mail_outline.svg';
 
 interface IAreaDetailProps {
   properties: constants.J40Properties,
+  hash: string[],
 }
 
 /**
@@ -40,7 +41,7 @@ export interface indicatorInfo {
   threshold?: number,
 }
 
-const AreaDetail = ({properties}:IAreaDetailProps) => {
+const AreaDetail = ({properties, hash}:IAreaDetailProps) => {
   const intl = useIntl();
 
   // console.log the properties of the census that is selected:
@@ -55,7 +56,10 @@ const AreaDetail = ({properties}:IAreaDetailProps) => {
 
   const isCommunityFocus = score >= constants.SCORE_BOUNDARY_THRESHOLD;
 
-  const feedbackEmailSubject = `Census tract ID ${blockGroup}, ${countyName}, ${stateName}`;
+  const feedbackEmailSubject = hash ? `
+    Census tract ID ${blockGroup}, ${countyName}, ${stateName}, ( z/lat/lon: #${hash.join('/')} )
+  ` : `Census tract ID ${blockGroup}, ${countyName}, ${stateName}`;
+
   const feedbackEmailBody = intl.formatMessage(EXPLORE_COPY.SEND_FEEDBACK.EMAIL_BODY);
 
   /**

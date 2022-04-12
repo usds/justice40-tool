@@ -15,17 +15,19 @@ describe('rendering of the AreaDetail', () => {
     [constants.SCORE_PROPERTY_HIGH]: .95,
     [constants.GEOID_PROPERTY]: 98729374234,
     [constants.TOTAL_POPULATION]: 3435435,
+    [constants.STATE_NAME]: 'New York',
+    [constants.COUNTY_NAME]: 'Brooklyn',
     [constants.POVERTY_BELOW_200_PERCENTILE]: .19,
     [constants.SIDE_PANEL_STATE]: constants.SIDE_PANEL_STATE_VALUES.NATION,
     [constants.COUNT_OF_CATEGORIES_DISADV]: 5,
     [constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS]: 3,
   };
-
+  const hash = ['11.54', '36.0762', '-84.4494'];
 
   it('checks if indicators for NATION is present', () => {
     const {asFragment} = render(
         <LocalizedComponent>
-          <AreaDetail properties={properties}/>
+          <AreaDetail properties={properties} hash={hash}/>
         </LocalizedComponent>,
     );
     expect(asFragment()).toMatchSnapshot();
@@ -39,7 +41,7 @@ describe('rendering of the AreaDetail', () => {
 
     const {asFragment} = render(
         <LocalizedComponent>
-          <AreaDetail properties={propertiesPR}/>
+          <AreaDetail properties={propertiesPR} hash={hash}/>
         </LocalizedComponent>,
     );
     expect(asFragment()).toMatchSnapshot();
@@ -57,7 +59,7 @@ describe('rendering of the AreaDetail', () => {
 
     const {asFragment} = render(
         <LocalizedComponent>
-          <AreaDetail properties={propertiesIA}/>
+          <AreaDetail properties={propertiesIA} hash={hash}/>
         </LocalizedComponent>,
     );
     expect(asFragment()).toMatchSnapshot();
