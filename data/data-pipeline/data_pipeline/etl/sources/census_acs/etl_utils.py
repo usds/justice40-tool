@@ -76,6 +76,7 @@ def impute_by_geographic_neighbors(
             # we only impute if the variable is NaN, but we also only want to calculate
             # neighbors a single time
             for impute_var_pair in impute_var_named_tup_list:
+                logger.info(impute_var_pair)
                 # use the neighbor mask if you can!
                 if any(
                     geo_df[neighbor_mask][
