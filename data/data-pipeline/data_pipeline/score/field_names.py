@@ -93,9 +93,19 @@ HEALTH_SOCIO_INDICATORS_EXCEEDED = (
 
 # Poverty / Income
 POVERTY_FIELD = "Poverty (Less than 200% of federal poverty line)"
+
+# this is the raw, unadjusted variable
 POVERTY_LESS_THAN_200_FPL_FIELD = (
     "Percent of individuals below 200% Federal Poverty Line"
 )
+
+# this is for use in the donuts
+ADJUSTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME = (
+    "Adjusted percent of individuals < 200% Federal Poverty Line"
+)
+
+# this is what gets used in the score
+POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD = "Percent of individuals below 200% Federal Poverty Line, imputed and adjusted"
 POVERTY_LESS_THAN_150_FPL_FIELD = (
     "Percent of individuals < 150% Federal Poverty Line"
 )

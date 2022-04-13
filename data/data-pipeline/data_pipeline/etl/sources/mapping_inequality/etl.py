@@ -48,6 +48,7 @@ class MappingInequalityETL(ExtractTransformLoad):
         self.CITY_INPUT_FIELD: str = "city"
 
         self.HOLC_GRADE_D_FIELD: str = "HOLC Grade D"
+        self.HOLC_GRADE_C_FIELD: str = "HOLC Grade C"
         self.HOLC_GRADE_MANUAL_FIELD: str = "HOLC Grade (manually mapped)"
         self.HOLC_GRADE_DERIVED_FIELD: str = "HOLC Grade (derived)"
 
@@ -112,6 +113,8 @@ class MappingInequalityETL(ExtractTransformLoad):
             on=[self.HOLC_GRADE_AND_ID_FIELD, self.CITY_INPUT_FIELD],
             how="left",
         )
+
+        merged_df.to_csv("~/Desktop/holc.csv")
 
         # Create a single field that combines the 'derived' grade D field with the
         # manually mapped grade D field into a single grade D field.
