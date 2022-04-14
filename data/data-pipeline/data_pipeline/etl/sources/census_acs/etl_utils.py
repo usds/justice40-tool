@@ -3,7 +3,6 @@ from pathlib import Path
 from typing import List
 import censusdata
 import pandas as pd
-import numpy as np
 import geopandas as gpd
 
 from data_pipeline.etl.sources.census.etl_utils import get_state_fips_codes

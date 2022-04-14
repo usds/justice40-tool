@@ -71,7 +71,10 @@ class CensusACSETL(ExtractTransformLoad):
             "Adjusted percent of individuals < 200% Federal Poverty Line"
         )
 
-        self.ADJUSTED_AND_IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME = "Adjusted percent of individuals < 200% Federal Poverty Line, imputed"
+        self.ADJUSTED_AND_IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME = (
+            "Adjusted percent of individuals < 200% Federal Poverty Line,"
+            + " imputed"
+        )
 
         self.MEDIAN_HOUSE_VALUE_FIELD = "B25077_001E"
         self.MEDIAN_HOUSE_VALUE_FIELD_NAME = (
