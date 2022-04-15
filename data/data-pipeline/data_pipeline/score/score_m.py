@@ -15,7 +15,7 @@ class ScoreM(Score):
 
     def __init__(self, df: pd.DataFrame) -> None:
         self.LOW_INCOME_THRESHOLD: float = 0.65
-        self.MAX_COLLEGE_ATTENDANCE_THRESHOLD: float = 0.20
+        self.MAX_COLLEGE_ATTENDANCE_THRESHOLD: float = 0.80
         self.ENVIRONMENTAL_BURDEN_THRESHOLD: float = 0.90
         self.MEDIAN_HOUSE_VALUE_THRESHOLD: float = 0.90
         self.LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD: float = 0.10
@@ -95,7 +95,7 @@ class ScoreM(Score):
         """
 
         return (df[field_names.LOW_INCOME_THRESHOLD]) & (
-            df[field_names.COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD]
+            df[field_names.COLLEGE_ATTENDANCE_LESS_THAN_80_FIELD]
             | (
                 # If college attendance data is null for this tract, just rely on the
                 # poverty data
@@ -835,7 +835,7 @@ class ScoreM(Score):
         # "Strictly greater than 80% of residents are not college students."
         # There are two tracts that are impacted by this (that is, they have exactly)
         # 20% college students -- neither of these has been a DAC under any score.
-        self.df[field_names.COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD] = (
+        self.df[field_names.COLLEGE_ATTENDANCE_LESS_THAN_80_FIELD] = (
             self.df[field_names.COLLEGE_ATTENDANCE_FIELD]
             < self.MAX_COLLEGE_ATTENDANCE_THRESHOLD
         )
