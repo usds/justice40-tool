@@ -457,7 +457,7 @@ class CensusACSETL(ExtractTransformLoad):
             county_bool=False,
         )
 
-        logger.info("Renaming columns")
+        logger.info("Renaming columns...")
         df = df.rename(
             columns={
                 self.ADJUSTED_AND_IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME: field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD,
