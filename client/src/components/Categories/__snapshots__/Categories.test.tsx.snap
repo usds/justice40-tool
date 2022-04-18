@@ -72,7 +72,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           low income
         </a>
-         AND 80% or more of adults 15 or older are not enrolled in 
+         AND 80% or more of individuals 15 or older are not enrolled in 
         <a
           href="#high-ed-enroll-rate"
         >
@@ -125,7 +125,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           low income
         </a>
-         AND 80% or more of adults 15 or older are not enrolled in 
+         AND 80% or more of individuals 15 or older are not enrolled in 
         <a
           href="#high-ed-enroll-rate"
         >
@@ -182,7 +182,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           low income
         </a>
-         AND 80% or more of adults 15 or older are not enrolled in 
+         AND 80% or more of individuals 15 or older are not enrolled in 
         <a
           href="#high-ed-enroll-rate"
         >
@@ -241,7 +241,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           low income
         </a>
-         AND 80% or more of adults 15 or older are not enrolled in 
+         AND 80% or more of individuals 15 or older are not enrolled in 
         <a
           href="#high-ed-enroll-rate"
         >
@@ -300,7 +300,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           low income
         </a>
-         AND 80% or more of adults 15 or older are not enrolled in 
+         AND 80% or more of individuals 15 or older are not enrolled in 
         <a
           href="#high-ed-enroll-rate"
         >
@@ -347,7 +347,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           low income
         </a>
-         AND 80% or more of adults 15 or older are not enrolled in 
+         AND 80% or more of individuals 15 or older are not enrolled in 
         <a
           href="#high-ed-enroll-rate"
         >
@@ -412,7 +412,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           low income
         </a>
-         AND 80% or more of adults 15 or older are not enrolled in 
+         AND 80% or more of individuals 15 or older are not enrolled in 
         <a
           href="#high-ed-enroll-rate"
         >
@@ -458,7 +458,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           unemployment
         </a>
-         OR percent individuals in households at or below 100% Federal 
+         OR percent of individuals in households at or below 100% Federal 
         <a
           href="#poverty"
         >
@@ -477,7 +477,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           high school degree
         </a>
-         AND 80% or more of adults 15 or older are not enrolled in 
+         AND 80% or more of individuals 15 or older are not enrolled in 
         <a
           href="#high-ed-enroll-rate"
         >

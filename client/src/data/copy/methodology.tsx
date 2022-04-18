@@ -170,7 +170,7 @@ export const CATEGORY_AND_CLAUSE = {
   LOW_INC_65_WHEN_HIGH_ED_LTE_20: <FormattedMessage
     id= {'methodology.page.category.and.clause.low.inc.hs.ed'}
     defaultMessage={`
-      <boldtag>AND</boldtag> is above the 65th percentile for <link1>low income</link1> AND 80% or more of adults 15 or older are not enrolled in <link2>higher education</link2> 
+      <boldtag>AND</boldtag> is above the 65th percentile for <link1>low income</link1> AND 80% or more of individuals 15 or older are not enrolled in <link2>higher education</link2> 
     `}
     description= {'Navigate to the methodology page. Navigate to the category section. This is category portion of the formula dealing with lower income and high school degree rate'}
     values= {{
@@ -181,7 +181,7 @@ export const CATEGORY_AND_CLAUSE = {
   />,
   HS_DEG_90_WHEN_HIGH_ED_LTE_20: <FormattedMessage
     id= {'methodology.page.category.and.clause.hs.ed.higher.ed'}
-    defaultMessage= {`<boldtag>AND</boldtag> 10% or more of adults 25 or older have not attained a <link1>high school degree</link1> AND 80% or more of adults 15 or older are not enrolled in <link2>higher education</link2> 
+    defaultMessage= {`<boldtag>AND</boldtag> 10% or more of adults 25 or older have not attained a <link1>high school degree</link1> AND 80% or more of individuals 15 or older are not enrolled in <link2>higher education</link2> 
   `}
     description= {'Navigate to the methodology page. Navigate to the category section. This is the portion of the formula dealing with higher ed enrollment and high school degree rate'}
     values= {{
@@ -332,7 +332,7 @@ export const CATEGORIES = {
   CLEAN_WATER: {
     METHODOLOGY: <FormattedMessage
       id= {'methodology.page.indicator.categories.clean.water.methodology'}
-      defaultMessage= {`Critical clean water and waste infrastructure category`}
+      defaultMessage= {`Critical clean water and wastewater infrastructure category`}
       description= {`Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Critical clean water and waste infrastructure methodology`}
     />,
     TITLE: <FormattedMessage
@@ -392,7 +392,7 @@ export const CATEGORIES = {
     />,
     IF: <FormattedMessage
       id= {'methodology.page.indicator.categories.work.dev.if'}
-      defaultMessage= {`<boldtag>IF</boldtag> at or above the 90th percentile for <link1>low median income</link1> as a percentage of area median income OR <link2>linguistic isolation</link2> OR <link3>unemployment</link3> OR percent individuals in households at or below 100% Federal <link4>poverty</link4> level
+      defaultMessage= {`<boldtag>IF</boldtag> at or above the 90th percentile for <link1>low median income</link1> as a percentage of area median income OR <link2>linguistic isolation</link2> OR <link3>unemployment</link3> OR percent of individuals in households at or below 100% Federal <link4>poverty</link4> level
       `}
       description= {'Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula'}
       values= {{
@@ -527,7 +527,7 @@ export const SOURCE_LINKS = {
   />,
   EPA_OAR: <FormattedMessage
     id= {'methodology.page.category.source.epa.oar.link'}
-    defaultMessage= {`<link1>Fusion of model and monitor data</link1> from {date17} as compiled by EPA’s EJSCREEN, sourced from EPA National Air Toxics Assessment (NATA) and the U.S. Department of Transportation (DOT) traffic data
+    defaultMessage= {`<link1>Fusion of model and monitor data</link1> from {date17} as compiled by EPA’s EJScreen, sourced from EPA National Air Toxics Assessment (NATA) and the U.S. Department of Transportation (DOT) traffic data
     `}
     description= {'Navigate to the Methodology page. This is the source link for EPA OAR'}
     values={{
@@ -537,7 +537,7 @@ export const SOURCE_LINKS = {
   />,
   EPA_NATA: <FormattedMessage
     id= {'methodology.page.category.source.epa.nata.link'}
-    defaultMessage= {`<link1>National Air Toxics Assessment (NATA)</link1> from {date14} as compiled by EPA's EJSCREEN`}
+    defaultMessage= {`<link1>National Air Toxics Assessment (NATA)</link1> from {date14} as compiled by EPA's EJScreen`}
     description= {'Navigate to the Methodology page. This is the source link for EPA NATA'}
     values={{
       link1: linkFn('https://www.epa.gov/ejscreen/technical-documentation-ejscreen', false, true),
@@ -546,7 +546,7 @@ export const SOURCE_LINKS = {
   />,
   DOT_EPA: <FormattedMessage
     id= {'methodology.page.category.source.dot.epa.link'}
-    defaultMessage= {`<link1>Traffic Data</link1> from {date17} as compiled by EPA's EJSCREEN`}
+    defaultMessage= {`<link1>Traffic Data</link1> from {date17} as compiled by EPA's EJScreen`}
     description= {'Navigate to the Methodology page. This is the source link for DOT EPA'}
     values={{
       link1: linkFn('https://www.epa.gov/ejscreen/technical-documentation-ejscreen', false, true),
@@ -566,7 +566,7 @@ export const SOURCE_LINKS = {
     id= {'methodology.page.category.source.epa.tsdf.link'}
     defaultMessage= {`
       <link1>Treatment, Storage, and Disposal Facilities (TSDF) data</link1> from {date20} calculated from EPA's RCRA database as compiled 
-      by EPA's EJSCREEN
+      by EPA's EJScreen
     `}
     description= {'Navigate to the Methodology page. This is the source link for EPA TSDF'}
     values={{
@@ -576,16 +576,16 @@ export const SOURCE_LINKS = {
   />,
   EPA_CERCLIS: <FormattedMessage
     id= {'methodology.page.category.source.epa.cerclis.link'}
-    defaultMessage= {`<link1>CERCLIS database</link1> from {date20} as compiled by EPA’s EJSCREEN`}
+    defaultMessage= {`<link1>CERCLIS database</link1> from {date20} as compiled by EPA’s EJScreen`}
     description= {'Navigate to the Methodology page. This is the source link for EPA CERCLIS'}
     values={{
-      link1: linkFn('https://enviro.epa.gov/facts/rcrainfo/search.html', false, true),
+      link1: linkFn('https://cumulis.epa.gov/supercpad/cursites/srchsites.cfm', false, true),
       date20: DATE_RANGE.TWENTY,
     }}
   />,
   EPA_RMP: <FormattedMessage
     id= {'methodology.page.category.source.epa.rmp.link'}
-    defaultMessage= {`<link1>RMP database</link1> from {date20} as compiled by EPA’s EJSCREEN`}
+    defaultMessage= {`<link1>RMP database</link1> from {date20} as compiled by EPA’s EJScreen`}
     description= {'Navigate to the Methodology page. This is the source link for EPA RMP'}
     values={{
       link1: linkFn('https://www.epa.gov/ejscreen/technical-documentation-ejscreen', false, true),
@@ -594,7 +594,7 @@ export const SOURCE_LINKS = {
   />,
   EPA_RSEI: <FormattedMessage
     id= {'methodology.page.category.source.epa.rsei.link'}
-    defaultMessage= {`<link1>Risk-Screening Environmental Indicators (RSEI) Model</link1> from {date20} as compiled by EPA’s EJSCREEN`}
+    defaultMessage= {`<link1>Risk-Screening Environmental Indicators (RSEI) Model</link1> from {date20} as compiled by EPA’s EJScreen`}
     description= {'Navigate to the Methodology page. This is the source link for EPA RSEI'}
     values={{
       link1: linkFn('https://www.epa.gov/ejscreen/technical-documentation-ejscreen', false, true),
@@ -612,7 +612,7 @@ export const SOURCE_LINKS = {
   />,
   CDC_SLEEP: <FormattedMessage
     id= {'methodology.page.category.source.cdc.sleep.link'}
-    defaultMessage= {`<link1>U.S. Small-area Life Expectancy Estimates Project (USALEEP)</link1> from {date10_15}`}
+    defaultMessage= {`<link1>U.S. Small-Area Life Expectancy Estimates Project (USALEEP)</link1> from {date10_15}`}
     description= {'Navigate to the Methodology page. This is the source link for CDC Sleep'}
     values={{
       link1: linkFn('https://www.cdc.gov/nchs/nvss/usaleep/usaleep.html#data', false, true),
@@ -698,12 +698,12 @@ export const INDICATORS = [
     description: <FormattedMessage
       id= {'methodology.page.category.exp.agr.loss.rate.description.text'}
       defaultMessage= {`
-        Percent of agriculture value at risk from losses due to fourteen types of 
+        Percent of agricultural value at risk from losses due to fourteen types of 
         natural hazards that have some link 
         to climate change: avalanche, coastal flooding, 
         cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong 
-        wind, tornado, wildfire, and winter weather. Rate calculated by dividing the agriculture value at risk in 
-        a census tract by the total agriculture value in that census tract.
+        wind, tornado, wildfire, and winter weather. Rate calculated by dividing the agricultural value at risk in 
+        a census tract by the total agricultural value in that census tract.
       `}
       description= {'Navigate to the Methodology page. This is the description text for exp agr loss rate'}
     />,
@@ -758,7 +758,7 @@ export const INDICATORS = [
         that have some link to climate change: avalanche, 
         coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, 
         riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined 
-        as the Spatial Hazard Events and Losses or National Centers for Environmental Information’s 
+        as the Spatial Hazard Events and Losses and National Centers for Environmental Information’s 
         (NCEI) reported number of fatalities and injuries caused by the hazard occurrence. To 
         combine fatalities and injuries for the computation of population loss value, an injury is counted 
         as one-tenth (1/10) of a fatality. The NCEI Storm Events Database classifies injuries and fatalities 

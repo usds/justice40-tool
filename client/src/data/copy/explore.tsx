@@ -373,7 +373,7 @@ export const SIDE_PANEL_CATEGORY = defineMessages({
   },
   CLEAN_WATER: {
     id: 'explore.tool.page.side.panel.indicator.title.clean.water',
-    defaultMessage: 'Clean water and waste infrastructure',
+    defaultMessage: 'Clean water and wastewater infrastructure',
     description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Clean water and waste title
 `,
   },
