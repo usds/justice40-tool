@@ -348,7 +348,7 @@ class ScoreETL(ExtractTransformLoad):
                 this_category_only_percentile_field
             )
 
-        # Combine both urban and rural into one field:
+        # Combine both urban and rural into one field
         df[
             f"{output_column_name_root}{field_names.PERCENTILE_URBAN_RURAL_FIELD_SUFFIX}"
         ] = df[urban_rural_percentile_fields_to_combine].mean(
