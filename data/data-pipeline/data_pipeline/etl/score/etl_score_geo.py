@@ -12,7 +12,13 @@ from data_pipeline.etl.sources.census.etl_utils import (
 )
 from data_pipeline.etl.score.etl_utils import check_score_data_source
 from data_pipeline.score import field_names
-from data_pipeline.utils import get_module_logger, zip_files
+from data_pipeline.content.schemas.download_schemas import CSVConfig
+from data_pipeline.utils import (
+    get_module_logger,
+    zip_files,
+    load_yaml_dict_from_file,
+    load_dict_from_yaml_object_fields,
+)
 
 logger = get_module_logger(__name__)
 
@@ -276,6 +282,33 @@ class GeoScoreETL(ExtractTransformLoad):
             )
             logger.info("Completed writing usa-low")
 
+        def create_esri_codebook(codebook):
+            """temporary: helper to make a codebook for esri shapefile only"""
+            logger.info("Creating a codebook that uses the csv names")
+            codebook = (
+                pd.Series(codebook)
+                .reset_index()
+                .rename(
+                    # kept as strings because no downstream impacts
+                    columns={0: "column_name", "index": "shapefile_column"}
+                )
+            )
+
+            # open yaml config
+            downloadable_csv_config = load_yaml_dict_from_file(
+                self.CONTENT_CONFIG / "csv.yml", CSVConfig
+            )
+            column_rename_dict = load_dict_from_yaml_object_fields(
+                yaml_object=downloadable_csv_config["fields"],
+                object_key="score_name",
+                object_value="label",
+            )
+
+            codebook["column_description"] = codebook["column_name"].map(
+                column_rename_dict
+            )
+            codebook.to_csv(self.SCORE_SHP_CODE_CSV, index=False)
+
         def write_esri_shapefile():
             logger.info("Producing ESRI shapefiles")
             # Note that esri shapefiles can't have long column names, so we borrow from the
@@ -295,16 +328,12 @@ class GeoScoreETL(ExtractTransformLoad):
                 if new_col != column:
                     renaming_map[column] = new_col
 
-            pd.Series(codebook).reset_index().rename(
-                # kept as strings because no downstream impacts
-                columns={0: "column", "index": "meaning"}
-            ).to_csv(self.SCORE_SHP_CODE_CSV, index=False)
+            create_esri_codebook(codebook)
 
             self.geojson_score_usa_high.rename(columns=renaming_map).to_file(
                 self.SCORE_SHP_FILE
             )
             logger.info("Completed writing shapefile")
-
             arcgis_zip_file_path = self.SCORE_SHP_PATH / "usa.zip"
             arcgis_files = []
             for file in os.listdir(self.SCORE_SHP_PATH):
