@@ -267,8 +267,8 @@ TILES_SCORE_COLUMNS = {
     field_names.CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009: "IAHSEF",
     field_names.COLLEGE_ATTENDANCE_FIELD: "CA",
     field_names.COLLEGE_NON_ATTENDANCE_FIELD: "NCA",
-    # This is logically equivalent to "non-college greater than 80%"
-    field_names.COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD: "CA_LT20",
+    # This is logically equivalent to "non-college greater than 20%"
+    field_names.COLLEGE_ATTENDANCE_LESS_THAN_80_FIELD: "CA_LT80",
     field_names.LOW_INCOME_THRESHOLD: "FPL200S",
     # Booleans for the front end about the types of thresholds exceeded
     field_names.CLIMATE_THRESHOLD_EXCEEDED: "M_CLT_EOMI",
