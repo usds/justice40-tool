@@ -418,12 +418,14 @@ class CensusACSETL(ExtractTransformLoad):
         df[
             self.ADJUSTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME
         ] = np.where(
-            df[self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME].notna(),
+            df[self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME].notna()
+            & (df[self.COLLEGE_ATTENDANCE_FIELD] != 1),
             (
                 df[self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME]
                 - df[self.COLLEGE_ATTENDANCE_FIELD]
             ).clip(lower=0),
-            np.nan,
+            # if 100% of people are enrolled in college, 0% are below 200FPL
+            np.where(df[self.COLLEGE_ATTENDANCE_FIELD] == 1, 0, np.nan),
         )
 
         # Here we join the geometry of the US to the dataframe so that we can impute
