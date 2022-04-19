@@ -1203,6 +1203,10 @@
     "defaultMessage": "Download shapefile",
     "description": "Navigate to the methodology page. This is the download shapefiles text"
   },
+  "methodology.page.downloadPacket.button3.text": {
+    "defaultMessage": "Download technical support document",
+    "description": "Navigate to the methodology page. This is the download technical support document spreadsheet"
+  },
   "methodology.page.downloadPacket.header.text": {
     "defaultMessage": "Files available for download",
     "description": "Navigate to the methodology page. This is the download packet header text"
@@ -1212,7 +1216,7 @@
     "description": "Navigate to the methodology page. This is the download packet info last updated"
   },
   "methodology.page.downloadPacket.info.text1": {
-    "defaultMessage": "Download the data sources used in the CEJST (.csv and .xlsx, {downloadFileSize} unzipped) or the shapefile, along with a codebook (.zip, {shapefileSize} unzipped).",
+    "defaultMessage": "Download the data sources used in the CEJST (.csv and .xlsx, 52MB unzipped), the shapefile, along with a codebook (.zip, 742MBunzipped) or the technical support document (.pdf, 25MB).",
     "description": "Navigate to the methodology page. This is the download packet info text"
   },
   "methodology.page.downloadPacket.new.tag.text": {

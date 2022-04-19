@@ -62,6 +62,25 @@ const DownloadPacket = () => {
               {METHODOLOGY_COPY.DOWNLOAD_PACKAGE.LAST_UPDATED}
             </div>
 
+            {/* Download box button 3 */}
+            <div className={styles.shapefileButtonContainer}>
+              <div className={styles.newTagContainer}>
+                <Tag className={styles.newtag}>{METHODOLOGY_COPY.DOWNLOAD_PACKAGE.NEW_TAG}</Tag>
+              </div>
+              <a data-cy={'shapefile-link'} download href={METHODOLOGY_COPY.DOWNLOAD_TSD_URL}>
+                <Button className={styles.downloadBoxButton} type="button">
+                  <div>
+                    <img src={downloadIcon} alt={'download icon for download package'}/>
+                  </div>
+                  <div className={styles.shapeFileButtonText}>
+                    {METHODOLOGY_COPY.DOWNLOAD_PACKAGE.BUTTON_TEXT3}
+                  </div>
+                </Button>
+              </a>
+            </div>
+            <div className={styles.lastUpdated}>
+              {METHODOLOGY_COPY.DOWNLOAD_PACKAGE.LAST_UPDATED}
+            </div>
 
           </div>
         </div>

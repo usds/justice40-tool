@@ -383,7 +383,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     Files available for download
                   </div>
                   <div>
-                    Download the data sources used in the CEJST (.csv and .xlsx, 52MB unzipped) or the shapefile, along with a codebook (.zip, 742MB unzipped).
+                    Download the data sources used in the CEJST (.csv and .xlsx, 52MB unzipped), the shapefile, along with a codebook (.zip, 742MBunzipped) or the technical support document (.pdf, 25MB).
                   </div>
                   <div>
                     <a
@@ -440,6 +440,42 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                         </div>
                         <div>
                           Download shapefile
+                        </div>
+                      </button>
+                    </a>
+                  </div>
+                  <div>
+                    Last updated: 04/06/22 
+                  </div>
+                  <div>
+                    <div>
+                      <span
+                        class="usa-tag"
+                        data-testid="tag"
+                      >
+                        <strong>
+                          NEW
+                        </strong>
+                      </span>
+                    </div>
+                    <a
+                      data-cy="shapefile-link"
+                      download=""
+                      href="//"
+                    >
+                      <button
+                        class="usa-button"
+                        data-testid="button"
+                        type="button"
+                      >
+                        <div>
+                          <img
+                            alt="download icon for download package"
+                            src="test-file-stub"
+                          />
+                        </div>
+                        <div>
+                          Download technical support document
                         </div>
                       </button>
                     </a>

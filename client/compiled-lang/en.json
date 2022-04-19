@@ -2575,6 +2575,12 @@
       "value": "Download shapefile"
     }
   ],
+  "methodology.page.downloadPacket.button3.text": [
+    {
+      "type": 0,
+      "value": "Download technical support document"
+    }
+  ],
   "methodology.page.downloadPacket.header.text": [
     {
       "type": 0,
@@ -2594,23 +2600,7 @@
   "methodology.page.downloadPacket.info.text1": [
     {
       "type": 0,
-      "value": "Download the data sources used in the CEJST (.csv and .xlsx, "
-    },
-    {
-      "type": 1,
-      "value": "downloadFileSize"
-    },
-    {
-      "type": 0,
-      "value": " unzipped) or the shapefile, along with a codebook (.zip, "
-    },
-    {
-      "type": 1,
-      "value": "shapefileSize"
-    },
-    {
-      "type": 0,
-      "value": " unzipped)."
+      "value": "Download the data sources used in the CEJST (.csv and .xlsx, 52MB unzipped), the shapefile, along with a codebook (.zip, 742MBunzipped) or the technical support document (.pdf, 25MB)."
     }
   ],
   "methodology.page.downloadPacket.new.tag.text": [

@@ -89,6 +89,13 @@ export const DOWNLOAD_SHAPEFILE_URL = [
   process.env.GATSBY_SHAPE_FILE_PATH,
 ].join('/');
 
+// TSD = Tech Support Document
+export const DOWNLOAD_TSD_URL = [
+  process.env.GATSBY_CDN_TILES_BASE_URL,
+  process.env.GATSBY_DATA_PIPELINE_SCORE_PATH,
+  process.env.GATSBY_TSD_DOWNLOAD_FILE_PATH,
+].join('/');
+
 export const DOWNLOAD_PACKAGE = {
   TITLE: <FormattedMessage
     id={'methodology.page.downloadPacket.header.text'}
@@ -97,7 +104,7 @@ export const DOWNLOAD_PACKAGE = {
   />,
   DESCRIPTION1: <FormattedMessage
     id={ 'methodology.page.downloadPacket.info.text1'}
-    defaultMessage= {`Download the data sources used in the CEJST (.csv and .xlsx, {downloadFileSize} unzipped) or the shapefile, along with a codebook (.zip, {shapefileSize} unzipped).`}
+    defaultMessage= {`Download the data sources used in the CEJST (.csv and .xlsx, 52MB unzipped), the shapefile, along with a codebook (.zip, 742MBunzipped) or the technical support document (.pdf, 25MB).`}
     description= {'Navigate to the methodology page. This is the download packet info text'}
     values= {{
       downloadFileSize: <FormattedNumber
@@ -136,6 +143,11 @@ export const DOWNLOAD_PACKAGE = {
     id={ 'methodology.page.downloadPacket.button2.text'}
     defaultMessage= {'Download shapefile'}
     description= {'Navigate to the methodology page. This is the download shapefiles text'}
+  />,
+  BUTTON_TEXT3: <FormattedMessage
+    id={ 'methodology.page.downloadPacket.button3.text'}
+    defaultMessage= {'Download technical support document'}
+    description= {'Navigate to the methodology page. This is the download technical support document spreadsheet'}
   />,
   NEW_TAG: <FormattedMessage
     id={ 'methodology.page.downloadPacket.new.tag.text'}
