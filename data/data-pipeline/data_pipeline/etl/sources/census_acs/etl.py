@@ -1,17 +1,25 @@
 from collections import namedtuple
+import os
 import pandas as pd
 import numpy as np
 import geopandas as gpd
 
+from data_pipeline.config import settings
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.sources.census_acs.etl_utils import (
     retrieve_census_acs_data,
     impute_by_geographic_neighbors,
 )
-from data_pipeline.utils import get_module_logger
+
+from data_pipeline.utils import get_module_logger, unzip_file_from_url
 from data_pipeline.score import field_names
 
 logger = get_module_logger(__name__)
+
+# because now there is a requirement for the us.json, this will port from
+# AWS when a local copy does not exist.
+# @Jorge -- is this too much of a hack?
+CENSUS_DATA_S3_URL = settings.AWS_JUSTICE40_DATASOURCES_URL + "/census.zip"
 
 
 class CensusACSETL(ExtractTransformLoad):
@@ -223,6 +231,33 @@ class CensusACSETL(ExtractTransformLoad):
 
         self.df: pd.DataFrame
 
+    def _merge_geojson(
+        self,
+        df: pd.DataFrame,
+        usa_geo_df: gpd.GeoDataFrame,
+        geoid_field: str = "GEOID10",
+        geometry_field: str = "geometry",
+        state_code_field: str = "STATEFP10",
+        county_code_field: str = "COUNTYFP10",
+    ) -> gpd.GeoDataFrame:
+        usa_geo_df[geoid_field] = (
+            usa_geo_df[geoid_field].astype(str).str.zfill(11)
+        )
+        return gpd.GeoDataFrame(
+            df.merge(
+                usa_geo_df[
+                    [
+                        geoid_field,
+                        geometry_field,
+                        state_code_field,
+                        county_code_field,
+                    ]
+                ],
+                left_on=[self.GEOID_TRACT_FIELD_NAME],
+                right_on=[geoid_field],
+            )
+        )
+
     def extract(self) -> None:
         # Define the variables to retrieve
         variables = (
@@ -245,39 +280,32 @@ class CensusACSETL(ExtractTransformLoad):
             data_path_for_fips_codes=self.DATA_PATH,
         )
 
-    def _read_and_merge_geojson(
-        self,
-        df: pd.DataFrame,
-        usa_geo_df_path: str,
-        geoid_field: str = "GEOID10",
-        geometry_field: str = "geometry",
-        state_code_field: str = "STATEFP10",
-        county_code_field: str = "COUNTYFP10",
-    ) -> gpd.GeoDataFrame:
-        usa_geo_df = gpd.read_file(usa_geo_df_path)
-        usa_geo_df[geoid_field] = (
-            usa_geo_df[geoid_field].astype(str).str.zfill(11)
-        )
-        return gpd.GeoDataFrame(
-            df.merge(
-                usa_geo_df[
-                    [
-                        geoid_field,
-                        geometry_field,
-                        state_code_field,
-                        county_code_field,
-                    ]
-                ],
-                left_on=[self.GEOID_TRACT_FIELD_NAME],
-                right_on=[geoid_field],
-            )
-        )
-
     def transform(self) -> None:
         logger.info("Starting Census ACS Transform")
 
         df = self.df
 
+        # Here we join the geometry of the US to the dataframe so that we can impute
+        # The income of neighbors. first this looks locally; if there's no local
+        # geojson file for all of the US, this will read it off of S3
+        logger.info("Reading in geojson for the country")
+        if not os.path.exists(
+            self.DATA_PATH / "census" / "geojson" / "us.json"
+        ):
+            logger.info("Fetching Census data from AWS S3")
+            unzip_file_from_url(
+                CENSUS_DATA_S3_URL,
+                self.DATA_PATH / "tmp",
+                self.DATA_PATH,
+            )
+
+        geo_df = gpd.read_file(
+            self.DATA_PATH / "census" / "geojson" / "us.json"
+        )
+        df = self._merge_geojson(
+            df=df,
+            usa_geo_df=geo_df,
+        )
         # Rename two fields.
         df = df.rename(
             columns={
@@ -415,6 +443,7 @@ class CensusACSETL(ExtractTransformLoad):
         # We preserve the null character of missing income even when college
         # attendance is not null (otherwise this would be hard set to 0)
         # and left-cut-off values at 0%
+        logger.info("Adjusting income information")
         df[
             self.ADJUSTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME
         ] = np.where(
@@ -425,15 +454,8 @@ class CensusACSETL(ExtractTransformLoad):
                 - df[self.COLLEGE_ATTENDANCE_FIELD]
             ).clip(lower=0),
             # if 100% of people are enrolled in college, 0% are below 200FPL
+            # whether or not we have that information
             np.where(df[self.COLLEGE_ATTENDANCE_FIELD] == 1, 0, np.nan),
-        )
-
-        # Here we join the geometry of the US to the dataframe so that we can impute
-        # the income of neighbors.
-        logger.info("Reading in geojson for the country")
-        geo_df = self._read_and_merge_geojson(
-            df=df,
-            usa_geo_df_path=self.DATA_PATH / "census" / "geojson" / "us.json",
         )
 
         # Then we impute income for both adjusted and unadjusted income measures
@@ -452,7 +474,7 @@ class CensusACSETL(ExtractTransformLoad):
                     imputed_field_name=self.IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME,
                 ),
             ],
-            geo_df=geo_df,
+            geo_df=df,
             geoid_field=self.GEOID_TRACT_FIELD_NAME,
             county_bool=False,
         )
