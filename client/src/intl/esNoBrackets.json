@@ -117,7 +117,7 @@
 	"methodology.step.1.a.info.2": "If a census block group is not in a metropolitan area, this value is the median income of the census block group calculated as a percent of the state’s median income.",
 	"methodology.step.1.b.heading": "Percent of households below or at 100% of the federal poverty line",
 	"methodology.step.1.c.heading": "The high school degree achievement rate for adults 25 years and older",
-	"methodology.step.1.c.info": "The percent of individuals who are 25 or older who have received a high school degree.",
+	"methodology.step.1.c.info": "The percentage of individuals who are 25 or older who have received a high school degree.",
 	"methodology.step.1.heading": "Gather datasets",
 	"methodology.step.1.info": "The methodology includes the following inputs that are equally weighted.",
 	"methodology.step.2.heading": "Determine communities of focus",

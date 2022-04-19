@@ -268,40 +268,6 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         </div>
       </div>
     </div>
-    <div
-      class="grid-container-desktop-lg"
-      data-testid="gridContainer"
-    >
-      <div
-        class="usa-alert usa-alert--info"
-        data-testid="alert"
-      >
-        <div
-          class="usa-alert__body"
-        >
-          <h4
-            class="usa-alert__heading"
-          >
-            Improvements to the map on the Explore the tool page
-          </h4>
-          <p
-            class="usa-alert__text"
-          >
-            View improvements made to the display of the information for each census tract and 
-            <a
-              class="usa-link usa-link--external"
-              data-cy=""
-              href="mailto:Screeningtool-Support@omb.eop.gov"
-              rel="noreferrer"
-              target="_blank"
-            >
-              send feedback
-            </a>
-            .
-          </p>
-        </div>
-      </div>
-    </div>
   </header>
   <main
     id="main-content"
@@ -558,7 +524,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             low income
           </a>
-           AND 80% or more of adults 15 or older are not enrolled in 
+           AND 80% or more of individuals 15 or older are not enrolled in 
           <a
             href="#high-ed-enroll-rate"
           >
@@ -611,7 +577,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             low income
           </a>
-           AND 80% or more of adults 15 or older are not enrolled in 
+           AND 80% or more of individuals 15 or older are not enrolled in 
           <a
             href="#high-ed-enroll-rate"
           >
@@ -668,7 +634,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             low income
           </a>
-           AND 80% or more of adults 15 or older are not enrolled in 
+           AND 80% or more of individuals 15 or older are not enrolled in 
           <a
             href="#high-ed-enroll-rate"
           >
@@ -727,7 +693,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             low income
           </a>
-           AND 80% or more of adults 15 or older are not enrolled in 
+           AND 80% or more of individuals 15 or older are not enrolled in 
           <a
             href="#high-ed-enroll-rate"
           >
@@ -786,7 +752,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             low income
           </a>
-           AND 80% or more of adults 15 or older are not enrolled in 
+           AND 80% or more of individuals 15 or older are not enrolled in 
           <a
             href="#high-ed-enroll-rate"
           >
@@ -799,7 +765,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       </div>
       <div>
         <h3>
-          Critical clean water and waste infrastructure
+          Critical clean water and wasterwater infrastructure
         </h3>
         <p>
           
@@ -833,7 +799,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             low income
           </a>
-           AND 80% or more of adults 15 or older are not enrolled in 
+           AND 80% or more of individuals 15 or older are not enrolled in 
           <a
             href="#high-ed-enroll-rate"
           >
@@ -898,7 +864,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             low income
           </a>
-           AND 80% or more of adults 15 or older are not enrolled in 
+           AND 80% or more of individuals 15 or older are not enrolled in 
           <a
             href="#high-ed-enroll-rate"
           >
@@ -944,7 +910,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             unemployment
           </a>
-           OR percent individuals in households at or below 100% Federal 
+           OR percentage of individuals in households at or below 100% Federal 
           <a
             href="#poverty"
           >
@@ -963,7 +929,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             high school degree
           </a>
-           AND 80% or more of adults 15 or older are not enrolled in 
+           AND 80% or more of individuals 15 or older are not enrolled in 
           <a
             href="#high-ed-enroll-rate"
           >
@@ -1125,12 +1091,12 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </h3>
                 <div>
                   
-        Percent of agriculture value at risk from losses due to fourteen types of 
+        Percent of agricultural value at risk from losses due to fourteen types of 
         natural hazards that have some link 
         to climate change: avalanche, coastal flooding, 
         cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong 
-        wind, tornado, wildfire, and winter weather. Rate calculated by dividing the agriculture value at risk in 
-        a census tract by the total agriculture value in that census tract.
+        wind, tornado, wildfire, and winter weather. Rate calculated by dividing the agricultural value at risk in 
+        a census tract by the total agricultural value in that census tract.
       
                 </div>
                 <ul>
@@ -1233,7 +1199,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         that have some link to climate change: avalanche, 
         coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, 
         riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined 
-        as the Spatial Hazard Events and Losses or National Centers for Environmental Information’s 
+        as the Spatial Hazard Events and Losses and National Centers for Environmental Information’s 
         (NCEI) reported number of fatalities and injuries caused by the hazard occurrence. To 
         combine fatalities and injuries for the computation of population loss value, an injury is counted 
         as one-tenth (1/10) of a fatality. The NCEI Storm Events Database classifies injuries and fatalities 
@@ -1362,7 +1328,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     >
                       Fusion of model and monitor data
                     </a>
-                     from 2017 as compiled by EPA’s EJSCREEN, sourced from EPA National Air Toxics Assessment (NATA) and the U.S. Department of Transportation (DOT) traffic data
+                     from 2017 as compiled by EPA’s EJScreen, sourced from EPA National Air Toxics Assessment (NATA) and the U.S. Department of Transportation (DOT) traffic data
     
                   </li>
                   <li>
@@ -1411,7 +1377,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     >
                       National Air Toxics Assessment (NATA)
                     </a>
-                     from 2014 as compiled by EPA's EJSCREEN
+                     from 2014 as compiled by EPA's EJScreen
                   </li>
                   <li>
                     <span>
@@ -1459,7 +1425,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     >
                       Traffic Data
                     </a>
-                     from 2017 as compiled by EPA's EJSCREEN
+                     from 2017 as compiled by EPA's EJScreen
                   </li>
                   <li>
                     <span>
@@ -1654,7 +1620,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                       Treatment, Storage, and Disposal Facilities (TSDF) data
                     </a>
                      from 2020 calculated from EPA's RCRA database as compiled 
-      by EPA's EJSCREEN
+      by EPA's EJScreen
     
                   </li>
                   <li>
@@ -1697,13 +1663,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <a
                       class="usa-link usa-link--external"
                       data-cy=""
-                      href="https://enviro.epa.gov/facts/rcrainfo/search.html"
+                      href="https://cumulis.epa.gov/supercpad/cursites/srchsites.cfm"
                       rel="noreferrer"
                       target="_blank"
                     >
                       CERCLIS database
                     </a>
-                     from 2020 as compiled by EPA’s EJSCREEN
+                     from 2020 as compiled by EPA’s EJScreen
                   </li>
                   <li>
                     <span>
@@ -1751,7 +1717,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     >
                       RMP database
                     </a>
-                     from 2020 as compiled by EPA’s EJSCREEN
+                     from 2020 as compiled by EPA’s EJScreen
                   </li>
                   <li>
                     <span>
@@ -1778,7 +1744,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    Critical clean water and waste infrastructure category
+                    Critical clean water and wastewater infrastructure category
                   </li>
                   <li>
                     <span>
@@ -1799,7 +1765,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     >
                       Risk-Screening Environmental Indicators (RSEI) Model
                     </a>
-                     from 2020 as compiled by EPA’s EJSCREEN
+                     from 2020 as compiled by EPA’s EJScreen
                   </li>
                   <li>
                     <span>
@@ -2002,7 +1968,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                       rel="noreferrer"
                       target="_blank"
                     >
-                      U.S. Small-area Life Expectancy Estimates Project (USALEEP)
+                      U.S. Small-Area Life Expectancy Estimates Project (USALEEP)
                     </a>
                      from 2010-2015
                   </li>
