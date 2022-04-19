@@ -281,6 +281,13 @@ EJSCREEN_AREAS_OF_CONCERN_STATE_95TH_PERCENTILE_COMMUNITIES_FIELD = (
 )
 # Mapping inequality data.
 HOLC_GRADE_D_TRACT_PERCENT_FIELD: str = "Percent of tract that is HOLC Grade D"
+HOLC_GRADE_C_TRACT_PERCENT_FIELD: str = "Percent of tract that is HOLC Grade C"
+HOLC_GRADE_C_OR_D_TRACT_PERCENT_FIELD: str = (
+    "Percent of tract that is HOLC Grade C or HOLC Grade D"
+)
+HOLC_GRADE_C_OR_D_TRACT_50_PERCENT_FIELD: str = (
+    "Tract is more than 50% Grade C or D"
+)
 HOLC_GRADE_D_TRACT_20_PERCENT_FIELD: str = "Tract is >20% HOLC Grade D"
 HOLC_GRADE_D_TRACT_50_PERCENT_FIELD: str = "Tract is >50% HOLC Grade D"
 HOLC_GRADE_D_TRACT_75_PERCENT_FIELD: str = "Tract is >75% HOLC Grade D"
@@ -293,7 +300,7 @@ MICHIGAN_EJSCREEN_PRIORITY_COMMUNITY_FIELD: str = (
 )
 
 # CDC SVI INDEX percentile fields
-CDC_SVI_INDEX_SE_THEME_FIELD: str = "SVI - Socioeconomic Index"
+CDC_SVI_INDEX_SE_THEME_FIELD: str = "SVI - Social Vulnerability Index"
 CDC_SVI_INDEX_HOUSEHOLD_THEME_COMPOSITION_FIELD: str = (
     "SVI - Household Composition Index"
 )

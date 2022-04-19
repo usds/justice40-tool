@@ -1,4 +1,5 @@
 import pathlib
+from tokenize import group
 import numpy as np
 import pandas as pd
 
@@ -47,7 +48,8 @@ class MappingInequalityETL(ExtractTransformLoad):
         self.HOLC_GRADE_AND_ID_FIELD: str = "holc_id"
         self.CITY_INPUT_FIELD: str = "city"
 
-        self.HOLC_GRADE_D_FIELD: str = "HOLC Grade D"
+        self.HOLC_GRADE_D_FIELD: str = "HOLC Grade D (hazardous)"
+        self.HOLC_GRADE_C_FIELD: str = "HOLC Grade C (declining)"
         self.HOLC_GRADE_MANUAL_FIELD: str = "HOLC Grade (manually mapped)"
         self.HOLC_GRADE_DERIVED_FIELD: str = "HOLC Grade (derived)"
 
@@ -113,35 +115,55 @@ class MappingInequalityETL(ExtractTransformLoad):
             how="left",
         )
 
-        # Create a single field that combines the 'derived' grade D field with the
-        # manually mapped grade D field into a single grade D field.
-        merged_df[self.HOLC_GRADE_D_FIELD] = np.where(
-            (merged_df[self.HOLC_GRADE_DERIVED_FIELD] == "D")
-            | (merged_df[self.HOLC_GRADE_MANUAL_FIELD] == "D"),
-            True,
-            None,
+        # Create a single field that combines the 'derived' grade C and D fields with the
+        # manually mapped grade D field into a single grade C and D fields.
+        ## Note: there are no manually derived C tracts at the moment
+
+        for grade, field_name in [
+            ("C", self.HOLC_GRADE_C_FIELD),
+            ("D", self.HOLC_GRADE_D_FIELD),
+        ]:
+            merged_df[field_name] = np.where(
+                (merged_df[self.HOLC_GRADE_DERIVED_FIELD] == grade)
+                | (merged_df[self.HOLC_GRADE_MANUAL_FIELD] == grade),
+                True,
+                None,
+            )
+
+        # Group by tract ID to get tract proportions
+        merged_df[
+            field_names.HOLC_GRADE_D_TRACT_PERCENT_FIELD
+        ] = merged_df.groupby(
+            [self.GEOID_TRACT_FIELD_NAME, self.HOLC_GRADE_D_FIELD], dropna=False
+        )[
+            self.TRACT_PROPORTION_FIELD
+        ].transform(
+            sum
         )
 
-        # Start grouping by, to sum all of the grade D parts of each tract.
-        grouped_df = (
-            merged_df.groupby(
-                by=[
-                    self.GEOID_TRACT_FIELD_NAME,
-                    self.HOLC_GRADE_D_FIELD,
-                ],
-                # Keep the nulls, so we know the non-D proportion.
-                dropna=False,
-            )[self.TRACT_PROPORTION_FIELD]
-            .sum()
-            .reset_index()
+        merged_df[
+            field_names.HOLC_GRADE_C_TRACT_PERCENT_FIELD
+        ] = merged_df.groupby(
+            [self.GEOID_TRACT_FIELD_NAME, self.HOLC_GRADE_D_FIELD], dropna=False
+        )[
+            self.TRACT_PROPORTION_FIELD
+        ].transform(
+            sum
         )
 
-        # Create a field that is only the percent that is grade D.
-        grouped_df[field_names.HOLC_GRADE_D_TRACT_PERCENT_FIELD] = np.where(
-            grouped_df[self.HOLC_GRADE_D_FIELD],
-            grouped_df[self.TRACT_PROPORTION_FIELD],
-            0,
+        merged_df[
+            field_names.HOLC_GRADE_C_OR_D_TRACT_PERCENT_FIELD
+        ] = merged_df[
+            [
+                field_names.HOLC_GRADE_C_TRACT_PERCENT_FIELD,
+                field_names.HOLC_GRADE_D_TRACT_PERCENT_FIELD,
+            ]
+        ].sum(
+            axis=1
         )
+
+        # Preserve a single row per tract
+        grouped_df = merged_df.drop_duplicates()
 
         # Calculate some specific threshold cutoffs, for convenience.
         grouped_df[field_names.HOLC_GRADE_D_TRACT_20_PERCENT_FIELD] = (
@@ -154,15 +176,15 @@ class MappingInequalityETL(ExtractTransformLoad):
             grouped_df[field_names.HOLC_GRADE_D_TRACT_PERCENT_FIELD] > 0.75
         )
 
-        # Drop the non-True values of `self.HOLC_GRADE_D_FIELD` -- we only
-        # want one row per tract for future joins.
-        # Note this means not all tracts will be in this data.
-        # Note: this singleton comparison warning may be a pylint bug:
-        # https://stackoverflow.com/questions/51657715/pylint-pandas-comparison-to-true-should-be-just-expr-or-expr-is-true-sin#comment90876517_51657715
-        # pylint: disable=singleton-comparison
-        grouped_df = grouped_df[
-            grouped_df[self.HOLC_GRADE_D_FIELD] == True  # noqa: E712
-        ]
+        # # Drop the non-True values of `self.HOLC_GRADE_D_FIELD` -- we only
+        # # want one row per tract for future joins.
+        # # Note this means not all tracts will be in this data.
+        # # Note: this singleton comparison warning may be a pylint bug:
+        # # https://stackoverflow.com/questions/51657715/pylint-pandas-comparison-to-true-should-be-just-expr-or-expr-is-true-sin#comment90876517_51657715
+        # # pylint: disable=singleton-comparison
+        # grouped_df = grouped_df[
+        #     grouped_df[self.HOLC_GRADE_D_FIELD] == True  # noqa: E712
+        # ]
 
         # Sort for convenience.
         grouped_df.sort_values(by=self.GEOID_TRACT_FIELD_NAME, inplace=True)
