@@ -2575,20 +2575,26 @@
       "value": "Download shapefile"
     }
   ],
+  "methodology.page.downloadPacket.button3.text": [
+    {
+      "type": 0,
+      "value": "Download technical support document"
+    }
+  ],
   "methodology.page.downloadPacket.header.text": [
     {
       "type": 0,
       "value": "Files available for download"
     }
   ],
-  "methodology.page.downloadPacket.info.last.updated": [
+  "methodology.page.downloadPacket.info.shape.last.updated": [
     {
       "type": 0,
       "value": "Last updated: "
     },
     {
       "type": 1,
-      "value": "downloadLastUpdated"
+      "value": "shapeLastUpdated"
     }
   ],
   "methodology.page.downloadPacket.info.text1": [
@@ -2602,7 +2608,7 @@
     },
     {
       "type": 0,
-      "value": " unzipped) or the shapefile, along with a codebook (.zip, "
+      "value": " unzipped), the shapefile, along with a codebook (.zip, "
     },
     {
       "type": 1,
@@ -2610,7 +2616,35 @@
     },
     {
       "type": 0,
-      "value": " unzipped)."
+      "value": " unzipped) or the technical support document (.pdf, "
+    },
+    {
+      "type": 1,
+      "value": "tsdFileSize"
+    },
+    {
+      "type": 0,
+      "value": ")."
+    }
+  ],
+  "methodology.page.downloadPacket.info.tsd.last.updated": [
+    {
+      "type": 0,
+      "value": "Last updated: "
+    },
+    {
+      "type": 1,
+      "value": "tsdLastUpdated"
+    }
+  ],
+  "methodology.page.downloadPacket.info.zip.last.updated": [
+    {
+      "type": 0,
+      "value": "Last updated: "
+    },
+    {
+      "type": 1,
+      "value": "downloadLastUpdated"
     }
   ],
   "methodology.page.downloadPacket.new.tag.text": [
