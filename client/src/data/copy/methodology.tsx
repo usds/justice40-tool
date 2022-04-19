@@ -333,11 +333,11 @@ export const CATEGORIES = {
     METHODOLOGY: <FormattedMessage
       id= {'methodology.page.indicator.categories.clean.water.methodology'}
       defaultMessage= {`Critical clean water and wastewater infrastructure category`}
-      description= {`Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Critical clean water and waste infrastructure methodology`}
+      description= {`Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Critical clean water and wasterwater infrastructure methodology`}
     />,
     TITLE: <FormattedMessage
       id={'indicator.categories.clean.water.title'}
-      defaultMessage={'Critical clean water and waste infrastructure'}
+      defaultMessage={'Critical clean water and wasterwater infrastructure'}
       description= {'Navigate to the methodology page. Navigate to the category section. This will set the category title'}
 
     />,
@@ -392,7 +392,7 @@ export const CATEGORIES = {
     />,
     IF: <FormattedMessage
       id= {'methodology.page.indicator.categories.work.dev.if'}
-      defaultMessage= {`<boldtag>IF</boldtag> at or above the 90th percentile for <link1>low median income</link1> as a percentage of area median income OR <link2>linguistic isolation</link2> OR <link3>unemployment</link3> OR percent of individuals in households at or below 100% Federal <link4>poverty</link4> level
+      defaultMessage= {`<boldtag>IF</boldtag> at or above the 90th percentile for <link1>low median income</link1> as a percentage of area median income OR <link2>linguistic isolation</link2> OR <link3>unemployment</link3> OR percentage of individuals in households at or below 100% Federal <link4>poverty</link4> level
       `}
       description= {'Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula'}
       values= {{

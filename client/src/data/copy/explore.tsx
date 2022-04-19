@@ -719,14 +719,14 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
       Percent of a census tract's population in households where the household income is at or below 100% 
       of the Federal poverty level 
     `,
-    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Percent of individuals in households where the household income is at or below 100% of the federal poverty level`,
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator description of Percentage of individuals in households where the household income is at or below 100% of the federal poverty level`,
   },
   HIGH_SKL: {
     id: 'explore.tool.page.side.panel.indicator.description.high.school',
     defaultMessage: `
       Percent of people ages 25 years or older whose education level is less than a high school diploma 
     `,
-    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Percent of people ages 25 years or older whose education level 
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of people ages 25 years or older whose education level 
       is less than a high school diploma`,
   },
 });

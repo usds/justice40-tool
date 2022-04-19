@@ -313,7 +313,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
     </div>
     <div>
       <h3>
-        Critical clean water and waste infrastructure
+        Critical clean water and wasterwater infrastructure
       </h3>
       <p>
         
@@ -458,7 +458,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         >
           unemployment
         </a>
-         OR percent of individuals in households at or below 100% Federal 
+         OR percentage of individuals in households at or below 100% Federal 
         <a
           href="#poverty"
         >
