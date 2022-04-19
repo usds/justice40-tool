@@ -1,5 +1,4 @@
 import pathlib
-from tokenize import group
 import numpy as np
 import pandas as pd
 
@@ -62,6 +61,7 @@ class MappingInequalityETL(ExtractTransformLoad):
             field_names.HOLC_GRADE_D_TRACT_20_PERCENT_FIELD,
             field_names.HOLC_GRADE_D_TRACT_50_PERCENT_FIELD,
             field_names.HOLC_GRADE_D_TRACT_75_PERCENT_FIELD,
+            field_names.REDLINED_SHARE,
         ]
 
         self.df: pd.DataFrame
@@ -190,7 +190,7 @@ class MappingInequalityETL(ExtractTransformLoad):
         # Create the indicator we will use
         grouped_df[field_names.REDLINED_SHARE] = (
             grouped_df[field_names.HOLC_GRADE_C_OR_D_TRACT_PERCENT_FIELD] > 0.5
-        ) & (grouped_df[field_names.HOLC_GRADE_D_TRACT_PERCENT_FIELD > 0])
+        ) & (grouped_df[field_names.HOLC_GRADE_D_TRACT_PERCENT_FIELD] > 0)
 
         # Sort for convenience.
         grouped_df.sort_values(by=self.GEOID_TRACT_FIELD_NAME, inplace=True)
