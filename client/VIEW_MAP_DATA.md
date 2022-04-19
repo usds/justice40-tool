@@ -183,7 +183,7 @@ When zooming in (the zoom number will increase), thus aka 'high' zoom levels, th
                    "Poverty (Less than 200% of federal poverty line) (percentile)":0.36,
 
                    // EDUCATION_PROPERTY_PERCENTILE
-                   "Percent individuals age 25 or over with less than high school degree (percentile)":0.08,
+                   "Percentage of individuals age 25 or over with less than high school degree (percentile)":0.08,
 
                    // LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE
                    "Linguistic isolation (percent) (percentile)":0.05, 

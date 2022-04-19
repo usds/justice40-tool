@@ -29,7 +29,7 @@ describe('simulate a click on map', () => {
     'Linguistic isolation (percent) (percentile)': 0.9623469180109516,
     'Percent of households in linguistic isolation (percentile)': 0.9230800651740774,
     'Poverty (Less than 200% of federal poverty line) (percentile)': 0.947202643271775,
-    'Percent individuals age 25 or over with less than high school degree (percentile)': 0.7804232684164424,
+    'Percentage of individuals age 25 or over with less than high school degree (percentile)': 0.7804232684164424,
     'Unemployed civilians (percent) (percentile)': 0.9873599918675144,
     'Score D (percentile)': 0.9321799276549586,
   };
