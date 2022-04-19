@@ -280,6 +280,9 @@ EJSCREEN_AREAS_OF_CONCERN_STATE_95TH_PERCENTILE_COMMUNITIES_FIELD = (
     "EJSCREEN Areas of Concern, State, 95th percentile (communities)"
 )
 # Mapping inequality data.
+REDLINED_SHARE: str = (
+    "Redlined share: tract had redlining and was more than 50% Grade C or D"
+)
 HOLC_GRADE_D_TRACT_PERCENT_FIELD: str = "Percent of tract that is HOLC Grade D"
 HOLC_GRADE_C_TRACT_PERCENT_FIELD: str = "Percent of tract that is HOLC Grade C"
 HOLC_GRADE_C_OR_D_TRACT_PERCENT_FIELD: str = (
