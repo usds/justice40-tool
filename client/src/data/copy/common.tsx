@@ -17,8 +17,6 @@ export const simpleLink = (href:string) => (str:string) => <a href={href}>{str}<
 // eslint-disable-next-line max-len
 export const linkFn = (to:string, isInternal:boolean, isOpenNewTab:boolean) => (str:string) => <LinkTypeWrapper linkText={str} internal={isInternal} url={to} openUrlNewTab={isOpenNewTab}/>;
 
-export const RFI_LINK = `https://www.federalregister.gov/d/2022-03920`;
-
 export const FEEDBACK_EMAIL = 'Screeningtool-Support@omb.eop.gov';
 
 // Beta Banner
@@ -141,7 +139,7 @@ export const FOOTER = defineMessages({
   },
   RFI_LINK: {
     id: 'common.pages.footer.rfi.link',
-    defaultMessage: RFI_LINK,
+    defaultMessage: 'https://www.federalregister.gov/d/2022-03920',
     description: 'Navigate to the about page. This is Footer rfi link',
   },
   WHITEHOUSE: {

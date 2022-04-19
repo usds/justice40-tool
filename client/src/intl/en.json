@@ -164,6 +164,7 @@
     "description": "Navigate to the about page. This is Footer privacy policy link text"
   },
   "common.pages.footer.rfi.link": {
+    "defaultMessage": "https://www.federalregister.gov/d/2022-03920",
     "description": "Navigate to the about page. This is Footer rfi link"
   },
   "common.pages.footer.rfi.text": {
