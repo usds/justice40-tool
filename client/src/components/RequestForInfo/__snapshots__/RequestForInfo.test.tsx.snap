@@ -21,7 +21,7 @@ exports[`rendering of the RequestForInfo checks if component renders 1`] = `
         <a
           class="usa-link usa-link--external"
           data-cy=""
-          href="undefined"
+          href="https://www.federalregister.gov/d/2022-03920"
           rel="noreferrer"
           target="_blank"
         >
