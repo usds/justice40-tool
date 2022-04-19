@@ -1211,13 +1211,21 @@
     "defaultMessage": "Files available for download",
     "description": "Navigate to the methodology page. This is the download packet header text"
   },
-  "methodology.page.downloadPacket.info.last.updated": {
-    "defaultMessage": "Last updated: {downloadLastUpdated}",
+  "methodology.page.downloadPacket.info.shape.last.updated": {
+    "defaultMessage": "Last updated: {shapeLastUpdated}",
     "description": "Navigate to the methodology page. This is the download packet info last updated"
   },
   "methodology.page.downloadPacket.info.text1": {
-    "defaultMessage": "Download the data sources used in the CEJST (.csv and .xlsx, 52MB unzipped), the shapefile, along with a codebook (.zip, 742MBunzipped) or the technical support document (.pdf, 25MB).",
+    "defaultMessage": "Download the data sources used in the CEJST (.csv and .xlsx, {downloadFileSize} unzipped), the shapefile, along with a codebook (.zip, {shapefileSize} unzipped) or the technical support document (.pdf, {tsdFileSize}).",
     "description": "Navigate to the methodology page. This is the download packet info text"
+  },
+  "methodology.page.downloadPacket.info.tsd.last.updated": {
+    "defaultMessage": "Last updated: {tsdLastUpdated}",
+    "description": "Navigate to the methodology page. This is the download packet info last updated"
+  },
+  "methodology.page.downloadPacket.info.zip.last.updated": {
+    "defaultMessage": "Last updated: {downloadLastUpdated}",
+    "description": "Navigate to the methodology page. This is the download packet info last updated"
   },
   "methodology.page.downloadPacket.new.tag.text": {
     "defaultMessage": "<boldtag>NEW</boldtag>",

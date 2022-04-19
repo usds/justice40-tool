@@ -26,7 +26,9 @@ const DownloadPacket = () => {
 
             {/* Download box button 1 */}
             <div className={styles.dataSourceButtonContainer}>
-              <a data-cy={'download-link'} download href={METHODOLOGY_COPY.DOWNLOAD_ZIP_URL}>
+              <a data-cy={'download-link'}
+                download
+                href={METHODOLOGY_COPY.DOWNLOAD_ZIP_URL}>
                 <Button className={styles.downloadBoxButton} type="button">
                   <div>
                     <img src={downloadIcon} alt={'download icon for download package'}/>
@@ -38,7 +40,7 @@ const DownloadPacket = () => {
               </a>
             </div>
             <div className={styles.lastUpdated}>
-              {METHODOLOGY_COPY.DOWNLOAD_PACKAGE.LAST_UPDATED}
+              {METHODOLOGY_COPY.DOWNLOAD_PACKAGE.ZIP_LAST_UPDATED}
             </div>
 
 
@@ -47,7 +49,9 @@ const DownloadPacket = () => {
               <div className={styles.newTagContainer}>
                 <Tag className={styles.newtag}>{METHODOLOGY_COPY.DOWNLOAD_PACKAGE.NEW_TAG}</Tag>
               </div>
-              <a data-cy={'shapefile-link'} download href={METHODOLOGY_COPY.DOWNLOAD_SHAPEFILE_URL}>
+              <a data-cy={'shapefile-link'}
+                download
+                href={METHODOLOGY_COPY.DOWNLOAD_SHAPEFILE_URL}>
                 <Button className={styles.downloadBoxButton} type="button">
                   <div>
                     <img src={downloadIcon} alt={'download icon for download package'}/>
@@ -59,7 +63,7 @@ const DownloadPacket = () => {
               </a>
             </div>
             <div className={styles.lastUpdated}>
-              {METHODOLOGY_COPY.DOWNLOAD_PACKAGE.LAST_UPDATED}
+              {METHODOLOGY_COPY.DOWNLOAD_PACKAGE.SHAPE_LAST_UPDATED}
             </div>
 
             {/* Download box button 3 */}
@@ -67,7 +71,12 @@ const DownloadPacket = () => {
               <div className={styles.newTagContainer}>
                 <Tag className={styles.newtag}>{METHODOLOGY_COPY.DOWNLOAD_PACKAGE.NEW_TAG}</Tag>
               </div>
-              <a data-cy={'shapefile-link'} download href={METHODOLOGY_COPY.DOWNLOAD_TSD_URL}>
+              {/* target and rel required since PDFs open in browser and don't download */}
+              <a data-cy={'shapefile-link'}
+                download
+                target={'_blank'}
+                rel={'noreferrer'}
+                href={METHODOLOGY_COPY.DOWNLOAD_TSD_URL}>
                 <Button className={styles.downloadBoxButton} type="button">
                   <div>
                     <img src={downloadIcon} alt={'download icon for download package'}/>
@@ -79,7 +88,7 @@ const DownloadPacket = () => {
               </a>
             </div>
             <div className={styles.lastUpdated}>
-              {METHODOLOGY_COPY.DOWNLOAD_PACKAGE.LAST_UPDATED}
+              {METHODOLOGY_COPY.DOWNLOAD_PACKAGE.TSD_LAST_UPDATED}
             </div>
 
           </div>

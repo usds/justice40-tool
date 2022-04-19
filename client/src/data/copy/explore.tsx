@@ -779,7 +779,7 @@ export const DOWNLOAD_DRAFT = {
         unitDisplay="narrow"
       />,
       dateUpdated: <FormattedDate
-        value={METHODOLOGY_COPY.DOWNLOAD_LAST_UPDATED}
+        value={METHODOLOGY_COPY.DOWNLOAD_ZIP_LAST_UPDATED}
         year="2-digit"
         month="2-digit"
         day="2-digit"

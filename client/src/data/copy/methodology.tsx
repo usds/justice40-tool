@@ -74,7 +74,10 @@ export const FORMULA = {
 // Download Package
 export const DOWNLOAD_FILE_SIZE = 52;
 export const DOWNLOAD_SHAPE_FILE_SIZE = 742;
-export const DOWNLOAD_LAST_UPDATED = 1649287951000;
+export const DOWNLOAD_TSD_FILE_SIZE = 913; // in KB
+export const DOWNLOAD_ZIP_LAST_UPDATED = new Date('4/6/2022').getTime();
+export const DOWNLOAD_SHAPE_LAST_UPDATED = new Date('4/6/2022').getTime();
+export const DOWNLOAD_TSD_LAST_UPDATED = new Date('4/19/2022').getTime();
 export const VERSION_NUMBER = 0.1;
 
 export const DOWNLOAD_ZIP_URL = [
@@ -104,7 +107,7 @@ export const DOWNLOAD_PACKAGE = {
   />,
   DESCRIPTION1: <FormattedMessage
     id={ 'methodology.page.downloadPacket.info.text1'}
-    defaultMessage= {`Download the data sources used in the CEJST (.csv and .xlsx, 52MB unzipped), the shapefile, along with a codebook (.zip, 742MBunzipped) or the technical support document (.pdf, 25MB).`}
+    defaultMessage= {`Download the data sources used in the CEJST (.csv and .xlsx, {downloadFileSize} unzipped), the shapefile, along with a codebook (.zip, {shapefileSize} unzipped) or the technical support document (.pdf, {tsdFileSize}).`}
     description= {'Navigate to the methodology page. This is the download packet info text'}
     values= {{
       downloadFileSize: <FormattedNumber
@@ -119,15 +122,47 @@ export const DOWNLOAD_PACKAGE = {
         unit="megabyte"
         unitDisplay="narrow"
       />,
+      tsdFileSize: <FormattedNumber
+        value={DOWNLOAD_TSD_FILE_SIZE}
+        style="unit"
+        unit="kilobyte"
+        unitDisplay="narrow"
+      />,
     }}
   />,
-  LAST_UPDATED: <FormattedMessage
-    id={ 'methodology.page.downloadPacket.info.last.updated'}
+  ZIP_LAST_UPDATED: <FormattedMessage
+    id={ 'methodology.page.downloadPacket.info.zip.last.updated'}
     defaultMessage= {`Last updated: {downloadLastUpdated} `}
     description= {'Navigate to the methodology page. This is the download packet info last updated'}
     values= {{
       downloadLastUpdated: <FormattedDate
-        value={DOWNLOAD_LAST_UPDATED}
+        value={DOWNLOAD_ZIP_LAST_UPDATED}
+        year="2-digit"
+        month="2-digit"
+        day="2-digit"
+      />,
+    }}
+  />,
+  SHAPE_LAST_UPDATED: <FormattedMessage
+    id={ 'methodology.page.downloadPacket.info.shape.last.updated'}
+    defaultMessage= {`Last updated: {shapeLastUpdated} `}
+    description= {'Navigate to the methodology page. This is the download packet info last updated'}
+    values= {{
+      shapeLastUpdated: <FormattedDate
+        value={DOWNLOAD_SHAPE_LAST_UPDATED}
+        year="2-digit"
+        month="2-digit"
+        day="2-digit"
+      />,
+    }}
+  />,
+  TSD_LAST_UPDATED: <FormattedMessage
+    id={ 'methodology.page.downloadPacket.info.tsd.last.updated'}
+    defaultMessage= {`Last updated: {tsdLastUpdated} `}
+    description= {'Navigate to the methodology page. This is the download packet info last updated'}
+    values= {{
+      tsdLastUpdated: <FormattedDate
+        value={DOWNLOAD_TSD_LAST_UPDATED}
         year="2-digit"
         month="2-digit"
         day="2-digit"
