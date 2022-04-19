@@ -1,5 +1,4 @@
 import pathlib
-from tokenize import group
 import numpy as np
 import pandas as pd
 
@@ -55,10 +54,14 @@ class MappingInequalityETL(ExtractTransformLoad):
 
         self.COLUMNS_TO_KEEP = [
             self.GEOID_TRACT_FIELD_NAME,
+            field_names.HOLC_GRADE_C_TRACT_PERCENT_FIELD,
+            field_names.HOLC_GRADE_C_OR_D_TRACT_PERCENT_FIELD,
+            field_names.HOLC_GRADE_C_OR_D_TRACT_50_PERCENT_FIELD,
             field_names.HOLC_GRADE_D_TRACT_PERCENT_FIELD,
             field_names.HOLC_GRADE_D_TRACT_20_PERCENT_FIELD,
             field_names.HOLC_GRADE_D_TRACT_50_PERCENT_FIELD,
             field_names.HOLC_GRADE_D_TRACT_75_PERCENT_FIELD,
+            self.HOLC_GRADE_D_FIELD,
         ]
 
         self.df: pd.DataFrame
@@ -144,7 +147,7 @@ class MappingInequalityETL(ExtractTransformLoad):
         merged_df[
             field_names.HOLC_GRADE_C_TRACT_PERCENT_FIELD
         ] = merged_df.groupby(
-            [self.GEOID_TRACT_FIELD_NAME, self.HOLC_GRADE_D_FIELD], dropna=False
+            [self.GEOID_TRACT_FIELD_NAME, self.HOLC_GRADE_C_FIELD], dropna=False
         )[
             self.TRACT_PROPORTION_FIELD
         ].transform(
@@ -162,8 +165,16 @@ class MappingInequalityETL(ExtractTransformLoad):
             axis=1
         )
 
-        # Preserve a single row per tract
-        grouped_df = merged_df.drop_duplicates()
+        # Preserve a single row per tract, only for tracts that have been redlined
+        # This means we must restrict only to tracts with Grade D (left C in for posterity)
+        grouped_df = merged_df.drop_duplicates(
+            subset=[
+                self.GEOID_TRACT_FIELD_NAME,
+                field_names.HOLC_GRADE_C_OR_D_TRACT_PERCENT_FIELD,
+            ]
+        )  # [
+        # merged_df[self.HOLC_GRADE_D_FIELD].fillna(False)
+        # ]
 
         # Calculate some specific threshold cutoffs, for convenience.
         grouped_df[field_names.HOLC_GRADE_D_TRACT_20_PERCENT_FIELD] = (
@@ -174,6 +185,11 @@ class MappingInequalityETL(ExtractTransformLoad):
         )
         grouped_df[field_names.HOLC_GRADE_D_TRACT_75_PERCENT_FIELD] = (
             grouped_df[field_names.HOLC_GRADE_D_TRACT_PERCENT_FIELD] > 0.75
+        )
+
+        # Create the indicator we will use
+        grouped_df[field_names.HOLC_GRADE_C_OR_D_TRACT_50_PERCENT_FIELD] = (
+            grouped_df[field_names.HOLC_GRADE_C_OR_D_TRACT_PERCENT_FIELD] >= 0.5
         )
 
         # # Drop the non-True values of `self.HOLC_GRADE_D_FIELD` -- we only
