@@ -79,6 +79,11 @@ class CensusACSETL(ExtractTransformLoad):
             "Adjusted percent of individuals < 200% Federal Poverty Line"
         )
 
+        self.ADJUSTED_AND_IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME_PRELIMINARY = (
+            "Preliminary adjusted percent of individuals < 200% Federal Poverty Line,"
+            + " imputed"
+        )
+
         self.ADJUSTED_AND_IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME = (
             "Adjusted percent of individuals < 200% Federal Poverty Line,"
             + " imputed"
@@ -160,6 +165,10 @@ class CensusACSETL(ExtractTransformLoad):
             "Percent enrollment in college or graduate school"
         )
 
+        self.IMPUTED_COLLEGE_ATTENDANCE_FIELD = (
+            "Percent enrollment in college or graduate school, imputed"
+        )
+
         self.COLLEGE_NON_ATTENDANCE_FIELD = "Percent of population not currently enrolled in college or graduate school"
 
         self.RE_FIELDS = [
@@ -212,14 +221,12 @@ class CensusACSETL(ExtractTransformLoad):
                 self.MEDIAN_INCOME_FIELD_NAME,
                 self.POVERTY_LESS_THAN_100_PERCENT_FPL_FIELD_NAME,
                 self.POVERTY_LESS_THAN_150_PERCENT_FPL_FIELD_NAME,
-                # self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME,
                 self.IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME,
                 self.MEDIAN_HOUSE_VALUE_FIELD_NAME,
                 self.HIGH_SCHOOL_ED_FIELD,
                 self.COLLEGE_ATTENDANCE_FIELD,
                 self.COLLEGE_NON_ATTENDANCE_FIELD,
-                self.ADJUSTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME,
-                # self.ADJUSTED_AND_IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME,
+                self.IMPUTED_COLLEGE_ATTENDANCE_FIELD,
             ]
             + self.RE_OUTPUT_FIELDS
             + [self.PERCENT_PREFIX + field for field in self.RE_OUTPUT_FIELDS]
@@ -440,25 +447,7 @@ class CensusACSETL(ExtractTransformLoad):
             1 - df[self.COLLEGE_ATTENDANCE_FIELD]
         )
 
-        # We preserve the null character of missing income even when college
-        # attendance is not null (otherwise this would be hard set to 0)
-        # and left-cut-off values at 0%
-        logger.info("Adjusting income information")
-        df[
-            self.ADJUSTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME
-        ] = np.where(
-            df[self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME].notna()
-            & (df[self.COLLEGE_ATTENDANCE_FIELD] != 1),
-            (
-                df[self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME]
-                - df[self.COLLEGE_ATTENDANCE_FIELD]
-            ).clip(lower=0),
-            # if 100% of people are enrolled in college, 0% are below 200FPL
-            # whether or not we have that information
-            np.where(df[self.COLLEGE_ATTENDANCE_FIELD] == 1, 0, np.nan),
-        )
-
-        # Then we impute income for both adjusted and unadjusted income measures
+        # we impute income for both income measures
         logger.info("Imputing income information")
         ImputeVariables = namedtuple(
             "ImputeVariables", ["raw_field_name", "imputed_field_name"]
@@ -466,18 +455,42 @@ class CensusACSETL(ExtractTransformLoad):
         df = impute_by_geographic_neighbors(
             impute_var_named_tup_list=[
                 ImputeVariables(
-                    raw_field_name=self.ADJUSTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME,
-                    imputed_field_name=self.ADJUSTED_AND_IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME,
-                ),
-                ImputeVariables(
                     raw_field_name=self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME,
                     imputed_field_name=self.IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME,
+                ),
+                ImputeVariables(
+                    raw_field_name=self.COLLEGE_ATTENDANCE_FIELD,
+                    imputed_field_name=self.IMPUTED_COLLEGE_ATTENDANCE_FIELD,
                 ),
             ],
             geo_df=df,
             geoid_field=self.GEOID_TRACT_FIELD_NAME,
             county_bool=False,
         )
+
+        logger.info("Calculating with imputed values")
+        df[
+            self.ADJUSTED_AND_IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME
+        ] = (
+            df[self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME].fillna(
+                df[self.IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME]
+            )
+            - df[self.COLLEGE_ATTENDANCE_FIELD].fillna(
+                df[self.IMPUTED_COLLEGE_ATTENDANCE_FIELD]
+            )
+        ).clip(
+            lower=0
+        )
+
+        # All values should have a value at this point
+        assert (
+            df[
+                self.ADJUSTED_AND_IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME
+            ]
+            .isna()
+            .sum()
+            == 0
+        ), "Error: not all values were filled..."
 
         logger.info("Renaming columns...")
         df = df.rename(
