@@ -1,7 +1,6 @@
 from collections import namedtuple
 import os
 import pandas as pd
-import numpy as np
 import geopandas as gpd
 
 from data_pipeline.config import settings
