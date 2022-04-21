@@ -316,14 +316,14 @@ class GeoScoreETL(ExtractTransformLoad):
                 internal_column_name_field
             ].map(column_rename_dict)
 
-            codebook.to_csv(
-                self.SCORE_SHP_CODE_CSV[
-                    [
-                        shapefile_column_field,
-                        internal_column_name_field,
-                        column_description_field,
-                    ]
-                ],
+            codebook[
+                [
+                    shapefile_column_field,
+                    internal_column_name_field,
+                    column_description_field,
+                ]
+            ].to_csv(
+                self.SCORE_SHP_CODE_CSV,
                 index=False,
             )
 
@@ -340,9 +340,13 @@ class GeoScoreETL(ExtractTransformLoad):
                 for long, short in constants.TILES_SCORE_COLUMNS.items()
             }
 
-            for column in self.geojson_score_usa_high.columns:
-                # take first 10 characters, max due to ESRI constraints
-                new_col = column[:10]
+            for i, column in enumerate(self.geojson_score_usa_high.columns):
+                # take first 6 characters and add a number to ensure uniqueness
+                # this is the max due to esri (index can be 3-digits)
+                if len(column) > 10:
+                    new_col = column[:6] + f"_{i}"
+                else:
+                    new_col = column
                 codebook[new_col] = reversed_tiles.get(column, column)
                 if new_col != column:
                     renaming_map[column] = new_col
