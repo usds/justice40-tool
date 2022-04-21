@@ -124,6 +124,11 @@ DATASET_LIST = [
         "module_dir": "maryland_ejscreen",
         "class_name": "MarylandEJScreenETL",
     },
+    {
+        "name": "historic_redlining",
+        "module_dir": "historic_redlining",
+        "class_name": "HistoricRedliningETL",
+    },
 ]
 CENSUS_INFO = {
     "name": "census",
