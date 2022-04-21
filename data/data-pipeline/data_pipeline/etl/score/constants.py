@@ -273,19 +273,19 @@ TILES_SCORE_COLUMNS = {
     field_names.COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD: "CA_LT20",
     field_names.LOW_INCOME_THRESHOLD: "FPL200S",
     # Booleans for the front end about the types of thresholds exceeded
-    field_names.CLIMATE_THRESHOLD_EXCEEDED: "M_CLT_EOMI",
-    field_names.ENERGY_THRESHOLD_EXCEEDED: "M_ENY_EOMI",
-    field_names.TRAFFIC_THRESHOLD_EXCEEDED: "M_TRN_EOMI",
-    field_names.HOUSING_THREHSOLD_EXCEEDED: "M_HSG_EOMI",
-    field_names.POLLUTION_THRESHOLD_EXCEEDED: "M_PLN_EOMI",
-    field_names.WATER_THRESHOLD_EXCEEDED: "M_WTR_EOMI",
-    field_names.HEALTH_THRESHOLD_EXCEEDED: "M_HLTH_EOMI",
-    field_names.WORKFORCE_THRESHOLD_EXCEEDED: "M_WKFC_EOMI",
+    field_names.CLIMATE_THRESHOLD_EXCEEDED: "N_CLT_EOMI",
+    field_names.ENERGY_THRESHOLD_EXCEEDED: "N_ENY_EOMI",
+    field_names.TRAFFIC_THRESHOLD_EXCEEDED: "N_TRN_EOMI",
+    field_names.HOUSING_THREHSOLD_EXCEEDED: "N_HSG_EOMI",
+    field_names.POLLUTION_THRESHOLD_EXCEEDED: "N_PLN_EOMI",
+    field_names.WATER_THRESHOLD_EXCEEDED: "N_WTR_EOMI",
+    field_names.HEALTH_THRESHOLD_EXCEEDED: "N_HLTH_EOMI",
+    field_names.WORKFORCE_THRESHOLD_EXCEEDED: "N_WKFC_EOMI",
     # These are the booleans for socioeconomic indicators
     ## Low high school and low higher ed for t&wd
-    field_names.WORKFORCE_SOCIO_INDICATORS_EXCEEDED: "M_WKFC_EBSI",
+    field_names.WORKFORCE_SOCIO_INDICATORS_EXCEEDED: "N_WKFC_EBSI",
     ## FPL 200 and low higher ed for all others
-    field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES: "M_EBSI",
+    field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES: "N_EBSI",
 }
 
 # columns to round floats to 2 decimals
@@ -336,7 +336,6 @@ TILES_SCORE_FLOAT_COLUMNS = [
     field_names.LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD,
     field_names.ISLAND_AREAS_LOW_HS_EDUCATION_FIELD,
     field_names.WASTEWATER_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.SCORE_M + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.COLLEGE_NON_ATTENDANCE_FIELD,
     field_names.COLLEGE_ATTENDANCE_FIELD,
 ]

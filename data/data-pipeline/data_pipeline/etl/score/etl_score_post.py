@@ -29,7 +29,7 @@ from . import constants
 logger = get_module_logger(__name__)
 
 # Define the DAC variable
-DISADVANTAGED_COMMUNITIES_FIELD = field_names.SCORE_M_COMMUNITIES
+DISADVANTAGED_COMMUNITIES_FIELD = field_names.SCORE_N_COMMUNITIES
 
 
 class PostScoreETL(ExtractTransformLoad):

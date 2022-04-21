@@ -56,6 +56,19 @@ M_HEALTH = "Health Factor (Definition M)"
 M_WORKFORCE = "Workforce Factor (Definition M)"
 M_NON_WORKFORCE = "Any Non-Workforce Factor (Definition M)"
 
+# Definition Narwhal fields
+SCORE_N = "Definition N"
+SCORE_N_COMMUNITIES = "Definition N (communities)"
+N_CLIMATE = "Climate Factor (Definition N)"
+N_ENERGY = "Energy Factor (Definition N)"
+N_TRANSPORTATION = "Transportation Factor (Definition N)"
+N_HOUSING = "Housing Factor (Definition N)"
+N_POLLUTION = "Pollution Factor (Definition N)"
+N_WATER = "Water Factor (Definition N)"
+N_HEALTH = "Health Factor (Definition N)"
+N_WORKFORCE = "Workforce Factor (Definition N)"
+N_NON_WORKFORCE = "Any Non-Workforce Factor (Definition N)"
+
 PERCENTILE = 90
 MEDIAN_HOUSE_VALUE_PERCENTILE = 90
 
@@ -421,6 +434,7 @@ LOW_LIFE_EXPECTANCY_LOW_INCOME_FIELD = (
 SCORE_M_LOW_INCOME_SUFFIX = (
     ", is low income, and has a low percent of higher ed students"
 )
+
 
 COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD = (
     "Percent higher ed enrollment rate is less than 20%"

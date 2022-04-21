@@ -823,8 +823,7 @@ class ScoreM(Score):
         # threshold.
         self.df[field_names.LOW_INCOME_THRESHOLD] = (
             self.df[
-                # UPDATE: Pull the imputed poverty statistic
-                field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD
+                field_names.POVERTY_LESS_THAN_200_FPL_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             >= self.LOW_INCOME_THRESHOLD
