@@ -122,6 +122,7 @@ class GeoScoreETL(ExtractTransformLoad):
         self.geojson_score_usa_high = gpd.GeoDataFrame(
             self.geojson_score_usa_high, crs="EPSG:4326"
         )
+        print(self.geojson_score_usa_high.head())
 
         usa_simplified = self.geojson_score_usa_high[
             [
@@ -284,13 +285,21 @@ class GeoScoreETL(ExtractTransformLoad):
 
         def create_esri_codebook(codebook):
             """temporary: helper to make a codebook for esri shapefile only"""
+
+            shapefile_column_field = "shapefile_column"
+            internal_column_name_field = "column_name"
+            column_description_field = "column_description"
+
             logger.info("Creating a codebook that uses the csv names")
             codebook = (
                 pd.Series(codebook)
                 .reset_index()
                 .rename(
                     # kept as strings because no downstream impacts
-                    columns={0: "column_name", "index": "shapefile_column"}
+                    columns={
+                        0: internal_column_name_field,
+                        "index": shapefile_column_field,
+                    }
                 )
             )
 
@@ -304,10 +313,20 @@ class GeoScoreETL(ExtractTransformLoad):
                 object_value="label",
             )
 
-            codebook["column_description"] = codebook["column_name"].map(
-                column_rename_dict
+            codebook[column_description_field] = codebook[
+                internal_column_name_field
+            ].map(column_rename_dict)
+
+            codebook.to_csv(
+                self.SCORE_SHP_CODE_CSV[
+                    [
+                        shapefile_column_field,
+                        internal_column_name_field,
+                        column_description_field,
+                    ]
+                ],
+                index=False,
             )
-            codebook.to_csv(self.SCORE_SHP_CODE_CSV, index=False)
 
         def write_esri_shapefile():
             logger.info("Producing ESRI shapefiles")
@@ -321,6 +340,7 @@ class GeoScoreETL(ExtractTransformLoad):
                 short: long
                 for long, short in constants.TILES_SCORE_COLUMNS.items()
             }
+
             for column in self.geojson_score_usa_high.columns:
                 # take first 10 characters, max due to ESRI constraints
                 new_col = column[:10]
@@ -328,12 +348,13 @@ class GeoScoreETL(ExtractTransformLoad):
                 if new_col != column:
                     renaming_map[column] = new_col
 
-            create_esri_codebook(codebook)
-
             self.geojson_score_usa_high.rename(columns=renaming_map).to_file(
                 self.SCORE_SHP_FILE
             )
             logger.info("Completed writing shapefile")
+
+            create_esri_codebook(codebook)
+
             arcgis_zip_file_path = self.SCORE_SHP_PATH / "usa.zip"
             arcgis_files = []
             for file in os.listdir(self.SCORE_SHP_PATH):
