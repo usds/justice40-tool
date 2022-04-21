@@ -528,8 +528,7 @@ class PostScoreETL(ExtractTransformLoad):
         excel_path = constants.SCORE_DOWNLOADABLE_EXCEL_FILE_PATH
         codebook_path = constants.SCORE_DOWNLOADABLE_CODEBOOK_FILE_PATH
         zip_path = constants.SCORE_DOWNLOADABLE_ZIP_FILE_PATH
-        # TODO: reinstate when PDF is added back
-        # pdf_path = constants.SCORE_DOWNLOADABLE_PDF_FILE_PATH
+        pdf_path = constants.SCORE_DOWNLOADABLE_PDF_FILE_PATH
 
         logger.info("Writing downloadable excel")
         excel_config = self._load_excel_from_df(
@@ -583,7 +582,8 @@ class PostScoreETL(ExtractTransformLoad):
             csv_path,
             excel_path,
             codebook_path,
-        ]  # add pdf_path here to include PDF
+            pdf_path,
+        ]
         zip_files(zip_path, files_to_compress)
 
     def load(self) -> None:
