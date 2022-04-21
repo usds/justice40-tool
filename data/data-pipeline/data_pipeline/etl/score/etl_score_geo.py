@@ -122,7 +122,6 @@ class GeoScoreETL(ExtractTransformLoad):
         self.geojson_score_usa_high = gpd.GeoDataFrame(
             self.geojson_score_usa_high, crs="EPSG:4326"
         )
-        print(self.geojson_score_usa_high.head())
 
         usa_simplified = self.geojson_score_usa_high[
             [
