@@ -326,6 +326,7 @@ class GeoScoreETL(ExtractTransformLoad):
                 self.SCORE_SHP_CODE_CSV,
                 index=False,
             )
+            logger.info("Completed writing codebook")
 
         def write_esri_shapefile():
             logger.info("Producing ESRI shapefiles")
