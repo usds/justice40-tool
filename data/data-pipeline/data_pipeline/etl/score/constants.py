@@ -5,6 +5,9 @@ from data_pipeline.config import settings
 
 from data_pipeline.score import field_names
 
+## note: to keep map porting "right" fields, keeping descriptors the same.
+
+
 # Base Paths
 DATA_PATH = Path(settings.APP_ROOT) / "data"
 TMP_PATH = DATA_PATH / "tmp"
@@ -249,7 +252,6 @@ TILES_SCORE_COLUMNS = {
     field_names.ISLAND_LOW_MEDIAN_INCOME_PCTILE_THRESHOLD: "IA_LMI_ET",
     field_names.ISLAND_UNEMPLOYMENT_PCTILE_THRESHOLD: "IA_UN_ET",
     field_names.ISLAND_POVERTY_PCTILE_THRESHOLD: "IA_POV_ET",
-    field_names.FPL_200_SERIES: "FPL200S",
     field_names.THRESHOLD_COUNT: "TC",
     field_names.CATEGORY_COUNT: "CC",
     field_names.ISLAND_AREAS_UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD: "IAULHSE",
@@ -274,19 +276,19 @@ TILES_SCORE_COLUMNS = {
     field_names.COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD: "CA_LT20",
     field_names.LOW_INCOME_THRESHOLD: "FPL200S",
     # Booleans for the front end about the types of thresholds exceeded
-    field_names.CLIMATE_THRESHOLD_EXCEEDED: "N_CLT_EOMI",
-    field_names.ENERGY_THRESHOLD_EXCEEDED: "N_ENY_EOMI",
-    field_names.TRAFFIC_THRESHOLD_EXCEEDED: "N_TRN_EOMI",
-    field_names.HOUSING_THREHSOLD_EXCEEDED: "N_HSG_EOMI",
-    field_names.POLLUTION_THRESHOLD_EXCEEDED: "N_PLN_EOMI",
-    field_names.WATER_THRESHOLD_EXCEEDED: "N_WTR_EOMI",
-    field_names.HEALTH_THRESHOLD_EXCEEDED: "N_HLTH_EOMI",
-    field_names.WORKFORCE_THRESHOLD_EXCEEDED: "N_WKFC_EOMI",
+    field_names.CLIMATE_THRESHOLD_EXCEEDED: "M_CLT_EOMI",
+    field_names.ENERGY_THRESHOLD_EXCEEDED: "M_ENY_EOMI",
+    field_names.TRAFFIC_THRESHOLD_EXCEEDED: "M_TRN_EOMI",
+    field_names.HOUSING_THREHSOLD_EXCEEDED: "M_HSG_EOMI",
+    field_names.POLLUTION_THRESHOLD_EXCEEDED: "M_PLN_EOMI",
+    field_names.WATER_THRESHOLD_EXCEEDED: "M_WTR_EOMI",
+    field_names.HEALTH_THRESHOLD_EXCEEDED: "M_HLTH_EOMI",
+    field_names.WORKFORCE_THRESHOLD_EXCEEDED: "M_WKFC_EOMI",
     # These are the booleans for socioeconomic indicators
     ## Low high school and low higher ed for t&wd
-    field_names.WORKFORCE_SOCIO_INDICATORS_EXCEEDED: "N_WKFC_EBSI",
+    field_names.WORKFORCE_SOCIO_INDICATORS_EXCEEDED: "M_WKFC_EBSI",
     ## FPL 200 and low higher ed for all others
-    field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES: "N_EBSI",
+    field_names.FPL_200_SERIES: "M_EBSI",
 }
 
 # columns to round floats to 2 decimals
