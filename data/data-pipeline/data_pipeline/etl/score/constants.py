@@ -274,7 +274,6 @@ TILES_SCORE_COLUMNS = {
     field_names.COLLEGE_NON_ATTENDANCE_FIELD: "NCA",
     # This is logically equivalent to "non-college greater than 80%"
     field_names.COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD: "CA_LT20",
-    field_names.LOW_INCOME_THRESHOLD: "FPL200S",
     # Booleans for the front end about the types of thresholds exceeded
     field_names.CLIMATE_THRESHOLD_EXCEEDED: "M_CLT_EOMI",
     field_names.ENERGY_THRESHOLD_EXCEEDED: "M_ENY_EOMI",
@@ -285,6 +284,8 @@ TILES_SCORE_COLUMNS = {
     field_names.HEALTH_THRESHOLD_EXCEEDED: "M_HLTH_EOMI",
     field_names.WORKFORCE_THRESHOLD_EXCEEDED: "M_WKFC_EOMI",
     # These are the booleans for socioeconomic indicators
+    ## this measures low income boolean
+    field_names.FPL_200_SERIES: "FPL200S",
     ## Low high school and low higher ed for t&wd
     field_names.WORKFORCE_SOCIO_INDICATORS_EXCEEDED: "M_WKFC_EBSI",
     ## FPL 200 and low higher ed for all others
