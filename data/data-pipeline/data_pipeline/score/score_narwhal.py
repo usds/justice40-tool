@@ -168,19 +168,19 @@ class ScoreNarwhal(Score):
             self.df[
                 field_names.EXPECTED_POPULATION_LOSS_EXCEEDS_PCTILE_THRESHOLD
             ]
-            & self.df[field_names.FPL_200_SERIES]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
 
         self.df[field_names.EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_FIELD] = (
             self.df[
                 field_names.EXPECTED_AGRICULTURAL_LOSS_EXCEEDS_PCTILE_THRESHOLD
             ]
-            & self.df[field_names.FPL_200_SERIES]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
 
         self.df[field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD] = (
             self.df[field_names.EXPECTED_BUILDING_LOSS_EXCEEDS_PCTILE_THRESHOLD]
-            & self.df[field_names.FPL_200_SERIES]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
 
         self._increment_total_eligibility_exceeded(
@@ -225,12 +225,12 @@ class ScoreNarwhal(Score):
 
         self.df[field_names.PM25_EXPOSURE_LOW_INCOME_FIELD] = (
             self.df[field_names.PM25_EXCEEDS_PCTILE_THRESHOLD]
-            & self.df[field_names.FPL_200_SERIES]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
 
         self.df[field_names.ENERGY_BURDEN_LOW_INCOME_FIELD] = (
             self.df[field_names.ENERGY_BURDEN_EXCEEDS_PCTILE_THRESHOLD]
-            & self.df[field_names.FPL_200_SERIES]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
 
         self._increment_total_eligibility_exceeded(
@@ -278,12 +278,12 @@ class ScoreNarwhal(Score):
 
         self.df[field_names.DIESEL_PARTICULATE_MATTER_LOW_INCOME_FIELD] = (
             self.df[field_names.DIESEL_EXCEEDS_PCTILE_THRESHOLD]
-            & self.df[field_names.FPL_200_SERIES]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
 
         self.df[field_names.TRAFFIC_PROXIMITY_LOW_INCOME_FIELD] = (
             self.df[field_names.TRAFFIC_PROXIMITY_PCTILE_THRESHOLD]
-            & self.df[field_names.FPL_200_SERIES]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
 
         self._increment_total_eligibility_exceeded(
@@ -343,12 +343,12 @@ class ScoreNarwhal(Score):
         # series by series indicators
         self.df[field_names.LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD] = (
             self.df[field_names.LEAD_PAINT_PROXY_PCTILE_THRESHOLD]
-            & self.df[field_names.FPL_200_SERIES]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
 
         self.df[field_names.HOUSING_BURDEN_LOW_INCOME_FIELD] = (
             self.df[field_names.HOUSING_BURDEN_PCTILE_THRESHOLD]
-            & self.df[field_names.FPL_200_SERIES]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
 
         self._increment_total_eligibility_exceeded(
@@ -397,15 +397,15 @@ class ScoreNarwhal(Score):
         # individual series-by-series
         self.df[field_names.RMP_LOW_INCOME_FIELD] = (
             self.df[field_names.RMP_PCTILE_THRESHOLD]
-            & self.df[field_names.FPL_200_SERIES]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
         self.df[field_names.SUPERFUND_LOW_INCOME_FIELD] = (
             self.df[field_names.NPL_PCTILE_THRESHOLD]
-            & self.df[field_names.FPL_200_SERIES]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
         self.df[field_names.HAZARDOUS_WASTE_LOW_INCOME_FIELD] = (
             self.df[field_names.TSDF_PCTILE_THRESHOLD]
-            & self.df[field_names.FPL_200_SERIES]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
 
         self._increment_total_eligibility_exceeded(
@@ -438,7 +438,7 @@ class ScoreNarwhal(Score):
 
         self.df[field_names.WASTEWATER_DISCHARGE_LOW_INCOME_FIELD] = (
             self.df[field_names.WASTEWATER_PCTILE_THRESHOLD]
-            & self.df[field_names.FPL_200_SERIES]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
 
         self._increment_total_eligibility_exceeded(
@@ -509,19 +509,19 @@ class ScoreNarwhal(Score):
 
         self.df[field_names.DIABETES_LOW_INCOME_FIELD] = (
             self.df[field_names.DIABETES_PCTILE_THRESHOLD]
-            & self.df[field_names.FPL_200_SERIES]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
         self.df[field_names.ASTHMA_LOW_INCOME_FIELD] = (
             self.df[field_names.ASTHMA_PCTILE_THRESHOLD]
-            & self.df[field_names.FPL_200_SERIES]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
         self.df[field_names.HEART_DISEASE_LOW_INCOME_FIELD] = (
             self.df[field_names.HEART_DISEASE_PCTILE_THRESHOLD]
-            & self.df[field_names.FPL_200_SERIES]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
         self.df[field_names.LOW_LIFE_EXPECTANCY_LOW_INCOME_FIELD] = (
             self.df[field_names.LOW_LIFE_EXPECTANCY_PCTILE_THRESHOLD]
-            & self.df[field_names.FPL_200_SERIES]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
 
         self._increment_total_eligibility_exceeded(
@@ -774,7 +774,7 @@ class ScoreNarwhal(Score):
         # and change the return signature of that method.
         # Create a standalone field that captures the college attendance boolean
         # threshold.
-        self.df[field_names.FPL_200_SERIES] = (
+        self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED] = (
             self.df[
                 # UPDATE: Pull the imputed poverty statistic
                 field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD

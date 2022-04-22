@@ -675,6 +675,7 @@ THRESHOLD_COUNT = "Total threshold criteria exceeded"
 CATEGORY_COUNT = "Total categories exceeded"
 
 FPL_200_SERIES = "Is low income?"
+FPL_200_SERIES_IMPUTED_AND_ADJUSTED = "Is low income (imputed and adjusted)?"
 FPL_200_AND_COLLEGE_ATTENDANCE_SERIES = (
     "Is low income and has a low percent of higher ed students?"
 )
