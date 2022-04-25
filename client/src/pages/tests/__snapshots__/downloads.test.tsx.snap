@@ -330,7 +330,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             Excel file
           </a>
-           (.xlxs 54 unzipped)
+           (.xlxs 54MB unzipped)
       
         </p>
         <p>
@@ -341,7 +341,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             CSV file 
           </a>
-           (.csv 52 unzipped)
+           (.csv 52MB unzipped)
       
         </p>
         <p>
@@ -352,7 +352,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             Shapefiles 
           </a>
-           (Codebook included with geojson 110 unzipped)
+           (Codebook included with geojson 110MB unzipped)
       
         </p>
       </div>
