@@ -207,16 +207,16 @@
       "value": "About"
     }
   ],
-  "common.pages.alerts.census.tract.description": [
+  "common.pages.alerts.public_comment_period.description": [
     {
       "type": 0,
-      "value": "View improvements made to the display of the information for each census tract and "
+      "value": "The public comment period for "
     },
     {
       "children": [
         {
           "type": 0,
-          "value": "send feedback"
+          "value": "sending feedback"
         }
       ],
       "type": 8,
@@ -224,13 +224,21 @@
     },
     {
       "type": 0,
+      "value": " has been extended to "
+    },
+    {
+      "type": 1,
+      "value": "expDate1"
+    },
+    {
+      "type": 0,
       "value": "."
     }
   ],
-  "common.pages.alerts.census.tract.title": [
+  "common.pages.alerts.public_comment_period.title": [
     {
       "type": 0,
-      "value": "Improvements to the map on the Explore the tool page"
+      "value": "Public comment period extended"
     }
   ],
   "common.pages.banner.beta.info": [
