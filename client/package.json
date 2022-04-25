@@ -26,7 +26,7 @@
     "lint:fix": "npm run lint -- --quiet --fix",
     "intl:extract": "formatjs extract 'src/**/*.tsx' --out-file src/intl/en.json",
     "intl:removeNesting": "node src/intl/removeNesting.js",
-    "intl:compile-en": "npm run src/intl/en.json --ast --out-file compiled-lang/en.json",
+    "intl:compile-en": "formatjs compile src/intl/en.json --ast --out-file compiled-lang/en.json",
     "test:intl-extraction": "node src/intl/testIntlExtraction",
     "prepare": "cd .. && husky install client/.husky"
   },
