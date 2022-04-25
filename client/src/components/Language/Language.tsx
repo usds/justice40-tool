@@ -22,6 +22,7 @@ interface ILanguageProps {
  */
 const Language = ({isDesktop}:ILanguageProps) => {
 
+  return (
     <div className={isDesktop ? styles.languageContainer : styles.languageContainerMobile}>
       <img className={styles.languageIcon} src={languageIcon} alt={'language icon for selecting language'}/>
       <IntlContextConsumer>
@@ -39,7 +40,7 @@ const Language = ({isDesktop}:ILanguageProps) => {
         }
       </IntlContextConsumer>
     </div>
-
+  )
 };
 
 export default Language;
