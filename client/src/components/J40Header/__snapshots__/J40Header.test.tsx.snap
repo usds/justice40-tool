@@ -291,7 +291,7 @@ exports[`rendering of the J40Header checks if component renders 1`] = `
             <a
               class="usa-link usa-link--external"
               data-cy=""
-              href="mailto:Screeningtool-Support@omb.eop.gov"
+              href="https://www.federalregister.gov/documents/2022/04/25/2022-08774/climate-and-economic-justice-screening-tool-beta-version"
               rel="noreferrer"
               target="_blank"
             >

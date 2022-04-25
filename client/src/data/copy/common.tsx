@@ -52,7 +52,7 @@ export const ALERTS = {
     defaultMessage={`The public comment period for <link1>sending feedback</link1> has been extended to {expDate1}.`}
     description={`Alert body that appears on landing page.`}
     values={{
-      link1: linkFn(`mailto:${FEEDBACK_EMAIL}`, false, true),
+      link1: linkFn('https://www.federalregister.gov/documents/2022/04/25/2022-08774/climate-and-economic-justice-screening-tool-beta-version', false, true),
       expDate1: <FormattedDate
         value={ALERT_1_EXPIRATION_DATE}
         year="numeric"
