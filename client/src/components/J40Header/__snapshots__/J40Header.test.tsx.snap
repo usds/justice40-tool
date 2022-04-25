@@ -268,6 +268,40 @@ exports[`rendering of the J40Header checks if component renders 1`] = `
         </div>
       </div>
     </div>
+    <div
+      class="grid-container-desktop-lg"
+      data-testid="gridContainer"
+    >
+      <div
+        class="usa-alert usa-alert--info"
+        data-testid="alert"
+      >
+        <div
+          class="usa-alert__body"
+        >
+          <h4
+            class="usa-alert__heading"
+          >
+            Public comment period extended
+          </h4>
+          <p
+            class="usa-alert__text"
+          >
+            The public comment period for 
+            <a
+              class="usa-link usa-link--external"
+              data-cy=""
+              href="https://www.federalregister.gov/documents/2022/04/25/2022-08774/climate-and-economic-justice-screening-tool-beta-version"
+              rel="noreferrer"
+              target="_blank"
+            >
+              sending feedback
+            </a>
+             has been extended to May 25, 2022.
+          </p>
+        </div>
+      </div>
+    </div>
   </header>
 </DocumentFragment>
 `;
