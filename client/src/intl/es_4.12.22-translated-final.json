@@ -1,0 +1,1465 @@
+{
+  "about.page.community.members.heading": {
+    "defaultMessage": "Miembros de la comunidad",
+    "description": "Navigate to the About page. This is the sub heading of page"
+  },
+  "about.page.community.members.info": {
+    "defaultMessage": "Explore datos sobre comunidades en los EE. UU., incluida la suya, y envíe comentarios sobre la herramienta.",
+    "description": "Navigate to the About page. This is the sub heading of page"
+  },
+  "about.page.community.members.link": {
+    "defaultMessage": "Explore la herramienta",
+    "description": "link to Navigate to the About page. Esta es la página Explore la herramienta."
+  },
+  "about.page.federal.pm.heading": {
+    "defaultMessage": "Gerentes de programas federales",
+    "description": "Navigate to the About page. This is the sub heading of page"
+  },
+  "about.page.federal.pm.info": {
+    "defaultMessage": "Descargue la lista actual de comunidades de la herramienta, explore datos que podrían ser útiles para su programa y envíe comentarios sobre la herramienta.",
+    "description": "Navigate to the About page. This is the sub heading of page"
+  },
+  "about.page.federal.pm.link": {
+    "defaultMessage": "Metodología y datos",
+    "description": "link text to Navigate to the About page. This is the go to methodology page"
+  },
+  "about.page.getInvolved.title": {
+    "defaultMessage": "Participe",
+    "description": "Navigate to the About page. This is the sub heading of page"
+  },
+  "about.page.heading.1.text": {
+    "defaultMessage": "Herramienta de evaluación",
+    "description": "Navigate to the About page. This is the second heading"
+  },
+  "about.page.heading.text": {
+    "defaultMessage": "Sobre la aplicación",
+    "description": "Navigate to the About page. This is the first heading"
+  },
+  "about.page.howToGetStarted.title": {
+    "defaultMessage": "Inicio",
+    "description": "Navigate to the About page. This is the sub heading of page"
+  },
+  "about.page.join.open.source.info": {
+    "defaultMessage": "El código de la herramienta es código abierto, lo cual significa que está disponible para que el público lo vea y contribuya.",
+    "description": "info on Navigate to the About page. This is the joining open source community"
+  },
+  "about.page.join.open.source.link": {
+    "defaultMessage": "Véala en GitHub",
+    "description": "Navigate to the About page. This is the link to github repository"
+  },
+  "about.page.join.opensource.heading": {
+    "defaultMessage": "Súmese a la comunidad de código abierto.",
+    "description": "Navigate to the About page. This is the join the community heading"
+  },
+  "about.page.send.feedback.heading": {
+    "defaultMessage": "Enviar comentarios",
+    "description": "Navigate to the About page. This is the sending feedback heading"
+  },
+  "about.page.send.feedback.info": {
+    "defaultMessage": "¿Tiene ideas sobre datos e información que reflejen las experiencias y las condiciones de su comunidad?",
+    "description": "Navigate to the About page. This is the sending feedback information"
+  },
+  "about.page.sub.header.1.text.1": {
+    "defaultMessage": "En la <link1>Orden ejecutiva 14008</link1> sobre <italictag>Hacer frente a la crisis climática en el país y en el extranjero</italictag>, el presidente Biden impartió instrucciones al Consejo sobre la Calidad del Medio Ambiente (CEQ, por sus siglas en inglés) de crear una Herramienta para la evaluación de la justicia climática y económica. El propósito de la herramienta es ayudar a las dependencias del gobierno federal a identificar comunidades desfavorecidas que se encuentran marginadas, desatendidas y abrumadas por la contaminación. La versión actual de la herramienta proporciona datos socioeconómicos, ambientales y climáticos para informar las decisiones que podrían afectar estas comunidades. La herramienta identifica a comunidades desfavorecidas a través de conjuntos de datos nacionales coherentes a disposición del público.",
+    "description": "Navigate to the About page. This is the second heading description"
+  },
+  "about.page.sub.header.1.text.2": {
+    "defaultMessage": "La versión actual de la herramienta se encuentra en formato beta público y se actualizará conforme a los comentarios y la investigación.",
+    "description": "Navigate to the About page. This is first heading description"
+  },
+  "about.page.sub.header.2.text": {
+    "defaultMessage": "La Iniciativa Justice40",
+    "description": "Navigate to the About page. This is the third heading"
+  },
+  "about.page.sub.header.2.text.1": {
+    "defaultMessage": "La herramienta brindará información importante para la Iniciativa Justice40. La meta de la Iniciativa Justice40 es brindar el 40% de los beneficios generales de ciertas inversiones federales en siete ámbitos clave a comunidades desfavorecidas. Estos siete ámbitos clave son: cambio climático, energía no contaminante y eficiencia energética, tránsito no contaminante, viviendas asequibles y sostenibles, capacitación y formación de la fuerza laboral, remediación y reducción de contaminación heredada y creación de infraestructura hídrica esencial no contaminante.",
+    "description": "Navigate to the About page. This is the third heading description"
+  },
+  "about.page.sub.header.2.text.2": {
+    "defaultMessage": "Lea más sobre la Iniciativa Justice40 en el documento del presidente Biden en la <link1>Orden ejecutiva 14008</link1> sobre <italictag>Hacer frente a la crisis climática en el país y en el extranjero</italictag>.",
+    "description": "sobre la herramienta sub header text"
+  },
+  "about.page.sub.header.3.text": {
+    "defaultMessage": "¿Todavía tiene preguntas?",
+    "description": "Navigate to the About page. This is the fourth heading"
+  },
+  "about.page.sub.header.3.text.1": {
+    "defaultMessage": "Encuentre las respuestas en la sección de <link1>Preguntas frecuentes</link1> de la Herramienta para la evaluación de la justicia climática y económica.",
+    "description": "Navigate to the About page. This is the second heading description"
+  },
+  "about.page.title.text": {
+    "defaultMessage": "Sobre la aplicación",
+    "description": "Navigate to the About page. This is the about page title text"
+  },
+  "common.pages.alerts.census.tract.description": {
+    "defaultMessage": "Vea las mejoras que se han hecho en la manera que se muestra la información de cada bloque del censo y <link1>envíe comentarios</link1>.",
+    "description": "Navigate to any page. This the title of the alert that informs the user that new census tract information is available"
+  },
+  "common.pages.alerts.census.tract.title": {
+    "defaultMessage": "Mejoras al mapa en la página Explore la herramienta",
+    "description": "Navigate to any page. This the title of the alert that informs the user that new census tract information is available"
+  },
+  "common.pages.banner.beta.info": {
+    "defaultMessage": "Es una versión preliminar inconclusa de la herramienta con conjuntos de datos limitados que se actualizarán en forma continua.",
+    "description": "Navigate to the about page. This is the main info of the beta banner"
+  },
+  "common.pages.banner.beta.title": {
+    "defaultMessage": "Este es un sitio beta.",
+    "description": "Navigate to the about page. This is the main title of the beta banner"
+  },
+  "common.pages.console.error.stage.url": {
+    "defaultMessage": "Verifique el valor de stage_hash. Debe ser un valor decimal de 4 dígitos / valor hexadecimal de 40 dígitos.",
+    "description": "Navigate to the about page. This is console error staging URL"
+  },
+  "common.pages.footer.arialabel": {
+    "defaultMessage": "Navegación de pie de página",
+    "description": "Navigate to the about page. This is aria-label text for whole footer"
+  },
+  "common.pages.footer.contactheader": {
+    "defaultMessage": "Contacto",
+    "description": "Navigate to the about page. This is Footer column header"
+  },
+  "common.pages.footer.contribute.header": {
+    "defaultMessage": "¿Le interesa contribuir?",
+    "description": "Navigate to the about page. This is third Footer column header"
+  },
+  "common.pages.footer.eng.cal.text": {
+    "defaultMessage": "Calendario de participación",
+    "description": "Navigate to the about page. This is Footer eng.cal.gov link text"
+  },
+  "common.pages.footer.findcontact": {
+    "defaultMessage": "Buscar un contacto en USA.gov.",
+    "description": "Navigate to the about page. This is Footer find contact link text"
+  },
+  "common.pages.footer.findcontact.link": {
+    "defaultMessage": "https://www.usa.gov/",
+    "description": "Navigate to the about page. This is Footer find contact link text"
+  },
+  "common.pages.footer.foia.text": {
+    "defaultMessage": "Ley de Libertad de Información (FOIA)",
+    "description": "Navigate to the about page. This is Footer FOIA link text"
+  },
+  "common.pages.footer.gatsby.link": {
+    "defaultMessage": "https://github.com/usds/justice40-tool",
+    "description": "Navigate to the about page. This is Footer find contact link text"
+  },
+  "common.pages.footer.github.link.text": {
+    "defaultMessage": "Vea el código en GitHub",
+    "description": "Navigate to the about page. This is Footer github link text"
+  },
+  "common.pages.footer.logo.title": {
+    "defaultMessage": "Consejo sobre la Calidad del Medio Ambiente",
+    "description": "Navigate to the about page. This is Footer under logo"
+  },
+  "common.pages.footer.moreinfoheader": {
+    "defaultMessage": "Más información",
+    "description": "Navigate to the about page. This is Footer column header"
+  },
+  "common.pages.footer.privacy.link": {
+    "defaultMessage": "https://www.whitehouse.gov/privacy/",
+    "description": "Navigate to the about page. This is Footer privacy policy link text"
+  },
+  "common.pages.footer.privacy.text": {
+    "defaultMessage": "Política de privacidad",
+    "description": "Navigate to the about page. This is Footer privacy policy link text"
+  },
+  "common.pages.footer.rfi.link": {
+    "description": "Navegue a la página Sobre la herramienta This is Footer rfi link"
+  },
+  "common.pages.footer.rfi.text": {
+    "defaultMessage": "Solicitud de información",
+    "description": "Navigate to the about page. This is Footer rfi link text"
+  },
+  "common.pages.footer.whitehouse.link": {
+    "defaultMessage": "https://www.whitehouse.gov/",
+    "description": "Navegue a la página Sobre la herramienta This is Footer Whitehouse.gov link text"
+  },
+  "common.pages.footer.whitehouse.text": {
+    "defaultMessage": "Whitehouse.gov",
+    "description": "Navegue a la página Sobre la herramienta This is Footer Whitehouse.gov link text"
+  },
+  "common.pages.footer.whitehouselogoalt": {
+    "defaultMessage": "Whitehouse logo",
+    "description": "Navigate to the about page. This is Footer Whitehouse logo alt text"
+  },
+  "common.pages.header.about": {
+    "defaultMessage": "Sobre la aplicación",
+    "description": "Navigate to the about page. This is Header navigate item to the about page"
+  },
+  "common.pages.header.contact": {
+    "defaultMessage": "Contacto",
+    "description": "Navigate to the about page. This is Header navigate item to the Contact page"
+  },
+  "common.pages.header.downloads": {
+    "defaultMessage": "Descargas",
+    "description": "Navigate to the about page. This is Header navigate item to the downloads page"
+  },
+  "common.pages.header.explore": {
+    "defaultMessage": "Explore la herramienta",
+    "description": "Navigate to the about page. This is Header navigate item to the Explore the tool page"
+  },
+  "common.pages.header.faqs": {
+    "defaultMessage": "Preguntas frecuentes",
+    "description": "Navigate to the about page. This is Header navigate item to the faqs page"
+  },
+  "common.pages.header.methodology": {
+    "defaultMessage": "Metodología y datos",
+    "description": "Navigate to the about page. This is Header navigate item to the Methodology page"
+  },
+  "common.pages.header.public.eng": {
+    "defaultMessage": "Calendario de participación",
+    "description": "Navigate to the about page. This is Header navigate item to the public eng page"
+  },
+  "common.pages.header.title.line1": {
+    "defaultMessage": "Justicia climática y económica",
+    "description": "Navigate to the about page. This is Title in nav header line 1 of 2"
+  },
+  "common.pages.header.title.line2": {
+    "defaultMessage": "Herramienta de evaluación",
+    "description": "Navigate to the about page. This is Title in nav header line 2 of 2"
+  },
+  "common.pages.header.tsd": {
+    "defaultMessage": "Documento de apoyo técnico",
+    "description": "Navigate to the about page. This is Header navigate item to the technical support document page"
+  },
+  "contact.page.census.tract.feedback.para1": {
+    "defaultMessage": "Para proporcionar comentarios sobre un grupo de bloques del censo específico, seleccione el botón de enviar comentarios después de escoger un bloque del censo en la página <link1>Explore la herramienta</link1> o utilice la dirección de correo electrónico que se proporciona arriba. Incluya la identificación de un grupo de bloques del censo, el condado y la información del estado o el territorio, junto con sus comentarios.",
+    "description": "Navigate to the contact page, this is the census tract feedback section"
+  },
+  "contact.page.census.tract.feedback.para2": {
+    "defaultMessage": "Si existen indicadores de datos específicos que podrían mejorarse o cambiarse, incluya esa información en el cuerpo del correo electrónico.",
+    "description": "Navigate to the contact page, this is the census tract feedback section"
+  },
+  "contact.page.census.tract.feedback.para3": {
+    "defaultMessage": "Además, puede proporcionar comentarios en la herramienta mediante este <link1>enlace</link1>.",
+    "description": "Navigate to the contact page, this is the census tract feedback section"
+  },
+  "contact.page.census.tract.feedback.title": {
+    "defaultMessage": "Comentarios sobre los grupos de bloques del censo",
+    "description": "Navigate to the contact page, this is the census tract feedback section"
+  },
+  "contact.page.fab.survey.text": {
+    "defaultMessage": "Ayude a mejorar el sitio web y los datos",
+    "description": "Navigate to the contact page, this is the text for floating action button"
+  },
+  "contact.page.header.text": {
+    "defaultMessage": "Contacto",
+    "description": "Navigate to the contact page, this is the contact page header text"
+  },
+  "contact.page.request.for.info.box.body": {
+    "defaultMessage": "Durante el periodo beta, se pueden enviar comentarios sobre la Herramienta para la evaluación de la justicia climática y económica mediante la Solicitud de información del CEQ que se encuentra disponible en <link1>federalregister.gov</link1>.",
+    "description": "Navigate to the contact page, this is the body of the request for information box"
+  },
+  "contact.page.request.for.info.box.title": {
+    "defaultMessage": "Solicitud de información",
+    "description": "Navigate to the contact page, this is the title of the request for information box"
+  },
+  "contact.page.sub.header.text": {
+    "defaultMessage": "Envíenos un correo electrónico",
+    "description": "Navigate to the contact page, this is the contact page sub header text"
+  },
+  "contact.page.title.text": {
+    "defaultMessage": "Contacto",
+    "description": "Navigate to the contact page, this is the contact page title text"
+  },
+  "downloads.page.csv.link": {
+    "defaultMessage": "<link1>CSV file </link1> (.csv {csvFileSize} unzipped)",
+    "description": "On the downloads page, the description of the csv link"
+  },
+  "downloads.page.description1.text": {
+    "defaultMessage": "Los conjuntos de datos que se utilizan en la herramienta, junto con un diccionario de datos e información sobre cómo utilizar la lista de comunidades (.pdf) están disponibles en los siguientes formatos del archivo:",
+    "description": "Navigate to the the Downloads page, this will be the page description1 text"
+  },
+  "downloads.page.excel.link": {
+    "defaultMessage": "<link1>Excel file</link1> (.xlxs {excelFileSize} unzipped)",
+    "description": "On the downloads page, the description of the excel link"
+  },
+  "downloads.page.heading1.text": {
+    "defaultMessage": "Descargas",
+    "description": "Navigate to the the Downloads page, this will be the page heading1 text"
+  },
+  "downloads.page.heading2.text": {
+    "defaultMessage": "Formatos del archivo",
+    "description": "Navigate to the the Downloads page, this will be the page heading2 text"
+  },
+  "downloads.page.shape.link": {
+    "defaultMessage": "<link1>Shapefiles </link1> (Codebook included with geojson {shapeFileSize} unzipped)",
+    "description": "On the downloads page, the description of the shapefiles link"
+  },
+  "downloads.page.title.text": {
+    "defaultMessage": "Descargas",
+    "description": "Navigate to the the Downloads page, this will be the page title text"
+  },
+  "explore.tool.page.description.text": {
+    "defaultMessage": "Use el mapa para ver las comunidades identificadas como desfavorecidas. El mapa emplea conjuntos de datos nacionales coherentes a disposición del público. En la versión actual de la herramienta en la página <link1>Metodología y datos</link1>, obtenga más información acerca de la metodología y los conjuntos de datos que se usaron para identificar las comunidades desfavorecidas.",
+    "description": "On the explore the tool page, the description of the page"
+  },
+  "explore.tool.page.heading.text": {
+    "defaultMessage": "Explore la herramienta",
+    "description": "On the explore the tool page, the heading of the page"
+  },
+  "explore.tool.page.label.text": {
+    "defaultMessage": "Comunidad desfavorecida",
+    "description": "On the explore the tool page, the label of the legend"
+  },
+  "explore.tool.page.legend.description.text": {
+    "defaultMessage": "Las comunidades que la herramienta identifica como desfavorecidas son las que se encuentran marginadas, desatendidas y abrumadas por la contaminación. Esas comunidades alcanzan los umbrales de una o más de ocho categorías de criterios, o los superan.",
+    "description": "On the explore the tool page, the description of the legend"
+  },
+  "explore.tool.page.map.search.placeholder.text": {
+    "defaultMessage": "Introduzca una ciudad, estado o código postal",
+    "description": "On the explore the tool page, on the map, the placeholder text for search"
+  },
+  "explore.tool.page.map.search.results.empty.text": {
+    "defaultMessage": "No se encontró el lugar. Vuelva a intentarlo.",
+    "description": "On the explore the tool page, on the map, the text displaying message for no search results found"
+  },
+  "explore.tool.page.map.territoryFocus.alaska.long": {
+    "defaultMessage": "Alaska",
+    "description": "On the explore the tool page, on the map, the full name indicating the bounds of Alaska"
+  },
+  "explore.tool.page.map.territoryFocus.alaska.short": {
+    "defaultMessage": "AK",
+    "description": "On the explore the tool page, on the map, the abbreviated indicating the bounds of Alaska"
+  },
+  "explore.tool.page.map.territoryFocus.american.samoa.long": {
+    "defaultMessage": "Samoa estadounidense",
+    "description": "On the explore the tool page, on the map, the full name indicating the bounds of American Somoa"
+  },
+  "explore.tool.page.map.territoryFocus.american.samoa.short": {
+    "defaultMessage": "AS",
+    "description": "On the explore the tool page, on the map, the abbreviated name indicating the bounds of American Somoa"
+  },
+  "explore.tool.page.map.territoryFocus.commonwealth.nmp.long": {
+    "defaultMessage": "Mancomunidad de las Islas Marianas del Norte",
+    "description": "On the explore the tool page, on the map, the full name indicating the bounds of Commonwealth of Northern Mariana Islands"
+  },
+  "explore.tool.page.map.territoryFocus.commonwealth.nmp.short": {
+    "defaultMessage": "MP",
+    "description": "On the explore the tool page, on the map, the abbreviated name indicating the bounds of Commonwealth of Northern Mariana Islands"
+  },
+  "explore.tool.page.map.territoryFocus.guam.long": {
+    "defaultMessage": "Guam",
+    "description": "On the explore the tool page, on the map, the full name indicating the bounds of Guam"
+  },
+  "explore.tool.page.map.territoryFocus.guam.short": {
+    "defaultMessage": "GU",
+    "description": "On the explore the tool page, on the map, the abbreviated name indicating the bounds of Guam"
+  },
+  "explore.tool.page.map.territoryFocus.hawaii.long": {
+    "defaultMessage": "Hawái",
+    "description": "On the explore the tool page, on the map, the longer name indicating the bounds of Hawaii"
+  },
+  "explore.tool.page.map.territoryFocus.hawaii.short": {
+    "defaultMessage": "HI",
+    "description": "On the explore the tool page, on the map, the abbreviated name indicating the bounds of Hawaii"
+  },
+  "explore.tool.page.map.territoryFocus.lower48.long": {
+    "defaultMessage": "Los 48 estados contiguos",
+    "description": "On the explore the tool page, on the map, the longer name indicating the bounds of the Lower 48 states"
+  },
+  "explore.tool.page.map.territoryFocus.lower48.short": {
+    "defaultMessage": "48",
+    "description": "On the explore the tool page, on the map, the abbreviated name indicating the bounds of \n      the Lower 48 states\n    "
+  },
+  "explore.tool.page.map.territoryFocus.puerto_rico.long": {
+    "defaultMessage": "Puerto Rico",
+    "description": "On the explore the tool page, on the map, the full name indicating the bounds of Puerto Rico"
+  },
+  "explore.tool.page.map.territoryFocus.puerto_rico.short": {
+    "defaultMessage": "PR",
+    "description": "On the explore the tool page, on the map, the abbreviated name indicating the bounds of Puerto Rico"
+  },
+  "explore.tool.page.map.territoryFocus.us.virgin.islands.long": {
+    "defaultMessage": "Islas Vírgenes de los Estados Unidos",
+    "description": "On the explore the tool page, on the map, the full name indicating the bounds of US Virgin Islands"
+  },
+  "explore.tool.page.map.territoryFocus.us.virgin.islands.short": {
+    "defaultMessage": "VI",
+    "description": "On the explore the tool page, on the map, the abbreviated name indicating the bounds of US Virgin Islands"
+  },
+  "explore.tool.page.map.zoom.warning": {
+    "defaultMessage": "Acerque al nivel de estado o región para ver las comunidades priorizadas en el mapa.",
+    "description": "On the explore the tool page, on the map, the zoom warning on map"
+  },
+  "explore.tool.page.side.panel.at.or.above.at.least.one": {
+    "defaultMessage": "At or above at least one threshold?",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. Click on a category to expand. This is the first question text around thresholds."
+  },
+  "explore.tool.page.side.panel.at.or.above.both.thresholds": {
+    "defaultMessage": "At or above both associated thresholds?",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. Click on a category to expand. This is the second question text around thresholds."
+  },
+  "explore.tool.page.side.panel.category.header.indicator": {
+    "defaultMessage": "Indicador",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show header for each category\n"
+  },
+  "explore.tool.page.side.panel.category.header.percentile": {
+    "defaultMessage": "Percentil (0-100)",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show header for each category\n"
+  },
+  "explore.tool.page.side.panel.community.of.focus": {
+    "defaultMessage": "SÍ",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show the communities the score currently is focused on"
+  },
+  "explore.tool.page.side.panel.exceed.burden.answer.no": {
+    "defaultMessage": "No",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. This will display NO if the census tract is disadvantaged"
+  },
+  "explore.tool.page.side.panel.exceed.burden.answer.yes": {
+    "defaultMessage": "Sí",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. This will display YES if the census tract is disadvantaged"
+  },
+  "explore.tool.page.side.panel.geographicInfo.censusBlockGroup": {
+    "defaultMessage": "Grupo de bloques del censo:",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show the census tract id number of the feature selected"
+  },
+  "explore.tool.page.side.panel.geographicInfo.county": {
+    "defaultMessage": "Condado:",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show the county of the feature selected"
+  },
+  "explore.tool.page.side.panel.geographicInfo.population": {
+    "defaultMessage": "Población:",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show the population of the feature selected"
+  },
+  "explore.tool.page.side.panel.geographicInfo.state": {
+    "defaultMessage": "Estado:",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show the state of the feature selected"
+  },
+  "explore.tool.page.side.panel.geographicInfo.territory": {
+    "defaultMessage": "Territorio:",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show the territory of the feature selected"
+  },
+  "explore.tool.page.side.panel.indicator.asthma": {
+    "defaultMessage": "Asma",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Asthma"
+  },
+  "explore.tool.page.side.panel.indicator.description.asthma": {
+    "defaultMessage": "Porcentaje ponderado de personas a quienes se les ha diagnosticado asma.",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Number of people who have been told they have asthma"
+  },
+  "explore.tool.page.side.panel.indicator.description.diabetes": {
+    "defaultMessage": "Porcentaje ponderado de personas con 18 años cumplidos que tienen diabetes que no sea durante el embarazo.",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of People ages 18 years and older who have diabetes other than \n      diabetes during pregnancy"
+  },
+  "explore.tool.page.side.panel.indicator.description.dieselPartMatter": {
+    "defaultMessage": "Descarga de gas de motor diésel en el aire",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Diesel exhaust in the air"
+  },
+  "explore.tool.page.side.panel.indicator.description.energyBurden": {
+    "defaultMessage": "Costo promedio anual de la energía dividido entre el ingreso familiar",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Energy costs divided by household income"
+  },
+  "explore.tool.page.side.panel.indicator.description.exp.ag.loss": {
+    "defaultMessage": "Tasa de pérdida económica en relación con el valor agrícola resultante de peligros naturales cada año",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Economic loss rate to agriculture resulting from naturhazards\n    "
+  },
+  "explore.tool.page.side.panel.indicator.description.exp.bld.loss": {
+    "defaultMessage": "Tasa de pérdida económica en relación con el valor agrícola resultante de peligros naturales cada año",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side \n    panel will show an indicator desciption of Economic loss rate to buildings resulting from natural hazards"
+  },
+  "explore.tool.page.side.panel.indicator.description.exp.pop.loss": {
+    "defaultMessage": "Tasa de muertes y lesiones resultantes de peligros naturales cada año",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Economic loss rate to the population in fatalities and \n      injuries resulting from natural hazards"
+  },
+  "explore.tool.page.side.panel.indicator.description.heartDisease": {
+    "defaultMessage": "Personas con 18 años cumplidos a quienes se les ha diagnosticado una cardiopatía",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Weighted percent of people ages 18 years and older who have \n    been told they have heart disease"
+  },
+  "explore.tool.page.side.panel.indicator.description.high.ed": {
+    "defaultMessage": "Porcentaje de la población con 15 años cumplidos del grupo de bloques del censo que no está inscrita en la universidad, escuela superior o escuela de posgrado",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Percent of the census tract's population 15 or older not \n      enrolled in college, university, or graduate school"
+  },
+  "explore.tool.page.side.panel.indicator.description.high.school": {
+    "defaultMessage": "Porcentaje de personas con 25 años cumplidos y un nivel de educación inferior a la escuela secundaria o preparatoria",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Percent of people ages 25 years or older whose education level \n      is less than a high school diploma"
+  },
+  "explore.tool.page.side.panel.indicator.description.houseBurden": {
+    "defaultMessage": "Familias de bajos ingresos que gastan más del 30% de lo que ganan en vivienda",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Low income households spending more than 30% of income housing\n    "
+  },
+  "explore.tool.page.side.panel.indicator.description.leadPaint": {
+    "defaultMessage": "Percentil del número de viviendas construidas antes de 1960 que no se encuentran entre las más caras",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Pre-1960 housing"
+  },
+  "explore.tool.page.side.panel.indicator.description.lifeExpect": {
+    "defaultMessage": "Número promedio de años de esperanza de vida de una persona",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Average number of years of life a person can expect to live"
+  },
+  "explore.tool.page.side.panel.indicator.description.ling.iso": {
+    "defaultMessage": "Porcentaje de familias en las que ninguna persona mayor de 14 años habla bien el inglés",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Households in which no one age 14 and over speaks English only or also speaks a language other than English"
+  },
+  "explore.tool.page.side.panel.indicator.description.low.income": {
+    "defaultMessage": "Ingreso familiar inferior o igual al doble del nivel de pobreza federal",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Household income is less than or equal to twice the federal poverty level"
+  },
+  "explore.tool.page.side.panel.indicator.description.low.med.income": {
+    "defaultMessage": "Mediana del ingreso calculada como porcentaje de la mediana del ingreso de la zona",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Median income calculated as a percent of the area’s median income"
+  },
+  "explore.tool.page.side.panel.indicator.description.med.home.val": {
+    "defaultMessage": "Mediana del valor de la vivienda en la zona",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Meidan home value in area"
+  },
+  "explore.tool.page.side.panel.indicator.description.pm25": {
+    "defaultMessage": "Partículas finas inhalables (PM2.5), de 2.5 micrómetros o menores",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Fine inhalable particles, 2.5 micrometers and smaller"
+  },
+  "explore.tool.page.side.panel.indicator.description.poverty": {
+    "defaultMessage": "Porcentaje de la población del grupo de bloques del censo de las familias en las que el ingreso familiar es igual o inferior al 100% del nivel de pobreza federal",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Percent of individuals in households where the household income is at or below 100% of the federal poverty level"
+  },
+  "explore.tool.page.side.panel.indicator.description.prox.haz": {
+    "defaultMessage": "Número de instalaciones para manejo de residuos peligrosos a menos de 5 kilómetros de distancia",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Count of hazardous waste facilities within 5 kilometers"
+  },
+  "explore.tool.page.side.panel.indicator.description.prox.npl": {
+    "defaultMessage": "Sitios propuestos o enumerados en la Lista Nacional de Prioridades de Superfund (NPL) a menos de 5 kilómetros de distancia",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Proposed or listed NPL (Superfund) sites within 5 kilometers"
+  },
+  "explore.tool.page.side.panel.indicator.description.prox.rmp": {
+    "defaultMessage": "Instalaciones del Plan de Manejo de Riesgos (RMP) a menos de 5 kilómetros de distancia",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Risk Management Plan facilities within 5 kilometers"
+  },
+  "explore.tool.page.side.panel.indicator.description.trafficVolume": {
+    "defaultMessage": "Número de vehículos en las carreteras principales a menos de 500 metros de distancia",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Count of vehicles at major roads within 500 meters"
+  },
+  "explore.tool.page.side.panel.indicator.description.unemploy": {
+    "defaultMessage": "Número de personas desempleadas como porcentaje de la fuerza laboral",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side \n    panel will show an indicator desciption of Number of unemployed people as a percentage of the labor force"
+  },
+  "explore.tool.page.side.panel.indicator.description.wasteWater": {
+    "defaultMessage": "Concentraciones tóxicas en segmentos de corriente a menos de 500 metros de distancia",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show an indicator desciption of Toxic concentrations at stream segments within 500 meters"
+  },
+  "explore.tool.page.side.panel.indicator.diabetes": {
+    "defaultMessage": "Diabetes",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Diabetes"
+  },
+  "explore.tool.page.side.panel.indicator.dieselPartMatter": {
+    "defaultMessage": "Exposición a material particulado de diésel",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Diesel particulate matter exposure"
+  },
+  "explore.tool.page.side.panel.indicator.energyBurden": {
+    "defaultMessage": "Carga de energía",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Energy burden"
+  },
+  "explore.tool.page.side.panel.indicator.exp.ag.loss": {
+    "defaultMessage": "Tasa prevista de pérdida agrícola",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show agriculture loss rate\n"
+  },
+  "explore.tool.page.side.panel.indicator.exp.bld.loss": {
+    "defaultMessage": "Tasa prevista de pérdida de edificios",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show building loss rate\n"
+  },
+  "explore.tool.page.side.panel.indicator.exp.pop.loss": {
+    "defaultMessage": "Tasa prevista de pérdida de población",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show population loss rate\n"
+  },
+  "explore.tool.page.side.panel.indicator.heartDisease": {
+    "defaultMessage": "Cardiopatía",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Heart disease"
+  },
+  "explore.tool.page.side.panel.indicator.high.ed": {
+    "defaultMessage": "No inscripción en educación superior",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Higher ed degree achievement rate\n"
+  },
+  "explore.tool.page.side.panel.indicator.high.school": {
+    "defaultMessage": "No ha obtenido un grado de escuela secundaria o preparatoria",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show High school degree achievement rate"
+  },
+  "explore.tool.page.side.panel.indicator.houseBurden": {
+    "defaultMessage": "Carga del costo de la vivienda",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Housing cost burden"
+  },
+  "explore.tool.page.side.panel.indicator.leadPaint": {
+    "defaultMessage": "Pintura con plomo",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Lead paint"
+  },
+  "explore.tool.page.side.panel.indicator.lifeExpect": {
+    "defaultMessage": "Baja esperanza de vida",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Low life expectancy"
+  },
+  "explore.tool.page.side.panel.indicator.ling.iso": {
+    "defaultMessage": "Aislamiento lingüístico",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Linguistic isolation"
+  },
+  "explore.tool.page.side.panel.indicator.low.income": {
+    "defaultMessage": "Bajos ingresos",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show low income"
+  },
+  "explore.tool.page.side.panel.indicator.low.med.income": {
+    "defaultMessage": "Mediana de bajos ingresos",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Low median income"
+  },
+  "explore.tool.page.side.panel.indicator.med.home.val": {
+    "defaultMessage": "Mediana del valor de la vivienda",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Housing cost burden"
+  },
+  "explore.tool.page.side.panel.indicator.percentile.value.ordinal.suffix": {
+    "defaultMessage": "{indicatorValue, selectordinal, one {#st} two {#nd} =3 {#rd} other {#th} }",
+    "description": "Navigate to the explore the tool page. Click on the map. The side panel will show categories. Abra una categoría. Esto definirá el sufijo ordinal del indicador de valor. Por ejemplo, el .º en 91.º, el .º en 23.º y el .º en 26.º, etc."
+  },
+  "explore.tool.page.side.panel.indicator.pm25": {
+    "defaultMessage": "PM2.5 en el aire",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show PM2.5 in the air"
+  },
+  "explore.tool.page.side.panel.indicator.poverty": {
+    "defaultMessage": "Pobreza",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Unemployment"
+  },
+  "explore.tool.page.side.panel.indicator.prox.haz": {
+    "defaultMessage": "Proximidad a instalaciones para manejo de residuos peligrosos",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Proximity to hazardous waste facilities"
+  },
+  "explore.tool.page.side.panel.indicator.prox.npl": {
+    "defaultMessage": "Proximidad a los sitios de la Lista Nacional de Prioridades (NPL)",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Count of proposed or listed NPL "
+  },
+  "explore.tool.page.side.panel.indicator.prox.rmp": {
+    "defaultMessage": "Proximidad a las instalaciones del Plan de Manejo de Riesgos (RMP)",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Count of proposed or listed RMP"
+  },
+  "explore.tool.page.side.panel.indicator.title.clean.energy": {
+    "defaultMessage": "Energía no contaminante y eficiencia energética",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Clean, efficient energy title\n"
+  },
+  "explore.tool.page.side.panel.indicator.title.clean.transport": {
+    "defaultMessage": "Tránsito no contaminante",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Clean transportation title\n"
+  },
+  "explore.tool.page.side.panel.indicator.title.clean.water": {
+    "defaultMessage": "Infraestructura crítica para agua no contaminada y residuos",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Clean water and waste title\n"
+  },
+  "explore.tool.page.side.panel.indicator.title.climate": {
+    "defaultMessage": "Cambio climático",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Climate change title\n"
+  },
+  "explore.tool.page.side.panel.indicator.title.health.burden": {
+    "defaultMessage": "Cargas sanitarias",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Health burdens title\n"
+  },
+  "explore.tool.page.side.panel.indicator.title.legacy.pollution": {
+    "defaultMessage": "Reducción y solución de la contaminación heredada",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Legacy pollution title\n"
+  },
+  "explore.tool.page.side.panel.indicator.title.sustain.house": {
+    "defaultMessage": "Vivienda sostenible y asequible",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Sustainable housing title\n"
+  },
+  "explore.tool.page.side.panel.indicator.title.work.dev": {
+    "defaultMessage": "Capacitación y desarrollo de la fuerza laboral",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Workforce development title\n"
+  },
+  "explore.tool.page.side.panel.indicator.trafficVolume": {
+    "defaultMessage": "Proximidad al tráfico de vehículos y volumen de este",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Traffic proximity and volume"
+  },
+  "explore.tool.page.side.panel.indicator.unemploy": {
+    "defaultMessage": "Desempleo",
+    "description": "Navegue a la página Explore la herramienta. Haga clic en el mapa cuando aparezca. El panel lateral mostrará Desempleo."
+  },
+  "explore.tool.page.side.panel.indicator.value.arrow.down.alt.text": {
+    "defaultMessage": "an icon for the down arrow",
+    "description": "image alt text for the down arrow"
+  },
+  "explore.tool.page.side.panel.indicator.value.arrow.up.alt.text": {
+    "defaultMessage": "an icon for the up arrow",
+    "description": "image alt text for the up arrow"
+  },
+  "explore.tool.page.side.panel.indicator.value.subtext.above": {
+    "defaultMessage": "arriba",
+    "description": "indicating above threshold"
+  },
+  "explore.tool.page.side.panel.indicator.value.subtext.below": {
+    "defaultMessage": "abajo",
+    "description": "indicating below threshold"
+  },
+  "explore.tool.page.side.panel.indicator.value.subtext.percent": {
+    "defaultMessage": "por ciento",
+    "description": "indicating percent units"
+  },
+  "explore.tool.page.side.panel.indicator.value.subtext.percentile": {
+    "defaultMessage": "percentil",
+    "description": "indicating percentile units"
+  },
+  "explore.tool.page.side.panel.indicator.value.subtext.unavailable": {
+    "defaultMessage": "los datos no están disponibles",
+    "description": "subtext for indicator when data is N/A"
+  },
+  "explore.tool.page.side.panel.indicator.value.unavailable.alt.text": {
+    "defaultMessage": "an icon to represent data is unavailable",
+    "description": "image alt text for unavailable icon"
+  },
+  "explore.tool.page.side.panel.indicator.wasteWater": {
+    "defaultMessage": "Descarga de aguas residuales",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Wastewater discharge"
+  },
+  "explore.tool.page.side.panel.info.alt.text.icon1": {
+    "defaultMessage": "Un icono que representa las piezas de un bloque seleccionado, similar a los grupos de bloques del censo",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Things to know, this is the first icon in this side panel"
+  },
+  "explore.tool.page.side.panel.info.alt.text.icon2": {
+    "defaultMessage": "Un icono que representa una curva de campana o distribución de Gauss",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Things to know, this is the second icon in this side panel"
+  },
+  "explore.tool.page.side.panel.info.alt.text.icon3": {
+    "defaultMessage": "Un icono que representa una sección extraída de un gráfico circular",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Things to know, this is the third icon in this side panel"
+  },
+  "explore.tool.page.side.panel.info.alt.text.icon4": {
+    "defaultMessage": "Un icono que tiene una flecha hacia arriba y una flecha hacia abajo",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Things to know, this is the forth icon in this side panel"
+  },
+  "explore.tool.page.side.panel.info.para1": {
+    "defaultMessage": "Esta herramienta identifica las comunidades marginadas, desatendidas y abrumadas por la contaminación. These communities are located in census tracts that are at or above the thresholds in one or more of eight categories of criteria.",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Things to know, this is the first paragraph of this side panel"
+  },
+  "explore.tool.page.side.panel.info.para2": {
+    "defaultMessage": "La herramienta usa grupos de bloques del censo que representan unas 4,000 personas, la cual es la unidad geográfica más pequeña para la que se pueden mostrar datos coherentes en la herramienta.",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Things to know, this is the second paragraph of this side panel"
+  },
+  "explore.tool.page.side.panel.info.para3": {
+    "defaultMessage": "La herramienta clasifica cada grupo de bloques del censo por medio de percentiles que muestran la cantidad de carga que cada grupo de bloques experimenta con respecto a los demás grupos de bloques del censo para cada criterio.",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Things to know, this is the third paragraph of this side panel"
+  },
+  "explore.tool.page.side.panel.info.para4": {
+    "defaultMessage": "Los porcentajes se utilizan para ciertas variables, es decir, las variables relacionadas con la tasa de estudios en escuela secundaria o preparatoria y la proporción de personas que actualmente no están inscritas en programas de educación superior.",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Things to know, this is the forth paragraph of this side panel"
+  },
+  "explore.tool.page.side.panel.info.para5": {
+    "defaultMessage": "Los umbrales para cada categoría determinarán si un grupo de bloques debería identificarse como desfavorecido porque excede un valor particular en los indicadores pertinentes.",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panelwill show Things to know, this is the fifth paragraph of this side pane"
+  },
+  "explore.tool.page.side.panel.info.title": {
+    "defaultMessage": "Lo que debe saber",
+    "description": "introductory text of ways to use the map"
+  },
+  "explore.tool.page.side.panel.is.community.of.focus": {
+    "defaultMessage": "¿Está identificada como desfavorecida?",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show asking IF the communities is focused on"
+  },
+  "explore.tool.page.side.panel.not.community.of.focus": {
+    "defaultMessage": "No",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show the communities the score currently is not focused on"
+  },
+  "explore.tool.page.side.panel.num.categories.exceeded": {
+    "defaultMessage": "Desfavorecida en {numberOfDisCategories, plural, one {# category} other {# categories}}",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show how many categories are exceeded"
+  },
+  "explore.tool.page.side.panel.num.thresholds.exceeded": {
+    "defaultMessage": "Al umbral o lo supera {numberOfThresholdExceed, plural, one {# threshold} other {# thresholds}}",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show how many thresholds are exceeded"
+  },
+  "explore.tool.page.side.panel.send.feedback.alt.img": {
+    "defaultMessage": "Enviar comentarios",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show a send feedback icon, this is the images alt tag"
+  },
+  "explore.tool.page.side.panel.send.feedback.email.body": {
+    "defaultMessage": "Aporte comentarios acerca de este grupo de bloques del censo, incluidos los conjuntos de datos, las categorías de datos proporcionadas para este grupo de bloques del censo, las comunidades que viven en este grupo de bloques del censo y toda la información pertinente que el Consejo sobre la Calidad del Medio Ambiente (CEQ, por sus siglas en inglés) debe saber acerca de este grupo de bloques del censo.",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show link to send feedback\n"
+  },
+  "explore.tool.page.side.panel.send.feedback.title": {
+    "defaultMessage": "Enviar comentarios",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show link to send feedback"
+  },
+  "explore.tool.page.side.panel.spacer.and": {
+    "defaultMessage": "y",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. Click on a category to expand. This is the AND spacer around thresholds."
+  },
+  "explore.tool.page.side.panel.version.title": {
+    "defaultMessage": "Versión de la metodología {version}",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show the methodology version number"
+  },
+  "explore.tool.page.title.text": {
+    "defaultMessage": "Explore la herramienta",
+    "description": "On the explore the tool page, the title of the page"
+  },
+  "explore.tool.page.under.map.download.draft.ptag.1": {
+    "defaultMessage": "<link1>Descargue la lista vigente</link1> de las comunidades y los conjuntos de datos que se usaron (el archivo .zip incluirá un archivo .xlsx y un archivo .csv, con un tamaño no comprimido de {downloadFileSize}). Última actualización: {dateUpdated}.",
+    "description": "\n      Navigate to the explore the tool page. Under the map, you will see a link that is placed below the \n      map that will download the data packet\n    "
+  },
+  "explore.tool.page.under.map.how.you.can.help.heading": {
+    "defaultMessage": "Contribuya a mejorar la herramienta",
+    "description": "Navigate to the explore the tool page. Under the map, you will see how one can help us improve the tool"
+  },
+  "explore.tool.page.under.map.how.you.can.help.list.item.1": {
+    "defaultMessage": "Vaya a la página <link1>Metodología y datos</link1> y envíe sus comentarios.",
+    "description": "\n      Navigate to the explore the tool page. Under the map, you will see give us feedback on our data and methodology\n    "
+  },
+  "explore.tool.page.under.map.how.you.can.help.list.item.2": {
+    "defaultMessage": "Use la herramienta para buscar comunidades y <link1>enviar sus comentarios</link1>.",
+    "description": "Navigate to the explore the tool page. Under the map, you will see share your feedback"
+  },
+  "explore.tool.page.under.map.how.you.can.help.list.item.3": {
+    "defaultMessage": "En <link1>federalregister.gov</link1>, responda a nuestra Solicitud de información.",
+    "description": "Navigate to the explore the tool page. Under the map, you will see share your feedback"
+  },
+  "explore.tool.page.under.map.note.on.territories.intro": {
+    "defaultMessage": "Observaciones sobre los territorios de los Estados Unidos",
+    "description": "Navigate to the explore the tool page. Under the map, you will see territories intro text"
+  },
+  "explore.tool.page.under.map.note.on.territories.para.1": {
+    "defaultMessage": "Las fuentes de datos que se describen en la página <link1>Metodología y datos</link1> se usan para identificar las comunidades desfavorecidas en los cincuenta estados y el Distrito de Columbia. No obstante, no todas estas fuentes de datos están disponibles actualmente para los territorios de los EE. UU.",
+    "description": "Navigate to the explore the tool page. Under the map, you will see territories paragraph 1"
+  },
+  "explore.tool.page.under.map.note.on.territories.para.2": {
+    "defaultMessage": "Para Puerto Rico, se usan los datos de la Encuesta sobre la Comunidad Estadounidense (ACS, por sus siglas en inglés) de 2015 a 2019 de la Oficina del Censo para la tasa de inscripción en educación superior y los demás campos de la categoría Capacitación y desarrollo de la fuerza laboral a fin de identificar las comunidades desfavorecidas. Por ahora, no se dispone de datos en las demás categorías.",
+    "description": "Navigate to the explore the tool page. Under the map, you will see territories paragraph 2"
+  },
+  "explore.tool.page.under.map.note.on.territories.para.3": {
+    "defaultMessage": "Para Samoa estadounidense y las Islas Marianas del Norte, los datos usados para identificar las comunidades desfavorecidas provienen del Censo decenal de 2010, los datos más recientes de los que dispone la Oficina del Censo de los EE. UU. Los datos disponibles para estos territorios incluyen los campos desempleo, pobreza, mediana de bajos ingresos y tasa de graduación de la escuela secundaria o preparatoria en la categoría Capacitación y desarrollo de la fuerza laboral.",
+    "description": "Navigate to the explore the tool page. Under the map, you will see territories paragraph 3"
+  },
+  "explore.tool.page.under.map.note.on.territories.para.4": {
+    "defaultMessage": "Actualmente hay labores en curso para identificar comunidades desfavorecidas en la Islas Vírgenes de EE. UU. y Guam, y actualizar la herramienta según corresponda.",
+    "description": "Navigate to the explore the tool page. Under the map, you will see territories paragraph 4"
+  },
+  "explore.tool.page.under.map.note.on.tribal.nations.intro": {
+    "defaultMessage": "Observaciones sobre las naciones tribales",
+    "description": "Navigate to the explore the tool page. Under the map, you will see tribal nations intro text"
+  },
+  "explore.tool.page.under.map.note.on.tribal.nations.para.1": {
+    "defaultMessage": "La herramienta incluye todos los grupos de bloques del censo de los EE. UU., incluidos los que están ubicados en naciones tribales, en la medida en que se dispone de datos (consulte más información en la página <link1>Metodología y datos</link1>). El Consejo sobre la Calidad del Medio Ambiente (CEQ, por sus siglas en inglés) participa en la consulta y la coordinación con las naciones tribales sobre la versión beta de la herramienta para dar a esas naciones oportunidades valiosas para hacer aportes, conforme al <link2>Plan de acción para la consulta y la coordinación con las naciones tribales</link2> del CEQ, el <link3>Memorando del presidente Biden sobre Consulta de las naciones tribales y fortalecimiento de las consultas entre naciones</link3> y la Orden ejecutiva 13175 sobre <link4>Consulta y coordinación con los gobiernos de las tribus indias</link4>.",
+    "description": "Navigate to the explore the tool page. Under the map, you will see tribal nations paragraph 1"
+  },
+  "fab.survey.text": {
+    "defaultMessage": "Ayude a mejorar el sitio web y los datos",
+    "description": "Navigate to the the public engagement page, this will be the text for floating action button"
+  },
+  "faqs.page.coming.soon.text": {
+    "defaultMessage": "¡Próximamente!",
+    "description": "Navigate to the the FAQs page, this will be the page coming soon text"
+  },
+  "faqs.page.title.text": {
+    "defaultMessage": "Preguntas frecuentes",
+    "description": "Navigate to the the FAQs page, this will be the page title text"
+  },
+  "indicator.categories.afford.house.title": {
+    "defaultMessage": "Vivienda sostenible y asequible",
+    "description": "Navigate to the methodology page. Navigate to the category section. This will set the category title"
+  },
+  "indicator.categories.clean.energy.title": {
+    "defaultMessage": "Energía no contaminante y eficiencia energética",
+    "description": "Navigate to the methodology page. Navigate to the category section. This will set the category title"
+  },
+  "indicator.categories.clean.transport.title": {
+    "defaultMessage": "Tránsito no contaminante",
+    "description": "Navigate to the methodology page. Navigate to the category section. This will set the category title"
+  },
+  "indicator.categories.clean.water.title": {
+    "defaultMessage": "Infraestructura crítica para agua no contaminada y residuos",
+    "description": "Navigate to the methodology page. Navigate to the category section. This will set the category title"
+  },
+  "indicator.categories.health.burdens.title": {
+    "defaultMessage": "Cargas sanitarias",
+    "description": "Navigate to the methodology page. Navigate to the category section. This will set the category title"
+  },
+  "indicator.categories.legacy.pollution.title": {
+    "defaultMessage": "Reducción y solución de la contaminación heredada",
+    "description": "Navigate to the methodology page. Navigate to the category section. This will set the category title"
+  },
+  "indicator.categories.work.dev.title": {
+    "defaultMessage": "Capacitación y desarrollo de la fuerza laboral",
+    "description": "Navigate to the methodology page. Navigate to the category section. This will set the category title"
+  },
+  "map.territoryFocus.focusOn": {
+    "defaultMessage": "Enfoque en {territory}",
+    "description": "Enfoque en los límites de un territorio en particular"
+  },
+  "methodology.page.categories.title": {
+    "defaultMessage": "Las comunidades están identificadas como desfavorecidas por la versión actual de la herramienta para los fines de la Iniciativa Justice40 si se encuentran en grupo de bloques del censo que estén en el umbral o por encima del umbral de uno o más de los ocho criterios a continuación.",
+    "description": "Navigate to the methodology page. This is the methodology page explanation of the categories"
+  },
+  "methodology.page.category.and.clause.hs.ed.higher.ed": {
+    "defaultMessage": "<boldtag>Y</boldtag> 10% o más de los adultos con 25 años cumplidos no han obtenido <link1>un grado de escuela preparatoria o secundaria</link1> Y 80% o más de los adultos con 15 años cumplidos no están inscritos en un programa de <link2>educación superior</link2>",
+    "description": "Navigate to the methodology page. Navigate to the category section. This is the portion of the formula dealing with higher ed enrollment and high school degree rate"
+  },
+  "methodology.page.category.and.clause.low.inc.hs.ed": {
+    "defaultMessage": "<boldtag>Y</boldtag> está por encima del percentil de 65 para <link1>bajos ingresos</link1> Y 80% o más de los adultos con 15 años cumplidos no están inscritos en un programa de <link2>educación superior</link2>",
+    "description": "Navigate to the methodology page. Navigate to the category section. This is category portion of the formula dealing with lower income and high school degree rate"
+  },
+  "methodology.page.category.asthma.description.text": {
+    "defaultMessage": "Porcentaje ponderado de personas que respondan “sí” a ambas de las siguientes preguntas: “¿Alguna vez le dijo un médico, enfermero u otro profesional sanitario que tiene asma?” y “¿Aún tiene asma?\"",
+    "description": "Navigate to the Methodology page. This is the description text for asthma"
+  },
+  "methodology.page.category.card.title": {
+    "defaultMessage": "Comunidades que están <boldtag>identificadas como desfavorecidas</boldtag>",
+    "description": "Navigate to the methodology page. Navigate to the category section. This is category heading"
+  },
+  "methodology.page.category.diabetes.description.text": {
+    "defaultMessage": "Porcentaje ponderado de personas de 18 años cumplidos que informan que un médico, enfermero u otro profesional sanitario les dijo que tienen diabetes y no es diabetes gestacional.",
+    "description": "Navigate to the Methodology page. This is the description text for diabetes"
+  },
+  "methodology.page.category.diesel.pm.description.text": {
+    "defaultMessage": "Combinación de partículas que componen el gas de motor diésel en la atmósfera. El valor en los campos es el peso de estas partículas en microgramos por metro cúbico.",
+    "description": "Navigate to the Methodology page. This is the description text for diesel pm"
+  },
+  "methodology.page.category.energy.burden.description.text": {
+    "defaultMessage": "Costo promedio anual de la energía ($) por familia dividido por los ingresos familiares promedios.",
+    "description": "Navigate to the Methodology page. This is the description text for energy burden"
+  },
+  "methodology.page.category.exp.agr.loss.rate.description.text": {
+    "defaultMessage": "Porcentaje de valores agrícolas que enfrentan riesgos de pérdidas debido a catorce tipos de peligros naturales que tienen algún vínculo con el cambio climático: avalanchas, inundaciones costeras, olas de frío, sequías, granizadas, olas de calor, huracanes, tormentas de hielo, deslizamientos de terreno, inundaciones ribereñas, vientos fuertes, tornados, incendios forestales y clima invernal. Tasa calculada al dividir el valor agrícola en riesgo en un grupo de bloques del censo por el valor agrícola en ese grupo de bloques del censo.",
+    "description": "Navigate to the Methodology page. This is the description text for exp agr loss rate"
+  },
+  "methodology.page.category.exp.bld.loss.rate.description.text": {
+    "defaultMessage": "Porcentaje de valores de construcción que enfrentan riesgos de pérdidas debido a catorce tipos de peligros naturales que tienen algún vínculo con el cambio climático: avalanchas, inundaciones costeras, olas de frío, sequías, granizadas, olas de calor, huracanes, tormentas de hielo, deslizamientos de terreno, inundaciones ribereñas, vientos fuertes, tornados, incendios forestales y clima invernal. Tasa calculada al dividir el valor de construcción en riesgo en un grupo de bloques del censo por el valor de construcción en ese grupo de bloques del censo.",
+    "description": "Navigate to the Methodology page. This is the description text for exp bld loss rate"
+  },
+  "methodology.page.category.exp.pop.loss.rate.description.text": {
+    "defaultMessage": "Tasa relativa a la población de muertes y lesiones debido a catorce tipos de peligros naturales cada año que tienen algún vínculo con el cambio climático: avalanchas, inundaciones costeras, olas de frío, sequías, granizadas, olas de calor, huracanes, tormentas de hielo, deslizamientos de terreno, inundaciones ribereñas, vientos fuertes, tornados, incendios forestales y clima invernal. La pérdida de población se define como el número de muertes y lesiones ocasionadas por un suceso de peligro reportado por la Base de datos de sucesos y pérdidas por peligros espaciales (Spatial Hazard Events and Losses Database for the United States) o los Centros Nacionales para la Información Ambiental (NCEI, por sus siglas en inglés).  A efectos de combinar las muertes y las lesiones para el cálculo del valor de pérdida de población, una lesión se cuenta como una décima parte (1/10) de una muerte. La Base de datos de sucesos de tormenta de los NCEI clasifica las lesiones y las muertes como directas e indirectas. Tanto las muertes como las lesiones directas e indirectas se cuentan como pérdida de población. Este número total de lesiones y muertes se divide entonces por la población en el grupo de bloques del censo para obtener una tasa per cápita del riesgo de la población.",
+    "description": "Navigate to the Methodology page. This is the description text for exp pop loss rate"
+  },
+  "methodology.page.category.heart.disease.description.text": {
+    "defaultMessage": "Porcentaje ponderado de personas de 18 años cumplidos que informan que alguna vez un médico, enfermero u otro profesional sanitario les dijo que tenían angina de pecho o cardiopatía coronaria.",
+    "description": "Navigate to the Methodology page. This is the description text for heart disease"
+  },
+  "methodology.page.category.high.ed.enroll.rate.description.text": {
+    "defaultMessage": "Porcentaje de personas de 15 años cumplidos que no están inscritos actualmente en la universidad, escuela superior o escuela de posgrado.",
+    "description": "Navigate to the Methodology page. This is the description text for high ed enrollment"
+  },
+  "methodology.page.category.highschool.description.text": {
+    "defaultMessage": "Porcentaje de personas con 25 años cumplidos en un grupo de bloques del censo cuyo nivel de educación es inferior a un diploma de escuela secundaria o preparatoria.",
+    "description": "Navigate to the Methodology page. This is the description text for high school"
+  },
+  "methodology.page.category.house.burden.description.text": {
+    "defaultMessage": "Porcentaje de familias en un grupo de bloques del censo que están ganando menos del 80% de la mediana del ingreso familiar para una zona del Departamento de Vivienda y Desarrollo Urbano (HUD, por sus siglas en inglés) y que gastan más de 30% de su ingreso en el costo de la vivienda.",
+    "description": "Navigate to the Methodology page. This is the description text for housing burden"
+  },
+  "methodology.page.category.lead.paint.description.text": {
+    "defaultMessage": "Porcentaje de unidades de viviendas construidas antes de 1960, un indicador del potencial de exposición a pintura con plomo en los grupo de bloques del censo con medianas del valor de la vivienda inferior a un percentil de 90.",
+    "description": "Navigate to the Methodology page. This is the description text for lead paint"
+  },
+  "methodology.page.category.linguistic.iso.description.text": {
+    "defaultMessage": "Porcentaje de familias en las que ninguna persona mayor de 14 años habla bien el inglés.",
+    "description": "Navigate to the Methodology page. This is the description text for linguistic isolation"
+  },
+  "methodology.page.category.low.income.description.text": {
+    "defaultMessage": "Porcentaje de la población del grupo de bloques del censo de las familias en las que el ingreso familiar es igual o inferior al 200% del nivel de pobreza federal.",
+    "description": "Navigate to the Methodology page. This is the description text for low income"
+  },
+  "methodology.page.category.low.life.expectancy.description.text": {
+    "defaultMessage": "Número promedio de años de vida en la esperanza de vida de una persona que ha alcanzado una edad particular.",
+    "description": "Navigate to the Methodology page. This is the description text for low life expectancy"
+  },
+  "methodology.page.category.low.life.expectancy.note.text": {
+    "defaultMessage": "<boldtag>Note: </boldtag>Los percentiles para este conjunto de datos se han revertido y los grupo de bloques del censo con números más bajos tienen las esperanzas de vida más altas y los grupo de bloques del censo con números más altos tienen una esperanza de vida más baja al compararse con la esperanza de vida en la zona.",
+    "description": "Navigate to the Methodology page. This is the note text for low life expectancy"
+  },
+  "methodology.page.category.low.median.expectancy.note.text": {
+    "defaultMessage": "<boldtag>Note: </boldtag>Los percentiles para este conjunto de datos se han revertido y los grupo de bloques del censo con números más bajos tienen las medianas de ingresos más altas y los grupo de bloques del censo con números más altos tienen las medianas de ingresos más bajas al compararse con la mediana de ingresos en la zona.",
+    "description": "Navigate to the Methodology page. This is the note text for low median expectancy"
+  },
+  "methodology.page.category.median.home.value.description.text": {
+    "defaultMessage": "Mediana del valor de la vivienda de unidades de viviendas ocupadas por sus dueños en el grupo de bloques del censo.",
+    "description": "Navigate to the Methodology page. This is the description text for lead paint"
+  },
+  "methodology.page.category.pm2.5.description.text": {
+    "defaultMessage": "Partículas finas inhalables, con diámetros por lo general de 2,5 micrómetros y menos. El valor en los campos es el peso de estas partículas en microgramos por metro cúbico.",
+    "description": "Navegue a la página Metodología. Esta es la descripción del texto para PM2.5."
+  },
+  "methodology.page.category.poverty.description.text": {
+    "defaultMessage": "Porcentaje de la población del grupo de bloques del censo de las familias en las que el ingreso familiar es igual o inferior al 100% del nivel de pobreza federal.",
+    "description": "Navegue a la página Metodología. Esta es la descripción del texto para pobreza."
+  },
+  "methodology.page.category.prox.haz.description.text": {
+    "defaultMessage": "El conteo de instalaciones para el manejo de residuos peligrosos (instalaciones de tratamiento, almacenamiento y desecho y generadores de altas cantidades) dentro de 5 km (o las más cercanas más allá de 5 km), cada uno dividido por la distancia en kilómetros.",
+    "description": "Navigate to the Methodology page. This is the description text for proximity to hazards"
+  },
+  "methodology.page.category.prox.npl.description.text": {
+    "defaultMessage": "El conteo de sitios propuestos o enumerados en la Lista Nacional de Prioridades, también conocidos como Superfund, a menos de 5 kilómetros de distancia (o las más cercanas más allá de 5 km), cada uno dividido por la distancia en kilómetros.",
+    "description": "Navigate to the Methodology page. This is the description text for proximity to npl"
+  },
+  "methodology.page.category.prox.rmp.description.text": {
+    "defaultMessage": "El conteo de sitios del Plan de Manejo de Riesgos (RMP, por sus siglas en inglés) (plan de gestión de posibles accidentes químicos) a menos de 5 kilómetros de distancia (o las más cercanas más allá de 5 km), cada uno dividido por la distancia en kilómetros.",
+    "description": "Navigate to the Methodology page. This is the description text for proximity to rmp"
+  },
+  "methodology.page.category.source.cdc.places.link": {
+    "defaultMessage": "<link1>datos de LUGARES</link1> de {date16_19}",
+    "description": "Navigate to the Methodology page. This is the source link for CDC Places"
+  },
+  "methodology.page.category.source.cdc.sleep.link": {
+    "defaultMessage": "<link1>Proyecto de cálculos de esperanza de vida en regiones pequeñas en los EE. UU. (USALEEP, por sus siglas en inglés)</link1> de {date10_15}",
+    "description": "Navigate to the Methodology page. This is the source link for CDC Sleep"
+  },
+  "methodology.page.category.source.census.link.10": {
+    "defaultMessage": "<link1>Encuesta sobre la Comunidad Estadounidense (ACS, por sus siglas en inglés)</link1> de {date10}",
+    "description": "Navigate to the Methodology page. This is the source link for Census ACS"
+  },
+  "methodology.page.category.source.census.link.15": {
+    "defaultMessage": "<link1>Encuesta sobre la Comunidad Estadounidense (ACS, por sus siglas en inglés)</link1> de {date15_19}",
+    "description": "Navigate to the Methodology page. This is the source link for Census ACS"
+  },
+  "methodology.page.category.source.doe.lead.link": {
+    "defaultMessage": "<link1>Lead score</link1> de {date18}",
+    "description": "Navigate to the Methodology page. This is the source link for DOE FEMA"
+  },
+  "methodology.page.category.source.dot.epa.link": {
+    "defaultMessage": "<link1>Datos de tránsito</link1> de {date17} según han sido compilados por la herramienta EJSCREEN de la Agencia de Protección Ambiental de los EE. UU. (EPA, por sus siglas en inglés)",
+    "description": "Navigate to the Methodology page. This is the source link for DOT EPA"
+  },
+  "methodology.page.category.source.epa.cerclis.link": {
+    "defaultMessage": "<link1>Base de datos CERCLIS</link1> de {date20} según ha sido compilada por la herramienta EJSCREEN de la Agencia de Protección Ambiental de los EE. UU. (EPA, por sus siglas en inglés)",
+    "description": "Navigate to the Methodology page. This is the source link for EPA CERCLIS"
+  },
+  "methodology.page.category.source.epa.nata.link": {
+    "defaultMessage": "<link1> Evaluación Nacional de Contaminantes Tóxicos del Aire (NATA, por sus siglas en ingles)</link1> de {date14} según ha sido compilada por la herramienta EJSCREEN de la Agencia de Protección Ambiental de los EE. UU. (EPA, por sus siglas en inglés)",
+    "description": "Navigate to the Methodology page. This is the source link for EPA NATA"
+  },
+  "methodology.page.category.source.epa.oar.link": {
+    "defaultMessage": "<link1>Fusión de datos de modelo y monitoreo</link1> de {date17} según han sido compilados por la herramienta EJSCREEN de la Agencia de Protección Ambiental de los EE. UU. (EPA , por sus siglas en inglés), provenientes de los datos de tránsito de la Evaluación Nacional de Contaminantes Tóxicos del Aire (NATA) y el Departamento de Transporte de los EE. UU.",
+    "description": "Navigate to the Methodology page. This is the source link for EPA OAR"
+  },
+  "methodology.page.category.source.epa.rmp.link": {
+    "defaultMessage": "<link1>Base de datos RMP</link1> de {date20} según ha sido compilada por la herramienta EJSCREEN de la Agencia de Protección Ambiental de los EE. UU. (EPA, por sus siglas en inglés)",
+    "description": "Navigate to the Methodology page. This is the source link for EPA RMP"
+  },
+  "methodology.page.category.source.epa.rsei.link": {
+    "defaultMessage": "<link1>Modelo de los indicadores ambientales para detección del riesgo (RSEI, por sus siglas en inglés)</link1> de {date20} según ha sido compilado por la herramienta EJSCREEN de la Agencia de Protección Ambiental de los EE. UU. (EPA, por sus siglas en inglés)",
+    "description": "Navigate to the Methodology page. This is the source link for EPA RSEI"
+  },
+  "methodology.page.category.source.epa.tsdf.link": {
+    "defaultMessage": "<link1> Datos de Plantas de eliminación, almacenamiento y tratamiento (TSDF, por sus siglas en inglés) </link1> de {date20} calculados de la base de datos de la Ley de Recuperación y Conservación de Recursos (RCRA, por sus siglas en inglés) de la Agencia de Protección Ambiental de los EE. UU. (EPA, por sus siglas en inglés), según ha sido compilado por la herramienta EJSCREEN de la EPA.",
+    "description": "Navigate to the Methodology page. This is the source link for EPA TSDF"
+  },
+  "methodology.page.category.source.fema.link": {
+    "defaultMessage": "<link1>Índice Nacional de Riesgo</link1> de {date14_21}",
+    "description": "Navigate to the Methodology page. This is the source link for FEMA"
+  },
+  "methodology.page.category.source.hud.link": {
+    "defaultMessage": "<link1>Conjunto de datos de la Estrategia abarcadora de asequibilidad de la vivienda</link1> de {date14_18}",
+    "description": "Navigate to the Methodology page. This is the source link for HUD"
+  },
+  "methodology.page.category.traffic.vol.description.text": {
+    "defaultMessage": "Número de vehículos (tránsito diario anual promedio) en carreteras principales dentro de los 500 metros, dividido por la distancia en metros.",
+    "description": "Navigate to the Methodology page. This is the description text for traffic volume"
+  },
+  "methodology.page.category.unemploy.description.text": {
+    "defaultMessage": "Número de personas desempleadas como porcentaje de la fuerza laboral civil.",
+    "description": "Navigate to the Methodology page. This is the description text for unemployment"
+  },
+  "methodology.page.category.waste.water.description.text": {
+    "defaultMessage": "El Modelo de los indicadores ambientales para detección del riesgo (RSEI, por sus siglas en inglés) modeló concentraciones tóxicas en segmentos de corriente a menos de 500 metros de distancia, divididos por la distancia en kilómetros.",
+    "description": "Navigate to the Methodology page. This is the description text for waste water"
+  },
+  "methodology.page.category.workforce.dev.description.text": {
+    "defaultMessage": "Mediana del ingreso del grupo de bloques del censo calculada como porcentaje de la mediana del ingreso de la zona.",
+    "description": "Navigate to the Methodology page. This is the description text for workforce dev"
+  },
+  "methodology.page.dataset.indicator.asthma.title.text": {
+    "defaultMessage": "Asma",
+    "description": "Navigate to the Methodology page. This is the title text for the asthma dataset"
+  },
+  "methodology.page.dataset.indicator.diabetes.title.text": {
+    "defaultMessage": "Diabetes",
+    "description": "Navigate to the Methodology page. This is the title text for the diabetes dataset"
+  },
+  "methodology.page.dataset.indicator.diesel.pm.title.text": {
+    "defaultMessage": "Exposición a material particulado de diésel",
+    "description": "Navigate to the Methodology page. This is the title text for the diesel pm dataset"
+  },
+  "methodology.page.dataset.indicator.energy.burden.title.text": {
+    "defaultMessage": "Carga de energía",
+    "description": "Navigate to the Methodology page. This is the title text for the energy burden dataset"
+  },
+  "methodology.page.dataset.indicator.exp.bld.loss.title.text": {
+    "defaultMessage": "Tasa prevista de pérdida de edificios",
+    "description": "Navigate to the Methodology page. This is the title text for the exp bld loss income dataset"
+  },
+  "methodology.page.dataset.indicator.exp.pop.loss.title.text": {
+    "defaultMessage": "Tasa prevista de pérdida de población",
+    "description": "Navigate to the Methodology page. This is the title text for the exp pop loss income dataset"
+  },
+  "methodology.page.dataset.indicator.expected.ag.loss.title.text": {
+    "defaultMessage": "Tasa prevista de pérdida agrícola",
+    "description": "Navigate to the Methodology page. This is the title text for the expected agr loss rate income dataset"
+  },
+  "methodology.page.dataset.indicator.heart.disease.title.text": {
+    "defaultMessage": "Cardiopatía",
+    "description": "Navigate to the Methodology page. This is the title text for the heart disease dataset"
+  },
+  "methodology.page.dataset.indicator.high.ed.enroll.title.text": {
+    "defaultMessage": "No inscripción en educación superior",
+    "description": "Navigate to the Methodology page. This is the title text for the high ed enrollment dataset"
+  },
+  "methodology.page.dataset.indicator.high.school.title.text": {
+    "defaultMessage": "No ha obtenido un grado de escuela secundaria o preparatoria",
+    "description": "Navigate to the Methodology page. This is the title text for the high school dataset"
+  },
+  "methodology.page.dataset.indicator.house.burden.title.text": {
+    "defaultMessage": "Carga del costo de la vivienda",
+    "description": "Navigate to the Methodology page. This is the title text for the house burden dataset"
+  },
+  "methodology.page.dataset.indicator.lead.paint.title.text": {
+    "defaultMessage": "Pintura con plomo",
+    "description": "Navigate to the Methodology page. This is the title text for the lead paint dataset"
+  },
+  "methodology.page.dataset.indicator.life.exp.title.text": {
+    "defaultMessage": "Baja esperanza de vida",
+    "description": "Navigate to the Methodology page. This is the title text for the life exp dataset"
+  },
+  "methodology.page.dataset.indicator.ling.iso.title.text": {
+    "defaultMessage": "Aislamiento lingüístico",
+    "description": "Navigate to the Methodology page. This is the title text for the linguistic isolation dataset"
+  },
+  "methodology.page.dataset.indicator.low.income.title.text": {
+    "defaultMessage": "Bajos ingresos",
+    "description": "Navigate to the Methodology page. This is the title text for the low income dataset"
+  },
+  "methodology.page.dataset.indicator.low.median.income.title.text": {
+    "defaultMessage": "Mediana de bajos ingresos",
+    "description": "Navigate to the Methodology page. This is the title text for the low median income dataset"
+  },
+  "methodology.page.dataset.indicator.median.home.title.text": {
+    "defaultMessage": "Mediana del valor de la vivienda",
+    "description": "Navigate to the Methodology page. This is the title text for the median home dataset"
+  },
+  "methodology.page.dataset.indicator.pm25.title.text": {
+    "defaultMessage": "PM2.5 en el aire",
+    "description": "Navigate to the Methodology page. This is the title text for the pm25 dataset"
+  },
+  "methodology.page.dataset.indicator.poverty.title.text": {
+    "defaultMessage": "Pobreza",
+    "description": "Navigate to the Methodology page. This is the title text for the poverty dataset"
+  },
+  "methodology.page.dataset.indicator.prox.haz.title.text": {
+    "defaultMessage": "Proximidad a instalaciones para manejo de residuos peligrosos",
+    "description": "Navigate to the Methodology page. This is the title text for the prox haz dataset"
+  },
+  "methodology.page.dataset.indicator.prox.npl.title.text": {
+    "defaultMessage": "Proximidad a los sitios de la Lista Nacional de Prioridades (NPL)",
+    "description": "Navigate to the Methodology page. This is the title text for the prox npl dataset"
+  },
+  "methodology.page.dataset.indicator.prox.rpm.title.text": {
+    "defaultMessage": "Proximidad a las instalaciones del Plan de Manejo de Riesgos (RMP)",
+    "description": "Navigate to the Methodology page. This is the title text for the prox rpm dataset"
+  },
+  "methodology.page.dataset.indicator.traffic.volume.title.text": {
+    "defaultMessage": "Proximidad al tránsito de vehículos y volumen de este",
+    "description": "Navigate to the Methodology page. This is the title text for the traffic.volume dataset"
+  },
+  "methodology.page.dataset.indicator.unemploy.title.text": {
+    "defaultMessage": "Desempleo",
+    "description": "Navigate to the Methodology page. This is the title text for the unemployment dataset"
+  },
+  "methodology.page.dataset.indicator.waste.water.title.text": {
+    "defaultMessage": "Descarga de aguas residuales",
+    "description": "Navigate to the Methodology page. This is the title text for the waste water dataset"
+  },
+  "methodology.page.datasetCard.available.for": {
+    "defaultMessage": "Disponible para:",
+    "description": "Navigate to the Methodology page. This is the label associated with available for which regions of the card"
+  },
+  "methodology.page.datasetCard.date.range": {
+    "defaultMessage": "Rango de datos:",
+    "description": "Navigate to the Methodology page. This is the label associated with explaining the card"
+  },
+  "methodology.page.datasetCard.responsible.party": {
+    "defaultMessage": "Parte encargada:",
+    "description": "Navigate to the Methodology page. This is the label associated with explaining the card"
+  },
+  "methodology.page.datasetCard.source": {
+    "defaultMessage": "Fuente:",
+    "description": "Navigate to the Methodology page. This is the label associated with source of the card"
+  },
+  "methodology.page.datasetCard.used.in": {
+    "defaultMessage": "Utilizado en:",
+    "description": "Navigate to the Methodology page. This is the label associated with explaining the card"
+  },
+  "methodology.page.datasetContainer.additional.heading": {
+    "defaultMessage": "Otros indicadores",
+    "description": "Navigate to the Methodology page. This is the additional indicators heading"
+  },
+  "methodology.page.datasetContainer.additional.info": {
+    "defaultMessage": "Estos conjuntos de datos brindan más información sobre cada comunidad.",
+    "description": "Navigate to the Methodology page. This is the additional indicator info"
+  },
+  "methodology.page.datasetContainer.heading": {
+    "defaultMessage": "Conjuntos de datos utilizados en la metodología beta.",
+    "description": "Navigate to the Methodology page. This is the section heading of which datasets are used in cumulative score"
+  },
+  "methodology.page.datasetContainer.info": {
+    "defaultMessage": "Los conjuntos de datos utilizados en la versión actual de la herramienta provienen de una variedad de fuentes y se seleccionaron según la pertinencia, disponibilidad y calidad. Los conjuntos de datos procuran identificar una gama de efectos sanitarios, ambientales y climáticos, entre otros efectos en las comunidades.",
+    "description": "Navigate to the Methodology page. This is the description of the dataset section"
+  },
+  "methodology.page.datasets.all.except.workforce.used.in.text": {
+    "defaultMessage": "Todas las categorías excepto la categoría de la capacitación y el desarrollo de la fuerza laboral",
+    "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card Used In text for all methodologies except the workforce development"
+  },
+  "methodology.page.datasets.all.used.in.text": {
+    "defaultMessage": "Todas las categorías",
+    "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card Used In text for all methodologies"
+  },
+  "methodology.page.downloadPacket.button1.text": {
+    "defaultMessage": "Descargue las fuentes de datos",
+    "description": "Navigate to the methodology page. This is the download packet button text"
+  },
+  "methodology.page.downloadPacket.button2.text": {
+    "defaultMessage": "Descargue el archivo de forma",
+    "description": "Navigate to the methodology page. This is the download shapefiles text"
+  },
+  "methodology.page.downloadPacket.header.text": {
+    "defaultMessage": "Archivos disponibles para descargar",
+    "description": "Navigate to the methodology page. This is the download packet header text"
+  },
+  "methodology.page.downloadPacket.info.last.updated": {
+    "defaultMessage": "Última actualización: {downloadLastUpdated}",
+    "description": "Navigate to the methodology page. This is the download packet info last updated"
+  },
+  "methodology.page.downloadPacket.info.text1": {
+    "defaultMessage": "Descargue las fuentes de datos utilizados en la herramienta CEJST (.csv y.xlsx, {downloadFileSize} descomprimidos) o el archivo de forma, junto con una lista de códigos o codebook (.zip, {shapefileSize} descomprimido).",
+    "description": "Navigate to the methodology page. This is the download packet info text"
+  },
+  "methodology.page.downloadPacket.new.tag.text": {
+    "defaultMessage": "<boldtag>NUEVO</boldtag>",
+    "description": "Navigate to the methodology page. This is the new tag text"
+  },
+  "methodology.page.formula.first": {
+    "defaultMessage": "<boldtag>SI</boldtag> el grupo de bloques del censo anterior es el umbral para uno o más de los indicadores climáticos o ambientales",
+    "description": "Navigate to the methodology page. This is the first part of the formula used in the methodology"
+  },
+  "methodology.page.formula.intro": {
+    "defaultMessage": "Bajo la fórmula actual, un grupo de bloques del censo estará identificado como desfavorecido en una o más categorías de criterios:",
+    "description": "Navigate to the methodology page. This is the methodology page introducing the formula"
+  },
+  "methodology.page.formula.second": {
+    "defaultMessage": "<boldtag>Y</boldtag> el grupo de bloques del censo está por encima del umbral para los indicadores socioeconómicos",
+    "description": "Navigate to the methodology page. This is the second part of the formula used in the methodology"
+  },
+  "methodology.page.header.text": {
+    "defaultMessage": "Metodología",
+    "description": "Navigate to the methodology page. This is the methodology page header text"
+  },
+  "methodology.page.indicator.categories.afford.house.if": {
+    "defaultMessage": "<boldtag>SI</boldtag> se encuentra en el percentil de 90 o por encima de este para <link1>pintura con plomo</link1> Y <link2>la mediana del valor de la vivienda</link2> es menor al percentil de 90 O está en el percentil de 90 o por encima de este para la <link3>carga del costo de la vivienda</link3>",
+    "description": "Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula"
+  },
+  "methodology.page.indicator.categories.afford.housing.methodology": {
+    "defaultMessage": "Categoría de vivienda sostenible y asequible",
+    "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Affordable and sustainable housing methodology"
+  },
+  "methodology.page.indicator.categories.clean.energy.if": {
+    "defaultMessage": "<boldtag>SI</boldtag> se encuentra en el percentil de 90 o por encima de este para la <link1>carga energética</link1> O <link2>PM2.5 en el aire</link2>",
+    "description": "Navigate to the methodology page. Navigate to the category section. This will set the if if portion of the formula"
+  },
+  "methodology.page.indicator.categories.clean.energy.methodology": {
+    "defaultMessage": "Categoría de energía no contaminante y eficiencia energética",
+    "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Clean energy and energy efficiency methodology"
+  },
+  "methodology.page.indicator.categories.clean.transport.if": {
+    "defaultMessage": "<boldtag>SI</boldtag> se encuentra en el percentil de 90 o por encima de este para las <link1>partículas de humo diésel</link1> o la <link2> proximidad al tránsito de vehículos y volumen de este</link2>",
+    "description": "Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula"
+  },
+  "methodology.page.indicator.categories.clean.transport.methodology": {
+    "defaultMessage": "Categoría de tránsito no contaminante",
+    "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Clean transportation methodology"
+  },
+  "methodology.page.indicator.categories.clean.water.if": {
+    "defaultMessage": "<boldtag>SI</boldtag> está en el percentil de 90 o por encima de este para la <link1>descarga de aguas residuales</link1>",
+    "description": "Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula"
+  },
+  "methodology.page.indicator.categories.clean.water.methodology": {
+    "defaultMessage": "Categoría de infraestructura crítica para agua no contaminada y residuos",
+    "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Critical clean water and waste infrastructure methodology"
+  },
+  "methodology.page.indicator.categories.climate.change.if": {
+    "defaultMessage": "<boldtag>SI</boldtag> está en el percentil de 90 o por encima de este para la <link1>tasa prevista de pérdida agrícola</link1> O la <link2>tasa prevista de pérdida de edificios</link2> O la <link3>tasa prevista de pérdida de población</link3>",
+    "description": "Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula"
+  },
+  "methodology.page.indicator.categories.climate.change.methodology": {
+    "defaultMessage": "Categoría de cambio climático",
+    "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the climate change methodology"
+  },
+  "methodology.page.indicator.categories.climate.change.title": {
+    "defaultMessage": "Cambio climático",
+    "description": "Navigate to the methodology page. Navigate to the category section. This will set the category title"
+  },
+  "methodology.page.indicator.categories.heading": {
+    "defaultMessage": "Categorías",
+    "description": "Navigate to the methodology page. Navigate to the category section. This is category heading"
+  },
+  "methodology.page.indicator.categories.health.burdens.if": {
+    "defaultMessage": "<boldtag>SI</boldtag> está en el percentil de 90 o por encima de este para  <link1>asma</link1> O <link2>diabetes</link2> O <link3>cardiopatía</link3> O <link4>baja esperanza de vida</link4>",
+    "description": "Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula"
+  },
+  "methodology.page.indicator.categories.health.burdens.methodology": {
+    "defaultMessage": "Categoría de cargas sanitarias",
+    "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Health burdens methodology"
+  },
+  "methodology.page.indicator.categories.legacy.pollute.methodology": {
+    "defaultMessage": "Categoría de reducción y solución de la contaminación heredada",
+    "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Reduction and remediation of legacy pollution methodology"
+  },
+  "methodology.page.indicator.categories.legacy.pollution.if": {
+    "defaultMessage": "<boldtag>SI</boldtag> está en el percentil de 90 o por encima de este para la <link1>proximidad a instalaciones para manejo de residuos peligrosos</link1> O la <link2>proximidad a los sitios de la Lista Nacional de Prioridades (NPL)</link2> O la <link3>proximidad a las instalaciones del Plan de Manejo de Riesgos (RMP)</link3>",
+    "description": "Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula"
+  },
+  "methodology.page.indicator.categories.work.dev.if": {
+    "defaultMessage": "<boldtag>SI</boldtag> se encuentra en el percentil de 90 o por encima de este para la <link1>mediana de bajos ingresos</link1> como un porcentaje de la mediana de ingresos de la zona O el <link2>aislamiento lingüístico</link2> O el <link3>desempleo</link3> O el porcentaje de personas en familias que se encuentran en el 100% del nivel de <link4>pobreza</link4> federal o por debajo de este",
+    "description": "Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula"
+  },
+  "methodology.page.indicator.categories.workforce.dev.methodology": {
+    "defaultMessage": "Categoría de capacitación y desarrollo de la fuerza laboral",
+    "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Training and workforce development"
+  },
+  "methodology.page.paragraph": {
+    "defaultMessage": "La versión actual de la herramienta identifica a comunidades que están desfavorecidas para los fines de la Iniciativa Justice40 utilizando los grupo de bloques del censo, los cuales son la unidad geográfica más pequeña para las que existen conjuntos de datos nacionales coherentes a disposición del público que se pueden presentar coherentemente en la herramienta. Los límites de los grupos de bloques del censo se determinan por medio de la Oficina del Censo de los EE. UU. cada diez años. Esta herramienta utiliza los límites de los grupos de bloques del censo de 2010 porque coinciden con los conjuntos de datos que se utilizan en la herramienta. La Oficina del Censo de los EE. UU. actualizará estos grupos de bloques del censo en 2020.",
+    "description": "Navigate to the methodology page. This is the methodology page paragraph"
+  },
+  "methodology.page.return.to.top.link": {
+    "defaultMessage": "Regresar arriba",
+    "description": "Navigate to the Methodology page. This is the link text to return to top"
+  },
+  "methodology.page.title.text": {
+    "defaultMessage": "Metodología y datos",
+    "description": "Navigate to the methodology page. This is the methodology page title text"
+  },
+  "pageNotFound.Guidance.text": {
+    "defaultMessage": "Intente crear una página en",
+    "description": "page not found guidance text"
+  },
+  "pageNotFound.apology.text": {
+    "defaultMessage": "Lo sentimos, no se pudo encontrar la página que estaba buscando. Haga clic en <link1>Inicio</link1> para ir al inicio.",
+    "description": "main error message"
+  },
+  "pageNotFound.heading.text": {
+    "defaultMessage": "No se encontró la página",
+    "description": "page not found heading text"
+  },
+  "pageNotFound.title.text": {
+    "defaultMessage": "No se encontró la página",
+    "description": "page not found title text"
+  },
+  "public.eng.page.button.img.alt.tag": {
+    "defaultMessage": "an icon that represents a calendar",
+    "description": "Navigate to the the public engagement page, this will be the public engagement button icon alt tag text"
+  },
+  "public.eng.page.button.label": {
+    "defaultMessage": "Participación pública",
+    "description": "Navegar a la página de participación pública, esta será la etiqueta del botón de participación pública"
+  },
+  "public.eng.page.description1.text": {
+    "defaultMessage": "El Consejo sobre la Calidad del Medio Ambiente (CEQ, por sus siglas en inglés) llevará a cabo oportunidades para conectar con el público sobre la versión actual de la herramienta. Estas sesiones son una oportunidad para capacitarse sobre la herramienta o proporcionar comentarios sobre la versión beta de la herramienta. El Consejo sobre la Calidad del Medio Ambiente (CEQ, por sus siglas en inglés) espera que el público se una a estos eventos para aprender sobre la herramienta, obtener respuestas para sus preguntas y presentar comentarios.",
+    "description": "Navigate to the the public engagement page, this will be the publiceng page description 1 text"
+  },
+  "public.eng.page.description2.text": {
+    "defaultMessage": "Es necesaria la preinscripción para participar en las sesiones y hablar en ellas.",
+    "description": "Navigate to the the public engagement page, this will be the publiceng page description 2 text"
+  },
+  "public.eng.page.description3.text": {
+    "defaultMessage": "Según estén disponibles, en esta página se publicarán oportunidades adicionales de capacitaciones y participación para el público sobre la Herramienta para la evaluación de la justicia climática y económica.",
+    "description": "Navigate to the the public engagement page, this will be the publiceng page description 3 text"
+  },
+  "public.eng.page.event.info.label": {
+    "defaultMessage": "Información sobre eventos",
+    "description": "Navigate to the the public engagement page, this will be the public engagement page event info label"
+  },
+  "public.eng.page.event.listening.1.info": {
+    "defaultMessage": "22 de marzo (4:00 - 5:00 PM EST)",
+    "description": "Navigate to the the public engagement page, this will be the public engagement page event listening session 1 date"
+  },
+  "public.eng.page.event.listening.2.info": {
+    "defaultMessage": "15 de abril (4:00 - 5:00 PM EST)",
+    "description": "Navigate to the the public engagement page, this will be the public engagement page event listening session 2 date"
+  },
+  "public.eng.page.event.listening.sess.description": {
+    "defaultMessage": "El Consejo sobre la Calidad del Medio Ambiente (CEQ, por sus siglas en inglés) llevará a cabo sesiones de conexión con el público para obtener comentarios e ideas sobre la versión beta de la herramienta, incluidos los conjuntos de datos que incluye y la metodología que utiliza. Sus comentarios son cruciales para el desarrollo y la mejora de la herramienta. Estos comentarios ayudarán al Consejo sobre la Calidad del Medio Ambiente (CEQ, por sus siglas en inglés) a actualizar y refinar la herramienta para garantizar que refleja los desafíos ambientales, climatológicos o de otras índoles que experimentan las comunidades.",
+    "description": "Navigate to the the public engagement page, this will be the public engagement page event listening session description"
+  },
+  "public.eng.page.event.listening.sess.name": {
+    "defaultMessage": "Sesión de conexión",
+    "description": "Navigate to the the public engagement page, this will be the public engagement page event listening session name"
+  },
+  "public.eng.page.event.reglink.label": {
+    "defaultMessage": "Enlace para registrarse",
+    "description": "Navigate to the the public engagement page, this will be the public engagment page event registration link label"
+  },
+  "public.eng.page.event.training.1.info": {
+    "defaultMessage": "9 de marzo (4:00 - 5:00 PM EST)",
+    "description": "Navigate to the the public engagement page, this will be the public engagement page event training session 1 date"
+  },
+  "public.eng.page.event.training.2.info": {
+    "defaultMessage": "10 de marzo (4:00 - 5:00 PM EST)",
+    "description": "Navigate to the the public engagement page, this will be the public engagement page event training session 2 date"
+  },
+  "public.eng.page.event.training.3.info": {
+    "defaultMessage": "16 de marzo (4:00 - 5:00 PM EST)",
+    "description": "Navigate to the the public engagement page, this will be the public engagement page event training session 3 date"
+  },
+  "public.eng.page.event.training.description": {
+    "defaultMessage": "El Consejo sobre la Calidad del Medio Ambiente (CEQ, por sus siglas en inglés) de la Casa Blanca, en colaboración con el Servicio Digital de los EE. UU., llevará a cabo una serie de \"Webinarios de capacitación\" para usuarios de la Herramienta de evaluación de justicia climática y económica. Estos webinarios son una oportunidad para que miembros del público aprendan a utilizar la versión actual de la herramienta. Los presentadores en estos webinarios estarán disponibles para proporcionar apoyo técnico y abordar asuntos relacionados con el acceso y el uso de la herramienta.",
+    "description": "Navigate to the the public engagement page, this will be the public engagement page event training session description"
+  },
+  "public.eng.page.event.training.sess.name": {
+    "defaultMessage": "sesión de capacitación",
+    "description": "Navigate to the the public engagement page, this will be the public engagement page event training session name"
+  },
+  "public.eng.page.event.whejac.meeting.day.1.description": {
+    "defaultMessage": "El Consejo Asesor de Justicia Ambiental de la Casa Blanca (WHEJAC, por sus siglas en inglés) también está solicitando comentarios sobre la versión beta de la Herramienta de evaluación de justicia climática y económica en su reunión pública. En el enlace anterior hay información adicional.",
+    "description": "public engagement page event WHEJAC day 1 description"
+  },
+  "public.eng.page.event.whejac.meeting.day.1.name": {
+    "defaultMessage": "Primer día de la reunión pública del Consejo Asesor de Justicia Ambiental de la Casa Blanca (WHEJAC, por sus siglas en inglés)",
+    "description": "public engagement page event WHEJAC meeting day 1 name"
+  },
+  "public.eng.page.event.whejac.meeting.day.2.description": {
+    "defaultMessage": "El Consejo Asesor de Justicia Ambiental de la Casa Blanca (WHEJAC, por sus siglas en inglés) también está solicitando comentarios sobre la versión beta de la Herramienta de evaluación de justicia climática y económica en su reunión pública. En el enlace anterior hay información adicional.",
+    "description": "public engagement page event WHEJAC day 2 description"
+  },
+  "public.eng.page.event.whejac.meeting.day.2.name": {
+    "defaultMessage": "Segundo día de la reunión pública del Consejo Asesor de Justicia Ambiental de la Casa Blanca (WHEJAC)",
+    "description": "public engagement page event WHEJAC meeting day 2 name"
+  },
+  "public.eng.page.heading1.text": {
+    "defaultMessage": "Oportunidades de participación pública",
+    "description": "Navigate to the the public engagement page, this will be the publiceng page header text"
+  },
+  "public.eng.page.sub.header2.text": {
+    "defaultMessage": "Encuentre un evento",
+    "description": "Navigate to the the public engagement page, this will be the publiceng page sub header text"
+  },
+  "public.eng.page.tag.label": {
+    "defaultMessage": "ACTUALIZADO",
+    "description": "Navigate to the the public engagement page, this will be the public engagement tag label"
+  },
+  "public.eng.page.title.text": {
+    "defaultMessage": "Oportunidades de participación pública",
+    "description": "Navigate to the the public engagement page, this will be the publiceng page title text"
+  },
+  "public.eng.page.video.box.body.text": {
+    "defaultMessage": "Vea una versión grabada de la capacitación de la Herramienta CEJST en YouTube.",
+    "description": "Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. Este es el texto de cuerpo de ese recuadro."
+  },
+  "public.eng.page.video.box.button.img.alt.text": {
+    "defaultMessage": "the icon to show that this button will open in a new tab",
+    "description": "Navegar a la página de participación pública, donde hay un recuadro que les permite a los usuarios ver videos previamente grabados. This is alt tag of the image in the button."
+  },
+  "public.eng.page.video.box.button.text": {
+    "defaultMessage": "Véalo en YouTube",
+    "description": "Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box button text."
+  },
+  "public.eng.page.video.box.title.text": {
+    "defaultMessage": "¿No puede asistir a una sesión programada?",
+    "description": "Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box title text."
+  },
+  "public.eng.page.whejac.meeting.day.1.info": {
+    "defaultMessage": "30 de marzo (3:00 - 7:00 PM EST)",
+    "description": "public engagement page event WHEJAC"
+  },
+  "public.eng.page.whejac.meeting.day.2.info": {
+    "defaultMessage": "31 de marzo (3:00 - 7:00 PM EST)",
+    "description": "public engagement page event WHEJAC"
+  },
+  "technical.support.doc.page.coming.soon.text": {
+    "defaultMessage": "¡Próximamente!",
+    "description": "Navigate to the the Technical Support Doc page, this will be the page coming soon text"
+  },
+  "technical.support.doc.page.title.text": {
+    "defaultMessage": "Documento de apoyo técnico",
+    "description": "Navigate to the the Technical Support Doc page, this will be the page title text"
+  }
+}
