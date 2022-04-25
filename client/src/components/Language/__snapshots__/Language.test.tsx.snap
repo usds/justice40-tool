@@ -2,4 +2,23 @@
 
 exports[`rendering of the Language component on desktop checks if component renders 1`] = `<DocumentFragment />`;
 
-exports[`rendering of the Language component on mobile checks if component renders 1`] = `<DocumentFragment />`;
+exports[`rendering of the Language component on mobile checks if component renders 1`] = `
+<DocumentFragment>
+  <div>
+    <img
+      alt="language icon for selecting language"
+      src="test-file-stub"
+    />
+    <a
+      href="#"
+    >
+      English
+    </a>
+    <a
+      href="#"
+    >
+      Español
+    </a>
+  </div>
+</DocumentFragment>
+`;
