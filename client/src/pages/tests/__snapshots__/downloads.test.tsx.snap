@@ -140,6 +140,22 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             </div>
           </div>
         </section>
+        <div>
+          <img
+            alt="language icon for selecting language"
+            src="test-file-stub"
+          />
+          <a
+            href="#"
+          >
+            English
+          </a>
+          <a
+            href="#"
+          >
+            Español
+          </a>
+        </div>
       </div>
     </div>
     <div>
@@ -261,7 +277,24 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <li
                 class="usa-nav__primary-item"
               >
-                <div />
+                <div>
+                  <div>
+                    <img
+                      alt="language icon for selecting language"
+                      src="test-file-stub"
+                    />
+                    <a
+                      href="#"
+                    >
+                      English
+                    </a>
+                    <a
+                      href="#"
+                    >
+                      Español
+                    </a>
+                  </div>
+                </div>
               </li>
             </ul>
           </nav>
@@ -297,7 +330,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             Excel file
           </a>
-           (.xlxs 54MB unzipped)
+           (.xlxs 54 unzipped)
       
         </p>
         <p>
@@ -308,7 +341,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             CSV file 
           </a>
-           (.csv 52MB unzipped)
+           (.csv 52 unzipped)
       
         </p>
         <p>
@@ -319,7 +352,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             Shapefiles 
           </a>
-           (Codebook included with geojson 110MB unzipped)
+           (Codebook included with geojson 110 unzipped)
       
         </p>
       </div>

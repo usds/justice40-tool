@@ -17,7 +17,7 @@ exports[`rendering of the Indicator checks if component renders 1`] = `
         <div>
           <div>
             <span>
-              97%
+              97
             </span>
           </div>
           <div>
@@ -31,7 +31,7 @@ exports[`rendering of the Indicator checks if component renders 1`] = `
           <div>
             above 
             <span>
-              20%
+              20
             </span>
              percent
           </div>
@@ -119,7 +119,7 @@ exports[`test that the unit suffix renders correctly renders correctly when the 
 exports[`test that the unit suffix renders correctly renders correctly when the value is a percent 1`] = `
 <DocumentFragment>
   <span>
-    90%
+    90
   </span>
 </DocumentFragment>
 `;

@@ -13,7 +13,7 @@ exports[`download packet component defined checks if component renders 1`] = `
             Files available for download
           </div>
           <div>
-            Download the data sources used in the CEJST (.csv and .xlsx, 52MB unzipped), the shapefile, along with a codebook (.zip, 742MB unzipped) or the technical support document (.pdf, 913kB).
+            Download the data sources used in the CEJST (.csv and .xlsx, 52 unzipped), the shapefile, along with a codebook (.zip, 742 unzipped) or the technical support document (.pdf, 913).
           </div>
           <div>
             <a

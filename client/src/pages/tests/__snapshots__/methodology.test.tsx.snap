@@ -140,6 +140,22 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             </div>
           </div>
         </section>
+        <div>
+          <img
+            alt="language icon for selecting language"
+            src="test-file-stub"
+          />
+          <a
+            href="#"
+          >
+            English
+          </a>
+          <a
+            href="#"
+          >
+            Español
+          </a>
+        </div>
       </div>
     </div>
     <div>
@@ -261,7 +277,24 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <li
                 class="usa-nav__primary-item"
               >
-                <div />
+                <div>
+                  <div>
+                    <img
+                      alt="language icon for selecting language"
+                      src="test-file-stub"
+                    />
+                    <a
+                      href="#"
+                    >
+                      English
+                    </a>
+                    <a
+                      href="#"
+                    >
+                      Español
+                    </a>
+                  </div>
+                </div>
               </li>
             </ul>
           </nav>
@@ -383,7 +416,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     Files available for download
                   </div>
                   <div>
-                    Download the data sources used in the CEJST (.csv and .xlsx, 52MB unzipped), the shapefile, along with a codebook (.zip, 742MB unzipped) or the technical support document (.pdf, 913kB).
+                    Download the data sources used in the CEJST (.csv and .xlsx, 52 unzipped), the shapefile, along with a codebook (.zip, 742 unzipped) or the technical support document (.pdf, 913).
                   </div>
                   <div>
                     <a
