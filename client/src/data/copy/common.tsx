@@ -61,6 +61,22 @@ export const ALERTS = {
       />,
     }}
   />,
+
+  ALERT_2_TITLE: defineMessages({
+    TITLE: {
+      id: 'common.pages.alerts.additional_docs_available.title',
+      defaultMessage: 'Additional documentation now available',
+      description: 'Alert title that appears at the top of pages.',
+    },
+  }),
+  ALERT_2_DESCRIPTION: <FormattedMessage
+    id={'common.pages.alerts.additional_docs_available.description'}
+    defaultMessage={`Download new technical support and other documentation and <link2>send feedback</link2>.`}
+    description={`Alert title that appears at the top of pages.`}
+    values={{
+      link2: linkFn(`mailto:${FEEDBACK_EMAIL}`, false, true),
+    }}
+  />,
 };
 
 // Header

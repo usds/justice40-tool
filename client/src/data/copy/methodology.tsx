@@ -3,6 +3,7 @@ import React from 'react';
 import {defineMessages} from 'react-intl';
 import {FormattedDate, FormattedMessage, FormattedNumber} from 'gatsby-plugin-intl';
 import {boldFn, linkFn, simpleLink} from './common';
+import * as styles from '../../components/DownloadPacket/downloadPacket.module.scss';
 
 export const PAGE = defineMessages({
   TILE: {
@@ -72,9 +73,9 @@ export const FORMULA = {
 };
 
 // Download Package
-export const DOWNLOAD_FILE_SIZE = 52;
+export const DOWNLOAD_FILE_SIZE = 53;
 export const DOWNLOAD_SHAPE_FILE_SIZE = 742;
-export const DOWNLOAD_TSD_FILE_SIZE = 913; // in KB
+export const DOWNLOAD_TSD_FILE_SIZE = 2.5;
 export const DOWNLOAD_ZIP_LAST_UPDATED = new Date('4/6/2022').getTime();
 export const DOWNLOAD_SHAPE_LAST_UPDATED = new Date('4/6/2022').getTime();
 export const DOWNLOAD_TSD_LAST_UPDATED = new Date('4/19/2022').getTime();
@@ -99,17 +100,23 @@ export const DOWNLOAD_TSD_URL = [
   process.env.GATSBY_TSD_DOWNLOAD_FILE_PATH,
 ].join('/');
 
+const newCalloutFontColorFn = (str:string) => <span className={styles.newCalloutFontColor}>{str}</span>;
+
 export const DOWNLOAD_PACKAGE = {
   TITLE: <FormattedMessage
     id={'methodology.page.downloadPacket.header.text'}
-    defaultMessage={`Files available for download`}
+    defaultMessage={`<callout>NEW</callout> files available for download`}
     description={'Navigate to the methodology page. This is the download packet header text'}
+    values= {{
+      callout: newCalloutFontColorFn,
+    }}
   />,
   DESCRIPTION1: <FormattedMessage
     id={ 'methodology.page.downloadPacket.info.text1'}
-    defaultMessage= {`Download the data sources used in the CEJST (.csv and .xlsx, {downloadFileSize} unzipped), the shapefile, along with a codebook (.zip, {shapefileSize} unzipped) or the technical support document (.pdf, {tsdFileSize}).`}
+    defaultMessage= {`Download the data sources used in the CEJST (.csv, .xlsx, and a <callout>.pdf</callout> that describes how to use the list, {downloadFileSize} unzipped), the shapefile, along with a <callout>cookbook</callout> (.zip, {shapefileSize} unzipped) or the technical support document (.pdf, {tsdFileSize} unzipped).`}
     description= {'Navigate to the methodology page. This is the download packet info text'}
     values= {{
+      callout: newCalloutFontColorFn,
       downloadFileSize: <FormattedNumber
         value={DOWNLOAD_FILE_SIZE}
         style="unit"
@@ -125,7 +132,7 @@ export const DOWNLOAD_PACKAGE = {
       tsdFileSize: <FormattedNumber
         value={DOWNLOAD_TSD_FILE_SIZE}
         style="unit"
-        unit="kilobyte"
+        unit="megabyte"
         unitDisplay="narrow"
       />,
     }}
@@ -188,6 +195,14 @@ export const DOWNLOAD_PACKAGE = {
     id={ 'methodology.page.downloadPacket.new.tag.text'}
     defaultMessage= {`<boldtag>NEW</boldtag>`}
     description= {'Navigate to the methodology page. This is the new tag text'}
+    values={{
+      boldtag: boldFn,
+    }}
+  />,
+  UPDATED_TAG: <FormattedMessage
+    id={ 'methodology.page.downloadPacket.updated.tag.text'}
+    defaultMessage= {`<boldtag>Updated</boldtag>`}
+    description= {'Navigate to the methodology page. This is the update callout tag text that overlaps the button'}
     values={{
       boldtag: boldFn,
     }}

@@ -19,7 +19,7 @@
   @include typeset('sans', 'xs', 3);
   @include u-margin-top(2);
   @include u-margin-bottom(2);
-  
+
 };
 
 @mixin baseButtonTextStyle {
@@ -41,15 +41,14 @@
         padding: 25px 25px;
         display: flex;
         flex-direction: column;
-        
+
         .downloadBoxTitle {
           @include typeset('sans', 'xs', 3);
           @include u-text('semibold');
         }
-        
-        // Data source text
-        .dataSourceText {
-          @include baseTextStyle();
+
+        .downloadSourceText {
+          @include u-margin-top(2);
         }
 
         // Last updated
@@ -59,49 +58,57 @@
           @include u-margin-top(1);
         }
 
-        // Data source button
-        .dataSourceButtonContainer {
-          @include baseButtonContainerStyles();
-
-          .dataSourceButtonText {
-            @include baseButtonTextStyle();
-          }
-        }
-        
-        // Shapefile text
-        .shapeFileText {
-          @include baseTextStyle();
-          @include u-margin-top(7);
-        }
-        // Shapefile button
-        .shapefileButtonContainer{
+        // Data source button (scoped)
+        .downloadButtonContainer {
           display: flex;
           flex-direction: column;
           @include baseButtonContainerStyles();
+          text-align: center;
 
-          .shapeFileButtonText {
+          .downloadButtonText {
             @include baseButtonTextStyle();
-            @include u-margin-right(3);
+            @include u-margin-right(1);
+          }
+
+          .downloadButtonIconSpan {
+            display: contents;
+            max-width: 1.5em;
+          }
+
+          .downloadButtonIcon {
+            width: 1.5em;
+            height: 1.5em;
           }
         }
-
       }
     }
   }
 
-  .downloadBoxButton{
+  .downloadBoxButton {
     @include u-bg('white');
     @include u-color('blue-80v');
     display: flex;
+    width: 16em;
   }
 
-  .newTagContainer {
+  .tagContainer {
     align-self: end;
     @include u-margin-bottom(-1);
     z-index: 2;
   }
 
-  .newtag {
-    @include u-text("blue-70v");
-    @include u-bg("yellow-20v");
+  .newTag {
+    @include u-text('bold');
+    @include u-text("blue-80v");
+    @include u-bg("gold-20v");
+  }
+
+  .updateTag {
+    @include u-text('bold');
+    @include u-text("blue-80v");
+    @include u-bg("gray-10");
+  }
+
+  .newCalloutFontColor {
+    @include u-text("gold-20v");
   }
