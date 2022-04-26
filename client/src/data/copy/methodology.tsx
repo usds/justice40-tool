@@ -76,8 +76,8 @@ export const FORMULA = {
 export const DOWNLOAD_FILE_SIZE = 53;
 export const DOWNLOAD_SHAPE_FILE_SIZE = 742;
 export const DOWNLOAD_TSD_FILE_SIZE = 2.5;
-export const DOWNLOAD_ZIP_LAST_UPDATED = new Date('4/6/2022').getTime();
-export const DOWNLOAD_SHAPE_LAST_UPDATED = new Date('4/6/2022').getTime();
+export const DOWNLOAD_ZIP_LAST_UPDATED = new Date('4/26/2022').getTime();
+export const DOWNLOAD_SHAPE_LAST_UPDATED = new Date('4/26/2022').getTime();
 export const DOWNLOAD_TSD_LAST_UPDATED = new Date('4/19/2022').getTime();
 export const VERSION_NUMBER = 0.1;
 
@@ -113,7 +113,7 @@ export const DOWNLOAD_PACKAGE = {
   />,
   DESCRIPTION1: <FormattedMessage
     id={ 'methodology.page.downloadPacket.info.text1'}
-    defaultMessage= {`Download the data sources used in the CEJST (.csv, .xlsx, and a <callout>.pdf</callout> that describes how to use the list, {downloadFileSize} unzipped), the shapefile, along with a <callout>cookbook</callout> (.zip, {shapefileSize} unzipped) or the technical support document (.pdf, {tsdFileSize} unzipped).`}
+    defaultMessage= {`Download the data sources used in the CEJST (.csv, .xlsx, and a <callout>.pdf</callout> that describes how to use the list, {downloadFileSize} unzipped), the shapefile, along with a <callout>codebook</callout> (.zip, {shapefileSize} unzipped) or the technical support document (.pdf, {tsdFileSize} unzipped).`}
     description= {'Navigate to the methodology page. This is the download packet info text'}
     values= {{
       callout: newCalloutFontColorFn,

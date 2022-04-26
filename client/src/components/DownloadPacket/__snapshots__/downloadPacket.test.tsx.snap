@@ -22,7 +22,7 @@ exports[`download packet component defined checks if component renders 1`] = `
             </span>
              that describes how to use the list, 53MB unzipped), the shapefile, along with a 
             <span>
-              cookbook
+              codebook
             </span>
              (.zip, 742MB unzipped) or the technical support document (.pdf, 2.5MB unzipped).
           </div>
@@ -60,7 +60,7 @@ exports[`download packet component defined checks if component renders 1`] = `
             </a>
           </div>
           <div>
-            Last updated: 04/06/22 
+            Last updated: 04/26/22 
           </div>
           <div>
             <div>
@@ -96,7 +96,7 @@ exports[`download packet component defined checks if component renders 1`] = `
             </a>
           </div>
           <div>
-            Last updated: 04/06/22 
+            Last updated: 04/26/22 
           </div>
           <div>
             <div>
