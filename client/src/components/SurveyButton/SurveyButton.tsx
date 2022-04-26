@@ -10,7 +10,11 @@ import J40MainGridContainer from '../J40MainGridContainer';
 import launchIcon from '/node_modules/uswds/dist/img/usa-icons/launch.svg';
 
 export const onClickHandler = () => {
-  Object.assign(document.createElement('a'), {target: '_blank', href: 'https://www.surveymonkey.com/r/cejst-survey'}).click();
+  const intl = useIntl();
+
+  const href = intl.locale === 'es' ? 'https://www.surveymonkey.com/r/cejst-survey-es' : 'https://www.surveymonkey.com/r/cejst-survey';
+
+  Object.assign(document.createElement('a'), {target: '_blank', href: href}).click();
 };
 
 const SurveyButton = () => {
