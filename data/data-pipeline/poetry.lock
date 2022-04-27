@@ -50,7 +50,11 @@ tests = ["pytest"]
 
 [[package]]
 name = "astroid"
+<<<<<<< HEAD
 version = "2.11.7"
+=======
+version = "2.11.3"
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 description = "An abstract syntax tree for Python with inference support."
 category = "main"
 optional = false
@@ -134,7 +138,11 @@ uvloop = ["uvloop (>=0.15.2)"]
 
 [[package]]
 name = "bleach"
+<<<<<<< HEAD
 version = "5.0.1"
+=======
+version = "5.0.0"
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 description = "An easy safelist-based HTML-sanitizing tool."
 category = "main"
 optional = false
@@ -145,8 +153,13 @@ six = ">=1.9.0"
 webencodings = "*"
 
 [package.extras]
+<<<<<<< HEAD
 css = ["tinycss2 (>=1.1.0,<1.2)"]
 dev = ["build (==0.8.0)", "flake8 (==4.0.1)", "hashin (==0.17.0)", "pip-tools (==6.6.2)", "pytest (==7.1.2)", "Sphinx (==4.3.2)", "tox (==3.25.0)", "twine (==4.0.1)", "wheel (==0.37.1)", "black (==22.3.0)", "mypy (==0.961)"]
+=======
+css = ["tinycss2 (>=1.1.0)"]
+dev = ["pip-tools (==6.5.1)", "pytest (==7.1.1)", "flake8 (==4.0.1)", "tox (==3.24.5)", "sphinx (==4.3.2)", "twine (==4.0.0)", "wheel (==0.37.1)", "hashin (==0.17.0)", "black (==22.3.0)", "mypy (==0.942)"]
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 
 [[package]]
 name = "censusdata"
@@ -318,13 +331,27 @@ conda = ["pyyaml"]
 
 [[package]]
 name = "dynaconf"
+<<<<<<< HEAD
 version = "3.1.9"
+=======
+version = "3.1.8"
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 description = "The dynamic configurator for your Python Project"
 category = "main"
 optional = false
 python-versions = ">=3.7"
 
 [package.extras]
+<<<<<<< HEAD
+=======
+all = ["redis", "ruamel.yaml", "configobj", "hvac"]
+configobj = ["configobj"]
+ini = ["configobj"]
+redis = ["redis"]
+test = ["pytest", "pytest-cov", "pytest-xdist", "pytest-mock", "flake8", "pep8-naming", "flake8-debugger", "flake8-print", "flake8-todo", "radon", "flask (>=0.12)", "django", "python-dotenv", "toml", "codecov", "redis", "hvac", "configobj"]
+toml = ["toml"]
+vault = ["hvac"]
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 yaml = ["ruamel.yaml"]
 vault = ["hvac"]
 toml = ["toml"]
@@ -352,7 +379,11 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "fastjsonschema"
+<<<<<<< HEAD
 version = "2.16.1"
+=======
+version = "2.15.3"
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 description = "Fastest Python implementation of JSON schema"
 category = "main"
 optional = false
@@ -411,7 +442,11 @@ pyflakes = ">=2.3.0,<2.4.0"
 
 [[package]]
 name = "fonttools"
+<<<<<<< HEAD
 version = "4.34.4"
+=======
+version = "4.33.3"
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 description = "Tools to manipulate font files"
 category = "main"
 optional = false
@@ -455,7 +490,11 @@ python-versions = ">=3.5"
 
 [[package]]
 name = "importlib-resources"
+<<<<<<< HEAD
 version = "5.9.0"
+=======
+version = "5.7.1"
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 description = "Read resources from Python packages"
 category = "main"
 optional = false
@@ -491,7 +530,11 @@ toml = {version = ">=0.10.2", markers = "python_version > \"3.6\""}
 
 [[package]]
 name = "ipykernel"
+<<<<<<< HEAD
 version = "6.15.1"
+=======
+version = "6.13.0"
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 description = "IPython Kernel for Jupyter"
 category = "main"
 optional = false
@@ -506,12 +549,19 @@ matplotlib-inline = ">=0.1"
 nest-asyncio = "*"
 packaging = "*"
 psutil = "*"
+<<<<<<< HEAD
 pyzmq = ">=17"
+=======
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 tornado = ">=6.1"
 traitlets = ">=5.1.0"
 
 [package.extras]
+<<<<<<< HEAD
 test = ["pytest (>=6.0)", "pytest-timeout", "pytest-cov", "pre-commit", "ipyparallel", "flaky"]
+=======
+test = ["pytest (>=6.0)", "pytest-cov", "flaky", "ipyparallel", "pre-commit", "pytest-timeout"]
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 
 [[package]]
 name = "ipython"
@@ -659,7 +709,11 @@ qtconsole = "*"
 
 [[package]]
 name = "jupyter-client"
+<<<<<<< HEAD
 version = "7.3.4"
+=======
+version = "7.3.0"
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 description = "Jupyter protocol implementation and client libraries"
 category = "main"
 optional = false
@@ -740,7 +794,11 @@ test = ["nbformat", "nose", "pip", "requests", "mock"]
 
 [[package]]
 name = "jupyter-core"
+<<<<<<< HEAD
 version = "4.11.1"
+=======
+version = "4.10.0"
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 description = "Jupyter core package. A base package on which Jupyter projects rely."
 category = "main"
 optional = false
@@ -751,7 +809,11 @@ pywin32 = {version = ">=1.0", markers = "sys_platform == \"win32\" and platform_
 traitlets = "*"
 
 [package.extras]
+<<<<<<< HEAD
 test = ["pytest-timeout", "pytest-cov", "pytest", "pre-commit", "ipykernel"]
+=======
+test = ["ipykernel", "pre-commit", "pytest", "pytest-cov", "pytest-timeout"]
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 
 [[package]]
 name = "jupyter-highlight-selected-word"
@@ -881,7 +943,11 @@ tests = ["pytest", "pytz", "simplejson"]
 
 [[package]]
 name = "marshmallow-dataclass"
+<<<<<<< HEAD
 version = "8.5.8"
+=======
+version = "8.5.7"
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 description = "Python library to convert dataclasses into marshmallow schemas."
 category = "main"
 optional = false
@@ -892,6 +958,14 @@ marshmallow = ">=3.13.0,<4.0"
 typing-inspect = ">=0.7.1"
 
 [package.extras]
+<<<<<<< HEAD
+=======
+dev = ["marshmallow-enum", "typeguard", "pre-commit (>=2.17,<3.0)", "sphinx", "pytest (>=5.4)", "pytest-mypy-plugins (>=1.2.0)", "typing-extensions (>=3.7.2)"]
+docs = ["sphinx"]
+enum = ["marshmallow-enum"]
+lint = ["pre-commit (>=2.17,<3.0)"]
+tests = ["pytest (>=5.4)", "pytest-mypy-plugins (>=1.2.0)", "typing-extensions (>=3.7.2)"]
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 union = ["typeguard"]
 tests = ["typing-extensions (>=3.7.2)", "pytest-mypy-plugins (>=1.2.0)", "pytest (>=5.4)"]
 lint = ["pre-commit (>=2.17,<3.0)"]
@@ -1009,7 +1083,11 @@ ipython = "*"
 
 [[package]]
 name = "nbclient"
+<<<<<<< HEAD
 version = "0.6.6"
+=======
+version = "0.6.0"
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 description = "A client library for executing notebooks. Formerly nbconvert's ExecutePreprocessor."
 category = "main"
 optional = false
@@ -1022,12 +1100,20 @@ nest-asyncio = "*"
 traitlets = ">=5.2.2"
 
 [package.extras]
+<<<<<<< HEAD
 sphinx = ["autodoc-traits", "mock", "moto", "myst-parser", "Sphinx (>=1.7)", "sphinx-book-theme"]
+=======
+sphinx = ["mock", "moto", "myst-parser", "Sphinx (>=1.7)", "sphinx-book-theme"]
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 test = ["black", "check-manifest", "flake8", "ipykernel", "ipython (<8.0.0)", "ipywidgets (<8.0.0)", "mypy", "pip (>=18.1)", "pre-commit", "pytest (>=4.1)", "pytest-asyncio", "pytest-cov (>=2.6.1)", "setuptools (>=60.0)", "testpath", "twine (>=1.11.0)", "xmltodict"]
 
 [[package]]
 name = "nbconvert"
+<<<<<<< HEAD
 version = "6.5.3"
+=======
+version = "6.5.0"
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 description = "Converting Jupyter Notebooks"
 category = "main"
 optional = false
@@ -1061,7 +1147,11 @@ webpdf = ["pyppeteer (>=1,<1.1)"]
 
 [[package]]
 name = "nbformat"
+<<<<<<< HEAD
 version = "5.4.0"
+=======
+version = "5.3.0"
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 description = "The Jupyter Notebook format"
 category = "main"
 optional = false
@@ -1086,7 +1176,11 @@ python-versions = ">=3.5"
 
 [[package]]
 name = "notebook"
+<<<<<<< HEAD
 version = "6.4.12"
+=======
+version = "6.4.11"
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 description = "A web-based notebook environment for interactive computing"
 category = "main"
 optional = false
@@ -1112,7 +1206,11 @@ traitlets = ">=4.2.1"
 [package.extras]
 test = ["requests-unixsocket", "pytest-cov", "selenium", "nbval", "testpath", "requests", "coverage", "pytest"]
 json-logging = ["json-logging"]
+<<<<<<< HEAD
 docs = ["myst-parser", "sphinx-rtd-theme", "sphinxcontrib-github-alt", "nbsphinx", "sphinx"]
+=======
+test = ["pytest", "coverage", "requests", "testpath", "nbval", "selenium", "pytest-cov", "requests-unixsocket"]
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 
 [[package]]
 name = "numpy"
@@ -1146,7 +1244,11 @@ pyparsing = ">=2.0.2,<3.0.5 || >3.0.5"
 
 [[package]]
 name = "pandas"
+<<<<<<< HEAD
 version = "1.4.3"
+=======
+version = "1.4.2"
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 description = "Powerful data structures for data analysis, time series, and statistics"
 category = "main"
 optional = false
@@ -1307,7 +1409,11 @@ twisted = ["twisted"]
 
 [[package]]
 name = "prompt-toolkit"
+<<<<<<< HEAD
 version = "3.0.30"
+=======
+version = "3.0.29"
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 description = "Library for building powerful interactive command lines in Python"
 category = "main"
 optional = false
@@ -1361,8 +1467,13 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [[package]]
 name = "pydantic"
+<<<<<<< HEAD
 version = "1.9.2"
 description = "Data validation and settings management using python type hints"
+=======
+version = "1.9.0"
+description = "Data validation and settings management using python 3.6 type hinting"
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 category = "main"
 optional = false
 python-versions = ">=3.6.1"
@@ -1392,15 +1503,24 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "pylint"
+<<<<<<< HEAD
 version = "2.14.5"
+=======
+version = "2.13.7"
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 description = "python code static checker"
 category = "main"
 optional = false
 python-versions = ">=3.7.2"
 
 [package.dependencies]
+<<<<<<< HEAD
 astroid = ">=2.11.6,<=2.12.0-dev0"
 colorama = {version = ">=0.4.5", markers = "sys_platform == \"win32\""}
+=======
+astroid = ">=2.11.3,<=2.12.0-dev0"
+colorama = {version = "*", markers = "sys_platform == \"win32\""}
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 dill = ">=0.2"
 isort = ">=4.2.5,<6"
 mccabe = ">=0.6,<0.8"
@@ -1415,7 +1535,11 @@ testutils = ["gitpython (>3)"]
 
 [[package]]
 name = "pypandoc"
+<<<<<<< HEAD
 version = "1.8.1"
+=======
+version = "1.7.5"
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 description = "Thin wrapper for pandoc."
 category = "main"
 optional = false
@@ -1423,14 +1547,18 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "pyparsing"
+<<<<<<< HEAD
 version = "3.0.9"
+=======
+version = "3.0.8"
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 description = "pyparsing module - Classes and methods to define and execute parsing grammars"
 category = "main"
 optional = false
 python-versions = ">=3.6.8"
 
 [package.extras]
-diagrams = ["jinja2", "railroad-diagrams"]
+diagrams = ["railroad-diagrams", "jinja2"]
 
 [[package]]
 name = "pyproj"
@@ -1740,7 +1868,11 @@ pywinpty = {version = ">=1.1.0", markers = "os_name == \"nt\""}
 tornado = ">=6.1.0"
 
 [package.extras]
+<<<<<<< HEAD
 test = ["pytest (>=6.0)", "pytest-timeout", "pre-commit"]
+=======
+test = ["pytest"]
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 
 [[package]]
 name = "textwrap3"
@@ -1799,7 +1931,11 @@ python-versions = ">= 3.7"
 
 [[package]]
 name = "tox"
+<<<<<<< HEAD
 version = "3.25.1"
+=======
+version = "3.25.0"
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 description = "tox is a generic virtualenv management and test command line tool"
 category = "dev"
 optional = false
@@ -1864,7 +2000,11 @@ test = ["pytest", "pre-commit"]
 
 [[package]]
 name = "types-requests"
+<<<<<<< HEAD
 version = "2.28.8"
+=======
+version = "2.27.22"
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 description = "Typing stubs for requests"
 category = "main"
 optional = false
@@ -1875,7 +2015,11 @@ types-urllib3 = "<1.27"
 
 [[package]]
 name = "types-urllib3"
+<<<<<<< HEAD
 version = "1.26.22"
+=======
+version = "1.26.13"
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 description = "Typing stubs for urllib3"
 category = "main"
 optional = false
@@ -1883,7 +2027,11 @@ python-versions = "*"
 
 [[package]]
 name = "typing-extensions"
+<<<<<<< HEAD
 version = "4.3.0"
+=======
+version = "4.2.0"
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 description = "Backported and Experimental Type Hints for Python 3.7+"
 category = "main"
 optional = false
@@ -1927,7 +2075,11 @@ jellyfish = "0.6.1"
 
 [[package]]
 name = "virtualenv"
+<<<<<<< HEAD
 version = "20.16.3"
+=======
+version = "20.14.1"
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 description = "Virtual Python Environment builder"
 category = "dev"
 optional = false
@@ -1987,15 +2139,24 @@ python-versions = "*"
 
 [[package]]
 name = "zipp"
+<<<<<<< HEAD
 version = "3.8.1"
+=======
+version = "3.8.0"
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 description = "Backport of pathlib-compatible object wrapper for zip files"
 category = "main"
 optional = false
 python-versions = ">=3.7"
 
 [package.extras]
+<<<<<<< HEAD
 docs = ["sphinx", "jaraco.packaging (>=9)", "rst.linker (>=1.9)", "jaraco.tidelift (>=1.4)"]
 testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-cov", "pytest-enabler (>=1.3)", "jaraco.itertools", "func-timeout", "pytest-black (>=0.3.7)", "pytest-mypy (>=0.9.1)"]
+=======
+docs = ["sphinx", "jaraco.packaging (>=9)", "rst.linker (>=1.9)"]
+testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-cov", "pytest-enabler (>=1.0.1)", "jaraco.itertools", "func-timeout", "pytest-black (>=0.3.7)", "pytest-mypy (>=0.9.1)"]
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 
 [metadata]
 lock-version = "1.1"
@@ -2038,9 +2199,24 @@ argon2-cffi-bindings = [
     {file = "argon2_cffi_bindings-21.2.0-pp38-pypy38_pp73-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:ed2937d286e2ad0cc79a7087d3c272832865f779430e0cc2b4f3718d3159b0cb"},
     {file = "argon2_cffi_bindings-21.2.0-pp38-pypy38_pp73-win_amd64.whl", hash = "sha256:5e00316dabdaea0b2dd82d141cc66889ced0cdcbfa599e8b471cf22c620c329a"},
 ]
+<<<<<<< HEAD
 astroid = []
 atomicwrites = []
 attrs = []
+=======
+astroid = [
+    {file = "astroid-2.11.3-py3-none-any.whl", hash = "sha256:f1af57483cd17e963b2eddce8361e00fc593d1520fe19948488e94ff6476bd71"},
+    {file = "astroid-2.11.3.tar.gz", hash = "sha256:4e5ba10571e197785e312966ea5efb2f5783176d4c1a73fa922d474ae2be59f7"},
+]
+atomicwrites = [
+    {file = "atomicwrites-1.4.0-py2.py3-none-any.whl", hash = "sha256:6d1784dea7c0c8d4a5172b6c620f40b6e4cbfdf96d783691f2e1302a7b88e197"},
+    {file = "atomicwrites-1.4.0.tar.gz", hash = "sha256:ae70396ad1a434f9c7046fd2dd196fc04b12f9e91ffb859164193be8b6168a7a"},
+]
+attrs = [
+    {file = "attrs-21.4.0-py2.py3-none-any.whl", hash = "sha256:2d27e3784d7a565d36ab851fe94887c5eccd6a463168875832a1be79c82828b4"},
+    {file = "attrs-21.4.0.tar.gz", hash = "sha256:626ba8234211db98e869df76230a137c4c40a12d72445c45d5f5b716f076e2fd"},
+]
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 backcall = [
     {file = "backcall-0.2.0-py2.py3-none-any.whl", hash = "sha256:fbbce6a29f263178a1f7915c1940bde0ec2b2a967566fe1c65c1dfb7422bd255"},
     {file = "backcall-0.2.0.tar.gz", hash = "sha256:5cbdbf27be5e7cfadb448baf0aa95508f91f2bbc6c6437cd9cd06e2a4c215e1e"},
@@ -2053,7 +2229,14 @@ black = [
     {file = "black-21.12b0-py3-none-any.whl", hash = "sha256:a615e69ae185e08fdd73e4715e260e2479c861b5740057fde6e8b4e3b7dd589f"},
     {file = "black-21.12b0.tar.gz", hash = "sha256:77b80f693a569e2e527958459634f18df9b0ba2625ba4e0c2d5da5be42e6f2b3"},
 ]
+<<<<<<< HEAD
 bleach = []
+=======
+bleach = [
+    {file = "bleach-5.0.0-py3-none-any.whl", hash = "sha256:08a1fe86d253b5c88c92cc3d810fd8048a16d15762e1e5b74d502256e5926aa1"},
+    {file = "bleach-5.0.0.tar.gz", hash = "sha256:c6d6cc054bdc9c83b48b8083e236e5f00f238428666d2ce2e083eaa5fd568565"},
+]
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 censusdata = [
     {file = "CensusData-1.15.post1.tar.gz", hash = "sha256:408410b2942e0d2885a18a5b1cff85c283564fe0ae6c8bd65ddccee7e234d4fb"},
 ]
@@ -2090,10 +2273,29 @@ defusedxml = [
     {file = "defusedxml-0.7.1-py2.py3-none-any.whl", hash = "sha256:a352e7e428770286cc899e2542b6cdaedb2b4953ff269a210103ec58f6198a61"},
     {file = "defusedxml-0.7.1.tar.gz", hash = "sha256:1bb3032db185915b62d7c6209c5a8792be6a32ab2fedacc84e01b52c51aa3e69"},
 ]
+<<<<<<< HEAD
 dill = []
 distlib = []
 dparse = []
 dynaconf = []
+=======
+dill = [
+    {file = "dill-0.3.4-py2.py3-none-any.whl", hash = "sha256:7e40e4a70304fd9ceab3535d36e58791d9c4a776b38ec7f7ec9afc8d3dca4d4f"},
+    {file = "dill-0.3.4.zip", hash = "sha256:9f9734205146b2b353ab3fec9af0070237b6ddae78452af83d2fca84d739e675"},
+]
+distlib = [
+    {file = "distlib-0.3.4-py2.py3-none-any.whl", hash = "sha256:6564fe0a8f51e734df6333d08b8b94d4ea8ee6b99b5ed50613f731fd4089f34b"},
+    {file = "distlib-0.3.4.zip", hash = "sha256:e4b58818180336dc9c529bfb9a0b58728ffc09ad92027a3f30b7cd91e3458579"},
+]
+dparse = [
+    {file = "dparse-0.5.1-py3-none-any.whl", hash = "sha256:e953a25e44ebb60a5c6efc2add4420c177f1d8404509da88da9729202f306994"},
+    {file = "dparse-0.5.1.tar.gz", hash = "sha256:a1b5f169102e1c894f9a7d5ccf6f9402a836a5d24be80a986c7ce9eaed78f367"},
+]
+dynaconf = [
+    {file = "dynaconf-3.1.8-py2.py3-none-any.whl", hash = "sha256:dea41800cf4eef488f49d3b5d1ff6305b85c3c21538f4dcfc39ab34d29606d28"},
+    {file = "dynaconf-3.1.8.tar.gz", hash = "sha256:d141a6664fca3648d2d8e84440966af9f58c4f4201ca78353a3f595a67c19ab4"},
+]
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 entrypoints = [
     {file = "entrypoints-0.4-py3-none-any.whl", hash = "sha256:f174b5ff827504fd3cd97cc3f8649f3693f51538c7e4bdf3ef002c8429d42f9f"},
     {file = "entrypoints-0.4.tar.gz", hash = "sha256:b706eddaa9218a19ebcd67b56818f05bb27589b1ca9e8d797b74affad4ccacd4"},
@@ -2102,8 +2304,19 @@ et-xmlfile = [
     {file = "et_xmlfile-1.1.0-py3-none-any.whl", hash = "sha256:a2ba85d1d6a74ef63837eed693bcb89c3f752169b0e3e7ae5b16ca5e1b3deada"},
     {file = "et_xmlfile-1.1.0.tar.gz", hash = "sha256:8eb9e2bc2f8c97e37a2dc85a09ecdcdec9d8a396530a6d5a33b30b9a92da0c5c"},
 ]
+<<<<<<< HEAD
 fastjsonschema = []
 filelock = []
+=======
+fastjsonschema = [
+    {file = "fastjsonschema-2.15.3-py3-none-any.whl", hash = "sha256:ddb0b1d8243e6e3abb822bd14e447a89f4ab7439342912d590444831fa00b6a0"},
+    {file = "fastjsonschema-2.15.3.tar.gz", hash = "sha256:0a572f0836962d844c1fc435e200b2e4f4677e4e6611a2e3bdd01ba697c275ec"},
+]
+filelock = [
+    {file = "filelock-3.6.0-py3-none-any.whl", hash = "sha256:f8314284bfffbdcfa0ff3d7992b023d4c628ced6feb957351d4c48d059f56bc0"},
+    {file = "filelock-3.6.0.tar.gz", hash = "sha256:9cd540a9352e432c7246a48fe4e8712b10acb1df2ad1f30e8c070b82ae1fed85"},
+]
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 fiona = [
     {file = "Fiona-1.8.21-cp310-cp310-macosx_10_10_x86_64.whl", hash = "sha256:39c656421e25b4d0d73d0b6acdcbf9848e71f3d9b74f44c27d2d516d463409ae"},
     {file = "Fiona-1.8.21-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:43b1d2e45506e56cf3a9f59ba5d6f7981f3f75f4725d1e6cb9a33ba856371ebd"},
@@ -2121,7 +2334,14 @@ flake8 = [
     {file = "flake8-3.9.2-py2.py3-none-any.whl", hash = "sha256:bf8fd333346d844f616e8d47905ef3a3384edae6b4e9beb0c5101e25e3110907"},
     {file = "flake8-3.9.2.tar.gz", hash = "sha256:07528381786f2a6237b061f6e96610a4167b226cb926e2aa2b6b1d78057c576b"},
 ]
+<<<<<<< HEAD
 fonttools = []
+=======
+fonttools = [
+    {file = "fonttools-4.33.3-py3-none-any.whl", hash = "sha256:f829c579a8678fa939a1d9e9894d01941db869de44390adb49ce67055a06cc2a"},
+    {file = "fonttools-4.33.3.zip", hash = "sha256:c0fdcfa8ceebd7c1b2021240bd46ef77aa8e7408cf10434be55df52384865f8e"},
+]
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 geopandas = [
     {file = "geopandas-0.9.0-py2.py3-none-any.whl", hash = "sha256:79f6e557ba0dba76eec44f8351b1c6b42a17c38f5f08fef347e98fe4dae563c7"},
     {file = "geopandas-0.9.0.tar.gz", hash = "sha256:63972ab4dc44c4029f340600dcb83264eb8132dd22b104da0b654bef7f42630a"},
@@ -2130,7 +2350,14 @@ idna = [
     {file = "idna-3.3-py3-none-any.whl", hash = "sha256:84d9dd047ffa80596e0f246e2eab0b391788b0503584e8945f2368256d2735ff"},
     {file = "idna-3.3.tar.gz", hash = "sha256:9d643ff0a55b762d5cdb124b8eaa99c66322e2157b69160bc32796e824360e6d"},
 ]
+<<<<<<< HEAD
 importlib-resources = []
+=======
+importlib-resources = [
+    {file = "importlib_resources-5.7.1-py3-none-any.whl", hash = "sha256:e447dc01619b1e951286f3929be820029d48c75eb25d265c28b92a16548212b8"},
+    {file = "importlib_resources-5.7.1.tar.gz", hash = "sha256:b6062987dfc51f0fcb809187cffbd60f35df7acb4589091f154214af6d0d49d3"},
+]
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 iniconfig = [
     {file = "iniconfig-1.1.1-py2.py3-none-any.whl", hash = "sha256:011e24c64b7f47f6ebd835bb12a743f2fbe9a26d4cecaa7f53bc4f35ee9da8b3"},
     {file = "iniconfig-1.1.1.tar.gz", hash = "sha256:bc3af051d7d14b2ee5ef9969666def0cd1a000e121eaea580d4a313df4b37f32"},
@@ -2138,8 +2365,19 @@ iniconfig = [
 ipdb = [
     {file = "ipdb-0.13.9.tar.gz", hash = "sha256:951bd9a64731c444fd907a5ce268543020086a697f6be08f7cc2c9a752a278c5"},
 ]
+<<<<<<< HEAD
 ipykernel = []
 ipython = []
+=======
+ipykernel = [
+    {file = "ipykernel-6.13.0-py3-none-any.whl", hash = "sha256:2b0987af43c0d4b62cecb13c592755f599f96f29aafe36c01731aaa96df30d39"},
+    {file = "ipykernel-6.13.0.tar.gz", hash = "sha256:0e28273e290858393e86e152b104e5506a79c13d25b951ac6eca220051b4be60"},
+]
+ipython = [
+    {file = "ipython-7.32.0-py3-none-any.whl", hash = "sha256:86df2cf291c6c70b5be6a7b608650420e89180c8ec74f376a34e2dc15c3400e7"},
+    {file = "ipython-7.32.0.tar.gz", hash = "sha256:468abefc45c15419e3c8e8c0a6a5c115b2127bafa34d7c641b1d443658793909"},
+]
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 ipython-genutils = [
     {file = "ipython_genutils-0.2.0-py2.py3-none-any.whl", hash = "sha256:72dd37233799e619666c9f639a9da83c34013a73e8bbc79a7a6348d93c61fab8"},
     {file = "ipython_genutils-0.2.0.tar.gz", hash = "sha256:eb2e116e75ecef9d4d228fdc66af54269afa26ab4463042e33785b887c628ba8"},
@@ -2163,14 +2401,36 @@ jupyter = [
     {file = "jupyter-1.0.0.tar.gz", hash = "sha256:d9dc4b3318f310e34c82951ea5d6683f67bed7def4b259fafbfe4f1beb1d8e5f"},
     {file = "jupyter-1.0.0.zip", hash = "sha256:3e1f86076bbb7c8c207829390305a2b1fe836d471ed54be66a3b8c41e7f46cc7"},
 ]
+<<<<<<< HEAD
 jupyter-client = []
 jupyter-console = []
 jupyter-contrib-core = []
+=======
+jupyter-client = [
+    {file = "jupyter_client-7.3.0-py3-none-any.whl", hash = "sha256:671dd2d90d03f41716b09627a4eb06bb37875f92bf6563cc2ce4fe71c61c5cda"},
+    {file = "jupyter_client-7.3.0.tar.gz", hash = "sha256:3bcc8e08a294d0fa9406e48cfe17e11ef0efdb7c504fe8cc335128e3ef8f3dac"},
+]
+jupyter-console = [
+    {file = "jupyter_console-6.4.3-py3-none-any.whl", hash = "sha256:e630bcb682c0088dda45688ad7c2424d4a825c8acf494cb036ced03ed0424841"},
+    {file = "jupyter_console-6.4.3.tar.gz", hash = "sha256:55f32626b0be647a85e3217ddcdb22db69efc79e8b403b9771eb9ecc696019b5"},
+]
+jupyter-contrib-core = [
+    {file = "jupyter_contrib_core-0.3.3-py2.py3-none-any.whl", hash = "sha256:1ec81e275a8f5858d56b0c4c6cd85335aa8e915001b8657fe51c620c3cdde50f"},
+    {file = "jupyter_contrib_core-0.3.3.tar.gz", hash = "sha256:e65bc0e932ff31801003cef160a4665f2812efe26a53801925a634735e9a5794"},
+]
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 jupyter-contrib-nbextensions = [
     {file = "jupyter_contrib_nbextensions-0.5.1-py2.py3-none-any.whl", hash = "sha256:2c071f0aa208c569666f656bdc0f66906ca493cf9f06f46db6350db11030ff40"},
     {file = "jupyter_contrib_nbextensions-0.5.1.tar.gz", hash = "sha256:eecd28ecc2fc410226c0a3d4932ed2fac4860ccf8d9e9b1b29548835a35b22ab"},
 ]
+<<<<<<< HEAD
 jupyter-core = []
+=======
+jupyter-core = [
+    {file = "jupyter_core-4.10.0-py3-none-any.whl", hash = "sha256:e7f5212177af7ab34179690140f188aa9bf3d322d8155ed972cbded19f55b6f3"},
+    {file = "jupyter_core-4.10.0.tar.gz", hash = "sha256:a6de44b16b7b31d7271130c71a6792c4040f077011961138afed5e5e73181aec"},
+]
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 jupyter-highlight-selected-word = [
     {file = "jupyter_highlight_selected_word-0.2.0-py2.py3-none-any.whl", hash = "sha256:9545dfa9cb057eebe3a5795604dcd3a5294ea18637e553f61a0b67c1b5903c58"},
     {file = "jupyter_highlight_selected_word-0.2.0.tar.gz", hash = "sha256:9fa740424859a807950ca08d2bfd28a35154cd32dd6d50ac4e0950022adc0e7b"},
@@ -2182,6 +2442,58 @@ jupyter-nbextensions-configurator = []
 jupyterlab-pygments = [
     {file = "jupyterlab_pygments-0.2.2-py2.py3-none-any.whl", hash = "sha256:2405800db07c9f770863bcf8049a529c3dd4d3e28536638bd7c1c01d2748309f"},
     {file = "jupyterlab_pygments-0.2.2.tar.gz", hash = "sha256:7405d7fde60819d905a9fa8ce89e4cd830e318cdad22a0030f7a901da705585d"},
+<<<<<<< HEAD
+=======
+]
+jupyterlab-widgets = [
+    {file = "jupyterlab_widgets-1.1.0-py3-none-any.whl", hash = "sha256:c2a9bd3789f120f64d73268c066ed3b000c56bc1dda217be5cdc43e7b4ebad3f"},
+    {file = "jupyterlab_widgets-1.1.0.tar.gz", hash = "sha256:d5f41bc1713795385f718d44dcba47e1e1473c6289f28a95aa6b2c0782ee372a"},
+]
+kiwisolver = [
+    {file = "kiwisolver-1.4.2-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:6e395ece147f0692ca7cdb05a028d31b83b72c369f7b4a2c1798f4b96af1e3d8"},
+    {file = "kiwisolver-1.4.2-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:0b7f50a1a25361da3440f07c58cd1d79957c2244209e4f166990e770256b6b0b"},
+    {file = "kiwisolver-1.4.2-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:3c032c41ae4c3a321b43a3650e6ecc7406b99ff3e5279f24c9b310f41bc98479"},
+    {file = "kiwisolver-1.4.2-cp310-cp310-manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:1dcade8f6fe12a2bb4efe2cbe22116556e3b6899728d3b2a0d3b367db323eacc"},
+    {file = "kiwisolver-1.4.2-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:0e45e780a74416ef2f173189ef4387e44b5494f45e290bcb1f03735faa6779bf"},
+    {file = "kiwisolver-1.4.2-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:9d2bb56309fb75a811d81ed55fbe2208aa77a3a09ff5f546ca95e7bb5fac6eff"},
+    {file = "kiwisolver-1.4.2-cp310-cp310-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:69b2d6c12f2ad5f55104a36a356192cfb680c049fe5e7c1f6620fc37f119cdc2"},
+    {file = "kiwisolver-1.4.2-cp310-cp310-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:262c248c60f22c2b547683ad521e8a3db5909c71f679b93876921549107a0c24"},
+    {file = "kiwisolver-1.4.2-cp310-cp310-win32.whl", hash = "sha256:1008346a7741620ab9cc6c96e8ad9b46f7a74ce839dbb8805ddf6b119d5fc6c2"},
+    {file = "kiwisolver-1.4.2-cp310-cp310-win_amd64.whl", hash = "sha256:6ece2e12e4b57bc5646b354f436416cd2a6f090c1dadcd92b0ca4542190d7190"},
+    {file = "kiwisolver-1.4.2-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:b978afdb913ca953cf128d57181da2e8798e8b6153be866ae2a9c446c6162f40"},
+    {file = "kiwisolver-1.4.2-cp37-cp37m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:7f88c4b8e449908eeddb3bbd4242bd4dc2c7a15a7aa44bb33df893203f02dc2d"},
+    {file = "kiwisolver-1.4.2-cp37-cp37m-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:e348f1904a4fab4153407f7ccc27e43b2a139752e8acf12e6640ba683093dd96"},
+    {file = "kiwisolver-1.4.2-cp37-cp37m-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:c839bf28e45d7ddad4ae8f986928dbf5a6d42ff79760d54ec8ada8fb263e097c"},
+    {file = "kiwisolver-1.4.2-cp37-cp37m-manylinux_2_5_i686.manylinux1_i686.whl", hash = "sha256:8ae5a071185f1a93777c79a9a1e67ac46544d4607f18d07131eece08d415083a"},
+    {file = "kiwisolver-1.4.2-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.whl", hash = "sha256:c222f91a45da9e01a9bc4f760727ae49050f8e8345c4ff6525495f7a164c8973"},
+    {file = "kiwisolver-1.4.2-cp37-cp37m-win32.whl", hash = "sha256:a4e8f072db1d6fb7a7cc05a6dbef8442c93001f4bb604f1081d8c2db3ca97159"},
+    {file = "kiwisolver-1.4.2-cp37-cp37m-win_amd64.whl", hash = "sha256:be9a650890fb60393e60aacb65878c4a38bb334720aa5ecb1c13d0dac54dd73b"},
+    {file = "kiwisolver-1.4.2-cp38-cp38-macosx_10_9_universal2.whl", hash = "sha256:8ec2e55bf31b43aabe32089125dca3b46fdfe9f50afbf0756ae11e14c97b80ca"},
+    {file = "kiwisolver-1.4.2-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:1d1078ba770d6165abed3d9a1be1f9e79b61515de1dd00d942fa53bba79f01ae"},
+    {file = "kiwisolver-1.4.2-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:cbb5eb4a2ea1ffec26268d49766cafa8f957fe5c1b41ad00733763fae77f9436"},
+    {file = "kiwisolver-1.4.2-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:2e6cda72db409eefad6b021e8a4f964965a629f577812afc7860c69df7bdb84a"},
+    {file = "kiwisolver-1.4.2-cp38-cp38-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:b1605c7c38cc6a85212dfd6a641f3905a33412e49f7c003f35f9ac6d71f67720"},
+    {file = "kiwisolver-1.4.2-cp38-cp38-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:81237957b15469ea9151ec8ca08ce05656090ffabc476a752ef5ad7e2644c526"},
+    {file = "kiwisolver-1.4.2-cp38-cp38-manylinux_2_5_i686.manylinux1_i686.whl", hash = "sha256:240009fdf4fa87844f805e23f48995537a8cb8f8c361e35fda6b5ac97fcb906f"},
+    {file = "kiwisolver-1.4.2-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl", hash = "sha256:240c2d51d098395c012ddbcb9bd7b3ba5de412a1d11840698859f51d0e643c4f"},
+    {file = "kiwisolver-1.4.2-cp38-cp38-win32.whl", hash = "sha256:8b6086aa6936865962b2cee0e7aaecf01ab6778ce099288354a7229b4d9f1408"},
+    {file = "kiwisolver-1.4.2-cp38-cp38-win_amd64.whl", hash = "sha256:0d98dca86f77b851350c250f0149aa5852b36572514d20feeadd3c6b1efe38d0"},
+    {file = "kiwisolver-1.4.2-cp39-cp39-macosx_10_9_universal2.whl", hash = "sha256:91eb4916271655dfe3a952249cb37a5c00b6ba68b4417ee15af9ba549b5ba61d"},
+    {file = "kiwisolver-1.4.2-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:fa4d97d7d2b2c082e67907c0b8d9f31b85aa5d3ba0d33096b7116f03f8061261"},
+    {file = "kiwisolver-1.4.2-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:71469b5845b9876b8d3d252e201bef6f47bf7456804d2fbe9a1d6e19e78a1e65"},
+    {file = "kiwisolver-1.4.2-cp39-cp39-manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:8ff3033e43e7ca1389ee59fb7ecb8303abb8713c008a1da49b00869e92e3dd7c"},
+    {file = "kiwisolver-1.4.2-cp39-cp39-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:89b57c2984f4464840e4b768affeff6b6809c6150d1166938ade3e22fbe22db8"},
+    {file = "kiwisolver-1.4.2-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:ffbdb9a96c536f0405895b5e21ee39ec579cb0ed97bdbd169ae2b55f41d73219"},
+    {file = "kiwisolver-1.4.2-cp39-cp39-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:8a830a03970c462d1a2311c90e05679da56d3bd8e78a4ba9985cb78ef7836c9f"},
+    {file = "kiwisolver-1.4.2-cp39-cp39-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:f74f2a13af201559e3d32b9ddfc303c94ae63d63d7f4326d06ce6fe67e7a8255"},
+    {file = "kiwisolver-1.4.2-cp39-cp39-win32.whl", hash = "sha256:e677cc3626287f343de751e11b1e8a5b915a6ac897e8aecdbc996cd34de753a0"},
+    {file = "kiwisolver-1.4.2-cp39-cp39-win_amd64.whl", hash = "sha256:b3e251e5c38ac623c5d786adb21477f018712f8c6fa54781bd38aa1c60b60fc2"},
+    {file = "kiwisolver-1.4.2-pp37-pypy37_pp73-manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:0c380bb5ae20d829c1a5473cfcae64267b73aaa4060adc091f6df1743784aae0"},
+    {file = "kiwisolver-1.4.2-pp37-pypy37_pp73-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:484f2a5f0307bc944bc79db235f41048bae4106ffa764168a068d88b644b305d"},
+    {file = "kiwisolver-1.4.2-pp37-pypy37_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:0e8afdf533b613122e4bbaf3c1e42c2a5e9e2d1dd3a0a017749a7658757cb377"},
+    {file = "kiwisolver-1.4.2-pp37-pypy37_pp73-win_amd64.whl", hash = "sha256:42f6ef9b640deb6f7d438e0a371aedd8bef6ddfde30683491b2e6f568b4e884e"},
+    {file = "kiwisolver-1.4.2.tar.gz", hash = "sha256:7f606d91b8a8816be476513a77fd30abe66227039bd6f8b406c348cb0247dcc9"},
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 ]
 jupyterlab-widgets = []
 kiwisolver = []
@@ -2271,8 +2583,19 @@ markupsafe = [
     {file = "MarkupSafe-2.1.1-cp39-cp39-win_amd64.whl", hash = "sha256:46d00d6cfecdde84d40e572d63735ef81423ad31184100411e6e3388d405e247"},
     {file = "MarkupSafe-2.1.1.tar.gz", hash = "sha256:7f91197cc9e48f989d12e4e6fbc46495c446636dfc81b9ccf50bb0ec74b91d4b"},
 ]
+<<<<<<< HEAD
 marshmallow = []
 marshmallow-dataclass = []
+=======
+marshmallow = [
+    {file = "marshmallow-3.15.0-py3-none-any.whl", hash = "sha256:ff79885ed43b579782f48c251d262e062bce49c65c52412458769a4fb57ac30f"},
+    {file = "marshmallow-3.15.0.tar.gz", hash = "sha256:2aaaab4f01ef4f5a011a21319af9fce17ab13bf28a026d1252adab0e035648d5"},
+]
+marshmallow-dataclass = [
+    {file = "marshmallow_dataclass-8.5.7-py3-none-any.whl", hash = "sha256:da530f92f806673b9f40d8dc671ca18848b6cebded0eaecef720e256b5143e69"},
+    {file = "marshmallow_dataclass-8.5.7.tar.gz", hash = "sha256:0bdb779939b4656a40430a6a8390af698676eef89c2e583deb06e3585bf81bba"},
+]
+>>>>>>> 4ae5ec51 (Imputing income using geographic neighbors (#1559))
 marshmallow-enum = [
     {file = "marshmallow-enum-1.5.1.tar.gz", hash = "sha256:38e697e11f45a8e64b4a1e664000897c659b60aa57bfa18d44e226a9920b6e58"},
     {file = "marshmallow_enum-1.5.1-py2.py3-none-any.whl", hash = "sha256:57161ab3dbfde4f57adeb12090f39592e992b9c86d206d02f6bd03ebec60f072"},
