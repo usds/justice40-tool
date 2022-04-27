@@ -207,6 +207,32 @@
       "value": "About"
     }
   ],
+  "common.pages.alerts.additional_docs_available.description": [
+    {
+      "type": 0,
+      "value": "Download new technical support and other documentation and "
+    },
+    {
+      "children": [
+        {
+          "type": 0,
+          "value": "send feedback"
+        }
+      ],
+      "type": 8,
+      "value": "link2"
+    },
+    {
+      "type": 0,
+      "value": "."
+    }
+  ],
+  "common.pages.alerts.additional_docs_available.title": [
+    {
+      "type": 0,
+      "value": "Additional documentation now available"
+    }
+  ],
   "common.pages.alerts.public_comment_period.description": [
     {
       "type": 0,
@@ -479,6 +505,12 @@
       "value": "Census tract feedback"
     }
   ],
+  "contact.page.fab.survey.link": [
+    {
+      "type": 0,
+      "value": "https://www.surveymonkey.com/r/cejst-survey"
+    }
+  ],
   "contact.page.fab.survey.text": [
     {
       "type": 0,
@@ -514,7 +546,7 @@
   "contact.page.request.for.info.box.title": [
     {
       "type": 0,
-      "value": "Request for Infomation"
+      "value": "Request for Information"
     }
   ],
   "contact.page.sub.header.text": [
@@ -2591,8 +2623,18 @@
   ],
   "methodology.page.downloadPacket.header.text": [
     {
+      "children": [
+        {
+          "type": 0,
+          "value": "NEW"
+        }
+      ],
+      "type": 8,
+      "value": "callout"
+    },
+    {
       "type": 0,
-      "value": "Files available for download"
+      "value": " files available for download"
     }
   ],
   "methodology.page.downloadPacket.info.shape.last.updated": [
@@ -2608,7 +2650,21 @@
   "methodology.page.downloadPacket.info.text1": [
     {
       "type": 0,
-      "value": "Download the data sources used in the CEJST (.csv and .xlsx, "
+      "value": "Download the data sources used in the CEJST (.csv, .xlxs, "
+    },
+    {
+      "children": [
+        {
+          "type": 0,
+          "value": ".pdf"
+        }
+      ],
+      "type": 8,
+      "value": "callout"
+    },
+    {
+      "type": 0,
+      "value": " that describes how to use the list, and a codebook, "
     },
     {
       "type": 1,
@@ -2616,7 +2672,21 @@
     },
     {
       "type": 0,
-      "value": " unzipped), the shapefile, along with a codebook (.zip, "
+      "value": " unzipped), the shapefile, along with a "
+    },
+    {
+      "children": [
+        {
+          "type": 0,
+          "value": "codebook"
+        }
+      ],
+      "type": 8,
+      "value": "callout"
+    },
+    {
+      "type": 0,
+      "value": " (.zip, "
     },
     {
       "type": 1,
@@ -2632,7 +2702,7 @@
     },
     {
       "type": 0,
-      "value": ")."
+      "value": " unzipped)."
     }
   ],
   "methodology.page.downloadPacket.info.tsd.last.updated": [
@@ -2661,6 +2731,18 @@
         {
           "type": 0,
           "value": "NEW"
+        }
+      ],
+      "type": 8,
+      "value": "boldtag"
+    }
+  ],
+  "methodology.page.downloadPacket.updated.tag.text": [
+    {
+      "children": [
+        {
+          "type": 0,
+          "value": "Updated"
         }
       ],
       "type": 8,

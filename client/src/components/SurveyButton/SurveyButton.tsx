@@ -9,27 +9,24 @@ import J40MainGridContainer from '../J40MainGridContainer';
 // @ts-ignore
 import launchIcon from '/node_modules/uswds/dist/img/usa-icons/launch.svg';
 
-export const onClickHandler = (href: string | undefined) => {
-  Object.assign(document.createElement('a'), {target: '_blank', href: href}).click();
-};
-
 const SurveyButton = () => {
   const intl = useIntl();
-  const href = intl.locale === 'es' ? 'https://www.surveymonkey.com/r/cejst-survey-es' : 'https://www.surveymonkey.com/r/cejst-survey';
+  const href = intl.formatMessage(CONTACT_COPY.PAGE_INTRO.SURVEY_URL);
 
   return (
     <J40MainGridContainer className={styles.surveyButtonContainer}>
-      <Button
-        type='button'
-        className={styles.surveyButton}
-        onClick={() => onClickHandler(href)}>
-        {intl.formatMessage(CONTACT_COPY.PAGE_INTRO.SURVEY_TEXT)}
-        <img
-          className={styles.launchIcon}
-          src={launchIcon}
-          alt={'launch icon'}
-        />
-      </Button>
+      <a href={href}>
+        <Button
+          type="button"
+          className={styles.surveyButton}>
+          {intl.formatMessage(CONTACT_COPY.PAGE_INTRO.SURVEY_TEXT)}
+          <img
+            className={styles.launchIcon}
+            src={launchIcon}
+            alt={'launch icon'}
+          />
+        </Button>
+      </a>
     </J40MainGridContainer>
   );
 };

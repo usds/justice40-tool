@@ -12,7 +12,7 @@ exports[`rendering of the RequestForInfo checks if component renders 1`] = `
       <h3
         class="usa-summary-box__heading"
       >
-        Request for Infomation
+        Request for Information
       </h3>
       <div
         class="usa-summary-box__text"

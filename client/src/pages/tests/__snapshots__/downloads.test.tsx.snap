@@ -315,6 +315,35 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <h4
             class="usa-alert__heading"
           >
+            Additional documentation now available
+          </h4>
+          <p
+            class="usa-alert__text"
+          >
+            Download new technical support and other documentation and 
+            <a
+              class="usa-link usa-link--external"
+              data-cy=""
+              href="mailto:Screeningtool-Support@omb.eop.gov"
+              rel="noreferrer"
+              target="_blank"
+            >
+              send feedback
+            </a>
+            .
+          </p>
+        </div>
+      </div>
+      <div
+        class="usa-alert usa-alert--info"
+        data-testid="alert"
+      >
+        <div
+          class="usa-alert__body"
+        >
+          <h4
+            class="usa-alert__heading"
+          >
             Public comment period extended
           </h4>
           <p
@@ -610,17 +639,21 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       class="grid-container-desktop-lg"
       data-testid="gridContainer"
     >
-      <button
-        class="usa-button"
-        data-testid="button"
-        type="button"
+      <a
+        href="https://www.surveymonkey.com/r/cejst-survey"
       >
-        Help improve the site & data
-        <img
-          alt="launch icon"
-          src="test-file-stub"
-        />
-      </button>
+        <button
+          class="usa-button"
+          data-testid="button"
+          type="button"
+        >
+          Help improve the site & data
+          <img
+            alt="launch icon"
+            src="test-file-stub"
+          />
+        </button>
+      </a>
     </div>
   </footer>
 </DocumentFragment>

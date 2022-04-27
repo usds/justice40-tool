@@ -91,6 +91,14 @@
     "defaultMessage": "About",
     "description": "Navigate to the About page. This is the about page title text"
   },
+  "common.pages.alerts.additional_docs_available.description": {
+    "defaultMessage": "Download new technical support and other documentation and <link2>send feedback</link2>.",
+    "description": "Alert title that appears at the top of pages."
+  },
+  "common.pages.alerts.additional_docs_available.title": {
+    "defaultMessage": "Additional documentation now available",
+    "description": "Alert title that appears at the top of pages."
+  },
   "common.pages.alerts.public_comment_period.description": {
     "defaultMessage": "The public comment period for <link1>sending feedback</link1> has been extended to {expDate1}.",
     "description": "Alert body that appears on landing page."
@@ -233,11 +241,15 @@
   },
   "contact.page.census.tract.feedback.para3": {
     "defaultMessage": "In addition, you can provide feedback on the tool via this <link1>survey</link1>.",
-    "description": "Navigate to the contact page, this is the census tract feedback section"
+    "description": "Navigate to the survey. Spanish should substitute <link2> to get Spanish link! Already coded to support"
   },
   "contact.page.census.tract.feedback.title": {
     "defaultMessage": "Census tract feedback",
     "description": "Navigate to the contact page, this is the census tract feedback section"
+  },
+  "contact.page.fab.survey.link": {
+    "defaultMessage": "https://www.surveymonkey.com/r/cejst-survey",
+    "description": "Localized link to the survey. Spanish link is https://www.surveymonkey.com/r/cejst-survey-es"
   },
   "contact.page.fab.survey.text": {
     "defaultMessage": "Help improve the site & data",
@@ -252,7 +264,7 @@
     "description": "Navigate to the contact page, this is the body of the request for information box"
   },
   "contact.page.request.for.info.box.title": {
-    "defaultMessage": "Request for Infomation",
+    "defaultMessage": "Request for Information",
     "description": "Navigate to the contact page, this is the title of the request for information box"
   },
   "contact.page.sub.header.text": {
@@ -1208,7 +1220,7 @@
     "description": "Navigate to the methodology page. This is the download technical support document spreadsheet"
   },
   "methodology.page.downloadPacket.header.text": {
-    "defaultMessage": "Files available for download",
+    "defaultMessage": "<callout>NEW</callout> files available for download",
     "description": "Navigate to the methodology page. This is the download packet header text"
   },
   "methodology.page.downloadPacket.info.shape.last.updated": {
@@ -1216,7 +1228,7 @@
     "description": "Navigate to the methodology page. This is the download packet info last updated"
   },
   "methodology.page.downloadPacket.info.text1": {
-    "defaultMessage": "Download the data sources used in the CEJST (.csv and .xlsx, {downloadFileSize} unzipped), the shapefile, along with a codebook (.zip, {shapefileSize} unzipped) or the technical support document (.pdf, {tsdFileSize}).",
+    "defaultMessage": "Download the data sources used in the CEJST (.csv, .xlxs, <callout>.pdf</callout> that describes how to use the list, and a codebook, {downloadFileSize} unzipped), the shapefile, along with a <callout>codebook</callout> (.zip, {shapefileSize} unzipped) or the technical support document (.pdf, {tsdFileSize} unzipped).",
     "description": "Navigate to the methodology page. This is the download packet info text"
   },
   "methodology.page.downloadPacket.info.tsd.last.updated": {
@@ -1230,6 +1242,10 @@
   "methodology.page.downloadPacket.new.tag.text": {
     "defaultMessage": "<boldtag>NEW</boldtag>",
     "description": "Navigate to the methodology page. This is the new tag text"
+  },
+  "methodology.page.downloadPacket.updated.tag.text": {
+    "defaultMessage": "<boldtag>Updated</boldtag>",
+    "description": "Navigate to the methodology page. This is the update callout tag text that overlaps the button"
   },
   "methodology.page.formula.first": {
     "defaultMessage": "<boldtag>IF</boldtag> the census tract is above the threshold for one or more environmental or climate indicators",

@@ -236,6 +236,13 @@ const J40Header = () => {
         <Alert
           className={styles.alert}
           type="info"
+          heading={intl.formatMessage(COMMON_COPY.ALERTS.ALERT_2_TITLE.TITLE)}>
+          {COMMON_COPY.ALERTS.ALERT_2_DESCRIPTION}
+        </Alert>
+
+        <Alert
+          className={styles.alert}
+          type="info"
           heading={intl.formatMessage(COMMON_COPY.ALERTS.ALERT_1_TITLE.TITLE)}>
           {COMMON_COPY.ALERTS.ALERT_1_DESCRIPTION}
         </Alert>

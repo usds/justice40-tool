@@ -315,6 +315,35 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <h4
             class="usa-alert__heading"
           >
+            Additional documentation now available
+          </h4>
+          <p
+            class="usa-alert__text"
+          >
+            Download new technical support and other documentation and 
+            <a
+              class="usa-link usa-link--external"
+              data-cy=""
+              href="mailto:Screeningtool-Support@omb.eop.gov"
+              rel="noreferrer"
+              target="_blank"
+            >
+              send feedback
+            </a>
+            .
+          </p>
+        </div>
+      </div>
+      <div
+        class="usa-alert usa-alert--info"
+        data-testid="alert"
+      >
+        <div
+          class="usa-alert__body"
+        >
+          <h4
+            class="usa-alert__heading"
+          >
             Public comment period extended
           </h4>
           <p
@@ -447,12 +476,33 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div>
                 <div>
                   <div>
-                    Files available for download
+                    <span>
+                      NEW
+                    </span>
+                     files available for download
                   </div>
                   <div>
-                    Download the data sources used in the CEJST (.csv and .xlsx, 52MB unzipped), the shapefile, along with a codebook (.zip, 742MB unzipped) or the technical support document (.pdf, 913kB).
+                    Download the data sources used in the CEJST (.csv, .xlxs, 
+                    <span>
+                      .pdf
+                    </span>
+                     that describes how to use the list, and a codebook, 53MB unzipped), the shapefile, along with a 
+                    <span>
+                      codebook
+                    </span>
+                     (.zip, 742MB unzipped) or the technical support document (.pdf, 2.5MB unzipped).
                   </div>
                   <div>
+                    <div>
+                      <span
+                        class="usa-tag"
+                        data-testid="tag"
+                      >
+                        <strong>
+                          Updated
+                        </strong>
+                      </span>
+                    </div>
                     <a
                       data-cy="download-link"
                       download=""
@@ -463,20 +513,20 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                         data-testid="button"
                         type="button"
                       >
-                        <div>
+                        <span>
                           <img
                             alt="download icon for download package"
                             src="test-file-stub"
                           />
-                        </div>
-                        <div>
+                        </span>
+                        <span>
                           Download data sources
-                        </div>
+                        </span>
                       </button>
                     </a>
                   </div>
                   <div>
-                    Last updated: 04/06/22 
+                    Last updated: 04/26/22 
                   </div>
                   <div>
                     <div>
@@ -485,7 +535,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                         data-testid="tag"
                       >
                         <strong>
-                          NEW
+                          Updated
                         </strong>
                       </span>
                     </div>
@@ -499,20 +549,20 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                         data-testid="button"
                         type="button"
                       >
-                        <div>
+                        <span>
                           <img
                             alt="download icon for download package"
                             src="test-file-stub"
                           />
-                        </div>
-                        <div>
+                        </span>
+                        <span>
                           Download shapefile
-                        </div>
+                        </span>
                       </button>
                     </a>
                   </div>
                   <div>
-                    Last updated: 04/06/22 
+                    Last updated: 04/26/22 
                   </div>
                   <div>
                     <div>
@@ -526,7 +576,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                       </span>
                     </div>
                     <a
-                      data-cy="shapefile-link"
+                      data-cy="tsd-link"
                       download=""
                       href="//"
                       rel="noreferrer"
@@ -537,15 +587,15 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                         data-testid="button"
                         type="button"
                       >
-                        <div>
+                        <span>
                           <img
                             alt="download icon for download package"
                             src="test-file-stub"
                           />
-                        </div>
-                        <div>
+                        </span>
+                        <span>
                           Download technical support document
-                        </div>
+                        </span>
                       </button>
                     </a>
                   </div>
@@ -2647,17 +2697,21 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       class="grid-container-desktop-lg"
       data-testid="gridContainer"
     >
-      <button
-        class="usa-button"
-        data-testid="button"
-        type="button"
+      <a
+        href="https://www.surveymonkey.com/r/cejst-survey"
       >
-        Help improve the site & data
-        <img
-          alt="launch icon"
-          src="test-file-stub"
-        />
-      </button>
+        <button
+          class="usa-button"
+          data-testid="button"
+          type="button"
+        >
+          Help improve the site & data
+          <img
+            alt="launch icon"
+            src="test-file-stub"
+          />
+        </button>
+      </a>
     </div>
   </footer>
 </DocumentFragment>
