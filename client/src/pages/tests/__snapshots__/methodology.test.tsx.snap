@@ -486,7 +486,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       .pdf
                     </span>
-                     that describes how to use the list, and a codebook, 53MB unzipped), the shapefile, along with a 
+                     that describes how to use the list, and a 
+                    <span>
+                      codebook
+                    </span>
+                    , 53MB unzipped), the shapefile, along with a 
                     <span>
                       codebook
                     </span>

@@ -20,7 +20,11 @@ exports[`download packet component defined checks if component renders 1`] = `
             <span>
               .pdf
             </span>
-             that describes how to use the list, and a codebook, 53MB unzipped), the shapefile, along with a 
+             that describes how to use the list, and a 
+            <span>
+              codebook
+            </span>
+            , 53MB unzipped), the shapefile, along with a 
             <span>
               codebook
             </span>
