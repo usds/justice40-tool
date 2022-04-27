@@ -95,6 +95,11 @@ DATASET_LIST = [
         "class_name": "EPARiskScreeningEnvironmentalIndicatorsETL",
     },
     {
+        "name": "tribal_boundaries",
+        "module_dir": "tribal_boundaries",
+        "class_name": "TribalBoundariesETL",
+    },
+    {
         "name": "energy_definition_alternative_draft",
         "module_dir": "energy_definition_alternative_draft",
         "class_name": "EnergyDefinitionAlternativeDraft",

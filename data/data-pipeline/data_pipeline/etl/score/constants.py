@@ -289,7 +289,8 @@ TILES_SCORE_COLUMNS = {
     ## Low high school and low higher ed for t&wd
     field_names.WORKFORCE_SOCIO_INDICATORS_EXCEEDED: "M_WKFC_EBSI",
     ## FPL 200 and low higher ed for all others
-    field_names.FPL_200_SERIES: "M_EBSI",
+    field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES: "M_EBSI",
+    field_names.CONTAINS_AIA: "AIA_LP",
 }
 
 # columns to round floats to 2 decimals
