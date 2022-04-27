@@ -40,7 +40,7 @@ def validate_new_data(
     assert (
         checking_df[score_col].nunique() <= 3
     ), f"Error: there are too many values possible in {score_col}"
-    assert (True in checking_df[score_col].unique()) & (
+    assert (True in checking_df[score_col].unique()) | (
         False in checking_df[score_col].unique()
     ), f"Error: {score_col} should be a boolean"
 
