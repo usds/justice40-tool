@@ -299,6 +299,7 @@
 	"methodology.page.datasets.all.used.in.text": "Todas las categorías",
 	"methodology.page.downloadPacket.button1.text": "Descargue las fuentes de datos",
 	"methodology.page.downloadPacket.button2.text": "Descargue el archivo de forma",
+	"methodology.page.downloadPacket.button3.text": "Descargue el documento de soporte técnico",
 	"methodology.page.downloadPacket.header.text": "Archivos disponibles para descargar",
 	"methodology.page.downloadPacket.info.last.updated": "Última actualización: {downloadLastUpdated}",
 	"methodology.page.downloadPacket.info.text1": "Descargue las fuentes de datos utilizados en la herramienta CEJST (.csv y.xlsx, {downloadFileSize} descomprimidos) o el archivo de forma, junto con una lista de códigos o codebook (.zip, {shapefileSize} descomprimido).",
