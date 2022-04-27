@@ -405,6 +405,7 @@ class ScoreETL(ExtractTransformLoad):
             df[field_names.MEDIAN_INCOME_FIELD] / df[field_names.AMI_FIELD]
         )
 
+        # QQ: why don't we just filter to the numeric columns by type?
         numeric_columns = [
             field_names.HOUSING_BURDEN_FIELD,
             field_names.TOTAL_POP_FIELD,
@@ -458,6 +459,7 @@ class ScoreETL(ExtractTransformLoad):
             field_names.IMPENETRABLE_SURFACES_FIELD,
             # We have to pass this boolean here in order to include it in ag value loss percentiles.
             field_names.AGRICULTURAL_VALUE_BOOL_FIELD,
+            field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD,
         ]
 
         non_numeric_columns = [

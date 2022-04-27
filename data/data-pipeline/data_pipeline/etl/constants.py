@@ -15,16 +15,6 @@ DATASET_LIST = [
         "class_name": "TreeEquityScoreETL",
     },
     {
-        "name": "census_acs",
-        "module_dir": "census_acs",
-        "class_name": "CensusACSETL",
-    },
-    {
-        "name": "census_acs_2010",
-        "module_dir": "census_acs_2010",
-        "class_name": "CensusACS2010ETL",
-    },
-    {
         "name": "census_decennial",
         "module_dir": "census_decennial",
         "class_name": "CensusDecennialETL",
@@ -123,6 +113,17 @@ DATASET_LIST = [
         "name": "maryland_ejscreen",
         "module_dir": "maryland_ejscreen",
         "class_name": "MarylandEJScreenETL",
+    },
+    # This has to come after us.json exists
+    {
+        "name": "census_acs",
+        "module_dir": "census_acs",
+        "class_name": "CensusACSETL",
+    },
+    {
+        "name": "census_acs_2010",
+        "module_dir": "census_acs_2010",
+        "class_name": "CensusACS2010ETL",
     },
 ]
 
