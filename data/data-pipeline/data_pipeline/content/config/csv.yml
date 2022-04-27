@@ -257,3 +257,6 @@ fields:
   - score_name: Percent of population not currently enrolled in college or graduate school
     label: Percent of residents who are not currently enrolled in higher ed
     format: percentage
+  - score_name: Tract contains population or land in AIA area (2010)
+    label: Tract contains population or land in AIA area (2010)
+    format: bool
