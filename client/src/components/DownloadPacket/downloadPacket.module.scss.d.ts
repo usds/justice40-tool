@@ -4,15 +4,16 @@ declare namespace DownloadPacketModuleScssNamespace {
         downloadBox: string;
         downloadBoxTextBox: string;
         downloadBoxTitle: string;
-        dataSourceText: string;
-        dataSourceButtonContainer: string;
-        shapefileButtonContainer: string;
+        downloadSourceText: string;
+        downloadButtonContainer: string;
         downloadBoxButton: string;
-        dataSourceButtonText: string;
-        shapeFileText: string;
-        shapeFileButtonText: string;
-        newTagContainer: string;
-        newtag: string;
+        downloadButtonText: string;
+        downloadButtonIconSpan: string;
+        downloadButtonIcon: string;
+        tagContainer: string;
+        newTag: string;
+        updateTag: string;
+        newCalloutFontColor: string;
         lastUpdated:string;
     }
   }
