@@ -7,7 +7,9 @@ from data_pipeline.config import settings
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.sources.census_acs.etl_utils import (
     retrieve_census_acs_data,
-    impute_by_geographic_neighbors,
+)
+from data_pipeline.etl.sources.census_acs.etl_imputations import (
+    calculate_income_measures,
 )
 
 from data_pipeline.utils import get_module_logger, unzip_file_from_url
@@ -17,7 +19,6 @@ logger = get_module_logger(__name__)
 
 # because now there is a requirement for the us.json, this will port from
 # AWS when a local copy does not exist.
-# @Jorge -- is this too much of a hack?
 CENSUS_DATA_S3_URL = settings.AWS_JUSTICE40_DATASOURCES_URL + "/census.zip"
 
 
@@ -447,11 +448,13 @@ class CensusACSETL(ExtractTransformLoad):
         )
 
         # we impute income for both income measures
+        ## TODO: Convert to pydantic for clarity
         logger.info("Imputing income information")
         ImputeVariables = namedtuple(
             "ImputeVariables", ["raw_field_name", "imputed_field_name"]
         )
-        df = impute_by_geographic_neighbors(
+
+        df = calculate_income_measures(
             impute_var_named_tup_list=[
                 ImputeVariables(
                     raw_field_name=self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME,
@@ -464,10 +467,10 @@ class CensusACSETL(ExtractTransformLoad):
             ],
             geo_df=df,
             geoid_field=self.GEOID_TRACT_FIELD_NAME,
-            county_bool=False,
         )
 
         logger.info("Calculating with imputed values")
+
         df[
             self.ADJUSTED_AND_IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME
         ] = (
