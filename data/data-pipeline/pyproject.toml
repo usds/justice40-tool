@@ -39,6 +39,7 @@ tqdm = "4.62.0"
 types-requests = "^2.25.0"
 us = "^2.0.2"
 xlsxwriter = "^2.0.0"
+pydantic = "^1.9.0"
 
 [tool.poetry.dev-dependencies]
 black = {version = "^21.6b0", allow-prereleases = true}
