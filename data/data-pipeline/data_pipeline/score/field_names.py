@@ -691,5 +691,17 @@ MAPPING_FOR_EJ_PRIORITY_COMMUNITY_FIELD = (
     "Mapping for Environmental Justice Priority Community"
 )
 
+# Tribal Boundaries columns
+PERCENT_AREA_FIELD_NAME = (
+    "Percent of land in tract that is also an AIA territory (2010)"
+)
+PERCENT_POPULATION_FIELD_NAME = (
+    "Percent of population in tract that is also an AIA territory (2010)"
+)
+POPULATION_IN_AIA_AREA = "Tract includes population in AIA area (2010)"
+LAND_IN_AIA_AREA = "Tract includes land in AIA area (2010)"
+CONTAINS_AIA = "Tract contains population or land in AIA area (2010)"
+
+
 # End of names for individual factors being exceeded
 ####
