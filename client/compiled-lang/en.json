@@ -479,6 +479,12 @@
       "value": "Census tract feedback"
     }
   ],
+  "contact.page.fab.survey.link": [
+    {
+      "type": 0,
+      "value": "https://www.surveymonkey.com/r/cejst-survey"
+    }
+  ],
   "contact.page.fab.survey.text": [
     {
       "type": 0,
@@ -514,7 +520,7 @@
   "contact.page.request.for.info.box.title": [
     {
       "type": 0,
-      "value": "Request for Infomation"
+      "value": "Request for Information"
     }
   ],
   "contact.page.sub.header.text": [

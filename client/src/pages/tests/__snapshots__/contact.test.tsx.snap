@@ -454,7 +454,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <h3
                 class="usa-summary-box__heading"
               >
-                Request for Infomation
+                Request for Information
               </h3>
               <div
                 class="usa-summary-box__text"
@@ -710,17 +710,21 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       class="grid-container-desktop-lg"
       data-testid="gridContainer"
     >
-      <button
-        class="usa-button"
-        data-testid="button"
-        type="button"
+      <a
+        href="https://www.surveymonkey.com/r/cejst-survey"
       >
-        Help improve the site & data
-        <img
-          alt="launch icon"
-          src="test-file-stub"
-        />
-      </button>
+        <button
+          class="usa-button"
+          data-testid="button"
+          type="button"
+        >
+          Help improve the site & data
+          <img
+            alt="launch icon"
+            src="test-file-stub"
+          />
+        </button>
+      </a>
     </div>
   </footer>
 </DocumentFragment>

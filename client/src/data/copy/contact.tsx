@@ -6,7 +6,6 @@ import * as COMMON_COPY from './common';
 import {PAGES_ENDPOINTS} from '../constants';
 import {FOOTER} from './common';
 
-
 export const PAGE_INTRO = defineMessages({
   PAGE_TILE: {
     id: 'contact.page.title.text',
@@ -33,12 +32,17 @@ export const PAGE_INTRO = defineMessages({
     defaultMessage: `Help improve the site & data`,
     description: 'Navigate to the contact page, this is the text for floating action button',
   },
+  SURVEY_URL: {
+    id: 'contact.page.fab.survey.link',
+    defaultMessage: 'https://www.surveymonkey.com/r/cejst-survey',
+    description: 'Localized link to the survey. Spanish link is https://www.surveymonkey.com/r/cejst-survey-es',
+  },
 });
 
 export const RFI_BOX = defineMessages({
   TITLE: {
     id: 'contact.page.request.for.info.box.title',
-    defaultMessage: 'Request for Infomation',
+    defaultMessage: 'Request for Information',
     description: 'Navigate to the contact page, this is the title of the request for information box',
   },
 });
@@ -82,9 +86,10 @@ export const CENSUS_TRACT_FEEDBACK = {
     defaultMessage={`
       In addition, you can provide feedback on the tool via this <link1>survey</link1>.
     `}
-    description={'Navigate to the contact page, this is the census tract feedback section'}
+    description={'Navigate to the survey. Spanish should substitute <link2> to get Spanish link! Already coded to support'}
     values={{
       link1: COMMON_COPY.linkFn('https://www.surveymonkey.com/r/cejst-survey', false, true),
+      link2: COMMON_COPY.linkFn('https://www.surveymonkey.com/r/cejst-survey-es', false, true),
     }}
   />,
 };

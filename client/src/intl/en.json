@@ -233,11 +233,15 @@
   },
   "contact.page.census.tract.feedback.para3": {
     "defaultMessage": "In addition, you can provide feedback on the tool via this <link1>survey</link1>.",
-    "description": "Navigate to the contact page, this is the census tract feedback section"
+    "description": "Navigate to the survey. Spanish should substitute <link2> to get Spanish link! Already coded to support"
   },
   "contact.page.census.tract.feedback.title": {
     "defaultMessage": "Census tract feedback",
     "description": "Navigate to the contact page, this is the census tract feedback section"
+  },
+  "contact.page.fab.survey.link": {
+    "defaultMessage": "https://www.surveymonkey.com/r/cejst-survey",
+    "description": "Localized link to the survey. Spanish link is https://www.surveymonkey.com/r/cejst-survey-es"
   },
   "contact.page.fab.survey.text": {
     "defaultMessage": "Help improve the site & data",
@@ -252,7 +256,7 @@
     "description": "Navigate to the contact page, this is the body of the request for information box"
   },
   "contact.page.request.for.info.box.title": {
-    "defaultMessage": "Request for Infomation",
+    "defaultMessage": "Request for Information",
     "description": "Navigate to the contact page, this is the title of the request for information box"
   },
   "contact.page.sub.header.text": {
