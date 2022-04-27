@@ -2644,7 +2644,7 @@
   "methodology.page.downloadPacket.info.text1": [
     {
       "type": 0,
-      "value": "Download the data sources used in the CEJST (.csv, .xlsx, and a "
+      "value": "Download the data sources used in the CEJST (.csv, .xlxs, "
     },
     {
       "children": [
@@ -2658,7 +2658,7 @@
     },
     {
       "type": 0,
-      "value": " that describes how to use the list, "
+      "value": " that describes how to use the list, and a codebook, "
     },
     {
       "type": 1,

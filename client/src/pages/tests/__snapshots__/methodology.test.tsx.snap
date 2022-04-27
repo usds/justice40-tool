@@ -449,11 +449,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                      files available for download
                   </div>
                   <div>
-                    Download the data sources used in the CEJST (.csv, .xlsx, and a 
+                    Download the data sources used in the CEJST (.csv, .xlxs, 
                     <span>
                       .pdf
                     </span>
-                     that describes how to use the list, 53MB unzipped), the shapefile, along with a 
+                     that describes how to use the list, and a codebook, 53MB unzipped), the shapefile, along with a 
                     <span>
                       codebook
                     </span>

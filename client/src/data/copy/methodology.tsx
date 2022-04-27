@@ -113,7 +113,7 @@ export const DOWNLOAD_PACKAGE = {
   />,
   DESCRIPTION1: <FormattedMessage
     id={ 'methodology.page.downloadPacket.info.text1'}
-    defaultMessage= {`Download the data sources used in the CEJST (.csv, .xlsx, and a <callout>.pdf</callout> that describes how to use the list, {downloadFileSize} unzipped), the shapefile, along with a <callout>codebook</callout> (.zip, {shapefileSize} unzipped) or the technical support document (.pdf, {tsdFileSize} unzipped).`}
+    defaultMessage= {`Download the data sources used in the CEJST (.csv, .xlxs, <callout>.pdf</callout> that describes how to use the list, and a codebook, {downloadFileSize} unzipped), the shapefile, along with a <callout>codebook</callout> (.zip, {shapefileSize} unzipped) or the technical support document (.pdf, {tsdFileSize} unzipped).`}
     description= {'Navigate to the methodology page. This is the download packet info text'}
     values= {{
       callout: newCalloutFontColorFn,
