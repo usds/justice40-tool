@@ -57,8 +57,8 @@ M_WORKFORCE = "Workforce Factor (Definition M)"
 M_NON_WORKFORCE = "Any Non-Workforce Factor (Definition M)"
 
 # Definition Narwhal fields
-SCORE_N = "Definition N"
-SCORE_N_COMMUNITIES = "Definition N (communities)"
+SCORE_N = "Definition Narwhal"
+SCORE_N_COMMUNITIES = "Definition Narwhal (communities)"
 N_CLIMATE = "Climate Factor (Definition N)"
 N_ENERGY = "Energy Factor (Definition N)"
 N_TRANSPORTATION = "Transportation Factor (Definition N)"
@@ -701,7 +701,8 @@ PERCENT_POPULATION_FIELD_NAME = (
 POPULATION_IN_AIA_AREA = "Tract includes population in AIA area (2010)"
 LAND_IN_AIA_AREA = "Tract includes land in AIA area (2010)"
 CONTAINS_AIA = "Tract contains population or land in AIA area (2010)"
-
-
+CONTAINS_TRIBAL_LAND_OR_POPULATION_ABOVE_THRESHOLD = (
+    "Contains population or land in AIA area that exceeds threshold"
+)
 # End of names for individual factors being exceeded
 ####
