@@ -763,8 +763,7 @@ export const DOWNLOAD_DRAFT = {
   PARAGRAPH_1: <FormattedMessage
     id={'explore.tool.page.under.map.download.draft.ptag.1'}
     defaultMessage={`
-      <link1>Download the current list</link1> of communities and datasets used (ZIP file 
-      will contain one .xlsx and one .csv, with a size of {downloadFileSize} unzipped). Last updated: {dateUpdated}.
+      <link1>Download the data sources</link1> used in the CEJST (.csv, .xlxs, .pdf that describes how to use the list, and a codebook, {downloadFileSize} unzipped). Last updated: {dateUpdated}.
     `}
     description={`
       Navigate to the explore the tool page. Under the map, you will see a link that is placed below the 
