@@ -291,6 +291,7 @@ TILES_SCORE_COLUMNS = {
     ## FPL 200 and low higher ed for all others
     field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES: "M_EBSI",
     field_names.CONTAINS_AIA: "AIA_LP",
+    field_names.CONTAINS_TRIBAL_LAND_OR_POPULATION_ABOVE_THRESHOLD: "TA_THR",
 }
 
 # columns to round floats to 2 decimals
