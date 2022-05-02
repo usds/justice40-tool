@@ -764,15 +764,15 @@ class ScoreNarwhal(Score):
             | workforce_combined_criteria_for_island_areas
         )
 
-    def _contains_tribal_area_or_population_factor(self):
-        return (
-            # strict greater than
-            self.df[field_names.PERCENT_AREA_FIELD_NAME]
-            > self.TRIBAL_THRESHOLD
-        ) | (
-            self.df[field_names.PERCENT_POPULATION_FIELD_NAME]
-            > self.TRIBAL_THRESHOLD
-        )
+    # def _contains_tribal_area_or_population_factor(self):
+    #     return (
+    #         # strict greater than
+    #         self.df[field_names.PERCENT_AREA_FIELD_NAME]
+    #         > self.TRIBAL_THRESHOLD
+    #     ) | (
+    #         self.df[field_names.PERCENT_POPULATION_FIELD_NAME]
+    #         > self.TRIBAL_THRESHOLD
+    #     )
 
     def add_columns(self) -> pd.DataFrame:
         logger.info("Adding Score M")
@@ -801,10 +801,10 @@ class ScoreNarwhal(Score):
         self.df[field_names.N_WATER] = self._water_factor()
         self.df[field_names.N_HEALTH] = self._health_factor()
         self.df[field_names.N_WORKFORCE] = self._workforce_factor()
-        # added
-        self.df[
-            field_names.CONTAINS_TRIBAL_LAND_OR_POPULATION_ABOVE_THRESHOLD
-        ] = self._contains_tribal_area_or_population_factor()
+        # # added
+        # self.df[
+        #     field_names.CONTAINS_TRIBAL_LAND_OR_POPULATION_ABOVE_THRESHOLD
+        # ] = self._contains_tribal_area_or_population_factor()
 
         factors = [
             field_names.N_CLIMATE,
@@ -815,7 +815,7 @@ class ScoreNarwhal(Score):
             field_names.N_WATER,
             field_names.N_HEALTH,
             field_names.N_WORKFORCE,
-            field_names.CONTAINS_TRIBAL_LAND_OR_POPULATION_ABOVE_THRESHOLD,
+            # field_names.CONTAINS_TRIBAL_LAND_OR_POPULATION_ABOVE_THRESHOLD,
         ]
         self.df[field_names.CATEGORY_COUNT] = self.df[factors].sum(axis=1)
         self.df[field_names.SCORE_N_COMMUNITIES] = self.df[factors].any(axis=1)
