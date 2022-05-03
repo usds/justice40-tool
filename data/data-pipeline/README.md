@@ -219,6 +219,8 @@ To install the above-named executables:
 - gdal: `brew install gdal`
 - Tippecanoe: `brew install tippecanoe`
 
+Note: For MacOS Monterey or M1 Macs, [you might need to follow these steps](https://stackoverflow.com/a/70880741) to install Scipy.
+
 ### Windows Users
 
 If you want to run tile generation, please install TippeCanoe [following these instructions](https://github.com/GISupportICRC/ArcGIS2Mapbox#installing-tippecanoe-on-windows). You also need some pre-requisites for Geopandas as specified in the Poetry requirements. Please follow [these instructions](https://stackoverflow.com/questions/56958421/pip-install-geopandas-on-windows) to install the Geopandas dependency locally. It's definitely easier if you have access to WSL (Windows Subsystem Linux), and install these packages using commands similar to our [Dockerfile](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/Dockerfile).
