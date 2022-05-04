@@ -31,10 +31,10 @@ sheets:
         label: Total population
         format: float
       - score_name: Is low income and has a low percent of higher ed students?
-        label: Is low income and has a low percent of higher ed students?
+        label: Is low income and high percent of residents that are not higher ed students?
         format: bool
       - score_name: Greater than or equal to the 90th percentile for expected agriculture loss rate, is low income, and has a low percent of higher ed students?
-        label: Greater than or equal to the 90th percentile for expected agriculture loss rate, is low income, and has a low percent of higher ed students?
+        label: Greater than or equal to the 90th percentile for expected agriculture loss rate, is low income, and high percent of residents that are not higher ed students?
         format: bool
       - score_name: Expected agricultural loss rate (Natural Hazards Risk Index) (percentile)
         label: Expected agricultural loss rate (Natural Hazards Risk Index) (percentile)
@@ -43,7 +43,7 @@ sheets:
         label: Expected agricultural loss rate (Natural Hazards Risk Index)
         format: loss_rate_percentage
       - score_name: Greater than or equal to the 90th percentile for expected building loss rate, is low income, and has a low percent of higher ed students?
-        label: Greater than or equal to the 90th percentile for expected building loss rate, is low income, and has a low percent of higher ed students?
+        label: Greater than or equal to the 90th percentile for expected building loss rate, is low income, and high percent of residents that are not higher ed students?
         format: bool
       - score_name: Expected building loss rate (Natural Hazards Risk Index) (percentile)
         label: Expected building loss rate (Natural Hazards Risk Index) (percentile)
@@ -52,7 +52,7 @@ sheets:
         label: Expected building loss rate (Natural Hazards Risk Index)
         format: loss_rate_percentage
       - score_name: Greater than or equal to the 90th percentile for expected population loss rate, is low income, and has a low percent of higher ed students?
-        label: Greater than or equal to the 90th percentile for expected population loss rate, is low income, and has a low percent of higher ed students?
+        label: Greater than or equal to the 90th percentile for expected population loss rate, is low income, and high percent of residents that are not higher ed students?
         format: bool
       - score_name: Expected population loss rate (Natural Hazards Risk Index) (percentile)
         label: Expected population loss rate (Natural Hazards Risk Index) (percentile)
@@ -61,7 +61,7 @@ sheets:
         label: Expected population loss rate (Natural Hazards Risk Index)
         format: loss_rate_percentage
       - score_name: Greater than or equal to the 90th percentile for energy burden, is low income, and has a low percent of higher ed students?
-        label: Greater than or equal to the 90th percentile for energy burden, is low income, and has a low percent of higher ed students?
+        label: Greater than or equal to the 90th percentile for energy burden, is low income, and high percent of residents that are not higher ed students?
         format: bool
       - score_name: Energy burden (percentile)
         label: Energy burden (percentile)
@@ -70,7 +70,7 @@ sheets:
         label: Energy burden
         format: percentage
       - score_name: Greater than or equal to the 90th percentile for PM2.5 exposure, is low income, and has a low percent of higher ed students?
-        label: Greater than or equal to the 90th percentile for PM2.5 exposure, is low income, and has a low percent of higher ed students?
+        label: Greater than or equal to the 90th percentile for PM2.5 exposure, is low income, and high percent of residents that are not higher ed students?
         format: bool
       - score_name: PM2.5 in the air (percentile)
         label: PM2.5 in the air (percentile)
@@ -79,7 +79,7 @@ sheets:
         label: PM2.5 in the air
         format: float
       - score_name: Greater than or equal to the 90th percentile for diesel particulate matter, is low income, and has a low percent of higher ed students?
-        label: Greater than or equal to the 90th percentile for diesel particulate matter, is low income, and has a low percent of higher ed students?
+        label: Greater than or equal to the 90th percentile for diesel particulate matter, is low income, and high percent of residents that are not higher ed students?
         format: bool
       - score_name: Diesel particulate matter exposure (percentile)
         label: Diesel particulate matter exposure (percentile)
@@ -88,7 +88,7 @@ sheets:
         label: Diesel particulate matter exposure
         format: float
       - score_name: Greater than or equal to the 90th percentile for traffic proximity, is low income, and has a low percent of higher ed students?
-        label: Greater than or equal to the 90th percentile for traffic proximity, is low income, and has a low percent of higher ed students?
+        label: Greater than or equal to the 90th percentile for traffic proximity, is low income, and high percent of residents that are not higher ed students?
         format: bool
       - score_name: Traffic proximity and volume (percentile)
         label: Traffic proximity and volume (percentile)
@@ -97,7 +97,7 @@ sheets:
         label: Traffic proximity and volume
         format: float
       - score_name: Greater than or equal to the 90th percentile for housing burden, is low income, and has a low percent of higher ed students?
-        label: Greater than or equal to the 90th percentile for housing burden, is low income, and has a low percent of higher ed students?
+        label: Greater than or equal to the 90th percentile for housing burden, is low income, and high percent of residents that are not higher ed students?
         format: bool
       - score_name: Housing burden (percent) (percentile)
         label: Housing burden (percent) (percentile)
@@ -106,7 +106,7 @@ sheets:
         label: Housing burden (percent)
         format: percentage
       - score_name: Greater than or equal to the 90th percentile for lead paint, the median house value is less than 90th percentile, is low income, and has a low percent of higher ed students?
-        label: Greater than or equal to the 90th percentile for lead paint, the median house value is less than 90th percentile, is low income, and has a low percent of higher ed students?
+        label: Greater than or equal to the 90th percentile for lead paint, the median house value is less than 90th percentile, is low income, and high percent of residents that are not higher ed students?
         format: bool
       - score_name: Percent pre-1960s housing (lead paint indicator) (percentile)
         label: Percent pre-1960s housing (lead paint indicator) (percentile)
@@ -121,7 +121,7 @@ sheets:
         label: Median value ($) of owner-occupied housing units
         format: float
       - score_name: Greater than or equal to the 90th percentile for proximity to hazardous waste facilities, is low income, and has a low percent of higher ed students?
-        label: Greater than or equal to the 90th percentile for proximity to hazardous waste facilities, is low income, and has a low percent of higher ed students?
+        label: Greater than or equal to the 90th percentile for proximity to hazardous waste facilities, is low income, and high percent of residents that are not higher ed students?
         format: bool
       - score_name: Proximity to hazardous waste sites (percentile)
         label: Proximity to hazardous waste sites (percentile)
@@ -130,16 +130,16 @@ sheets:
         label: Proximity to hazardous waste sites
         format: float
       - score_name: Greater than or equal to the 90th percentile for proximity to superfund sites, is low income, and has a low percent of higher ed students?
-        label: Greater than or equal to the 90th percentile for proximity to superfund sites, is low income, and has a low percent of higher ed students?
+        label: Greater than or equal to the 90th percentile for proximity to superfund sites, is low income, and high percent of residents that are not higher ed students?
         format: bool
       - score_name: Proximity to NPL sites (percentile)
-        label: Proximity to NPL sites (percentile)
+        label: Proximity to NPL (Superfund) sites (percentile)
         format: percentage
       - score_name: Proximity to NPL sites
-        label: Proximity to NPL sites
+        label: Proximity to NPL (Superfund) sites
         format: float
       - score_name: Greater than or equal to the 90th percentile for proximity to RMP sites, is low income, and has a low percent of higher ed students?
-        label: Greater than or equal to the 90th percentile for proximity to RMP sites, is low income, and has a low percent of higher ed students?
+        label: Greater than or equal to the 90th percentile for proximity to RMP sites, is low income, and high percent of residents that are not higher ed students?
         format: bool
       - score_name: Proximity to Risk Management Plan (RMP) facilities (percentile)
         label: Proximity to Risk Management Plan (RMP) facilities (percentile)
@@ -148,7 +148,7 @@ sheets:
         label: Proximity to Risk Management Plan (RMP) facilities
         format: float
       - score_name: Greater than or equal to the 90th percentile for wastewater discharge, is low income, and has a low percent of higher ed students?
-        label: Greater than or equal to the 90th percentile for wastewater discharge, is low income, and has a low percent of higher ed students?
+        label: Greater than or equal to the 90th percentile for wastewater discharge, is low income, and high percent of residents that are not higher ed students?
         format: bool
       - score_name: Wastewater discharge (percentile)
         label: Wastewater discharge (percentile)
@@ -157,7 +157,7 @@ sheets:
         label: Wastewater discharge
         format: float
       - score_name: Greater than or equal to the 90th percentile for asthma, is low income, and has a low percent of higher ed students?
-        label: Greater than or equal to the 90th percentile for asthma, is low income, and has a low percent of higher ed students?
+        label: Greater than or equal to the 90th percentile for asthma, is low income, and high percent of residents that are not higher ed students?
         format: bool
       - score_name: Current asthma among adults aged greater than or equal to 18 years (percentile)
         label: Current asthma among adults aged greater than or equal to 18 years (percentile)
@@ -166,7 +166,7 @@ sheets:
         label: Current asthma among adults aged greater than or equal to 18 years
         format: percentage
       - score_name: Greater than or equal to the 90th percentile for diabetes, is low income, and has a low percent of higher ed students?
-        label: Greater than or equal to the 90th percentile for diabetes, is low income, and has a low percent of higher ed students?
+        label: Greater than or equal to the 90th percentile for diabetes, is low income, and high percent of residents that are not higher ed students?
         format: bool
       - score_name: Diagnosed diabetes among adults aged greater than or equal to 18 years (percentile)
         label: Diagnosed diabetes among adults aged greater than or equal to 18 years (percentile)
@@ -175,7 +175,7 @@ sheets:
         label: Diagnosed diabetes among adults aged greater than or equal to 18 years
         format: percentage
       - score_name: Greater than or equal to the 90th percentile for heart disease, is low income, and has a low percent of higher ed students?
-        label: Greater than or equal to the 90th percentile for heart disease, is low income, and has a low percent of higher ed students?
+        label: Greater than or equal to the 90th percentile for heart disease, is low income, and high percent of residents that are not higher ed students?
         format: bool
       - score_name: Coronary heart disease among adults aged greater than or equal to 18 years (percentile)
         label: Coronary heart disease among adults aged greater than or equal to 18 years (percentile)
@@ -184,7 +184,7 @@ sheets:
         label: Coronary heart disease among adults aged greater than or equal to 18 years
         format: percentage
       - score_name: Greater than or equal to the 90th percentile for low life expectancy, is low income, and has a low percent of higher ed students?
-        label: Greater than or equal to the 90th percentile for low life expectancy, is low income, and has a low percent of higher ed students?
+        label: Greater than or equal to the 90th percentile for low life expectancy, is low income, and high percent of residents that are not higher ed students?
         format: bool
       - score_name: Low life expectancy (percentile)
         label: Low life expectancy (percentile)
@@ -193,7 +193,7 @@ sheets:
         label: Life expectancy (years)
         format: float
       - score_name: Greater than or equal to the 90th percentile for low median household income as a percent of area median income, has low HS attainment, and has a low percent of higher ed students?
-        label: Greater than or equal to the 90th percentile for low median household income as a percent of area median income, has low HS attainment, and has a low percent of higher ed students?
+        label: Greater than or equal to the 90th percentile for low median household income as a percent of area median income, has low HS attainment, and high percent of residents that are not higher ed students?
         format: bool
       - score_name: Low median household income as a percent of area median income (percentile)
         label: Low median household income as a percent of area median income (percentile)
@@ -202,7 +202,7 @@ sheets:
         label: Median household income as a percent of area median income
         format: percentage
       - score_name: Greater than or equal to the 90th percentile for households in linguistic isolation, has low HS attainment, and has a low percent of higher ed students?
-        label: Greater than or equal to the 90th percentile for households in linguistic isolation, has low HS attainment, and has a low percent of higher ed students?
+        label: Greater than or equal to the 90th percentile for households in linguistic isolation, has low HS attainment, and high percent of residents that are not higher ed students?
         format: bool
       - score_name: Linguistic isolation (percent) (percentile)
         label: Linguistic isolation (percent) (percentile)
@@ -211,7 +211,7 @@ sheets:
         label: Linguistic isolation (percent)
         format: percentage
       - score_name: Greater than or equal to the 90th percentile for unemployment, has low HS attainment, and has a low percent of higher ed students?
-        label: Greater than or equal to the 90th percentile for unemployment, has low HS attainment, and has a low percent of higher ed students?
+        label: Greater than or equal to the 90th percentile for unemployment, has low HS attainment, and high percent of residents that are not higher ed students?
         format: bool
       - score_name: Unemployment (percent) (percentile)
         label: Unemployment (percent) (percentile)
@@ -220,16 +220,16 @@ sheets:
         label: Unemployment (percent)
         format: percentage
       - score_name: Greater than or equal to the 90th percentile for households at or below 100% federal poverty level, has low HS attainment, and has a low percent of higher ed students?
-        label: Greater than or equal to the 90th percentile for households at or below 100% federal poverty level, has low HS attainment, and has a low percent of higher ed students?
+        label: Greater than or equal to the 90th percentile for households at or below 100% federal poverty level, has low HS attainment, and high percent of residents that are not higher ed students?
         format: bool
       - score_name: Percent of individuals below 200% Federal Poverty Line (percentile)
         label: Percent of individuals below 200% Federal Poverty Line (percentile)
         format: percentage
-      - score_name: Percent of individuals < 100% Federal Poverty Line (percentile)
-        label: Percent of individuals < 100% Federal Poverty Line (percentile)
-        format: percentage
       - score_name: Percent of individuals below 200% Federal Poverty Line
         label: Percent of individuals below 200% Federal Poverty Line
+        format: percentage
+      - score_name: Percent of individuals < 100% Federal Poverty Line (percentile)
+        label: Percent of individuals < 100% Federal Poverty Line (percentile)
         format: percentage
       - score_name: Percent of individuals < 100% Federal Poverty Line
         label: Percent of individuals < 100% Federal Poverty Line
