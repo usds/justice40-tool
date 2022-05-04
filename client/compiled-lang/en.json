@@ -2664,7 +2664,21 @@
     },
     {
       "type": 0,
-      "value": " that describes how to use the list, and a codebook, "
+      "value": " that describes how to use the list, and a "
+    },
+    {
+      "children": [
+        {
+          "type": 0,
+          "value": "codebook"
+        }
+      ],
+      "type": 8,
+      "value": "callout"
+    },
+    {
+      "type": 0,
+      "value": ", "
     },
     {
       "type": 1,
