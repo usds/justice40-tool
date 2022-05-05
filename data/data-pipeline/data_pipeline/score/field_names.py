@@ -56,6 +56,19 @@ M_HEALTH = "Health Factor (Definition M)"
 M_WORKFORCE = "Workforce Factor (Definition M)"
 M_NON_WORKFORCE = "Any Non-Workforce Factor (Definition M)"
 
+# Definition Narwhal fields
+SCORE_N = "Definition N"
+SCORE_N_COMMUNITIES = "Definition N (communities)"
+N_CLIMATE = "Climate Factor (Definition N)"
+N_ENERGY = "Energy Factor (Definition N)"
+N_TRANSPORTATION = "Transportation Factor (Definition N)"
+N_HOUSING = "Housing Factor (Definition N)"
+N_POLLUTION = "Pollution Factor (Definition N)"
+N_WATER = "Water Factor (Definition N)"
+N_HEALTH = "Health Factor (Definition N)"
+N_WORKFORCE = "Workforce Factor (Definition N)"
+N_NON_WORKFORCE = "Any Non-Workforce Factor (Definition N)"
+
 PERCENTILE = 90
 MEDIAN_HOUSE_VALUE_PERCENTILE = 90
 
@@ -93,9 +106,19 @@ HEALTH_SOCIO_INDICATORS_EXCEEDED = (
 
 # Poverty / Income
 POVERTY_FIELD = "Poverty (Less than 200% of federal poverty line)"
+
+# this is the raw, unadjusted variable
 POVERTY_LESS_THAN_200_FPL_FIELD = (
     "Percent of individuals below 200% Federal Poverty Line"
 )
+
+# this is for use in the donuts
+ADJUSTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME = (
+    "Adjusted percent of individuals < 200% Federal Poverty Line"
+)
+
+# this is what gets used in the score
+POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD = "Percent of individuals below 200% Federal Poverty Line, imputed and adjusted"
 POVERTY_LESS_THAN_150_FPL_FIELD = (
     "Percent of individuals < 150% Federal Poverty Line"
 )
@@ -422,6 +445,7 @@ SCORE_M_LOW_INCOME_SUFFIX = (
     ", is low income, and has a low percent of higher ed students"
 )
 
+
 COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD = (
     "Percent higher ed enrollment rate is less than 20%"
 )
@@ -661,6 +685,7 @@ THRESHOLD_COUNT = "Total threshold criteria exceeded"
 CATEGORY_COUNT = "Total categories exceeded"
 
 FPL_200_SERIES = "Is low income?"
+FPL_200_SERIES_IMPUTED_AND_ADJUSTED = "Is low income (imputed and adjusted)?"
 FPL_200_AND_COLLEGE_ATTENDANCE_SERIES = (
     "Is low income and has a low percent of higher ed students?"
 )
