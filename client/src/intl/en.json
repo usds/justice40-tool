@@ -95,9 +95,9 @@
     "defaultMessage": "Download new technical support and other documentation and <link2>send feedback</link2>.",
     "description": "Alert title that appears at the top of pages."
   },
-  "common.pages.alerts.additional_docs_available.title": {
-    "defaultMessage": "Additional documentation now available",
-    "description": "Alert title that appears at the top of pages."
+  "common.pages.alerts.census.tract.title": {
+    "defaultMessage": "Improvements to the tool on the Explore the map page",
+    "description": "Navigate to any page. This the title of the alert that informs the user that new census tract information is available"
   },
   "common.pages.alerts.public_comment_period.description": {
     "defaultMessage": "The public comment period for <link1>sending feedback</link1> has been extended to {expDate1}.",
@@ -106,10 +106,6 @@
   "common.pages.alerts.public_comment_period.title": {
     "defaultMessage": "Public comment period extended",
     "description": "Alert title that appears on landing page."
-  },
-  "common.pages.alerts.census.tract.title": {
-    "defaultMessage": "Improvements to the tool on the Explore the map page",
-    "description": "Navigate to any page. This the title of the alert that informs the user that new census tract information is available"
   },
   "common.pages.banner.beta.info": {
     "defaultMessage": "It is an early, in-progress version of the tool with limited datasets that will be regularly updated.",
@@ -647,10 +643,6 @@
     "defaultMessage": "Clean transit",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Clean transportation title\n"
   },
-  "explore.map.page.side.panel.indicator.title.clean.water": {
-    "defaultMessage": "Clean water and wastewater infrastructure",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Clean water and waste title\n"
-  },
   "explore.map.page.side.panel.indicator.title.climate": {
     "defaultMessage": "Climate change",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Climate change title\n"
@@ -846,6 +838,10 @@
   "explore.tool.page.side.panel.indicator.percentile.value.ordinal.suffix": {
     "defaultMessage": "{indicatorValue, selectordinal, one {#st} two {#nd} =3 {#rd} other {#th} }",
     "description": "Navigate to the explore the tool page. Click on the map. The side panel will show categories. Open a category. This will define the indicator value's oridinal suffix. For example the st in 91st, the rd in 23rd, and the th in 26th, etc."
+  },
+  "explore.tool.page.side.panel.indicator.title.clean.water": {
+    "defaultMessage": "Clean water and wastewater infrastructure",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Clean water and waste title\n"
   },
   "fab.survey.text": {
     "defaultMessage": "Help improve the site & data",
