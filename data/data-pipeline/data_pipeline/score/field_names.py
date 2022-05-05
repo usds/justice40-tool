@@ -701,5 +701,14 @@ MAPPING_FOR_EJ_PRIORITY_COMMUNITY_FIELD = (
     "Mapping for Environmental Justice Priority Community"
 )
 
+# Historic Redlining Score
+HISTORIC_REDLINING_SCORE_EXCEEDED = (
+    "Tract-level redlining score meets or exceeds 3.25"
+)
+
+HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD = (
+    "Tract-level redlining score meets or exceeds 3.25 and is low income"
+)
+
 # End of names for individual factors being exceeded
 ####

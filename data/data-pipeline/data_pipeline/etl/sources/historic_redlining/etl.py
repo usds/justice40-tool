@@ -52,6 +52,10 @@ class HistoricRedliningETL(ExtractTransformLoad):
             historic_redlining_data[
                 f"{self.REDLINING_SCALAR} meets or exceeds {round(threshold, 2)}"
             ] = (historic_redlining_data[self.REDLINING_SCALAR] >= threshold)
+            ## NOTE We add to columns to keep here
+            self.COLUMNS_TO_KEEP.append(
+                f"{self.REDLINING_SCALAR} meets or exceeds {round(threshold, 2)}"
+            )
 
         self.df = historic_redlining_data
 
