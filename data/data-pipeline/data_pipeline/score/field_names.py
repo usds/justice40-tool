@@ -57,7 +57,7 @@ M_WORKFORCE = "Workforce Factor (Definition M)"
 M_NON_WORKFORCE = "Any Non-Workforce Factor (Definition M)"
 
 # Definition Narwhal fields
-SCORE_N = "Definition N"
+SCORE_N = "Definition N (communities)"
 SCORE_N_COMMUNITIES = "Definition N (communities)"
 N_CLIMATE = "Climate Factor (Definition N)"
 N_ENERGY = "Energy Factor (Definition N)"
