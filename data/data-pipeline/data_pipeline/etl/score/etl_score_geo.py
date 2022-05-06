@@ -331,9 +331,10 @@ class GeoScoreETL(ExtractTransformLoad):
 
             create_esri_codebook(codebook)
 
-            self.geojson_score_usa_high.rename(columns=renaming_map).to_file(
-                self.SCORE_SHP_FILE
-            )
+            # temporarily disabling shapefile write
+            # self.geojson_score_usa_high.rename(columns=renaming_map).to_file(
+            #     self.SCORE_SHP_FILE
+            # )
             logger.info("Completed writing shapefile")
             arcgis_zip_file_path = self.SCORE_SHP_PATH / "usa.zip"
             arcgis_files = []
