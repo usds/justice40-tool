@@ -5,7 +5,8 @@
     @include u-margin-bottom(1);
     @include u-margin-right(1);
     .tag {
-        @include u-bg("gray-cool-10");
+        // @include u-bg("gray-cool-10"); // Standard gray
+        @include u-bg("yellow-20v"); // "new" yellow
         color: black;
         border-radius: 5px;
         @include u-text('bold');
