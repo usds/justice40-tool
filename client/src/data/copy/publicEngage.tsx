@@ -7,6 +7,8 @@ import mar22 from '../../images/eventDates/mar22.svg';
 import mar30 from '../../images/eventDates/mar30.svg';
 import mar31 from '../../images/eventDates/mar31.svg';
 import apr15 from '../../images/eventDates/apr15.svg';
+import may10 from '../../images/eventDates/may10.svg';
+import may19 from '../../images/eventDates/may19.svg';
 import mar9Exp from '../../images/eventDates/mar9-inactive.svg';
 import mar10Exp from '../../images/eventDates/mar10-inactive.svg';
 import mar16Exp from '../../images/eventDates/mar16-inactive.svg';
@@ -14,6 +16,8 @@ import mar22Exp from '../../images/eventDates/mar22-inactive.svg';
 import mar30Exp from '../../images/eventDates/mar30-inactive.svg';
 import mar31Exp from '../../images/eventDates/mar31-inactive.svg';
 import apr15Exp from '../../images/eventDates/apr15-inactive.svg';
+import may10Exp from '../../images/eventDates/may10-inactive.svg';
+import may19Exp from '../../images/eventDates/may19-inactive.svg';
 
 
 export const PAGE_INTRO = defineMessages({
@@ -308,5 +312,39 @@ export const EVENTS = [
     }),
     REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_dLw3xChiTlaOLGdHXQWk0w`,
     DATA_CY: `apr-15-reg-link-block`,
+  },
+  {
+    DATE: new Date(2022, 4, 11),
+    NAME: EVENT_TYPES.LISTENING_SESS.NAME,
+    DESC: EVENT_TYPES.LISTENING_SESS.DESCRIPTION,
+    NUMBER: 3,
+    IMAGE: may10,
+    EXPIRED_IMG: may10Exp,
+    FIELDS: defineMessages({
+      INFO: {
+        id: 'public.eng.page.event.listening.3.info',
+        defaultMessage: `May 10th (4:00 - 5:00 PM EST)`,
+        description: 'Navigate to the the public engagement page, this will be the public engagement page event listening session 3 date',
+      },
+    }),
+    REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_dt0xRNioR8SugY2hrDk1JA`,
+    DATA_CY: `may-10-reg-link-block`,
+  },
+  {
+    DATE: new Date(2022, 4, 20),
+    NAME: EVENT_TYPES.LISTENING_SESS.NAME,
+    DESC: EVENT_TYPES.LISTENING_SESS.DESCRIPTION,
+    NUMBER: 4,
+    IMAGE: may19,
+    EXPIRED_IMG: may19Exp,
+    FIELDS: defineMessages({
+      INFO: {
+        id: 'public.eng.page.event.listening.4.info',
+        defaultMessage: `May 19th (4:00 - 5:00 PM EST)`,
+        description: 'Navigate to the the public engagement page, this will be the public engagement page event listening session 4 date',
+      },
+    }),
+    REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_1PR73vLDQpq1zoAWkhKB5g`,
+    DATA_CY: `may-19-reg-link-block`,
   },
 ];

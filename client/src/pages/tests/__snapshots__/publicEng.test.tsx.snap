@@ -801,6 +801,130 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </p>
               </div>
             </li>
+            <li
+              class="usa-collection__item"
+            >
+              <img
+                alt="Alt text"
+                class="usa-collection__img"
+                src="test-file-stub"
+              />
+              <div
+                class="usa-collection__body"
+              >
+                <h3
+                  class="usa-collection__heading"
+                >
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy="may-10-reg-link-block"
+                    href="https://pitc.zoomgov.com/webinar/register/WN_dt0xRNioR8SugY2hrDk1JA"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    CEJST listening session #3
+                  </a>
+                </h3>
+                <p
+                  class="usa-collection__description"
+                >
+                  
+        CEQ is hosting public listening sessions to seek input and feedback on the beta version of the 
+        tool, including on the datasets it includes and the methodology it uses. This feedback is critical 
+        to the development and enhancement of the tool. This feedback will help CEQ update and refine the 
+        tool to ensure that it reflects the environmental, climate and other challenges that communities 
+        are experiencing.
+      
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <b>
+                    Event info
+                  </b>
+                  : May 10th (4:00 - 5:00 PM EST)
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <a
+                    href="https://pitc.zoomgov.com/webinar/register/WN_dt0xRNioR8SugY2hrDk1JA"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <button
+                      class="usa-button"
+                      data-testid="button"
+                      type="button"
+                    >
+                      Registration link
+                    </button>
+                  </a>
+                </p>
+              </div>
+            </li>
+            <li
+              class="usa-collection__item"
+            >
+              <img
+                alt="Alt text"
+                class="usa-collection__img"
+                src="test-file-stub"
+              />
+              <div
+                class="usa-collection__body"
+              >
+                <h3
+                  class="usa-collection__heading"
+                >
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy="may-19-reg-link-block"
+                    href="https://pitc.zoomgov.com/webinar/register/WN_1PR73vLDQpq1zoAWkhKB5g"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    CEJST listening session #4
+                  </a>
+                </h3>
+                <p
+                  class="usa-collection__description"
+                >
+                  
+        CEQ is hosting public listening sessions to seek input and feedback on the beta version of the 
+        tool, including on the datasets it includes and the methodology it uses. This feedback is critical 
+        to the development and enhancement of the tool. This feedback will help CEQ update and refine the 
+        tool to ensure that it reflects the environmental, climate and other challenges that communities 
+        are experiencing.
+      
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <b>
+                    Event info
+                  </b>
+                  : May 19th (4:00 - 5:00 PM EST)
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <a
+                    href="https://pitc.zoomgov.com/webinar/register/WN_1PR73vLDQpq1zoAWkhKB5g"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <button
+                      class="usa-button"
+                      data-testid="button"
+                      type="button"
+                    >
+                      Registration link
+                    </button>
+                  </a>
+                </p>
+              </div>
+            </li>
           </ul>
         </div>
         <div

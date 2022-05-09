@@ -1395,6 +1395,14 @@
     "defaultMessage": "April 15th (4:00 - 5:00 PM EST)",
     "description": "Navigate to the the public engagement page, this will be the public engagement page event listening session 2 date"
   },
+  "public.eng.page.event.listening.3.info": {
+    "defaultMessage": "May 10th (4:00 - 5:00 PM EST)",
+    "description": "Navigate to the the public engagement page, this will be the public engagement page event listening session 3 date"
+  },
+  "public.eng.page.event.listening.4.info": {
+    "defaultMessage": "May 19th (4:00 - 5:00 PM EST)",
+    "description": "Navigate to the the public engagement page, this will be the public engagement page event listening session 4 date"
+  },
   "public.eng.page.event.listening.sess.description": {
     "defaultMessage": "CEQ is hosting public listening sessions to seek input and feedback on the beta version of the tool, including on the datasets it includes and the methodology it uses. This feedback is critical to the development and enhancement of the tool. This feedback will help CEQ update and refine the tool to ensure that it reflects the environmental, climate and other challenges that communities are experiencing.",
     "description": "Navigate to the the public engagement page, this will be the public engagement page event listening session description"
