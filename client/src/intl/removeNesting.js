@@ -1,5 +1,5 @@
 const fs = require('fs');
-const englishJson = require('./es_4.12.22-translated-final.json');
+const englishJson = require('./es_5.4.22-translated-final.json');
 
 // placeholder for fixed es json file
 const fixedEs = {};
