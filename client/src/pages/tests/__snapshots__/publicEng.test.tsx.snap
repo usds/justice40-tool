@@ -842,7 +842,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <b>
                     Event info
                   </b>
-                  : May 10th (4:00 - 5:00 PM EST)
+                  : May 10th (4:00 PM EST)
                 </p>
                 <p
                   class="usa-collection__description"
@@ -904,7 +904,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <b>
                     Event info
                   </b>
-                  : May 19th (4:00 - 5:00 PM EST)
+                  : May 19th (4:00 PM EST)
                 </p>
                 <p
                   class="usa-collection__description"

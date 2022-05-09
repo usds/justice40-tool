@@ -323,7 +323,7 @@ export const EVENTS = [
     FIELDS: defineMessages({
       INFO: {
         id: 'public.eng.page.event.listening.3.info',
-        defaultMessage: `May 10th (4:00 - 5:00 PM EST)`,
+        defaultMessage: `May 10th (4:00 PM EST)`,
         description: 'Navigate to the the public engagement page, this will be the public engagement page event listening session 3 date',
       },
     }),
@@ -340,7 +340,7 @@ export const EVENTS = [
     FIELDS: defineMessages({
       INFO: {
         id: 'public.eng.page.event.listening.4.info',
-        defaultMessage: `May 19th (4:00 - 5:00 PM EST)`,
+        defaultMessage: `May 19th (4:00 PM EST)`,
         description: 'Navigate to the the public engagement page, this will be the public engagement page event listening session 4 date',
       },
     }),
