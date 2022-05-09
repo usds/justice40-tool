@@ -15,7 +15,7 @@ interface IDatasetCardProps {
  * @param {IDatasetCardProps}
  * @return {JSX.Element}
  */
-const DatasetCard = ({datasetCardProps}:IDatasetCardProps) => {
+const DatasetCard = ({datasetCardProps}: IDatasetCardProps) => {
   const intl = useIntl();
 
   return (
@@ -67,7 +67,7 @@ const DatasetCard = ({datasetCardProps}:IDatasetCardProps) => {
               <span className={styles.datasetCardLabels}>
                 {intl.formatMessage(METHODOLOGY_COPY.DATASET_CARD_LABELS.AVAILABLE_FOR)}
               </span>
-              {dataSource.availableFor}
+              {intl.formatMessage(dataSource.availableFor)}
             </li>
           </React.Fragment>
         ))}

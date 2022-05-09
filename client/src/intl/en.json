@@ -1067,6 +1067,18 @@
     "defaultMessage": "Median income of the census tract calculated as a percent of the area’s median income.",
     "description": "Navigate to the Methodology page. This is the description text for workforce dev"
   },
+  "methodology.page.dataset.card.availableFor.AS_NMI": {
+    "defaultMessage": "American Samoa and the Northern Mariana Islands",
+    "description": "Methodoloy page dataset card available for American Samoa and Northern Mariana Islands type"
+  },
+  "methodology.page.dataset.card.availableFor.US_DC": {
+    "defaultMessage": "All U.S. states and the District of Columbia",
+    "description": "Methodoloy page dataset card available for US and DC type"
+  },
+  "methodology.page.dataset.card.availableFor.US_DC_PR": {
+    "defaultMessage": "All U.S. states, the District of Columbia, and Puerto Rico",
+    "description": "Methodoloy page dataset card available for US, DC and Puerto Rico type"
+  },
   "methodology.page.dataset.indicator.asthma.title.text": {
     "defaultMessage": "Asthma",
     "description": "Navigate to the Methodology page. This is the title text for the asthma dataset"
