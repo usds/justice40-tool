@@ -255,6 +255,10 @@
     "defaultMessage": "Help improve the site & data",
     "description": "Navigate to the contact page, this is the text for floating action button"
   },
+  "contact.page.general": {
+    "defaultMessage": "For general feedback, email {general_email_address}.",
+    "description": "Contact page body text"
+  },
   "contact.page.header.text": {
     "defaultMessage": "Contact",
     "description": "Navigate to the contact page, this is the contact page header text"

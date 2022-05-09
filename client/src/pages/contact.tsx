@@ -36,18 +36,18 @@ const ContactPage = ({location}: IContactPageProps) => {
             </h2>
             <p>
               <FormattedMessage
-                id={CONTACT_COPY.CONTACT_VIA_EMAIL.ID}
-                description={CONTACT_COPY.CONTACT_VIA_EMAIL.DESCRIPTION}
-                defaultMessage={CONTACT_COPY.CONTACT_VIA_EMAIL.DEFAULT_MESSAGE}
+                id={'contact.page.general'}
+                description={'Contact page body text'}
+                defaultMessage={`For general feedback, email {general_email_address}.`}
                 values={{
                   general_email_address:
-                <LinkTypeWrapper
-                  linkText= {COMMON_COPY.FEEDBACK_EMAIL}
-                  internal= {false}
-                  url= {`mailto:${COMMON_COPY.FEEDBACK_EMAIL}`}
-                  openUrlNewTab= {true}
-                />,
-                }}/>
+                    <LinkTypeWrapper
+                      linkText={COMMON_COPY.FEEDBACK_EMAIL}
+                      internal={false}
+                      url={`mailto:${COMMON_COPY.FEEDBACK_EMAIL}`}
+                      openUrlNewTab={true}
+                    />,
+                }} />
             </p>
             <h3>{CONTACT_COPY.CENSUS_TRACT_FEEDBACK.TITLE}</h3>
             <p>{CONTACT_COPY.CENSUS_TRACT_FEEDBACK.PARAGRAPH1}</p>
