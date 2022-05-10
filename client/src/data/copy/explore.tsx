@@ -166,21 +166,21 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   PARA1: {
     id: 'explore.map.page.side.panel.info.para1',
     defaultMessage: `
-      This map identifies communities that are marginalized, underserved, and overburdened by pollution. These communities are located in census tracts that are at or above the thresholds in one or more of eight categories of criteria.
+      This tool identifies communities that are marginalized, underserved, and overburdened by pollution. These communities are located in census tracts that are at or above the thresholds in one or more of eight categories of criteria.
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the first paragraph of this side panel`,
   },
   PARA2: {
     id: 'explore.map.page.side.panel.info.para2',
     defaultMessage: `
-      The map uses census tracts that represent about 4,000 people, which is the smallest unit of geography for which consistent data can be displayed on the map.
+      The tool uses census tracts that represent about 4,000 people, which is the smallest unit of geography for which consistent data can be displayed on the map.
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the second paragraph of this side panel`,
   },
   PARA3: {
     id: 'explore.map.page.side.panel.info.para3',
     defaultMessage: `
-      The map ranks each census tract using percentiles that show how much burden each tract experiences relative to all other tracts, for each criteria.
+      The tool ranks each census tract using percentiles that show how much burden each tract experiences relative to all other tracts, for each criteria.
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the third paragraph of this side panel`,
   },

@@ -24,6 +24,7 @@
     "about.page.title.text": "Información básica",
     "common.pages.alerts.additional_docs_available.description": "Descargue un nuevo documento de apoyo técnico y otra documentación, y <link2>envíe sus comentarios</link2>.",
     "common.pages.alerts.additional_docs_available.title": "Ya hay más documentación disponible",
+    "common.pages.alerts.census.tract.title": "Mejoras a la herramienta en la página Explorar el mapa",
     "common.pages.alerts.public_comment_period.description": "El período para que el público <link1>envíe comentarios</link1> se extendió hasta {expDate1}. ",
     "common.pages.alerts.public_comment_period.title": "Se extendió el período de comentarios del público",
     "common.pages.banner.beta.info": "Es una versión preliminar inconclusa de la herramienta con conjuntos de datos limitados que se actualizarán en forma continua.",
@@ -61,6 +62,7 @@
     "contact.page.census.tract.feedback.para2": "Si existen indicadores de datos específicos que podrían mejorarse o cambiarse, incluya esa información en el cuerpo del correo electrónico.",
     "contact.page.census.tract.feedback.para3": "Además, puede proporcionar comentarios en la herramienta mediante este <link1>enlace</link1>.",
     "contact.page.census.tract.feedback.title": "Comentarios sobre los grupos de bloques del censo",
+    "contact.page.fab.survey.link": "https://www.surveymonkey.com/r/cejst-survey-es",
     "contact.page.fab.survey.text": "Ayude a mejorar el sitio web y los datos",
     "contact.page.general": "Para comentarios generales, envíe un correo eléctronico a {general_email_address}.",
     "contact.page.header.text": "Contacto",
@@ -219,7 +221,7 @@
     "indicator.categories.health.burdens.title": "Cargas sanitarias",
     "indicator.categories.legacy.pollution.title": "Reducción y solución de la contaminación heredada",
     "indicator.categories.work.dev.title": "Capacitación y desarrollo de la fuerza laboral",
-    "map.territoryFocus.focusOn": "Enfoque en {territorio}",
+    "map.territoryFocus.focusOn": "Enfoque en {territory}",
     "methodology.page.categories.title": "Las comunidades están identificadas como desfavorecidas por la versión actual de la herramienta para los fines de la Iniciativa Justice40 si se encuentran en grupos de bloques del censo que estén en el umbral o por encima del umbral de una o más de las ocho categorías de criterios a continuación.",
     "methodology.page.category.and.clause.hs.ed.higher.ed": "<boldtag>Y</boldtag> 10% o más de los adultos con 25 años cumplidos no han obtenido <link1>un grado de escuela preparatoria o secundaria</link1> Y 80% o más de las personas con 15 años cumplidos no están inscritas en un programa de <link2>educación superior</link2>",
     "methodology.page.category.and.clause.low.inc.hs.ed": "<boldtag>Y</boldtag> está por encima del percentil de 65 para <link1>bajos ingresos</link1> Y 80% o más de las personas con 15 años cumplidos no están inscritas en un programa de <link2>educación superior</link2>",
@@ -375,8 +377,4 @@
     "public.eng.page.whejac.meeting.day.2.info": "31 de marzo (3:00 - 7:00 PM EST)",
     "technical.support.doc.page.coming.soon.text": "¡Próximamente!",
     "technical.support.doc.page.title.text": "Documento de apoyo técnico"
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 83688d6e (Commit latest es.json with local changes)

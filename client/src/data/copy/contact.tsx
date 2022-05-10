@@ -35,7 +35,7 @@ export const PAGE_INTRO = defineMessages({
   SURVEY_URL: {
     id: 'contact.page.fab.survey.link',
     defaultMessage: 'https://www.surveymonkey.com/r/cejst-survey',
-    description: 'Localized link to the survey. Spanish link is https://www.surveymonkey.com/r/cejst-survey-es',
+    description: 'The footer sticky link that links to the CEJST survey',
   },
 });
 
