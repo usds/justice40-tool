@@ -1,6 +1,6 @@
 # Justice40 Datasets
 
-This page contains web links to the datasets that are uploaded as part of our data pipeline, if you want to access them directly. Note that this is just a quick reference and the [Data Pipeline README](/data/data-pipeline/README.md) has the comprehensive documentation on all these datasets.
+This page contains web links to the datasets that are uploaded as part of our data pipeline if you want to access them directly. Note that this is just a quick reference and the [Data Pipeline README](/data/data-pipeline/README.md) has comprehensive documentation on all these datasets.
 
 > Note: These currently aren't updated on any specific cadence, so be aware of this if you know that the dataset you are using might change frequently.
 
