@@ -395,11 +395,11 @@ export const CATEGORIES = {
     METHODOLOGY: <FormattedMessage
       id={'methodology.page.indicator.categories.clean.water.methodology'}
       defaultMessage={`Critical clean water and wastewater infrastructure category`}
-      description={`Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Critical clean water and wasterwater infrastructure methodology`}
+      description={`Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Critical clean water and wastewater infrastructure methodology`}
     />,
     TITLE: <FormattedMessage
       id={'indicator.categories.clean.water.title'}
-      defaultMessage={'Critical clean water and wasterwater infrastructure'}
+      defaultMessage={'Critical clean water and wastewater infrastructure'}
       description={'Navigate to the methodology page. Navigate to the category section. This will set the category title'}
 
     />,

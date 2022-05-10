@@ -868,7 +868,7 @@
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the category title"
   },
   "indicator.categories.clean.water.title": {
-    "defaultMessage": "Critical clean water and wasterwater infrastructure",
+    "defaultMessage": "Critical clean water and wastewater infrastructure",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the category title"
   },
   "indicator.categories.health.burdens.title": {
@@ -1309,7 +1309,7 @@
   },
   "methodology.page.indicator.categories.clean.water.methodology": {
     "defaultMessage": "Critical clean water and wastewater infrastructure category",
-    "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Critical clean water and wasterwater infrastructure methodology"
+    "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Critical clean water and wastewater infrastructure methodology"
   },
   "methodology.page.indicator.categories.climate.change.if": {
     "defaultMessage": "<boldtag>IF</boldtag> at or above the 90th percentile for <link1>expected agriculture loss rate</link1> OR <link2>expected building loss rate</link2> OR <link3>expected population loss rate</link3>",
