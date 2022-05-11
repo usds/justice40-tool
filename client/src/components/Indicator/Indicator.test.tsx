@@ -93,7 +93,6 @@ describe('test rendering of Indicator value sub-text', () => {
         </LocalizedComponent>,
     );
     expect(asFragment()).toMatchSnapshot();
-    console.log(asFragment());
   });
   it('renders the "below 90 percentile"', () => {
     const {asFragment} = render(

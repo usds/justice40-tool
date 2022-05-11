@@ -92,7 +92,7 @@
     "description": "Navigate to the About page. This is the about page title text"
   },
   "common.pages.alerts.additional_docs_available.description": {
-    "defaultMessage": "Download new technical support and other documentation and <link2>send feedback</link2>.",
+    "defaultMessage": "Download new <link1>technical support</link1> and other documentation and <link2>send feedback</link2>.",
     "description": "Alert title that appears at the top of pages."
   },
   "common.pages.alerts.census.tract.title": {
@@ -230,6 +230,10 @@
   "common.pages.header.tsd": {
     "defaultMessage": "Technical Support Document",
     "description": "Navigate to the about page. This is Header navigate item to the technical support document page"
+  },
+  "common.pages.tsd.url": {
+    "defaultMessage": "https://static-data-screeningtool.geoplatform.gov/data-pipeline/data/score/downloadable/cejst_technical_support_document.pdf",
+    "description": "Navigate to the Alerts on any page. This will be the link to the techinical support document."
   },
   "contact.page.census.tract.feedback.para1": {
     "defaultMessage": "To provide feedback about a specific census tract, either select the send feedback button after selecting a census tract on the <link1>Explore the map</link1> page or use the email address provided above. Please include the census tract ID, county, and state or territory information, in addition to your feedback.",

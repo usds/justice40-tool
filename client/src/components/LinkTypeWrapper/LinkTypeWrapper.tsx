@@ -1,11 +1,13 @@
 import React from 'react';
-import {Link} from 'gatsby-plugin-intl';
+import {Link, useIntl} from 'gatsby-plugin-intl';
 import {Link as TrussLink} from '@trussworks/react-uswds';
+
+import {IDefineMessage} from '../../data/copy/common';
 
 interface ILinkTypeWrapper {
     linkText?: string;
     internal?: boolean;
-    url?: string;
+    url: string | IDefineMessage;
     openUrlNewTab?: boolean;
     className?: string;
     dataCy?: string;
@@ -29,9 +31,16 @@ interface ILinkTypeWrapper {
  * @returns
  */
 const LinkTypeWrapper = (props:ILinkTypeWrapper) => {
+  const intl = useIntl();
+  let {url} = props;
+
+  if (url && typeof url !== `string`) {
+    url = intl.formatMessage(url);
+  }
+
   if (props.internal) {
     return (
-      <Link to={`${props.url}`}
+      <Link to={`${url}`}
         className={props.className}
       >
         {props.linkText}
@@ -42,7 +51,7 @@ const LinkTypeWrapper = (props:ILinkTypeWrapper) => {
     <TrussLink
       variant={'external'}
       className={props.className}
-      href={`${props.url}`}
+      href={`${url}`}
       target="_blank"
       rel="noreferrer"
       data-cy={props.dataCy ? props.dataCy : ''}
@@ -51,7 +60,7 @@ const LinkTypeWrapper = (props:ILinkTypeWrapper) => {
     </TrussLink> :
     <a
       className={props.className}
-      href={props.url}
+      href={url}
       data-cy={props.dataCy? props.dataCy : ''}
     >
       {props.linkText}
