@@ -4,7 +4,7 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
 <DocumentFragment>
   <div>
     <h2>
-      How you can help improve the tool
+      How you can help improve the map
     </h2>
     <ul>
       <li>
@@ -17,7 +17,7 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
          page and send feedback.
       </li>
       <li>
-        Use the tool to find communities and 
+        Use the map to find communities and 
         <a
           class="usa-link usa-link--external"
           data-cy=""

@@ -1,8 +1,8 @@
 /* eslint-disable quotes */
 // External Libs:
 import React from 'react';
-import { useIntl } from 'gatsby-plugin-intl';
-import { Accordion, Button } from '@trussworks/react-uswds';
+import {useIntl} from 'gatsby-plugin-intl';
+import {Accordion, Button} from '@trussworks/react-uswds';
 
 // Components:
 import Category from '../Category';
@@ -41,7 +41,7 @@ export interface indicatorInfo {
   threshold?: number,
 }
 
-const AreaDetail = ({ properties, hash }: IAreaDetailProps) => {
+const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
   const intl = useIntl();
 
   // console.log the properties of the census that is selected:
@@ -72,44 +72,44 @@ const AreaDetail = ({ properties, hash }: IAreaDetailProps) => {
     if (sidePanelState === constants.SIDE_PANEL_STATE_VALUES.ISLAND_AREAS) {
       if (indicatorName === 'lowMedInc') {
         return properties.hasOwnProperty(constants
-          .ISLAND_AREAS_LOW_MEDIAN_INCOME_LOW_HS_EDU_PERCENTILE_FIELD) ?
+            .ISLAND_AREAS_LOW_MEDIAN_INCOME_LOW_HS_EDU_PERCENTILE_FIELD) ?
           properties[constants.ISLAND_AREAS_LOW_MEDIAN_INCOME_LOW_HS_EDU_PERCENTILE_FIELD] : null;
       }
       if (indicatorName === 'unemploy') {
         return properties.hasOwnProperty(constants
-          .ISLAND_AREAS_UNEMPLOYMENT_LOW_HS_EDU_PERCENTILE_FIELD) ?
+            .ISLAND_AREAS_UNEMPLOYMENT_LOW_HS_EDU_PERCENTILE_FIELD) ?
           properties[constants.ISLAND_AREAS_UNEMPLOYMENT_LOW_HS_EDU_PERCENTILE_FIELD] : null;
       }
       if (indicatorName === 'poverty') {
         return properties.hasOwnProperty(constants
-          .ISLAND_AREAS_POVERTY_LOW_HS_EDU_PERCENTILE_FIELD) ?
+            .ISLAND_AREAS_POVERTY_LOW_HS_EDU_PERCENTILE_FIELD) ?
           properties[constants.ISLAND_AREAS_POVERTY_LOW_HS_EDU_PERCENTILE_FIELD] : null;
       }
       if (indicatorName === 'highSchool') {
         return properties.hasOwnProperty(constants
-          .ISLAND_AREAS_HS_EDU_PERCENTAGE_FIELD) ?
+            .ISLAND_AREAS_HS_EDU_PERCENTAGE_FIELD) ?
           properties[constants.ISLAND_AREAS_HS_EDU_PERCENTAGE_FIELD] : null;
       }
     }
 
     if (indicatorName === 'lowMedInc') {
       return properties.hasOwnProperty(constants
-        .LOW_MEDIAN_INCOME_PERCENTILE) ?
+          .LOW_MEDIAN_INCOME_PERCENTILE) ?
         properties[constants.LOW_MEDIAN_INCOME_PERCENTILE] : null;
     }
     if (indicatorName === 'unemploy') {
       return properties.hasOwnProperty(constants
-        .UNEMPLOYMENT_PROPERTY_PERCENTILE) ?
+          .UNEMPLOYMENT_PROPERTY_PERCENTILE) ?
         properties[constants.UNEMPLOYMENT_PROPERTY_PERCENTILE] : null;
     }
     if (indicatorName === 'poverty') {
       return properties.hasOwnProperty(constants
-        .POVERTY_BELOW_100_PERCENTILE) ?
+          .POVERTY_BELOW_100_PERCENTILE) ?
         properties[constants.POVERTY_BELOW_100_PERCENTILE] : null;
     }
     if (indicatorName === 'highSchool') {
       return properties.hasOwnProperty(constants
-        .HIGH_SCHOOL_PROPERTY_PERCENTILE) ?
+          .HIGH_SCHOOL_PROPERTY_PERCENTILE) ?
         properties[constants.HIGH_SCHOOL_PROPERTY_PERCENTILE] : null;
     }
   };
@@ -124,44 +124,44 @@ const AreaDetail = ({ properties, hash }: IAreaDetailProps) => {
     if (sidePanelState === constants.SIDE_PANEL_STATE_VALUES.ISLAND_AREAS) {
       if (indicatorName === 'lowMedInc') {
         return properties.hasOwnProperty(constants
-          .IS_EXCEEDS_THRESH_FOR_ISLAND_AREA_LOW_MEDIAN_INCOME) ?
+            .IS_EXCEEDS_THRESH_FOR_ISLAND_AREA_LOW_MEDIAN_INCOME) ?
           properties[constants.IS_EXCEEDS_THRESH_FOR_ISLAND_AREA_LOW_MEDIAN_INCOME] : null;
       }
       if (indicatorName === 'unemploy') {
         return properties.hasOwnProperty(constants
-          .IS_EXCEEDS_THRESH_FOR_ISLAND_AREA_UNEMPLOYMENT) ?
+            .IS_EXCEEDS_THRESH_FOR_ISLAND_AREA_UNEMPLOYMENT) ?
           properties[constants.IS_EXCEEDS_THRESH_FOR_ISLAND_AREA_UNEMPLOYMENT] : null;
       }
       if (indicatorName === 'poverty') {
         return properties.hasOwnProperty(constants
-          .IS_EXCEEDS_THRESH_FOR_ISLAND_AREA_BELOW_100_POVERTY) ?
+            .IS_EXCEEDS_THRESH_FOR_ISLAND_AREA_BELOW_100_POVERTY) ?
           properties[constants.IS_EXCEEDS_THRESH_FOR_ISLAND_AREA_BELOW_100_POVERTY] : null;
       }
       if (indicatorName === 'highSchool') {
         return properties.hasOwnProperty(constants
-          .ISLAND_AREA_LOW_HS_EDU) ?
+            .ISLAND_AREA_LOW_HS_EDU) ?
           properties[constants.ISLAND_AREA_LOW_HS_EDU] : null;
       }
     }
 
     if (indicatorName === 'lowMedInc') {
       return properties.hasOwnProperty(constants
-        .IS_EXCEEDS_THRESH_FOR_LOW_MEDIAN_INCOME) ?
+          .IS_EXCEEDS_THRESH_FOR_LOW_MEDIAN_INCOME) ?
         properties[constants.IS_EXCEEDS_THRESH_FOR_LOW_MEDIAN_INCOME] : null;
     }
     if (indicatorName === 'unemploy') {
       return properties.hasOwnProperty(constants
-        .IS_EXCEEDS_THRESH_FOR_UNEMPLOYMENT) ?
+          .IS_EXCEEDS_THRESH_FOR_UNEMPLOYMENT) ?
         properties[constants.IS_EXCEEDS_THRESH_FOR_UNEMPLOYMENT] : null;
     }
     if (indicatorName === 'poverty') {
       return properties.hasOwnProperty(constants
-        .IS_EXCEEDS_THRESH_FOR_BELOW_100_POVERTY) ?
+          .IS_EXCEEDS_THRESH_FOR_BELOW_100_POVERTY) ?
         properties[constants.IS_EXCEEDS_THRESH_FOR_BELOW_100_POVERTY] : null;
     }
     if (indicatorName === 'highSchool') {
       return properties.hasOwnProperty(constants
-        .IS_LOW_HS_EDUCATION_LOW_HIGHER_ED_PRIORITIZED) &&
+          .IS_LOW_HS_EDUCATION_LOW_HIGHER_ED_PRIORITIZED) &&
         properties[constants.IS_LOW_HS_EDUCATION_LOW_HIGHER_ED_PRIORITIZED] == 1 ?
         true : false;
     }

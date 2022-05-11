@@ -15,7 +15,7 @@ const SurveyButton = () => {
 
   return (
     <J40MainGridContainer className={styles.surveyButtonContainer}>
-      <a href={href}>
+      <a href={href} target='_blank' rel="noreferrer">
         <Button
           type="button"
           className={styles.surveyButton}>

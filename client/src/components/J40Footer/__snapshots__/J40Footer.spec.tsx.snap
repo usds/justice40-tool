@@ -222,6 +222,8 @@ exports[`J40Footer renders correctly 1`] = `
     >
       <a
         href="https://www.surveymonkey.com/r/cejst-survey"
+        rel="noreferrer"
+        target="_blank"
       >
         <button
           class="usa-button"

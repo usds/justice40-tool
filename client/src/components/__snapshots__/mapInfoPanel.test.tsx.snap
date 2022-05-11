@@ -31,7 +31,7 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
         tabindex="0"
       >
         
-      The tool uses census tracts that represent about 4,000 people, which is the smallest unit of geography for which consistent data can be displayed on the tool.
+      The tool uses census tracts that represent about 4,000 people, which is the smallest unit of geography for which consistent data can be displayed on the map.
     
       </p>
       <img

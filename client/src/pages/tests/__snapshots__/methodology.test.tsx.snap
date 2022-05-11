@@ -238,10 +238,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 class="usa-nav__primary-item"
               >
                 <a
-                  data-cy="nav-link-explore-the-tool"
+                  data-cy="nav-link-explore-the-map"
                   href="/en/"
                 >
-                  Explore the tool
+                  Explore the map
                 </a>
               </li>
               <li
@@ -315,7 +315,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <h4
             class="usa-alert__heading"
           >
-            Additional documentation now available
+            Improvements to the tool on the Explore the map page
           </h4>
           <p
             class="usa-alert__text"
@@ -924,7 +924,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       </div>
       <div>
         <h3>
-          Critical clean water and wasterwater infrastructure
+          Critical clean water and wastewater infrastructure
         </h3>
         <p>
           
@@ -2703,6 +2703,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
     >
       <a
         href="https://www.surveymonkey.com/r/cejst-survey"
+        rel="noreferrer"
+        target="_blank"
       >
         <button
           class="usa-button"

@@ -17,7 +17,7 @@ Feature: All links on About page are functional
     Given I am on the "About" page
     When I look for the "Community members" CTA
     And I click on the "Community members" "internal" link
-    Then I see "Explore the tool" in the title
+    Then I see "Explore the map" in the title
 
   Scenario: People can find how to Send feedback
     Given I am on the "About" page

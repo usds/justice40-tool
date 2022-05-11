@@ -35,7 +35,7 @@ export const PAGE_INTRO = defineMessages({
   SURVEY_URL: {
     id: 'contact.page.fab.survey.link',
     defaultMessage: 'https://www.surveymonkey.com/r/cejst-survey',
-    description: 'Localized link to the survey. Spanish link is https://www.surveymonkey.com/r/cejst-survey-es',
+    description: 'The footer sticky link that links to the CEJST survey',
   },
 });
 
@@ -66,7 +66,7 @@ export const CENSUS_TRACT_FEEDBACK = {
     id={'contact.page.census.tract.feedback.para1'}
     defaultMessage={`
       To provide feedback about a specific census tract, either select the send feedback button after
-      selecting a census tract on the <link1>Explore the tool</link1> page or use the email address provided above. Please include the census tract ID, county, and state or territory information, in addition to your feedback.
+      selecting a census tract on the <link1>Explore the map</link1> page or use the email address provided above. Please include the census tract ID, county, and state or territory information, in addition to your feedback.
     `}
     description={'Navigate to the contact page, this is the census tract feedback section'}
     values={{
