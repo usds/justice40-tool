@@ -109,7 +109,7 @@ jobs:
           # Deploy to S3 for the staging URL
           message: |
             ** Map Deployed! **   
-            Map with Staging Backend: https://screeningtool.geoplatform.gov/en/cejst/?flags=stage_hash=${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}
+            Map with Staging Backend: https://screeningtool.geoplatform.gov/en/?flags=stage_hash=${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}
             Find tiles here: https://justice40-data.s3.amazonaws.com/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/tiles
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: "github-actions[bot]"
