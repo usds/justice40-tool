@@ -18,7 +18,7 @@
         @include u-margin-top(3);
         margin-left: auto;
         margin-right: auto;
-
+        width: 14rem;
         
         &:hover {
           @include u-bg("yellow-20");

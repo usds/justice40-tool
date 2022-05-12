@@ -79,15 +79,25 @@ export const PUBLIC_ENG_VIDEO = defineMessages({
     defaultMessage: `Watch a recorded version of the CEJST training on YouTube.`,
     description: 'Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box body text.',
   },
-  BUTTON_TEXT: {
-    id: 'public.eng.page.video.box.button.text',
+  BUTTON1_TEXT: {
+    id: 'public.eng.page.video.box.button1.text',
     defaultMessage: `Watch on YouTube`,
     description: 'Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box button text.',
   },
-  IMG_ALT_TEXT: {
-    id: 'public.eng.page.video.box.button.img.alt.text',
+  IMG_ALT_TEXT1: {
+    id: 'public.eng.page.video.box.button.img.alt.text1',
     defaultMessage: `the icon to show that this button will open in a new tab`,
     description: 'Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is alt tag of the image in the button.',
+  },
+  BUTTON2_TEXT: {
+    id: 'public.eng.page.video.box.button2.text',
+    defaultMessage: `Download slide deck`,
+    description: 'Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is the button text for the second button.',
+  },
+  IMG_ALT_TEXT2: {
+    id: 'public.eng.page.video.box.button.img.alt.text2',
+    defaultMessage: `the icon to show that this button will download the file`,
+    description: 'Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is alt tag of the image in the 2nd button.',
   },
 });
 
