@@ -200,6 +200,7 @@ export const EVENT_FIELDS = defineMessages({
 });
 
 // All events dates are set one day ahead of actual date to account for timezone differences
+// Note: all events in this events in this array must be in chronological order starting with the oldest event.
 export const EVENTS = [
   {
     DATE: new Date(2022, 2, 10),
