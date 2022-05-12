@@ -1,4 +1,5 @@
 from typing import Tuple
+from attr import field
 import numpy as np
 import pandas as pd
 
@@ -308,10 +309,21 @@ class ScoreNarwhal(Score):
         # poverty level and has a low percent of higher ed students.
         # Source: Census's American Community Survey
 
+        ## Additionally, we look to see if HISTORIC_REDLINING_SCORE_EXCEEDED is True and the tract is also low income
+
         housing_eligibility_columns = [
             field_names.LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD,
             field_names.HOUSING_BURDEN_LOW_INCOME_FIELD,
+            field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD,
         ]
+
+        # design question -- should read in scalar with threshold here instead?
+        self.df[
+            field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD
+        ] = (
+            self.df[field_names.HISTORIC_REDLINING_SCORE_EXCEEDED]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
+        )
 
         self.df[field_names.LEAD_PAINT_PROXY_PCTILE_THRESHOLD] = (
             self.df[
@@ -804,5 +816,8 @@ class ScoreNarwhal(Score):
         ]
         self.df[field_names.CATEGORY_COUNT] = self.df[factors].sum(axis=1)
         self.df[field_names.SCORE_N_COMMUNITIES] = self.df[factors].any(axis=1)
+        self.df[
+            field_names.SCORE_N_COMMUNITIES + field_names.PERCENTILE_FIELD_SUFFIX
+        ] = self.df[field_names.SCORE_N_COMMUNITIES].astype(int)
 
         return self.df

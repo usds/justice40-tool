@@ -114,6 +114,11 @@ DATASET_LIST = [
         "module_dir": "maryland_ejscreen",
         "class_name": "MarylandEJScreenETL",
     },
+    {
+        "name": "historic_redlining",
+        "module_dir": "historic_redlining",
+        "class_name": "HistoricRedliningETL",
+    },
     # This has to come after us.json exists
     {
         "name": "census_acs",
