@@ -205,7 +205,8 @@ TILES_SCORE_COLUMNS = {
     field_names.M_HEALTH: "M_HLTH",
     # temporarily update this so that it's the Narwhal score that gets visualized on the map
     field_names.SCORE_N_COMMUNITIES: "SM_C",
-    field_names.SCORE_M + field_names.PERCENTILE_FIELD_SUFFIX: "SM_PFS",
+    field_names.SCORE_N_COMMUNITIES
+    + field_names.PERCENTILE_FIELD_SUFFIX: "SM_PFS",
     field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD: "EPLRLI",
     field_names.EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD: "EALRLI",
     field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD: "EBLRLI",
