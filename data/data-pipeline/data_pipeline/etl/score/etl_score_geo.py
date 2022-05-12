@@ -46,10 +46,11 @@ class GeoScoreETL(ExtractTransformLoad):
             self.DATA_PATH / "census" / "geojson" / "us.json"
         )
 
-        # Import the shortened name for Score M percentile ("SM_PFS") that's used on the
+        # Import the shortened name for Score N percentile ("SM_PFS") that's used on the
         # tiles.
+        ## TEMPORARY update
         self.TARGET_SCORE_SHORT_FIELD = constants.TILES_SCORE_COLUMNS[
-            field_names.SCORE_M + field_names.PERCENTILE_FIELD_SUFFIX
+            field_names.SCORE_N + field_names.PERCENTILE_FIELD_SUFFIX
         ]
         self.TARGET_SCORE_RENAME_TO = "M_SCORE"
 
@@ -284,21 +285,28 @@ class GeoScoreETL(ExtractTransformLoad):
 
         def create_esri_codebook(codebook):
             """temporary: helper to make a codebook for esri shapefile only"""
+<<<<<<< HEAD
 
             shapefile_column_field = "shapefile_column"
             internal_column_name_field = "column_name"
             column_description_field = "column_description"
 
+=======
+>>>>>>> 8c255f0e (Adding HOLC indicator (#1579))
             logger.info("Creating a codebook that uses the csv names")
             codebook = (
                 pd.Series(codebook)
                 .reset_index()
                 .rename(
                     # kept as strings because no downstream impacts
+<<<<<<< HEAD
                     columns={
                         0: internal_column_name_field,
                         "index": shapefile_column_field,
                     }
+=======
+                    columns={0: "column_name", "index": "shapefile_column"}
+>>>>>>> 8c255f0e (Adding HOLC indicator (#1579))
                 )
             )
 
@@ -374,7 +382,7 @@ class GeoScoreETL(ExtractTransformLoad):
                 for task in [
                     write_high_to_file,
                     write_low_to_file,
-                    write_esri_shapefile,
+                    # write_esri_shapefile,
                 ]
             }
 

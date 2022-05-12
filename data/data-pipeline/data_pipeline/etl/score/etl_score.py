@@ -1,5 +1,6 @@
 import functools
 from collections import namedtuple
+from attr import field
 
 import numpy as np
 import pandas as pd
@@ -36,6 +37,7 @@ class ScoreETL(ExtractTransformLoad):
         self.census_decennial_df: pd.DataFrame
         self.census_2010_df: pd.DataFrame
         self.child_opportunity_index_df: pd.DataFrame
+        self.hrs_df: pd.DataFrame
 
     def extract(self) -> None:
         logger.info("Loading data sets from disk.")
@@ -168,6 +170,17 @@ class ScoreETL(ExtractTransformLoad):
         )
         self.child_opportunity_index_df = pd.read_csv(
             child_opportunity_index_csv,
+            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
+            low_memory=False,
+        )
+
+        # Load HRS data
+        hrs_csv = (
+            constants.DATA_PATH / "dataset" / "historic_redlining" / "usa.csv"
+        )
+
+        self.hrs_df = pd.read_csv(
+            hrs_csv,
             dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
             low_memory=False,
         )
@@ -376,6 +389,7 @@ class ScoreETL(ExtractTransformLoad):
             self.census_decennial_df,
             self.census_2010_df,
             self.child_opportunity_index_df,
+            self.hrs_df,
         ]
 
         # Sanity check each data frame before merging.
@@ -405,7 +419,6 @@ class ScoreETL(ExtractTransformLoad):
             df[field_names.MEDIAN_INCOME_FIELD] / df[field_names.AMI_FIELD]
         )
 
-        # QQ: why don't we just filter to the numeric columns by type?
         numeric_columns = [
             field_names.HOUSING_BURDEN_FIELD,
             field_names.TOTAL_POP_FIELD,
@@ -465,6 +478,7 @@ class ScoreETL(ExtractTransformLoad):
         non_numeric_columns = [
             self.GEOID_TRACT_FIELD_NAME,
             field_names.PERSISTENT_POVERTY_FIELD,
+            field_names.HISTORIC_REDLINING_SCORE_EXCEEDED,
         ]
 
         # For some columns, high values are "good", so we want to reverse the percentile
