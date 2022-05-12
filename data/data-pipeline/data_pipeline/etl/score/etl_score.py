@@ -1,5 +1,6 @@
 import functools
 from collections import namedtuple
+from attr import field
 
 import numpy as np
 import pandas as pd
@@ -363,7 +364,6 @@ class ScoreETL(ExtractTransformLoad):
             df[field_names.MEDIAN_INCOME_FIELD] / df[field_names.AMI_FIELD]
         )
 
-        # QQ: why don't we just filter to the numeric columns by type?
         numeric_columns = [
             field_names.HOUSING_BURDEN_FIELD,
             field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_FIELD,

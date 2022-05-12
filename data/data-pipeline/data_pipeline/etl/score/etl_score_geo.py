@@ -285,20 +285,28 @@ class GeoScoreETL(ExtractTransformLoad):
 
         def create_esri_codebook(codebook):
             """temporary: helper to make a codebook for esri shapefile only"""
+<<<<<<< HEAD
 
             shapefile_column_field = "shapefile_column"
             internal_column_name_field = "column_name"
             column_description_field = "column_description"
 
+=======
+>>>>>>> 8c255f0e (Adding HOLC indicator (#1579))
             logger.info("Creating a codebook that uses the csv names")
             codebook = (
                 pd.Series(codebook)
                 .reset_index()
                 .rename(
+<<<<<<< HEAD
                     columns={
                         0: internal_column_name_field,
                         "index": shapefile_column_field,
                     }
+=======
+                    # kept as strings because no downstream impacts
+                    columns={0: "column_name", "index": "shapefile_column"}
+>>>>>>> 8c255f0e (Adding HOLC indicator (#1579))
                 )
             )
 
@@ -312,6 +320,7 @@ class GeoScoreETL(ExtractTransformLoad):
                 object_value="label",
             )
 
+<<<<<<< HEAD
             codebook[column_description_field] = codebook[
                 internal_column_name_field
             ].map(column_rename_dict)
@@ -327,6 +336,12 @@ class GeoScoreETL(ExtractTransformLoad):
                 index=False,
             )
             logger.info("Completed writing codebook")
+=======
+            codebook["column_description"] = codebook["column_name"].map(
+                column_rename_dict
+            )
+            codebook.to_csv(self.SCORE_SHP_CODE_CSV, index=False)
+>>>>>>> 8c255f0e (Adding HOLC indicator (#1579))
 
         def write_esri_shapefile():
             logger.info("Producing ESRI shapefiles")
