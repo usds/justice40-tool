@@ -79,7 +79,7 @@ export const ALERTS = {
   ALERT_2_TITLE: defineMessages({
     TITLE: {
       id: 'common.pages.alerts.census.tract.title',
-      defaultMessage: 'Improvements to the tool on the Explore the map page',
+      defaultMessage: 'Additional documentation now available',
       description: 'Navigate to any page. This the title of the alert that informs the user that new census tract information is available',
     },
   }),
