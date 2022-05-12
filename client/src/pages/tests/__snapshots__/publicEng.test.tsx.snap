@@ -369,7 +369,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             >
               sending feedback
             </a>
-             has been extended to May 25, 2022.
+             via the Request for Information has been extended to May 25, 2022.
           </p>
         </div>
       </div>
@@ -448,172 +448,15 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 <h3
                   class="usa-collection__heading"
                 >
-                  CEJST training session #1
-                </h3>
-                <p
-                  class="usa-collection__description"
-                >
-                  
-        The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital 
-        Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic 
-        Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to 
-        use the current version of the tool. The presenters at these webinars will be available to 
-        provide technical support and address issues related to accessing and using the tool.
-      
-                </p>
-                <p
-                  class="usa-collection__description"
-                >
-                  <b>
-                    Event info
-                  </b>
-                  : March 9th (4:00 - 5:00 PM EST)
-                </p>
-                <p
-                  class="usa-collection__description"
-                >
                   <a
-                    href="https://pitc.zoomgov.com/webinar/register/WN_D-Om_xXhTtiLv71y3Rr1CQ"
+                    class="usa-link usa-link--external"
+                    data-cy="may-19-reg-link-block"
+                    href="https://pitc.zoomgov.com/webinar/register/WN_1PR73vLDQpq1zoAWkhKB5g"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    <button
-                      class="usa-button"
-                      data-testid="button"
-                      disabled=""
-                      type="button"
-                    >
-                      Registration link
-                    </button>
+                    CEJST listening session #4
                   </a>
-                </p>
-              </div>
-            </li>
-            <li
-              class="usa-collection__item"
-            >
-              <img
-                alt="Alt text"
-                class="usa-collection__img"
-                src="test-file-stub"
-              />
-              <div
-                class="usa-collection__body"
-              >
-                <h3
-                  class="usa-collection__heading"
-                >
-                  CEJST training session #2
-                </h3>
-                <p
-                  class="usa-collection__description"
-                >
-                  
-        The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital 
-        Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic 
-        Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to 
-        use the current version of the tool. The presenters at these webinars will be available to 
-        provide technical support and address issues related to accessing and using the tool.
-      
-                </p>
-                <p
-                  class="usa-collection__description"
-                >
-                  <b>
-                    Event info
-                  </b>
-                  : March 10th (4:00 - 5:00 PM EST)
-                </p>
-                <p
-                  class="usa-collection__description"
-                >
-                  <a
-                    href="https://pitc.zoomgov.com/webinar/register/WN_QsSqshI4TpmRBkI6nVlWxQ"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    <button
-                      class="usa-button"
-                      data-testid="button"
-                      disabled=""
-                      type="button"
-                    >
-                      Registration link
-                    </button>
-                  </a>
-                </p>
-              </div>
-            </li>
-            <li
-              class="usa-collection__item"
-            >
-              <img
-                alt="Alt text"
-                class="usa-collection__img"
-                src="test-file-stub"
-              />
-              <div
-                class="usa-collection__body"
-              >
-                <h3
-                  class="usa-collection__heading"
-                >
-                  CEJST training session #3
-                </h3>
-                <p
-                  class="usa-collection__description"
-                >
-                  
-        The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital 
-        Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic 
-        Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to 
-        use the current version of the tool. The presenters at these webinars will be available to 
-        provide technical support and address issues related to accessing and using the tool.
-      
-                </p>
-                <p
-                  class="usa-collection__description"
-                >
-                  <b>
-                    Event info
-                  </b>
-                  : March 16th (4:00 - 5:00 PM EST)
-                </p>
-                <p
-                  class="usa-collection__description"
-                >
-                  <a
-                    href="https://pitc.zoomgov.com/webinar/register/WN_q86iMtpwTESYa6f0xpIk7g"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    <button
-                      class="usa-button"
-                      data-testid="button"
-                      disabled=""
-                      type="button"
-                    >
-                      Registration link
-                    </button>
-                  </a>
-                </p>
-              </div>
-            </li>
-            <li
-              class="usa-collection__item"
-            >
-              <img
-                alt="Alt text"
-                class="usa-collection__img"
-                src="test-file-stub"
-              />
-              <div
-                class="usa-collection__body"
-              >
-                <h3
-                  class="usa-collection__heading"
-                >
-                  CEJST listening session #1
                 </h3>
                 <p
                   class="usa-collection__description"
@@ -632,20 +475,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <b>
                     Event info
                   </b>
-                  : March 22nd (4:00 - 5:00 PM EST)
+                  : May 19th (4:00 PM EST)
                 </p>
                 <p
                   class="usa-collection__description"
                 >
                   <a
-                    href="https://pitc.zoomgov.com/webinar/register/WN_YT7_uLZqScGHgyAcTCuJjA"
+                    href="https://pitc.zoomgov.com/webinar/register/WN_1PR73vLDQpq1zoAWkhKB5g"
                     rel="noreferrer"
                     target="_blank"
                   >
                     <button
                       class="usa-button"
                       data-testid="button"
-                      disabled=""
                       type="button"
                     >
                       Registration link
@@ -668,13 +510,17 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 <h3
                   class="usa-collection__heading"
                 >
-                  CEJST Public WHEJAC meeting day one
+                  CEJST listening session #3
                 </h3>
                 <p
                   class="usa-collection__description"
                 >
                   
-        The White House Environmental Justice Advisory Council is also soliciting feedback on the beta version of the Climate and Economic Justice Screening Tool at its public meeting. The link above has additional details.
+        CEQ is hosting public listening sessions to seek input and feedback on the beta version of the 
+        tool, including on the datasets it includes and the methodology it uses. This feedback is critical 
+        to the development and enhancement of the tool. This feedback will help CEQ update and refine the 
+        tool to ensure that it reflects the environmental, climate and other challenges that communities 
+        are experiencing.
       
                 </p>
                 <p
@@ -683,64 +529,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <b>
                     Event info
                   </b>
-                  : March 30th (3:00 - 7:00 PM EST)
+                  : May 10th (4:00 PM EST)
                 </p>
                 <p
                   class="usa-collection__description"
                 >
                   <a
-                    href="https://usepa.zoomgov.com/webinar/register/WN_wCwVP1dtT0auAR5kfucVtw"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    <button
-                      class="usa-button"
-                      data-testid="button"
-                      disabled=""
-                      type="button"
-                    >
-                      Registration link
-                    </button>
-                  </a>
-                </p>
-              </div>
-            </li>
-            <li
-              class="usa-collection__item"
-            >
-              <img
-                alt="Alt text"
-                class="usa-collection__img"
-                src="test-file-stub"
-              />
-              <div
-                class="usa-collection__body"
-              >
-                <h3
-                  class="usa-collection__heading"
-                >
-                  CEJST Public WHEJAC meeting day two
-                </h3>
-                <p
-                  class="usa-collection__description"
-                >
-                  
-        The White House Environmental Justice Advisory Council is also soliciting feedback on the beta version of the Climate and Economic Justice Screening Tool at its public meeting. The link above has additional details.
-      
-                </p>
-                <p
-                  class="usa-collection__description"
-                >
-                  <b>
-                    Event info
-                  </b>
-                  : March 31th (3:00 - 7:30 PM EST)
-                </p>
-                <p
-                  class="usa-collection__description"
-                >
-                  <a
-                    href="https://usepa.zoomgov.com/webinar/register/WN_wCwVP1dtT0auAR5kfucVtw"
+                    href="https://pitc.zoomgov.com/webinar/register/WN_dt0xRNioR8SugY2hrDk1JA"
                     rel="noreferrer"
                     target="_blank"
                   >
@@ -825,17 +620,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 <h3
                   class="usa-collection__heading"
                 >
-                  CEJST listening session #3
+                  CEJST Public WHEJAC meeting day two
                 </h3>
                 <p
                   class="usa-collection__description"
                 >
                   
-        CEQ is hosting public listening sessions to seek input and feedback on the beta version of the 
-        tool, including on the datasets it includes and the methodology it uses. This feedback is critical 
-        to the development and enhancement of the tool. This feedback will help CEQ update and refine the 
-        tool to ensure that it reflects the environmental, climate and other challenges that communities 
-        are experiencing.
+        The White House Environmental Justice Advisory Council is also soliciting feedback on the beta version of the Climate and Economic Justice Screening Tool at its public meeting. The link above has additional details.
       
                 </p>
                 <p
@@ -844,13 +635,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <b>
                     Event info
                   </b>
-                  : May 10th (4:00 PM EST)
+                  : March 31th (3:00 - 7:30 PM EST)
                 </p>
                 <p
                   class="usa-collection__description"
                 >
                   <a
-                    href="https://pitc.zoomgov.com/webinar/register/WN_dt0xRNioR8SugY2hrDk1JA"
+                    href="https://usepa.zoomgov.com/webinar/register/WN_wCwVP1dtT0auAR5kfucVtw"
                     rel="noreferrer"
                     target="_blank"
                   >
@@ -880,15 +671,58 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 <h3
                   class="usa-collection__heading"
                 >
+                  CEJST Public WHEJAC meeting day one
+                </h3>
+                <p
+                  class="usa-collection__description"
+                >
+                  
+        The White House Environmental Justice Advisory Council is also soliciting feedback on the beta version of the Climate and Economic Justice Screening Tool at its public meeting. The link above has additional details.
+      
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <b>
+                    Event info
+                  </b>
+                  : March 30th (3:00 - 7:00 PM EST)
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
                   <a
-                    class="usa-link usa-link--external"
-                    data-cy="may-19-reg-link-block"
-                    href="https://pitc.zoomgov.com/webinar/register/WN_1PR73vLDQpq1zoAWkhKB5g"
+                    href="https://usepa.zoomgov.com/webinar/register/WN_wCwVP1dtT0auAR5kfucVtw"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    CEJST listening session #4
+                    <button
+                      class="usa-button"
+                      data-testid="button"
+                      disabled=""
+                      type="button"
+                    >
+                      Registration link
+                    </button>
                   </a>
+                </p>
+              </div>
+            </li>
+            <li
+              class="usa-collection__item"
+            >
+              <img
+                alt="Alt text"
+                class="usa-collection__img"
+                src="test-file-stub"
+              />
+              <div
+                class="usa-collection__body"
+              >
+                <h3
+                  class="usa-collection__heading"
+                >
+                  CEJST listening session #1
                 </h3>
                 <p
                   class="usa-collection__description"
@@ -907,19 +741,185 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   <b>
                     Event info
                   </b>
-                  : May 19th (4:00 PM EST)
+                  : March 22nd (4:00 - 5:00 PM EST)
                 </p>
                 <p
                   class="usa-collection__description"
                 >
                   <a
-                    href="https://pitc.zoomgov.com/webinar/register/WN_1PR73vLDQpq1zoAWkhKB5g"
+                    href="https://pitc.zoomgov.com/webinar/register/WN_YT7_uLZqScGHgyAcTCuJjA"
                     rel="noreferrer"
                     target="_blank"
                   >
                     <button
                       class="usa-button"
                       data-testid="button"
+                      disabled=""
+                      type="button"
+                    >
+                      Registration link
+                    </button>
+                  </a>
+                </p>
+              </div>
+            </li>
+            <li
+              class="usa-collection__item"
+            >
+              <img
+                alt="Alt text"
+                class="usa-collection__img"
+                src="test-file-stub"
+              />
+              <div
+                class="usa-collection__body"
+              >
+                <h3
+                  class="usa-collection__heading"
+                >
+                  CEJST training session #3
+                </h3>
+                <p
+                  class="usa-collection__description"
+                >
+                  
+        The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital 
+        Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic 
+        Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to 
+        use the current version of the tool. The presenters at these webinars will be available to 
+        provide technical support and address issues related to accessing and using the tool.
+      
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <b>
+                    Event info
+                  </b>
+                  : March 16th (4:00 - 5:00 PM EST)
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <a
+                    href="https://pitc.zoomgov.com/webinar/register/WN_q86iMtpwTESYa6f0xpIk7g"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <button
+                      class="usa-button"
+                      data-testid="button"
+                      disabled=""
+                      type="button"
+                    >
+                      Registration link
+                    </button>
+                  </a>
+                </p>
+              </div>
+            </li>
+            <li
+              class="usa-collection__item"
+            >
+              <img
+                alt="Alt text"
+                class="usa-collection__img"
+                src="test-file-stub"
+              />
+              <div
+                class="usa-collection__body"
+              >
+                <h3
+                  class="usa-collection__heading"
+                >
+                  CEJST training session #2
+                </h3>
+                <p
+                  class="usa-collection__description"
+                >
+                  
+        The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital 
+        Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic 
+        Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to 
+        use the current version of the tool. The presenters at these webinars will be available to 
+        provide technical support and address issues related to accessing and using the tool.
+      
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <b>
+                    Event info
+                  </b>
+                  : March 10th (4:00 - 5:00 PM EST)
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <a
+                    href="https://pitc.zoomgov.com/webinar/register/WN_QsSqshI4TpmRBkI6nVlWxQ"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <button
+                      class="usa-button"
+                      data-testid="button"
+                      disabled=""
+                      type="button"
+                    >
+                      Registration link
+                    </button>
+                  </a>
+                </p>
+              </div>
+            </li>
+            <li
+              class="usa-collection__item"
+            >
+              <img
+                alt="Alt text"
+                class="usa-collection__img"
+                src="test-file-stub"
+              />
+              <div
+                class="usa-collection__body"
+              >
+                <h3
+                  class="usa-collection__heading"
+                >
+                  CEJST training session #1
+                </h3>
+                <p
+                  class="usa-collection__description"
+                >
+                  
+        The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital 
+        Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic 
+        Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to 
+        use the current version of the tool. The presenters at these webinars will be available to 
+        provide technical support and address issues related to accessing and using the tool.
+      
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <b>
+                    Event info
+                  </b>
+                  : March 9th (4:00 - 5:00 PM EST)
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <a
+                    href="https://pitc.zoomgov.com/webinar/register/WN_D-Om_xXhTtiLv71y3Rr1CQ"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <button
+                      class="usa-button"
+                      data-testid="button"
+                      disabled=""
                       type="button"
                     >
                       Registration link

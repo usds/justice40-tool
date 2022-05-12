@@ -63,7 +63,7 @@ export const ALERTS = {
   EXPIRATION_DATE: ALERT_1_EXPIRATION_DATE,
   ALERT_1_DESCRIPTION: <FormattedMessage
     id={'common.pages.alerts.public_comment_period.description'}
-    defaultMessage={`The public comment period for <link1>sending feedback</link1> has been extended to {expDate1}.`}
+    defaultMessage={`The public comment period for <link1>sending feedback</link1> via the Request for Information has been extended to {expDate1}.`}
     description={`Alert body that appears on landing page.`}
     values={{
       link1: linkFn('https://www.federalregister.gov/documents/2022/04/25/2022-08774/climate-and-economic-justice-screening-tool-beta-version', false, true),
