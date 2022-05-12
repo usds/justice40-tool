@@ -39,6 +39,26 @@ exports[`rendering of the PublicVideoBox checks if component renders 1`] = `
             </div>
           </button>
         </a>
+        <a
+          download=""
+          href="https://static-data-screeningtool.geoplatform.gov/data-pipeline/data/score/downloadable/technical-training-slides.pptx"
+        >
+          <button
+            class="usa-button"
+            data-testid="button"
+            type="button"
+          >
+            <div>
+              <div>
+                Download slide deck
+              </div>
+              <img
+                alt="the icon to show that this button will download the file"
+                src="test-file-stub"
+              />
+            </div>
+          </button>
+        </a>
       </div>
     </div>
   </div>

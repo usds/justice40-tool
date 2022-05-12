@@ -7,6 +7,8 @@ import * as styles from './PublicVideoBox.module.scss';
 
 // @ts-ignore
 import launchIcon from '/node_modules/uswds/dist/img/usa-icons/launch.svg';
+// @ts-ignore
+import fileDownloadIcon from '/node_modules/uswds/dist/img/usa-icons/file_download.svg';
 
 const PublicVideoBox = () => {
   const intl = useIntl();
@@ -28,12 +30,33 @@ const PublicVideoBox = () => {
         >
           <div className={styles.buttonContainer}>
             <div className={styles.buttonText}>
-              {intl.formatMessage(PUBLIC_COPY.PUBLIC_ENG_VIDEO.BUTTON_TEXT)}
+              {intl.formatMessage(PUBLIC_COPY.PUBLIC_ENG_VIDEO.BUTTON1_TEXT)}
             </div>
             <img
               className={styles.buttonImage}
               src={launchIcon}
-              alt={intl.formatMessage(PUBLIC_COPY.PUBLIC_ENG_VIDEO.IMG_ALT_TEXT)}
+              alt={intl.formatMessage(PUBLIC_COPY.PUBLIC_ENG_VIDEO.IMG_ALT_TEXT1)}
+            />
+          </div>
+        </Button>
+      </a>
+      <a
+        className={styles.publicVideoLink}
+        href={`https://static-data-screeningtool.geoplatform.gov/data-pipeline/data/score/downloadable/technical-training-slides.pptx`}
+        download
+      >
+        <Button
+          type="button"
+          className={styles.youTubeBtn}
+        >
+          <div className={styles.buttonContainer}>
+            <div className={styles.buttonText}>
+              {intl.formatMessage(PUBLIC_COPY.PUBLIC_ENG_VIDEO.BUTTON2_TEXT)}
+            </div>
+            <img
+              className={styles.buttonImage}
+              src={fileDownloadIcon}
+              alt={intl.formatMessage(PUBLIC_COPY.PUBLIC_ENG_VIDEO.IMG_ALT_TEXT2)}
             />
           </div>
         </Button>

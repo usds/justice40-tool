@@ -5,6 +5,12 @@ import {FormattedDate, FormattedMessage} from 'gatsby-plugin-intl';
 import {defineMessages} from 'react-intl';
 import LinkTypeWrapper from '../../components/LinkTypeWrapper';
 
+export interface IDefineMessage {
+  id: string,
+  defaultMessage: string,
+  description: string,
+};
+
 /*
  * i18n curried functions from react-intl (aka format.js)
  * using ver3 of the docs as this is what gatsby-plugin-intl uses:
@@ -15,9 +21,10 @@ export const italicFn = (str:string) => <i>{str}</i>;
 export const boldFn = (str:string) => <strong>{str}</strong>;
 export const simpleLink = (href:string) => (str:string) => <a href={href}>{str}</a>;
 // eslint-disable-next-line max-len
-export const linkFn = (to:string, isInternal:boolean, isOpenNewTab:boolean) => (str:string) => <LinkTypeWrapper linkText={str} internal={isInternal} url={to} openUrlNewTab={isOpenNewTab}/>;
+export const linkFn = (to:string | IDefineMessage, isInternal:boolean, isOpenNewTab:boolean) => (str:string) => <LinkTypeWrapper linkText={str} internal={isInternal} url={to} openUrlNewTab={isOpenNewTab}/>;
 
 export const FEEDBACK_EMAIL = 'Screeningtool-Support@omb.eop.gov';
+
 
 // Beta Banner
 export const BETA_BANNER = defineMessages({
@@ -34,6 +41,13 @@ export const BETA_BANNER = defineMessages({
   },
 });
 
+export const TSD = defineMessages({
+  URL: {
+    id: 'common.pages.tsd.url',
+    defaultMessage: `https://static-data-screeningtool.geoplatform.gov/data-pipeline/data/score/downloadable/cejst_technical_support_document.pdf`,
+    description: 'Navigate to the Alerts on any page. This will be the link to the techinical support document.',
+  },
+});
 
 // Alerts
 // Expiration month is zero-based: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getMonth
@@ -49,7 +63,7 @@ export const ALERTS = {
   EXPIRATION_DATE: ALERT_1_EXPIRATION_DATE,
   ALERT_1_DESCRIPTION: <FormattedMessage
     id={'common.pages.alerts.public_comment_period.description'}
-    defaultMessage={`The public comment period for <link1>sending feedback</link1> has been extended to {expDate1}.`}
+    defaultMessage={`The public comment period for <link1>sending feedback</link1> via the Request for Information has been extended to {expDate1}.`}
     description={`Alert body that appears on landing page.`}
     values={{
       link1: linkFn('https://www.federalregister.gov/documents/2022/04/25/2022-08774/climate-and-economic-justice-screening-tool-beta-version', false, true),
@@ -71,9 +85,10 @@ export const ALERTS = {
   }),
   ALERT_2_DESCRIPTION: <FormattedMessage
     id={'common.pages.alerts.additional_docs_available.description'}
-    defaultMessage={`Download new technical support and other documentation and <link2>send feedback</link2>.`}
+    defaultMessage={`Download new <link1>technical support</link1> and other documentation and <link2>send feedback</link2>.`}
     description={`Alert title that appears at the top of pages.`}
     values={{
+      link1: linkFn(TSD.URL, false, true),
       link2: linkFn(`mailto:${FEEDBACK_EMAIL}`, false, true),
     }}
   />,
@@ -243,3 +258,5 @@ export const CONSOLE_ERROR = defineMessages({
     description: 'Navigate to the about page. This is console error staging URL',
   },
 });
+
+

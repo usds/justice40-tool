@@ -16,6 +16,10 @@ interface IPublicEngagementPageProps {
 const PublicEngagementPage = ({location}: IPublicEngagementPageProps) => {
   const intl = useIntl();
 
+  // The reverse() is an in-place algorithm and so a temporary variable is needed:
+  const events = [...PUBLIC_ENG_COPY.EVENTS];
+  events.reverse();
+
   return (
     <Layout location={location} title={intl.formatMessage(PUBLIC_ENG_COPY.PAGE_INTRO.PAGE_TILE)}>
 
@@ -47,7 +51,7 @@ const PublicEngagementPage = ({location}: IPublicEngagementPageProps) => {
         <Grid row gap={6}>
           <Grid desktop={{col: 8}}>
             <Collection>
-              {PUBLIC_ENG_COPY.EVENTS.map((event, index) => <PublicEvent key={index} event={event} />)}
+              {events.map((event, index) => <PublicEvent key={index} event={event} />)}
             </Collection>
           </Grid>
           <Grid desktop={{col: 4}}>
