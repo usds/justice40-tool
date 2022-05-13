@@ -1,6 +1,7 @@
 declare namespace MapIntroductionModuleScssNamespace {
     export interface IMapIntroductionModuleScss {
         sidePanelInfoContainer: string;
+        sidePanelInfoTitle: string;
         sidePanelInfoHeading: string;
         sidePanelInfoIcon: string;
     }

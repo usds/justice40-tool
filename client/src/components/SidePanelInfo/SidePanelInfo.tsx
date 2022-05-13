@@ -13,17 +13,20 @@ import upDown from '../../images/sidePanelIcons/upDown.svg';
 import * as styles from './SidePanelInfo.module.scss';
 import * as EXPLORE_COPY from '../../data/copy/explore';
 
-const MapIntroduction = () => {
+const SidePanelInfo = () => {
   const intl = useIntl();
 
   return (
     <aside className={styles.sidePanelInfoContainer}>
 
-      <header tabIndex={0} className={styles.sidePanelInfoHeading}>
+      <header tabIndex={0} className={styles.sidePanelInfoTitle}>
         {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.TITLE)}
       </header>
       <p tabIndex={0}>
         {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA1)}
+      </p>
+      <p tabIndex={0} className={styles.sidePanelInfoHeading}>
+        {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.HEADING1)}
       </p>
       <img tabIndex={0} className={styles.sidePanelInfoIcon}
         src={puzzle}
@@ -57,4 +60,4 @@ const MapIntroduction = () => {
   );
 };
 
-export default MapIntroduction;
+export default SidePanelInfo;

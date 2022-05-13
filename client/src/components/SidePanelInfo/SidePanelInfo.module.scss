@@ -7,10 +7,16 @@
   @include u-padding-left(4);
   @include u-padding-bottom(4);
 
+  .sidePanelInfoTitle {
+    @include u-padding-top(2);
+    font-size: xx-large;
+    line-height: 1.9rem;
+  }
+
   .sidePanelInfoHeading {
     @include u-padding-top(2);
     font-size: x-large;
-    line-height: 1.9rem;
+    // line-height: 1.9rem;
   }
   
   .sidePanelInfoIcon {

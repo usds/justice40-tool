@@ -727,6 +727,10 @@
     "defaultMessage": "An icon that has an up arrow and a down arrow",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the forth icon in this side panel"
   },
+  "explore.map.page.side.panel.info.heading1": {
+    "defaultMessage": "Zoom in or search and select to see data about any census tract of interest",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the first paragraph of this side panel"
+  },
   "explore.map.page.side.panel.info.para1": {
     "defaultMessage": "This tool identifies communities that are marginalized, underserved, and overburdened by pollution. These communities are located in census tracts that are at or above the thresholds in one or more of eight categories of criteria.",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the first paragraph of this side panel"

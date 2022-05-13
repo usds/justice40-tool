@@ -15,6 +15,13 @@ exports[`rendering of the component expects the render to match snapshot 1`] = `
       This tool identifies communities that are marginalized, underserved, and overburdened by pollution. These communities are located in census tracts that are at or above the thresholds in one or more of eight categories of criteria.
     
     </p>
+    <p
+      tabindex="0"
+    >
+      
+      Zoom in or search and select to see data about any census tract of interest
+    
+    </p>
     <img
       alt="
       An icon that has depicts pieces of a block selected mimicing the census block census tracts
