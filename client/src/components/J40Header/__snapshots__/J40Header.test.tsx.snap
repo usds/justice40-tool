@@ -315,7 +315,7 @@ exports[`rendering of the J40Header checks if component renders 1`] = `
           <h4
             class="usa-alert__heading"
           >
-            Improvements to the tool on the Explore the map page
+            Additional documentation now available
           </h4>
           <p
             class="usa-alert__text"
