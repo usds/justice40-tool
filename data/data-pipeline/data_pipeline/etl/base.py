@@ -91,7 +91,7 @@ class ExtractTransformLoad:
     #  periods. https://github.com/usds/justice40-tool/issues/964
     EXPECTED_MAX_CENSUS_TRACTS: int = 74160
 
-    # We use ourput_df as the final dataframe to use to write to the CSV
+    # We use output_df as the final dataframe to use to write to the CSV
     # It is used on the "load" base class method
     output_df: pd.DataFrame = None
 
