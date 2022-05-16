@@ -608,7 +608,7 @@ export const SOURCE_LINKS = {
   />,
   DOT_EPA: <FormattedMessage
     id={'methodology.page.category.source.dot.epa.link'}
-    defaultMessage={`<link1>Traffic Data</link1> from {date17} as compiled by EPA's EJScreen`}
+    defaultMessage={`<link1>Traffic data</link1> from {date17} as compiled by EPA's EJScreen`}
     description={'Navigate to the Methodology page. This is the source link for DOT EPA'}
     values={{
       link1: linkFn('https://www.epa.gov/ejscreen/technical-documentation-ejscreen', false, true),

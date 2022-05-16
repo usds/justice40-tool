@@ -183,6 +183,7 @@
     "explore.map.page.side.panel.info.alt.text.icon2": "Un icono que representa una curva de campana o distribución de Gauss",
     "explore.map.page.side.panel.info.alt.text.icon3": "An icon that depicts a part of pie chart being removed",
     "explore.map.page.side.panel.info.alt.text.icon4": "Un icono que tiene una flecha hacia arriba y una flecha hacia abajo",
+    "explore.map.page.side.panel.info.heading1": "Haga zoom o busque y seleccione para ver datos sobre cualquier tramo censal de interés",
     "explore.map.page.side.panel.info.para1": "Esta herramienta identifica las comunidades marginadas, desatendidas y abrumadas por la contaminación. Esas comunidades se encuentran en grupos de bloques del censo que están en el umbral o por encima del umbral en una o más de las ocho categorías de criterios.",
     "explore.map.page.side.panel.info.para2": "La herramienta usa grupos de bloques del censo que representan unas 4,000 personas, la cual es la unidad geográfica más pequeña para la que se pueden mostrar datos coherentes en la herramienta.",
     "explore.map.page.side.panel.info.para3": "La herramienta clasifica cada grupo de bloques del censo por medio de percentiles que muestran la cantidad de carga que cada grupo de bloques experimenta con respecto a los demás grupos de bloques del censo para cada criterio.",

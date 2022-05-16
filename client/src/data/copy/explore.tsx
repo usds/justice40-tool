@@ -170,6 +170,13 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the first paragraph of this side panel`,
   },
+  HEADING1: {
+    id: 'explore.map.page.side.panel.info.heading1',
+    defaultMessage: `
+      Zoom in or search and select to see data about any census tract of interest
+    `,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the first paragraph of this side panel`,
+  },
   PARA2: {
     id: 'explore.map.page.side.panel.info.para2',
     defaultMessage: `
