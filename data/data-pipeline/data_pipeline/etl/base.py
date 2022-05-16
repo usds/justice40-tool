@@ -119,12 +119,9 @@ class ExtractTransformLoad:
 
         # set some of the basic fields
         cls.LAST_UPDATED_YEAR = dataset_config["last_updated_year"]
-        cls.SOURCE_URL = dataset_config["source_url"]
-        cls.INPUT_EXTRACTED_FILE_NAME = dataset_config["extracted_file_name"]
         cls.INPUT_GEOID_TRACT_FIELD_NAME = dataset_config[
             "input_geoid_tract_field_name"
         ]
-        cls.NULL_REPRESENTATION = dataset_config.get("null_representation", [])
 
         # get the columns to write on the CSV
         cls.COLUMNS_TO_KEEP = [

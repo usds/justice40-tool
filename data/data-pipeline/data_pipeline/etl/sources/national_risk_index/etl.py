@@ -29,7 +29,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         self.DATASET_CONFIG = super().yaml_config_load()
 
         # define the full path for the input CSV file
-        self.INPUT_CSV = self.get_tmp_path() / self.INPUT_EXTRACTED_FILE_NAME
+        self.INPUT_CSV = self.get_tmp_path() / "NRI_Table_CensusTracts.csv"
 
         # this is the main dataframe
         self.df: pd.DataFrame
@@ -70,8 +70,11 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         to the temporary data folder for use in the transform() method
         """
         logger.info("Downloading 405MB National Risk Index Data")
+
+        source_url = "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload//NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
+
         super().extract(
-            source_url=self.SOURCE_URL,
+            source_url=source_url,
             extract_path=self.get_tmp_path(),
         )
 
@@ -90,7 +93,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         df_nri: pd.DataFrame = pd.read_csv(
             self.INPUT_CSV,
             dtype={self.INPUT_GEOID_TRACT_FIELD_NAME: "string"},
-            na_values=[self.NULL_REPRESENTATION],
+            na_values=["None"],
             low_memory=False,
         )
 

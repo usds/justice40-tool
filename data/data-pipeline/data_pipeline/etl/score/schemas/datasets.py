@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import List, Optional
+from typing import List
 
 
 class FieldType(Enum):
@@ -34,11 +34,8 @@ class DatasetsConfig:
         short_name: str
         module_name: str
         last_updated_year: int
-        source_url: str
-        extracted_file_name: str
         description: str
         input_geoid_tract_field_name: str
-        null_representation: Optional[list]
         load_fields: List[LoadField]
 
     datasets: List[Dataset]
