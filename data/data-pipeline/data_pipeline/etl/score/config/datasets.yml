@@ -8,7 +8,7 @@ datasets:
     extracted_file_name: "NRI_Table_CensusTracts.csv"
     description: "Dataset from FEMA that identifies communities most at risk to 18 natural hazards."
     input_geoid_tract_field_name: "TRACTFIPS"
-    null_representation: "None"
+    null_representation: ["None"]
     load_fields:
       - short_name: "ex_loss"
         df_field_name: "RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME"

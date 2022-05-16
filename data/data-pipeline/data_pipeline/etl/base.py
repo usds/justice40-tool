@@ -124,7 +124,7 @@ class ExtractTransformLoad:
         cls.INPUT_GEOID_TRACT_FIELD_NAME = dataset_config[
             "input_geoid_tract_field_name"
         ]
-        cls.NULL_REPRESENTATION = dataset_config["null_representation"]
+        cls.NULL_REPRESENTATION = dataset_config.get("null_representation", [])
 
         # get the columns to write on the CSV
         cls.COLUMNS_TO_KEEP = [

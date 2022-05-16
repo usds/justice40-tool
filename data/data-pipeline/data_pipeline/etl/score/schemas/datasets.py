@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import List
+from typing import List, Optional
 
 
 class FieldType(Enum):
@@ -21,7 +21,11 @@ class DatasetsConfig:
             short_name: str
             df_field_name: str
             long_name: str
-            field_type: FieldType = field(metadata={"by_value": True})
+            field_type: FieldType = field(
+                metadata={"by_value": True}
+            )  # this will load the field type's Enum value
+            # instead of the index, i.e. "string" and not
+            # STRING
             tile_include: bool
             csv_download: bool
             excel_download: bool
@@ -34,7 +38,7 @@ class DatasetsConfig:
         extracted_file_name: str
         description: str
         input_geoid_tract_field_name: str
-        null_representation: str
+        null_representation: Optional[list]
         load_fields: List[LoadField]
 
     datasets: List[Dataset]
