@@ -9,7 +9,7 @@ interface AboutCardProps {
   imgSrc?: string;
   header: string;
   size: 'small' | 'large';
-  linkText?: string;
+  linkText?: string | JSX.Element;
   url?: string;
   openUrlNewTab?: boolean;
   className?: string;
@@ -62,7 +62,7 @@ const AboutCard = (props: React.PropsWithChildren<AboutCardProps>) => {
                 <LinkTypeWrapper
                   linkText={props.linkText}
                   internal={props.internal}
-                  url={props.url}
+                  url={props.url ? props.url : ''}
                   openUrlNewTab={props.openUrlNewTab}
                   className={'j40-aboutcard-link'}
                 />

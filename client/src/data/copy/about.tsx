@@ -2,7 +2,7 @@
 import React from 'react';
 import {defineMessages} from 'react-intl';
 import {FormattedMessage} from 'gatsby-plugin-intl';
-import {italicFn, linkFn} from './common';
+import {italicFn, linkFn, FEEDBACK_EMAIL} from './common';
 
 export const EXEC_ORDER_LINK = 'https://www.federalregister.gov/documents/2021/02/01/2021-02177/tackling-the-climate-crisis-at-home-and-abroad#:~:text=Sec.%20223.%20Justice40,40-percent%20goal.';
 export const FAQS_LINK = 'https://www.whitehouse.gov/wp-content/uploads/2022/02/CEQ-CEJST-QandA.pdf';
@@ -185,4 +185,17 @@ export const GET_INVOLVED = defineMessages({
   },
 });
 
+export const GET_INVOLVED_COMMENTS = {
+  EMAIL:
+  <FormattedMessage
+    id={'about.page.send.feedback.email.link'}
+    description={'about page sub header text'}
+    defaultMessage={`
+      Email: {email}
+    `}
+    values={{
+      email: FEEDBACK_EMAIL,
+    }}
+  />,
+};
 

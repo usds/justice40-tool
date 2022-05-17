@@ -51,6 +51,10 @@
     "defaultMessage": "Join the open source community",
     "description": "Navigate to the About page. This is the join the community heading"
   },
+  "about.page.send.feedback.email.link": {
+    "defaultMessage": "Email: {email}",
+    "description": "about page sub header text"
+  },
   "about.page.send.feedback.heading": {
     "defaultMessage": "Send feedback",
     "description": "Navigate to the About page. This is the sending feedback heading"
