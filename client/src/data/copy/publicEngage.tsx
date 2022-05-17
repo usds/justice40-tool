@@ -24,17 +24,17 @@ export const PAGE_INTRO = defineMessages({
   PAGE_TILE: {
     id: 'public.eng.page.title.text',
     defaultMessage: 'Public engagement opportunities',
-    description: 'Navigate to the the public engagement page, this will be the publiceng page title text',
+    description: 'Navigate to the public engagement page, this will be the publiceng page title text',
   },
   PAGE_HEADING1: {
     id: 'public.eng.page.heading1.text',
     defaultMessage: 'Public engagement opportunities',
-    description: 'Navigate to the the public engagement page, this will be the publiceng page header text',
+    description: 'Navigate to the public engagement page, this will be the publiceng page header text',
   },
   PAGE_HEADING2: {
     id: 'public.eng.page.sub.header2.text',
     defaultMessage: 'Find an event',
-    description: 'Navigate to the the public engagement page, this will be the publiceng page sub header text',
+    description: 'Navigate to the public engagement page, this will be the publiceng page sub header text',
   },
   PAGE_DESCRIPTION1: {
     id: 'public.eng.page.description1.text',
@@ -44,14 +44,14 @@ export const PAGE_INTRO = defineMessages({
       beta version of the tool. CEQ hopes that members of the public will join these engagements to learn 
       about the tool, have their questions answered, and share feedback.
     `,
-    description: 'Navigate to the the public engagement page, this will be the publiceng page description 1 text',
+    description: 'Navigate to the public engagement page, this will be the publiceng page description 1 text',
   },
   PAGE_DESCRIPTION2: {
     id: 'public.eng.page.description2.text',
     defaultMessage: `
       Pre-registration is required to participate and speak at the sessions.
     `,
-    description: 'Navigate to the the public engagement page, this will be the publiceng page description 2 text',
+    description: 'Navigate to the public engagement page, this will be the publiceng page description 2 text',
   },
   PAGE_DESCRIPTION3: {
     id: 'public.eng.page.description3.text',
@@ -59,12 +59,12 @@ export const PAGE_INTRO = defineMessages({
       As they become available, additional public trainings and engagement opportunities on the Climate 
       and Economic Justice Screening Tool will also be posted on this page.
     `,
-    description: 'Navigate to the the public engagement page, this will be the publiceng page description 3 text',
+    description: 'Navigate to the public engagement page, this will be the publiceng page description 3 text',
   },
   SURVEY_TEXT: {
     id: 'fab.survey.text',
     defaultMessage: `Help improve the site & data`,
-    description: 'Navigate to the the public engagement page, this will be the text for floating action button',
+    description: 'Navigate to the public engagement page, this will be the text for floating action button',
   },
 });
 
@@ -72,32 +72,32 @@ export const PUBLIC_ENG_VIDEO = defineMessages({
   TITLE: {
     id: 'public.eng.page.video.box.title.text',
     defaultMessage: `Can't make an upcoming session?`,
-    description: 'Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box title text.',
+    description: 'Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box title text.',
   },
   BODY: {
     id: 'public.eng.page.video.box.body.text',
     defaultMessage: `Watch a recorded version of the CEJST training on YouTube.`,
-    description: 'Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box body text.',
+    description: 'Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box body text.',
   },
   BUTTON1_TEXT: {
     id: 'public.eng.page.video.box.button1.text',
     defaultMessage: `Watch on YouTube`,
-    description: 'Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box button text.',
+    description: 'Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box button text.',
   },
   IMG_ALT_TEXT1: {
     id: 'public.eng.page.video.box.button.img.alt.text1',
     defaultMessage: `the icon to show that this button will open in a new tab`,
-    description: 'Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is alt tag of the image in the button.',
+    description: 'Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is alt tag of the image in the button.',
   },
   BUTTON2_TEXT: {
     id: 'public.eng.page.video.box.button2.text',
     defaultMessage: `Download slide deck`,
-    description: 'Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is the button text for the second button.',
+    description: 'Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is the button text for the second button.',
   },
   IMG_ALT_TEXT2: {
     id: 'public.eng.page.video.box.button.img.alt.text2',
     defaultMessage: `the icon to show that this button will download the file`,
-    description: 'Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is alt tag of the image in the 2nd button.',
+    description: 'Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is alt tag of the image in the 2nd button.',
   },
 });
 
@@ -105,17 +105,17 @@ export const PUBLIC_ENG_BUTTON = defineMessages({
   LABEL: {
     id: 'public.eng.page.button.label',
     defaultMessage: `Public engagement`,
-    description: 'Navigate to the the public engagement page, this will be the public engagement button label',
+    description: 'Navigate to the public engagement page, this will be the public engagement button label',
   },
   TAG_LABEL: {
     id: 'public.eng.page.tag.label',
     defaultMessage: `UPDATED`,
-    description: 'Navigate to the the public engagement page, this will be the public engagement tag label',
+    description: 'Navigate to the public engagement page, this will be the public engagement tag label',
   },
   IMG_ICON_ALT_TAG: {
     id: 'public.eng.page.button.img.alt.tag',
     defaultMessage: `an icon that represents a calendar`,
-    description: 'Navigate to the the public engagement page, this will be the public engagement button icon alt tag text',
+    description: 'Navigate to the public engagement page, this will be the public engagement button icon alt tag text',
   },
 });
 
@@ -124,7 +124,7 @@ export const EVENT_TYPES = {
     NAME: {
       id: 'public.eng.page.event.training.sess.name',
       defaultMessage: `training session`,
-      description: 'Navigate to the the public engagement page, this will be the public engagement page event training session name',
+      description: 'Navigate to the public engagement page, this will be the public engagement page event training session name',
     },
     DESCRIPTION: {
       id: 'public.eng.page.event.training.description',
@@ -135,14 +135,14 @@ export const EVENT_TYPES = {
         use the current version of the tool. The presenters at these webinars will be available to 
         provide technical support and address issues related to accessing and using the tool.
       `,
-      description: 'Navigate to the the public engagement page, this will be the public engagement page event training session description',
+      description: 'Navigate to the public engagement page, this will be the public engagement page event training session description',
     },
   }),
   LISTENING_SESS: defineMessages({
     NAME: {
       id: 'public.eng.page.event.listening.sess.name',
       defaultMessage: `listening session`,
-      description: 'Navigate to the the public engagement page, this will be the public engagement page event listening session name',
+      description: 'Navigate to the public engagement page, this will be the public engagement page event listening session name',
     },
     DESCRIPTION: {
       id: 'public.eng.page.event.listening.sess.description',
@@ -153,7 +153,7 @@ export const EVENT_TYPES = {
         tool to ensure that it reflects the environmental, climate and other challenges that communities 
         are experiencing.
       `,
-      description: 'Navigate to the the public engagement page, this will be the public engagement page event listening session description',
+      description: 'Navigate to the public engagement page, this will be the public engagement page event listening session description',
     },
   }),
   WHEJAC_DAY1: defineMessages({
@@ -190,12 +190,12 @@ export const EVENT_FIELDS = defineMessages({
   EVENT_INFO: {
     id: 'public.eng.page.event.info.label',
     defaultMessage: 'Event info',
-    description: 'Navigate to the the public engagement page, this will be the public engagement page event info label',
+    description: 'Navigate to the public engagement page, this will be the public engagement page event info label',
   },
   REG_LINK: {
     id: 'public.eng.page.event.reglink.label',
     defaultMessage: 'Registration link',
-    description: 'Navigate to the the public engagement page, this will be the public engagment page event registration link label',
+    description: 'Navigate to the public engagement page, this will be the public engagement page event registration link label',
   },
 });
 
@@ -213,7 +213,7 @@ export const EVENTS = [
       INFO: {
         id: 'public.eng.page.event.training.1.info',
         defaultMessage: `March 9th (4:00 - 5:00 PM EST)`,
-        description: 'Navigate to the the public engagement page, this will be the public engagement page event training session 1 date',
+        description: 'Navigate to the public engagement page, this will be the public engagement page event training session 1 date',
       },
     }),
     REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_D-Om_xXhTtiLv71y3Rr1CQ`,
@@ -230,7 +230,7 @@ export const EVENTS = [
       INFO: {
         id: 'public.eng.page.event.training.2.info',
         defaultMessage: `March 10th (4:00 - 5:00 PM EST)`,
-        description: 'Navigate to the the public engagement page, this will be the public engagement page event training session 2 date',
+        description: 'Navigate to the public engagement page, this will be the public engagement page event training session 2 date',
       },
     }),
     REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_QsSqshI4TpmRBkI6nVlWxQ`,
@@ -248,7 +248,7 @@ export const EVENTS = [
       INFO: {
         id: 'public.eng.page.event.training.3.info',
         defaultMessage: `March 16th (4:00 - 5:00 PM EST)`,
-        description: 'Navigate to the the public engagement page, this will be the public engagement page event training session 3 date',
+        description: 'Navigate to the public engagement page, this will be the public engagement page event training session 3 date',
       },
     }),
     REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_q86iMtpwTESYa6f0xpIk7g`,
@@ -266,7 +266,7 @@ export const EVENTS = [
       INFO: {
         id: 'public.eng.page.event.listening.1.info',
         defaultMessage: `March 22nd (4:00 - 5:00 PM EST)`,
-        description: 'Navigate to the the public engagement page, this will be the public engagement page event listening session 1 date',
+        description: 'Navigate to the public engagement page, this will be the public engagement page event listening session 1 date',
       },
     }),
     REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_YT7_uLZqScGHgyAcTCuJjA`,
@@ -318,7 +318,7 @@ export const EVENTS = [
       INFO: {
         id: 'public.eng.page.event.listening.2.info',
         defaultMessage: `April 15th (4:00 - 5:00 PM EST)`,
-        description: 'Navigate to the the public engagement page, this will be the public engagement page event listening session 2 date',
+        description: 'Navigate to the public engagement page, this will be the public engagement page event listening session 2 date',
       },
     }),
     REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_dLw3xChiTlaOLGdHXQWk0w`,
@@ -335,7 +335,7 @@ export const EVENTS = [
       INFO: {
         id: 'public.eng.page.event.listening.3.info',
         defaultMessage: `May 10th (4:00 PM EST)`,
-        description: 'Navigate to the the public engagement page, this will be the public engagement page event listening session 3 date',
+        description: 'Navigate to the public engagement page, this will be the public engagement page event listening session 3 date',
       },
     }),
     REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_dt0xRNioR8SugY2hrDk1JA`,
@@ -352,7 +352,7 @@ export const EVENTS = [
       INFO: {
         id: 'public.eng.page.event.listening.4.info',
         defaultMessage: `May 19th (4:00 PM EST)`,
-        description: 'Navigate to the the public engagement page, this will be the public engagement page event listening session 4 date',
+        description: 'Navigate to the public engagement page, this will be the public engagement page event listening session 4 date',
       },
     }),
     REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_1PR73vLDQpq1zoAWkhKB5g`,

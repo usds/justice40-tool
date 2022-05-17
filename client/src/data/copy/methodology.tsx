@@ -263,7 +263,7 @@ export const CATEGORIES = {
   />,
   ALL_EXCEPT_WORKFORCE: <FormattedMessage
     id={'methodology.page.datasets.all.except.workforce.used.in.text'}
-    defaultMessage={`All categories except for the training and workforce development catetory`}
+    defaultMessage={`All categories except for the training and workforce development category`}
     description={'Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card Used In text for all methodologies except the workforce development'}
   />,
   CLIMATE_CHANGE: {
@@ -687,17 +687,17 @@ export const AVAILABLE_FOR = defineMessages({
   ALL_US_DC: {
     id: 'methodology.page.dataset.card.availableFor.US_DC',
     defaultMessage: `All U.S. states and the District of Columbia`,
-    description: 'Methodoloy page dataset card available for US and DC type',
+    description: 'Methodology page dataset card available for US and DC type',
   },
   ALL_US_DC_PR: {
     id: 'methodology.page.dataset.card.availableFor.US_DC_PR',
     defaultMessage: `All U.S. states, the District of Columbia, and Puerto Rico`,
-    description: 'Methodoloy page dataset card available for US, DC and Puerto Rico type',
+    description: 'Methodology page dataset card available for US, DC and Puerto Rico type',
   },
   AS_NMI: {
     id: 'methodology.page.dataset.card.availableFor.AS_NMI',
     defaultMessage: `American Samoa and the Northern Mariana Islands`,
-    description: 'Methodoloy page dataset card available for American Samoa and Northern Mariana Islands type',
+    description: 'Methodology page dataset card available for American Samoa and Northern Mariana Islands type',
   },
 });
 

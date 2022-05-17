@@ -29,7 +29,7 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
       </p>
       <img
         alt="
-      An icon that has depicts pieces of a block selected mimicing the census block census tracts
+      An icon that has depicts pieces of a block selected mimicking the census block census tracts
     "
         src="test-file-stub"
         tabindex="0"

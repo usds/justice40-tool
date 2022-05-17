@@ -132,7 +132,7 @@
     "description": "Navigate to the about page. This is third Footer column header"
   },
   "common.pages.footer.eng.cal.text": {
-    "defaultMessage": "Engagement calender",
+    "defaultMessage": "Engagement calendar",
     "description": "Navigate to the about page. This is Footer eng.cal.gov link text"
   },
   "common.pages.footer.findcontact": {
@@ -176,7 +176,7 @@
     "description": "Navigate to the about page. This is Footer rfi link"
   },
   "common.pages.footer.rfi.text": {
-    "defaultMessage": "Request for Infomation",
+    "defaultMessage": "Request for Information",
     "description": "Navigate to the about page. This is Footer rfi link text"
   },
   "common.pages.footer.whitehouse.link": {
@@ -289,7 +289,7 @@
   },
   "downloads.page.description1.text": {
     "defaultMessage": "The dataset used in the tool, along with a data dictionary and information about how to use the list of communities (.pdf) are available in the following file formats:",
-    "description": "Navigate to the the Downloads page, this will be the page description1 text"
+    "description": "Navigate to the Downloads page, this will be the page description1 text"
   },
   "downloads.page.excel.link": {
     "defaultMessage": "<link1>Excel file</link1> (.xlxs {excelFileSize} unzipped)",
@@ -297,11 +297,11 @@
   },
   "downloads.page.heading1.text": {
     "defaultMessage": "Downloads",
-    "description": "Navigate to the the Downloads page, this will be the page heading1 text"
+    "description": "Navigate to the Downloads page, this will be the page heading1 text"
   },
   "downloads.page.heading2.text": {
     "defaultMessage": "File formats",
-    "description": "Navigate to the the Downloads page, this will be the page heading2 text"
+    "description": "Navigate to the Downloads page, this will be the page heading2 text"
   },
   "downloads.page.shape.link": {
     "defaultMessage": "<link1>Shapefiles </link1> (Codebook included with geojson {shapeFileSize} unzipped)",
@@ -309,10 +309,10 @@
   },
   "downloads.page.title.text": {
     "defaultMessage": "Downloads",
-    "description": "Navigate to the the Downloads page, this will be the page title text"
+    "description": "Navigate to the Downloads page, this will be the page title text"
   },
   "explore.map.page.description.text": {
-    "defaultMessage": "Use the map to see communities that are identified as disadvantaged. The map uses publicly-available, nationally-consistent datasets. Learn more about the methodology and datasets that were used to identify disavantaged communities in the current version of the map on the <link1>Methodology & data</link1> page.",
+    "defaultMessage": "Use the map to see communities that are identified as disadvantaged. The map uses publicly-available, nationally-consistent datasets. Learn more about the methodology and datasets that were used to identify disadvantaged communities in the current version of the map on the <link1>Methodology & data</link1> page.",
     "description": "On the explore the map page, the description of the page"
   },
   "explore.map.page.heading.text": {
@@ -345,11 +345,11 @@
   },
   "explore.map.page.map.territoryFocus.american.samoa.long": {
     "defaultMessage": "American Samoa",
-    "description": "On the explore the map page, on the map, the full name indicating the bounds of American Somoa"
+    "description": "On the explore the map page, on the map, the full name indicating the bounds of American Samoa"
   },
   "explore.map.page.map.territoryFocus.american.samoa.short": {
     "defaultMessage": "AS",
-    "description": "On the explore the map page, on the map, the abbreviated name indicating the bounds of American Somoa"
+    "description": "On the explore the map page, on the map, the abbreviated name indicating the bounds of American Samoa"
   },
   "explore.map.page.map.territoryFocus.commonwealth.nmp.long": {
     "defaultMessage": "Commonwealth of Northern Mariana Islands",
@@ -457,103 +457,103 @@
   },
   "explore.map.page.side.panel.indicator.description.asthma": {
     "defaultMessage": "Weighted percent of people who have been told they have asthma",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator desciption of Number of people who have been told they have asthma"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Number of people who have been told they have asthma"
   },
   "explore.map.page.side.panel.indicator.description.diabetes": {
     "defaultMessage": "Weighted percent of people ages 18 years and older who have diabetes other than diabetes during pregnancy",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator desciption of People ages 18 years and older who have diabetes other than \n      diabetes during pregnancy"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of People ages 18 years and older who have diabetes other than \n      diabetes during pregnancy"
   },
   "explore.map.page.side.panel.indicator.description.dieselPartMatter": {
     "defaultMessage": "Diesel exhaust in the air",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator desciption of Diesel exhaust in the air"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Diesel exhaust in the air"
   },
   "explore.map.page.side.panel.indicator.description.energyBurden": {
     "defaultMessage": "Average annual energy costs divided by household income",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator desciption of Energy costs divided by household income"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Energy costs divided by household income"
   },
   "explore.map.page.side.panel.indicator.description.exp.ag.loss": {
     "defaultMessage": "Economic loss rate to agricultural value resulting from natural hazards each year",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator desciption of Economic loss rate to agriculture resulting from naturhazards\n    "
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Economic loss rate to agriculture resulting from natural hazards\n    "
   },
   "explore.map.page.side.panel.indicator.description.exp.bld.loss": {
     "defaultMessage": "Economic loss rate to agricultural value resulting from natural hazards each year",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side \n    panel will show an indicator desciption of Economic loss rate to buildings resulting from natural hazards"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side \n    panel will show an indicator description of Economic loss rate to buildings resulting from natural hazards"
   },
   "explore.map.page.side.panel.indicator.description.exp.pop.loss": {
     "defaultMessage": "Rate of fatalities and injuries resulting from natural hazards each year",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator desciption of Economic loss rate to the population in fatalities and \n      injuries resulting from natural hazards"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Economic loss rate to the population in fatalities and \n      injuries resulting from natural hazards"
   },
   "explore.map.page.side.panel.indicator.description.heartDisease": {
     "defaultMessage": "People ages 18 years and older who have been told they have heart disease",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator desciption of Weighted percent of people ages 18 years and older who have \n    been told they have heart disease"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Weighted percent of people ages 18 years and older who have \n    been told they have heart disease"
   },
   "explore.map.page.side.panel.indicator.description.high.ed": {
     "defaultMessage": "Percent of the census tract's population 15 or older not enrolled in college, university, or graduate school",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator desciption of Percent of the census tract's population 15 or older not \n      enrolled in college, university, or graduate school"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of the census tract's population 15 or older not \n      enrolled in college, university, or graduate school"
   },
   "explore.map.page.side.panel.indicator.description.high.school": {
     "defaultMessage": "Percent of people ages 25 years or older whose education level is less than a high school diploma",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator desciption of Percent of people ages 25 years or older whose education level \n      is less than a high school diploma"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of people ages 25 years or older whose education level \n      is less than a high school diploma"
   },
   "explore.map.page.side.panel.indicator.description.houseBurden": {
     "defaultMessage": "Low income households spending more than 30% of income on housing",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator desciption of Low income households spending more than 30% of income housing\n    "
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Low income households spending more than 30% of income housing\n    "
   },
   "explore.map.page.side.panel.indicator.description.leadPaint": {
     "defaultMessage": "Percentile of number of homes built before 1960 that are not among the most expensive",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator desciption of Pre-1960 housing"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Pre-1960 housing"
   },
   "explore.map.page.side.panel.indicator.description.lifeExpect": {
     "defaultMessage": "Average number of years a person can expect to live",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator desciption of Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator desciption of Average number of years of life a person can expect to live"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Average number of years of life a person can expect to live"
   },
   "explore.map.page.side.panel.indicator.description.ling.iso": {
     "defaultMessage": "Percent of households where no one over the age 14 speaks English well",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator desciption of Households in which no one age 14 and over speaks English only or also speaks a language other than English"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Households in which no one age 14 and over speaks English only or also speaks a language other than English"
   },
   "explore.map.page.side.panel.indicator.description.low.income": {
     "defaultMessage": "Household income is less than or equal to twice the federal poverty level",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator desciption of Household income is less than or equal to twice the federal poverty level"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Household income is less than or equal to twice the federal poverty level"
   },
   "explore.map.page.side.panel.indicator.description.low.med.income": {
     "defaultMessage": "Median income calculated as a percent of the area’s median income",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator desciption of Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator desciption of Median income calculated as a percent of the area’s median income"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Median income calculated as a percent of the area’s median income"
   },
   "explore.map.page.side.panel.indicator.description.med.home.val": {
     "defaultMessage": "Median home value in area",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator desciption of Meidan home value in area"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Median home value in area"
   },
   "explore.map.page.side.panel.indicator.description.pm25": {
     "defaultMessage": "Fine inhalable particles, 2.5 micrometers or smaller",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator desciption of Fine inhalable particles, 2.5 micrometers and smaller"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Fine inhalable particles, 2.5 micrometers and smaller"
   },
   "explore.map.page.side.panel.indicator.description.poverty": {
     "defaultMessage": "Percent of a census tract's population in households where the household income is at or below 100% of the Federal poverty level",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator desciption of Percent of individuals in households where the household income is at or below 100% of the federal poverty level"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of individuals in households where the household income is at or below 100% of the federal poverty level"
   },
   "explore.map.page.side.panel.indicator.description.prox.haz": {
     "defaultMessage": "Count of hazardous waste facilities within 5 kilometers",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator desciption of Count of hazardous waste facilities within 5 kilometers"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Count of hazardous waste facilities within 5 kilometers"
   },
   "explore.map.page.side.panel.indicator.description.prox.npl": {
     "defaultMessage": "Proposed or listed NPL (Superfund) sites within 5 kilometers",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator desciption of Proposed or listed NPL (Superfund) sites within 5 kilometers"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Proposed or listed NPL (Superfund) sites within 5 kilometers"
   },
   "explore.map.page.side.panel.indicator.description.prox.rmp": {
     "defaultMessage": "RMP facilities within 5 kilometers",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator desciption of Risk Management Plan facilities within 5 kilometers"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Risk Management Plan facilities within 5 kilometers"
   },
   "explore.map.page.side.panel.indicator.description.trafficVolume": {
     "defaultMessage": "Count of vehicles at major roads within 500 meters",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator desciption of Count of vehicles at major roads within 500 meters"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Count of vehicles at major roads within 500 meters"
   },
   "explore.map.page.side.panel.indicator.description.unemploy": {
     "defaultMessage": "Number of unemployed people as a percentage of the labor force",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side \n    panel will show an indicator desciption of Number of unemployed people as a percentage of the labor force"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side \n    panel will show an indicator description of Number of unemployed people as a percentage of the labor force"
   },
   "explore.map.page.side.panel.indicator.description.wasteWater": {
     "defaultMessage": "Toxic concentrations at stream segments within 500 meters",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator desciption of Toxic concentrations at stream segments within 500 meters"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Toxic concentrations at stream segments within 500 meters"
   },
   "explore.map.page.side.panel.indicator.diabetes": {
     "defaultMessage": "Diabetes",
@@ -712,7 +712,7 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Wastewater discharge"
   },
   "explore.map.page.side.panel.info.alt.text.icon1": {
-    "defaultMessage": "An icon that has depicts pieces of a block selected mimicing the census block census tracts",
+    "defaultMessage": "An icon that has depicts pieces of a block selected mimicking the census block census tracts",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the first icon in this side panel"
   },
   "explore.map.page.side.panel.info.alt.text.icon2": {
@@ -749,7 +749,7 @@
   },
   "explore.map.page.side.panel.info.para5": {
     "defaultMessage": "Thresholds for each category determine if a tract should be identified as disadvantaged because it has exceeded a certain value for the relevant indicators.",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panelwill show Things to know, this is the fifth paragraph of this side pane"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the fifth paragraph of this side pane"
   },
   "explore.map.page.side.panel.info.title": {
     "defaultMessage": "Things to know",
@@ -840,12 +840,12 @@
     "description": "Navigate to the explore the map page. Under the map, you will see tribal nations intro text"
   },
   "explore.map.page.under.map.note.on.tribal.nations.para.1": {
-    "defaultMessage": "The map covers all U.S. census tracts, including those located within Tribal Nations, to the extent that data is available (see our <link1>Methodology & data</link1> page for more information). CEQ is engaging in consultation and coordination with Tribal Nations on the beta version of the map to provide Tribal Nations with meaningful opportunities for input, consistent with CEQ’s <link2> Action Plan for Consultation and Coordination with Tribal Nations</link2>, <link3>President Biden’s Memorandum on Tribal Consultation and Strengthening Nation-to-Nation Consultation</link3>, and Executive Order 13175 on <link4>Consulation and Coordination With Indian Tribal Governments</link4>.",
+    "defaultMessage": "The map covers all U.S. census tracts, including those located within Tribal Nations, to the extent that data is available (see our <link1>Methodology & data</link1> page for more information). CEQ is engaging in consultation and coordination with Tribal Nations on the beta version of the map to provide Tribal Nations with meaningful opportunities for input, consistent with CEQ’s <link2> Action Plan for Consultation and Coordination with Tribal Nations</link2>, <link3>President Biden’s Memorandum on Tribal Consultation and Strengthening Nation-to-Nation Consultation</link3>, and Executive Order 13175 on <link4>Consultation and Coordination With Indian Tribal Governments</link4>.",
     "description": "Navigate to the explore the map page. Under the map, you will see tribal nations paragraph 1"
   },
   "explore.tool.page.side.panel.indicator.percentile.value.ordinal.suffix": {
     "defaultMessage": "{indicatorValue, selectordinal, one {#st} two {#nd} =3 {#rd} other {#th} }",
-    "description": "Navigate to the explore the tool page. Click on the map. The side panel will show categories. Open a category. This will define the indicator value's oridinal suffix. For example the st in 91st, the rd in 23rd, and the th in 26th, etc."
+    "description": "Navigate to the explore the tool page. Click on the map. The side panel will show categories. Open a category. This will define the indicator value's ordinal suffix. For example the st in 91st, the rd in 23rd, and the th in 26th, etc."
   },
   "explore.tool.page.side.panel.indicator.title.clean.water": {
     "defaultMessage": "Clean water and wastewater infrastructure",
@@ -853,15 +853,15 @@
   },
   "fab.survey.text": {
     "defaultMessage": "Help improve the site & data",
-    "description": "Navigate to the the public engagement page, this will be the text for floating action button"
+    "description": "Navigate to the public engagement page, this will be the text for floating action button"
   },
   "faqs.page.coming.soon.text": {
     "defaultMessage": "Coming Soon!",
-    "description": "Navigate to the the FAQs page, this will be the page coming soon text"
+    "description": "Navigate to the FAQs page, this will be the page coming soon text"
   },
   "faqs.page.title.text": {
     "defaultMessage": "Frequently asked questions",
-    "description": "Navigate to the the FAQs page, this will be the page title text"
+    "description": "Navigate to the FAQs page, this will be the page title text"
   },
   "indicator.categories.afford.house.title": {
     "defaultMessage": "Affordable and sustainable housing",
@@ -1077,15 +1077,15 @@
   },
   "methodology.page.dataset.card.availableFor.AS_NMI": {
     "defaultMessage": "American Samoa and the Northern Mariana Islands",
-    "description": "Methodoloy page dataset card available for American Samoa and Northern Mariana Islands type"
+    "description": "Methodology page dataset card available for American Samoa and Northern Mariana Islands type"
   },
   "methodology.page.dataset.card.availableFor.US_DC": {
     "defaultMessage": "All U.S. states and the District of Columbia",
-    "description": "Methodoloy page dataset card available for US and DC type"
+    "description": "Methodology page dataset card available for US and DC type"
   },
   "methodology.page.dataset.card.availableFor.US_DC_PR": {
     "defaultMessage": "All U.S. states, the District of Columbia, and Puerto Rico",
-    "description": "Methodoloy page dataset card available for US, DC and Puerto Rico type"
+    "description": "Methodology page dataset card available for US, DC and Puerto Rico type"
   },
   "methodology.page.dataset.indicator.asthma.title.text": {
     "defaultMessage": "Asthma",
@@ -1224,7 +1224,7 @@
     "description": "Navigate to the Methodology page. This is the description of the dataset section"
   },
   "methodology.page.datasets.all.except.workforce.used.in.text": {
-    "defaultMessage": "All categories except for the training and workforce development catetory",
+    "defaultMessage": "All categories except for the training and workforce development category",
     "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card Used In text for all methodologies except the workforce development"
   },
   "methodology.page.datasets.all.used.in.text": {
@@ -1389,75 +1389,75 @@
   },
   "public.eng.page.button.img.alt.tag": {
     "defaultMessage": "an icon that represents a calendar",
-    "description": "Navigate to the the public engagement page, this will be the public engagement button icon alt tag text"
+    "description": "Navigate to the public engagement page, this will be the public engagement button icon alt tag text"
   },
   "public.eng.page.button.label": {
     "defaultMessage": "Public engagement",
-    "description": "Navigate to the the public engagement page, this will be the public engagement button label"
+    "description": "Navigate to the public engagement page, this will be the public engagement button label"
   },
   "public.eng.page.description1.text": {
     "defaultMessage": "CEQ is hosting engagement opportunities to connect with the public about the current version of the tool. These sessions are an opportunity to obtain training on the tool or to provide feedback on the beta version of the tool. CEQ hopes that members of the public will join these engagements to learn about the tool, have their questions answered, and share feedback.",
-    "description": "Navigate to the the public engagement page, this will be the publiceng page description 1 text"
+    "description": "Navigate to the public engagement page, this will be the publiceng page description 1 text"
   },
   "public.eng.page.description2.text": {
     "defaultMessage": "Pre-registration is required to participate and speak at the sessions.",
-    "description": "Navigate to the the public engagement page, this will be the publiceng page description 2 text"
+    "description": "Navigate to the public engagement page, this will be the publiceng page description 2 text"
   },
   "public.eng.page.description3.text": {
     "defaultMessage": "As they become available, additional public trainings and engagement opportunities on the Climate and Economic Justice Screening Tool will also be posted on this page.",
-    "description": "Navigate to the the public engagement page, this will be the publiceng page description 3 text"
+    "description": "Navigate to the public engagement page, this will be the publiceng page description 3 text"
   },
   "public.eng.page.event.info.label": {
     "defaultMessage": "Event info",
-    "description": "Navigate to the the public engagement page, this will be the public engagement page event info label"
+    "description": "Navigate to the public engagement page, this will be the public engagement page event info label"
   },
   "public.eng.page.event.listening.1.info": {
     "defaultMessage": "March 22nd (4:00 - 5:00 PM EST)",
-    "description": "Navigate to the the public engagement page, this will be the public engagement page event listening session 1 date"
+    "description": "Navigate to the public engagement page, this will be the public engagement page event listening session 1 date"
   },
   "public.eng.page.event.listening.2.info": {
     "defaultMessage": "April 15th (4:00 - 5:00 PM EST)",
-    "description": "Navigate to the the public engagement page, this will be the public engagement page event listening session 2 date"
+    "description": "Navigate to the public engagement page, this will be the public engagement page event listening session 2 date"
   },
   "public.eng.page.event.listening.3.info": {
     "defaultMessage": "May 10th (4:00 PM EST)",
-    "description": "Navigate to the the public engagement page, this will be the public engagement page event listening session 3 date"
+    "description": "Navigate to the public engagement page, this will be the public engagement page event listening session 3 date"
   },
   "public.eng.page.event.listening.4.info": {
     "defaultMessage": "May 19th (4:00 PM EST)",
-    "description": "Navigate to the the public engagement page, this will be the public engagement page event listening session 4 date"
+    "description": "Navigate to the public engagement page, this will be the public engagement page event listening session 4 date"
   },
   "public.eng.page.event.listening.sess.description": {
     "defaultMessage": "CEQ is hosting public listening sessions to seek input and feedback on the beta version of the tool, including on the datasets it includes and the methodology it uses. This feedback is critical to the development and enhancement of the tool. This feedback will help CEQ update and refine the tool to ensure that it reflects the environmental, climate and other challenges that communities are experiencing.",
-    "description": "Navigate to the the public engagement page, this will be the public engagement page event listening session description"
+    "description": "Navigate to the public engagement page, this will be the public engagement page event listening session description"
   },
   "public.eng.page.event.listening.sess.name": {
     "defaultMessage": "listening session",
-    "description": "Navigate to the the public engagement page, this will be the public engagement page event listening session name"
+    "description": "Navigate to the public engagement page, this will be the public engagement page event listening session name"
   },
   "public.eng.page.event.reglink.label": {
     "defaultMessage": "Registration link",
-    "description": "Navigate to the the public engagement page, this will be the public engagment page event registration link label"
+    "description": "Navigate to the public engagement page, this will be the public engagement page event registration link label"
   },
   "public.eng.page.event.training.1.info": {
     "defaultMessage": "March 9th (4:00 - 5:00 PM EST)",
-    "description": "Navigate to the the public engagement page, this will be the public engagement page event training session 1 date"
+    "description": "Navigate to the public engagement page, this will be the public engagement page event training session 1 date"
   },
   "public.eng.page.event.training.2.info": {
     "defaultMessage": "March 10th (4:00 - 5:00 PM EST)",
-    "description": "Navigate to the the public engagement page, this will be the public engagement page event training session 2 date"
+    "description": "Navigate to the public engagement page, this will be the public engagement page event training session 2 date"
   },
   "public.eng.page.event.training.3.info": {
     "defaultMessage": "March 16th (4:00 - 5:00 PM EST)",
-    "description": "Navigate to the the public engagement page, this will be the public engagement page event training session 3 date"
+    "description": "Navigate to the public engagement page, this will be the public engagement page event training session 3 date"
   },
   "public.eng.page.event.training.description": {
     "defaultMessage": "The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to use the current version of the tool. The presenters at these webinars will be available to provide technical support and address issues related to accessing and using the tool.",
-    "description": "Navigate to the the public engagement page, this will be the public engagement page event training session description"
+    "description": "Navigate to the public engagement page, this will be the public engagement page event training session description"
   },
   "public.eng.page.event.training.sess.name": {
     "defaultMessage": "training session",
-    "description": "Navigate to the the public engagement page, this will be the public engagement page event training session name"
+    "description": "Navigate to the public engagement page, this will be the public engagement page event training session name"
   },
   "public.eng.page.event.whejac.meeting.day.1.description": {
     "defaultMessage": "The White House Environmental Justice Advisory Council is also soliciting feedback on the beta version of the Climate and Economic Justice Screening Tool at its public meeting. The link above has additional details.",
@@ -1477,43 +1477,43 @@
   },
   "public.eng.page.heading1.text": {
     "defaultMessage": "Public engagement opportunities",
-    "description": "Navigate to the the public engagement page, this will be the publiceng page header text"
+    "description": "Navigate to the public engagement page, this will be the publiceng page header text"
   },
   "public.eng.page.sub.header2.text": {
     "defaultMessage": "Find an event",
-    "description": "Navigate to the the public engagement page, this will be the publiceng page sub header text"
+    "description": "Navigate to the public engagement page, this will be the publiceng page sub header text"
   },
   "public.eng.page.tag.label": {
     "defaultMessage": "UPDATED",
-    "description": "Navigate to the the public engagement page, this will be the public engagement tag label"
+    "description": "Navigate to the public engagement page, this will be the public engagement tag label"
   },
   "public.eng.page.title.text": {
     "defaultMessage": "Public engagement opportunities",
-    "description": "Navigate to the the public engagement page, this will be the publiceng page title text"
+    "description": "Navigate to the public engagement page, this will be the publiceng page title text"
   },
   "public.eng.page.video.box.body.text": {
     "defaultMessage": "Watch a recorded version of the CEJST training on YouTube.",
-    "description": "Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box body text."
+    "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box body text."
   },
   "public.eng.page.video.box.button.img.alt.text1": {
     "defaultMessage": "the icon to show that this button will open in a new tab",
-    "description": "Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is alt tag of the image in the button."
+    "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is alt tag of the image in the button."
   },
   "public.eng.page.video.box.button.img.alt.text2": {
     "defaultMessage": "the icon to show that this button will download the file",
-    "description": "Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is alt tag of the image in the 2nd button."
+    "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is alt tag of the image in the 2nd button."
   },
   "public.eng.page.video.box.button1.text": {
     "defaultMessage": "Watch on YouTube",
-    "description": "Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box button text."
+    "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box button text."
   },
   "public.eng.page.video.box.button2.text": {
     "defaultMessage": "Download slide deck",
-    "description": "Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is the button text for the second button."
+    "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is the button text for the second button."
   },
   "public.eng.page.video.box.title.text": {
     "defaultMessage": "Can't make an upcoming session?",
-    "description": "Navigate to the the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box title text."
+    "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box title text."
   },
   "public.eng.page.whejac.meeting.day.1.info": {
     "defaultMessage": "March 30th (3:00 - 7:00 PM EST)",
@@ -1525,10 +1525,10 @@
   },
   "technical.support.doc.page.coming.soon.text": {
     "defaultMessage": "Coming Soon!",
-    "description": "Navigate to the the Technical Support Doc page, this will be the page coming soon text"
+    "description": "Navigate to the Technical Support Doc page, this will be the page coming soon text"
   },
   "technical.support.doc.page.title.text": {
     "defaultMessage": "Technical Support Document",
-    "description": "Navigate to the the Technical Support Doc page, this will be the page title text"
+    "description": "Navigate to the Technical Support Doc page, this will be the page title text"
   }
 }

@@ -82,7 +82,7 @@ exports[`J40Footer renders correctly 1`] = `
                     class="footer-link-first-child"
                     href="/en/public-engagement"
                   >
-                    Engagement calender
+                    Engagement calendar
                   </a>
                 </li>
                 <li
@@ -90,12 +90,12 @@ exports[`J40Footer renders correctly 1`] = `
                 >
                   <a
                     class="usa-link usa-link--external"
-                    data-cy="request-for-infomation"
+                    data-cy="request-for-information"
                     href="https://www.federalregister.gov/d/2022-03920"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Request for Infomation
+                    Request for Information
                   </a>
                 </li>
                 <li

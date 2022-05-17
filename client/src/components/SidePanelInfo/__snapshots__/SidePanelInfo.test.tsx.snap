@@ -24,7 +24,7 @@ exports[`rendering of the component expects the render to match snapshot 1`] = `
     </p>
     <img
       alt="
-      An icon that has depicts pieces of a block selected mimicing the census block census tracts
+      An icon that has depicts pieces of a block selected mimicking the census block census tracts
     "
       src="test-file-stub"
       tabindex="0"
