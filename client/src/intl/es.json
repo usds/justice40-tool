@@ -199,7 +199,7 @@
     "explore.map.page.side.panel.send.feedback.email.body": "Aporte comentarios acerca de este grupo de bloques del censo, incluidos los conjuntos de datos, las categorías de datos proporcionadas para este grupo de bloques del censo, las comunidades que viven en este grupo de bloques del censo y toda la información pertinente que el Consejo sobre la Calidad del Medio Ambiente (CEQ, por sus siglas en inglés) debe saber acerca de este grupo de bloques del censo.",
     "explore.map.page.side.panel.send.feedback.title": "Enviar comentarios",
     "explore.map.page.side.panel.spacer.and": "Y",
-    "explore.map.page.side.panel.version.title": "Versión de la metodología {versión}",
+    "explore.map.page.side.panel.version.title": "Versión de la metodología {version}",
     "explore.map.page.title.text": "Explore la herramienta",
     "explore.map.page.under.map.download.draft.ptag.1": "<link1>Descargue la lista vigente [en inglés]</link1> de las comunidades y los conjuntos de datos que se usaron (el archivo .zip incluirá un archivo .xlsx y un archivo .csv, con un tamaño no comprimido de {downloadFileSize}). Última actualización: {dateUpdated}.",
     "explore.map.page.under.map.how.you.can.help.heading": "Contribuya a mejorar la herramienta",
