@@ -137,7 +137,7 @@ const AboutPage = ({location}: IAboutPageProps) => {
             size={'small'}
             imgSrc={commentIcon}
             header={intl.formatMessage(ABOUT_COPY.GET_INVOLVED.SEND_FEEDBACK_HEADING)}
-            linkText={`Email: ${COMMON_COPY.FEEDBACK_EMAIL}`}
+            linkText={ABOUT_COPY.GET_INVOLVED_COMMENTS.EMAIL}
             url={`mailto:${COMMON_COPY.FEEDBACK_EMAIL}`}
             openUrlNewTab={true}
             internal={false}>

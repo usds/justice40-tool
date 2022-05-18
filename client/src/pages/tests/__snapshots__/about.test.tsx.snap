@@ -787,7 +787,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Email: Screeningtool-Support@omb.eop.gov
+                    
+      Email: Screeningtool-Support@omb.eop.gov
+    
                   </a>
                 </div>
               </div>
