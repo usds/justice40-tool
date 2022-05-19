@@ -357,6 +357,7 @@ def load_yaml_dict_from_file(
         except ValidationError as e:
             logger.error(f"Invalid YAML config file {yaml_file_path}")
             logger.error(e.normalized_messages())
+            sys.exit()
 
     return yaml_dict
 
