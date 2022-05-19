@@ -8,22 +8,22 @@ export const PAGE_INTRO = defineMessages({
   PAGE_TILE: {
     id: 'downloads.page.title.text',
     defaultMessage: 'Downloads',
-    description: 'Navigate to the the Downloads page, this will be the page title text',
+    description: 'Navigate to the Downloads page, this will be the page title text',
   },
   PAGE_HEADING1: {
     id: 'downloads.page.heading1.text',
     defaultMessage: 'Downloads',
-    description: 'Navigate to the the Downloads page, this will be the page heading1 text',
+    description: 'Navigate to the Downloads page, this will be the page heading1 text',
   },
   PAGE_HEADING2: {
     id: 'downloads.page.heading2.text',
     defaultMessage: 'File formats',
-    description: 'Navigate to the the Downloads page, this will be the page heading2 text',
+    description: 'Navigate to the Downloads page, this will be the page heading2 text',
   },
   PAGE_DESCRIPTION1: {
     id: 'downloads.page.description1.text',
     defaultMessage: 'The dataset used in the tool, along with a data dictionary and information about how to use the list of communities (.pdf) are available in the following file formats:',
-    description: 'Navigate to the the Downloads page, this will be the page description1 text',
+    description: 'Navigate to the Downloads page, this will be the page description1 text',
   },
 });
 

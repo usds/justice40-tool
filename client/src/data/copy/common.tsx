@@ -167,12 +167,12 @@ export const FOOTER = defineMessages({
   },
   ENG_CAL: {
     id: 'common.pages.footer.eng.cal.text',
-    defaultMessage: 'Engagement calender',
+    defaultMessage: 'Engagement calendar',
     description: 'Navigate to the about page. This is Footer eng.cal.gov link text',
   },
   RFI: {
     id: 'common.pages.footer.rfi.text',
-    defaultMessage: 'Request for Infomation',
+    defaultMessage: 'Request for Information',
     description: 'Navigate to the about page. This is Footer rfi link text',
   },
   RFI_LINK: {

@@ -1174,7 +1174,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Used in: 
                     </span>
-                    All categories except for the training and workforce development catetory
+                    All categories except for the training and workforce development category
                   </li>
                   <li>
                     <span>
@@ -2573,7 +2573,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     class="footer-link-first-child"
                     href="/en/public-engagement"
                   >
-                    Engagement calender
+                    Engagement calendar
                   </a>
                 </li>
                 <li
@@ -2581,12 +2581,12 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 >
                   <a
                     class="usa-link usa-link--external"
-                    data-cy="request-for-infomation"
+                    data-cy="request-for-information"
                     href="https://www.federalregister.gov/d/2022-03920"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Request for Infomation
+                    Request for Information
                   </a>
                 </li>
                 <li

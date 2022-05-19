@@ -5,7 +5,7 @@ import {Link as TrussLink} from '@trussworks/react-uswds';
 import {IDefineMessage} from '../../data/copy/common';
 
 interface ILinkTypeWrapper {
-    linkText?: string;
+    linkText?: string | JSX.Element;
     internal?: boolean;
     url: string | IDefineMessage;
     openUrlNewTab?: boolean;

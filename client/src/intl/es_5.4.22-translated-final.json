@@ -1289,7 +1289,7 @@
   },
   "methodology.page.indicator.categories.clean.water.methodology": {
     "defaultMessage": "Categoría de infraestructura crítica para agua no contaminada y residuos",
-    "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Critical clean water and wasterwater infrastructure methodology"
+    "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Critical clean water and wastewater infrastructure methodology"
   },
   "methodology.page.indicator.categories.climate.change.if": {
     "defaultMessage": "<boldtag>SI</boldtag> está en el percentil de 90 o por encima de este para la <link1>tasa prevista de pérdida agrícola</link1> O la <link2>tasa prevista de pérdida de edificios</link2> O la <link3>tasa prevista de pérdida de población</link3>",

@@ -88,8 +88,6 @@ export const IndicatorValueSubText = ({value, isAboveThresh, threshold, isPercen
         <IndicatorValue isPercent={isPercent} displayStat={threshold} /> :
         <IndicatorValue isPercent={isPercent} displayStat={90} />
       }
-
-      {/* {!isPercent && `th`} */}
       {` `}
       {
         isPercent ?
@@ -105,13 +103,34 @@ export const IndicatorValueSubText = ({value, isAboveThresh, threshold, isPercen
  * just the suffix portion if the value is a percentile. This function will add
  * a superscript styling to just the suffix portion of percentile values.
  *
+ * The i18n variable named i18nOrdinalSuffix, in the IndicatorValue function defines the
+ * various prefixes. The Spanish version of the i18n variable works in a similar manner,
+ * however has a differnce. The superscripting is different for Spanish.
+ * In Spanish, the suffix is a ".a" and ".o", where only the "a" and "o" are superscripted.
+ * This function handles this case.
+ *
+ * Verbatim from translation team:
+ * We suggest changing this to the Spanish ordinal number abbreviation, which is .o for masculine
+ * and .a for feminine gendered words. ***Since this ranking applies to the communities of focus,
+ * which use a feminine gender in Spanish, we recommend that the th ordinal abbreviation in English
+ * be substituted with the feminine ordinal abbreviation in Spanish: .a  throughout the text.
+ * E.g., 19th would be 19.a in Spanish and 65th would be 65.a
+ *
  * @param {string} indicatorValueWithSuffix
  * @return {string}
  */
 export const superscriptOrdinal = (indicatorValueWithSuffix:string) => {
+  // Spanish case:
+  if (indicatorValueWithSuffix.indexOf('.') !== -1) {
+    const ordinalSuffix = indicatorValueWithSuffix.charAt(indicatorValueWithSuffix.length - 1);
+    const indicatorValue = indicatorValueWithSuffix.slice(0, -1);
+
+    return <>{indicatorValue}<sup style={{top: '-0.2em'}}>{ordinalSuffix}</sup></>;
+  }
+
+  // English case:
   const valueRegEx = /[0-9]{1,2}/;
   const suffixRegEx = /[a-z]{2}/; // ie, (st, nd, rd, th)
-
   const indicatorValue = valueRegEx.exec(indicatorValueWithSuffix);
   const ordinalSuffix = suffixRegEx.exec(indicatorValueWithSuffix);
 
@@ -133,7 +152,7 @@ export const IndicatorValue = ({isPercent, displayStat}:IIndicatorValue) => {
       {
         id: 'explore.tool.page.side.panel.indicator.percentile.value.ordinal.suffix',
         // eslint-disable-next-line max-len
-        description: `Navigate to the explore the tool page. Click on the map. The side panel will show categories. Open a category. This will define the indicator value's oridinal suffix. For example the st in 91st, the rd in 23rd, and the th in 26th, etc.`,
+        description: `Navigate to the explore the tool page. Click on the map. The side panel will show categories. Open a category. This will define the indicator value's ordinal suffix. For example the st in 91st, the rd in 23rd, and the th in 26th, etc.`,
         defaultMessage: `
         {indicatorValue, selectordinal, 
           one {#st} 
