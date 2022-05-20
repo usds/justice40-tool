@@ -4,6 +4,7 @@ import {useIntl} from 'gatsby-plugin-intl';
 
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
+import SubPageNav from '../components/SubPageNav';
 
 import * as DOWNLOADS_COPY from '../data/copy/downloads';
 
@@ -21,20 +22,33 @@ const DownloadsPage = ({location}: IDownloadsPageProps) => {
 
         <h1>{intl.formatMessage(DOWNLOADS_COPY.PAGE_INTRO.PAGE_HEADING1)}</h1>
 
-        <Grid desktop={{col: 8}}>
-          <h2>{intl.formatMessage(DOWNLOADS_COPY.PAGE_INTRO.PAGE_HEADING2)}</h2>
-          <p>
-            {intl.formatMessage(DOWNLOADS_COPY.PAGE_INTRO.PAGE_DESCRIPTION1)}
-          </p>
-          <p>
-            {DOWNLOADS_COPY.DOWNLOAD_LINKS.EXCEL}
-          </p>
-          <p>
-            {DOWNLOADS_COPY.DOWNLOAD_LINKS.CSV}
-          </p>
-          <p>
-            {DOWNLOADS_COPY.DOWNLOAD_LINKS.SHAPE}
-          </p>
+        <Grid row gap className={'j40-mb5-mt3'}>
+
+          <Grid col={12} tablet={{col: 8}}>
+            <h2>{intl.formatMessage(DOWNLOADS_COPY.PAGE_INTRO.PAGE_HEADING2)}</h2>
+            <p>
+              {intl.formatMessage(DOWNLOADS_COPY.PAGE_INTRO.PAGE_DESCRIPTION1)}
+            </p>
+            <p>
+              {DOWNLOADS_COPY.DOWNLOAD_LINKS.EXCEL}
+            </p>
+            <p>
+              {DOWNLOADS_COPY.DOWNLOAD_LINKS.CSV}
+            </p>
+            <p>
+              {DOWNLOADS_COPY.DOWNLOAD_LINKS.SHAPE}
+            </p>
+          </Grid>
+
+          {/* Second column */}
+          <Grid col={12} tablet={{col: 1}}>
+            {/* Spacer column */}
+          </Grid>
+
+          {/* Third column */}
+          <Grid col={12} tablet={{col: 3}}>
+            <SubPageNav />
+          </Grid>
         </Grid>
 
       </J40MainGridContainer>

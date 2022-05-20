@@ -4,11 +4,11 @@ import {useIntl} from 'gatsby-plugin-intl';
 
 import Categories from '../components/Categories';
 import DatasetContainer from '../components/DatasetContainer';
-import DownloadPacket from '../components/DownloadPacket';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import MethodologyFormula from '../components/MethodologyFormula';
 import Layout from '../components/layout';
 import PublicEngageButton from '../components/PublicEngageButton';
+import SubPageNav from '../components/SubPageNav';
 
 import * as METHODOLOGY_COPY from '../data/copy/methodology';
 
@@ -51,8 +51,13 @@ const IndexPage = ({location}: MethodPageProps) => {
           </Grid>
 
           {/* Second column */}
-          <Grid col={12} tablet={{col: 4}}>
-            <DownloadPacket />
+          <Grid col={12} tablet={{col: 1}}>
+            {/* Spacer column */}
+          </Grid>
+
+          {/* Third column */}
+          <Grid col={12} tablet={{col: 3}}>
+            <SubPageNav />
           </Grid>
         </Grid>
       </J40MainGridContainer>
