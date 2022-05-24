@@ -825,7 +825,11 @@
   },
   "explore.map.page.under.map.how.you.can.help.list.item.3": {
     "defaultMessage": "Respond to our Request for Information on <link1>federalregister.gov</link1>.",
-    "description": "Navigate to the explore the map page. Under the map, you will see share your feedback"
+    "description": "Navigate to the explore the map page. Under the map, you will see how to respond to the RFI"
+  },
+  "explore.map.page.under.map.how.you.can.help.list.item.4": {
+    "defaultMessage": "The Request for Information on the Federal Register is now closed.",
+    "description": "Navigate to the explore the map page. Under the map, you will see RFI is expired"
   },
   "explore.map.page.under.map.note.on.territories.intro": {
     "defaultMessage": "A note on the U.S. territories",
