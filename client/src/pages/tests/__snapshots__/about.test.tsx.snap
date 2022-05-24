@@ -422,14 +422,6 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           About
         </h1>
         <div>
-          <div>
-            <span
-              class="usa-tag"
-              data-testid="tag"
-            >
-              UPDATED
-            </span>
-          </div>
           <a
             href="/en/public-engagement"
           >
