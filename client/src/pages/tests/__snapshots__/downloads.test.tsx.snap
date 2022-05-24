@@ -247,12 +247,43 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <li
                 class="usa-nav__primary-item"
               >
-                <a
-                  data-cy="nav-link-methodology"
-                  href="/en/methodology"
+                <button
+                  aria-controls="methMenu"
+                  aria-expanded="true"
+                  class="usa-accordion__button usa-nav__link"
+                  data-cy="nav-dropdown-methodology"
+                  data-testid="navDropDownButton"
+                  type="button"
                 >
-                  Methodology & data
-                </a>
+                  <span>
+                    Methodology & data
+                  </span>
+                </button>
+                <ul
+                  class="usa-nav__submenu"
+                  id="methMenu"
+                >
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-methodology"
+                      href="/en/methodology"
+                    >
+                      Methodology & data
+                    </a>
+                  </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-downloads"
+                      href="/en/downloads"
+                    >
+                      Downloads
+                    </a>
+                  </li>
+                </ul>
               </li>
               <li
                 class="usa-nav__primary-item"
@@ -382,52 +413,108 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       class="grid-container-desktop-lg"
       data-testid="gridContainer"
     >
-      <h1>
-        Downloads
-      </h1>
+      <section
+        class="page-heading"
+      >
+        <h1>
+          Downloads
+        </h1>
+        <div>
+          <div>
+            <span
+              class="usa-tag"
+              data-testid="tag"
+            >
+              UPDATED
+            </span>
+          </div>
+          <a
+            href="/en/public-engagement"
+          >
+            <button
+              class="usa-button"
+              data-testid="button"
+              type="button"
+            >
+              <div>
+                <img
+                  alt="an icon that represents a calendar"
+                  src="test-file-stub"
+                />
+                <div>
+                  Public engagement
+                </div>
+              </div>
+            </button>
+          </a>
+        </div>
+      </section>
       <div
-        class="desktop:grid-col-8"
+        class="grid-row grid-gap j40-mb5-mt3"
         data-testid="grid"
       >
-        <h2>
-          File formats
-        </h2>
-        <p>
-          The dataset used in the tool, along with a data dictionary and information about how to use the list of communities (.pdf) are available in the following file formats:
-        </p>
-        <p>
-          
-        
-          <a
-            href="/about"
-          >
-            Excel file
-          </a>
-           (.xlxs 54MB unzipped)
+        <div
+          class="grid-col-12 tablet:grid-col-8"
+          data-testid="grid"
+        >
+          <h2>
+            File formats
+          </h2>
+          <p>
+            The dataset used in the tool, along with a data dictionary and information about how to use the list of communities (.pdf) are available in the following file formats:
+          </p>
+          <p>
+            
       
-        </p>
-        <p>
-          
-        
-          <a
-            href="/csv"
-          >
-            CSV file 
-          </a>
-           (.csv 52MB unzipped)
+            <a
+              href="//"
+            >
+              Communities list data
+            </a>
+             (.xlsx 23.7MB)
       
-        </p>
-        <p>
-          
-        
-          <a
-            href="/shape"
-          >
-            Shapefiles 
-          </a>
-           (Codebook included with geojson 110MB unzipped)
-      
-        </p>
+          </p>
+          <p>
+            <a
+              download=""
+              href="//"
+            >
+              Communities list data
+            </a>
+             (.csv 26.8MB)
+          </p>
+          <p>
+            <a
+              download=""
+              href="//"
+            >
+              Shapefile
+            </a>
+             (Codebook included with geojson 741MB unzipped)
+          </p>
+          <p>
+            <a
+              download=""
+              href="//"
+            >
+              Technical support document
+            </a>
+             (.pdf 2.4MB)
+          </p>
+          <p>
+            <a
+              download=""
+              href="//"
+            >
+              How to use the list of communities
+            </a>
+             (.pdf 658.3MB)
+          </p>
+        </div>
+        <div
+          class="grid-col-12 tablet:grid-col-1"
+          data-testid="grid"
+        />
       </div>
     </div>
   </main>

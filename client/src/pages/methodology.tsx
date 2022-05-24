@@ -9,7 +9,9 @@ import MethodologyFormula from '../components/MethodologyFormula';
 import Layout from '../components/layout';
 import PublicEngageButton from '../components/PublicEngageButton';
 import SubPageNav from '../components/SubPageNav';
+import {useWindowSize} from 'react-use';
 
+import * as CONSTANTS from '../data/constants';
 import * as METHODOLOGY_COPY from '../data/copy/methodology';
 
 interface MethodPageProps {
@@ -18,6 +20,7 @@ interface MethodPageProps {
 
 const IndexPage = ({location}: MethodPageProps) => {
   const intl = useIntl();
+  const {width} = useWindowSize();
 
   return (
     <Layout location={location} title={intl.formatMessage(METHODOLOGY_COPY.PAGE.TILE)}>
@@ -56,9 +59,10 @@ const IndexPage = ({location}: MethodPageProps) => {
           </Grid>
 
           {/* Third column */}
+          {width > CONSTANTS.USWDS_BREAKPOINTS.DESKTOP ?
           <Grid col={12} tablet={{col: 3}}>
-            <SubPageNav />
-          </Grid>
+            <SubPageNav activeSubPageIndex={1}/>
+          </Grid> : ''}
         </Grid>
       </J40MainGridContainer>
 

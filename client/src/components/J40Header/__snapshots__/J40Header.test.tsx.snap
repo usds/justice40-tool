@@ -247,12 +247,43 @@ exports[`rendering of the J40Header checks if component renders 1`] = `
               <li
                 class="usa-nav__primary-item"
               >
-                <a
-                  data-cy="nav-link-methodology"
-                  href="/en/methodology"
+                <button
+                  aria-controls="methMenu"
+                  aria-expanded="true"
+                  class="usa-accordion__button usa-nav__link"
+                  data-cy="nav-dropdown-methodology"
+                  data-testid="navDropDownButton"
+                  type="button"
                 >
-                  Methodology & data
-                </a>
+                  <span>
+                    Methodology & data
+                  </span>
+                </button>
+                <ul
+                  class="usa-nav__submenu"
+                  id="methMenu"
+                >
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-methodology"
+                      href="/en/methodology"
+                    >
+                      Methodology & data
+                    </a>
+                  </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-downloads"
+                      href="/en/downloads"
+                    >
+                      Downloads
+                    </a>
+                  </li>
+                </ul>
               </li>
               <li
                 class="usa-nav__primary-item"

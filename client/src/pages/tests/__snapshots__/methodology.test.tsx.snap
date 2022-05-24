@@ -247,12 +247,43 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <li
                 class="usa-nav__primary-item"
               >
-                <a
-                  data-cy="nav-link-methodology"
-                  href="/en/methodology"
+                <button
+                  aria-controls="methMenu"
+                  aria-expanded="true"
+                  class="usa-accordion__button usa-nav__link"
+                  data-cy="nav-dropdown-methodology"
+                  data-testid="navDropDownButton"
+                  type="button"
                 >
-                  Methodology & data
-                </a>
+                  <span>
+                    Methodology & data
+                  </span>
+                </button>
+                <ul
+                  class="usa-nav__submenu"
+                  id="methMenu"
+                >
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-methodology"
+                      href="/en/methodology"
+                    >
+                      Methodology & data
+                    </a>
+                  </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-downloads"
+                      href="/en/downloads"
+                    >
+                      Downloads
+                    </a>
+                  </li>
+                </ul>
               </li>
               <li
                 class="usa-nav__primary-item"
@@ -475,152 +506,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </section>
         </div>
         <div
-          class="grid-col-12 tablet:grid-col-4"
+          class="grid-col-12 tablet:grid-col-1"
           data-testid="grid"
-        >
-          <div
-            class=""
-            data-testid="grid"
-          >
-            <div>
-              <div>
-                <div>
-                  <div>
-                    <span>
-                      NEW
-                    </span>
-                     files available for download
-                  </div>
-                  <div>
-                    Download the data sources used in the CEJST (.csv, .xlxs, 
-                    <span>
-                      .pdf
-                    </span>
-                     that describes how to use the list, and a 
-                    <span>
-                      codebook
-                    </span>
-                    , 53MB unzipped), the shapefile, along with a 
-                    <span>
-                      codebook
-                    </span>
-                     (.zip, 742MB unzipped) or the technical support document (.pdf, 2.5MB unzipped).
-                  </div>
-                  <div>
-                    <div>
-                      <span
-                        class="usa-tag"
-                        data-testid="tag"
-                      >
-                        <strong>
-                          Updated
-                        </strong>
-                      </span>
-                    </div>
-                    <a
-                      data-cy="download-link"
-                      download=""
-                      href="//"
-                    >
-                      <button
-                        class="usa-button"
-                        data-testid="button"
-                        type="button"
-                      >
-                        <span>
-                          <img
-                            alt="download icon for download package"
-                            src="test-file-stub"
-                          />
-                        </span>
-                        <span>
-                          Download data sources
-                        </span>
-                      </button>
-                    </a>
-                  </div>
-                  <div>
-                    Last updated: 05/04/22 
-                  </div>
-                  <div>
-                    <div>
-                      <span
-                        class="usa-tag"
-                        data-testid="tag"
-                      >
-                        <strong>
-                          Updated
-                        </strong>
-                      </span>
-                    </div>
-                    <a
-                      data-cy="shapefile-link"
-                      download=""
-                      href="//"
-                    >
-                      <button
-                        class="usa-button"
-                        data-testid="button"
-                        type="button"
-                      >
-                        <span>
-                          <img
-                            alt="download icon for download package"
-                            src="test-file-stub"
-                          />
-                        </span>
-                        <span>
-                          Download shapefile
-                        </span>
-                      </button>
-                    </a>
-                  </div>
-                  <div>
-                    Last updated: 04/26/22 
-                  </div>
-                  <div>
-                    <div>
-                      <span
-                        class="usa-tag"
-                        data-testid="tag"
-                      >
-                        <strong>
-                          NEW
-                        </strong>
-                      </span>
-                    </div>
-                    <a
-                      data-cy="tsd-link"
-                      download=""
-                      href="//"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      <button
-                        class="usa-button"
-                        data-testid="button"
-                        type="button"
-                      >
-                        <span>
-                          <img
-                            alt="download icon for download package"
-                            src="test-file-stub"
-                          />
-                        </span>
-                        <span>
-                          Download technical support document
-                        </span>
-                      </button>
-                    </a>
-                  </div>
-                  <div>
-                    Last updated: 04/19/22 
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        />
       </div>
     </div>
     <div

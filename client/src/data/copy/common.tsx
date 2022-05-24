@@ -20,6 +20,7 @@ export interface IDefineMessage {
 export const italicFn = (str:string) => <i>{str}</i>;
 export const boldFn = (str:string) => <strong>{str}</strong>;
 export const simpleLink = (href:string) => (str:string) => <a href={href}>{str}</a>;
+export const downloadLink = (href:string) => (str:string) => <a href={href} download>{str}</a>;
 // eslint-disable-next-line max-len
 export const linkFn = (to:string | IDefineMessage, isInternal:boolean, isOpenNewTab:boolean) => (str:string) => <LinkTypeWrapper linkText={str} internal={isInternal} url={to} openUrlNewTab={isOpenNewTab}/>;
 
