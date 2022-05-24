@@ -279,6 +279,10 @@
     "defaultMessage": "Request for Information",
     "description": "Navigate to the contact page, this is the title of the request for information box"
   },
+  "contact.page.request.for.info.expiration.text": {
+    "defaultMessage": "The Request for Information on the Federal Register for the public beta period closed on May 25, 2022.",
+    "description": "Navigate to the contact page, this is the text indicating the RFI period is closed"
+  },
   "contact.page.sub.header.text": {
     "defaultMessage": "Email us",
     "description": "Navigate to the contact page, this is the contact page sub header text"

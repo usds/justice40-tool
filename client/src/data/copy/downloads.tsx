@@ -35,7 +35,6 @@ const getDownloadFileUrl = (filePath:string | undefined) => {
   ].join('/');
 };
 
-console.log(process.env.GATSBY_FILE_DL_PATH_SCREENING_TOOL_DATA_ZIP);
 // Define meta data on dowload files
 export const DOWNLOAD_FILES = {
   SCREENING_TOOL_DATA_ZIP: {

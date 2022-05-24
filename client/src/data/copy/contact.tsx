@@ -45,6 +45,11 @@ export const RFI_BOX = defineMessages({
     defaultMessage: 'Request for Information',
     description: 'Navigate to the contact page, this is the title of the request for information box',
   },
+  EXPIRED: {
+    id: 'contact.page.request.for.info.expiration.text',
+    defaultMessage: 'The Request for Information on the Federal Register for the public beta period closed on May 25, 2022.',
+    description: 'Navigate to the contact page, this is the text indicating the RFI period is closed',
+  },
 });
 
 export const RFI_BOX_BODY = <FormattedMessage

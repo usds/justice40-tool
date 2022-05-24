@@ -13,6 +13,7 @@ const RequestForInfo = () => {
     <SummaryBox className={styles.rfiBox} heading={intl.formatMessage(CONTACT_COPY.RFI_BOX.TITLE)}>
       <p>{CONTACT_COPY.RFI_BOX_BODY}</p>
       <p>{COMMON_COPY.ALERTS.ALERT_1_DESCRIPTION}</p>
+      {/* <p>{intl.formatMessage(CONTACT_COPY.RFI_BOX.EXPIRED)}</p> */}
     </SummaryBox>
   );
 };
