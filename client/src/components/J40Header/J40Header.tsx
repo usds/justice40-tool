@@ -5,7 +5,6 @@ import {
   NavMenuButton,
   PrimaryNav,
   Grid,
-  Alert,
   NavDropDownButton,
   Menu,
 } from '@trussworks/react-uswds';
@@ -244,7 +243,7 @@ const J40Header = () => {
       </J40MainGridContainer>
 
       {/* Alert */}
-      {<J40MainGridContainer>
+      {/* {<J40MainGridContainer>
         <Alert
           className={styles.alert}
           type="info"
@@ -259,7 +258,7 @@ const J40Header = () => {
           {COMMON_COPY.ALERTS.ALERT_1_DESCRIPTION}
         </Alert>
       </J40MainGridContainer>
-      }
+      } */}
     </Header>
   );
 };

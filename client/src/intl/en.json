@@ -272,16 +272,12 @@
     "description": "Navigate to the contact page, this is the contact page header text"
   },
   "contact.page.request.for.info.box.body": {
-    "defaultMessage": "During the beta period, comments may be submitted on the Climate and Economic Justice Screening Tool via CEQ’s Request for Information available on <link1>federalregister.gov</link1>.",
+    "defaultMessage": "The Request for Information on the Federal Register for the public beta period closed on {rfiExpDate}",
     "description": "Navigate to the contact page, this is the body of the request for information box"
   },
   "contact.page.request.for.info.box.title": {
     "defaultMessage": "Request for Information",
     "description": "Navigate to the contact page, this is the title of the request for information box"
-  },
-  "contact.page.request.for.info.expiration.text": {
-    "defaultMessage": "The Request for Information on the Federal Register for the public beta period closed on May 25, 2022.",
-    "description": "Navigate to the contact page, this is the text indicating the RFI period is closed"
   },
   "contact.page.sub.header.text": {
     "defaultMessage": "Email us",
@@ -828,10 +824,6 @@
     "description": "Navigate to the explore the map page. Under the map, you will see share your feedback"
   },
   "explore.map.page.under.map.how.you.can.help.list.item.3": {
-    "defaultMessage": "Respond to our Request for Information on <link1>federalregister.gov</link1>.",
-    "description": "Navigate to the explore the map page. Under the map, you will see how to respond to the RFI"
-  },
-  "explore.map.page.under.map.how.you.can.help.list.item.4": {
     "defaultMessage": "The Request for Information on the Federal Register is now closed.",
     "description": "Navigate to the explore the map page. Under the map, you will see RFI is expired"
   },

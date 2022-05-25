@@ -1,10 +1,9 @@
 /* eslint-disable max-len */
 import React from 'react';
 import {defineMessages} from 'react-intl';
-import {FormattedMessage} from 'gatsby-plugin-intl';
+import {FormattedDate, FormattedMessage} from 'gatsby-plugin-intl';
 import * as COMMON_COPY from './common';
 import {PAGES_ENDPOINTS} from '../constants';
-import {FOOTER} from './common';
 
 export const PAGE_INTRO = defineMessages({
   PAGE_TILE: {
@@ -45,19 +44,19 @@ export const RFI_BOX = defineMessages({
     defaultMessage: 'Request for Information',
     description: 'Navigate to the contact page, this is the title of the request for information box',
   },
-  EXPIRED: {
-    id: 'contact.page.request.for.info.expiration.text',
-    defaultMessage: 'The Request for Information on the Federal Register for the public beta period closed on May 25, 2022.',
-    description: 'Navigate to the contact page, this is the text indicating the RFI period is closed',
-  },
 });
 
 export const RFI_BOX_BODY = <FormattedMessage
   id={'contact.page.request.for.info.box.body'}
-  defaultMessage={`During the beta period, comments may be submitted on the Climate and Economic Justice Screening Tool via CEQ’s Request for Information available on <link1>federalregister.gov</link1>.`}
+  defaultMessage={`The Request for Information on the Federal Register for the public beta period closed on {rfiExpDate}`}
   description={'Navigate to the contact page, this is the body of the request for information box'}
   values={{
-    link1: COMMON_COPY.linkFn(FOOTER.RFI_LINK.defaultMessage, false, true),
+    rfiExpDate: <FormattedDate
+      value={COMMON_COPY.RFI_EXPIRATION_DATE}
+      year="numeric"
+      month="long"
+      day="numeric"
+    />,
   }}
 />;
 

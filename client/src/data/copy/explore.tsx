@@ -897,14 +897,6 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
   />,
   LIST_ITEM_3: <FormattedMessage
     id={'explore.map.page.under.map.how.you.can.help.list.item.3'}
-    description={`Navigate to the explore the map page. Under the map, you will see how to respond to the RFI`}
-    defaultMessage={`Respond to our Request for Information on <link1>federalregister.gov</link1>.`}
-    values={{
-      link1: COMMON_COPY.linkFn(`https://www.federalregister.gov/d/2022-03920`, false, true),
-    }}
-  />,
-  LIST_ITEM_4: <FormattedMessage
-    id={'explore.map.page.under.map.how.you.can.help.list.item.4'}
     description={`Navigate to the explore the map page. Under the map, you will see RFI is expired`}
     defaultMessage={`The Request for Information on the Federal Register is now closed.`}
   />,

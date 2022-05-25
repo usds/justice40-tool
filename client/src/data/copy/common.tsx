@@ -52,7 +52,7 @@ export const TSD = defineMessages({
 
 // Alerts
 // Expiration month is zero-based: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getMonth
-const ALERT_1_EXPIRATION_DATE= new Date(2022, 4, 25, 11, 59, 59); // May 25
+export const RFI_EXPIRATION_DATE= new Date(2022, 4, 25, 11, 59, 59); // May 25
 export const ALERTS = {
   ALERT_1_TITLE: defineMessages({
     TITLE: {
@@ -61,7 +61,7 @@ export const ALERTS = {
       description: 'Alert title that appears on landing page.',
     },
   }),
-  EXPIRATION_DATE: ALERT_1_EXPIRATION_DATE,
+  EXPIRATION_DATE: RFI_EXPIRATION_DATE,
   ALERT_1_DESCRIPTION: <FormattedMessage
     id={'common.pages.alerts.public_comment_period.description'}
     defaultMessage={`The public comment period for <link1>sending feedback</link1> via the Request for Information has been extended to {expDate1}.`}
@@ -69,7 +69,7 @@ export const ALERTS = {
     values={{
       link1: linkFn('https://www.federalregister.gov/documents/2022/04/25/2022-08774/climate-and-economic-justice-screening-tool-beta-version', false, true),
       expDate1: <FormattedDate
-        value={ALERT_1_EXPIRATION_DATE}
+        value={RFI_EXPIRATION_DATE}
         year="numeric"
         month="short"
         day="numeric"
