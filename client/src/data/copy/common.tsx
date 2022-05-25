@@ -51,7 +51,7 @@ export const TSD = defineMessages({
 
 // Alerts
 // Expiration month is zero-based: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getMonth
-const ALERT_1_EXPIRATION_DATE= new Date(2022, 4, 26); // May 25
+const ALERT_1_EXPIRATION_DATE= new Date(2022, 4, 25, 11, 59, 59); // May 25
 export const ALERTS = {
   ALERT_1_TITLE: defineMessages({
     TITLE: {
