@@ -20,8 +20,6 @@ import * as styles from './J40Header.module.scss';
 import * as COMMON_COPY from '../../data/copy/common';
 import {PAGES_ENDPOINTS} from '../../data/constants';
 
-const isAlertValid = new Date < COMMON_COPY.ALERTS.EXPIRATION_DATE;
-
 const J40Header = () => {
   const intl = useIntl();
 
@@ -232,7 +230,7 @@ const J40Header = () => {
       </J40MainGridContainer>
 
       {/* Alert */}
-      {isAlertValid && <J40MainGridContainer>
+      {<J40MainGridContainer>
         <Alert
           className={styles.alert}
           type="info"
