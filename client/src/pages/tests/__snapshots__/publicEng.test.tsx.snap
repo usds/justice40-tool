@@ -448,15 +448,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 <h3
                   class="usa-collection__heading"
                 >
-                  <a
-                    class="usa-link usa-link--external"
-                    data-cy="may-19-reg-link-block"
-                    href="https://pitc.zoomgov.com/webinar/register/WN_1PR73vLDQpq1zoAWkhKB5g"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    CEJST listening session #4
-                  </a>
+                  CEJST listening session #4
                 </h3>
                 <p
                   class="usa-collection__description"
@@ -488,6 +480,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <button
                       class="usa-button"
                       data-testid="button"
+                      disabled=""
                       type="button"
                     >
                       Registration link
