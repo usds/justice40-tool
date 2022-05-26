@@ -386,10 +386,15 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             
       
             <a
+              download=""
               href="//"
             >
               Communities list data
             </a>
+            <img
+              alt="The icon used to indicate that the file is downloadable"
+              src="test-file-stub"
+            />
              (.xlsx 23.7MB)
       
           </p>
@@ -400,6 +405,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             >
               Communities list data
             </a>
+            <img
+              alt="The icon used to indicate that the file is downloadable"
+              src="test-file-stub"
+            />
              (.csv 26.8MB)
           </p>
           <p>
@@ -409,12 +418,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             >
               Shapefile
             </a>
+            <img
+              alt="The icon used to indicate that the file is downloadable"
+              src="test-file-stub"
+            />
              (Codebook included with geojson 741MB unzipped)
           </p>
           <p>
             <a
-              download=""
+              class="usa-link usa-link--external"
+              data-cy=""
               href="//"
+              rel="noreferrer"
+              target="_blank"
             >
               Technical support document
             </a>
@@ -422,8 +438,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </p>
           <p>
             <a
-              download=""
+              class="usa-link usa-link--external"
+              data-cy=""
               href="//"
+              rel="noreferrer"
+              target="_blank"
             >
               How to use the list of communities
             </a>

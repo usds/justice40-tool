@@ -311,6 +311,10 @@
     "defaultMessage": "The dataset used in the tool, along with a data dictionary and information about how to use the list of communities (.pdf) are available in the following file formats:",
     "description": "Navigate to the Downloads page, this will be the page description1 text"
   },
+  "downloads.page.download.icon.alt.tag": {
+    "defaultMessage": "The icon used to indicate that the file is downloadable",
+    "description": "Navigate to the Downloads page, this is the icon used to indicate that the file is downloadable"
+  },
   "downloads.page.heading1.text": {
     "defaultMessage": "Downloads",
     "description": "Navigate to the Downloads page, this will be the page heading1 text"

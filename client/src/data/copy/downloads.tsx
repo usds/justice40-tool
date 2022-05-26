@@ -2,7 +2,7 @@
 import React from 'react';
 import {defineMessages} from 'react-intl';
 import {FormattedMessage, FormattedNumber} from 'gatsby-plugin-intl';
-import {downloadLink, simpleLink} from './common';
+import * as COMMON_COPY from './common';
 
 export const PAGE_INTRO = defineMessages({
   PAGE_TILE: {
@@ -69,6 +69,15 @@ export const DOWNLOAD_FILES = {
   },
 };
 
+// If this is not a function, it will cause a circular dependency
+export const getDownloadIconAltTag = () => defineMessages({
+  ALT_TAG: {
+    id: 'downloads.page.download.icon.alt.tag',
+    defaultMessage: 'The icon used to indicate that the file is downloadable',
+    description: 'Navigate to the Downloads page, this is the icon used to indicate that the file is downloadable',
+  },
+});
+
 export const DOWNLOAD_LINKS = {
   LINK1: <FormattedMessage
     id={'download.page.download.file.1'}
@@ -77,7 +86,7 @@ export const DOWNLOAD_LINKS = {
       `}
     description={'Navigate to the download page. This is first download file link'}
     values={{
-      link1: simpleLink(DOWNLOAD_FILES.COMMUNITIES_LIST_XLS.URL),
+      link1: COMMON_COPY.downloadLink(DOWNLOAD_FILES.COMMUNITIES_LIST_XLS.URL),
       cldXlsFileSize: <FormattedNumber
         value={DOWNLOAD_FILES.COMMUNITIES_LIST_XLS.SIZE}
         style="unit"
@@ -91,7 +100,7 @@ export const DOWNLOAD_LINKS = {
     defaultMessage={`<link2>Communities list data</link2> (.csv {cldCsvFileSize})`}
     description={'Navigate to the download page. This is second download file link'}
     values={{
-      link2: downloadLink(DOWNLOAD_FILES.COMMUNITIES_LIST_CSV.URL),
+      link2: COMMON_COPY.downloadLink(DOWNLOAD_FILES.COMMUNITIES_LIST_CSV.URL),
       cldCsvFileSize: <FormattedNumber
         value={DOWNLOAD_FILES.COMMUNITIES_LIST_CSV.SIZE}
         style="unit"
@@ -105,7 +114,7 @@ export const DOWNLOAD_LINKS = {
     defaultMessage={`<link3>Shapefile</link3> (Codebook included with geojson {shapeFileSize} unzipped)`}
     description={'Navigate to the download page. This is third download file link'}
     values={{
-      link3: downloadLink(DOWNLOAD_FILES.SHAPE_FILE.URL),
+      link3: COMMON_COPY.downloadLink(DOWNLOAD_FILES.SHAPE_FILE.URL),
       shapeFileSize: <FormattedNumber
         value={DOWNLOAD_FILES.SHAPE_FILE.SIZE}
         style="unit"
@@ -119,7 +128,7 @@ export const DOWNLOAD_LINKS = {
     defaultMessage={`<link4>Technical support document</link4> (.pdf {tsdFileSize})`}
     description={'Navigate to the download page. This is fourth download file link'}
     values={{
-      link4: downloadLink(DOWNLOAD_FILES.TSD.URL),
+      link4: COMMON_COPY.linkFn(DOWNLOAD_FILES.TSD.URL, false, true),
       tsdFileSize: <FormattedNumber
         value={DOWNLOAD_FILES.TSD.SIZE}
         style="unit"
@@ -133,7 +142,7 @@ export const DOWNLOAD_LINKS = {
     defaultMessage={`<link5>How to use the list of communities</link5> (.pdf {howToCommFileSize})`}
     description={'Navigate to the download page. This is fifth download file link'}
     values={{
-      link5: downloadLink(DOWNLOAD_FILES.HOW_TO_COMMUNITIES.URL),
+      link5: COMMON_COPY.linkFn(DOWNLOAD_FILES.HOW_TO_COMMUNITIES.URL, false, true),
       howToCommFileSize: <FormattedNumber
         value={DOWNLOAD_FILES.HOW_TO_COMMUNITIES.SIZE}
         style="unit"
@@ -142,5 +151,5 @@ export const DOWNLOAD_LINKS = {
       />,
     }}
   />,
-
+  // };
 };
