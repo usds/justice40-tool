@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {render} from '@testing-library/react';
 import {LocalizedComponent} from '../../test/testHelpers';
-import DownloadPacket from './DownloadPacket';
+import DownloadLink from './DownloadLink';
 
-describe('download packet component defined', () => {
+describe('rendering of the DownloadLink disadvantaged', () => {
   const {asFragment} = render(
       <LocalizedComponent>
-        <DownloadPacket />
+        <DownloadLink href="https://google.com" linkText="Google"/>
       </LocalizedComponent>,
   );
 
@@ -14,4 +14,3 @@ describe('download packet component defined', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 });
-

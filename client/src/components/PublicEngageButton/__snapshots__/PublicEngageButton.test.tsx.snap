@@ -3,14 +3,6 @@
 exports[`rendering of the PublicEngageButton checks if component renders 1`] = `
 <DocumentFragment>
   <div>
-    <div>
-      <span
-        class="usa-tag"
-        data-testid="tag"
-      >
-        UPDATED
-      </span>
-    </div>
     <a
       href="/en/public-engagement"
     >

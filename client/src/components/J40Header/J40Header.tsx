@@ -5,14 +5,14 @@ import {
   NavMenuButton,
   PrimaryNav,
   Grid,
-  Alert,
-  // NavDropDownButton,
-  // Menu,
+  NavDropDownButton,
+  Menu,
 } from '@trussworks/react-uswds';
 import BetaBanner from '../BetaBanner';
 import J40MainGridContainer from '../J40MainGridContainer';
 import GovernmentBanner from '../GovernmentBanner';
 import Language from '../Language';
+import {useWindowSize} from 'react-use';
 
 // @ts-ignore
 import siteLogo from '../../images/j40-logo-v2.png';
@@ -20,73 +20,79 @@ import * as styles from './J40Header.module.scss';
 import * as COMMON_COPY from '../../data/copy/common';
 import {PAGES_ENDPOINTS} from '../../data/constants';
 
+/**
+ * The J40Header component will control how the header looks for both mobile and desktop
+ *
+ * The Header is defined as
+ * 1. Two rows of Banners (ie, official gov website and beta site)
+ * 2. Logo and Nav Links Row
+ * 3. Any Alerts
+ *
+ * @return {JSX.Element}
+ */
 const J40Header = () => {
   const intl = useIntl();
+  const {width} = useWindowSize();
 
-  const titleL1 = intl.formatMessage(COMMON_COPY.HEADER.TITLE_LINE_1);
-  const titleL2 = intl.formatMessage(COMMON_COPY.HEADER.TITLE_LINE_2);
+  // Logo text
+  const logoLine1 = intl.formatMessage(COMMON_COPY.HEADER.TITLE_LINE_1);
+  const logoLine2 = intl.formatMessage(COMMON_COPY.HEADER.TITLE_LINE_2);
 
   /**
-   * State variable to control the mobile menu toggle
+   * State variable to control the toggling of mobile menu button
    */
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const toggleMobileNav = (): void =>
     setMobileNavOpen((prevOpen) => !prevOpen);
 
+  /**
+   * State variable to hold the open/close state of each nav dropdown. This will allow for two
+   * dropdown that are being used, each corresponding to an index in the state array:
+   *
+   * index 0 = Data & Methodology dropdown (being used)
+   * index 1 = About dropdown (removed for now)
+   */
+  const [isOpen, setIsOpen] = useState([true]);
+  const onToggle = (index: number): void => {
+    setIsOpen((prevIsOpen) => {
+      const newIsOpen = [true];
+      newIsOpen[index] = !prevIsOpen[index];
+      return newIsOpen;
+    });
+  };
 
   /**
-   * The original work of this release called for creating a download page, a FAQ page and TSD page. These
-   * were to be embedded in dropdown menus in the navigation bar of the header. These were all completed.
-   * After discovering that the dropdown component from USWDS was not operating as expected, we decided to
-   * revert to another design.
-   *
-   * It was also decided that some more design was needed and that these pages along with their designs will
-   * be used in the near future. Rather than deleted the code or moving it to another branch, the assumption
-   * was made that since this will be added back in the near term, let's comment it out for now.
-   *
-   * If for some reason we haven't integrated this logic in the near future, this code will be deleted.
+   * On mobile, the Methodology & Data page should have two sub-nav links. This defines
+   * the array that will hold these links
    */
+  const methPageSubNavLinks = [
+    <Link
+      to={PAGES_ENDPOINTS.METHODOLOGY}
+      key={'methodology'}
+      activeClassName="usa-current"
+      data-cy={'nav-link-methodology'}>
+      {intl.formatMessage(COMMON_COPY.HEADER.METHODOLOGY)}
+    </Link>,
+    <Link
+      to={PAGES_ENDPOINTS.DOWNLOADS}
+      key={'downloads'}
+      activeClassName="usa-current"
+      data-cy={'nav-link-downloads'}>
+      {intl.formatMessage(COMMON_COPY.HEADER.DOWNLOADS)}
+    </Link>,
+    // <Link
+    //   to={PAGES_ENDPOINTS.TSD}
+    //   key={'tsd'}
+    //   activeClassName="usa-current"
+    //   data-cy={'nav-link-technical-support-docs'}>
+    //   {intl.formatMessage(COMMON_COPY.HEADER.TSD)}
+    // </Link>,
+  ];
 
   /**
-   * State variable to hold the open/close state of each nav dropdown. There are currently two
-   * dropdowns that are being used, each corresponding to an index in the state array:
-   *
-   * index 0 = Data & Methodology dropdown
-   * index 1 = About dropdown
+   * In the future, we may want to add sub-pages to the About page. This array will
+   * define the sub-pages for the About page.
    */
-  // const [isOpen, setIsOpen] = useState([false, false]);
-  // const onToggle = (index: number): void => {
-  //   setIsOpen((prevIsOpen) => {
-  //     const newIsOpen = [false, false];
-  //     newIsOpen[index] = !prevIsOpen[index];
-  //     return newIsOpen;
-  //   });
-  // };
-
-  // const methPageSubNavLinks = [
-  //   <Link
-  //     to={PAGES_ENDPOINTS.METHODOLOGY}
-  //     key={'methodology'}
-  //     activeClassName="usa-current"
-  //     data-cy={'nav-link-methodology'}>
-  //     {intl.formatMessage(COMMON_COPY.HEADER.METHODOLOGY)}
-  //   </Link>,
-  //   <Link
-  //     to={PAGES_ENDPOINTS.DOWNLOADS}
-  //     key={'downloads'}
-  //     activeClassName="usa-current"
-  //     data-cy={'nav-link-downloads'}>
-  //     {intl.formatMessage(COMMON_COPY.HEADER.DOWNLOADS)}
-  //   </Link>,
-  //   <Link
-  //     to={PAGES_ENDPOINTS.TSD}
-  //     key={'tsd'}
-  //     activeClassName="usa-current"
-  //     data-cy={'nav-link-technical-support-docs'}>
-  //     {intl.formatMessage(COMMON_COPY.HEADER.TSD)}
-  //   </Link>,
-  // ];
-
   // const aboutSubNavLinks = [
   //   <Link
   //     to={PAGES_ENDPOINTS.ABOUT}
@@ -111,6 +117,17 @@ const J40Header = () => {
   //   </Link>,
   // ];
 
+
+  /**
+   * This is the array that holds the navigation links and eventually is the one
+   * that is passed to the render function. It only defines Explore, About and
+   * Contact.
+   *
+   * The Methodology & Data link is passed in depending on screen size.
+   *
+   * For mobile: the Methodology & Data link should have sub-pages
+   * For desktop: the Methodology & Data link should NOT have sub-pages
+   */
   const navLinks = [
     <Link
       to={PAGES_ENDPOINTS.EXPLORE}
@@ -120,56 +137,12 @@ const J40Header = () => {
       {intl.formatMessage(COMMON_COPY.HEADER.EXPLORE)}
     </Link>,
     <Link
-      to={PAGES_ENDPOINTS.METHODOLOGY}
-      key={'methodology'}
-      activeClassName="usa-current"
-      data-cy={'nav-link-methodology'}>
-      {intl.formatMessage(COMMON_COPY.HEADER.METHODOLOGY)}
-    </Link>,
-    <Link
       to={PAGES_ENDPOINTS.ABOUT}
       key={'about'}
       activeClassName="usa-current"
       data-cy={'nav-link-about'}>
       {intl.formatMessage(COMMON_COPY.HEADER.ABOUT)}
     </Link>,
-    // <>
-    //   <NavDropDownButton
-    //     key="methDropDown"
-    //     label={intl.formatMessage(COMMON_COPY.HEADER.METHODOLOGY)}
-    //     menuId="methMenu"
-    //     isOpen={isOpen[0]}
-    //     onToggle={(): void => onToggle(0)}
-    //     data-cy={'nav-dropdown-methodology'}
-    //     className={styles.navDropDownBtn}
-    //   >
-    //   </NavDropDownButton>
-    //   <Menu
-    //     id='methMenu'
-    //     type='subnav'
-    //     items={methPageSubNavLinks}
-    //     isOpen={isOpen[0]}
-    //   >
-    //   </Menu>
-    // </>,
-    // <>
-    //   <NavDropDownButton
-    //     key="aboutDropDown"
-    //     label={intl.formatMessage(COMMON_COPY.HEADER.ABOUT)}
-    //     menuId="aboutMenu"
-    //     isOpen={isOpen[1]}
-    //     onToggle={(): void => onToggle(1)}
-    //     data-cy={'nav-dropdown-about'}
-    //   >
-    //   </NavDropDownButton>
-    //   <Menu
-    //     id='aboutMenu'
-    //     type='subnav'
-    //     items={aboutSubNavLinks}
-    //     isOpen={isOpen[1]}
-    //   >
-    //   </Menu>
-    // </>,
     <Link
       to={PAGES_ENDPOINTS.CONTACT}
       key={'contact'}
@@ -181,6 +154,40 @@ const J40Header = () => {
       <Language isDesktop={false}/>
     </div>,
   ];
+
+  // For mobile: the Methodology & Data link should have sub-pages
+  const MethPageNavWithSubPages = () =>
+    <>
+      <NavDropDownButton
+        key="methDropDown"
+        label={intl.formatMessage(COMMON_COPY.HEADER.METHODOLOGY)}
+        menuId="methMenu"
+        isOpen={isOpen[0]}
+        onToggle={(): void => onToggle(0)}
+        data-cy={'nav-dropdown-methodology'}
+      >
+      </NavDropDownButton>
+      <Menu
+        id='methMenu'
+        type='subnav'
+        items={methPageSubNavLinks}
+        isOpen={isOpen[0]}
+      >
+      </Menu>
+    </>;
+
+  // For desktop: the Methodology & Data link should NOT have sub-pages
+  const MethPageNav = () =>
+    <Link
+      to={PAGES_ENDPOINTS.METHODOLOGY}
+      key={'methodology'}
+      activeClassName="usa-current"
+      data-cy={'nav-link-methodology'}>
+      {intl.formatMessage(COMMON_COPY.HEADER.METHODOLOGY)}
+    </Link>;
+
+  // Modify navLinks to choose the appropriate Methodology & Data nav link depending on screen size
+  navLinks.splice(1, 0, width > 1024 ? <MethPageNav/> : <MethPageNavWithSubPages/>);
 
   return (
     <Header basic={true} role={'banner'}>
@@ -196,15 +203,15 @@ const J40Header = () => {
 
           {/* Logo */}
           <Grid col={1}>
-            <img className={styles.logo} src={siteLogo} alt={`${titleL1} ${titleL2}`} />
+            <img className={styles.logo} src={siteLogo} alt={`${logoLine1} ${logoLine2}`} />
           </Grid>
 
           {/* Logo Title */}
           <Grid col={6}>
             <div className={styles.logoTitle}>
-              <div>{titleL1}</div>
+              <div>{logoLine1}</div>
               <div className={styles.title2BetaPill}>
-                <div> {titleL2} </div>
+                <div> {logoLine2} </div>
                 <div className={styles.betaPill}>BETA</div>
               </div>
             </div>
@@ -230,7 +237,7 @@ const J40Header = () => {
       </J40MainGridContainer>
 
       {/* Alert */}
-      {<J40MainGridContainer>
+      {/* {<J40MainGridContainer>
         <Alert
           className={styles.alert}
           type="info"
@@ -245,7 +252,7 @@ const J40Header = () => {
           {COMMON_COPY.ALERTS.ALERT_1_DESCRIPTION}
         </Alert>
       </J40MainGridContainer>
-      }
+      } */}
     </Header>
   );
 };

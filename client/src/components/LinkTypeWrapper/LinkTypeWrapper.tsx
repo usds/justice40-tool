@@ -4,7 +4,7 @@ import {Link as TrussLink} from '@trussworks/react-uswds';
 
 import {IDefineMessage} from '../../data/copy/common';
 
-interface ILinkTypeWrapper {
+export interface ILinkTypeWrapper {
     linkText?: string | JSX.Element;
     internal?: boolean;
     url: string | IDefineMessage;

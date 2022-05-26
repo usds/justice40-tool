@@ -1,0 +1,7 @@
+@use '../../styles/design-system.scss' as *;
+
+.downloadIcon {
+    height: 1rem;
+    vertical-align: middle;
+    filter: invert(57%) sepia(6%) saturate(3932%) hue-rotate(163deg) brightness(86%) contrast(88%);
+}
