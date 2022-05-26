@@ -52,7 +52,7 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
         tabindex="0"
       >
         
-      The tool ranks each census tract using percentiles that show how much burden each tract experiences relative to all other tracts, for each criteria.
+      The tool ranks each census tract using percentiles that show how much burden each tract experiences relative to all other tracts, for each criterion.
     
       </p>
       <img

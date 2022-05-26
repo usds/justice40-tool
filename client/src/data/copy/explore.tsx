@@ -187,7 +187,7 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   PARA3: {
     id: 'explore.map.page.side.panel.info.para3',
     defaultMessage: `
-      The tool ranks each census tract using percentiles that show how much burden each tract experiences relative to all other tracts, for each criteria.
+      The tool ranks each census tract using percentiles that show how much burden each tract experiences relative to all other tracts, for each criterion.
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the third paragraph of this side panel`,
   },
