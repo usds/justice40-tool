@@ -48,7 +48,7 @@ export const RFI_BOX = defineMessages({
 
 export const RFI_BOX_BODY = <FormattedMessage
   id={'contact.page.request.for.info.box.body'}
-  defaultMessage={`The Request for Information on the Federal Register for the public beta period closed on {rfiExpDate}`}
+  defaultMessage={`The Request for Information on the Federal Register for the public beta period closed on {rfiExpDate}.`}
   description={'Navigate to the contact page, this is the body of the request for information box'}
   values={{
     rfiExpDate: <FormattedDate

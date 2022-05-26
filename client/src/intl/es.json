@@ -67,7 +67,7 @@
     "contact.page.fab.survey.text": "Ayude a mejorar el sitio web y los datos",
     "contact.page.general": "Para comentarios generales, envíe un correo eléctronico a {general_email_address}.",
     "contact.page.header.text": "Contacto",
-    "contact.page.request.for.info.box.body": "La Solicitud de Información en el Registro Federal para el período beta público cerró el {rfiExpDate}",
+    "contact.page.request.for.info.box.body": "La Solicitud de Información en el Registro Federal para el período beta público cerró el {rfiExpDate}.",
     "contact.page.request.for.info.box.title": "Solicitud de información",
     "contact.page.sub.header.text": "Envíenos un correo electrónico",
     "contact.page.title.text": "Contacto",

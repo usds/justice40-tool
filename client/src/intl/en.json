@@ -272,7 +272,7 @@
     "description": "Navigate to the contact page, this is the contact page header text"
   },
   "contact.page.request.for.info.box.body": {
-    "defaultMessage": "The Request for Information on the Federal Register for the public beta period closed on {rfiExpDate}",
+    "defaultMessage": "The Request for Information on the Federal Register for the public beta period closed on {rfiExpDate}.",
     "description": "Navigate to the contact page, this is the body of the request for information box"
   },
   "contact.page.request.for.info.box.title": {

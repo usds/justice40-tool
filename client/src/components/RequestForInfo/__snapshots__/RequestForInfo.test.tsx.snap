@@ -18,7 +18,7 @@ exports[`rendering of the RequestForInfo checks if component renders 1`] = `
         class="usa-summary-box__text"
       >
         <p>
-          The Request for Information on the Federal Register for the public beta period closed on May 25, 2022
+          The Request for Information on the Federal Register for the public beta period closed on May 25, 2022.
         </p>
       </div>
     </div>
