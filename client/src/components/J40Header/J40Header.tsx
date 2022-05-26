@@ -46,23 +46,20 @@ const J40Header = () => {
     setMobileNavOpen((prevOpen) => !prevOpen);
 
   /**
-   * This logic would apply if we were allowing the desktop navigation link to dropdown. This
-   * is currently not in and may be placed in the future.
-   *
    * State variable to hold the open/close state of each nav dropdown. This will allow for two
    * dropdown that are being used, each corresponding to an index in the state array:
    *
-   * index 0 = Data & Methodology dropdown
+   * index 0 = Data & Methodology dropdown (being used)
    * index 1 = About dropdown (removed for now)
    */
-  // const [isOpen, setIsOpen] = useState([false, false]);
-  // const onToggle = (index: number): void => {
-  //   setIsOpen((prevIsOpen) => {
-  //     const newIsOpen = [false, false];
-  //     newIsOpen[index] = !prevIsOpen[index];
-  //     return newIsOpen;
-  //   });
-  // };
+  const [isOpen, setIsOpen] = useState([true]);
+  const onToggle = (index: number): void => {
+    setIsOpen((prevIsOpen) => {
+      const newIsOpen = [true];
+      newIsOpen[index] = !prevIsOpen[index];
+      return newIsOpen;
+    });
+  };
 
   /**
    * On mobile, the Methodology & Data page should have two sub-nav links. This defines
@@ -165,10 +162,8 @@ const J40Header = () => {
         key="methDropDown"
         label={intl.formatMessage(COMMON_COPY.HEADER.METHODOLOGY)}
         menuId="methMenu"
-        // isOpen={isOpen[0]} // Standard functionality commented out
-        // onToggle={(): void => onToggle(0)} // Standard functionality commented out
-        isOpen={true} // will keep the navDropDownButton permanently open
-        onToggle={(): boolean => true} // will not allow toggling
+        isOpen={isOpen[0]}
+        onToggle={(): void => onToggle(0)}
         data-cy={'nav-dropdown-methodology'}
       >
       </NavDropDownButton>
@@ -176,8 +171,7 @@ const J40Header = () => {
         id='methMenu'
         type='subnav'
         items={methPageSubNavLinks}
-        isOpen={true} // will keep the Menu permanently open
-        // isOpen={isOpen[0]} // Standard functionality commented out
+        isOpen={isOpen[0]}
       >
       </Menu>
     </>;

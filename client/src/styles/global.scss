@@ -139,17 +139,6 @@ components include:
   }
 }
 
-/*
-  On mobile, the navigation for Methodology & Data should always be open. When
-  open, there are two options. 1. Methodology & Data and 2. Downloads. This 
-  will remove the +/- symbol as the accordion's ability to open and close has 
-  been removed.
-*/
-div[class*="J40Header"] .usa-accordion__button {
-  background-image: none;
-}
-
-
 /* 
 ******************************
 *      FOOTER STYLES
