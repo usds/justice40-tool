@@ -38,32 +38,32 @@ const getDownloadFileUrl = (filePath:string | undefined) => {
 // Define meta data on dowload files
 export const DOWNLOAD_FILES = {
   SCREENING_TOOL_DATA_ZIP: {
-    SIZE: 29.1,
+    SIZE: 53.7, // MB
     URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_SCREENING_TOOL_DATA_ZIP),
     LAST_UPDATED: new Date('5/4/2022').getTime(),
   },
   COMMUNITIES_LIST_CSV: {
-    SIZE: 26.8,
+    SIZE: 28.1, // MB
     URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_COMMUNITIES_LIST_CSV),
     LAST_UPDATED: new Date('5/4/2022').getTime(),
   },
   COMMUNITIES_LIST_XLS: {
-    SIZE: 23.7,
+    SIZE: 24.9, // MB
     URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_COMMUNITIES_LIST_XLS),
     LAST_UPDATED: new Date('5/4/2022').getTime(),
   },
   SHAPE_FILE: {
-    SIZE: 741,
+    SIZE: 741, // MB
     URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_SHAPE_FILE_ZIP),
     LAST_UPDATED: new Date('5/4/2022').getTime(),
   },
   TSD: {
-    SIZE: 2.4,
+    SIZE: 2.5, // MB
     URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_TSD_PDF),
     LAST_UPDATED: new Date('5/4/2022').getTime(),
   },
   HOW_TO_COMMUNITIES: {
-    SIZE: 658.3,
+    SIZE: 674, // KB
     URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_HOW_TO_COMMUNITIES_PDF),
     LAST_UPDATED: new Date('5/4/2022').getTime(),
   },
@@ -146,7 +146,7 @@ export const DOWNLOAD_LINKS = {
       howToCommFileSize: <FormattedNumber
         value={DOWNLOAD_FILES.HOW_TO_COMMUNITIES.SIZE}
         style="unit"
-        unit="megabyte"
+        unit="kilobyte"
         unitDisplay="narrow"
       />,
     }}
