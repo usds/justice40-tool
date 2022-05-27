@@ -49,8 +49,10 @@ Si bien se puede usar cualquier IDE, describimos cómo configurar VS Code
 5. [Live Share Extention Pack](https://github.com/MicrosoftDocs/live-share)
 
 ## Ejecuta el código
-
+<!-- markdown-link-check-disable -->
 1. Bifurcar este repositorio y crear un clon local. [Más información](https://docs.github.com/es/github/getting-started-with-github/quickstart/fork-a-repo)
+<!-- markdown-link-check-enable -->
+
 1. Si está usando una Mac y Homebrew, abra la terminal y escriba `brew update` y `brew doctor`.
 
 Para el desarrollo de front-end, lea el [Client README](client/README.md).

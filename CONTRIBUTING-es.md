@@ -35,7 +35,9 @@ Abra [aquí](https://github.com/usds/justice40-tool/issues/new/choose) un proble
 En el problema, describa la función que desea, por qué la necesita y cómo debería funcionar esta. Los integrantes del equipo responderán a este lo antes posible.
 
 ### Colaboraciones con código
+<!-- markdown-link-check-disable -->
 Si desea colaborar con alguna parte del código base, bifurque el repositorio siguiendo la [siguiente metodología de GitHub para hacer la bifurcación](https://docs.github.com/es/get-started/quickstart/fork-a-repo) *(en inglés)*. Luego, haga los cambios en el código de su propia copia del repositorio (incluya pruebas, si corresponde) y, por último, [envíe una solicitud para incorporar los cambios en el repositorio precedente](https://docs.github.com/es/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork) *(en inglés)*. Para poder fusionar una solicitud de incorporación de cambios, las siguientes opciones en este repositorio deben estar habilitadas:
+<!-- markdown-link-check-disable -->
 
 * No se permiten las fusiones al proyecto principal `main`; abra una solicitud de incorporación de cambios desde una rama.
 * Al menos un revisor autorizado debe aprobar la confirmación (en [CODEOWNERS](https://github.com/usds/justice40-tool/tree/main/.github/CODEOWNERS), en inglés, consulte la lista más reciente de estos revisores).
