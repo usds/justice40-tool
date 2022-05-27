@@ -1,12 +1,12 @@
 # Justice40 Tool Installation
 
-*[¡Lea esto en español!](INSTALLATION-es.md)*
+_[¡Lea esto en español!](INSTALLATION-es.md)_
 
 This page documents the installation steps for some of the software needed to work with this project.
 
-> **NOTE: If you all you want to do is quickly run everything locally to try out the application, go straight to [`QUICKSTART.md`](QUICKSTART.md).**
+> **NOTE: If all you want to do is quickly run everything locally to try out the application, go straight to [`QUICKSTART.md`](QUICKSTART.md).**
 
-After the generic installation steps on this page, continue on to one of the following, depending on what you are trying to do:
+After the generic installation steps on this page, continue to one of the following, depending on what you are trying to do:
 
 - If you are working with the frontend, see [`client/README.md`](client/README.md).
 - If you are working with the data pipeline, see [`data/data-pipeline/README.md`](data/data-pipeline/README.md).
@@ -25,16 +25,38 @@ Download from [website](https://git-scm.com/download/win)
 
 ## Install Homebrew (MacOS only)
 
-Homebrew is an easy way to manage software downloads on MacOS. You don't *have* to use it, but we recommend it.
+Homebrew is an easy way to manage software downloads on MacOS. You don't _have_ to use it, but we recommend it.
 
-1. First, open your terminal and run `brew -v` to determine whether you have Homebrew installed. If you get a resopnse that looks something like `Homebrew 3.1.9`, you've already got it! If you get nothing back, or an error, continue.
-2. Open the terminal and copy / paste this command and hit RETURN. Go through the prompts (you will need to grant `sudo` access).
+1. First, open your terminal and run `brew -v` to determine whether you have Homebrew installed. If you get a response that looks something like `Homebrew 3.1.9`, you've already got it! If you get nothing back, or an error, continue.
+2. Open the terminal and copy/paste this command and hit RETURN. Go through the prompts (you will need to grant `sudo` access).
 
 `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`
 
 2. Validate installation by typing `brew -v` in the terminal and ensure a version number is shown.
 
 You should regularly run `brew update` and `brew doctor` to make sure your packages are up to date and in good condition.
+
+### Install Node using NVM 
+
+This will work for both MacOS and Win10. Follow instructions on this [link](https://medium.com/@nodesource/installing-node-js-tutorial-using-nvm-5c6ff5925dd8). Be sure to read through the whole doc to find the sections within each step relevant to you (e.g. if you're using Homebrew, when you get to Step 2 look for the section, "Install NVM with Homebrew").
+
+If you install NVM using Homebrew, make sure to read the output in terminal after you run `brew install nvm`. You will need to add a few lines to your ~/.bash_profile and perhaps complete a couple other tasks.
+
+Once you install NVM, don't forget to install Node! This is included in the linked tutorial above.
+
+After you've downloaded the nvm and the latest node (using the above steps) also install node version 14 by:
+
+`brew install node@14`
+
+You should then be able to switch to that version of node by:
+
+`nvm use 14`
+
+To validate you are using node 14, type:
+
+`node -v` 
+
+This should return *Now using node 14.x.x (npm v6.x.x)*
 
 ## IDE set up (Optional)
 While any IDE can be used, we're outlining how to set up VS Code
