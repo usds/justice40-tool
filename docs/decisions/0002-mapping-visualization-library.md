@@ -42,11 +42,11 @@ We provide more detail on these factors below.
 5. [ArcGIS API for Javascript](https://developers.arcgis.com/javascript/latest/) - v4.18 (12/2020)
 
 ## Not Considered Options
-
+<!-- markdown-link-check-disable -->
 - Non-ArcGIS-JS-API Esri [products](https://www.esri.com/en-us/arcgis/products/index) - The focus of this investigation is web APIs that can be incorporated into a website and rendered as part of a cloud-based, modular web-development flow. Additionally, these are not open source.
 - [Google Maps Platform](https://developers.google.com/maps)/[Bing Maps APIs](https://www.microsoft.com/en-us/maps/choose-your-bing-maps-api) - These mapping are also closed source and proprietary, and do not allow for significant customization or visualization of the sort we would need for this product
 - [d3.js](https://d3js.org/) - though impressive in its offerings and performance, d3 appears more oriented to more general-purpose infographic use than a mapping-specific product requiring significant GIS-adjacent features. We may consider aspects of D3 for particular chart renderings.
-
+<!-- markdown-link-check-enable -->
 ## Decision Outcome
 
 **OpenLayers** ([Source](https://github.com/openlayers/openlayers) - v6.5.0 (12/27/20)). This library is completely free and open-source, modular, and modern. As a modern, well-typed and well-documented javascript library, it is approachable, yet offers a full-featured and familiar interface as well for those with a background in GIS systems. As it is free to use, anyone could clone our source and run our project locally without payment or registration. Additionally, it has relatively good performance for large feature sets, despite not using WebGL for rendering.
