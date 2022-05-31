@@ -1336,7 +1336,7 @@
     "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Training and workforce development"
   },
   "methodology.page.paragraph": {
-    "defaultMessage": "The current version of the tool identifies communities that are disadvantaged for the purposes of the Justice40 Initiative using census tracts, which are the smallest geographic unit for which publicly-available and nationally-consistent datasets can be consistently displayed on the tool. Census tract geographical boundaries are determined by the U.S. Census Bureau once every ten years. This tool utilizes the census tract boundaries from 2010 because they match the datasets used in the tool. The U.S. Census Bureau will update these census tract boundaries in 2020.",
+    "defaultMessage": "The current version of the tool identifies communities that are disadvantaged for the purposes of the Justice40 Initiative using census tracts, which are the smallest geographic unit for which publicly-available and nationally-consistent datasets can be consistently displayed on the tool. Census tract geographical boundaries are determined by the U.S. Census Bureau once every ten years. This tool utilizes the census tract boundaries from 2010 because they match the datasets used in the tool.",
     "description": "Navigate to the methodology page. This is the methodology page paragraph"
   },
   "methodology.page.return.to.top.link": {

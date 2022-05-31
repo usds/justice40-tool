@@ -25,7 +25,7 @@ export const PAGE = defineMessages({
       which publicly-available and nationally-consistent datasets can be consistently displayed on the 
       tool. Census tract geographical boundaries are determined by the U.S. Census Bureau once every ten 
       years. This tool utilizes the census tract boundaries from 2010 because they match the datasets used 
-      in the tool. The U.S. Census Bureau will update these census tract boundaries in 2020.
+      in the tool.
     `,
     description: 'Navigate to the methodology page. This is the methodology page paragraph',
   },
