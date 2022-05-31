@@ -23,7 +23,7 @@ exports[`rendering of the MapSearch checks if component renders 1`] = `
         data-testid="textInput"
         id="search-field"
         name="search"
-        placeholder="Enter a city, state or ZIP"
+        placeholder="Enter an address, city, state or ZIP"
         type="search"
       />
       <button

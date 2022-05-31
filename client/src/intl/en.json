@@ -344,7 +344,7 @@
     "description": "On the explore the map page, the description of the legend"
   },
   "explore.map.page.map.search.placeholder.text": {
-    "defaultMessage": "Enter a city, state or ZIP",
+    "defaultMessage": "Enter an address, city, state or ZIP",
     "description": "On the explore the map page, on the map, the placeholder text for search"
   },
   "explore.map.page.map.search.results.empty.text": {
