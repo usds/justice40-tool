@@ -15,6 +15,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
     """ETL class for the FEMA National Risk Index dataset"""
 
     NAME = "national_risk_index"
+    SOURCE_URL = "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload//NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
 
     ## TEMPORARILY HERE
@@ -71,10 +72,8 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         """
         logger.info("Downloading 405MB National Risk Index Data")
 
-        source_url = "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload//NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
-
         super().extract(
-            source_url=source_url,
+            source_url=self.SOURCE_URL,
             extract_path=self.get_tmp_path(),
         )
 
