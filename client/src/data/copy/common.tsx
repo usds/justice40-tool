@@ -4,6 +4,7 @@ import React from 'react';
 import {FormattedDate, FormattedMessage} from 'gatsby-plugin-intl';
 import {defineMessages} from 'react-intl';
 import LinkTypeWrapper from '../../components/LinkTypeWrapper';
+import DownloadLink from '../../components/DownloadLink';
 
 export interface IDefineMessage {
   id: string,
@@ -20,6 +21,8 @@ export interface IDefineMessage {
 export const italicFn = (str:string) => <i>{str}</i>;
 export const boldFn = (str:string) => <strong>{str}</strong>;
 export const simpleLink = (href:string) => (str:string) => <a href={href}>{str}</a>;
+// export const downloadLink = (href:string) => (str:string) => <a href={href} download>{str}</a>;
+export const downloadLink = (href:string) => (str:string) => <DownloadLink href={href} linkText={str} />;
 // eslint-disable-next-line max-len
 export const linkFn = (to:string | IDefineMessage, isInternal:boolean, isOpenNewTab:boolean) => (str:string) => <LinkTypeWrapper linkText={str} internal={isInternal} url={to} openUrlNewTab={isOpenNewTab}/>;
 
@@ -51,7 +54,7 @@ export const TSD = defineMessages({
 
 // Alerts
 // Expiration month is zero-based: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getMonth
-const ALERT_1_EXPIRATION_DATE= new Date(2022, 4, 25); // May 25
+export const RFI_EXPIRATION_DATE= new Date(2022, 4, 25, 11, 59, 59); // May 25
 export const ALERTS = {
   ALERT_1_TITLE: defineMessages({
     TITLE: {
@@ -60,7 +63,7 @@ export const ALERTS = {
       description: 'Alert title that appears on landing page.',
     },
   }),
-  EXPIRATION_DATE: ALERT_1_EXPIRATION_DATE,
+  EXPIRATION_DATE: RFI_EXPIRATION_DATE,
   ALERT_1_DESCRIPTION: <FormattedMessage
     id={'common.pages.alerts.public_comment_period.description'}
     defaultMessage={`The public comment period for <link1>sending feedback</link1> via the Request for Information has been extended to {expDate1}.`}
@@ -68,7 +71,7 @@ export const ALERTS = {
     values={{
       link1: linkFn('https://www.federalregister.gov/documents/2022/04/25/2022-08774/climate-and-economic-justice-screening-tool-beta-version', false, true),
       expDate1: <FormattedDate
-        value={ALERT_1_EXPIRATION_DATE}
+        value={RFI_EXPIRATION_DATE}
         year="numeric"
         month="short"
         day="numeric"

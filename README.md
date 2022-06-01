@@ -20,7 +20,7 @@ The Justice40 team is taking a community-first and open source approach to the p
 
 We know that we can learn from a wide variety of communities, including those who will use or will be impacted by the tool, who are experts in data science or technology, or who have experience in climate, economic,or environmental justice work. We are dedicated to creating forums for continuous conversation and feedback to help shape the design and development of the tool. 
 
-We also recognize capacity building as a key part of involving a diverse open source community. We are doing our best to use accessible language, provide technical and process documents in multiple languages, and offer support to our community members of a wide variety of background and skillsets, directly or in the form of group chats and training. If you have ideas for how we can improve or add to our capacity building efforts and methods for welcoming folks into our community, please let use know in the [Google Group](https://groups.google.com/u/4/g/justice40-open-source) or email us at justice40open@usds.gov.
+We also recognize capacity building as a key part of involving a diverse open source community. We are doing our best to use accessible language, provide technical and process documents in multiple languages, and offer support to our community members of a wide variety of backgrounds and skillsets, directly or in the form of group chats and training. If you have ideas for how we can improve or add to our capacity building efforts and methods for welcoming folks into our community, please let us know in the [Google Group](https://groups.google.com/u/4/g/justice40-open-source) or email us at justice40open@usds.gov.
 
 ### Community Guidelines
 Principles and guidelines for participating in our open source community are available [here](COMMUNITY_GUIDELINES.md). Please read them before joining or starting a conversation in this repo or one of the channels listed below. 
@@ -35,7 +35,7 @@ Our [Google Group](https://groups.google.com/u/4/g/justice40-open-source) is ope
 
 The core team uses the group to post updates on the program and tech/data issues, and to share the agenda and call for community participation in the community chat.
 
-Curious about whether to ask a question here as a Github issue or in the Google Group? The general rule of thumb is that issues are for actionable topics related to the tool or data itself (e.g. questions about a specific data set in use, or suggestion for a new tool feature), and the Google Group is for more general topics or questions. If you can't decide, use the google group and we'll discuss there before moving to Github if appropriate! 
+Curious about whether to ask a question here as a Github issue or in the Google Group? The general rule of thumb is that issues are for actionable topics related to the tool or data itself (e.g. questions about a specific data set in use, or suggestion for a new tool feature), and the Google Group is for more general topics or questions. If you can't decide, use the google group and we'll discuss it there before moving to Github if appropriate! 
 
 ## Contributing
 
@@ -55,7 +55,7 @@ If you want to run the entire application locally, see [QUICKSTART.md](QUICKSTAR
 
 ### Advanced Guides
 
-If you have software experience or more specific use cases, start at [INSTALLATION.md](INSTALLATION.md) for more in depth documentation of how to work with this project.
+If you have software experience or more specific use cases, start at [INSTALLATION.md](INSTALLATION.md) for more in-depth documentation of how to work with this project.
 
 ### Project Documentation
 

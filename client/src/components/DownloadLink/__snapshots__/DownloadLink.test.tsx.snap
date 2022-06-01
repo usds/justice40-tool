@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of the DownloadLink disadvantaged checks if component renders 1`] = `
+<DocumentFragment>
+  <a
+    download=""
+    href="https://google.com"
+  >
+    Google
+  </a>
+  <img
+    alt="The icon used to indicate that the file is downloadable"
+    src="test-file-stub"
+  />
+</DocumentFragment>
+`;

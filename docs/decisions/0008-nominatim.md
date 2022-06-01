@@ -100,7 +100,7 @@ Others providers:
   - Many are not open source
 
 ### Data Science Toolkit
-
+<!-- markdown-link-check-disable -->
 Data-science-oriented search framework that combines osm with geoip data.
 
 An overall good option, but if we went down this path we would want to host ourselves -- it is notable that it does give this option.
@@ -120,7 +120,7 @@ An overall good option, but if we went down this path we would want to host ours
 - Cons:
   - Recommended that you host your own given these limitations
   - Not recommended for production use
-
+<!-- markdown-link-check-enable -->
 ### Census Geocoding Services
 
 Geocoding service provided directly by the census. More info [here](https://www.census.gov/programs-surveys/geography/technical-documentation/complete-technical-documentation/census-geocoder.html).

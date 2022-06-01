@@ -5,8 +5,8 @@ import {defineMessages} from 'react-intl';
 import {FormattedDate, FormattedMessage, FormattedNumber} from 'gatsby-plugin-intl';
 
 import * as COMMON_COPY from './common';
+import * as DOWNLOADS_COPY from './downloads';
 import * as METHODOLOGY_COPY from './methodology';
-import {simpleLink, linkFn} from './common';
 import {PAGES_ENDPOINTS} from '../constants';
 
 export const PAGE_INTRO = defineMessages({
@@ -32,7 +32,7 @@ export const PAGE_DESCRIPTION = <FormattedMessage
     `}
   description={'On the explore the map page, the description of the page'}
   values={{
-    link1: linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
+    link1: COMMON_COPY.linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
   }}
 />;
 
@@ -187,7 +187,7 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   PARA3: {
     id: 'explore.map.page.side.panel.info.para3',
     defaultMessage: `
-      The tool ranks each census tract using percentiles that show how much burden each tract experiences relative to all other tracts, for each criteria.
+      The tool ranks each census tract using percentiles that show how much burden each tract experiences relative to all other tracts, for each criterion.
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the third paragraph of this side panel`,
   },
@@ -777,15 +777,15 @@ export const DOWNLOAD_DRAFT = {
       map that will download the data packet
     `}
     values={{
-      link1: simpleLink(METHODOLOGY_COPY.DOWNLOAD_ZIP_URL),
+      link1: COMMON_COPY.downloadLink(DOWNLOADS_COPY.DOWNLOAD_FILES.SHAPE_FILE.URL),
       downloadFileSize: <FormattedNumber
-        value={METHODOLOGY_COPY.DOWNLOAD_FILE_SIZE}
+        value={DOWNLOADS_COPY.DOWNLOAD_FILES.SHAPE_FILE.SIZE}
         style="unit"
         unit="megabyte"
         unitDisplay="narrow"
       />,
       dateUpdated: <FormattedDate
-        value={METHODOLOGY_COPY.DOWNLOAD_ZIP_LAST_UPDATED}
+        value={DOWNLOADS_COPY.DOWNLOAD_FILES.SHAPE_FILE.LAST_UPDATED}
         year="2-digit"
         month="2-digit"
         day="2-digit"
@@ -809,7 +809,7 @@ export const NOTE_ON_TERRITORIES = {
     `}
     description={`Navigate to the explore the map page. Under the map, you will see territories paragraph 1`}
     values={{
-      link1: linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
+      link1: COMMON_COPY.linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
     }}
   />,
   PARA_2: <FormattedMessage
@@ -863,10 +863,10 @@ export const NOTE_ON_TRIBAL_NATIONS = {
     `}
     description={`Navigate to the explore the map page. Under the map, you will see tribal nations paragraph 1`}
     values={{
-      link1: linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
-      link2: linkFn(`https://www.whitehouse.gov/wp-content/uploads/2022/01/CEQ-Tribal-Consultation-Plan-04.26.2021.pdf`, false, true),
-      link3: linkFn(`https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/26/memorandum-on-tribal-consultation-and-strengthening-nation-to-nation-relationships/`, false, true),
-      link4: linkFn(`https://www.federalregister.gov/documents/2000/11/09/00-29003/consultation-and-coordination-with-indian-tribal-governments`, false, true),
+      link1: COMMON_COPY.linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
+      link2: COMMON_COPY.linkFn(`https://www.whitehouse.gov/wp-content/uploads/2022/01/CEQ-Tribal-Consultation-Plan-04.26.2021.pdf`, false, true),
+      link3: COMMON_COPY.linkFn(`https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/26/memorandum-on-tribal-consultation-and-strengthening-nation-to-nation-relationships/`, false, true),
+      link4: COMMON_COPY.linkFn(`https://www.federalregister.gov/documents/2000/11/09/00-29003/consultation-and-coordination-with-indian-tribal-governments`, false, true),
     }}
   />,
 };
@@ -884,7 +884,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
     `}
     defaultMessage={`View the <link1>Methodology & data</link1> page and send feedback.`}
     values={{
-      link1: linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
+      link1: COMMON_COPY.linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
     }}
   />,
   LIST_ITEM_2: <FormattedMessage
@@ -892,16 +892,13 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
     description={`Navigate to the explore the map page. Under the map, you will see share your feedback`}
     defaultMessage={`Use the map to find communities and <link1>share your feedback</link1>.`}
     values={{
-      link1: linkFn(`mailto:${COMMON_COPY.FEEDBACK_EMAIL}`, false, true),
+      link1: COMMON_COPY.linkFn(`mailto:${COMMON_COPY.FEEDBACK_EMAIL}`, false, true),
     }}
   />,
   LIST_ITEM_3: <FormattedMessage
     id={'explore.map.page.under.map.how.you.can.help.list.item.3'}
-    description={`Navigate to the explore the map page. Under the map, you will see share your feedback`}
-    defaultMessage={`Respond to our Request for Information on <link1>federalregister.gov</link1>.`}
-    values={{
-      link1: linkFn(`https://www.federalregister.gov/d/2022-03920`, false, true),
-    }}
+    description={`Navigate to the explore the map page. Under the map, you will see RFI is expired`}
+    defaultMessage={`The Request for Information on the Federal Register is now closed.`}
   />,
 
 };
