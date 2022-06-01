@@ -1,9 +1,10 @@
 /* eslint-disable max-len */
 import React from 'react';
 import {defineMessages} from 'react-intl';
-import {FormattedDate, FormattedMessage, FormattedNumber} from 'gatsby-plugin-intl';
+import {FormattedMessage} from 'gatsby-plugin-intl';
 import {boldFn, linkFn, simpleLink} from './common';
-import * as styles from '../../components/DownloadPacket/downloadPacket.module.scss';
+
+export const VERSION_NUMBER = 0.1;
 
 export const PAGE = defineMessages({
   TILE: {
@@ -24,7 +25,7 @@ export const PAGE = defineMessages({
       which publicly-available and nationally-consistent datasets can be consistently displayed on the 
       tool. Census tract geographical boundaries are determined by the U.S. Census Bureau once every ten 
       years. This tool utilizes the census tract boundaries from 2010 because they match the datasets used 
-      in the tool. The U.S. Census Bureau will update these census tract boundaries in 2020.
+      in the tool.
     `,
     description: 'Navigate to the methodology page. This is the methodology page paragraph',
   },
@@ -39,7 +40,6 @@ export const PAGE = defineMessages({
   },
 
 });
-
 
 export const FORMULA = {
   INTRO: <FormattedMessage
@@ -66,143 +66,6 @@ export const FORMULA = {
       <boldtag>AND</boldtag> the census tract is above the threshold for the socioeconomic indicators
     `}
     description={'Navigate to the methodology page. This is the second part of the formula used in the methodology'}
-    values={{
-      boldtag: boldFn,
-    }}
-  />,
-};
-
-// Download Package
-export const DOWNLOAD_FILE_SIZE = 53;
-export const DOWNLOAD_SHAPE_FILE_SIZE = 742;
-export const DOWNLOAD_TSD_FILE_SIZE = 2.5;
-export const DOWNLOAD_ZIP_LAST_UPDATED = new Date('5/4/2022').getTime();
-export const DOWNLOAD_SHAPE_LAST_UPDATED = new Date('4/26/2022').getTime();
-export const DOWNLOAD_TSD_LAST_UPDATED = new Date('4/19/2022').getTime();
-export const VERSION_NUMBER = 0.1;
-
-export const DOWNLOAD_ZIP_URL = [
-  process.env.GATSBY_CDN_TILES_BASE_URL,
-  process.env.GATSBY_DATA_PIPELINE_SCORE_PATH,
-  process.env.GATSBY_SCORE_DOWNLOAD_FILE_PATH,
-].join('/');
-
-export const DOWNLOAD_SHAPEFILE_URL = [
-  process.env.GATSBY_CDN_TILES_BASE_URL,
-  process.env.GATSBY_DATA_PIPELINE_SCORE_PATH,
-  process.env.GATSBY_SHAPE_FILE_PATH,
-].join('/');
-
-// TSD = Tech Support Document
-export const DOWNLOAD_TSD_URL = [
-  process.env.GATSBY_CDN_TILES_BASE_URL,
-  process.env.GATSBY_DATA_PIPELINE_SCORE_PATH,
-  process.env.GATSBY_TSD_DOWNLOAD_FILE_PATH,
-].join('/');
-
-const newCalloutFontColorFn = (str: string) => <span className={styles.newCalloutFontColor}>{str}</span>;
-
-export const DOWNLOAD_PACKAGE = {
-  TITLE: <FormattedMessage
-    id={'methodology.page.downloadPacket.header.text'}
-    defaultMessage={`<callout>NEW</callout> files available for download`}
-    description={'Navigate to the methodology page. This is the download packet header text'}
-    values={{
-      callout: newCalloutFontColorFn,
-    }}
-  />,
-  DESCRIPTION1: <FormattedMessage
-    id={'methodology.page.downloadPacket.info.text1'}
-    defaultMessage={`Download the data sources used in the CEJST (.csv, .xlxs, <callout>.pdf</callout> that describes how to use the list, and a <callout>codebook</callout>, {downloadFileSize} unzipped), the shapefile, along with a <callout>codebook</callout> (.zip, {shapefileSize} unzipped) or the technical support document (.pdf, {tsdFileSize} unzipped).`}
-    description={'Navigate to the methodology page. This is the download packet info text'}
-    values={{
-      callout: newCalloutFontColorFn,
-      downloadFileSize: <FormattedNumber
-        value={DOWNLOAD_FILE_SIZE}
-        style="unit"
-        unit="megabyte"
-        unitDisplay="narrow"
-      />,
-      shapefileSize: <FormattedNumber
-        value={DOWNLOAD_SHAPE_FILE_SIZE}
-        style="unit"
-        unit="megabyte"
-        unitDisplay="narrow"
-      />,
-      tsdFileSize: <FormattedNumber
-        value={DOWNLOAD_TSD_FILE_SIZE}
-        style="unit"
-        unit="megabyte"
-        unitDisplay="narrow"
-      />,
-    }}
-  />,
-  ZIP_LAST_UPDATED: <FormattedMessage
-    id={'methodology.page.downloadPacket.info.zip.last.updated'}
-    defaultMessage={`Last updated: {downloadLastUpdated} `}
-    description={'Navigate to the methodology page. This is the download packet info last updated'}
-    values={{
-      downloadLastUpdated: <FormattedDate
-        value={DOWNLOAD_ZIP_LAST_UPDATED}
-        year="2-digit"
-        month="2-digit"
-        day="2-digit"
-      />,
-    }}
-  />,
-  SHAPE_LAST_UPDATED: <FormattedMessage
-    id={'methodology.page.downloadPacket.info.shape.last.updated'}
-    defaultMessage={`Last updated: {shapeLastUpdated} `}
-    description={'Navigate to the methodology page. This is the download packet info last updated'}
-    values={{
-      shapeLastUpdated: <FormattedDate
-        value={DOWNLOAD_SHAPE_LAST_UPDATED}
-        year="2-digit"
-        month="2-digit"
-        day="2-digit"
-      />,
-    }}
-  />,
-  TSD_LAST_UPDATED: <FormattedMessage
-    id={'methodology.page.downloadPacket.info.tsd.last.updated'}
-    defaultMessage={`Last updated: {tsdLastUpdated} `}
-    description={'Navigate to the methodology page. This is the download packet info last updated'}
-    values={{
-      tsdLastUpdated: <FormattedDate
-        value={DOWNLOAD_TSD_LAST_UPDATED}
-        year="2-digit"
-        month="2-digit"
-        day="2-digit"
-      />,
-    }}
-  />,
-  BUTTON_TEXT1: <FormattedMessage
-    id={'methodology.page.downloadPacket.button1.text'}
-    defaultMessage={'Download data sources'}
-    description={'Navigate to the methodology page. This is the download packet button text'}
-  />,
-  BUTTON_TEXT2: <FormattedMessage
-    id={'methodology.page.downloadPacket.button2.text'}
-    defaultMessage={'Download shapefile'}
-    description={'Navigate to the methodology page. This is the download shapefiles text'}
-  />,
-  BUTTON_TEXT3: <FormattedMessage
-    id={'methodology.page.downloadPacket.button3.text'}
-    defaultMessage={'Download technical support document'}
-    description={'Navigate to the methodology page. This is the download technical support document spreadsheet'}
-  />,
-  NEW_TAG: <FormattedMessage
-    id={'methodology.page.downloadPacket.new.tag.text'}
-    defaultMessage={`<boldtag>NEW</boldtag>`}
-    description={'Navigate to the methodology page. This is the new tag text'}
-    values={{
-      boldtag: boldFn,
-    }}
-  />,
-  UPDATED_TAG: <FormattedMessage
-    id={'methodology.page.downloadPacket.updated.tag.text'}
-    defaultMessage={`<boldtag>Updated</boldtag>`}
-    description={'Navigate to the methodology page. This is the update callout tag text that overlaps the button'}
     values={{
       boldtag: boldFn,
     }}

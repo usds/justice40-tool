@@ -51,7 +51,13 @@ If the file is super big we can just look at the head of the file:
 
 In order to see the json file in a pretty format, pipe to jq:
 
-- `tippecanoe-decode d3_313.pbf 3 1 3 | head -40 | jq`
+- `tippecanoe-decode d3_313.pbf 3 1 3 | jq`
+
+While to view just a portion of the feature tile (note we're using a high zoom tile in this example):
+
+- `tippecanoe-decode d3_9_138_206.pbf 9 138 206 | jq .features | head -100`
+
+This will filter the decoded pbf by the `features` key and then show the first element in the feature array.
 
 When the map is clicked, the data (aka features - which are sets of properties in the geojson file ) of the map are able to be accessed via the MapEvent. See [j40Map.tsx](https://github.com/usds/justice40-tool/blob/main/client/src/components/J40Map.tsx)'s `onClick` method for more details.
 
