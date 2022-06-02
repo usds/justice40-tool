@@ -920,7 +920,7 @@
     "description": "Navigate to the methodology page. Navigate to the category section. This is the portion of the formula dealing with higher ed enrollment and high school degree rate"
   },
   "methodology.page.category.and.clause.low.inc.hs.ed": {
-    "defaultMessage": "<boldtag>AND</boldtag> is above the 65th percentile for <link1>low income</link1> AND 80% or more of individuals 15 or older are not enrolled in <link2>higher education</link2>",
+    "defaultMessage": "<boldtag>AND</boldtag> is at or above the 65th percentile for <link1>low income</link1> AND 80% or more of individuals 15 or older are not enrolled in <link2>higher education</link2>",
     "description": "Navigate to the methodology page. Navigate to the category section. This is category portion of the formula dealing with lower income and high school degree rate"
   },
   "methodology.page.category.asthma.description.text": {
