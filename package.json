@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "@turf/turf": "^6.5.0",
-    "@types/d3-ease": "^3.0.0",
-    "d3-ease": "^3.0.1"
-  }
-}
