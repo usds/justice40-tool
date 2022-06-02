@@ -73,7 +73,7 @@ export const MAP = defineMessages({
   },
   SEARCH_RESULTS_EMPTY_MESSAGE: {
     id: 'explore.map.page.map.search.results.empty.text',
-    defaultMessage: 'No location found. Please try again.',
+    defaultMessage: 'Location not found or unknown. Please try a different search.',
     description: 'On the explore the map page, on the map, the text displaying message for no search results found',
   },
   LOWER48_SHORT: {

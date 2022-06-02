@@ -89,7 +89,7 @@
     "explore.map.page.legend.description.text": "Las comunidades que la herramienta identifica como desfavorecidas son las que se encuentran marginadas, desatendidas y abrumadas por la contaminación. Esas comunidades alcanzan los umbrales de una o más de ocho categorías de criterios, o los superan.",
     "explore.map.page.map.search.placeholder.mobile.text": "Buscar ubicaciones",
     "explore.map.page.map.search.placeholder.text": "Busque una dirección, ciudad, estado o código postal",
-    "explore.map.page.map.search.results.empty.text": "No se encontró el lugar. Vuelva a intentarlo.",
+    "explore.map.page.map.search.results.empty.text": "Ubicación no encontrada o desconocida. Intente una búsqueda diferente.",
     "explore.map.page.map.territoryFocus.alaska.long": "Alaska",
     "explore.map.page.map.territoryFocus.alaska.short": "AK",
     "explore.map.page.map.territoryFocus.american.samoa.long": "Samoa estadounidense",
