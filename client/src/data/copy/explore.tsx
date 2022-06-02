@@ -63,7 +63,12 @@ export const MAP = defineMessages({
   },
   SEARCH_PLACEHOLDER: {
     id: 'explore.map.page.map.search.placeholder.text',
-    defaultMessage: 'Enter an address, city, state or ZIP',
+    defaultMessage: 'Search for an address, city, state or ZIP',
+    description: 'On the explore the map page, on the map, the placeholder text for search',
+  },
+  SEARCH_PLACEHOLDER_MOBILE: {
+    id: 'explore.map.page.map.search.placeholder.mobile.text',
+    defaultMessage: 'Search locations',
     description: 'On the explore the map page, on the map, the placeholder text for search',
   },
   SEARCH_RESULTS_EMPTY_MESSAGE: {

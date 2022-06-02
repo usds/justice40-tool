@@ -343,8 +343,12 @@
     "defaultMessage": "Communities identified as disadvantaged by the map are those that are marginalized, underserved, and overburdened by pollution. These communities are at or above the thresholds in one or more of eight categories of criteria.",
     "description": "On the explore the map page, the description of the legend"
   },
+  "explore.map.page.map.search.placeholder.mobile.text": {
+    "defaultMessage": "Search locations",
+    "description": "On the explore the map page, on the map, the placeholder text for search"
+  },
   "explore.map.page.map.search.placeholder.text": {
-    "defaultMessage": "Enter an address, city, state or ZIP",
+    "defaultMessage": "Search for an address, city, state or ZIP",
     "description": "On the explore the map page, on the map, the placeholder text for search"
   },
   "explore.map.page.map.search.results.empty.text": {

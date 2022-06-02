@@ -2,11 +2,13 @@ import React, {useState} from 'react';
 import {LngLatBoundsLike} from 'maplibre-gl';
 import {useIntl} from 'gatsby-plugin-intl';
 import {Search} from '@trussworks/react-uswds';
+import {useWindowSize} from 'react-use';
 
 import MapSearchMessage from '../MapSearchMessage';
 
 import * as styles from './MapSearch.module.scss';
 import * as EXPLORE_COPY from '../../data/copy/explore';
+import * as CONSTANTS from '../../data/constants';
 
 interface IMapSearch {
   goToPlace(bounds: LngLatBoundsLike):void;
@@ -16,7 +18,7 @@ const MapSearch = ({goToPlace}:IMapSearch) => {
   // State to hold if the search results are empty or not:
   const [isSearchResultsNull, setIsSearchResultsNull] = useState(false);
   const intl = useIntl();
-
+  const {width} = useWindowSize();
   /*
     onSearchHandler will
      1. extract the search term from the input field
@@ -57,11 +59,14 @@ const MapSearch = ({goToPlace}:IMapSearch) => {
     }
   };
 
+  // eslint-disable-next-line max-len
+  const searchPlaceholderText = width < CONSTANTS.USWDS_BREAKPOINTS.MOBILE_LG ? EXPLORE_COPY.MAP.SEARCH_PLACEHOLDER_MOBILE : EXPLORE_COPY.MAP.SEARCH_PLACEHOLDER;
+
   return (
     <div className={styles.mapSearchContainer}>
       <MapSearchMessage isSearchResultsNull={isSearchResultsNull} />
       <Search
-        placeholder={intl.formatMessage(EXPLORE_COPY.MAP.SEARCH_PLACEHOLDER)}
+        placeholder={intl.formatMessage(searchPlaceholderText)}
         size="small"
         onSubmit={(e) => onSearchHandler(e)}
       />
