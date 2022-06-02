@@ -61,7 +61,7 @@ const MapSearch = ({goToPlace}:IMapSearch) => {
   console.log(width, height);
 
   // eslint-disable-next-line max-len
-  const searchPlaceholderText = width < height ? EXPLORE_COPY.MAP.SEARCH_PLACEHOLDER_MOBILE : EXPLORE_COPY.MAP.SEARCH_PLACEHOLDER;
+  const searchPlaceholderText = width > height ? EXPLORE_COPY.MAP.SEARCH_PLACEHOLDER : EXPLORE_COPY.MAP.SEARCH_PLACEHOLDER_MOBILE;
 
   return (
     <div className={styles.mapSearchContainer}>
