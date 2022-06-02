@@ -8,7 +8,6 @@ import MapSearchMessage from '../MapSearchMessage';
 
 import * as styles from './MapSearch.module.scss';
 import * as EXPLORE_COPY from '../../data/copy/explore';
-import * as CONSTANTS from '../../data/constants';
 
 interface IMapSearch {
   goToPlace(bounds: LngLatBoundsLike):void;
@@ -18,7 +17,7 @@ const MapSearch = ({goToPlace}:IMapSearch) => {
   // State to hold if the search results are empty or not:
   const [isSearchResultsNull, setIsSearchResultsNull] = useState(false);
   const intl = useIntl();
-  const {width} = useWindowSize();
+  const {width, height} = useWindowSize();
   /*
     onSearchHandler will
      1. extract the search term from the input field
@@ -59,8 +58,10 @@ const MapSearch = ({goToPlace}:IMapSearch) => {
     }
   };
 
+  console.log(width, height);
+
   // eslint-disable-next-line max-len
-  const searchPlaceholderText = width < CONSTANTS.USWDS_BREAKPOINTS.MOBILE_LG ? EXPLORE_COPY.MAP.SEARCH_PLACEHOLDER_MOBILE : EXPLORE_COPY.MAP.SEARCH_PLACEHOLDER;
+  const searchPlaceholderText = width < height ? EXPLORE_COPY.MAP.SEARCH_PLACEHOLDER_MOBILE : EXPLORE_COPY.MAP.SEARCH_PLACEHOLDER;
 
   return (
     <div className={styles.mapSearchContainer}>
