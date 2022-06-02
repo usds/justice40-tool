@@ -18,7 +18,7 @@ jobs:
         # checks all of the versions allowed in pyproject.toml
         python-version: [3.8, 3.9]
     steps:
-      # installs python
+      # installs Python
       # one execution of the tests per version listed above
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
