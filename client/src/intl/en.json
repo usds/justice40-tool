@@ -343,12 +343,16 @@
     "defaultMessage": "Communities identified as disadvantaged by the map are those that are marginalized, underserved, and overburdened by pollution. These communities are at or above the thresholds in one or more of eight categories of criteria.",
     "description": "On the explore the map page, the description of the legend"
   },
+  "explore.map.page.map.search.placeholder.mobile.text": {
+    "defaultMessage": "Search locations",
+    "description": "On the explore the map page, on the map, the placeholder text for search"
+  },
   "explore.map.page.map.search.placeholder.text": {
-    "defaultMessage": "Enter a city, state or ZIP",
+    "defaultMessage": "Search for an address, city, state or ZIP",
     "description": "On the explore the map page, on the map, the placeholder text for search"
   },
   "explore.map.page.map.search.results.empty.text": {
-    "defaultMessage": "No location found. Please try again.",
+    "defaultMessage": "Location not found or unknown. Please try a different search.",
     "description": "On the explore the map page, on the map, the text displaying message for no search results found"
   },
   "explore.map.page.map.territoryFocus.alaska.long": {
@@ -920,7 +924,7 @@
     "description": "Navigate to the methodology page. Navigate to the category section. This is the portion of the formula dealing with higher ed enrollment and high school degree rate"
   },
   "methodology.page.category.and.clause.low.inc.hs.ed": {
-    "defaultMessage": "<boldtag>AND</boldtag> is above the 65th percentile for <link1>low income</link1> AND 80% or more of individuals 15 or older are not enrolled in <link2>higher education</link2>",
+    "defaultMessage": "<boldtag>AND</boldtag> is at or above the 65th percentile for <link1>low income</link1> AND 80% or more of individuals 15 or older are not enrolled in <link2>higher education</link2>",
     "description": "Navigate to the methodology page. Navigate to the category section. This is category portion of the formula dealing with lower income and high school degree rate"
   },
   "methodology.page.category.asthma.description.text": {

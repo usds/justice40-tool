@@ -3,7 +3,7 @@
 exports[`rendering of the MapSearchMessage when search results are empty checks if component renders 1`] = `
 <DocumentFragment>
   <div>
-    No location found. Please try again.
+    Location not found or unknown. Please try a different search.
   </div>
 </DocumentFragment>
 `;

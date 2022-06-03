@@ -63,12 +63,17 @@ export const MAP = defineMessages({
   },
   SEARCH_PLACEHOLDER: {
     id: 'explore.map.page.map.search.placeholder.text',
-    defaultMessage: 'Enter a city, state or ZIP',
+    defaultMessage: 'Search for an address, city, state or ZIP',
+    description: 'On the explore the map page, on the map, the placeholder text for search',
+  },
+  SEARCH_PLACEHOLDER_MOBILE: {
+    id: 'explore.map.page.map.search.placeholder.mobile.text',
+    defaultMessage: 'Search locations',
     description: 'On the explore the map page, on the map, the placeholder text for search',
   },
   SEARCH_RESULTS_EMPTY_MESSAGE: {
     id: 'explore.map.page.map.search.results.empty.text',
-    defaultMessage: 'No location found. Please try again.',
+    defaultMessage: 'Location not found or unknown. Please try a different search.',
     description: 'On the explore the map page, on the map, the text displaying message for no search results found',
   },
   LOWER48_SHORT: {

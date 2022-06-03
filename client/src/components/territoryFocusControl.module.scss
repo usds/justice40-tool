@@ -7,14 +7,15 @@
 }
 
 .territoryFocusContainer {
-  // styles for mobile-lg (480px) and greater widths
+  @include baseTerritoryFocus;
+
+  // styles for mobile-lg (480px) and greater widths:
   @include at-media('mobile-lg') {
-    @include baseTerritoryFocus;
     top: units(card-lg);
   };
 
-  @include baseTerritoryFocus;
-  top: units(9);
+  // styles for mobile-lg (480px) and smaller widths:
+  top: 100px;
 
 }
 
