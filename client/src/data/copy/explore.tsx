@@ -314,7 +314,7 @@ export const COMMUNITY = {
 
 export const numberOfCategoriesExceeded = (categoryCount:number) => <FormattedMessage
   id={'explore.map.page.side.panel.num.categories.exceeded'}
-  defaultMessage={`Disadvantaged in {numberOfDisCategories, plural, one {# category} other {# categories}}`}
+  defaultMessage={`in {numberOfDisCategories, plural, one {# category} other {# categories}}`}
   description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show how many categories are exceeded`}
   values={{
     numberOfDisCategories: categoryCount,
