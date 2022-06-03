@@ -787,10 +787,6 @@
     "defaultMessage": "Disadvantaged in {numberOfDisCategories, plural, one {# category} other {# categories}}",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show how many categories are exceeded"
   },
-  "explore.map.page.side.panel.num.thresholds.exceeded": {
-    "defaultMessage": "At or above {numberOfThresholdExceed, plural, one {# threshold} other {# thresholds}}",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show how many thresholds are exceeded"
-  },
   "explore.map.page.side.panel.send.feedback.alt.img": {
     "defaultMessage": "Send feedback",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show a send feedback icon, this is the images alt tag"

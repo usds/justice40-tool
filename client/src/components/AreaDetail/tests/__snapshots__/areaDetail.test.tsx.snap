@@ -55,9 +55,6 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
       <div>
         Disadvantaged in 5 categories
       </div>
-      <div>
-        At or above 3 thresholds
-      </div>
       <a
         href="
             mailto:Screeningtool-Support@omb.eop.gov?subject=
@@ -418,9 +415,6 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       </div>
       <div>
         Disadvantaged in 5 categories
-      </div>
-      <div>
-        At or above 3 thresholds
       </div>
       <a
         href="
@@ -2157,9 +2151,6 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
       </div>
       <div>
         Disadvantaged in 5 categories
-      </div>
-      <div>
-        At or above 3 thresholds
       </div>
       <a
         href="

@@ -321,14 +321,14 @@ export const numberOfCategoriesExceeded = (categoryCount:number) => <FormattedMe
   }}
 />;
 
-export const numberOfThresholdsExceeded = (thresholds:number) => <FormattedMessage
-  id={'explore.map.page.side.panel.num.thresholds.exceeded'}
-  defaultMessage={`At or above {numberOfThresholdExceed, plural, one {# threshold} other {# thresholds}}`}
-  description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show how many thresholds are exceeded`}
-  values={{
-    numberOfThresholdExceed: thresholds,
-  }}
-/>;
+// export const numberOfThresholdsExceeded = (thresholds:number) => <FormattedMessage
+//   id={'explore.map.page.side.panel.num.thresholds.exceeded'}
+//   defaultMessage={`At or above {numberOfThresholdExceed, plural, one {# threshold} other {# thresholds}}`}
+//   description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show how many thresholds are exceeded`}
+//   values={{
+//     numberOfThresholdExceed: thresholds,
+//   }}
+// />;
 
 export const SEND_FEEDBACK = defineMessages({
   EMAIL_BODY: {
