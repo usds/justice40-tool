@@ -321,6 +321,7 @@ export const numberOfCategoriesExceeded = (categoryCount:number) => <FormattedMe
   }}
 />;
 
+// Temporarily commenting out as it may be needed again:
 // export const numberOfThresholdsExceeded = (thresholds:number) => <FormattedMessage
 //   id={'explore.map.page.side.panel.num.thresholds.exceeded'}
 //   defaultMessage={`At or above {numberOfThresholdExceed, plural, one {# threshold} other {# thresholds}}`}
