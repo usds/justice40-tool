@@ -199,7 +199,7 @@
     "explore.map.page.side.panel.info.title": "Lo que debe saber",
     "explore.map.page.side.panel.is.community.of.focus": "¿Está identificada como desfavorecida?",
     "explore.map.page.side.panel.not.community.of.focus": "No",
-    "explore.map.page.side.panel.num.categories.exceeded": "Desfavorecida en {numberOfDisCategories, plural, one {# categoría} other {# categorías}}",
+    "explore.map.page.side.panel.num.categories.exceeded": "en {numberOfDisCategories, plural, one {# categoría} other {# categorías}}",
     "explore.map.page.side.panel.num.thresholds.exceeded": "Al umbral o lo supera en {numberOfThresholdExceed, plural, one {# umbral} other {# umbrales}}",
     "explore.map.page.side.panel.send.feedback.alt.img": "Enviar comentarios",
     "explore.map.page.side.panel.send.feedback.email.body": "Aporte comentarios acerca de este grupo de bloques del censo, incluidos los conjuntos de datos, las categorías de datos proporcionadas para este grupo de bloques del censo, las comunidades que viven en este grupo de bloques del censo y toda la información pertinente que el Consejo sobre la Calidad del Medio Ambiente (CEQ, por sus siglas en inglés) debe saber acerca de este grupo de bloques del censo.",
