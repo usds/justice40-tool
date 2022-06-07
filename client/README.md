@@ -12,6 +12,7 @@ This README contains the following content:
 - [Feature toggling](#feature-toggling)
 - [Environment variables](#environment-variables)
 - [Debugging](#debugging)
+- [Package versions](#package-versions)
 
 ## Installing and running the client site
 
@@ -203,3 +204,16 @@ When developing, to use a flag:
 4. Run the _Debug Chrome_ configuration by hitting the green play button
 5. Install the [CORS chrome extension](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en) in the browser that is launched by the debugger.
 6. Set breakpoints in VS code!
+
+
+## Package Versions
+
+The following attemps to explain why certain packages versions have been chosen and what their current limitations are
+
+| package    | current version | latest version | using latest? | how does it break? |   
+|------------|-----------------|----------------|---------------|--------------------|
+| gatsby     | 3.14.6          | 4.14.2         | No            | when attempting to update - breaks all unit tests. Compatibility warning come up with all plugins but this doesn't seems to effect functionality. This is the latest version we can release without investigating unit tests. |    
+| gatsby-cli | 3.14.2          | 4.15.2         | No            | when attempting to update - breaks all unit tests. Compatibility warning come up with all plugins but this doesn't seems to effect functionality. This is the latest version we can release without investigating unit tests.|  
+| sass       | 1.32.12         | 1.52.3         | No            | This version is needed to surpress the dart warnings on / as division for each component. See [here](https://github.com/twbs/bootstrap/issues/34051#issuecomment-845884423) for more information |
+| uswds      | 2.11.2          | 3.0.2          | No            | Needs to stay at 2.11 for peer dependency on trussworks|   
+| trussworks | 2.9.0           | 3.0.2          | No            | Needs to stay at 2.9 as 3.0 is breaking change |
