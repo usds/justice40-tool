@@ -75,15 +75,20 @@
   },
   "dependencies": {
     "-": "^0.0.1",
+    "@react-pdf/renderer": "^2.2.0",
     "@sentry/gatsby": "^6.19.1",
     "@trussworks/react-uswds": "^2.9.0",
     "@turf/bbox": "^6.5.0",
+    "assert": "^2.0.0",
+    "browserify-zlib": "^0.2.0",
+    "buffer": "^6.0.3",
     "d3-ease": "^3.0.1",
     "gatsby-plugin-env-variables": "^2.2.0",
     "gatsby-plugin-robots-txt": "^1.7.0",
     "gatsby-plugin-sitemap": "^4.10.0",
     "mapbox-gl": "^1.13.2",
     "maplibre-gl": "^1.14.0",
+    "process": "^0.11.10",
     "query-string": "^7.1.1",
     "react": "^17.0.2",
     "react-device-detect": "^1.17.0",
@@ -92,7 +97,9 @@
     "react-intl": "^5.24.7",
     "react-map-gl": "^6.1.19",
     "react-use": "^17.3.2",
-    "uswds": "^2.11.2"
+    "stream-browserify": "^3.0.0",
+    "uswds": "^2.11.2",
+    "util": "^0.12.4"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": false

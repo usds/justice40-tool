@@ -310,6 +310,25 @@ export const COMMUNITY = {
       },
     }),
   },
+  DOWNLOAD_REPORT: {
+    DOWNLOAD: <FormattedMessage
+      id={'explore.map.page.side.panel.download.report.title'}
+      defaultMessage={ 'Get report'}
+      description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show link to download a report`}
+    />,
+    CREATE: <FormattedMessage
+      id={'explore.map.page.side.panel.create.report.title'}
+      defaultMessage={ 'Creating report ...'}
+      description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show link to create a report`}
+    />,
+    IMG_ICON: defineMessages({
+      ALT_TAG: {
+        id: 'explore.map.page.side.panel.download.report.alt.img',
+        defaultMessage: 'icon that represents the download of a report',
+        description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show a download report icon, this is the images alt tag`,
+      },
+    }),
+  },
 };
 
 export const numberOfCategoriesExceeded = (categoryCount:number) => <FormattedMessage

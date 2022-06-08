@@ -443,6 +443,18 @@
     "defaultMessage": "YES",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the communities the score currently is focused on"
   },
+  "explore.map.page.side.panel.create.report.title": {
+    "defaultMessage": "Creating report ...",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show link to create a report"
+  },
+  "explore.map.page.side.panel.download.report.alt.img": {
+    "defaultMessage": "icon that represents the download of a report",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show a download report icon, this is the images alt tag"
+  },
+  "explore.map.page.side.panel.download.report.title": {
+    "defaultMessage": "Get report",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show link to download a report"
+  },
   "explore.map.page.side.panel.exceed.burden.answer.no": {
     "defaultMessage": "No",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. This will display NO if the census tract is disadvantaged"

@@ -3,12 +3,14 @@
 import React from 'react';
 import {useIntl} from 'gatsby-plugin-intl';
 import {Accordion, Button} from '@trussworks/react-uswds';
+import {PDFDownloadLink} from '@react-pdf/renderer';
 
 // Components:
 import Category from '../Category';
 import DisadvantageDot from '../DisadvantageDot';
 import ExceedBurden from '../ExceedBurden';
 import Indicator from '../Indicator';
+import PDFRenderer from '../PDFRenderer';
 
 // Styles and constants
 import * as styles from './areaDetail.module.scss';
@@ -18,6 +20,8 @@ import * as COMMON_COPY from '../../data/copy/common';
 
 // @ts-ignore
 import mailIcon from '/node_modules/uswds/dist/img/usa-icons/mail_outline.svg';
+// @ts-ignore
+import fileDownload from '/node_modules/uswds/dist/img/usa-icons/file_download.svg';
 
 interface IAreaDetailProps {
   properties: constants.J40Properties,
@@ -602,6 +606,8 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
         {/* <div className={styles.showThresholdExceed}>
           {EXPLORE_COPY.numberOfThresholdsExceeded(properties[constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS])}
         </div> */}
+
+
         {/* Send Feedback button */}
         <a
           className={styles.sendFeedbackLink}
@@ -629,6 +635,41 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
           </Button>
         </a>
 
+
+        {/* Download Report */}
+        {/* Todo VS: Styling names need to be made generic */}
+        <PDFDownloadLink className={styles.sendFeedbackLink} document={<PDFRenderer/>} fileName="document">
+          {({loading}) =>
+            loading ? (
+              <Button
+                type="button"
+                className={styles.sendFeedbackBtn}
+              >
+                <div className={styles.buttonContainer}>
+                  <div className={styles.buttonText}>
+                    {EXPLORE_COPY.COMMUNITY.DOWNLOAD_REPORT.CREATE}
+                  </div>
+                </div>
+              </Button>
+            ) : (
+              <Button
+                type="button"
+                className={styles.sendFeedbackBtn}
+              >
+                <div className={styles.buttonContainer}>
+                  <div className={styles.buttonText}>
+                    {EXPLORE_COPY.COMMUNITY.DOWNLOAD_REPORT.DOWNLOAD}
+                  </div>
+                  <img
+                    className={styles.buttonImage}
+                    src={fileDownload}
+                    alt={intl.formatMessage(EXPLORE_COPY.COMMUNITY.DOWNLOAD_REPORT.IMG_ICON.ALT_TAG)}
+                  />
+                </div>
+              </Button>
+            )}
+
+        </PDFDownloadLink>
       </div>
 
       {/* All category accordions in this component */}
