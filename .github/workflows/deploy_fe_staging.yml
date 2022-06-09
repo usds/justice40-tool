@@ -27,8 +27,12 @@ jobs:
       - name: Set DESTINATION_FOLDER for branch
         run: |
           echo "DESTINATION_FOLDER=$(echo $PR_NUMBER-$GITHUB_SHA | cut -c 1-11)" >> $GITHUB_ENV
+      - name: Collect Workflow Telemetry
+      - uses: thundra-io/workflow-telemetry-action@v1
       - name: Install
         run: npm ci
+      - name: Collect Workflow Telemetry
+      - uses: thundra-io/workflow-telemetry-action@v1
       - name: Build
         run: npm run build --if-present
         env:
@@ -49,6 +53,8 @@ jobs:
         run: npm test
       - name: Check for security vulnerabilities
         run: npm audit --production
+      - name: Collect Workflow Telemetry
+      - uses: thundra-io/workflow-telemetry-action@v1
       - name: Cypress / Gherkin integration tests 🌃
         uses: cypress-io/github-action@v2
         with:
