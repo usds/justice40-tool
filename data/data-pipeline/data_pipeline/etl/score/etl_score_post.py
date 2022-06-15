@@ -254,6 +254,32 @@ class PostScoreETL(ExtractTransformLoad):
             tiles_score_column_titles
         ].copy()
 
+        # We may not want some states/territories on the map, so this will drop all
+        # rows with those FIPS codes (first two digits of the census tract)
+        logger.info(
+            f"Dropping specified FIPS codes from tile data: {constants.DROP_FIPS_CODES}"
+        )
+        tracts_to_drop = []
+        for fips_code in constants.DROP_FIPS_CODES:
+            tracts_to_drop += score_tiles[
+                score_tiles[field_names.GEOID_TRACT_FIELD].str.startswith(
+                    fips_code
+                )
+            ][field_names.GEOID_TRACT_FIELD].to_list()
+        score_tiles = score_tiles[
+            ~score_tiles[field_names.GEOID_TRACT_FIELD].isin(tracts_to_drop)
+        ]
+
+        score_tiles[constants.TILES_SCORE_FLOAT_COLUMNS] = score_tiles[
+            constants.TILES_SCORE_FLOAT_COLUMNS
+        ].apply(
+            func=lambda series: floor_series(
+                series=series,
+                number_of_decimals=constants.TILES_ROUND_NUM_DECIMALS,
+            ),
+            axis=0,
+        )
+
         logger.info("Adding fields for island areas and Puerto Rico")
         # The below operation constructs variables for the front end.
         # Since the Island Areas, Puerto Rico, and the nation all have a different

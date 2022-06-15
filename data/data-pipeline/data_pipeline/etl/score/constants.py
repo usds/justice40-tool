@@ -99,6 +99,9 @@ ISLAND_AREAS_EXPLANATION = (
 # Column subsets
 CENSUS_COUNTIES_COLUMNS = ["USPS", "GEOID", "NAME"]
 
+# Drop FIPS codes from map
+DROP_FIPS_CODES = []
+
 # Drop FIPS codes from incrementing
 DROP_FIPS_FROM_NON_WTD_THRESHOLDS = "72"
 
