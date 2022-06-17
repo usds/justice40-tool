@@ -551,7 +551,7 @@ class ScoreNarwhal(Score):
         # Where the percent of households at or below 100% of the federal poverty level
         # is above Xth percentile
         # or
-        # Where linguistic isolation is above Xth percentile
+        # Where linguistic isolation is above Xth percentile (except PR)
         # AND
         # Where the high school degree achievement rates for adults 25 years and older
         # is less than Y%
@@ -563,6 +563,12 @@ class ScoreNarwhal(Score):
             field_names.UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD,
             field_names.POVERTY_LOW_HS_EDUCATION_FIELD,
             field_names.LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD,
+            field_names.LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD,
+        ]
+
+        pr_workforce_eligibility_columns = [
+            field_names.UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD,
+            field_names.POVERTY_LOW_HS_EDUCATION_FIELD,
             field_names.LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD,
         ]
 
@@ -622,9 +628,41 @@ class ScoreNarwhal(Score):
             & self.df[field_names.LOW_HS_EDUCATION_FIELD]
         )
 
-        workforce_combined_criteria_for_states = self.df[
-            workforce_eligibility_columns
-        ].any(axis="columns")
+        self.df[field_names.WORKFORCE_THRESHOLD_EXCEEDED] = (
+            ## First we calculate for the non-island areas
+            (
+                (
+                    self.df[field_names.POVERTY_PCTILE_THRESHOLD]
+                    | self.df[field_names.UNEMPLOYMENT_PCTILE_THRESHOLD]
+                )
+                | self.df[field_names.LOW_MEDIAN_INCOME_PCTILE_THRESHOLD]
+            )
+            | (
+                self.df[field_names.LINGUISTIC_ISOLATION_PCTILE_THRESHOLD]
+                & (self.df[field_names.GEOID_TRACT_FIELD].str[:2] != constants.TILES_PUERTO_RICO_FIPS_CODE[0] )
+            )
+        )
+
+        # Use only PR combined criteria for rows with PR FIPS code;
+        # otherwise use all criteria.
+        workforce_combined_criteria_for_states = (
+            (
+                (
+                    self.df[field_names.GEOID_TRACT_FIELD].str[:2] == constants.TILES_PUERTO_RICO_FIPS_CODE[0]
+                )
+                &
+                self.df[pr_workforce_eligibility_columns].any(axis="columns")
+            )
+            |
+            (
+                (
+                    self.df[field_names.GEOID_TRACT_FIELD].str[:2] != constants.TILES_PUERTO_RICO_FIPS_CODE[0]
+                )
+                & self.df[
+                    workforce_eligibility_columns
+                ].any(axis="columns")
+            )
+        )
 
         self._increment_total_eligibility_exceeded(
             workforce_eligibility_columns
@@ -742,17 +780,21 @@ class ScoreNarwhal(Score):
 
         # Because these criteria are calculated differently for the islands, we also calculate the
         # thresholds to pass to the FE slightly differently
+        # If it's PR, we don't use linguistic isolation.
 
         self.df[field_names.WORKFORCE_THRESHOLD_EXCEEDED] = (
             ## First we calculate for the non-island areas
             (
                 (
                     self.df[field_names.POVERTY_PCTILE_THRESHOLD]
-                    | self.df[field_names.LINGUISTIC_ISOLATION_PCTILE_THRESHOLD]
+                    | self.df[field_names.UNEMPLOYMENT_PCTILE_THRESHOLD]
                 )
                 | self.df[field_names.LOW_MEDIAN_INCOME_PCTILE_THRESHOLD]
             )
-            | self.df[field_names.UNEMPLOYMENT_PCTILE_THRESHOLD]
+            | (
+                self.df[field_names.LINGUISTIC_ISOLATION_PCTILE_THRESHOLD]
+                & ( self.df[field_names.GEOID_TRACT_FIELD].str[:2] != constants.TILES_PUERTO_RICO_FIPS_CODE[0] )
+            )
         ) | (
             ## then we calculate just for the island areas
             (
@@ -777,7 +819,7 @@ class ScoreNarwhal(Score):
         )
 
     def add_columns(self) -> pd.DataFrame:
-        logger.info("Adding Score M")
+        logger.info("Adding Score Narhwal")
 
         self.df[field_names.THRESHOLD_COUNT] = 0
 
