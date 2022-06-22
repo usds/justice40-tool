@@ -5,7 +5,7 @@ import * as styles from './Category.module.scss';
 
 interface ICategory {
     name: string;
-    isDisadvantaged: boolean;
+    isDisadvantaged: boolean | null;
 }
 
 const Category = ({name, isDisadvantaged}:ICategory) => {
