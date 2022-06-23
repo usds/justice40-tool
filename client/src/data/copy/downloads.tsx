@@ -62,6 +62,11 @@ export const DOWNLOAD_FILES = {
     URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_TSD_PDF),
     LAST_UPDATED: new Date('5/4/2022').getTime(),
   },
+  TSD_ES: {
+    SIZE: 2.5, // MB
+    URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_TSD_ES_PDF),
+    LAST_UPDATED: new Date('5/4/2022').getTime(),
+  },
   HOW_TO_COMMUNITIES: {
     SIZE: 674, // KB
     URL: getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_HOW_TO_COMMUNITIES_PDF),
@@ -129,6 +134,7 @@ export const DOWNLOAD_LINKS = {
     description={'Navigate to the download page. This is fourth download file link'}
     values={{
       link4: COMMON_COPY.linkFn(DOWNLOAD_FILES.TSD.URL, false, true),
+      link4es: COMMON_COPY.linkFn(DOWNLOAD_FILES.TSD_ES.URL, false, true),
       tsdFileSize: <FormattedNumber
         value={DOWNLOAD_FILES.TSD.SIZE}
         style="unit"

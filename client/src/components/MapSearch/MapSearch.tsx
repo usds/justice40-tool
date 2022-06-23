@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
+/* eslint-disable max-len */
+import React, {useEffect, useState} from 'react';
 import {LngLatBoundsLike} from 'maplibre-gl';
 import {useIntl} from 'gatsby-plugin-intl';
 import {Search} from '@trussworks/react-uswds';
+import {useWindowSize} from 'react-use';
 
 import MapSearchMessage from '../MapSearchMessage';
 
@@ -16,6 +18,22 @@ const MapSearch = ({goToPlace}:IMapSearch) => {
   // State to hold if the search results are empty or not:
   const [isSearchResultsNull, setIsSearchResultsNull] = useState(false);
   const intl = useIntl();
+
+  /**
+   * At compile-time, the width/height returned by useWindowSize will be X. When the client requests the
+   * app on run-time from CDN, and the app hydrates, reconcilation no longer occurs and the client is forced
+   * to use X.
+   *
+   * To avoid this, we set the placeholder text as a state variable. We also create a useEffect that updates
+   * that state whenenver the width changes.
+   *
+   */
+  const {width, height} = useWindowSize();
+  const [placeholderText, setPlaceholderText]= useState(EXPLORE_COPY.MAP.SEARCH_PLACEHOLDER);
+
+  useEffect( () => {
+   width > height ? setPlaceholderText(EXPLORE_COPY.MAP.SEARCH_PLACEHOLDER): setPlaceholderText(EXPLORE_COPY.MAP.SEARCH_PLACEHOLDER_MOBILE);
+  }, [width]);
 
   /*
     onSearchHandler will
@@ -61,7 +79,7 @@ const MapSearch = ({goToPlace}:IMapSearch) => {
     <div className={styles.mapSearchContainer}>
       <MapSearchMessage isSearchResultsNull={isSearchResultsNull} />
       <Search
-        placeholder={intl.formatMessage(EXPLORE_COPY.MAP.SEARCH_PLACEHOLDER)}
+        placeholder={intl.formatMessage(placeholderText)}
         size="small"
         onSubmit={(e) => onSearchHandler(e)}
       />
