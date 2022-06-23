@@ -47,11 +47,10 @@ $sidePanelLabelFontColor: #171716;
     @include u-margin-top('05');
   }
 
-  .showThresholdExceed {
-    font-size: small;
-    @include u-margin-top('05');
-    
-  }
+  // .showThresholdExceed {
+  //   font-size: small;
+  //   @include u-margin-top('05');
+  // }
 
   .sendFeedbackLink {
     @include u-margin-top(2);

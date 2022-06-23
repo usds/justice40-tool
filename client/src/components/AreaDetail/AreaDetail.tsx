@@ -599,9 +599,9 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
         </div>
 
         {/* Number of thresholds exceeded */}
-        <div className={styles.showThresholdExceed}>
+        {/* <div className={styles.showThresholdExceed}>
           {EXPLORE_COPY.numberOfThresholdsExceeded(properties[constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS])}
-        </div>
+        </div> */}
         {/* Send Feedback button */}
         <a
           className={styles.sendFeedbackLink}

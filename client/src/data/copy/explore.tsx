@@ -63,12 +63,17 @@ export const MAP = defineMessages({
   },
   SEARCH_PLACEHOLDER: {
     id: 'explore.map.page.map.search.placeholder.text',
-    defaultMessage: 'Enter a city, state or ZIP',
+    defaultMessage: 'Search for an address, city, state or ZIP',
+    description: 'On the explore the map page, on the map, the placeholder text for search',
+  },
+  SEARCH_PLACEHOLDER_MOBILE: {
+    id: 'explore.map.page.map.search.placeholder.mobile.text',
+    defaultMessage: 'Search locations',
     description: 'On the explore the map page, on the map, the placeholder text for search',
   },
   SEARCH_RESULTS_EMPTY_MESSAGE: {
     id: 'explore.map.page.map.search.results.empty.text',
-    defaultMessage: 'No location found. Please try again.',
+    defaultMessage: 'Location not found or unknown. Please try a different search.',
     description: 'On the explore the map page, on the map, the text displaying message for no search results found',
   },
   LOWER48_SHORT: {
@@ -309,21 +314,22 @@ export const COMMUNITY = {
 
 export const numberOfCategoriesExceeded = (categoryCount:number) => <FormattedMessage
   id={'explore.map.page.side.panel.num.categories.exceeded'}
-  defaultMessage={`Disadvantaged in {numberOfDisCategories, plural, one {# category} other {# categories}}`}
+  defaultMessage={`in {numberOfDisCategories, plural, one {# category} other {# categories}}`}
   description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show how many categories are exceeded`}
   values={{
     numberOfDisCategories: categoryCount,
   }}
 />;
 
-export const numberOfThresholdsExceeded = (thresholds:number) => <FormattedMessage
-  id={'explore.map.page.side.panel.num.thresholds.exceeded'}
-  defaultMessage={`At or above {numberOfThresholdExceed, plural, one {# threshold} other {# thresholds}}`}
-  description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show how many thresholds are exceeded`}
-  values={{
-    numberOfThresholdExceed: thresholds,
-  }}
-/>;
+// Temporarily commenting out as it may be needed again:
+// export const numberOfThresholdsExceeded = (thresholds:number) => <FormattedMessage
+//   id={'explore.map.page.side.panel.num.thresholds.exceeded'}
+//   defaultMessage={`At or above {numberOfThresholdExceed, plural, one {# threshold} other {# thresholds}}`}
+//   description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show how many thresholds are exceeded`}
+//   values={{
+//     numberOfThresholdExceed: thresholds,
+//   }}
+// />;
 
 export const SEND_FEEDBACK = defineMessages({
   EMAIL_BODY: {
