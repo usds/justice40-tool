@@ -504,14 +504,16 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
    */
   if (sidePanelState === constants.SIDE_PANEL_STATE_VALUES.PUERTO_RICO) {
     /* For Puerto Rico - only show the following indicators:
-        sustainable housing: only housing cost burden
-        clean energy: all as is
-        legacy pollution: all as is
+        clean energy (index 1): show all
+        sustainable housing (index 2): only housing cost burden
+        legacy pollution (index 3): show all
+        workforce dev (index 4): remove linguistic iso
     */
 
     // eslint-disable-next-line max-len
     categories = categories.filter((category) => category.id === 'work-dev' || category.id === 'clean-energy' || category.id === 'leg-pollute' || category.id === 'sustain-house');
     categories[1].indicators = [houseBurden];
+    categories[3].indicators = [lowMedInc, unemploy, poverty];
   }
 
   if (sidePanelState === constants.SIDE_PANEL_STATE_VALUES.ISLAND_AREAS) {

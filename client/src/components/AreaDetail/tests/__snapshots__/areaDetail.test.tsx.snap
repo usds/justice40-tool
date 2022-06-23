@@ -2777,50 +2777,6 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
         >
           <div>
             <div>
-              Linguistic isolation
-              <div>
-                
-      Percent of households where no one over the age 14 speaks English well
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div>
-                  97
-                  <sup
-                    style="top: -0.2em;"
-                  >
-                    th
-                  </sup>
-                </div>
-                <div>
-                  <img
-                    alt="an icon for the up arrow"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  above 90
-                  <sup
-                    style="top: -0.2em;"
-                  >
-                    th
-                  </sup>
-                   percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
               Low median income
               <div>
                 Median income calculated as a percent of the area’s median income
