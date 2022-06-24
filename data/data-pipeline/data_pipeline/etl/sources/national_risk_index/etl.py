@@ -35,36 +35,25 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         # this is the main dataframe
         self.df: pd.DataFrame
 
+        # Output score variables (values set on datasets.yml)
+        self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME: str
+        self.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME: str
+        self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME: str
+        self.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME: str
+        self.CONTAINS_AGRIVALUE: str
+
         # Start dataset-specific vars here
         self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_INPUT_FIELD_NAME = (
             "EAL_SCORE"
         )
-
-        self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME = (
-            "FEMA Risk Index Expected Annual Loss Score"
-        )
-
         self.EXPECTED_ANNUAL_LOSS_BUILDING_VALUE_INPUT_FIELD_NAME = "EAL_VALB"
-
         self.EXPECTED_ANNUAL_LOSS_AGRICULTURAL_VALUE_INPUT_FIELD_NAME = (
             "EAL_VALA"
         )
         self.EXPECTED_ANNUAL_LOSS_POPULATION_VALUE_INPUT_FIELD_NAME = "EAL_VALP"
-
         self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME = "AGRIVALUE"
         self.POPULATION_INPUT_FIELD_NAME = "POPULATION"
         self.BUILDING_VALUE_INPUT_FIELD_NAME = "BUILDVALUE"
-
-        self.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME = (
-            "Expected building loss rate (Natural Hazards Risk Index)"
-        )
-        self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME = (
-            "Expected agricultural loss rate (Natural Hazards Risk Index)"
-        )
-        self.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME = (
-            "Expected population loss rate (Natural Hazards Risk Index)"
-        )
-        self.CONTAINS_AGRIVALUE = "Contains agricultural value"
 
     def extract(self) -> None:
         """Unzips NRI dataset from the FEMA data source and writes the files
@@ -166,6 +155,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         ].clip(
             lower=self.AGRIVALUE_LOWER_BOUND
         )
+
         # This produces a boolean that is True in the case of non-zero agricultural value
         df_nri[self.CONTAINS_AGRIVALUE] = (
             df_nri[self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME] > 0

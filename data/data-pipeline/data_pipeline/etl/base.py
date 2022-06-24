@@ -124,11 +124,15 @@ class ExtractTransformLoad:
         ]
 
         # get the columns to write on the CSV
+        # and set the constants
         cls.COLUMNS_TO_KEEP = [
             cls.GEOID_TRACT_FIELD_NAME,  # always index with geoid tract id
         ]
         for field in dataset_config["load_fields"]:
             cls.COLUMNS_TO_KEEP.append(field["long_name"])
+
+            # set the constants for the class
+            setattr(cls, field["df_field_name"], field["long_name"])
 
         # return the config dict
         return dataset_config
