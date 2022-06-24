@@ -188,7 +188,7 @@ export const IndicatorValue = ({isPercent, displayStat}:IIndicatorValue) => {
  */
 const Indicator = ({indicator}:IIndicator) => {
   // Convert the decimal value to a stat to display
-  const displayStat = indicator.value !== null ? Math.round(indicator.value * 100) : null;
+  const displayStat = indicator.value !== null ? Math.floor(indicator.value * 100) : null;
 
   // If the threshold exists, set it, otherwise set it to the default value
   const threshold = indicator.threshold ? indicator.threshold : constants.DEFAULT_THRESHOLD_PERCENTILE;
