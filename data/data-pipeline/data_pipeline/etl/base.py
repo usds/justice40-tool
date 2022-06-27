@@ -33,6 +33,9 @@ class ExtractTransformLoad:
     Attributes:
         DATA_PATH (pathlib.Path): Local path where all data will be stored
         TMP_PATH (pathlib.Path): Local path where temporary data will be stored
+
+        TODO: Fill missing attrs here
+
         GEOID_FIELD_NAME (str): The common column name for a Census Block Group identifier
         GEOID_TRACT_FIELD_NAME (str): The common column name for a Census Tract identifier
     """
@@ -97,6 +100,8 @@ class ExtractTransformLoad:
 
     @classmethod
     def yaml_config_load(cls) -> dict:
+        """Generate config dictionary and set instance variables from YAML dataset."""
+
         # check if the class instance has score YAML definitions
         datasets_config = load_yaml_dict_from_file(
             cls.DATASET_CONFIG / "datasets.yml",
