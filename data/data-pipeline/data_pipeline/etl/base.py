@@ -123,7 +123,6 @@ class ExtractTransformLoad:
             sys.exit()
 
         # set some of the basic fields
-        cls.LAST_UPDATED_YEAR = dataset_config["last_updated_year"]
         cls.INPUT_GEOID_TRACT_FIELD_NAME = dataset_config[
             "input_geoid_tract_field_name"
         ]
@@ -150,16 +149,10 @@ class ExtractTransformLoad:
         if cls.NAME is None:
             raise NotImplementedError(
                 f"Child ETL class needs to specify `cls.NAME` (currently "
-                f"{cls.NAME}) and `cls.LAST_UPDATED_YEAR` (currently "
-                f"{cls.LAST_UPDATED_YEAR})."
+                f"{cls.NAME})."
             )
 
-        output_file_path = (
-            cls.DATA_PATH
-            / "dataset"
-            / f"{cls.NAME}_{cls.LAST_UPDATED_YEAR}"
-            / "usa.csv"
-        )
+        output_file_path = cls.DATA_PATH / "dataset" / f"{cls.NAME}" / "usa.csv"
         return output_file_path
 
     def get_tmp_path(self) -> pathlib.Path:

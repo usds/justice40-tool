@@ -127,7 +127,6 @@ class TestETL:
 
         # Also make sure all parameters that need to be non-null are non-null
         assert etl.NAME is not None
-        assert etl.LAST_UPDATED_YEAR is not None
         assert etl.GEO_LEVEL is not None
         assert etl.COLUMNS_TO_KEEP is not None
         assert len(etl.COLUMNS_TO_KEEP) > 0
