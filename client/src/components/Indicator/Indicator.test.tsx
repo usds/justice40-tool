@@ -6,24 +6,44 @@ import {indicatorInfo} from '../AreaDetail/AreaDetail';
 
 import * as EXPLORE_COPY from '../../data/copy/explore';
 
-const highSchool:indicatorInfo = {
-  label: 'some label',
-  description: 'some description',
-  value: .97,
-  isDisadvagtaged: true,
-  isPercent: true,
-  threshold: 20,
-};
 
 describe('rendering of the Indicator', () => {
-  const {asFragment} = render(
-      <LocalizedComponent>
-        <Indicator indicator={highSchool}/>
-      </LocalizedComponent>,
-  );
-
   it('checks if component renders', () => {
+    const highSchool:indicatorInfo = {
+      label: 'some label',
+      description: 'some description',
+      value: .97,
+      isDisadvagtaged: true,
+      isPercent: true,
+      threshold: 20,
+    };
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <Indicator indicator={highSchool}/>
+        </LocalizedComponent>,
+    );
     expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('checks if the flooring function works', () => {
+    const expectedFloorPercent = '42%';
+
+    const highSchool:indicatorInfo = {
+      label: 'some label',
+      description: 'some description',
+      value: .426,
+      isDisadvagtaged: true,
+      isPercent: true,
+      threshold: 20,
+    };
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <Indicator indicator={highSchool}/>
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+    const container = document.querySelectorAll('li[data-cy="indicatorBox"] span');
+    expect(container[0].textContent).toBe(expectedFloorPercent);
   });
 });
 

@@ -42,6 +42,48 @@ exports[`rendering of the Indicator checks if component renders 1`] = `
 </DocumentFragment>
 `;
 
+exports[`rendering of the Indicator checks if the flooring function works 1`] = `
+<DocumentFragment>
+  <li
+    data-cy="indicatorBox"
+    data-testid="indicator-box"
+  >
+    <div>
+      <div>
+        some label
+        <div>
+          some description
+        </div>
+      </div>
+      <div>
+        <div>
+          <div>
+            <span>
+              42%
+            </span>
+          </div>
+          <div>
+            <img
+              alt="an icon for the up arrow"
+              src="test-file-stub"
+            />
+          </div>
+        </div>
+        <div>
+          <div>
+            above 
+            <span>
+              20%
+            </span>
+             percent
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+</DocumentFragment>
+`;
+
 exports[`test rendering of Indicator value icons renders the down arrow when the value is above the threshold 1`] = `
 <DocumentFragment>
   <img
