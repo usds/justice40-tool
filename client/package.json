@@ -79,6 +79,7 @@
     "@trussworks/react-uswds": "^2.9.0",
     "@turf/bbox": "^6.5.0",
     "d3-ease": "^3.0.1",
+    "gatsby-plugin-csp": "^1.1.3",
     "gatsby-plugin-env-variables": "^2.2.0",
     "gatsby-plugin-robots-txt": "^1.7.0",
     "gatsby-plugin-sitemap": "^4.10.0",
