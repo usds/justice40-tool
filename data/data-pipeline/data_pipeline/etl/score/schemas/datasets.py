@@ -38,13 +38,13 @@ class DatasetsConfig:
                 df_field_name (str): Name for the field in the etl class.
                 long_name (str): Column name for the dataset's output csv.
                 field_type (FieldType): An enum that dictates what type of field this is. This will be used on the `etl_score_post`
-                for the data manipulation.
-                The `by_value` metadata prop will load the field type's Enum value instead of the index, i.e. "string" and not STRING
-                reverse_percentile (Optional bool): An optional bool to denote this field to be a reverse_percentile.
+                for the data manipulation. The `by_value` metadata prop will load the field type's Enum value instead of the index, i.e. "string"
+                and not STRING reverse_percentile (Optional bool): An optional bool to denote this field to be a reverse_percentile.
                 TODO: data/data-pipeline/data_pipeline/etl/score/etl_score.py:477
                 include_in_tiles (bool): Include this field on the tile export.
                 include_in_csv (bool): Include this field on the CSV export.
                 include_in_excel (bool): Include this field on the Excel export.
+                column_in_position (int): column position in CSV and Excel files
             """
 
             short_name: str
@@ -55,6 +55,7 @@ class DatasetsConfig:
             include_in_tiles: bool
             include_in_csv: bool
             include_in_excel: bool
+            column_position: int
 
         long_name: str
         short_name: str
