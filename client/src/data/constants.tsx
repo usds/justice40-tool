@@ -208,7 +208,7 @@ export const GLOBAL_MIN_ZOOM_LOW = 3;
 export const GLOBAL_MAX_ZOOM_LOW = 7;
 export const GLOBAL_MIN_ZOOM_HIGH = 7;
 export const GLOBAL_MAX_ZOOM_HIGH = 11;
-export const GLOBAL_MIN_ZOOM_FEATURE_BORDER = 8;
+export const GLOBAL_MIN_ZOOM_FEATURE_BORDER = 7;
 export const GLOBAL_MAX_ZOOM_FEATURE_BORDER = 22;
 
 // Opacity
