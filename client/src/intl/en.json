@@ -639,6 +639,10 @@
     "defaultMessage": "Median home value",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Housing cost burden"
   },
+  "explore.map.page.side.panel.indicator.percentile.value.ordinal.suffix": {
+    "defaultMessage": "{indicatorValue, selectordinal, one {#st} two {#nd} =3 {#rd} other {#th} }",
+    "description": "Navigate to the explore the tool page. Click on the map. The side panel will show categories. Open a category. This will define the indicator value's ordinal suffix. For example the st in 91st, the rd in 23rd, and the th in 26th, etc."
+  },
   "explore.map.page.side.panel.indicator.pm25": {
     "defaultMessage": "PM2.5 in the air",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show PM2.5 in the air"
@@ -666,6 +670,10 @@
   "explore.map.page.side.panel.indicator.title.clean.transport": {
     "defaultMessage": "Clean transit",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Clean transportation title\n"
+  },
+  "explore.map.page.side.panel.indicator.title.clean.water": {
+    "defaultMessage": "Clean water and wastewater infrastructure",
+    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Clean water and waste title\n"
   },
   "explore.map.page.side.panel.indicator.title.climate": {
     "defaultMessage": "Climate change",
@@ -858,14 +866,6 @@
   "explore.map.page.under.map.note.on.tribal.nations.para.1": {
     "defaultMessage": "The map covers all U.S. census tracts, including those located within Tribal Nations, to the extent that data is available (see our <link1>Methodology & data</link1> page for more information). CEQ is engaging in consultation and coordination with Tribal Nations on the beta version of the map to provide Tribal Nations with meaningful opportunities for input, consistent with CEQ’s <link2> Action Plan for Consultation and Coordination with Tribal Nations</link2>, <link3>President Biden’s Memorandum on Tribal Consultation and Strengthening Nation-to-Nation Consultation</link3>, and Executive Order 13175 on <link4>Consultation and Coordination With Indian Tribal Governments</link4>.",
     "description": "Navigate to the explore the map page. Under the map, you will see tribal nations paragraph 1"
-  },
-  "explore.tool.page.side.panel.indicator.percentile.value.ordinal.suffix": {
-    "defaultMessage": "{indicatorValue, selectordinal, one {#st} two {#nd} =3 {#rd} other {#th} }",
-    "description": "Navigate to the explore the tool page. Click on the map. The side panel will show categories. Open a category. This will define the indicator value's ordinal suffix. For example the st in 91st, the rd in 23rd, and the th in 26th, etc."
-  },
-  "explore.tool.page.side.panel.indicator.title.clean.water": {
-    "defaultMessage": "Clean water and wastewater infrastructure",
-    "description": "Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Clean water and waste title\n"
   },
   "fab.survey.text": {
     "defaultMessage": "Help improve the site & data",
