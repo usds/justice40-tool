@@ -13,6 +13,7 @@ datasets:
         include_in_tiles: true
         include_in_csv: true
         include_in_excel: true
+        column_position: 1
       - short_name: "ex_pop_loss"
         df_field_name: "EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME"
         long_name: "Expected population loss rate (Natural Hazards Risk Index)"
@@ -20,6 +21,7 @@ datasets:
         include_in_tiles: true
         include_in_csv: true
         include_in_excel: true
+        column_position: 2
       - short_name: "ex_ag_loss"
         df_field_name: "EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME"
         long_name: "Expected agricultural loss rate (Natural Hazards Risk Index)"
@@ -27,6 +29,7 @@ datasets:
         include_in_tiles: true
         include_in_csv: true
         include_in_excel: true
+        column_position: 3
       - short_name: "ex_bldg_loss"
         df_field_name: "EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME"
         long_name: "Expected building loss rate (Natural Hazards Risk Index)"
@@ -34,6 +37,7 @@ datasets:
         include_in_tiles: true
         include_in_csv: true
         include_in_excel: true
+        column_position: 4
       - short_name: "has_ag_val"
         df_field_name: "CONTAINS_AGRIVALUE"
         long_name: "Contains agricultural value"
@@ -41,3 +45,4 @@ datasets:
         include_in_tiles: true
         include_in_csv: true
         include_in_excel: true
+        column_position: 5
