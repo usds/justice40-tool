@@ -3,6 +3,7 @@ from pathlib import Path
 from data_pipeline.config import settings
 from data_pipeline.utils import (
     get_module_logger,
+    remove_all_from_dir,
     remove_files_from_dir,
     zip_directory,
 )
@@ -26,7 +27,7 @@ def reset_data_directories(
 
     # geojson
     geojson_path = tribal_data_path / "geojson"
-    remove_files_from_dir(geojson_path, ".json")
+    remove_all_from_dir(geojson_path)
 
 
 def zip_tribal_data():
