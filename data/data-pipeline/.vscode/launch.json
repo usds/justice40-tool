@@ -50,6 +50,15 @@
       ]
     },
     {
+      "name": "Download Tribal Geojson",
+      "type": "python",
+      "request": "launch",
+      "module": "data_pipeline.application",
+      "args": [
+        "tribal-data-download"
+      ]
+    },    
+    {
       "name": "Score Full Run",
       "type": "python",
       "request": "launch",
@@ -85,6 +94,17 @@
         "etl-run"
       ]
     },
+    {
+      "name": "ETL Run NRI",
+      "type": "python",
+      "request": "launch",
+      "module": "data_pipeline.application",
+      "args": [
+        "etl-run",
+        "--dataset",
+        "national_risk_index"
+      ]
+    },    
     {
       "name": "poetry install",
       "type": "python",

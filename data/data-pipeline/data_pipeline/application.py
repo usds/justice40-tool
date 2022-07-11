@@ -13,6 +13,10 @@ from data_pipeline.etl.sources.census.etl_utils import (
     reset_data_directories as census_reset,
     zip_census_data,
 )
+from data_pipeline.etl.sources.tribal.etl_utils import (
+    reset_data_directories as tribal_reset,
+    zip_tribal_data,
+)
 from data_pipeline.tile.generate import generate_tiles
 from data_pipeline.utils import (
     data_folder_cleanup,
@@ -89,6 +93,34 @@ def census_data_download(zip_compress):
         zip_census_data()
 
     logger.info("Completed downloading census data")
+    sys.exit()
+
+
+@cli.command(
+    help="Tribal data generation",
+)
+@click.option(
+    "-zc",
+    "--zip-compress",
+    is_flag=True,
+    help="Upload to AWS S3 the zipped Tribal csv and geojson.",
+)
+def tribal_data_download(zip_compress):
+    """CLI command to download tribal geojson files from the Justice40 S3 data folder and extract the geojson
+    to generate a unified CSV and GeoJson file"""
+
+    logger.info("Initializing all tribal data")
+
+    data_path = settings.APP_ROOT / "data"
+    tribal_reset(data_path)
+
+    logger.info("Downloading census data")
+    etl_runner("tribal")
+
+    if zip_compress:
+        zip_tribal_data()
+
+    logger.info("Completed downloading tribal data")
     sys.exit()
 
 
