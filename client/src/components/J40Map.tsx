@@ -467,14 +467,14 @@ const J40Map = ({location}: IJ40Interface) => {
           {/* This will show shortcut buttons to pan/zoom to US territories */}
           <TerritoryFocusControl onClick={onClick}/>
 
-          {/* This adds Geolocation */}
-          <GeolocateControl
+          {/* This places Geolocation behind a feature flag */}
+          {'gl' in flags ? <GeolocateControl
             className={styles.geolocateControl}
             positionOptions={{enableHighAccuracy: true}}
             onGeolocate={onGeolocate}
             // @ts-ignore
             onClick={onClickGeolocate}
-          />
+          /> : ''}
           {geolocationInProgress ? <div>Geolocation in progress...</div> : ''}
 
           {/* Enable fullscreen pop-up behind a feature flag */}
