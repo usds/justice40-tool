@@ -41,6 +41,25 @@ export interface indicatorInfo {
   threshold?: number,
 }
 
+/**
+ * This interface is used as define the various fields for category in the side panel
+ * id: distict id
+ * titleText: display text for the category title
+ * indicators: an array of indicators
+ * socioEcIndicators: an array of socio-economic indicators
+ * isDisadvagtaged: boolean to indicate if the category is disadvantaged
+ * isExceed1MoreBurden: boolean to indicate if the category exceeds more than one burden
+ * isExceedBothSocioBurdens: boolean to indicate if the category exceeds both socio-eco burdens
+ *  */
+export interface ICategory {
+  id: string,
+  titleText: string,
+  indicators: indicatorInfo[],
+  socioEcIndicators: indicatorInfo[],
+  isDisadvagtaged: boolean | null,
+  isExceed1MoreBurden: boolean | null,
+  isExceedBothSocioBurdens: boolean | null,
+}
 const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
   const intl = useIntl();
 
@@ -378,7 +397,7 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
    * The indicators property must be an array with last two elements being the
    * socioeconomic burdens.
    */
-  let categories = [
+  let categories:ICategory[] = [
     {
       id: 'climate-change',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.CLIMATE),
@@ -466,7 +485,7 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
     {
       id: 'work-dev',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.WORK_DEV),
-      indicators: [lingIso, lowMedInc, , unemploy, poverty],
+      indicators: [lingIso, lowMedInc, unemploy, poverty],
       socioEcIndicators: [highSchool, higherEd],
       isDisadvagtaged: properties[constants.IS_WORKFORCE_FACTOR_DISADVANTAGED_M] ?
         properties[constants.IS_WORKFORCE_FACTOR_DISADVANTAGED_M] : null,
@@ -484,9 +503,19 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
    * This sidePanelState has 3 values; namely, Nation, Puerto Rico and Island Areas.
    */
   if (sidePanelState === constants.SIDE_PANEL_STATE_VALUES.PUERTO_RICO) {
-    // For Puerto Rico - only show the workforce development category
-    categories = categories.filter((category) => category.id === 'work-dev');
-  };
+    /* For Puerto Rico - only show the following indicators:
+        clean energy (index 1): show all
+        sustainable housing (index 2): only housing cost burden
+        legacy pollution (index 3): show all
+        workforce dev (index 4): remove linguistic iso
+    */
+
+    // eslint-disable-next-line max-len
+    categories = categories.filter((category) => category.id === 'work-dev' || category.id === 'clean-energy' || category.id === 'leg-pollute' || category.id === 'sustain-house');
+    categories[1].indicators = [houseBurden];
+    categories[3].indicators = [lowMedInc, unemploy, poverty];
+  }
+
   if (sidePanelState === constants.SIDE_PANEL_STATE_VALUES.ISLAND_AREAS) {
     // For Island Areas - only show workforce dev category
     categories = categories.filter((category) => category.id === 'work-dev');
