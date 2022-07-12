@@ -26,6 +26,7 @@ import {useFlags} from '../contexts/FlagContext';
 import AreaDetail from './AreaDetail';
 import MapInfoPanel from './mapInfoPanel';
 import MapSearch from './MapSearch';
+import LayerSelector from './LayerSelector';
 import TerritoryFocusControl from './territoryFocusControl';
 import {getOSBaseMap} from '../data/getOSBaseMap';
 
@@ -349,6 +350,9 @@ const J40Map = ({location}: IJ40Interface) => {
          */}
         <MapSearch goToPlace={goToPlace}/>
 
+
+        {/* This will allow to select between the census tract layer and the tribal lands layer */}
+        <LayerSelector />
 
         {/**
          * The ReactMapGL component's props are grouped by the API's documentation. The component also has

@@ -32,5 +32,7 @@
 .j40Map {
   @include at-media-max("desktop") {
     height: 55vh;
+    @include u-margin-top(7); // Allow for tribal toggle to appear above map on screens < 1024
   }
+
 }
