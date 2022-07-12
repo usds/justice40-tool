@@ -158,6 +158,26 @@ export const MAP = defineMessages({
     defaultMessage: 'US Virgin Islands',
     description: 'On the explore the map page, on the map, the full name indicating the bounds of US Virgin Islands',
   },
+  CENSUS_TRACT_LONG: {
+    id: 'explore.map.page.map.layer.selector.tracts.long',
+    defaultMessage: 'Census Tracts',
+    description: 'On the explore the map page, on the map, the full name indicating Census Tracts',
+  },
+  CENSUS_TRACT_SHORT: {
+    id: 'explore.map.page.map.layer.selector.tracts.short',
+    defaultMessage: 'Tracts',
+    description: 'On the explore the map page, on the map, the short name indicating Census Tracts',
+  },
+  TRIBAL_LANDS_LONG: {
+    id: 'explore.map.page.map.layer.selector.tribal.long',
+    defaultMessage: 'Tribal Lands',
+    description: 'On the explore the map page, on the map, the full name indicating Tribal Lands',
+  },
+  TRIBAL_LANDS_SHORT: {
+    id: 'explore.map.page.map.layer.selector.tracts.short',
+    defaultMessage: 'Tribal',
+    description: 'On the explore the map page, on the map, the short name indicating Tribal Lands',
+  },
 });
 
 

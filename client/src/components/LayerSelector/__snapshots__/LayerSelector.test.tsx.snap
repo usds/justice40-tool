@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of the LayerSelector checks if component renders 1`] = `
+<DocumentFragment>
+  <div>
+    <label
+      for="layer-group"
+    >
+      Select layer
+    </label>
+    <ul
+      class="usa-button-group usa-button-group--segmented"
+      id="layer-group"
+    >
+      <li
+        class="usa-button-group__item"
+      >
+        <button
+          class="usa-button"
+          data-testid="button"
+          id="census"
+          type="button"
+        >
+          Census Tracts
+        </button>
+      </li>
+      <li
+        class="usa-button-group__item"
+      >
+        <button
+          class="usa-button usa-button--outline"
+          data-testid="button"
+          id="tribal"
+          type="button"
+        >
+          Tribal Lands
+        </button>
+      </li>
+    </ul>
+  </div>
+</DocumentFragment>
+`;
