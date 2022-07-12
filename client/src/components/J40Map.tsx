@@ -136,6 +136,7 @@ const J40Map = ({location}: IJ40Interface) => {
   const filter = useMemo(() => ['in', constants.GEOID_PROPERTY, selectedFeatureId], [selectedFeature]);
 
   const zoomLatLngHash = mapRef.current?.getMap()._hash._getCurrentHash();
+
   /**
    * This function will return the bounding box of the current map. Comment in when needed.
    *  {
@@ -200,10 +201,32 @@ const J40Map = ({location}: IJ40Interface) => {
       // This else clause will fire when the ID is null or empty. This is the case where the map is clicked
       // @ts-ignore
       const feature = event.features && event.features[0];
-      console.log(feature);
+
       if (feature) {
+        // Get the current selected feature's bounding box:
         const [minLng, minLat, maxLng, maxLat] = bbox(feature);
+
+        // Set the selectedFeature ID
+        if (feature.id !== selectedFeatureId) {
+          setSelectedFeature(feature);
+        } else {
+          setSelectedFeature(undefined);
+        }
+
+        // Go to the newly selected feature
+        goToPlace([
+          [minLng, minLat],
+          [maxLng, maxLat],
+        ]);
+
+
+        /**
+         * The following logic is used for the popup for the fullscreen feature
+         */
+        // Create a new viewport using the current viewport dimnesions:
         const newViewPort = new WebMercatorViewport({height: viewport.height!, width: viewport.width!});
+
+        // Fit the viewport to the new bounds and return a long, lat and zoom:
         const {longitude, latitude, zoom} = newViewPort.fitBounds(
             [
               [minLng, minLat],
@@ -213,22 +236,21 @@ const J40Map = ({location}: IJ40Interface) => {
               padding: 40,
             },
         );
-        if (feature.id !== selectedFeatureId) {
-          setSelectedFeature(feature);
-        } else {
-          setSelectedFeature(undefined);
-        }
+
+        // Save the popupInfo
         const popupInfo = {
           longitude: longitude,
           latitude: latitude,
           zoom: zoom,
           properties: feature.properties,
         };
-        goToPlace([
-          [minLng, minLat],
-          [maxLng, maxLat],
-        ]);
+
+        // Update the DetailedView state variable with the new popupInfo object:
         setDetailViewData(popupInfo);
+
+        /**
+         * End Fullscreen feature specific logic
+         */
       }
     }
   };
@@ -243,16 +265,18 @@ const J40Map = ({location}: IJ40Interface) => {
 
 
   const goToPlace = (bounds: LngLatBoundsLike ) => {
-    const {longitude, latitude, zoom} = new WebMercatorViewport({height: viewport.height!, width: viewport.width!})
-        .fitBounds(bounds as [[number, number], [number, number]], {
-          padding: 20,
-          offset: [0, -100],
-        });
+    const newViewPort = new WebMercatorViewport({height: viewport.height!, width: viewport.width!});
+    const {longitude, latitude, zoom} = newViewPort.fitBounds(
+      bounds as [[number, number], [number, number]], {
+        // padding: 200,  // removing padding and offset in favor of a zoom offset below
+        // offset: [0, -100],
+      });
+
     setViewport({
       ...viewport,
       longitude,
       latitude,
-      zoom,
+      zoom: zoom-1, // Globally zoom out on all selected features
       transitionDuration: 1000,
       transitionInterpolator: new FlyToInterpolator(),
       transitionEasing: d3.easeCubic,
