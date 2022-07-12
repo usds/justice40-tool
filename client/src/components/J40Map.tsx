@@ -458,7 +458,26 @@ const J40Map = ({location}: IJ40Interface) => {
             />
           </Source>
 
-          {/* Enable fullscreen behind a feature flag */}
+          {/* This will add the navigation controls of the zoom in and zoom out buttons */}
+          { windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && <NavigationControl
+            showCompass={false}
+            className={styles.navigationControl}
+          /> }
+
+          {/* This will show shortcut buttons to pan/zoom to US territories */}
+          <TerritoryFocusControl onClick={onClick}/>
+
+          {/* This adds Geolocation */}
+          <GeolocateControl
+            className={styles.geolocateControl}
+            positionOptions={{enableHighAccuracy: true}}
+            onGeolocate={onGeolocate}
+            // @ts-ignore
+            onClick={onClickGeolocate}
+          />
+          {geolocationInProgress ? <div>Geolocation in progress...</div> : ''}
+
+          {/* Enable fullscreen pop-up behind a feature flag */}
           {('fs' in flags && detailViewData && !transitionInProgress) && (
             <Popup
               className={styles.j40Popup}
@@ -473,26 +492,6 @@ const J40Map = ({location}: IJ40Interface) => {
               <AreaDetail properties={detailViewData.properties} hash={zoomLatLngHash}/>
             </Popup>
           )}
-
-          {/* This will add the navigation controls of the zoom in and zoom out buttons */}
-          { windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && <NavigationControl
-            showCompass={false}
-            className={styles.navigationControl}
-          /> }
-
-          {/* This places Geolocation behind a feature flag */}
-          {'gl' in flags ? <GeolocateControl
-            className={styles.geolocateControl}
-            positionOptions={{enableHighAccuracy: true}}
-            onGeolocate={onGeolocate}
-            // @ts-ignore
-            onClick={onClickGeolocate}
-          /> : ''}
-          {geolocationInProgress ? <div>Geolocation in progress...</div> : ''}
-
-          {/* This will show shortcut buttons to pan/zoom to US territories */}
-          <TerritoryFocusControl onClick={onClick}/>
-
           {'fs' in flags ? <FullscreenControl className={styles.fullscreenControl}/> :'' }
 
         </ReactMapGL>
