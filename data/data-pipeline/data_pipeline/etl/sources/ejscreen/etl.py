@@ -12,7 +12,9 @@ class EJSCREENETL(ExtractTransformLoad):
 
     def __init__(self):
         self.EJSCREEN_FTP_URL = "https://gaftp.epa.gov/EJSCREEN/2021/EJSCREEN_2021_USPR_Tracts.csv.zip"
-        self.EJSCREEN_CSV = self.get_tmp_path() / "EJSCREEN_Tract_2021_USPR.csv"
+        self.EJSCREEN_CSV = (
+            self.get_tmp_path() / "EJSCREEN_2021_USPR_Tracts.csv"
+        )
         self.CSV_PATH = self.DATA_PATH / "dataset" / "ejscreen_2021"
         self.df: pd.DataFrame
 

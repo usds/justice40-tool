@@ -41,13 +41,8 @@ DATASET_LIST = [
     },
     {
         "name": "ejscreen",
-        "module_dir": "ejscreen",
+        "module_dir": "ejscreen_2021",
         "class_name": "EJSCREENETL",
-    },
-    {
-        "name": "ejscreen_updated",
-        "module_dir": "ejscreen_updated",
-        "class_name": "EJSCREENUpdatedETL",
     },
     {
         "name": "hud_housing",
