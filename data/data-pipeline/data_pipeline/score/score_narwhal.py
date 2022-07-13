@@ -314,16 +314,17 @@ class ScoreNarwhal(Score):
         housing_eligibility_columns = [
             field_names.LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD,
             field_names.HOUSING_BURDEN_LOW_INCOME_FIELD,
-            field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD,
+            # Until we get confirmation -- NOT included
+            # field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD,
         ]
 
-        # design question -- should read in scalar with threshold here instead?
-        self.df[
-            field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD
-        ] = (
-            self.df[field_names.HISTORIC_REDLINING_SCORE_EXCEEDED]
-            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
-        )
+        # # design question -- should read in scalar with threshold here instead?
+        # self.df[
+        #     field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD
+        # ] = (
+        #     self.df[field_names.HISTORIC_REDLINING_SCORE_EXCEEDED]
+        #     & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
+        # )
 
         self.df[field_names.LEAD_PAINT_PROXY_PCTILE_THRESHOLD] = (
             self.df[
@@ -639,7 +640,10 @@ class ScoreNarwhal(Score):
             )
             | (
                 self.df[field_names.LINGUISTIC_ISOLATION_PCTILE_THRESHOLD]
-                & (self.df[field_names.GEOID_TRACT_FIELD].str[:2] != constants.TILES_PUERTO_RICO_FIPS_CODE[0] )
+                & (
+                    self.df[field_names.GEOID_TRACT_FIELD].str[:2]
+                    != constants.TILES_PUERTO_RICO_FIPS_CODE[0]
+                )
             )
         )
 
@@ -647,21 +651,16 @@ class ScoreNarwhal(Score):
         # otherwise use all criteria.
         workforce_combined_criteria_for_states = (
             (
-                (
-                    self.df[field_names.GEOID_TRACT_FIELD].str[:2] == constants.TILES_PUERTO_RICO_FIPS_CODE[0]
-                )
-                &
-                self.df[pr_workforce_eligibility_columns].any(axis="columns")
+                self.df[field_names.GEOID_TRACT_FIELD].str[:2]
+                == constants.TILES_PUERTO_RICO_FIPS_CODE[0]
             )
-            |
+            & self.df[pr_workforce_eligibility_columns].any(axis="columns")
+        ) | (
             (
-                (
-                    self.df[field_names.GEOID_TRACT_FIELD].str[:2] != constants.TILES_PUERTO_RICO_FIPS_CODE[0]
-                )
-                & self.df[
-                    workforce_eligibility_columns
-                ].any(axis="columns")
+                self.df[field_names.GEOID_TRACT_FIELD].str[:2]
+                != constants.TILES_PUERTO_RICO_FIPS_CODE[0]
             )
+            & self.df[workforce_eligibility_columns].any(axis="columns")
         )
 
         self._increment_total_eligibility_exceeded(
@@ -793,7 +792,10 @@ class ScoreNarwhal(Score):
             )
             | (
                 self.df[field_names.LINGUISTIC_ISOLATION_PCTILE_THRESHOLD]
-                & ( self.df[field_names.GEOID_TRACT_FIELD].str[:2] != constants.TILES_PUERTO_RICO_FIPS_CODE[0] )
+                & (
+                    self.df[field_names.GEOID_TRACT_FIELD].str[:2]
+                    != constants.TILES_PUERTO_RICO_FIPS_CODE[0]
+                )
             )
         ) | (
             ## then we calculate just for the island areas
@@ -859,7 +861,8 @@ class ScoreNarwhal(Score):
         self.df[field_names.CATEGORY_COUNT] = self.df[factors].sum(axis=1)
         self.df[field_names.SCORE_N_COMMUNITIES] = self.df[factors].any(axis=1)
         self.df[
-            field_names.SCORE_N_COMMUNITIES + field_names.PERCENTILE_FIELD_SUFFIX
+            field_names.SCORE_N_COMMUNITIES
+            + field_names.PERCENTILE_FIELD_SUFFIX
         ] = self.df[field_names.SCORE_N_COMMUNITIES].astype(int)
 
         return self.df
