@@ -13,7 +13,8 @@ class HudHousingETL(ExtractTransformLoad):
         self.HOUSING_ZIP_FILE_DIR = self.get_tmp_path() / "hud_housing"
 
         # We measure households earning less than 80% of HUD Area Median Family Income by county
-        # and paying greater than 30% of their income to housing costs.
+        # and paying greater than 30% of their income to housing costs, with the exception of renters.
+        # For renters, we limit to 50% or less HAMFI.
         self.HOUSING_BURDEN_FIELD_NAME = "Housing burden (percent)"
         self.HOUSING_BURDEN_NUMERATOR_FIELD_NAME = "HOUSING_BURDEN_NUMERATOR"
         self.HOUSING_BURDEN_DENOMINATOR_FIELD_NAME = (
@@ -187,17 +188,6 @@ class HudHousingETL(ExtractTransformLoad):
             #   Subtotal
             #   Renter occupied
             #   greater than 30% but less than or equal to 50% of HAMFI
-            #   greater than 50%
-            #   All
-            "T8_est99",
-            #   Subtotal
-            #   Renter occupied	greater than 50% but less than or equal to 80% of HAMFI
-            #   greater than 30% but less than or equal to 50%
-            #   All
-            "T8_est102",
-            #   Subtotal
-            #   Renter occupied
-            #   greater than 50% but less than or equal to 80% of HAMFI
             #   greater than 50%
             #   All
         ]
