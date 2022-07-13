@@ -26,6 +26,9 @@ fields:
   - score_name: Total population
     label: Total population
     format: float
+  - score_name: Percent of individuals below 200% Federal Poverty Line, imputed and adjusted
+    label: Adjusted percent of individuals below 200% Federal Poverty Line
+    format: float
   - score_name: Is low income and has a low percent of higher ed students?
     label: Is low income and has a low percent of higher ed students?
     format: bool

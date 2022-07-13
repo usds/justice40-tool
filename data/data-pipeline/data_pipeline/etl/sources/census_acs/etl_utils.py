@@ -4,6 +4,7 @@ from typing import List
 import censusdata
 import pandas as pd
 
+
 from data_pipeline.etl.sources.census.etl_utils import get_state_fips_codes
 from data_pipeline.utils import get_module_logger
 

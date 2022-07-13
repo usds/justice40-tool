@@ -1,13 +1,25 @@
+from collections import namedtuple
+import os
 import pandas as pd
+import geopandas as gpd
 
+from data_pipeline.config import settings
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.sources.census_acs.etl_utils import (
     retrieve_census_acs_data,
 )
-from data_pipeline.utils import get_module_logger
+from data_pipeline.etl.sources.census_acs.etl_imputations import (
+    calculate_income_measures,
+)
+
+from data_pipeline.utils import get_module_logger, unzip_file_from_url
 from data_pipeline.score import field_names
 
 logger = get_module_logger(__name__)
+
+# because now there is a requirement for the us.json, this will port from
+# AWS when a local copy does not exist.
+CENSUS_DATA_S3_URL = settings.AWS_JUSTICE40_DATASOURCES_URL + "/census.zip"
 
 
 class CensusACSETL(ExtractTransformLoad):
@@ -58,6 +70,23 @@ class CensusACSETL(ExtractTransformLoad):
         )
         self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME = (
             "Percent of individuals < 200% Federal Poverty Line"
+        )
+        self.IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME = (
+            "Percent of individuals < 200% Federal Poverty Line, imputed"
+        )
+
+        self.ADJUSTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME = (
+            "Adjusted percent of individuals < 200% Federal Poverty Line"
+        )
+
+        self.ADJUSTED_AND_IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME_PRELIMINARY = (
+            "Preliminary adjusted percent of individuals < 200% Federal Poverty Line,"
+            + " imputed"
+        )
+
+        self.ADJUSTED_AND_IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME = (
+            "Adjusted percent of individuals < 200% Federal Poverty Line,"
+            + " imputed"
         )
 
         self.MEDIAN_HOUSE_VALUE_FIELD = "B25077_001E"
@@ -136,6 +165,10 @@ class CensusACSETL(ExtractTransformLoad):
             "Percent enrollment in college or graduate school"
         )
 
+        self.IMPUTED_COLLEGE_ATTENDANCE_FIELD = (
+            "Percent enrollment in college or graduate school, imputed"
+        )
+
         self.COLLEGE_NON_ATTENDANCE_FIELD = "Percent of population not currently enrolled in college or graduate school"
 
         self.RE_FIELDS = [
@@ -188,17 +221,49 @@ class CensusACSETL(ExtractTransformLoad):
                 self.MEDIAN_INCOME_FIELD_NAME,
                 self.POVERTY_LESS_THAN_100_PERCENT_FPL_FIELD_NAME,
                 self.POVERTY_LESS_THAN_150_PERCENT_FPL_FIELD_NAME,
-                self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME,
+                self.IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME,
                 self.MEDIAN_HOUSE_VALUE_FIELD_NAME,
                 self.HIGH_SCHOOL_ED_FIELD,
                 self.COLLEGE_ATTENDANCE_FIELD,
                 self.COLLEGE_NON_ATTENDANCE_FIELD,
+                self.IMPUTED_COLLEGE_ATTENDANCE_FIELD,
             ]
             + self.RE_OUTPUT_FIELDS
             + [self.PERCENT_PREFIX + field for field in self.RE_OUTPUT_FIELDS]
+            + [
+                field_names.POVERTY_LESS_THAN_200_FPL_FIELD,
+                field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD,
+            ]
         )
 
         self.df: pd.DataFrame
+
+    def _merge_geojson(
+        self,
+        df: pd.DataFrame,
+        usa_geo_df: gpd.GeoDataFrame,
+        geoid_field: str = "GEOID10",
+        geometry_field: str = "geometry",
+        state_code_field: str = "STATEFP10",
+        county_code_field: str = "COUNTYFP10",
+    ) -> gpd.GeoDataFrame:
+        usa_geo_df[geoid_field] = (
+            usa_geo_df[geoid_field].astype(str).str.zfill(11)
+        )
+        return gpd.GeoDataFrame(
+            df.merge(
+                usa_geo_df[
+                    [
+                        geoid_field,
+                        geometry_field,
+                        state_code_field,
+                        county_code_field,
+                    ]
+                ],
+                left_on=[self.GEOID_TRACT_FIELD_NAME],
+                right_on=[geoid_field],
+            )
+        )
 
     def extract(self) -> None:
         # Define the variables to retrieve
@@ -227,6 +292,27 @@ class CensusACSETL(ExtractTransformLoad):
 
         df = self.df
 
+        # Here we join the geometry of the US to the dataframe so that we can impute
+        # The income of neighbors. first this looks locally; if there's no local
+        # geojson file for all of the US, this will read it off of S3
+        logger.info("Reading in geojson for the country")
+        if not os.path.exists(
+            self.DATA_PATH / "census" / "geojson" / "us.json"
+        ):
+            logger.info("Fetching Census data from AWS S3")
+            unzip_file_from_url(
+                CENSUS_DATA_S3_URL,
+                self.DATA_PATH / "tmp",
+                self.DATA_PATH,
+            )
+
+        geo_df = gpd.read_file(
+            self.DATA_PATH / "census" / "geojson" / "us.json"
+        )
+        df = self._merge_geojson(
+            df=df,
+            usa_geo_df=geo_df,
+        )
         # Rename two fields.
         df = df.rename(
             columns={
@@ -349,7 +435,7 @@ class CensusACSETL(ExtractTransformLoad):
             df["B03003_003E"] / df["B03003_001E"]
         )
 
-        # Calculate college attendance:
+        # Calculate college attendance and adjust low income
         df[self.COLLEGE_ATTENDANCE_FIELD] = (
             df[self.COLLEGE_ATTENDANCE_MALE_ENROLLED_PUBLIC]
             + df[self.COLLEGE_ATTENDANCE_MALE_ENROLLED_PRIVATE]
@@ -361,21 +447,63 @@ class CensusACSETL(ExtractTransformLoad):
             1 - df[self.COLLEGE_ATTENDANCE_FIELD]
         )
 
-        # strip columns
-        df = df[self.COLUMNS_TO_KEEP]
-
-        # Save results to self.
-        self.df = df
-
-        # rename columns to be used in score
-        rename_fields = {
-            "Percent of individuals < 200% Federal Poverty Line": field_names.POVERTY_LESS_THAN_200_FPL_FIELD,
-        }
-        self.df.rename(
-            columns=rename_fields,
-            inplace=True,
-            errors="raise",
+        # we impute income for both income measures
+        ## TODO: Convert to pydantic for clarity
+        logger.info("Imputing income information")
+        ImputeVariables = namedtuple(
+            "ImputeVariables", ["raw_field_name", "imputed_field_name"]
         )
+
+        df = calculate_income_measures(
+            impute_var_named_tup_list=[
+                ImputeVariables(
+                    raw_field_name=self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME,
+                    imputed_field_name=self.IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME,
+                ),
+                ImputeVariables(
+                    raw_field_name=self.COLLEGE_ATTENDANCE_FIELD,
+                    imputed_field_name=self.IMPUTED_COLLEGE_ATTENDANCE_FIELD,
+                ),
+            ],
+            geo_df=df,
+            geoid_field=self.GEOID_TRACT_FIELD_NAME,
+        )
+
+        logger.info("Calculating with imputed values")
+
+        df[
+            self.ADJUSTED_AND_IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME
+        ] = (
+            df[self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME].fillna(
+                df[self.IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME]
+            )
+            - df[self.COLLEGE_ATTENDANCE_FIELD].fillna(
+                df[self.IMPUTED_COLLEGE_ATTENDANCE_FIELD]
+            )
+        ).clip(
+            lower=0
+        )
+
+        # All values should have a value at this point
+        assert (
+            df[
+                self.ADJUSTED_AND_IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME
+            ]
+            .isna()
+            .sum()
+            == 0
+        ), "Error: not all values were filled..."
+
+        logger.info("Renaming columns...")
+        df = df.rename(
+            columns={
+                self.ADJUSTED_AND_IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME: field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD,
+                self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME: field_names.POVERTY_LESS_THAN_200_FPL_FIELD,
+            }
+        )
+
+        # Strip columns and save results to self.
+        self.df = df[self.COLUMNS_TO_KEEP]
 
     def load(self) -> None:
         logger.info("Saving Census ACS Data")
