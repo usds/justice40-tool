@@ -170,28 +170,28 @@ const J40Map = ({location}: IJ40Interface) => {
 
       switch (buttonID) {
         case '48':
-          goToPlace(constants.LOWER_48_BOUNDS);
+          goToPlace(constants.LOWER_48_BOUNDS, true);
           break;
         case 'AK':
-          goToPlace(constants.ALASKA_BOUNDS);
+          goToPlace(constants.ALASKA_BOUNDS, true);
           break;
         case 'HI':
-          goToPlace(constants.HAWAII_BOUNDS);
+          goToPlace(constants.HAWAII_BOUNDS, true);
           break;
         case 'PR':
-          goToPlace(constants.PUERTO_RICO_BOUNDS);
+          goToPlace(constants.PUERTO_RICO_BOUNDS, true);
           break;
         case 'GU':
-          goToPlace(constants.GUAM_BOUNDS);
+          goToPlace(constants.GUAM_BOUNDS, true);
           break;
         case 'AS':
-          goToPlace(constants.AMERICAN_SAMOA_BOUNDS);
+          goToPlace(constants.AMERICAN_SAMOA_BOUNDS, true);
           break;
         case 'MP':
-          goToPlace(constants.MARIANA_ISLAND_BOUNDS);
+          goToPlace(constants.MARIANA_ISLAND_BOUNDS, true);
           break;
         case 'VI':
-          goToPlace(constants.US_VIRGIN_ISLANDS_BOUNDS);
+          goToPlace(constants.US_VIRGIN_ISLANDS_BOUNDS, true);
           break;
 
         default:
@@ -264,7 +264,18 @@ const J40Map = ({location}: IJ40Interface) => {
   };
 
 
-  const goToPlace = (bounds: LngLatBoundsLike ) => {
+  /**
+   * This function will move the map (with easing) to the given lat/long bounds.
+   *
+   * When a user clicks on a tracts vs a territory button, the zoom level returned by the fitBounds
+   * function differ. Given that we want to handle the zoom differently depending on these two cases, we
+   * introduce a boolean, isTerritory that will allow the zoom level to be set depending on what the user
+   * is interacting with, namely a tract vs a territory button.
+   *
+   * @param {LngLatBoundsLike} bounds
+   * @param {boolean} isTerritory
+   */
+  const goToPlace = (bounds: LngLatBoundsLike, isTerritory = false ) => {
     const newViewPort = new WebMercatorViewport({height: viewport.height!, width: viewport.width!});
     const {longitude, latitude, zoom} = newViewPort.fitBounds(
       bounds as [[number, number], [number, number]], {
@@ -272,11 +283,25 @@ const J40Map = ({location}: IJ40Interface) => {
         // offset: [0, -100],
       });
 
+    /**
+     * When some tracts are selected, they end up too far zoomed in, causing some census tracts to
+     * only show a portion of the tract in the viewport. We reduce the zoom level by 1 to allow
+     * more space around the selected tract.
+     *
+     * Given that the high zoom tiles only go to zoom level 5, if the corrected zoom level (zoom - 1) is
+     * less than MIN_ZOOM_FEATURE_BORDER, then we floor the zoom to MIN_ZOOM_FEATURE_BORDER + .1 (which
+     * is 5.1 as of this comment)
+     */
+    // eslint-disable-next-line max-len
+    const featureSelectionZoomLevel = (zoom - 1) < constants.GLOBAL_MIN_ZOOM_FEATURE_BORDER + .1 ?
+        constants.GLOBAL_MIN_ZOOM_FEATURE_BORDER :
+        zoom - 1;
+
     setViewport({
       ...viewport,
       longitude,
       latitude,
-      zoom: zoom-1, // Globally zoom out on all selected features
+      zoom: isTerritory ? zoom : featureSelectionZoomLevel,
       transitionDuration: 1000,
       transitionInterpolator: new FlyToInterpolator(),
       transitionEasing: d3.easeCubic,
