@@ -352,9 +352,8 @@ const J40Map = ({location}: IJ40Interface) => {
          *
          * to ensure the production build works and that MapSearch and the map (ReactMapGL) render correctly.
          *
-         * Any component declrations outside the <ReactMapGL> component may be susceptible to this bug.
+         * Any component declarations outside the <ReactMapGL> component may be susceptible to this bug.
          */}
-        {/* <MapSearch goToPlace={goToPlace}/> */}
 
         {/**
          * The ReactMapGL component's props are grouped by the API's documentation. The component also has
