@@ -1,36 +1,75 @@
 @use '../styles/design-system.scss' as *;
 @import "./utils.scss";
 
-.j40Popup {
-  width: 375px;
-}
 
-.navigationControl {
-  left: .75em;
-  top: units(15);
-  // width: 2.5em;
-}
+.j40Map {
+  @include at-media-max("desktop") {
+    // < 1024
+    height: 55vh;
+  }
 
-.fullscreenControl {
-  right: 1.25em;
-  top: 2.5em;
-}
+  .mapHeaderRow{
+    @include u-display("flex");
+    @include u-padding-left(1.5);
+    
+    justify-content: space-between;
 
-.geolocateControl {
-  right: 1.25em;
-  top: 5em;
+    /* 
+      This width is set to prevent this row from 
+      overflowing. Using justify-content: space-between
+      will allow the geolocation button to be right 
+      ajusted. Without the width property constraint
+      of 98%, the space-between property forces the
+      geolocation icon out of the parent container.
+      
+      Since the geolocation control is absolutely
+      positioned, attempts were made to set the 
+      parent to be relative to avoid this, however
+      it seems that we haven't found a cleaner
+      solution (yet).
+    */
+    width: 98%;
+
+    
+    .geolocateBox {
+      @include u-margin-top(3);
+      
+      .geolocateIcon{
+        align-self: flex-end;
+        @include u-margin-right(4);
+        @include u-margin-top(.5);
+        
+        @include at-media-max("tablet") {
+          // < 640
+          @include u-margin-top(3);
+        }
+        
+        @media (max-width: 362px){
+          @include u-margin-top(5);
+
+        }
+      }
+    }
+  }
+
+  .navigationControl {
+    left: .75em;
+    top: units(15);
+  }
+  
+  //These classes are behind feature flags:
+  .fullscreenControl {
+    right: 1.25em;
+    top: 2.5em;
+  }
+  .j40Popup {
+    width: 375px;
+  }
+
 }
 
 .mapInfoPanel {
   border: 1px solid $sidePanelBorderColor;
   overflow-y: auto;
   height: 90vh;
-}
-
-// This will control the height of the map when the device 
-// width is less than desktop (1024px)
-.j40Map {
-  @include at-media-max("desktop") {
-    height: 55vh;
-  }
 }

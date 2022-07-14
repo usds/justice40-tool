@@ -267,7 +267,7 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
   //   description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.MED_HOME_VAL),
   //   value: properties[constants.MEDIAN_HOME_VALUE_PERCENTILE] ?
   //   properties[constants.MEDIAN_HOME_VALUE_PERCENTILE] : null,
-  //   isDisadvagtaged: false, // TODO
+  //   isDisadvagtaged: false,
   // };
 
   const proxHaz: indicatorInfo = {

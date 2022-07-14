@@ -98,7 +98,12 @@ export const featureURLForTilesetName = (tilesetName: string): string => {
   }
 };
 
-
+/**
+ * This the main map component
+ *
+ * @param {IJ40Interface} location
+ * @returns {ReactElement}
+ */
 const J40Map = ({location}: IJ40Interface) => {
   /**
    * Initializes the zoom, and the map's center point (lat, lng) via the URL hash #{z}/{lat}/{long}
@@ -329,12 +334,12 @@ const J40Map = ({location}: IJ40Interface) => {
   return (
     <>
       <Grid desktop={{col: 9}} className={styles.j40Map}>
-
         {/**
-         * This will render the MapSearch component
-         *
          * Note:
-         * The MapSearch component is no longer wrapped in a div in order to allow this feature
+         * The MapSearch component is no longer used in this location. It has been moved inside the
+         * <ReactMapGL> component itself.
+         *
+         * It was originally wrapped in a div in order to allow this feature
          * to be behind a feature flag. This was causing a bug for MapSearch to render
          * correctly in a production build. Leaving this comment here in case future flags are
          * needed in this component.
@@ -346,9 +351,10 @@ const J40Map = ({location}: IJ40Interface) => {
          *   - npm run clean && npm run build && npm run serve
          *
          * to ensure the production build works and that MapSearch and the map (ReactMapGL) render correctly.
+         *
+         * Any component declrations outside the <ReactMapGL> component may be susceptible to this bug.
          */}
-        <MapSearch goToPlace={goToPlace}/>
-
+        {/* <MapSearch goToPlace={goToPlace}/> */}
 
         {/**
          * The ReactMapGL component's props are grouped by the API's documentation. The component also has
@@ -393,7 +399,9 @@ const J40Map = ({location}: IJ40Interface) => {
           data-cy={'reactMapGL'}
         >
           {/**
-           * The low zoom source
+           * Load all data sources and layers
+           *
+           * First the low zoom:
            */}
           <Source
             id={constants.LOW_ZOOM_SOURCE_NAME}
@@ -483,24 +491,33 @@ const J40Map = ({location}: IJ40Interface) => {
             />
           </Source>
 
-          {/* This will add the navigation controls of the zoom in and zoom out buttons */}
+          {/* This is the first overlayed row on the map: Search and Geolocation */}
+          <div className={styles.mapHeaderRow}>
+            <MapSearch goToPlace={goToPlace}/>
+
+            <div className={styles.geolocateBox}>
+              <div className={styles.geolocateIcon}>
+                <GeolocateControl
+                  positionOptions={{enableHighAccuracy: true}}
+                  onGeolocate={onGeolocate}
+                  onClick={onClickGeolocate}
+                  trackUserLocation={true}
+                />
+              </div>
+            </div>
+
+          </div>
+
+          {/* This is the second row overlayed on the map, it will add the navigation controls
+          of the zoom in and zoom out buttons */}
           { windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && <NavigationControl
             showCompass={false}
             className={styles.navigationControl}
           /> }
 
-          {/* This will show shortcut buttons to pan/zoom to US territories */}
+          {/* This is the third row overlayed on the map, it will show shortcut buttons to
+          pan/zoom to US territories */}
           <TerritoryFocusControl onClick={onClick}/>
-
-          {/* This places Geolocation behind a feature flag */}
-          {'gl' in flags ? <GeolocateControl
-            className={styles.geolocateControl}
-            positionOptions={{enableHighAccuracy: true}}
-            onGeolocate={onGeolocate}
-            // @ts-ignore
-            onClick={onClickGeolocate}
-          /> : ''}
-          {geolocationInProgress ? <div>Geolocation in progress...</div> : ''}
 
           {/* Enable fullscreen pop-up behind a feature flag */}
           {('fs' in flags && detailViewData && !transitionInProgress) && (
