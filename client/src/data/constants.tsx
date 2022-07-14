@@ -204,11 +204,14 @@ export const SCORE_PROPERTY_HIGH = 'SM_PFS';
 // Zoom
 export const GLOBAL_MIN_ZOOM = 3;
 export const GLOBAL_MAX_ZOOM = 22;
+
 export const GLOBAL_MIN_ZOOM_LOW = 3;
-export const GLOBAL_MAX_ZOOM_LOW = 7;
-export const GLOBAL_MIN_ZOOM_HIGH = 7;
+export const GLOBAL_MAX_ZOOM_LOW = 5;
+
+export const GLOBAL_MIN_ZOOM_HIGH = 5;
 export const GLOBAL_MAX_ZOOM_HIGH = 11;
-export const GLOBAL_MIN_ZOOM_FEATURE_BORDER = 7;
+
+export const GLOBAL_MIN_ZOOM_FEATURE_BORDER = 5;
 export const GLOBAL_MAX_ZOOM_FEATURE_BORDER = 22;
 
 // Opacity
