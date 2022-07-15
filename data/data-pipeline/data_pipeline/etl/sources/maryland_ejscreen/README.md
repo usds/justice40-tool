@@ -1,10 +1,10 @@
 # Maryland EJSCREEN
 
-The Maryland EJSCREEN application and tool can be found [here](https://p1.cgis.umd.edu/mdejscreen/).
+The Maryland EJSCREEN application and tool can be found [here](https://www.ceejh.center/md-ejscreen-1).
 
 ### Methodology Summary
 
-According to the [documentation](https://p1.cgis.umd.edu/mdejscreen/help.html):
+According to the documentation:
 
 There exist two data categories: Population Burden and Population Characteristics.
 
