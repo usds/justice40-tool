@@ -15,7 +15,7 @@ class EJSCREENETL(ExtractTransformLoad):
         self.EJSCREEN_CSV = (
             self.get_tmp_path() / "EJSCREEN_2021_USPR_Tracts.csv"
         )
-        self.CSV_PATH = self.DATA_PATH / "dataset" / "ejscreen_2021"
+        self.CSV_PATH = self.DATA_PATH / "dataset" / "ejscreen"
         self.df: pd.DataFrame
 
         self.COLUMNS_TO_KEEP = [
