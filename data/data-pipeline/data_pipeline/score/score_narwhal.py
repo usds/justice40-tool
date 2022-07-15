@@ -314,17 +314,16 @@ class ScoreNarwhal(Score):
         housing_eligibility_columns = [
             field_names.LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD,
             field_names.HOUSING_BURDEN_LOW_INCOME_FIELD,
-            # Until we get confirmation -- NOT included
-            # field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD,
+            field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD,
         ]
 
         # # design question -- should read in scalar with threshold here instead?
-        # self.df[
-        #     field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD
-        # ] = (
-        #     self.df[field_names.HISTORIC_REDLINING_SCORE_EXCEEDED]
-        #     & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
-        # )
+        self.df[
+            field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD
+        ] = (
+            self.df[field_names.HISTORIC_REDLINING_SCORE_EXCEEDED]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
+        )
 
         self.df[field_names.LEAD_PAINT_PROXY_PCTILE_THRESHOLD] = (
             self.df[
