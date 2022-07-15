@@ -46,10 +46,11 @@ class GeoScoreETL(ExtractTransformLoad):
             self.DATA_PATH / "census" / "geojson" / "us.json"
         )
 
-        # Import the shortened name for Score M percentile ("SM_PFS") that's used on the
+        # Import the shortened name for Score N percentile ("SM_PFS") that's used on the
         # tiles.
+        ## TEMPORARY update
         self.TARGET_SCORE_SHORT_FIELD = constants.TILES_SCORE_COLUMNS[
-            field_names.SCORE_M + field_names.PERCENTILE_FIELD_SUFFIX
+            field_names.SCORE_N + field_names.PERCENTILE_FIELD_SUFFIX
         ]
         self.TARGET_SCORE_RENAME_TO = "M_SCORE"
 
@@ -284,21 +285,13 @@ class GeoScoreETL(ExtractTransformLoad):
 
         def create_esri_codebook(codebook):
             """temporary: helper to make a codebook for esri shapefile only"""
-
-            shapefile_column_field = "shapefile_column"
-            internal_column_name_field = "column_name"
-            column_description_field = "column_description"
-
             logger.info("Creating a codebook that uses the csv names")
             codebook = (
                 pd.Series(codebook)
                 .reset_index()
                 .rename(
                     # kept as strings because no downstream impacts
-                    columns={
-                        0: internal_column_name_field,
-                        "index": shapefile_column_field,
-                    }
+                    columns={0: "column_name", "index": "shapefile_column"}
                 )
             )
 
@@ -312,21 +305,10 @@ class GeoScoreETL(ExtractTransformLoad):
                 object_value="label",
             )
 
-            codebook[column_description_field] = codebook[
-                internal_column_name_field
-            ].map(column_rename_dict)
-
-            codebook[
-                [
-                    shapefile_column_field,
-                    internal_column_name_field,
-                    column_description_field,
-                ]
-            ].to_csv(
-                self.SCORE_SHP_CODE_CSV,
-                index=False,
+            codebook["column_description"] = codebook["column_name"].map(
+                column_rename_dict
             )
-            logger.info("Completed writing codebook")
+            codebook.to_csv(self.SCORE_SHP_CODE_CSV, index=False)
 
         def write_esri_shapefile():
             logger.info("Producing ESRI shapefiles")
@@ -352,13 +334,13 @@ class GeoScoreETL(ExtractTransformLoad):
                 if new_col != column:
                     renaming_map[column] = new_col
 
+            create_esri_codebook(codebook)
+
+            # temporarily disabling shapefile write
             self.geojson_score_usa_high.rename(columns=renaming_map).to_file(
                 self.SCORE_SHP_FILE
             )
             logger.info("Completed writing shapefile")
-
-            create_esri_codebook(codebook)
-
             arcgis_zip_file_path = self.SCORE_SHP_PATH / "usa.zip"
             arcgis_files = []
             for file in os.listdir(self.SCORE_SHP_PATH):
@@ -374,7 +356,7 @@ class GeoScoreETL(ExtractTransformLoad):
                 for task in [
                     write_high_to_file,
                     write_low_to_file,
-                    write_esri_shapefile,
+                    # write_esri_shapefile,
                 ]
             }
 

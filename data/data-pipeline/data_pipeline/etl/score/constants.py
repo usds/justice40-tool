@@ -5,6 +5,9 @@ from data_pipeline.config import settings
 
 from data_pipeline.score import field_names
 
+## note: to keep map porting "right" fields, keeping descriptors the same.
+
+
 # Base Paths
 DATA_PATH = Path(settings.APP_ROOT) / "data"
 TMP_PATH = DATA_PATH / "tmp"
@@ -97,7 +100,7 @@ ISLAND_AREAS_EXPLANATION = (
 CENSUS_COUNTIES_COLUMNS = ["USPS", "GEOID", "NAME"]
 
 # Drop FIPS codes from map
-DROP_FIPS_CODES = ["66", "78"]
+DROP_FIPS_CODES = []
 
 # Drop FIPS codes from incrementing
 DROP_FIPS_FROM_NON_WTD_THRESHOLDS = "72"
@@ -120,7 +123,7 @@ TILES_ROUND_NUM_DECIMALS = 2
 # Controlling Tile user experience columns
 THRESHOLD_COUNT_TO_SHOW_FIELD_NAME = "THRHLD"
 TILES_ISLAND_AREAS_THRESHOLD_COUNT = 3
-TILES_PUERTO_RICO_THRESHOLD_COUNT = 4
+TILES_PUERTO_RICO_THRESHOLD_COUNT = 10
 TILES_NATION_THRESHOLD_COUNT = 21
 
 # Note that the FIPS code is a string
@@ -179,6 +182,8 @@ TILES_SCORE_COLUMNS = {
     + field_names.PERCENTILE_FIELD_SUFFIX: "P100_PFS",
     field_names.POVERTY_LESS_THAN_200_FPL_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX: "P200_PFS",
+    field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX: "P200_I_PFS",
     field_names.LEAD_PAINT_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX: "LPF_PFS",
     field_names.NPL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX: "NPL_PFS",
@@ -198,8 +203,10 @@ TILES_SCORE_COLUMNS = {
     field_names.M_HOUSING: "M_HSG",
     field_names.M_POLLUTION: "M_PLN",
     field_names.M_HEALTH: "M_HLTH",
-    field_names.SCORE_M_COMMUNITIES: "SM_C",
-    field_names.SCORE_M + field_names.PERCENTILE_FIELD_SUFFIX: "SM_PFS",
+    # temporarily update this so that it's the Narwhal score that gets visualized on the map
+    field_names.SCORE_N_COMMUNITIES: "SM_C",
+    field_names.SCORE_N_COMMUNITIES
+    + field_names.PERCENTILE_FIELD_SUFFIX: "SM_PFS",
     field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD: "EPLRLI",
     field_names.EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD: "EALRLI",
     field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD: "EBLRLI",
@@ -283,7 +290,7 @@ TILES_SCORE_COLUMNS = {
     ## Low high school and low higher ed for t&wd
     field_names.WORKFORCE_SOCIO_INDICATORS_EXCEEDED: "M_WKFC_EBSI",
     ## FPL 200 and low higher ed for all others
-    field_names.FPL_200_AND_COLLEGE_ATTENDANCE_SERIES: "M_EBSI",
+    field_names.FPL_200_SERIES: "M_EBSI",
 }
 
 # columns to round floats to 2 decimals
@@ -311,6 +318,8 @@ TILES_SCORE_FLOAT_COLUMNS = [
     + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.POVERTY_LESS_THAN_200_FPL_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.LEAD_PAINT_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.NPL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.RMP_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
@@ -332,7 +341,6 @@ TILES_SCORE_FLOAT_COLUMNS = [
     field_names.LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD,
     field_names.ISLAND_AREAS_LOW_HS_EDUCATION_FIELD,
     field_names.WASTEWATER_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.SCORE_M + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.COLLEGE_NON_ATTENDANCE_FIELD,
     field_names.COLLEGE_ATTENDANCE_FIELD,
 ]
