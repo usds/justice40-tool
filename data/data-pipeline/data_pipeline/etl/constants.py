@@ -41,7 +41,7 @@ DATASET_LIST = [
     },
     {
         "name": "ejscreen",
-        "module_dir": "ejscreen_2021",
+        "module_dir": "ejscreen",
         "class_name": "EJSCREENETL",
     },
     {
