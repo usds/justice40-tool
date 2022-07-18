@@ -314,8 +314,13 @@ class ScoreNarwhal(Score):
         housing_eligibility_columns = [
             field_names.LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD,
             field_names.HOUSING_BURDEN_LOW_INCOME_FIELD,
+<<<<<<< HEAD
             field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD,
             field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_LOW_INCOME_FIELD,
+=======
+            # Until we get confirmation -- NOT included
+            # field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD,
+>>>>>>> d85f86a1 (updating ejscreen data, try two (#1747))
         ]
 
         # Historic disinvestment
