@@ -43,9 +43,7 @@ class ScoreETL(ExtractTransformLoad):
         logger.info("Loading data sets from disk.")
 
         # EJSCreen csv Load
-        ejscreen_csv = (
-            constants.DATA_PATH / "dataset" / "ejscreen_2019" / "usa.csv"
-        )
+        ejscreen_csv = constants.DATA_PATH / "dataset" / "ejscreen" / "usa.csv"
         self.ejscreen_df = pd.read_csv(
             ejscreen_csv,
             dtype={self.GEOID_TRACT_FIELD_NAME: "string"},

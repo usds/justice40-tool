@@ -170,6 +170,7 @@ TSDF_FIELD = "Proximity to hazardous waste sites"
 NPL_FIELD = "Proximity to NPL sites"
 AIR_TOXICS_CANCER_RISK_FIELD = "Air toxics cancer risk"
 RESPIRATORY_HAZARD_FIELD = "Respiratory hazard index"
+UST_FIELD = "Underground storage tanks"
 
 LOW_INCOME_THRESHOLD = "Exceeds FPL200 threshold"
 
