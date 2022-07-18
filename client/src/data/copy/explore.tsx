@@ -158,6 +158,21 @@ export const MAP = defineMessages({
     defaultMessage: 'US Virgin Islands',
     description: 'On the explore the map page, on the map, the full name indicating the bounds of US Virgin Islands',
   },
+  GEOLOC_MSG_LOCATING: {
+    id: 'explore.map.page.map.geolocation.locating',
+    defaultMessage: 'Geolocating...',
+    description: 'On the explore the map page, on the map, this is the message above the gelocation icon that geolocation is locating.',
+  },
+  // GEOLOC_MSG_OFF: {
+  //   id: 'explore.map.page.map.geolocation.off',
+  //   defaultMessage: 'Geolocation off',
+  //   description: 'On the explore the map page, on the map, this is the message above the gelocation icon that geolocation is off.',
+  // },
+  // GEOLOC_MSG_LOCKED: {
+  //   id: 'explore.map.page.map.geolocation.locked',
+  //   defaultMessage: 'Geolocation locked',
+  //   description: 'On the explore the map page, on the map, this is the message above the gelocation icon that geolocation is locked.',
+  // },
 });
 
 

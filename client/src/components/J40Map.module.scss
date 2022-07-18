@@ -32,22 +32,32 @@
 
     
     .geolocateBox {
-      @include u-margin-top(3);
+      margin-top: 6px;
+
+      .geolocateMessage {
+        visibility: visible;
+        background-color: white;
+        margin-bottom: 3px;
+      }
       
+      .geolocateMessageHide {
+        visibility: hidden;
+        margin-bottom: 3px;
+      }
+      
+      @include at-media-max("tablet") {
+        // < 640
+        margin-top: 28px;
+      }
+      
+      @media (max-width: 365px){
+        margin-top: 46px;
+
+      }
       .geolocateIcon{
         align-self: flex-end;
         @include u-margin-right(4);
-        @include u-margin-top(.5);
         
-        @include at-media-max("tablet") {
-          // < 640
-          @include u-margin-top(3);
-        }
-        
-        @media (max-width: 362px){
-          @include u-margin-top(5);
-
-        }
       }
     }
   }

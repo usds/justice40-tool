@@ -13,6 +13,7 @@ import ReactMapGL, {
   FlyToInterpolator,
   FullscreenControl,
   MapRef, Source, Layer} from 'react-map-gl';
+import {useIntl} from 'gatsby-plugin-intl';
 import bbox from '@turf/bbox';
 import * as d3 from 'd3-ease';
 import {isMobile} from 'react-device-detect';
@@ -34,6 +35,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import * as constants from '../data/constants';
 import * as styles from './J40Map.module.scss';
 import * as COMMON_COPY from '../data/copy/common';
+import * as EXPLORE_COPY from '../data/copy/explore';
 
 
 declare global {
@@ -55,6 +57,11 @@ export interface IDetailViewInterface {
   properties: constants.J40Properties,
 };
 
+export const GEOLOCATION_STATES = {
+  OFF: 'OFF',
+  LOCATING: 'LOCATING',
+  LOCKED: 'LOCKED',
+};
 /**
  * This function will determine the URL for the map tiles. It will read in a string that will designate either
  * high or low tiles. It will allow to overide the URL to the pipeline staging tile URL via feature flag.
@@ -130,12 +137,13 @@ const J40Map = ({location}: IJ40Interface) => {
   const [selectedFeature, setSelectedFeature] = useState<MapboxGeoJSONFeature>();
   const [detailViewData, setDetailViewData] = useState<IDetailViewInterface>();
   const [transitionInProgress, setTransitionInProgress] = useState<boolean>(false);
-  const [geolocationInProgress, setGeolocationInProgress] = useState<boolean>(false);
+  const [geolocationState, setGeolocationState] = useState(GEOLOCATION_STATES.OFF);
   const [isMobileMapState, setIsMobileMapState] = useState<boolean>(false);
   const {width: windowWidth} = useWindowSize();
 
   const mapRef = useRef<MapRef>(null);
   const flags = useFlags();
+  const intl = useIntl();
 
   const selectedFeatureId = (selectedFeature && selectedFeature.id) || '';
   const filter = useMemo(() => ['in', constants.GEOID_PROPERTY, selectedFeatureId], [selectedFeature]);
@@ -322,11 +330,17 @@ const J40Map = ({location}: IJ40Interface) => {
   };
 
   const onGeolocate = () => {
-    setGeolocationInProgress(false);
+    setGeolocationState(GEOLOCATION_STATES.LOCKED);
   };
 
   const onClickGeolocate = () => {
-    setGeolocationInProgress(true);
+    if (geolocationState === GEOLOCATION_STATES.LOCKED) {
+      setGeolocationState(GEOLOCATION_STATES.OFF);
+    }
+
+    if (geolocationState === GEOLOCATION_STATES.OFF) {
+      setGeolocationState(GEOLOCATION_STATES.LOCATING);
+    }
   };
 
   const mapBoxBaseLayer = 'tl' in flags ? `mapbox://styles/justice40/cl2qimpi2000014qeb1egpox8` : `mapbox://styles/mapbox/streets-v11`;
@@ -495,6 +509,12 @@ const J40Map = ({location}: IJ40Interface) => {
             <MapSearch goToPlace={goToPlace}/>
 
             <div className={styles.geolocateBox}>
+              <div
+                className={
+                  geolocationState === GEOLOCATION_STATES.LOCATING ?
+                  styles.geolocateMessage : styles.geolocateMessageHide}>
+                {intl.formatMessage(EXPLORE_COPY.MAP.GEOLOC_MSG_LOCATING)}
+              </div>
               <div className={styles.geolocateIcon}>
                 <GeolocateControl
                   positionOptions={{enableHighAccuracy: true}}
