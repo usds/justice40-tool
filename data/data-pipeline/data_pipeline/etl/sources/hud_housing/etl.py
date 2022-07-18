@@ -12,9 +12,8 @@ class HudHousingETL(ExtractTransformLoad):
         self.HOUSING_FTP_URL = "https://www.huduser.gov/portal/datasets/cp/2014thru2018-140-csv.zip"
         self.HOUSING_ZIP_FILE_DIR = self.get_tmp_path() / "hud_housing"
 
-        # We measure households earning less than 80% of HUD Area Median Family Income by county
-        # and paying greater than 30% of their income to housing costs, with the exception of renters.
-        # For renters, we limit to 50% or less HAMFI.
+        # We measure renters earning less than 50% of HUD Area Median Family Income by county
+        # and paying greater than 50% of their income to housing costs.
         self.HOUSING_BURDEN_FIELD_NAME = "Housing burden (percent)"
         self.HOUSING_BURDEN_NUMERATOR_FIELD_NAME = "HOUSING_BURDEN_NUMERATOR"
         self.HOUSING_BURDEN_DENOMINATOR_FIELD_NAME = (
@@ -64,99 +63,6 @@ class HudHousingETL(ExtractTransformLoad):
         # Calculate housing burden
         # This is quite a number of steps. It does not appear to be accessible nationally in a simpler format, though.
         # See "CHAS data dictionary 12-16.xlsx"
-
-        # Owner occupied numerator fields
-        OWNER_OCCUPIED_NUMERATOR_FIELDS = [
-            # Column Name
-            #   Line_Type
-            #   Tenure
-            #   Household income
-            #   Cost burden
-            #   Facilities
-            "T8_est7",
-            #   Subtotal
-            #   Owner occupied
-            #   less than or equal to 30% of HAMFI
-            #   greater than 30% but less than or equal to 50%
-            #   All
-            "T8_est10",
-            #   Subtotal
-            #   Owner occupied
-            #   less than or equal to 30% of HAMFI
-            #   greater than 50%
-            #   All
-            "T8_est20",
-            #   Subtotal
-            #   Owner occupied
-            #   greater than 30% but less than or equal to 50% of HAMFI
-            #   greater than 30% but less than or equal to 50%
-            #   All
-            "T8_est23",
-            #   Subtotal
-            #   Owner occupied
-            #   greater than 30% but less than or equal to 50% of HAMFI
-            #   greater than 50%
-            #   All
-            "T8_est33",
-            #   Subtotal
-            #   Owner occupied
-            #   greater than 50% but less than or equal to 80% of HAMFI
-            #   greater than 30% but less than or equal to 50%
-            #   All
-            "T8_est36",
-            #   Subtotal
-            #   Owner occupied
-            #   greater than 50% but less than or equal to 80% of HAMFI
-            #   greater than 50%
-            #   All
-        ]
-
-        # These rows have the values where HAMFI was not computed, b/c of no or negative income.
-        OWNER_OCCUPIED_NOT_COMPUTED_FIELDS = [
-            # Column Name
-            #   Line_Type
-            #   Tenure
-            #   Household income
-            #   Cost burden
-            #   Facilities
-            "T8_est13",
-            #   Subtotal
-            #   Owner occupied
-            #   less than or equal to 30% of HAMFI
-            #   not computed (no/negative income)
-            #   All
-            "T8_est26",
-            #   Subtotal
-            #   Owner occupied
-            #   greater than 30% but less than or equal to 50% of HAMFI
-            #   not computed (no/negative income)
-            #   All
-            "T8_est39",
-            #   Subtotal
-            #   Owner occupied
-            #   greater than 50% but less than or equal to 80% of HAMFI
-            #   not computed (no/negative income)
-            #   All
-            "T8_est52",
-            #   Subtotal
-            #   Owner occupied
-            #   greater than 80% but less than or equal to 100% of HAMFI
-            #   not computed (no/negative income)
-            #   All
-            "T8_est65",
-            #   Subtotal
-            #   Owner occupied
-            #   greater than 100% of HAMFI
-            #   not computed (no/negative income)
-            #   All
-        ]
-
-        OWNER_OCCUPIED_POPULATION_FIELD = "T8_est2"
-        #   Subtotal
-        #   Owner occupied
-        #   All
-        #   All
-        #   All
 
         # Renter occupied numerator fields
         RENTER_OCCUPIED_NUMERATOR_FIELDS = [
@@ -234,32 +140,25 @@ class HudHousingETL(ExtractTransformLoad):
 
         # Math:
         # (
-        #     # of Owner Occupied Units Meeting Criteria
-        #     + # of Renter Occupied Units Meeting Criteria
+        #     # of Renter Occupied Units Meeting Criteria
         # )
         # divided by
         # (
-        #     Total # of Owner Occupied Units
-        #     + Total # of Renter Occupied Units
-        #     - # of Owner Occupied Units with HAMFI Not Computed
+        #     Total # of Renter Occupied Units
         #     - # of Renter Occupied Units with HAMFI Not Computed
         # )
 
         self.df[self.HOUSING_BURDEN_NUMERATOR_FIELD_NAME] = self.df[
-            OWNER_OCCUPIED_NUMERATOR_FIELDS
-        ].sum(axis=1) + self.df[RENTER_OCCUPIED_NUMERATOR_FIELDS].sum(axis=1)
+            RENTER_OCCUPIED_NUMERATOR_FIELDS
+        ].sum(axis=1)
 
-        self.df[self.HOUSING_BURDEN_DENOMINATOR_FIELD_NAME] = (
-            self.df[OWNER_OCCUPIED_POPULATION_FIELD]
-            + self.df[RENTER_OCCUPIED_POPULATION_FIELD]
-            - self.df[OWNER_OCCUPIED_NOT_COMPUTED_FIELDS].sum(axis=1)
-            - self.df[RENTER_OCCUPIED_NOT_COMPUTED_FIELDS].sum(axis=1)
-        )
+        self.df[self.HOUSING_BURDEN_DENOMINATOR_FIELD_NAME] = +self.df[
+            RENTER_OCCUPIED_POPULATION_FIELD
+        ] - self.df[RENTER_OCCUPIED_NOT_COMPUTED_FIELDS].sum(axis=1)
 
-        self.df["DENOM INCL NOT COMPUTED"] = (
-            self.df[OWNER_OCCUPIED_POPULATION_FIELD]
-            + self.df[RENTER_OCCUPIED_POPULATION_FIELD]
-        )
+        self.df["DENOM INCL NOT COMPUTED"] = self.df[
+            RENTER_OCCUPIED_POPULATION_FIELD
+        ]
 
         # TODO: add small sample size checks
         self.df[self.HOUSING_BURDEN_FIELD_NAME] = self.df[
