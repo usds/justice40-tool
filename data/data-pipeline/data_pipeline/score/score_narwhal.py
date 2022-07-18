@@ -315,7 +315,6 @@ class ScoreNarwhal(Score):
             field_names.LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD,
             field_names.HOUSING_BURDEN_LOW_INCOME_FIELD,
             # Until we get confirmation -- NOT included
-            # Updated in a patch
             # field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD,
         ]
 
