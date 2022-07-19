@@ -222,5 +222,5 @@ The following attemps to explain why certain packages versions have been chosen 
 | gatsby     | 3.14.6          | 4.14.2         | No            | when attempting to update - breaks all unit tests. Compatibility warning come up with all plugins but this doesn't seems to effect functionality. This is the latest version we can release without investigating unit tests. |    
 | gatsby-cli | 3.14.2          | 4.15.2         | No            | when attempting to update - breaks all unit tests. Compatibility warning come up with all plugins but this doesn't seems to effect functionality. This is the latest version we can release without investigating unit tests.|  
 | sass       | 1.32.12         | 1.52.3         | No            | This version is needed to surpress the dart warnings on / as division for each component. See [here](https://github.com/twbs/bootstrap/issues/34051#issuecomment-845884423) for more information |
-| uswds      | 2.11.2          | 3.0.2          | No            | Needs to stay at 2.11 for peer dependency on trussworks|   
-| trussworks | 2.9.0           | 3.0.2          | No            | Needs to stay at 2.9 as 3.0 is breaking change |
+| uswds      | 2.13.3          | 3.0.2          | No            | Needs to stay at 2.13.3 for peer dependency on trussworks|   
+| trussworks | 3.1.0           | 3.1.0          | No            | latest! |
