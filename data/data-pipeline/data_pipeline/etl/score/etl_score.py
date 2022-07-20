@@ -264,7 +264,7 @@ class ScoreETL(ExtractTransformLoad):
         df: pd.DataFrame,
         input_column_name: str,
         output_column_name_root: str,
-        drop_tracts: list,
+        drop_tracts: list = None,
         ascending: bool = True,
     ) -> pd.DataFrame:
         """Creates percentiles.
@@ -538,23 +538,22 @@ class ScoreETL(ExtractTransformLoad):
         for numeric_column in numeric_columns:
             drop_tracts = []
             if numeric_column == field_names.AGRICULTURAL_VALUE_BOOL_FIELD:
-                drop_tracts = (
-                    df_copy[
-                        ~df_copy[field_names.AGRICULTURAL_VALUE_BOOL_FIELD]
-                    ][field_names.GEOID_TRACT_FIELD]
-                    .unique()
-                    .to_list()
+                drop_tracts = df_copy[
+                    ~df_copy[field_names.AGRICULTURAL_VALUE_BOOL_FIELD]
+                    .astype(bool)
+                    .fillna(False)
+                ][field_names.GEOID_TRACT_FIELD].to_list()
+                logger.info(
+                    f"Dropping {len(drop_tracts)} tracts from Agricultural Value Loss"
                 )
+
             elif numeric_column == field_names.LINGUISTIC_ISO_FIELD:
-                drop_tracts = (
-                    df_copy[
-                        # 72 is the FIPS code for Puerto Rico
-                        df_copy[field_names.GEOID_TRACT_FIELD].str.startswith(
-                            "72"
-                        )
-                    ][field_names.GEOID_TRACT_FIELD]
-                    .unique()
-                    .to_list()
+                drop_tracts = df_copy[
+                    # 72 is the FIPS code for Puerto Rico
+                    df_copy[field_names.GEOID_TRACT_FIELD].str.startswith("72")
+                ][field_names.GEOID_TRACT_FIELD].to_list()
+                logger.info(
+                    f"Dropping {len(drop_tracts)} tracts from Linguistic Isolation"
                 )
 
             df_copy = self._add_percentiles_to_df(
