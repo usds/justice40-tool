@@ -305,6 +305,8 @@ class ScoreETL(ExtractTransformLoad):
         # However, for Linguistic Isolation and Agricultural  Value Loss, there exist conditions
         # for which we drop out tracts from consideration in the percentile. More details on those
         # are below, for them, we provide a list of tracts to not include.
+        # Because of the fancy transformations below, I have removed the urban / rural percentiles,
+        # which are now deprecated.
         if not drop_tracts:
             # Create the "basic" percentile.
             df[
@@ -314,59 +316,21 @@ class ScoreETL(ExtractTransformLoad):
 
         else:
             # For agricultural loss, we are using whether there is value at all to determine percentile and then
-            # filling places where the value is False with 0
-            # For linguistic isolation, we drop PR and then recalculate.
+            # filling places where the value is False with np.NaN (since it doesn't apply)
+            # For linguistic isolation, we drop PR and then recalculate. We fill PR with np.NaN
             df[
                 f"{output_column_name_root}"
                 f"{field_names.PERCENTILE_FIELD_SUFFIX}"
-            ] = (
-                df.where(df[field_names.GEOID_TRACT_FIELD].isin(drop_tracts))[
-                    input_column_name
-                ]
-                .rank(ascending=ascending, pct=True)
-                .fillna(0.0)
-            )
-
-        # Create the urban/rural percentiles.
-        urban_rural_percentile_fields_to_combine = []
-        for (urban_or_rural_string, urban_heuristic_bool) in [
-            ("urban", True),
-            ("rural", False),
-        ]:
-            # Create a field with only those values
-            this_category_only_value_field = (
-                f"{input_column_name} (value {urban_or_rural_string} only)"
-            )
-            df[this_category_only_value_field] = np.where(
-                df[field_names.URBAN_HEURISTIC_FIELD] == urban_heuristic_bool,
-                df[input_column_name],
-                None,
-            )
-
-            # Calculate the percentile for only this category
-            this_category_only_percentile_field = (
-                f"{output_column_name_root} "
-                f"(percentile {urban_or_rural_string} only)"
-            )
-            df[this_category_only_percentile_field] = df[
-                this_category_only_value_field
+            ] = df.groupby(df[field_names.GEOID_TRACT_FIELD].isin(drop_tracts))[
+                input_column_name
             ].rank(
-                pct=True,
-                # Set ascending to the parameter value.
-                ascending=ascending,
+                ascending=ascending, pct=True
             )
-
-            # Add the field name to this list. Later, we'll combine this list.
-            urban_rural_percentile_fields_to_combine.append(
-                this_category_only_percentile_field
-            )
-
-        # Combine both urban and rural into one field:
-        df[
-            f"{output_column_name_root}{field_names.PERCENTILE_URBAN_RURAL_FIELD_SUFFIX}"
-        ] = df[urban_rural_percentile_fields_to_combine].mean(
-            axis=1, skipna=True
-        )
+            df.loc[
+                df[field_names.GEOID_TRACT_FIELD].isin(drop_tracts),
+                f"{output_column_name_root}"
+                f"{field_names.PERCENTILE_FIELD_SUFFIX}",
+            ] = np.NaN
 
         return df
 
@@ -537,7 +501,10 @@ class ScoreETL(ExtractTransformLoad):
 
         for numeric_column in numeric_columns:
             drop_tracts = []
-            if numeric_column == field_names.AGRICULTURAL_VALUE_BOOL_FIELD:
+            if (
+                numeric_column
+                == field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD
+            ):
                 drop_tracts = df_copy[
                     ~df_copy[field_names.AGRICULTURAL_VALUE_BOOL_FIELD]
                     .astype(bool)
