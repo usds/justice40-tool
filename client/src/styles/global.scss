@@ -139,6 +139,18 @@ components include:
   }
 }
 
+// all external links
+.usa-link--external::after {
+  margin-top: .5ex !important;
+}
+
+// external links in the dataset Cards
+li[class*='datasetCard-module'] .usa-link--external::after {
+  margin-top: .2ex !important;
+}
+
+
+
 /* 
 ******************************
 *      FOOTER STYLES
@@ -163,8 +175,12 @@ components include:
     @include u-display('inline-block');
     @include u-margin-top(1.5)
   }
-}
 
+  // external links in the footer only
+  .usa-link--external::after {
+    margin-top: .2ex !important;
+  }
+}
 
 
 
@@ -386,9 +402,9 @@ a.mapboxgl-ctrl-logo {
       @include u-margin-top(5);
     }
 
-    .j40-aboutcard-link {
-      font-weight: bold;
-    }
+    // .j40-aboutcard-link {
+    //   font-weight: bold;
+    // }
   }
 
   .j40-aboutcard-sm-card {

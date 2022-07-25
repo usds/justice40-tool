@@ -607,7 +607,6 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     class="j40-aboutcard-sm-link"
                   >
                     <a
-                      class="j40-aboutcard-link"
                       href="/en/methodology"
                     >
                       Methodology & data
@@ -662,7 +661,6 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     class="j40-aboutcard-sm-link"
                   >
                     <a
-                      class="j40-aboutcard-link"
                       href="/en/"
                     >
                       Explore the map
@@ -731,7 +729,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="j40-aboutcard-sm-link"
                 >
                   <a
-                    class="usa-link usa-link--external j40-aboutcard-link"
+                    class="usa-link usa-link--external"
                     data-cy=""
                     href="mailto:Screeningtool-Support@omb.eop.gov"
                     rel="noreferrer"
@@ -791,7 +789,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="j40-aboutcard-sm-link"
                 >
                   <a
-                    class="usa-link usa-link--external j40-aboutcard-link"
+                    class="usa-link usa-link--external"
                     data-cy=""
                     href="https://github.com/usds/justice40-tool"
                     rel="noreferrer"

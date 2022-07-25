@@ -64,7 +64,7 @@ const AboutCard = (props: React.PropsWithChildren<AboutCardProps>) => {
                   internal={props.internal}
                   url={props.url ? props.url : ''}
                   openUrlNewTab={props.openUrlNewTab}
-                  className={'j40-aboutcard-link'}
+                  // className={'j40-aboutcard-link'}
                 />
               </div>
             </Grid>
