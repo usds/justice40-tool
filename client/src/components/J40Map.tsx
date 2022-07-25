@@ -57,11 +57,6 @@ export interface IDetailViewInterface {
   properties: constants.J40Properties,
 };
 
-export const GEOLOCATION_STATES = {
-  OFF: 'OFF',
-  LOCATING: 'LOCATING',
-  LOCKED: 'LOCKED',
-};
 /**
  * This function will determine the URL for the map tiles. It will read in a string that will designate either
  * high or low tiles. It will allow to overide the URL to the pipeline staging tile URL via feature flag.
@@ -137,7 +132,7 @@ const J40Map = ({location}: IJ40Interface) => {
   const [selectedFeature, setSelectedFeature] = useState<MapboxGeoJSONFeature>();
   const [detailViewData, setDetailViewData] = useState<IDetailViewInterface>();
   const [transitionInProgress, setTransitionInProgress] = useState<boolean>(false);
-  const [geolocationState, setGeolocationState] = useState(GEOLOCATION_STATES.OFF);
+  const [geolocationInProgress, setGeolocationInProgress] = useState<boolean>(false);
   const [isMobileMapState, setIsMobileMapState] = useState<boolean>(false);
   const {width: windowWidth} = useWindowSize();
 
@@ -330,17 +325,11 @@ const J40Map = ({location}: IJ40Interface) => {
   };
 
   const onGeolocate = () => {
-    setGeolocationState(GEOLOCATION_STATES.LOCKED);
+    setGeolocationInProgress(false);
   };
 
   const onClickGeolocate = () => {
-    if (geolocationState === GEOLOCATION_STATES.LOCKED) {
-      setGeolocationState(GEOLOCATION_STATES.OFF);
-    }
-
-    if (geolocationState === GEOLOCATION_STATES.OFF) {
-      setGeolocationState(GEOLOCATION_STATES.LOCATING);
-    }
+    setGeolocationInProgress(true);
   };
 
   const mapBoxBaseLayer = 'tl' in flags ? `mapbox://styles/justice40/cl2qimpi2000014qeb1egpox8` : `mapbox://styles/mapbox/streets-v11`;
@@ -511,8 +500,7 @@ const J40Map = ({location}: IJ40Interface) => {
             <div className={styles.geolocateBox}>
               <div
                 className={
-                  geolocationState === GEOLOCATION_STATES.LOCATING ?
-                  styles.geolocateMessage : styles.geolocateMessageHide}>
+                  geolocationInProgress ? styles.geolocateMessage : styles.geolocateMessageHide}>
                 {intl.formatMessage(EXPLORE_COPY.MAP.GEOLOC_MSG_LOCATING)}
               </div>
               <div className={styles.geolocateIcon}>
@@ -520,7 +508,8 @@ const J40Map = ({location}: IJ40Interface) => {
                   positionOptions={{enableHighAccuracy: true}}
                   onGeolocate={onGeolocate}
                   onClick={onClickGeolocate}
-                  trackUserLocation={true}
+                  trackUserLocation={windowWidth < constants.USWDS_BREAKPOINTS.MOBILE_LG}
+                  showUserHeading={windowWidth < constants.USWDS_BREAKPOINTS.MOBILE_LG}
                 />
               </div>
             </div>
