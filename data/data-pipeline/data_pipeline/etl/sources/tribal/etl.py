@@ -12,7 +12,7 @@ class TribalETL(ExtractTransformLoad):
     def __init__(self):
         self.GEOJSON_BASE_PATH = self.DATA_PATH / "tribal" / "geojson"
         self.CSV_BASE_PATH = self.DATA_PATH / "tribal" / "csv"
-        self.NATIONAL_TRIBAL_GEOJSON_PATH = self.GEOJSON_BASE_PATH / "us.json"
+        self.NATIONAL_TRIBAL_GEOJSON_PATH = self.GEOJSON_BASE_PATH / "usa.json"
         self.USA_TRIBAL_DF_LIST = []
 
     def extract(self) -> None:
@@ -119,6 +119,31 @@ class TribalETL(ExtractTransformLoad):
 
         self.USA_TRIBAL_DF_LIST.append(bia_tsa_df)
 
+    def _transform_alaska_native_villages(
+        self, tribal_geojson_path: Path
+    ) -> None:
+        """Transform the Alaska Native Villages Geodataframe and appends it to the
+        national Tribal Dataframe List
+
+        Args:
+            tribal_geojson_path (Path): the Path to the Tribal Geojson
+
+        Returns:
+            None
+        """
+
+        alaska_native_villages_df = gpd.read_file(tribal_geojson_path)
+
+        alaska_native_villages_df.rename(
+            columns={
+                "GlobalID": "tribalId",
+                "TRIBALOFFICENAME": "landAreaName",
+            },
+            inplace=True,
+        )
+
+        self.USA_TRIBAL_DF_LIST.append(alaska_native_villages_df)
+
     def transform(self) -> None:
         """Transform the tribal geojson files to generate national CSVs and GeoJSONs
 
@@ -139,17 +164,16 @@ class TribalETL(ExtractTransformLoad):
         bia_tsa_geojson_geojson = (
             self.GEOJSON_BASE_PATH / "bia_national_lar" / "BIA_TSA.json"
         )
-
-        # TODO:
-        # alaska_native_villages_geojson = (
-        #     self.GEOJSON_BASE_PATH
-        #     / "alaska_native_villages"
-        #     / "AlaskaNativeVillages.gdb.geojson"
-        # )
+        alaska_native_villages_geojson = (
+            self.GEOJSON_BASE_PATH
+            / "alaska_native_villages"
+            / "AlaskaNativeVillages.gdb.geojson"
+        )
 
         self._transform_bia_national_lar(bia_national_lar_geojson)
         self._transform_bia_aian_supplemental(bia_aian_supplemental_geojson)
         self._transform_bia_tsa(bia_tsa_geojson_geojson)
+        self._transform_alaska_native_villages(alaska_native_villages_geojson)
 
     def load(self) -> None:
         """Create tribal national CSV and GeoJSON

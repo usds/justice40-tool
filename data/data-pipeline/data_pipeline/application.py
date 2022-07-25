@@ -200,13 +200,21 @@ def geo_score(data_source: str):
 
 
 @cli.command(
-    help="Generate map tiles",
+    help="Generate map tiles. Pass -t to generate tribal layer as well.",
 )
-def generate_map_tiles():
+@click.option(
+    "-t",
+    "--generate-tribal-layer",
+    default=False,
+    required=False,
+    is_flag=True,
+    type=bool,
+)
+def generate_map_tiles(generate_tribal_layer):
     """CLI command to generate the map tiles"""
 
     data_path = settings.APP_ROOT / "data"
-    generate_tiles(data_path)
+    generate_tiles(data_path, generate_tribal_layer)
     sys.exit()
 
 
@@ -303,7 +311,7 @@ def data_full_run(check: bool, data_source: str):
     score_geo(data_source)
 
     logger.info("*** Generating Map Tiles")
-    generate_tiles(data_path)
+    generate_tiles(data_path, True)
 
     file = "first_run.txt"
     cmd = f"touch {data_path}/{file}"

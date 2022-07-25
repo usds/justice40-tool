@@ -7,8 +7,16 @@ from data_pipeline.utils import get_module_logger, remove_all_from_dir
 logger = get_module_logger(__name__)
 
 
-def generate_tiles(data_path: Path) -> None:
+def generate_tiles(data_path: Path, generate_tribal_layer: bool) -> None:
+    """Generates map tiles from geojson files
 
+    Args:
+        data_path (Path):  Path to data folder
+        generate_tribal_layer (bool): If true, generate the tribal layer of the map
+
+    Returns:
+        None
+    """
     score_tiles_path = data_path / "score" / "tiles"
     high_tile_path = score_tiles_path / "high"
     low_tile_path = score_tiles_path / "low"

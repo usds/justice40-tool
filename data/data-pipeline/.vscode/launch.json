@@ -77,7 +77,7 @@
       ]
     },
     {
-      "name": "Generate Map Tiles",
+      "name": "Generate Score Tiles",
       "type": "python",
       "request": "launch",
       "module": "data_pipeline.application",
@@ -85,6 +85,16 @@
         "generate-map-tiles"
       ]
     },
+    {
+      "name": "Generate Score Tiles and Tribal Tiles",
+      "type": "python",
+      "request": "launch",
+      "module": "data_pipeline.application",
+      "args": [
+        "generate-map-tiles",
+        "-t"
+      ]
+    },    
     {
       "name": "ETL Run",
       "type": "python",
@@ -104,7 +114,18 @@
         "--dataset",
         "national_risk_index"
       ]
-    },    
+    },
+    {
+      "name": "ETL Run Tribal",
+      "type": "python",
+      "request": "launch",
+      "module": "data_pipeline.application",
+      "args": [
+        "etl-run",
+        "--dataset",
+        "tribal"
+      ]
+    },        
     {
       "name": "poetry install",
       "type": "python",
