@@ -166,7 +166,7 @@ export const MAP = defineMessages({
   },
   GEOLOC_MSG_LOCATING: {
     id: 'explore.map.page.map.geolocation.locating',
-    defaultMessage: 'Geolocating...',
+    defaultMessage: 'Finding location...',
     description: 'On the explore the map page, on the map, this is the message above the gelocation icon that geolocation is locating.',
   },
   // GEOLOC_MSG_OFF: {
