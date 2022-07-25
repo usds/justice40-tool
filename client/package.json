@@ -76,7 +76,7 @@
   },
   "dependencies": {
     "-": "^0.0.1",
-    "@sentry/gatsby": "^6.19.1",
+    "@sentry/gatsby": "^7.7.0",
     "@trussworks/react-uswds": "^2.9.0",
     "@turf/bbox": "^6.5.0",
     "d3-ease": "^3.0.1",
