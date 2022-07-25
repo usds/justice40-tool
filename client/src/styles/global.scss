@@ -203,41 +203,40 @@ This section will outline styles that are component specific
 
 /**
 Geolocate Icon Styling: 
-The icon as 4 states; off, geolocating, locked and off-center. The icon is an SVG made of an 'active' layer and a 'background' layer. The standard styling allows for a clear distinction between the 4 states:
-  - off = black active and black for background
-  - geolocating = blue for active and blue for background (with circular animation)
-  - locked = blue for active and blue for background (no animation)
-  - off-center = blue for background only
-  
-  These states were changed to the following:
-  - off = black active and black for background
-  - geolocating = black for active and black for background (with circular animation)
-  - locked = black for active and black for background
-  - off-center = black for background only
-  
-  The reason the Icon was changed was to match the other overlayed icons - such as territory shortcuts. These other icons don't have multiple states embedded in them. This new color scheme creates ambiguity among two states, namely (off and locked) as they have the same exact style.
+In mobile, the icon has 4 states; default, locating (class = *-waiting), locked (class = *-active) and panning (class = *-background).
+
+These overides change the active and background classes
+
+We are using #0076d6 or hsl(207, 100%, 42%) for all colors in relation to Geolocation.
+
+The reason the Icon was changed was to match the other overlayed icons - such as territory shortcuts. These other icons don't have multiple states embedded in them. This new color scheme creates ambiguity among two states, namely (off and locked) as they have the same exact style.
 */
 .mapboxgl-ctrl {
   button.mapboxgl-ctrl-geolocate.mapboxgl-ctrl-geolocate-active { 
     .mapboxgl-ctrl-icon {
-      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='29' height='29' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' fill='%23333'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 005.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 009 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 003.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0011 5.1V5s0-1-1-1zm0 2.5a3.5 3.5 0 110 7 3.5 3.5 0 110-7z'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3C/svg%3E") !important;
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='29' height='29' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' fill='hsl(207, 100%, 42%)'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 005.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 009 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 003.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0011 5.1V5s0-1-1-1zm0 2.5a3.5 3.5 0 110 7 3.5 3.5 0 110-7z'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3C/svg%3E") !important;
     }
   }
 }
 .mapboxgl-ctrl {
   button.mapboxgl-ctrl-geolocate.mapboxgl-ctrl-geolocate-background {
     .mapboxgl-ctrl-icon {
-      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='29' height='29' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' fill='%2333'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 005.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 009 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 003.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0011 5.1V5s0-1-1-1zm0 2.5a3.5 3.5 0 110 7 3.5 3.5 0 110-7z'/%3E%3C/svg%3E") !important;
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='29' height='29' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' fill='hsl(207, 100%, 42%)'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 005.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 009 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 003.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0011 5.1V5s0-1-1-1zm0 2.5a3.5 3.5 0 110 7 3.5 3.5 0 110-7z'/%3E%3C/svg%3E") !important;
     }
   }
 }
 
 /**
-Beacon - the beacon's color (*-location-dot) and proximity animation (::before) was changed to black. The reason the beacon was changed was to increase the contrast between the beacon and the census tract layers
+Beacon - the beacon's color (*-location-dot) and proximity animation (::before), inner radius (::after) was changed and . The reason the beacon was changed was to increase the contrast between the beacon and the census tract layers
 */
 .mapboxgl-user-location-dot, .mapboxgl-user-location-dot::before  {
-  background-color: #000 !important;  
+  background-color: #0076d6 !important;  
 }
+
+.mapboxgl-user-location-dot::after  {
+  border: 4px solid #FFF !important;
+}
+
 
 // Overide mapbox popup styles
 .mapboxgl-popup-close-button {
