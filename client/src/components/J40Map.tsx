@@ -510,6 +510,7 @@ const J40Map = ({location}: IJ40Interface) => {
                   onClick={onClickGeolocate}
                   trackUserLocation={windowWidth < constants.USWDS_BREAKPOINTS.MOBILE_LG}
                   showUserHeading={windowWidth < constants.USWDS_BREAKPOINTS.MOBILE_LG}
+                  disabledLabel={intl.formatMessage(EXPLORE_COPY.MAP.GEOLOC_MSG_DISABLED)}
                 />
               </div>
             </div>

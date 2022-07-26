@@ -169,6 +169,11 @@ export const MAP = defineMessages({
     defaultMessage: 'Finding location...',
     description: 'On the explore the map page, on the map, this is the message above the gelocation icon that geolocation is locating.',
   },
+  GEOLOC_MSG_DISABLED: {
+    id: 'explore.map.page.map.geolocation.disabled',
+    defaultMessage: 'Geolocation disabled',
+    description: 'On the explore the map page, on the map, this is the message above the gelocation icon that geolocation is disabled.',
+  },
   // GEOLOC_MSG_OFF: {
   //   id: 'explore.map.page.map.geolocation.off',
   //   defaultMessage: 'Geolocation off',

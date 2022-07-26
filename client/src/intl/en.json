@@ -343,6 +343,10 @@
     "defaultMessage": "Communities identified as disadvantaged by the map are those that are marginalized, underserved, and overburdened by pollution. These communities are at or above the thresholds in one or more of eight categories of criteria.",
     "description": "On the explore the map page, the description of the legend"
   },
+  "explore.map.page.map.geolocation.disabled": {
+    "defaultMessage": "Geolocation disabled",
+    "description": "On the explore the map page, on the map, this is the message above the gelocation icon that geolocation is disabled."
+  },
   "explore.map.page.map.geolocation.locating": {
     "defaultMessage": "Finding location...",
     "description": "On the explore the map page, on the map, this is the message above the gelocation icon that geolocation is locating."
