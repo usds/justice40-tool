@@ -274,26 +274,6 @@ class ScoreETL(ExtractTransformLoad):
         E.g., "PM2.5 exposure (percentile)".
         This will be for the entire country.
 
-        For an "apples-to-apples" comparison of urban tracts to other urban tracts,
-        and compare rural tracts to other rural tracts.
-
-        This percentile will be created and returned as
-        f"{output_column_name_root}{field_names.PERCENTILE_URBAN_RURAL_FIELD_SUFFIX}".
-        E.g., "PM2.5 exposure (percentile urban/rural)".
-        This field exists for every tract, but for urban tracts this value will be the
-        percentile compared to other urban tracts, and for rural tracts this value
-        will be the percentile compared to other rural tracts.
-
-        Specific methdology:
-            1. Decide a methodology for confirming whether a tract counts as urban or
-            rural. Currently in the codebase, we use Geocorr to identify the % rural of
-            a tract, and mark the tract as rural if the percentage is >50% and urban
-            otherwise. This may or may not be the right methodology.
-            2. Once tracts are marked as urban or rural, create one percentile rank
-            that only ranks urban tracts, and one percentile rank that only ranks rural
-            tracts.
-            3. Combine into a single field.
-
         `output_column_name_root` is different from `input_column_name` to enable the
         reverse percentile use case. In that use case, `input_column_name` may be
         something like "3rd grade reading proficiency" and `output_column_name_root`
@@ -436,6 +416,7 @@ class ScoreETL(ExtractTransformLoad):
             field_names.EXTREME_HEAT_FIELD,
             field_names.HEALTHY_FOOD_FIELD,
             field_names.IMPENETRABLE_SURFACES_FIELD,
+            field_names.UST_FIELD,
             # We have to pass this boolean here in order to include it in ag value loss percentiles.
             field_names.AGRICULTURAL_VALUE_BOOL_FIELD,
             field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD,
@@ -533,24 +514,6 @@ class ScoreETL(ExtractTransformLoad):
                 ascending=True,
                 drop_tracts=drop_tracts,
             )
-
-            # Min-max normalization:
-            # (
-            #     Observed value
-            #     - minimum of all values
-            # )
-            # divided by
-            # (
-            #    Maximum of all values
-            #     - minimum of all values
-            # )
-            min_value = df_copy[numeric_column].min(skipna=True)
-
-            max_value = df_copy[numeric_column].max(skipna=True)
-
-            df_copy[f"{numeric_column}{field_names.MIN_MAX_FIELD_SUFFIX}"] = (
-                df_copy[numeric_column] - min_value
-            ) / (max_value - min_value)
 
         # Create reversed percentiles for these fields
         for reverse_percentile in reverse_percentiles:
