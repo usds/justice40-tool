@@ -337,8 +337,6 @@ TILES_SCORE_FLOAT_COLUMNS = [
     + field_names.PERCENTILE_FIELD_SUFFIX,
     # Island areas HS degree attainment rate
     field_names.CENSUS_DECENNIAL_HIGH_SCHOOL_ED_FIELD_2009,
-    field_names.LOW_HS_EDUCATION_LOW_HIGHER_ED_FIELD,
-    field_names.ISLAND_AREAS_LOW_HS_EDUCATION_FIELD,
     field_names.WASTEWATER_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.COLLEGE_NON_ATTENDANCE_FIELD,
     field_names.COLLEGE_ATTENDANCE_FIELD,
