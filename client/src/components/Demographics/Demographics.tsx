@@ -1,16 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Accordion} from '@trussworks/react-uswds';
 
 import * as styles from './Demographics.module.scss';
-
-// export interface IDemographicsProps {}
+import {useFlags} from '../../contexts/FlagContext';
 
 type IDemographicsData = {
   racial: [string, number][],
   age: [string, number][]
 }
 
-// Temporary while backend is developed
+// Mock backend data
 const demographicsData:IDemographicsData = {
   racial: [
     ['White', 61.4],
@@ -30,6 +29,10 @@ const demographicsData:IDemographicsData = {
   ],
 };
 
+/*
+ * Generate the demographic item based the input
+ * TODO: Update after actual data is created
+ */
 const demographicItemGen = (demographicData: any[]) => {
   return demographicData.map((el, index) => {
     return (
@@ -41,7 +44,45 @@ const demographicItemGen = (demographicData: any[]) => {
   });
 };
 
+interface IJ40AccordionItem {
+  id: string,
+  title: string,
+  children: React.ElementType
+}
+
+const J40AccordionItem = ({id, title, children}:IJ40AccordionItem) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  return (
+    <>
+      <h6 className={styles.customDemographicHeading}>
+        {title}
+        {' ( '}
+        <button
+          className={styles.customDemographicItemToggle}
+          id={`${id}-header`}
+          aria-controls={`${id}-panel`}
+          aria-expanded={isExpanded}
+          onClick={() => setIsExpanded(!isExpanded)}
+          tabIndex={0}
+        >
+          {isExpanded ? 'hide' : 'show'}
+        </button>
+        { isExpanded ? <span>&#9650;</span> : <span>&#9660;</span>}
+        {' )'}
+      </h6>
+
+      <section
+        id={`${id}-panel`}
+        aria-labelledby={`${id}-header`}
+        hidden={!isExpanded}
+      >{children}</section>
+    </>
+  );
+};
+
 const Demographics = () => {
+  const flags = useFlags();
+
   const demographicSections = [
     {
       title: `Racial Ethnographic`,
@@ -62,7 +103,18 @@ const Demographics = () => {
   return (
     <div className={styles.demographicsContainer}>
       <div>Tract demographics</div>
+      {'cdc' in flags ? (
+        <>
+          <J40AccordionItem id={'race'} title={`Racial Ethnographic`}>
+            {demographicItemGen(demographicsData.racial)}
+          </J40AccordionItem>
+          <J40AccordionItem id={'age'} title={`Age`}>
+            {demographicItemGen(demographicsData.age)}
+          </J40AccordionItem>
+        </>
+      ) :
       <Accordion items={demographicSections} multiselectable={true}/>
+      }
     </div>
   );
 };
