@@ -2,6 +2,8 @@ declare namespace DemographicsNamespace {
     export interface IDemographicsScss {
       demographicsContainer: string;
       demographicItem: string;
+      customDemographicItemToggle: string;
+      customDemographicHeading: string;
     }
   }
 

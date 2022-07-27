@@ -6,10 +6,25 @@
     .demographicItem {
         display: flex;
         justify-content: space-between;
-        
+
         span {
             font-size: .8rem;
             margin-top: 0;
         }
+    }
+    .customDemographicHeading {
+        @include u-margin(1);
+    }
+    .customDemographicItemToggle {
+        //remove styling of button
+        border: none;
+        background-color: white;
+
+        //emulate a link
+        cursor:pointer;
+        color:blue;
+        text-decoration:underline;
+
+        min-width: 45px;
     }
 }
