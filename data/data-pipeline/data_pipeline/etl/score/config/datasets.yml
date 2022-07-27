@@ -47,3 +47,41 @@ datasets:
         include_in_csv: true
         include_in_excel: true
         column_position: 5
+  - long_name: "Child Opportunity Index 2.0 database"
+    short_name: "coi"
+    module_name: "child_opportunity_index"
+    description: "A composite index measured at the census tract level that captures neighborhood resources and conditions that matter for children's healthy development."
+    input_geoid_tract_field_name: "geoid"
+    load_fields:
+      - short_name: "he_heat"
+        df_field_name: "EXTREME_HEAT_FIELD"
+        long_name: "Summer days above 90F" 
+        field_type: float
+        include_in_tiles: true
+        include_in_csv: true
+        include_in_excel: true
+        column_position: 1
+      - short_name: "he_food"
+        long_name: "Percent low access to healthy food"
+        df_field_name: "HEALTHY_FOOD_FIELD"
+        field_type: float
+        include_in_tiles: true
+        include_in_csv: true
+        include_in_excel: true
+        column_position: 2
+      - short_name: "he_green"
+        long_name: "Percent impenetrable surface areas" 
+        df_field_name: "IMPENETRABLE_SURFACES_FIELD"
+        field_type: float
+        include_in_tiles: true
+        include_in_csv: true
+        include_in_excel: true
+        column_position: 3
+      - short_name: "ed_reading"
+        df_field_name: "READING_FIELD"
+        long_name: "Third grade reading proficiency"
+        field_type: float
+        include_in_tiles: true
+        include_in_csv: true
+        include_in_excel: true
+        column_position: 4
