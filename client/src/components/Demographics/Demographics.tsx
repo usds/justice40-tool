@@ -31,7 +31,8 @@ const demographicsData:IDemographicsData = {
 
 /*
  * Generate the demographic item based the input
- * TODO: Update after actual data is created
+ * // TODO: Update after actual data is created
+ *
  */
 const demographicItemGen = (demographicData: any[]) => {
   return demographicData.map((el, index) => {

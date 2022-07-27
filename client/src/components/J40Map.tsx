@@ -331,7 +331,7 @@ const J40Map = ({location}: IJ40Interface) => {
       <Grid desktop={{col: 9}} className={styles.j40Map}>
 
         {/**
-         * This will render the MapSearch component
+         * // * This will render the MapSearch component
          *
          * Note:
          * The MapSearch component is no longer wrapped in a div in order to allow this feature
