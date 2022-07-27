@@ -2,18 +2,22 @@ from pathlib import Path
 import pandas as pd
 
 from data_pipeline.config import settings
-from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
 from data_pipeline.utils import get_module_logger, unzip_file_from_url
 
 logger = get_module_logger(__name__)
 
 
 class DOEEnergyBurden(ExtractTransformLoad):
+    NAME = "doe_energy_burden"
+    SOURCE_URL: str = (
+        settings.AWS_JUSTICE40_DATASOURCES_URL
+        + "/DOE_LEAD_AMI_TRACT_2018_ALL.csv.zip"
+    )
+    GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
+
     def __init__(self):
-        self.DOE_FILE_URL = (
-            settings.AWS_JUSTICE40_DATASOURCES_URL
-            + "/DOE_LEAD_AMI_TRACT_2018_ALL.csv.zip"
-        )
+        self.DOE_FILE_URL = self.SOURCE_URL
 
         self.OUTPUT_PATH: Path = (
             self.DATA_PATH / "dataset" / "doe_energy_burden"
@@ -38,12 +42,11 @@ class DOEEnergyBurden(ExtractTransformLoad):
         unzip_file_from_url(
             file_url=self.DOE_FILE_URL,
             download_path=self.get_tmp_path(),
-            unzipped_file_path=self.get_tmp_path() / "doe_energy_burden",
+            unzipped_file_path=self.get_tmp_path()
         )
 
         self.raw_df = pd.read_csv(
             filepath_or_buffer=self.get_tmp_path()
-            / "doe_energy_burden"
             / "DOE_LEAD_AMI_TRACT_2018_ALL.csv",
             # The following need to remain as strings for all of their digits, not get converted to numbers.
             dtype={
