@@ -85,3 +85,18 @@ datasets:
         include_in_csv: true
         include_in_excel: true
         column_position: 4
+  - long_name: "Low-Income Energy Affordabililty Data"
+    short_name: "LEAD"
+    module_name: "doe_energy_burden"
+    description: "Census-tract-level energy budren calculations based on DOE's LEAD tool"
+    input_geoid_tract_field_name: "FIP"
+    load_fields:
+      - short_name: "budren"
+        df_field_name: "REVISED_ENERGY_BURDEN_FIELD_NAME"
+        long_name: "Energy burden" 
+        field_type: float
+        include_in_tiles: true
+        include_in_csv: true
+        include_in_excel: true
+        column_position: 1
+ 
