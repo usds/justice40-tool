@@ -430,6 +430,7 @@ HAZARDOUS_WASTE_LOW_INCOME_FIELD = (
 
 # Critical Clean Water and Waste Infrastructure
 WASTEWATER_DISCHARGE_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for wastewater discharge and is low income?"
+LEAKY_UST_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for leaky underground storage tanks and is low income?"
 
 # Health Burdens
 DIABETES_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for diabetes and is low income?"
@@ -629,6 +630,8 @@ RMP_PCTILE_THRESHOLD = (
 NPL_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for NPL (superfund sites) proximity"
 TSDF_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for proximity to hazardous waste sites"
 WASTEWATER_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for wastewater discharge"
+LEAKY_UST_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for leaky underground storage tanks"
+
 DIABETES_PCTILE_THRESHOLD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for diabetes"
 )
