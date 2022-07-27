@@ -120,6 +120,7 @@ class TestETL:
         # Setup
         etl = self._get_instance_of_etl_class()
         etl.__init__()
+
         data_path, tmp_path = mock_paths
 
         assert etl.DATA_PATH == data_path
@@ -367,9 +368,14 @@ class TestETL:
             etl_with_duplicate_geo_field.output_df = actual_output_df.copy(
                 deep=True
             )
+            etl_with_duplicate_geo_field.output_df.reset_index(inplace=True)
             etl_with_duplicate_geo_field.output_df.loc[
                 0:1, ExtractTransformLoad.GEOID_TRACT_FIELD_NAME
-            ] = "06007040300"
+            ] = etl_with_duplicate_geo_field.output_df[
+                ExtractTransformLoad.GEOID_TRACT_FIELD_NAME
+            ].iloc[
+                0
+            ]
             with pytest.raises(ValueError) as error:
                 etl_with_duplicate_geo_field.validate()
             assert str(error.value).startswith("Duplicate values:")
@@ -440,7 +446,7 @@ class TestETL:
 
         # Remove another column to keep and make sure error occurs.
         etl_with_missing_column = copy.deepcopy(etl)
-        columns_to_keep = actual_output_df.columns[:-1]
+        columns_to_keep = etl.COLUMNS_TO_KEEP[:-1]
         etl_with_missing_column.output_df = actual_output_df[columns_to_keep]
         with pytest.raises(ValueError) as error:
             etl_with_missing_column.validate()

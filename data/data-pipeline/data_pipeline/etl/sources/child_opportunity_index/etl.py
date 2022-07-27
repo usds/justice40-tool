@@ -1,9 +1,8 @@
 from pathlib import Path
 import pandas as pd
 
-from data_pipeline.etl.base import ExtractTransformLoad
-from data_pipeline.score import field_names
-from data_pipeline.utils import get_module_logger, unzip_file_from_url
+from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
+from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
 
@@ -22,13 +21,31 @@ class ChildOpportunityIndex(ExtractTransformLoad):
 
     Github repo: https://github.com/diversitydatakids/COI/
 
+
+    NOTE: Things to ask jorge:
+    - How do you decide the short name?
+    - I ended up not having all the same tracts in my data set and had to subset them in the tests --- okay? make up data?
     """
 
+    # Metadata for the baseclass
+    NAME = "child_opportunity_index"
+    GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
+
+    # Define these for easy code completion
+    EXTREME_HEAT_FIELD: str
+    HEALTHY_FOOD_FIELD: str
+    IMPENETRABLE_SURFACES_FIELD: str
+    READING_FIELD: str
+
     def __init__(self):
-        self.COI_FILE_URL = (
+        self.DATASET_CONFIG = super().yaml_config_load()
+        self.SOURCE_URL = (
             "https://data.diversitydatakids.org/datastore/zip/f16fff12-b1e5-4f60-85d3-"
             "3a0ededa30a0?format=csv"
         )
+
+        # TODO: Decide about nixing this
+        self.TRACT_INPUT_COLUMN_NAME = self.INPUT_GEOID_TRACT_FIELD_NAME
 
         self.OUTPUT_PATH: Path = (
             self.DATA_PATH / "dataset" / "child_opportunity_index"
@@ -40,31 +57,19 @@ class ChildOpportunityIndex(ExtractTransformLoad):
         self.IMPENETRABLE_SURFACES_INPUT_FIELD = "HE_GREEN"
         self.READING_INPUT_FIELD = "ED_READING"
 
-        # Constants for output
-        self.COLUMNS_TO_KEEP = [
-            self.GEOID_TRACT_FIELD_NAME,
-            field_names.EXTREME_HEAT_FIELD,
-            field_names.HEALTHY_FOOD_FIELD,
-            field_names.IMPENETRABLE_SURFACES_FIELD,
-            field_names.READING_FIELD,
-        ]
-
-        self.raw_df: pd.DataFrame
         self.output_df: pd.DataFrame
 
     def extract(self) -> None:
         logger.info("Starting 51MB data download.")
-
-        unzip_file_from_url(
-            file_url=self.COI_FILE_URL,
-            download_path=self.get_tmp_path(),
-            unzipped_file_path=self.get_tmp_path() / "child_opportunity_index",
+        super().extract(
+            source_url=self.SOURCE_URL,
+            extract_path=self.get_tmp_path(),
         )
 
-        self.raw_df = pd.read_csv(
-            filepath_or_buffer=self.get_tmp_path()
-            / "child_opportunity_index"
-            / "raw.csv",
+    def transform(self) -> None:
+        logger.info("Starting transforms.")
+        raw_df = pd.read_csv(
+            filepath_or_buffer=self.get_tmp_path() / "raw.csv",
             # The following need to remain as strings for all of their digits, not get
             # converted to numbers.
             dtype={
@@ -73,16 +78,13 @@ class ChildOpportunityIndex(ExtractTransformLoad):
             low_memory=False,
         )
 
-    def transform(self) -> None:
-        logger.info("Starting transforms.")
-
-        output_df = self.raw_df.rename(
+        output_df = raw_df.rename(
             columns={
                 self.TRACT_INPUT_COLUMN_NAME: self.GEOID_TRACT_FIELD_NAME,
-                self.EXTREME_HEAT_INPUT_FIELD: field_names.EXTREME_HEAT_FIELD,
-                self.HEALTHY_FOOD_INPUT_FIELD: field_names.HEALTHY_FOOD_FIELD,
-                self.IMPENETRABLE_SURFACES_INPUT_FIELD: field_names.IMPENETRABLE_SURFACES_FIELD,
-                self.READING_INPUT_FIELD: field_names.READING_FIELD,
+                self.EXTREME_HEAT_INPUT_FIELD: self.EXTREME_HEAT_FIELD,
+                self.HEALTHY_FOOD_INPUT_FIELD: self.HEALTHY_FOOD_FIELD,
+                self.IMPENETRABLE_SURFACES_INPUT_FIELD: self.IMPENETRABLE_SURFACES_FIELD,
+                self.READING_INPUT_FIELD: self.READING_FIELD,
             }
         )
 
@@ -95,8 +97,8 @@ class ChildOpportunityIndex(ExtractTransformLoad):
 
         # Convert percents from 0-100 to 0-1 to standardize with our other fields.
         percent_fields_to_convert = [
-            field_names.HEALTHY_FOOD_FIELD,
-            field_names.IMPENETRABLE_SURFACES_FIELD,
+            self.HEALTHY_FOOD_FIELD,
+            self.IMPENETRABLE_SURFACES_FIELD,
         ]
 
         for percent_field_to_convert in percent_fields_to_convert:
@@ -108,8 +110,6 @@ class ChildOpportunityIndex(ExtractTransformLoad):
 
     def load(self) -> None:
         logger.info("Saving CSV")
-
+        ### XXX: Should we do this in the super().load too?
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
-        self.output_df[self.COLUMNS_TO_KEEP].to_csv(
-            path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False
-        )
+        super().load(float_format="%.10f")

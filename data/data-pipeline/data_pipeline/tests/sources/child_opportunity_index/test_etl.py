@@ -17,16 +17,31 @@ class TestChildOpportunityIndexETL(TestETL):
 
     This uses pytest-snapshot.
     To update individual snapshots: $ poetry run pytest
-            data_pipeline/tests/sources/national_risk_index/test_etl.py::TestClassNameETL::<testname>
+            data_pipeline/tests/sources/child_opportunity_index/test_etl.py::TestClassNameETL::<testname>
             --snapshot-update
     """
 
     _ETL_CLASS = ChildOpportunityIndex
 
     _SAMPLE_DATA_PATH = pathlib.Path(__file__).parents[0] / "data"
-    _SAMPLE_DATA_FILE_NAME = "NRI_Table_CensusTracts.csv"
-    _SAMPLE_DATA_ZIP_FILE_NAME = "NRI_Table_CensusTracts.zip"
-    _EXTRACT_TMP_FOLDER_NAME = "NationalRiskIndexETL"
+    _SAMPLE_DATA_FILE_NAME = "raw.csv"
+    _SAMPLE_DATA_ZIP_FILE_NAME = "coi.zip"
+    _EXTRACT_TMP_FOLDER_NAME = "ChildOpportunityIndex"
+    _EXTRACT_CSV_FILE_NAME = "raw.csv"
+    _FIXTURES_SHARED_TRACT_IDS = [
+        "15001021010",
+        "15001021101",
+        "15007040603",
+        "15007040700",
+        "15009030100",
+        "15009030201",
+        "15001021402",
+        "15001021800",
+        "15009030402",
+        "15009030800",
+        "15003010201",
+        "15007040604",
+    ]
 
     def setup_method(self, _method, filename=__file__):
         """Invoke `setup_method` from Parent, but using the current file name.
@@ -48,7 +63,6 @@ class TestChildOpportunityIndexETL(TestETL):
             response_mock.status_code = 200
             # pylint: disable=protected-access
             response_mock._content = file_contents
-
             # Return text fixture:
             requests_mock.get = mock.MagicMock(return_value=response_mock)
 
@@ -69,7 +83,7 @@ class TestChildOpportunityIndexETL(TestETL):
         """
 
         etl = ChildOpportunityIndex()
-        data_path, t_ = mock_paths
+        data_path, _ = mock_paths
         assert etl.DATA_PATH == data_path
         assert etl.COLUMNS_TO_KEEP == [
             "GEOID10_TRACT",
