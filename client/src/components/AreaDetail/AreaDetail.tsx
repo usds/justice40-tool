@@ -6,6 +6,7 @@ import {Accordion, Button} from '@trussworks/react-uswds';
 
 // Components:
 import Category from '../Category';
+import Demographics from '../Demographics';
 import DisadvantageDot from '../DisadvantageDot';
 import ExceedBurden from '../ExceedBurden';
 import Indicator from '../Indicator';
@@ -602,6 +603,9 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
           <span className={styles.censusText}>{` ${population.toLocaleString()}`}</span>
         </li>
       </ul>
+
+      {/* Demographics */}
+      <Demographics />
 
       {/* Disadvantaged? */}
       <div className={styles.categorization}>

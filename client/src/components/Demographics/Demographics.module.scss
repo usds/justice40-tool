@@ -1,0 +1,15 @@
+@use '../../styles/design-system.scss' as *;
+
+.demographicsContainer{
+    @include u-padding(2);
+
+    .demographicItem {
+        display: flex;
+        justify-content: space-between;
+        
+        span {
+            font-size: .8rem;
+            margin-top: 0;
+        }
+    }
+}
