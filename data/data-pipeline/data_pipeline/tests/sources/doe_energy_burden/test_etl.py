@@ -77,6 +77,6 @@ class TestDOEEnergyBurdenETL(TestETL):
         ]
         assert etl.GEOID_FIELD_NAME == "GEOID10"
         assert etl.GEOID_TRACT_FIELD_NAME == "GEOID10_TRACT"
-        assert etl.TRACT_INPUT_COLUMN_NAME == "FIP"
+        assert etl.INPUT_GEOID_TRACT_FIELD_NAME == "FIP"
         assert etl.INPUT_ENERGY_BURDEN_FIELD_NAME == "BURDEN"
         assert etl.REVISED_ENERGY_BURDEN_FIELD_NAME == "Energy burden"
