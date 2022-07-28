@@ -125,7 +125,16 @@
         "--dataset",
         "tribal"
       ]
-    },        
+    },
+    {
+      "name": "Data Full Run",
+      "type": "python",
+      "request": "launch",
+      "module": "data_pipeline.application",
+      "args": [
+        "data-full-run",
+      ]
+    },      
     {
       "name": "poetry install",
       "type": "python",
