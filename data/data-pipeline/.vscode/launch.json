@@ -86,7 +86,7 @@
       ]
     },
     {
-      "name": "Generate Score Tiles and Tribal Tiles",
+      "name": "Generate Tribal Tiles",
       "type": "python",
       "request": "launch",
       "module": "data_pipeline.application",
