@@ -498,11 +498,11 @@ const J40Map = ({location}: IJ40Interface) => {
             <MapSearch goToPlace={goToPlace}/>
 
             <div className={styles.geolocateBox}>
-              <div
+              {windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && <div
                 className={
                   geolocationInProgress ? styles.geolocateMessage : styles.geolocateMessageHide}>
                 {intl.formatMessage(EXPLORE_COPY.MAP.GEOLOC_MSG_LOCATING)}
-              </div>
+              </div>}
               <div className={styles.geolocateIcon}>
                 <GeolocateControl
                   positionOptions={{enableHighAccuracy: true}}
