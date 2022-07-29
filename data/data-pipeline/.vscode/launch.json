@@ -50,15 +50,6 @@
       ]
     },
     {
-      "name": "Download Tribal Geojson",
-      "type": "python",
-      "request": "launch",
-      "module": "data_pipeline.application",
-      "args": [
-        "tribal-data-download"
-      ]
-    },    
-    {
       "name": "Score Full Run",
       "type": "python",
       "request": "launch",
@@ -94,7 +85,7 @@
         "generate-map-tiles",
         "-t"
       ]
-    },    
+    },
     {
       "name": "ETL Run",
       "type": "python",
@@ -134,7 +125,7 @@
       "args": [
         "data-full-run",
       ]
-    },      
+    },
     {
       "name": "poetry install",
       "type": "python",
