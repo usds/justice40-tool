@@ -1,7 +1,7 @@
 @use '../../styles/design-system.scss' as *;
 
 .demographicsContainer{
-    @include u-padding(2);
+    padding: 1.2rem 1rem 0 1.2rem;
 
     .demographicItem {
         display: flex;
@@ -13,18 +13,6 @@
         }
     }
     .customDemographicHeading {
-        @include u-margin(1);
-    }
-    .customDemographicItemToggle {
-        //remove styling of button
-        border: none;
-        background-color: white;
-
-        //emulate a link
-        cursor:pointer;
-        color:blue;
-        text-decoration:underline;
-
-        min-width: 45px;
+        @include u-margin(1.5);
     }
 }
