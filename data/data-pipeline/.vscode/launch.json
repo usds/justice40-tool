@@ -68,12 +68,22 @@
       ]
     },
     {
-      "name": "Generate Map Tiles",
+      "name": "Generate Score Tiles",
       "type": "python",
       "request": "launch",
       "module": "data_pipeline.application",
       "args": [
         "generate-map-tiles"
+      ]
+    },
+    {
+      "name": "Generate Tribal Tiles",
+      "type": "python",
+      "request": "launch",
+      "module": "data_pipeline.application",
+      "args": [
+        "generate-map-tiles",
+        "-t"
       ]
     },
     {
@@ -83,6 +93,37 @@
       "module": "data_pipeline.application",
       "args": [
         "etl-run"
+      ]
+    },
+    {
+      "name": "ETL Run NRI",
+      "type": "python",
+      "request": "launch",
+      "module": "data_pipeline.application",
+      "args": [
+        "etl-run",
+        "--dataset",
+        "national_risk_index"
+      ]
+    },
+    {
+      "name": "ETL Run Tribal",
+      "type": "python",
+      "request": "launch",
+      "module": "data_pipeline.application",
+      "args": [
+        "etl-run",
+        "--dataset",
+        "tribal"
+      ]
+    },
+    {
+      "name": "Data Full Run",
+      "type": "python",
+      "request": "launch",
+      "module": "data_pipeline.application",
+      "args": [
+        "data-full-run",
       ]
     },
     {

@@ -1,0 +1,86 @@
+name: Tribal Layer Deploy
+on:
+  workflow_dispatch:
+    inputs:
+      confirm-action:
+        description: This will deploy tribal map layer, are you sure you want to proceed? (Y/n)
+        default: n
+        required: true
+env:
+  BE_CDN_ID: E1324VDMNCO97N
+jobs:
+  deploy_data:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: data/data-pipeline
+    strategy:
+      matrix:
+        python-version: [3.9]
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+      - name: Print variables to help debug
+        uses: hmarr/debug-action@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Load cached Poetry installation
+        uses: actions/cache@v2
+        id: cached-poetry-dependencies
+        with:
+          path: ~/.cache/pypoetry/virtualenvs
+          key: env-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}-${{ hashFiles('.github/workflows/combine-tilefy.yml') }}
+      - name: Install poetry
+        uses: snok/install-poetry@v1
+      - name: Print Poetry settings
+        run: poetry show -v
+      - name: Install dependencies
+        run: poetry add s4cmd && poetry install
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+      - name: Install GDAL/ogr2ogr
+        run: |
+          sudo add-apt-repository ppa:ubuntugis/ppa
+          sudo apt-get update
+          sudo apt-get -y install gdal-bin
+          ogrinfo --version
+      - name: Set timezone for tippecanoe
+        uses: szenius/set-timezone@v1.0
+        with:
+          timezoneLinux: "America/Los_Angeles"
+      - name: Get tippecanoe
+        run: |
+          sudo apt-get install -y software-properties-common libsqlite3-dev zlib1g-dev
+          sudo apt-add-repository -y ppa:git-core/ppa
+          sudo mkdir -p /tmp/tippecanoe-src
+          sudo git clone https://github.com/mapbox/tippecanoe.git /tmp/tippecanoe-src
+      - name: Make tippecanoe
+        working-directory: /tmp/tippecanoe-src
+        run: |
+          sudo /usr/bin/bash -c make
+          mkdir -p /usr/local/bin
+          cp tippecanoe /usr/local/bin/tippecanoe
+          tippecanoe -v
+      - name: Run Scripts
+        run: |
+          poetry run python3 data_pipeline/application.py etl-run --dataset tribal
+          poetry run python3 data_pipeline/application.py generate-map-tiles --generate-tribal-layer
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.DATA_DEV_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.DATA_DEV_AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: Deploy to Geoplatform AWS
+        run: |
+          poetry run s4cmd put ./data_pipeline/data/tribal/geojson/ s3://justice40-data/data-pipeline/data/tribal/geojson --recursive --force  --API-ACL=public-read --num-threads=250
+          poetry run s4cmd put ./data_pipeline/data/tribal/tiles/ s3://justice40-data/data-pipeline/data/tribal/tiles --recursive --force  --API-ACL=public-read --num-threads=250
+      - name: Invalidate cache on AWS CDNs
+        uses: chetan/invalidate-cloudfront-action@master
+        env:
+          DISTRIBUTION: ${{env.BE_CDN_ID}}
+          PATHS: "/*"
+          AWS_REGION: "us-east-1"
+          AWS_ACCESS_KEY_ID: ${{ secrets.DATA_DEV_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.DATA_DEV_AWS_SECRET_ACCESS_KEY }}
