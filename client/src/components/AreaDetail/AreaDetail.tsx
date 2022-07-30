@@ -6,7 +6,7 @@ import {Accordion, Button} from '@trussworks/react-uswds';
 
 // Components:
 import Category from '../Category';
-import Demographics from '../Demographics';
+import TractDemographics from '../TractDemographics';
 import DisadvantageDot from '../DisadvantageDot';
 import ExceedBurden from '../ExceedBurden';
 import Indicator from '../Indicator';
@@ -584,7 +584,7 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
       />
 
       {/* Demographics */}
-      <Demographics />
+      <TractDemographics />
 
       {/* Disadvantaged? */}
       <div className={styles.categorization}>

@@ -1,13 +1,6 @@
 @use "../../styles/design-system.scss" as *;
 @import "../utils.scss";
 
-$sidePanelLabelFontColor: #171716;
-
-@mixin sidePanelLabelStyle {
-  font-size: medium;
-  color: $sidePanelLabelFontColor;
-  font-weight: 600;
-}
 
 .tractInfoContainer {
   display: flex;

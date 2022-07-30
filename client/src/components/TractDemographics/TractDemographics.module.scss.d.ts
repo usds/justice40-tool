@@ -1,6 +1,10 @@
 declare namespace TractDemographicsNamespace {
     export interface ITractDemographicsScss {
-      tractDemographicsContainer: string;
+      demographicsContainer: string;
+      demographicItem: string;
+      demographicsLabel: strring;
+      customDemographicItemToggle: string;
+      customDemographicHeading: string;
     }
   }
 

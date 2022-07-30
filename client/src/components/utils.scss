@@ -11,6 +11,14 @@ $sidePanelBorder: 2px solid $sidePanelBorderColor;
 $mobileBreakpoint: 400px;
 $featureSelectBorderColor: #00bde3;
 $additionalCardsBGColor: #FAFAFA;
+$sidePanelLabelFontColor: #171716;
+
+@mixin sidePanelLabelStyle {
+    font-size: medium;
+    color: $sidePanelLabelFontColor;
+    font-weight: 600;
+  }
+  
 
 //Styles with Dataset container
 $datasetContainerColor: #eef6fb;

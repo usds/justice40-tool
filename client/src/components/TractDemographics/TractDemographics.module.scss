@@ -1,5 +1,30 @@
 @use '../../styles/design-system.scss' as *;
+@import "../utils.scss";
 
-.tractDemographicsContainer{
+.demographicsContainer{
+    padding: 1.2rem 1rem 0 1.2rem;
+    
+    .demographicsLabel {
+        @include sidePanelLabelStyle;
+    }
 
+    [id*='expand-content']{
+        padding: .5rem 0;
+        
+    }
+
+    .demographicItem {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: .5rem;
+    
+        span {
+            font-size: .8rem;
+            margin-top: 0;
+        }
+    }
+    .customDemographicHeading {
+        @include u-margin-top(.5);
+        font-size: medium;
+    }
 }

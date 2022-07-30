@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering of Demographics Component checks if component renders 1`] = `
+exports[`rendering of TractDemographics Component checks if component renders 1`] = `
 <DocumentFragment>
   <div>
     <div>
