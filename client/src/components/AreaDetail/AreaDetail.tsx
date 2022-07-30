@@ -569,11 +569,6 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
   return (
     <aside className={styles.areaDetailContainer} data-cy={'aside'}>
 
-      {/* Methodology version */}
-      <div className={styles.versionInfo}>
-        {EXPLORE_COPY.SIDE_PANEL_VERION.TITLE}
-      </div>
-
       {/* Tract Info */}
       <TractInfo
         blockGroup={blockGroup}
@@ -646,6 +641,10 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
       {/* All category accordions in this component */}
       <Accordion multiselectable={true} items={categoryItems} />
 
+      {/* Methodology version */}
+      <div className={styles.versionInfo}>
+        {EXPLORE_COPY.SIDE_PANEL_VERION.TITLE}
+      </div>
     </aside>
   );
 };

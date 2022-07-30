@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 
 import * as styles from './TractDemographics.module.scss';
 
+// Mock interface
 export interface ITractDemographicsProps {
   racial: [string, number][],
   age: [string, number][]
@@ -80,7 +81,7 @@ const J40AccordionItem = ({id, title, children}:IJ40AccordionItem) => {
   );
 };
 
-const TractDemographics = ({}: ITractDemographicsProps) => {
+const TractDemographics = () => {
   return (
     <div className={styles.demographicsContainer}>
       <div className={styles.demographicsLabel}>Tract demographics</div>

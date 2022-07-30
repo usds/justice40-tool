@@ -5,9 +5,6 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
   <aside
     data-cy="aside"
   >
-    <div>
-      Methodology version 0.1
-    </div>
     <ul>
       <li>
         <span>
@@ -509,6 +506,9 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
         </li>
       </div>
     </div>
+    <div>
+      Methodology version 0.1
+    </div>
   </aside>
 </DocumentFragment>
 `;
@@ -518,9 +518,6 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
   <aside
     data-cy="aside"
   >
-    <div>
-      Methodology version 0.1
-    </div>
     <ul>
       <li>
         <span>
@@ -2397,6 +2394,9 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </li>
       </div>
     </div>
+    <div>
+      Methodology version 0.1
+    </div>
   </aside>
 </DocumentFragment>
 `;
@@ -2406,9 +2406,6 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
   <aside
     data-cy="aside"
   >
-    <div>
-      Methodology version 0.1
-    </div>
     <ul>
       <li>
         <span>
@@ -3426,6 +3423,9 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
           </div>
         </li>
       </div>
+    </div>
+    <div>
+      Methodology version 0.1
     </div>
   </aside>
 </DocumentFragment>
