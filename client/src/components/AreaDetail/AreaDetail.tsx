@@ -10,6 +10,7 @@ import Demographics from '../Demographics';
 import DisadvantageDot from '../DisadvantageDot';
 import ExceedBurden from '../ExceedBurden';
 import Indicator from '../Indicator';
+import TractInfo from '../TractInfo';
 
 // Styles and constants
 import * as styles from './areaDetail.module.scss';
@@ -573,36 +574,14 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
         {EXPLORE_COPY.SIDE_PANEL_VERION.TITLE}
       </div>
 
-      {/* Census Info */}
-      <ul className={styles.censusRow}>
-        <li>
-          <span className={styles.censusLabel}>
-            {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CBG_INFO.CENSUS_BLOCK_GROUP)}
-          </span>
-          <span className={styles.censusText}>{` ${blockGroup}`}</span>
-        </li>
-        <li>
-          <span className={styles.censusLabel}>
-            {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CBG_INFO.COUNTY)}
-          </span>
-          <span className={styles.censusText}>{` ${countyName}`}</span>
-        </li>
-        <li>
-          <span className={styles.censusLabel}>
-            {properties[constants.SIDE_PANEL_STATE] !== constants.SIDE_PANEL_STATE_VALUES.NATION ?
-              intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CBG_INFO.TERRITORY) :
-              intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CBG_INFO.STATE)
-            }
-          </span>
-          <span className={styles.censusText}>{` ${stateName}`}</span>
-        </li>
-        <li>
-          <span className={styles.censusLabel}>
-            {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CBG_INFO.POPULATION)}
-          </span>
-          <span className={styles.censusText}>{` ${population.toLocaleString()}`}</span>
-        </li>
-      </ul>
+      {/* Tract Info */}
+      <TractInfo
+        blockGroup={blockGroup}
+        countyName={countyName}
+        stateName={stateName}
+        population={population}
+        sidePanelState={properties[constants.SIDE_PANEL_STATE]}
+      />
 
       {/* Demographics */}
       <Demographics />

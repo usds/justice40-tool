@@ -11,7 +11,12 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
     <ul>
       <li>
         <span>
-          Census tract:
+          Tract information
+        </span>
+      </li>
+      <li>
+        <span>
+          Number:
         </span>
         <span>
            98729374234
@@ -46,146 +51,146 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
       <div>
         Tract demographics
       </div>
+      <h6>
+        Racial Ethnographic
+        <button
+          aria-controls="race-expand-content"
+          aria-expanded="false"
+          class="usa-accordion__button usa-banner__button"
+          id="race-expand-control"
+          type="button"
+        >
+          <span
+            class="usa-banner__button-text"
+          >
+            show
+          </span>
+        </button>
+      </h6>
       <div
-        aria-multiselectable="true"
-        class="usa-accordion"
-        data-testid="accordion"
+        aria-labelledby="race-expand-control"
+        class="usa-banner__content usa-accordion__content"
+        hidden=""
+        id="race-expand-content"
       >
-        <h4
-          class="usa-accordion__heading"
-        >
-          <button
-            aria-controls="123"
-            aria-expanded="false"
-            class="usa-accordion__button"
-            data-testid="accordionButton_123"
-            type="button"
-          >
-            Racial Ethnographic
-          </button>
-        </h4>
-        <div
-          class="usa-accordion__content usa-prose"
-          data-testid="accordionItem_123"
-          hidden=""
-          id="123"
-        >
-          <div>
-            <span>
-              White
-            </span>
-            <span>
-              61.4%
-            </span>
-          </div>
-          <div>
-            <span>
-              Black or African Americon
-            </span>
-            <span>
-              10.3%
-            </span>
-          </div>
-          <div>
-            <span>
-              American Indian and Alaska Native
-            </span>
-            <span>
-              10.3%
-            </span>
-          </div>
-          <div>
-            <span>
-              American Indian and Alaska Native
-            </span>
-            <span>
-              0.3%
-            </span>
-          </div>
-          <div>
-            <span>
-              Asian
-            </span>
-            <span>
-              7.2%
-            </span>
-          </div>
-          <div>
-            <span>
-              Native Hawiian or Pacific Islander
-            </span>
-            <span>
-              4.2%
-            </span>
-          </div>
-          <div>
-            <span>
-              Other
-            </span>
-            <span>
-              2.5%
-            </span>
-          </div>
-          <div>
-            <span>
-              Two or more races
-            </span>
-            <span>
-              6.7%
-            </span>
-          </div>
-          <div>
-            <span>
-              Hispanic or Latino
-            </span>
-            <span>
-              10.4%
-            </span>
-          </div>
+        <div>
+          <span>
+            White
+          </span>
+          <span>
+            61.4%
+          </span>
         </div>
-        <h4
-          class="usa-accordion__heading"
+        <div>
+          <span>
+            Black or African Americon
+          </span>
+          <span>
+            10.3%
+          </span>
+        </div>
+        <div>
+          <span>
+            American Indian and Alaska Native
+          </span>
+          <span>
+            10.3%
+          </span>
+        </div>
+        <div>
+          <span>
+            American Indian and Alaska Native
+          </span>
+          <span>
+            0.3%
+          </span>
+        </div>
+        <div>
+          <span>
+            Asian
+          </span>
+          <span>
+            7.2%
+          </span>
+        </div>
+        <div>
+          <span>
+            Native Hawiian or Pacific Islander
+          </span>
+          <span>
+            4.2%
+          </span>
+        </div>
+        <div>
+          <span>
+            Other
+          </span>
+          <span>
+            2.5%
+          </span>
+        </div>
+        <div>
+          <span>
+            Two or more races
+          </span>
+          <span>
+            6.7%
+          </span>
+        </div>
+        <div>
+          <span>
+            Hispanic or Latino
+          </span>
+          <span>
+            10.4%
+          </span>
+        </div>
+      </div>
+      <h6>
+        Age
+        <button
+          aria-controls="age-expand-content"
+          aria-expanded="false"
+          class="usa-accordion__button usa-banner__button"
+          id="age-expand-control"
+          type="button"
         >
-          <button
-            aria-controls="abc"
-            aria-expanded="false"
-            class="usa-accordion__button"
-            data-testid="accordionButton_abc"
-            type="button"
+          <span
+            class="usa-banner__button-text"
           >
-            Age
-          </button>
-        </h4>
-        <div
-          class="usa-accordion__content usa-prose"
-          data-testid="accordionItem_abc"
-          hidden=""
-          id="abc"
-        >
-          <div>
-            <span>
-              Children under 10
-            </span>
-            <span>
-              1.4%
-            </span>
-          </div>
-          <div>
-            <span>
-              Ages 10 - 64
-            </span>
-            <span>
-              80.3%
-            </span>
-          </div>
-          <div>
-            <span>
-              Elderly over 65
-            </span>
-            <span>
-              7.2%
-            </span>
-          </div>
+            show
+          </span>
+        </button>
+      </h6>
+      <div
+        aria-labelledby="age-expand-control"
+        class="usa-banner__content usa-accordion__content"
+        hidden=""
+        id="age-expand-content"
+      >
+        <div>
+          <span>
+            Children under 10
+          </span>
+          <span>
+            1.4%
+          </span>
+        </div>
+        <div>
+          <span>
+            Ages 10 - 64
+          </span>
+          <span>
+            80.3%
+          </span>
+        </div>
+        <div>
+          <span>
+            Elderly over 65
+          </span>
+          <span>
+            7.2%
+          </span>
         </div>
       </div>
     </div>
@@ -519,7 +524,12 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
     <ul>
       <li>
         <span>
-          Census tract:
+          Tract information
+        </span>
+      </li>
+      <li>
+        <span>
+          Number:
         </span>
         <span>
            98729374234
@@ -554,146 +564,146 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       <div>
         Tract demographics
       </div>
+      <h6>
+        Racial Ethnographic
+        <button
+          aria-controls="race-expand-content"
+          aria-expanded="false"
+          class="usa-accordion__button usa-banner__button"
+          id="race-expand-control"
+          type="button"
+        >
+          <span
+            class="usa-banner__button-text"
+          >
+            show
+          </span>
+        </button>
+      </h6>
       <div
-        aria-multiselectable="true"
-        class="usa-accordion"
-        data-testid="accordion"
+        aria-labelledby="race-expand-control"
+        class="usa-banner__content usa-accordion__content"
+        hidden=""
+        id="race-expand-content"
       >
-        <h4
-          class="usa-accordion__heading"
-        >
-          <button
-            aria-controls="123"
-            aria-expanded="false"
-            class="usa-accordion__button"
-            data-testid="accordionButton_123"
-            type="button"
-          >
-            Racial Ethnographic
-          </button>
-        </h4>
-        <div
-          class="usa-accordion__content usa-prose"
-          data-testid="accordionItem_123"
-          hidden=""
-          id="123"
-        >
-          <div>
-            <span>
-              White
-            </span>
-            <span>
-              61.4%
-            </span>
-          </div>
-          <div>
-            <span>
-              Black or African Americon
-            </span>
-            <span>
-              10.3%
-            </span>
-          </div>
-          <div>
-            <span>
-              American Indian and Alaska Native
-            </span>
-            <span>
-              10.3%
-            </span>
-          </div>
-          <div>
-            <span>
-              American Indian and Alaska Native
-            </span>
-            <span>
-              0.3%
-            </span>
-          </div>
-          <div>
-            <span>
-              Asian
-            </span>
-            <span>
-              7.2%
-            </span>
-          </div>
-          <div>
-            <span>
-              Native Hawiian or Pacific Islander
-            </span>
-            <span>
-              4.2%
-            </span>
-          </div>
-          <div>
-            <span>
-              Other
-            </span>
-            <span>
-              2.5%
-            </span>
-          </div>
-          <div>
-            <span>
-              Two or more races
-            </span>
-            <span>
-              6.7%
-            </span>
-          </div>
-          <div>
-            <span>
-              Hispanic or Latino
-            </span>
-            <span>
-              10.4%
-            </span>
-          </div>
+        <div>
+          <span>
+            White
+          </span>
+          <span>
+            61.4%
+          </span>
         </div>
-        <h4
-          class="usa-accordion__heading"
+        <div>
+          <span>
+            Black or African Americon
+          </span>
+          <span>
+            10.3%
+          </span>
+        </div>
+        <div>
+          <span>
+            American Indian and Alaska Native
+          </span>
+          <span>
+            10.3%
+          </span>
+        </div>
+        <div>
+          <span>
+            American Indian and Alaska Native
+          </span>
+          <span>
+            0.3%
+          </span>
+        </div>
+        <div>
+          <span>
+            Asian
+          </span>
+          <span>
+            7.2%
+          </span>
+        </div>
+        <div>
+          <span>
+            Native Hawiian or Pacific Islander
+          </span>
+          <span>
+            4.2%
+          </span>
+        </div>
+        <div>
+          <span>
+            Other
+          </span>
+          <span>
+            2.5%
+          </span>
+        </div>
+        <div>
+          <span>
+            Two or more races
+          </span>
+          <span>
+            6.7%
+          </span>
+        </div>
+        <div>
+          <span>
+            Hispanic or Latino
+          </span>
+          <span>
+            10.4%
+          </span>
+        </div>
+      </div>
+      <h6>
+        Age
+        <button
+          aria-controls="age-expand-content"
+          aria-expanded="false"
+          class="usa-accordion__button usa-banner__button"
+          id="age-expand-control"
+          type="button"
         >
-          <button
-            aria-controls="abc"
-            aria-expanded="false"
-            class="usa-accordion__button"
-            data-testid="accordionButton_abc"
-            type="button"
+          <span
+            class="usa-banner__button-text"
           >
-            Age
-          </button>
-        </h4>
-        <div
-          class="usa-accordion__content usa-prose"
-          data-testid="accordionItem_abc"
-          hidden=""
-          id="abc"
-        >
-          <div>
-            <span>
-              Children under 10
-            </span>
-            <span>
-              1.4%
-            </span>
-          </div>
-          <div>
-            <span>
-              Ages 10 - 64
-            </span>
-            <span>
-              80.3%
-            </span>
-          </div>
-          <div>
-            <span>
-              Elderly over 65
-            </span>
-            <span>
-              7.2%
-            </span>
-          </div>
+            show
+          </span>
+        </button>
+      </h6>
+      <div
+        aria-labelledby="age-expand-control"
+        class="usa-banner__content usa-accordion__content"
+        hidden=""
+        id="age-expand-content"
+      >
+        <div>
+          <span>
+            Children under 10
+          </span>
+          <span>
+            1.4%
+          </span>
+        </div>
+        <div>
+          <span>
+            Ages 10 - 64
+          </span>
+          <span>
+            80.3%
+          </span>
+        </div>
+        <div>
+          <span>
+            Elderly over 65
+          </span>
+          <span>
+            7.2%
+          </span>
         </div>
       </div>
     </div>
@@ -2402,7 +2412,12 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
     <ul>
       <li>
         <span>
-          Census tract:
+          Tract information
+        </span>
+      </li>
+      <li>
+        <span>
+          Number:
         </span>
         <span>
            98729374234
@@ -2437,146 +2452,146 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
       <div>
         Tract demographics
       </div>
+      <h6>
+        Racial Ethnographic
+        <button
+          aria-controls="race-expand-content"
+          aria-expanded="false"
+          class="usa-accordion__button usa-banner__button"
+          id="race-expand-control"
+          type="button"
+        >
+          <span
+            class="usa-banner__button-text"
+          >
+            show
+          </span>
+        </button>
+      </h6>
       <div
-        aria-multiselectable="true"
-        class="usa-accordion"
-        data-testid="accordion"
+        aria-labelledby="race-expand-control"
+        class="usa-banner__content usa-accordion__content"
+        hidden=""
+        id="race-expand-content"
       >
-        <h4
-          class="usa-accordion__heading"
-        >
-          <button
-            aria-controls="123"
-            aria-expanded="false"
-            class="usa-accordion__button"
-            data-testid="accordionButton_123"
-            type="button"
-          >
-            Racial Ethnographic
-          </button>
-        </h4>
-        <div
-          class="usa-accordion__content usa-prose"
-          data-testid="accordionItem_123"
-          hidden=""
-          id="123"
-        >
-          <div>
-            <span>
-              White
-            </span>
-            <span>
-              61.4%
-            </span>
-          </div>
-          <div>
-            <span>
-              Black or African Americon
-            </span>
-            <span>
-              10.3%
-            </span>
-          </div>
-          <div>
-            <span>
-              American Indian and Alaska Native
-            </span>
-            <span>
-              10.3%
-            </span>
-          </div>
-          <div>
-            <span>
-              American Indian and Alaska Native
-            </span>
-            <span>
-              0.3%
-            </span>
-          </div>
-          <div>
-            <span>
-              Asian
-            </span>
-            <span>
-              7.2%
-            </span>
-          </div>
-          <div>
-            <span>
-              Native Hawiian or Pacific Islander
-            </span>
-            <span>
-              4.2%
-            </span>
-          </div>
-          <div>
-            <span>
-              Other
-            </span>
-            <span>
-              2.5%
-            </span>
-          </div>
-          <div>
-            <span>
-              Two or more races
-            </span>
-            <span>
-              6.7%
-            </span>
-          </div>
-          <div>
-            <span>
-              Hispanic or Latino
-            </span>
-            <span>
-              10.4%
-            </span>
-          </div>
+        <div>
+          <span>
+            White
+          </span>
+          <span>
+            61.4%
+          </span>
         </div>
-        <h4
-          class="usa-accordion__heading"
+        <div>
+          <span>
+            Black or African Americon
+          </span>
+          <span>
+            10.3%
+          </span>
+        </div>
+        <div>
+          <span>
+            American Indian and Alaska Native
+          </span>
+          <span>
+            10.3%
+          </span>
+        </div>
+        <div>
+          <span>
+            American Indian and Alaska Native
+          </span>
+          <span>
+            0.3%
+          </span>
+        </div>
+        <div>
+          <span>
+            Asian
+          </span>
+          <span>
+            7.2%
+          </span>
+        </div>
+        <div>
+          <span>
+            Native Hawiian or Pacific Islander
+          </span>
+          <span>
+            4.2%
+          </span>
+        </div>
+        <div>
+          <span>
+            Other
+          </span>
+          <span>
+            2.5%
+          </span>
+        </div>
+        <div>
+          <span>
+            Two or more races
+          </span>
+          <span>
+            6.7%
+          </span>
+        </div>
+        <div>
+          <span>
+            Hispanic or Latino
+          </span>
+          <span>
+            10.4%
+          </span>
+        </div>
+      </div>
+      <h6>
+        Age
+        <button
+          aria-controls="age-expand-content"
+          aria-expanded="false"
+          class="usa-accordion__button usa-banner__button"
+          id="age-expand-control"
+          type="button"
         >
-          <button
-            aria-controls="abc"
-            aria-expanded="false"
-            class="usa-accordion__button"
-            data-testid="accordionButton_abc"
-            type="button"
+          <span
+            class="usa-banner__button-text"
           >
-            Age
-          </button>
-        </h4>
-        <div
-          class="usa-accordion__content usa-prose"
-          data-testid="accordionItem_abc"
-          hidden=""
-          id="abc"
-        >
-          <div>
-            <span>
-              Children under 10
-            </span>
-            <span>
-              1.4%
-            </span>
-          </div>
-          <div>
-            <span>
-              Ages 10 - 64
-            </span>
-            <span>
-              80.3%
-            </span>
-          </div>
-          <div>
-            <span>
-              Elderly over 65
-            </span>
-            <span>
-              7.2%
-            </span>
-          </div>
+            show
+          </span>
+        </button>
+      </h6>
+      <div
+        aria-labelledby="age-expand-control"
+        class="usa-banner__content usa-accordion__content"
+        hidden=""
+        id="age-expand-content"
+      >
+        <div>
+          <span>
+            Children under 10
+          </span>
+          <span>
+            1.4%
+          </span>
+        </div>
+        <div>
+          <span>
+            Ages 10 - 64
+          </span>
+          <span>
+            80.3%
+          </span>
+        </div>
+        <div>
+          <span>
+            Elderly over 65
+          </span>
+          <span>
+            7.2%
+          </span>
         </div>
       </div>
     </div>

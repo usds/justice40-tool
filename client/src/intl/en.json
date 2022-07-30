@@ -452,7 +452,7 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. This will display YES if the census tract is disadvantaged"
   },
   "explore.map.page.side.panel.geographicInfo.censusBlockGroup": {
-    "defaultMessage": "Census tract:",
+    "defaultMessage": "Number:",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the census tract id number of the feature selected"
   },
   "explore.map.page.side.panel.geographicInfo.county": {
@@ -470,6 +470,10 @@
   "explore.map.page.side.panel.geographicInfo.territory": {
     "defaultMessage": "Territory:",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the territory of the feature selected"
+  },
+  "explore.map.page.side.panel.geographicInfo.title": {
+    "defaultMessage": "Tract information",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the census tract info title"
   },
   "explore.map.page.side.panel.indicator.asthma": {
     "defaultMessage": "Asthma",

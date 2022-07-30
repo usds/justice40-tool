@@ -1,6 +1,8 @@
 declare namespace TractInfoNamespace {
     export interface ITractInfoScss {
       tractInfoContainer: string;
+      tractInfoLabel: string;
+      tractInfoText: string;
     }
   }
 

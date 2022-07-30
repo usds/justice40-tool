@@ -253,9 +253,14 @@ export const SIDE_PANEL_VERION = {
 };
 
 export const SIDE_PANEL_CBG_INFO = defineMessages({
+  CENSUS_INFO_TITLE: {
+    id: 'explore.map.page.side.panel.geographicInfo.title',
+    defaultMessage: 'Tract information',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the census tract info title`,
+  },
   CENSUS_BLOCK_GROUP: {
     id: 'explore.map.page.side.panel.geographicInfo.censusBlockGroup',
-    defaultMessage: 'Census tract:',
+    defaultMessage: 'Number:',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the census tract id number of the feature selected`,
   },
   COUNTY: {
