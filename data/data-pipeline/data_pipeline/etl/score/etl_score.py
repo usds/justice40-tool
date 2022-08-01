@@ -315,22 +315,23 @@ class ScoreETL(ExtractTransformLoad):
             ] = df[input_column_name].rank(pct=True, ascending=ascending)
 
         else:
-            # For agricultural loss, we are using whether there is value at all to determine percentile and then
-            # filling places where the value is False with np.NaN (since it doesn't apply)
-            # For linguistic isolation, we drop PR and then recalculate. We fill PR with np.NaN
+            tmp_series = df[input_column_name].where(
+                ~df[field_names.GEOID_TRACT_FIELD].isin(drop_tracts),
+                np.nan,
+            )
+            logger.info(
+                f"Creating special case column for percentiles from {input_column_name}"
+            )
             df[
                 f"{output_column_name_root}"
                 f"{field_names.PERCENTILE_FIELD_SUFFIX}"
-            ] = df.groupby(df[field_names.GEOID_TRACT_FIELD].isin(drop_tracts))[
-                input_column_name
-            ].rank(
-                ascending=ascending, pct=True
-            )
-            df.loc[
-                df[field_names.GEOID_TRACT_FIELD].isin(drop_tracts),
+            ] = tmp_series.rank(ascending=ascending, pct=True)
+
+            # Check that "drop tracts" were dropped (quicker than creating a fixture?)
+            assert df[df[field_names.GEOID_TRACT_FIELD].isin(drop_tracts)][
                 f"{output_column_name_root}"
-                f"{field_names.PERCENTILE_FIELD_SUFFIX}",
-            ] = np.NaN
+                f"{field_names.PERCENTILE_FIELD_SUFFIX}"
+            ].isna().sum() == len(drop_tracts), "Not all tracts were dropped"
 
         return df
 
