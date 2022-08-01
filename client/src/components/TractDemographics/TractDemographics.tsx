@@ -1,5 +1,10 @@
 import React, {useState} from 'react';
 
+// @ts-ignore
+import expandIcon from '/node_modules/uswds/dist/img/usa-icons/expand_more.svg';
+// @ts-ignore
+import collapseIcon from '/node_modules/uswds/dist/img/usa-icons/expand_less.svg';
+
 import * as styles from './TractDemographics.module.scss';
 
 // Mock interface
@@ -53,30 +58,39 @@ interface IJ40AccordionItem {
 const J40AccordionItem = ({id, title, children}:IJ40AccordionItem) => {
   const [isExpanded, setIsExpanded] = useState(false);
   return (
-
     <>
-      <h6 className={styles.customDemographicHeading}>
+      <h6 className={styles.demographicHeading}>
         {title}
         <button
-          id={`${id}-expand-control`}
-          type="button"
-          className="usa-accordion__button usa-banner__button"
+          className={styles.showHideText}
+          id={`${id}-header`}
+          aria-controls={`${id}-panel`}
           aria-expanded={isExpanded}
-          aria-controls={`${id}-expand-content`}
           onClick={() => setIsExpanded(!isExpanded)}
+          tabIndex={0}
         >
-          <span className="usa-banner__button-text">{isExpanded ? `hide` : 'show'}</span>
+          {isExpanded ? 'hide' : 'show'}
         </button>
+        { isExpanded ?
+        <img
+          className={styles.showHideIcon}
+          src={expandIcon}
+          alt={'expand icon'}
+          onClick={() => setIsExpanded(!isExpanded)}
+        /> :
+        <img
+          className={styles.showHideIcon}
+          src={collapseIcon}
+          alt={'collapse icon'}
+          onClick={() => setIsExpanded(!isExpanded)}
+        />}
       </h6>
 
-      <div
-        id={`${id}-expand-content`}
-        className="usa-banner__content usa-accordion__content"
-        aria-labelledby={`${id}-expand-control`}
+      <section
+        id={`${id}-panel`}
+        aria-labelledby={`${id}-header`}
         hidden={!isExpanded}
-      >
-        {children}
-      </div>
+      >{children}</section>
     </>
   );
 };
@@ -84,7 +98,9 @@ const J40AccordionItem = ({id, title, children}:IJ40AccordionItem) => {
 const TractDemographics = () => {
   return (
     <div className={styles.demographicsContainer}>
-      <div className={styles.demographicsLabel}>Tract demographics</div>
+      <div className={styles.demographicsTitle}>
+        Tract demographics
+      </div>
       <>
         <J40AccordionItem id={'race'} title={`Racial Ethnographic`}>
           {demographicItemGen(demographicsData.racial)}

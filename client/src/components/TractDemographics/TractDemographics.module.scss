@@ -4,13 +4,8 @@
 .demographicsContainer{
     padding: 1.2rem 1rem 0 1.2rem;
     
-    .demographicsLabel {
+    .demographicsTitle {
         @include sidePanelLabelStyle;
-    }
-
-    [id*='expand-content']{
-        padding: .5rem 0;
-        
     }
 
     .demographicItem {
@@ -23,8 +18,41 @@
             margin-top: 0;
         }
     }
-    .customDemographicHeading {
+
+    .demographicItem:first-child {
         @include u-margin-top(.5);
-        font-size: medium;
+    }
+    .demographicHeading {
+        @include u-margin-top(.5);
+        font-size: .875rem;
+        
+        .showHideText {
+            //remove styling of button
+            border: none;
+            background-color: white;
+    
+            //emulate a link
+            cursor:pointer;
+            color:blue;
+            text-decoration:underline;
+    
+            min-width: 45px;
+
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: 6px;
+        }
+
+        .showHideIcon{
+            vertical-align: middle;
+            height: 1rem;
+            margin-left: -8px;
+            filter: invert(8%) sepia(90%) saturate(7490%) hue-rotate(247deg) brightness(105%) contrast(143%);
+
+            &:hover{
+                cursor: pointer;
+            }
+        }
+
     }
 }

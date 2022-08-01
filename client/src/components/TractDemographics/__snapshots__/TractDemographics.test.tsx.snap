@@ -9,24 +9,22 @@ exports[`rendering of TractDemographics Component checks if component renders 1`
     <h6>
       Racial Ethnographic
       <button
-        aria-controls="race-expand-content"
+        aria-controls="race-panel"
         aria-expanded="false"
-        class="usa-accordion__button usa-banner__button"
-        id="race-expand-control"
-        type="button"
+        id="race-header"
+        tabindex="0"
       >
-        <span
-          class="usa-banner__button-text"
-        >
-          show
-        </span>
+        show
       </button>
+      <img
+        alt="collapse icon"
+        src="test-file-stub"
+      />
     </h6>
-    <div
-      aria-labelledby="race-expand-control"
-      class="usa-banner__content usa-accordion__content"
+    <section
+      aria-labelledby="race-header"
       hidden=""
-      id="race-expand-content"
+      id="race-panel"
     >
       <div>
         <span>
@@ -100,28 +98,26 @@ exports[`rendering of TractDemographics Component checks if component renders 1`
           10.4%
         </span>
       </div>
-    </div>
+    </section>
     <h6>
       Age
       <button
-        aria-controls="age-expand-content"
+        aria-controls="age-panel"
         aria-expanded="false"
-        class="usa-accordion__button usa-banner__button"
-        id="age-expand-control"
-        type="button"
+        id="age-header"
+        tabindex="0"
       >
-        <span
-          class="usa-banner__button-text"
-        >
-          show
-        </span>
+        show
       </button>
+      <img
+        alt="collapse icon"
+        src="test-file-stub"
+      />
     </h6>
-    <div
-      aria-labelledby="age-expand-control"
-      class="usa-banner__content usa-accordion__content"
+    <section
+      aria-labelledby="age-header"
       hidden=""
-      id="age-expand-content"
+      id="age-panel"
     >
       <div>
         <span>
@@ -147,7 +143,7 @@ exports[`rendering of TractDemographics Component checks if component renders 1`
           7.2%
         </span>
       </div>
-    </div>
+    </section>
   </div>
 </DocumentFragment>
 `;
