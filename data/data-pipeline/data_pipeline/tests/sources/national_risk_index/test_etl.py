@@ -1,7 +1,5 @@
 # pylint: disable=protected-access
-from unittest import mock
 import pathlib
-import requests
 from data_pipeline.etl.base import ValidGeoLevel
 
 from data_pipeline.etl.sources.national_risk_index.etl import (

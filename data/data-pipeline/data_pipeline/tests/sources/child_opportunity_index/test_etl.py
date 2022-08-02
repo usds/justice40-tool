@@ -56,3 +56,14 @@ class TestChildOpportunityIndexETL(TestETL):
         assert etl.HEALTHY_FOOD_INPUT_FIELD == "HE_FOOD"
         assert etl.IMPENETRABLE_SURFACES_INPUT_FIELD == "HE_GREEN"
         assert etl.READING_INPUT_FIELD == "ED_READING"
+
+    def test_get_output_file_path(self, mock_etl, mock_paths):
+        """Tests the right file name is returned."""
+        etl = self._ETL_CLASS()
+        data_path, tmp_path = mock_paths
+
+        output_file_path = etl._get_output_file_path()
+        expected_output_file_path = (
+            data_path / "dataset" / "child_opportunity_index" / "usa.csv"
+        )
+        assert output_file_path == expected_output_file_path
