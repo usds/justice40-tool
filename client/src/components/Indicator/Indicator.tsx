@@ -150,7 +150,7 @@ export const IndicatorValue = ({isPercent, displayStat}:IIndicatorValue) => {
 
   const i18nOrdinalSuffix: string = intl.formatMessage(
       {
-        id: 'explore.tool.page.side.panel.indicator.percentile.value.ordinal.suffix',
+        id: 'explore.map.page.side.panel.indicator.percentile.value.ordinal.suffix',
         // eslint-disable-next-line max-len
         description: `Navigate to the explore the tool page. Click on the map. The side panel will show categories. Open a category. This will define the indicator value's ordinal suffix. For example the st in 91st, the rd in 23rd, and the th in 26th, etc.`,
         defaultMessage: `
@@ -188,7 +188,7 @@ export const IndicatorValue = ({isPercent, displayStat}:IIndicatorValue) => {
  */
 const Indicator = ({indicator}:IIndicator) => {
   // Convert the decimal value to a stat to display
-  const displayStat = indicator.value !== null ? Math.round(indicator.value * 100) : null;
+  const displayStat = indicator.value !== null ? Math.floor(indicator.value * 100) : null;
 
   // If the threshold exists, set it, otherwise set it to the default value
   const threshold = indicator.threshold ? indicator.threshold : constants.DEFAULT_THRESHOLD_PERCENTILE;

@@ -6,6 +6,7 @@
 This README contains the following content:
 
 - [Installing and running the client site](#installing-and-running-the-client-site)
+- [Generating React components](#generating-react-components)
 - [Linting and Formatting](#linting-and-formatting)
 - [Testing](#testing)
 - [Localization](#localization)
@@ -92,6 +93,12 @@ DATA_SOURCE env variable in the docker-compose.yml. See [environment variables](
 ### Viewing data on the map
 
 See [VIEW_MAP_DATA.md](./VIEW_MAP_DATA.md) for more details on this.
+
+## Generating React components
+Each React component requires a barrell, test, sass file and sass types file. You can run the auto-generated component
+to ensure you are following the style guide on creating React component for J40.
+
+Please see this [README](./.generate_component/README.md) for more information
 
 ## Linting and Formatting
 

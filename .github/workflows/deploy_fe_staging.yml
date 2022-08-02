@@ -50,7 +50,7 @@ jobs:
       - name: Check for security vulnerabilities
         run: npm audit --production
       - name: Cypress / Gherkin integration tests 🌃
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         with:
           working-directory: ${{env.WORKING_DIRECTORY}}
           browser: chrome

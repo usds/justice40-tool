@@ -136,6 +136,7 @@ const J40Map = ({location}: IJ40Interface) => {
   const filter = useMemo(() => ['in', constants.GEOID_PROPERTY, selectedFeatureId], [selectedFeature]);
 
   const zoomLatLngHash = mapRef.current?.getMap()._hash._getCurrentHash();
+
   /**
    * This function will return the bounding box of the current map. Comment in when needed.
    *  {
@@ -169,28 +170,28 @@ const J40Map = ({location}: IJ40Interface) => {
 
       switch (buttonID) {
         case '48':
-          goToPlace(constants.LOWER_48_BOUNDS);
+          goToPlace(constants.LOWER_48_BOUNDS, true);
           break;
         case 'AK':
-          goToPlace(constants.ALASKA_BOUNDS);
+          goToPlace(constants.ALASKA_BOUNDS, true);
           break;
         case 'HI':
-          goToPlace(constants.HAWAII_BOUNDS);
+          goToPlace(constants.HAWAII_BOUNDS, true);
           break;
         case 'PR':
-          goToPlace(constants.PUERTO_RICO_BOUNDS);
+          goToPlace(constants.PUERTO_RICO_BOUNDS, true);
           break;
         case 'GU':
-          goToPlace(constants.GUAM_BOUNDS);
+          goToPlace(constants.GUAM_BOUNDS, true);
           break;
         case 'AS':
-          goToPlace(constants.AMERICAN_SAMOA_BOUNDS);
+          goToPlace(constants.AMERICAN_SAMOA_BOUNDS, true);
           break;
         case 'MP':
-          goToPlace(constants.MARIANA_ISLAND_BOUNDS);
+          goToPlace(constants.MARIANA_ISLAND_BOUNDS, true);
           break;
         case 'VI':
-          goToPlace(constants.US_VIRGIN_ISLANDS_BOUNDS);
+          goToPlace(constants.US_VIRGIN_ISLANDS_BOUNDS, true);
           break;
 
         default:
@@ -200,10 +201,32 @@ const J40Map = ({location}: IJ40Interface) => {
       // This else clause will fire when the ID is null or empty. This is the case where the map is clicked
       // @ts-ignore
       const feature = event.features && event.features[0];
-      console.log(feature);
+
       if (feature) {
+        // Get the current selected feature's bounding box:
         const [minLng, minLat, maxLng, maxLat] = bbox(feature);
+
+        // Set the selectedFeature ID
+        if (feature.id !== selectedFeatureId) {
+          setSelectedFeature(feature);
+        } else {
+          setSelectedFeature(undefined);
+        }
+
+        // Go to the newly selected feature
+        goToPlace([
+          [minLng, minLat],
+          [maxLng, maxLat],
+        ]);
+
+
+        /**
+         * The following logic is used for the popup for the fullscreen feature
+         */
+        // Create a new viewport using the current viewport dimnesions:
         const newViewPort = new WebMercatorViewport({height: viewport.height!, width: viewport.width!});
+
+        // Fit the viewport to the new bounds and return a long, lat and zoom:
         const {longitude, latitude, zoom} = newViewPort.fitBounds(
             [
               [minLng, minLat],
@@ -213,22 +236,21 @@ const J40Map = ({location}: IJ40Interface) => {
               padding: 40,
             },
         );
-        if (feature.id !== selectedFeatureId) {
-          setSelectedFeature(feature);
-        } else {
-          setSelectedFeature(undefined);
-        }
+
+        // Save the popupInfo
         const popupInfo = {
           longitude: longitude,
           latitude: latitude,
           zoom: zoom,
           properties: feature.properties,
         };
-        goToPlace([
-          [minLng, minLat],
-          [maxLng, maxLat],
-        ]);
+
+        // Update the DetailedView state variable with the new popupInfo object:
         setDetailViewData(popupInfo);
+
+        /**
+         * End Fullscreen feature specific logic
+         */
       }
     }
   };
@@ -242,17 +264,44 @@ const J40Map = ({location}: IJ40Interface) => {
   };
 
 
-  const goToPlace = (bounds: LngLatBoundsLike ) => {
-    const {longitude, latitude, zoom} = new WebMercatorViewport({height: viewport.height!, width: viewport.width!})
-        .fitBounds(bounds as [[number, number], [number, number]], {
-          padding: 20,
-          offset: [0, -100],
-        });
+  /**
+   * This function will move the map (with easing) to the given lat/long bounds.
+   *
+   * When a user clicks on a tracts vs a territory button, the zoom level returned by the fitBounds
+   * function differ. Given that we want to handle the zoom differently depending on these two cases, we
+   * introduce a boolean, isTerritory that will allow the zoom level to be set depending on what the user
+   * is interacting with, namely a tract vs a territory button.
+   *
+   * @param {LngLatBoundsLike} bounds
+   * @param {boolean} isTerritory
+   */
+  const goToPlace = (bounds: LngLatBoundsLike, isTerritory = false ) => {
+    const newViewPort = new WebMercatorViewport({height: viewport.height!, width: viewport.width!});
+    const {longitude, latitude, zoom} = newViewPort.fitBounds(
+      bounds as [[number, number], [number, number]], {
+        // padding: 200,  // removing padding and offset in favor of a zoom offset below
+        // offset: [0, -100],
+      });
+
+    /**
+     * When some tracts are selected, they end up too far zoomed in, causing some census tracts to
+     * only show a portion of the tract in the viewport. We reduce the zoom level by 1 to allow
+     * more space around the selected tract.
+     *
+     * Given that the high zoom tiles only go to zoom level 5, if the corrected zoom level (zoom - 1) is
+     * less than MIN_ZOOM_FEATURE_BORDER, then we floor the zoom to MIN_ZOOM_FEATURE_BORDER + .1 (which
+     * is 5.1 as of this comment)
+     */
+    // eslint-disable-next-line max-len
+    const featureSelectionZoomLevel = (zoom - 1) < constants.GLOBAL_MIN_ZOOM_FEATURE_BORDER + .1 ?
+        constants.GLOBAL_MIN_ZOOM_FEATURE_BORDER :
+        zoom - 1;
+
     setViewport({
       ...viewport,
       longitude,
       latitude,
-      zoom,
+      zoom: isTerritory ? zoom : featureSelectionZoomLevel,
       transitionDuration: 1000,
       transitionInterpolator: new FlyToInterpolator(),
       transitionEasing: d3.easeCubic,
@@ -434,7 +483,26 @@ const J40Map = ({location}: IJ40Interface) => {
             />
           </Source>
 
-          {/* Enable fullscreen behind a feature flag */}
+          {/* This will add the navigation controls of the zoom in and zoom out buttons */}
+          { windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && <NavigationControl
+            showCompass={false}
+            className={styles.navigationControl}
+          /> }
+
+          {/* This will show shortcut buttons to pan/zoom to US territories */}
+          <TerritoryFocusControl onClick={onClick}/>
+
+          {/* This places Geolocation behind a feature flag */}
+          {'gl' in flags ? <GeolocateControl
+            className={styles.geolocateControl}
+            positionOptions={{enableHighAccuracy: true}}
+            onGeolocate={onGeolocate}
+            // @ts-ignore
+            onClick={onClickGeolocate}
+          /> : ''}
+          {geolocationInProgress ? <div>Geolocation in progress...</div> : ''}
+
+          {/* Enable fullscreen pop-up behind a feature flag */}
           {('fs' in flags && detailViewData && !transitionInProgress) && (
             <Popup
               className={styles.j40Popup}
@@ -449,26 +517,6 @@ const J40Map = ({location}: IJ40Interface) => {
               <AreaDetail properties={detailViewData.properties} hash={zoomLatLngHash}/>
             </Popup>
           )}
-
-          {/* This will add the navigation controls of the zoom in and zoom out buttons */}
-          { windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && <NavigationControl
-            showCompass={false}
-            className={styles.navigationControl}
-          /> }
-
-          {/* This places Geolocation behind a feature flag */}
-          {'gl' in flags ? <GeolocateControl
-            className={styles.geolocateControl}
-            positionOptions={{enableHighAccuracy: true}}
-            onGeolocate={onGeolocate}
-            // @ts-ignore
-            onClick={onClickGeolocate}
-          /> : ''}
-          {geolocationInProgress ? <div>Geolocation in progress...</div> : ''}
-
-          {/* This will show shortcut buttons to pan/zoom to US territories */}
-          <TerritoryFocusControl onClick={onClick}/>
-
           {'fs' in flags ? <FullscreenControl className={styles.fullscreenControl}/> :'' }
 
         </ReactMapGL>

@@ -28,7 +28,8 @@
     "intl:removeNesting": "node src/intl/removeNesting.js",
     "intl:compile-en": "formatjs compile src/intl/en.json --ast --out-file compiled-lang/en.json",
     "test:intl-extraction": "node src/intl/testIntlExtraction",
-    "prepare": "cd .. && husky install client/.husky"
+    "prepare": "cd .. && husky install client/.husky",
+    "gc": "node .generate_component $1"
   },
   "devDependencies": {
     "@formatjs/cli": "^4.8.2",
@@ -75,7 +76,7 @@
   },
   "dependencies": {
     "-": "^0.0.1",
-    "@sentry/gatsby": "^6.19.1",
+    "@sentry/gatsby": "^7.7.0",
     "@trussworks/react-uswds": "^2.9.0",
     "@turf/bbox": "^6.5.0",
     "d3-ease": "^3.0.1",
