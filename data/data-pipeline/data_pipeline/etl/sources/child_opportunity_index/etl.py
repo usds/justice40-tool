@@ -38,7 +38,6 @@ class ChildOpportunityIndex(ExtractTransformLoad):
     READING_FIELD: str
 
     def __init__(self):
-        self.DATASET_CONFIG = super().yaml_config_load()
         self.SOURCE_URL = (
             "https://data.diversitydatakids.org/datastore/zip/f16fff12-b1e5-4f60-85d3-"
             "3a0ededa30a0?format=csv"

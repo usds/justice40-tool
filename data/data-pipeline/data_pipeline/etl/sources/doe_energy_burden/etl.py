@@ -19,8 +19,6 @@ class DOEEnergyBurden(ExtractTransformLoad):
     REVISED_ENERGY_BURDEN_FIELD_NAME: str
 
     def __init__(self):
-        self.DATASET_CONFIG = super().yaml_config_load()
-
         self.OUTPUT_PATH: Path = (
             self.DATA_PATH / "dataset" / "doe_energy_burden"
         )
