@@ -3,8 +3,10 @@ import copy
 import os
 import pathlib
 from typing import Type
+from unittest import mock
 import pytest
 
+import requests
 import numpy as np
 import pandas as pd
 
@@ -98,18 +100,32 @@ class TestETL:
         In order to re-implement this method, usually it will involve a
         decent amount of work to monkeypatch `requests` or another method that's
         used to retrieve data in order to force that method to retrieve the fixture
-        data.
+        data. A basic version of that patching is included here for classes that can use it.
         """
-        # When running this in child classes, make sure the child class re-implements
-        # this method.
-        if self._ETL_CLASS is not ExampleETL:
-            raise NotImplementedError(
-                "Prepare and run extract method not defined for this class."
+        with mock.patch("data_pipeline.utils.requests") as requests_mock:
+            zip_file_fixture_src = (
+                self._DATA_DIRECTORY_FOR_TEST / self._SAMPLE_DATA_ZIP_FILE_NAME
             )
+            tmp_path = mock_paths[1]
 
-        # The rest of this method applies for `ExampleETL` only.
-        etl = self._get_instance_of_etl_class()
-        etl.extract()
+            # Create mock response.
+            with open(zip_file_fixture_src, mode="rb") as file:
+                file_contents = file.read()
+            response_mock = requests.Response()
+            response_mock.status_code = 200
+            # pylint: disable=protected-access
+            response_mock._content = file_contents
+            # Return text fixture:
+            requests_mock.get = mock.MagicMock(return_value=response_mock)
+
+            # Instantiate the ETL class.
+            etl = self._ETL_CLASS()
+
+            # Monkey-patch the temporary directory to the one used in the test
+            etl.TMP_PATH = tmp_path
+
+            # Run the extract method.
+            etl.extract()
 
         return etl
 
