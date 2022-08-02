@@ -15,7 +15,7 @@ class TestDOEEnergyBurdenETL(TestETL):
 
     This uses pytest-snapshot.
     To update individual snapshots: $ poetry run pytest
-            data_pipeline/tests/sources/ndoe_energy_burden/test_etl.py::TestClassNameETL::<testname>
+            data_pipeline/tests/sources/doe_energy_burden/test_etl.py::TestClassNameETL::<testname>
             --snapshot-update
     """
 
@@ -48,3 +48,14 @@ class TestDOEEnergyBurdenETL(TestETL):
         assert etl.INPUT_GEOID_TRACT_FIELD_NAME == "FIP"
         assert etl.INPUT_ENERGY_BURDEN_FIELD_NAME == "BURDEN"
         assert etl.REVISED_ENERGY_BURDEN_FIELD_NAME == "Energy burden"
+
+    def test_get_output_file_path(self, mock_etl, mock_paths):
+        """Tests the right file name is returned."""
+        etl = self._ETL_CLASS()
+        data_path, tmp_path = mock_paths
+
+        output_file_path = etl._get_output_file_path()
+        expected_output_file_path = (
+            data_path / "dataset" / "doe_energy_burden" / "usa.csv"
+        )
+        assert output_file_path == expected_output_file_path
