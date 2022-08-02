@@ -57,7 +57,7 @@ datasets:
         df_field_name: "EXTREME_HEAT_FIELD"
         long_name: "Summer days above 90F" 
         field_type: float
-        include_in_tiles: true
+        include_in_tiles: false
         include_in_csv: true
         include_in_excel: true
         column_position: 1
@@ -66,14 +66,14 @@ datasets:
         df_field_name: "HEALTHY_FOOD_FIELD"
         field_type: float
         include_in_tiles: true
-        include_in_csv: true
+        include_in_csv: false
         include_in_excel: true
         column_position: 2
       - short_name: "he_green"
         long_name: "Percent impenetrable surface areas" 
         df_field_name: "IMPENETRABLE_SURFACES_FIELD"
         field_type: float
-        include_in_tiles: true
+        include_in_tiles: false
         include_in_csv: true
         include_in_excel: true
         column_position: 3
@@ -81,7 +81,7 @@ datasets:
         df_field_name: "READING_FIELD"
         long_name: "Third grade reading proficiency"
         field_type: float
-        include_in_tiles: true
+        include_in_tiles: false
         include_in_csv: true
         include_in_excel: true
         column_position: 4
@@ -91,7 +91,7 @@ datasets:
     description: "Census-tract-level energy budren calculations based on DOE's LEAD tool"
     input_geoid_tract_field_name: "FIP"
     load_fields:
-      - short_name: "budren"
+      - short_name: "EBP_PFS"
         df_field_name: "REVISED_ENERGY_BURDEN_FIELD_NAME"
         long_name: "Energy burden" 
         field_type: float
