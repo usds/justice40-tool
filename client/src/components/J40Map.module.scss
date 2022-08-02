@@ -3,61 +3,37 @@
 
 
 .j40Map {
+  // width < 1024
   @include at-media-max("desktop") {
-    // < 1024
     height: 55vh;
   }
 
   .mapHeaderRow{
     @include u-display("flex");
     @include u-padding-left(1.5);
+    justify-content: flex-start;
     
-    justify-content: space-between;
 
-    /* 
-      This width is set to prevent this row from 
-      overflowing. Using justify-content: space-between
-      will allow the geolocation button to be right 
-      ajusted. Without the width property constraint
-      of 98%, the space-between property forces the
-      geolocation icon out of the parent container.
-      
-      Since the geolocation control is absolutely
-      positioned, attempts were made to set the 
-      parent to be relative to avoid this, however
-      it seems that we haven't found a cleaner
-      solution (yet).
-    */
-    width: 98%;
-
-    
     .geolocateBox {
-      margin-top: 6px;
+      flex: 1 2 47%;
+      align-self: flex-end;
+      margin-bottom: 30px;
+      margin-left: 1rem;
 
       .geolocateMessage {
         visibility: visible;
         background-color: white;
         margin-bottom: 3px;
+        max-width: fit-content;
       }
       
       .geolocateMessageHide {
         visibility: hidden;
         margin-bottom: 3px;
       }
-      
-      @include at-media-max("tablet") {
-        // < 640
-        margin-top: 28px;
-      }
-      
-      @media (max-width: 365px){
-        margin-top: 46px;
 
-      }
       .geolocateIcon{
         align-self: flex-end;
-        @include u-margin-right(4);
-        
       }
     }
   }

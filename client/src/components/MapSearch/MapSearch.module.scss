@@ -1,12 +1,27 @@
 @use '../../styles/design-system.scss' as *;
 
 .mapSearchContainer {
-    /*
-      The width of the container is being limited so that 
-      as the device width decreases, the geolocation 
-      button has enough space between the Search
-      component
-    */
-    width: 71%;
+  /**
+  Various breakpoint are being used to allow a consistent ratio 
+  of screen width between the search component and the geolocation 
+  component across all device sizes.
+  */
+
+  // width < 660
+  @include at-media-max("tablet") {
+    flex: 1 1 100%;
+  }
+
+  //  660 < width < 1024
+  @include at-media-max("desktop") {
+    @include at-media("tablet"){
+      flex: 1 1 56%;
+    }
+  }
+
+  // > 1024
+  @include at-media("desktop") {
+    flex: 1 1 72%;
+  }
 }
 
