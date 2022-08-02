@@ -3,7 +3,8 @@ datasets:
   - long_name: "FEMA National Risk Index"
     short_name: "nri"
     module_name: national_risk_index
-    description: "Dataset from FEMA that identifies communities most at risk to 18 natural hazards."
+    description_short: "Dataset from FEMA that identifies communities most at risk to 18 natural hazards."
+    description_long: "Dataset from FEMA that identifies communities most at risk to 18 natural hazards."
     input_geoid_tract_field_name: "TRACTFIPS"
     load_fields:
       - short_name: "ex_loss"
