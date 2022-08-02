@@ -28,20 +28,6 @@ class TestChildOpportunityIndexETL(TestETL):
     _SAMPLE_DATA_ZIP_FILE_NAME = "coi.zip"
     _EXTRACT_TMP_FOLDER_NAME = "ChildOpportunityIndex"
     _EXTRACT_CSV_FILE_NAME = "raw.csv"
-    _FIXTURES_SHARED_TRACT_IDS = [
-        "15001021010",
-        "15001021101",
-        "15007040603",
-        "15007040700",
-        "15009030100",
-        "15009030201",
-        "15001021402",
-        "15001021800",
-        "15009030402",
-        "15009030800",
-        "15003010201",
-        "15007040604",
-    ]
 
     def setup_method(self, _method, filename=__file__):
         """Invoke `setup_method` from Parent, but using the current file name.
