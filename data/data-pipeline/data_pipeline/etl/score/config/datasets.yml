@@ -99,4 +99,18 @@ datasets:
         include_in_csv: true
         include_in_excel: true
         column_position: 1
- 
+  - long_name: "Exaple ETL"
+    short_name: "Example"
+    module_name: "example_dataset"
+    description: "An example dataset for documentation"
+    input_geoid_tract_field_name: "GEOID10_TRACT"
+    load_fields:
+      - short_name: "EXAMPLE_FIELD"
+        df_field_name: "Input Field 1"
+        long_name: "Example Field 1" 
+        field_type: float
+        include_in_tiles: true
+        include_in_csv: true
+        include_in_excel: true
+        column_position: 1
+

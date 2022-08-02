@@ -26,9 +26,6 @@ class NationalRiskIndexETL(ExtractTransformLoad):
     AGRIVALUE_LOWER_BOUND = 408000
 
     def __init__(self):
-        # load YAML config
-        self.DATASET_CONFIG = super().yaml_config_load()
-
         # define the full path for the input CSV file
         self.INPUT_CSV = self.get_tmp_path() / "NRI_Table_CensusTracts.csv"
 
