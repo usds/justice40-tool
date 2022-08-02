@@ -29,12 +29,6 @@ class DOEEnergyBurden(ExtractTransformLoad):
         self.raw_df: pd.DataFrame
         self.output_df: pd.DataFrame
 
-    def extract(self) -> None:
-        # TODO: Make these defaults so etract can be blank most of the time
-        super().extract(
-            source_url=self.SOURCE_URL, extract_path=self.get_tmp_path()
-        )
-
     def transform(self) -> None:
         logger.info("Starting transforms.")
         raw_df: pd.DataFrame = pd.read_csv(

@@ -176,14 +176,18 @@ class ExtractTransformLoad:
         to get the file from a source url, unzips it and stores it on an
         extract_path."""
 
-        # this can be accessed via super().extract()
-        if source_url and extract_path:
-            unzip_file_from_url(
-                file_url=source_url,
-                download_path=self.get_tmp_path(),
-                unzipped_file_path=extract_path,
-                verify=verify,
-            )
+        if source_url is None:
+            source_url = self.SOURCE_URL
+
+        if extract_path is None:
+            extract_path = self.get_tmp_path()
+
+        unzip_file_from_url(
+            file_url=source_url,
+            download_path=self.get_tmp_path(),
+            unzipped_file_path=extract_path,
+            verify=verify,
+        )
 
     def transform(self) -> None:
         """Transform the data extracted into a format that can be consumed by the
