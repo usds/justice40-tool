@@ -67,4 +67,4 @@ class DOEEnergyBurden(ExtractTransformLoad):
     def load(self) -> None:
         logger.info("Saving DOE Energy Burden CSV")
 
-        super().load(float_format="%.10f")
+        super().load()

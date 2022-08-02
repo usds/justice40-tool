@@ -110,6 +110,4 @@ class ChildOpportunityIndex(ExtractTransformLoad):
 
     def load(self) -> None:
         logger.info("Saving CSV")
-        ### XXX: Should we do this in the super().load too?
-        self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
-        super().load(float_format="%.10f")
+        super().load()
