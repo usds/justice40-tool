@@ -1,7 +1,5 @@
 # pylint: disable=protected-access
-from unittest import mock
 import pathlib
-import requests
 
 from data_pipeline.etl.sources.child_opportunity_index.etl import (
     ChildOpportunityIndex,
@@ -35,33 +33,6 @@ class TestChildOpportunityIndexETL(TestETL):
         This code can be copied identically between all child classes.
         """
         super().setup_method(_method=_method, filename=filename)
-
-    # XXX: Refactor since I just straight copied it out of NRI's
-    def _setup_etl_instance_and_run_extract(self, mock_etl, mock_paths):
-        with mock.patch("data_pipeline.utils.requests") as requests_mock:
-            zip_file_fixture_src = self._DATA_DIRECTORY_FOR_TEST / "coi.zip"
-            tmp_path = mock_paths[1]
-
-            # Create mock response.
-            with open(zip_file_fixture_src, mode="rb") as file:
-                file_contents = file.read()
-            response_mock = requests.Response()
-            response_mock.status_code = 200
-            # pylint: disable=protected-access
-            response_mock._content = file_contents
-            # Return text fixture:
-            requests_mock.get = mock.MagicMock(return_value=response_mock)
-
-            # Instantiate the ETL class.
-            etl = ChildOpportunityIndex()
-
-            # Monkey-patch the temporary directory to the one used in the test
-            etl.TMP_PATH = tmp_path
-
-            # Run the extract method.
-            etl.extract()
-
-        return etl
 
     def test_init(self, mock_etl, mock_paths):
         """Tests that the ChildOpportunityIndexETL class was initialized

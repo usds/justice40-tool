@@ -36,35 +36,6 @@ class TestNationalRiskIndexETL(TestETL):
         """
         super().setup_method(_method=_method, filename=filename)
 
-    def _setup_etl_instance_and_run_extract(self, mock_etl, mock_paths):
-        with mock.patch("data_pipeline.utils.requests") as requests_mock:
-            zip_file_fixture_src = (
-                self._DATA_DIRECTORY_FOR_TEST / "NRI_Table_CensusTracts.zip"
-            )
-            tmp_path = mock_paths[1]
-
-            # Create mock response.
-            with open(zip_file_fixture_src, mode="rb") as file:
-                file_contents = file.read()
-            response_mock = requests.Response()
-            response_mock.status_code = 200
-            # pylint: disable=protected-access
-            response_mock._content = file_contents
-
-            # Return text fixture:
-            requests_mock.get = mock.MagicMock(return_value=response_mock)
-
-            # Instantiate the ETL class.
-            etl = NationalRiskIndexETL()
-
-            # Monkey-patch the temporary directory to the one used in the test
-            etl.TMP_PATH = tmp_path
-
-            # Run the extract method.
-            etl.extract()
-
-        return etl
-
     def test_init(self, mock_etl, mock_paths):
         """Tests that the mock NationalRiskIndexETL class instance was
         initiliazed correctly.
