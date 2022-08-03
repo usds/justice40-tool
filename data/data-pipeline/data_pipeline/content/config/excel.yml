@@ -156,6 +156,9 @@ sheets:
       - score_name: Greater than or equal to the 90th percentile for leaky underground storage tanks and is low income?
         label: Greater than or equal to the 90th percentile for leaky underground storage tanks and is low income?
         format: bool
+      - score_name: Greater than or equal to the 90th percentile for leaky underground storage tanks and is low income?
+        label: Greater than or equal to the 90th percentile for leaky underground storage tanks and is low income?
+        format: bool
       - score_name: Wastewater discharge (percentile)
         label: Wastewater discharge (percentile)
         format: percentage

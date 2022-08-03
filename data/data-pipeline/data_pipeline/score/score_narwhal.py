@@ -479,6 +479,7 @@ class ScoreNarwhal(Score):
             & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
 
+<<<<<<< HEAD
         self._increment_total_eligibility_exceeded(
             eligibility_columns,
             skip_fips=constants.DROP_FIPS_FROM_NON_WTD_THRESHOLDS,
@@ -489,6 +490,29 @@ class ScoreNarwhal(Score):
         ].any(axis=1)
 
         return self.df[field_names.WATER_THRESHOLD_EXCEEDED]
+=======
+        self.df[field_names.WATER_THRESHOLD_EXCEEDED] = self.df[
+            [
+                field_names.WASTEWATER_PCTILE_THRESHOLD,
+                field_names.UST_PCTILE_THRESHOLD,
+            ]
+        ].max(axis=1)
+
+        self._increment_total_eligibility_exceeded(
+            [
+                field_names.WASTEWATER_DISCHARGE_LOW_INCOME_FIELD,
+                field_names.UST_LOW_INCOME_FIELD,
+            ],
+            skip_fips=constants.DROP_FIPS_FROM_NON_WTD_THRESHOLDS,
+        )
+
+        return self.df[
+            [
+                field_names.WASTEWATER_DISCHARGE_LOW_INCOME_FIELD,
+                field_names.UST_LOW_INCOME_FIELD,
+            ]
+        ].any(axis=1)
+>>>>>>> 4ad2b7ee (adds UST indicator (#1786))
 
     def _health_factor(self) -> bool:
         # In Xth percentile or above for diabetes (Source: CDC Places)

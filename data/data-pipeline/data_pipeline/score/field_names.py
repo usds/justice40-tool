@@ -439,6 +439,10 @@ HAZARDOUS_WASTE_LOW_INCOME_FIELD = (
 # Critical Clean Water and Waste Infrastructure
 WASTEWATER_DISCHARGE_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for wastewater discharge and is low income?"
 UST_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for leaky underground storage tanks and is low income?"
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4ad2b7ee (adds UST indicator (#1786))
 
 # Health Burdens
 DIABETES_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for diabetes and is low income?"

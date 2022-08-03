@@ -394,6 +394,7 @@ class ScoreETL(ExtractTransformLoad):
             field_names.NPL_FIELD,
             field_names.WASTEWATER_FIELD,
             field_names.LEAD_PAINT_FIELD,
+            field_names.UST_FIELD,
             field_names.UNDER_5_FIELD,
             field_names.OVER_64_FIELD,
             field_names.LINGUISTIC_ISO_FIELD,
