@@ -20,7 +20,7 @@ class HudHousingETL(ExtractTransformLoad):
             "HOUSING_BURDEN_DENOMINATOR"
         )
         self.NO_KITCHEN_OR_INDOOR_PLUMBING_FIELD_NAME = (
-            "No kitchen or indoor plumbing (percent)"
+            "Share of homes with no kitchen or indoor plumbing (percent)"
         )
 
         # Note: some variable definitions.
@@ -246,6 +246,7 @@ class HudHousingETL(ExtractTransformLoad):
                 self.HOUSING_BURDEN_NUMERATOR_FIELD_NAME,
                 self.HOUSING_BURDEN_DENOMINATOR_FIELD_NAME,
                 self.HOUSING_BURDEN_FIELD_NAME,
+                self.NO_KITCHEN_OR_INDOOR_PLUMBING_FIELD_NAME,
                 "DENOM INCL NOT COMPUTED",
             ]
         ].to_csv(path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False)
