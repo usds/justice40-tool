@@ -393,7 +393,6 @@ class ScoreETL(ExtractTransformLoad):
             field_names.NPL_FIELD,
             field_names.WASTEWATER_FIELD,
             field_names.LEAD_PAINT_FIELD,
-            field_names.UST_FIELD,
             field_names.UNDER_5_FIELD,
             field_names.OVER_64_FIELD,
             field_names.LINGUISTIC_ISO_FIELD,
@@ -469,7 +468,13 @@ class ScoreETL(ExtractTransformLoad):
 
         df_copy = df[columns_to_keep].copy()
 
-        df_copy[numeric_columns] = df_copy[numeric_columns].apply(pd.to_numeric)
+        assert len(numeric_columns) == len(
+            set(numeric_columns)
+        ), "You have a double-entered column in the numeric columns list"
+
+        df_copy[numeric_columns] = df_copy[numeric_columns].apply(
+            pd.to_numeric
+        )
 
         # Convert all columns to numeric and do math
         # Note that we have a few special conditions here, that we handle explicitly.
