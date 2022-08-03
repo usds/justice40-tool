@@ -264,6 +264,7 @@ class ScoreETL(ExtractTransformLoad):
         df: pd.DataFrame,
         input_column_name: str,
         output_column_name_root: str,
+        drop_tracts: list = None,
         ascending: bool = True,
     ) -> pd.DataFrame:
         """Creates percentiles.
@@ -278,10 +279,15 @@ class ScoreETL(ExtractTransformLoad):
         something like "3rd grade reading proficiency" and `output_column_name_root`
         may be something like "Low 3rd grade reading proficiency".
         """
-        if (
-            output_column_name_root
-            != field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD
-        ):
+
+        # We have two potential options for assessing how to calculate percentiles.
+        # For the vast majority of columns, we will simply calculate percentiles overall.
+        # However, for Linguistic Isolation and Agricultural  Value Loss, there exist conditions
+        # for which we drop out tracts from consideration in the percentile. More details on those
+        # are below, for them, we provide a list of tracts to not include.
+        # Because of the fancy transformations below, I have removed the urban / rural percentiles,
+        # which are now deprecated.
+        if not drop_tracts:
             # Create the "basic" percentile.
             df[
                 f"{output_column_name_root}"
@@ -289,21 +295,23 @@ class ScoreETL(ExtractTransformLoad):
             ] = df[input_column_name].rank(pct=True, ascending=ascending)
 
         else:
-            # For agricultural loss, we are using whether there is value at all to determine percentile and then
-            # filling places where the value is False with 0
+            tmp_series = df[input_column_name].where(
+                ~df[field_names.GEOID_TRACT_FIELD].isin(drop_tracts),
+                np.nan,
+            )
+            logger.info(
+                f"Creating special case column for percentiles from {input_column_name}"
+            )
             df[
                 f"{output_column_name_root}"
                 f"{field_names.PERCENTILE_FIELD_SUFFIX}"
-            ] = (
-                df.where(
-                    df[field_names.AGRICULTURAL_VALUE_BOOL_FIELD].astype(float)
-                    == 1.0
-                )[input_column_name]
-                .rank(ascending=ascending, pct=True)
-                .fillna(
-                    df[field_names.AGRICULTURAL_VALUE_BOOL_FIELD].astype(float)
-                )
-            )
+            ] = tmp_series.rank(ascending=ascending, pct=True)
+
+            # Check that "drop tracts" were dropped (quicker than creating a fixture?)
+            assert df[df[field_names.GEOID_TRACT_FIELD].isin(drop_tracts)][
+                f"{output_column_name_root}"
+                f"{field_names.PERCENTILE_FIELD_SUFFIX}"
+            ].isna().sum() == len(drop_tracts), "Not all tracts were dropped"
 
         return df
 
@@ -385,6 +393,7 @@ class ScoreETL(ExtractTransformLoad):
             field_names.NPL_FIELD,
             field_names.WASTEWATER_FIELD,
             field_names.LEAD_PAINT_FIELD,
+            field_names.UST_FIELD,
             field_names.UNDER_5_FIELD,
             field_names.OVER_64_FIELD,
             field_names.LINGUISTIC_ISO_FIELD,
@@ -463,13 +472,47 @@ class ScoreETL(ExtractTransformLoad):
         df_copy[numeric_columns] = df_copy[numeric_columns].apply(pd.to_numeric)
 
         # Convert all columns to numeric and do math
+        # Note that we have a few special conditions here, that we handle explicitly.
+        #     For *Linguistic Isolation*, we do NOT want to include Puerto Rico in the percentile
+        #     calculation. This is because linguistic isolation as a category doesn't make much sense
+        #     in Puerto Rico, where Spanish is a recognized language. Thus, we construct a list
+        #     of tracts to drop from the percentile calculation.
+        #
+        #     For *Expected Agricultural Loss*, we only want to include in the percentile tracts
+        #     in which there is some agricultural value. This helps us adjust the data such that we have
+        #     the ability to discern which tracts truly are at the 90th percentile, since many tracts have 0 value.
+
         for numeric_column in numeric_columns:
+            drop_tracts = []
+            if (
+                numeric_column
+                == field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD
+            ):
+                drop_tracts = df_copy[
+                    ~df_copy[field_names.AGRICULTURAL_VALUE_BOOL_FIELD]
+                    .astype(bool)
+                    .fillna(False)
+                ][field_names.GEOID_TRACT_FIELD].to_list()
+                logger.info(
+                    f"Dropping {len(drop_tracts)} tracts from Agricultural Value Loss"
+                )
+
+            elif numeric_column == field_names.LINGUISTIC_ISO_FIELD:
+                drop_tracts = df_copy[
+                    # 72 is the FIPS code for Puerto Rico
+                    df_copy[field_names.GEOID_TRACT_FIELD].str.startswith("72")
+                ][field_names.GEOID_TRACT_FIELD].to_list()
+                logger.info(
+                    f"Dropping {len(drop_tracts)} tracts from Linguistic Isolation"
+                )
+
             df_copy = self._add_percentiles_to_df(
                 df=df_copy,
                 input_column_name=numeric_column,
                 # For this use case, the input name and output name root are the same.
                 output_column_name_root=numeric_column,
                 ascending=True,
+                drop_tracts=drop_tracts,
             )
 
         # Create reversed percentiles for these fields

@@ -448,8 +448,7 @@ class ScoreNarwhal(Score):
             ]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
-
-        self.df[field_names.LEAKY_UST_PCTILE_THRESHOLD] = (
+        self.df[field_names.UST_PCTILE_THRESHOLD] = (
             self.df[field_names.UST_FIELD + field_names.PERCENTILE_FIELD_SUFFIX]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
@@ -459,22 +458,32 @@ class ScoreNarwhal(Score):
             & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
 
-        self.df[field_names.LEAKY_UST_LOW_INCOME_FIELD] = (
-            self.df[field_names.LEAKY_UST_PCTILE_THRESHOLD]
+        self.df[field_names.UST_LOW_INCOME_FIELD] = (
+            self.df[field_names.UST_PCTILE_THRESHOLD]
             & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
 
-        # Straight copy here in case we add additional water fields.
         self.df[field_names.WATER_THRESHOLD_EXCEEDED] = self.df[
-            eligibility_columns
-        ].any(axis="columns")
+            [
+                field_names.WASTEWATER_PCTILE_THRESHOLD,
+                field_names.UST_PCTILE_THRESHOLD,
+            ]
+        ].max(axis=1)
 
         self._increment_total_eligibility_exceeded(
-            eligibility_columns,
+            [
+                field_names.WASTEWATER_DISCHARGE_LOW_INCOME_FIELD,
+                field_names.UST_LOW_INCOME_FIELD,
+            ],
             skip_fips=constants.DROP_FIPS_FROM_NON_WTD_THRESHOLDS,
         )
 
-        return self.df[field_names.WATER_THRESHOLD_EXCEEDED]
+        return self.df[
+            [
+                field_names.WASTEWATER_DISCHARGE_LOW_INCOME_FIELD,
+                field_names.UST_LOW_INCOME_FIELD,
+            ]
+        ].any(axis=1)
 
     def _health_factor(self) -> bool:
         # In Xth percentile or above for diabetes (Source: CDC Places)

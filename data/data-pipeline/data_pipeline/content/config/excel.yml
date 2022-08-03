@@ -153,11 +153,20 @@ sheets:
       - score_name: Greater than or equal to the 90th percentile for wastewater discharge, is low income, and has a low percent of higher ed students?
         label: Greater than or equal to the 90th percentile for wastewater discharge, is low income, and has a low percent of higher ed students?
         format: bool
+      - score_name: Greater than or equal to the 90th percentile for leaky underground storage tanks and is low income?
+        label: Greater than or equal to the 90th percentile for leaky underground storage tanks and is low income?
+        format: bool
       - score_name: Wastewater discharge (percentile)
         label: Wastewater discharge (percentile)
         format: percentage
+      - score_name: Leaky underground storage tanks (percentile)
+        label: Leaky underground storage tanks (percentile)
+        format: percentage
       - score_name: Wastewater discharge
         label: Wastewater discharge
+        format: float
+      - score_name: Leaky underground storage tanks
+        label: Leaky underground storage tanks
         format: float
       - score_name: Greater than or equal to the 90th percentile for asthma, is low income, and has a low percent of higher ed students?
         label: Greater than or equal to the 90th percentile for asthma, is low income, and has a low percent of higher ed students?
