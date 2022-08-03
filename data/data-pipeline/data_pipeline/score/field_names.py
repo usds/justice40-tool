@@ -176,6 +176,10 @@ LOW_INCOME_THRESHOLD = "Exceeds FPL200 threshold"
 
 # Housing
 HOUSING_BURDEN_FIELD = "Housing burden (percent)"
+NO_KITCHEN_OR_INDOOR_PLUMBING_FIELD = (
+    "Share of homes with no kitchen or indoor plumbing (percent)"
+)
+
 HT_INDEX_FIELD = (
     "Housing + Transportation Costs % Income for the Regional Typical Household"
 )
@@ -419,6 +423,10 @@ LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD = (
     f"percentile and is low income?"
 )
 HOUSING_BURDEN_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for housing burden and is low income?"
+NO_KITCHEN_OR_INDOOR_PLUMBING_LOW_INCOME_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for "
+    + "share of homes with no kitchen or indoor plumbing and is low income?"
+)
 
 # Remediation and Reduction of Legacy Pollution
 RMP_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for proximity to RMP sites and is low income?"
@@ -624,6 +632,11 @@ LEAD_PAINT_PROXY_PCTILE_THRESHOLD = (
 HOUSING_BURDEN_PCTILE_THRESHOLD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for housing burden"
 )
+NO_KITCHEN_OR_INDOOR_PLUMBING_PCTILE_THRESHOLD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for share "
+    "of homes without indoor plumbing or a kitchen"
+)
+
 RMP_PCTILE_THRESHOLD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for RMP proximity"
 )
