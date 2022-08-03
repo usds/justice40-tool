@@ -101,6 +101,23 @@ datasets:
         include_in_csv: true
         include_in_excel: true
         column_position: 1
+  - long_name: "U.S. Small-area Life Expectancy Estimates Project (USALEEP)"
+    short_name: "USALEEP"
+    module_name: "cdc_life_expectancy"
+    description_short: "Average number of years of life a person who has attained a given age can expect to live. "
+    description_long: "Average number of years of life a person who has attained a given age can expect to live. "
+    input_geoid_tract_field_name: "Tract ID"
+    load_fields:
+      - short_name: "CDC_USALEEP_LE"
+        df_field_name: "Life expectancy (years)"
+        long_name: "Life expectancy (years)"
+        create_reverse_percentile: true
+        field_type: float
+        include_in_tiles: False
+        include_in_csv: true
+        include_in_excel: true
+        column_position: 60
+
   - long_name: "Exaple ETL"
     short_name: "Example"
     module_name: "example_dataset"
