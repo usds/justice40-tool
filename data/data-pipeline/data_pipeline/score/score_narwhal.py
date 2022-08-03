@@ -315,9 +315,10 @@ class ScoreNarwhal(Score):
             field_names.LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD,
             field_names.HOUSING_BURDEN_LOW_INCOME_FIELD,
             field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD,
+            field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_LOW_INCOME_FIELD,
         ]
 
-        # # design question -- should read in scalar with threshold here instead?
+        # Historic disinvestment
         self.df[
             field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD
         ] = (
@@ -325,6 +326,18 @@ class ScoreNarwhal(Score):
             & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
 
+        # Kitchen / plumbing
+        self.df[field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_PCTILE_THRESHOLD] = (
+            self.df[field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_FIELD]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        )
+
+        self.df[field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_LOW_INCOME_FIELD] = (
+            self.df[field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_PCTILE_THRESHOLD]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
+        )
+
+        # Lead paint
         self.df[field_names.LEAD_PAINT_PROXY_PCTILE_THRESHOLD] = (
             self.df[
                 field_names.LEAD_PAINT_FIELD
@@ -339,6 +352,12 @@ class ScoreNarwhal(Score):
             <= self.MEDIAN_HOUSE_VALUE_THRESHOLD
         )
 
+        self.df[field_names.LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD] = (
+            self.df[field_names.LEAD_PAINT_PROXY_PCTILE_THRESHOLD]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
+        )
+
+        # Housing burden
         self.df[field_names.HOUSING_BURDEN_PCTILE_THRESHOLD] = (
             self.df[
                 field_names.HOUSING_BURDEN_FIELD
@@ -346,29 +365,22 @@ class ScoreNarwhal(Score):
             ]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
-
-        self.df[field_names.HOUSING_THREHSOLD_EXCEEDED] = (
-            self.df[field_names.LEAD_PAINT_PROXY_PCTILE_THRESHOLD]
-            | self.df[field_names.HOUSING_BURDEN_PCTILE_THRESHOLD]
-        )
-
-        # series by series indicators
-        self.df[field_names.LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD] = (
-            self.df[field_names.LEAD_PAINT_PROXY_PCTILE_THRESHOLD]
-            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
-        )
-
         self.df[field_names.HOUSING_BURDEN_LOW_INCOME_FIELD] = (
             self.df[field_names.HOUSING_BURDEN_PCTILE_THRESHOLD]
             & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
+
+        # any of the burdens
+        self.df[field_names.HOUSING_THREHSOLD_EXCEEDED] = self.df[
+            housing_eligibility_columns
+        ].any(axis="columns")
 
         self._increment_total_eligibility_exceeded(
             housing_eligibility_columns,
             skip_fips=constants.DROP_FIPS_FROM_NON_WTD_THRESHOLDS,
         )
 
-        return self.df[housing_eligibility_columns].any(axis="columns")
+        return self.df[field_names.HOUSING_THREHSOLD_EXCEEDED]
 
     def _pollution_factor(self) -> bool:
         # Proximity to Risk Management Plan sites is > X
