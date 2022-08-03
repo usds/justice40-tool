@@ -319,11 +319,17 @@ class ScoreNarwhal(Score):
             field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_LOW_INCOME_FIELD,
 =======
             # Until we get confirmation -- NOT included
+<<<<<<< HEAD
             # field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD,
 >>>>>>> d85f86a1 (updating ejscreen data, try two (#1747))
         ]
 
         # Historic disinvestment
+=======
+            field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD,
+        ]
+
+>>>>>>> c59cc77f (Changing LHE in tiles to a boolean (#1767))
         self.df[
             field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD
         ] = (
@@ -480,6 +486,7 @@ class ScoreNarwhal(Score):
         )
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         self._increment_total_eligibility_exceeded(
             eligibility_columns,
             skip_fips=constants.DROP_FIPS_FROM_NON_WTD_THRESHOLDS,
@@ -498,21 +505,19 @@ class ScoreNarwhal(Score):
             ]
         ].max(axis=1)
 
+=======
+>>>>>>> c59cc77f (Changing LHE in tiles to a boolean (#1767))
         self._increment_total_eligibility_exceeded(
-            [
-                field_names.WASTEWATER_DISCHARGE_LOW_INCOME_FIELD,
-                field_names.UST_LOW_INCOME_FIELD,
-            ],
+            eligibility_columns,
             skip_fips=constants.DROP_FIPS_FROM_NON_WTD_THRESHOLDS,
         )
 
-        return self.df[
-            [
-                field_names.WASTEWATER_DISCHARGE_LOW_INCOME_FIELD,
-                field_names.UST_LOW_INCOME_FIELD,
-            ]
+        self.df[field_names.WATER_THRESHOLD_EXCEEDED] = self.df[
+            eligibility_columns
         ].any(axis=1)
 >>>>>>> 4ad2b7ee (adds UST indicator (#1786))
+
+        return self.df[field_names.WATER_THRESHOLD_EXCEEDED]
 
     def _health_factor(self) -> bool:
         # In Xth percentile or above for diabetes (Source: CDC Places)
