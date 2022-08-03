@@ -315,6 +315,7 @@ class ScoreNarwhal(Score):
             field_names.LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD,
             field_names.HOUSING_BURDEN_LOW_INCOME_FIELD,
 <<<<<<< HEAD
+<<<<<<< HEAD
             field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD,
             field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_LOW_INCOME_FIELD,
 =======
@@ -326,10 +327,17 @@ class ScoreNarwhal(Score):
 
         # Historic disinvestment
 =======
+=======
+>>>>>>> db01e943 (added indoor plumbing to score housing burden)
             field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD,
+            field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_LOW_INCOME_FIELD,
         ]
 
+<<<<<<< HEAD
 >>>>>>> c59cc77f (Changing LHE in tiles to a boolean (#1767))
+=======
+        # Historic disinvestment
+>>>>>>> db01e943 (added indoor plumbing to score housing burden)
         self.df[
             field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD
         ] = (
