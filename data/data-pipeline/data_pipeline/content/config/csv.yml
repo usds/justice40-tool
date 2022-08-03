@@ -257,3 +257,12 @@ fields:
   - score_name: Percent of population not currently enrolled in college or graduate school
     label: Percent of residents who are not currently enrolled in higher ed
     format: percentage
+  - score_name: Greater than or equal to the 90th percentile for leaky underground storage tanks and is low income?
+    label: Greater than or equal to the 90th percentile for leaky underground storage tanks and is low income?
+    format: bool
+  - score_name: Leaky underground storage tanks (percentile)
+    label: Leaky underground storage tanks (percentile)
+    format: percentage
+  - score_name: Leaky underground storage tanks
+    label: Leaky underground storage tanks
+    format: float
