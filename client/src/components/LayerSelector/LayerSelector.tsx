@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, Dispatch} from 'react';
 import {useIntl} from 'gatsby-plugin-intl';
 import {Button, ButtonGroup} from '@trussworks/react-uswds';
 import {useWindowSize} from 'react-use';
@@ -7,9 +7,13 @@ import {useWindowSize} from 'react-use';
 import * as styles from './LayerSelector.module.scss';
 import * as EXPLORE_COPY from '../../data/copy/explore';
 
-const LayerSelector = () => {
+interface ILayerSelector {
+  censusSelected: boolean,
+  setCensusSelected: Dispatch<boolean>,
+}
+
+const LayerSelector = ({censusSelected, setCensusSelected}:ILayerSelector) => {
   const intl = useIntl();
-  const [censusSelected, setCensusSelected] = useState(true);
 
   /**
      * At compile-time, the width/height returned by useWindowSize will be X. When the client requests the
@@ -45,6 +49,7 @@ const LayerSelector = () => {
 
   return (
     <div className={styles.layerSelectorContainer}>
+      {/* // Todo: set i18n here */}
       <label htmlFor="layer-group">Select layer</label>
       <ButtonGroup id="layer-group" type="segmented">
         <Button id="census" type="button" outline={!censusSelected} onClick={(e) => buttonClickHandler(e)}>

@@ -25,6 +25,9 @@ export type J40Properties = { [key: string]: any };
 
 // ****** SIDE PANEL BACKEND SIGNALS ***********
 
+// Tribal signals
+export const TRIBAL_ID = 'tribalId';
+
 // Set the threshold percentile used by most indicators in the side panel
 export const DEFAULT_THRESHOLD_PERCENTILE = 90;
 
@@ -187,15 +190,18 @@ export const ISLAND_AREA_LOW_HS_EDU = 'IALHE';
 export const BASE_MAP_SOURCE_NAME = 'base-map-source-name';
 export const HIGH_ZOOM_SOURCE_NAME = 'high-zoom-source-name';
 export const LOW_ZOOM_SOURCE_NAME = 'low-zoom-source-name';
+export const TRIBAL_SOURCE_NAME = 'tribal-source-name';
 
 // Layer ID constants
 export const SCORE_SOURCE_LAYER = 'blocks'; // The name of the layer within the tiles that contains the score
+export const TRIBAL_SOURCE_LAYER = 'blocks';
 export const BASE_MAP_LAYER_ID = 'base-map-layer-id';
 export const HIGH_ZOOM_LAYER_ID = 'high-zoom-layer-id';
 export const PRIORITIZED_HIGH_ZOOM_LAYER_ID = 'prioritized-high-zoom-layer-id';
 export const LOW_ZOOM_LAYER_ID = 'low-zoom-layer-id';
 export const FEATURE_BORDER_LAYER_ID = 'feature-border-layer-id';
 export const SELECTED_FEATURE_BORDER_LAYER_ID = 'selected-feature-border-layer-id';
+export const TRIBAL_LAYER_ID = 'tribal-layer-id';
 
 // Used in layer filters:
 export const SCORE_PROPERTY_LOW = 'M_SCORE';
@@ -213,17 +219,25 @@ export const GLOBAL_MAX_ZOOM_HIGH = 11;
 
 export const GLOBAL_MIN_ZOOM_FEATURE_BORDER = 5;
 export const GLOBAL_MAX_ZOOM_FEATURE_BORDER = 22;
+export const TRIBAL_MIN_ZOOM = 3;
+export const TRIBAL_MAX_ZOOM = 22;
 
 // Opacity
 export const FEATURE_BORDER_OPACITY = 0.5;
 export const HIGH_ZOOM_PRIORITIZED_FEATURE_FILL_OPACITY = 0.3;
 export const LOW_ZOOM_PRIORITIZED_FEATURE_FILL_OPACITY = 0.6;
 export const NON_PRIORITIZED_FEATURE_FILL_OPACITY = 0;
+export const TRIBAL_FEATURE_FILL_OPACITY = 0.3;
 
 // Colors
 export const FEATURE_BORDER_COLOR = '#4EA5CF';
 export const SELECTED_FEATURE_BORDER_COLOR = '#1A4480';
 export const PRIORITIZED_FEATURE_FILL_COLOR = '#768FB3';
+
+export const TRIBAL_BORDER_COLOR = '#0000FF';
+export const SELECTED_TRIBAL_BORDER_COLOR = '#FF0000';
+export const TRIBAL_FILL_COLOR = '#00FF00';
+
 
 // Widths
 export const FEATURE_BORDER_WIDTH = 0.8;

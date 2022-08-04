@@ -4,13 +4,21 @@ import {LocalizedComponent} from '../../test/testHelpers';
 import LayerSelector from './LayerSelector';
 
 describe('rendering of the LayerSelector', () => {
-  const {asFragment} = render(
-      <LocalizedComponent>
-        <LayerSelector />
-      </LocalizedComponent>,
-  );
+  it('checks if component renders census tracts selected', () => {
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <LayerSelector censusSelected={true} setCensusSelected={() => {}}/>
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
 
-  it('checks if component renders', () => {
+  it('checks if component renders tribal selected', () => {
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <LayerSelector censusSelected={false} setCensusSelected={() => {}}/>
+        </LocalizedComponent>,
+    );
     expect(asFragment()).toMatchSnapshot();
   });
 });
