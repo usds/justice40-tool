@@ -1,6 +1,7 @@
 import {Style} from 'maplibre-gl';
 import * as constants from '../data/constants';
-import {featureURLForTilesetName} from '../components/J40Map';
+import {featureURLForTilesetName} from '../components/MapTractLayers/MapTractLayers';
+import {tribalURL} from '../components/MapTribalLayer/MapTribalLayer';
 
 // *********** BASE MAP SOURCES  ***************
 const imageSuffix = constants.isMobile ? '' : '@2x';
@@ -25,12 +26,78 @@ const cartoLightBaseLayer = {
 
 // Utility function to get OpenSource base maps that are in accordance to JSON spec of MapBox
 // https://docs.mapbox.com/mapbox-gl-js/style-spec/
-export const getOSBaseMap = () : Style => {
-  return {
+export const getOSBaseMap = (censusSelected: boolean) : Style => {
+  return !censusSelected ? {
+
+    /**
+     * Tribal Source
+     */
     'version': 8,
 
     /**
      * Map Sources
+     * */
+    'sources': {
+
+      /**
+       * The base map source source allows us to define where the tiles can be fetched from.
+       */
+      [constants.BASE_MAP_SOURCE_NAME]: {
+        'type': 'raster',
+        'tiles': cartoLightBaseLayer.noLabels,
+        'minzoom': constants.GLOBAL_MIN_ZOOM,
+        'maxzoom': constants.GLOBAL_MAX_ZOOM,
+      },
+
+      /**
+       * Tribal source
+       */
+      [constants.TRIBAL_SOURCE_NAME]: {
+        'type': 'vector',
+        'promoteId': constants.TRIBAL_ID,
+        'tiles': [tribalURL()],
+        'minzoom': constants.TRIBAL_MIN_ZOOM,
+        'maxzoom': constants.TRIBAL_MAX_ZOOM,
+      },
+    },
+
+
+    /**
+     * Tribal Layers
+     */
+    'layers': [
+
+      // The baseMapLayer
+      {
+        'id': constants.BASE_MAP_LAYER_ID,
+        'source': constants.BASE_MAP_SOURCE_NAME,
+        'type': 'raster',
+        'minzoom': constants.GLOBAL_MIN_ZOOM,
+        'maxzoom': constants.GLOBAL_MAX_ZOOM,
+      },
+
+      /**
+      * Tribal layer
+      */
+      {
+        'id': constants.TRIBAL_LAYER_ID,
+        'source': constants.TRIBAL_SOURCE_NAME,
+        'source-layer': constants.TRIBAL_SOURCE_LAYER,
+        'type': 'fill',
+        'paint': {
+          'fill-color': constants.TRIBAL_FILL_COLOR,
+          'fill-opacity': constants.TRIBAL_FEATURE_FILL_OPACITY,
+        },
+        'minzoom': constants.TRIBAL_MIN_ZOOM,
+        'maxzoom': constants.TRIBAL_MAX_ZOOM,
+      },
+    ],
+  } :
+  {
+    'version': 8,
+
+    /**
+     * Census Tract Source
      * */
     'sources': {
 
