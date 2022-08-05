@@ -18,6 +18,13 @@ class NationalRiskIndexETL(ExtractTransformLoad):
     SOURCE_URL = "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload//NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
 
+    # Output score variables (values set on datasets.yml) for linting purposes
+    RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME: str
+    EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME: str
+    EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME: str
+    EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME: str
+    CONTAINS_AGRIVALUE: str
+
     ## TEMPORARILY HERE
     ## To get this value up in time for launch, we've hard coded it. We would like
     ## to, in the future, have this pull the 10th percentile (or nth percentile)
@@ -34,13 +41,6 @@ class NationalRiskIndexETL(ExtractTransformLoad):
 
         # this is the main dataframe
         self.df: pd.DataFrame
-
-        # Output score variables (values set on datasets.yml)
-        self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME: str
-        self.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME: str
-        self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME: str
-        self.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME: str
-        self.CONTAINS_AGRIVALUE: str
 
         # Start dataset-specific vars here
         self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_INPUT_FIELD_NAME = (
