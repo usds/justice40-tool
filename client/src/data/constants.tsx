@@ -27,6 +27,7 @@ export type J40Properties = { [key: string]: any };
 
 // Tribal signals
 export const TRIBAL_ID = 'tribalId';
+export const LAND_AREA_NAME = 'landAreaName';
 
 // Set the threshold percentile used by most indicators in the side panel
 export const DEFAULT_THRESHOLD_PERCENTILE = 90;
@@ -202,6 +203,7 @@ export const LOW_ZOOM_LAYER_ID = 'low-zoom-layer-id';
 export const FEATURE_BORDER_LAYER_ID = 'feature-border-layer-id';
 export const SELECTED_FEATURE_BORDER_LAYER_ID = 'selected-feature-border-layer-id';
 export const TRIBAL_LAYER_ID = 'tribal-layer-id';
+export const SELECTED_TRIBAL_FEATURE_BORDER_LAYER_ID = 'selected-feature-tribal-border-layer-id';
 
 // Used in layer filters:
 export const SCORE_PROPERTY_LOW = 'M_SCORE';
@@ -231,9 +233,9 @@ export const FEATURE_BORDER_COLOR = '#4EA5CF';
 export const SELECTED_FEATURE_BORDER_COLOR = '#1A4480';
 export const PRIORITIZED_FEATURE_FILL_COLOR = '#768FB3';
 
-export const TRIBAL_BORDER_COLOR = '#0000FF';
-export const SELECTED_TRIBAL_BORDER_COLOR = '#FF0000';
-export const TRIBAL_FILL_COLOR = '#00FF00';
+export const TRIBAL_BORDER_COLOR = '##4EA5CF';
+export const SELECTED_TRIBAL_BORDER_COLOR = '#1A4480';
+export const TRIBAL_FILL_COLOR = '#768FB3';
 
 
 // Widths

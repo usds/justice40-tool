@@ -85,6 +85,10 @@ const J40Map = ({location}: IJ40Interface) => {
   const [geolocationInProgress, setGeolocationInProgress] = useState<boolean>(false);
   const [isMobileMapState, setIsMobileMapState] = useState<boolean>(false);
   const [censusSelected, setCensusSelected] = useState(true);
+
+  // In order to detect that the layer has been toggled (between census and tribal),
+  // this state variable will hold that information
+  const [layerToggled, setLayerToggled] = useState<boolean>(false);
   const {width: windowWidth} = useWindowSize();
 
   const mapRef = useRef<MapRef>(null);
@@ -157,6 +161,9 @@ const J40Map = ({location}: IJ40Interface) => {
       }
     } else {
       // This else clause will fire when the ID is null or empty. This is the case where the map is clicked
+
+      setLayerToggled(false);
+
       // @ts-ignore
       const feature = event.features && event.features[0];
       console.log(feature);
@@ -261,7 +268,11 @@ const J40Map = ({location}: IJ40Interface) => {
 
 
         {/* This will allow to select between the census tract layer and the tribal lands layer */}
-        <LayerSelector censusSelected={censusSelected} setCensusSelected={setCensusSelected}/>
+        <LayerSelector
+          censusSelected={censusSelected}
+          setCensusSelected={setCensusSelected}
+          setLayerToggled={setLayerToggled}
+        />
 
         {/**
          * The ReactMapGL component's props are grouped by the API's documentation. The component also has
@@ -309,9 +320,15 @@ const J40Map = ({location}: IJ40Interface) => {
 
           {/* Load either the Tribal layer or census layer */}
           {
-           censusSelected ?
-           <MapTractLayers selectedFeature={selectedFeature} selectedFeatureId={selectedFeatureId}/> :
-            <MapTribalLayer />
+            censusSelected ?
+              <MapTractLayers
+                selectedFeature={selectedFeature}
+                selectedFeatureId={selectedFeatureId}
+              /> :
+                <MapTribalLayer
+                  selectedFeature={selectedFeature}
+                  selectedFeatureId={selectedFeatureId}
+                />
           }
 
           {/* Enable fullscreen behind a feature flag */}
@@ -326,7 +343,11 @@ const J40Map = ({location}: IJ40Interface) => {
               onClose={setDetailViewData}
               captureScroll={true}
             >
-              <AreaDetail properties={detailViewData.properties} hash={zoomLatLngHash}/>
+              <AreaDetail
+                properties={detailViewData.properties}
+                hash={zoomLatLngHash}
+                isCensusLayerSelected={censusSelected}
+              />
             </Popup>
           )}
 
@@ -360,6 +381,8 @@ const J40Map = ({location}: IJ40Interface) => {
           featureProperties={detailViewData?.properties}
           selectedFeatureId={selectedFeature?.id}
           hash={zoomLatLngHash}
+          isCensusLayerSelected={censusSelected}
+          layerToggled={layerToggled}
         />
       </Grid>
     </>
