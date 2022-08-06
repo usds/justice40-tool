@@ -300,6 +300,15 @@ export const SIDE_PANEL_CBG_INFO = defineMessages({
   },
 });
 
+export const SIDE_PANEL_TRIBAL_INFO = defineMessages({
+  LAND_AREA_NAME: {
+    id: 'explore.map.page.side.panel.tribalInfo.landAreaName',
+    defaultMessage: 'Land Area Name:',
+    description: `Navigate to the explore the map page. Click on Tribal Lands, when the map is in view, 
+    click on the map. The side panel will show the land area name of the feature selected`,
+  },
+});
+
 export const COMMUNITY = {
   OF_FOCUS: <FormattedMessage
     id={'explore.map.page.side.panel.community.of.focus'}

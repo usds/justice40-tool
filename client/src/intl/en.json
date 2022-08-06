@@ -823,6 +823,10 @@
     "defaultMessage": "AND",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. Click on a category to expand. This is the AND spacer around thresholds."
   },
+  "explore.map.page.side.panel.tribalInfo.landAreaName": {
+    "defaultMessage": "Land Area Name:",
+    "description": "Navigate to the explore the map page. Click on Tribal Lands, when the map is in view, \n    click on the map. The side panel will show the land area name of the feature selected"
+  },
   "explore.map.page.side.panel.version.title": {
     "defaultMessage": "Methodology version {version}",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the methodology version number"

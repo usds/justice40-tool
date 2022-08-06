@@ -1,7 +1,13 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {Source, Layer} from 'react-map-gl';
+import {AnyLayer} from 'mapbox-gl';
 
 import * as constants from '../../data/constants';
+
+interface IMapTribalLayers {
+  selectedFeatureId: AnyLayer,
+  selectedFeature: AnyLayer,
+}
 
 /**
  * This function will determine the URL for the tribal tiles.
@@ -18,7 +24,12 @@ export const tribalURL = (): string => {
   ].join('/');
 };
 
-const MapTribalLayer = () => {
+const MapTribalLayer = ({
+  selectedFeatureId,
+  selectedFeature,
+}: IMapTribalLayers) => {
+  const tribalSelectionFilter = useMemo(() => ['in', constants.TRIBAL_ID, selectedFeatureId], [selectedFeature]);
+
   return (
     <Source
       id={constants.TRIBAL_SOURCE_NAME}
@@ -29,7 +40,7 @@ const MapTribalLayer = () => {
       maxzoom={constants.TRIBAL_MAX_ZOOM}
     >
 
-      {/* Low zoom layer - prioritized features only */}
+      {/* Tribal layer */}
       <Layer
         id={constants.TRIBAL_LAYER_ID}
         source-layer={constants.TRIBAL_SOURCE_LAYER}
@@ -48,7 +59,7 @@ const MapTribalLayer = () => {
         source-layer={constants.SCORE_SOURCE_LAYER}
         type='line'
         paint={{
-          'line-color': constants.TRIBAL_BORDER_COLOR,
+          'line-color': constants.FEATURE_BORDER_COLOR,
           'line-width': constants.FEATURE_BORDER_WIDTH,
           'line-opacity': constants.FEATURE_BORDER_OPACITY,
         }}
@@ -58,12 +69,30 @@ const MapTribalLayer = () => {
 
       {/* Tribal layer - border styling around the selected feature */}
       <Layer
-        id={constants.SELECTED_FEATURE_BORDER_LAYER_ID}
-        source-layer={constants.TRIBAL_SOURCE_NAME}
+        id={constants.SELECTED_TRIBAL_FEATURE_BORDER_LAYER_ID}
+        source-layer={constants.TRIBAL_SOURCE_LAYER}
+        filter={tribalSelectionFilter}
         type='line'
         paint={{
           'line-color': constants.SELECTED_FEATURE_BORDER_COLOR,
           'line-width': constants.SELECTED_FEATURE_BORDER_WIDTH,
+        }}
+        minzoom={constants.TRIBAL_MIN_ZOOM}
+      />
+
+      {/* Alaska layer */}
+      {/* // Todo: Figure out why this isn't working */}
+      <Layer
+        id={constants.SELECTED_FEATURE_BORDER_LAYER_ID}
+        source-layer={constants.TRIBAL_SOURCE_NAME}
+
+        // Using other filter expressions, such as equality decisions here
+        // may cause the open-source to error out on circle not defined
+        filter={['geometry-type', 'Point']}
+        type='circle'
+        paint={{
+          'circle-radius': 100,
+          'circle-color': '#007cbf',
         }}
         minzoom={constants.TRIBAL_MIN_ZOOM}
       />

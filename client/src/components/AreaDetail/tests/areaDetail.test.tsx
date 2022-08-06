@@ -5,6 +5,7 @@ import {LocalizedComponent} from '../../../test/testHelpers';
 
 import * as constants from '../../../data/constants';
 
+// Todo: Update tests to take into account tribal layer selected
 describe('rendering of the AreaDetail', () => {
   const properties = {
     [constants.POVERTY_BELOW_100_PERCENTILE]: .12,
@@ -27,7 +28,7 @@ describe('rendering of the AreaDetail', () => {
   it('checks if indicators for NATION is present', () => {
     const {asFragment} = render(
         <LocalizedComponent>
-          <AreaDetail properties={properties} hash={hash}/>
+          <AreaDetail properties={properties} hash={hash} isCensusLayerSelected={true}/>
         </LocalizedComponent>,
     );
     expect(asFragment()).toMatchSnapshot();
@@ -41,7 +42,7 @@ describe('rendering of the AreaDetail', () => {
 
     const {asFragment} = render(
         <LocalizedComponent>
-          <AreaDetail properties={propertiesPR} hash={hash}/>
+          <AreaDetail properties={propertiesPR} hash={hash} isCensusLayerSelected={true}/>
         </LocalizedComponent>,
     );
     expect(asFragment()).toMatchSnapshot();
@@ -59,7 +60,7 @@ describe('rendering of the AreaDetail', () => {
 
     const {asFragment} = render(
         <LocalizedComponent>
-          <AreaDetail properties={propertiesIA} hash={hash}/>
+          <AreaDetail properties={propertiesIA} hash={hash} isCensusLayerSelected={true}/>
         </LocalizedComponent>,
     );
     expect(asFragment()).toMatchSnapshot();

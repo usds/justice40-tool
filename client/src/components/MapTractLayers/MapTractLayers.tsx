@@ -1,5 +1,6 @@
 import React, {useMemo} from 'react';
 import {Source, Layer} from 'react-map-gl';
+import {AnyLayer} from 'mapbox-gl';
 
 // Contexts:
 import {useFlags} from '../../contexts/FlagContext';
@@ -7,10 +8,9 @@ import {useFlags} from '../../contexts/FlagContext';
 import * as constants from '../../data/constants';
 import * as COMMON_COPY from '../../data/copy/common';
 
-// Todo: Update with real types if this works:
 interface IMapTractLayers {
-    selectedFeatureId: any,
-    selectedFeature: any
+    selectedFeatureId: AnyLayer,
+    selectedFeature: AnyLayer,
 }
 
 /**
@@ -56,7 +56,10 @@ export const featureURLForTilesetName = (tilesetName: string): string => {
   }
 };
 
-const MapTractLayers = ({selectedFeatureId, selectedFeature}: IMapTractLayers) => {
+const MapTractLayers = ({
+  selectedFeatureId,
+  selectedFeature,
+}: IMapTractLayers) => {
   const filter = useMemo(() => ['in', constants.GEOID_PROPERTY, selectedFeatureId], [selectedFeature]);
 
   return (

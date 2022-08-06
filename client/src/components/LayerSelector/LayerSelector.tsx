@@ -10,9 +10,10 @@ import * as EXPLORE_COPY from '../../data/copy/explore';
 interface ILayerSelector {
   censusSelected: boolean,
   setCensusSelected: Dispatch<boolean>,
+  setLayerToggled: Dispatch<boolean>,
 }
 
-const LayerSelector = ({censusSelected, setCensusSelected}:ILayerSelector) => {
+const LayerSelector = ({censusSelected, setCensusSelected, setLayerToggled}:ILayerSelector) => {
   const intl = useIntl();
 
   /**
@@ -37,6 +38,13 @@ const LayerSelector = ({censusSelected, setCensusSelected}:ILayerSelector) => {
       setTribalText(EXPLORE_COPY.MAP.TRIBAL_LANDS_SHORT);
     }
   }, [width]);
+
+  // Anytime the censusSelected state variable changes, set the LayerToggled state
+  // variable
+  useEffect( () => {
+    setLayerToggled(true);
+  }, [censusSelected]);
+
 
   //   Handles toggle of tracts and tribal layer selection
   const buttonClickHandler = (event) => {
