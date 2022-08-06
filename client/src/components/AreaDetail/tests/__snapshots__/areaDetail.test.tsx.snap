@@ -57,11 +57,11 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
       </div>
       <a
         href="
-            mailto:Screeningtool-Support@omb.eop.gov?subject=
+              mailto:Screeningtool-Support@omb.eop.gov?subject=
     Census tract ID 98729374234, Brooklyn, New York, ( z/lat/lon: #11.54/36.0762/-84.4494 )
   &body=Please provide feedback about this census tract, including about the datasets, the data categories provided for this census tract, the communities who live in this census tract, and anything else relevant that CEQ should know about this census tract.
     
-          "
+              "
         rel="noreferrer"
         target="_blank"
       >
@@ -418,11 +418,11 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       </div>
       <a
         href="
-            mailto:Screeningtool-Support@omb.eop.gov?subject=
+              mailto:Screeningtool-Support@omb.eop.gov?subject=
     Census tract ID 98729374234, Brooklyn, New York, ( z/lat/lon: #11.54/36.0762/-84.4494 )
   &body=Please provide feedback about this census tract, including about the datasets, the data categories provided for this census tract, the communities who live in this census tract, and anything else relevant that CEQ should know about this census tract.
     
-          "
+              "
         rel="noreferrer"
         target="_blank"
       >
@@ -2154,11 +2154,11 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
       </div>
       <a
         href="
-            mailto:Screeningtool-Support@omb.eop.gov?subject=
+              mailto:Screeningtool-Support@omb.eop.gov?subject=
     Census tract ID 98729374234, Brooklyn, New York, ( z/lat/lon: #11.54/36.0762/-84.4494 )
   &body=Please provide feedback about this census tract, including about the datasets, the data categories provided for this census tract, the communities who live in this census tract, and anything else relevant that CEQ should know about this census tract.
     
-          "
+              "
         rel="noreferrer"
         target="_blank"
       >
