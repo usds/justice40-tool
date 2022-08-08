@@ -81,13 +81,13 @@ class TribalETL(ExtractTransformLoad):
         bia_aian_supplemental_df = gpd.read_file(tribal_geojson_path)
 
         bia_aian_supplemental_df.drop(
-            ["OBJECTID", "GISAcres", "Source", "Shape_Length", "Shape_Area"],
+            ["GISAcres", "Source", "Shape_Length", "Shape_Area"],
             axis=1,
             inplace=True,
         )
 
         bia_aian_supplemental_df.rename(
-            columns={"Land_Area_": "landAreaName"},
+            columns={"OBJECTID": "tribalId", "Land_Area_": "landAreaName"},
             inplace=True,
         )
 
