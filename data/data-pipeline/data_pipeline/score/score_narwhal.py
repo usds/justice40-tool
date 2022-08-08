@@ -314,30 +314,11 @@ class ScoreNarwhal(Score):
         housing_eligibility_columns = [
             field_names.LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD,
             field_names.HOUSING_BURDEN_LOW_INCOME_FIELD,
-<<<<<<< HEAD
-<<<<<<< HEAD
-            field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD,
-            field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_LOW_INCOME_FIELD,
-=======
-            # Until we get confirmation -- NOT included
-<<<<<<< HEAD
-            # field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD,
->>>>>>> d85f86a1 (updating ejscreen data, try two (#1747))
-        ]
-
-        # Historic disinvestment
-=======
-=======
->>>>>>> db01e943 (added indoor plumbing to score housing burden)
             field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD,
             field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_LOW_INCOME_FIELD,
         ]
 
-<<<<<<< HEAD
->>>>>>> c59cc77f (Changing LHE in tiles to a boolean (#1767))
-=======
         # Historic disinvestment
->>>>>>> db01e943 (added indoor plumbing to score housing burden)
         self.df[
             field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD
         ] = (
@@ -493,8 +474,6 @@ class ScoreNarwhal(Score):
             & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
 
-<<<<<<< HEAD
-<<<<<<< HEAD
         self._increment_total_eligibility_exceeded(
             eligibility_columns,
             skip_fips=constants.DROP_FIPS_FROM_NON_WTD_THRESHOLDS,
@@ -503,27 +482,6 @@ class ScoreNarwhal(Score):
         self.df[field_names.WATER_THRESHOLD_EXCEEDED] = self.df[
             eligibility_columns
         ].any(axis=1)
-
-        return self.df[field_names.WATER_THRESHOLD_EXCEEDED]
-=======
-        self.df[field_names.WATER_THRESHOLD_EXCEEDED] = self.df[
-            [
-                field_names.WASTEWATER_PCTILE_THRESHOLD,
-                field_names.UST_PCTILE_THRESHOLD,
-            ]
-        ].max(axis=1)
-
-=======
->>>>>>> c59cc77f (Changing LHE in tiles to a boolean (#1767))
-        self._increment_total_eligibility_exceeded(
-            eligibility_columns,
-            skip_fips=constants.DROP_FIPS_FROM_NON_WTD_THRESHOLDS,
-        )
-
-        self.df[field_names.WATER_THRESHOLD_EXCEEDED] = self.df[
-            eligibility_columns
-        ].any(axis=1)
->>>>>>> 4ad2b7ee (adds UST indicator (#1786))
 
         return self.df[field_names.WATER_THRESHOLD_EXCEEDED]
 
