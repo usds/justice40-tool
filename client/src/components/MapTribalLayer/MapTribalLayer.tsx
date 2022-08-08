@@ -87,7 +87,7 @@ const MapTribalLayer = ({
         source-layer={constants.TRIBAL_SOURCE_NAME}
 
         // Using other filter expressions, such as equality decisions here
-        // may cause the open-source to error out on circle not defined
+        // may cause the open-source map to error out on - circle-radius not defined
         filter={['geometry-type', 'Point']}
         type='circle'
         paint={{
