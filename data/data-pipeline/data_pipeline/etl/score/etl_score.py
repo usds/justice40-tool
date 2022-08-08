@@ -366,6 +366,7 @@ class ScoreETL(ExtractTransformLoad):
 
         numeric_columns = [
             field_names.HOUSING_BURDEN_FIELD,
+            field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_FIELD,
             field_names.TOTAL_POP_FIELD,
             field_names.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD,
             field_names.ASTHMA_FIELD,
@@ -416,7 +417,6 @@ class ScoreETL(ExtractTransformLoad):
             field_names.HEALTHY_FOOD_FIELD,
             field_names.IMPENETRABLE_SURFACES_FIELD,
             field_names.UST_FIELD,
-            # We have to pass this boolean here in order to include it in ag value loss percentiles.
             field_names.AGRICULTURAL_VALUE_BOOL_FIELD,
             field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD,
         ]
@@ -472,9 +472,7 @@ class ScoreETL(ExtractTransformLoad):
             set(numeric_columns)
         ), "You have a double-entered column in the numeric columns list"
 
-        df_copy[numeric_columns] = df_copy[numeric_columns].apply(
-            pd.to_numeric
-        )
+        df_copy[numeric_columns] = df_copy[numeric_columns].apply(pd.to_numeric)
 
         # Convert all columns to numeric and do math
         # Note that we have a few special conditions here, that we handle explicitly.

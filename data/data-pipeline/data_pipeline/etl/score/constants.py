@@ -186,6 +186,8 @@ TILES_SCORE_COLUMNS = {
     + field_names.PERCENTILE_FIELD_SUFFIX: "P200_I_PFS",
     field_names.LEAD_PAINT_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX: "LPF_PFS",
+    field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX: "KP_PFS",
     field_names.NPL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX: "NPL_PFS",
     field_names.RMP_FIELD + field_names.PERCENTILE_FIELD_SUFFIX: "RMP_PFS",
     field_names.TSDF_FIELD + field_names.PERCENTILE_FIELD_SUFFIX: "TSDF_PFS",
@@ -195,8 +197,7 @@ TILES_SCORE_COLUMNS = {
     + field_names.PERCENTILE_FIELD_SUFFIX: "UF_PFS",
     field_names.WASTEWATER_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX: "WF_PFS",
-    field_names.UST_FIELD
-    + field_names.PERCENTILE_FIELD_SUFFIX: "UST_PFS",
+    field_names.UST_FIELD + field_names.PERCENTILE_FIELD_SUFFIX: "UST_PFS",
     field_names.M_WATER: "M_WTR",
     field_names.M_WORKFORCE: "M_WKFC",
     field_names.M_CLIMATE: "M_CLT",
@@ -240,6 +241,8 @@ TILES_SCORE_COLUMNS = {
     field_names.DIESEL_EXCEEDS_PCTILE_THRESHOLD: "DS_ET",
     field_names.TRAFFIC_PROXIMITY_PCTILE_THRESHOLD: "TP_ET",
     field_names.LEAD_PAINT_PROXY_PCTILE_THRESHOLD: "LPP_ET",
+    field_names.HISTORIC_REDLINING_SCORE_EXCEEDED: "HRS_ET",
+    field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_PCTILE_THRESHOLD: "KP_ET",
     field_names.HOUSING_BURDEN_PCTILE_THRESHOLD: "HB_ET",
     field_names.RMP_PCTILE_THRESHOLD: "RMP_ET",
     field_names.NPL_PCTILE_THRESHOLD: "NPL_ET",
