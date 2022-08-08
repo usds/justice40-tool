@@ -43,8 +43,8 @@ class DatasetsConfig:
                 number_of_decimals_in_output (Optional int): Used to represent number of decimals in side effects, like Excel. Defaults to 2 decimals.
                 include_in_tiles (Optional bool): Include this field on the tile export. Defaults to False.
                 include_in_downloadable_files (Optional bool): Include this field on the CSV and Excel exports. Defaults to False.
-                create_percentile (Optional bool): Whether or not the backend processing should create a percentile field (ranked in ascending order) from the
-                    values in this field. Defaults to False.
+                create_percentile (Optional bool): Whether or not the backend processing should create a percentile field (ranked in ascending order)
+                    from the values in this field. Defaults to False.
                 create_reverse_percentile (Optional bool): Whether or not the backend processing should create a "reverse percentile" field (ranked in
                     descending order) from the values in this field. Defaults to False.
                 include_in_comparison_tool_as_index (Optional bool): Whether or not to include this field in the comparison tool
@@ -68,7 +68,9 @@ class DatasetsConfig:
             create_percentile: Optional[bool] = False
             create_reverse_percentile: Optional[bool] = False
             include_in_comparison_tool_as_index: Optional[bool] = False
-            include_in_comparison_tool_as_statistical_descriptor: Optional[bool] = False
+            include_in_comparison_tool_as_statistical_descriptor: Optional[
+                bool
+            ] = False
 
         long_name: str
         short_name: str
