@@ -26,6 +26,10 @@
         @include u-margin-top(.5);
         font-size: .875rem;
         
+        span{
+            @include u-margin-left(1);
+        }
+
         .showHideText {
             //remove styling of button
             border: none;
@@ -37,10 +41,7 @@
             text-decoration:underline;
     
             min-width: 45px;
-
             padding-left: 0;
-            padding-right: 0;
-            margin-left: 6px;
         }
 
         .showHideIcon{

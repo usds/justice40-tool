@@ -49,19 +49,23 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
         Tract demographics
       </div>
       <h6>
-        Racial Ethnographic
-        <button
-          aria-controls="race-panel"
-          aria-expanded="false"
-          id="race-header"
-          tabindex="0"
-        >
-          show
-        </button>
-        <img
-          alt="collapse icon"
-          src="test-file-stub"
-        />
+        Racial / Ethnographic
+        <span>
+          (
+          <button
+            aria-controls="race-panel"
+            aria-expanded="false"
+            id="race-header"
+            tabindex="0"
+          >
+            show
+          </button>
+          <img
+            alt="expand icon"
+            src="test-file-stub"
+          />
+          )
+        </span>
       </h6>
       <section
         aria-labelledby="race-header"
@@ -143,18 +147,22 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
       </section>
       <h6>
         Age
-        <button
-          aria-controls="age-panel"
-          aria-expanded="false"
-          id="age-header"
-          tabindex="0"
-        >
-          show
-        </button>
-        <img
-          alt="collapse icon"
-          src="test-file-stub"
-        />
+        <span>
+          (
+          <button
+            aria-controls="age-panel"
+            aria-expanded="false"
+            id="age-header"
+            tabindex="0"
+          >
+            show
+          </button>
+          <img
+            alt="expand icon"
+            src="test-file-stub"
+          />
+          )
+        </span>
       </h6>
       <section
         aria-labelledby="age-header"
@@ -558,19 +566,23 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         Tract demographics
       </div>
       <h6>
-        Racial Ethnographic
-        <button
-          aria-controls="race-panel"
-          aria-expanded="false"
-          id="race-header"
-          tabindex="0"
-        >
-          show
-        </button>
-        <img
-          alt="collapse icon"
-          src="test-file-stub"
-        />
+        Racial / Ethnographic
+        <span>
+          (
+          <button
+            aria-controls="race-panel"
+            aria-expanded="false"
+            id="race-header"
+            tabindex="0"
+          >
+            show
+          </button>
+          <img
+            alt="expand icon"
+            src="test-file-stub"
+          />
+          )
+        </span>
       </h6>
       <section
         aria-labelledby="race-header"
@@ -652,18 +664,22 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       </section>
       <h6>
         Age
-        <button
-          aria-controls="age-panel"
-          aria-expanded="false"
-          id="age-header"
-          tabindex="0"
-        >
-          show
-        </button>
-        <img
-          alt="collapse icon"
-          src="test-file-stub"
-        />
+        <span>
+          (
+          <button
+            aria-controls="age-panel"
+            aria-expanded="false"
+            id="age-header"
+            tabindex="0"
+          >
+            show
+          </button>
+          <img
+            alt="expand icon"
+            src="test-file-stub"
+          />
+          )
+        </span>
       </h6>
       <section
         aria-labelledby="age-header"
@@ -2442,19 +2458,23 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
         Tract demographics
       </div>
       <h6>
-        Racial Ethnographic
-        <button
-          aria-controls="race-panel"
-          aria-expanded="false"
-          id="race-header"
-          tabindex="0"
-        >
-          show
-        </button>
-        <img
-          alt="collapse icon"
-          src="test-file-stub"
-        />
+        Racial / Ethnographic
+        <span>
+          (
+          <button
+            aria-controls="race-panel"
+            aria-expanded="false"
+            id="race-header"
+            tabindex="0"
+          >
+            show
+          </button>
+          <img
+            alt="expand icon"
+            src="test-file-stub"
+          />
+          )
+        </span>
       </h6>
       <section
         aria-labelledby="race-header"
@@ -2536,18 +2556,22 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
       </section>
       <h6>
         Age
-        <button
-          aria-controls="age-panel"
-          aria-expanded="false"
-          id="age-header"
-          tabindex="0"
-        >
-          show
-        </button>
-        <img
-          alt="collapse icon"
-          src="test-file-stub"
-        />
+        <span>
+          (
+          <button
+            aria-controls="age-panel"
+            aria-expanded="false"
+            id="age-header"
+            tabindex="0"
+          >
+            show
+          </button>
+          <img
+            alt="expand icon"
+            src="test-file-stub"
+          />
+          )
+        </span>
       </h6>
       <section
         aria-labelledby="age-header"

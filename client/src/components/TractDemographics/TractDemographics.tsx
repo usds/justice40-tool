@@ -61,29 +61,35 @@ const J40AccordionItem = ({id, title, children}:IJ40AccordionItem) => {
     <>
       <h6 className={styles.demographicHeading}>
         {title}
-        <button
-          className={styles.showHideText}
-          id={`${id}-header`}
-          aria-controls={`${id}-panel`}
-          aria-expanded={isExpanded}
-          onClick={() => setIsExpanded(!isExpanded)}
-          tabIndex={0}
-        >
-          {isExpanded ? 'hide' : 'show'}
-        </button>
-        { isExpanded ?
-        <img
-          className={styles.showHideIcon}
-          src={expandIcon}
-          alt={'expand icon'}
-          onClick={() => setIsExpanded(!isExpanded)}
-        /> :
-        <img
-          className={styles.showHideIcon}
-          src={collapseIcon}
-          alt={'collapse icon'}
-          onClick={() => setIsExpanded(!isExpanded)}
-        />}
+        <span>
+          {'('}
+          <button
+            className={styles.showHideText}
+            id={`${id}-header`}
+            aria-controls={`${id}-panel`}
+            aria-expanded={isExpanded}
+            onClick={() => setIsExpanded(!isExpanded)}
+            tabIndex={0}
+          >
+            {isExpanded ? 'hide' : 'show'}
+          </button>
+          { isExpanded ?
+          <img
+            className={styles.showHideIcon}
+            src={collapseIcon}
+            alt={'collapse icon'}
+            onClick={() => setIsExpanded(!isExpanded)}
+          /> :
+          <img
+            className={styles.showHideIcon}
+            src={expandIcon}
+            alt={'expand icon'}
+            onClick={() => setIsExpanded(!isExpanded)}
+          />
+          }
+          {')'}
+        </span>
+
       </h6>
 
       <section
@@ -102,7 +108,7 @@ const TractDemographics = () => {
         Tract demographics
       </div>
       <>
-        <J40AccordionItem id={'race'} title={`Racial Ethnographic`}>
+        <J40AccordionItem id={'race'} title={`Racial / Ethnographic`}>
           {demographicItemGen(demographicsData.racial)}
         </J40AccordionItem>
         <J40AccordionItem id={'age'} title={`Age`}>
