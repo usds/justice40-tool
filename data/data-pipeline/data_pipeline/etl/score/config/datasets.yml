@@ -1,0 +1,79 @@
+---
+datasets:
+  - long_name: "FEMA National Risk Index"
+    short_name: "nri"
+    module_name: national_risk_index
+    input_geoid_tract_field_name: "TRACTFIPS"
+    load_fields:
+      - short_name: "ex_loss"
+        df_field_name: "RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME"
+        long_name: "FEMA Risk Index Expected Annual Loss Score"
+        field_type: float
+        number_of_decimals_in_output: 6
+
+      - short_name: "ex_pop_loss"
+        df_field_name: "EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME"
+        long_name: "Expected population loss rate (Natural Hazards Risk Index)"
+        description_short:
+          "Rate of fatalities and injuries resulting from natural hazards each year"
+        description_long:
+          "Rate relative to the population of fatalities and injuries due to fourteen
+          types of natural hazards each year that have some link to climate change:
+          avalanche, coastal flooding, cold wave, drought, hail, heat wave, hurricane,
+          ice storm, landslide, riverine flooding, strong wind, tornado, wildfire, and
+          winter weather. Population loss is defined as the Spatial Hazard Events and
+          Losses and National Centers for Environmental Information’s (NCEI) reported
+          number of fatalities and injuries caused by the hazard occurrence. To combine
+          fatalities and injuries for the computation of population loss value, an
+          injury is counted as one-tenth (1/10) of a fatality. The NCEI Storm Events
+          Database classifies injuries and fatalities as direct or indirect. Both direct
+          and indirect injuries and fatalities are counted as population loss. This
+          total number of injuries and fatalities is then divided by the population in
+          the census tract to get a per-capita rate of population risk."
+        field_type: float
+        number_of_decimals_in_output: 6
+        include_in_tiles: true
+        include_in_downloadable_files: true
+        create_percentile: true
+
+      - short_name: "ex_ag_loss"
+        df_field_name: "EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME"
+        long_name: "Expected agricultural loss rate (Natural Hazards Risk Index)"
+        description_short:
+          "Economic loss rate to agricultural value resulting from natural hazards each
+          year"
+        description_long:
+          "Percent of agricultural value at risk from losses due to fourteen types of
+          natural hazards that have some link to climate change: avalanche, coastal
+          flooding, cold wave, drought, hail, heat wave, hurricane, ice storm,
+          landslide, riverine flooding, strong wind, tornado, wildfire, and winter
+          weather. Rate calculated by dividing the agricultural value at risk in a
+          census tract by the total agricultural value in that census tract."
+        field_type: float
+        number_of_decimals_in_output: 6
+        include_in_tiles: true
+        include_in_downloadable_files: true
+        create_percentile: true
+
+      - short_name: "ex_bldg_loss"
+        df_field_name: "EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME"
+        long_name: "Expected building loss rate (Natural Hazards Risk Index)"
+        description_short:
+          "Economic loss rate to building value resulting from natural hazards each year"
+        description_long:
+          "Percent of building value at risk from losses due to fourteen types of
+          natural hazards that have some link to climate change: avalanche, coastal
+          flooding, cold wave, drought, hail, heat wave, hurricane, ice storm,
+          landslide, riverine flooding, strong wind, tornado, wildfire, and winter
+          weather. Rate calculated by dividing the building value at risk in a census
+          tract by the total building value in that census tract."
+        field_type: float
+        number_of_decimals_in_output: 6
+        include_in_tiles: true
+        include_in_downloadable_files: true
+        create_percentile: true
+
+      - short_name: "has_ag_val"
+        df_field_name: "CONTAINS_AGRIVALUE"
+        long_name: "Contains agricultural value"
+        field_type: bool
