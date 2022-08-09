@@ -35,9 +35,7 @@ class DatasetsConfig:
                 short_name (str): Used in conjunction with the dataset's `short_name` for files where short names are needed.
                 df_field_name (str): Name for the field in the etl class.
                 long_name (str): Column name for the dataset's output csv.
-                field_type (FieldType): An enum that dictates what type of field this is. This will be used on the `etl_score_post` for the
-                    data manipulation. The `by_value` metadata prop will load the field type's Enum value instead of the index, i.e. "string"
-                    and not STRING
+                field_type (FieldType): An enum that dictates what type of field this is.
                 description_short (Optional str): Description used if the field appears in the side panel.
                 description_long (Optional str): Description used if the field appears in the Methodology page.
                 number_of_decimals_in_output (Optional int): Used to represent number of decimals in side effects, like Excel. Defaults to 2 decimals.
@@ -59,7 +57,11 @@ class DatasetsConfig:
             short_name: str
             df_field_name: str
             long_name: str
-            field_type: FieldType = field(metadata={"by_value": True})
+            field_type: FieldType = field(
+                metadata={"by_value": True}
+            )  # This will be used on the `etl_score_post` for the
+            # data manipulation. The `by_value` metadata prop will load the field type's Enum value instead of the index, i.e. "string"
+            # and not STRING
             description_short: Optional[str] = None
             description_long: Optional[str] = None
             number_of_decimals_in_output: Optional[int] = 2
