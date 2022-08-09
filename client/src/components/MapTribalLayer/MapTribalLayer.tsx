@@ -81,20 +81,17 @@ const MapTribalLayer = ({
       />
 
       {/* Alaska layer */}
-      {/* // Todo: Figure out why this isn't working */}
       <Layer
         id={constants.SELECTED_FEATURE_BORDER_LAYER_ID}
-        source-layer={constants.TRIBAL_SOURCE_NAME}
-
-        // Using other filter expressions, such as equality decisions here
-        // may cause the open-source map to error out on - circle-radius not defined
-        filter={['geometry-type', 'Point']}
+        source-layer={constants.TRIBAL_SOURCE_LAYER}
+        filter={['==', ['geometry-type'], 'Point']}
         type='circle'
         paint={{
-          'circle-radius': 100,
-          'circle-color': '#007cbf',
+          'circle-radius': constants.TRIBAL_ALASKA_CIRCLE_RADIUS,
+          'circle-color': constants.TRIBAL_ALASKA_CIRCLE_FILL_COLOR,
         }}
         minzoom={constants.TRIBAL_MIN_ZOOM}
+        maxzoom={constants.TRIBAL_MAX_ZOOM}
       />
     </Source>
   );
