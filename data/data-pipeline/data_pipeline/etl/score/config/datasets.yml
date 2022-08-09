@@ -80,62 +80,46 @@ datasets:
   - long_name: "Child Opportunity Index 2.0 database"
     short_name: "coi"
     module_name: "child_opportunity_index"
-    description_short: "A composite index measured at the census tract level that captures neighborhood resources and conditions that matter for children's healthy development."
-    description_long: "A composite index measured at the census tract level that captures neighborhood resources and conditions that matter for children's healthy development."
     input_geoid_tract_field_name: "geoid"
     load_fields:
       - short_name: "he_heat"
         df_field_name: "EXTREME_HEAT_FIELD"
         long_name: "Summer days above 90F" 
         field_type: float
-        include_in_tiles: false
-        include_in_csv: true
-        include_in_excel: true
-        column_position: 1
+        include_in_downloadable_files: true
+        include_in_tiles: true
       - short_name: "he_food"
         long_name: "Percent low access to healthy food"
         df_field_name: "HEALTHY_FOOD_FIELD"
         field_type: float
+        include_in_downloadable_files: true
         include_in_tiles: true
-        include_in_csv: false
-        include_in_excel: true
-        column_position: 2
       - short_name: "he_green"
         long_name: "Percent impenetrable surface areas" 
         df_field_name: "IMPENETRABLE_SURFACES_FIELD"
         field_type: float
-        include_in_tiles: false
-        include_in_csv: true
-        include_in_excel: true
-        column_position: 3
+        include_in_downloadable_files: true
+        include_in_tiles: true
       - short_name: "ed_reading"
         df_field_name: "READING_FIELD"
         long_name: "Third grade reading proficiency"
         field_type: float
-        include_in_tiles: false
-        include_in_csv: true
-        include_in_excel: true
-        column_position: 4
+        include_in_downloadable_files: true
+        include_in_tiles: true
   - long_name: "Low-Income Energy Affordabililty Data"
     short_name: "LEAD"
     module_name: "doe_energy_burden"
-    description_short: "Census-tract-level energy budren calculations based on DOE's LEAD tool"
-    description_long: "Census-tract-level energy budren calculations based on DOE's LEAD tool"
     input_geoid_tract_field_name: "FIP"
     load_fields:
       - short_name: "EBP_PFS"
         df_field_name: "REVISED_ENERGY_BURDEN_FIELD_NAME"
         long_name: "Energy burden" 
         field_type: float
+        include_in_downloadable_files: true
         include_in_tiles: true
-        include_in_csv: true
-        include_in_excel: true
-        column_position: 1
   - long_name: "Exaple ETL"
     short_name: "Example"
     module_name: "example_dataset"
-    description_short: "An example dataset for documentation"
-    description_long: "An example dataset for documentation"
     input_geoid_tract_field_name: "GEOID10_TRACT"
     load_fields:
       - short_name: "EXAMPLE_FIELD"
@@ -143,7 +127,5 @@ datasets:
         long_name: "Example Field 1" 
         field_type: float
         include_in_tiles: true
-        include_in_csv: true
-        include_in_excel: true
-        column_position: 1
+        include_in_downloadable_files: true
 
