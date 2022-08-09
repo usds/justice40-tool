@@ -590,7 +590,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   },
   EXP_BLD_LOSS: {
     id: 'explore.map.page.side.panel.indicator.description.exp.bld.loss',
-    defaultMessage: 'Economic loss rate to agricultural value resulting from natural hazards each year',
+    defaultMessage: 'Economic loss rate to building value resulting from natural hazards each year',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side 
     panel will show an indicator description of Economic loss rate to buildings resulting from natural hazards`,
   },

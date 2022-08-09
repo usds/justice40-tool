@@ -519,7 +519,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Expected building loss rate
               <div>
-                Economic loss rate to agricultural value resulting from natural hazards each year
+                Economic loss rate to building value resulting from natural hazards each year
               </div>
             </div>
             <div>
