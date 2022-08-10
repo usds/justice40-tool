@@ -73,6 +73,10 @@ def generate_tiles(data_path: Path, generate_tribal_layer: bool) -> None:
 
     def _generate_tribal_tiles() -> None:
         """Generates tribal layer tiles"""
+
+        USA_TRIBAL_MIN_ZOOM = 0
+        USA_TRIBAL_MAX_ZOOM = 11
+
         tribal_tiles_path = data_path / "tribal" / "tiles"
         tribal_geojson_dir = data_path / "tribal" / "geojson"
 
@@ -83,6 +87,7 @@ def generate_tiles(data_path: Path, generate_tribal_layer: bool) -> None:
         logger.info("Generating Tribal mbtiles file")
         cmd = "tippecanoe "
         cmd += "--layer=blocks "
+        cmd += f"--minimum-zoom={USA_TRIBAL_MIN_ZOOM} --maximum-zoom={USA_TRIBAL_MAX_ZOOM} "
         cmd += f"--output={tribal_tiles_path}/usa.mbtiles "
         cmd += str(tribal_geojson_dir / "usa.json")
         call(cmd, shell=True)
@@ -92,6 +97,7 @@ def generate_tiles(data_path: Path, generate_tribal_layer: bool) -> None:
         cmd = "tippecanoe "
         cmd += "--no-tile-compression "
         cmd += "--drop-densest-as-needed "
+        cmd += f"--minimum-zoom={USA_TRIBAL_MIN_ZOOM} --maximum-zoom={USA_TRIBAL_MAX_ZOOM} "
         cmd += f"--output-to-directory={tribal_tiles_path} --layer=blocks "
         cmd += str(tribal_geojson_dir / "usa.json")
         call(cmd, shell=True)

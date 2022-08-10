@@ -3,8 +3,10 @@ import copy
 import os
 import pathlib
 from typing import Type
+from unittest import mock
 import pytest
 
+import requests
 import numpy as np
 import pandas as pd
 
@@ -47,9 +49,9 @@ class TestETL:
     # we use the same tract IDs across fixtures.
     # The test fixtures may also contain other tract IDs that are not on this list.
     _FIXTURES_SHARED_TRACT_IDS = [
-        "06007040300",
-        "06001020100",
-        "06007040500",
+        "06027000800",
+        "06069000802",
+        "06061021322",
         "15001021010",
         "15001021101",
         "15007040603",
@@ -98,18 +100,32 @@ class TestETL:
         In order to re-implement this method, usually it will involve a
         decent amount of work to monkeypatch `requests` or another method that's
         used to retrieve data in order to force that method to retrieve the fixture
-        data.
+        data. A basic version of that patching is included here for classes that can use it.
         """
-        # When running this in child classes, make sure the child class re-implements
-        # this method.
-        if self._ETL_CLASS is not ExampleETL:
-            raise NotImplementedError(
-                "Prepare and run extract method not defined for this class."
+        with mock.patch("data_pipeline.utils.requests") as requests_mock:
+            zip_file_fixture_src = (
+                self._DATA_DIRECTORY_FOR_TEST / self._SAMPLE_DATA_ZIP_FILE_NAME
             )
+            tmp_path = mock_paths[1]
 
-        # The rest of this method applies for `ExampleETL` only.
-        etl = self._get_instance_of_etl_class()
-        etl.extract()
+            # Create mock response.
+            with open(zip_file_fixture_src, mode="rb") as file:
+                file_contents = file.read()
+            response_mock = requests.Response()
+            response_mock.status_code = 200
+            # pylint: disable=protected-access
+            response_mock._content = file_contents
+            # Return text fixture:
+            requests_mock.get = mock.MagicMock(return_value=response_mock)
+
+            # Instantiate the ETL class.
+            etl = self._ETL_CLASS()
+
+            # Monkey-patch the temporary directory to the one used in the test
+            etl.TMP_PATH = tmp_path
+
+            # Run the extract method.
+            etl.extract()
 
         return etl
 
@@ -119,6 +135,8 @@ class TestETL:
         """
         # Setup
         etl = self._get_instance_of_etl_class()
+        etl.__init__()
+
         data_path, tmp_path = mock_paths
 
         assert etl.DATA_PATH == data_path
@@ -126,8 +144,6 @@ class TestETL:
 
         # Also make sure all parameters that need to be non-null are non-null
         assert etl.NAME is not None
-        assert etl.LAST_UPDATED_YEAR is not None
-        assert etl.SOURCE_URL is not None
         assert etl.GEO_LEVEL is not None
         assert etl.COLUMNS_TO_KEEP is not None
         assert len(etl.COLUMNS_TO_KEEP) > 0
@@ -148,14 +164,10 @@ class TestETL:
         etl = self._get_instance_of_etl_class()
         data_path, tmp_path = mock_paths
 
+        etl.__init__()
         actual_file_path = etl._get_output_file_path()
 
-        expected_file_path = (
-            data_path
-            / "dataset"
-            / f"{etl.NAME}_{etl.LAST_UPDATED_YEAR}"
-            / "usa.csv"
-        )
+        expected_file_path = data_path / "dataset" / etl.NAME / "usa.csv"
 
         logger.info(f"Expected: {expected_file_path}")
 
@@ -255,6 +267,7 @@ class TestETL:
         etl = self._setup_etl_instance_and_run_extract(
             mock_etl=mock_etl, mock_paths=mock_paths
         )
+        etl.__init__()
         etl.transform()
 
         assert etl.output_df is not None
@@ -272,6 +285,7 @@ class TestETL:
         """
         # setup - input variables
         etl = self._get_instance_of_etl_class()
+        etl.__init__()
 
         # setup - mock transform step
         df_transform = pd.read_csv(
@@ -370,9 +384,14 @@ class TestETL:
             etl_with_duplicate_geo_field.output_df = actual_output_df.copy(
                 deep=True
             )
+            etl_with_duplicate_geo_field.output_df.reset_index(inplace=True)
             etl_with_duplicate_geo_field.output_df.loc[
                 0:1, ExtractTransformLoad.GEOID_TRACT_FIELD_NAME
-            ] = "06007040300"
+            ] = etl_with_duplicate_geo_field.output_df[
+                ExtractTransformLoad.GEOID_TRACT_FIELD_NAME
+            ].iloc[
+                0
+            ]
             with pytest.raises(ValueError) as error:
                 etl_with_duplicate_geo_field.validate()
             assert str(error.value).startswith("Duplicate values:")
@@ -443,7 +462,7 @@ class TestETL:
 
         # Remove another column to keep and make sure error occurs.
         etl_with_missing_column = copy.deepcopy(etl)
-        columns_to_keep = actual_output_df.columns[:-1]
+        columns_to_keep = etl.COLUMNS_TO_KEEP[:-1]
         etl_with_missing_column.output_df = actual_output_df[columns_to_keep]
         with pytest.raises(ValueError) as error:
             etl_with_missing_column.validate()

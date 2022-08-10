@@ -1,7 +1,5 @@
 # pylint: disable=protected-access
-from unittest import mock
 import pathlib
-import requests
 from data_pipeline.etl.base import ValidGeoLevel
 
 from data_pipeline.etl.sources.national_risk_index.etl import (
@@ -36,35 +34,6 @@ class TestNationalRiskIndexETL(TestETL):
         """
         super().setup_method(_method=_method, filename=filename)
 
-    def _setup_etl_instance_and_run_extract(self, mock_etl, mock_paths):
-        with mock.patch("data_pipeline.utils.requests") as requests_mock:
-            zip_file_fixture_src = (
-                self._DATA_DIRECTORY_FOR_TEST / "NRI_Table_CensusTracts.zip"
-            )
-            tmp_path = mock_paths[1]
-
-            # Create mock response.
-            with open(zip_file_fixture_src, mode="rb") as file:
-                file_contents = file.read()
-            response_mock = requests.Response()
-            response_mock.status_code = 200
-            # pylint: disable=protected-access
-            response_mock._content = file_contents
-
-            # Return text fixture:
-            requests_mock.get = mock.MagicMock(return_value=response_mock)
-
-            # Instantiate the ETL class.
-            etl = NationalRiskIndexETL()
-
-            # Monkey-patch the temporary directory to the one used in the test
-            etl.TMP_PATH = tmp_path
-
-            # Run the extract method.
-            etl.extract()
-
-        return etl
-
     def test_init(self, mock_etl, mock_paths):
         """Tests that the mock NationalRiskIndexETL class instance was
         initiliazed correctly.
@@ -87,11 +56,6 @@ class TestNationalRiskIndexETL(TestETL):
         assert etl.GEOID_FIELD_NAME == "GEOID10"
         assert etl.GEOID_TRACT_FIELD_NAME == "GEOID10_TRACT"
         assert etl.NAME == "national_risk_index"
-        assert etl.LAST_UPDATED_YEAR == 2020
-        assert (
-            etl.SOURCE_URL
-            == "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload//NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
-        )
         assert etl.GEO_LEVEL == ValidGeoLevel.CENSUS_TRACT
         assert etl.COLUMNS_TO_KEEP == [
             etl.GEOID_TRACT_FIELD_NAME,
@@ -109,6 +73,6 @@ class TestNationalRiskIndexETL(TestETL):
 
         output_file_path = etl._get_output_file_path()
         expected_output_file_path = (
-            data_path / "dataset" / "national_risk_index_2020" / "usa.csv"
+            data_path / "dataset" / "national_risk_index" / "usa.csv"
         )
         assert output_file_path == expected_output_file_path

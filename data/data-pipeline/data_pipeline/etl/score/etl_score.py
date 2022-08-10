@@ -442,6 +442,7 @@ class ScoreETL(ExtractTransformLoad):
             # for instance, 3rd grade reading level : Low 3rd grade reading level.
             # This low field will not exist yet, it is only calculated for the
             # percentile.
+            # TODO: This will come from the YAML dataset config
             ReversePercentile(
                 field_name=field_names.READING_FIELD,
                 low_field_name=field_names.LOW_READING_FIELD,
