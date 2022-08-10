@@ -49,9 +49,9 @@ class TestETL:
     # we use the same tract IDs across fixtures.
     # The test fixtures may also contain other tract IDs that are not on this list.
     _FIXTURES_SHARED_TRACT_IDS = [
-        "06007040300",
-        "06001020100",
-        "06007040500",
+        "06027000800",
+        "06069000802",
+        "06061021322",
         "15001021010",
         "15001021101",
         "15007040603",
