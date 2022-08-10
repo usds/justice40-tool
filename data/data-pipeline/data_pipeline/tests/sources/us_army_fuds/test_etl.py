@@ -1,5 +1,5 @@
 # pylint: disable=protected-access
-import unittest.mock as mock
+from unittest import mock
 import pathlib
 from data_pipeline.etl.base import ValidGeoLevel
 
