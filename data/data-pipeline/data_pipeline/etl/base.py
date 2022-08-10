@@ -103,7 +103,7 @@ class ExtractTransformLoad:
         cls.DATASET_CONFIG = cls.yaml_config_load()
 
     @classmethod
-    def yaml_config_load(cls) -> dict:
+    def yaml_config_load(cls) -> Optional[dict]:
         """Generate config dictionary and set instance variables from YAML dataset."""
         if cls.NAME is not None:
             # check if the class instance has score YAML definitions
@@ -143,6 +143,7 @@ class ExtractTransformLoad:
                 # set the constants for the class
                 setattr(cls, field["df_field_name"], field["long_name"])
             return dataset_config
+        return None
 
     # This is a classmethod so it can be used by `get_data_frame` without
     # needing to create an instance of the class. This is a use case in `etl_score`.
