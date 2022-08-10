@@ -106,7 +106,3 @@ class ChildOpportunityIndex(ExtractTransformLoad):
             )
 
         self.output_df = output_df
-
-    def load(self) -> None:
-        logger.info("Saving CSV")
-        super().load()

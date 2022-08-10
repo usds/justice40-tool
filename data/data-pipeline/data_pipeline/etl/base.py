@@ -46,7 +46,8 @@ class ExtractTransformLoad:
     DATA_PATH: pathlib.Path = APP_ROOT / "data"
     TMP_PATH: pathlib.Path = DATA_PATH / "tmp"
     CONTENT_CONFIG: pathlib.Path = APP_ROOT / "content" / "config"
-    DATASET_CONFIG: pathlib.Path = APP_ROOT / "etl" / "score" / "config"
+    DATASET_CONFIG_PATH: pathlib.Path = APP_ROOT / "etl" / "score" / "config"
+    DATASET_CONFIG: Optional[dict] = None
 
     # Parameters
     GEOID_FIELD_NAME: str = "GEOID10"
@@ -107,7 +108,7 @@ class ExtractTransformLoad:
         if cls.NAME is not None:
             # check if the class instance has score YAML definitions
             datasets_config = load_yaml_dict_from_file(
-                cls.DATASET_CONFIG / "datasets.yml",
+                cls.DATASET_CONFIG_PATH / "datasets.yml",
                 DatasetsConfig,
             )
 
@@ -137,11 +138,10 @@ class ExtractTransformLoad:
             ]
             for field in dataset_config["load_fields"]:
                 cls.COLUMNS_TO_KEEP.append(field["long_name"])
+                setattr(cls, field["df_field_name"], field["long_name"])
 
                 # set the constants for the class
                 setattr(cls, field["df_field_name"], field["long_name"])
-
-            # return the config dict
             return dataset_config
 
     # This is a classmethod so it can be used by `get_data_frame` without
