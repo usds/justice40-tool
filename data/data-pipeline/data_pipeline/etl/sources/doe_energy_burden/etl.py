@@ -28,7 +28,7 @@ class DOEEnergyBurden(ExtractTransformLoad):
         self.output_df: pd.DataFrame
 
     def transform(self) -> None:
-        logger.info("Starting transforms.")
+        logger.info("Starting DOE Energy Burden transforms.")
         raw_df: pd.DataFrame = pd.read_csv(
             filepath_or_buffer=self.get_tmp_path()
             / "DOE_LEAD_AMI_TRACT_2018_ALL.csv",
@@ -39,6 +39,7 @@ class DOEEnergyBurden(ExtractTransformLoad):
             low_memory=False,
         )
 
+        logger.info("Renaming columns and ensuring output format is correct")
         output_df = raw_df.rename(
             columns={
                 self.INPUT_ENERGY_BURDEN_FIELD_NAME: self.REVISED_ENERGY_BURDEN_FIELD_NAME,

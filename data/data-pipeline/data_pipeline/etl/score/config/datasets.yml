@@ -117,7 +117,7 @@ datasets:
         field_type: float
         include_in_downloadable_files: true
         include_in_tiles: true
-  - long_name: "Exaple ETL"
+  - long_name: "Example ETL"
     short_name: "Example"
     module_name: "example_dataset"
     input_geoid_tract_field_name: "GEOID10_TRACT"
