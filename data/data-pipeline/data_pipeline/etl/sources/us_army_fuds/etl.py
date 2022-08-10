@@ -98,6 +98,9 @@ class USArmyFUDS(ExtractTransformLoad):
                 }
             )
         ).reset_index()
+        for col in [self.ELIGIBLE_FUDS_COUNT_FIELD_NAME, self.INELIGIBLE_FUDS_COUNT_FIELD_NAME]:
+            self.output_df[col] = self.output_df[col].astype('int64')
+
         self.output_df[self.ELIGIBLE_FUDS_BINARY_FIELD_NAME] = (
             self.output_df[self.ELIGIBLE_FUDS_COUNT_FIELD_NAME] > 0.0
         )
