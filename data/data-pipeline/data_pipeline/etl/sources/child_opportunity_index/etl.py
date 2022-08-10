@@ -20,11 +20,6 @@ class ChildOpportunityIndex(ExtractTransformLoad):
     Full technical documents: https://www.diversitydatakids.org/sites/default/files/2020-02/ddk_coi2.0_technical_documentation_20200212.pdf.
 
     Github repo: https://github.com/diversitydatakids/COI/
-
-
-    NOTE: Things to ask jorge:
-    - How do you decide the short name?
-    - I ended up not having all the same tracts in my data set and had to subset them in the tests --- okay? make up data?
     """
 
     # Metadata for the baseclass
