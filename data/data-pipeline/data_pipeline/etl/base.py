@@ -127,10 +127,10 @@ class ExtractTransformLoad:
                 sys.exit()
 
             # set some of the basic fields
-        if "input_geoid_tract_field_name" in dataset_config:
-            cls.INPUT_GEOID_TRACT_FIELD_NAME = dataset_config[
-                "input_geoid_tract_field_name"
-            ]
+            if "input_geoid_tract_field_name" in dataset_config:
+                cls.INPUT_GEOID_TRACT_FIELD_NAME = dataset_config[
+                    "input_geoid_tract_field_name"
+                ]
 
             # get the columns to write on the CSV
             # and set the constants
