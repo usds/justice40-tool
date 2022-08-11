@@ -238,6 +238,7 @@ class CensusACSETL(ExtractTransformLoad):
 
         self.df: pd.DataFrame
 
+    # pylint: disable=too-many-arguments
     def _merge_geojson(
         self,
         df: pd.DataFrame,
