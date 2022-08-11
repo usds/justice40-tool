@@ -39,7 +39,7 @@ def _prepare_dataframe_for_imputation(
     impute_var_named_tup_list: List[NamedTuple],
     geo_df: gpd.GeoDataFrame,
     geoid_field: str = "GEOID10_TRACT",
-) -> tuple[list, gpd.GeoDataFrame]:
+) -> tuple(list, gpd.GeoDataFrame):
     imputing_cols = [
         impute_var_pair.raw_field_name
         for impute_var_pair in impute_var_named_tup_list
