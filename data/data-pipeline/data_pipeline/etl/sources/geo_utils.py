@@ -33,6 +33,13 @@ def add_tracts_for_geometries(
             census_etl.load()
     tract_data = gpd.read_file(GEOJSON_PATH, include_fields=["GEOID10"])
     tract_data.rename(columns={"GEOID10": "GEOID10_TRACT"}, inplace=True)
-    assert tract_data.crs == df.crs, f"Dataframe must be projected to {tract_data.crs}"
-    df = gpd.sjoin(df, tract_data[['GEOID10_TRACT', 'geometry']], how="inner", op="intersects")
+    assert (
+        tract_data.crs == df.crs
+    ), f"Dataframe must be projected to {tract_data.crs}"
+    df = gpd.sjoin(
+        df,
+        tract_data[["GEOID10_TRACT", "geometry"]],
+        how="inner",
+        op="intersects",
+    )
     return df
