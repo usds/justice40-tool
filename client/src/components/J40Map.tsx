@@ -84,7 +84,7 @@ const J40Map = ({location}: IJ40Interface) => {
   const [transitionInProgress, setTransitionInProgress] = useState<boolean>(false);
   const [geolocationInProgress, setGeolocationInProgress] = useState<boolean>(false);
   const [isMobileMapState, setIsMobileMapState] = useState<boolean>(false);
-  const [censusSelected, setCensusSelected] = useState(true);
+  const [censusSelected, setCensusSelected] = useState<boolean>(true);
 
   // In order to detect that the layer has been toggled (between census and tribal),
   // this state variable will hold that information
@@ -350,7 +350,15 @@ const J40Map = ({location}: IJ40Interface) => {
           dragRotate={false}
           touchRotate={false}
           // eslint-disable-next-line max-len
-          interactiveLayerIds={censusSelected ? [constants.HIGH_ZOOM_LAYER_ID, constants.PRIORITIZED_HIGH_ZOOM_LAYER_ID] : [constants.TRIBAL_LAYER_ID]}
+          interactiveLayerIds={censusSelected ?
+            [
+              constants.HIGH_ZOOM_LAYER_ID,
+              constants.PRIORITIZED_HIGH_ZOOM_LAYER_ID,
+            ] : [
+              constants.TRIBAL_LAYER_ID,
+              constants.TRIBAL_ALASKA_POINTS_LAYER_ID,
+            ]
+          }
 
 
           // ****** Callback props: ******
@@ -367,15 +375,16 @@ const J40Map = ({location}: IJ40Interface) => {
 
           {/* Load either the Tribal layer or census layer */}
           {
+            // Todo: may not need both props...
             censusSelected ?
               <MapTractLayers
                 selectedFeature={selectedFeature}
                 selectedFeatureId={selectedFeatureId}
               /> :
-                <MapTribalLayer
-                  selectedFeature={selectedFeature}
-                  selectedFeatureId={selectedFeatureId}
-                />
+              <MapTribalLayer
+                selectedFeature={selectedFeature}
+                selectedFeatureId={selectedFeatureId}
+              />
           }
 
           {/* This will add the navigation controls of the zoom in and zoom out buttons */}

@@ -81,8 +81,9 @@ const MapTribalLayer = ({
       />
 
       {/* Alaska layer */}
+      {/* // Todo: limit zoom in amount */}
       <Layer
-        id={constants.SELECTED_FEATURE_BORDER_LAYER_ID}
+        id={constants.TRIBAL_ALASKA_POINTS_LAYER_ID}
         source-layer={constants.TRIBAL_SOURCE_LAYER}
         filter={['==', ['geometry-type'], 'Point']}
         type='circle'

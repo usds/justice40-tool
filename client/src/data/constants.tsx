@@ -204,6 +204,7 @@ export const FEATURE_BORDER_LAYER_ID = 'feature-border-layer-id';
 export const SELECTED_FEATURE_BORDER_LAYER_ID = 'selected-feature-border-layer-id';
 export const TRIBAL_LAYER_ID = 'tribal-layer-id';
 export const SELECTED_TRIBAL_FEATURE_BORDER_LAYER_ID = 'selected-feature-tribal-border-layer-id';
+export const TRIBAL_ALASKA_POINTS_LAYER_ID = 'tribal-alaska-points-layer-id';
 
 // Used in layer filters:
 export const SCORE_PROPERTY_LOW = 'M_SCORE';
