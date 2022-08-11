@@ -294,10 +294,10 @@ TILES_SCORE_COLUMNS = {
     # These are the booleans for socioeconomic indicators
     ## this measures low income boolean
     field_names.FPL_200_SERIES: "FPL200S",
-    ## Low high school and low higher ed for t&wd
+    ## Low high school for t&wd
     field_names.WORKFORCE_SOCIO_INDICATORS_EXCEEDED: "M_WKFC_EBSI",
-    ## FPL 200 and low higher ed for all others
-    field_names.FPL_200_SERIES: "M_EBSI",
+    ## FPL 200 and low higher ed for all others should no longer be M_EBSI, but rather
+    ## FPL_200 (there is no higher ed in narwhal)
 }
 
 # columns to round floats to 2 decimals

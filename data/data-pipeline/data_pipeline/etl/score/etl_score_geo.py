@@ -289,7 +289,7 @@ class GeoScoreETL(ExtractTransformLoad):
             shapefile_column_field = "shapefile_column"
             internal_column_name_field = "column_name"
             column_description_field = "column_description"
-            
+
             logger.info("Creating a codebook that uses the csv names")
             codebook = (
                 pd.Series(codebook)
@@ -299,7 +299,6 @@ class GeoScoreETL(ExtractTransformLoad):
                         0: internal_column_name_field,
                         "index": shapefile_column_field,
                     }
-
                 )
             )
 

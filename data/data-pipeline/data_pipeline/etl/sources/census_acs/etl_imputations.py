@@ -1,9 +1,10 @@
 from typing import List, NamedTuple
 import pandas as pd
 import geopandas as gpd
-import numpy as np
 
 from data_pipeline.utils import get_module_logger
+
+# pylint: disable=unsubscriptable-object
 
 logger = get_module_logger(__name__)
 

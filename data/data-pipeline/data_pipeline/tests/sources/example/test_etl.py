@@ -1,4 +1,4 @@
-# pylint: disable=protected-access,unsubscriptable-object
+# pylint: disable=protected-access, unsubscriptable-object, unnecessary-dunder-call
 import copy
 import os
 import pathlib
