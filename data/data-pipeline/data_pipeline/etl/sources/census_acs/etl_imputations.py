@@ -1,7 +1,6 @@
 from typing import List, NamedTuple
 import pandas as pd
 import geopandas as gpd
-import numpy as np
 
 from data_pipeline.utils import get_module_logger
 

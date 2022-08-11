@@ -1,6 +1,5 @@
 import functools
 from collections import namedtuple
-from attr import field
 
 import numpy as np
 import pandas as pd
