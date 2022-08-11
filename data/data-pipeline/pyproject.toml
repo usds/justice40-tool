@@ -68,7 +68,6 @@ requires = ["poetry-core>=1.0.0"]
 [tool.pylint."MESSAGE CONTROL"]
 disable = [
   "C0114", # Disables module docstrings
-  "R0201", # Disables method could have been a function
   "R0903", # Disables too few public methods
   "C0103", # Disables name case styling
   "W0511", # Disables FIXME warning
