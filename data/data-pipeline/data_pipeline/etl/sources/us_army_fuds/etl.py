@@ -5,7 +5,7 @@ import numpy as np
 
 from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
 from data_pipeline.utils import get_module_logger, download_file_from_url
-from data_pipeline.etl.sources.geo_utils import add_tracts_for_geometries
+from data_pipeline.etl.sources.geo_utils import add_tracts_for_geometries, get_tract_geojson
 
 logger = get_module_logger(__name__)
 
@@ -42,7 +42,7 @@ class USArmyFUDS(ExtractTransformLoad):
         self.output_df: pd.DataFrame
 
     def extract(self) -> None:
-        logger.info("Starting data download.")
+        logger.info("Starting FUDS data download.")
 
         download_file_from_url(
             file_url=self.FILE_URL,
@@ -52,7 +52,12 @@ class USArmyFUDS(ExtractTransformLoad):
 
     def transform(self) -> None:
         logger.info("Starting FUDS transform.")
+        # before we try to do any transformation, get the tract data
+        # so it's loaded and the census ETL is out of scope
+        logger.info("Pre-computing tract geometries")
+        get_tract_geojson()
 
+        logger.info("Loading FUDs data as GeoDataFrame for transform")
         raw_df = gpd.read_file(
             filename=self.DOWNLOAD_FILE_NAME,
             low_memory=False,

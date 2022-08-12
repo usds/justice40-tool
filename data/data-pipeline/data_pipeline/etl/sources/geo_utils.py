@@ -2,8 +2,33 @@
 
 from pathlib import Path
 from typing import Optional
+from functools import lru_cache
 import geopandas as gpd
 from .census.etl import CensusETL
+from data_pipeline.utils import get_module_logger
+
+logger = get_module_logger(__name__)
+
+
+@lru_cache(maxsize=None)
+def get_tract_geojson(
+    _tract_data_path: Optional[Path] = None,
+) -> gpd.GeoDataFrame:
+    logger.info("Loading tract geometry data from census ETL")
+    GEOJSON_PATH = _tract_data_path
+    if GEOJSON_PATH is None:
+        GEOJSON_PATH = CensusETL.NATIONAL_TRACT_JSON_PATH
+        if not GEOJSON_PATH.exists():
+            logger.debug("Census data has not been computed, running")
+            census_etl = CensusETL()
+            census_etl.extract()
+            census_etl.transform()
+            census_etl.load()
+        else:
+            logger.debug("Loading existing tract geojson")
+    tract_data = gpd.read_file(GEOJSON_PATH, include_fields=["GEOID10"])
+    tract_data.rename(columns={"GEOID10": "GEOID10_TRACT"}, inplace=True)
+    return tract_data
 
 
 def add_tracts_for_geometries(
@@ -23,16 +48,8 @@ def add_tracts_for_geometries(
                       maps the points in DF to census tracts and a geometry column for later
                       spatial analysis
     """
-    GEOJSON_PATH = _tract_data_path
-    if GEOJSON_PATH is None:
-        GEOJSON_PATH = CensusETL.NATIONAL_TRACT_JSON_PATH
-        if not GEOJSON_PATH.exists():
-            census_etl = CensusETL()
-            census_etl.extract()
-            census_etl.transform()
-            census_etl.load()
-    tract_data = gpd.read_file(GEOJSON_PATH, include_fields=["GEOID10"])
-    tract_data.rename(columns={"GEOID10": "GEOID10_TRACT"}, inplace=True)
+    logger.debug("Appending tract data to dataframe")
+    tract_data = get_tract_geojson(_tract_data_path)
     assert (
         tract_data.crs == df.crs
     ), f"Dataframe must be projected to {tract_data.crs}"
