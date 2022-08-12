@@ -13,7 +13,7 @@ logger = get_module_logger(__name__)
 
 
 def _fake_add_tracts_for_geometries(df):
-    """The actual geojoin is too slow for tests. Use procomputed results."""
+    """The actual geojoin is too slow for tests. Use precomputed results."""
     lookups = {
         (-121.39361572299998, 38.87463378900003): "06061021322",
         (-121.40020751999998, 38.897583008000026): "06061021322",
