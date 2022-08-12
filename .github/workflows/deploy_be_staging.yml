@@ -38,6 +38,12 @@ jobs:
         uses: snok/install-poetry@v1
       - name: Print Poetry settings
         run: poetry show -v
+      - name: Install GDAL/ogr2ogr
+        run: |
+          sudo add-apt-repository ppa:ubuntugis/ppa
+          sudo apt-get update
+          sudo apt-get -y install gdal-bin
+          ogrinfo --version
       - name: Install dependencies
         run: poetry add s4cmd && poetry install
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
@@ -71,12 +77,6 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: "github-actions[bot]"
           allow-repeats: false
-      - name: Install GDAL/ogr2ogr
-        run: |
-          sudo add-apt-repository ppa:ubuntugis/ppa
-          sudo apt-get update
-          sudo apt-get -y install gdal-bin
-          ogrinfo --version
       - name: Set timezone for tippecanoe
         uses: szenius/set-timezone@v1.0
         with:
