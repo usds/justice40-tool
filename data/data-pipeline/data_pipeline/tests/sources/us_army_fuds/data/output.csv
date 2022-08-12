@@ -1,4 +1,4 @@
-GEOID10_TRACT,Count of eligible Formerly Used Defense Site (FUDS) properties centroids,Count of ineligible Formerly Used Defense Site (FUDS) properties centroids,Boolean expressing whether any eligible Formerly Used Defense Sites (FUDS) have centroids in the tract
+GEOID10_TRACT,Count of eligible Formerly Used Defense Site (FUDS) properties centroids,Count of ineligible Formerly Used Defense Site (FUDS) properties centroids,Is there at least one Formerly Used Defense Site (FUDS) in the tract?
 06027000800,3,14,True
 06061021322,1,2,True
 06069000802,1,0,True
