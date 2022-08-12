@@ -1,6 +1,8 @@
 from pathlib import Path
+from re import I
 import geopandas as gpd
 import pandas as pd
+import numpy as np
 
 from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
 from data_pipeline.utils import get_module_logger, download_file_from_url
@@ -66,41 +68,28 @@ class USArmyFUDS(ExtractTransformLoad):
         df_with_tracts = add_tracts_for_geometries(raw_df)
 
         # Now, do some counting
-        # XXX: @emma-nechamkin do the conditions for has_eligible_projects and
-        # has_ineligble_projects look like what you were thinking?
-        df_with_tracts.loc[
+        HAS_FUDS = "has_fuds"
+        df_with_tracts[HAS_FUDS] = np.where(
             (
                 (df_with_tracts.ELIGIBILITY == "Eligible")
                 & (df_with_tracts.HASPROJECTS == "Yes")
             ),
-            "has_eligible_projects",
-        ] = 1
-        df_with_tracts.has_eligible_projects.fillna(0, inplace=True)
-        df_with_tracts.loc[
-            (
-                (df_with_tracts.ELIGIBILITY == "Inligible")
-                | (df_with_tracts.HASPROJECTS == "No")
-                | (df_with_tracts.ELIGIBILITY.isna())
-                | (df_with_tracts.HASPROJECTS.isna())
-            ),
-            "has_ineligible_projects",
-        ] = 1
-        df_with_tracts.has_ineligible_projects.fillna(0, inplace=True)
+            self.ELIGIBLE_FUDS_COUNT_FIELD_NAME,
+            self.INELIGIBLE_FUDS_COUNT_FIELD_NAME,
+        )
         self.output_df = (
-            df_with_tracts.groupby("GEOID10_TRACT")[
-                ["has_eligible_projects", "has_ineligible_projects"]
-            ]
-            .sum()
-            .rename(
-                columns={
-                    "has_eligible_projects": self.ELIGIBLE_FUDS_COUNT_FIELD_NAME,
-                    "has_ineligible_projects": self.INELIGIBLE_FUDS_COUNT_FIELD_NAME,
-                }
-            )
-        ).reset_index()
-        for col in [self.ELIGIBLE_FUDS_COUNT_FIELD_NAME, self.INELIGIBLE_FUDS_COUNT_FIELD_NAME]:
-            self.output_df[col] = self.output_df[col].astype('int64')
-
-        self.output_df[self.ELIGIBLE_FUDS_BINARY_FIELD_NAME] = (
-            self.output_df[self.ELIGIBLE_FUDS_COUNT_FIELD_NAME] > 0.0
+            (
+                df_with_tracts.groupby([self.GEOID_TRACT_FIELD_NAME, HAS_FUDS])
+                .size()
+                .reset_index()
+                .pivot(columns=HAS_FUDS, index=self.GEOID_TRACT_FIELD_NAME)
+                .fillna(0)
+            )[0]
+            .astype("int64")
+            .reset_index()
+        )
+        self.output_df[self.ELIGIBLE_FUDS_BINARY_FIELD_NAME] = np.where(
+            self.output_df[self.ELIGIBLE_FUDS_COUNT_FIELD_NAME] > 0.0,
+            True,
+            False,
         )
