@@ -169,3 +169,17 @@ class TestUSArmyFUDSETL(TestETL):
             new=_fake_add_tracts_for_geometries,
         ):
             return super().test_get_data_frame_base(mock_etl, mock_paths)
+
+    def test_tracts_without_fuds_not_in_results(self, mock_etl, mock_paths):
+        with mock.patch(
+            "data_pipeline.etl.sources.us_army_fuds.etl.add_tracts_for_geometries",
+            new=_fake_add_tracts_for_geometries,
+        ):
+            etl = self._setup_etl_instance_and_run_extract(
+                mock_etl=mock_etl, mock_paths=mock_paths
+            )
+            etl.transform()
+            etl.validate()
+            etl.load()
+            df = etl.get_data_frame()
+            assert len(df[etl.GEOID_TRACT_FIELD_NAME]) == len(self._FIXTURES_SHARED_TRACT_IDS)
