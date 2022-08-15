@@ -1,4 +1,4 @@
-# DOT travel disadvantage
+# DOT travel barriers
 
 The below description is taken from DOT directly: 
 
