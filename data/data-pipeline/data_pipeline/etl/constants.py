@@ -10,6 +10,11 @@ DATASET_LIST = [
         "class_name": "NationalRiskIndexETL",
     },
     {
+        "name": "travel_composite",
+        "module_dir": "dot_travel_composite",
+        "class_name": "TravelCompositeETL",
+    },
+    {
         "name": "tree_equity_score",
         "module_dir": "tree_equity_score",
         "class_name": "TreeEquityScoreETL",
