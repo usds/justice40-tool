@@ -344,6 +344,9 @@ CDC_SVI_INDEX_RPL_THEMES_OVERALL_FIELD: str = (
 )
 CDC_SVI_INDEX_THEMES_PRIORITY_COMMUNITY: str = "At or above 90 for overall percentile ranking according to Social Vulnerability Indices"
 
+# DOT Travel Burden Data
+DOT_TRAVEL_BURDEN_FIELD: str = "DOT Travel Access Disadvantage"
+
 # Maryland EJSCREEN Data.
 MARYLAND_EJSCREEN_SCORE_FIELD: str = "Maryland Environmental Justice Score"
 
@@ -415,6 +418,7 @@ DIESEL_PARTICULATE_MATTER_LOW_INCOME_FIELD = (
     "diesel particulate matter and is low income?"
 )
 TRAFFIC_PROXIMITY_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for traffic proximity and is low income?"
+
 
 # Affordable and Sustainable Housing
 LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD = (
@@ -494,6 +498,10 @@ TRAFFIC_PROXIMITY_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
     f"traffic proximity{SCORE_M_LOW_INCOME_SUFFIX}?"
 )
 
+DOT_TRAVEL_BURDEN_LOW_INCOME_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile "
+    f"for DOT transit burden and is low income?"
+)
 # Affordable and Sustainable Housing
 LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for lead paint,"
@@ -624,6 +632,7 @@ PM25_EXCEEDS_PCTILE_THRESHOLD = (
 )
 DIESEL_EXCEEDS_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for diesel particulate matter"
 TRAFFIC_PROXIMITY_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for traffic proximity"
+DOT_BURDEN_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for DOT travel disadvantage"
 LEAD_PAINT_PROXY_PCTILE_THRESHOLD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for lead paint and"
     f" the median house value is less than {MEDIAN_HOUSE_VALUE_PERCENTILE}th "

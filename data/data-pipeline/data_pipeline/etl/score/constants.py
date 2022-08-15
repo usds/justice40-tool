@@ -296,6 +296,9 @@ TILES_SCORE_COLUMNS = {
     field_names.FPL_200_SERIES: "FPL200S",
     ## Low high school for t&wd
     field_names.WORKFORCE_SOCIO_INDICATORS_EXCEEDED: "M_WKFC_EBSI",
+    field_names.DOT_BURDEN_PCTILE_THRESHOLD: "TD_ET",
+    field_names.DOT_TRAVEL_BURDEN_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX: "TD_PFS"
     ## FPL 200 and low higher ed for all others should no longer be M_EBSI, but rather
     ## FPL_200 (there is no higher ed in narwhal)
 }
@@ -348,4 +351,5 @@ TILES_SCORE_FLOAT_COLUMNS = [
     field_names.WASTEWATER_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.COLLEGE_NON_ATTENDANCE_FIELD,
     field_names.COLLEGE_ATTENDANCE_FIELD,
+    field_names.DOT_TRAVEL_BURDEN_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
 ]
