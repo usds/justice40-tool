@@ -14,5 +14,3 @@ Resilience disadvantage identifies communities vulnerable to hazards caused by c
 - Equity disadvantage identifies communities with a with a high percentile of persons (age 5+) who speak English "less than well." (1)
 
 The CEJST uses only Transportation Access Disadvantage. 
-
-For more information: https://www.transportation.gov/equity-Justice40
