@@ -164,7 +164,7 @@ datasets:
     load_fields:
       - short_name: "travel_burden"
         df_field_name: "TRAVEL_BURDEN_FIELD_NAME"
-        long_name: "DOT Travel Access Disadvantage" 
+        long_name: "DOT Travel Barriers Score" 
         field_type: float
         include_in_tiles: true
         include_in_downloadable_files: true
