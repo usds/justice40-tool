@@ -70,5 +70,4 @@ class TravelCompositeETL(ExtractTransformLoad):
         self.output_df = df_dot
 
     def load(self) -> None:
-        # Suppress scientific notation.
-        super().load(float_format="%.10f")
+        super().load()
