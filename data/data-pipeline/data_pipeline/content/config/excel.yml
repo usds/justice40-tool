@@ -258,6 +258,12 @@ sheets:
       - score_name: Unemployment (percent) in 2009 (island areas) and 2010 (states and PR)
         label: Unemployment (percent) in 2009 (island areas) and 2010 (states and PR)
         format: percentage
+      - score_name: Greater than or equal to the 90th percentile for DOT transit burden and is low income?
+        label: Greater than or equal to the 90th percentile for DOT transit burden and is low income?
+        format: bool
+      - score_name: DOT Travel Access Disadvantage (percentile)
+        label: DOT Travel Access Disadvantage (percentile)
+        format: percentage
       - score_name: Percentage households below 100% of federal poverty line in 2009 (island areas) and 2010 (states and PR)
         label: Percentage households below 100% of federal poverty line in 2009 (island areas) and 2010 (states and PR)
         format: percentage
