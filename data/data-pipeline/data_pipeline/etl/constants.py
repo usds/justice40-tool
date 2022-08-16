@@ -40,6 +40,11 @@ DATASET_LIST = [
         "class_name": "FloodRiskETL",
     },
     {
+        "name": "fsf_wildfire_risk",
+        "module_dir": "fsf_wildfire_risk",
+        "class_name": "WildfireRiskETL",
+    },
+    {
         "name": "ejscreen",
         "module_dir": "ejscreen",
         "class_name": "EJSCREENETL",
