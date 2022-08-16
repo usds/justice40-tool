@@ -129,3 +129,43 @@ datasets:
         include_in_tiles: true
         include_in_downloadable_files: true
 
+  - long_name: "First Street Foundation Flood Risk"
+    short_name: "FSF Flood Risk"
+    module_name: fsf_flood_risk
+    input_geoid_tract_field_name: "GEOID"
+    load_fields:
+      - short_name: "flood_eligible_properties"
+        df_field_name: "COUNT_PROPERTIES"
+        long_name: "Count of properties eligible for flood risk calculation within tract (floor of 250)" 
+        field_type: float
+        include_in_tiles: false
+        include_in_downloadable_files: true
+        create_percentile: false
+      - short_name: "flood_risk_properties_today"
+        df_field_name: "PROPERTIES_AT_RISK_FROM_FLOODING_TODAY"
+        long_name: "Count of properties at risk of flood today" 
+        field_type: float
+        include_in_tiles: false
+        include_in_downloadable_files: true
+        create_percentile: false
+      - short_name: "flood_risk_properties_30yrs"
+        df_field_name: "PROPERTIES_AT_RISK_FROM_FLOODING_IN_30_YEARS"
+        long_name: "Count of properties at risk of flood in 30 years" 
+        field_type: float
+        include_in_tiles: false
+        include_in_downloadable_files: true
+        create_percentile: false
+      - short_name: "flood_risk_share_today"
+        df_field_name: "SHARE_OF_PROPERTIES_AT_RISK_FROM_FLOODING_TODAY"
+        long_name: "Share of properties at risk of flood today" 
+        field_type: float
+        include_in_tiles: false
+        include_in_downloadable_files: true
+        create_percentile: true
+      - short_name: "flood_risk_share_30yrs"
+        df_field_name: "SHARE_OF_PROPERTIES_AT_RISK_FROM_FLOODING_IN_30_YEARS"
+        long_name: "Share of properties at risk of flood in 30 years" 
+        field_type: float
+        include_in_tiles: false
+        include_in_downloadable_files: true
+        create_percentile: true
