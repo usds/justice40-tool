@@ -1,0 +1,16 @@
+GEOID10_TRACT,Count of eligible Formerly Used Defense Site (FUDS) properties centroids,Count of ineligible Formerly Used Defense Site (FUDS) properties centroids,Is there at least one Formerly Used Defense Site (FUDS) in the tract?
+06027000800,3,14,True
+06061021322,1,2,True
+06069000802,1,0,True
+15001021010,1,2,True
+15001021101,0,1,False
+15001021402,1,2,True
+15001021800,1,2,True
+15003010201,2,1,True
+15007040603,0,2,False
+15007040604,1,2,True
+15007040700,1,2,True
+15009030100,0,1,False
+15009030201,1,2,True
+15009030402,1,2,True
+15009030800,1,2,True

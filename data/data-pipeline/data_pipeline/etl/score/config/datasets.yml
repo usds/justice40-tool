@@ -117,6 +117,34 @@ datasets:
         field_type: float
         include_in_downloadable_files: true
         include_in_tiles: true
+  - long_name: "Formerly Used Defense Sites"
+    short_name: "FUDS"
+    module_name: "us_army_fuds"
+    load_fields:
+      - short_name: "fuds_count"
+        df_field_name: "ELIGIBLE_FUDS_COUNT_FIELD_NAME"
+        long_name: "Count of eligible Formerly Used Defense Site (FUDS) properties centroids"
+        description_short: 
+          "The number of FUDS marked as Eligible and Has Project in the tract."
+        field_type: int64
+        include_in_tiles: false
+        include_in_downloadable_files: false
+      - short_name: "not_fuds_ct"
+        df_field_name: "INELIGIBLE_FUDS_COUNT_FIELD_NAME"
+        long_name: "Count of ineligible Formerly Used Defense Site (FUDS) properties centroids"
+        description_short: 
+          "The number of FUDS marked as Ineligible or Project in the tract."
+        field_type: int64
+        include_in_tiles: false
+        include_in_downloadable_files: false
+      - short_name: "has_fuds"
+        df_field_name: "ELIGIBLE_FUDS_BINARY_FIELD_NAME"
+        long_name: "Is there at least one Formerly Used Defense Site (FUDS) in the tract?"
+        description_short: 
+          "Whether the tract has a FUDS"
+        field_type: bool
+        include_in_tiles: false
+        include_in_downloadable_files: false
   - long_name: "Example ETL"
     short_name: "Example"
     module_name: "example_dataset"
@@ -128,4 +156,3 @@ datasets:
         field_type: float
         include_in_tiles: true
         include_in_downloadable_files: true
-
