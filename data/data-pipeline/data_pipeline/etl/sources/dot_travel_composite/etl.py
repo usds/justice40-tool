@@ -36,17 +36,6 @@ class TravelCompositeETL(ExtractTransformLoad):
         self.INPUT_TRAVEL_DISADVANTAGE_FIELD_NAME = "Transp_TH"
         self.INPUT_GEOID_TRACT_FIELD_NAME = "FIPS"
 
-    def extract(self) -> None:
-        """Unzips dataset from the DOT data source and writes the files
-        to the temporary data folder for use in the transform() method
-        """
-        logger.info("Downloading DOT Travel Disadvantage Data")
-
-        super().extract(
-            source_url=self.SOURCE_URL,
-            extract_path=self.get_tmp_path(),
-        )
-
     def transform(self) -> None:
         """Reads the unzipped data file into memory and applies the following
         transformations to prepare it for the load() method:
@@ -68,6 +57,3 @@ class TravelCompositeETL(ExtractTransformLoad):
         ).dropna(subset=[self.GEOID_TRACT_FIELD_NAME])
         # Assign the final df to the class' output_df for the load method
         self.output_df = df_dot
-
-    def load(self) -> None:
-        super().load()
