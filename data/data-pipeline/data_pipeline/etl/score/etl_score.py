@@ -11,6 +11,10 @@ from data_pipeline.etl.sources.national_risk_index.etl import (
 from data_pipeline.etl.sources.dot_travel_composite.etl import (
     TravelCompositeETL,
 )
+from data_pipeline.etl.sources.fsf_flood_risk.etl import (
+    FloodRiskETL,
+)
+from data_pipeline.etl.sources.fsf_wildfire_risk.etl import WildfireRiskETL
 from data_pipeline.score.score_runner import ScoreRunner
 from data_pipeline.score import field_names
 from data_pipeline.etl.score import constants
@@ -41,6 +45,8 @@ class ScoreETL(ExtractTransformLoad):
         self.child_opportunity_index_df: pd.DataFrame
         self.hrs_df: pd.DataFrame
         self.dot_travel_disadvantage_df: pd.DataFrame
+        self.fsf_flood_df: pd.DataFrame
+        self.fsf_fire_df: pd.DataFrame
 
     def extract(self) -> None:
         logger.info("Loading data sets from disk.")
@@ -121,6 +127,12 @@ class ScoreETL(ExtractTransformLoad):
 
         # Load DOT Travel Disadvantage
         self.dot_travel_disadvantage_df = TravelCompositeETL.get_data_frame()
+
+        # Load fire risk data
+        self.fsf_fire_df = WildfireRiskETL.get_data_frame()
+
+        # Load flood risk data
+        self.fsf_flood_df = FloodRiskETL.get_data_frame()
 
         # Load GeoCorr Urban Rural Map
         geocorr_urban_rural_csv = (
@@ -342,6 +354,8 @@ class ScoreETL(ExtractTransformLoad):
             self.child_opportunity_index_df,
             self.hrs_df,
             self.dot_travel_disadvantage_df,
+            self.fsf_flood_df,
+            self.fsf_fire_df,
         ]
 
         # Sanity check each data frame before merging.
@@ -426,6 +440,8 @@ class ScoreETL(ExtractTransformLoad):
             field_names.UST_FIELD,
             field_names.DOT_TRAVEL_BURDEN_FIELD,
             field_names.AGRICULTURAL_VALUE_BOOL_FIELD,
+            field_names.FUTURE_FLOOD_RISK_FIELD,
+            field_names.FUTURE_WILDFIRE_RISK_FIELD,
             field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD,
         ]
 
