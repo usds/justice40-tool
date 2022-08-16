@@ -19,7 +19,7 @@ packages = [
 CensusData = "^1.13"
 click = "8.0.4"  # pinning for now per https://github.com/psf/black/issues/2964
 dynaconf = "^3.1.4"
-geopandas = "^0.9.0"
+geopandas = "^0.11.0"
 ipdb = "^0.13.9"
 ipython = "^7.31.1"
 jupyter = "^1.0.0"
@@ -40,6 +40,7 @@ types-requests = "^2.25.0"
 us = "^2.0.2"
 xlsxwriter = "^2.0.0"
 pydantic = "^1.9.0"
+Rtree = "^1.0.0"
 
 [tool.poetry.dev-dependencies]
 black = {version = "^21.6b0", allow-prereleases = true}
@@ -58,6 +59,7 @@ pytest-snapshot = "^0.8.1"
 nb-black = "^1.0.7"
 seaborn = "^0.11.2"
 papermill = "^2.3.4"
+jupyterlab = "^3.4.4"
 
 [build-system]
 build-backend = "poetry.core.masonry.api"

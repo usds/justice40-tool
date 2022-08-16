@@ -77,7 +77,7 @@ class DatasetsConfig:
         long_name: str
         short_name: str
         module_name: str
-        input_geoid_tract_field_name: str
         load_fields: List[LoadField]
+        input_geoid_tract_field_name: Optional[str] = None
 
     datasets: List[Dataset]

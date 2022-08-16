@@ -130,6 +130,11 @@ DATASET_LIST = [
         "module_dir": "census_acs_2010",
         "class_name": "CensusACS2010ETL",
     },
+    {
+        "name": "us_army_fuds",
+        "module_dir": "us_army_fuds",
+        "class_name": "USArmyFUDS",
+    },
 ]
 
 CENSUS_INFO = {
