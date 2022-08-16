@@ -149,14 +149,14 @@ datasets:
     short_name: "eAMLIS"
     module_name: "eamlis"
     load_fields:
-      - short_name: "has_amlis"
-        df_field_name: "BINARY_HAS_AMLIS"
+      - short_name: "has_aml"
+        df_field_name: "AML_BOOLEAN"
         long_name: "Is there at least one abandoned mine in this census tract?"
         description_short: 
           "Whether the tract has an abandoned mine"
         field_type: bool
-        include_in_tiles: false
-        include_in_downloadable_files: false   
+        include_in_tiles: true
+        include_in_downloadable_files: true
   - long_name: "Example ETL"
     short_name: "Example"
     module_name: "example_dataset"

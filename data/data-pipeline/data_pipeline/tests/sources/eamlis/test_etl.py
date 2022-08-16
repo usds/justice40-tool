@@ -4,7 +4,7 @@ import pathlib
 from data_pipeline.etl.base import ValidGeoLevel
 
 from data_pipeline.etl.sources.eamlis.etl import (
-    AbandonedMineLandInventorySystem,
+    AbandonedMineETL,
 )
 from data_pipeline.tests.sources.example.test_etl import TestETL
 from data_pipeline.utils import get_module_logger
@@ -37,7 +37,7 @@ def _fake_add_tracts_for_geometries(df):
     return df
 
 
-class TestAMLISETL(TestETL):
+class TestAbandondedLandMineETL(TestETL):
     """Tests the Abandoned Mine Dataset ETL
 
     This uses pytest-snapshot.
@@ -46,7 +46,7 @@ class TestAMLISETL(TestETL):
             --snapshot-update
     """
 
-    _ETL_CLASS = AbandonedMineLandInventorySystem
+    _ETL_CLASS = AbandonedMineETL
 
     _SAMPLE_DATA_PATH = pathlib.Path(__file__).parents[0] / "data"
     _SAMPLE_DATA_FILE_NAME = "eAMLIS export of all data.tsv"
@@ -73,7 +73,7 @@ class TestAMLISETL(TestETL):
         assert etl.GEO_LEVEL == ValidGeoLevel.CENSUS_TRACT
         assert etl.COLUMNS_TO_KEEP == [
             etl.GEOID_TRACT_FIELD_NAME,
-            etl.BINARY_HAS_AMLIS,
+            etl.AML_BOOLEAN,
         ]
 
     def test_get_output_file_path(self, mock_etl, mock_paths):

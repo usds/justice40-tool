@@ -10,7 +10,7 @@ from data_pipeline.utils import get_module_logger
 logger = get_module_logger(__name__)
 
 
-class AbandonedMineLandInventorySystem(ExtractTransformLoad):
+class AbandonedMineETL(ExtractTransformLoad):
     """Data from Office Of Surface Mining Reclamation and Enforcement's
     eAMLIS. These are the locations of abandoned mines.
     """
@@ -18,7 +18,7 @@ class AbandonedMineLandInventorySystem(ExtractTransformLoad):
     # Metadata for the baseclass
     NAME = "eamlis"
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
-    BINARY_HAS_AMLIS: str = "Has abandoned mine"
+    AML_BOOLEAN: str
 
     # Define these for easy code completion
     def __init__(self):
@@ -35,7 +35,7 @@ class AbandonedMineLandInventorySystem(ExtractTransformLoad):
 
         self.COLUMNS_TO_KEEP = [
             self.GEOID_TRACT_FIELD_NAME,
-            self.BINARY_HAS_AMLIS,
+            self.AML_BOOLEAN,
         ]
 
         self.output_df: pd.DataFrame
@@ -55,9 +55,9 @@ class AbandonedMineLandInventorySystem(ExtractTransformLoad):
             ),
             crs="epsg:4326",
         )
-        gdf.drop_duplicates(subset=["geometry"], inplace=True, keep="last")
+        gdf = gdf.drop_duplicates(subset=["geometry"], keep="last")
         gdf_tracts = add_tracts_for_geometries(gdf)
-        gdf_tracts.drop_duplicates(self.GEOID_TRACT_FIELD_NAME, inplace=True)
-        gdf_tracts[self.BINARY_HAS_AMLIS] = True
+        gdf = gdf_tracts.drop_duplicates(self.GEOID_TRACT_FIELD_NAME)
+        gdf_tracts[self.AML_BOOLEAN] = True
         self.output_df = gdf_tracts[self.COLUMNS_TO_KEEP]
 
