@@ -35,6 +35,11 @@ DATASET_LIST = [
         "class_name": "MappingForEJETL",
     },
     {
+        "name": "fsf_flood_risk",
+        "module_dir": "fsf_flood_risk",
+        "class_name": "FloodRiskETL",
+    },
+    {
         "name": "ejscreen",
         "module_dir": "ejscreen",
         "class_name": "EJSCREENETL",
