@@ -169,3 +169,44 @@ datasets:
         include_in_tiles: false
         include_in_downloadable_files: true
         create_percentile: true
+
+  - long_name: "First Street Foundation Wildfire Risk"
+    short_name: "FSF Wildfire Risk"
+    module_name: fsf_wildfire_risk
+    input_geoid_tract_field_name: "GEOID"
+    load_fields:
+      - short_name: "fire_eligible_properties"
+        df_field_name: "COUNT_PROPERTIES"
+        long_name: "Count of properties eligible for wildfire risk calculation within tract (floor of 250)" 
+        field_type: float
+        include_in_tiles: false
+        include_in_downloadable_files: true
+        create_percentile: false
+      - short_name: "fire_risk_properties_today"
+        df_field_name: "PROPERTIES_AT_RISK_FROM_FIRE_TODAY"
+        long_name: "Count of properties at risk of wildfire today" 
+        field_type: float
+        include_in_tiles: false
+        include_in_downloadable_files: true
+        create_percentile: false
+      - short_name: "fire_risk_properties_30yrs"
+        df_field_name: "PROPERTIES_AT_RISK_FROM_FIRE_IN_30_YEARS"
+        long_name: "Count of properties at risk of wildfire in 30 years" 
+        field_type: float
+        include_in_tiles: false
+        include_in_downloadable_files: true
+        create_percentile: false
+      - short_name: "fire_risk_share_today"
+        df_field_name: "SHARE_OF_PROPERTIES_AT_RISK_FROM_FIRE_TODAY"
+        long_name: "Share of properties at risk of fire today" 
+        field_type: float
+        include_in_tiles: false
+        include_in_downloadable_files: true
+        create_percentile: true
+      - short_name: "fire_risk_share_30yrs"
+        df_field_name: "SHARE_OF_PROPERTIES_AT_RISK_FROM_FIRE_IN_30_YEARS"
+        long_name: "Share of properties at risk of fire in 30 years" 
+        field_type: float
+        include_in_tiles: false
+        include_in_downloadable_files: true
+        create_percentile: true
