@@ -4,8 +4,8 @@ from pathlib import Path
 from typing import Optional
 from functools import lru_cache
 import geopandas as gpd
-from .census.etl import CensusETL
 from data_pipeline.utils import get_module_logger
+from .census.etl import CensusETL
 
 logger = get_module_logger(__name__)
 
