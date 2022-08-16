@@ -1,7 +1,7 @@
 # Michigan EJSCREEN
-
+<!-- markdown-link-check-disable -->
 The Michigan EJSCREEN description and publication can be found [here](https://deepblue.lib.umich.edu/bitstream/handle/2027.42/149105/AssessingtheStateofEnvironmentalJusticeinMichigan_344.pdf).
-
+<!-- markdown-link-check-enable-->
 
 #### Some notes about the input source data column fields:
 

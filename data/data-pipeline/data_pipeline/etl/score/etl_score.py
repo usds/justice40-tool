@@ -8,6 +8,9 @@ from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.sources.national_risk_index.etl import (
     NationalRiskIndexETL,
 )
+from data_pipeline.etl.sources.dot_travel_composite.etl import (
+    TravelCompositeETL,
+)
 from data_pipeline.score.score_runner import ScoreRunner
 from data_pipeline.score import field_names
 from data_pipeline.etl.score import constants
@@ -37,6 +40,7 @@ class ScoreETL(ExtractTransformLoad):
         self.census_2010_df: pd.DataFrame
         self.child_opportunity_index_df: pd.DataFrame
         self.hrs_df: pd.DataFrame
+        self.dot_travel_disadvantage_df: pd.DataFrame
 
     def extract(self) -> None:
         logger.info("Loading data sets from disk.")
@@ -114,6 +118,9 @@ class ScoreETL(ExtractTransformLoad):
 
         # Load FEMA national risk index data
         self.national_risk_index_df = NationalRiskIndexETL.get_data_frame()
+
+        # Load DOT Travel Disadvantage
+        self.dot_travel_disadvantage_df = TravelCompositeETL.get_data_frame()
 
         # Load GeoCorr Urban Rural Map
         geocorr_urban_rural_csv = (
@@ -334,6 +341,7 @@ class ScoreETL(ExtractTransformLoad):
             self.census_2010_df,
             self.child_opportunity_index_df,
             self.hrs_df,
+            self.dot_travel_disadvantage_df,
         ]
 
         # Sanity check each data frame before merging.
@@ -416,6 +424,7 @@ class ScoreETL(ExtractTransformLoad):
             field_names.HEALTHY_FOOD_FIELD,
             field_names.IMPENETRABLE_SURFACES_FIELD,
             field_names.UST_FIELD,
+            field_names.DOT_TRAVEL_BURDEN_FIELD,
             field_names.AGRICULTURAL_VALUE_BOOL_FIELD,
             field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD,
         ]

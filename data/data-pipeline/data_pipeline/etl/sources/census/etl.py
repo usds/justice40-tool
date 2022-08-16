@@ -20,19 +20,20 @@ class GeoFileType(Enum):
 
 
 class CensusETL(ExtractTransformLoad):
+    SHP_BASE_PATH = ExtractTransformLoad.DATA_PATH / "census" / "shp"
+    GEOJSON_BASE_PATH = ExtractTransformLoad.DATA_PATH / "census" / "geojson"
+    CSV_BASE_PATH = ExtractTransformLoad.DATA_PATH / "census" / "csv"
+    GEOJSON_PATH = ExtractTransformLoad.DATA_PATH / "census" / "geojson"
+    NATIONAL_TRACT_CSV_PATH = CSV_BASE_PATH / "us.csv"
+    NATIONAL_TRACT_JSON_PATH = GEOJSON_BASE_PATH / "us.json"
+    GEOID_TRACT_FIELD_NAME: str = "GEOID10_TRACT"
+
     def __init__(self):
-        self.SHP_BASE_PATH = self.DATA_PATH / "census" / "shp"
-        self.GEOJSON_BASE_PATH = self.DATA_PATH / "census" / "geojson"
-        self.CSV_BASE_PATH = self.DATA_PATH / "census" / "csv"
         # the fips_states_2010.csv is generated from data here
         # https://www.census.gov/geographies/reference-files/time-series/geo/tallies.html
         self.STATE_FIPS_CODES = get_state_fips_codes(self.DATA_PATH)
-        self.GEOJSON_PATH = self.DATA_PATH / "census" / "geojson"
         self.TRACT_PER_STATE: dict = {}  # in-memory dict per state
         self.TRACT_NATIONAL: list = []  # in-memory global list
-        self.NATIONAL_TRACT_CSV_PATH = self.CSV_BASE_PATH / "us.csv"
-        self.NATIONAL_TRACT_JSON_PATH = self.GEOJSON_BASE_PATH / "us.json"
-        self.GEOID_TRACT_FIELD_NAME: str = "GEOID10_TRACT"
 
     def _path_for_fips_file(
         self, fips_code: str, file_type: GeoFileType

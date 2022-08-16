@@ -246,6 +246,8 @@ class ScoreNarwhal(Score):
         # In Xth percentile or above for PM 2.5 (Source: EPA, Office of Air and Radiation (OAR) fusion of model and monitor data)]
         # or
         # In Xth percentile or above traffic proximity and volume (Source: 2017 U.S. Department of Transportation (DOT) traffic data
+        # or
+        # In Xth percentile or above for DOT Travel Disadvantage
         # AND
         # Low income: In Nth percentile or above for percent of block group population
         # of households where household income is less than or equal to twice the federal
@@ -255,11 +257,20 @@ class ScoreNarwhal(Score):
         transportion_eligibility_columns = [
             field_names.DIESEL_PARTICULATE_MATTER_LOW_INCOME_FIELD,
             field_names.TRAFFIC_PROXIMITY_LOW_INCOME_FIELD,
+            field_names.DOT_TRAVEL_BURDEN_LOW_INCOME_FIELD,
         ]
 
         self.df[field_names.DIESEL_EXCEEDS_PCTILE_THRESHOLD] = (
             self.df[
                 field_names.DIESEL_FIELD + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        )
+
+        self.df[field_names.DOT_BURDEN_PCTILE_THRESHOLD] = (
+            self.df[
+                field_names.DOT_TRAVEL_BURDEN_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
             ]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
@@ -274,6 +285,7 @@ class ScoreNarwhal(Score):
         self.df[field_names.TRAFFIC_THRESHOLD_EXCEEDED] = (
             self.df[field_names.TRAFFIC_PROXIMITY_PCTILE_THRESHOLD]
             | self.df[field_names.DIESEL_EXCEEDS_PCTILE_THRESHOLD]
+            | self.df[field_names.DOT_BURDEN_PCTILE_THRESHOLD]
         )
 
         self.df[field_names.DIESEL_PARTICULATE_MATTER_LOW_INCOME_FIELD] = (
@@ -283,6 +295,11 @@ class ScoreNarwhal(Score):
 
         self.df[field_names.TRAFFIC_PROXIMITY_LOW_INCOME_FIELD] = (
             self.df[field_names.TRAFFIC_PROXIMITY_PCTILE_THRESHOLD]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
+        )
+
+        self.df[field_names.DOT_TRAVEL_BURDEN_LOW_INCOME_FIELD] = (
+            self.df[field_names.DOT_BURDEN_PCTILE_THRESHOLD]
             & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
 

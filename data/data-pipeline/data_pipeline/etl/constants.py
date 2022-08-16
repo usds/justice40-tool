@@ -10,6 +10,11 @@ DATASET_LIST = [
         "class_name": "NationalRiskIndexETL",
     },
     {
+        "name": "travel_composite",
+        "module_dir": "dot_travel_composite",
+        "class_name": "TravelCompositeETL",
+    },
+    {
         "name": "tree_equity_score",
         "module_dir": "tree_equity_score",
         "class_name": "TreeEquityScoreETL",
@@ -139,6 +144,11 @@ DATASET_LIST = [
         "name": "census_acs_2010",
         "module_dir": "census_acs_2010",
         "class_name": "CensusACS2010ETL",
+    },
+    {
+        "name": "us_army_fuds",
+        "module_dir": "us_army_fuds",
+        "class_name": "USArmyFUDS",
     },
 ]
 

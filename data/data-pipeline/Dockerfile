@@ -9,7 +9,8 @@ RUN apt-get update && apt-get install -y \
     unzip \
     wget \
     python3-dev \
-    python3-pip
+    python3-pip \
+    gdal-bin
 
 # tippeanoe
 ENV TZ=America/Los_Angeles
