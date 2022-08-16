@@ -18,7 +18,7 @@ import bbox from '@turf/bbox';
 import * as d3 from 'd3-ease';
 import {isMobile} from 'react-device-detect';
 import {Grid} from '@trussworks/react-uswds';
-import {useWindowSize} from 'react-use';
+import {useWindowSize, useLocalStorage} from 'react-use';
 
 // Contexts:
 import {useFlags} from '../contexts/FlagContext';
@@ -135,6 +135,18 @@ const J40Map = ({location}: IJ40Interface) => {
   const [geolocationInProgress, setGeolocationInProgress] = useState<boolean>(false);
   const [isMobileMapState, setIsMobileMapState] = useState<boolean>(false);
   const {width: windowWidth} = useWindowSize();
+
+  /**
+   * Store the geolocation lock state in local storage. The Geolocation component from MapBox does not
+   * expose (API) various geolocation lock/unlock states in the version we are using. This makes it
+   * challenging to change the UI state to match the Geolocation state. A work around is to store the
+   * geolocation "locked" state in local storage. The local storage state will then be used to show the
+   * "Finding location" message. The local storage will be removed everytime the map is reloaded.
+   *
+   * The "Finding location" message only applies for desktop layouts.
+   */
+  // eslint-disable-next-line max-len
+  const [isGeolocateLocked, setIsGeolocateLocked, removeGeolocateLock] = useLocalStorage('is-geolocate-locked', false, {raw: true});
 
   const mapRef = useRef<MapRef>(null);
   const flags = useFlags();
@@ -268,6 +280,9 @@ const J40Map = ({location}: IJ40Interface) => {
       window.underlyingMap = mapRef.current.getMap();
     }
 
+    // When map loads remove the geolocate lock boolean in local storage
+    removeGeolocateLock();
+
     if (isMobile) setIsMobileMapState(true);
   };
 
@@ -326,6 +341,9 @@ const J40Map = ({location}: IJ40Interface) => {
 
   const onGeolocate = () => {
     setGeolocationInProgress(false);
+
+    // set local storage that location was locked on this app at some point
+    setIsGeolocateLocked(true);
   };
 
   const onClickGeolocate = () => {
@@ -498,9 +516,13 @@ const J40Map = ({location}: IJ40Interface) => {
             <MapSearch goToPlace={goToPlace}/>
 
             <div className={styles.geolocateBox}>
-              {windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && <div
+              {windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG &&
+              <div
                 className={
-                  geolocationInProgress ? styles.geolocateMessage : styles.geolocateMessageHide}>
+                  (geolocationInProgress && !isGeolocateLocked) ?
+                  styles.geolocateMessage :
+                  styles.geolocateMessageHide}
+              >
                 {intl.formatMessage(EXPLORE_COPY.MAP.GEOLOC_MSG_LOCATING)}
               </div>}
               <div className={styles.geolocateIcon}>
