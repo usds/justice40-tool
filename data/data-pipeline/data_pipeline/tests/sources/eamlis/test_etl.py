@@ -51,7 +51,7 @@ class TestAbandondedLandMineETL(TestETL):
     _SAMPLE_DATA_PATH = pathlib.Path(__file__).parents[0] / "data"
     _SAMPLE_DATA_FILE_NAME = "eAMLIS export of all data.tsv"
     _SAMPLE_DATA_ZIP_FILE_NAME = "eAMLIS export of all data.tsv.zip"
-    _EXTRACT_TMP_FOLDER_NAME = "AbandonedMineLandInventorySystem"
+    _EXTRACT_TMP_FOLDER_NAME = "AbandonedMineETL"
 
     def setup_method(self, _method, filename=__file__):
         """Invoke `setup_method` from Parent, but using the current file name.
