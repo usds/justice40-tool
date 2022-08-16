@@ -24,13 +24,29 @@ export const tribalURL = (): string => {
   ].join('/');
 };
 
+
+/**
+ * This component will return the appropriate source and layers for the tribal layer on the
+ * map.
+ *
+ * There are two use cases here, eg, when the MapBox token is or isn't provided. When the token
+ * is not provided, the open-source map will be rendered. When the open-source map is rendered
+ * only the interactive layers are returned from this component. The reason being is that the
+ * other layers are supplied by he getOSBaseMap function.
+ *
+ * @param {AnyLayer} selectedFeatureId
+ * @param {AnyLayer} selectedFeature
+ * @return {Style}
+ */
 const MapTribalLayer = ({
   selectedFeatureId,
   selectedFeature,
 }: IMapTribalLayers) => {
   const tribalSelectionFilter = useMemo(() => ['in', constants.TRIBAL_ID, selectedFeatureId], [selectedFeature]);
 
-  return (
+  return process.env.MAPBOX_STYLES_READ_TOKEN ? (
+
+    // In this case the MapBox token is found and ALL source(s)/layer(s) are returned.
     <Source
       id={constants.TRIBAL_SOURCE_NAME}
       type="vector"
@@ -44,7 +60,6 @@ const MapTribalLayer = ({
       <Layer
         id={constants.TRIBAL_LAYER_ID}
         source-layer={constants.TRIBAL_SOURCE_LAYER}
-        //   filter={['>', constants.SCORE_PROPERTY_LOW, constants.SCORE_BOUNDARY_THRESHOLD]}
         type='fill'
         paint={{
           'fill-color': constants.TRIBAL_FILL_COLOR,
@@ -56,7 +71,7 @@ const MapTribalLayer = ({
       {/* Tribal layer - controls the border between features */}
       <Layer
         id={constants.FEATURE_BORDER_LAYER_ID}
-        source-layer={constants.SCORE_SOURCE_LAYER}
+        source-layer={constants.TRIBAL_SOURCE_LAYER}
         type='line'
         paint={{
           'line-color': constants.FEATURE_BORDER_COLOR,
@@ -95,8 +110,35 @@ const MapTribalLayer = ({
         maxzoom={constants.TRIBAL_MAX_ZOOM}
       />
     </Source>
+  ) : (
+
+    /**
+     * In this case the MapBox token is NOT found and ONLY INTERACTIVE source(s)/layer(s) are returned.
+     * In this case, the other layers (non-interactive) are provided by getOSBaseMap
+     */
+    <Source
+      id={constants.TRIBAL_SOURCE_NAME}
+      type="vector"
+      promoteId={constants.TRIBAL_ID}
+      tiles={[tribalURL()]}
+      minzoom={constants.TRIBAL_MIN_ZOOM}
+      maxzoom={constants.TRIBAL_MAX_ZOOM}
+    >
+
+      {/* Tribal layer - border styling around the selected feature */}
+      <Layer
+        id={constants.SELECTED_TRIBAL_FEATURE_BORDER_LAYER_ID}
+        source-layer={constants.TRIBAL_SOURCE_LAYER}
+        filter={tribalSelectionFilter}
+        type='line'
+        paint={{
+          'line-color': constants.SELECTED_FEATURE_BORDER_COLOR,
+          'line-width': constants.SELECTED_FEATURE_BORDER_WIDTH,
+        }}
+        minzoom={constants.TRIBAL_MIN_ZOOM}
+      />
+    </Source>
   );
 };
 
 export default MapTribalLayer;
-//

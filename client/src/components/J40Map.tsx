@@ -27,6 +27,7 @@ import AreaDetail from './AreaDetail';
 import MapInfoPanel from './mapInfoPanel';
 import MapSearch from './MapSearch';
 import MapTractLayers from './MapTractLayers/MapTractLayers';
+import MapTribalLayer from './MapTribalLayers/MapTribalLayers';
 import LayerSelector from './LayerSelector';
 import TerritoryFocusControl from './territoryFocusControl';
 import {getOSBaseMap} from '../data/getOSBaseMap';
@@ -35,7 +36,6 @@ import {getOSBaseMap} from '../data/getOSBaseMap';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import * as constants from '../data/constants';
 import * as styles from './J40Map.module.scss';
-import MapTribalLayer from './MapTribalLayer/MapTribalLayer';
 declare global {
   interface Window {
     Cypress?: object;
@@ -373,9 +373,8 @@ const J40Map = ({location}: IJ40Interface) => {
           data-cy={'reactMapGL'}
         >
 
-          {/* Load either the Tribal layer or census layer */}
+          {/* Load either the Tribal layer or Census layer depending on the censusSelected state variable */}
           {
-            // Todo: may not need both props...
             censusSelected ?
               <MapTractLayers
                 selectedFeature={selectedFeature}

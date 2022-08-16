@@ -1,9 +1,11 @@
 import {Style} from 'maplibre-gl';
-import * as constants from '../data/constants';
-import {featureURLForTilesetName} from '../components/MapTractLayers/MapTractLayers';
-import {tribalURL} from '../components/MapTribalLayer/MapTribalLayer';
 
-// *********** BASE MAP SOURCES  ***************
+import {featureURLForTilesetName} from '../components/MapTractLayers/MapTractLayers';
+import {tribalURL} from '../components/MapTribalLayers/MapTribalLayers';
+
+import * as constants from '../data/constants';
+
+// *********** OPEN SOURCE BASE MAP CONSTANTS  ***************
 const imageSuffix = constants.isMobile ? '' : '@2x';
 
 // Original "light" Base layer
@@ -24,9 +26,21 @@ const cartoLightBaseLayer = {
 };
 
 
-// Utility function to get OpenSource base maps that are in accordance to JSON spec of MapBox
-// https://docs.mapbox.com/mapbox-gl-js/style-spec/
-export const getOSBaseMap = (censusSelected: boolean) : Style => {
+// *********** OPEN SOURCE STATIC MAP STYLES  ***************
+/**
+ * This function will be called when there is no MapBox token found. This function will
+ * return the open source base map along with styles for the chosen source. We currently
+ * have two sources, either the census tracts or the tribal layer.
+ * *
+ * This function returns a Style in accordance to JSON spec of MapBox
+ * https://docs.mapbox.com/mapbox-gl-js/style-spec/
+ *
+ * @param {boolean} censusSelected
+ * @return {Style}
+ */
+export const getOSBaseMap = (
+    censusSelected: boolean,
+) : Style => {
   return !censusSelected ? {
 
     /**
@@ -59,6 +73,12 @@ export const getOSBaseMap = (censusSelected: boolean) : Style => {
         'minzoom': constants.TRIBAL_MIN_ZOOM,
         'maxzoom': constants.TRIBAL_MAX_ZOOM,
       },
+
+      // The labels source:
+      'labels': {
+        'type': 'raster',
+        'tiles': cartoLightBaseLayer.labelsOnly,
+      },
     },
 
 
@@ -87,6 +107,39 @@ export const getOSBaseMap = (censusSelected: boolean) : Style => {
         'paint': {
           'fill-color': constants.TRIBAL_FILL_COLOR,
           'fill-opacity': constants.TRIBAL_FEATURE_FILL_OPACITY,
+        },
+        'minzoom': constants.TRIBAL_MIN_ZOOM,
+        'maxzoom': constants.TRIBAL_MAX_ZOOM,
+      },
+
+      /**
+      * Tribal layer - controls the border between features
+      */
+      {
+        'id': constants.FEATURE_BORDER_LAYER_ID,
+        'source': constants.TRIBAL_SOURCE_NAME,
+        'source-layer': constants.TRIBAL_SOURCE_LAYER,
+        'type': 'line',
+        'paint': {
+          'line-color': constants.FEATURE_BORDER_COLOR,
+          'line-width': constants.FEATURE_BORDER_WIDTH,
+          'line-opacity': constants.FEATURE_BORDER_OPACITY},
+        'minzoom': constants.TRIBAL_MIN_ZOOM,
+        'maxzoom': constants.TRIBAL_MAX_ZOOM,
+      },
+
+      /**
+      * Alaska layer
+      */
+      {
+        'id': constants.TRIBAL_ALASKA_POINTS_LAYER_ID,
+        'source': constants.TRIBAL_SOURCE_NAME,
+        'source-layer': constants.TRIBAL_SOURCE_LAYER,
+        'type': 'circle',
+        'filter': ['==', ['geometry-type'], 'Point'],
+        'paint': {
+          'circle-radius': constants.TRIBAL_ALASKA_CIRCLE_RADIUS,
+          'circle-color': constants.TRIBAL_ALASKA_CIRCLE_FILL_COLOR,
         },
         'minzoom': constants.TRIBAL_MIN_ZOOM,
         'maxzoom': constants.TRIBAL_MAX_ZOOM,

@@ -56,13 +56,28 @@ export const featureURLForTilesetName = (tilesetName: string): string => {
   }
 };
 
+/**
+ * This component will return the appropriate source and layers for the census layer on the
+ * map.
+ *
+ * There are two use cases here, eg, when the MapBox token is or isn't provided. When the token
+ * is not provided, the open-source map will be rendered. When the open-source map is rendered
+ * only the interactive layers are returned from this component. The reason being is that the
+ * other layers are supplied by he getOSBaseMap function.
+ *
+ * @param {AnyLayer} selectedFeatureId
+ * @param {AnyLayer} selectedFeature
+ * @return {Style}
+ */
 const MapTractLayers = ({
   selectedFeatureId,
   selectedFeature,
 }: IMapTractLayers) => {
   const filter = useMemo(() => ['in', constants.GEOID_PROPERTY, selectedFeatureId], [selectedFeature]);
 
-  return (
+  return process.env.MAPBOX_STYLES_READ_TOKEN ? (
+
+    // In this case the MapBox token is found and All source(s)/layer(s) are returned.
     <>
       <Source
         id={constants.LOW_ZOOM_SOURCE_NAME}
@@ -87,9 +102,7 @@ const MapTractLayers = ({
         />
       </Source>
 
-      {/**
-     * The high zoom source
-    */}
+      {/* The high zoom source */}
       <Source
         id={constants.HIGH_ZOOM_SOURCE_NAME}
         type="vector"
@@ -152,6 +165,34 @@ const MapTractLayers = ({
         />
       </Source>
     </>
+  ): (
+
+    /**
+     * In this case the MapBox token is NOT found and ONLY interactive source(s)/layer(s) are returned
+     * In this case, the other layers (non-interactive) are provided by getOSBaseMap
+     */
+    <Source
+      id={constants.HIGH_ZOOM_SOURCE_NAME}
+      type="vector"
+      promoteId={constants.GEOID_PROPERTY}
+      tiles={[featureURLForTilesetName('high')]}
+      maxzoom={constants.GLOBAL_MAX_ZOOM_HIGH}
+      minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
+    >
+
+      {/* High zoom layer - border styling around the selected feature */}
+      <Layer
+        id={constants.SELECTED_FEATURE_BORDER_LAYER_ID}
+        source-layer={constants.SCORE_SOURCE_LAYER}
+        filter={filter} // This filter filters out all other features except the selected feature.
+        type='line'
+        paint={{
+          'line-color': constants.SELECTED_FEATURE_BORDER_COLOR,
+          'line-width': constants.SELECTED_FEATURE_BORDER_WIDTH,
+        }}
+        minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
+      />
+    </Source>
   );
 };
 
