@@ -356,8 +356,14 @@ EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD = (
 )
 AGRICULTURAL_VALUE_BOOL_FIELD = "Contains agricultural value"
 
-HIGH_FUTURE_FLOOD_RISK_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for share of properties at risk of flood in 30 years and is low income?"
-HIGH_FUTURE_WILDFIRE_RISK_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for share of properties at risk of fire in 30 years and is low income?"
+HIGH_FUTURE_FLOOD_RISK_LOW_INCOME_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for share of "
+    "properties at risk of flood in 30 years and is low income?"
+)
+HIGH_FUTURE_WILDFIRE_RISK_LOW_INCOME_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for "
+    "share of properties at risk of fire in 30 years and is low income?"
+)
 
 # Clean energy and efficiency
 PM25_EXPOSURE_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for PM2.5 exposure and is low income?"
@@ -621,8 +627,14 @@ LOW_LIFE_EXPECTANCY_PCTILE_THRESHOLD = (
 UNEMPLOYMENT_PCTILE_THRESHOLD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for unemployment"
 )
-HIGH_FUTURE_FLOOD_RISK_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for share of properties at risk of flood in 30 years"
-HIGH_FUTURE_WILDFIRE_RISK_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for share of properties at risk of fire in 30 years"
+HIGH_FUTURE_FLOOD_RISK_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for share of properties "
+    "at risk of flood in 30 years"
+)
+HIGH_FUTURE_WILDFIRE_RISK_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for share of properties "
+    "at risk of fire in 30 years"
+)
 
 
 LINGUISTIC_ISOLATION_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for households in linguistic isolation"
