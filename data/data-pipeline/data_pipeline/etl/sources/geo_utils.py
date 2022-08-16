@@ -10,7 +10,7 @@ from .census.etl import CensusETL
 logger = get_module_logger(__name__)
 
 
-@lru_cache(maxsize=None)
+@lru_cache()
 def get_tract_geojson(
     _tract_data_path: Optional[Path] = None,
 ) -> gpd.GeoDataFrame:

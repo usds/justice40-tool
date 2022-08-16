@@ -54,8 +54,6 @@ class USArmyFUDS(ExtractTransformLoad):
         logger.info("Starting FUDS transform.")
         # before we try to do any transformation, get the tract data
         # so it's loaded and the census ETL is out of scope
-        logger.info("Pre-computing tract geometries")
-        get_tract_geojson()
 
         logger.info("Loading FUDs data as GeoDataFrame for transform")
         raw_df = gpd.read_file(
@@ -69,6 +67,7 @@ class USArmyFUDS(ExtractTransformLoad):
         # raw_df[~raw_df.OBJECTID.isin(df_with_tracts.OBJECTID)][
         # ['OBJECTID', 'CLOSESTCITY', 'COUNTY', 'ELIGIBILITY',
         # 'STATE', 'LATITUDE', "LONGITUDE"]]
+        logger.debug("Adding tracts to FUDS data")
         df_with_tracts = add_tracts_for_geometries(raw_df)
 
         # Now, do some counting
