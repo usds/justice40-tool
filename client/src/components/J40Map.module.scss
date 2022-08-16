@@ -1,36 +1,61 @@
 @use '../styles/design-system.scss' as *;
 @import "./utils.scss";
 
-.j40Popup {
-  width: 375px;
-}
 
-.navigationControl {
-  left: .75em;
-  top: units(15);
-  // width: 2.5em;
-}
+.j40Map {
+  // width < 1024
+  @include at-media-max("desktop") {
+    height: 55vh;
+  }
 
-.fullscreenControl {
-  right: 1.25em;
-  top: 2.5em;
-}
+  .mapHeaderRow{
+    @include u-display("flex");
+    @include u-padding-left(1.5);
+    justify-content: flex-start;
+    
 
-.geolocateControl {
-  right: 1.25em;
-  top: 5em;
+    .geolocateBox {
+      flex: 1 2 47%;
+      align-self: flex-end;
+      margin-bottom: 30px;
+      margin-left: 1rem;
+
+      .geolocateMessage {
+        visibility: visible;
+        background-color: white;
+        margin-bottom: 3px;
+        max-width: fit-content;
+      }
+      
+      .geolocateMessageHide {
+        visibility: hidden;
+        margin-bottom: 3px;
+      }
+
+      .geolocateIcon{
+        align-self: flex-end;
+      }
+    }
+  }
+
+  .navigationControl {
+    left: .75em;
+    top: units(15);
+  }
+  
+  //These classes are behind feature flags:
+  .fullscreenControl {
+    right: 1.25em;
+    top: 2.5em;
+  }
+  .j40Popup {
+    width: 375px;
+  }
+
 }
 
 .mapInfoPanel {
   border: 1px solid $sidePanelBorderColor;
   overflow-y: auto;
   height: 90vh;
-}
-
-// This will control the height of the map when the device 
-// width is less than desktop (1024px)
-.j40Map {
-  @include at-media-max("desktop") {
-    height: 55vh;
-  }
 }

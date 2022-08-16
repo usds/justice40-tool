@@ -343,6 +343,14 @@
     "defaultMessage": "Communities identified as disadvantaged by the map are those that are marginalized, underserved, and overburdened by pollution. These communities are at or above the thresholds in one or more of eight categories of criteria.",
     "description": "On the explore the map page, the description of the legend"
   },
+  "explore.map.page.map.geolocation.disabled": {
+    "defaultMessage": "Geolocation disabled",
+    "description": "On the explore the map page, on the map, this is the message above the gelocation icon that geolocation is disabled."
+  },
+  "explore.map.page.map.geolocation.locating": {
+    "defaultMessage": "Finding location...",
+    "description": "On the explore the map page, on the map, this is the message above the gelocation icon that geolocation is locating."
+  },
   "explore.map.page.map.search.placeholder.mobile.text": {
     "defaultMessage": "Search locations",
     "description": "On the explore the map page, on the map, the placeholder text for search"
@@ -868,7 +876,7 @@
     "description": "Navigate to the explore the map page. Under the map, you will see tribal nations intro text"
   },
   "explore.map.page.under.map.note.on.tribal.nations.para.1": {
-    "defaultMessage": "The map covers all U.S. census tracts, including those located within Tribal Nations, to the extent that data is available (see our <link1>Methodology & data</link1> page for more information). CEQ is engaging in consultation and coordination with Tribal Nations on the beta version of the map to provide Tribal Nations with meaningful opportunities for input, consistent with CEQ’s <link2> Action Plan for Consultation and Coordination with Tribal Nations</link2>, <link3>President Biden’s Memorandum on Tribal Consultation and Strengthening Nation-to-Nation Consultation</link3>, and Executive Order 13175 on <link4>Consultation and Coordination With Indian Tribal Governments</link4>.",
+    "defaultMessage": "The map covers all U.S. census tracts, including those located within Tribal Nations, to the extent that data is available (see our <link1>Methodology & data</link1> page for more information). CEQ is engaging in consultation and coordination with Tribal Nations on the beta version of the map to provide Tribal Nations with meaningful opportunities for input, consistent with CEQ’s <link2> Action Plan for Consultation and Coordination with Tribal Nations</link2>, President Biden’s <link3>Memorandum on Tribal Consultation and Strengthening Nation-to-Nation Consultation</link3>, and <link4>Executive Order 13175 on Consultation and Coordination With Indian Tribal Governments</link4>.",
     "description": "Navigate to the explore the map page. Under the map, you will see tribal nations paragraph 1"
   },
   "fab.survey.text": {

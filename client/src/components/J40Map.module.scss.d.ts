@@ -1,14 +1,23 @@
 declare namespace J40MapModuleScssNamespace {
   export interface IJ40MapModuleScss {
-    j40Popup: string;
-    territoryFocusButton: string;
-    territoryFocusContainer: string;
-    navigationControl: string;
-    fullscreenControl: string;
-    geolocateControl: string;
-    detailView: string;
-    mapInfoPanel: string;
+    // main J40 map style
     j40Map: string;
+
+    // map header row
+    mapHeaderRow: string;
+    geolocateBox: string;
+    geolocateMessage: string;
+    geolocateMessageHide: string;
+    geolocateIcon: string;
+
+    // nav control
+    navigationControl: string;
+
+    // feature flags
+    fullscreenControl: string;
+    j40Popup: string;
+
+    mapInfoPanel: string;
   }
 }
 

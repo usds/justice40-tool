@@ -288,7 +288,7 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
   //   description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.MED_HOME_VAL),
   //   value: properties[constants.MEDIAN_HOME_VALUE_PERCENTILE] ?
   //   properties[constants.MEDIAN_HOME_VALUE_PERCENTILE] : null,
-  //   isDisadvagtaged: false, // TODO
+  //   isDisadvagtaged: false,
   // };
 
   const proxHaz: indicatorInfo = {
@@ -531,6 +531,15 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
   // component to render the actual Indicator
   const categoryItems = categories.map((category) => ({
     id: category.id,
+
+    /*
+    As of trussworks 3.0.0, there were some breaking changes. This new prop of headingLevel
+    is required, however, the title prop is already defining the category styling, so this
+    is placed here to satisfy the requirement of the AccordionItems API, however it's not
+    being used.
+    */
+    headingLevel: 'h4',
+
     title: <Category name={category.titleText} isDisadvantaged={category.isDisadvagtaged} />,
     content: (
       <>

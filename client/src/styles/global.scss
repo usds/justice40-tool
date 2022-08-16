@@ -140,6 +140,18 @@ components include:
   }
 }
 
+// all external links
+.usa-link--external::after {
+  margin-top: .5ex !important;
+}
+
+// external links in the dataset Cards
+li[class*='datasetCard-module'] .usa-link--external::after {
+  margin-top: .2ex !important;
+}
+
+
+
 /* 
 ******************************
 *      FOOTER STYLES
@@ -164,8 +176,12 @@ components include:
     @include u-display('inline-block');
     @include u-margin-top(1.5)
   }
-}
 
+  // external links in the footer only
+  .usa-link--external::after {
+    margin-top: .2ex !important;
+  }
+}
 
 
 
@@ -185,12 +201,50 @@ This section will outline styles that are component specific
 // Maplibre overrides
 // Note that these need to be here to properly override defaults
 
+
+/**
+Geolocate Icon Styling: 
+In mobile, the icon has 4 states; default, locating (class = *-waiting), locked (class = *-active) and panning (class = *-background).
+
+These overides change the active and background classes
+
+We are using #0076d6 or hsl(207, 100%, 42%) for all colors in relation to Geolocation.
+
+The reason the Icon was changed was to match the other overlayed icons - such as territory shortcuts. These other icons don't have multiple states embedded in them. This new color scheme creates ambiguity among two states, namely (off and locked) as they have the same exact style.
+*/
+.mapboxgl-ctrl {
+  button.mapboxgl-ctrl-geolocate.mapboxgl-ctrl-geolocate-active { 
+    .mapboxgl-ctrl-icon {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='29' height='29' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' fill='hsl(207, 100%, 42%)'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 005.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 009 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 003.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0011 5.1V5s0-1-1-1zm0 2.5a3.5 3.5 0 110 7 3.5 3.5 0 110-7z'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3C/svg%3E") !important;
+    }
+  }
+}
+.mapboxgl-ctrl {
+  button.mapboxgl-ctrl-geolocate.mapboxgl-ctrl-geolocate-background {
+    .mapboxgl-ctrl-icon {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='29' height='29' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' fill='hsl(207, 100%, 42%)'%3E%3Cpath d='M10 4C9 4 9 5 9 5v.1A5 5 0 005.1 9H5s-1 0-1 1 1 1 1 1h.1A5 5 0 009 14.9v.1s0 1 1 1 1-1 1-1v-.1a5 5 0 003.9-3.9h.1s1 0 1-1-1-1-1-1h-.1A5 5 0 0011 5.1V5s0-1-1-1zm0 2.5a3.5 3.5 0 110 7 3.5 3.5 0 110-7z'/%3E%3C/svg%3E") !important;
+    }
+  }
+}
+
+/**
+Beacon - the beacon's color (*-location-dot) and proximity animation (::before), inner radius (::after) was changed and . The reason the beacon was changed was to increase the contrast between the beacon and the census tract layers
+*/
+.mapboxgl-user-location-dot, .mapboxgl-user-location-dot::before  {
+  background-color: #0076d6 !important;  
+}
+
+.mapboxgl-user-location-dot::after  {
+  border: 4px solid #FFF !important;
+}
+
+
+// Overide mapbox popup styles
 .mapboxgl-popup-close-button {
   font-size: 3em;
   margin-right: 12px;
   margin-top: 15px;
 }
-
 .mapboxgl-popup-content {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5) !important;
   border-radius: 8px !important;
@@ -371,9 +425,9 @@ a.mapboxgl-ctrl-logo {
       @include u-margin-top(5);
     }
 
-    .j40-aboutcard-link {
-      font-weight: bold;
-    }
+    // .j40-aboutcard-link {
+    //   font-weight: bold;
+    // }
   }
 
   .j40-aboutcard-sm-card {

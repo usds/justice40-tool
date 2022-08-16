@@ -13,6 +13,7 @@ import ReactMapGL, {
   FlyToInterpolator,
   FullscreenControl,
   MapRef, Source, Layer} from 'react-map-gl';
+import {useIntl} from 'gatsby-plugin-intl';
 import bbox from '@turf/bbox';
 import * as d3 from 'd3-ease';
 import {isMobile} from 'react-device-detect';
@@ -34,6 +35,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import * as constants from '../data/constants';
 import * as styles from './J40Map.module.scss';
 import * as COMMON_COPY from '../data/copy/common';
+import * as EXPLORE_COPY from '../data/copy/explore';
 
 
 declare global {
@@ -98,7 +100,12 @@ export const featureURLForTilesetName = (tilesetName: string): string => {
   }
 };
 
-
+/**
+ * This the main map component
+ *
+ * @param {IJ40Interface} location
+ * @returns {ReactElement}
+ */
 const J40Map = ({location}: IJ40Interface) => {
   /**
    * Initializes the zoom, and the map's center point (lat, lng) via the URL hash #{z}/{lat}/{long}
@@ -131,6 +138,7 @@ const J40Map = ({location}: IJ40Interface) => {
 
   const mapRef = useRef<MapRef>(null);
   const flags = useFlags();
+  const intl = useIntl();
 
   const selectedFeatureId = (selectedFeature && selectedFeature.id) || '';
   const filter = useMemo(() => ['in', constants.GEOID_PROPERTY, selectedFeatureId], [selectedFeature]);
@@ -329,12 +337,12 @@ const J40Map = ({location}: IJ40Interface) => {
   return (
     <>
       <Grid desktop={{col: 9}} className={styles.j40Map}>
-
         {/**
-         * // * This will render the MapSearch component
-         *
          * Note:
-         * The MapSearch component is no longer wrapped in a div in order to allow this feature
+         * The MapSearch component is no longer used in this location. It has been moved inside the
+         * <ReactMapGL> component itself.
+         *
+         * It was originally wrapped in a div in order to allow this feature
          * to be behind a feature flag. This was causing a bug for MapSearch to render
          * correctly in a production build. Leaving this comment here in case future flags are
          * needed in this component.
@@ -346,9 +354,9 @@ const J40Map = ({location}: IJ40Interface) => {
          *   - npm run clean && npm run build && npm run serve
          *
          * to ensure the production build works and that MapSearch and the map (ReactMapGL) render correctly.
+         *
+         * Any component declarations outside the <ReactMapGL> component may be susceptible to this bug.
          */}
-        <MapSearch goToPlace={goToPlace}/>
-
 
         {/**
          * The ReactMapGL component's props are grouped by the API's documentation. The component also has
@@ -393,7 +401,9 @@ const J40Map = ({location}: IJ40Interface) => {
           data-cy={'reactMapGL'}
         >
           {/**
-           * The low zoom source
+           * Load all data sources and layers
+           *
+           * First the low zoom:
            */}
           <Source
             id={constants.LOW_ZOOM_SOURCE_NAME}
@@ -483,24 +493,40 @@ const J40Map = ({location}: IJ40Interface) => {
             />
           </Source>
 
-          {/* This will add the navigation controls of the zoom in and zoom out buttons */}
+          {/* This is the first overlayed row on the map: Search and Geolocation */}
+          <div className={styles.mapHeaderRow}>
+            <MapSearch goToPlace={goToPlace}/>
+
+            <div className={styles.geolocateBox}>
+              {windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && <div
+                className={
+                  geolocationInProgress ? styles.geolocateMessage : styles.geolocateMessageHide}>
+                {intl.formatMessage(EXPLORE_COPY.MAP.GEOLOC_MSG_LOCATING)}
+              </div>}
+              <div className={styles.geolocateIcon}>
+                <GeolocateControl
+                  positionOptions={{enableHighAccuracy: true}}
+                  onGeolocate={onGeolocate}
+                  onClick={onClickGeolocate}
+                  trackUserLocation={windowWidth < constants.USWDS_BREAKPOINTS.MOBILE_LG}
+                  showUserHeading={windowWidth < constants.USWDS_BREAKPOINTS.MOBILE_LG}
+                  disabledLabel={intl.formatMessage(EXPLORE_COPY.MAP.GEOLOC_MSG_DISABLED)}
+                />
+              </div>
+            </div>
+
+          </div>
+
+          {/* This is the second row overlayed on the map, it will add the navigation controls
+          of the zoom in and zoom out buttons */}
           { windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG && <NavigationControl
             showCompass={false}
             className={styles.navigationControl}
           /> }
 
-          {/* This will show shortcut buttons to pan/zoom to US territories */}
+          {/* This is the third row overlayed on the map, it will show shortcut buttons to
+          pan/zoom to US territories */}
           <TerritoryFocusControl onClick={onClick}/>
-
-          {/* This places Geolocation behind a feature flag */}
-          {'gl' in flags ? <GeolocateControl
-            className={styles.geolocateControl}
-            positionOptions={{enableHighAccuracy: true}}
-            onGeolocate={onGeolocate}
-            // @ts-ignore
-            onClick={onClickGeolocate}
-          /> : ''}
-          {geolocationInProgress ? <div>Geolocation in progress...</div> : ''}
 
           {/* Enable fullscreen pop-up behind a feature flag */}
           {('fs' in flags && detailViewData && !transitionInProgress) && (

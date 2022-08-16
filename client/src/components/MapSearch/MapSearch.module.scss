@@ -1,20 +1,27 @@
 @use '../../styles/design-system.scss' as *;
 
 .mapSearchContainer {
+  /**
+  Various breakpoint are being used to allow a consistent ratio 
+  of screen width between the search component and the geolocation 
+  component across all device sizes.
+  */
 
-    // styles for mobile-lg (480px) and greater widths,
-    @include at-media('mobile-lg') {
-        position: absolute;
-        // top: units(4);
-        left: units(1.5);
-        width: 50%;
-        z-index: 1;
+  // width < 660
+  @include at-media-max("tablet") {
+    flex: 1 1 100%;
+  }
+
+  //  660 < width < 1024
+  @include at-media-max("desktop") {
+    @include at-media("tablet"){
+      flex: 1 1 56%;
     }
-    
-    // styles for less than mobile-lg (480px)
-    position: absolute;
-    left: units(1.5);
-    width: 90%;
-    z-index: 1;
+  }
+
+  // > 1024
+  @include at-media("desktop") {
+    flex: 1 1 72%;
+  }
 }
 
