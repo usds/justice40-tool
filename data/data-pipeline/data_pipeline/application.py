@@ -10,6 +10,7 @@ from data_pipeline.etl.runner import (
     score_post,
 )
 from data_pipeline.etl.sources.census.etl_utils import (
+    check_census_data_source,
     reset_data_directories as census_reset,
     zip_census_data,
 )
@@ -93,6 +94,23 @@ def census_data_download(zip_compress):
         zip_census_data()
 
     logger.info("Completed downloading census data")
+    sys.exit()
+
+
+@cli.command(help="Retrieve census data from source")
+@click.option(
+    "-s",
+    "--data-source",
+    default="local",
+    required=False,
+    type=str,
+    help=dataset_cli_help,
+)
+def pull_census_data(data_source: str):
+    logger.info("Pulling census data from %s", data_source)
+    data_path = settings.APP_ROOT / "data" / "census"
+    check_census_data_source(data_path, data_source)
+    logger.info("Finished pulling census data")
     sys.exit()
 
 

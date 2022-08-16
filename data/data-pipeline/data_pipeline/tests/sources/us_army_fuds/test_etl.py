@@ -126,8 +126,6 @@ class TestUSArmyFUDSETL(TestETL):
         with mock.patch(
             "data_pipeline.etl.sources.us_army_fuds.etl.add_tracts_for_geometries",
             new=_fake_add_tracts_for_geometries,
-        ), mock.patch(
-            "data_pipeline.etl.sources.us_army_fuds.etl.get_tract_geojson"
         ):
             return super().test_fixtures_contain_shared_tract_ids_base(
                 mock_etl, mock_paths
@@ -137,8 +135,6 @@ class TestUSArmyFUDSETL(TestETL):
         with mock.patch(
             "data_pipeline.etl.sources.us_army_fuds.etl.add_tracts_for_geometries",
             new=_fake_add_tracts_for_geometries,
-        ), mock.patch(
-            "data_pipeline.etl.sources.us_army_fuds.etl.get_tract_geojson"
         ):
             super().test_transform_base(
                 snapshot=snapshot, mock_etl=mock_etl, mock_paths=mock_paths
@@ -148,8 +144,6 @@ class TestUSArmyFUDSETL(TestETL):
         with mock.patch(
             "data_pipeline.etl.sources.us_army_fuds.etl.add_tracts_for_geometries",
             new=_fake_add_tracts_for_geometries,
-        ), mock.patch(
-            "data_pipeline.etl.sources.us_army_fuds.etl.get_tract_geojson"
         ):
             super().test_transform_sets_output_df_base(
                 mock_etl=mock_etl, mock_paths=mock_paths
@@ -159,8 +153,6 @@ class TestUSArmyFUDSETL(TestETL):
         with mock.patch(
             "data_pipeline.etl.sources.us_army_fuds.etl.add_tracts_for_geometries",
             new=_fake_add_tracts_for_geometries,
-        ), mock.patch(
-            "data_pipeline.etl.sources.us_army_fuds.etl.get_tract_geojson"
         ):
             super().test_validate_base(mock_etl=mock_etl, mock_paths=mock_paths)
 
@@ -168,8 +160,6 @@ class TestUSArmyFUDSETL(TestETL):
         with mock.patch(
             "data_pipeline.etl.sources.us_army_fuds.etl.add_tracts_for_geometries",
             new=_fake_add_tracts_for_geometries,
-        ), mock.patch(
-            "data_pipeline.etl.sources.us_army_fuds.etl.get_tract_geojson"
         ):
             return super().test_full_etl_base(mock_etl, mock_paths)
 
@@ -177,8 +167,6 @@ class TestUSArmyFUDSETL(TestETL):
         with mock.patch(
             "data_pipeline.etl.sources.us_army_fuds.etl.add_tracts_for_geometries",
             new=_fake_add_tracts_for_geometries,
-        ), mock.patch(
-            "data_pipeline.etl.sources.us_army_fuds.etl.get_tract_geojson"
         ):
             return super().test_get_data_frame_base(mock_etl, mock_paths)
 
@@ -186,8 +174,6 @@ class TestUSArmyFUDSETL(TestETL):
         with mock.patch(
             "data_pipeline.etl.sources.us_army_fuds.etl.add_tracts_for_geometries",
             new=_fake_add_tracts_for_geometries,
-        ), mock.patch(
-            "data_pipeline.etl.sources.us_army_fuds.etl.get_tract_geojson"
         ):
             etl = self._setup_etl_instance_and_run_extract(
                 mock_etl=mock_etl, mock_paths=mock_paths

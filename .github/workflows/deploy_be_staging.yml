@@ -53,9 +53,9 @@ jobs:
           aws-access-key-id: ${{ secrets.DATA_DEV_AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.DATA_DEV_AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-      - name: Run census ETL so we have necessary geojson
+      - name: Download census geo data for later user
         run: |
-          poetry run python3 data_pipeline/application.py etl-run -d census
+          poetry run python3 data_pipeline/application.py pull-census-data -s aws
       - name: Generate Score
         run: |
           poetry run python3 data_pipeline/application.py score-full-run

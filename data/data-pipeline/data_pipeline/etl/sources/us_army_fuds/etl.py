@@ -5,7 +5,7 @@ import numpy as np
 
 from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
 from data_pipeline.utils import get_module_logger, download_file_from_url
-from data_pipeline.etl.sources.geo_utils import add_tracts_for_geometries, get_tract_geojson
+from data_pipeline.etl.sources.geo_utils import add_tracts_for_geometries
 
 logger = get_module_logger(__name__)
 
