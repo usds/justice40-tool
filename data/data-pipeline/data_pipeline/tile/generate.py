@@ -87,6 +87,7 @@ def generate_tiles(data_path: Path, generate_tribal_layer: bool) -> None:
         logger.info("Generating Tribal mbtiles file")
         cmd = "tippecanoe "
         cmd += "--layer=blocks "
+        cmd += "--base-zoom=3 "
         cmd += f"--minimum-zoom={USA_TRIBAL_MIN_ZOOM} --maximum-zoom={USA_TRIBAL_MAX_ZOOM} "
         cmd += f"--output={tribal_tiles_path}/usa.mbtiles "
         cmd += str(tribal_geojson_dir / "usa.json")
@@ -95,10 +96,12 @@ def generate_tiles(data_path: Path, generate_tribal_layer: bool) -> None:
         # generate mvts
         logger.info("Generating Tribal mvt folders and files")
         cmd = "tippecanoe "
+        cmd += "--layer=blocks "
+        cmd += "--base-zoom=3 "
         cmd += "--no-tile-compression "
         cmd += "--drop-densest-as-needed "
         cmd += f"--minimum-zoom={USA_TRIBAL_MIN_ZOOM} --maximum-zoom={USA_TRIBAL_MAX_ZOOM} "
-        cmd += f"--output-to-directory={tribal_tiles_path} --layer=blocks "
+        cmd += f"--output-to-directory={tribal_tiles_path} "
         cmd += str(tribal_geojson_dir / "usa.json")
         call(cmd, shell=True)
 
