@@ -88,7 +88,7 @@ const MapTractLayers = ({
         minzoom={constants.GLOBAL_MIN_ZOOM_LOW}
       >
 
-        {/* Low zoom layer - prioritized features only */}
+        {/* Low zoom layer (static) - prioritized features only */}
         <Layer
           id={constants.LOW_ZOOM_LAYER_ID}
           source-layer={constants.SCORE_SOURCE_LAYER}
@@ -112,7 +112,7 @@ const MapTractLayers = ({
         minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
       >
 
-        {/* High zoom layer - non-prioritized features only */}
+        {/* High zoom layer (static) - non-prioritized features only */}
         <Layer
           id={constants.HIGH_ZOOM_LAYER_ID}
           source-layer={constants.SCORE_SOURCE_LAYER}
@@ -124,7 +124,7 @@ const MapTractLayers = ({
           minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
         />
 
-        {/* High zoom layer - prioritized features only */}
+        {/* High zoom layer (static) - prioritized features only */}
         <Layer
           id={constants.PRIORITIZED_HIGH_ZOOM_LAYER_ID}
           source-layer={constants.SCORE_SOURCE_LAYER}
@@ -137,7 +137,7 @@ const MapTractLayers = ({
           minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
         />
 
-        {/* High zoom layer - controls the border between features */}
+        {/* High zoom layer (static) - controls the border between features */}
         <Layer
           id={constants.FEATURE_BORDER_LAYER_ID}
           source-layer={constants.SCORE_SOURCE_LAYER}
@@ -151,18 +151,6 @@ const MapTractLayers = ({
           minzoom={constants.GLOBAL_MIN_ZOOM_FEATURE_BORDER}
         />
 
-        {/* High zoom layer - border styling around the selected feature */}
-        <Layer
-          id={constants.SELECTED_FEATURE_BORDER_LAYER_ID}
-          source-layer={constants.SCORE_SOURCE_LAYER}
-          filter={filter} // This filter filters out all other features except the selected feature.
-          type='line'
-          paint={{
-            'line-color': constants.SELECTED_FEATURE_BORDER_COLOR,
-            'line-width': constants.SELECTED_FEATURE_BORDER_WIDTH,
-          }}
-          minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
-        />
       </Source>
     </>
   ): (
@@ -180,7 +168,7 @@ const MapTractLayers = ({
       minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
     >
 
-      {/* High zoom layer - border styling around the selected feature */}
+      {/* High zoom layer (dynamic) - border styling around the selected feature */}
       <Layer
         id={constants.SELECTED_FEATURE_BORDER_LAYER_ID}
         source-layer={constants.SCORE_SOURCE_LAYER}

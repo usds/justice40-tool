@@ -105,8 +105,8 @@ export const getOSBaseMap = (
         'source-layer': constants.TRIBAL_SOURCE_LAYER,
         'type': 'fill',
         'paint': {
-          'fill-color': constants.TRIBAL_FILL_COLOR,
-          'fill-opacity': constants.TRIBAL_FEATURE_FILL_OPACITY,
+          'fill-color': constants.PRIORITIZED_FEATURE_FILL_COLOR,
+          'fill-opacity': constants.HIGH_ZOOM_PRIORITIZED_FEATURE_FILL_OPACITY,
         },
         'minzoom': constants.TRIBAL_MIN_ZOOM,
         'maxzoom': constants.TRIBAL_MAX_ZOOM,
@@ -139,7 +139,11 @@ export const getOSBaseMap = (
         'filter': ['==', ['geometry-type'], 'Point'],
         'paint': {
           'circle-radius': constants.TRIBAL_ALASKA_CIRCLE_RADIUS,
-          'circle-color': constants.TRIBAL_ALASKA_CIRCLE_FILL_COLOR,
+          'circle-color': constants.PRIORITIZED_FEATURE_FILL_COLOR,
+          'circle-opacity': constants.HIGH_ZOOM_PRIORITIZED_FEATURE_FILL_OPACITY,
+          'circle-stroke-color': constants.FEATURE_BORDER_COLOR,
+          'circle-stroke-width': constants.ALAKSA_POINTS_STROKE_WIDTH,
+          'circle-stroke-opacity': constants.FEATURE_BORDER_OPACITY,
         },
         'minzoom': constants.TRIBAL_MIN_ZOOM,
         'maxzoom': constants.TRIBAL_MAX_ZOOM,
@@ -212,55 +216,19 @@ export const getOSBaseMap = (
         'maxzoom': constants.GLOBAL_MAX_ZOOM,
       },
 
-      /**
-       * High zoom layer - non-prioritized features only
-       */
+      // A layer for labels only
       {
-        'id': constants.HIGH_ZOOM_LAYER_ID,
-        'source': constants.HIGH_ZOOM_SOURCE_NAME,
-        'source-layer': constants.SCORE_SOURCE_LAYER,
-        /**
-         * This shows features where the high score < score boundary threshold.
-         * In other words, this filter out prioritized features
-         */
-        'filter': ['all',
-          ['<', constants.SCORE_PROPERTY_HIGH, constants.SCORE_BOUNDARY_THRESHOLD],
-        ],
-
-        'type': 'fill',
-        'paint': {
-          'fill-opacity': constants.NON_PRIORITIZED_FEATURE_FILL_OPACITY,
+        'id': 'labels-only-layer',
+        'source': 'labels',
+        'type': 'raster',
+        'layout': {
+          'visibility': 'visible',
         },
-        'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
+        'minzoom': constants.GLOBAL_MIN_ZOOM,
+        'maxzoom': constants.GLOBAL_MAX_ZOOM,
       },
 
-      /**
-       * High zoom layer - prioritized features only
-       */
-      {
-        'id': constants.PRIORITIZED_HIGH_ZOOM_LAYER_ID,
-        'source': constants.HIGH_ZOOM_SOURCE_NAME,
-        'source-layer': constants.SCORE_SOURCE_LAYER,
-        /**
-         * This shows features where the high score > score boundary threshold.
-         * In other words, this filter out non-prioritized features
-         */
-        'filter': ['all',
-          ['>', constants.SCORE_PROPERTY_HIGH, constants.SCORE_BOUNDARY_THRESHOLD],
-        ],
-
-        'type': 'fill',
-        'paint': {
-          'fill-color': constants.PRIORITIZED_FEATURE_FILL_COLOR,
-          'fill-opacity': constants.HIGH_ZOOM_PRIORITIZED_FEATURE_FILL_OPACITY,
-        },
-        'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
-      },
-
-
-      /**
-       * Low zoom layer - prioritized features only
-       */
+      // Low zoom layer (static) - prioritized features only
       {
         'id': constants.LOW_ZOOM_LAYER_ID,
         'source': constants.LOW_ZOOM_SOURCE_NAME,
@@ -282,16 +250,60 @@ export const getOSBaseMap = (
         'maxzoom': constants.GLOBAL_MAX_ZOOM_LOW,
       },
 
-      // A layer for labels only
+      // High zoom layer (static) - non-prioritized features only
       {
-        'id': 'labels-only-layer',
-        'source': 'labels',
-        'type': 'raster',
-        'layout': {
-          'visibility': 'visible',
+        'id': constants.HIGH_ZOOM_LAYER_ID,
+        'source': constants.HIGH_ZOOM_SOURCE_NAME,
+        'source-layer': constants.SCORE_SOURCE_LAYER,
+        /**
+         * This shows features where the high score < score boundary threshold.
+         * In other words, this filter out prioritized features
+         */
+        'filter': ['all',
+          ['<', constants.SCORE_PROPERTY_HIGH, constants.SCORE_BOUNDARY_THRESHOLD],
+        ],
+
+        'type': 'fill',
+        'paint': {
+          'fill-opacity': constants.NON_PRIORITIZED_FEATURE_FILL_OPACITY,
         },
-        'minzoom': constants.GLOBAL_MIN_ZOOM,
-        'maxzoom': constants.GLOBAL_MAX_ZOOM,
+        'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
+      },
+
+      // High zoom layer (static) - prioritized features only
+      {
+        'id': constants.PRIORITIZED_HIGH_ZOOM_LAYER_ID,
+        'source': constants.HIGH_ZOOM_SOURCE_NAME,
+        'source-layer': constants.SCORE_SOURCE_LAYER,
+        /**
+         * This shows features where the high score > score boundary threshold.
+         * In other words, this filter out non-prioritized features
+         */
+        'filter': ['all',
+          ['>', constants.SCORE_PROPERTY_HIGH, constants.SCORE_BOUNDARY_THRESHOLD],
+        ],
+
+        'type': 'fill',
+        'paint': {
+          'fill-color': constants.PRIORITIZED_FEATURE_FILL_COLOR,
+          'fill-opacity': constants.HIGH_ZOOM_PRIORITIZED_FEATURE_FILL_OPACITY,
+        },
+        'minzoom': constants.GLOBAL_MIN_ZOOM_HIGH,
+      },
+
+      // High zoom layer (static) - controls the border between features
+      {
+        'id': constants.FEATURE_BORDER_LAYER_ID,
+        'source': constants.HIGH_ZOOM_SOURCE_NAME,
+        'source-layer': constants.SCORE_SOURCE_LAYER,
+        'type': 'line',
+        'paint': {
+          'line-color': constants.FEATURE_BORDER_COLOR,
+          'line-width': constants.FEATURE_BORDER_WIDTH,
+          'line-opacity': constants.FEATURE_BORDER_OPACITY,
+        },
+        'minzoom': constants.GLOBAL_MIN_ZOOM_FEATURE_BORDER,
+        'maxzoom': constants.GLOBAL_MAX_ZOOM_FEATURE_BORDER,
       },
     ],
   };

@@ -241,11 +241,12 @@ export const TRIBAL_BORDER_COLOR = '##4EA5CF';
 export const SELECTED_TRIBAL_BORDER_COLOR = '#1A4480';
 export const TRIBAL_FILL_COLOR = '#768FB3';
 export const TRIBAL_ALASKA_CIRCLE_FILL_COLOR = '#768FB3';
-export const TRIBAL_ALASKA_CIRCLE_RADIUS = 10;
+export const TRIBAL_ALASKA_CIRCLE_RADIUS = 5;
 
 // Widths
 export const FEATURE_BORDER_WIDTH = 0.8;
 export const SELECTED_FEATURE_BORDER_WIDTH = 5.0;
+export const ALAKSA_POINTS_STROKE_WIDTH = 1.0;
 
 // Bounds - these bounds can be obtained by using the getCurrentMapBoundingBox() function in the map
 export const GLOBAL_MAX_BOUNDS: LngLatBoundsLike = [

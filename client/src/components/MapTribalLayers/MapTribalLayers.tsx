@@ -62,7 +62,7 @@ const MapTribalLayer = ({
         source-layer={constants.TRIBAL_SOURCE_LAYER}
         type='fill'
         paint={{
-          'fill-color': constants.TRIBAL_FILL_COLOR,
+          'fill-color': constants.PRIORITIZED_FEATURE_FILL_COLOR,
           'fill-opacity': constants.TRIBAL_FEATURE_FILL_OPACITY}}
         minzoom={constants.TRIBAL_MIN_ZOOM}
         maxzoom={constants.TRIBAL_MAX_ZOOM}
@@ -104,7 +104,7 @@ const MapTribalLayer = ({
         type='circle'
         paint={{
           'circle-radius': constants.TRIBAL_ALASKA_CIRCLE_RADIUS,
-          'circle-color': constants.TRIBAL_ALASKA_CIRCLE_FILL_COLOR,
+          'circle-color': constants.PRIORITIZED_FEATURE_FILL_COLOR,
         }}
         minzoom={constants.TRIBAL_MIN_ZOOM}
         maxzoom={constants.TRIBAL_MAX_ZOOM}
