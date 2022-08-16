@@ -157,18 +157,6 @@ datasets:
         include_in_tiles: true
         include_in_downloadable_files: true
 
-  - long_name: "DOT Travel Disadvantage Index"
-    short_name: "DOT"
-    module_name: "travel_composite"
-    input_geoid_tract_field_name: "GEOID10_TRACT"
-    load_fields:
-      - short_name: "travel_burden"
-        df_field_name: "TRAVEL_BURDEN_FIELD_NAME"
-        long_name: "DOT Travel Barriers Score" 
-        field_type: float
-        include_in_tiles: true
-        include_in_downloadable_files: true
-        create_percentile: true
   - long_name: "First Street Foundation Flood Risk"
     short_name: "FSF Flood Risk"
     module_name: fsf_flood_risk
@@ -248,5 +236,18 @@ datasets:
         long_name: "Share of properties at risk of fire in 30 years" 
         field_type: float
         include_in_tiles: false
+        include_in_downloadable_files: true
+        create_percentile: true
+
+  - long_name: "DOT Travel Disadvantage Index"
+    short_name: "DOT"
+    module_name: "travel_composite"
+    input_geoid_tract_field_name: "GEOID10_TRACT"
+    load_fields:
+      - short_name: "travel_burden"
+        df_field_name: "TRAVEL_BURDEN_FIELD_NAME"
+        long_name: "DOT Travel Barriers Score" 
+        field_type: float
+        include_in_tiles: true
         include_in_downloadable_files: true
         create_percentile: true
