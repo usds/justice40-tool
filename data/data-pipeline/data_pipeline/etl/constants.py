@@ -153,7 +153,7 @@ DATASET_LIST = [
     {
         "name": "eamlis",
         "module_dir": "eamlis",
-        "class_name": "AbandonedMineLandInventorySystem",
+        "class_name": "AbandonedMineETL",
     },
 ]
 
