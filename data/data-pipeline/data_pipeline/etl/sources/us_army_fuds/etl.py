@@ -69,28 +69,28 @@ class USArmyFUDS(ExtractTransformLoad):
         # 'STATE', 'LATITUDE', "LONGITUDE"]]
         logger.debug("Adding tracts to FUDS data")
         df_with_tracts = add_tracts_for_geometries(raw_df)
+        self.output_df = pd.DataFrame()
 
-        # Now, do some counting
-        HAS_FUDS = "has_fuds"
-        df_with_tracts[HAS_FUDS] = np.where(
-            (
-                (df_with_tracts.ELIGIBILITY == "Eligible")
-                & (df_with_tracts.HASPROJECTS == "Yes")
-            ),
-            self.ELIGIBLE_FUDS_COUNT_FIELD_NAME,
-            self.INELIGIBLE_FUDS_COUNT_FIELD_NAME,
+        # this will create a boolean series which you can do actually sans np.where
+        df_with_tracts["tmp_fuds"] = (
+            df_with_tracts.ELIGIBILITY == "Eligible"
+        ) & (df_with_tracts.HASPROJECTS == "Yes")
+
+        self.output_df[
+            self.ELIGIBLE_FUDS_COUNT_FIELD_NAME
+        ] = df_with_tracts.groupby(self.GEOID_TRACT_FIELD_NAME)[
+            "tmp_fuds"
+        ].sum()
+
+        self.output_df[self.INELIGIBLE_FUDS_COUNT_FIELD_NAME] = (
+            df_with_tracts[~df_with_tracts.tmp_fuds]
+            .groupby(self.GEOID_TRACT_FIELD_NAME)
+            .size()
         )
         self.output_df = (
-            (
-                df_with_tracts.groupby([self.GEOID_TRACT_FIELD_NAME, HAS_FUDS])
-                .size()
-                .reset_index()
-                .pivot(columns=HAS_FUDS, index=self.GEOID_TRACT_FIELD_NAME)
-                .fillna(0)
-            )[0]
-            .astype("int64")
-            .reset_index()
+            self.output_df.fillna(0).astype("int64").sort_index().reset_index()
         )
+
         self.output_df[self.ELIGIBLE_FUDS_BINARY_FIELD_NAME] = np.where(
             self.output_df[self.ELIGIBLE_FUDS_COUNT_FIELD_NAME] > 0.0,
             True,
