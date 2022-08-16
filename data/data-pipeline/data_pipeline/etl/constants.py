@@ -150,6 +150,11 @@ DATASET_LIST = [
         "module_dir": "us_army_fuds",
         "class_name": "USArmyFUDS",
     },
+    {
+        "name": "eamlis",
+        "module_dir": "eamlis",
+        "class_name": "AbandonedMineLandInventorySystem",
+    },
 ]
 
 CENSUS_INFO = {
