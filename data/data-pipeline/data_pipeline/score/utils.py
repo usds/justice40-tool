@@ -50,7 +50,7 @@ def calculate_tract_adjacency_scores(
         .reset_index()
         .rename(
             columns={
-                score_column: f"{score_column}_ADJACENT_MEAN",
+                score_column: f"{score_column}{field_names.ADJACENCY_INDEX_SUFFIX}",
             }
         )
     )

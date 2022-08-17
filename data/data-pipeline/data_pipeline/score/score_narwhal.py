@@ -20,9 +20,12 @@ class ScoreNarwhal(Score):
         self.ENVIRONMENTAL_BURDEN_THRESHOLD: float = 0.90
         self.MEDIAN_HOUSE_VALUE_THRESHOLD: float = 0.90
         self.LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD: float = 0.10
-        # TODO: Find out what the right values for these are
-        self.LOW_INCOME_THRESHOLD_DONUT: float = 0.65
-        self.SCORE_THRESHOLD_DONUT: float = 0.50
+
+        # We define a donut hole DAC as a tract that is entirely surrounded by
+        # DACs (score threshold = 1) and above median for low income, as a starting
+        # point. As we ground-truth, these thresholds might change.
+        self.LOW_INCOME_THRESHOLD_DONUT: float = 0.50
+        self.SCORE_THRESHOLD_DONUT: float = 1.00
 
         super().__init__(df)
 
@@ -898,18 +901,18 @@ class ScoreNarwhal(Score):
         )
 
     def _mark_donut_hole_tracts(self) -> pd.DataFrame:
-        """Mark tracts that do not qualify but are surrounded by those that do
+        """Mark tracts that do not qualify on their own, but are surrounded by those that do
 
         A donut hole is a tract surrounded by tracts that are marked for inclusion
-        by the j40 scoring system AND meet a low-income threshhold. This has to be done
-        after the first pass of the score.
+        by the scoring system AND meet a less stringent low-income threshhold.
+
+        We calculate "donut holes" after the initial score generation
         """
         logger.info("Marking donut hole tracts")
-        # XXX: @emma-nechamkin should I drop these _DONUT fields
-        # at the end of this method? Or will they just fall out
-        # before a CSV is written?
-        # XXX: Also, my field names are so bad!
-        self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED_DONUT] = (
+
+        # This is the boolean we pass to the front end for the donut-hole-specific
+        # low income criterion
+        self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED_DONUTS] = (
             self.df[
                 field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD
                 + field_names.PERCENTILE_FIELD_SUFFIX
@@ -925,23 +928,25 @@ class ScoreNarwhal(Score):
             on=field_names.GEOID_TRACT_FIELD,
         )
 
+        # This is the boolean we pass to the front end for color
         self.df[field_names.ADJACENT_TRACT_SCORE_ABOVE_DONUT_THRESHOLD] = (
             self.df[
                 (
                     field_names.SCORE_N_COMMUNITIES
-                    + field_names.ADJACENT_MEAN_SUFFIX
+                    + field_names.ADJACENCY_INDEX_SUFFIX
                 )
             ]
-            > self.SCORE_THRESHOLD_DONUT
+            >= self.SCORE_THRESHOLD_DONUT
         )
 
-        self.df[field_names.SCORE_N_DONUTHOLE] = ((
-                self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED_DONUT]
-                & self.df[
-                    field_names.ADJACENT_TRACT_SCORE_ABOVE_DONUT_THRESHOLD
-                ]
-            )
-            & ~self.df[field_names.SCORE_N_COMMUNITIES])
+        # This should be the "final list" of Score Narwhal communities, meaning that we would
+        # expect this to be True if either the tract is a donut hole community OR the tract is a DAC
+        self.df[
+            field_names.SCORE_N_COMMUNITIES + field_names.ADJACENT_MEAN_SUFFIX
+        ] = (
+            self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED_DONUTS]
+            & self.df[field_names.ADJACENT_TRACT_SCORE_ABOVE_DONUT_THRESHOLD]
+        )
 
     def add_columns(self) -> pd.DataFrame:
         logger.info("Adding Score Narhwal")

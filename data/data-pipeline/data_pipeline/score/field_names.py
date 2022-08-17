@@ -1,7 +1,8 @@
 # Suffixes
 PERCENTILE_FIELD_SUFFIX = " (percentile)"
 ISLAND_AREAS_PERCENTILE_ADJUSTMENT_FIELD = " for island areas"
-ADJACENT_MEAN_SUFFIX = "_ADJACENT_MEAN"
+ADJACENT_MEAN_SUFFIX = " (including adjacency index)"
+ADJACENCY_INDEX_SUFFIX = " (average of neighbors)"
 
 # Geographic field names
 GEOID_TRACT_FIELD = "GEOID10_TRACT"
@@ -680,7 +681,9 @@ CATEGORY_COUNT = "Total categories exceeded"
 
 FPL_200_SERIES = "Is low income?"
 FPL_200_SERIES_IMPUTED_AND_ADJUSTED = "Is low income (imputed and adjusted)?"
-FPL_200_SERIES_IMPUTED_AND_ADJUSTED_DONUT = "Is low income (imputed and adjusted) for the purposes of donut hole calculations?"
+FPL_200_SERIES_IMPUTED_AND_ADJUSTED_DONUTS = (
+    "Meets the less stringent low income criterion for the adjacency index?"
+)
 FPL_200_AND_COLLEGE_ATTENDANCE_SERIES = (
     "Is low income and has a low percent of higher ed students?"
 )
@@ -707,13 +710,7 @@ HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD = (
 
 
 ADJACENT_TRACT_SCORE_ABOVE_DONUT_THRESHOLD = (
-    "Does the mean of the surrounding tracts exceed "
-    "the threashold to include this tract"
-)
-
-# XXX: This text can't be right
-SCORE_N_DONUTHOLE = (
-    "Should this tract be included beacuse it is a donut hole"
+    "Is the tract surrounded by disadvantaged communities?"
 )
 
 # End of names for individual factors being exceeded
