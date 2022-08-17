@@ -11,15 +11,9 @@
     
     // styles for mobile-lg (480px) and greater widths,
     @include at-media('mobile-lg') {
-        position: absolute;
-        top: units(2.5);
-        left: 62%;
+       @include u-margin-top(3);
+       @include u-margin-right(1);       
     }
-
-    // styles for less than mobile-lg (480px)
-    position: absolute;
-    top: -5.2rem;
-    
 }
   
   

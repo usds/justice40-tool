@@ -350,13 +350,6 @@ const J40Map = ({location}: IJ40Interface) => {
          * Any component declarations outside the <ReactMapGL> component may be susceptible to this bug.
          */}
 
-        {/* This will allow to select between the census tract layer and the tribal lands layer */}
-        <LayerSelector
-          censusSelected={censusSelected}
-          setCensusSelected={setCensusSelected}
-          setLayerToggled={setLayerToggled}
-        />
-
         {/**
          * The ReactMapGL component's props are grouped by the API's documentation. The component also has
          * some children.
@@ -426,6 +419,7 @@ const J40Map = ({location}: IJ40Interface) => {
           <div className={styles.mapHeaderRow}>
             <MapSearch goToPlace={goToPlace}/>
 
+            {/* Geolocate Icon */}
             <div className={styles.geolocateBox}>
               {windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG &&
               <div
@@ -436,6 +430,7 @@ const J40Map = ({location}: IJ40Interface) => {
               >
                 {intl.formatMessage(EXPLORE_COPY.MAP.GEOLOC_MSG_LOCATING)}
               </div>}
+
               <div className={styles.geolocateIcon}>
                 <GeolocateControl
                   positionOptions={{enableHighAccuracy: true}}
@@ -447,6 +442,13 @@ const J40Map = ({location}: IJ40Interface) => {
                 />
               </div>
             </div>
+
+            {/* This will allow to select between the census tract layer and the tribal lands layer */}
+            <LayerSelector
+              censusSelected={censusSelected}
+              setCensusSelected={setCensusSelected}
+              setLayerToggled={setLayerToggled}
+            />
 
           </div>
 

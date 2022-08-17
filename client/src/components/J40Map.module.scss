@@ -11,14 +11,14 @@
   .mapHeaderRow{
     @include u-display("flex");
     @include u-padding-left(1.5);
-    justify-content: flex-start;
+    justify-content: space-between;
     
-
     .geolocateBox {
-      flex: 1 2 47%;
-      align-self: flex-end;
-      margin-bottom: 30px;
-      margin-left: 1rem;
+      // flex: 1 2 47%;
+      // align-self: flex-end;
+      // margin-bottom: 30px;
+      // margin-left: 1rem;
+      margin-top: 6px;
 
       .geolocateMessage {
         visibility: visible;
@@ -29,11 +29,12 @@
       
       .geolocateMessageHide {
         visibility: hidden;
+        min-width: fit-content;
         margin-bottom: 3px;
       }
 
       .geolocateIcon{
-        align-self: flex-end;
+        // align-self: flex-end;
       }
     }
   }
