@@ -99,6 +99,16 @@ LOW_MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD = (
     "Low median household income as a percent of area median income"
 )
 
+# Additional ACS demographic fields.
+BLACK_FIELD_NAME = "Black or African American alone"
+AMERICAN_INDIAN_FIELD_NAME = "American Indian and Alaska Native alone"
+ASIAN_FIELD_NAME = "Asian alone"
+HAWAIIAN_FIELD_NAME = "Native Hawaiian and Other Pacific alone"
+TWO_OR_MORE_RACES_FIELD_NAME = "Two or more races"
+NON_HISPANIC_WHITE_FIELD_NAME = "Non-Hispanic White"
+HISPANIC_FIELD_NAME = "Hispanic or Latino"
+OTHER_RACE_FIELD_NAME = "Some other race alone"
+
 # Climate
 FEMA_RISK_FIELD = "FEMA Risk Index Expected Annual Loss Score"
 EXPECTED_BUILDING_LOSS_RATE_FIELD = (

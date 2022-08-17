@@ -186,6 +186,7 @@ class CensusACSETL(ExtractTransformLoad):
             "B03002_003E",
             "B03003_001E",
             "B03003_003E",
+            "B02001_007E",  # "Some other race alone"
         ]
 
         # Name output demographics fields.
@@ -198,6 +199,7 @@ class CensusACSETL(ExtractTransformLoad):
         self.TWO_OR_MORE_RACES_FIELD_NAME = "Two or more races"
         self.NON_HISPANIC_WHITE_FIELD_NAME = "Non-Hispanic White"
         self.HISPANIC_FIELD_NAME = "Hispanic or Latino"
+        self.OTHER_RACE_FIELD_NAME = "Some other race alone"
 
         self.RE_OUTPUT_FIELDS = [
             self.BLACK_FIELD_NAME,
@@ -207,6 +209,7 @@ class CensusACSETL(ExtractTransformLoad):
             self.TWO_OR_MORE_RACES_FIELD_NAME,
             self.NON_HISPANIC_WHITE_FIELD_NAME,
             self.HISPANIC_FIELD_NAME,
+            self.OTHER_RACE_FIELD_NAME,
         ]
 
         self.PERCENT_PREFIX = "Percent "
@@ -413,6 +416,7 @@ class CensusACSETL(ExtractTransformLoad):
         df[self.TWO_OR_MORE_RACES_FIELD_NAME] = df["B02001_008E"]
         df[self.NON_HISPANIC_WHITE_FIELD_NAME] = df["B03002_003E"]
         df[self.HISPANIC_FIELD_NAME] = df["B03003_003E"]
+        df[self.OTHER_RACE_FIELD_NAME] = df["B02001_007E"]
 
         # Calculate demographics as percent
         df[self.PERCENT_PREFIX + self.BLACK_FIELD_NAME] = (
@@ -435,6 +439,9 @@ class CensusACSETL(ExtractTransformLoad):
         )
         df[self.PERCENT_PREFIX + self.HISPANIC_FIELD_NAME] = (
             df["B03003_003E"] / df["B03003_001E"]
+        )
+        df[self.PERCENT_PREFIX + self.OTHER_RACE_FIELD_NAME] = (
+            df["B02001_007E"] / df["B03003_001E"]
         )
 
         # Calculate college attendance and adjust low income
