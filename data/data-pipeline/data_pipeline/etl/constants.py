@@ -45,11 +45,13 @@ DATASET_LIST = [
         "name": "fsf_flood_risk",
         "module_dir": "fsf_flood_risk",
         "class_name": "FloodRiskETL",
+        "is_memory_intensive": False,
     },
     {
         "name": "fsf_wildfire_risk",
         "module_dir": "fsf_wildfire_risk",
         "class_name": "WildfireRiskETL",
+        "is_memory_intensive": False,
     },
     {
         "name": "ejscreen",
