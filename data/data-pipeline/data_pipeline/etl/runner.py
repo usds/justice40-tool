@@ -1,7 +1,6 @@
 import importlib
 import concurrent.futures
 import typing
-import os
 
 from data_pipeline.etl.score.etl_score import ScoreETL
 from data_pipeline.etl.score.etl_score_geo import GeoScoreETL
@@ -77,10 +76,10 @@ def etl_runner(dataset_to_run: str = None) -> None:
         None
     """
     dataset_list = _get_datasets_to_run(dataset_to_run)
-
     # try running the high memory tasks separately
-    concurrent_datasets = dataset_list[:-2]
-    high_memory_datasets = dataset_list[-2:]
+    concurrent_datasets = [dataset for dataset in dataset_list if not dataset['is_memory_intensive']]
+    high_memory_datasets = [dataset for dataset in dataset_list if dataset['is_memory_intensive']]
+
     logger.info("Running concurrent jobs")
     with concurrent.futures.ThreadPoolExecutor() as executor:
         futures = {
@@ -92,6 +91,7 @@ def etl_runner(dataset_to_run: str = None) -> None:
             # Calling result will raise an exception if one occurred.
             # Otherwise, the exceptions are silently ignored.
             fut.result()
+
     logger.info("Running high-memory jobs")
     for dataset in high_memory_datasets:
         _run_one_dataset(dataset=dataset)
