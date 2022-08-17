@@ -282,7 +282,6 @@ sheets:
       - score_name: Share of properties at risk of fire in 30 years
         label: Share of properties at risk of fire in 30 years
         format: percentage
-
       - score_name: Greater than or equal to the 90th percentile for share of properties at risk of flood in 30 years and is low income?
         label: Greater than or equal to the 90th percentile for share of properties at risk of flood in 30 years and is low income?
         format: bool
@@ -313,5 +312,7 @@ sheets:
       - score_name: Share of properties at risk of fire in 30 years (percentile)
         label: Share of properties at risk of fire in 30 years (percentile)
         format: percentage
-      
+      - score_name: Does the tract have at least 35 acres in it?
+        label: Does the tract have at least 35 acres in it?
+        format: bool
       

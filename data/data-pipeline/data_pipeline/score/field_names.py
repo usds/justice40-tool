@@ -646,6 +646,9 @@ NON_NATURAL_LOW_INCOME_FIELD_NAME = (
     f"Greater than or equal to the {PERCENTILE}th percentile for share of the tract's land area that is covered "
     "by impervious surface or cropland as a percent and is low income?"
 )
+TRACT_ELIGIBLE_FOR_NONNATURAL_THRESHOLD = (
+    "Does the tract have at least 35 acres in it?"
+)
 
 LINGUISTIC_ISOLATION_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for households in linguistic isolation"
 POVERTY_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for households at or below 100% federal poverty level"

@@ -445,7 +445,6 @@ class ScoreETL(ExtractTransformLoad):
             field_names.IMPENETRABLE_SURFACES_FIELD,
             field_names.UST_FIELD,
             field_names.DOT_TRAVEL_BURDEN_FIELD,
-            field_names.AGRICULTURAL_VALUE_BOOL_FIELD,
             field_names.FUTURE_FLOOD_RISK_FIELD,
             field_names.FUTURE_WILDFIRE_RISK_FIELD,
             field_names.TRACT_PERCENT_NON_NATURAL_FIELD_NAME,
@@ -456,6 +455,8 @@ class ScoreETL(ExtractTransformLoad):
             self.GEOID_TRACT_FIELD_NAME,
             field_names.PERSISTENT_POVERTY_FIELD,
             field_names.HISTORIC_REDLINING_SCORE_EXCEEDED,
+            field_names.TRACT_ELIGIBLE_FOR_NONNATURAL_THRESHOLD,
+            field_names.AGRICULTURAL_VALUE_BOOL_FIELD,
         ]
 
         # For some columns, high values are "good", so we want to reverse the percentile
@@ -507,7 +508,7 @@ class ScoreETL(ExtractTransformLoad):
         df_copy[numeric_columns] = df_copy[numeric_columns].apply(pd.to_numeric)
 
         # Convert all columns to numeric and do math
-        # Note that we have a few special conditions here, that we handle explicitly.
+        # Note that we have a few special conditions here and we handle them explicitly.
         #     For *Linguistic Isolation*, we do NOT want to include Puerto Rico in the percentile
         #     calculation. This is because linguistic isolation as a category doesn't make much sense
         #     in Puerto Rico, where Spanish is a recognized language. Thus, we construct a list
@@ -516,6 +517,10 @@ class ScoreETL(ExtractTransformLoad):
         #     For *Expected Agricultural Loss*, we only want to include in the percentile tracts
         #     in which there is some agricultural value. This helps us adjust the data such that we have
         #     the ability to discern which tracts truly are at the 90th percentile, since many tracts have 0 value.
+        #
+        #     For *Non-Natural Space*, we may only want to include tracts that have at least 35 acreas, I think. This will
+        #     get rid of  tracts that we think are aberrations statistically. Right now, we have commented this out
+        #     pending ground-truthing.
 
         for numeric_column in numeric_columns:
             drop_tracts = []
@@ -531,7 +536,6 @@ class ScoreETL(ExtractTransformLoad):
                 logger.info(
                     f"Dropping {len(drop_tracts)} tracts from Agricultural Value Loss"
                 )
-
             elif numeric_column == field_names.LINGUISTIC_ISO_FIELD:
                 drop_tracts = df_copy[
                     # 72 is the FIPS code for Puerto Rico
@@ -540,6 +544,18 @@ class ScoreETL(ExtractTransformLoad):
                 logger.info(
                     f"Dropping {len(drop_tracts)} tracts from Linguistic Isolation"
                 )
+            # elif (
+            #     numeric_column
+            #     == field_names.TRACT_PERCENT_NON_NATURAL_FIELD_NAME
+            # ):
+            #     drop_tracts = df_copy[
+            #         df_copy[field_names.TRACT_ELIGIBLE_FOR_NONNATURAL_THRESHOLD]
+            #         .astype(bool)
+            #         .fillna(False)
+            #     ][field_names.GEOID_TRACT_FIELD].to_list()
+            #     logger.info(
+            #         f"Dropping {len(drop_tracts)} tracts from non-natural space indicator"
+            #     )
 
             df_copy = self._add_percentiles_to_df(
                 df=df_copy,
