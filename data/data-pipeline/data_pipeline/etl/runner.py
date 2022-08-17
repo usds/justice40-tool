@@ -1,6 +1,7 @@
 import importlib
 import concurrent.futures
 import typing
+import os
 
 from data_pipeline.etl.score.etl_score import ScoreETL
 from data_pipeline.etl.score.etl_score_geo import GeoScoreETL
@@ -76,8 +77,8 @@ def etl_runner(dataset_to_run: str = None) -> None:
         None
     """
     dataset_list = _get_datasets_to_run(dataset_to_run)
-
-    with concurrent.futures.ThreadPoolExecutor() as executor:
+    max_workers = min(32, os.cpu_count() + 4)//2
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
         futures = {
             executor.submit(_run_one_dataset, dataset=dataset)
             for dataset in dataset_list
