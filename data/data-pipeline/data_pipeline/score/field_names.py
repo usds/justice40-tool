@@ -680,6 +680,7 @@ CATEGORY_COUNT = "Total categories exceeded"
 
 FPL_200_SERIES = "Is low income?"
 FPL_200_SERIES_IMPUTED_AND_ADJUSTED = "Is low income (imputed and adjusted)?"
+FPL_200_SERIES_IMPUTED_AND_ADJUSTED_DONUT = "Is low income (imputed and adjusted) for the purposes of donut hole calculations?"
 FPL_200_AND_COLLEGE_ATTENDANCE_SERIES = (
     "Is low income and has a low percent of higher ed students?"
 )
@@ -702,6 +703,17 @@ HISTORIC_REDLINING_SCORE_EXCEEDED = (
 
 HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD = (
     "Tract-level redlining score meets or exceeds 3.25 and is low income"
+)
+
+
+ADJACENT_TRACT_SCORE_ABOVE_DONUT_THRESHOLD = (
+    "Does the mean of the surrounding tracts exceed "
+    "the threashold to include this tract"
+)
+
+# XXX: This text can't be right
+SCORE_N_DONUTHOLE = (
+    "Should this tract be included beacuse it is a donut hole"
 )
 
 # End of names for individual factors being exceeded
