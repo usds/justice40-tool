@@ -81,6 +81,7 @@ def etl_runner(dataset_to_run: str = None) -> None:
     # try running the high memory tasks separately
     concurrent_datasets = dataset_list[:-2]
     high_memory_datasets = dataset_list[-2:]
+    logger.info("Running concurrent jobs")
     with concurrent.futures.ThreadPoolExecutor() as executor:
         futures = {
             executor.submit(_run_one_dataset, dataset=dataset)
@@ -91,6 +92,7 @@ def etl_runner(dataset_to_run: str = None) -> None:
             # Calling result will raise an exception if one occurred.
             # Otherwise, the exceptions are silently ignored.
             fut.result()
+    logger.info("Running high-memory jobs")
     for dataset in high_memory_datasets:
         _run_one_dataset(dataset=dataset)
 

@@ -57,7 +57,7 @@ class AbandonedMineETL(ExtractTransformLoad):
         )
         gdf = gdf.drop_duplicates(subset=["geometry"], keep="last")
         gdf_tracts = add_tracts_for_geometries(gdf)
-        gdf = gdf_tracts.drop_duplicates(self.GEOID_TRACT_FIELD_NAME)
+        gdf_tracts = gdf_tracts.drop_duplicates(self.GEOID_TRACT_FIELD_NAME)
         gdf_tracts[self.AML_BOOLEAN] = True
         self.output_df = gdf_tracts[self.COLUMNS_TO_KEEP]
 
