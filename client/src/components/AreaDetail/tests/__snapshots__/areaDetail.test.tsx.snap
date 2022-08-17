@@ -195,40 +195,6 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
         </div>
       </section>
     </div>
-    <ul>
-      <li>
-        <span>
-          Number:
-        </span>
-        <span>
-           98729374234
-        </span>
-      </li>
-      <li>
-        <span>
-          County:
-        </span>
-        <span>
-           Brooklyn
-        </span>
-      </li>
-      <li>
-        <span>
-          Territory: 
-        </span>
-        <span>
-           New York
-        </span>
-      </li>
-      <li>
-        <span>
-          Population:
-        </span>
-        <span>
-           3,435,435
-        </span>
-      </li>
-    </ul>
     <div>
       <div>
         Identified as disadvantaged?
@@ -746,40 +712,6 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         </div>
       </section>
     </div>
-    <ul>
-      <li>
-        <span>
-          Number:
-        </span>
-        <span>
-           98729374234
-        </span>
-      </li>
-      <li>
-        <span>
-          County:
-        </span>
-        <span>
-           Brooklyn
-        </span>
-      </li>
-      <li>
-        <span>
-          State: 
-        </span>
-        <span>
-           New York
-        </span>
-      </li>
-      <li>
-        <span>
-          Population:
-        </span>
-        <span>
-           3,435,435
-        </span>
-      </li>
-    </ul>
     <div>
       <div>
         Identified as disadvantaged?
@@ -2850,40 +2782,6 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
         </div>
       </section>
     </div>
-    <ul>
-      <li>
-        <span>
-          Number:
-        </span>
-        <span>
-           98729374234
-        </span>
-      </li>
-      <li>
-        <span>
-          County:
-        </span>
-        <span>
-           Brooklyn
-        </span>
-      </li>
-      <li>
-        <span>
-          Territory: 
-        </span>
-        <span>
-           New York
-        </span>
-      </li>
-      <li>
-        <span>
-          Population:
-        </span>
-        <span>
-           3,435,435
-        </span>
-      </li>
-    </ul>
     <div>
       <div>
         Identified as disadvantaged?

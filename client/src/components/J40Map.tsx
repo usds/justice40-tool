@@ -431,7 +431,7 @@ const J40Map = ({location}: IJ40Interface) => {
                 {intl.formatMessage(EXPLORE_COPY.MAP.GEOLOC_MSG_LOCATING)}
               </div>}
 
-              <div className={styles.geolocateIcon}>
+              <div>
                 <GeolocateControl
                   positionOptions={{enableHighAccuracy: true}}
                   onGeolocate={onGeolocate}

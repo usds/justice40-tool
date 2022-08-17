@@ -96,7 +96,6 @@ const MapTribalLayer = ({
       />
 
       {/* Alaska layer */}
-      {/* // Todo: limit zoom in amount */}
       <Layer
         id={constants.TRIBAL_ALASKA_POINTS_LAYER_ID}
         source-layer={constants.TRIBAL_SOURCE_LAYER}
