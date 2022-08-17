@@ -200,7 +200,7 @@ export const MAP = defineMessages({
     description: 'On the explore the map page, on the map, the full name indicating Tribal Lands',
   },
   TRIBAL_LANDS_SHORT: {
-    id: 'explore.map.page.map.layer.selector.tracts.short',
+    id: 'explore.map.page.map.layer.selector.tribal.short',
     defaultMessage: 'Tribal',
     description: 'On the explore the map page, on the map, the short name indicating Tribal Lands',
   },
