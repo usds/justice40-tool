@@ -190,29 +190,17 @@ class CensusACSETL(ExtractTransformLoad):
         ]
 
         # Name output demographics fields.
-        self.BLACK_FIELD_NAME = "Black or African American alone"
-        self.AMERICAN_INDIAN_FIELD_NAME = (
-            "American Indian and Alaska Native alone"
-        )
-        self.ASIAN_FIELD_NAME = "Asian alone"
-        self.HAWAIIAN_FIELD_NAME = "Native Hawaiian and Other Pacific alone"
-        self.TWO_OR_MORE_RACES_FIELD_NAME = "Two or more races"
-        self.NON_HISPANIC_WHITE_FIELD_NAME = "Non-Hispanic White"
-        self.HISPANIC_FIELD_NAME = "Hispanic or Latino"
-        self.OTHER_RACE_FIELD_NAME = "Some other race alone"
 
         self.RE_OUTPUT_FIELDS = [
-            self.BLACK_FIELD_NAME,
-            self.AMERICAN_INDIAN_FIELD_NAME,
-            self.ASIAN_FIELD_NAME,
-            self.HAWAIIAN_FIELD_NAME,
-            self.TWO_OR_MORE_RACES_FIELD_NAME,
-            self.NON_HISPANIC_WHITE_FIELD_NAME,
-            self.HISPANIC_FIELD_NAME,
-            self.OTHER_RACE_FIELD_NAME,
+            field_names.BLACK_FIELD_NAME,
+            field_names.AMERICAN_INDIAN_FIELD_NAME,
+            field_names.ASIAN_FIELD_NAME,
+            field_names.HAWAIIAN_FIELD_NAME,
+            field_names.TWO_OR_MORE_RACES_FIELD_NAME,
+            field_names.NON_HISPANIC_WHITE_FIELD_NAME,
+            field_names.HISPANIC_FIELD_NAME,
+            field_names.OTHER_RACE_FIELD_NAME,
         ]
-
-        self.PERCENT_PREFIX = "Percent "
 
         self.STATE_GEOID_FIELD_NAME = "GEOID2"
 
@@ -233,7 +221,7 @@ class CensusACSETL(ExtractTransformLoad):
                 field_names.IMPUTED_INCOME_FLAG_FIELD_NAME,
             ]
             + self.RE_OUTPUT_FIELDS
-            + [self.PERCENT_PREFIX + field for field in self.RE_OUTPUT_FIELDS]
+            + [field_names.PERCENT_PREFIX + field for field in self.RE_OUTPUT_FIELDS]
             + [
                 field_names.POVERTY_LESS_THAN_200_FPL_FIELD,
                 field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD,
@@ -409,38 +397,38 @@ class CensusACSETL(ExtractTransformLoad):
         )
 
         # Calculate some demographic information.
-        df[self.BLACK_FIELD_NAME] = df["B02001_003E"]
-        df[self.AMERICAN_INDIAN_FIELD_NAME] = df["B02001_004E"]
-        df[self.ASIAN_FIELD_NAME] = df["B02001_005E"]
-        df[self.HAWAIIAN_FIELD_NAME] = df["B02001_006E"]
-        df[self.TWO_OR_MORE_RACES_FIELD_NAME] = df["B02001_008E"]
-        df[self.NON_HISPANIC_WHITE_FIELD_NAME] = df["B03002_003E"]
-        df[self.HISPANIC_FIELD_NAME] = df["B03003_003E"]
-        df[self.OTHER_RACE_FIELD_NAME] = df["B02001_007E"]
+        df[field_names.BLACK_FIELD_NAME] = df["B02001_003E"]
+        df[field_names.AMERICAN_INDIAN_FIELD_NAME] = df["B02001_004E"]
+        df[field_names.ASIAN_FIELD_NAME] = df["B02001_005E"]
+        df[field_names.HAWAIIAN_FIELD_NAME] = df["B02001_006E"]
+        df[field_names.TWO_OR_MORE_RACES_FIELD_NAME] = df["B02001_008E"]
+        df[field_names.NON_HISPANIC_WHITE_FIELD_NAME] = df["B03002_003E"]
+        df[field_names.HISPANIC_FIELD_NAME] = df["B03003_003E"]
+        df[field_names.OTHER_RACE_FIELD_NAME] = df["B02001_007E"]
 
         # Calculate demographics as percent
-        df[self.PERCENT_PREFIX + self.BLACK_FIELD_NAME] = (
+        df[field_names.PERCENT_PREFIX + field_names.BLACK_FIELD_NAME] = (
             df["B02001_003E"] / df["B02001_001E"]
         )
-        df[self.PERCENT_PREFIX + self.AMERICAN_INDIAN_FIELD_NAME] = (
+        df[field_names.PERCENT_PREFIX + field_names.AMERICAN_INDIAN_FIELD_NAME] = (
             df["B02001_004E"] / df["B02001_001E"]
         )
-        df[self.PERCENT_PREFIX + self.ASIAN_FIELD_NAME] = (
+        df[field_names.PERCENT_PREFIX + field_names.ASIAN_FIELD_NAME] = (
             df["B02001_005E"] / df["B02001_001E"]
         )
-        df[self.PERCENT_PREFIX + self.HAWAIIAN_FIELD_NAME] = (
+        df[field_names.PERCENT_PREFIX + field_names.HAWAIIAN_FIELD_NAME] = (
             df["B02001_006E"] / df["B02001_001E"]
         )
-        df[self.PERCENT_PREFIX + self.TWO_OR_MORE_RACES_FIELD_NAME] = (
+        df[field_names.PERCENT_PREFIX + field_names.TWO_OR_MORE_RACES_FIELD_NAME] = (
             df["B02001_008E"] / df["B02001_001E"]
         )
-        df[self.PERCENT_PREFIX + self.NON_HISPANIC_WHITE_FIELD_NAME] = (
+        df[field_names.PERCENT_PREFIX + field_names.NON_HISPANIC_WHITE_FIELD_NAME] = (
             df["B03002_003E"] / df["B03002_001E"]
         )
-        df[self.PERCENT_PREFIX + self.HISPANIC_FIELD_NAME] = (
+        df[field_names.PERCENT_PREFIX + field_names.HISPANIC_FIELD_NAME] = (
             df["B03003_003E"] / df["B03003_001E"]
         )
-        df[self.PERCENT_PREFIX + self.OTHER_RACE_FIELD_NAME] = (
+        df[field_names.PERCENT_PREFIX + field_names.OTHER_RACE_FIELD_NAME] = (
             df["B02001_007E"] / df["B03003_001E"]
         )
 
