@@ -61,9 +61,9 @@ class TestAbandondedLandMineETL(TestETL):
         super().setup_method(_method=_method, filename=filename)
 
     def test_init(self, mock_etl, mock_paths):
-        """Tests that the mock NationalRiskIndexETL class instance was
+        """Tests that the mock class instance was
         initiliazed correctly.
-       """
+        """
         # setup
         etl = self._ETL_CLASS()
         # validation
