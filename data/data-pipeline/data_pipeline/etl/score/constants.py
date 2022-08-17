@@ -305,6 +305,9 @@ TILES_SCORE_COLUMNS = {
     + field_names.PERCENTILE_FIELD_SUFFIX: "WF_PFS",
     field_names.HIGH_FUTURE_FLOOD_RISK_FIELD: "FLD_ET",
     field_names.HIGH_FUTURE_WILDFIRE_RISK_FIELD: "WF_ET",
+    field_names.TRACT_PERCENT_NON_NATURAL_FIELD_NAME
+    + field_names.PERCENTILE_FIELD_SUFFIX: "IS_PFS",
+    field_names.NON_NATURAL_LOW_INCOME_FIELD_NAME: "IS_ET",
     ## FPL 200 and low higher ed for all others should no longer be M_EBSI, but rather
     ## FPL_200 (there is no higher ed in narwhal)
 }
@@ -360,5 +363,7 @@ TILES_SCORE_FLOAT_COLUMNS = [
     field_names.DOT_TRAVEL_BURDEN_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.FUTURE_FLOOD_RISK_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.FUTURE_WILDFIRE_RISK_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.TRACT_PERCENT_NON_NATURAL_FIELD_NAME
     + field_names.PERCENTILE_FIELD_SUFFIX,
 ]

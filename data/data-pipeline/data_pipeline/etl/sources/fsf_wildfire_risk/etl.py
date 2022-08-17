@@ -47,8 +47,6 @@ class WildfireRiskETL(ExtractTransformLoad):
         - Calculates share of properties at risk, left-clipping number of properties at 250
         """
         logger.info("Transforming National Risk Index Data")
-
-        logger.info(self.COLUMNS_TO_KEEP)
         # read in the unzipped csv data source then rename the
         # Census Tract column for merging
         df_fsf_fire_disagg: pd.DataFrame = pd.read_csv(
