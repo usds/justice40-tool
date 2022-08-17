@@ -221,7 +221,10 @@ class CensusACSETL(ExtractTransformLoad):
                 field_names.IMPUTED_INCOME_FLAG_FIELD_NAME,
             ]
             + self.RE_OUTPUT_FIELDS
-            + [field_names.PERCENT_PREFIX + field for field in self.RE_OUTPUT_FIELDS]
+            + [
+                field_names.PERCENT_PREFIX + field
+                for field in self.RE_OUTPUT_FIELDS
+            ]
             + [
                 field_names.POVERTY_LESS_THAN_200_FPL_FIELD,
                 field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD,
@@ -410,21 +413,23 @@ class CensusACSETL(ExtractTransformLoad):
         df[field_names.PERCENT_PREFIX + field_names.BLACK_FIELD_NAME] = (
             df["B02001_003E"] / df["B02001_001E"]
         )
-        df[field_names.PERCENT_PREFIX + field_names.AMERICAN_INDIAN_FIELD_NAME] = (
-            df["B02001_004E"] / df["B02001_001E"]
-        )
+        df[
+            field_names.PERCENT_PREFIX + field_names.AMERICAN_INDIAN_FIELD_NAME
+        ] = (df["B02001_004E"] / df["B02001_001E"])
         df[field_names.PERCENT_PREFIX + field_names.ASIAN_FIELD_NAME] = (
             df["B02001_005E"] / df["B02001_001E"]
         )
         df[field_names.PERCENT_PREFIX + field_names.HAWAIIAN_FIELD_NAME] = (
             df["B02001_006E"] / df["B02001_001E"]
         )
-        df[field_names.PERCENT_PREFIX + field_names.TWO_OR_MORE_RACES_FIELD_NAME] = (
-            df["B02001_008E"] / df["B02001_001E"]
-        )
-        df[field_names.PERCENT_PREFIX + field_names.NON_HISPANIC_WHITE_FIELD_NAME] = (
-            df["B03002_003E"] / df["B03002_001E"]
-        )
+        df[
+            field_names.PERCENT_PREFIX
+            + field_names.TWO_OR_MORE_RACES_FIELD_NAME
+        ] = (df["B02001_008E"] / df["B02001_001E"])
+        df[
+            field_names.PERCENT_PREFIX
+            + field_names.NON_HISPANIC_WHITE_FIELD_NAME
+        ] = (df["B03002_003E"] / df["B03002_001E"])
         df[field_names.PERCENT_PREFIX + field_names.HISPANIC_FIELD_NAME] = (
             df["B03003_003E"] / df["B03003_001E"]
         )
