@@ -278,10 +278,11 @@ sheets:
         format: bool
       - score_name: Share of properties at risk of flood in 30 years
         label: Share of properties at risk of flood in 30 years
-        format: float
+        format: percentage
       - score_name: Share of properties at risk of fire in 30 years
         label: Share of properties at risk of fire in 30 years
-        format: float
+        format: percentage
+
       - score_name: Greater than or equal to the 90th percentile for share of properties at risk of flood in 30 years and is low income?
         label: Greater than or equal to the 90th percentile for share of properties at risk of flood in 30 years and is low income?
         format: bool
@@ -294,3 +295,23 @@ sheets:
       - score_name: Greater than or equal to the 90th percentile for share of properties at risk of fire in 30 years
         label: Greater than or equal to the 90th percentile for share of properties at risk of fire in 30 years
         format: bool
+      - score_name: Greater than or equal to the 90th percentile for share of the tract's land area that is covered by impervious surface or cropland as a percent and is low income?
+        label: Greater than or equal to the 90th percentile for share of the tract's land area that is covered by impervious surface or cropland as a percent and is low income?
+        format: bool
+      - score_name: Greater than or equal to the 90th percentile for share of the tract's land area that is covered by impervious surface or cropland as a percent
+        label: Greater than or equal to the 90th percentile for share of the tract's land area that is covered by impervious surface or cropland as a percent
+        format: bool
+      - score_name: Share of the tract's land area that is covered by impervious surface or cropland as a percent
+        label: Share of the tract's land area that is covered by impervious surface or cropland as a percent
+        format: percentage
+      - score_name: Share of the tract's land area that is covered by impervious surface or cropland as a percent (percentile)
+        label: Share of the tract's land area that is covered by impervious surface or cropland as a percent (percentile)
+        format: percentage
+      - score_name: Share of properties at risk of flood in 30 years (percentile)
+        label: Share of properties at risk of flood in 30 years (percentile)
+        format: percentage
+      - score_name: Share of properties at risk of fire in 30 years (percentile)
+        label: Share of properties at risk of fire in 30 years (percentile)
+        format: percentage
+      
+      

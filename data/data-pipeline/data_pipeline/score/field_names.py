@@ -636,6 +636,16 @@ HIGH_FUTURE_WILDFIRE_RISK_FIELD = (
     "at risk of fire in 30 years"
 )
 
+# NCLD Nature Deprived
+TRACT_PERCENT_NON_NATURAL_FIELD_NAME = "Share of the tract's land area that is covered by impervious surface or cropland as a percent"
+NON_NATURAL_PCTILE_THRESHOLD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for share of the tract's land area that is covered "
+    "by impervious surface or cropland as a percent"
+)
+NON_NATURAL_LOW_INCOME_FIELD_NAME = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for share of the tract's land area that is covered "
+    "by impervious surface or cropland as a percent and is low income?"
+)
 
 LINGUISTIC_ISOLATION_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for households in linguistic isolation"
 POVERTY_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for households at or below 100% federal poverty level"
@@ -649,7 +659,6 @@ ISLAND_LOW_MEDIAN_INCOME_PCTILE_THRESHOLD = (
 )
 ISLAND_UNEMPLOYMENT_PCTILE_THRESHOLD = f"{CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009} exceeds {PERCENTILE}th percentile"
 ISLAND_POVERTY_PCTILE_THRESHOLD = f"{CENSUS_DECENNIAL_POVERTY_LESS_THAN_100_FPL_FIELD_2009} exceeds {PERCENTILE}th percentile"
-
 
 # Not currently used in a factor
 EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD = (

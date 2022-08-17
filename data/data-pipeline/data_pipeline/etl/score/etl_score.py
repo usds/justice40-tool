@@ -14,6 +14,7 @@ from data_pipeline.etl.sources.dot_travel_composite.etl import (
 from data_pipeline.etl.sources.fsf_flood_risk.etl import (
     FloodRiskETL,
 )
+from data_pipeline.etl.sources.ncld_nature_deprived.etl import NatureDeprivedETL
 from data_pipeline.etl.sources.fsf_wildfire_risk.etl import WildfireRiskETL
 from data_pipeline.score.score_runner import ScoreRunner
 from data_pipeline.score import field_names
@@ -47,6 +48,7 @@ class ScoreETL(ExtractTransformLoad):
         self.dot_travel_disadvantage_df: pd.DataFrame
         self.fsf_flood_df: pd.DataFrame
         self.fsf_fire_df: pd.DataFrame
+        self.nature_deprived_df: pd.DataFrame
 
     def extract(self) -> None:
         logger.info("Loading data sets from disk.")
@@ -133,6 +135,9 @@ class ScoreETL(ExtractTransformLoad):
 
         # Load flood risk data
         self.fsf_flood_df = FloodRiskETL.get_data_frame()
+
+        # Load NCLD Nature-Deprived Communities data
+        self.nature_deprived_df = NatureDeprivedETL.get_data_frame()
 
         # Load GeoCorr Urban Rural Map
         geocorr_urban_rural_csv = (
@@ -356,6 +361,7 @@ class ScoreETL(ExtractTransformLoad):
             self.dot_travel_disadvantage_df,
             self.fsf_flood_df,
             self.fsf_fire_df,
+            self.nature_deprived_df,
         ]
 
         # Sanity check each data frame before merging.
@@ -442,6 +448,7 @@ class ScoreETL(ExtractTransformLoad):
             field_names.AGRICULTURAL_VALUE_BOOL_FIELD,
             field_names.FUTURE_FLOOD_RISK_FIELD,
             field_names.FUTURE_WILDFIRE_RISK_FIELD,
+            field_names.TRACT_PERCENT_NON_NATURAL_FIELD_NAME,
             field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD,
         ]
 
