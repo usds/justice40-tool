@@ -277,6 +277,14 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
     isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_DIESEL_PM] ?
       properties[constants.IS_EXCEEDS_THRESH_FOR_DIESEL_PM] : null,
   };
+  const barrierTransport: indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.BARRIER_TRANS),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.BARRIER_TRANS),
+    value: properties.hasOwnProperty(constants.TRAVEL_DISADV_PERCENTILE) ?
+      properties[constants.TRAVEL_DISADV_PERCENTILE] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_TRAVEL_DISADV] ?
+      properties[constants.IS_EXCEEDS_THRESH_TRAVEL_DISADV] : null,
+  };
   const trafficVolume: indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.TRAFFIC_VOLUME),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.TRAFFIC_VOLUME),
@@ -293,6 +301,22 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
       properties[constants.HOUSING_BURDEN_PROPERTY_PERCENTILE] : null,
     isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_HOUSE_BURDEN] ?
       properties[constants.IS_EXCEEDS_THRESH_FOR_HOUSE_BURDEN] : null,
+  };
+  const lackGreenSpace: indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.LACK_GREEN_SPACE),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.LACK_GREEN_SPACE),
+    value: properties.hasOwnProperty(constants.IMPERVIOUS_PERCENTILE) ?
+      properties[constants.IMPERVIOUS_PERCENTILE] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_IMPERVIOUS] ?
+      properties[constants.IS_EXCEEDS_THRESH_IMPERVIOUS] : null,
+  };
+  const lackPlumbing: indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.LACK_PLUMBING),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.LACK_PLUMBING),
+    value: properties.hasOwnProperty(constants.KITCHEN_PLUMB_PERCENTILE) ?
+      properties[constants.KITCHEN_PLUMB_PERCENTILE] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_KITCHEN_PLUMB] ?
+      properties[constants.IS_EXCEEDS_THRESH_KITCHEN_PLUMB] : null,
   };
   const leadPaint: indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.LEAD_PAINT),
@@ -335,6 +359,14 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
       properties[constants.IS_EXCEEDS_THRESH_FOR_RMP] : null,
   };
 
+  const leakyTanks: indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.LEAKY_TANKS),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.LEAKY_TANKS),
+    value: properties.hasOwnProperty(constants.LEAKY_UNDER_PERCENTILE) ?
+      properties[constants.LEAKY_UNDER_PERCENTILE] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_LEAKY_UNDER] ?
+      properties[constants.IS_EXCEEDS_THRESH_LEAKY_UNDER] : null,
+  };
   const wasteWater: indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.WASTE_WATER),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.WASTE_WATER),
@@ -446,7 +478,7 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
     {
       id: 'clean-transport',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.CLEAN_TRANSPORT),
-      indicators: [dieselPartMatter, trafficVolume],
+      indicators: [dieselPartMatter, barrierTransport, trafficVolume],
       socioEcIndicators: [lowInc, higherEd],
       isDisadvagtaged: properties[constants.IS_TRANSPORT_FACTOR_DISADVANTAGED_M] ?
         properties[constants.IS_TRANSPORT_FACTOR_DISADVANTAGED_M] : null,
@@ -458,7 +490,7 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
     {
       id: 'sustain-house',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.SUSTAIN_HOUSE),
-      indicators: [houseBurden, leadPaint],
+      indicators: [houseBurden, lackGreenSpace, lackPlumbing, leadPaint],
       socioEcIndicators: [lowInc, higherEd],
       isDisadvagtaged: properties[constants.IS_HOUSING_FACTOR_DISADVANTAGED_M] ?
         properties[constants.IS_HOUSING_FACTOR_DISADVANTAGED_M] : null,
@@ -482,7 +514,7 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
     {
       id: 'clean-water',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.CLEAN_WATER),
-      indicators: [wasteWater],
+      indicators: [leakyTanks, wasteWater],
       socioEcIndicators: [lowInc, higherEd],
       isDisadvagtaged: properties[constants.IS_WATER_FACTOR_DISADVANTAGED_M] ?
         properties[constants.IS_WATER_FACTOR_DISADVANTAGED_M] : null,

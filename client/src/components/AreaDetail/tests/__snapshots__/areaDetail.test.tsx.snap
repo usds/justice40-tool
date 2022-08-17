@@ -1347,6 +1347,35 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         >
           <div>
             <div>
+              Transportation barriers
+              <div>
+                Cost and time spent on transportation
+              </div>
+            </div>
+            <div>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
               Traffic proximity and volume
               <div>
                 Count of vehicles at major roads within 500 meters
@@ -1529,6 +1558,64 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                     th
                   </sup>
                    percentile
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Lack of green space
+              <div>
+                Amount of non-crop land covered with artificial materials like pavement and concrete
+              </div>
+            </div>
+            <div>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Lack of plumbing
+              <div>
+                Share of homes without indoor kitchens or plumbing
+              </div>
+            </div>
+            <div>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
                 </div>
               </div>
             </div>
@@ -1896,6 +1983,35 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             No
           </div>
         </div>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Leaking underground storage tanks
+              <div>
+                Count of leaking underground storage tanks when compared to all underground storage tanks
+              </div>
+            </div>
+            <div>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"

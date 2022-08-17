@@ -503,9 +503,17 @@
     "defaultMessage": "Asthma",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Asthma"
   },
+  "explore.map.page.side.panel.indicator.barrier.transport": {
+    "defaultMessage": "Transportation barriers",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show transportation barriers"
+  },
   "explore.map.page.side.panel.indicator.description.asthma": {
     "defaultMessage": "Weighted percent of people who have been told they have asthma",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Number of people who have been told they have asthma"
+  },
+  "explore.map.page.side.panel.indicator.description.barrierTrans": {
+    "defaultMessage": "Cost and time spent on transportation",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Cost and time spent on transportation"
   },
   "explore.map.page.side.panel.indicator.description.diabetes": {
     "defaultMessage": "Weighted percent of people ages 18 years and older who have diabetes other than diabetes during pregnancy",
@@ -549,11 +557,23 @@
   },
   "explore.map.page.side.panel.indicator.description.houseBurden": {
     "defaultMessage": "Low income households spending more than 30% of income on housing",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Low income households spending more than 30% of income housing\n    "
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Low income households spending more than 30% of income housing"
+  },
+  "explore.map.page.side.panel.indicator.description.lack.green.space": {
+    "defaultMessage": "Amount of non-crop land covered with artificial materials like pavement and concrete",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description Amount of non-crop land covered with artificial materials like pavement and concrete"
+  },
+  "explore.map.page.side.panel.indicator.description.lack.plumbing": {
+    "defaultMessage": "Share of homes without indoor kitchens or plumbing",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of homes without indoor kitchens or plumbing"
   },
   "explore.map.page.side.panel.indicator.description.leadPaint": {
     "defaultMessage": "Percentile of number of homes built before 1960 that are not among the most expensive",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Pre-1960 housing"
+  },
+  "explore.map.page.side.panel.indicator.description.leaky.tanks": {
+    "defaultMessage": "Count of leaking underground storage tanks when compared to all underground storage tanks",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of leaky storage tanks"
   },
   "explore.map.page.side.panel.indicator.description.lifeExpect": {
     "defaultMessage": "Average number of years a person can expect to live",
@@ -655,9 +675,21 @@
     "defaultMessage": "Housing cost burden",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Housing cost burden"
   },
+  "explore.map.page.side.panel.indicator.lack.green.space": {
+    "defaultMessage": "Lack of green space",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Lack of green space"
+  },
+  "explore.map.page.side.panel.indicator.lack.plumbing": {
+    "defaultMessage": "Lack of plumbing",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Lack of plumbing"
+  },
   "explore.map.page.side.panel.indicator.leadPaint": {
     "defaultMessage": "Lead paint",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Lead paint"
+  },
+  "explore.map.page.side.panel.indicator.leaky.tanks": {
+    "defaultMessage": "Leaking underground storage tanks",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Leaking underground storage tanks"
   },
   "explore.map.page.side.panel.indicator.lifeExpect": {
     "defaultMessage": "Low life expectancy",

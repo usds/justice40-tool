@@ -520,6 +520,11 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
     defaultMessage: 'Diesel particulate matter exposure',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Diesel particulate matter exposure`,
   },
+  BARRIER_TRANS: {
+    id: 'explore.map.page.side.panel.indicator.barrier.transport',
+    defaultMessage: 'Transportation barriers',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show transportation barriers`,
+  },
   TRAFFIC_VOLUME: {
     id: 'explore.map.page.side.panel.indicator.trafficVolume',
     defaultMessage: 'Traffic proximity and volume',
@@ -540,6 +545,16 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
     defaultMessage: 'Housing cost burden',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Housing cost burden`,
   },
+  LACK_GREEN_SPACE: {
+    id: 'explore.map.page.side.panel.indicator.lack.green.space',
+    defaultMessage: 'Lack of green space',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Lack of green space`,
+  },
+  LACK_PLUMBING: {
+    id: 'explore.map.page.side.panel.indicator.lack.plumbing',
+    defaultMessage: 'Lack of plumbing',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Lack of plumbing`,
+  },
   PROX_HAZ: {
     id: 'explore.map.page.side.panel.indicator.prox.haz',
     defaultMessage: 'Proximity to hazardous waste facilities',
@@ -554,6 +569,11 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
     id: 'explore.map.page.side.panel.indicator.prox.rmp',
     defaultMessage: 'Proximity to Risk Management Plan (RMP) facilities',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Count of proposed or listed RMP`,
+  },
+  LEAKY_TANKS: {
+    id: 'explore.map.page.side.panel.indicator.leaky.tanks',
+    defaultMessage: 'Leaking underground storage tanks',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Leaking underground storage tanks`,
   },
   WASTE_WATER: {
     id: 'explore.map.page.side.panel.indicator.wasteWater',
@@ -720,6 +740,11 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
     defaultMessage: 'Diesel exhaust in the air',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Diesel exhaust in the air`,
   },
+  BARRIER_TRANS: {
+    id: 'explore.map.page.side.panel.indicator.description.barrierTrans',
+    defaultMessage: 'Cost and time spent on transportation',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Cost and time spent on transportation`,
+  },
   TRAFFIC_VOLUME: {
     id: 'explore.map.page.side.panel.indicator.description.trafficVolume',
     defaultMessage: 'Count of vehicles at major roads within 500 meters',
@@ -742,8 +767,17 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   HOUSE_BURDEN: {
     id: 'explore.map.page.side.panel.indicator.description.houseBurden',
     defaultMessage: 'Low income households spending more than 30% of income on housing',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Low income households spending more than 30% of income housing
-    `,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Low income households spending more than 30% of income housing`,
+  },
+  LACK_GREEN_SPACE: {
+    id: 'explore.map.page.side.panel.indicator.description.lack.green.space',
+    defaultMessage: 'Amount of non-crop land covered with artificial materials like pavement and concrete',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description Amount of non-crop land covered with artificial materials like pavement and concrete`,
+  },
+  LACK_PLUMBING: {
+    id: 'explore.map.page.side.panel.indicator.description.lack.plumbing',
+    defaultMessage: 'Share of homes without indoor kitchens or plumbing',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of homes without indoor kitchens or plumbing`,
   },
 
   PROX_HAZ: {
@@ -762,6 +796,11 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Risk Management Plan facilities within 5 kilometers`,
   },
 
+  LEAKY_TANKS: {
+    id: 'explore.map.page.side.panel.indicator.description.leaky.tanks',
+    defaultMessage: `Count of leaking underground storage tanks when compared to all underground storage tanks`,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of leaky storage tanks`,
+  },
   WASTE_WATER: {
     id: 'explore.map.page.side.panel.indicator.description.wasteWater',
     defaultMessage: 'Toxic concentrations at stream segments within 500 meters',
