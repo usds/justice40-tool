@@ -35,7 +35,6 @@ datasets:
         include_in_tiles: true
         include_in_downloadable_files: true
         create_percentile: true
-
       - short_name: "ex_ag_loss"
         df_field_name: "EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME"
         long_name: "Expected agricultural loss rate (Natural Hazards Risk Index)"
@@ -54,7 +53,6 @@ datasets:
         include_in_tiles: true
         include_in_downloadable_files: true
         create_percentile: true
-
       - short_name: "ex_bldg_loss"
         df_field_name: "EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME"
         long_name: "Expected building loss rate (Natural Hazards Risk Index)"
@@ -72,7 +70,6 @@ datasets:
         include_in_tiles: true
         include_in_downloadable_files: true
         create_percentile: true
-
       - short_name: "has_ag_val"
         df_field_name: "CONTAINS_AGRIVALUE"
         long_name: "Contains agricultural value"
@@ -168,7 +165,6 @@ datasets:
         field_type: float
         include_in_tiles: true
         include_in_downloadable_files: true
-
   - long_name: "First Street Foundation Flood Risk"
     short_name: "FSF Flood Risk"
     module_name: fsf_flood_risk
@@ -209,7 +205,6 @@ datasets:
         include_in_tiles: false
         include_in_downloadable_files: true
         create_percentile: true
-
   - long_name: "First Street Foundation Wildfire Risk"
     short_name: "FSF Wildfire Risk"
     module_name: fsf_wildfire_risk
@@ -250,7 +245,6 @@ datasets:
         include_in_tiles: false
         include_in_downloadable_files: true
         create_percentile: true
-
   - long_name: "DOT Travel Disadvantage Index"
     short_name: "DOT"
     module_name: "travel_composite"
@@ -260,6 +254,39 @@ datasets:
         df_field_name: "TRAVEL_BURDEN_FIELD_NAME"
         long_name: "DOT Travel Barriers Score" 
         field_type: float
+        include_in_tiles: true
+        include_in_downloadable_files: true
+        create_percentile: true
+  - long_name: "National Land Cover Database (NLCD) Lack of Green Space / Nature-Deprived Communities dataset, as compiled by TPL"
+    short_name: "nlcd_nature_deprived"
+    module_name: "nlcd_nature_deprived"
+    input_geoid_tract_field_name: "GEOID10_TRACT"
+    load_fields:
+      - short_name: "ncld_eligible"
+        df_field_name: "ELIGIBLE_FOR_NATURE_DEPRIVED_FIELD_NAME"
+        long_name: "Does the tract have at least 35 acres in it?" 
+        field_type: bool
+        include_in_tiles: true
+        include_in_downloadable_files: true
+        create_percentile: false
+      - short_name: "percent_impervious"
+        df_field_name: "TRACT_PERCENT_IMPERVIOUS_FIELD_NAME"
+        long_name: "Share of the tract's land area that is covered by impervious surface as a percent" 
+        field_type: percentage
+        include_in_tiles: true
+        include_in_downloadable_files: true
+        create_percentile: true
+      - short_name: "percent_nonnatural"
+        df_field_name: "TRACT_PERCENT_NON_NATURAL_FIELD_NAME"
+        long_name: "Share of the tract's land area that is covered by impervious surface or cropland as a percent" 
+        field_type: percentage
+        include_in_tiles: true
+        include_in_downloadable_files: true
+        create_percentile: true
+      - short_name: "percent_cropland"
+        df_field_name: "TRACT_PERCENT_CROPLAND_FIELD_NAME"
+        long_name: "Share of the tract's land area that is covered by cropland as a percent" 
+        field_type: percentage
         include_in_tiles: true
         include_in_downloadable_files: true
         create_percentile: true

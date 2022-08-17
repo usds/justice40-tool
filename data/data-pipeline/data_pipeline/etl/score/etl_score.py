@@ -14,6 +14,7 @@ from data_pipeline.etl.sources.dot_travel_composite.etl import (
 from data_pipeline.etl.sources.fsf_flood_risk.etl import (
     FloodRiskETL,
 )
+from data_pipeline.etl.sources.nlcd_nature_deprived.etl import NatureDeprivedETL
 from data_pipeline.etl.sources.fsf_wildfire_risk.etl import WildfireRiskETL
 from data_pipeline.score.score_runner import ScoreRunner
 from data_pipeline.score import field_names
@@ -47,6 +48,7 @@ class ScoreETL(ExtractTransformLoad):
         self.dot_travel_disadvantage_df: pd.DataFrame
         self.fsf_flood_df: pd.DataFrame
         self.fsf_fire_df: pd.DataFrame
+        self.nature_deprived_df: pd.DataFrame
 
     def extract(self) -> None:
         logger.info("Loading data sets from disk.")
@@ -133,6 +135,9 @@ class ScoreETL(ExtractTransformLoad):
 
         # Load flood risk data
         self.fsf_flood_df = FloodRiskETL.get_data_frame()
+
+        # Load NLCD Nature-Deprived Communities data
+        self.nature_deprived_df = NatureDeprivedETL.get_data_frame()
 
         # Load GeoCorr Urban Rural Map
         geocorr_urban_rural_csv = (
@@ -356,6 +361,7 @@ class ScoreETL(ExtractTransformLoad):
             self.dot_travel_disadvantage_df,
             self.fsf_flood_df,
             self.fsf_fire_df,
+            self.nature_deprived_df,
         ]
 
         # Sanity check each data frame before merging.
@@ -439,9 +445,9 @@ class ScoreETL(ExtractTransformLoad):
             field_names.IMPENETRABLE_SURFACES_FIELD,
             field_names.UST_FIELD,
             field_names.DOT_TRAVEL_BURDEN_FIELD,
-            field_names.AGRICULTURAL_VALUE_BOOL_FIELD,
             field_names.FUTURE_FLOOD_RISK_FIELD,
             field_names.FUTURE_WILDFIRE_RISK_FIELD,
+            field_names.TRACT_PERCENT_NON_NATURAL_FIELD_NAME,
             field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD,
         ]
 
@@ -449,6 +455,8 @@ class ScoreETL(ExtractTransformLoad):
             self.GEOID_TRACT_FIELD_NAME,
             field_names.PERSISTENT_POVERTY_FIELD,
             field_names.HISTORIC_REDLINING_SCORE_EXCEEDED,
+            field_names.TRACT_ELIGIBLE_FOR_NONNATURAL_THRESHOLD,
+            field_names.AGRICULTURAL_VALUE_BOOL_FIELD,
         ]
 
         # For some columns, high values are "good", so we want to reverse the percentile
@@ -500,7 +508,7 @@ class ScoreETL(ExtractTransformLoad):
         df_copy[numeric_columns] = df_copy[numeric_columns].apply(pd.to_numeric)
 
         # Convert all columns to numeric and do math
-        # Note that we have a few special conditions here, that we handle explicitly.
+        # Note that we have a few special conditions here and we handle them explicitly.
         #     For *Linguistic Isolation*, we do NOT want to include Puerto Rico in the percentile
         #     calculation. This is because linguistic isolation as a category doesn't make much sense
         #     in Puerto Rico, where Spanish is a recognized language. Thus, we construct a list
@@ -509,6 +517,10 @@ class ScoreETL(ExtractTransformLoad):
         #     For *Expected Agricultural Loss*, we only want to include in the percentile tracts
         #     in which there is some agricultural value. This helps us adjust the data such that we have
         #     the ability to discern which tracts truly are at the 90th percentile, since many tracts have 0 value.
+        #
+        #     For *Non-Natural Space*, we may only want to include tracts that have at least 35 acreas, I think. This will
+        #     get rid of  tracts that we think are aberrations statistically. Right now, we have left this out
+        #     pending ground-truthing.
 
         for numeric_column in numeric_columns:
             drop_tracts = []
@@ -524,7 +536,6 @@ class ScoreETL(ExtractTransformLoad):
                 logger.info(
                     f"Dropping {len(drop_tracts)} tracts from Agricultural Value Loss"
                 )
-
             elif numeric_column == field_names.LINGUISTIC_ISO_FIELD:
                 drop_tracts = df_copy[
                     # 72 is the FIPS code for Puerto Rico
