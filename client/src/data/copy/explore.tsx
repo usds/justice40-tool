@@ -184,6 +184,26 @@ export const MAP = defineMessages({
   //   defaultMessage: 'Geolocation locked',
   //   description: 'On the explore the map page, on the map, this is the message above the gelocation icon that geolocation is locked.',
   // },
+  CENSUS_TRACT_LONG: {
+    id: 'explore.map.page.map.layer.selector.tracts.long',
+    defaultMessage: 'Census Tracts',
+    description: 'On the explore the map page, on the map, the full name indicating Census Tracts',
+  },
+  CENSUS_TRACT_SHORT: {
+    id: 'explore.map.page.map.layer.selector.tracts.short',
+    defaultMessage: 'Tracts',
+    description: 'On the explore the map page, on the map, the short name indicating Census Tracts',
+  },
+  TRIBAL_LANDS_LONG: {
+    id: 'explore.map.page.map.layer.selector.tribal.long',
+    defaultMessage: 'Tribal Lands',
+    description: 'On the explore the map page, on the map, the full name indicating Tribal Lands',
+  },
+  TRIBAL_LANDS_SHORT: {
+    id: 'explore.map.page.map.layer.selector.tracts.short',
+    defaultMessage: 'Tribal',
+    description: 'On the explore the map page, on the map, the short name indicating Tribal Lands',
+  },
 });
 
 
@@ -308,6 +328,15 @@ export const SIDE_PANEL_CBG_INFO = defineMessages({
     id: 'explore.map.page.side.panel.geographicInfo.population',
     defaultMessage: 'Population:',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the population of the feature selected`,
+  },
+});
+
+export const SIDE_PANEL_TRIBAL_INFO = defineMessages({
+  LAND_AREA_NAME: {
+    id: 'explore.map.page.side.panel.tribalInfo.landAreaName',
+    defaultMessage: 'Land Area Name:',
+    description: `Navigate to the explore the map page. Click on Tribal Lands, when the map is in view, 
+    click on the map. The side panel will show the land area name of the feature selected`,
   },
 });
 

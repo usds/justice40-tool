@@ -1,7 +1,7 @@
 /* eslint-disable valid-jsdoc */
 /* eslint-disable no-unused-vars */
 // External Libs:
-import React, {useRef, useState, useMemo} from 'react';
+import React, {useRef, useState} from 'react';
 import {Map, MapboxGeoJSONFeature, LngLatBoundsLike} from 'maplibre-gl';
 import ReactMapGL, {
   MapEvent,
@@ -12,7 +12,7 @@ import ReactMapGL, {
   Popup,
   FlyToInterpolator,
   FullscreenControl,
-  MapRef, Source, Layer} from 'react-map-gl';
+  MapRef} from 'react-map-gl';
 import {useIntl} from 'gatsby-plugin-intl';
 import bbox from '@turf/bbox';
 import * as d3 from 'd3-ease';
@@ -27,6 +27,9 @@ import {useFlags} from '../contexts/FlagContext';
 import AreaDetail from './AreaDetail';
 import MapInfoPanel from './mapInfoPanel';
 import MapSearch from './MapSearch';
+import MapTractLayers from './MapTractLayers/MapTractLayers';
+import MapTribalLayer from './MapTribalLayers/MapTribalLayers';
+import LayerSelector from './LayerSelector';
 import TerritoryFocusControl from './territoryFocusControl';
 import {getOSBaseMap} from '../data/getOSBaseMap';
 
@@ -34,9 +37,7 @@ import {getOSBaseMap} from '../data/getOSBaseMap';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import * as constants from '../data/constants';
 import * as styles from './J40Map.module.scss';
-import * as COMMON_COPY from '../data/copy/common';
 import * as EXPLORE_COPY from '../data/copy/explore';
-
 
 declare global {
   interface Window {
@@ -57,55 +58,6 @@ export interface IDetailViewInterface {
   properties: constants.J40Properties,
 };
 
-/**
- * This function will determine the URL for the map tiles. It will read in a string that will designate either
- * high or low tiles. It will allow to overide the URL to the pipeline staging tile URL via feature flag.
- * Lastly, it allows to set the tiles to be local or via the CDN as well.
- *
- * @param {string} tilesetName
- * @returns {string}
- */
-export const featureURLForTilesetName = (tilesetName: string): string => {
-  const flags = useFlags();
-
-  const pipelineStagingBaseURL = `https://justice40-data.s3.amazonaws.com/data-pipeline-staging`;
-  const XYZ_SUFFIX = '{z}/{x}/{y}.pbf';
-
-  if ('stage_hash' in flags) {
-    // Check if the stage_hash is valid
-    const regex = /^[0-9]{4}\/[a-f0-9]{40}$/;
-    if (!regex.test(flags['stage_hash'])) {
-      console.error(COMMON_COPY.CONSOLE_ERROR.STAGE_URL);
-    }
-
-    return `${pipelineStagingBaseURL}/${flags['stage_hash']}/data/score/tiles/${tilesetName}/${XYZ_SUFFIX}`;
-  } else {
-    // The feature tile base URL and path can either point locally or the CDN.
-    // This is selected based on the DATA_SOURCE env variable.
-    const featureTileBaseURL = process.env.DATA_SOURCE === 'local' ?
-      process.env.GATSBY_LOCAL_TILES_BASE_URL :
-      process.env.GATSBY_CDN_TILES_BASE_URL;
-
-    const featureTilePath = process.env.DATA_SOURCE === 'local' ?
-    process.env.GATSBY_DATA_PIPELINE_SCORE_PATH_LOCAL :
-    process.env.GATSBY_DATA_PIPELINE_SCORE_PATH;
-
-    return [
-      featureTileBaseURL,
-      featureTilePath,
-      process.env.GATSBY_MAP_TILES_PATH,
-      tilesetName,
-      XYZ_SUFFIX,
-    ].join('/');
-  }
-};
-
-/**
- * This the main map component
- *
- * @param {IJ40Interface} location
- * @returns {ReactElement}
- */
 const J40Map = ({location}: IJ40Interface) => {
   /**
    * Initializes the zoom, and the map's center point (lat, lng) via the URL hash #{z}/{lat}/{long}
@@ -134,6 +86,11 @@ const J40Map = ({location}: IJ40Interface) => {
   const [transitionInProgress, setTransitionInProgress] = useState<boolean>(false);
   const [geolocationInProgress, setGeolocationInProgress] = useState<boolean>(false);
   const [isMobileMapState, setIsMobileMapState] = useState<boolean>(false);
+  const [censusSelected, setCensusSelected] = useState<boolean>(true);
+
+  // In order to detect that the layer has been toggled (between census and tribal),
+  // this state variable will hold that information
+  const [layerToggled, setLayerToggled] = useState<boolean>(false);
   const {width: windowWidth} = useWindowSize();
 
   /**
@@ -153,7 +110,6 @@ const J40Map = ({location}: IJ40Interface) => {
   const intl = useIntl();
 
   const selectedFeatureId = (selectedFeature && selectedFeature.id) || '';
-  const filter = useMemo(() => ['in', constants.GEOID_PROPERTY, selectedFeatureId], [selectedFeature]);
 
   const zoomLatLngHash = mapRef.current?.getMap()._hash._getCurrentHash();
 
@@ -219,12 +175,29 @@ const J40Map = ({location}: IJ40Interface) => {
       }
     } else {
       // This else clause will fire when the ID is null or empty. This is the case where the map is clicked
+
+      setLayerToggled(false);
+
       // @ts-ignore
       const feature = event.features && event.features[0];
+
+      /**
+       * Given that Alaska has Points as their data type, we will not zoom into them when
+       * selected. In order to detect if a feature is a Point we will use Regex to determine
+       * the Alaska Point based on it's unique ID:
+       *
+       * E.g. {33FF6457-324C-4643-94E8-D543DD4339E0}
+       *
+       * The regex will test for any numeric, upper-case alpha with hyphens string enclosed
+       * in curly braces.
+       */
+      const alaskaIDRegex = /\{[0-9,A-Z,-]+\}/g;
+      const isFeatureAlaskaPoint = alaskaIDRegex.test(feature.id);
 
       if (feature) {
         // Get the current selected feature's bounding box:
         const [minLng, minLat, maxLng, maxLat] = bbox(feature);
+
 
         // Set the selectedFeature ID
         if (feature.id !== selectedFeatureId) {
@@ -233,8 +206,9 @@ const J40Map = ({location}: IJ40Interface) => {
           setSelectedFeature(undefined);
         }
 
-        // Go to the newly selected feature
-        goToPlace([
+
+        // Go to the newly selected feature (as long as it's not an Alaska Point)
+        !isFeatureAlaskaPoint && goToPlace([
           [minLng, minLat],
           [maxLng, maxLat],
         ]);
@@ -298,7 +272,7 @@ const J40Map = ({location}: IJ40Interface) => {
    * @param {LngLatBoundsLike} bounds
    * @param {boolean} isTerritory
    */
-  const goToPlace = (bounds: LngLatBoundsLike, isTerritory = false ) => {
+  const goToPlace = (bounds: LngLatBoundsLike, isTerritory = false) => {
     const newViewPort = new WebMercatorViewport({height: viewport.height!, width: viewport.width!});
     const {longitude, latitude, zoom} = newViewPort.fitBounds(
       bounds as [[number, number], [number, number]], {
@@ -376,6 +350,13 @@ const J40Map = ({location}: IJ40Interface) => {
          * Any component declarations outside the <ReactMapGL> component may be susceptible to this bug.
          */}
 
+        {/* This will allow to select between the census tract layer and the tribal lands layer */}
+        <LayerSelector
+          censusSelected={censusSelected}
+          setCensusSelected={setCensusSelected}
+          setLayerToggled={setLayerToggled}
+        />
+
         {/**
          * The ReactMapGL component's props are grouped by the API's documentation. The component also has
          * some children.
@@ -390,7 +371,7 @@ const J40Map = ({location}: IJ40Interface) => {
           // ****** Map state props: ******
           // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#map-state
           {...viewport}
-          mapStyle={process.env.MAPBOX_STYLES_READ_TOKEN ? mapBoxBaseLayer : getOSBaseMap()}
+          mapStyle={process.env.MAPBOX_STYLES_READ_TOKEN ? mapBoxBaseLayer : getOSBaseMap(censusSelected)}
           width="100%"
           // Ajusting this height with a conditional statement will not render the map on staging.
           // The reason for this issue is unknown. Consider styling the parent container via SASS.
@@ -404,7 +385,16 @@ const J40Map = ({location}: IJ40Interface) => {
           minZoom={constants.GLOBAL_MIN_ZOOM}
           dragRotate={false}
           touchRotate={false}
-          interactiveLayerIds={[constants.HIGH_ZOOM_LAYER_ID, constants.PRIORITIZED_HIGH_ZOOM_LAYER_ID]}
+          // eslint-disable-next-line max-len
+          interactiveLayerIds={censusSelected ?
+            [
+              constants.HIGH_ZOOM_LAYER_ID,
+              constants.PRIORITIZED_HIGH_ZOOM_LAYER_ID,
+            ] : [
+              constants.TRIBAL_LAYER_ID,
+              constants.TRIBAL_ALASKA_POINTS_LAYER_ID,
+            ]
+          }
 
 
           // ****** Callback props: ******
@@ -418,98 +408,19 @@ const J40Map = ({location}: IJ40Interface) => {
           ref={mapRef}
           data-cy={'reactMapGL'}
         >
-          {/**
-           * Load all data sources and layers
-           *
-           * First the low zoom:
-           */}
-          <Source
-            id={constants.LOW_ZOOM_SOURCE_NAME}
-            type="vector"
-            promoteId={constants.GEOID_PROPERTY}
-            tiles={[featureURLForTilesetName('low')]}
-            maxzoom={constants.GLOBAL_MAX_ZOOM_LOW}
-            minzoom={constants.GLOBAL_MIN_ZOOM_LOW}
-          >
 
-            {/* Low zoom layer - prioritized features only */}
-            <Layer
-              id={constants.LOW_ZOOM_LAYER_ID}
-              source-layer={constants.SCORE_SOURCE_LAYER}
-              filter={['>', constants.SCORE_PROPERTY_LOW, constants.SCORE_BOUNDARY_THRESHOLD]}
-              type='fill'
-              paint={{
-                'fill-color': constants.PRIORITIZED_FEATURE_FILL_COLOR,
-                'fill-opacity': constants.LOW_ZOOM_PRIORITIZED_FEATURE_FILL_OPACITY}}
-              maxzoom={constants.GLOBAL_MAX_ZOOM_LOW}
-              minzoom={constants.GLOBAL_MIN_ZOOM_LOW}
-            />
-          </Source>
-
-          {/**
-           * The high zoom source
-           */}
-          <Source
-            id={constants.HIGH_ZOOM_SOURCE_NAME}
-            type="vector"
-            promoteId={constants.GEOID_PROPERTY}
-            tiles={[featureURLForTilesetName('high')]}
-            maxzoom={constants.GLOBAL_MAX_ZOOM_HIGH}
-            minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
-          >
-
-            {/* High zoom layer - non-prioritized features only */}
-            <Layer
-              id={constants.HIGH_ZOOM_LAYER_ID}
-              source-layer={constants.SCORE_SOURCE_LAYER}
-              filter={['<', constants.SCORE_PROPERTY_HIGH, constants.SCORE_BOUNDARY_THRESHOLD]}
-              type='fill'
-              paint={{
-                'fill-opacity': constants.NON_PRIORITIZED_FEATURE_FILL_OPACITY,
-              }}
-              minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
-            />
-
-            {/* High zoom layer - prioritized features only */}
-            <Layer
-              id={constants.PRIORITIZED_HIGH_ZOOM_LAYER_ID}
-              source-layer={constants.SCORE_SOURCE_LAYER}
-              filter={['>', constants.SCORE_PROPERTY_HIGH, constants.SCORE_BOUNDARY_THRESHOLD]}
-              type='fill'
-              paint={{
-                'fill-color': constants.PRIORITIZED_FEATURE_FILL_COLOR,
-                'fill-opacity': constants.HIGH_ZOOM_PRIORITIZED_FEATURE_FILL_OPACITY,
-              }}
-              minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
-            />
-
-            {/* High zoom layer - controls the border between features */}
-            <Layer
-              id={constants.FEATURE_BORDER_LAYER_ID}
-              source-layer={constants.SCORE_SOURCE_LAYER}
-              type='line'
-              paint={{
-                'line-color': constants.FEATURE_BORDER_COLOR,
-                'line-width': constants.FEATURE_BORDER_WIDTH,
-                'line-opacity': constants.FEATURE_BORDER_OPACITY,
-              }}
-              maxzoom={constants.GLOBAL_MAX_ZOOM_FEATURE_BORDER}
-              minzoom={constants.GLOBAL_MIN_ZOOM_FEATURE_BORDER}
-            />
-
-            {/* High zoom layer - border styling around the selected feature */}
-            <Layer
-              id={constants.SELECTED_FEATURE_BORDER_LAYER_ID}
-              source-layer={constants.SCORE_SOURCE_LAYER}
-              filter={filter} // This filter filters out all other features except the selected feature.
-              type='line'
-              paint={{
-                'line-color': constants.SELECTED_FEATURE_BORDER_COLOR,
-                'line-width': constants.SELECTED_FEATURE_BORDER_WIDTH,
-              }}
-              minzoom={constants.GLOBAL_MIN_ZOOM_HIGH}
-            />
-          </Source>
+          {/* Load either the Tribal layer or Census layer depending on the censusSelected state variable */}
+          {
+            censusSelected ?
+              <MapTractLayers
+                selectedFeature={selectedFeature}
+                selectedFeatureId={selectedFeatureId}
+              /> :
+              <MapTribalLayer
+                selectedFeature={selectedFeature}
+                selectedFeatureId={selectedFeatureId}
+              />
+          }
 
           {/* This is the first overlayed row on the map: Search and Geolocation */}
           <div className={styles.mapHeaderRow}>
@@ -562,7 +473,11 @@ const J40Map = ({location}: IJ40Interface) => {
               onClose={setDetailViewData}
               captureScroll={true}
             >
-              <AreaDetail properties={detailViewData.properties} hash={zoomLatLngHash}/>
+              <AreaDetail
+                properties={detailViewData.properties}
+                hash={zoomLatLngHash}
+                isCensusLayerSelected={censusSelected}
+              />
             </Popup>
           )}
           {'fs' in flags ? <FullscreenControl className={styles.fullscreenControl}/> :'' }
@@ -576,6 +491,8 @@ const J40Map = ({location}: IJ40Interface) => {
           featureProperties={detailViewData?.properties}
           selectedFeatureId={selectedFeature?.id}
           hash={zoomLatLngHash}
+          isCensusLayerSelected={censusSelected}
+          layerToggled={layerToggled}
         />
       </Grid>
     </>

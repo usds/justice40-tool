@@ -1,0 +1,30 @@
+@use '../../styles/design-system.scss' as *;
+
+.layerSelectorContainer {
+    background-color: white;
+    @include u-padding-left(1);
+    @include u-padding-right(1);
+    @include u-padding-top(1);
+    @include u-padding-bottom(1);
+    width: fit-content;
+    z-index: 1;
+    
+    // styles for mobile-lg (480px) and greater widths,
+    @include at-media('mobile-lg') {
+        position: absolute;
+        top: units(2.5);
+        left: 62%;
+    }
+
+    // styles for less than mobile-lg (480px)
+    position: absolute;
+    top: -5.2rem;
+    
+}
+  
+  
+  
+  
+  
+  
+  

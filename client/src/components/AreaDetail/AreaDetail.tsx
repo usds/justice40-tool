@@ -24,6 +24,7 @@ import mailIcon from '/node_modules/uswds/dist/img/usa-icons/mail_outline.svg';
 interface IAreaDetailProps {
   properties: constants.J40Properties,
   hash: string[],
+  isCensusLayerSelected: boolean,
 }
 
 /**
@@ -62,7 +63,8 @@ export interface ICategory {
   isExceed1MoreBurden: boolean | null,
   isExceedBothSocioBurdens: boolean | null,
 }
-const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
+
+const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps) => {
   const intl = useIntl();
 
   // console.log the properties of the census that is selected:
@@ -74,6 +76,7 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
   const countyName = properties[constants.COUNTY_NAME] ? properties[constants.COUNTY_NAME] : "N/A";
   const stateName = properties[constants.STATE_NAME] ? properties[constants.STATE_NAME] : "N/A";
   const sidePanelState = properties[constants.SIDE_PANEL_STATE];
+  const landAreaName = properties[constants.LAND_AREA_NAME];
 
   const isCommunityFocus = score >= constants.SCORE_BOUNDARY_THRESHOLD;
 
@@ -590,65 +593,112 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
       {/* Demographics */}
       <TractDemographics />
 
-      {/* Disadvantaged? */}
-      <div className={styles.categorization}>
 
-        {/* Questions asking if disadvantaged? */}
-        <div className={styles.isInFocus}>
-          {EXPLORE_COPY.COMMUNITY.IS_FOCUS}
-        </div>
+      {
+        isCensusLayerSelected ? (
+          <>
+            {/* Census Info  */}
+            <ul className={styles.censusRow}>
+              <li>
+                <span className={styles.censusLabel}>
+                  {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CBG_INFO.CENSUS_BLOCK_GROUP)}
+                </span>
+                <span className={styles.censusText}>{` ${blockGroup}`}</span>
+              </li>
+              <li>
+                <span className={styles.censusLabel}>
+                  {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CBG_INFO.COUNTY)}
+                </span>
+                <span className={styles.censusText}>{` ${countyName}`}</span>
+              </li>
+              <li>
+                <span className={styles.censusLabel}>
+                  {properties[constants.SIDE_PANEL_STATE] !== constants.SIDE_PANEL_STATE_VALUES.NATION ?
+                    intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CBG_INFO.TERRITORY) :
+                    intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CBG_INFO.STATE)
+                  }
+                </span>
+                <span className={styles.censusText}>{` ${stateName}`}</span>
+              </li>
+              <li>
+                <span className={styles.censusLabel}>
+                  {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CBG_INFO.POPULATION)}
+                </span>
+                <span className={styles.censusText}>{` ${population.toLocaleString()}`}</span>
+              </li>
+            </ul>
 
-        {/* YES with Dot or NO with no Dot  */}
-        <div className={styles.communityOfFocus}>
-          {isCommunityFocus ?
-            <>
-              <h3>{EXPLORE_COPY.COMMUNITY.OF_FOCUS}</h3>
-              <DisadvantageDot isDisadvantaged={isCommunityFocus} />
-            </> :
-            <h3>{EXPLORE_COPY.COMMUNITY.NOT_OF_FOCUS}</h3>
-          }
-        </div>
+            {/* Disadvantaged? */}
+            <div className={styles.categorization}>
 
-        {/* Number of categories exceeded */}
-        <div className={styles.showCategoriesExceed}>
-          {EXPLORE_COPY.numberOfCategoriesExceeded(properties[constants.COUNT_OF_CATEGORIES_DISADV])}
-        </div>
-
-        {/* Number of thresholds exceeded */}
-        {/* <div className={styles.showThresholdExceed}>
-          {EXPLORE_COPY.numberOfThresholdsExceeded(properties[constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS])}
-        </div> */}
-        {/* Send Feedback button */}
-        <a
-          className={styles.sendFeedbackLink}
-          // The mailto string must be on a single line otherwise the email does not display subject and body
-          href={`
-            mailto:${COMMON_COPY.FEEDBACK_EMAIL}?subject=${feedbackEmailSubject}&body=${feedbackEmailBody}
-          `}
-          target={"_blank"}
-          rel="noreferrer"
-        >
-          <Button
-            type="button"
-            className={styles.sendFeedbackBtn}
-          >
-            <div className={styles.buttonContainer}>
-              <div className={styles.buttonText}>
-                {EXPLORE_COPY.COMMUNITY.SEND_FEEDBACK.TITLE}
+              {/* Questions asking if disadvantaged? */}
+              <div className={styles.isInFocus}>
+                {EXPLORE_COPY.COMMUNITY.IS_FOCUS}
               </div>
-              <img
-                className={styles.buttonImage}
-                src={mailIcon}
-                alt={intl.formatMessage(EXPLORE_COPY.COMMUNITY.SEND_FEEDBACK.IMG_ICON.ALT_TAG)}
-              />
-            </div>
-          </Button>
-        </a>
 
-      </div>
+              {/* YES with Dot or NO with no Dot  */}
+              <div className={styles.communityOfFocus}>
+                {isCommunityFocus ?
+                  <>
+                    <h3>{EXPLORE_COPY.COMMUNITY.OF_FOCUS}</h3>
+                    <DisadvantageDot isDisadvantaged={isCommunityFocus} />
+                  </> :
+                  <h3>{EXPLORE_COPY.COMMUNITY.NOT_OF_FOCUS}</h3>
+                }
+              </div>
+
+              {/* Number of categories exceeded */}
+              <div className={styles.showCategoriesExceed}>
+                {EXPLORE_COPY.numberOfCategoriesExceeded(properties[constants.COUNT_OF_CATEGORIES_DISADV])}
+              </div>
+
+              {/* Number of thresholds exceeded */}
+              {/* <div className={styles.showThresholdExceed}>
+                {EXPLORE_COPY.numberOfThresholdsExceeded(properties[constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS])}
+              </div> */}
+              {/* Send Feedback button */}
+              <a
+                className={styles.sendFeedbackLink}
+                // The mailto string must be on a single line otherwise the email does not display subject and body
+                href={`
+                mailto:${COMMON_COPY.FEEDBACK_EMAIL}?subject=${feedbackEmailSubject}&body=${feedbackEmailBody}
+                `}
+                target={"_blank"}
+                rel="noreferrer"
+              >
+                <Button
+                  type="button"
+                  className={styles.sendFeedbackBtn}
+                >
+                  <div className={styles.buttonContainer}>
+                    <div className={styles.buttonText}>
+                      {EXPLORE_COPY.COMMUNITY.SEND_FEEDBACK.TITLE}
+                    </div>
+                    <img
+                      className={styles.buttonImage}
+                      src={mailIcon}
+                      alt={intl.formatMessage(EXPLORE_COPY.COMMUNITY.SEND_FEEDBACK.IMG_ICON.ALT_TAG)}
+                    />
+                  </div>
+                </Button>
+              </a>
+            </div>
+          </>
+        ) : (
+          <ul className={styles.censusRow}>
+            <li>
+              <span className={styles.censusLabel}>
+                {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_TRIBAL_INFO.LAND_AREA_NAME)}
+              </span>
+              <span className={styles.censusText}>{` ${landAreaName}`}</span>
+            </li>
+          </ul>
+        )
+      }
+
 
       {/* All category accordions in this component */}
-      <Accordion multiselectable={true} items={categoryItems} />
+      {isCensusLayerSelected && <Accordion multiselectable={true} items={categoryItems} />}
 
       {/* Methodology version */}
       <div className={styles.versionInfo}>
