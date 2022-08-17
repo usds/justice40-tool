@@ -77,17 +77,22 @@ def etl_runner(dataset_to_run: str = None) -> None:
         None
     """
     dataset_list = _get_datasets_to_run(dataset_to_run)
-    max_workers = None  #  min(32, os.cpu_count() + 4) // 2
-    with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+
+    # try running the high memory tasks separately
+    concurrent_datasets = dataset_list[:-2]
+    high_memory_datasets = dataset_list[-2:]
+    with concurrent.futures.ThreadPoolExecutor() as executor:
         futures = {
             executor.submit(_run_one_dataset, dataset=dataset)
-            for dataset in dataset_list
+            for dataset in concurrent_datasets
         }
 
         for fut in concurrent.futures.as_completed(futures):
             # Calling result will raise an exception if one occurred.
             # Otherwise, the exceptions are silently ignored.
             fut.result()
+    for dataset in high_memory_datasets:
+        _run_one_dataset(dataset=dataset)
 
 
 def score_generate() -> None:
