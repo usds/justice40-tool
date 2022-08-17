@@ -340,6 +340,12 @@ MOBILE_HOME = "Mobile Home"
 SINGLE_PARENT = "Single Parent"
 TRANSPORTATION_COSTS = "Transportation Costs"
 
+# eAMLIS and FUDS variables
+AML_BOOLEAN = "Is there at least one abandoned mine in this census tract?"
+ELIGIBLE_FUDS_BINARY_FIELD_NAME = (
+    "Is there at least one Formerly Used Defense Site (FUDS) in the tract?"
+)
+
 #####
 # Names for individual factors being exceeded
 
@@ -398,6 +404,10 @@ HAZARDOUS_WASTE_LOW_INCOME_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile"
     f" for proximity to hazardous waste facilities and is low income?"
 )
+
+AML_LOW_INCOME_FIELD = "There is at least one abandoned mine in this census tract and the tract is low income."
+ELIGIBLE_FUDS_LOW_INCOME_FIELD = "There is at least one Formerly Used Defense Site (FUDS) in the tract and the tract is low income."
+
 
 # Critical Clean Water and Waste Infrastructure
 WASTEWATER_DISCHARGE_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for wastewater discharge and is low income?"

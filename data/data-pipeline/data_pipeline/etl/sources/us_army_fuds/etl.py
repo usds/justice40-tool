@@ -55,7 +55,7 @@ class USArmyFUDS(ExtractTransformLoad):
         # before we try to do any transformation, get the tract data
         # so it's loaded and the census ETL is out of scope
 
-        logger.info("Loading FUDs data as GeoDataFrame for transform")
+        logger.info("Loading FUDS data as GeoDataFrame for transform")
         raw_df = gpd.read_file(
             filename=self.DOWNLOAD_FILE_NAME,
             low_memory=False,
@@ -88,7 +88,7 @@ class USArmyFUDS(ExtractTransformLoad):
             .size()
         )
         self.output_df = (
-            self.output_df.fillna(0).astype("int64").sort_index().reset_index()
+            self.output_df.fillna(0).astype(np.int64).sort_index().reset_index()
         )
 
         self.output_df[self.ELIGIBLE_FUDS_BINARY_FIELD_NAME] = np.where(

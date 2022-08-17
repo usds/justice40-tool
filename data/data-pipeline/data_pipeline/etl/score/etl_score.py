@@ -14,6 +14,8 @@ from data_pipeline.etl.sources.dot_travel_composite.etl import (
 from data_pipeline.etl.sources.fsf_flood_risk.etl import (
     FloodRiskETL,
 )
+from data_pipeline.etl.sources.eamlis.etl import AbandonedMineETL
+from data_pipeline.etl.sources.us_army_fuds.etl import USArmyFUDS
 from data_pipeline.etl.sources.nlcd_nature_deprived.etl import NatureDeprivedETL
 from data_pipeline.etl.sources.fsf_wildfire_risk.etl import WildfireRiskETL
 from data_pipeline.score.score_runner import ScoreRunner
@@ -49,6 +51,8 @@ class ScoreETL(ExtractTransformLoad):
         self.fsf_flood_df: pd.DataFrame
         self.fsf_fire_df: pd.DataFrame
         self.nature_deprived_df: pd.DataFrame
+        self.eamlis_df: pd.DataFrame
+        self.fuds_df: pd.DataFrame
 
     def extract(self) -> None:
         logger.info("Loading data sets from disk.")
@@ -138,6 +142,12 @@ class ScoreETL(ExtractTransformLoad):
 
         # Load NLCD Nature-Deprived Communities data
         self.nature_deprived_df = NatureDeprivedETL.get_data_frame()
+
+        # Load eAMLIS dataset
+        self.eamlis_df = AbandonedMineETL.get_data_frame()
+
+        # Load FUDS dataset
+        self.fuds_df = USArmyFUDS.get_data_frame()
 
         # Load GeoCorr Urban Rural Map
         geocorr_urban_rural_csv = (
@@ -362,6 +372,8 @@ class ScoreETL(ExtractTransformLoad):
             self.fsf_flood_df,
             self.fsf_fire_df,
             self.nature_deprived_df,
+            self.eamlis_df,
+            self.fuds_df,
         ]
 
         # Sanity check each data frame before merging.
@@ -457,6 +469,8 @@ class ScoreETL(ExtractTransformLoad):
             field_names.HISTORIC_REDLINING_SCORE_EXCEEDED,
             field_names.TRACT_ELIGIBLE_FOR_NONNATURAL_THRESHOLD,
             field_names.AGRICULTURAL_VALUE_BOOL_FIELD,
+            field_names.ELIGIBLE_FUDS_BINARY_FIELD_NAME,
+            field_names.AML_BOOLEAN,
         ]
 
         # For some columns, high values are "good", so we want to reverse the percentile

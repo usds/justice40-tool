@@ -323,3 +323,15 @@ fields:
   - score_name: Does the tract have at least 35 acres in it?
     label: Does the tract have at least 35 acres in it?
     format: bool
+  - score_name: Is there at least one Formerly Used Defense Site (FUDS) in the tract?
+    label: Is there at least one Formerly Used Defense Site (FUDS) in the tract?
+    format: bool 
+  - score_name: Is there at least one abandoned mine in this census tract?
+    label: Is there at least one abandoned mine in this census tract?
+    format: bool
+  - score_name: There is at least one abandoned mine in this census tract and the tract is low income.
+    label: There is at least one abandoned mine in this census tract and the tract is low income.
+    format: bool
+  - score_name: There is at least one Formerly Used Defense Site (FUDS) in the tract and the tract is low income.
+    label: There is at least one Formerly Used Defense Site (FUDS) in the tract and the tract is low income.
+    format: bool

@@ -93,21 +93,23 @@ def etl_runner(dataset_to_run: str = None) -> None:
         dataset for dataset in dataset_list if dataset["is_memory_intensive"]
     ]
 
-    logger.info("Running concurrent jobs")
-    with concurrent.futures.ThreadPoolExecutor() as executor:
-        futures = {
-            executor.submit(_run_one_dataset, dataset=dataset)
-            for dataset in concurrent_datasets
-        }
+    if concurrent_datasets:
+        logger.info("Running concurrent jobs")
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            futures = {
+                executor.submit(_run_one_dataset, dataset=dataset)
+                for dataset in concurrent_datasets
+            }
 
-        for fut in concurrent.futures.as_completed(futures):
-            # Calling result will raise an exception if one occurred.
-            # Otherwise, the exceptions are silently ignored.
-            fut.result()
+            for fut in concurrent.futures.as_completed(futures):
+                # Calling result will raise an exception if one occurred.
+                # Otherwise, the exceptions are silently ignored.
+                fut.result()
 
-    logger.info("Running high-memory jobs")
-    for dataset in high_memory_datasets:
-        _run_one_dataset(dataset=dataset)
+    if high_memory_datasets:
+        logger.info("Running high-memory jobs")
+        for dataset in high_memory_datasets:
+            _run_one_dataset(dataset=dataset)
 
 
 def score_generate() -> None:
