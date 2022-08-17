@@ -11,6 +11,7 @@ from data_pipeline.score.utils import (
     calculate_tract_adjacency_scores as original_calculate_tract_adjacency_score,
 )
 from data_pipeline.etl.sources.geo_utils import get_tract_geojson
+import data_pipeline.score.field_names as field_names
 
 
 @contextmanager
@@ -30,7 +31,7 @@ def patch_calculate_tract_adjacency_scores():
 def score_data():
     score_csv = Path(__file__).parent / "data" / "scores.csv"
     return pd.read_csv(
-        score_csv, dtype={"GEOID10_TRACT": str, "included": bool}
+        score_csv, dtype={field_names.GEOID_TRACT_FIELD: str, "included": bool}
     )
 
 
@@ -46,7 +47,7 @@ def test_all_adjacent_are_true(score_data):
         assert (
             adjancency_scores.loc[
                 adjancency_scores.GEOID10_TRACT == "24027603004",
-                "included_ADJACENT_MEAN",
+                "included" + field_names.ADJACENCY_INDEX_SUFFIX,
             ].iloc[0]
             == 1.0
         )
@@ -64,7 +65,7 @@ def test_all_adjacent_are_false(score_data):
         assert (
             adjancency_scores.loc[
                 adjancency_scores.GEOID10_TRACT == "24027603004",
-                "included_ADJACENT_MEAN",
+                "included" + field_names.ADJACENCY_INDEX_SUFFIX,
             ].iloc[0]
             == 0.0
         )
