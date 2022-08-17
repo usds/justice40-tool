@@ -77,7 +77,7 @@ def etl_runner(dataset_to_run: str = None) -> None:
         None
     """
     dataset_list = _get_datasets_to_run(dataset_to_run)
-    max_workers = min(32, os.cpu_count() + 4)//2
+    max_workers = None  #  min(32, os.cpu_count() + 4) // 2
     with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
         futures = {
             executor.submit(_run_one_dataset, dataset=dataset)
