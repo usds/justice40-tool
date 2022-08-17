@@ -122,7 +122,12 @@ class ScoreNarwhal(Score):
             field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD,
             field_names.EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_FIELD,
             field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD,
+            field_names.HIGH_FUTURE_FLOOD_RISK_LOW_INCOME_FIELD,
+            field_names.HIGH_FUTURE_WILDFIRE_RISK_LOW_INCOME_FIELD,
         ]
+
+        # TODO: When we refactor this... it's the same code over and over and over again
+        # We should make a function, _get_all_columns(), that returns all three of these columns
 
         self.df[
             field_names.EXPECTED_POPULATION_LOSS_EXCEEDS_PCTILE_THRESHOLD
@@ -152,6 +157,22 @@ class ScoreNarwhal(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
+        self.df[field_names.HIGH_FUTURE_FLOOD_RISK_FIELD] = (
+            self.df[
+                field_names.FUTURE_FLOOD_RISK_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        )
+
+        self.df[field_names.HIGH_FUTURE_WILDFIRE_RISK_FIELD] = (
+            self.df[
+                field_names.FUTURE_WILDFIRE_RISK_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        )
+
         self.df[field_names.CLIMATE_THRESHOLD_EXCEEDED] = (
             self.df[
                 field_names.EXPECTED_POPULATION_LOSS_EXCEEDS_PCTILE_THRESHOLD
@@ -162,6 +183,8 @@ class ScoreNarwhal(Score):
             | self.df[
                 field_names.EXPECTED_BUILDING_LOSS_EXCEEDS_PCTILE_THRESHOLD
             ]
+            | self.df[field_names.HIGH_FUTURE_WILDFIRE_RISK_FIELD]
+            | self.df[field_names.HIGH_FUTURE_FLOOD_RISK_FIELD]
         )
 
         self.df[field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD] = (
@@ -180,6 +203,16 @@ class ScoreNarwhal(Score):
 
         self.df[field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD] = (
             self.df[field_names.EXPECTED_BUILDING_LOSS_EXCEEDS_PCTILE_THRESHOLD]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
+        )
+
+        self.df[field_names.HIGH_FUTURE_FLOOD_RISK_LOW_INCOME_FIELD] = (
+            self.df[field_names.HIGH_FUTURE_FLOOD_RISK_FIELD]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
+        )
+
+        self.df[field_names.HIGH_FUTURE_WILDFIRE_RISK_LOW_INCOME_FIELD] = (
+            self.df[field_names.HIGH_FUTURE_WILDFIRE_RISK_FIELD]
             & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
 
@@ -865,11 +898,6 @@ class ScoreNarwhal(Score):
 
         self.df[field_names.THRESHOLD_COUNT] = 0
 
-        # TODO: move this inside of
-        #  `_create_low_income_and_low_college_attendance_threshold`
-        # and change the return signature of that method.
-        # Create a standalone field that captures the college attendance boolean
-        # threshold.
         self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED] = (
             self.df[
                 # UPDATE: Pull the imputed poverty statistic

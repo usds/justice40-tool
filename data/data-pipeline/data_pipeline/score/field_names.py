@@ -1,8 +1,5 @@
 # Suffixes
 PERCENTILE_FIELD_SUFFIX = " (percentile)"
-PERCENTILE_URBAN_RURAL_FIELD_SUFFIX = " (percentile urban/rural)"
-MIN_MAX_FIELD_SUFFIX = " (min-max normalized)"
-TOP_25_PERCENTILE_SUFFIX = " (top 25th percentile)"
 ISLAND_AREAS_PERCENTILE_ADJUSTMENT_FIELD = " for island areas"
 
 # Geographic field names
@@ -11,38 +8,6 @@ STATE_FIELD = "State/Territory"
 COUNTY_FIELD = "County Name"
 
 # Score file field names
-SCORE_A = "Score A"
-SCORE_B = "Score B"
-SCORE_C = "Score C"
-C_SOCIOECONOMIC = "Socioeconomic Factors"
-C_SENSITIVE = "Sensitive populations"
-C_ENVIRONMENTAL = "Environmental effects"
-C_EXPOSURES = "Exposures"
-SCORE_D = "Score D"
-SCORE_E = "Score E"
-SCORE_F_COMMUNITIES = "Score F (communities)"
-SCORE_G = "Score G"
-SCORE_G_COMMUNITIES = "Score G (communities)"
-SCORE_H = "Score H"
-SCORE_H_COMMUNITIES = "Score H (communities)"
-SCORE_I = "Score I"
-SCORE_I_COMMUNITIES = "Score I (communities)"
-SCORE_K = "NMTC (communities)"
-SCORE_K_COMMUNITIES = "Score K (communities)"
-
-# Definition L fields
-SCORE_L = "Definition L"
-SCORE_L_COMMUNITIES = "Definition L (communities)"
-L_CLIMATE = "Climate Factor (Definition L)"
-L_ENERGY = "Energy Factor (Definition L)"
-L_TRANSPORTATION = "Transportation Factor (Definition L)"
-L_HOUSING = "Housing Factor (Definition L)"
-L_POLLUTION = "Pollution Factor (Definition L)"
-L_WATER = "Water Factor (Definition L)"
-L_HEALTH = "Health Factor (Definition L)"
-L_WORKFORCE = "Workforce Factor (Definition L)"
-L_NON_WORKFORCE = "Any Non-Workforce Factor (Definition L)"
-
 # Definition M fields
 SCORE_M = "Definition M"
 SCORE_M_COMMUNITIES = "Definition M (communities)"
@@ -83,25 +48,6 @@ HEALTH_THRESHOLD_EXCEEDED = "At least one health threshold exceeded"
 WORKFORCE_THRESHOLD_EXCEEDED = "At least one workforce threshold exceeded"
 WORKFORCE_SOCIO_INDICATORS_EXCEEDED = (
     "Both workforce socioeconomic indicators exceeded"
-)
-
-# For now, these are not used. Will delete after following up with Vim.
-POLLUTION_SOCIO_INDICATORS_EXCEEDED = (
-    "Both pollution socioeconomic indicators exceeded"
-)
-CLIMATE_SOCIO_INDICATORS_EXCEEDED = (
-    "Both climate socioeconomic indicators exceeded"
-)
-ENERGY_SOCIO_INDICATORS_EXCEEDED = (
-    "Both energy socioeconomic indicators exceeded"
-)
-HOUSING_SOCIO_INDICATORS_EXCEEDED = (
-    "Both housing socioeconomic indicators exceeded"
-)
-WATER_SOCIO_INDICATORS_EXCEEDED = "Both water socioeconomic indicators exceeded"
-
-HEALTH_SOCIO_INDICATORS_EXCEEDED = (
-    "Both health socioeconomic indicators exceeded"
 )
 
 # Poverty / Income
@@ -156,6 +102,8 @@ EXPECTED_AGRICULTURE_LOSS_RATE_FIELD = (
 EXPECTED_POPULATION_LOSS_RATE_FIELD = (
     "Expected population loss rate (Natural Hazards Risk Index)"
 )
+FUTURE_FLOOD_RISK_FIELD = "Share of properties at risk of flood in 30 years"
+FUTURE_WILDFIRE_RISK_FIELD = "Share of properties at risk of fire in 30 years"
 
 # Environment
 DIESEL_FIELD = "Diesel particulate matter exposure"
@@ -407,6 +355,15 @@ EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD = (
     f" for expected building loss rate and is low income?"
 )
 AGRICULTURAL_VALUE_BOOL_FIELD = "Contains agricultural value"
+
+HIGH_FUTURE_FLOOD_RISK_LOW_INCOME_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for share of "
+    "properties at risk of flood in 30 years and is low income?"
+)
+HIGH_FUTURE_WILDFIRE_RISK_LOW_INCOME_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for "
+    "share of properties at risk of fire in 30 years and is low income?"
+)
 
 # Clean energy and efficiency
 PM25_EXPOSURE_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for PM2.5 exposure and is low income?"
@@ -670,6 +627,16 @@ LOW_LIFE_EXPECTANCY_PCTILE_THRESHOLD = (
 UNEMPLOYMENT_PCTILE_THRESHOLD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for unemployment"
 )
+HIGH_FUTURE_FLOOD_RISK_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for share of properties "
+    "at risk of flood in 30 years"
+)
+HIGH_FUTURE_WILDFIRE_RISK_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for share of properties "
+    "at risk of fire in 30 years"
+)
+
+
 LINGUISTIC_ISOLATION_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for households in linguistic isolation"
 POVERTY_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for households at or below 100% federal poverty level"
 LOW_MEDIAN_INCOME_PCTILE_THRESHOLD = (

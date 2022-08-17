@@ -293,12 +293,18 @@ TILES_SCORE_COLUMNS = {
     field_names.WORKFORCE_THRESHOLD_EXCEEDED: "M_WKFC_EOMI",
     # These are the booleans for socioeconomic indicators
     ## this measures low income boolean
-    field_names.FPL_200_SERIES: "FPL200S",
+    field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED: "FPL200S",
     ## Low high school for t&wd
     field_names.WORKFORCE_SOCIO_INDICATORS_EXCEEDED: "M_WKFC_EBSI",
     field_names.DOT_BURDEN_PCTILE_THRESHOLD: "TD_ET",
     field_names.DOT_TRAVEL_BURDEN_FIELD
-    + field_names.PERCENTILE_FIELD_SUFFIX: "TD_PFS"
+    + field_names.PERCENTILE_FIELD_SUFFIX: "TD_PFS",
+    field_names.FUTURE_FLOOD_RISK_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX: "FLD_PFS",
+    field_names.FUTURE_WILDFIRE_RISK_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX: "WF_PFS",
+    field_names.HIGH_FUTURE_FLOOD_RISK_FIELD: "FLD_ET",
+    field_names.HIGH_FUTURE_WILDFIRE_RISK_FIELD: "WF_ET",
     ## FPL 200 and low higher ed for all others should no longer be M_EBSI, but rather
     ## FPL_200 (there is no higher ed in narwhal)
 }
@@ -352,4 +358,7 @@ TILES_SCORE_FLOAT_COLUMNS = [
     field_names.COLLEGE_NON_ATTENDANCE_FIELD,
     field_names.COLLEGE_ATTENDANCE_FIELD,
     field_names.DOT_TRAVEL_BURDEN_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.FUTURE_FLOOD_RISK_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.FUTURE_WILDFIRE_RISK_FIELD
+    + field_names.PERCENTILE_FIELD_SUFFIX,
 ]

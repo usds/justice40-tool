@@ -276,3 +276,21 @@ sheets:
       - score_name: Greater than or equal to the 90th percentile for low median household income as a percent of area median income and has low HS education in 2009 (island areas)?
         label: Greater than or equal to the 90th percentile for low median household income as a percent of area median income and has low HS education in 2009 (island areas)?
         format: bool
+      - score_name: Share of properties at risk of flood in 30 years
+        label: Share of properties at risk of flood in 30 years
+        format: float
+      - score_name: Share of properties at risk of fire in 30 years
+        label: Share of properties at risk of fire in 30 years
+        format: float
+      - score_name: Greater than or equal to the 90th percentile for share of properties at risk of flood in 30 years and is low income?
+        label: Greater than or equal to the 90th percentile for share of properties at risk of flood in 30 years and is low income?
+        format: bool
+      - score_name: Greater than or equal to the 90th percentile for share of properties at risk of fire in 30 years and is low income?
+        label: Greater than or equal to the 90th percentile for share of properties at risk of fire in 30 years and is low income?
+        format: bool
+      - score_name: Greater than or equal to the 90th percentile for share of properties at risk of flood in 30 years
+        label: Greater than or equal to the 90th percentile for share of properties at risk of flood in 30 years
+        format: bool
+      - score_name: Greater than or equal to the 90th percentile for share of properties at risk of fire in 30 years
+        label: Greater than or equal to the 90th percentile for share of properties at risk of fire in 30 years
+        format: bool
