@@ -55,6 +55,11 @@ DATASET_LIST = [
         "class_name": "HudHousingETL",
     },
     {
+        "name": "ncld_nature_deprived",
+        "module_dir": "ncld_nature_deprived",
+        "class_name": "NatureDeprivedETL",
+    },
+    {
         "name": "census_acs_median_income",
         "module_dir": "census_acs_median_income",
         "class_name": "CensusACSMedianIncomeETL",
