@@ -69,6 +69,7 @@ DATASET_LIST = [
         "name": "ncld_nature_deprived",
         "module_dir": "ncld_nature_deprived",
         "class_name": "NatureDeprivedETL",
+        "is_memory_intensive": False,
     },
     {
         "name": "census_acs_median_income",

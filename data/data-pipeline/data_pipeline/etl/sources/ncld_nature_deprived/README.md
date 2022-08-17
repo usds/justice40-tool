@@ -1,6 +1,6 @@
 # Nature deprived communities data
 
-The following dataset was compiled by TPL using NCLD data. We define as: AREA - [CROPLAND] - [IMPERVIOUS SURFACES].
+The following dataset was compiled by TPL (Trust for Public Lands) using NCLD data. We define as: AREA - [CROPLAND] - [IMPERVIOUS SURFACES].
 
 ## Codebook 
 - GEOID10 – Census tract ID
