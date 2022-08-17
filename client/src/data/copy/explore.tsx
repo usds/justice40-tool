@@ -483,6 +483,18 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show population loss rate
 `,
   },
+  FLOODING: {
+    id: 'explore.map.page.side.panel.indicator.flooding',
+    defaultMessage: 'Future flood risk',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show flood risk
+`,
+  },
+  WILDFIRE: {
+    id: 'explore.map.page.side.panel.indicator.wildfire',
+    defaultMessage: 'Future wildfire risk',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show wildfire risk
+`,
+  },
   LOW_INCOME: {
     id: 'explore.map.page.side.panel.indicator.low.income',
     defaultMessage: 'Low income',
@@ -661,6 +673,20 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Economic loss rate to the population in fatalities and 
       injuries resulting from natural hazards`,
+  },
+  FLOODING: {
+    id: 'explore.map.page.side.panel.indicator.description.flooding',
+    defaultMessage: `
+      Projected risk to properties from floods from tides, rain, riverine and storm surges in 30 years
+    `,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of flooding risk`,
+  },
+  WILDFIRE: {
+    id: 'explore.map.page.side.panel.indicator.description.wildfire',
+    defaultMessage: `
+      Projected risk to properties from wildfire from fire fuels, weather, humans, and fire movement
+    `,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of wildfire risk`,
   },
   LOW_INCOME: {
     id: 'explore.map.page.side.panel.indicator.description.low.income',

@@ -531,6 +531,10 @@
     "defaultMessage": "Rate of fatalities and injuries resulting from natural hazards each year",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Economic loss rate to the population in fatalities and \n      injuries resulting from natural hazards"
   },
+  "explore.map.page.side.panel.indicator.description.flooding": {
+    "defaultMessage": "Projected risk to properties from floods from tides, rain, riverine and storm surges in 30 years",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of flooding risk"
+  },
   "explore.map.page.side.panel.indicator.description.heartDisease": {
     "defaultMessage": "People ages 18 years and older who have been told they have heart disease",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Weighted percent of people ages 18 years and older who have \n    been told they have heart disease"
@@ -603,6 +607,10 @@
     "defaultMessage": "Toxic concentrations at stream segments within 500 meters",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Toxic concentrations at stream segments within 500 meters"
   },
+  "explore.map.page.side.panel.indicator.description.wildfire": {
+    "defaultMessage": "Projected risk to properties from wildfire from fire fuels, weather, humans, and fire movement",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of wildfire risk"
+  },
   "explore.map.page.side.panel.indicator.diabetes": {
     "defaultMessage": "Diabetes",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Diabetes"
@@ -626,6 +634,10 @@
   "explore.map.page.side.panel.indicator.exp.pop.loss": {
     "defaultMessage": "Expected population loss rate",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show population loss rate\n"
+  },
+  "explore.map.page.side.panel.indicator.flooding": {
+    "defaultMessage": "Future flood risk",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show flood risk\n"
   },
   "explore.map.page.side.panel.indicator.heartDisease": {
     "defaultMessage": "Heart disease",
@@ -766,6 +778,10 @@
   "explore.map.page.side.panel.indicator.wasteWater": {
     "defaultMessage": "Wastewater discharge",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Wastewater discharge"
+  },
+  "explore.map.page.side.panel.indicator.wildfire": {
+    "defaultMessage": "Future wildfire risk",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show wildfire risk\n"
   },
   "explore.map.page.side.panel.info.alt.text.icon1": {
     "defaultMessage": "An icon that has depicts pieces of a block selected mimicking the census block census tracts",

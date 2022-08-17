@@ -216,6 +216,22 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
     isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_EXP_POP_LOSS] ?
       properties[constants.IS_EXCEEDS_THRESH_FOR_EXP_POP_LOSS] : null,
   };
+  const flooding: indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.FLOODING),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.FLOODING),
+    value: properties.hasOwnProperty(constants.FLOODING_PERCENTILE) ?
+      properties[constants.FLOODING_PERCENTILE] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FLOODING] ?
+      properties[constants.IS_EXCEEDS_THRESH_FLOODING] : null,
+  };
+  const wildfire: indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.WILDFIRE),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.WILDFIRE),
+    value: properties.hasOwnProperty(constants.WASTEWATER_PERCENTILE) ?
+      properties[constants.WASTEWATER_PERCENTILE] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_WILDFIRE] ?
+      properties[constants.IS_EXCEEDS_THRESH_WILDFIRE] : null,
+  };
   const lowInc: indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.LOW_INCOME),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.LOW_INCOME),
@@ -406,7 +422,7 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
     {
       id: 'climate-change',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.CLIMATE),
-      indicators: [expAgLoss, expBldLoss, expPopLoss],
+      indicators: [expAgLoss, expBldLoss, expPopLoss, flooding, wildfire],
       socioEcIndicators: [lowInc, higherEd],
       isDisadvagtaged: properties[constants.IS_CLIMATE_FACTOR_DISADVANTAGED_M] ?
         properties[constants.IS_CLIMATE_FACTOR_DISADVANTAGED_M] : null,

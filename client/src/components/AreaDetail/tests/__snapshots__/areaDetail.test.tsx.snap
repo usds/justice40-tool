@@ -948,6 +948,68 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             </div>
           </div>
         </li>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Future flood risk
+              <div>
+                
+      Projected risk to properties from floods from tides, rain, riverine and storm surges in 30 years
+    
+              </div>
+            </div>
+            <div>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Future wildfire risk
+              <div>
+                
+      Projected risk to properties from wildfire from fire fuels, weather, humans, and fire movement
+    
+              </div>
+            </div>
+            <div>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  data is not available
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
         <div>
           AND
         </div>
