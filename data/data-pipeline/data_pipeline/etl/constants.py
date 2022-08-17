@@ -66,6 +66,12 @@ DATASET_LIST = [
         "is_memory_intensive": False,
     },
     {
+        "name": "nlcd_nature_deprived",
+        "module_dir": "nlcd_nature_deprived",
+        "class_name": "NatureDeprivedETL",
+        "is_memory_intensive": False,
+    },
+    {
         "name": "census_acs_median_income",
         "module_dir": "census_acs_median_income",
         "class_name": "CensusACSMedianIncomeETL",

@@ -372,6 +372,7 @@ class ScoreNarwhal(Score):
             field_names.HOUSING_BURDEN_LOW_INCOME_FIELD,
             field_names.HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD,
             field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_LOW_INCOME_FIELD,
+            field_names.NON_NATURAL_LOW_INCOME_FIELD_NAME,
         ]
 
         # Historic disinvestment
@@ -423,6 +424,19 @@ class ScoreNarwhal(Score):
         )
         self.df[field_names.HOUSING_BURDEN_LOW_INCOME_FIELD] = (
             self.df[field_names.HOUSING_BURDEN_PCTILE_THRESHOLD]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
+        )
+
+        # High non-natural space
+        self.df[field_names.NON_NATURAL_PCTILE_THRESHOLD] = (
+            self.df[
+                field_names.TRACT_PERCENT_NON_NATURAL_FIELD_NAME
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
+            >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
+        )
+        self.df[field_names.NON_NATURAL_LOW_INCOME_FIELD_NAME] = (
+            self.df[field_names.NON_NATURAL_PCTILE_THRESHOLD]
             & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
 
