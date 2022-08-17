@@ -48,7 +48,6 @@ class FloodRiskETL(ExtractTransformLoad):
         """
         logger.info("Transforming National Risk Index Data")
 
-        logger.info(self.COLUMNS_TO_KEEP)
         # read in the unzipped csv data source then rename the
         # Census Tract column for merging
         df_fsf_flood_disagg: pd.DataFrame = pd.read_csv(
