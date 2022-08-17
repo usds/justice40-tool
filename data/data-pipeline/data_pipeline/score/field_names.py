@@ -1,6 +1,7 @@
 # Suffixes
 PERCENTILE_FIELD_SUFFIX = " (percentile)"
 ISLAND_AREAS_PERCENTILE_ADJUSTMENT_FIELD = " for island areas"
+ADJACENT_MEAN_SUFFIX = "_ADJACENT_MEAN"
 
 # Geographic field names
 GEOID_TRACT_FIELD = "GEOID10_TRACT"
