@@ -14,7 +14,7 @@ from data_pipeline.etl.sources.dot_travel_composite.etl import (
 from data_pipeline.etl.sources.fsf_flood_risk.etl import (
     FloodRiskETL,
 )
-from data_pipeline.etl.sources.ncld_nature_deprived.etl import NatureDeprivedETL
+from data_pipeline.etl.sources.nlcd_nature_deprived.etl import NatureDeprivedETL
 from data_pipeline.etl.sources.fsf_wildfire_risk.etl import WildfireRiskETL
 from data_pipeline.score.score_runner import ScoreRunner
 from data_pipeline.score import field_names
@@ -136,7 +136,7 @@ class ScoreETL(ExtractTransformLoad):
         # Load flood risk data
         self.fsf_flood_df = FloodRiskETL.get_data_frame()
 
-        # Load NCLD Nature-Deprived Communities data
+        # Load NLCD Nature-Deprived Communities data
         self.nature_deprived_df = NatureDeprivedETL.get_data_frame()
 
         # Load GeoCorr Urban Rural Map
@@ -519,7 +519,7 @@ class ScoreETL(ExtractTransformLoad):
         #     the ability to discern which tracts truly are at the 90th percentile, since many tracts have 0 value.
         #
         #     For *Non-Natural Space*, we may only want to include tracts that have at least 35 acreas, I think. This will
-        #     get rid of  tracts that we think are aberrations statistically. Right now, we have commented this out
+        #     get rid of  tracts that we think are aberrations statistically. Right now, we have left this out
         #     pending ground-truthing.
 
         for numeric_column in numeric_columns:
@@ -544,18 +544,6 @@ class ScoreETL(ExtractTransformLoad):
                 logger.info(
                     f"Dropping {len(drop_tracts)} tracts from Linguistic Isolation"
                 )
-            # elif (
-            #     numeric_column
-            #     == field_names.TRACT_PERCENT_NON_NATURAL_FIELD_NAME
-            # ):
-            #     drop_tracts = df_copy[
-            #         df_copy[field_names.TRACT_ELIGIBLE_FOR_NONNATURAL_THRESHOLD]
-            #         .astype(bool)
-            #         .fillna(False)
-            #     ][field_names.GEOID_TRACT_FIELD].to_list()
-            #     logger.info(
-            #         f"Dropping {len(drop_tracts)} tracts from non-natural space indicator"
-            #     )
 
             df_copy = self._add_percentiles_to_df(
                 df=df_copy,

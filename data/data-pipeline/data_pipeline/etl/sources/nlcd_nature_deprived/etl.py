@@ -13,7 +13,7 @@ logger = get_module_logger(__name__)
 class NatureDeprivedETL(ExtractTransformLoad):
     """ETL class for the Nature Deprived Communities dataset"""
 
-    NAME = "ncld_nature_deprived"
+    NAME = "nlcd_nature_deprived"
     SOURCE_URL = (
         settings.AWS_JUSTICE40_DATASOURCES_URL
         + "/usa_conus_nat_dep__compiled_by_TPL.csv.zip"
@@ -51,7 +51,7 @@ class NatureDeprivedETL(ExtractTransformLoad):
 
         - Renames columns as needed
         """
-        logger.info("Transforming NCLD Data")
+        logger.info("Transforming NLCD Data")
 
         df_ncld: pd.DataFrame = pd.read_csv(
             self.INPUT_CSV,
