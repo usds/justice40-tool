@@ -198,12 +198,12 @@ CENSUS_INFO = {
     "name": "census",
     "module_dir": "census",
     "class_name": "CensusETL",
-    "is_memory_intensive": True,
+    "is_memory_intensive": False,
 }
 
 TRIBAL_INFO = {
     "name": "tribal",
     "module_dir": "tribal",
     "class_name": "TribalETL",
-    "is_memory_intensive": True,
+    "is_memory_intensive": False,
 }
