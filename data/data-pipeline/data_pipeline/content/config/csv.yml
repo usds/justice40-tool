@@ -334,6 +334,7 @@ fields:
     format: bool
   - score_name: There is at least one Formerly Used Defense Site (FUDS) in the tract and the tract is low income.
     label: There is at least one Formerly Used Defense Site (FUDS) in the tract and the tract is low income.
+    format: bool
   - score_name:  Tract-level redlining score meets or exceeds 3.25 and is low income
     label: Tract experienced historic underinvestment and remains low income
     format: bool
