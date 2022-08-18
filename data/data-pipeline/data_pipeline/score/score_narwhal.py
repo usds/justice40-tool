@@ -464,6 +464,8 @@ class ScoreNarwhal(Score):
             field_names.RMP_LOW_INCOME_FIELD,
             field_names.SUPERFUND_LOW_INCOME_FIELD,
             field_names.HAZARDOUS_WASTE_LOW_INCOME_FIELD,
+            field_names.AML_LOW_INCOME_FIELD,
+            field_names.ELIGIBLE_FUDS_LOW_INCOME_FIELD,
         ]
 
         self.df[field_names.RMP_PCTILE_THRESHOLD] = (
@@ -483,10 +485,15 @@ class ScoreNarwhal(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
-        self.df[field_names.POLLUTION_THRESHOLD_EXCEEDED] = (
-            self.df[field_names.RMP_PCTILE_THRESHOLD]
-            | self.df[field_names.NPL_PCTILE_THRESHOLD]
-        ) | self.df[field_names.TSDF_PCTILE_THRESHOLD]
+        self.df[field_names.POLLUTION_THRESHOLD_EXCEEDED] = self.df[
+            [
+                field_names.RMP_PCTILE_THRESHOLD,
+                field_names.NPL_PCTILE_THRESHOLD,
+                field_names.TSDF_PCTILE_THRESHOLD,
+                field_names.AML_BOOLEAN,
+                field_names.ELIGIBLE_FUDS_BINARY_FIELD_NAME,
+            ]
+        ].any(axis="columns")
 
         # individual series-by-series
         self.df[field_names.RMP_LOW_INCOME_FIELD] = (
@@ -499,6 +506,16 @@ class ScoreNarwhal(Score):
         )
         self.df[field_names.HAZARDOUS_WASTE_LOW_INCOME_FIELD] = (
             self.df[field_names.TSDF_PCTILE_THRESHOLD]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
+        )
+
+        self.df[field_names.AML_LOW_INCOME_FIELD] = (
+            self.df[field_names.AML_BOOLEAN]
+            & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
+        )
+
+        self.df[field_names.ELIGIBLE_FUDS_LOW_INCOME_FIELD] = (
+            self.df[field_names.ELIGIBLE_FUDS_BINARY_FIELD_NAME]
             & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
 
