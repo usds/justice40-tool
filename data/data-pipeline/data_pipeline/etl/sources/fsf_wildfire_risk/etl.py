@@ -26,9 +26,7 @@ class WildfireRiskETL(ExtractTransformLoad):
 
     def __init__(self):
         # define the full path for the input CSV file
-        self.INPUT_CSV = (
-            self.get_tmp_path() / "fsf_fire" / "fire_tract_2010.csv"
-        )
+        self.INPUT_CSV = self.get_tmp_path() / "fsf_fire" / "fire-tract2010.csv"
 
         # this is the main dataframe
         self.df: pd.DataFrame
@@ -49,23 +47,15 @@ class WildfireRiskETL(ExtractTransformLoad):
         logger.info("Transforming National Risk Index Data")
         # read in the unzipped csv data source then rename the
         # Census Tract column for merging
-        df_fsf_fire_disagg: pd.DataFrame = pd.read_csv(
+        df_fsf_fire: pd.DataFrame = pd.read_csv(
             self.INPUT_CSV,
             dtype={self.INPUT_GEOID_TRACT_FIELD_NAME: str},
             low_memory=False,
         )
 
-        df_fsf_fire_disagg[self.GEOID_TRACT_FIELD_NAME] = df_fsf_fire_disagg[
+        df_fsf_fire[self.GEOID_TRACT_FIELD_NAME] = df_fsf_fire[
             self.INPUT_GEOID_TRACT_FIELD_NAME
         ].str.zfill(11)
-
-        # Because we have some tracts that are listed twice, we aggregate based on
-        # GEOID10_TRACT. Note that I haven't confirmed this with the FSF boys -- to do!
-        df_fsf_fire = (
-            df_fsf_fire_disagg.groupby(self.GEOID_TRACT_FIELD_NAME)
-            .sum()
-            .reset_index()
-        )
 
         df_fsf_fire[self.COUNT_PROPERTIES] = df_fsf_fire[
             self.COUNT_PROPERTIES_NATIVE_FIELD_NAME

@@ -27,7 +27,7 @@ class FloodRiskETL(ExtractTransformLoad):
     def __init__(self):
         # define the full path for the input CSV file
         self.INPUT_CSV = (
-            self.get_tmp_path() / "fsf_flood" / "flood_tract_2010.csv"
+            self.get_tmp_path() / "fsf_flood" / "flood-tract2010.csv"
         )
 
         # this is the main dataframe
@@ -50,23 +50,15 @@ class FloodRiskETL(ExtractTransformLoad):
 
         # read in the unzipped csv data source then rename the
         # Census Tract column for merging
-        df_fsf_flood_disagg: pd.DataFrame = pd.read_csv(
+        df_fsf_flood: pd.DataFrame = pd.read_csv(
             self.INPUT_CSV,
             dtype={self.INPUT_GEOID_TRACT_FIELD_NAME: str},
             low_memory=False,
         )
 
-        df_fsf_flood_disagg[self.GEOID_TRACT_FIELD_NAME] = df_fsf_flood_disagg[
+        df_fsf_flood[self.GEOID_TRACT_FIELD_NAME] = df_fsf_flood[
             self.INPUT_GEOID_TRACT_FIELD_NAME
         ].str.zfill(11)
-
-        # Because we have some tracts that are listed twice, we aggregate based on
-        # GEOID10_TRACT. Note that I haven't confirmed this with the FSF boys -- to do!
-        df_fsf_flood = (
-            df_fsf_flood_disagg.groupby(self.GEOID_TRACT_FIELD_NAME)
-            .sum()
-            .reset_index()
-        )
 
         df_fsf_flood[self.COUNT_PROPERTIES] = df_fsf_flood[
             self.COUNT_PROPERTIES_NATIVE_FIELD_NAME
