@@ -385,7 +385,8 @@ class ScoreNarwhal(Score):
 
         # Kitchen / plumbing
         self.df[field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_PCTILE_THRESHOLD] = (
-            self.df[field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_FIELD]
+            self.df[field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_FIELD 
+                    + field_names.PERCENTILE_FIELD_SUFFIX]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
