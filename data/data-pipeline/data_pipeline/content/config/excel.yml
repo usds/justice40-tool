@@ -18,11 +18,11 @@ sheets:
       - score_name: State/Territory
         label: State/Territory
         format: string
-      - score_name: Percent Black or African Amer.
+      - score_name: Percent Black or African American
         label: Percent Black or African American alone
         format: float
-      - score_name: Percent Amer. Indian / Alaska Native
-        label: Percent Amer. Indian / Alaska Native
+      - score_name: Percent American Indian / Alaska Native
+        label: Percent American Indian / Alaska Native
         format: float
       - score_name: Percent Asian
         label: Percent Asian
@@ -30,8 +30,8 @@ sheets:
       - score_name: Percent Native Hawaiian or Pacific
         label: Percent Native Hawaiian or Pacific
         format: float
-      - score_name: Percent Two or more
-        label: Percent Two or more
+      - score_name: Percent Two or more races
+        label: Percent Two or more races
         format: float
       - score_name: Percent White
         label: Percent White
@@ -39,8 +39,8 @@ sheets:
       - score_name: Percent Hispanic or Latino
         label: Percent Hispanic or Latino
         format: float
-      - score_name: Percent Other
-        label: Percent Other
+      - score_name: Percent Other races
+        label: Percent Other races
         format: float
       - score_name: Total threshold criteria exceeded
         label: Total threshold criteria exceeded
