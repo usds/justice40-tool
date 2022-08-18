@@ -100,14 +100,14 @@ LOW_MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD = (
 )
 
 # Additional ACS demographic fields.
-BLACK_FIELD_NAME = "Black or African American alone"
-AMERICAN_INDIAN_FIELD_NAME = "American Indian and Alaska Native alone"
-ASIAN_FIELD_NAME = "Asian alone"
-HAWAIIAN_FIELD_NAME = "Native Hawaiian and Other Pacific alone"
-TWO_OR_MORE_RACES_FIELD_NAME = "Two or more races"
-NON_HISPANIC_WHITE_FIELD_NAME = "Non-Hispanic White"
+BLACK_FIELD_NAME = "Black or African Amer."
+AMERICAN_INDIAN_FIELD_NAME = "Amer. Indian / Alaska Native"
+ASIAN_FIELD_NAME = "Asian"
+HAWAIIAN_FIELD_NAME = "Native Hawaiian or Pacific"
+TWO_OR_MORE_RACES_FIELD_NAME = "Two or more"
+NON_HISPANIC_WHITE_FIELD_NAME = "White"
 HISPANIC_FIELD_NAME = "Hispanic or Latino"
-OTHER_RACE_FIELD_NAME = "Some other race alone"
+OTHER_RACE_FIELD_NAME = "Other"
 
 # Same fields, but with a percent prefix
 PERCENT_PREFIX = "Percent "

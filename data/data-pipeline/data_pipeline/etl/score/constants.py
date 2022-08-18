@@ -318,6 +318,14 @@ TILES_SCORE_COLUMNS = {
     field_names.IMPUTED_INCOME_FLAG_FIELD_NAME: "IMP_FLG"
     ## FPL 200 and low higher ed for all others should no longer be M_EBSI, but rather
     ## FPL_200 (there is no higher ed in narwhal)
+    field_names.PERCENT_BLACK_FIELD_NAME: "DM_B",
+    field_names.PERCENT_AMERICAN_INDIAN_FIELD_NAME: "DM_AI",
+    field_names.PERCENT_ASIAN_FIELD_NAME: "DM_A",
+    field_names.PERCENT_HAWAIIAN_FIELD_NAME: "DM_HI",
+    field_names.PERCENT_TWO_OR_MORE_RACES_FIELD_NAME: "DM_T",
+    field_names.PERCENT_NON_HISPANIC_WHITE_FIELD_NAME: "DM_W",
+    field_names.PERCENT_HISPANIC_FIELD_NAME: "DM_H",
+    field_names.PERCENT_OTHER_RACE_FIELD_NAME: "DM_O",
 }
 
 # columns to round floats to 2 decimals
@@ -375,4 +383,13 @@ TILES_SCORE_FLOAT_COLUMNS = [
     field_names.SCORE_N_COMMUNITIES + field_names.ADJACENCY_INDEX_SUFFIX,
     field_names.TRACT_PERCENT_NON_NATURAL_FIELD_NAME
     + field_names.PERCENTILE_FIELD_SUFFIX,
+    # Include demographic data for sidebar -- as percents, NOT as percentiles.
+    field_names.PERCENT_BLACK_FIELD_NAME,
+    field_names.PERCENT_AMERICAN_INDIAN_FIELD_NAME,
+    field_names.PERCENT_ASIAN_FIELD_NAME,
+    field_names.PERCENT_HAWAIIAN_FIELD_NAME,
+    field_names.PERCENT_TWO_OR_MORE_RACES_FIELD_NAME,
+    field_names.PERCENT_NON_HISPANIC_WHITE_FIELD_NAME,
+    field_names.PERCENT_HISPANIC_FIELD_NAME,
+    field_names.PERCENT_OTHER_RACE_FIELD_NAME,
 ]

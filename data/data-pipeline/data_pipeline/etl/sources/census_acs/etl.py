@@ -190,7 +190,6 @@ class CensusACSETL(ExtractTransformLoad):
         ]
 
         # Name output demographics fields.
-
         self.RE_OUTPUT_FIELDS = [
             field_names.BLACK_FIELD_NAME,
             field_names.AMERICAN_INDIAN_FIELD_NAME,

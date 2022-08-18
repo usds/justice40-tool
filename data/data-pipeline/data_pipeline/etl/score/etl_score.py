@@ -461,6 +461,14 @@ class ScoreETL(ExtractTransformLoad):
             field_names.FUTURE_WILDFIRE_RISK_FIELD,
             field_names.TRACT_PERCENT_NON_NATURAL_FIELD_NAME,
             field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD,
+            field_names.PERCENT_BLACK_FIELD_NAME,
+            field_names.PERCENT_AMERICAN_INDIAN_FIELD_NAME,
+            field_names.PERCENT_ASIAN_FIELD_NAME,
+            field_names.PERCENT_HAWAIIAN_FIELD_NAME,
+            field_names.PERCENT_TWO_OR_MORE_RACES_FIELD_NAME,
+            field_names.PERCENT_NON_HISPANIC_WHITE_FIELD_NAME,
+            field_names.PERCENT_HISPANIC_FIELD_NAME,
+            field_names.PERCENT_OTHER_RACE_FIELD_NAME,
         ]
 
         non_numeric_columns = [
