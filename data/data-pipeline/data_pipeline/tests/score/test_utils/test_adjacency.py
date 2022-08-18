@@ -11,7 +11,7 @@ from data_pipeline.score.utils import (
     calculate_tract_adjacency_scores as original_calculate_tract_adjacency_score,
 )
 from data_pipeline.etl.sources.geo_utils import get_tract_geojson
-import data_pipeline.score.field_names as field_names
+from data_pipeline.etl.score import field_names
 
 
 @contextmanager
