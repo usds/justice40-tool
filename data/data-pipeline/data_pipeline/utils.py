@@ -1409,6 +1409,8 @@ def get_excel_column_name(index: int) -> str:
         "ALI",
         "ALJ",
         "ALK",
+        "ALL",
+        "ALM",
     ]
 
     return excel_column_names[index]
