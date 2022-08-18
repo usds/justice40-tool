@@ -1,6 +1,8 @@
 # Suffixes
 PERCENTILE_FIELD_SUFFIX = " (percentile)"
 ISLAND_AREAS_PERCENTILE_ADJUSTMENT_FIELD = " for island areas"
+ADJACENT_MEAN_SUFFIX = " (including adjacency index)"
+ADJACENCY_INDEX_SUFFIX = " (average of neighbors)"
 
 # Geographic field names
 GEOID_TRACT_FIELD = "GEOID10_TRACT"
@@ -691,6 +693,9 @@ CATEGORY_COUNT = "Total categories exceeded"
 
 FPL_200_SERIES = "Is low income?"
 FPL_200_SERIES_IMPUTED_AND_ADJUSTED = "Is low income (imputed and adjusted)?"
+FPL_200_SERIES_IMPUTED_AND_ADJUSTED_DONUTS = (
+    "Meets the less stringent low income criterion for the adjacency index?"
+)
 FPL_200_AND_COLLEGE_ATTENDANCE_SERIES = (
     "Is low income and has a low percent of higher ed students?"
 )
@@ -713,6 +718,11 @@ HISTORIC_REDLINING_SCORE_EXCEEDED = (
 
 HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD = (
     "Tract-level redlining score meets or exceeds 3.25 and is low income"
+)
+
+
+ADJACENT_TRACT_SCORE_ABOVE_DONUT_THRESHOLD = (
+    "Is the tract surrounded by disadvantaged communities?"
 )
 
 # End of names for individual factors being exceeded

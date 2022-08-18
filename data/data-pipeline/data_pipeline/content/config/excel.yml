@@ -24,9 +24,21 @@ sheets:
       - score_name: Total categories exceeded
         label: Total categories exceeded
         format: int64
-      - score_name: Definition M (communities)
+      - score_name: Definition N (communities)
         label: Identified as disadvantaged
         format: bool
+      - score_name: Definition N (communities) (including adjacency index)
+        label: Identified as disadvantaged (including adjacency index)
+        format: bool
+      - score_name: Is the tract surrounded by disadvantaged communities?
+        label: Is the tract surrounded by disadvantaged communities?
+        format: bool
+      - score_name: Meets the less stringent low income criterion for the adjacency index?
+        label: Meets the less stringent low income criterion for the adjacency index?
+        format: bool
+      - score_name: Definition N (communities) (average of neighbors)
+        label: Share of neighbors that are identified as disadvantaged
+        format: percentage
       - score_name: Total population
         label: Total population
         format: float
@@ -315,4 +327,3 @@ sheets:
       - score_name: Does the tract have at least 35 acres in it?
         label: Does the tract have at least 35 acres in it?
         format: bool
-      

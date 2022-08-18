@@ -207,7 +207,8 @@ TILES_SCORE_COLUMNS = {
     field_names.M_POLLUTION: "M_PLN",
     field_names.M_HEALTH: "M_HLTH",
     # temporarily update this so that it's the Narwhal score that gets visualized on the map
-    field_names.SCORE_N_COMMUNITIES: "SM_C",
+    # The NEW final score value INCLUDES the adjacency index.
+    field_names.SCORE_N_COMMUNITIES + field_names.ADJACENT_MEAN_SUFFIX: "SM_C",
     field_names.SCORE_N_COMMUNITIES
     + field_names.PERCENTILE_FIELD_SUFFIX: "SM_PFS",
     field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_LOW_HIGHER_ED_FIELD: "EPLRLI",
@@ -305,6 +306,9 @@ TILES_SCORE_COLUMNS = {
     + field_names.PERCENTILE_FIELD_SUFFIX: "WF_PFS",
     field_names.HIGH_FUTURE_FLOOD_RISK_FIELD: "FLD_ET",
     field_names.HIGH_FUTURE_WILDFIRE_RISK_FIELD: "WF_ET",
+    field_names.ADJACENT_TRACT_SCORE_ABOVE_DONUT_THRESHOLD: "ADJ_ET",
+    field_names.SCORE_N_COMMUNITIES
+    + field_names.ADJACENCY_INDEX_SUFFIX: "ADJ_PFS",
     field_names.TRACT_PERCENT_NON_NATURAL_FIELD_NAME
     + field_names.PERCENTILE_FIELD_SUFFIX: "IS_PFS",
     field_names.NON_NATURAL_LOW_INCOME_FIELD_NAME: "IS_ET",
@@ -364,6 +368,7 @@ TILES_SCORE_FLOAT_COLUMNS = [
     field_names.FUTURE_FLOOD_RISK_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.FUTURE_WILDFIRE_RISK_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX,
+    field_names.SCORE_N_COMMUNITIES + field_names.ADJACENCY_INDEX_SUFFIX,
     field_names.TRACT_PERCENT_NON_NATURAL_FIELD_NAME
     + field_names.PERCENTILE_FIELD_SUFFIX,
 ]
