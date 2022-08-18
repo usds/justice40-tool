@@ -189,16 +189,25 @@ class CensusACSETL(ExtractTransformLoad):
             "B02001_007E",  # "Some other race alone"
         ]
 
+        self.BLACK_FIELD_NAME = "Black or African American"
+        self.AMERICAN_INDIAN_FIELD_NAME = "American Indian / Alaska Native"
+        self.ASIAN_FIELD_NAME = "Asian"
+        self.HAWAIIAN_FIELD_NAME = "Native Hawaiian or Pacific"
+        self.TWO_OR_MORE_RACES_FIELD_NAME = "Two or more races"
+        self.NON_HISPANIC_WHITE_FIELD_NAME = "White"
+        self.HISPANIC_FIELD_NAME = "Hispanic or Latino"
+        self.OTHER_RACE_FIELD_NAME = "Other Races"
+
         # Name output demographics fields.
         self.RE_OUTPUT_FIELDS = [
-            field_names.BLACK_FIELD_NAME,
-            field_names.AMERICAN_INDIAN_FIELD_NAME,
-            field_names.ASIAN_FIELD_NAME,
-            field_names.HAWAIIAN_FIELD_NAME,
-            field_names.TWO_OR_MORE_RACES_FIELD_NAME,
-            field_names.NON_HISPANIC_WHITE_FIELD_NAME,
-            field_names.HISPANIC_FIELD_NAME,
-            field_names.OTHER_RACE_FIELD_NAME,
+            self.BLACK_FIELD_NAME,
+            self.AMERICAN_INDIAN_FIELD_NAME,
+            self.ASIAN_FIELD_NAME,
+            self.HAWAIIAN_FIELD_NAME,
+            self.TWO_OR_MORE_RACES_FIELD_NAME,
+            self.NON_HISPANIC_WHITE_FIELD_NAME,
+            self.HISPANIC_FIELD_NAME,
+            self.OTHER_RACE_FIELD_NAME,
         ]
 
         self.STATE_GEOID_FIELD_NAME = "GEOID2"
@@ -399,14 +408,20 @@ class CensusACSETL(ExtractTransformLoad):
         )
 
         # Calculate some demographic information.
-        df[field_names.BLACK_FIELD_NAME] = df["B02001_003E"]
-        df[field_names.AMERICAN_INDIAN_FIELD_NAME] = df["B02001_004E"]
-        df[field_names.ASIAN_FIELD_NAME] = df["B02001_005E"]
-        df[field_names.HAWAIIAN_FIELD_NAME] = df["B02001_006E"]
-        df[field_names.TWO_OR_MORE_RACES_FIELD_NAME] = df["B02001_008E"]
-        df[field_names.NON_HISPANIC_WHITE_FIELD_NAME] = df["B03002_003E"]
-        df[field_names.HISPANIC_FIELD_NAME] = df["B03003_003E"]
-        df[field_names.OTHER_RACE_FIELD_NAME] = df["B02001_007E"]
+
+        df = df.rename(
+            columns={
+                "B02001_003E": self.BLACK_FIELD_NAME,
+                "B02001_004E": self.AMERICAN_INDIAN_FIELD_NAME,
+                "B02001_005E": self.ASIAN_FIELD_NAME,
+                "B02001_006E": self.HAWAIIAN_FIELD_NAME,
+                "B02001_008E": self.TWO_OR_MORE_RACES_FIELD_NAME,
+                "B03002_003E": self.NON_HISPANIC_WHITE_FIELD_NAME,
+                "B03003_003E": self.HISPANIC_FIELD_NAME,
+                "B02001_007E": self.OTHER_RACE_FIELD_NAME,
+            },
+            errors="raise",
+        )
 
         # Calculate demographics as percent
         df[field_names.PERCENT_PREFIX + field_names.BLACK_FIELD_NAME] = (
