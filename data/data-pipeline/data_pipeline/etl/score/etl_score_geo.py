@@ -52,7 +52,7 @@ class GeoScoreETL(ExtractTransformLoad):
         ## TODO: We really should not have this any longer changing
         self.TARGET_SCORE_SHORT_FIELD = constants.TILES_SCORE_COLUMNS[
             field_names.SCORE_N
-        ].astype(float)
+        ]
         self.TARGET_SCORE_RENAME_TO = "M_SCORE"
 
         # Import the shortened name for tract ("GTF") that's used on the tiles.
