@@ -12,9 +12,6 @@ COUNTY_FIELD = "County Name"
 # Score file field names
 # Definition M fields
 SCORE_M = "Definition M"
-FINAL_SCORE_N_BOOLEAN = (
-    "Definition M community, including adjacency index tracts"
-)
 SCORE_M_COMMUNITIES = "Definition M (communities)"
 M_CLIMATE = "Climate Factor (Definition M)"
 M_ENERGY = "Energy Factor (Definition M)"
@@ -27,7 +24,9 @@ M_WORKFORCE = "Workforce Factor (Definition M)"
 M_NON_WORKFORCE = "Any Non-Workforce Factor (Definition M)"
 
 # Definition Narwhal fields
-SCORE_N = "Definition N (communities)"
+FINAL_SCORE_N_BOOLEAN = (
+    "Definition M community, including adjacency index tracts"
+)
 SCORE_N_COMMUNITIES = "Definition N (communities)"
 N_CLIMATE = "Climate Factor (Definition N)"
 N_ENERGY = "Energy Factor (Definition N)"
