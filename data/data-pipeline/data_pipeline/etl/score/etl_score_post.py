@@ -521,6 +521,8 @@ class PostScoreETL(ExtractTransformLoad):
         score_tiles_df.to_csv(tile_score_path, index=False, encoding="utf-8")
 
     def _load_downloadable_zip(self, downloadable_info_path: Path) -> None:
+        logger.info("Saving Downloadable CSV")
+
         downloadable_info_path.mkdir(parents=True, exist_ok=True)
         csv_path = constants.SCORE_DOWNLOADABLE_CSV_FILE_PATH
         excel_path = constants.SCORE_DOWNLOADABLE_EXCEL_FILE_PATH

@@ -92,17 +92,12 @@ def calculate_income_measures(
     )
 
     # Iterate through the dataframe to impute in place
-    ## TODO: We should probably convert this to a spatial join now that we are doing >1 imputation and it's taking a lot
-    ## of time, but thinking through how to do this while maintaining the masking will take some time. I think the best
-    ## way would be to (1) spatial join to all neighbors, and then (2) iterate to take the "smallest" set of neighbors...
-    ## but haven't implemented it yet.
     for index, row in geo_df.iterrows():
         if row[geoid_field] in tract_list:
             neighbor_mask = _get_neighbor_mask(geo_df, row)
             county_mask = _get_fips_mask(
                 geo_df=geo_df, row=row, fips_digits=5, geoid_field=geoid_field
             )
-            ## TODO: Did CEQ decide to cut this?
             state_mask = _get_fips_mask(
                 geo_df=geo_df, row=row, fips_digits=2, geoid_field=geoid_field
             )
