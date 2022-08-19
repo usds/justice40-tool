@@ -102,6 +102,7 @@ def calculate_income_measures(
             county_mask = _get_fips_mask(
                 geo_df=geo_df, row=row, fips_digits=5, geoid_field=geoid_field
             )
+            ## TODO: Did CEQ decide to cut this?
             state_mask = _get_fips_mask(
                 geo_df=geo_df, row=row, fips_digits=2, geoid_field=geoid_field
             )
