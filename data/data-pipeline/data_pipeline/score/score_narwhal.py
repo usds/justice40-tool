@@ -974,6 +974,7 @@ class ScoreNarwhal(Score):
         )
 
         # This constructs the boolean for whether it's a donut hole community
+        # This can also be true when the tract itself is a DAC on its own
         self.df[
             field_names.SCORE_N_COMMUNITIES + field_names.ADJACENT_MEAN_SUFFIX
         ] = (
