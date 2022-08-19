@@ -198,6 +198,10 @@ class CensusACSETL(ExtractTransformLoad):
         self.HISPANIC_FIELD_NAME = "Hispanic or Latino"
         self.OTHER_RACE_FIELD_NAME = "Other Races"
 
+        self.TOTAL_RACE_POPULATION_FIELD_NAME = (
+            "Total population surveyed on racial data"
+        )
+
         # Name output demographics fields.
         self.RE_OUTPUT_FIELDS = [
             self.BLACK_FIELD_NAME,
@@ -419,37 +423,15 @@ class CensusACSETL(ExtractTransformLoad):
                 "B03002_003E": self.NON_HISPANIC_WHITE_FIELD_NAME,
                 "B03003_003E": self.HISPANIC_FIELD_NAME,
                 "B02001_007E": self.OTHER_RACE_FIELD_NAME,
+                "B02001_001E": self.TOTAL_RACE_POPULATION_FIELD_NAME,
             },
             errors="raise",
         )
 
-        # Calculate demographics as percent
-        df[field_names.PERCENT_PREFIX + field_names.BLACK_FIELD_NAME] = (
-            df["B02001_003E"] / df["B02001_001E"]
-        )
-        df[
-            field_names.PERCENT_PREFIX + field_names.AMERICAN_INDIAN_FIELD_NAME
-        ] = (df["B02001_004E"] / df["B02001_001E"])
-        df[field_names.PERCENT_PREFIX + field_names.ASIAN_FIELD_NAME] = (
-            df["B02001_005E"] / df["B02001_001E"]
-        )
-        df[field_names.PERCENT_PREFIX + field_names.HAWAIIAN_FIELD_NAME] = (
-            df["B02001_006E"] / df["B02001_001E"]
-        )
-        df[
-            field_names.PERCENT_PREFIX
-            + field_names.TWO_OR_MORE_RACES_FIELD_NAME
-        ] = (df["B02001_008E"] / df["B02001_001E"])
-        df[
-            field_names.PERCENT_PREFIX
-            + field_names.NON_HISPANIC_WHITE_FIELD_NAME
-        ] = (df["B03002_003E"] / df["B03002_001E"])
-        df[field_names.PERCENT_PREFIX + field_names.HISPANIC_FIELD_NAME] = (
-            df["B03003_003E"] / df["B03003_001E"]
-        )
-        df[field_names.PERCENT_PREFIX + field_names.OTHER_RACE_FIELD_NAME] = (
-            df["B02001_007E"] / df["B03003_001E"]
-        )
+        for race_field_name in self.RE_OUTPUT_FIELDS:
+            df[field_names.PERCENT_PREFIX + race_field_name] = (
+                df[race_field_name] / df[self.TOTAL_RACE_POPULATION_FIELD_NAME]
+            )
 
         # Calculate college attendance and adjust low income
         df[self.COLLEGE_ATTENDANCE_FIELD] = (
