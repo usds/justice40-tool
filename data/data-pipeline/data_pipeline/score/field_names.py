@@ -10,7 +10,9 @@ STATE_FIELD = "State/Territory"
 COUNTY_FIELD = "County Name"
 
 # Definition Narwhal fields
-SCORE_N = "Definition N (communities)"
+FINAL_SCORE_N_BOOLEAN = (
+    "Definition M community, including adjacency index tracts"
+)
 SCORE_N_COMMUNITIES = "Definition N (communities)"
 N_CLIMATE = "Climate Factor (Definition N)"
 N_ENERGY = "Energy Factor (Definition N)"
