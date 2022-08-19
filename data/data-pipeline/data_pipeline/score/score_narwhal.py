@@ -385,8 +385,10 @@ class ScoreNarwhal(Score):
 
         # Kitchen / plumbing
         self.df[field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_PCTILE_THRESHOLD] = (
-            self.df[field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_FIELD 
-                    + field_names.PERCENTILE_FIELD_SUFFIX]
+            self.df[
+                field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_FIELD
+                + field_names.PERCENTILE_FIELD_SUFFIX
+            ]
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
@@ -971,13 +973,22 @@ class ScoreNarwhal(Score):
             >= self.SCORE_THRESHOLD_DONUT
         )
 
-        # This should be the "final list" of Score Narwhal communities, meaning that we would
-        # expect this to be True if either the tract is a donut hole community OR the tract is a DAC
+        # This constructs the boolean for whether it's a donut hole community
         self.df[
             field_names.SCORE_N_COMMUNITIES + field_names.ADJACENT_MEAN_SUFFIX
         ] = (
             self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED_DONUTS]
             & self.df[field_names.ADJACENT_TRACT_SCORE_ABOVE_DONUT_THRESHOLD]
+        )
+
+        # This should be the "final list" of Score Narwhal communities, meaning that we would
+        # expect this to be True if either the tract is a donut hole community OR the tract is a DAC
+        self.df[field_names.FINAL_SCORE_N_BOOLEAN] = (
+            self.df[field_names.SCORE_N_COMMUNITIES]
+            | self.df[
+                field_names.SCORE_N_COMMUNITIES
+                + field_names.ADJACENT_MEAN_SUFFIX
+            ]
         )
 
     def add_columns(self) -> pd.DataFrame:

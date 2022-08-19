@@ -1,7 +1,7 @@
 # Suffixes
 PERCENTILE_FIELD_SUFFIX = " (percentile)"
 ISLAND_AREAS_PERCENTILE_ADJUSTMENT_FIELD = " for island areas"
-ADJACENT_MEAN_SUFFIX = " (including adjacency index)"
+ADJACENT_MEAN_SUFFIX = " (based on adjacency index and low income alone)"
 ADJACENCY_INDEX_SUFFIX = " (average of neighbors)"
 
 # Geographic field names
@@ -12,6 +12,9 @@ COUNTY_FIELD = "County Name"
 # Score file field names
 # Definition M fields
 SCORE_M = "Definition M"
+FINAL_SCORE_N_BOOLEAN = (
+    "Definition M community, including adjacency index tracts"
+)
 SCORE_M_COMMUNITIES = "Definition M (communities)"
 M_CLIMATE = "Climate Factor (Definition M)"
 M_ENERGY = "Energy Factor (Definition M)"
