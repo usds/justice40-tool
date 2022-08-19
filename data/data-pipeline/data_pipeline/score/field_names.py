@@ -1,7 +1,7 @@
 # Suffixes
 PERCENTILE_FIELD_SUFFIX = " (percentile)"
 ISLAND_AREAS_PERCENTILE_ADJUSTMENT_FIELD = " for island areas"
-ADJACENT_MEAN_SUFFIX = " (including adjacency index)"
+ADJACENT_MEAN_SUFFIX = " (based on adjacency index and low income alone)"
 ADJACENCY_INDEX_SUFFIX = " (average of neighbors)"
 
 # Geographic field names
@@ -12,6 +12,9 @@ COUNTY_FIELD = "County Name"
 # Score file field names
 # Definition M fields
 SCORE_M = "Definition M"
+FINAL_SCORE_N_BOOLEAN = (
+    "Definition M community, including adjacency index tracts"
+)
 SCORE_M_COMMUNITIES = "Definition M (communities)"
 M_CLIMATE = "Climate Factor (Definition M)"
 M_ENERGY = "Energy Factor (Definition M)"
@@ -67,6 +70,9 @@ ADJUSTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME = (
 
 # this is what gets used in the score
 POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD = "Percent of individuals below 200% Federal Poverty Line, imputed and adjusted"
+IMPUTED_INCOME_FLAG_FIELD_NAME = (
+    "Income data has been estimated based on neighbor income"
+)
 POVERTY_LESS_THAN_150_FPL_FIELD = (
     "Percent of individuals < 150% Federal Poverty Line"
 )

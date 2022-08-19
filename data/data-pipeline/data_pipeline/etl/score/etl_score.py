@@ -471,6 +471,7 @@ class ScoreETL(ExtractTransformLoad):
             field_names.AGRICULTURAL_VALUE_BOOL_FIELD,
             field_names.ELIGIBLE_FUDS_BINARY_FIELD_NAME,
             field_names.AML_BOOLEAN,
+            field_names.IMPUTED_INCOME_FLAG_FIELD_NAME,
         ]
 
         # For some columns, high values are "good", so we want to reverse the percentile

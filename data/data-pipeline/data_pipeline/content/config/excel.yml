@@ -25,16 +25,13 @@ sheets:
         label: Total categories exceeded
         format: int64
       - score_name: Definition N (communities)
+        label: Identified as disadvantaged without considering neighbors
+        format: bool
+      - score_name: Definition N (communities) (based on adjacency index and low income alone)
+        label: Identified as disadvantaged based on neighbors and relaxed low income threshold only
+        format: bool
+      - score_name: Definition M community, including adjacency index tracts
         label: Identified as disadvantaged
-        format: bool
-      - score_name: Definition N (communities) (including adjacency index)
-        label: Identified as disadvantaged (including adjacency index)
-        format: bool
-      - score_name: Is the tract surrounded by disadvantaged communities?
-        label: Is the tract surrounded by disadvantaged communities?
-        format: bool
-      - score_name: Meets the less stringent low income criterion for the adjacency index?
-        label: Meets the less stringent low income criterion for the adjacency index?
         format: bool
       - score_name: Definition N (communities) (average of neighbors)
         label: Share of neighbors that are identified as disadvantaged
@@ -344,4 +341,7 @@ sheets:
         format: bool
       - score_name: Tract-level redlining score meets or exceeds 3.25
         label: Tract experienced historic underinvestment
+        format: bool
+      - score_name: Income data has been estimated based on neighbor income
+        label: Income data has been estimated based on geographic neighbor income
         format: bool
