@@ -505,7 +505,7 @@ class CensusACSETL(ExtractTransformLoad):
         )
 
         # We generate a boolean that is TRUE when there is an imputed income but not a baseline income, and FALSE otherwise.
-        # This allows us to see which tracts have an imputed income.
+        # This allows us to see which tracts have an imputed income. 
         df[field_names.IMPUTED_INCOME_FLAG_FIELD_NAME] = (
             df[field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD].notna()
             & df[field_names.POVERTY_LESS_THAN_200_FPL_FIELD].isna()

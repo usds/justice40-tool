@@ -342,5 +342,5 @@ fields:
     label: Tract experienced historic underinvestment
     format: bool
   - score_name: Income data has been estimated based on neighbor income
-    label: Income data has been estimated based on neighbor income
+    label: Income data has been estimated based on geographic neighbor income
     format: bool
