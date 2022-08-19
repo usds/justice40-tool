@@ -30,8 +30,8 @@ sheets:
       - score_name: Percent Native Hawaiian or Pacific
         label: Percent Native Hawaiian or Pacific
         format: float
-      - score_name: Percent Two or more races
-        label: Percent Two or more races
+      - score_name: Percent two or more races
+        label: Percent two or more races
         format: float
       - score_name: Percent White
         label: Percent White
@@ -39,8 +39,8 @@ sheets:
       - score_name: Percent Hispanic or Latino
         label: Percent Hispanic or Latino
         format: float
-      - score_name: Percent Other races
-        label: Percent Other races
+      - score_name: Percent other races
+        label: Percent other races
         format: float
       - score_name: Total threshold criteria exceeded
         label: Total threshold criteria exceeded

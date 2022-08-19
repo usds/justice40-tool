@@ -193,7 +193,7 @@ class CensusACSETL(ExtractTransformLoad):
         self.AMERICAN_INDIAN_FIELD_NAME = "American Indian / Alaska Native"
         self.ASIAN_FIELD_NAME = "Asian"
         self.HAWAIIAN_FIELD_NAME = "Native Hawaiian or Pacific"
-        self.TWO_OR_MORE_RACES_FIELD_NAME = "Two or more races"
+        self.TWO_OR_MORE_RACES_FIELD_NAME = "two or more races"
         self.NON_HISPANIC_WHITE_FIELD_NAME = "White"
         self.HISPANIC_FIELD_NAME = "Hispanic or Latino"
         # Note that `other` is lowercase because the whole field will show up in the download
