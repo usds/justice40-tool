@@ -227,6 +227,7 @@ class CensusACSETL(ExtractTransformLoad):
                 self.COLLEGE_ATTENDANCE_FIELD,
                 self.COLLEGE_NON_ATTENDANCE_FIELD,
                 self.IMPUTED_COLLEGE_ATTENDANCE_FIELD,
+                field_names.IMPUTED_INCOME_FLAG_FIELD_NAME,
             ]
             + self.RE_OUTPUT_FIELDS
             + [self.PERCENT_PREFIX + field for field in self.RE_OUTPUT_FIELDS]
@@ -501,6 +502,13 @@ class CensusACSETL(ExtractTransformLoad):
                 self.ADJUSTED_AND_IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME: field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD,
                 self.POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME: field_names.POVERTY_LESS_THAN_200_FPL_FIELD,
             }
+        )
+
+        # We generate a boolean that is TRUE when there is an imputed income but not a baseline income, and FALSE otherwise.
+        # This allows us to see which tracts have an imputed income.
+        df[field_names.IMPUTED_INCOME_FLAG_FIELD_NAME] = (
+            df[field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD].notna()
+            & df[field_names.POVERTY_LESS_THAN_200_FPL_FIELD].isna()
         )
 
         # Strip columns and save results to self.

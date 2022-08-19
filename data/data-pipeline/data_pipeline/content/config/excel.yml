@@ -345,3 +345,6 @@ sheets:
       - score_name: Tract-level redlining score meets or exceeds 3.25
         label: Tract experienced historic underinvestment
         format: bool
+      - score_name: Income data has been estimated based on neighbor income
+        label: Income data has been estimated based on neighbor income
+        format: bool

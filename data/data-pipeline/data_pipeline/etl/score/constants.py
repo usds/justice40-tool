@@ -313,7 +313,8 @@ TILES_SCORE_COLUMNS = {
     + field_names.PERCENTILE_FIELD_SUFFIX: "IS_PFS",
     field_names.NON_NATURAL_LOW_INCOME_FIELD_NAME: "IS_ET",
     field_names.AML_BOOLEAN: "AML_ET",
-    field_names.ELIGIBLE_FUDS_BINARY_FIELD_NAME: "FUDS_ET"
+    field_names.ELIGIBLE_FUDS_BINARY_FIELD_NAME: "FUDS_ET",
+    field_names.IMPUTED_INCOME_FLAG_FIELD_NAME: "IMP_FLAG"
     ## FPL 200 and low higher ed for all others should no longer be M_EBSI, but rather
     ## FPL_200 (there is no higher ed in narwhal)
 }

@@ -67,6 +67,9 @@ ADJUSTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME = (
 
 # this is what gets used in the score
 POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD = "Percent of individuals below 200% Federal Poverty Line, imputed and adjusted"
+IMPUTED_INCOME_FLAG_FIELD_NAME = (
+    "Income data has been estimated based on neighbor income"
+)
 POVERTY_LESS_THAN_150_FPL_FIELD = (
     "Percent of individuals < 150% Federal Poverty Line"
 )
