@@ -196,7 +196,9 @@ class CensusACSETL(ExtractTransformLoad):
         self.TWO_OR_MORE_RACES_FIELD_NAME = "Two or more races"
         self.NON_HISPANIC_WHITE_FIELD_NAME = "White"
         self.HISPANIC_FIELD_NAME = "Hispanic or Latino"
-        self.OTHER_RACE_FIELD_NAME = "Other Races"
+        # Note that `other` is lowercase because the whole field will show up in the download
+        # file as "Percent other races"
+        self.OTHER_RACE_FIELD_NAME = "other races"
 
         self.TOTAL_RACE_POPULATION_FIELD_NAME = (
             "Total population surveyed on racial data"

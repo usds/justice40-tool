@@ -111,7 +111,9 @@ PERCENT_HAWAIIAN_FIELD_NAME = PERCENT_PREFIX + "Native Hawaiian or Pacific"
 PERCENT_TWO_OR_MORE_RACES_FIELD_NAME = PERCENT_PREFIX + "Two or more races"
 PERCENT_NON_HISPANIC_WHITE_FIELD_NAME = PERCENT_PREFIX + "White"
 PERCENT_HISPANIC_FIELD_NAME = PERCENT_PREFIX + "Hispanic or Latino"
-PERCENT_OTHER_RACE_FIELD_NAME = PERCENT_PREFIX + "Other Races"
+# Note that `other` is lowercase because the whole field will show up in the download
+# file as "Percent other races"
+PERCENT_OTHER_RACE_FIELD_NAME = PERCENT_PREFIX + "other races"
 
 # Climate
 FEMA_RISK_FIELD = "FEMA Risk Index Expected Annual Loss Score"
