@@ -115,6 +115,11 @@ PERCENT_HISPANIC_FIELD_NAME = PERCENT_PREFIX + "Hispanic or Latino"
 # file as "Percent other races"
 PERCENT_OTHER_RACE_FIELD_NAME = PERCENT_PREFIX + "other races"
 
+# Age
+PERCENT_AGE_UNDER_10 = "Percent age under 10"
+PERCENT_AGE_10_TO_64 = "Percent age 10 to 64"
+PERCENT_AGE_OVER_64 = "Percent age over 64"
+
 # Climate
 FEMA_RISK_FIELD = "FEMA Risk Index Expected Annual Loss Score"
 EXPECTED_BUILDING_LOSS_RATE_FIELD = (

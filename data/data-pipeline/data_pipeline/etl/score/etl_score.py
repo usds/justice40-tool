@@ -469,6 +469,9 @@ class ScoreETL(ExtractTransformLoad):
             field_names.PERCENT_NON_HISPANIC_WHITE_FIELD_NAME,
             field_names.PERCENT_HISPANIC_FIELD_NAME,
             field_names.PERCENT_OTHER_RACE_FIELD_NAME,
+            field_names.PERCENT_AGE_UNDER_10,
+            field_names.PERCENT_AGE_10_TO_64,
+            field_names.PERCENT_AGE_OVER_64,
         ]
 
         non_numeric_columns = [

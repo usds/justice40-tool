@@ -42,6 +42,15 @@ sheets:
       - score_name: Percent other races
         label: Percent other races
         format: float
+      - score_name: Percent age under 10
+        label: Percent age under 10
+        format: float
+      - score_name: Percent age 10 to 64
+        label: Percent age 10 to 64
+        format: float
+      - score_name: Percent age over 64
+        label: Percent age over 64
+        format: float
       - score_name: Total threshold criteria exceeded
         label: Total threshold criteria exceeded
         format: int64
