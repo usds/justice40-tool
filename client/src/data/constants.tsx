@@ -227,7 +227,7 @@ export const TRIBAL_ALASKA_POINTS_LAYER_ID = 'tribal-alaska-points-layer-id';
 
 // Used in layer filters:
 export const SCORE_PROPERTY_LOW = 'M_SCORE';
-export const SCORE_PROPERTY_HIGH = 'SM_PFS';
+export const SCORE_PROPERTY_HIGH = 'SM_C';
 
 // Zoom
 export const GLOBAL_MIN_ZOOM = 3;

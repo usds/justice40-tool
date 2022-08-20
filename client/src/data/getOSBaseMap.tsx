@@ -256,11 +256,11 @@ export const getOSBaseMap = (
         'source': constants.HIGH_ZOOM_SOURCE_NAME,
         'source-layer': constants.SCORE_SOURCE_LAYER,
         /**
-         * This shows features where the high score < score boundary threshold.
-         * In other words, this filter out prioritized features
+         * The SCORE_PROPERTY_HIGH is a boolean value. True for
+         * prioritized and false for non-priorirized
          */
         'filter': ['all',
-          ['<', constants.SCORE_PROPERTY_HIGH, constants.SCORE_BOUNDARY_THRESHOLD],
+          ['==', constants.SCORE_PROPERTY_HIGH, false],
         ],
 
         'type': 'fill',
@@ -276,11 +276,11 @@ export const getOSBaseMap = (
         'source': constants.HIGH_ZOOM_SOURCE_NAME,
         'source-layer': constants.SCORE_SOURCE_LAYER,
         /**
-         * This shows features where the high score > score boundary threshold.
-         * In other words, this filter out non-prioritized features
+         * The SCORE_PROPERTY_HIGH is a boolean value. True for
+         * prioritized and false for non-priorirized
          */
         'filter': ['all',
-          ['>', constants.SCORE_PROPERTY_HIGH, constants.SCORE_BOUNDARY_THRESHOLD],
+          ['==', constants.SCORE_PROPERTY_HIGH, true],
         ],
 
         'type': 'fill',

@@ -13,7 +13,7 @@ describe('rendering of the AreaDetail', () => {
     [constants.LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE]: .97,
     [constants.UNEMPLOYMENT_PROPERTY_PERCENTILE]: .96,
     [constants.HOUSING_BURDEN_PROPERTY_PERCENTILE]: .95,
-    [constants.SCORE_PROPERTY_HIGH]: .95,
+    [constants.SCORE_PROPERTY_HIGH]: true,
     [constants.GEOID_PROPERTY]: 98729374234,
     [constants.TOTAL_POPULATION]: 3435435,
     [constants.STATE_NAME]: 'New York',

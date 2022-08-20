@@ -116,7 +116,7 @@ const MapTractLayers = ({
         <Layer
           id={constants.HIGH_ZOOM_LAYER_ID}
           source-layer={constants.SCORE_SOURCE_LAYER}
-          filter={['<', constants.SCORE_PROPERTY_HIGH, constants.SCORE_BOUNDARY_THRESHOLD]}
+          filter={['==', constants.SCORE_PROPERTY_HIGH, false]}
           type='fill'
           paint={{
             'fill-opacity': constants.NON_PRIORITIZED_FEATURE_FILL_OPACITY,
@@ -128,7 +128,7 @@ const MapTractLayers = ({
         <Layer
           id={constants.PRIORITIZED_HIGH_ZOOM_LAYER_ID}
           source-layer={constants.SCORE_SOURCE_LAYER}
-          filter={['>', constants.SCORE_PROPERTY_HIGH, constants.SCORE_BOUNDARY_THRESHOLD]}
+          filter={['==', constants.SCORE_PROPERTY_HIGH, true]}
           type='fill'
           paint={{
             'fill-color': constants.PRIORITIZED_FEATURE_FILL_COLOR,
