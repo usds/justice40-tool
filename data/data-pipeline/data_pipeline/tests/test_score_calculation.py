@@ -12,6 +12,29 @@ logger = get_module_logger(__name__)
 
 
 @pytest.fixture
+def donut_hole_adjacency_parameters():
+    """Test that donut indicator uses the right threshold"""
+    return (
+        # threshold boolean
+        field_names.ADJACENT_TRACT_SCORE_ABOVE_DONUT_THRESHOLD,
+        # percentile equivalent column
+        field_names.SCORE_N_COMMUNITIES + field_names.ADJACENCY_INDEX_SUFFIX,
+        # threshold
+        ScoreNarwhal(final_score_df).SCORE_THRESHOLD_DONUT,
+    )
+
+
+@pytest.fixture
+def donut_hole_income_threshold_and_column():
+    """Test that donut income uses the right threshold"""
+    return (
+        # threshold
+        ScoreNarwhal(final_score_df).LOW_INCOME_THRESHOLD_DONUT,
+        field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED_DONUTS,
+    )
+
+
+@pytest.fixture
 def final_score_df():
     return pd.read_csv(
         settings.APP_ROOT / "data" / "score" / "csv" / "full" / "usa.csv",
@@ -94,6 +117,16 @@ def expected_wildfire_percentile_columns():
     ]
 
 
+@pytest.fixture
+def score_col():
+    return field_names.SCORE_N_COMMUNITIES
+
+
+@pytest.fixture
+def score_col_with_donuts():
+    return field_names.FINAL_SCORE_N_BOOLEAN
+
+
 ### TODO: we need to blow this out for all eight categories
 def _helper_test_percentile_against_threshold(
     df, pctile_column, thresholded_column, threshold
@@ -110,10 +143,10 @@ def _helper_test_percentile_against_threshold(
     )
     assert (
         minimum_flagged
-    ), f"For column {thresholded_column}, there is someone flagged below 90th percentile!"
+    ), f"For column {thresholded_column}, there is someone flagged below {threshold} percentile!"
     assert (
         maximum_not_flagged
-    ), f"For column {thresholded_column}, there is someone not flagged above 90th percentile!"
+    ), f"For column {thresholded_column}, there is someone not flagged above {threshold} percentile!"
     return True
 
 
@@ -203,6 +236,30 @@ def test_low_hs_threshold(final_score_df, low_hs_percent, low_hs_threshold):
     return _helper_test_percentile_against_threshold(
         final_score_df, low_hs_percent[1], low_hs_percent[0], low_hs_threshold
     )
+
+
+def test_donut_hole_thresholds(
+    final_score_df,
+    donut_hole_adjacency_parameters,
+    donut_hole_income_threshold_and_column,
+    low_income_percentile,
+):
+    """We do it all! Check donut income and adjacency thresholds, and then that
+    the score column is calculated properly"""
+    _, inc_value_column = low_income_percentile
+    inc_threshold, inc_thresh_column = donut_hole_income_threshold_and_column
+    assert _helper_test_percentile_against_threshold(
+        final_score_df, inc_value_column, inc_thresh_column, inc_threshold
+    ), "Donut hole adjacency threshold is miscalculated"
+    (
+        adj_thresh_column,
+        adj_value_column,
+        adj_threshold,
+    ) = donut_hole_adjacency_parameters
+    assert _helper_test_percentile_against_threshold(
+        final_score_df, adj_value_column, adj_thresh_column, adj_threshold
+    ), "Donut hole low income threshold is miscalculated"
+    return True
 
 
 ## outstanding tests

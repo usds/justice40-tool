@@ -1,4 +1,5 @@
 from pathlib import Path
+from typing import final
 import pandas as pd
 import pytest
 import data_pipeline.score.field_names as field_names
@@ -126,6 +127,11 @@ def score_col_with_donuts():
 
 
 @pytest.fixture
+def donut_hole_score_only():
+    return field_names.SCORE_N_COMMUNITIES + field_names.ADJACENT_MEAN_SUFFIX
+
+
+@pytest.fixture
 def total_population_col():
     return field_names.TOTAL_POP_FIELD
 
@@ -246,3 +252,29 @@ def test_max_40_percent_DAC(
         ].sum()
         / final_score_df[total_population_col].sum()
     ) < 0.4, "Error: the scoring methodology identifies >40% of people in  the US as disadvantaged"
+    assert (
+        final_score_df[score_col_with_donuts].sum() > 0
+    ), "FYI: You've identified no tracts at all!"
+
+
+def test_donut_hole_addition_to_score_n(
+    final_score_df, donut_hole_score_only, score_col_with_donuts, score_col
+):
+    count_donuts = final_score_df[donut_hole_score_only].sum()
+    count_n = final_score_df[score_col].sum()
+    count_n_with_donuts = final_score_df[score_col_with_donuts].sum()
+    new_donuts = final_score_df[
+        final_score_df[donut_hole_score_only] & ~final_score_df[score_col]
+    ].shape[0]
+
+    assert (
+        new_donuts + count_n == count_n_with_donuts
+    ), "The math doesn't work! The number of new donut hole tracts plus score tracts (base) does not equal the total number of tracts identified"
+
+    assert (
+        count_donuts < count_n
+    ), "There are more donut hole tracts than base tracts. How can it be?"
+
+    assert (
+        new_donuts > 0
+    ), "FYI: The adjacency index is doing nothing. Consider removing it?"
