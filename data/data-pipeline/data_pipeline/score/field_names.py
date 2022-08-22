@@ -99,6 +99,27 @@ LOW_MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD = (
     "Low median household income as a percent of area median income"
 )
 
+# Additional ACS demographic fields.
+PERCENT_PREFIX = "Percent "
+
+PERCENT_BLACK_FIELD_NAME = PERCENT_PREFIX + "Black or African American"
+PERCENT_AMERICAN_INDIAN_FIELD_NAME = (
+    PERCENT_PREFIX + "American Indian / Alaska Native"
+)
+PERCENT_ASIAN_FIELD_NAME = PERCENT_PREFIX + "Asian"
+PERCENT_HAWAIIAN_FIELD_NAME = PERCENT_PREFIX + "Native Hawaiian or Pacific"
+PERCENT_TWO_OR_MORE_RACES_FIELD_NAME = PERCENT_PREFIX + "two or more races"
+PERCENT_NON_HISPANIC_WHITE_FIELD_NAME = PERCENT_PREFIX + "White"
+PERCENT_HISPANIC_FIELD_NAME = PERCENT_PREFIX + "Hispanic or Latino"
+# Note that `other` is lowercase because the whole field will show up in the download
+# file as "Percent other races"
+PERCENT_OTHER_RACE_FIELD_NAME = PERCENT_PREFIX + "other races"
+
+# Age
+PERCENT_AGE_UNDER_10 = "Percent age under 10"
+PERCENT_AGE_10_TO_64 = "Percent age 10 to 64"
+PERCENT_AGE_OVER_64 = "Percent age over 64"
+
 # Climate
 FEMA_RISK_FIELD = "FEMA Risk Index Expected Annual Loss Score"
 EXPECTED_BUILDING_LOSS_RATE_FIELD = (

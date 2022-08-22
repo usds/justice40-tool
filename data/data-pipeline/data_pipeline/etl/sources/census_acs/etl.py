@@ -186,19 +186,25 @@ class CensusACSETL(ExtractTransformLoad):
             "B03002_003E",
             "B03003_001E",
             "B03003_003E",
+            "B02001_007E",  # "Some other race alone"
         ]
 
-        # Name output demographics fields.
-        self.BLACK_FIELD_NAME = "Black or African American alone"
-        self.AMERICAN_INDIAN_FIELD_NAME = (
-            "American Indian and Alaska Native alone"
-        )
-        self.ASIAN_FIELD_NAME = "Asian alone"
-        self.HAWAIIAN_FIELD_NAME = "Native Hawaiian and Other Pacific alone"
-        self.TWO_OR_MORE_RACES_FIELD_NAME = "Two or more races"
-        self.NON_HISPANIC_WHITE_FIELD_NAME = "Non-Hispanic White"
+        self.BLACK_FIELD_NAME = "Black or African American"
+        self.AMERICAN_INDIAN_FIELD_NAME = "American Indian / Alaska Native"
+        self.ASIAN_FIELD_NAME = "Asian"
+        self.HAWAIIAN_FIELD_NAME = "Native Hawaiian or Pacific"
+        self.TWO_OR_MORE_RACES_FIELD_NAME = "two or more races"
+        self.NON_HISPANIC_WHITE_FIELD_NAME = "White"
         self.HISPANIC_FIELD_NAME = "Hispanic or Latino"
+        # Note that `other` is lowercase because the whole field will show up in the download
+        # file as "Percent other races"
+        self.OTHER_RACE_FIELD_NAME = "other races"
 
+        self.TOTAL_RACE_POPULATION_FIELD_NAME = (
+            "Total population surveyed on racial data"
+        )
+
+        # Name output demographics fields.
         self.RE_OUTPUT_FIELDS = [
             self.BLACK_FIELD_NAME,
             self.AMERICAN_INDIAN_FIELD_NAME,
@@ -207,9 +213,64 @@ class CensusACSETL(ExtractTransformLoad):
             self.TWO_OR_MORE_RACES_FIELD_NAME,
             self.NON_HISPANIC_WHITE_FIELD_NAME,
             self.HISPANIC_FIELD_NAME,
+            self.OTHER_RACE_FIELD_NAME,
         ]
 
-        self.PERCENT_PREFIX = "Percent "
+        self.AGE_INPUT_FIELDS = [
+            "B01001_001E",  # Estimate!!Total:
+            "B01001_003E",  # Estimate!!Total:!!Male:!!Under 5 years
+            "B01001_004E",  # Estimate!!Total:!!Male:!!5 to 9 years
+            "B01001_005E",  # Estimate!!Total:!!Male:!!10 to 14 years
+            "B01001_006E",  # Estimate!!Total:!!Male:!!15 to 17 years
+            "B01001_007E",  # Estimate!!Total:!!Male:!!18 and 19 years
+            "B01001_008E",  # Estimate!!Total:!!Male:!!20 years
+            "B01001_009E",  # Estimate!!Total:!!Male:!!21 years
+            "B01001_010E",  # Estimate!!Total:!!Male:!!22 to 24 years
+            "B01001_011E",  # Estimate!!Total:!!Male:!!25 to 29 years
+            "B01001_012E",  # Estimate!!Total:!!Male:!!30 to 34 years
+            "B01001_013E",  # Estimate!!Total:!!Male:!!35 to 39 years
+            "B01001_014E",  # Estimate!!Total:!!Male:!!40 to 44 years
+            "B01001_015E",  # Estimate!!Total:!!Male:!!45 to 49 years
+            "B01001_016E",  # Estimate!!Total:!!Male:!!50 to 54 years
+            "B01001_017E",  # Estimate!!Total:!!Male:!!55 to 59 years
+            "B01001_018E",  # Estimate!!Total:!!Male:!!60 and 61 years
+            "B01001_019E",  # Estimate!!Total:!!Male:!!62 to 64 years
+            "B01001_020E",  # Estimate!!Total:!!Male:!!65 and 66 years
+            "B01001_021E",  # Estimate!!Total:!!Male:!!67 to 69 years
+            "B01001_022E",  # Estimate!!Total:!!Male:!!70 to 74 years
+            "B01001_023E",  # Estimate!!Total:!!Male:!!75 to 79 years
+            "B01001_024E",  # Estimate!!Total:!!Male:!!80 to 84 years
+            "B01001_025E",  # Estimate!!Total:!!Male:!!85 years and over
+            "B01001_027E",  # Estimate!!Total:!!Female:!!Under 5 years
+            "B01001_028E",  # Estimate!!Total:!!Female:!!5 to 9 years
+            "B01001_029E",  # Estimate!!Total:!!Female:!!10 to 14 years
+            "B01001_030E",  # Estimate!!Total:!!Female:!!15 to 17 years
+            "B01001_031E",  # Estimate!!Total:!!Female:!!18 and 19 years
+            "B01001_032E",  # Estimate!!Total:!!Female:!!20 years
+            "B01001_033E",  # Estimate!!Total:!!Female:!!21 years
+            "B01001_034E",  # Estimate!!Total:!!Female:!!22 to 24 years
+            "B01001_035E",  # Estimate!!Total:!!Female:!!25 to 29 years
+            "B01001_036E",  # Estimate!!Total:!!Female:!!30 to 34 years
+            "B01001_037E",  # Estimate!!Total:!!Female:!!35 to 39 years
+            "B01001_038E",  # Estimate!!Total:!!Female:!!40 to 44 years
+            "B01001_039E",  # Estimate!!Total:!!Female:!!45 to 49 years
+            "B01001_040E",  # Estimate!!Total:!!Female:!!50 to 54 years
+            "B01001_041E",  # Estimate!!Total:!!Female:!!55 to 59 years
+            "B01001_042E",  # Estimate!!Total:!!Female:!!60 and 61 years
+            "B01001_043E",  # Estimate!!Total:!!Female:!!62 to 64 years
+            "B01001_044E",  # Estimate!!Total:!!Female:!!65 and 66 years
+            "B01001_045E",  # Estimate!!Total:!!Female:!!67 to 69 years
+            "B01001_046E",  # Estimate!!Total:!!Female:!!70 to 74 years
+            "B01001_047E",  # Estimate!!Total:!!Female:!!75 to 79 years
+            "B01001_048E",  # Estimate!!Total:!!Female:!!80 to 84 years
+            "B01001_049E",  # Estimate!!Total:!!Female:!!85 years and over
+        ]
+
+        self.AGE_OUTPUT_FIELDS = [
+            field_names.PERCENT_AGE_UNDER_10,
+            field_names.PERCENT_AGE_10_TO_64,
+            field_names.PERCENT_AGE_OVER_64,
+        ]
 
         self.STATE_GEOID_FIELD_NAME = "GEOID2"
 
@@ -230,7 +291,11 @@ class CensusACSETL(ExtractTransformLoad):
                 field_names.IMPUTED_INCOME_FLAG_FIELD_NAME,
             ]
             + self.RE_OUTPUT_FIELDS
-            + [self.PERCENT_PREFIX + field for field in self.RE_OUTPUT_FIELDS]
+            + [
+                field_names.PERCENT_PREFIX + field
+                for field in self.RE_OUTPUT_FIELDS
+            ]
+            + self.AGE_OUTPUT_FIELDS
             + [
                 field_names.POVERTY_LESS_THAN_200_FPL_FIELD,
                 field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD,
@@ -280,6 +345,7 @@ class CensusACSETL(ExtractTransformLoad):
             + self.EDUCATIONAL_FIELDS
             + self.RE_FIELDS
             + self.COLLEGE_ATTENDANCE_FIELDS
+            + self.AGE_INPUT_FIELDS
         )
 
         self.df = retrieve_census_acs_data(
@@ -406,36 +472,103 @@ class CensusACSETL(ExtractTransformLoad):
         )
 
         # Calculate some demographic information.
-        df[self.BLACK_FIELD_NAME] = df["B02001_003E"]
-        df[self.AMERICAN_INDIAN_FIELD_NAME] = df["B02001_004E"]
-        df[self.ASIAN_FIELD_NAME] = df["B02001_005E"]
-        df[self.HAWAIIAN_FIELD_NAME] = df["B02001_006E"]
-        df[self.TWO_OR_MORE_RACES_FIELD_NAME] = df["B02001_008E"]
-        df[self.NON_HISPANIC_WHITE_FIELD_NAME] = df["B03002_003E"]
-        df[self.HISPANIC_FIELD_NAME] = df["B03003_003E"]
 
-        # Calculate demographics as percent
-        df[self.PERCENT_PREFIX + self.BLACK_FIELD_NAME] = (
-            df["B02001_003E"] / df["B02001_001E"]
+        df = df.rename(
+            columns={
+                "B02001_003E": self.BLACK_FIELD_NAME,
+                "B02001_004E": self.AMERICAN_INDIAN_FIELD_NAME,
+                "B02001_005E": self.ASIAN_FIELD_NAME,
+                "B02001_006E": self.HAWAIIAN_FIELD_NAME,
+                "B02001_008E": self.TWO_OR_MORE_RACES_FIELD_NAME,
+                "B03002_003E": self.NON_HISPANIC_WHITE_FIELD_NAME,
+                "B03003_003E": self.HISPANIC_FIELD_NAME,
+                "B02001_007E": self.OTHER_RACE_FIELD_NAME,
+                "B02001_001E": self.TOTAL_RACE_POPULATION_FIELD_NAME,
+            },
+            errors="raise",
         )
-        df[self.PERCENT_PREFIX + self.AMERICAN_INDIAN_FIELD_NAME] = (
-            df["B02001_004E"] / df["B02001_001E"]
-        )
-        df[self.PERCENT_PREFIX + self.ASIAN_FIELD_NAME] = (
-            df["B02001_005E"] / df["B02001_001E"]
-        )
-        df[self.PERCENT_PREFIX + self.HAWAIIAN_FIELD_NAME] = (
-            df["B02001_006E"] / df["B02001_001E"]
-        )
-        df[self.PERCENT_PREFIX + self.TWO_OR_MORE_RACES_FIELD_NAME] = (
-            df["B02001_008E"] / df["B02001_001E"]
-        )
-        df[self.PERCENT_PREFIX + self.NON_HISPANIC_WHITE_FIELD_NAME] = (
-            df["B03002_003E"] / df["B03002_001E"]
-        )
-        df[self.PERCENT_PREFIX + self.HISPANIC_FIELD_NAME] = (
-            df["B03003_003E"] / df["B03003_001E"]
-        )
+
+        for race_field_name in self.RE_OUTPUT_FIELDS:
+            df[field_names.PERCENT_PREFIX + race_field_name] = (
+                df[race_field_name] / df[self.TOTAL_RACE_POPULATION_FIELD_NAME]
+            )
+
+        # First value is the `age bucket`, and the second value is a list of all fields
+        # that will be summed in the calculations of the total population in that age
+        # bucket.
+        age_bucket_and_its_sum_columns = [
+            (
+                field_names.PERCENT_AGE_UNDER_10,
+                [
+                    "B01001_003E",  # Estimate!!Total:!!Male:!!Under 5 years
+                    "B01001_004E",  # Estimate!!Total:!!Male:!!5 to 9 years
+                    "B01001_027E",  # Estimate!!Total:!!Female:!!Under 5 years
+                    "B01001_028E",  # Estimate!!Total:!!Female:!!5 to 9 years
+                ],
+            ),
+            (
+                field_names.PERCENT_AGE_10_TO_64,
+                [
+                    "B01001_005E",  # Estimate!!Total:!!Male:!!10 to 14 years
+                    "B01001_006E",  # Estimate!!Total:!!Male:!!15 to 17 years
+                    "B01001_007E",  # Estimate!!Total:!!Male:!!18 and 19 years
+                    "B01001_008E",  # Estimate!!Total:!!Male:!!20 years
+                    "B01001_009E",  # Estimate!!Total:!!Male:!!21 years
+                    "B01001_010E",  # Estimate!!Total:!!Male:!!22 to 24 years
+                    "B01001_011E",  # Estimate!!Total:!!Male:!!25 to 29 years
+                    "B01001_012E",  # Estimate!!Total:!!Male:!!30 to 34 years
+                    "B01001_013E",  # Estimate!!Total:!!Male:!!35 to 39 years
+                    "B01001_014E",  # Estimate!!Total:!!Male:!!40 to 44 years
+                    "B01001_015E",  # Estimate!!Total:!!Male:!!45 to 49 years
+                    "B01001_016E",  # Estimate!!Total:!!Male:!!50 to 54 years
+                    "B01001_017E",  # Estimate!!Total:!!Male:!!55 to 59 years
+                    "B01001_018E",  # Estimate!!Total:!!Male:!!60 and 61 years
+                    "B01001_019E",  # Estimate!!Total:!!Male:!!62 to 64 years
+                    "B01001_029E",  # Estimate!!Total:!!Female:!!10 to 14 years
+                    "B01001_030E",  # Estimate!!Total:!!Female:!!15 to 17 years
+                    "B01001_031E",  # Estimate!!Total:!!Female:!!18 and 19 years
+                    "B01001_032E",  # Estimate!!Total:!!Female:!!20 years
+                    "B01001_033E",  # Estimate!!Total:!!Female:!!21 years
+                    "B01001_034E",  # Estimate!!Total:!!Female:!!22 to 24 years
+                    "B01001_035E",  # Estimate!!Total:!!Female:!!25 to 29 years
+                    "B01001_036E",  # Estimate!!Total:!!Female:!!30 to 34 years
+                    "B01001_037E",  # Estimate!!Total:!!Female:!!35 to 39 years
+                    "B01001_038E",  # Estimate!!Total:!!Female:!!40 to 44 years
+                    "B01001_039E",  # Estimate!!Total:!!Female:!!45 to 49 years
+                    "B01001_040E",  # Estimate!!Total:!!Female:!!50 to 54 years
+                    "B01001_041E",  # Estimate!!Total:!!Female:!!55 to 59 years
+                    "B01001_042E",  # Estimate!!Total:!!Female:!!60 and 61 years
+                    "B01001_043E",  # Estimate!!Total:!!Female:!!62 to 64 years
+                ],
+            ),
+            (
+                field_names.PERCENT_AGE_OVER_64,
+                [
+                    "B01001_020E",  # Estimate!!Total:!!Male:!!65 and 66 years
+                    "B01001_021E",  # Estimate!!Total:!!Male:!!67 to 69 years
+                    "B01001_022E",  # Estimate!!Total:!!Male:!!70 to 74 years
+                    "B01001_023E",  # Estimate!!Total:!!Male:!!75 to 79 years
+                    "B01001_024E",  # Estimate!!Total:!!Male:!!80 to 84 years
+                    "B01001_025E",  # Estimate!!Total:!!Male:!!85 years and over
+                    "B01001_044E",  # Estimate!!Total:!!Female:!!65 and 66 years
+                    "B01001_045E",  # Estimate!!Total:!!Female:!!67 to 69 years
+                    "B01001_046E",  # Estimate!!Total:!!Female:!!70 to 74 years
+                    "B01001_047E",  # Estimate!!Total:!!Female:!!75 to 79 years
+                    "B01001_048E",  # Estimate!!Total:!!Female:!!80 to 84 years
+                    "B01001_049E",  # Estimate!!Total:!!Female:!!85 years and over
+                ],
+            ),
+        ]
+
+        # Calculate age groups
+        total_population_age_series = df["B01001_001E"]
+
+        # For each age bucket, sum the relevant columns and calculate the total
+        # percentage.
+        for age_bucket, sum_columns in age_bucket_and_its_sum_columns:
+            df[age_bucket] = (
+                df[sum_columns].sum(axis=1) / total_population_age_series
+            )
 
         # Calculate college attendance and adjust low income
         df[self.COLLEGE_ATTENDANCE_FIELD] = (
@@ -505,7 +638,7 @@ class CensusACSETL(ExtractTransformLoad):
         )
 
         # We generate a boolean that is TRUE when there is an imputed income but not a baseline income, and FALSE otherwise.
-        # This allows us to see which tracts have an imputed income. 
+        # This allows us to see which tracts have an imputed income.
         df[field_names.IMPUTED_INCOME_FLAG_FIELD_NAME] = (
             df[field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD].notna()
             & df[field_names.POVERTY_LESS_THAN_200_FPL_FIELD].isna()
