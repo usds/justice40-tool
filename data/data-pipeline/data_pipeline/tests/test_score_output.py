@@ -130,11 +130,22 @@ def total_population_col():
     return field_names.TOTAL_POP_FIELD
 
 
+def _helper_test_count_exceeding_threshold(df, col, error_check=1000):
+    """Fills NA with False"""
+    return df[df[col].fillna(False)].shape[0] >= error_check
+
+
 def _helper_single_threshold_test(df, col, socioeconomic_column, score_column):
+    """Note that this fills nulls in the threshold column where nulls exist"""
     nulls_dont_exist = (
-        df[df[col] & df[socioeconomic_column]][score_column].isna().sum() == 0
+        df[df[col].fillna(False) & df[socioeconomic_column]][score_column]
+        .isna()
+        .sum()
+        == 0
     )
-    only_trues = df[df[col] & df[socioeconomic_column]][score_column].min()
+    only_trues = df[df[col].fillna(False) & df[socioeconomic_column]][
+        score_column
+    ].min()
     return nulls_dont_exist, only_trues
 
 
@@ -144,12 +155,18 @@ def _helper_test_thresholds(df, thresholds, ses_col, score_col_name):
         nulls_dont_exist, only_trues = _helper_single_threshold_test(
             df, col, ses_col, score_col_name
         )
+        proper_threshold_identification = (
+            _helper_test_count_exceeding_threshold(df, col)
+        )
         assert (
             nulls_dont_exist
         ), f"For {col}, threshold is not calculated right -- there are NaNs in Score"
         assert (
             only_trues
         ), f"For {col} and {ses_col}, threshold is not calculated right -- there are Falses where there should only be Trues"
+        assert proper_threshold_identification, (
+            f"Threshold {col} returns too few tracts, are you sure it's nationally-representative?",
+        )
         return True
 
 
@@ -221,32 +238,11 @@ def test_max_40_percent_DAC(
     final_score_df, score_col_with_donuts, total_population_col
 ):
     assert (
+        final_score_df[score_col_with_donuts].isna().sum() == 0
+    ), f"Error: {score_col_with_donuts} contains NULLs"
+    assert (
         final_score_df[final_score_df[score_col_with_donuts]][
             total_population_col
         ].sum()
         / final_score_df[total_population_col].sum()
     ) < 0.4, "Error: the scoring methodology identifies >40% of people in  the US as disadvantaged"
-
-
-## outstanding tests
-
-
-# def test_single_percentile(
-#     df: pd.DataFrame,
-#     percentile_column: str,
-#     exceeds_threshold_column: str,
-#     threshold: float,
-# ) -> None:
-#     """Tests to ensure that all percentiles are weakly greater. Can also be used for socioeconomic thresholds"""
-#     assert (
-#         df[df[exceeds_threshold_column]][percentile_column].min() >= threshold
-#     ), f"{exceeds_threshold_column} is improperly calculated from {percentile_column}; there's a value here below {threshold}"
-
-#     assert (
-#         df[~df[exceeds_threshold_column]][percentile_column].max() < threshold
-#     ), f"{exceeds_threshold_column} is improperly calculated from {percentile_column}; there's a value not here above {threshold}"
-
-
-# def test_category_burden():
-#     """Tests that if a single combined threshold is exceeded, the category is exceeded"""
-#     pass
