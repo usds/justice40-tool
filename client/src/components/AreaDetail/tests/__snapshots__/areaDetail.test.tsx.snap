@@ -49,7 +49,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
         Tract demographics
       </div>
       <h6>
-        Racial / Ethnographic
+        Race / Ethnicity
         <span>
           (
           <button
@@ -94,14 +94,6 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
           </span>
           <span>
             10.3%
-          </span>
-        </div>
-        <div>
-          <span>
-            American Indian and Alaska Native
-          </span>
-          <span>
-            0.3%
           </span>
         </div>
         <div>
@@ -566,7 +558,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         Tract demographics
       </div>
       <h6>
-        Racial / Ethnographic
+        Race / Ethnicity
         <span>
           (
           <button
@@ -611,14 +603,6 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
           </span>
           <span>
             10.3%
-          </span>
-        </div>
-        <div>
-          <span>
-            American Indian and Alaska Native
-          </span>
-          <span>
-            0.3%
           </span>
         </div>
         <div>
@@ -2636,7 +2620,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
         Tract demographics
       </div>
       <h6>
-        Racial / Ethnographic
+        Race / Ethnicity
         <span>
           (
           <button
@@ -2681,14 +2665,6 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
           </span>
           <span>
             10.3%
-          </span>
-        </div>
-        <div>
-          <span>
-            American Indian and Alaska Native
-          </span>
-          <span>
-            0.3%
           </span>
         </div>
         <div>

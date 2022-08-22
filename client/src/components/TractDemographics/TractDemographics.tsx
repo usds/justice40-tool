@@ -19,7 +19,6 @@ const demographicsData:ITractDemographicsProps = {
     ['White', 61.4],
     ['Black or African Americon', 10.3],
     ['American Indian and Alaska Native', 10.3],
-    ['American Indian and Alaska Native', 0.3],
     ['Asian', 7.2],
     ['Native Hawiian or Pacific Islander', 4.2],
     ['Other', 2.5],
@@ -108,7 +107,7 @@ const TractDemographics = () => {
         Tract demographics
       </div>
       <>
-        <J40AccordionItem id={'race'} title={`Racial / Ethnographic`}>
+        <J40AccordionItem id={'race'} title={`Race / Ethnicity`}>
           {demographicItemGen(demographicsData.racial)}
         </J40AccordionItem>
         <J40AccordionItem id={'age'} title={`Age`}>

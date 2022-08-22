@@ -7,7 +7,7 @@ exports[`rendering of TractDemographics Component checks if component renders 1`
       Tract demographics
     </div>
     <h6>
-      Racial / Ethnographic
+      Race / Ethnicity
       <span>
         (
         <button
@@ -52,14 +52,6 @@ exports[`rendering of TractDemographics Component checks if component renders 1`
         </span>
         <span>
           10.3%
-        </span>
-      </div>
-      <div>
-        <span>
-          American Indian and Alaska Native
-        </span>
-        <span>
-          0.3%
         </span>
       </div>
       <div>
