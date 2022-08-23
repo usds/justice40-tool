@@ -13,8 +13,6 @@ class ScoreRunner:
         self.df = df
 
     def calculate_scores(self) -> pd.DataFrame:
-        # Index scores
-        self.df = ScoreM(df=self.df).add_columns()
         self.df = ScoreNarwhal(df=self.df).add_columns()
 
         return self.df

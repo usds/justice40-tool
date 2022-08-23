@@ -10,21 +10,18 @@ STATE_FIELD = "State/Territory"
 COUNTY_FIELD = "County Name"
 
 # Score file field names
-# Definition M fields
-SCORE_M = "Definition M"
-FINAL_SCORE_N_BOOLEAN = (
-    "Definition M community, including adjacency index tracts"
-)
-SCORE_M_COMMUNITIES = "Definition M (communities)"
-M_CLIMATE = "Climate Factor (Definition M)"
-M_ENERGY = "Energy Factor (Definition M)"
-M_TRANSPORTATION = "Transportation Factor (Definition M)"
-M_HOUSING = "Housing Factor (Definition M)"
-M_POLLUTION = "Pollution Factor (Definition M)"
-M_WATER = "Water Factor (Definition M)"
-M_HEALTH = "Health Factor (Definition M)"
-M_WORKFORCE = "Workforce Factor (Definition M)"
-M_NON_WORKFORCE = "Any Non-Workforce Factor (Definition M)"
+# # Definition M fields
+# SCORE_M = "Definition M"
+# SCORE_M_COMMUNITIES = "Definition M (communities)"
+# M_CLIMATE = "Climate Factor (Definition M)"
+# M_ENERGY = "Energy Factor (Definition M)"
+# M_TRANSPORTATION = "Transportation Factor (Definition M)"
+# M_HOUSING = "Housing Factor (Definition M)"
+# M_POLLUTION = "Pollution Factor (Definition M)"
+# M_WATER = "Water Factor (Definition M)"
+# M_HEALTH = "Health Factor (Definition M)"
+# M_WORKFORCE = "Workforce Factor (Definition M)"
+# M_NON_WORKFORCE = "Any Non-Workforce Factor (Definition M)"
 
 # Definition Narwhal fields
 SCORE_N = "Definition N (communities)"
@@ -38,6 +35,9 @@ N_WATER = "Water Factor (Definition N)"
 N_HEALTH = "Health Factor (Definition N)"
 N_WORKFORCE = "Workforce Factor (Definition N)"
 N_NON_WORKFORCE = "Any Non-Workforce Factor (Definition N)"
+FINAL_SCORE_N_BOOLEAN = (
+    "Definition N community, including adjacency index tracts"
+)
 
 PERCENTILE = 90
 MEDIAN_HOUSE_VALUE_PERCENTILE = 90
@@ -545,22 +545,22 @@ LOW_LIFE_EXPECTANCY_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
 # Workforce
 UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for unemployment"
-    " and has low HS education?"
+    " and has low HS attainment?"
 )
 
 LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for households in linguistic isolation"
-    " and has low HS education?"
+    " and has low HS attainment?"
 )
 
 POVERTY_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for households at or below 100% federal poverty level"
-    " and has low HS education?"
+    " and has low HS attainment?"
 )
 
 LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for low median household income as a "
-    f"percent of area median income and has low HS education?"
+    f"percent of area median income and has low HS attainment?"
 )
 
 # Score M Workforce Variables
