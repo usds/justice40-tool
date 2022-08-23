@@ -9,20 +9,6 @@ GEOID_TRACT_FIELD = "GEOID10_TRACT"
 STATE_FIELD = "State/Territory"
 COUNTY_FIELD = "County Name"
 
-# Score file field names
-# # Definition M fields
-# SCORE_M = "Definition M"
-# SCORE_M_COMMUNITIES = "Definition M (communities)"
-# M_CLIMATE = "Climate Factor (Definition M)"
-# M_ENERGY = "Energy Factor (Definition M)"
-# M_TRANSPORTATION = "Transportation Factor (Definition M)"
-# M_HOUSING = "Housing Factor (Definition M)"
-# M_POLLUTION = "Pollution Factor (Definition M)"
-# M_WATER = "Water Factor (Definition M)"
-# M_HEALTH = "Health Factor (Definition M)"
-# M_WORKFORCE = "Workforce Factor (Definition M)"
-# M_NON_WORKFORCE = "Any Non-Workforce Factor (Definition M)"
-
 # Definition Narwhal fields
 SCORE_N = "Definition N (communities)"
 SCORE_N_COMMUNITIES = "Definition N (communities)"
