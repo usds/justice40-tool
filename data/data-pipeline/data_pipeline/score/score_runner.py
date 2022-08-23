@@ -1,5 +1,4 @@
 import pandas as pd
-from data_pipeline.score.score_m import ScoreM
 from data_pipeline.score.score_narwhal import ScoreNarwhal
 
 from data_pipeline.utils import get_module_logger
@@ -13,8 +12,6 @@ class ScoreRunner:
         self.df = df
 
     def calculate_scores(self) -> pd.DataFrame:
-        # Index scores
-        self.df = ScoreM(df=self.df).add_columns()
         self.df = ScoreNarwhal(df=self.df).add_columns()
 
         return self.df
