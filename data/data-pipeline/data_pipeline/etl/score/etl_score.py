@@ -477,12 +477,15 @@ class ScoreETL(ExtractTransformLoad):
         non_numeric_columns = [
             self.GEOID_TRACT_FIELD_NAME,
             field_names.PERSISTENT_POVERTY_FIELD,
-            field_names.HISTORIC_REDLINING_SCORE_EXCEEDED,
             field_names.TRACT_ELIGIBLE_FOR_NONNATURAL_THRESHOLD,
             field_names.AGRICULTURAL_VALUE_BOOL_FIELD,
-            field_names.ELIGIBLE_FUDS_BINARY_FIELD_NAME,
+        ]
+
+        boolean_columns = [
             field_names.AML_BOOLEAN,
             field_names.IMPUTED_INCOME_FLAG_FIELD_NAME,
+            field_names.ELIGIBLE_FUDS_BINARY_FIELD_NAME,
+            field_names.HISTORIC_REDLINING_SCORE_EXCEEDED,
         ]
 
         # For some columns, high values are "good", so we want to reverse the percentile
@@ -532,6 +535,10 @@ class ScoreETL(ExtractTransformLoad):
         ), "You have a double-entered column in the numeric columns list"
 
         df_copy[numeric_columns] = df_copy[numeric_columns].apply(pd.to_numeric)
+
+        # coerce all booleans to bools
+        for col in boolean_columns:
+            df_copy[col] = df_copy[col].astype(bool)
 
         # Convert all columns to numeric and do math
         # Note that we have a few special conditions here and we handle them explicitly.
