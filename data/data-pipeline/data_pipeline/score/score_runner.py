@@ -1,5 +1,4 @@
 import pandas as pd
-from data_pipeline.score.score_m import ScoreM
 from data_pipeline.score.score_narwhal import ScoreNarwhal
 
 from data_pipeline.utils import get_module_logger
