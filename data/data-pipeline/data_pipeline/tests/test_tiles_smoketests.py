@@ -31,10 +31,6 @@ def tiles_df():
     )
 
 
-"""
-    field_names.HIGH_SCHOOL_ED_FIELD: "HSEF",
-"""
-
 PERCENTILE_FIELDS = [
     "DF_PFS",
     "AF_PFS",
