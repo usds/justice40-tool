@@ -12,9 +12,9 @@ describe('rendering of the Indicator', () => {
     const highSchool:indicatorInfo = {
       label: 'some label',
       description: 'some description',
+      type: 'percent',
       value: .97,
       isDisadvagtaged: true,
-      isPercent: true,
       threshold: 20,
     };
     const {asFragment} = render(
@@ -31,9 +31,9 @@ describe('rendering of the Indicator', () => {
     const highSchool:indicatorInfo = {
       label: 'some label',
       description: 'some description',
+      type: 'percent',
       value: .426,
       isDisadvagtaged: true,
-      isPercent: true,
       threshold: 20,
     };
     const {asFragment} = render(
@@ -108,7 +108,7 @@ describe('test rendering of Indicator value sub-text', () => {
             value={95}
             isAboveThresh={true}
             threshold={90}
-            isPercent={false}
+            type='percentile'
           />
         </LocalizedComponent>,
     );
@@ -121,7 +121,7 @@ describe('test rendering of Indicator value sub-text', () => {
             value={89}
             isAboveThresh={false}
             threshold={90}
-            isPercent={false}
+            type='percentile'
           />
         </LocalizedComponent>,
     );
@@ -134,7 +134,7 @@ describe('test rendering of Indicator value sub-text', () => {
             value={null}
             isAboveThresh={false}
             threshold={90}
-            isPercent={false}
+            type='percentile'
           />
         </LocalizedComponent>,
     );
@@ -144,59 +144,62 @@ describe('test rendering of Indicator value sub-text', () => {
 
 describe('test that the unit suffix renders correctly', ()=> {
   it('renders correctly when the value is a percentile', () => {
-    const lowLife:indicatorInfo = {
-      label: 'some label',
-      description: 'some description',
-      value: 97,
-      isDisadvagtaged: true,
-      isPercent: false,
-      threshold: 20,
-    };
-
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValue
-            isPercent={lowLife.isPercent}
+            type={'percentile'}
             displayStat={90}
           />
         </LocalizedComponent>,
     );
     expect(asFragment()).toMatchSnapshot();
   });
+
   it('renders correctly when the value is a percent', () => {
-    const lowLife:indicatorInfo = {
-      label: 'some label',
-      description: 'some description',
-      value: 97,
-      isDisadvagtaged: true,
-      isPercent: true,
-      threshold: 20,
-    };
-
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValue
-            isPercent={lowLife.isPercent}
+            type={'percent'}
             displayStat={90}
           />
         </LocalizedComponent>,
     );
     expect(asFragment()).toMatchSnapshot();
   });
-  it('renders correctly when the value is a null', () => {
-    const lowLife:indicatorInfo = {
-      label: 'some label',
-      description: 'some description',
-      value: null,
-      isDisadvagtaged: true,
-      isPercent: false,
-    };
 
+  it('renders correctly when the value is a null', () => {
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValue
-            isPercent={lowLife.isPercent}
+            type={'percentile'}
             displayStat={null}
+          />
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+});
+
+describe('renders value correctly for ShowFullBoolean types', () => {
+  it('renders the "true" use case correctly', () => {
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <IndicatorValue
+            type={'showFullBoolean'}
+            displayStat={100}
+            rawValue={true}
+          />
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+  it('renders the "false" use case correctly', () => {
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <IndicatorValue
+            type={'showFullBoolean'}
+            displayStat={0}
+            rawValue={false}
           />
         </LocalizedComponent>,
     );

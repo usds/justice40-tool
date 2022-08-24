@@ -84,6 +84,18 @@ exports[`rendering of the Indicator checks if the flooring function works 1`] = 
 </DocumentFragment>
 `;
 
+exports[`renders value correctly for ShowFullBoolean types renders the "false" use case correctly 1`] = `
+<DocumentFragment>
+  No
+</DocumentFragment>
+`;
+
+exports[`renders value correctly for ShowFullBoolean types renders the "true" use case correctly 1`] = `
+<DocumentFragment>
+  Yes
+</DocumentFragment>
+`;
+
 exports[`test rendering of Indicator value icons renders the down arrow when the value is above the threshold 1`] = `
 <DocumentFragment>
   <img

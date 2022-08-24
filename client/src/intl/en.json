@@ -555,6 +555,10 @@
     "defaultMessage": "Percent of people ages 25 years or older whose education level is less than a high school diploma",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of people ages 25 years or older whose education level \n      is less than a high school diploma"
   },
+  "explore.map.page.side.panel.indicator.description.historic.underinvestment": {
+    "defaultMessage": "Census tracts with historically high barriers to accessing home loans",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Low income households spending more than 30% of income housing"
+  },
   "explore.map.page.side.panel.indicator.description.houseBurden": {
     "defaultMessage": "Low income households spending more than 30% of income on housing",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Low income households spending more than 30% of income housing"
@@ -670,6 +674,10 @@
   "explore.map.page.side.panel.indicator.high.school": {
     "defaultMessage": "High school degree non-attainment",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show High school degree achievement rate"
+  },
+  "explore.map.page.side.panel.indicator.historic.underinvest": {
+    "defaultMessage": "Historic underinvestment",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Historic underinvestment"
   },
   "explore.map.page.side.panel.indicator.houseBurden": {
     "defaultMessage": "Housing cost burden",

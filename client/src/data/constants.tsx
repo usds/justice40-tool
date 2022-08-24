@@ -129,6 +129,8 @@ export const IS_EXCEEDS_THRESH_KITCHEN_PLUMB = 'KP_ET';
 export const LEAD_PAINT_PERCENTILE = 'LPF_PFS';
 export const IS_EXCEEDS_THRESH_FOR_LEAD_PAINT_AND_MEDIAN_HOME_VAL = 'LPP_ET';
 
+export const HISTORIC_UNDERINVESTMENT = 'HRS_ET';
+
 // export const MEDIAN_HOME_VALUE_PERCENTILE = 'MHVF_PFS'; // No longer showing in UI
 
 
@@ -226,7 +228,7 @@ export const SELECTED_TRIBAL_FEATURE_BORDER_LAYER_ID = 'selected-feature-tribal-
 export const TRIBAL_ALASKA_POINTS_LAYER_ID = 'tribal-alaska-points-layer-id';
 
 // Used in layer filters:
-export const SCORE_PROPERTY_LOW = 'M_SCORE';
+export const SCORE_PROPERTY_LOW = 'M_SCORE'; // Todo: Eventually for 1.0 this will just be SCORE.
 export const SCORE_PROPERTY_HIGH = 'SM_C';
 
 // Zoom

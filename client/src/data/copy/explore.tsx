@@ -540,6 +540,11 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
     defaultMessage: 'Median home value',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Housing cost burden`,
   },
+  HIST_UNDERINVEST: {
+    id: 'explore.map.page.side.panel.indicator.historic.underinvest',
+    defaultMessage: 'Historic underinvestment',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Historic underinvestment`,
+  },
   HOUSE_BURDEN: {
     id: 'explore.map.page.side.panel.indicator.houseBurden',
     defaultMessage: 'Housing cost burden',
@@ -763,6 +768,11 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
     defaultMessage: 'Median home value in area',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Median home value in area`,
 
+  },
+  HIST_UNDERINVEST: {
+    id: 'explore.map.page.side.panel.indicator.description.historic.underinvestment',
+    defaultMessage: 'Census tracts with historically high barriers to accessing home loans',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Low income households spending more than 30% of income housing`,
   },
   HOUSE_BURDEN: {
     id: 'explore.map.page.side.panel.indicator.description.houseBurden',
