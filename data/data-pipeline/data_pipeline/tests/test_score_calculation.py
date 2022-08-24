@@ -127,6 +127,25 @@ def score_col_with_donuts():
     return field_names.FINAL_SCORE_N_BOOLEAN
 
 
+@pytest.fixture
+def lead_paint_columns():
+    """Returns lead paint percentile column, Median house value percentile column,
+    and thresholded boolean column for the proxy (in order).
+    Does not return thresholds
+    """
+    return [
+        field_names.LEAD_PAINT_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
+        field_names.MEDIAN_HOUSE_VALUE_FIELD
+        + field_names.PERCENTILE_FIELD_SUFFIX,
+        field_names.LEAD_PAINT_PROXY_PCTILE_THRESHOLD,
+    ]
+
+
+@pytest.fixture
+def lead_paint_proxy_home_value_threshold():
+    return ScoreNarwhal(final_score_df).MEDIAN_HOUSE_VALUE_THRESHOLD
+
+
 ### TODO: we need to blow this out for all eight categories
 def _helper_test_percentile_against_threshold(
     df, pctile_column, thresholded_column, threshold
@@ -262,25 +281,32 @@ def test_donut_hole_thresholds(
     return True
 
 
-## outstanding tests
+def test_lead_paint_indicator(
+    final_score_df,
+    lead_paint_columns,
+    lead_paint_proxy_home_value_threshold,
+    env_percentile_threshold,
+):
+    """We need special logic here because this is a combined threshold, so we need this test to have two parts.
 
+    1. We construct our own threshold columns
+    2. We make sure it's the same as the threshold column in the dataframe
+    """
+    lead_pfs, home_val_pfs, combined_proxy_boolean = lead_paint_columns
+    home_threshold = lead_paint_proxy_home_value_threshold
 
-# def test_single_percentile(
-#     df: pd.DataFrame,
-#     percentile_column: str,
-#     exceeds_threshold_column: str,
-#     threshold: float,
-# ) -> None:
-#     """Tests to ensure that all percentiles are weakly greater. Can also be used for socioeconomic thresholds"""
-#     assert (
-#         df[df[exceeds_threshold_column]][percentile_column].min() >= threshold
-#     ), f"{exceeds_threshold_column} is improperly calculated from {percentile_column}; there's a value here below {threshold}"
+    tmp_lead_threshold = final_score_df[lead_pfs] >= env_percentile_threshold
+    tmp_mhv_threshold = final_score_df[home_val_pfs] <= home_threshold
 
-#     assert (
-#         df[~df[exceeds_threshold_column]][percentile_column].max() < threshold
-#     ), f"{exceeds_threshold_column} is improperly calculated from {percentile_column}; there's a value not here above {threshold}"
+    true_combined_proxy = tmp_lead_threshold & tmp_mhv_threshold
 
+    assert (
+        tmp_mhv_threshold.sum() > 0
+    ), "MHV threshold alone does not capture any homes"
 
-# def test_category_burden():
-#     """Tests that if a single combined threshold is exceeded, the category is exceeded"""
-#     pass
+    assert final_score_df[combined_proxy_boolean].equals(
+        true_combined_proxy
+    ), "Lead proxy calculated improperly"
+    assert (
+        tmp_lead_threshold.sum() > true_combined_proxy.sum()
+    ), "House value is not further limiting this proxy"
