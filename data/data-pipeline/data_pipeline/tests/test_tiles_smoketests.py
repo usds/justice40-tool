@@ -28,6 +28,11 @@ def test_count_of_fips_codes(tiles_df, states_count=56):
     assert (
         tiles_df["GTF"].str[:2].nunique() == 56
     ), "Some states are missing from tiles"
+    pfs_columns = tiles_df.filter(like="PFS").columns.to_list()
+    assert (
+        tiles_df.dropna(how="all", subset=pfs_columns)["GTF"].str[:2].nunique()
+        == 56
+    ), "Some states do not have any percentile data"
 
 
 # For each data point that we visualize, we want to confirm that
