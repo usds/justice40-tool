@@ -1,12 +1,9 @@
-from ast import PyCF_TYPE_COMMENTS
-from pathlib import Path
-import pandas as pd
+# flake8: noqa: W0613,W0611,F811
 import pytest
 import data_pipeline.score.field_names as field_names
-import data_pipeline.score.field_names as field_names
 from data_pipeline.utils import get_module_logger
-from data_pipeline.config import settings
 from data_pipeline.score.score_narwhal import ScoreNarwhal
+from .score_fixtures import final_score_df  # pylint: disable=unused-import
 
 logger = get_module_logger(__name__)
 
@@ -20,7 +17,7 @@ def donut_hole_adjacency_parameters():
         # percentile equivalent column
         field_names.SCORE_N_COMMUNITIES + field_names.ADJACENCY_INDEX_SUFFIX,
         # threshold
-        ScoreNarwhal(final_score_df).SCORE_THRESHOLD_DONUT,
+        ScoreNarwhal.SCORE_THRESHOLD_DONUT,
     )
 
 
@@ -29,22 +26,14 @@ def donut_hole_income_threshold_and_column():
     """Test that donut income uses the right threshold"""
     return (
         # threshold
-        ScoreNarwhal(final_score_df).LOW_INCOME_THRESHOLD_DONUT,
+        ScoreNarwhal.LOW_INCOME_THRESHOLD_DONUT,
         field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED_DONUTS,
     )
 
 
 @pytest.fixture
-def final_score_df():
-    return pd.read_csv(
-        settings.APP_ROOT / "data" / "score" / "csv" / "full" / "usa.csv",
-        dtype={field_names.GEOID_TRACT_FIELD: str},
-    )
-
-
-@pytest.fixture
 def low_income_threshold():
-    return ScoreNarwhal(final_score_df).LOW_INCOME_THRESHOLD
+    return ScoreNarwhal.LOW_INCOME_THRESHOLD
 
 
 @pytest.fixture
@@ -58,7 +47,7 @@ def low_income_percentile():
 
 @pytest.fixture
 def low_hs_threshold():
-    return ScoreNarwhal(final_score_df).LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD
+    return ScoreNarwhal.LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD
 
 
 @pytest.fixture
@@ -68,7 +57,7 @@ def low_hs_percent():
 
 @pytest.fixture
 def env_percentile_threshold():
-    return ScoreNarwhal(final_score_df).ENVIRONMENTAL_BURDEN_THRESHOLD
+    return ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD
 
 
 # Climate factor thresholds
