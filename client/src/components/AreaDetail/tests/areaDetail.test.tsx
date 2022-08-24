@@ -1,9 +1,14 @@
 import * as React from 'react';
-import {render} from '@testing-library/react';
+import {render, screen} from '@testing-library/react';
 import AreaDetail from '..';
 import {LocalizedComponent} from '../../../test/testHelpers';
 
 import * as constants from '../../../data/constants';
+import * as EXPLORE_COPY from '../../../data/copy/explore';
+
+// Setting these while BE is being fixed:
+const tempTrue = '1';
+const tempFalse = '0';
 
 // Todo: Update tests to take into account tribal layer selected
 describe('rendering of the AreaDetail', () => {
@@ -64,5 +69,177 @@ describe('rendering of the AreaDetail', () => {
         </LocalizedComponent>,
     );
     expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('checks if indicators for historic underinvestment = true renders', () => {
+    const propertiesHistUnderPass = {
+      ...properties,
+      [constants.HISTORIC_UNDERINVESTMENT]: tempTrue,
+    };
+
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <AreaDetail properties={propertiesHistUnderPass} hash={hash} isCensusLayerSelected={true}/>
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+    // eslint-disable-next-line max-len
+    const container = document.querySelectorAll(
+        '#sustain-house li[data-cy="indicatorBox"] div div:nth-child(2)',
+    );
+    expect(container[0].textContent).toBe('Yes');
+    screen.getByText(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HIST_UNDERINVEST.defaultMessage);
+  });
+
+  it('checks if indicators for historic underinvestment = false renders', () => {
+    const propertiesHistUnderPass = {
+      ...properties,
+      [constants.HISTORIC_UNDERINVESTMENT]: tempFalse,
+    };
+
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <AreaDetail properties={propertiesHistUnderPass} hash={hash} isCensusLayerSelected={true}/>
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+    // eslint-disable-next-line max-len
+    const container = document.querySelectorAll(
+        '#sustain-house li[data-cy="indicatorBox"] div div:nth-child(2)',
+    );
+    expect(container[0].textContent).toBe('No');
+    screen.getByText(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HIST_UNDERINVEST.defaultMessage);
+  });
+
+  it('checks if indicators for historic underinvestment = null does not render', () => {
+    const propertiesHistUnderFail = {
+      ...properties,
+    };
+
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <AreaDetail properties={propertiesHistUnderFail} hash={hash} isCensusLayerSelected={true}/>
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+    // eslint-disable-next-line max-len
+    const container = document.querySelectorAll(
+        '#sustain-house li[data-cy="indicatorBox"] div div:nth-child(2)',
+    );
+    expect(container[0].textContent).toBe('95thabove 90th percentile');
+  });
+
+  it('checks if indicators for abandoned land mines = true renders', () => {
+    const propsALM = {
+      ...properties,
+      [constants.ABANDON_LAND_MINES]: tempTrue,
+    };
+
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <AreaDetail properties={propsALM} hash={hash} isCensusLayerSelected={true}/>
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+    // eslint-disable-next-line max-len
+    const container = document.querySelectorAll(
+        '#leg-pollute li[data-cy="indicatorBox"] div div:nth-child(2)',
+    );
+    expect(container[0].textContent).toBe('Yes');
+    screen.getByText(EXPLORE_COPY.SIDE_PANEL_INDICATORS.ABANDON_MINES.defaultMessage);
+  });
+
+  it('checks if indicators for abandoned land mines = false does not render', () => {
+    const propsALM = {
+      ...properties,
+      [constants.ABANDON_LAND_MINES]: tempFalse,
+    };
+
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <AreaDetail properties={propsALM} hash={hash} isCensusLayerSelected={true}/>
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+    // eslint-disable-next-line max-len
+    const container = document.querySelectorAll(
+        '#leg-pollute li[data-cy="indicatorBox"] div div:nth-child(2)',
+    );
+    expect(container[0].textContent).toBe('data is not available');
+  });
+
+  it('checks if indicators for abandoned land mines = null does not render', () => {
+    const propsALM = {
+      ...properties,
+    };
+
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <AreaDetail properties={propsALM} hash={hash} isCensusLayerSelected={true}/>
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+    // eslint-disable-next-line max-len
+    const container = document.querySelectorAll(
+        '#leg-pollute li[data-cy="indicatorBox"] div div:nth-child(2)',
+    );
+    expect(container[0].textContent).toBe('data is not available');
+  });
+
+  it('checks if indicators for FUDS = true renders', () => {
+    const propsFUDS = {
+      ...properties,
+      [constants.FORMER_DEF_SITES]: tempTrue,
+    };
+
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <AreaDetail properties={propsFUDS} hash={hash} isCensusLayerSelected={true}/>
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+    // eslint-disable-next-line max-len
+    const container = document.querySelectorAll(
+        '#leg-pollute li[data-cy="indicatorBox"] div div:nth-child(2)',
+    );
+    expect(container[0].textContent).toBe('Yes');
+    screen.getByText(EXPLORE_COPY.SIDE_PANEL_INDICATORS.FORMER_DEF_SITES.defaultMessage);
+  });
+
+  it('checks if indicators for FUDS = false does not render', () => {
+    const propsFUDS = {
+      ...properties,
+      [constants.FORMER_DEF_SITES]: tempFalse,
+    };
+
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <AreaDetail properties={propsFUDS} hash={hash} isCensusLayerSelected={true}/>
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+    // eslint-disable-next-line max-len
+    const container = document.querySelectorAll(
+        '#leg-pollute li[data-cy="indicatorBox"] div div:nth-child(2)',
+    );
+    expect(container[0].textContent).toBe('data is not available');
+  });
+
+  it('checks if indicators for FUDS = null does not render', () => {
+    const propsFUDS = {
+      ...properties,
+    };
+
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <AreaDetail properties={propsFUDS} hash={hash} isCensusLayerSelected={true}/>
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+    // eslint-disable-next-line max-len
+    const container = document.querySelectorAll(
+        '#leg-pollute li[data-cy="indicatorBox"] div div:nth-child(2)',
+    );
+    expect(container[0].textContent).toBe('data is not available');
   });
 });

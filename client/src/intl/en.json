@@ -499,6 +499,10 @@
     "defaultMessage": "Tract information",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the census tract info title"
   },
+  "explore.map.page.side.panel.indicator.abandon.mines": {
+    "defaultMessage": "Abandoned land mines",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Abandoned land mines"
+  },
   "explore.map.page.side.panel.indicator.asthma": {
     "defaultMessage": "Asthma",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Asthma"
@@ -506,6 +510,10 @@
   "explore.map.page.side.panel.indicator.barrier.transport": {
     "defaultMessage": "Transportation barriers",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show transportation barriers"
+  },
+  "explore.map.page.side.panel.indicator.description.abandon.mines": {
+    "defaultMessage": "Presence of an abandoned land mine within the tract",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Presence of an abandoned land mine within the tract"
   },
   "explore.map.page.side.panel.indicator.description.asthma": {
     "defaultMessage": "Weighted percent of people who have been told they have asthma",
@@ -542,6 +550,10 @@
   "explore.map.page.side.panel.indicator.description.flooding": {
     "defaultMessage": "Projected risk to properties from floods from tides, rain, riverine and storm surges in 30 years",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of flooding risk"
+  },
+  "explore.map.page.side.panel.indicator.description.former.def.sites": {
+    "defaultMessage": "Presence of a Formerly Used Defense Site within the tract",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Presence of a Formerly Used Defense Site within the tract"
   },
   "explore.map.page.side.panel.indicator.description.heartDisease": {
     "defaultMessage": "People ages 18 years and older who have been told they have heart disease",
@@ -649,19 +661,23 @@
   },
   "explore.map.page.side.panel.indicator.exp.ag.loss": {
     "defaultMessage": "Expected agriculture loss rate",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show agriculture loss rate\n"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show agriculture loss rate"
   },
   "explore.map.page.side.panel.indicator.exp.bld.loss": {
     "defaultMessage": "Expected building loss rate",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show building loss rate\n"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show building loss rate"
   },
   "explore.map.page.side.panel.indicator.exp.pop.loss": {
     "defaultMessage": "Expected population loss rate",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show population loss rate\n"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show population loss rate"
   },
   "explore.map.page.side.panel.indicator.flooding": {
     "defaultMessage": "Future flood risk",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show flood risk\n"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show flood risk"
+  },
+  "explore.map.page.side.panel.indicator.former.def.sites": {
+    "defaultMessage": "Formerly Used Defense Sites (FUDS)",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Formerly Used Defense Sites (FUDS)"
   },
   "explore.map.page.side.panel.indicator.heartDisease": {
     "defaultMessage": "Heart disease",
@@ -669,7 +685,7 @@
   },
   "explore.map.page.side.panel.indicator.high.ed": {
     "defaultMessage": "Higher education non-enrollment",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Higher ed degree achievement rate\n"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Higher ed degree achievement rate"
   },
   "explore.map.page.side.panel.indicator.high.school": {
     "defaultMessage": "High school degree non-attainment",
@@ -821,7 +837,7 @@
   },
   "explore.map.page.side.panel.indicator.wildfire": {
     "defaultMessage": "Future wildfire risk",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show wildfire risk\n"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show wildfire risk"
   },
   "explore.map.page.side.panel.info.alt.text.icon1": {
     "defaultMessage": "An icon that has depicts pieces of a block selected mimicking the census block census tracts",

@@ -468,32 +468,27 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
   EXP_AG_LOSS: {
     id: 'explore.map.page.side.panel.indicator.exp.ag.loss',
     defaultMessage: 'Expected agriculture loss rate',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show agriculture loss rate
-`,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show agriculture loss rate`,
   },
   EXP_BLD_LOSS: {
     id: 'explore.map.page.side.panel.indicator.exp.bld.loss',
     defaultMessage: 'Expected building loss rate',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show building loss rate
-`,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show building loss rate`,
   },
   EXP_POP_LOSS: {
     id: 'explore.map.page.side.panel.indicator.exp.pop.loss',
     defaultMessage: 'Expected population loss rate',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show population loss rate
-`,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show population loss rate`,
   },
   FLOODING: {
     id: 'explore.map.page.side.panel.indicator.flooding',
     defaultMessage: 'Future flood risk',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show flood risk
-`,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show flood risk`,
   },
   WILDFIRE: {
     id: 'explore.map.page.side.panel.indicator.wildfire',
     defaultMessage: 'Future wildfire risk',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show wildfire risk
-`,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show wildfire risk`,
   },
   LOW_INCOME: {
     id: 'explore.map.page.side.panel.indicator.low.income',
@@ -502,8 +497,7 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
   HIGH_ED: {
     id: 'explore.map.page.side.panel.indicator.high.ed',
     defaultMessage: 'Higher education non-enrollment',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Higher ed degree achievement rate
-`,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Higher ed degree achievement rate`,
   },
   ENERGY_BURDEN: {
     id: 'explore.map.page.side.panel.indicator.energyBurden',
@@ -559,6 +553,16 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
     id: 'explore.map.page.side.panel.indicator.lack.plumbing',
     defaultMessage: 'Lack of plumbing',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Lack of plumbing`,
+  },
+  ABANDON_MINES: {
+    id: 'explore.map.page.side.panel.indicator.abandon.mines',
+    defaultMessage: 'Abandoned land mines',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Abandoned land mines`,
+  },
+  FORMER_DEF_SITES: {
+    id: 'explore.map.page.side.panel.indicator.former.def.sites',
+    defaultMessage: 'Formerly Used Defense Sites (FUDS)',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Formerly Used Defense Sites (FUDS)`,
   },
   PROX_HAZ: {
     id: 'explore.map.page.side.panel.indicator.prox.haz',
@@ -790,6 +794,16 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of homes without indoor kitchens or plumbing`,
   },
 
+  ABANDON_MINES: {
+    id: 'explore.map.page.side.panel.indicator.description.abandon.mines',
+    defaultMessage: 'Presence of an abandoned land mine within the tract',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Presence of an abandoned land mine within the tract`,
+  },
+  FORMER_DEF_SITES: {
+    id: 'explore.map.page.side.panel.indicator.description.former.def.sites',
+    defaultMessage: 'Presence of a Formerly Used Defense Site within the tract',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Presence of a Formerly Used Defense Site within the tract`,
+  },
   PROX_HAZ: {
     id: 'explore.map.page.side.panel.indicator.description.prox.haz',
     defaultMessage: 'Count of hazardous waste facilities within 5 kilometers',

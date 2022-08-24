@@ -1,7 +1,7 @@
 /* eslint-disable quotes */
 // External Libs:
 import React from 'react';
-import {useIntl} from 'gatsby-plugin-intl';
+import {MessageDescriptor, useIntl} from 'gatsby-plugin-intl';
 import {Accordion, Button} from '@trussworks/react-uswds';
 
 // Components:
@@ -80,21 +80,28 @@ export interface ICategory {
  * This filter will remove indicators from appearing in the side panel. There are a few cases:
  *
  * 1. For Historic underinvestment if the value is not true/false
- * 2. For Abandoned land mines if the value isn't true // Todo: add this
- * 3. For FUDS if the value isn't true // Todo: add this
+ * 2. For Abandoned land mines if the value isn't true
+ * 3. For FUDS if the value isn't true
  *
- * @param {indicatorInfo} indicator
+ * This function will return filter function (classic currying)
+ *
+ * @param {MessageDescriptor} label - allows to re-use this filter for all 3 indicators above
  * @return {indicatorInfo}
  */
-export const IndicatorFilter = (indicator:indicatorInfo) => {
+export const indicatorFilter = (label:MessageDescriptor) => {
   const intl = useIntl();
 
-  return (
-    (indicator.label !==
-      intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HIST_UNDERINVEST)) ||
+  return (indicator:indicatorInfo) => (
     (
-      indicator.label == intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HIST_UNDERINVEST) &&
-      (indicator.value == true || indicator.value == false)
+      indicator.label !== intl.formatMessage(label) ||
+      (
+        indicator.label == intl.formatMessage(label) &&
+        (
+          indicator.type === 'showFullBoolean' ?
+          (indicator.value == true || indicator.value == false) :
+          indicator.value == true
+        )
+      )
     )
   );
 };
@@ -406,6 +413,36 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
       properties[constants.IS_EXCEEDS_THRESH_FOR_LEAD_PAINT_AND_MEDIAN_HOME_VAL] : null,
   };
 
+  const abandonMines: indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.ABANDON_MINES),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.ABANDON_MINES),
+    type: 'showTrueBoolean',
+
+    // Todo: remove internal conditional once BE is fixed:
+    value: properties.hasOwnProperty(constants.ABANDON_LAND_MINES) ?
+      (properties[constants.ABANDON_LAND_MINES] === "1" ? true : false) :
+      null,
+
+    // Todo: remove second check after BE is fixed:
+    isDisadvagtaged: properties.hasOwnProperty(constants.ABANDON_LAND_MINES) &&
+    properties[constants.ABANDON_LAND_MINES] === "1" ?
+      true : false,
+  };
+  const formerDefSites: indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.FORMER_DEF_SITES),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.FORMER_DEF_SITES),
+    type: 'showTrueBoolean',
+
+    // Todo: remove internal conditional once BE is fixed:
+    value: properties.hasOwnProperty(constants.FORMER_DEF_SITES) ?
+      (properties[constants.FORMER_DEF_SITES] === "1" ? true : false) :
+      null,
+
+    // Todo: remove second check after BE is fixed:
+    isDisadvagtaged: properties.hasOwnProperty(constants.FORMER_DEF_SITES) &&
+    properties[constants.FORMER_DEF_SITES] === "1" ?
+      true : false,
+  };
   const proxHaz: indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.PROX_HAZ),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.PROX_HAZ),
@@ -587,7 +624,7 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
     {
       id: 'leg-pollute',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.LEG_POLLUTE),
-      indicators: [proxHaz, proxNPL, proxRMP],
+      indicators: [abandonMines, formerDefSites, proxHaz, proxNPL, proxRMP],
       socioEcIndicators: [lowInc, higherEd],
       isDisadvagtaged: properties[constants.IS_POLLUTION_FACTOR_DISADVANTAGED_M] ?
         properties[constants.IS_POLLUTION_FACTOR_DISADVANTAGED_M] : null,
@@ -685,9 +722,11 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
           isBurdened={category.isExceed1MoreBurden}
         />
 
-        {/* Indicators - filter then map */}
+        {/* Indicators - filters then map */}
         {category.indicators
-            .filter(IndicatorFilter)
+            .filter(indicatorFilter(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HIST_UNDERINVEST))
+            .filter(indicatorFilter(EXPLORE_COPY.SIDE_PANEL_INDICATORS.ABANDON_MINES))
+            .filter(indicatorFilter(EXPLORE_COPY.SIDE_PANEL_INDICATORS.FORMER_DEF_SITES))
             .map((indicator: any, index: number) => {
               return <Indicator key={`ind${index}`} indicator={indicator} />;
             })}
