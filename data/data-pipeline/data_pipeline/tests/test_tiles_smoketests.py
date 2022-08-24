@@ -24,9 +24,10 @@ def tile_names_dictionary():
     return etl_constants.TILES_SCORE_COLUMNS
 
 
-@pytest.fixture
-def threshold_columns():
-    return
+def test_count_of_fips_codes(tiles_df, states_count=56):
+    assert (
+        tiles_df["GTF"].str[:2].nunique() == 56
+    ), "Some states are missing from tiles"
 
 
 # For each data point that we visualize, we want to confirm that
