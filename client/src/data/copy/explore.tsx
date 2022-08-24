@@ -331,6 +331,79 @@ export const SIDE_PANEL_CBG_INFO = defineMessages({
   },
 });
 
+export const SIDE_PANEL_DEMOGRAPHICS = {
+  TITLE: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.title'}
+    defaultMessage={'Tract demographics'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demograhics title`}
+  />,
+  RACE_TITLE: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.race.title'}
+    defaultMessage={'Race / Ethnicity'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demograhics race title`}
+  />,
+  AGE_TITLE: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.age.title'}
+    defaultMessage={'Age'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demograhics age title`}
+  />,
+  DEMO_NON_HISPANIC_WHITE: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.white'}
+    defaultMessage={'White'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: White`}
+  />,
+  DEMO_BLACK: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.black'}
+    defaultMessage={'Black or African American'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Black`}
+  />,
+  DEMO_AMERICAN_INDIAN: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.american.indian'}
+    defaultMessage={'American Indian and Alaska Native'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: American Indian and Alaska Native`}
+  />,
+  DEMO_ASIAN: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.asian'}
+    defaultMessage={'Asian'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Asian`}
+  />,
+  DEMO_HAWAIIAN: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.hawaiian'}
+    defaultMessage={'Native Hawiian or Pacific Islander'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Native Hawiian or Pacific Islander`}
+  />,
+  DEMO_OTHER_RACE: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.other'}
+    defaultMessage={'Other'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Other`}
+  />,
+  DEMO_TWO_OR_MORE_RACES: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.two.or.more'}
+    defaultMessage={'Two or more races'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Two or more races`}
+  />,
+  DEMO_HISPANIC: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.hispanic'}
+    defaultMessage={'Hispanic or Latino'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Hispanic or Latino`}
+  />,
+  DEMO_AGE_UNDER_10: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.age.under.10'}
+    defaultMessage={'Children under 10'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Children under 10`}
+  />,
+  DEMO_AGE_MID: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.of.age.mid'}
+    defaultMessage={'Ages 10 - 64'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Ages 10 - 64`}
+  />,
+  DEMO_AGE_OVER_64: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.age.over.64'}
+    defaultMessage={'Elderly over 64'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Elderly over 64`}
+  />,
+};
+
 export const SIDE_PANEL_TRIBAL_INFO = defineMessages({
   LAND_AREA_NAME: {
     id: 'explore.map.page.side.panel.tribalInfo.landAreaName',

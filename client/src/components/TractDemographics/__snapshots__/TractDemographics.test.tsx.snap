@@ -147,3 +147,595 @@ exports[`rendering of TractDemographics Component checks if component renders 1`
   </div>
 </DocumentFragment>
 `;
+
+exports[`rendering of TractDemographics component does it render American Samoa correctly?  1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      Tract demographics
+    </div>
+    <h6>
+      Race / Ethnicity
+      <span>
+        (
+        <button
+          aria-controls="race-panel"
+          aria-expanded="false"
+          id="race-header"
+          tabindex="0"
+        >
+          show
+        </button>
+        <img
+          alt="expand icon"
+          src="test-file-stub"
+        />
+        )
+      </span>
+    </h6>
+    <section
+      aria-labelledby="race-header"
+      hidden=""
+      id="race-panel"
+    >
+      <div>
+        <span>
+          White
+        </span>
+        <span>
+          --
+        </span>
+      </div>
+      <div>
+        <span>
+          Black or African American
+        </span>
+        <span>
+          --
+        </span>
+      </div>
+      <div>
+        <span>
+          American Indian and Alaska Native
+        </span>
+        <span>
+          --
+        </span>
+      </div>
+      <div>
+        <span>
+          Asian
+        </span>
+        <span>
+          --
+        </span>
+      </div>
+      <div>
+        <span>
+          Native Hawiian or Pacific Islander
+        </span>
+        <span>
+          --
+        </span>
+      </div>
+      <div>
+        <span>
+          Other
+        </span>
+        <span>
+          --
+        </span>
+      </div>
+      <div>
+        <span>
+          Two or more races
+        </span>
+        <span>
+          --
+        </span>
+      </div>
+      <div>
+        <span>
+          Hispanic or Latino
+        </span>
+        <span>
+          --
+        </span>
+      </div>
+    </section>
+    <h6>
+      Age
+      <span>
+        (
+        <button
+          aria-controls="age-panel"
+          aria-expanded="false"
+          id="age-header"
+          tabindex="0"
+        >
+          show
+        </button>
+        <img
+          alt="expand icon"
+          src="test-file-stub"
+        />
+        )
+      </span>
+    </h6>
+    <section
+      aria-labelledby="age-header"
+      hidden=""
+      id="age-panel"
+    >
+      <div>
+        <span>
+          Children under 10
+        </span>
+        <span>
+          --
+        </span>
+      </div>
+      <div>
+        <span>
+          Ages 10 - 64
+        </span>
+        <span>
+          --
+        </span>
+      </div>
+      <div>
+        <span>
+          Elderly over 64
+        </span>
+        <span>
+          --
+        </span>
+      </div>
+    </section>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractDemographics component does it render a tract in Alaska correctly?  1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      Tract demographics
+    </div>
+    <h6>
+      Race / Ethnicity
+      <span>
+        (
+        <button
+          aria-controls="race-panel"
+          aria-expanded="false"
+          id="race-header"
+          tabindex="0"
+        >
+          show
+        </button>
+        <img
+          alt="expand icon"
+          src="test-file-stub"
+        />
+        )
+      </span>
+    </h6>
+    <section
+      aria-labelledby="race-header"
+      hidden=""
+      id="race-panel"
+    >
+      <div>
+        <span>
+          White
+        </span>
+        <span>
+          15%
+        </span>
+      </div>
+      <div>
+        <span>
+          Black or African American
+        </span>
+        <span>
+          0%
+        </span>
+      </div>
+      <div>
+        <span>
+          American Indian and Alaska Native
+        </span>
+        <span>
+          78%
+        </span>
+      </div>
+      <div>
+        <span>
+          Asian
+        </span>
+        <span>
+          0%
+        </span>
+      </div>
+      <div>
+        <span>
+          Native Hawiian or Pacific Islander
+        </span>
+        <span>
+          0%
+        </span>
+      </div>
+      <div>
+        <span>
+          Other
+        </span>
+        <span>
+          0%
+        </span>
+      </div>
+      <div>
+        <span>
+          Two or more races
+        </span>
+        <span>
+          3%
+        </span>
+      </div>
+      <div>
+        <span>
+          Hispanic or Latino
+        </span>
+        <span>
+          2%
+        </span>
+      </div>
+    </section>
+    <h6>
+      Age
+      <span>
+        (
+        <button
+          aria-controls="age-panel"
+          aria-expanded="false"
+          id="age-header"
+          tabindex="0"
+        >
+          show
+        </button>
+        <img
+          alt="expand icon"
+          src="test-file-stub"
+        />
+        )
+      </span>
+    </h6>
+    <section
+      aria-labelledby="age-header"
+      hidden=""
+      id="age-panel"
+    >
+      <div>
+        <span>
+          Children under 10
+        </span>
+        <span>
+          17%
+        </span>
+      </div>
+      <div>
+        <span>
+          Ages 10 - 64
+        </span>
+        <span>
+          69%
+        </span>
+      </div>
+      <div>
+        <span>
+          Elderly over 64
+        </span>
+        <span>
+          12%
+        </span>
+      </div>
+    </section>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractDemographics component does it render a tract in American Samoa correctly?  1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      Tract demographics
+    </div>
+    <h6>
+      Race / Ethnicity
+      <span>
+        (
+        <button
+          aria-controls="race-panel"
+          aria-expanded="false"
+          id="race-header"
+          tabindex="0"
+        >
+          show
+        </button>
+        <img
+          alt="expand icon"
+          src="test-file-stub"
+        />
+        )
+      </span>
+    </h6>
+    <section
+      aria-labelledby="race-header"
+      hidden=""
+      id="race-panel"
+    >
+      <div>
+        <span>
+          White
+        </span>
+        <span>
+          --
+        </span>
+      </div>
+      <div>
+        <span>
+          Black or African American
+        </span>
+        <span>
+          --
+        </span>
+      </div>
+      <div>
+        <span>
+          American Indian and Alaska Native
+        </span>
+        <span>
+          --
+        </span>
+      </div>
+      <div>
+        <span>
+          Asian
+        </span>
+        <span>
+          --
+        </span>
+      </div>
+      <div>
+        <span>
+          Native Hawiian or Pacific Islander
+        </span>
+        <span>
+          --
+        </span>
+      </div>
+      <div>
+        <span>
+          Other
+        </span>
+        <span>
+          --
+        </span>
+      </div>
+      <div>
+        <span>
+          Two or more races
+        </span>
+        <span>
+          --
+        </span>
+      </div>
+      <div>
+        <span>
+          Hispanic or Latino
+        </span>
+        <span>
+          --
+        </span>
+      </div>
+    </section>
+    <h6>
+      Age
+      <span>
+        (
+        <button
+          aria-controls="age-panel"
+          aria-expanded="false"
+          id="age-header"
+          tabindex="0"
+        >
+          show
+        </button>
+        <img
+          alt="expand icon"
+          src="test-file-stub"
+        />
+        )
+      </span>
+    </h6>
+    <section
+      aria-labelledby="age-header"
+      hidden=""
+      id="age-panel"
+    >
+      <div>
+        <span>
+          Children under 10
+        </span>
+        <span>
+          --
+        </span>
+      </div>
+      <div>
+        <span>
+          Ages 10 - 64
+        </span>
+        <span>
+          --
+        </span>
+      </div>
+      <div>
+        <span>
+          Elderly over 64
+        </span>
+        <span>
+          --
+        </span>
+      </div>
+    </section>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractDemographics component does it render a tract in NYC correctly?  1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      Tract demographics
+    </div>
+    <h6>
+      Race / Ethnicity
+      <span>
+        (
+        <button
+          aria-controls="race-panel"
+          aria-expanded="false"
+          id="race-header"
+          tabindex="0"
+        >
+          show
+        </button>
+        <img
+          alt="expand icon"
+          src="test-file-stub"
+        />
+        )
+      </span>
+    </h6>
+    <section
+      aria-labelledby="race-header"
+      hidden=""
+      id="race-panel"
+    >
+      <div>
+        <span>
+          White
+        </span>
+        <span>
+          11%
+        </span>
+      </div>
+      <div>
+        <span>
+          Black or African American
+        </span>
+        <span>
+          22%
+        </span>
+      </div>
+      <div>
+        <span>
+          American Indian and Alaska Native
+        </span>
+        <span>
+          3%
+        </span>
+      </div>
+      <div>
+        <span>
+          Asian
+        </span>
+        <span>
+          9%
+        </span>
+      </div>
+      <div>
+        <span>
+          Native Hawiian or Pacific Islander
+        </span>
+        <span>
+          0%
+        </span>
+      </div>
+      <div>
+        <span>
+          Other
+        </span>
+        <span>
+          36%
+        </span>
+      </div>
+      <div>
+        <span>
+          Two or more races
+        </span>
+        <span>
+          10%
+        </span>
+      </div>
+      <div>
+        <span>
+          Hispanic or Latino
+        </span>
+        <span>
+          33%
+        </span>
+      </div>
+    </section>
+    <h6>
+      Age
+      <span>
+        (
+        <button
+          aria-controls="age-panel"
+          aria-expanded="false"
+          id="age-header"
+          tabindex="0"
+        >
+          show
+        </button>
+        <img
+          alt="expand icon"
+          src="test-file-stub"
+        />
+        )
+      </span>
+    </h6>
+    <section
+      aria-labelledby="age-header"
+      hidden=""
+      id="age-panel"
+    >
+      <div>
+        <span>
+          Children under 10
+        </span>
+        <span>
+          13%
+        </span>
+      </div>
+      <div>
+        <span>
+          Ages 10 - 64
+        </span>
+        <span>
+          80%
+        </span>
+      </div>
+      <div>
+        <span>
+          Elderly over 64
+        </span>
+        <span>
+          6%
+        </span>
+      </div>
+    </section>
+  </div>
+</DocumentFragment>
+`;

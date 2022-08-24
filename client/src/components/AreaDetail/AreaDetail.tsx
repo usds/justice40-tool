@@ -767,7 +767,7 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
             />
 
             {/* Demographics */}
-            <TractDemographics />
+            <TractDemographics properties={properties}/>
 
             {/* Disadvantaged? */}
             <div className={styles.categorization}>

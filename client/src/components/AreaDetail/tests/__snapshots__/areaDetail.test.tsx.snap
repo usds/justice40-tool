@@ -77,15 +77,15 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = false does 
             White
           </span>
           <span>
-            61.4%
+            --
           </span>
         </div>
         <div>
           <span>
-            Black or African Americon
+            Black or African American
           </span>
           <span>
-            10.3%
+            --
           </span>
         </div>
         <div>
@@ -93,7 +93,7 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = false does 
             American Indian and Alaska Native
           </span>
           <span>
-            10.3%
+            --
           </span>
         </div>
         <div>
@@ -101,7 +101,7 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = false does 
             Asian
           </span>
           <span>
-            7.2%
+            --
           </span>
         </div>
         <div>
@@ -109,7 +109,7 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = false does 
             Native Hawiian or Pacific Islander
           </span>
           <span>
-            4.2%
+            --
           </span>
         </div>
         <div>
@@ -117,7 +117,7 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = false does 
             Other
           </span>
           <span>
-            2.5%
+            --
           </span>
         </div>
         <div>
@@ -125,7 +125,7 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = false does 
             Two or more races
           </span>
           <span>
-            6.7%
+            --
           </span>
         </div>
         <div>
@@ -133,7 +133,7 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = false does 
             Hispanic or Latino
           </span>
           <span>
-            10.4%
+            --
           </span>
         </div>
       </section>
@@ -166,7 +166,7 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = false does 
             Children under 10
           </span>
           <span>
-            1.4%
+            --
           </span>
         </div>
         <div>
@@ -174,15 +174,15 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = false does 
             Ages 10 - 64
           </span>
           <span>
-            80.3%
+            --
           </span>
         </div>
         <div>
           <span>
-            Elderly over 65
+            Elderly over 64
           </span>
           <span>
-            7.2%
+            --
           </span>
         </div>
       </section>
@@ -2139,15 +2139,15 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = null does n
             White
           </span>
           <span>
-            61.4%
+            --
           </span>
         </div>
         <div>
           <span>
-            Black or African Americon
+            Black or African American
           </span>
           <span>
-            10.3%
+            --
           </span>
         </div>
         <div>
@@ -2155,7 +2155,7 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = null does n
             American Indian and Alaska Native
           </span>
           <span>
-            10.3%
+            --
           </span>
         </div>
         <div>
@@ -2163,7 +2163,7 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = null does n
             Asian
           </span>
           <span>
-            7.2%
+            --
           </span>
         </div>
         <div>
@@ -2171,7 +2171,7 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = null does n
             Native Hawiian or Pacific Islander
           </span>
           <span>
-            4.2%
+            --
           </span>
         </div>
         <div>
@@ -2179,7 +2179,7 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = null does n
             Other
           </span>
           <span>
-            2.5%
+            --
           </span>
         </div>
         <div>
@@ -2187,7 +2187,7 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = null does n
             Two or more races
           </span>
           <span>
-            6.7%
+            --
           </span>
         </div>
         <div>
@@ -2195,7 +2195,7 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = null does n
             Hispanic or Latino
           </span>
           <span>
-            10.4%
+            --
           </span>
         </div>
       </section>
@@ -2228,7 +2228,7 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = null does n
             Children under 10
           </span>
           <span>
-            1.4%
+            --
           </span>
         </div>
         <div>
@@ -2236,15 +2236,15 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = null does n
             Ages 10 - 64
           </span>
           <span>
-            80.3%
+            --
           </span>
         </div>
         <div>
           <span>
-            Elderly over 65
+            Elderly over 64
           </span>
           <span>
-            7.2%
+            --
           </span>
         </div>
       </section>
@@ -4201,15 +4201,15 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = true render
             White
           </span>
           <span>
-            61.4%
+            --
           </span>
         </div>
         <div>
           <span>
-            Black or African Americon
+            Black or African American
           </span>
           <span>
-            10.3%
+            --
           </span>
         </div>
         <div>
@@ -4217,7 +4217,7 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = true render
             American Indian and Alaska Native
           </span>
           <span>
-            10.3%
+            --
           </span>
         </div>
         <div>
@@ -4225,7 +4225,7 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = true render
             Asian
           </span>
           <span>
-            7.2%
+            --
           </span>
         </div>
         <div>
@@ -4233,7 +4233,7 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = true render
             Native Hawiian or Pacific Islander
           </span>
           <span>
-            4.2%
+            --
           </span>
         </div>
         <div>
@@ -4241,7 +4241,7 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = true render
             Other
           </span>
           <span>
-            2.5%
+            --
           </span>
         </div>
         <div>
@@ -4249,7 +4249,7 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = true render
             Two or more races
           </span>
           <span>
-            6.7%
+            --
           </span>
         </div>
         <div>
@@ -4257,7 +4257,7 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = true render
             Hispanic or Latino
           </span>
           <span>
-            10.4%
+            --
           </span>
         </div>
       </section>
@@ -4290,7 +4290,7 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = true render
             Children under 10
           </span>
           <span>
-            1.4%
+            --
           </span>
         </div>
         <div>
@@ -4298,15 +4298,15 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = true render
             Ages 10 - 64
           </span>
           <span>
-            80.3%
+            --
           </span>
         </div>
         <div>
           <span>
-            Elderly over 65
+            Elderly over 64
           </span>
           <span>
-            7.2%
+            --
           </span>
         </div>
       </section>
@@ -6283,15 +6283,15 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
             White
           </span>
           <span>
-            61.4%
+            --
           </span>
         </div>
         <div>
           <span>
-            Black or African Americon
+            Black or African American
           </span>
           <span>
-            10.3%
+            --
           </span>
         </div>
         <div>
@@ -6299,7 +6299,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
             American Indian and Alaska Native
           </span>
           <span>
-            10.3%
+            --
           </span>
         </div>
         <div>
@@ -6307,7 +6307,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
             Asian
           </span>
           <span>
-            7.2%
+            --
           </span>
         </div>
         <div>
@@ -6315,7 +6315,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
             Native Hawiian or Pacific Islander
           </span>
           <span>
-            4.2%
+            --
           </span>
         </div>
         <div>
@@ -6323,7 +6323,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
             Other
           </span>
           <span>
-            2.5%
+            --
           </span>
         </div>
         <div>
@@ -6331,7 +6331,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
             Two or more races
           </span>
           <span>
-            6.7%
+            --
           </span>
         </div>
         <div>
@@ -6339,7 +6339,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
             Hispanic or Latino
           </span>
           <span>
-            10.4%
+            --
           </span>
         </div>
       </section>
@@ -6372,7 +6372,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
             Children under 10
           </span>
           <span>
-            1.4%
+            --
           </span>
         </div>
         <div>
@@ -6380,15 +6380,15 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
             Ages 10 - 64
           </span>
           <span>
-            80.3%
+            --
           </span>
         </div>
         <div>
           <span>
-            Elderly over 65
+            Elderly over 64
           </span>
           <span>
-            7.2%
+            --
           </span>
         </div>
       </section>
@@ -6792,15 +6792,15 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             White
           </span>
           <span>
-            61.4%
+            --
           </span>
         </div>
         <div>
           <span>
-            Black or African Americon
+            Black or African American
           </span>
           <span>
-            10.3%
+            --
           </span>
         </div>
         <div>
@@ -6808,7 +6808,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             American Indian and Alaska Native
           </span>
           <span>
-            10.3%
+            --
           </span>
         </div>
         <div>
@@ -6816,7 +6816,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             Asian
           </span>
           <span>
-            7.2%
+            --
           </span>
         </div>
         <div>
@@ -6824,7 +6824,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             Native Hawiian or Pacific Islander
           </span>
           <span>
-            4.2%
+            --
           </span>
         </div>
         <div>
@@ -6832,7 +6832,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             Other
           </span>
           <span>
-            2.5%
+            --
           </span>
         </div>
         <div>
@@ -6840,7 +6840,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             Two or more races
           </span>
           <span>
-            6.7%
+            --
           </span>
         </div>
         <div>
@@ -6848,7 +6848,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             Hispanic or Latino
           </span>
           <span>
-            10.4%
+            --
           </span>
         </div>
       </section>
@@ -6881,7 +6881,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             Children under 10
           </span>
           <span>
-            1.4%
+            --
           </span>
         </div>
         <div>
@@ -6889,15 +6889,15 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             Ages 10 - 64
           </span>
           <span>
-            80.3%
+            --
           </span>
         </div>
         <div>
           <span>
-            Elderly over 65
+            Elderly over 64
           </span>
           <span>
-            7.2%
+            --
           </span>
         </div>
       </section>
@@ -8854,15 +8854,15 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
             White
           </span>
           <span>
-            61.4%
+            --
           </span>
         </div>
         <div>
           <span>
-            Black or African Americon
+            Black or African American
           </span>
           <span>
-            10.3%
+            --
           </span>
         </div>
         <div>
@@ -8870,7 +8870,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
             American Indian and Alaska Native
           </span>
           <span>
-            10.3%
+            --
           </span>
         </div>
         <div>
@@ -8878,7 +8878,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
             Asian
           </span>
           <span>
-            7.2%
+            --
           </span>
         </div>
         <div>
@@ -8886,7 +8886,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
             Native Hawiian or Pacific Islander
           </span>
           <span>
-            4.2%
+            --
           </span>
         </div>
         <div>
@@ -8894,7 +8894,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
             Other
           </span>
           <span>
-            2.5%
+            --
           </span>
         </div>
         <div>
@@ -8902,7 +8902,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
             Two or more races
           </span>
           <span>
-            6.7%
+            --
           </span>
         </div>
         <div>
@@ -8910,7 +8910,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
             Hispanic or Latino
           </span>
           <span>
-            10.4%
+            --
           </span>
         </div>
       </section>
@@ -8943,7 +8943,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
             Children under 10
           </span>
           <span>
-            1.4%
+            --
           </span>
         </div>
         <div>
@@ -8951,15 +8951,15 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
             Ages 10 - 64
           </span>
           <span>
-            80.3%
+            --
           </span>
         </div>
         <div>
           <span>
-            Elderly over 65
+            Elderly over 64
           </span>
           <span>
-            7.2%
+            --
           </span>
         </div>
       </section>
@@ -9880,15 +9880,15 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             White
           </span>
           <span>
-            61.4%
+            --
           </span>
         </div>
         <div>
           <span>
-            Black or African Americon
+            Black or African American
           </span>
           <span>
-            10.3%
+            --
           </span>
         </div>
         <div>
@@ -9896,7 +9896,7 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             American Indian and Alaska Native
           </span>
           <span>
-            10.3%
+            --
           </span>
         </div>
         <div>
@@ -9904,7 +9904,7 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             Asian
           </span>
           <span>
-            7.2%
+            --
           </span>
         </div>
         <div>
@@ -9912,7 +9912,7 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             Native Hawiian or Pacific Islander
           </span>
           <span>
-            4.2%
+            --
           </span>
         </div>
         <div>
@@ -9920,7 +9920,7 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             Other
           </span>
           <span>
-            2.5%
+            --
           </span>
         </div>
         <div>
@@ -9928,7 +9928,7 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             Two or more races
           </span>
           <span>
-            6.7%
+            --
           </span>
         </div>
         <div>
@@ -9936,7 +9936,7 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             Hispanic or Latino
           </span>
           <span>
-            10.4%
+            --
           </span>
         </div>
       </section>
@@ -9969,7 +9969,7 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             Children under 10
           </span>
           <span>
-            1.4%
+            --
           </span>
         </div>
         <div>
@@ -9977,15 +9977,15 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             Ages 10 - 64
           </span>
           <span>
-            80.3%
+            --
           </span>
         </div>
         <div>
           <span>
-            Elderly over 65
+            Elderly over 64
           </span>
           <span>
-            7.2%
+            --
           </span>
         </div>
       </section>
@@ -11942,15 +11942,15 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             White
           </span>
           <span>
-            61.4%
+            --
           </span>
         </div>
         <div>
           <span>
-            Black or African Americon
+            Black or African American
           </span>
           <span>
-            10.3%
+            --
           </span>
         </div>
         <div>
@@ -11958,7 +11958,7 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             American Indian and Alaska Native
           </span>
           <span>
-            10.3%
+            --
           </span>
         </div>
         <div>
@@ -11966,7 +11966,7 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             Asian
           </span>
           <span>
-            7.2%
+            --
           </span>
         </div>
         <div>
@@ -11974,7 +11974,7 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             Native Hawiian or Pacific Islander
           </span>
           <span>
-            4.2%
+            --
           </span>
         </div>
         <div>
@@ -11982,7 +11982,7 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             Other
           </span>
           <span>
-            2.5%
+            --
           </span>
         </div>
         <div>
@@ -11990,7 +11990,7 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             Two or more races
           </span>
           <span>
-            6.7%
+            --
           </span>
         </div>
         <div>
@@ -11998,7 +11998,7 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             Hispanic or Latino
           </span>
           <span>
-            10.4%
+            --
           </span>
         </div>
       </section>
@@ -12031,7 +12031,7 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             Children under 10
           </span>
           <span>
-            1.4%
+            --
           </span>
         </div>
         <div>
@@ -12039,15 +12039,15 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             Ages 10 - 64
           </span>
           <span>
-            80.3%
+            --
           </span>
         </div>
         <div>
           <span>
-            Elderly over 65
+            Elderly over 64
           </span>
           <span>
-            7.2%
+            --
           </span>
         </div>
       </section>
@@ -14004,15 +14004,15 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             White
           </span>
           <span>
-            61.4%
+            --
           </span>
         </div>
         <div>
           <span>
-            Black or African Americon
+            Black or African American
           </span>
           <span>
-            10.3%
+            --
           </span>
         </div>
         <div>
@@ -14020,7 +14020,7 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             American Indian and Alaska Native
           </span>
           <span>
-            10.3%
+            --
           </span>
         </div>
         <div>
@@ -14028,7 +14028,7 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             Asian
           </span>
           <span>
-            7.2%
+            --
           </span>
         </div>
         <div>
@@ -14036,7 +14036,7 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             Native Hawiian or Pacific Islander
           </span>
           <span>
-            4.2%
+            --
           </span>
         </div>
         <div>
@@ -14044,7 +14044,7 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             Other
           </span>
           <span>
-            2.5%
+            --
           </span>
         </div>
         <div>
@@ -14052,7 +14052,7 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             Two or more races
           </span>
           <span>
-            6.7%
+            --
           </span>
         </div>
         <div>
@@ -14060,7 +14060,7 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             Hispanic or Latino
           </span>
           <span>
-            10.4%
+            --
           </span>
         </div>
       </section>
@@ -14093,7 +14093,7 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             Children under 10
           </span>
           <span>
-            1.4%
+            --
           </span>
         </div>
         <div>
@@ -14101,15 +14101,15 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
             Ages 10 - 64
           </span>
           <span>
-            80.3%
+            --
           </span>
         </div>
         <div>
           <span>
-            Elderly over 65
+            Elderly over 64
           </span>
           <span>
-            7.2%
+            --
           </span>
         </div>
       </section>
@@ -16086,15 +16086,15 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             White
           </span>
           <span>
-            61.4%
+            --
           </span>
         </div>
         <div>
           <span>
-            Black or African Americon
+            Black or African American
           </span>
           <span>
-            10.3%
+            --
           </span>
         </div>
         <div>
@@ -16102,7 +16102,7 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             American Indian and Alaska Native
           </span>
           <span>
-            10.3%
+            --
           </span>
         </div>
         <div>
@@ -16110,7 +16110,7 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             Asian
           </span>
           <span>
-            7.2%
+            --
           </span>
         </div>
         <div>
@@ -16118,7 +16118,7 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             Native Hawiian or Pacific Islander
           </span>
           <span>
-            4.2%
+            --
           </span>
         </div>
         <div>
@@ -16126,7 +16126,7 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             Other
           </span>
           <span>
-            2.5%
+            --
           </span>
         </div>
         <div>
@@ -16134,7 +16134,7 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             Two or more races
           </span>
           <span>
-            6.7%
+            --
           </span>
         </div>
         <div>
@@ -16142,7 +16142,7 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             Hispanic or Latino
           </span>
           <span>
-            10.4%
+            --
           </span>
         </div>
       </section>
@@ -16175,7 +16175,7 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             Children under 10
           </span>
           <span>
-            1.4%
+            --
           </span>
         </div>
         <div>
@@ -16183,15 +16183,15 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             Ages 10 - 64
           </span>
           <span>
-            80.3%
+            --
           </span>
         </div>
         <div>
           <span>
-            Elderly over 65
+            Elderly over 64
           </span>
           <span>
-            7.2%
+            --
           </span>
         </div>
       </section>
@@ -18168,15 +18168,15 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             White
           </span>
           <span>
-            61.4%
+            --
           </span>
         </div>
         <div>
           <span>
-            Black or African Americon
+            Black or African American
           </span>
           <span>
-            10.3%
+            --
           </span>
         </div>
         <div>
@@ -18184,7 +18184,7 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             American Indian and Alaska Native
           </span>
           <span>
-            10.3%
+            --
           </span>
         </div>
         <div>
@@ -18192,7 +18192,7 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             Asian
           </span>
           <span>
-            7.2%
+            --
           </span>
         </div>
         <div>
@@ -18200,7 +18200,7 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             Native Hawiian or Pacific Islander
           </span>
           <span>
-            4.2%
+            --
           </span>
         </div>
         <div>
@@ -18208,7 +18208,7 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             Other
           </span>
           <span>
-            2.5%
+            --
           </span>
         </div>
         <div>
@@ -18216,7 +18216,7 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             Two or more races
           </span>
           <span>
-            6.7%
+            --
           </span>
         </div>
         <div>
@@ -18224,7 +18224,7 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             Hispanic or Latino
           </span>
           <span>
-            10.4%
+            --
           </span>
         </div>
       </section>
@@ -18257,7 +18257,7 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             Children under 10
           </span>
           <span>
-            1.4%
+            --
           </span>
         </div>
         <div>
@@ -18265,15 +18265,15 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             Ages 10 - 64
           </span>
           <span>
-            80.3%
+            --
           </span>
         </div>
         <div>
           <span>
-            Elderly over 65
+            Elderly over 64
           </span>
           <span>
-            7.2%
+            --
           </span>
         </div>
       </section>
@@ -20230,15 +20230,15 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             White
           </span>
           <span>
-            61.4%
+            --
           </span>
         </div>
         <div>
           <span>
-            Black or African Americon
+            Black or African American
           </span>
           <span>
-            10.3%
+            --
           </span>
         </div>
         <div>
@@ -20246,7 +20246,7 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             American Indian and Alaska Native
           </span>
           <span>
-            10.3%
+            --
           </span>
         </div>
         <div>
@@ -20254,7 +20254,7 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             Asian
           </span>
           <span>
-            7.2%
+            --
           </span>
         </div>
         <div>
@@ -20262,7 +20262,7 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             Native Hawiian or Pacific Islander
           </span>
           <span>
-            4.2%
+            --
           </span>
         </div>
         <div>
@@ -20270,7 +20270,7 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             Other
           </span>
           <span>
-            2.5%
+            --
           </span>
         </div>
         <div>
@@ -20278,7 +20278,7 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             Two or more races
           </span>
           <span>
-            6.7%
+            --
           </span>
         </div>
         <div>
@@ -20286,7 +20286,7 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             Hispanic or Latino
           </span>
           <span>
-            10.4%
+            --
           </span>
         </div>
       </section>
@@ -20319,7 +20319,7 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             Children under 10
           </span>
           <span>
-            1.4%
+            --
           </span>
         </div>
         <div>
@@ -20327,15 +20327,15 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
             Ages 10 - 64
           </span>
           <span>
-            80.3%
+            --
           </span>
         </div>
         <div>
           <span>
-            Elderly over 65
+            Elderly over 64
           </span>
           <span>
-            7.2%
+            --
           </span>
         </div>
       </section>

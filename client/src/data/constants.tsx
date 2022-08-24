@@ -38,6 +38,20 @@ export const COUNTY_NAME = 'CF';
 export const STATE_NAME = 'SF';
 export const TOTAL_POPULATION = 'TPF';
 
+
+// Demographics
+export const DEMO_NON_HISPANIC_WHITE = 'DM_W';
+export const DEMO_BLACK = 'DM_B';
+export const DEMO_AMERICAN_INDIAN = 'DM_AI';
+export const DEMO_ASIAN = 'DM_A';
+export const DEMO_HAWAIIAN = 'DM_HI';
+export const DEMO_OTHER_RACE = 'DM_O';
+export const DEMO_TWO_OR_MORE_RACES = 'DM_T';
+export const DEMO_HISPANIC = 'DM_H';
+export const DEMO_AGE_UNDER_10 = 'AGE_10';
+export const DEMO_AGE_MID = 'AGE_MIDDLE';
+export const DEMO_AGE_OVER_64 = 'AGE_OLD';
+
 /**
  * The SCORE_BOUNDAY_THRESHOLD will determine if the tract is disadvantaged
  * or not. Currently all values are railed to 0 or 1. If the
