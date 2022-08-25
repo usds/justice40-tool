@@ -3,7 +3,7 @@ from dataclasses import dataclass
 import data_pipeline.score.field_names as field_names
 from data_pipeline.utils import get_module_logger
 from data_pipeline.score.score_narwhal import ScoreNarwhal
-from .score_fixtures import final_score_df  # pylint: disable=unused-import
+from .fixtures import final_score_df  # pylint: disable=unused-import
 
 logger = get_module_logger(__name__)
 

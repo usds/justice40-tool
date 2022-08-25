@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from typing import List
 import pandas as pd
 import data_pipeline.score.field_names as field_names
-from .score_fixtures import final_score_df  # pylint: disable=unused-import
+from .fixtures import final_score_df  # pylint: disable=unused-import
 
 
 def _helper_test_count_exceeding_threshold(df, col, error_check=1000):
