@@ -69,7 +69,6 @@ def test_percentile_columns(final_score_df):
         field_names.EXPECTED_AGRICULTURAL_LOSS_EXCEEDS_PCTILE_THRESHOLD,
         ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD,
     )
-
     building_loss = PercentileTestConfig(
         field_names.EXPECTED_BUILDING_LOSS_RATE_FIELD,
         field_names.EXPECTED_BUILDING_LOSS_EXCEEDS_PCTILE_THRESHOLD,
@@ -102,6 +101,112 @@ def test_percentile_columns(final_score_df):
         ScoreNarwhal.SCORE_THRESHOLD_DONUT,
         percentile_column_need_suffix=False,
     )
+    diesel = PercentileTestConfig(
+        field_names.DIESEL_FIELD,
+        field_names.DIESEL_EXCEEDS_PCTILE_THRESHOLD,
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD,
+    )
+    dot_burden = PercentileTestConfig(
+        field_names.DOT_TRAVEL_BURDEN_FIELD,
+        field_names.DOT_BURDEN_PCTILE_THRESHOLD,
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD,
+    )
+    traffic_proximity = PercentileTestConfig(
+        field_names.TRAFFIC_FIELD,
+        field_names.TRAFFIC_PROXIMITY_PCTILE_THRESHOLD,
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD
+    )
+    energy_burden = PercentileTestConfig(
+        field_names.ENERGY_BURDEN_FIELD,
+        field_names.ENERGY_BURDEN_EXCEEDS_PCTILE_THRESHOLD,
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD,
+    )
+    pm25 = PercentileTestConfig(
+        field_names.PM25_FIELD,
+        field_names.PM25_EXCEEDS_PCTILE_THRESHOLD,
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD,
+    )
+    kitchen_plumbing = PercentileTestConfig(
+        field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_FIELD,
+        field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_PCTILE_THRESHOLD,
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD,
+    )
+    # Leadpaint is handled below in a separate method
+    housing = PercentileTestConfig(
+        field_names.HOUSING_BURDEN_FIELD,
+        field_names.HOUSING_BURDEN_PCTILE_THRESHOLD,
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD
+    )
+    non_natural_space = PercentileTestConfig(
+        field_names.TRACT_PERCENT_NON_NATURAL_FIELD_NAME,
+        field_names.NON_NATURAL_PCTILE_THRESHOLD,
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD
+    )
+    rmp = PercentileTestConfig(
+        field_names.RMP_FIELD,
+        field_names.RMP_PCTILE_THRESHOLD,
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD,
+    )
+    npl = PercentileTestConfig(
+        field_names.NPL_FIELD,
+        field_names.NPL_PCTILE_THRESHOLD,
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD,
+    )
+    tsdf = PercentileTestConfig(
+        field_names.TSDF_FIELD,
+        field_names.TSDF_PCTILE_THRESHOLD,
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD
+    )
+    wastewater = PercentileTestConfig(
+        field_names.WASTEWATER_FIELD,
+        field_names.WASTEWATER_PCTILE_THRESHOLD,
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD,
+    )
+    ust = PercentileTestConfig(
+        field_names.UST_FIELD,
+        field_names.UST_PCTILE_THRESHOLD,
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD,
+    )
+    diabetes = PercentileTestConfig(
+        field_names.DIABETES_FIELD,
+        field_names.DIABETES_PCTILE_THRESHOLD,
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD
+    )
+    asthma = PercentileTestConfig(
+        field_names.ASTHMA_FIELD,
+        field_names.ASTHMA_PCTILE_THRESHOLD,
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD,
+    )
+    heart_disease = PercentileTestConfig(
+        field_names.HEART_DISEASE_FIELD,
+        field_names.HEART_DISEASE_PCTILE_THRESHOLD,
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD,
+    )
+    low_life_expectancy = PercentileTestConfig(
+        field_names.LOW_LIFE_EXPECTANCY_FIELD,
+        field_names.LOW_LIFE_EXPECTANCY_PCTILE_THRESHOLD,
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD,
+    )
+    unemployment = PercentileTestConfig(
+        field_names.UNEMPLOYMENT_FIELD,
+        field_names.UNEMPLOYMENT_PCTILE_THRESHOLD,
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD,
+    )
+    low_median_income = PercentileTestConfig(
+        field_names.LOW_MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD,
+        field_names.LOW_MEDIAN_INCOME_PCTILE_THRESHOLD,
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD,
+    )
+    linguist_isolation = PercentileTestConfig(
+        field_names.LINGUISTIC_ISO_FIELD,
+        field_names.LINGUISTIC_ISOLATION_PCTILE_THRESHOLD,
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD
+    )
+    poverty = PercentileTestConfig(
+        field_names.POVERTY_LESS_THAN_100_FPL_FIELD,
+        field_names.POVERTY_PCTILE_THRESHOLD,
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD,
+    )
     errors = []
     for threshhold_config in (
         low_income,
@@ -113,6 +218,27 @@ def test_percentile_columns(final_score_df):
         low_high_school,
         donut_hole_income,
         donut_hole_adjacency,
+        dot_burden,
+        diesel,
+        traffic_proximity,
+        energy_burden,
+        pm25,
+        kitchen_plumbing,
+        housing,
+        non_natural_space,
+        rmp,
+        npl,
+        tsdf,
+        wastewater,
+        ust,
+        diabetes,
+        asthma,
+        heart_disease,
+        low_life_expectancy,
+        unemployment,
+        low_median_income,
+        linguist_isolation,
+        poverty,
     ):
         errors.extend(
             _check_percentile_against_threshold(
