@@ -153,6 +153,19 @@ class NationalRiskIndexETL(ExtractTransformLoad):
             lower=self.AGRIVALUE_LOWER_BOUND
         )
 
+        ## Check that this clip worked -- that the only place the value has changed is when the clip took effect
+        base_expectation = (
+            disaster_agriculture_sum_series
+            / df_nri[self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME]
+        )
+        assert (
+            df_nri[
+                df_nri[self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME]
+                != base_expectation
+            ][self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME].max()
+            < self.AGRIVALUE_LOWER_BOUND
+        )
+
         # This produces a boolean that is True in the case of non-zero agricultural value
         df_nri[self.CONTAINS_AGRIVALUE] = (
             df_nri[self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME] > 0
