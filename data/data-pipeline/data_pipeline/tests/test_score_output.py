@@ -1,22 +1,12 @@
-from pathlib import Path
-from typing import final
-import pandas as pd
+# flake8: noqa: W0613,W0611,F811
 import pytest
 import data_pipeline.score.field_names as field_names
 from data_pipeline.utils import get_module_logger
-from data_pipeline.config import settings
 from data_pipeline.score.score_narwhal import ScoreNarwhal
+from .score_fixtures import final_score_df  # pylint: disable=unused-import
+
 
 logger = get_module_logger(__name__)
-
-
-# this is so slow?
-@pytest.fixture
-def final_score_df():
-    return pd.read_csv(
-        settings.APP_ROOT / "data" / "score" / "csv" / "full" / "usa.csv",
-        dtype={field_names.GEOID_TRACT_FIELD: str},
-    )
 
 
 # when should things be fixtures??
@@ -33,9 +23,7 @@ def climate_thresholds():
 
 @pytest.fixture
 def environmental_burden_threshold():
-    # well this is bad practice
-    narwhal_params = ScoreNarwhal(pd.DataFrame())
-    return narwhal_params.ENVIRONMENTAL_BURDEN_THRESHOLD
+    return ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD
 
 
 @pytest.fixture
