@@ -1,20 +1,14 @@
-from ast import PyCF_TYPE_COMMENTS
-from asyncio import constants
-from pathlib import Path
 import pandas as pd
 import pytest
-from data_pipeline import tile
-import data_pipeline.score.field_names as field_names
 from data_pipeline.utils import get_module_logger
 from data_pipeline.config import settings
-from data_pipeline.etl.score import constants
 
 logger = get_module_logger(__name__)
 
 """Tiles and data pipeline: The goal here is to smoke test correctness
 
- We should check for wrong variable ported over to the tiles by making sure the column name for each thing we want in usa.csv has the same value as 
-    the column name for the tiles csv. This is NOT the same as checking that the column has been renamed. Rather, this requires looking at the 
+ We should check for wrong variable ported over to the tiles by making sure the column name for each thing we want in usa.csv has the same value as
+    the column name for the tiles csv. This is NOT the same as checking that the column has been renamed. Rather, this requires looking at the
     methodology of the tool, seeing what should be represented, and ensuring that variable is indeed represented.
     -- I think we actually have to do a lot of this by hand and in QA
  Check for USVI and Guam in tiles
