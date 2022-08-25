@@ -28,25 +28,25 @@ class PercentileTestConfig:
 ### TODO: we need to blow this out for all eight categories
 def _check_percentile_against_threshold(df, config: PercentileTestConfig):
     """Note - for the purpose of testing, this fills with False"""
-    minimum_flagged = (
+    is_minimum_flagged_ok = (
         df[df[config.threshold_column_name].fillna(False)][
             config.full_percentile_column_name
         ].min()
         >= config.threshold
     )
 
-    maximum_not_flagged = (
+    is_maximum_not_flagged_ok = (
         df[~df[config.threshold_column_name].fillna(False)][
             config.full_percentile_column_name
         ].max()
         < config.threshold
     )
     errors = []
-    if not minimum_flagged:
+    if not is_minimum_flagged_ok:
         errors.append(
             f"For column {config.threshold_column_name}, there is someone flagged below {config.threshold} percentile!"
         )
-    if not maximum_not_flagged:
+    if not is_maximum_not_flagged_ok:
         errors.append(
             f"For column {config.threshold_column_name}, there is someone not flagged above {config.threshold} percentile!"
         )
@@ -100,7 +100,7 @@ def test_percentile_columns(final_score_df):
         (field_names.SCORE_N_COMMUNITIES + field_names.ADJACENCY_INDEX_SUFFIX),
         field_names.ADJACENT_TRACT_SCORE_ABOVE_DONUT_THRESHOLD,
         ScoreNarwhal.SCORE_THRESHOLD_DONUT,
-        False,
+        percentile_column_need_suffix=False,
     )
     errors = []
     for threshhold_config in (
