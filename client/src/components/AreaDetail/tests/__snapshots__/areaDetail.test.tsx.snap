@@ -420,14 +420,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = false does 
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -467,38 +459,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = false does 
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -600,14 +560,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = false does 
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -647,38 +599,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = false does 
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -809,14 +729,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = false does 
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -856,38 +768,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = false does 
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -1062,14 +942,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = false does 
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -1109,38 +981,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = false does 
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -1271,14 +1111,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = false does 
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -1318,38 +1150,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = false does 
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -1451,14 +1251,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = false does 
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -1498,38 +1290,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = false does 
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -1692,14 +1452,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = false does 
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -1739,38 +1491,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = false does 
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -1974,14 +1694,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = false does 
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -2016,38 +1728,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = false does 
                     10%
                   </span>
                    percent
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -2482,14 +2162,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = null does n
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -2529,38 +2201,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = null does n
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -2662,14 +2302,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = null does n
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -2709,38 +2341,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = null does n
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -2871,14 +2471,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = null does n
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -2918,38 +2510,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = null does n
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -3124,14 +2684,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = null does n
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -3171,38 +2723,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = null does n
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -3333,14 +2853,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = null does n
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -3380,38 +2892,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = null does n
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -3513,14 +2993,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = null does n
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -3560,38 +3032,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = null does n
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -3754,14 +3194,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = null does n
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -3801,38 +3233,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = null does n
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -4036,14 +3436,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = null does n
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -4078,38 +3470,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = null does n
                     10%
                   </span>
                    percent
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -4544,14 +3904,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = true render
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -4591,38 +3943,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = true render
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -4724,14 +4044,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = true render
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -4771,38 +4083,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = true render
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -4933,14 +4213,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = true render
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -4980,38 +4252,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = true render
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -5186,14 +4426,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = true render
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -5233,38 +4465,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = true render
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -5415,14 +4615,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = true render
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -5462,38 +4654,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = true render
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -5595,14 +4755,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = true render
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -5642,38 +4794,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = true render
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -5836,14 +4956,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = true render
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -5883,38 +4995,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = true render
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -6118,14 +5198,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = true render
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -6160,38 +5232,6 @@ exports[`rendering of the AreaDetail checks if indicators for FUDS = true render
                     10%
                   </span>
                    percent
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -6635,14 +5675,6 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -6653,38 +5685,6 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
               <div>
                 
       Percent of people ages 25 years or older whose education level is less than a high school diploma 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
     
               </div>
             </div>
@@ -7135,14 +6135,6 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -7182,38 +6174,6 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -7315,14 +6275,6 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -7362,38 +6314,6 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -7524,14 +6444,6 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -7571,38 +6483,6 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -7777,14 +6657,6 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -7824,38 +6696,6 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -7986,14 +6826,6 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -8033,38 +6865,6 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -8166,14 +6966,6 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -8213,38 +7005,6 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -8407,14 +7167,6 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -8454,38 +7206,6 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -8689,14 +7409,6 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -8731,38 +7443,6 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
                     10%
                   </span>
                    percent
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -9104,14 +7784,6 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -9151,38 +7823,6 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -9268,14 +7908,6 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -9315,38 +7947,6 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -9477,14 +8077,6 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -9524,38 +8116,6 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -9715,14 +8275,6 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -9757,38 +8309,6 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
                     10%
                   </span>
                    percent
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -10223,14 +8743,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -10270,38 +8782,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -10403,14 +8883,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -10450,38 +8922,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -10612,14 +9052,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -10659,38 +9091,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -10865,14 +9265,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -10912,38 +9304,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -11074,14 +9434,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -11121,38 +9473,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -11254,14 +9574,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -11301,38 +9613,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -11495,14 +9775,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -11542,38 +9814,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -11777,14 +10017,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -11819,38 +10051,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
                     10%
                   </span>
                    percent
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -12285,14 +10485,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -12332,38 +10524,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -12465,14 +10625,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -12512,38 +10664,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -12674,14 +10794,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -12721,38 +10833,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -12927,14 +11007,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -12974,38 +11046,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -13136,14 +11176,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -13183,38 +11215,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -13316,14 +11316,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -13363,38 +11355,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -13557,14 +11517,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -13604,38 +11556,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -13839,14 +11759,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -13881,38 +11793,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
                     10%
                   </span>
                    percent
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -14347,14 +12227,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -14394,38 +12266,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -14527,14 +12367,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -14574,38 +12406,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -14736,14 +12536,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -14783,38 +12575,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -14989,14 +12749,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -15036,38 +12788,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -15218,14 +12938,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -15265,38 +12977,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -15398,14 +13078,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -15445,38 +13117,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -15639,14 +13279,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -15686,38 +13318,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -15921,14 +13521,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -15963,38 +13555,6 @@ exports[`rendering of the AreaDetail checks if indicators for abandoned land min
                     10%
                   </span>
                    percent
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -16429,14 +13989,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -16476,38 +14028,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -16609,14 +14129,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -16656,38 +14168,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -16818,14 +14298,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -16865,38 +14337,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -17091,14 +14531,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -17138,38 +14570,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -17300,14 +14700,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -17347,38 +14739,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -17480,14 +14840,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -17527,38 +14879,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -17721,14 +15041,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -17768,38 +15080,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -18003,14 +15283,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -18045,38 +15317,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
                     10%
                   </span>
                    percent
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -18511,14 +15751,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -18558,38 +15790,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -18691,14 +15891,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -18738,38 +15930,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -18900,14 +16060,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -18947,38 +16099,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -19153,14 +16273,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -19200,38 +16312,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -19362,14 +16442,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -19409,38 +16481,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -19542,14 +16582,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -19589,38 +16621,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -19783,14 +16783,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -19830,38 +16822,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -20065,14 +17025,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -20107,38 +17059,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
                     10%
                   </span>
                    percent
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -20573,14 +17493,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -20620,38 +17532,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -20753,14 +17633,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -20800,38 +17672,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -20962,14 +17802,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -21009,38 +17841,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -21235,14 +18035,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -21282,38 +18074,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -21444,14 +18204,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -21491,38 +18243,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -21624,14 +18344,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -21671,38 +18383,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -21865,14 +18545,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -21912,38 +18584,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
                     th
                   </sup>
                    percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>
@@ -22147,14 +18787,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
         <div>
           AND
         </div>
-        <div>
-          <div>
-            At or above both associated thresholds?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -22189,38 +18821,6 @@ exports[`rendering of the AreaDetail checks if indicators for historic underinve
                     10%
                   </span>
                    percent
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Higher education non-enrollment
-              <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  data is not available
                 </div>
               </div>
             </div>

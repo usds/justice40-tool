@@ -303,16 +303,16 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
       properties[constants.IS_FEDERAL_POVERTY_LEVEL_200] : null,
     threshold: 65,
   };
-  const higherEd: indicatorInfo = {
-    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HIGH_ED),
-    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.HIGH_ED),
-    type: 'percent',
-    value: properties.hasOwnProperty(constants.NON_HIGHER_ED_PERCENTILE) ?
-      properties[constants.NON_HIGHER_ED_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_HIGHER_ED_PERCENTILE] ?
-      properties[constants.IS_HIGHER_ED_PERCENTILE] : null,
-    threshold: 80,
-  };
+  // const higherEd: indicatorInfo = {
+  //   label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HIGH_ED),
+  //   description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.HIGH_ED),
+  //   type: 'percent',
+  //   value: properties.hasOwnProperty(constants.NON_HIGHER_ED_PERCENTILE) ?
+  //     properties[constants.NON_HIGHER_ED_PERCENTILE] : null,
+  //   isDisadvagtaged: properties[constants.IS_HIGHER_ED_PERCENTILE] ?
+  //     properties[constants.IS_HIGHER_ED_PERCENTILE] : null,
+  //   threshold: 80,
+  // };
 
   const energyBurden: indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.ENERGY_BURDEN),
@@ -577,7 +577,7 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
       id: 'climate-change',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.CLIMATE),
       indicators: [expAgLoss, expBldLoss, expPopLoss, flooding, wildfire],
-      socioEcIndicators: [lowInc, higherEd],
+      socioEcIndicators: [lowInc],
       isDisadvagtaged: properties[constants.IS_CLIMATE_FACTOR_DISADVANTAGED_M] ?
         properties[constants.IS_CLIMATE_FACTOR_DISADVANTAGED_M] : null,
       isExceed1MoreBurden: properties[constants.IS_CLIMATE_EXCEED_ONE_OR_MORE_INDICATORS_M] ?
@@ -589,7 +589,7 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
       id: 'clean-energy',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.CLEAN_ENERGY),
       indicators: [energyBurden, pm25],
-      socioEcIndicators: [lowInc, higherEd],
+      socioEcIndicators: [lowInc],
       isDisadvagtaged: properties[constants.IS_ENERGY_FACTOR_DISADVANTAGED_M] ?
         properties[constants.IS_ENERGY_FACTOR_DISADVANTAGED_M] : null,
       isExceed1MoreBurden: properties[constants.IS_ENERGY_EXCEED_ONE_OR_MORE_INDICATORS_M] ?
@@ -601,7 +601,7 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
       id: 'clean-transport',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.CLEAN_TRANSPORT),
       indicators: [dieselPartMatter, barrierTransport, trafficVolume],
-      socioEcIndicators: [lowInc, higherEd],
+      socioEcIndicators: [lowInc],
       isDisadvagtaged: properties[constants.IS_TRANSPORT_FACTOR_DISADVANTAGED_M] ?
         properties[constants.IS_TRANSPORT_FACTOR_DISADVANTAGED_M] : null,
       isExceed1MoreBurden: properties[constants.IS_TRANSPORT_EXCEED_ONE_OR_MORE_INDICATORS_M] ?
@@ -613,7 +613,7 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
       id: 'sustain-house',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.SUSTAIN_HOUSE),
       indicators: [historicUnderinvest, houseBurden, lackGreenSpace, lackPlumbing, leadPaint],
-      socioEcIndicators: [lowInc, higherEd],
+      socioEcIndicators: [lowInc],
       isDisadvagtaged: properties[constants.IS_HOUSING_FACTOR_DISADVANTAGED_M] ?
         properties[constants.IS_HOUSING_FACTOR_DISADVANTAGED_M] : null,
       isExceed1MoreBurden: properties[constants.IS_HOUSING_EXCEED_ONE_OR_MORE_INDICATORS_M] ?
@@ -625,7 +625,7 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
       id: 'leg-pollute',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.LEG_POLLUTE),
       indicators: [abandonMines, formerDefSites, proxHaz, proxNPL, proxRMP],
-      socioEcIndicators: [lowInc, higherEd],
+      socioEcIndicators: [lowInc],
       isDisadvagtaged: properties[constants.IS_POLLUTION_FACTOR_DISADVANTAGED_M] ?
         properties[constants.IS_POLLUTION_FACTOR_DISADVANTAGED_M] : null,
       isExceed1MoreBurden: properties[constants.IS_POLLUTION_EXCEED_ONE_OR_MORE_INDICATORS_M] ?
@@ -637,7 +637,7 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
       id: 'clean-water',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.CLEAN_WATER),
       indicators: [leakyTanks, wasteWater],
-      socioEcIndicators: [lowInc, higherEd],
+      socioEcIndicators: [lowInc],
       isDisadvagtaged: properties[constants.IS_WATER_FACTOR_DISADVANTAGED_M] ?
         properties[constants.IS_WATER_FACTOR_DISADVANTAGED_M] : null,
       isExceed1MoreBurden: properties[constants.IS_WATER_EXCEED_ONE_OR_MORE_INDICATORS_M] ?
@@ -649,7 +649,7 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
       id: 'health-burdens',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.HEALTH_BURDEN),
       indicators: [asthma, diabetes, heartDisease, lifeExpect],
-      socioEcIndicators: [lowInc, higherEd],
+      socioEcIndicators: [lowInc],
       isDisadvagtaged: properties[constants.IS_HEALTH_FACTOR_DISADVANTAGED_M] ?
         properties[constants.IS_HEALTH_FACTOR_DISADVANTAGED_M] : null,
       isExceed1MoreBurden: properties[constants.IS_HEALTH_EXCEED_ONE_OR_MORE_INDICATORS_M] ?
@@ -661,7 +661,7 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
       id: 'work-dev',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.WORK_DEV),
       indicators: [lingIso, lowMedInc, unemploy, poverty],
-      socioEcIndicators: [highSchool, higherEd],
+      socioEcIndicators: [highSchool],
       isDisadvagtaged: properties[constants.IS_WORKFORCE_FACTOR_DISADVANTAGED_M] ?
         properties[constants.IS_WORKFORCE_FACTOR_DISADVANTAGED_M] : null,
       isExceed1MoreBurden: properties[constants.IS_WORKFORCE_EXCEED_ONE_OR_MORE_INDICATORS_M] ?
@@ -737,10 +737,10 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
         </div>
 
         {/* Exceeds both socioeconomic burdens */}
-        <ExceedBurden
+        {/* <ExceedBurden
           text={EXPLORE_COPY.SIDE_PANEL_SPACERS.EXCEED_BOTH_SOCIO}
           isBurdened={category.isExceedBothSocioBurdens}
-        />
+        /> */}
 
         {/* socio-economic indicators */}
         {category.socioEcIndicators.map((indicator: any, index: number) => {
