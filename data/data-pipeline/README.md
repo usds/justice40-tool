@@ -379,8 +379,7 @@ score_data_actual.to_pickle(data_path / "data_pipeline" / "etl" / "score" / "tes
 
 Then take out the breakpoint and re-run the test: `pytest data_pipeline/etl/score/tests/test_score_post.py::test_create_score_data`
 
-For the `tile_data_expected.pkl`, put a breakpoint on [this line](https://github
-.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L90), before the `pdt.assert_frame_equal` and run:
+For the `tile_data_expected.pkl`, put a breakpoint on [this line](https://github.com/usds/justice40-tool/blob/main/data/data-pipeline/data_pipeline/etl/score/tests/test_score_post.py#L90), before the `pdt.assert_frame_equal` and run:
 `pytest data_pipeline/etl/score/tests/test_score_post.py::test_create_tile_data`
 
 Once on the breakpoint, capture the df to a pickle as follows:
