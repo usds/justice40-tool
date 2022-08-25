@@ -92,21 +92,6 @@ optional = false
 python-versions = "*"
 
 [[package]]
-name = "beautifulsoup4"
-version = "4.11.1"
-description = "Screen-scraping library"
-category = "main"
-optional = false
-python-versions = ">=3.6.0"
-
-[package.dependencies]
-soupsieve = ">1.2"
-
-[package.extras]
-html5lib = ["html5lib"]
-lxml = ["lxml"]
-
-[[package]]
 name = "black"
 version = "21.12b0"
 description = "The uncompromising code formatter."
@@ -213,7 +198,7 @@ python-versions = "*"
 click = ">=4.0"
 
 [package.extras]
-dev = ["pytest (>=3.6)", "pytest-cov", "wheel", "coveralls"]
+dev = ["coveralls", "wheel", "pytest-cov", "pytest (>=3.6)"]
 
 [[package]]
 name = "cligj"
@@ -734,7 +719,7 @@ tornado = "*"
 traitlets = ">=4.1"
 
 [package.extras]
-test = ["nbformat", "nose", "pip", "requests", "mock"]
+test = ["mock", "requests", "pip", "nose", "nbformat"]
 
 [[package]]
 name = "jupyter-core"
@@ -792,14 +777,6 @@ traitlets = "*"
 
 [package.extras]
 test = ["jupyter-contrib-core", "nose", "requests", "selenium", "mock"]
-
-[[package]]
-name = "jupyterlab-pygments"
-version = "0.2.2"
-description = "Pygments theme using JupyterLab CSS variables"
-category = "main"
-optional = false
-python-versions = ">=3.7"
 
 [[package]]
 name = "jupyterlab-widgets"
@@ -948,8 +925,8 @@ python-versions = "*"
 
 [[package]]
 name = "mistune"
-version = "0.8.4"
-description = "The fastest markdown parser in pure Python"
+version = "2.0.3"
+description = "A sane Markdown parser with useful plugins and renderers"
 category = "main"
 optional = false
 python-versions = "*"
@@ -1009,7 +986,7 @@ ipython = "*"
 name = "nbclient"
 version = "0.6.0"
 description = "A client library for executing notebooks. Formerly nbconvert's ExecutePreprocessor."
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7.0"
 
@@ -1020,41 +997,36 @@ nest-asyncio = "*"
 traitlets = ">=5.0.0"
 
 [package.extras]
-sphinx = ["mock", "moto", "myst-parser", "Sphinx (>=1.7)", "sphinx-book-theme"]
-test = ["black", "check-manifest", "flake8", "ipykernel", "ipython (<8.0.0)", "ipywidgets (<8.0.0)", "mypy", "pip (>=18.1)", "pre-commit", "pytest (>=4.1)", "pytest-asyncio", "pytest-cov (>=2.6.1)", "setuptools (>=60.0)", "testpath", "twine (>=1.11.0)", "xmltodict"]
+test = ["xmltodict", "twine (>=1.11.0)", "testpath", "setuptools (>=60.0)", "pytest-cov (>=2.6.1)", "pytest-asyncio", "pytest (>=4.1)", "pre-commit", "pip (>=18.1)", "mypy", "ipywidgets (<8.0.0)", "ipython (<8.0.0)", "ipykernel", "flake8", "check-manifest", "black"]
+sphinx = ["sphinx-book-theme", "Sphinx (>=1.7)", "myst-parser", "moto", "mock"]
 
 [[package]]
 name = "nbconvert"
-version = "6.5.0"
+version = "5.5.0"
 description = "Converting Jupyter Notebooks"
 category = "main"
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [package.dependencies]
-beautifulsoup4 = "*"
 bleach = "*"
 defusedxml = "*"
 entrypoints = ">=0.2.2"
-jinja2 = ">=3.0"
-jupyter-core = ">=4.7"
-jupyterlab-pygments = "*"
-MarkupSafe = ">=2.0"
-mistune = ">=0.8.1,<2"
-nbclient = ">=0.5.0"
-nbformat = ">=5.1"
-packaging = "*"
+jinja2 = ">=2.4"
+jupyter-core = "*"
+mistune = ">=0.8.1"
+nbformat = ">=4.4"
 pandocfilters = ">=1.4.1"
-pygments = ">=2.4.1"
-tinycss2 = "*"
-traitlets = ">=5.0"
+pygments = "*"
+testpath = "*"
+traitlets = ">=4.2"
 
 [package.extras]
-all = ["pytest", "pytest-cov", "pytest-dependency", "ipykernel", "ipywidgets (>=7)", "pre-commit", "pyppeteer (>=1,<1.1)", "tornado (>=6.1)", "sphinx (>=1.5.1)", "sphinx-rtd-theme", "nbsphinx (>=0.2.12)", "ipython"]
-docs = ["sphinx (>=1.5.1)", "sphinx-rtd-theme", "nbsphinx (>=0.2.12)", "ipython"]
-serve = ["tornado (>=6.1)"]
-test = ["pytest", "pytest-cov", "pytest-dependency", "ipykernel", "ipywidgets (>=7)", "pre-commit", "pyppeteer (>=1,<1.1)"]
-webpdf = ["pyppeteer (>=1,<1.1)"]
+all = ["pytest", "pytest-cov", "ipykernel", "jupyter-client (>=4.2)", "ipywidgets (>=7)", "tornado (>=4.0)", "sphinx (>=1.5.1)", "sphinx-rtd-theme", "nbsphinx (>=0.2.12)", "sphinxcontrib-github-alt", "ipython"]
+docs = ["sphinx (>=1.5.1)", "sphinx-rtd-theme", "nbsphinx (>=0.2.12)", "sphinxcontrib-github-alt", "ipython", "jupyter-client (>=4.2)"]
+execute = ["jupyter-client (>=4.2)"]
+serve = ["tornado (>=4.0)"]
+test = ["pytest", "pytest-cov", "ipykernel", "jupyter-client (>=4.2)", "ipywidgets (>=7)"]
 
 [[package]]
 name = "nbformat"
@@ -1280,8 +1252,8 @@ optional = false
 python-versions = ">=3.6"
 
 [package.extras]
-dev = ["pre-commit", "tox"]
-testing = ["pytest", "pytest-benchmark"]
+testing = ["pytest-benchmark", "pytest"]
+dev = ["tox", "pre-commit"]
 
 [[package]]
 name = "prometheus-client"
@@ -1558,7 +1530,7 @@ python-versions = ">=3.6"
 packaging = "*"
 
 [package.extras]
-test = ["pytest (>=6.0.0)", "pytest-cov (>=3.0.0)", "pytest-qt"]
+test = ["pytest-qt", "pytest-cov (>=3.0.0)", "pytest (>=6.0.0)"]
 
 [[package]]
 name = "requests"
@@ -1638,9 +1610,9 @@ optional = false
 python-versions = "*"
 
 [package.extras]
-nativelib = ["pyobjc-framework-cocoa", "pywin32"]
-objc = ["pyobjc-framework-cocoa"]
 win32 = ["pywin32"]
+objc = ["pyobjc-framework-cocoa"]
+nativelib = ["pywin32", "pyobjc-framework-cocoa"]
 
 [[package]]
 name = "setuptools-scm"
@@ -1680,14 +1652,6 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
-name = "soupsieve"
-version = "2.3.2.post1"
-description = "A modern CSS selector implementation for Beautiful Soup."
-category = "main"
-optional = false
-python-versions = ">=3.6"
-
-[[package]]
 name = "tenacity"
 version = "8.0.1"
 description = "Retry code until it succeeds"
@@ -1715,27 +1679,23 @@ tornado = ">=4"
 test = ["pytest"]
 
 [[package]]
+name = "testpath"
+version = "0.6.0"
+description = "Test utilities for code working with files and commands"
+category = "main"
+optional = false
+python-versions = ">= 3.5"
+
+[package.extras]
+test = ["pytest"]
+
+[[package]]
 name = "textwrap3"
 version = "0.9.2"
 description = "textwrap from Python 3.6 backport (plus a few tweaks)"
 category = "dev"
 optional = false
 python-versions = "*"
-
-[[package]]
-name = "tinycss2"
-version = "1.1.1"
-description = "A tiny CSS parser"
-category = "main"
-optional = false
-python-versions = ">=3.6"
-
-[package.dependencies]
-webencodings = ">=0.4"
-
-[package.extras]
-doc = ["sphinx", "sphinx-rtd-theme"]
-test = ["pytest", "pytest-cov", "pytest-flake8", "pytest-isort", "coverage"]
 
 [[package]]
 name = "toml"
@@ -1797,7 +1757,7 @@ toml = "*"
 tox = {version = ">=3.7.0", markers = "python_version >= \"3\""}
 
 [package.extras]
-test = ["coverage", "pytest", "pycodestyle", "pylint"]
+test = ["pylint", "pycodestyle", "pytest", "coverage"]
 
 [[package]]
 name = "tqdm"
@@ -2018,10 +1978,6 @@ attrs = [
 backcall = [
     {file = "backcall-0.2.0-py2.py3-none-any.whl", hash = "sha256:fbbce6a29f263178a1f7915c1940bde0ec2b2a967566fe1c65c1dfb7422bd255"},
     {file = "backcall-0.2.0.tar.gz", hash = "sha256:5cbdbf27be5e7cfadb448baf0aa95508f91f2bbc6c6437cd9cd06e2a4c215e1e"},
-]
-beautifulsoup4 = [
-    {file = "beautifulsoup4-4.11.1-py3-none-any.whl", hash = "sha256:58d5c3d29f5a36ffeb94f02f0d786cd53014cf9b3b3951d42e0080d8a9498d30"},
-    {file = "beautifulsoup4-4.11.1.tar.gz", hash = "sha256:ad9aa55b65ef2808eb405f46cf74df7fcb7044d5cbc26487f96eb2ef2e436693"},
 ]
 black = [
     {file = "black-21.12b0-py3-none-any.whl", hash = "sha256:a615e69ae185e08fdd73e4715e260e2479c861b5740057fde6e8b4e3b7dd589f"},
@@ -2288,10 +2244,6 @@ jupyter-latex-envs = [
 jupyter-nbextensions-configurator = [
     {file = "jupyter_nbextensions_configurator-0.4.1.tar.gz", hash = "sha256:e5e86b5d9d898e1ffb30ebb08e4ad8696999f798fef3ff3262d7b999076e4e83"},
 ]
-jupyterlab-pygments = [
-    {file = "jupyterlab_pygments-0.2.2-py2.py3-none-any.whl", hash = "sha256:2405800db07c9f770863bcf8049a529c3dd4d3e28536638bd7c1c01d2748309f"},
-    {file = "jupyterlab_pygments-0.2.2.tar.gz", hash = "sha256:7405d7fde60819d905a9fa8ce89e4cd830e318cdad22a0030f7a901da705585d"},
-]
 jupyterlab-widgets = [
     {file = "jupyterlab_widgets-1.1.0-py3-none-any.whl", hash = "sha256:c2a9bd3789f120f64d73268c066ed3b000c56bc1dda217be5cdc43e7b4ebad3f"},
     {file = "jupyterlab_widgets-1.1.0.tar.gz", hash = "sha256:d5f41bc1713795385f718d44dcba47e1e1473c6289f28a95aa6b2c0782ee372a"},
@@ -2556,8 +2508,8 @@ mccabe = [
     {file = "mccabe-0.6.1.tar.gz", hash = "sha256:dd8d182285a0fe56bace7f45b5e7d1a6ebcbf524e8f3bd87eb0f125271b8831f"},
 ]
 mistune = [
-    {file = "mistune-0.8.4-py2.py3-none-any.whl", hash = "sha256:88a1051873018da288eee8538d476dffe1262495144b33ecb586c4ab266bb8d4"},
-    {file = "mistune-0.8.4.tar.gz", hash = "sha256:59a3429db53c50b5c6bcc8a07f8848cb00d7dc8bdb431a4ab41920d201d4756e"},
+    {file = "mistune-2.0.3-py2.py3-none-any.whl", hash = "sha256:e3964140c0775535fba50bd616fe180920044a64bc21850253267b07bff89924"},
+    {file = "mistune-2.0.3.tar.gz", hash = "sha256:d7605b46b6156b53b7d52a465202b29a6f00f4ea4130ad5d25e9d5547d6b7e50"},
 ]
 munch = [
     {file = "munch-2.5.0-py2.py3-none-any.whl", hash = "sha256:6f44af89a2ce4ed04ff8de41f70b226b984db10a91dcc7b9ac2efc1c77022fdd"},
@@ -2600,8 +2552,8 @@ nbclient = [
     {file = "nbclient-0.6.0.tar.gz", hash = "sha256:3f89a403c6badf24d2855a455b69a80985b3b27e04111243fdb6a88a28d27031"},
 ]
 nbconvert = [
-    {file = "nbconvert-6.5.0-py3-none-any.whl", hash = "sha256:c56dd0b8978a1811a5654f74c727ff16ca87dd5a43abd435a1c49b840fcd8360"},
-    {file = "nbconvert-6.5.0.tar.gz", hash = "sha256:223e46e27abe8596b8aed54301fadbba433b7ffea8196a68fd7b1ff509eee99d"},
+    {file = "nbconvert-5.5.0-py2.py3-none-any.whl", hash = "sha256:4a978548d8383f6b2cfca4a3b0543afb77bc7cb5a96e8b424337ab58c12da9bc"},
+    {file = "nbconvert-5.5.0.tar.gz", hash = "sha256:138381baa41d83584459b5cfecfc38c800ccf1f37d9ddd0bd440783346a4c39c"},
 ]
 nbformat = [
     {file = "nbformat-5.3.0-py3-none-any.whl", hash = "sha256:38856d97de49e8292e2d5d8f595e9d26f02abfd87e075d450af4511870b40538"},
@@ -3073,10 +3025,6 @@ six = [
     {file = "six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"},
     {file = "six-1.16.0.tar.gz", hash = "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"},
 ]
-soupsieve = [
-    {file = "soupsieve-2.3.2.post1-py3-none-any.whl", hash = "sha256:3b2503d3c7084a42b1ebd08116e5f81aadfaea95863628c80a3b774a11b7c759"},
-    {file = "soupsieve-2.3.2.post1.tar.gz", hash = "sha256:fc53893b3da2c33de295667a0e19f078c14bf86544af307354de5fcf12a3f30d"},
-]
 tenacity = [
     {file = "tenacity-8.0.1-py3-none-any.whl", hash = "sha256:f78f4ea81b0fabc06728c11dc2a8c01277bfc5181b321a4770471902e3eb844a"},
     {file = "tenacity-8.0.1.tar.gz", hash = "sha256:43242a20e3e73291a28bcbcacfd6e000b02d3857a9a9fff56b297a27afdc932f"},
@@ -3085,13 +3033,13 @@ terminado = [
     {file = "terminado-0.13.3-py3-none-any.whl", hash = "sha256:874d4ea3183536c1782d13c7c91342ef0cf4e5ee1d53633029cbc972c8760bd8"},
     {file = "terminado-0.13.3.tar.gz", hash = "sha256:94d1cfab63525993f7d5c9b469a50a18d0cdf39435b59785715539dd41e36c0d"},
 ]
+testpath = [
+    {file = "testpath-0.6.0-py3-none-any.whl", hash = "sha256:8ada9f80a2ac6fb0391aa7cdb1a7d11cfa8429f693eda83f74dde570fe6fa639"},
+    {file = "testpath-0.6.0.tar.gz", hash = "sha256:2f1b97e6442c02681ebe01bd84f531028a7caea1af3825000f52345c30285e0f"},
+]
 textwrap3 = [
     {file = "textwrap3-0.9.2-py2.py3-none-any.whl", hash = "sha256:bf5f4c40faf2a9ff00a9e0791fed5da7415481054cef45bb4a3cfb1f69044ae0"},
     {file = "textwrap3-0.9.2.zip", hash = "sha256:5008eeebdb236f6303dcd68f18b856d355f6197511d952ba74bc75e40e0c3414"},
-]
-tinycss2 = [
-    {file = "tinycss2-1.1.1-py3-none-any.whl", hash = "sha256:fe794ceaadfe3cf3e686b22155d0da5780dd0e273471a51846d0a02bc204fec8"},
-    {file = "tinycss2-1.1.1.tar.gz", hash = "sha256:b2e44dd8883c360c35dd0d1b5aad0b610e5156c2cb3b33434634e539ead9d8bf"},
 ]
 toml = [
     {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},
