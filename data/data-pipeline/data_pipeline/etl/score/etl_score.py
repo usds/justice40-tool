@@ -322,6 +322,8 @@ class ScoreETL(ExtractTransformLoad):
         # which are now deprecated.
         if not drop_tracts:
             # Create the "basic" percentile.
+            ## note: I believe this is less performant than if we made a bunch of these PFS columns
+            ## and then concatenated the list. For the refactor!
             df[
                 f"{output_column_name_root}"
                 f"{field_names.PERCENTILE_FIELD_SUFFIX}"
@@ -538,9 +540,12 @@ class ScoreETL(ExtractTransformLoad):
 
         df_copy[numeric_columns] = df_copy[numeric_columns].apply(pd.to_numeric)
 
-        # coerce all booleans to bools
+        # coerce all booleans to bools preserving nan character
+        # since this is a boolean, need to use `None`
         for col in boolean_columns:
-            df_copy[col] = df_copy[col].astype(bool)
+            tmp = df_copy[col].copy()
+            df_copy[col] = np.where(tmp.notna(), tmp.astype(bool), None)
+            logger.info(f"{col} contains {df_copy[col].isna().sum()} nulls.")
 
         # Convert all columns to numeric and do math
         # Note that we have a few special conditions here and we handle them explicitly.

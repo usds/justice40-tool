@@ -359,6 +359,12 @@ fields:
 - score_name: Is there at least one abandoned mine in this census tract?
   label: Is there at least one abandoned mine in this census tract?
   format: bool
+- score_name: Is there at least one Formerly Used Defense Site (FUDS) in the tract, where missing data is treated as False?
+  label: Is there at least one Formerly Used Defense Site (FUDS) in the tract, where missing data is treated as False?
+  format: bool 
+- score_name: Is there at least one abandoned mine in this census tract, where missing data is treated as False?
+  label: Is there at least one abandoned mine in this census tract, where missing data is treated as False?
+  format: bool
 - score_name: There is at least one abandoned mine in this census tract and the tract is low income.
   label: There is at least one abandoned mine in this census tract and the tract is low income.
   format: bool

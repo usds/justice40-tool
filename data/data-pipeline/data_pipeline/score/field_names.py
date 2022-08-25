@@ -355,9 +355,12 @@ TRANSPORTATION_COSTS = "Transportation Costs"
 
 # eAMLIS and FUDS variables
 AML_BOOLEAN = "Is there at least one abandoned mine in this census tract?"
+AML_BOOLEAN_FILLED_IN = "Is there at least one abandoned mine in this census tract, where missing data is treated as False?"
+
 ELIGIBLE_FUDS_BINARY_FIELD_NAME = (
     "Is there at least one Formerly Used Defense Site (FUDS) in the tract?"
 )
+ELIGIBLE_FUDS_FILLED_IN_FIELD_NAME = "Is there at least one Formerly Used Defense Site (FUDS) in the tract, where missing data is treated as False?"
 
 #####
 # Names for individual factors being exceeded

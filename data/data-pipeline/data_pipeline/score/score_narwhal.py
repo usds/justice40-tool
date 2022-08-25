@@ -488,13 +488,21 @@ class ScoreNarwhal(Score):
             >= self.ENVIRONMENTAL_BURDEN_THRESHOLD
         )
 
+        self.df[field_names.ELIGIBLE_FUDS_FILLED_IN_FIELD_NAME] = self.df[
+            field_names.ELIGIBLE_FUDS_BINARY_FIELD_NAME
+        ].fillna(False)
+
+        self.df[field_names.AML_BOOLEAN_FILLED_IN] = self.df[
+            field_names.AML_BOOLEAN
+        ].fillna(False)
+
         self.df[field_names.POLLUTION_THRESHOLD_EXCEEDED] = self.df[
             [
                 field_names.RMP_PCTILE_THRESHOLD,
                 field_names.NPL_PCTILE_THRESHOLD,
                 field_names.TSDF_PCTILE_THRESHOLD,
-                field_names.AML_BOOLEAN,
-                field_names.ELIGIBLE_FUDS_BINARY_FIELD_NAME,
+                field_names.AML_BOOLEAN_FILLED_IN,
+                field_names.ELIGIBLE_FUDS_FILLED_IN_FIELD_NAME,
             ]
         ].any(axis="columns")
 
@@ -513,7 +521,7 @@ class ScoreNarwhal(Score):
         )
 
         self.df[field_names.AML_LOW_INCOME_FIELD] = (
-            self.df[field_names.AML_BOOLEAN]
+            self.df[field_names.AML_BOOLEAN_FILLED_IN]
             & self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED]
         )
 
