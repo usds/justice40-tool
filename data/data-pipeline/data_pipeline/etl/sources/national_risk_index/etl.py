@@ -164,7 +164,12 @@ class NationalRiskIndexETL(ExtractTransformLoad):
                 != base_expectation
             ][self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME].max()
             < self.AGRIVALUE_LOWER_BOUND
-        )
+        ), "Clipping the agrivalue did not work!"
+
+        assert (
+            df_nri[self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME]
+            != base_expectation
+        ).sum() > 0, "Clipping the agrivalue did nothing!"
 
         # This produces a boolean that is True in the case of non-zero agricultural value
         df_nri[self.CONTAINS_AGRIVALUE] = (
