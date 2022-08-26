@@ -2,6 +2,11 @@ import pandas as pd
 import pytest
 from data_pipeline.utils import get_module_logger
 from data_pipeline.config import settings
+from data_pipeline.etl.score.constants import (
+    TILES_SCORE_COLUMNS,
+    THRESHOLD_COUNT_TO_SHOW_FIELD_NAME,
+    USER_INTERFACE_EXPERIENCE_FIELD_NAME,
+)
 
 logger = get_module_logger(__name__)
 
@@ -22,6 +27,7 @@ def tiles_df():
     return pd.read_csv(
         settings.APP_ROOT / "data" / "score" / "csv" / "tiles" / "usa.csv",
         dtype={"GTF": str},
+        low_memory=False,
     )
 
 
@@ -80,6 +86,26 @@ def test_count_of_fips_codes(tiles_df, states_count=56):
         == 56
     ), "Some states do not have any percentile data"
 
+
+def test_column_presence(tiles_df):
+    expected_column_names = set(TILES_SCORE_COLUMNS.values()) | {
+        THRESHOLD_COUNT_TO_SHOW_FIELD_NAME,
+        USER_INTERFACE_EXPERIENCE_FIELD_NAME,
+    }
+    actual_column_names = set(tiles_df.columns)
+    extra_columns = actual_column_names - expected_column_names
+    missing_columns = expected_column_names - expected_column_names
+    assert not (
+        extra_columns
+    ), f"tiles/usa.csv has columns not specified in TILE_SCORE_COLUMNS: {extra_columns}"
+    assert not (
+        missing_columns
+    ), f"tiles/usa.csv is missing columns from TILE_SCORE_COLUMNS: {missing_columns}"
+
+
+def test_colunmn_types_as_expected(tiles_df):
+    breakpoint()
+    assert False
 
 # For each data point that we visualize, we want to confirm that
 # (1) the column is represented in tiles_columns
