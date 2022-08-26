@@ -29,7 +29,7 @@ def _helper_single_threshold_test(df, col, socioeconomic_column, score_column):
 
 
 @dataclass
-class ThreshholdTestConfig:
+class ThresholdTestConfig:
     name: str
     threshhold_columns: List[str]
     ses_column_name: str = field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED
@@ -41,7 +41,7 @@ class ThreshholdTestConfig:
 
 
 def check_for_threshhold_errors(
-    df: pd.DataFrame, config: ThreshholdTestConfig
+    df: pd.DataFrame, config: ThresholdTestConfig
 ) -> List[str]:
     errors = []
     for col in config.threshhold_columns:
@@ -73,7 +73,7 @@ def check_for_threshhold_errors(
 
 
 def test_threshholds(final_score_df):
-    climate_thresholds = ThreshholdTestConfig(
+    climate_thresholds = ThresholdTestConfig(
         "climate",
         [
             field_names.EXPECTED_POPULATION_LOSS_EXCEEDS_PCTILE_THRESHOLD,
@@ -83,14 +83,14 @@ def test_threshholds(final_score_df):
             field_names.HIGH_FUTURE_WILDFIRE_RISK_FIELD,
         ],
     )
-    energy_thresholds = ThreshholdTestConfig(
+    energy_thresholds = ThresholdTestConfig(
         "energy",
         [
             field_names.ENERGY_BURDEN_EXCEEDS_PCTILE_THRESHOLD,
             field_names.PM25_EXCEEDS_PCTILE_THRESHOLD,
         ],
     )
-    transportation_thresholds = ThreshholdTestConfig(
+    transportation_thresholds = ThresholdTestConfig(
         "transportation",
         [
             field_names.DIESEL_EXCEEDS_PCTILE_THRESHOLD,
@@ -98,7 +98,7 @@ def test_threshholds(final_score_df):
             field_names.TRAFFIC_PROXIMITY_PCTILE_THRESHOLD,
         ],
     )
-    housing_thresholds = ThreshholdTestConfig(
+    housing_thresholds = ThresholdTestConfig(
         "housing",
         [
             field_names.HISTORIC_REDLINING_SCORE_EXCEEDED,
@@ -108,7 +108,7 @@ def test_threshholds(final_score_df):
             field_names.NON_NATURAL_PCTILE_THRESHOLD,
         ],
     )
-    pollution_thresholds = ThreshholdTestConfig(
+    pollution_thresholds = ThresholdTestConfig(
         "pollution",
         [
             field_names.RMP_PCTILE_THRESHOLD,
@@ -118,14 +118,14 @@ def test_threshholds(final_score_df):
             field_names.ELIGIBLE_FUDS_BINARY_FIELD_NAME,
         ],
     )
-    water_thresholds = ThreshholdTestConfig(
+    water_thresholds = ThresholdTestConfig(
         "water",
         [
             field_names.WASTEWATER_PCTILE_THRESHOLD,
             field_names.UST_PCTILE_THRESHOLD,
         ],
     )
-    health_thresholds = ThreshholdTestConfig(
+    health_thresholds = ThresholdTestConfig(
         "health",
         [
             field_names.DIABETES_PCTILE_THRESHOLD,
@@ -134,7 +134,7 @@ def test_threshholds(final_score_df):
             field_names.LOW_LIFE_EXPECTANCY_PCTILE_THRESHOLD,
         ],
     )
-    workforce_base_thresholds = ThreshholdTestConfig(
+    workforce_base_thresholds = ThresholdTestConfig(
         "workforce (not island areas)",
         [
             field_names.UNEMPLOYMENT_PCTILE_THRESHOLD,
