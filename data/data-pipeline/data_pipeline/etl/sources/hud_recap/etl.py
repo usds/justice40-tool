@@ -3,6 +3,7 @@ import requests
 
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger
+from data_pipeline.config import settings
 
 logger = get_module_logger(__name__)
 
@@ -26,7 +27,11 @@ class HudRecapETL(ExtractTransformLoad):
 
     def extract(self) -> None:
         logger.info("Downloading HUD Recap Data")
-        download = requests.get(self.HUD_RECAP_CSV_URL, verify=None)
+        download = requests.get(
+            self.HUD_RECAP_CSV_URL,
+            verify=None,
+            timeout=settings.REQUESTS_DEFAULT_TIMOUT,
+        )
         file_contents = download.content
         csv_file = open(self.HUD_RECAP_CSV, "wb")
         csv_file.write(file_contents)

@@ -52,3 +52,16 @@ def mock_etl(monkeypatch, mock_paths) -> None:
     data_path, tmp_path = mock_paths
     monkeypatch.setattr(ExtractTransformLoad, "DATA_PATH", data_path)
     monkeypatch.setattr(ExtractTransformLoad, "TMP_PATH", tmp_path)
+
+
+def pytest_collection_modifyitems(config, items):
+    keywordexpr = config.option.keyword
+    markexpr = config.option.markexpr
+    if keywordexpr or markexpr:
+        return  # let pytest handle this
+
+    smoketest = "smoketest"
+    skip_mymarker = pytest.mark.skip(reason=f"{smoketest} not selected")
+    for item in items:
+        if smoketest in item.keywords:
+            item.add_marker(skip_mymarker)

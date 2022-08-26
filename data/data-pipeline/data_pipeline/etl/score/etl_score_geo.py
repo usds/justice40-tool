@@ -51,7 +51,7 @@ class GeoScoreETL(ExtractTransformLoad):
 
         ## TODO: We really should not have this any longer changing
         self.TARGET_SCORE_SHORT_FIELD = constants.TILES_SCORE_COLUMNS[
-            field_names.SCORE_N
+            field_names.FINAL_SCORE_N_BOOLEAN
         ]
         self.TARGET_SCORE_RENAME_TO = "SCORE"
 

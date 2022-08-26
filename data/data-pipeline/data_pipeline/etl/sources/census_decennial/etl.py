@@ -7,6 +7,7 @@ import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger
 from data_pipeline.score import field_names
+from data_pipeline.config import settings
 
 pd.options.mode.chained_assignment = "raise"
 
@@ -270,7 +271,8 @@ class CensusDecennialETL(ExtractTransformLoad):
                         island["var_list"],
                         island["fips"],
                         county,
-                    )
+                    ),
+                    timeout=settings.REQUESTS_DEFAULT_TIMOUT,
                 )
 
                 df = json.loads(download.content)
