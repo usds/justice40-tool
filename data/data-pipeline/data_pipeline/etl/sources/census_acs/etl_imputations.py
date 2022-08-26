@@ -1,4 +1,4 @@
-from typing import List, NamedTuple, Tuple
+from typing import Any, List, NamedTuple, Tuple
 import pandas as pd
 import geopandas as gpd
 
@@ -41,7 +41,7 @@ def _prepare_dataframe_for_imputation(
     impute_var_named_tup_list: List[NamedTuple],
     geo_df: gpd.GeoDataFrame,
     geoid_field: str = "GEOID10_TRACT",
-) -> Tuple[list, gpd.GeoDataFrame]:
+) -> Tuple[Any, gpd.GeoDataFrame]:
     imputing_cols = [
         impute_var_pair.raw_field_name
         for impute_var_pair in impute_var_named_tup_list
