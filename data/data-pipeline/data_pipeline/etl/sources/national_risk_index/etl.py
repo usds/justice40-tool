@@ -163,8 +163,11 @@ class NationalRiskIndexETL(ExtractTransformLoad):
                 df_nri[self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME]
                 != base_expectation
             ][self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME].max()
-            < self.AGRIVALUE_LOWER_BOUND
-        ), "Clipping the agrivalue did not work!"
+            <= self.AGRIVALUE_LOWER_BOUND
+        ), (
+            "Clipping the agrivalue did not work. There are places where the value doesn't "
+            + "match an unclipped ratio, even where the agrivalue is above the lower bound!"
+        )
 
         assert (
             df_nri[self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME]
