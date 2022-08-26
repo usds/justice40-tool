@@ -1,11 +1,14 @@
 # flake8: noqa: W0613,W0611,F811
 from dataclasses import dataclass
-import data_pipeline.score.field_names as field_names
+import pytest
+from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger
 from data_pipeline.score.score_narwhal import ScoreNarwhal
 from .fixtures import final_score_df  # pylint: disable=unused-import
 
 logger = get_module_logger(__name__)
+
+pytestmark = pytest.mark.smoketest
 
 
 @dataclass
@@ -114,7 +117,7 @@ def test_percentile_columns(final_score_df):
     traffic_proximity = PercentileTestConfig(
         field_names.TRAFFIC_FIELD,
         field_names.TRAFFIC_PROXIMITY_PCTILE_THRESHOLD,
-        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD,
     )
     energy_burden = PercentileTestConfig(
         field_names.ENERGY_BURDEN_FIELD,
@@ -135,12 +138,12 @@ def test_percentile_columns(final_score_df):
     housing = PercentileTestConfig(
         field_names.HOUSING_BURDEN_FIELD,
         field_names.HOUSING_BURDEN_PCTILE_THRESHOLD,
-        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD,
     )
     non_natural_space = PercentileTestConfig(
         field_names.TRACT_PERCENT_NON_NATURAL_FIELD_NAME,
         field_names.NON_NATURAL_PCTILE_THRESHOLD,
-        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD,
     )
     rmp = PercentileTestConfig(
         field_names.RMP_FIELD,
@@ -155,7 +158,7 @@ def test_percentile_columns(final_score_df):
     tsdf = PercentileTestConfig(
         field_names.TSDF_FIELD,
         field_names.TSDF_PCTILE_THRESHOLD,
-        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD,
     )
     wastewater = PercentileTestConfig(
         field_names.WASTEWATER_FIELD,
@@ -170,7 +173,7 @@ def test_percentile_columns(final_score_df):
     diabetes = PercentileTestConfig(
         field_names.DIABETES_FIELD,
         field_names.DIABETES_PCTILE_THRESHOLD,
-        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD,
     )
     asthma = PercentileTestConfig(
         field_names.ASTHMA_FIELD,
@@ -200,7 +203,7 @@ def test_percentile_columns(final_score_df):
     linguist_isolation = PercentileTestConfig(
         field_names.LINGUISTIC_ISO_FIELD,
         field_names.LINGUISTIC_ISOLATION_PCTILE_THRESHOLD,
-        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD
+        ScoreNarwhal.ENVIRONMENTAL_BURDEN_THRESHOLD,
     )
     poverty = PercentileTestConfig(
         field_names.POVERTY_LESS_THAN_100_FPL_FIELD,

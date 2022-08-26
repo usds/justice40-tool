@@ -1,9 +1,12 @@
 # flake8: noqa: W0613,W0611,F811
 from dataclasses import dataclass
 from typing import List
+import pytest
 import pandas as pd
-import data_pipeline.score.field_names as field_names
+from data_pipeline.score import field_names
 from .fixtures import final_score_df  # pylint: disable=unused-import
+
+pytestmark = pytest.mark.smoketest
 
 
 def _helper_test_count_exceeding_threshold(df, col, error_check=1000):

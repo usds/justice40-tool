@@ -1,7 +1,7 @@
 import pandas as pd
 import pytest
 from data_pipeline.config import settings
-import data_pipeline.score.field_names as field_names
+from data_pipeline.score import field_names
 
 
 @pytest.fixture(scope="session")

@@ -62,6 +62,9 @@ jobs:
       - name: Generate Score Post
         run: |
           poetry run python3 data_pipeline/application.py generate-score-post -s aws
+      - name: Run Smoketests
+        run: |
+          poetry run pytest data_pipeline/ -m smoketest
       - name: Deploy Score to Geoplatform AWS
         run: |
           poetry run s4cmd put ./data_pipeline/data/score/csv/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/csv --recursive --force --API-ACL=public-read
