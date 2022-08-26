@@ -1,6 +1,5 @@
 import pandas as pd
 import pytest
-from data_pipeline.utils import get_module_logger
 from data_pipeline.config import settings
 from data_pipeline.etl.score.constants import (
     TILES_SCORE_COLUMNS,
@@ -8,7 +7,7 @@ from data_pipeline.etl.score.constants import (
     USER_INTERFACE_EXPERIENCE_FIELD_NAME,
 )
 
-logger = get_module_logger(__name__)
+pytestmark = pytest.mark.smoketest
 
 """Tiles and data pipeline: The goal here is to smoke test correctness
 
@@ -23,7 +22,7 @@ logger = get_module_logger(__name__)
 
 
 @pytest.fixture
-def tiles_df():
+def tiles_df(scope='session'):
     return pd.read_csv(
         settings.APP_ROOT / "data" / "score" / "csv" / "tiles" / "usa.csv",
         dtype={"GTF": str},
@@ -102,10 +101,6 @@ def test_column_presence(tiles_df):
         missing_columns
     ), f"tiles/usa.csv is missing columns from TILE_SCORE_COLUMNS: {missing_columns}"
 
-
-def test_colunmn_types_as_expected(tiles_df):
-    breakpoint()
-    assert False
 
 # For each data point that we visualize, we want to confirm that
 # (1) the column is represented in tiles_columns
