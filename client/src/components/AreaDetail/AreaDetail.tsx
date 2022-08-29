@@ -1,7 +1,7 @@
 /* eslint-disable quotes */
 // External Libs:
 import React from 'react';
-import {useIntl} from 'gatsby-plugin-intl';
+import {MessageDescriptor, useIntl} from 'gatsby-plugin-intl';
 import {Accordion, Button} from '@trussworks/react-uswds';
 
 // Components:
@@ -78,6 +78,27 @@ export interface ICategory {
   isExceed1MoreBurden: boolean | null,
   isExceedBothSocioBurdens: boolean | null,
 }
+
+/**
+ * This filter will remove indicators from appearing in the side panel by returning
+ * the filter function (curring). There is 1 use case. It can accept any indicator name
+ * as an input.
+ *
+ * 1. For Historic underinvestment if the value is null
+ *
+ * Recommendation is to use a separate filter for each indicator that needs filtering.
+ *
+ * @param {MessageDescriptor} label - allows to re-use this filter for all 3 indicators above
+ * @return {indicatorInfo}
+ */
+export const indicatorFilter = (label:MessageDescriptor) => {
+  const intl = useIntl();
+
+  return (indicator:indicatorInfo) => (
+    indicator.label !== intl.formatMessage(label) ||
+    ( indicator.label == intl.formatMessage(label) && indicator.value != null)
+  );
+};
 
 
 /**
@@ -703,6 +724,7 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
 
         {/* Indicators - filters then map */}
         {category.indicators
+            .filter(indicatorFilter(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HIST_UNDERINVEST))
             .map((indicator: any, index: number) => {
               return <Indicator key={`ind${index}`} indicator={indicator} />;
             })}

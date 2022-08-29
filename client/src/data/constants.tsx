@@ -159,6 +159,7 @@ export const ABANDON_LAND_MINES_EXCEEDS_THRESH = 'AML_ET';
 
 export const FORMER_DEF_SITES_RAW_VALUE = 'FUDS_RAW';
 export const FUDS_RAW_YES = 1;
+export const FUDS_RAW_NO = 0;
 export const FORMER_DEF_SITES_EXCEEDS_THRESH = 'FUDS_ET';
 
 export const PROXIMITY_TSDF_SITES_PERCENTILE = 'TSDF_PFS';

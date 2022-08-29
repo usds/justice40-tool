@@ -84,15 +84,267 @@ exports[`rendering of the Indicator checks if the flooring function works 1`] = 
 </DocumentFragment>
 `;
 
-exports[`renders value correctly for boolean types renders the "false" use case correctly 1`] = `
+exports[`renders value correctly for Former defense sites checks if it renders nothin when FUDS_RAW = null: 1`] = `
 <DocumentFragment>
-  No
+  <li
+    data-cy="indicatorBox"
+    data-testid="indicator-box"
+  >
+    <div>
+      <div>
+        some label
+        <div>
+          some description
+        </div>
+      </div>
+      <div>
+        <div>
+          <div />
+          <div>
+            <img
+              alt="an icon to represent data is unavailable"
+              src="test-file-stub"
+            />
+          </div>
+        </div>
+        <div>
+          <div>
+            missing data
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
 </DocumentFragment>
 `;
 
-exports[`renders value correctly for boolean types renders the "true" use case correctly 1`] = `
+exports[`renders value correctly for Former defense sites checks if it renders when FUDS_RAW = false: 1`] = `
 <DocumentFragment>
-  Yes
+  <li
+    data-cy="indicatorBox"
+    data-testid="indicator-box"
+  >
+    <div>
+      <div>
+        some label
+        <div>
+          some description
+        </div>
+      </div>
+      <div>
+        <div>
+          <div>
+            No
+          </div>
+          <div />
+        </div>
+        <div />
+      </div>
+    </div>
+  </li>
+</DocumentFragment>
+`;
+
+exports[`renders value correctly for Former defense sites checks if it renders when FUDS_RAW = true 1`] = `
+<DocumentFragment>
+  <li
+    data-cy="indicatorBox"
+    data-testid="indicator-box"
+  >
+    <div>
+      <div>
+        some label
+        <div>
+          some description
+        </div>
+      </div>
+      <div>
+        <div>
+          <div>
+            Yes
+          </div>
+          <div />
+        </div>
+        <div />
+      </div>
+    </div>
+  </li>
+</DocumentFragment>
+`;
+
+exports[`renders value correctly for abandoned land mines checks if it renders nothin when AML_RAW = null: 1`] = `
+<DocumentFragment>
+  <li
+    data-cy="indicatorBox"
+    data-testid="indicator-box"
+  >
+    <div>
+      <div>
+        some label
+        <div>
+          some description
+        </div>
+      </div>
+      <div>
+        <div>
+          <div />
+          <div>
+            <img
+              alt="an icon to represent data is unavailable"
+              src="test-file-stub"
+            />
+          </div>
+        </div>
+        <div>
+          <div>
+            missing data
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+</DocumentFragment>
+`;
+
+exports[`renders value correctly for abandoned land mines checks if it renders when AML_RAW = false: 1`] = `
+<DocumentFragment>
+  <li
+    data-cy="indicatorBox"
+    data-testid="indicator-box"
+  >
+    <div>
+      <div>
+        some label
+        <div>
+          some description
+        </div>
+      </div>
+      <div>
+        <div>
+          <div>
+            No
+          </div>
+          <div />
+        </div>
+        <div />
+      </div>
+    </div>
+  </li>
+</DocumentFragment>
+`;
+
+exports[`renders value correctly for abandoned land mines checks if it renders when AML_RAW = true 1`] = `
+<DocumentFragment>
+  <li
+    data-cy="indicatorBox"
+    data-testid="indicator-box"
+  >
+    <div>
+      <div>
+        some label
+        <div>
+          some description
+        </div>
+      </div>
+      <div>
+        <div>
+          <div>
+            Yes
+          </div>
+          <div />
+        </div>
+        <div />
+      </div>
+    </div>
+  </li>
+</DocumentFragment>
+`;
+
+exports[`renders value correctly for historic underinvest. checks if it renders nothin when HRS_ET = null: 1`] = `
+<DocumentFragment>
+  <li
+    data-cy="indicatorBox"
+    data-testid="indicator-box"
+  >
+    <div>
+      <div>
+        some label
+        <div>
+          some description
+        </div>
+      </div>
+      <div>
+        <div>
+          <div />
+          <div>
+            <img
+              alt="an icon to represent data is unavailable"
+              src="test-file-stub"
+            />
+          </div>
+        </div>
+        <div>
+          <div>
+            missing data
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+</DocumentFragment>
+`;
+
+exports[`renders value correctly for historic underinvest. checks if it renders when HRS_ET = false: 1`] = `
+<DocumentFragment>
+  <li
+    data-cy="indicatorBox"
+    data-testid="indicator-box"
+  >
+    <div>
+      <div>
+        some label
+        <div>
+          some description
+        </div>
+      </div>
+      <div>
+        <div>
+          <div>
+            No
+          </div>
+          <div />
+        </div>
+        <div />
+      </div>
+    </div>
+  </li>
+</DocumentFragment>
+`;
+
+exports[`renders value correctly for historic underinvest. checks if it renders when HRS_ET = true 1`] = `
+<DocumentFragment>
+  <li
+    data-cy="indicatorBox"
+    data-testid="indicator-box"
+  >
+    <div>
+      <div>
+        some label
+        <div>
+          some description
+        </div>
+      </div>
+      <div>
+        <div>
+          <div>
+            Yes
+          </div>
+          <div />
+        </div>
+        <div />
+      </div>
+    </div>
+  </li>
 </DocumentFragment>
 `;
 

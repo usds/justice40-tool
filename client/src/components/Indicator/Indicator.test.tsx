@@ -197,25 +197,150 @@ describe('test that the unit suffix renders correctly', ()=> {
   });
 });
 
-describe('renders value correctly for boolean types', () => {
-  it('renders the "true" use case correctly', () => {
+describe('renders value correctly for historic underinvest.', () => {
+  it('checks if it renders when HRS_ET = true', () => {
+    const historicUnderinvest:indicatorInfo = {
+      label: 'some label',
+      description: 'some description',
+      type: 'boolean',
+      value: true,
+      isDisadvagtaged: true,
+    };
     const {asFragment} = render(
         <LocalizedComponent>
-          <IndicatorValue
-            type={'boolean'}
-            displayStat={100}
-          />
+          <Indicator indicator={historicUnderinvest}/>
         </LocalizedComponent>,
     );
     expect(asFragment()).toMatchSnapshot();
   });
-  it('renders the "false" use case correctly', () => {
+
+  it('checks if it renders when HRS_ET = false:', () => {
+    const historicUnderinvest:indicatorInfo = {
+      label: 'some label',
+      description: 'some description',
+      type: 'boolean',
+      value: false,
+      isDisadvagtaged: true,
+    };
     const {asFragment} = render(
         <LocalizedComponent>
-          <IndicatorValue
-            type={'boolean'}
-            displayStat={0}
-          />
+          <Indicator indicator={historicUnderinvest}/>
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('checks if it renders nothin when HRS_ET = null:', () => {
+    const historicUnderinvest:indicatorInfo = {
+      label: 'some label',
+      description: 'some description',
+      type: 'boolean',
+      value: null,
+      isDisadvagtaged: true,
+    };
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <Indicator indicator={historicUnderinvest}/>
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+});
+
+describe('renders value correctly for abandoned land mines', () => {
+  it('checks if it renders when AML_RAW = true', () => {
+    const abandonMines:indicatorInfo = {
+      label: 'some label',
+      description: 'some description',
+      type: 'boolean',
+      value: true,
+      isDisadvagtaged: true,
+    };
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <Indicator indicator={abandonMines}/>
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('checks if it renders when AML_RAW = false:', () => {
+    const abandonMines:indicatorInfo = {
+      label: 'some label',
+      description: 'some description',
+      type: 'boolean',
+      value: false,
+      isDisadvagtaged: true,
+    };
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <Indicator indicator={abandonMines}/>
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('checks if it renders nothin when AML_RAW = null:', () => {
+    const abandonMines:indicatorInfo = {
+      label: 'some label',
+      description: 'some description',
+      type: 'boolean',
+      value: null,
+      isDisadvagtaged: true,
+    };
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <Indicator indicator={abandonMines}/>
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+});
+
+describe('renders value correctly for Former defense sites', () => {
+  it('checks if it renders when FUDS_RAW = true', () => {
+    const formerDefSites:indicatorInfo = {
+      label: 'some label',
+      description: 'some description',
+      type: 'boolean',
+      value: true,
+      isDisadvagtaged: true,
+    };
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <Indicator indicator={formerDefSites}/>
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('checks if it renders when FUDS_RAW = false:', () => {
+    const formerDefSites:indicatorInfo = {
+      label: 'some label',
+      description: 'some description',
+      type: 'boolean',
+      value: false,
+      isDisadvagtaged: true,
+    };
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <Indicator indicator={formerDefSites}/>
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('checks if it renders nothin when FUDS_RAW = null:', () => {
+    const formerDefSites:indicatorInfo = {
+      label: 'some label',
+      description: 'some description',
+      type: 'boolean',
+      value: null,
+      isDisadvagtaged: true,
+    };
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <Indicator indicator={formerDefSites}/>
         </LocalizedComponent>,
     );
     expect(asFragment()).toMatchSnapshot();
