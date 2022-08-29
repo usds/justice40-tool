@@ -92,7 +92,9 @@ class PostScoreETL(ExtractTransformLoad):
     def _extract_score(self, score_path: Path) -> pd.DataFrame:
         logger.info("Reading Score CSV")
         df = pd.read_csv(
-            score_path, dtype={self.GEOID_TRACT_FIELD_NAME: "string"}
+            score_path,
+            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
+            low_memory=False,
         )
 
         # Convert total population to an int
@@ -236,6 +238,11 @@ class PostScoreETL(ExtractTransformLoad):
         de_duplicated_df = merged_df.dropna(
             subset=[DISADVANTAGED_COMMUNITIES_FIELD]
         )
+
+        # recast threshold count to integer
+        de_duplicated_df[field_names.THRESHOLD_COUNT] = de_duplicated_df[
+            field_names.THRESHOLD_COUNT
+        ].astype(int)
 
         # set the score to the new df
         return de_duplicated_df
