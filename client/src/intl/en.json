@@ -880,7 +880,7 @@
     "description": "indicating percentile units"
   },
   "explore.map.page.side.panel.indicator.value.subtext.unavailable": {
-    "defaultMessage": "data is not available",
+    "defaultMessage": "missing data",
     "description": "subtext for indicator when data is N/A"
   },
   "explore.map.page.side.panel.indicator.value.unavailable.alt.text": {

@@ -750,7 +750,7 @@ export const SIDE_PANEL_VALUES = {
   UNAVAILBLE_MSG: <FormattedMessage
     id={'explore.map.page.side.panel.indicator.value.subtext.unavailable'}
     description={'subtext for indicator when data is N/A'}
-    defaultMessage={`data is not available`}
+    defaultMessage={`missing data`}
   />,
 };
 

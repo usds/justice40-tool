@@ -1,7 +1,7 @@
 /* eslint-disable quotes */
 // External Libs:
 import React from 'react';
-import {MessageDescriptor, useIntl} from 'gatsby-plugin-intl';
+import {useIntl} from 'gatsby-plugin-intl';
 import {Accordion, Button} from '@trussworks/react-uswds';
 
 // Components:
@@ -32,11 +32,14 @@ interface IAreaDetailProps {
  *
  * percentile - is the majority of indicators
  * percents - a few indicators fall into this type
- * showFullBooleans - are indicators where we show the indicators when the value is true OR false
- * showTrueBooleans-  are indicators where we show the indicators when the value is true ONLY. When
+ * boolean - 3 indicators are of boolean type
+ *    - historic redlining
+ *    - abandoned land mines
+ *    - FUDS
  * the indicator is false or not existing, it will not show the indicator.
+ *
  */
-export type indicatorType = 'percentile' | 'percent' | 'showFullBoolean' | 'showTrueBoolean';
+export type indicatorType = 'percentile' | 'percent' | 'boolean';
 
 /**
  * This interface is used as define the various fields for each indicator in the side panel
@@ -75,36 +78,6 @@ export interface ICategory {
   isExceed1MoreBurden: boolean | null,
   isExceedBothSocioBurdens: boolean | null,
 }
-
-/**
- * This filter will remove indicators from appearing in the side panel. There are a few cases:
- *
- * 1. For Historic underinvestment if the value is not true/false
- * 2. For Abandoned land mines if the value isn't true
- * 3. For FUDS if the value isn't true
- *
- * This function will return filter function (classic currying)
- *
- * @param {MessageDescriptor} label - allows to re-use this filter for all 3 indicators above
- * @return {indicatorInfo}
- */
-export const indicatorFilter = (label:MessageDescriptor) => {
-  const intl = useIntl();
-
-  return (indicator:indicatorInfo) => (
-    (
-      indicator.label !== intl.formatMessage(label) ||
-      (
-        indicator.label == intl.formatMessage(label) &&
-        (
-          indicator.type === 'showFullBoolean' ?
-          (indicator.value == true || indicator.value == false) :
-          indicator.value == true
-        )
-      )
-    )
-  );
-};
 
 
 /**
@@ -191,6 +164,7 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
     }
   };
 
+
   /**
    * The workforce development category has some indicators who's disadvantaged boolean
    * will vary depending on which territory is selected. This function allows us to change
@@ -246,8 +220,14 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
     }
   };
 
-  // Define each indicator in the side panel with constants from copy file (for intl)
-  // Indicators are grouped by category
+
+  /**
+   * Define each indicator in the side panel with constants from copy file (for intl)
+   *
+   * Indicators are grouped by category
+   */
+
+  // Climate category
   const expAgLoss: indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.EXP_AG_LOSS),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.EXP_AG_LOSS),
@@ -314,6 +294,8 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
   //   threshold: 80,
   // };
 
+
+  // Energy category
   const energyBurden: indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.ENERGY_BURDEN),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.ENERGY_BURDEN),
@@ -333,6 +315,7 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
       properties[constants.IS_EXCEEDS_THRESH_FOR_PM25] : null,
   };
 
+  // Transit category
   const dieselPartMatter: indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.DIESEL_PARTICULATE_MATTER),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.DIESEL_PARTICULATE_MATTER),
@@ -361,20 +344,18 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
       properties[constants.IS_EXCEEDS_THRESH_FOR_TRAFFIC_PROX] : null,
   };
 
+  // Housing category
   const historicUnderinvest: indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HIST_UNDERINVEST),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.HIST_UNDERINVEST),
-    type: 'showFullBoolean',
-
-    // Todo: remove internal conditional once BE is fixed:
-    value: properties.hasOwnProperty(constants.HISTORIC_UNDERINVESTMENT) ?
-      (properties[constants.HISTORIC_UNDERINVESTMENT] === "1" ? true : false) :
+    type: 'boolean',
+    value: properties.hasOwnProperty(constants.HISTORIC_UNDERINVESTMENT_EXCEED_THRESH) ?
+      (properties[constants.HISTORIC_UNDERINVESTMENT_EXCEED_THRESH] ===
+        constants.HISTORIC_UNDERINVESTMENT_RAW_YES ? true : false) :
       null,
-
-    // Todo: remove second check after BE is fixed:
-    isDisadvagtaged: properties.hasOwnProperty(constants.HISTORIC_UNDERINVESTMENT) &&
-    properties[constants.HISTORIC_UNDERINVESTMENT] === "1" ?
-      true : false,
+    isDisadvagtaged: properties.hasOwnProperty(constants.HISTORIC_UNDERINVESTMENT_EXCEED_THRESH) &&
+    properties[constants.HISTORIC_UNDERINVESTMENT_EXCEED_THRESH] ===
+    constants.HISTORIC_UNDERINVESTMENT_RAW_YES ? true : false,
   };
   const houseBurden: indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HOUSE_BURDEN),
@@ -413,35 +394,26 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
       properties[constants.IS_EXCEEDS_THRESH_FOR_LEAD_PAINT_AND_MEDIAN_HOME_VAL] : null,
   };
 
+  // Pollution categeory
   const abandonMines: indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.ABANDON_MINES),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.ABANDON_MINES),
-    type: 'showTrueBoolean',
-
-    // Todo: remove internal conditional once BE is fixed:
-    value: properties.hasOwnProperty(constants.ABANDON_LAND_MINES) ?
-      (properties[constants.ABANDON_LAND_MINES] === "1" ? true : false) :
+    type: 'boolean',
+    value: properties.hasOwnProperty(constants.ABANDON_LAND_MINES_RAW_VALUE) ?
+      (properties[constants.ABANDON_LAND_MINES_RAW_VALUE] === constants.AML_RAW_YES ? true : false) :
       null,
-
-    // Todo: remove second check after BE is fixed:
-    isDisadvagtaged: properties.hasOwnProperty(constants.ABANDON_LAND_MINES) &&
-    properties[constants.ABANDON_LAND_MINES] === "1" ?
-      true : false,
+    isDisadvagtaged: properties.hasOwnProperty(constants.ABANDON_LAND_MINES_EXCEEDS_THRESH) ?
+    properties[constants.ABANDON_LAND_MINES_EXCEEDS_THRESH] : null,
   };
   const formerDefSites: indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.FORMER_DEF_SITES),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.FORMER_DEF_SITES),
-    type: 'showTrueBoolean',
-
-    // Todo: remove internal conditional once BE is fixed:
-    value: properties.hasOwnProperty(constants.FORMER_DEF_SITES) ?
-      (properties[constants.FORMER_DEF_SITES] === "1" ? true : false) :
+    type: 'boolean',
+    value: properties.hasOwnProperty(constants.FORMER_DEF_SITES_RAW_VALUE) ?
+      (properties[constants.FORMER_DEF_SITES_RAW_VALUE] === constants.FUDS_RAW_YES ? true : false) :
       null,
-
-    // Todo: remove second check after BE is fixed:
-    isDisadvagtaged: properties.hasOwnProperty(constants.FORMER_DEF_SITES) &&
-    properties[constants.FORMER_DEF_SITES] === "1" ?
-      true : false,
+    isDisadvagtaged: properties.hasOwnProperty(constants.FORMER_DEF_SITES_EXCEEDS_THRESH) ?
+    properties[constants.FORMER_DEF_SITES_EXCEEDS_THRESH] : null,
   };
   const proxHaz: indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.PROX_HAZ),
@@ -471,6 +443,7 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
       properties[constants.IS_EXCEEDS_THRESH_FOR_RMP] : null,
   };
 
+  // Water category
   const leakyTanks: indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.LEAKY_TANKS),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.LEAKY_TANKS),
@@ -490,6 +463,7 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
       properties[constants.IS_EXCEEDS_THRESH_FOR_WASTEWATER] : null,
   };
 
+  // Health category
   const asthma: indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.ASTHMA),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.ASTHMA),
@@ -527,6 +501,7 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
       properties[constants.IS_EXCEEDS_THRESH_FOR_LOW_LIFE_EXP] : null,
   };
 
+  // Workforce dev category
   const lingIso: indicatorInfo = {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.LING_ISO),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.LING_ISO),
@@ -565,6 +540,7 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
     isDisadvagtaged: getWorkForceIndicatorIsDisadv('highSchool'),
     threshold: 10,
   };
+
 
   /**
    * Aggregate indicators based on categories
@@ -671,6 +647,7 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
     },
   ];
 
+
   /**
    * Modify the category array depending on the sidePanelState field. This field comes from the backend
    * and is called UI_EXP.
@@ -699,9 +676,11 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
   }
 
 
-  // Create the AccoridionItems by mapping over the categories array. In this array we define the
-  // various indicators for a specific category. This is an array which then maps over the <Indicator />
-  // component to render the actual Indicator
+  /**
+   * Create the AccoridionItems by mapping over the categories array. In this array we define the
+   * various indicators for a specific category. This is an array which then maps over the
+   * <Indicator /> component to render the actual Indicator
+   */
   const categoryItems = categories.map((category) => ({
     id: category.id,
 
@@ -724,9 +703,6 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
 
         {/* Indicators - filters then map */}
         {category.indicators
-            .filter(indicatorFilter(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HIST_UNDERINVEST))
-            .filter(indicatorFilter(EXPLORE_COPY.SIDE_PANEL_INDICATORS.ABANDON_MINES))
-            .filter(indicatorFilter(EXPLORE_COPY.SIDE_PANEL_INDICATORS.FORMER_DEF_SITES))
             .map((indicator: any, index: number) => {
               return <Indicator key={`ind${index}`} indicator={indicator} />;
             })}

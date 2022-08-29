@@ -6,7 +6,6 @@ import {indicatorInfo} from '../AreaDetail/AreaDetail';
 
 import * as EXPLORE_COPY from '../../data/copy/explore';
 
-
 describe('rendering of the Indicator', () => {
   it('checks if component renders', () => {
     const highSchool:indicatorInfo = {
@@ -52,6 +51,7 @@ describe('test rendering of Indicator value icons', () => {
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValueIcon
+            type='percent'
             value={90}
             isAboveThresh={true}
           />
@@ -64,6 +64,7 @@ describe('test rendering of Indicator value icons', () => {
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValueIcon
+            type='percentile'
             value={13}
             isAboveThresh={false}
           />
@@ -77,6 +78,7 @@ describe('test rendering of Indicator value icons', () => {
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValueIcon
+            type='percentile'
             value={0}
             isAboveThresh={false}
           />
@@ -86,10 +88,25 @@ describe('test rendering of Indicator value icons', () => {
     screen.getByAltText(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.ARROW_DOWN.defaultMessage);
   });
 
-  it('renders the unavailable icon when the value is null', () => {
+  it('renders the unavailable icon when the value is a boolean null', () => {
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValueIcon
+            type='boolean'
+            value={null}
+            isAboveThresh={false}
+          />
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+    screen.getByAltText(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.UNAVAILABLE.defaultMessage);
+  });
+
+  it('renders the unavailable icon when the value is a percentile null', () => {
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <IndicatorValueIcon
+            type='percentile'
             value={null}
             isAboveThresh={false}
           />
@@ -127,7 +144,7 @@ describe('test rendering of Indicator value sub-text', () => {
     );
     expect(asFragment()).toMatchSnapshot();
   });
-  it('renders the "data is not available"', () => {
+  it(`renders missing data `, () => {
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValueSubText
@@ -180,14 +197,13 @@ describe('test that the unit suffix renders correctly', ()=> {
   });
 });
 
-describe('renders value correctly for ShowFullBoolean types', () => {
+describe('renders value correctly for boolean types', () => {
   it('renders the "true" use case correctly', () => {
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValue
-            type={'showFullBoolean'}
+            type={'boolean'}
             displayStat={100}
-            rawValue={true}
           />
         </LocalizedComponent>,
     );
@@ -197,9 +213,8 @@ describe('renders value correctly for ShowFullBoolean types', () => {
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValue
-            type={'showFullBoolean'}
+            type={'boolean'}
             displayStat={0}
-            rawValue={false}
           />
         </LocalizedComponent>,
     );
