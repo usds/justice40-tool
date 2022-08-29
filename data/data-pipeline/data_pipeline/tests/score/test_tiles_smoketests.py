@@ -1,11 +1,18 @@
+# flake8: noqa: W0613,W0611,F811
+from dataclasses import dataclass
+from typing import Optional
 import pandas as pd
+import numpy as np
 import pytest
 from data_pipeline.config import settings
+from data_pipeline.etl.score import constants
+from data_pipeline.score import field_names
 from data_pipeline.etl.score.constants import (
     TILES_SCORE_COLUMNS,
     THRESHOLD_COUNT_TO_SHOW_FIELD_NAME,
     USER_INTERFACE_EXPERIENCE_FIELD_NAME,
 )
+from .fixtures import final_score_df  # pylint: disable=unused-import
 
 pytestmark = pytest.mark.smoketest
 
@@ -22,7 +29,7 @@ pytestmark = pytest.mark.smoketest
 
 
 @pytest.fixture
-def tiles_df(scope='session'):
+def tiles_df(scope="session"):
     return pd.read_csv(
         settings.APP_ROOT / "data" / "score" / "csv" / "tiles" / "usa.csv",
         dtype={"GTF": str},
@@ -75,9 +82,12 @@ def test_percentiles(tiles_df):
     return True
 
 
-def test_count_of_fips_codes(tiles_df, states_count=56):
+def test_count_of_fips_codes(tiles_df, final_score_df):
+    final_score_state_count = (
+        final_score_df[field_names.GEOID_TRACT_FIELD].str[:2].nunique()
+    )
     assert (
-        tiles_df["GTF"].str[:2].nunique() == states_count
+        tiles_df["GTF"].str[:2].nunique() == final_score_state_count
     ), "Some states are missing from tiles"
     pfs_columns = tiles_df.filter(like="PFS").columns.to_list()
     assert (
@@ -100,6 +110,70 @@ def test_column_presence(tiles_df):
     assert not (
         missing_columns
     ), f"tiles/usa.csv is missing columns from TILE_SCORE_COLUMNS: {missing_columns}"
+
+
+def test_tract_equality(tiles_df, final_score_df):
+    assert tiles_df.shape[0] == final_score_df.shape[0]
+
+
+@dataclass
+class DTypeComparison:
+    final_score_dtype: np.dtype
+    tile_dtype: np.dtype
+    col_name: str
+
+    def __post_init__(self):
+        self._is_dtype_ok = self.final_score_dtype == self.tile_dtype
+
+    def __bool__(self) -> bool:
+        return self._is_dtype_ok
+
+    @property
+    def error_message(self) -> Optional[str]:
+        if not self._is_dtype_ok:
+            return (
+                f"Column {self.col_name} dtype mismatch: "
+                f"score_df: {self.final_score_dtype}, "
+                f"tile_df: {self.tile_dtype}"
+            )
+
+
+def test_for_column_fidelitiy_from_score(tiles_df, final_score_df):
+
+    assert (
+        set(TILES_SCORE_COLUMNS.values()) - set(tiles_df.columns) == set()
+    ), "Some TILES_SCORE_COLUMNS are missing from the tiles dataframe"
+
+    # Keep only the tiles score columns in the final score data
+    final_score_df = final_score_df.rename(columns=TILES_SCORE_COLUMNS).drop(
+        final_score_df.columns.difference(TILES_SCORE_COLUMNS.values()),
+        axis=1,
+        errors="ignore",
+    )
+
+    # Drop the UI-specific fields from the tiles dataframe
+    tiles_df = tiles_df.drop(
+        columns=[
+            "SF",  # State field, added at geoscore
+            "CF",  # County field, added at geoscore,
+            constants.THRESHOLD_COUNT_TO_SHOW_FIELD_NAME,
+            constants.USER_INTERFACE_EXPERIENCE_FIELD_NAME,
+        ]
+    )
+    errors = []
+    assert tiles_df.shape == final_score_df.shape
+
+    comparisons = []
+    for col_name in final_score_df.columns:
+        comparison = DTypeComparison(
+            final_score_dtype=final_score_df.dtypes.loc[col_name],
+            tile_dtype=tiles_df.dtypes.loc[col_name],
+            col_name=col_name,
+        )
+        comparisons.append(comparison)
+    errors = [comp for comp in comparisons if not comp]
+    error_message = "\n".join(error.error_message for error in errors)
+    assert not errors, error_message
 
 
 # For each data point that we visualize, we want to confirm that
