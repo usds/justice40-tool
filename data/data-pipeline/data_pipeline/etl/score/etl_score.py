@@ -45,7 +45,7 @@ class ScoreETL(ExtractTransformLoad):
         self.persistent_poverty_df: pd.DataFrame
         self.census_decennial_df: pd.DataFrame
         self.census_2010_df: pd.DataFrame
-        # self.child_opportunity_index_df: pd.DataFrame
+        self.national_tract_df: pd.DataFrame
         self.hrs_df: pd.DataFrame
         self.dot_travel_disadvantage_df: pd.DataFrame
         self.fsf_flood_df: pd.DataFrame
@@ -201,6 +201,15 @@ class ScoreETL(ExtractTransformLoad):
             hrs_csv,
             dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
             low_memory=False,
+        )
+
+        national_tract_csv = constants.DATA_CENSUS_CSV_FILE_PATH
+        self.national_tract_df = pd.read_csv(
+            national_tract_csv,
+            names=[self.GEOID_TRACT_FIELD_NAME],
+            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
+            low_memory=False,
+            header=None,
         )
 
     def _join_tract_dfs(self, census_tract_dfs: list) -> pd.DataFrame:
@@ -369,6 +378,21 @@ class ScoreETL(ExtractTransformLoad):
             self._census_tract_df_sanity_check(df_to_check=df)
 
         census_tract_df = self._join_tract_dfs(census_tract_dfs)
+
+        # Drop tracts that don't exist in the 2010 tracts
+        tracts_to_drop_count = len(
+            set(census_tract_df.GEOID10_TRACT)
+            - set(self.national_tract_df.GEOID10_TRACT)
+
+        logger.info(
+            "Dropping %s tracts not in the 2010 tract data",
+            tracts_to_drop_count,
+        )
+        census_tract_df = census_tract_df.loc[
+            census_tract_df.GEOID10_TRACT.isin(
+                self.national_tract_df.GEOID10_TRACT
+            )
+        ]
 
         # If GEOID10s are read as numbers instead of strings, the initial 0 is dropped,
         # and then we get too many CBG rows (one for 012345 and one for 12345).
