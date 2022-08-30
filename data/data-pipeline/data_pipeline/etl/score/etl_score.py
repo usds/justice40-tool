@@ -383,7 +383,7 @@ class ScoreETL(ExtractTransformLoad):
         tracts_to_drop_count = len(
             set(census_tract_df.GEOID10_TRACT)
             - set(self.national_tract_df.GEOID10_TRACT)
-
+        )
         logger.info(
             "Dropping %s tracts not in the 2010 tract data",
             tracts_to_drop_count,
