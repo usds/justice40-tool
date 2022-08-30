@@ -1,6 +1,7 @@
 # flake8: noqa: W0613,W0611,F811
 from dataclasses import dataclass
 from typing import Optional
+from data_pipeline.etl.score.etl_utils import floor_series
 import pandas as pd
 import numpy as np
 import pytest
@@ -139,6 +140,35 @@ class DTypeComparison:
         return None
 
 
+@dataclass
+class ColumnValueComparison:
+    final_score_column: pd.Series
+    tiles_column: pd.Series
+    col_name: str
+
+    def __post_init__(self):
+        if self.final_score_column.dtype == np.dtype("float64"):
+            self._is_value_ok = np.allclose(
+                self.final_score_column,
+                self.tiles_column,
+                atol=float(f"1e-{constants.TILES_ROUND_NUM_DECIMALS}"),
+                equal_nan=True,
+            )
+        else:
+            self._is_value_ok = (
+                self.final_score_column.dropna() == self.tiles_column.dropna()
+            ).all()
+
+    def __bool__(self) -> bool:
+        return bool(self._is_value_ok)
+
+    @property
+    def error_message(self) -> Optional[str]:
+        if not self._is_value_ok:
+            return f"Column {self.col_name} value mismatch"
+        return None
+
+
 def test_for_column_fidelitiy_from_score(tiles_df, final_score_df):
 
     assert (
@@ -162,16 +192,26 @@ def test_for_column_fidelitiy_from_score(tiles_df, final_score_df):
         ]
     )
     errors = []
-    assert tiles_df.shape == final_score_df.shape
 
+    # Are the dataframes the same shape truly
+    assert tiles_df.shape == final_score_df.shape
+    assert (tiles_df.GTF == final_score_df.GTF).all()
+    assert sorted(tiles_df.columns) == sorted(final_score_df.columns)
+
+    # Are all the dtypes and values the same?
     comparisons = []
     for col_name in final_score_df.columns:
-        comparison = DTypeComparison(
+        dtype_comparison = DTypeComparison(
             final_score_dtype=final_score_df.dtypes.loc[col_name],
             tile_dtype=tiles_df.dtypes.loc[col_name],
             col_name=col_name,
         )
-        comparisons.append(comparison)
+        comparisons.append(dtype_comparison)
+        if dtype_comparison:
+            value_comparison = ColumnValueComparison(
+                final_score_df[col_name], tiles_df[col_name], col_name
+            )
+            comparisons.append(value_comparison)
     errors = [comp for comp in comparisons if not comp]
     error_message = "\n".join(error.error_message for error in errors)
     assert not errors, error_message
