@@ -59,7 +59,7 @@ class TribalETL(ExtractTransformLoad):
         )
 
         bia_national_lar_df.rename(
-            columns={"TSAID": "tribalId", "LARName": "landAreaName"},
+            columns={"LARID": "tribalId", "LARName": "landAreaName"},
             inplace=True,
         )
 
@@ -154,7 +154,9 @@ class TribalETL(ExtractTransformLoad):
 
         # load the geojsons
         bia_national_lar_geojson = (
-            self.GEOJSON_BASE_PATH / "bia_national_lar" / "BIA_TSA.json"
+            self.GEOJSON_BASE_PATH
+            / "bia_national_lar"
+            / "BIA_National_LAR.json"
         )
         bia_aian_supplemental_geojson = (
             self.GEOJSON_BASE_PATH
