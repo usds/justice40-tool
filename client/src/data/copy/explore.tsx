@@ -629,7 +629,7 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
   },
   ABANDON_MINES: {
     id: 'explore.map.page.side.panel.indicator.abandon.mines',
-    defaultMessage: 'Abandoned land mines',
+    defaultMessage: 'Abandoned mine lands',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Abandoned land mines`,
   },
   FORMER_DEF_SITES: {

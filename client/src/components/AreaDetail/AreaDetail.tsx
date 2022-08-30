@@ -36,7 +36,6 @@ interface IAreaDetailProps {
  *    - historic redlining
  *    - abandoned land mines
  *    - FUDS
- * the indicator is false or not existing, it will not show the indicator.
  *
  */
 export type indicatorType = 'percentile' | 'percent' | 'boolean';
@@ -420,9 +419,8 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.ABANDON_MINES),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.ABANDON_MINES),
     type: 'boolean',
-    value: properties.hasOwnProperty(constants.ABANDON_LAND_MINES_RAW_VALUE) ?
-      (properties[constants.ABANDON_LAND_MINES_RAW_VALUE] === constants.AML_RAW_YES ? true : false) :
-      null,
+    value: properties.hasOwnProperty(constants.ABANDON_LAND_MINES_EXCEEDS_THRESH) ?
+      properties[constants.ABANDON_LAND_MINES_EXCEEDS_THRESH] : null,
     isDisadvagtaged: properties.hasOwnProperty(constants.ABANDON_LAND_MINES_EXCEEDS_THRESH) ?
     properties[constants.ABANDON_LAND_MINES_EXCEEDS_THRESH] : null,
   };
