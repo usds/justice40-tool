@@ -380,19 +380,20 @@ class ScoreETL(ExtractTransformLoad):
         census_tract_df = self._join_tract_dfs(census_tract_dfs)
 
         # Drop tracts that don't exist in the 2010 tracts
-        pre_join_len = census_tract_df.shape[0] 
+        pre_join_len = census_tract_df.shape[0]
 
         census_tract_df = census_tract_df.merge(
             self.national_tract_df,
             on="GEOID10_TRACT",
             how="inner",
         )
-
+        assert (
+            census_tract_df.shape[0] <= pre_join_len
+        ), "Join against national tract list ADDED rows"
         logger.info(
             "Dropped %s tracts not in the 2010 tract data",
             pre_join_len - census_tract_df.shape[0],
-        )        # If GEOID10s are read as numbers instead of strings, the initial 0 is dropped,
-        # and then we get too many CBG rows (one for 012345 and one for 12345).
+        )
 
         # Now sanity-check the merged df.
         self._census_tract_df_sanity_check(

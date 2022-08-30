@@ -136,6 +136,7 @@ class DTypeComparison:
                 f"score_df: {self.final_score_dtype}, "
                 f"tile_df: {self.tile_dtype}"
             )
+        return None
 
 
 def test_for_column_fidelitiy_from_score(tiles_df, final_score_df):
