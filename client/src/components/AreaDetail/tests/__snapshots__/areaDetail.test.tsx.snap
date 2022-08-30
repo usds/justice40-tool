@@ -1496,7 +1496,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         >
           <div>
             <div>
-              Abandoned land mines
+              Abandoned mine lands
               <div>
                 Presence of an abandoned land mine within the tract
               </div>
@@ -2805,7 +2805,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         >
           <div>
             <div>
-              Abandoned land mines
+              Abandoned mine lands
               <div>
                 Presence of an abandoned land mine within the tract
               </div>
