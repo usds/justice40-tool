@@ -149,7 +149,9 @@ def download_file_from_url(
         os.mkdir(download_file_name.parent)
 
     logger.info(f"Downloading {file_url}")
-    response = requests.get(file_url, verify=verify)
+    response = requests.get(
+        file_url, verify=verify, timeout=settings.REQUESTS_DEFAULT_TIMOUT
+    )
     if response.status_code == 200:
         file_contents = response.content
     else:

@@ -14,20 +14,17 @@ logger = get_module_logger(__name__)
 class ScoreNarwhal(Score):
     """Very similar to Score M, at present."""
 
-    def __init__(self, df: pd.DataFrame) -> None:
-        self.LOW_INCOME_THRESHOLD: float = 0.65
-        self.MAX_COLLEGE_ATTENDANCE_THRESHOLD: float = 0.20
-        self.ENVIRONMENTAL_BURDEN_THRESHOLD: float = 0.90
-        self.MEDIAN_HOUSE_VALUE_THRESHOLD: float = 0.90
-        self.LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD: float = 0.10
+    LOW_INCOME_THRESHOLD: float = 0.65
+    MAX_COLLEGE_ATTENDANCE_THRESHOLD: float = 0.20
+    ENVIRONMENTAL_BURDEN_THRESHOLD: float = 0.90
+    MEDIAN_HOUSE_VALUE_THRESHOLD: float = 0.90
+    LACK_OF_HIGH_SCHOOL_MINIMUM_THRESHOLD: float = 0.10
 
-        # We define a donut hole DAC as a tract that is entirely surrounded by
-        # DACs (score threshold = 1) and above median for low income, as a starting
-        # point. As we ground-truth, these thresholds might change.
-        self.LOW_INCOME_THRESHOLD_DONUT: float = 0.50
-        self.SCORE_THRESHOLD_DONUT: float = 1.00
-
-        super().__init__(df)
+    # We define a donut hole DAC as a tract that is entirely surrounded by
+    # DACs (score threshold = 1) and above median for low income, as a starting
+    # point. As we ground-truth, these thresholds might change.
+    LOW_INCOME_THRESHOLD_DONUT: float = 0.50
+    SCORE_THRESHOLD_DONUT: float = 1.00
 
     def _combine_island_areas_with_states_and_set_thresholds(
         self,

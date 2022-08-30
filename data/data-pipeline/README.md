@@ -196,7 +196,7 @@ Here's a list of commands:
 
 ## Local development
 
-You can run the Python code locally without Docker to develop, using Poetry. However, to generate the census data you will need the [GDAL library](https://github.com/OSGeo/gdal) installed locally. Also to generate tiles for a local map, you will need [Mapbox tippecanoe](https://github.com/mapbox/tippecanoe). Please refer to the repos for specific instructions for your OS.
+You can run the Python code locally without Docker to develop, using Poetry. However, to generate the census data you will need the [GDAL library](https://github.com/OSGeo/gdal) installed locally. For score generation, you will need [libspatialindex](https://libspatialindex.org/en/latest/). And to generate tiles for a local map, you will need [Mapbox tippecanoe](https://github.com/mapbox/tippecanoe). Please refer to the repos for specific instructions for your OS.
 
 ### VSCode
 
@@ -218,6 +218,7 @@ To install the above-named executables:
 
 - gdal: `brew install gdal`
 - Tippecanoe: `brew install tippecanoe`
+- spatialindex: `brew install spatialindex`
 
 Note: For MacOS Monterey or M1 Macs, [you might need to follow these steps](https://stackoverflow.com/a/70880741) to install Scipy.
 
@@ -229,7 +230,7 @@ If you want to run tile generation, please install TippeCanoe [following these i
 
 - Start a terminal
 - Change to this directory (`/data/data-pipeline/`)
-- Make sure you have at least Python 3.7 installed: `python -V` or `python3 -V`
+- Make sure you have at least Python 3.8 installed: `python -V` or `python3 -V`
 - We use [Poetry](https://python-poetry.org/) for managing dependencies and building the application. Please follow the instructions on their site to download.
 - Install Poetry requirements with `poetry install`
 
