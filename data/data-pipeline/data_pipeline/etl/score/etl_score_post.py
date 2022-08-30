@@ -219,33 +219,8 @@ class PostScoreETL(ExtractTransformLoad):
             right_on=self.STATE_CODE_COLUMN,
             how="left",
         )
-
-        # check if there are census tracts without score
-        logger.info("Removing tract rows without score")
-
-        # merge census tracts with score
-        merged_df = national_tract_df.merge(
-            score_county_state_merged,
-            on=self.GEOID_TRACT_FIELD_NAME,
-            how="left",
-        )
-
-        # recast population to integer
-        score_county_state_merged["Total population"] = (
-            merged_df["Total population"].fillna(0).astype(int)
-        )
-
-        de_duplicated_df = merged_df.dropna(
-            subset=[DISADVANTAGED_COMMUNITIES_FIELD]
-        )
-
-        # recast threshold count to integer
-        de_duplicated_df[field_names.THRESHOLD_COUNT] = de_duplicated_df[
-            field_names.THRESHOLD_COUNT
-        ].astype(int)
-
         # set the score to the new df
-        return de_duplicated_df
+        return score_county_state_merged
 
     def _create_tile_data(
         self,
