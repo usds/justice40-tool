@@ -69,11 +69,11 @@ DATASET_LIST = [
         "module_dir": "geocorr",
         "class_name": "GeoCorrETL",
     },
-    {
-        "name": "child_opportunity_index",
-        "module_dir": "child_opportunity_index",
-        "class_name": "ChildOpportunityIndex",
-    },
+    # {
+    #     "name": "child_opportunity_index",
+    #     "module_dir": "child_opportunity_index",
+    #     "class_name": "ChildOpportunityIndex",
+    # },
     {
         "name": "mapping_inequality",
         "module_dir": "mapping_inequality",
