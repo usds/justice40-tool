@@ -1,60 +1,31 @@
 # Suffixes
 PERCENTILE_FIELD_SUFFIX = " (percentile)"
-PERCENTILE_URBAN_RURAL_FIELD_SUFFIX = " (percentile urban/rural)"
-MIN_MAX_FIELD_SUFFIX = " (min-max normalized)"
-TOP_25_PERCENTILE_SUFFIX = " (top 25th percentile)"
 ISLAND_AREAS_PERCENTILE_ADJUSTMENT_FIELD = " for island areas"
+ADJACENT_MEAN_SUFFIX = " (based on adjacency index and low income alone)"
+ADJACENCY_INDEX_SUFFIX = " (average of neighbors)"
 
 # Geographic field names
 GEOID_TRACT_FIELD = "GEOID10_TRACT"
 STATE_FIELD = "State/Territory"
 COUNTY_FIELD = "County Name"
 
-# Score file field names
-SCORE_A = "Score A"
-SCORE_B = "Score B"
-SCORE_C = "Score C"
-C_SOCIOECONOMIC = "Socioeconomic Factors"
-C_SENSITIVE = "Sensitive populations"
-C_ENVIRONMENTAL = "Environmental effects"
-C_EXPOSURES = "Exposures"
-SCORE_D = "Score D"
-SCORE_E = "Score E"
-SCORE_F_COMMUNITIES = "Score F (communities)"
-SCORE_G = "Score G"
-SCORE_G_COMMUNITIES = "Score G (communities)"
-SCORE_H = "Score H"
-SCORE_H_COMMUNITIES = "Score H (communities)"
-SCORE_I = "Score I"
-SCORE_I_COMMUNITIES = "Score I (communities)"
-SCORE_K = "NMTC (communities)"
-SCORE_K_COMMUNITIES = "Score K (communities)"
-
-# Definition L fields
-SCORE_L = "Definition L"
-SCORE_L_COMMUNITIES = "Definition L (communities)"
-L_CLIMATE = "Climate Factor (Definition L)"
-L_ENERGY = "Energy Factor (Definition L)"
-L_TRANSPORTATION = "Transportation Factor (Definition L)"
-L_HOUSING = "Housing Factor (Definition L)"
-L_POLLUTION = "Pollution Factor (Definition L)"
-L_WATER = "Water Factor (Definition L)"
-L_HEALTH = "Health Factor (Definition L)"
-L_WORKFORCE = "Workforce Factor (Definition L)"
-L_NON_WORKFORCE = "Any Non-Workforce Factor (Definition L)"
-
-# Definition M fields
-SCORE_M = "Definition M"
-SCORE_M_COMMUNITIES = "Definition M (communities)"
-M_CLIMATE = "Climate Factor (Definition M)"
-M_ENERGY = "Energy Factor (Definition M)"
-M_TRANSPORTATION = "Transportation Factor (Definition M)"
-M_HOUSING = "Housing Factor (Definition M)"
-M_POLLUTION = "Pollution Factor (Definition M)"
-M_WATER = "Water Factor (Definition M)"
-M_HEALTH = "Health Factor (Definition M)"
-M_WORKFORCE = "Workforce Factor (Definition M)"
-M_NON_WORKFORCE = "Any Non-Workforce Factor (Definition M)"
+# Definition Narwhal fields
+FINAL_SCORE_N_BOOLEAN = (
+    "Definition M community, including adjacency index tracts"
+)
+SCORE_N_COMMUNITIES = "Definition N (communities)"
+N_CLIMATE = "Climate Factor (Definition N)"
+N_ENERGY = "Energy Factor (Definition N)"
+N_TRANSPORTATION = "Transportation Factor (Definition N)"
+N_HOUSING = "Housing Factor (Definition N)"
+N_POLLUTION = "Pollution Factor (Definition N)"
+N_WATER = "Water Factor (Definition N)"
+N_HEALTH = "Health Factor (Definition N)"
+N_WORKFORCE = "Workforce Factor (Definition N)"
+N_NON_WORKFORCE = "Any Non-Workforce Factor (Definition N)"
+FINAL_SCORE_N_BOOLEAN = (
+    "Definition N community, including adjacency index tracts"
+)
 
 PERCENTILE = 90
 MEDIAN_HOUSE_VALUE_PERCENTILE = 90
@@ -72,29 +43,23 @@ WORKFORCE_SOCIO_INDICATORS_EXCEEDED = (
     "Both workforce socioeconomic indicators exceeded"
 )
 
-# For now, these are not used. Will delete after following up with Vim.
-POLLUTION_SOCIO_INDICATORS_EXCEEDED = (
-    "Both pollution socioeconomic indicators exceeded"
-)
-CLIMATE_SOCIO_INDICATORS_EXCEEDED = (
-    "Both climate socioeconomic indicators exceeded"
-)
-ENERGY_SOCIO_INDICATORS_EXCEEDED = (
-    "Both energy socioeconomic indicators exceeded"
-)
-HOUSING_SOCIO_INDICATORS_EXCEEDED = (
-    "Both housing socioeconomic indicators exceeded"
-)
-WATER_SOCIO_INDICATORS_EXCEEDED = "Both water socioeconomic indicators exceeded"
-
-HEALTH_SOCIO_INDICATORS_EXCEEDED = (
-    "Both health socioeconomic indicators exceeded"
-)
-
 # Poverty / Income
 POVERTY_FIELD = "Poverty (Less than 200% of federal poverty line)"
+
+# this is the raw, unadjusted variable
 POVERTY_LESS_THAN_200_FPL_FIELD = (
     "Percent of individuals below 200% Federal Poverty Line"
+)
+
+# this is for use in the donuts
+ADJUSTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME = (
+    "Adjusted percent of individuals < 200% Federal Poverty Line"
+)
+
+# this is what gets used in the score
+POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD = "Percent of individuals below 200% Federal Poverty Line, imputed and adjusted"
+IMPUTED_INCOME_FLAG_FIELD_NAME = (
+    "Income data has been estimated based on neighbor income"
 )
 POVERTY_LESS_THAN_150_FPL_FIELD = (
     "Percent of individuals < 150% Federal Poverty Line"
@@ -122,6 +87,27 @@ LOW_MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD = (
     "Low median household income as a percent of area median income"
 )
 
+# Additional ACS demographic fields.
+PERCENT_PREFIX = "Percent "
+
+PERCENT_BLACK_FIELD_NAME = PERCENT_PREFIX + "Black or African American"
+PERCENT_AMERICAN_INDIAN_FIELD_NAME = (
+    PERCENT_PREFIX + "American Indian / Alaska Native"
+)
+PERCENT_ASIAN_FIELD_NAME = PERCENT_PREFIX + "Asian"
+PERCENT_HAWAIIAN_FIELD_NAME = PERCENT_PREFIX + "Native Hawaiian or Pacific"
+PERCENT_TWO_OR_MORE_RACES_FIELD_NAME = PERCENT_PREFIX + "two or more races"
+PERCENT_NON_HISPANIC_WHITE_FIELD_NAME = PERCENT_PREFIX + "White"
+PERCENT_HISPANIC_FIELD_NAME = PERCENT_PREFIX + "Hispanic or Latino"
+# Note that `other` is lowercase because the whole field will show up in the download
+# file as "Percent other races"
+PERCENT_OTHER_RACE_FIELD_NAME = PERCENT_PREFIX + "other races"
+
+# Age
+PERCENT_AGE_UNDER_10 = "Percent age under 10"
+PERCENT_AGE_10_TO_64 = "Percent age 10 to 64"
+PERCENT_AGE_OVER_64 = "Percent age over 64"
+
 # Climate
 FEMA_RISK_FIELD = "FEMA Risk Index Expected Annual Loss Score"
 EXPECTED_BUILDING_LOSS_RATE_FIELD = (
@@ -133,6 +119,8 @@ EXPECTED_AGRICULTURE_LOSS_RATE_FIELD = (
 EXPECTED_POPULATION_LOSS_RATE_FIELD = (
     "Expected population loss rate (Natural Hazards Risk Index)"
 )
+FUTURE_FLOOD_RISK_FIELD = "Share of properties at risk of flood in 30 years"
+FUTURE_WILDFIRE_RISK_FIELD = "Share of properties at risk of fire in 30 years"
 
 # Environment
 DIESEL_FIELD = "Diesel particulate matter exposure"
@@ -147,11 +135,16 @@ TSDF_FIELD = "Proximity to hazardous waste sites"
 NPL_FIELD = "Proximity to NPL sites"
 AIR_TOXICS_CANCER_RISK_FIELD = "Air toxics cancer risk"
 RESPIRATORY_HAZARD_FIELD = "Respiratory hazard index"
+UST_FIELD = "Leaky underground storage tanks"
 
 LOW_INCOME_THRESHOLD = "Exceeds FPL200 threshold"
 
 # Housing
 HOUSING_BURDEN_FIELD = "Housing burden (percent)"
+NO_KITCHEN_OR_INDOOR_PLUMBING_FIELD = (
+    "Share of homes with no kitchen or indoor plumbing (percent)"
+)
+
 HT_INDEX_FIELD = (
     "Housing + Transportation Costs % Income for the Regional Typical Household"
 )
@@ -280,7 +273,17 @@ EJSCREEN_AREAS_OF_CONCERN_STATE_95TH_PERCENTILE_COMMUNITIES_FIELD = (
     "EJSCREEN Areas of Concern, State, 95th percentile (communities)"
 )
 # Mapping inequality data.
+REDLINED_SHARE: str = (
+    "Redlined share: tract had redlining and was more than 50% Grade C or D"
+)
 HOLC_GRADE_D_TRACT_PERCENT_FIELD: str = "Percent of tract that is HOLC Grade D"
+HOLC_GRADE_C_TRACT_PERCENT_FIELD: str = "Percent of tract that is HOLC Grade C"
+HOLC_GRADE_C_OR_D_TRACT_PERCENT_FIELD: str = (
+    "Percent of tract that is HOLC Grade C or HOLC Grade D"
+)
+HOLC_GRADE_C_OR_D_TRACT_50_PERCENT_FIELD: str = (
+    "Tract is more than 50% Grade C or D"
+)
 HOLC_GRADE_D_TRACT_20_PERCENT_FIELD: str = "Tract is >20% HOLC Grade D"
 HOLC_GRADE_D_TRACT_50_PERCENT_FIELD: str = "Tract is >50% HOLC Grade D"
 HOLC_GRADE_D_TRACT_75_PERCENT_FIELD: str = "Tract is >75% HOLC Grade D"
@@ -293,7 +296,7 @@ MICHIGAN_EJSCREEN_PRIORITY_COMMUNITY_FIELD: str = (
 )
 
 # CDC SVI INDEX percentile fields
-CDC_SVI_INDEX_SE_THEME_FIELD: str = "SVI - Socioeconomic Index"
+CDC_SVI_INDEX_SE_THEME_FIELD: str = "SVI - Social Vulnerability Index"
 CDC_SVI_INDEX_HOUSEHOLD_THEME_COMPOSITION_FIELD: str = (
     "SVI - Household Composition Index"
 )
@@ -305,6 +308,9 @@ CDC_SVI_INDEX_RPL_THEMES_OVERALL_FIELD: str = (
     "Overall rank for Social Vulnerability Indices"
 )
 CDC_SVI_INDEX_THEMES_PRIORITY_COMMUNITY: str = "At or above 90 for overall percentile ranking according to Social Vulnerability Indices"
+
+# DOT Travel Burden Data
+DOT_TRAVEL_BURDEN_FIELD: str = "DOT Travel Barriers Score"
 
 # Maryland EJSCREEN Data.
 MARYLAND_EJSCREEN_SCORE_FIELD: str = "Maryland Environmental Justice Score"
@@ -349,6 +355,15 @@ MOBILE_HOME = "Mobile Home"
 SINGLE_PARENT = "Single Parent"
 TRANSPORTATION_COSTS = "Transportation Costs"
 
+# eAMLIS and FUDS variables
+AML_BOOLEAN = "Is there at least one abandoned mine in this census tract?"
+AML_BOOLEAN_FILLED_IN = "Is there at least one abandoned mine in this census tract, where missing data is treated as False?"
+
+ELIGIBLE_FUDS_BINARY_FIELD_NAME = (
+    "Is there at least one Formerly Used Defense Site (FUDS) in the tract?"
+)
+ELIGIBLE_FUDS_FILLED_IN_FIELD_NAME = "Is there at least one Formerly Used Defense Site (FUDS) in the tract, where missing data is treated as False?"
+
 #####
 # Names for individual factors being exceeded
 
@@ -367,6 +382,15 @@ EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD = (
 )
 AGRICULTURAL_VALUE_BOOL_FIELD = "Contains agricultural value"
 
+HIGH_FUTURE_FLOOD_RISK_LOW_INCOME_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for share of "
+    "properties at risk of flood in 30 years and is low income?"
+)
+HIGH_FUTURE_WILDFIRE_RISK_LOW_INCOME_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for "
+    "share of properties at risk of fire in 30 years and is low income?"
+)
+
 # Clean energy and efficiency
 PM25_EXPOSURE_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for PM2.5 exposure and is low income?"
 ENERGY_BURDEN_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for energy burden and is low income?"
@@ -378,6 +402,7 @@ DIESEL_PARTICULATE_MATTER_LOW_INCOME_FIELD = (
 )
 TRAFFIC_PROXIMITY_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for traffic proximity and is low income?"
 
+
 # Affordable and Sustainable Housing
 LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for lead paint and"
@@ -385,6 +410,10 @@ LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD = (
     f"percentile and is low income?"
 )
 HOUSING_BURDEN_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for housing burden and is low income?"
+NO_KITCHEN_OR_INDOOR_PLUMBING_LOW_INCOME_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for "
+    + "share of homes with no kitchen or indoor plumbing and is low income?"
+)
 
 # Remediation and Reduction of Legacy Pollution
 RMP_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for proximity to RMP sites and is low income?"
@@ -394,8 +423,13 @@ HAZARDOUS_WASTE_LOW_INCOME_FIELD = (
     f" for proximity to hazardous waste facilities and is low income?"
 )
 
+AML_LOW_INCOME_FIELD = "There is at least one abandoned mine in this census tract and the tract is low income."
+ELIGIBLE_FUDS_LOW_INCOME_FIELD = "There is at least one Formerly Used Defense Site (FUDS) in the tract and the tract is low income."
+
+
 # Critical Clean Water and Waste Infrastructure
 WASTEWATER_DISCHARGE_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for wastewater discharge and is low income?"
+UST_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for leaky underground storage tanks and is low income?"
 
 # Health Burdens
 DIABETES_LOW_INCOME_FIELD = f"Greater than or equal to the {PERCENTILE}th percentile for diabetes and is low income?"
@@ -411,6 +445,7 @@ LOW_LIFE_EXPECTANCY_LOW_INCOME_FIELD = (
 SCORE_M_LOW_INCOME_SUFFIX = (
     ", is low income, and has a low percent of higher ed students"
 )
+
 
 COLLEGE_ATTENDANCE_LESS_THAN_20_FIELD = (
     "Percent higher ed enrollment rate is less than 20%"
@@ -450,6 +485,10 @@ TRAFFIC_PROXIMITY_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
     f"traffic proximity{SCORE_M_LOW_INCOME_SUFFIX}?"
 )
 
+DOT_TRAVEL_BURDEN_LOW_INCOME_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile "
+    f"for DOT transit barriers and is low income?"
+)
 # Affordable and Sustainable Housing
 LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for lead paint,"
@@ -497,22 +536,22 @@ LOW_LIFE_EXPECTANCY_LOW_INCOME_LOW_HIGHER_ED_FIELD = (
 # Workforce
 UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for unemployment"
-    " and has low HS education?"
+    " and has low HS attainment?"
 )
 
 LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for households in linguistic isolation"
-    " and has low HS education?"
+    " and has low HS attainment?"
 )
 
 POVERTY_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for households at or below 100% federal poverty level"
-    " and has low HS education?"
+    " and has low HS attainment?"
 )
 
 LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for low median household income as a "
-    f"percent of area median income and has low HS education?"
+    f"percent of area median income and has low HS attainment?"
 )
 
 # Score M Workforce Variables
@@ -580,6 +619,7 @@ PM25_EXCEEDS_PCTILE_THRESHOLD = (
 )
 DIESEL_EXCEEDS_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for diesel particulate matter"
 TRAFFIC_PROXIMITY_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for traffic proximity"
+DOT_BURDEN_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for DOT travel barriers"
 LEAD_PAINT_PROXY_PCTILE_THRESHOLD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for lead paint and"
     f" the median house value is less than {MEDIAN_HOUSE_VALUE_PERCENTILE}th "
@@ -588,12 +628,19 @@ LEAD_PAINT_PROXY_PCTILE_THRESHOLD = (
 HOUSING_BURDEN_PCTILE_THRESHOLD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for housing burden"
 )
+NO_KITCHEN_OR_INDOOR_PLUMBING_PCTILE_THRESHOLD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for share "
+    "of homes without indoor plumbing or a kitchen"
+)
+
 RMP_PCTILE_THRESHOLD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for RMP proximity"
 )
 NPL_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for NPL (superfund sites) proximity"
 TSDF_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for proximity to hazardous waste sites"
 WASTEWATER_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for wastewater discharge"
+UST_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for leaky underwater storage tanks"
+
 DIABETES_PCTILE_THRESHOLD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for diabetes"
 )
@@ -610,6 +657,29 @@ LOW_LIFE_EXPECTANCY_PCTILE_THRESHOLD = (
 UNEMPLOYMENT_PCTILE_THRESHOLD = (
     f"Greater than or equal to the {PERCENTILE}th percentile for unemployment"
 )
+HIGH_FUTURE_FLOOD_RISK_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for share of properties "
+    "at risk of flood in 30 years"
+)
+HIGH_FUTURE_WILDFIRE_RISK_FIELD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for share of properties "
+    "at risk of fire in 30 years"
+)
+
+# NCLD Nature Deprived
+TRACT_PERCENT_NON_NATURAL_FIELD_NAME = "Share of the tract's land area that is covered by impervious surface or cropland as a percent"
+NON_NATURAL_PCTILE_THRESHOLD = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for share of the tract's land area that is covered "
+    "by impervious surface or cropland as a percent"
+)
+NON_NATURAL_LOW_INCOME_FIELD_NAME = (
+    f"Greater than or equal to the {PERCENTILE}th percentile for share of the tract's land area that is covered "
+    "by impervious surface or cropland as a percent and is low income?"
+)
+TRACT_ELIGIBLE_FOR_NONNATURAL_THRESHOLD = (
+    "Does the tract have at least 35 acres in it?"
+)
+
 LINGUISTIC_ISOLATION_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for households in linguistic isolation"
 POVERTY_PCTILE_THRESHOLD = f"Greater than or equal to the {PERCENTILE}th percentile for households at or below 100% federal poverty level"
 LOW_MEDIAN_INCOME_PCTILE_THRESHOLD = (
@@ -622,7 +692,6 @@ ISLAND_LOW_MEDIAN_INCOME_PCTILE_THRESHOLD = (
 )
 ISLAND_UNEMPLOYMENT_PCTILE_THRESHOLD = f"{CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009} exceeds {PERCENTILE}th percentile"
 ISLAND_POVERTY_PCTILE_THRESHOLD = f"{CENSUS_DECENNIAL_POVERTY_LESS_THAN_100_FPL_FIELD_2009} exceeds {PERCENTILE}th percentile"
-
 
 # Not currently used in a factor
 EXTREME_HEAT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD = (
@@ -651,6 +720,10 @@ THRESHOLD_COUNT = "Total threshold criteria exceeded"
 CATEGORY_COUNT = "Total categories exceeded"
 
 FPL_200_SERIES = "Is low income?"
+FPL_200_SERIES_IMPUTED_AND_ADJUSTED = "Is low income (imputed and adjusted)?"
+FPL_200_SERIES_IMPUTED_AND_ADJUSTED_DONUTS = (
+    "Meets the less stringent low income criterion for the adjacency index?"
+)
 FPL_200_AND_COLLEGE_ATTENDANCE_SERIES = (
     "Is low income and has a low percent of higher ed students?"
 )
@@ -664,6 +737,20 @@ MAPPING_FOR_EJ_FINAL_SCORE_FIELD = (
 )
 MAPPING_FOR_EJ_PRIORITY_COMMUNITY_FIELD = (
     "Mapping for Environmental Justice Priority Community"
+)
+
+# Historic Redlining Score
+HISTORIC_REDLINING_SCORE_EXCEEDED = (
+    "Tract-level redlining score meets or exceeds 3.25"
+)
+
+HISTORIC_REDLINING_SCORE_EXCEEDED_LOW_INCOME_FIELD = (
+    "Tract-level redlining score meets or exceeds 3.25 and is low income"
+)
+
+
+ADJACENT_TRACT_SCORE_ABOVE_DONUT_THRESHOLD = (
+    "Is the tract surrounded by disadvantaged communities?"
 )
 
 # End of names for individual factors being exceeded

@@ -35,7 +35,6 @@ datasets:
         include_in_tiles: true
         include_in_downloadable_files: true
         create_percentile: true
-
       - short_name: "ex_ag_loss"
         df_field_name: "EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME"
         long_name: "Expected agricultural loss rate (Natural Hazards Risk Index)"
@@ -54,7 +53,6 @@ datasets:
         include_in_tiles: true
         include_in_downloadable_files: true
         create_percentile: true
-
       - short_name: "ex_bldg_loss"
         df_field_name: "EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME"
         long_name: "Expected building loss rate (Natural Hazards Risk Index)"
@@ -72,8 +70,223 @@ datasets:
         include_in_tiles: true
         include_in_downloadable_files: true
         create_percentile: true
-
       - short_name: "has_ag_val"
         df_field_name: "CONTAINS_AGRIVALUE"
         long_name: "Contains agricultural value"
         field_type: bool
+  - long_name: "Child Opportunity Index 2.0 database"
+    short_name: "coi"
+    module_name: "child_opportunity_index"
+    input_geoid_tract_field_name: "geoid"
+    load_fields:
+      - short_name: "he_heat"
+        df_field_name: "EXTREME_HEAT_FIELD"
+        long_name: "Summer days above 90F" 
+        field_type: float
+        include_in_downloadable_files: true
+        include_in_tiles: true
+      - short_name: "he_food"
+        long_name: "Percent low access to healthy food"
+        df_field_name: "HEALTHY_FOOD_FIELD"
+        field_type: float
+        include_in_downloadable_files: true
+        include_in_tiles: true
+      - short_name: "he_green"
+        long_name: "Percent impenetrable surface areas" 
+        df_field_name: "IMPENETRABLE_SURFACES_FIELD"
+        field_type: float
+        include_in_downloadable_files: true
+        include_in_tiles: true
+      - short_name: "ed_reading"
+        df_field_name: "READING_FIELD"
+        long_name: "Third grade reading proficiency"
+        field_type: float
+        include_in_downloadable_files: true
+        include_in_tiles: true
+  - long_name: "Low-Income Energy Affordabililty Data"
+    short_name: "LEAD"
+    module_name: "doe_energy_burden"
+    input_geoid_tract_field_name: "FIP"
+    load_fields:
+      - short_name: "EBP_PFS"
+        df_field_name: "REVISED_ENERGY_BURDEN_FIELD_NAME"
+        long_name: "Energy burden" 
+        field_type: float
+        include_in_downloadable_files: true
+        include_in_tiles: true
+  - long_name: "Formerly Used Defense Sites"
+    short_name: "FUDS"
+    module_name: "us_army_fuds"
+    load_fields:
+      - short_name: "fuds_count"
+        df_field_name: "ELIGIBLE_FUDS_COUNT_FIELD_NAME"
+        long_name: "Count of eligible Formerly Used Defense Site (FUDS) properties centroids"
+        description_short: 
+          "The number of FUDS marked as Eligible and Has Project in the tract."
+        field_type: int64
+        include_in_tiles: false
+        include_in_downloadable_files: false
+      - short_name: "not_fuds_ct"
+        df_field_name: "INELIGIBLE_FUDS_COUNT_FIELD_NAME"
+        long_name: "Count of ineligible Formerly Used Defense Site (FUDS) properties centroids"
+        description_short: 
+          "The number of FUDS marked as Ineligible or Project in the tract."
+        field_type: int64
+        include_in_tiles: false
+        include_in_downloadable_files: false
+      - short_name: "has_fuds"
+        df_field_name: "ELIGIBLE_FUDS_BINARY_FIELD_NAME"
+        long_name: "Is there at least one Formerly Used Defense Site (FUDS) in the tract?"
+        description_short: 
+          "Whether the tract has a FUDS"
+        field_type: bool
+        include_in_tiles: false
+        include_in_downloadable_files: false
+  - long_name: "Abandoned Mine Land Inventory System"
+    short_name: "eAMLIS"
+    module_name: "eamlis"
+    load_fields:
+      - short_name: "has_aml"
+        df_field_name: "AML_BOOLEAN"
+        long_name: "Is there at least one abandoned mine in this census tract?"
+        description_short: 
+          "Whether the tract has an abandoned mine"
+        field_type: bool
+        include_in_tiles: true
+        include_in_downloadable_files: true
+  - long_name: "Example ETL"
+    short_name: "Example"
+    module_name: "example_dataset"
+    input_geoid_tract_field_name: "GEOID10_TRACT"
+    load_fields:
+      - short_name: "EXAMPLE_FIELD"
+        df_field_name: "Input Field 1"
+        long_name: "Example Field 1" 
+        field_type: float
+        include_in_tiles: true
+        include_in_downloadable_files: true
+  - long_name: "First Street Foundation Flood Risk"
+    short_name: "FSF Flood Risk"
+    module_name: fsf_flood_risk
+    input_geoid_tract_field_name: "GEOID"
+    load_fields:
+      - short_name: "flood_eligible_properties"
+        df_field_name: "COUNT_PROPERTIES"
+        long_name: "Count of properties eligible for flood risk calculation within tract (floor of 250)" 
+        field_type: float
+        include_in_tiles: false
+        include_in_downloadable_files: true
+        create_percentile: false
+      - short_name: "flood_risk_properties_today"
+        df_field_name: "PROPERTIES_AT_RISK_FROM_FLOODING_TODAY"
+        long_name: "Count of properties at risk of flood today" 
+        field_type: float
+        include_in_tiles: false
+        include_in_downloadable_files: true
+        create_percentile: false
+      - short_name: "flood_risk_properties_30yrs"
+        df_field_name: "PROPERTIES_AT_RISK_FROM_FLOODING_IN_30_YEARS"
+        long_name: "Count of properties at risk of flood in 30 years" 
+        field_type: float
+        include_in_tiles: false
+        include_in_downloadable_files: true
+        create_percentile: false
+      - short_name: "flood_risk_share_today"
+        df_field_name: "SHARE_OF_PROPERTIES_AT_RISK_FROM_FLOODING_TODAY"
+        long_name: "Share of properties at risk of flood today" 
+        field_type: float
+        include_in_tiles: false
+        include_in_downloadable_files: true
+        create_percentile: true
+      - short_name: "flood_risk_share_30yrs"
+        df_field_name: "SHARE_OF_PROPERTIES_AT_RISK_FROM_FLOODING_IN_30_YEARS"
+        long_name: "Share of properties at risk of flood in 30 years" 
+        field_type: float
+        include_in_tiles: false
+        include_in_downloadable_files: true
+        create_percentile: true
+  - long_name: "First Street Foundation Wildfire Risk"
+    short_name: "FSF Wildfire Risk"
+    module_name: fsf_wildfire_risk
+    input_geoid_tract_field_name: "GEOID"
+    load_fields:
+      - short_name: "fire_eligible_properties"
+        df_field_name: "COUNT_PROPERTIES"
+        long_name: "Count of properties eligible for wildfire risk calculation within tract (floor of 250)" 
+        field_type: float
+        include_in_tiles: false
+        include_in_downloadable_files: true
+        create_percentile: false
+      - short_name: "fire_risk_properties_today"
+        df_field_name: "PROPERTIES_AT_RISK_FROM_FIRE_TODAY"
+        long_name: "Count of properties at risk of wildfire today" 
+        field_type: float
+        include_in_tiles: false
+        include_in_downloadable_files: true
+        create_percentile: false
+      - short_name: "fire_risk_properties_30yrs"
+        df_field_name: "PROPERTIES_AT_RISK_FROM_FIRE_IN_30_YEARS"
+        long_name: "Count of properties at risk of wildfire in 30 years" 
+        field_type: float
+        include_in_tiles: false
+        include_in_downloadable_files: true
+        create_percentile: false
+      - short_name: "fire_risk_share_today"
+        df_field_name: "SHARE_OF_PROPERTIES_AT_RISK_FROM_FIRE_TODAY"
+        long_name: "Share of properties at risk of fire today" 
+        field_type: float
+        include_in_tiles: false
+        include_in_downloadable_files: true
+        create_percentile: true
+      - short_name: "fire_risk_share_30yrs"
+        df_field_name: "SHARE_OF_PROPERTIES_AT_RISK_FROM_FIRE_IN_30_YEARS"
+        long_name: "Share of properties at risk of fire in 30 years" 
+        field_type: float
+        include_in_tiles: false
+        include_in_downloadable_files: true
+        create_percentile: true
+  - long_name: "DOT Travel Disadvantage Index"
+    short_name: "DOT"
+    module_name: "travel_composite"
+    input_geoid_tract_field_name: "GEOID10_TRACT"
+    load_fields:
+      - short_name: "travel_burden"
+        df_field_name: "TRAVEL_BURDEN_FIELD_NAME"
+        long_name: "DOT Travel Barriers Score" 
+        field_type: float
+        include_in_tiles: true
+        include_in_downloadable_files: true
+        create_percentile: true
+  - long_name: "National Land Cover Database (NLCD) Lack of Green Space / Nature-Deprived Communities dataset, as compiled by TPL"
+    short_name: "nlcd_nature_deprived"
+    module_name: "nlcd_nature_deprived"
+    input_geoid_tract_field_name: "GEOID10_TRACT"
+    load_fields:
+      - short_name: "ncld_eligible"
+        df_field_name: "ELIGIBLE_FOR_NATURE_DEPRIVED_FIELD_NAME"
+        long_name: "Does the tract have at least 35 acres in it?" 
+        field_type: bool
+        include_in_tiles: true
+        include_in_downloadable_files: true
+        create_percentile: false
+      - short_name: "percent_impervious"
+        df_field_name: "TRACT_PERCENT_IMPERVIOUS_FIELD_NAME"
+        long_name: "Share of the tract's land area that is covered by impervious surface as a percent" 
+        field_type: percentage
+        include_in_tiles: true
+        include_in_downloadable_files: true
+        create_percentile: true
+      - short_name: "percent_nonnatural"
+        df_field_name: "TRACT_PERCENT_NON_NATURAL_FIELD_NAME"
+        long_name: "Share of the tract's land area that is covered by impervious surface or cropland as a percent" 
+        field_type: percentage
+        include_in_tiles: true
+        include_in_downloadable_files: true
+        create_percentile: true
+      - short_name: "percent_cropland"
+        df_field_name: "TRACT_PERCENT_CROPLAND_FIELD_NAME"
+        long_name: "Share of the tract's land area that is covered by cropland as a percent" 
+        field_type: percentage
+        include_in_tiles: true
+        include_in_downloadable_files: true
+        create_percentile: true

@@ -77,16 +77,39 @@ def etl_runner(dataset_to_run: str = None) -> None:
     """
     dataset_list = _get_datasets_to_run(dataset_to_run)
 
-    with concurrent.futures.ThreadPoolExecutor() as executor:
-        futures = {
-            executor.submit(_run_one_dataset, dataset=dataset)
-            for dataset in dataset_list
-        }
+    # Because we are memory constrained on our infrastructure,
+    # we split datasets into those that are not memory intensive
+    # (is_memory_intensive == False) and thereby can be safely
+    # run in parallel, and those that require more RAM and thus
+    # should be run sequentially. The is_memory_intensive_flag is
+    # set manually in constants.py based on experience running
+    # the pipeline
+    concurrent_datasets = [
+        dataset
+        for dataset in dataset_list
+        if not dataset["is_memory_intensive"]
+    ]
+    high_memory_datasets = [
+        dataset for dataset in dataset_list if dataset["is_memory_intensive"]
+    ]
 
-        for fut in concurrent.futures.as_completed(futures):
-            # Calling result will raise an exception if one occurred.
-            # Otherwise, the exceptions are silently ignored.
-            fut.result()
+    if concurrent_datasets:
+        logger.info("Running concurrent jobs")
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            futures = {
+                executor.submit(_run_one_dataset, dataset=dataset)
+                for dataset in concurrent_datasets
+            }
+
+            for fut in concurrent.futures.as_completed(futures):
+                # Calling result will raise an exception if one occurred.
+                # Otherwise, the exceptions are silently ignored.
+                fut.result()
+
+    if high_memory_datasets:
+        logger.info("Running high-memory jobs")
+        for dataset in high_memory_datasets:
+            _run_one_dataset(dataset=dataset)
 
 
 def score_generate() -> None:

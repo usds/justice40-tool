@@ -38,6 +38,12 @@ jobs:
         uses: snok/install-poetry@v1
       - name: Print Poetry settings
         run: poetry show -v
+      - name: Install GDAL/ogr2ogr
+        run: |
+          sudo add-apt-repository ppa:ubuntugis/ppa
+          sudo apt-get update
+          sudo apt-get -y install gdal-bin
+          ogrinfo --version
       - name: Install dependencies
         run: poetry add s4cmd && poetry install
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
@@ -47,12 +53,18 @@ jobs:
           aws-access-key-id: ${{ secrets.DATA_DEV_AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.DATA_DEV_AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
+      - name: Download census geo data for later user
+        run: |
+          poetry run python3 data_pipeline/application.py pull-census-data -s aws
       - name: Generate Score
         run: |
           poetry run python3 data_pipeline/application.py score-full-run
       - name: Generate Score Post
         run: |
           poetry run python3 data_pipeline/application.py generate-score-post -s aws
+      - name: Run Smoketests
+        run: |
+          poetry run pytest data_pipeline/ -m smoketest
       - name: Deploy Score to Geoplatform AWS
         run: |
           poetry run s4cmd put ./data_pipeline/data/score/csv/ s3://justice40-data/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/csv --recursive --force --API-ACL=public-read
@@ -71,12 +83,6 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: "github-actions[bot]"
           allow-repeats: false
-      - name: Install GDAL/ogr2ogr
-        run: |
-          sudo add-apt-repository ppa:ubuntugis/ppa
-          sudo apt-get update
-          sudo apt-get -y install gdal-bin
-          ogrinfo --version
       - name: Set timezone for tippecanoe
         uses: szenius/set-timezone@v1.0
         with:
@@ -111,7 +117,7 @@ jobs:
           # Deploy to S3 for the staging URL
           message: |
             ** Map Deployed! **   
-            Map with Staging Backend: https://screeningtool.geoplatform.gov/en/?flags=stage_hash=${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}
+            Map with Staging Backend: https://screeningtool.geoplatform.gov/en?flags=stage_hash=${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}
             Find tiles here: https://justice40-data.s3.amazonaws.com/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/tiles
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: "github-actions[bot]"

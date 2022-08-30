@@ -29,7 +29,7 @@ from . import constants
 logger = get_module_logger(__name__)
 
 # Define the DAC variable
-DISADVANTAGED_COMMUNITIES_FIELD = field_names.SCORE_M_COMMUNITIES
+DISADVANTAGED_COMMUNITIES_FIELD = field_names.SCORE_N_COMMUNITIES
 
 
 class PostScoreETL(ExtractTransformLoad):
@@ -254,8 +254,8 @@ class PostScoreETL(ExtractTransformLoad):
             tiles_score_column_titles
         ].copy()
 
-        # Currently, we do not want USVI or Guam on the map, so this will drop all
-        # rows with the FIPS codes (first two digits of the census tract)
+        # We may not want some states/territories on the map, so this will drop all
+        # rows with those FIPS codes (first two digits of the census tract)
         logger.info(
             f"Dropping specified FIPS codes from tile data: {constants.DROP_FIPS_CODES}"
         )
@@ -521,8 +521,6 @@ class PostScoreETL(ExtractTransformLoad):
         score_tiles_df.to_csv(tile_score_path, index=False, encoding="utf-8")
 
     def _load_downloadable_zip(self, downloadable_info_path: Path) -> None:
-        logger.info("Saving Downloadable CSV")
-
         downloadable_info_path.mkdir(parents=True, exist_ok=True)
         csv_path = constants.SCORE_DOWNLOADABLE_CSV_FILE_PATH
         excel_path = constants.SCORE_DOWNLOADABLE_EXCEL_FILE_PATH

@@ -46,7 +46,8 @@ class ExtractTransformLoad:
     DATA_PATH: pathlib.Path = APP_ROOT / "data"
     TMP_PATH: pathlib.Path = DATA_PATH / "tmp"
     CONTENT_CONFIG: pathlib.Path = APP_ROOT / "content" / "config"
-    DATASET_CONFIG: pathlib.Path = APP_ROOT / "etl" / "score" / "config"
+    DATASET_CONFIG_PATH: pathlib.Path = APP_ROOT / "etl" / "score" / "config"
+    DATASET_CONFIG: Optional[dict] = None
 
     # Parameters
     GEOID_FIELD_NAME: str = "GEOID10"
@@ -98,48 +99,52 @@ class ExtractTransformLoad:
     # It is used on the "load" base class method
     output_df: pd.DataFrame = None
 
+    def __init_subclass__(cls) -> None:
+        cls.DATASET_CONFIG = cls.yaml_config_load()
+
     @classmethod
-    def yaml_config_load(cls) -> dict:
+    def yaml_config_load(cls) -> Optional[dict]:
         """Generate config dictionary and set instance variables from YAML dataset."""
-
-        # check if the class instance has score YAML definitions
-        datasets_config = load_yaml_dict_from_file(
-            cls.DATASET_CONFIG / "datasets.yml",
-            DatasetsConfig,
-        )
-
-        # get the config for this dataset
-        try:
-            dataset_config = next(
-                item
-                for item in datasets_config.get("datasets")
-                if item["module_name"] == cls.NAME
+        if cls.NAME is not None:
+            # check if the class instance has score YAML definitions
+            datasets_config = load_yaml_dict_from_file(
+                cls.DATASET_CONFIG_PATH / "datasets.yml",
+                DatasetsConfig,
             )
-        except StopIteration:
-            # Note: it'd be nice to log the name of the dataframe, but that's not accessible in this scope.
-            logger.error(
-                f"Exception encountered while extracting dataset config for dataset {cls.NAME}"
-            )
-            sys.exit()
 
-        # set some of the basic fields
-        cls.INPUT_GEOID_TRACT_FIELD_NAME = dataset_config[
-            "input_geoid_tract_field_name"
-        ]
+            # get the config for this dataset
+            try:
+                dataset_config = next(
+                    item
+                    for item in datasets_config.get("datasets")
+                    if item["module_name"] == cls.NAME
+                )
+            except StopIteration:
+                # Note: it'd be nice to log the name of the dataframe, but that's not accessible in this scope.
+                logger.error(
+                    f"Exception encountered while extracting dataset config for dataset {cls.NAME}"
+                )
+                sys.exit()
 
-        # get the columns to write on the CSV
-        # and set the constants
-        cls.COLUMNS_TO_KEEP = [
-            cls.GEOID_TRACT_FIELD_NAME,  # always index with geoid tract id
-        ]
-        for field in dataset_config["load_fields"]:
-            cls.COLUMNS_TO_KEEP.append(field["long_name"])
+            # set some of the basic fields
+            if "input_geoid_tract_field_name" in dataset_config:
+                cls.INPUT_GEOID_TRACT_FIELD_NAME = dataset_config[
+                    "input_geoid_tract_field_name"
+                ]
 
-            # set the constants for the class
-            setattr(cls, field["df_field_name"], field["long_name"])
+            # get the columns to write on the CSV
+            # and set the constants
+            cls.COLUMNS_TO_KEEP = [
+                cls.GEOID_TRACT_FIELD_NAME,  # always index with geoid tract id
+            ]
+            for field in dataset_config["load_fields"]:
+                cls.COLUMNS_TO_KEEP.append(field["long_name"])
+                setattr(cls, field["df_field_name"], field["long_name"])
 
-        # return the config dict
-        return dataset_config
+                # set the constants for the class
+                setattr(cls, field["df_field_name"], field["long_name"])
+            return dataset_config
+        return None
 
     # This is a classmethod so it can be used by `get_data_frame` without
     # needing to create an instance of the class. This is a use case in `etl_score`.
@@ -176,14 +181,18 @@ class ExtractTransformLoad:
         to get the file from a source url, unzips it and stores it on an
         extract_path."""
 
-        # this can be accessed via super().extract()
-        if source_url and extract_path:
-            unzip_file_from_url(
-                file_url=source_url,
-                download_path=self.get_tmp_path(),
-                unzipped_file_path=extract_path,
-                verify=verify,
-            )
+        if source_url is None:
+            source_url = self.SOURCE_URL
+
+        if extract_path is None:
+            extract_path = self.get_tmp_path()
+
+        unzip_file_from_url(
+            file_url=source_url,
+            download_path=self.get_tmp_path(),
+            unzipped_file_path=extract_path,
+            verify=verify,
+        )
 
     def transform(self) -> None:
         """Transform the data extracted into a format that can be consumed by the

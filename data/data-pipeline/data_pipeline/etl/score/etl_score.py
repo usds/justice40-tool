@@ -1,5 +1,5 @@
 import functools
-from collections import namedtuple
+from dataclasses import dataclass
 
 import numpy as np
 import pandas as pd
@@ -8,6 +8,16 @@ from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.sources.national_risk_index.etl import (
     NationalRiskIndexETL,
 )
+from data_pipeline.etl.sources.dot_travel_composite.etl import (
+    TravelCompositeETL,
+)
+from data_pipeline.etl.sources.fsf_flood_risk.etl import (
+    FloodRiskETL,
+)
+from data_pipeline.etl.sources.eamlis.etl import AbandonedMineETL
+from data_pipeline.etl.sources.us_army_fuds.etl import USArmyFUDS
+from data_pipeline.etl.sources.nlcd_nature_deprived.etl import NatureDeprivedETL
+from data_pipeline.etl.sources.fsf_wildfire_risk.etl import WildfireRiskETL
 from data_pipeline.score.score_runner import ScoreRunner
 from data_pipeline.score import field_names
 from data_pipeline.etl.score import constants
@@ -36,14 +46,19 @@ class ScoreETL(ExtractTransformLoad):
         self.census_decennial_df: pd.DataFrame
         self.census_2010_df: pd.DataFrame
         # self.child_opportunity_index_df: pd.DataFrame
+        self.hrs_df: pd.DataFrame
+        self.dot_travel_disadvantage_df: pd.DataFrame
+        self.fsf_flood_df: pd.DataFrame
+        self.fsf_fire_df: pd.DataFrame
+        self.nature_deprived_df: pd.DataFrame
+        self.eamlis_df: pd.DataFrame
+        self.fuds_df: pd.DataFrame
 
     def extract(self) -> None:
         logger.info("Loading data sets from disk.")
 
         # EJSCreen csv Load
-        ejscreen_csv = (
-            constants.DATA_PATH / "dataset" / "ejscreen_2019" / "usa.csv"
-        )
+        ejscreen_csv = constants.DATA_PATH / "dataset" / "ejscreen" / "usa.csv"
         self.ejscreen_df = pd.read_csv(
             ejscreen_csv,
             dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
@@ -116,6 +131,24 @@ class ScoreETL(ExtractTransformLoad):
         # Load FEMA national risk index data
         self.national_risk_index_df = NationalRiskIndexETL.get_data_frame()
 
+        # Load DOT Travel Disadvantage
+        self.dot_travel_disadvantage_df = TravelCompositeETL.get_data_frame()
+
+        # Load fire risk data
+        self.fsf_fire_df = WildfireRiskETL.get_data_frame()
+
+        # Load flood risk data
+        self.fsf_flood_df = FloodRiskETL.get_data_frame()
+
+        # Load NLCD Nature-Deprived Communities data
+        self.nature_deprived_df = NatureDeprivedETL.get_data_frame()
+
+        # Load eAMLIS dataset
+        self.eamlis_df = AbandonedMineETL.get_data_frame()
+
+        # Load FUDS dataset
+        self.fuds_df = USArmyFUDS.get_data_frame()
+
         # Load GeoCorr Urban Rural Map
         geocorr_urban_rural_csv = (
             constants.DATA_PATH / "dataset" / "geocorr" / "usa.csv"
@@ -168,6 +201,17 @@ class ScoreETL(ExtractTransformLoad):
         )
         self.child_opportunity_index_df = pd.read_csv(
             child_opportunity_index_csv,
+            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
+            low_memory=False,
+        )
+
+        # Load HRS data
+        hrs_csv = (
+            constants.DATA_PATH / "dataset" / "historic_redlining" / "usa.csv"
+        )
+
+        self.hrs_df = pd.read_csv(
+            hrs_csv,
             dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
             low_memory=False,
         )
@@ -253,6 +297,7 @@ class ScoreETL(ExtractTransformLoad):
         df: pd.DataFrame,
         input_column_name: str,
         output_column_name_root: str,
+        drop_tracts: list = None,
         ascending: bool = True,
     ) -> pd.DataFrame:
         """Creates percentiles.
@@ -262,98 +307,46 @@ class ScoreETL(ExtractTransformLoad):
         E.g., "PM2.5 exposure (percentile)".
         This will be for the entire country.
 
-        For an "apples-to-apples" comparison of urban tracts to other urban tracts,
-        and compare rural tracts to other rural tracts.
-
-        This percentile will be created and returned as
-        f"{output_column_name_root}{field_names.PERCENTILE_URBAN_RURAL_FIELD_SUFFIX}".
-        E.g., "PM2.5 exposure (percentile urban/rural)".
-        This field exists for every tract, but for urban tracts this value will be the
-        percentile compared to other urban tracts, and for rural tracts this value
-        will be the percentile compared to other rural tracts.
-
-        Specific methdology:
-            1. Decide a methodology for confirming whether a tract counts as urban or
-            rural. Currently in the codebase, we use Geocorr to identify the % rural of
-            a tract, and mark the tract as rural if the percentage is >50% and urban
-            otherwise. This may or may not be the right methodology.
-            2. Once tracts are marked as urban or rural, create one percentile rank
-            that only ranks urban tracts, and one percentile rank that only ranks rural
-            tracts.
-            3. Combine into a single field.
-
         `output_column_name_root` is different from `input_column_name` to enable the
         reverse percentile use case. In that use case, `input_column_name` may be
         something like "3rd grade reading proficiency" and `output_column_name_root`
         may be something like "Low 3rd grade reading proficiency".
         """
-        if (
-            output_column_name_root
-            != field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD
-        ):
+
+        # We have two potential options for assessing how to calculate percentiles.
+        # For the vast majority of columns, we will simply calculate percentiles overall.
+        # However, for Linguistic Isolation and Agricultural  Value Loss, there exist conditions
+        # for which we drop out tracts from consideration in the percentile. More details on those
+        # are below, for them, we provide a list of tracts to not include.
+        # Because of the fancy transformations below, I have removed the urban / rural percentiles,
+        # which are now deprecated.
+        if not drop_tracts:
             # Create the "basic" percentile.
+            ## note: I believe this is less performant than if we made a bunch of these PFS columns
+            ## and then concatenated the list. For the refactor!
             df[
                 f"{output_column_name_root}"
                 f"{field_names.PERCENTILE_FIELD_SUFFIX}"
             ] = df[input_column_name].rank(pct=True, ascending=ascending)
 
         else:
-            # For agricultural loss, we are using whether there is value at all to determine percentile and then
-            # filling places where the value is False with 0
+            tmp_series = df[input_column_name].where(
+                ~df[field_names.GEOID_TRACT_FIELD].isin(drop_tracts),
+                np.nan,
+            )
+            logger.info(
+                f"Creating special case column for percentiles from {input_column_name}"
+            )
             df[
                 f"{output_column_name_root}"
                 f"{field_names.PERCENTILE_FIELD_SUFFIX}"
-            ] = (
-                df.where(
-                    df[field_names.AGRICULTURAL_VALUE_BOOL_FIELD].astype(float)
-                    == 1.0
-                )[input_column_name]
-                .rank(ascending=ascending, pct=True)
-                .fillna(
-                    df[field_names.AGRICULTURAL_VALUE_BOOL_FIELD].astype(float)
-                )
-            )
+            ] = tmp_series.rank(ascending=ascending, pct=True)
 
-        # Create the urban/rural percentiles.
-        urban_rural_percentile_fields_to_combine = []
-        for (urban_or_rural_string, urban_heuristic_bool) in [
-            ("urban", True),
-            ("rural", False),
-        ]:
-            # Create a field with only those values
-            this_category_only_value_field = (
-                f"{input_column_name} (value {urban_or_rural_string} only)"
-            )
-            df[this_category_only_value_field] = np.where(
-                df[field_names.URBAN_HEURISTIC_FIELD] == urban_heuristic_bool,
-                df[input_column_name],
-                None,
-            )
-
-            # Calculate the percentile for only this category
-            this_category_only_percentile_field = (
-                f"{output_column_name_root} "
-                f"(percentile {urban_or_rural_string} only)"
-            )
-            df[this_category_only_percentile_field] = df[
-                this_category_only_value_field
-            ].rank(
-                pct=True,
-                # Set ascending to the parameter value.
-                ascending=ascending,
-            )
-
-            # Add the field name to this list. Later, we'll combine this list.
-            urban_rural_percentile_fields_to_combine.append(
-                this_category_only_percentile_field
-            )
-
-        # Combine both urban and rural into one field:
-        df[
-            f"{output_column_name_root}{field_names.PERCENTILE_URBAN_RURAL_FIELD_SUFFIX}"
-        ] = df[urban_rural_percentile_fields_to_combine].mean(
-            axis=1, skipna=True
-        )
+            # Check that "drop tracts" were dropped (quicker than creating a fixture?)
+            assert df[df[field_names.GEOID_TRACT_FIELD].isin(drop_tracts)][
+                f"{output_column_name_root}"
+                f"{field_names.PERCENTILE_FIELD_SUFFIX}"
+            ].isna().sum() == len(drop_tracts), "Not all tracts were dropped"
 
         return df
 
@@ -376,6 +369,13 @@ class ScoreETL(ExtractTransformLoad):
             self.census_decennial_df,
             self.census_2010_df,
             self.child_opportunity_index_df,
+            self.hrs_df,
+            self.dot_travel_disadvantage_df,
+            self.fsf_flood_df,
+            self.fsf_fire_df,
+            self.nature_deprived_df,
+            self.eamlis_df,
+            self.fuds_df,
         ]
 
         # Sanity check each data frame before merging.
@@ -405,8 +405,10 @@ class ScoreETL(ExtractTransformLoad):
             df[field_names.MEDIAN_INCOME_FIELD] / df[field_names.AMI_FIELD]
         )
 
+        # Donut columns get added later
         numeric_columns = [
             field_names.HOUSING_BURDEN_FIELD,
+            field_names.NO_KITCHEN_OR_INDOOR_PLUMBING_FIELD,
             field_names.TOTAL_POP_FIELD,
             field_names.MEDIAN_INCOME_AS_PERCENT_OF_STATE_FIELD,
             field_names.ASTHMA_FIELD,
@@ -456,13 +458,37 @@ class ScoreETL(ExtractTransformLoad):
             field_names.EXTREME_HEAT_FIELD,
             field_names.HEALTHY_FOOD_FIELD,
             field_names.IMPENETRABLE_SURFACES_FIELD,
-            # We have to pass this boolean here in order to include it in ag value loss percentiles.
-            field_names.AGRICULTURAL_VALUE_BOOL_FIELD,
+            field_names.UST_FIELD,
+            field_names.DOT_TRAVEL_BURDEN_FIELD,
+            field_names.FUTURE_FLOOD_RISK_FIELD,
+            field_names.FUTURE_WILDFIRE_RISK_FIELD,
+            field_names.TRACT_PERCENT_NON_NATURAL_FIELD_NAME,
+            field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD,
+            field_names.PERCENT_BLACK_FIELD_NAME,
+            field_names.PERCENT_AMERICAN_INDIAN_FIELD_NAME,
+            field_names.PERCENT_ASIAN_FIELD_NAME,
+            field_names.PERCENT_HAWAIIAN_FIELD_NAME,
+            field_names.PERCENT_TWO_OR_MORE_RACES_FIELD_NAME,
+            field_names.PERCENT_NON_HISPANIC_WHITE_FIELD_NAME,
+            field_names.PERCENT_HISPANIC_FIELD_NAME,
+            field_names.PERCENT_OTHER_RACE_FIELD_NAME,
+            field_names.PERCENT_AGE_UNDER_10,
+            field_names.PERCENT_AGE_10_TO_64,
+            field_names.PERCENT_AGE_OVER_64,
         ]
 
         non_numeric_columns = [
             self.GEOID_TRACT_FIELD_NAME,
             field_names.PERSISTENT_POVERTY_FIELD,
+            field_names.TRACT_ELIGIBLE_FOR_NONNATURAL_THRESHOLD,
+            field_names.AGRICULTURAL_VALUE_BOOL_FIELD,
+        ]
+
+        boolean_columns = [
+            field_names.AML_BOOLEAN,
+            field_names.IMPUTED_INCOME_FLAG_FIELD_NAME,
+            field_names.ELIGIBLE_FUDS_BINARY_FIELD_NAME,
+            field_names.HISTORIC_REDLINING_SCORE_EXCEEDED,
         ]
 
         # For some columns, high values are "good", so we want to reverse the percentile
@@ -470,10 +496,11 @@ class ScoreETL(ExtractTransformLoad):
         # >= some threshold.
         # TODO: Add more fields here.
         #  https://github.com/usds/justice40-tool/issues/970
-        ReversePercentile = namedtuple(
-            typename="ReversePercentile",
-            field_names=["field_name", "low_field_name"],
-        )
+        @dataclass
+        class ReversePercentile:
+            field_name: str
+            low_field_name: str
+
         reverse_percentiles = [
             # This dictionary follows the format:
             # <field name> : <field name for low values>
@@ -503,39 +530,70 @@ class ScoreETL(ExtractTransformLoad):
             non_numeric_columns
             + numeric_columns
             + [rp.field_name for rp in reverse_percentiles]
+            + boolean_columns
         )
 
         df_copy = df[columns_to_keep].copy()
 
+        assert len(numeric_columns) == len(
+            set(numeric_columns)
+        ), "You have a double-entered column in the numeric columns list"
+
         df_copy[numeric_columns] = df_copy[numeric_columns].apply(pd.to_numeric)
 
+        # coerce all booleans to bools preserving nan character
+        # since this is a boolean, need to use `None`
+        for col in boolean_columns:
+            tmp = df_copy[col].copy()
+            df_copy[col] = np.where(tmp.notna(), tmp.astype(bool), None)
+            logger.info(f"{col} contains {df_copy[col].isna().sum()} nulls.")
+
         # Convert all columns to numeric and do math
+        # Note that we have a few special conditions here and we handle them explicitly.
+        #     For *Linguistic Isolation*, we do NOT want to include Puerto Rico in the percentile
+        #     calculation. This is because linguistic isolation as a category doesn't make much sense
+        #     in Puerto Rico, where Spanish is a recognized language. Thus, we construct a list
+        #     of tracts to drop from the percentile calculation.
+        #
+        #     For *Expected Agricultural Loss*, we only want to include in the percentile tracts
+        #     in which there is some agricultural value. This helps us adjust the data such that we have
+        #     the ability to discern which tracts truly are at the 90th percentile, since many tracts have 0 value.
+        #
+        #     For *Non-Natural Space*, we may only want to include tracts that have at least 35 acreas, I think. This will
+        #     get rid of  tracts that we think are aberrations statistically. Right now, we have left this out
+        #     pending ground-truthing.
+
         for numeric_column in numeric_columns:
+            drop_tracts = []
+            if (
+                numeric_column
+                == field_names.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD
+            ):
+                drop_tracts = df_copy[
+                    ~df_copy[field_names.AGRICULTURAL_VALUE_BOOL_FIELD]
+                    .astype(bool)
+                    .fillna(False)
+                ][field_names.GEOID_TRACT_FIELD].to_list()
+                logger.info(
+                    f"Dropping {len(drop_tracts)} tracts from Agricultural Value Loss"
+                )
+            elif numeric_column == field_names.LINGUISTIC_ISO_FIELD:
+                drop_tracts = df_copy[
+                    # 72 is the FIPS code for Puerto Rico
+                    df_copy[field_names.GEOID_TRACT_FIELD].str.startswith("72")
+                ][field_names.GEOID_TRACT_FIELD].to_list()
+                logger.info(
+                    f"Dropping {len(drop_tracts)} tracts from Linguistic Isolation"
+                )
+
             df_copy = self._add_percentiles_to_df(
                 df=df_copy,
                 input_column_name=numeric_column,
                 # For this use case, the input name and output name root are the same.
                 output_column_name_root=numeric_column,
                 ascending=True,
+                drop_tracts=drop_tracts,
             )
-
-            # Min-max normalization:
-            # (
-            #     Observed value
-            #     - minimum of all values
-            # )
-            # divided by
-            # (
-            #    Maximum of all values
-            #     - minimum of all values
-            # )
-            min_value = df_copy[numeric_column].min(skipna=True)
-
-            max_value = df_copy[numeric_column].max(skipna=True)
-
-            df_copy[f"{numeric_column}{field_names.MIN_MAX_FIELD_SUFFIX}"] = (
-                df_copy[numeric_column] - min_value
-            ) / (max_value - min_value)
 
         # Create reversed percentiles for these fields
         for reverse_percentile in reverse_percentiles:

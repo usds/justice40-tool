@@ -46,12 +46,14 @@ class GeoScoreETL(ExtractTransformLoad):
             self.DATA_PATH / "census" / "geojson" / "us.json"
         )
 
-        # Import the shortened name for Score M percentile ("SM_PFS") that's used on the
-        # tiles.
+        # Import the shortened name for Score N to be used on tiles.
+        # We should no longer be using PFS
+
+        ## TODO: We really should not have this any longer changing
         self.TARGET_SCORE_SHORT_FIELD = constants.TILES_SCORE_COLUMNS[
-            field_names.SCORE_M + field_names.PERCENTILE_FIELD_SUFFIX
+            field_names.FINAL_SCORE_N_BOOLEAN
         ]
-        self.TARGET_SCORE_RENAME_TO = "M_SCORE"
+        self.TARGET_SCORE_RENAME_TO = "SCORE"
 
         # Import the shortened name for tract ("GTF") that's used on the tiles.
         self.TRACT_SHORT_FIELD = constants.TILES_SCORE_COLUMNS[
@@ -294,7 +296,6 @@ class GeoScoreETL(ExtractTransformLoad):
                 pd.Series(codebook)
                 .reset_index()
                 .rename(
-                    # kept as strings because no downstream impacts
                     columns={
                         0: internal_column_name_field,
                         "index": shapefile_column_field,
@@ -374,7 +375,7 @@ class GeoScoreETL(ExtractTransformLoad):
                 for task in [
                     write_high_to_file,
                     write_low_to_file,
-                    write_esri_shapefile,
+                    # write_esri_shapefile,
                 ]
             }
 
