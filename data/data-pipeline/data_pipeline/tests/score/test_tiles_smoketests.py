@@ -138,7 +138,7 @@ class ColumnValueComparison:
                 f"score_df: {self.final_score_column.dtype}, "
                 f"tile_df: {self.tiles_column.dtype}"
             )
-        elif not self._is_value_ok:
+        if not self._is_value_ok:
             return f"Column {self.col_name} value mismatch"
         return None
 
