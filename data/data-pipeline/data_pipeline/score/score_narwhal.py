@@ -493,13 +493,6 @@ class ScoreNarwhal(Score):
             field_names.AML_BOOLEAN
         ].fillna(False)
 
-        logger.info(
-            f"{ self.df[field_names.AML_BOOLEAN_FILLED_IN].value_counts(dropna=False)}"
-        )
-        logger.info(
-            f"{ self.df[field_names.AML_BOOLEAN].value_counts(dropna=False)}"
-        )
-
         self.df[field_names.POLLUTION_THRESHOLD_EXCEEDED] = self.df[
             [
                 field_names.RMP_PCTILE_THRESHOLD,
