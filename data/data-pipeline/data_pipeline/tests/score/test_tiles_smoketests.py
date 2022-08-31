@@ -1,7 +1,6 @@
 # flake8: noqa: W0613,W0611,F811
 from dataclasses import dataclass
 from typing import Optional
-from data_pipeline.etl.score.etl_utils import floor_series
 import pandas as pd
 import numpy as np
 import pytest
@@ -16,17 +15,6 @@ from data_pipeline.etl.score.constants import (
 from .fixtures import final_score_df  # pylint: disable=unused-import
 
 pytestmark = pytest.mark.smoketest
-
-"""Tiles and data pipeline: The goal here is to smoke test correctness
-
- We should check for wrong variable ported over to the tiles by making sure the column name for each thing we want in usa.csv has the same value as
-    the column name for the tiles csv. This is NOT the same as checking that the column has been renamed. Rather, this requires looking at the
-    methodology of the tool, seeing what should be represented, and ensuring that variable is indeed represented.
-    -- I think we actually have to do a lot of this by hand and in QA
- Check for USVI and Guam in tiles
- We should check that even census tracts that have NULLs for every indicator get included in the tiles and in the csv and are never dropped
-    -- For this, I think we need to check on the front end? It looks like Tippecanoe will drop all nulls
-"""
 
 
 @pytest.fixture
@@ -65,9 +53,6 @@ PERCENTILE_FIELDS = [
     "UF_PFS",
     "WF_PFS",
     "UST_PFS",
-    # "IALMILHSE_PFS",
-    # "IAPLHSE_PFS",
-    # "IAULHSE_PFS",
 ]
 
 
