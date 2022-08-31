@@ -1,5 +1,5 @@
 import functools
-from collections import namedtuple
+from dataclasses import dataclass
 
 import numpy as np
 import pandas as pd
@@ -494,12 +494,14 @@ class ScoreETL(ExtractTransformLoad):
         # For some columns, high values are "good", so we want to reverse the percentile
         # so that high values are "bad" and any scoring logic can still check if it's
         # >= some threshold.
+        # Note that we must use dataclass here instead of namedtuples on account of pylint
         # TODO: Add more fields here.
         #  https://github.com/usds/justice40-tool/issues/970
-        ReversePercentile = namedtuple(
-            typename="ReversePercentile",
-            field_names=["field_name", "low_field_name"],
-        )
+        @dataclass
+        class ReversePercentile:
+            field_name: str
+            low_field_name: str
+
         reverse_percentiles = [
             # This dictionary follows the format:
             # <field name> : <field name for low values>
