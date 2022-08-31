@@ -394,4 +394,10 @@ TILES_SCORE_FLOAT_COLUMNS = [
     field_names.PERCENT_AGE_UNDER_10,
     field_names.PERCENT_AGE_10_TO_64,
     field_names.PERCENT_AGE_OVER_64,
+    # Geojson cannot support nulls in a boolean column when we create tiles;
+    # to preserve null character, we coerce to floats for all fields
+    # that use null to signify missing information in a boolean field.
+    field_names.ELIGIBLE_FUDS_BINARY_FIELD_NAME, 
+    field_names.AML_BOOLEAN, 
+    field_names.HISTORIC_REDLINING_SCORE_EXCEEDED
 ]

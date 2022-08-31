@@ -96,7 +96,9 @@ class GeoScoreETL(ExtractTransformLoad):
         logger.info("Reading score CSV")
         self.score_usa_df = pd.read_csv(
             self.TILE_SCORE_CSV,
-            dtype={self.TRACT_SHORT_FIELD: "string"},
+            dtype={
+                self.TRACT_SHORT_FIELD: str,
+            },
             low_memory=False,
         )
 
@@ -136,7 +138,7 @@ class GeoScoreETL(ExtractTransformLoad):
             columns={self.TARGET_SCORE_SHORT_FIELD: self.TARGET_SCORE_RENAME_TO}
         )
 
-        logger.info("Converting to geojson into tracts")
+        logger.info("Converting geojson into geodf with tracts")
         usa_tracts = gpd.GeoDataFrame(
             usa_tracts,
             columns=[
@@ -272,8 +274,10 @@ class GeoScoreETL(ExtractTransformLoad):
         # Create separate threads to run each write to disk.
         def write_high_to_file():
             logger.info("Writing usa-high (~9 minutes)")
+
             self.geojson_score_usa_high.to_file(
-                filename=self.SCORE_HIGH_GEOJSON, driver="GeoJSON"
+                filename=self.SCORE_HIGH_GEOJSON,
+                driver="GeoJSON",
             )
             logger.info("Completed writing usa-high")
 
@@ -375,7 +379,7 @@ class GeoScoreETL(ExtractTransformLoad):
                 for task in [
                     write_high_to_file,
                     write_low_to_file,
-                    # write_esri_shapefile,
+                    write_esri_shapefile,
                 ]
             }
 
