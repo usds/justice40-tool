@@ -219,6 +219,9 @@ class PostScoreETL(ExtractTransformLoad):
             right_on=self.STATE_CODE_COLUMN,
             how="left",
         )
+        assert score_county_merged[
+            self.GEOID_TRACT_FIELD_NAME
+        ].is_unique, "Merging state/county data introduced duplicate rows"
         # set the score to the new df
         return score_county_state_merged
 

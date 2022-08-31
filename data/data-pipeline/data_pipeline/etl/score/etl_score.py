@@ -380,7 +380,7 @@ class ScoreETL(ExtractTransformLoad):
         census_tract_df = self._join_tract_dfs(census_tract_dfs)
 
         # Drop tracts that don't exist in the 2010 tracts
-        pre_join_len = census_tract_df.shape[0]
+        pre_join_len = census_tract_df[field_names.GEOID_TRACT_FIELD].nunique()
 
         census_tract_df = census_tract_df.merge(
             self.national_tract_df,
@@ -392,7 +392,7 @@ class ScoreETL(ExtractTransformLoad):
         ), "Join against national tract list ADDED rows"
         logger.info(
             "Dropped %s tracts not in the 2010 tract data",
-            pre_join_len - census_tract_df.shape[0],
+            pre_join_len - census_tract_df[field_names.GEOID_TRACT_FIELD].nunique()
         )
 
         # Now sanity-check the merged df.

@@ -174,7 +174,7 @@ def test_for_column_fidelitiy_from_score(tiles_df, final_score_df):
 
     # Are the dataframes the same shape truly
     assert tiles_df.shape == final_score_df.shape
-    assert (tiles_df.GTF == final_score_df.GTF).all()
+    assert tiles_df["GTF"].equals(final_score_df["GTF"])
     assert sorted(tiles_df.columns) == sorted(final_score_df.columns)
 
     # Are all the dtypes and values the same?
@@ -190,6 +190,6 @@ def test_for_column_fidelitiy_from_score(tiles_df, final_score_df):
 
 
 def test_for_state_names(tiles_df):
-    states = tiles_df.SF.value_counts(dropna=False).index
+    states = tiles_df["SF"].value_counts(dropna=False).index
     assert np.nan not in states
     assert states.all()
