@@ -467,6 +467,62 @@
     "defaultMessage": "YES",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the communities the score currently is focused on"
   },
+  "explore.map.page.side.panel.demo.age.over.64": {
+    "defaultMessage": "Elderly over 64",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Elderly over 64"
+  },
+  "explore.map.page.side.panel.demo.age.title": {
+    "defaultMessage": "Age",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demograhics age title"
+  },
+  "explore.map.page.side.panel.demo.age.under.10": {
+    "defaultMessage": "Children under 10",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Children under 10"
+  },
+  "explore.map.page.side.panel.demo.american.indian": {
+    "defaultMessage": "American Indian and Alaska Native",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: American Indian and Alaska Native"
+  },
+  "explore.map.page.side.panel.demo.asian": {
+    "defaultMessage": "Asian",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Asian"
+  },
+  "explore.map.page.side.panel.demo.black": {
+    "defaultMessage": "Black or African American",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Black"
+  },
+  "explore.map.page.side.panel.demo.hawaiian": {
+    "defaultMessage": "Native Hawiian or Pacific Islander",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Native Hawiian or Pacific Islander"
+  },
+  "explore.map.page.side.panel.demo.hispanic": {
+    "defaultMessage": "Hispanic or Latino",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Hispanic or Latino"
+  },
+  "explore.map.page.side.panel.demo.of.age.mid": {
+    "defaultMessage": "Ages 10 - 64",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Ages 10 - 64"
+  },
+  "explore.map.page.side.panel.demo.other": {
+    "defaultMessage": "Other",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Other"
+  },
+  "explore.map.page.side.panel.demo.race.title": {
+    "defaultMessage": "Race / Ethnicity",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demograhics race title"
+  },
+  "explore.map.page.side.panel.demo.title": {
+    "defaultMessage": "Tract demographics",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demograhics title"
+  },
+  "explore.map.page.side.panel.demo.two.or.more": {
+    "defaultMessage": "Two or more races",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Two or more races"
+  },
+  "explore.map.page.side.panel.demo.white": {
+    "defaultMessage": "White",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: White"
+  },
   "explore.map.page.side.panel.exceed.burden.answer.no": {
     "defaultMessage": "No",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. This will display NO if the census tract is disadvantaged"
@@ -499,6 +555,10 @@
     "defaultMessage": "Tract information",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the census tract info title"
   },
+  "explore.map.page.side.panel.indicator.abandon.mines": {
+    "defaultMessage": "Abandoned mine lands",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Abandoned land mines"
+  },
   "explore.map.page.side.panel.indicator.asthma": {
     "defaultMessage": "Asthma",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Asthma"
@@ -506,6 +566,10 @@
   "explore.map.page.side.panel.indicator.barrier.transport": {
     "defaultMessage": "Transportation barriers",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show transportation barriers"
+  },
+  "explore.map.page.side.panel.indicator.description.abandon.mines": {
+    "defaultMessage": "Presence of an abandoned land mine within the tract",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Presence of an abandoned land mine within the tract"
   },
   "explore.map.page.side.panel.indicator.description.asthma": {
     "defaultMessage": "Weighted percent of people who have been told they have asthma",
@@ -543,6 +607,10 @@
     "defaultMessage": "Projected risk to properties from floods from tides, rain, riverine and storm surges in 30 years",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of flooding risk"
   },
+  "explore.map.page.side.panel.indicator.description.former.def.sites": {
+    "defaultMessage": "Presence of a Formerly Used Defense Site within the tract",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Presence of a Formerly Used Defense Site within the tract"
+  },
   "explore.map.page.side.panel.indicator.description.heartDisease": {
     "defaultMessage": "People ages 18 years and older who have been told they have heart disease",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Weighted percent of people ages 18 years and older who have \n    been told they have heart disease"
@@ -554,6 +622,10 @@
   "explore.map.page.side.panel.indicator.description.high.school": {
     "defaultMessage": "Percent of people ages 25 years or older whose education level is less than a high school diploma",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of people ages 25 years or older whose education level \n      is less than a high school diploma"
+  },
+  "explore.map.page.side.panel.indicator.description.historic.underinvestment": {
+    "defaultMessage": "Census tracts with historically high barriers to accessing home loans",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Low income households spending more than 30% of income housing"
   },
   "explore.map.page.side.panel.indicator.description.houseBurden": {
     "defaultMessage": "Low income households spending more than 30% of income on housing",
@@ -645,19 +717,23 @@
   },
   "explore.map.page.side.panel.indicator.exp.ag.loss": {
     "defaultMessage": "Expected agriculture loss rate",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show agriculture loss rate\n"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show agriculture loss rate"
   },
   "explore.map.page.side.panel.indicator.exp.bld.loss": {
     "defaultMessage": "Expected building loss rate",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show building loss rate\n"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show building loss rate"
   },
   "explore.map.page.side.panel.indicator.exp.pop.loss": {
     "defaultMessage": "Expected population loss rate",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show population loss rate\n"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show population loss rate"
   },
   "explore.map.page.side.panel.indicator.flooding": {
     "defaultMessage": "Future flood risk",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show flood risk\n"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show flood risk"
+  },
+  "explore.map.page.side.panel.indicator.former.def.sites": {
+    "defaultMessage": "Formerly Used Defense Sites (FUDS)",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Formerly Used Defense Sites (FUDS)"
   },
   "explore.map.page.side.panel.indicator.heartDisease": {
     "defaultMessage": "Heart disease",
@@ -665,11 +741,15 @@
   },
   "explore.map.page.side.panel.indicator.high.ed": {
     "defaultMessage": "Higher education non-enrollment",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Higher ed degree achievement rate\n"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Higher ed degree achievement rate"
   },
   "explore.map.page.side.panel.indicator.high.school": {
     "defaultMessage": "High school degree non-attainment",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show High school degree achievement rate"
+  },
+  "explore.map.page.side.panel.indicator.historic.underinvest": {
+    "defaultMessage": "Historic underinvestment",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Historic underinvestment"
   },
   "explore.map.page.side.panel.indicator.houseBurden": {
     "defaultMessage": "Housing cost burden",
@@ -800,7 +880,7 @@
     "description": "indicating percentile units"
   },
   "explore.map.page.side.panel.indicator.value.subtext.unavailable": {
-    "defaultMessage": "data is not available",
+    "defaultMessage": "missing data",
     "description": "subtext for indicator when data is N/A"
   },
   "explore.map.page.side.panel.indicator.value.unavailable.alt.text": {
@@ -813,7 +893,7 @@
   },
   "explore.map.page.side.panel.indicator.wildfire": {
     "defaultMessage": "Future wildfire risk",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show wildfire risk\n"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show wildfire risk"
   },
   "explore.map.page.side.panel.info.alt.text.icon1": {
     "defaultMessage": "An icon that has depicts pieces of a block selected mimicking the census block census tracts",

@@ -5,26 +5,26 @@ import {LocalizedComponent} from '../../../test/testHelpers';
 
 import * as constants from '../../../data/constants';
 
-// Todo: Update tests to take into account tribal layer selected
-describe('rendering of the AreaDetail', () => {
-  const properties = {
-    [constants.POVERTY_BELOW_100_PERCENTILE]: .12,
-    [constants.HIGH_SCHOOL_PROPERTY_PERCENTILE]: .98,
-    [constants.LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE]: .97,
-    [constants.UNEMPLOYMENT_PROPERTY_PERCENTILE]: .96,
-    [constants.HOUSING_BURDEN_PROPERTY_PERCENTILE]: .95,
-    [constants.SCORE_PROPERTY_HIGH]: true,
-    [constants.GEOID_PROPERTY]: 98729374234,
-    [constants.TOTAL_POPULATION]: 3435435,
-    [constants.STATE_NAME]: 'New York',
-    [constants.COUNTY_NAME]: 'Brooklyn',
-    [constants.POVERTY_BELOW_200_PERCENTILE]: .19,
-    [constants.SIDE_PANEL_STATE]: constants.SIDE_PANEL_STATE_VALUES.NATION,
-    [constants.COUNT_OF_CATEGORIES_DISADV]: 5,
-    [constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS]: 3,
-  };
-  const hash = ['11.54', '36.0762', '-84.4494'];
+const properties = {
+  [constants.POVERTY_BELOW_100_PERCENTILE]: .12,
+  [constants.HIGH_SCHOOL_PROPERTY_PERCENTILE]: .98,
+  [constants.LINGUISTIC_ISOLATION_PROPERTY_PERCENTILE]: .97,
+  [constants.UNEMPLOYMENT_PROPERTY_PERCENTILE]: .96,
+  [constants.HOUSING_BURDEN_PROPERTY_PERCENTILE]: .95,
+  [constants.SCORE_PROPERTY_HIGH]: true,
+  [constants.GEOID_PROPERTY]: 98729374234,
+  [constants.TOTAL_POPULATION]: 3435435,
+  [constants.STATE_NAME]: 'New York',
+  [constants.COUNTY_NAME]: 'Brooklyn',
+  [constants.POVERTY_BELOW_200_PERCENTILE]: .19,
+  [constants.SIDE_PANEL_STATE]: constants.SIDE_PANEL_STATE_VALUES.NATION,
+  [constants.COUNT_OF_CATEGORIES_DISADV]: 5,
+  [constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS]: 3,
+};
+const hash = ['11.54', '36.0762', '-84.4494'];
 
+
+describe('rendering of the Islan areas in AreaDetail', () => {
   it('checks if indicators for NATION is present', () => {
     const {asFragment} = render(
         <LocalizedComponent>

@@ -6,15 +6,14 @@ import {indicatorInfo} from '../AreaDetail/AreaDetail';
 
 import * as EXPLORE_COPY from '../../data/copy/explore';
 
-
 describe('rendering of the Indicator', () => {
   it('checks if component renders', () => {
     const highSchool:indicatorInfo = {
       label: 'some label',
       description: 'some description',
+      type: 'percent',
       value: .97,
       isDisadvagtaged: true,
-      isPercent: true,
       threshold: 20,
     };
     const {asFragment} = render(
@@ -31,9 +30,9 @@ describe('rendering of the Indicator', () => {
     const highSchool:indicatorInfo = {
       label: 'some label',
       description: 'some description',
+      type: 'percent',
       value: .426,
       isDisadvagtaged: true,
-      isPercent: true,
       threshold: 20,
     };
     const {asFragment} = render(
@@ -52,6 +51,7 @@ describe('test rendering of Indicator value icons', () => {
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValueIcon
+            type='percent'
             value={90}
             isAboveThresh={true}
           />
@@ -64,6 +64,7 @@ describe('test rendering of Indicator value icons', () => {
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValueIcon
+            type='percentile'
             value={13}
             isAboveThresh={false}
           />
@@ -77,6 +78,7 @@ describe('test rendering of Indicator value icons', () => {
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValueIcon
+            type='percentile'
             value={0}
             isAboveThresh={false}
           />
@@ -86,10 +88,25 @@ describe('test rendering of Indicator value icons', () => {
     screen.getByAltText(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.ARROW_DOWN.defaultMessage);
   });
 
-  it('renders the unavailable icon when the value is null', () => {
+  it('renders the unavailable icon when the value is a boolean null', () => {
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValueIcon
+            type='boolean'
+            value={null}
+            isAboveThresh={false}
+          />
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+    screen.getByAltText(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.UNAVAILABLE.defaultMessage);
+  });
+
+  it('renders the unavailable icon when the value is a percentile null', () => {
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <IndicatorValueIcon
+            type='percentile'
             value={null}
             isAboveThresh={false}
           />
@@ -108,7 +125,7 @@ describe('test rendering of Indicator value sub-text', () => {
             value={95}
             isAboveThresh={true}
             threshold={90}
-            isPercent={false}
+            type='percentile'
           />
         </LocalizedComponent>,
     );
@@ -121,20 +138,20 @@ describe('test rendering of Indicator value sub-text', () => {
             value={89}
             isAboveThresh={false}
             threshold={90}
-            isPercent={false}
+            type='percentile'
           />
         </LocalizedComponent>,
     );
     expect(asFragment()).toMatchSnapshot();
   });
-  it('renders the "data is not available"', () => {
+  it(`renders missing data `, () => {
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValueSubText
             value={null}
             isAboveThresh={false}
             threshold={90}
-            isPercent={false}
+            type='percentile'
           />
         </LocalizedComponent>,
     );
@@ -144,60 +161,186 @@ describe('test rendering of Indicator value sub-text', () => {
 
 describe('test that the unit suffix renders correctly', ()=> {
   it('renders correctly when the value is a percentile', () => {
-    const lowLife:indicatorInfo = {
-      label: 'some label',
-      description: 'some description',
-      value: 97,
-      isDisadvagtaged: true,
-      isPercent: false,
-      threshold: 20,
-    };
-
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValue
-            isPercent={lowLife.isPercent}
+            type={'percentile'}
             displayStat={90}
           />
         </LocalizedComponent>,
     );
     expect(asFragment()).toMatchSnapshot();
   });
+
   it('renders correctly when the value is a percent', () => {
-    const lowLife:indicatorInfo = {
-      label: 'some label',
-      description: 'some description',
-      value: 97,
-      isDisadvagtaged: true,
-      isPercent: true,
-      threshold: 20,
-    };
-
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValue
-            isPercent={lowLife.isPercent}
+            type={'percent'}
             displayStat={90}
           />
         </LocalizedComponent>,
     );
     expect(asFragment()).toMatchSnapshot();
   });
-  it('renders correctly when the value is a null', () => {
-    const lowLife:indicatorInfo = {
-      label: 'some label',
-      description: 'some description',
-      value: null,
-      isDisadvagtaged: true,
-      isPercent: false,
-    };
 
+  it('renders correctly when the value is a null', () => {
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValue
-            isPercent={lowLife.isPercent}
+            type={'percentile'}
             displayStat={null}
           />
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+});
+
+describe('renders value correctly for historic underinvest.', () => {
+  it('checks if it renders when HRS_ET = true', () => {
+    const historicUnderinvest:indicatorInfo = {
+      label: 'some label',
+      description: 'some description',
+      type: 'boolean',
+      value: true,
+      isDisadvagtaged: true,
+    };
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <Indicator indicator={historicUnderinvest}/>
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('checks if it renders when HRS_ET = false:', () => {
+    const historicUnderinvest:indicatorInfo = {
+      label: 'some label',
+      description: 'some description',
+      type: 'boolean',
+      value: false,
+      isDisadvagtaged: true,
+    };
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <Indicator indicator={historicUnderinvest}/>
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('checks if it renders nothin when HRS_ET = null:', () => {
+    const historicUnderinvest:indicatorInfo = {
+      label: 'some label',
+      description: 'some description',
+      type: 'boolean',
+      value: null,
+      isDisadvagtaged: true,
+    };
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <Indicator indicator={historicUnderinvest}/>
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+});
+
+describe('renders value correctly for abandoned land mines', () => {
+  it('checks if it renders when AML_RAW = true', () => {
+    const abandonMines:indicatorInfo = {
+      label: 'some label',
+      description: 'some description',
+      type: 'boolean',
+      value: true,
+      isDisadvagtaged: true,
+    };
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <Indicator indicator={abandonMines}/>
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('checks if it renders when AML_RAW = false:', () => {
+    const abandonMines:indicatorInfo = {
+      label: 'some label',
+      description: 'some description',
+      type: 'boolean',
+      value: false,
+      isDisadvagtaged: true,
+    };
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <Indicator indicator={abandonMines}/>
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('checks if it renders nothin when AML_RAW = null:', () => {
+    const abandonMines:indicatorInfo = {
+      label: 'some label',
+      description: 'some description',
+      type: 'boolean',
+      value: null,
+      isDisadvagtaged: true,
+    };
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <Indicator indicator={abandonMines}/>
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+});
+
+describe('renders value correctly for Former defense sites', () => {
+  it('checks if it renders when FUDS_RAW = true', () => {
+    const formerDefSites:indicatorInfo = {
+      label: 'some label',
+      description: 'some description',
+      type: 'boolean',
+      value: true,
+      isDisadvagtaged: true,
+    };
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <Indicator indicator={formerDefSites}/>
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('checks if it renders when FUDS_RAW = false:', () => {
+    const formerDefSites:indicatorInfo = {
+      label: 'some label',
+      description: 'some description',
+      type: 'boolean',
+      value: false,
+      isDisadvagtaged: true,
+    };
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <Indicator indicator={formerDefSites}/>
+        </LocalizedComponent>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('checks if it renders nothin when FUDS_RAW = null:', () => {
+    const formerDefSites:indicatorInfo = {
+      label: 'some label',
+      description: 'some description',
+      type: 'boolean',
+      value: null,
+      isDisadvagtaged: true,
+    };
+    const {asFragment} = render(
+        <LocalizedComponent>
+          <Indicator indicator={formerDefSites}/>
         </LocalizedComponent>,
     );
     expect(asFragment()).toMatchSnapshot();

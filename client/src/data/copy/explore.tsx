@@ -331,6 +331,79 @@ export const SIDE_PANEL_CBG_INFO = defineMessages({
   },
 });
 
+export const SIDE_PANEL_DEMOGRAPHICS = {
+  TITLE: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.title'}
+    defaultMessage={'Tract demographics'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demograhics title`}
+  />,
+  RACE_TITLE: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.race.title'}
+    defaultMessage={'Race / Ethnicity'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demograhics race title`}
+  />,
+  AGE_TITLE: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.age.title'}
+    defaultMessage={'Age'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demograhics age title`}
+  />,
+  DEMO_NON_HISPANIC_WHITE: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.white'}
+    defaultMessage={'White'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: White`}
+  />,
+  DEMO_BLACK: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.black'}
+    defaultMessage={'Black or African American'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Black`}
+  />,
+  DEMO_AMERICAN_INDIAN: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.american.indian'}
+    defaultMessage={'American Indian and Alaska Native'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: American Indian and Alaska Native`}
+  />,
+  DEMO_ASIAN: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.asian'}
+    defaultMessage={'Asian'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Asian`}
+  />,
+  DEMO_HAWAIIAN: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.hawaiian'}
+    defaultMessage={'Native Hawiian or Pacific Islander'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Native Hawiian or Pacific Islander`}
+  />,
+  DEMO_OTHER_RACE: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.other'}
+    defaultMessage={'Other'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Other`}
+  />,
+  DEMO_TWO_OR_MORE_RACES: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.two.or.more'}
+    defaultMessage={'Two or more races'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Two or more races`}
+  />,
+  DEMO_HISPANIC: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.hispanic'}
+    defaultMessage={'Hispanic or Latino'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Hispanic or Latino`}
+  />,
+  DEMO_AGE_UNDER_10: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.age.under.10'}
+    defaultMessage={'Children under 10'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Children under 10`}
+  />,
+  DEMO_AGE_MID: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.of.age.mid'}
+    defaultMessage={'Ages 10 - 64'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Ages 10 - 64`}
+  />,
+  DEMO_AGE_OVER_64: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.age.over.64'}
+    defaultMessage={'Elderly over 64'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Elderly over 64`}
+  />,
+};
+
 export const SIDE_PANEL_TRIBAL_INFO = defineMessages({
   LAND_AREA_NAME: {
     id: 'explore.map.page.side.panel.tribalInfo.landAreaName',
@@ -468,32 +541,27 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
   EXP_AG_LOSS: {
     id: 'explore.map.page.side.panel.indicator.exp.ag.loss',
     defaultMessage: 'Expected agriculture loss rate',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show agriculture loss rate
-`,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show agriculture loss rate`,
   },
   EXP_BLD_LOSS: {
     id: 'explore.map.page.side.panel.indicator.exp.bld.loss',
     defaultMessage: 'Expected building loss rate',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show building loss rate
-`,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show building loss rate`,
   },
   EXP_POP_LOSS: {
     id: 'explore.map.page.side.panel.indicator.exp.pop.loss',
     defaultMessage: 'Expected population loss rate',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show population loss rate
-`,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show population loss rate`,
   },
   FLOODING: {
     id: 'explore.map.page.side.panel.indicator.flooding',
     defaultMessage: 'Future flood risk',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show flood risk
-`,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show flood risk`,
   },
   WILDFIRE: {
     id: 'explore.map.page.side.panel.indicator.wildfire',
     defaultMessage: 'Future wildfire risk',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show wildfire risk
-`,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show wildfire risk`,
   },
   LOW_INCOME: {
     id: 'explore.map.page.side.panel.indicator.low.income',
@@ -502,8 +570,7 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
   HIGH_ED: {
     id: 'explore.map.page.side.panel.indicator.high.ed',
     defaultMessage: 'Higher education non-enrollment',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Higher ed degree achievement rate
-`,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Higher ed degree achievement rate`,
   },
   ENERGY_BURDEN: {
     id: 'explore.map.page.side.panel.indicator.energyBurden',
@@ -540,6 +607,11 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
     defaultMessage: 'Median home value',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Housing cost burden`,
   },
+  HIST_UNDERINVEST: {
+    id: 'explore.map.page.side.panel.indicator.historic.underinvest',
+    defaultMessage: 'Historic underinvestment',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Historic underinvestment`,
+  },
   HOUSE_BURDEN: {
     id: 'explore.map.page.side.panel.indicator.houseBurden',
     defaultMessage: 'Housing cost burden',
@@ -554,6 +626,16 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
     id: 'explore.map.page.side.panel.indicator.lack.plumbing',
     defaultMessage: 'Lack of plumbing',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Lack of plumbing`,
+  },
+  ABANDON_MINES: {
+    id: 'explore.map.page.side.panel.indicator.abandon.mines',
+    defaultMessage: 'Abandoned mine lands',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Abandoned land mines`,
+  },
+  FORMER_DEF_SITES: {
+    id: 'explore.map.page.side.panel.indicator.former.def.sites',
+    defaultMessage: 'Formerly Used Defense Sites (FUDS)',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Formerly Used Defense Sites (FUDS)`,
   },
   PROX_HAZ: {
     id: 'explore.map.page.side.panel.indicator.prox.haz',
@@ -668,7 +750,7 @@ export const SIDE_PANEL_VALUES = {
   UNAVAILBLE_MSG: <FormattedMessage
     id={'explore.map.page.side.panel.indicator.value.subtext.unavailable'}
     description={'subtext for indicator when data is N/A'}
-    defaultMessage={`data is not available`}
+    defaultMessage={`missing data`}
   />,
 };
 
@@ -764,6 +846,11 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Median home value in area`,
 
   },
+  HIST_UNDERINVEST: {
+    id: 'explore.map.page.side.panel.indicator.description.historic.underinvestment',
+    defaultMessage: 'Census tracts with historically high barriers to accessing home loans',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Low income households spending more than 30% of income housing`,
+  },
   HOUSE_BURDEN: {
     id: 'explore.map.page.side.panel.indicator.description.houseBurden',
     defaultMessage: 'Low income households spending more than 30% of income on housing',
@@ -780,6 +867,16 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of homes without indoor kitchens or plumbing`,
   },
 
+  ABANDON_MINES: {
+    id: 'explore.map.page.side.panel.indicator.description.abandon.mines',
+    defaultMessage: 'Presence of an abandoned land mine within the tract',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Presence of an abandoned land mine within the tract`,
+  },
+  FORMER_DEF_SITES: {
+    id: 'explore.map.page.side.panel.indicator.description.former.def.sites',
+    defaultMessage: 'Presence of a Formerly Used Defense Site within the tract',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Presence of a Formerly Used Defense Site within the tract`,
+  },
   PROX_HAZ: {
     id: 'explore.map.page.side.panel.indicator.description.prox.haz',
     defaultMessage: 'Count of hazardous waste facilities within 5 kilometers',

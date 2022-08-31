@@ -84,6 +84,270 @@ exports[`rendering of the Indicator checks if the flooring function works 1`] = 
 </DocumentFragment>
 `;
 
+exports[`renders value correctly for Former defense sites checks if it renders nothin when FUDS_RAW = null: 1`] = `
+<DocumentFragment>
+  <li
+    data-cy="indicatorBox"
+    data-testid="indicator-box"
+  >
+    <div>
+      <div>
+        some label
+        <div>
+          some description
+        </div>
+      </div>
+      <div>
+        <div>
+          <div />
+          <div>
+            <img
+              alt="an icon to represent data is unavailable"
+              src="test-file-stub"
+            />
+          </div>
+        </div>
+        <div>
+          <div>
+            missing data
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+</DocumentFragment>
+`;
+
+exports[`renders value correctly for Former defense sites checks if it renders when FUDS_RAW = false: 1`] = `
+<DocumentFragment>
+  <li
+    data-cy="indicatorBox"
+    data-testid="indicator-box"
+  >
+    <div>
+      <div>
+        some label
+        <div>
+          some description
+        </div>
+      </div>
+      <div>
+        <div>
+          <div>
+            No
+          </div>
+          <div />
+        </div>
+        <div />
+      </div>
+    </div>
+  </li>
+</DocumentFragment>
+`;
+
+exports[`renders value correctly for Former defense sites checks if it renders when FUDS_RAW = true 1`] = `
+<DocumentFragment>
+  <li
+    data-cy="indicatorBox"
+    data-testid="indicator-box"
+  >
+    <div>
+      <div>
+        some label
+        <div>
+          some description
+        </div>
+      </div>
+      <div>
+        <div>
+          <div>
+            Yes
+          </div>
+          <div />
+        </div>
+        <div />
+      </div>
+    </div>
+  </li>
+</DocumentFragment>
+`;
+
+exports[`renders value correctly for abandoned land mines checks if it renders nothin when AML_RAW = null: 1`] = `
+<DocumentFragment>
+  <li
+    data-cy="indicatorBox"
+    data-testid="indicator-box"
+  >
+    <div>
+      <div>
+        some label
+        <div>
+          some description
+        </div>
+      </div>
+      <div>
+        <div>
+          <div />
+          <div>
+            <img
+              alt="an icon to represent data is unavailable"
+              src="test-file-stub"
+            />
+          </div>
+        </div>
+        <div>
+          <div>
+            missing data
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+</DocumentFragment>
+`;
+
+exports[`renders value correctly for abandoned land mines checks if it renders when AML_RAW = false: 1`] = `
+<DocumentFragment>
+  <li
+    data-cy="indicatorBox"
+    data-testid="indicator-box"
+  >
+    <div>
+      <div>
+        some label
+        <div>
+          some description
+        </div>
+      </div>
+      <div>
+        <div>
+          <div>
+            No
+          </div>
+          <div />
+        </div>
+        <div />
+      </div>
+    </div>
+  </li>
+</DocumentFragment>
+`;
+
+exports[`renders value correctly for abandoned land mines checks if it renders when AML_RAW = true 1`] = `
+<DocumentFragment>
+  <li
+    data-cy="indicatorBox"
+    data-testid="indicator-box"
+  >
+    <div>
+      <div>
+        some label
+        <div>
+          some description
+        </div>
+      </div>
+      <div>
+        <div>
+          <div>
+            Yes
+          </div>
+          <div />
+        </div>
+        <div />
+      </div>
+    </div>
+  </li>
+</DocumentFragment>
+`;
+
+exports[`renders value correctly for historic underinvest. checks if it renders nothin when HRS_ET = null: 1`] = `
+<DocumentFragment>
+  <li
+    data-cy="indicatorBox"
+    data-testid="indicator-box"
+  >
+    <div>
+      <div>
+        some label
+        <div>
+          some description
+        </div>
+      </div>
+      <div>
+        <div>
+          <div />
+          <div>
+            <img
+              alt="an icon to represent data is unavailable"
+              src="test-file-stub"
+            />
+          </div>
+        </div>
+        <div>
+          <div>
+            missing data
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+</DocumentFragment>
+`;
+
+exports[`renders value correctly for historic underinvest. checks if it renders when HRS_ET = false: 1`] = `
+<DocumentFragment>
+  <li
+    data-cy="indicatorBox"
+    data-testid="indicator-box"
+  >
+    <div>
+      <div>
+        some label
+        <div>
+          some description
+        </div>
+      </div>
+      <div>
+        <div>
+          <div>
+            No
+          </div>
+          <div />
+        </div>
+        <div />
+      </div>
+    </div>
+  </li>
+</DocumentFragment>
+`;
+
+exports[`renders value correctly for historic underinvest. checks if it renders when HRS_ET = true 1`] = `
+<DocumentFragment>
+  <li
+    data-cy="indicatorBox"
+    data-testid="indicator-box"
+  >
+    <div>
+      <div>
+        some label
+        <div>
+          some description
+        </div>
+      </div>
+      <div>
+        <div>
+          <div>
+            Yes
+          </div>
+          <div />
+        </div>
+        <div />
+      </div>
+    </div>
+  </li>
+</DocumentFragment>
+`;
+
 exports[`test rendering of Indicator value icons renders the down arrow when the value is above the threshold 1`] = `
 <DocumentFragment>
   <img
@@ -102,7 +366,16 @@ exports[`test rendering of Indicator value icons renders the down arrow when the
 </DocumentFragment>
 `;
 
-exports[`test rendering of Indicator value icons renders the unavailable icon when the value is null 1`] = `
+exports[`test rendering of Indicator value icons renders the unavailable icon when the value is a boolean null 1`] = `
+<DocumentFragment>
+  <img
+    alt="an icon to represent data is unavailable"
+    src="test-file-stub"
+  />
+</DocumentFragment>
+`;
+
+exports[`test rendering of Indicator value icons renders the unavailable icon when the value is a percentile null 1`] = `
 <DocumentFragment>
   <img
     alt="an icon to represent data is unavailable"
@@ -117,6 +390,14 @@ exports[`test rendering of Indicator value icons renders the up arrow when value
     alt="an icon for the up arrow"
     src="test-file-stub"
   />
+</DocumentFragment>
+`;
+
+exports[`test rendering of Indicator value sub-text renders missing data  1`] = `
+<DocumentFragment>
+  <div>
+    missing data
+  </div>
 </DocumentFragment>
 `;
 
@@ -144,14 +425,6 @@ exports[`test rendering of Indicator value sub-text renders the "below 90 percen
       th
     </sup>
      percentile
-  </div>
-</DocumentFragment>
-`;
-
-exports[`test rendering of Indicator value sub-text renders the "data is not available" 1`] = `
-<DocumentFragment>
-  <div>
-    data is not available
   </div>
 </DocumentFragment>
 `;
