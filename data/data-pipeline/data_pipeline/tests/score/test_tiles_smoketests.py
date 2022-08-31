@@ -108,13 +108,43 @@ class ColumnValueComparison:
     tiles_column: pd.Series
     col_name: str
 
+    @property
+    def _is_tiles_column_fake_bool(self) -> bool:
+        if self.tiles_column.dtype == np.dtype("float64"):
+            fake_bool = {1.0, 0.0, None}
+            # Replace the nans in the column values with None for
+            # so we can just use issubset below
+            col_values = set(
+                not np.isnan(val) and val or None
+                for val in self.tiles_column.value_counts(dropna=False).index
+            )
+            return (
+                len(col_values) <= 3
+                and col_values.issubset(fake_bool)
+            )
+        return False
+
+    @property
+    def _is_dtype_ok(self) -> bool:
+        if self.final_score_column.dtype == self.tiles_column.dtype:
+            return True
+        if (
+            self.final_score_column.dtype == np.dtype("O")
+            and self.tiles_column.dtype == np.dtype("float64")
+            and self._is_tiles_column_fake_bool
+        ):
+            return True
+        return False
+
     def __post_init__(self):
-        self._is_dtype_ok = (
-            self.final_score_column.dtype == self.tiles_column.dtype
-        )
         self._is_value_ok = False
         if self._is_dtype_ok:
-            if self.final_score_column.dtype == np.dtype("float64"):
+            if self._is_tiles_column_fake_bool:
+                # Cast to actual bool for useful comparison
+                self.tiles_column = self.tiles_column.apply(
+                    lambda val: bool(val) if not np.isnan(val) else np.nan
+                )
+            if self.tiles_column.dtype == np.dtype("float64"):
                 self._is_value_ok = np.allclose(
                     self.final_score_column,
                     self.tiles_column,
