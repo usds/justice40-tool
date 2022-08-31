@@ -118,10 +118,7 @@ class ColumnValueComparison:
                 not np.isnan(val) and val or None
                 for val in self.tiles_column.value_counts(dropna=False).index
             )
-            return (
-                len(col_values) <= 3
-                and col_values.issubset(fake_bool)
-            )
+            return len(col_values) <= 3 and col_values.issubset(fake_bool)
         return False
 
     @property
@@ -152,10 +149,9 @@ class ColumnValueComparison:
                     equal_nan=True,
                 )
             else:
-                self._is_value_ok = (
-                    self.final_score_column.dropna()
-                    == self.tiles_column.dropna()
-                ).all()
+                self._is_value_ok = self.final_score_column.equals(
+                    self.tiles_column
+                )
 
     def __bool__(self) -> bool:
         return self._is_dtype_ok and bool(self._is_value_ok)
