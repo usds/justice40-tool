@@ -206,5 +206,5 @@ def test_for_column_fidelitiy_from_score(tiles_df, final_score_df):
 
 def test_for_state_names(tiles_df):
     states = tiles_df.SF.value_counts(dropna=False).index
-    breakpoint()
-    assert False
+    assert np.nan not in states
+    assert states.all()
