@@ -45,7 +45,6 @@ class PostScoreETL(ExtractTransformLoad):
         self.input_counties_df: pd.DataFrame
         self.input_states_df: pd.DataFrame
         self.input_score_df: pd.DataFrame
-        self.input_national_tract_df: pd.DataFrame
 
         self.output_score_county_state_merged_df: pd.DataFrame
         self.output_score_tiles_df: pd.DataFrame
@@ -104,18 +103,6 @@ class PostScoreETL(ExtractTransformLoad):
 
         return df
 
-    def _extract_national_tract(
-        self, national_tract_path: Path
-    ) -> pd.DataFrame:
-        logger.info("Reading national tract file")
-        return pd.read_csv(
-            national_tract_path,
-            names=[self.GEOID_TRACT_FIELD_NAME],
-            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
-            low_memory=False,
-            header=None,
-        )
-
     def extract(self) -> None:
         logger.info("Starting Extraction")
 
@@ -137,9 +124,6 @@ class PostScoreETL(ExtractTransformLoad):
         )
         self.input_score_df = self._extract_score(
             constants.DATA_SCORE_CSV_FULL_FILE_PATH
-        )
-        self.input_national_tract_df = self._extract_national_tract(
-            constants.DATA_CENSUS_CSV_FILE_PATH
         )
 
     def _transform_counties(
@@ -187,7 +171,6 @@ class PostScoreETL(ExtractTransformLoad):
 
     def _create_score_data(
         self,
-        national_tract_df: pd.DataFrame,
         counties_df: pd.DataFrame,
         states_df: pd.DataFrame,
         score_df: pd.DataFrame,
@@ -412,7 +395,6 @@ class PostScoreETL(ExtractTransformLoad):
         transformed_score = self._transform_score(self.input_score_df)
 
         output_score_county_state_merged_df = self._create_score_data(
-            self.input_national_tract_df,
             transformed_counties,
             transformed_states,
             transformed_score,
