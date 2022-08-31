@@ -368,7 +368,6 @@ class ScoreETL(ExtractTransformLoad):
             self.census_acs_median_incomes_df,
             self.census_decennial_df,
             self.census_2010_df,
-            # self.child_opportunity_index_df,
             self.hrs_df,
             self.dot_travel_disadvantage_df,
             self.fsf_flood_df,
@@ -455,9 +454,6 @@ class ScoreETL(ExtractTransformLoad):
             field_names.CENSUS_UNEMPLOYMENT_FIELD_2010,
             field_names.CENSUS_POVERTY_LESS_THAN_100_FPL_FIELD_2010,
             field_names.CENSUS_DECENNIAL_TOTAL_POPULATION_FIELD_2009,
-            field_names.EXTREME_HEAT_FIELD,
-            field_names.HEALTHY_FOOD_FIELD,
-            field_names.IMPENETRABLE_SURFACES_FIELD,
             field_names.UST_FIELD,
             field_names.DOT_TRAVEL_BURDEN_FIELD,
             field_names.FUTURE_FLOOD_RISK_FIELD,
@@ -508,10 +504,6 @@ class ScoreETL(ExtractTransformLoad):
             # This low field will not exist yet, it is only calculated for the
             # percentile.
             # TODO: This will come from the YAML dataset config
-            ReversePercentile(
-                field_name=field_names.READING_FIELD,
-                low_field_name=field_names.LOW_READING_FIELD,
-            ),
             ReversePercentile(
                 field_name=field_names.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD,
                 low_field_name=field_names.LOW_MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD,

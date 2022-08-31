@@ -318,21 +318,6 @@ MARYLAND_EJSCREEN_SCORE_FIELD: str = "Maryland Environmental Justice Score"
 MARYLAND_EJSCREEN_BURDENED_THRESHOLD_FIELD: str = (
     "Maryland EJSCREEN Priority Community"
 )
-# Child Opportunity Index data
-# Summer days with maximum temperature above 90F.
-EXTREME_HEAT_FIELD = "Summer days above 90F"
-
-# Percentage households without a car located further than a half-mile from the
-# nearest supermarket.
-HEALTHY_FOOD_FIELD = "Percent low access to healthy food"
-
-# Percentage impenetrable surface areas such as rooftops, roads or parking lots.
-IMPENETRABLE_SURFACES_FIELD = "Percent impenetrable surface areas"
-
-# Percentage third graders scoring proficient on standardized reading tests,
-# converted to NAEP scale score points.
-READING_FIELD = "Third grade reading proficiency"
-LOW_READING_FIELD = "Low third grade reading proficiency"
 
 # Alternative energy-related definition of DACs
 ENERGY_RELATED_COMMUNITIES_DEFINITION_ALTERNATIVE = (
