@@ -192,19 +192,6 @@ class ScoreETL(ExtractTransformLoad):
             low_memory=False,
         )
 
-        # Load COI data
-        # child_opportunity_index_csv = (
-        #     constants.DATA_PATH
-        #     / "dataset"
-        #     / "child_opportunity_index"
-        #     / "usa.csv"
-        # )
-        # self.child_opportunity_index_df = pd.read_csv(
-        #     child_opportunity_index_csv,
-        #     dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
-        #     low_memory=False,
-        # )
-
         # Load HRS data
         hrs_csv = (
             constants.DATA_PATH / "dataset" / "historic_redlining" / "usa.csv"
