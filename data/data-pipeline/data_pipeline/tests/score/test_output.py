@@ -1,12 +1,21 @@
 # flake8: noqa: W0613,W0611,F811
+# pylint: disable=unused-import
+import inspect
 from dataclasses import dataclass
 from typing import List
 import pytest
 import pandas as pd
+import numpy as np
 from data_pipeline.score import field_names
-from .fixtures import final_score_df  # pylint: disable=unused-import
+from .fixtures import (
+    final_score_df,
+    ejscreen_df,
+    hud_housing_df,
+    cdc_places_df,
+)
 
 pytestmark = pytest.mark.smoketest
+GEOID_TRACT_FIELD_NAME = field_names.GEOID_TRACT_FIELD
 
 
 def _helper_test_count_exceeding_threshold(df, col, error_check=1000):
@@ -203,3 +212,44 @@ def test_donut_hole_addition_to_score_n(final_score_df):
     assert (
         new_donuts > 0
     ), "FYI: The adjacency index is doing nothing. Consider removing it?"
+
+
+def test_data_sources(
+    final_score_df, hud_housing_df, ejscreen_df, cdc_places_df
+):
+    data_sources = {
+        key: value for key, value in locals().items() if key != "final_score_df"
+    }
+
+    for data_source_name, data_source in data_sources.items():
+        final = "_final"
+        df: pd.DataFrame = final_score_df.merge(
+            data_source,
+            on=GEOID_TRACT_FIELD_NAME,
+            indicator="MERGE",
+            suffixes=(final, f"_{data_source_name}"),
+            how="left",
+        )
+        data_source_columns = [
+            f"{col}_{data_source_name}"
+            for col in data_source.columns
+            if (col != GEOID_TRACT_FIELD_NAME and col in final_score_df.columns)
+        ]
+        final_columns = [
+            f"{col}{final}"
+            for col in data_source.columns
+            if (col != GEOID_TRACT_FIELD_NAME and col in final_score_df.columns)
+        ]
+        assert np.all(df[df.MERGE == "left_only"][final_columns].isna())
+        df = df[df.MERGE == "both"]
+        assert (
+            final_columns
+        ), "No columns from data source show up in final score"
+        for final_column, data_source_column in zip(
+            data_source_columns, final_columns
+        ):
+            assert np.allclose(
+                df[final_column],
+                df[data_source_column],
+                equal_nan=True,
+            ), f"Column {final_column} not equal between {data_source_name} and final score"
