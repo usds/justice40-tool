@@ -42,7 +42,6 @@ class ScoreETL(ExtractTransformLoad):
         self.doe_energy_burden_df: pd.DataFrame
         self.national_risk_index_df: pd.DataFrame
         self.geocorr_urban_rural_df: pd.DataFrame
-        self.persistent_poverty_df: pd.DataFrame
         self.census_decennial_df: pd.DataFrame
         self.census_2010_df: pd.DataFrame
         self.national_tract_df: pd.DataFrame
@@ -155,16 +154,6 @@ class ScoreETL(ExtractTransformLoad):
         )
         self.geocorr_urban_rural_df = pd.read_csv(
             geocorr_urban_rural_csv,
-            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
-            low_memory=False,
-        )
-
-        # Load persistent poverty
-        persistent_poverty_csv = (
-            constants.DATA_PATH / "dataset" / "persistent_poverty" / "usa.csv"
-        )
-        self.persistent_poverty_df = pd.read_csv(
-            persistent_poverty_csv,
             dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
             low_memory=False,
         )
@@ -359,7 +348,6 @@ class ScoreETL(ExtractTransformLoad):
             self.doe_energy_burden_df,
             self.ejscreen_df,
             self.geocorr_urban_rural_df,
-            self.persistent_poverty_df,
             self.national_risk_index_df,
             self.census_acs_median_incomes_df,
             self.census_decennial_df,
@@ -484,7 +472,6 @@ class ScoreETL(ExtractTransformLoad):
 
         non_numeric_columns = [
             self.GEOID_TRACT_FIELD_NAME,
-            field_names.PERSISTENT_POVERTY_FIELD,
             field_names.TRACT_ELIGIBLE_FOR_NONNATURAL_THRESHOLD,
             field_names.AGRICULTURAL_VALUE_BOOL_FIELD,
         ]
