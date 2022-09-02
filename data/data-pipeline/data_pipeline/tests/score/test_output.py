@@ -1,7 +1,8 @@
-# flake8: noqa: W0613,W0611,F811
-# pylint: disable=unused-import
+# flake8: noqa: W0613,W0611,F811,
+# pylint: disable=unused-import,R0913
 import inspect
 from dataclasses import dataclass
+from re import I
 from typing import List
 import pytest
 import pandas as pd
@@ -11,8 +12,23 @@ from .fixtures import (
     final_score_df,
     ejscreen_df,
     hud_housing_df,
+    census_df,
     cdc_places_df,
+    census_acs_median_incomes_df,
+    cdc_life_expectancy_df,
+    doe_energy_burden_df,
+    national_risk_index_df,
+    dot_travel_disadvantage_df,
+    fsf_fire_df,
+    nature_deprived_df,
+    eamlis_df,
+    fuds_df,
+    geocorr_urban_rural_df,
+    census_decennial_df,
+    census_2010_df,
+    hrs_df,
 )
+
 
 pytestmark = pytest.mark.smoketest
 GEOID_TRACT_FIELD_NAME = field_names.GEOID_TRACT_FIELD
@@ -215,7 +231,24 @@ def test_donut_hole_addition_to_score_n(final_score_df):
 
 
 def test_data_sources(
-    final_score_df, hud_housing_df, ejscreen_df, cdc_places_df
+    final_score_df,
+    hud_housing_df,
+    ejscreen_df,
+    census_df,
+    cdc_places_df,
+    census_acs_median_incomes_df,
+    cdc_life_expectancy_df,
+    doe_energy_burden_df,
+    national_risk_index_df,
+    dot_travel_disadvantage_df,
+    fsf_fire_df,
+    nature_deprived_df,
+    eamlis_df,
+    fuds_df,
+    geocorr_urban_rural_df,
+    census_decennial_df,
+    census_2010_df,
+    hrs_df,
 ):
     data_sources = {
         key: value for key, value in locals().items() if key != "final_score_df"
@@ -244,12 +277,28 @@ def test_data_sources(
         df = df[df.MERGE == "both"]
         assert (
             final_columns
-        ), "No columns from data source show up in final score"
+        ), f"No columns from data source show up in final score in source {data_source_name}"
+
+        # Compare every column for equality, using close equality for numerics and
+        # `equals` equality for non-numeric columns
         for final_column, data_source_column in zip(
             data_source_columns, final_columns
         ):
-            assert np.allclose(
-                df[final_column],
-                df[data_source_column],
-                equal_nan=True,
-            ), f"Column {final_column} not equal between {data_source_name} and final score"
+            error_message = (
+                f"Column {final_column} not equal "
+                f"between {data_source_name} and final score"
+            )
+            if df[final_column].dtype in [
+                np.dtype(object),
+                np.dtype(bool),
+                np.dtype(str),
+            ]:
+                assert df[final_column].equals(
+                    df[data_source_column]
+                ), error_message
+            else:
+                assert np.allclose(
+                    df[final_column],
+                    df[data_source_column],
+                    equal_nan=True,
+                ), error_message
