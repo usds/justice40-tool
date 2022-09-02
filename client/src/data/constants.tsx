@@ -230,6 +230,11 @@ export const IS_LOW_HS_EDUCATION_LOW_HIGHER_ED_PRIORITIZED = 'LHE';
 export const ISLAND_AREAS_HS_EDU_PERCENTAGE_FIELD= 'IAHSEF';
 export const ISLAND_AREA_LOW_HS_EDU = 'IALHE';
 
+// Misc category
+export const ADJACENCY_PERCENTILE = 'ADJ_PFS';
+export const ADJACENCY_EXCEEDS_THRESH = 'ADJ_ET';
+export const IMPUTE_FLAG = 'IMP_FLG';
+
 
 // ********** MAP CONSTANTS ***************
 // Source name constants

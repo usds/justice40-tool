@@ -560,6 +560,25 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
     threshold: 10,
   };
 
+  // Temp adding to workforce category
+  const adjacency: indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.ADJ),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.ADJ),
+    type: 'percentile',
+    value: properties.hasOwnProperty(constants.ADJACENCY_PERCENTILE) ?
+      properties[constants.ADJACENCY_PERCENTILE] : null,
+    isDisadvagtaged: properties[constants.ADJACENCY_EXCEEDS_THRESH] ?
+      properties[constants.ADJACENCY_EXCEEDS_THRESH] : null,
+  };
+  const imputeFlag: indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.IMP_FLG),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.IMP_FLG),
+    type: 'boolean',
+    value: properties.hasOwnProperty(constants.IMPUTE_FLAG) ?
+      (properties[constants.IMPUTE_FLAG] == '0' ? false : true) : null,
+    isDisadvagtaged: false,
+  };
+
 
   /**
    * Aggregate indicators based on categories
@@ -663,6 +682,15 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
         properties[constants.IS_WORKFORCE_EXCEED_ONE_OR_MORE_INDICATORS_M] : null,
       isExceedBothSocioBurdens: properties[constants.IS_WORKFORCE_EXCEED_BOTH_SOCIO_INDICATORS_M] ?
         properties[constants.IS_WORKFORCE_EXCEED_BOTH_SOCIO_INDICATORS_M] : null,
+    },
+    {
+      id: 'test',
+      titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.TEST),
+      indicators: [adjacency],
+      socioEcIndicators: [imputeFlag],
+      isDisadvagtaged: null,
+      isExceed1MoreBurden: null,
+      isExceedBothSocioBurdens: null,
     },
   ];
 

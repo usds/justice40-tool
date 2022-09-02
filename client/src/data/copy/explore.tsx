@@ -535,6 +535,12 @@ export const SIDE_PANEL_CATEGORY = defineMessages({
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Workforce development title
 `,
   },
+  TEST: {
+    id: 'explore.map.page.side.panel.indicator.title.testing',
+    defaultMessage: 'Testing',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Testing title
+`,
+  },
 });
 
 export const SIDE_PANEL_INDICATORS = defineMessages({
@@ -707,6 +713,17 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
     defaultMessage: 'High school degree non-attainment',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show High school degree achievement rate`,
   },
+  ADJ: {
+    id: 'explore.map.page.side.panel.indicator.adjacency',
+    defaultMessage: 'Adjacency',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Adjancency`,
+  },
+  IMP_FLG: {
+    id: 'explore.map.page.side.panel.indicator.imp.flg',
+    defaultMessage: 'Impute flag',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Impute flag`,
+  },
+
 });
 
 export const SIDE_PANEL_VALUES = {
@@ -963,6 +980,20 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of people ages 25 years or older whose education level 
       is less than a high school diploma`,
+  },
+  ADJ: {
+    id: 'explore.map.page.side.panel.indicator.description.ling.iso',
+    defaultMessage: `
+      Adjacency percentile?
+    `,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator about adjacency`,
+  },
+  IMP_FLG: {
+    id: 'explore.map.page.side.panel.indicator.description.ling.iso',
+    defaultMessage: `
+      A flag to inform imputation?
+    `,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator about adjacency`,
   },
 });
 

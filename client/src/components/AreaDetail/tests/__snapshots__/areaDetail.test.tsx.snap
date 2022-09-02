@@ -2261,6 +2261,106 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
           </div>
         </li>
       </div>
+      <h4
+        class="usa-accordion__heading"
+      >
+        <button
+          aria-controls="test"
+          aria-expanded="false"
+          class="usa-accordion__button"
+          data-testid="accordionButton_test"
+          type="button"
+        >
+          <div>
+            <div>
+              Testing
+            </div>
+            <div
+              class=""
+            />
+          </div>
+        </button>
+      </h4>
+      <div
+        class="usa-accordion__content usa-prose"
+        data-testid="accordionItem_test"
+        hidden=""
+        id="test"
+      >
+        <div>
+          <div>
+            At or above at least one threshold?
+          </div>
+          <div>
+            No
+          </div>
+        </div>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Adjacency
+              <div>
+                
+      Adjacency percentile?
+    
+              </div>
+            </div>
+            <div>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  missing data
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <div>
+          AND
+        </div>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Impute flag
+              <div>
+                
+      A flag to inform imputation?
+    
+              </div>
+            </div>
+            <div>
+              <div>
+                <div />
+                <div>
+                  <img
+                    alt="an icon to represent data is unavailable"
+                    src="test-file-stub"
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  missing data
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </div>
     </div>
     <div>
       Methodology version 0.1

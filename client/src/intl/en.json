@@ -559,6 +559,10 @@
     "defaultMessage": "Abandoned mine lands",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Abandoned land mines"
   },
+  "explore.map.page.side.panel.indicator.adjacency": {
+    "defaultMessage": "Adjacency",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Adjancency"
+  },
   "explore.map.page.side.panel.indicator.asthma": {
     "defaultMessage": "Asthma",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Asthma"
@@ -652,8 +656,8 @@
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Average number of years of life a person can expect to live"
   },
   "explore.map.page.side.panel.indicator.description.ling.iso": {
-    "defaultMessage": "Percent of households where no one over the age 14 speaks English well",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Households in which no one age 14 and over speaks English only or also speaks a language other than English"
+    "defaultMessage": "A flag to inform imputation?",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator about adjacency"
   },
   "explore.map.page.side.panel.indicator.description.low.income": {
     "defaultMessage": "Household income is less than or equal to twice the federal poverty level",
@@ -755,6 +759,10 @@
     "defaultMessage": "Housing cost burden",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Housing cost burden"
   },
+  "explore.map.page.side.panel.indicator.imp.flg": {
+    "defaultMessage": "Impute flag",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Impute flag"
+  },
   "explore.map.page.side.panel.indicator.lack.green.space": {
     "defaultMessage": "Lack of green space",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Lack of green space"
@@ -842,6 +850,10 @@
   "explore.map.page.side.panel.indicator.title.sustain.house": {
     "defaultMessage": "Sustainable housing",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Sustainable housing title\n"
+  },
+  "explore.map.page.side.panel.indicator.title.testing": {
+    "defaultMessage": "Testing",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Testing title\n"
   },
   "explore.map.page.side.panel.indicator.title.work.dev": {
     "defaultMessage": "Workforce development",
