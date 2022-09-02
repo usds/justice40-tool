@@ -205,3 +205,15 @@ def hrs_df():
         dtype={GEOID_TRACT_FIELD_NAME: "string"},
         low_memory=False,
     )
+
+
+@pytest.fixture()
+def national_tract_df():
+    national_tract_csv = constants.DATA_CENSUS_CSV_FILE_PATH
+    return pd.read_csv(
+        national_tract_csv,
+        names=[GEOID_TRACT_FIELD_NAME],
+        dtype={GEOID_TRACT_FIELD_NAME: "string"},
+        low_memory=False,
+        header=None,
+    )
