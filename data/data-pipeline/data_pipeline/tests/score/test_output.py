@@ -315,3 +315,7 @@ def test_output_tracts(final_score_df, national_tract_df):
     counts = df.value_counts("MERGE")
     assert counts.loc["left_only"] == 0
     assert counts.loc["right_only"] == 0
+
+
+def test_all_tracts_have_scores(final_score_df):
+    assert not final_score_df[field_names.SCORE_N_COMMUNITIES].isna().any()
