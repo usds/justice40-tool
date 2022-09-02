@@ -33,6 +33,7 @@ from .fixtures import (
 
 pytestmark = pytest.mark.smoketest
 GEOID_TRACT_FIELD_NAME = field_names.GEOID_TRACT_FIELD
+UNMATCHED_TRACK_THRESHOLD = 1000
 
 
 def _helper_test_count_exceeding_threshold(df, col, error_check=1000):
@@ -262,7 +263,7 @@ def test_data_sources(
             on=GEOID_TRACT_FIELD_NAME,
             indicator="MERGE",
             suffixes=(final, f"_{data_source_name}"),
-            how="left",
+            how="outer",
         )
 
         # Make our lists of columns for later comparison
@@ -278,6 +279,11 @@ def test_data_sources(
         # Make sure we have NAs for any tracts in the final data that aren't
         # covered in the  final data
         assert np.all(df[df.MERGE == "left_only"][final_columns].isna())
+
+        # Make sure the datasource doesn't have a ton of unmatched tracts, implying it
+        # has moved to 2020 tracts
+        assert len(df[df.MERGE == "right_only"]) < UNMATCHED_TRACK_THRESHOLD
+
         df = df[df.MERGE == "both"]
 
         # Compare every column for equality, using close equality for numerics and
