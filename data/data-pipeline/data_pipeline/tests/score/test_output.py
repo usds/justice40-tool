@@ -263,16 +263,11 @@ def test_data_sources(
             suffixes=(final, f"_{data_source_name}"),
             how="left",
         )
-        data_source_columns = [
-            f"{col}_{data_source_name}"
-            for col in data_source.columns
-            if (col != GEOID_TRACT_FIELD_NAME and col in final_score_df.columns)
-        ]
-        final_columns = [
-            f"{col}{final}"
-            for col in data_source.columns
-            if (col != GEOID_TRACT_FIELD_NAME and col in final_score_df.columns)
-        ]
+        core_cols = data_source.columns.intersection(
+            final_score_df.columns
+        ).drop(GEOID_TRACT_FIELD_NAME)
+        data_source_columns = [f"{col}_{data_source_name}" for col in core_cols]
+        final_columns = [f"{col}{final}" for col in core_cols]
         assert np.all(df[df.MERGE == "left_only"][final_columns].isna())
         df = df[df.MERGE == "both"]
         assert (
