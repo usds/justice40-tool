@@ -255,7 +255,7 @@ def test_data_sources(
     }
 
     for data_source_name, data_source in data_sources.items():
-        final = "_final"
+        final = "final"
         df: pd.DataFrame = final_score_df.merge(
             data_source,
             on=GEOID_TRACT_FIELD_NAME,
@@ -263,13 +263,18 @@ def test_data_sources(
             suffixes=(final, f"_{data_source_name}"),
             how="left",
         )
+
+        # Make sure we have NAs for any tracts in the final data that aren't
+        # covered in the  final data
+        assert np.all(df[df.MERGE == "left_only"][final_columns].isna())
+        df = df[df.MERGE == "both"]
+
+        # Make our lists of columns for later comparison
         core_cols = data_source.columns.intersection(
             final_score_df.columns
         ).drop(GEOID_TRACT_FIELD_NAME)
         data_source_columns = [f"{col}_{data_source_name}" for col in core_cols]
-        final_columns = [f"{col}{final}" for col in core_cols]
-        assert np.all(df[df.MERGE == "left_only"][final_columns].isna())
-        df = df[df.MERGE == "both"]
+        final_columns = [f"{col}_{final}" for col in core_cols]
         assert (
             final_columns
         ), f"No columns from data source show up in final score in source {data_source_name}"
