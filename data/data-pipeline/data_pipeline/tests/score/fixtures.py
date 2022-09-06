@@ -1,17 +1,15 @@
 import pandas as pd
 import pytest
 from data_pipeline.config import settings
-from data_pipeline.score import field_names
+from data_pipeline.score.field_names import GEOID_TRACT_FIELD
 from data_pipeline.etl.score import constants
-
-GEOID_TRACT_FIELD_NAME = field_names.GEOID_TRACT_FIELD
 
 
 @pytest.fixture(scope="session")
 def final_score_df():
     return pd.read_csv(
         settings.APP_ROOT / "data" / "score" / "csv" / "full" / "usa.csv",
-        dtype={GEOID_TRACT_FIELD_NAME: str},
+        dtype={GEOID_TRACT_FIELD: str},
         low_memory=False,
     )
 
@@ -21,7 +19,7 @@ def census_df():
     census_csv = constants.DATA_PATH / "dataset" / "census_acs_2019" / "usa.csv"
     return pd.read_csv(
         census_csv,
-        dtype={GEOID_TRACT_FIELD_NAME: "string"},
+        dtype={GEOID_TRACT_FIELD: "string"},
         low_memory=False,
     )
 
@@ -31,7 +29,7 @@ def ejscreen_df():
     ejscreen_csv = constants.DATA_PATH / "dataset" / "ejscreen" / "usa.csv"
     return pd.read_csv(
         ejscreen_csv,
-        dtype={GEOID_TRACT_FIELD_NAME: "string"},
+        dtype={GEOID_TRACT_FIELD: "string"},
         low_memory=False,
     )
 
@@ -43,7 +41,7 @@ def hud_housing_df():
     )
     return pd.read_csv(
         hud_housing_csv,
-        dtype={GEOID_TRACT_FIELD_NAME: "string"},
+        dtype={GEOID_TRACT_FIELD: "string"},
         low_memory=False,
     )
 
@@ -53,7 +51,7 @@ def cdc_places_df():
     cdc_places_csv = constants.DATA_PATH / "dataset" / "cdc_places" / "usa.csv"
     return pd.read_csv(
         cdc_places_csv,
-        dtype={GEOID_TRACT_FIELD_NAME: "string"},
+        dtype={GEOID_TRACT_FIELD: "string"},
         low_memory=False,
     )
 
@@ -68,7 +66,7 @@ def census_acs_median_incomes_df():
     )
     return pd.read_csv(
         census_acs_median_incomes_csv,
-        dtype={GEOID_TRACT_FIELD_NAME: "string"},
+        dtype={GEOID_TRACT_FIELD: "string"},
         low_memory=False,
     )
 
@@ -80,7 +78,7 @@ def cdc_life_expectancy_df():
     )
     return pd.read_csv(
         cdc_life_expectancy_csv,
-        dtype={GEOID_TRACT_FIELD_NAME: "string"},
+        dtype={GEOID_TRACT_FIELD: "string"},
         low_memory=False,
     )
 
@@ -92,7 +90,7 @@ def doe_energy_burden_df():
     )
     return pd.read_csv(
         doe_energy_burden_csv,
-        dtype={GEOID_TRACT_FIELD_NAME: "string"},
+        dtype={GEOID_TRACT_FIELD: "string"},
         low_memory=False,
     )
 
@@ -101,7 +99,7 @@ def doe_energy_burden_df():
 def national_risk_index_df():
     return pd.read_csv(
         constants.DATA_PATH / "dataset" / "national_risk_index" / "usa.csv",
-        dtype={GEOID_TRACT_FIELD_NAME: "string"},
+        dtype={GEOID_TRACT_FIELD: "string"},
         low_memory=False,
     )
 
@@ -110,7 +108,7 @@ def national_risk_index_df():
 def dot_travel_disadvantage_df():
     return pd.read_csv(
         constants.DATA_PATH / "dataset" / "travel_composite" / "usa.csv",
-        dtype={GEOID_TRACT_FIELD_NAME: "string"},
+        dtype={GEOID_TRACT_FIELD: "string"},
         low_memory=False,
     )
 
@@ -119,7 +117,7 @@ def dot_travel_disadvantage_df():
 def fsf_fire_df():
     return pd.read_csv(
         constants.DATA_PATH / "dataset" / "fsf_wildfire_risk" / "usa.csv",
-        dtype={GEOID_TRACT_FIELD_NAME: "string"},
+        dtype={GEOID_TRACT_FIELD: "string"},
         low_memory=False,
     )
 
@@ -128,7 +126,7 @@ def fsf_fire_df():
 def fsf_flood_df():
     return pd.read_csv(
         constants.DATA_PATH / "dataset" / "fsf_flood_risk" / "usa.csv",
-        dtype={GEOID_TRACT_FIELD_NAME: "string"},
+        dtype={GEOID_TRACT_FIELD: "string"},
         low_memory=False,
     )
 
@@ -137,7 +135,7 @@ def fsf_flood_df():
 def nature_deprived_df():
     return pd.read_csv(
         constants.DATA_PATH / "dataset" / "nlcd_nature_deprived" / "usa.csv",
-        dtype={GEOID_TRACT_FIELD_NAME: "string"},
+        dtype={GEOID_TRACT_FIELD: "string"},
         low_memory=False,
     )
 
@@ -146,7 +144,7 @@ def nature_deprived_df():
 def eamlis_df():
     return pd.read_csv(
         constants.DATA_PATH / "dataset" / "eamlis" / "usa.csv",
-        dtype={GEOID_TRACT_FIELD_NAME: "string"},
+        dtype={GEOID_TRACT_FIELD: "string"},
         low_memory=False,
     )
 
@@ -155,7 +153,7 @@ def eamlis_df():
 def fuds_df():
     return pd.read_csv(
         constants.DATA_PATH / "dataset" / "us_army_fuds" / "usa.csv",
-        dtype={GEOID_TRACT_FIELD_NAME: "string"},
+        dtype={GEOID_TRACT_FIELD: "string"},
         low_memory=False,
     )
 
@@ -167,7 +165,7 @@ def geocorr_urban_rural_df():
     )
     return pd.read_csv(
         geocorr_urban_rural_csv,
-        dtype={GEOID_TRACT_FIELD_NAME: "string"},
+        dtype={GEOID_TRACT_FIELD: "string"},
         low_memory=False,
     )
 
@@ -179,7 +177,7 @@ def census_decennial_df():
     )
     return pd.read_csv(
         census_decennial_csv,
-        dtype={GEOID_TRACT_FIELD_NAME: "string"},
+        dtype={GEOID_TRACT_FIELD: "string"},
         low_memory=False,
     )
 
@@ -191,7 +189,7 @@ def census_2010_df():
     )
     return pd.read_csv(
         census_2010_csv,
-        dtype={GEOID_TRACT_FIELD_NAME: "string"},
+        dtype={GEOID_TRACT_FIELD: "string"},
         low_memory=False,
     )
 
@@ -202,7 +200,7 @@ def hrs_df():
 
     return pd.read_csv(
         hrs_csv,
-        dtype={GEOID_TRACT_FIELD_NAME: "string"},
+        dtype={GEOID_TRACT_FIELD: "string"},
         low_memory=False,
     )
 
@@ -212,8 +210,8 @@ def national_tract_df():
     national_tract_csv = constants.DATA_CENSUS_CSV_FILE_PATH
     return pd.read_csv(
         national_tract_csv,
-        names=[GEOID_TRACT_FIELD_NAME],
-        dtype={GEOID_TRACT_FIELD_NAME: "string"},
+        names=[GEOID_TRACT_FIELD],
+        dtype={GEOID_TRACT_FIELD: "string"},
         low_memory=False,
         header=None,
     )

@@ -6,6 +6,7 @@ import pytest
 import pandas as pd
 import numpy as np
 from data_pipeline.score import field_names
+from data_pipeline.score.field_names import GEOID_TRACT_FIELD
 from .fixtures import (
     final_score_df,
     ejscreen_df,
@@ -30,7 +31,6 @@ from .fixtures import (
 
 
 pytestmark = pytest.mark.smoketest
-GEOID_TRACT_FIELD_NAME = field_names.GEOID_TRACT_FIELD
 UNMATCHED_TRACK_THRESHOLD = 1000
 
 
@@ -258,7 +258,7 @@ def test_data_sources(
         final = "final_"
         df: pd.DataFrame = final_score_df.merge(
             data_source,
-            on=GEOID_TRACT_FIELD_NAME,
+            on=GEOID_TRACT_FIELD,
             indicator="MERGE",
             suffixes=(final, f"_{data_source_name}"),
             how="outer",
@@ -267,7 +267,7 @@ def test_data_sources(
         # Make our lists of columns for later comparison
         core_cols = data_source.columns.intersection(
             final_score_df.columns
-        ).drop(GEOID_TRACT_FIELD_NAME)
+        ).drop(GEOID_TRACT_FIELD)
         data_source_columns = [f"{col}_{data_source_name}" for col in core_cols]
         final_columns = [f"{col}{final}" for col in core_cols]
         assert (
@@ -312,7 +312,7 @@ def test_data_sources(
 def test_output_tracts(final_score_df, national_tract_df):
     df = final_score_df.merge(
         national_tract_df,
-        on=GEOID_TRACT_FIELD_NAME,
+        on=GEOID_TRACT_FIELD,
         how="outer",
         indicator="MERGE",
     )
