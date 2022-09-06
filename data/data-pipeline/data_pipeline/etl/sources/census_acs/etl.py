@@ -619,16 +619,6 @@ class CensusACSETL(ExtractTransformLoad):
             lower=0
         )
 
-        # All values should have a value at this point
-        assert (
-            df[
-                self.ADJUSTED_AND_IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME
-            ]
-            .isna()
-            .sum()
-            == 0
-        ), "Error: not all values were filled..."
-
         logger.info("Renaming columns...")
         df = df.rename(
             columns={

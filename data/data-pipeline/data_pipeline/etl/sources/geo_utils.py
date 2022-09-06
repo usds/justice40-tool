@@ -6,6 +6,7 @@ from functools import lru_cache
 import geopandas as gpd
 from data_pipeline.utils import get_module_logger
 from .census.etl import CensusETL
+from data_pipeline.score import field_names
 
 logger = get_module_logger(__name__)
 
@@ -27,7 +28,9 @@ def get_tract_geojson(
         else:
             logger.debug("Loading existing tract geojson")
     tract_data = gpd.read_file(GEOJSON_PATH, include_fields=["GEOID10"])
-    tract_data.rename(columns={"GEOID10": "GEOID10_TRACT"}, inplace=True)
+    tract_data.rename(
+        columns={"GEOID10": field_names.GEOID_TRACT_FIELD}, inplace=True
+    )
     return tract_data
 
 
@@ -55,7 +58,7 @@ def add_tracts_for_geometries(
     ), f"Dataframe must be projected to {tract_data.crs}"
     df = gpd.sjoin(
         df,
-        tract_data[["GEOID10_TRACT", "geometry"]],
+        tract_data[[field_names.GEOID_TRACT_FIELD, "geometry"]],
         how="inner",
         op="intersects",
     )

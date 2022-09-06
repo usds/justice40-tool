@@ -1,6 +1,7 @@
-from typing import Any, List, NamedTuple, Tuple
 import pandas as pd
 import geopandas as gpd
+from data_pipeline.score.field_names import GEOID_TRACT_FIELD
+import numpy as np
 
 from data_pipeline.utils import get_module_logger
 
@@ -9,53 +10,15 @@ from data_pipeline.utils import get_module_logger
 logger = get_module_logger(__name__)
 
 
-def _get_fips_mask(
-    geo_df: gpd.GeoDataFrame,
-    row: gpd.GeoSeries,
-    fips_digits: int,
-    geoid_field: str = "GEOID10_TRACT",
-) -> pd.Series:
-    return (
-        geo_df[geoid_field].str[:fips_digits] == row[geoid_field][:fips_digits]
-    )
-
-
-def _get_neighbor_mask(
-    geo_df: gpd.GeoDataFrame, row: gpd.GeoSeries
-) -> pd.Series:
-    return geo_df["geometry"].touches(row["geometry"])
-
-
-def _choose_best_mask(
-    geo_df: gpd.GeoDataFrame,
-    masks_in_priority_order: List[pd.Series],
-    column_to_impute: str,
-) -> pd.Series:
-    for mask in masks_in_priority_order:
-        if any(geo_df[mask][column_to_impute].notna()):
-            return mask
-    raise Exception("No mask found")
-
-
 def _prepare_dataframe_for_imputation(
-    impute_var_named_tup_list: List[NamedTuple],
+    columns_to_impute: list,
     geo_df: gpd.GeoDataFrame,
     geoid_field: str = "GEOID10_TRACT",
-) -> Tuple[Any, gpd.GeoDataFrame]:
-    imputing_cols = [
-        impute_var_pair.raw_field_name
-        for impute_var_pair in impute_var_named_tup_list
-    ]
-
-    # prime column to exist
-    for impute_var_pair in impute_var_named_tup_list:
-        geo_df[impute_var_pair.imputed_field_name] = geo_df[
-            impute_var_pair.raw_field_name
-        ].copy()
+):
 
     # generate a list of tracts for which at least one of the imputation
     # columns is null
-    tract_list = geo_df[geo_df[imputing_cols].isna().any(axis=1)][
+    tract_list = geo_df[geo_df[columns_to_impute].isna().any(axis=1)][
         geoid_field
     ].unique()
 
@@ -66,15 +29,36 @@ def _prepare_dataframe_for_imputation(
     return tract_list, geo_df
 
 
+def _get_state_and_county_fills(df, tract_list, impute_var_pair_list):
+    # When there is no neighbor average, we take the county-level average or state-level averages
+    for impute_var_pair in impute_var_pair_list:
+        # Fill missings with county means
+        df[impute_var_pair.imputed_field_name] = np.where(
+            (df[impute_var_pair.imputed_field_name].isna())
+            & (df[GEOID_TRACT_FIELD].isin(tract_list)),
+            df.groupby(df[GEOID_TRACT_FIELD].str[:5])[
+                impute_var_pair.raw_field_name
+            ].transform(np.mean),
+            df[impute_var_pair.imputed_field_name],
+        )
+        # Fill the remaining missings with state means
+        df[impute_var_pair.imputed_field_name] = np.where(
+            (df[impute_var_pair.imputed_field_name].isna())
+            & (df[GEOID_TRACT_FIELD].isin(tract_list)),
+            df.groupby(df[GEOID_TRACT_FIELD].str[:2])[
+                impute_var_pair.raw_field_name
+            ].transform(np.mean),
+            df[impute_var_pair.imputed_field_name],
+        )
+    return df
+
+
 def calculate_income_measures(
     impute_var_named_tup_list: list,
     geo_df: gpd.GeoDataFrame,
     geoid_field: str,
 ) -> pd.DataFrame:
-    """Impute values based on geographic neighbors
-
-    We only want to check neighbors a single time, so all variables
-    that we impute get imputed here.
+    """Impute values based on geographic neighbors or county fields.
 
     Takes in:
         required:
@@ -84,50 +68,58 @@ def calculate_income_measures(
 
     Returns: non-geometry pd.DataFrame
     """
+
+    raw_fields = []
+    imputed_fields = []
+    rename_dict = {}
+    for impute_var in impute_var_named_tup_list:
+        raw_fields.append(impute_var.raw_field_name)
+        imputed_fields.append(impute_var.imputed_field_name)
+
+        assert (
+            impute_var.raw_field_name not in rename_dict
+        ), f"Error: trying to impute {impute_var.raw_field_name} twice"
+        rename_dict[impute_var.raw_field_name] = impute_var.imputed_field_name
+
     # Determine where to impute variables and fill a column with nulls
     tract_list, geo_df = _prepare_dataframe_for_imputation(
-        impute_var_named_tup_list=impute_var_named_tup_list,
+        columns_to_impute=raw_fields,
         geo_df=geo_df,
         geoid_field=geoid_field,
     )
 
-    # Iterate through the dataframe to impute in place
-    ## TODO: We should probably convert this to a spatial join now that we are doing >1 imputation and it's taking a lot
-    ## of time, but thinking through how to do this while maintaining the masking will take some time. I think the best
-    ## way would be to (1) spatial join to all neighbors, and then (2) iterate to take the "smallest" set of neighbors...
-    ## but haven't implemented it yet.
-    for index, row in geo_df.iterrows():
-        if row[geoid_field] in tract_list:
-            neighbor_mask = _get_neighbor_mask(geo_df, row)
-            county_mask = _get_fips_mask(
-                geo_df=geo_df, row=row, fips_digits=5, geoid_field=geoid_field
-            )
-            ## TODO: Did CEQ decide to cut this?
-            state_mask = _get_fips_mask(
-                geo_df=geo_df, row=row, fips_digits=2, geoid_field=geoid_field
-            )
+    missing_tracts_df = geo_df[geo_df[GEOID_TRACT_FIELD].isin(tract_list)]
 
-            # Impute fields for every row missing at least one value using the best possible set of neighbors
-            # Note that later, we will pull raw.fillna(imputed), so the mechanics of this step aren't critical
-            for impute_var_pair in impute_var_named_tup_list:
-                mask_to_use = _choose_best_mask(
-                    geo_df=geo_df,
-                    masks_in_priority_order=[
-                        neighbor_mask,
-                        county_mask,
-                        state_mask,
-                    ],
-                    column_to_impute=impute_var_pair.raw_field_name,
-                )
-                geo_df.loc[index, impute_var_pair.imputed_field_name] = geo_df[
-                    mask_to_use
-                ][impute_var_pair.raw_field_name].mean()
+    # Perform as spatial merge to save time
+    spatially_joined_df = missing_tracts_df[
+        [GEOID_TRACT_FIELD, "geometry"]
+    ].sjoin(
+        geo_df[raw_fields + ["geometry"]],
+        predicate="touches",
+    )
 
-    logger.info("Casting geodataframe as a typical dataframe")
+    # First take the neighbor averages
+    neighbor_averages_df = (
+        spatially_joined_df.groupby(GEOID_TRACT_FIELD)[raw_fields]
+        .mean()
+        .reset_index()
+        .rename(columns=rename_dict)
+    )
+
+    logger.info("Merging and casting geodataframe as a typical dataframe")
     # get rid of the geometry column and cast as a typical df
     df = pd.DataFrame(
-        geo_df[[col for col in geo_df.columns if col != "geometry"]]
+        geo_df[[col for col in geo_df.columns if col != "geometry"]].merge(
+            neighbor_averages_df,
+            on=[GEOID_TRACT_FIELD],
+            how="outer",
+        )
     )
+    logger.info(df.head())
+
+    logger.info("Filling with county or state")
+    df = _get_state_and_county_fills(df, tract_list, impute_var_named_tup_list)
+    logger.info(df.head())
 
     # finally, return the df
     return df
