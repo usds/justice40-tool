@@ -234,9 +234,8 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
     }
     if (indicatorName === 'highSchool') {
       return properties.hasOwnProperty(constants
-          .IS_LOW_HS_EDUCATION_LOW_HIGHER_ED_PRIORITIZED) &&
-        properties[constants.IS_LOW_HS_EDUCATION_LOW_HIGHER_ED_PRIORITIZED] == 1 ?
-        true : false;
+          .IS_LOW_HS_EDUCATION_LOW_HIGHER_ED_PRIORITIZED) ?
+        properties[constants.IS_LOW_HS_EDUCATION_LOW_HIGHER_ED_PRIORITIZED] : null;
     }
   };
 
@@ -719,7 +718,7 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
     // For Island Areas - only show workforce dev category
     categories = categories.filter((category) => category.id === 'work-dev');
     // For Island Areas - remove the linguistic Isolation
-    categories[0].indicators = [lowMedInc, unemploy, poverty, highSchool];
+    categories[0].indicators = [lowMedInc, unemploy, poverty];
   }
 
 

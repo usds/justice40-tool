@@ -395,37 +395,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for ISL
             </div>
           </div>
         </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              High school degree non-attainment
-              <div>
-                
-      Percent of people ages 25 years or older whose education level is less than a high school diploma 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  missing data
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
         <div>
           AND
         </div>
