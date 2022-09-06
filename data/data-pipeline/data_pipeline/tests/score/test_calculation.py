@@ -28,7 +28,6 @@ class PercentileTestConfig:
         return self.percentile_column_name
 
 
-### TODO: we need to blow this out for all eight categories
 def _check_percentile_against_threshold(df, config: PercentileTestConfig):
     """Note - for the purpose of testing, this fills with False"""
     is_minimum_flagged_ok = (
