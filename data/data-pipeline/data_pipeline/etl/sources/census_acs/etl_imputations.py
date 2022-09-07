@@ -1,7 +1,7 @@
 import pandas as pd
 import geopandas as gpd
-from data_pipeline.score.field_names import GEOID_TRACT_FIELD
 import numpy as np
+from data_pipeline.score.field_names import GEOID_TRACT_FIELD
 
 from data_pipeline.utils import get_module_logger
 
@@ -40,9 +40,11 @@ def _get_state_and_county_fills(
         county_means = df.groupby(counties)[
             impute_var_pair.raw_field_name
         ].transform(np.mean)
+
         state_means = df.groupby(states)[
             impute_var_pair.raw_field_name
         ].transform(np.mean)
+
         fill_means = county_means.fillna(state_means)
 
         # Identify where these must be imputed
@@ -120,11 +122,9 @@ def calculate_income_measures(
             how="outer",
         )
     )
-    logger.info(df.head())
 
     logger.info("Filling with county or state")
     df = _get_state_and_county_fills(df, tract_list, impute_var_named_tup_list)
-    logger.info(df.head())
 
     # finally, return the df
     return df
