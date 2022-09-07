@@ -72,7 +72,9 @@ While any IDE can be used, we're outlining how to set up VS Code
 
 ### Recommended VS Code Extensions
 
+<!-- markdown-link-check-disable -->
 1. [Browser Preview](https://github.com/auchenberg/vscode-browser-preview)
+<!-- markdown-link-check-enable -->
 2. [Live Server](https://github.com/ritwickdey/vscode-live-server)
 3. [Live Share](https://github.com/MicrosoftDocs/live-share)
 4. [Live Share Audio](https://github.com/MicrosoftDocs/live-share)

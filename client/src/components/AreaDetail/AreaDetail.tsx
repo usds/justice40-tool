@@ -234,9 +234,8 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
     }
     if (indicatorName === 'highSchool') {
       return properties.hasOwnProperty(constants
-          .IS_LOW_HS_EDUCATION_LOW_HIGHER_ED_PRIORITIZED) &&
-        properties[constants.IS_LOW_HS_EDUCATION_LOW_HIGHER_ED_PRIORITIZED] == 1 ?
-        true : false;
+          .IS_LOW_HS_EDUCATION_LOW_HIGHER_ED_PRIORITIZED) ?
+        properties[constants.IS_LOW_HS_EDUCATION_LOW_HIGHER_ED_PRIORITIZED] : null;
     }
   };
 
@@ -592,96 +591,96 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.CLIMATE),
       indicators: [expAgLoss, expBldLoss, expPopLoss, flooding, wildfire],
       socioEcIndicators: [lowInc],
-      isDisadvagtaged: properties[constants.IS_CLIMATE_FACTOR_DISADVANTAGED_M] ?
-        properties[constants.IS_CLIMATE_FACTOR_DISADVANTAGED_M] : null,
-      isExceed1MoreBurden: properties[constants.IS_CLIMATE_EXCEED_ONE_OR_MORE_INDICATORS_M] ?
-        properties[constants.IS_CLIMATE_EXCEED_ONE_OR_MORE_INDICATORS_M] : null,
-      isExceedBothSocioBurdens: properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS_M] ?
-        properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS_M] : null,
+      isDisadvagtaged: properties[constants.IS_CLIMATE_FACTOR_DISADVANTAGED] ?
+        properties[constants.IS_CLIMATE_FACTOR_DISADVANTAGED] : null,
+      isExceed1MoreBurden: properties[constants.IS_CLIMATE_EXCEED_ONE_OR_MORE_INDICATORS] ?
+        properties[constants.IS_CLIMATE_EXCEED_ONE_OR_MORE_INDICATORS] : null,
+      isExceedBothSocioBurdens: properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS] ?
+        properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS] : null,
     },
     {
       id: 'clean-energy',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.CLEAN_ENERGY),
       indicators: [energyBurden, pm25],
       socioEcIndicators: [lowInc],
-      isDisadvagtaged: properties[constants.IS_ENERGY_FACTOR_DISADVANTAGED_M] ?
-        properties[constants.IS_ENERGY_FACTOR_DISADVANTAGED_M] : null,
-      isExceed1MoreBurden: properties[constants.IS_ENERGY_EXCEED_ONE_OR_MORE_INDICATORS_M] ?
-        properties[constants.IS_ENERGY_EXCEED_ONE_OR_MORE_INDICATORS_M] : null,
-      isExceedBothSocioBurdens: properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS_M] ?
-        properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS_M] : null,
+      isDisadvagtaged: properties[constants.IS_ENERGY_FACTOR_DISADVANTAGED] ?
+        properties[constants.IS_ENERGY_FACTOR_DISADVANTAGED] : null,
+      isExceed1MoreBurden: properties[constants.IS_ENERGY_EXCEED_ONE_OR_MORE_INDICATORS] ?
+        properties[constants.IS_ENERGY_EXCEED_ONE_OR_MORE_INDICATORS] : null,
+      isExceedBothSocioBurdens: properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS] ?
+        properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS] : null,
     },
     {
       id: 'clean-transport',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.CLEAN_TRANSPORT),
       indicators: [dieselPartMatter, barrierTransport, trafficVolume],
       socioEcIndicators: [lowInc],
-      isDisadvagtaged: properties[constants.IS_TRANSPORT_FACTOR_DISADVANTAGED_M] ?
-        properties[constants.IS_TRANSPORT_FACTOR_DISADVANTAGED_M] : null,
-      isExceed1MoreBurden: properties[constants.IS_TRANSPORT_EXCEED_ONE_OR_MORE_INDICATORS_M] ?
-        properties[constants.IS_TRANSPORT_EXCEED_ONE_OR_MORE_INDICATORS_M] : null,
-      isExceedBothSocioBurdens: properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS_M] ?
-        properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS_M] : null,
+      isDisadvagtaged: properties[constants.IS_TRANSPORT_FACTOR_DISADVANTAGED] ?
+        properties[constants.IS_TRANSPORT_FACTOR_DISADVANTAGED] : null,
+      isExceed1MoreBurden: properties[constants.IS_TRANSPORT_EXCEED_ONE_OR_MORE_INDICATORS] ?
+        properties[constants.IS_TRANSPORT_EXCEED_ONE_OR_MORE_INDICATORS] : null,
+      isExceedBothSocioBurdens: properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS] ?
+        properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS] : null,
     },
     {
       id: 'sustain-house',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.SUSTAIN_HOUSE),
       indicators: [historicUnderinvest, houseBurden, lackGreenSpace, lackPlumbing, leadPaint],
       socioEcIndicators: [lowInc],
-      isDisadvagtaged: properties[constants.IS_HOUSING_FACTOR_DISADVANTAGED_M] ?
-        properties[constants.IS_HOUSING_FACTOR_DISADVANTAGED_M] : null,
-      isExceed1MoreBurden: properties[constants.IS_HOUSING_EXCEED_ONE_OR_MORE_INDICATORS_M] ?
-        properties[constants.IS_HOUSING_EXCEED_ONE_OR_MORE_INDICATORS_M] : null,
-      isExceedBothSocioBurdens: properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS_M] ?
-        properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS_M] : null,
+      isDisadvagtaged: properties[constants.IS_HOUSING_FACTOR_DISADVANTAGED] ?
+        properties[constants.IS_HOUSING_FACTOR_DISADVANTAGED] : null,
+      isExceed1MoreBurden: properties[constants.IS_HOUSING_EXCEED_ONE_OR_MORE_INDICATORS] ?
+        properties[constants.IS_HOUSING_EXCEED_ONE_OR_MORE_INDICATORS] : null,
+      isExceedBothSocioBurdens: properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS] ?
+        properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS] : null,
     },
     {
       id: 'leg-pollute',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.LEG_POLLUTE),
       indicators: [abandonMines, formerDefSites, proxHaz, proxNPL, proxRMP],
       socioEcIndicators: [lowInc],
-      isDisadvagtaged: properties[constants.IS_POLLUTION_FACTOR_DISADVANTAGED_M] ?
-        properties[constants.IS_POLLUTION_FACTOR_DISADVANTAGED_M] : null,
-      isExceed1MoreBurden: properties[constants.IS_POLLUTION_EXCEED_ONE_OR_MORE_INDICATORS_M] ?
-        properties[constants.IS_POLLUTION_EXCEED_ONE_OR_MORE_INDICATORS_M] : null,
-      isExceedBothSocioBurdens: properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS_M] ?
-        properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS_M] : null,
+      isDisadvagtaged: properties[constants.IS_POLLUTION_FACTOR_DISADVANTAGED] ?
+        properties[constants.IS_POLLUTION_FACTOR_DISADVANTAGED] : null,
+      isExceed1MoreBurden: properties[constants.IS_POLLUTION_EXCEED_ONE_OR_MORE_INDICATORS] ?
+        properties[constants.IS_POLLUTION_EXCEED_ONE_OR_MORE_INDICATORS] : null,
+      isExceedBothSocioBurdens: properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS] ?
+        properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS] : null,
     },
     {
       id: 'clean-water',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.CLEAN_WATER),
       indicators: [leakyTanks, wasteWater],
       socioEcIndicators: [lowInc],
-      isDisadvagtaged: properties[constants.IS_WATER_FACTOR_DISADVANTAGED_M] ?
-        properties[constants.IS_WATER_FACTOR_DISADVANTAGED_M] : null,
-      isExceed1MoreBurden: properties[constants.IS_WATER_EXCEED_ONE_OR_MORE_INDICATORS_M] ?
-        properties[constants.IS_WATER_EXCEED_ONE_OR_MORE_INDICATORS_M] : null,
-      isExceedBothSocioBurdens: properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS_M] ?
-        properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS_M] : null,
+      isDisadvagtaged: properties[constants.IS_WATER_FACTOR_DISADVANTAGED] ?
+        properties[constants.IS_WATER_FACTOR_DISADVANTAGED] : null,
+      isExceed1MoreBurden: properties[constants.IS_WATER_EXCEED_ONE_OR_MORE_INDICATORS] ?
+        properties[constants.IS_WATER_EXCEED_ONE_OR_MORE_INDICATORS] : null,
+      isExceedBothSocioBurdens: properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS] ?
+        properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS] : null,
     },
     {
       id: 'health-burdens',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.HEALTH_BURDEN),
       indicators: [asthma, diabetes, heartDisease, lifeExpect],
       socioEcIndicators: [lowInc],
-      isDisadvagtaged: properties[constants.IS_HEALTH_FACTOR_DISADVANTAGED_M] ?
-        properties[constants.IS_HEALTH_FACTOR_DISADVANTAGED_M] : null,
-      isExceed1MoreBurden: properties[constants.IS_HEALTH_EXCEED_ONE_OR_MORE_INDICATORS_M] ?
-        properties[constants.IS_HEALTH_EXCEED_ONE_OR_MORE_INDICATORS_M] : null,
-      isExceedBothSocioBurdens: properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS_M] ?
-        properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS_M] : null,
+      isDisadvagtaged: properties[constants.IS_HEALTH_FACTOR_DISADVANTAGED] ?
+        properties[constants.IS_HEALTH_FACTOR_DISADVANTAGED] : null,
+      isExceed1MoreBurden: properties[constants.IS_HEALTH_EXCEED_ONE_OR_MORE_INDICATORS] ?
+        properties[constants.IS_HEALTH_EXCEED_ONE_OR_MORE_INDICATORS] : null,
+      isExceedBothSocioBurdens: properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS] ?
+        properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS] : null,
     },
     {
       id: 'work-dev',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.WORK_DEV),
       indicators: [lingIso, lowMedInc, unemploy, poverty],
       socioEcIndicators: [highSchool],
-      isDisadvagtaged: properties[constants.IS_WORKFORCE_FACTOR_DISADVANTAGED_M] ?
-        properties[constants.IS_WORKFORCE_FACTOR_DISADVANTAGED_M] : null,
-      isExceed1MoreBurden: properties[constants.IS_WORKFORCE_EXCEED_ONE_OR_MORE_INDICATORS_M] ?
-        properties[constants.IS_WORKFORCE_EXCEED_ONE_OR_MORE_INDICATORS_M] : null,
-      isExceedBothSocioBurdens: properties[constants.IS_WORKFORCE_EXCEED_BOTH_SOCIO_INDICATORS_M] ?
-        properties[constants.IS_WORKFORCE_EXCEED_BOTH_SOCIO_INDICATORS_M] : null,
+      isDisadvagtaged: properties[constants.IS_WORKFORCE_FACTOR_DISADVANTAGED] ?
+        properties[constants.IS_WORKFORCE_FACTOR_DISADVANTAGED] : null,
+      isExceed1MoreBurden: properties[constants.IS_WORKFORCE_EXCEED_ONE_OR_MORE_INDICATORS] ?
+        properties[constants.IS_WORKFORCE_EXCEED_ONE_OR_MORE_INDICATORS] : null,
+      isExceedBothSocioBurdens: properties[constants.IS_WORKFORCE_EXCEED_BOTH_SOCIO_INDICATORS] ?
+        properties[constants.IS_WORKFORCE_EXCEED_BOTH_SOCIO_INDICATORS] : null,
     },
     {
       id: 'test',
@@ -719,7 +718,7 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
     // For Island Areas - only show workforce dev category
     categories = categories.filter((category) => category.id === 'work-dev');
     // For Island Areas - remove the linguistic Isolation
-    categories[0].indicators = [lowMedInc, unemploy, poverty, highSchool];
+    categories[0].indicators = [lowMedInc, unemploy, poverty];
   }
 
 
