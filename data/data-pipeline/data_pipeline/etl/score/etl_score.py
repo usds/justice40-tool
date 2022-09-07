@@ -42,10 +42,9 @@ class ScoreETL(ExtractTransformLoad):
         self.doe_energy_burden_df: pd.DataFrame
         self.national_risk_index_df: pd.DataFrame
         self.geocorr_urban_rural_df: pd.DataFrame
-        self.persistent_poverty_df: pd.DataFrame
         self.census_decennial_df: pd.DataFrame
         self.census_2010_df: pd.DataFrame
-        self.child_opportunity_index_df: pd.DataFrame
+        self.national_tract_df: pd.DataFrame
         self.hrs_df: pd.DataFrame
         self.dot_travel_disadvantage_df: pd.DataFrame
         self.fsf_flood_df: pd.DataFrame
@@ -159,16 +158,6 @@ class ScoreETL(ExtractTransformLoad):
             low_memory=False,
         )
 
-        # Load persistent poverty
-        persistent_poverty_csv = (
-            constants.DATA_PATH / "dataset" / "persistent_poverty" / "usa.csv"
-        )
-        self.persistent_poverty_df = pd.read_csv(
-            persistent_poverty_csv,
-            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
-            low_memory=False,
-        )
-
         # Load decennial census data
         census_decennial_csv = (
             constants.DATA_PATH
@@ -192,19 +181,6 @@ class ScoreETL(ExtractTransformLoad):
             low_memory=False,
         )
 
-        # Load COI data
-        child_opportunity_index_csv = (
-            constants.DATA_PATH
-            / "dataset"
-            / "child_opportunity_index"
-            / "usa.csv"
-        )
-        self.child_opportunity_index_df = pd.read_csv(
-            child_opportunity_index_csv,
-            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
-            low_memory=False,
-        )
-
         # Load HRS data
         hrs_csv = (
             constants.DATA_PATH / "dataset" / "historic_redlining" / "usa.csv"
@@ -214,6 +190,15 @@ class ScoreETL(ExtractTransformLoad):
             hrs_csv,
             dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
             low_memory=False,
+        )
+
+        national_tract_csv = constants.DATA_CENSUS_CSV_FILE_PATH
+        self.national_tract_df = pd.read_csv(
+            national_tract_csv,
+            names=[self.GEOID_TRACT_FIELD_NAME],
+            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
+            low_memory=False,
+            header=None,
         )
 
     def _join_tract_dfs(self, census_tract_dfs: list) -> pd.DataFrame:
@@ -363,12 +348,10 @@ class ScoreETL(ExtractTransformLoad):
             self.doe_energy_burden_df,
             self.ejscreen_df,
             self.geocorr_urban_rural_df,
-            self.persistent_poverty_df,
             self.national_risk_index_df,
             self.census_acs_median_incomes_df,
             self.census_decennial_df,
             self.census_2010_df,
-            self.child_opportunity_index_df,
             self.hrs_df,
             self.dot_travel_disadvantage_df,
             self.fsf_flood_df,
@@ -384,8 +367,21 @@ class ScoreETL(ExtractTransformLoad):
 
         census_tract_df = self._join_tract_dfs(census_tract_dfs)
 
-        # If GEOID10s are read as numbers instead of strings, the initial 0 is dropped,
-        # and then we get too many CBG rows (one for 012345 and one for 12345).
+        # Drop tracts that don't exist in the 2010 tracts
+        pre_join_len = census_tract_df[field_names.GEOID_TRACT_FIELD].nunique()
+
+        census_tract_df = census_tract_df.merge(
+            self.national_tract_df,
+            on="GEOID10_TRACT",
+            how="inner",
+        )
+        assert (
+            census_tract_df.shape[0] <= pre_join_len
+        ), "Join against national tract list ADDED rows"
+        logger.info(
+            "Dropped %s tracts not in the 2010 tract data",
+            pre_join_len - census_tract_df[field_names.GEOID_TRACT_FIELD].nunique()
+        )
 
         # Now sanity-check the merged df.
         self._census_tract_df_sanity_check(
@@ -455,9 +451,6 @@ class ScoreETL(ExtractTransformLoad):
             field_names.CENSUS_UNEMPLOYMENT_FIELD_2010,
             field_names.CENSUS_POVERTY_LESS_THAN_100_FPL_FIELD_2010,
             field_names.CENSUS_DECENNIAL_TOTAL_POPULATION_FIELD_2009,
-            field_names.EXTREME_HEAT_FIELD,
-            field_names.HEALTHY_FOOD_FIELD,
-            field_names.IMPENETRABLE_SURFACES_FIELD,
             field_names.UST_FIELD,
             field_names.DOT_TRAVEL_BURDEN_FIELD,
             field_names.FUTURE_FLOOD_RISK_FIELD,
@@ -479,7 +472,6 @@ class ScoreETL(ExtractTransformLoad):
 
         non_numeric_columns = [
             self.GEOID_TRACT_FIELD_NAME,
-            field_names.PERSISTENT_POVERTY_FIELD,
             field_names.TRACT_ELIGIBLE_FOR_NONNATURAL_THRESHOLD,
             field_names.AGRICULTURAL_VALUE_BOOL_FIELD,
         ]
@@ -509,10 +501,6 @@ class ScoreETL(ExtractTransformLoad):
             # This low field will not exist yet, it is only calculated for the
             # percentile.
             # TODO: This will come from the YAML dataset config
-            ReversePercentile(
-                field_name=field_names.READING_FIELD,
-                low_field_name=field_names.LOW_READING_FIELD,
-            ),
             ReversePercentile(
                 field_name=field_names.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD,
                 low_field_name=field_names.LOW_MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD,

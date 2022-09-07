@@ -96,12 +96,6 @@ DATASET_LIST = [
         "is_memory_intensive": False,
     },
     {
-        "name": "child_opportunity_index",
-        "module_dir": "child_opportunity_index",
-        "class_name": "ChildOpportunityIndex",
-        "is_memory_intensive": False,
-    },
-    {
         "name": "mapping_inequality",
         "module_dir": "mapping_inequality",
         "class_name": "MappingInequalityETL",
