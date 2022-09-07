@@ -67,14 +67,12 @@ def test_transform_score(etl, score_data_initial, score_transformed_expected):
 # pylint: disable=too-many-arguments
 def test_create_score_data(
     etl,
-    national_tract_df,
     counties_transformed_expected,
     states_transformed_expected,
     score_transformed_expected,
     score_data_expected,
 ):
     score_data_actual = etl._create_score_data(
-        national_tract_df,
         counties_transformed_expected,
         states_transformed_expected,
         score_transformed_expected,

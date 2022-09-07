@@ -1,12 +1,37 @@
-# flake8: noqa: W0613,W0611,F811
+# flake8: noqa: W0613,W0611,F811,
+# pylint: disable=unused-import,too-many-arguments
 from dataclasses import dataclass
 from typing import List
 import pytest
 import pandas as pd
+import numpy as np
 from data_pipeline.score import field_names
-from .fixtures import final_score_df  # pylint: disable=unused-import
+from data_pipeline.score.field_names import GEOID_TRACT_FIELD
+from .fixtures import (
+    final_score_df,
+    ejscreen_df,
+    hud_housing_df,
+    census_df,
+    cdc_places_df,
+    census_acs_median_incomes_df,
+    cdc_life_expectancy_df,
+    doe_energy_burden_df,
+    national_risk_index_df,
+    dot_travel_disadvantage_df,
+    fsf_fire_df,
+    nature_deprived_df,
+    eamlis_df,
+    fuds_df,
+    geocorr_urban_rural_df,
+    census_decennial_df,
+    census_2010_df,
+    hrs_df,
+    national_tract_df,
+)
+
 
 pytestmark = pytest.mark.smoketest
+UNMATCHED_TRACK_THRESHOLD = 1000
 
 
 def _helper_test_count_exceeding_threshold(df, col, error_check=1000):
@@ -203,3 +228,98 @@ def test_donut_hole_addition_to_score_n(final_score_df):
     assert (
         new_donuts > 0
     ), "FYI: The adjacency index is doing nothing. Consider removing it?"
+
+
+def test_data_sources(
+    final_score_df,
+    hud_housing_df,
+    ejscreen_df,
+    census_df,
+    cdc_places_df,
+    census_acs_median_incomes_df,
+    cdc_life_expectancy_df,
+    doe_energy_burden_df,
+    national_risk_index_df,
+    dot_travel_disadvantage_df,
+    fsf_fire_df,
+    nature_deprived_df,
+    eamlis_df,
+    fuds_df,
+    geocorr_urban_rural_df,
+    census_decennial_df,
+    census_2010_df,
+    hrs_df,
+):
+    data_sources = {
+        key: value for key, value in locals().items() if key != "final_score_df"
+    }
+
+    for data_source_name, data_source in data_sources.items():
+        final = "final_"
+        df: pd.DataFrame = final_score_df.merge(
+            data_source,
+            on=GEOID_TRACT_FIELD,
+            indicator="MERGE",
+            suffixes=(final, f"_{data_source_name}"),
+            how="outer",
+        )
+
+        # Make our lists of columns for later comparison
+        core_cols = data_source.columns.intersection(
+            final_score_df.columns
+        ).drop(GEOID_TRACT_FIELD)
+        data_source_columns = [f"{col}_{data_source_name}" for col in core_cols]
+        final_columns = [f"{col}{final}" for col in core_cols]
+        assert (
+            final_columns
+        ), f"No columns from data source show up in final score in source {data_source_name}"
+
+        # Make sure we have NAs for any tracts in the final data that aren't
+        # covered in the  final data
+        assert np.all(df[df.MERGE == "left_only"][final_columns].isna())
+
+        # Make sure the datasource doesn't have a ton of unmatched tracts, implying it
+        # has moved to 2020 tracts
+        assert len(df[df.MERGE == "right_only"]) < UNMATCHED_TRACK_THRESHOLD
+
+        df = df[df.MERGE == "both"]
+
+        # Compare every column for equality, using close equality for numerics and
+        # `equals` equality for non-numeric columns
+        for final_column, data_source_column in zip(
+            data_source_columns, final_columns
+        ):
+            error_message = (
+                f"Column {final_column} not equal "
+                f"between {data_source_name} and final score"
+            )
+            if df[final_column].dtype in [
+                np.dtype(object),
+                np.dtype(bool),
+                np.dtype(str),
+            ]:
+                assert df[final_column].equals(
+                    df[data_source_column]
+                ), error_message
+            else:
+                assert np.allclose(
+                    df[final_column],
+                    df[data_source_column],
+                    equal_nan=True,
+                ), error_message
+
+
+def test_output_tracts(final_score_df, national_tract_df):
+    df = final_score_df.merge(
+        national_tract_df,
+        on=GEOID_TRACT_FIELD,
+        how="outer",
+        indicator="MERGE",
+    )
+    counts = df.value_counts("MERGE")
+    assert counts.loc["left_only"] == 0
+    assert counts.loc["right_only"] == 0
+
+
+def test_all_tracts_have_scores(final_score_df):
+    assert not final_score_df[field_names.SCORE_N_COMMUNITIES].isna().any()

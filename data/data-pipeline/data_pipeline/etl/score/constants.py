@@ -397,7 +397,7 @@ TILES_SCORE_FLOAT_COLUMNS = [
     # Geojson cannot support nulls in a boolean column when we create tiles;
     # to preserve null character, we coerce to floats for all fields
     # that use null to signify missing information in a boolean field.
-    field_names.ELIGIBLE_FUDS_BINARY_FIELD_NAME, 
-    field_names.AML_BOOLEAN, 
+    field_names.ELIGIBLE_FUDS_BINARY_FIELD_NAME,
+    field_names.AML_BOOLEAN,
     field_names.HISTORIC_REDLINING_SCORE_EXCEEDED
 ]
