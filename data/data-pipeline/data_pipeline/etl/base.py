@@ -7,6 +7,9 @@ from typing import Optional
 import pandas as pd
 
 from data_pipeline.config import settings
+from data_pipeline.etl.score.etl_utils import (
+    compare_to_list_of_expected_state_fips_codes,
+)
 from data_pipeline.etl.score.schemas.datasets import DatasetsConfig
 from data_pipeline.utils import (
     load_yaml_dict_from_file,
@@ -43,7 +46,7 @@ class ExtractTransformLoad:
     APP_ROOT: pathlib.Path = settings.APP_ROOT
 
     # Directories
-    DATA_PATH: pathlib.Path = APP_ROOT / "data"
+    DATA_PATH: pathlib.Path = settings.DATA_PATH
     TMP_PATH: pathlib.Path = DATA_PATH / "tmp"
     CONTENT_CONFIG: pathlib.Path = APP_ROOT / "content" / "config"
     DATASET_CONFIG_PATH: pathlib.Path = APP_ROOT / "etl" / "score" / "config"
@@ -81,6 +84,19 @@ class ExtractTransformLoad:
 
     # NULL_REPRESENTATION is how nulls are represented on the input field
     NULL_REPRESENTATION: str = None
+
+    # Whether this ETL contains data for the nation (the US states)
+    NATION_EXPECTED_IN_DATA: bool = True
+
+    # Whether this ETL contains data for Puerto Rico
+    PUERTO_RICO_EXPECTED_IN_DATA: bool = True
+
+    # Whether this ETL contains data for the island areas
+    ISLAND_AREAS_EXPECTED_IN_DATA: bool = False
+
+    # Whether this ETL contains known missing data for any additional
+    # states/territories
+    EXPECTED_MISSING_STATES: typing.List[str] = []
 
     # Thirteen digits in a census block group ID.
     EXPECTED_CENSUS_BLOCK_GROUPS_CHARACTER_LENGTH: int = 13
@@ -288,6 +304,21 @@ class ExtractTransformLoad:
                         f"duplicate values in "
                         f"`{geo_field}`."
                     )
+
+        # Check whether data contains expected states
+        states_in_output_df = list(
+            self.output_df[self.GEOID_TRACT_FIELD_NAME]
+            .astype(str)
+            .str[0:2]
+            .unique()
+        )
+        compare_to_list_of_expected_state_fips_codes(
+            actual_state_fips_codes=states_in_output_df,
+            nation_expected=self.NATION_EXPECTED_IN_DATA,
+            puerto_rico_expected=self.PUERTO_RICO_EXPECTED_IN_DATA,
+            island_areas_expected=self.ISLAND_AREAS_EXPECTED_IN_DATA,
+            additional_fips_codes_not_expected=self.EXPECTED_MISSING_STATES,
+        )
 
     def load(self, float_format=None) -> None:
         """Saves the transformed data.

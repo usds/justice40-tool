@@ -1,10 +1,9 @@
 from pathlib import Path
 import pandas as pd
 
-from data_pipeline.etl.base import ExtractTransformLoad
-from data_pipeline.etl.score.constants import (
-    TILES_ISLAND_AREA_FIPS_CODES,
-    TILES_PUERTO_RICO_FIPS_CODE,
+from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
+from data_pipeline.etl.score.etl_utils import (
+    compare_to_list_of_expected_state_fips_codes,
 )
 from data_pipeline.etl.sources.census.etl_utils import get_state_fips_codes
 from data_pipeline.utils import get_module_logger, download_file_from_url
@@ -14,7 +13,12 @@ logger = get_module_logger(__name__)
 
 class CDCLifeExpectancy(ExtractTransformLoad):
     def __init__(self):
+        self.GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
+        self.PUERTO_RICO_EXPECTED_IN_DATA = False
+
         self.USA_FILE_URL: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/US_A.CSV"
+
+        self.STATES_MISSING_FROM_USA_FILE = ["23", "55"]
 
         # For some reason, LEEP does not include Maine or Wisconsin in its "All of
         # USA" file. Load these separately.
@@ -34,19 +38,6 @@ class CDCLifeExpectancy(ExtractTransformLoad):
             self.GEOID_TRACT_FIELD_NAME,
             self.LIFE_EXPECTANCY_FIELD_NAME,
         ]
-
-        # Set some constants that will be helpful for debugging the source data later.
-        self.STATE_FIPS_CODES = get_state_fips_codes(self.DATA_PATH)
-
-        self.EXPECTED_STATES_SET = (
-            set(self.STATE_FIPS_CODES)
-            # We don't expect LEEP to have data for island areas or Puerto Rico.
-            - set(TILES_ISLAND_AREA_FIPS_CODES)
-            - set(TILES_PUERTO_RICO_FIPS_CODE)
-        )
-
-        # These states are currently missing from LEEP's whole USA file.
-        self.EXPECTED_MISSING_STATES = ["23", "55"]
 
         self.raw_df: pd.DataFrame
         self.output_df: pd.DataFrame
@@ -76,23 +67,18 @@ class CDCLifeExpectancy(ExtractTransformLoad):
         )
 
         # Check which states are missing
-        states_in_life_expectancy_usa_file = all_usa_raw_df[
-            self.STATE_INPUT_COLUMN_NAME
-        ].unique()
-
-        # Find which states are missing from the expected set.
-        states_missing = sorted(
-            list(
-                self.EXPECTED_STATES_SET
-                - set(states_in_life_expectancy_usa_file)
-            )
+        states_in_life_expectancy_usa_file = list(
+            all_usa_raw_df[self.STATE_INPUT_COLUMN_NAME].unique()
         )
 
-        if states_missing != self.EXPECTED_MISSING_STATES:
-            raise ValueError(
-                "LEEP data has changed. The states missing from the data are "
-                "no longer the same."
-            )
+        # Expect that PR, Island Areas, and Maine/Wisconsin are missing
+        compare_to_list_of_expected_state_fips_codes(
+            actual_state_fips_codes=states_in_life_expectancy_usa_file,
+            nation_expected=self.NATION_EXPECTED_IN_DATA,
+            puerto_rico_expected=self.PUERTO_RICO_EXPECTED_IN_DATA,
+            island_areas_expected=self.ISLAND_AREAS_EXPECTED_IN_DATA,
+            additional_fips_codes_not_expected=self.STATES_MISSING_FROM_USA_FILE,
+        )
 
         logger.info("Downloading data for Maine")
         maine_download_file_name = (
@@ -131,20 +117,18 @@ class CDCLifeExpectancy(ExtractTransformLoad):
             axis=0,
         )
 
-        states_in_combined_df = combined_df[
-            self.STATE_INPUT_COLUMN_NAME
-        ].unique()
-
-        # Find which states are missing from the combined df.
-        states_missing = sorted(
-            list(self.EXPECTED_STATES_SET - set(states_in_combined_df))
+        states_in_combined_df = list(
+            combined_df[self.STATE_INPUT_COLUMN_NAME].unique()
         )
 
-        if len(states_missing) != 0:
-            raise ValueError(
-                "The states missing from combined dataframe are "
-                "no longer as expected."
-            )
+        # Expect that PR and Island Areas are the only things now missing
+        compare_to_list_of_expected_state_fips_codes(
+            actual_state_fips_codes=states_in_combined_df,
+            nation_expected=self.NATION_EXPECTED_IN_DATA,
+            puerto_rico_expected=self.PUERTO_RICO_EXPECTED_IN_DATA,
+            island_areas_expected=self.ISLAND_AREAS_EXPECTED_IN_DATA,
+            additional_fips_codes_not_expected=[],
+        )
 
         # Save the updated version
         self.raw_df = combined_df

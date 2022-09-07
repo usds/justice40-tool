@@ -1,11 +1,18 @@
 import os
 import sys
+import typing
 from pathlib import Path
 from collections import namedtuple
 import numpy as np
 import pandas as pd
 
 from data_pipeline.config import settings
+from data_pipeline.etl.score.constants import (
+    TILES_ISLAND_AREA_FIPS_CODES,
+    TILES_PUERTO_RICO_FIPS_CODE,
+    TILES_NATION_FIPS_CODE,
+)
+from data_pipeline.etl.sources.census.etl_utils import get_state_fips_codes
 from data_pipeline.utils import (
     download_file_from_url,
     get_module_logger,
@@ -305,3 +312,73 @@ def create_codebook(
     return merged_codebook_df[constants.CODEBOOK_COLUMNS].rename(
         columns={constants.CEJST_SCORE_COLUMN_NAME: "Description"}
     )
+
+
+def compare_to_list_of_expected_state_fips_codes(
+    actual_state_fips_codes: typing.List[str],
+    nation_expected: bool = True,
+    puerto_rico_expected: bool = True,
+    island_areas_expected: bool = True,
+    additional_fips_codes_not_expected: typing.List[str] = [],
+) -> None:
+    """Check whether a list of state/territory FIPS codes match expectations.
+
+    Args:
+        actual_state_fips_codes (List of str): Actual state codes observed in data
+        nation_expected (bool): Do you expect the nation (DC & states) to be
+            represented in data?
+        puerto_rico_expected (bool): Do you expect PR to be represented in data?
+        island_areas_expected (bool): Do you expect Island Areas to be represented in
+            data?
+        additional_fips_codes_not_expected (List of str): Additional state codes
+            not expected in the data. For example, the data may be known to be missing
+            data from Maine and Wisconsin.
+
+    Returns:
+        None: Does not return any values.
+
+    Raises:
+        ValueError: if lists do not match expectations.
+    """
+    # Cast input to a set.
+    actual_state_fips_codes_set = set(actual_state_fips_codes)
+
+    # Start with the list of all FIPS codes for all states and territories.
+    expected_states_set = set(get_state_fips_codes(settings.DATA_PATH))
+
+    # If nation (states and DC) are not expected to be included, remove it from the
+    # expected
+    # states set.
+    if not nation_expected:
+        expected_states_set = expected_states_set - set(TILES_NATION_FIPS_CODE)
+
+    # If Puerto Rico is not expected to be included, remove it from the expected
+    # states set.
+    if not puerto_rico_expected:
+        expected_states_set = expected_states_set - set(
+            TILES_PUERTO_RICO_FIPS_CODE
+        )
+
+    # If island areas are not expected to be included, remove them from the expected
+    # states set.
+    if not island_areas_expected:
+        expected_states_set = expected_states_set - set(
+            TILES_ISLAND_AREA_FIPS_CODES
+        )
+
+    # If additional FIPS codes are not expected to be included, remove them from the
+    # expected states set.
+    expected_states_set = expected_states_set - set(
+        additional_fips_codes_not_expected
+    )
+
+    if expected_states_set != actual_state_fips_codes_set:
+        raise ValueError(
+            "The states and territories in the data are not as expected.\n"
+            "FIPS state codes expected that are not present in the data:\n"
+            f"{sorted(list(expected_states_set - actual_state_fips_codes_set))}\n"
+            "FIPS state codes in the data that were not expected:\n"
+            f"{sorted(list(actual_state_fips_codes_set - expected_states_set))}\n"
+        )
+    else:
+        logger.info("Data matches expected state and territory representation.")

@@ -2,7 +2,10 @@ import pandas as pd
 import numpy as np
 import pytest
 
-from data_pipeline.etl.score.etl_utils import floor_series
+from data_pipeline.etl.score.etl_utils import (
+    floor_series,
+    compare_to_list_of_expected_state_fips_codes,
+)
 
 
 def test_floor_series():
@@ -70,3 +73,265 @@ def test_floor_series():
         match="Argument series must be of type pandas series, not of type list.",
     ):
         floor_series(invalid_type, number_of_decimals=3)
+
+
+def test_compare_to_list_of_expected_state_fips_codes():
+    fips_codes_test_1 = [
+        "01",
+        "02",
+        "04",
+        "05",
+        "06",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12",
+        "13",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27",
+        "28",
+        "29",
+        "30",
+        "31",
+        "32",
+        "33",
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40",
+        "41",
+        "42",
+        "44",
+        "45",
+        "46",
+        "47",
+        "48",
+        "49",
+        "50",
+        "51",
+        "53",
+        "54",
+        "55",
+        "56",
+        "60",
+        "66",
+        "69",
+        "72",
+        "78",
+    ]
+
+    # Should not raise any errors
+    compare_to_list_of_expected_state_fips_codes(
+        actual_state_fips_codes=fips_codes_test_1
+    )
+
+    # Should raise error because Puerto Rico is not expected
+    with pytest.raises(ValueError) as exception_info:
+        compare_to_list_of_expected_state_fips_codes(
+            actual_state_fips_codes=fips_codes_test_1,
+            puerto_rico_expected=False,
+        )
+    partial_expected_error_message = (
+        "FIPS state codes in the data that were not expected:\n['72']\n"
+    )
+    assert partial_expected_error_message in str(exception_info.value)
+
+    # Should raise error because Island Areas are not expected
+    with pytest.raises(ValueError) as exception_info:
+        compare_to_list_of_expected_state_fips_codes(
+            actual_state_fips_codes=fips_codes_test_1,
+            island_areas_expected=False,
+        )
+    partial_expected_error_message = (
+        "FIPS state codes in the data that were not expected:\n"
+        "['60', '66', '69', '78']\n"
+    )
+    assert partial_expected_error_message in str(exception_info.value)
+
+    # List missing PR and Guam
+    fips_codes_test_2 = [
+        "01",
+        "02",
+        "04",
+        "05",
+        "06",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12",
+        "13",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27",
+        "28",
+        "29",
+        "30",
+        "31",
+        "32",
+        "33",
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40",
+        "41",
+        "42",
+        "44",
+        "45",
+        "46",
+        "47",
+        "48",
+        "49",
+        "50",
+        "51",
+        "53",
+        "54",
+        "55",
+        "56",
+        "60",
+        "69",
+        "78",
+    ]
+    # Should raise error because all Island Areas and PR are expected
+    with pytest.raises(ValueError) as exception_info:
+        compare_to_list_of_expected_state_fips_codes(
+            actual_state_fips_codes=fips_codes_test_2,
+        )
+    partial_expected_error_message = (
+        "FIPS state codes expected that are not present in the data:\n"
+        "['66', '72']\n"
+    )
+    assert partial_expected_error_message in str(exception_info.value)
+
+    # Missing Maine and Wisconsin
+    fips_codes_test_3 = [
+        "01",
+        "02",
+        "04",
+        "05",
+        "06",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12",
+        "13",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22",
+        "24",
+        "25",
+        "26",
+        "27",
+        "28",
+        "29",
+        "30",
+        "31",
+        "32",
+        "33",
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40",
+        "41",
+        "42",
+        "44",
+        "45",
+        "46",
+        "47",
+        "48",
+        "49",
+        "50",
+        "51",
+        "53",
+        "54",
+        "56",
+        "60",
+        "66",
+        "69",
+        "72",
+        "78",
+    ]
+
+    # Should raise error because Maine and Wisconsin are expected
+    with pytest.raises(ValueError) as exception_info:
+        compare_to_list_of_expected_state_fips_codes(
+            actual_state_fips_codes=fips_codes_test_3,
+        )
+    partial_expected_error_message = (
+        "FIPS state codes expected that are not present in the data:\n"
+        "['23', '55']\n"
+    )
+    assert partial_expected_error_message in str(exception_info.value)
+
+    # Should not raise error because Maine and Wisconsin are expected to be missing
+    compare_to_list_of_expected_state_fips_codes(
+        actual_state_fips_codes=fips_codes_test_3,
+        additional_fips_codes_not_expected=["23", "55"],
+    )
+
+    # Missing the nation
+    fips_codes_test_4 = [
+        "60",
+        "66",
+        "69",
+        "72",
+        "78",
+    ]
+
+    # Should raise error because the nation is expected
+    with pytest.raises(ValueError) as exception_info:
+        compare_to_list_of_expected_state_fips_codes(
+            actual_state_fips_codes=fips_codes_test_4,
+        )
+
+    partial_expected_error_message = (
+        "FIPS state codes expected that are not present in the data:\n"
+        "['01', '02', '04', '05', '06', '08', '09', '10', '11', '12', '13', '15', '16', "
+        "'17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', "
+        "'30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', "
+        "'44', '45', '46', '47', '48', '49', '50', '51', '53', '54', '55', '56']"
+    )
+
+    assert partial_expected_error_message in str(exception_info.value)
+
+    # Should not raise error because Nation is not to be missing
+    compare_to_list_of_expected_state_fips_codes(
+        actual_state_fips_codes=fips_codes_test_4, nation_expected=False
+    )
