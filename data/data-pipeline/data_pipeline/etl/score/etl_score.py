@@ -380,7 +380,8 @@ class ScoreETL(ExtractTransformLoad):
         ), "Join against national tract list ADDED rows"
         logger.info(
             "Dropped %s tracts not in the 2010 tract data",
-            pre_join_len - census_tract_df[field_names.GEOID_TRACT_FIELD].nunique()
+            pre_join_len
+            - census_tract_df[field_names.GEOID_TRACT_FIELD].nunique(),
         )
 
         # Now sanity-check the merged df.

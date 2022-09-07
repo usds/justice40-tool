@@ -399,5 +399,5 @@ TILES_SCORE_FLOAT_COLUMNS = [
     # that use null to signify missing information in a boolean field.
     field_names.ELIGIBLE_FUDS_BINARY_FIELD_NAME,
     field_names.AML_BOOLEAN,
-    field_names.HISTORIC_REDLINING_SCORE_EXCEEDED
+    field_names.HISTORIC_REDLINING_SCORE_EXCEEDED,
 ]
