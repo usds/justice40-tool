@@ -380,7 +380,8 @@ class ScoreETL(ExtractTransformLoad):
         ), "Join against national tract list ADDED rows"
         logger.info(
             "Dropped %s tracts not in the 2010 tract data",
-            pre_join_len - census_tract_df[field_names.GEOID_TRACT_FIELD].nunique()
+            pre_join_len
+            - census_tract_df[field_names.GEOID_TRACT_FIELD].nunique(),
         )
 
         # Now sanity-check the merged df.
@@ -551,6 +552,9 @@ class ScoreETL(ExtractTransformLoad):
         #     For *Non-Natural Space*, we may only want to include tracts that have at least 35 acreas, I think. This will
         #     get rid of  tracts that we think are aberrations statistically. Right now, we have left this out
         #     pending ground-truthing.
+        #
+        #     For *Traffic Barriers*, we want to exclude low population tracts, which may have high burden because they are
+        #     low population alone. We set this low population constant in the if statement.
 
         for numeric_column in numeric_columns:
             drop_tracts = []
@@ -573,6 +577,17 @@ class ScoreETL(ExtractTransformLoad):
                 ][field_names.GEOID_TRACT_FIELD].to_list()
                 logger.info(
                     f"Dropping {len(drop_tracts)} tracts from Linguistic Isolation"
+                )
+
+            elif numeric_column == field_names.DOT_TRAVEL_BURDEN_FIELD:
+                # Not having any people appears to be correlated with transit burden, but also doesn't represent
+                # on the ground need. For now, we remove these tracts from the percentile calculation. (To be QAed live)
+                low_population = 20
+                drop_tracts = df_copy[
+                    df_copy[field_names.TOTAL_POP_FIELD] <= low_population
+                ][field_names.GEOID_TRACT_FIELD].to_list()
+                logger.info(
+                    f"Dropping {len(drop_tracts)} tracts from DOT traffic burden"
                 )
 
             df_copy = self._add_percentiles_to_df(
