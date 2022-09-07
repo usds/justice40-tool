@@ -114,7 +114,7 @@ def calculate_income_measures(
     logger.info("Merging and casting geodataframe as a typical dataframe")
     # get rid of the geometry column and cast as a typical df
     df = pd.DataFrame(
-        geo_df[[col for col in geo_df.columns if col != "geometry"]].merge(
+        geo_df.drop(columns="geometry").merge(
             neighbor_averages_df,
             on=[GEOID_TRACT_FIELD],
             how="outer",
