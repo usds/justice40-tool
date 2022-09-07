@@ -158,5 +158,4 @@ class CDCLifeExpectancy(ExtractTransformLoad):
         self.output_df[self.COLUMNS_TO_KEEP].to_csv(
             path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False
         )
-
-        logger.info(self.OUTPUT_PATH / "usa.csv")
+        
