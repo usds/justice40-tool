@@ -26,10 +26,12 @@ export const ERROR_MSG =
 <FormattedMessage
   id={'pageNotFound.apology.text'}
   defaultMessage={`
-    Sorry, the page you were looking for was not found. Click <link1>home</link1> to go home.
-    `}
+    Sorry, the page you are looking for is not found. <link1>Explore the map</link1> or learn 
+    more <link2>about</link2> the tool.
+  `}
   description={'main error message'}
   values={{
-    link1: linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
+    link1: linkFn(PAGES_ENDPOINTS.EXPLORE, true, false),
+    link2: linkFn(PAGES_ENDPOINTS.ABOUT, true, false),
   }}
 />;
