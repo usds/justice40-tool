@@ -223,6 +223,8 @@ class ExtractTransformLoad:
         """
         # TODO: remove this once all ETL classes are converted to using the new
         #  base class parameters and patterns.
+        # TODO: determine how to use this currently in the partially refactored world.
+        #   https://github.com/usds/justice40-tool/issues/1891 
         if self.GEO_LEVEL is None:
             logger.info(
                 "Skipping validation step for this class because it does not "

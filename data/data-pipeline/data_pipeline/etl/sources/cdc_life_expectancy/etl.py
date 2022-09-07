@@ -1,3 +1,4 @@
+import pathlib
 from pathlib import Path
 import pandas as pd
 
@@ -5,7 +6,7 @@ from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
 from data_pipeline.etl.score.etl_utils import (
     compare_to_list_of_expected_state_fips_codes,
 )
-from data_pipeline.etl.sources.census.etl_utils import get_state_fips_codes
+from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger, download_file_from_url
 
 logger = get_module_logger(__name__)
@@ -31,39 +32,45 @@ class CDCLifeExpectancy(ExtractTransformLoad):
 
         self.TRACT_INPUT_COLUMN_NAME = "Tract ID"
         self.STATE_INPUT_COLUMN_NAME = "STATE2KX"
-        self.LIFE_EXPECTANCY_FIELD_NAME = "Life expectancy (years)"
 
         # Constants for output
         self.COLUMNS_TO_KEEP = [
             self.GEOID_TRACT_FIELD_NAME,
-            self.LIFE_EXPECTANCY_FIELD_NAME,
+            field_names.LIFE_EXPECTANCY_FIELD,
         ]
 
         self.raw_df: pd.DataFrame
         self.output_df: pd.DataFrame
 
-    def extract(self) -> None:
-        logger.info("Starting data download.")
-
-        all_usa_download_file_name = (
-            self.get_tmp_path() / "cdc_life_expectancy" / "usa.csv"
-        )
+    def _download_and_prep_data(
+        self, file_url: str, download_file_name: pathlib.Path
+    ) -> pd.DataFrame:
         download_file_from_url(
-            file_url=self.USA_FILE_URL,
-            download_file_name=all_usa_download_file_name,
+            file_url=file_url,
+            download_file_name=download_file_name,
             verify=True,
         )
 
-        pandas_read_csv_dtype_settings = {
-            # The following need to remain as strings for all of their digits, not get converted to numbers.
-            self.TRACT_INPUT_COLUMN_NAME: "string",
-            self.STATE_INPUT_COLUMN_NAME: "string",
-        }
-
-        all_usa_raw_df = pd.read_csv(
-            filepath_or_buffer=all_usa_download_file_name,
-            dtype=pandas_read_csv_dtype_settings,
+        df = pd.read_csv(
+            filepath_or_buffer=download_file_name,
+            dtype={
+                # The following need to remain as strings for all of their digits, not get converted to numbers.
+                self.TRACT_INPUT_COLUMN_NAME: "string",
+                self.STATE_INPUT_COLUMN_NAME: "string",
+            },
             low_memory=False,
+        )
+
+        return df
+
+    def extract(self) -> None:
+        logger.info("Starting data download.")
+
+        all_usa_raw_df = self._download_and_prep_data(
+            file_url=self.USA_FILE_URL,
+            download_file_name=self.get_tmp_path()
+            / "cdc_life_expectancy"
+            / "usa.csv",
         )
 
         # Check which states are missing
@@ -81,33 +88,19 @@ class CDCLifeExpectancy(ExtractTransformLoad):
         )
 
         logger.info("Downloading data for Maine")
-        maine_download_file_name = (
-            self.get_tmp_path() / "cdc_life_expectancy" / "maine.csv"
-        )
-        download_file_from_url(
+        maine_raw_df = self._download_and_prep_data(
             file_url=self.MAINE_FILE_URL,
-            download_file_name=maine_download_file_name,
-            verify=True,
-        )
-        maine_raw_df = pd.read_csv(
-            filepath_or_buffer=maine_download_file_name,
-            dtype=pandas_read_csv_dtype_settings,
-            low_memory=False,
+            download_file_name=self.get_tmp_path()
+            / "cdc_life_expectancy"
+            / "maine.csv",
         )
 
         logger.info("Downloading data for Wisconsin")
-        wisconsin_download_file_name = (
-            self.get_tmp_path() / "cdc_life_expectancy" / "wisconsin.csv"
-        )
-        download_file_from_url(
+        wisconsin_raw_df = self._download_and_prep_data(
             file_url=self.WISCONSIN_FILE_URL,
-            download_file_name=wisconsin_download_file_name,
-            verify=True,
-        )
-        wisconsin_raw_df = pd.read_csv(
-            filepath_or_buffer=wisconsin_download_file_name,
-            dtype=pandas_read_csv_dtype_settings,
-            low_memory=False,
+            download_file_name=self.get_tmp_path()
+            / "cdc_life_expectancy"
+            / "wisconsin.csv",
         )
 
         combined_df = pd.concat(
@@ -138,7 +131,7 @@ class CDCLifeExpectancy(ExtractTransformLoad):
 
         self.output_df = self.raw_df.rename(
             columns={
-                "e(0)": self.LIFE_EXPECTANCY_FIELD_NAME,
+                "e(0)": field_names.LIFE_EXPECTANCY_FIELD,
                 self.TRACT_INPUT_COLUMN_NAME: self.GEOID_TRACT_FIELD_NAME,
             }
         )
