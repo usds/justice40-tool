@@ -317,7 +317,7 @@ class ScoreETL(ExtractTransformLoad):
         # For the vast majority of columns, we will simply calculate percentiles overall.
         # However, for Linguistic Isolation and Agricultural  Value Loss, there exist conditions
         # for which we drop out tracts from consideration in the percentile. More details on those
-        # are below, for them, we provide a list of tracts to not include.
+        # are below, for them, we provide a list of tracts to not include. Ditto transit barriers.
         # Because of the fancy transformations below, I have removed the urban / rural percentiles,
         # which are now deprecated.
         if not drop_tracts:
@@ -585,6 +585,16 @@ class ScoreETL(ExtractTransformLoad):
                 ][field_names.GEOID_TRACT_FIELD].to_list()
                 logger.info(
                     f"Dropping {len(drop_tracts)} tracts from Linguistic Isolation"
+                )
+            elif numeric_column == field_names.DOT_TRAVEL_BURDEN_FIELD:
+                # Not having any people appears to be correlated with transit burden, but also doesn't represent
+                # on the ground need. For now, we remove these tracts from the percentile calculation. (To be QAed live)
+                low_population = 20
+                drop_tracts = df_copy[
+                    df_copy[field_names.TOTAL_POP_FIELD] <= low_population
+                ][field_names.GEOID_TRACT_FIELD].to_list()
+                logger.info(
+                    f"Dropping {len(drop_tracts)} tracts from DOT traffic burden"
                 )
 
             df_copy = self._add_percentiles_to_df(
