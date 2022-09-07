@@ -40,7 +40,6 @@ def _get_state_and_county_fills(
         county_means = df.groupby(counties)[
             impute_var_pair.raw_field_name
         ].transform(np.mean)
-
         state_means = df.groupby(states)[
             impute_var_pair.raw_field_name
         ].transform(np.mean)
@@ -56,7 +55,6 @@ def _get_state_and_county_fills(
         df[impute_var_pair.imputed_field_name] = np.where(
             impute_tracts, fill_means, df[impute_var_pair.imputed_field_name]
         )
-
     return df
 
 
