@@ -35,6 +35,19 @@ class CDCLifeExpectancy(ExtractTransformLoad):
             self.LIFE_EXPECTANCY_FIELD_NAME,
         ]
 
+        # Set some constants that will be helpful for debugging the source data later.
+        self.STATE_FIPS_CODES = get_state_fips_codes(self.DATA_PATH)
+
+        self.EXPECTED_STATES_SET = (
+            set(self.STATE_FIPS_CODES)
+            # We don't expect LEEP to have data for island areas or Puerto Rico.
+            - set(TILES_ISLAND_AREA_FIPS_CODES)
+            - set(TILES_PUERTO_RICO_FIPS_CODE)
+        )
+
+        # These states are currently missing from LEEP's whole USA file.
+        self.EXPECTED_MISSING_STATES = ["23", "55"]
+
         self.raw_df: pd.DataFrame
         self.output_df: pd.DataFrame
 
@@ -63,24 +76,19 @@ class CDCLifeExpectancy(ExtractTransformLoad):
         )
 
         # Check which states are missing
-        state_fips_codes = get_state_fips_codes(self.DATA_PATH)
         states_in_life_expectancy_usa_file = all_usa_raw_df[
             self.STATE_INPUT_COLUMN_NAME
         ].unique()
 
-        expected_states_set = (
-            set(state_fips_codes)
-            # We don't expect LEEP to have data for island areas or Puerto Rico.
-            - set(TILES_ISLAND_AREA_FIPS_CODES)
-            - set(TILES_PUERTO_RICO_FIPS_CODE)
-        )
-
         # Find which states are missing from the expected set.
         states_missing = sorted(
-            list(expected_states_set - set(states_in_life_expectancy_usa_file))
+            list(
+                self.EXPECTED_STATES_SET
+                - set(states_in_life_expectancy_usa_file)
+            )
         )
 
-        if states_missing != ["23", "55"]:
+        if states_missing != self.EXPECTED_MISSING_STATES:
             raise ValueError(
                 "LEEP data has changed. The states missing from the data are "
                 "no longer the same."
@@ -129,7 +137,7 @@ class CDCLifeExpectancy(ExtractTransformLoad):
 
         # Find which states are missing from the combined df.
         states_missing = sorted(
-            list(expected_states_set - set(states_in_combined_df))
+            list(self.EXPECTED_STATES_SET - set(states_in_combined_df))
         )
 
         if len(states_missing) != 0:
