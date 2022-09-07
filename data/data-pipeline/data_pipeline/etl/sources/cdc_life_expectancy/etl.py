@@ -17,6 +17,8 @@ class CDCLifeExpectancy(ExtractTransformLoad):
     PUERTO_RICO_EXPECTED_IN_DATA = False
 
     USA_FILE_URL: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/US_A.CSV"
+    LOAD_YAML_CONFIG: bool = True
+    LIFE_EXPECTANCY_FIELD_NAME = "Life expectancy (years)"
 
     STATES_MISSING_FROM_USA_FILE = ["23", "55"]
 
@@ -135,7 +137,6 @@ class CDCLifeExpectancy(ExtractTransformLoad):
                 self.TRACT_INPUT_COLUMN_NAME: self.GEOID_TRACT_FIELD_NAME,
             }
         )
-
     def load(self) -> None:
         logger.info("Saving CDC Life Expectancy CSV")
 

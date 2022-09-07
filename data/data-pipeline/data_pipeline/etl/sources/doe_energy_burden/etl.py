@@ -15,6 +15,7 @@ class DOEEnergyBurden(ExtractTransformLoad):
         + "/DOE_LEAD_AMI_TRACT_2018_ALL.csv.zip"
     )
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
+    LOAD_YAML_CONFIG: bool = True
 
     REVISED_ENERGY_BURDEN_FIELD_NAME: str
 

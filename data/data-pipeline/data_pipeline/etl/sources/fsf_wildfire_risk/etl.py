@@ -17,6 +17,7 @@ class WildfireRiskETL(ExtractTransformLoad):
     SOURCE_URL = settings.AWS_JUSTICE40_DATASOURCES_URL + "/fsf_fire.zip"
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
     PUERTO_RICO_EXPECTED_IN_DATA = False
+    LOAD_YAML_CONFIG: bool = True
     ALASKA_AND_HAWAII_EXPECTED_IN_DATA = False
 
     # Output score variables (values set on datasets.yml) for linting purposes

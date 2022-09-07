@@ -19,6 +19,7 @@ class USArmyFUDS(ExtractTransformLoad):
     INELIGIBLE_FUDS_COUNT_FIELD_NAME: str
     ELIGIBLE_FUDS_BINARY_FIELD_NAME: str
     GEO_LEVEL: ValidGeoLevel = ValidGeoLevel.CENSUS_TRACT
+    LOAD_YAML_CONFIG: bool = True
 
     ISLAND_AREAS_EXPECTED_IN_DATA = True
 

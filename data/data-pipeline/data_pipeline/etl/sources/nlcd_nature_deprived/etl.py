@@ -20,6 +20,7 @@ class NatureDeprivedETL(ExtractTransformLoad):
     )
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
     PUERTO_RICO_EXPECTED_IN_DATA = False
+    LOAD_YAML_CONFIG: bool = True
     ALASKA_AND_HAWAII_EXPECTED_IN_DATA = False
 
     # Alaska and Hawaii are missing

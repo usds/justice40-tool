@@ -115,56 +115,59 @@ class ExtractTransformLoad:
     #  periods. https://github.com/usds/justice40-tool/issues/964
     EXPECTED_MAX_CENSUS_TRACTS: int = 74160
 
+    # Should this dataset load its configuration from
+    # the YAML files?
+    LOAD_YAML_CONFIG: bool = False
+
     # We use output_df as the final dataframe to use to write to the CSV
     # It is used on the "load" base class method
     output_df: pd.DataFrame = None
 
     def __init_subclass__(cls) -> None:
-        cls.DATASET_CONFIG = cls.yaml_config_load()
+        if cls.LOAD_YAML_CONFIG:
+            cls.DATASET_CONFIG = cls.yaml_config_load()
 
     @classmethod
-    def yaml_config_load(cls) -> Optional[dict]:
+    def yaml_config_load(cls) -> dict:
         """Generate config dictionary and set instance variables from YAML dataset."""
-        if cls.NAME is not None:
-            # check if the class instance has score YAML definitions
-            datasets_config = load_yaml_dict_from_file(
-                cls.DATASET_CONFIG_PATH / "datasets.yml",
-                DatasetsConfig,
+        # check if the class instance has score YAML definitions
+        datasets_config = load_yaml_dict_from_file(
+            cls.DATASET_CONFIG_PATH / "datasets.yml",
+            DatasetsConfig,
+        )
+
+        # get the config for this dataset
+        try:
+            dataset_config = next(
+                item
+                for item in datasets_config.get("datasets")
+                if item["module_name"] == cls.NAME
             )
+        except StopIteration:
+            # Note: it'd be nice to log the name of the dataframe, but that's not accessible in this scope.
+            logger.error(
+                f"Exception encountered while extracting dataset config for dataset {cls.NAME}"
+            )
+            sys.exit()
 
-            # get the config for this dataset
-            try:
-                dataset_config = next(
-                    item
-                    for item in datasets_config.get("datasets")
-                    if item["module_name"] == cls.NAME
-                )
-            except StopIteration:
-                # Note: it'd be nice to log the name of the dataframe, but that's not accessible in this scope.
-                logger.error(
-                    f"Exception encountered while extracting dataset config for dataset {cls.NAME}"
-                )
-                sys.exit()
-
-            # set some of the basic fields
-            if "input_geoid_tract_field_name" in dataset_config:
-                cls.INPUT_GEOID_TRACT_FIELD_NAME = dataset_config[
-                    "input_geoid_tract_field_name"
-                ]
-
-            # get the columns to write on the CSV
-            # and set the constants
-            cls.COLUMNS_TO_KEEP = [
-                cls.GEOID_TRACT_FIELD_NAME,  # always index with geoid tract id
+        # set some of the basic fields
+        if "input_geoid_tract_field_name" in dataset_config:
+            cls.INPUT_GEOID_TRACT_FIELD_NAME = dataset_config[
+                "input_geoid_tract_field_name"
             ]
-            for field in dataset_config["load_fields"]:
-                cls.COLUMNS_TO_KEEP.append(field["long_name"])
-                setattr(cls, field["df_field_name"], field["long_name"])
 
-                # set the constants for the class
-                setattr(cls, field["df_field_name"], field["long_name"])
-            return dataset_config
-        return None
+        # get the columns to write on the CSV
+        # and set the constants
+        cls.COLUMNS_TO_KEEP = [
+            cls.GEOID_TRACT_FIELD_NAME,  # always index with geoid tract id
+        ]
+        for field in dataset_config["load_fields"]:
+            cls.COLUMNS_TO_KEEP.append(field["long_name"])
+            setattr(cls, field["df_field_name"], field["long_name"])
+
+            # set the constants for the class
+            setattr(cls, field["df_field_name"], field["long_name"])
+        return dataset_config
 
     # This is a classmethod so it can be used by `get_data_frame` without
     # needing to create an instance of the class. This is a use case in `etl_score`.

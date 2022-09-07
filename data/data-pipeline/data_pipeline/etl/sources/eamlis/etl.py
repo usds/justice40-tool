@@ -19,6 +19,7 @@ class AbandonedMineETL(ExtractTransformLoad):
     NAME = "eamlis"
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
     AML_BOOLEAN: str
+    LOAD_YAML_CONFIG: bool = True
 
     PUERTO_RICO_EXPECTED_IN_DATA = False
     EXPECTED_MISSING_STATES = [

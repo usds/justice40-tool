@@ -1,6 +1,6 @@
 import pandas as pd
 
-from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
 from data_pipeline.utils import get_module_logger, download_file_from_url
 from data_pipeline.score import field_names
 
@@ -8,14 +8,17 @@ logger = get_module_logger(__name__)
 
 
 class CDCPlacesETL(ExtractTransformLoad):
+    NAME = "cdc_places"
+    GEO_LEVEL: ValidGeoLevel = ValidGeoLevel.CENSUS_TRACT
+
+    CDC_GEOID_FIELD_NAME = "LocationID"
+    CDC_VALUE_FIELD_NAME = "Data_Value"
+    CDC_MEASURE_FIELD_NAME = "Measure"
+
     def __init__(self):
         self.OUTPUT_PATH = self.DATA_PATH / "dataset" / "cdc_places"
 
         self.CDC_PLACES_URL = "https://chronicdata.cdc.gov/api/views/cwsq-ngmh/rows.csv?accessType=DOWNLOAD"
-        self.CDC_GEOID_FIELD_NAME = "LocationID"
-        self.CDC_VALUE_FIELD_NAME = "Data_Value"
-        self.CDC_MEASURE_FIELD_NAME = "Measure"
-
         self.df: pd.DataFrame
 
     def extract(self) -> None:

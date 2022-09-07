@@ -16,6 +16,7 @@ class FloodRiskETL(ExtractTransformLoad):
     NAME = "fsf_flood_risk"
     SOURCE_URL = settings.AWS_JUSTICE40_DATASOURCES_URL + "/fsf_flood.zip"
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
+    LOAD_YAML_CONFIG: bool = True
 
     # Output score variables (values set on datasets.yml) for linting purposes
     COUNT_PROPERTIES: str
