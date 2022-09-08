@@ -320,19 +320,22 @@ def compare_to_list_of_expected_state_fips_codes(
     puerto_rico_expected: bool = True,
     island_areas_expected: bool = True,
     additional_fips_codes_not_expected: typing.List[str] = None,
+    dataset_name: str = None,
 ) -> None:
     """Check whether a list of state/territory FIPS codes match expectations.
 
     Args:
         actual_state_fips_codes (List of str): Actual state codes observed in data
-        nation_expected (bool): Do you expect the nation (DC & states) to be
+        nation_expected (bool, optional): Do you expect the nation (DC & states) to be
             represented in data?
-        puerto_rico_expected (bool): Do you expect PR to be represented in data?
-        island_areas_expected (bool): Do you expect Island Areas to be represented in
+        puerto_rico_expected (bool, optional): Do you expect PR to be represented in data?
+        island_areas_expected (bool, optional): Do you expect Island Areas to be represented in
             data?
-        additional_fips_codes_not_expected (List of str): Additional state codes
+        additional_fips_codes_not_expected (List of str, optional): Additional state codes
             not expected in the data. For example, the data may be known to be missing
             data from Maine and Wisconsin.
+        dataset_name (str, optional): The name of the data set, used only in printing an
+            error message. (This is helpful for debugging during parallel etl runs.)
 
     Returns:
         None: Does not return any values.
@@ -376,13 +379,19 @@ def compare_to_list_of_expected_state_fips_codes(
         additional_fips_codes_not_expected
     )
 
+    dataset_name_phrase = f" for dataset `{dataset_name}`" if dataset_name else ""
+
     if expected_states_set != actual_state_fips_codes_set:
         raise ValueError(
-            "The states and territories in the data are not as expected.\n"
+            f"The states and territories in the data{dataset_name_phrase} are not "
+            f"as expected.\n"
             "FIPS state codes expected that are not present in the data:\n"
             f"{sorted(list(expected_states_set - actual_state_fips_codes_set))}\n"
             "FIPS state codes in the data that were not expected:\n"
             f"{sorted(list(actual_state_fips_codes_set - expected_states_set))}\n"
         )
     else:
-        logger.info("Data matches expected state and territory representation.")
+        logger.info(
+            "Data matches expected state and territory representation"
+            f"{dataset_name_phrase}."
+        )
