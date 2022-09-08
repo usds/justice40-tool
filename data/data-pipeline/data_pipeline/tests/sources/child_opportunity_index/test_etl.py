@@ -1,7 +1,6 @@
 # pylint: disable=protected-access
 import pathlib
 
-from data_pipeline.etl.score.constants import TILES_NATION_FIPS_CODE
 from data_pipeline.etl.sources.child_opportunity_index.etl import (
     ChildOpportunityIndex,
 )

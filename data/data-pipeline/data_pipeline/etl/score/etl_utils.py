@@ -319,7 +319,7 @@ def compare_to_list_of_expected_state_fips_codes(
     nation_expected: bool = True,
     puerto_rico_expected: bool = True,
     island_areas_expected: bool = True,
-    additional_fips_codes_not_expected: typing.List[str] = [],
+    additional_fips_codes_not_expected: typing.List[str] = None,
 ) -> None:
     """Check whether a list of state/territory FIPS codes match expectations.
 
@@ -340,6 +340,10 @@ def compare_to_list_of_expected_state_fips_codes(
     Raises:
         ValueError: if lists do not match expectations.
     """
+    # Setting default argument of [] here to avoid mutability problems.
+    if additional_fips_codes_not_expected is None:
+        additional_fips_codes_not_expected = []
+
     # Cast input to a set.
     actual_state_fips_codes_set = set(actual_state_fips_codes)
 

@@ -90,9 +90,9 @@ class TestETL:
         etl_class = self._ETL_CLASS()
 
         # Find out what unique state codes are present in the test fixture data.
-        states_expected_from_fixtures = set(
-            [x[0:2] for x in self._FIXTURES_SHARED_TRACT_IDS]
-        )
+        states_expected_from_fixtures = {
+            x[0:2] for x in self._FIXTURES_SHARED_TRACT_IDS
+        }
 
         # Set values to match test fixtures
         etl_class.EXPECTED_MISSING_STATES = [
