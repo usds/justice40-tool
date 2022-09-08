@@ -555,6 +555,8 @@ class ScoreETL(ExtractTransformLoad):
         #
         #     For *Traffic Barriers*, we want to exclude low population tracts, which may have high burden because they are
         #     low population alone. We set this low population constant in the if statement.
+        #
+        #     For *Population Loss*, we similarly do not want there  to be non-populated tracts identified.
 
         for numeric_column in numeric_columns:
             drop_tracts = []
@@ -579,15 +581,19 @@ class ScoreETL(ExtractTransformLoad):
                     f"Dropping {len(drop_tracts)} tracts from Linguistic Isolation"
                 )
 
-            elif numeric_column == field_names.DOT_TRAVEL_BURDEN_FIELD:
+            elif (numeric_column == field_names.DOT_TRAVEL_BURDEN_FIELD) or (
+                numeric_column
+                == field_names.EXPECTED_POPULATION_LOSS_RATE_FIELD
+            ):
                 # Not having any people appears to be correlated with transit burden, but also doesn't represent
-                # on the ground need. For now, we remove these tracts from the percentile calculation. (To be QAed live)
+                # on the ground need. For now, we remove these tracts from the percentile calculation.
+                # We also think that low-population places should not be identified by FEMA population loss. s
                 low_population = 20
                 drop_tracts = df_copy[
                     df_copy[field_names.TOTAL_POP_FIELD] <= low_population
                 ][field_names.GEOID_TRACT_FIELD].to_list()
                 logger.info(
-                    f"Dropping {len(drop_tracts)} tracts from DOT traffic burden"
+                    f"Dropping {len(drop_tracts)} tracts from {numeric_column}"
                 )
 
             df_copy = self._add_percentiles_to_df(
