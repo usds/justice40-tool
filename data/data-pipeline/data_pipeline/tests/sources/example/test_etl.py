@@ -2,7 +2,7 @@
 import copy
 import os
 import pathlib
-from typing import Type
+from typing import Type, Optional
 from unittest import mock
 import pytest
 
@@ -45,7 +45,7 @@ class TestETL:
     # so that we do not have to manually copy the "sample data" when we run the tests.
     _SAMPLE_DATA_PATH = pathlib.Path(__file__).parents[0] / "data"
     _SAMPLE_DATA_FILE_NAME = "input.csv"
-    _SAMPLE_DATA_ZIP_FILE_NAME = "input.zip"
+    _SAMPLE_DATA_ZIP_FILE_NAME: Optional[str] = "input.zip"
     _EXTRACT_TMP_FOLDER_NAME = "ExampleETL"
 
     # Note: We used shared census tract IDs so that later our tests can join all the
@@ -125,14 +125,22 @@ class TestETL:
         data. A basic version of that patching is included here for classes that can use it.
         """
         with mock.patch("data_pipeline.utils.requests") as requests_mock:
-            zip_file_fixture_src = (
-                self._DATA_DIRECTORY_FOR_TEST / self._SAMPLE_DATA_ZIP_FILE_NAME
-            )
             tmp_path = mock_paths[1]
+            if self._SAMPLE_DATA_ZIP_FILE_NAME is not None:
+                zip_file_fixture_src = (
+                    self._DATA_DIRECTORY_FOR_TEST
+                    / self._SAMPLE_DATA_ZIP_FILE_NAME
+                )
 
-            # Create mock response.
-            with open(zip_file_fixture_src, mode="rb") as file:
-                file_contents = file.read()
+                # Create mock response.
+                with open(zip_file_fixture_src, mode="rb") as file:
+                    file_contents = file.read()
+            else:
+                with open(
+                    self._DATA_DIRECTORY_FOR_TEST / self._SAMPLE_DATA_FILE_NAME,
+                    "rb",
+                ) as file:
+                    file_contents = file.read()
             response_mock = requests.Response()
             response_mock.status_code = 200
             # pylint: disable=protected-access
