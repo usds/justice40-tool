@@ -13,34 +13,34 @@ logger = get_module_logger(__name__)
 
 
 class CDCLifeExpectancy(ExtractTransformLoad):
+    GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
+    PUERTO_RICO_EXPECTED_IN_DATA = False
+
+    USA_FILE_URL: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/US_A.CSV"
+
+    STATES_MISSING_FROM_USA_FILE = ["23", "55"]
+
+    # For some reason, LEEP does not include Maine or Wisconsin in its "All of
+    # USA" file. Load these separately.
+    WISCONSIN_FILE_URL: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/WI_A.CSV"
+    MAINE_FILE_URL: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/ME_A.CSV"
+
+    TRACT_INPUT_COLUMN_NAME = "Tract ID"
+    STATE_INPUT_COLUMN_NAME = "STATE2KX"
+
+    raw_df: pd.DataFrame
+    output_df: pd.DataFrame
+
     def __init__(self):
-        self.GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
-        self.PUERTO_RICO_EXPECTED_IN_DATA = False
-
-        self.USA_FILE_URL: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/US_A.CSV"
-
-        self.STATES_MISSING_FROM_USA_FILE = ["23", "55"]
-
-        # For some reason, LEEP does not include Maine or Wisconsin in its "All of
-        # USA" file. Load these separately.
-        self.WISCONSIN_FILE_URL: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/WI_A.CSV"
-        self.MAINE_FILE_URL: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/ME_A.CSV"
-
         self.OUTPUT_PATH: Path = (
             self.DATA_PATH / "dataset" / "cdc_life_expectancy"
         )
-
-        self.TRACT_INPUT_COLUMN_NAME = "Tract ID"
-        self.STATE_INPUT_COLUMN_NAME = "STATE2KX"
 
         # Constants for output
         self.COLUMNS_TO_KEEP = [
             self.GEOID_TRACT_FIELD_NAME,
             field_names.LIFE_EXPECTANCY_FIELD,
         ]
-
-        self.raw_df: pd.DataFrame
-        self.output_df: pd.DataFrame
 
     def _download_and_prep_data(
         self, file_url: str, download_file_name: pathlib.Path
