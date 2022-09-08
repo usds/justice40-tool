@@ -17,6 +17,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
     NAME = "national_risk_index"
     SOURCE_URL = "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload//NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
+    PUERTO_RICO_EXPECTED_IN_DATA = False
 
     # Output score variables (values set on datasets.yml) for linting purposes
     RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME: str
