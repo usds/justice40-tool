@@ -1,16 +1,19 @@
 import pandas as pd
-from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
 from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
 
 
 class HudHousingETL(ExtractTransformLoad):
+    NAME = "HudHousingETL"
+    GEO_LEVEL: ValidGeoLevel = ValidGeoLevel.CENSUS_TRACT
+
     def __init__(self):
         self.OUTPUT_PATH = self.DATA_PATH / "dataset" / "hud_housing"
         self.GEOID_TRACT_FIELD_NAME = "GEOID10_TRACT"
         self.HOUSING_FTP_URL = "https://www.huduser.gov/portal/datasets/cp/2014thru2018-140-csv.zip"
-        self.HOUSING_ZIP_FILE_DIR = self.get_tmp_path() / "hud_housing"
+        self.HOUSING_ZIP_FILE_DIR = self.get_tmp_path()
 
         # We measure households earning less than 80% of HUD Area Median Family Income by county
         # and paying greater than 30% of their income to housing costs.
@@ -22,6 +25,14 @@ class HudHousingETL(ExtractTransformLoad):
         self.NO_KITCHEN_OR_INDOOR_PLUMBING_FIELD_NAME = (
             "Share of homes with no kitchen or indoor plumbing (percent)"
         )
+        self.COLUMNS_TO_KEEP = [
+            self.GEOID_TRACT_FIELD_NAME,
+            self.HOUSING_BURDEN_NUMERATOR_FIELD_NAME,
+            self.HOUSING_BURDEN_DENOMINATOR_FIELD_NAME,
+            self.HOUSING_BURDEN_FIELD_NAME,
+            self.NO_KITCHEN_OR_INDOOR_PLUMBING_FIELD_NAME,
+            "DENOM INCL NOT COMPUTED",
+        ]
 
         # Note: some variable definitions.
         # HUD-adjusted median family income (HAMFI).
@@ -234,19 +245,4 @@ class HudHousingETL(ExtractTransformLoad):
             float
         )
 
-    def load(self) -> None:
-        logger.info("Saving HUD Housing Data")
-
-        self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
-
-        # Drop unnecessary fields
-        self.df[
-            [
-                self.GEOID_TRACT_FIELD_NAME,
-                self.HOUSING_BURDEN_NUMERATOR_FIELD_NAME,
-                self.HOUSING_BURDEN_DENOMINATOR_FIELD_NAME,
-                self.HOUSING_BURDEN_FIELD_NAME,
-                self.NO_KITCHEN_OR_INDOOR_PLUMBING_FIELD_NAME,
-                "DENOM INCL NOT COMPUTED",
-            ]
-        ].to_csv(path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False)
+        self.output_df = self.df
