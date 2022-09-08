@@ -320,6 +320,7 @@ class ExtractTransformLoad:
             puerto_rico_expected=self.PUERTO_RICO_EXPECTED_IN_DATA,
             island_areas_expected=self.ISLAND_AREAS_EXPECTED_IN_DATA,
             additional_fips_codes_not_expected=self.EXPECTED_MISSING_STATES,
+            dataset_name=self.NAME,
         )
 
     def load(self, float_format=None) -> None:

@@ -20,6 +20,23 @@ class AbandonedMineETL(ExtractTransformLoad):
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
     AML_BOOLEAN: str
 
+    PUERTO_RICO_EXPECTED_IN_DATA = False
+    EXPECTED_MISSING_STATES = [
+        "10",
+        "11",
+        "12",
+        "15",
+        "23",
+        "27",
+        "31",
+        "33",
+        "34",
+        "36",
+        "45",
+        "50",
+        "55",
+    ]
+
     # Define these for easy code completion
     def __init__(self):
         self.SOURCE_URL = (

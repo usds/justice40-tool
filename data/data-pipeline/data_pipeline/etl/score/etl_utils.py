@@ -379,7 +379,9 @@ def compare_to_list_of_expected_state_fips_codes(
         additional_fips_codes_not_expected
     )
 
-    dataset_name_phrase = f" for dataset `{dataset_name}`" if dataset_name else ""
+    dataset_name_phrase = (
+        f" for dataset `{dataset_name}`" if dataset_name is not None else ""
+    )
 
     if expected_states_set != actual_state_fips_codes_set:
         raise ValueError(
