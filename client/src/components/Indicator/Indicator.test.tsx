@@ -1,10 +1,8 @@
 import * as React from 'react';
-import {render, screen} from '@testing-library/react';
+import {render} from '@testing-library/react';
 import {LocalizedComponent} from '../../test/testHelpers';
-import Indicator, {IndicatorValueIcon, IndicatorValueSubText, IndicatorValue} from './Indicator';
+import Indicator, {IndicatorValueSubText, IndicatorValue} from './Indicator';
 import {indicatorInfo} from '../AreaDetail/AreaDetail';
-
-import * as EXPLORE_COPY from '../../data/copy/explore';
 
 describe('rendering of the Indicator', () => {
   it('checks if component renders', () => {
