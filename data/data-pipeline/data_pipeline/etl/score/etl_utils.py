@@ -313,7 +313,7 @@ def create_codebook(
         columns={constants.CEJST_SCORE_COLUMN_NAME: "Description"}
     )
 
-
+# pylint: disable=too-many-arguments
 def compare_to_list_of_expected_state_fips_codes(
     actual_state_fips_codes: typing.List[str],
     nation_expected: bool = True,
