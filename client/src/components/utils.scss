@@ -6,10 +6,10 @@
 */
 
 //Styles associated with the side panel
-$sidePanelBorderColor: #f2f2f2;
+$sidePanelBorderColor: #F2F2F2;
 $sidePanelBorder: 2px solid $sidePanelBorderColor;
 $mobileBreakpoint: 400px; // Todo replace with USWDS breakpoint
-
+$disadvantagedDotColor: #1A4480;
 $additionalCardsBGColor: #FAFAFA;
 $sidePanelLabelFontColor: #171716;
 
@@ -21,6 +21,6 @@ $sidePanelLabelFontColor: #171716;
   
 
 //Styles with Dataset container
-$datasetContainerColor: #eef6fb;
-$headingFontColor: #122e51;
-$j40AlertWarningColor: #faf3d1;
+$datasetContainerColor: #EEF6FB;
+$headingFontColor: #122E51;
+$j40AlertWarningColor: #FAF3D1;

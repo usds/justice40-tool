@@ -1,6 +1,11 @@
 @use '../../styles/design-system.scss' as *;
 @import "../utils.scss";
 
+@mixin indicatorPadding {
+  @include u-padding-left(1);
+  @include u-padding-right(1);
+}
+
 @mixin indicator {
   display: flex;
   flex-direction: column;
@@ -46,8 +51,14 @@
         align-self: end;
 
         .indicatorValue {
-          margin-left: 2.2rem;
-        } 
+          @include indicatorPadding();
+        }
+        
+        .disIndicatorValue {
+          @include indicatorPadding();
+          color: white;
+          background-color: $disadvantagedDotColor;
+        }
 
         .indicatorArrow {
           margin-bottom: -.375rem;
@@ -81,31 +92,4 @@
 //Indicator box styles
 .indicatorBoxMain {
   @include indicator;
-}
-
-.disadvantagedIndicator {
-  @include indicator;
-  @include u-bg('blue-warm-10');
-
-  // A darker bg color:
-  // background-color: #D2DAE3;
-
-  // Add a border
-  // border: 1px solid #1A4480;
-
-  margin: 0 -20px 1px -20px;
-  @include u-padding-left(2.5);
-  @include u-padding-right(2.5);
-
-
-  // Overwrite indicator mixin with bolder fonts for disadv. indicator 
-  .indicatorRow {
-    .indicatorName {
-      @include u-text('bold'); 
-      
-      .indicatorDesc {
-        @include u-text('normal'); 
-      }
-    }
-  }
 }

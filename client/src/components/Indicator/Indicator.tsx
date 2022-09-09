@@ -212,7 +212,7 @@ const Indicator = ({indicator}:IIndicator) => {
 
   return (
     <li
-      className={indicator.isDisadvagtaged ? styles.disadvantagedIndicator : styles.indicatorBoxMain}
+      className={styles.indicatorBoxMain}
       data-cy={'indicatorBox'}
       data-testid='indicator-box'>
       <div className={styles.indicatorRow}>
@@ -230,7 +230,9 @@ const Indicator = ({indicator}:IIndicator) => {
           <div className={styles.indicatorValueRow}>
 
             {/* Indicator value */}
-            <div className={styles.indicatorValue}>
+            <div className={indicator.isDisadvagtaged ?
+              styles.disIndicatorValue : styles.indicatorValue}
+            >
               <IndicatorValue
                 type={indicator.type}
                 displayStat={displayStat}
