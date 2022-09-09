@@ -46,19 +46,19 @@ describe('rendering of the Indicator', () => {
   });
 });
 
-describe('test rendering of Indicator value icons', () => {
-  it('renders the unavailable icon when the value is null', () => {
-    const {asFragment} = render(
-        <LocalizedComponent>
-          <IndicatorValueIcon
-            value={null}
-          />
-        </LocalizedComponent>,
-    );
-    expect(asFragment()).toMatchSnapshot();
-    screen.getByAltText(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.UNAVAILABLE.defaultMessage);
-  });
-});
+// describe('test rendering of Indicator value icons', () => {
+//   it('renders the unavailable icon when the value is null', () => {
+//     const {asFragment} = render(
+//         <LocalizedComponent>
+//           <IndicatorValueIcon
+//             value={null}
+//           />
+//         </LocalizedComponent>,
+//     );
+//     expect(asFragment()).toMatchSnapshot();
+//     screen.getByAltText(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.UNAVAILABLE.defaultMessage);
+//   });
+// });
 
 describe('test rendering of Indicator value sub-text', () => {
   it('renders the "above 90 percentile"', () => {

@@ -81,7 +81,7 @@
         align-self: flex-end;
         text-align: right;
         @include u-width(8);
-        @include typeset('sans', '3xs', 2);
+        @include typeset('sans', 'micro', 2);
         @include u-text('thin'); 
       }
     }

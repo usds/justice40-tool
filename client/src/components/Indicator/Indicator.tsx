@@ -8,7 +8,7 @@ import * as constants from '../../data/constants';
 import * as EXPLORE_COPY from '../../data/copy/explore';
 
 // @ts-ignore
-import unAvailable from '/node_modules/uswds/dist/img/usa-icons/error_outline.svg';
+// import unAvailable from '/node_modules/uswds/dist/img/usa-icons/error_outline.svg';
 
 interface IIndicator {
   indicator: indicatorInfo,
@@ -31,21 +31,18 @@ interface IIndicatorValue {
 }
 
 /**
- * This component will determine what indicator's icon should be. Either show the unavailable icon
- * or show nothing.
+ * This component will determine what indicator's icon should be. ATM there are no icons to show, however
+ * this may change and so leaving a place holder function here for easy change in the future
  *
  * @param {number | null} value
  * @return {JSX.Element}
  */
 export const IndicatorValueIcon = ({value}: IIndicatorValueIcon) => {
-  const intl = useIntl();
-
-  return value === null ? (
-    <img className={styles.unavailable}
-      src={unAvailable}
-      alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.UNAVAILABLE)}
-    />
-  ) : <></>;
+  return value === null ? <></> : <></>;
+  // <img className={styles.unavailable}
+  //   src={unAvailable}
+  //   alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.UNAVAILABLE)}
+  // />
 };
 
 /**
