@@ -20,12 +20,7 @@ exports[`rendering of the Indicator checks if component renders 1`] = `
               97%
             </span>
           </div>
-          <div>
-            <img
-              alt="an icon for the up arrow"
-              src="test-file-stub"
-            />
-          </div>
+          <div />
         </div>
         <div>
           <div>
@@ -62,12 +57,7 @@ exports[`rendering of the Indicator checks if the flooring function works 1`] = 
               42%
             </span>
           </div>
-          <div>
-            <img
-              alt="an icon for the up arrow"
-              src="test-file-stub"
-            />
-          </div>
+          <div />
         </div>
         <div>
           <div>
@@ -99,7 +89,9 @@ exports[`renders value correctly for Former defense sites checks if it renders n
       </div>
       <div>
         <div>
-          <div />
+          <div>
+            --
+          </div>
           <div>
             <img
               alt="an icon to represent data is unavailable"
@@ -187,7 +179,9 @@ exports[`renders value correctly for abandoned land mines checks if it renders n
       </div>
       <div>
         <div>
-          <div />
+          <div>
+            --
+          </div>
           <div>
             <img
               alt="an icon to represent data is unavailable"
@@ -275,7 +269,9 @@ exports[`renders value correctly for historic underinvest. checks if it renders 
       </div>
       <div>
         <div>
-          <div />
+          <div>
+            --
+          </div>
           <div>
             <img
               alt="an icon to represent data is unavailable"
@@ -348,46 +344,10 @@ exports[`renders value correctly for historic underinvest. checks if it renders 
 </DocumentFragment>
 `;
 
-exports[`test rendering of Indicator value icons renders the down arrow when the value is above the threshold 1`] = `
-<DocumentFragment>
-  <img
-    alt="an icon for the down arrow"
-    src="test-file-stub"
-  />
-</DocumentFragment>
-`;
-
-exports[`test rendering of Indicator value icons renders the down arrow when the value is zero 1`] = `
-<DocumentFragment>
-  <img
-    alt="an icon for the down arrow"
-    src="test-file-stub"
-  />
-</DocumentFragment>
-`;
-
-exports[`test rendering of Indicator value icons renders the unavailable icon when the value is a boolean null 1`] = `
+exports[`test rendering of Indicator value icons renders the unavailable icon when the value is null 1`] = `
 <DocumentFragment>
   <img
     alt="an icon to represent data is unavailable"
-    src="test-file-stub"
-  />
-</DocumentFragment>
-`;
-
-exports[`test rendering of Indicator value icons renders the unavailable icon when the value is a percentile null 1`] = `
-<DocumentFragment>
-  <img
-    alt="an icon to represent data is unavailable"
-    src="test-file-stub"
-  />
-</DocumentFragment>
-`;
-
-exports[`test rendering of Indicator value icons renders the up arrow when value is above threshold 1`] = `
-<DocumentFragment>
-  <img
-    alt="an icon for the up arrow"
     src="test-file-stub"
   />
 </DocumentFragment>
@@ -429,7 +389,11 @@ exports[`test rendering of Indicator value sub-text renders the "below 90 percen
 </DocumentFragment>
 `;
 
-exports[`test that the unit suffix renders correctly renders correctly when the value is a null 1`] = `<DocumentFragment />`;
+exports[`test that the unit suffix renders correctly renders correctly when the value is a null 1`] = `
+<DocumentFragment>
+  --
+</DocumentFragment>
+`;
 
 exports[`test that the unit suffix renders correctly renders correctly when the value is a percent 1`] = `
 <DocumentFragment>

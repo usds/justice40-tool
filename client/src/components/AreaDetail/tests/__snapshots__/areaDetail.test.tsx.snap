@@ -287,12 +287,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for ISL
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -329,12 +324,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for ISL
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the up arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -374,12 +364,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for ISL
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -413,7 +398,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for ISL
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -717,7 +704,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -746,7 +735,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -777,7 +768,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -808,7 +801,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -839,7 +834,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -881,12 +878,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -950,7 +942,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -979,7 +973,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -1021,12 +1017,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -1090,7 +1081,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -1119,7 +1112,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -1148,7 +1143,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -1190,12 +1187,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -1267,12 +1259,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the up arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -1301,7 +1288,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -1330,7 +1319,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -1361,7 +1352,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -1403,12 +1396,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -1472,7 +1460,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -1501,7 +1491,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -1530,7 +1522,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -1559,7 +1553,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -1588,7 +1584,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -1630,12 +1628,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -1699,7 +1692,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -1728,7 +1723,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -1770,12 +1767,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -1839,7 +1831,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -1871,7 +1865,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -1900,7 +1896,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -1929,7 +1927,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -1971,12 +1971,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -2050,12 +2045,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the up arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -2084,7 +2074,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -2121,12 +2113,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the up arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -2166,12 +2153,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -2210,12 +2192,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                     98%
                   </span>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the up arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -2279,7 +2256,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -2313,7 +2292,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -2617,7 +2598,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -2646,7 +2629,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -2688,12 +2673,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -2765,12 +2745,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the up arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -2812,12 +2787,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -2881,7 +2851,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -2910,7 +2882,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -2939,7 +2913,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -2968,7 +2944,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -2997,7 +2975,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -3039,12 +3019,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -3108,7 +3083,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
             </div>
             <div>
               <div>
-                <div />
+                <div>
+                  --
+                </div>
                 <div>
                   <img
                     alt="an icon to represent data is unavailable"
@@ -3145,12 +3122,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the up arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -3190,12 +3162,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -3234,12 +3201,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
                     98%
                   </span>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the up arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>

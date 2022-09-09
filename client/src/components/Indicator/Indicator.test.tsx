@@ -47,68 +47,11 @@ describe('rendering of the Indicator', () => {
 });
 
 describe('test rendering of Indicator value icons', () => {
-  it('renders the up arrow when value is above threshold', () => {
+  it('renders the unavailable icon when the value is null', () => {
     const {asFragment} = render(
         <LocalizedComponent>
           <IndicatorValueIcon
-            type='percent'
-            value={90}
-            isAboveThresh={true}
-          />
-        </LocalizedComponent>,
-    );
-    expect(asFragment()).toMatchSnapshot();
-    screen.getByAltText(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.ARROW_UP.defaultMessage);
-  });
-  it('renders the down arrow when the value is above the threshold', () => {
-    const {asFragment} = render(
-        <LocalizedComponent>
-          <IndicatorValueIcon
-            type='percentile'
-            value={13}
-            isAboveThresh={false}
-          />
-        </LocalizedComponent>,
-    );
-    expect(asFragment()).toMatchSnapshot();
-    screen.getByAltText(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.ARROW_DOWN.defaultMessage);
-  });
-
-  it('renders the down arrow when the value is zero', () => {
-    const {asFragment} = render(
-        <LocalizedComponent>
-          <IndicatorValueIcon
-            type='percentile'
-            value={0}
-            isAboveThresh={false}
-          />
-        </LocalizedComponent>,
-    );
-    expect(asFragment()).toMatchSnapshot();
-    screen.getByAltText(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.ARROW_DOWN.defaultMessage);
-  });
-
-  it('renders the unavailable icon when the value is a boolean null', () => {
-    const {asFragment} = render(
-        <LocalizedComponent>
-          <IndicatorValueIcon
-            type='boolean'
             value={null}
-            isAboveThresh={false}
-          />
-        </LocalizedComponent>,
-    );
-    expect(asFragment()).toMatchSnapshot();
-    screen.getByAltText(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.UNAVAILABLE.defaultMessage);
-  });
-
-  it('renders the unavailable icon when the value is a percentile null', () => {
-    const {asFragment} = render(
-        <LocalizedComponent>
-          <IndicatorValueIcon
-            type='percentile'
-            value={null}
-            isAboveThresh={false}
           />
         </LocalizedComponent>,
     );
