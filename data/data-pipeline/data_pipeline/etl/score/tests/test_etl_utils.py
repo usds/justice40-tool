@@ -198,7 +198,7 @@ def test_compare_to_list_of_expected_state_fips_codes():
         additional_fips_codes_not_expected=["23", "55"],
     )
 
-    # Missing the nation
+    # Missing the continental & AK/HI nation
     fips_codes_test_4 = [
         "60",
         "66",
@@ -223,7 +223,9 @@ def test_compare_to_list_of_expected_state_fips_codes():
 
     assert partial_expected_error_message in str(exception_info.value)
 
-    # Should not raise error because Nation is not to be missing
+    # Should not raise error because continental US and AK/HI is not to be missing
     compare_to_list_of_expected_state_fips_codes(
-        actual_state_fips_codes=fips_codes_test_4, continental_us_expected=False
+        actual_state_fips_codes=fips_codes_test_4,
+        continental_us_expected=False,
+        alaska_and_hawaii_expected=False,
     )

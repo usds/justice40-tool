@@ -332,7 +332,10 @@ def compare_to_list_of_expected_state_fips_codes(
         continental_us_expected (bool, optional): Do you expect the continental nation
             (DC & states except for Alaska and Hawaii) to be represented in data?
         alaska_and_hawaii_expected (bool, optional): Do you expect Alaska and Hawaii
-            to be represented in the data?
+            to be represented in the data? Note: if only *1* of Alaska and Hawaii are
+            not expected to be included, do not use this argument -- instead,
+            use `additional_fips_codes_not_expected` for the 1 state you expected to
+            be missing.
         puerto_rico_expected (bool, optional): Do you expect PR to be represented in data?
         island_areas_expected (bool, optional): Do you expect Island Areas to be represented in
             data?
@@ -365,9 +368,12 @@ def compare_to_list_of_expected_state_fips_codes(
             TILES_CONTINENTAL_US_FIPS_CODE
         )
 
-    # If Alaska and Hawaii are not expected to be included, remove them from the
+    # If both Alaska and Hawaii are not expected to be included, remove them from the
     # expected states set.
-    if not continental_us_expected:
+    # Note: if only *1* of Alaska and Hawaii are not expected to be included,
+    # do not use this argument -- instead, use `additional_fips_codes_not_expected`
+    # for the 1 state you expected to be missing.
+    if not alaska_and_hawaii_expected:
         expected_states_set = expected_states_set - set(
             TILES_ALASKA_AND_HAWAII_FIPS_CODE
         )
