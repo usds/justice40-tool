@@ -101,6 +101,7 @@ class TestETL:
             if x not in states_expected_from_fixtures
         ]
         etl_class.PUERTO_RICO_EXPECTED_IN_DATA = False
+        etl_class.ISLAND_AREAS_EXPECTED_IN_DATA = False
 
         return etl_class
 

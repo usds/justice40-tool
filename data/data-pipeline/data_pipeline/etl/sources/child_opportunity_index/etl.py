@@ -23,6 +23,7 @@ class ChildOpportunityIndex(ExtractTransformLoad):
     """
 
     # Metadata for the baseclass
+    NAME = "child_opportunity_index"
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
 
     # Define these for easy code completion
