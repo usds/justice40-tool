@@ -57,8 +57,6 @@ class NatureDeprivedETL(ExtractTransformLoad):
         """
         logger.info("Transforming NCLD Data")
 
-        logger.info(self.COLUMNS_TO_KEEP)
-
         df_ncld: pd.DataFrame = pd.read_csv(
             self.INPUT_CSV,
             dtype={self.INPUT_GEOID_TRACT_FIELD_NAME: str},
