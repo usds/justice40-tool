@@ -10,7 +10,8 @@ from data_pipeline.config import settings
 from data_pipeline.etl.score.constants import (
     TILES_ISLAND_AREA_FIPS_CODES,
     TILES_PUERTO_RICO_FIPS_CODE,
-    TILES_NATION_FIPS_CODE,
+    TILES_CONTINENTAL_US_FIPS_CODE,
+    TILES_ALASKA_AND_HAWAII_FIPS_CODE,
 )
 from data_pipeline.etl.sources.census.etl_utils import get_state_fips_codes
 from data_pipeline.utils import (
@@ -317,7 +318,8 @@ def create_codebook(
 # pylint: disable=too-many-arguments
 def compare_to_list_of_expected_state_fips_codes(
     actual_state_fips_codes: typing.List[str],
-    nation_expected: bool = True,
+    continental_us_expected: bool = True,
+    alaska_and_hawaii_expected: bool = True,
     puerto_rico_expected: bool = True,
     island_areas_expected: bool = True,
     additional_fips_codes_not_expected: typing.List[str] = None,
@@ -327,8 +329,10 @@ def compare_to_list_of_expected_state_fips_codes(
 
     Args:
         actual_state_fips_codes (List of str): Actual state codes observed in data
-        nation_expected (bool, optional): Do you expect the nation (DC & states) to be
-            represented in data?
+        continental_us_expected (bool, optional): Do you expect the continental nation
+            (DC & states except for Alaska and Hawaii) to be represented in data?
+        alaska_and_hawaii_expected (bool, optional): Do you expect Alaska and Hawaii
+            to be represented in the data?
         puerto_rico_expected (bool, optional): Do you expect PR to be represented in data?
         island_areas_expected (bool, optional): Do you expect Island Areas to be represented in
             data?
@@ -354,11 +358,19 @@ def compare_to_list_of_expected_state_fips_codes(
     # Start with the list of all FIPS codes for all states and territories.
     expected_states_set = set(get_state_fips_codes(settings.DATA_PATH))
 
-    # If nation (states and DC) are not expected to be included, remove it from the
-    # expected
-    # states set.
-    if not nation_expected:
-        expected_states_set = expected_states_set - set(TILES_NATION_FIPS_CODE)
+    # If continental US is not expected to be included, remove it from the
+    # expected states set.
+    if not continental_us_expected:
+        expected_states_set = expected_states_set - set(
+            TILES_CONTINENTAL_US_FIPS_CODE
+        )
+
+    # If Alaska and Hawaii are not expected to be included, remove them from the
+    # expected states set.
+    if not continental_us_expected:
+        expected_states_set = expected_states_set - set(
+            TILES_ALASKA_AND_HAWAII_FIPS_CODE
+        )
 
     # If Puerto Rico is not expected to be included, remove it from the expected
     # states set.

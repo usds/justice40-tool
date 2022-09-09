@@ -225,5 +225,5 @@ def test_compare_to_list_of_expected_state_fips_codes():
 
     # Should not raise error because Nation is not to be missing
     compare_to_list_of_expected_state_fips_codes(
-        actual_state_fips_codes=fips_codes_test_4, nation_expected=False
+        actual_state_fips_codes=fips_codes_test_4, continental_us_expected=False
     )

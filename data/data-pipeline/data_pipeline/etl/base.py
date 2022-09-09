@@ -85,8 +85,12 @@ class ExtractTransformLoad:
     # NULL_REPRESENTATION is how nulls are represented on the input field
     NULL_REPRESENTATION: str = None
 
-    # Whether this ETL contains data for the nation (the US states)
-    NATION_EXPECTED_IN_DATA: bool = True
+    # Whether this ETL contains data for the continental nation (DC & the US states
+    # except for Alaska and Hawaii)
+    CONTINENTAL_US_EXPECTED_IN_DATA: bool = True
+
+    # Whether this ETL contains data for Alaska and Hawaii
+    ALASKA_AND_HAWAII_EXPECTED_IN_DATA: bool = True
 
     # Whether this ETL contains data for Puerto Rico
     PUERTO_RICO_EXPECTED_IN_DATA: bool = True
@@ -223,8 +227,6 @@ class ExtractTransformLoad:
         """
         # TODO: remove this once all ETL classes are converted to using the new
         #  base class parameters and patterns.
-        # TODO: determine how to use this currently in the partially refactored world.
-        #   https://github.com/usds/justice40-tool/issues/1891
         if self.GEO_LEVEL is None:
             logger.info(
                 "Skipping validation step for this class because it does not "
@@ -308,15 +310,17 @@ class ExtractTransformLoad:
                     )
 
         # Check whether data contains expected states
-        states_in_output_df = list(
+        states_in_output_df = (
             self.output_df[self.GEOID_TRACT_FIELD_NAME]
-            .astype(str)
             .str[0:2]
             .unique()
+            .tolist()
         )
+
         compare_to_list_of_expected_state_fips_codes(
             actual_state_fips_codes=states_in_output_df,
-            nation_expected=self.NATION_EXPECTED_IN_DATA,
+            continental_us_expected=self.CONTINENTAL_US_EXPECTED_IN_DATA,
+            alaska_and_hawaii_expected=self.ALASKA_AND_HAWAII_EXPECTED_IN_DATA,
             puerto_rico_expected=self.PUERTO_RICO_EXPECTED_IN_DATA,
             island_areas_expected=self.ISLAND_AREAS_EXPECTED_IN_DATA,
             additional_fips_codes_not_expected=self.EXPECTED_MISSING_STATES,

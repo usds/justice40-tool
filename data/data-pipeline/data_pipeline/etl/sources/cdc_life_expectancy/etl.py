@@ -81,7 +81,7 @@ class CDCLifeExpectancy(ExtractTransformLoad):
         # Expect that PR, Island Areas, and Maine/Wisconsin are missing
         compare_to_list_of_expected_state_fips_codes(
             actual_state_fips_codes=states_in_life_expectancy_usa_file,
-            nation_expected=self.NATION_EXPECTED_IN_DATA,
+            continental_us_expected=self.CONTINENTAL_US_EXPECTED_IN_DATA,
             puerto_rico_expected=self.PUERTO_RICO_EXPECTED_IN_DATA,
             island_areas_expected=self.ISLAND_AREAS_EXPECTED_IN_DATA,
             additional_fips_codes_not_expected=self.STATES_MISSING_FROM_USA_FILE,
@@ -117,7 +117,7 @@ class CDCLifeExpectancy(ExtractTransformLoad):
         # Expect that PR and Island Areas are the only things now missing
         compare_to_list_of_expected_state_fips_codes(
             actual_state_fips_codes=states_in_combined_df,
-            nation_expected=self.NATION_EXPECTED_IN_DATA,
+            continental_us_expected=self.CONTINENTAL_US_EXPECTED_IN_DATA,
             puerto_rico_expected=self.PUERTO_RICO_EXPECTED_IN_DATA,
             island_areas_expected=self.ISLAND_AREAS_EXPECTED_IN_DATA,
             additional_fips_codes_not_expected=[],

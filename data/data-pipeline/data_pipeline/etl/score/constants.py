@@ -131,9 +131,9 @@ TILES_NATION_THRESHOLD_COUNT = 21
 # 60: American Samoa, 66: Guam, 69: N. Mariana Islands, 78: US Virgin Islands
 TILES_ISLAND_AREA_FIPS_CODES = ["60", "66", "69", "78"]
 TILES_PUERTO_RICO_FIPS_CODE = ["72"]
-TILES_NATION_FIPS_CODE = [
+TILES_ALASKA_AND_HAWAII_FIPS_CODE = ["02", "15"]
+TILES_CONTINENTAL_US_FIPS_CODE = [
     "01",
-    "02",
     "04",
     "05",
     "06",
@@ -143,7 +143,6 @@ TILES_NATION_FIPS_CODE = [
     "11",
     "12",
     "13",
-    "15",
     "16",
     "17",
     "18",

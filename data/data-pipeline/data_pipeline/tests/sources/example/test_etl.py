@@ -11,7 +11,10 @@ import numpy as np
 import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
-from data_pipeline.etl.score.constants import TILES_NATION_FIPS_CODE
+from data_pipeline.etl.score.constants import (
+    TILES_CONTINENTAL_US_FIPS_CODE,
+    TILES_ALASKA_AND_HAWAII_FIPS_CODE,
+)
 from data_pipeline.tests.sources.example.etl import ExampleETL
 from data_pipeline.utils import get_module_logger
 
@@ -97,11 +100,13 @@ class TestETL:
         # Set values to match test fixtures
         etl_class.EXPECTED_MISSING_STATES = [
             x
-            for x in TILES_NATION_FIPS_CODE
+            for x in TILES_CONTINENTAL_US_FIPS_CODE
+            + TILES_ALASKA_AND_HAWAII_FIPS_CODE
             if x not in states_expected_from_fixtures
         ]
         etl_class.PUERTO_RICO_EXPECTED_IN_DATA = False
         etl_class.ISLAND_AREAS_EXPECTED_IN_DATA = False
+        etl_class.ALASKA_AND_HAWAII_EXPECTED_IN_DATA = True
 
         return etl_class
 
