@@ -25,6 +25,8 @@ export type J40Properties = { [key: string]: any };
 
 // ****** SIDE PANEL BACKEND SIGNALS ***********
 
+export const MISSING_DATA_STRING = '--';
+
 // Tribal signals
 export const TRIBAL_ID = 'tribalId';
 export const LAND_AREA_NAME = 'landAreaName';
