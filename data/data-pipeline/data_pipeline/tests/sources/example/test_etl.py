@@ -11,6 +11,10 @@ import numpy as np
 import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
+from data_pipeline.etl.score.constants import (
+    TILES_CONTINENTAL_US_FIPS_CODE,
+    TILES_ALASKA_AND_HAWAII_FIPS_CODE,
+)
 from data_pipeline.tests.sources.example.etl import ExampleETL
 from data_pipeline.utils import get_module_logger
 
@@ -86,7 +90,25 @@ class TestETL:
         self._DATA_DIRECTORY_FOR_TEST = pathlib.Path(filename).parent / "data"
 
     def _get_instance_of_etl_class(self) -> Type[ExtractTransformLoad]:
-        return self._ETL_CLASS()
+        etl_class = self._ETL_CLASS()
+
+        # Find out what unique state codes are present in the test fixture data.
+        states_expected_from_fixtures = {
+            x[0:2] for x in self._FIXTURES_SHARED_TRACT_IDS
+        }
+
+        # Set values to match test fixtures
+        etl_class.EXPECTED_MISSING_STATES = [
+            x
+            for x in TILES_CONTINENTAL_US_FIPS_CODE
+            + TILES_ALASKA_AND_HAWAII_FIPS_CODE
+            if x not in states_expected_from_fixtures
+        ]
+        etl_class.PUERTO_RICO_EXPECTED_IN_DATA = False
+        etl_class.ISLAND_AREAS_EXPECTED_IN_DATA = False
+        etl_class.ALASKA_AND_HAWAII_EXPECTED_IN_DATA = True
+
+        return etl_class
 
     def _setup_etl_instance_and_run_extract(
         self, mock_etl, mock_paths
@@ -119,7 +141,7 @@ class TestETL:
             requests_mock.get = mock.MagicMock(return_value=response_mock)
 
             # Instantiate the ETL class.
-            etl = self._ETL_CLASS()
+            etl = self._get_instance_of_etl_class()
 
             # Monkey-patch the temporary directory to the one used in the test
             etl.TMP_PATH = tmp_path

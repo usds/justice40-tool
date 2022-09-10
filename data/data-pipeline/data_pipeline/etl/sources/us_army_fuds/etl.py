@@ -20,6 +20,8 @@ class USArmyFUDS(ExtractTransformLoad):
     ELIGIBLE_FUDS_BINARY_FIELD_NAME: str
     GEO_LEVEL: ValidGeoLevel = ValidGeoLevel.CENSUS_TRACT
 
+    ISLAND_AREAS_EXPECTED_IN_DATA = True
+
     def __init__(self):
         self.FILE_URL: str = (
             "https://opendata.arcgis.com/api/v3/datasets/"

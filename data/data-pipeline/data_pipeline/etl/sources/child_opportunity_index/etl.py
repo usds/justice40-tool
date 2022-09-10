@@ -32,6 +32,8 @@ class ChildOpportunityIndex(ExtractTransformLoad):
     IMPENETRABLE_SURFACES_FIELD: str
     READING_FIELD: str
 
+    PUERTO_RICO_EXPECTED_IN_DATA = False
+
     def __init__(self):
         self.SOURCE_URL = (
             "https://data.diversitydatakids.org/datastore/zip/f16fff12-b1e5-4f60-85d3-"

@@ -98,7 +98,7 @@ class TestUSArmyFUDSETL(TestETL):
         - self.OUTPUT_PATH points to the correct path in the temp directory
         """
         # setup
-        etl = self._ETL_CLASS()
+        etl = self._get_instance_of_etl_class()
         # validation
         assert etl.GEOID_FIELD_NAME == "GEOID10"
         assert etl.GEOID_TRACT_FIELD_NAME == "GEOID10_TRACT"
@@ -113,7 +113,7 @@ class TestUSArmyFUDSETL(TestETL):
 
     def test_get_output_file_path(self, mock_etl, mock_paths):
         """Tests the right file name is returned."""
-        etl = self._ETL_CLASS()
+        etl = self._get_instance_of_etl_class()
         data_path, tmp_path = mock_paths
 
         output_file_path = etl._get_output_file_path()
