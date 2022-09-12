@@ -19,6 +19,11 @@ class NatureDeprivedETL(ExtractTransformLoad):
         + "/usa_conus_nat_dep__compiled_by_TPL.csv.zip"
     )
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
+    PUERTO_RICO_EXPECTED_IN_DATA = False
+    ALASKA_AND_HAWAII_EXPECTED_IN_DATA = False
+
+    # Alaska and Hawaii are missing
+    EXPECTED_MISSING_STATES = ["02", "15"]
 
     # Output score variables (values set on datasets.yml) for linting purposes
     ELIGIBLE_FOR_NATURE_DEPRIVED_FIELD_NAME: str
