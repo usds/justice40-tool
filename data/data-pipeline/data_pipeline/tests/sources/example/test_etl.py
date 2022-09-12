@@ -124,7 +124,12 @@ class TestETL:
         used to retrieve data in order to force that method to retrieve the fixture
         data. A basic version of that patching is included here for classes that can use it.
         """
-        with mock.patch("data_pipeline.utils.requests") as requests_mock:
+
+        with mock.patch(
+            "data_pipeline.utils.requests"
+        ) as requests_mock, mock.patch(
+            "data_pipeline.etl.score.etl_utils.get_state_fips_codes"
+        ) as mock_get_state_fips_codes:
             tmp_path = mock_paths[1]
             if self._SAMPLE_DATA_ZIP_FILE_NAME is not None:
                 zip_file_fixture_src = (
@@ -147,7 +152,9 @@ class TestETL:
             response_mock._content = file_contents
             # Return text fixture:
             requests_mock.get = mock.MagicMock(return_value=response_mock)
-
+            mock_get_state_fips_codes.return_value = [
+                x[0:2] for x in self._FIXTURES_SHARED_TRACT_IDS
+            ]
             # Instantiate the ETL class.
             etl = self._get_instance_of_etl_class()
 
@@ -233,9 +240,14 @@ class TestETL:
         """This will test that the sample data exists where it's supposed to as it's supposed to
         As per conversation with Jorge, here we can *just* test that the zip file exists.
         """
-        assert (
-            self._SAMPLE_DATA_PATH / self._SAMPLE_DATA_ZIP_FILE_NAME
-        ).exists()
+        if self._SAMPLE_DATA_ZIP_FILE_NAME is not None:
+            assert (
+                self._SAMPLE_DATA_PATH / self._SAMPLE_DATA_ZIP_FILE_NAME
+            ).exists()
+        else:
+            assert (
+                self._SAMPLE_DATA_PATH / self._SAMPLE_DATA_FILE_NAME
+            ).exists()
 
     def test_extract_unzips_base(self, mock_etl, mock_paths):
         """Tests the extract method.
@@ -243,17 +255,18 @@ class TestETL:
         As per conversation with Jorge, no longer includes snapshot. Instead, verifies that the
         file was unzipped from a "fake" downloaded zip (located in data) in a  temporary path.
         """
-        tmp_path = mock_paths[1]
+        if self._SAMPLE_DATA_ZIP_FILE_NAME is not None:
+            tmp_path = mock_paths[1]
 
-        _ = self._setup_etl_instance_and_run_extract(
-            mock_etl=mock_etl,
-            mock_paths=mock_paths,
-        )
-        assert (
-            tmp_path
-            / self._EXTRACT_TMP_FOLDER_NAME
-            / self._SAMPLE_DATA_FILE_NAME
-        ).exists()
+            _ = self._setup_etl_instance_and_run_extract(
+                mock_etl=mock_etl,
+                mock_paths=mock_paths,
+            )
+            assert (
+                tmp_path
+                / self._EXTRACT_TMP_FOLDER_NAME
+                / self._SAMPLE_DATA_FILE_NAME
+            ).exists()
 
     def test_extract_produces_valid_data(self, snapshot, mock_etl, mock_paths):
         """Tests the extract method.
