@@ -579,9 +579,13 @@ class ScoreETL(ExtractTransformLoad):
                     f"Dropping {len(drop_tracts)} tracts from Linguistic Isolation"
                 )
 
-            elif numeric_column == field_names.DOT_TRAVEL_BURDEN_FIELD:
+            elif (numeric_column == field_names.DOT_TRAVEL_BURDEN_FIELD) or (
+                numeric_column
+                == field_names.EXPECTED_POPULATION_LOSS_RATE_FIELD
+            ):
                 # Not having any people appears to be correlated with transit burden, but also doesn't represent
                 # on the ground need. For now, we remove these tracts from the percentile calculation. (To be QAed live)
+                # Similarly, we want to exclude low population tracts from FEMA's index
                 low_population = 20
                 drop_tracts = df_copy[
                     df_copy[field_names.TOTAL_POP_FIELD] <= low_population
