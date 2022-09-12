@@ -23,7 +23,3 @@ class TestCDCPlacesETL(TestETL):
         As per conversation with Jorge, here we can *just* test that the zip file exists.
         """
         assert (self._SAMPLE_DATA_PATH / self._SAMPLE_DATA_FILE_NAME).exists()
-
-    def test_extract_unzips_base(self, mock_etl, mock_paths):
-        # We don't have a zip, so this test doesn't make sense
-        pass

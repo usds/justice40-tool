@@ -1,6 +1,8 @@
 # pylint: disable=protected-access
 import pathlib
-
+from unittest import mock
+import requests
+from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.sources.cdc_life_expectancy.etl import CDCLifeExpectancy
 from data_pipeline.tests.sources.example.test_etl import TestETL
 from data_pipeline.utils import get_module_logger
@@ -21,8 +23,8 @@ class TestCDCLifeExpectency(TestETL):
 
     _SAMPLE_DATA_PATH = pathlib.Path(__file__).parents[0] / "data"
     _SAMPLE_DATA_FILE_NAME = "US_A.CSV"
-    _SAMPLE_DATA_ZIP_FILE_NAME = "US_A.CSV"
-    _EXTRACT_TMP_FOLDER_NAME = "CDCLifeExpectancy"
+    _SAMPLE_DATA_ZIP_FILE_NAME = None
+    _EXTRACT_TMP_FOLDER_NAME = "CDCLifeExpectanc"
     _EXTRACT_CSV_FILE_NAME = "extract.csv"
 
     def setup_method(self, _method, filename=__file__):
@@ -31,6 +33,68 @@ class TestCDCLifeExpectency(TestETL):
         This code can be copied identically between all child classes.
         """
         super().setup_method(_method=_method, filename=filename)
+
+    def _setup_etl_instance_and_run_extract(
+        self, mock_etl, mock_paths
+    ) -> ExtractTransformLoad:
+        """Method to setup an ETL instance with proper upstream mocks to run extract.
+        This must be re-implemented in every child class.
+
+        This method can be used by multiple tests that need to run the same fixtures
+        that need these same mocks.
+
+        In order to re-implement this method, usually it will involve a
+        decent amount of work to monkeypatch `requests` or another method that's
+        used to retrieve data in order to force that method to retrieve the fixture
+        data. A basic version of that patching is included here for classes that can use it.
+        """
+
+        with mock.patch(
+            "data_pipeline.utils.requests"
+        ) as requests_mock, mock.patch(
+            "data_pipeline.etl.score.etl_utils.get_state_fips_codes"
+        ) as mock_get_state_fips_codes:
+            tmp_path = mock_paths[1]
+            if self._SAMPLE_DATA_ZIP_FILE_NAME is not None:
+                zip_file_fixture_src = (
+                    self._DATA_DIRECTORY_FOR_TEST
+                    / self._SAMPLE_DATA_ZIP_FILE_NAME
+                )
+
+                # Create mock response.
+                with open(zip_file_fixture_src, mode="rb") as file:
+                    file_contents = file.read()
+            else:
+                with open(
+                    self._DATA_DIRECTORY_FOR_TEST / self._SAMPLE_DATA_FILE_NAME,
+                    "rb",
+                ) as file:
+                    file_contents = file.read()
+
+            def fake_get(url, *args, **kwargs):
+                response_mock = requests.Response()
+                response_mock.status_code = 200
+                # pylint: disable=protected-access
+                # Return text fixture:
+                if url.endswith("US_A.CSV"):
+                    response_mock._content = file_contents
+                else:
+                    response_mock._content = b"Tract ID,STATE2KX,CNTY2KX,TRACT2KX,e(0),se(e(0)),Abridged life table flag"
+                return response_mock
+
+            requests_mock.get = fake_get
+            mock_get_state_fips_codes.return_value = [
+                x[0:2] for x in self._FIXTURES_SHARED_TRACT_IDS
+            ]
+            # Instantiate the ETL class.
+            etl = self._get_instance_of_etl_class()
+
+            # Monkey-patch the temporary directory to the one used in the test
+            etl.TMP_PATH = tmp_path
+
+            # Run the extract method.
+            etl.extract()
+        return etl
 
     def test_init(self, mock_etl, mock_paths):
         etl = self._ETL_CLASS()
