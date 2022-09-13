@@ -311,7 +311,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for ISL
             <div>
               Unemployment
               <div>
-                Number of unemployed people as a percentage of the labor force
+                Number of unemployed people as a part of the labor force
               </div>
             </div>
             <div>
@@ -349,8 +349,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for ISL
               Poverty
               <div>
                 
-      Percent of a census tract's population in households where the household income is at or below 100% 
-      of the Federal poverty level 
+      Share of people in households where the income is at or below 100% of the Federal poverty level 
     
               </div>
             </div>
@@ -694,7 +693,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               Expected agriculture loss rate
               <div>
-                Economic loss rate to agricultural value resulting from natural hazards each year
+                Economic loss to agricultural value resulting from natural hazards each year
               </div>
             </div>
             <div>
@@ -720,7 +719,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               Expected building loss rate
               <div>
-                Economic loss rate to agricultural value resulting from natural hazards each year
+                Economic loss to agricultural value resulting from natural hazards each year
               </div>
             </div>
             <div>
@@ -747,7 +746,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               Expected population loss rate
               <div>
                 
-      Rate of fatalities and injuries resulting from natural hazards each year
+      Fatalities and injuries resulting from natural hazards each year
     
               </div>
             </div>
@@ -834,7 +833,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               Low income
               <div>
                 
-      Household income is less than or equal to twice the federal poverty level 
+     People in households where income is less than or equal to twice the federal poverty level, not including students enrolled in higher ed 
     
               </div>
             </div>
@@ -933,7 +932,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               PM2.5 in the air
               <div>
-                Fine inhalable particles, 2.5 micrometers or smaller
+                Level of inhalable particles, 2.5 micrometers or smaller
               </div>
             </div>
             <div>
@@ -963,7 +962,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               Low income
               <div>
                 
-      Household income is less than or equal to twice the federal poverty level 
+     People in households where income is less than or equal to twice the federal poverty level, not including students enrolled in higher ed 
     
               </div>
             </div>
@@ -1036,7 +1035,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               Asthma
               <div>
-                Weighted percent of people who have been told they have asthma
+                Share of people who have been told they have asthma
               </div>
             </div>
             <div>
@@ -1063,8 +1062,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               Diabetes
               <div>
                 
-      Weighted percent of people ages 18 years and older who have diabetes other than 
-      diabetes during pregnancy
+      Share of people ages 18 years and older who have diabetes
     
               </div>
             </div>
@@ -1091,7 +1089,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               Heart disease
               <div>
-                People ages 18 years and older who have been told they have heart disease
+                Share of people ages 18 years and older who have been told they have heart disease
               </div>
             </div>
             <div>
@@ -1147,7 +1145,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               Low income
               <div>
                 
-      Household income is less than or equal to twice the federal poverty level 
+     People in households where income is less than or equal to twice the federal poverty level, not including students enrolled in higher ed 
     
               </div>
             </div>
@@ -1220,7 +1218,8 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               Housing cost
               <div>
-                Low income households spending more than 30% of income on housing
+                Share of households making less than 80% of the area median family income and spending more than 30% of income on housing
+    
               </div>
             </div>
             <div>
@@ -1310,7 +1309,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               Lead paint
               <div>
                 
-      Percentile of number of homes built before 1960 that are not among the most expensive
+      Share of homes that are not very expensive and are likely to have lead paint
     
               </div>
             </div>
@@ -1341,7 +1340,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               Low income
               <div>
                 
-      Household income is less than or equal to twice the federal poverty level 
+     People in households where income is less than or equal to twice the federal poverty level, not including students enrolled in higher ed 
     
               </div>
             </div>
@@ -1492,7 +1491,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               Proximity to Superfund sites
               <div>
-                Count of Risk Management Plan facilities within 5 kilometers
+                Count of proposed or listed Superfund (or National Priorities List) sites within 5 kilometers
               </div>
             </div>
             <div>
@@ -1518,7 +1517,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               Proximity to Risk Management Plan facilities
               <div>
-                RMP facilities within 5 kilometers
+                Count of Risk Management Plan facilities within 5 kilometers
               </div>
             </div>
             <div>
@@ -1548,7 +1547,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               Low income
               <div>
                 
-      Household income is less than or equal to twice the federal poverty level 
+     People in households where income is less than or equal to twice the federal poverty level, not including students enrolled in higher ed 
     
               </div>
             </div>
@@ -1703,7 +1702,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               Low income
               <div>
                 
-      Household income is less than or equal to twice the federal poverty level 
+     People in households where income is less than or equal to twice the federal poverty level, not including students enrolled in higher ed 
     
               </div>
             </div>
@@ -1803,7 +1802,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               Wastewater discharge
               <div>
-                Toxic concentrations at stream segments within 500 meters
+                Modeled toxic concentrations at parts of streams within 500 meters
               </div>
             </div>
             <div>
@@ -1833,7 +1832,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               Low income
               <div>
                 
-      Household income is less than or equal to twice the federal poverty level 
+     People in households where income is less than or equal to twice the federal poverty level, not including students enrolled in higher ed 
     
               </div>
             </div>
@@ -1907,7 +1906,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               Linguistic isolation
               <div>
                 
-      Percent of households where no one over the age 14 speaks English well
+    Share of households where no one over the age 14 speaks English well
     
               </div>
             </div>
@@ -1971,7 +1970,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               Unemployment
               <div>
-                Number of unemployed people as a percentage of the labor force
+                Number of unemployed people as a part of the labor force
               </div>
             </div>
             <div>
@@ -2009,8 +2008,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               Poverty
               <div>
                 
-      Percent of a census tract's population in households where the household income is at or below 100% 
-      of the Federal poverty level 
+      Share of people in households where the income is at or below 100% of the Federal poverty level 
     
               </div>
             </div>
@@ -2480,7 +2478,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
             <div>
               PM2.5 in the air
               <div>
-                Fine inhalable particles, 2.5 micrometers or smaller
+                Level of inhalable particles, 2.5 micrometers or smaller
               </div>
             </div>
             <div>
@@ -2510,7 +2508,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
               Low income
               <div>
                 
-      Household income is less than or equal to twice the federal poverty level 
+     People in households where income is less than or equal to twice the federal poverty level, not including students enrolled in higher ed 
     
               </div>
             </div>
@@ -2583,7 +2581,8 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
             <div>
               Housing cost
               <div>
-                Low income households spending more than 30% of income on housing
+                Share of households making less than 80% of the area median family income and spending more than 30% of income on housing
+    
               </div>
             </div>
             <div>
@@ -2624,7 +2623,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
               Low income
               <div>
                 
-      Household income is less than or equal to twice the federal poverty level 
+     People in households where income is less than or equal to twice the federal poverty level, not including students enrolled in higher ed 
     
               </div>
             </div>
@@ -2775,7 +2774,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
             <div>
               Proximity to Superfund sites
               <div>
-                Count of Risk Management Plan facilities within 5 kilometers
+                Count of proposed or listed Superfund (or National Priorities List) sites within 5 kilometers
               </div>
             </div>
             <div>
@@ -2801,7 +2800,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
             <div>
               Proximity to Risk Management Plan facilities
               <div>
-                RMP facilities within 5 kilometers
+                Count of Risk Management Plan facilities within 5 kilometers
               </div>
             </div>
             <div>
@@ -2831,7 +2830,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
               Low income
               <div>
                 
-      Household income is less than or equal to twice the federal poverty level 
+     People in households where income is less than or equal to twice the federal poverty level, not including students enrolled in higher ed 
     
               </div>
             </div>
@@ -2930,7 +2929,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
             <div>
               Unemployment
               <div>
-                Number of unemployed people as a percentage of the labor force
+                Number of unemployed people as a part of the labor force
               </div>
             </div>
             <div>
@@ -2968,8 +2967,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
               Poverty
               <div>
                 
-      Percent of a census tract's population in households where the household income is at or below 100% 
-      of the Federal poverty level 
+      Share of people in households where the income is at or below 100% of the Federal poverty level 
     
               </div>
             </div>

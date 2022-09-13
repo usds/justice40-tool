@@ -792,20 +792,20 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   // Climate change
   EXP_AG_LOSS: {
     id: 'explore.map.page.side.panel.indicator.description.exp.ag.loss',
-    defaultMessage: 'Economic loss rate to agricultural value resulting from natural hazards each year',
+    defaultMessage: 'Economic loss to agricultural value resulting from natural hazards each year',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Economic loss rate to agriculture resulting from natural hazards
     `,
   },
   EXP_BLD_LOSS: {
     id: 'explore.map.page.side.panel.indicator.description.exp.bld.loss',
-    defaultMessage: 'Economic loss rate to agricultural value resulting from natural hazards each year',
+    defaultMessage: 'Economic loss to agricultural value resulting from natural hazards each year',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side 
     panel will show an indicator description of Economic loss rate to buildings resulting from natural hazards`,
   },
   EXP_POP_LOSS: {
     id: 'explore.map.page.side.panel.indicator.description.exp.pop.loss',
     defaultMessage: `
-      Rate of fatalities and injuries resulting from natural hazards each year
+      Fatalities and injuries resulting from natural hazards each year
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Economic loss rate to the population in fatalities and 
       injuries resulting from natural hazards`,
@@ -827,9 +827,9 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   LOW_INCOME: {
     id: 'explore.map.page.side.panel.indicator.description.low.income',
     defaultMessage: `
-      Household income is less than or equal to twice the federal poverty level 
+     People in households where income is less than or equal to twice the federal poverty level, not including students enrolled in higher ed 
     `,
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Household income is less than or equal to twice the federal poverty level`,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description ofPeople in households where income is less than or equal to twice the federal poverty level, not including students enrolled in higher ed`,
   },
   HIGH_ED: {
     id: 'explore.map.page.side.panel.indicator.description.high.ed',
@@ -849,30 +849,27 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   },
   PM_2_5: {
     id: 'explore.map.page.side.panel.indicator.description.pm25',
-    defaultMessage: 'Fine inhalable particles, 2.5 micrometers or smaller',
+    defaultMessage: 'Level of inhalable particles, 2.5 micrometers or smaller',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Fine inhalable particles, 2.5 micrometers and smaller`,
   },
 
   // Health
   ASTHMA: {
     id: 'explore.map.page.side.panel.indicator.description.asthma',
-    defaultMessage: 'Weighted percent of people who have been told they have asthma',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Number of people who have been told they have asthma`,
+    defaultMessage: 'Share of people who have been told they have asthma',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of people who have been told they have asthma`,
   },
   DIABETES: {
     id: 'explore.map.page.side.panel.indicator.description.diabetes',
     defaultMessage: `
-      Weighted percent of people ages 18 years and older who have diabetes other than 
-      diabetes during pregnancy
+      Share of people ages 18 years and older who have diabetes
     `,
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of People ages 18 years and older who have diabetes other than 
-      diabetes during pregnancy`,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of people ages 18 years and older who have diabetes`,
   },
   HEART_DISEASE: {
     id: 'explore.map.page.side.panel.indicator.description.heartDisease',
-    defaultMessage: `People ages 18 years and older who have been told they have heart disease`,
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Weighted percent of people ages 18 years and older who have 
-    been told they have heart disease`,
+    defaultMessage: `Share of people ages 18 years and older who have been told they have heart disease`,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of people ages 18 years and older who have been told they have heart disease`,
   },
   LOW_LIFE_EXPECT: {
     id: 'explore.map.page.side.panel.indicator.description.lifeExpect',
@@ -884,12 +881,13 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   HIST_UNDERINVEST: {
     id: 'explore.map.page.side.panel.indicator.description.historic.underinvestment',
     defaultMessage: 'Census tracts with historically high barriers to accessing home loans',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Low income households spending more than 30% of income housing`,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Census tracts with historically high barriers to accessing home loans`,
   },
   HOUSE_COST: {
     id: 'explore.map.page.side.panel.indicator.description.house.cost',
-    defaultMessage: 'Low income households spending more than 30% of income on housing',
-    description: `Share of households making less than 80% of the area median family income and spending more than 30% of income on housing`,
+    defaultMessage: `Share of households making less than 80% of the area median family income and spending more than 30% of income on housing
+    `,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of households making less than 80% of the area median family income and spending more than 30% of income on housing`,
   },
   LACK_GREEN_SPACE: {
     id: 'explore.map.page.side.panel.indicator.description.lack.green.space',
@@ -904,15 +902,10 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   LEAD_PAINT: {
     id: 'explore.map.page.side.panel.indicator.description.leadPaint',
     defaultMessage: `
-      Percentile of number of homes built before 1960 that are not among the most expensive
+      Share of homes that are not very expensive and are likely to have lead paint
     `,
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Pre-1960 housing`,
-  },
-  MED_HOME_VAL: {
-    id: 'explore.map.page.side.panel.indicator.description.med.home.val',
-    defaultMessage: 'Median home value in area',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Median home value in area`,
-
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of homes that are not very expensive and are likely to have lead paint   
+    `,
   },
 
   // Legacy Pollution
@@ -933,13 +926,13 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   },
   PROX_RMP: {
     id: 'explore.map.page.side.panel.indicator.description.prox.rmp',
-    defaultMessage: 'RMP facilities within 5 kilometers',
-    description: `Count of proposed or listed Superfund (or National Priorities List) sites within 5 kilometers`,
+    defaultMessage: 'Count of Risk Management Plan facilities within 5 kilometers',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Count of Risk Management Plan facilities within 5 kilometers`,
   },
   PROX_NPL: {
     id: 'explore.map.page.side.panel.indicator.description.prox.npl',
-    defaultMessage: 'Count of Risk Management Plan facilities within 5 kilometers',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Proposed or listed NPL (Superfund) sites within 5 kilometers`,
+    defaultMessage: `Count of proposed or listed Superfund (or National Priorities List) sites within 5 kilometers`,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Count of proposed or listed Superfund (or National Priorities List) sites within 5 kilometers`,
   },
 
   // Transportation
@@ -968,8 +961,8 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   },
   WASTE_WATER: {
     id: 'explore.map.page.side.panel.indicator.description.wasteWater',
-    defaultMessage: 'Toxic concentrations at stream segments within 500 meters',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Toxic concentrations at stream segments within 500 meters`,
+    defaultMessage: 'Modeled toxic concentrations at parts of streams within 500 meters',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Modeled toxic concentrations at parts of streams within 500 meters`,
   },
 
 
@@ -977,9 +970,9 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   LING_ISO: {
     id: 'explore.map.page.side.panel.indicator.description.ling.iso',
     defaultMessage: `
-      Percent of households where no one over the age 14 speaks English well
+    Share of households where no one over the age 14 speaks English well
     `,
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Households in which no one age 14 and over speaks English only or also speaks a language other than English`,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of households where no one over the age 14 speaks English well`,
   },
   LOW_MED_INCOME: {
     id: 'explore.map.page.side.panel.indicator.description.low.med.income',
@@ -989,16 +982,15 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   POVERTY: {
     id: 'explore.map.page.side.panel.indicator.description.poverty',
     defaultMessage: `
-      Percent of a census tract's population in households where the household income is at or below 100% 
-      of the Federal poverty level 
+      Share of people in households where the income is at or below 100% of the Federal poverty level 
     `,
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of individuals in households where the household income is at or below 100% of the federal poverty level`,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of people in households where the income is at or below 100% of the Federal poverty level`,
   },
   UNEMPLOY: {
     id: 'explore.map.page.side.panel.indicator.description.unemploy',
-    defaultMessage: 'Number of unemployed people as a percentage of the labor force',
+    defaultMessage: 'Number of unemployed people as a part of the labor force',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side 
-    panel will show an indicator description of Number of unemployed people as a percentage of the labor force`,
+    panel will show an indicator description of Number of unemployed people as a part of the labor force`,
   },
   HIGH_SKL: {
     id: 'explore.map.page.side.panel.indicator.description.high.school',
