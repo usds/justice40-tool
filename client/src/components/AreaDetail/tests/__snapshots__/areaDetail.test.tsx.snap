@@ -274,7 +274,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for ISL
             <div>
               Low median income
               <div>
-                Median income calculated as a percent of the area’s median income
+                Comparison of income in the tract to incomes in the area
               </div>
             </div>
             <div>
@@ -389,10 +389,10 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for ISL
         >
           <div>
             <div>
-              High school degree non-attainment
+              High school education
               <div>
                 
-      Percent of people ages 25 years or older whose education level is less than a high school diploma 
+      Percent of people ages 25 years or older who did not graduate high school 
     
               </div>
             </div>
@@ -772,7 +772,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         >
           <div>
             <div>
-              Future flood risk
+              Projected flood risk
               <div>
                 
       Projected risk to properties from floods from tides, rain, riverine and storm surges in 30 years
@@ -800,7 +800,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         >
           <div>
             <div>
-              Future wildfire risk
+              Projected wildfire risk
               <div>
                 
       Projected risk to properties from wildfire from fire fuels, weather, humans, and fire movement
@@ -877,7 +877,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         >
           <div>
             <div>
-              Clean energy and energy efficiency
+              Energy
             </div>
             <div
               class=""
@@ -905,7 +905,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         >
           <div>
             <div>
-              Energy burden
+              Energy cost
               <div>
                 Average annual energy costs divided by household income
               </div>
@@ -998,691 +998,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         class="usa-accordion__heading"
       >
         <button
-          aria-controls="clean-transport"
-          aria-expanded="false"
-          class="usa-accordion__button"
-          data-testid="accordionButton_clean-transport"
-          type="button"
-        >
-          <div>
-            <div>
-              Clean transit
-            </div>
-            <div
-              class=""
-            />
-          </div>
-        </button>
-      </h4>
-      <div
-        class="usa-accordion__content usa-prose"
-        data-testid="accordionItem_clean-transport"
-        hidden=""
-        id="clean-transport"
-      >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Diesel particulate matter exposure
-              <div>
-                Diesel exhaust in the air
-              </div>
-            </div>
-            <div>
-              <div>
-                <div>
-                  --
-                </div>
-                <div />
-              </div>
-              <div>
-                <div>
-                  missing data
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Transportation barriers
-              <div>
-                Cost and time spent on transportation
-              </div>
-            </div>
-            <div>
-              <div>
-                <div>
-                  --
-                </div>
-                <div />
-              </div>
-              <div>
-                <div>
-                  missing data
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Traffic proximity and volume
-              <div>
-                Count of vehicles at major roads within 500 meters
-              </div>
-            </div>
-            <div>
-              <div>
-                <div>
-                  --
-                </div>
-                <div />
-              </div>
-              <div>
-                <div>
-                  missing data
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <div>
-          AND
-        </div>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Low income
-              <div>
-                
-      Household income is less than or equal to twice the federal poverty level 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div>
-                  19
-                  <sup
-                    style="top: -0.2em;"
-                  >
-                    th
-                  </sup>
-                </div>
-                <div />
-              </div>
-              <div>
-                <div>
-                  below 65
-                  <sup
-                    style="top: -0.2em;"
-                  >
-                    th
-                  </sup>
-                   percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-      </div>
-      <h4
-        class="usa-accordion__heading"
-      >
-        <button
-          aria-controls="sustain-house"
-          aria-expanded="false"
-          class="usa-accordion__button"
-          data-testid="accordionButton_sustain-house"
-          type="button"
-        >
-          <div>
-            <div>
-              Sustainable housing
-            </div>
-            <div
-              class=""
-            />
-          </div>
-        </button>
-      </h4>
-      <div
-        class="usa-accordion__content usa-prose"
-        data-testid="accordionItem_sustain-house"
-        hidden=""
-        id="sustain-house"
-      >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Housing cost burden
-              <div>
-                Low income households spending more than 30% of income on housing
-              </div>
-            </div>
-            <div>
-              <div>
-                <div>
-                  95
-                  <sup
-                    style="top: -0.2em;"
-                  >
-                    th
-                  </sup>
-                </div>
-                <div />
-              </div>
-              <div>
-                <div>
-                  above 90
-                  <sup
-                    style="top: -0.2em;"
-                  >
-                    th
-                  </sup>
-                   percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Lack of green space
-              <div>
-                Amount of non-crop land covered with artificial materials like pavement and concrete
-              </div>
-            </div>
-            <div>
-              <div>
-                <div>
-                  --
-                </div>
-                <div />
-              </div>
-              <div>
-                <div>
-                  missing data
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Lack of plumbing
-              <div>
-                Share of homes without indoor kitchens or plumbing
-              </div>
-            </div>
-            <div>
-              <div>
-                <div>
-                  --
-                </div>
-                <div />
-              </div>
-              <div>
-                <div>
-                  missing data
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Lead paint
-              <div>
-                
-      Percentile of number of homes built before 1960 that are not among the most expensive
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div>
-                  --
-                </div>
-                <div />
-              </div>
-              <div>
-                <div>
-                  missing data
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <div>
-          AND
-        </div>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Low income
-              <div>
-                
-      Household income is less than or equal to twice the federal poverty level 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div>
-                  19
-                  <sup
-                    style="top: -0.2em;"
-                  >
-                    th
-                  </sup>
-                </div>
-                <div />
-              </div>
-              <div>
-                <div>
-                  below 65
-                  <sup
-                    style="top: -0.2em;"
-                  >
-                    th
-                  </sup>
-                   percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-      </div>
-      <h4
-        class="usa-accordion__heading"
-      >
-        <button
-          aria-controls="leg-pollute"
-          aria-expanded="false"
-          class="usa-accordion__button"
-          data-testid="accordionButton_leg-pollute"
-          type="button"
-        >
-          <div>
-            <div>
-              Legacy pollution
-            </div>
-            <div
-              class=""
-            />
-          </div>
-        </button>
-      </h4>
-      <div
-        class="usa-accordion__content usa-prose"
-        data-testid="accordionItem_leg-pollute"
-        hidden=""
-        id="leg-pollute"
-      >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Abandoned mine lands
-              <div>
-                Presence of an abandoned land mine within the tract
-              </div>
-            </div>
-            <div>
-              <div>
-                <div>
-                  --
-                </div>
-                <div />
-              </div>
-              <div>
-                <div>
-                  missing data
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Formerly Used Defense Sites (FUDS)
-              <div>
-                Presence of a Formerly Used Defense Site within the tract
-              </div>
-            </div>
-            <div>
-              <div>
-                <div>
-                  --
-                </div>
-                <div />
-              </div>
-              <div>
-                <div>
-                  missing data
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Proximity to hazardous waste facilities
-              <div>
-                Count of hazardous waste facilities within 5 kilometers
-              </div>
-            </div>
-            <div>
-              <div>
-                <div>
-                  --
-                </div>
-                <div />
-              </div>
-              <div>
-                <div>
-                  missing data
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Proximity to National Priorities List (NPL) sites
-              <div>
-                Proposed or listed NPL (Superfund) sites within 5 kilometers
-              </div>
-            </div>
-            <div>
-              <div>
-                <div>
-                  --
-                </div>
-                <div />
-              </div>
-              <div>
-                <div>
-                  missing data
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Proximity to Risk Management Plan (RMP) facilities
-              <div>
-                RMP facilities within 5 kilometers
-              </div>
-            </div>
-            <div>
-              <div>
-                <div>
-                  --
-                </div>
-                <div />
-              </div>
-              <div>
-                <div>
-                  missing data
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <div>
-          AND
-        </div>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Low income
-              <div>
-                
-      Household income is less than or equal to twice the federal poverty level 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div>
-                  19
-                  <sup
-                    style="top: -0.2em;"
-                  >
-                    th
-                  </sup>
-                </div>
-                <div />
-              </div>
-              <div>
-                <div>
-                  below 65
-                  <sup
-                    style="top: -0.2em;"
-                  >
-                    th
-                  </sup>
-                   percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-      </div>
-      <h4
-        class="usa-accordion__heading"
-      >
-        <button
-          aria-controls="clean-water"
-          aria-expanded="false"
-          class="usa-accordion__button"
-          data-testid="accordionButton_clean-water"
-          type="button"
-        >
-          <div>
-            <div>
-              Clean water and wastewater infrastructure
-            </div>
-            <div
-              class=""
-            />
-          </div>
-        </button>
-      </h4>
-      <div
-        class="usa-accordion__content usa-prose"
-        data-testid="accordionItem_clean-water"
-        hidden=""
-        id="clean-water"
-      >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Leaking underground storage tanks
-              <div>
-                Count of leaking underground storage tanks when compared to all underground storage tanks
-              </div>
-            </div>
-            <div>
-              <div>
-                <div>
-                  --
-                </div>
-                <div />
-              </div>
-              <div>
-                <div>
-                  missing data
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Wastewater discharge
-              <div>
-                Toxic concentrations at stream segments within 500 meters
-              </div>
-            </div>
-            <div>
-              <div>
-                <div>
-                  --
-                </div>
-                <div />
-              </div>
-              <div>
-                <div>
-                  missing data
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <div>
-          AND
-        </div>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Low income
-              <div>
-                
-      Household income is less than or equal to twice the federal poverty level 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div>
-                  19
-                  <sup
-                    style="top: -0.2em;"
-                  >
-                    th
-                  </sup>
-                </div>
-                <div />
-              </div>
-              <div>
-                <div>
-                  below 65
-                  <sup
-                    style="top: -0.2em;"
-                  >
-                    th
-                  </sup>
-                   percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-      </div>
-      <h4
-        class="usa-accordion__heading"
-      >
-        <button
           aria-controls="health-burdens"
           aria-expanded="false"
           class="usa-accordion__button"
@@ -1691,7 +1006,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         >
           <div>
             <div>
-              Health burdens
+              Health
             </div>
             <div
               class=""
@@ -1867,6 +1182,692 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         class="usa-accordion__heading"
       >
         <button
+          aria-controls="sustain-house"
+          aria-expanded="false"
+          class="usa-accordion__button"
+          data-testid="accordionButton_sustain-house"
+          type="button"
+        >
+          <div>
+            <div>
+              Housing
+            </div>
+            <div
+              class=""
+            />
+          </div>
+        </button>
+      </h4>
+      <div
+        class="usa-accordion__content usa-prose"
+        data-testid="accordionItem_sustain-house"
+        hidden=""
+        id="sustain-house"
+      >
+        <div>
+          <div>
+            At or above at least one threshold?
+          </div>
+          <div>
+            No
+          </div>
+        </div>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Housing cost
+              <div>
+                Low income households spending more than 30% of income on housing
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  95
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                </div>
+                <div />
+              </div>
+              <div>
+                <div>
+                  above 90
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                   percentile
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Lack of green space
+              <div>
+                Share of land covered with artificial materials like concrete or pavement and crop land
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  --
+                </div>
+                <div />
+              </div>
+              <div>
+                <div>
+                  missing data
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Lack of plumbing
+              <div>
+                Share of homes without indoor kitchens or plumbing
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  --
+                </div>
+                <div />
+              </div>
+              <div>
+                <div>
+                  missing data
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Lead paint
+              <div>
+                
+      Percentile of number of homes built before 1960 that are not among the most expensive
+    
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  --
+                </div>
+                <div />
+              </div>
+              <div>
+                <div>
+                  missing data
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <div>
+          AND
+        </div>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Low income
+              <div>
+                
+      Household income is less than or equal to twice the federal poverty level 
+    
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  19
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                </div>
+                <div />
+              </div>
+              <div>
+                <div>
+                  below 65
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                   percentile
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </div>
+      <h4
+        class="usa-accordion__heading"
+      >
+        <button
+          aria-controls="leg-pollute"
+          aria-expanded="false"
+          class="usa-accordion__button"
+          data-testid="accordionButton_leg-pollute"
+          type="button"
+        >
+          <div>
+            <div>
+              Legacy pollution
+            </div>
+            <div
+              class=""
+            />
+          </div>
+        </button>
+      </h4>
+      <div
+        class="usa-accordion__content usa-prose"
+        data-testid="accordionItem_leg-pollute"
+        hidden=""
+        id="leg-pollute"
+      >
+        <div>
+          <div>
+            At or above at least one threshold?
+          </div>
+          <div>
+            No
+          </div>
+        </div>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Abandoned mine lands
+              <div>
+                Presence of an abandoned mine lands within the tract
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  --
+                </div>
+                <div />
+              </div>
+              <div>
+                <div>
+                  missing data
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Formerly Used Defense Sites
+              <div>
+                Presence of a Formerly Used Defense Site within the tract
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  --
+                </div>
+                <div />
+              </div>
+              <div>
+                <div>
+                  missing data
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Proximity to hazardous waste facilities
+              <div>
+                Count of hazardous waste facilities within 5 kilometers
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  --
+                </div>
+                <div />
+              </div>
+              <div>
+                <div>
+                  missing data
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Proximity to Superfund sites
+              <div>
+                Count of Risk Management Plan facilities within 5 kilometers
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  --
+                </div>
+                <div />
+              </div>
+              <div>
+                <div>
+                  missing data
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Proximity to Risk Management Plan facilities
+              <div>
+                RMP facilities within 5 kilometers
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  --
+                </div>
+                <div />
+              </div>
+              <div>
+                <div>
+                  missing data
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <div>
+          AND
+        </div>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Low income
+              <div>
+                
+      Household income is less than or equal to twice the federal poverty level 
+    
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  19
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                </div>
+                <div />
+              </div>
+              <div>
+                <div>
+                  below 65
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                   percentile
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </div>
+      <h4
+        class="usa-accordion__heading"
+      >
+        <button
+          aria-controls="clean-transport"
+          aria-expanded="false"
+          class="usa-accordion__button"
+          data-testid="accordionButton_clean-transport"
+          type="button"
+        >
+          <div>
+            <div>
+              Transportation
+            </div>
+            <div
+              class=""
+            />
+          </div>
+        </button>
+      </h4>
+      <div
+        class="usa-accordion__content usa-prose"
+        data-testid="accordionItem_clean-transport"
+        hidden=""
+        id="clean-transport"
+      >
+        <div>
+          <div>
+            At or above at least one threshold?
+          </div>
+          <div>
+            No
+          </div>
+        </div>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Diesel particulate matter exposure
+              <div>
+                Amount of diesel exhaust in the air
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  --
+                </div>
+                <div />
+              </div>
+              <div>
+                <div>
+                  missing data
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Transportation barriers
+              <div>
+                Average of relative cost and time spent on transportation
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  --
+                </div>
+                <div />
+              </div>
+              <div>
+                <div>
+                  missing data
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Traffic proximity and volume
+              <div>
+                Count of vehicles at major roads within 500 meters
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  --
+                </div>
+                <div />
+              </div>
+              <div>
+                <div>
+                  missing data
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <div>
+          AND
+        </div>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Low income
+              <div>
+                
+      Household income is less than or equal to twice the federal poverty level 
+    
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  19
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                </div>
+                <div />
+              </div>
+              <div>
+                <div>
+                  below 65
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                   percentile
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </div>
+      <h4
+        class="usa-accordion__heading"
+      >
+        <button
+          aria-controls="clean-water"
+          aria-expanded="false"
+          class="usa-accordion__button"
+          data-testid="accordionButton_clean-water"
+          type="button"
+        >
+          <div>
+            <div>
+              Water
+            </div>
+            <div
+              class=""
+            />
+          </div>
+        </button>
+      </h4>
+      <div
+        class="usa-accordion__content usa-prose"
+        data-testid="accordionItem_clean-water"
+        hidden=""
+        id="clean-water"
+      >
+        <div>
+          <div>
+            At or above at least one threshold?
+          </div>
+          <div>
+            No
+          </div>
+        </div>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Leaking underground storage tanks
+              <div>
+                Formula that counts leaking underground storage tanks and number of all underground storage tanks within 1500 feet
+    
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  --
+                </div>
+                <div />
+              </div>
+              <div>
+                <div>
+                  missing data
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Wastewater discharge
+              <div>
+                Toxic concentrations at stream segments within 500 meters
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  --
+                </div>
+                <div />
+              </div>
+              <div>
+                <div>
+                  missing data
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <div>
+          AND
+        </div>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Low income
+              <div>
+                
+      Household income is less than or equal to twice the federal poverty level 
+    
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  19
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                </div>
+                <div />
+              </div>
+              <div>
+                <div>
+                  below 65
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                   percentile
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </div>
+      <h4
+        class="usa-accordion__heading"
+      >
+        <button
           aria-controls="work-dev"
           aria-expanded="false"
           class="usa-accordion__button"
@@ -1944,7 +1945,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               Low median income
               <div>
-                Median income calculated as a percent of the area’s median income
+                Comparison of income in the tract to incomes in the area
               </div>
             </div>
             <div>
@@ -2048,10 +2049,10 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         >
           <div>
             <div>
-              High school degree non-attainment
+              High school education
               <div>
                 
-      Percent of people ages 25 years or older whose education level is less than a high school diploma 
+      Percent of people ages 25 years or older who did not graduate high school 
     
               </div>
             </div>
@@ -2423,7 +2424,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         >
           <div>
             <div>
-              Clean energy and energy efficiency
+              Energy
             </div>
             <div
               class=""
@@ -2451,7 +2452,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         >
           <div>
             <div>
-              Energy burden
+              Energy cost
               <div>
                 Average annual energy costs divided by household income
               </div>
@@ -2552,7 +2553,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         >
           <div>
             <div>
-              Sustainable housing
+              Housing
             </div>
             <div
               class=""
@@ -2580,7 +2581,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         >
           <div>
             <div>
-              Housing cost burden
+              Housing cost
               <div>
                 Low income households spending more than 30% of income on housing
               </div>
@@ -2696,7 +2697,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
             <div>
               Abandoned mine lands
               <div>
-                Presence of an abandoned land mine within the tract
+                Presence of an abandoned mine lands within the tract
               </div>
             </div>
             <div>
@@ -2720,7 +2721,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         >
           <div>
             <div>
-              Formerly Used Defense Sites (FUDS)
+              Formerly Used Defense Sites
               <div>
                 Presence of a Formerly Used Defense Site within the tract
               </div>
@@ -2772,9 +2773,9 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         >
           <div>
             <div>
-              Proximity to National Priorities List (NPL) sites
+              Proximity to Superfund sites
               <div>
-                Proposed or listed NPL (Superfund) sites within 5 kilometers
+                Count of Risk Management Plan facilities within 5 kilometers
               </div>
             </div>
             <div>
@@ -2798,7 +2799,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         >
           <div>
             <div>
-              Proximity to Risk Management Plan (RMP) facilities
+              Proximity to Risk Management Plan facilities
               <div>
                 RMP facilities within 5 kilometers
               </div>
@@ -2903,7 +2904,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
             <div>
               Low median income
               <div>
-                Median income calculated as a percent of the area’s median income
+                Comparison of income in the tract to incomes in the area
               </div>
             </div>
             <div>
@@ -3007,10 +3008,10 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         >
           <div>
             <div>
-              High school degree non-attainment
+              High school education
               <div>
                 
-      Percent of people ages 25 years or older whose education level is less than a high school diploma 
+      Percent of people ages 25 years or older who did not graduate high school 
     
               </div>
             </div>

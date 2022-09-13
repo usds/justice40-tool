@@ -495,20 +495,20 @@ export const SIDE_PANEL_CATEGORY = defineMessages({
   },
   CLEAN_ENERGY: {
     id: 'explore.map.page.side.panel.indicator.title.clean.energy',
-    defaultMessage: 'Clean energy and energy efficiency',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Clean, efficient energy title
+    defaultMessage: 'Energy',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Energy title
 `,
   },
-  CLEAN_TRANSPORT: {
-    id: 'explore.map.page.side.panel.indicator.title.clean.transport',
-    defaultMessage: 'Clean transit',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Clean transportation title
+  HEALTH_BURDEN: {
+    id: 'explore.map.page.side.panel.indicator.title.health.burden',
+    defaultMessage: 'Health',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Healt title
 `,
   },
   SUSTAIN_HOUSE: {
     id: 'explore.map.page.side.panel.indicator.title.sustain.house',
-    defaultMessage: 'Sustainable housing',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Sustainable housing title
+    defaultMessage: 'Housing',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Housing title
 `,
   },
   LEG_POLLUTE: {
@@ -517,16 +517,16 @@ export const SIDE_PANEL_CATEGORY = defineMessages({
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Legacy pollution title
 `,
   },
-  CLEAN_WATER: {
-    id: 'explore.map.page.side.panel.indicator.title.clean.water',
-    defaultMessage: 'Clean water and wastewater infrastructure',
-    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Clean water and waste title
+  CLEAN_TRANSPORT: {
+    id: 'explore.map.page.side.panel.indicator.title.clean.transport',
+    defaultMessage: 'Transportation',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Transportation title
 `,
   },
-  HEALTH_BURDEN: {
-    id: 'explore.map.page.side.panel.indicator.title.health.burden',
-    defaultMessage: 'Health burdens',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Health burdens title
+  CLEAN_WATER: {
+    id: 'explore.map.page.side.panel.indicator.title.clean.water',
+    defaultMessage: 'Water',
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Water title
 `,
   },
   WORK_DEV: {
@@ -544,6 +544,7 @@ export const SIDE_PANEL_CATEGORY = defineMessages({
 });
 
 export const SIDE_PANEL_INDICATORS = defineMessages({
+  // Climate Change
   EXP_AG_LOSS: {
     id: 'explore.map.page.side.panel.indicator.exp.ag.loss',
     defaultMessage: 'Expected agriculture loss rate',
@@ -561,12 +562,12 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
   },
   FLOODING: {
     id: 'explore.map.page.side.panel.indicator.flooding',
-    defaultMessage: 'Future flood risk',
+    defaultMessage: 'Projected flood risk',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show flood risk`,
   },
   WILDFIRE: {
     id: 'explore.map.page.side.panel.indicator.wildfire',
-    defaultMessage: 'Future wildfire risk',
+    defaultMessage: 'Projected wildfire risk',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show wildfire risk`,
   },
   LOW_INCOME: {
@@ -578,96 +579,20 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
     defaultMessage: 'Higher education non-enrollment',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Higher ed degree achievement rate`,
   },
-  ENERGY_BURDEN: {
+
+  // Energy
+  ENERGY_COST: {
     id: 'explore.map.page.side.panel.indicator.energyBurden',
-    defaultMessage: 'Energy burden',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Energy burden`,
+    defaultMessage: 'Energy cost',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Energy cost`,
   },
   PM_2_5: {
     id: 'explore.map.page.side.panel.indicator.pm25',
     defaultMessage: 'PM2.5 in the air',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show PM2.5 in the air`,
   },
-  DIESEL_PARTICULATE_MATTER: {
-    id: 'explore.map.page.side.panel.indicator.dieselPartMatter',
-    defaultMessage: 'Diesel particulate matter exposure',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Diesel particulate matter exposure`,
-  },
-  BARRIER_TRANS: {
-    id: 'explore.map.page.side.panel.indicator.barrier.transport',
-    defaultMessage: 'Transportation barriers',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show transportation barriers`,
-  },
-  TRAFFIC_VOLUME: {
-    id: 'explore.map.page.side.panel.indicator.trafficVolume',
-    defaultMessage: 'Traffic proximity and volume',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Traffic proximity and volume`,
-  },
-  LEAD_PAINT: {
-    id: 'explore.map.page.side.panel.indicator.leadPaint',
-    defaultMessage: 'Lead paint',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Lead paint`,
-  },
-  MED_HOME_VAL: {
-    id: 'explore.map.page.side.panel.indicator.med.home.val',
-    defaultMessage: 'Median home value',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Housing cost burden`,
-  },
-  HIST_UNDERINVEST: {
-    id: 'explore.map.page.side.panel.indicator.historic.underinvest',
-    defaultMessage: 'Historic underinvestment',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Historic underinvestment`,
-  },
-  HOUSE_BURDEN: {
-    id: 'explore.map.page.side.panel.indicator.houseBurden',
-    defaultMessage: 'Housing cost burden',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Housing cost burden`,
-  },
-  LACK_GREEN_SPACE: {
-    id: 'explore.map.page.side.panel.indicator.lack.green.space',
-    defaultMessage: 'Lack of green space',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Lack of green space`,
-  },
-  LACK_PLUMBING: {
-    id: 'explore.map.page.side.panel.indicator.lack.plumbing',
-    defaultMessage: 'Lack of plumbing',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Lack of plumbing`,
-  },
-  ABANDON_MINES: {
-    id: 'explore.map.page.side.panel.indicator.abandon.mines',
-    defaultMessage: 'Abandoned mine lands',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Abandoned land mines`,
-  },
-  FORMER_DEF_SITES: {
-    id: 'explore.map.page.side.panel.indicator.former.def.sites',
-    defaultMessage: 'Formerly Used Defense Sites (FUDS)',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Formerly Used Defense Sites (FUDS)`,
-  },
-  PROX_HAZ: {
-    id: 'explore.map.page.side.panel.indicator.prox.haz',
-    defaultMessage: 'Proximity to hazardous waste facilities',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Proximity to hazardous waste facilities`,
-  },
-  PROX_NPL: {
-    id: 'explore.map.page.side.panel.indicator.prox.npl',
-    defaultMessage: 'Proximity to National Priorities List (NPL) sites',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Count of proposed or listed NPL `,
-  },
-  PROX_RMP: {
-    id: 'explore.map.page.side.panel.indicator.prox.rmp',
-    defaultMessage: 'Proximity to Risk Management Plan (RMP) facilities',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Count of proposed or listed RMP`,
-  },
-  LEAKY_TANKS: {
-    id: 'explore.map.page.side.panel.indicator.leaky.tanks',
-    defaultMessage: 'Leaking underground storage tanks',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Leaking underground storage tanks`,
-  },
-  WASTE_WATER: {
-    id: 'explore.map.page.side.panel.indicator.wasteWater',
-    defaultMessage: 'Wastewater discharge',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Wastewater discharge`,
-  },
+
+  // Health
   ASTHMA: {
     id: 'explore.map.page.side.panel.indicator.asthma',
     defaultMessage: 'Asthma',
@@ -688,31 +613,123 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
     defaultMessage: 'Low life expectancy',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Low life expectancy`,
   },
-  LOW_MED_INC: {
-    id: 'explore.map.page.side.panel.indicator.low.med.income',
-    defaultMessage: 'Low median income',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Low median income`,
+
+  // Housing
+  HIST_UNDERINVEST: {
+    id: 'explore.map.page.side.panel.indicator.historic.underinvest',
+    defaultMessage: 'Historic underinvestment',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Historic underinvestment`,
   },
+  HOUSE_COST: {
+    id: 'explore.map.page.side.panel.indicator.house.cost',
+    defaultMessage: 'Housing cost',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Housing cost`,
+  },
+  LACK_GREEN_SPACE: {
+    id: 'explore.map.page.side.panel.indicator.lack.green.space',
+    defaultMessage: 'Lack of green space',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Lack of green space`,
+  },
+  LACK_PLUMBING: {
+    id: 'explore.map.page.side.panel.indicator.lack.plumbing',
+    defaultMessage: 'Lack of plumbing',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Lack of plumbing`,
+  },
+  LEAD_PAINT: {
+    id: 'explore.map.page.side.panel.indicator.leadPaint',
+    defaultMessage: 'Lead paint',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Lead paint`,
+  },
+  MED_HOME_VAL: {
+    id: 'explore.map.page.side.panel.indicator.med.home.val',
+    defaultMessage: 'Median home value',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Housing cost burden`,
+  },
+
+  // Legacy Pollution
+  ABANDON_MINES: {
+    id: 'explore.map.page.side.panel.indicator.abandon.mines',
+    defaultMessage: 'Abandoned mine lands',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Abandoned land mines`,
+  },
+  FORMER_DEF_SITES: {
+    id: 'explore.map.page.side.panel.indicator.former.def.sites',
+    defaultMessage: 'Formerly Used Defense Sites',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Formerly Used Defense Sites`,
+  },
+  PROX_HAZ: {
+    id: 'explore.map.page.side.panel.indicator.prox.haz',
+    defaultMessage: 'Proximity to hazardous waste facilities',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Proximity to hazardous waste facilities`,
+  },
+  PROX_RMP: {
+    id: 'explore.map.page.side.panel.indicator.prox.rmp',
+    defaultMessage: 'Proximity to Risk Management Plan facilities',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Count of proposed or listed RMP`,
+  },
+  PROX_NPL: {
+    id: 'explore.map.page.side.panel.indicator.prox.npl',
+    defaultMessage: 'Proximity to Superfund sites',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Count of proposed or listed NPL `,
+  },
+
+  // Transportation
+  DIESEL_PARTICULATE_MATTER: {
+    id: 'explore.map.page.side.panel.indicator.dieselPartMatter',
+    defaultMessage: 'Diesel particulate matter exposure',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Diesel particulate matter exposure`,
+  },
+  BARRIER_TRANS: {
+    id: 'explore.map.page.side.panel.indicator.barrier.transport',
+    defaultMessage: 'Transportation barriers',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show transportation barriers`,
+  },
+  TRAFFIC_VOLUME: {
+    id: 'explore.map.page.side.panel.indicator.trafficVolume',
+    defaultMessage: 'Traffic proximity and volume',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Traffic proximity and volume`,
+  },
+
+  // Water
+  LEAKY_TANKS: {
+    id: 'explore.map.page.side.panel.indicator.leaky.tanks',
+    defaultMessage: 'Leaking underground storage tanks',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Leaking underground storage tanks`,
+  },
+  WASTE_WATER: {
+    id: 'explore.map.page.side.panel.indicator.wasteWater',
+    defaultMessage: 'Wastewater discharge',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Wastewater discharge`,
+  },
+
+  // Workforce development
   LING_ISO: {
     id: 'explore.map.page.side.panel.indicator.ling.iso',
     defaultMessage: 'Linguistic isolation',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Linguistic isolation`,
   },
-  UNEMPLOY: {
-    id: 'explore.map.page.side.panel.indicator.unemploy',
-    defaultMessage: 'Unemployment',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Unemployment`,
+  LOW_MED_INC: {
+    id: 'explore.map.page.side.panel.indicator.low.med.income',
+    defaultMessage: 'Low median income',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Low median income`,
   },
   POVERTY: {
     id: 'explore.map.page.side.panel.indicator.poverty',
     defaultMessage: 'Poverty',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Unemployment`,
   },
+  UNEMPLOY: {
+    id: 'explore.map.page.side.panel.indicator.unemploy',
+    defaultMessage: 'Unemployment',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Unemployment`,
+  },
   HIGH_SCL: {
     id: 'explore.map.page.side.panel.indicator.high.school',
-    defaultMessage: 'High school degree non-attainment',
+    defaultMessage: 'High school education',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show High school degree achievement rate`,
   },
+
+  // Testing
   ADJ: {
     id: 'explore.map.page.side.panel.indicator.adjacency',
     defaultMessage: 'Adjacency',
@@ -772,12 +789,12 @@ export const SIDE_PANEL_VALUES = {
 };
 
 export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
+  // Climate change
   EXP_AG_LOSS: {
     id: 'explore.map.page.side.panel.indicator.description.exp.ag.loss',
     defaultMessage: 'Economic loss rate to agricultural value resulting from natural hazards each year',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Economic loss rate to agriculture resulting from natural hazards
     `,
-
   },
   EXP_BLD_LOSS: {
     id: 'explore.map.page.side.panel.indicator.description.exp.bld.loss',
@@ -823,8 +840,10 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of the census tract's population 15 or older not 
       enrolled in college, university, or graduate school`,
   },
-  ENERGY_BURDEN: {
-    id: 'explore.map.page.side.panel.indicator.description.energyBurden',
+
+  // Energy
+  ENERGY_COST: {
+    id: 'explore.map.page.side.panel.indicator.description.energy.cost',
     defaultMessage: 'Average annual energy costs divided by household income',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Energy costs divided by household income`,
   },
@@ -834,93 +853,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Fine inhalable particles, 2.5 micrometers and smaller`,
   },
 
-  DIESEL_PARTICULATE_MATTER: {
-    id: 'explore.map.page.side.panel.indicator.description.dieselPartMatter',
-    defaultMessage: 'Diesel exhaust in the air',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Diesel exhaust in the air`,
-  },
-  BARRIER_TRANS: {
-    id: 'explore.map.page.side.panel.indicator.description.barrierTrans',
-    defaultMessage: 'Cost and time spent on transportation',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Cost and time spent on transportation`,
-  },
-  TRAFFIC_VOLUME: {
-    id: 'explore.map.page.side.panel.indicator.description.trafficVolume',
-    defaultMessage: 'Count of vehicles at major roads within 500 meters',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Count of vehicles at major roads within 500 meters`,
-  },
-
-  LEAD_PAINT: {
-    id: 'explore.map.page.side.panel.indicator.description.leadPaint',
-    defaultMessage: `
-      Percentile of number of homes built before 1960 that are not among the most expensive
-    `,
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Pre-1960 housing`,
-  },
-  MED_HOME_VAL: {
-    id: 'explore.map.page.side.panel.indicator.description.med.home.val',
-    defaultMessage: 'Median home value in area',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Median home value in area`,
-
-  },
-  HIST_UNDERINVEST: {
-    id: 'explore.map.page.side.panel.indicator.description.historic.underinvestment',
-    defaultMessage: 'Census tracts with historically high barriers to accessing home loans',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Low income households spending more than 30% of income housing`,
-  },
-  HOUSE_BURDEN: {
-    id: 'explore.map.page.side.panel.indicator.description.houseBurden',
-    defaultMessage: 'Low income households spending more than 30% of income on housing',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Low income households spending more than 30% of income housing`,
-  },
-  LACK_GREEN_SPACE: {
-    id: 'explore.map.page.side.panel.indicator.description.lack.green.space',
-    defaultMessage: 'Amount of non-crop land covered with artificial materials like pavement and concrete',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description Amount of non-crop land covered with artificial materials like pavement and concrete`,
-  },
-  LACK_PLUMBING: {
-    id: 'explore.map.page.side.panel.indicator.description.lack.plumbing',
-    defaultMessage: 'Share of homes without indoor kitchens or plumbing',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of homes without indoor kitchens or plumbing`,
-  },
-
-  ABANDON_MINES: {
-    id: 'explore.map.page.side.panel.indicator.description.abandon.mines',
-    defaultMessage: 'Presence of an abandoned land mine within the tract',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Presence of an abandoned land mine within the tract`,
-  },
-  FORMER_DEF_SITES: {
-    id: 'explore.map.page.side.panel.indicator.description.former.def.sites',
-    defaultMessage: 'Presence of a Formerly Used Defense Site within the tract',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Presence of a Formerly Used Defense Site within the tract`,
-  },
-  PROX_HAZ: {
-    id: 'explore.map.page.side.panel.indicator.description.prox.haz',
-    defaultMessage: 'Count of hazardous waste facilities within 5 kilometers',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Count of hazardous waste facilities within 5 kilometers`,
-  },
-  PROX_NPL: {
-    id: 'explore.map.page.side.panel.indicator.description.prox.npl',
-    defaultMessage: 'Proposed or listed NPL (Superfund) sites within 5 kilometers',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Proposed or listed NPL (Superfund) sites within 5 kilometers`,
-  },
-  PROX_RMP: {
-    id: 'explore.map.page.side.panel.indicator.description.prox.rmp',
-    defaultMessage: 'RMP facilities within 5 kilometers',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Risk Management Plan facilities within 5 kilometers`,
-  },
-
-  LEAKY_TANKS: {
-    id: 'explore.map.page.side.panel.indicator.description.leaky.tanks',
-    defaultMessage: `Count of leaking underground storage tanks when compared to all underground storage tanks`,
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of leaky storage tanks`,
-  },
-  WASTE_WATER: {
-    id: 'explore.map.page.side.panel.indicator.description.wasteWater',
-    defaultMessage: 'Toxic concentrations at stream segments within 500 meters',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Toxic concentrations at stream segments within 500 meters`,
-  },
-
+  // Health
   ASTHMA: {
     id: 'explore.map.page.side.panel.indicator.description.asthma',
     defaultMessage: 'Weighted percent of people who have been told they have asthma',
@@ -947,11 +880,100 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Average number of years of life a person can expect to live`,
   },
 
-  LOW_MED_INCOME: {
-    id: 'explore.map.page.side.panel.indicator.description.low.med.income',
-    defaultMessage: 'Median income calculated as a percent of the area’s median income',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Median income calculated as a percent of the area’s median income`,
+  // Housing
+  HIST_UNDERINVEST: {
+    id: 'explore.map.page.side.panel.indicator.description.historic.underinvestment',
+    defaultMessage: 'Census tracts with historically high barriers to accessing home loans',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Low income households spending more than 30% of income housing`,
   },
+  HOUSE_COST: {
+    id: 'explore.map.page.side.panel.indicator.description.house.cost',
+    defaultMessage: 'Low income households spending more than 30% of income on housing',
+    description: `Share of households making less than 80% of the area median family income and spending more than 30% of income on housing`,
+  },
+  LACK_GREEN_SPACE: {
+    id: 'explore.map.page.side.panel.indicator.description.lack.green.space',
+    defaultMessage: 'Share of land covered with artificial materials like concrete or pavement and crop land',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description Share of land covered with artificial materials like concrete or pavement and crop land`,
+  },
+  LACK_PLUMBING: {
+    id: 'explore.map.page.side.panel.indicator.description.lack.plumbing',
+    defaultMessage: 'Share of homes without indoor kitchens or plumbing',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of homes without indoor kitchens or plumbing`,
+  },
+  LEAD_PAINT: {
+    id: 'explore.map.page.side.panel.indicator.description.leadPaint',
+    defaultMessage: `
+      Percentile of number of homes built before 1960 that are not among the most expensive
+    `,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Pre-1960 housing`,
+  },
+  MED_HOME_VAL: {
+    id: 'explore.map.page.side.panel.indicator.description.med.home.val',
+    defaultMessage: 'Median home value in area',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Median home value in area`,
+
+  },
+
+  // Legacy Pollution
+  ABANDON_MINES: {
+    id: 'explore.map.page.side.panel.indicator.description.abandon.mines',
+    defaultMessage: 'Presence of an abandoned mine lands within the tract',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Presence of an abandoned mine lands within the tract`,
+  },
+  FORMER_DEF_SITES: {
+    id: 'explore.map.page.side.panel.indicator.description.former.def.sites',
+    defaultMessage: 'Presence of a Formerly Used Defense Site within the tract',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Presence of a Formerly Used Defense Site within the tract`,
+  },
+  PROX_HAZ: {
+    id: 'explore.map.page.side.panel.indicator.description.prox.haz',
+    defaultMessage: 'Count of hazardous waste facilities within 5 kilometers',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Count of hazardous waste facilities within 5 kilometers`,
+  },
+  PROX_RMP: {
+    id: 'explore.map.page.side.panel.indicator.description.prox.rmp',
+    defaultMessage: 'RMP facilities within 5 kilometers',
+    description: `Count of proposed or listed Superfund (or National Priorities List) sites within 5 kilometers`,
+  },
+  PROX_NPL: {
+    id: 'explore.map.page.side.panel.indicator.description.prox.npl',
+    defaultMessage: 'Count of Risk Management Plan facilities within 5 kilometers',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Proposed or listed NPL (Superfund) sites within 5 kilometers`,
+  },
+
+  // Transportation
+  DIESEL_PARTICULATE_MATTER: {
+    id: 'explore.map.page.side.panel.indicator.description.dieselPartMatter',
+    defaultMessage: 'Amount of diesel exhaust in the air',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Diesel exhaust in the air`,
+  },
+  BARRIER_TRANS: {
+    id: 'explore.map.page.side.panel.indicator.description.barrierTrans',
+    defaultMessage: 'Average of relative cost and time spent on transportation',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Cost and time spent on transportation`,
+  },
+  TRAFFIC_VOLUME: {
+    id: 'explore.map.page.side.panel.indicator.description.trafficVolume',
+    defaultMessage: 'Count of vehicles at major roads within 500 meters',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Count of vehicles at major roads within 500 meters`,
+  },
+
+  // Water
+  LEAKY_TANKS: {
+    id: 'explore.map.page.side.panel.indicator.description.leaky.tanks',
+    defaultMessage: `Formula that counts leaking underground storage tanks and number of all underground storage tanks within 1500 feet
+    `,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of leaky storage tanks`,
+  },
+  WASTE_WATER: {
+    id: 'explore.map.page.side.panel.indicator.description.wasteWater',
+    defaultMessage: 'Toxic concentrations at stream segments within 500 meters',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Toxic concentrations at stream segments within 500 meters`,
+  },
+
+
+  // Workforce development
   LING_ISO: {
     id: 'explore.map.page.side.panel.indicator.description.ling.iso',
     defaultMessage: `
@@ -959,11 +981,10 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Households in which no one age 14 and over speaks English only or also speaks a language other than English`,
   },
-  UNEMPLOY: {
-    id: 'explore.map.page.side.panel.indicator.description.unemploy',
-    defaultMessage: 'Number of unemployed people as a percentage of the labor force',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side 
-    panel will show an indicator description of Number of unemployed people as a percentage of the labor force`,
+  LOW_MED_INCOME: {
+    id: 'explore.map.page.side.panel.indicator.description.low.med.income',
+    defaultMessage: 'Comparison of income in the tract to incomes in the area',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Comparison of income in the tract to incomes in the area`,
   },
   POVERTY: {
     id: 'explore.map.page.side.panel.indicator.description.poverty',
@@ -973,14 +994,21 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of individuals in households where the household income is at or below 100% of the federal poverty level`,
   },
+  UNEMPLOY: {
+    id: 'explore.map.page.side.panel.indicator.description.unemploy',
+    defaultMessage: 'Number of unemployed people as a percentage of the labor force',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side 
+    panel will show an indicator description of Number of unemployed people as a percentage of the labor force`,
+  },
   HIGH_SKL: {
     id: 'explore.map.page.side.panel.indicator.description.high.school',
     defaultMessage: `
-      Percent of people ages 25 years or older whose education level is less than a high school diploma 
+      Percent of people ages 25 years or older who did not graduate high school 
     `,
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of people ages 25 years or older whose education level 
-      is less than a high school diploma`,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of people ages 25 years or older who did not graduate high school`,
   },
+
+  // Testing
   ADJ: {
     id: 'explore.map.page.side.panel.indicator.description.ling.iso',
     defaultMessage: `
