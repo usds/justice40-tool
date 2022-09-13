@@ -293,7 +293,13 @@ export const SIDE_PANEL_VERION = {
     defaultMessage={ 'Methodology version {version}'}
     description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the methodology version number`}
     values= {{
-      version: <FormattedNumber value={METHODOLOGY_COPY.VERSION_NUMBER}/>,
+      /**
+       * FormattedNumber currently renders 1.0 as 1. When the version number has a decimal point add back the
+       * Formatted Message component. Using toFixed will render the desire, however it returns a string which
+       * is unacceptable by the value prop of FormattedNumber.
+       */
+      // version: <FormattedNumber value={METHODOLOGY_COPY.VERSION_NUMBER} style="decimal"/>,
+      version: METHODOLOGY_COPY.VERSION_NUMBER,
     }}
   />,
 };

@@ -405,7 +405,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for ISL
       </div>
     </div>
     <div>
-      Methodology version 0.1
+      Methodology version 1.0
     </div>
   </aside>
 </DocumentFragment>
@@ -2092,7 +2092,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
       </div>
     </div>
     <div>
-      Methodology version 0.1
+      Methodology version 1.0
     </div>
   </aside>
 </DocumentFragment>
@@ -2925,7 +2925,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
       </div>
     </div>
     <div>
-      Methodology version 0.1
+      Methodology version 1.0
     </div>
   </aside>
 </DocumentFragment>

@@ -4,7 +4,7 @@ import {defineMessages} from 'react-intl';
 import {FormattedMessage} from 'gatsby-plugin-intl';
 import {boldFn, linkFn, simpleLink} from './common';
 
-export const VERSION_NUMBER = 0.1;
+export const VERSION_NUMBER = (1.0).toFixed(1);
 
 export const PAGE = defineMessages({
   TILE: {
