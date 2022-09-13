@@ -1,0 +1,19 @@
+import pathlib
+from data_pipeline.tests.sources.example.test_etl import TestETL
+from data_pipeline.etl.sources.fsf_wildfire_risk.etl import WildfireRiskETL
+
+
+class TestWildfireRiskETL(TestETL):
+    _ETL_CLASS = WildfireRiskETL
+
+    _SAMPLE_DATA_PATH = pathlib.Path(__file__).parents[0] / "data"
+    _SAMPLE_DATA_FILE_NAME = "fsf_fire/fire-tract2010.csv"
+    _SAMPLE_DATA_ZIP_FILE_NAME = "fsf_fire.zip"
+    _EXTRACT_TMP_FOLDER_NAME = "WildfireRiskETL"
+
+    def setup_method(self, _method, filename=__file__):
+        """Invoke `setup_method` from Parent, but using the current file name.
+
+        This code can be copied identically between all child classes.
+        """
+        super().setup_method(_method=_method, filename=filename)
