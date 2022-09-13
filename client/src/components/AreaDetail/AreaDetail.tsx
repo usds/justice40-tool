@@ -8,7 +8,6 @@ import {Accordion, Button} from '@trussworks/react-uswds';
 import Category from '../Category';
 import TractDemographics from '../TractDemographics';
 import DisadvantageDot from '../DisadvantageDot';
-import ExceedBurden from '../ExceedBurden';
 import Indicator from '../Indicator';
 import TractInfo from '../TractInfo';
 
@@ -745,12 +744,6 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
     title: <Category name={category.titleText} isDisadvantaged={category.isDisadvagtaged} />,
     content: (
       <>
-        {/* Exceeds one or more burdens */}
-        <ExceedBurden
-          text={EXPLORE_COPY.SIDE_PANEL_SPACERS.EXCEED_ONE_OR_MORE}
-          isBurdened={category.isExceed1MoreBurden}
-        />
-
         {/* Indicators - filters then map */}
         {category.indicators
             .filter(indicatorFilter(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HIST_UNDERINVEST))

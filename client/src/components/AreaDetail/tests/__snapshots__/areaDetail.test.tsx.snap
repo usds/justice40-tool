@@ -258,14 +258,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for ISL
         hidden=""
         id="work-dev"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -677,14 +669,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         hidden=""
         id="climate-change"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -890,14 +874,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         hidden=""
         id="clean-energy"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -1019,14 +995,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         hidden=""
         id="health-burdens"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -1202,14 +1170,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         hidden=""
         id="sustain-house"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -1397,14 +1357,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         hidden=""
         id="leg-pollute"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -1604,14 +1556,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         hidden=""
         id="clean-transport"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -1759,14 +1703,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         hidden=""
         id="clean-water"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -1889,14 +1825,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         hidden=""
         id="work-dev"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -2102,14 +2030,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         hidden=""
         id="test"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -2436,14 +2356,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         hidden=""
         id="clean-energy"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -2565,14 +2477,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         hidden=""
         id="sustain-house"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -2680,14 +2584,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         hidden=""
         id="leg-pollute"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -2887,14 +2783,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         hidden=""
         id="work-dev"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
