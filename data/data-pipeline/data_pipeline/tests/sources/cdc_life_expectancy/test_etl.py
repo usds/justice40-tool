@@ -26,6 +26,10 @@ class TestCDCLifeExpectency(TestETL):
     _SAMPLE_DATA_ZIP_FILE_NAME = None
     _EXTRACT_TMP_FOLDER_NAME = "CDCLifeExpectanc"
     _EXTRACT_CSV_FILE_NAME = "extract.csv"
+    _FIXTURES_SHARED_TRACT_IDS = TestETL._FIXTURES_SHARED_TRACT_IDS + [
+        "55001950201",  # WI
+        "23001010100",  # ME
+    ]
 
     def setup_method(self, _method, filename=__file__):
         """Invoke `setup_method` from Parent, but using the current file name.
@@ -55,31 +59,20 @@ class TestCDCLifeExpectency(TestETL):
             "data_pipeline.etl.score.etl_utils.get_state_fips_codes"
         ) as mock_get_state_fips_codes:
             tmp_path = mock_paths[1]
-            if self._SAMPLE_DATA_ZIP_FILE_NAME is not None:
-                zip_file_fixture_src = (
-                    self._DATA_DIRECTORY_FOR_TEST
-                    / self._SAMPLE_DATA_ZIP_FILE_NAME
-                )
 
-                # Create mock response.
-                with open(zip_file_fixture_src, mode="rb") as file:
-                    file_contents = file.read()
-            else:
+            def fake_get(url, *args, **kwargs):
+                file_path = url.split("/")[-1]
                 with open(
-                    self._DATA_DIRECTORY_FOR_TEST / self._SAMPLE_DATA_FILE_NAME,
+                    self._DATA_DIRECTORY_FOR_TEST / file_path,
                     "rb",
                 ) as file:
                     file_contents = file.read()
 
-            def fake_get(url, *args, **kwargs):
                 response_mock = requests.Response()
                 response_mock.status_code = 200
                 # pylint: disable=protected-access
                 # Return text fixture:
-                if url.endswith("US_A.CSV"):
-                    response_mock._content = file_contents
-                else:
-                    response_mock._content = b"Tract ID,STATE2KX,CNTY2KX,TRACT2KX,e(0),se(e(0)),Abridged life table flag"
+                response_mock._content = file_contents
                 return response_mock
 
             requests_mock.get = fake_get
