@@ -13,6 +13,7 @@ logger = get_module_logger(__name__)
 class GeoCorrETL(ExtractTransformLoad):
     NAME = "geocorr"
     GEO_LEVEL: ValidGeoLevel = ValidGeoLevel.CENSUS_TRACT
+    PUERTO_RICO_EXPECTED_IN_DATA = False
 
     def __init__(self):
         self.OUTPUT_PATH = self.DATA_PATH / "dataset" / "geocorr"
