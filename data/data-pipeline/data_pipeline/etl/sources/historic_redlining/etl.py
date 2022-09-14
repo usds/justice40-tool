@@ -1,6 +1,6 @@
 import pandas as pd
 
-from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
 from data_pipeline.utils import get_module_logger
 from data_pipeline.config import settings
 
@@ -8,6 +8,9 @@ logger = get_module_logger(__name__)
 
 
 class HistoricRedliningETL(ExtractTransformLoad):
+    NAME = "historic_redlining"
+    GEO_LEVEL: ValidGeoLevel = ValidGeoLevel.CENSUS_TRACT
+
     def __init__(self):
         self.CSV_PATH = self.DATA_PATH / "dataset" / "historic_redlining"
         self.HISTORIC_REDLINING_URL = (
@@ -24,13 +27,6 @@ class HistoricRedliningETL(ExtractTransformLoad):
             self.REDLINING_SCALAR,
         ]
         self.df: pd.DataFrame
-
-    def extract(self) -> None:
-        logger.info("Downloading Historic Redlining Data")
-        super().extract(
-            self.HISTORIC_REDLINING_URL,
-            self.get_tmp_path(),
-        )
 
     def transform(self) -> None:
         logger.info("Transforming Historic Redlining Data")
@@ -57,16 +53,4 @@ class HistoricRedliningETL(ExtractTransformLoad):
                 f"{self.REDLINING_SCALAR} meets or exceeds {round(threshold, 2)}"
             )
 
-        self.df = historic_redlining_data
-
-    def load(self) -> None:
-        logger.info("Saving Historic Redlining CSV")
-        # write selected states csv
-        self.CSV_PATH.mkdir(parents=True, exist_ok=True)
-        self.df[self.COLUMNS_TO_KEEP].to_csv(
-            self.CSV_PATH / "usa.csv", index=False
-        )
-
-    def validate(self) -> None:
-        logger.info("Validating Historic Redlining Data")
-        pass
+        self.output_df = historic_redlining_data
