@@ -21,6 +21,7 @@ class PersistentPovertyETL(ExtractTransformLoad):
 
     NAME = "persistent_poverty"
     GEO_LEVEL: ValidGeoLevel = ValidGeoLevel.CENSUS_TRACT
+    PUERTO_RICO_EXPECTED_IN_DATA = False
 
     def __init__(self):
         self.OUTPUT_PATH = self.DATA_PATH / "dataset" / "persistent_poverty"

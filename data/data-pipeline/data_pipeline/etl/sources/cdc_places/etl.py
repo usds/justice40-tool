@@ -11,6 +11,7 @@ logger = get_module_logger(__name__)
 class CDCPlacesETL(ExtractTransformLoad):
     NAME = "cdc_places"
     GEO_LEVEL: ValidGeoLevel = ValidGeoLevel.CENSUS_TRACT
+    PUERTO_RICO_EXPECTED_IN_DATA = False
 
     CDC_GEOID_FIELD_NAME = "LocationID"
     CDC_VALUE_FIELD_NAME = "Data_Value"

@@ -10,12 +10,26 @@ logger = get_module_logger(__name__)
 class HistoricRedliningETL(ExtractTransformLoad):
     NAME = "historic_redlining"
     GEO_LEVEL: ValidGeoLevel = ValidGeoLevel.CENSUS_TRACT
+    EXPECTED_MISSING_STATES = [
+        "10",
+        "11",
+        "16",
+        "23",
+        "30",
+        "32",
+        "35",
+        "38",
+        "46",
+        "50",
+        "56",
+    ]
+    PUERTO_RICO_EXPECTED_IN_DATA = False
+    ALASKA_AND_HAWAII_EXPECTED_IN_DATA: bool = False
+    SOURCE_URL = settings.AWS_JUSTICE40_DATASOURCES_URL + "/HRS_2010.zip"
 
     def __init__(self):
         self.CSV_PATH = self.DATA_PATH / "dataset" / "historic_redlining"
-        self.HISTORIC_REDLINING_URL = (
-            settings.AWS_JUSTICE40_DATASOURCES_URL + "/HRS_2010.zip"
-        )
+
         self.HISTORIC_REDLINING_FILE_PATH = (
             self.get_tmp_path() / "HRS_2010.xlsx"
         )
