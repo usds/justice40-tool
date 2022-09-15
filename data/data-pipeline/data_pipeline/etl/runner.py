@@ -106,6 +106,8 @@ def etl_runner(dataset_to_run: str = None) -> None:
                 # Otherwise, the exceptions are silently ignored.
                 fut.result()
 
+    # Note: these high-memory datasets also usually require the Census geojson to be
+    # generated, and one of them requires the Tribal geojson to be generated.
     if high_memory_datasets:
         logger.info("Running high-memory jobs")
         for dataset in high_memory_datasets:
