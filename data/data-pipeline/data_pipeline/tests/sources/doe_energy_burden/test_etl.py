@@ -59,3 +59,13 @@ class TestDOEEnergyBurdenETL(TestETL):
             data_path / "dataset" / "doe_energy_burden" / "usa.csv"
         )
         assert output_file_path == expected_output_file_path
+
+    def test_tract_id_lengths(self, mock_etl, mock_paths):
+        etl = self._setup_etl_instance_and_run_extract(
+            mock_etl=mock_etl, mock_paths=mock_paths
+        )
+        etl.transform()
+        etl.validate()
+        etl.load()
+        df = etl.get_data_frame()
+        assert (df[etl.GEOID_TRACT_FIELD_NAME].str.len() == 11).all()
