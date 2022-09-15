@@ -12,7 +12,7 @@ logger = get_module_logger(__name__)
 
 
 class ScoreNarwhal(Score):
-    """Very similar to Score M, at present."""
+    """Score N, aka Narwhal."""
 
     LOW_INCOME_THRESHOLD: float = 0.65
     MAX_COLLEGE_ATTENDANCE_THRESHOLD: float = 0.20
