@@ -23,10 +23,11 @@ class CDCPlacesETL(ExtractTransformLoad):
         self.CDC_PLACES_URL = "https://chronicdata.cdc.gov/api/views/cwsq-ngmh/rows.csv?accessType=DOWNLOAD"
         self.COLUMNS_TO_KEEP: typing.List[str] = [
             self.GEOID_TRACT_FIELD_NAME,
+            field_names.DIABETES_FIELD,
             field_names.ASTHMA_FIELD,
             field_names.HEART_DISEASE_FIELD,
             field_names.CANCER_FIELD,
-            field_names.DIABETES_FIELD,
+            field_names.HEALTH_INSURANCE_FIELD,
             field_names.PHYS_HEALTH_NOT_GOOD_FIELD,
         ]
 
