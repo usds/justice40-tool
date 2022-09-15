@@ -364,7 +364,7 @@ def compare_to_list_of_expected_state_fips_codes(
     # If continental US is not expected to be included, remove it from the
     # expected states set.
     if not continental_us_expected:
-        expected_states_set = expected_states_set - set(
+        expected_states_set = expected_states_set.difference(
             TILES_CONTINENTAL_US_FIPS_CODE
         )
 
@@ -374,27 +374,27 @@ def compare_to_list_of_expected_state_fips_codes(
     # do not use this argument -- instead, use `additional_fips_codes_not_expected`
     # for the 1 state you expected to be missing.
     if not alaska_and_hawaii_expected:
-        expected_states_set = expected_states_set - set(
+        expected_states_set = expected_states_set.difference(
             TILES_ALASKA_AND_HAWAII_FIPS_CODE
         )
 
     # If Puerto Rico is not expected to be included, remove it from the expected
     # states set.
     if not puerto_rico_expected:
-        expected_states_set = expected_states_set - set(
+        expected_states_set = expected_states_set.difference(
             TILES_PUERTO_RICO_FIPS_CODE
         )
 
     # If island areas are not expected to be included, remove them from the expected
     # states set.
     if not island_areas_expected:
-        expected_states_set = expected_states_set - set(
+        expected_states_set = expected_states_set.difference(
             TILES_ISLAND_AREA_FIPS_CODES
         )
 
     # If additional FIPS codes are not expected to be included, remove them from the
     # expected states set.
-    expected_states_set = expected_states_set - set(
+    expected_states_set = expected_states_set.difference(
         additional_fips_codes_not_expected
     )
 
