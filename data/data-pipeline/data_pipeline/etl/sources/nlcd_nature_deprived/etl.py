@@ -69,7 +69,7 @@ class NatureDeprivedETL(ExtractTransformLoad):
             df_ncld[self.TRACT_ACRES_FIELD_NAME] >= self.TRACT_ACRES_LOWER_BOUND
         )
         df_ncld[self.TRACT_PERCENT_NON_NATURAL_FIELD_NAME] = (
-            1 - df_ncld[self.PERCENT_NATURAL_FIELD_NAME]
+            100 - df_ncld[self.PERCENT_NATURAL_FIELD_NAME]
         )
 
         # Assign the final df to the class' output_df for the load method with rename

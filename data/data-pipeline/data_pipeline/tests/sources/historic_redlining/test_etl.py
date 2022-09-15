@@ -35,7 +35,7 @@ class TestHistoricRedliningETL(TestETL):
 
     def test_load_base(self, snapshot, mock_etl, mock_paths):
         """Test load method.
-        We need to run transform here for real to add 
+        We need to run transform here for real to add
         the dynamic cols to keep
         """
         # setup - input variables
