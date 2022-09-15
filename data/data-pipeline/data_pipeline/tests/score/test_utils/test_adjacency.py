@@ -19,9 +19,10 @@ from data_pipeline.score import field_names
 def patch_calculate_tract_adjacency_scores():
     # Use fixtures for tract data.
     tract_data_path = Path(__file__).parent / "data" / "us.geojson"
-    tract_data = gpd.read_file(tract_data_path)
 
-    get_tract_geojson_mock = partial(get_tract_geojson, tract_data=tract_data)
+    get_tract_geojson_mock = partial(
+        get_tract_geojson, _tract_data_path=tract_data_path
+    )
     with mock.patch(
         "data_pipeline.score.utils.get_tract_geojson",
         new=get_tract_geojson_mock,
@@ -39,9 +40,13 @@ def score_data():
 
 def test_all_adjacent_are_true(score_data):
     score_data["included"] = True
-    score_data.loc[score_data.GEOID10_TRACT == "24027603004", "included"] = False
+    score_data.loc[
+        score_data.GEOID10_TRACT == "24027603004", "included"
+    ] = False
     with patch_calculate_tract_adjacency_scores() as calculate_tract_adjacency_scores:
-        adjancency_scores = calculate_tract_adjacency_scores(score_data, "included")
+        adjancency_scores = calculate_tract_adjacency_scores(
+            score_data, "included"
+        )
         assert (
             adjancency_scores.loc[
                 adjancency_scores.GEOID10_TRACT == "24027603004",
@@ -53,9 +58,13 @@ def test_all_adjacent_are_true(score_data):
 
 def test_all_adjacent_are_false(score_data):
     score_data["included"] = False
-    score_data.loc[score_data.GEOID10_TRACT == "24027603004", "included"] = False
+    score_data.loc[
+        score_data.GEOID10_TRACT == "24027603004", "included"
+    ] = False
     with patch_calculate_tract_adjacency_scores() as calculate_tract_adjacency_scores:
-        adjancency_scores = calculate_tract_adjacency_scores(score_data, "included")
+        adjancency_scores = calculate_tract_adjacency_scores(
+            score_data, "included"
+        )
         assert (
             adjancency_scores.loc[
                 adjancency_scores.GEOID10_TRACT == "24027603004",

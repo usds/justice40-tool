@@ -11,7 +11,9 @@ logger = get_module_logger(__name__)
 
 
 @lru_cache()
-def get_tract_geojson( _tract_data_path: Optional[Path] = None,) -> gpd.GeoDataFrame:
+def get_tract_geojson(
+    _tract_data_path: Optional[Path] = None,
+) -> gpd.GeoDataFrame:
     logger.info("Loading tract geometry data from census ETL")
     GEOJSON_PATH = _tract_data_path
     if GEOJSON_PATH is None:
@@ -51,7 +53,9 @@ def add_tracts_for_geometries(
     else:
         logger.debug("Using existing tract data.")
 
-    assert tract_data.crs == df.crs, f"Dataframe must be projected to {tract_data.crs}"
+    assert (
+        tract_data.crs == df.crs
+    ), f"Dataframe must be projected to {tract_data.crs}"
     df = gpd.sjoin(
         df,
         tract_data[["GEOID10_TRACT", "geometry"]],
