@@ -15,9 +15,15 @@ class NationalRiskIndexETL(ExtractTransformLoad):
     """ETL class for the FEMA National Risk Index dataset"""
 
     NAME = "national_risk_index"
-    LAST_UPDATED_YEAR = 2020
     SOURCE_URL = "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload//NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
+
+    # Output score variables (values set on datasets.yml) for linting purposes
+    RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME: str
+    EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME: str
+    EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME: str
+    EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME: str
+    CONTAINS_AGRIVALUE: str
 
     ## TEMPORARILY HERE
     ## To get this value up in time for launch, we've hard coded it. We would like
@@ -27,54 +33,34 @@ class NationalRiskIndexETL(ExtractTransformLoad):
     AGRIVALUE_LOWER_BOUND = 408000
 
     def __init__(self):
+        # load YAML config
+        self.DATASET_CONFIG = super().yaml_config_load()
+
+        # define the full path for the input CSV file
         self.INPUT_CSV = self.get_tmp_path() / "NRI_Table_CensusTracts.csv"
 
+        # this is the main dataframe
+        self.df: pd.DataFrame
+
+        # Start dataset-specific vars here
         self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_INPUT_FIELD_NAME = (
             "EAL_SCORE"
         )
-
-        self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME = (
-            "FEMA Risk Index Expected Annual Loss Score"
-        )
-
         self.EXPECTED_ANNUAL_LOSS_BUILDING_VALUE_INPUT_FIELD_NAME = "EAL_VALB"
-
         self.EXPECTED_ANNUAL_LOSS_AGRICULTURAL_VALUE_INPUT_FIELD_NAME = (
             "EAL_VALA"
         )
         self.EXPECTED_ANNUAL_LOSS_POPULATION_VALUE_INPUT_FIELD_NAME = "EAL_VALP"
-
         self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME = "AGRIVALUE"
         self.POPULATION_INPUT_FIELD_NAME = "POPULATION"
         self.BUILDING_VALUE_INPUT_FIELD_NAME = "BUILDVALUE"
-
-        self.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME = (
-            "Expected building loss rate (Natural Hazards Risk Index)"
-        )
-        self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME = (
-            "Expected agricultural loss rate (Natural Hazards Risk Index)"
-        )
-        self.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME = (
-            "Expected population loss rate (Natural Hazards Risk Index)"
-        )
-        self.CONTAINS_AGRIVALUE = "Contains agricultural value"
-
-        self.COLUMNS_TO_KEEP = [
-            self.GEOID_TRACT_FIELD_NAME,
-            self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME,
-            self.EXPECTED_POPULATION_LOSS_RATE_FIELD_NAME,
-            self.EXPECTED_AGRICULTURE_LOSS_RATE_FIELD_NAME,
-            self.EXPECTED_BUILDING_LOSS_RATE_FIELD_NAME,
-            self.CONTAINS_AGRIVALUE,
-        ]
-
-        self.df: pd.DataFrame
 
     def extract(self) -> None:
         """Unzips NRI dataset from the FEMA data source and writes the files
         to the temporary data folder for use in the transform() method
         """
         logger.info("Downloading 405MB National Risk Index Data")
+
         super().extract(
             source_url=self.SOURCE_URL,
             extract_path=self.get_tmp_path(),
@@ -90,19 +76,18 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         """
         logger.info("Transforming National Risk Index Data")
 
-        NRI_TRACT_COL = "TRACTFIPS"  # Census Tract Column in NRI data
-
         # read in the unzipped csv from NRI data source then rename the
         # Census Tract column for merging
         df_nri: pd.DataFrame = pd.read_csv(
             self.INPUT_CSV,
-            dtype={NRI_TRACT_COL: "string"},
+            dtype={self.INPUT_GEOID_TRACT_FIELD_NAME: "string"},
             na_values=["None"],
             low_memory=False,
         )
+
         df_nri.rename(
             columns={
-                NRI_TRACT_COL: self.GEOID_TRACT_FIELD_NAME,
+                self.INPUT_GEOID_TRACT_FIELD_NAME: self.GEOID_TRACT_FIELD_NAME,
                 self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_INPUT_FIELD_NAME: self.RISK_INDEX_EXPECTED_ANNUAL_LOSS_SCORE_FIELD_NAME,
             },
             inplace=True,
@@ -170,6 +155,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         ].clip(
             lower=self.AGRIVALUE_LOWER_BOUND
         )
+
         # This produces a boolean that is True in the case of non-zero agricultural value
         df_nri[self.CONTAINS_AGRIVALUE] = (
             df_nri[self.AGRICULTURAL_VALUE_INPUT_FIELD_NAME] > 0
@@ -185,6 +171,7 @@ class NationalRiskIndexETL(ExtractTransformLoad):
         # Note: `round` is smart enough to only apply to float columns.
         df_nri = df_nri.round(10)
 
+        # Assign the final df to the class' output_df for the load method
         self.output_df = df_nri
 
     def load(self) -> None:

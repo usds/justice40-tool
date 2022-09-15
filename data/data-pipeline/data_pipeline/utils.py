@@ -8,6 +8,7 @@ import shutil
 import uuid
 import zipfile
 from pathlib import Path
+from marshmallow import ValidationError
 import urllib3
 import requests
 import yaml
@@ -350,7 +351,13 @@ def load_yaml_dict_from_file(
 
         # validate YAML
         yaml_config_schema = class_schema(schema_class)
-        yaml_config_schema().load(yaml_dict)
+
+        try:
+            yaml_config_schema().load(yaml_dict)
+        except ValidationError as e:
+            logger.error(f"Invalid YAML config file {yaml_file_path}")
+            logger.error(e.normalized_messages())
+            sys.exit()
 
     return yaml_dict
 

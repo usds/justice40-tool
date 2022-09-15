@@ -125,8 +125,15 @@ DATASET_LIST = [
         "class_name": "MarylandEJScreenETL",
     },
 ]
+
 CENSUS_INFO = {
     "name": "census",
     "module_dir": "census",
     "class_name": "CensusETL",
+}
+
+TRIBAL_INFO = {
+    "name": "tribal",
+    "module_dir": "tribal",
+    "class_name": "TribalETL",
 }

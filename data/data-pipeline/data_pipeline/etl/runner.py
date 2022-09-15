@@ -22,7 +22,9 @@ def _get_datasets_to_run(dataset_to_run: str) -> typing.List[dict]:
         None
     """
     dataset_list = constants.DATASET_LIST
-    etls_to_search = dataset_list + [constants.CENSUS_INFO]
+    etls_to_search = (
+        dataset_list + [constants.CENSUS_INFO] + [constants.TRIBAL_INFO]
+    )
 
     if dataset_to_run:
         dataset_element = next(
