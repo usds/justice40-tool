@@ -186,6 +186,12 @@ DATASET_LIST = [
         "class_name": "AbandonedMineETL",
         "is_memory_intensive": True,
     },
+    {
+        "name": "tribal_overlap",
+        "module_dir": "tribal_overlap",
+        "class_name": "TribalOverlapETL",
+        "is_memory_intensive": True,
+    },
 ]
 
 CENSUS_INFO = {

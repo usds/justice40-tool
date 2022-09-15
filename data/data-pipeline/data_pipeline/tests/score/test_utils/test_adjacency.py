@@ -7,6 +7,7 @@ from contextlib import contextmanager
 
 import pytest
 import pandas as pd
+import geopandas as gpd
 from data_pipeline.score.utils import (
     calculate_tract_adjacency_scores as original_calculate_tract_adjacency_score,
 )
@@ -16,10 +17,11 @@ from data_pipeline.score import field_names
 
 @contextmanager
 def patch_calculate_tract_adjacency_scores():
-    tract_data = Path(__file__).parent / "data" / "us.geojson"
-    get_tract_geojson_mock = partial(
-        get_tract_geojson, _tract_data_path=tract_data
-    )
+    # Use fixtures for tract data.
+    tract_data_path = Path(__file__).parent / "data" / "us.geojson"
+    tract_data = gpd.read_file(tract_data_path)
+
+    get_tract_geojson_mock = partial(get_tract_geojson, tract_data=tract_data)
     with mock.patch(
         "data_pipeline.score.utils.get_tract_geojson",
         new=get_tract_geojson_mock,
@@ -37,13 +39,9 @@ def score_data():
 
 def test_all_adjacent_are_true(score_data):
     score_data["included"] = True
-    score_data.loc[
-        score_data.GEOID10_TRACT == "24027603004", "included"
-    ] = False
+    score_data.loc[score_data.GEOID10_TRACT == "24027603004", "included"] = False
     with patch_calculate_tract_adjacency_scores() as calculate_tract_adjacency_scores:
-        adjancency_scores = calculate_tract_adjacency_scores(
-            score_data, "included"
-        )
+        adjancency_scores = calculate_tract_adjacency_scores(score_data, "included")
         assert (
             adjancency_scores.loc[
                 adjancency_scores.GEOID10_TRACT == "24027603004",
@@ -55,13 +53,9 @@ def test_all_adjacent_are_true(score_data):
 
 def test_all_adjacent_are_false(score_data):
     score_data["included"] = False
-    score_data.loc[
-        score_data.GEOID10_TRACT == "24027603004", "included"
-    ] = False
+    score_data.loc[score_data.GEOID10_TRACT == "24027603004", "included"] = False
     with patch_calculate_tract_adjacency_scores() as calculate_tract_adjacency_scores:
-        adjancency_scores = calculate_tract_adjacency_scores(
-            score_data, "included"
-        )
+        adjancency_scores = calculate_tract_adjacency_scores(score_data, "included")
         assert (
             adjancency_scores.loc[
                 adjancency_scores.GEOID10_TRACT == "24027603004",

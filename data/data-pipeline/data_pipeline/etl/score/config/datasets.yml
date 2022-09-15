@@ -290,17 +290,17 @@ datasets:
         include_in_tiles: true
         include_in_downloadable_files: true
         create_percentile: true
-  - long_name: "CDC Life Expeectancy"
-    short_name: "cdc_life_expectancy"
-    module_name: "cdc_life_expectancy"
-    input_geoid_tract_field_name: "Tract ID"
+  - long_name: "Overlap between Census tract boundaries and Tribal area boundaries."
+    short_name: "tribal_overlap"
+    module_name: "tribal_overlap"
+    input_geoid_tract_field_name: "GEOID10_TRACT"
     load_fields:
-    -  short_name: "LLEF"
-       df_field_name: "LIFE_EXPECTANCY_FIELD_NAME"
-       long_name: "Life expectancy (years)"
-       field_type: float
-       include_in_tiles: false
-       include_in_downloadable_files: true
-       create_percentile: false
-       create_reverse_percentile: true
-   
+      # TODO: update!
+      - short_name: "ncld_eligible"
+        df_field_name: "ELIGIBLE_FOR_NATURE_DEPRIVED_FIELD_NAME"
+        long_name: "Does the tract have at least 35 acres in it?"
+        field_type: bool
+        include_in_tiles: true
+        include_in_downloadable_files: true
+        create_percentile: false
+        
