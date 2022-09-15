@@ -10,6 +10,9 @@ class TestFloodRiskETL(TestETL):
     _SAMPLE_DATA_FILE_NAME = "fsf_flood/flood-tract2010.csv"
     _SAMPLE_DATA_ZIP_FILE_NAME = "fsf_flood.zip"
     _EXTRACT_TMP_FOLDER_NAME = "FloodRiskETL"
+    _FIXTURES_SHARED_TRACT_IDS = TestETL._FIXTURES_SHARED_TRACT_IDS + [
+        "02290000400"  # A tract with 1 property
+    ]
 
     def setup_method(self, _method, filename=__file__):
         """Invoke `setup_method` from Parent, but using the current file name.
