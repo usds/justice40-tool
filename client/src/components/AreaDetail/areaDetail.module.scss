@@ -10,7 +10,7 @@ $sidePanelLabelFontColor: #171716;
 }
 
 .versionInfo {
-  padding: .5rem 1rem .5rem 1.2rem;
+  padding: 2rem 1rem 2rem 1.2rem;
   text-align: center;
   font-size: medium;
   color: #A0A3A3;
@@ -113,14 +113,11 @@ $sidePanelLabelFontColor: #171716;
 }
 
 .categorySpacer {
-  @include u-bg('gray-cool-3');
-
   @include typeset('sans', '2xs', 2);
   @include u-text('bold'); 
 
-  margin: 0 -20px 1rem -20px;
-  @include u-padding-top(2);
-  @include u-padding-bottom(2);
+  margin-left: -20px;
+  @include u-padding-top(1);
+  @include u-padding-bottom(1);
   @include u-padding-left(2.5);
-  
 }

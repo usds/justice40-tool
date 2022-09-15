@@ -258,14 +258,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for ISL
         hidden=""
         id="work-dev"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -274,7 +266,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for ISL
             <div>
               Low median income
               <div>
-                Median income calculated as a percent of the area’s median income
+                Comparison of income in the tract to incomes in the area
               </div>
             </div>
             <div>
@@ -287,12 +279,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for ISL
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -316,7 +303,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for ISL
             <div>
               Unemployment
               <div>
-                Number of unemployed people as a percentage of the labor force
+                Number of unemployed people as a part of the labor force
               </div>
             </div>
             <div>
@@ -329,12 +316,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for ISL
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the up arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -359,8 +341,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for ISL
               Poverty
               <div>
                 
-      Percent of a census tract's population in households where the household income is at or below 100% 
-      of the Federal poverty level 
+      Share of people in households where the income is at or below 100% of the Federal poverty level 
     
               </div>
             </div>
@@ -374,12 +355,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for ISL
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -404,22 +380,19 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for ISL
         >
           <div>
             <div>
-              High school degree non-attainment
+              High school education
               <div>
                 
-      Percent of people ages 25 years or older whose education level is less than a high school diploma 
+      Percent of people ages 25 years or older who did not graduate high school 
     
               </div>
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -432,7 +405,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for ISL
       </div>
     </div>
     <div>
-      Methodology version 0.1
+      Methodology version 1.0
     </div>
   </aside>
 </DocumentFragment>
@@ -696,14 +669,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         hidden=""
         id="climate-change"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -712,18 +677,15 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               Expected agriculture loss rate
               <div>
-                Economic loss rate to agricultural value resulting from natural hazards each year
+                Economic loss to agricultural value resulting from natural hazards each year
               </div>
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -741,18 +703,15 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               Expected building loss rate
               <div>
-                Economic loss rate to agricultural value resulting from natural hazards each year
+                Economic loss to agricultural value resulting from natural hazards each year
               </div>
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -771,19 +730,16 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               Expected population loss rate
               <div>
                 
-      Rate of fatalities and injuries resulting from natural hazards each year
+      Fatalities and injuries resulting from natural hazards each year
     
               </div>
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -799,7 +755,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         >
           <div>
             <div>
-              Future flood risk
+              Projected flood risk
               <div>
                 
       Projected risk to properties from floods from tides, rain, riverine and storm surges in 30 years
@@ -808,13 +764,10 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -830,7 +783,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         >
           <div>
             <div>
-              Future wildfire risk
+              Projected wildfire risk
               <div>
                 
       Projected risk to properties from wildfire from fire fuels, weather, humans, and fire movement
@@ -839,13 +792,10 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -867,7 +817,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               Low income
               <div>
                 
-      Household income is less than or equal to twice the federal poverty level 
+     People in households where income is less than or equal to twice the federal poverty level, not including students enrolled in higher ed 
     
               </div>
             </div>
@@ -881,12 +831,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -915,7 +860,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         >
           <div>
             <div>
-              Clean energy and energy efficiency
+              Energy
             </div>
             <div
               class=""
@@ -929,34 +874,23 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         hidden=""
         id="clean-energy"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
         >
           <div>
             <div>
-              Energy burden
+              Energy cost
               <div>
                 Average annual energy costs divided by household income
               </div>
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -974,18 +908,15 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               PM2.5 in the air
               <div>
-                Fine inhalable particles, 2.5 micrometers or smaller
+                Level of inhalable particles, 2.5 micrometers or smaller
               </div>
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -1007,7 +938,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               Low income
               <div>
                 
-      Household income is less than or equal to twice the federal poverty level 
+     People in households where income is less than or equal to twice the federal poverty level, not including students enrolled in higher ed 
     
               </div>
             </div>
@@ -1021,12 +952,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -1047,15 +973,15 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         class="usa-accordion__heading"
       >
         <button
-          aria-controls="clean-transport"
+          aria-controls="health-burdens"
           aria-expanded="false"
           class="usa-accordion__button"
-          data-testid="accordionButton_clean-transport"
+          data-testid="accordionButton_health-burdens"
           type="button"
         >
           <div>
             <div>
-              Clean transit
+              Health
             </div>
             <div
               class=""
@@ -1065,38 +991,27 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
       </h4>
       <div
         class="usa-accordion__content usa-prose"
-        data-testid="accordionItem_clean-transport"
+        data-testid="accordionItem_health-burdens"
         hidden=""
-        id="clean-transport"
+        id="health-burdens"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
         >
           <div>
             <div>
-              Diesel particulate matter exposure
+              Asthma
               <div>
-                Diesel exhaust in the air
+                Share of people who have been told they have asthma
               </div>
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -1112,20 +1027,19 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         >
           <div>
             <div>
-              Transportation barriers
+              Diabetes
               <div>
-                Cost and time spent on transportation
+                
+      Share of people ages 18 years and older who have diabetes
+    
               </div>
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -1141,20 +1055,43 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         >
           <div>
             <div>
-              Traffic proximity and volume
+              Heart disease
               <div>
-                Count of vehicles at major roads within 500 meters
+                Share of people ages 18 years and older who have been told they have heart disease
               </div>
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
+              </div>
+              <div>
+                <div>
+                  missing data
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Low life expectancy
+              <div>
+                Average number of years a person can expect to live
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  --
+                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -1176,7 +1113,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               Low income
               <div>
                 
-      Household income is less than or equal to twice the federal poverty level 
+     People in households where income is less than or equal to twice the federal poverty level, not including students enrolled in higher ed 
     
               </div>
             </div>
@@ -1190,12 +1127,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -1224,7 +1156,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         >
           <div>
             <div>
-              Sustainable housing
+              Housing
             </div>
             <div
               class=""
@@ -1238,23 +1170,16 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         hidden=""
         id="sustain-house"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
         >
           <div>
             <div>
-              Housing cost burden
+              Housing cost
               <div>
-                Low income households spending more than 30% of income on housing
+                Share of households making less than 80% of the area median family income and spending more than 30% of income on housing
+    
               </div>
             </div>
             <div>
@@ -1267,12 +1192,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the up arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -1296,18 +1216,15 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               Lack of green space
               <div>
-                Amount of non-crop land covered with artificial materials like pavement and concrete
+                Share of land covered with artificial materials like concrete or pavement and crop land
               </div>
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -1330,13 +1247,10 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -1355,19 +1269,16 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               Lead paint
               <div>
                 
-      Percentile of number of homes built before 1960 that are not among the most expensive
+      Share of homes that are not very expensive and are likely to have lead paint
     
               </div>
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -1389,7 +1300,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               Low income
               <div>
                 
-      Household income is less than or equal to twice the federal poverty level 
+     People in households where income is less than or equal to twice the federal poverty level, not including students enrolled in higher ed 
     
               </div>
             </div>
@@ -1403,12 +1314,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -1451,14 +1357,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         hidden=""
         id="leg-pollute"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -1467,18 +1365,15 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               Abandoned mine lands
               <div>
-                Presence of an abandoned land mine within the tract
+                Presence of an abandoned mine lands within the tract
               </div>
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -1494,20 +1389,17 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         >
           <div>
             <div>
-              Formerly Used Defense Sites (FUDS)
+              Formerly Used Defense Sites
               <div>
                 Presence of a Formerly Used Defense Site within the tract
               </div>
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -1530,13 +1422,10 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -1552,20 +1441,17 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         >
           <div>
             <div>
-              Proximity to National Priorities List (NPL) sites
+              Proximity to Superfund sites
               <div>
-                Proposed or listed NPL (Superfund) sites within 5 kilometers
+                Count of proposed or listed Superfund (or National Priorities List) sites within 5 kilometers
               </div>
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -1581,20 +1467,17 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         >
           <div>
             <div>
-              Proximity to Risk Management Plan (RMP) facilities
+              Proximity to Risk Management Plan facilities
               <div>
-                RMP facilities within 5 kilometers
+                Count of Risk Management Plan facilities within 5 kilometers
               </div>
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -1616,7 +1499,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               Low income
               <div>
                 
-      Household income is less than or equal to twice the federal poverty level 
+     People in households where income is less than or equal to twice the federal poverty level, not including students enrolled in higher ed 
     
               </div>
             </div>
@@ -1630,12 +1513,154 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                     th
                   </sup>
                 </div>
+                <div />
+              </div>
+              <div>
                 <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
+                  below 65
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                   percentile
                 </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </div>
+      <h4
+        class="usa-accordion__heading"
+      >
+        <button
+          aria-controls="clean-transport"
+          aria-expanded="false"
+          class="usa-accordion__button"
+          data-testid="accordionButton_clean-transport"
+          type="button"
+        >
+          <div>
+            <div>
+              Transportation
+            </div>
+            <div
+              class=""
+            />
+          </div>
+        </button>
+      </h4>
+      <div
+        class="usa-accordion__content usa-prose"
+        data-testid="accordionItem_clean-transport"
+        hidden=""
+        id="clean-transport"
+      >
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Diesel particulate matter exposure
+              <div>
+                Amount of diesel exhaust in the air
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  --
+                </div>
+                <div />
+              </div>
+              <div>
+                <div>
+                  missing data
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Transportation barriers
+              <div>
+                Average of relative cost and time spent on transportation
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  --
+                </div>
+                <div />
+              </div>
+              <div>
+                <div>
+                  missing data
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Traffic proximity and volume
+              <div>
+                Count of vehicles at major roads within 500 meters
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  --
+                </div>
+                <div />
+              </div>
+              <div>
+                <div>
+                  missing data
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <div>
+          AND
+        </div>
+        <li
+          data-cy="indicatorBox"
+          data-testid="indicator-box"
+        >
+          <div>
+            <div>
+              Low income
+              <div>
+                
+     People in households where income is less than or equal to twice the federal poverty level, not including students enrolled in higher ed 
+    
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  19
+                  <sup
+                    style="top: -0.2em;"
+                  >
+                    th
+                  </sup>
+                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -1664,7 +1689,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         >
           <div>
             <div>
-              Clean water and wastewater infrastructure
+              Water
             </div>
             <div
               class=""
@@ -1678,14 +1703,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         hidden=""
         id="clean-water"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -1694,18 +1711,16 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               Leaking underground storage tanks
               <div>
-                Count of leaking underground storage tanks when compared to all underground storage tanks
+                Formula that counts leaking underground storage tanks and number of all underground storage tanks within 1500 feet
+    
               </div>
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -1723,18 +1738,15 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               Wastewater discharge
               <div>
-                Toxic concentrations at stream segments within 500 meters
+                Modeled toxic concentrations at parts of streams within 500 meters
               </div>
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -1756,7 +1768,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               Low income
               <div>
                 
-      Household income is less than or equal to twice the federal poverty level 
+     People in households where income is less than or equal to twice the federal poverty level, not including students enrolled in higher ed 
     
               </div>
             </div>
@@ -1770,213 +1782,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  below 65
-                  <sup
-                    style="top: -0.2em;"
-                  >
-                    th
-                  </sup>
-                   percentile
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-      </div>
-      <h4
-        class="usa-accordion__heading"
-      >
-        <button
-          aria-controls="health-burdens"
-          aria-expanded="false"
-          class="usa-accordion__button"
-          data-testid="accordionButton_health-burdens"
-          type="button"
-        >
-          <div>
-            <div>
-              Health burdens
-            </div>
-            <div
-              class=""
-            />
-          </div>
-        </button>
-      </h4>
-      <div
-        class="usa-accordion__content usa-prose"
-        data-testid="accordionItem_health-burdens"
-        hidden=""
-        id="health-burdens"
-      >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Asthma
-              <div>
-                Weighted percent of people who have been told they have asthma
-              </div>
-            </div>
-            <div>
-              <div>
                 <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  missing data
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Diabetes
-              <div>
-                
-      Weighted percent of people ages 18 years and older who have diabetes other than 
-      diabetes during pregnancy
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  missing data
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Heart disease
-              <div>
-                People ages 18 years and older who have been told they have heart disease
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  missing data
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Low life expectancy
-              <div>
-                Average number of years a person can expect to live
-              </div>
-            </div>
-            <div>
-              <div>
-                <div />
-                <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
-                </div>
-              </div>
-              <div>
-                <div>
-                  missing data
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <div>
-          AND
-        </div>
-        <li
-          data-cy="indicatorBox"
-          data-testid="indicator-box"
-        >
-          <div>
-            <div>
-              Low income
-              <div>
-                
-      Household income is less than or equal to twice the federal poverty level 
-    
-              </div>
-            </div>
-            <div>
-              <div>
-                <div>
-                  19
-                  <sup
-                    style="top: -0.2em;"
-                  >
-                    th
-                  </sup>
-                </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
               </div>
               <div>
                 <div>
@@ -2019,14 +1825,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         hidden=""
         id="work-dev"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -2036,7 +1834,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               Linguistic isolation
               <div>
                 
-      Percent of households where no one over the age 14 speaks English well
+    Share of households where no one over the age 14 speaks English well
     
               </div>
             </div>
@@ -2050,12 +1848,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the up arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -2079,18 +1872,15 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               Low median income
               <div>
-                Median income calculated as a percent of the area’s median income
+                Comparison of income in the tract to incomes in the area
               </div>
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -2108,7 +1898,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               Unemployment
               <div>
-                Number of unemployed people as a percentage of the labor force
+                Number of unemployed people as a part of the labor force
               </div>
             </div>
             <div>
@@ -2121,12 +1911,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the up arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -2151,8 +1936,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               Poverty
               <div>
                 
-      Percent of a census tract's population in households where the household income is at or below 100% 
-      of the Federal poverty level 
+      Share of people in households where the income is at or below 100% of the Federal poverty level 
     
               </div>
             </div>
@@ -2166,12 +1950,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -2196,10 +1975,10 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         >
           <div>
             <div>
-              High school degree non-attainment
+              High school education
               <div>
                 
-      Percent of people ages 25 years or older whose education level is less than a high school diploma 
+      Percent of people ages 25 years or older who did not graduate high school 
     
               </div>
             </div>
@@ -2210,12 +1989,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                     98%
                   </span>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the up arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -2256,14 +2030,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         hidden=""
         id="test"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -2279,13 +2045,10 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -2313,13 +2076,10 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -2332,7 +2092,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
       </div>
     </div>
     <div>
-      Methodology version 0.1
+      Methodology version 1.0
     </div>
   </aside>
 </DocumentFragment>
@@ -2582,7 +2342,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         >
           <div>
             <div>
-              Clean energy and energy efficiency
+              Energy
             </div>
             <div
               class=""
@@ -2596,34 +2356,23 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         hidden=""
         id="clean-energy"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
         >
           <div>
             <div>
-              Energy burden
+              Energy cost
               <div>
                 Average annual energy costs divided by household income
               </div>
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -2641,18 +2390,15 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
             <div>
               PM2.5 in the air
               <div>
-                Fine inhalable particles, 2.5 micrometers or smaller
+                Level of inhalable particles, 2.5 micrometers or smaller
               </div>
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -2674,7 +2420,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
               Low income
               <div>
                 
-      Household income is less than or equal to twice the federal poverty level 
+     People in households where income is less than or equal to twice the federal poverty level, not including students enrolled in higher ed 
     
               </div>
             </div>
@@ -2688,12 +2434,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -2722,7 +2463,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         >
           <div>
             <div>
-              Sustainable housing
+              Housing
             </div>
             <div
               class=""
@@ -2736,23 +2477,16 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         hidden=""
         id="sustain-house"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
         >
           <div>
             <div>
-              Housing cost burden
+              Housing cost
               <div>
-                Low income households spending more than 30% of income on housing
+                Share of households making less than 80% of the area median family income and spending more than 30% of income on housing
+    
               </div>
             </div>
             <div>
@@ -2765,12 +2499,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the up arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -2798,7 +2527,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
               Low income
               <div>
                 
-      Household income is less than or equal to twice the federal poverty level 
+     People in households where income is less than or equal to twice the federal poverty level, not including students enrolled in higher ed 
     
               </div>
             </div>
@@ -2812,12 +2541,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -2860,14 +2584,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         hidden=""
         id="leg-pollute"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -2876,18 +2592,15 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
             <div>
               Abandoned mine lands
               <div>
-                Presence of an abandoned land mine within the tract
+                Presence of an abandoned mine lands within the tract
               </div>
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -2903,20 +2616,17 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         >
           <div>
             <div>
-              Formerly Used Defense Sites (FUDS)
+              Formerly Used Defense Sites
               <div>
                 Presence of a Formerly Used Defense Site within the tract
               </div>
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -2939,13 +2649,10 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -2961,20 +2668,17 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         >
           <div>
             <div>
-              Proximity to National Priorities List (NPL) sites
+              Proximity to Superfund sites
               <div>
-                Proposed or listed NPL (Superfund) sites within 5 kilometers
+                Count of proposed or listed Superfund (or National Priorities List) sites within 5 kilometers
               </div>
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -2990,20 +2694,17 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         >
           <div>
             <div>
-              Proximity to Risk Management Plan (RMP) facilities
+              Proximity to Risk Management Plan facilities
               <div>
-                RMP facilities within 5 kilometers
+                Count of Risk Management Plan facilities within 5 kilometers
               </div>
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -3025,7 +2726,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
               Low income
               <div>
                 
-      Household income is less than or equal to twice the federal poverty level 
+     People in households where income is less than or equal to twice the federal poverty level, not including students enrolled in higher ed 
     
               </div>
             </div>
@@ -3039,12 +2740,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -3087,14 +2783,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         hidden=""
         id="work-dev"
       >
-        <div>
-          <div>
-            At or above at least one threshold?
-          </div>
-          <div>
-            No
-          </div>
-        </div>
         <li
           data-cy="indicatorBox"
           data-testid="indicator-box"
@@ -3103,18 +2791,15 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
             <div>
               Low median income
               <div>
-                Median income calculated as a percent of the area’s median income
+                Comparison of income in the tract to incomes in the area
               </div>
             </div>
             <div>
               <div>
-                <div />
                 <div>
-                  <img
-                    alt="an icon to represent data is unavailable"
-                    src="test-file-stub"
-                  />
+                  --
                 </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -3132,7 +2817,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
             <div>
               Unemployment
               <div>
-                Number of unemployed people as a percentage of the labor force
+                Number of unemployed people as a part of the labor force
               </div>
             </div>
             <div>
@@ -3145,12 +2830,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the up arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -3175,8 +2855,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
               Poverty
               <div>
                 
-      Percent of a census tract's population in households where the household income is at or below 100% 
-      of the Federal poverty level 
+      Share of people in households where the income is at or below 100% of the Federal poverty level 
     
               </div>
             </div>
@@ -3190,12 +2869,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
                     th
                   </sup>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the down arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -3220,10 +2894,10 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         >
           <div>
             <div>
-              High school degree non-attainment
+              High school education
               <div>
                 
-      Percent of people ages 25 years or older whose education level is less than a high school diploma 
+      Percent of people ages 25 years or older who did not graduate high school 
     
               </div>
             </div>
@@ -3234,12 +2908,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
                     98%
                   </span>
                 </div>
-                <div>
-                  <img
-                    alt="an icon for the up arrow"
-                    src="test-file-stub"
-                  />
-                </div>
+                <div />
               </div>
               <div>
                 <div>
@@ -3256,7 +2925,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
       </div>
     </div>
     <div>
-      Methodology version 0.1
+      Methodology version 1.0
     </div>
   </aside>
 </DocumentFragment>

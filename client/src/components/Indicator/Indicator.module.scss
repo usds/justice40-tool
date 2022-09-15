@@ -1,6 +1,11 @@
 @use '../../styles/design-system.scss' as *;
 @import "../utils.scss";
 
+@mixin indicatorPadding {
+  @include u-padding-left("05");
+  @include u-padding-right("05");
+}
+
 @mixin indicator {
   display: flex;
   flex-direction: column;
@@ -19,12 +24,11 @@
     }
     
     .indicatorName {
-      // flex: 0 1 77%;
-      flex-basis: 60%;
+      flex-basis: 55%;
       display: flex;
       flex-direction: column;
       @include typeset('sans', '2xs', 2);
-      @include u-text('medium'); 
+      @include u-text('bold'); 
       
       .indicatorDesc {
         @include typeset('sans', '3xs', 2); 
@@ -40,14 +44,23 @@
     .indicatorValueCol {
       display: flex;
       flex-direction: column;
+      @include typeset('sans', '2xs', 2);
+      @include u-text('bold'); 
+      width: 40%;
 
       .indicatorValueRow {
         display: flex;
         align-self: end;
 
         .indicatorValue {
-          margin-left: 2.2rem;
-        } 
+          @include indicatorPadding();
+        }
+        
+        .disIndicatorValue {
+          @include indicatorPadding();
+          color: white;
+          background-color: $disadvantagedDotColor;
+        }
 
         .indicatorArrow {
           margin-bottom: -.375rem;
@@ -59,18 +72,18 @@
 
           }
           .unavailable {
-            opacity: .2;
+            opacity: .6;
           }
         }
       }
       
       .indicatorValueSubText{
-        display: flex;
-        flex-direction: column;
-        align-self: flex-end;
+        // display: flex;
+        // flex-direction: column;
+        // align-self: flex-start;
         text-align: right;
-        @include u-width(8);
-        @include typeset('sans', '3xs', 2);
+        // @include u-width(8);
+        @include typeset('sans', 'micro', 2);
         @include u-text('thin'); 
       }
     }
@@ -81,31 +94,5 @@
 //Indicator box styles
 .indicatorBoxMain {
   @include indicator;
-}
-
-.disadvantagedIndicator {
-  @include indicator;
-  @include u-bg('blue-warm-10');
-
-  // A darker bg color:
-  // background-color: #D2DAE3;
-
-  // Add a border
-  // border: 1px solid #1A4480;
-
-  margin: 0 -20px 1px -20px;
-  @include u-padding-left(2.5);
-  @include u-padding-right(2.5);
-
-
-  // Overwrite indicator mixin with bolder fonts for disadv. indicator 
-  .indicatorRow {
-    .indicatorName {
-      @include u-text('bold'); 
-      
-      .indicatorDesc {
-        @include u-text('normal'); 
-      }
-    }
-  }
+  @include u-color('gray-warm-90');
 }

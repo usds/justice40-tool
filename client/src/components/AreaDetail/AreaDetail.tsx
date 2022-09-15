@@ -8,7 +8,6 @@ import {Accordion, Button} from '@trussworks/react-uswds';
 import Category from '../Category';
 import TractDemographics from '../TractDemographics';
 import DisadvantageDot from '../DisadvantageDot';
-import ExceedBurden from '../ExceedBurden';
 import Indicator from '../Indicator';
 import TractInfo from '../TractInfo';
 
@@ -315,9 +314,9 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
 
 
   // Energy category
-  const energyBurden: indicatorInfo = {
-    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.ENERGY_BURDEN),
-    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.ENERGY_BURDEN),
+  const energyCost: indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.ENERGY_COST),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.ENERGY_COST),
     type: 'percentile',
     value: properties.hasOwnProperty(constants.ENERGY_PERCENTILE) ?
       properties[constants.ENERGY_PERCENTILE] : null,
@@ -332,153 +331,6 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
       properties[constants.PM25_PERCENTILE] : null,
     isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_PM25] ?
       properties[constants.IS_EXCEEDS_THRESH_FOR_PM25] : null,
-  };
-
-  // Transit category
-  const dieselPartMatter: indicatorInfo = {
-    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.DIESEL_PARTICULATE_MATTER),
-    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.DIESEL_PARTICULATE_MATTER),
-    type: 'percentile',
-    value: properties.hasOwnProperty(constants.DIESEL_MATTER_PERCENTILE) ?
-      properties[constants.DIESEL_MATTER_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_DIESEL_PM] ?
-      properties[constants.IS_EXCEEDS_THRESH_FOR_DIESEL_PM] : null,
-  };
-  const barrierTransport: indicatorInfo = {
-    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.BARRIER_TRANS),
-    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.BARRIER_TRANS),
-    type: 'percentile',
-    value: properties.hasOwnProperty(constants.TRAVEL_DISADV_PERCENTILE) ?
-      properties[constants.TRAVEL_DISADV_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_TRAVEL_DISADV] ?
-      properties[constants.IS_EXCEEDS_THRESH_TRAVEL_DISADV] : null,
-  };
-  const trafficVolume: indicatorInfo = {
-    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.TRAFFIC_VOLUME),
-    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.TRAFFIC_VOLUME),
-    type: 'percentile',
-    value: properties.hasOwnProperty(constants.TRAFFIC_PERCENTILE) ?
-      properties[constants.TRAFFIC_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_TRAFFIC_PROX] ?
-      properties[constants.IS_EXCEEDS_THRESH_FOR_TRAFFIC_PROX] : null,
-  };
-
-  // Housing category
-  const historicUnderinvest: indicatorInfo = {
-    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HIST_UNDERINVEST),
-    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.HIST_UNDERINVEST),
-    type: 'boolean',
-    value: properties.hasOwnProperty(constants.HISTORIC_UNDERINVESTMENT_EXCEED_THRESH) ?
-      (properties[constants.HISTORIC_UNDERINVESTMENT_EXCEED_THRESH] ===
-        constants.HISTORIC_UNDERINVESTMENT_RAW_YES ? true : false) :
-      null,
-    isDisadvagtaged: properties.hasOwnProperty(constants.HISTORIC_UNDERINVESTMENT_EXCEED_THRESH) &&
-    properties[constants.HISTORIC_UNDERINVESTMENT_EXCEED_THRESH] ===
-    constants.HISTORIC_UNDERINVESTMENT_RAW_YES ? true : false,
-  };
-  const houseBurden: indicatorInfo = {
-    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HOUSE_BURDEN),
-    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.HOUSE_BURDEN),
-    type: 'percentile',
-    value: properties.hasOwnProperty(constants.HOUSING_BURDEN_PROPERTY_PERCENTILE) ?
-      properties[constants.HOUSING_BURDEN_PROPERTY_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_HOUSE_BURDEN] ?
-      properties[constants.IS_EXCEEDS_THRESH_FOR_HOUSE_BURDEN] : null,
-  };
-  const lackGreenSpace: indicatorInfo = {
-    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.LACK_GREEN_SPACE),
-    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.LACK_GREEN_SPACE),
-    type: 'percentile',
-    value: properties.hasOwnProperty(constants.IMPERVIOUS_PERCENTILE) ?
-      properties[constants.IMPERVIOUS_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_IMPERVIOUS] ?
-      properties[constants.IS_EXCEEDS_THRESH_IMPERVIOUS] : null,
-  };
-  const lackPlumbing: indicatorInfo = {
-    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.LACK_PLUMBING),
-    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.LACK_PLUMBING),
-    type: 'percentile',
-    value: properties.hasOwnProperty(constants.KITCHEN_PLUMB_PERCENTILE) ?
-      properties[constants.KITCHEN_PLUMB_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_KITCHEN_PLUMB] ?
-      properties[constants.IS_EXCEEDS_THRESH_KITCHEN_PLUMB] : null,
-  };
-  const leadPaint: indicatorInfo = {
-    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.LEAD_PAINT),
-    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.LEAD_PAINT),
-    type: 'percentile',
-    value: properties.hasOwnProperty(constants.LEAD_PAINT_PERCENTILE) ?
-      properties[constants.LEAD_PAINT_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_LEAD_PAINT_AND_MEDIAN_HOME_VAL] ?
-      properties[constants.IS_EXCEEDS_THRESH_FOR_LEAD_PAINT_AND_MEDIAN_HOME_VAL] : null,
-  };
-
-  // Pollution categeory
-  const abandonMines: indicatorInfo = {
-    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.ABANDON_MINES),
-    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.ABANDON_MINES),
-    type: 'boolean',
-    value: properties.hasOwnProperty(constants.ABANDON_LAND_MINES_EXCEEDS_THRESH) ?
-      properties[constants.ABANDON_LAND_MINES_EXCEEDS_THRESH] : null,
-    isDisadvagtaged: properties.hasOwnProperty(constants.ABANDON_LAND_MINES_EXCEEDS_THRESH) ?
-    properties[constants.ABANDON_LAND_MINES_EXCEEDS_THRESH] : null,
-  };
-  const formerDefSites: indicatorInfo = {
-    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.FORMER_DEF_SITES),
-    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.FORMER_DEF_SITES),
-    type: 'boolean',
-    value: properties.hasOwnProperty(constants.FORMER_DEF_SITES_RAW_VALUE) ?
-      (properties[constants.FORMER_DEF_SITES_RAW_VALUE] === constants.FUDS_RAW_YES ? true : false) :
-      null,
-    isDisadvagtaged: properties.hasOwnProperty(constants.FORMER_DEF_SITES_EXCEEDS_THRESH) ?
-    properties[constants.FORMER_DEF_SITES_EXCEEDS_THRESH] : null,
-  };
-  const proxHaz: indicatorInfo = {
-    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.PROX_HAZ),
-    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.PROX_HAZ),
-    type: 'percentile',
-    value: properties.hasOwnProperty(constants.PROXIMITY_TSDF_SITES_PERCENTILE) ?
-      properties[constants.PROXIMITY_TSDF_SITES_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_HAZARD_WASTE] ?
-      properties[constants.IS_EXCEEDS_THRESH_FOR_HAZARD_WASTE] : null,
-  };
-  const proxNPL: indicatorInfo = {
-    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.PROX_NPL),
-    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.PROX_NPL),
-    type: 'percentile',
-    value: properties.hasOwnProperty(constants.PROXIMITY_NPL_SITES_PERCENTILE) ?
-      properties[constants.PROXIMITY_NPL_SITES_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_SUPERFUND] ?
-      properties[constants.IS_EXCEEDS_THRESH_FOR_SUPERFUND] : null,
-  };
-  const proxRMP: indicatorInfo = {
-    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.PROX_RMP),
-    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.PROX_RMP),
-    type: 'percentile',
-    value: properties.hasOwnProperty(constants.PROXIMITY_RMP_SITES_PERCENTILE) ?
-      properties[constants.PROXIMITY_RMP_SITES_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_RMP] ?
-      properties[constants.IS_EXCEEDS_THRESH_FOR_RMP] : null,
-  };
-
-  // Water category
-  const leakyTanks: indicatorInfo = {
-    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.LEAKY_TANKS),
-    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.LEAKY_TANKS),
-    type: 'percentile',
-    value: properties.hasOwnProperty(constants.LEAKY_UNDER_PERCENTILE) ?
-      properties[constants.LEAKY_UNDER_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_LEAKY_UNDER] ?
-      properties[constants.IS_EXCEEDS_THRESH_LEAKY_UNDER] : null,
-  };
-  const wasteWater: indicatorInfo = {
-    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.WASTE_WATER),
-    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.WASTE_WATER),
-    type: 'percentile',
-    value: properties.hasOwnProperty(constants.WASTEWATER_PERCENTILE) ?
-      properties[constants.WASTEWATER_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_WASTEWATER] ?
-      properties[constants.IS_EXCEEDS_THRESH_FOR_WASTEWATER] : null,
   };
 
   // Health category
@@ -518,6 +370,157 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
     isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_LOW_LIFE_EXP] ?
       properties[constants.IS_EXCEEDS_THRESH_FOR_LOW_LIFE_EXP] : null,
   };
+
+
+  // Housing category
+  const historicUnderinvest: indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HIST_UNDERINVEST),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.HIST_UNDERINVEST),
+    type: 'boolean',
+    value: properties.hasOwnProperty(constants.HISTORIC_UNDERINVESTMENT_EXCEED_THRESH) ?
+      (properties[constants.HISTORIC_UNDERINVESTMENT_EXCEED_THRESH] ===
+        constants.HISTORIC_UNDERINVESTMENT_RAW_YES ? true : false) : null,
+    isDisadvagtaged: properties.hasOwnProperty(constants.HISTORIC_UNDERINVESTMENT_EXCEED_THRESH) &&
+      properties[constants.HISTORIC_UNDERINVESTMENT_EXCEED_THRESH] ===
+        constants.HISTORIC_UNDERINVESTMENT_RAW_YES ? true : false,
+  };
+  const houseCost: indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HOUSE_COST),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.HOUSE_COST),
+    type: 'percentile',
+    value: properties.hasOwnProperty(constants.HOUSING_BURDEN_PROPERTY_PERCENTILE) ?
+      properties[constants.HOUSING_BURDEN_PROPERTY_PERCENTILE] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_HOUSE_BURDEN] ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_HOUSE_BURDEN] : null,
+  };
+  const lackGreenSpace: indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.LACK_GREEN_SPACE),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.LACK_GREEN_SPACE),
+    type: 'percentile',
+    value: properties.hasOwnProperty(constants.IMPERVIOUS_PERCENTILE) ?
+      properties[constants.IMPERVIOUS_PERCENTILE] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_IMPERVIOUS] ?
+      properties[constants.IS_EXCEEDS_THRESH_IMPERVIOUS] : null,
+  };
+  const lackPlumbing: indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.LACK_PLUMBING),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.LACK_PLUMBING),
+    type: 'percentile',
+    value: properties.hasOwnProperty(constants.KITCHEN_PLUMB_PERCENTILE) ?
+      properties[constants.KITCHEN_PLUMB_PERCENTILE] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_KITCHEN_PLUMB] ?
+      properties[constants.IS_EXCEEDS_THRESH_KITCHEN_PLUMB] : null,
+  };
+  const leadPaint: indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.LEAD_PAINT),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.LEAD_PAINT),
+    type: 'percentile',
+    value: properties.hasOwnProperty(constants.LEAD_PAINT_PERCENTILE) ?
+      properties[constants.LEAD_PAINT_PERCENTILE] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_LEAD_PAINT_AND_MEDIAN_HOME_VAL] ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_LEAD_PAINT_AND_MEDIAN_HOME_VAL] : null,
+  };
+
+
+  // Pollution categeory
+  const abandonMines: indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.ABANDON_MINES),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.ABANDON_MINES),
+    type: 'boolean',
+    value: properties.hasOwnProperty(constants.ABANDON_LAND_MINES_EXCEEDS_THRESH) ?
+      properties[constants.ABANDON_LAND_MINES_EXCEEDS_THRESH] : null,
+    isDisadvagtaged: properties.hasOwnProperty(constants.ABANDON_LAND_MINES_EXCEEDS_THRESH) ?
+    properties[constants.ABANDON_LAND_MINES_EXCEEDS_THRESH] : null,
+  };
+  const formerDefSites: indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.FORMER_DEF_SITES),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.FORMER_DEF_SITES),
+    type: 'boolean',
+    value: properties.hasOwnProperty(constants.FORMER_DEF_SITES_RAW_VALUE) ?
+      (properties[constants.FORMER_DEF_SITES_RAW_VALUE] === constants.FUDS_RAW_YES ? true : false) :
+      null,
+    isDisadvagtaged: properties.hasOwnProperty(constants.FORMER_DEF_SITES_EXCEEDS_THRESH) ?
+    properties[constants.FORMER_DEF_SITES_EXCEEDS_THRESH] : null,
+  };
+  const proxHaz: indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.PROX_HAZ),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.PROX_HAZ),
+    type: 'percentile',
+    value: properties.hasOwnProperty(constants.PROXIMITY_TSDF_SITES_PERCENTILE) ?
+      properties[constants.PROXIMITY_TSDF_SITES_PERCENTILE] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_HAZARD_WASTE] ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_HAZARD_WASTE] : null,
+  };
+  const proxRMP: indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.PROX_RMP),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.PROX_RMP),
+    type: 'percentile',
+    value: properties.hasOwnProperty(constants.PROXIMITY_RMP_SITES_PERCENTILE) ?
+      properties[constants.PROXIMITY_RMP_SITES_PERCENTILE] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_RMP] ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_RMP] : null,
+  };
+  const proxNPL: indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.PROX_NPL),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.PROX_NPL),
+    type: 'percentile',
+    value: properties.hasOwnProperty(constants.PROXIMITY_NPL_SITES_PERCENTILE) ?
+      properties[constants.PROXIMITY_NPL_SITES_PERCENTILE] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_SUPERFUND] ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_SUPERFUND] : null,
+  };
+
+
+  // Transpotation category
+  const dieselPartMatter: indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.DIESEL_PARTICULATE_MATTER),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.DIESEL_PARTICULATE_MATTER),
+    type: 'percentile',
+    value: properties.hasOwnProperty(constants.DIESEL_MATTER_PERCENTILE) ?
+      properties[constants.DIESEL_MATTER_PERCENTILE] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_DIESEL_PM] ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_DIESEL_PM] : null,
+  };
+  const barrierTransport: indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.BARRIER_TRANS),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.BARRIER_TRANS),
+    type: 'percentile',
+    value: properties.hasOwnProperty(constants.TRAVEL_DISADV_PERCENTILE) ?
+      properties[constants.TRAVEL_DISADV_PERCENTILE] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_TRAVEL_DISADV] ?
+      properties[constants.IS_EXCEEDS_THRESH_TRAVEL_DISADV] : null,
+  };
+  const trafficVolume: indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.TRAFFIC_VOLUME),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.TRAFFIC_VOLUME),
+    type: 'percentile',
+    value: properties.hasOwnProperty(constants.TRAFFIC_PERCENTILE) ?
+      properties[constants.TRAFFIC_PERCENTILE] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_TRAFFIC_PROX] ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_TRAFFIC_PROX] : null,
+  };
+
+
+  // Water category
+  const leakyTanks: indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.LEAKY_TANKS),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.LEAKY_TANKS),
+    type: 'percentile',
+    value: properties.hasOwnProperty(constants.LEAKY_UNDER_PERCENTILE) ?
+      properties[constants.LEAKY_UNDER_PERCENTILE] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_LEAKY_UNDER] ?
+      properties[constants.IS_EXCEEDS_THRESH_LEAKY_UNDER] : null,
+  };
+  const wasteWater: indicatorInfo = {
+    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.WASTE_WATER),
+    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.WASTE_WATER),
+    type: 'percentile',
+    value: properties.hasOwnProperty(constants.WASTEWATER_PERCENTILE) ?
+      properties[constants.WASTEWATER_PERCENTILE] : null,
+    isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_FOR_WASTEWATER] ?
+      properties[constants.IS_EXCEEDS_THRESH_FOR_WASTEWATER] : null,
+  };
+
 
   // Workforce dev category
   const lingIso: indicatorInfo = {
@@ -601,7 +604,7 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
     {
       id: 'clean-energy',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.CLEAN_ENERGY),
-      indicators: [energyBurden, pm25],
+      indicators: [energyCost, pm25],
       socioEcIndicators: [lowInc],
       isDisadvagtaged: properties[constants.IS_ENERGY_FACTOR_DISADVANTAGED] ?
         properties[constants.IS_ENERGY_FACTOR_DISADVANTAGED] : null,
@@ -611,21 +614,21 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
         properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS] : null,
     },
     {
-      id: 'clean-transport',
-      titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.CLEAN_TRANSPORT),
-      indicators: [dieselPartMatter, barrierTransport, trafficVolume],
+      id: 'health-burdens',
+      titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.HEALTH_BURDEN),
+      indicators: [asthma, diabetes, heartDisease, lifeExpect],
       socioEcIndicators: [lowInc],
-      isDisadvagtaged: properties[constants.IS_TRANSPORT_FACTOR_DISADVANTAGED] ?
-        properties[constants.IS_TRANSPORT_FACTOR_DISADVANTAGED] : null,
-      isExceed1MoreBurden: properties[constants.IS_TRANSPORT_EXCEED_ONE_OR_MORE_INDICATORS] ?
-        properties[constants.IS_TRANSPORT_EXCEED_ONE_OR_MORE_INDICATORS] : null,
+      isDisadvagtaged: properties[constants.IS_HEALTH_FACTOR_DISADVANTAGED] ?
+        properties[constants.IS_HEALTH_FACTOR_DISADVANTAGED] : null,
+      isExceed1MoreBurden: properties[constants.IS_HEALTH_EXCEED_ONE_OR_MORE_INDICATORS] ?
+        properties[constants.IS_HEALTH_EXCEED_ONE_OR_MORE_INDICATORS] : null,
       isExceedBothSocioBurdens: properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS] ?
         properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS] : null,
     },
     {
       id: 'sustain-house',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.SUSTAIN_HOUSE),
-      indicators: [historicUnderinvest, houseBurden, lackGreenSpace, lackPlumbing, leadPaint],
+      indicators: [historicUnderinvest, houseCost, lackGreenSpace, lackPlumbing, leadPaint],
       socioEcIndicators: [lowInc],
       isDisadvagtaged: properties[constants.IS_HOUSING_FACTOR_DISADVANTAGED] ?
         properties[constants.IS_HOUSING_FACTOR_DISADVANTAGED] : null,
@@ -647,6 +650,18 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
         properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS] : null,
     },
     {
+      id: 'clean-transport',
+      titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.CLEAN_TRANSPORT),
+      indicators: [dieselPartMatter, barrierTransport, trafficVolume],
+      socioEcIndicators: [lowInc],
+      isDisadvagtaged: properties[constants.IS_TRANSPORT_FACTOR_DISADVANTAGED] ?
+        properties[constants.IS_TRANSPORT_FACTOR_DISADVANTAGED] : null,
+      isExceed1MoreBurden: properties[constants.IS_TRANSPORT_EXCEED_ONE_OR_MORE_INDICATORS] ?
+        properties[constants.IS_TRANSPORT_EXCEED_ONE_OR_MORE_INDICATORS] : null,
+      isExceedBothSocioBurdens: properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS] ?
+        properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS] : null,
+    },
+    {
       id: 'clean-water',
       titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.CLEAN_WATER),
       indicators: [leakyTanks, wasteWater],
@@ -655,18 +670,6 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
         properties[constants.IS_WATER_FACTOR_DISADVANTAGED] : null,
       isExceed1MoreBurden: properties[constants.IS_WATER_EXCEED_ONE_OR_MORE_INDICATORS] ?
         properties[constants.IS_WATER_EXCEED_ONE_OR_MORE_INDICATORS] : null,
-      isExceedBothSocioBurdens: properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS] ?
-        properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS] : null,
-    },
-    {
-      id: 'health-burdens',
-      titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.HEALTH_BURDEN),
-      indicators: [asthma, diabetes, heartDisease, lifeExpect],
-      socioEcIndicators: [lowInc],
-      isDisadvagtaged: properties[constants.IS_HEALTH_FACTOR_DISADVANTAGED] ?
-        properties[constants.IS_HEALTH_FACTOR_DISADVANTAGED] : null,
-      isExceed1MoreBurden: properties[constants.IS_HEALTH_EXCEED_ONE_OR_MORE_INDICATORS] ?
-        properties[constants.IS_HEALTH_EXCEED_ONE_OR_MORE_INDICATORS] : null,
       isExceedBothSocioBurdens: properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS] ?
         properties[constants.IS_EXCEED_BOTH_SOCIO_INDICATORS] : null,
     },
@@ -710,7 +713,7 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
 
     // eslint-disable-next-line max-len
     categories = categories.filter((category) => category.id === 'work-dev' || category.id === 'clean-energy' || category.id === 'leg-pollute' || category.id === 'sustain-house');
-    categories[1].indicators = [houseBurden];
+    categories[1].indicators = [houseCost];
     categories[3].indicators = [lowMedInc, unemploy, poverty];
   }
 
@@ -741,12 +744,6 @@ const AreaDetail = ({properties, hash, isCensusLayerSelected}: IAreaDetailProps)
     title: <Category name={category.titleText} isDisadvantaged={category.isDisadvagtaged} />,
     content: (
       <>
-        {/* Exceeds one or more burdens */}
-        <ExceedBurden
-          text={EXPLORE_COPY.SIDE_PANEL_SPACERS.EXCEED_ONE_OR_MORE}
-          isBurdened={category.isExceed1MoreBurden}
-        />
-
         {/* Indicators - filters then map */}
         {category.indicators
             .filter(indicatorFilter(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HIST_UNDERINVEST))

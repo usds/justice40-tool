@@ -8,20 +8,14 @@ import * as constants from '../../data/constants';
 import * as EXPLORE_COPY from '../../data/copy/explore';
 
 // @ts-ignore
-import downArrow from '/node_modules/uswds/dist/img/usa-icons/arrow_downward.svg';
-// @ts-ignore
-import upArrow from '/node_modules/uswds/dist/img/usa-icons/arrow_upward.svg';
-// @ts-ignore
-import unAvailable from '/node_modules/uswds/dist/img/usa-icons/do_not_disturb.svg';
+// import unAvailable from '/node_modules/uswds/dist/img/usa-icons/error_outline.svg';
 
 interface IIndicator {
   indicator: indicatorInfo,
 }
 
 interface IIndicatorValueIcon {
-  type: indicatorType,
   value: number | null,
-  isAboveThresh: boolean,
 };
 
 interface IIndicatorValueSubText {
@@ -37,31 +31,18 @@ interface IIndicatorValue {
 }
 
 /**
- * This component will determine what indicator's icon should be (arrowUp, arrowDown or unavailable) and
- * return the appropriate JSX.
+ * This component will determine what indicator's icon should be. ATM there are no icons to show, however
+ * this may change and so leaving a place holder function here for easy change in the future
  *
- * @param {number | null} props
+ * @param {number | null} value
  * @return {JSX.Element}
  */
-export const IndicatorValueIcon = ({type, value, isAboveThresh}: IIndicatorValueIcon) => {
-  const intl = useIntl();
-
-  if (value == null) {
-    return <img className={styles.unavailable}
-      src={unAvailable}
-      alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.UNAVAILABLE)}
-    />;
-  } else if (type === 'percent' || type === 'percentile') {
-    return isAboveThresh ?
-      <img
-        src={upArrow}
-        alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.ARROW_UP)}
-      /> :
-      <img
-        src={downArrow}
-        alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.ARROW_DOWN)}
-      />;
-  } else return <></>;
+export const IndicatorValueIcon = ({value}: IIndicatorValueIcon) => {
+  return value === null ? <></> : <></>;
+  // <img className={styles.unavailable}
+  //   src={unAvailable}
+  //   alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.UNAVAILABLE)}
+  // />
 };
 
 /**
@@ -155,7 +136,7 @@ export const superscriptOrdinal = (indicatorValueWithSuffix:string) => {
 export const IndicatorValue = ({type, displayStat}:IIndicatorValue) => {
   const intl = useIntl();
 
-  if (displayStat === null) return <React.Fragment></React.Fragment>;
+  if (displayStat === null) return <>{constants.MISSING_DATA_STRING}</>;
 
   if (type === 'percent' || type === 'percentile') {
     // In this case we will show no value and an icon only
@@ -228,7 +209,7 @@ const Indicator = ({indicator}:IIndicator) => {
 
   return (
     <li
-      className={indicator.isDisadvagtaged ? styles.disadvantagedIndicator : styles.indicatorBoxMain}
+      className={styles.indicatorBoxMain}
       data-cy={'indicatorBox'}
       data-testid='indicator-box'>
       <div className={styles.indicatorRow}>
@@ -246,7 +227,9 @@ const Indicator = ({indicator}:IIndicator) => {
           <div className={styles.indicatorValueRow}>
 
             {/* Indicator value */}
-            <div className={styles.indicatorValue}>
+            <div className={indicator.isDisadvagtaged ?
+              styles.disIndicatorValue : styles.indicatorValue}
+            >
               <IndicatorValue
                 type={indicator.type}
                 displayStat={displayStat}
@@ -256,9 +239,7 @@ const Indicator = ({indicator}:IIndicator) => {
             {/* Indicator icon - up arrow, down arrow, or unavailable */}
             <div className={styles.indicatorArrow}>
               <IndicatorValueIcon
-                type={indicator.type}
                 value={displayStat}
-                isAboveThresh={isAboveThresh}
               />
             </div>
           </div>
