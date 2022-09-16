@@ -355,10 +355,16 @@ def compare_to_list_of_expected_state_fips_codes(
     if additional_fips_codes_not_expected is None:
         additional_fips_codes_not_expected = []
 
+    logger.info(f"Inputs:\n"
+                f"alaska_and_hawaii_expected={alaska_and_hawaii_expected}\n"
+                f"additional_fips_codes_not_expected={additional_fips_codes_not_expected}")
+
     # Cast input to a set.
     actual_state_fips_codes_set = set(actual_state_fips_codes)
 
-    logger.info(f"Full actual states set: \n {actual_state_fips_codes_set}")
+    # TODO: delete
+    logger.info(f"Full actual states set: \n "
+                f"{sorted(list(actual_state_fips_codes_set))}")
 
     # Start with the list of all FIPS codes for all states and territories.
     expected_states_set = set(get_state_fips_codes(settings.DATA_PATH))
@@ -403,6 +409,11 @@ def compare_to_list_of_expected_state_fips_codes(
     dataset_name_phrase = (
         f" for dataset `{dataset_name}`" if dataset_name is not None else ""
     )
+
+
+    logger.info(f"Full expected states set: \n "
+                f"{sorted(list(expected_states_set))}")
+
 
     if expected_states_set != actual_state_fips_codes_set:
         raise ValueError(

@@ -32,6 +32,7 @@ class TribalOverlapETL(ExtractTransformLoad):
         "10",
         "11",
         "13",
+        "15",
         "17",
         "18",
         "21",
@@ -41,9 +42,7 @@ class TribalOverlapETL(ExtractTransformLoad):
         "39",
         "50",
         "51",
-        "54"
-        # Hawaii expected to be missing
-        "15",
+        "54",
     ]
 
     # A Tribal area that requires some special processing.
@@ -70,15 +69,7 @@ class TribalOverlapETL(ExtractTransformLoad):
         return ", ".join(str_list)
 
     def extract(self) -> None:
-        #
-        # # TODO: delete
-        # tract_data_path = Path(
-        #     "/Users/lucas/Downloads/tract_geojson_temp.geojson"
-        # )
-
-        self.census_tract_gdf = get_tract_geojson(
-            # _tract_data_path=tract_data_path
-        )
+        self.census_tract_gdf = get_tract_geojson()
         self.tribal_gdf = get_tribal_geojson()
 
     def transform(self) -> None:
