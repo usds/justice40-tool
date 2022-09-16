@@ -194,17 +194,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           data-testid="grid"
         >
           <div>
-            <div>
-              Climate and Economic Justice
-            </div>
-            <div>
-              <div>
-                 Screening Tool 
-              </div>
-              <div>
-                BETA
-              </div>
-            </div>
+            Climate and Economic Justice Screening Tool
           </div>
         </div>
         <div

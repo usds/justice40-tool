@@ -224,12 +224,8 @@
     "description": "Navigate to the about page. This is Header navigate item to the public eng page"
   },
   "common.pages.header.title.line1": {
-    "defaultMessage": "Climate and Economic Justice",
-    "description": "Navigate to the about page. This is Title in nav header line 1 of 2"
-  },
-  "common.pages.header.title.line2": {
-    "defaultMessage": "Screening Tool",
-    "description": "Navigate to the about page. This is Title in nav header line 2 of 2"
+    "defaultMessage": "Climate and Economic Justice Screening Tool",
+    "description": "Navigate to the about page. This is Title in nav header"
   },
   "common.pages.header.tsd": {
     "defaultMessage": "Technical Support Document",
