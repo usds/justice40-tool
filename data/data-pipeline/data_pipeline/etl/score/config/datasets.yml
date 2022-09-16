@@ -295,12 +295,24 @@ datasets:
     module_name: "tribal_overlap"
     input_geoid_tract_field_name: "GEOID10_TRACT"
     load_fields:
-      # TODO: update!
-      - short_name: "ncld_eligible"
-        df_field_name: "ELIGIBLE_FOR_NATURE_DEPRIVED_FIELD_NAME"
-        long_name: "Does the tract have at least 35 acres in it?"
-        field_type: bool
+      - short_name: "tribal_count"
+        df_field_name: "COUNT_OF_TRIBAL_AREAS_IN_TRACT"
+        long_name: "Number of Tribal areas within Census tract"
+        field_type: int64
         include_in_tiles: true
         include_in_downloadable_files: true
         create_percentile: false
-        
+      - short_name: "tribal_percent"
+        df_field_name: "PERCENT_OF_TRIBAL_AREA_IN_TRACT"
+        long_name: "Percent of the Census tract that is within Tribal areas"
+        field_type: float
+        include_in_tiles: true
+        include_in_downloadable_files: true
+        create_percentile: false
+        number_of_decimals_in_output: 6
+      - short_name: "tribal_names"
+        df_field_name: "NAMES_OF_TRIBAL_AREAS_IN_TRACT"
+        long_name: "Names of Tribal areas within Census tract"
+        field_type: string
+        include_in_tiles: true
+        include_in_downloadable_files: true
