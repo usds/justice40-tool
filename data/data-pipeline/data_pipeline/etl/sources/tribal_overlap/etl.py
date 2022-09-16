@@ -157,17 +157,18 @@ class TribalOverlapETL(ExtractTransformLoad):
         # expected
         alaskan_non_annette_matches = (
             # Data from Alaska
-            (merged_output_df_state_fips_code == "02") &
+            (merged_output_df_state_fips_code == "02")
             # Where the Tribal areas do *not* include Annette
-            (
+            & (
                 ~merged_output_df[
                     field_names.NAMES_OF_TRIBAL_AREAS_IN_TRACT
                 ].str.contains(self.ANNETTE_ISLAND_TRIBAL_NAME)
             )
-            &
             # But somehow percentage is greater than zero.
-            merged_output_df[field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT]
-            > 0
+            & (
+                merged_output_df[field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT]
+                > 0
+            )
         )
 
         # There should be none of these matches.
