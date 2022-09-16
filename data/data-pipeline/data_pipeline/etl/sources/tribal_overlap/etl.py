@@ -61,7 +61,8 @@ class TribalOverlapETL(ExtractTransformLoad):
             df=self.tribal_gdf, tract_data=self.census_tract_gdf
         )
 
-        tribal_overlap_with_tracts.groupby([self.GEOID_TRACT_FIELD_NAME]).agg(
+        tribal_overlap_with_tracts = tribal_overlap_with_tracts.groupby([
+            self.GEOID_TRACT_FIELD_NAME]).agg(
             {"tribalId": "count"}
         )
 
