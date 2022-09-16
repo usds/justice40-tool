@@ -400,6 +400,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       To provide feedback about a specific census tract, either select the send feedback button after
       selecting a census tract on the 
             <a
+              class="usa-link"
               href="/en/"
             >
               Explore the map
@@ -535,7 +536,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="usa-footer__secondary-link"
                 >
                   <a
-                    class="footer-link-first-child"
+                    class="usa-link footer-link-first-child"
                     href="/en/public-engagement"
                   >
                     Engagement calendar

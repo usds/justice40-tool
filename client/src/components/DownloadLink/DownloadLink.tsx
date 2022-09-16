@@ -27,7 +27,7 @@ const DownloadLink = ({href, linkText}:IDownloadLink) => {
   }
   return (
     <>
-      <a href={href} download>{linkText}</a>
+      <a href={href} className={styles.downloadStyle} download>{linkText}</a>
       <img
         className={styles.downloadIcon}
         src={fileDownloadIcon}

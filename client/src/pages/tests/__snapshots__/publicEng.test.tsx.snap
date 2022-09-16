@@ -1026,7 +1026,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="usa-footer__secondary-link"
                 >
                   <a
-                    class="footer-link-first-child"
+                    class="usa-link footer-link-first-child"
                     href="/en/public-engagement"
                   >
                     Engagement calendar

@@ -37,7 +37,7 @@
     
             //emulate a link
             cursor:pointer;
-            color:blue;
+            @include u-color('blue-60v');
             text-decoration:underline;
     
             min-width: 45px;
