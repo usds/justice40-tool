@@ -51,8 +51,6 @@ def get_tribal_geojson(
         tribal_etl.load()
     tribal_data = gpd.read_file(
         GEOJSON_PATH,
-        # Use `pyogrio` because it's vectorized and faster.
-        engine="pyogrio",
     )
     return tribal_data
 
