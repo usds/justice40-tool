@@ -43,7 +43,7 @@ class TribalOverlapETL(ExtractTransformLoad):
         "51",
         "54"
         # Hawaii expected to be missing
-        # "15",
+        "15",
     ]
 
     # A Tribal area that requires some special processing.

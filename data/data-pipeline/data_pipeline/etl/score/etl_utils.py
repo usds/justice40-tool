@@ -358,6 +358,8 @@ def compare_to_list_of_expected_state_fips_codes(
     # Cast input to a set.
     actual_state_fips_codes_set = set(actual_state_fips_codes)
 
+    logger.info(f"Full actual states set: \n {actual_state_fips_codes_set}")
+
     # Start with the list of all FIPS codes for all states and territories.
     expected_states_set = set(get_state_fips_codes(settings.DATA_PATH))
 

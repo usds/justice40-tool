@@ -229,3 +229,26 @@ def test_compare_to_list_of_expected_state_fips_codes():
         continental_us_expected=False,
         alaska_and_hawaii_expected=False,
     )
+
+    # Missing Hawaii but not Alaska
+    fips_codes_test_5 = [x for x in fips_codes_test_1 if x not in ["15"]]
+
+    # Should raise error because both Hawaii and Alaska are expected
+    with pytest.raises(ValueError) as exception_info:
+        compare_to_list_of_expected_state_fips_codes(
+            actual_state_fips_codes=fips_codes_test_5,
+            alaska_and_hawaii_expected=True
+        )
+    partial_expected_error_message = (
+        "FIPS state codes expected that are not present in the data:\n"
+        "['15']\n"
+    )
+    assert partial_expected_error_message in str(exception_info.value)
+
+    # Should work as expected
+    compare_to_list_of_expected_state_fips_codes(
+        actual_state_fips_codes=fips_codes_test_5,
+        alaska_and_hawaii_expected=True,
+        additional_fips_codes_not_expected=["15"]
+    )
+
