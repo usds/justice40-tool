@@ -14,6 +14,8 @@ class WildfireRiskETL(ExtractTransformLoad):
     """ETL class for the First Street Foundation wildfire risk dataset"""
 
     NAME = "fsf_wildfire_risk"
+    # These data were emailed to the J40 team while first street got
+    # their official data sharing channels setup.
     SOURCE_URL = settings.AWS_JUSTICE40_DATASOURCES_URL + "/fsf_fire.zip"
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
     PUERTO_RICO_EXPECTED_IN_DATA = False
