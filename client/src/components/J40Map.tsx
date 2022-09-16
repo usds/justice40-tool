@@ -397,7 +397,6 @@ const J40Map = ({location}: IJ40Interface) => {
           onLoad={onLoad}
           onTransitionStart={onTransitionStart}
           onTransitionEnd={onTransitionEnd}
-
           ref={mapRef}
           data-cy={'reactMapGL'}
         >
@@ -461,7 +460,8 @@ const J40Map = ({location}: IJ40Interface) => {
 
           {/* This is the third row overlayed on the map, it will show shortcut buttons to
           pan/zoom to US territories */}
-          <TerritoryFocusControl onClick={onClick}/>
+          { windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG &&
+            <TerritoryFocusControl onClick={onClick}/> }
 
           {/* Enable fullscreen pop-up behind a feature flag */}
           {('fs' in flags && detailViewData && !transitionInProgress) && (
