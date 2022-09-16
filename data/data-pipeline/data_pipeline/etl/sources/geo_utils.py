@@ -29,7 +29,9 @@ def get_tract_geojson(
         GEOJSON_PATH,
         include_fields=["GEOID10"],
     )
-    tract_data.rename(columns={"GEOID10": "GEOID10_TRACT"}, inplace=True)
+    tract_data = tract_data.rename(
+        columns={"GEOID10": "GEOID10_TRACT"}, errors="raise"
+    )
     return tract_data
 
 

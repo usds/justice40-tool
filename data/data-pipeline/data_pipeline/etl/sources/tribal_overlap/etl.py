@@ -1,5 +1,7 @@
+import warnings
 from pathlib import Path
 import geopandas as gpd
+import numpy as np
 import pandas as pd
 from data_pipeline.config import settings
 
@@ -30,6 +32,9 @@ class TribalOverlapETL(ExtractTransformLoad):
         # Hawaii expected to be missing
         "15",
     ]
+
+    # A Tribal area that requires some special processing.
+    ANNETTE_ISLAND_TRIBAL_NAME = "Annette Island LAR"
 
     # Define these for easy code completion
     def __init__(self):
@@ -95,46 +100,104 @@ class TribalOverlapETL(ExtractTransformLoad):
         ]
 
         # Create a measure for the entire census tract area
-        self.census_tract_gdf["area_tract"] = self.census_tract_gdf.area
+        with warnings.catch_warnings():
+            # Note: geopandas will (helpfully) warn that area is not a useful metric
+            # without being converted to a CRS. However, since we are simply using a
+            # percentage, dividing two area values from the same CRS, this warning is
+            # not relevant. Therefor we suppress it.
+            warnings.simplefilter("ignore", UserWarning)
+            self.census_tract_gdf["area_tract"] = self.census_tract_gdf.area
 
-        # Performing overlay funcion
-        gdf_joined = gpd.overlay(
-            self.census_tract_gdf, tribal_gdf_without_points, how="union"
-        )
-        # Calculating the areas of the newly-created geometries
-        gdf_joined["area_joined"] = gdf_joined.area
+            # Performing overlay funcion
+            gdf_joined = gpd.overlay(
+                self.census_tract_gdf,
+                tribal_gdf_without_points,
+                how="intersection",
+            )
+            # Calculating the areas of the newly-created overlapping geometries
+            gdf_joined["area_joined"] = gdf_joined.area
 
         # Calculating the areas of the newly-created geometries in relation
-        # to the original grid cells
+        # to the original tract geometries
         gdf_joined[field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT] = (
             gdf_joined["area_joined"] / gdf_joined["area_tract"]
         )
 
+        # Aggregate the results
+        percentage_results = gdf_joined.groupby(
+            [self.GEOID_TRACT_FIELD_NAME]
+        ).agg({field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT: "sum"})
+
+        percentage_results = percentage_results.reset_index()
+
+        # Merge the two results.
+        merged_output_df = tribal_overlap_with_tracts.merge(
+            right=percentage_results,
+            how="outer",
+            on=self.GEOID_TRACT_FIELD_NAME,
+        )
+
+        # Finally, fix one unique error.
+        # There is one unique Tribal area (self.ANNETTE_ISLAND_TRIBAL_NAME) that is a polygon in
+        # Alaska. All other Tribal areas in Alaska are points.
+        # For tracts that *only* contain that Tribal area, leave percentage as is.
+        # For tracts that include that Tribal area AND Alaska Native villages,
+        # null the percentage, because we cannot calculate the percent of the tract
+        # this is within Tribal areas.
+
+        # Create state FIPS codes.
+        merged_output_df_state_fips_code = merged_output_df[
+            self.GEOID_TRACT_FIELD_NAME
+        ].str[0:2]
+
+        # Start by testing for Annette Island exception, to make sure data is as
+        # expected
+        alaskan_non_annette_matches = (
+            # Data from Alaska
+            (merged_output_df_state_fips_code == "02") &
+            # Where the Tribal areas do *not* include Annette
+            (
+                ~merged_output_df[
+                    field_names.NAMES_OF_TRIBAL_AREAS_IN_TRACT
+                ].str.contains(self.ANNETTE_ISLAND_TRIBAL_NAME)
+            )
+            &
+            # But somehow percentage is greater than zero.
+            merged_output_df[field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT]
+            > 0
+        )
+
+        # There should be none of these matches.
+        if sum(alaskan_non_annette_matches) > 0:
+            raise ValueError(
+                "Data has changed. More than one Alaskan Tribal Area has polygon "
+                "boundaries. You'll need to refactor this ETL. \n"
+                f"Data:\n{merged_output_df[alaskan_non_annette_matches]}"
+            )
+
+        # Now, fix the exception that is already known.
+        merged_output_df[
+            field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT
+        ] = np.where(
+            # For tracts inside Alaska
+            (merged_output_df_state_fips_code == "02")
+            # That are not only represented by Annette Island
+            & (
+                merged_output_df[field_names.NAMES_OF_TRIBAL_AREAS_IN_TRACT]
+                != self.ANNETTE_ISLAND_TRIBAL_NAME
+            ),
+            # Set the value to `None` for tracts with more than just Annette.
+            None,
+            # Otherwise, set the value to what it was.
+            merged_output_df[field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT],
+        )
+
         # TODO: delete!
-        self.output_df = tribal_overlap_with_tracts
-        self.COLUMNS_TO_KEEP = tribal_overlap_with_tracts.columns
+        self.output_df = merged_output_df
+        self.COLUMNS_TO_KEEP = self.output_df.columns
         self.COLUMNS_TO_KEEP = [
             x for x in self.COLUMNS_TO_KEEP if x != "geometry"
         ]
-
-        # df = pd.read_csv(
-        #     self.get_tmp_path() / "eAMLIS export of all data.tsv",
-        #     sep="\t",
-        #     low_memory=False,
-        # )
-        # gdf = gpd.GeoDataFrame(
-        #     df,
-        #     geometry=gpd.points_from_xy(
-        #         x=df["Longitude"],
-        #         y=df["Latitude"],
-        #     ),
-        #     crs="epsg:4326",
-        # )
-        # gdf = gdf.drop_duplicates(subset=["geometry"], keep="last")
-        # gdf_tracts = add_tracts_for_geometries(gdf)
-        # gdf_tracts = gdf_tracts.drop_duplicates(self.GEOID_TRACT_FIELD_NAME)
-        # gdf_tracts[self.AML_BOOLEAN] = True
-        # self.output_df = gdf_tracts[self.COLUMNS_TO_KEEP]
 
     # TODO: delete!
     def validate(self) -> None:
