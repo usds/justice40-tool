@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import Optional
 from functools import lru_cache
 import geopandas as gpd
+from data_pipeline.etl.sources.tribal.etl import TribalETL
 from data_pipeline.utils import get_module_logger
 from .census.etl import CensusETL
 
@@ -24,9 +25,34 @@ def get_tract_geojson(
         census_etl.extract()
         census_etl.transform()
         census_etl.load()
-    tract_data = gpd.read_file(GEOJSON_PATH, include_fields=["GEOID10"])
+    tract_data = gpd.read_file(
+        GEOJSON_PATH,
+        include_fields=["GEOID10"],
+    )
     tract_data.rename(columns={"GEOID10": "GEOID10_TRACT"}, inplace=True)
     return tract_data
+
+
+@lru_cache()
+def get_tribal_geojson(
+    _tribal_data_path: Optional[Path] = None,
+) -> gpd.GeoDataFrame:
+    logger.info("Loading Tribal geometry data from Tribal ETL")
+    GEOJSON_PATH = _tribal_data_path
+    if GEOJSON_PATH is None:
+        GEOJSON_PATH = TribalETL().NATIONAL_TRIBAL_GEOJSON_PATH
+    if not GEOJSON_PATH.exists():
+        logger.debug("Tribal data has not been computed, running")
+        tribal_etl = TribalETL()
+        tribal_etl.extract()
+        tribal_etl.transform()
+        tribal_etl.load()
+    tribal_data = gpd.read_file(
+        GEOJSON_PATH,
+        # Use `pyogrio` because it's vectorized and faster.
+        engine="pyogrio",
+    )
+    return tribal_data
 
 
 def add_tracts_for_geometries(
