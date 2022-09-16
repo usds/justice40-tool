@@ -29,8 +29,21 @@ class TribalOverlapETL(ExtractTransformLoad):
     PUERTO_RICO_EXPECTED_IN_DATA = False
     ALASKA_AND_HAWAII_EXPECTED_IN_DATA = True
     EXPECTED_MISSING_STATES = [
+        "10",
+        "11",
+        "13",
+        "17",
+        "18",
+        "21",
+        "24",
+        "33",
+        "34",
+        "39",
+        "50",
+        "51",
+        "54"
         # Hawaii expected to be missing
-        "15",
+        # "15",
     ]
 
     # A Tribal area that requires some special processing.
@@ -40,6 +53,9 @@ class TribalOverlapETL(ExtractTransformLoad):
     def __init__(self):
         self.COLUMNS_TO_KEEP = [
             self.GEOID_TRACT_FIELD_NAME,
+            field_names.COUNT_OF_TRIBAL_AREAS_IN_TRACT,
+            field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT,
+            field_names.NAMES_OF_TRIBAL_AREAS_IN_TRACT,
         ]
 
         self.output_df: pd.DataFrame
@@ -54,14 +70,14 @@ class TribalOverlapETL(ExtractTransformLoad):
         return ", ".join(str_list)
 
     def extract(self) -> None:
-
-        # TODO: delete
-        tract_data_path = Path(
-            "/Users/lucas/Downloads/tract_geojson_temp.geojson"
-        )
+        #
+        # # TODO: delete
+        # tract_data_path = Path(
+        #     "/Users/lucas/Downloads/tract_geojson_temp.geojson"
+        # )
 
         self.census_tract_gdf = get_tract_geojson(
-            _tract_data_path=tract_data_path
+            # _tract_data_path=tract_data_path
         )
         self.tribal_gdf = get_tribal_geojson()
 
@@ -192,13 +208,4 @@ class TribalOverlapETL(ExtractTransformLoad):
             merged_output_df[field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT],
         )
 
-        # TODO: delete!
         self.output_df = merged_output_df
-        self.COLUMNS_TO_KEEP = self.output_df.columns
-        self.COLUMNS_TO_KEEP = [
-            x for x in self.COLUMNS_TO_KEEP if x != "geometry"
-        ]
-
-    # TODO: delete!
-    def validate(self) -> None:
-        pass
