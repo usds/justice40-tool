@@ -99,16 +99,45 @@ class TribalOverlapETL(ExtractTransformLoad):
         # Drop the points from the Tribal data (because these cannot be joined to a
         # (Multi)Polygon tract data frame)
         tribal_gdf_without_points = self.tribal_gdf[
-            self.tribal_gdf.geom_type != "Point"
+            self.tribal_gdf.geom_type.isin(["Polygon", "MultiPolygon"])
         ]
 
+        # TODO: delete all these loggers used for debugging
+        logger.info(
+            f"Tribal GDF geom types: \n{self.tribal_gdf.geom_type.unique()}"
+        )
+        logger.info(
+            f"Tribal GDF geom types: \n{self.tribal_gdf.geom_type.value_counts()}"
+        )
+        logger.info(
+            f"Tribal without points GDF geom types:\n"
+            f" {tribal_gdf_without_points.geom_type.unique()}"
+        )
+        logger.info(
+            f"Tribal without points GDF geom types: \
+            n{tribal_gdf_without_points.geom_type.value_counts()}"
+        )
+        logger.info(
+            f"Tract geom types:\n"
+            f" {self.census_tract_gdf.geom_type.unique()}"
+        )
+        logger.info(
+            f"Tract geom types:\n"
+            f" {self.census_tract_gdf.geom_type.value_counts()}"
+        )
+        
         # Create a measure for the entire census tract area
         with warnings.catch_warnings():
             # Note: geopandas will (helpfully) warn that area is not a useful metric
             # without being converted to a CRS. However, since we are simply using a
             # percentage, dividing two area values from the same CRS, this warning is
             # not relevant. Therefore we suppress it.
-            warnings.simplefilter("ignore", UserWarning)
+            warnings.filterwarnings(
+                action="ignore",
+                category=UserWarning,
+                message="Geometry is in a geographic CRS.",
+            )
+
             self.census_tract_gdf["area_tract"] = self.census_tract_gdf.area
 
             # Performing overlay funcion
@@ -120,11 +149,11 @@ class TribalOverlapETL(ExtractTransformLoad):
             # Calculating the areas of the newly-created overlapping geometries
             gdf_joined["area_joined"] = gdf_joined.area
 
-        # Calculating the areas of the newly-created geometries in relation
-        # to the original tract geometries
-        gdf_joined[field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT] = (
-            gdf_joined["area_joined"] / gdf_joined["area_tract"]
-        )
+            # Calculating the areas of the newly-created geometries in relation
+            # to the original tract geometries
+            gdf_joined[field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT] = (
+                gdf_joined["area_joined"] / gdf_joined["area_tract"]
+            )
 
         # Aggregate the results
         percentage_results = gdf_joined.groupby(

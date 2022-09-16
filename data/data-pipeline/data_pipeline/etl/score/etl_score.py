@@ -476,13 +476,13 @@ class ScoreETL(ExtractTransformLoad):
             field_names.PERCENT_AGE_10_TO_64,
             field_names.PERCENT_AGE_OVER_64,
             field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT,
+            field_names.COUNT_OF_TRIBAL_AREAS_IN_TRACT,
         ]
 
         non_numeric_columns = [
             self.GEOID_TRACT_FIELD_NAME,
             field_names.TRACT_ELIGIBLE_FOR_NONNATURAL_THRESHOLD,
             field_names.AGRICULTURAL_VALUE_BOOL_FIELD,
-            field_names.COUNT_OF_TRIBAL_AREAS_IN_TRACT,
             field_names.NAMES_OF_TRIBAL_AREAS_IN_TRACT,
         ]
 
