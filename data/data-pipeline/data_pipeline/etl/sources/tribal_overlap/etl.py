@@ -11,6 +11,7 @@ from data_pipeline.etl.sources.geo_utils import (
     get_tract_geojson,
 )
 from data_pipeline.etl.sources.tribal.etl import TribalETL
+from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
@@ -40,6 +41,13 @@ class TribalOverlapETL(ExtractTransformLoad):
         self.census_tract_gdf: gpd.GeoDataFrame
         self.tribal_gdf: gpd.GeoDataFrame
 
+    @staticmethod
+    def _create_string_from_list(series: pd.Series) -> str:
+        """Helper method that creates a sorted string list (for tribal names)."""
+        str_list = series.tolist()
+        str_list = sorted(str_list)
+        return ", ".join(str_list)
+
     def extract(self) -> None:
 
         # TODO: delete
@@ -61,9 +69,45 @@ class TribalOverlapETL(ExtractTransformLoad):
             df=self.tribal_gdf, tract_data=self.census_tract_gdf
         )
 
-        tribal_overlap_with_tracts = tribal_overlap_with_tracts.groupby([
-            self.GEOID_TRACT_FIELD_NAME]).agg(
-            {"tribalId": "count"}
+        tribal_overlap_with_tracts = tribal_overlap_with_tracts.groupby(
+            [self.GEOID_TRACT_FIELD_NAME]
+        ).agg(
+            {
+                field_names.TRIBAL_ID: "count",
+                field_names.TRIBAL_LAND_AREA_NAME: self._create_string_from_list,
+            }
+        )
+
+        tribal_overlap_with_tracts = tribal_overlap_with_tracts.reset_index()
+
+        tribal_overlap_with_tracts = tribal_overlap_with_tracts.rename(
+            columns={
+                field_names.TRIBAL_ID: field_names.COUNT_OF_TRIBAL_AREAS_IN_TRACT,
+                field_names.TRIBAL_LAND_AREA_NAME: field_names.NAMES_OF_TRIBAL_AREAS_IN_TRACT,
+            }
+        )
+
+        # Second, calculate percentage overlap.
+        # Drop the points from the Tribal data (because these cannot be joined to a
+        # (Multi)Polygon tract data frame)
+        tribal_gdf_without_points = self.tribal_gdf[
+            self.tribal_gdf.geom_type != "Point"
+        ]
+
+        # Create a measure for the entire census tract area
+        self.census_tract_gdf["area_tract"] = self.census_tract_gdf.area
+
+        # Performing overlay funcion
+        gdf_joined = gpd.overlay(
+            self.census_tract_gdf, tribal_gdf_without_points, how="union"
+        )
+        # Calculating the areas of the newly-created geometries
+        gdf_joined["area_joined"] = gdf_joined.area
+
+        # Calculating the areas of the newly-created geometries in relation
+        # to the original grid cells
+        gdf_joined[field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT] = (
+            gdf_joined["area_joined"] / gdf_joined["area_tract"]
         )
 
         # TODO: delete!
