@@ -356,8 +356,9 @@ TRIBAL_LAND_AREA_NAME = "landAreaName"
 # Tribal overlap variables
 COUNT_OF_TRIBAL_AREAS_IN_TRACT = "Number of Tribal areas within Census tract"
 NAMES_OF_TRIBAL_AREAS_IN_TRACT = "Names of Tribal areas within Census tract"
-PERCENT_OF_TRIBAL_AREA_IN_TRACT = "Percent of the Census tract that is within Tribal " \
-                                  "areas"
+PERCENT_OF_TRIBAL_AREA_IN_TRACT = (
+    "Percent of the Census tract that is within Tribal areas"
+)
 
 #####
 # Names for individual factors being exceeded

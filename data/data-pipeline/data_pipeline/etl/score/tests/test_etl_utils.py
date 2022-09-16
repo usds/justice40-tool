@@ -237,7 +237,7 @@ def test_compare_to_list_of_expected_state_fips_codes():
     with pytest.raises(ValueError) as exception_info:
         compare_to_list_of_expected_state_fips_codes(
             actual_state_fips_codes=fips_codes_test_5,
-            alaska_and_hawaii_expected=True
+            alaska_and_hawaii_expected=True,
         )
     partial_expected_error_message = (
         "FIPS state codes expected that are not present in the data:\n"
@@ -249,5 +249,5 @@ def test_compare_to_list_of_expected_state_fips_codes():
     compare_to_list_of_expected_state_fips_codes(
         actual_state_fips_codes=fips_codes_test_5,
         alaska_and_hawaii_expected=True,
-        additional_fips_codes_not_expected=["15"]
+        additional_fips_codes_not_expected=["15"],
     )
