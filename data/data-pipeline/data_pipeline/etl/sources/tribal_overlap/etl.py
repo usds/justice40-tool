@@ -107,7 +107,7 @@ class TribalOverlapETL(ExtractTransformLoad):
             # Note: geopandas will (helpfully) warn that area is not a useful metric
             # without being converted to a CRS. However, since we are simply using a
             # percentage, dividing two area values from the same CRS, this warning is
-            # not relevant. Therefor we suppress it.
+            # not relevant. Therefore we suppress it.
             warnings.simplefilter("ignore", UserWarning)
             self.census_tract_gdf["area_tract"] = self.census_tract_gdf.area
 
