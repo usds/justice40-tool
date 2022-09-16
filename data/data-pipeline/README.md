@@ -234,6 +234,15 @@ If you want to run tile generation, please install TippeCanoe [following these i
 - We use [Poetry](https://python-poetry.org/) for managing dependencies and building the application. Please follow the instructions on their site to download.
 - Install Poetry requirements with `poetry install`
 
+### Running tox 
+
+Our full test and check suite is run using tox. This can be run using commands such 
+as `poetry run tox`.
+
+Each run can take a while to build the whole environment. If you'd like to save time,
+you can use the previously built environment by running `poetry run tox -e lint` 
+which will drastically speed up the process.
+
 ### The Application entrypoint
 
 After installing the poetry dependencies, you can see a list of commands with the following steps:
