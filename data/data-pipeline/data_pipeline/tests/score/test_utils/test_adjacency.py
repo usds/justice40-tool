@@ -7,7 +7,6 @@ from contextlib import contextmanager
 
 import pytest
 import pandas as pd
-import geopandas as gpd
 from data_pipeline.score.utils import (
     calculate_tract_adjacency_scores as original_calculate_tract_adjacency_score,
 )

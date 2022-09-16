@@ -1,18 +1,14 @@
 import warnings
-from pathlib import Path
 import geopandas as gpd
 import numpy as np
 import pandas as pd
-from data_pipeline.config import settings
 
 from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
-from data_pipeline.etl.sources.census.etl import CensusETL
 from data_pipeline.etl.sources.geo_utils import (
     add_tracts_for_geometries,
     get_tribal_geojson,
     get_tract_geojson,
 )
-from data_pipeline.etl.sources.tribal.etl import TribalETL
 from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger
 

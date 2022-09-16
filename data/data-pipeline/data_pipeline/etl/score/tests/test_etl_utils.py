@@ -251,4 +251,3 @@ def test_compare_to_list_of_expected_state_fips_codes():
         alaska_and_hawaii_expected=True,
         additional_fips_codes_not_expected=["15"]
     )
-
