@@ -2,7 +2,7 @@ import functools
 import pandas as pd
 
 from data_pipeline.config import settings
-from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
 from data_pipeline.utils import (
     get_module_logger,
     unzip_file_from_url,
@@ -18,6 +18,10 @@ class PersistentPovertyETL(ExtractTransformLoad):
 
     Codebook: `https://s4.ad.brown.edu/Projects/Diversity/Researcher/LTBDDload/Dfiles/codebooks.pdf`.
     """
+
+    NAME = "persistent_poverty"
+    GEO_LEVEL: ValidGeoLevel = ValidGeoLevel.CENSUS_TRACT
+    PUERTO_RICO_EXPECTED_IN_DATA = False
 
     def __init__(self):
         self.OUTPUT_PATH = self.DATA_PATH / "dataset" / "persistent_poverty"
@@ -75,7 +79,7 @@ class PersistentPovertyETL(ExtractTransformLoad):
     def extract(self) -> None:
         logger.info("Starting to download 86MB persistent poverty file.")
 
-        unzipped_file_path = self.get_tmp_path() / "persistent_poverty"
+        unzipped_file_path = self.get_tmp_path()
 
         unzip_file_from_url(
             file_url=settings.AWS_JUSTICE40_DATASOURCES_URL
@@ -155,14 +159,4 @@ class PersistentPovertyETL(ExtractTransformLoad):
             )
         )
 
-        self.df = transformed_df
-
-    def load(self) -> None:
-        logger.info("Saving persistent poverty data.")
-
-        # mkdir census
-        self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
-
-        self.df[self.COLUMNS_TO_KEEP].to_csv(
-            path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False
-        )
+        self.output_df = transformed_df
