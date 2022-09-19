@@ -380,3 +380,12 @@ fields:
 - score_name: Income data has been estimated based on neighbor income
   label: Income data has been estimated based on geographic neighbor income
   format: bool
+- score_name: Number of Tribal areas within Census tract
+  label: Number of Tribal areas within Census tract
+  format: int64
+- score_name: Names of Tribal areas within Census tract
+  label: Names of Tribal areas within Census tract
+  format: string
+- score_name: Percent of the Census tract that is within Tribal areas
+  label: Percent of the Census tract that is within Tribal areas
+  format: percentage
