@@ -1,8 +1,6 @@
-import warnings
 import geopandas as gpd
 import numpy as np
 import pandas as pd
-
 from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
 from data_pipeline.etl.sources.geo_utils import (
     add_tracts_for_geometries,
@@ -114,8 +112,8 @@ class TribalOverlapETL(ExtractTransformLoad):
             f" {tribal_gdf_without_points.geom_type.unique()}"
         )
         logger.info(
-            f"Tribal without points GDF geom types: \
-            n{tribal_gdf_without_points.geom_type.value_counts()}"
+            f"Tribal without points GDF geom types: \n"
+            f"{tribal_gdf_without_points.geom_type.value_counts()}"
         )
         logger.info(
             f"Tract geom types:\n"
@@ -125,35 +123,35 @@ class TribalOverlapETL(ExtractTransformLoad):
             f"Tract geom types:\n"
             f" {self.census_tract_gdf.geom_type.value_counts()}"
         )
-        
+
+        # Switch from geographic to projected CRSes
+        # because logically that's right
+        self.census_tract_gdf = self.census_tract_gdf.to_crs(crs=3857)
+        tribal_gdf_without_points = tribal_gdf_without_points.to_crs(crs=3857)
+
         # Create a measure for the entire census tract area
-        with warnings.catch_warnings():
-            # Note: geopandas will (helpfully) warn that area is not a useful metric
-            # without being converted to a CRS. However, since we are simply using a
-            # percentage, dividing two area values from the same CRS, this warning is
-            # not relevant. Therefore we suppress it.
-            warnings.filterwarnings(
-                action="ignore",
-                category=UserWarning,
-                message="Geometry is in a geographic CRS.",
-            )
+        self.census_tract_gdf["area_tract"] = self.census_tract_gdf.area
 
-            self.census_tract_gdf["area_tract"] = self.census_tract_gdf.area
+        # Performing overlay funcion
+        # We have a mix of polygons and multipolygons, and we just want the overlaps
+        # without caring a ton about the specific types, so we ignore geom type.
+        # Realistically, this changes almost nothing in the calculation; True and False
+        # are the same within 9 digits of precision
+        gdf_joined = gpd.overlay(
+            self.census_tract_gdf,
+            tribal_gdf_without_points,
+            how="intersection",
+            keep_geom_type=False,
+        )
 
-            # Performing overlay funcion
-            gdf_joined = gpd.overlay(
-                self.census_tract_gdf,
-                tribal_gdf_without_points,
-                how="intersection",
-            )
-            # Calculating the areas of the newly-created overlapping geometries
-            gdf_joined["area_joined"] = gdf_joined.area
+        # Calculating the areas of the newly-created overlapping geometries
+        gdf_joined["area_joined"] = gdf_joined.area
 
-            # Calculating the areas of the newly-created geometries in relation
-            # to the original tract geometries
-            gdf_joined[field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT] = (
-                gdf_joined["area_joined"] / gdf_joined["area_tract"]
-            )
+        # Calculating the areas of the newly-created geometries in relation
+        # to the original tract geometries
+        gdf_joined[field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT] = (
+            gdf_joined["area_joined"] / gdf_joined["area_tract"]
+        )
 
         # Aggregate the results
         percentage_results = gdf_joined.groupby(
