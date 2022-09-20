@@ -23,10 +23,14 @@ class TribalOverlapETL(ExtractTransformLoad):
     PUERTO_RICO_EXPECTED_IN_DATA = False
     ALASKA_AND_HAWAII_EXPECTED_IN_DATA = True
     EXPECTED_MISSING_STATES = [
+        # 15 is Hawaii, which has Hawaiian Home Lands, but they are not included in
+        # this dataset.
+        "15",
+        # The following states do not have any federally recognized Tribes in this
+        # dataset.
         "10",
         "11",
         "13",
-        "15",
         "17",
         "18",
         "21",
