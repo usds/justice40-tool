@@ -380,7 +380,6 @@ TILES_SCORE_COLUMNS = {
     field_names.PERCENT_AGE_10_TO_64: "AGE_MIDDLE",
     field_names.PERCENT_AGE_OVER_64: "AGE_OLD",
     field_names.COUNT_OF_TRIBAL_AREAS_IN_TRACT: "TA_COUNT",
-    field_names.NAMES_OF_TRIBAL_AREAS_IN_TRACT: "TA_NAMES",
     field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT: "TA_PERC",
     
 
