@@ -207,7 +207,7 @@ export const MAP = defineMessages({
 });
 
 
-// Side Panel copy
+// Side Panel non-selected state copy
 export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   HEADING1: {
     id: 'explore.map.page.side.panel.info.heading1',
