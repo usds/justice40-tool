@@ -46,6 +46,8 @@ class TribalOverlapETL(ExtractTransformLoad):
     # A Tribal area that requires some special processing.
     ANNETTE_ISLAND_TRIBAL_NAME = "Annette Island LAR"
 
+    CRS_INTEGER = 3857
+
     # Define these for easy code completion
     def __init__(self):
         self.COLUMNS_TO_KEEP = [
@@ -104,34 +106,10 @@ class TribalOverlapETL(ExtractTransformLoad):
             self.tribal_gdf.geom_type.isin(["Polygon", "MultiPolygon"])
         ]
 
-        # TODO: delete all these loggers used for debugging
-        logger.info(
-            f"Tribal GDF geom types: \n{self.tribal_gdf.geom_type.unique()}"
-        )
-        logger.info(
-            f"Tribal GDF geom types: \n{self.tribal_gdf.geom_type.value_counts()}"
-        )
-        logger.info(
-            f"Tribal without points GDF geom types:\n"
-            f" {tribal_gdf_without_points.geom_type.unique()}"
-        )
-        logger.info(
-            f"Tribal without points GDF geom types: \n"
-            f"{tribal_gdf_without_points.geom_type.value_counts()}"
-        )
-        logger.info(
-            f"Tract geom types:\n"
-            f" {self.census_tract_gdf.geom_type.unique()}"
-        )
-        logger.info(
-            f"Tract geom types:\n"
-            f" {self.census_tract_gdf.geom_type.value_counts()}"
-        )
-
         # Switch from geographic to projected CRSes
         # because logically that's right
-        self.census_tract_gdf = self.census_tract_gdf.to_crs(crs=3857)
-        tribal_gdf_without_points = tribal_gdf_without_points.to_crs(crs=3857)
+        self.census_tract_gdf = self.census_tract_gdf.to_crs(crs=self.CRS_INTEGER)
+        tribal_gdf_without_points = tribal_gdf_without_points.to_crs(crs=self.CRS_INTEGER)
 
         # Create a measure for the entire census tract area
         self.census_tract_gdf["area_tract"] = self.census_tract_gdf.area
