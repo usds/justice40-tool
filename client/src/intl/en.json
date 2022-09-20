@@ -899,49 +899,97 @@
     "defaultMessage": "Projected wildfire risk",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show wildfire risk"
   },
-  "explore.map.page.side.panel.info.alt.text.icon1": {
-    "defaultMessage": "An icon that has depicts pieces of a block selected mimicking the census block census tracts",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the first icon in this side panel"
-  },
-  "explore.map.page.side.panel.info.alt.text.icon2": {
+  "explore.map.page.side.panel.info.alt.text.icon.bell": {
     "defaultMessage": "An icon that a bell curve or gaussian distribution",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the second icon in this side panel"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show An icon that a bell curve or gaussian distribution"
   },
-  "explore.map.page.side.panel.info.alt.text.icon3": {
+  "explore.map.page.side.panel.info.alt.text.icon.dac.circle": {
+    "defaultMessage": "a blue circle icon informing the user of what a disadvantaged community is depicted as",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show a blue circle icon informing the user of what a disadvantaged community is depicted as"
+  },
+  "explore.map.page.side.panel.info.alt.text.icon.locate": {
+    "defaultMessage": "a gps icon informing the user can locate",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show a gps icon informing the user can locate"
+  },
+  "explore.map.page.side.panel.info.alt.text.icon.mouse": {
+    "defaultMessage": "a mouse arrow icon informing the user can use the mouse",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show a mouse arrow icon informing the user can use the mouse"
+  },
+  "explore.map.page.side.panel.info.alt.text.icon.pie": {
     "defaultMessage": "An icon that depicts a part of pie chart being removed",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the third icon in this side panel"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show An icon that depicts a part of pie chart being removed"
   },
-  "explore.map.page.side.panel.info.alt.text.icon4": {
+  "explore.map.page.side.panel.info.alt.text.icon.plus": {
+    "defaultMessage": "a plus icon indicating that the user can zoom in *",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show a plus icon indicating that the user can zoom in"
+  },
+  "explore.map.page.side.panel.info.alt.text.icon.search": {
+    "defaultMessage": "a magnifying glass icon informing the user can search",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show a magnifying glass icon informing the user can search"
+  },
+  "explore.map.page.side.panel.info.alt.text.icon.tract": {
+    "defaultMessage": "a tract icon informing the user of census tracts",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show a tract icon informing the user of census tracts"
+  },
+  "explore.map.page.side.panel.info.alt.text.icon.up.arrow": {
     "defaultMessage": "An icon that has an up arrow and a down arrow",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the forth icon in this side panel"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show An icon that has an up arrow and a down arrow"
   },
   "explore.map.page.side.panel.info.heading1": {
-    "defaultMessage": "Zoom in or search and select to see data about any census tract of interest",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the first paragraph of this side panel"
+    "defaultMessage": "How to use the map:",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the first heading of the non-selected side panel"
   },
-  "explore.map.page.side.panel.info.para1": {
-    "defaultMessage": "This tool identifies communities that are marginalized, underserved, and overburdened by pollution. These communities are located in census tracts that are at or above the thresholds in one or more of eight categories of criteria.",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the first paragraph of this side panel"
+  "explore.map.page.side.panel.info.heading2": {
+    "defaultMessage": "Things to know:",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know:"
   },
-  "explore.map.page.side.panel.info.para2": {
-    "defaultMessage": "The tool uses census tracts that represent about 4,000 people, which is the smallest unit of geography for which consistent data can be displayed on the map.",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the second paragraph of this side panel"
+  "explore.map.page.side.panel.info.para.1.part.1": {
+    "defaultMessage": "Zoom in",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Zoom in"
   },
-  "explore.map.page.side.panel.info.para3": {
-    "defaultMessage": "The tool ranks each census tract using percentiles that show how much burden each tract experiences relative to all other tracts, for each criterion.",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the third paragraph of this side panel"
+  "explore.map.page.side.panel.info.para.1.part.2": {
+    "defaultMessage": ", or locate yourself",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show or locate yourself"
   },
-  "explore.map.page.side.panel.info.para4": {
-    "defaultMessage": "Percentages are used for certain variables, i.e. those relating to high school achievement rate and to the share of individuals not currently enrolled in higher education.",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the forth paragraph of this side panel"
+  "explore.map.page.side.panel.info.para.1.part.4": {
+    "defaultMessage": "and select",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show and select"
+  },
+  "explore.map.page.side.panel.info.para.1.part.5": {
+    "defaultMessage": "to see information about any census tract",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show to see information about any census tract"
+  },
+  "explore.map.page.side.panel.info.para.2.part.1": {
+    "defaultMessage": "The tool uses census tracts",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show The tool uses census tracts"
+  },
+  "explore.map.page.side.panel.info.para.2.part.2": {
+    "defaultMessage": ". Census tracts are a small unit of geography. They make it possible to display data consistenly across the nation.",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Census tracts are a small unit of geography. They make it possible to display data consistenly across the nation."
+  },
+  "explore.map.page.side.panel.info.para.3.part.1": {
+    "defaultMessage": "Communities that are disadvantaged live in tracts that experience burdens. These tracts are highlighted in a blueish gray color",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Communities that are disadvantaged live in tracts that experience burdens. These tracts are highlighted in a blueish gray color"
+  },
+  "explore.map.page.side.panel.info.para.3.part.2": {
+    "defaultMessage": "on the map. This color is an opacity. This is so information about the map can be seen.",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show on the map. This color is an opacity. This is so information about the map can be seen."
+  },
+  "explore.map.page.side.panel.info.para.4.part.1": {
+    "defaultMessage": "The tool uses percentiles",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show The tool uses percentiles"
+  },
+  "explore.map.page.side.panel.info.para.4.part.2": {
+    "defaultMessage": ", percentages",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show percentages"
+  },
+  "explore.map.page.side.panel.info.para.4.part.3": {
+    "defaultMessage": ", or a simple yes/no to indicate how much burden the communities are experiencing in each tract.",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show or a simple yes/no to indicate how much burden the communities are experiencing in each tract."
   },
   "explore.map.page.side.panel.info.para5": {
-    "defaultMessage": "Thresholds for each category determine if a tract should be identified as disadvantaged because it has exceeded a certain value for the relevant indicators.",
+    "defaultMessage": "The tool also uses thresholds. If the tract meets or exceeds the threshold of any climate, environmental, or other burden <bold>AND</bold> it meets the threshold for the associated socioeconomic burden, then communites in the tract are considered disadvantaged.",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the fifth paragraph of this side pane"
-  },
-  "explore.map.page.side.panel.info.title": {
-    "defaultMessage": "Things to know",
-    "description": "introductory text of ways to use the map"
   },
   "explore.map.page.side.panel.is.community.of.focus": {
     "defaultMessage": "Identified as disadvantaged?",

@@ -2,13 +2,19 @@ import React from 'react';
 import {useIntl} from 'gatsby-plugin-intl';
 
 // @ts-ignore
-import puzzle from '../../images/sidePanelIcons/puzzle.svg';
+import plusIcon from '/node_modules/uswds/dist/img/usa-icons/add.svg';
 // @ts-ignore
-import bellCurve from '../../images/sidePanelIcons/bellCurve.svg';
+import searchIcon from '/node_modules/uswds/dist/img/usa-icons/search.svg';
 // @ts-ignore
-import pieChart from '../../images/sidePanelIcons/pieChart.svg';
+import locateIcon from '/node_modules/uswds/dist/img/usa-icons/my_location.svg';
 // @ts-ignore
-import upDown from '../../images/sidePanelIcons/upDown.svg';
+import puzzleIcon from '../../images/sidePanelIcons/puzzle.svg';
+// @ts-ignore
+import bellCurveIcon from '../../images/sidePanelIcons/bellCurve.svg';
+// @ts-ignore
+import pieChartIcon from '../../images/sidePanelIcons/pieChart.svg';
+// @ts-ignore
+import notAvailIcon from '/node_modules/uswds/dist/img/usa-icons/do_not_disturb.svg';
 
 import * as styles from './SidePanelInfo.module.scss';
 import * as EXPLORE_COPY from '../../data/copy/explore';
@@ -19,43 +25,73 @@ const SidePanelInfo = () => {
   return (
     <aside className={styles.sidePanelInfoContainer}>
 
+      {/* Heading 1 */}
       <header tabIndex={0} className={styles.sidePanelInfoTitle}>
-        {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.TITLE)}
-      </header>
-      <p tabIndex={0}>
-        {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA1)}
-      </p>
-      <p tabIndex={0} className={styles.sidePanelInfoHeading}>
         {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.HEADING1)}
-      </p>
-      <img tabIndex={0} className={styles.sidePanelInfoIcon}
-        src={puzzle}
-        alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.ALT_TEXT_ICON1)}
-      />
+      </header>
+
+      {/* Paragraph 1 */}
       <p tabIndex={0}>
-        {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA2)}
+        {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA1_PART1)}
+        <img tabIndex={0} className={styles.sidePanelInfoIcon} src={plusIcon}
+          alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.PLUS)}
+        />
+        {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA1_PART2)}
+        <img tabIndex={0} className={styles.sidePanelInfoIcon} src={searchIcon}
+          alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.SEARCH)}
+        />
+        {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA1_PART3)}
+        <img tabIndex={0} className={styles.sidePanelInfoIcon} src={locateIcon}
+          alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.LOCATE)}
+        />
+        {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA1_PART4)}
+        <img tabIndex={0} className={styles.sidePanelInfoIcon} src={notAvailIcon}
+          alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.MOUSE)}
+        />
+        {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA1_PART5)}
       </p>
-      <img tabIndex={0} className={styles.sidePanelInfoIcon}
-        src={bellCurve}
-        alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.ALT_TEXT_ICON2)}
-      />
+
+      {/* Heading 2 */}
+      <p tabIndex={0} className={styles.sidePanelInfoHeading}>
+        {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.HEADING2)}
+      </p>
+
+      {/* Paragraph 2 */}
       <p tabIndex={0}>
-        {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA3)}
+        {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA2_PART1)}
+        <img tabIndex={0} className={styles.sidePanelInfoIcon} src={puzzleIcon}
+          alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.TRACT)}
+        />
+        {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA2_PART2)}
       </p>
-      <img tabIndex={0} className={styles.sidePanelInfoIcon}
-        src={pieChart}
-        alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.ALT_TEXT_ICON3)}
-      />
+
+      {/* Paragraph 3 */}
       <p tabIndex={0}>
-        {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA4)}
+        {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA3_PART1)}
+        <img tabIndex={0} className={styles.sidePanelInfoIcon} src={notAvailIcon}
+          alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.DAC_CIRCLE)}
+        />
+        {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA3_PART2)}
       </p>
-      <img tabIndex={0} className={styles.sidePanelInfoIcon}
-        src={upDown}
-        alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.ALT_TEXT_ICON4)}
-      />
+
+      {/* Paragraph 4 */}
+      <p tabIndex={0}>
+        {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA4_PART1)}
+        <img tabIndex={0} className={styles.sidePanelInfoIcon} src={bellCurveIcon}
+          alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.BELL_CURVE)}
+        />
+        {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA4_PART2)}
+        <img tabIndex={0} className={styles.sidePanelInfoIcon} src={pieChartIcon}
+          alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.PIE_CHART)}
+        />
+        {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA4_PART3)}
+      </p>
+
+      {/* Paragraph 5 */}
       <p tabIndex={0}>
         {EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE_PARA5}
       </p>
+
     </aside>
   );
 };
