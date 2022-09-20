@@ -324,7 +324,7 @@ const J40Map = ({location}: IJ40Interface) => {
     setGeolocationInProgress(true);
   };
 
-  const mapBoxBaseLayer = 'tl' in flags ? `mapbox://styles/justice40/cl2qimpi2000014qeb1egpox8` : `mapbox://styles/mapbox/streets-v11`;
+  const mapBoxBaseLayer = 'tl' in flags ? `mapbox://styles/justice40/cl2qimpi2000014qeb1egpox8` : `mapbox://styles/justice40/cl4gb253h000014s6r4xwjm10`;
 
   return (
     <>
