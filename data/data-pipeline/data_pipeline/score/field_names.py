@@ -349,6 +349,17 @@ ELIGIBLE_FUDS_BINARY_FIELD_NAME = (
 )
 ELIGIBLE_FUDS_FILLED_IN_FIELD_NAME = "Is there at least one Formerly Used Defense Site (FUDS) in the tract, where missing data is treated as False?"
 
+# Tribal variables
+TRIBAL_ID = "tribalId"
+TRIBAL_LAND_AREA_NAME = "landAreaName"
+
+# Tribal overlap variables
+COUNT_OF_TRIBAL_AREAS_IN_TRACT = "Number of Tribal areas within Census tract"
+NAMES_OF_TRIBAL_AREAS_IN_TRACT = "Names of Tribal areas within Census tract"
+PERCENT_OF_TRIBAL_AREA_IN_TRACT = (
+    "Percent of the Census tract that is within Tribal areas"
+)
+
 #####
 # Names for individual factors being exceeded
 

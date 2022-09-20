@@ -15,6 +15,7 @@ from data_pipeline.etl.sources.fsf_flood_risk.etl import (
     FloodRiskETL,
 )
 from data_pipeline.etl.sources.eamlis.etl import AbandonedMineETL
+from data_pipeline.etl.sources.tribal_overlap.etl import TribalOverlapETL
 from data_pipeline.etl.sources.us_army_fuds.etl import USArmyFUDS
 from data_pipeline.etl.sources.nlcd_nature_deprived.etl import NatureDeprivedETL
 from data_pipeline.etl.sources.fsf_wildfire_risk.etl import WildfireRiskETL
@@ -52,6 +53,7 @@ class ScoreETL(ExtractTransformLoad):
         self.nature_deprived_df: pd.DataFrame
         self.eamlis_df: pd.DataFrame
         self.fuds_df: pd.DataFrame
+        self.tribal_overlap_df: pd.DataFrame
 
     def extract(self) -> None:
         logger.info("Loading data sets from disk.")
@@ -147,6 +149,9 @@ class ScoreETL(ExtractTransformLoad):
 
         # Load FUDS dataset
         self.fuds_df = USArmyFUDS.get_data_frame()
+
+        # Load Tribal overlap dataset
+        self.tribal_overlap_df = TribalOverlapETL.get_data_frame()
 
         # Load GeoCorr Urban Rural Map
         geocorr_urban_rural_csv = (
@@ -359,6 +364,7 @@ class ScoreETL(ExtractTransformLoad):
             self.nature_deprived_df,
             self.eamlis_df,
             self.fuds_df,
+            self.tribal_overlap_df
         ]
 
         # Sanity check each data frame before merging.
@@ -469,12 +475,15 @@ class ScoreETL(ExtractTransformLoad):
             field_names.PERCENT_AGE_UNDER_10,
             field_names.PERCENT_AGE_10_TO_64,
             field_names.PERCENT_AGE_OVER_64,
+            field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT,
+            field_names.COUNT_OF_TRIBAL_AREAS_IN_TRACT,
         ]
 
         non_numeric_columns = [
             self.GEOID_TRACT_FIELD_NAME,
             field_names.TRACT_ELIGIBLE_FOR_NONNATURAL_THRESHOLD,
             field_names.AGRICULTURAL_VALUE_BOOL_FIELD,
+            field_names.NAMES_OF_TRIBAL_AREAS_IN_TRACT,
         ]
 
         boolean_columns = [
