@@ -12,7 +12,8 @@ import ReactMapGL, {
   Popup,
   FlyToInterpolator,
   FullscreenControl,
-  MapRef} from 'react-map-gl';
+  MapRef,
+  LinearInterpolator} from 'react-map-gl';
 import {useIntl} from 'gatsby-plugin-intl';
 import bbox from '@turf/bbox';
 import * as d3 from 'd3-ease';
@@ -58,6 +59,8 @@ export interface IDetailViewInterface {
   properties: constants.J40Properties,
 };
 
+type MapBoundaryReached = 'top' | 'right' | 'bottom' | 'left' | '';
+
 const J40Map = ({location}: IJ40Interface) => {
   /**
    * Initializes the zoom, and the map's center point (lat, lng) via the URL hash #{z}/{lat}/{long}
@@ -81,12 +84,38 @@ const J40Map = ({location}: IJ40Interface) => {
     zoom: zoom && parseFloat(zoom) ? parseFloat(zoom) : constants.GLOBAL_MIN_ZOOM,
   });
 
+
+  /**
+   * Map selection state variables:
+   */
   const [selectedFeature, setSelectedFeature] = useState<MapboxGeoJSONFeature>();
   const [detailViewData, setDetailViewData] = useState<IDetailViewInterface>();
   const [transitionInProgress, setTransitionInProgress] = useState<boolean>(false);
   const [geolocationInProgress, setGeolocationInProgress] = useState<boolean>(false);
   const [isMobileMapState, setIsMobileMapState] = useState<boolean>(false);
   const [censusSelected, setCensusSelected] = useState<boolean>(true);
+
+  /**
+   * Map Boundary reached state variables:
+   */
+  // const mapContainerRef = useRef(null);
+  // const [mapBoundaryReached, setMapBoundaryReached] = useState<MapBoundaryReached>('');
+  const [isMapBeingDragged, setIsMapBeingDragged] = useState<boolean>(false);
+
+  // useEffect(() => {
+  //   const onAnimationEnd = () => {
+  //     setMapBoundaryReached('');
+  //   };
+
+  //   const mapContainer = mapContainerRef.current;
+
+  //   mapContainer.addEventListener('animationend', onAnimationEnd);
+
+  //   return () => {
+  //     mapContainer.removeEventListener('animationend', onAnimationEnd);
+  //   };
+  // }, []);
+
 
   // In order to detect that the layer has been toggled (between census and tribal),
   // this state variable will hold that information
@@ -324,11 +353,67 @@ const J40Map = ({location}: IJ40Interface) => {
     setGeolocationInProgress(true);
   };
 
+  /**
+   * This function will set the map boundaries during the dragging of the map. If a user attempts to
+   * drag the map past the boundaries, an animation will play to mimic the end of the end has been
+   * reached.
+   *
+   * @param {ViewportProps} viewState
+   * @return {} setViewport
+   */
+  const onViewportChange = (viewState:ViewportProps) => {
+    // console.log('🚀 ~ file: J40Map.tsx ~ line 355 ~ onViewportChange ~ viewState', viewState);
+    let mapBoundaryReached:MapBoundaryReached = '';
+
+    if (isMapBeingDragged) {
+      if (
+        viewState.longitude &&
+        viewState.longitude > constants.MAP_BOUND_MIN_LONGITUDE &&
+        viewState.longitude < 180 ) {
+        viewState.longitude = constants.MAP_BOUND_MIN_LONGITUDE;
+        mapBoundaryReached= 'left';
+      } else if ( viewState.longitude && viewState.longitude > constants.MAP_BOUND_MAX_LONGITUDE ) {
+        viewState.longitude = constants.MAP_BOUND_MAX_LONGITUDE;
+        mapBoundaryReached= 'right';
+      }
+
+      if ( viewState.latitude && viewState.latitude < constants.MAP_BOUND_MIN_LATITUDE ) {
+        mapBoundaryReached= 'bottom';
+        viewState.latitude = constants.MAP_BOUND_MIN_LATITUDE;
+      }
+
+      if ( viewState.latitude && viewState.latitude > constants.MAP_BOUND_MAX_LATITUDE ) {
+        viewState.latitude = constants.MAP_BOUND_MAX_LATITUDE;
+        mapBoundaryReached= 'bottom';
+      }
+    }
+
+    return mapBoundaryReached ? setViewport({
+      ...viewState,
+      transitionDuration: 1000,
+      transitionInterpolator: new LinearInterpolator(),
+      transitionEasing: d3.easeBounce,
+    }) : setViewport(viewState);
+  };
+
+  // Set mapbox  base layer:
   const mapBoxBaseLayer = 'tl' in flags ? `mapbox://styles/justice40/cl2qimpi2000014qeb1egpox8` : `mapbox://styles/justice40/cl5mp95tu000k14lpl21spgny`;
 
   return (
     <>
-      <Grid desktop={{col: 9}} className={styles.j40Map}>
+      <Grid
+        desktop={{col: 9}}
+        // className={mapBoundaryReached === 'bottom' ?
+        // `${styles.j40Map} ${styles.scrollDownBounce}` :
+        // styles.j40Map}
+        className={styles.j40Map}
+        // onAnimationEnd={(e) => {
+        //   // Todo: Document how both animation types will trigger this callback
+        //   // console.log('🚀 ~ file: J40Map.tsx ~ line 394 ~ J40Map ~ e', e);
+        //   console.log('animation ended');
+        //   setMapBoundaryReached('');
+        // }}
+      >
         {/**
          * Note:
          * The MapSearch component is no longer used in this location. It has been moved inside the
@@ -361,8 +446,10 @@ const J40Map = ({location}: IJ40Interface) => {
             process.env.MAPBOX_STYLES_READ_TOKEN ?
             process.env.MAPBOX_STYLES_READ_TOKEN : ''}
 
-          // ****** Map state props: ******
-          // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#map-state
+          /**
+           * ****** Map state props: ******
+           * https://github.com/visgl/react-map-gl/blob/6.1-release/docs/api-reference/interactive-map.md#map-state
+           */
           {...viewport}
           mapStyle={process.env.MAPBOX_STYLES_READ_TOKEN ? mapBoxBaseLayer : getOSBaseMap(censusSelected)}
           width="100%"
@@ -371,9 +458,10 @@ const J40Map = ({location}: IJ40Interface) => {
           height="100%"
           mapOptions={{hash: true}}
 
-
-          // ****** Interaction option props: ******
-          // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#interaction-options
+          /**
+           * ****** Interaction options: ******
+           * https://github.com/visgl/react-map-gl/blob/6.1-release/docs/api-reference/interactive-map.md#interaction-options
+           */
           maxZoom={constants.GLOBAL_MAX_ZOOM}
           minZoom={constants.GLOBAL_MIN_ZOOM}
           dragRotate={false}
@@ -389,10 +477,17 @@ const J40Map = ({location}: IJ40Interface) => {
             ]
           }
 
+          /**
+           * ****** Callback props: ******
+           * https://github.com/visgl/react-map-gl/blob/6.1-release/docs/api-reference/interactive-map.md#callbacks
+           */
+          // eslint-disable-next-line max-len
+          onViewportChange={(viewState: ViewportProps) => onViewportChange(viewState)}
 
-          // ****** Callback props: ******
-          // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#callbacks
-          onViewportChange={setViewport}
+          // Detect and set the state variable is map is dragging
+          onInteractionStateChange={(interactionState: { isDragging: boolean; }) => {
+            interactionState.isDragging ? setIsMapBeingDragged(true) : setIsMapBeingDragged(false);
+          }}
           onClick={onClick}
           onLoad={onLoad}
           onTransitionStart={onTransitionStart}

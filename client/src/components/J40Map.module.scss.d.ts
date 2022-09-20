@@ -1,5 +1,7 @@
 declare namespace J40MapModuleScssNamespace {
   export interface IJ40MapModuleScss {
+    scrollDownBounce: string;
+
     // main J40 map style
     j40Map: string;
 

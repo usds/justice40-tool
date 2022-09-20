@@ -301,6 +301,57 @@ export const SELECTED_FEATURE_BORDER_WIDTH = 5.0;
 export const ALAKSA_POINTS_STROKE_WIDTH = 1.0;
 
 // Bounds - these bounds can be obtained by using the getCurrentMapBoundingBox() function in the map
+
+/**
+ * ### Grab the lat/lon for the bounds of the map ###
+ *
+ * Alaska's coordinates:
+ * - latitude: 63.27827735223102
+ * - longitude: -162.3947525
+ *
+ * Hawaii's coordinates:
+ * - latitude: 20.657020350316177
+ * - longitude: -157.696737
+ *
+ * Mariana Islands coordinates:
+ * - latitude: 16.900917105280538
+ * - longitude: 145.47207349999974
+ *
+ * Guam's coordinates:
+ * - latitude: 14.366555855360668
+ * - longitude: 144.85327381019735
+ *
+ * USVI's coordinates:
+ * - latitude: 18.2017745170224
+ * - longitude: -64.77448172638938
+ *
+ * Maine's coordinates:
+ * - latitude: 42.52750243984539
+ * - longitude: -72.05693075466074
+ *
+ * ### Group the above by Lat/Lon ###
+ *
+ * - latitude: 63.27827735223102
+ * - latitude: 20.657020350316177
+ * - latitude: 16.900917105280538
+ * - latitude: 14.366555855360668
+ * - latitude: 18.2017745170224
+ * - latitude: 42.52750243984539
+ *
+ * - longitude: -162.3947525
+ * - longitude: -157.696737
+ * - longitude: 145.47207349999974
+ * - longitude: 144.85327381019735
+ * - longitude: -64.77448172638938
+ * - longitude: -72.05693075466074
+ *
+ * Set min/max lat/lon:
+ */
+export const MAP_BOUND_MIN_LATITUDE = 13;
+export const MAP_BOUND_MAX_LATITUDE = 65;
+export const MAP_BOUND_MIN_LONGITUDE = 150;
+export const MAP_BOUND_MAX_LONGITUDE = -65;
+
 export const GLOBAL_MAX_BOUNDS: LngLatBoundsLike = [
   [-180.118306, 5.499550],
   [-65.0, 83.162102],
