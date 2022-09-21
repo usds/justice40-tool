@@ -4,7 +4,6 @@ import {useIntl} from 'gatsby-plugin-intl';
 
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
-import PublicEngageButton from '../components/PublicEngageButton';
 import SubPageNav from '../components/SubPageNav';
 import {useWindowSize} from 'react-use';
 
@@ -25,7 +24,6 @@ const DownloadsPage = ({location}: IDownloadsPageProps) => {
 
         <section className={'page-heading'}>
           <h1>{intl.formatMessage(DOWNLOADS_COPY.PAGE_INTRO.PAGE_HEADING1)}</h1>
-          <PublicEngageButton />
         </section>
 
         <Grid row gap className={'j40-mb5-mt3'}>
