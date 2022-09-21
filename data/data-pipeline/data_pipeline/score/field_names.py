@@ -361,6 +361,10 @@ PERCENT_OF_TRIBAL_AREA_IN_TRACT = (
     "Percent of the Census tract that is within Tribal areas"
 )
 
+# GeoCorr alternatives variables
+ZIP_CODE = "Zip code"
+PERCENT_OF_ZIP_CODE_IN_TRACT = "Percent of zip code in tract"
+
 #####
 # Names for individual factors being exceeded
 

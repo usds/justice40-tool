@@ -96,6 +96,12 @@ DATASET_LIST = [
         "is_memory_intensive": False,
     },
     {
+        "name": "geocorr_alternatives",
+        "module_dir": "geocorr_alternatives",
+        "class_name": "GeoCorrAlternativesETL",
+        "is_memory_intensive": False,
+    },
+    {
         "name": "mapping_inequality",
         "module_dir": "mapping_inequality",
         "class_name": "MappingInequalityETL",
