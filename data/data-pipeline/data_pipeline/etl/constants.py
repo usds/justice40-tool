@@ -90,9 +90,9 @@ DATASET_LIST = [
         "is_memory_intensive": False,
     },
     {
-        "name": "geocorr",
-        "module_dir": "geocorr",
-        "class_name": "GeoCorrETL",
+        "name": "geocorr_urban",
+        "module_dir": "geocorr_urban",
+        "class_name": "GeoCorrUrbanETL",
         "is_memory_intensive": False,
     },
     {

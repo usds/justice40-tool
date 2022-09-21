@@ -153,7 +153,7 @@ class ScoreETL(ExtractTransformLoad):
 
         # Load GeoCorr Urban Rural Map
         geocorr_urban_rural_csv = (
-            constants.DATA_PATH / "dataset" / "geocorr" / "usa.csv"
+            constants.DATA_PATH / "dataset" / "geocorr_urban" / "usa.csv"
         )
         self.geocorr_urban_rural_df = pd.read_csv(
             geocorr_urban_rural_csv,

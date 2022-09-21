@@ -76,7 +76,7 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
         self.pr_tracts: pd.DataFrame
 
     def _transform_geocorr(self) -> pd.DataFrame:
-        # Transform the geocorr data
+        # Transform the geocorr_urban data
         geocorr_df = self.raw_geocorr_df
 
         # Strip the unnecessary period from the tract ID:
@@ -244,12 +244,12 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
             file_url=settings.AWS_JUSTICE40_DATASOURCES_URL
             + "/geocorr2014_all_states_tracts_only.csv.zip",
             download_path=self.get_tmp_path(),
-            unzipped_file_path=self.get_tmp_path() / "geocorr",
+            unzipped_file_path=self.get_tmp_path() / "geocorr_urban",
         )
 
         self.raw_geocorr_df = pd.read_csv(
             filepath_or_buffer=self.get_tmp_path()
-            / "geocorr"
+            / "geocorr_urban"
             / "geocorr2014_all_states_tracts_only.csv",
             # Skip second row, which has descriptions.
             skiprows=[1],
@@ -265,7 +265,7 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
         )
 
         logger.info("Pulling PR tract list down.")
-        # This step is necessary because PR is not in geocorr at the level that gets joined
+        # This step is necessary because PR is not in geocorr_urban at the level that gets joined
         pr_file = self.get_tmp_path() / "pr_tracts" / "pr_tracts.csv"
         download_file_from_url(
             file_url=self.PUERTO_RICO_S3_LINK, download_file_name=pr_file
@@ -307,7 +307,7 @@ class CensusACSMedianIncomeETL(ExtractTransformLoad):
         msa_median_incomes_df = self._transform_msa_median_incomes()
         state_median_incomes_df = self._transform_state_median_incomes()
 
-        # Adds 945 PR tracts to the geocorr dataframe
+        # Adds 945 PR tracts to the geocorr_urban dataframe
         geocorr_df_plus_pr = geocorr_df.merge(self.pr_tracts, how="outer")
 
         # Join tracts on MSA incomes
