@@ -119,6 +119,12 @@ class ExtractTransformLoad:
     # the YAML files?
     LOAD_YAML_CONFIG: bool = False
 
+    # Some data sets will have multiple rows of data per tract. For those data sets,
+    # set this variable to `True` to skip two validation steps.
+    # However, note that datasets with multiple rows per tract *cannot* be used
+    # in the score process.
+    VALIDATE_SHOULD_SKIP_DUPLICATE_GEOGRAPHIES_AND_GEOGRAPHY_COUNT: bool = False
+
     # We use output_df as the final dataframe to use to write to the CSV
     # It is used on the "load" base class method
     output_df: pd.DataFrame = None
@@ -276,7 +282,10 @@ class ExtractTransformLoad:
                         f"Must have `{geo_field}` in columns if "
                         f"specifying geo level as `{geo_level} "
                     )
-                if self.output_df.shape[0] > expected_rows:
+                if (
+                    self.output_df.shape[0] > expected_rows
+                    and not self.VALIDATE_SHOULD_SKIP_DUPLICATE_GEOGRAPHIES_AND_GEOGRAPHY_COUNT
+                ):
                     raise ValueError(
                         f"Too many rows: `{self.output_df.shape[0]}` rows in "
                         f"output exceeds expectation of `{expected_rows}` "
@@ -302,7 +311,10 @@ class ExtractTransformLoad:
                     self.output_df[geo_field].shape[0]
                     - self.output_df[geo_field].nunique()
                 )
-                if duplicate_geo_field_values > 0:
+                if (
+                    duplicate_geo_field_values > 0
+                    and not self.VALIDATE_SHOULD_SKIP_DUPLICATE_GEOGRAPHIES_AND_GEOGRAPHY_COUNT
+                ):
                     raise ValueError(
                         f"Duplicate values: There are {duplicate_geo_field_values} "
                         f"duplicate values in "

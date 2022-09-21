@@ -24,11 +24,16 @@ class GeoCorrAlternativesETL(ExtractTransformLoad):
     # Metadata for the baseclass
     NAME = "geocorr_alternatives"
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
+    PUERTO_RICO_EXPECTED_IN_DATA = False
 
     INPUT_GEOCORR_TRACT_FIELD = "tract"
     INPUT_GEOCORR_COUNTY_FIELD = "county"
     INPUT_GEOCORR_ZIP_FIELD = "zcta5"
     INPUT_GEOCORR_ALLOCATION_FIELD = "afact"
+
+    # Skip some validation checks, because there will be multiple rows per tract in this
+    # geocorr dataset.
+    VALIDATE_SHOULD_SKIP_DUPLICATE_GEOGRAPHIES_AND_GEOGRAPHY_COUNT = True
 
     # GeoCorr downloads have a field definition in the second row of the CSV.
     # This parameter skips the second row for pandas `read_csv`.
@@ -98,10 +103,4 @@ class GeoCorrAlternativesETL(ExtractTransformLoad):
             ".", "", regex=False
         )
 
-        logger.info(zip_codes_to_tracts_df.head())
-
         self.output_df = zip_codes_to_tracts_df
-
-    # TODO: DELETE
-    def validate(self) -> None:
-        pass
