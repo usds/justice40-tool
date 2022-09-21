@@ -51,15 +51,16 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for ISL
       <h6>
         Race / Ethnicity
         <span>
-          (
-          <button
+          ( 
+          <a
             aria-controls="race-panel"
             aria-expanded="false"
+            class="usa-link"
             id="race-header"
             tabindex="0"
           >
             show
-          </button>
+          </a>
           <img
             alt="expand icon"
             src="test-file-stub"
@@ -140,15 +141,16 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for ISL
       <h6>
         Age
         <span>
-          (
-          <button
+          ( 
+          <a
             aria-controls="age-panel"
             aria-expanded="false"
+            class="usa-link"
             id="age-header"
             tabindex="0"
           >
             show
-          </button>
+          </a>
           <img
             alt="expand icon"
             src="test-file-stub"
@@ -462,15 +464,16 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
       <h6>
         Race / Ethnicity
         <span>
-          (
-          <button
+          ( 
+          <a
             aria-controls="race-panel"
             aria-expanded="false"
+            class="usa-link"
             id="race-header"
             tabindex="0"
           >
             show
-          </button>
+          </a>
           <img
             alt="expand icon"
             src="test-file-stub"
@@ -551,15 +554,16 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
       <h6>
         Age
         <span>
-          (
-          <button
+          ( 
+          <a
             aria-controls="age-panel"
             aria-expanded="false"
+            class="usa-link"
             id="age-header"
             tabindex="0"
           >
             show
-          </button>
+          </a>
           <img
             alt="expand icon"
             src="test-file-stub"
@@ -2149,15 +2153,16 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
       <h6>
         Race / Ethnicity
         <span>
-          (
-          <button
+          ( 
+          <a
             aria-controls="race-panel"
             aria-expanded="false"
+            class="usa-link"
             id="race-header"
             tabindex="0"
           >
             show
-          </button>
+          </a>
           <img
             alt="expand icon"
             src="test-file-stub"
@@ -2238,15 +2243,16 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
       <h6>
         Age
         <span>
-          (
-          <button
+          ( 
+          <a
             aria-controls="age-panel"
             aria-expanded="false"
+            class="usa-link"
             id="age-header"
             tabindex="0"
           >
             show
-          </button>
+          </a>
           <img
             alt="expand icon"
             src="test-file-stub"

@@ -1,7 +1,6 @@
 declare namespace DownloadLinkNamespace {
     export interface IDownloadLink {
         downloadIcon: string;
-        downloadStyle: string;
     }
   }
 

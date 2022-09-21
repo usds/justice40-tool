@@ -141,11 +141,13 @@ exports[`rendering of the GovernmentBanner checks if component renders 1`] = `
           src="test-file-stub"
         />
         <a
+          class="usa-link"
           href="#"
         >
           English
         </a>
         <a
+          class="usa-link"
           href="#"
         >
           Español

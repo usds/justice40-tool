@@ -146,11 +146,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             src="test-file-stub"
           />
           <a
+            class="usa-link"
             href="#"
           >
             English
           </a>
           <a
+            class="usa-link"
             href="#"
           >
             Español
@@ -305,11 +307,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                       src="test-file-stub"
                     />
                     <a
+                      class="usa-link"
                       href="#"
                     >
                       English
                     </a>
                     <a
+                      class="usa-link"
                       href="#"
                     >
                       Español

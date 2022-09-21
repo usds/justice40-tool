@@ -39,9 +39,9 @@ const J40AccordionItem = ({id, title, children}:IJ40AccordionItem) => {
       <h6 className={styles.demographicHeading}>
         {title}
         <span>
-          {'('}
-          <button
-            className={styles.showHideText}
+          {'( '}
+          <a
+            className={styles.showHideText ? `usa-link ${styles.showHideText}` : `usa-link`}
             id={`${id}-header`}
             aria-controls={`${id}-panel`}
             aria-expanded={isExpanded}
@@ -49,7 +49,7 @@ const J40AccordionItem = ({id, title, children}:IJ40AccordionItem) => {
             tabIndex={0}
           >
             {isExpanded ? 'hide' : 'show'}
-          </button>
+          </a>
           { isExpanded ?
           <img
             className={styles.showHideIcon}

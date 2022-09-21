@@ -23,7 +23,7 @@
         @include u-margin-top(.5);
     }
     .demographicHeading {
-        @include u-margin-top(.5);
+        @include u-margin-top(1);
         font-size: .875rem;
         
         span{
@@ -37,7 +37,6 @@
     
             //emulate a link
             cursor:pointer;
-            @include u-color('blue-60v');
             text-decoration:underline;
     
             min-width: 45px;
@@ -47,7 +46,6 @@
         .showHideIcon{
             vertical-align: middle;
             height: 1rem;
-            margin-left: -8px;
             filter: invert(8%) sepia(90%) saturate(7490%) hue-rotate(247deg) brightness(105%) contrast(143%);
 
             &:hover{
