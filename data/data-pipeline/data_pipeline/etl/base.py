@@ -164,9 +164,6 @@ class ExtractTransformLoad:
         for field in dataset_config["load_fields"]:
             cls.COLUMNS_TO_KEEP.append(field["long_name"])
             setattr(cls, field["df_field_name"], field["long_name"])
-
-            # set the constants for the class
-            setattr(cls, field["df_field_name"], field["long_name"])
         return dataset_config
 
     # This is a classmethod so it can be used by `get_data_frame` without
