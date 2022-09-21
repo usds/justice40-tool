@@ -7,8 +7,6 @@ interface IMapInfoPanelProps {
     featureProperties: { [key:string]: string | number } | undefined,
     selectedFeatureId: string | number | undefined
     hash: string[],
-    isCensusLayerSelected: boolean,
-    layerToggled: boolean, // indicates if census layer or tribal layer has been toggled
   }
 
 const MapInfoPanel = ({
@@ -16,23 +14,18 @@ const MapInfoPanel = ({
   featureProperties,
   selectedFeatureId,
   hash,
-  isCensusLayerSelected,
-  layerToggled,
 }:IMapInfoPanelProps) => {
   return (
     <div className={className} >
-      {/* The tertiary conditional statement below will control the side panel state. Currently
+      {/*
+      The tertiary conditional statement below will control the side panel state. Currently
       there are two states, namely showing the AreaDetail or SidePanelInfo. When a feature
-      is selected, on - for example - the census tract layer, and if the Tribal Layer is the selected
-      the Side Panel should revert back to the SidePanelInfo.
-
-      A new boolean called layerToggle captures that a layer has been selected and to render
-      the SidePanelInfo component */}
-      {(featureProperties && selectedFeatureId && !layerToggled) ?
+      is selected, show the AreaDetail. When not selected show SidePanelInfo
+       */}
+      {(featureProperties && selectedFeatureId) ?
           <AreaDetail
             properties={featureProperties}
             hash={hash}
-            isCensusLayerSelected={isCensusLayerSelected}
           /> :
           <SidePanelInfo />
       }

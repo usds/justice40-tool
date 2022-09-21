@@ -29,7 +29,6 @@ import MapInfoPanel from './mapInfoPanel';
 import MapSearch from './MapSearch';
 import MapTractLayers from './MapTractLayers/MapTractLayers';
 import MapTribalLayer from './MapTribalLayers/MapTribalLayers';
-import LayerSelector from './LayerSelector';
 import TerritoryFocusControl from './territoryFocusControl';
 import {getOSBaseMap} from '../data/getOSBaseMap';
 
@@ -86,11 +85,6 @@ const J40Map = ({location}: IJ40Interface) => {
   const [transitionInProgress, setTransitionInProgress] = useState<boolean>(false);
   const [geolocationInProgress, setGeolocationInProgress] = useState<boolean>(false);
   const [isMobileMapState, setIsMobileMapState] = useState<boolean>(false);
-  const [censusSelected, setCensusSelected] = useState<boolean>(true);
-
-  // In order to detect that the layer has been toggled (between census and tribal),
-  // this state variable will hold that information
-  const [layerToggled, setLayerToggled] = useState<boolean>(false);
   const {width: windowWidth} = useWindowSize();
 
   /**
@@ -175,8 +169,6 @@ const J40Map = ({location}: IJ40Interface) => {
       }
     } else {
       // This else clause will fire when the ID is null or empty. This is the case where the map is clicked
-
-      setLayerToggled(false);
 
       // @ts-ignore
       const feature = event.features && event.features[0];
@@ -324,7 +316,7 @@ const J40Map = ({location}: IJ40Interface) => {
     setGeolocationInProgress(true);
   };
 
-  const mapBoxBaseLayer = 'tl' in flags ? `mapbox://styles/justice40/cl2qimpi2000014qeb1egpox8` : `mapbox://styles/justice40/cl5mp95tu000k14lpl21spgny`;
+  const mapBoxBaseLayer = `mapbox://styles/justice40/cl2qimpi2000014qeb1egpox8`;
 
   return (
     <>
@@ -364,7 +356,7 @@ const J40Map = ({location}: IJ40Interface) => {
           // ****** Map state props: ******
           // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#map-state
           {...viewport}
-          mapStyle={process.env.MAPBOX_STYLES_READ_TOKEN ? mapBoxBaseLayer : getOSBaseMap(censusSelected)}
+          mapStyle={process.env.MAPBOX_STYLES_READ_TOKEN ? mapBoxBaseLayer : getOSBaseMap()}
           width="100%"
           // Ajusting this height with a conditional statement will not render the map on staging.
           // The reason for this issue is unknown. Consider styling the parent container via SASS.
@@ -379,13 +371,10 @@ const J40Map = ({location}: IJ40Interface) => {
           dragRotate={false}
           touchRotate={false}
           // eslint-disable-next-line max-len
-          interactiveLayerIds={censusSelected ?
+          interactiveLayerIds={
             [
               constants.HIGH_ZOOM_LAYER_ID,
               constants.PRIORITIZED_HIGH_ZOOM_LAYER_ID,
-            ] : [
-              constants.TRIBAL_LAYER_ID,
-              constants.TRIBAL_ALASKA_POINTS_LAYER_ID,
             ]
           }
 
@@ -401,18 +390,10 @@ const J40Map = ({location}: IJ40Interface) => {
           data-cy={'reactMapGL'}
         >
 
-          {/* Load either the Tribal layer or Census layer depending on the censusSelected state variable */}
-          {
-            censusSelected ?
-              <MapTractLayers
-                selectedFeature={selectedFeature}
-                selectedFeatureId={selectedFeatureId}
-              /> :
-              <MapTribalLayer
-                selectedFeature={selectedFeature}
-                selectedFeatureId={selectedFeatureId}
-              />
-          }
+          <MapTractLayers
+            selectedFeature={selectedFeature}
+            selectedFeatureId={selectedFeatureId}
+          />
 
           {/* This is the first overlayed row on the map: Search and Geolocation */}
           <div className={styles.mapHeaderRow}>
@@ -441,13 +422,6 @@ const J40Map = ({location}: IJ40Interface) => {
                 />
               </div>
             </div>
-
-            {/* This will allow to select between the census tract layer and the tribal lands layer */}
-            <LayerSelector
-              censusSelected={censusSelected}
-              setCensusSelected={setCensusSelected}
-              setLayerToggled={setLayerToggled}
-            />
 
           </div>
 
@@ -478,7 +452,6 @@ const J40Map = ({location}: IJ40Interface) => {
               <AreaDetail
                 properties={detailViewData.properties}
                 hash={zoomLatLngHash}
-                isCensusLayerSelected={censusSelected}
               />
             </Popup>
           )}
@@ -493,8 +466,6 @@ const J40Map = ({location}: IJ40Interface) => {
           featureProperties={detailViewData?.properties}
           selectedFeatureId={selectedFeature?.id}
           hash={zoomLatLngHash}
-          isCensusLayerSelected={censusSelected}
-          layerToggled={layerToggled}
         />
       </Grid>
     </>
