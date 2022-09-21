@@ -31,7 +31,7 @@ from .fixtures import (
 
 
 pytestmark = pytest.mark.smoketest
-UNMATCHED_TRACK_THRESHOLD = 1000
+UNMATCHED_TRACT_THRESHOLD = 1000
 
 
 def _helper_test_count_exceeding_threshold(df, col, error_check=1000):
@@ -289,7 +289,7 @@ def test_data_sources(
 
         # Make sure the datasource doesn't have a ton of unmatched tracts, implying it
         # has moved to 2020 tracts
-        assert len(df[df.MERGE == "right_only"]) < UNMATCHED_TRACK_THRESHOLD
+        assert len(df[df.MERGE == "right_only"]) < UNMATCHED_TRACT_THRESHOLD
 
         df = df[df.MERGE == "both"]
 
