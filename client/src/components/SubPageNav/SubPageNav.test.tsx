@@ -16,8 +16,8 @@ describe('rendering of the SubPageNav', () => {
 
     const firstLink = container.querySelector(`.usa-sidenav li:nth-child(${firstLinkActive}) a`);
     const secondLink = container.querySelector(`.usa-sidenav li:nth-child(${secondLinkIndex}) a`);
-    expect(firstLink?.className).toBe('usa-current');
-    expect(secondLink?.className).not.toBe('usa-current');
+    expect(firstLink?.className).toBe('usa-link usa-current');
+    expect(secondLink?.className).not.toBe('usa-link usa-current');
   });
 
   it('checks if the second link is active', () => {
@@ -29,7 +29,7 @@ describe('rendering of the SubPageNav', () => {
 
     const firstLink = container.querySelector(`.usa-sidenav li:nth-child(${firstLinkActive}) a`);
     const secondLink = container.querySelector(`.usa-sidenav li:nth-child(${secondLinkIndex}) a`);
-    expect(secondLink?.className).toBe('usa-current');
-    expect(firstLink?.className).not.toBe('usa-current');
+    expect(secondLink?.className).toBe('usa-link usa-current');
+    expect(firstLink?.className).not.toBe('usa-link usa-current');
   });
 });

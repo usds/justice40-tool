@@ -41,7 +41,7 @@ const LinkTypeWrapper = (props:ILinkTypeWrapper) => {
   if (props.internal) {
     return (
       <Link to={`${url}`}
-        className={props.className}
+        className={props.className ? `usa-link ${props.className}` : `usa-link`}
       >
         {props.linkText}
       </Link>

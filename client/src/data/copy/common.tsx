@@ -20,7 +20,7 @@ export interface IDefineMessage {
  * */
 export const italicFn = (str:string) => <i>{str}</i>;
 export const boldFn = (str:string) => <strong>{str}</strong>;
-export const simpleLink = (href:string) => (str:string) => <a href={href}>{str}</a>;
+export const simpleLink = (href:string) => (str:string) => <a className={'usa-link'} href={href}>{str}</a>;
 // export const downloadLink = (href:string) => (str:string) => <a href={href} download>{str}</a>;
 export const downloadLink = (href:string) => (str:string) => <DownloadLink href={href} linkText={str} />;
 // eslint-disable-next-line max-len
@@ -101,13 +101,8 @@ export const ALERTS = {
 export const HEADER = defineMessages({
   TITLE_LINE_1: {
     id: 'common.pages.header.title.line1',
-    defaultMessage: `Climate and Economic Justice`,
-    description: 'Navigate to the about page. This is Title in nav header line 1 of 2',
-  },
-  TITLE_LINE_2: {
-    id: 'common.pages.header.title.line2',
-    defaultMessage: `Screening Tool`,
-    description: 'Navigate to the about page. This is Title in nav header line 2 of 2',
+    defaultMessage: `Climate and Economic Justice Screening Tool`,
+    description: 'Navigate to the about page. This is Title in nav header',
   },
   ABOUT: {
     id: 'common.pages.header.about',

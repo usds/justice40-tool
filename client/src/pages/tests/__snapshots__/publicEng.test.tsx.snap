@@ -146,11 +146,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             src="test-file-stub"
           />
           <a
+            class="usa-link"
             href="#"
           >
             English
           </a>
           <a
+            class="usa-link"
             href="#"
           >
             Español
@@ -194,17 +196,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           data-testid="grid"
         >
           <div>
-            <div>
-              Climate and Economic Justice
-            </div>
-            <div>
-              <div>
-                 Screening Tool 
-              </div>
-              <div>
-                BETA
-              </div>
-            </div>
+            Climate and Economic Justice Screening Tool
           </div>
         </div>
         <div
@@ -315,11 +307,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                       src="test-file-stub"
                     />
                     <a
+                      class="usa-link"
                       href="#"
                     >
                       English
                     </a>
                     <a
+                      class="usa-link"
                       href="#"
                     >
                       Español
@@ -1026,7 +1020,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="usa-footer__secondary-link"
                 >
                   <a
-                    class="footer-link-first-child"
+                    class="usa-link footer-link-first-child"
                     href="/en/public-engagement"
                   >
                     Engagement calendar

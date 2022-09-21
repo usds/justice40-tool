@@ -10,6 +10,7 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
       <li>
         View the 
         <a
+          class="usa-link"
           href="/en/methodology"
         >
           Methodology & data

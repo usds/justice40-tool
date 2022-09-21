@@ -1377,6 +1377,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       </div>
       <div>
         <a
+          class="usa-link"
           href="/en/methodology"
         >
           Return to top

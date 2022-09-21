@@ -9,15 +9,16 @@ exports[`rendering of TractDemographics component does it render a tract in Alas
     <h6>
       Race / Ethnicity
       <span>
-        (
-        <button
+        ( 
+        <a
           aria-controls="race-panel"
           aria-expanded="false"
+          class="usa-link"
           id="race-header"
           tabindex="0"
         >
           show
-        </button>
+        </a>
         <img
           alt="expand icon"
           src="test-file-stub"
@@ -98,15 +99,16 @@ exports[`rendering of TractDemographics component does it render a tract in Alas
     <h6>
       Age
       <span>
-        (
-        <button
+        ( 
+        <a
           aria-controls="age-panel"
           aria-expanded="false"
+          class="usa-link"
           id="age-header"
           tabindex="0"
         >
           show
-        </button>
+        </a>
         <img
           alt="expand icon"
           src="test-file-stub"
@@ -157,15 +159,16 @@ exports[`rendering of TractDemographics component does it render a tract in Amer
     <h6>
       Race / Ethnicity
       <span>
-        (
-        <button
+        ( 
+        <a
           aria-controls="race-panel"
           aria-expanded="false"
+          class="usa-link"
           id="race-header"
           tabindex="0"
         >
           show
-        </button>
+        </a>
         <img
           alt="expand icon"
           src="test-file-stub"
@@ -246,15 +249,16 @@ exports[`rendering of TractDemographics component does it render a tract in Amer
     <h6>
       Age
       <span>
-        (
-        <button
+        ( 
+        <a
           aria-controls="age-panel"
           aria-expanded="false"
+          class="usa-link"
           id="age-header"
           tabindex="0"
         >
           show
-        </button>
+        </a>
         <img
           alt="expand icon"
           src="test-file-stub"
@@ -305,15 +309,16 @@ exports[`rendering of TractDemographics component does it render a tract in NYC 
     <h6>
       Race / Ethnicity
       <span>
-        (
-        <button
+        ( 
+        <a
           aria-controls="race-panel"
           aria-expanded="false"
+          class="usa-link"
           id="race-header"
           tabindex="0"
         >
           show
-        </button>
+        </a>
         <img
           alt="expand icon"
           src="test-file-stub"
@@ -394,15 +399,16 @@ exports[`rendering of TractDemographics component does it render a tract in NYC 
     <h6>
       Age
       <span>
-        (
-        <button
+        ( 
+        <a
           aria-controls="age-panel"
           aria-expanded="false"
+          class="usa-link"
           id="age-header"
           tabindex="0"
         >
           show
-        </button>
+        </a>
         <img
           alt="expand icon"
           src="test-file-stub"

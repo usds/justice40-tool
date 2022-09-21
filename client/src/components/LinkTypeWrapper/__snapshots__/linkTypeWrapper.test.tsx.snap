@@ -28,6 +28,7 @@ exports[`testing all link types tests external links same tab 1`] = `
 exports[`testing all link types tests internal links 1`] = `
 <DocumentFragment>
   <a
+    class="usa-link"
     href="/en/methodology"
   >
     test link text

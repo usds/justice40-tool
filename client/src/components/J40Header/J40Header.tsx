@@ -36,7 +36,6 @@ const J40Header = () => {
 
   // Logo text
   const logoLine1 = intl.formatMessage(COMMON_COPY.HEADER.TITLE_LINE_1);
-  const logoLine2 = intl.formatMessage(COMMON_COPY.HEADER.TITLE_LINE_2);
 
   /**
    * State variable to control the toggling of mobile menu button
@@ -203,17 +202,13 @@ const J40Header = () => {
 
           {/* Logo */}
           <Grid col={1}>
-            <img className={styles.logo} src={siteLogo} alt={`${logoLine1} ${logoLine2}`} />
+            <img className={styles.logo} src={siteLogo} alt={`${logoLine1}`} />
           </Grid>
 
           {/* Logo Title */}
           <Grid col={6}>
             <div className={styles.logoTitle}>
-              <div>{logoLine1}</div>
-              <div className={styles.title2BetaPill}>
-                <div> {logoLine2} </div>
-                <div className={styles.betaPill}>BETA</div>
-              </div>
+              {logoLine1}
             </div>
           </Grid>
 

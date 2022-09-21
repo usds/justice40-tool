@@ -146,11 +146,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             src="test-file-stub"
           />
           <a
+            class="usa-link"
             href="#"
           >
             English
           </a>
           <a
+            class="usa-link"
             href="#"
           >
             Español
@@ -194,17 +196,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           data-testid="grid"
         >
           <div>
-            <div>
-              Climate and Economic Justice
-            </div>
-            <div>
-              <div>
-                 Screening Tool 
-              </div>
-              <div>
-                BETA
-              </div>
-            </div>
+            Climate and Economic Justice Screening Tool
           </div>
         </div>
         <div
@@ -315,11 +307,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                       src="test-file-stub"
                     />
                     <a
+                      class="usa-link"
                       href="#"
                     >
                       English
                     </a>
                     <a
+                      class="usa-link"
                       href="#"
                     >
                       Español
@@ -346,27 +340,6 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         <h1>
           Methodology
         </h1>
-        <div>
-          <a
-            href="/en/public-engagement"
-          >
-            <button
-              class="usa-button"
-              data-testid="button"
-              type="button"
-            >
-              <div>
-                <img
-                  alt="an icon that represents a calendar"
-                  src="test-file-stub"
-                />
-                <div>
-                  Public engagement
-                </div>
-              </div>
-            </button>
-          </a>
-        </div>
       </section>
       <div
         class="grid-row grid-gap j40-mb5-mt3"
@@ -471,18 +444,21 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </strong>
            at or above the 90th percentile for 
           <a
+            class="usa-link"
             href="#exp-agr-loss-rate"
           >
             expected agriculture loss rate
           </a>
            OR 
           <a
+            class="usa-link"
             href="#exp-bld-loss-rate"
           >
             expected building loss rate
           </a>
            OR 
           <a
+            class="usa-link"
             href="#exp-pop-loss-rate"
           >
             expected population loss rate
@@ -496,12 +472,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </strong>
            is at or above the 65th percentile for 
           <a
+            class="usa-link"
             href="#low-income"
           >
             low income
           </a>
            AND 80% or more of individuals 15 or older are not enrolled in 
           <a
+            class="usa-link"
             href="#high-ed-enroll-rate"
           >
             higher education
@@ -530,12 +508,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </strong>
            at or above the 90th percentile for 
           <a
+            class="usa-link"
             href="#energy-burden"
           >
             energy burden
           </a>
            OR 
           <a
+            class="usa-link"
             href="#pm-25"
           >
             PM2.5 in the air
@@ -549,12 +529,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </strong>
            is at or above the 65th percentile for 
           <a
+            class="usa-link"
             href="#low-income"
           >
             low income
           </a>
            AND 80% or more of individuals 15 or older are not enrolled in 
           <a
+            class="usa-link"
             href="#high-ed-enroll-rate"
           >
             higher education
@@ -585,12 +567,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </strong>
            at or above the 90th percentile for 
           <a
+            class="usa-link"
             href="#diesel-pm"
           >
             diesel particulate matter exposure
           </a>
            or 
           <a
+            class="usa-link"
             href="#traffic-vol"
           >
             traffic proximity and volume
@@ -606,12 +590,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </strong>
            is at or above the 65th percentile for 
           <a
+            class="usa-link"
             href="#low-income"
           >
             low income
           </a>
            AND 80% or more of individuals 15 or older are not enrolled in 
           <a
+            class="usa-link"
             href="#high-ed-enroll-rate"
           >
             higher education
@@ -640,18 +626,21 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </strong>
            at or above the 90th percentile for 
           <a
+            class="usa-link"
             href="#lead-paint"
           >
             lead paint
           </a>
            AND 
           <a
+            class="usa-link"
             href="#median-home"
           >
             median home value
           </a>
            is at or less than the 90th percentile OR at or above the 90th percentile for the 
           <a
+            class="usa-link"
             href="#house-burden"
           >
             housing cost burden
@@ -665,12 +654,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </strong>
            is at or above the 65th percentile for 
           <a
+            class="usa-link"
             href="#low-income"
           >
             low income
           </a>
            AND 80% or more of individuals 15 or older are not enrolled in 
           <a
+            class="usa-link"
             href="#high-ed-enroll-rate"
           >
             higher education
@@ -699,18 +690,21 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </strong>
            at or above the 90th percentile for 
           <a
+            class="usa-link"
             href="#prox-haz"
           >
             proximity to hazardous waste facilities
           </a>
            OR 
           <a
+            class="usa-link"
             href="#prox-npl"
           >
             proximity to National Priorities List (NPL) sites
           </a>
            OR 
           <a
+            class="usa-link"
             href="#prox-rmp"
           >
             proximity to Risk Management Plan (RMP) facilities
@@ -724,12 +718,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </strong>
            is at or above the 65th percentile for 
           <a
+            class="usa-link"
             href="#low-income"
           >
             low income
           </a>
            AND 80% or more of individuals 15 or older are not enrolled in 
           <a
+            class="usa-link"
             href="#high-ed-enroll-rate"
           >
             higher education
@@ -758,6 +754,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </strong>
            at or above the 90th percentile for 
           <a
+            class="usa-link"
             href="#waste-water"
           >
             wastewater discharge
@@ -771,12 +768,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </strong>
            is at or above the 65th percentile for 
           <a
+            class="usa-link"
             href="#low-income"
           >
             low income
           </a>
            AND 80% or more of individuals 15 or older are not enrolled in 
           <a
+            class="usa-link"
             href="#high-ed-enroll-rate"
           >
             higher education
@@ -805,24 +804,28 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </strong>
            at or above the 90th percentile for 
           <a
+            class="usa-link"
             href="#asthma"
           >
             asthma
           </a>
            OR 
           <a
+            class="usa-link"
             href="#diabetes"
           >
             diabetes
           </a>
            OR 
           <a
+            class="usa-link"
             href="#heart-disease"
           >
             heart disease
           </a>
            OR 
           <a
+            class="usa-link"
             href="#life-exp"
           >
             low life expectancy
@@ -836,12 +839,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </strong>
            is at or above the 65th percentile for 
           <a
+            class="usa-link"
             href="#low-income"
           >
             low income
           </a>
            AND 80% or more of individuals 15 or older are not enrolled in 
           <a
+            class="usa-link"
             href="#high-ed-enroll-rate"
           >
             higher education
@@ -870,24 +875,28 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </strong>
            at or above the 90th percentile for 
           <a
+            class="usa-link"
             href="#low-med-inc"
           >
             low median income
           </a>
            as a percentage of area median income OR 
           <a
+            class="usa-link"
             href="#ling-iso"
           >
             linguistic isolation
           </a>
            OR 
           <a
+            class="usa-link"
             href="#unemploy"
           >
             unemployment
           </a>
            OR percentage of individuals in households at or below 100% Federal 
           <a
+            class="usa-link"
             href="#poverty"
           >
             poverty
@@ -901,12 +910,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </strong>
            10% or more of adults 25 or older have not attained a 
           <a
+            class="usa-link"
             href="#high-school"
           >
             high school degree
           </a>
            AND 80% or more of individuals 15 or older are not enrolled in 
           <a
+            class="usa-link"
             href="#high-ed-enroll-rate"
           >
             higher education
@@ -2292,6 +2303,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         </div>
         <div>
           <a
+            class="usa-link"
             href="/en/methodology"
           >
             Return to top
@@ -2377,7 +2389,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="usa-footer__secondary-link"
                 >
                   <a
-                    class="footer-link-first-child"
+                    class="usa-link footer-link-first-child"
                     href="/en/public-engagement"
                   >
                     Engagement calendar

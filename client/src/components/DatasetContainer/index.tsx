@@ -44,7 +44,7 @@ const DatasetContainer = () => {
           </Grid>
 
           <div className={styles.returnToTop}>
-            <Link to={PAGES_ENDPOINTS.METHODOLOGY}>
+            <Link className={'usa-link'} to={PAGES_ENDPOINTS.METHODOLOGY}>
               {METHODOLOGY_COPY.RETURN_TO_TOP.LINK}
             </Link>
           </div>

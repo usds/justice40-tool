@@ -6,76 +6,134 @@ exports[`rendering of the component expects the render to match snapshot 1`] = `
     <header
       tabindex="0"
     >
-      Things to know
+      
+      How to use the map:
+    
     </header>
     <p
       tabindex="0"
     >
       
-      This tool identifies communities that are marginalized, underserved, and overburdened by pollution. These communities are located in census tracts that are at or above the thresholds in one or more of eight categories of criteria.
+      Zoom in
     
-    </p>
-    <p
-      tabindex="0"
-    >
+      <img
+        alt="
+      a plus icon indicating that the user can zoom in
+    *"
+        src="test-file-stub"
+        tabindex="0"
+      />
       
-      Zoom in or search and select to see data about any census tract of interest
+      , search
     
-    </p>
-    <img
-      alt="
-      An icon that has depicts pieces of a block selected mimicking the census block census tracts
+      <img
+        alt="
+      a magnifying glass icon informing the user can search
     "
-      src="test-file-stub"
-      tabindex="0"
-    />
+        src="test-file-stub"
+        tabindex="0"
+      />
+      
+      , or locate yourself 
+    
+      <img
+        alt="
+      a gps icon informing the user can locate
+    "
+        src="test-file-stub"
+        tabindex="0"
+      />
+      
+      and select
+    
+      <img
+        alt="
+      a mouse arrow icon informing the user can use the mouse
+    "
+        src="test-file-stub"
+        tabindex="0"
+      />
+      
+      to see information about any census tract
+    
+    </p>
     <p
       tabindex="0"
     >
       
-      The tool uses census tracts that represent about 4,000 people, which is the smallest unit of geography for which consistent data can be displayed on the map.
+     Things to know:
     
     </p>
-    <img
-      alt="
+    <p
+      tabindex="0"
+    >
+      
+      The tool uses census tracts
+    
+      <img
+        alt="
+      a tract icon informing the user of census tracts
+    "
+        src="test-file-stub"
+        tabindex="0"
+      />
+      
+    . Census tracts are a small unit of geography. They make it possible to display data consistenly across the nation.
+    
+    </p>
+    <p
+      tabindex="0"
+    >
+      
+      Communities that are disadvantaged live in tracts that experience burdens. These tracts are highlighted in a blueish gray color
+    
+      <img
+        alt="
+      a blue circle icon informing the user of what a disadvantaged community is depicted as
+    "
+        src="test-file-stub"
+        tabindex="0"
+      />
+      
+      on the map. This color is an opacity. This is so information about the map can be seen.
+    
+    </p>
+    <p
+      tabindex="0"
+    >
+      
+      The tool uses percentiles
+    
+      <img
+        alt="
       An icon that a bell curve or gaussian distribution
     "
-      src="test-file-stub"
-      tabindex="0"
-    />
-    <p
-      tabindex="0"
-    >
+        src="test-file-stub"
+        tabindex="0"
+      />
       
-      The tool ranks each census tract using percentiles that show how much burden each tract experiences relative to all other tracts, for each criterion.
+      , percentages 
     
-    </p>
-    <img
-      alt="
+      <img
+        alt="
       An icon that depicts a part of pie chart being removed
     "
-      src="test-file-stub"
-      tabindex="0"
-    />
-    <p
-      tabindex="0"
-    >
+        src="test-file-stub"
+        tabindex="0"
+      />
       
-      Percentages are used for certain variables, i.e. those relating to high school achievement rate and to the share of individuals not currently enrolled in higher education.
+      , or a simple yes/no to indicate how much burden the communities are experiencing in each tract. 
     
     </p>
-    <img
-      alt="
-      An icon that has an up arrow and a down arrow
-    "
-      src="test-file-stub"
-      tabindex="0"
-    />
     <p
       tabindex="0"
     >
       
-    Thresholds for each category determine if a tract should be identified as disadvantaged because it has exceeded a certain value for the relevant indicators.
+    The tool also uses thresholds. If the tract meets or exceeds the threshold of any climate, environmental, or other burden 
+      <strong>
+        AND
+      </strong>
+       it meets the threshold for the associated socioeconomic burden, then communites in the tract are considered disadvantaged.
   
     </p>
   </aside>
