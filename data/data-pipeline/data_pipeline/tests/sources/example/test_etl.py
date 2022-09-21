@@ -209,6 +209,16 @@ class TestETL:
 
         assert actual_file_path == expected_file_path
 
+    def test_tract_id_lengths(self, mock_etl, mock_paths):
+        etl = self._setup_etl_instance_and_run_extract(
+            mock_etl=mock_etl, mock_paths=mock_paths
+        )
+        etl.transform()
+        etl.validate()
+        etl.load()
+        df = etl.get_data_frame()
+        assert (df[etl.GEOID_TRACT_FIELD_NAME].str.len() == 11).all()
+
     def test_fixtures_contain_shared_tract_ids_base(self, mock_etl, mock_paths):
         """Check presence of necessary shared tract IDs.
         Note: We used shared census tract IDs so that later our tests can join all the
