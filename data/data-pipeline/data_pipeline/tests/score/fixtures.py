@@ -215,3 +215,16 @@ def national_tract_df():
         low_memory=False,
         header=None,
     )
+
+
+@pytest.fixture()
+def tribal_overlap():
+    tribal_overlap = (
+        constants.DATA_PATH / "dataset" / "tribal_overlap" / "usa.csv"
+    )
+
+    return pd.read_csv(
+        tribal_overlap,
+        dtype={GEOID_TRACT_FIELD: "string"},
+        low_memory=False,
+    )
