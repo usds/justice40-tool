@@ -508,9 +508,10 @@ Additional future modifications could include the use of Pandera and/or other sc
 
 ### Smoketests
 
-To ensure the score and tiles process correctly, there is a suite of "smoke tests" that can be run after the ETL and score data have been run.
+To ensure the score and tiles process correctly, there is a suite of "smoke tests" that can be run after the ETL and score data have been run, and outputs like the frontend GEOJSON have been created.
 These tests are implemented as pytest test, but are skipped by default. To run them.
 
 1. Generate a full score with `poetry run python3 data_pipeline/application.py score-full-run`
-2. Generate the tile data with `poetry run python3 data_pipeline/application.py generate-score-post -s aws`
-3. Select the smoke tests for pytest with `poetry run pytest data_pipeline/tests -k smoketest`
+2. Generate the tile data with `poetry run python3 data_pipeline/application.py generate-score-post`
+3. Generate the frontend GEOJSON with `poetry run python3 data_pipeline/application.py geo-score`
+4. Select the smoke tests for pytest with `poetry run pytest data_pipeline/tests -k smoketest`
