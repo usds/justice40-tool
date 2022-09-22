@@ -29,6 +29,8 @@ class CensusACSETL(ExtractTransformLoad):
             self.DATA_PATH / "dataset" / f"census_acs_{self.ACS_YEAR}"
         )
 
+        self.MINIMUM_POPULATION_REQUIRED_FOR_IMPUTATION = 1
+
         self.TOTAL_UNEMPLOYED_FIELD = "B23025_005E"
         self.TOTAL_IN_LABOR_FORCE = "B23025_003E"
         self.EMPLOYMENT_FIELDS = [
@@ -386,9 +388,6 @@ class CensusACSETL(ExtractTransformLoad):
             self.DATA_PATH / "census" / "geojson" / "us.json",
         )
 
-        # TODO - delete
-        logger.info(f"geo_df is {geo_df.head()}")
-
         df = self._merge_geojson(
             df=df,
             usa_geo_df=geo_df,
@@ -401,7 +400,7 @@ class CensusACSETL(ExtractTransformLoad):
                 self.MEDIAN_INCOME_FIELD: self.MEDIAN_INCOME_FIELD_NAME,
                 self.TOTAL_POPULATION_FROM_AGE_TABLE: field_names.TOTAL_POP_FIELD,
             },
-            errors="raise"
+            errors="raise",
         )
 
         # Handle null values for various fields, which are `-666666666`.
@@ -578,8 +577,7 @@ class CensusACSETL(ExtractTransformLoad):
         # percentage.
         for age_bucket, sum_columns in age_bucket_and_its_sum_columns:
             df[age_bucket] = (
-                df[sum_columns].sum(axis=1)
-                / df[field_names.TOTAL_POP_FIELD]
+                df[sum_columns].sum(axis=1) / df[field_names.TOTAL_POP_FIELD]
             )
 
         # Calculate college attendance and adjust low income
@@ -614,6 +612,7 @@ class CensusACSETL(ExtractTransformLoad):
             ],
             geo_df=df,
             geoid_field=self.GEOID_TRACT_FIELD_NAME,
+            minimum_population_required_for_imputation=self.MINIMUM_POPULATION_REQUIRED_FOR_IMPUTATION,
         )
 
         logger.info("Calculating with imputed values")
@@ -627,13 +626,20 @@ class CensusACSETL(ExtractTransformLoad):
             - df[self.COLLEGE_ATTENDANCE_FIELD].fillna(
                 df[self.IMPUTED_COLLEGE_ATTENDANCE_FIELD]
             )
+            # Use clip to ensure that the values are not negative if college attendance
+            # is very high
         ).clip(
             lower=0
         )
 
         # All values should have a value at this point
         assert (
+            # For tracts with >0 population
             df[
+                df[field_names.TOTAL_POP_FIELD]
+                >= self.MINIMUM_POPULATION_REQUIRED_FOR_IMPUTATION
+            ][
+                # Then the imputed field should have no nulls
                 self.ADJUSTED_AND_IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME
             ]
             .isna()
@@ -656,8 +662,8 @@ class CensusACSETL(ExtractTransformLoad):
             & df[field_names.POVERTY_LESS_THAN_200_FPL_FIELD].isna()
         )
 
-        # Strip columns and save results to self.
-        self.df = df[self.COLUMNS_TO_KEEP]
+        # Save results to self.
+        self.output_df = df
 
     def load(self) -> None:
         logger.info("Saving Census ACS Data")
@@ -665,4 +671,6 @@ class CensusACSETL(ExtractTransformLoad):
         # mkdir census
         self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
 
-        self.df.to_csv(path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False)
+        self.output_df[self.COLUMNS_TO_KEEP].to_csv(
+            path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False
+        )

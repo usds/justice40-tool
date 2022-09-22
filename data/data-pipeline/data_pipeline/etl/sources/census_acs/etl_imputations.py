@@ -43,6 +43,7 @@ def _prepare_dataframe_for_imputation(
     impute_var_named_tup_list: List[NamedTuple],
     geo_df: gpd.GeoDataFrame,
     population_field: str,
+    minimum_population_required_for_imputation: int = 1,
     geoid_field: str = "GEOID10_TRACT",
 ) -> Tuple[Any, gpd.GeoDataFrame]:
     """Helper for imputation.
@@ -50,6 +51,9 @@ def _prepare_dataframe_for_imputation(
     Given the inputs of `ImputeVariables`, returns list of tracts that need to be
     imputed, along with a GeoDataFrame that has a column with the imputed field
     "primed", meaning it is a copy of the raw field.
+
+    Will drop any rows with population less than
+    `minimum_population_required_for_imputation`.
     """
     imputing_cols = [
         impute_var_pair.raw_field_name
@@ -63,47 +67,19 @@ def _prepare_dataframe_for_imputation(
         ].copy()
 
     # Generate a list of tracts for which at least one of the imputation
-    # columns is null
-
-    asdf1 = geo_df[
-        (
-            # First, check whether any of the columns we want to impute contain null values
-            geo_df[imputing_cols]
-            .isna()
-            .any(axis=1)
-        )
-    ][[geoid_field, population_field]]
-
-    logger.info(f"Tract df is:\n{asdf1.head()}")
-
-    asdf = geo_df[
-        (
-            # First, check whether any of the columns we want to impute contain null values
-            geo_df[imputing_cols].isna().any(axis=1)
-            # Second, ensure population is > 0
-            & (
-                geo_df[population_field].notnull() & geo_df[population_field]
-                > 0
-            )
-        )
-    ][[geoid_field, population_field]]
-
-    logger.info(f"Tract df with no pop is:\n{asdf.head()}")
-
+    # columns is null that also meets population criteria.
     tract_list = geo_df[
         (
-            # First, check whether any of the columns we want to impute contain null values
+            # First, check whether any of the columns we want to impute contain null
+            # values
             geo_df[imputing_cols].isna().any(axis=1)
             # Second, ensure population is > 0
             & (
-                geo_df[population_field].notnull() & geo_df[population_field]
-                > 0
+                geo_df[population_field].isnull() | geo_df[population_field]
+                >= minimum_population_required_for_imputation
             )
         )
     ][geoid_field].unique()
-
-    # TODO - delete
-    logger.info(f"Tract list is:\n{tract_list}")
 
     # Check that imputation is a valid choice for this set of fields
     logger.info(f"Imputing values for {len(tract_list)} unique tracts.")
@@ -117,6 +93,7 @@ def calculate_income_measures(
     geo_df: gpd.GeoDataFrame,
     geoid_field: str,
     population_field: str = field_names.TOTAL_POP_FIELD,
+    minimum_population_required_for_imputation: int = 1,
 ) -> pd.DataFrame:
     """Impute values based on geographic neighbors
 
@@ -137,6 +114,7 @@ def calculate_income_measures(
         geo_df=geo_df,
         geoid_field=geoid_field,
         population_field=population_field,
+        minimum_population_required_for_imputation=minimum_population_required_for_imputation,
     )
 
     # Iterate through the dataframe to impute in place
@@ -167,6 +145,7 @@ def calculate_income_measures(
                     ],
                     column_to_impute=impute_var_pair.raw_field_name,
                 )
+
                 geo_df.loc[index, impute_var_pair.imputed_field_name] = geo_df[
                     mask_to_use
                 ][impute_var_pair.raw_field_name].mean()
