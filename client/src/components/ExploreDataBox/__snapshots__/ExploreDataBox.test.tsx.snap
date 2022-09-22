@@ -9,7 +9,7 @@ exports[`rendering of ExploreDataBox Component checks if component renders 1`] =
     <div
       class="usa-summary-box__body"
     >
-      <h3
+      <h2
         class="usa-summary-box__heading"
       >
         Get the data
@@ -20,7 +20,7 @@ exports[`rendering of ExploreDataBox Component checks if component renders 1`] =
           src="test-file-stub"
           tabindex="0"
         />
-      </h3>
+      </h2>
       <div
         class="usa-summary-box__text"
       >

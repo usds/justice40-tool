@@ -18,7 +18,7 @@ const ExploreDataBox = ({}: IExploreDataBoxProps) => {
   return (
     <SummaryBox>
 
-      <SummaryBoxHeading headingLevel='h3'>
+      <SummaryBoxHeading headingLevel='h2'>
         {intl.formatMessage(EXPLORE_COPY.EXPLORE_DATA_BOX.TITLE)}
         <img tabIndex={0} className={styles.fileDownIcon} src={fileDownIcon}
           alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.PLUS)}
