@@ -228,9 +228,8 @@ def test_for_column_fidelitiy_from_score(tiles_df, final_score_df):
 
 
 def test_for_geojson_fidelity_from_tiles_csv(tiles_df, tiles_geojson_df):
-    tiles_geojson_df = (
-        tiles_geojson_df.drop(columns=["geometry"])
-        .rename(columns={"GEOID10": "GTF"})
+    tiles_geojson_df = tiles_geojson_df.drop(columns=["geometry"]).rename(
+        columns={"GEOID10": "GTF"}
     )
     assert tiles_df.shape == tiles_geojson_df.shape
     assert tiles_df["GTF"].equals(tiles_geojson_df["GTF"])
@@ -245,8 +244,10 @@ def test_for_geojson_fidelity_from_tiles_csv(tiles_df, tiles_geojson_df):
                 .replace({0.0: False, 1.0: True})
             )
         if is_col_fake_bool(tiles_geojson_df[col_name]):
-            tiles_geojson_df[col_name] = tiles_geojson_df[col_name].astype('float64').replace(
-                {0.0: False, 1.0: True}
+            tiles_geojson_df[col_name] = (
+                tiles_geojson_df[col_name]
+                .astype("float64")
+                .replace({0.0: False, 1.0: True})
             )
         tiles_geojson_df[col_name] = tiles_df[col_name].replace({None: np.nan})
         error_message = f"Column {col_name} not equal "
