@@ -2,6 +2,7 @@
 from dataclasses import dataclass
 from typing import Optional
 import pandas as pd
+import geopandas as gpd
 import numpy as np
 import pytest
 from data_pipeline.config import settings
@@ -23,6 +24,13 @@ def tiles_df(scope="session"):
         settings.APP_ROOT / "data" / "score" / "csv" / "tiles" / "usa.csv",
         dtype={"GTF": str},
         low_memory=False,
+    )
+
+
+@pytest.fixture()
+def tiles_geojson_df():
+    return gpd.read_file(
+        settings.APP_ROOT / "data" / "score" / "geojson" / "usa-high.json"
     )
 
 
@@ -102,6 +110,19 @@ def test_tract_equality(tiles_df, final_score_df):
     assert tiles_df.shape[0] == final_score_df.shape[0]
 
 
+def is_col_fake_bool(col) -> bool:
+    if col.dtype == np.dtype("float64"):
+        fake_bool = {1.0, 0.0, None}
+        # Replace the nans in the column values with None for
+        # so we can just use issubset below
+        col_values = set(
+            not np.isnan(val) and val or None
+            for val in col.value_counts(dropna=False).index
+        )
+        return len(col_values) <= 3 and col_values.issubset(fake_bool)
+    return False
+
+
 @dataclass
 class ColumnValueComparison:
     final_score_column: pd.Series
@@ -110,16 +131,7 @@ class ColumnValueComparison:
 
     @property
     def _is_tiles_column_fake_bool(self) -> bool:
-        if self.tiles_column.dtype == np.dtype("float64"):
-            fake_bool = {1.0, 0.0, None}
-            # Replace the nans in the column values with None for
-            # so we can just use issubset below
-            col_values = set(
-                not np.isnan(val) and val or None
-                for val in self.tiles_column.value_counts(dropna=False).index
-            )
-            return len(col_values) <= 3 and col_values.issubset(fake_bool)
-        return False
+        return is_col_fake_bool(self.tiles_column)
 
     @property
     def _is_dtype_ok(self) -> bool:
@@ -213,6 +225,48 @@ def test_for_column_fidelitiy_from_score(tiles_df, final_score_df):
     errors = [comp for comp in comparisons if not comp]
     error_message = "\n".join(error.error_message for error in errors)
     assert not errors, error_message
+
+
+def test_for_geojson_fidelity_from_tiles_csv(tiles_df, tiles_geojson_df):
+    tiles_geojson_df = (
+        tiles_geojson_df.drop(columns=["geometry"])
+        .rename(columns={"GEOID10": "GTF"})
+    )
+    assert tiles_df.shape == tiles_geojson_df.shape
+    assert tiles_df["GTF"].equals(tiles_geojson_df["GTF"])
+    assert sorted(tiles_df.columns) == sorted(tiles_geojson_df.columns)
+
+    # Are all the dtypes and values the same?
+    for col_name in tiles_geojson_df.columns:
+        if is_col_fake_bool(tiles_df[col_name]):
+            tiles_df[col_name] = (
+                tiles_df[col_name]
+                .astype("float64")
+                .replace({0.0: False, 1.0: True})
+            )
+        if is_col_fake_bool(tiles_geojson_df[col_name]):
+            tiles_geojson_df[col_name] = tiles_geojson_df[col_name].astype('float64').replace(
+                {0.0: False, 1.0: True}
+            )
+        tiles_geojson_df[col_name] = tiles_df[col_name].replace({None: np.nan})
+        error_message = f"Column {col_name} not equal "
+        # For non-numeric types, we can use the built-in equals from pandas
+        if tiles_df[col_name].dtype in [
+            np.dtype(object),
+            np.dtype(bool),
+            np.dtype(str),
+        ]:
+            assert tiles_df[col_name].equals(
+                tiles_geojson_df[col_name]
+            ), error_message
+        # For numeric sources, use np.close so we don't get harmed by
+        # float equaity weirdness
+        else:
+            assert np.allclose(
+                tiles_df[col_name],
+                tiles_geojson_df[col_name],
+                equal_nan=True,
+            ), error_message
 
 
 def test_for_state_names(tiles_df):
