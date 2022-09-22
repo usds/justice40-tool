@@ -1235,49 +1235,39 @@ export const DOWNLOAD_DRAFT = {
 export const NOTE_ON_TERRITORIES = {
   INTRO: <FormattedMessage
     id={'explore.map.page.under.map.note.on.territories.intro'}
-    defaultMessage={`A note on the U.S. territories`}
+    defaultMessage={`U.S. territories note`}
     description={`Navigate to the explore the map page. Under the map, you will see territories intro text`}
   />,
   PARA_1: <FormattedMessage
     id={'explore.map.page.under.map.note.on.territories.para.1'}
     defaultMessage={`
-      The data sources described on the <link1>Methodology & data</link1> page are used to 
-      identify disadvantaged communities in all fifty states and the District of Columbia. However, not all 
-      of these data sources are currently available for the U.S. territories.
+      Puerto Rico: The <link1>U.S. Census Bureau's American Community Survey data</link1> from 2015 - 2019
+      are used for all fields in the workforce development category except for linguistic isolation. Linguistic isolation was removed based on feedback during the beta period. Proximity to National Priorities List (NPL) sites, proximity to Risk Management Plan (RMP) facilities, traffic proximity and volume, diesel particulate matter exposure, energy cost and housing cost were added for Puerto Rico in the 1.0 version.
     `}
     description={`Navigate to the explore the map page. Under the map, you will see territories paragraph 1`}
     values={{
-      link1: COMMON_COPY.linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
+      link1: COMMON_COPY.linkFn(EXPLORE_PAGE_LINKS.TRIBAL_ACTION_PLAN, false, true),
     }}
   />,
   PARA_2: <FormattedMessage
     id={'explore.map.page.under.map.note.on.territories.para.2'}
     defaultMessage={`
-      For Puerto Rico, the Census Bureau’s American Community Survey data from 2015-2019 are used for higher 
-      ed enrollment rate and all the other fields in the Training and Workforce Development category 
-      to identify disadvantaged communities. Data in the other categories are unavailable at this 
-      time.
-    `}
+    American Samoa and the Northern Mariana Islands: The <link1>Decennial Census data</link1> from 2010 are used. The CEJST uses the following data for these territories: unemployment, poverty, low median income, and high school education. These burdens are in the workforce Development category.
+  `}
     description={`Navigate to the explore the map page. Under the map, you will see territories paragraph 2`}
+    values={{
+      link1: COMMON_COPY.linkFn(EXPLORE_PAGE_LINKS.TRIBAL_ACTION_PLAN, false, true),
+    }}
   />,
   PARA_3: <FormattedMessage
     id={'explore.map.page.under.map.note.on.territories.para.3'}
     defaultMessage={`
-      For American Samoa and the Northern Mariana Islands, the data used to identify 
-      disadvantaged communities are from the 2010 Decennial Census, the last reported data from the 
-      U.S. Census Bureau. Available data for these territories includes unemployment, poverty,  
-      low median income, and high school degree achievement rate fields in the Training and 
-      Workforce Development category.
+    Guam and the U.S. Virgin Islands: Some <link1>Decennial Census data</link1> from 2010 are used. They show burdens in the workforce development category. The data includes: Unemployment, poverty, low median income, and high school education.
     `}
     description={`Navigate to the explore the map page. Under the map, you will see territories paragraph 3`}
-  />,
-  PARA_4: <FormattedMessage
-    id={'explore.map.page.under.map.note.on.territories.para.4'}
-    defaultMessage={`
-      Work is currently underway to identify disadvantaged communities and update the 
-      map accordingly for Guam and the U.S. Virgin Islands.
-        `}
-    description={`Navigate to the explore the map page. Under the map, you will see territories paragraph 4`}
+    values={{
+      link1: COMMON_COPY.linkFn(EXPLORE_PAGE_LINKS.TRIBAL_ACTION_PLAN, false, true),
+    }}
   />,
 };
 

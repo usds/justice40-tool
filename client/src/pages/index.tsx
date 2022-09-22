@@ -3,7 +3,6 @@ import {useIntl} from 'gatsby-plugin-intl';
 import {Grid} from '@trussworks/react-uswds';
 
 import ExploreDataBox from '../components/ExploreDataBox';
-import HowYouCanHelp from '../components/HowYouCanHelp';
 import J40Map from '../components/J40Map';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
@@ -69,7 +68,6 @@ const ExporeToolPage = ({location}: IMapPageProps) => {
         <p>{EXPLORE_COPY.NOTE_ON_TERRITORIES.PARA_1}</p>
         <p>{EXPLORE_COPY.NOTE_ON_TERRITORIES.PARA_2}</p>
         <p>{EXPLORE_COPY.NOTE_ON_TERRITORIES.PARA_3}</p>
-        <p>{EXPLORE_COPY.NOTE_ON_TERRITORIES.PARA_4}</p>
       </Grid>
 
       <Grid desktop={{col: 7}} tablet={{col: 10}} col={12}>
@@ -78,16 +76,8 @@ const ExporeToolPage = ({location}: IMapPageProps) => {
       </Grid>
     </J40MainGridContainer>
 
-    <J40MainGridContainer>
-      <Grid row>
-        <Grid col>
-          <section>
-            <HowYouCanHelp/>
-          </section>
-        </Grid>
-      </Grid>
-    </J40MainGridContainer>
-  </Layout>);
+  </Layout>
+  );
 };
 
 export default ExporeToolPage;
