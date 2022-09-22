@@ -12,7 +12,7 @@ import LinkTypeWrapper from '../LinkTypeWrapper';
 import SurveyButton from '../SurveyButton';
 
 // @ts-ignore
-import whitehouseIcon from '../../images/wh.webp';
+import whitehouseIcon from '../../images/eop-seal.svg';
 import {PAGES_ENDPOINTS} from '../../data/constants';
 import * as COMMON_COPY from '../../data/copy/common';
 
