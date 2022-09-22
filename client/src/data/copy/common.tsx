@@ -28,21 +28,24 @@ export const linkFn = (to:string | IDefineMessage, isInternal:boolean, isOpenNew
 
 export const FEEDBACK_EMAIL = 'Screeningtool-Support@omb.eop.gov';
 
+export const RELEASE_1_0_DATE = new Date(2022, 9, 25, 11, 59, 59); // Oct 25
+
 
 // Beta Banner
-export const BETA_BANNER = defineMessages({
-  TITLE: {
-    id: 'common.pages.banner.beta.title',
-    defaultMessage: 'This is a beta site.',
-    description: 'Navigate to the about page. This is the main title of the beta banner',
-  },
-  INFO: {
-    id: 'common.pages.banner.beta.info',
-    defaultMessage: `It is an early, in-progress version of the tool with limited datasets that will 
-    be regularly updated.`,
-    description: 'Navigate to the about page. This is the main info of the beta banner',
-  },
-});
+export const BETA_BANNER_CONTENT = <FormattedMessage
+  id={'common.pages.alerts.banner.beta.content'}
+  defaultMessage={`<bold1>This site has been updated.</bold1> The current version of the site is 1.0 that was released on {relDate}`}
+  description={`Alert body that appears on landing page.`}
+  values={{
+    bold1: boldFn,
+    relDate: <FormattedDate
+      value={RELEASE_1_0_DATE}
+      year="numeric"
+      month="short"
+      day="numeric"
+    />,
+  }}
+/>;
 
 export const TSD = defineMessages({
   URL: {

@@ -99,6 +99,10 @@
     "defaultMessage": "Download new <link1>technical support</link1> and other documentation and <link2>send feedback</link2>.",
     "description": "Alert title that appears at the top of pages."
   },
+  "common.pages.alerts.banner.beta.content": {
+    "defaultMessage": "<bold1>This site has been updated.</bold1> The current version of the site is 1.0 that was released on {relDate}",
+    "description": "Alert body that appears on landing page."
+  },
   "common.pages.alerts.census.tract.title": {
     "defaultMessage": "Additional documentation now available",
     "description": "Navigate to any page. This the title of the alert that informs the user that new census tract information is available"
@@ -110,14 +114,6 @@
   "common.pages.alerts.public_comment_period.title": {
     "defaultMessage": "Public comment period extended",
     "description": "Alert title that appears on landing page."
-  },
-  "common.pages.banner.beta.info": {
-    "defaultMessage": "It is an early, in-progress version of the tool with limited datasets that will be regularly updated.",
-    "description": "Navigate to the about page. This is the main info of the beta banner"
-  },
-  "common.pages.banner.beta.title": {
-    "defaultMessage": "This is a beta site.",
-    "description": "Navigate to the about page. This is the main title of the beta banner"
   },
   "common.pages.console.error.stage.url": {
     "defaultMessage": "Please check stage_hash value. It must be a 4 digit decimal value / 40 digit hexadecimal value",
