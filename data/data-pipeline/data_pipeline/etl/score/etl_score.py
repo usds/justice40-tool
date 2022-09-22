@@ -364,7 +364,7 @@ class ScoreETL(ExtractTransformLoad):
             self.nature_deprived_df,
             self.eamlis_df,
             self.fuds_df,
-            self.tribal_overlap_df
+            self.tribal_overlap_df,
         ]
 
         # Sanity check each data frame before merging.

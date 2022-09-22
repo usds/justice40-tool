@@ -216,8 +216,15 @@ class CensusACSETL(ExtractTransformLoad):
             self.OTHER_RACE_FIELD_NAME,
         ]
 
+        # Note: this field does double-duty here. It's used as the total population
+        # within the age questions.
+        # It's also what EJScreen used as their variable for total population in the
+        # census tract, so we use it similarly.
+        # See p. 83 of https://www.epa.gov/sites/default/files/2021-04/documents/ejscreen_technical_document.pdf
+        self.TOTAL_POPULATION_FROM_AGE_TABLE = "B01001_001E"  # Estimate!!Total:
+
         self.AGE_INPUT_FIELDS = [
-            "B01001_001E",  # Estimate!!Total:
+            self.TOTAL_POPULATION_FROM_AGE_TABLE,
             "B01001_003E",  # Estimate!!Total:!!Male:!!Under 5 years
             "B01001_004E",  # Estimate!!Total:!!Male:!!5 to 9 years
             "B01001_005E",  # Estimate!!Total:!!Male:!!10 to 14 years
@@ -277,6 +284,7 @@ class CensusACSETL(ExtractTransformLoad):
         self.COLUMNS_TO_KEEP = (
             [
                 self.GEOID_TRACT_FIELD_NAME,
+                field_names.TOTAL_POP_FIELD,
                 self.UNEMPLOYED_FIELD_NAME,
                 self.LINGUISTIC_ISOLATION_FIELD_NAME,
                 self.MEDIAN_INCOME_FIELD_NAME,
@@ -375,18 +383,25 @@ class CensusACSETL(ExtractTransformLoad):
             )
 
         geo_df = gpd.read_file(
-            self.DATA_PATH / "census" / "geojson" / "us.json"
+            self.DATA_PATH / "census" / "geojson" / "us.json",
         )
+
+        # TODO - delete
+        logger.info(f"geo_df is {geo_df.head()}")
+
         df = self._merge_geojson(
             df=df,
             usa_geo_df=geo_df,
         )
-        # Rename two fields.
+
+        # Rename some fields.
         df = df.rename(
             columns={
                 self.MEDIAN_HOUSE_VALUE_FIELD: self.MEDIAN_HOUSE_VALUE_FIELD_NAME,
                 self.MEDIAN_INCOME_FIELD: self.MEDIAN_INCOME_FIELD_NAME,
-            }
+                self.TOTAL_POPULATION_FROM_AGE_TABLE: field_names.TOTAL_POP_FIELD,
+            },
+            errors="raise"
         )
 
         # Handle null values for various fields, which are `-666666666`.
@@ -472,7 +487,6 @@ class CensusACSETL(ExtractTransformLoad):
         )
 
         # Calculate some demographic information.
-
         df = df.rename(
             columns={
                 "B02001_003E": self.BLACK_FIELD_NAME,
@@ -560,14 +574,12 @@ class CensusACSETL(ExtractTransformLoad):
             ),
         ]
 
-        # Calculate age groups
-        total_population_age_series = df["B01001_001E"]
-
         # For each age bucket, sum the relevant columns and calculate the total
         # percentage.
         for age_bucket, sum_columns in age_bucket_and_its_sum_columns:
             df[age_bucket] = (
-                df[sum_columns].sum(axis=1) / total_population_age_series
+                df[sum_columns].sum(axis=1)
+                / df[field_names.TOTAL_POP_FIELD]
             )
 
         # Calculate college attendance and adjust low income

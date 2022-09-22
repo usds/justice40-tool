@@ -108,8 +108,12 @@ class TribalOverlapETL(ExtractTransformLoad):
 
         # Switch from geographic to projected CRSes
         # because logically that's right
-        self.census_tract_gdf = self.census_tract_gdf.to_crs(crs=self.CRS_INTEGER)
-        tribal_gdf_without_points = tribal_gdf_without_points.to_crs(crs=self.CRS_INTEGER)
+        self.census_tract_gdf = self.census_tract_gdf.to_crs(
+            crs=self.CRS_INTEGER
+        )
+        tribal_gdf_without_points = tribal_gdf_without_points.to_crs(
+            crs=self.CRS_INTEGER
+        )
 
         # Create a measure for the entire census tract area
         self.census_tract_gdf["area_tract"] = self.census_tract_gdf.area

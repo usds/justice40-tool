@@ -2,6 +2,7 @@ from typing import Any, List, NamedTuple, Tuple
 import pandas as pd
 import geopandas as gpd
 
+from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger
 
 # pylint: disable=unsubscriptable-object
@@ -23,6 +24,7 @@ def _get_fips_mask(
 def _get_neighbor_mask(
     geo_df: gpd.GeoDataFrame, row: gpd.GeoSeries
 ) -> pd.Series:
+    """Returns neighboring tracts."""
     return geo_df["geometry"].touches(row["geometry"])
 
 
@@ -40,24 +42,68 @@ def _choose_best_mask(
 def _prepare_dataframe_for_imputation(
     impute_var_named_tup_list: List[NamedTuple],
     geo_df: gpd.GeoDataFrame,
+    population_field: str,
     geoid_field: str = "GEOID10_TRACT",
 ) -> Tuple[Any, gpd.GeoDataFrame]:
+    """Helper for imputation.
+
+    Given the inputs of `ImputeVariables`, returns list of tracts that need to be
+    imputed, along with a GeoDataFrame that has a column with the imputed field
+    "primed", meaning it is a copy of the raw field.
+    """
     imputing_cols = [
         impute_var_pair.raw_field_name
         for impute_var_pair in impute_var_named_tup_list
     ]
 
-    # prime column to exist
+    # Prime column to exist
     for impute_var_pair in impute_var_named_tup_list:
         geo_df[impute_var_pair.imputed_field_name] = geo_df[
             impute_var_pair.raw_field_name
         ].copy()
 
-    # generate a list of tracts for which at least one of the imputation
+    # Generate a list of tracts for which at least one of the imputation
     # columns is null
-    tract_list = geo_df[geo_df[imputing_cols].isna().any(axis=1)][
-        geoid_field
-    ].unique()
+
+    asdf1 = geo_df[
+        (
+            # First, check whether any of the columns we want to impute contain null values
+            geo_df[imputing_cols]
+            .isna()
+            .any(axis=1)
+        )
+    ][[geoid_field, population_field]]
+
+    logger.info(f"Tract df is:\n{asdf1.head()}")
+
+    asdf = geo_df[
+        (
+            # First, check whether any of the columns we want to impute contain null values
+            geo_df[imputing_cols].isna().any(axis=1)
+            # Second, ensure population is > 0
+            & (
+                geo_df[population_field].notnull() & geo_df[population_field]
+                > 0
+            )
+        )
+    ][[geoid_field, population_field]]
+
+    logger.info(f"Tract df with no pop is:\n{asdf.head()}")
+
+    tract_list = geo_df[
+        (
+            # First, check whether any of the columns we want to impute contain null values
+            geo_df[imputing_cols].isna().any(axis=1)
+            # Second, ensure population is > 0
+            & (
+                geo_df[population_field].notnull() & geo_df[population_field]
+                > 0
+            )
+        )
+    ][geoid_field].unique()
+
+    # TODO - delete
+    logger.info(f"Tract list is:\n{tract_list}")
 
     # Check that imputation is a valid choice for this set of fields
     logger.info(f"Imputing values for {len(tract_list)} unique tracts.")
@@ -70,6 +116,7 @@ def calculate_income_measures(
     impute_var_named_tup_list: list,
     geo_df: gpd.GeoDataFrame,
     geoid_field: str,
+    population_field: str = field_names.TOTAL_POP_FIELD,
 ) -> pd.DataFrame:
     """Impute values based on geographic neighbors
 
@@ -89,6 +136,7 @@ def calculate_income_measures(
         impute_var_named_tup_list=impute_var_named_tup_list,
         geo_df=geo_df,
         geoid_field=geoid_field,
+        population_field=population_field,
     )
 
     # Iterate through the dataframe to impute in place
