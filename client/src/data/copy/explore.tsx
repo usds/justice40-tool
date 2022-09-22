@@ -59,6 +59,25 @@ export const LEGEND = defineMessages({
   },
 });
 
+// Explore the data box
+export const EXPLORE_DATA_BOX = defineMessages({
+  TITLE: {
+    id: 'explore.map.page.explore.data.box.title',
+    defaultMessage: 'Get the data',
+    description: 'On the explore the map page, a summary box title of Get the data',
+  },
+});
+
+export const EXPLORE_DATA_BOX_BODY = <FormattedMessage
+  id={'explore.map.page.explore.data.box.body'}
+  defaultMessage={ `
+    Download the data with documentation and shapefiles, from the <link1>downloads</link1> page
+  `}
+  description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the fifth paragraph of this side pane`}
+  values={{
+    link1: COMMON_COPY.linkFn(PAGES_ENDPOINTS.DOWNLOADS, true, false),
+  }}
+/>;
 
 // Map
 export const MAP = defineMessages({

@@ -327,6 +327,14 @@
     "defaultMessage": "Use the map to see communities that are identified as disadvantaged. The map uses publicly-available, nationally-consistent datasets. Learn more about the methodology and datasets that were used to identify disadvantaged communities in the current version of the map on the <link1>Methodology & data</link1> page.",
     "description": "On the explore the map page, the description of the page"
   },
+  "explore.map.page.explore.data.box.body": {
+    "defaultMessage": "Download the data with documentation and shapefiles, from the <link1>downloads</link1> page",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the fifth paragraph of this side pane"
+  },
+  "explore.map.page.explore.data.box.title": {
+    "defaultMessage": "Get the data",
+    "description": "On the explore the map page, a summary box title of Get the data"
+  },
   "explore.map.page.heading.text": {
     "defaultMessage": "Explore the map",
     "description": "On the explore the map page, the heading of the page"

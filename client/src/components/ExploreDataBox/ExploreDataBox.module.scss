@@ -1,0 +1,6 @@
+@use '../../styles/design-system.scss' as *;
+
+.fileDownIcon{
+    margin-bottom: -4px;
+    @include u-padding-left(1);
+}

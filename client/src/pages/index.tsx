@@ -2,6 +2,7 @@ import React from 'react';
 import {useIntl} from 'gatsby-plugin-intl';
 import {Grid} from '@trussworks/react-uswds';
 
+import ExploreDataBox from '../components/ExploreDataBox';
 import HowYouCanHelp from '../components/HowYouCanHelp';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
@@ -31,10 +32,17 @@ const ExporeToolPage = ({location}: IMapPageProps) => {
 
         {/* Gradually increase width of the Grid as the width decreases from desktop to mobile*/}
         {/* desktop = 7 columns, tablet = 10 columns and mobile = 12 columns (full width) */}
-        <Grid desktop={{col: 7}} tablet={{col: 10}} col={12}>
+        <Grid desktop={{col: 8}} tablet={{col: 10}} col={12}>
           <section>
             <p>
               {EXPLORE_COPY.PAGE_DESCRIPTION}
+            </p>
+          </section>
+        </Grid>
+        <Grid desktop={{col: 4}} tablet={{col: 10}} col={12}>
+          <section>
+            <p>
+              <ExploreDataBox />
             </p>
           </section>
         </Grid>
