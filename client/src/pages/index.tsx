@@ -37,12 +37,7 @@ const ExporeToolPage = ({location}: IMapPageProps) => {
               {EXPLORE_COPY.PAGE_DESCRIPTION1}
             </p>
             <p>
-              {EXPLORE_COPY.PAGE_DESCRIPTION2}<br />
-              {EXPLORE_COPY.PAGE_DESCRIPTION3}<br />
-              {EXPLORE_COPY.PAGE_DESCRIPTION4}<br />
-            </p>
-            <p>
-              {EXPLORE_COPY.PAGE_DESCRIPTION5}
+              {EXPLORE_COPY.PAGE_DESCRIPTION2}
             </p>
           </section>
         </Grid>

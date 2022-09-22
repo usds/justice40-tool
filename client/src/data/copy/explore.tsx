@@ -34,47 +34,20 @@ export const PAGE_DESCRIPTION1 = <FormattedMessage
     Overburdened and underserved census tracts are highlighted as being disadvantaged on the map. The map also highlights areas within Federally-recognized Tribal reservations. These areas are also considered disadvantaged.
   `}
   description={'On the explore the map page, the first description of the page'}
-  values={{
-    link1: COMMON_COPY.linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
-  }}
+  // values={{
+  //   link1: COMMON_COPY.linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
+  // }}
 />;
+
 export const PAGE_DESCRIPTION2 = <FormattedMessage
   id={'explore.map.page.description.2'}
-  defaultMessage={`[color key]`}
-  description={'On the explore the map page, the second description of the page'}
-  values={{
-    link1: COMMON_COPY.linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
-  }}
-/>;
-export const PAGE_DESCRIPTION3 = <FormattedMessage
-  id={'explore.map.page.description.3'}
-  defaultMessage={`
-    blue: disadvantaged census tracts
-  `}
-  description={'On the explore the map page, the third description of the page'}
-  values={{
-    link1: COMMON_COPY.linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
-  }}
-/>;
-export const PAGE_DESCRIPTION4 = <FormattedMessage
-  id={'explore.map.page.description.4'}
-  defaultMessage={`
-    green: disadvantaged tribal areas
-  `}
-  description={'On the explore the map page, the fourth description of the page'}
-  values={{
-    link1: COMMON_COPY.linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
-  }}
-/>;
-export const PAGE_DESCRIPTION5 = <FormattedMessage
-  id={'explore.map.page.description.5'}
   defaultMessage={`
     Zooming and selecting shows information about each census tract or tribal area. Change the selection to see information about tribal land areas.
   `}
   description={'On the explore the map page, the fifth description of the page'}
-  values={{
-    link1: COMMON_COPY.linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
-  }}
+  // values={{
+  //   link1: COMMON_COPY.linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
+  // }}
 />;
 
 export const LEGEND = defineMessages({

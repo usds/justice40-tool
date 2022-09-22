@@ -324,18 +324,6 @@
     "description": "On the explore the map page, the first description of the page"
   },
   "explore.map.page.description.2": {
-    "defaultMessage": "[color key]",
-    "description": "On the explore the map page, the second description of the page"
-  },
-  "explore.map.page.description.3": {
-    "defaultMessage": "blue: disadvantaged census tracts",
-    "description": "On the explore the map page, the third description of the page"
-  },
-  "explore.map.page.description.4": {
-    "defaultMessage": "green: disadvantaged tribal areas",
-    "description": "On the explore the map page, the fourth description of the page"
-  },
-  "explore.map.page.description.5": {
     "defaultMessage": "Zooming and selecting shows information about each census tract or tribal area. Change the selection to see information about tribal land areas.",
     "description": "On the explore the map page, the fifth description of the page"
   },
