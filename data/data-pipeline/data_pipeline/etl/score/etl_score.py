@@ -634,7 +634,23 @@ class ScoreETL(ExtractTransformLoad):
             ]
         ].mean(axis=1, skipna=True)
 
+        # For AS, MP, GU, and VI, backfill data from the 2010 census where we have it
+        df_copy = self._backfill_island_data(df_copy)
+
         return df_copy
+
+    @staticmethod
+    def _backfill_island_data(df: pd.DataFrame) -> pd.DataFrame:
+        logger.info("Backfilling island data")
+        island_index = (
+            df[field_names.GEOID_TRACT_FIELD]
+            .str[:2]
+            .isin(constants.TILES_ISLAND_AREA_FIPS_CODES)
+        )
+        df.loc[island_index, field_names.TOTAL_POP_FIELD] = df.loc[
+            island_index, field_names.COMBINED_CENSUS_TOTAL_POPULATION_2010
+        ]
+        return df
 
     def transform(self) -> None:
         logger.info("Transforming Score Data")
