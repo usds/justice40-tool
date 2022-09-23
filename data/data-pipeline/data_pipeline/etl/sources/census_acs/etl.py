@@ -23,14 +23,11 @@ CENSUS_DATA_S3_URL = settings.AWS_JUSTICE40_DATASOURCES_URL + "/census.zip"
 
 
 class CensusACSETL(ExtractTransformLoad):
+    NAME = "census_acs"
+    ACS_YEAR = 2019
+    MINIMUM_POPULATION_REQUIRED_FOR_IMPUTATION = 1
+
     def __init__(self):
-        self.ACS_YEAR = 2019
-        self.OUTPUT_PATH = (
-            self.DATA_PATH / "dataset" / f"census_acs_{self.ACS_YEAR}"
-        )
-
-        self.MINIMUM_POPULATION_REQUIRED_FOR_IMPUTATION = 1
-
         self.TOTAL_UNEMPLOYED_FIELD = "B23025_005E"
         self.TOTAL_IN_LABOR_FORCE = "B23025_003E"
         self.EMPLOYMENT_FIELDS = [
@@ -664,13 +661,3 @@ class CensusACSETL(ExtractTransformLoad):
 
         # Save results to self.
         self.output_df = df
-
-    def load(self) -> None:
-        logger.info("Saving Census ACS Data")
-
-        # mkdir census
-        self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
-
-        self.output_df[self.COLUMNS_TO_KEEP].to_csv(
-            path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False
-        )

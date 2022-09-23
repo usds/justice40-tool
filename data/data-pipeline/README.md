@@ -322,7 +322,12 @@ see [python-markdown docs](https://github.com/ipython-contrib/jupyter_contrib_nb
 
 ### Background
 
-For this project, we make use of [pytest](https://docs.pytest.org/en/latest/) for testing purposes. To run tests, simply run `poetry run pytest` in this directory (i.e., `justice40-tool/data/data-pipeline`).
+For this project, we make use of [pytest](https://docs.pytest.org/en/latest/) for testing purposes. 
+
+To run tests, simply run `poetry run pytest` in this directory (i.e., `justice40-tool/data/data-pipeline`).
+
+To run smoke tests, run `poetry run pytest -m smoketest` in this 
+directory.
 
 Test data is configured via [fixtures](https://docs.pytest.org/en/latest/explanation/fixtures.html).
 

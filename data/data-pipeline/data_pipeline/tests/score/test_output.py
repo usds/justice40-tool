@@ -335,3 +335,41 @@ def test_output_tracts(final_score_df, national_tract_df):
 
 def test_all_tracts_have_scores(final_score_df):
     assert not final_score_df[field_names.SCORE_N_COMMUNITIES].isna().any()
+
+
+def test_imputed_tracts(final_score_df):
+    # Make sure that any tracts with zero population have null imputed income
+    tracts_with_zero_population_df = final_score_df[
+        final_score_df[field_names.TOTAL_POP_FIELD] == 0
+    ]
+    assert (
+        tracts_with_zero_population_df[
+            field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD
+        ]
+        .isna()
+        .all()
+    )
+
+    # Make sure that any tracts with null population have null imputed income
+    tracts_with_null_population_df = final_score_df[
+        final_score_df[field_names.TOTAL_POP_FIELD].isnull()
+    ]
+    assert (
+        tracts_with_null_population_df[
+            field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD
+        ]
+        .isna()
+        .all()
+    )
+
+    # Make sure that no tracts with population have null imputed income
+    tracts_with_some_population_df = final_score_df[
+        final_score_df[field_names.TOTAL_POP_FIELD] > 0
+    ]
+    assert (
+        not tracts_with_some_population_df[
+            field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD
+        ]
+        .isna()
+        .any()
+    )

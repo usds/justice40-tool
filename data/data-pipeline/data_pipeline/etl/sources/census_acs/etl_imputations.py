@@ -75,8 +75,11 @@ def _prepare_dataframe_for_imputation(
             geo_df[imputing_cols].isna().any(axis=1)
             # Second, ensure population is either null or >= the minimum population
             & (
-                geo_df[population_field].isnull() | geo_df[population_field]
-                >= minimum_population_required_for_imputation
+                geo_df[population_field].isnull()
+                | (
+                    geo_df[population_field]
+                    >= minimum_population_required_for_imputation
+                )
             )
         )
     ][geoid_field].unique()
