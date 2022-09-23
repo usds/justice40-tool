@@ -326,9 +326,6 @@ For this project, we make use of [pytest](https://docs.pytest.org/en/latest/) fo
 
 To run tests, simply run `poetry run pytest` in this directory (i.e., `justice40-tool/data/data-pipeline`).
 
-To run smoke tests, run `poetry run pytest -m smoketest` in this 
-directory.
-
 Test data is configured via [fixtures](https://docs.pytest.org/en/latest/explanation/fixtures.html).
 
 ### Score and post-processing tests
