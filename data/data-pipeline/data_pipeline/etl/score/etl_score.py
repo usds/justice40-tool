@@ -15,6 +15,7 @@ from data_pipeline.etl.sources.fsf_flood_risk.etl import (
     FloodRiskETL,
 )
 from data_pipeline.etl.sources.eamlis.etl import AbandonedMineETL
+from data_pipeline.etl.sources.tribal_overlap.etl import TribalOverlapETL
 from data_pipeline.etl.sources.us_army_fuds.etl import USArmyFUDS
 from data_pipeline.etl.sources.nlcd_nature_deprived.etl import NatureDeprivedETL
 from data_pipeline.etl.sources.fsf_wildfire_risk.etl import WildfireRiskETL
@@ -52,6 +53,7 @@ class ScoreETL(ExtractTransformLoad):
         self.nature_deprived_df: pd.DataFrame
         self.eamlis_df: pd.DataFrame
         self.fuds_df: pd.DataFrame
+        self.tribal_overlap_df: pd.DataFrame
 
     def extract(self) -> None:
         logger.info("Loading data sets from disk.")
@@ -147,6 +149,9 @@ class ScoreETL(ExtractTransformLoad):
 
         # Load FUDS dataset
         self.fuds_df = USArmyFUDS.get_data_frame()
+
+        # Load Tribal overlap dataset
+        self.tribal_overlap_df = TribalOverlapETL.get_data_frame()
 
         # Load GeoCorr Urban Rural Map
         geocorr_urban_rural_csv = (
@@ -359,6 +364,7 @@ class ScoreETL(ExtractTransformLoad):
             self.nature_deprived_df,
             self.eamlis_df,
             self.fuds_df,
+            self.tribal_overlap_df
         ]
 
         # Sanity check each data frame before merging.
@@ -380,7 +386,8 @@ class ScoreETL(ExtractTransformLoad):
         ), "Join against national tract list ADDED rows"
         logger.info(
             "Dropped %s tracts not in the 2010 tract data",
-            pre_join_len - census_tract_df[field_names.GEOID_TRACT_FIELD].nunique()
+            pre_join_len
+            - census_tract_df[field_names.GEOID_TRACT_FIELD].nunique(),
         )
 
         # Now sanity-check the merged df.
@@ -468,12 +475,15 @@ class ScoreETL(ExtractTransformLoad):
             field_names.PERCENT_AGE_UNDER_10,
             field_names.PERCENT_AGE_10_TO_64,
             field_names.PERCENT_AGE_OVER_64,
+            field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT,
+            field_names.COUNT_OF_TRIBAL_AREAS_IN_TRACT,
         ]
 
         non_numeric_columns = [
             self.GEOID_TRACT_FIELD_NAME,
             field_names.TRACT_ELIGIBLE_FOR_NONNATURAL_THRESHOLD,
             field_names.AGRICULTURAL_VALUE_BOOL_FIELD,
+            field_names.NAMES_OF_TRIBAL_AREAS_IN_TRACT,
         ]
 
         boolean_columns = [
@@ -551,6 +561,9 @@ class ScoreETL(ExtractTransformLoad):
         #     For *Non-Natural Space*, we may only want to include tracts that have at least 35 acreas, I think. This will
         #     get rid of  tracts that we think are aberrations statistically. Right now, we have left this out
         #     pending ground-truthing.
+        #
+        #     For *Traffic Barriers*, we want to exclude low population tracts, which may have high burden because they are
+        #     low population alone. We set this low population constant in the if statement.
 
         for numeric_column in numeric_columns:
             drop_tracts = []
@@ -573,6 +586,22 @@ class ScoreETL(ExtractTransformLoad):
                 ][field_names.GEOID_TRACT_FIELD].to_list()
                 logger.info(
                     f"Dropping {len(drop_tracts)} tracts from Linguistic Isolation"
+                )
+
+            elif numeric_column in [
+                field_names.DOT_TRAVEL_BURDEN_FIELD,
+                field_names.EXPECTED_POPULATION_LOSS_RATE_FIELD,
+            ]:
+                # Not having any people appears to be correlated with transit burden, but also doesn't represent
+                # on the ground need. For now, we remove these tracts from the percentile calculation.ß
+                # Similarly, we want to exclude low population tracts from FEMA's index
+                low_population = 20
+                drop_tracts = df_copy[
+                    df_copy[field_names.TOTAL_POP_FIELD].fillna(0)
+                    <= low_population
+                ][field_names.GEOID_TRACT_FIELD].to_list()
+                logger.info(
+                    f"Dropping {len(drop_tracts)} tracts from DOT traffic burden"
                 )
 
             df_copy = self._add_percentiles_to_df(

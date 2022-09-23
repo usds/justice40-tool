@@ -7,6 +7,9 @@ from typing import Optional
 import pandas as pd
 
 from data_pipeline.config import settings
+from data_pipeline.etl.score.etl_utils import (
+    compare_to_list_of_expected_state_fips_codes,
+)
 from data_pipeline.etl.score.schemas.datasets import DatasetsConfig
 from data_pipeline.utils import (
     load_yaml_dict_from_file,
@@ -43,7 +46,7 @@ class ExtractTransformLoad:
     APP_ROOT: pathlib.Path = settings.APP_ROOT
 
     # Directories
-    DATA_PATH: pathlib.Path = APP_ROOT / "data"
+    DATA_PATH: pathlib.Path = settings.DATA_PATH
     TMP_PATH: pathlib.Path = DATA_PATH / "tmp"
     CONTENT_CONFIG: pathlib.Path = APP_ROOT / "content" / "config"
     DATASET_CONFIG_PATH: pathlib.Path = APP_ROOT / "etl" / "score" / "config"
@@ -82,6 +85,23 @@ class ExtractTransformLoad:
     # NULL_REPRESENTATION is how nulls are represented on the input field
     NULL_REPRESENTATION: str = None
 
+    # Whether this ETL contains data for the continental nation (DC & the US states
+    # except for Alaska and Hawaii)
+    CONTINENTAL_US_EXPECTED_IN_DATA: bool = True
+
+    # Whether this ETL contains data for Alaska and Hawaii
+    ALASKA_AND_HAWAII_EXPECTED_IN_DATA: bool = True
+
+    # Whether this ETL contains data for Puerto Rico
+    PUERTO_RICO_EXPECTED_IN_DATA: bool = True
+
+    # Whether this ETL contains data for the island areas
+    ISLAND_AREAS_EXPECTED_IN_DATA: bool = False
+
+    # Whether this ETL contains known missing data for any additional
+    # states/territories
+    EXPECTED_MISSING_STATES: typing.List[str] = []
+
     # Thirteen digits in a census block group ID.
     EXPECTED_CENSUS_BLOCK_GROUPS_CHARACTER_LENGTH: int = 13
     # TODO: investigate. Census says there are only 217,740 CBGs in the US. This might
@@ -95,56 +115,56 @@ class ExtractTransformLoad:
     #  periods. https://github.com/usds/justice40-tool/issues/964
     EXPECTED_MAX_CENSUS_TRACTS: int = 74160
 
+    # Should this dataset load its configuration from
+    # the YAML files?
+    LOAD_YAML_CONFIG: bool = False
+
     # We use output_df as the final dataframe to use to write to the CSV
     # It is used on the "load" base class method
     output_df: pd.DataFrame = None
 
     def __init_subclass__(cls) -> None:
-        cls.DATASET_CONFIG = cls.yaml_config_load()
+        if cls.LOAD_YAML_CONFIG:
+            cls.DATASET_CONFIG = cls.yaml_config_load()
 
     @classmethod
-    def yaml_config_load(cls) -> Optional[dict]:
+    def yaml_config_load(cls) -> dict:
         """Generate config dictionary and set instance variables from YAML dataset."""
-        if cls.NAME is not None:
-            # check if the class instance has score YAML definitions
-            datasets_config = load_yaml_dict_from_file(
-                cls.DATASET_CONFIG_PATH / "datasets.yml",
-                DatasetsConfig,
+        # check if the class instance has score YAML definitions
+        datasets_config = load_yaml_dict_from_file(
+            cls.DATASET_CONFIG_PATH / "datasets.yml",
+            DatasetsConfig,
+        )
+
+        # get the config for this dataset
+        try:
+            dataset_config = next(
+                item
+                for item in datasets_config.get("datasets")
+                if item["module_name"] == cls.NAME
             )
+        except StopIteration:
+            # Note: it'd be nice to log the name of the dataframe, but that's not accessible in this scope.
+            logger.error(
+                f"Exception encountered while extracting dataset config for dataset {cls.NAME}"
+            )
+            sys.exit()
 
-            # get the config for this dataset
-            try:
-                dataset_config = next(
-                    item
-                    for item in datasets_config.get("datasets")
-                    if item["module_name"] == cls.NAME
-                )
-            except StopIteration:
-                # Note: it'd be nice to log the name of the dataframe, but that's not accessible in this scope.
-                logger.error(
-                    f"Exception encountered while extracting dataset config for dataset {cls.NAME}"
-                )
-                sys.exit()
-
-            # set some of the basic fields
-            if "input_geoid_tract_field_name" in dataset_config:
-                cls.INPUT_GEOID_TRACT_FIELD_NAME = dataset_config[
-                    "input_geoid_tract_field_name"
-                ]
-
-            # get the columns to write on the CSV
-            # and set the constants
-            cls.COLUMNS_TO_KEEP = [
-                cls.GEOID_TRACT_FIELD_NAME,  # always index with geoid tract id
+        # set some of the basic fields
+        if "input_geoid_tract_field_name" in dataset_config:
+            cls.INPUT_GEOID_TRACT_FIELD_NAME = dataset_config[
+                "input_geoid_tract_field_name"
             ]
-            for field in dataset_config["load_fields"]:
-                cls.COLUMNS_TO_KEEP.append(field["long_name"])
-                setattr(cls, field["df_field_name"], field["long_name"])
 
-                # set the constants for the class
-                setattr(cls, field["df_field_name"], field["long_name"])
-            return dataset_config
-        return None
+        # get the columns to write on the CSV
+        # and set the constants
+        cls.COLUMNS_TO_KEEP = [
+            cls.GEOID_TRACT_FIELD_NAME,  # always index with geoid tract id
+        ]
+        for field in dataset_config["load_fields"]:
+            cls.COLUMNS_TO_KEEP.append(field["long_name"])
+            setattr(cls, field["df_field_name"], field["long_name"])
+        return dataset_config
 
     # This is a classmethod so it can be used by `get_data_frame` without
     # needing to create an instance of the class. This is a use case in `etl_score`.
@@ -288,6 +308,24 @@ class ExtractTransformLoad:
                         f"duplicate values in "
                         f"`{geo_field}`."
                     )
+
+        # Check whether data contains expected states
+        states_in_output_df = (
+            self.output_df[self.GEOID_TRACT_FIELD_NAME]
+            .str[0:2]
+            .unique()
+            .tolist()
+        )
+
+        compare_to_list_of_expected_state_fips_codes(
+            actual_state_fips_codes=states_in_output_df,
+            continental_us_expected=self.CONTINENTAL_US_EXPECTED_IN_DATA,
+            alaska_and_hawaii_expected=self.ALASKA_AND_HAWAII_EXPECTED_IN_DATA,
+            puerto_rico_expected=self.PUERTO_RICO_EXPECTED_IN_DATA,
+            island_areas_expected=self.ISLAND_AREAS_EXPECTED_IN_DATA,
+            additional_fips_codes_not_expected=self.EXPECTED_MISSING_STATES,
+            dataset_name=self.NAME,
+        )
 
     def load(self, float_format=None) -> None:
         """Saves the transformed data.

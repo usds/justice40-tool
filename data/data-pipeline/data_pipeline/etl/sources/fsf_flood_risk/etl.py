@@ -14,8 +14,11 @@ class FloodRiskETL(ExtractTransformLoad):
     """ETL class for the First Street Foundation flood risk dataset"""
 
     NAME = "fsf_flood_risk"
+    # These data were emailed to the J40 team while first street got
+    # their official data sharing channels setup.
     SOURCE_URL = settings.AWS_JUSTICE40_DATASOURCES_URL + "/fsf_flood.zip"
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
+    LOAD_YAML_CONFIG: bool = True
 
     # Output score variables (values set on datasets.yml) for linting purposes
     COUNT_PROPERTIES: str

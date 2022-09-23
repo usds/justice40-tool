@@ -25,12 +25,15 @@ class ChildOpportunityIndex(ExtractTransformLoad):
     # Metadata for the baseclass
     NAME = "child_opportunity_index"
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
+    LOAD_YAML_CONFIG: bool = True
 
     # Define these for easy code completion
     EXTREME_HEAT_FIELD: str
     HEALTHY_FOOD_FIELD: str
     IMPENETRABLE_SURFACES_FIELD: str
     READING_FIELD: str
+
+    PUERTO_RICO_EXPECTED_IN_DATA = False
 
     def __init__(self):
         self.SOURCE_URL = (

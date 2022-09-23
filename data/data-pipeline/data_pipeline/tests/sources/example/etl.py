@@ -21,6 +21,7 @@ class ExampleETL(ExtractTransformLoad):
     LAST_UPDATED_YEAR = 2017
     SOURCE_URL = "https://www.example.com/example.zip"
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
+    LOAD_YAML_CONFIG: bool = True
 
     def __init__(self):
         self.COLUMNS_TO_KEEP = [

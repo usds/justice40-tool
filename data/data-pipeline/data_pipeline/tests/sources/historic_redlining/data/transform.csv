@@ -1,0 +1,16 @@
+GEOID10,CBSA_NAME,CBSA_NUM,EQINTERVAL2010,Tract-level redlining score,GEOID10_TRACT,Tract-level redlining score meets or exceeds 3.25,Tract-level redlining score meets or exceeds 3.5,Tract-level redlining score meets or exceeds 3.75
+6027000800,"Birmingham-Hoover, AL",13820,4,3.3000000000,06027000800,True,False,False
+6061021322,"Birmingham-Hoover, AL",13820,4,3.9900000000,06061021322,True,True,True
+6069000802,"Birmingham-Hoover, AL",13820,4,3.7800000000,06069000802,True,True,True
+15001021010,"Birmingham-Hoover, AL",13820,4,4.0000000000,15001021010,True,True,True
+15001021101,"Birmingham-Hoover, AL",13820,4,4.0000000000,15001021101,True,True,True
+15001021402,"Birmingham-Hoover, AL",13820,4,3.8600000000,15001021402,True,True,True
+15001021800,"Birmingham-Hoover, AL",13820,4,4.0000000000,15001021800,True,True,True
+15003010201,"Birmingham-Hoover, AL",13820,4,3.9600000000,15003010201,True,True,True
+15007040603,"Birmingham-Hoover, AL",13820,4,3.9700000000,15007040603,True,True,True
+15007040604,"Birmingham-Hoover, AL",13820,4,3.9400000000,15007040604,True,True,True
+15007040700,"Birmingham-Hoover, AL",13820,3,3.2000000000,15007040700,False,False,False
+15009030100,"Birmingham-Hoover, AL",13820,4,3.7700000000,15009030100,True,True,True
+15009030201,"Birmingham-Hoover, AL",13820,3,3.2300000000,15009030201,False,False,False
+15009030402,"Birmingham-Hoover, AL",13820,3,3.0000000000,15009030402,False,False,False
+15009030800,"Birmingham-Hoover, AL",13820,4,3.4000000000,15009030800,True,False,False
