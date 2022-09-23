@@ -27,6 +27,7 @@ from .fixtures import (
     census_2010_df,
     hrs_df,
     national_tract_df,
+    tribal_overlap,
 )
 
 
@@ -249,6 +250,7 @@ def test_data_sources(
     census_decennial_df,
     census_2010_df,
     hrs_df,
+    tribal_overlap,
 ):
     data_sources = {
         key: value for key, value in locals().items() if key != "final_score_df"
