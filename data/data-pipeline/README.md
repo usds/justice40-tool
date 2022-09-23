@@ -12,11 +12,14 @@
       - [2. Extract-Transform-Load (ETL) the data](#2-extract-transform-load-etl-the-data)
       - [3. Combined dataset](#3-combined-dataset)
       - [4. Tileset](#4-tileset)
+      - [5. Shapefiles](#5-shapefiles)
     - [Score generation and comparison workflow](#score-generation-and-comparison-workflow)
       - [Workflow Diagram](#workflow-diagram)
       - [Step 0: Set up your environment](#step-0-set-up-your-environment)
       - [Step 1: Run the script to download census data or download from the Justice40 S3 URL](#step-1-run-the-script-to-download-census-data-or-download-from-the-justice40-s3-url)
       - [Step 2: Run the ETL script for each data source](#step-2-run-the-etl-script-for-each-data-source)
+        - [Table of commands](#table-of-commands)
+        - [ETL steps](#etl-steps)
       - [Step 3: Calculate the Justice40 score experiments](#step-3-calculate-the-justice40-score-experiments)
       - [Step 4: Compare the Justice40 score experiments to other indices](#step-4-compare-the-justice40-score-experiments-to-other-indices)
     - [Data Sources](#data-sources)
@@ -26,21 +29,27 @@
     - [MacOS](#macos)
     - [Windows Users](#windows-users)
     - [Setting up Poetry](#setting-up-poetry)
-    - [Downloading Census Block Groups GeoJSON and Generating CBG CSVs](#downloading-census-block-groups-geojson-and-generating-cbg-csvs)
+    - [Running tox](#running-tox)
+    - [The Application entrypoint](#the-application-entrypoint)
+    - [Downloading Census Block Groups GeoJSON and Generating CBG CSVs (not normally required)](#downloading-census-block-groups-geojson-and-generating-cbg-csvs-not-normally-required)
+    - [Run all ETL, score and map generation processes](#run-all-etl-score-and-map-generation-processes)
+    - [Run both ETL and score generation processes](#run-both-etl-and-score-generation-processes)
+    - [Run all ETL processes](#run-all-etl-processes)
     - [Generating Map Tiles](#generating-map-tiles)
     - [Serve the map locally](#serve-the-map-locally)
     - [Running Jupyter notebooks](#running-jupyter-notebooks)
     - [Activating variable-enabled Markdown for Jupyter notebooks](#activating-variable-enabled-markdown-for-jupyter-notebooks)
-  - [Miscellaneous](#miscellaneous)
   - [Testing](#testing)
     - [Background](#background)
-    - [Configuration / Fixtures](#configuration--fixtures)
+    - [Score and post-processing tests](#score-and-post-processing-tests)
       - [Updating Pickles](#updating-pickles)
-      - [Future Enchancements](#future-enchancements)
-    - [ETL Unit Tests](#etl-unit-tests)
+      - [Future Enhancements](#future-enhancements)
+    - [Fixtures used in ETL "snapshot tests"](#fixtures-used-in-etl-snapshot-tests)
+    - [Other ETL Unit Tests](#other-etl-unit-tests)
       - [Extract Tests](#extract-tests)
       - [Transform Tests](#transform-tests)
       - [Load Tests](#load-tests)
+    - [Smoketests](#smoketests)
 
 <!-- /TOC -->
 
@@ -496,3 +505,13 @@ See above [Fixtures](#configuration--fixtures) section for information about whe
 These make use of [tmp_path_factory](https://docs.pytest.org/en/latest/how-to/tmp_path.html) to create a file-system located under `temp_dir`, and validate whether the correct files are written to the correct locations.
 
 Additional future modifications could include the use of Pandera and/or other schema validation tools, and or a more explicit test that the data written to file can be read back in and yield the same dataframe.
+
+### Smoketests
+
+To ensure the score and tiles process correctly, there is a suite of "smoke tests" that can be run after the ETL and score data have been run, and outputs like the frontend GEOJSON have been created.
+These tests are implemented as pytest test, but are skipped by default. To run them.
+
+1. Generate a full score with `poetry run python3 data_pipeline/application.py score-full-run`
+2. Generate the tile data with `poetry run python3 data_pipeline/application.py generate-score-post`
+3. Generate the frontend GEOJSON with `poetry run python3 data_pipeline/application.py geo-score`
+4. Select the smoke tests for pytest with `poetry run pytest data_pipeline/tests -k smoketest`

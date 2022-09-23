@@ -31,7 +31,7 @@ from .fixtures import (
 
 
 pytestmark = pytest.mark.smoketest
-UNMATCHED_TRACK_THRESHOLD = 1000
+UNMATCHED_TRACT_THRESHOLD = 1000
 
 
 def _helper_test_count_exceeding_threshold(df, col, error_check=1000):
@@ -254,6 +254,15 @@ def test_data_sources(
         key: value for key, value in locals().items() if key != "final_score_df"
     }
 
+    # For each data source that's injected via the fixtures, do the following:
+    # * Ensure at least one column from the source shows up in the score
+    # * Ensure any tracts NOT in the data source are NA/null in the score
+    # * Ensure the data source doesn't have a large number of tract IDs that are not
+    #   included in the final score, since that implies the source is using 2020
+    #   tract IDs
+    # * Verify that the data from the source that's in the final score output
+    #   is the "equal" to the data from the ETL, allowing for the minor
+    #   differences that come from floating point comparisons
     for data_source_name, data_source in data_sources.items():
         final = "final_"
         df: pd.DataFrame = final_score_df.merge(
@@ -275,12 +284,12 @@ def test_data_sources(
         ), f"No columns from data source show up in final score in source {data_source_name}"
 
         # Make sure we have NAs for any tracts in the final data that aren't
-        # covered in the  final data
+        # included in the data source
         assert np.all(df[df.MERGE == "left_only"][final_columns].isna())
 
         # Make sure the datasource doesn't have a ton of unmatched tracts, implying it
         # has moved to 2020 tracts
-        assert len(df[df.MERGE == "right_only"]) < UNMATCHED_TRACK_THRESHOLD
+        assert len(df[df.MERGE == "right_only"]) < UNMATCHED_TRACT_THRESHOLD
 
         df = df[df.MERGE == "both"]
 
@@ -293,6 +302,7 @@ def test_data_sources(
                 f"Column {final_column} not equal "
                 f"between {data_source_name} and final score"
             )
+            # For non-numeric types, we can use the built-in equals from pandas
             if df[final_column].dtype in [
                 np.dtype(object),
                 np.dtype(bool),
@@ -301,6 +311,8 @@ def test_data_sources(
                 assert df[final_column].equals(
                     df[data_source_column]
                 ), error_message
+            # For numeric sources, use np.close so we don't get harmed by
+            # float equaity weirdness
             else:
                 assert np.allclose(
                     df[final_column],

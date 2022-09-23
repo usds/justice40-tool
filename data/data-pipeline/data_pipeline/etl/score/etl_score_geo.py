@@ -41,7 +41,6 @@ class GeoScoreETL(ExtractTransformLoad):
         self.SCORE_CSV_PATH = self.DATA_PATH / "score" / "csv"
         self.TILE_SCORE_CSV = self.SCORE_CSV_PATH / "tiles" / "usa.csv"
 
-        self.DATA_SOURCE = data_source
         self.CENSUS_USA_GEOJSON = (
             self.DATA_PATH / "census" / "geojson" / "us.json"
         )
