@@ -185,3 +185,10 @@ class TestUSArmyFUDSETL(TestETL):
             assert len(df[etl.GEOID_TRACT_FIELD_NAME]) == len(
                 self._FIXTURES_SHARED_TRACT_IDS
             )
+
+    def test_tract_id_lengths(self, mock_etl, mock_paths):
+        with mock.patch(
+            "data_pipeline.etl.sources.us_army_fuds.etl.add_tracts_for_geometries",
+            new=_fake_add_tracts_for_geometries,
+        ):
+            return super().test_tract_id_lengths(mock_etl, mock_paths)
