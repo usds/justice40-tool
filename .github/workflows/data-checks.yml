@@ -39,6 +39,6 @@ jobs:
         run: poetry show -v
       - name: Install dependencies
         run: poetry install
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        # if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
       - name: Run tox
         run: poetry run tox
