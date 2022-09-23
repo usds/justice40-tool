@@ -28,7 +28,7 @@ export const linkFn = (to:string | IDefineMessage, isInternal:boolean, isOpenNew
 
 export const FEEDBACK_EMAIL = 'Screeningtool-Support@omb.eop.gov';
 
-export const RELEASE_1_0_DATE = new Date(2022, 9, 25, 11, 59, 59); // Oct 25
+export const METH_1_0_RELEASE_DATE = new Date(2022, 9, 25, 11, 59, 59); // Oct 25
 
 
 // Beta Banner
@@ -39,7 +39,7 @@ export const BETA_BANNER_CONTENT = <FormattedMessage
   values={{
     bold1: boldFn,
     relDate: <FormattedDate
-      value={RELEASE_1_0_DATE}
+      value={METH_1_0_RELEASE_DATE}
       year="numeric"
       month="short"
       day="numeric"
