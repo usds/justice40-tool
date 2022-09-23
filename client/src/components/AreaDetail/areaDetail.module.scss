@@ -121,3 +121,8 @@ $sidePanelLabelFontColor: #171716;
   @include u-padding-bottom(1);
   @include u-padding-left(2.5);
 }
+
+.testSignals{
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+}

@@ -413,7 +413,7 @@ export const SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT = defineMessages({
   },
 });
 
-export const SIDE_PANEL_VERION = {
+export const SIDE_PANEL_VERSION = {
   TITLE: <FormattedMessage
     id={'explore.map.page.side.panel.version.title'}
     defaultMessage={ 'Methodology version {version}'}
