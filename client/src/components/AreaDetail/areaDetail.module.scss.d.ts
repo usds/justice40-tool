@@ -19,6 +19,7 @@ declare namespace MapModuleScssNamespace {
     buttonImage: string;
     categorySpacer: string;
     testSignals: string;
+    invert: string;
   }
 }
 

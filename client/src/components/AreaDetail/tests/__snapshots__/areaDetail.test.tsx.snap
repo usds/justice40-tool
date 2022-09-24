@@ -197,7 +197,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for ISL
         <h3>
           YES
         </h3>
-        <div />
       </div>
       <div>
         in 5 categories
@@ -644,7 +643,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         <h3>
           YES
         </h3>
-        <div />
       </div>
       <div>
         in 5 categories
@@ -2281,7 +2279,6 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         <h3>
           YES
         </h3>
-        <div />
       </div>
       <div>
         in 5 categories

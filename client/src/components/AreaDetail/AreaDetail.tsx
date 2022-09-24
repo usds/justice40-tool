@@ -7,7 +7,6 @@ import {Accordion, Button} from '@trussworks/react-uswds';
 // Components:
 import Category from '../Category';
 import TractDemographics from '../TractDemographics';
-import DisadvantageDot from '../DisadvantageDot';
 import Indicator from '../Indicator';
 import TractInfo from '../TractInfo';
 
@@ -787,10 +786,7 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
         {/* YES with Dot or NO with no Dot  */}
         <div className={styles.communityOfFocus}>
           {isCommunityFocus ?
-            <>
-              <h3>{EXPLORE_COPY.COMMUNITY.OF_FOCUS}</h3>
-              <DisadvantageDot isDisadvantaged={isCommunityFocus} />
-            </> :
+            <h3 className={styles.invert}>{EXPLORE_COPY.COMMUNITY.OF_FOCUS}</h3> :
             <h3>{EXPLORE_COPY.COMMUNITY.NOT_OF_FOCUS}</h3>
           }
         </div>

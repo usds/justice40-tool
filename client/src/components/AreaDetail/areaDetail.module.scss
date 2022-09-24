@@ -41,6 +41,13 @@ $sidePanelLabelFontColor: #171716;
       margin-top: 0;
       margin-bottom: 0;
     }
+
+    h3.invert {
+      background-color: $disadvantagedDotColor;
+      color: white;
+      @include u-padding-left('05');
+      @include u-padding-right('05');
+    }
   }
 
   .showCategoriesExceed {
