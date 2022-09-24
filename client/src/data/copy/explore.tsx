@@ -13,6 +13,8 @@ export const EXPLORE_PAGE_LINKS = {
   TRIBAL_ACTION_PLAN: `https://www.whitehouse.gov/wp-content/uploads/2022/01/CEQ-Tribal-Consultation-Plan-04.26.2021.pdf`,
   TRIBAL_WHITEHOUSE: `https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/26/memorandum-on-tribal-consultation-and-strengthening-nation-to-nation-relationships/`,
   TRIBAL_FED_REGISTER: `https://www.federalregister.gov/documents/2000/11/09/00-29003/consultation-and-coordination-with-indian-tribal-governments`,
+  CENSUS_15_19: `https://www.census.gov/programs-surveys/decennial-census/data.html`,
+  DECENNIAL: `https://www.census.gov/programs-surveys/decennial-census/data.html`,
 };
 
 export const PAGE_INTRO = defineMessages({
@@ -1219,7 +1221,7 @@ export const NOTE_ON_TERRITORIES = {
     `}
     description={`Navigate to the explore the map page. Under the map, you will see territories paragraph 1`}
     values={{
-      link1: COMMON_COPY.linkFn(EXPLORE_PAGE_LINKS.TRIBAL_ACTION_PLAN, false, true),
+      link1: COMMON_COPY.linkFn(EXPLORE_PAGE_LINKS.CENSUS_15_19, false, true),
     }}
   />,
   PARA_2: <FormattedMessage
@@ -1229,7 +1231,7 @@ export const NOTE_ON_TERRITORIES = {
   `}
     description={`Navigate to the explore the map page. Under the map, you will see territories paragraph 2`}
     values={{
-      link1: COMMON_COPY.linkFn(EXPLORE_PAGE_LINKS.TRIBAL_ACTION_PLAN, false, true),
+      link1: COMMON_COPY.linkFn(EXPLORE_PAGE_LINKS.DECENNIAL, false, true),
     }}
   />,
   PARA_3: <FormattedMessage
@@ -1239,7 +1241,7 @@ export const NOTE_ON_TERRITORIES = {
     `}
     description={`Navigate to the explore the map page. Under the map, you will see territories paragraph 3`}
     values={{
-      link1: COMMON_COPY.linkFn(EXPLORE_PAGE_LINKS.TRIBAL_ACTION_PLAN, false, true),
+      link1: COMMON_COPY.linkFn(EXPLORE_PAGE_LINKS.DECENNIAL, false, true),
     }}
   />,
 };
