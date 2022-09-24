@@ -11,20 +11,30 @@
   .mapHeaderRow{
     @include u-display("flex");
     @include u-padding-left(1.5);
-    justify-content: space-between;
-    
+
+    @include at-media-max("mobile-lg") {
+      flex-direction: column;
+
+      @include u-padding-right(1.5);
+
+      .geolocateBox {
+        align-self: flex-end;
+      }
+
+      .geolocateBox > div {
+        right: 13px;
+      }
+    }
+
+
     .geolocateBox {
-      // flex: 1 2 47%;
-      // align-self: flex-end;
-      // margin-bottom: 30px;
-      // margin-left: 1rem;
       margin-top: 6px;
+      @include u-margin-left(1);
 
       .geolocateMessage {
         visibility: visible;
         background-color: white;
         margin-bottom: 3px;
-        max-width: fit-content;
       }
       
       .geolocateMessageHide {
@@ -33,9 +43,7 @@
         margin-bottom: 3px;
       }
 
-      .geolocateIcon{
-        // align-self: flex-end;
-      }
+
     }
   }
 
@@ -66,7 +74,5 @@
 .j40Map {
   @include at-media-max("desktop") {
     height: 55vh;
-    @include u-margin-top(7); // Allow for tribal toggle to appear above map on screens < 1024
   }
-
 }
