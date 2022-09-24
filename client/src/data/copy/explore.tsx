@@ -1255,22 +1255,9 @@ export const NOTE_ON_TRIBAL_NATIONS = {
   PARA_1: <FormattedMessage
     id={'explore.map.page.under.map.note.on.tribal.nations.para.1'}
     defaultMessage={`
-      The map covers all U.S. census tracts, including those located within Tribal Nations, to the extent 
-      that data is available (see our <link1>Methodology & data</link1> page for more information). CEQ 
-      is engaging in consultation and coordination with Tribal Nations on the beta version of the map 
-      to provide Tribal Nations with meaningful opportunities for input, consistent with CEQ’s <link2>
-      Action Plan for Consultation and Coordination with Tribal Nations</link2>,
-      President Biden’s <link3>Memorandum on Tribal Consultation and Strengthening 
-      Nation-to-Nation Consultation</link3>, and <link4>Executive Order 13175 on Consultation and 
-      Coordination With Indian Tribal Governments</link4>.
+      To honor the Administration's commitment to the Federal trust responsibility to Tribal Nations, areas within the boundaries of Federally recognized Tribes, including Alaska Native villages, are designated as disadvantaged. In some areas, like rural Alaska, this includes Tribal areas that are smaller than a census tract. 
     `}
     description={`Navigate to the explore the map page. Under the map, you will see tribal nations paragraph 1`}
-    values={{
-      link1: COMMON_COPY.linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
-      link2: COMMON_COPY.linkFn(EXPLORE_PAGE_LINKS.TRIBAL_ACTION_PLAN, false, true),
-      link3: COMMON_COPY.linkFn(EXPLORE_PAGE_LINKS.TRIBAL_WHITEHOUSE, false, true),
-      link4: COMMON_COPY.linkFn(EXPLORE_PAGE_LINKS.TRIBAL_FED_REGISTER, false, true),
-    }}
   />,
 };
 
