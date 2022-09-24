@@ -13,6 +13,8 @@ export const EXPLORE_PAGE_LINKS = {
   TRIBAL_ACTION_PLAN: `https://www.whitehouse.gov/wp-content/uploads/2022/01/CEQ-Tribal-Consultation-Plan-04.26.2021.pdf`,
   TRIBAL_WHITEHOUSE: `https://www.whitehouse.gov/briefing-room/presidential-actions/2021/01/26/memorandum-on-tribal-consultation-and-strengthening-nation-to-nation-relationships/`,
   TRIBAL_FED_REGISTER: `https://www.federalregister.gov/documents/2000/11/09/00-29003/consultation-and-coordination-with-indian-tribal-governments`,
+  CENSUS_15_19: `https://www.census.gov/programs-surveys/decennial-census/data.html`,
+  DECENNIAL: `https://www.census.gov/programs-surveys/decennial-census/data.html`,
 };
 
 export const PAGE_INTRO = defineMessages({
@@ -28,18 +30,26 @@ export const PAGE_INTRO = defineMessages({
   },
 });
 
-export const PAGE_DESCRIPTION = <FormattedMessage
-  id={'explore.map.page.description.text'}
+export const PAGE_DESCRIPTION1 = <FormattedMessage
+  id={'explore.map.page.description.1'}
   defaultMessage={`
-    Use the map to see communities that are identified as disadvantaged. The map uses 
-    publicly-available, nationally-consistent datasets. Learn more about 
-    the methodology and datasets that were used to identify disadvantaged communities
-    in the current version of the map on the <link1>Methodology & data</link1> page.
-    `}
-  description={'On the explore the map page, the description of the page'}
-  values={{
-    link1: COMMON_COPY.linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
-  }}
+    Overburdened and underserved census tracts are highlighted as being disadvantaged on the map. The map also highlights areas within Federally-recognized Tribal reservations. These areas are also considered disadvantaged.
+  `}
+  description={'On the explore the map page, the first description of the page'}
+  // values={{
+  //   link1: COMMON_COPY.linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
+  // }}
+/>;
+
+export const PAGE_DESCRIPTION2 = <FormattedMessage
+  id={'explore.map.page.description.2'}
+  defaultMessage={`
+    Zooming and selecting shows information about each census tract or tribal area. Change the selection to see information about tribal land areas.
+  `}
+  description={'On the explore the map page, the fifth description of the page'}
+  // values={{
+  //   link1: COMMON_COPY.linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
+  // }}
 />;
 
 export const LEGEND = defineMessages({
@@ -59,6 +69,25 @@ export const LEGEND = defineMessages({
   },
 });
 
+// Explore the data box
+export const EXPLORE_DATA_BOX = defineMessages({
+  TITLE: {
+    id: 'explore.map.page.explore.data.box.title',
+    defaultMessage: 'Get the data',
+    description: 'On the explore the map page, a summary box title of Get the data',
+  },
+});
+
+export const EXPLORE_DATA_BOX_BODY = <FormattedMessage
+  id={'explore.map.page.explore.data.box.body'}
+  defaultMessage={ `
+    Download the data with documentation and shapefiles, from the <link1>downloads</link1> page
+  `}
+  description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the fifth paragraph of this side pane`}
+  values={{
+    link1: COMMON_COPY.linkFn(PAGES_ENDPOINTS.DOWNLOADS, true, false),
+  }}
+/>;
 
 // Map
 export const MAP = defineMessages({
@@ -386,7 +415,7 @@ export const SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT = defineMessages({
   },
 });
 
-export const SIDE_PANEL_VERION = {
+export const SIDE_PANEL_VERSION = {
   TITLE: <FormattedMessage
     id={'explore.map.page.side.panel.version.title'}
     defaultMessage={ 'Methodology version {version}'}
@@ -1181,49 +1210,39 @@ export const DOWNLOAD_DRAFT = {
 export const NOTE_ON_TERRITORIES = {
   INTRO: <FormattedMessage
     id={'explore.map.page.under.map.note.on.territories.intro'}
-    defaultMessage={`A note on the U.S. territories`}
+    defaultMessage={`U.S. territories note`}
     description={`Navigate to the explore the map page. Under the map, you will see territories intro text`}
   />,
   PARA_1: <FormattedMessage
     id={'explore.map.page.under.map.note.on.territories.para.1'}
     defaultMessage={`
-      The data sources described on the <link1>Methodology & data</link1> page are used to 
-      identify disadvantaged communities in all fifty states and the District of Columbia. However, not all 
-      of these data sources are currently available for the U.S. territories.
+      Puerto Rico: The <link1>U.S. Census Bureau's American Community Survey data</link1> from 2015 - 2019
+      are used for all fields in the workforce development category except for linguistic isolation. Linguistic isolation was removed based on feedback during the beta period. Proximity to National Priorities List (NPL) sites, proximity to Risk Management Plan (RMP) facilities, traffic proximity and volume, diesel particulate matter exposure, energy cost and housing cost were added for Puerto Rico in the 1.0 version.
     `}
     description={`Navigate to the explore the map page. Under the map, you will see territories paragraph 1`}
     values={{
-      link1: COMMON_COPY.linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
+      link1: COMMON_COPY.linkFn(EXPLORE_PAGE_LINKS.CENSUS_15_19, false, true),
     }}
   />,
   PARA_2: <FormattedMessage
     id={'explore.map.page.under.map.note.on.territories.para.2'}
     defaultMessage={`
-      For Puerto Rico, the Census Bureau’s American Community Survey data from 2015-2019 are used for higher 
-      ed enrollment rate and all the other fields in the Training and Workforce Development category 
-      to identify disadvantaged communities. Data in the other categories are unavailable at this 
-      time.
-    `}
+    American Samoa and the Northern Mariana Islands: The <link1>Decennial Census data</link1> from 2010 are used. The CEJST uses the following data for these territories: unemployment, poverty, low median income, and high school education. These burdens are in the workforce Development category.
+  `}
     description={`Navigate to the explore the map page. Under the map, you will see territories paragraph 2`}
+    values={{
+      link1: COMMON_COPY.linkFn(EXPLORE_PAGE_LINKS.DECENNIAL, false, true),
+    }}
   />,
   PARA_3: <FormattedMessage
     id={'explore.map.page.under.map.note.on.territories.para.3'}
     defaultMessage={`
-      For American Samoa and the Northern Mariana Islands, the data used to identify 
-      disadvantaged communities are from the 2010 Decennial Census, the last reported data from the 
-      U.S. Census Bureau. Available data for these territories includes unemployment, poverty,  
-      low median income, and high school degree achievement rate fields in the Training and 
-      Workforce Development category.
+    Guam and the U.S. Virgin Islands: Some <link1>Decennial Census data</link1> from 2010 are used. They show burdens in the workforce development category. The data includes: Unemployment, poverty, low median income, and high school education.
     `}
     description={`Navigate to the explore the map page. Under the map, you will see territories paragraph 3`}
-  />,
-  PARA_4: <FormattedMessage
-    id={'explore.map.page.under.map.note.on.territories.para.4'}
-    defaultMessage={`
-      Work is currently underway to identify disadvantaged communities and update the 
-      map accordingly for Guam and the U.S. Virgin Islands.
-        `}
-    description={`Navigate to the explore the map page. Under the map, you will see territories paragraph 4`}
+    values={{
+      link1: COMMON_COPY.linkFn(EXPLORE_PAGE_LINKS.DECENNIAL, false, true),
+    }}
   />,
 };
 
@@ -1236,22 +1255,9 @@ export const NOTE_ON_TRIBAL_NATIONS = {
   PARA_1: <FormattedMessage
     id={'explore.map.page.under.map.note.on.tribal.nations.para.1'}
     defaultMessage={`
-      The map covers all U.S. census tracts, including those located within Tribal Nations, to the extent 
-      that data is available (see our <link1>Methodology & data</link1> page for more information). CEQ 
-      is engaging in consultation and coordination with Tribal Nations on the beta version of the map 
-      to provide Tribal Nations with meaningful opportunities for input, consistent with CEQ’s <link2>
-      Action Plan for Consultation and Coordination with Tribal Nations</link2>,
-      President Biden’s <link3>Memorandum on Tribal Consultation and Strengthening 
-      Nation-to-Nation Consultation</link3>, and <link4>Executive Order 13175 on Consultation and 
-      Coordination With Indian Tribal Governments</link4>.
+      To honor the Administration's commitment to the Federal trust responsibility to Tribal Nations, areas within the boundaries of Federally recognized Tribes, including Alaska Native villages, are designated as disadvantaged. In some areas, like rural Alaska, this includes Tribal areas that are smaller than a census tract. 
     `}
     description={`Navigate to the explore the map page. Under the map, you will see tribal nations paragraph 1`}
-    values={{
-      link1: COMMON_COPY.linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
-      link2: COMMON_COPY.linkFn(EXPLORE_PAGE_LINKS.TRIBAL_ACTION_PLAN, false, true),
-      link3: COMMON_COPY.linkFn(EXPLORE_PAGE_LINKS.TRIBAL_WHITEHOUSE, false, true),
-      link4: COMMON_COPY.linkFn(EXPLORE_PAGE_LINKS.TRIBAL_FED_REGISTER, false, true),
-    }}
   />,
 };
 

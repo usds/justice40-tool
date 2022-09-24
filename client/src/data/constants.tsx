@@ -30,6 +30,8 @@ export const MISSING_DATA_STRING = '--';
 // Tribal signals
 export const TRIBAL_ID = 'tribalId';
 export const LAND_AREA_NAME = 'landAreaName';
+export const TRIBAL_AREAS_PERCENTAGE = 'TA_PERC';
+export const TRIBAL_AREAS_COUNT = 'TA_COUNT';
 
 // Set the threshold percentile used by most indicators in the side panel
 export const DEFAULT_THRESHOLD_PERCENTILE = 90;

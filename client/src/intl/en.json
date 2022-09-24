@@ -99,6 +99,10 @@
     "defaultMessage": "Download new <link1>technical support</link1> and other documentation and <link2>send feedback</link2>.",
     "description": "Alert title that appears at the top of pages."
   },
+  "common.pages.alerts.banner.beta.content": {
+    "defaultMessage": "<bold1>This site has been updated.</bold1> The current version of the site is 1.0 that was released on {relDate}",
+    "description": "Alert body that appears on landing page."
+  },
   "common.pages.alerts.census.tract.title": {
     "defaultMessage": "Additional documentation now available",
     "description": "Navigate to any page. This the title of the alert that informs the user that new census tract information is available"
@@ -110,14 +114,6 @@
   "common.pages.alerts.public_comment_period.title": {
     "defaultMessage": "Public comment period extended",
     "description": "Alert title that appears on landing page."
-  },
-  "common.pages.banner.beta.info": {
-    "defaultMessage": "It is an early, in-progress version of the tool with limited datasets that will be regularly updated.",
-    "description": "Navigate to the about page. This is the main info of the beta banner"
-  },
-  "common.pages.banner.beta.title": {
-    "defaultMessage": "This is a beta site.",
-    "description": "Navigate to the about page. This is the main title of the beta banner"
   },
   "common.pages.console.error.stage.url": {
     "defaultMessage": "Please check stage_hash value. It must be a 4 digit decimal value / 40 digit hexadecimal value",
@@ -323,9 +319,21 @@
     "defaultMessage": "Downloads",
     "description": "Navigate to the Downloads page, this will be the page title text"
   },
-  "explore.map.page.description.text": {
-    "defaultMessage": "Use the map to see communities that are identified as disadvantaged. The map uses publicly-available, nationally-consistent datasets. Learn more about the methodology and datasets that were used to identify disadvantaged communities in the current version of the map on the <link1>Methodology & data</link1> page.",
-    "description": "On the explore the map page, the description of the page"
+  "explore.map.page.description.1": {
+    "defaultMessage": "Overburdened and underserved census tracts are highlighted as being disadvantaged on the map. The map also highlights areas within Federally-recognized Tribal reservations. These areas are also considered disadvantaged.",
+    "description": "On the explore the map page, the first description of the page"
+  },
+  "explore.map.page.description.2": {
+    "defaultMessage": "Zooming and selecting shows information about each census tract or tribal area. Change the selection to see information about tribal land areas.",
+    "description": "On the explore the map page, the fifth description of the page"
+  },
+  "explore.map.page.explore.data.box.body": {
+    "defaultMessage": "Download the data with documentation and shapefiles, from the <link1>downloads</link1> page",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the fifth paragraph of this side pane"
+  },
+  "explore.map.page.explore.data.box.title": {
+    "defaultMessage": "Get the data",
+    "description": "On the explore the map page, a summary box title of Get the data"
   },
   "explore.map.page.heading.text": {
     "defaultMessage": "Explore the map",
@@ -1052,31 +1060,27 @@
     "description": "Navigate to the explore the map page. Under the map, you will see RFI is expired"
   },
   "explore.map.page.under.map.note.on.territories.intro": {
-    "defaultMessage": "A note on the U.S. territories",
+    "defaultMessage": "U.S. territories note",
     "description": "Navigate to the explore the map page. Under the map, you will see territories intro text"
   },
   "explore.map.page.under.map.note.on.territories.para.1": {
-    "defaultMessage": "The data sources described on the <link1>Methodology & data</link1> page are used to identify disadvantaged communities in all fifty states and the District of Columbia. However, not all of these data sources are currently available for the U.S. territories.",
+    "defaultMessage": "Puerto Rico: The <link1>U.S. Census Bureau's American Community Survey data</link1> from 2015 - 2019 are used for all fields in the workforce development category except for linguistic isolation. Linguistic isolation was removed based on feedback during the beta period. Proximity to National Priorities List (NPL) sites, proximity to Risk Management Plan (RMP) facilities, traffic proximity and volume, diesel particulate matter exposure, energy cost and housing cost were added for Puerto Rico in the 1.0 version.",
     "description": "Navigate to the explore the map page. Under the map, you will see territories paragraph 1"
   },
   "explore.map.page.under.map.note.on.territories.para.2": {
-    "defaultMessage": "For Puerto Rico, the Census Bureau’s American Community Survey data from 2015-2019 are used for higher ed enrollment rate and all the other fields in the Training and Workforce Development category to identify disadvantaged communities. Data in the other categories are unavailable at this time.",
+    "defaultMessage": "American Samoa and the Northern Mariana Islands: The <link1>Decennial Census data</link1> from 2010 are used. The CEJST uses the following data for these territories: unemployment, poverty, low median income, and high school education. These burdens are in the workforce Development category.",
     "description": "Navigate to the explore the map page. Under the map, you will see territories paragraph 2"
   },
   "explore.map.page.under.map.note.on.territories.para.3": {
-    "defaultMessage": "For American Samoa and the Northern Mariana Islands, the data used to identify disadvantaged communities are from the 2010 Decennial Census, the last reported data from the U.S. Census Bureau. Available data for these territories includes unemployment, poverty, low median income, and high school degree achievement rate fields in the Training and Workforce Development category.",
+    "defaultMessage": "Guam and the U.S. Virgin Islands: Some <link1>Decennial Census data</link1> from 2010 are used. They show burdens in the workforce development category. The data includes: Unemployment, poverty, low median income, and high school education.",
     "description": "Navigate to the explore the map page. Under the map, you will see territories paragraph 3"
-  },
-  "explore.map.page.under.map.note.on.territories.para.4": {
-    "defaultMessage": "Work is currently underway to identify disadvantaged communities and update the map accordingly for Guam and the U.S. Virgin Islands.",
-    "description": "Navigate to the explore the map page. Under the map, you will see territories paragraph 4"
   },
   "explore.map.page.under.map.note.on.tribal.nations.intro": {
     "defaultMessage": "A note on Tribal Nations",
     "description": "Navigate to the explore the map page. Under the map, you will see tribal nations intro text"
   },
   "explore.map.page.under.map.note.on.tribal.nations.para.1": {
-    "defaultMessage": "The map covers all U.S. census tracts, including those located within Tribal Nations, to the extent that data is available (see our <link1>Methodology & data</link1> page for more information). CEQ is engaging in consultation and coordination with Tribal Nations on the beta version of the map to provide Tribal Nations with meaningful opportunities for input, consistent with CEQ’s <link2> Action Plan for Consultation and Coordination with Tribal Nations</link2>, President Biden’s <link3>Memorandum on Tribal Consultation and Strengthening Nation-to-Nation Consultation</link3>, and <link4>Executive Order 13175 on Consultation and Coordination With Indian Tribal Governments</link4>.",
+    "defaultMessage": "To honor the Administration's commitment to the Federal trust responsibility to Tribal Nations, areas within the boundaries of Federally recognized Tribes, including Alaska Native villages, are designated as disadvantaged. In some areas, like rural Alaska, this includes Tribal areas that are smaller than a census tract.",
     "description": "Navigate to the explore the map page. Under the map, you will see tribal nations paragraph 1"
   },
   "fab.survey.text": {

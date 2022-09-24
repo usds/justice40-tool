@@ -7,7 +7,6 @@ import {Accordion, Button} from '@trussworks/react-uswds';
 // Components:
 import Category from '../Category';
 import TractDemographics from '../TractDemographics';
-import DisadvantageDot from '../DisadvantageDot';
 import Indicator from '../Indicator';
 import TractInfo from '../TractInfo';
 
@@ -97,6 +96,27 @@ export const indicatorFilter = (label:MessageDescriptor) => {
   );
 };
 
+
+/**
+ * Function to calculate the tribal area percentage value to display when a tract is selected
+ *
+ * @param {number} tribalPercentRaw
+ * @return {string}
+ */
+export const getTribalPercentValue = (tribalPercentRaw: number) => {
+  if (tribalPercentRaw === undefined) {
+    return ` 0 %`;
+  }
+
+  if (tribalPercentRaw === 0) {
+    // test tract = #9.03/42.9242/-98.8015
+    return ` less than 1%`;
+  }
+
+  if (tribalPercentRaw && tribalPercentRaw > 0) {
+    return ` ${tribalPercentRaw*100} %`;
+  }
+};
 
 /**
  * This is the main component. It will render the entire side panel and show the details
@@ -560,26 +580,6 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
     threshold: 10,
   };
 
-  // Temp adding to workforce category
-  const adjacency: indicatorInfo = {
-    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.ADJ),
-    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.ADJ),
-    type: 'percentile',
-    value: properties.hasOwnProperty(constants.ADJACENCY_PERCENTILE) ?
-      properties[constants.ADJACENCY_PERCENTILE] : null,
-    isDisadvagtaged: properties[constants.ADJACENCY_EXCEEDS_THRESH] ?
-      properties[constants.ADJACENCY_EXCEEDS_THRESH] : null,
-  };
-  const imputeFlag: indicatorInfo = {
-    label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.IMP_FLG),
-    description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.IMP_FLG),
-    type: 'boolean',
-    value: properties.hasOwnProperty(constants.IMPUTE_FLAG) ?
-      (properties[constants.IMPUTE_FLAG] == '0' ? false : true) : null,
-    isDisadvagtaged: false,
-  };
-
-
   /**
    * Aggregate indicators based on categories
    *
@@ -683,15 +683,6 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
       isExceedBothSocioBurdens: properties[constants.IS_WORKFORCE_EXCEED_BOTH_SOCIO_INDICATORS] ?
         properties[constants.IS_WORKFORCE_EXCEED_BOTH_SOCIO_INDICATORS] : null,
     },
-    {
-      id: 'test',
-      titleText: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_CATEGORY.TEST),
-      indicators: [adjacency],
-      socioEcIndicators: [imputeFlag],
-      isDisadvagtaged: null,
-      isExceed1MoreBurden: null,
-      isExceedBothSocioBurdens: null,
-    },
   ];
 
 
@@ -772,86 +763,115 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
 
   return (
     <aside className={styles.areaDetailContainer} data-cy={'aside'}>
-      {
-        <>
-          {/* Tract Info */}
-          <TractInfo
-            blockGroup={blockGroup}
-            countyName={countyName}
-            stateName={stateName}
-            population={population}
-            sidePanelState={properties[constants.SIDE_PANEL_STATE]}
-          />
+      {/* Tract Info */}
+      <TractInfo
+        blockGroup={blockGroup}
+        countyName={countyName}
+        stateName={stateName}
+        population={population}
+        sidePanelState={properties[constants.SIDE_PANEL_STATE]}
+      />
 
-          {/* Demographics */}
-          <TractDemographics properties={properties}/>
+      {/* Demographics */}
+      <TractDemographics properties={properties}/>
 
-          {/* Disadvantaged? */}
-          <div className={styles.categorization}>
+      {/* Disadvantaged? */}
+      <div className={styles.categorization}>
 
-            {/* Questions asking if disadvantaged? */}
-            <div className={styles.isInFocus}>
-              {EXPLORE_COPY.COMMUNITY.IS_FOCUS}
+        {/* Questions asking if disadvantaged? */}
+        <div className={styles.isInFocus}>
+          {EXPLORE_COPY.COMMUNITY.IS_FOCUS}
+        </div>
+
+        {/* YES with Dot or NO with no Dot  */}
+        <div className={styles.communityOfFocus}>
+          {isCommunityFocus ?
+            <h3 className={styles.invert}>{EXPLORE_COPY.COMMUNITY.OF_FOCUS}</h3> :
+            <h3>{EXPLORE_COPY.COMMUNITY.NOT_OF_FOCUS}</h3>
+          }
+        </div>
+
+        {/* Number of categories exceeded */}
+        <div className={styles.showCategoriesExceed}>
+          {EXPLORE_COPY.numberOfCategoriesExceeded(properties[constants.COUNT_OF_CATEGORIES_DISADV])}
+        </div>
+      </div>
+
+      {/* Send Feedback button */}
+      <a
+        className={styles.sendFeedbackLink}
+        // The mailto string must be on a single line otherwise the email does not display subject and body
+        href={`
+          mailto:${COMMON_COPY.FEEDBACK_EMAIL}?subject=${feedbackEmailSubject}&body=${feedbackEmailBody}
+          `}
+        target={"_blank"}
+        rel="noreferrer"
+      >
+        <Button
+          type="button"
+          className={styles.sendFeedbackBtn}
+        >
+          <div className={styles.buttonContainer}>
+            <div className={styles.buttonText}>
+              {EXPLORE_COPY.COMMUNITY.SEND_FEEDBACK.TITLE}
             </div>
-
-            {/* YES with Dot or NO with no Dot  */}
-            <div className={styles.communityOfFocus}>
-              {isCommunityFocus ?
-                <>
-                  <h3>{EXPLORE_COPY.COMMUNITY.OF_FOCUS}</h3>
-                  <DisadvantageDot isDisadvantaged={isCommunityFocus} />
-                </> :
-                <h3>{EXPLORE_COPY.COMMUNITY.NOT_OF_FOCUS}</h3>
-              }
-            </div>
-
-            {/* Number of categories exceeded */}
-            <div className={styles.showCategoriesExceed}>
-              {EXPLORE_COPY.numberOfCategoriesExceeded(properties[constants.COUNT_OF_CATEGORIES_DISADV])}
-            </div>
-
-            {/* Number of thresholds exceeded */}
-            {/* <div className={styles.showThresholdExceed}>
-              {EXPLORE_COPY.numberOfThresholdsExceeded(properties[constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS])}
-            </div> */}
-
-            {/* Send Feedback button */}
-            <a
-              className={styles.sendFeedbackLink}
-              // The mailto string must be on a single line otherwise the email does not display subject and body
-              href={`
-              mailto:${COMMON_COPY.FEEDBACK_EMAIL}?subject=${feedbackEmailSubject}&body=${feedbackEmailBody}
-              `}
-              target={"_blank"}
-              rel="noreferrer"
-            >
-              <Button
-                type="button"
-                className={styles.sendFeedbackBtn}
-              >
-                <div className={styles.buttonContainer}>
-                  <div className={styles.buttonText}>
-                    {EXPLORE_COPY.COMMUNITY.SEND_FEEDBACK.TITLE}
-                  </div>
-                  <img
-                    className={styles.buttonImage}
-                    src={mailIcon}
-                    alt={intl.formatMessage(EXPLORE_COPY.COMMUNITY.SEND_FEEDBACK.IMG_ICON.ALT_TAG)}
-                  />
-                </div>
-              </Button>
-            </a>
+            <img
+              className={styles.buttonImage}
+              src={mailIcon}
+              alt={intl.formatMessage(EXPLORE_COPY.COMMUNITY.SEND_FEEDBACK.IMG_ICON.ALT_TAG)}
+            />
           </div>
-        </>
-      }
+        </Button>
+      </a>
 
+      {/* TEMP FOR CEQ - Imputed income, adjacency and tribal info */}
+      <div className={styles.testSignals}>
+        <div>
+          <span>
+            Income imputed?
+          </span>
+          <span>
+            {properties[constants.IMPUTE_FLAG] ? ' YES' : ' NO'}
+          </span>
+        </div>
+
+        <div>
+          <span>
+            Adjacency indicator?
+          </span>
+          <span>
+            {properties[constants.ADJACENCY_EXCEEDS_THRESH] ? ' YES' : ' NO'}
+          </span>
+        </div>
+
+        <div>
+          <span>
+            Tribal lands?
+          </span>
+          <span>
+            {getTribalPercentValue(properties[constants.TRIBAL_AREAS_PERCENTAGE])}
+          </span>
+        </div>
+
+        <div>
+          <span>
+            Tribal count?
+          </span>
+          <span>
+            {
+              properties[constants.TRIBAL_AREAS_COUNT] ?
+              ` ${properties[constants.TRIBAL_AREAS_COUNT]}` : ` 0`
+            }
+          </span>
+        </div>
+      </div>
 
       {/* All category accordions in this component */}
       {<Accordion multiselectable={true} items={categoryItems} />}
 
       {/* Methodology version */}
       <div className={styles.versionInfo}>
-        {EXPLORE_COPY.SIDE_PANEL_VERION.TITLE}
+        {EXPLORE_COPY.SIDE_PANEL_VERSION.TITLE}
       </div>
     </aside>
   );

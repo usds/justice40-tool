@@ -401,26 +401,24 @@ const J40Map = ({location}: IJ40Interface) => {
 
             {/* Geolocate Icon */}
             <div className={styles.geolocateBox}>
-              {windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG &&
-              <div
-                className={
+              {
+                windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG - 1 &&
+                <div className={
                   (geolocationInProgress && !isGeolocateLocked) ?
                   styles.geolocateMessage :
-                  styles.geolocateMessageHide}
-              >
-                {intl.formatMessage(EXPLORE_COPY.MAP.GEOLOC_MSG_LOCATING)}
-              </div>}
-
-              <div>
-                <GeolocateControl
-                  positionOptions={{enableHighAccuracy: true}}
-                  onGeolocate={onGeolocate}
-                  onClick={onClickGeolocate}
-                  trackUserLocation={windowWidth < constants.USWDS_BREAKPOINTS.MOBILE_LG}
-                  showUserHeading={windowWidth < constants.USWDS_BREAKPOINTS.MOBILE_LG}
-                  disabledLabel={intl.formatMessage(EXPLORE_COPY.MAP.GEOLOC_MSG_DISABLED)}
-                />
-              </div>
+                  styles.geolocateMessageHide
+                }>
+                  {intl.formatMessage(EXPLORE_COPY.MAP.GEOLOC_MSG_LOCATING)}
+                </div>
+              }
+              <GeolocateControl
+                positionOptions={{enableHighAccuracy: true}}
+                onGeolocate={onGeolocate}
+                onClick={onClickGeolocate}
+                trackUserLocation={windowWidth < constants.USWDS_BREAKPOINTS.MOBILE_LG}
+                showUserHeading={windowWidth < constants.USWDS_BREAKPOINTS.MOBILE_LG}
+                disabledLabel={intl.formatMessage(EXPLORE_COPY.MAP.GEOLOC_MSG_DISABLED)}
+              />
             </div>
 
           </div>
