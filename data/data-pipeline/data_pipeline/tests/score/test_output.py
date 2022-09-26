@@ -7,6 +7,7 @@ import pandas as pd
 import numpy as np
 from data_pipeline.score import field_names
 from data_pipeline.score.field_names import GEOID_TRACT_FIELD
+from data_pipeline.etl.score.constants import TILES_ISLAND_AREA_FIPS_CODES
 from .fixtures import (
     final_score_df,
     ejscreen_df,
@@ -287,7 +288,24 @@ def test_data_sources(
 
         # Make sure we have NAs for any tracts in the final data that aren't
         # included in the data source
-        assert np.all(df[df.MERGE == "left_only"][final_columns].isna())
+        has_additional_non_null_tracts = not np.all(
+            df[df.MERGE == "left_only"][final_columns].isna()
+        )
+        if has_additional_non_null_tracts:
+            # We backfill island areas with data from the 2010 census, so if THOSE tracts
+            # have data beyond the data source, that's to be expected and is fine to pass.
+            # If some other state or territory does though, this should fail
+            left_only = df.loc[(df.MERGE == "left_only")]
+            left_only_has_value = left_only.loc[
+                ~df[final_columns].isna().all(axis=1)
+            ]
+            fips_with_values = set(
+                left_only_has_value[field_names.GEOID_TRACT_FIELD].str[0:2]
+            )
+            non_island_fips_codes = fips_with_values.difference(
+                TILES_ISLAND_AREA_FIPS_CODES
+            )
+            assert not non_island_fips_codes
 
         # Make sure the datasource doesn't have a ton of unmatched tracts, implying it
         # has moved to 2020 tracts
