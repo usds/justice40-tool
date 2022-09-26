@@ -90,6 +90,8 @@ disable = [
   "C0115", # Disables missing class docstring
   "R0915", # Disables too many statements (score generation transform)
   "W0231", # Disables super init not called
+  "E1136", # Disables unsubscriptable objects
+  "E1137", # Disables unsupported assignment operations
   "R0801", # Disables duplicate code. There are a couple places we have similar code and
    # unfortunately you can't disable this rule for individual lines or files, it's a
    # known bug. https://github.com/PyCQA/pylint/issues/214#
