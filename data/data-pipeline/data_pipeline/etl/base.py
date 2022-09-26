@@ -365,6 +365,9 @@ class ExtractTransformLoad:
                 f"No file found at `{output_file_path}`."
             )
 
+        logger.info(
+            f"Reading in CSV `{output_file_path}` for ETL of class `{cls}`."
+        )
         output_df = pd.read_csv(
             output_file_path,
             dtype={

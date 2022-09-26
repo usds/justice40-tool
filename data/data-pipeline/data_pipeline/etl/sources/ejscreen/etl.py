@@ -24,7 +24,6 @@ class EJSCREENETL(ExtractTransformLoad):
 
         self.COLUMNS_TO_KEEP = [
             self.GEOID_TRACT_FIELD_NAME,
-            field_names.TOTAL_POP_FIELD,
             # pylint: disable=duplicate-code
             field_names.AIR_TOXICS_CANCER_RISK_FIELD,
             field_names.RESPIRATORY_HAZARD_FIELD,
@@ -66,7 +65,6 @@ class EJSCREENETL(ExtractTransformLoad):
         self.output_df = self.df.rename(
             columns={
                 self.INPUT_GEOID_TRACT_FIELD_NAME: self.GEOID_TRACT_FIELD_NAME,
-                "ACSTOTPOP": field_names.TOTAL_POP_FIELD,
                 "CANCER": field_names.AIR_TOXICS_CANCER_RISK_FIELD,
                 "RESP": field_names.RESPIRATORY_HAZARD_FIELD,
                 "DSLPM": field_names.DIESEL_FIELD,

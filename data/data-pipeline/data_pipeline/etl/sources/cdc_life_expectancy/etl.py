@@ -73,8 +73,7 @@ class CDCLifeExpectancy(ExtractTransformLoad):
 
         all_usa_raw_df = self._download_and_prep_data(
             file_url=self.USA_FILE_URL,
-            download_file_name=self.get_tmp_path()
-            / "US_A.CSV",
+            download_file_name=self.get_tmp_path() / "US_A.CSV",
         )
 
         # Check which states are missing
@@ -94,15 +93,13 @@ class CDCLifeExpectancy(ExtractTransformLoad):
         logger.info("Downloading data for Maine")
         maine_raw_df = self._download_and_prep_data(
             file_url=self.MAINE_FILE_URL,
-            download_file_name=self.get_tmp_path()
-            / "maine.csv",
+            download_file_name=self.get_tmp_path() / "maine.csv",
         )
 
         logger.info("Downloading data for Wisconsin")
         wisconsin_raw_df = self._download_and_prep_data(
             file_url=self.WISCONSIN_FILE_URL,
-            download_file_name=self.get_tmp_path()
-            / "wisconsin.csv",
+            download_file_name=self.get_tmp_path() / "wisconsin.csv",
         )
 
         combined_df = pd.concat(

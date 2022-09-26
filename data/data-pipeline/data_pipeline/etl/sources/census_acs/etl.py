@@ -23,12 +23,11 @@ CENSUS_DATA_S3_URL = settings.AWS_JUSTICE40_DATASOURCES_URL + "/census.zip"
 
 
 class CensusACSETL(ExtractTransformLoad):
-    def __init__(self):
-        self.ACS_YEAR = 2019
-        self.OUTPUT_PATH = (
-            self.DATA_PATH / "dataset" / f"census_acs_{self.ACS_YEAR}"
-        )
+    NAME = "census_acs"
+    ACS_YEAR = 2019
+    MINIMUM_POPULATION_REQUIRED_FOR_IMPUTATION = 1
 
+    def __init__(self):
         self.TOTAL_UNEMPLOYED_FIELD = "B23025_005E"
         self.TOTAL_IN_LABOR_FORCE = "B23025_003E"
         self.EMPLOYMENT_FIELDS = [
@@ -216,8 +215,15 @@ class CensusACSETL(ExtractTransformLoad):
             self.OTHER_RACE_FIELD_NAME,
         ]
 
+        # Note: this field does double-duty here. It's used as the total population
+        # within the age questions.
+        # It's also what EJScreen used as their variable for total population in the
+        # census tract, so we use it similarly.
+        # See p. 83 of https://www.epa.gov/sites/default/files/2021-04/documents/ejscreen_technical_document.pdf
+        self.TOTAL_POPULATION_FROM_AGE_TABLE = "B01001_001E"  # Estimate!!Total:
+
         self.AGE_INPUT_FIELDS = [
-            "B01001_001E",  # Estimate!!Total:
+            self.TOTAL_POPULATION_FROM_AGE_TABLE,
             "B01001_003E",  # Estimate!!Total:!!Male:!!Under 5 years
             "B01001_004E",  # Estimate!!Total:!!Male:!!5 to 9 years
             "B01001_005E",  # Estimate!!Total:!!Male:!!10 to 14 years
@@ -277,6 +283,7 @@ class CensusACSETL(ExtractTransformLoad):
         self.COLUMNS_TO_KEEP = (
             [
                 self.GEOID_TRACT_FIELD_NAME,
+                field_names.TOTAL_POP_FIELD,
                 self.UNEMPLOYED_FIELD_NAME,
                 self.LINGUISTIC_ISOLATION_FIELD_NAME,
                 self.MEDIAN_INCOME_FIELD_NAME,
@@ -375,18 +382,22 @@ class CensusACSETL(ExtractTransformLoad):
             )
 
         geo_df = gpd.read_file(
-            self.DATA_PATH / "census" / "geojson" / "us.json"
+            self.DATA_PATH / "census" / "geojson" / "us.json",
         )
+
         df = self._merge_geojson(
             df=df,
             usa_geo_df=geo_df,
         )
-        # Rename two fields.
+
+        # Rename some fields.
         df = df.rename(
             columns={
                 self.MEDIAN_HOUSE_VALUE_FIELD: self.MEDIAN_HOUSE_VALUE_FIELD_NAME,
                 self.MEDIAN_INCOME_FIELD: self.MEDIAN_INCOME_FIELD_NAME,
-            }
+                self.TOTAL_POPULATION_FROM_AGE_TABLE: field_names.TOTAL_POP_FIELD,
+            },
+            errors="raise",
         )
 
         # Handle null values for various fields, which are `-666666666`.
@@ -472,7 +483,6 @@ class CensusACSETL(ExtractTransformLoad):
         )
 
         # Calculate some demographic information.
-
         df = df.rename(
             columns={
                 "B02001_003E": self.BLACK_FIELD_NAME,
@@ -560,14 +570,11 @@ class CensusACSETL(ExtractTransformLoad):
             ),
         ]
 
-        # Calculate age groups
-        total_population_age_series = df["B01001_001E"]
-
         # For each age bucket, sum the relevant columns and calculate the total
         # percentage.
         for age_bucket, sum_columns in age_bucket_and_its_sum_columns:
             df[age_bucket] = (
-                df[sum_columns].sum(axis=1) / total_population_age_series
+                df[sum_columns].sum(axis=1) / df[field_names.TOTAL_POP_FIELD]
             )
 
         # Calculate college attendance and adjust low income
@@ -602,6 +609,7 @@ class CensusACSETL(ExtractTransformLoad):
             ],
             geo_df=df,
             geoid_field=self.GEOID_TRACT_FIELD_NAME,
+            minimum_population_required_for_imputation=self.MINIMUM_POPULATION_REQUIRED_FOR_IMPUTATION,
         )
 
         logger.info("Calculating with imputed values")
@@ -615,13 +623,20 @@ class CensusACSETL(ExtractTransformLoad):
             - df[self.COLLEGE_ATTENDANCE_FIELD].fillna(
                 df[self.IMPUTED_COLLEGE_ATTENDANCE_FIELD]
             )
+            # Use clip to ensure that the values are not negative if college attendance
+            # is very high
         ).clip(
             lower=0
         )
 
         # All values should have a value at this point
         assert (
+            # For tracts with >0 population
             df[
+                df[field_names.TOTAL_POP_FIELD]
+                >= self.MINIMUM_POPULATION_REQUIRED_FOR_IMPUTATION
+            ][
+                # Then the imputed field should have no nulls
                 self.ADJUSTED_AND_IMPUTED_POVERTY_LESS_THAN_200_PERCENT_FPL_FIELD_NAME
             ]
             .isna()
@@ -644,13 +659,5 @@ class CensusACSETL(ExtractTransformLoad):
             & df[field_names.POVERTY_LESS_THAN_200_FPL_FIELD].isna()
         )
 
-        # Strip columns and save results to self.
-        self.df = df[self.COLUMNS_TO_KEEP]
-
-    def load(self) -> None:
-        logger.info("Saving Census ACS Data")
-
-        # mkdir census
-        self.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
-
-        self.df.to_csv(path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False)
+        # Save results to self.
+        self.output_df = df

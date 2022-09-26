@@ -1,6 +1,8 @@
 import pathlib
 from data_pipeline.tests.sources.example.test_etl import TestETL
-from data_pipeline.etl.sources.persistent_poverty.etl import PersistentPovertyETL
+from data_pipeline.etl.sources.persistent_poverty.etl import (
+    PersistentPovertyETL,
+)
 
 
 class TestPersistentPovertyETL(TestETL):

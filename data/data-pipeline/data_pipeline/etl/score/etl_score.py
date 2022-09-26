@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.sources.census_acs.etl import CensusACSETL
 from data_pipeline.etl.sources.national_risk_index.etl import (
     NationalRiskIndexETL,
 )
@@ -35,7 +36,7 @@ class ScoreETL(ExtractTransformLoad):
         # dataframes
         self.df: pd.DataFrame
         self.ejscreen_df: pd.DataFrame
-        self.census_df: pd.DataFrame
+        self.census_acs_df: pd.DataFrame
         self.hud_housing_df: pd.DataFrame
         self.cdc_places_df: pd.DataFrame
         self.census_acs_median_incomes_df: pd.DataFrame
@@ -67,14 +68,7 @@ class ScoreETL(ExtractTransformLoad):
         )
 
         # Load census data
-        census_csv = (
-            constants.DATA_PATH / "dataset" / "census_acs_2019" / "usa.csv"
-        )
-        self.census_df = pd.read_csv(
-            census_csv,
-            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
-            low_memory=False,
-        )
+        self.census_acs_df = CensusACSETL.get_data_frame()
 
         # Load HUD housing data
         hud_housing_csv = (
@@ -346,7 +340,7 @@ class ScoreETL(ExtractTransformLoad):
 
         # Join all the data sources that use census tracts
         census_tract_dfs = [
-            self.census_df,
+            self.census_acs_df,
             self.hud_housing_df,
             self.cdc_places_df,
             self.cdc_life_expectancy_df,
@@ -364,7 +358,7 @@ class ScoreETL(ExtractTransformLoad):
             self.nature_deprived_df,
             self.eamlis_df,
             self.fuds_df,
-            self.tribal_overlap_df
+            self.tribal_overlap_df,
         ]
 
         # Sanity check each data frame before merging.
