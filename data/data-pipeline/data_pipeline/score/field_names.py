@@ -3,7 +3,7 @@ PERCENTILE_FIELD_SUFFIX = " (percentile)"
 ISLAND_AREAS_PERCENTILE_ADJUSTMENT_FIELD = " for island areas"
 ADJACENT_MEAN_SUFFIX = " (based on adjacency index and low income alone)"
 ADJACENCY_INDEX_SUFFIX = " (average of neighbors)"
-ISLAND_AREA_BACKFILL_SUFFIX = "in 2009"
+ISLAND_AREA_BACKFILL_SUFFIX = " in 2009"
 
 # Geographic field names
 GEOID_TRACT_FIELD = "GEOID10_TRACT"

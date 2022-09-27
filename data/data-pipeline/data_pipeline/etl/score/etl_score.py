@@ -657,19 +657,19 @@ class ScoreETL(ExtractTransformLoad):
             ]
         ].mean(axis=1, skipna=True)
 
-        # For AS, MP, GU, and VI, backfill data from the 2010 census where we have it
-        # df_copy = self._backfill_island_data(df_copy)
-
         return df_copy
 
-    def _backfill_island_data(self, df: pd.DataFrame) -> pd.DataFrame:
-        logger.info("Backfilling island data")
-        island_index = (
+    @staticmethod
+    def _get_island_areas(df: pd.DataFrame) -> pd.Series:
+        return (
             df[field_names.GEOID_TRACT_FIELD]
             .str[:2]
             .isin(constants.TILES_ISLAND_AREA_FIPS_CODES)
         )
 
+    def _backfill_island_demographics(self, df: pd.DataFrame) -> pd.DataFrame:
+        logger.info("Backfilling island demographic data")
+        island_index = self._get_island_areas(df)
         for backfill_field_name in self.ISLAND_DEMOGRAPHIC_BACKFILL_FIELDS:
             actual_field_name = backfill_field_name.replace(
                 field_names.ISLAND_AREA_BACKFILL_SUFFIX, ""
@@ -679,9 +679,6 @@ class ScoreETL(ExtractTransformLoad):
             ]
         df = df.drop(columns=self.ISLAND_DEMOGRAPHIC_BACKFILL_FIELDS)
 
-        df.loc[island_index, field_names.TOTAL_POP_FIELD] = df.loc[
-            island_index, field_names.COMBINED_CENSUS_TOTAL_POPULATION_2010
-        ]
         return df
 
     def transform(self) -> None:
@@ -692,6 +689,9 @@ class ScoreETL(ExtractTransformLoad):
 
         # calculate scores
         self.df = ScoreRunner(df=self.df).calculate_scores()
+
+        # We add island demographic data since it doesn't matter to the score anyway
+        self.df = self._backfill_island_demographics(self.df)
 
     def load(self) -> None:
         logger.info("Saving Score CSV")
