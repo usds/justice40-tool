@@ -1,4 +1,6 @@
 import functools
+from typing import List
+
 from dataclasses import dataclass
 
 import numpy as np
@@ -55,6 +57,8 @@ class ScoreETL(ExtractTransformLoad):
         self.eamlis_df: pd.DataFrame
         self.fuds_df: pd.DataFrame
         self.tribal_overlap_df: pd.DataFrame
+
+        self.ISLAND_DEMOGRAPHIC_BACKFILL_FIELDS: List[str] = []
 
     def extract(self) -> None:
         logger.info("Loading data sets from disk.")
@@ -402,6 +406,25 @@ class ScoreETL(ExtractTransformLoad):
             df[field_names.MEDIAN_INCOME_FIELD] / df[field_names.AMI_FIELD]
         )
 
+        self.ISLAND_DEMOGRAPHIC_BACKFILL_FIELDS = [
+            field_names.PERCENT_BLACK_FIELD_NAME
+            + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+            field_names.PERCENT_AMERICAN_INDIAN_FIELD_NAME
+            + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+            field_names.PERCENT_ASIAN_FIELD_NAME
+            + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+            field_names.PERCENT_HAWAIIAN_FIELD_NAME
+            + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+            field_names.PERCENT_TWO_OR_MORE_RACES_FIELD_NAME
+            + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+            field_names.PERCENT_NON_HISPANIC_WHITE_FIELD_NAME
+            + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+            field_names.PERCENT_HISPANIC_FIELD_NAME
+            + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+            field_names.PERCENT_OTHER_RACE_FIELD_NAME
+            + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+        ]
+
         # Donut columns get added later
         numeric_columns = [
             field_names.HOUSING_BURDEN_FIELD,
@@ -471,7 +494,7 @@ class ScoreETL(ExtractTransformLoad):
             field_names.PERCENT_AGE_OVER_64,
             field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT,
             field_names.COUNT_OF_TRIBAL_AREAS_IN_TRACT,
-        ]
+        ] + self.ISLAND_DEMOGRAPHIC_BACKFILL_FIELDS
 
         non_numeric_columns = [
             self.GEOID_TRACT_FIELD_NAME,
@@ -639,14 +662,23 @@ class ScoreETL(ExtractTransformLoad):
 
         return df_copy
 
-    @staticmethod
-    def _backfill_island_data(df: pd.DataFrame) -> pd.DataFrame:
+    def _backfill_island_data(self, df: pd.DataFrame) -> pd.DataFrame:
         logger.info("Backfilling island data")
         island_index = (
             df[field_names.GEOID_TRACT_FIELD]
             .str[:2]
             .isin(constants.TILES_ISLAND_AREA_FIPS_CODES)
         )
+
+        for backfill_field_name in self.ISLAND_DEMOGRAPHIC_BACKFILL_FIELDS:
+            actual_field_name = backfill_field_name.replace(
+                field_names.ISLAND_AREA_BACKFILL_SUFFIX, ""
+            )
+            df.loc[island_index, actual_field_name] = df.loc[
+                island_index, backfill_field_name
+            ]
+        df = df.drop(columns=self.ISLAND_DEMOGRAPHIC_BACKFILL_FIELDS)
+
         df.loc[island_index, field_names.TOTAL_POP_FIELD] = df.loc[
             island_index, field_names.COMBINED_CENSUS_TOTAL_POPULATION_2010
         ]
