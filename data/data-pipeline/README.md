@@ -322,7 +322,9 @@ see [python-markdown docs](https://github.com/ipython-contrib/jupyter_contrib_nb
 
 ### Background
 
+<!-- markdown-link-check-disable -->
 For this project, we make use of [pytest](https://docs.pytest.org/en/latest/) for testing purposes. 
+<!-- markdown-link-check-enable-->
 
 To run tests, simply run `poetry run pytest` in this directory (i.e., `justice40-tool/data/data-pipeline`).
 
@@ -440,7 +442,9 @@ In the future, we could adopt any of the below strategies to work around this:
 
 1. We could use [pytest-snapshot](https://pypi.org/project/pytest-snapshot/) to automatically store the output of each test as data changes. This would make it so that you could avoid having to generate a pickle for each method - instead, you would only need to call `generate` once , and only when the dataframe had changed.
 
+<!-- markdown-link-check-disable -->
 Additionally, you could use a pandas type schema annotation such as [pandera](https://pandera.readthedocs.io/en/stable/schema_models.html?highlight=inputschema#basic-usage) to annotate input/output schemas for given functions, and your unit tests could use these to validate explicitly. This could be of very high value for annotating expectations.
+<!-- markdown-link-check-enable-->
 
 Alternatively, or in conjunction, you could move toward using a more strictly-typed container format for read/writes such as SQL/SQLite, and use something like [SQLModel](https://github.com/tiangolo/sqlmodel) to handle more explicit type guarantees.
 
