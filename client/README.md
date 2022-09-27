@@ -30,7 +30,7 @@ Once you install NVM, don't forget to install Node! This is included in the link
 
 After you've downloaded the nvm and the latest node (using the above steps) also install node version 14 by:
 
-`brew install node@14`
+`nvm install 14`
 
 You should then be able to switch to that version of node by:
 
