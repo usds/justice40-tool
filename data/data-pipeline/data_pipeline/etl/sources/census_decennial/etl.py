@@ -481,6 +481,7 @@ class CensusDecennialETL(ExtractTransformLoad):
             output_field_name = (
                 field_names.PERCENT_PREFIX
                 + race_field_name
+                + field_names.ISLAND_AREA_BACKFILL_SUFFIX
             )
             self.final_race_fields.append(output_field_name)
             self.df_all[output_field_name] = (
