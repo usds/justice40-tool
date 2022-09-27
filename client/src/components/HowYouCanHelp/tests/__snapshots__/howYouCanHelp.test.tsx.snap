@@ -8,30 +8,36 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
     </h2>
     <ul>
       <li>
-        View the 
+        Provide 
         <a
           class="usa-link"
           href="/en/methodology"
         >
-          Methodology & data
+          general feedback
         </a>
-         page and send feedback.
+         on the CEJST website
       </li>
       <li>
-        Use the map to find communities and 
+        Suggest new 
         <a
-          class="usa-link usa-link--external"
-          data-cy=""
-          href="mailto:Screeningtool-Support@omb.eop.gov"
-          rel="noreferrer"
-          target="_blank"
+          class="usa-link"
+          href="/en/methodology"
         >
-          share your feedback
+          data sources
         </a>
         .
       </li>
       <li>
-        The Request for Information on the Federal Register is now closed.
+        Have feedback about a specific census tract? You can either click here or click the “Send Feedback” button on the side-panel of a census tract on the map.
+      </li>
+      <li>
+        Any other questions? Email: 
+        <a
+          class="usa-link"
+          href="/en/methodology"
+        >
+          Screeningtool-Support@omb.eop.gov
+        </a>
       </li>
     </ul>
   </div>

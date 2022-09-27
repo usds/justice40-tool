@@ -1260,35 +1260,3 @@ export const NOTE_ON_TRIBAL_NATIONS = {
     description={`Navigate to the explore the map page. Under the map, you will see tribal nations paragraph 1`}
   />,
 };
-
-export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
-  HEADING: <FormattedMessage
-    id={'explore.map.page.under.map.how.you.can.help.heading'}
-    description={`Navigate to the explore the map page. Under the map, you will see how one can help us improve the map`}
-    defaultMessage={`How you can help improve the map`}
-  />,
-  LIST_ITEM_1: <FormattedMessage
-    id={'explore.map.page.under.map.how.you.can.help.list.item.1'}
-    description={`
-      Navigate to the explore the map page. Under the map, you will see give us feedback on our data and methodology
-    `}
-    defaultMessage={`View the <link1>Methodology & data</link1> page and send feedback.`}
-    values={{
-      link1: COMMON_COPY.linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
-    }}
-  />,
-  LIST_ITEM_2: <FormattedMessage
-    id={'explore.map.page.under.map.how.you.can.help.list.item.2'}
-    description={`Navigate to the explore the map page. Under the map, you will see share your feedback`}
-    defaultMessage={`Use the map to find communities and <link1>share your feedback</link1>.`}
-    values={{
-      link1: COMMON_COPY.linkFn(`mailto:${COMMON_COPY.FEEDBACK_EMAIL}`, false, true),
-    }}
-  />,
-  LIST_ITEM_3: <FormattedMessage
-    id={'explore.map.page.under.map.how.you.can.help.list.item.3'}
-    description={`Navigate to the explore the map page. Under the map, you will see RFI is expired`}
-    defaultMessage={`The Request for Information on the Federal Register is now closed.`}
-  />,
-
-};

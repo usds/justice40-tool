@@ -274,12 +274,53 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <li
                 class="usa-nav__primary-item"
               >
-                <a
-                  data-cy="nav-link-about"
-                  href="/en/about"
+                <button
+                  aria-controls="methMenu"
+                  class="usa-accordion__button usa-nav__link"
+                  data-cy="nav-dropdown-methodology"
+                  data-testid="navDropDownButton"
+                  type="button"
                 >
-                  About
-                </a>
+                  <span>
+                    About
+                  </span>
+                </button>
+                <ul
+                  class="usa-nav__submenu"
+                  hidden=""
+                  id="methMenu"
+                >
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-about"
+                      href="/en/about"
+                    >
+                      About
+                    </a>
+                  </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-faqs"
+                      href="/en/frequently-asked-questions"
+                    >
+                      Frequently asked questions
+                    </a>
+                  </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-public-engagement"
+                      href="/en/public-engagement"
+                    >
+                      Engagement calendar
+                    </a>
+                  </li>
+                </ul>
               </li>
               <li
                 class="usa-nav__primary-item"

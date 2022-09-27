@@ -58,7 +58,13 @@ const DownloadsPage = ({location}: IDownloadsPageProps) => {
           {/* Third column - Only show the SubPagNav component on desktop width */}
           {width > CONSTANTS.USWDS_BREAKPOINTS.DESKTOP ?
           <Grid col={12} tablet={{col: 3}}>
-            <SubPageNav activeSubPageIndex={2}/>
+            <SubPageNav
+              activeSubPageIndex={1}
+              endPoints={[
+                CONSTANTS.PAGES_ENDPOINTS.METHODOLOGY,
+                CONSTANTS.PAGES_ENDPOINTS.DOWNLOADS,
+              ]}
+            />
           </Grid> : ''}
         </Grid>
 

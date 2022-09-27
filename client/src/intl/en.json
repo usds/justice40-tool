@@ -1,43 +1,39 @@
 {
-  "about.page.community.members.heading": {
-    "defaultMessage": "Community members",
-    "description": "Navigate to the About page. This is the sub heading of page"
-  },
-  "about.page.community.members.info": {
-    "defaultMessage": "Explore data about communities across the U.S., including your own, and provide feedback on the tool.",
-    "description": "Navigate to the About page. This is the sub heading of page"
-  },
-  "about.page.community.members.link": {
-    "defaultMessage": "Explore the map",
-    "description": "link to Navigate to the About page. This is the explore the map page"
-  },
-  "about.page.federal.pm.heading": {
-    "defaultMessage": "Federal program managers",
-    "description": "Navigate to the About page. This is the sub heading of page"
-  },
-  "about.page.federal.pm.info": {
-    "defaultMessage": "Download the tool’s current list of communities, explore data that may be useful to your program, and provide feedback on the tool.",
-    "description": "Navigate to the About page. This is the sub heading of page"
-  },
-  "about.page.federal.pm.link": {
-    "defaultMessage": "Methodology & data",
-    "description": "link text to Navigate to the About page. This is the go to methodology page"
-  },
   "about.page.getInvolved.title": {
     "defaultMessage": "Get involved",
     "description": "Navigate to the About page. This is the sub heading of page"
   },
-  "about.page.heading.1.text": {
-    "defaultMessage": "Screening tool",
-    "description": "Navigate to the About page. This is the second heading"
+  "about.page.how.to.use.tool.para1": {
+    "defaultMessage": "The tool shows information about the burdens that communities experience. It uses datasets to identify indicators of burdens. The tool shows these burdens in census tracts. Census tracts are small units of geography. Census tracts match the data that is currently available. The tool also shows Federally-recognized Tribal reservation lands, including Alaskan Native Villages.",
+    "description": "Navigate to the About page. This is the sub heading of How to use the tool paragraph1"
   },
-  "about.page.heading.text": {
-    "defaultMessage": "About",
-    "description": "Navigate to the About page. This is the first heading"
+  "about.page.how.to.use.tool.para2": {
+    "defaultMessage": "The tool ranks most of the burdens using percentiles. Percentiles show how much burden each tract experiences compared to other tracts. Certain burdens use percentages or a simple yes/no.",
+    "description": "Navigate to the About page. This is the sub heading of How to use the tool paragraph1"
   },
-  "about.page.howToGetStarted.title": {
-    "defaultMessage": "How to get started",
-    "description": "Navigate to the About page. This is the sub heading of page"
+  "about.page.how.to.use.tool.title": {
+    "defaultMessage": "How to use the tool",
+    "description": "Navigate to the About page. This is the sub heading of How to use the tool"
+  },
+  "about.page.how.you.can.help.heading": {
+    "defaultMessage": "How you can help improve the map",
+    "description": "Navigate to the about page. You will see How you can help"
+  },
+  "about.page.how.you.can.help.list.item.1": {
+    "defaultMessage": "Provide <link1>general feedback</link1> on the CEJST website",
+    "description": "Navigate to the about page. You will see How you can help list item 1"
+  },
+  "about.page.how.you.can.help.list.item.2": {
+    "defaultMessage": "Suggest new <link1>data sources</link1>.",
+    "description": "Navigate to the about page. You will see How you can help list item 2"
+  },
+  "about.page.how.you.can.help.list.item.3": {
+    "defaultMessage": "Have feedback about a specific census tract? You can either click here or click the “Send Feedback” button on the side-panel of a census tract on the map.",
+    "description": "Navigate to the about page. You will see How you can help list item 3"
+  },
+  "about.page.how.you.can.help.list.item.4": {
+    "defaultMessage": "Any other questions? Email: <link1>Screeningtool-Support@omb.eop.gov</link1>",
+    "description": "Navigate to the about page. You will see How you can help list item 3"
   },
   "about.page.join.open.source.info": {
     "defaultMessage": "The tool’s code is open source, which means it is available for the public to view and contribute to it.",
@@ -51,8 +47,32 @@
     "defaultMessage": "Join the open source community",
     "description": "Navigate to the About page. This is the join the community heading"
   },
+  "about.page.list.item.1": {
+    "defaultMessage": "Addendum to the Justice40 Initiative Interim Guidance on Using CEJST",
+    "description": "Navigate to the About page. This is the list item 1"
+  },
+  "about.page.list.item.2": {
+    "defaultMessage": "Instructions to Federal Agencies on Using the CEJST",
+    "description": "Navigate to the About page. This is the list item 2"
+  },
+  "about.page.paragraph.1": {
+    "defaultMessage": "In January of 2020, President Biden issued <link1>Executive Order 14008</link1>. The order directed the Council on Environmental Quality (CEQ) to develop a new tool. This tool is called the Climate and Economic Justice Screening Tool. The tool has an interactive map and uses datasets that are indicators of burdens. The tool uses this information to identify communities that are experiencing these burdens.",
+    "description": "Navigate to the About page. This is the paragraph 1"
+  },
+  "about.page.paragraph.2": {
+    "defaultMessage": "Federal agencies will use the tool to help identify disadvantaged communities that will benefit from programs included in <link1>Justice40 Initiative</link1>. The Justice40 Initiative seeks to deliver 40% of the overall benefits of investments in climate, clean energy, and related areas to disadvantaged communities.",
+    "description": "Navigate to the About page. This is the paragraph 2"
+  },
+  "about.page.paragraph.3": {
+    "defaultMessage": "Federal agencies should also use the following:",
+    "description": "Navigate to the About page. This is the paragraph 3"
+  },
+  "about.page.paragraph.4": {
+    "defaultMessage": "CEQ will update the tool each year based on public feedback, research, and the availability of new data. The current version of the tool is version {version}.",
+    "description": "Navigate to the About page. This is the paragraph 4"
+  },
   "about.page.send.feedback.email.link": {
-    "defaultMessage": "Email: {email}",
+    "defaultMessage": "Contact",
     "description": "about page sub header text"
   },
   "about.page.send.feedback.heading": {
@@ -60,40 +80,28 @@
     "description": "Navigate to the About page. This is the sending feedback heading"
   },
   "about.page.send.feedback.info": {
-    "defaultMessage": "Have ideas about data and information that reflect the experiences and conditions of your community?",
+    "defaultMessage": "Have ideas for the tool? Contact the Council on Environmental Quality’s (CEQ).",
     "description": "Navigate to the About page. This is the sending feedback information"
-  },
-  "about.page.sub.header.1.text.1": {
-    "defaultMessage": "In <link1>Executive Order 14008</link1> on <italictag>Tackling the Climate Crisis at Home and Abroad</italictag>, President Biden directed the Council on Environmental Quality (CEQ) to create a Climate and Economic Justice Screening Tool. The purpose of the tool is to help Federal agencies identify disadvantaged communities that are marginalized, underserved, and overburdened by pollution. The current version of the tool provides socioeconomic, environmental, and climate information to inform decisions that may affect these communities. The tool identifies disadvantaged communities through publicly-available, nationally-consistent datasets.",
-    "description": "Navigate to the About page. This is the second heading description"
-  },
-  "about.page.sub.header.1.text.2": {
-    "defaultMessage": "The current version of the tool is in a public beta form and will be updated based on feedback and research.",
-    "description": "Navigate to the About page. This is first heading description"
-  },
-  "about.page.sub.header.2.text": {
-    "defaultMessage": "The Justice40 Initiative",
-    "description": "Navigate to the About page. This is the third heading"
-  },
-  "about.page.sub.header.2.text.1": {
-    "defaultMessage": "The tool will provide important information for the Justice40 Initiative. The goal of the Justice40 Initiative is to provide 40 percent of the overall benefits of certain Federal investments in seven key areas to disadvantaged communities. These seven key areas are: climate change, clean energy and energy efficiency, clean transit, affordable and sustainable housing, training and workforce development, the remediation and reduction of legacy pollution, and the development of critical clean water infrastructure.",
-    "description": "Navigate to the About page. This is the third heading description"
-  },
-  "about.page.sub.header.2.text.2": {
-    "defaultMessage": "Read more about the Justice40 Initiative in President Biden’s <link1>Executive Order 14008</link1> on <italictag>Tackling the Climate Crisis at Home and Abroad</italictag>.",
-    "description": "about page sub header text"
-  },
-  "about.page.sub.header.3.text": {
-    "defaultMessage": "Still have questions?",
-    "description": "Navigate to the About page. This is the fourth heading"
-  },
-  "about.page.sub.header.3.text.1": {
-    "defaultMessage": "Find answers on the Climate and Economic Justice Screening Tool's <link1>Frequently Asked Questions</link1>.",
-    "description": "Navigate to the About page. This is the second heading description"
   },
   "about.page.title.text": {
     "defaultMessage": "About",
     "description": "Navigate to the About page. This is the about page title text"
+  },
+  "about.page.use.data.heading": {
+    "defaultMessage": "Using the data",
+    "description": "Navigate to the About page. This is the sub heading of Using the data"
+  },
+  "about.page.use.data.paragraph": {
+    "defaultMessage": "A community is considered to be disadvantaged if it meets the <link1>methodology</link1>.",
+    "description": "Navigate to the About page. This is the paragraph 4"
+  },
+  "about.page.use.map.heading": {
+    "defaultMessage": "Using the map",
+    "description": "Navigate to the About page. This is the sub heading of Using the map"
+  },
+  "about.page.use.map.para": {
+    "defaultMessage": "Zoom and select any census tract to see if it is considered disadvantaged.",
+    "description": "Navigate to the About page. This is the paragraph of Using the map"
   },
   "common.pages.alerts.additional_docs_available.description": {
     "defaultMessage": "Download new <link1>technical support</link1> and other documentation and <link2>send feedback</link2>.",
@@ -1042,22 +1050,6 @@
   "explore.map.page.under.map.download.draft.ptag.1": {
     "defaultMessage": "<link1>Download the data sources</link1> used in the CEJST (.csv, .xlxs, .pdf that describes how to use the list, and a codebook, {downloadFileSize} unzipped). Last updated: {dateUpdated}.",
     "description": "\n      Navigate to the explore the map page. Under the map, you will see a link that is placed below the \n      map that will download the data packet\n    "
-  },
-  "explore.map.page.under.map.how.you.can.help.heading": {
-    "defaultMessage": "How you can help improve the map",
-    "description": "Navigate to the explore the map page. Under the map, you will see how one can help us improve the map"
-  },
-  "explore.map.page.under.map.how.you.can.help.list.item.1": {
-    "defaultMessage": "View the <link1>Methodology & data</link1> page and send feedback.",
-    "description": "\n      Navigate to the explore the map page. Under the map, you will see give us feedback on our data and methodology\n    "
-  },
-  "explore.map.page.under.map.how.you.can.help.list.item.2": {
-    "defaultMessage": "Use the map to find communities and <link1>share your feedback</link1>.",
-    "description": "Navigate to the explore the map page. Under the map, you will see share your feedback"
-  },
-  "explore.map.page.under.map.how.you.can.help.list.item.3": {
-    "defaultMessage": "The Request for Information on the Federal Register is now closed.",
-    "description": "Navigate to the explore the map page. Under the map, you will see RFI is expired"
   },
   "explore.map.page.under.map.note.on.territories.intro": {
     "defaultMessage": "U.S. territories note",
