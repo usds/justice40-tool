@@ -1,4 +1,5 @@
 import json
+from typing import List
 import requests
 
 import numpy as np
@@ -147,6 +148,65 @@ class CensusDecennialETL(ExtractTransformLoad):
             field_names.CENSUS_DECENNIAL_UNEMPLOYMENT_FIELD_2009
         )
 
+        # Race/Ethnicity fields
+        self.TOTAL_RACE_POPULATION_FIELD = "PCT086001"  # Total
+        self.ASIAN_FIELD = "PCT086002"  # Total!!Asian
+        self.BLACK_OR_AA_FIELD = "PCT086003"  # Total!!Black or African American
+        self.NATIVE_HI_OR_API_FIELD = (
+            "PCT086004"  # Total!!Native Hawaiian and Other Pacific Islander
+        )
+        self.WHITE_FIELD = "PCT086005"  # Total!!White
+        self.HISPANIC_OR_LATINO_FIELD = "PCT086006"  # Total!!Hispanic or Latino
+        self.TWO_OR_MORE_RACES_FIELD = (
+            "P004024"  # Total!!Two or More Ethnic Origins or RaceTotal
+        )
+        self.OTHER_ETHNIC_ORIGIN_FIELD = (
+            "PCT086007"  # Total!!Other Ethnic Origin or Ra
+        )
+
+        self.TOTAL_RACE_POPULATION_VI_FIELD = "P003001"  # Total
+        self.BLACK_VI_FIELD = (
+            "P003003"  # Total!!One race!!Black or African American alone
+        )
+        self.AMERICAN_INDIAN_VI_FIELD = "P003005"  # Total!!One race!!American Indian and Alaska Native alone
+        self.ASIAN_VI_FIELD = "P003006"  # Total!!One race!!Asian alone
+        self.HAWAIIAN_VI_FIELD = "P003007"  # Total!!One race!!Native Hawaiian and Other Pacific Islander alone
+        self.TWO_OR_MORE_RACES_VI_FIELD = "P003009"  # Total!!Two or More Races
+        self.NON_HISPANIC_WHITE_VI_FIELD = (
+            "P005006"  # Total!!Not Hispanic or Latino!!One race!!White alone
+        )
+        self.HISPANIC_VI_FIELD = "P005002"  # Total!!Hispanic or Latino
+        self.OTHER_RACE_VI_FIELD = (
+            "P003008"  # Total!!One race!!Some Other Race alone
+        )
+        self.TOTAL_RACE_POPULATION_VI_FIELD = "P003001"  # Total
+
+        self.TOTAL_RACE_POPULATION_FIELD_NAME = (
+            "Total population surveyed on racial data"
+        )
+        self.BLACK_FIELD_NAME = "Black or African American"
+        self.AMERICAN_INDIAN_FIELD_NAME = "American Indian / Alaska Native"
+        self.ASIAN_FIELD_NAME = "Asian"
+        self.HAWAIIAN_FIELD_NAME = "Native Hawaiian or Pacific"
+        self.TWO_OR_MORE_RACES_FIELD_NAME = "two or more races"
+        self.NON_HISPANIC_WHITE_FIELD_NAME = "White"
+        self.HISPANIC_FIELD_NAME = "Hispanic or Latino"
+        # Note that `other` is lowercase because the whole field will show up in the download
+        # file as "Percent other races"
+        self.OTHER_RACE_FIELD_NAME = "other races"
+
+        # Name output demographics fields.
+        self.RE_OUTPUT_FIELDS = [
+            self.BLACK_FIELD_NAME,
+            self.AMERICAN_INDIAN_FIELD_NAME,
+            self.ASIAN_FIELD_NAME,
+            self.HAWAIIAN_FIELD_NAME,
+            self.TWO_OR_MORE_RACES_FIELD_NAME,
+            self.NON_HISPANIC_WHITE_FIELD_NAME,
+            self.HISPANIC_FIELD_NAME,
+            self.OTHER_RACE_FIELD_NAME,
+        ]
+
         var_list = [
             self.MEDIAN_INCOME_FIELD,
             self.TOTAL_HOUSEHOLD_RATIO_INCOME_TO_POVERTY_LEVEL_FIELD,
@@ -162,6 +222,14 @@ class CensusDecennialETL(ExtractTransformLoad):
             self.EMPLOYMENT_FEMALE_IN_LABOR_FORCE_FIELD,
             self.EMPLOYMENT_FEMALE_UNEMPLOYED_FIELD,
             self.TOTAL_POP_FIELD,
+            self.TOTAL_RACE_POPULATION_FIELD,
+            self.ASIAN_FIELD,
+            self.TWO_OR_MORE_RACES_FIELD,
+            self.BLACK_OR_AA_FIELD,
+            self.NATIVE_HI_OR_API_FIELD,
+            self.WHITE_FIELD,
+            self.HISPANIC_OR_LATINO_FIELD,
+            self.OTHER_ETHNIC_ORIGIN_FIELD,
         ]
         var_list = ",".join(var_list)
 
@@ -180,6 +248,15 @@ class CensusDecennialETL(ExtractTransformLoad):
             self.EMPLOYMENT_FEMALE_IN_LABOR_FORCE_VI_FIELD,
             self.EMPLOYMENT_FEMALE_UNEMPLOYED_VI_FIELD,
             self.TOTAL_POP_VI_FIELD,
+            self.BLACK_VI_FIELD,
+            self.AMERICAN_INDIAN_VI_FIELD,
+            self.ASIAN_VI_FIELD,
+            self.HAWAIIAN_VI_FIELD,
+            self.TWO_OR_MORE_RACES_VI_FIELD,
+            self.NON_HISPANIC_WHITE_VI_FIELD,
+            self.HISPANIC_VI_FIELD,
+            self.OTHER_RACE_VI_FIELD,
+            self.TOTAL_RACE_POPULATION_VI_FIELD,
         ]
         var_list_vi = ",".join(var_list_vi)
 
@@ -210,6 +287,23 @@ class CensusDecennialETL(ExtractTransformLoad):
             self.EMPLOYMENT_MALE_UNEMPLOYED_FIELD: self.EMPLOYMENT_MALE_UNEMPLOYED_FIELD,
             self.EMPLOYMENT_FEMALE_IN_LABOR_FORCE_FIELD: self.EMPLOYMENT_FEMALE_IN_LABOR_FORCE_FIELD,
             self.EMPLOYMENT_FEMALE_UNEMPLOYED_FIELD: self.EMPLOYMENT_FEMALE_UNEMPLOYED_FIELD,
+            self.TOTAL_RACE_POPULATION_FIELD: self.TOTAL_RACE_POPULATION_FIELD_NAME,
+            self.TOTAL_RACE_POPULATION_VI_FIELD: self.TOTAL_RACE_POPULATION_FIELD_NAME,
+            self.AMERICAN_INDIAN_VI_FIELD: self.AMERICAN_INDIAN_FIELD_NAME,
+            self.ASIAN_FIELD: self.ASIAN_FIELD_NAME,
+            self.ASIAN_VI_FIELD: self.ASIAN_FIELD_NAME,
+            self.BLACK_OR_AA_FIELD: self.BLACK_FIELD_NAME,
+            self.BLACK_VI_FIELD: self.BLACK_FIELD_NAME,
+            self.NATIVE_HI_OR_API_FIELD: self.HAWAIIAN_FIELD_NAME,
+            self.HAWAIIAN_VI_FIELD: self.HAWAIIAN_FIELD_NAME,
+            self.TWO_OR_MORE_RACES_FIELD: self.TWO_OR_MORE_RACES_FIELD_NAME,
+            self.TWO_OR_MORE_RACES_VI_FIELD: self.TWO_OR_MORE_RACES_FIELD_NAME,
+            self.WHITE_FIELD: self.NON_HISPANIC_WHITE_FIELD_NAME,
+            self.NON_HISPANIC_WHITE_VI_FIELD: self.NON_HISPANIC_WHITE_FIELD_NAME,
+            self.HISPANIC_OR_LATINO_FIELD: self.HISPANIC_FIELD_NAME,
+            self.HISPANIC_VI_FIELD: self.HISPANIC_FIELD_NAME,
+            self.OTHER_ETHNIC_ORIGIN_FIELD: self.OTHER_RACE_FIELD_NAME,
+            self.OTHER_RACE_VI_FIELD: self.OTHER_RACE_FIELD_NAME,
         }
 
         # To do: Ask Census Slack Group about whether you need to hardcode the county fips
@@ -252,6 +346,8 @@ class CensusDecennialETL(ExtractTransformLoad):
             + "&for=tract:*&in=state:{}%20county:{}"
         )
 
+        self.final_race_fields: List[str] = []
+
         self.df: pd.DataFrame
         self.df_vi: pd.DataFrame
         self.df_all: pd.DataFrame
@@ -264,14 +360,15 @@ class CensusDecennialETL(ExtractTransformLoad):
                 f"Downloading data for state/territory {island['state_abbreviation']}"
             )
             for county in island["county_fips"]:
+                api_url = self.API_URL.format(
+                    self.DECENNIAL_YEAR,
+                    island["state_abbreviation"],
+                    island["var_list"],
+                    island["fips"],
+                    county,
+                )
                 download = requests.get(
-                    self.API_URL.format(
-                        self.DECENNIAL_YEAR,
-                        island["state_abbreviation"],
-                        island["var_list"],
-                        island["fips"],
-                        county,
-                    ),
+                    api_url,
                     timeout=settings.REQUESTS_DEFAULT_TIMOUT,
                 )
 
@@ -379,6 +476,19 @@ class CensusDecennialETL(ExtractTransformLoad):
             self.df_all["state"] + self.df_all["county"] + self.df_all["tract"]
         )
 
+        # Calculate stats by race
+        for race_field_name in self.RE_OUTPUT_FIELDS:
+            output_field_name = (
+                field_names.PERCENT_PREFIX
+                + race_field_name
+                + field_names.ISLAND_AREA_BACKFILL_SUFFIX
+            )
+            self.final_race_fields.append(output_field_name)
+            self.df_all[output_field_name] = (
+                self.df_all[race_field_name]
+                / self.df_all[self.TOTAL_RACE_POPULATION_FIELD_NAME]
+            )
+
         # Reporting Missing Values
         for col in self.df_all.columns:
             missing_value_count = self.df_all[col].isnull().sum()
@@ -402,7 +512,7 @@ class CensusDecennialETL(ExtractTransformLoad):
             self.PERCENTAGE_HOUSEHOLDS_BELOW_200_PERC_POVERTY_LEVEL_FIELD_NAME,
             self.PERCENTAGE_HIGH_SCHOOL_ED_FIELD_NAME,
             self.UNEMPLOYMENT_FIELD_NAME,
-        ]
+        ] + self.final_race_fields
 
         self.df_all[columns_to_include].to_csv(
             path_or_buf=self.OUTPUT_PATH / "usa.csv", index=False
