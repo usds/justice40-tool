@@ -12,7 +12,6 @@ import BetaBanner from '../BetaBanner';
 import J40MainGridContainer from '../J40MainGridContainer';
 import GovernmentBanner from '../GovernmentBanner';
 import Language from '../Language';
-// import {useWindowSize} from 'react-use';
 
 // @ts-ignore
 import siteLogo from '../../images/j40-logo-v2.png';
@@ -20,6 +19,9 @@ import * as styles from './J40Header.module.scss';
 import * as COMMON_COPY from '../../data/copy/common';
 import {PAGES_ENDPOINTS} from '../../data/constants';
 
+interface IJ40Header {
+  location: Location
+}
 /**
  * The J40Header component will control how the header looks for both mobile and desktop
  *
@@ -28,13 +30,12 @@ import {PAGES_ENDPOINTS} from '../../data/constants';
  * 2. Logo and Nav Links Row
  * 3. Any Alerts
  *
+ * @param {Location} location
  * @return {JSX.Element}
  */
-const J40Header = () => {
+const J40Header = ({location}:IJ40Header) => {
   const intl = useIntl();
-  // const {width} = useWindowSize();
-  console.log('location:', location);
-  console.log('PAGES_ENDPOINTS.METHODOLOGY:', PAGES_ENDPOINTS.METHODOLOGY);
+
   // Logo text
   const logoLine1 = intl.formatMessage(COMMON_COPY.HEADER.TITLE_LINE_1);
 
@@ -156,8 +157,8 @@ const J40Header = () => {
     <>
       <NavDropDownButton
         className={
-          location.pathname === `/en${PAGES_ENDPOINTS.METHODOLOGY}` ||
-          location.pathname === `/en${PAGES_ENDPOINTS.DOWNLOADS}` ?
+          location?.pathname === `/en${PAGES_ENDPOINTS.METHODOLOGY}` ||
+          location?.pathname === `/en${PAGES_ENDPOINTS.DOWNLOADS}` ?
           'usa-current' :
           ''
         }
@@ -180,9 +181,9 @@ const J40Header = () => {
     <>
       <NavDropDownButton
         className={
-          location.pathname === `/en${PAGES_ENDPOINTS.ABOUT}` ||
-          location.pathname === `/en${PAGES_ENDPOINTS.FAQS}` ||
-          location.pathname === `/en${PAGES_ENDPOINTS.PUBLIC_ENG}` ?
+          location?.pathname === `/en${PAGES_ENDPOINTS.ABOUT}` ||
+          location?.pathname === `/en${PAGES_ENDPOINTS.FAQS}` ||
+          location?.pathname === `/en${PAGES_ENDPOINTS.PUBLIC_ENG}` ?
           'usa-current' :
           ''
         }

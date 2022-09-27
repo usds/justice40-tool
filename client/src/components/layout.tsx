@@ -54,7 +54,7 @@ const Layout = ({children, location, title}: ILayoutProps) => {
       </Helmet>
 
       <URLFlagProvider location={location}>
-        <J40Header />
+        <J40Header location={location}/>
         <main id={'main-content'}>
           {children}
         </main>
