@@ -235,7 +235,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               >
                 <button
                   aria-controls="methMenu"
-                  aria-expanded="true"
+                  aria-expanded="false"
                   class="usa-accordion__button usa-nav__link"
                   data-cy="nav-dropdown-methodology"
                   data-testid="navDropDownButton"
@@ -247,6 +247,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </button>
                 <ul
                   class="usa-nav__submenu"
+                  hidden=""
                   id="methMenu"
                 >
                   <li
@@ -275,9 +276,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 class="usa-nav__primary-item"
               >
                 <button
-                  aria-controls="methMenu"
+                  aria-controls="aboutMenu"
+                  aria-expanded="false"
                   class="usa-accordion__button usa-nav__link"
-                  data-cy="nav-dropdown-methodology"
+                  data-cy="nav-dropdown-about"
                   data-testid="navDropDownButton"
                   type="button"
                 >
@@ -288,7 +290,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 <ul
                   class="usa-nav__submenu"
                   hidden=""
-                  id="methMenu"
+                  id="aboutMenu"
                 >
                   <li
                     class="usa-nav__submenu-item"

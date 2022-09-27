@@ -23,6 +23,7 @@ There are 3 things that should be included in this file:
   or the Trusswork component. J40 component styles should be contained in it's own component styles.
 
   - GLOBAL STYLES
+  - HEADER STYLES
   - MAIN CONTENT STYLES
   - FOOTER STYLES
   - MAP STYLES
@@ -104,8 +105,32 @@ p.flush {
   @include j40-element('lg', 2, 'bold', 0 );
 }
 
+/* 
+******************************
+*      HEADER STYLES
+****************************** 
+*/
 
+li.usa-nav__primary-item {
+  width: max-content;
+}
 
+li.usa-nav__primary-item a {
+  display: block;
+  position: relative;
+}
+
+li.usa-nav__primary-item a:hover::after{
+    background-color: #005ea2;
+    border-radius: 0;
+    content: "";
+    display: block;
+    position: absolute;
+    height: 0.25rem;
+    left: 1rem;
+    right: 1rem;
+    bottom: -0.25rem;
+}
 /* 
 ******************************
 *      MAIN CONTENT STYLES
