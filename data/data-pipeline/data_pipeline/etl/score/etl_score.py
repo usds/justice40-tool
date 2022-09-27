@@ -658,7 +658,7 @@ class ScoreETL(ExtractTransformLoad):
         ].mean(axis=1, skipna=True)
 
         # For AS, MP, GU, and VI, backfill data from the 2010 census where we have it
-        df_copy = self._backfill_island_data(df_copy)
+        # df_copy = self._backfill_island_data(df_copy)
 
         return df_copy
 
