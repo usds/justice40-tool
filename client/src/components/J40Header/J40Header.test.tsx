@@ -6,7 +6,7 @@ import J40Header from './J40Header';
 describe('rendering of the J40Header', () => {
   const {asFragment} = render(
       <LocalizedComponent>
-        <J40Header />
+        <J40Header location={location}/>
       </LocalizedComponent>,
   );
 

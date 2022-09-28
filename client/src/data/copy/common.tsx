@@ -132,7 +132,7 @@ export const HEADER = defineMessages({
     defaultMessage: 'Downloads',
     description: 'Navigate to the about page. This is Header navigate item to the downloads page',
   },
-  FAQs: {
+  FAQS: {
     id: 'common.pages.header.faqs',
     defaultMessage: 'Frequently asked questions',
     description: 'Navigate to the about page. This is Header navigate item to the faqs page',

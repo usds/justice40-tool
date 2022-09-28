@@ -235,7 +235,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               >
                 <button
                   aria-controls="methMenu"
-                  aria-expanded="true"
+                  aria-expanded="false"
                   class="usa-accordion__button usa-nav__link"
                   data-cy="nav-dropdown-methodology"
                   data-testid="navDropDownButton"
@@ -247,6 +247,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </button>
                 <ul
                   class="usa-nav__submenu"
+                  hidden=""
                   id="methMenu"
                 >
                   <li
@@ -274,12 +275,54 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <li
                 class="usa-nav__primary-item"
               >
-                <a
-                  data-cy="nav-link-about"
-                  href="/en/about"
+                <button
+                  aria-controls="aboutMenu"
+                  aria-expanded="false"
+                  class="usa-accordion__button usa-nav__link"
+                  data-cy="nav-dropdown-about"
+                  data-testid="navDropDownButton"
+                  type="button"
                 >
-                  About
-                </a>
+                  <span>
+                    About
+                  </span>
+                </button>
+                <ul
+                  class="usa-nav__submenu"
+                  hidden=""
+                  id="aboutMenu"
+                >
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-about"
+                      href="/en/about"
+                    >
+                      About
+                    </a>
+                  </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-faqs"
+                      href="/en/frequently-asked-questions"
+                    >
+                      Frequently asked questions
+                    </a>
+                  </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-public-engagement"
+                      href="/en/public-engagement"
+                    >
+                      Engagement calendar
+                    </a>
+                  </li>
+                </ul>
               </li>
               <li
                 class="usa-nav__primary-item"
@@ -338,186 +381,73 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         </h1>
       </section>
       <div
-        class="grid-row grid-gap-lg j40-aboutcard-container "
+        class="grid-row grid-gap j40-mb5-mt3"
         data-testid="grid"
       >
         <div
-          class="grid-gap-lg tablet:grid-col"
+          class="grid-col-12 tablet:grid-col-8"
           data-testid="grid"
         >
-          <div
-            class="grid-row j40-aboutcard-lg-card"
-            data-testid="grid"
-          >
-            <div
-              class="tablet:grid-col-3 j40-aboutpage-image-container"
-              data-testid="grid"
-            >
-              <img
-                alt="Screening tool"
-                class="j40-aboutcard-image"
-                src="test-file-stub"
-              />
-            </div>
-            <div
-              class="tablet:grid-col-9"
-              data-cy="screening-tool-block"
-              data-testid="grid"
-            >
-              <div
-                class="grid-row"
-                data-testid="grid"
+          <section>
+            <p>
+              
+      In January of 2020, President Biden issued 
+              <a
+                class="usa-link usa-link--external"
+                data-cy=""
+                href="https://www.federalregister.gov/documents/2021/02/01/2021-02177/tackling-the-climate-crisis-at-home-and-abroad#:~:text=Sec.%20223.%20Justice40,40-percent%20goal."
+                rel="noreferrer"
+                target="_blank"
               >
-                <h2>
-                  Screening tool
-                </h2>
-                <p>
-                  
-    In 
-                  <a
-                    class="usa-link usa-link--external"
-                    data-cy=""
-                    href="https://www.federalregister.gov/documents/2021/02/01/2021-02177/tackling-the-climate-crisis-at-home-and-abroad#:~:text=Sec.%20223.%20Justice40,40-percent%20goal."
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    Executive Order 14008
-                  </a>
-                   on 
-                  <i>
-                    Tackling the Climate Crisis at Home and Abroad
-                  </i>
-                  , President Biden directed the Council on Environmental Quality (CEQ) 
-    to create a Climate and Economic Justice Screening Tool. The purpose of the tool is to help
-    Federal agencies identify disadvantaged communities that are marginalized, underserved, and 
-    overburdened by pollution. The current version of the tool provides socioeconomic, environmental, 
-    and climate information to inform decisions that may affect these communities. The 
-    tool identifies disadvantaged communities through publicly-available, nationally-consistent datasets.
+                Executive Order 14008
+              </a>
+              . The order directed the Council on Environmental Quality (CEQ) to develop a new tool. This tool is called the Climate and Economic Justice Screening Tool. The tool has an interactive map and uses datasets that are indicators of burdens. The tool uses this information to identify communities that are experiencing these burdens.
     
-                </p>
-                <p>
-                  The current version of the tool is in a public beta form and will be updated based on feedback and research.
-                </p>
-              </div>
-            </div>
-          </div>
+            </p>
+            <p>
+              
+      Federal agencies will use the tool to help identify disadvantaged communities that will benefit from programs included in 
+              <a
+                class="usa-link usa-link--external"
+                data-cy=""
+                href="https://www.federalregister.gov/documents/2021/02/01/2021-02177/tackling-the-climate-crisis-at-home-and-abroad#:~:text=Sec.%20223.%20Justice40,40-percent%20goal."
+                rel="noreferrer"
+                target="_blank"
+              >
+                Justice40 Initiative
+              </a>
+              . The Justice40 Initiative seeks to deliver 40% of the overall benefits of investments in climate, clean energy, and related areas to disadvantaged communities.
+    
+            </p>
+            <p>
+              
+      Federal agencies should also use the following:
+    
+            </p>
+            <ul>
+              <li>
+                 
+      Addendum to the Justice40 Initiative Interim Guidance on Using CEJST
+    
+              </li>
+              <li>
+                 
+      Instructions to Federal Agencies on Using the CEJST
+    
+              </li>
+            </ul>
+            <p />
+            <p>
+              
+      CEQ will update the tool each year based on public feedback, research, and the availability of new data. The current version of the tool is version 1.0.
+    
+            </p>
+          </section>
         </div>
-      </div>
-      <div
-        class="grid-row grid-gap-lg j40-aboutcard-container "
-        data-testid="grid"
-      >
         <div
-          class="grid-gap-lg tablet:grid-col"
+          class="grid-col-12 tablet:grid-col-1"
           data-testid="grid"
-        >
-          <div
-            class="grid-row j40-aboutcard-lg-card"
-            data-testid="grid"
-          >
-            <div
-              class="tablet:grid-col-3 j40-aboutpage-image-container"
-              data-testid="grid"
-            >
-              <img
-                alt="The Justice40 Initiative"
-                class="j40-aboutcard-image"
-                src="test-file-stub"
-              />
-            </div>
-            <div
-              class="tablet:grid-col-9"
-              data-cy="the-justice40-initiative-block"
-              data-testid="grid"
-            >
-              <div
-                class="grid-row"
-                data-testid="grid"
-              >
-                <h2>
-                  The Justice40 Initiative
-                </h2>
-                <p>
-                  
-      The tool will provide important information for the Justice40 Initiative. The goal of the 
-      Justice40 Initiative is to provide 40 percent of the overall benefits of certain Federal
-      investments in seven key areas to disadvantaged communities. These seven key areas are: climate 
-      change, clean energy and energy efficiency, clean transit, affordable and sustainable
-      housing, training and workforce development, the remediation and reduction of legacy pollution, 
-      and the development of critical clean water infrastructure.
-    
-                </p>
-                <p>
-                  
-    Read more about the Justice40 Initiative in President Biden’s
-    
-                  <a
-                    class="usa-link usa-link--external"
-                    data-cy=""
-                    href="https://www.federalregister.gov/documents/2021/02/01/2021-02177/tackling-the-climate-crisis-at-home-and-abroad#:~:text=Sec.%20223.%20Justice40,40-percent%20goal."
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    Executive Order 14008
-                  </a>
-                   on 
-                  <i>
-                    Tackling the Climate Crisis at Home and Abroad
-                  </i>
-                  .
-    
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="grid-row grid-gap-lg j40-aboutcard-container "
-        data-testid="grid"
-      >
-        <div
-          class="grid-gap-lg tablet:grid-col"
-          data-testid="grid"
-        >
-          <div
-            class="grid-row j40-aboutcard-lg-card"
-            data-testid="grid"
-          >
-            <div
-              class="tablet:grid-col-3 j40-aboutpage-image-container"
-              data-testid="grid"
-            />
-            <div
-              class="tablet:grid-col-9"
-              data-cy="still-have-questions?-block"
-              data-testid="grid"
-            >
-              <div
-                class="grid-row"
-                data-testid="grid"
-              >
-                <h2>
-                  Still have questions?
-                </h2>
-                <p>
-                  Find answers on the Climate and Economic Justice Screening Tool's 
-                  <a
-                    class="usa-link usa-link--external"
-                    data-cy=""
-                    href="https://www.whitehouse.gov/wp-content/uploads/2022/02/CEQ-CEJST-QandA.pdf"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    Frequently Asked Questions
-                  </a>
-                  .
-    
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        />
       </div>
     </div>
     <div
@@ -527,9 +457,32 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         class="grid-container-desktop-lg"
         data-testid="gridContainer"
       >
-        <h2>
-          How to get started
-        </h2>
+        <div
+          class="grid-col-12 tablet:grid-col-8"
+          data-testid="grid"
+        >
+          <h2>
+            How to use the tool
+          </h2>
+          <p>
+            The tool shows information about the burdens that communities experience. It uses datasets to identify indicators of burdens. The tool shows these burdens in census tracts. Census tracts are small units of geography. Census tracts match the data that is currently available. The tool also shows Federally-recognized Tribal reservation lands, including Alaskan Native Villages.
+          </p>
+          <p>
+            The tool ranks most of the burdens using percentiles. Percentiles show how much burden each tract experiences compared to other tracts. Certain burdens use percentages or a simple yes/no.
+          </p>
+          <p>
+            
+    A community is considered to be disadvantaged if it meets the 
+            <a
+              class="usa-link"
+              href="/en/methodology"
+            >
+              methodology
+            </a>
+            .
+    
+          </p>
+        </div>
         <div
           class="grid-row grid-gap-lg j40-aboutcard-container "
           data-testid="grid"
@@ -547,14 +500,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 data-testid="grid"
               >
                 <img
-                  alt="Federal program managers"
+                  alt="Using the map"
                   class="j40-aboutcard-image"
                   src="test-file-stub"
                 />
               </div>
               <div
                 class="tablet:grid-col-9"
-                data-cy="federal-program-managers-block"
+                data-cy="using-the-map-block"
                 data-testid="grid"
               >
                 <div
@@ -562,24 +515,16 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   data-testid="grid"
                 >
                   <h3>
-                    Federal program managers
+                    Using the map
                   </h3>
                   <p>
                     
-      Download the tool’s current list of communities, explore data that may be useful to your 
-      program, and provide feedback on the tool.
+      Zoom and select any census tract to see if it is considered disadvantaged.
     
                   </p>
                   <div
                     class="j40-aboutcard-sm-link"
-                  >
-                    <a
-                      class="usa-link"
-                      href="/en/methodology"
-                    >
-                      Methodology & data
-                    </a>
-                  </div>
+                  />
                 </div>
               </div>
               <div
@@ -603,14 +548,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 data-testid="grid"
               >
                 <img
-                  alt="Community members"
+                  alt="Using the data"
                   class="j40-aboutcard-image"
                   src="test-file-stub"
                 />
               </div>
               <div
                 class="tablet:grid-col-9"
-                data-cy="community-members-block"
+                data-cy="using-the-data-block"
                 data-testid="grid"
               >
                 <div
@@ -618,23 +563,23 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   data-testid="grid"
                 >
                   <h3>
-                    Community members
+                    Using the data
                   </h3>
                   <p>
                     
-      Explore data about communities across the U.S., including your own, and provide feedback on the tool.
+      The tool's data is available for 
+                    <a
+                      class="usa-link"
+                      href="/en/downloads"
+                    >
+                      download
+                    </a>
+                    . This data can be used to filter by state or county. 
     
                   </p>
                   <div
                     class="j40-aboutcard-sm-link"
-                  >
-                    <a
-                      class="usa-link"
-                      href="/en/"
-                    >
-                      Explore the map
-                    </a>
-                  </div>
+                  />
                 </div>
               </div>
               <div
@@ -691,7 +636,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </h3>
                 <p>
                   
-      Have ideas about data and information that reflect the experiences and conditions of your community?
+      Have ideas for the tool? Contact the Council on Environmental Quality’s (CEQ).
     
                 </p>
                 <div
@@ -705,7 +650,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     target="_blank"
                   >
                     
-      Email: Screeningtool-Support@omb.eop.gov
+      Contact CEQ
     
                   </a>
                 </div>
@@ -776,6 +721,50 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                
             </div>
           </div>
+        </div>
+      </div>
+      <div
+        class="grid-col-12 tablet:grid-col-8"
+        data-testid="grid"
+      >
+        <div>
+          <h2>
+            How you can help improve the map
+          </h2>
+          <ul>
+            <li>
+              Provide 
+              <a
+                class="usa-link"
+                href="/en/methodology"
+              >
+                general feedback
+              </a>
+               on the CEJST website
+            </li>
+            <li>
+              Suggest new 
+              <a
+                class="usa-link"
+                href="/en/methodology"
+              >
+                data sources
+              </a>
+              .
+            </li>
+            <li>
+              Have feedback about a specific census tract? You can either click here or click the “Send Feedback” button on the side-panel of a census tract on the map.
+            </li>
+            <li>
+              Any other questions? Email: 
+              <a
+                class="usa-link"
+                href="/en/methodology"
+              >
+                Screeningtool-Support@omb.eop.gov
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

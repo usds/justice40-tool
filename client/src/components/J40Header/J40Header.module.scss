@@ -1,9 +1,5 @@
 @use '../../styles/design-system.scss' as *;
 
-// Set nav links color to primary color (1b1b1b)
-.usa-nav__primary > .usa-nav__primary-item > a {
-  @include u-text("gray-90");
-}
 
 .logoNavRow {
   @include u-margin-top(4);
