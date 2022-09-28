@@ -6,9 +6,11 @@ import {Accordion, Button} from '@trussworks/react-uswds';
 
 // Components:
 import Category from '../Category';
-import TractDemographics from '../TractDemographics';
 import Indicator from '../Indicator';
+import PrioritizationCopy from '../PrioritizationCopy';
+import TractDemographics from '../TractDemographics';
 import TractInfo from '../TractInfo';
+import TractPrioritization from '../TractPrioritization';
 
 // Styles and constants
 import * as styles from './areaDetail.module.scss';
@@ -131,14 +133,11 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
   // console.log the properties of the census that is selected:
   console.log("Area Detail properies: ", properties);
 
-  const score = properties[constants.SCORE_PROPERTY_HIGH] ? properties[constants.SCORE_PROPERTY_HIGH] as number : 0;
   const blockGroup = properties[constants.GEOID_PROPERTY] ? properties[constants.GEOID_PROPERTY] : "N/A";
   const population = properties[constants.TOTAL_POPULATION] ? properties[constants.TOTAL_POPULATION] : "N/A";
   const countyName = properties[constants.COUNTY_NAME] ? properties[constants.COUNTY_NAME] : "N/A";
   const stateName = properties[constants.STATE_NAME] ? properties[constants.STATE_NAME] : "N/A";
   const sidePanelState = properties[constants.SIDE_PANEL_STATE];
-
-  const isCommunityFocus = score >= constants.SCORE_BOUNDARY_THRESHOLD;
 
   const feedbackEmailSubject = hash ? `
     Census tract ID ${blockGroup}, ${countyName}, ${stateName}, ( z/lat/lon: #${hash.join('/')} )
@@ -783,18 +782,25 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
           {EXPLORE_COPY.COMMUNITY.IS_FOCUS}
         </div>
 
-        {/* YES with Dot or NO with no Dot  */}
+        {/* YES, NO or PARTIALLY disadvantaged  */}
         <div className={styles.communityOfFocus}>
-          {isCommunityFocus ?
-            <h3 className={styles.invert}>{EXPLORE_COPY.COMMUNITY.OF_FOCUS}</h3> :
-            <h3>{EXPLORE_COPY.COMMUNITY.NOT_OF_FOCUS}</h3>
-          }
+          <TractPrioritization
+            totalCategoriesPrioritized={properties[constants.COUNT_OF_CATEGORIES_DISADV]}
+            isDonut={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
+            percentTractTribal={properties[constants.TRIBAL_AREAS_PERCENTAGE]}
+          />
         </div>
 
-        {/* Number of categories exceeded */}
-        <div className={styles.showCategoriesExceed}>
-          {EXPLORE_COPY.numberOfCategoriesExceeded(properties[constants.COUNT_OF_CATEGORIES_DISADV])}
+        <div className={styles.prioCopy}>
+          <PrioritizationCopy
+            isDonut={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
+            percentTractTribal={properties[constants.TRIBAL_AREAS_PERCENTAGE] ?
+              properties[constants.TRIBAL_AREAS_PERCENTAGE] : null}
+            totalCategoriesPrioritized={properties[constants.COUNT_OF_CATEGORIES_DISADV]}
+            totalIndicatorsPrioritized={properties[constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS]}
+          />
         </div>
+
       </div>
 
       {/* Send Feedback button */}

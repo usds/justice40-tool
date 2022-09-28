@@ -199,7 +199,11 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for ISL
         </h3>
       </div>
       <div>
-        in 5 categories
+        <div>
+          <div>
+            This tract is considered disadvantaged because it meets 3 burden thresholds AND the associated socio-economic threshold.
+          </div>
+        </div>
       </div>
     </div>
     <a
@@ -645,7 +649,11 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         </h3>
       </div>
       <div>
-        in 5 categories
+        <div>
+          <div>
+            This tract is considered disadvantaged because it meets 3 burden thresholds AND the associated socio-economic threshold.
+          </div>
+        </div>
       </div>
     </div>
     <a
@@ -2281,7 +2289,11 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         </h3>
       </div>
       <div>
-        in 5 categories
+        <div>
+          <div>
+            This tract is considered disadvantaged because it meets 3 burden thresholds AND the associated socio-economic threshold.
+          </div>
+        </div>
       </div>
     </div>
     <a

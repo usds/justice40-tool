@@ -1,0 +1,9 @@
+@use '../../styles/design-system.scss' as *;
+@import "../utils.scss";
+
+h3.invert{
+    background-color: $disadvantagedDotColor;
+    color: white;
+    @include u-padding-left('05');
+    @include u-padding-right('05');
+};

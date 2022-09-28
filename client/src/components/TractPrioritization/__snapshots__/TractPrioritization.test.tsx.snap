@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of TractPrioritization Component checks if component renders 1`] = `
+<DocumentFragment>
+  <h3>
+    No
+  </h3>
+</DocumentFragment>
+`;

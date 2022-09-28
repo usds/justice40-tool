@@ -25,7 +25,7 @@ $sidePanelLabelFontColor: #171716;
   display: flex;
   flex-direction: column;
   align-items: center;
-  @include u-padding-bottom(3);
+  // @include u-padding-bottom(3);
 
   .isInFocus {
     padding: .5rem 1rem .25rem 1.2rem;
@@ -42,12 +42,13 @@ $sidePanelLabelFontColor: #171716;
       margin-bottom: 0;
     }
 
-    h3.invert {
-      background-color: $disadvantagedDotColor;
-      color: white;
-      @include u-padding-left('05');
-      @include u-padding-right('05');
-    }
+  }
+
+  .prioCopy{
+    @include u-padding-left(2);
+    @include u-padding-right(2);
+    @include u-padding-top(2);
+
   }
 
   .showCategoriesExceed {

@@ -547,6 +547,87 @@ export const SIDE_PANEL_TRIBAL_INFO = defineMessages({
   },
 });
 
+export const PRIORITIZATION_COPY = {
+  NOT_PRIO: <FormattedMessage
+    id={'explore.map.page.side.panel.prio.copy.not.prio'}
+    defaultMessage={'This tract is not considered disadvantaged. It does not meet any burden thresholds OR at least one associated socioeconomic threshold.'}
+    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It does not meet any burden thresholds OR at least one associated socioeconomi} threshold.`}
+  />,
+  NOT_PRIO_1_BURD: <FormattedMessage
+    id={'explore.map.page.side.panel.prio.copy.not.prio.one.burden'}
+    defaultMessage={'This tract is not considered disadvantaged. It meets one burden threshold BUT no associated socioeconomic thresholds.'}
+    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It meets one burden threshold BUT no associated socioeconomic thresholds.`}
+  />,
+  PRIO_1_BURD: <FormattedMessage
+    id={'explore.map.page.side.panel.prio.copy.prio.one.burden'}
+    defaultMessage={'This tract is considered disadvantaged because it meets one burden threshold AND the associated socio-economic threshold..'}
+    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is considered disadvantaged because it meets one burden threshold AND the associated socio-economic threshold..`}
+  />,
+  DONUT: <FormattedMessage
+    id={'explore.map.page.side.panel.prio.copy.prio.donut'}
+    defaultMessage={'This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold.'}
+    description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low}income threshold.`}
+  />,
+  FRT_LESS_1_PERC: <FormattedMessage
+    id={'explore.map.page.side.panel.prio.copy.frt.less.1.perc'}
+    defaultMessage={'The less than 1% of this tract that are Federally- Recognized Tribal lands are also considered disadvantaged.'}
+    description={`Navigate to the explore the map page. Click on tract, The side panel will show The [less than 1%] of this tract that are Federally- Recognized Tribal lands are also considered disadvantaged.`}
+  />,
+};
+
+export const getNotPrioNBurden = (burdens:number) => {
+  return (
+    <FormattedMessage
+      id={'explore.map.page.side.panel.prio.copy.not.prio.n.burden'}
+      defaultMessage={ 'This tract is not considered disadvantaged. It meets {burdens} burden thresholds BUT no associated socioeconomic thresholds.'}
+      description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It meets one burden threshold BUT no associated socioeconomic thresholds.`}
+      values={{
+        burdens: burdens,
+      }}
+    />
+  );
+};
+
+export const getPrioNBurden = (burdens:number) => {
+  return (
+    <FormattedMessage
+      id={'explore.map.page.side.panel.prio.copy.prio.n.burden'}
+      defaultMessage={ 'This tract is considered disadvantaged because it meets {burdens} burden thresholds AND the associated socio-economic threshold.'}
+      description={`Navigate to the explore the map page. Click on tract, This tract is considered disadvantaged because it meets {burdens} burden thresholds AND the associated socio-economic threshold.`}
+      values={{
+        burdens: burdens,
+      }}
+    />
+  );
+};
+
+export const getPrioFRTNPerc = (percentage:number, isAlso:boolean) => {
+  return (
+    <FormattedMessage
+      id={'explore.map.page.side.panel.prio.copy.prio.frt.n.perc'}
+      defaultMessage={ 'The {percentage} of this tract that are Federally-Recognized Tribal lands are {also} considered disadvantaged.'}
+      description={`Navigate to the explore the map page. Click on tract, The {percentage} of this tract that are Federally-Recognized Tribal lands are also considered disadvantaged.`}
+      values={{
+        percentage: `${percentage*100}%`,
+        also: isAlso? 'also' : '',
+      }}
+    />
+  );
+};
+
+export const getPrioFRTLessThan1Perc = (isAlso:boolean) => {
+  return (
+    <FormattedMessage
+      id={'explore.map.page.side.panel.prio.copy.prio.frt.n.perc'}
+      defaultMessage={ 'The less than 1% of this tract that are Federally-Recognized Tribal lands are {also} considered disadvantaged.'}
+      description={`Navigate to the explore the map page. Click on tract, The {percentage} of this tract that are Federally-Recognized Tribal lands are also considered disadvantaged.`}
+      values={{
+        also: isAlso? 'also' : '',
+      }}
+    />
+  );
+};
+
 export const COMMUNITY = {
   OF_FOCUS: <FormattedMessage
     id={'explore.map.page.side.panel.community.of.focus'}
@@ -557,6 +638,11 @@ export const COMMUNITY = {
     id= {'explore.map.page.side.panel.not.community.of.focus'}
     defaultMessage= {'No'}
     description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the communities the score currently is not focused on`}
+  />,
+  PARTIAL: <FormattedMessage
+    id= {'explore.map.page.side.panel.partial.community.of.focus'}
+    defaultMessage= {'Partially'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the communities the score currently is partially focused on`}
   />,
   IS_FOCUS: <FormattedMessage
     id={'explore.map.page.side.panel.is.community.of.focus'}
