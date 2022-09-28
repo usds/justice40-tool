@@ -58,6 +58,10 @@ SCORE_DOWNLOADABLE_CSV_FILE_PATH = (
 SCORE_DOWNLOADABLE_EXCEL_FILE_PATH = (
     SCORE_DOWNLOADABLE_DIR / f"communities-{timestamp_str}.xlsx"
 )
+ZIP_CODES_DOWNLOADABLE_CSV_FILE_PATH = (
+    SCORE_DOWNLOADABLE_DIR
+    / f"communities-compared-to-zip-codes-{timestamp_str}.csv"
+)
 SCORE_DOWNLOADABLE_CODEBOOK_FILE_PATH = (
     SCORE_DOWNLOADABLE_DIR / f"codebook-{timestamp_str}.csv"
 )

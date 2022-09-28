@@ -11,7 +11,25 @@ logger = get_module_logger(__name__)
 
 
 class GeoCorrAlternativesETL(ExtractTransformLoad):
-    """Calculates overlap between Census tracts & various alternative geographies."""
+    """Calculates overlap between Census tracts & various alternative geographies.
+
+    Note: for almost all 2020 zip codes in the USA (33,781 zip codes), this ETL
+    divides them into census tracts such that 100% of the zip code is represented
+    within the census tracts in the output of this file.
+
+    For a very small number of 2020 zip codes in the USA (9 zip codes), this ETL
+    only matches 98% of more of the zip code into tracts. For one 2020 zip code, this
+    ETL only matches 86% of the tract.
+
+    The reason for these 10 outliers is unclear.
+
+    Here are the value counts for `PERCENT_OF_ZIP_CODE_IN_TRACT` aggregated at two
+    digits of precision:
+        1.00    33781
+        0.99        7
+        0.98        2
+        0.86        1
+    """
 
     NAME = "geocorr_alternatives"
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
