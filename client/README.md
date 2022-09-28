@@ -41,6 +41,7 @@ To validate you are using node 14, type:
 `node -v` 
 
 This should return *Now using node 14.x.x (npm v6.x.x)*
+
 #### Install Yarn
 
 Install yarn if you do not have it yet. Open your terminal and run `sudo npm install -global yarn`. This works on MacOS and Win10. To confirm it is installed, run `yarn -v`. A version number should be returned.
