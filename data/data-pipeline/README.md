@@ -250,22 +250,59 @@ as `poetry run tox`.
 
 Each run can take a while to build the whole environment. If you'd like to save time,
 you can use the previously built environment by running `poetry run tox -e lint`
-which will drastically speed up the process.
+which will drastically speed up the linting process.
 
 ### Configuring pre-commit hooks
 
-To promote consistent code style and quality, we use git pre-commit hooks to automatically lint and reformat our
-code before every commit we make to the codebase. Pre-commit hooks are defined in
-[`.pre-commit-config.yaml`](../.pre-commit-config.yaml).
+<!-- markdown-link-check-disable -->
+To promote consistent code style and quality, we use git pre-commit hooks to
+automatically lint and reformat our code before every commit we make to the codebase.
+Pre-commit hooks are defined in the file [`.pre-commit-config.yaml`](../.pre-commit-config.yaml).
+<!-- markdown-link-check-enable -->
 
 1.  First, install [`pre-commit`](https://pre-commit.com/) globally:
 
         $ brew install pre-commit
 
-2.  Run `pre-commit install` to install the specific git hooks used in this repository.
+2.  While in the `data/data-pipeline` directory, run `pre-commit install` to install
+    the specific git hooks used in this repository.
 
 Now, any time you commit code to the repository, the hooks will run on all modified files automatically. If you wish,
 you can force a re-run on all files with `pre-commit run --all-files`.
+
+#### Conflicts between backend and frontend git hooks
+<!-- markdown-link-check-disable -->
+In the front-end part of the codebase (the `justice40-tool/client` folder), we use
+`Husky` to run pre-commit hooks for the front-end. This is different than the
+`pre-commit` framework we use for the backend. The frontend `Husky` hooks are
+configured at
+[client/.husky](client/.husky).
+
+It is not possible to run both our `Husky` hooks and `pre-commit` hooks on every
+commit; either one or the other will run.
+
+<!-- markdown-link-check-enable -->
+
+`Husky` is installed every time you run `npm install`. To use the `Husky` front-end
+hooks during front-end development, simply run `npm install`.
+
+However, running `npm install` overwrites the backend hooks setup by `pre-commit`.
+To restore the backend hooks after running `npm install`, do the following:
+
+1. Run `pre-commit install` while in the `data/data-pipeline` directory.
+2. The terminal should respond with an error message such as:
+```
+[ERROR] Cowardly refusing to install hooks with `core.hooksPath` set.
+hint: `git config --unset-all core.hooksPath`
+```
+
+This error is caused by having previously run `npm install` which used `Husky` to
+overwrite the hooks path.
+
+3. Follow the hint and run `git config --unset-all core.hooksPath`.
+4. Run `pre-commit install` again.
+
+Now `pre-commit` and the backend hooks should take precedence.
 
 ### The Application entrypoint
 

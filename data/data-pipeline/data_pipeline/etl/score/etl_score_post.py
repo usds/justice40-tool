@@ -9,9 +9,7 @@ from data_pipeline.content.schemas.download_schemas import ExcelConfig
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.score.etl_utils import create_codebook
 from data_pipeline.etl.score.etl_utils import floor_series
-from data_pipeline.etl.sources.census.etl_utils import (
-    check_census_data_source,
-)
+from data_pipeline.etl.sources.census.etl_utils import check_census_data_source
 from data_pipeline.score import field_names
 from data_pipeline.utils import column_list_from_yaml_object_fields
 from data_pipeline.utils import get_module_logger

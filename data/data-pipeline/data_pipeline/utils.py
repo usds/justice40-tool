@@ -20,7 +20,6 @@ from data_pipeline.content.schemas.download_schemas import ExcelConfig
 from marshmallow import ValidationError
 from marshmallow_dataclass import class_schema
 
-
 ## zlib is not available on all systems
 try:
     import zlib  # noqa # pylint: disable=unused-import

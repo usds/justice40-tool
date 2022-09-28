@@ -4,7 +4,6 @@ from data_pipeline.utils import get_module_logger
 from data_pipeline.utils import remove_all_from_dir
 from data_pipeline.utils import remove_files_from_dir
 
-
 logger = get_module_logger(__name__)
 
 
