@@ -268,7 +268,7 @@ def test_data_sources(
     #   is the "equal" to the data from the ETL, allowing for the minor
     #   differences that come from floating point comparisons
     for data_source_name, data_source in data_sources.items():
-        final = "final_"
+        final = "_final"
         df: pd.DataFrame = final_score_df.merge(
             data_source,
             on=GEOID_TRACT_FIELD,
@@ -342,6 +342,77 @@ def test_data_sources(
                 ), error_message
 
 
+def test_island_demographic_backfill(final_score_df, census_decennial_df):
+    # Copied from score_etl because there's no better source of truth for it
+    ISLAND_DEMOGRAPHIC_BACKFILL_FIELDS = [
+        field_names.PERCENT_BLACK_FIELD_NAME
+        + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+        field_names.PERCENT_AMERICAN_INDIAN_FIELD_NAME
+        + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+        field_names.PERCENT_ASIAN_FIELD_NAME
+        + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+        field_names.PERCENT_HAWAIIAN_FIELD_NAME
+        + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+        field_names.PERCENT_TWO_OR_MORE_RACES_FIELD_NAME
+        + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+        field_names.PERCENT_NON_HISPANIC_WHITE_FIELD_NAME
+        + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+        field_names.PERCENT_HISPANIC_FIELD_NAME
+        + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+        field_names.PERCENT_OTHER_RACE_FIELD_NAME
+        + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+        field_names.TOTAL_POP_FIELD + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+    ]
+
+    # rename the columns from the decennial census to be their final score names
+    decennial_cols = {
+        col_name: col_name.replace(field_names.ISLAND_AREA_BACKFILL_SUFFIX, "")
+        for col_name in ISLAND_DEMOGRAPHIC_BACKFILL_FIELDS
+    }
+    census_decennial_df: pd.DataFrame = census_decennial_df.rename(
+        columns=decennial_cols
+    )
+
+    # Merge decennial data with the final score
+    df: pd.DataFrame = final_score_df.merge(
+        census_decennial_df,
+        on=GEOID_TRACT_FIELD,
+        indicator="MERGE",
+        suffixes=("_final", "_decennial"),
+        how="outer",
+    )
+
+    # Make sure columns from both the decennial census and final score overlap
+    core_cols = census_decennial_df.columns.intersection(
+        final_score_df.columns
+    ).drop(GEOID_TRACT_FIELD)
+    final_columns = [f"{col}_final" for col in core_cols]
+    assert (
+        final_columns
+    ), "No columns from decennial census  show up in final score, extremely weird"
+
+    # Make sure we're only grabbing island tracts for the decennial data
+    assert (
+        sorted(
+            df[df.MERGE == "both"][field_names.GEOID_TRACT_FIELD]
+            .str[:2]
+            .unique()
+        )
+        == constants.TILES_ISLAND_AREA_FIPS_CODES
+    ), "2010 Decennial census contributed unexpected tracts"
+
+    df = df[df.MERGE == "both"]
+
+    # Make sure for all the backfill tracts, the data made it into the
+    # final score. This can be simple since it's all perenctages and an int
+    for col in final_columns:
+        assert np.allclose(
+            df[col],
+            df[col.replace("_final", "_decennial")],
+            equal_nan=True,
+        ), f"Data mismatch in decennial census backfill for {col}"
+
+
 def test_output_tracts(final_score_df, national_tract_df):
     df = final_score_df.merge(
         national_tract_df,
@@ -392,8 +463,7 @@ def test_imputed_tracts(final_score_df):
     )
 
     tracts_with_some_population_df = final_score_df[
-        (final_score_df[field_names.TOTAL_POP_FIELD] > 0)
-        & ~is_island_area
+        (final_score_df[field_names.TOTAL_POP_FIELD] > 0) & ~is_island_area
     ]
     assert (
         not tracts_with_some_population_df[
