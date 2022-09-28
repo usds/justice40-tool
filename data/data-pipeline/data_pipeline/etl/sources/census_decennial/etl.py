@@ -367,6 +367,7 @@ class CensusDecennialETL(ExtractTransformLoad):
                     island["fips"],
                     county,
                 )
+                logger.debug(f"CENSUS: Requesting {api_url}")
                 download = requests.get(
                     api_url,
                     timeout=settings.REQUESTS_DEFAULT_TIMOUT,

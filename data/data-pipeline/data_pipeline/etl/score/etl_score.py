@@ -679,6 +679,10 @@ class ScoreETL(ExtractTransformLoad):
             ]
         df = df.drop(columns=self.ISLAND_DEMOGRAPHIC_BACKFILL_FIELDS)
 
+        df.loc[island_index, field_names.TOTAL_POP_FIELD] = df.loc[
+            island_index, field_names.COMBINED_CENSUS_TOTAL_POPULATION_2010
+        ]
+
         return df
 
     def transform(self) -> None:
