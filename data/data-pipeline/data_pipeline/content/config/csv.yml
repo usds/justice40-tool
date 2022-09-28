@@ -215,9 +215,6 @@ fields:
 - score_name: Tract-level redlining score meets or exceeds 3.25
   label: Tract experienced historic underinvestment
   format: bool
-- score_name: Share of homes with no kitchen or indoor plumbing (percentile)
-  label: Share of homes with no kitchen or indoor plumbing (percentile)
-  format: float
 - score_name: Share of homes with no kitchen or indoor plumbing (percent)
   label: Share of homes with no kitchen or indoor plumbing (percent)
   format: float

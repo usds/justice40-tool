@@ -117,7 +117,7 @@ sheets:
       - score_name: Greater than or equal to the 90th percentile for share of properties at risk of flood in 30 years
         label: Greater than or equal to the 90th percentile for share of properties at risk of flood in 30 years
         format: bool
-     - score_name: Greater than or equal to the 90th percentile for share of properties at risk of flood in 30 years and is low income?
+      - score_name: Greater than or equal to the 90th percentile for share of properties at risk of flood in 30 years and is low income?
         label: Greater than or equal to the 90th percentile for share of properties at risk of flood in 30 years and is low income?
         format: bool
       - score_name: Share of properties at risk of fire in 30 years (percentile)
@@ -219,9 +219,6 @@ sheets:
       - score_name: Tract-level redlining score meets or exceeds 3.25
         label: Tract experienced historic underinvestment
         format: bool
-      - score_name: Share of homes with no kitchen or indoor plumbing (percentile)
-        label: Share of homes with no kitchen or indoor plumbing (percentile)
-        format: float
       - score_name: Share of homes with no kitchen or indoor plumbing (percent)
         label: Share of homes with no kitchen or indoor plumbing (percent)
         format: float
