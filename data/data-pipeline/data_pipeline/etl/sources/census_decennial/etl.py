@@ -152,14 +152,14 @@ class CensusDecennialETL(ExtractTransformLoad):
         self.TOTAL_RACE_POPULATION_FIELD = "PCT086001"  # Total
         self.ASIAN_FIELD = "PCT086002"  # Total!!Asian
         self.BLACK_FIELD = "PCT086003"  # Total!!Black or African American
-        self.HAWAIIAN_FIELD_NAME = (
+        self.HAWAIIAN_FIELD = (
             "PCT086004"  # Total!!Native Hawaiian and Other Pacific Islander
         )
         # Note that the 2010 census for island araeas does not break out
         # hispanic and non-hispanic white, so this is slightly different from
         # our other demographic data
         self.NON_HISPANIC_WHITE_FIELD = "PCT086005"  # Total!!White
-        self.HISPANIC_FIELD_NAME = "PCT086006"  # Total!!Hispanic or Latino
+        self.HISPANIC_FIELD = "PCT086006"  # Total!!Hispanic or Latino
         self.OTHER_RACE_FIELD = (
             "PCT086007"  # Total!!Other Ethnic Origin or Ra
         )
@@ -225,9 +225,9 @@ class CensusDecennialETL(ExtractTransformLoad):
             self.TOTAL_RACE_POPULATION_FIELD,
             self.ASIAN_FIELD,
             self.BLACK_FIELD,
-            self.HAWAIIAN_FIELD_NAME,
+            self.HAWAIIAN_FIELD,
             self.NON_HISPANIC_WHITE_FIELD,
-            self.HISPANIC_FIELD_NAME,
+            self.HISPANIC_FIELD,
             self.OTHER_RACE_FIELD,
         ]
         var_list = ",".join(var_list)
@@ -294,12 +294,12 @@ class CensusDecennialETL(ExtractTransformLoad):
             self.ASIAN_VI_FIELD: self.ASIAN_FIELD_NAME,
             self.BLACK_FIELD: self.BLACK_FIELD_NAME,
             self.BLACK_VI_FIELD: self.BLACK_FIELD_NAME,
-            self.HAWAIIAN_FIELD_NAME: self.HAWAIIAN_FIELD_NAME,
+            self.HAWAIIAN_FIELD: self.HAWAIIAN_FIELD_NAME,
             self.HAWAIIAN_VI_FIELD: self.HAWAIIAN_FIELD_NAME,
             self.TWO_OR_MORE_RACES_VI_FIELD: self.TWO_OR_MORE_RACES_FIELD_NAME,
             self.NON_HISPANIC_WHITE_FIELD: self.NON_HISPANIC_WHITE_FIELD_NAME,
             self.NON_HISPANIC_WHITE_VI_FIELD: self.NON_HISPANIC_WHITE_FIELD_NAME,
-            self.HISPANIC_FIELD_NAME: self.HISPANIC_FIELD_NAME,
+            self.HISPANIC_FIELD: self.HISPANIC_FIELD_NAME,
             self.HISPANIC_VI_FIELD: self.HISPANIC_FIELD_NAME,
             self.OTHER_RACE_FIELD: self.OTHER_RACE_FIELD_NAME,
             self.OTHER_RACE_VI_FIELD: self.OTHER_RACE_FIELD_NAME,
