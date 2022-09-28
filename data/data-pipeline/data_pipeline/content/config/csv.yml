@@ -161,6 +161,12 @@ fields:
 - score_name: Median value ($) of owner-occupied housing units
   label: Median value ($) of owner-occupied housing units
   format: float
+- score_name: Share of homes with no kitchen or indoor plumbing (percent)
+  label: Share of homes with no kitchen or indoor plumbing (percent)
+  format: float
+- score_name: Share of homes with no kitchen or indoor plumbing (percentile)
+  label: Share of homes with no kitchen or indoor plumbing (percentile)
+  format: float
 - score_name: Greater than or equal to the 90th percentile for proximity to hazardous waste facilities and is low income?
   label: Greater than or equal to the 90th percentile for proximity to hazardous waste facilities and is low income?
   format: bool
