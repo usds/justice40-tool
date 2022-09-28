@@ -105,6 +105,7 @@ p.flush {
   @include j40-element('lg', 2, 'bold', 0 );
 }
 
+
 /* 
 ******************************
 *      HEADER STYLES
@@ -113,6 +114,10 @@ p.flush {
 
 li.usa-nav__primary-item {
   width: max-content;
+
+  @include at-media-max('desktop') {
+    width: unset;
+  }
 }
 
 li.usa-nav__primary-item a {
@@ -131,6 +136,8 @@ li.usa-nav__primary-item a:hover::after{
     right: 1rem;
     bottom: -0.25rem;
 }
+
+
 /* 
 ******************************
 *      MAIN CONTENT STYLES

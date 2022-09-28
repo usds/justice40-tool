@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link, useIntl} from 'gatsby-plugin-intl';
 import {
   Header,
@@ -12,12 +12,13 @@ import BetaBanner from '../BetaBanner';
 import J40MainGridContainer from '../J40MainGridContainer';
 import GovernmentBanner from '../GovernmentBanner';
 import Language from '../Language';
+import {useWindowSize} from 'react-use';
 
 // @ts-ignore
 import siteLogo from '../../images/j40-logo-v2.png';
 import * as styles from './J40Header.module.scss';
 import * as COMMON_COPY from '../../data/copy/common';
-import {PAGES_ENDPOINTS} from '../../data/constants';
+import {PAGES_ENDPOINTS, USWDS_BREAKPOINTS} from '../../data/constants';
 
 interface IJ40Header {
   location: Location
@@ -58,6 +59,23 @@ const J40Header = ({location}:IJ40Header) => {
   const [isOpen, setIsOpen] = useState([false, false]);
 
   /**
+   * When transitioning between anything larger than desktop and anything less than desktop the nav menu
+   * changes from the usual row of nav links (dektop) to the MENU button(mobile). On desktop all nav drop
+   * dropdowns should be closed, while on mobile all nav links should be open.
+   *
+   * The useWindowSize provides the device width and the useEffect allows the side effect (opening/closing
+   * nav links) to occur anytime the device width changes.
+   */
+  const {width} = useWindowSize();
+  useEffect( () => {
+    if (width < USWDS_BREAKPOINTS.DESKTOP) {
+      setIsOpen([true, true]);
+    } else {
+      setIsOpen([false, false]);
+    }
+  }, [width]);
+
+  /**
    * This toggle function will handle both navigation toggle links (Meth and About).
    *
    * @param {number} index
@@ -72,10 +90,13 @@ const J40Header = ({location}:IJ40Header) => {
       return newIsOpen;
     });
 
-    // This logic handles closing an already open nav link
-    if (index === 0 && isOpen[1] === true) {
+    /**
+     * When on desktop only, the dropdown nav links (Meth and About) should close if any of the other ones
+     * are still open. This next set of logic handles that.
+     */
+    if (index === 0 && isOpen[1] === true && width > USWDS_BREAKPOINTS.DESKTOP) {
       setIsOpen([isOpen[0], false]);
-    } else if (index === 1 && isOpen[0] === true) {
+    } else if (index === 1 && isOpen[0] === true && width > USWDS_BREAKPOINTS.DESKTOP) {
       setIsOpen([false, isOpen[1]]);
     }
   };
@@ -136,24 +157,8 @@ const J40Header = ({location}:IJ40Header) => {
     </Link>,
   ];
 
-
-  /*
-   * This is the array that holds the navigation links and eventually is the one
-   * that is passed to the render function. It only defines Explore and
-   * Contact.
-   *
-   * The Methodology & Data link along with the About link is passed in depending on
-   * screen size. These will be spliced into this navLinks array manually.
-   *
-   */
-  const navLinks = [
-    <Link
-      to={PAGES_ENDPOINTS.EXPLORE}
-      key={'explore-map'}
-      activeClassName="usa-current"
-      data-cy={'nav-link-explore-the-map'}>
-      {intl.formatMessage(COMMON_COPY.HEADER.EXPLORE)}
-    </Link>,
+  // Methodology & Data Nav component
+  const MethNav = () =>
     <>
       <NavDropDownButton
         className={
@@ -177,7 +182,10 @@ const J40Header = ({location}:IJ40Header) => {
         isOpen={isOpen[0]}
       >
       </Menu>
-    </>,
+    </>;
+
+  // About Nav component
+  const AboutNav = () =>
     <>
       <NavDropDownButton
         className={
@@ -202,7 +210,19 @@ const J40Header = ({location}:IJ40Header) => {
         isOpen={isOpen[1]}
       >
       </Menu>
-    </>,
+    </>;
+
+  // Navigation links for app
+  const navLinks = [
+    <Link
+      to={PAGES_ENDPOINTS.EXPLORE}
+      key={'explore-map'}
+      activeClassName="usa-current"
+      data-cy={'nav-link-explore-the-map'}>
+      {intl.formatMessage(COMMON_COPY.HEADER.EXPLORE)}
+    </Link>,
+    <MethNav key="methDropDown"/>,
+    <AboutNav key="aboutDropDown"/>,
     <Link
       to={PAGES_ENDPOINTS.CONTACT}
       key={'contact'}
@@ -214,79 +234,6 @@ const J40Header = ({location}:IJ40Header) => {
       <Language isDesktop={false}/>
     </div>,
   ];
-
-
-  /**
-   * Create the mobile/desktop components for Meth&Data and About respectively
-   */
-
-  // Methodology & Data component on mobile (with sub-pages)
-  // const MethNavMobile = () =>
-  //   <>
-  //     <NavDropDownButton
-  //       key="methDropDown"
-  //       label={intl.formatMessage(COMMON_COPY.HEADER.METHODOLOGY)}
-  //       menuId="methMenu"
-  //       isOpen={isOpen[0]}
-  //       onToggle={(): void => onToggle(0)}
-  //       data-cy={'nav-dropdown-methodology'}
-  //     >
-  //     </NavDropDownButton>
-  //     <Menu
-  //       id='methMenu'
-  //       type='subnav'
-  //       items={methPageSubNavLinks}
-  //       isOpen={isOpen[0]}
-  //     >
-  //     </Menu>
-  //   </>;
-
-  // About component on mobile (with sub-pages)
-  // const AboutNavMobile = () =>
-  //   <>
-  //     <NavDropDownButton
-  //       key="methDropDown"
-  //       label={intl.formatMessage(COMMON_COPY.HEADER.ABOUT)}
-  //       menuId="methMenu"
-  //       isOpen={isOpen[1]}
-  //       onToggle={(): void => onToggle(1)}
-  //       data-cy={'nav-dropdown-methodology'}
-  //     >
-  //     </NavDropDownButton>
-  //     <Menu
-  //       id='methMenu'
-  //       type='subnav'
-  //       items={aboutPageSubNavLinks}
-  //       isOpen={isOpen[1]}
-  //     >
-  //     </Menu>
-  //   </>;
-
-  // Methodology & Data component on desktop (no sub-pages)
-  // const MethNavDesktop = () =>
-  //   <Link
-  //     to={PAGES_ENDPOINTS.METHODOLOGY}
-  //     key={'methodology'}
-  //     activeClassName="usa-current"
-  //     data-cy={'nav-link-methodology'}>
-  //     {intl.formatMessage(COMMON_COPY.HEADER.METHODOLOGY)}
-  //   </Link>;
-
-  // // About component on desktop (no sub-pages)
-  // const AboutNavDesktop = () =>
-  //   <Link
-  //     to={PAGES_ENDPOINTS.ABOUT}
-  //     key={'about'}
-  //     activeClassName="usa-current"
-  //     data-cy={'nav-link-about'}>
-  //     {intl.formatMessage(COMMON_COPY.HEADER.ABOUT)}
-  //   </Link>;
-
-  // Modify navLinks to choose the appropriate Methodology & Data component, depending on screen size
-  // navLinks.splice(1, 0, width > USWDS_BREAKPOINTS.DESKTOP ? <MethNavMobile/> : <MethNavMobile/>);
-
-  // Modify navLinks to choose the appropriate About component, depending on screen size
-  // navLinks.splice(2, 0, width > USWDS_BREAKPOINTS.DESKTOP ? <AboutNavMobile/> : <AboutNavMobile/>);
 
   return (
     <Header basic={true} role={'banner'}>
