@@ -2,7 +2,6 @@ import geopandas as gpd
 import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
 from data_pipeline.etl.sources.geo_utils import (
-    add_tracts_for_geometries,
     get_tract_geojson,
 )
 from data_pipeline.score import field_names
