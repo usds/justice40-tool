@@ -11,6 +11,7 @@ from data_pipeline.etl.score.etl_utils import (
     compare_to_list_of_expected_state_fips_codes,
 )
 from data_pipeline.etl.score.schemas.datasets import DatasetsConfig
+from data_pipeline.score import field_names
 from data_pipeline.utils import (
     load_yaml_dict_from_file,
     unzip_file_from_url,
@@ -387,6 +388,7 @@ class ExtractTransformLoad:
                 # Tract ID, but these will be ignored if they're not present.
                 cls.GEOID_FIELD_NAME: "string",
                 cls.GEOID_TRACT_FIELD_NAME: "string",
+                field_names.ZIP_CODE: "string",
             },
         )
 

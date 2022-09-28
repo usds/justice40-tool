@@ -542,7 +542,6 @@ class PostScoreETL(ExtractTransformLoad):
         # load codebook to disk
         codebook_df.to_csv(codebook_path, index=False)
 
-
         # TODO: Write zip-code based files
 
         logger.info("Compressing files")
