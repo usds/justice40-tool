@@ -362,8 +362,8 @@ PERCENT_OF_TRIBAL_AREA_IN_TRACT = (
 )
 
 # GeoCorr alternatives variables
-ZIP_CODE = "Zip code"
-PERCENT_OF_ZIP_CODE_IN_TRACT = "Percent of zip code in tract"
+ZIP_CODE = "Zip code tabulation area (ZCTA)"
+PERCENT_OF_ZIP_CODE_IN_TRACT = "Percent of zip code tabulation area (ZCTA) in tract"
 
 #####
 # Names for individual factors being exceeded
