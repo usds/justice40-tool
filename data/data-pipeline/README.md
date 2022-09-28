@@ -243,14 +243,29 @@ If you want to run tile generation, please install TippeCanoe [following these i
 - We use [Poetry](https://python-poetry.org/) for managing dependencies and building the application. Please follow the instructions on their site to download.
 - Install Poetry requirements with `poetry install`
 
-### Running tox 
+### Running tox
 
-Our full test and check suite is run using tox. This can be run using commands such 
+Our full test and check suite is run using tox. This can be run using commands such
 as `poetry run tox`.
 
 Each run can take a while to build the whole environment. If you'd like to save time,
-you can use the previously built environment by running `poetry run tox -e lint` 
+you can use the previously built environment by running `poetry run tox -e lint`
 which will drastically speed up the process.
+
+### Configuring pre-commit hooks
+
+To promote consistent code style and quality, we use git pre-commit hooks to automatically lint and reformat our
+code before every commit we make to the codebase. Pre-commit hooks are defined in
+[`.pre-commit-config.yaml`](../.pre-commit-config.yaml).
+
+1.  First, install [`pre-commit`](https://pre-commit.com/) globally:
+
+        $ brew install pre-commit
+
+2.  Run `pre-commit install` to install the specific git hooks used in this repository.
+
+Now, any time you commit code to the repository, the hooks will run on all modified files automatically. If you wish,
+you can force a re-run on all files with `pre-commit run --all-files`.
 
 ### The Application entrypoint
 
@@ -323,7 +338,7 @@ see [python-markdown docs](https://github.com/ipython-contrib/jupyter_contrib_nb
 ### Background
 
 <!-- markdown-link-check-disable -->
-For this project, we make use of [pytest](https://docs.pytest.org/en/latest/) for testing purposes. 
+For this project, we make use of [pytest](https://docs.pytest.org/en/latest/) for testing purposes.
 <!-- markdown-link-check-enable-->
 
 To run tests, simply run `poetry run pytest` in this directory (i.e., `justice40-tool/data/data-pipeline`).
@@ -466,19 +481,19 @@ In order to update the snapshot fixtures of an ETL class, follow the following s
 
 1. If you need to manually update the fixtures, update the "furthest upstream" source
    that is called by `_setup_etl_instance_and_run_extract`. For instance, this may
-   involve creating a new zip file that imitates the source data. (e.g., for the 
-   National Risk Index test, update 
-   `data_pipeline/tests/sources/national_risk_index/data/NRI_Table_CensusTracts.zip` 
+   involve creating a new zip file that imitates the source data. (e.g., for the
+   National Risk Index test, update
+   `data_pipeline/tests/sources/national_risk_index/data/NRI_Table_CensusTracts.zip`
    which is a 64kb imitation of the 405MB source NRI data.)
 2. Run `pytest . -rsx --update_snapshots` to update snapshots for all files, or you
-   can pass a specific file name to pytest to be more precise (e.g., `pytest 
+   can pass a specific file name to pytest to be more precise (e.g., `pytest
    data_pipeline/tests/sources/national_risk_index/test_etl.py -rsx --update_snapshots`)
 3. Re-run pytest without the `update_snapshots` flag (e.g., `pytest . -rsx`) to
    ensure the tests now pass.
 4. Carefully check the `git diff` for the updates to all test fixtures to make sure
    these are as expected. This part is very important. For instance, if you changed a
-    column name, you would only expect the column name to change in the output. If 
-    you modified the calculation of some data, spot check the results to see if the 
+    column name, you would only expect the column name to change in the output. If
+    you modified the calculation of some data, spot check the results to see if the
     numbers in the updated fixtures are as expected.
 
 ### Other ETL Unit Tests
