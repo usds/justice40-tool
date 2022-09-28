@@ -5,6 +5,7 @@ from typing import List
 import pytest
 import pandas as pd
 import numpy as np
+from data_pipeline.etl.score import constants
 from data_pipeline.score import field_names
 from data_pipeline.score.field_names import GEOID_TRACT_FIELD
 from data_pipeline.etl.score.constants import TILES_ISLAND_AREA_FIPS_CODES
@@ -383,8 +384,16 @@ def test_imputed_tracts(final_score_df):
     )
 
     # Make sure that no tracts with population have null imputed income
+    # We DO NOT impute income 
+    is_island_area = (
+        final_score_df[field_names.GEOID_TRACT_FIELD]
+        .str[:2]
+        .isin(constants.TILES_ISLAND_AREA_FIPS_CODES)
+    )
+
     tracts_with_some_population_df = final_score_df[
-        final_score_df[field_names.TOTAL_POP_FIELD] > 0
+        (final_score_df[field_names.TOTAL_POP_FIELD] > 0)
+        & ~is_island_area
     ]
     assert (
         not tracts_with_some_population_df[
