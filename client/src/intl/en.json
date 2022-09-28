@@ -401,7 +401,7 @@
   },
   "explore.map.page.map.territoryFocus.lower48.short": {
     "defaultMessage": "48",
-    "description": "On the explore the map page, on the map, the abbreviated name indicating the bounds of \n      the Lower 48 states\n    "
+    "description": "On the explore the map page, on the map, the abbreviated name indicating the bounds of\n      the Lower 48 states\n    "
   },
   "explore.map.page.map.territoryFocus.puerto_rico.long": {
     "defaultMessage": "Puerto Rico",
@@ -481,7 +481,7 @@
   },
   "explore.map.page.side.panel.indicator.description.diabetes": {
     "defaultMessage": "Weighted percent of people ages 18 years and older who have diabetes other than diabetes during pregnancy",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of People ages 18 years and older who have diabetes other than \n      diabetes during pregnancy"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of People ages 18 years and older who have diabetes other than\n      diabetes during pregnancy"
   },
   "explore.map.page.side.panel.indicator.description.dieselPartMatter": {
     "defaultMessage": "Diesel exhaust in the air",
@@ -497,23 +497,23 @@
   },
   "explore.map.page.side.panel.indicator.description.exp.bld.loss": {
     "defaultMessage": "Economic loss rate to building value resulting from natural hazards each year",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side \n    panel will show an indicator description of Economic loss rate to buildings resulting from natural hazards"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side\n    panel will show an indicator description of Economic loss rate to buildings resulting from natural hazards"
   },
   "explore.map.page.side.panel.indicator.description.exp.pop.loss": {
     "defaultMessage": "Rate of fatalities and injuries resulting from natural hazards each year",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Economic loss rate to the population in fatalities and \n      injuries resulting from natural hazards"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Economic loss rate to the population in fatalities and\n      injuries resulting from natural hazards"
   },
   "explore.map.page.side.panel.indicator.description.heartDisease": {
     "defaultMessage": "People ages 18 years and older who have been told they have heart disease",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Weighted percent of people ages 18 years and older who have \n    been told they have heart disease"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Weighted percent of people ages 18 years and older who have\n    been told they have heart disease"
   },
   "explore.map.page.side.panel.indicator.description.high.ed": {
     "defaultMessage": "Percent of the census tract's population 15 or older not enrolled in college, university, or graduate school",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of the census tract's population 15 or older not \n      enrolled in college, university, or graduate school"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of the census tract's population 15 or older not\n      enrolled in college, university, or graduate school"
   },
   "explore.map.page.side.panel.indicator.description.high.school": {
     "defaultMessage": "Percent of people ages 25 years or older whose education level is less than a high school diploma",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of people ages 25 years or older whose education level \n      is less than a high school diploma"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of people ages 25 years or older whose education level\n      is less than a high school diploma"
   },
   "explore.map.page.side.panel.indicator.description.houseBurden": {
     "defaultMessage": "Low income households spending more than 30% of income on housing",
@@ -569,7 +569,7 @@
   },
   "explore.map.page.side.panel.indicator.description.unemploy": {
     "defaultMessage": "Number of unemployed people as a percentage of the labor force",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side \n    panel will show an indicator description of Number of unemployed people as a percentage of the labor force"
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side\n    panel will show an indicator description of Number of unemployed people as a percentage of the labor force"
   },
   "explore.map.page.side.panel.indicator.description.wasteWater": {
     "defaultMessage": "Toxic concentrations at stream segments within 500 meters",
@@ -821,7 +821,7 @@
   },
   "explore.map.page.under.map.download.draft.ptag.1": {
     "defaultMessage": "<link1>Download the data sources</link1> used in the CEJST (.csv, .xlxs, .pdf that describes how to use the list, and a codebook, {downloadFileSize} unzipped). Last updated: {dateUpdated}.",
-    "description": "\n      Navigate to the explore the map page. Under the map, you will see a link that is placed below the \n      map that will download the data packet\n    "
+    "description": "\n      Navigate to the explore the map page. Under the map, you will see a link that is placed below the\n      map that will download the data packet\n    "
   },
   "explore.map.page.under.map.how.you.can.help.heading": {
     "defaultMessage": "How you can help improve the map",
