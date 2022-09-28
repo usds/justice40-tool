@@ -151,16 +151,16 @@ class CensusDecennialETL(ExtractTransformLoad):
         # Race/Ethnicity fields
         self.TOTAL_RACE_POPULATION_FIELD = "PCT086001"  # Total
         self.ASIAN_FIELD = "PCT086002"  # Total!!Asian
-        self.BLACK_OR_AA_FIELD = "PCT086003"  # Total!!Black or African American
-        self.NATIVE_HI_OR_API_FIELD = (
+        self.BLACK_FIELD = "PCT086003"  # Total!!Black or African American
+        self.HAWAIIAN_FIELD_NAME = (
             "PCT086004"  # Total!!Native Hawaiian and Other Pacific Islander
         )
-        self.WHITE_FIELD = "PCT086005"  # Total!!White
-        self.HISPANIC_OR_LATINO_FIELD = "PCT086006"  # Total!!Hispanic or Latino
-        self.TWO_OR_MORE_RACES_FIELD = (
-            "P004024"  # Total!!Two or More Ethnic Origins or RaceTotal
-        )
-        self.OTHER_ETHNIC_ORIGIN_FIELD = (
+        # Note that the 2010 census for island araeas does not break out
+        # hispanic and non-hispanic white, so this is slightly different from
+        # our other demographic data
+        self.NON_HISPANIC_WHITE_FIELD = "PCT086005"  # Total!!White
+        self.HISPANIC_FIELD_NAME = "PCT086006"  # Total!!Hispanic or Latino
+        self.OTHER_RACE_FIELD = (
             "PCT086007"  # Total!!Other Ethnic Origin or Ra
         )
 
@@ -224,12 +224,11 @@ class CensusDecennialETL(ExtractTransformLoad):
             self.TOTAL_POP_FIELD,
             self.TOTAL_RACE_POPULATION_FIELD,
             self.ASIAN_FIELD,
-            self.TWO_OR_MORE_RACES_FIELD,
-            self.BLACK_OR_AA_FIELD,
-            self.NATIVE_HI_OR_API_FIELD,
-            self.WHITE_FIELD,
-            self.HISPANIC_OR_LATINO_FIELD,
-            self.OTHER_ETHNIC_ORIGIN_FIELD,
+            self.BLACK_FIELD,
+            self.HAWAIIAN_FIELD_NAME,
+            self.NON_HISPANIC_WHITE_FIELD,
+            self.HISPANIC_FIELD_NAME,
+            self.OTHER_RACE_FIELD,
         ]
         var_list = ",".join(var_list)
 
@@ -289,20 +288,20 @@ class CensusDecennialETL(ExtractTransformLoad):
             self.EMPLOYMENT_FEMALE_UNEMPLOYED_FIELD: self.EMPLOYMENT_FEMALE_UNEMPLOYED_FIELD,
             self.TOTAL_RACE_POPULATION_FIELD: self.TOTAL_RACE_POPULATION_FIELD_NAME,
             self.TOTAL_RACE_POPULATION_VI_FIELD: self.TOTAL_RACE_POPULATION_FIELD_NAME,
+            # Note there is no American Indian data for AS/GU/MI
             self.AMERICAN_INDIAN_VI_FIELD: self.AMERICAN_INDIAN_FIELD_NAME,
             self.ASIAN_FIELD: self.ASIAN_FIELD_NAME,
             self.ASIAN_VI_FIELD: self.ASIAN_FIELD_NAME,
-            self.BLACK_OR_AA_FIELD: self.BLACK_FIELD_NAME,
+            self.BLACK_FIELD: self.BLACK_FIELD_NAME,
             self.BLACK_VI_FIELD: self.BLACK_FIELD_NAME,
-            self.NATIVE_HI_OR_API_FIELD: self.HAWAIIAN_FIELD_NAME,
+            self.HAWAIIAN_FIELD_NAME: self.HAWAIIAN_FIELD_NAME,
             self.HAWAIIAN_VI_FIELD: self.HAWAIIAN_FIELD_NAME,
-            self.TWO_OR_MORE_RACES_FIELD: self.TWO_OR_MORE_RACES_FIELD_NAME,
             self.TWO_OR_MORE_RACES_VI_FIELD: self.TWO_OR_MORE_RACES_FIELD_NAME,
-            self.WHITE_FIELD: self.NON_HISPANIC_WHITE_FIELD_NAME,
+            self.NON_HISPANIC_WHITE_FIELD: self.NON_HISPANIC_WHITE_FIELD_NAME,
             self.NON_HISPANIC_WHITE_VI_FIELD: self.NON_HISPANIC_WHITE_FIELD_NAME,
-            self.HISPANIC_OR_LATINO_FIELD: self.HISPANIC_FIELD_NAME,
+            self.HISPANIC_FIELD_NAME: self.HISPANIC_FIELD_NAME,
             self.HISPANIC_VI_FIELD: self.HISPANIC_FIELD_NAME,
-            self.OTHER_ETHNIC_ORIGIN_FIELD: self.OTHER_RACE_FIELD_NAME,
+            self.OTHER_RACE_FIELD: self.OTHER_RACE_FIELD_NAME,
             self.OTHER_RACE_VI_FIELD: self.OTHER_RACE_FIELD_NAME,
         }
 

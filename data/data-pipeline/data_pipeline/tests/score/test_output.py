@@ -384,7 +384,7 @@ def test_imputed_tracts(final_score_df):
     )
 
     # Make sure that no tracts with population have null imputed income
-    # We DO NOT impute income 
+    # We DO NOT impute income for island areas, so remove those from the test
     is_island_area = (
         final_score_df[field_names.GEOID_TRACT_FIELD]
         .str[:2]
