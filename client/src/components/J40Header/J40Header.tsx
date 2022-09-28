@@ -37,6 +37,9 @@ interface IJ40Header {
 const J40Header = ({location}:IJ40Header) => {
   const intl = useIntl();
 
+  // grab last segment of location pathname
+  const [lastSegmentLocation] = location.pathname.split('/').slice(-1);
+
   // Logo text
   const logoLine1 = intl.formatMessage(COMMON_COPY.HEADER.TITLE_LINE_1);
 
@@ -160,10 +163,12 @@ const J40Header = ({location}:IJ40Header) => {
   // Methodology & Data Nav component
   const MethNav = () =>
     <>
+      {/* Add a className of usa-current anytime this component renders when the location of the app is on
+      the Methodology page or the downloads page. This will style the nav link with a bottom border */}
       <NavDropDownButton
         className={
-          location?.pathname === `/en${PAGES_ENDPOINTS.METHODOLOGY}` ||
-          location?.pathname === `/en${PAGES_ENDPOINTS.DOWNLOADS}` ?
+          lastSegmentLocation === PAGES_ENDPOINTS.METHODOLOGY.slice(1) ||
+          lastSegmentLocation === PAGES_ENDPOINTS.DOWNLOADS.slice(1) ?
           'usa-current' :
           ''
         }
@@ -187,11 +192,13 @@ const J40Header = ({location}:IJ40Header) => {
   // About Nav component
   const AboutNav = () =>
     <>
+      {/* Add a className of usa-current anytime this component renders when the location of the app is on
+      the About, FAQS or Public Eng page. This will style the nav link with a bottom border */}
       <NavDropDownButton
         className={
-          location?.pathname === `/en${PAGES_ENDPOINTS.ABOUT}` ||
-          location?.pathname === `/en${PAGES_ENDPOINTS.FAQS}` ||
-          location?.pathname === `/en${PAGES_ENDPOINTS.PUBLIC_ENG}` ?
+          lastSegmentLocation === PAGES_ENDPOINTS.ABOUT.slice(1) ||
+          lastSegmentLocation === PAGES_ENDPOINTS.FAQS.slice(1) ||
+          lastSegmentLocation === PAGES_ENDPOINTS.PUBLIC_ENG.slice(1) ?
           'usa-current' :
           ''
         }
