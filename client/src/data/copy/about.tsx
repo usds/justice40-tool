@@ -182,7 +182,7 @@ export const GET_INVOLVED_COMMENTS = {
     id={'about.page.send.feedback.email.link'}
     description={'about page sub header text'}
     defaultMessage={`
-      Contact
+      Contact CEQ
     `}
   />,
 };

@@ -10,12 +10,10 @@ import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 import SubPageNav from '../components/SubPageNav';
 
-
 import * as ABOUT_COPY from '../data/copy/about';
 import * as COMMON_COPY from '../data/copy/common';
 import * as CONSTANTS from '../data/constants';
 import {PAGES_ENDPOINTS} from '../data/constants';
-
 
 import accountBalanceIcon // @ts-ignore
   from '/node_modules/uswds/dist/img/usa-icons/account_balance.svg';
@@ -115,9 +113,7 @@ const AboutPage = ({location}: IAboutPageProps) => {
             <AboutCard
               size={'small'}
               imgSrc={accountBalanceIcon}
-              header={intl.formatMessage(ABOUT_COPY.HOW_TO_USE_TOOL.USE_MAP_HEADING)}
-              url={PAGES_ENDPOINTS.METHODOLOGY}
-              internal={true}>
+              header={intl.formatMessage(ABOUT_COPY.HOW_TO_USE_TOOL.USE_MAP_HEADING)}>
               <p>
                 {intl.formatMessage(ABOUT_COPY.HOW_TO_USE_TOOL.USE_MAP_PARA)}
               </p>
@@ -126,9 +122,7 @@ const AboutPage = ({location}: IAboutPageProps) => {
             <AboutCard
               size={'small'}
               imgSrc={groupsIcon}
-              header={intl.formatMessage(ABOUT_COPY.HOW_TO_USE_TOOL.USE_DATA_HEADING)}
-              url={PAGES_ENDPOINTS.EXPLORE}
-              internal={true}>
+              header={intl.formatMessage(ABOUT_COPY.HOW_TO_USE_TOOL.USE_DATA_HEADING)}>
               <p>
                 {ABOUT_COPY.CONTENT.USE_DATA_PARA}
               </p>

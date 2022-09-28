@@ -524,12 +524,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </p>
                   <div
                     class="j40-aboutcard-sm-link"
-                  >
-                    <a
-                      class="usa-link"
-                      href="/en/methodology"
-                    />
-                  </div>
+                  />
                 </div>
               </div>
               <div
@@ -584,12 +579,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </p>
                   <div
                     class="j40-aboutcard-sm-link"
-                  >
-                    <a
-                      class="usa-link"
-                      href="/en/"
-                    />
-                  </div>
+                  />
                 </div>
               </div>
               <div
@@ -660,7 +650,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     target="_blank"
                   >
                     
-      Contact
+      Contact CEQ
     
                   </a>
                 </div>

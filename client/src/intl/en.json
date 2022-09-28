@@ -72,7 +72,7 @@
     "description": "Navigate to the About page. This is the paragraph 4"
   },
   "about.page.send.feedback.email.link": {
-    "defaultMessage": "Contact",
+    "defaultMessage": "Contact CEQ",
     "description": "about page sub header text"
   },
   "about.page.send.feedback.heading": {
