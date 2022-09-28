@@ -11,7 +11,6 @@ from data_pipeline.etl.score.constants import TILES_ISLAND_AREA_FIPS_CODES
 from data_pipeline.score import field_names
 from data_pipeline.score.field_names import GEOID_TRACT_FIELD
 
-
 pytestmark = pytest.mark.smoketest
 UNMATCHED_TRACT_THRESHOLD = 1000
 

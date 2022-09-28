@@ -18,14 +18,17 @@ repos:
           "--ignore-init-module-imports",
         ]
 
-- repo: https://github.com/asottile/reorder_python_imports
-  rev: v3.8.3
+- repo: https://github.com/pycqa/isort
+  rev: 5.10.1
   hooks:
-    - id: reorder-python-imports
-      language_version: python3.9
+    - id: isort
+      name: isort (python)
       args:
         [
-          "--application-directories=.",
+        "--force-single-line-imports",
+        "--profile=black",
+        "--line-length=80",
+        "--src-path=.:data/data-pipeline"
         ]
 
 - repo: https://github.com/ambv/black

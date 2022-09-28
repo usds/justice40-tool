@@ -1,6 +1,7 @@
-from dynaconf import Dynaconf
-import data_pipeline
 import pathlib
+
+import data_pipeline
+from dynaconf import Dynaconf
 
 settings = Dynaconf(
     envvar_prefix="DYNACONF",

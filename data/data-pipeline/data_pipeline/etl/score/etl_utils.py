@@ -96,7 +96,7 @@ def floor_series(series: pd.Series, number_of_decimals: int) -> pd.Series:
     if series.isin(unacceptable_values).any():
         series.replace(mapping, regex=False, inplace=True)
 
-    multiplication_factor = 10 ** number_of_decimals
+    multiplication_factor = 10**number_of_decimals
 
     # In order to safely cast NaNs
     # First coerce series to float type: series.astype(float)

@@ -11,9 +11,7 @@ from data_pipeline.etl.sources.dot_travel_composite.etl import (
     TravelCompositeETL,
 )
 from data_pipeline.etl.sources.eamlis.etl import AbandonedMineETL
-from data_pipeline.etl.sources.fsf_flood_risk.etl import (
-    FloodRiskETL,
-)
+from data_pipeline.etl.sources.fsf_flood_risk.etl import FloodRiskETL
 from data_pipeline.etl.sources.fsf_wildfire_risk.etl import WildfireRiskETL
 from data_pipeline.etl.sources.national_risk_index.etl import (
     NationalRiskIndexETL,
