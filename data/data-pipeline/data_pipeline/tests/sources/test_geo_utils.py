@@ -23,6 +23,10 @@ def test_add_tracts_for_geometries():
         ),
         crs="epsg:4326",
     )
-    tract_data = Path(__file__).parent / "data" / "us.geojson"
-    enriched_df = add_tracts_for_geometries(df, _tract_data_path=tract_data)
+
+    # Use fixtures for tract data.
+    tract_data_path = Path(__file__).parent / "data" / "us.geojson"
+    tract_data = gpd.read_file(tract_data_path)
+
+    enriched_df = add_tracts_for_geometries(df, tract_data=tract_data)
     assert (df["expected_geoid"] == enriched_df["GEOID10_TRACT"]).all()

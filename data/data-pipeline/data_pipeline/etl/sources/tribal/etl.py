@@ -3,6 +3,7 @@ import geopandas as gpd
 import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger, unzip_file_from_url
 
 logger = get_module_logger(__name__)
@@ -59,7 +60,10 @@ class TribalETL(ExtractTransformLoad):
         )
 
         bia_national_lar_df.rename(
-            columns={"LARID": "tribalId", "LARName": "landAreaName"},
+            columns={
+                "LARID": field_names.TRIBAL_ID,
+                "LARName": field_names.TRIBAL_LAND_AREA_NAME,
+            },
             inplace=True,
         )
 
@@ -87,7 +91,10 @@ class TribalETL(ExtractTransformLoad):
         )
 
         bia_aian_supplemental_df.rename(
-            columns={"OBJECTID": "tribalId", "Land_Area_": "landAreaName"},
+            columns={
+                "OBJECTID": field_names.TRIBAL_ID,
+                "Land_Area_": field_names.TRIBAL_LAND_AREA_NAME,
+            },
             inplace=True,
         )
 
@@ -113,7 +120,10 @@ class TribalETL(ExtractTransformLoad):
         )
 
         bia_tsa_df.rename(
-            columns={"TSAID": "tribalId", "LARName": "landAreaName"},
+            columns={
+                "TSAID": field_names.TRIBAL_ID,
+                "LARName": field_names.TRIBAL_LAND_AREA_NAME,
+            },
             inplace=True,
         )
 
@@ -136,8 +146,8 @@ class TribalETL(ExtractTransformLoad):
 
         alaska_native_villages_df.rename(
             columns={
-                "GlobalID": "tribalId",
-                "TRIBALOFFICENAME": "landAreaName",
+                "GlobalID": field_names.TRIBAL_ID,
+                "TRIBALOFFICENAME": field_names.TRIBAL_LAND_AREA_NAME,
             },
             inplace=True,
         )

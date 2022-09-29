@@ -15,10 +15,10 @@ def final_score_df():
 
 
 @pytest.fixture()
-def census_df():
-    census_csv = constants.DATA_PATH / "dataset" / "census_acs_2019" / "usa.csv"
+def census_acs_df():
+    census_acs_csv = constants.DATA_PATH / "dataset" / "census_acs" / "usa.csv"
     return pd.read_csv(
-        census_csv,
+        census_acs_csv,
         dtype={GEOID_TRACT_FIELD: "string"},
         low_memory=False,
     )
@@ -214,4 +214,17 @@ def national_tract_df():
         dtype={GEOID_TRACT_FIELD: "string"},
         low_memory=False,
         header=None,
+    )
+
+
+@pytest.fixture()
+def tribal_overlap():
+    tribal_overlap = (
+        constants.DATA_PATH / "dataset" / "tribal_overlap" / "usa.csv"
+    )
+
+    return pd.read_csv(
+        tribal_overlap,
+        dtype={GEOID_TRACT_FIELD: "string"},
+        low_memory=False,
     )

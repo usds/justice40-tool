@@ -17,6 +17,7 @@ class TravelCompositeETL(ExtractTransformLoad):
     SOURCE_URL = "https://www.transportation.gov/sites/dot.gov/files/Shapefile_and_Metadata.zip"
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
     PUERTO_RICO_EXPECTED_IN_DATA = False
+    LOAD_YAML_CONFIG: bool = True
 
     # Output score variables (values set on datasets.yml) for linting purposes
     TRAVEL_BURDEN_FIELD_NAME: str

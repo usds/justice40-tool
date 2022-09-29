@@ -12,7 +12,7 @@ logger = get_module_logger(__name__)
 
 
 class ScoreNarwhal(Score):
-    """Very similar to Score M, at present."""
+    """Score N, aka Narwhal."""
 
     LOW_INCOME_THRESHOLD: float = 0.65
     MAX_COLLEGE_ATTENDANCE_THRESHOLD: float = 0.20
@@ -999,7 +999,6 @@ class ScoreNarwhal(Score):
 
     def add_columns(self) -> pd.DataFrame:
         logger.info("Adding Score Narhwal")
-
         self.df[field_names.THRESHOLD_COUNT] = 0
 
         self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED] = (

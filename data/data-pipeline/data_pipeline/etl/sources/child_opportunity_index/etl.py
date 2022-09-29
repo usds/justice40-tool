@@ -25,6 +25,7 @@ class ChildOpportunityIndex(ExtractTransformLoad):
     # Metadata for the baseclass
     NAME = "child_opportunity_index"
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
+    LOAD_YAML_CONFIG: bool = True
 
     # Define these for easy code completion
     EXTREME_HEAT_FIELD: str

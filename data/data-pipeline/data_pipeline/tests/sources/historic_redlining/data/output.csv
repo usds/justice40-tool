@@ -1,0 +1,16 @@
+GEOID10_TRACT,Tract-level redlining score,Tract-level redlining score meets or exceeds 3.25,Tract-level redlining score meets or exceeds 3.5,Tract-level redlining score meets or exceeds 3.75
+06027000800,3.3000000000,True,False,False
+06061021322,3.9900000000,True,True,True
+06069000802,3.7800000000,True,True,True
+15001021010,4.0000000000,True,True,True
+15001021101,4.0000000000,True,True,True
+15001021402,3.8600000000,True,True,True
+15001021800,4.0000000000,True,True,True
+15003010201,3.9600000000,True,True,True
+15007040603,3.9700000000,True,True,True
+15007040604,3.9400000000,True,True,True
+15007040700,3.2000000000,False,False,False
+15009030100,3.7700000000,True,True,True
+15009030201,3.2300000000,False,False,False
+15009030402,3.0000000000,False,False,False
+15009030800,3.4000000000,True,False,False

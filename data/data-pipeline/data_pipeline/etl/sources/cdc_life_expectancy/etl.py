@@ -16,7 +16,12 @@ class CDCLifeExpectancy(ExtractTransformLoad):
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
     PUERTO_RICO_EXPECTED_IN_DATA = False
 
+    NAME = "cdc_life_expectancy"
+
     USA_FILE_URL: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/US_A.CSV"
+    LOAD_YAML_CONFIG: bool = False
+    LIFE_EXPECTANCY_FIELD_NAME = "Life expectancy (years)"
+    INPUT_GEOID_TRACT_FIELD_NAME = "Tract ID"
 
     STATES_MISSING_FROM_USA_FILE = ["23", "55"]
 
@@ -68,9 +73,7 @@ class CDCLifeExpectancy(ExtractTransformLoad):
 
         all_usa_raw_df = self._download_and_prep_data(
             file_url=self.USA_FILE_URL,
-            download_file_name=self.get_tmp_path()
-            / "cdc_life_expectancy"
-            / "usa.csv",
+            download_file_name=self.get_tmp_path() / "US_A.CSV",
         )
 
         # Check which states are missing
@@ -90,17 +93,13 @@ class CDCLifeExpectancy(ExtractTransformLoad):
         logger.info("Downloading data for Maine")
         maine_raw_df = self._download_and_prep_data(
             file_url=self.MAINE_FILE_URL,
-            download_file_name=self.get_tmp_path()
-            / "cdc_life_expectancy"
-            / "maine.csv",
+            download_file_name=self.get_tmp_path() / "maine.csv",
         )
 
         logger.info("Downloading data for Wisconsin")
         wisconsin_raw_df = self._download_and_prep_data(
             file_url=self.WISCONSIN_FILE_URL,
-            download_file_name=self.get_tmp_path()
-            / "cdc_life_expectancy"
-            / "wisconsin.csv",
+            download_file_name=self.get_tmp_path() / "wisconsin.csv",
         )
 
         combined_df = pd.concat(

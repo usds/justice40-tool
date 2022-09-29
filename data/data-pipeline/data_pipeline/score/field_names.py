@@ -3,6 +3,7 @@ PERCENTILE_FIELD_SUFFIX = " (percentile)"
 ISLAND_AREAS_PERCENTILE_ADJUSTMENT_FIELD = " for island areas"
 ADJACENT_MEAN_SUFFIX = " (based on adjacency index and low income alone)"
 ADJACENCY_INDEX_SUFFIX = " (average of neighbors)"
+ISLAND_AREA_BACKFILL_SUFFIX = " in 2009"
 
 # Geographic field names
 GEOID_TRACT_FIELD = "GEOID10_TRACT"
@@ -348,6 +349,17 @@ ELIGIBLE_FUDS_BINARY_FIELD_NAME = (
     "Is there at least one Formerly Used Defense Site (FUDS) in the tract?"
 )
 ELIGIBLE_FUDS_FILLED_IN_FIELD_NAME = "Is there at least one Formerly Used Defense Site (FUDS) in the tract, where missing data is treated as False?"
+
+# Tribal variables
+TRIBAL_ID = "tribalId"
+TRIBAL_LAND_AREA_NAME = "landAreaName"
+
+# Tribal overlap variables
+COUNT_OF_TRIBAL_AREAS_IN_TRACT = "Number of Tribal areas within Census tract"
+NAMES_OF_TRIBAL_AREAS_IN_TRACT = "Names of Tribal areas within Census tract"
+PERCENT_OF_TRIBAL_AREA_IN_TRACT = (
+    "Percent of the Census tract that is within Tribal areas"
+)
 
 #####
 # Names for individual factors being exceeded

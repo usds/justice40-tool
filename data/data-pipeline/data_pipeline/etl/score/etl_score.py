@@ -1,10 +1,13 @@
 import functools
+from typing import List
+
 from dataclasses import dataclass
 
 import numpy as np
 import pandas as pd
 
 from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.sources.census_acs.etl import CensusACSETL
 from data_pipeline.etl.sources.national_risk_index.etl import (
     NationalRiskIndexETL,
 )
@@ -15,6 +18,7 @@ from data_pipeline.etl.sources.fsf_flood_risk.etl import (
     FloodRiskETL,
 )
 from data_pipeline.etl.sources.eamlis.etl import AbandonedMineETL
+from data_pipeline.etl.sources.tribal_overlap.etl import TribalOverlapETL
 from data_pipeline.etl.sources.us_army_fuds.etl import USArmyFUDS
 from data_pipeline.etl.sources.nlcd_nature_deprived.etl import NatureDeprivedETL
 from data_pipeline.etl.sources.fsf_wildfire_risk.etl import WildfireRiskETL
@@ -34,7 +38,7 @@ class ScoreETL(ExtractTransformLoad):
         # dataframes
         self.df: pd.DataFrame
         self.ejscreen_df: pd.DataFrame
-        self.census_df: pd.DataFrame
+        self.census_acs_df: pd.DataFrame
         self.hud_housing_df: pd.DataFrame
         self.cdc_places_df: pd.DataFrame
         self.census_acs_median_incomes_df: pd.DataFrame
@@ -52,6 +56,9 @@ class ScoreETL(ExtractTransformLoad):
         self.nature_deprived_df: pd.DataFrame
         self.eamlis_df: pd.DataFrame
         self.fuds_df: pd.DataFrame
+        self.tribal_overlap_df: pd.DataFrame
+
+        self.ISLAND_DEMOGRAPHIC_BACKFILL_FIELDS: List[str] = []
 
     def extract(self) -> None:
         logger.info("Loading data sets from disk.")
@@ -65,14 +72,7 @@ class ScoreETL(ExtractTransformLoad):
         )
 
         # Load census data
-        census_csv = (
-            constants.DATA_PATH / "dataset" / "census_acs_2019" / "usa.csv"
-        )
-        self.census_df = pd.read_csv(
-            census_csv,
-            dtype={self.GEOID_TRACT_FIELD_NAME: "string"},
-            low_memory=False,
-        )
+        self.census_acs_df = CensusACSETL.get_data_frame()
 
         # Load HUD housing data
         hud_housing_csv = (
@@ -147,6 +147,9 @@ class ScoreETL(ExtractTransformLoad):
 
         # Load FUDS dataset
         self.fuds_df = USArmyFUDS.get_data_frame()
+
+        # Load Tribal overlap dataset
+        self.tribal_overlap_df = TribalOverlapETL.get_data_frame()
 
         # Load GeoCorr Urban Rural Map
         geocorr_urban_rural_csv = (
@@ -341,7 +344,7 @@ class ScoreETL(ExtractTransformLoad):
 
         # Join all the data sources that use census tracts
         census_tract_dfs = [
-            self.census_df,
+            self.census_acs_df,
             self.hud_housing_df,
             self.cdc_places_df,
             self.cdc_life_expectancy_df,
@@ -359,6 +362,7 @@ class ScoreETL(ExtractTransformLoad):
             self.nature_deprived_df,
             self.eamlis_df,
             self.fuds_df,
+            self.tribal_overlap_df,
         ]
 
         # Sanity check each data frame before merging.
@@ -401,6 +405,25 @@ class ScoreETL(ExtractTransformLoad):
         df[field_names.MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD] = (
             df[field_names.MEDIAN_INCOME_FIELD] / df[field_names.AMI_FIELD]
         )
+
+        self.ISLAND_DEMOGRAPHIC_BACKFILL_FIELDS = [
+            field_names.PERCENT_BLACK_FIELD_NAME
+            + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+            field_names.PERCENT_AMERICAN_INDIAN_FIELD_NAME
+            + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+            field_names.PERCENT_ASIAN_FIELD_NAME
+            + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+            field_names.PERCENT_HAWAIIAN_FIELD_NAME
+            + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+            field_names.PERCENT_TWO_OR_MORE_RACES_FIELD_NAME
+            + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+            field_names.PERCENT_NON_HISPANIC_WHITE_FIELD_NAME
+            + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+            field_names.PERCENT_HISPANIC_FIELD_NAME
+            + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+            field_names.PERCENT_OTHER_RACE_FIELD_NAME
+            + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+        ]
 
         # Donut columns get added later
         numeric_columns = [
@@ -469,12 +492,15 @@ class ScoreETL(ExtractTransformLoad):
             field_names.PERCENT_AGE_UNDER_10,
             field_names.PERCENT_AGE_10_TO_64,
             field_names.PERCENT_AGE_OVER_64,
-        ]
+            field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT,
+            field_names.COUNT_OF_TRIBAL_AREAS_IN_TRACT,
+        ] + self.ISLAND_DEMOGRAPHIC_BACKFILL_FIELDS
 
         non_numeric_columns = [
             self.GEOID_TRACT_FIELD_NAME,
             field_names.TRACT_ELIGIBLE_FOR_NONNATURAL_THRESHOLD,
             field_names.AGRICULTURAL_VALUE_BOOL_FIELD,
+            field_names.NAMES_OF_TRIBAL_AREAS_IN_TRACT,
         ]
 
         boolean_columns = [
@@ -633,6 +659,32 @@ class ScoreETL(ExtractTransformLoad):
 
         return df_copy
 
+    @staticmethod
+    def _get_island_areas(df: pd.DataFrame) -> pd.Series:
+        return (
+            df[field_names.GEOID_TRACT_FIELD]
+            .str[:2]
+            .isin(constants.TILES_ISLAND_AREA_FIPS_CODES)
+        )
+
+    def _backfill_island_demographics(self, df: pd.DataFrame) -> pd.DataFrame:
+        logger.info("Backfilling island demographic data")
+        island_index = self._get_island_areas(df)
+        for backfill_field_name in self.ISLAND_DEMOGRAPHIC_BACKFILL_FIELDS:
+            actual_field_name = backfill_field_name.replace(
+                field_names.ISLAND_AREA_BACKFILL_SUFFIX, ""
+            )
+            df.loc[island_index, actual_field_name] = df.loc[
+                island_index, backfill_field_name
+            ]
+        df = df.drop(columns=self.ISLAND_DEMOGRAPHIC_BACKFILL_FIELDS)
+
+        df.loc[island_index, field_names.TOTAL_POP_FIELD] = df.loc[
+            island_index, field_names.COMBINED_CENSUS_TOTAL_POPULATION_2010
+        ]
+
+        return df
+
     def transform(self) -> None:
         logger.info("Transforming Score Data")
 
@@ -641,6 +693,9 @@ class ScoreETL(ExtractTransformLoad):
 
         # calculate scores
         self.df = ScoreRunner(df=self.df).calculate_scores()
+
+        # We add island demographic data since it doesn't matter to the score anyway
+        self.df = self._backfill_island_demographics(self.df)
 
     def load(self) -> None:
         logger.info("Saving Score CSV")
