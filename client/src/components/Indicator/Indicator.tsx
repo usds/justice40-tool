@@ -1,5 +1,6 @@
 import React from 'react';
 import {useIntl} from 'gatsby-plugin-intl';
+import ReactTooltip from 'react-tooltip';
 
 import {indicatorInfo, indicatorType} from '../AreaDetail/AreaDetail';
 
@@ -35,13 +36,30 @@ interface IIndicatorValue {
  * @return {JSX.Element}
  */
 export const IndicatorInfoIcon = ({isImpute, isAdjacent}: Omit<IIndicator, 'indicator'>) => {
-  console.log('🚀 ~ file: Indicator.tsx ~ line 38 ~ IndicatorInfoIcon ~ isAdjacent', isAdjacent);
-  console.log('🚀 ~ file: Indicator.tsx ~ line 38 ~ IndicatorInfoIcon ~ isImpute', isImpute);
   const intl = useIntl();
+
+  const getToolTipCopy = () => {
+    if (!isImpute && isAdjacent) {
+      return intl.formatMessage(EXPLORE_COPY.LOW_INCOME_TOOLTIP.IMP_NO_ADJ_YES);
+    } else if (isImpute && !isAdjacent) {
+      return intl.formatMessage(EXPLORE_COPY.LOW_INCOME_TOOLTIP.IMP_YES_ADJ_NO);
+    } else if (isImpute && isAdjacent) {
+      return intl.formatMessage(EXPLORE_COPY.LOW_INCOME_TOOLTIP.IMP_YES_ADJ_YES);
+    } else {
+      return null;
+    }
+  };
 
   return (
     <>
+      <ReactTooltip
+        id="lowIncomeIcon"
+        multiline={true}
+      />
       <img
+        data-for="lowIncomeIcon"
+        data-tip={getToolTipCopy()}
+        data-iscapture="true"
         className={styles.info}
         src={infoIcon}
         alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.INFO)}

@@ -893,8 +893,97 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               <div>
                 <div>
+                  <div
+                    class="__react_component_tooltip t901c56ed-63e5-40f4-ae77-fd04999a585e place-top type-dark"
+                    data-id="tooltip"
+                    id="lowIncomeIcon"
+                  >
+                    <style
+                      aria-hidden="true"
+                    >
+                      
+  	.t901c56ed-63e5-40f4-ae77-fd04999a585e {
+	    color: #fff;
+	    background: #222;
+	    border: 1px solid transparent;
+  	}
+
+  	.t901c56ed-63e5-40f4-ae77-fd04999a585e.place-top {
+        margin-top: -10px;
+    }
+    .t901c56ed-63e5-40f4-ae77-fd04999a585e.place-top::before {
+        border-top: 8px solid transparent;
+    }
+    .t901c56ed-63e5-40f4-ae77-fd04999a585e.place-top::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        bottom: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-top-color: #222;
+        border-top-style: solid;
+        border-top-width: 6px;
+    }
+
+    .t901c56ed-63e5-40f4-ae77-fd04999a585e.place-bottom {
+        margin-top: 10px;
+    }
+    .t901c56ed-63e5-40f4-ae77-fd04999a585e.place-bottom::before {
+        border-bottom: 8px solid transparent;
+    }
+    .t901c56ed-63e5-40f4-ae77-fd04999a585e.place-bottom::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        top: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-bottom-color: #222;
+        border-bottom-style: solid;
+        border-bottom-width: 6px;
+    }
+
+    .t901c56ed-63e5-40f4-ae77-fd04999a585e.place-left {
+        margin-left: -10px;
+    }
+    .t901c56ed-63e5-40f4-ae77-fd04999a585e.place-left::before {
+        border-left: 8px solid transparent;
+    }
+    .t901c56ed-63e5-40f4-ae77-fd04999a585e.place-left::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        right: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-left-color: #222;
+        border-left-style: solid;
+        border-left-width: 6px;
+    }
+
+    .t901c56ed-63e5-40f4-ae77-fd04999a585e.place-right {
+        margin-left: 10px;
+    }
+    .t901c56ed-63e5-40f4-ae77-fd04999a585e.place-right::before {
+        border-right: 8px solid transparent;
+    }
+    .t901c56ed-63e5-40f4-ae77-fd04999a585e.place-right::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        left: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-right-color: #222;
+        border-right-style: solid;
+        border-right-width: 6px;
+    }
+  
+                    </style>
+                  </div>
                   <img
                     alt="an icon to represent data is unavailable"
+                    currentitem="false"
+                    data-for="lowIncomeIcon"
+                    data-iscapture="true"
+                    data-tip="Tracts with missing income data<br />are given estimated incomes based<br />on an average of the incomes<br />of the surrounding tracts."
                     src="test-file-stub"
                   />
                   <span>
@@ -1020,8 +1109,97 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               <div>
                 <div>
+                  <div
+                    class="__react_component_tooltip t3c064b95-3ccc-43dc-8adb-24c257ecd20f place-top type-dark"
+                    data-id="tooltip"
+                    id="lowIncomeIcon"
+                  >
+                    <style
+                      aria-hidden="true"
+                    >
+                      
+  	.t3c064b95-3ccc-43dc-8adb-24c257ecd20f {
+	    color: #fff;
+	    background: #222;
+	    border: 1px solid transparent;
+  	}
+
+  	.t3c064b95-3ccc-43dc-8adb-24c257ecd20f.place-top {
+        margin-top: -10px;
+    }
+    .t3c064b95-3ccc-43dc-8adb-24c257ecd20f.place-top::before {
+        border-top: 8px solid transparent;
+    }
+    .t3c064b95-3ccc-43dc-8adb-24c257ecd20f.place-top::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        bottom: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-top-color: #222;
+        border-top-style: solid;
+        border-top-width: 6px;
+    }
+
+    .t3c064b95-3ccc-43dc-8adb-24c257ecd20f.place-bottom {
+        margin-top: 10px;
+    }
+    .t3c064b95-3ccc-43dc-8adb-24c257ecd20f.place-bottom::before {
+        border-bottom: 8px solid transparent;
+    }
+    .t3c064b95-3ccc-43dc-8adb-24c257ecd20f.place-bottom::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        top: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-bottom-color: #222;
+        border-bottom-style: solid;
+        border-bottom-width: 6px;
+    }
+
+    .t3c064b95-3ccc-43dc-8adb-24c257ecd20f.place-left {
+        margin-left: -10px;
+    }
+    .t3c064b95-3ccc-43dc-8adb-24c257ecd20f.place-left::before {
+        border-left: 8px solid transparent;
+    }
+    .t3c064b95-3ccc-43dc-8adb-24c257ecd20f.place-left::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        right: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-left-color: #222;
+        border-left-style: solid;
+        border-left-width: 6px;
+    }
+
+    .t3c064b95-3ccc-43dc-8adb-24c257ecd20f.place-right {
+        margin-left: 10px;
+    }
+    .t3c064b95-3ccc-43dc-8adb-24c257ecd20f.place-right::before {
+        border-right: 8px solid transparent;
+    }
+    .t3c064b95-3ccc-43dc-8adb-24c257ecd20f.place-right::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        left: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-right-color: #222;
+        border-right-style: solid;
+        border-right-width: 6px;
+    }
+  
+                    </style>
+                  </div>
                   <img
                     alt="an icon to represent data is unavailable"
+                    currentitem="false"
+                    data-for="lowIncomeIcon"
+                    data-iscapture="true"
+                    data-tip="Tracts with missing income data<br />are given estimated incomes based<br />on an average of the incomes<br />of the surrounding tracts."
                     src="test-file-stub"
                   />
                   <span>
@@ -1199,8 +1377,97 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               <div>
                 <div>
+                  <div
+                    class="__react_component_tooltip t55829a80-78af-46a5-8d7a-d96e8f5408cf place-top type-dark"
+                    data-id="tooltip"
+                    id="lowIncomeIcon"
+                  >
+                    <style
+                      aria-hidden="true"
+                    >
+                      
+  	.t55829a80-78af-46a5-8d7a-d96e8f5408cf {
+	    color: #fff;
+	    background: #222;
+	    border: 1px solid transparent;
+  	}
+
+  	.t55829a80-78af-46a5-8d7a-d96e8f5408cf.place-top {
+        margin-top: -10px;
+    }
+    .t55829a80-78af-46a5-8d7a-d96e8f5408cf.place-top::before {
+        border-top: 8px solid transparent;
+    }
+    .t55829a80-78af-46a5-8d7a-d96e8f5408cf.place-top::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        bottom: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-top-color: #222;
+        border-top-style: solid;
+        border-top-width: 6px;
+    }
+
+    .t55829a80-78af-46a5-8d7a-d96e8f5408cf.place-bottom {
+        margin-top: 10px;
+    }
+    .t55829a80-78af-46a5-8d7a-d96e8f5408cf.place-bottom::before {
+        border-bottom: 8px solid transparent;
+    }
+    .t55829a80-78af-46a5-8d7a-d96e8f5408cf.place-bottom::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        top: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-bottom-color: #222;
+        border-bottom-style: solid;
+        border-bottom-width: 6px;
+    }
+
+    .t55829a80-78af-46a5-8d7a-d96e8f5408cf.place-left {
+        margin-left: -10px;
+    }
+    .t55829a80-78af-46a5-8d7a-d96e8f5408cf.place-left::before {
+        border-left: 8px solid transparent;
+    }
+    .t55829a80-78af-46a5-8d7a-d96e8f5408cf.place-left::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        right: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-left-color: #222;
+        border-left-style: solid;
+        border-left-width: 6px;
+    }
+
+    .t55829a80-78af-46a5-8d7a-d96e8f5408cf.place-right {
+        margin-left: 10px;
+    }
+    .t55829a80-78af-46a5-8d7a-d96e8f5408cf.place-right::before {
+        border-right: 8px solid transparent;
+    }
+    .t55829a80-78af-46a5-8d7a-d96e8f5408cf.place-right::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        left: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-right-color: #222;
+        border-right-style: solid;
+        border-right-width: 6px;
+    }
+  
+                    </style>
+                  </div>
                   <img
                     alt="an icon to represent data is unavailable"
+                    currentitem="false"
+                    data-for="lowIncomeIcon"
+                    data-iscapture="true"
+                    data-tip="Tracts with missing income data<br />are given estimated incomes based<br />on an average of the incomes<br />of the surrounding tracts."
                     src="test-file-stub"
                   />
                   <span>
@@ -1390,8 +1657,97 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               <div>
                 <div>
+                  <div
+                    class="__react_component_tooltip t14e2ff19-071b-4552-8a08-076e671d55fa place-top type-dark"
+                    data-id="tooltip"
+                    id="lowIncomeIcon"
+                  >
+                    <style
+                      aria-hidden="true"
+                    >
+                      
+  	.t14e2ff19-071b-4552-8a08-076e671d55fa {
+	    color: #fff;
+	    background: #222;
+	    border: 1px solid transparent;
+  	}
+
+  	.t14e2ff19-071b-4552-8a08-076e671d55fa.place-top {
+        margin-top: -10px;
+    }
+    .t14e2ff19-071b-4552-8a08-076e671d55fa.place-top::before {
+        border-top: 8px solid transparent;
+    }
+    .t14e2ff19-071b-4552-8a08-076e671d55fa.place-top::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        bottom: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-top-color: #222;
+        border-top-style: solid;
+        border-top-width: 6px;
+    }
+
+    .t14e2ff19-071b-4552-8a08-076e671d55fa.place-bottom {
+        margin-top: 10px;
+    }
+    .t14e2ff19-071b-4552-8a08-076e671d55fa.place-bottom::before {
+        border-bottom: 8px solid transparent;
+    }
+    .t14e2ff19-071b-4552-8a08-076e671d55fa.place-bottom::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        top: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-bottom-color: #222;
+        border-bottom-style: solid;
+        border-bottom-width: 6px;
+    }
+
+    .t14e2ff19-071b-4552-8a08-076e671d55fa.place-left {
+        margin-left: -10px;
+    }
+    .t14e2ff19-071b-4552-8a08-076e671d55fa.place-left::before {
+        border-left: 8px solid transparent;
+    }
+    .t14e2ff19-071b-4552-8a08-076e671d55fa.place-left::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        right: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-left-color: #222;
+        border-left-style: solid;
+        border-left-width: 6px;
+    }
+
+    .t14e2ff19-071b-4552-8a08-076e671d55fa.place-right {
+        margin-left: 10px;
+    }
+    .t14e2ff19-071b-4552-8a08-076e671d55fa.place-right::before {
+        border-right: 8px solid transparent;
+    }
+    .t14e2ff19-071b-4552-8a08-076e671d55fa.place-right::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        left: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-right-color: #222;
+        border-right-style: solid;
+        border-right-width: 6px;
+    }
+  
+                    </style>
+                  </div>
                   <img
                     alt="an icon to represent data is unavailable"
+                    currentitem="false"
+                    data-for="lowIncomeIcon"
+                    data-iscapture="true"
+                    data-tip="Tracts with missing income data<br />are given estimated incomes based<br />on an average of the incomes<br />of the surrounding tracts."
                     src="test-file-stub"
                   />
                   <span>
@@ -1592,8 +1948,97 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               <div>
                 <div>
+                  <div
+                    class="__react_component_tooltip t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd place-top type-dark"
+                    data-id="tooltip"
+                    id="lowIncomeIcon"
+                  >
+                    <style
+                      aria-hidden="true"
+                    >
+                      
+  	.t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd {
+	    color: #fff;
+	    background: #222;
+	    border: 1px solid transparent;
+  	}
+
+  	.t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd.place-top {
+        margin-top: -10px;
+    }
+    .t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd.place-top::before {
+        border-top: 8px solid transparent;
+    }
+    .t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd.place-top::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        bottom: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-top-color: #222;
+        border-top-style: solid;
+        border-top-width: 6px;
+    }
+
+    .t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd.place-bottom {
+        margin-top: 10px;
+    }
+    .t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd.place-bottom::before {
+        border-bottom: 8px solid transparent;
+    }
+    .t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd.place-bottom::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        top: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-bottom-color: #222;
+        border-bottom-style: solid;
+        border-bottom-width: 6px;
+    }
+
+    .t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd.place-left {
+        margin-left: -10px;
+    }
+    .t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd.place-left::before {
+        border-left: 8px solid transparent;
+    }
+    .t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd.place-left::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        right: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-left-color: #222;
+        border-left-style: solid;
+        border-left-width: 6px;
+    }
+
+    .t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd.place-right {
+        margin-left: 10px;
+    }
+    .t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd.place-right::before {
+        border-right: 8px solid transparent;
+    }
+    .t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd.place-right::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        left: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-right-color: #222;
+        border-right-style: solid;
+        border-right-width: 6px;
+    }
+  
+                    </style>
+                  </div>
                   <img
                     alt="an icon to represent data is unavailable"
+                    currentitem="false"
+                    data-for="lowIncomeIcon"
+                    data-iscapture="true"
+                    data-tip="Tracts with missing income data<br />are given estimated incomes based<br />on an average of the incomes<br />of the surrounding tracts."
                     src="test-file-stub"
                   />
                   <span>
@@ -1744,8 +2189,97 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               <div>
                 <div>
+                  <div
+                    class="__react_component_tooltip t63158ab6-0503-401d-8663-203d4f539b48 place-top type-dark"
+                    data-id="tooltip"
+                    id="lowIncomeIcon"
+                  >
+                    <style
+                      aria-hidden="true"
+                    >
+                      
+  	.t63158ab6-0503-401d-8663-203d4f539b48 {
+	    color: #fff;
+	    background: #222;
+	    border: 1px solid transparent;
+  	}
+
+  	.t63158ab6-0503-401d-8663-203d4f539b48.place-top {
+        margin-top: -10px;
+    }
+    .t63158ab6-0503-401d-8663-203d4f539b48.place-top::before {
+        border-top: 8px solid transparent;
+    }
+    .t63158ab6-0503-401d-8663-203d4f539b48.place-top::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        bottom: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-top-color: #222;
+        border-top-style: solid;
+        border-top-width: 6px;
+    }
+
+    .t63158ab6-0503-401d-8663-203d4f539b48.place-bottom {
+        margin-top: 10px;
+    }
+    .t63158ab6-0503-401d-8663-203d4f539b48.place-bottom::before {
+        border-bottom: 8px solid transparent;
+    }
+    .t63158ab6-0503-401d-8663-203d4f539b48.place-bottom::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        top: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-bottom-color: #222;
+        border-bottom-style: solid;
+        border-bottom-width: 6px;
+    }
+
+    .t63158ab6-0503-401d-8663-203d4f539b48.place-left {
+        margin-left: -10px;
+    }
+    .t63158ab6-0503-401d-8663-203d4f539b48.place-left::before {
+        border-left: 8px solid transparent;
+    }
+    .t63158ab6-0503-401d-8663-203d4f539b48.place-left::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        right: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-left-color: #222;
+        border-left-style: solid;
+        border-left-width: 6px;
+    }
+
+    .t63158ab6-0503-401d-8663-203d4f539b48.place-right {
+        margin-left: 10px;
+    }
+    .t63158ab6-0503-401d-8663-203d4f539b48.place-right::before {
+        border-right: 8px solid transparent;
+    }
+    .t63158ab6-0503-401d-8663-203d4f539b48.place-right::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        left: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-right-color: #222;
+        border-right-style: solid;
+        border-right-width: 6px;
+    }
+  
+                    </style>
+                  </div>
                   <img
                     alt="an icon to represent data is unavailable"
+                    currentitem="false"
+                    data-for="lowIncomeIcon"
+                    data-iscapture="true"
+                    data-tip="Tracts with missing income data<br />are given estimated incomes based<br />on an average of the incomes<br />of the surrounding tracts."
                     src="test-file-stub"
                   />
                   <span>
@@ -1872,8 +2406,97 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
             <div>
               <div>
                 <div>
+                  <div
+                    class="__react_component_tooltip t8233d6a1-4642-4856-876e-b77fd2a24526 place-top type-dark"
+                    data-id="tooltip"
+                    id="lowIncomeIcon"
+                  >
+                    <style
+                      aria-hidden="true"
+                    >
+                      
+  	.t8233d6a1-4642-4856-876e-b77fd2a24526 {
+	    color: #fff;
+	    background: #222;
+	    border: 1px solid transparent;
+  	}
+
+  	.t8233d6a1-4642-4856-876e-b77fd2a24526.place-top {
+        margin-top: -10px;
+    }
+    .t8233d6a1-4642-4856-876e-b77fd2a24526.place-top::before {
+        border-top: 8px solid transparent;
+    }
+    .t8233d6a1-4642-4856-876e-b77fd2a24526.place-top::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        bottom: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-top-color: #222;
+        border-top-style: solid;
+        border-top-width: 6px;
+    }
+
+    .t8233d6a1-4642-4856-876e-b77fd2a24526.place-bottom {
+        margin-top: 10px;
+    }
+    .t8233d6a1-4642-4856-876e-b77fd2a24526.place-bottom::before {
+        border-bottom: 8px solid transparent;
+    }
+    .t8233d6a1-4642-4856-876e-b77fd2a24526.place-bottom::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        top: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-bottom-color: #222;
+        border-bottom-style: solid;
+        border-bottom-width: 6px;
+    }
+
+    .t8233d6a1-4642-4856-876e-b77fd2a24526.place-left {
+        margin-left: -10px;
+    }
+    .t8233d6a1-4642-4856-876e-b77fd2a24526.place-left::before {
+        border-left: 8px solid transparent;
+    }
+    .t8233d6a1-4642-4856-876e-b77fd2a24526.place-left::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        right: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-left-color: #222;
+        border-left-style: solid;
+        border-left-width: 6px;
+    }
+
+    .t8233d6a1-4642-4856-876e-b77fd2a24526.place-right {
+        margin-left: 10px;
+    }
+    .t8233d6a1-4642-4856-876e-b77fd2a24526.place-right::before {
+        border-right: 8px solid transparent;
+    }
+    .t8233d6a1-4642-4856-876e-b77fd2a24526.place-right::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        left: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-right-color: #222;
+        border-right-style: solid;
+        border-right-width: 6px;
+    }
+  
+                    </style>
+                  </div>
                   <img
                     alt="an icon to represent data is unavailable"
+                    currentitem="false"
+                    data-for="lowIncomeIcon"
+                    data-iscapture="true"
+                    data-tip="Tracts with missing income data<br />are given estimated incomes based<br />on an average of the incomes<br />of the surrounding tracts."
                     src="test-file-stub"
                   />
                   <span>
@@ -2478,8 +3101,97 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
             <div>
               <div>
                 <div>
+                  <div
+                    class="__react_component_tooltip t49805419-6df7-42de-9938-c22a794cd7db place-top type-dark"
+                    data-id="tooltip"
+                    id="lowIncomeIcon"
+                  >
+                    <style
+                      aria-hidden="true"
+                    >
+                      
+  	.t49805419-6df7-42de-9938-c22a794cd7db {
+	    color: #fff;
+	    background: #222;
+	    border: 1px solid transparent;
+  	}
+
+  	.t49805419-6df7-42de-9938-c22a794cd7db.place-top {
+        margin-top: -10px;
+    }
+    .t49805419-6df7-42de-9938-c22a794cd7db.place-top::before {
+        border-top: 8px solid transparent;
+    }
+    .t49805419-6df7-42de-9938-c22a794cd7db.place-top::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        bottom: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-top-color: #222;
+        border-top-style: solid;
+        border-top-width: 6px;
+    }
+
+    .t49805419-6df7-42de-9938-c22a794cd7db.place-bottom {
+        margin-top: 10px;
+    }
+    .t49805419-6df7-42de-9938-c22a794cd7db.place-bottom::before {
+        border-bottom: 8px solid transparent;
+    }
+    .t49805419-6df7-42de-9938-c22a794cd7db.place-bottom::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        top: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-bottom-color: #222;
+        border-bottom-style: solid;
+        border-bottom-width: 6px;
+    }
+
+    .t49805419-6df7-42de-9938-c22a794cd7db.place-left {
+        margin-left: -10px;
+    }
+    .t49805419-6df7-42de-9938-c22a794cd7db.place-left::before {
+        border-left: 8px solid transparent;
+    }
+    .t49805419-6df7-42de-9938-c22a794cd7db.place-left::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        right: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-left-color: #222;
+        border-left-style: solid;
+        border-left-width: 6px;
+    }
+
+    .t49805419-6df7-42de-9938-c22a794cd7db.place-right {
+        margin-left: 10px;
+    }
+    .t49805419-6df7-42de-9938-c22a794cd7db.place-right::before {
+        border-right: 8px solid transparent;
+    }
+    .t49805419-6df7-42de-9938-c22a794cd7db.place-right::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        left: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-right-color: #222;
+        border-right-style: solid;
+        border-right-width: 6px;
+    }
+  
+                    </style>
+                  </div>
                   <img
                     alt="an icon to represent data is unavailable"
+                    currentitem="false"
+                    data-for="lowIncomeIcon"
+                    data-iscapture="true"
+                    data-tip="Tracts with missing income data<br />are given estimated incomes based<br />on an average of the incomes<br />of the surrounding tracts."
                     src="test-file-stub"
                   />
                   <span>
@@ -2592,8 +3304,97 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
             <div>
               <div>
                 <div>
+                  <div
+                    class="__react_component_tooltip t5242ae9d-cfc5-4440-a393-ce763c31ce13 place-top type-dark"
+                    data-id="tooltip"
+                    id="lowIncomeIcon"
+                  >
+                    <style
+                      aria-hidden="true"
+                    >
+                      
+  	.t5242ae9d-cfc5-4440-a393-ce763c31ce13 {
+	    color: #fff;
+	    background: #222;
+	    border: 1px solid transparent;
+  	}
+
+  	.t5242ae9d-cfc5-4440-a393-ce763c31ce13.place-top {
+        margin-top: -10px;
+    }
+    .t5242ae9d-cfc5-4440-a393-ce763c31ce13.place-top::before {
+        border-top: 8px solid transparent;
+    }
+    .t5242ae9d-cfc5-4440-a393-ce763c31ce13.place-top::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        bottom: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-top-color: #222;
+        border-top-style: solid;
+        border-top-width: 6px;
+    }
+
+    .t5242ae9d-cfc5-4440-a393-ce763c31ce13.place-bottom {
+        margin-top: 10px;
+    }
+    .t5242ae9d-cfc5-4440-a393-ce763c31ce13.place-bottom::before {
+        border-bottom: 8px solid transparent;
+    }
+    .t5242ae9d-cfc5-4440-a393-ce763c31ce13.place-bottom::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        top: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-bottom-color: #222;
+        border-bottom-style: solid;
+        border-bottom-width: 6px;
+    }
+
+    .t5242ae9d-cfc5-4440-a393-ce763c31ce13.place-left {
+        margin-left: -10px;
+    }
+    .t5242ae9d-cfc5-4440-a393-ce763c31ce13.place-left::before {
+        border-left: 8px solid transparent;
+    }
+    .t5242ae9d-cfc5-4440-a393-ce763c31ce13.place-left::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        right: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-left-color: #222;
+        border-left-style: solid;
+        border-left-width: 6px;
+    }
+
+    .t5242ae9d-cfc5-4440-a393-ce763c31ce13.place-right {
+        margin-left: 10px;
+    }
+    .t5242ae9d-cfc5-4440-a393-ce763c31ce13.place-right::before {
+        border-right: 8px solid transparent;
+    }
+    .t5242ae9d-cfc5-4440-a393-ce763c31ce13.place-right::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        left: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-right-color: #222;
+        border-right-style: solid;
+        border-right-width: 6px;
+    }
+  
+                    </style>
+                  </div>
                   <img
                     alt="an icon to represent data is unavailable"
+                    currentitem="false"
+                    data-for="lowIncomeIcon"
+                    data-iscapture="true"
+                    data-tip="Tracts with missing income data<br />are given estimated incomes based<br />on an average of the incomes<br />of the surrounding tracts."
                     src="test-file-stub"
                   />
                   <span>
@@ -2794,8 +3595,97 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
             <div>
               <div>
                 <div>
+                  <div
+                    class="__react_component_tooltip t4f9c872d-a6b2-424d-bd65-d7c71a67c492 place-top type-dark"
+                    data-id="tooltip"
+                    id="lowIncomeIcon"
+                  >
+                    <style
+                      aria-hidden="true"
+                    >
+                      
+  	.t4f9c872d-a6b2-424d-bd65-d7c71a67c492 {
+	    color: #fff;
+	    background: #222;
+	    border: 1px solid transparent;
+  	}
+
+  	.t4f9c872d-a6b2-424d-bd65-d7c71a67c492.place-top {
+        margin-top: -10px;
+    }
+    .t4f9c872d-a6b2-424d-bd65-d7c71a67c492.place-top::before {
+        border-top: 8px solid transparent;
+    }
+    .t4f9c872d-a6b2-424d-bd65-d7c71a67c492.place-top::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        bottom: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-top-color: #222;
+        border-top-style: solid;
+        border-top-width: 6px;
+    }
+
+    .t4f9c872d-a6b2-424d-bd65-d7c71a67c492.place-bottom {
+        margin-top: 10px;
+    }
+    .t4f9c872d-a6b2-424d-bd65-d7c71a67c492.place-bottom::before {
+        border-bottom: 8px solid transparent;
+    }
+    .t4f9c872d-a6b2-424d-bd65-d7c71a67c492.place-bottom::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        top: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-bottom-color: #222;
+        border-bottom-style: solid;
+        border-bottom-width: 6px;
+    }
+
+    .t4f9c872d-a6b2-424d-bd65-d7c71a67c492.place-left {
+        margin-left: -10px;
+    }
+    .t4f9c872d-a6b2-424d-bd65-d7c71a67c492.place-left::before {
+        border-left: 8px solid transparent;
+    }
+    .t4f9c872d-a6b2-424d-bd65-d7c71a67c492.place-left::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        right: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-left-color: #222;
+        border-left-style: solid;
+        border-left-width: 6px;
+    }
+
+    .t4f9c872d-a6b2-424d-bd65-d7c71a67c492.place-right {
+        margin-left: 10px;
+    }
+    .t4f9c872d-a6b2-424d-bd65-d7c71a67c492.place-right::before {
+        border-right: 8px solid transparent;
+    }
+    .t4f9c872d-a6b2-424d-bd65-d7c71a67c492.place-right::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        left: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-right-color: #222;
+        border-right-style: solid;
+        border-right-width: 6px;
+    }
+  
+                    </style>
+                  </div>
                   <img
                     alt="an icon to represent data is unavailable"
+                    currentitem="false"
+                    data-for="lowIncomeIcon"
+                    data-iscapture="true"
+                    data-tip="Tracts with missing income data<br />are given estimated incomes based<br />on an average of the incomes<br />of the surrounding tracts."
                     src="test-file-stub"
                   />
                   <span>

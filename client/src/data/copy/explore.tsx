@@ -1265,6 +1265,23 @@ export const SIDE_PANEL_SPACERS = {
   />,
 };
 
+export const LOW_INCOME_TOOLTIP = defineMessages({
+  IMP_NO_ADJ_YES: {
+    id: 'explore.map.page.side.panel.indicator.low.income.tooltip.imp.no.adj.yes',
+    defaultMessage: `Tracts that are surrounded by tracts<br />that are considered disadvantaged<br />have a low income threshold.`,
+    description: 'Hover over the low income icon and it will show Tracts that are surrounded by tracts that are considered disadvantaged have a low income threshold.',
+  },
+  IMP_YES_ADJ_NO: {
+    id: 'explore.map.page.side.panel.indicator.low.income.tooltip.imp.yes.adj.no',
+    defaultMessage: `Tracts with missing income data<br />are given estimated incomes based<br />on an average of the incomes<br />of the surrounding tracts.`,
+    description: 'Hover over the low income icon and it will show Tracts with missing income data are given estimated incomes based on an average of the incomes of the surrounding tracts.',
+  },
+  IMP_YES_ADJ_YES: {
+    id: 'explore.map.page.side.panel.indicator.low.income.tooltip.imp.yes.adj.no',
+    defaultMessage: `Tracts with missing income data<br />are given estimated incomes<br />based on an average of the<br />incomes of the surrounding tracts.<br /> Tracts that are surrounded by<br />tracts that are considered<br />disadvantaged have a<br />low incomethreshold.`,
+    description: 'Hover over the low income icon and it will show Tracts with missing income data are given estimated incomes based on an average of the incomes of the surrounding tracts. Tracts that are surrounded by tracts that are considered disadvantaged have a low income threshold.',
+  },
+});
 export const DOWNLOAD_DRAFT = {
   PARAGRAPH_1: <FormattedMessage
     id={'explore.map.page.under.map.download.draft.ptag.1'}
