@@ -160,9 +160,7 @@ class CensusDecennialETL(ExtractTransformLoad):
         # our other demographic data
         self.NON_HISPANIC_WHITE_FIELD = "PCT086005"  # Total!!White
         self.HISPANIC_FIELD = "PCT086006"  # Total!!Hispanic or Latino
-        self.OTHER_RACE_FIELD = (
-            "PCT086007"  # Total!!Other Ethnic Origin or Ra
-        )
+        self.OTHER_RACE_FIELD = "PCT086007"  # Total!!Other Ethnic Origin or Ra
 
         self.TOTAL_RACE_POPULATION_VI_FIELD = "P003001"  # Total
         self.BLACK_VI_FIELD = (
