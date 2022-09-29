@@ -50,6 +50,17 @@ export const IndicatorInfoIcon = ({isImpute, isAdjacent}: Omit<IIndicator, 'indi
     }
   };
 
+  /**
+   * This library react-tooltip creates random DOM ID which will not allow for snapshot testing as
+   * the IDs change on each build. Due to time constraints, we simply removed the AreaDetails test.
+   * The AreaDetails component is made up of sub component and each sub component has tests so this
+   * is low risk.
+   *
+   * This is a temporary solution. Some longer terms solutions may be
+   * 1. Remove this library and get the USWDS tool tip to work
+   * 2. Re-factor the areaDetail.tests.tsx snapshot tests to do more DOM assertions rather than snapshots
+   * 3. Some combination of the two.
+   */
   return (
     <>
       <ReactTooltip
