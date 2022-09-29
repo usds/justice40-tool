@@ -905,7 +905,7 @@
   },
   "explore.map.page.side.panel.indicator.value.unavailable.alt.text": {
     "defaultMessage": "an icon to represent data is unavailable",
-    "description": "image alt text for unavailable icon"
+    "description": "image alt text when low income is imputed"
   },
   "explore.map.page.side.panel.indicator.wasteWater": {
     "defaultMessage": "Wastewater discharge",

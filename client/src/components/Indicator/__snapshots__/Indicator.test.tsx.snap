@@ -20,7 +20,6 @@ exports[`rendering of the Indicator checks if component renders 1`] = `
               97%
             </span>
           </div>
-          <div />
         </div>
         <div>
           <div>
@@ -57,7 +56,6 @@ exports[`rendering of the Indicator checks if the flooring function works 1`] = 
               42%
             </span>
           </div>
-          <div />
         </div>
         <div>
           <div>
@@ -92,7 +90,6 @@ exports[`renders value correctly for Former defense sites checks if it renders n
           <div>
             --
           </div>
-          <div />
         </div>
         <div>
           <div>
@@ -123,7 +120,6 @@ exports[`renders value correctly for Former defense sites checks if it renders w
           <div>
             No
           </div>
-          <div />
         </div>
         <div />
       </div>
@@ -150,7 +146,6 @@ exports[`renders value correctly for Former defense sites checks if it renders w
           <div>
             Yes
           </div>
-          <div />
         </div>
         <div />
       </div>
@@ -177,7 +172,6 @@ exports[`renders value correctly for abandoned land mines checks if it renders n
           <div>
             --
           </div>
-          <div />
         </div>
         <div>
           <div>
@@ -208,7 +202,6 @@ exports[`renders value correctly for abandoned land mines checks if it renders w
           <div>
             No
           </div>
-          <div />
         </div>
         <div />
       </div>
@@ -235,7 +228,6 @@ exports[`renders value correctly for abandoned land mines checks if it renders w
           <div>
             Yes
           </div>
-          <div />
         </div>
         <div />
       </div>
@@ -262,7 +254,6 @@ exports[`renders value correctly for historic underinvest. checks if it renders 
           <div>
             --
           </div>
-          <div />
         </div>
         <div>
           <div>
@@ -293,7 +284,6 @@ exports[`renders value correctly for historic underinvest. checks if it renders 
           <div>
             No
           </div>
-          <div />
         </div>
         <div />
       </div>
@@ -320,7 +310,6 @@ exports[`renders value correctly for historic underinvest. checks if it renders 
           <div>
             Yes
           </div>
-          <div />
         </div>
         <div />
       </div>

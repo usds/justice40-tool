@@ -316,7 +316,7 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
       properties[constants.POVERTY_BELOW_200_PERCENTILE] : null,
     isDisadvagtaged: properties[constants.IS_FEDERAL_POVERTY_LEVEL_200] ?
       properties[constants.IS_FEDERAL_POVERTY_LEVEL_200] : null,
-    threshold: 65,
+    threshold: properties[constants.ADJACENCY_EXCEEDS_THRESH] === true ? 50 : 65,
   };
   // const higherEd: indicatorInfo = {
   //   label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HIGH_ED),
@@ -752,7 +752,12 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
 
         {/* socio-economic indicators */}
         {category.socioEcIndicators.map((indicator: any, index: number) => {
-          return <Indicator key={`ind${index}`} indicator={indicator} />;
+          return <Indicator
+            key={`ind${index}`}
+            indicator={indicator}
+            isImpute={properties[constants.IMPUTE_FLAG] === "0" ? false : true}
+            isAdjacent={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
+          />;
         })}
 
       </>
@@ -838,7 +843,7 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
             Income imputed?
           </span>
           <span>
-            {properties[constants.IMPUTE_FLAG] ? ' YES' : ' NO'}
+            {properties[constants.IMPUTE_FLAG] === "0" ? ' NO' : ' YES'}
           </span>
         </div>
 

@@ -8,16 +8,13 @@ import * as constants from '../../data/constants';
 import * as EXPLORE_COPY from '../../data/copy/explore';
 
 // @ts-ignore
-// import unAvailable from '/node_modules/uswds/dist/img/usa-icons/error_outline.svg';
+import infoIcon from '/node_modules/uswds/dist/img/usa-icons/info.svg';
 
 interface IIndicator {
   indicator: indicatorInfo,
+  isImpute?: boolean,
+  isAdjacent?: boolean,
 }
-
-interface IIndicatorValueIcon {
-  value: number | null,
-};
-
 interface IIndicatorValueSubText {
   type: indicatorType,
   value: number | null | boolean,
@@ -31,18 +28,27 @@ interface IIndicatorValue {
 }
 
 /**
- * This component will determine what indicator's icon should be. ATM there are no icons to show, however
- * this may change and so leaving a place holder function here for easy change in the future
+ * This component will render an info icon in the indicator value
  *
- * @param {number | null} value
+ * @param {boolean} isImpute
+ * @param {boolean} isAdjacent
  * @return {JSX.Element}
  */
-export const IndicatorValueIcon = ({value}: IIndicatorValueIcon) => {
-  return value === null ? <></> : <></>;
-  // <img className={styles.unavailable}
-  //   src={unAvailable}
-  //   alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.UNAVAILABLE)}
-  // />
+export const IndicatorInfoIcon = ({isImpute, isAdjacent}: Omit<IIndicator, 'indicator'>) => {
+  console.log('🚀 ~ file: Indicator.tsx ~ line 38 ~ IndicatorInfoIcon ~ isAdjacent', isAdjacent);
+  console.log('🚀 ~ file: Indicator.tsx ~ line 38 ~ IndicatorInfoIcon ~ isImpute', isImpute);
+  const intl = useIntl();
+
+  return (
+    <>
+      <img
+        className={styles.info}
+        src={infoIcon}
+        alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.INFO)}
+      />
+      {isImpute && <span className={styles.infoTilde}>{ ` ~ ` }</span>}
+    </>
+  );
 };
 
 /**
@@ -191,7 +197,7 @@ export const IndicatorValue = ({type, displayStat}:IIndicatorValue) => {
  * @param {IIndicator} indicator
  * @return {JSX.Element}
  */
-const Indicator = ({indicator}:IIndicator) => {
+const Indicator = ({indicator, isImpute, isAdjacent}:IIndicator) => {
   /**
    * The indicator value could be a number | boolean | null. In all cases we coerce to number
    * before flooring.
@@ -206,6 +212,9 @@ const Indicator = ({indicator}:IIndicator) => {
 
   // A boolean to represent if the indicator is above or below the threshold
   const isAboveThresh = displayStat !== null && displayStat >= threshold ? true : false;
+
+  // Show an info icon on the low icome indicator if the impute or adjacency is true:
+  const showLowIncomeInfoIcon = (indicator.label === 'Low income' && (isImpute || isAdjacent));
 
   return (
     <li
@@ -226,6 +235,16 @@ const Indicator = ({indicator}:IIndicator) => {
         <div className={styles.indicatorValueCol}>
           <div className={styles.indicatorValueRow}>
 
+            {/* Indicator info icon */}
+            { showLowIncomeInfoIcon &&
+              <div className={styles.indicatorInfo}>
+                <IndicatorInfoIcon
+                  isImpute={isImpute}
+                  isAdjacent={isAdjacent}
+                />
+              </div>
+            }
+
             {/* Indicator value */}
             <div className={indicator.isDisadvagtaged ?
               styles.disIndicatorValue : styles.indicatorValue}
@@ -236,12 +255,6 @@ const Indicator = ({indicator}:IIndicator) => {
               />
             </div>
 
-            {/* Indicator icon - up arrow, down arrow, or unavailable */}
-            <div className={styles.indicatorArrow}>
-              <IndicatorValueIcon
-                value={displayStat}
-              />
-            </div>
           </div>
 
           {/* Indicator sub-text */}

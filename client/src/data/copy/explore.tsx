@@ -995,9 +995,9 @@ export const SIDE_PANEL_VALUES = {
       description: 'image alt text for the down arrow',
       defaultMessage: `an icon for the down arrow`,
     },
-    UNAVAILABLE: {
+    INFO: {
       id: 'explore.map.page.side.panel.indicator.value.unavailable.alt.text',
-      description: 'image alt text for unavailable icon',
+      description: 'image alt text when low income is imputed',
       defaultMessage: `an icon to represent data is unavailable`,
     },
   }),
