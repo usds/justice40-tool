@@ -5,8 +5,10 @@ from typing import List
 import pytest
 import pandas as pd
 import numpy as np
+from data_pipeline.etl.score import constants
 from data_pipeline.score import field_names
 from data_pipeline.score.field_names import GEOID_TRACT_FIELD
+from data_pipeline.etl.score.constants import TILES_ISLAND_AREA_FIPS_CODES
 from .fixtures import (
     final_score_df,
     ejscreen_df,
@@ -266,7 +268,7 @@ def test_data_sources(
     #   is the "equal" to the data from the ETL, allowing for the minor
     #   differences that come from floating point comparisons
     for data_source_name, data_source in data_sources.items():
-        final = "final_"
+        final = "_final"
         df: pd.DataFrame = final_score_df.merge(
             data_source,
             on=GEOID_TRACT_FIELD,
@@ -287,7 +289,24 @@ def test_data_sources(
 
         # Make sure we have NAs for any tracts in the final data that aren't
         # included in the data source
-        assert np.all(df[df.MERGE == "left_only"][final_columns].isna())
+        has_additional_non_null_tracts = not np.all(
+            df[df.MERGE == "left_only"][final_columns].isna()
+        )
+        if has_additional_non_null_tracts:
+            # We backfill island areas with data from the 2010 census, so if THOSE tracts
+            # have data beyond the data source, that's to be expected and is fine to pass.
+            # If some other state or territory does though, this should fail
+            left_only = df.loc[(df.MERGE == "left_only")]
+            left_only_has_value = left_only.loc[
+                ~df[final_columns].isna().all(axis=1)
+            ]
+            fips_with_values = set(
+                left_only_has_value[field_names.GEOID_TRACT_FIELD].str[0:2]
+            )
+            non_island_fips_codes = fips_with_values.difference(
+                TILES_ISLAND_AREA_FIPS_CODES
+            )
+            assert not non_island_fips_codes
 
         # Make sure the datasource doesn't have a ton of unmatched tracts, implying it
         # has moved to 2020 tracts
@@ -321,6 +340,77 @@ def test_data_sources(
                     df[data_source_column],
                     equal_nan=True,
                 ), error_message
+
+
+def test_island_demographic_backfill(final_score_df, census_decennial_df):
+    # Copied from score_etl because there's no better source of truth for it
+    ISLAND_DEMOGRAPHIC_BACKFILL_FIELDS = [
+        field_names.PERCENT_BLACK_FIELD_NAME
+        + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+        field_names.PERCENT_AMERICAN_INDIAN_FIELD_NAME
+        + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+        field_names.PERCENT_ASIAN_FIELD_NAME
+        + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+        field_names.PERCENT_HAWAIIAN_FIELD_NAME
+        + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+        field_names.PERCENT_TWO_OR_MORE_RACES_FIELD_NAME
+        + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+        field_names.PERCENT_NON_HISPANIC_WHITE_FIELD_NAME
+        + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+        field_names.PERCENT_HISPANIC_FIELD_NAME
+        + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+        field_names.PERCENT_OTHER_RACE_FIELD_NAME
+        + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+        field_names.TOTAL_POP_FIELD + field_names.ISLAND_AREA_BACKFILL_SUFFIX,
+    ]
+
+    # rename the columns from the decennial census to be their final score names
+    decennial_cols = {
+        col_name: col_name.replace(field_names.ISLAND_AREA_BACKFILL_SUFFIX, "")
+        for col_name in ISLAND_DEMOGRAPHIC_BACKFILL_FIELDS
+    }
+    census_decennial_df: pd.DataFrame = census_decennial_df.rename(
+        columns=decennial_cols
+    )
+
+    # Merge decennial data with the final score
+    df: pd.DataFrame = final_score_df.merge(
+        census_decennial_df,
+        on=GEOID_TRACT_FIELD,
+        indicator="MERGE",
+        suffixes=("_final", "_decennial"),
+        how="outer",
+    )
+
+    # Make sure columns from both the decennial census and final score overlap
+    core_cols = census_decennial_df.columns.intersection(
+        final_score_df.columns
+    ).drop(GEOID_TRACT_FIELD)
+    final_columns = [f"{col}_final" for col in core_cols]
+    assert (
+        final_columns
+    ), "No columns from decennial census  show up in final score, extremely weird"
+
+    # Make sure we're only grabbing island tracts for the decennial data
+    assert (
+        sorted(
+            df[df.MERGE == "both"][field_names.GEOID_TRACT_FIELD]
+            .str[:2]
+            .unique()
+        )
+        == constants.TILES_ISLAND_AREA_FIPS_CODES
+    ), "2010 Decennial census contributed unexpected tracts"
+
+    df = df[df.MERGE == "both"]
+
+    # Make sure for all the backfill tracts, the data made it into the
+    # final score. This can be simple since it's all perenctages and an int
+    for col in final_columns:
+        assert np.allclose(
+            df[col],
+            df[col.replace("_final", "_decennial")],
+            equal_nan=True,
+        ), f"Data mismatch in decennial census backfill for {col}"
 
 
 def test_output_tracts(final_score_df, national_tract_df):
@@ -365,8 +455,15 @@ def test_imputed_tracts(final_score_df):
     )
 
     # Make sure that no tracts with population have null imputed income
+    # We DO NOT impute income for island areas, so remove those from the test
+    is_island_area = (
+        final_score_df[field_names.GEOID_TRACT_FIELD]
+        .str[:2]
+        .isin(constants.TILES_ISLAND_AREA_FIPS_CODES)
+    )
+
     tracts_with_some_population_df = final_score_df[
-        final_score_df[field_names.TOTAL_POP_FIELD] > 0
+        (final_score_df[field_names.TOTAL_POP_FIELD] > 0) & ~is_island_area
     ]
     assert (
         not tracts_with_some_population_df[

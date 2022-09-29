@@ -999,7 +999,6 @@ class ScoreNarwhal(Score):
 
     def add_columns(self) -> pd.DataFrame:
         logger.info("Adding Score Narhwal")
-
         self.df[field_names.THRESHOLD_COUNT] = 0
 
         self.df[field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED] = (
