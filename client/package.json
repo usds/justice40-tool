@@ -92,6 +92,7 @@
     "react-helmet": "^6.1.0",
     "react-intl": "^5.24.7",
     "react-map-gl": "^6.1.19",
+    "react-tooltip": "^4.2.21",
     "react-use": "^17.3.2",
     "uswds": "^2.13.3"
   },

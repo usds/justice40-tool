@@ -1,0 +1,5 @@
+@use '../../styles/design-system.scss' as *;
+
+.prioCopyPara2{
+    @include u-padding-top(2);
+}

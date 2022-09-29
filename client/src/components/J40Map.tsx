@@ -173,19 +173,6 @@ const J40Map = ({location}: IJ40Interface) => {
       // @ts-ignore
       const feature = event.features && event.features[0];
 
-      /**
-       * Given that Alaska has Points as their data type, we will not zoom into them when
-       * selected. In order to detect if a feature is a Point we will use Regex to determine
-       * the Alaska Point based on it's unique ID:
-       *
-       * E.g. {33FF6457-324C-4643-94E8-D543DD4339E0}
-       *
-       * The regex will test for any numeric, upper-case alpha with hyphens string enclosed
-       * in curly braces.
-       */
-      const alaskaIDRegex = /\{[0-9,A-Z,-]+\}/g;
-      const isFeatureAlaskaPoint = alaskaIDRegex.test(feature.id);
-
       if (feature) {
         // Get the current selected feature's bounding box:
         const [minLng, minLat, maxLng, maxLat] = bbox(feature);
@@ -200,7 +187,7 @@ const J40Map = ({location}: IJ40Interface) => {
 
 
         // Go to the newly selected feature (as long as it's not an Alaska Point)
-        !isFeatureAlaskaPoint && goToPlace([
+        goToPlace([
           [minLng, minLat],
           [maxLng, maxLat],
         ]);

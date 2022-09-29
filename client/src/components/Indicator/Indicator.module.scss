@@ -62,17 +62,19 @@
           background-color: $disadvantagedDotColor;
         }
 
-        .indicatorArrow {
+        .indicatorInfo {
           margin-bottom: -.375rem;
+          margin-top: -2px;
+          @include u-margin-right('05');
 
-          img {
+          img.info {
             max-width: none;
-            height: 1.5rem;
-            width: 1.5rem;
-
+            height: 1.2rem;
+            width: 1.2rem;
           }
-          .unavailable {
-            opacity: .6;
+
+          .infoTilde {
+            vertical-align: super;
           }
         }
       }

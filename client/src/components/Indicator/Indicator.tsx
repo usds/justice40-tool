@@ -1,5 +1,6 @@
 import React from 'react';
 import {useIntl} from 'gatsby-plugin-intl';
+import ReactTooltip from 'react-tooltip';
 
 import {indicatorInfo, indicatorType} from '../AreaDetail/AreaDetail';
 
@@ -8,16 +9,13 @@ import * as constants from '../../data/constants';
 import * as EXPLORE_COPY from '../../data/copy/explore';
 
 // @ts-ignore
-// import unAvailable from '/node_modules/uswds/dist/img/usa-icons/error_outline.svg';
+import infoIcon from '/node_modules/uswds/dist/img/usa-icons/info.svg';
 
 interface IIndicator {
   indicator: indicatorInfo,
+  isImpute?: boolean,
+  isAdjacent?: boolean,
 }
-
-interface IIndicatorValueIcon {
-  value: number | null,
-};
-
 interface IIndicatorValueSubText {
   type: indicatorType,
   value: number | null | boolean,
@@ -31,18 +29,55 @@ interface IIndicatorValue {
 }
 
 /**
- * This component will determine what indicator's icon should be. ATM there are no icons to show, however
- * this may change and so leaving a place holder function here for easy change in the future
+ * This component will render an info icon in the indicator value
  *
- * @param {number | null} value
+ * @param {boolean} isImpute
+ * @param {boolean} isAdjacent
  * @return {JSX.Element}
  */
-export const IndicatorValueIcon = ({value}: IIndicatorValueIcon) => {
-  return value === null ? <></> : <></>;
-  // <img className={styles.unavailable}
-  //   src={unAvailable}
-  //   alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.UNAVAILABLE)}
-  // />
+export const IndicatorInfoIcon = ({isImpute, isAdjacent}: Omit<IIndicator, 'indicator'>) => {
+  const intl = useIntl();
+
+  const getToolTipCopy = () => {
+    if (!isImpute && isAdjacent) {
+      return intl.formatMessage(EXPLORE_COPY.LOW_INCOME_TOOLTIP.IMP_NO_ADJ_YES);
+    } else if (isImpute && !isAdjacent) {
+      return intl.formatMessage(EXPLORE_COPY.LOW_INCOME_TOOLTIP.IMP_YES_ADJ_NO);
+    } else if (isImpute && isAdjacent) {
+      return intl.formatMessage(EXPLORE_COPY.LOW_INCOME_TOOLTIP.IMP_YES_ADJ_YES);
+    } else {
+      return null;
+    }
+  };
+
+  /**
+   * This library react-tooltip creates random DOM ID which will not allow for snapshot testing as
+   * the IDs change on each build. Due to time constraints, we simply removed the AreaDetails test.
+   * The AreaDetails component is made up of sub component and each sub component has tests so this
+   * is low risk.
+   *
+   * This is a temporary solution. Some longer terms solutions may be
+   * 1. Remove this library and get the USWDS tool tip to work
+   * 2. Re-factor the areaDetail.tests.tsx snapshot tests to do more DOM assertions rather than snapshots
+   * 3. Some combination of the two.
+   */
+  return (
+    <>
+      <ReactTooltip
+        id="lowIncomeIcon"
+        multiline={true}
+      />
+      <img
+        data-for="lowIncomeIcon"
+        data-tip={getToolTipCopy()}
+        data-iscapture="true"
+        className={styles.info}
+        src={infoIcon}
+        alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.INFO)}
+      />
+      {isImpute && <span className={styles.infoTilde}>{ ` ~ ` }</span>}
+    </>
+  );
 };
 
 /**
@@ -191,7 +226,7 @@ export const IndicatorValue = ({type, displayStat}:IIndicatorValue) => {
  * @param {IIndicator} indicator
  * @return {JSX.Element}
  */
-const Indicator = ({indicator}:IIndicator) => {
+const Indicator = ({indicator, isImpute, isAdjacent}:IIndicator) => {
   /**
    * The indicator value could be a number | boolean | null. In all cases we coerce to number
    * before flooring.
@@ -206,6 +241,9 @@ const Indicator = ({indicator}:IIndicator) => {
 
   // A boolean to represent if the indicator is above or below the threshold
   const isAboveThresh = displayStat !== null && displayStat >= threshold ? true : false;
+
+  // Show an info icon on the low icome indicator if the impute or adjacency is true:
+  const showLowIncomeInfoIcon = (indicator.label === 'Low income' && (isImpute || isAdjacent));
 
   return (
     <li
@@ -226,6 +264,16 @@ const Indicator = ({indicator}:IIndicator) => {
         <div className={styles.indicatorValueCol}>
           <div className={styles.indicatorValueRow}>
 
+            {/* Indicator info icon */}
+            { showLowIncomeInfoIcon &&
+              <div className={styles.indicatorInfo}>
+                <IndicatorInfoIcon
+                  isImpute={isImpute}
+                  isAdjacent={isAdjacent}
+                />
+              </div>
+            }
+
             {/* Indicator value */}
             <div className={indicator.isDisadvagtaged ?
               styles.disIndicatorValue : styles.indicatorValue}
@@ -236,12 +284,6 @@ const Indicator = ({indicator}:IIndicator) => {
               />
             </div>
 
-            {/* Indicator icon - up arrow, down arrow, or unavailable */}
-            <div className={styles.indicatorArrow}>
-              <IndicatorValueIcon
-                value={displayStat}
-              />
-            </div>
           </div>
 
           {/* Indicator sub-text */}
