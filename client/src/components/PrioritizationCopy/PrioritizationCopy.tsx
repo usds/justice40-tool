@@ -7,7 +7,7 @@ import * as EXPLORE_COPY from '../../data/copy/explore';
 interface IPrioritizationCopy {
   totalCategoriesPrioritized: number
   isDonut: boolean,
-  percentTractTribal: number,
+  percentTractTribal: number | null
   totalIndicatorsPrioritized: number
 };
 
@@ -56,17 +56,17 @@ const PrioritizationCopy =
          return <></>;
        }
      } else if (!isDonut) {
-       if (percentTractTribal !== null && percentTractTribal >= 0) {
+       if (percentTractTribal !== null && percentTractTribal > 0) {
          // map location for this case: #8.66/48.3496/-106.2982
          return (
            <div>
-             <div>{EXPLORE_COPY.getPrioFRTNPerc(percentTractTribal, true)}</div>
+             <div>{EXPLORE_COPY.getPrioFRTNPerc(percentTractTribal, false)}</div>
            </div>
          );
        } else if (percentTractTribal !== null && percentTractTribal === 0) {
          return (
            <div>
-             <div>{EXPLORE_COPY.getPrioFRTLessThan1Perc(true)}</div>
+             <div>{EXPLORE_COPY.getPrioFRTLessThan1Perc(false)}</div>
            </div>
          );
        } else if (percentTractTribal === null) {

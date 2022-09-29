@@ -24,7 +24,7 @@ describe('rendering of TractPrioritization Component', () => {
   ];
 
   testCases.forEach((testCase) => {
-  // eslint-disable-next-line max-len
+    // eslint-disable-next-line max-len
     it(`checks if component renders ${testCase.prio} when category count = ${testCase.totalCategories}, isDonut = ${testCase.isDonut}, tribal % = ${testCase.percentTribal}`, () => {
       const {asFragment} = render(
           <LocalizedComponent>
