@@ -894,7 +894,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               <div>
                 <div>
                   <div
-                    class="__react_component_tooltip t901c56ed-63e5-40f4-ae77-fd04999a585e place-top type-dark"
+                    class="__react_component_tooltip tb2c539c9-87bf-4f98-8b11-db066043cd9e place-top type-dark"
                     data-id="tooltip"
                     id="lowIncomeIcon"
                   >
@@ -902,19 +902,19 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                       aria-hidden="true"
                     >
                       
-  	.t901c56ed-63e5-40f4-ae77-fd04999a585e {
+  	.tb2c539c9-87bf-4f98-8b11-db066043cd9e {
 	    color: #fff;
 	    background: #222;
 	    border: 1px solid transparent;
   	}
 
-  	.t901c56ed-63e5-40f4-ae77-fd04999a585e.place-top {
+  	.tb2c539c9-87bf-4f98-8b11-db066043cd9e.place-top {
         margin-top: -10px;
     }
-    .t901c56ed-63e5-40f4-ae77-fd04999a585e.place-top::before {
+    .tb2c539c9-87bf-4f98-8b11-db066043cd9e.place-top::before {
         border-top: 8px solid transparent;
     }
-    .t901c56ed-63e5-40f4-ae77-fd04999a585e.place-top::after {
+    .tb2c539c9-87bf-4f98-8b11-db066043cd9e.place-top::after {
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
         bottom: -6px;
@@ -925,13 +925,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         border-top-width: 6px;
     }
 
-    .t901c56ed-63e5-40f4-ae77-fd04999a585e.place-bottom {
+    .tb2c539c9-87bf-4f98-8b11-db066043cd9e.place-bottom {
         margin-top: 10px;
     }
-    .t901c56ed-63e5-40f4-ae77-fd04999a585e.place-bottom::before {
+    .tb2c539c9-87bf-4f98-8b11-db066043cd9e.place-bottom::before {
         border-bottom: 8px solid transparent;
     }
-    .t901c56ed-63e5-40f4-ae77-fd04999a585e.place-bottom::after {
+    .tb2c539c9-87bf-4f98-8b11-db066043cd9e.place-bottom::after {
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
         top: -6px;
@@ -942,13 +942,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         border-bottom-width: 6px;
     }
 
-    .t901c56ed-63e5-40f4-ae77-fd04999a585e.place-left {
+    .tb2c539c9-87bf-4f98-8b11-db066043cd9e.place-left {
         margin-left: -10px;
     }
-    .t901c56ed-63e5-40f4-ae77-fd04999a585e.place-left::before {
+    .tb2c539c9-87bf-4f98-8b11-db066043cd9e.place-left::before {
         border-left: 8px solid transparent;
     }
-    .t901c56ed-63e5-40f4-ae77-fd04999a585e.place-left::after {
+    .tb2c539c9-87bf-4f98-8b11-db066043cd9e.place-left::after {
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
         right: -6px;
@@ -959,13 +959,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         border-left-width: 6px;
     }
 
-    .t901c56ed-63e5-40f4-ae77-fd04999a585e.place-right {
+    .tb2c539c9-87bf-4f98-8b11-db066043cd9e.place-right {
         margin-left: 10px;
     }
-    .t901c56ed-63e5-40f4-ae77-fd04999a585e.place-right::before {
+    .tb2c539c9-87bf-4f98-8b11-db066043cd9e.place-right::before {
         border-right: 8px solid transparent;
     }
-    .t901c56ed-63e5-40f4-ae77-fd04999a585e.place-right::after {
+    .tb2c539c9-87bf-4f98-8b11-db066043cd9e.place-right::after {
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
         left: -6px;
@@ -1110,7 +1110,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               <div>
                 <div>
                   <div
-                    class="__react_component_tooltip t3c064b95-3ccc-43dc-8adb-24c257ecd20f place-top type-dark"
+                    class="__react_component_tooltip t4b7d0a5e-8b75-4917-ab9c-06122e06bf53 place-top type-dark"
                     data-id="tooltip"
                     id="lowIncomeIcon"
                   >
@@ -1118,19 +1118,19 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                       aria-hidden="true"
                     >
                       
-  	.t3c064b95-3ccc-43dc-8adb-24c257ecd20f {
+  	.t4b7d0a5e-8b75-4917-ab9c-06122e06bf53 {
 	    color: #fff;
 	    background: #222;
 	    border: 1px solid transparent;
   	}
 
-  	.t3c064b95-3ccc-43dc-8adb-24c257ecd20f.place-top {
+  	.t4b7d0a5e-8b75-4917-ab9c-06122e06bf53.place-top {
         margin-top: -10px;
     }
-    .t3c064b95-3ccc-43dc-8adb-24c257ecd20f.place-top::before {
+    .t4b7d0a5e-8b75-4917-ab9c-06122e06bf53.place-top::before {
         border-top: 8px solid transparent;
     }
-    .t3c064b95-3ccc-43dc-8adb-24c257ecd20f.place-top::after {
+    .t4b7d0a5e-8b75-4917-ab9c-06122e06bf53.place-top::after {
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
         bottom: -6px;
@@ -1141,13 +1141,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         border-top-width: 6px;
     }
 
-    .t3c064b95-3ccc-43dc-8adb-24c257ecd20f.place-bottom {
+    .t4b7d0a5e-8b75-4917-ab9c-06122e06bf53.place-bottom {
         margin-top: 10px;
     }
-    .t3c064b95-3ccc-43dc-8adb-24c257ecd20f.place-bottom::before {
+    .t4b7d0a5e-8b75-4917-ab9c-06122e06bf53.place-bottom::before {
         border-bottom: 8px solid transparent;
     }
-    .t3c064b95-3ccc-43dc-8adb-24c257ecd20f.place-bottom::after {
+    .t4b7d0a5e-8b75-4917-ab9c-06122e06bf53.place-bottom::after {
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
         top: -6px;
@@ -1158,13 +1158,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         border-bottom-width: 6px;
     }
 
-    .t3c064b95-3ccc-43dc-8adb-24c257ecd20f.place-left {
+    .t4b7d0a5e-8b75-4917-ab9c-06122e06bf53.place-left {
         margin-left: -10px;
     }
-    .t3c064b95-3ccc-43dc-8adb-24c257ecd20f.place-left::before {
+    .t4b7d0a5e-8b75-4917-ab9c-06122e06bf53.place-left::before {
         border-left: 8px solid transparent;
     }
-    .t3c064b95-3ccc-43dc-8adb-24c257ecd20f.place-left::after {
+    .t4b7d0a5e-8b75-4917-ab9c-06122e06bf53.place-left::after {
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
         right: -6px;
@@ -1175,13 +1175,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         border-left-width: 6px;
     }
 
-    .t3c064b95-3ccc-43dc-8adb-24c257ecd20f.place-right {
+    .t4b7d0a5e-8b75-4917-ab9c-06122e06bf53.place-right {
         margin-left: 10px;
     }
-    .t3c064b95-3ccc-43dc-8adb-24c257ecd20f.place-right::before {
+    .t4b7d0a5e-8b75-4917-ab9c-06122e06bf53.place-right::before {
         border-right: 8px solid transparent;
     }
-    .t3c064b95-3ccc-43dc-8adb-24c257ecd20f.place-right::after {
+    .t4b7d0a5e-8b75-4917-ab9c-06122e06bf53.place-right::after {
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
         left: -6px;
@@ -1378,7 +1378,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               <div>
                 <div>
                   <div
-                    class="__react_component_tooltip t55829a80-78af-46a5-8d7a-d96e8f5408cf place-top type-dark"
+                    class="__react_component_tooltip t2d5eb905-566f-4290-9e7c-e7af63305bbf place-top type-dark"
                     data-id="tooltip"
                     id="lowIncomeIcon"
                   >
@@ -1386,19 +1386,19 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                       aria-hidden="true"
                     >
                       
-  	.t55829a80-78af-46a5-8d7a-d96e8f5408cf {
+  	.t2d5eb905-566f-4290-9e7c-e7af63305bbf {
 	    color: #fff;
 	    background: #222;
 	    border: 1px solid transparent;
   	}
 
-  	.t55829a80-78af-46a5-8d7a-d96e8f5408cf.place-top {
+  	.t2d5eb905-566f-4290-9e7c-e7af63305bbf.place-top {
         margin-top: -10px;
     }
-    .t55829a80-78af-46a5-8d7a-d96e8f5408cf.place-top::before {
+    .t2d5eb905-566f-4290-9e7c-e7af63305bbf.place-top::before {
         border-top: 8px solid transparent;
     }
-    .t55829a80-78af-46a5-8d7a-d96e8f5408cf.place-top::after {
+    .t2d5eb905-566f-4290-9e7c-e7af63305bbf.place-top::after {
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
         bottom: -6px;
@@ -1409,13 +1409,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         border-top-width: 6px;
     }
 
-    .t55829a80-78af-46a5-8d7a-d96e8f5408cf.place-bottom {
+    .t2d5eb905-566f-4290-9e7c-e7af63305bbf.place-bottom {
         margin-top: 10px;
     }
-    .t55829a80-78af-46a5-8d7a-d96e8f5408cf.place-bottom::before {
+    .t2d5eb905-566f-4290-9e7c-e7af63305bbf.place-bottom::before {
         border-bottom: 8px solid transparent;
     }
-    .t55829a80-78af-46a5-8d7a-d96e8f5408cf.place-bottom::after {
+    .t2d5eb905-566f-4290-9e7c-e7af63305bbf.place-bottom::after {
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
         top: -6px;
@@ -1426,13 +1426,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         border-bottom-width: 6px;
     }
 
-    .t55829a80-78af-46a5-8d7a-d96e8f5408cf.place-left {
+    .t2d5eb905-566f-4290-9e7c-e7af63305bbf.place-left {
         margin-left: -10px;
     }
-    .t55829a80-78af-46a5-8d7a-d96e8f5408cf.place-left::before {
+    .t2d5eb905-566f-4290-9e7c-e7af63305bbf.place-left::before {
         border-left: 8px solid transparent;
     }
-    .t55829a80-78af-46a5-8d7a-d96e8f5408cf.place-left::after {
+    .t2d5eb905-566f-4290-9e7c-e7af63305bbf.place-left::after {
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
         right: -6px;
@@ -1443,13 +1443,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         border-left-width: 6px;
     }
 
-    .t55829a80-78af-46a5-8d7a-d96e8f5408cf.place-right {
+    .t2d5eb905-566f-4290-9e7c-e7af63305bbf.place-right {
         margin-left: 10px;
     }
-    .t55829a80-78af-46a5-8d7a-d96e8f5408cf.place-right::before {
+    .t2d5eb905-566f-4290-9e7c-e7af63305bbf.place-right::before {
         border-right: 8px solid transparent;
     }
-    .t55829a80-78af-46a5-8d7a-d96e8f5408cf.place-right::after {
+    .t2d5eb905-566f-4290-9e7c-e7af63305bbf.place-right::after {
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
         left: -6px;
@@ -1658,7 +1658,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               <div>
                 <div>
                   <div
-                    class="__react_component_tooltip t14e2ff19-071b-4552-8a08-076e671d55fa place-top type-dark"
+                    class="__react_component_tooltip t3d4c1900-980e-4a55-ba23-46a0219a50d7 place-top type-dark"
                     data-id="tooltip"
                     id="lowIncomeIcon"
                   >
@@ -1666,19 +1666,19 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                       aria-hidden="true"
                     >
                       
-  	.t14e2ff19-071b-4552-8a08-076e671d55fa {
+  	.t3d4c1900-980e-4a55-ba23-46a0219a50d7 {
 	    color: #fff;
 	    background: #222;
 	    border: 1px solid transparent;
   	}
 
-  	.t14e2ff19-071b-4552-8a08-076e671d55fa.place-top {
+  	.t3d4c1900-980e-4a55-ba23-46a0219a50d7.place-top {
         margin-top: -10px;
     }
-    .t14e2ff19-071b-4552-8a08-076e671d55fa.place-top::before {
+    .t3d4c1900-980e-4a55-ba23-46a0219a50d7.place-top::before {
         border-top: 8px solid transparent;
     }
-    .t14e2ff19-071b-4552-8a08-076e671d55fa.place-top::after {
+    .t3d4c1900-980e-4a55-ba23-46a0219a50d7.place-top::after {
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
         bottom: -6px;
@@ -1689,13 +1689,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         border-top-width: 6px;
     }
 
-    .t14e2ff19-071b-4552-8a08-076e671d55fa.place-bottom {
+    .t3d4c1900-980e-4a55-ba23-46a0219a50d7.place-bottom {
         margin-top: 10px;
     }
-    .t14e2ff19-071b-4552-8a08-076e671d55fa.place-bottom::before {
+    .t3d4c1900-980e-4a55-ba23-46a0219a50d7.place-bottom::before {
         border-bottom: 8px solid transparent;
     }
-    .t14e2ff19-071b-4552-8a08-076e671d55fa.place-bottom::after {
+    .t3d4c1900-980e-4a55-ba23-46a0219a50d7.place-bottom::after {
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
         top: -6px;
@@ -1706,13 +1706,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         border-bottom-width: 6px;
     }
 
-    .t14e2ff19-071b-4552-8a08-076e671d55fa.place-left {
+    .t3d4c1900-980e-4a55-ba23-46a0219a50d7.place-left {
         margin-left: -10px;
     }
-    .t14e2ff19-071b-4552-8a08-076e671d55fa.place-left::before {
+    .t3d4c1900-980e-4a55-ba23-46a0219a50d7.place-left::before {
         border-left: 8px solid transparent;
     }
-    .t14e2ff19-071b-4552-8a08-076e671d55fa.place-left::after {
+    .t3d4c1900-980e-4a55-ba23-46a0219a50d7.place-left::after {
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
         right: -6px;
@@ -1723,13 +1723,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         border-left-width: 6px;
     }
 
-    .t14e2ff19-071b-4552-8a08-076e671d55fa.place-right {
+    .t3d4c1900-980e-4a55-ba23-46a0219a50d7.place-right {
         margin-left: 10px;
     }
-    .t14e2ff19-071b-4552-8a08-076e671d55fa.place-right::before {
+    .t3d4c1900-980e-4a55-ba23-46a0219a50d7.place-right::before {
         border-right: 8px solid transparent;
     }
-    .t14e2ff19-071b-4552-8a08-076e671d55fa.place-right::after {
+    .t3d4c1900-980e-4a55-ba23-46a0219a50d7.place-right::after {
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
         left: -6px;
@@ -1949,7 +1949,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               <div>
                 <div>
                   <div
-                    class="__react_component_tooltip t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd place-top type-dark"
+                    class="__react_component_tooltip te52222da-7cd2-469a-99b6-baee0fe34c3d place-top type-dark"
                     data-id="tooltip"
                     id="lowIncomeIcon"
                   >
@@ -1957,19 +1957,19 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                       aria-hidden="true"
                     >
                       
-  	.t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd {
+  	.te52222da-7cd2-469a-99b6-baee0fe34c3d {
 	    color: #fff;
 	    background: #222;
 	    border: 1px solid transparent;
   	}
 
-  	.t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd.place-top {
+  	.te52222da-7cd2-469a-99b6-baee0fe34c3d.place-top {
         margin-top: -10px;
     }
-    .t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd.place-top::before {
+    .te52222da-7cd2-469a-99b6-baee0fe34c3d.place-top::before {
         border-top: 8px solid transparent;
     }
-    .t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd.place-top::after {
+    .te52222da-7cd2-469a-99b6-baee0fe34c3d.place-top::after {
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
         bottom: -6px;
@@ -1980,13 +1980,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         border-top-width: 6px;
     }
 
-    .t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd.place-bottom {
+    .te52222da-7cd2-469a-99b6-baee0fe34c3d.place-bottom {
         margin-top: 10px;
     }
-    .t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd.place-bottom::before {
+    .te52222da-7cd2-469a-99b6-baee0fe34c3d.place-bottom::before {
         border-bottom: 8px solid transparent;
     }
-    .t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd.place-bottom::after {
+    .te52222da-7cd2-469a-99b6-baee0fe34c3d.place-bottom::after {
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
         top: -6px;
@@ -1997,13 +1997,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         border-bottom-width: 6px;
     }
 
-    .t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd.place-left {
+    .te52222da-7cd2-469a-99b6-baee0fe34c3d.place-left {
         margin-left: -10px;
     }
-    .t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd.place-left::before {
+    .te52222da-7cd2-469a-99b6-baee0fe34c3d.place-left::before {
         border-left: 8px solid transparent;
     }
-    .t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd.place-left::after {
+    .te52222da-7cd2-469a-99b6-baee0fe34c3d.place-left::after {
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
         right: -6px;
@@ -2014,13 +2014,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         border-left-width: 6px;
     }
 
-    .t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd.place-right {
+    .te52222da-7cd2-469a-99b6-baee0fe34c3d.place-right {
         margin-left: 10px;
     }
-    .t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd.place-right::before {
+    .te52222da-7cd2-469a-99b6-baee0fe34c3d.place-right::before {
         border-right: 8px solid transparent;
     }
-    .t3739cc46-ec89-4490-b8e6-9f46ec2d9dbd.place-right::after {
+    .te52222da-7cd2-469a-99b6-baee0fe34c3d.place-right::after {
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
         left: -6px;
@@ -2190,7 +2190,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               <div>
                 <div>
                   <div
-                    class="__react_component_tooltip t63158ab6-0503-401d-8663-203d4f539b48 place-top type-dark"
+                    class="__react_component_tooltip t8d52317d-e2f1-438f-b31a-43331fa5c159 place-top type-dark"
                     data-id="tooltip"
                     id="lowIncomeIcon"
                   >
@@ -2198,19 +2198,19 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                       aria-hidden="true"
                     >
                       
-  	.t63158ab6-0503-401d-8663-203d4f539b48 {
+  	.t8d52317d-e2f1-438f-b31a-43331fa5c159 {
 	    color: #fff;
 	    background: #222;
 	    border: 1px solid transparent;
   	}
 
-  	.t63158ab6-0503-401d-8663-203d4f539b48.place-top {
+  	.t8d52317d-e2f1-438f-b31a-43331fa5c159.place-top {
         margin-top: -10px;
     }
-    .t63158ab6-0503-401d-8663-203d4f539b48.place-top::before {
+    .t8d52317d-e2f1-438f-b31a-43331fa5c159.place-top::before {
         border-top: 8px solid transparent;
     }
-    .t63158ab6-0503-401d-8663-203d4f539b48.place-top::after {
+    .t8d52317d-e2f1-438f-b31a-43331fa5c159.place-top::after {
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
         bottom: -6px;
@@ -2221,13 +2221,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         border-top-width: 6px;
     }
 
-    .t63158ab6-0503-401d-8663-203d4f539b48.place-bottom {
+    .t8d52317d-e2f1-438f-b31a-43331fa5c159.place-bottom {
         margin-top: 10px;
     }
-    .t63158ab6-0503-401d-8663-203d4f539b48.place-bottom::before {
+    .t8d52317d-e2f1-438f-b31a-43331fa5c159.place-bottom::before {
         border-bottom: 8px solid transparent;
     }
-    .t63158ab6-0503-401d-8663-203d4f539b48.place-bottom::after {
+    .t8d52317d-e2f1-438f-b31a-43331fa5c159.place-bottom::after {
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
         top: -6px;
@@ -2238,13 +2238,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         border-bottom-width: 6px;
     }
 
-    .t63158ab6-0503-401d-8663-203d4f539b48.place-left {
+    .t8d52317d-e2f1-438f-b31a-43331fa5c159.place-left {
         margin-left: -10px;
     }
-    .t63158ab6-0503-401d-8663-203d4f539b48.place-left::before {
+    .t8d52317d-e2f1-438f-b31a-43331fa5c159.place-left::before {
         border-left: 8px solid transparent;
     }
-    .t63158ab6-0503-401d-8663-203d4f539b48.place-left::after {
+    .t8d52317d-e2f1-438f-b31a-43331fa5c159.place-left::after {
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
         right: -6px;
@@ -2255,13 +2255,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         border-left-width: 6px;
     }
 
-    .t63158ab6-0503-401d-8663-203d4f539b48.place-right {
+    .t8d52317d-e2f1-438f-b31a-43331fa5c159.place-right {
         margin-left: 10px;
     }
-    .t63158ab6-0503-401d-8663-203d4f539b48.place-right::before {
+    .t8d52317d-e2f1-438f-b31a-43331fa5c159.place-right::before {
         border-right: 8px solid transparent;
     }
-    .t63158ab6-0503-401d-8663-203d4f539b48.place-right::after {
+    .t8d52317d-e2f1-438f-b31a-43331fa5c159.place-right::after {
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
         left: -6px;
@@ -2407,7 +2407,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
               <div>
                 <div>
                   <div
-                    class="__react_component_tooltip t8233d6a1-4642-4856-876e-b77fd2a24526 place-top type-dark"
+                    class="__react_component_tooltip t5792c820-64ee-49c9-8da7-663aefafad85 place-top type-dark"
                     data-id="tooltip"
                     id="lowIncomeIcon"
                   >
@@ -2415,19 +2415,19 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
                       aria-hidden="true"
                     >
                       
-  	.t8233d6a1-4642-4856-876e-b77fd2a24526 {
+  	.t5792c820-64ee-49c9-8da7-663aefafad85 {
 	    color: #fff;
 	    background: #222;
 	    border: 1px solid transparent;
   	}
 
-  	.t8233d6a1-4642-4856-876e-b77fd2a24526.place-top {
+  	.t5792c820-64ee-49c9-8da7-663aefafad85.place-top {
         margin-top: -10px;
     }
-    .t8233d6a1-4642-4856-876e-b77fd2a24526.place-top::before {
+    .t5792c820-64ee-49c9-8da7-663aefafad85.place-top::before {
         border-top: 8px solid transparent;
     }
-    .t8233d6a1-4642-4856-876e-b77fd2a24526.place-top::after {
+    .t5792c820-64ee-49c9-8da7-663aefafad85.place-top::after {
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
         bottom: -6px;
@@ -2438,13 +2438,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         border-top-width: 6px;
     }
 
-    .t8233d6a1-4642-4856-876e-b77fd2a24526.place-bottom {
+    .t5792c820-64ee-49c9-8da7-663aefafad85.place-bottom {
         margin-top: 10px;
     }
-    .t8233d6a1-4642-4856-876e-b77fd2a24526.place-bottom::before {
+    .t5792c820-64ee-49c9-8da7-663aefafad85.place-bottom::before {
         border-bottom: 8px solid transparent;
     }
-    .t8233d6a1-4642-4856-876e-b77fd2a24526.place-bottom::after {
+    .t5792c820-64ee-49c9-8da7-663aefafad85.place-bottom::after {
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
         top: -6px;
@@ -2455,13 +2455,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         border-bottom-width: 6px;
     }
 
-    .t8233d6a1-4642-4856-876e-b77fd2a24526.place-left {
+    .t5792c820-64ee-49c9-8da7-663aefafad85.place-left {
         margin-left: -10px;
     }
-    .t8233d6a1-4642-4856-876e-b77fd2a24526.place-left::before {
+    .t5792c820-64ee-49c9-8da7-663aefafad85.place-left::before {
         border-left: 8px solid transparent;
     }
-    .t8233d6a1-4642-4856-876e-b77fd2a24526.place-left::after {
+    .t5792c820-64ee-49c9-8da7-663aefafad85.place-left::after {
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
         right: -6px;
@@ -2472,13 +2472,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for NAT
         border-left-width: 6px;
     }
 
-    .t8233d6a1-4642-4856-876e-b77fd2a24526.place-right {
+    .t5792c820-64ee-49c9-8da7-663aefafad85.place-right {
         margin-left: 10px;
     }
-    .t8233d6a1-4642-4856-876e-b77fd2a24526.place-right::before {
+    .t5792c820-64ee-49c9-8da7-663aefafad85.place-right::before {
         border-right: 8px solid transparent;
     }
-    .t8233d6a1-4642-4856-876e-b77fd2a24526.place-right::after {
+    .t5792c820-64ee-49c9-8da7-663aefafad85.place-right::after {
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
         left: -6px;
@@ -3102,7 +3102,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
               <div>
                 <div>
                   <div
-                    class="__react_component_tooltip t49805419-6df7-42de-9938-c22a794cd7db place-top type-dark"
+                    class="__react_component_tooltip teee4212e-da92-40c5-ac7c-8f2a0737c623 place-top type-dark"
                     data-id="tooltip"
                     id="lowIncomeIcon"
                   >
@@ -3110,19 +3110,19 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
                       aria-hidden="true"
                     >
                       
-  	.t49805419-6df7-42de-9938-c22a794cd7db {
+  	.teee4212e-da92-40c5-ac7c-8f2a0737c623 {
 	    color: #fff;
 	    background: #222;
 	    border: 1px solid transparent;
   	}
 
-  	.t49805419-6df7-42de-9938-c22a794cd7db.place-top {
+  	.teee4212e-da92-40c5-ac7c-8f2a0737c623.place-top {
         margin-top: -10px;
     }
-    .t49805419-6df7-42de-9938-c22a794cd7db.place-top::before {
+    .teee4212e-da92-40c5-ac7c-8f2a0737c623.place-top::before {
         border-top: 8px solid transparent;
     }
-    .t49805419-6df7-42de-9938-c22a794cd7db.place-top::after {
+    .teee4212e-da92-40c5-ac7c-8f2a0737c623.place-top::after {
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
         bottom: -6px;
@@ -3133,13 +3133,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         border-top-width: 6px;
     }
 
-    .t49805419-6df7-42de-9938-c22a794cd7db.place-bottom {
+    .teee4212e-da92-40c5-ac7c-8f2a0737c623.place-bottom {
         margin-top: 10px;
     }
-    .t49805419-6df7-42de-9938-c22a794cd7db.place-bottom::before {
+    .teee4212e-da92-40c5-ac7c-8f2a0737c623.place-bottom::before {
         border-bottom: 8px solid transparent;
     }
-    .t49805419-6df7-42de-9938-c22a794cd7db.place-bottom::after {
+    .teee4212e-da92-40c5-ac7c-8f2a0737c623.place-bottom::after {
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
         top: -6px;
@@ -3150,13 +3150,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         border-bottom-width: 6px;
     }
 
-    .t49805419-6df7-42de-9938-c22a794cd7db.place-left {
+    .teee4212e-da92-40c5-ac7c-8f2a0737c623.place-left {
         margin-left: -10px;
     }
-    .t49805419-6df7-42de-9938-c22a794cd7db.place-left::before {
+    .teee4212e-da92-40c5-ac7c-8f2a0737c623.place-left::before {
         border-left: 8px solid transparent;
     }
-    .t49805419-6df7-42de-9938-c22a794cd7db.place-left::after {
+    .teee4212e-da92-40c5-ac7c-8f2a0737c623.place-left::after {
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
         right: -6px;
@@ -3167,13 +3167,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         border-left-width: 6px;
     }
 
-    .t49805419-6df7-42de-9938-c22a794cd7db.place-right {
+    .teee4212e-da92-40c5-ac7c-8f2a0737c623.place-right {
         margin-left: 10px;
     }
-    .t49805419-6df7-42de-9938-c22a794cd7db.place-right::before {
+    .teee4212e-da92-40c5-ac7c-8f2a0737c623.place-right::before {
         border-right: 8px solid transparent;
     }
-    .t49805419-6df7-42de-9938-c22a794cd7db.place-right::after {
+    .teee4212e-da92-40c5-ac7c-8f2a0737c623.place-right::after {
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
         left: -6px;
@@ -3305,7 +3305,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
               <div>
                 <div>
                   <div
-                    class="__react_component_tooltip t5242ae9d-cfc5-4440-a393-ce763c31ce13 place-top type-dark"
+                    class="__react_component_tooltip t7b26f386-bec6-46bb-913a-d9ab7759c7cd place-top type-dark"
                     data-id="tooltip"
                     id="lowIncomeIcon"
                   >
@@ -3313,19 +3313,19 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
                       aria-hidden="true"
                     >
                       
-  	.t5242ae9d-cfc5-4440-a393-ce763c31ce13 {
+  	.t7b26f386-bec6-46bb-913a-d9ab7759c7cd {
 	    color: #fff;
 	    background: #222;
 	    border: 1px solid transparent;
   	}
 
-  	.t5242ae9d-cfc5-4440-a393-ce763c31ce13.place-top {
+  	.t7b26f386-bec6-46bb-913a-d9ab7759c7cd.place-top {
         margin-top: -10px;
     }
-    .t5242ae9d-cfc5-4440-a393-ce763c31ce13.place-top::before {
+    .t7b26f386-bec6-46bb-913a-d9ab7759c7cd.place-top::before {
         border-top: 8px solid transparent;
     }
-    .t5242ae9d-cfc5-4440-a393-ce763c31ce13.place-top::after {
+    .t7b26f386-bec6-46bb-913a-d9ab7759c7cd.place-top::after {
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
         bottom: -6px;
@@ -3336,13 +3336,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         border-top-width: 6px;
     }
 
-    .t5242ae9d-cfc5-4440-a393-ce763c31ce13.place-bottom {
+    .t7b26f386-bec6-46bb-913a-d9ab7759c7cd.place-bottom {
         margin-top: 10px;
     }
-    .t5242ae9d-cfc5-4440-a393-ce763c31ce13.place-bottom::before {
+    .t7b26f386-bec6-46bb-913a-d9ab7759c7cd.place-bottom::before {
         border-bottom: 8px solid transparent;
     }
-    .t5242ae9d-cfc5-4440-a393-ce763c31ce13.place-bottom::after {
+    .t7b26f386-bec6-46bb-913a-d9ab7759c7cd.place-bottom::after {
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
         top: -6px;
@@ -3353,13 +3353,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         border-bottom-width: 6px;
     }
 
-    .t5242ae9d-cfc5-4440-a393-ce763c31ce13.place-left {
+    .t7b26f386-bec6-46bb-913a-d9ab7759c7cd.place-left {
         margin-left: -10px;
     }
-    .t5242ae9d-cfc5-4440-a393-ce763c31ce13.place-left::before {
+    .t7b26f386-bec6-46bb-913a-d9ab7759c7cd.place-left::before {
         border-left: 8px solid transparent;
     }
-    .t5242ae9d-cfc5-4440-a393-ce763c31ce13.place-left::after {
+    .t7b26f386-bec6-46bb-913a-d9ab7759c7cd.place-left::after {
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
         right: -6px;
@@ -3370,13 +3370,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         border-left-width: 6px;
     }
 
-    .t5242ae9d-cfc5-4440-a393-ce763c31ce13.place-right {
+    .t7b26f386-bec6-46bb-913a-d9ab7759c7cd.place-right {
         margin-left: 10px;
     }
-    .t5242ae9d-cfc5-4440-a393-ce763c31ce13.place-right::before {
+    .t7b26f386-bec6-46bb-913a-d9ab7759c7cd.place-right::before {
         border-right: 8px solid transparent;
     }
-    .t5242ae9d-cfc5-4440-a393-ce763c31ce13.place-right::after {
+    .t7b26f386-bec6-46bb-913a-d9ab7759c7cd.place-right::after {
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
         left: -6px;
@@ -3596,7 +3596,7 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
               <div>
                 <div>
                   <div
-                    class="__react_component_tooltip t4f9c872d-a6b2-424d-bd65-d7c71a67c492 place-top type-dark"
+                    class="__react_component_tooltip tea751abd-e10e-46a6-b01c-49f2f2e57ff3 place-top type-dark"
                     data-id="tooltip"
                     id="lowIncomeIcon"
                   >
@@ -3604,19 +3604,19 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
                       aria-hidden="true"
                     >
                       
-  	.t4f9c872d-a6b2-424d-bd65-d7c71a67c492 {
+  	.tea751abd-e10e-46a6-b01c-49f2f2e57ff3 {
 	    color: #fff;
 	    background: #222;
 	    border: 1px solid transparent;
   	}
 
-  	.t4f9c872d-a6b2-424d-bd65-d7c71a67c492.place-top {
+  	.tea751abd-e10e-46a6-b01c-49f2f2e57ff3.place-top {
         margin-top: -10px;
     }
-    .t4f9c872d-a6b2-424d-bd65-d7c71a67c492.place-top::before {
+    .tea751abd-e10e-46a6-b01c-49f2f2e57ff3.place-top::before {
         border-top: 8px solid transparent;
     }
-    .t4f9c872d-a6b2-424d-bd65-d7c71a67c492.place-top::after {
+    .tea751abd-e10e-46a6-b01c-49f2f2e57ff3.place-top::after {
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
         bottom: -6px;
@@ -3627,13 +3627,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         border-top-width: 6px;
     }
 
-    .t4f9c872d-a6b2-424d-bd65-d7c71a67c492.place-bottom {
+    .tea751abd-e10e-46a6-b01c-49f2f2e57ff3.place-bottom {
         margin-top: 10px;
     }
-    .t4f9c872d-a6b2-424d-bd65-d7c71a67c492.place-bottom::before {
+    .tea751abd-e10e-46a6-b01c-49f2f2e57ff3.place-bottom::before {
         border-bottom: 8px solid transparent;
     }
-    .t4f9c872d-a6b2-424d-bd65-d7c71a67c492.place-bottom::after {
+    .tea751abd-e10e-46a6-b01c-49f2f2e57ff3.place-bottom::after {
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
         top: -6px;
@@ -3644,13 +3644,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         border-bottom-width: 6px;
     }
 
-    .t4f9c872d-a6b2-424d-bd65-d7c71a67c492.place-left {
+    .tea751abd-e10e-46a6-b01c-49f2f2e57ff3.place-left {
         margin-left: -10px;
     }
-    .t4f9c872d-a6b2-424d-bd65-d7c71a67c492.place-left::before {
+    .tea751abd-e10e-46a6-b01c-49f2f2e57ff3.place-left::before {
         border-left: 8px solid transparent;
     }
-    .t4f9c872d-a6b2-424d-bd65-d7c71a67c492.place-left::after {
+    .tea751abd-e10e-46a6-b01c-49f2f2e57ff3.place-left::after {
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
         right: -6px;
@@ -3661,13 +3661,13 @@ exports[`rendering of the Islan areas in AreaDetail checks if indicators for PUE
         border-left-width: 6px;
     }
 
-    .t4f9c872d-a6b2-424d-bd65-d7c71a67c492.place-right {
+    .tea751abd-e10e-46a6-b01c-49f2f2e57ff3.place-right {
         margin-left: 10px;
     }
-    .t4f9c872d-a6b2-424d-bd65-d7c71a67c492.place-right::before {
+    .tea751abd-e10e-46a6-b01c-49f2f2e57ff3.place-right::before {
         border-right: 8px solid transparent;
     }
-    .t4f9c872d-a6b2-424d-bd65-d7c71a67c492.place-right::after {
+    .tea751abd-e10e-46a6-b01c-49f2f2e57ff3.place-right::after {
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
         left: -6px;
