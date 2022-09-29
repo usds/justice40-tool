@@ -1,9 +1,97 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering of TractPrioritization Component checks if component renders 1`] = `
+exports[`rendering of TractPrioritization Component checks if component renders No when category count = 0, isDonut = false, tribal % = null 1`] = `
 <DocumentFragment>
   <h3>
     No
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders Partially when category count = 0, isDonut = false, tribal % = 0 1`] = `
+<DocumentFragment>
+  <h3>
+    Partially
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders Partially when category count = 0, isDonut = false, tribal % = 0.12 1`] = `
+<DocumentFragment>
+  <h3>
+    Partially
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 0, isDonut = true, tribal % = 0 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 0, isDonut = true, tribal % = 0.12 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 0, isDonut = true, tribal % = null 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 1, isDonut = true, tribal % = 0.34 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 2, isDonut = true, tribal % = 0 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 3, isDonut = true, tribal % = null 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 4, isDonut = false, tribal % = null 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 5, isDonut = false, tribal % = 0 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 7, isDonut = false, tribal % = 0.82 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
   </h3>
 </DocumentFragment>
 `;

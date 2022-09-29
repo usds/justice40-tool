@@ -7,7 +7,7 @@ import * as EXPLORE_COPY from '../../data/copy/explore';
 interface ITractPrioritization {
   totalCategoriesPrioritized: number
   isDonut: boolean,
-  percentTractTribal: number,
+  percentTractTribal: number | null,
 }
 
 /**
@@ -24,8 +24,14 @@ const TractPrioritization = (
     return <h3 className={styles.invert}>{EXPLORE_COPY.COMMUNITY.OF_FOCUS}</h3>;
   } else if (totalCategoriesPrioritized === 0 && isDonut === true) {
     return <h3 className={styles.invert}>{EXPLORE_COPY.COMMUNITY.OF_FOCUS}</h3>;
-  } else if (totalCategoriesPrioritized === 0 && isDonut === false && percentTractTribal >= 0) {
+  } else if (
+    totalCategoriesPrioritized === 0 &&
+    isDonut === false &&
+    percentTractTribal !== null &&
+    percentTractTribal >= 0) {
     return <h3>{EXPLORE_COPY.COMMUNITY.PARTIAL}</h3>;
+  } else if (percentTractTribal !== null) {
+    return <h3>{EXPLORE_COPY.COMMUNITY.NOT_OF_FOCUS}</h3>;
   } else {
     return <h3>{EXPLORE_COPY.COMMUNITY.NOT_OF_FOCUS}</h3>;
   }

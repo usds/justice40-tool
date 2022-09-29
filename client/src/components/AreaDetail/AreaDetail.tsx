@@ -787,7 +787,8 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
           <TractPrioritization
             totalCategoriesPrioritized={properties[constants.COUNT_OF_CATEGORIES_DISADV]}
             isDonut={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
-            percentTractTribal={properties[constants.TRIBAL_AREAS_PERCENTAGE]}
+            percentTractTribal={properties[constants.TRIBAL_AREAS_PERCENTAGE] ?
+              properties[constants.TRIBAL_AREAS_PERCENTAGE] : null}
           />
         </div>
 
