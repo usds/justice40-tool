@@ -792,7 +792,7 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
           <TractPrioritization
             totalCategoriesPrioritized={properties[constants.COUNT_OF_CATEGORIES_DISADV]}
             isDonut={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
-            percentTractTribal={properties[constants.TRIBAL_AREAS_PERCENTAGE] ?
+            percentTractTribal={properties[constants.TRIBAL_AREAS_PERCENTAGE] >= 0 ?
               properties[constants.TRIBAL_AREAS_PERCENTAGE] : null}
           />
         </div>
@@ -800,7 +800,7 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
         <div className={styles.prioCopy}>
           <PrioritizationCopy
             isDonut={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
-            percentTractTribal={properties[constants.TRIBAL_AREAS_PERCENTAGE] ?
+            percentTractTribal={properties[constants.TRIBAL_AREAS_PERCENTAGE] >= 0 ?
               properties[constants.TRIBAL_AREAS_PERCENTAGE] : null}
             totalCategoriesPrioritized={properties[constants.COUNT_OF_CATEGORIES_DISADV]}
             totalIndicatorsPrioritized={properties[constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS]}
