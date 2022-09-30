@@ -15,7 +15,7 @@ services:
       ENV_FOR_DYNACONF: development
       PYTHONUNBUFFERED: 1
 
-  # The score_server serves the data-pipeline volume as a URL   
+  # The score_server serves the data-pipeline volume as a URL
   j40_score_server:
     image: j40_score_server
     container_name: j40_score_server_1
@@ -24,24 +24,24 @@ services:
       - ./data/data-pipeline/data_pipeline/data/score:/data/data-pipeline/data_pipeline/data/score
     ports:
       - 5000:8080
-  
+
   #The j40_website service runs the web app / map / site
   j40_website:
     image: j40_website
     container_name: j40_website_1
     build: ./client
     environment:
-    # See the client readme for more info on environment variables: 
+    # See the client readme for more info on environment variables:
     # https://github.com/usds/justice40-tool/blob/main/client/README.md
       DATA_SOURCE: local
-      
-      # If you want the map to render a MapBox base map (as opposed to the 
-      # open source one from CartoDB), please create your own API TOKEN from 
+
+      # If you want the map to render a MapBox base map (as opposed to the
+      # open source one from CartoDB), please create your own API TOKEN from
       # your MapBox account and add the token here:
       MAPBOX_STYLES_READ_TOKEN: ""
     volumes:
       - ./client/src:/client/src
-    ports: 
+    ports:
       - 8000:6000
     depends_on:
       - "j40_score_server"

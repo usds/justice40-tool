@@ -97,5 +97,3 @@ export const CENSUS_TRACT_FEEDBACK = {
     }}
   />,
 };
-
-

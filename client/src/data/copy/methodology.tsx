@@ -20,11 +20,11 @@ export const PAGE = defineMessages({
   DESCRIPTION: {
     id: 'methodology.page.paragraph',
     defaultMessage: `
-      The current version of the tool identifies communities that are disadvantaged for the purposes of 
-      the Justice40 Initiative using census tracts, which are the smallest geographic unit for 
-      which publicly-available and nationally-consistent datasets can be consistently displayed on the 
-      tool. Census tract geographical boundaries are determined by the U.S. Census Bureau once every ten 
-      years. This tool utilizes the census tract boundaries from 2010 because they match the datasets used 
+      The current version of the tool identifies communities that are disadvantaged for the purposes of
+      the Justice40 Initiative using census tracts, which are the smallest geographic unit for
+      which publicly-available and nationally-consistent datasets can be consistently displayed on the
+      tool. Census tract geographical boundaries are determined by the U.S. Census Bureau once every ten
+      years. This tool utilizes the census tract boundaries from 2010 because they match the datasets used
       in the tool.
     `,
     description: 'Navigate to the methodology page. This is the methodology page paragraph',
@@ -32,9 +32,9 @@ export const PAGE = defineMessages({
   CATEGORY_TEXT: {
     id: 'methodology.page.categories.title',
     defaultMessage: `
-      Communities are identified as disadvantaged by the current version of the tool for the purposes of 
-      the Justice40 Initiative if they are located in census tracts that are at or above the 
-      thresholds in one or more of eight categories of criteria below. 
+      Communities are identified as disadvantaged by the current version of the tool for the purposes of
+      the Justice40 Initiative if they are located in census tracts that are at or above the
+      thresholds in one or more of eight categories of criteria below.
     `,
     description: 'Navigate to the methodology page. This is the methodology page explanation of the categories',
   },
@@ -45,8 +45,8 @@ export const FORMULA = {
   INTRO: <FormattedMessage
     id={'methodology.page.formula.intro'}
     defaultMessage={`
-      Under the current formula, a census tract will be identified as disadvantaged in one or more 
-      categories of criteria: 
+      Under the current formula, a census tract will be identified as disadvantaged in one or more
+      categories of criteria:
     `}
     description={'Navigate to the methodology page. This is the methodology page introducing the formula'}
   />,
@@ -95,7 +95,7 @@ export const CATEGORY_AND_CLAUSE = {
   LOW_INC_65_WHEN_HIGH_ED_LTE_20: <FormattedMessage
     id={'methodology.page.category.and.clause.low.inc.hs.ed'}
     defaultMessage={`
-      <boldtag>AND</boldtag> is at or above the 65th percentile for <link1>low income</link1> AND 80% or more of individuals 15 or older are not enrolled in <link2>higher education</link2> 
+      <boldtag>AND</boldtag> is at or above the 65th percentile for <link1>low income</link1> AND 80% or more of individuals 15 or older are not enrolled in <link2>higher education</link2>
     `}
     description={'Navigate to the methodology page. Navigate to the category section. This is category portion of the formula dealing with lower income and high school degree rate'}
     values={{
@@ -106,7 +106,7 @@ export const CATEGORY_AND_CLAUSE = {
   />,
   HS_DEG_90_WHEN_HIGH_ED_LTE_20: <FormattedMessage
     id={'methodology.page.category.and.clause.hs.ed.higher.ed'}
-    defaultMessage={`<boldtag>AND</boldtag> 10% or more of adults 25 or older have not attained a <link1>high school degree</link1> AND 80% or more of individuals 15 or older are not enrolled in <link2>higher education</link2> 
+    defaultMessage={`<boldtag>AND</boldtag> 10% or more of adults 25 or older have not attained a <link1>high school degree</link1> AND 80% or more of individuals 15 or older are not enrolled in <link2>higher education</link2>
   `}
     description={'Navigate to the methodology page. Navigate to the category section. This is the portion of the formula dealing with higher ed enrollment and high school degree rate'}
     values={{
@@ -342,8 +342,8 @@ export const DATASETS = defineMessages({
   INFO: {
     id: 'methodology.page.datasetContainer.info',
     defaultMessage: `
-      The datasets used in the current version of the tool come from a variety of sources and were 
-      selected based on relevance, availability, and quality. The datasets seek to identify a range of 
+      The datasets used in the current version of the tool come from a variety of sources and were
+      selected based on relevance, availability, and quality. The datasets seek to identify a range of
       human health, environmental, climate-related, and other impacts on communities.
     `,
     description: 'Navigate to the Methodology page. This is the description of the dataset section',
@@ -490,7 +490,7 @@ export const SOURCE_LINKS = {
   EPA_TSDF: <FormattedMessage
     id={'methodology.page.category.source.epa.tsdf.link'}
     defaultMessage={`
-      <link1>Treatment, Storage, and Disposal Facilities (TSDF) data</link1> from {date20} calculated from EPA's RCRA database as compiled 
+      <link1>Treatment, Storage, and Disposal Facilities (TSDF) data</link1> from {date20} calculated from EPA's RCRA database as compiled
       by EPA's EJScreen
     `}
     description={'Navigate to the Methodology page. This is the source link for EPA TSDF'}
@@ -635,11 +635,11 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.exp.agr.loss.rate.description.text'}
       defaultMessage={`
-        Percent of agricultural value at risk from losses due to fourteen types of 
-        natural hazards that have some link 
-        to climate change: avalanche, coastal flooding, 
-        cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong 
-        wind, tornado, wildfire, and winter weather. Rate calculated by dividing the agricultural value at risk in 
+        Percent of agricultural value at risk from losses due to fourteen types of
+        natural hazards that have some link
+        to climate change: avalanche, coastal flooding,
+        cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong
+        wind, tornado, wildfire, and winter weather. Rate calculated by dividing the agricultural value at risk in
         a census tract by the total agricultural value in that census tract.
       `}
       description={'Navigate to the Methodology page. This is the description text for exp agr loss rate'}
@@ -663,10 +663,10 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.exp.bld.loss.rate.description.text'}
       defaultMessage={`
-        Percent of building value at risk from losses due to fourteen types of natural hazards 
-        that have some link to climate change: avalanche, coastal flooding, 
-        cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong 
-        wind, tornado, wildfire, and winter weather. Rate calculated by dividing the building value at risk in 
+        Percent of building value at risk from losses due to fourteen types of natural hazards
+        that have some link to climate change: avalanche, coastal flooding,
+        cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong
+        wind, tornado, wildfire, and winter weather. Rate calculated by dividing the building value at risk in
         a census tract by the total building value in that census tract.
       `}
       description={'Navigate to the Methodology page. This is the description text for exp bld loss rate'}
@@ -692,16 +692,16 @@ export const INDICATORS = [
       defaultMessage={`
         Rate relative to the population of fatalities and injuries due to fourteen types of
         natural hazards each year
-        that have some link to climate change: avalanche, 
-        coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, 
-        riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined 
-        as the Spatial Hazard Events and Losses and National Centers for Environmental Information’s 
-        (NCEI) reported number of fatalities and injuries caused by the hazard occurrence. To 
-        combine fatalities and injuries for the computation of population loss value, an injury is counted 
-        as one-tenth (1/10) of a fatality. The NCEI Storm Events Database classifies injuries and fatalities 
-        as direct or indirect. Both direct and indirect injuries and fatalities are counted as population 
-        loss. This total number of injuries and fatalities is then divided by the population in the 
-        census tract to get a per-capita rate of population risk. 
+        that have some link to climate change: avalanche,
+        coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide,
+        riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined
+        as the Spatial Hazard Events and Losses and National Centers for Environmental Information’s
+        (NCEI) reported number of fatalities and injuries caused by the hazard occurrence. To
+        combine fatalities and injuries for the computation of population loss value, an injury is counted
+        as one-tenth (1/10) of a fatality. The NCEI Storm Events Database classifies injuries and fatalities
+        as direct or indirect. Both direct and indirect injuries and fatalities are counted as population
+        loss. This total number of injuries and fatalities is then divided by the population in the
+        census tract to get a per-capita rate of population risk.
       `}
       description={'Navigate to the Methodology page. This is the description text for exp pop loss rate'}
     />,
@@ -745,7 +745,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.pm2.5.description.text'}
       defaultMessage={`
-        Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller. The value 
+        Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller. The value
         in the fields is the weight of these particles in micrograms per cubic meter.
 
       `}
@@ -770,8 +770,8 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.diesel.pm.description.text'}
       defaultMessage={`
-        Mixture of particles that is part of diesel exhaust in the air. The value in the fields is the 
-        weight of these particles in micrograms per cubic meter. 
+        Mixture of particles that is part of diesel exhaust in the air. The value in the fields is the
+        weight of these particles in micrograms per cubic meter.
       `}
       description={'Navigate to the Methodology page. This is the description text for diesel pm'}
     />,
@@ -890,7 +890,7 @@ export const INDICATORS = [
       id={'methodology.page.category.prox.haz.description.text'}
       defaultMessage={`
         Count of hazardous waste facilities (Treatment, Storage, and Disposal Facilities and Large
-        Quantity Generators) within 5 kilometers (or nearest beyond 5 kilometers), each divided by 
+        Quantity Generators) within 5 kilometers (or nearest beyond 5 kilometers), each divided by
         distance in kilometers.
       `}
       description={'Navigate to the Methodology page. This is the description text for proximity to hazards'}

@@ -1,5 +1,5 @@
-import importlib
 import concurrent.futures
+import importlib
 import typing
 
 from data_pipeline.etl.score.etl_score import ScoreETL

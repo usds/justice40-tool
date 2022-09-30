@@ -89,4 +89,3 @@ const TerritoryFocusControl = ({onClick}: ITerritoryFocusControl) => {
 };
 
 export default TerritoryFocusControl;
-

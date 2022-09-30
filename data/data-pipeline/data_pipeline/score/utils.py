@@ -1,12 +1,12 @@
 """Utilities to help generate the score."""
-import pandas as pd
-import geopandas as gpd
 import data_pipeline.score.field_names as field_names
+import geopandas as gpd
+import pandas as pd
+from data_pipeline.etl.sources.geo_utils import get_tract_geojson
+from data_pipeline.utils import get_module_logger
 
 # XXX: @jorge I am torn about the coupling that importing from
 # etl.sources vs keeping the code DRY. Thoughts?
-from data_pipeline.etl.sources.geo_utils import get_tract_geojson
-from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
 

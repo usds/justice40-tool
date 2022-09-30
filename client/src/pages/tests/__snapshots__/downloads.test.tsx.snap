@@ -86,7 +86,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                         Official websites use .gov
                       </strong>
                       <br />
-                      A 
+                      A
                       <strong>
                         .gov
                       </strong>
@@ -112,7 +112,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                         Secure .gov websites use HTTPS
                       </strong>
                       <br />
-                      A 
+                      A
                       <strong>
                         lock (
                         <span
@@ -128,7 +128,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                         </span>
                         )
                       </strong>
-                       or 
+                       or
                       <strong>
                         https://
                       </strong>
@@ -163,10 +163,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         <div />
         <div>
           <span>
-            This is a beta site. 
+            This is a beta site.
           </span>
           <span>
-            It is an early, in-progress version of the tool with limited datasets that will 
+            It is an early, in-progress version of the tool with limited datasets that will
     be regularly updated.
           </span>
         </div>
@@ -199,7 +199,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             </div>
             <div>
               <div>
-                 Screening Tool 
+                 Screening Tool
               </div>
               <div>
                 BETA
@@ -383,8 +383,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             The dataset used in the tool, along with a data dictionary and information about how to use the list of communities (.pdf) are available in the following file formats:
           </p>
           <p>
-            
-      
+
+
             <a
               download=""
               href="//"
@@ -396,7 +396,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               src="test-file-stub"
             />
              (.xlsx 24.9MB)
-      
+
           </p>
           <p>
             <a

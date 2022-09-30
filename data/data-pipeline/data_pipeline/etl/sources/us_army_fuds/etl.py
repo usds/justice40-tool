@@ -1,11 +1,13 @@
 from pathlib import Path
-import geopandas as gpd
-import pandas as pd
-import numpy as np
 
-from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
-from data_pipeline.utils import get_module_logger, download_file_from_url
+import geopandas as gpd
+import numpy as np
+import pandas as pd
+from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.etl.sources.geo_utils import add_tracts_for_geometries
+from data_pipeline.utils import download_file_from_url
+from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
 

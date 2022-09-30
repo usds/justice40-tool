@@ -176,4 +176,3 @@ export const getOSBaseMap = () : Style => {
     ],
   };
 };
-

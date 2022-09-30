@@ -1,6 +1,7 @@
 # pylint: disable=protected-access
 import pathlib
 from unittest import mock
+
 import requests
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.sources.cdc_life_expectancy.etl import CDCLifeExpectancy

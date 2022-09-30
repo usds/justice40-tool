@@ -1,9 +1,11 @@
 # flake8: noqa: W0613,W0611,F811
 from dataclasses import dataclass
+
 import pytest
 from data_pipeline.score import field_names
-from data_pipeline.utils import get_module_logger
 from data_pipeline.score.score_narwhal import ScoreNarwhal
+from data_pipeline.utils import get_module_logger
+
 from .fixtures import final_score_df  # pylint: disable=unused-import
 
 logger = get_module_logger(__name__)

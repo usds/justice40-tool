@@ -5,13 +5,11 @@ from pathlib import Path
 
 import pandas as pd
 from data_pipeline.config import settings
-from data_pipeline.utils import (
-    get_module_logger,
-    remove_all_dirs_from_dir,
-    remove_files_from_dir,
-    unzip_file_from_url,
-    zip_directory,
-)
+from data_pipeline.utils import get_module_logger
+from data_pipeline.utils import remove_all_dirs_from_dir
+from data_pipeline.utils import remove_files_from_dir
+from data_pipeline.utils import unzip_file_from_url
+from data_pipeline.utils import zip_directory
 
 logger = get_module_logger(__name__)
 

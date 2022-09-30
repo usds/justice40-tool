@@ -1,7 +1,7 @@
 # pylint: disable=protected-access
 import pathlib
-from data_pipeline.etl.base import ValidGeoLevel
 
+from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.etl.sources.national_risk_index.etl import (
     NationalRiskIndexETL,
 )

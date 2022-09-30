@@ -11,4 +11,3 @@ Feature: All links on Public Eng page are functional
   #   When I look for the "Apr 15 Reg Link" CTA
   #   And I click on the "Apr 15 Reg Link" event
   #   Then the link should respond successfully
-

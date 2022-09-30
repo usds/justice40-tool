@@ -10,4 +10,3 @@ declare const DownloadLinkModule: DownloadLinkNamespace.IDownloadLink & {
   };
 
   export = DownloadLinkModule;
-

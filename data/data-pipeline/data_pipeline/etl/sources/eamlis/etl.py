@@ -1,9 +1,10 @@
 from pathlib import Path
+
 import geopandas as gpd
 import pandas as pd
 from data_pipeline.config import settings
-
-from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
+from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.etl.sources.geo_utils import add_tracts_for_geometries
 from data_pipeline.utils import get_module_logger
 

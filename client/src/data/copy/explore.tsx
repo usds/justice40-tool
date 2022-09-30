@@ -25,8 +25,8 @@ export const PAGE_INTRO = defineMessages({
 export const PAGE_DESCRIPTION = <FormattedMessage
   id={'explore.map.page.description.text'}
   defaultMessage={`
-    Use the map to see communities that are identified as disadvantaged. The map uses 
-    publicly-available, nationally-consistent datasets. Learn more about 
+    Use the map to see communities that are identified as disadvantaged. The map uses
+    publicly-available, nationally-consistent datasets. Learn more about
     the methodology and datasets that were used to identify disadvantaged communities
     in the current version of the map on the <link1>Methodology & data</link1> page.
     `}
@@ -45,8 +45,8 @@ export const LEGEND = defineMessages({
   PRIORITY_DESCRIPT: {
     id: 'explore.map.page.legend.description.text',
     defaultMessage: `
-      Communities identified as disadvantaged by the map are those that are marginalized, underserved, 
-      and overburdened by pollution. These communities are at or above the thresholds in one or 
+      Communities identified as disadvantaged by the map are those that are marginalized, underserved,
+      and overburdened by pollution. These communities are at or above the thresholds in one or
       more of eight categories of criteria.
     `,
     description: 'On the explore the map page, the description of the legend',
@@ -79,7 +79,7 @@ export const MAP = defineMessages({
   LOWER48_SHORT: {
     id: 'explore.map.page.map.territoryFocus.lower48.short',
     defaultMessage: '48',
-    description: `On the explore the map page, on the map, the abbreviated name indicating the bounds of 
+    description: `On the explore the map page, on the map, the abbreviated name indicating the bounds of
       the Lower 48 states
     `,
   },
@@ -591,7 +591,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   EXP_BLD_LOSS: {
     id: 'explore.map.page.side.panel.indicator.description.exp.bld.loss',
     defaultMessage: 'Economic loss rate to building value resulting from natural hazards each year',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side 
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side
     panel will show an indicator description of Economic loss rate to buildings resulting from natural hazards`,
   },
   EXP_POP_LOSS: {
@@ -599,23 +599,23 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
     defaultMessage: `
       Rate of fatalities and injuries resulting from natural hazards each year
     `,
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Economic loss rate to the population in fatalities and 
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Economic loss rate to the population in fatalities and
       injuries resulting from natural hazards`,
   },
   LOW_INCOME: {
     id: 'explore.map.page.side.panel.indicator.description.low.income',
     defaultMessage: `
-      Household income is less than or equal to twice the federal poverty level 
+      Household income is less than or equal to twice the federal poverty level
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Household income is less than or equal to twice the federal poverty level`,
   },
   HIGH_ED: {
     id: 'explore.map.page.side.panel.indicator.description.high.ed',
     defaultMessage: `
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
+      Percent of the census tract's population 15 or older not enrolled in college, university, or
+      graduate school
     `,
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of the census tract's population 15 or older not 
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of the census tract's population 15 or older not
       enrolled in college, university, or graduate school`,
   },
   ENERGY_BURDEN: {
@@ -690,16 +690,16 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   DIABETES: {
     id: 'explore.map.page.side.panel.indicator.description.diabetes',
     defaultMessage: `
-      Weighted percent of people ages 18 years and older who have diabetes other than 
+      Weighted percent of people ages 18 years and older who have diabetes other than
       diabetes during pregnancy
     `,
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of People ages 18 years and older who have diabetes other than 
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of People ages 18 years and older who have diabetes other than
       diabetes during pregnancy`,
   },
   HEART_DISEASE: {
     id: 'explore.map.page.side.panel.indicator.description.heartDisease',
     defaultMessage: `People ages 18 years and older who have been told they have heart disease`,
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Weighted percent of people ages 18 years and older who have 
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Weighted percent of people ages 18 years and older who have
     been told they have heart disease`,
   },
   LOW_LIFE_EXPECT: {
@@ -723,23 +723,23 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   UNEMPLOY: {
     id: 'explore.map.page.side.panel.indicator.description.unemploy',
     defaultMessage: 'Number of unemployed people as a percentage of the labor force',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side 
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side
     panel will show an indicator description of Number of unemployed people as a percentage of the labor force`,
   },
   POVERTY: {
     id: 'explore.map.page.side.panel.indicator.description.poverty',
     defaultMessage: `
-      Percent of a census tract's population in households where the household income is at or below 100% 
-      of the Federal poverty level 
+      Percent of a census tract's population in households where the household income is at or below 100%
+      of the Federal poverty level
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of individuals in households where the household income is at or below 100% of the federal poverty level`,
   },
   HIGH_SKL: {
     id: 'explore.map.page.side.panel.indicator.description.high.school',
     defaultMessage: `
-      Percent of people ages 25 years or older whose education level is less than a high school diploma 
+      Percent of people ages 25 years or older whose education level is less than a high school diploma
     `,
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of people ages 25 years or older whose education level 
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Percent of people ages 25 years or older whose education level
       is less than a high school diploma`,
   },
 });
@@ -779,7 +779,7 @@ export const DOWNLOAD_DRAFT = {
       <link1>Download the data sources</link1> used in the CEJST (.csv, .xlxs, .pdf that describes how to use the list, and a codebook, {downloadFileSize} unzipped). Last updated: {dateUpdated}.
     `}
     description={`
-      Navigate to the explore the map page. Under the map, you will see a link that is placed below the 
+      Navigate to the explore the map page. Under the map, you will see a link that is placed below the
       map that will download the data packet
     `}
     values={{
@@ -809,8 +809,8 @@ export const NOTE_ON_TERRITORIES = {
   PARA_1: <FormattedMessage
     id={'explore.map.page.under.map.note.on.territories.para.1'}
     defaultMessage={`
-      The data sources described on the <link1>Methodology & data</link1> page are used to 
-      identify disadvantaged communities in all fifty states and the District of Columbia. However, not all 
+      The data sources described on the <link1>Methodology & data</link1> page are used to
+      identify disadvantaged communities in all fifty states and the District of Columbia. However, not all
       of these data sources are currently available for the U.S. territories.
     `}
     description={`Navigate to the explore the map page. Under the map, you will see territories paragraph 1`}
@@ -821,9 +821,9 @@ export const NOTE_ON_TERRITORIES = {
   PARA_2: <FormattedMessage
     id={'explore.map.page.under.map.note.on.territories.para.2'}
     defaultMessage={`
-      For Puerto Rico, the Census Bureau’s American Community Survey data from 2015-2019 are used for higher 
-      ed enrollment rate and all the other fields in the Training and Workforce Development category 
-      to identify disadvantaged communities. Data in the other categories are unavailable at this 
+      For Puerto Rico, the Census Bureau’s American Community Survey data from 2015-2019 are used for higher
+      ed enrollment rate and all the other fields in the Training and Workforce Development category
+      to identify disadvantaged communities. Data in the other categories are unavailable at this
       time.
     `}
     description={`Navigate to the explore the map page. Under the map, you will see territories paragraph 2`}
@@ -831,10 +831,10 @@ export const NOTE_ON_TERRITORIES = {
   PARA_3: <FormattedMessage
     id={'explore.map.page.under.map.note.on.territories.para.3'}
     defaultMessage={`
-      For American Samoa and the Northern Mariana Islands, the data used to identify 
-      disadvantaged communities are from the 2010 Decennial Census, the last reported data from the 
-      U.S. Census Bureau. Available data for these territories includes unemployment, poverty,  
-      low median income, and high school degree achievement rate fields in the Training and 
+      For American Samoa and the Northern Mariana Islands, the data used to identify
+      disadvantaged communities are from the 2010 Decennial Census, the last reported data from the
+      U.S. Census Bureau. Available data for these territories includes unemployment, poverty,
+      low median income, and high school degree achievement rate fields in the Training and
       Workforce Development category.
     `}
     description={`Navigate to the explore the map page. Under the map, you will see territories paragraph 3`}
@@ -842,7 +842,7 @@ export const NOTE_ON_TERRITORIES = {
   PARA_4: <FormattedMessage
     id={'explore.map.page.under.map.note.on.territories.para.4'}
     defaultMessage={`
-      Work is currently underway to identify disadvantaged communities and update the 
+      Work is currently underway to identify disadvantaged communities and update the
       map accordingly for Guam and the U.S. Virgin Islands.
         `}
     description={`Navigate to the explore the map page. Under the map, you will see territories paragraph 4`}
@@ -858,13 +858,13 @@ export const NOTE_ON_TRIBAL_NATIONS = {
   PARA_1: <FormattedMessage
     id={'explore.map.page.under.map.note.on.tribal.nations.para.1'}
     defaultMessage={`
-      The map covers all U.S. census tracts, including those located within Tribal Nations, to the extent 
-      that data is available (see our <link1>Methodology & data</link1> page for more information). CEQ 
-      is engaging in consultation and coordination with Tribal Nations on the beta version of the map 
+      The map covers all U.S. census tracts, including those located within Tribal Nations, to the extent
+      that data is available (see our <link1>Methodology & data</link1> page for more information). CEQ
+      is engaging in consultation and coordination with Tribal Nations on the beta version of the map
       to provide Tribal Nations with meaningful opportunities for input, consistent with CEQ’s <link2>
       Action Plan for Consultation and Coordination with Tribal Nations</link2>,
-      <link3>President Biden’s Memorandum on Tribal Consultation and Strengthening 
-      Nation-to-Nation Consultation</link3>, and Executive Order 13175 on <link4>Consultation and 
+      <link3>President Biden’s Memorandum on Tribal Consultation and Strengthening
+      Nation-to-Nation Consultation</link3>, and Executive Order 13175 on <link4>Consultation and
       Coordination With Indian Tribal Governments</link4>.
     `}
     description={`Navigate to the explore the map page. Under the map, you will see tribal nations paragraph 1`}

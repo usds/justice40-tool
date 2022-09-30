@@ -1,7 +1,7 @@
-# This is a temporary file. We should make sure this *type* of information is maintained when we refactor. 
+# This is a temporary file. We should make sure this *type* of information is maintained when we refactor.
 fields:
     - score_name: Total threshold criteria exceeded
-      notes: Lists out the total number of criteria (where each category has one or more criteria) exceeded. For example, a tract that exceeds the 90th percentile for linguistic isolation (1) and unemployment (2), and meets the training and workforce development socioeconomic criteria (high school attainment rate and low percentage of higher ed students) would have a 2 in this field. 
+      notes: Lists out the total number of criteria (where each category has one or more criteria) exceeded. For example, a tract that exceeds the 90th percentile for linguistic isolation (1) and unemployment (2), and meets the training and workforce development socioeconomic criteria (high school attainment rate and low percentage of higher ed students) would have a 2 in this field.
     - score_name: Definition M (communities)
       notes: True / False variable for whether a tract is a Disadvantaged Community (DAC)
     - score_name: Is low income and has a low percent of higher ed students?
@@ -43,7 +43,7 @@ fields:
     - score_name: Greater than or equal to the 90th percentile for low median household income as a percent of area median income, has low HS attainment, and has a low percent of higher ed students?
       category: training and workforce development
     - score_name: Greater than or equal to the 90th percentile for households in linguistic isolation, has low HS attainment, and has a low percent of higher ed students?
-      category: training and workforce development    
+      category: training and workforce development
     - score_name: Greater than or equal to the 90th percentile for unemployment, has low HS attainment, and has a low percent of higher ed students?
       category: training and workforce development
     - score_name: Greater than or equal to the 90th percentile for households at or below 100% federal poverty level, has low HS attainment, and has a low percent of higher ed students?

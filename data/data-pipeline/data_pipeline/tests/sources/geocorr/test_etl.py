@@ -1,6 +1,7 @@
 import pathlib
-from data_pipeline.tests.sources.example.test_etl import TestETL
+
 from data_pipeline.etl.sources.geocorr.etl import GeoCorrETL
+from data_pipeline.tests.sources.example.test_etl import TestETL
 
 
 class TestGeoCorrETL(TestETL):

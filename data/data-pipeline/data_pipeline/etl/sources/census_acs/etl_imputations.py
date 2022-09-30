@@ -1,7 +1,10 @@
-from typing import Any, List, NamedTuple, Tuple
-import pandas as pd
-import geopandas as gpd
+from typing import Any
+from typing import List
+from typing import NamedTuple
+from typing import Tuple
 
+import geopandas as gpd
+import pandas as pd
 from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger
 

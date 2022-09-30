@@ -1,25 +1,24 @@
-from typing import List, Union
 import datetime
 import json
 import logging
 import os
-import sys
 import shutil
+import sys
 import uuid
 import zipfile
 from pathlib import Path
-from marshmallow import ValidationError
-import urllib3
-import requests
-import yaml
-from marshmallow_dataclass import class_schema
+from typing import List
+from typing import Union
 
+import requests
+import urllib3
+import yaml
 from data_pipeline.config import settings
-from data_pipeline.content.schemas.download_schemas import (
-    CSVConfig,
-    CodebookConfig,
-    ExcelConfig,
-)
+from data_pipeline.content.schemas.download_schemas import CodebookConfig
+from data_pipeline.content.schemas.download_schemas import CSVConfig
+from data_pipeline.content.schemas.download_schemas import ExcelConfig
+from marshmallow import ValidationError
+from marshmallow_dataclass import class_schema
 
 
 ## zlib is not available on all systems

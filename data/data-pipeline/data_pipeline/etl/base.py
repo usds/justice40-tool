@@ -5,18 +5,15 @@ import typing
 from typing import Optional
 
 import pandas as pd
-
 from data_pipeline.config import settings
 from data_pipeline.etl.score.etl_utils import (
     compare_to_list_of_expected_state_fips_codes,
 )
 from data_pipeline.etl.score.schemas.datasets import DatasetsConfig
-from data_pipeline.utils import (
-    load_yaml_dict_from_file,
-    unzip_file_from_url,
-    remove_all_from_dir,
-    get_module_logger,
-)
+from data_pipeline.utils import get_module_logger
+from data_pipeline.utils import load_yaml_dict_from_file
+from data_pipeline.utils import remove_all_from_dir
+from data_pipeline.utils import unzip_file_from_url
 
 logger = get_module_logger(__name__)
 

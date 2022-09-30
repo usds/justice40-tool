@@ -19,7 +19,7 @@
         margin-left: auto;
         margin-right: auto;
         width: 14rem;
-        
+
         &:hover {
           @include u-bg("yellow-20");
           @include u-text("gray-90");
@@ -30,7 +30,7 @@
           .buttonText {
             @include u-margin-right(1);
             }
-        
+
         .buttonImage {
             width: 21px;
             margin-top: -3px;

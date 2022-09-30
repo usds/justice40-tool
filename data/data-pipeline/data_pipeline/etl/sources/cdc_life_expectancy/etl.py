@@ -1,13 +1,15 @@
 import pathlib
 from pathlib import Path
-import pandas as pd
 
-from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
+import pandas as pd
+from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.etl.score.etl_utils import (
     compare_to_list_of_expected_state_fips_codes,
 )
 from data_pipeline.score import field_names
-from data_pipeline.utils import get_module_logger, download_file_from_url
+from data_pipeline.utils import download_file_from_url
+from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)
 

@@ -1,6 +1,7 @@
 import pathlib
-from data_pipeline.tests.sources.example.test_etl import TestETL
+
 from data_pipeline.etl.sources.cdc_places.etl import CDCPlacesETL
+from data_pipeline.tests.sources.example.test_etl import TestETL
 
 
 class TestCDCPlacesETL(TestETL):

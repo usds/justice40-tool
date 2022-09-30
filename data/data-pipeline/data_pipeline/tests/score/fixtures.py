@@ -1,8 +1,8 @@
 import pandas as pd
 import pytest
 from data_pipeline.config import settings
-from data_pipeline.score.field_names import GEOID_TRACT_FIELD
 from data_pipeline.etl.score import constants
+from data_pipeline.score.field_names import GEOID_TRACT_FIELD
 
 
 @pytest.fixture(scope="session")

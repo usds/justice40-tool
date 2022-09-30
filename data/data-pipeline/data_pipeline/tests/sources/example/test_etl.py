@@ -2,19 +2,18 @@
 import copy
 import os
 import pathlib
-from typing import Type, Optional
+from typing import Optional
+from typing import Type
 from unittest import mock
-import pytest
 
-import requests
 import numpy as np
 import pandas as pd
-
-from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
-from data_pipeline.etl.score.constants import (
-    TILES_CONTINENTAL_US_FIPS_CODE,
-    TILES_ALASKA_AND_HAWAII_FIPS_CODE,
-)
+import pytest
+import requests
+from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.base import ValidGeoLevel
+from data_pipeline.etl.score.constants import TILES_ALASKA_AND_HAWAII_FIPS_CODE
+from data_pipeline.etl.score.constants import TILES_CONTINENTAL_US_FIPS_CODE
 from data_pipeline.tests.sources.example.etl import ExampleETL
 from data_pipeline.utils import get_module_logger
 

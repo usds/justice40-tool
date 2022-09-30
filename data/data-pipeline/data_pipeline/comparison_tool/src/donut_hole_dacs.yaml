@@ -17,7 +17,7 @@ DEMOGRAPHIC_COLUMNS:
 DEMOGRAPHIC_FILE: ../../data_pipeline/data/dataset/census_acs_2019/usa.csv
 OUTPUT_DATA_PATH: output/donut_hole_dac
 SCORE_FILE: ../../data_pipeline/data/score/csv/full/usa.csv
-OTHER_COMPARATOR_COLUMNS: 
+OTHER_COMPARATOR_COLUMNS:
 - donut_hole_dac
 - P200_PFS
 - HSEF

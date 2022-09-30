@@ -1,17 +1,17 @@
 # pylint: disable=protected-access
 # flake8: noqa=F841
+from contextlib import contextmanager
+from functools import partial
 from pathlib import Path
 from unittest import mock
-from functools import partial
-from contextlib import contextmanager
 
-import pytest
 import pandas as pd
+import pytest
+from data_pipeline.etl.sources.geo_utils import get_tract_geojson
+from data_pipeline.score import field_names
 from data_pipeline.score.utils import (
     calculate_tract_adjacency_scores as original_calculate_tract_adjacency_score,
 )
-from data_pipeline.etl.sources.geo_utils import get_tract_geojson
-from data_pipeline.score import field_names
 
 
 @contextmanager

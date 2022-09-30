@@ -14,7 +14,7 @@
     cursor: pointer;
     font-size: .8rem; // government banner text size not a token
     @include u-padding-top('2px');
-    
+
     &:hover {
       text-decoration-line: underline;
     }
@@ -27,7 +27,7 @@
       display: none;
     }
   }
-  
+
   .languageContainerMobile {
     @include baseLanguageStyles();
     @include u-padding-top(3);
@@ -35,4 +35,3 @@
       display: none;
     }
   }
-  

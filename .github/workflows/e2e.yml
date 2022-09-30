@@ -10,7 +10,7 @@ on:
   schedule:
     # runs tests every day at 12am ET (4am UTC):
     - cron: '0 4 * * *'
-jobs: 
+jobs:
   nightly:
     runs-on: ubuntu-20.04
     env:

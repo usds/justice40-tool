@@ -53,7 +53,7 @@ For SVI 2018, the authors also included two adjunct variables, 1) 2014-2018 ACS 
 
 **Important Notes**
 
-1. Tracts with zero estimates for the total population (N = 645 for the U.S.) were removed during the ranking process. These tracts were added back to the SVI databases after ranking. 
+1. Tracts with zero estimates for the total population (N = 645 for the U.S.) were removed during the ranking process. These tracts were added back to the SVI databases after ranking.
 
 2. The TOTPOP field value is 0, but the percentile ranking fields (RPL_THEME1, RPL_THEME2, RPL_THEME3, RPL_THEME4, and RPL_THEMES) were set to -999.
 
