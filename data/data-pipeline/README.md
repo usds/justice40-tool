@@ -254,8 +254,9 @@ which will drastically speed up the process.
 
 ### Configuring pre-commit hooks
 
-To promote consistent code style and quality, we use git pre-commit hooks to automatically lint and reformat our
-code before every commit we make to the codebase. Pre-commit hooks are defined in
+To promote consistent code style and quality, we use git pre-commit hooks to 
+automatically lint and reformat our code before every commit we make to the codebase. 
+Pre-commit hooks are defined in
 <!-- markdown-link-check-disable -->
 [`.pre-commit-config.yaml`](../.pre-commit-config.yaml).
 <!-- markdown-link-check-enable -->
