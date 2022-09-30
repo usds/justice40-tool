@@ -501,6 +501,7 @@ class ScoreETL(ExtractTransformLoad):
             field_names.TRACT_ELIGIBLE_FOR_NONNATURAL_THRESHOLD,
             field_names.AGRICULTURAL_VALUE_BOOL_FIELD,
             field_names.NAMES_OF_TRIBAL_AREAS_IN_TRACT,
+            field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT_DISPLAY_STRING,
         ]
 
         boolean_columns = [

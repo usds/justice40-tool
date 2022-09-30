@@ -360,6 +360,9 @@ NAMES_OF_TRIBAL_AREAS_IN_TRACT = "Names of Tribal areas within Census tract"
 PERCENT_OF_TRIBAL_AREA_IN_TRACT = (
     "Percent of the Census tract that is within Tribal areas"
 )
+PERCENT_OF_TRIBAL_AREA_IN_TRACT_DISPLAY_STRING = (
+    "Percent of the Census tract that is within Tribal areas, for display"
+)
 
 #####
 # Names for individual factors being exceeded
