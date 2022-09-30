@@ -86,7 +86,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                         Official websites use .gov
                       </strong>
                       <br />
-                      A 
+                      A
                       <strong>
                         .gov
                       </strong>
@@ -112,7 +112,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                         Secure .gov websites use HTTPS
                       </strong>
                       <br />
-                      A 
+                      A
                       <strong>
                         lock (
                         <span
@@ -128,7 +128,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                         </span>
                         )
                       </strong>
-                       or 
+                       or
                       <strong>
                         https://
                       </strong>
@@ -163,10 +163,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         <div />
         <div>
           <span>
-            This is a beta site. 
+            This is a beta site.
           </span>
           <span>
-            It is an early, in-progress version of the tool with limited datasets that will 
+            It is an early, in-progress version of the tool with limited datasets that will
     be regularly updated.
           </span>
         </div>
@@ -199,7 +199,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             </div>
             <div>
               <div>
-                 Screening Tool 
+                 Screening Tool
               </div>
               <div>
                 BETA
@@ -352,23 +352,23 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           data-testid="grid"
         >
           <p>
-            
-      CEQ is hosting engagement opportunities to connect with the public about the current version of the 
-      tool. These sessions are an opportunity to obtain training on the tool or to provide feedback on the 
-      beta version of the tool. CEQ hopes that members of the public will join these engagements to learn 
+
+      CEQ is hosting engagement opportunities to connect with the public about the current version of the
+      tool. These sessions are an opportunity to obtain training on the tool or to provide feedback on the
+      beta version of the tool. CEQ hopes that members of the public will join these engagements to learn
       about the tool, have their questions answered, and share feedback.
-    
+
           </p>
           <p>
-            
+
       Pre-registration is required to participate and speak at the sessions.
-    
+
           </p>
           <p>
-            
-      As they become available, additional public trainings and engagement opportunities on the Climate 
+
+      As they become available, additional public trainings and engagement opportunities on the Climate
       and Economic Justice Screening Tool will also be posted on this page.
-    
+
           </p>
         </div>
       </div>
@@ -411,13 +411,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 <p
                   class="usa-collection__description"
                 >
-                  
-        CEQ is hosting public listening sessions to seek input and feedback on the beta version of the 
-        tool, including on the datasets it includes and the methodology it uses. This feedback is critical 
-        to the development and enhancement of the tool. This feedback will help CEQ update and refine the 
-        tool to ensure that it reflects the environmental, climate and other challenges that communities 
+
+        CEQ is hosting public listening sessions to seek input and feedback on the beta version of the
+        tool, including on the datasets it includes and the methodology it uses. This feedback is critical
+        to the development and enhancement of the tool. This feedback will help CEQ update and refine the
+        tool to ensure that it reflects the environmental, climate and other challenges that communities
         are experiencing.
-      
+
                 </p>
                 <p
                   class="usa-collection__description"
@@ -466,13 +466,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 <p
                   class="usa-collection__description"
                 >
-                  
-        CEQ is hosting public listening sessions to seek input and feedback on the beta version of the 
-        tool, including on the datasets it includes and the methodology it uses. This feedback is critical 
-        to the development and enhancement of the tool. This feedback will help CEQ update and refine the 
-        tool to ensure that it reflects the environmental, climate and other challenges that communities 
+
+        CEQ is hosting public listening sessions to seek input and feedback on the beta version of the
+        tool, including on the datasets it includes and the methodology it uses. This feedback is critical
+        to the development and enhancement of the tool. This feedback will help CEQ update and refine the
+        tool to ensure that it reflects the environmental, climate and other challenges that communities
         are experiencing.
-      
+
                 </p>
                 <p
                   class="usa-collection__description"
@@ -521,13 +521,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 <p
                   class="usa-collection__description"
                 >
-                  
-        CEQ is hosting public listening sessions to seek input and feedback on the beta version of the 
-        tool, including on the datasets it includes and the methodology it uses. This feedback is critical 
-        to the development and enhancement of the tool. This feedback will help CEQ update and refine the 
-        tool to ensure that it reflects the environmental, climate and other challenges that communities 
+
+        CEQ is hosting public listening sessions to seek input and feedback on the beta version of the
+        tool, including on the datasets it includes and the methodology it uses. This feedback is critical
+        to the development and enhancement of the tool. This feedback will help CEQ update and refine the
+        tool to ensure that it reflects the environmental, climate and other challenges that communities
         are experiencing.
-      
+
                 </p>
                 <p
                   class="usa-collection__description"
@@ -576,9 +576,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 <p
                   class="usa-collection__description"
                 >
-                  
+
         The White House Environmental Justice Advisory Council is also soliciting feedback on the beta version of the Climate and Economic Justice Screening Tool at its public meeting. The link above has additional details.
-      
+
                 </p>
                 <p
                   class="usa-collection__description"
@@ -627,9 +627,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 <p
                   class="usa-collection__description"
                 >
-                  
+
         The White House Environmental Justice Advisory Council is also soliciting feedback on the beta version of the Climate and Economic Justice Screening Tool at its public meeting. The link above has additional details.
-      
+
                 </p>
                 <p
                   class="usa-collection__description"
@@ -678,13 +678,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 <p
                   class="usa-collection__description"
                 >
-                  
-        CEQ is hosting public listening sessions to seek input and feedback on the beta version of the 
-        tool, including on the datasets it includes and the methodology it uses. This feedback is critical 
-        to the development and enhancement of the tool. This feedback will help CEQ update and refine the 
-        tool to ensure that it reflects the environmental, climate and other challenges that communities 
+
+        CEQ is hosting public listening sessions to seek input and feedback on the beta version of the
+        tool, including on the datasets it includes and the methodology it uses. This feedback is critical
+        to the development and enhancement of the tool. This feedback will help CEQ update and refine the
+        tool to ensure that it reflects the environmental, climate and other challenges that communities
         are experiencing.
-      
+
                 </p>
                 <p
                   class="usa-collection__description"
@@ -733,13 +733,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 <p
                   class="usa-collection__description"
                 >
-                  
-        The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital 
-        Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic 
-        Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to 
-        use the current version of the tool. The presenters at these webinars will be available to 
+
+        The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital
+        Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic
+        Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to
+        use the current version of the tool. The presenters at these webinars will be available to
         provide technical support and address issues related to accessing and using the tool.
-      
+
                 </p>
                 <p
                   class="usa-collection__description"
@@ -788,13 +788,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 <p
                   class="usa-collection__description"
                 >
-                  
-        The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital 
-        Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic 
-        Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to 
-        use the current version of the tool. The presenters at these webinars will be available to 
+
+        The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital
+        Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic
+        Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to
+        use the current version of the tool. The presenters at these webinars will be available to
         provide technical support and address issues related to accessing and using the tool.
-      
+
                 </p>
                 <p
                   class="usa-collection__description"
@@ -843,13 +843,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 <p
                   class="usa-collection__description"
                 >
-                  
-        The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital 
-        Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic 
-        Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to 
-        use the current version of the tool. The presenters at these webinars will be available to 
+
+        The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital
+        Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic
+        Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to
+        use the current version of the tool. The presenters at these webinars will be available to
         provide technical support and address issues related to accessing and using the tool.
-      
+
                 </p>
                 <p
                   class="usa-collection__description"

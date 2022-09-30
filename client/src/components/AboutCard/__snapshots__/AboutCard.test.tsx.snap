@@ -90,7 +90,7 @@ exports[`rendering of the AboutCard checks if small cards component renders 1`] 
         class="grid-col-1"
         data-testid="grid"
       >
-         
+
       </div>
     </div>
   </div>

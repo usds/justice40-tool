@@ -86,7 +86,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                         Official websites use .gov
                       </strong>
                       <br />
-                      A 
+                      A
                       <strong>
                         .gov
                       </strong>
@@ -112,7 +112,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                         Secure .gov websites use HTTPS
                       </strong>
                       <br />
-                      A 
+                      A
                       <strong>
                         lock (
                         <span
@@ -128,7 +128,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                         </span>
                         )
                       </strong>
-                       or 
+                       or
                       <strong>
                         https://
                       </strong>
@@ -163,10 +163,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         <div />
         <div>
           <span>
-            This is a beta site. 
+            This is a beta site.
           </span>
           <span>
-            It is an early, in-progress version of the tool with limited datasets that will 
+            It is an early, in-progress version of the tool with limited datasets that will
     be regularly updated.
           </span>
         </div>
@@ -199,7 +199,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             </div>
             <div>
               <div>
-                 Screening Tool 
+                 Screening Tool
               </div>
               <div>
                 BETA
@@ -405,8 +405,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   Screening tool
                 </h2>
                 <p>
-                  
-    In 
+
+    In
                   <a
                     class="usa-link usa-link--external"
                     data-cy=""
@@ -416,17 +416,17 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   >
                     Executive Order 14008
                   </a>
-                   on 
+                   on
                   <i>
                     Tackling the Climate Crisis at Home and Abroad
                   </i>
-                  , President Biden directed the Council on Environmental Quality (CEQ) 
+                  , President Biden directed the Council on Environmental Quality (CEQ)
     to create a Climate and Economic Justice Screening Tool. The purpose of the tool is to help
-    Federal agencies identify disadvantaged communities that are marginalized, underserved, and 
-    overburdened by pollution. The current version of the tool provides socioeconomic, environmental, 
-    and climate information to inform decisions that may affect these communities. The 
+    Federal agencies identify disadvantaged communities that are marginalized, underserved, and
+    overburdened by pollution. The current version of the tool provides socioeconomic, environmental,
+    and climate information to inform decisions that may affect these communities. The
     tool identifies disadvantaged communities through publicly-available, nationally-consistent datasets.
-    
+
                 </p>
                 <p>
                   The current version of the tool is in a public beta form and will be updated based on feedback and research.
@@ -471,19 +471,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   The Justice40 Initiative
                 </h2>
                 <p>
-                  
-      The tool will provide important information for the Justice40 Initiative. The goal of the 
+
+      The tool will provide important information for the Justice40 Initiative. The goal of the
       Justice40 Initiative is to provide 40 percent of the overall benefits of certain Federal
-      investments in seven key areas to disadvantaged communities. These seven key areas are: climate 
+      investments in seven key areas to disadvantaged communities. These seven key areas are: climate
       change, clean energy and energy efficiency, clean transit, affordable and sustainable
-      housing, training and workforce development, the remediation and reduction of legacy pollution, 
+      housing, training and workforce development, the remediation and reduction of legacy pollution,
       and the development of critical clean water infrastructure.
-    
+
                 </p>
                 <p>
-                  
+
     Read more about the Justice40 Initiative in President Biden’s
-    
+
                   <a
                     class="usa-link usa-link--external"
                     data-cy=""
@@ -493,12 +493,12 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   >
                     Executive Order 14008
                   </a>
-                   on 
+                   on
                   <i>
                     Tackling the Climate Crisis at Home and Abroad
                   </i>
                   .
-    
+
                 </p>
               </div>
             </div>
@@ -534,7 +534,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   Still have questions?
                 </h2>
                 <p>
-                  Find answers on the Climate and Economic Justice Screening Tool's 
+                  Find answers on the Climate and Economic Justice Screening Tool's
                   <a
                     class="usa-link usa-link--external"
                     data-cy=""
@@ -545,7 +545,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     Frequently Asked Questions
                   </a>
                   .
-    
+
                 </p>
               </div>
             </div>
@@ -598,10 +598,10 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     Federal program managers
                   </h3>
                   <p>
-                    
-      Download the tool’s current list of communities, explore data that may be useful to your 
+
+      Download the tool’s current list of communities, explore data that may be useful to your
       program, and provide feedback on the tool.
-    
+
                   </p>
                   <div
                     class="j40-aboutcard-sm-link"
@@ -619,7 +619,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 class="grid-col-1"
                 data-testid="grid"
               >
-                 
+
               </div>
             </div>
           </div>
@@ -654,9 +654,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     Community members
                   </h3>
                   <p>
-                    
+
       Explore data about communities across the U.S., including your own, and provide feedback on the tool.
-    
+
                   </p>
                   <div
                     class="j40-aboutcard-sm-link"
@@ -674,7 +674,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 class="grid-col-1"
                 data-testid="grid"
               >
-                 
+
               </div>
             </div>
           </div>
@@ -723,9 +723,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   Send feedback
                 </h3>
                 <p>
-                  
+
       Have ideas about data and information that reflect the experiences and conditions of your community?
-    
+
                 </p>
                 <div
                   class="j40-aboutcard-sm-link"
@@ -737,9 +737,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     rel="noreferrer"
                     target="_blank"
                   >
-                    
+
       Email: Screeningtool-Support@omb.eop.gov
-    
+
                   </a>
                 </div>
               </div>
@@ -748,7 +748,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               class="grid-col-1"
               data-testid="grid"
             >
-               
+
             </div>
           </div>
         </div>
@@ -783,9 +783,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   Join the open source community
                 </h3>
                 <p>
-                  
+
       The tool’s code is open source, which means it is available for the public to view and contribute to it.
-    
+
                 </p>
                 <div
                   class="j40-aboutcard-sm-link"
@@ -806,7 +806,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               class="grid-col-1"
               data-testid="grid"
             >
-               
+
             </div>
           </div>
         </div>

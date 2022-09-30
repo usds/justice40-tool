@@ -1,24 +1,22 @@
 import concurrent.futures
 import math
 import os
+
+import geopandas as gpd
 import numpy as np
 import pandas as pd
-import geopandas as gpd
-
+from data_pipeline.content.schemas.download_schemas import CSVConfig
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.score import constants
+from data_pipeline.etl.score.etl_utils import check_score_data_source
 from data_pipeline.etl.sources.census.etl_utils import (
     check_census_data_source,
 )
-from data_pipeline.etl.score.etl_utils import check_score_data_source
 from data_pipeline.score import field_names
-from data_pipeline.content.schemas.download_schemas import CSVConfig
-from data_pipeline.utils import (
-    get_module_logger,
-    zip_files,
-    load_yaml_dict_from_file,
-    load_dict_from_yaml_object_fields,
-)
+from data_pipeline.utils import get_module_logger
+from data_pipeline.utils import load_dict_from_yaml_object_fields
+from data_pipeline.utils import load_yaml_dict_from_file
+from data_pipeline.utils import zip_files
 
 logger = get_module_logger(__name__)
 

@@ -12,7 +12,7 @@ $sidePanelLabelFontColor: #171716;
 .versionInfo {
   padding: .5rem 1rem .5rem 1.2rem;
   font-size: medium;
-  border-bottom: 1px solid $sidePanelBorderColor; 
+  border-bottom: 1px solid $sidePanelBorderColor;
 }
 
 .areaDetailContainer {
@@ -58,8 +58,8 @@ $sidePanelLabelFontColor: #171716;
     .sendFeedbackBtn{
       @include u-text("blue-70v");
       @include u-bg("yellow-20v");
-      height: 40px; 
-      
+      height: 40px;
+
       &:hover {
         @include u-bg("yellow-20");
         @include u-text("gray-90");
@@ -98,7 +98,7 @@ $sidePanelLabelFontColor: #171716;
 
   .censusText {
     font-size: medium;
-  }  
+  }
 }
 
 .categoryHeader {
@@ -115,11 +115,11 @@ $sidePanelLabelFontColor: #171716;
   @include u-bg('gray-cool-3');
 
   @include typeset('sans', '2xs', 2);
-  @include u-text('bold'); 
+  @include u-text('bold');
 
   margin: 0 -20px 1rem -20px;
   @include u-padding-top(2);
   @include u-padding-bottom(2);
   @include u-padding-left(2.5);
-  
+
 }

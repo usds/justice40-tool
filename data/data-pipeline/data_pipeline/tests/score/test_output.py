@@ -2,35 +2,14 @@
 # pylint: disable=unused-import,too-many-arguments
 from dataclasses import dataclass
 from typing import List
-import pytest
-import pandas as pd
+
 import numpy as np
+import pandas as pd
+import pytest
 from data_pipeline.etl.score import constants
+from data_pipeline.etl.score.constants import TILES_ISLAND_AREA_FIPS_CODES
 from data_pipeline.score import field_names
 from data_pipeline.score.field_names import GEOID_TRACT_FIELD
-from data_pipeline.etl.score.constants import TILES_ISLAND_AREA_FIPS_CODES
-from .fixtures import (
-    final_score_df,
-    ejscreen_df,
-    hud_housing_df,
-    census_acs_df,
-    cdc_places_df,
-    census_acs_median_incomes_df,
-    cdc_life_expectancy_df,
-    doe_energy_burden_df,
-    national_risk_index_df,
-    dot_travel_disadvantage_df,
-    fsf_fire_df,
-    nature_deprived_df,
-    eamlis_df,
-    fuds_df,
-    geocorr_urban_rural_df,
-    census_decennial_df,
-    census_2010_df,
-    hrs_df,
-    national_tract_df,
-    tribal_overlap,
-)
 
 
 pytestmark = pytest.mark.smoketest

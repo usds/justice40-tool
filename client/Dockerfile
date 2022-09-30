@@ -1,6 +1,6 @@
 FROM node:14
 
-# Set working directory like 'cd' command, any subsequent instructions in this docker file, will start from 
+# Set working directory like 'cd' command, any subsequent instructions in this docker file, will start from
 # this working directory
 WORKDIR /client
 
@@ -10,7 +10,7 @@ COPY package*.json ./
 # install all packages as a layer in the docker image / container
 RUN npm install
 
-# copy all local files from the working directory to the docker image/container however we must use 
+# copy all local files from the working directory to the docker image/container however we must use
 # dockerignore to ignore node_modules so that the image can use what what was just installed from the above
 # step.
 COPY . .

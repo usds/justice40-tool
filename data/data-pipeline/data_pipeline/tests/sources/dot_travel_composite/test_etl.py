@@ -1,9 +1,10 @@
 import pathlib
+
 import geopandas as gpd
-from data_pipeline.tests.sources.example.test_etl import TestETL
 from data_pipeline.etl.sources.dot_travel_composite.etl import (
     TravelCompositeETL,
 )
+from data_pipeline.tests.sources.example.test_etl import TestETL
 
 
 class TestTravelCompositeETL(TestETL):

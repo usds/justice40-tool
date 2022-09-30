@@ -7,31 +7,31 @@ exports[`rendering of the CategoryCard checks if component renders 1`] = `
       Climate change
     </h3>
     <p>
-      
-      Communities are 
+
+      Communities are
       <strong>
         identified as disadvantaged
       </strong>
-      
-    
+
+
     </p>
     <p>
       <strong>
         IF
       </strong>
-       at or above the 90th percentile for 
+       at or above the 90th percentile for
       <a
         href="#exp-agr-loss-rate"
       >
         expected agriculture loss rate
       </a>
-       OR 
+       OR
       <a
         href="#exp-bld-loss-rate"
       >
         expected building loss rate
       </a>
-       OR 
+       OR
       <a
         href="#exp-pop-loss-rate"
       >
@@ -39,25 +39,25 @@ exports[`rendering of the CategoryCard checks if component renders 1`] = `
       </a>
     </p>
     <p>
-      
-      
+
+
       <strong>
         AND
       </strong>
-       is at or above the 65th percentile for 
+       is at or above the 65th percentile for
       <a
         href="#low-income"
       >
         low income
       </a>
-       AND 80% or more of individuals 15 or older are not enrolled in 
+       AND 80% or more of individuals 15 or older are not enrolled in
       <a
         href="#high-ed-enroll-rate"
       >
         higher education
       </a>
-       
-    
+
+
     </p>
     <p />
   </div>

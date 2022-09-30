@@ -1,9 +1,9 @@
 import pathlib
+
 import pandas as pd
 import xlsxwriter
-
-from data_pipeline.score import field_names
 from data_pipeline.etl.sources.census.etl_utils import get_state_information
+from data_pipeline.score import field_names
 
 # Some excel parameters
 DEFAULT_COLUMN_WIDTH = 18

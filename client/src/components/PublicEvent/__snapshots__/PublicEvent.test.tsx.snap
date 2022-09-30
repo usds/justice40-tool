@@ -21,13 +21,13 @@ exports[`rendering of the PublicEvent checks if component renders 1`] = `
       <p
         class="usa-collection__description"
       >
-        
-        The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital 
-        Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic 
-        Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to 
-        use the current version of the tool. The presenters at these webinars will be available to 
+
+        The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital
+        Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic
+        Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to
+        use the current version of the tool. The presenters at these webinars will be available to
         provide technical support and address issues related to accessing and using the tool.
-      
+
       </p>
       <p
         class="usa-collection__description"

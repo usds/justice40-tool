@@ -1,9 +1,9 @@
 # How to add variables to a score
 
-So, there's a variable you want to add to the score! Once you have the data source created in `etl/sources`, what should you do? There are 6 steps across a minimum of 7 files. 
+So, there's a variable you want to add to the score! Once you have the data source created in `etl/sources`, what should you do? There are 6 steps across a minimum of 7 files.
 
 __Updating `field_names.py`__
-Per indicator, you need to make (usually) three variables to get used in other files. 
+Per indicator, you need to make (usually) three variables to get used in other files.
 - raw variable: this is the name of the variable's raw data, not scaled into a percentile
 - variable with threshold exceeded: this is a boolean for whether the tract meets the threshold for the indicator alone
 - variable with threshold exceeded and socioeconomic criterion exceeded: this is whether the tract will be a DAC based on the socioeconomic criterion and the indicator
@@ -25,4 +25,4 @@ __Updating `csv.yml` and `excel.yml`__
 - make sure each column you want to be in the downloadable files is listed here
 
 __Update the fixtures__
-Follow the instructions on the repo to modify tiles so that `test_etl_post.py` doesn't fail. Then, confirm results. 
+Follow the instructions on the repo to modify tiles so that `test_etl_post.py` doesn't fail. Then, confirm results.

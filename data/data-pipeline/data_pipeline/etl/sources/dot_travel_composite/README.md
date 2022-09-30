@@ -1,6 +1,6 @@
 # DOT travel barriers
 
-The below description is taken from DOT directly: 
+The below description is taken from DOT directly:
 
 Consistent with OMB’s Interim Guidance for the Justice40 Initiative, DOT’s interim definition of DACs includes (a) certain qualifying census tracts, (b) any Tribal land, or (c) any territory or possession of the United States. DOT has provided a mapping tool to assist applicants in identifying whether a project is located in a Disadvantaged Community, available at Transportation Disadvantaged Census Tracts (arcgis.com). A shapefile of the geospatial data is available  Transportation Disadvantaged Census Tracts shapefile (version 2 .0, posted 5/10/22).
 
@@ -13,4 +13,4 @@ The DOT interim definition for DACs was developed by an internal and external co
 Resilience disadvantage identifies communities vulnerable to hazards caused by climate change. (1)
 - Equity disadvantage identifies communities with a with a high percentile of persons (age 5+) who speak English "less than well." (1)
 
-The CEJST uses only Transportation Access Disadvantage. 
+The CEJST uses only Transportation Access Disadvantage.

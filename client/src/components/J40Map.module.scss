@@ -27,7 +27,7 @@
   height: 90vh;
 }
 
-// This will control the height of the map when the device 
+// This will control the height of the map when the device
 // width is less than desktop (1024px)
 .j40Map {
   @include at-media-max("desktop") {

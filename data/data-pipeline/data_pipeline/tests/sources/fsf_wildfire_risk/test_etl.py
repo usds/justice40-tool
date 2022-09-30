@@ -1,6 +1,7 @@
 import pathlib
-from data_pipeline.tests.sources.example.test_etl import TestETL
+
 from data_pipeline.etl.sources.fsf_wildfire_risk.etl import WildfireRiskETL
+from data_pipeline.tests.sources.example.test_etl import TestETL
 
 
 class TestWildfireRiskETL(TestETL):

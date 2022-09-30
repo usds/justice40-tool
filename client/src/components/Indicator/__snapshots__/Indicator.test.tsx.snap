@@ -29,7 +29,7 @@ exports[`rendering of the Indicator checks if component renders 1`] = `
         </div>
         <div>
           <div>
-            above 
+            above
             <span>
               20%
             </span>
@@ -71,7 +71,7 @@ exports[`rendering of the Indicator checks if the flooring function works 1`] = 
         </div>
         <div>
           <div>
-            above 
+            above
             <span>
               20%
             </span>

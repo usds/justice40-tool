@@ -1,5 +1,4 @@
 import pandas as pd
-
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger
 
@@ -58,7 +57,6 @@ class EJSCREENAreasOfConcernETL(ExtractTransformLoad):
 
         # TO DO: As a one off we did all the processing in a separate Notebook
         # Can add here later for a future PR
-        pass
 
     def load(self) -> None:
         if self.ejscreen_areas_of_concern_data_exists():

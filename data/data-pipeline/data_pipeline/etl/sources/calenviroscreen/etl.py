@@ -1,8 +1,7 @@
 import pandas as pd
-
+from data_pipeline.config import settings
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger
-from data_pipeline.config import settings
 
 logger = get_module_logger(__name__)
 

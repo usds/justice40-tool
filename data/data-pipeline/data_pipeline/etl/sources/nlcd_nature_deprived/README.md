@@ -2,7 +2,7 @@
 
 The following dataset was compiled by TPL (Trust for Public Lands) using NCLD data. We define as: AREA - [CROPLAND] - [IMPERVIOUS SURFACES].
 
-## Codebook 
+## Codebook
 - GEOID10 – Census tract ID
 - SF – State Name
 - CF – County Name
@@ -13,7 +13,7 @@ The following dataset was compiled by TPL (Trust for Public Lands) using NCLD da
 - AcresCrops – Acres crops calculated by summing all cells in the NLCD Cropland Data Layer crop classes.
 - PctCrops – Formula: AcresCrops/TractAcres*100.
 - PctImperv – Mean imperviousness for each census tract.
-    - CAVEAT: Where tracts extend into open water, mean imperviousness may be underestimated.  
+    - CAVEAT: Where tracts extend into open water, mean imperviousness may be underestimated.
 - __TO USE__ PctNatural – Formula: 100 – PctCrops – PctImperv.
 - PctNat90 – Tract in or below 10th percentile for PctNatural. 1 = True,  0 = False.
     - PctNatural 10th percentile = 28.6439%
@@ -24,7 +24,7 @@ The following dataset was compiled by TPL (Trust for Public Lands) using NCLD da
     - P200_PFS 65th percentile = 64.0%
 - NatureDep – ImpOrCrp = 1 AND LowInAndEd = 1.
 
-We added `GEOID10_TRACT` before converting shapefile to csv. 
+We added `GEOID10_TRACT` before converting shapefile to csv.
 
 ## Instructions to recreate
 

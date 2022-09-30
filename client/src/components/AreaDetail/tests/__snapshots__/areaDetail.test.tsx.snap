@@ -27,7 +27,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
       </li>
       <li>
         <span>
-          Territory: 
+          Territory:
         </span>
         <span>
            New York
@@ -60,7 +60,7 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
             mailto:Screeningtool-Support@omb.eop.gov?subject=
     Census tract ID 98729374234, Brooklyn, New York, ( z/lat/lon: #11.54/36.0762/-84.4494 )
   &body=Please provide feedback about this census tract, including about the datasets, the data categories provided for this census tract, the communities who live in this census tract, and anything else relevant that CEQ should know about this census tract.
-    
+
           "
         rel="noreferrer"
         target="_blank"
@@ -213,10 +213,10 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
             <div>
               Poverty
               <div>
-                
-      Percent of a census tract's population in households where the household income is at or below 100% 
-      of the Federal poverty level 
-    
+
+      Percent of a census tract's population in households where the household income is at or below 100%
+      of the Federal poverty level
+
               </div>
             </div>
             <div>
@@ -258,9 +258,9 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
             <div>
               High school degree non-attainment
               <div>
-                
-      Percent of people ages 25 years or older whose education level is less than a high school diploma 
-    
+
+      Percent of people ages 25 years or older whose education level is less than a high school diploma
+
               </div>
             </div>
             <div>
@@ -300,9 +300,9 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
             <div>
               High school degree non-attainment
               <div>
-                
-      Percent of people ages 25 years or older whose education level is less than a high school diploma 
-    
+
+      Percent of people ages 25 years or older whose education level is less than a high school diploma
+
               </div>
             </div>
             <div>
@@ -331,10 +331,10 @@ exports[`rendering of the AreaDetail checks if indicators for ISLAND AREAS are p
             <div>
               Higher education non-enrollment
               <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
+
+      Percent of the census tract's population 15 or older not enrolled in college, university, or
+      graduate school
+
               </div>
             </div>
             <div>
@@ -388,7 +388,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
       </li>
       <li>
         <span>
-          State: 
+          State:
         </span>
         <span>
            New York
@@ -421,7 +421,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             mailto:Screeningtool-Support@omb.eop.gov?subject=
     Census tract ID 98729374234, Brooklyn, New York, ( z/lat/lon: #11.54/36.0762/-84.4494 )
   &body=Please provide feedback about this census tract, including about the datasets, the data categories provided for this census tract, the communities who live in this census tract, and anything else relevant that CEQ should know about this census tract.
-    
+
           "
         rel="noreferrer"
         target="_blank"
@@ -548,9 +548,9 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Expected population loss rate
               <div>
-                
+
       Rate of fatalities and injuries resulting from natural hazards each year
-    
+
               </div>
             </div>
             <div>
@@ -590,9 +590,9 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Low income
               <div>
-                
-      Household income is less than or equal to twice the federal poverty level 
-    
+
+      Household income is less than or equal to twice the federal poverty level
+
               </div>
             </div>
             <div>
@@ -634,10 +634,10 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Higher education non-enrollment
               <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
+
+      Percent of the census tract's population 15 or older not enrolled in college, university, or
+      graduate school
+
               </div>
             </div>
             <div>
@@ -770,9 +770,9 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Low income
               <div>
-                
-      Household income is less than or equal to twice the federal poverty level 
-    
+
+      Household income is less than or equal to twice the federal poverty level
+
               </div>
             </div>
             <div>
@@ -814,10 +814,10 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Higher education non-enrollment
               <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
+
+      Percent of the census tract's population 15 or older not enrolled in college, university, or
+      graduate school
+
               </div>
             </div>
             <div>
@@ -950,9 +950,9 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Low income
               <div>
-                
-      Household income is less than or equal to twice the federal poverty level 
-    
+
+      Household income is less than or equal to twice the federal poverty level
+
               </div>
             </div>
             <div>
@@ -994,10 +994,10 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Higher education non-enrollment
               <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
+
+      Percent of the census tract's population 15 or older not enrolled in college, university, or
+      graduate school
+
               </div>
             </div>
             <div>
@@ -1103,9 +1103,9 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Lead paint
               <div>
-                
+
       Percentile of number of homes built before 1960 that are not among the most expensive
-    
+
               </div>
             </div>
             <div>
@@ -1145,9 +1145,9 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Low income
               <div>
-                
-      Household income is less than or equal to twice the federal poverty level 
-    
+
+      Household income is less than or equal to twice the federal poverty level
+
               </div>
             </div>
             <div>
@@ -1189,10 +1189,10 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Higher education non-enrollment
               <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
+
+      Percent of the census tract's population 15 or older not enrolled in college, university, or
+      graduate school
+
               </div>
             </div>
             <div>
@@ -1354,9 +1354,9 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Low income
               <div>
-                
-      Household income is less than or equal to twice the federal poverty level 
-    
+
+      Household income is less than or equal to twice the federal poverty level
+
               </div>
             </div>
             <div>
@@ -1398,10 +1398,10 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Higher education non-enrollment
               <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
+
+      Percent of the census tract's population 15 or older not enrolled in college, university, or
+      graduate school
+
               </div>
             </div>
             <div>
@@ -1505,9 +1505,9 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Low income
               <div>
-                
-      Household income is less than or equal to twice the federal poverty level 
-    
+
+      Household income is less than or equal to twice the federal poverty level
+
               </div>
             </div>
             <div>
@@ -1549,10 +1549,10 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Higher education non-enrollment
               <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
+
+      Percent of the census tract's population 15 or older not enrolled in college, university, or
+      graduate school
+
               </div>
             </div>
             <div>
@@ -1645,10 +1645,10 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Diabetes
               <div>
-                
-      Weighted percent of people ages 18 years and older who have diabetes other than 
+
+      Weighted percent of people ages 18 years and older who have diabetes other than
       diabetes during pregnancy
-    
+
               </div>
             </div>
             <div>
@@ -1746,9 +1746,9 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Low income
               <div>
-                
-      Household income is less than or equal to twice the federal poverty level 
-    
+
+      Household income is less than or equal to twice the federal poverty level
+
               </div>
             </div>
             <div>
@@ -1790,10 +1790,10 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Higher education non-enrollment
               <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
+
+      Percent of the census tract's population 15 or older not enrolled in college, university, or
+      graduate school
+
               </div>
             </div>
             <div>
@@ -1857,9 +1857,9 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Linguistic isolation
               <div>
-                
+
       Percent of households where no one over the age 14 speaks English well
-    
+
               </div>
             </div>
             <div>
@@ -1972,10 +1972,10 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Poverty
               <div>
-                
-      Percent of a census tract's population in households where the household income is at or below 100% 
-      of the Federal poverty level 
-    
+
+      Percent of a census tract's population in households where the household income is at or below 100%
+      of the Federal poverty level
+
               </div>
             </div>
             <div>
@@ -2028,9 +2028,9 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               High school degree non-attainment
               <div>
-                
-      Percent of people ages 25 years or older whose education level is less than a high school diploma 
-    
+
+      Percent of people ages 25 years or older whose education level is less than a high school diploma
+
               </div>
             </div>
             <div>
@@ -2049,7 +2049,7 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
               </div>
               <div>
                 <div>
-                  above 
+                  above
                   <span>
                     10%
                   </span>
@@ -2067,10 +2067,10 @@ exports[`rendering of the AreaDetail checks if indicators for NATION is present 
             <div>
               Higher education non-enrollment
               <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
+
+      Percent of the census tract's population 15 or older not enrolled in college, university, or
+      graduate school
+
               </div>
             </div>
             <div>
@@ -2124,7 +2124,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
       </li>
       <li>
         <span>
-          Territory: 
+          Territory:
         </span>
         <span>
            New York
@@ -2157,7 +2157,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
             mailto:Screeningtool-Support@omb.eop.gov?subject=
     Census tract ID 98729374234, Brooklyn, New York, ( z/lat/lon: #11.54/36.0762/-84.4494 )
   &body=Please provide feedback about this census tract, including about the datasets, the data categories provided for this census tract, the communities who live in this census tract, and anything else relevant that CEQ should know about this census tract.
-    
+
           "
         rel="noreferrer"
         target="_blank"
@@ -2226,9 +2226,9 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
             <div>
               Linguistic isolation
               <div>
-                
+
       Percent of households where no one over the age 14 speaks English well
-    
+
               </div>
             </div>
             <div>
@@ -2341,10 +2341,10 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
             <div>
               Poverty
               <div>
-                
-      Percent of a census tract's population in households where the household income is at or below 100% 
-      of the Federal poverty level 
-    
+
+      Percent of a census tract's population in households where the household income is at or below 100%
+      of the Federal poverty level
+
               </div>
             </div>
             <div>
@@ -2397,9 +2397,9 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
             <div>
               High school degree non-attainment
               <div>
-                
-      Percent of people ages 25 years or older whose education level is less than a high school diploma 
-    
+
+      Percent of people ages 25 years or older whose education level is less than a high school diploma
+
               </div>
             </div>
             <div>
@@ -2418,7 +2418,7 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
               </div>
               <div>
                 <div>
-                  above 
+                  above
                   <span>
                     10%
                   </span>
@@ -2436,10 +2436,10 @@ exports[`rendering of the AreaDetail checks if indicators for PUERTO RICO are pr
             <div>
               Higher education non-enrollment
               <div>
-                
-      Percent of the census tract's population 15 or older not enrolled in college, university, or 
-      graduate school 
-    
+
+      Percent of the census tract's population 15 or older not enrolled in college, university, or
+      graduate school
+
               </div>
             </div>
             <div>

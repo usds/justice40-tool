@@ -21,5 +21,3 @@ fs.writeFile('esNoNesting.json', fixedEsString, (err) => {
   }
   console.log('JSON data is saved.');
 });
-
-

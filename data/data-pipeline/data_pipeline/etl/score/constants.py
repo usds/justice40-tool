@@ -1,9 +1,8 @@
 import os
-from pathlib import Path
 import datetime
+from pathlib import Path
 
 from data_pipeline.config import settings
-
 from data_pipeline.score import field_names
 
 ## note: to keep map porting "right" fields, keeping descriptors the same.

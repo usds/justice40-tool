@@ -38,7 +38,7 @@ export const BETA_BANNER = defineMessages({
   },
   INFO: {
     id: 'common.pages.banner.beta.info',
-    defaultMessage: `It is an early, in-progress version of the tool with limited datasets that will 
+    defaultMessage: `It is an early, in-progress version of the tool with limited datasets that will
     be regularly updated.`,
     description: 'Navigate to the about page. This is the main info of the beta banner',
   },
@@ -261,5 +261,3 @@ export const CONSOLE_ERROR = defineMessages({
     description: 'Navigate to the about page. This is console error staging URL',
   },
 });
-
-

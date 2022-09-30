@@ -1,10 +1,11 @@
 # pylint: disable=protected-access
 import pathlib
+
 import pandas as pd
-from data_pipeline.tests.sources.example.test_etl import TestETL
 from data_pipeline.etl.sources.historic_redlining.etl import (
     HistoricRedliningETL,
 )
+from data_pipeline.tests.sources.example.test_etl import TestETL
 
 
 class TestHistoricRedliningETL(TestETL):
