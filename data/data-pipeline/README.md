@@ -250,13 +250,13 @@ as `poetry run tox`.
 
 Each run can take a while to build the whole environment. If you'd like to save time,
 you can use the previously built environment by running `poetry run tox -e lint`
-which will drastically speed up the process.
+which will drastically speed up the linting process.
 
 ### Configuring pre-commit hooks
 
-To promote consistent code style and quality, we use git pre-commit hooks to 
-automatically lint and reformat our code before every commit we make to the codebase. 
-Pre-commit hooks are defined in
+To promote consistent code style and quality, we use git pre-commit hooks to
+automatically lint and reformat our code before every commit we make to the codebase.
+Pre-commit hooks are defined in the file 
 <!-- markdown-link-check-disable -->
 [`.pre-commit-config.yaml`](../.pre-commit-config.yaml).
 <!-- markdown-link-check-enable -->
