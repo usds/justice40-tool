@@ -76,7 +76,7 @@ class TribalOverlapETL(ExtractTransformLoad):
         What are these rules?
         0. If None, return none
         1. If the percentage is below 1%, produce 'less than 1%'
-        2. If the percentage is above 99.5%, produce '100%'
+        2. If the percentage is above 99.95%, produce '100%'
         3. If the percentage is X.00 when rounded to two sig digits, display the integer of the percent
         4. If the percentage has unique significant digits, report two digits
         """
@@ -88,14 +88,14 @@ class TribalOverlapETL(ExtractTransformLoad):
         if percentage_float < 0.01:
             return "less than 1%"
         # Rule 2
-        if percentage_float > 0.995:
+        if percentage_float > 0.9995:
             return "100%"
 
         rounded_percentage_str = str(round(percentage_float, 4) * 100)
         first_digits, last_digits = rounded_percentage_str.split(".")
 
-        # Rule 3
-        if last_digits == "00":
+        # Rule 3 (this is a shorthand because round(4) will truncate repeated 0s)
+        if last_digits[-1] == "0":
             return first_digits + "%"
 
         # Rule 4
