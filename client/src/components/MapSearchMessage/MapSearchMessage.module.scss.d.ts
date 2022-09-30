@@ -11,3 +11,4 @@ declare const MapSearchMessageModuleScssModule: MapSearchMessageModuleScssNamesp
   };
 
   export = MapSearchMessageModuleScssModule;
+

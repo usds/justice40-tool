@@ -8,7 +8,7 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
     </h2>
     <ul>
       <li>
-        View the
+        View the 
         <a
           href="/en/methodology"
         >
@@ -17,7 +17,7 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
          page and send feedback.
       </li>
       <li>
-        Use the map to find communities and
+        Use the map to find communities and 
         <a
           class="usa-link usa-link--external"
           data-cy=""

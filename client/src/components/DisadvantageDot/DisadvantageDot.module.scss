@@ -3,7 +3,7 @@
 .disadvantagedDotSmall {
     @include u-circle('105');
     @include u-margin-left(1);
-
+    
     align-self: center;
     @include u-bg('blue-warm-70v');
 }
@@ -13,8 +13,8 @@
     margin: 2.3rem 1.5rem 2rem 0;
     // opacity: .6;
     border: 3px solid #1A4480;
-
+    
     //Maintain aspect ratio as screen width decreases
     flex: 1 0 2rem;
-    background-color: #CAD5DC;
+    background-color: #CAD5DC; 
 }

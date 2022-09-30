@@ -19,7 +19,7 @@ This README contains the following content:
 
 ### Via npm
 
-#### Install Node using NVM
+#### Install Node using NVM 
 
 <!-- markdown-link-check-disable-next-line -->
 This will work for both MacOS and Win10. Follow instructions on this [link](https://medium.com/@nodesource/installing-node-js-tutorial-using-nvm-5c6ff5925dd8). Be sure to read through the whole doc to find the sections within each step relevant to you (e.g. if you're using Homebrew, when you get to Step 2 look for the section, "Install NVM with Homebrew").
@@ -38,7 +38,7 @@ You should then be able to switch to that version of node by:
 
 To validate you are using node 14, type:
 
-`node -v`
+`node -v` 
 
 This should return *Now using node 14.x.x (npm v6.x.x)*
 #### Install Yarn
@@ -69,7 +69,7 @@ If you've made changes to the docker-compose file and want to re-build the j40_w
 
 `docker-compose build --no-cache j40_website`
 
-This will not use the cache and re-build the image. Then do
+This will not use the cache and re-build the image. Then do 
 
 `docker-compoe up`
 
@@ -78,10 +78,10 @@ This will not use the cache and re-build the image. Then do
 
 `docker image system`
 
-This should reduce the total used space.
+This should reduce the total used space. 
 
 #### Changing the source of tile / map layer
-If you don't want to use the local data-pipeline location for getting the tile / map layers, you can change the
+If you don't want to use the local data-pipeline location for getting the tile / map layers, you can change the 
 DATA_SOURCE env variable in the docker-compose.yml. See [environment variables](#environment-variables) for more info.
 
 #### Troubleshooting docker
@@ -174,7 +174,7 @@ There are 3 environment variables that can be set:
 2. SITE_URL = set this to change the base URL for the website's public html folder. If none is provided, then localhost:8000 is used. This is used for the site_map.xml file and robots.txt file. This is only used during production build aka `npm build`.
 3. PATH_PREFIX = set this to add an additional path(s) to SITE_URL. If none is provided then no additional paths are added to the SITE_URL. This is only used during production build aka `npm build`.
 
-Note when setting environment variables in docker-compose, DATA_SOURCE is the only one that is applicable.
+Note when setting environment variables in docker-compose, DATA_SOURCE is the only one that is applicable. 
 
 ## Feature Toggling
 
@@ -217,10 +217,10 @@ When developing, to use a flag:
 
 The following attemps to explain why certain packages versions have been chosen and what their current limitations are
 
-| package    | current version | latest version | using latest? | how does it break? |
+| package    | current version | latest version | using latest? | how does it break? |   
 |------------|-----------------|----------------|---------------|--------------------|
-| gatsby     | 3.14.6          | 4.14.2         | No            | when attempting to update - breaks all unit tests. Compatibility warning come up with all plugins but this doesn't seems to effect functionality. This is the latest version we can release without investigating unit tests. |
-| gatsby-cli | 3.14.2          | 4.15.2         | No            | when attempting to update - breaks all unit tests. Compatibility warning come up with all plugins but this doesn't seems to effect functionality. This is the latest version we can release without investigating unit tests.|
+| gatsby     | 3.14.6          | 4.14.2         | No            | when attempting to update - breaks all unit tests. Compatibility warning come up with all plugins but this doesn't seems to effect functionality. This is the latest version we can release without investigating unit tests. |    
+| gatsby-cli | 3.14.2          | 4.15.2         | No            | when attempting to update - breaks all unit tests. Compatibility warning come up with all plugins but this doesn't seems to effect functionality. This is the latest version we can release without investigating unit tests.|  
 | sass       | 1.32.12         | 1.52.3         | No            | This version is needed to surpress the dart warnings on / as division for each component. See [here](https://github.com/twbs/bootstrap/issues/34051#issuecomment-845884423) for more information |
-| uswds      | 2.11.2          | 3.0.2          | No            | Needs to stay at 2.11 for peer dependency on trussworks|
+| uswds      | 2.11.2          | 3.0.2          | No            | Needs to stay at 2.11 for peer dependency on trussworks|   
 | trussworks | 2.9.0           | 3.0.2          | No            | Needs to stay at 2.9 as 3.0 is breaking change |

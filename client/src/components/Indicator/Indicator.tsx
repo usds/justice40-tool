@@ -154,10 +154,10 @@ export const IndicatorValue = ({isPercent, displayStat}:IIndicatorValue) => {
         // eslint-disable-next-line max-len
         description: `Navigate to the explore the tool page. Click on the map. The side panel will show categories. Open a category. This will define the indicator value's ordinal suffix. For example the st in 91st, the rd in 23rd, and the th in 26th, etc.`,
         defaultMessage: `
-        {indicatorValue, selectordinal,
-          one {#st}
+        {indicatorValue, selectordinal, 
+          one {#st} 
           two {#nd}
-          =3 {#rd}
+          =3 {#rd} 
           other {#th}
       }
       `,

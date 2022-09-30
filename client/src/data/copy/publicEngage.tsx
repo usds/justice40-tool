@@ -39,9 +39,9 @@ export const PAGE_INTRO = defineMessages({
   PAGE_DESCRIPTION1: {
     id: 'public.eng.page.description1.text',
     defaultMessage: `
-      CEQ is hosting engagement opportunities to connect with the public about the current version of the
-      tool. These sessions are an opportunity to obtain training on the tool or to provide feedback on the
-      beta version of the tool. CEQ hopes that members of the public will join these engagements to learn
+      CEQ is hosting engagement opportunities to connect with the public about the current version of the 
+      tool. These sessions are an opportunity to obtain training on the tool or to provide feedback on the 
+      beta version of the tool. CEQ hopes that members of the public will join these engagements to learn 
       about the tool, have their questions answered, and share feedback.
     `,
     description: 'Navigate to the public engagement page, this will be the publiceng page description 1 text',
@@ -56,7 +56,7 @@ export const PAGE_INTRO = defineMessages({
   PAGE_DESCRIPTION3: {
     id: 'public.eng.page.description3.text',
     defaultMessage: `
-      As they become available, additional public trainings and engagement opportunities on the Climate
+      As they become available, additional public trainings and engagement opportunities on the Climate 
       and Economic Justice Screening Tool will also be posted on this page.
     `,
     description: 'Navigate to the public engagement page, this will be the publiceng page description 3 text',
@@ -129,10 +129,10 @@ export const EVENT_TYPES = {
     DESCRIPTION: {
       id: 'public.eng.page.event.training.description',
       defaultMessage: `
-        The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital
-        Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic
-        Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to
-        use the current version of the tool. The presenters at these webinars will be available to
+        The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital 
+        Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic 
+        Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to 
+        use the current version of the tool. The presenters at these webinars will be available to 
         provide technical support and address issues related to accessing and using the tool.
       `,
       description: 'Navigate to the public engagement page, this will be the public engagement page event training session description',
@@ -147,10 +147,10 @@ export const EVENT_TYPES = {
     DESCRIPTION: {
       id: 'public.eng.page.event.listening.sess.description',
       defaultMessage: `
-        CEQ is hosting public listening sessions to seek input and feedback on the beta version of the
-        tool, including on the datasets it includes and the methodology it uses. This feedback is critical
-        to the development and enhancement of the tool. This feedback will help CEQ update and refine the
-        tool to ensure that it reflects the environmental, climate and other challenges that communities
+        CEQ is hosting public listening sessions to seek input and feedback on the beta version of the 
+        tool, including on the datasets it includes and the methodology it uses. This feedback is critical 
+        to the development and enhancement of the tool. This feedback will help CEQ update and refine the 
+        tool to ensure that it reflects the environmental, climate and other challenges that communities 
         are experiencing.
       `,
       description: 'Navigate to the public engagement page, this will be the public engagement page event listening session description',

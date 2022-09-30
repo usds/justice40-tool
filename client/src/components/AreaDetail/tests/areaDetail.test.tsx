@@ -65,3 +65,4 @@ describe('rendering of the AreaDetail', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 });
+

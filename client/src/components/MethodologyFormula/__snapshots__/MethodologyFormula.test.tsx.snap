@@ -4,28 +4,28 @@ exports[`rendering of the MethodologyFormula checks if component renders 1`] = `
 <DocumentFragment>
   <section>
     <p>
-
-      Under the current formula, a census tract will be identified as disadvantaged in one or more
-      categories of criteria:
-
+      
+      Under the current formula, a census tract will be identified as disadvantaged in one or more 
+      categories of criteria: 
+    
     </p>
     <p>
-
-
+      
+      
       <strong>
         IF
       </strong>
        the census tract is above the threshold for one or more environmental or climate indicators
-
+      
     </p>
     <p>
-
-
+      
+      
       <strong>
         AND
       </strong>
        the census tract is above the threshold for the socioeconomic indicators
-
+    
     </p>
   </section>
 </DocumentFragment>

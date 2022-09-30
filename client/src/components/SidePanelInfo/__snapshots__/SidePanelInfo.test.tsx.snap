@@ -11,16 +11,16 @@ exports[`rendering of the component expects the render to match snapshot 1`] = `
     <p
       tabindex="0"
     >
-
+      
       This tool identifies communities that are marginalized, underserved, and overburdened by pollution. These communities are located in census tracts that are at or above the thresholds in one or more of eight categories of criteria.
-
+    
     </p>
     <p
       tabindex="0"
     >
-
+      
       Zoom in or search and select to see data about any census tract of interest
-
+    
     </p>
     <img
       alt="
@@ -32,9 +32,9 @@ exports[`rendering of the component expects the render to match snapshot 1`] = `
     <p
       tabindex="0"
     >
-
+      
       The tool uses census tracts that represent about 4,000 people, which is the smallest unit of geography for which consistent data can be displayed on the map.
-
+    
     </p>
     <img
       alt="
@@ -46,9 +46,9 @@ exports[`rendering of the component expects the render to match snapshot 1`] = `
     <p
       tabindex="0"
     >
-
+      
       The tool ranks each census tract using percentiles that show how much burden each tract experiences relative to all other tracts, for each criterion.
-
+    
     </p>
     <img
       alt="
@@ -60,9 +60,9 @@ exports[`rendering of the component expects the render to match snapshot 1`] = `
     <p
       tabindex="0"
     >
-
+      
       Percentages are used for certain variables, i.e. those relating to high school achievement rate and to the share of individuals not currently enrolled in higher education.
-
+    
     </p>
     <img
       alt="
@@ -74,9 +74,9 @@ exports[`rendering of the component expects the render to match snapshot 1`] = `
     <p
       tabindex="0"
     >
-
+      
     Thresholds for each category determine if a tract should be identified as disadvantaged because it has exceeded a certain value for the relevant indicators.
-
+  
     </p>
   </aside>
 </DocumentFragment>

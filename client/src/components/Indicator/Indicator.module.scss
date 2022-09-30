@@ -6,37 +6,37 @@
   flex-direction: column;
   @include u-padding-top(1.5);
   @include u-padding-bottom(1.5);
-
+  
   .indicatorRow {
     display: flex;
     justify-content: space-between;
-
+    
     @media screen and (max-width: $mobileBreakpoint) {
       flex: 1 0 40%;
       align-self: inherit;
       padding-left: 3rem;
       padding-top: 1rem;
     }
-
+    
     .indicatorName {
       // flex: 0 1 77%;
       flex-basis: 60%;
       display: flex;
       flex-direction: column;
       @include typeset('sans', '2xs', 2);
-      @include u-text('medium');
-
+      @include u-text('medium'); 
+      
       .indicatorDesc {
-        @include typeset('sans', '3xs', 2);
-        @include u-text('thin');
-        max-width: 12rem;
+        @include typeset('sans', '3xs', 2); 
+        @include u-text('thin'); 
+        max-width: 12rem;    
         @include u-margin-top(0);
         @media screen and (max-width: 1024px) {
           max-width: 80%;
         }
       }
     }
-
+    
     .indicatorValueCol {
       display: flex;
       flex-direction: column;
@@ -47,7 +47,7 @@
 
         .indicatorValue {
           margin-left: 2.2rem;
-        }
+        } 
 
         .indicatorArrow {
           margin-bottom: -.375rem;
@@ -63,7 +63,7 @@
           }
         }
       }
-
+      
       .indicatorValueSubText{
         display: flex;
         flex-direction: column;
@@ -71,7 +71,7 @@
         text-align: right;
         @include u-width(8);
         @include typeset('sans', '3xs', 2);
-        @include u-text('thin');
+        @include u-text('thin'); 
       }
     }
 
@@ -98,13 +98,13 @@
   @include u-padding-right(2.5);
 
 
-  // Overwrite indicator mixin with bolder fonts for disadv. indicator
+  // Overwrite indicator mixin with bolder fonts for disadv. indicator 
   .indicatorRow {
     .indicatorName {
-      @include u-text('bold');
-
+      @include u-text('bold'); 
+      
       .indicatorDesc {
-        @include u-text('normal');
+        @include u-text('normal'); 
       }
     }
   }

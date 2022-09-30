@@ -7,7 +7,7 @@ echo "[pre-commit hook msg]: running pre-commit hook ..."
 # https://typicode.github.io/husky/#/?id=custom-directory
 cd client
 
-# This file will automatically run intl:extract and compile on every commit
+# This file will automatically run intl:extract and compile on every commit 
 # write the extracted errors into a file
 npm run intl:extract 2> extract-err.txt
 

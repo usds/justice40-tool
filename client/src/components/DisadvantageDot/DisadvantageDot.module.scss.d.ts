@@ -11,3 +11,4 @@ declare const DisadvantagedDotModule: DisadvantagedDotNamespace.IDisadvantagedDo
   };
 
   export = DisadvantagedDotModule;
+
