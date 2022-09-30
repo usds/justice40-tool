@@ -694,7 +694,9 @@ class ScoreETL(ExtractTransformLoad):
         self.df = self._backfill_island_demographics(self.df)
 
     def load(self) -> None:
-        logger.info("Saving Score CSV")
+        logger.info(
+            f"Saving Score CSV to {constants.DATA_SCORE_CSV_FULL_FILE_PATH}."
+        )
         constants.DATA_SCORE_CSV_FULL_DIR.mkdir(parents=True, exist_ok=True)
 
         self.df.to_csv(constants.DATA_SCORE_CSV_FULL_FILE_PATH, index=False)
