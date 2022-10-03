@@ -1278,7 +1278,7 @@ export const LOW_INCOME_TOOLTIP = defineMessages({
   },
   IMP_YES_ADJ_YES: {
     id: 'explore.map.page.side.panel.indicator.low.income.tooltip.imp.yes.adj.no',
-    defaultMessage: `Tracts with missing income data<br />are given estimated incomes<br />based on an average of the<br />incomes of the surrounding tracts.<br /> Tracts that are surrounded by<br />tracts that are considered<br />disadvantaged have a<br />low incomethreshold.`,
+    defaultMessage: `Tracts with missing income data<br />are given estimated incomes<br />based on an average of the<br />incomes of the surrounding tracts.<br /> Tracts that are surrounded by<br />tracts that are considered<br />disadvantaged have a<br />low income threshold.`,
     description: 'Hover over the low income icon and it will show Tracts with missing income data are given estimated incomes based on an average of the incomes of the surrounding tracts. Tracts that are surrounded by tracts that are considered disadvantaged have a low income threshold.',
   },
 });
