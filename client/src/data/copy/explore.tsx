@@ -852,8 +852,8 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
   },
   LACK_PLUMBING: {
     id: 'explore.map.page.side.panel.indicator.lack.plumbing',
-    defaultMessage: 'Lack of plumbing',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Lack of plumbing`,
+    defaultMessage: 'Lack of indoor plumbing',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Lack of indoor plumbing`,
   },
   LEAD_PAINT: {
     id: 'explore.map.page.side.panel.indicator.leadPaint',
@@ -1111,8 +1111,8 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   },
   LACK_GREEN_SPACE: {
     id: 'explore.map.page.side.panel.indicator.description.lack.green.space',
-    defaultMessage: 'Share of land covered with artificial materials like concrete or pavement and crop land',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description Share of land covered with artificial materials like concrete or pavement and crop land`,
+    defaultMessage: 'Share of non-crop land covered with artificial materials like concrete or pavement',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description Share of non-crop land covered with artificial materials like concrete or pavement`,
   },
   LACK_PLUMBING: {
     id: 'explore.map.page.side.panel.indicator.description.lack.plumbing',
