@@ -60,21 +60,21 @@ SCORE_DOWNLOADABLE_DIR = DATA_SCORE_DIR / "downloadable"
 SCORE_DOWNLOADABLE_PDF_FILE_NAME = "draft_communities_list.pdf"
 SCORE_DOWNLOADABLE_PDF_FILE_PATH = FILES_PATH / SCORE_DOWNLOADABLE_PDF_FILE_NAME
 SCORE_DOWNLOADABLE_CSV_FILE_PATH = (
-    SCORE_DOWNLOADABLE_DIR / f"{version_str}_communities-{timestamp_str}.csv"
+    SCORE_DOWNLOADABLE_DIR / f"{version_str}-communities-{timestamp_str}.csv"
 )
 SCORE_DOWNLOADABLE_EXCEL_FILE_PATH = (
-    SCORE_DOWNLOADABLE_DIR / f"{version_str}_communities-{timestamp_str}.xlsx"
+    SCORE_DOWNLOADABLE_DIR / f"{version_str}-communities-{timestamp_str}.xlsx"
 )
 SCORE_DOWNLOADABLE_CODEBOOK_FILE_PATH = (
-    SCORE_DOWNLOADABLE_DIR / f"codebook-{timestamp_str}.csv"
+    SCORE_DOWNLOADABLE_DIR / f"{version_str}-codebook-{timestamp_str}.csv"
 )
 SCORE_DOWNLOADABLE_CSV_ZIP_FILE_PATH = (
     SCORE_DOWNLOADABLE_DIR
-    / f"{version_str}_communities-csv-{timestamp_str}.zip"
+    / f"{version_str}-communities-csv-{timestamp_str}.zip"
 )
 SCORE_DOWNLOADABLE_XLS_ZIP_FILE_PATH = (
     SCORE_DOWNLOADABLE_DIR
-    / f"{version_str}_communities-xls-{timestamp_str}.zip"
+    / f"{version_str}-communities-xls-{timestamp_str}.zip"
 )
 
 # For the codebook
