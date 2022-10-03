@@ -560,7 +560,7 @@ export const PRIORITIZATION_COPY = {
   />,
   PRIO_1_BURD: <FormattedMessage
     id={'explore.map.page.side.panel.prio.copy.prio.one.burden'}
-    defaultMessage={'This tract is considered disadvantaged because it meets one burden threshold AND the associated socio-economic threshold..'}
+    defaultMessage={'This tract is considered disadvantaged because it meets one burden threshold AND the associated socio-economic threshold.'}
     description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is considered disadvantaged because it meets one burden threshold AND the associated socio-economic threshold..`}
   />,
   DONUT: <FormattedMessage
