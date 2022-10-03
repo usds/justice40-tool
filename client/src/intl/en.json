@@ -256,11 +256,11 @@
     "description": "Navigate to the contact page, this is the census tract feedback section"
   },
   "contact.page.fab.survey.link": {
-    "defaultMessage": "https://www.surveymonkey.com/r/cejst-survey",
+    "defaultMessage": "https://www.surveymonkey.com/r/P3LWTSB",
     "description": "The footer sticky link that links to the CEJST survey"
   },
   "contact.page.fab.survey.text": {
-    "defaultMessage": "Help improve the site & data",
+    "defaultMessage": "Help us improve the site & data",
     "description": "Navigate to the contact page, this is the text for floating action button"
   },
   "contact.page.general": {
