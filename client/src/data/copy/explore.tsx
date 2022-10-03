@@ -1268,7 +1268,7 @@ export const SIDE_PANEL_SPACERS = {
 export const LOW_INCOME_TOOLTIP = defineMessages({
   IMP_NO_ADJ_YES: {
     id: 'explore.map.page.side.panel.indicator.low.income.tooltip.imp.no.adj.yes',
-    defaultMessage: `Tracts that are surrounded by tracts<br />that are considered disadvantaged<br />have a low income threshold.`,
+    defaultMessage: `Tracts that are surrounded by tracts<br />that are considered disadvantaged<br />have an adjusted low income threshold.`,
     description: 'Hover over the low income icon and it will show Tracts that are surrounded by tracts that are considered disadvantaged have a low income threshold.',
   },
   IMP_YES_ADJ_NO: {
