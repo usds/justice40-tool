@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 import datetime
 
@@ -44,22 +45,36 @@ DATA_SCORE_JSON_INDEX_FILE_PATH = (
 DATA_SCORE_TILES_DIR = DATA_SCORE_DIR / "tiles"
 
 # Downloadable paths
-current_dt = datetime.datetime.now()
-timestamp_str = current_dt.strftime("%Y-%m-%d-%H%MGMT")
+if not os.environ.get("J40_VERSION_DATE_STRING"):
+    current_dt = datetime.datetime.now()
+    timestamp_str = current_dt.strftime("%Y-%m-%d-%H%MGMT")
+else:
+    timestamp_str = os.environ.get("J40_VERSION_DATE_STRING")
+
+if not os.environ.get("J40_VERSION_LABEL_STRING"):
+    version_str = "beta"
+else:
+    version_str = os.environ.get("J40_VERSION_LABEL_STRING")
+
 SCORE_DOWNLOADABLE_DIR = DATA_SCORE_DIR / "downloadable"
-SCORE_DOWNLOADABLE_PDF_FILE_NAME = "Draft_Communities_List.pdf"
+SCORE_DOWNLOADABLE_PDF_FILE_NAME = "draft_communities_list.pdf"
 SCORE_DOWNLOADABLE_PDF_FILE_PATH = FILES_PATH / SCORE_DOWNLOADABLE_PDF_FILE_NAME
 SCORE_DOWNLOADABLE_CSV_FILE_PATH = (
-    SCORE_DOWNLOADABLE_DIR / f"communities-{timestamp_str}.csv"
+    SCORE_DOWNLOADABLE_DIR / f"{version_str}_communities-{timestamp_str}.csv"
 )
 SCORE_DOWNLOADABLE_EXCEL_FILE_PATH = (
-    SCORE_DOWNLOADABLE_DIR / f"communities-{timestamp_str}.xlsx"
+    SCORE_DOWNLOADABLE_DIR / f"{version_str}_communities-{timestamp_str}.xlsx"
 )
 SCORE_DOWNLOADABLE_CODEBOOK_FILE_PATH = (
     SCORE_DOWNLOADABLE_DIR / f"codebook-{timestamp_str}.csv"
 )
-SCORE_DOWNLOADABLE_ZIP_FILE_PATH = (
-    SCORE_DOWNLOADABLE_DIR / "Screening_Tool_Data.zip"
+SCORE_DOWNLOADABLE_CSV_ZIP_FILE_PATH = (
+    SCORE_DOWNLOADABLE_DIR
+    / f"{version_str}_communities-csv-{timestamp_str}.zip"
+)
+SCORE_DOWNLOADABLE_XLS_ZIP_FILE_PATH = (
+    SCORE_DOWNLOADABLE_DIR
+    / f"{version_str}_communities-xls-{timestamp_str}.zip"
 )
 
 # For the codebook
