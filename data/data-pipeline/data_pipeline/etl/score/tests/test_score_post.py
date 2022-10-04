@@ -141,4 +141,5 @@ def test_load_downloadable_zip(etl, monkeypatch, score_data_expected):
     assert constants.SCORE_DOWNLOADABLE_DIR.is_dir()
     assert constants.SCORE_DOWNLOADABLE_CSV_FILE_PATH.is_file()
     assert constants.SCORE_DOWNLOADABLE_EXCEL_FILE_PATH.is_file()
-    assert constants.SCORE_DOWNLOADABLE_ZIP_FILE_PATH.is_file()
+    assert constants.SCORE_DOWNLOADABLE_CSV_ZIP_FILE_PATH.is_file()
+    assert constants.SCORE_DOWNLOADABLE_XLS_ZIP_FILE_PATH.is_file()

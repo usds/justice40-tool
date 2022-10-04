@@ -492,8 +492,8 @@ class PostScoreETL(ExtractTransformLoad):
         csv_path = constants.SCORE_DOWNLOADABLE_CSV_FILE_PATH
         excel_path = constants.SCORE_DOWNLOADABLE_EXCEL_FILE_PATH
         codebook_path = constants.SCORE_DOWNLOADABLE_CODEBOOK_FILE_PATH
-        zip_path = constants.SCORE_DOWNLOADABLE_ZIP_FILE_PATH
-        pdf_path = constants.SCORE_DOWNLOADABLE_PDF_FILE_PATH
+        csv_zip_path = constants.SCORE_DOWNLOADABLE_CSV_ZIP_FILE_PATH
+        xls_zip_path = constants.SCORE_DOWNLOADABLE_XLS_ZIP_FILE_PATH
 
         logger.info("Writing downloadable excel")
         excel_config = self._load_excel_from_df(
@@ -542,14 +542,19 @@ class PostScoreETL(ExtractTransformLoad):
         # load codebook to disk
         codebook_df.to_csv(codebook_path, index=False)
 
-        logger.info("Compressing files")
+        logger.info("Compressing csv files")
         files_to_compress = [
             csv_path,
+            codebook_path,
+        ]
+        zip_files(csv_zip_path, files_to_compress)
+
+        logger.info("Compressing xls files")
+        files_to_compress = [
             excel_path,
             codebook_path,
-            pdf_path,
         ]
-        zip_files(zip_path, files_to_compress)
+        zip_files(xls_zip_path, files_to_compress)
 
     def load(self) -> None:
         self._load_score_csv_full(
