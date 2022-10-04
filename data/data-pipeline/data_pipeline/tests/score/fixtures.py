@@ -161,7 +161,7 @@ def fuds_df():
 @pytest.fixture()
 def geocorr_urban_rural_df():
     geocorr_urban_rural_csv = (
-        constants.DATA_PATH / "dataset" / "geocorr" / "usa.csv"
+        constants.DATA_PATH / "dataset" / "geocorr_urban" / "usa.csv"
     )
     return pd.read_csv(
         geocorr_urban_rural_csv,

@@ -387,6 +387,9 @@ class PostScoreETL(ExtractTransformLoad):
 
         return final_df
 
+    def _create_zip_codes_data(self, downloadable_df):
+        pass
+
     def transform(self) -> None:
         logger.info("Transforming data sources for Score + County CSVs")
 
@@ -542,12 +545,18 @@ class PostScoreETL(ExtractTransformLoad):
         # load codebook to disk
         codebook_df.to_csv(codebook_path, index=False)
 
+        # TODO: Write zip-code based files
+        zip_codes_df = self._create_zip_codes_data(
+            downloadable_df=downloadable_df
+        )
+
         logger.info("Compressing files")
         files_to_compress = [
             csv_path,
             excel_path,
             codebook_path,
             pdf_path,
+            # TODO: add zip-code based files
         ]
         zip_files(zip_path, files_to_compress)
 

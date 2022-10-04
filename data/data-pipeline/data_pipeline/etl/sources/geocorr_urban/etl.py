@@ -10,13 +10,13 @@ from data_pipeline.utils import (
 logger = get_module_logger(__name__)
 
 
-class GeoCorrETL(ExtractTransformLoad):
-    NAME = "geocorr"
+class GeoCorrUrbanETL(ExtractTransformLoad):
+    NAME = "geocorr_urban"
     GEO_LEVEL: ValidGeoLevel = ValidGeoLevel.CENSUS_TRACT
     PUERTO_RICO_EXPECTED_IN_DATA = False
 
     def __init__(self):
-        self.OUTPUT_PATH = self.DATA_PATH / "dataset" / "geocorr"
+        self.OUTPUT_PATH = self.DATA_PATH / "dataset" / "geocorr_urban"
 
         # Need to change hyperlink to S3
 
@@ -37,7 +37,7 @@ class GeoCorrETL(ExtractTransformLoad):
 
     def extract(self) -> None:
         logger.info(
-            "Starting to download 2MB GeoCorr Urban Rural Census Tract Map file."
+            "Starting to download 2MB geocorr_urban Urban Rural Census Tract Map file."
         )
         unzip_file_from_url(
             file_url=settings.AWS_JUSTICE40_DATASOURCES_URL
