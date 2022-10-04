@@ -382,7 +382,6 @@ TILES_SCORE_COLUMNS = {
     field_names.COUNT_OF_TRIBAL_AREAS_IN_TRACT: "TA_COUNT",
     field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT: "TA_PERC",
     field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT_DISPLAY_STRING: "TA_PERC_STR",
-
 }
 
 # columns to round floats to 2 decimals
