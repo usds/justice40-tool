@@ -55,6 +55,7 @@ class TribalOverlapETL(ExtractTransformLoad):
             field_names.COUNT_OF_TRIBAL_AREAS_IN_TRACT,
             field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT,
             field_names.NAMES_OF_TRIBAL_AREAS_IN_TRACT,
+            field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT_DISPLAY_STRING,
         ]
 
         self.output_df: pd.DataFrame
@@ -67,6 +68,42 @@ class TribalOverlapETL(ExtractTransformLoad):
         str_list = series.tolist()
         str_list = sorted(str_list)
         return ", ".join(str_list)
+
+    @staticmethod
+    def _adjust_percentage_to_string(percentage_float: float) -> str:
+        """Helper method that converts numeric floats to strings based on what-to-show rules.
+
+        What are these rules?
+        0. If None, return none
+        1. If the percentage is below 1%, produce 'less than 1%'
+        2. If the percentage is above 99.95%, produce '100%'
+        3. If the percentage is X.00 when rounded to two sig digits, display the integer of the percent
+        4. If the percentage has unique significant digits, report two digits
+        """
+        # Rule 0
+        if not percentage_float:
+            # I believe we need to do this because JS will do weird things with a mix-type column?
+            return "No tribal areas"
+        # Rule 1
+        if percentage_float < 0.01:
+            return "less than 1%"
+        # Rule 2
+        if percentage_float > 0.9995:
+            return "100%"
+
+        rounded_percentage_str = str(round(percentage_float, 4) * 100)
+        first_digits, last_digits = rounded_percentage_str.split(".")
+
+        # Rule 3 (this is a shorthand because round(4) will truncate repeated 0s)
+        if last_digits[-1] == "0":
+            return first_digits + "%"
+
+        # Rule 4
+        if last_digits != "00":
+            return rounded_percentage_str + "%"
+
+        # There is something missing!
+        raise Exception("Yikes! The string conversion here failed!")
 
     def extract(self) -> None:
         self.census_tract_gdf = get_tract_geojson()
@@ -207,6 +244,14 @@ class TribalOverlapETL(ExtractTransformLoad):
             None,
             # Otherwise, set the value to what it was.
             merged_output_df[field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT],
+        )
+
+        # The very final thing we want to do is produce a string for the front end to show
+        # We do this here so that all of the logic is included
+        merged_output_df[
+            field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT_DISPLAY_STRING
+        ] = merged_output_df[field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT].apply(
+            self._adjust_percentage_to_string
         )
 
         self.output_df = merged_output_df
