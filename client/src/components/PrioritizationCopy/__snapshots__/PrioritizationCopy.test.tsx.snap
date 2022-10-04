@@ -352,7 +352,7 @@ exports[`rendering of PrioritizationCopy Component - checks if component renders
 <DocumentFragment>
   <div>
     <div>
-      This tract is considered disadvantaged because it meets one burden threshold AND the associated socio-economic threshold..
+      This tract is considered disadvantaged because it meets one burden threshold AND the associated socio-economic threshold.
     </div>
   </div>
 </DocumentFragment>

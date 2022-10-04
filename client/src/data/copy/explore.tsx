@@ -560,7 +560,7 @@ export const PRIORITIZATION_COPY = {
   />,
   PRIO_1_BURD: <FormattedMessage
     id={'explore.map.page.side.panel.prio.copy.prio.one.burden'}
-    defaultMessage={'This tract is considered disadvantaged because it meets one burden threshold AND the associated socio-economic threshold..'}
+    defaultMessage={'This tract is considered disadvantaged because it meets one burden threshold AND the associated socio-economic threshold.'}
     description={`Navigate to the explore the map page. Click on tract, The side panel will show This tract is considered disadvantaged because it meets one burden threshold AND the associated socio-economic threshold..`}
   />,
   DONUT: <FormattedMessage
@@ -852,8 +852,8 @@ export const SIDE_PANEL_INDICATORS = defineMessages({
   },
   LACK_PLUMBING: {
     id: 'explore.map.page.side.panel.indicator.lack.plumbing',
-    defaultMessage: 'Lack of plumbing',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Lack of plumbing`,
+    defaultMessage: 'Lack of indoor plumbing',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Lack of indoor plumbing`,
   },
   LEAD_PAINT: {
     id: 'explore.map.page.side.panel.indicator.leadPaint',
@@ -1111,8 +1111,8 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   },
   LACK_GREEN_SPACE: {
     id: 'explore.map.page.side.panel.indicator.description.lack.green.space',
-    defaultMessage: 'Share of land covered with artificial materials like concrete or pavement and crop land',
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description Share of land covered with artificial materials like concrete or pavement and crop land`,
+    defaultMessage: 'Share of non-crop land covered with artificial materials like concrete or pavement',
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description Share of non-crop land covered with artificial materials like concrete or pavement`,
   },
   LACK_PLUMBING: {
     id: 'explore.map.page.side.panel.indicator.description.lack.plumbing',
@@ -1268,7 +1268,7 @@ export const SIDE_PANEL_SPACERS = {
 export const LOW_INCOME_TOOLTIP = defineMessages({
   IMP_NO_ADJ_YES: {
     id: 'explore.map.page.side.panel.indicator.low.income.tooltip.imp.no.adj.yes',
-    defaultMessage: `Tracts that are surrounded by tracts<br />that are considered disadvantaged<br />have a low income threshold.`,
+    defaultMessage: `Tracts that are surrounded by tracts<br />that are considered disadvantaged<br />have an adjusted low income threshold.`,
     description: 'Hover over the low income icon and it will show Tracts that are surrounded by tracts that are considered disadvantaged have a low income threshold.',
   },
   IMP_YES_ADJ_NO: {
@@ -1278,7 +1278,7 @@ export const LOW_INCOME_TOOLTIP = defineMessages({
   },
   IMP_YES_ADJ_YES: {
     id: 'explore.map.page.side.panel.indicator.low.income.tooltip.imp.yes.adj.no',
-    defaultMessage: `Tracts with missing income data<br />are given estimated incomes<br />based on an average of the<br />incomes of the surrounding tracts.<br /> Tracts that are surrounded by<br />tracts that are considered<br />disadvantaged have a<br />low incomethreshold.`,
+    defaultMessage: `Tracts with missing income data<br />are given estimated incomes<br />based on an average of the<br />incomes of the surrounding tracts.<br /> Tracts that are surrounded by<br />tracts that are considered<br />disadvantaged have a<br />low income threshold.`,
     description: 'Hover over the low income icon and it will show Tracts with missing income data are given estimated incomes based on an average of the incomes of the surrounding tracts. Tracts that are surrounded by tracts that are considered disadvantaged have a low income threshold.',
   },
 });

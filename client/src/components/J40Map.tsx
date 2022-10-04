@@ -28,7 +28,7 @@ import AreaDetail from './AreaDetail';
 import MapInfoPanel from './mapInfoPanel';
 import MapSearch from './MapSearch';
 import MapTractLayers from './MapTractLayers/MapTractLayers';
-import MapTribalLayer from './MapTribalLayers/MapTribalLayers';
+// import MapTribalLayer from './MapTribalLayers/MapTribalLayers';
 import TerritoryFocusControl from './territoryFocusControl';
 import {getOSBaseMap} from '../data/getOSBaseMap';
 

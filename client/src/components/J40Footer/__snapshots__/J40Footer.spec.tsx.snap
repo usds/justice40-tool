@@ -221,7 +221,7 @@ exports[`J40Footer renders correctly 1`] = `
       data-testid="gridContainer"
     >
       <a
-        href="https://www.surveymonkey.com/r/cejst-survey"
+        href="https://www.surveymonkey.com/r/P3LWTSB"
         rel="noreferrer"
         target="_blank"
       >
@@ -230,7 +230,7 @@ exports[`J40Footer renders correctly 1`] = `
           data-testid="button"
           type="button"
         >
-          Help improve the site & data
+          Help us improve the site & data
           <img
             alt="launch icon"
             src="test-file-stub"

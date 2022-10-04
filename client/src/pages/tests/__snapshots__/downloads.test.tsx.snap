@@ -688,7 +688,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
       data-testid="gridContainer"
     >
       <a
-        href="https://www.surveymonkey.com/r/cejst-survey"
+        href="https://www.surveymonkey.com/r/P3LWTSB"
         rel="noreferrer"
         target="_blank"
       >
@@ -697,7 +697,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           data-testid="button"
           type="button"
         >
-          Help improve the site & data
+          Help us improve the site & data
           <img
             alt="launch icon"
             src="test-file-stub"

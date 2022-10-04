@@ -28,12 +28,12 @@ export const PAGE_INTRO = defineMessages({
   },
   SURVEY_TEXT: {
     id: 'contact.page.fab.survey.text',
-    defaultMessage: `Help improve the site & data`,
+    defaultMessage: `Help us improve the site & data`,
     description: 'Navigate to the contact page, this is the text for floating action button',
   },
   SURVEY_URL: {
     id: 'contact.page.fab.survey.link',
-    defaultMessage: 'https://www.surveymonkey.com/r/cejst-survey',
+    defaultMessage: 'https://www.surveymonkey.com/r/P3LWTSB',
     description: 'The footer sticky link that links to the CEJST survey',
   },
 });
