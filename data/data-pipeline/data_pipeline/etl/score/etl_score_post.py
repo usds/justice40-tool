@@ -1,29 +1,23 @@
-from pathlib import Path
 import json
-from numpy import float64
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
-from data_pipeline.content.schemas.download_schemas import (
-    CSVConfig,
-    CodebookConfig,
-    ExcelConfig,
-)
-
+from data_pipeline.content.schemas.download_schemas import CodebookConfig
+from data_pipeline.content.schemas.download_schemas import CSVConfig
+from data_pipeline.content.schemas.download_schemas import ExcelConfig
 from data_pipeline.etl.base import ExtractTransformLoad
-from data_pipeline.etl.score.etl_utils import floor_series, create_codebook
-from data_pipeline.utils import (
-    get_module_logger,
-    zip_files,
-    load_yaml_dict_from_file,
-    column_list_from_yaml_object_fields,
-    load_dict_from_yaml_object_fields,
-)
+from data_pipeline.etl.score.etl_utils import create_codebook
+from data_pipeline.etl.score.etl_utils import floor_series
+from data_pipeline.etl.sources.census.etl_utils import check_census_data_source
 from data_pipeline.score import field_names
+from data_pipeline.utils import column_list_from_yaml_object_fields
+from data_pipeline.utils import get_module_logger
+from data_pipeline.utils import load_dict_from_yaml_object_fields
+from data_pipeline.utils import load_yaml_dict_from_file
+from data_pipeline.utils import zip_files
+from numpy import float64
 
-
-from data_pipeline.etl.sources.census.etl_utils import (
-    check_census_data_source,
-)
 from . import constants
 
 logger = get_module_logger(__name__)

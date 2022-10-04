@@ -1,8 +1,8 @@
 # Glossary
 
-This glossary is intended to be a helpful guide to terms and acronyms we use across the Justice40 project and in our open source community. We'll try to keep this list update to date and in alphabetical order for ease of use. If you see an error, please help leave this repo better than you found it by submitting a pull request with the fix :) 
+This glossary is intended to be a helpful guide to terms and acronyms we use across the Justice40 project and in our open source community. We'll try to keep this list update to date and in alphabetical order for ease of use. If you see an error, please help leave this repo better than you found it by submitting a pull request with the fix :)
 
-If you don't see the term you're looking for here, please submit an issue to this repo with the term in question and why you think it should be added. 
+If you don't see the term you're looking for here, please submit an issue to this repo with the term in question and why you think it should be added.
 
 Know a term and its definition that you don't see here? Make a pull request with the term, definition, and reason for inclusion and a team member will review shortly.
 

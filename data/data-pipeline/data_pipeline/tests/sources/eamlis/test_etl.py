@@ -1,11 +1,9 @@
 # pylint: disable=protected-access
-from unittest import mock
 import pathlib
-from data_pipeline.etl.base import ValidGeoLevel
+from unittest import mock
 
-from data_pipeline.etl.sources.eamlis.etl import (
-    AbandonedMineETL,
-)
+from data_pipeline.etl.base import ValidGeoLevel
+from data_pipeline.etl.sources.eamlis.etl import AbandonedMineETL
 from data_pipeline.tests.sources.example.test_etl import TestETL
 from data_pipeline.utils import get_module_logger
 

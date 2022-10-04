@@ -1,4 +1,4 @@
-The following is the description from eAMLIS as of August 16, 2022. 
+The following is the description from eAMLIS as of August 16, 2022.
 ---
 
 e-AMLIS is not a comprehensive database of all AML features or all AML grant activities. e-AMLIS is a national inventory that provides information about known abandoned mine land (AML) features including polluted waters. The majority of the data in e-AMLIS provides information about known coal AML features for the 25 states and 3 tribal SMCRA-approved AML Programs. e-AMLIS also provides limited information on non-coal AML features, and, non-coal reclamation projects as well as AML features for states and tribes that do not have an approved AML Program. Additionally, e-AMLIS only accounts for the direct construction cost to reclaim each AML feature that has been identified by states and Tribes. Other project costs such as planning, design, permitting, and construction oversight are not tracked in e-AMLIS.

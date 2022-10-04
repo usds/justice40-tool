@@ -2,10 +2,9 @@
 # but it may be a known bug. https://github.com/PyCQA/pylint/issues/1498
 # pylint: disable=unsubscriptable-object
 # pylint: disable=unsupported-assignment-operation
-
 import pandas as pd
-
-from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
+from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)

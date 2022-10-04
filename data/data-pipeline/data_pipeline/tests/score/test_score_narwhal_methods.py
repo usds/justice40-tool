@@ -1,10 +1,9 @@
 # pylint: disable=protected-access
-
 import pandas as pd
 import pytest
 from data_pipeline.config import settings
-from data_pipeline.score import field_names
 from data_pipeline.etl.score.etl_score import ScoreETL
+from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)

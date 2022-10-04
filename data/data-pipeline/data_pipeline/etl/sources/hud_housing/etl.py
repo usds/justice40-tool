@@ -1,5 +1,6 @@
 import pandas as pd
-from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
+from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.utils import get_module_logger
 
 logger = get_module_logger(__name__)

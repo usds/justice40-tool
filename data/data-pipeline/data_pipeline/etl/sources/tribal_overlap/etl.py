@@ -1,12 +1,11 @@
 import geopandas as gpd
 import numpy as np
 import pandas as pd
-from data_pipeline.etl.base import ExtractTransformLoad, ValidGeoLevel
-from data_pipeline.etl.sources.geo_utils import (
-    add_tracts_for_geometries,
-    get_tribal_geojson,
-    get_tract_geojson,
-)
+from data_pipeline.etl.base import ExtractTransformLoad
+from data_pipeline.etl.base import ValidGeoLevel
+from data_pipeline.etl.sources.geo_utils import add_tracts_for_geometries
+from data_pipeline.etl.sources.geo_utils import get_tract_geojson
+from data_pipeline.etl.sources.geo_utils import get_tribal_geojson
 from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger
 

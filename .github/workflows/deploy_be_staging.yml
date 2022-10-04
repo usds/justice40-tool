@@ -79,8 +79,8 @@ jobs:
         with:
           # Deploy to S3 for the Staging URL
           message: |
-            ** Score Deployed! **   
-            Find it here: 
+            ** Score Deployed! **
+            Find it here:
             - Score Full usa.csv: https://justice40-data.s3.amazonaws.com/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/csv/full/usa.csv
             - Download Zip Packet: https://justice40-data.s3.amazonaws.com/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/downloadable/Screening_Tool_Data.zip
           repo-token: ${{ secrets.GITHUB_TOKEN }}
@@ -116,7 +116,7 @@ jobs:
         with:
           # Deploy to S3 for the staging URL
           message: |
-            ** Map Deployed! **   
+            ** Map Deployed! **
             Map with Staging Backend: https://screeningtool.geoplatform.gov/en?flags=stage_hash=${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}
             Find tiles here: https://justice40-data.s3.amazonaws.com/data-pipeline-staging/${{env.PR_NUMBER}}/${{env.SHA_NUMBER}}/data/score/tiles
           repo-token: ${{ secrets.GITHUB_TOKEN }}

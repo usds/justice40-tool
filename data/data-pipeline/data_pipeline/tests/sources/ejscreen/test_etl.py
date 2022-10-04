@@ -1,6 +1,7 @@
 import pathlib
-from data_pipeline.tests.sources.example.test_etl import TestETL
+
 from data_pipeline.etl.sources.ejscreen.etl import EJSCREENETL
+from data_pipeline.tests.sources.example.test_etl import TestETL
 
 
 class TestEJSCREENETL(TestETL):

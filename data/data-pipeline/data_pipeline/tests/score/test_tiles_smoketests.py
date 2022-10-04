@@ -1,18 +1,20 @@
 # flake8: noqa: W0613,W0611,F811
 from dataclasses import dataclass
 from typing import Optional
-import pandas as pd
+
 import geopandas as gpd
 import numpy as np
+import pandas as pd
 import pytest
 from data_pipeline.config import settings
 from data_pipeline.etl.score import constants
-from data_pipeline.score import field_names
+from data_pipeline.etl.score.constants import THRESHOLD_COUNT_TO_SHOW_FIELD_NAME
+from data_pipeline.etl.score.constants import TILES_SCORE_COLUMNS
 from data_pipeline.etl.score.constants import (
-    TILES_SCORE_COLUMNS,
-    THRESHOLD_COUNT_TO_SHOW_FIELD_NAME,
     USER_INTERFACE_EXPERIENCE_FIELD_NAME,
 )
+from data_pipeline.score import field_names
+
 from .fixtures import final_score_df  # pylint: disable=unused-import
 
 pytestmark = pytest.mark.smoketest

@@ -1,24 +1,21 @@
 import os
 import sys
 import typing
-from pathlib import Path
 from collections import namedtuple
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
-
 from data_pipeline.config import settings
-from data_pipeline.etl.score.constants import (
-    TILES_ISLAND_AREA_FIPS_CODES,
-    TILES_PUERTO_RICO_FIPS_CODE,
-    TILES_CONTINENTAL_US_FIPS_CODE,
-    TILES_ALASKA_AND_HAWAII_FIPS_CODE,
-)
+from data_pipeline.etl.score.constants import TILES_ALASKA_AND_HAWAII_FIPS_CODE
+from data_pipeline.etl.score.constants import TILES_CONTINENTAL_US_FIPS_CODE
+from data_pipeline.etl.score.constants import TILES_ISLAND_AREA_FIPS_CODES
+from data_pipeline.etl.score.constants import TILES_PUERTO_RICO_FIPS_CODE
 from data_pipeline.etl.sources.census.etl_utils import get_state_fips_codes
-from data_pipeline.utils import (
-    download_file_from_url,
-    get_module_logger,
-)
 from data_pipeline.score import field_names
+from data_pipeline.utils import download_file_from_url
+from data_pipeline.utils import get_module_logger
+
 from . import constants
 
 logger = get_module_logger(__name__)
@@ -99,7 +96,7 @@ def floor_series(series: pd.Series, number_of_decimals: int) -> pd.Series:
     if series.isin(unacceptable_values).any():
         series.replace(mapping, regex=False, inplace=True)
 
-    multiplication_factor = 10 ** number_of_decimals
+    multiplication_factor = 10**number_of_decimals
 
     # In order to safely cast NaNs
     # First coerce series to float type: series.astype(float)

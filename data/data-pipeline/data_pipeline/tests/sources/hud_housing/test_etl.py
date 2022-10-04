@@ -1,6 +1,7 @@
 import pathlib
-from data_pipeline.tests.sources.example.test_etl import TestETL
+
 from data_pipeline.etl.sources.hud_housing.etl import HudHousingETL
+from data_pipeline.tests.sources.example.test_etl import TestETL
 
 
 class TestHudHousingETL(TestETL):

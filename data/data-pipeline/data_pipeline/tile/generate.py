@@ -2,7 +2,8 @@ import os
 from pathlib import Path
 from subprocess import call
 
-from data_pipeline.utils import get_module_logger, remove_all_from_dir
+from data_pipeline.utils import get_module_logger
+from data_pipeline.utils import remove_all_from_dir
 
 logger = get_module_logger(__name__)
 

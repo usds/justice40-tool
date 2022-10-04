@@ -1,9 +1,7 @@
 # pylint: disable=protected-access
 import pathlib
 
-from data_pipeline.etl.sources.doe_energy_burden.etl import (
-    DOEEnergyBurden,
-)
+from data_pipeline.etl.sources.doe_energy_burden.etl import DOEEnergyBurden
 from data_pipeline.tests.sources.example.test_etl import TestETL
 from data_pipeline.utils import get_module_logger
 

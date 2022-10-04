@@ -1,11 +1,12 @@
 """Utililities for turning geographies into tracts, using census data"""
-
+from functools import lru_cache
 from pathlib import Path
 from typing import Optional
-from functools import lru_cache
+
 import geopandas as gpd
 from data_pipeline.etl.sources.tribal.etl import TribalETL
 from data_pipeline.utils import get_module_logger
+
 from .census.etl import CensusETL
 
 logger = get_module_logger(__name__)

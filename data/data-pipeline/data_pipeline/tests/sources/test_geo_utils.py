@@ -1,5 +1,6 @@
-from pathlib import Path
 from collections import namedtuple
+from pathlib import Path
+
 import geopandas as gpd
 from data_pipeline.etl.sources.geo_utils import add_tracts_for_geometries
 

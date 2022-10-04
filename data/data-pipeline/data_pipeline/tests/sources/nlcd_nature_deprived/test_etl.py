@@ -1,6 +1,7 @@
 import pathlib
-from data_pipeline.tests.sources.example.test_etl import TestETL
+
 from data_pipeline.etl.sources.nlcd_nature_deprived.etl import NatureDeprivedETL
+from data_pipeline.tests.sources.example.test_etl import TestETL
 
 
 class TestNatureDeprivedETL(TestETL):

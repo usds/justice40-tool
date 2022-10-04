@@ -1,11 +1,10 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
 import pytest
-
 from data_pipeline.etl.score.etl_utils import (
-    floor_series,
     compare_to_list_of_expected_state_fips_codes,
 )
+from data_pipeline.etl.score.etl_utils import floor_series
 
 
 def test_floor_series():
