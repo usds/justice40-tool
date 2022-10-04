@@ -119,7 +119,6 @@ class TestETL:
         """
         # Setup
         etl = self._get_instance_of_etl_class()
-        etl.__init__()
         data_path, tmp_path = mock_paths
 
         assert etl.DATA_PATH == data_path
@@ -147,7 +146,6 @@ class TestETL:
         etl = self._get_instance_of_etl_class()
         data_path, tmp_path = mock_paths
 
-        etl.__init__()
         actual_file_path = etl._get_output_file_path()
 
         expected_file_path = data_path / "dataset" / etl.NAME / "usa.csv"
@@ -250,7 +248,6 @@ class TestETL:
         etl = self._setup_etl_instance_and_run_extract(
             mock_etl=mock_etl, mock_paths=mock_paths
         )
-        etl.__init__()
         etl.transform()
 
         assert etl.output_df is not None
@@ -268,7 +265,6 @@ class TestETL:
         """
         # setup - input variables
         etl = self._get_instance_of_etl_class()
-        etl.__init__()
 
         # setup - mock transform step
         df_transform = pd.read_csv(

@@ -73,7 +73,7 @@ def score_data_initial(sample_data_dir):
 
 @pytest.fixture()
 def score_pdf_initial(sample_data_dir):
-    return sample_data_dir / "Draft_Communities_List.pdf"
+    return sample_data_dir / "draft_communities_list.pdf"
 
 
 @pytest.fixture()
