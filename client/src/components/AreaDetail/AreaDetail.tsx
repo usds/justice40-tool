@@ -303,8 +303,8 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.WILDFIRE),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.WILDFIRE),
     type: 'percentile',
-    value: properties.hasOwnProperty(constants.WASTEWATER_PERCENTILE) ?
-      properties[constants.WASTEWATER_PERCENTILE] : null,
+    value: properties.hasOwnProperty(constants.WILDFIRE_PERCENTILE) ?
+      properties[constants.WILDFIRE_PERCENTILE] : null,
     isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_WILDFIRE] ?
       properties[constants.IS_EXCEEDS_THRESH_WILDFIRE] : null,
   };
@@ -791,7 +791,11 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
         <div className={styles.communityOfFocus}>
           <TractPrioritization
             totalCategoriesPrioritized={properties[constants.COUNT_OF_CATEGORIES_DISADV]}
-            isDonut={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
+            isAdjacencyThreshMet={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
+            isAdjacencyLowIncome={properties[constants.ADJACENCY_LOW_INCOME_EXCEEDS_THRESH]}
+            tribalLandsCount={properties[constants.TRIBAL_AREAS_COUNT] >= 1 ?
+              properties[constants.TRIBAL_AREAS_COUNT] : null
+            }
             percentTractTribal={properties[constants.TRIBAL_AREAS_PERCENTAGE] >= 0 ?
               properties[constants.TRIBAL_AREAS_PERCENTAGE] : null}
           />

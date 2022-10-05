@@ -6,7 +6,9 @@ import * as EXPLORE_COPY from '../../data/copy/explore';
 
 interface ITractPrioritization {
   totalCategoriesPrioritized: number
-  isDonut: boolean,
+  isAdjacencyThreshMet: boolean,
+  isAdjacencyLowIncome: boolean,
+  tribalLandsCount: number | null,
   percentTractTribal: number | null,
 }
 
@@ -14,26 +16,28 @@ interface ITractPrioritization {
  * This component will return the appropriate designation for the tract's prioritization
  *
  * @param {number} totalCategoriesPrioritized
- * @param {boolean} isDonut
- * @param {number} percentTractTribal
+ * @param {boolean} isAdjacencyThreshMet
+ * @param {boolean} isAdjacencyLowIncome
+ * @param {number | null} tribalLandsCount
+ * @param {number | null} percentTractTribal
  * @return {JSX}
  */
 const TractPrioritization = (
-    {totalCategoriesPrioritized, isDonut, percentTractTribal}:ITractPrioritization) => {
-  if (totalCategoriesPrioritized >= 1) {
-    return <h3 className={styles.invert}>{EXPLORE_COPY.COMMUNITY.OF_FOCUS}</h3>;
-  } else if (totalCategoriesPrioritized === 0 && isDonut === true) {
-    return <h3 className={styles.invert}>{EXPLORE_COPY.COMMUNITY.OF_FOCUS}</h3>;
-  } else if (
-    totalCategoriesPrioritized === 0 &&
-    isDonut === false &&
-    percentTractTribal !== null &&
-    percentTractTribal >= 0) {
-    return <h3>{EXPLORE_COPY.COMMUNITY.PARTIAL}</h3>;
-  } else if (percentTractTribal !== null) {
-    return <h3>{EXPLORE_COPY.COMMUNITY.NOT_OF_FOCUS}</h3>;
+    {totalCategoriesPrioritized,
+      isAdjacencyThreshMet,
+      isAdjacencyLowIncome,
+      tribalLandsCount,
+      percentTractTribal}:ITractPrioritization) => {
+  if (totalCategoriesPrioritized === 0) {
+    if (isAdjacencyThreshMet && isAdjacencyLowIncome) {
+      return <h3 className={styles.invert}>{EXPLORE_COPY.COMMUNITY.OF_FOCUS}</h3>;
+    } else if (percentTractTribal === null && tribalLandsCount === null) {
+      return <h3>{EXPLORE_COPY.COMMUNITY.NOT_OF_FOCUS}</h3>;
+    } else {
+      return <h3>{EXPLORE_COPY.COMMUNITY.PARTIAL}</h3>;
+    }
   } else {
-    return <h3>{EXPLORE_COPY.COMMUNITY.NOT_OF_FOCUS}</h3>;
+    return <h3 className={styles.invert}>{EXPLORE_COPY.COMMUNITY.OF_FOCUS}</h3>;
   }
 };
 

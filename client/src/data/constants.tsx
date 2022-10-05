@@ -92,8 +92,8 @@ export const IS_EXCEEDS_THRESH_FOR_EXP_POP_LOSS = 'EPL_ET';
 export const FLOODING_PERCENTILE = 'FLD_PFS';
 export const IS_EXCEEDS_THRESH_FLOODING = 'FLD_ET';
 
-export const WILDFIRE_PERCENTILE = 'WF_PFS';
-export const IS_EXCEEDS_THRESH_WILDFIRE = 'WF_ET';
+export const WILDFIRE_PERCENTILE = 'WFR_PFS';
+export const IS_EXCEEDS_THRESH_WILDFIRE = 'WFR_ET';
 
 export const IS_EXCEED_BOTH_SOCIO_INDICATORS = 'N_EBSI';
 
@@ -237,6 +237,8 @@ export const ISLAND_AREA_LOW_HS_EDU = 'IALHE';
 // Misc category
 export const ADJACENCY_PERCENTILE = 'ADJ_PFS';
 export const ADJACENCY_EXCEEDS_THRESH = 'ADJ_ET';
+export const ADJACENCY_LOW_INCOME_EXCEEDS_THRESH = 'AJDLI_ET';
+
 export const IMPUTE_FLAG = 'IMP_FLG';
 
 
