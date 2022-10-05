@@ -35,5 +35,4 @@ repos:
   rev: 22.8.0
   hooks:
     - id: black
-      language_version: python3.9
       args: [--config=./data/data-pipeline/pyproject.toml]
