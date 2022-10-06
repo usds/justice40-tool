@@ -1,389 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering of PrioritizationCopy Component - checks if component renders  when isDonut = false, tribal % = null, category count = 1 and indicator count = 0 1`] = `<DocumentFragment />`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders The 31% of this tract that are Federally-Recognized Tribal lands are considered disadvantaged. when isDonut = false, tribal % = 0.31, category count = 0 and indicator count = 0 1`] = `
+exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is considered disadvantaged because it meets 1 burden threshold AND the associated socio-economic threshold. when totCats = 2, totBurds = 1, isAdj = false, isAdjLI = false, tribal % = null, 1`] = `
 <DocumentFragment>
   <div>
-    <div>
-      The 31% of this tract that are Federally-Recognized Tribal lands are  considered disadvantaged.
-    </div>
+    This tract is considered disadvantaged because it meets 1 burden threshold AND the associated socio-economic threshold.
   </div>
 </DocumentFragment>
 `;
 
-exports[`rendering of PrioritizationCopy Component - checks if component renders The 31% of this tract that are Federally-Recognized Tribal lands are considered disadvantaged. when isDonut = false, tribal % = 0.31, category count = 0 and indicator count = 1 1`] = `
+exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is considered disadvantaged because it meets more than 1 burden threshold AND the associated socio-economic threshold. when totCats = 2, totBurds = 5, isAdj = false, isAdjLI = false, tribal % = null, 1`] = `
 <DocumentFragment>
   <div>
-    <div>
-      The 31% of this tract that are Federally-Recognized Tribal lands are  considered disadvantaged.
-    </div>
+    This tract is considered disadvantaged because it meets more than 1 burden threshold AND the associated socio-economic threshold.
   </div>
 </DocumentFragment>
 `;
 
-exports[`rendering of PrioritizationCopy Component - checks if component renders The 31% of this tract that are Federally-Recognized Tribal lands are considered disadvantaged. when isDonut = false, tribal % = 0.31, category count = 0 and indicator count = 2 1`] = `
+exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is not considered disadvantaged. It does not meet any burden thresholds OR at least one associated socio-economic threshold. when totCats = 0, totBurds = 0, isAdj = false, isAdjLI = false, tribal % = null, 1`] = `
 <DocumentFragment>
   <div>
-    <div>
-      The 31% of this tract that are Federally-Recognized Tribal lands are  considered disadvantaged.
-    </div>
+    This tract is not considered disadvantaged. It does not meet any burden thresholds OR at least one associated socio-economic threshold.
   </div>
 </DocumentFragment>
 `;
 
-exports[`rendering of PrioritizationCopy Component - checks if component renders The 31% of this tract that are Federally-Recognized Tribal lands are considered disadvantaged. when isDonut = false, tribal % = 0.31, category count = 1 and indicator count = 0 1`] = `
+exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is not considered disadvantaged. It meets 1 burden threshold BUT no associated socio-economic thresholds. when totCats = 0, totBurds = 1, isAdj = false, isAdjLI = false, tribal % = null, 1`] = `
 <DocumentFragment>
   <div>
-    <div>
-      The 31% of this tract that are Federally-Recognized Tribal lands are  considered disadvantaged.
-    </div>
+    This tract is not considered disadvantaged. It meets 1 burden threshold BUT no associated socio-economic thresholds.
   </div>
 </DocumentFragment>
 `;
 
-exports[`rendering of PrioritizationCopy Component - checks if component renders The 31% of this tract that are Federally-Recognized Tribal lands are considered disadvantaged. when isDonut = false, tribal % = 0.31, category count = 1 and indicator count = 1 1`] = `
+exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is not considered disadvantaged. It meets more than 1 burden threshold BUT no associated socio-economic thresholds. when totCats = 0, totBurds = 5, isAdj = false, isAdjLI = false, tribal % = null, 1`] = `
 <DocumentFragment>
   <div>
-    <div>
-      The 31% of this tract that are Federally-Recognized Tribal lands are  considered disadvantaged.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders The 31% of this tract that are Federally-Recognized Tribal lands are considered disadvantaged. when isDonut = false, tribal % = 0.31, category count = 1 and indicator count = 2 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      The 31% of this tract that are Federally-Recognized Tribal lands are  considered disadvantaged.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders The less than 1% of this tract that are Federally-Recognized Tribal lands are considered disadvantaged. when isDonut = false, tribal % = 0, category count = 0 and indicator count = 0 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      The less than 1% of this tract that are Federally-Recognized Tribal lands are  considered disadvantaged.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders The less than 1% of this tract that are Federally-Recognized Tribal lands are considered disadvantaged. when isDonut = false, tribal % = 0, category count = 0 and indicator count = 1 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      The less than 1% of this tract that are Federally-Recognized Tribal lands are  considered disadvantaged.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders The less than 1% of this tract that are Federally-Recognized Tribal lands are considered disadvantaged. when isDonut = false, tribal % = 0, category count = 0 and indicator count = 2 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      The less than 1% of this tract that are Federally-Recognized Tribal lands are  considered disadvantaged.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders The less than 1% of this tract that are Federally-Recognized Tribal lands are considered disadvantaged. when isDonut = false, tribal % = 0, category count = 1 and indicator count = 0 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      The less than 1% of this tract that are Federally-Recognized Tribal lands are  considered disadvantaged.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders The less than 1% of this tract that are Federally-Recognized Tribal lands are considered disadvantaged. when isDonut = false, tribal % = 0, category count = 1 and indicator count = 1 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      The less than 1% of this tract that are Federally-Recognized Tribal lands are  considered disadvantaged.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders The less than 1% of this tract that are Federally-Recognized Tribal lands are considered disadvantaged. when isDonut = false, tribal % = 0, category count = 1 and indicator count = 2 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      The less than 1% of this tract that are Federally-Recognized Tribal lands are  considered disadvantaged.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. when isDonut = true, tribal % = 0, category count = 0 and indicator count = 0 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold.
-    </div>
-    <div>
-      The less than 1% of this tract that are Federally-Recognized Tribal lands are also considered disadvantaged.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. when isDonut = true, tribal % = 0, category count = 0 and indicator count = 1 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold.
-    </div>
-    <div>
-      The less than 1% of this tract that are Federally-Recognized Tribal lands are also considered disadvantaged.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. when isDonut = true, tribal % = 0, category count = 0 and indicator count = 2 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold.
-    </div>
-    <div>
-      The less than 1% of this tract that are Federally-Recognized Tribal lands are also considered disadvantaged.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. when isDonut = true, tribal % = 0, category count = 1 and indicator count = 0 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold.
-    </div>
-    <div>
-      The less than 1% of this tract that are Federally-Recognized Tribal lands are also considered disadvantaged.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. when isDonut = true, tribal % = 0, category count = 1 and indicator count = 1 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold.
-    </div>
-    <div>
-      The less than 1% of this tract that are Federally-Recognized Tribal lands are also considered disadvantaged.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. when isDonut = true, tribal % = 0, category count = 1 and indicator count = 2 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold.
-    </div>
-    <div>
-      The less than 1% of this tract that are Federally-Recognized Tribal lands are also considered disadvantaged.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. when isDonut = true, tribal % = 0.29, category count = 0 and indicator count = 0 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold.
-    </div>
-    <div>
-      The 28.999999999999996% of this tract that are Federally-Recognized Tribal lands are also considered disadvantaged.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. when isDonut = true, tribal % = 0.29, category count = 0 and indicator count = 1 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold.
-    </div>
-    <div>
-      The 28.999999999999996% of this tract that are Federally-Recognized Tribal lands are also considered disadvantaged.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. when isDonut = true, tribal % = 0.29, category count = 0 and indicator count = 2 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold.
-    </div>
-    <div>
-      The 28.999999999999996% of this tract that are Federally-Recognized Tribal lands are also considered disadvantaged.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. when isDonut = true, tribal % = 0.29, category count = 1 and indicator count = 0 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold.
-    </div>
-    <div>
-      The 28.999999999999996% of this tract that are Federally-Recognized Tribal lands are also considered disadvantaged.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. when isDonut = true, tribal % = 0.29, category count = 1 and indicator count = 1 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold.
-    </div>
-    <div>
-      The 28.999999999999996% of this tract that are Federally-Recognized Tribal lands are also considered disadvantaged.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. when isDonut = true, tribal % = 0.29, category count = 2 and indicator count = 2 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold.
-    </div>
-    <div>
-      The 28.999999999999996% of this tract that are Federally-Recognized Tribal lands are also considered disadvantaged.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. when isDonut = true, tribal % = null, category count = 0 and indicator count = 0 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. when isDonut = true, tribal % = null, category count = 0 and indicator count = 1 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. when isDonut = true, tribal % = null, category count = 0 and indicator count = 2 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. when isDonut = true, tribal % = null, category count = 1 and indicator count = 0 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. when isDonut = true, tribal % = null, category count = 1 and indicator count = 1 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. when isDonut = true, tribal % = null, category count = 1 and indicator count = 2 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is considered disadvantaged because it meets 4 burden thresholds AND the associated socio-economic threshold. when isDonut = false, tribal % = null, category count = 2 and indicator count = 4 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      This tract is considered disadvantaged because it meets 4 burden thresholds AND the associated socio-economic threshold.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is considered disadvantaged because it meets one burden threshold AND the associated socio-economic threshold. when isDonut = false, tribal % = null, category count = 1 and indicator count = 1 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      This tract is considered disadvantaged because it meets one burden threshold AND the associated socio-economic threshold.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is not considered disadvantaged. It does not meet any burden thresholds OR at least one associated socioeconomic threshold. when isDonut = false, tribal % = null, category count = 0 and indicator count = 0 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      This tract is not considered disadvantaged. It does not meet any burden thresholds OR at least one associated socioeconomic threshold.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is not considered disadvantaged. It meets 5 burden thresholds BUT no associated socioeconomic thresholds. when isDonut = false, tribal % = null, category count = 0 and indicator count = 5 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      This tract is not considered disadvantaged. It meets 5 burden thresholds BUT no associated socioeconomic thresholds.
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`rendering of PrioritizationCopy Component - checks if component renders This tract is not considered disadvantaged. It meets one burden threshold BUT no associated socioeconomic thresholds. when isDonut = false, tribal % = null, category count = 0 and indicator count = 1 1`] = `
-<DocumentFragment>
-  <div>
-    <div>
-      This tract is not considered disadvantaged. It meets one burden threshold BUT no associated socioeconomic thresholds.
-    </div>
+    This tract is not considered disadvantaged. It meets more than 1 burden threshold BUT no associated socio-economic thresholds.
   </div>
 </DocumentFragment>
 `;

@@ -1,124 +1,105 @@
 import React from 'react';
 
-import * as styles from './PrioritizationCopy.module.scss';
+// import * as styles from './PrioritizationCopy.module.scss';
 
 import * as EXPLORE_COPY from '../../data/copy/explore';
 
 interface IPrioritizationCopy {
   totalCategoriesPrioritized: number
-  isDonut: boolean,
+  totalBurdensPrioritized: number
+  isAdjacencyThreshMet: boolean,
+  isAdjacencyLowIncome: boolean,
+  tribalCountAK: number | null,
+  tribalCountUS: null, // when this signal is supported add number type
   percentTractTribal: number | null
-  totalIndicatorsPrioritized: number
 };
 
 /**
  * This component returns the prioritzation copy
  *
  * @param {number} totalCategoriesPrioritized
- * @param {boolean} isDonut
- * @param {number} percentTractTribal
- * @param {number} totalIndicatorsPrioritized
+ * @param {number} totalBurdensPrioritized
+ * @param {boolean} isAdjacencyThreshMet
+ * @param {boolean} isAdjacencyLowIncome
+ * @param {number | null} tribalCountAK
+ * @param {number | null} tribalCountUS
+ * @param {number | null} percentTractTribal
  * @return {JSX}
  */
 const PrioritizationCopy =
-   ({
-     totalCategoriesPrioritized,
-     isDonut,
+   ({totalCategoriesPrioritized,
+     totalBurdensPrioritized,
+     isAdjacencyThreshMet,
+     isAdjacencyLowIncome,
+     tribalCountAK,
+     tribalCountUS,
      percentTractTribal,
-     totalIndicatorsPrioritized}:IPrioritizationCopy) => {
-     if (isDonut) {
-       if (percentTractTribal === null) {
-         return (
-           <div>
-             <div>{EXPLORE_COPY.PRIORITIZATION_COPY.DONUT}</div>
-           </div>
-         );
-       } else if (percentTractTribal !== null && percentTractTribal === 0) {
-         return (
-           <div>
-             <div>{EXPLORE_COPY.PRIORITIZATION_COPY.DONUT}</div>
-             <div className={styles.prioCopyPara2}>
-               {EXPLORE_COPY.getPrioFRTLessThan1Perc(true)}
-             </div>
-           </div>
-         );
-       } else if (percentTractTribal !== null && percentTractTribal > 0) {
-         // map location for this case: #9.56/48.1013/-108.7722
-         return (
-           <div>
-             <div>{EXPLORE_COPY.PRIORITIZATION_COPY.DONUT}</div>
-             <div className={styles.prioCopyPara2}>
-               {EXPLORE_COPY.getPrioFRTNPerc(percentTractTribal, true)}
-             </div>
-           </div>
-         );
-       } else {
-         return <></>;
-       }
-     } else if (!isDonut) {
-       if (percentTractTribal !== null && percentTractTribal > 0) {
-         // map location for this case: #8.66/48.3496/-106.2982
-         return (
-           <div>
-             <div>{EXPLORE_COPY.getPrioFRTNPerc(percentTractTribal, false)}</div>
-           </div>
-         );
-       } else if (percentTractTribal !== null && percentTractTribal === 0) {
-         return (
-           <div>
-             <div>{EXPLORE_COPY.getPrioFRTLessThan1Perc(false)}</div>
-           </div>
-         );
-       } else if (percentTractTribal === null) {
-         if (totalCategoriesPrioritized >= 1) {
-           if (totalIndicatorsPrioritized === 0) {
-             return <></>;
-           } else if (totalIndicatorsPrioritized === 1) {
-             return (
-               <div>
-                 <div>{EXPLORE_COPY.PRIORITIZATION_COPY.PRIO_1_BURD}</div>
-               </div>
-             );
-           } else if (totalIndicatorsPrioritized >=1) {
-             return (
-               <div>
-                 <div>{EXPLORE_COPY.getPrioNBurden(totalIndicatorsPrioritized)}</div>
-               </div>
-             );
-           } else {
-             return <></>;
-           }
-         } else if (totalCategoriesPrioritized === 0) {
-           if (totalIndicatorsPrioritized === 0) {
-             return (
-               <div>
-                 <div>{EXPLORE_COPY.PRIORITIZATION_COPY.NOT_PRIO}</div>
-               </div>
-             );
-           } else if (totalIndicatorsPrioritized === 1) {
-             return (
-               <div>
-                 <div>{EXPLORE_COPY.PRIORITIZATION_COPY.NOT_PRIO_1_BURD}</div>
-               </div>
-             );
-           } else if (totalIndicatorsPrioritized >= 1) {
-             return (
-               <div>
-                 <div>{EXPLORE_COPY.getNotPrioNBurden(totalIndicatorsPrioritized)}</div>
-               </div>
-             );
-           } else {
-             return <></>;
-           }
-         } else {
-           return <></>;
+   }:IPrioritizationCopy) => {
+     let prioCopyRendered;
+
+     if (totalCategoriesPrioritized === 0) {
+       if (isAdjacencyThreshMet && isAdjacencyLowIncome) {
+         prioCopyRendered = EXPLORE_COPY.PRIORITIZATION_COPY.PRIO_SURR_LI;
+       } else if (
+         !(isAdjacencyThreshMet && isAdjacencyLowIncome) &&
+      tribalCountAK === null &&
+      tribalCountUS === null &&
+      percentTractTribal === null
+       ) {
+         if (totalBurdensPrioritized === 0) {
+           prioCopyRendered = EXPLORE_COPY.PRIORITIZATION_COPY.NOT_PRIO;
+         } else if (totalBurdensPrioritized === 1) {
+           prioCopyRendered = EXPLORE_COPY.PRIORITIZATION_COPY.NOT_PRIO_1BUR;
+         } else if (totalBurdensPrioritized > 1) {
+           prioCopyRendered = EXPLORE_COPY.PRIORITIZATION_COPY.NOT_PRIO_NBUR;
          }
-       } else {
-         return <></>;
+       } else if (!(isAdjacencyThreshMet && isAdjacencyLowIncome)) {
+         if (
+           (tribalCountAK !== null && tribalCountAK >= 1) &&
+        (tribalCountUS !== null && tribalCountUS >= 1)
+         ) {
+           prioCopyRendered = EXPLORE_COPY.getPrioAKUSCopy(tribalCountAK, tribalCountUS);
+         } else if (
+           (tribalCountAK !== null && tribalCountAK >= 1) &&
+        tribalCountUS === null
+         ) {
+           prioCopyRendered = EXPLORE_COPY.getPrioANVCopy(tribalCountAK);
+         } else if (
+           (tribalCountUS !== null && tribalCountUS >= 1) &&
+        tribalCountAK === null
+         ) {
+           if (percentTractTribal === null) {
+             prioCopyRendered = EXPLORE_COPY.getPrioFRTCopy(`${tribalCountUS}`);
+           } else if (percentTractTribal === 0) {
+             prioCopyRendered = EXPLORE_COPY.getPrioFRTCopy(`less than 1%`);
+           } else if (percentTractTribal >= 1) {
+             prioCopyRendered = EXPLORE_COPY.getPrioFRTCopy(`${percentTractTribal}%`);
+           }
+         } else if (tribalCountUS === null && tribalCountAK === null) {
+           if (percentTractTribal === 0) {
+             prioCopyRendered = EXPLORE_COPY.getPrioFRTCopy(`less than 1%`);
+           } else if (percentTractTribal !== null && percentTractTribal >= 1 ) {
+             prioCopyRendered = EXPLORE_COPY.getPrioFRTCopy(`${percentTractTribal}%`);
+           }
+         }
+       }
+     } else if (totalCategoriesPrioritized > 0) {
+       if (totalBurdensPrioritized === 0) {
+         prioCopyRendered = <></>;
+       } else if (totalBurdensPrioritized === 1) {
+         prioCopyRendered = EXPLORE_COPY.getPrioNBurdenCopy(`1`);
+       } else if (totalBurdensPrioritized > 1) {
+         prioCopyRendered = EXPLORE_COPY.getPrioNBurdenCopy(`more than 1`);
        }
      } else {
-       return <></>;
-     }
+       prioCopyRendered = <></>;
+     };
+
+     return (
+       <div>
+         {prioCopyRendered}
+       </div>
+     );
    };
 
 export default PrioritizationCopy;

@@ -8,6 +8,7 @@ import {Accordion, Button} from '@trussworks/react-uswds';
 import Category from '../Category';
 import Indicator from '../Indicator';
 import PrioritizationCopy from '../PrioritizationCopy';
+import PrioritizationCopy2 from '../PrioritizationCopy2';
 import TractDemographics from '../TractDemographics';
 import TractInfo from '../TractInfo';
 import TractPrioritization from '../TractPrioritization';
@@ -107,7 +108,7 @@ export const indicatorFilter = (label:MessageDescriptor) => {
  */
 export const getTribalPercentValue = (tribalPercentRaw: number) => {
   if (tribalPercentRaw === undefined) {
-    return ` 0 %`;
+    return ` none`;
   }
 
   if (tribalPercentRaw === 0) {
@@ -116,7 +117,7 @@ export const getTribalPercentValue = (tribalPercentRaw: number) => {
   }
 
   if (tribalPercentRaw && tribalPercentRaw > 0) {
-    return ` ${tribalPercentRaw*100} %`;
+    return ` ${parseFloat((tribalPercentRaw*100).toFixed())} %`;
   }
 };
 
@@ -138,6 +139,8 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
   const countyName = properties[constants.COUNTY_NAME] ? properties[constants.COUNTY_NAME] : "N/A";
   const stateName = properties[constants.STATE_NAME] ? properties[constants.STATE_NAME] : "N/A";
   const sidePanelState = properties[constants.SIDE_PANEL_STATE];
+  const percentTractTribal = properties[constants.TRIBAL_AREAS_PERCENTAGE] >= 0 ?
+    parseFloat((properties[constants.TRIBAL_AREAS_PERCENTAGE]*100).toFixed()) : null;
 
   const feedbackEmailSubject = hash ? `
     Census tract ID ${blockGroup}, ${countyName}, ${stateName}, ( z/lat/lon: #${hash.join('/')} )
@@ -796,18 +799,29 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
             tribalLandsCount={properties[constants.TRIBAL_AREAS_COUNT] >= 1 ?
               properties[constants.TRIBAL_AREAS_COUNT] : null
             }
-            percentTractTribal={properties[constants.TRIBAL_AREAS_PERCENTAGE] >= 0 ?
-              properties[constants.TRIBAL_AREAS_PERCENTAGE] : null}
+            percentTractTribal={percentTractTribal}
           />
         </div>
 
         <div className={styles.prioCopy}>
           <PrioritizationCopy
-            isDonut={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
-            percentTractTribal={properties[constants.TRIBAL_AREAS_PERCENTAGE] >= 0 ?
-              properties[constants.TRIBAL_AREAS_PERCENTAGE] : null}
             totalCategoriesPrioritized={properties[constants.COUNT_OF_CATEGORIES_DISADV]}
-            totalIndicatorsPrioritized={properties[constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS]}
+            totalBurdensPrioritized={properties[constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS]}
+            isAdjacencyThreshMet={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
+            isAdjacencyLowIncome={properties[constants.ADJACENCY_LOW_INCOME_EXCEEDS_THRESH]}
+            tribalCountAK={properties[constants.TRIBAL_AREAS_COUNT] >= 1 ?
+              properties[constants.TRIBAL_AREAS_COUNT] : null}
+            tribalCountUS={null}
+            percentTractTribal={percentTractTribal}
+          />
+          <PrioritizationCopy2
+            totalCategoriesPrioritized={properties[constants.COUNT_OF_CATEGORIES_DISADV]}
+            isAdjacencyThreshMet={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
+            isAdjacencyLowIncome={properties[constants.ADJACENCY_LOW_INCOME_EXCEEDS_THRESH]}
+            tribalCountAK={properties[constants.TRIBAL_AREAS_COUNT] >= 1 ?
+              properties[constants.TRIBAL_AREAS_COUNT] : null}
+            tribalCountUS={null}
+            percentTractTribal={percentTractTribal}
           />
         </div>
 
@@ -862,7 +876,7 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
 
         <div>
           <span>
-            Tribal lands?
+            % of tract tribal?
           </span>
           <span>
             {getTribalPercentValue(properties[constants.TRIBAL_AREAS_PERCENTAGE])}
@@ -875,8 +889,8 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
           </span>
           <span>
             {
-              properties[constants.TRIBAL_AREAS_COUNT] ?
-              ` ${properties[constants.TRIBAL_AREAS_COUNT]}` : ` 0`
+              properties[constants.TRIBAL_AREAS_COUNT] >= 1 ?
+              ` ${properties[constants.TRIBAL_AREAS_COUNT]}` : ` null`
             }
           </span>
         </div>
