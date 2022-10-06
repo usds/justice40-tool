@@ -394,9 +394,10 @@ TILES_SCORE_COLUMNS = {
     field_names.PERCENT_AGE_UNDER_10: "AGE_10",
     field_names.PERCENT_AGE_10_TO_64: "AGE_MIDDLE",
     field_names.PERCENT_AGE_OVER_64: "AGE_OLD",
-    field_names.COUNT_OF_TRIBAL_AREAS_IN_TRACT: "TA_COUNT",
+    field_names.COUNT_OF_TRIBAL_AREAS_IN_TRACT_AK: "TA_COUNT_AK",
+    field_names.COUNT_OF_TRIBAL_AREAS_IN_TRACT_CONUS: "TA_COUNT_C",
     field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT: "TA_PERC",
-    field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT_DISPLAY_STRING: "TA_PERC_STR",
+    field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT_DISPLAY: "TA_PERC_FE",
 }
 
 # columns to round floats to 2 decimals
