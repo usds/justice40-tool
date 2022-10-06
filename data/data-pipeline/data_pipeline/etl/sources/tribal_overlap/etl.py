@@ -235,7 +235,7 @@ class TribalOverlapETL(ExtractTransformLoad):
         ] = np.where(
             # In Alaska
             (merged_output_df_state_fips_code == "02"),
-            # Keey the counts
+            # Keep the counts
             merged_output_df[self.OVERALL_TRIBAL_COUNT],
             # Otherwise, null them
             None,
