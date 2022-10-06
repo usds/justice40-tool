@@ -319,7 +319,7 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
       properties[constants.POVERTY_BELOW_200_PERCENTILE] : null,
     isDisadvagtaged: properties[constants.IS_FEDERAL_POVERTY_LEVEL_200] ?
       properties[constants.IS_FEDERAL_POVERTY_LEVEL_200] : null,
-    threshold: properties[constants.ADJACENCY_EXCEEDS_THRESH] === true ? 50 : 65,
+    threshold: 65,
   };
   // const higherEd: indicatorInfo = {
   //   label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HIGH_ED),
