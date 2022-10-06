@@ -909,8 +909,8 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
           </span>
           <span>
             {
-              properties[constants.TRIBAL_AREAS_COUNT_AK] >= 1 ?
-              ` ${properties[constants.TRIBAL_AREAS_COUNT_AK]}` : ` null`
+              properties[constants.TRIBAL_AREAS_COUNT_CONUS] >= 1 ?
+              ` ${properties[constants.TRIBAL_AREAS_COUNT_CONUS]}` : ` null`
             }
           </span>
         </div>
