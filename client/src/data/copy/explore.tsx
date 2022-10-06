@@ -644,6 +644,18 @@ export const getPrioPercAndNumPointsAlsoCopy = (amount:string, numPoints:number)
   );
 };
 
+export const DONUT_COPY = defineMessages({
+  COMP_SURR: {
+    id: 'explore.map.page.side.panel.donut.copy.complete.surround',
+    defaultMessage: 'Completely surrounded',
+    description: `Navigate to the explore the map page. Click on side panel, this copy may show up`,
+  },
+  ADJ_LOW_INC: {
+    id: 'explore.map.page.side.panel.donut.copy.adj.low.income',
+    defaultMessage: 'Adjusted low income',
+    description: `Navigate to the explore the map page. Click on side panel, this copy may show up`,
+  },
+});
 export const COMMUNITY = {
   OF_FOCUS: <FormattedMessage
     id={'explore.map.page.side.panel.community.of.focus'}

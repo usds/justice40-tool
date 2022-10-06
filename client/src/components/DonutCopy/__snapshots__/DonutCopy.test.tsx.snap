@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of DonutCopy Component checks if component renders when adjacency is false 1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      <div>
+        Completely surrounded
+      </div>
+      <div
+        class=""
+      >
+        No
+      </div>
+    </div>
+    <div>
+      <div>
+        Adjusted low income
+      </div>
+      <div
+        class=""
+      >
+        32
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`rendering of DonutCopy Component checks if component renders when adjacency is false 2`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      <div>
+        Completely surrounded
+      </div>
+      <div>
+        YES
+      </div>
+    </div>
+    <div>
+      <div>
+        Adjusted low income
+      </div>
+      <div>
+        32
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

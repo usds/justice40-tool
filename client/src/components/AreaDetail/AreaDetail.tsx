@@ -6,6 +6,7 @@ import {Accordion, Button} from '@trussworks/react-uswds';
 
 // Components:
 import Category from '../Category';
+import DonutCopy from '../DonutCopy';
 import Indicator from '../Indicator';
 import PrioritizationCopy from '../PrioritizationCopy';
 import PrioritizationCopy2 from '../PrioritizationCopy2';
@@ -826,6 +827,12 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
         </div>
 
       </div>
+
+
+      <DonutCopy
+        isAdjacent={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
+        povertyBelow200Percentile={properties[constants.POVERTY_BELOW_200_PERCENTILE]}
+      />
 
       {/* Send Feedback button */}
       <a
