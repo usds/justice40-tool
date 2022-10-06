@@ -355,12 +355,17 @@ TRIBAL_ID = "tribalId"
 TRIBAL_LAND_AREA_NAME = "landAreaName"
 
 # Tribal overlap variables
-COUNT_OF_TRIBAL_AREAS_IN_TRACT = "Number of Tribal areas within Census tract"
+COUNT_OF_TRIBAL_AREAS_IN_TRACT_CONUS = (
+    "Number of Tribal areas within Census tract"
+)
+COUNT_OF_TRIBAL_AREAS_IN_TRACT_AK = (
+    "Number of Tribal areas within Census tract for Alaska"
+)
 NAMES_OF_TRIBAL_AREAS_IN_TRACT = "Names of Tribal areas within Census tract"
 PERCENT_OF_TRIBAL_AREA_IN_TRACT = (
     "Percent of the Census tract that is within Tribal areas"
 )
-PERCENT_OF_TRIBAL_AREA_IN_TRACT_DISPLAY_STRING = (
+PERCENT_OF_TRIBAL_AREA_IN_TRACT_DISPLAY = (
     "Percent of the Census tract that is within Tribal areas, for display"
 )
 

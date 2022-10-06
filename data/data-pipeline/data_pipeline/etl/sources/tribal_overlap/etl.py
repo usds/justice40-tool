@@ -1,3 +1,5 @@
+from typing import Optional
+
 import geopandas as gpd
 import numpy as np
 import pandas as pd
@@ -51,12 +53,14 @@ class TribalOverlapETL(ExtractTransformLoad):
     def __init__(self):
         self.COLUMNS_TO_KEEP = [
             self.GEOID_TRACT_FIELD_NAME,
-            field_names.COUNT_OF_TRIBAL_AREAS_IN_TRACT,
+            field_names.COUNT_OF_TRIBAL_AREAS_IN_TRACT_AK,
+            field_names.COUNT_OF_TRIBAL_AREAS_IN_TRACT_CONUS,
             field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT,
             field_names.NAMES_OF_TRIBAL_AREAS_IN_TRACT,
-            field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT_DISPLAY_STRING,
+            field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT_DISPLAY,
         ]
 
+        self.OVERALL_TRIBAL_COUNT = "OVERALL_TRIBAL_COUNT"
         self.output_df: pd.DataFrame
         self.census_tract_gdf: gpd.GeoDataFrame
         self.tribal_gdf: gpd.GeoDataFrame
@@ -69,40 +73,18 @@ class TribalOverlapETL(ExtractTransformLoad):
         return ", ".join(str_list)
 
     @staticmethod
-    def _adjust_percentage_to_string(percentage_float: float) -> str:
-        """Helper method that converts numeric floats to strings based on what-to-show rules.
-
-        What are these rules?
-        0. If None, return none
-        1. If the percentage is below 1%, produce 'less than 1%'
-        2. If the percentage is above 99.95%, produce '100%'
-        3. If the percentage is X.00 when rounded to two sig digits, display the integer of the percent
-        4. If the percentage has unique significant digits, report two digits
-        """
-        # Rule 0
-        if not percentage_float:
-            # I believe we need to do this because JS will do weird things with a mix-type column?
-            return "No tribal areas"
-        # Rule 1
+    def _adjust_percentage_for_frontend(
+        percentage_float: float,
+    ) -> Optional[float]:
+        """Round numbers very close to 0 to 0 and very close to 1 to 1 for display"""
+        if percentage_float is None:
+            return None
         if percentage_float < 0.01:
-            return "less than 1%"
-        # Rule 2
+            return 0.0
         if percentage_float > 0.9995:
-            return "100%"
+            return 1.0
 
-        rounded_percentage_str = str(round(percentage_float, 4) * 100)
-        first_digits, last_digits = rounded_percentage_str.split(".")
-
-        # Rule 3 (this is a shorthand because round(4) will truncate repeated 0s)
-        if last_digits[-1] == "0":
-            return first_digits + "%"
-
-        # Rule 4
-        if last_digits != "00":
-            return rounded_percentage_str + "%"
-
-        # There is something missing!
-        raise Exception("Yikes! The string conversion here failed!")
+        return percentage_float
 
     def extract(self) -> None:
         self.census_tract_gdf = get_tract_geojson()
@@ -130,7 +112,7 @@ class TribalOverlapETL(ExtractTransformLoad):
 
         tribal_overlap_with_tracts = tribal_overlap_with_tracts.rename(
             columns={
-                field_names.TRIBAL_ID: field_names.COUNT_OF_TRIBAL_AREAS_IN_TRACT,
+                field_names.TRIBAL_ID: self.OVERALL_TRIBAL_COUNT,
                 field_names.TRIBAL_LAND_AREA_NAME: field_names.NAMES_OF_TRIBAL_AREAS_IN_TRACT,
             }
         )
@@ -245,12 +227,31 @@ class TribalOverlapETL(ExtractTransformLoad):
             merged_output_df[field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT],
         )
 
+        # Counting tribes in the lower 48 is different from counting in AK,
+        # so per request by the design and frontend team, we remove all the
+        # counts outside AK
+        merged_output_df[
+            field_names.COUNT_OF_TRIBAL_AREAS_IN_TRACT_AK
+        ] = np.where(
+            # In Alaska
+            (merged_output_df_state_fips_code == "02"),
+            # Keey the counts
+            merged_output_df[self.OVERALL_TRIBAL_COUNT],
+            # Otherwise, null them
+            None,
+        )
+
+        # TODO: Count tribal areas in the lower 48 correctly
+        merged_output_df[
+            field_names.COUNT_OF_TRIBAL_AREAS_IN_TRACT_CONUS
+        ] = None
+
         # The very final thing we want to do is produce a string for the front end to show
         # We do this here so that all of the logic is included
         merged_output_df[
-            field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT_DISPLAY_STRING
+            field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT_DISPLAY
         ] = merged_output_df[field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT].apply(
-            self._adjust_percentage_to_string
+            self._adjust_percentage_for_frontend
         )
 
         self.output_df = merged_output_df
