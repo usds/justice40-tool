@@ -132,7 +132,16 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
   const intl = useIntl();
 
   // console.log the properties of the census that is selected:
-  console.log("Area Detail properies: ", properties);
+  console.log("BE signals for tract (last one is the tract currently selected): ", properties);
+
+  // console.log around the donut, adjacency and tribal info:
+  console.log("Income imputed? ", properties[constants.IMPUTE_FLAG] === "0" ? ' NO' : ' YES');
+  console.log("Adjacency indicator? ", properties[constants.ADJACENCY_EXCEEDS_THRESH] ? ' YES' : ' NO');
+  console.log("% of tract tribal: ", getTribalPercentValue(properties[constants.TRIBAL_AREAS_PERCENTAGE]));
+  console.log("Tribal count in AK: ", properties[constants.TRIBAL_AREAS_COUNT_AK] >= 1 ?
+  ` ${properties[constants.TRIBAL_AREAS_COUNT_AK]}` : ` null`);
+  console.log("Tribal count in CONUS: ", properties[constants.TRIBAL_AREAS_COUNT_CONUS] >= 1 ?
+  ` ${properties[constants.TRIBAL_AREAS_COUNT_CONUS]}` : ` null`);
 
   const blockGroup = properties[constants.GEOID_PROPERTY] ? properties[constants.GEOID_PROPERTY] : "N/A";
   const population = properties[constants.TOTAL_POPULATION] ? properties[constants.TOTAL_POPULATION] : "N/A";
@@ -829,11 +838,11 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
 
       </div>
 
-
-      <DonutCopy
+      {/* Only show the DonutCopy if Adjacency index is true */}
+      { properties[constants.ADJACENCY_EXCEEDS_THRESH] && <DonutCopy
         isAdjacent={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
         povertyBelow200Percentile={properties[constants.POVERTY_BELOW_200_PERCENTILE]}
-      />
+      /> }
 
       {/* Send Feedback button */}
       <a
@@ -861,60 +870,6 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
           </div>
         </Button>
       </a>
-
-      {/* TEMP FOR CEQ - Imputed income, adjacency and tribal info */}
-      <div className={styles.testSignals}>
-        <div>
-          <span>
-            Income imputed?
-          </span>
-          <span>
-            {properties[constants.IMPUTE_FLAG] === "0" ? ' NO' : ' YES'}
-          </span>
-        </div>
-
-        <div>
-          <span>
-            Adjacency indicator?
-          </span>
-          <span>
-            {properties[constants.ADJACENCY_EXCEEDS_THRESH] ? ' YES' : ' NO'}
-          </span>
-        </div>
-
-        <div>
-          <span>
-            % of tract tribal?
-          </span>
-          <span>
-            {getTribalPercentValue(properties[constants.TRIBAL_AREAS_PERCENTAGE])}
-          </span>
-        </div>
-
-        <div>
-          <span>
-            Tribal count in AK?
-          </span>
-          <span>
-            {
-              properties[constants.TRIBAL_AREAS_COUNT_AK] >= 1 ?
-              ` ${properties[constants.TRIBAL_AREAS_COUNT_AK]}` : ` null`
-            }
-          </span>
-        </div>
-
-        <div>
-          <span>
-            Tribal count in CONUS?
-          </span>
-          <span>
-            {
-              properties[constants.TRIBAL_AREAS_COUNT_CONUS] >= 1 ?
-              ` ${properties[constants.TRIBAL_AREAS_COUNT_CONUS]}` : ` null`
-            }
-          </span>
-        </div>
-      </div>
 
       {/* All category accordions in this component */}
       {<Accordion multiselectable={true} items={categoryItems} />}
