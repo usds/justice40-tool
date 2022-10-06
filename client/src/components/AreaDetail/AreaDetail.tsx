@@ -6,8 +6,10 @@ import {Accordion, Button} from '@trussworks/react-uswds';
 
 // Components:
 import Category from '../Category';
+import DonutCopy from '../DonutCopy';
 import Indicator from '../Indicator';
 import PrioritizationCopy from '../PrioritizationCopy';
+import PrioritizationCopy2 from '../PrioritizationCopy2';
 import TractDemographics from '../TractDemographics';
 import TractInfo from '../TractInfo';
 import TractPrioritization from '../TractPrioritization';
@@ -98,7 +100,6 @@ export const indicatorFilter = (label:MessageDescriptor) => {
   );
 };
 
-
 /**
  * Function to calculate the tribal area percentage value to display when a tract is selected
  *
@@ -107,7 +108,7 @@ export const indicatorFilter = (label:MessageDescriptor) => {
  */
 export const getTribalPercentValue = (tribalPercentRaw: number) => {
   if (tribalPercentRaw === undefined) {
-    return ` 0 %`;
+    return ` none`;
   }
 
   if (tribalPercentRaw === 0) {
@@ -116,7 +117,7 @@ export const getTribalPercentValue = (tribalPercentRaw: number) => {
   }
 
   if (tribalPercentRaw && tribalPercentRaw > 0) {
-    return ` ${tribalPercentRaw*100} %`;
+    return ` ${parseFloat((tribalPercentRaw*100).toFixed())} %`;
   }
 };
 
@@ -131,13 +132,24 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
   const intl = useIntl();
 
   // console.log the properties of the census that is selected:
-  console.log("Area Detail properies: ", properties);
+  console.log("BE signals for tract (last one is the tract currently selected): ", properties);
+
+  // console.log around the donut, adjacency and tribal info:
+  console.log("Income imputed? ", properties[constants.IMPUTE_FLAG] === "0" ? ' NO' : ' YES');
+  console.log("Adjacency indicator? ", properties[constants.ADJACENCY_EXCEEDS_THRESH] ? ' YES' : ' NO');
+  console.log("% of tract tribal: ", getTribalPercentValue(properties[constants.TRIBAL_AREAS_PERCENTAGE]));
+  console.log("Tribal count in AK: ", properties[constants.TRIBAL_AREAS_COUNT_AK] >= 1 ?
+  ` ${properties[constants.TRIBAL_AREAS_COUNT_AK]}` : ` null`);
+  console.log("Tribal count in CONUS: ", properties[constants.TRIBAL_AREAS_COUNT_CONUS] >= 1 ?
+  ` ${properties[constants.TRIBAL_AREAS_COUNT_CONUS]}` : ` null`);
 
   const blockGroup = properties[constants.GEOID_PROPERTY] ? properties[constants.GEOID_PROPERTY] : "N/A";
   const population = properties[constants.TOTAL_POPULATION] ? properties[constants.TOTAL_POPULATION] : "N/A";
   const countyName = properties[constants.COUNTY_NAME] ? properties[constants.COUNTY_NAME] : "N/A";
   const stateName = properties[constants.STATE_NAME] ? properties[constants.STATE_NAME] : "N/A";
   const sidePanelState = properties[constants.SIDE_PANEL_STATE];
+  const percentTractTribal = properties[constants.TRIBAL_AREAS_PERCENTAGE] >= 0 ?
+    parseFloat((properties[constants.TRIBAL_AREAS_PERCENTAGE]*100).toFixed()) : null;
 
   const feedbackEmailSubject = hash ? `
     Census tract ID ${blockGroup}, ${countyName}, ${stateName}, ( z/lat/lon: #${hash.join('/')} )
@@ -303,8 +315,8 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
     label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.WILDFIRE),
     description: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATOR_DESCRIPTION.WILDFIRE),
     type: 'percentile',
-    value: properties.hasOwnProperty(constants.WASTEWATER_PERCENTILE) ?
-      properties[constants.WASTEWATER_PERCENTILE] : null,
+    value: properties.hasOwnProperty(constants.WILDFIRE_PERCENTILE) ?
+      properties[constants.WILDFIRE_PERCENTILE] : null,
     isDisadvagtaged: properties[constants.IS_EXCEEDS_THRESH_WILDFIRE] ?
       properties[constants.IS_EXCEEDS_THRESH_WILDFIRE] : null,
   };
@@ -316,7 +328,7 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
       properties[constants.POVERTY_BELOW_200_PERCENTILE] : null,
     isDisadvagtaged: properties[constants.IS_FEDERAL_POVERTY_LEVEL_200] ?
       properties[constants.IS_FEDERAL_POVERTY_LEVEL_200] : null,
-    threshold: properties[constants.ADJACENCY_EXCEEDS_THRESH] === true ? 50 : 65,
+    threshold: 65,
   };
   // const higherEd: indicatorInfo = {
   //   label: intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INDICATORS.HIGH_ED),
@@ -756,7 +768,6 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
             key={`ind${index}`}
             indicator={indicator}
             isImpute={properties[constants.IMPUTE_FLAG] === "0" ? false : true}
-            isAdjacent={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
           />;
         })}
 
@@ -791,23 +802,47 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
         <div className={styles.communityOfFocus}>
           <TractPrioritization
             totalCategoriesPrioritized={properties[constants.COUNT_OF_CATEGORIES_DISADV]}
-            isDonut={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
-            percentTractTribal={properties[constants.TRIBAL_AREAS_PERCENTAGE] >= 0 ?
-              properties[constants.TRIBAL_AREAS_PERCENTAGE] : null}
+            isAdjacencyThreshMet={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
+            isAdjacencyLowIncome={properties[constants.ADJACENCY_LOW_INCOME_EXCEEDS_THRESH]}
+            tribalCountAK={properties[constants.TRIBAL_AREAS_COUNT_AK] >= 1 ?
+              properties[constants.TRIBAL_AREAS_COUNT_AK] : null}
+            tribalCountUS={properties[constants.TRIBAL_AREAS_COUNT_CONUS] >= 1 ?
+              properties[constants.TRIBAL_AREAS_COUNT_CONUS] : null}
+            percentTractTribal={percentTractTribal}
           />
         </div>
 
         <div className={styles.prioCopy}>
           <PrioritizationCopy
-            isDonut={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
-            percentTractTribal={properties[constants.TRIBAL_AREAS_PERCENTAGE] >= 0 ?
-              properties[constants.TRIBAL_AREAS_PERCENTAGE] : null}
             totalCategoriesPrioritized={properties[constants.COUNT_OF_CATEGORIES_DISADV]}
-            totalIndicatorsPrioritized={properties[constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS]}
+            totalBurdensPrioritized={properties[constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS]}
+            isAdjacencyThreshMet={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
+            isAdjacencyLowIncome={properties[constants.ADJACENCY_LOW_INCOME_EXCEEDS_THRESH]}
+            tribalCountAK={properties[constants.TRIBAL_AREAS_COUNT_AK] >= 1 ?
+              properties[constants.TRIBAL_AREAS_COUNT_AK] : null}
+            tribalCountUS={properties[constants.TRIBAL_AREAS_COUNT_CONUS] >= 1 ?
+              properties[constants.TRIBAL_AREAS_COUNT_CONUS] : null}
+            percentTractTribal={percentTractTribal}
+          />
+          <PrioritizationCopy2
+            totalCategoriesPrioritized={properties[constants.COUNT_OF_CATEGORIES_DISADV]}
+            isAdjacencyThreshMet={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
+            isAdjacencyLowIncome={properties[constants.ADJACENCY_LOW_INCOME_EXCEEDS_THRESH]}
+            tribalCountAK={properties[constants.TRIBAL_AREAS_COUNT_AK] >= 1 ?
+              properties[constants.TRIBAL_AREAS_COUNT_AK] : null}
+            tribalCountUS={properties[constants.TRIBAL_AREAS_COUNT_CONUS] >= 1 ?
+              properties[constants.TRIBAL_AREAS_COUNT_CONUS] : null}
+            percentTractTribal={percentTractTribal}
           />
         </div>
 
       </div>
+
+      {/* Only show the DonutCopy if Adjacency index is true */}
+      { properties[constants.ADJACENCY_EXCEEDS_THRESH] && <DonutCopy
+        isAdjacent={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
+        povertyBelow200Percentile={properties[constants.POVERTY_BELOW_200_PERCENTILE]}
+      /> }
 
       {/* Send Feedback button */}
       <a
@@ -835,48 +870,6 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
           </div>
         </Button>
       </a>
-
-      {/* TEMP FOR CEQ - Imputed income, adjacency and tribal info */}
-      <div className={styles.testSignals}>
-        <div>
-          <span>
-            Income imputed?
-          </span>
-          <span>
-            {properties[constants.IMPUTE_FLAG] === "0" ? ' NO' : ' YES'}
-          </span>
-        </div>
-
-        <div>
-          <span>
-            Adjacency indicator?
-          </span>
-          <span>
-            {properties[constants.ADJACENCY_EXCEEDS_THRESH] ? ' YES' : ' NO'}
-          </span>
-        </div>
-
-        <div>
-          <span>
-            Tribal lands?
-          </span>
-          <span>
-            {getTribalPercentValue(properties[constants.TRIBAL_AREAS_PERCENTAGE])}
-          </span>
-        </div>
-
-        <div>
-          <span>
-            Tribal count?
-          </span>
-          <span>
-            {
-              properties[constants.TRIBAL_AREAS_COUNT] ?
-              ` ${properties[constants.TRIBAL_AREAS_COUNT]}` : ` 0`
-            }
-          </span>
-        </div>
-      </div>
 
       {/* All category accordions in this component */}
       {<Accordion multiselectable={true} items={categoryItems} />}

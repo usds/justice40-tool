@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering of TractPrioritization Component checks if component renders No when category count = 0, isDonut = false, tribal % = null 1`] = `
+exports[`rendering of TractPrioritization Component checks if component renders No when category count = 0, isAdjacency = false, isAdjLowInc = false, tribal points in AK = null tribal % = null 1`] = `
 <DocumentFragment>
   <h3>
     No
@@ -8,7 +8,23 @@ exports[`rendering of TractPrioritization Component checks if component renders 
 </DocumentFragment>
 `;
 
-exports[`rendering of TractPrioritization Component checks if component renders Partially when category count = 0, isDonut = false, tribal % = 0 1`] = `
+exports[`rendering of TractPrioritization Component checks if component renders No when category count = 0, isAdjacency = false, isAdjLowInc = true, tribal points in AK = null tribal % = null 1`] = `
+<DocumentFragment>
+  <h3>
+    No
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders No when category count = 0, isAdjacency = true, isAdjLowInc = false, tribal points in AK = null tribal % = null 1`] = `
+<DocumentFragment>
+  <h3>
+    No
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders Partially when category count = 0, isAdjacency = false, isAdjLowInc = false, tribal points in AK = 1 tribal % = null 1`] = `
 <DocumentFragment>
   <h3>
     Partially
@@ -16,7 +32,7 @@ exports[`rendering of TractPrioritization Component checks if component renders 
 </DocumentFragment>
 `;
 
-exports[`rendering of TractPrioritization Component checks if component renders Partially when category count = 0, isDonut = false, tribal % = 0.12 1`] = `
+exports[`rendering of TractPrioritization Component checks if component renders Partially when category count = 0, isAdjacency = false, isAdjLowInc = false, tribal points in AK = 2 tribal % = 0 1`] = `
 <DocumentFragment>
   <h3>
     Partially
@@ -24,7 +40,111 @@ exports[`rendering of TractPrioritization Component checks if component renders 
 </DocumentFragment>
 `;
 
-exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 0, isDonut = true, tribal % = 0 1`] = `
+exports[`rendering of TractPrioritization Component checks if component renders Partially when category count = 0, isAdjacency = false, isAdjLowInc = false, tribal points in AK = 3 tribal % = 0.13 1`] = `
+<DocumentFragment>
+  <h3>
+    Partially
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders Partially when category count = 0, isAdjacency = false, isAdjLowInc = false, tribal points in AK = null tribal % = 0 1`] = `
+<DocumentFragment>
+  <h3>
+    Partially
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders Partially when category count = 0, isAdjacency = false, isAdjLowInc = false, tribal points in AK = null tribal % = 0.13 1`] = `
+<DocumentFragment>
+  <h3>
+    Partially
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders Partially when category count = 0, isAdjacency = false, isAdjLowInc = true, tribal points in AK = 1 tribal % = null 1`] = `
+<DocumentFragment>
+  <h3>
+    Partially
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders Partially when category count = 0, isAdjacency = false, isAdjLowInc = true, tribal points in AK = 2 tribal % = 0 1`] = `
+<DocumentFragment>
+  <h3>
+    Partially
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders Partially when category count = 0, isAdjacency = false, isAdjLowInc = true, tribal points in AK = 3 tribal % = 0.13 1`] = `
+<DocumentFragment>
+  <h3>
+    Partially
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders Partially when category count = 0, isAdjacency = false, isAdjLowInc = true, tribal points in AK = null tribal % = 0 1`] = `
+<DocumentFragment>
+  <h3>
+    Partially
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders Partially when category count = 0, isAdjacency = false, isAdjLowInc = true, tribal points in AK = null tribal % = 0.13 1`] = `
+<DocumentFragment>
+  <h3>
+    Partially
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders Partially when category count = 0, isAdjacency = true, isAdjLowInc = false, tribal points in AK = 1 tribal % = null 1`] = `
+<DocumentFragment>
+  <h3>
+    Partially
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders Partially when category count = 0, isAdjacency = true, isAdjLowInc = false, tribal points in AK = 2 tribal % = 0 1`] = `
+<DocumentFragment>
+  <h3>
+    Partially
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders Partially when category count = 0, isAdjacency = true, isAdjLowInc = false, tribal points in AK = 3 tribal % = 0.13 1`] = `
+<DocumentFragment>
+  <h3>
+    Partially
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders Partially when category count = 0, isAdjacency = true, isAdjLowInc = false, tribal points in AK = null tribal % = 0 1`] = `
+<DocumentFragment>
+  <h3>
+    Partially
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders Partially when category count = 0, isAdjacency = true, isAdjLowInc = false, tribal points in AK = null tribal % = 0.13 1`] = `
+<DocumentFragment>
+  <h3>
+    Partially
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 0, isAdjacency = true, isAdjLowInc = true, tribal points in AK = 1 tribal % = null 1`] = `
 <DocumentFragment>
   <h3>
     YES
@@ -32,7 +152,7 @@ exports[`rendering of TractPrioritization Component checks if component renders 
 </DocumentFragment>
 `;
 
-exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 0, isDonut = true, tribal % = 0.12 1`] = `
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 0, isAdjacency = true, isAdjLowInc = true, tribal points in AK = 2 tribal % = 0 1`] = `
 <DocumentFragment>
   <h3>
     YES
@@ -40,7 +160,7 @@ exports[`rendering of TractPrioritization Component checks if component renders 
 </DocumentFragment>
 `;
 
-exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 0, isDonut = true, tribal % = null 1`] = `
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 0, isAdjacency = true, isAdjLowInc = true, tribal points in AK = 3 tribal % = 0.13 1`] = `
 <DocumentFragment>
   <h3>
     YES
@@ -48,7 +168,7 @@ exports[`rendering of TractPrioritization Component checks if component renders 
 </DocumentFragment>
 `;
 
-exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 1, isDonut = true, tribal % = 0.34 1`] = `
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 0, isAdjacency = true, isAdjLowInc = true, tribal points in AK = null tribal % = 0 1`] = `
 <DocumentFragment>
   <h3>
     YES
@@ -56,7 +176,7 @@ exports[`rendering of TractPrioritization Component checks if component renders 
 </DocumentFragment>
 `;
 
-exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 2, isDonut = true, tribal % = 0 1`] = `
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 0, isAdjacency = true, isAdjLowInc = true, tribal points in AK = null tribal % = 0.13 1`] = `
 <DocumentFragment>
   <h3>
     YES
@@ -64,7 +184,7 @@ exports[`rendering of TractPrioritization Component checks if component renders 
 </DocumentFragment>
 `;
 
-exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 3, isDonut = true, tribal % = null 1`] = `
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 0, isAdjacency = true, isAdjLowInc = true, tribal points in AK = null tribal % = null 1`] = `
 <DocumentFragment>
   <h3>
     YES
@@ -72,7 +192,7 @@ exports[`rendering of TractPrioritization Component checks if component renders 
 </DocumentFragment>
 `;
 
-exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 4, isDonut = false, tribal % = null 1`] = `
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 1, isAdjacency = false, isAdjLowInc = false, tribal points in AK = 1 tribal % = null 1`] = `
 <DocumentFragment>
   <h3>
     YES
@@ -80,7 +200,7 @@ exports[`rendering of TractPrioritization Component checks if component renders 
 </DocumentFragment>
 `;
 
-exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 5, isDonut = false, tribal % = 0 1`] = `
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 1, isAdjacency = false, isAdjLowInc = false, tribal points in AK = 2 tribal % = 0 1`] = `
 <DocumentFragment>
   <h3>
     YES
@@ -88,7 +208,175 @@ exports[`rendering of TractPrioritization Component checks if component renders 
 </DocumentFragment>
 `;
 
-exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 7, isDonut = false, tribal % = 0.82 1`] = `
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 1, isAdjacency = false, isAdjLowInc = false, tribal points in AK = 3 tribal % = 0.45 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 1, isAdjacency = false, isAdjLowInc = false, tribal points in AK = null tribal % = 0 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 1, isAdjacency = false, isAdjLowInc = false, tribal points in AK = null tribal % = 0.45 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 1, isAdjacency = false, isAdjLowInc = false, tribal points in AK = null tribal % = null 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 1, isAdjacency = false, isAdjLowInc = true, tribal points in AK = 1 tribal % = null 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 1, isAdjacency = false, isAdjLowInc = true, tribal points in AK = 2 tribal % = 0 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 1, isAdjacency = false, isAdjLowInc = true, tribal points in AK = 3 tribal % = 0.45 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 1, isAdjacency = false, isAdjLowInc = true, tribal points in AK = null tribal % = 0 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 1, isAdjacency = false, isAdjLowInc = true, tribal points in AK = null tribal % = 0.45 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 1, isAdjacency = false, isAdjLowInc = true, tribal points in AK = null tribal % = null 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 1, isAdjacency = true, isAdjLowInc = false, tribal points in AK = 1 tribal % = null 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 1, isAdjacency = true, isAdjLowInc = false, tribal points in AK = 2 tribal % = 0 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 1, isAdjacency = true, isAdjLowInc = false, tribal points in AK = 3 tribal % = 0.45 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 1, isAdjacency = true, isAdjLowInc = false, tribal points in AK = null tribal % = 0 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 1, isAdjacency = true, isAdjLowInc = false, tribal points in AK = null tribal % = 0.45 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 1, isAdjacency = true, isAdjLowInc = false, tribal points in AK = null tribal % = null 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 1, isAdjacency = true, isAdjLowInc = true, tribal points in AK = 1 tribal % = null 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 1, isAdjacency = true, isAdjLowInc = true, tribal points in AK = 2 tribal % = 0 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 1, isAdjacency = true, isAdjLowInc = true, tribal points in AK = 3 tribal % = 0.45 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 1, isAdjacency = true, isAdjLowInc = true, tribal points in AK = null tribal % = 0 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 1, isAdjacency = true, isAdjLowInc = true, tribal points in AK = null tribal % = 0.45 1`] = `
+<DocumentFragment>
+  <h3>
+    YES
+  </h3>
+</DocumentFragment>
+`;
+
+exports[`rendering of TractPrioritization Component checks if component renders YES when category count = 1, isAdjacency = true, isAdjLowInc = true, tribal points in AK = null tribal % = null 1`] = `
 <DocumentFragment>
   <h3>
     YES

@@ -14,7 +14,6 @@ import infoIcon from '/node_modules/uswds/dist/img/usa-icons/info.svg';
 interface IIndicator {
   indicator: indicatorInfo,
   isImpute?: boolean,
-  isAdjacent?: boolean,
 }
 interface IIndicatorValueSubText {
   type: indicatorType,
@@ -31,24 +30,22 @@ interface IIndicatorValue {
 /**
  * This component will render an info icon in the indicator value
  *
- * @param {boolean} isImpute
- * @param {boolean} isAdjacent
  * @return {JSX.Element}
  */
-export const IndicatorInfoIcon = ({isImpute, isAdjacent}: Omit<IIndicator, 'indicator'>) => {
+export const IndicatorInfoIcon = () => {
   const intl = useIntl();
 
-  const getToolTipCopy = () => {
-    if (!isImpute && isAdjacent) {
-      return intl.formatMessage(EXPLORE_COPY.LOW_INCOME_TOOLTIP.IMP_NO_ADJ_YES);
-    } else if (isImpute && !isAdjacent) {
-      return intl.formatMessage(EXPLORE_COPY.LOW_INCOME_TOOLTIP.IMP_YES_ADJ_NO);
-    } else if (isImpute && isAdjacent) {
-      return intl.formatMessage(EXPLORE_COPY.LOW_INCOME_TOOLTIP.IMP_YES_ADJ_YES);
-    } else {
-      return null;
-    }
-  };
+  // const getToolTipCopy = () => {
+  //   if (!isImpute && isAdjacent) {
+  //     return intl.formatMessage(EXPLORE_COPY.LOW_INCOME_TOOLTIP.IMP_NO_ADJ_YES);
+  //   } else if (isImpute && !isAdjacent) {
+  //     return intl.formatMessage(EXPLORE_COPY.LOW_INCOME_TOOLTIP.IMP_YES_ADJ_NO);
+  //   } else if (isImpute && isAdjacent) {
+  //     return intl.formatMessage(EXPLORE_COPY.LOW_INCOME_TOOLTIP.IMP_YES_ADJ_YES);
+  //   } else {
+  //     return null;
+  //   }
+  // };
 
   /**
    * This library react-tooltip creates random DOM ID which will not allow for snapshot testing as
@@ -69,13 +66,13 @@ export const IndicatorInfoIcon = ({isImpute, isAdjacent}: Omit<IIndicator, 'indi
       />
       <img
         data-for="lowIncomeIcon"
-        data-tip={getToolTipCopy()}
+        data-tip={intl.formatMessage(EXPLORE_COPY.LOW_INCOME_TOOLTIP.IMP_YES_ADJ_NO)}
         data-iscapture="true"
         className={styles.info}
         src={infoIcon}
         alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_VALUES.IMG_ALT_TEXT.INFO)}
       />
-      {isImpute && <span className={styles.infoTilde}>{ ` ~ ` }</span>}
+      <span className={styles.infoTilde}>{ ` ~ ` }</span>
     </>
   );
 };
@@ -226,7 +223,7 @@ export const IndicatorValue = ({type, displayStat}:IIndicatorValue) => {
  * @param {IIndicator} indicator
  * @return {JSX.Element}
  */
-const Indicator = ({indicator, isImpute, isAdjacent}:IIndicator) => {
+const Indicator = ({indicator, isImpute}:IIndicator) => {
   /**
    * The indicator value could be a number | boolean | null. In all cases we coerce to number
    * before flooring.
@@ -242,8 +239,8 @@ const Indicator = ({indicator, isImpute, isAdjacent}:IIndicator) => {
   // A boolean to represent if the indicator is above or below the threshold
   const isAboveThresh = displayStat !== null && displayStat >= threshold ? true : false;
 
-  // Show an info icon on the low icome indicator if the impute or adjacency is true:
-  const showLowIncomeInfoIcon = (indicator.label === 'Low income' && (isImpute || isAdjacent));
+  // Show an info icon on the low icome indicator if the impute true:
+  const showLowIncomeInfoIcon = (indicator.label === 'Low income' && (isImpute));
 
   return (
     <li
@@ -267,10 +264,7 @@ const Indicator = ({indicator, isImpute, isAdjacent}:IIndicator) => {
             {/* Indicator info icon */}
             { showLowIncomeInfoIcon &&
               <div className={styles.indicatorInfo}>
-                <IndicatorInfoIcon
-                  isImpute={isImpute}
-                  isAdjacent={isAdjacent}
-                />
+                <IndicatorInfoIcon/>
               </div>
             }
 

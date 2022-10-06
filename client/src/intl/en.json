@@ -535,6 +535,14 @@
     "defaultMessage": "White",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: White"
   },
+  "explore.map.page.side.panel.donut.copy.adj.low.income": {
+    "defaultMessage": "Adjusted low income",
+    "description": "Navigate to the explore the map page. Click on side panel, this copy may show up"
+  },
+  "explore.map.page.side.panel.donut.copy.complete.surround": {
+    "defaultMessage": "Completely surrounded",
+    "description": "Navigate to the explore the map page. Click on side panel, this copy may show up"
+  },
   "explore.map.page.side.panel.exceed.burden.answer.no": {
     "defaultMessage": "No",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. This will display NO if the census tract is disadvantaged"
@@ -1031,37 +1039,29 @@
     "defaultMessage": "Partially",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the communities the score currently is partially focused on"
   },
-  "explore.map.page.side.panel.prio.copy.frt.less.1.perc": {
-    "defaultMessage": "The less than 1% of this tract that are Federally- Recognized Tribal lands are also considered disadvantaged.",
-    "description": "Navigate to the explore the map page. Click on tract, The side panel will show The [less than 1%] of this tract that are Federally- Recognized Tribal lands are also considered disadvantaged."
-  },
   "explore.map.page.side.panel.prio.copy.not.prio": {
-    "defaultMessage": "This tract is not considered disadvantaged. It does not meet any burden thresholds OR at least one associated socioeconomic threshold.",
-    "description": "Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It does not meet any burden thresholds OR at least one associated socioeconomi} threshold."
-  },
-  "explore.map.page.side.panel.prio.copy.not.prio.n.burden": {
-    "defaultMessage": "This tract is not considered disadvantaged. It meets {burdens} burden thresholds BUT no associated socioeconomic thresholds.",
-    "description": "Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It meets one burden threshold BUT no associated socioeconomic thresholds."
+    "defaultMessage": "This tract is not considered disadvantaged. It does not meet any burden thresholds OR at least one associated socio-economic threshold.",
+    "description": "Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It does not meet any burden thresholds OR at least one associated socio-economic threshold."
   },
   "explore.map.page.side.panel.prio.copy.not.prio.one.burden": {
-    "defaultMessage": "This tract is not considered disadvantaged. It meets one burden threshold BUT no associated socioeconomic thresholds.",
-    "description": "Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It meets one burden threshold BUT no associated socioeconomic thresholds."
+    "defaultMessage": "This tract is not considered disadvantaged. It meets 1 burden threshold BUT no associated socio-economic thresholds.",
+    "description": "Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It meets [1] burden threshold BUT no associated socio-economic thresholds."
   },
   "explore.map.page.side.panel.prio.copy.prio.donut": {
-    "defaultMessage": "This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold.",
-    "description": "Navigate to the explore the map page. Click on tract, The side panel will show This tract is considered disadvantaged because it is surrounded by tracts that are disadvantaged AND meets an adjusted low}income threshold."
+    "defaultMessage": "This tract is considered disadvantaged. It is completely surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. The adjustment does not apply to any of the categories.",
+    "description": "Navigate to the explore the map page. Click on tract, The side panel will show This tract is considered disadvantaged. It is completely surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. The adjustment does not apply to any of the categories."
   },
   "explore.map.page.side.panel.prio.copy.prio.frt.n.perc": {
-    "defaultMessage": "The less than 1% of this tract that are Federally-Recognized Tribal lands are {also} considered disadvantaged.",
-    "description": "Navigate to the explore the map page. Click on tract, The {percentage} of this tract that are Federally-Recognized Tribal lands are also considered disadvantaged."
+    "defaultMessage": "The {amount} of this tract that are Federally-Recognized Tribal lands and the {numPoints} tribes that are Federally-Recognized are also considered disadvantaged.",
+    "description": "Navigate to the explore the map page. Click on tract, The {amount} of this tract that are Federally-Recognized Tribal lands and the {numPoints} tribes that are Federally-Recognized are also considered disadvantaged."
   },
   "explore.map.page.side.panel.prio.copy.prio.n.burden": {
-    "defaultMessage": "This tract is considered disadvantaged because it meets {burdens} burden thresholds AND the associated socio-economic threshold.",
+    "defaultMessage": "This tract is considered disadvantaged because it meets {burdens} burden threshold AND the associated socio-economic threshold.",
     "description": "Navigate to the explore the map page. Click on tract, This tract is considered disadvantaged because it meets {burdens} burden thresholds AND the associated socio-economic threshold."
   },
   "explore.map.page.side.panel.prio.copy.prio.one.burden": {
-    "defaultMessage": "This tract is considered disadvantaged because it meets one burden threshold AND the associated socio-economic threshold.",
-    "description": "Navigate to the explore the map page. Click on tract, The side panel will show This tract is considered disadvantaged because it meets one burden threshold AND the associated socio-economic threshold.."
+    "defaultMessage": "This tract is not considered disadvantaged. It meets more than 1 burden threshold BUT no associated socio-economic thresholds.",
+    "description": "Navigate to the explore the map page. Click on tract, The side panel will show This tract is not considered disadvantaged. It meets more than 1 burden threshold BUT no associated socio-economic thresholds."
   },
   "explore.map.page.side.panel.send.feedback.alt.img": {
     "defaultMessage": "Send feedback",

@@ -24,3 +24,16 @@ $sidePanelLabelFontColor: #171716;
 $datasetContainerColor: #EEF6FB;
 $headingFontColor: #122E51;
 $j40AlertWarningColor: #FAF3D1;
+
+@mixin invert {
+  background-color: $disadvantagedDotColor;
+  color: white;
+  @include u-padding-left('05');
+  @include u-padding-right('05');
+}
+
+@mixin indicatorValueSubTextContainer {
+  text-align: right;
+  @include typeset('sans', 'micro', 2);
+  @include u-text('thin'); 
+}
