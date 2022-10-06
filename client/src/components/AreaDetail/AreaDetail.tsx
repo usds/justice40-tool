@@ -795,9 +795,10 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
             totalCategoriesPrioritized={properties[constants.COUNT_OF_CATEGORIES_DISADV]}
             isAdjacencyThreshMet={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
             isAdjacencyLowIncome={properties[constants.ADJACENCY_LOW_INCOME_EXCEEDS_THRESH]}
-            tribalLandsCount={properties[constants.TRIBAL_AREAS_COUNT] >= 1 ?
-              properties[constants.TRIBAL_AREAS_COUNT] : null
-            }
+            tribalCountAK={properties[constants.TRIBAL_AREAS_COUNT_AK] >= 1 ?
+              properties[constants.TRIBAL_AREAS_COUNT_AK] : null}
+            tribalCountUS={properties[constants.TRIBAL_AREAS_COUNT_CONUS] >= 1 ?
+              properties[constants.TRIBAL_AREAS_COUNT_CONUS] : null}
             percentTractTribal={percentTractTribal}
           />
         </div>
@@ -808,18 +809,20 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
             totalBurdensPrioritized={properties[constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS]}
             isAdjacencyThreshMet={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
             isAdjacencyLowIncome={properties[constants.ADJACENCY_LOW_INCOME_EXCEEDS_THRESH]}
-            tribalCountAK={properties[constants.TRIBAL_AREAS_COUNT] >= 1 ?
-              properties[constants.TRIBAL_AREAS_COUNT] : null}
-            tribalCountUS={null}
+            tribalCountAK={properties[constants.TRIBAL_AREAS_COUNT_AK] >= 1 ?
+              properties[constants.TRIBAL_AREAS_COUNT_AK] : null}
+            tribalCountUS={properties[constants.TRIBAL_AREAS_COUNT_CONUS] >= 1 ?
+              properties[constants.TRIBAL_AREAS_COUNT_CONUS] : null}
             percentTractTribal={percentTractTribal}
           />
           <PrioritizationCopy2
             totalCategoriesPrioritized={properties[constants.COUNT_OF_CATEGORIES_DISADV]}
             isAdjacencyThreshMet={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
             isAdjacencyLowIncome={properties[constants.ADJACENCY_LOW_INCOME_EXCEEDS_THRESH]}
-            tribalCountAK={properties[constants.TRIBAL_AREAS_COUNT] >= 1 ?
-              properties[constants.TRIBAL_AREAS_COUNT] : null}
-            tribalCountUS={null}
+            tribalCountAK={properties[constants.TRIBAL_AREAS_COUNT_AK] >= 1 ?
+              properties[constants.TRIBAL_AREAS_COUNT_AK] : null}
+            tribalCountUS={properties[constants.TRIBAL_AREAS_COUNT_CONUS] >= 1 ?
+              properties[constants.TRIBAL_AREAS_COUNT_CONUS] : null}
             percentTractTribal={percentTractTribal}
           />
         </div>
@@ -890,12 +893,24 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
 
         <div>
           <span>
-            Tribal count?
+            Tribal count in AK?
           </span>
           <span>
             {
-              properties[constants.TRIBAL_AREAS_COUNT] >= 1 ?
-              ` ${properties[constants.TRIBAL_AREAS_COUNT]}` : ` null`
+              properties[constants.TRIBAL_AREAS_COUNT_AK] >= 1 ?
+              ` ${properties[constants.TRIBAL_AREAS_COUNT_AK]}` : ` null`
+            }
+          </span>
+        </div>
+
+        <div>
+          <span>
+            Tribal count in CONUS?
+          </span>
+          <span>
+            {
+              properties[constants.TRIBAL_AREAS_COUNT_AK] >= 1 ?
+              ` ${properties[constants.TRIBAL_AREAS_COUNT_AK]}` : ` null`
             }
           </span>
         </div>
