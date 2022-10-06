@@ -591,7 +591,7 @@ export const getPrioFRTCopy = (amount:string, isAlso:boolean = false) => {
       defaultMessage={ 'The {amount} of this tract that are Federally-Recognized Tribal lands are {also} considered disadvantaged.'}
       description={`Navigate to the explore the map page. Click on tract, The {amount} of this tract that are Federally-Recognized Tribal lands are {also} considered disadvantaged.`}
       values={{
-        percentage: amount,
+        amount: amount,
         also: isAlso? 'also' : '',
       }}
     />
