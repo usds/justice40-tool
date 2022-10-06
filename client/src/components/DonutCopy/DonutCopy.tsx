@@ -1,6 +1,8 @@
 import React from 'react';
 import {useIntl} from 'gatsby-plugin-intl';
 
+import {IndicatorValue, IndicatorValueSubText} from '../Indicator/Indicator';
+
 import * as styles from './DonutCopy.module.scss';
 
 import * as EXPLORE_COPY from '../../data/copy/explore';
@@ -12,6 +14,8 @@ export interface IDonutCopyProps {
 
 const DonutCopy = ({isAdjacent, povertyBelow200Percentile}: IDonutCopyProps) => {
   const intl = useIntl();
+  const povBel200Percentile = parseFloat((povertyBelow200Percentile*100).toFixed());
+  const threshold = 50;
 
   return (
     <div className={styles.donutCopyContainer}>
@@ -23,8 +27,21 @@ const DonutCopy = ({isAdjacent, povertyBelow200Percentile}: IDonutCopyProps) => 
       </div>
       <div className={styles.donutRow}>
         <div className={styles.donutRowLabel}>{intl.formatMessage(EXPLORE_COPY.DONUT_COPY.ADJ_LOW_INC)}</div>
-        <div className={isAdjacent ? styles.invert : ''}>
-          {povertyBelow200Percentile}
+        <div className={styles.valueSubTextContainer}>
+          <div className={isAdjacent ? styles.invert : styles.noInvert}>
+            <IndicatorValue
+              type={'percentile'}
+              displayStat={povBel200Percentile}
+            />
+          </div>
+          <div className={styles.subTextContainer}>
+            <IndicatorValueSubText
+              value={povBel200Percentile}
+              isAboveThresh={povBel200Percentile >= threshold ? true : false}
+              threshold={threshold}
+              type={'percentile'}
+            />
+          </div>
         </div>
       </div>
     </div>

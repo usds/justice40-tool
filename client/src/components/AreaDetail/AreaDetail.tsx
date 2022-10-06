@@ -100,7 +100,6 @@ export const indicatorFilter = (label:MessageDescriptor) => {
   );
 };
 
-
 /**
  * Function to calculate the tribal area percentage value to display when a tract is selected
  *
@@ -760,7 +759,6 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
             key={`ind${index}`}
             indicator={indicator}
             isImpute={properties[constants.IMPUTE_FLAG] === "0" ? false : true}
-            isAdjacent={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
           />;
         })}
 

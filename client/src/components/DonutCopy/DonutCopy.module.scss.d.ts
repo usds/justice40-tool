@@ -4,6 +4,9 @@ declare namespace DonutCopyNamespace {
       donutRow: string;
       donutRowLabel: string;
       invert: string;
+      noInvert: string;
+      valueSubTextContainer: string;
+      subTextContainer: string;
     }
   }
 

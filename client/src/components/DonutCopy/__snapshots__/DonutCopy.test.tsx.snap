@@ -17,10 +17,26 @@ exports[`rendering of DonutCopy Component checks if component renders when adjac
       <div>
         Adjusted low income
       </div>
-      <div
-        class=""
-      >
-        32
+      <div>
+        <div>
+          3
+          <sup
+            style="top: -0.2em;"
+          >
+            th
+          </sup>
+        </div>
+        <div>
+          <div>
+            above 50
+            <sup
+              style="top: -0.2em;"
+            >
+              th
+            </sup>
+             percentile
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -43,7 +59,25 @@ exports[`rendering of DonutCopy Component checks if component renders when adjac
         Adjusted low income
       </div>
       <div>
-        32
+        <div>
+          3
+          <sup
+            style="top: -0.2em;"
+          >
+            th
+          </sup>
+        </div>
+        <div>
+          <div>
+            above 50
+            <sup
+              style="top: -0.2em;"
+            >
+              th
+            </sup>
+             percentile
+          </div>
+        </div>
       </div>
     </div>
   </div>

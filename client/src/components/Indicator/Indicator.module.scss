@@ -80,13 +80,7 @@
       }
       
       .indicatorValueSubText{
-        // display: flex;
-        // flex-direction: column;
-        // align-self: flex-start;
-        text-align: right;
-        // @include u-width(8);
-        @include typeset('sans', 'micro', 2);
-        @include u-text('thin'); 
+        @include indicatorValueSubTextContainer();
       }
     }
 
