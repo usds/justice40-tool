@@ -13,7 +13,7 @@ import puzzleIcon from '../../images/sidePanelIcons/puzzle.svg';
 // @ts-ignore
 import bellCurveIcon from '../../images/sidePanelIcons/bellCurve.svg';
 // @ts-ignore
-import pieChartIcon from '../../images/sidePanelIcons/pieChart.svg';
+// import pieChartIcon from '../../images/sidePanelIcons/pieChart.svg';
 // @ts-ignore
 import notAvailIcon from '/node_modules/uswds/dist/img/usa-icons/do_not_disturb.svg';
 
@@ -86,13 +86,6 @@ const SidePanelInfo = () => {
       {/* Paragraph 3 */}
       <p tabIndex={0}>
         {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA3_PART1)}
-        {
-          windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG &&
-          <img tabIndex={0} className={styles.sidePanelInfoIcon} src={notAvailIcon}
-            alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.DAC_CIRCLE)}
-          />
-        }
-        {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA3_PART2)}
       </p>
 
       {/* Paragraph 4 */}
@@ -105,19 +98,18 @@ const SidePanelInfo = () => {
           />
         }
         {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA4_PART2)}
-        {
-          windowWidth > constants.USWDS_BREAKPOINTS.MOBILE_LG &&
-          <img tabIndex={0} className={styles.sidePanelInfoIcon} src={pieChartIcon}
-            alt={intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.PIE_CHART)}
-          />
-        }
-        {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA4_PART3)}
       </p>
 
       {/* Paragraph 5 */}
       <p tabIndex={0}>
-        {EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE_PARA5}
+        {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA5)}
       </p>
+
+      {/* Paragraph 6 */}
+      <p tabIndex={0}>
+        {intl.formatMessage(EXPLORE_COPY.SIDE_PANEL_INITIAL_STATE.PARA6)}
+      </p>
+
     </aside>
   );
 };

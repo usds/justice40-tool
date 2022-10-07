@@ -297,57 +297,53 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   PARA2_PART2: {
     id: 'explore.map.page.side.panel.info.para.2.part.2',
     defaultMessage: `
-    . Census tracts are a small unit of geography. They make it possible to display data consistenly across the nation.
+    . Census tracts are a small unit of geography. They generally have populations of between 1,200 - 8,000 people.
     `,
-    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Census tracts are a small unit of geography. They make it possible to display data consistenly across the nation.',
+    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Census tracts are a small unit of geography. They generally have populations of between 1,200 - 8,000 people.',
   },
   PARA3_PART1: {
     id: 'explore.map.page.side.panel.info.para.3.part.1',
     defaultMessage: `
-      Communities that are disadvantaged live in tracts that experience burdens. These tracts are highlighted in a blueish gray color
+      Communities that are disadvantaged live in tracts that experience burdens. These tracts are highlighted on the map.
     `,
-    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Communities that are disadvantaged live in tracts that experience burdens. These tracts are highlighted in a blueish gray color',
+    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Communities that are disadvantaged live in tracts that experience burdens. These tracts are highlighted on the map.',
   },
-  PARA3_PART2: {
-    id: 'explore.map.page.side.panel.info.para.3.part.2',
-    defaultMessage: `
-      on the map. This color is an opacity. This is so information about the map can be seen.
-    `,
-    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show on the map. This color is an opacity. This is so information about the map can be seen.',
-  },
+  // PARA3_PART2: {
+  //   id: 'explore.map.page.side.panel.info.para.3.part.2',
+  //   defaultMessage: `
+  //     on the map. This color is an opacity. This is so information about the map can be seen.
+  //   `,
+  //   description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show on the map. This color is an opacity. This is so information about the map can be seen.',
+  // },
   PARA4_PART1: {
     id: 'explore.map.page.side.panel.info.para.4.part.1',
     defaultMessage: `
-      The tool uses percentiles
+      The tool ranks most of the burdens using percentiles
     `,
-    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show The tool uses percentiles',
+    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show The tool ranks most of the burdens using percentiles',
   },
   PARA4_PART2: {
     id: 'explore.map.page.side.panel.info.para.4.part.2',
     defaultMessage: `
-      , percentages 
+    . Percentiles show how much burden each tract experiences when compared to other tracts.
     `,
     description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show percentages',
   },
-  PARA4_PART3: {
-    id: 'explore.map.page.side.panel.info.para.4.part.3',
+  PARA5: {
+    id: 'explore.map.page.side.panel.info.para.5',
     defaultMessage: `
-      , or a simple yes/no to indicate how much burden the communities are experiencing in each tract. 
+      Thresholds, or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages or a simple yes/no.
     `,
-    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show or a simple yes/no to indicate how much burden the communities are experiencing in each tract.',
+    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Thresholds, or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages or a simple yes/no.',
+  },
+  PARA6: {
+    id: 'explore.map.page.side.panel.info.para.6',
+    defaultMessage: `
+      Federally Recognized Tribal lands are also highlighted on the map. These communities are also considered disadvantaged.
+    `,
+    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Federally Recognized Tribal lands are also highlighted on the map. These communities are also considered disadvantaged.',
   },
 });
-
-export const SIDE_PANEL_INITIAL_STATE_PARA5 = <FormattedMessage
-  id={'explore.map.page.side.panel.info.para5'}
-  defaultMessage={ `
-    The tool also uses thresholds. If the tract meets or exceeds the threshold of any climate, environmental, or other burden <bold>AND</bold> it meets the threshold for the associated socioeconomic burden, then communites in the tract are considered disadvantaged.
-  `}
-  description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the fifth paragraph of this side pane`}
-  values={{
-    bold: COMMON_COPY.boldFn,
-  }}
-/>;
 
 export const SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT = defineMessages({
   PLUS: {

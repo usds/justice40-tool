@@ -78,31 +78,21 @@ exports[`rendering of the component expects the render to match snapshot 1`] = `
         tabindex="0"
       />
       
-    . Census tracts are a small unit of geography. They make it possible to display data consistenly across the nation.
+    . Census tracts are a small unit of geography. They generally have populations of between 1,200 - 8,000 people.
     
     </p>
     <p
       tabindex="0"
     >
       
-      Communities that are disadvantaged live in tracts that experience burdens. These tracts are highlighted in a blueish gray color
-    
-      <img
-        alt="
-      a blue circle icon informing the user of what a disadvantaged community is depicted as
-    "
-        src="test-file-stub"
-        tabindex="0"
-      />
-      
-      on the map. This color is an opacity. This is so information about the map can be seen.
+      Communities that are disadvantaged live in tracts that experience burdens. These tracts are highlighted on the map.
     
     </p>
     <p
       tabindex="0"
     >
       
-      The tool uses percentiles
+      The tool ranks most of the burdens using percentiles
     
       <img
         alt="
@@ -112,29 +102,22 @@ exports[`rendering of the component expects the render to match snapshot 1`] = `
         tabindex="0"
       />
       
-      , percentages 
-    
-      <img
-        alt="
-      An icon that depicts a part of pie chart being removed
-    "
-        src="test-file-stub"
-        tabindex="0"
-      />
-      
-      , or a simple yes/no to indicate how much burden the communities are experiencing in each tract. 
+    . Percentiles show how much burden each tract experiences when compared to other tracts.
     
     </p>
     <p
       tabindex="0"
     >
       
-    The tool also uses thresholds. If the tract meets or exceeds the threshold of any climate, environmental, or other burden 
-      <strong>
-        AND
-      </strong>
-       it meets the threshold for the associated socioeconomic burden, then communites in the tract are considered disadvantaged.
-  
+      Thresholds, or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages or a simple yes/no.
+    
+    </p>
+    <p
+      tabindex="0"
+    >
+      
+      Federally Recognized Tribal lands are also highlighted on the map. These communities are also considered disadvantaged.
+    
     </p>
   </aside>
 </DocumentFragment>
