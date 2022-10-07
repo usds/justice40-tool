@@ -139,10 +139,6 @@
     "defaultMessage": "Want to contribute?",
     "description": "Navigate to the about page. This is third Footer column header"
   },
-  "common.pages.footer.eng.cal.text": {
-    "defaultMessage": "Engagement calendar",
-    "description": "Navigate to the about page. This is Footer eng.cal.gov link text"
-  },
   "common.pages.footer.findcontact": {
     "defaultMessage": "Find a contact at USA.gov",
     "description": "Navigate to the about page. This is Footer find contact link text"
@@ -179,13 +175,13 @@
     "defaultMessage": "Privacy Policy",
     "description": "Navigate to the about page. This is Footer privacy policy link text"
   },
-  "common.pages.footer.rfi.link": {
-    "defaultMessage": "https://www.federalregister.gov/d/2022-03920",
-    "description": "Navigate to the about page. This is Footer rfi link"
+  "common.pages.footer.sign.up": {
+    "defaultMessage": "Sign up for updates",
+    "description": "Navigate to the about page. This is Footer under Sign-up for updates"
   },
-  "common.pages.footer.rfi.text": {
-    "defaultMessage": "Request for Information",
-    "description": "Navigate to the about page. This is Footer rfi link text"
+  "common.pages.footer.sign.up.link": {
+    "defaultMessage": "https://www.surveymonkey.com/r/whceqej",
+    "description": "Navigate to the about page. This is Footer link under Sign-up for updates"
   },
   "common.pages.footer.whitehouse.link": {
     "defaultMessage": "https://www.whitehouse.gov/",
@@ -260,7 +256,7 @@
     "description": "The footer sticky link that links to the CEJST survey"
   },
   "contact.page.fab.survey.text": {
-    "defaultMessage": "Help us improve the site & data",
+    "defaultMessage": "Help improve the tool",
     "description": "Navigate to the contact page, this is the text for floating action button"
   },
   "contact.page.general": {
@@ -479,9 +475,9 @@
     "defaultMessage": "YES",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the communities the score currently is focused on"
   },
-  "explore.map.page.side.panel.demo.age.over.64": {
-    "defaultMessage": "Elderly over 64",
-    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Elderly over 64"
+  "explore.map.page.side.panel.demo.age.over.65": {
+    "defaultMessage": "Elderly over 65",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Elderly over 65"
   },
   "explore.map.page.side.panel.demo.age.title": {
     "defaultMessage": "Age",

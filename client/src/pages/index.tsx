@@ -60,9 +60,9 @@ const ExporeToolPage = ({location}: IMapPageProps) => {
     <J40MainGridContainer>
       <Grid desktop={{col: 7}} tablet={{col: 10}} col={12}>
         <h2>{EXPLORE_COPY.NOTE_ON_TERRITORIES.INTRO}</h2>
+        <p>{EXPLORE_COPY.NOTE_ON_TERRITORIES.PARA_0}</p>
         <p>{EXPLORE_COPY.NOTE_ON_TERRITORIES.PARA_1}</p>
         <p>{EXPLORE_COPY.NOTE_ON_TERRITORIES.PARA_2}</p>
-        <p>{EXPLORE_COPY.NOTE_ON_TERRITORIES.PARA_3}</p>
       </Grid>
 
       <Grid desktop={{col: 7}} tablet={{col: 10}} col={12}>

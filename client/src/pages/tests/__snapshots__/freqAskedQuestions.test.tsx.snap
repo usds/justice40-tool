@@ -440,6 +440,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     </div>
                   </address>
                 </li>
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy="sign-up-for-updates"
+                    href="https://www.surveymonkey.com/r/whceqej"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Sign up for updates
+                  </a>
+                </li>
               </ul>
             </section>
           </div>
@@ -459,30 +472,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="usa-footer__secondary-link"
                 >
                   <a
-                    class="usa-link footer-link-first-child"
-                    href="/en/public-engagement"
-                  >
-                    Engagement calendar
-                  </a>
-                </li>
-                <li
-                  class="usa-footer__secondary-link"
-                >
-                  <a
-                    class="usa-link usa-link--external"
-                    data-cy="request-for-information"
-                    href="https://www.federalregister.gov/d/2022-03920"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    Request for Information
-                  </a>
-                </li>
-                <li
-                  class="usa-footer__secondary-link"
-                >
-                  <a
-                    class="usa-link usa-link--external"
+                    class="usa-link usa-link--external footer-link-first-child"
                     data-cy="whitehouse-gov"
                     href="https://www.whitehouse.gov/"
                     rel="noreferrer"
@@ -610,7 +600,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           data-testid="button"
           type="button"
         >
-          Help us improve the site & data
+          Help improve the tool
           <img
             alt="launch icon"
             src="test-file-stub"

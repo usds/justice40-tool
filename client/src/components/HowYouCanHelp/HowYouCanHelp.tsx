@@ -16,9 +16,9 @@ const HowYouCanHelp = () => {
         <li className={styles.howYouCanHelpList}>
           {ABOUT_COPY.HOW_YOU_CAN_HELP_LIST_ITEMS.LIST_ITEM_2}
         </li>
-        <li className={styles.howYouCanHelpList}>
+        {/* <li className={styles.howYouCanHelpList}>
           {ABOUT_COPY.HOW_YOU_CAN_HELP_LIST_ITEMS.LIST_ITEM_3}
-        </li>
+        </li> */}
         <li className={styles.howYouCanHelpList}>
           {ABOUT_COPY.HOW_YOU_CAN_HELP_LIST_ITEMS.LIST_ITEM_4}
         </li>

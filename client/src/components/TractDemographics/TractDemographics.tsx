@@ -39,7 +39,7 @@ const J40AccordionItem = ({id, title, children}:IJ40AccordionItem) => {
       <h6 className={styles.demographicHeading}>
         {title}
         <span>
-          {'( '}
+          {'('}
           <a
             className={styles.showHideText ? `usa-link ${styles.showHideText}` : `usa-link`}
             id={`${id}-header`}
@@ -169,7 +169,7 @@ const getDemographicsData = (properties:constants.J40Properties):IDemographicsDa
         displayStat(properties[constants.DEMO_AGE_MID]),
       ],
       [
-        EXPLORE_COPY.SIDE_PANEL_DEMOGRAPHICS.DEMO_AGE_OVER_64,
+        EXPLORE_COPY.SIDE_PANEL_DEMOGRAPHICS.DEMO_AGE_OVER_65,
         displayStat(properties[constants.DEMO_AGE_OVER_64]),
       ],
     ],

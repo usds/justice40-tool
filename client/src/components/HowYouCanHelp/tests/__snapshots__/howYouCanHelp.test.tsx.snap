@@ -28,9 +28,6 @@ exports[`rendering of the HowYouCanHelp checks if various text fields are visibl
         .
       </li>
       <li>
-        Have feedback about a specific census tract? You can either click here or click the “Send Feedback” button on the side-panel of a census tract on the map.
-      </li>
-      <li>
         Any other questions? Email: 
         <a
           class="usa-link"

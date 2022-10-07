@@ -16,7 +16,7 @@ exports[`rendering of the SurveyButton checks if component renders 1`] = `
         data-testid="button"
         type="button"
       >
-        Help us improve the site & data
+        Help improve the tool
         <img
           alt="launch icon"
           src="test-file-stub"

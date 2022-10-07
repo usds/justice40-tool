@@ -161,25 +161,20 @@ export const FOOTER = defineMessages({
     defaultMessage: 'Council on Environmental Quality',
     description: 'Navigate to the about page. This is Footer under logo',
   },
+  SIGN_UP: {
+    id: 'common.pages.footer.sign.up',
+    defaultMessage: 'Sign up for updates',
+    description: 'Navigate to the about page. This is Footer under Sign-up for updates',
+  },
+  SIGN_UP_LINK: {
+    id: 'common.pages.footer.sign.up.link',
+    defaultMessage: 'https://www.surveymonkey.com/r/whceqej',
+    description: 'Navigate to the about page. This is Footer link under Sign-up for updates',
+  },
   MORE_INFO: {
     id: 'common.pages.footer.moreinfoheader',
     defaultMessage: 'More information',
     description: 'Navigate to the about page. This is Footer column header',
-  },
-  ENG_CAL: {
-    id: 'common.pages.footer.eng.cal.text',
-    defaultMessage: 'Engagement calendar',
-    description: 'Navigate to the about page. This is Footer eng.cal.gov link text',
-  },
-  RFI: {
-    id: 'common.pages.footer.rfi.text',
-    defaultMessage: 'Request for Information',
-    description: 'Navigate to the about page. This is Footer rfi link text',
-  },
-  RFI_LINK: {
-    id: 'common.pages.footer.rfi.link',
-    defaultMessage: 'https://www.federalregister.gov/d/2022-03920',
-    description: 'Navigate to the about page. This is Footer rfi link',
   },
   WHITEHOUSE: {
     id: 'common.pages.footer.whitehouse.text',
@@ -248,6 +243,14 @@ export const FOOTER_CEQ_ADDRESS = {
   STREET: '730 Jackson Pl NW',
   CITY_STATE: 'Washington, D.C. 20506',
   PHONE: '(202) 395-5750',
+  // SIGN_UP: <FormattedMessage
+  //   id={'common.pages.footer.sign.up.updates'}
+  //   defaultMessage={`<link1>Sign-up</link1> for updates`}
+  //   description={`Alert title that appears at the top of pages.`}
+  //   values={{
+  //     link1: linkFn('https://www.surveymonkey.com/r/whceqej', false, true),
+  //   }}
+  // />,
 }
 ;
 
