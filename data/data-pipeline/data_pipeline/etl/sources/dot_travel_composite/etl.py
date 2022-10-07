@@ -13,7 +13,10 @@ class TravelCompositeETL(ExtractTransformLoad):
     """ETL class for the DOT Travel Disadvantage Dataset"""
 
     NAME = "travel_composite"
-    SOURCE_URL = "https://www.transportation.gov/sites/dot.gov/files/Shapefile_and_Metadata.zip"
+    # Commenting below temporarily to get stating going. In the next PR we'll have env vars to control
+    # data source endpoints to be either "source" or "aws"
+    # SOURCE_URL = "https://www.transportation.gov/sites/dot.gov/files/Shapefile_and_Metadata.zip"
+    SOURCE_URL = "https://justice40-data.s3.amazonaws.com/data-sources/raw-data-sources/dot_travel_composite/Shapefile_and_Metadata.zip"
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
     PUERTO_RICO_EXPECTED_IN_DATA = False
     LOAD_YAML_CONFIG: bool = True
