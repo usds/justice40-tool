@@ -738,8 +738,10 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
     is required, however, the title prop is already defining the category styling, so this
     is placed here to satisfy the requirement of the AccordionItems API, however it's not
     being used.
+
+    Casting 'h4' as const because it needs to be a heading type as specified HeadingLevel.
     */
-    headingLevel: 'h4',
+    headingLevel: 'h4' as const,
 
     title: <Category name={category.titleText} isDisadvantaged={category.isDisadvagtaged} />,
     content: (

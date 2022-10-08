@@ -29,7 +29,8 @@
     "intl:compile-en": "formatjs compile src/intl/en.json --ast --out-file compiled-lang/en.json",
     "test:intl-extraction": "node src/intl/testIntlExtraction",
     "prepare": "cd .. && husky install client/.husky",
-    "gc": "node .generate_component $1"
+    "gc": "node .generate_component $1",
+    "compile": "tsc"
   },
   "devDependencies": {
     "@formatjs/cli": "^4.8.2",

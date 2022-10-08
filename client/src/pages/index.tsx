@@ -6,6 +6,7 @@ import ExploreDataBox from '../components/ExploreDataBox';
 import J40Map from '../components/J40Map';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
+import PublicEngageButton from '../components/PublicEngageButton';
 
 import * as EXPLORE_COPY from '../data/copy/explore';
 
@@ -25,6 +26,7 @@ const ExporeToolPage = ({location}: IMapPageProps) => {
 
       <section className={'page-heading'}>
         <h1>{intl.formatMessage(EXPLORE_COPY.PAGE_INTRO.PAGE_HEADING)}</h1>
+        <PublicEngageButton />
       </section>
 
       <Grid row gap className={'j40-mb5-mt3'}>
@@ -32,21 +34,15 @@ const ExporeToolPage = ({location}: IMapPageProps) => {
         {/* Gradually increase width of the Grid as the width decreases from desktop to mobile*/}
         {/* desktop = 7 columns, tablet = 10 columns and mobile = 12 columns (full width) */}
         <Grid desktop={{col: 8}} tablet={{col: 10}} col={12}>
-          <section>
-            <p>
-              {EXPLORE_COPY.PAGE_DESCRIPTION1}
-            </p>
-            <p>
-              {EXPLORE_COPY.PAGE_DESCRIPTION2}
-            </p>
-          </section>
+          <p>
+            {EXPLORE_COPY.PAGE_DESCRIPTION1}
+          </p>
+          <p>
+            {EXPLORE_COPY.PAGE_DESCRIPTION2}
+          </p>
         </Grid>
         <Grid desktop={{col: 4}} tablet={{col: 10}} col={12}>
-          <section>
-            <p>
-              <ExploreDataBox />
-            </p>
-          </section>
+          <ExploreDataBox />
         </Grid>
       </Grid>
     </J40MainGridContainer>
@@ -60,9 +56,9 @@ const ExporeToolPage = ({location}: IMapPageProps) => {
     <J40MainGridContainer>
       <Grid desktop={{col: 7}} tablet={{col: 10}} col={12}>
         <h2>{EXPLORE_COPY.NOTE_ON_TERRITORIES.INTRO}</h2>
+        <p>{EXPLORE_COPY.NOTE_ON_TERRITORIES.PARA_0}</p>
         <p>{EXPLORE_COPY.NOTE_ON_TERRITORIES.PARA_1}</p>
         <p>{EXPLORE_COPY.NOTE_ON_TERRITORIES.PARA_2}</p>
-        <p>{EXPLORE_COPY.NOTE_ON_TERRITORIES.PARA_3}</p>
       </Grid>
 
       <Grid desktop={{col: 7}} tablet={{col: 10}} col={12}>

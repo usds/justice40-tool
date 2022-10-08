@@ -571,10 +571,14 @@ export interface IIndicators {
   note?: JSX.Element,
   usedIn: JSX.Element,
   responsibleParty: string,
-  sources: [{
+  sources: {
     source: JSX.Element,
-    availableFor: JSX.Element,
-  }]
+    availableFor: { // Todo remove this and replace with MessageDescriptor when ticket #2000 is fixed
+      id: string,
+      description: string,
+      defaultMessage: string,
+    },
+  }[]
 };
 
 export const INDICATORS = [

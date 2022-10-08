@@ -54,7 +54,7 @@ exports[`rendering of the component expects the render to match snapshot 1`] = `
         tabindex="0"
       />
       
-      to see information about any census tract
+      to see information about any census tract.
     
     </p>
     <p
@@ -78,14 +78,24 @@ exports[`rendering of the component expects the render to match snapshot 1`] = `
         tabindex="0"
       />
       
-    . Census tracts are a small unit of geography. They make it possible to display data consistenly across the nation.
+    . Census tracts are a small unit of geography. They generally have populations 
+    
+      <img
+        alt="
+      a people icon informing the user of communities
+    "
+        src="test-file-stub"
+        tabindex="0"
+      />
+      
+      of between 1,200 - 8,000 people.
     
     </p>
     <p
       tabindex="0"
     >
       
-      Communities that are disadvantaged live in tracts that experience burdens. These tracts are highlighted in a blueish gray color
+      Communities that are disadvantaged live in tracts that experience burdens. These tracts are highlighted 
     
       <img
         alt="
@@ -95,14 +105,14 @@ exports[`rendering of the component expects the render to match snapshot 1`] = `
         tabindex="0"
       />
       
-      on the map. This color is an opacity. This is so information about the map can be seen.
+    on the map.
     
     </p>
     <p
       tabindex="0"
     >
       
-      The tool uses percentiles
+      The tool ranks most of the burdens using percentiles
     
       <img
         alt="
@@ -112,7 +122,24 @@ exports[`rendering of the component expects the render to match snapshot 1`] = `
         tabindex="0"
       />
       
-      , percentages 
+    . Percentiles show how much burden each tract experiences when compared to other tracts.
+    
+    </p>
+    <p
+      tabindex="0"
+    >
+      
+      Thresholds
+    
+      <img
+        alt="
+      An icon shows a up arrow with a lower limit implying that it's above a threshold
+    "
+        src="test-file-stub"
+        tabindex="0"
+      />
+      
+    , or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages 
     
       <img
         alt="
@@ -122,19 +149,35 @@ exports[`rendering of the component expects the render to match snapshot 1`] = `
         tabindex="0"
       />
       
-      , or a simple yes/no to indicate how much burden the communities are experiencing in each tract. 
+      or a simple yes/no
+    
+      <img
+        alt="
+      An icon that depicts a check mark conveying yes and/or no
+    "
+        src="test-file-stub"
+        tabindex="0"
+      />
+      
+      .
     
     </p>
     <p
       tabindex="0"
     >
       
-    The tool also uses thresholds. If the tract meets or exceeds the threshold of any climate, environmental, or other burden 
-      <strong>
-        AND
-      </strong>
-       it meets the threshold for the associated socioeconomic burden, then communites in the tract are considered disadvantaged.
-  
+      Federally Recognized Tribal lands are also highlighted
+    
+      <img
+        alt="
+      a blue circle icon informing the user of what a disadvantaged community is depicted as
+    "
+        src="test-file-stub"
+        tabindex="0"
+      />
+      
+      highlighted on the map. These communities are also considered disadvantaged.
+    
     </p>
   </aside>
 </DocumentFragment>

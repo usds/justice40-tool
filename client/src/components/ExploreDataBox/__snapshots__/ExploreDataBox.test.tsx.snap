@@ -24,18 +24,16 @@ exports[`rendering of ExploreDataBox Component checks if component renders 1`] =
       <div
         class="usa-summary-box__text"
       >
-        <p>
-          
+        
     Download the data with documentation and shapefiles, from the 
-          <a
-            class="usa-link"
-            href="/en/downloads"
-          >
-            downloads
-          </a>
-           page
+        <a
+          class="usa-link"
+          href="/en/downloads"
+        >
+          downloads
+        </a>
+         page.
   
-        </p>
       </div>
     </div>
   </div>

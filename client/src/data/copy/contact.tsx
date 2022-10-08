@@ -28,7 +28,7 @@ export const PAGE_INTRO = defineMessages({
   },
   SURVEY_TEXT: {
     id: 'contact.page.fab.survey.text',
-    defaultMessage: `Help us improve the site & data`,
+    defaultMessage: `Help improve the tool`,
     description: 'Navigate to the contact page, this is the text for floating action button',
   },
   SURVEY_URL: {

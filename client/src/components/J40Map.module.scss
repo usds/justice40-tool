@@ -67,6 +67,10 @@
   border: 1px solid $sidePanelBorderColor;
   overflow-y: auto;
   height: 90vh;
+
+  @include at-media-max("mobile-lg") {
+    height: 100%;
+  }
 }
 
 // This will control the height of the map when the device 

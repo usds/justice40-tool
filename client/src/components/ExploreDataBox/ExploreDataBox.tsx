@@ -16,7 +16,7 @@ const ExploreDataBox = ({}: IExploreDataBoxProps) => {
   const intl = useIntl();
 
   return (
-    <SummaryBox>
+    <SummaryBox className={styles.summaryBoxContainer}>
 
       <SummaryBoxHeading headingLevel='h2'>
         {intl.formatMessage(EXPLORE_COPY.EXPLORE_DATA_BOX.TITLE)}
@@ -26,7 +26,7 @@ const ExploreDataBox = ({}: IExploreDataBoxProps) => {
       </SummaryBoxHeading>
 
       <SummaryBoxContent>
-        <p>{EXPLORE_COPY.EXPLORE_DATA_BOX_BODY}</p>
+        {EXPLORE_COPY.EXPLORE_DATA_BOX_BODY}
       </SummaryBoxContent>
 
     </SummaryBox>

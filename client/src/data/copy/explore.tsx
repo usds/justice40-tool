@@ -33,7 +33,7 @@ export const PAGE_INTRO = defineMessages({
 export const PAGE_DESCRIPTION1 = <FormattedMessage
   id={'explore.map.page.description.1'}
   defaultMessage={`
-    Overburdened and underserved census tracts are highlighted as being disadvantaged on the map. The map also highlights areas within Federally-recognized Tribal reservations. These areas are also considered disadvantaged.
+    Census tracts that are overburdened and underserved census tracts are highlighted as being disadvantaged on the map. These include Federally-Recognized Tribal lands, including Alaska Native Villages. 
   `}
   description={'On the explore the map page, the first description of the page'}
   // values={{
@@ -44,7 +44,7 @@ export const PAGE_DESCRIPTION1 = <FormattedMessage
 export const PAGE_DESCRIPTION2 = <FormattedMessage
   id={'explore.map.page.description.2'}
   defaultMessage={`
-    Zooming and selecting shows information about each census tract or tribal area. Change the selection to see information about tribal land areas.
+    Zooming-in and selecting shows information about each census tract. 
   `}
   description={'On the explore the map page, the fifth description of the page'}
   // values={{
@@ -81,7 +81,7 @@ export const EXPLORE_DATA_BOX = defineMessages({
 export const EXPLORE_DATA_BOX_BODY = <FormattedMessage
   id={'explore.map.page.explore.data.box.body'}
   defaultMessage={ `
-    Download the data with documentation and shapefiles, from the <link1>downloads</link1> page
+    Download the data with documentation and shapefiles, from the <link1>downloads</link1> page.
   `}
   description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the fifth paragraph of this side pane`}
   values={{
@@ -276,7 +276,7 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   PARA1_PART5: {
     id: 'explore.map.page.side.panel.info.para.1.part.5',
     defaultMessage: `
-      to see information about any census tract
+      to see information about any census tract.
     `,
     description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show to see information about any census tract',
   },
@@ -297,57 +297,88 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   PARA2_PART2: {
     id: 'explore.map.page.side.panel.info.para.2.part.2',
     defaultMessage: `
-    . Census tracts are a small unit of geography. They make it possible to display data consistenly across the nation.
+    . Census tracts are a small unit of geography. They generally have populations 
     `,
-    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Census tracts are a small unit of geography. They make it possible to display data consistenly across the nation.',
+    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Census tracts are a small unit of geography. They generally have populations of between 1,200 - 8,000 people.',
+  },
+  PARA2_PART3: {
+    id: 'explore.map.page.side.panel.info.para.2.part.2',
+    defaultMessage: `
+      of between 1,200 - 8,000 people.
+    `,
+    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Census tracts are a small unit of geography. They generally have populations of between 1,200 - 8,000 people.',
   },
   PARA3_PART1: {
     id: 'explore.map.page.side.panel.info.para.3.part.1',
     defaultMessage: `
-      Communities that are disadvantaged live in tracts that experience burdens. These tracts are highlighted in a blueish gray color
+      Communities that are disadvantaged live in tracts that experience burdens. These tracts are highlighted 
     `,
-    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Communities that are disadvantaged live in tracts that experience burdens. These tracts are highlighted in a blueish gray color',
+    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Communities that are disadvantaged live in tracts that experience burdens. These tracts are highlighted on the map.',
   },
   PARA3_PART2: {
     id: 'explore.map.page.side.panel.info.para.3.part.2',
     defaultMessage: `
-      on the map. This color is an opacity. This is so information about the map can be seen.
+    on the map.
     `,
     description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show on the map. This color is an opacity. This is so information about the map can be seen.',
   },
   PARA4_PART1: {
     id: 'explore.map.page.side.panel.info.para.4.part.1',
     defaultMessage: `
-      The tool uses percentiles
+      The tool ranks most of the burdens using percentiles
     `,
-    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show The tool uses percentiles',
+    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show The tool ranks most of the burdens using percentiles',
   },
   PARA4_PART2: {
     id: 'explore.map.page.side.panel.info.para.4.part.2',
     defaultMessage: `
-      , percentages 
+    . Percentiles show how much burden each tract experiences when compared to other tracts.
     `,
     description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show percentages',
   },
-  PARA4_PART3: {
-    id: 'explore.map.page.side.panel.info.para.4.part.3',
+  PARA5_PART1: {
+    id: 'explore.map.page.side.panel.info.para.1',
     defaultMessage: `
-      , or a simple yes/no to indicate how much burden the communities are experiencing in each tract. 
+      Thresholds
     `,
-    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show or a simple yes/no to indicate how much burden the communities are experiencing in each tract.',
+    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Thresholds, or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages or a simple yes/no.',
+  },
+  PARA5_PART2: {
+    id: 'explore.map.page.side.panel.info.para.2',
+    defaultMessage: `
+    , or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages 
+    `,
+    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Thresholds, or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages or a simple yes/no.',
+  },
+  PARA5_PART3: {
+    id: 'explore.map.page.side.panel.info.para.3',
+    defaultMessage: `
+      or a simple yes/no
+    `,
+    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Thresholds, or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages or a simple yes/no.',
+  },
+  PARA5_PART4: {
+    id: 'explore.map.page.side.panel.info.para.4',
+    defaultMessage: `
+      .
+    `,
+    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Thresholds, or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages or a simple yes/no.',
+  },
+  PARA6_PART1: {
+    id: 'explore.map.page.side.panel.info.para.6',
+    defaultMessage: `
+      Federally Recognized Tribal lands are also highlighted
+    `,
+    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Federally Recognized Tribal lands are also highlighted on the map. These communities are also considered disadvantaged.',
+  },
+  PARA6_PART2: {
+    id: 'explore.map.page.side.panel.info.para.6',
+    defaultMessage: `
+      highlighted on the map. These communities are also considered disadvantaged.
+    `,
+    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Federally Recognized Tribal lands are also highlighted on the map. These communities are also considered disadvantaged.',
   },
 });
-
-export const SIDE_PANEL_INITIAL_STATE_PARA5 = <FormattedMessage
-  id={'explore.map.page.side.panel.info.para5'}
-  defaultMessage={ `
-    The tool also uses thresholds. If the tract meets or exceeds the threshold of any climate, environmental, or other burden <bold>AND</bold> it meets the threshold for the associated socioeconomic burden, then communites in the tract are considered disadvantaged.
-  `}
-  description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know, this is the fifth paragraph of this side pane`}
-  values={{
-    bold: COMMON_COPY.boldFn,
-  }}
-/>;
 
 export const SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT = defineMessages({
   PLUS: {
@@ -385,6 +416,13 @@ export const SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT = defineMessages({
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show a tract icon informing the user of census tracts`,
   },
+  PEOPLE: {
+    id: 'explore.map.page.side.panel.info.alt.text.icon.people',
+    defaultMessage: `
+      a people icon informing the user of communities
+    `,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show a tract icon informing the user of people`,
+  },
   DAC_CIRCLE: {
     id: 'explore.map.page.side.panel.info.alt.text.icon.dac.circle',
     defaultMessage: `
@@ -399,12 +437,26 @@ export const SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT = defineMessages({
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show An icon that a bell curve or gaussian distribution`,
   },
+  FILE_UP: {
+    id: 'explore.map.page.side.panel.info.alt.text.icon.file.up',
+    defaultMessage: `
+      An icon shows a up arrow with a lower limit implying that it's above a threshold
+    `,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show An icon that a bell curve or gaussian distribution`,
+  },
   PIE_CHART: {
     id: 'explore.map.page.side.panel.info.alt.text.icon.pie',
     defaultMessage: `
       An icon that depicts a part of pie chart being removed
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show An icon that depicts a part of pie chart being removed`,
+  },
+  CHECK: {
+    id: 'explore.map.page.side.panel.info.alt.text.icon.check',
+    defaultMessage: `
+      An icon that depicts a check mark conveying yes and/or no
+    `,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show An icon that depicts a check mark conveying yes and/or no`,
   },
   UP_ARROW: {
     id: 'explore.map.page.side.panel.info.alt.text.icon.up.arrow',
@@ -531,10 +583,10 @@ export const SIDE_PANEL_DEMOGRAPHICS = {
     defaultMessage={'Ages 10 - 64'}
     description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Ages 10 - 64`}
   />,
-  DEMO_AGE_OVER_64: <FormattedMessage
-    id={'explore.map.page.side.panel.demo.age.over.64'}
-    defaultMessage={'Elderly over 64'}
-    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Elderly over 64`}
+  DEMO_AGE_OVER_65: <FormattedMessage
+    id={'explore.map.page.side.panel.demo.age.over.65'}
+    defaultMessage={'Elderly over 65'}
+    description={`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show the demographics: Elderly over 65`}
   />,
 };
 
@@ -773,8 +825,8 @@ export const SIDE_PANEL_CATEGORY = defineMessages({
   },
   CLEAN_WATER: {
     id: 'explore.map.page.side.panel.indicator.title.clean.water',
-    defaultMessage: 'Water',
-    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Water title
+    defaultMessage: 'Water and wastewater',
+    description: `Navigate to the explore the tool page. When the map is in view, click on the map. The side panel will show Water and wastewater title
 `,
   },
   WORK_DEV: {
@@ -1068,7 +1120,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   WILDFIRE: {
     id: 'explore.map.page.side.panel.indicator.description.wildfire',
     defaultMessage: `
-      Projected risk to properties from wildfire from fire fuels, weather, humans, and fire movement
+      Projected risk to properties from wildfire from fire fuels, weather, humans, and fire movement in 30 years
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of wildfire risk`,
   },
@@ -1150,9 +1202,9 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   LEAD_PAINT: {
     id: 'explore.map.page.side.panel.indicator.description.leadPaint',
     defaultMessage: `
-      Share of homes that are not very expensive and are likely to have lead paint
+      Share of homes that are likely to have lead paint
     `,
-    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of homes that are not very expensive and are likely to have lead paint   
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Share of homes that are likely to have lead paint   
     `,
   },
 
@@ -1344,35 +1396,33 @@ export const NOTE_ON_TERRITORIES = {
     defaultMessage={`U.S. territories note`}
     description={`Navigate to the explore the map page. Under the map, you will see territories intro text`}
   />,
+  PARA_0: <FormattedMessage
+    id={'explore.map.page.under.map.note.on.territories.para.0'}
+    defaultMessage={`
+      Not all the data used in CEJST are available or used for all U.S. territories.
+    `}
+    description={`Navigate to the explore the map page. Under the map, you will see territories paragraph 0`}
+  />,
   PARA_1: <FormattedMessage
     id={'explore.map.page.under.map.note.on.territories.para.1'}
     defaultMessage={`
-      Puerto Rico: The <link1>U.S. Census Bureau's American Community Survey data</link1> from 2015 - 2019
-      are used for all fields in the workforce development category except for linguistic isolation. Linguistic isolation was removed based on feedback during the beta period. Proximity to National Priorities List (NPL) sites, proximity to Risk Management Plan (RMP) facilities, traffic proximity and volume, diesel particulate matter exposure, energy cost and housing cost were added for Puerto Rico in the 1.0 version.
+      <bold>Puerto Rico:</bold> The data used for Puerto Rico are from all relevant and available fields 
+      in the energy, housing, legacy pollution, transportation, and workforce development categories. The following data are used: projected flood risk, energy cost, lack of plumbing, lead paint, housing cost, proximity to hazardous waste facilities, proximity to Superfund or National Priorities List (NPL) sites, proximity to Risk Management Plan (RMP) facilities, diesel particulate matter exposure, traffic proximity and volume, leaking underground storage tanks, wastewater discharge, poverty, unemployment, and high school education. Linguistic isolation was removed for Puerto Rico based on feedback received during the beta period.
     `}
     description={`Navigate to the explore the map page. Under the map, you will see territories paragraph 1`}
     values={{
-      link1: COMMON_COPY.linkFn(EXPLORE_PAGE_LINKS.CENSUS_15_19, false, true),
+      bold: COMMON_COPY.boldFn,
     }}
   />,
+
   PARA_2: <FormattedMessage
     id={'explore.map.page.under.map.note.on.territories.para.2'}
     defaultMessage={`
-    American Samoa and the Northern Mariana Islands: The <link1>Decennial Census data</link1> from 2010 are used. The CEJST uses the following data for these territories: unemployment, poverty, low median income, and high school education. These burdens are in the workforce Development category.
+    <bold>American Samoa, Guam, the Northern Mariana Islands, and the U.S. Virgin Islands:</bold> For these U.S. territories, the tool uses the following data: unemployment, poverty, low median income, and high school education. These burdens are in the workforce development category.
   `}
     description={`Navigate to the explore the map page. Under the map, you will see territories paragraph 2`}
     values={{
-      link1: COMMON_COPY.linkFn(EXPLORE_PAGE_LINKS.DECENNIAL, false, true),
-    }}
-  />,
-  PARA_3: <FormattedMessage
-    id={'explore.map.page.under.map.note.on.territories.para.3'}
-    defaultMessage={`
-    Guam and the U.S. Virgin Islands: Some <link1>Decennial Census data</link1> from 2010 are used. They show burdens in the workforce development category. The data includes: Unemployment, poverty, low median income, and high school education.
-    `}
-    description={`Navigate to the explore the map page. Under the map, you will see territories paragraph 3`}
-    values={{
-      link1: COMMON_COPY.linkFn(EXPLORE_PAGE_LINKS.DECENNIAL, false, true),
+      bold: COMMON_COPY.boldFn,
     }}
   />,
 };

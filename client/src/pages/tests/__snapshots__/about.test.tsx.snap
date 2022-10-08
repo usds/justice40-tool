@@ -379,6 +379,27 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         >
           About
         </h1>
+        <div>
+          <a
+            href="/en/public-engagement"
+          >
+            <button
+              class="usa-button"
+              data-testid="button"
+              type="button"
+            >
+              <div>
+                <img
+                  alt="an icon that represents a calendar"
+                  src="test-file-stub"
+                />
+                <div>
+                  Public engagement
+                </div>
+              </div>
+            </button>
+          </a>
+        </div>
       </section>
       <div
         class="grid-row grid-gap j40-mb5-mt3"
@@ -419,24 +440,25 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               . The Justice40 Initiative seeks to deliver 40% of the overall benefits of investments in climate, clean energy, and related areas to disadvantaged communities.
     
             </p>
-            <p>
+            <div
+              class="j40-p-tag"
+            >
               
       Federal agencies should also use the following:
     
-            </p>
-            <ul>
-              <li>
-                 
+              <ul>
+                <li>
+                   
       Addendum to the Justice40 Initiative Interim Guidance on Using CEJST
     
-              </li>
-              <li>
-                 
+                </li>
+                <li>
+                   
       Instructions to Federal Agencies on Using the CEJST
     
-              </li>
-            </ul>
-            <p />
+                </li>
+              </ul>
+            </div>
             <p>
               
       CEQ will update the tool each year based on public feedback, research, and the availability of new data. The current version of the tool is version 1.0.
@@ -753,9 +775,6 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               .
             </li>
             <li>
-              Have feedback about a specific census tract? You can either click here or click the “Send Feedback” button on the side-panel of a census tract on the map.
-            </li>
-            <li>
               Any other questions? Email: 
               <a
                 class="usa-link"
@@ -827,6 +846,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     </div>
                   </address>
                 </li>
+                <li
+                  class="usa-footer__secondary-link"
+                >
+                  <a
+                    class="usa-link usa-link--external"
+                    data-cy="sign-up-for-updates"
+                    href="https://www.surveymonkey.com/r/whceqej"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Sign up for updates
+                  </a>
+                </li>
               </ul>
             </section>
           </div>
@@ -846,30 +878,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   class="usa-footer__secondary-link"
                 >
                   <a
-                    class="usa-link footer-link-first-child"
-                    href="/en/public-engagement"
-                  >
-                    Engagement calendar
-                  </a>
-                </li>
-                <li
-                  class="usa-footer__secondary-link"
-                >
-                  <a
-                    class="usa-link usa-link--external"
-                    data-cy="request-for-information"
-                    href="https://www.federalregister.gov/d/2022-03920"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    Request for Information
-                  </a>
-                </li>
-                <li
-                  class="usa-footer__secondary-link"
-                >
-                  <a
-                    class="usa-link usa-link--external"
+                    class="usa-link usa-link--external footer-link-first-child"
                     data-cy="whitehouse-gov"
                     href="https://www.whitehouse.gov/"
                     rel="noreferrer"
@@ -997,7 +1006,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           data-testid="button"
           type="button"
         >
-          Help us improve the site & data
+          Help improve the tool
           <img
             alt="launch icon"
             src="test-file-stub"
