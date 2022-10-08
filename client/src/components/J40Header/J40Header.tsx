@@ -48,7 +48,6 @@ const J40Header = ({location}:IJ40Header) => {
    */
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const toggleMobileNav = (): void => {
-    console.log('mobile opened!');
     setMobileNavOpen((prevOpen) => !prevOpen);
   };
 
@@ -84,8 +83,6 @@ const J40Header = ({location}:IJ40Header) => {
    * @param {number} index
    */
   const onToggle = (index: number): void => {
-    console.log('🚀 ~ file: J40Header.tsx ~ line 57 ~ J40Header ~ isOpen before toggle', isOpen);
-
     // The setIsOpen is used to toggle the currently selected nav link
     setIsOpen((prevIsOpen) => {
       const newIsOpen = [...isOpen];
