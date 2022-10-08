@@ -9,6 +9,7 @@ import J40MainGridContainer from '../components/J40MainGridContainer';
 import MethodologyFormula from '../components/MethodologyFormula';
 import Layout from '../components/layout';
 import SubPageNav from '../components/SubPageNav';
+import PublicEngageButton from '../components/PublicEngageButton';
 
 import * as CONSTANTS from '../data/constants';
 import * as METHODOLOGY_COPY from '../data/copy/methodology';
@@ -29,6 +30,7 @@ const IndexPage = ({location}: MethodPageProps) => {
 
         <section className={'page-heading'}>
           <h1>{intl.formatMessage(METHODOLOGY_COPY.PAGE.HEADING)}</h1>
+          <PublicEngageButton />
         </section>
 
         <Grid row gap className={'j40-mb5-mt3'}>

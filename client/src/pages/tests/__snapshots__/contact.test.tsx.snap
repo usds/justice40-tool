@@ -377,6 +377,27 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         <h1>
           Contact
         </h1>
+        <div>
+          <a
+            href="/en/public-engagement"
+          >
+            <button
+              class="usa-button"
+              data-testid="button"
+              type="button"
+            >
+              <div>
+                <img
+                  alt="an icon that represents a calendar"
+                  src="test-file-stub"
+                />
+                <div>
+                  Public engagement
+                </div>
+              </div>
+            </button>
+          </a>
+        </div>
       </section>
       <div
         class="grid-row grid-gap-6"

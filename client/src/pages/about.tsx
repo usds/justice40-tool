@@ -8,6 +8,7 @@ import {Grid} from '@trussworks/react-uswds';
 import HowYouCanHelp from '../components/HowYouCanHelp';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
+import PublicEngageButton from '../components/PublicEngageButton';
 import SubPageNav from '../components/SubPageNav';
 
 import * as ABOUT_COPY from '../data/copy/about';
@@ -43,6 +44,7 @@ const AboutPage = ({location}: IAboutPageProps) => {
 
         <section className={'page-heading'}>
           <h1 data-cy={'about-page-heading'}>{intl.formatMessage(ABOUT_COPY.PAGE.TITLE)}</h1>
+          <PublicEngageButton />
         </section>
 
         <Grid row gap className={'j40-mb5-mt3'}>
