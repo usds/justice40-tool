@@ -171,6 +171,12 @@ li.usa-nav__primary-item a:hover::after{
     @include u-margin-bottom(5);
     @include u-margin-top(3);
   }
+
+  .j40-p-tag {
+    margin-top: 1.25rem;
+    font-size: 1.06rem;
+    line-height: 1.4;
+  }
 }
 
 // all external links

@@ -440,24 +440,25 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               . The Justice40 Initiative seeks to deliver 40% of the overall benefits of investments in climate, clean energy, and related areas to disadvantaged communities.
     
             </p>
-            <p>
+            <div
+              class="j40-p-tag"
+            >
               
       Federal agencies should also use the following:
     
-            </p>
-            <ul>
-              <li>
-                 
+              <ul>
+                <li>
+                   
       Addendum to the Justice40 Initiative Interim Guidance on Using CEJST
     
-              </li>
-              <li>
-                 
+                </li>
+                <li>
+                   
       Instructions to Federal Agencies on Using the CEJST
     
-              </li>
-            </ul>
-            <p />
+                </li>
+              </ul>
+            </div>
             <p>
               
       CEQ will update the tool each year based on public feedback, research, and the availability of new data. The current version of the tool is version 1.0.
