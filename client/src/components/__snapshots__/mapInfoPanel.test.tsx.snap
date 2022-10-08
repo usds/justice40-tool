@@ -59,7 +59,7 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
           tabindex="0"
         />
         
-      to see information about any census tract
+      to see information about any census tract.
     
       </p>
       <p
@@ -83,14 +83,34 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
           tabindex="0"
         />
         
-    . Census tracts are a small unit of geography. They generally have populations of between 1,200 - 8,000 people.
+    . Census tracts are a small unit of geography. They generally have populations 
+    
+        <img
+          alt="
+      a people icon informing the user of communities
+    "
+          src="test-file-stub"
+          tabindex="0"
+        />
+        
+      of between 1,200 - 8,000 people.
     
       </p>
       <p
         tabindex="0"
       >
         
-      Communities that are disadvantaged live in tracts that experience burdens. These tracts are highlighted on the map.
+      Communities that are disadvantaged live in tracts that experience burdens. These tracts are highlighted 
+    
+        <img
+          alt="
+      a blue circle icon informing the user of what a disadvantaged community is depicted as
+    "
+          src="test-file-stub"
+          tabindex="0"
+        />
+        
+    on the map.
     
       </p>
       <p
@@ -114,14 +134,54 @@ exports[`simulate app starting up, no click on map should match the snapshot of 
         tabindex="0"
       >
         
-      Thresholds, or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages or a simple yes/no.
+      Thresholds
+    
+        <img
+          alt="
+      An icon shows a up arrow with a lower limit implying that it's above a threshold
+    "
+          src="test-file-stub"
+          tabindex="0"
+        />
+        
+    , or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages 
+    
+        <img
+          alt="
+      An icon that depicts a part of pie chart being removed
+    "
+          src="test-file-stub"
+          tabindex="0"
+        />
+        
+      or a simple yes/no
+    
+        <img
+          alt="
+      An icon that depicts a check mark conveying yes and/or no
+    "
+          src="test-file-stub"
+          tabindex="0"
+        />
+        
+      .
     
       </p>
       <p
         tabindex="0"
       >
         
-      Federally Recognized Tribal lands are also highlighted on the map. These communities are also considered disadvantaged.
+      Federally Recognized Tribal lands are also highlighted
+    
+        <img
+          alt="
+      a blue circle icon informing the user of what a disadvantaged community is depicted as
+    "
+          src="test-file-stub"
+          tabindex="0"
+        />
+        
+      highlighted on the map. These communities are also considered disadvantaged.
     
       </p>
     </aside>

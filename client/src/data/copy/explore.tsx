@@ -276,7 +276,7 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   PARA1_PART5: {
     id: 'explore.map.page.side.panel.info.para.1.part.5',
     defaultMessage: `
-      to see information about any census tract
+      to see information about any census tract.
     `,
     description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show to see information about any census tract',
   },
@@ -297,24 +297,31 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
   PARA2_PART2: {
     id: 'explore.map.page.side.panel.info.para.2.part.2',
     defaultMessage: `
-    . Census tracts are a small unit of geography. They generally have populations of between 1,200 - 8,000 people.
+    . Census tracts are a small unit of geography. They generally have populations 
+    `,
+    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Census tracts are a small unit of geography. They generally have populations of between 1,200 - 8,000 people.',
+  },
+  PARA2_PART3: {
+    id: 'explore.map.page.side.panel.info.para.2.part.2',
+    defaultMessage: `
+      of between 1,200 - 8,000 people.
     `,
     description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Census tracts are a small unit of geography. They generally have populations of between 1,200 - 8,000 people.',
   },
   PARA3_PART1: {
     id: 'explore.map.page.side.panel.info.para.3.part.1',
     defaultMessage: `
-      Communities that are disadvantaged live in tracts that experience burdens. These tracts are highlighted on the map.
+      Communities that are disadvantaged live in tracts that experience burdens. These tracts are highlighted 
     `,
     description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Communities that are disadvantaged live in tracts that experience burdens. These tracts are highlighted on the map.',
   },
-  // PARA3_PART2: {
-  //   id: 'explore.map.page.side.panel.info.para.3.part.2',
-  //   defaultMessage: `
-  //     on the map. This color is an opacity. This is so information about the map can be seen.
-  //   `,
-  //   description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show on the map. This color is an opacity. This is so information about the map can be seen.',
-  // },
+  PARA3_PART2: {
+    id: 'explore.map.page.side.panel.info.para.3.part.2',
+    defaultMessage: `
+    on the map.
+    `,
+    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show on the map. This color is an opacity. This is so information about the map can be seen.',
+  },
   PARA4_PART1: {
     id: 'explore.map.page.side.panel.info.para.4.part.1',
     defaultMessage: `
@@ -329,17 +336,45 @@ export const SIDE_PANEL_INITIAL_STATE = defineMessages({
     `,
     description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show percentages',
   },
-  PARA5: {
-    id: 'explore.map.page.side.panel.info.para.5',
+  PARA5_PART1: {
+    id: 'explore.map.page.side.panel.info.para.1',
     defaultMessage: `
-      Thresholds, or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages or a simple yes/no.
+      Thresholds
     `,
     description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Thresholds, or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages or a simple yes/no.',
   },
-  PARA6: {
+  PARA5_PART2: {
+    id: 'explore.map.page.side.panel.info.para.2',
+    defaultMessage: `
+    , or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages 
+    `,
+    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Thresholds, or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages or a simple yes/no.',
+  },
+  PARA5_PART3: {
+    id: 'explore.map.page.side.panel.info.para.3',
+    defaultMessage: `
+      or a simple yes/no
+    `,
+    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Thresholds, or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages or a simple yes/no.',
+  },
+  PARA5_PART4: {
+    id: 'explore.map.page.side.panel.info.para.4',
+    defaultMessage: `
+      .
+    `,
+    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Thresholds, or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages or a simple yes/no.',
+  },
+  PARA6_PART1: {
     id: 'explore.map.page.side.panel.info.para.6',
     defaultMessage: `
-      Federally Recognized Tribal lands are also highlighted on the map. These communities are also considered disadvantaged.
+      Federally Recognized Tribal lands are also highlighted
+    `,
+    description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Federally Recognized Tribal lands are also highlighted on the map. These communities are also considered disadvantaged.',
+  },
+  PARA6_PART2: {
+    id: 'explore.map.page.side.panel.info.para.6',
+    defaultMessage: `
+      highlighted on the map. These communities are also considered disadvantaged.
     `,
     description: '`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Federally Recognized Tribal lands are also highlighted on the map. These communities are also considered disadvantaged.',
   },
@@ -381,6 +416,13 @@ export const SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT = defineMessages({
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show a tract icon informing the user of census tracts`,
   },
+  PEOPLE: {
+    id: 'explore.map.page.side.panel.info.alt.text.icon.people',
+    defaultMessage: `
+      a people icon informing the user of communities
+    `,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show a tract icon informing the user of people`,
+  },
   DAC_CIRCLE: {
     id: 'explore.map.page.side.panel.info.alt.text.icon.dac.circle',
     defaultMessage: `
@@ -395,12 +437,26 @@ export const SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT = defineMessages({
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show An icon that a bell curve or gaussian distribution`,
   },
+  FILE_UP: {
+    id: 'explore.map.page.side.panel.info.alt.text.icon.file.up',
+    defaultMessage: `
+      An icon shows a up arrow with a lower limit implying that it's above a threshold
+    `,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show An icon that a bell curve or gaussian distribution`,
+  },
   PIE_CHART: {
     id: 'explore.map.page.side.panel.info.alt.text.icon.pie',
     defaultMessage: `
       An icon that depicts a part of pie chart being removed
     `,
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show An icon that depicts a part of pie chart being removed`,
+  },
+  CHECK: {
+    id: 'explore.map.page.side.panel.info.alt.text.icon.check',
+    defaultMessage: `
+      An icon that depicts a check mark conveying yes and/or no
+    `,
+    description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show An icon that depicts a check mark conveying yes and/or no`,
   },
   UP_ARROW: {
     id: 'explore.map.page.side.panel.info.alt.text.icon.up.arrow',

@@ -931,9 +931,17 @@
     "defaultMessage": "An icon that a bell curve or gaussian distribution",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show An icon that a bell curve or gaussian distribution"
   },
+  "explore.map.page.side.panel.info.alt.text.icon.check": {
+    "defaultMessage": "An icon that depicts a check mark conveying yes and/or no",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show An icon that depicts a check mark conveying yes and/or no"
+  },
   "explore.map.page.side.panel.info.alt.text.icon.dac.circle": {
     "defaultMessage": "a blue circle icon informing the user of what a disadvantaged community is depicted as",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show a blue circle icon informing the user of what a disadvantaged community is depicted as"
+  },
+  "explore.map.page.side.panel.info.alt.text.icon.file.up": {
+    "defaultMessage": "An icon shows a up arrow with a lower limit implying that it's above a threshold",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show An icon that a bell curve or gaussian distribution"
   },
   "explore.map.page.side.panel.info.alt.text.icon.locate": {
     "defaultMessage": "a gps icon informing the user can locate",
@@ -942,6 +950,10 @@
   "explore.map.page.side.panel.info.alt.text.icon.mouse": {
     "defaultMessage": "a mouse arrow icon informing the user can use the mouse",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show a mouse arrow icon informing the user can use the mouse"
+  },
+  "explore.map.page.side.panel.info.alt.text.icon.people": {
+    "defaultMessage": "a people icon informing the user of communities",
+    "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show a tract icon informing the user of people"
   },
   "explore.map.page.side.panel.info.alt.text.icon.pie": {
     "defaultMessage": "An icon that depicts a part of pie chart being removed",
@@ -971,6 +983,10 @@
     "defaultMessage": "Things to know:",
     "description": "Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Things to know:"
   },
+  "explore.map.page.side.panel.info.para.1": {
+    "defaultMessage": "Thresholds",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Thresholds, or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages or a simple yes/no."
+  },
   "explore.map.page.side.panel.info.para.1.part.1": {
     "defaultMessage": "Zoom in",
     "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Zoom in"
@@ -984,20 +1000,36 @@
     "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show and select"
   },
   "explore.map.page.side.panel.info.para.1.part.5": {
-    "defaultMessage": "to see information about any census tract",
+    "defaultMessage": "to see information about any census tract.",
     "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show to see information about any census tract"
+  },
+  "explore.map.page.side.panel.info.para.2": {
+    "defaultMessage": ", or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Thresholds, or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages or a simple yes/no."
   },
   "explore.map.page.side.panel.info.para.2.part.1": {
     "defaultMessage": "The tool uses census tracts",
     "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show The tool uses census tracts"
   },
   "explore.map.page.side.panel.info.para.2.part.2": {
-    "defaultMessage": ". Census tracts are a small unit of geography. They generally have populations of between 1,200 - 8,000 people.",
+    "defaultMessage": "of between 1,200 - 8,000 people.",
     "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Census tracts are a small unit of geography. They generally have populations of between 1,200 - 8,000 people."
   },
+  "explore.map.page.side.panel.info.para.3": {
+    "defaultMessage": "or a simple yes/no",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Thresholds, or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages or a simple yes/no."
+  },
   "explore.map.page.side.panel.info.para.3.part.1": {
-    "defaultMessage": "Communities that are disadvantaged live in tracts that experience burdens. These tracts are highlighted on the map.",
+    "defaultMessage": "Communities that are disadvantaged live in tracts that experience burdens. These tracts are highlighted",
     "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Communities that are disadvantaged live in tracts that experience burdens. These tracts are highlighted on the map."
+  },
+  "explore.map.page.side.panel.info.para.3.part.2": {
+    "defaultMessage": "on the map.",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show on the map. This color is an opacity. This is so information about the map can be seen."
+  },
+  "explore.map.page.side.panel.info.para.4": {
+    "defaultMessage": ".",
+    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Thresholds, or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages or a simple yes/no."
   },
   "explore.map.page.side.panel.info.para.4.part.1": {
     "defaultMessage": "The tool ranks most of the burdens using percentiles",
@@ -1007,12 +1039,8 @@
     "defaultMessage": ". Percentiles show how much burden each tract experiences when compared to other tracts.",
     "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show percentages"
   },
-  "explore.map.page.side.panel.info.para.5": {
-    "defaultMessage": "Thresholds, or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages or a simple yes/no.",
-    "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Thresholds, or cutoffs, are used to determine if communities in a tract are disadvantaged. Certain burdens use percentages or a simple yes/no."
-  },
   "explore.map.page.side.panel.info.para.6": {
-    "defaultMessage": "Federally Recognized Tribal lands are also highlighted on the map. These communities are also considered disadvantaged.",
+    "defaultMessage": "highlighted on the map. These communities are also considered disadvantaged.",
     "description": "`Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show Federally Recognized Tribal lands are also highlighted on the map. These communities are also considered disadvantaged."
   },
   "explore.map.page.side.panel.is.community.of.focus": {
