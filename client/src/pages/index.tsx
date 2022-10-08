@@ -34,21 +34,15 @@ const ExporeToolPage = ({location}: IMapPageProps) => {
         {/* Gradually increase width of the Grid as the width decreases from desktop to mobile*/}
         {/* desktop = 7 columns, tablet = 10 columns and mobile = 12 columns (full width) */}
         <Grid desktop={{col: 8}} tablet={{col: 10}} col={12}>
-          <section>
-            <p>
-              {EXPLORE_COPY.PAGE_DESCRIPTION1}
-            </p>
-            <p>
-              {EXPLORE_COPY.PAGE_DESCRIPTION2}
-            </p>
-          </section>
+          <p>
+            {EXPLORE_COPY.PAGE_DESCRIPTION1}
+          </p>
+          <p>
+            {EXPLORE_COPY.PAGE_DESCRIPTION2}
+          </p>
         </Grid>
         <Grid desktop={{col: 4}} tablet={{col: 10}} col={12}>
-          <section>
-            <p>
-              <ExploreDataBox />
-            </p>
-          </section>
+          <ExploreDataBox />
         </Grid>
       </Grid>
     </J40MainGridContainer>

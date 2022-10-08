@@ -1,5 +1,6 @@
 declare namespace ExploreDataBoxNamespace {
     export interface IExploreDataBoxScss {
+      summaryBoxContainer: string;
       fileDownIcon: string;
     }
   }
