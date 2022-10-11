@@ -9,6 +9,7 @@ import {hyphenizeString} from '../../../cypress/integration/common/helpers';
 import * as styles from './dsContainer.module.scss';
 import * as METHODOLOGY_COPY from '../../data/copy/methodology';
 import {PAGES_ENDPOINTS} from '../../data/constants';
+import DatasetsButton from '../DatasetsButton';
 
 
 const DatasetContainer = () => {
@@ -27,13 +28,13 @@ const DatasetContainer = () => {
           </Grid>
 
           <Grid row gap>
-            <Grid desktop={{col: 8}}>
+            <Grid desktop={{col: 7}}>
               <p>{intl.formatMessage(METHODOLOGY_COPY.DATASETS.INFO)}</p>
             </Grid>
             <Grid desktop={{col: 1}}>
             </Grid>
-            <Grid desktop={{col: 3}}>
-
+            <Grid desktop={{col: 4}}>
+              <DatasetsButton href= {'https://www.surveymonkey.com/r/6G9TQJ8'} />
             </Grid>
           </Grid>
 
