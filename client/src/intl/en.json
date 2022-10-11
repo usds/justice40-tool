@@ -1152,27 +1152,27 @@
     "description": "Navigate to the FAQs page, this will be the page title text"
   },
   "indicator.categories.afford.house.title": {
-    "defaultMessage": "Affordable and sustainable housing",
+    "defaultMessage": "Housing",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the category title"
   },
   "indicator.categories.clean.energy.title": {
-    "defaultMessage": "Clean energy and energy efficiency",
+    "defaultMessage": "Energy",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the category title"
   },
   "indicator.categories.clean.transport.title": {
-    "defaultMessage": "Clean transit",
+    "defaultMessage": "Transportation",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the category title"
   },
   "indicator.categories.clean.water.title": {
-    "defaultMessage": "Critical clean water and wastewater infrastructure",
+    "defaultMessage": "Water and wastewater",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the category title"
   },
   "indicator.categories.health.burdens.title": {
-    "defaultMessage": "Health burdens",
+    "defaultMessage": "Health",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the category title"
   },
   "indicator.categories.legacy.pollution.title": {
-    "defaultMessage": "Reduction and remediation of legacy pollution",
+    "defaultMessage": "Legacy pollution",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the category title"
   },
   "indicator.categories.work.dev.title": {
@@ -1183,24 +1183,20 @@
     "defaultMessage": "Focus on {territory}",
     "description": "Focus on the bounds of a specific territory"
   },
-  "methodology.page.categories.title": {
-    "defaultMessage": "Communities are identified as disadvantaged by the current version of the tool for the purposes of the Justice40 Initiative if they are located in census tracts that are at or above the thresholds in one or more of eight categories of criteria below.",
-    "description": "Navigate to the methodology page. This is the methodology page explanation of the categories"
-  },
   "methodology.page.category.and.clause.hs.ed.higher.ed": {
-    "defaultMessage": "<boldtag>AND</boldtag> 10% or more of adults 25 or older have not attained a <link1>high school degree</link1> AND 80% or more of individuals 15 or older are not enrolled in <link2>higher education</link2>",
+    "defaultMessage": "<boldtag>AND</boldtag> have 10% or more of adults have a <link1>high school education</link1> level less than a high school degree",
     "description": "Navigate to the methodology page. Navigate to the category section. This is the portion of the formula dealing with higher ed enrollment and high school degree rate"
   },
-  "methodology.page.category.and.clause.low.inc.hs.ed": {
-    "defaultMessage": "<boldtag>AND</boldtag> is at or above the 65th percentile for <link1>low income</link1> AND 80% or more of individuals 15 or older are not enrolled in <link2>higher education</link2>",
-    "description": "Navigate to the methodology page. Navigate to the category section. This is category portion of the formula dealing with lower income and high school degree rate"
+  "methodology.page.category.and.clause.low.inc": {
+    "defaultMessage": "<boldtag>AND</boldtag> are at or above the 65th percentile for <link1>low income</link1>",
+    "description": "Navigate to the methodology page. Navigate to the category section. This is category portion of the formula dealing with lower income"
   },
   "methodology.page.category.asthma.description.text": {
     "defaultMessage": "Weighted percent of people who answer “yes” to both of the following questions: “Have you ever been told by a doctor, nurse, or other health professional that you have asthma?” and “Do you still have asthma?”",
     "description": "Navigate to the Methodology page. This is the description text for asthma"
   },
   "methodology.page.category.card.title": {
-    "defaultMessage": "Communities are <boldtag>identified as disadvantaged</boldtag>",
+    "defaultMessage": "Communities are <boldtag>identified as disadvantaged</boldtag> if they are in census tracts that:",
     "description": "Navigate to the methodology page. Navigate to the category section. This is category heading"
   },
   "methodology.page.category.diabetes.description.text": {
@@ -1503,8 +1499,16 @@
     "defaultMessage": "These datasets provide additional information about each community.",
     "description": "Navigate to the Methodology page. This is the additional indicator info"
   },
+  "methodology.page.datasetContainer.button.text": {
+    "defaultMessage": "Share data sources with CEQ",
+    "description": "Navigate to the Methodology page. This is the section heading of which datasets are used in cumulative score with a button labeled: Share data sources with CEQ"
+  },
   "methodology.page.datasetContainer.heading": {
     "defaultMessage": "Datasets used in beta methodology",
+    "description": "Navigate to the Methodology page. This is the section heading of which datasets are used in cumulative score"
+  },
+  "methodology.page.datasetContainer.heading.rich.text": {
+    "defaultMessage": "Datasets used in v{version} methodology",
     "description": "Navigate to the Methodology page. This is the section heading of which datasets are used in cumulative score"
   },
   "methodology.page.datasetContainer.info": {
@@ -1536,7 +1540,7 @@
     "description": "Navigate to the methodology page. This is the methodology page header text"
   },
   "methodology.page.indicator.categories.afford.house.if": {
-    "defaultMessage": "<boldtag>IF</boldtag> at or above the 90th percentile for <link1>lead paint</link1> AND <link2>median home value</link2> is at or less than the 90th percentile OR at or above the 90th percentile for the <link3>housing cost burden</link3>",
+    "defaultMessage": "Experienced <link0>historic underinvestment</link0> OR are at or above the 90th percentile for the <link1>housing cost</link1> OR <link2>lack of green space</link2> OR <link3>lack of indoor plumbing</link3> OR <link4>lead paint</link4>",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula"
   },
   "methodology.page.indicator.categories.afford.housing.methodology": {
@@ -1544,7 +1548,7 @@
     "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Affordable and sustainable housing methodology"
   },
   "methodology.page.indicator.categories.clean.energy.if": {
-    "defaultMessage": "<boldtag>IF</boldtag> at or above the 90th percentile for <link1>energy burden</link1> OR <link2>PM2.5 in the air</link2>",
+    "defaultMessage": "<boldtag>ARE</boldtag> at or above the 90th percentile for <link1>energy cost</link1> OR <link2>PM2.5 in the air</link2>",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the if if portion of the formula"
   },
   "methodology.page.indicator.categories.clean.energy.methodology": {
@@ -1552,7 +1556,7 @@
     "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Clean energy and energy efficiency methodology"
   },
   "methodology.page.indicator.categories.clean.transport.if": {
-    "defaultMessage": "<boldtag>IF</boldtag> at or above the 90th percentile for <link1>diesel particulate matter exposure</link1> or <link2>traffic proximity and volume</link2>",
+    "defaultMessage": "<boldtag>ARE</boldtag> at or above the 90th percentile for <link1>diesel particulate matter exposure</link1> or <link2>traffic proximity and volume</link2>",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula"
   },
   "methodology.page.indicator.categories.clean.transport.methodology": {
@@ -1560,7 +1564,7 @@
     "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Clean transportation methodology"
   },
   "methodology.page.indicator.categories.clean.water.if": {
-    "defaultMessage": "<boldtag>IF</boldtag> at or above the 90th percentile for <link1>wastewater discharge</link1>",
+    "defaultMessage": "<boldtag>ARE</boldtag> at or above the 90th percentile for <link0>leaking underground storage tanks</link0> OR <link1>wastewater discharge</link1>",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula"
   },
   "methodology.page.indicator.categories.clean.water.methodology": {
@@ -1568,7 +1572,7 @@
     "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Critical clean water and wastewater infrastructure methodology"
   },
   "methodology.page.indicator.categories.climate.change.if": {
-    "defaultMessage": "<boldtag>IF</boldtag> at or above the 90th percentile for <link1>expected agriculture loss rate</link1> OR <link2>expected building loss rate</link2> OR <link3>expected population loss rate</link3>",
+    "defaultMessage": "<boldtag>ARE</boldtag> at or above the 90th percentile for <link1>expected agriculture loss rate</link1> OR <link2>expected building loss rate</link2> OR <link3>expected population loss rate</link3> OR <link4>projected flood risk</link4> OR <link5>projected wildfire risk</link5>",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula"
   },
   "methodology.page.indicator.categories.climate.change.methodology": {
@@ -1580,11 +1584,11 @@
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the category title"
   },
   "methodology.page.indicator.categories.heading": {
-    "defaultMessage": "Categories",
+    "defaultMessage": "Categories of Burdens",
     "description": "Navigate to the methodology page. Navigate to the category section. This is category heading"
   },
   "methodology.page.indicator.categories.health.burdens.if": {
-    "defaultMessage": "<boldtag>IF</boldtag> at or above the 90th percentile for <link1>asthma</link1> OR <link2>diabetes</link2> OR <link3>heart disease</link3> OR <link4>low life expectancy</link4>",
+    "defaultMessage": "<boldtag>ARE</boldtag> at or above the 90th percentile for <link1>asthma</link1> OR <link2>diabetes</link2> OR <link3>heart disease</link3> OR <link4>low life expectancy</link4>",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula"
   },
   "methodology.page.indicator.categories.health.burdens.methodology": {
@@ -1596,24 +1600,52 @@
     "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Reduction and remediation of legacy pollution methodology"
   },
   "methodology.page.indicator.categories.legacy.pollution.if": {
-    "defaultMessage": "<boldtag>IF</boldtag> at or above the 90th percentile for <link1>proximity to hazardous waste facilities</link1> OR <link2>proximity to National Priorities List (NPL) sites</link2> OR <link3>proximity to Risk Management Plan (RMP) facilities</link3>",
+    "defaultMessage": "Have at least one <link0>abandoned mine land</link0> OR <link1>Formerly Used Defense Sites</link1> OR are at or above the 90th percentile for <link2>proximity to hazardous waste facilities</link2> OR <link3>proximity to Superfind sites</link3> OR <link4>proximity to Risk Management Plan facilities</link4>",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula"
   },
   "methodology.page.indicator.categories.work.dev.if": {
-    "defaultMessage": "<boldtag>IF</boldtag> at or above the 90th percentile for <link1>low median income</link1> as a percentage of area median income OR <link2>linguistic isolation</link2> OR <link3>unemployment</link3> OR percentage of individuals in households at or below 100% Federal <link4>poverty</link4> level",
+    "defaultMessage": "<boldtag>ARE</boldtag> at or above the 90th percentile for <link2>linguistic isolation</link2> OR <link1>low median income</link1> OR <link4>poverty</link4> OR <link3>unemployment</link3>",
     "description": "Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula"
   },
   "methodology.page.indicator.categories.workforce.dev.methodology": {
     "defaultMessage": "Training and workforce development category",
     "description": "Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Training and workforce development"
   },
-  "methodology.page.paragraph": {
-    "defaultMessage": "The current version of the tool identifies communities that are disadvantaged for the purposes of the Justice40 Initiative using census tracts, which are the smallest geographic unit for which publicly-available and nationally-consistent datasets can be consistently displayed on the tool. Census tract geographical boundaries are determined by the U.S. Census Bureau once every ten years. This tool utilizes the census tract boundaries from 2010 because they match the datasets used in the tool.",
-    "description": "Navigate to the methodology page. This is the methodology page paragraph"
+  "methodology.page.paragraph.1": {
+    "defaultMessage": "The tool highlights disadvantaged census tracts across all 50 states, the District of Columbia, and the U.S. territories. A community is considered disadvantaged:",
+    "description": "Navigate to the methodology page. This is the methodology paragraph 1"
+  },
+  "methodology.page.paragraph.1.bullet.1": {
+    "defaultMessage": "If they are in a census tract that meets the thresholds for at least one of tool’s categories of burden, or",
+    "description": "Navigate to the methodology page. This is the methodology paragraph 1, bullet 1"
+  },
+  "methodology.page.paragraph.1.bullet.2": {
+    "defaultMessage": "If they are on Federally-Recognized Tribal land",
+    "description": "Navigate to the methodology page. This is the methodology paragraph 1, bullet 2"
+  },
+  "methodology.page.paragraph.3": {
+    "defaultMessage": "The tool uses datasets as indicators of burdens. The burdens are organized into categories. A community is highlighted as disadvantaged on the CEJST map if it is in a census tract that is (1) at or above the threshold for one or more environmental, climate, or other burdens, and (2) at or above the threshold for an associated socioeconomic burden. In addition, a census tract that is completely surrounded by disadvantaged communities that meet the burden thresholds, and is at or above the 50% percentile for low income, is also considered disadvantaged.",
+    "description": "Navigate to the methodology page. This is the methodology paragraph 3"
+  },
+  "methodology.page.paragraph.4": {
+    "defaultMessage": "Census tracts are small units of geography. Census tract boundaries are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 census boundaries.",
+    "description": "Navigate to the methodology page. This is the methodology paragraph 4"
+  },
+  "methodology.page.paragraph.5": {
+    "defaultMessage": "Federally-Recognized Tribal lands, including Alaska Native Villages, are also considered disadvantaged and highlighted on the map.",
+    "description": "Navigate to the methodology page. This is the methodology paragraph 5"
   },
   "methodology.page.return.to.top.link": {
     "defaultMessage": "Return to top",
     "description": "Navigate to the Methodology page. This is the link text to return to top"
+  },
+  "methodology.page.sub.heading.1": {
+    "defaultMessage": "Categories of Burdens",
+    "description": "Navigate to the methodology page. This is sub-heading 1"
+  },
+  "methodology.page.sub.heading.2": {
+    "defaultMessage": "Tribal lands",
+    "description": "Navigate to the methodology page. This is sub-heading 2"
   },
   "methodology.page.title.text": {
     "defaultMessage": "Methodology & data",

@@ -6,6 +6,8 @@ import LinkTypeWrapper from '../LinkTypeWrapper';
 import {PAGES_ENDPOINTS} from '../../data/constants';
 import * as COMMON_COPY from '../../data/copy/common';
 
+import * as styles from './SubPageNav.module.scss';
+
 // This prop is used to set which sub-page navigation is active
 interface ISubPageNav {
     activeSubPageIndex?: number;
@@ -78,7 +80,9 @@ const SubPageNav = ({activeSubPageIndex = 0, endPoints}:ISubPageNav) => {
   // ];
 
   return (
-    <SideNav items={subPages}/>
+    <div className={styles.subPageNavContainer}>
+      <SideNav items={subPages}/>
+    </div>
   );
 };
 

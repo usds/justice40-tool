@@ -22,13 +22,18 @@ const DatasetContainer = () => {
 
           <Grid row>
             <Grid col={12}>
-              <h2>{intl.formatMessage(METHODOLOGY_COPY.DATASETS.HEADING)}</h2>
+              <h2>{METHODOLOGY_COPY.DATASETS_RICH_TEXT.HEADING}</h2>
             </Grid>
           </Grid>
 
-          <Grid row>
-            <Grid desktop={{col: 9}}>
+          <Grid row gap>
+            <Grid desktop={{col: 8}}>
               <p>{intl.formatMessage(METHODOLOGY_COPY.DATASETS.INFO)}</p>
+            </Grid>
+            <Grid desktop={{col: 1}}>
+            </Grid>
+            <Grid desktop={{col: 3}}>
+
             </Grid>
           </Grid>
 

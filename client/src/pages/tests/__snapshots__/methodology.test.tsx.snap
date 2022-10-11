@@ -400,7 +400,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         </div>
       </section>
       <div
-        class="grid-row grid-gap j40-mb5-mt3"
+        class="grid-row grid-gap j40-mt3"
         data-testid="grid"
       >
         <div
@@ -410,49 +410,23 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <section>
             <p>
               
-      The current version of the tool identifies communities that are disadvantaged for the purposes of 
-      the Justice40 Initiative using census tracts, which are the smallest geographic unit for 
-      which publicly-available and nationally-consistent datasets can be consistently displayed on the 
-      tool. Census tract geographical boundaries are determined by the U.S. Census Bureau once every ten 
-      years. This tool utilizes the census tract boundaries from 2010 because they match the datasets used 
-      in the tool.
+      The tool highlights disadvantaged census tracts across all 50 states, the District of Columbia, and the U.S. territories. A community is considered disadvantaged:
     
             </p>
-          </section>
-          <section>
-            <p>
-              
-      Under the current formula, a census tract will be identified as disadvantaged in one or more 
-      categories of criteria: 
+            <div>
+              <ul>
+                <li>
+                  
+      If they are in a census tract that meets the thresholds for at least one of tool’s categories of burden, or
     
-            </p>
-            <p>
-              
-      
-              <strong>
-                IF
-              </strong>
-               the census tract is above the threshold for one or more environmental or climate indicators
-      
-            </p>
-            <p>
-              
-      
-              <strong>
-                AND
-              </strong>
-               the census tract is above the threshold for the socioeconomic indicators
+                </li>
+                <li>
+                  
+      If they are on Federally-Recognized Tribal land
     
-            </p>
-          </section>
-          <section>
-            <p>
-              
-      Communities are identified as disadvantaged by the current version of the tool for the purposes of 
-      the Justice40 Initiative if they are located in census tracts that are at or above the 
-      thresholds in one or more of eight categories of criteria below. 
-    
-            </p>
+                </li>
+              </ul>
+            </div>
           </section>
         </div>
         <div
@@ -470,12 +444,25 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         data-testid="grid"
       >
         <div
-          class="grid-col-12"
+          class="grid-col-8"
           data-testid="grid"
         >
           <h2>
-            Categories
+            Categories of Burdens
           </h2>
+          <p>
+            
+      The tool uses datasets as indicators of burdens. The burdens are organized into categories. A community is highlighted as disadvantaged on the CEJST map if it is in a census tract that is (1) at or above the threshold for one or more environmental, climate, or other burdens, and (2) at or
+      above the threshold for an associated socioeconomic burden. In addition, a census tract that is completely surrounded by disadvantaged communities that meet the burden thresholds, and is at or above 
+      the 50% percentile for low income, is also considered disadvantaged. 
+    
+          </p>
+          <p>
+            
+      Census tracts are small units of geography. Census tract boundaries are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 
+      census boundaries.    
+    
+          </p>
         </div>
       </div>
     </div>
@@ -493,12 +480,12 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             identified as disadvantaged
           </strong>
-          
+           if they are in census tracts that:
     
         </p>
         <p>
           <strong>
-            IF
+            ARE
           </strong>
            at or above the 90th percentile for 
           <a
@@ -521,6 +508,20 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           >
             expected population loss rate
           </a>
+            OR 
+          <a
+            class="usa-link"
+            href="#flood-risk"
+          >
+            projected flood risk
+          </a>
+           OR 
+          <a
+            class="usa-link"
+            href="#wildfire-risk"
+          >
+            projected wildfire risk
+          </a>
         </p>
         <p>
           
@@ -528,28 +529,20 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is at or above the 65th percentile for 
+           are at or above the 65th percentile for 
           <a
             class="usa-link"
             href="#low-income"
           >
             low income
           </a>
-           AND 80% or more of individuals 15 or older are not enrolled in 
-          <a
-            class="usa-link"
-            href="#high-ed-enroll-rate"
-          >
-            higher education
-          </a>
-           
+          
     
         </p>
-        <p />
       </div>
       <div>
         <h3>
-          Clean energy and energy efficiency
+          Energy
         </h3>
         <p>
           
@@ -557,19 +550,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             identified as disadvantaged
           </strong>
-          
+           if they are in census tracts that:
     
         </p>
         <p>
           <strong>
-            IF
+            ARE
           </strong>
            at or above the 90th percentile for 
           <a
             class="usa-link"
             href="#energy-burden"
           >
-            energy burden
+            energy cost
           </a>
            OR 
           <a
@@ -585,28 +578,20 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is at or above the 65th percentile for 
+           are at or above the 65th percentile for 
           <a
             class="usa-link"
             href="#low-income"
           >
             low income
           </a>
-           AND 80% or more of individuals 15 or older are not enrolled in 
-          <a
-            class="usa-link"
-            href="#high-ed-enroll-rate"
-          >
-            higher education
-          </a>
-           
+          
     
         </p>
-        <p />
       </div>
       <div>
         <h3>
-          Clean transit
+          Health
         </h3>
         <p>
           
@@ -614,251 +599,12 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             identified as disadvantaged
           </strong>
-          
-    
-        </p>
-        <p>
-          
-        
-          <strong>
-            IF
-          </strong>
-           at or above the 90th percentile for 
-          <a
-            class="usa-link"
-            href="#diesel-pm"
-          >
-            diesel particulate matter exposure
-          </a>
-           or 
-          <a
-            class="usa-link"
-            href="#traffic-vol"
-          >
-            traffic proximity and volume
-          </a>
-          
-      
-        </p>
-        <p>
-          
-      
-          <strong>
-            AND
-          </strong>
-           is at or above the 65th percentile for 
-          <a
-            class="usa-link"
-            href="#low-income"
-          >
-            low income
-          </a>
-           AND 80% or more of individuals 15 or older are not enrolled in 
-          <a
-            class="usa-link"
-            href="#high-ed-enroll-rate"
-          >
-            higher education
-          </a>
-           
-    
-        </p>
-        <p />
-      </div>
-      <div>
-        <h3>
-          Affordable and sustainable housing
-        </h3>
-        <p>
-          
-      Communities are 
-          <strong>
-            identified as disadvantaged
-          </strong>
-          
+           if they are in census tracts that:
     
         </p>
         <p>
           <strong>
-            IF
-          </strong>
-           at or above the 90th percentile for 
-          <a
-            class="usa-link"
-            href="#lead-paint"
-          >
-            lead paint
-          </a>
-           AND 
-          <a
-            class="usa-link"
-            href="#median-home"
-          >
-            median home value
-          </a>
-           is at or less than the 90th percentile OR at or above the 90th percentile for the 
-          <a
-            class="usa-link"
-            href="#house-burden"
-          >
-            housing cost burden
-          </a>
-        </p>
-        <p>
-          
-      
-          <strong>
-            AND
-          </strong>
-           is at or above the 65th percentile for 
-          <a
-            class="usa-link"
-            href="#low-income"
-          >
-            low income
-          </a>
-           AND 80% or more of individuals 15 or older are not enrolled in 
-          <a
-            class="usa-link"
-            href="#high-ed-enroll-rate"
-          >
-            higher education
-          </a>
-           
-    
-        </p>
-        <p />
-      </div>
-      <div>
-        <h3>
-          Reduction and remediation of legacy pollution
-        </h3>
-        <p>
-          
-      Communities are 
-          <strong>
-            identified as disadvantaged
-          </strong>
-          
-    
-        </p>
-        <p>
-          <strong>
-            IF
-          </strong>
-           at or above the 90th percentile for 
-          <a
-            class="usa-link"
-            href="#prox-haz"
-          >
-            proximity to hazardous waste facilities
-          </a>
-           OR 
-          <a
-            class="usa-link"
-            href="#prox-npl"
-          >
-            proximity to National Priorities List (NPL) sites
-          </a>
-           OR 
-          <a
-            class="usa-link"
-            href="#prox-rmp"
-          >
-            proximity to Risk Management Plan (RMP) facilities
-          </a>
-        </p>
-        <p>
-          
-      
-          <strong>
-            AND
-          </strong>
-           is at or above the 65th percentile for 
-          <a
-            class="usa-link"
-            href="#low-income"
-          >
-            low income
-          </a>
-           AND 80% or more of individuals 15 or older are not enrolled in 
-          <a
-            class="usa-link"
-            href="#high-ed-enroll-rate"
-          >
-            higher education
-          </a>
-           
-    
-        </p>
-        <p />
-      </div>
-      <div>
-        <h3>
-          Critical clean water and wastewater infrastructure
-        </h3>
-        <p>
-          
-      Communities are 
-          <strong>
-            identified as disadvantaged
-          </strong>
-          
-    
-        </p>
-        <p>
-          <strong>
-            IF
-          </strong>
-           at or above the 90th percentile for 
-          <a
-            class="usa-link"
-            href="#waste-water"
-          >
-            wastewater discharge
-          </a>
-        </p>
-        <p>
-          
-      
-          <strong>
-            AND
-          </strong>
-           is at or above the 65th percentile for 
-          <a
-            class="usa-link"
-            href="#low-income"
-          >
-            low income
-          </a>
-           AND 80% or more of individuals 15 or older are not enrolled in 
-          <a
-            class="usa-link"
-            href="#high-ed-enroll-rate"
-          >
-            higher education
-          </a>
-           
-    
-        </p>
-        <p />
-      </div>
-      <div>
-        <h3>
-          Health burdens
-        </h3>
-        <p>
-          
-      Communities are 
-          <strong>
-            identified as disadvantaged
-          </strong>
-          
-    
-        </p>
-        <p>
-          <strong>
-            IF
+            ARE
           </strong>
            at or above the 90th percentile for 
           <a
@@ -895,24 +641,252 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             AND
           </strong>
-           is at or above the 65th percentile for 
+           are at or above the 65th percentile for 
           <a
             class="usa-link"
             href="#low-income"
           >
             low income
           </a>
-           AND 80% or more of individuals 15 or older are not enrolled in 
-          <a
-            class="usa-link"
-            href="#high-ed-enroll-rate"
-          >
-            higher education
-          </a>
-           
+          
     
         </p>
-        <p />
+      </div>
+      <div>
+        <h3>
+          Housing
+        </h3>
+        <p>
+          
+      Communities are 
+          <strong>
+            identified as disadvantaged
+          </strong>
+           if they are in census tracts that:
+    
+        </p>
+        <p>
+          Experienced 
+          <a
+            class="usa-link"
+            href="#hist-underinv"
+          >
+            historic underinvestment
+          </a>
+           OR are at or above the 90th percentile for the 
+          <a
+            class="usa-link"
+            href="#house-burden"
+          >
+            housing cost
+          </a>
+           OR 
+          <a
+            class="usa-link"
+            href="#green-space"
+          >
+            lack of green space
+          </a>
+           OR 
+          <a
+            class="usa-link"
+            href="#indoor-plumb"
+          >
+            lack of indoor plumbing
+          </a>
+           OR 
+          <a
+            class="usa-link"
+            href="#lead-paint"
+          >
+            lead paint
+          </a>
+        </p>
+        <p>
+          
+      
+          <strong>
+            AND
+          </strong>
+           are at or above the 65th percentile for 
+          <a
+            class="usa-link"
+            href="#low-income"
+          >
+            low income
+          </a>
+          
+    
+        </p>
+      </div>
+      <div>
+        <h3>
+          Legacy pollution
+        </h3>
+        <p>
+          
+      Communities are 
+          <strong>
+            identified as disadvantaged
+          </strong>
+           if they are in census tracts that:
+    
+        </p>
+        <p>
+          Have at least one 
+          <a
+            class="usa-link"
+            href="#mine-land"
+          >
+            abandoned mine land
+          </a>
+           OR 
+          <a
+            class="usa-link"
+            href="#fuds"
+          >
+            Formerly Used Defense Sites
+          </a>
+           OR are at or above the 90th percentile for 
+          <a
+            class="usa-link"
+            href="#prox-haz"
+          >
+            proximity to hazardous waste facilities
+          </a>
+           OR 
+          <a
+            class="usa-link"
+            href="#prox-npl"
+          >
+            proximity to Superfind sites
+          </a>
+           OR 
+          <a
+            class="usa-link"
+            href="#prox-rmp"
+          >
+            proximity to Risk Management Plan facilities
+          </a>
+        </p>
+        <p>
+          
+      
+          <strong>
+            AND
+          </strong>
+           are at or above the 65th percentile for 
+          <a
+            class="usa-link"
+            href="#low-income"
+          >
+            low income
+          </a>
+          
+    
+        </p>
+      </div>
+      <div>
+        <h3>
+          Transportation
+        </h3>
+        <p>
+          
+      Communities are 
+          <strong>
+            identified as disadvantaged
+          </strong>
+           if they are in census tracts that:
+    
+        </p>
+        <p>
+          
+        
+          <strong>
+            ARE
+          </strong>
+           at or above the 90th percentile for 
+          <a
+            class="usa-link"
+            href="#diesel-pm"
+          >
+            diesel particulate matter exposure
+          </a>
+           or 
+          <a
+            class="usa-link"
+            href="#traffic-vol"
+          >
+            traffic proximity and volume
+          </a>
+          
+      
+        </p>
+        <p>
+          
+      
+          <strong>
+            AND
+          </strong>
+           are at or above the 65th percentile for 
+          <a
+            class="usa-link"
+            href="#low-income"
+          >
+            low income
+          </a>
+          
+    
+        </p>
+      </div>
+      <div>
+        <h3>
+          Water and wastewater
+        </h3>
+        <p>
+          
+      Communities are 
+          <strong>
+            identified as disadvantaged
+          </strong>
+           if they are in census tracts that:
+    
+        </p>
+        <p>
+          <strong>
+            ARE
+          </strong>
+           at or above the 90th percentile for 
+          <a
+            class="usa-link"
+            href="#leaky-uwt"
+          >
+            leaking underground storage tanks
+          </a>
+           OR 
+          <a
+            class="usa-link"
+            href="#waste-water"
+          >
+            wastewater discharge
+          </a>
+        </p>
+        <p>
+          
+      
+          <strong>
+            AND
+          </strong>
+           are at or above the 65th percentile for 
+          <a
+            class="usa-link"
+            href="#low-income"
+          >
+            low income
+          </a>
+          
+    
+        </p>
       </div>
       <div>
         <h3>
@@ -924,21 +898,16 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <strong>
             identified as disadvantaged
           </strong>
-          
+           if they are in census tracts that:
     
         </p>
         <p>
+          
+        
           <strong>
-            IF
+            ARE
           </strong>
            at or above the 90th percentile for 
-          <a
-            class="usa-link"
-            href="#low-med-inc"
-          >
-            low median income
-          </a>
-           as a percentage of area median income OR 
           <a
             class="usa-link"
             href="#ling-iso"
@@ -948,42 +917,66 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
            OR 
           <a
             class="usa-link"
-            href="#unemploy"
+            href="#low-med-inc"
           >
-            unemployment
+            low median income
           </a>
-           OR percentage of individuals in households at or below 100% Federal 
+           OR 
           <a
             class="usa-link"
             href="#poverty"
           >
             poverty
           </a>
-           level
+           OR 
+          <a
+            class="usa-link"
+            href="#unemploy"
+          >
+            unemployment
+          </a>
+          
       
         </p>
         <p>
           <strong>
             AND
           </strong>
-           10% or more of adults 25 or older have not attained a 
+           have 10% or more of adults have a 
           <a
             class="usa-link"
             href="#high-school"
           >
-            high school degree
+            high school education
           </a>
-           AND 80% or more of individuals 15 or older are not enrolled in 
-          <a
-            class="usa-link"
-            href="#high-ed-enroll-rate"
-          >
-            higher education
-          </a>
-           
+           level less than a high school degree
   
         </p>
-        <p />
+      </div>
+    </div>
+    <div
+      class="grid-container-desktop-lg"
+      data-testid="gridContainer"
+    >
+      <div
+        class="grid-row"
+        data-testid="grid"
+      >
+        <div
+          class="grid-col-8"
+          data-testid="grid"
+        >
+          <h2>
+            
+      Tribal lands
+    
+          </h2>
+          <p>
+            
+      Federally-Recognized Tribal lands, including Alaska Native Villages, are also considered disadvantaged and highlighted on the map.   
+    
+          </p>
+        </div>
       </div>
     </div>
     <div
@@ -1003,16 +996,16 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             data-testid="grid"
           >
             <h2>
-              Datasets used in beta methodology
+              Datasets used in v1.0 methodology
             </h2>
           </div>
         </div>
         <div
-          class="grid-row"
+          class="grid-row grid-gap"
           data-testid="grid"
         >
           <div
-            class="desktop:grid-col-9"
+            class="desktop:grid-col-8"
             data-testid="grid"
           >
             <p>
@@ -1023,6 +1016,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
     
             </p>
           </div>
+          <div
+            class="desktop:grid-col-1"
+            data-testid="grid"
+          />
+          <div
+            class="desktop:grid-col-3"
+            data-testid="grid"
+          />
         </div>
         <div
           class="grid-row"

@@ -6,8 +6,7 @@ interface ICategoryInterface {
     categoryInfo: {
         TITLE: JSX.Element,
         IF: JSX.Element,
-        AND: JSX.Element,
-        THEN: JSX.Element
+        AND: JSX.Element
     }
 }
 const CategoryCard = ({categoryInfo}: ICategoryInterface) => {
@@ -24,9 +23,6 @@ const CategoryCard = ({categoryInfo}: ICategoryInterface) => {
       </p>
       <p>
         {categoryInfo.AND}
-      </p>
-      <p>
-        {categoryInfo.THEN}
       </p>
     </div>
   );

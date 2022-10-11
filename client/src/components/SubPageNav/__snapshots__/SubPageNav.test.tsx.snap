@@ -2,28 +2,30 @@
 
 exports[`rendering of the SubPageNav checks SubPageNav renders 1`] = `
 <DocumentFragment>
-  <ul
-    class="usa-sidenav"
-    data-testid="sidenav"
-  >
-    <li
-      class="usa-sidenav__item"
+  <div>
+    <ul
+      class="usa-sidenav"
+      data-testid="sidenav"
     >
-      <a
-        class="usa-link usa-current"
-        href="/en/methodology"
+      <li
+        class="usa-sidenav__item"
       >
-        Methodology & data
-      </a>
-    </li>
-    <li
-      class="usa-sidenav__item"
-    >
-      <a
-        class="usa-link"
-        href="/en/download"
-      />
-    </li>
-  </ul>
+        <a
+          class="usa-link usa-current"
+          href="/en/methodology"
+        >
+          Methodology & data
+        </a>
+      </li>
+      <li
+        class="usa-sidenav__item"
+      >
+        <a
+          class="usa-link"
+          href="/en/download"
+        />
+      </li>
+    </ul>
+  </div>
 </DocumentFragment>
 `;

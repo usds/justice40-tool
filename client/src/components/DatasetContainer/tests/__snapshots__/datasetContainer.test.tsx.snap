@@ -19,16 +19,16 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           data-testid="grid"
         >
           <h2>
-            Datasets used in beta methodology
+            Datasets used in v1.0 methodology
           </h2>
         </div>
       </div>
       <div
-        class="grid-row"
+        class="grid-row grid-gap"
         data-testid="grid"
       >
         <div
-          class="desktop:grid-col-9"
+          class="desktop:grid-col-8"
           data-testid="grid"
         >
           <p>
@@ -39,6 +39,14 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
     
           </p>
         </div>
+        <div
+          class="desktop:grid-col-1"
+          data-testid="grid"
+        />
+        <div
+          class="desktop:grid-col-3"
+          data-testid="grid"
+        />
       </div>
       <div
         class="grid-row"

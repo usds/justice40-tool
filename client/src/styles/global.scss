@@ -166,9 +166,12 @@ li.usa-nav__primary-item a:hover::after{
       flex-direction: column;
     }
   }
-  
   .j40-mb5-mt3 {
     @include u-margin-bottom(5);
+    @include u-margin-top(3);
+  }
+
+  .j40-mt3 {
     @include u-margin-top(3);
   }
 
