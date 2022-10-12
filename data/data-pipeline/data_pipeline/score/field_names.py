@@ -11,9 +11,6 @@ STATE_FIELD = "State/Territory"
 COUNTY_FIELD = "County Name"
 
 # Definition Narwhal fields
-FINAL_SCORE_N_BOOLEAN = (
-    "Definition M community, including adjacency index tracts"
-)
 SCORE_N_COMMUNITIES = "Definition N (communities)"
 N_CLIMATE = "Climate Factor (Definition N)"
 N_ENERGY = "Energy Factor (Definition N)"
@@ -368,6 +365,8 @@ PERCENT_OF_TRIBAL_AREA_IN_TRACT = (
 PERCENT_OF_TRIBAL_AREA_IN_TRACT_DISPLAY = (
     "Percent of the Census tract that is within Tribal areas, for display"
 )
+IS_TRIBAL_DAC = "Identified as disadvantaged due to tribal overlap"
+PERCENT_OF_TRACT_IS_DAC = "Percentage of tract that is disadvantaged"
 
 #####
 # Names for individual factors being exceeded

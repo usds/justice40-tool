@@ -505,6 +505,7 @@ class ScoreETL(ExtractTransformLoad):
             field_names.IMPUTED_INCOME_FLAG_FIELD_NAME,
             field_names.ELIGIBLE_FUDS_BINARY_FIELD_NAME,
             field_names.HISTORIC_REDLINING_SCORE_EXCEEDED,
+            field_names.IS_TRIBAL_DAC,
         ]
 
         # For some columns, high values are "good", so we want to reverse the percentile

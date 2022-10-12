@@ -59,9 +59,15 @@ fields:
 - score_name: Definition N (communities) (based on adjacency index and low income alone)
   label: Identified as disadvantaged based on neighbors and relaxed low income threshold only
   format: bool
+- score_name: Identified as disadvantaged due to tribal overlap
+  label: Identified as disadvantaged due to tribal overlap
+  format: bool
 - score_name: Definition N community, including adjacency index tracts
   label: Identified as disadvantaged
   format: bool
+- score_name: Percentage of tract that is disadvantaged
+  label:  Percentage of tract that is disadvantaged by area
+  format: percentage
 - score_name: Definition N (communities) (average of neighbors)
   label: Share of neighbors that are identified as disadvantaged
   format: percentage

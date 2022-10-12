@@ -997,6 +997,33 @@ class ScoreNarwhal(Score):
             ]
         )
 
+    def _mark_tribal_dacs(self) -> None:
+        """Per the October 7th compromise (#1988),
+        tracts that are approx 100% tribal are Score N communities.
+        """
+        self.df[field_names.SCORE_N_COMMUNITIES] = np.where(
+            self.df[field_names.IS_TRIBAL_DAC],
+            True,
+            self.df[field_names.SCORE_N_COMMUNITIES],
+        )
+
+    def _get_percent_of_tract_that_is_dac(self) -> float:
+        """Per the October 7th compromise (#1988),
+        tracts can be partially DACs if some portion of the tract is tribal land.
+
+        Rules are as follows:
+        If a tract is a SCORE_N_COMMUNITY, it is 100% a DAC
+        If a tract is not, but contains tribal land, the percent that is tribal land is a DAC.
+        """
+        tribal_percent = self.df[
+            field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT
+        ].fillna(0.0)
+        return np.where(
+            self.df[field_names.FINAL_SCORE_N_BOOLEAN],
+            1.0,
+            tribal_percent,
+        )
+
     def add_columns(self) -> pd.DataFrame:
         logger.info("Adding Score Narhwal")
         self.df[field_names.THRESHOLD_COUNT] = 0
@@ -1031,10 +1058,15 @@ class ScoreNarwhal(Score):
         ]
         self.df[field_names.CATEGORY_COUNT] = self.df[factors].sum(axis=1)
         self.df[field_names.SCORE_N_COMMUNITIES] = self.df[factors].any(axis=1)
+        self._mark_tribal_dacs()
         self.df[
             field_names.SCORE_N_COMMUNITIES
             + field_names.PERCENTILE_FIELD_SUFFIX
         ] = self.df[field_names.SCORE_N_COMMUNITIES].astype(int)
+
         self._mark_donut_hole_tracts()
+        self.df[
+            field_names.PERCENT_OF_TRACT_IS_DAC
+        ] = self._get_percent_of_tract_that_is_dac()
 
         return self.df

@@ -48,6 +48,7 @@ class TribalOverlapETL(ExtractTransformLoad):
     ANNETTE_ISLAND_TRIBAL_NAME = "Annette Island LAR"
 
     CRS_INTEGER = 3857
+    TRIBAL_OVERLAP_CUTOFF = 0.995  # Percentage of overlap that rounds to 100%
 
     # Define these for easy code completion
     def __init__(self):
@@ -58,6 +59,7 @@ class TribalOverlapETL(ExtractTransformLoad):
             field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT,
             field_names.NAMES_OF_TRIBAL_AREAS_IN_TRACT,
             field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT_DISPLAY,
+            field_names.IS_TRIBAL_DAC,
         ]
 
         self.OVERALL_TRIBAL_COUNT = "OVERALL_TRIBAL_COUNT"
@@ -72,8 +74,9 @@ class TribalOverlapETL(ExtractTransformLoad):
         str_list = sorted(str_list)
         return ", ".join(str_list)
 
-    @staticmethod
+    @classmethod
     def _adjust_percentage_for_frontend(
+        cls,
         percentage_float: float,
     ) -> Optional[float]:
         """Round numbers very close to 0 to 0 and very close to 1 to 1 for display"""
@@ -81,7 +84,7 @@ class TribalOverlapETL(ExtractTransformLoad):
             return None
         if percentage_float < 0.01:
             return 0.0
-        if percentage_float > 0.9995:
+        if percentage_float > cls.TRIBAL_OVERLAP_CUTOFF:
             return 1.0
 
         return percentage_float
@@ -245,6 +248,11 @@ class TribalOverlapETL(ExtractTransformLoad):
         merged_output_df[
             field_names.COUNT_OF_TRIBAL_AREAS_IN_TRACT_CONUS
         ] = None
+
+        merged_output_df[field_names.IS_TRIBAL_DAC] = (
+            merged_output_df[field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT]
+            > self.TRIBAL_OVERLAP_CUTOFF
+        )
 
         # The very final thing we want to do is produce a string for the front end to show
         # We do this here so that all of the logic is included
