@@ -249,12 +249,11 @@ class TribalOverlapETL(ExtractTransformLoad):
             field_names.COUNT_OF_TRIBAL_AREAS_IN_TRACT_CONUS
         ] = None
 
-        merged_output_df[field_names.IS_TRIBAL_DAC] = np.where(
+        merged_output_df[field_names.IS_TRIBAL_DAC] = (
             merged_output_df[field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT]
-            > self.TRIBAL_OVERLAP_CUTOFF,
-            True,
-            False,
+            > self.TRIBAL_OVERLAP_CUTOFF
         )
+
         # The very final thing we want to do is produce a string for the front end to show
         # We do this here so that all of the logic is included
         merged_output_df[

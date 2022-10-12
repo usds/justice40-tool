@@ -66,7 +66,7 @@ fields:
   label: Identified as disadvantaged
   format: bool
 - score_name: Percentage of tract that is disadvantaged
-  label:  Percentage of tract that is disadvantaged
+  label:  Percentage of tract that is disadvantaged by area
   format: percentage
 - score_name: Definition N (communities) (average of neighbors)
   label: Share of neighbors that are identified as disadvantaged
