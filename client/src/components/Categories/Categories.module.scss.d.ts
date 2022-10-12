@@ -1,6 +1,7 @@
 declare namespace CategoriesNamespace {
     export interface ICategoriesScss {
         categoriesContainer: string;
+        tribalLandsPara: string;
     }
   }
 

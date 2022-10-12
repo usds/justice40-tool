@@ -1211,7 +1211,7 @@ export const SIDE_PANEL_INDICATOR_DESCRIPTION = defineMessages({
   // Legacy Pollution
   ABANDON_MINES: {
     id: 'explore.map.page.side.panel.indicator.description.abandon.mines',
-    defaultMessage: 'Presence of an abandoned mine lands within the tract',
+    defaultMessage: 'Presence of an abandoned mine land within the tract',
     description: `Navigate to the explore the map page. When the map is in view, click on the map. The side panel will show an indicator description of Presence of an abandoned mine lands within the tract`,
   },
   FORMER_DEF_SITES: {

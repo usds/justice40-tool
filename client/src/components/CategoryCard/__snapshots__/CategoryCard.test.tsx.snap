@@ -12,12 +12,12 @@ exports[`rendering of the CategoryCard checks if component renders 1`] = `
       <strong>
         identified as disadvantaged
       </strong>
-      
+       if they are in census tracts that:
     
     </p>
     <p>
       <strong>
-        IF
+        ARE
       </strong>
        at or above the 90th percentile for 
       <a
@@ -40,6 +40,20 @@ exports[`rendering of the CategoryCard checks if component renders 1`] = `
       >
         expected population loss rate
       </a>
+        OR 
+      <a
+        class="usa-link"
+        href="#flood-risk"
+      >
+        projected flood risk
+      </a>
+       OR 
+      <a
+        class="usa-link"
+        href="#wildfire-risk"
+      >
+        projected wildfire risk
+      </a>
     </p>
     <p>
       
@@ -47,24 +61,16 @@ exports[`rendering of the CategoryCard checks if component renders 1`] = `
       <strong>
         AND
       </strong>
-       is at or above the 65th percentile for 
+       are at or above the 65th percentile for 
       <a
         class="usa-link"
         href="#low-income"
       >
         low income
       </a>
-       AND 80% or more of individuals 15 or older are not enrolled in 
-      <a
-        class="usa-link"
-        href="#high-ed-enroll-rate"
-      >
-        higher education
-      </a>
-       
+      
     
     </p>
-    <p />
   </div>
 </DocumentFragment>
 `;

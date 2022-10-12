@@ -17,28 +17,65 @@ export const PAGE = defineMessages({
     defaultMessage: 'Methodology',
     description: 'Navigate to the methodology page. This is the methodology page header text',
   },
-  DESCRIPTION: {
-    id: 'methodology.page.paragraph',
+  PARA1: {
+    id: 'methodology.page.paragraph.1',
     defaultMessage: `
-      The current version of the tool identifies communities that are disadvantaged for the purposes of 
-      the Justice40 Initiative using census tracts, which are the smallest geographic unit for 
-      which publicly-available and nationally-consistent datasets can be consistently displayed on the 
-      tool. Census tract geographical boundaries are determined by the U.S. Census Bureau once every ten 
-      years. This tool utilizes the census tract boundaries from 2010 because they match the datasets used 
-      in the tool.
+      The tool highlights disadvantaged census tracts across all 50 states, the District of Columbia, and the U.S. territories. A community is considered disadvantaged:
     `,
-    description: 'Navigate to the methodology page. This is the methodology page paragraph',
+    description: 'Navigate to the methodology page. This is the methodology paragraph 1',
   },
-  CATEGORY_TEXT: {
-    id: 'methodology.page.categories.title',
+  PARA1_BULLET1: {
+    id: 'methodology.page.paragraph.1.bullet.1',
     defaultMessage: `
-      Communities are identified as disadvantaged by the current version of the tool for the purposes of 
-      the Justice40 Initiative if they are located in census tracts that are at or above the 
-      thresholds in one or more of eight categories of criteria below. 
+      If they are in a census tract that meets the thresholds for at least one of tool’s categories of burden, or
     `,
-    description: 'Navigate to the methodology page. This is the methodology page explanation of the categories',
+    description: 'Navigate to the methodology page. This is the methodology paragraph 1, bullet 1',
   },
-
+  PARA1_BULLET2: {
+    id: 'methodology.page.paragraph.1.bullet.2',
+    defaultMessage: `
+      If they are on Federally-Recognized Tribal land
+    `,
+    description: 'Navigate to the methodology page. This is the methodology paragraph 1, bullet 2',
+  },
+  SUB_HEADING_1: {
+    id: 'methodology.page.sub.heading.1',
+    defaultMessage: `
+      Categories of Burdens
+    `,
+    description: 'Navigate to the methodology page. This is sub-heading 1',
+  },
+  SUB_HEADING_2: {
+    id: 'methodology.page.sub.heading.2',
+    defaultMessage: `
+      Tribal lands
+    `,
+    description: 'Navigate to the methodology page. This is sub-heading 2',
+  },
+  PARA3: {
+    id: 'methodology.page.paragraph.3',
+    defaultMessage: `
+      The tool uses datasets as indicators of burdens. The burdens are organized into categories. A community is highlighted as disadvantaged on the CEJST map if it is in a census tract that is (1) at or above the threshold for one or more environmental, climate, or other burdens, and (2) at or
+      above the threshold for an associated socioeconomic burden. In addition, a census tract that is completely surrounded by disadvantaged communities that meet the burden thresholds, and is at or above 
+      the 50% percentile for low income, is also considered disadvantaged. 
+    `,
+    description: 'Navigate to the methodology page. This is the methodology paragraph 3',
+  },
+  PARA4: {
+    id: 'methodology.page.paragraph.4',
+    defaultMessage: `
+      Census tracts are small units of geography. Census tract boundaries are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 
+      census boundaries.    
+    `,
+    description: 'Navigate to the methodology page. This is the methodology paragraph 4',
+  },
+  PARA5: {
+    id: 'methodology.page.paragraph.5',
+    defaultMessage: `
+      Federally-Recognized Tribal lands, including Alaska Native Villages, are also considered disadvantaged and highlighted on the map.   
+    `,
+    description: 'Navigate to the methodology page. This is the methodology paragraph 5',
+  },
 });
 
 export const FORMULA = {
@@ -75,13 +112,13 @@ export const FORMULA = {
 export const CATEGORY = {
   HEADING: <FormattedMessage
     id={'methodology.page.indicator.categories.heading'}
-    defaultMessage={'Categories'}
+    defaultMessage={'Categories of Burdens'}
     description={'Navigate to the methodology page. Navigate to the category section. This is category heading'}
   />,
   ID_AS_DISADV_TEXT: <FormattedMessage
     id={'methodology.page.category.card.title'}
     defaultMessage={`
-      Communities are <boldtag>identified as disadvantaged</boldtag>
+      Communities are <boldtag>identified as disadvantaged</boldtag> if they are in census tracts that:
     `}
     description={'Navigate to the methodology page. Navigate to the category section. This is category heading'}
     values={{
@@ -92,21 +129,20 @@ export const CATEGORY = {
 
 // Category AND Clause:
 export const CATEGORY_AND_CLAUSE = {
-  LOW_INC_65_WHEN_HIGH_ED_LTE_20: <FormattedMessage
-    id={'methodology.page.category.and.clause.low.inc.hs.ed'}
+  LOW_INC_65: <FormattedMessage
+    id={'methodology.page.category.and.clause.low.inc'}
     defaultMessage={`
-      <boldtag>AND</boldtag> is at or above the 65th percentile for <link1>low income</link1> AND 80% or more of individuals 15 or older are not enrolled in <link2>higher education</link2> 
+      <boldtag>AND</boldtag> are at or above the 65th percentile for <link1>low income</link1>
     `}
-    description={'Navigate to the methodology page. Navigate to the category section. This is category portion of the formula dealing with lower income and high school degree rate'}
+    description={'Navigate to the methodology page. Navigate to the category section. This is category portion of the formula dealing with lower income'}
     values={{
       boldtag: boldFn,
       link1: simpleLink('#low-income'),
-      link2: simpleLink('#high-ed-enroll-rate'),
     }}
   />,
-  HS_DEG_90_WHEN_HIGH_ED_LTE_20: <FormattedMessage
+  HS_DEG_GTE_10: <FormattedMessage
     id={'methodology.page.category.and.clause.hs.ed.higher.ed'}
-    defaultMessage={`<boldtag>AND</boldtag> 10% or more of adults 25 or older have not attained a <link1>high school degree</link1> AND 80% or more of individuals 15 or older are not enrolled in <link2>higher education</link2> 
+    defaultMessage={`<boldtag>AND</boldtag> have 10% or more of adults have a <link1>high school education</link1> level less than a high school degree
   `}
     description={'Navigate to the methodology page. Navigate to the category section. This is the portion of the formula dealing with higher ed enrollment and high school degree rate'}
     values={{
@@ -143,32 +179,34 @@ export const CATEGORIES = {
     />,
     IF: <FormattedMessage
       id={'methodology.page.indicator.categories.climate.change.if'}
-      defaultMessage={`<boldtag>IF</boldtag> at or above the 90th percentile for <link1>expected agriculture loss rate</link1> OR <link2>expected building loss rate</link2> OR <link3>expected population loss rate</link3>`}
+      defaultMessage={`<boldtag>ARE</boldtag> at or above the 90th percentile for <link1>expected agriculture loss rate</link1> OR <link2>expected building loss rate</link2> OR <link3>expected population loss rate</link3>  OR <link4>projected flood risk</link4> OR <link5>projected wildfire risk</link5>`}
       description={'Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula'}
       values={{
         boldtag: boldFn,
         link1: simpleLink('#exp-agr-loss-rate'),
         link2: simpleLink('#exp-bld-loss-rate'),
         link3: simpleLink('#exp-pop-loss-rate'),
+        link4: simpleLink('#flood-risk'),
+        link5: simpleLink('#wildfire-risk'),
       }}
     />,
-    AND: CATEGORY_AND_CLAUSE.LOW_INC_65_WHEN_HIGH_ED_LTE_20,
+    AND: CATEGORY_AND_CLAUSE.LOW_INC_65,
   },
   CLEAN_ENERGY: {
     METHODOLOGY: <FormattedMessage
       id={'methodology.page.indicator.categories.clean.energy.methodology'}
-      defaultMessage={`Clean energy and energy efficiency category`}
+      defaultMessage={`Energy category`}
       description={`Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Clean energy and energy efficiency methodology`}
     />,
     TITLE: <FormattedMessage
       id={'indicator.categories.clean.energy.title'}
-      defaultMessage={'Clean energy and energy efficiency'}
+      defaultMessage={'Energy'}
       description={'Navigate to the methodology page. Navigate to the category section. This will set the category title'}
 
     />,
     IF: <FormattedMessage
       id={'methodology.page.indicator.categories.clean.energy.if'}
-      defaultMessage={`<boldtag>IF</boldtag> at or above the 90th percentile for <link1>energy burden</link1> OR <link2>PM2.5 in the air</link2>`}
+      defaultMessage={`<boldtag>ARE</boldtag> at or above the 90th percentile for <link1>energy cost</link1> OR <link2>PM2.5 in the air</link2>`}
       description={'Navigate to the methodology page. Navigate to the category section. This will set the if if portion of the formula'}
       values={{
         boldtag: boldFn,
@@ -176,122 +214,23 @@ export const CATEGORIES = {
         link2: simpleLink('#pm-25'),
       }}
     />,
-    AND: CATEGORY_AND_CLAUSE.LOW_INC_65_WHEN_HIGH_ED_LTE_20,
-  },
-  CLEAN_TRANSPORT: {
-    METHODOLOGY: <FormattedMessage
-      id={'methodology.page.indicator.categories.clean.transport.methodology'}
-      defaultMessage={`Clean transit category`}
-      description={`Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Clean transportation methodology`}
-    />,
-    TITLE: <FormattedMessage
-      id={'indicator.categories.clean.transport.title'}
-      defaultMessage={'Clean transit'}
-      description={'Navigate to the methodology page. Navigate to the category section. This will set the category title'}
-
-    />,
-    IF: <FormattedMessage
-      id={'methodology.page.indicator.categories.clean.transport.if'}
-      defaultMessage={`
-        <boldtag>IF</boldtag> at or above the 90th percentile for <link1>diesel particulate matter exposure</link1> or <link2>traffic proximity and volume</link2>
-      `}
-      description={'Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula'}
-      values={{
-        boldtag: boldFn,
-        link1: simpleLink('#diesel-pm'),
-        link2: simpleLink('#traffic-vol'),
-      }}
-    />,
-    AND: CATEGORY_AND_CLAUSE.LOW_INC_65_WHEN_HIGH_ED_LTE_20,
-  },
-  AFFORDABLE_HOUSING: {
-    METHODOLOGY: <FormattedMessage
-      id={'methodology.page.indicator.categories.afford.housing.methodology'}
-      defaultMessage={`Affordable and sustainable housing category`}
-      description={`Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Affordable and sustainable housing methodology`}
-    />,
-    TITLE: <FormattedMessage
-      id={'indicator.categories.afford.house.title'}
-      defaultMessage={'Affordable and sustainable housing'}
-      description={'Navigate to the methodology page. Navigate to the category section. This will set the category title'}
-
-    />,
-    IF: <FormattedMessage
-      id={'methodology.page.indicator.categories.afford.house.if'}
-      defaultMessage={`<boldtag>IF</boldtag> at or above the 90th percentile for <link1>lead paint</link1> AND <link2>median home value</link2> is at or less than the 90th percentile OR at or above the 90th percentile for the <link3>housing cost burden</link3>`}
-      description={'Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula'}
-      values={{
-        boldtag: boldFn,
-        link1: simpleLink('#lead-paint'),
-        link2: simpleLink('#median-home'),
-        link3: simpleLink('#house-burden'),
-      }}
-    />,
-    AND: CATEGORY_AND_CLAUSE.LOW_INC_65_WHEN_HIGH_ED_LTE_20,
-  },
-  LEGACY_POLLUTION: {
-    METHODOLOGY: <FormattedMessage
-      id={'methodology.page.indicator.categories.legacy.pollute.methodology'}
-      defaultMessage={`Reduction and remediation of legacy pollution category`}
-      description={`Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Reduction and remediation of legacy pollution methodology`}
-    />,
-    TITLE: <FormattedMessage
-      id={'indicator.categories.legacy.pollution.title'}
-      defaultMessage={'Reduction and remediation of legacy pollution'}
-      description={'Navigate to the methodology page. Navigate to the category section. This will set the category title'}
-
-    />,
-    IF: <FormattedMessage
-      id={'methodology.page.indicator.categories.legacy.pollution.if'}
-      defaultMessage={`<boldtag>IF</boldtag> at or above the 90th percentile for <link1>proximity to hazardous waste facilities</link1> OR <link2>proximity to National Priorities List (NPL) sites</link2> OR <link3>proximity to Risk Management Plan (RMP) facilities</link3>`}
-      description={'Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula'}
-      values={{
-        boldtag: boldFn,
-        link1: simpleLink('#prox-haz'),
-        link2: simpleLink('#prox-npl'),
-        link3: simpleLink('#prox-rmp'),
-      }}
-    />,
-    AND: CATEGORY_AND_CLAUSE.LOW_INC_65_WHEN_HIGH_ED_LTE_20,
-  },
-  CLEAN_WATER: {
-    METHODOLOGY: <FormattedMessage
-      id={'methodology.page.indicator.categories.clean.water.methodology'}
-      defaultMessage={`Critical clean water and wastewater infrastructure category`}
-      description={`Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Critical clean water and wastewater infrastructure methodology`}
-    />,
-    TITLE: <FormattedMessage
-      id={'indicator.categories.clean.water.title'}
-      defaultMessage={'Critical clean water and wastewater infrastructure'}
-      description={'Navigate to the methodology page. Navigate to the category section. This will set the category title'}
-
-    />,
-    IF: <FormattedMessage
-      id={'methodology.page.indicator.categories.clean.water.if'}
-      defaultMessage={`<boldtag>IF</boldtag> at or above the 90th percentile for <link1>wastewater discharge</link1>`}
-      description={'Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula'}
-      values={{
-        boldtag: boldFn,
-        link1: simpleLink('#waste-water'),
-      }}
-    />,
-    AND: CATEGORY_AND_CLAUSE.LOW_INC_65_WHEN_HIGH_ED_LTE_20,
+    AND: CATEGORY_AND_CLAUSE.LOW_INC_65,
   },
   HEALTH_BURDENS: {
     METHODOLOGY: <FormattedMessage
       id={'methodology.page.indicator.categories.health.burdens.methodology'}
-      defaultMessage={`Health burdens category`}
+      defaultMessage={`Health category`}
       description={`Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Health burdens methodology`}
     />,
     TITLE: <FormattedMessage
       id={'indicator.categories.health.burdens.title'}
-      defaultMessage={'Health burdens'}
+      defaultMessage={'Health'}
       description={'Navigate to the methodology page. Navigate to the category section. This will set the category title'}
 
     />,
     IF: <FormattedMessage
       id={'methodology.page.indicator.categories.health.burdens.if'}
-      defaultMessage={`<boldtag>IF</boldtag> at or above the 90th percentile for <link1>asthma</link1> OR <link2>diabetes</link2> OR <link3>heart disease</link3> OR <link4>low life expectancy</link4>`}
+      defaultMessage={`<boldtag>ARE</boldtag> at or above the 90th percentile for <link1>asthma</link1> OR <link2>diabetes</link2> OR <link3>heart disease</link3> OR <link4>low life expectancy</link4>`}
       description={'Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula'}
       values={{
         boldtag: boldFn,
@@ -301,12 +240,115 @@ export const CATEGORIES = {
         link4: simpleLink('#life-exp'),
       }}
     />,
-    AND: CATEGORY_AND_CLAUSE.LOW_INC_65_WHEN_HIGH_ED_LTE_20,
+    AND: CATEGORY_AND_CLAUSE.LOW_INC_65,
+  },
+  AFFORDABLE_HOUSING: {
+    METHODOLOGY: <FormattedMessage
+      id={'methodology.page.indicator.categories.afford.housing.methodology'}
+      defaultMessage={`Housing category`}
+      description={`Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Affordable and sustainable housing methodology`}
+    />,
+    TITLE: <FormattedMessage
+      id={'indicator.categories.afford.house.title'}
+      defaultMessage={'Housing'}
+      description={'Navigate to the methodology page. Navigate to the category section. This will set the category title'}
+
+    />,
+    IF: <FormattedMessage
+      id={'methodology.page.indicator.categories.afford.house.if'}
+      defaultMessage={`Experienced <link0>historic underinvestment</link0> OR are at or above the 90th percentile for the <link1>housing cost</link1> OR <link2>lack of green space</link2> OR <link3>lack of indoor plumbing</link3> OR <link4>lead paint</link4>`}
+      description={'Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula'}
+      values={{
+        link0: simpleLink('#hist-underinv'),
+        link1: simpleLink('#house-burden'),
+        link2: simpleLink('#green-space'),
+        link3: simpleLink('#indoor-plumb'),
+        link4: simpleLink('#lead-paint'),
+      }}
+    />,
+    AND: CATEGORY_AND_CLAUSE.LOW_INC_65,
+  },
+  LEGACY_POLLUTION: {
+    METHODOLOGY: <FormattedMessage
+      id={'methodology.page.indicator.categories.legacy.pollute.methodology'}
+      defaultMessage={`Legacy pollution category`}
+      description={`Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Reduction and remediation of legacy pollution methodology`}
+    />,
+    TITLE: <FormattedMessage
+      id={'indicator.categories.legacy.pollution.title'}
+      defaultMessage={'Legacy pollution'}
+      description={'Navigate to the methodology page. Navigate to the category section. This will set the category title'}
+
+    />,
+    IF: <FormattedMessage
+      id={'methodology.page.indicator.categories.legacy.pollution.if'}
+      defaultMessage={`Have at least one <link0>abandoned mine land</link0> OR <link1>Formerly Used Defense Sites</link1> OR are at or above the 90th percentile for <link2>proximity to hazardous waste facilities</link2> OR <link3>proximity to Superfind sites</link3> OR <link4>proximity to Risk Management Plan facilities</link4>`}
+      description={'Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula'}
+      values={{
+        link0: simpleLink('#mine-land'),
+        link1: simpleLink('#fuds'),
+        link2: simpleLink('#prox-haz'),
+        link3: simpleLink('#prox-npl'),
+        link4: simpleLink('#prox-rmp'),
+      }}
+    />,
+    AND: CATEGORY_AND_CLAUSE.LOW_INC_65,
+  },
+  CLEAN_TRANSPORT: {
+    METHODOLOGY: <FormattedMessage
+      id={'methodology.page.indicator.categories.clean.transport.methodology'}
+      defaultMessage={`Transportation category`}
+      description={`Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Clean transportation methodology`}
+    />,
+    TITLE: <FormattedMessage
+      id={'indicator.categories.clean.transport.title'}
+      defaultMessage={'Transportation'}
+      description={'Navigate to the methodology page. Navigate to the category section. This will set the category title'}
+
+    />,
+    IF: <FormattedMessage
+      id={'methodology.page.indicator.categories.clean.transport.if'}
+      defaultMessage={`
+        <boldtag>ARE</boldtag> at or above the 90th percentile for <link1>diesel particulate matter exposure</link1> OR <link3>transportation barriers</link3> OR <link2>traffic proximity and volume</link2>
+      `}
+      description={'Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula'}
+      values={{
+        boldtag: boldFn,
+        link1: simpleLink('#diesel-pm'),
+        link2: simpleLink('#traffic-vol'),
+        link3: simpleLink('#trans-barrier'),
+      }}
+    />,
+    AND: CATEGORY_AND_CLAUSE.LOW_INC_65,
+  },
+  CLEAN_WATER: {
+    METHODOLOGY: <FormattedMessage
+      id={'methodology.page.indicator.categories.clean.water.methodology'}
+      defaultMessage={`Water and wastewater category`}
+      description={`Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Water and wastewater methodology`}
+    />,
+    TITLE: <FormattedMessage
+      id={'indicator.categories.clean.water.title'}
+      defaultMessage={'Water and wastewater'}
+      description={'Navigate to the methodology page. Navigate to the category section. This will set the category title'}
+
+    />,
+    IF: <FormattedMessage
+      id={'methodology.page.indicator.categories.clean.water.if'}
+      defaultMessage={`<boldtag>ARE</boldtag> at or above the 90th percentile for <link0>leaking underground storage tanks</link0> OR <link1>wastewater discharge</link1>`}
+      description={'Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula'}
+      values={{
+        boldtag: boldFn,
+        link0: simpleLink('#leaky-uwt'),
+        link1: simpleLink('#waste-water'),
+      }}
+    />,
+    AND: CATEGORY_AND_CLAUSE.LOW_INC_65,
   },
   WORKFORCE_DEV: {
     METHODOLOGY: <FormattedMessage
       id={'methodology.page.indicator.categories.workforce.dev.methodology'}
-      defaultMessage={`Training and workforce development category`}
+      defaultMessage={`Workforce development category`}
       description={`Navigate to the methodology page. Navigate to the dataset section. This is the portion of the dataset card that populates the Used in section for the Training and workforce development`}
     />,
     TITLE: <FormattedMessage
@@ -317,7 +359,8 @@ export const CATEGORIES = {
     />,
     IF: <FormattedMessage
       id={'methodology.page.indicator.categories.work.dev.if'}
-      defaultMessage={`<boldtag>IF</boldtag> at or above the 90th percentile for <link1>low median income</link1> as a percentage of area median income OR <link2>linguistic isolation</link2> OR <link3>unemployment</link3> OR percentage of individuals in households at or below 100% Federal <link4>poverty</link4> level
+      defaultMessage={`
+        <boldtag>ARE</boldtag> at or above the 90th percentile for <link2>linguistic isolation</link2> OR <link1>low median income</link1> OR <link4>poverty</link4> OR <link3>unemployment</link3>
       `}
       description={'Navigate to the methodology page. Navigate to the category section. This will set the if portion of the formula'}
       values={{
@@ -328,7 +371,15 @@ export const CATEGORIES = {
         link4: simpleLink('#poverty'),
       }}
     />,
-    AND: CATEGORY_AND_CLAUSE.HS_DEG_90_WHEN_HIGH_ED_LTE_20,
+    AND: CATEGORY_AND_CLAUSE.HS_DEG_GTE_10,
+  },
+  TRIBAL_LANDS: {
+    METHODOLOGY: <FormattedMessage
+      id={'methodology.page.indicator.categories.tribal.lands.methodology'}
+      defaultMessage={`Displaying Federally recognized tribal boundaries and Alaska Native Villages on the map`}
+      description={`Displaying Federally recognized tribal boundaries and Alaska Native Villages on the map`}
+    />,
+
   },
 };
 
@@ -339,12 +390,15 @@ export const DATASETS = defineMessages({
     defaultMessage: 'Datasets used in beta methodology',
     description: 'Navigate to the Methodology page. This is the section heading of which datasets are used in cumulative score',
   },
+  BUTTON_TEXT: {
+    id: 'methodology.page.datasetContainer.button.text',
+    defaultMessage: 'Share data sources with CEQ',
+    description: 'Navigate to the Methodology page. This is the section heading of which datasets are used in cumulative score with a button labeled: Share data sources with CEQ',
+  },
   INFO: {
     id: 'methodology.page.datasetContainer.info',
     defaultMessage: `
-      The datasets used in the current version of the tool come from a variety of sources and were 
-      selected based on relevance, availability, and quality. The datasets seek to identify a range of 
-      human health, environmental, climate-related, and other impacts on communities.
+      The tool's datasets are public and consistent nationwide. They come from different sources and are high quality. The Council on Environmental Quality (CEQ) chose them based on relevance,  availability, and quality. They identify climate, environmental, and other burdens on communities.
     `,
     description: 'Navigate to the Methodology page. This is the description of the dataset section',
   },
@@ -359,6 +413,17 @@ export const DATASETS = defineMessages({
     description: 'Navigate to the Methodology page. This is the additional indicator info',
   },
 });
+
+export const DATASETS_RICH_TEXT = {
+  HEADING: <FormattedMessage
+    id= {'methodology.page.datasetContainer.heading.rich.text'}
+    defaultMessage= {'Datasets used in v{version} methodology'}
+    description={ 'Navigate to the Methodology page. This is the section heading of which datasets are used in cumulative score'}
+    values={{
+      version: VERSION_NUMBER,
+    }}
+  />,
+};
 
 export const DATASET_CARD_LABELS = defineMessages({
   USED_IN: {
@@ -399,18 +464,27 @@ export const DATE_RANGE = {
   SIXTEEN_PLUS_4: '2016-2020',
   SEVENTEEN: '2017',
   EIGHTEEN: '2018',
+  NINETEEN: '2019',
   TWENTY: '2020',
+  TWENTYONE: '2021',
+  TWENTYTWO: '2022',
 };
 
 export const RESPONSIBLE_PARTIES = {
+  BIA: `Bureau of Indian Affairs (BIA)`,
   CDC: `Centers for Disease Control and Prevention (CDC)`,
-  CENSUS: `Census`,
+  CENSUS: `U.S. Census`,
   DOE: `Department of Energy (DOE)`,
+  DOI: `Department of the Interior (DOI)`,
   DOT: `Department of Transportation (DOT)`,
   EPA: `Environmental Protection Agency (EPA)`,
   EPA_OAR: `Environmental Protection Agency (EPA) Office of Air and Radiation (OAR)`,
+  FIRST: `First Street Foundation`,
   FEMA: `Federal Emergency Management Agency (FEMA)`,
   HUD: `Department of Housing & Urban Development (HUD)`,
+  NCRC: `Nationl Community Reinvestment Coalition (NCRC)`,
+  TPL: `The Trust for Public Lands and American Forestry`,
+  USACE: `U.S. Army Corps of Engineers`,
 };
 
 export const SOURCE_LINKS = {
@@ -544,6 +618,79 @@ export const SOURCE_LINKS = {
       date10_15: DATE_RANGE.TEN_PLUS_5,
     }}
   />,
+  FIRST_ST: <FormattedMessage
+    id={'methodology.page.category.source.first.street.link'}
+    defaultMessage={`<link1>Climate Risk Data Access</link1> from {date22}`}
+    description={'Navigate to the Methodology page. This is the source link for CDC Sleep'}
+    values={{
+      link1: linkFn('https://firststreet.org/data-access/', false, true),
+      date22: DATE_RANGE.TWENTYTWO,
+    }}
+  />,
+  HOLC: <FormattedMessage
+    id={'methodology.page.category.source.holc.link'}
+    defaultMessage={`<link1>Dataset of formerly redlined areas</link1> using digitized maps from the Home Owners Loan Corporation from {date10}`}
+    description={'Navigate to the Methodology page. This is the source link for CDC Sleep'}
+    values={{
+      link1: linkFn('https://www.openicpsr.org/openicpsr/project/141121/version/V2/view', false, true),
+      date10: DATE_RANGE.TEN,
+    }}
+  />,
+  PDI: <FormattedMessage
+    id={'methodology.page.category.source.pdi.link'}
+    defaultMessage={`<link1>Percent Developed Imperviousness (CONUS) </link1> from {date19}`}
+    description={'Navigate to the Methodology page. This is the source link for CDC Sleep'}
+    values={{
+      link1: linkFn('https://www.mrlc.gov/data/nlcd-2019-percent-developed-imperviousness-conus', false, true),
+      date19: DATE_RANGE.NINETEEN,
+    }}
+  />,
+  AML: <FormattedMessage
+    id={'methodology.page.category.source.aml.link'}
+    defaultMessage={`<link1>Abandoned Mine Land Inventory System (e-AMLIS)</link1> from {date17}`}
+    description={'Navigate to the Methodology page. This is the source link for CDC Sleep'}
+    values={{
+      link1: linkFn('https://www.osmre.gov/programs/e-amlis', false, true),
+      date17: DATE_RANGE.SEVENTEEN,
+    }}
+  />,
+  FUDS: <FormattedMessage
+    id={'methodology.page.category.source.fuds.link'}
+    defaultMessage={`<link1>Formerly Used Defense Sites (FUDS) </link1>  from {date19}`}
+    description={'Navigate to the Methodology page. This is the source link for CDC Sleep'}
+    values={{
+      link1: linkFn('https://www.usace.army.mil/Missions/Environmental/Formerly-Used-Defense-Sites/', false, true),
+      date19: DATE_RANGE.NINETEEN,
+    }}
+  />,
+  TRANS_BUR: <FormattedMessage
+    id={'methodology.page.category.source.trans.bur.link'}
+    defaultMessage={`<link1>Transportation Burdens indicator (need link)</link1>  from {date22}`}
+    description={'Navigate to the Methodology page. This is the source link for Transportation burdens'}
+    values={{
+      link1: linkFn('http://google.com', false, true),
+      date22: DATE_RANGE.TWENTYTWO,
+    }}
+  />,
+  UST_FIND: <FormattedMessage
+    id={'methodology.page.category.source.ust.find.link'}
+    defaultMessage={`Calculated from EPA’s <link1>UST Finder</link1> from {date21} as compiled by EPA's EJScreen
+    `}
+    description={'Navigate to the Methodology page. This is the source link for UST Find'}
+    values={{
+      link1: linkFn('https://www.epa.gov/ust/ust-finder', false, true),
+      date21: DATE_RANGE.TWENTYONE,
+    }}
+  />,
+  BIA_LAR: <FormattedMessage
+    id={'methodology.page.category.source.bia.lar.link'}
+    defaultMessage={`<link1>Land Area Representation (LAR) dataset</link1> from {date18}`}
+    description={'Navigate to the Methodology page. This is the source link for BIA data'}
+    values={{
+      link1: linkFn('https://www.bia.gov/bia/ots/dpmc/bogs', false, true),
+      date18: DATE_RANGE.EIGHTEEN,
+    }}
+  />,
 };
 
 export const AVAILABLE_FOR = defineMessages({
@@ -560,7 +707,28 @@ export const AVAILABLE_FOR = defineMessages({
   AS_NMI: {
     id: 'methodology.page.dataset.card.availableFor.AS_NMI',
     defaultMessage: `American Samoa and the Northern Mariana Islands`,
-    description: 'Methodology page dataset card available for American Samoa and Northern Mariana Islands type',
+    description: 'Methodology page dataset card available for AS_NMI',
+  },
+  ALL_ISLDS: {
+    id: 'methodology.page.dataset.card.availableFor.ALL_ISLDS',
+    defaultMessage: `American Samoa, Guam, the Northern Mariana Islands, and the U.S. Virgin Islands
+    `,
+    description: 'Methodology page dataset card available for ALL_ISLDS',
+  },
+  CONUS_DC: {
+    id: 'methodology.page.dataset.card.availableFor.CONUS_DC',
+    defaultMessage: `All contiguous U.S. states and the District of Columbia `,
+    description: 'Methodology page dataset card available for CONUS and DC',
+  },
+  METRO_US_HOLC: {
+    id: 'methodology.page.dataset.card.availableFor.METRO_US_HOLC',
+    defaultMessage: `Metro areas of US that were HOLC graded `,
+    description: 'Methodology page dataset card available for METRO_US_HOLC',
+  },
+  FRT: {
+    id: 'methodology.page.dataset.card.availableFor.FRT',
+    defaultMessage: `Federally-Recognized Tribes, including Alaskan Native villages `,
+    description: 'Methodology page dataset card available for FRT',
   },
 });
 
@@ -582,6 +750,7 @@ export interface IIndicators {
 };
 
 export const INDICATORS = [
+  // All categories:
   {
     domID: 'low-income',
     indicator: <FormattedMessage
@@ -593,7 +762,7 @@ export const INDICATORS = [
       id={'methodology.page.category.low.income.description.text'}
       defaultMessage={`
         Percent of a census tract's population in households where household income is at or below
-        200% of the Federal poverty level.
+        200% of the Federal poverty level, not including students enrolled in higher education.
       `}
       description={'Navigate to the Methodology page. This is the description text for low income'}
     />,
@@ -606,29 +775,8 @@ export const INDICATORS = [
       },
     ],
   },
-  {
-    domID: 'high-ed-enroll-rate',
-    indicator: <FormattedMessage
-      id={'methodology.page.dataset.indicator.high.ed.enroll.title.text'}
-      defaultMessage={`Higher education non-enrollment`}
-      description={'Navigate to the Methodology page. This is the title text for the high ed enrollment dataset'}
-    />,
-    description: <FormattedMessage
-      id={'methodology.page.category.high.ed.enroll.rate.description.text'}
-      defaultMessage={`
-        Percent of people 15 or older who are not currently enrolled in college, university, or graduate school.
-      `}
-      description={'Navigate to the Methodology page. This is the description text for high ed enrollment'}
-    />,
-    usedIn: CATEGORIES.ALL,
-    responsibleParty: RESPONSIBLE_PARTIES.CENSUS,
-    sources: [
-      {
-        source: SOURCE_LINKS.CENSUS_ACS_15_19,
-        availableFor: AVAILABLE_FOR.ALL_US_DC_PR,
-      },
-    ],
-  },
+
+  // Climate change category:
   {
     domID: 'exp-agr-loss-rate',
     indicator: <FormattedMessage
@@ -639,12 +787,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.exp.agr.loss.rate.description.text'}
       defaultMessage={`
-        Percent of agricultural value at risk from losses due to fourteen types of 
-        natural hazards that have some link 
-        to climate change: avalanche, coastal flooding, 
-        cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong 
-        wind, tornado, wildfire, and winter weather. Rate calculated by dividing the agricultural value at risk in 
-        a census tract by the total agricultural value in that census tract.
+        Expected agricultural value at risk from losses due to fourteen types of natural hazards. These hazards have some link to climate change. They are: avalanche, coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong wind, tornado, wildfire, and winter weather. The rate is calculated by dividing the agricultural value at risk by the total agricultural value. 
       `}
       description={'Navigate to the Methodology page. This is the description text for exp agr loss rate'}
     />,
@@ -667,11 +810,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.exp.bld.loss.rate.description.text'}
       defaultMessage={`
-        Percent of building value at risk from losses due to fourteen types of natural hazards 
-        that have some link to climate change: avalanche, coastal flooding, 
-        cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong 
-        wind, tornado, wildfire, and winter weather. Rate calculated by dividing the building value at risk in 
-        a census tract by the total building value in that census tract.
+        Expected building value at risk from losses due to fourteen types of natural hazards. These hazards have some link to climate change. They are: avalanche, coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong wind, tornado, wildfire, and winter weather. The rate is calculated by dividing the building value at risk by the total building value.
       `}
       description={'Navigate to the Methodology page. This is the description text for exp bld loss rate'}
     />,
@@ -694,18 +833,8 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.exp.pop.loss.rate.description.text'}
       defaultMessage={`
-        Rate relative to the population of fatalities and injuries due to fourteen types of
-        natural hazards each year
-        that have some link to climate change: avalanche, 
-        coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, 
-        riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined 
-        as the Spatial Hazard Events and Losses and National Centers for Environmental Information’s 
-        (NCEI) reported number of fatalities and injuries caused by the hazard occurrence. To 
-        combine fatalities and injuries for the computation of population loss value, an injury is counted 
-        as one-tenth (1/10) of a fatality. The NCEI Storm Events Database classifies injuries and fatalities 
-        as direct or indirect. Both direct and indirect injuries and fatalities are counted as population 
-        loss. This total number of injuries and fatalities is then divided by the population in the 
-        census tract to get a per-capita rate of population risk. 
+        Expected fatalities and injuries due to fourteen types of natural hazards each year. These hazards have some link to climate change. They are: avalanche, coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined by the Spatial Hazard Events and Losses and National Centers for Environmental Information’s (NCEI). It reports the number of fatalities and injuries caused by the hazard. An injury is counted as one-tenth (1/10) of a fatality. The NCEI Storm Events Database classifies both direct and indirect injuries. Both types are counted as population loss. The total number is divided by the population in the census tract to get the rate of population loss.
+
       `}
       description={'Navigate to the Methodology page. This is the description text for exp pop loss rate'}
     />,
@@ -719,15 +848,65 @@ export const INDICATORS = [
     ],
   },
   {
+    domID: 'flood-risk',
+    indicator: <FormattedMessage
+      id={'methodology.page.dataset.indicator.flood.risk.title.text'}
+      defaultMessage={`NEW Projected flood risk`}
+      description={'Navigate to the Methodology page. This is the title text for the NEW Projected flood risk'}
+    />,
+    description: <FormattedMessage
+      id={'methodology.page.category.flood.risk.rate.description.text'}
+      defaultMessage={`
+        A high precision, climate-adjusted model that projects future flood risk for properties in the future. The dataset calculates how many properties are at risk of floods occurring in the next thirty years from tides, rain, riverine and storm surges, or a 26% risk total over the 30-year time horizon. The risk is defined as an annualized 1% chance. The tool calculates tract-level risk as the share of properties meeting the risk threshold. The risk does not include property value.
+      `}
+      description={'Navigate to the Methodology page. This is the description text for exp bld loss rate'}
+    />,
+    usedIn: CATEGORIES.CLIMATE_CHANGE.METHODOLOGY,
+    responsibleParty: RESPONSIBLE_PARTIES.FIRST,
+    sources: [
+      {
+        source: SOURCE_LINKS.FIRST_ST,
+        availableFor: AVAILABLE_FOR.ALL_US_DC_PR,
+      },
+    ],
+  },
+  {
+    domID: 'wildfire-risk',
+    indicator: <FormattedMessage
+      id={'methodology.page.dataset.indicator.wildfire.risk.title.text'}
+      defaultMessage={`NEW Projected wildfire risk`}
+      description={'Navigate to the Methodology page. This is the title text for the NEW Projected wildfire risk'}
+    />,
+    description: <FormattedMessage
+      id={'methodology.page.category.wildfire.risk.rate.description.text'}
+      defaultMessage={`
+        A 30-meter resolution model projecting the wildfire exposure for any specific location in the contiguous US, today and with future climate change. The risk of wildfire is calculated from inputs associated with fire fuels, weather, human influence, and fire movement. The risk does not include property value.
+      `}
+      description={'Navigate to the Methodology page. This is the description text for exp bld loss rate'}
+    />,
+    usedIn: CATEGORIES.CLIMATE_CHANGE.METHODOLOGY,
+    responsibleParty: RESPONSIBLE_PARTIES.FIRST,
+    sources: [
+      {
+        source: SOURCE_LINKS.FIRST_ST,
+        availableFor: AVAILABLE_FOR.CONUS_DC,
+      },
+    ],
+  },
+
+  // Energy category:
+  {
     domID: 'energy-burden',
     indicator: <FormattedMessage
       id={'methodology.page.dataset.indicator.energy.burden.title.text'}
-      defaultMessage={`Energy burden`}
+      defaultMessage={`Energy cost`}
       description={'Navigate to the Methodology page. This is the title text for the energy burden dataset'}
     />,
     description: <FormattedMessage
       id={'methodology.page.category.energy.burden.description.text'}
-      defaultMessage={`Average annual energy cost per household ($) divided by average household income.`}
+      defaultMessage={`
+        Average household annual energy cost in dollars divided by the average household income.
+      `}
       description={'Navigate to the Methodology page. This is the description text for energy burden'}
     />,
     usedIn: CATEGORIES.CLEAN_ENERGY.METHODOLOGY,
@@ -735,7 +914,7 @@ export const INDICATORS = [
     sources: [
       {
         source: SOURCE_LINKS.DOE_LEAD,
-        availableFor: AVAILABLE_FOR.ALL_US_DC,
+        availableFor: AVAILABLE_FOR.ALL_US_DC_PR,
       },
     ],
   },
@@ -749,9 +928,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.pm2.5.description.text'}
       defaultMessage={`
-        Fine inhalable particles, with diameters that are generally 2.5 micrometers and smaller. The value 
-        in the fields is the weight of these particles in micrograms per cubic meter.
-
+        Fine inhalable particles with 2.5 or smaller micrometer diameters. The percentile is the weight of the particles per cubic meter.
       `}
       description={'Navigate to the Methodology page. This is the description text for pm 2.5'}
     />,
@@ -764,51 +941,145 @@ export const INDICATORS = [
       },
     ],
   },
+
+  // Health category:
   {
-    domID: 'diesel-pm',
+    domID: 'asthma',
     indicator: <FormattedMessage
-      id={'methodology.page.dataset.indicator.diesel.pm.title.text'}
-      defaultMessage={`Diesel particulate matter exposure`}
-      description={'Navigate to the Methodology page. This is the title text for the diesel pm dataset'}
+      id={'methodology.page.dataset.indicator.asthma.title.text'}
+      defaultMessage={`Asthma`}
+      description={'Navigate to the Methodology page. This is the title text for the asthma dataset'}
     />,
     description: <FormattedMessage
-      id={'methodology.page.category.diesel.pm.description.text'}
+      id={'methodology.page.category.asthma.description.text'}
       defaultMessage={`
-        Mixture of particles that is part of diesel exhaust in the air. The value in the fields is the 
-        weight of these particles in micrograms per cubic meter. 
+        Share of people who answer “yes” to both of these questions: “Have you ever been told by a health professional that you have asthma?” and “Do you still have asthma?”.
       `}
-      description={'Navigate to the Methodology page. This is the description text for diesel pm'}
+      description={'Navigate to the Methodology page. This is the description text for asthma'}
     />,
-    usedIn: CATEGORIES.CLEAN_TRANSPORT.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.EPA,
+    usedIn: CATEGORIES.HEALTH_BURDENS.METHODOLOGY,
+    responsibleParty: RESPONSIBLE_PARTIES.CDC,
     sources: [
       {
-        source: SOURCE_LINKS.EPA_NATA,
+        source: SOURCE_LINKS.CDC_PLACES,
         availableFor: AVAILABLE_FOR.ALL_US_DC,
       },
     ],
   },
   {
-    domID: 'traffic-vol',
+    domID: 'diabetes',
     indicator: <FormattedMessage
-      id={'methodology.page.dataset.indicator.traffic.volume.title.text'}
-      defaultMessage={`Traffic proximity and volume`}
-      description={'Navigate to the Methodology page. This is the title text for the traffic.volume dataset'}
+      id={'methodology.page.dataset.indicator.diabetes.title.text'}
+      defaultMessage={`Diabetes`}
+      description={'Navigate to the Methodology page. This is the title text for the diabetes dataset'}
     />,
     description: <FormattedMessage
-      id={'methodology.page.category.traffic.vol.description.text'}
+      id={'methodology.page.category.diabetes.description.text'}
       defaultMessage={`
-        Count of vehicles (average annual daily traffic) at major roads
-        within 500 meters, divided by distance in meters.
+        Share of people ages 18 years and older who have been told by a health professional that they have diabetes other than diabetes during pregnancy.
       `}
-      description={'Navigate to the Methodology page. This is the description text for traffic volume'}
+      description={'Navigate to the Methodology page. This is the description text for diabetes'}
     />,
-    usedIn: CATEGORIES.CLEAN_TRANSPORT.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.DOT,
+    usedIn: CATEGORIES.HEALTH_BURDENS.METHODOLOGY,
+    responsibleParty: RESPONSIBLE_PARTIES.CDC,
     sources: [
       {
-        source: SOURCE_LINKS.DOT_EPA,
+        source: SOURCE_LINKS.CDC_PLACES,
         availableFor: AVAILABLE_FOR.ALL_US_DC,
+      },
+    ],
+  },
+  {
+    domID: 'heart-disease',
+    indicator: <FormattedMessage
+      id={'methodology.page.dataset.indicator.heart.disease.title.text'}
+      defaultMessage={`Heart disease`}
+      description={'Navigate to the Methodology page. This is the title text for the heart disease dataset'}
+    />,
+    description: <FormattedMessage
+      id={'methodology.page.category.heart.disease.description.text'}
+      defaultMessage={`
+        Share of people ages 18 years and older who have been told by a health professional that they had angina or coronary heart disease.
+      `}
+      description={'Navigate to the Methodology page. This is the description text for heart disease'}
+    />,
+    usedIn: CATEGORIES.HEALTH_BURDENS.METHODOLOGY,
+    responsibleParty: RESPONSIBLE_PARTIES.CDC,
+    sources: [
+      {
+        source: SOURCE_LINKS.CDC_PLACES,
+        availableFor: AVAILABLE_FOR.ALL_US_DC,
+      },
+    ],
+  },
+  {
+    domID: 'life-exp',
+    indicator: <FormattedMessage
+      id={'methodology.page.dataset.indicator.life.exp.title.text'}
+      defaultMessage={`Low life expectancy`}
+      description={'Navigate to the Methodology page. This is the title text for the life exp dataset'}
+    />,
+    description: <FormattedMessage
+      id={'methodology.page.category.low.life.expectancy.description.text'}
+      defaultMessage={`
+        Average number of years people have left in their lives.
+      `}
+      description={'Navigate to the Methodology page. This is the description text for low life expectancy'}
+    />,
+    note: <FormattedMessage
+      id={'methodology.page.category.low.life.expectancy.note.text'}
+      defaultMessage={`
+        <boldtag>Note: </boldtag>The tool reverses the percentiles for this burden. This means that census tracts with lower numbers have higher life expectancies and that census tracts with higher numbers have lower life expectancies.
+      `}
+      description={'Navigate to the Methodology page. This is the note text for low life expectancy'}
+      values={{
+        boldtag: boldFn,
+      }}
+    />,
+    usedIn: CATEGORIES.HEALTH_BURDENS.METHODOLOGY,
+    responsibleParty: RESPONSIBLE_PARTIES.CDC,
+    sources: [
+      {
+        source: SOURCE_LINKS.CDC_SLEEP,
+        availableFor: AVAILABLE_FOR.ALL_US_DC,
+      },
+    ],
+  },
+
+  // Housing category:
+  {
+    domID: 'hist-underinv',
+    indicator: <FormattedMessage
+      id={'methodology.page.dataset.indicator.hist.underinvest.title.text'}
+      defaultMessage={`New Historic underinvestment`}
+      description={'Navigate to the Methodology page. This is the title text for the Historic Underinvestment'}
+    />,
+    description: <FormattedMessage
+      id={'methodology.page.category.low.hist.underinvestectancy.description.text'}
+      defaultMessage={`
+        Census tracts that experienced historic underinvestment as determined by the National Community Reinvestment Coalition’s (NCRC) historic redlining score. It is determined using the <link1>NCRC’s methodology</link1> for identifying areas with the most historic redlining (i.e. a score of 3.25 or more out of 4). This means that people in the  tract had high barriers to accessing home loans. 
+      `}
+      description={'Navigate to the Methodology page. This is the description text for Historic Underinvestment'}
+      values={{
+        link1: linkFn('https://ncrc.org/explainer-why-we-created-a-new-method-for-measuring-the-impact-of-redlining/', false, true),
+      }}
+    />,
+    note: <FormattedMessage
+      id={'methodology.page.category.low.hist.underinvestectancy.note.text'}
+      defaultMessage={`
+        <boldtag>Note: </boldtag>The historic underinvestment data indicator <boldtag>does not</boldtag> appear on the map for tracts <boldtag>that were not</boldtag> evaluated by the National Community Reinvestment Coalition. It is shown in tracts that are most commonly in larger metropolitan areas.
+      `}
+      description={'Navigate to the Methodology page. This is the note text for Historic Underinvestment'}
+      values={{
+        boldtag: boldFn,
+      }}
+    />,
+    usedIn: CATEGORIES.AFFORDABLE_HOUSING.METHODOLOGY,
+    responsibleParty: RESPONSIBLE_PARTIES.NCRC,
+    sources: [
+      {
+        source: SOURCE_LINKS.HOLC,
+        availableFor: AVAILABLE_FOR.METRO_US_HOLC,
       },
     ],
   },
@@ -816,14 +1087,13 @@ export const INDICATORS = [
     domID: 'house-burden',
     indicator: <FormattedMessage
       id={'methodology.page.dataset.indicator.house.burden.title.text'}
-      defaultMessage={`Housing cost burden`}
+      defaultMessage={`Housing cost`}
       description={'Navigate to the Methodology page. This is the title text for the house burden dataset'}
     />,
     description: <FormattedMessage
       id={'methodology.page.category.house.burden.description.text'}
       defaultMessage={`
-        Percent of households in a census tract that are both earning less than 80% of HUD Area Median
-        Family Income by county and are spending more than 30% of their income on housing costs.
+        Share of households that are both earning less than 80% of Housing and Urban Development’s Area Median Family Income and are spending more than 30% of their income on housing costs.
       `}
       description={'Navigate to the Methodology page. This is the description text for housing burden'}
     />,
@@ -832,7 +1102,53 @@ export const INDICATORS = [
     sources: [
       {
         source: SOURCE_LINKS.HUD,
-        availableFor: AVAILABLE_FOR.ALL_US_DC,
+        availableFor: AVAILABLE_FOR.ALL_US_DC_PR,
+      },
+    ],
+  },
+  {
+    domID: 'green-space',
+    indicator: <FormattedMessage
+      id={'methodology.page.dataset.indicator.green.space.title.text'}
+      defaultMessage={`NEW Lack of green space`}
+      description={'Navigate to the Methodology page. This is the title text for the house burden dataset'}
+    />,
+    description: <FormattedMessage
+      id={'methodology.page.category.green.space.description.text'}
+      defaultMessage={`
+        Share of land with developed surfaces covered with artificial materials like concrete or pavement and crop land used for agricultural purposes.
+      `}
+      description={'Navigate to the Methodology page. This is the description text for housing burden'}
+    />,
+    usedIn: CATEGORIES.AFFORDABLE_HOUSING.METHODOLOGY,
+    responsibleParty: RESPONSIBLE_PARTIES.TPL,
+    sources: [
+      {
+        source: SOURCE_LINKS.PDI,
+        availableFor: AVAILABLE_FOR.CONUS_DC,
+      },
+    ],
+  },
+  {
+    domID: 'indoor-plumb',
+    indicator: <FormattedMessage
+      id={'methodology.page.dataset.indicator.indoor.plumb.title.text'}
+      defaultMessage={`NEW Lack of indoor plumbing`}
+      description={'Navigate to the Methodology page. This is the title text for the indoor plumbing'}
+    />,
+    description: <FormattedMessage
+      id={'methodology.page.category.indoor.plumb.description.text'}
+      defaultMessage={`
+        Housing without complete kitchen facilities or complete plumbing facilities.
+      `}
+      description={'Navigate to the Methodology page. This is the description text for housing burden'}
+    />,
+    usedIn: CATEGORIES.AFFORDABLE_HOUSING.METHODOLOGY,
+    responsibleParty: RESPONSIBLE_PARTIES.HUD,
+    sources: [
+      {
+        source: SOURCE_LINKS.HUD,
+        availableFor: AVAILABLE_FOR.ALL_US_DC_PR,
       },
     ],
   },
@@ -846,8 +1162,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.lead.paint.description.text'}
       defaultMessage={`
-        Percent of housing units built pre-1960, used as an indicator of potential lead paint exposure in
-        census tracts with median home values less than the 90th percentile.
+        Share of homes built before 1960, which indicates potential lead paint exposure. Tracts with extremely high home values (i.e. median home values above the 90th percentile) are not likely to have lead paint exposure and are not included.
       `}
       description={'Navigate to the Methodology page. This is the description text for lead paint'}
     />,
@@ -856,29 +1171,54 @@ export const INDICATORS = [
     sources: [
       {
         source: SOURCE_LINKS.CENSUS_ACS_15_19,
+        availableFor: AVAILABLE_FOR.ALL_US_DC_PR,
+      },
+    ],
+  },
+
+  // Legacy pollution category:
+  {
+    domID: 'mine-land',
+    indicator: <FormattedMessage
+      id={'methodology.page.dataset.indicator.mine.land.title.text'}
+      defaultMessage={`NEW Abandoned mine lands`}
+      description={'Navigate to the Methodology page. This is the title text for the Abandoned mine lands'}
+    />,
+    description: <FormattedMessage
+      id={'methodology.page.category.mine.land.description.text'}
+      defaultMessage={`
+        Presence of an abandoned mine left by legacy coal mining operations.
+      `}
+      description={'Navigate to the Methodology page. This is the description text for Abandoned mine lands'}
+    />,
+    usedIn: CATEGORIES.LEGACY_POLLUTION.METHODOLOGY,
+    responsibleParty: RESPONSIBLE_PARTIES.DOI,
+    sources: [
+      {
+        source: SOURCE_LINKS.AML,
         availableFor: AVAILABLE_FOR.ALL_US_DC,
       },
     ],
   },
   {
-    domID: 'median-home',
+    domID: 'fuds',
     indicator: <FormattedMessage
-      id={'methodology.page.dataset.indicator.median.home.title.text'}
-      defaultMessage={`Median home value`}
-      description={'Navigate to the Methodology page. This is the title text for the median home dataset'}
+      id={'methodology.page.dataset.indicator.fuds.title.text'}
+      defaultMessage={`NEW Formerly Used Defense Sites`}
+      description={'Navigate to the Methodology page. This is the title text for the Formerly Used Defense Sites'}
     />,
     description: <FormattedMessage
-      id={'methodology.page.category.median.home.value.description.text'}
+      id={'methodology.page.category.fuds.description.text'}
       defaultMessage={`
-        Median home value of owner-occupied housing units in the census tract.
-       `}
-      description={'Navigate to the Methodology page. This is the description text for lead paint'}
+      Properties that were owned, leased, or possessed by the United States, under the jurisdiction of the Secretary of Defense prior to October 1986.
+      `}
+      description={'Navigate to the Methodology page. This is the description text for Formerly Used Defense Sites'}
     />,
-    usedIn: CATEGORIES.AFFORDABLE_HOUSING.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.CENSUS,
+    usedIn: CATEGORIES.LEGACY_POLLUTION.METHODOLOGY,
+    responsibleParty: RESPONSIBLE_PARTIES.USACE,
     sources: [
       {
-        source: SOURCE_LINKS.CENSUS_ACS_15_19,
+        source: SOURCE_LINKS.FUDS,
         availableFor: AVAILABLE_FOR.ALL_US_DC,
       },
     ],
@@ -887,15 +1227,13 @@ export const INDICATORS = [
     domID: 'prox-haz',
     indicator: <FormattedMessage
       id={'methodology.page.dataset.indicator.prox.haz.title.text'}
-      defaultMessage={`Proximity to hazardous waste facilities`}
+      defaultMessage={`Proximity to hazardous waste sites`}
       description={'Navigate to the Methodology page. This is the title text for the prox haz dataset'}
     />,
     description: <FormattedMessage
       id={'methodology.page.category.prox.haz.description.text'}
       defaultMessage={`
-        Count of hazardous waste facilities (Treatment, Storage, and Disposal Facilities and Large
-        Quantity Generators) within 5 kilometers (or nearest beyond 5 kilometers), each divided by 
-        distance in kilometers.
+        Number of hazardous waste facilities (Treatment, Storage, and Disposal Facilities and Large Quantity Generators) within 5 kilometers (or nearest beyond 5 kilometers), each divided by distance in kilometers.
       `}
       description={'Navigate to the Methodology page. This is the description text for proximity to hazards'}
     />,
@@ -904,7 +1242,7 @@ export const INDICATORS = [
     sources: [
       {
         source: SOURCE_LINKS.EPA_TSDF,
-        availableFor: AVAILABLE_FOR.ALL_US_DC,
+        availableFor: AVAILABLE_FOR.ALL_US_DC_PR,
       },
     ],
   },
@@ -912,14 +1250,13 @@ export const INDICATORS = [
     domID: 'prox-npl',
     indicator: <FormattedMessage
       id={'methodology.page.dataset.indicator.prox.npl.title.text'}
-      defaultMessage={`Proximity to National Priorities List (NPL) sites`}
+      defaultMessage={`Proximity to Superfund sites`}
       description={'Navigate to the Methodology page. This is the title text for the prox npl dataset'}
     />,
     description: <FormattedMessage
       id={'methodology.page.category.prox.npl.description.text'}
       defaultMessage={`
-        Count of proposed or listed NPL - also known as Superfund - sites within 5 kilometers (or nearest one
-        beyond 5 kilometers), each divided by distance in kilometers.
+        Number of proposed or listed Superfund or National Priorities list (NPL) sites within 5 kilometers (or nearest one beyond 5 kilometers), each divided by distance in kilometers.
         `}
       description={'Navigate to the Methodology page. This is the description text for proximity to npl'}
     />,
@@ -928,7 +1265,7 @@ export const INDICATORS = [
     sources: [
       {
         source: SOURCE_LINKS.EPA_CERCLIS,
-        availableFor: AVAILABLE_FOR.ALL_US_DC,
+        availableFor: AVAILABLE_FOR.ALL_US_DC_PR,
       },
     ],
   },
@@ -942,8 +1279,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.prox.rmp.description.text'}
       defaultMessage={`
-        Count of RMP (potential chemical accident management plan) facilities within 5 kilometers (or nearest
-        one beyond 5 kilometers), each divided by distance in kilometers.
+        Count of RMP, or potential chemical accident management plan, facilities within 5 kilometers (or nearest one beyond 5 kilometers), each divided by distance in kilometers.
       `}
       description={'Navigate to the Methodology page. This is the description text for proximity to rmp'}
     />,
@@ -952,7 +1288,103 @@ export const INDICATORS = [
     sources: [
       {
         source: SOURCE_LINKS.EPA_RMP,
-        availableFor: AVAILABLE_FOR.ALL_US_DC,
+        availableFor: AVAILABLE_FOR.ALL_US_DC_PR,
+      },
+    ],
+  },
+
+  // Transportation category:
+  {
+    domID: 'diesel-pm',
+    indicator: <FormattedMessage
+      id={'methodology.page.dataset.indicator.diesel.pm.title.text'}
+      defaultMessage={`Diesel particulate matter exposure`}
+      description={'Navigate to the Methodology page. This is the title text for the diesel pm dataset'}
+    />,
+    description: <FormattedMessage
+      id={'methodology.page.category.diesel.pm.description.text'}
+      defaultMessage={`
+        Mixture of particles in diesel exhaust in the air, measured as micrograms per cubic meter.
+      `}
+      description={'Navigate to the Methodology page. This is the description text for diesel pm'}
+    />,
+    usedIn: CATEGORIES.CLEAN_TRANSPORT.METHODOLOGY,
+    responsibleParty: RESPONSIBLE_PARTIES.EPA,
+    sources: [
+      {
+        source: SOURCE_LINKS.EPA_NATA,
+        availableFor: AVAILABLE_FOR.ALL_US_DC_PR,
+      },
+    ],
+  },
+  {
+    domID: 'trans-barrier',
+    indicator: <FormattedMessage
+      id={'methodology.page.dataset.indicator.trans.barrier.title.text'}
+      defaultMessage={`NEW Transportation barriers`}
+      description={'Navigate to the Methodology page. This is the title text for the Transportation barriers'}
+    />,
+    description: <FormattedMessage
+      id={'methodology.page.category.trans.barrier.description.text'}
+      defaultMessage={`
+        Average relative cost and time spent on transportation relative to all other tracts.
+      `}
+      description={'Navigate to the Methodology page. This is the description text for Transportation barriers'}
+    />,
+    usedIn: CATEGORIES.CLEAN_TRANSPORT.METHODOLOGY,
+    responsibleParty: RESPONSIBLE_PARTIES.DOT,
+    sources: [
+      {
+        source: SOURCE_LINKS.TRANS_BUR,
+        availableFor: AVAILABLE_FOR.ALL_US_DC_PR,
+      },
+    ],
+  },
+  {
+    domID: 'traffic-vol',
+    indicator: <FormattedMessage
+      id={'methodology.page.dataset.indicator.traffic.volume.title.text'}
+      defaultMessage={`Traffic proximity and volume`}
+      description={'Navigate to the Methodology page. This is the title text for the traffic.volume dataset'}
+    />,
+    description: <FormattedMessage
+      id={'methodology.page.category.traffic.vol.description.text'}
+      defaultMessage={`
+        Number of vehicles (average annual daily traffic) at major roads within 500 meters, divided by distance in meters.
+      `}
+      description={'Navigate to the Methodology page. This is the description text for traffic volume'}
+    />,
+    usedIn: CATEGORIES.CLEAN_TRANSPORT.METHODOLOGY,
+    responsibleParty: RESPONSIBLE_PARTIES.DOT,
+    sources: [
+      {
+        source: SOURCE_LINKS.DOT_EPA,
+        availableFor: AVAILABLE_FOR.ALL_US_DC_PR,
+      },
+    ],
+  },
+
+  // Water and wastewater category:
+  {
+    domID: 'leaky-uwt',
+    indicator: <FormattedMessage
+      id={'methodology.page.dataset.indicator.leaky.uwt.title.text'}
+      defaultMessage={`NEW Leaking underground storage tanks`}
+      description={'Navigate to the Methodology page. This is the title text for the Leaking underground storage tanks'}
+    />,
+    description: <FormattedMessage
+      id={'methodology.page.category.leaky.uwt.description.text'}
+      defaultMessage={`
+        Weighted formula of number of leaking underground storage tanks and the number of underground storage tanks within 1,500 feet.
+      `}
+      description={'Navigate to the Methodology page. This is the description text for Leaking underground storage tanks'}
+    />,
+    usedIn: CATEGORIES.CLEAN_WATER.METHODOLOGY,
+    responsibleParty: RESPONSIBLE_PARTIES.EPA,
+    sources: [
+      {
+        source: SOURCE_LINKS.UST_FIND,
+        availableFor: AVAILABLE_FOR.ALL_US_DC_PR,
       },
     ],
   },
@@ -976,114 +1408,41 @@ export const INDICATORS = [
     sources: [
       {
         source: SOURCE_LINKS.EPA_RSEI,
-        availableFor: AVAILABLE_FOR.ALL_US_DC,
+        availableFor: AVAILABLE_FOR.ALL_US_DC_PR,
       },
     ],
   },
+
+  // Workforce dev category:
   {
-    domID: 'asthma',
+    domID: 'ling-iso',
     indicator: <FormattedMessage
-      id={'methodology.page.dataset.indicator.asthma.title.text'}
-      defaultMessage={`Asthma`}
-      description={'Navigate to the Methodology page. This is the title text for the asthma dataset'}
+      id={'methodology.page.dataset.indicator.ling.iso.title.text'}
+      defaultMessage={`Linguistic isolation`}
+      description={'Navigate to the Methodology page. This is the title text for the linguistic isolation dataset'}
     />,
     description: <FormattedMessage
-      id={'methodology.page.category.asthma.description.text'}
+      id={'methodology.page.category.linguistic.iso.description.text'}
       defaultMessage={`
-        Weighted percent of people who answer “yes” to both of the following questions: “Have you ever
-        been told by a doctor, nurse, or other health professional that you have asthma?” and
-        “Do you still have asthma?”
+        Share of households where no one over the age 14 speaks English well.
       `}
-      description={'Navigate to the Methodology page. This is the description text for asthma'}
-    />,
-    usedIn: CATEGORIES.HEALTH_BURDENS.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.CDC,
-    sources: [
-      {
-        source: SOURCE_LINKS.CDC_PLACES,
-        availableFor: AVAILABLE_FOR.ALL_US_DC,
-      },
-    ],
-  },
-  {
-    domID: 'diabetes',
-    indicator: <FormattedMessage
-      id={'methodology.page.dataset.indicator.diabetes.title.text'}
-      defaultMessage={`Diabetes`}
-      description={'Navigate to the Methodology page. This is the title text for the diabetes dataset'}
-    />,
-    description: <FormattedMessage
-      id={'methodology.page.category.diabetes.description.text'}
-      defaultMessage={`
-        Weighted percent of people ages 18 years and older who report having ever been
-        told by a doctor, nurse, or other health professionals that they have
-        diabetes other than diabetes during pregnancy.
-      `}
-      description={'Navigate to the Methodology page. This is the description text for diabetes'}
-    />,
-    usedIn: CATEGORIES.HEALTH_BURDENS.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.CDC,
-    sources: [
-      {
-        source: SOURCE_LINKS.CDC_PLACES,
-        availableFor: AVAILABLE_FOR.ALL_US_DC,
-      },
-    ],
-  },
-  {
-    domID: 'heart-disease',
-    indicator: <FormattedMessage
-      id={'methodology.page.dataset.indicator.heart.disease.title.text'}
-      defaultMessage={`Heart disease`}
-      description={'Navigate to the Methodology page. This is the title text for the heart disease dataset'}
-    />,
-    description: <FormattedMessage
-      id={'methodology.page.category.heart.disease.description.text'}
-      defaultMessage={`
-        Weighted percent of people ages 18 years and older who report ever having been told
-        by a doctor, nurse, or other health professionals that they had angina or
-        coronary heart disease.
-      `}
-      description={'Navigate to the Methodology page. This is the description text for heart disease'}
-    />,
-    usedIn: CATEGORIES.HEALTH_BURDENS.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.CDC,
-    sources: [
-      {
-        source: SOURCE_LINKS.CDC_PLACES,
-        availableFor: AVAILABLE_FOR.ALL_US_DC,
-      },
-    ],
-  },
-  {
-    domID: 'life-exp',
-    indicator: <FormattedMessage
-      id={'methodology.page.dataset.indicator.life.exp.title.text'}
-      defaultMessage={`Low life expectancy`}
-      description={'Navigate to the Methodology page. This is the title text for the life exp dataset'}
-    />,
-    description: <FormattedMessage
-      id={'methodology.page.category.low.life.expectancy.description.text'}
-      defaultMessage={`
-        Average number of years of life a person who has attained a given age can expect to live.
-      `}
-      description={'Navigate to the Methodology page. This is the description text for low life expectancy'}
+      description={'Navigate to the Methodology page. This is the description text for linguistic isolation'}
     />,
     note: <FormattedMessage
-      id={'methodology.page.category.low.life.expectancy.note.text'}
+      id={'methodology.page.category.linguistic.iso.note.text'}
       defaultMessage={`
-        <boldtag>Note: </boldtag>The percentiles for this dataset have been reversed so that census tracts with lower numbers have higher life expectancies and the census tracts with higher numbers have lower life expectancy when compared to life expectancy in the area.
+      <boldtag>Note: </boldtag>Linguistic isolation was removed from Puerto Rico based on feedback during the beta period.
       `}
-      description={'Navigate to the Methodology page. This is the note text for low life expectancy'}
+      description={'Navigate to the Methodology page. This is the note text for linguistic.iso'}
       values={{
         boldtag: boldFn,
       }}
     />,
-    usedIn: CATEGORIES.HEALTH_BURDENS.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.CDC,
+    usedIn: CATEGORIES.WORKFORCE_DEV.METHODOLOGY,
+    responsibleParty: RESPONSIBLE_PARTIES.CENSUS,
     sources: [
       {
-        source: SOURCE_LINKS.CDC_SLEEP,
+        source: SOURCE_LINKS.CENSUS_ACS_15_19,
         availableFor: AVAILABLE_FOR.ALL_US_DC,
       },
     ],
@@ -1098,14 +1457,14 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.workforce.dev.description.text'}
       defaultMessage={`
-        Median income of the census tract calculated as a percent of the area’s median income.
+        Low median income calculated as a share of the area’s median income.
       `}
       description={'Navigate to the Methodology page. This is the description text for workforce dev'}
     />,
     note: <FormattedMessage
-      id={'methodology.page.category.low.median.expectancy.note.text'}
+      id={'methodology.page.category.low.median.note.text'}
       defaultMessage={`
-        <boldtag>Note: </boldtag>The percentiles for this dataset have been reversed so that census tracts with lower numbers have higher median incomes and census tracts with the higher numbers have lower median income when compared to area median income.
+        <boldtag>Note: </boldtag>The tool reverses the percentiles for this burden. This means that census tracts with lower numbers have higher median incomes and census tracts with the higher numbers have lower median incomes.
       `}
       description={'Navigate to the Methodology page. This is the note text for low median expectancy'}
       values={{
@@ -1121,23 +1480,23 @@ export const INDICATORS = [
       },
       {
         source: SOURCE_LINKS.CENSUS_ACS_10,
-        availableFor: AVAILABLE_FOR.AS_NMI,
+        availableFor: AVAILABLE_FOR.ALL_ISLDS,
       },
     ],
   },
   {
-    domID: 'ling-iso',
+    domID: 'poverty',
     indicator: <FormattedMessage
-      id={'methodology.page.dataset.indicator.ling.iso.title.text'}
-      defaultMessage={`Linguistic isolation`}
-      description={'Navigate to the Methodology page. This is the title text for the linguistic isolation dataset'}
+      id={'methodology.page.dataset.indicator.poverty.title.text'}
+      defaultMessage={`Poverty`}
+      description={'Navigate to the Methodology page. This is the title text for the poverty dataset'}
     />,
     description: <FormattedMessage
-      id={'methodology.page.category.linguistic.iso.description.text'}
+      id={'methodology.page.category.poverty.description.text'}
       defaultMessage={`
-        Percent of households where no one over the age 14 speaks English well.
+        Share of people living at or below 100% of the Federal poverty level.
       `}
-      description={'Navigate to the Methodology page. This is the description text for linguistic isolation'}
+      description={'Navigate to the Methodology page. This is the description text for poverty'}
     />,
     usedIn: CATEGORIES.WORKFORCE_DEV.METHODOLOGY,
     responsibleParty: RESPONSIBLE_PARTIES.CENSUS,
@@ -1158,7 +1517,7 @@ export const INDICATORS = [
     description: <FormattedMessage
       id={'methodology.page.category.unemploy.description.text'}
       defaultMessage={`
-      Number of unemployed people as a percentage of the civilian labor force.
+        Number of unemployed people as a share of the  labor force.
       `}
       description={'Navigate to the Methodology page. This is the description text for unemployment'}
     />,
@@ -1171,35 +1530,7 @@ export const INDICATORS = [
       },
       {
         source: SOURCE_LINKS.CENSUS_ACS_10,
-        availableFor: AVAILABLE_FOR.AS_NMI,
-      },
-    ],
-  },
-  {
-    domID: 'poverty',
-    indicator: <FormattedMessage
-      id={'methodology.page.dataset.indicator.poverty.title.text'}
-      defaultMessage={`Poverty`}
-      description={'Navigate to the Methodology page. This is the title text for the poverty dataset'}
-    />,
-    description: <FormattedMessage
-      id={'methodology.page.category.poverty.description.text'}
-      defaultMessage={`
-        Percent of a census tract's population in households where the household income is at or below 100% of
-        the Federal poverty level.
-      `}
-      description={'Navigate to the Methodology page. This is the description text for poverty'}
-    />,
-    usedIn: CATEGORIES.WORKFORCE_DEV.METHODOLOGY,
-    responsibleParty: RESPONSIBLE_PARTIES.CENSUS,
-    sources: [
-      {
-        source: SOURCE_LINKS.CENSUS_ACS_15_19,
-        availableFor: AVAILABLE_FOR.ALL_US_DC_PR,
-      },
-      {
-        source: SOURCE_LINKS.CENSUS_ACS_10,
-        availableFor: AVAILABLE_FOR.AS_NMI,
+        availableFor: AVAILABLE_FOR.ALL_ISLDS,
       },
     ],
   },
@@ -1207,13 +1538,13 @@ export const INDICATORS = [
     domID: 'high-school',
     indicator: <FormattedMessage
       id={'methodology.page.dataset.indicator.high.school.title.text'}
-      defaultMessage={`High school degree non-attainment`}
+      defaultMessage={`High school education`}
       description={'Navigate to the Methodology page. This is the title text for the high school dataset'}
     />,
     description: <FormattedMessage
       id={'methodology.page.category.highschool.description.text'}
       defaultMessage={`
-        Percent of people age 25 years or older in a census tract whose education level is less than a high school diploma.
+        Share of people aged 25 years or older who didn’t graduate from high school.
       `}
       description={'Navigate to the Methodology page. This is the description text for high school'}
     />,
@@ -1226,11 +1557,93 @@ export const INDICATORS = [
       },
       {
         source: SOURCE_LINKS.CENSUS_ACS_10,
-        availableFor: AVAILABLE_FOR.AS_NMI,
+        availableFor: AVAILABLE_FOR.ALL_ISLDS,
       },
     ],
     isPercent: true,
   },
+
+
+  {
+    domID: 'tribal-lands',
+    indicator: <FormattedMessage
+      id={'methodology.page.dataset.indicator.tribal.lands.title.text'}
+      defaultMessage={`NEW Tribal lands`}
+      description={'Navigate to the Methodology page. This is the title text for the Tribal lands'}
+    />,
+    description: <FormattedMessage
+      id={'methodology.page.category.tribal.lands.description.text'}
+      defaultMessage={`
+        The Land Area Representation (LAR) dataset depicts the exterior extent of a Federal Indian land area. 
+      `}
+      description={'Navigate to the Methodology page. This is the description text for Tribal lands'}
+    />,
+    note: <FormattedMessage
+      id={'methodology.page.category.tribal.lands.note.text'}
+      defaultMessage={`
+        <boldtag>Note: </boldtag>The LAR dataset depicts the exterior extent of a Federal Indian land area.  Not all Federally recognized tribes have a designated land area; therefore, they may not have an associated land area represented in the land area dataset.
+      `}
+      description={'Navigate to the Methodology page. This is the note text for low median expectancy'}
+      values={{
+        boldtag: boldFn,
+      }}
+    />,
+    usedIn: CATEGORIES.TRIBAL_LANDS.METHODOLOGY,
+    responsibleParty: RESPONSIBLE_PARTIES.BIA,
+    sources: [
+      {
+        source: SOURCE_LINKS.BIA_LAR,
+        availableFor: AVAILABLE_FOR.FRT,
+      },
+    ],
+  },
+  // Unused burdens:
+  // {
+  //   domID: 'high-ed-enroll-rate',
+  //   indicator: <FormattedMessage
+  //     id={'methodology.page.dataset.indicator.high.ed.enroll.title.text'}
+  //     defaultMessage={`Higher education non-enrollment`}
+  //     description={'Navigate to the Methodology page. This is the title text for the high ed enrollment dataset'}
+  //   />,
+  //   description: <FormattedMessage
+  //     id={'methodology.page.category.high.ed.enroll.rate.description.text'}
+  //     defaultMessage={`
+  //       Percent of people 15 or older who are not currently enrolled in college, university, or graduate school.
+  //     `}
+  //     description={'Navigate to the Methodology page. This is the description text for high ed enrollment'}
+  //   />,
+  //   usedIn: CATEGORIES.ALL,
+  //   responsibleParty: RESPONSIBLE_PARTIES.CENSUS,
+  //   sources: [
+  //     {
+  //       source: SOURCE_LINKS.CENSUS_ACS_15_19,
+  //       availableFor: AVAILABLE_FOR.ALL_US_DC_PR,
+  //     },
+  //   ],
+  // },
+  // {
+  //   domID: 'median-home',
+  //   indicator: <FormattedMessage
+  //     id={'methodology.page.dataset.indicator.median.home.title.text'}
+  //     defaultMessage={`Median home value`}
+  //     description={'Navigate to the Methodology page. This is the title text for the median home dataset'}
+  //   />,
+  //   description: <FormattedMessage
+  //     id={'methodology.page.category.median.home.value.description.text'}
+  //     defaultMessage={`
+  //       Median home value of owner-occupied housing units in the census tract.
+  //      `}
+  //     description={'Navigate to the Methodology page. This is the description text for lead paint'}
+  //   />,
+  //   usedIn: CATEGORIES.AFFORDABLE_HOUSING.METHODOLOGY,
+  //   responsibleParty: RESPONSIBLE_PARTIES.CENSUS,
+  //   sources: [
+  //     {
+  //       source: SOURCE_LINKS.CENSUS_ACS_15_19,
+  //       availableFor: AVAILABLE_FOR.ALL_US_DC,
+  //     },
+  //   ],
+  // },
 ];
 
 export const RETURN_TO_TOP = {

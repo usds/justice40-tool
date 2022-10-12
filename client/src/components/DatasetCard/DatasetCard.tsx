@@ -17,6 +17,7 @@ interface IDatasetCardProps {
  */
 const DatasetCard = ({datasetCardProps}: IDatasetCardProps) => {
   const intl = useIntl();
+  const isNoteAtEnd = datasetCardProps.domID === 'ling-iso' ? true : false;
 
   return (
     <div className={styles.datasetCard} id={datasetCardProps.domID}>
@@ -29,7 +30,7 @@ const DatasetCard = ({datasetCardProps}: IDatasetCardProps) => {
       </div>
 
       {/* Dataset note */}
-      {datasetCardProps.note && <div className={styles.datasetCardDescription}>
+      {(datasetCardProps.note && !isNoteAtEnd) && <div className={styles.datasetCardDescription}>
         <p>{datasetCardProps.note}</p>
       </div>}
 
@@ -69,6 +70,11 @@ const DatasetCard = ({datasetCardProps}: IDatasetCardProps) => {
               </span>
               {intl.formatMessage(dataSource.availableFor)}
             </li>
+
+            {/* Dataset note */}
+            {(datasetCardProps.note && isNoteAtEnd) && <div className={styles.datasetCardDescription}>
+              <p>{datasetCardProps.note}</p>
+            </div>}
           </React.Fragment>
         ))}
 
