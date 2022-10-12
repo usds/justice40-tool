@@ -1017,7 +1017,7 @@ class ScoreNarwhal(Score):
         """
         tribal_percent = self.df[
             field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT
-        ].fillna(0)
+        ].fillna(0.0)
         return np.where(
             self.df[field_names.FINAL_SCORE_N_BOOLEAN],
             1.0,
