@@ -48,7 +48,7 @@ class TribalOverlapETL(ExtractTransformLoad):
     ANNETTE_ISLAND_TRIBAL_NAME = "Annette Island LAR"
 
     CRS_INTEGER = 3857
-    TRIBAL_OVERLAP_CUTOFF = 0.9995  # Percentage of overlap that rounds to 100%
+    TRIBAL_OVERLAP_CUTOFF = 0.995  # Percentage of overlap that rounds to 100%
 
     # Define these for easy code completion
     def __init__(self):

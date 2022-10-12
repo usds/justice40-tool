@@ -368,10 +368,8 @@ PERCENT_OF_TRIBAL_AREA_IN_TRACT = (
 PERCENT_OF_TRIBAL_AREA_IN_TRACT_DISPLAY = (
     "Percent of the Census tract that is within Tribal areas, for display"
 )
-IS_TRIBAL_DAC = (
-    "Is this tract a DAC because it is (nearly) entirely tribal land?"
-)
-PERCENT_OF_TRACT_IS_DAC = "Percent of the Census tract that is a DAC."
+IS_TRIBAL_DAC = "Identified as disadvantaged due to tribal overlap"
+PERCENT_OF_TRACT_IS_DAC = "Percentage of tract that is disadvantaged"
 
 #####
 # Names for individual factors being exceeded
