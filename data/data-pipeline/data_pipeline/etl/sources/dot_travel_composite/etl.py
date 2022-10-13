@@ -16,7 +16,10 @@ class TravelCompositeETL(ExtractTransformLoad):
     NAME = "travel_composite"
 
     if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
-        SOURCE_URL = f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/data-sources/raw-data-sources/dot_travel_composite/Shapefile_and_Metadata.zip"
+        SOURCE_URL = (
+            f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/"
+            "dot_travel_composite/Shapefile_and_Metadata.zip"
+        )
     else:
         SOURCE_URL = "https://www.transportation.gov/sites/dot.gov/files/Shapefile_and_Metadata.zip"
 
