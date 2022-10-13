@@ -49,6 +49,7 @@ class GeoCorrAlternativesETL(ExtractTransformLoad):
     ZIP_CODE_INPUT_FIELD = "ZCTA5CE20"
     AREA_JOINED_FIELD = "area_joined"
     AREA_ZIP_FIELD = "area_zip"
+    TRACT_AREA = "area_tract"
 
     def __init__(self):
         self.COLUMNS_TO_KEEP = [
@@ -116,6 +117,17 @@ class GeoCorrAlternativesETL(ExtractTransformLoad):
         # to the original tract geometries
         joined_gdf[field_names.PERCENT_OF_ZIP_CODE_IN_TRACT] = (
             joined_gdf[self.AREA_JOINED_FIELD] / joined_gdf[self.AREA_ZIP_FIELD]
+        )
+
+        # Calculating "size of tract" that is relevant, e.g., the sum of all overlapping
+        # area between the tract and the zip
+        joined_gdf[self.TRACT_AREA] = joined_gdf.groupby(
+            field_names.GEOID_TRACT_FIELD
+        )[self.AREA_JOINED_FIELD].transform(sum)
+
+        # Calculating share of tract in the zipcode (ordered at tract, zip level)
+        joined_gdf[field_names.PERCENT_OF_TRACT_IN_ZIP] = (
+            joined_gdf[self.AREA_JOINED_FIELD] / joined_gdf[self.TRACT_AREA]
         )
 
         self.output_df = joined_gdf
