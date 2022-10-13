@@ -532,6 +532,29 @@ class PostScoreETL(ExtractTransformLoad):
                 "fields"
             ],
         )
+        # Check the codebook to make sure it matches the download files
+        assert not set(codebook_df["csv_label"].dropna()).difference(
+            downloadable_df.columns
+        ), "Codebook is missing columns from downloadable CSV"
+        assert not set(codebook_df["excel_label"].dropna()).difference(
+            downloadable_df.columns
+        ), "Codebook is missing columns from downloadable excel"
+        assert (
+            len(
+                downloadable_df.columns.difference(
+                    set(codebook_df["csv_label"])
+                )
+            )
+            == 0
+        ), "Codebook has columns the CSV does not"
+        assert (
+            len(
+                downloadable_df.columns.difference(
+                    set(codebook_df["excel_label"])
+                )
+            )
+            == 0
+        ), "Codebook has columns the CSV does not"
 
         # load codebook to disk
         codebook_df.to_csv(codebook_path, index=False)
