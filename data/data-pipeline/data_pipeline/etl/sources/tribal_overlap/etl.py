@@ -45,7 +45,7 @@ class TribalOverlapETL(ExtractTransformLoad):
     ]
 
     # A Tribal area that requires some special processing.
-    ANNETTE_ISLAND_TRIBAL_NAME = "Annette Island LAR"
+    ANNETTE_ISLAND_TRIBAL_NAME = "Annette Island"
 
     CRS_INTEGER = 3857
     TRIBAL_OVERLAP_CUTOFF = 0.995  # Percentage of overlap that rounds to 100%
@@ -100,6 +100,15 @@ class TribalOverlapETL(ExtractTransformLoad):
         # for both the points in AK and the polygons in the continental US (CONUS).
         tribal_overlap_with_tracts = add_tracts_for_geometries(
             df=self.tribal_gdf, tract_data=self.census_tract_gdf
+        )
+
+        # Cleanup the suffixes in the tribal names
+        tribal_overlap_with_tracts[field_names.TRIBAL_LAND_AREA_NAME] = (
+            tribal_overlap_with_tracts[field_names.TRIBAL_LAND_AREA_NAME]
+            .str.replace(" LAR", "")
+            .str.replace(" TSA", "")
+            .str.replace(" IRA", "")
+            .str.replace(" AK", "")
         )
 
         tribal_overlap_with_tracts = tribal_overlap_with_tracts.groupby(
