@@ -19,8 +19,8 @@ class CDCSVIIndex(ExtractTransformLoad):
 
         if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
             self.CDC_SVI_INDEX_URL = (
-                f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/data-sources/raw-data-sources/",
-                "cdc_svi_index/SVI2018_US.csv",
+                f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/"
+                "cdc_svi_index/SVI2018_US.csv"
             )
         else:
             self.CDC_SVI_INDEX_URL = "https://svi.cdc.gov/Documents/Data/2018_SVI_Data/CSV/SVI2018_US.csv"

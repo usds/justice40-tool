@@ -25,8 +25,8 @@ class CDCPlacesETL(ExtractTransformLoad):
 
         if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
             self.CDC_PLACES_URL = (
-                f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/data-sources/raw-data-sources/",
-                "cdc_places/PLACES__Local_Data_for_Better_Health__Census_Tract_Data_2021_release.csv",
+                f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/"
+                "cdc_places/PLACES__Local_Data_for_Better_Health__Census_Tract_Data_2021_release.csv"
             )
         else:
             self.CDC_PLACES_URL = "https://chronicdata.cdc.gov/api/views/cwsq-ngmh/rows.csv?accessType=DOWNLOAD"

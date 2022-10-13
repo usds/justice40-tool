@@ -23,7 +23,7 @@ class CDCLifeExpectancy(ExtractTransformLoad):
     NAME = "cdc_life_expectancy"
 
     if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
-        USA_FILE_URL = f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/data-sources/raw-data-sources/cdc_file_expectancy/US_A.CSV"
+        USA_FILE_URL = f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/cdc_file_expectancy/US_A.CSV"
     else:
         USA_FILE_URL: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/US_A.CSV"
 
@@ -36,8 +36,8 @@ class CDCLifeExpectancy(ExtractTransformLoad):
     # For some reason, LEEP does not include Maine or Wisconsin in its "All of
     # USA" file. Load these separately.
     if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
-        WISCONSIN_FILE_URL: str = f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/data-sources/raw-data-sources/cdc_file_expectancy/WI_A.CSV"
-        MAINE_FILE_URL: str = f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/data-sources/raw-data-sources/cdc_file_expectancy/ME_A.CSV"
+        WISCONSIN_FILE_URL: str = f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/cdc_file_expectancy/WI_A.CSV"
+        MAINE_FILE_URL: str = f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/cdc_file_expectancy/ME_A.CSV"
     else:
         WISCONSIN_FILE_URL: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/WI_A.CSV"
         MAINE_FILE_URL: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/ME_A.CSV"
