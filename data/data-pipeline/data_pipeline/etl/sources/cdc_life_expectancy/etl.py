@@ -10,6 +10,8 @@ from data_pipeline.etl.score.etl_utils import (
 from data_pipeline.score import field_names
 from data_pipeline.utils import download_file_from_url
 from data_pipeline.utils import get_module_logger
+from data_pipeline.config import settings
+
 
 logger = get_module_logger(__name__)
 
@@ -20,7 +22,11 @@ class CDCLifeExpectancy(ExtractTransformLoad):
 
     NAME = "cdc_life_expectancy"
 
-    USA_FILE_URL: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/US_A.CSV"
+    if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
+        USA_FILE_URL = f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/data-sources/raw-data-sources/cdc_file_expectancy/US_A.CSV"
+    else:
+        USA_FILE_URL: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/US_A.CSV"
+
     LOAD_YAML_CONFIG: bool = False
     LIFE_EXPECTANCY_FIELD_NAME = "Life expectancy (years)"
     INPUT_GEOID_TRACT_FIELD_NAME = "Tract ID"
@@ -29,8 +35,12 @@ class CDCLifeExpectancy(ExtractTransformLoad):
 
     # For some reason, LEEP does not include Maine or Wisconsin in its "All of
     # USA" file. Load these separately.
-    WISCONSIN_FILE_URL: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/WI_A.CSV"
-    MAINE_FILE_URL: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/ME_A.CSV"
+    if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
+        WISCONSIN_FILE_URL: str = f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/data-sources/raw-data-sources/cdc_file_expectancy/WI_A.CSV"
+        MAINE_FILE_URL: str = f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/data-sources/raw-data-sources/cdc_file_expectancy/ME_A.CSV"
+    else:
+        WISCONSIN_FILE_URL: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/WI_A.CSV"
+        MAINE_FILE_URL: str = "https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NVSS/USALEEP/CSV/ME_A.CSV"
 
     TRACT_INPUT_COLUMN_NAME = "Tract ID"
     STATE_INPUT_COLUMN_NAME = "STATE2KX"

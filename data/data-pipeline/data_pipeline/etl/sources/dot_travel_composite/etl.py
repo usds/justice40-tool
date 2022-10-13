@@ -5,6 +5,7 @@ import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.utils import get_module_logger
+from data_pipeline.config import settings
 
 logger = get_module_logger(__name__)
 
@@ -13,10 +14,12 @@ class TravelCompositeETL(ExtractTransformLoad):
     """ETL class for the DOT Travel Disadvantage Dataset"""
 
     NAME = "travel_composite"
-    # Commenting below temporarily to get stating going. In the next PR we'll have env vars to control
-    # data source endpoints to be either "source" or "aws"
-    # SOURCE_URL = "https://www.transportation.gov/sites/dot.gov/files/Shapefile_and_Metadata.zip"
-    SOURCE_URL = "https://justice40-data.s3.amazonaws.com/data-sources/raw-data-sources/dot_travel_composite/Shapefile_and_Metadata.zip"
+
+    if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
+        SOURCE_URL = f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/data-sources/raw-data-sources/dot_travel_composite/Shapefile_and_Metadata.zip"
+    else:
+        SOURCE_URL = "https://www.transportation.gov/sites/dot.gov/files/Shapefile_and_Metadata.zip"
+
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
     PUERTO_RICO_EXPECTED_IN_DATA = False
     LOAD_YAML_CONFIG: bool = True
