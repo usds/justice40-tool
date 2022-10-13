@@ -1437,18 +1437,18 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   </span>
                   All U.S. states and the District of Columbia
                 </li>
-                <div>
-                  <p>
-                    
-      
-                    <strong>
-                      Note: 
-                    </strong>
-                    Linguistic isolation was removed from Puerto Rico based on feedback during the beta period.
-      
-                  </p>
-                </div>
               </ul>
+              <div>
+                <p>
+                  
+      
+                  <strong>
+                    Note: 
+                  </strong>
+                  Linguistic isolation was removed from Puerto Rico based on feedback during the beta period.
+      
+                </p>
+              </div>
             </div>
             <div
               id="low-med-inc"

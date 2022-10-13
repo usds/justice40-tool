@@ -70,15 +70,15 @@ const DatasetCard = ({datasetCardProps}: IDatasetCardProps) => {
               </span>
               {intl.formatMessage(dataSource.availableFor)}
             </li>
-
-            {/* Dataset note */}
-            {(datasetCardProps.note && isNoteAtEnd) && <div className={styles.datasetCardDescription}>
-              <p>{datasetCardProps.note}</p>
-            </div>}
           </React.Fragment>
         ))}
 
       </ul>
+
+      {/* Dataset note */}
+      {(datasetCardProps.note && isNoteAtEnd) && <div className={styles.datasetCardDescription}>
+        <p>{datasetCardProps.note}</p>
+      </div>}
     </div>
   );
 };
