@@ -32,6 +32,7 @@ There are 3 things that should be included in this file:
   - PUBLIC EVENT STYLES
   - ABOUT CARD STYLES
   - SUMMARY BOX STYLES
+  - PREVIOUS VERSIONS STYLES
 */
 
 
@@ -506,4 +507,18 @@ button.usa-accordion__button[aria-expanded=true]:has(div[class*="disCategoryCont
 */
 .usa-summary-box__heading {
   @include u-margin-bottom(2);
+}
+
+/* 
+******************************
+*      PREVIOUS VERSIONS STYLES
+****************************** 
+*/
+
+.previous-versions-container {
+  list-style: none;
+}
+
+.previous-versions-container .usa-card__header, .usa-card__heading, .usa-card__body, .usa-card__footer {
+  font-family: "Source Sans Pro Web", "Helvetica Neue", "Helvetica", "Roboto", "Arial", "sans-serif" !important;
 }

@@ -228,7 +228,7 @@
     "description": "Navigate to the about page. This is Title in nav header"
   },
   "common.pages.header.tsd": {
-    "defaultMessage": "Technical Support Document",
+    "defaultMessage": "Previous versions",
     "description": "Navigate to the about page. This is Header navigate item to the technical support document page"
   },
   "common.pages.tsd.url": {
@@ -2130,6 +2130,30 @@
   "pageNotFound.title.text": {
     "defaultMessage": "Page not found",
     "description": "page not found title text"
+  },
+  "previous.versions.page.body.text": {
+    "defaultMessage": "The beta version of the methodology and data was used during the public beta period to get feedback on the tool from {betaDate} - {releaseDate}",
+    "description": "Navigate to the previous version page. This is the Cards body text"
+  },
+  "previous.versions.page.button1.alt.tag.text": {
+    "defaultMessage": "a button that allows to download the data and documentation to the tool",
+    "description": "Navigate to the previous version page. This is the Cards button1.alt.tag text"
+  },
+  "previous.versions.page.button1.text": {
+    "defaultMessage": "Data & documentation",
+    "description": "Navigate to the previous version page. This is the Cards button1 text"
+  },
+  "previous.versions.page.button2.alt.tag.text": {
+    "defaultMessage": "a button that allows to download the shapefile and codebook to the tool",
+    "description": "Navigate to the previous version page. This is the Cards button2.alt.tag text"
+  },
+  "previous.versions.page.button2.text": {
+    "defaultMessage": "Shapefile & codebook",
+    "description": "Navigate to the previous version page. This is the Cards button2 text"
+  },
+  "previous.versions.page.title.text": {
+    "defaultMessage": "Beta version",
+    "description": "Navigate to the previous version page. This is the Cards title text"
   },
   "public.eng.page.button.img.alt.tag": {
     "defaultMessage": "an icon that represents a calendar",

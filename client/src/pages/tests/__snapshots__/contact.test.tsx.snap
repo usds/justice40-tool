@@ -270,6 +270,16 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                       Downloads
                     </a>
                   </li>
+                  <li
+                    class="usa-nav__submenu-item"
+                  >
+                    <a
+                      data-cy="nav-link-previous-versions"
+                      href="/en/previous-versions"
+                    >
+                      Previous versions
+                    </a>
+                  </li>
                 </ul>
               </li>
               <li

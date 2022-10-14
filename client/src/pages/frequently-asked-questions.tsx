@@ -6,6 +6,7 @@ import {useWindowSize} from 'react-use';
 
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
+import PublicEngageButton from '../components/PublicEngageButton';
 import SubPageNav from '../components/SubPageNav';
 
 import * as CONSTANTS from '../data/constants';
@@ -223,7 +224,11 @@ const FAQPage = ({location}: IFAQPageProps) => {
     <Layout location={location} title={intl.formatMessage(FAQS_COPY.PAGE_INTRO.PAGE_TILE)}>
 
       <J40MainGridContainer>
-        <h1>{intl.formatMessage(FAQS_COPY.PAGE_INTRO.PAGE_TILE)}</h1>
+
+        <section className={'page-heading'}>
+          <h1>{intl.formatMessage(FAQS_COPY.PAGE_INTRO.PAGE_TILE)}</h1>
+          <PublicEngageButton />
+        </section>
 
         <Grid row gap className={'j40-mb5-mt3'}>
 

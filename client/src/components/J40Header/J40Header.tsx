@@ -120,13 +120,13 @@ const J40Header = ({location}:IJ40Header) => {
       data-cy={'nav-link-downloads'}>
       {intl.formatMessage(COMMON_COPY.HEADER.DOWNLOADS)}
     </Link>,
-    // <Link
-    //   to={PAGES_ENDPOINTS.TSD}
-    //   key={'tsd'}
-    //   activeClassName="usa-current"
-    //   data-cy={'nav-link-technical-support-docs'}>
-    //   {intl.formatMessage(COMMON_COPY.HEADER.TSD)}
-    // </Link>,
+    <Link
+      to={PAGES_ENDPOINTS.PREVIOUS_VERSIONS}
+      key={'previous-versions'}
+      activeClassName="usa-current"
+      data-cy={'nav-link-previous-versions'}>
+      {intl.formatMessage(COMMON_COPY.HEADER.PREVIOUS_VERSIONS)}
+    </Link>,
   ];
 
   /**

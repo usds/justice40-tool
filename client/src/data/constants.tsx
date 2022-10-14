@@ -14,6 +14,7 @@ export const PAGES_ENDPOINTS = {
   FAQS: '/frequently-asked-questions',
   PUBLIC_ENG: '/public-engagement',
   CONTACT: '/contact',
+  PREVIOUS_VERSIONS: '/previous-versions',
 };
 
 // Performance markers

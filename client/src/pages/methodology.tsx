@@ -66,6 +66,7 @@ const IndexPage = ({location}: MethodPageProps) => {
               endPoints={[
                 PAGES_ENDPOINTS.METHODOLOGY,
                 PAGES_ENDPOINTS.DOWNLOADS,
+                PAGES_ENDPOINTS.PREVIOUS_VERSIONS,
               ]}
             />
           </Grid> : ''}

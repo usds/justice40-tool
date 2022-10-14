@@ -1,11 +1,12 @@
 import * as React from 'react';
-import {Grid} from '@trussworks/react-uswds';
 import {useIntl} from 'gatsby-plugin-intl';
+import {Grid} from '@trussworks/react-uswds';
+import {useWindowSize} from 'react-use';
 
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
+import PublicEngageButton from '../components/PublicEngageButton';
 import SubPageNav from '../components/SubPageNav';
-import {useWindowSize} from 'react-use';
 
 import * as DOWNLOADS_COPY from '../data/copy/downloads';
 import * as CONSTANTS from '../data/constants';
@@ -24,6 +25,7 @@ const DownloadsPage = ({location}: IDownloadsPageProps) => {
 
         <section className={'page-heading'}>
           <h1>{intl.formatMessage(DOWNLOADS_COPY.PAGE_INTRO.PAGE_HEADING1)}</h1>
+          <PublicEngageButton />
         </section>
 
         <Grid row gap className={'j40-mb5-mt3'}>
@@ -63,6 +65,7 @@ const DownloadsPage = ({location}: IDownloadsPageProps) => {
               endPoints={[
                 CONSTANTS.PAGES_ENDPOINTS.METHODOLOGY,
                 CONSTANTS.PAGES_ENDPOINTS.DOWNLOADS,
+                CONSTANTS.PAGES_ENDPOINTS.PREVIOUS_VERSIONS,
               ]}
             />
           </Grid> : ''}
