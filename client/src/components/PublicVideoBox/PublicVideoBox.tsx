@@ -2,13 +2,14 @@ import React from 'react';
 import {Button, SummaryBox, SummaryBoxContent, SummaryBoxHeading} from '@trussworks/react-uswds';
 import {useIntl} from 'gatsby-plugin-intl';
 
-import * as PUBLIC_COPY from '../../data/copy/publicEngage';
+import DownloadButton from '../DownloadButton';
+
 import * as styles from './PublicVideoBox.module.scss';
+import * as PUBLIC_COPY from '../../data/copy/publicEngage';
 
 // @ts-ignore
 import launchIcon from '/node_modules/uswds/dist/img/usa-icons/launch.svg';
-// @ts-ignore
-import fileDownloadIcon from '/node_modules/uswds/dist/img/usa-icons/file_download.svg';
+
 
 const PublicVideoBox = () => {
   const intl = useIntl();
@@ -45,27 +46,12 @@ const PublicVideoBox = () => {
             </div>
           </Button>
         </a>
-        <a
-          className={styles.publicVideoLink}
-          href={`https://static-data-screeningtool.geoplatform.gov/data-pipeline/data/score/downloadable/technical-training-slides.pptx`}
-          download
-        >
-          <Button
-            type="button"
-            className={styles.youTubeBtn}
-          >
-            <div className={styles.buttonContainer}>
-              <div className={styles.buttonText}>
-                {intl.formatMessage(PUBLIC_COPY.PUBLIC_ENG_VIDEO.BUTTON2_TEXT)}
-              </div>
-              <img
-                className={styles.buttonImage}
-                src={fileDownloadIcon}
-                alt={intl.formatMessage(PUBLIC_COPY.PUBLIC_ENG_VIDEO.IMG_ALT_TEXT2)}
-              />
-            </div>
-          </Button>
-        </a>
+        <DownloadButton
+          downloadLink={`https://static-data-screeningtool.geoplatform.gov/data-pipeline/data/score/downloadable/technical-training-slides.pptx`}
+          buttonText={intl.formatMessage(PUBLIC_COPY.PUBLIC_ENG_VIDEO.BUTTON2_TEXT)}
+          imageAltTagText={intl.formatMessage(PUBLIC_COPY.PUBLIC_ENG_VIDEO.IMG_ALT_TEXT2)}
+          isYellow={true}
+        />
       </SummaryBoxContent>
     </SummaryBox>
   );

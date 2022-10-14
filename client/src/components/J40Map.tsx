@@ -303,7 +303,11 @@ const J40Map = ({location}: IJ40Interface) => {
     setGeolocationInProgress(true);
   };
 
-  const mapBoxBaseLayer = `mapbox://styles/justice40/cl2qimpi2000014qeb1egpox8`;
+  const mapBoxBaseLayer = {
+    streetsWithTribal: `mapbox://styles/justice40/cl2qimpi2000014qeb1egpox8`,
+    streetsWithUpdatedTribal: `mapbox://styles/justice40/cl98rlidr002c14obpsvz6zzs`,
+  };
+
 
   return (
     <>
@@ -343,7 +347,8 @@ const J40Map = ({location}: IJ40Interface) => {
           // ****** Map state props: ******
           // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#map-state
           {...viewport}
-          mapStyle={process.env.MAPBOX_STYLES_READ_TOKEN ? mapBoxBaseLayer : getOSBaseMap()}
+          mapStyle={process.env.MAPBOX_STYLES_READ_TOKEN ?
+            mapBoxBaseLayer.streetsWithUpdatedTribal : getOSBaseMap()}
           width="100%"
           // Ajusting this height with a conditional statement will not render the map on staging.
           // The reason for this issue is unknown. Consider styling the parent container via SASS.

@@ -24,21 +24,23 @@ const getPageConstant = (endPoint:string) => {
   const intl = useIntl();
 
   if (endPoint === PAGES_ENDPOINTS.EXPLORE) {
-    return intl.formatMessage(COMMON_COPY.HEADER['EXPLORE']);
+    return intl.formatMessage(COMMON_COPY.HEADER.EXPLORE);
   } else if (endPoint === PAGES_ENDPOINTS.METHODOLOGY) {
-    return intl.formatMessage(COMMON_COPY.HEADER['METHODOLOGY']);
+    return intl.formatMessage(COMMON_COPY.HEADER.METHODOLOGY);
   } else if (endPoint == PAGES_ENDPOINTS.DOWNLOADS) {
-    return intl.formatMessage(COMMON_COPY.HEADER['DOWNLOADS']);
+    return intl.formatMessage(COMMON_COPY.HEADER.DOWNLOADS);
   } else if (endPoint == PAGES_ENDPOINTS.TSD) {
-    return intl.formatMessage(COMMON_COPY.HEADER['TSD']);
+    return intl.formatMessage(COMMON_COPY.HEADER.TSD);
   } else if (endPoint == PAGES_ENDPOINTS.ABOUT) {
-    return intl.formatMessage(COMMON_COPY.HEADER['ABOUT']);
+    return intl.formatMessage(COMMON_COPY.HEADER.ABOUT);
   } else if (endPoint === PAGES_ENDPOINTS.FAQS) {
-    return intl.formatMessage(COMMON_COPY.HEADER['FAQS']);
+    return intl.formatMessage(COMMON_COPY.HEADER.FAQS);
   } else if (endPoint == PAGES_ENDPOINTS.PUBLIC_ENG) {
-    return intl.formatMessage(COMMON_COPY.HEADER['PUBLIC_ENG']);
+    return intl.formatMessage(COMMON_COPY.HEADER.PUBLIC_ENG);
   } else if (endPoint == PAGES_ENDPOINTS.CONTACT) {
-    return intl.formatMessage(COMMON_COPY.HEADER['CONTACT']);
+    return intl.formatMessage(COMMON_COPY.HEADER.CONTACT);
+  } else if (endPoint == PAGES_ENDPOINTS.PREVIOUS_VERSIONS) {
+    return intl.formatMessage(COMMON_COPY.HEADER.PREVIOUS_VERSIONS);
   };
 };
 /**

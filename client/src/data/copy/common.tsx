@@ -28,7 +28,8 @@ export const linkFn = (to:string | IDefineMessage, isInternal:boolean, isOpenNew
 
 export const FEEDBACK_EMAIL = 'Screeningtool-Support@omb.eop.gov';
 
-export const METH_1_0_RELEASE_DATE = new Date(2022, 9, 25, 11, 59, 59); // Oct 25
+export const METH_1_0_RELEASE_DATE = new Date(2022, 9, 25, 11, 59, 59); // Oct 25 2022
+export const METH_BETA_RELEASE_DATE = new Date(2022, 1, 18, 11, 59, 59); // Feb 18 2022
 
 
 // Beta Banner
@@ -145,6 +146,11 @@ export const HEADER = defineMessages({
   TSD: {
     id: 'common.pages.header.tsd',
     defaultMessage: 'Technical Support Document',
+    description: 'Navigate to the about page. This is Header navigate item to the technical support document page',
+  },
+  PREVIOUS_VERSIONS: {
+    id: 'common.pages.header.tsd',
+    defaultMessage: 'Previous versions',
     description: 'Navigate to the about page. This is Header navigate item to the technical support document page',
   },
 });
