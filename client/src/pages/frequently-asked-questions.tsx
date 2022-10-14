@@ -29,6 +29,10 @@ const dotStyles = {
   },
 };
 
+const accordionContainerStyle = {
+  marginTop: `1.2rem`,
+};
+
 const FAQPage = ({location}: IFAQPageProps) => {
   const intl = useIntl();
   const {width} = useWindowSize();
@@ -96,6 +100,111 @@ const FAQPage = ({location}: IFAQPageProps) => {
         <p>{FAQS_COPY.FAQ_ANSWERS.Q6_P4}</p>
       </>
     ),
+    (
+      <>
+        <p key={7}>{FAQS_COPY.FAQ_ANSWERS.Q7}</p>
+      </>
+    ),
+    (
+      <>
+        <p key={8}>{FAQS_COPY.FAQ_ANSWERS.Q8_P1}</p>
+        <p>{FAQS_COPY.FAQ_ANSWERS.Q8_P2}</p>
+      </>
+    ),
+    (
+      <>
+        <p key={9}>{FAQS_COPY.FAQ_ANSWERS.Q9_P1}</p>
+        <p>{FAQS_COPY.FAQ_ANSWERS.Q9_P2}</p>
+        <ul>
+          <li>{FAQS_COPY.FAQ_ANSWERS.Q9_P2_1}</li>
+          <li>{FAQS_COPY.FAQ_ANSWERS.Q9_P2_2}</li>
+          <li>{FAQS_COPY.FAQ_ANSWERS.Q9_P2_3}</li>
+          <li>{FAQS_COPY.FAQ_ANSWERS.Q9_P2_4}</li>
+          <li>{FAQS_COPY.FAQ_ANSWERS.Q9_P2_5}</li>
+          <li>{FAQS_COPY.FAQ_ANSWERS.Q9_P2_6}</li>
+          <li>{FAQS_COPY.FAQ_ANSWERS.Q9_P2_7}</li>
+        </ul>
+      </>
+    ),
+    (
+      <>
+        <p key={10}>{FAQS_COPY.FAQ_ANSWERS.Q10}</p>
+      </>
+    ),
+    (
+      <>
+        <p key={11}>{FAQS_COPY.FAQ_ANSWERS.Q11}</p>
+      </>
+    ),
+    (
+      <>
+        <p key={12}>{FAQS_COPY.FAQ_ANSWERS.Q12_P1}</p>
+        <ul>
+          <li>{FAQS_COPY.FAQ_ANSWERS.Q12_P1_1}</li>
+          <li>{FAQS_COPY.FAQ_ANSWERS.Q12_P1_2}</li>
+          <ul>
+            <li>{FAQS_COPY.FAQ_ANSWERS.Q12_P1_2_1}</li>
+            <li>{FAQS_COPY.FAQ_ANSWERS.Q12_P1_2_2}</li>
+            <li>{FAQS_COPY.FAQ_ANSWERS.Q12_P1_2_3}</li>
+            <li>{FAQS_COPY.FAQ_ANSWERS.Q12_P1_2_4}</li>
+          </ul>
+          <li>{FAQS_COPY.FAQ_ANSWERS.Q12_P1_3}</li>
+          <li>{FAQS_COPY.FAQ_ANSWERS.Q12_P1_4}</li>
+        </ul>
+        <p>{FAQS_COPY.FAQ_ANSWERS.Q12_P2}</p>
+        <p>{FAQS_COPY.FAQ_ANSWERS.Q12_P3}</p>
+      </>
+    ),
+    (
+      <>
+        <p key={13}>{FAQS_COPY.FAQ_ANSWERS.Q13_P1}</p>
+        <p>{FAQS_COPY.FAQ_ANSWERS.Q13_P2}</p>
+      </>
+    ),
+    (
+      <>
+        <p key={14}>{FAQS_COPY.FAQ_ANSWERS.Q14}</p>
+      </>
+    ),
+    (
+      <>
+        <p key={15}>{FAQS_COPY.FAQ_ANSWERS.Q15_P1}</p>
+        <ul>
+          <li>{FAQS_COPY.FAQ_ANSWERS.Q15_P1_1}</li>
+          <li>{FAQS_COPY.FAQ_ANSWERS.Q15_P1_2}</li>
+          <li>{FAQS_COPY.FAQ_ANSWERS.Q15_P1_3}</li>
+          <li>{FAQS_COPY.FAQ_ANSWERS.Q15_P1_4}</li>
+        </ul>
+      </>
+    ),
+    (
+      <>
+        <p key={16}>{FAQS_COPY.FAQ_ANSWERS.Q16}</p>
+      </>
+    ),
+    (
+      <>
+        <p key={17}>{FAQS_COPY.FAQ_ANSWERS.Q17_P1}</p>
+        <p>{FAQS_COPY.FAQ_ANSWERS.Q17_P2}</p>
+      </>
+    ),
+    (
+      <>
+        <p key={18}>{FAQS_COPY.FAQ_ANSWERS.Q18}</p>
+      </>
+    ),
+    (
+      <>
+        <p key={19}>{FAQS_COPY.FAQ_ANSWERS.Q19}</p>
+      </>
+    ),
+    (
+      <>
+        <p key={20}>{FAQS_COPY.FAQ_ANSWERS.Q20_P1}</p>
+        <p>{FAQS_COPY.FAQ_ANSWERS.Q20_P2}</p>
+      </>
+    ),
+
   ];
 
   const numberOfQuestions = Object.keys(FAQS_COPY.QUESTIONS).length;
@@ -120,7 +229,7 @@ const FAQPage = ({location}: IFAQPageProps) => {
 
           {/* First column */}
           <Grid col={12} tablet={{col: 7}}>
-            <section>
+            <section style={accordionContainerStyle}>
               {/* Enabling multiselect true fails a11y using axe tool */}
               <Accordion items={faqItems}/>
             </section>
