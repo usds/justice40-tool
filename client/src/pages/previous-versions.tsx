@@ -41,26 +41,28 @@ const PreviousVersions = ({location}: IPreviousVersionsProps) => {
           {/* First column */}
           <Grid col={12} tablet={{col: 8}}>
             <section style={containerStyle}>
-              <Card className={'previous-versions-container'} gridLayout={{tablet: {col: 6}}}>
-                <CardHeader>
-                  <h2 className="usa-card__heading">{PREV_VER_COPY.CARD.TITLE}</h2>
-                </CardHeader>
-                <CardBody>
-                  <p> {PREV_VER_COPY.CARD.BODY}</p>
-                </CardBody>
-                <CardFooter>
-                  <DownloadButton
-                    downloadLink=''
-                    buttonText={intl.formatMessage(PREV_VER_COPY.BUTTON.TITLE1)}
-                    imageAltTagText={intl.formatMessage(PREV_VER_COPY.BUTTON.BUTTON1_ALT_TAG)}
-                  />
-                  <DownloadButton
-                    downloadLink=''
-                    buttonText={intl.formatMessage(PREV_VER_COPY.BUTTON.TITLE2)}
-                    imageAltTagText={intl.formatMessage(PREV_VER_COPY.BUTTON.BUTTON2_ALT_TAG)}
-                  />
-                </CardFooter>
-              </Card>
+              <ul>
+                <Card className={'previous-versions-container'} gridLayout={{tablet: {col: 6}}}>
+                  <CardHeader>
+                    <h2 className="usa-card__heading">{PREV_VER_COPY.CARD.TITLE}</h2>
+                  </CardHeader>
+                  <CardBody>
+                    <p> {PREV_VER_COPY.CARD.BODY}</p>
+                  </CardBody>
+                  <CardFooter>
+                    <DownloadButton
+                      downloadLink=''
+                      buttonText={intl.formatMessage(PREV_VER_COPY.BUTTON.TITLE1)}
+                      imageAltTagText={intl.formatMessage(PREV_VER_COPY.BUTTON.BUTTON1_ALT_TAG)}
+                    />
+                    <DownloadButton
+                      downloadLink=''
+                      buttonText={intl.formatMessage(PREV_VER_COPY.BUTTON.TITLE2)}
+                      imageAltTagText={intl.formatMessage(PREV_VER_COPY.BUTTON.BUTTON2_ALT_TAG)}
+                    />
+                  </CardFooter>
+                </Card>
+              </ul>
             </section>
           </Grid>
 
