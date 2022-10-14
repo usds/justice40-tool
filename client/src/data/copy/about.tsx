@@ -9,6 +9,7 @@ import {PAGES_ENDPOINTS} from '../constants';
 
 export const EXEC_ORDER_LINK = 'https://www.federalregister.gov/documents/2021/02/01/2021-02177/tackling-the-climate-crisis-at-home-and-abroad#:~:text=Sec.%20223.%20Justice40,40-percent%20goal.';
 export const FAQS_LINK = 'https://www.whitehouse.gov/wp-content/uploads/2022/02/CEQ-CEJST-QandA.pdf';
+export const FED_RECOGNIZED_INDIAN_ENTITIES = `https://www.federalregister.gov/documents/2022/01/28/2022-01789/indian-entities-recognized-by-and-eligible-to-receive-services-from-the-united-states-bureau-of`;
 
 export const PAGE = defineMessages({
   TITLE: {
