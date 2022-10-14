@@ -57,3 +57,17 @@
   font-size: large;
   font-weight: bolder;
 }
+
+.datasetCardHeader{
+  display: flex;
+}
+
+.tagContainer {
+  @include u-margin-right(1);
+  @include u-margin-top("05");
+}
+
+.newTag {
+  @include u-bg('yellow-20v');
+  @include u-text('blue-70v');
+}

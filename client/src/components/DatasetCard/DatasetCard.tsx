@@ -1,5 +1,6 @@
 /* eslint-disable valid-jsdoc */
 import React from 'react';
+import {Tag} from '@trussworks/react-uswds';
 import {useIntl} from 'gatsby-plugin-intl';
 
 import * as styles from './datasetCard.module.scss';
@@ -22,7 +23,16 @@ const DatasetCard = ({datasetCardProps}: IDatasetCardProps) => {
   return (
     <div className={styles.datasetCard} id={datasetCardProps.domID}>
       {/* Dataset header */}
-      <h3 className={styles.datasetCardIndicator}>{datasetCardProps.indicator}</h3>
+      <div className={datasetCardProps.isNew ? styles.datasetCardHeader : ''}>
+        {datasetCardProps.isNew &&
+          <div className={styles.tagContainer}>
+            <Tag className={styles.newTag}>{intl.formatMessage(METHODOLOGY_COPY.DATASET_CARD_LABELS.NEW)}</Tag>
+          </div>
+        }
+        <h3 className={styles.datasetCardIndicator}>
+          {datasetCardProps.indicator}
+        </h3>
+      </div>
 
       {/* Dataset description */}
       <div className={styles.datasetCardDescription}>

@@ -76,9 +76,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="low-income"
             >
-              <h3>
-                Low income
-              </h3>
+              <div
+                class=""
+              >
+                <h3>
+                  Low income
+                </h3>
+              </div>
               <div>
                 
         Percent of a census tract's population in households where household income is at or below
@@ -124,9 +128,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="exp-agr-loss-rate"
             >
-              <h3>
-                Expected agriculture loss rate
-              </h3>
+              <div
+                class=""
+              >
+                <h3>
+                  Expected agriculture loss rate
+                </h3>
+              </div>
               <div>
                 
         Expected agricultural value at risk from losses due to fourteen types of natural hazards. These hazards have some link to climate change. They are: avalanche, coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong wind, tornado, wildfire, and winter weather. The rate is calculated by dividing the agricultural value at risk by the total agricultural value. 
@@ -171,9 +179,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="exp-bld-loss-rate"
             >
-              <h3>
-                Expected building loss rate
-              </h3>
+              <div
+                class=""
+              >
+                <h3>
+                  Expected building loss rate
+                </h3>
+              </div>
               <div>
                 
         Expected building value at risk from losses due to fourteen types of natural hazards. These hazards have some link to climate change. They are: avalanche, coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong wind, tornado, wildfire, and winter weather. The rate is calculated by dividing the building value at risk by the total building value.
@@ -218,9 +230,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="exp-pop-loss-rate"
             >
-              <h3>
-                Expected population loss rate
-              </h3>
+              <div
+                class=""
+              >
+                <h3>
+                  Expected population loss rate
+                </h3>
+              </div>
               <div>
                 
         Expected fatalities and injuries due to fourteen types of natural hazards each year. These hazards have some link to climate change. They are: avalanche, coastal flooding, cold wave, drought, hail, heat wave, hurricane, ice storm, landslide, riverine flooding, strong wind, tornado, wildfire, and winter weather. Population loss is defined by the Spatial Hazard Events and Losses and National Centers for Environmental Information’s (NCEI). It reports the number of fatalities and injuries caused by the hazard. An injury is counted as one-tenth (1/10) of a fatality. The NCEI Storm Events Database classifies both direct and indirect injuries. Both types are counted as population loss. The total number is divided by the population in the census tract to get the rate of population loss.
@@ -266,9 +282,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="flood-risk"
             >
-              <h3>
-                NEW Projected flood risk
-              </h3>
+              <div>
+                <div>
+                  <span
+                    class="usa-tag"
+                    data-testid="tag"
+                  >
+                    NEW
+                  </span>
+                </div>
+                <h3>
+                  Projected flood risk
+                </h3>
+              </div>
               <div>
                 
         A high precision, climate-adjusted model that projects future flood risk for properties in the future. The dataset calculates how many properties are at risk of floods occurring in the next thirty years from tides, rain, riverine and storm surges, or a 26% risk total over the 30-year time horizon. The risk is defined as an annualized 1% chance. The tool calculates tract-level risk as the share of properties meeting the risk threshold. The risk does not include property value.
@@ -313,9 +339,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="wildfire-risk"
             >
-              <h3>
-                NEW Projected wildfire risk
-              </h3>
+              <div>
+                <div>
+                  <span
+                    class="usa-tag"
+                    data-testid="tag"
+                  >
+                    NEW
+                  </span>
+                </div>
+                <h3>
+                  Projected wildfire risk
+                </h3>
+              </div>
               <div>
                 
         A 30-meter resolution model projecting the wildfire exposure for any specific location in the contiguous US, today and with future climate change. The risk of wildfire is calculated from inputs associated with fire fuels, weather, human influence, and fire movement. The risk does not include property value.
@@ -360,9 +396,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="energy-burden"
             >
-              <h3>
-                Energy cost
-              </h3>
+              <div
+                class=""
+              >
+                <h3>
+                  Energy cost
+                </h3>
+              </div>
               <div>
                 
         Average household annual energy cost in dollars divided by the average household income.
@@ -407,9 +447,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="pm-25"
             >
-              <h3>
-                PM2.5 in the air
-              </h3>
+              <div
+                class=""
+              >
+                <h3>
+                  PM2.5 in the air
+                </h3>
+              </div>
               <div>
                 
         Fine inhalable particles with 2.5 or smaller micrometer diameters. The percentile is the weight of the particles per cubic meter.
@@ -455,9 +499,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="asthma"
             >
-              <h3>
-                Asthma
-              </h3>
+              <div
+                class=""
+              >
+                <h3>
+                  Asthma
+                </h3>
+              </div>
               <div>
                 
         Share of people who answer “yes” to both of these questions: “Have you ever been told by a health professional that you have asthma?” and “Do you still have asthma?”.
@@ -502,9 +550,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="diabetes"
             >
-              <h3>
-                Diabetes
-              </h3>
+              <div
+                class=""
+              >
+                <h3>
+                  Diabetes
+                </h3>
+              </div>
               <div>
                 
         Share of people ages 18 years and older who have been told by a health professional that they have diabetes other than diabetes during pregnancy.
@@ -549,9 +601,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="heart-disease"
             >
-              <h3>
-                Heart disease
-              </h3>
+              <div
+                class=""
+              >
+                <h3>
+                  Heart disease
+                </h3>
+              </div>
               <div>
                 
         Share of people ages 18 years and older who have been told by a health professional that they had angina or coronary heart disease.
@@ -596,9 +652,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="life-exp"
             >
-              <h3>
-                Low life expectancy
-              </h3>
+              <div
+                class=""
+              >
+                <h3>
+                  Low life expectancy
+                </h3>
+              </div>
               <div>
                 
         Average number of years people have left in their lives.
@@ -654,9 +714,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="hist-underinv"
             >
-              <h3>
-                New Historic underinvestment
-              </h3>
+              <div
+                class=""
+              >
+                <h3>
+                  New Historic underinvestment
+                </h3>
+              </div>
               <div>
                 
         Census tracts that experienced historic underinvestment as determined by the National Community Reinvestment Coalition’s (NCRC) historic redlining score. It is determined using the 
@@ -730,9 +794,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="house-burden"
             >
-              <h3>
-                Housing cost
-              </h3>
+              <div
+                class=""
+              >
+                <h3>
+                  Housing cost
+                </h3>
+              </div>
               <div>
                 
         Share of households that are both earning less than 80% of Housing and Urban Development’s Area Median Family Income and are spending more than 30% of their income on housing costs.
@@ -777,9 +845,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="green-space"
             >
-              <h3>
-                NEW Lack of green space
-              </h3>
+              <div>
+                <div>
+                  <span
+                    class="usa-tag"
+                    data-testid="tag"
+                  >
+                    NEW
+                  </span>
+                </div>
+                <h3>
+                  Lack of green space
+                </h3>
+              </div>
               <div>
                 
         Share of land with developed surfaces covered with artificial materials like concrete or pavement and crop land used for agricultural purposes.
@@ -824,9 +902,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="indoor-plumb"
             >
-              <h3>
-                NEW Lack of indoor plumbing
-              </h3>
+              <div>
+                <div>
+                  <span
+                    class="usa-tag"
+                    data-testid="tag"
+                  >
+                    NEW
+                  </span>
+                </div>
+                <h3>
+                  Lack of indoor plumbing
+                </h3>
+              </div>
               <div>
                 
         Housing without complete kitchen facilities or complete plumbing facilities.
@@ -871,9 +959,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="lead-paint"
             >
-              <h3>
-                Lead paint
-              </h3>
+              <div
+                class=""
+              >
+                <h3>
+                  Lead paint
+                </h3>
+              </div>
               <div>
                 
         Share of homes built before 1960, which indicates potential lead paint exposure. Tracts with extremely high home values (i.e. median home values above the 90th percentile) are not likely to have lead paint exposure and are not included.
@@ -918,9 +1010,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="mine-land"
             >
-              <h3>
-                NEW Abandoned mine lands
-              </h3>
+              <div>
+                <div>
+                  <span
+                    class="usa-tag"
+                    data-testid="tag"
+                  >
+                    NEW
+                  </span>
+                </div>
+                <h3>
+                  Abandoned mine lands
+                </h3>
+              </div>
               <div>
                 
         Presence of an abandoned mine left by legacy coal mining operations.
@@ -965,9 +1067,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="fuds"
             >
-              <h3>
-                NEW Formerly Used Defense Sites
-              </h3>
+              <div>
+                <div>
+                  <span
+                    class="usa-tag"
+                    data-testid="tag"
+                  >
+                    NEW
+                  </span>
+                </div>
+                <h3>
+                  Formerly Used Defense Sites
+                </h3>
+              </div>
               <div>
                 
       Properties that were owned, leased, or possessed by the United States, under the jurisdiction of the Secretary of Defense prior to October 1986.
@@ -1012,9 +1124,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="prox-haz"
             >
-              <h3>
-                Proximity to hazardous waste sites
-              </h3>
+              <div
+                class=""
+              >
+                <h3>
+                  Proximity to hazardous waste sites
+                </h3>
+              </div>
               <div>
                 
         Number of hazardous waste facilities (Treatment, Storage, and Disposal Facilities and Large Quantity Generators) within 5 kilometers (or nearest beyond 5 kilometers), each divided by distance in kilometers.
@@ -1063,9 +1179,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="prox-npl"
             >
-              <h3>
-                Proximity to Superfund sites
-              </h3>
+              <div
+                class=""
+              >
+                <h3>
+                  Proximity to Superfund sites
+                </h3>
+              </div>
               <div>
                 
         Number of proposed or listed Superfund or National Priorities list (NPL) sites within 5 kilometers (or nearest one beyond 5 kilometers), each divided by distance in kilometers.
@@ -1110,9 +1230,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="prox-rmp"
             >
-              <h3>
-                Proximity to Risk Management Plan (RMP) facilities
-              </h3>
+              <div
+                class=""
+              >
+                <h3>
+                  Proximity to Risk Management Plan (RMP) facilities
+                </h3>
+              </div>
               <div>
                 
         Count of RMP, or potential chemical accident management plan, facilities within 5 kilometers (or nearest one beyond 5 kilometers), each divided by distance in kilometers.
@@ -1157,9 +1281,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="diesel-pm"
             >
-              <h3>
-                Diesel particulate matter exposure
-              </h3>
+              <div
+                class=""
+              >
+                <h3>
+                  Diesel particulate matter exposure
+                </h3>
+              </div>
               <div>
                 
         Mixture of particles in diesel exhaust in the air, measured as micrograms per cubic meter.
@@ -1204,9 +1332,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="trans-barrier"
             >
-              <h3>
-                NEW Transportation barriers
-              </h3>
+              <div>
+                <div>
+                  <span
+                    class="usa-tag"
+                    data-testid="tag"
+                  >
+                    NEW
+                  </span>
+                </div>
+                <h3>
+                  Transportation barriers
+                </h3>
+              </div>
               <div>
                 
         Average relative cost and time spent on transportation relative to all other tracts.
@@ -1251,9 +1389,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="traffic-vol"
             >
-              <h3>
-                Traffic proximity and volume
-              </h3>
+              <div
+                class=""
+              >
+                <h3>
+                  Traffic proximity and volume
+                </h3>
+              </div>
               <div>
                 
         Number of vehicles (average annual daily traffic) at major roads within 500 meters, divided by distance in meters.
@@ -1298,9 +1440,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="leaky-uwt"
             >
-              <h3>
-                NEW Leaking underground storage tanks
-              </h3>
+              <div>
+                <div>
+                  <span
+                    class="usa-tag"
+                    data-testid="tag"
+                  >
+                    NEW
+                  </span>
+                </div>
+                <h3>
+                  Leaking underground storage tanks
+                </h3>
+              </div>
               <div>
                 
         Weighted formula of number of leaking underground storage tanks and the number of underground storage tanks within 1,500 feet.
@@ -1347,9 +1499,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="waste-water"
             >
-              <h3>
-                Wastewater discharge
-              </h3>
+              <div
+                class=""
+              >
+                <h3>
+                  Wastewater discharge
+                </h3>
+              </div>
               <div>
                 
         Risk-Screening Environmental Indicators (RSEI) modeled toxic concentrations at
@@ -1395,9 +1551,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="ling-iso"
             >
-              <h3>
-                Linguistic isolation
-              </h3>
+              <div
+                class=""
+              >
+                <h3>
+                  Linguistic isolation
+                </h3>
+              </div>
               <div>
                 
         Share of households where no one over the age 14 speaks English well.
@@ -1453,9 +1613,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="low-med-inc"
             >
-              <h3>
-                Low median income
-              </h3>
+              <div
+                class=""
+              >
+                <h3>
+                  Low median income
+                </h3>
+              </div>
               <div>
                 
         Low median income calculated as a share of the area’s median income.
@@ -1533,9 +1697,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="poverty"
             >
-              <h3>
-                Poverty
-              </h3>
+              <div
+                class=""
+              >
+                <h3>
+                  Poverty
+                </h3>
+              </div>
               <div>
                 
         Share of people living at or below 100% of the Federal poverty level.
@@ -1580,9 +1748,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="unemploy"
             >
-              <h3>
-                Unemployment
-              </h3>
+              <div
+                class=""
+              >
+                <h3>
+                  Unemployment
+                </h3>
+              </div>
               <div>
                 
         Number of unemployed people as a share of the  labor force.
@@ -1649,9 +1821,13 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="high-school"
             >
-              <h3>
-                High school education
-              </h3>
+              <div
+                class=""
+              >
+                <h3>
+                  High school education
+                </h3>
+              </div>
               <div>
                 
         Share of people aged 25 years or older who didn’t graduate from high school.
@@ -1718,9 +1894,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               id="tribal-lands"
             >
-              <h3>
-                NEW Tribal lands
-              </h3>
+              <div>
+                <div>
+                  <span
+                    class="usa-tag"
+                    data-testid="tag"
+                  >
+                    NEW
+                  </span>
+                </div>
+                <h3>
+                  Tribal lands
+                </h3>
+              </div>
               <div>
                 
         The Land Area Representation (LAR) dataset depicts the exterior extent of a Federal Indian land area. 
