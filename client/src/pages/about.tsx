@@ -82,8 +82,8 @@ const AboutPage = ({location}: IAboutPageProps) => {
             <SubPageNav
               endPoints={[
                 PAGES_ENDPOINTS.ABOUT,
-                PAGES_ENDPOINTS.FAQS,
                 PAGES_ENDPOINTS.PUBLIC_ENG,
+                PAGES_ENDPOINTS.FAQS,
               ]}
             />
           </Grid> : ''}

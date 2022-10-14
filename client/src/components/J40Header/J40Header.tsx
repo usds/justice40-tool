@@ -142,18 +142,18 @@ const J40Header = ({location}:IJ40Header) => {
       {intl.formatMessage(COMMON_COPY.HEADER.ABOUT)}
     </Link>,
     <Link
-      to={PAGES_ENDPOINTS.FAQS}
-      key={'faqs'}
-      activeClassName="usa-current"
-      data-cy={'nav-link-faqs'}>
-      {intl.formatMessage(COMMON_COPY.HEADER.FAQS)}
-    </Link>,
-    <Link
       to={PAGES_ENDPOINTS.PUBLIC_ENG}
       key={'publicEng'}
       activeClassName="usa-current"
       data-cy={'nav-link-public-engagement'}>
       {intl.formatMessage(COMMON_COPY.HEADER.PUBLIC_ENG)}
+    </Link>,
+    <Link
+      to={PAGES_ENDPOINTS.FAQS}
+      key={'faqs'}
+      activeClassName="usa-current"
+      data-cy={'nav-link-faqs'}>
+      {intl.formatMessage(COMMON_COPY.HEADER.FAQS)}
     </Link>,
   ];
 

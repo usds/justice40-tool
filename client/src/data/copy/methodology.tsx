@@ -451,6 +451,11 @@ export const DATASET_CARD_LABELS = defineMessages({
     defaultMessage: 'Available for: ',
     description: 'Navigate to the Methodology page. This is the label associated with available for which regions of the card',
   },
+  NEW: {
+    id: 'methodology.page.datasetCard.new',
+    defaultMessage: 'NEW',
+    description: 'Navigate to the Methodology page. This is the label associated with a NEW card',
+  },
 });
 
 export const DATE_RANGE = {
@@ -735,6 +740,7 @@ export const AVAILABLE_FOR = defineMessages({
 export interface IIndicators {
   domID: string,
   indicator: JSX.Element,
+  isNew?: boolean,
   description: JSX.Element,
   note?: JSX.Element,
   usedIn: JSX.Element,
@@ -851,9 +857,10 @@ export const INDICATORS = [
     domID: 'flood-risk',
     indicator: <FormattedMessage
       id={'methodology.page.dataset.indicator.flood.risk.title.text'}
-      defaultMessage={`NEW Projected flood risk`}
+      defaultMessage={`Projected flood risk`}
       description={'Navigate to the Methodology page. This is the title text for the NEW Projected flood risk'}
     />,
+    isNew: true,
     description: <FormattedMessage
       id={'methodology.page.category.flood.risk.rate.description.text'}
       defaultMessage={`
@@ -874,9 +881,10 @@ export const INDICATORS = [
     domID: 'wildfire-risk',
     indicator: <FormattedMessage
       id={'methodology.page.dataset.indicator.wildfire.risk.title.text'}
-      defaultMessage={`NEW Projected wildfire risk`}
+      defaultMessage={`Projected wildfire risk`}
       description={'Navigate to the Methodology page. This is the title text for the NEW Projected wildfire risk'}
     />,
+    isNew: true,
     description: <FormattedMessage
       id={'methodology.page.category.wildfire.risk.rate.description.text'}
       defaultMessage={`
@@ -1110,9 +1118,10 @@ export const INDICATORS = [
     domID: 'green-space',
     indicator: <FormattedMessage
       id={'methodology.page.dataset.indicator.green.space.title.text'}
-      defaultMessage={`NEW Lack of green space`}
+      defaultMessage={`Lack of green space`}
       description={'Navigate to the Methodology page. This is the title text for the house burden dataset'}
     />,
+    isNew: true,
     description: <FormattedMessage
       id={'methodology.page.category.green.space.description.text'}
       defaultMessage={`
@@ -1133,9 +1142,10 @@ export const INDICATORS = [
     domID: 'indoor-plumb',
     indicator: <FormattedMessage
       id={'methodology.page.dataset.indicator.indoor.plumb.title.text'}
-      defaultMessage={`NEW Lack of indoor plumbing`}
+      defaultMessage={`Lack of indoor plumbing`}
       description={'Navigate to the Methodology page. This is the title text for the indoor plumbing'}
     />,
+    isNew: true,
     description: <FormattedMessage
       id={'methodology.page.category.indoor.plumb.description.text'}
       defaultMessage={`
@@ -1181,9 +1191,10 @@ export const INDICATORS = [
     domID: 'mine-land',
     indicator: <FormattedMessage
       id={'methodology.page.dataset.indicator.mine.land.title.text'}
-      defaultMessage={`NEW Abandoned mine lands`}
+      defaultMessage={`Abandoned mine lands`}
       description={'Navigate to the Methodology page. This is the title text for the Abandoned mine lands'}
     />,
+    isNew: true,
     description: <FormattedMessage
       id={'methodology.page.category.mine.land.description.text'}
       defaultMessage={`
@@ -1204,9 +1215,10 @@ export const INDICATORS = [
     domID: 'fuds',
     indicator: <FormattedMessage
       id={'methodology.page.dataset.indicator.fuds.title.text'}
-      defaultMessage={`NEW Formerly Used Defense Sites`}
+      defaultMessage={`Formerly Used Defense Sites`}
       description={'Navigate to the Methodology page. This is the title text for the Formerly Used Defense Sites'}
     />,
+    isNew: true,
     description: <FormattedMessage
       id={'methodology.page.category.fuds.description.text'}
       defaultMessage={`
@@ -1321,9 +1333,10 @@ export const INDICATORS = [
     domID: 'trans-barrier',
     indicator: <FormattedMessage
       id={'methodology.page.dataset.indicator.trans.barrier.title.text'}
-      defaultMessage={`NEW Transportation barriers`}
+      defaultMessage={`Transportation barriers`}
       description={'Navigate to the Methodology page. This is the title text for the Transportation barriers'}
     />,
+    isNew: true,
     description: <FormattedMessage
       id={'methodology.page.category.trans.barrier.description.text'}
       defaultMessage={`
@@ -1369,9 +1382,10 @@ export const INDICATORS = [
     domID: 'leaky-uwt',
     indicator: <FormattedMessage
       id={'methodology.page.dataset.indicator.leaky.uwt.title.text'}
-      defaultMessage={`NEW Leaking underground storage tanks`}
+      defaultMessage={`Leaking underground storage tanks`}
       description={'Navigate to the Methodology page. This is the title text for the Leaking underground storage tanks'}
     />,
+    isNew: true,
     description: <FormattedMessage
       id={'methodology.page.category.leaky.uwt.description.text'}
       defaultMessage={`
@@ -1568,9 +1582,10 @@ export const INDICATORS = [
     domID: 'tribal-lands',
     indicator: <FormattedMessage
       id={'methodology.page.dataset.indicator.tribal.lands.title.text'}
-      defaultMessage={`NEW Tribal lands`}
+      defaultMessage={`Tribal lands`}
       description={'Navigate to the Methodology page. This is the title text for the Tribal lands'}
     />,
+    isNew: true,
     description: <FormattedMessage
       id={'methodology.page.category.tribal.lands.description.text'}
       defaultMessage={`

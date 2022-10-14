@@ -5,9 +5,13 @@ exports[`rendering of indicator dataset card checks if component renders 1`] = `
   <div
     id="low-income"
   >
-    <h3>
-      Low income
-    </h3>
+    <div
+      class=""
+    >
+      <h3>
+        Low income
+      </h3>
+    </div>
     <div>
       
         Percent of a census tract's population in households where household income is at or below
