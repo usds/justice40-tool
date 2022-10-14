@@ -244,6 +244,7 @@ const FAQPage = ({location}: IFAQPageProps) => {
           {width > CONSTANTS.USWDS_BREAKPOINTS.DESKTOP ?
           <Grid col={12} tablet={{col: 3}}>
             <SubPageNav
+              activeSubPageIndex={2}
               endPoints={[
                 PAGES_ENDPOINTS.ABOUT,
                 PAGES_ENDPOINTS.PUBLIC_ENG,

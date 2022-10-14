@@ -306,20 +306,20 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     class="usa-nav__submenu-item"
                   >
                     <a
-                      data-cy="nav-link-faqs"
-                      href="/en/frequently-asked-questions"
+                      data-cy="nav-link-public-engagement"
+                      href="/en/public-engagement"
                     >
-                      Frequently asked questions
+                      Engagement calendar
                     </a>
                   </li>
                   <li
                     class="usa-nav__submenu-item"
                   >
                     <a
-                      data-cy="nav-link-public-engagement"
-                      href="/en/public-engagement"
+                      data-cy="nav-link-faqs"
+                      href="/en/frequently-asked-questions"
                     >
-                      Engagement calendar
+                      Frequently asked questions
                     </a>
                   </li>
                 </ul>
