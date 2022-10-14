@@ -1492,15 +1492,15 @@
     "description": "Navigate to the Methodology page. This is the title text for the expected agr loss rate income dataset"
   },
   "methodology.page.dataset.indicator.flood.risk.title.text": {
-    "defaultMessage": "NEW Projected flood risk",
+    "defaultMessage": "Projected flood risk",
     "description": "Navigate to the Methodology page. This is the title text for the NEW Projected flood risk"
   },
   "methodology.page.dataset.indicator.fuds.title.text": {
-    "defaultMessage": "NEW Formerly Used Defense Sites",
+    "defaultMessage": "Formerly Used Defense Sites",
     "description": "Navigate to the Methodology page. This is the title text for the Formerly Used Defense Sites"
   },
   "methodology.page.dataset.indicator.green.space.title.text": {
-    "defaultMessage": "NEW Lack of green space",
+    "defaultMessage": "Lack of green space",
     "description": "Navigate to the Methodology page. This is the title text for the house burden dataset"
   },
   "methodology.page.dataset.indicator.heart.disease.title.text": {
@@ -1520,7 +1520,7 @@
     "description": "Navigate to the Methodology page. This is the title text for the house burden dataset"
   },
   "methodology.page.dataset.indicator.indoor.plumb.title.text": {
-    "defaultMessage": "NEW Lack of indoor plumbing",
+    "defaultMessage": "Lack of indoor plumbing",
     "description": "Navigate to the Methodology page. This is the title text for the indoor plumbing"
   },
   "methodology.page.dataset.indicator.lead.paint.title.text": {
@@ -1528,7 +1528,7 @@
     "description": "Navigate to the Methodology page. This is the title text for the lead paint dataset"
   },
   "methodology.page.dataset.indicator.leaky.uwt.title.text": {
-    "defaultMessage": "NEW Leaking underground storage tanks",
+    "defaultMessage": "Leaking underground storage tanks",
     "description": "Navigate to the Methodology page. This is the title text for the Leaking underground storage tanks"
   },
   "methodology.page.dataset.indicator.life.exp.title.text": {
@@ -1548,7 +1548,7 @@
     "description": "Navigate to the Methodology page. This is the title text for the low median income dataset"
   },
   "methodology.page.dataset.indicator.mine.land.title.text": {
-    "defaultMessage": "NEW Abandoned mine lands",
+    "defaultMessage": "Abandoned mine lands",
     "description": "Navigate to the Methodology page. This is the title text for the Abandoned mine lands"
   },
   "methodology.page.dataset.indicator.pm25.title.text": {
@@ -1576,11 +1576,11 @@
     "description": "Navigate to the Methodology page. This is the title text for the traffic.volume dataset"
   },
   "methodology.page.dataset.indicator.trans.barrier.title.text": {
-    "defaultMessage": "NEW Transportation barriers",
+    "defaultMessage": "Transportation barriers",
     "description": "Navigate to the Methodology page. This is the title text for the Transportation barriers"
   },
   "methodology.page.dataset.indicator.tribal.lands.title.text": {
-    "defaultMessage": "NEW Tribal lands",
+    "defaultMessage": "Tribal lands",
     "description": "Navigate to the Methodology page. This is the title text for the Tribal lands"
   },
   "methodology.page.dataset.indicator.unemploy.title.text": {
@@ -1592,7 +1592,7 @@
     "description": "Navigate to the Methodology page. This is the title text for the waste water dataset"
   },
   "methodology.page.dataset.indicator.wildfire.risk.title.text": {
-    "defaultMessage": "NEW Projected wildfire risk",
+    "defaultMessage": "Projected wildfire risk",
     "description": "Navigate to the Methodology page. This is the title text for the NEW Projected wildfire risk"
   },
   "methodology.page.datasetCard.available.for": {
@@ -1602,6 +1602,10 @@
   "methodology.page.datasetCard.date.range": {
     "defaultMessage": "Date range:",
     "description": "Navigate to the Methodology page. This is the label associated with explaining the card"
+  },
+  "methodology.page.datasetCard.new": {
+    "defaultMessage": "NEW",
+    "description": "Navigate to the Methodology page. This is the label associated with a NEW card"
   },
   "methodology.page.datasetCard.responsible.party": {
     "defaultMessage": "Responsible Party:",

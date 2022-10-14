@@ -375,10 +375,26 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         Frequently asked questions
       </h1>
       <div
-        class="grid-row"
+        class="grid-row grid-gap j40-mb5-mt3"
         data-testid="grid"
       >
-        Coming Soon!
+        <div
+          class="grid-col-12 tablet:grid-col-8"
+          data-testid="grid"
+        >
+          <section>
+            <p>
+              testing
+            </p>
+            <p>
+              testins
+            </p>
+          </section>
+        </div>
+        <div
+          class="grid-col-12 tablet:grid-col-1"
+          data-testid="grid"
+        />
       </div>
     </div>
   </main>
