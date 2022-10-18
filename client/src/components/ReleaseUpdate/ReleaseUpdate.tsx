@@ -34,9 +34,10 @@ const J40AccordionItem = ({id, children}:IJ40AccordionItem) => {
         {intl.formatMessage(DOWNLOAD_COPY.PAGE_INTRO.VIEW)}{' '}
         <a
           className={styles.showHideText ? `usa-link ${styles.showHideText}` : `usa-link`}
+          href={'javascript:void(0)'}
           id={`${id}-header`}
           aria-controls={`${id}-panel`}
-          aria-expanded={isExpanded}
+          // aria-expanded={isExpanded}
           onClick={() => setIsExpanded(!isExpanded)}
           tabIndex={0}
         >
