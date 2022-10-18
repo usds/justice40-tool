@@ -417,11 +417,70 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           class="grid-col-12 tablet:grid-col-8"
           data-testid="grid"
         >
+          <section>
+            <div>
+              <span>
+                View 
+                <a
+                  aria-controls="releaseUpdate-panel"
+                  aria-expanded="false"
+                  class="usa-link"
+                  id="releaseUpdate-header"
+                  tabindex="0"
+                >
+                  change log
+                </a>
+                <img
+                  alt="expand icon"
+                  src="test-file-stub"
+                />
+              </span>
+              <section
+                aria-labelledby="releaseUpdate-header"
+                hidden=""
+                id="releaseUpdate-panel"
+              >
+                <div>
+                  <div>
+                    Release update - Oct 25, 2022
+                  </div>
+                  <div>
+                    New & improved
+                  </div>
+                  <div>
+                    <ul>
+                      <li>
+                        Updates to the methodology based on feedback recieved during the beta period.
+                      </li>
+                      <ul>
+                        <li>
+                          Additional data sources now available for Puerto Rico. Linguistic isolation as removed from the methodology for Puerto Rico.
+                        </li>
+                      </ul>
+                    </ul>
+                  </div>
+                  <div>
+                    Fixes
+                  </div>
+                  <div>
+                    <ul>
+                      <li>
+                        Fixed an issue with zoom and select to show census boundaries at a higher zoom level.
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    release version 1.0
+                  </div>
+                </div>
+              </section>
+            </div>
+          </section>
           <h2>
-            File formats
+            Version 1.0 file formats
           </h2>
           <p>
-            The dataset used in the tool, along with a data dictionary and information about how to use the list of communities (.pdf) are available in the following file formats:
+            The dataset used in the 1.0 version of the tool, along with a codebook, and information about how to use the list of communities (.pdf) are available for download:
           </p>
           <p>
             
