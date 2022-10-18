@@ -6,6 +6,7 @@ import {useWindowSize} from 'react-use';
 import J40MainGridContainer from '../components/J40MainGridContainer';
 import Layout from '../components/layout';
 import PublicEngageButton from '../components/PublicEngageButton';
+import ReleaseUpdate from '../components/ReleaseUpdate';
 import SubPageNav from '../components/SubPageNav';
 
 import * as DOWNLOADS_COPY from '../data/copy/downloads';
@@ -31,9 +32,13 @@ const DownloadsPage = ({location}: IDownloadsPageProps) => {
         <Grid row gap className={'j40-mb5-mt3'}>
 
           <Grid col={12} tablet={{col: 8}}>
-            <h2>{intl.formatMessage(DOWNLOADS_COPY.PAGE_INTRO.PAGE_HEADING2)}</h2>
+            <section>
+              <ReleaseUpdate />
+            </section>
+
+            <h2>{DOWNLOADS_COPY.DOWNLOAD_LINKS.TITLE}</h2>
             <p>
-              {intl.formatMessage(DOWNLOADS_COPY.PAGE_INTRO.PAGE_DESCRIPTION1)}
+              {DOWNLOADS_COPY.DOWNLOAD_LINKS.TEXT}
             </p>
             <p>
               {DOWNLOADS_COPY.DOWNLOAD_LINKS.LINK1}

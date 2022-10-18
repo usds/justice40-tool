@@ -303,25 +303,61 @@
     "defaultMessage": "<link5>How to use the list of communities</link5> (.pdf {howToCommFileSize})",
     "description": "Navigate to the download page. This is fifth download file link"
   },
-  "downloads.page.description1.text": {
-    "defaultMessage": "The dataset used in the tool, along with a data dictionary and information about how to use the list of communities (.pdf) are available in the following file formats:",
-    "description": "Navigate to the Downloads page, this will be the page description1 text"
+  "download.page.files.section.title": {
+    "defaultMessage": "Version {version} file formats",
+    "description": "Navigate to the download page. This is first download file link"
+  },
+  "download.page.release.update.footer": {
+    "defaultMessage": "release version {version}",
+    "description": "Navigate to the download page. This is second section of the release update section"
+  },
+  "download.page.release.update.section.1": {
+    "defaultMessage": "New & improved",
+    "description": "Navigate to the download page. This is first section of the release update section"
+  },
+  "download.page.release.update.section.1.p.1": {
+    "defaultMessage": "Updates to the methodology based on feedback recieved during the beta period.",
+    "description": "Navigate to the download page. This is first section of the release update section"
+  },
+  "download.page.release.update.section.1.p.1.1": {
+    "defaultMessage": "Additional data sources now available for Puerto Rico. Linguistic isolation as removed from the methodology for Puerto Rico.",
+    "description": "Navigate to the download page. This is first section of the release update section"
+  },
+  "download.page.release.update.section.2": {
+    "defaultMessage": "Fixes",
+    "description": "Navigate to the download page. This is second section of the release update section"
+  },
+  "download.page.release.update.section.2.p1": {
+    "defaultMessage": "Fixed an issue with zoom and select to show census boundaries at a higher zoom level.",
+    "description": "Navigate to the download page. This is second section of the release update section"
+  },
+  "download.page.release.update.title.1": {
+    "defaultMessage": "Release update - {date}",
+    "description": "Navigate to the download page. This is first download file link"
+  },
+  "downloads.page.change.log.text": {
+    "defaultMessage": "change log",
+    "description": "Navigate to the Downloads page, this will be the view of change log"
   },
   "downloads.page.download.icon.alt.tag": {
     "defaultMessage": "The icon used to indicate that the file is downloadable",
     "description": "Navigate to the Downloads page, this is the icon used to indicate that the file is downloadable"
   },
+  "downloads.page.files.section.text": {
+    "defaultMessage": "The dataset used in the {version} version of the tool, along with a codebook, and information about how to use the list of communities (.pdf) are available for download:",
+    "description": "Navigate to the Downloads page, this will be the page description1 text"
+  },
   "downloads.page.heading1.text": {
     "defaultMessage": "Downloads",
     "description": "Navigate to the Downloads page, this will be the page heading1 text"
   },
-  "downloads.page.heading2.text": {
-    "defaultMessage": "File formats",
-    "description": "Navigate to the Downloads page, this will be the page heading2 text"
-  },
   "downloads.page.title.text": {
     "defaultMessage": "Downloads",
     "description": "Navigate to the Downloads page, this will be the page title text"
+  },
+  "downloads.page.view.text": {
+    "defaultMessage": "View",
+    "description": "Navigate to the Downloads page, this will be the view of change log"
   },
   "explore.map.page.description.1": {
     "defaultMessage": "Census tracts that are overburdened and underserved census tracts are highlighted as being disadvantaged on the map. These include Federally-Recognized Tribal lands, including Alaska Native Villages.",

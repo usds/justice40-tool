@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering of ReleaseUpdate Component checks if component renders 1`] = `
+<DocumentFragment>
+  <div>
+    <span>
+      View 
+      <a
+        aria-controls="releaseUpdate-panel"
+        class="usa-link"
+        href="javascript:void(0)"
+        id="releaseUpdate-header"
+        tabindex="0"
+      >
+        change log
+      </a>
+      <img
+        alt="expand icon"
+        src="test-file-stub"
+      />
+    </span>
+    <section
+      aria-labelledby="releaseUpdate-header"
+      hidden=""
+      id="releaseUpdate-panel"
+    >
+      <div>
+        <div>
+          Release update - Oct 25, 2022
+        </div>
+        <div>
+          New & improved
+        </div>
+        <div>
+          <ul>
+            <li>
+              Updates to the methodology based on feedback recieved during the beta period.
+            </li>
+            <ul>
+              <li>
+                Additional data sources now available for Puerto Rico. Linguistic isolation as removed from the methodology for Puerto Rico.
+              </li>
+            </ul>
+          </ul>
+        </div>
+        <div>
+          Fixes
+        </div>
+        <div>
+          <ul>
+            <li>
+              Fixed an issue with zoom and select to show census boundaries at a higher zoom level.
+            </li>
+          </ul>
+        </div>
+        <div>
+          release version 1.0
+        </div>
+      </div>
+    </section>
+  </div>
+</DocumentFragment>
+`;

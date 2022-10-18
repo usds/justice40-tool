@@ -1,8 +1,9 @@
 /* eslint-disable max-len */
 import React from 'react';
 import {defineMessages} from 'react-intl';
-import {FormattedMessage, FormattedNumber} from 'gatsby-plugin-intl';
+import {FormattedDate, FormattedMessage, FormattedNumber} from 'gatsby-plugin-intl';
 import * as COMMON_COPY from './common';
+import {VERSION_NUMBER} from './methodology';
 
 export const PAGE_INTRO = defineMessages({
   PAGE_TILE: {
@@ -15,15 +16,15 @@ export const PAGE_INTRO = defineMessages({
     defaultMessage: 'Downloads',
     description: 'Navigate to the Downloads page, this will be the page heading1 text',
   },
-  PAGE_HEADING2: {
-    id: 'downloads.page.heading2.text',
-    defaultMessage: 'File formats',
-    description: 'Navigate to the Downloads page, this will be the page heading2 text',
+  VIEW: {
+    id: 'downloads.page.view.text',
+    defaultMessage: 'View',
+    description: 'Navigate to the Downloads page, this will be the view of change log',
   },
-  PAGE_DESCRIPTION1: {
-    id: 'downloads.page.description1.text',
-    defaultMessage: 'The dataset used in the tool, along with a data dictionary and information about how to use the list of communities (.pdf) are available in the following file formats:',
-    description: 'Navigate to the Downloads page, this will be the page description1 text',
+  CHANGE_LOG: {
+    id: 'downloads.page.change.log.text',
+    defaultMessage: 'change log',
+    description: 'Navigate to the Downloads page, this will be the view of change log',
   },
 });
 
@@ -83,7 +84,72 @@ export const getDownloadIconAltTag = () => defineMessages({
   },
 });
 
+export const RELEASE = {
+  UPDATE_1: <FormattedMessage
+    id={'download.page.release.update.title.1'}
+    defaultMessage={`Release update - {date}`}
+    description={'Navigate to the download page. This is first download file link'}
+    values={{
+      date: <FormattedDate
+        value={COMMON_COPY.METH_1_0_RELEASE_DATE}
+        year="numeric"
+        month="short"
+        day="numeric"
+      />,
+    }}
+  />,
+  SECTION1: <FormattedMessage
+    id={'download.page.release.update.section.1'}
+    defaultMessage={`New & improved`}
+    description={'Navigate to the download page. This is first section of the release update section'}
+  />,
+  SECTION1_P1: <FormattedMessage
+    id={'download.page.release.update.section.1.p.1'}
+    defaultMessage={`Updates to the methodology based on feedback recieved during the beta period.`}
+    description={'Navigate to the download page. This is first section of the release update section'}
+  />,
+  SECTION1_P1_1: <FormattedMessage
+    id={'download.page.release.update.section.1.p.1.1'}
+    defaultMessage={`Additional data sources now available for Puerto Rico. Linguistic isolation as removed from the methodology for Puerto Rico.`}
+    description={'Navigate to the download page. This is first section of the release update section'}
+  />,
+  SECTION2: <FormattedMessage
+    id={'download.page.release.update.section.2'}
+    defaultMessage={`Fixes`}
+    description={'Navigate to the download page. This is second section of the release update section'}
+  />,
+  SECTION2_P1: <FormattedMessage
+    id={'download.page.release.update.section.2.p1'}
+    defaultMessage={`Fixed an issue with zoom and select to show census boundaries at a higher zoom level.`}
+    description={'Navigate to the download page. This is second section of the release update section'}
+  />,
+  FOOTER: <FormattedMessage
+    id={'download.page.release.update.footer'}
+    defaultMessage={`release version {version}`}
+    description={'Navigate to the download page. This is second section of the release update section'}
+    values={{
+      version: VERSION_NUMBER,
+    }}
+  />,
+};
+
 export const DOWNLOAD_LINKS = {
+  TITLE: <FormattedMessage
+    id={'download.page.files.section.title'}
+    defaultMessage={`Version {version} file formats`}
+    description={'Navigate to the download page. This is first download file link'}
+    values={{
+      version: VERSION_NUMBER,
+    }}
+  />,
+  TEXT: <FormattedMessage
+    id={'downloads.page.files.section.text'}
+    defaultMessage={ 'The dataset used in the {version} version of the tool, along with a codebook, and information about how to use the list of communities (.pdf) are available for download:'}
+    description={ 'Navigate to the Downloads page, this will be the page description1 text'}
+    values={{
+      version: VERSION_NUMBER,
+    }}
+  />,
   LINK1: <FormattedMessage
     id={'download.page.download.file.1'}
     defaultMessage={`
