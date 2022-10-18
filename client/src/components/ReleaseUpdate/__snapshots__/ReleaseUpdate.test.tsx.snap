@@ -7,8 +7,8 @@ exports[`rendering of ReleaseUpdate Component checks if component renders 1`] = 
       View 
       <a
         aria-controls="releaseUpdate-panel"
-        aria-expanded="false"
         class="usa-link"
+        href="javascript:void(0)"
         id="releaseUpdate-header"
         tabindex="0"
       >

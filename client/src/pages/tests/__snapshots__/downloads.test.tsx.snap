@@ -423,8 +423,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 View 
                 <a
                   aria-controls="releaseUpdate-panel"
-                  aria-expanded="false"
                   class="usa-link"
+                  href="javascript:void(0)"
                   id="releaseUpdate-header"
                   tabindex="0"
                 >
