@@ -1108,8 +1108,8 @@
     "description": "Navigate to the explore the map page. Click on tract, The side panel will show This tract is considered disadvantaged. It is completely surrounded by tracts that are disadvantaged AND meets an adjusted low income threshold. The adjustment does not apply to any of the categories."
   },
   "explore.map.page.side.panel.prio.copy.prio.frt.n.perc": {
-    "defaultMessage": "The {amount} of this tract that are Federally-Recognized Tribal lands and the {numPoints} tribes that are Federally-Recognized are also considered disadvantaged.",
-    "description": "Navigate to the explore the map page. Click on tract, The {amount} of this tract that are Federally-Recognized Tribal lands and the {numPoints} tribes that are Federally-Recognized are also considered disadvantaged."
+    "defaultMessage": "The Federally-Recognized Tribal lands that cover {amount} of this tract and the {numPoints} tribes that are Federally-Recognized are also considered disadvantaged.",
+    "description": "Navigate to the explore the map page. Click on tract, The Federally-Recognized Tribal lands that cover {amount} of this tract and the {numPoints} tribes that are Federally-Recognized are also considered disadvantaged."
   },
   "explore.map.page.side.panel.prio.copy.prio.n.burden": {
     "defaultMessage": "This tract is considered disadvantaged because it meets {burdens} burden threshold AND the associated socio-economic threshold.",
