@@ -240,14 +240,10 @@ TILES_SCORE_COLUMNS = {
     + field_names.PERCENTILE_FIELD_SUFFIX: "LIF_PFS",
     field_names.LOW_MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX: "LMI_PFS",
-    field_names.MEDIAN_HOUSE_VALUE_FIELD
-    + field_names.PERCENTILE_FIELD_SUFFIX: "MHVF_PFS",
     field_names.PM25_FIELD + field_names.PERCENTILE_FIELD_SUFFIX: "PM25F_PFS",
     field_names.HIGH_SCHOOL_ED_FIELD: "HSEF",
     field_names.POVERTY_LESS_THAN_100_FPL_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX: "P100_PFS",
-    field_names.POVERTY_LESS_THAN_200_FPL_FIELD
-    + field_names.PERCENTILE_FIELD_SUFFIX: "P200_PFS",
     field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX: "P200_I_PFS",
     field_names.FPL_200_SERIES_IMPUTED_AND_ADJUSTED_DONUTS: "AJDLI_ET",
@@ -276,30 +272,9 @@ TILES_SCORE_COLUMNS = {
     # temporarily update this so that it's the Narwhal score that gets visualized on the map
     # The NEW final score value INCLUDES the adjacency index.
     field_names.FINAL_SCORE_N_BOOLEAN: "SN_C",
-    field_names.SCORE_N_COMMUNITIES
-    + field_names.ADJACENT_MEAN_SUFFIX: "SN_DON",
-    field_names.SCORE_N_COMMUNITIES: "SN_NO_DON",
     field_names.IS_TRIBAL_DAC: "SN_T",
-    field_names.PERCENT_OF_TRACT_IS_DAC: "SN_PERC",
-    field_names.EXPECTED_POPULATION_LOSS_RATE_LOW_INCOME_FIELD: "EPLRLI",
-    field_names.EXPECTED_AGRICULTURE_LOSS_RATE_LOW_INCOME_FIELD: "EALRLI",
-    field_names.EXPECTED_BUILDING_LOSS_RATE_LOW_INCOME_FIELD: "EBLRLI",
-    field_names.PM25_EXPOSURE_LOW_INCOME_FIELD: "PM25LI",
-    field_names.ENERGY_BURDEN_LOW_INCOME_FIELD: "EBLI",
-    field_names.DIESEL_PARTICULATE_MATTER_LOW_INCOME_FIELD: "DPMLI",
-    field_names.TRAFFIC_PROXIMITY_LOW_INCOME_FIELD: "TPLI",
-    field_names.LEAD_PAINT_MEDIAN_HOUSE_VALUE_LOW_INCOME_FIELD: "LPMHVLI",
-    field_names.HOUSING_BURDEN_LOW_INCOME_FIELD: "HBLI",
-    field_names.RMP_LOW_INCOME_FIELD: "RMPLI",
-    field_names.SUPERFUND_LOW_INCOME_FIELD: "SFLI",
-    field_names.HAZARDOUS_WASTE_LOW_INCOME_FIELD: "HWLI",
-    field_names.WASTEWATER_DISCHARGE_LOW_INCOME_FIELD: "WDLI",
-    field_names.UST_LOW_INCOME_FIELD: "USTLI",
     field_names.DIABETES_LOW_INCOME_FIELD: "DLI",
     field_names.ASTHMA_LOW_INCOME_FIELD: "ALI",
-    field_names.HEART_DISEASE_LOW_INCOME_FIELD: "HDLI",
-    field_names.LOW_LIFE_EXPECTANCY_LOW_INCOME_FIELD: "LLELI",
-    field_names.LINGUISTIC_ISOLATION_LOW_HS_EDUCATION_FIELD: "LILHSE",
     field_names.POVERTY_LOW_HS_EDUCATION_FIELD: "PLHSE",
     field_names.LOW_MEDIAN_INCOME_LOW_HS_EDUCATION_FIELD: "LMILHSE",
     field_names.UNEMPLOYMENT_LOW_HS_EDUCATION_FIELD: "ULHSE",
@@ -373,12 +348,9 @@ TILES_SCORE_COLUMNS = {
     field_names.HIGH_FUTURE_FLOOD_RISK_FIELD: "FLD_ET",
     field_names.HIGH_FUTURE_WILDFIRE_RISK_FIELD: "WFR_ET",
     field_names.ADJACENT_TRACT_SCORE_ABOVE_DONUT_THRESHOLD: "ADJ_ET",
-    field_names.SCORE_N_COMMUNITIES
-    + field_names.ADJACENCY_INDEX_SUFFIX: "ADJ_PFS",
     field_names.TRACT_PERCENT_NON_NATURAL_FIELD_NAME
     + field_names.PERCENTILE_FIELD_SUFFIX: "IS_PFS",
     field_names.NON_NATURAL_LOW_INCOME_FIELD_NAME: "IS_ET",
-    field_names.AML_BOOLEAN: "AML_RAW",
     field_names.AML_BOOLEAN_FILLED_IN: "AML_ET",
     field_names.ELIGIBLE_FUDS_BINARY_FIELD_NAME: "FUDS_RAW",
     field_names.ELIGIBLE_FUDS_FILLED_IN_FIELD_NAME: "FUDS_ET",
@@ -421,11 +393,8 @@ TILES_SCORE_FLOAT_COLUMNS = [
     field_names.LINGUISTIC_ISO_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.LOW_MEDIAN_INCOME_AS_PERCENT_OF_AMI_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.MEDIAN_HOUSE_VALUE_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.PM25_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.POVERTY_LESS_THAN_100_FPL_FIELD
-    + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.POVERTY_LESS_THAN_200_FPL_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.POVERTY_LESS_THAN_200_FPL_IMPUTED_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX,
@@ -452,7 +421,6 @@ TILES_SCORE_FLOAT_COLUMNS = [
     field_names.FUTURE_FLOOD_RISK_FIELD + field_names.PERCENTILE_FIELD_SUFFIX,
     field_names.FUTURE_WILDFIRE_RISK_FIELD
     + field_names.PERCENTILE_FIELD_SUFFIX,
-    field_names.SCORE_N_COMMUNITIES + field_names.ADJACENCY_INDEX_SUFFIX,
     field_names.TRACT_PERCENT_NON_NATURAL_FIELD_NAME
     + field_names.PERCENTILE_FIELD_SUFFIX,
     # Include demographic data for sidebar -- as percents, NOT as percentiles.
@@ -471,8 +439,6 @@ TILES_SCORE_FLOAT_COLUMNS = [
     # to preserve null character, we coerce to floats for all fields
     # that use null to signify missing information in a boolean field.
     field_names.ELIGIBLE_FUDS_BINARY_FIELD_NAME,
-    field_names.AML_BOOLEAN,
     field_names.HISTORIC_REDLINING_SCORE_EXCEEDED,
     field_names.PERCENT_OF_TRIBAL_AREA_IN_TRACT,
-    field_names.PERCENT_OF_TRACT_IS_DAC,
 ]
