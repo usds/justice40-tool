@@ -70,6 +70,8 @@ export const SCORE_BOUNDARY_THRESHOLD = 0.6;
 export const TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS = 'TC';
 export const TOTAL_NUMBER_OF_INDICATORS = 'THRHLD';
 export const COUNT_OF_CATEGORIES_DISADV = 'CC';
+export const SCORE_N_COMMUNITIES = 'SN_C';
+export const SCORE_N_TRIBAL = 'SN_T';
 
 export const SIDE_PANEL_STATE = 'UI_EXP';
 export const SIDE_PANEL_STATE_VALUES = {

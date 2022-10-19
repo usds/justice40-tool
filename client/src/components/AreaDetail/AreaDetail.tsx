@@ -803,9 +803,8 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
         {/* YES, NO or PARTIALLY disadvantaged  */}
         <div className={styles.communityOfFocus}>
           <TractPrioritization
-            totalCategoriesPrioritized={properties[constants.COUNT_OF_CATEGORIES_DISADV]}
-            isAdjacencyThreshMet={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
-            isAdjacencyLowIncome={properties[constants.ADJACENCY_LOW_INCOME_EXCEEDS_THRESH]}
+            scoreNCommunities={properties[constants.SCORE_N_COMMUNITIES] === true ?
+              properties[constants.SCORE_N_COMMUNITIES] : false}
             tribalCountAK={properties[constants.TRIBAL_AREAS_COUNT_AK] >= 1 ?
               properties[constants.TRIBAL_AREAS_COUNT_AK] : null}
             tribalCountUS={properties[constants.TRIBAL_AREAS_COUNT_CONUS] >= 1 ?
