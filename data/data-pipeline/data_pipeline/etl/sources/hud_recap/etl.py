@@ -4,13 +4,24 @@ from data_pipeline.config import settings
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.utils import get_module_logger
 
+
 logger = get_module_logger(__name__)
 
 
 class HudRecapETL(ExtractTransformLoad):
     def __init__(self):
-        # pylint: disable=line-too-long
-        self.HUD_RECAP_CSV_URL = "https://opendata.arcgis.com/api/v3/datasets/56de4edea8264fe5a344da9811ef5d6e_0/downloads/data?format=csv&spatialRefId=4326"  # noqa: E501
+
+        if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
+            self.HUD_RECAP_CSV_URL = (
+                f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/"
+                "hud_recap/Racially_or_Ethnically_Concentrated_Areas_of_Poverty__R_ECAPs_.zip"
+            )
+        else:
+            self.HUD_RECAP_CSV_URL = (
+                "https://opendata.arcgis.com/api/v3/datasets/"
+                "56de4edea8264fe5a344da9811ef5d6e_0/downloads/data?format=csv&spatialRefId=4326"
+            )
+
         self.HUD_RECAP_CSV = (
             self.get_tmp_path()
             / "Racially_or_Ethnically_Concentrated_Areas_of_Poverty__R_ECAPs_.csv"

@@ -2,6 +2,7 @@ import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.utils import get_module_logger
+from data_pipeline.config import settings
 
 logger = get_module_logger(__name__)
 
@@ -12,7 +13,15 @@ class HudHousingETL(ExtractTransformLoad):
 
     def __init__(self):
         self.GEOID_TRACT_FIELD_NAME = "GEOID10_TRACT"
-        self.HOUSING_FTP_URL = "https://www.huduser.gov/portal/datasets/cp/2014thru2018-140-csv.zip"
+
+        if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
+            self.HOUSING_FTP_URL = (
+                f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/"
+                "hud_housing/2014thru2018-140-csv.zip"
+            )
+        else:
+            self.HOUSING_FTP_URL = "https://www.huduser.gov/portal/datasets/cp/2014thru2018-140-csv.zip"
+
         self.HOUSING_ZIP_FILE_DIR = self.get_tmp_path()
 
         # We measure households earning less than 80% of HUD Area Median Family Income by county
