@@ -14,7 +14,7 @@ class HudRecapETL(ExtractTransformLoad):
         if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
             self.HUD_RECAP_CSV_URL = (
                 f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/"
-                "hud_recap/Racially_or_Ethnically_Concentrated_Areas_of_Poverty__R_ECAPs_.zip"
+                "hud_recap/Racially_or_Ethnically_Concentrated_Areas_of_Poverty__R_ECAPs_.csv"
             )
         else:
             self.HUD_RECAP_CSV_URL = (
