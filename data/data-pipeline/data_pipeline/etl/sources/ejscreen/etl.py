@@ -1,4 +1,5 @@
 import pandas as pd
+from data_pipeline.config import settings
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.score import field_names
@@ -15,7 +16,10 @@ class EJSCREENETL(ExtractTransformLoad):
     INPUT_GEOID_TRACT_FIELD_NAME: str = "ID"
 
     def __init__(self):
-        self.EJSCREEN_FTP_URL = "https://gaftp.epa.gov/EJSCREEN/2022/EJSCREEN_2022_Full_with_AS_CNMI_GU_VI_Tracts.csv.zip"
+        self.EJSCREEN_FTP_URL = (
+            settings.AWS_JUSTICE40_DATASOURCES_URL
+            + "/ejscreen/EJSCREEN_2022_Full_with_AS_CNMI_GU_VI_Tracts.csv.zip"
+        )
         self.EJSCREEN_CSV = (
             self.get_tmp_path()
             / "EJSCREEN_2022_Full_with_AS_CNMI_GU_VI_Tracts.csv"
