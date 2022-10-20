@@ -31,8 +31,8 @@ class USArmyFUDS(ExtractTransformLoad):
         if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
             self.FILE_URL = (
                 f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/"
-                "us_army_fuds/Formerly_Used_Defense_Sites_(FUDS)"
-                "%2C_all_data%2C_reported_to_Congress_in_FY2020.geojson"
+                "us_army_fuds/Formerly_Used_Defense_Sites_(FUDS)_"
+                "all_data_reported_to_Congress_in_FY2020.geojson"
             )
         else:
             self.FILE_URL: str = (
