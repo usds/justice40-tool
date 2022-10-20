@@ -220,7 +220,7 @@ unicode_backport = ["unicodedata2"]
 
 [[package]]
 name = "click"
-version = "8.0.4"
+version = "8.0.1"
 description = "Composable command line interface toolkit"
 category = "main"
 optional = false

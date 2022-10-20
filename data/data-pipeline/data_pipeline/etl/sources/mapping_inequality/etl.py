@@ -6,6 +6,7 @@ from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.score import field_names
 from data_pipeline.utils import download_file_from_url
 from data_pipeline.utils import get_module_logger
+from data_pipeline.config import settings
 
 logger = get_module_logger(__name__)
 
@@ -22,10 +23,16 @@ class MappingInequalityETL(ExtractTransformLoad):
     """
 
     def __init__(self):
-        self.MAPPING_INEQUALITY_CSV_URL = (
-            "https://raw.githubusercontent.com/americanpanorama/Census_HOLC_Research/"
-            "main/2010_Census_Tracts/holc_tract_lookup.csv"
-        )
+        if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
+            self.MAPPING_INEQUALITY_CSV_URL = (
+                f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/"
+                "mapping_inequality/holc_tract_lookup.csv"
+            )
+        else:
+            self.MAPPING_INEQUALITY_CSV_URL = (
+                "https://raw.githubusercontent.com/americanpanorama/Census_HOLC_Research/"
+                "main/2010_Census_Tracts/holc_tract_lookup.csv"
+            )
         self.MAPPING_INEQUALITY_CSV = (
             self.get_tmp_path() / "holc_tract_lookup.csv"
         )
