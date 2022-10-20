@@ -15,9 +15,10 @@ class EJSCREENETL(ExtractTransformLoad):
     INPUT_GEOID_TRACT_FIELD_NAME: str = "ID"
 
     def __init__(self):
-        self.EJSCREEN_FTP_URL = "https://gaftp.epa.gov/EJSCREEN/2021/EJSCREEN_2021_USPR_Tracts.csv.zip"
+        self.EJSCREEN_FTP_URL = "https://gaftp.epa.gov/EJSCREEN/2022/EJSCREEN_2022_Full_with_AS_CNMI_GU_VI_Tracts.csv.zip"
         self.EJSCREEN_CSV = (
-            self.get_tmp_path() / "EJSCREEN_2021_USPR_Tracts.csv"
+            self.get_tmp_path()
+            / "EJSCREEN_2022_Full_with_AS_CNMI_GU_VI_Tracts.csv"
         )
         self.CSV_PATH = self.DATA_PATH / "dataset" / "ejscreen"
         self.df: pd.DataFrame
