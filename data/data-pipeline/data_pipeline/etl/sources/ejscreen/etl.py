@@ -18,6 +18,7 @@ class EJSCREENETL(ExtractTransformLoad):
     def __init__(self):
         self.EJSCREEN_FTP_URL = (
             settings.AWS_JUSTICE40_DATASOURCES_URL
+            + "/raw-data-sources"
             + "/ejscreen/EJSCREEN_2022_Full_with_AS_CNMI_GU_VI_Tracts.csv.zip"
         )
         self.EJSCREEN_CSV = (
