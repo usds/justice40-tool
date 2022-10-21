@@ -86,6 +86,9 @@ SCORE_VERSIONING_SHAPEFILE_CODEBOOK_FILE_PATH = (
     SCORE_DOWNLOADABLE_DIR
     / f"{version_str}-shapefile-codebook-{timestamp_str}.zip"
 )
+SCORE_VERSIONING_README_FILE_PATH = (
+    FILES_PATH / f"README-version-{version_str}.md"
+)
 
 # For the codebook
 CEJST_SCORE_COLUMN_NAME = "score_name"

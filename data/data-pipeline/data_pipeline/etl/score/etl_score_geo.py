@@ -368,6 +368,21 @@ class GeoScoreETL(ExtractTransformLoad):
             zip_files(arcgis_zip_file_path, arcgis_files)
             logger.info("Completed zipping shapefiles")
 
+            # Per #1557
+            # zip file that contains the shapefiles, codebook and checksum file
+            codebook_path = constants.SCORE_DOWNLOADABLE_CODEBOOK_FILE_PATH
+            readme_path = constants.SCORE_VERSIONING_README_FILE_PATH
+            version_shapefile_codebook_zip_path = (
+                constants.SCORE_VERSIONING_SHAPEFILE_CODEBOOK_FILE_PATH
+            )
+            logger.info("Compressing shapefile and codebook files")
+            files_to_compress = [
+                arcgis_zip_file_path,
+                codebook_path,
+                readme_path,
+            ]
+            zip_files(version_shapefile_codebook_zip_path, files_to_compress)
+
         with concurrent.futures.ThreadPoolExecutor() as executor:
             futures = {
                 executor.submit(task)
