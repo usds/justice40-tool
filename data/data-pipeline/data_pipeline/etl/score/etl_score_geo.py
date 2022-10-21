@@ -370,12 +370,13 @@ class GeoScoreETL(ExtractTransformLoad):
 
             # Per #1557
             # zip file that contains the shapefiles, codebook and checksum file
+            codebook_path = constants.SCORE_DOWNLOADABLE_CODEBOOK_FILE_PATH
+
             logger.info("Dump of download fokder files")
             for file in os.listdir(constants.SCORE_DOWNLOADABLE_DIR):
                 logger.info(str(file))
             logger.info(f"codebook_path: {codebook_path}")
 
-            codebook_path = constants.SCORE_DOWNLOADABLE_CODEBOOK_FILE_PATH
             readme_path = constants.SCORE_VERSIONING_README_FILE_PATH
             version_shapefile_codebook_zip_path = (
                 constants.SCORE_VERSIONING_SHAPEFILE_CODEBOOK_FILE_PATH
