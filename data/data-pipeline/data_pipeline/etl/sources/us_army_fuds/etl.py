@@ -8,6 +8,7 @@ from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.etl.sources.geo_utils import add_tracts_for_geometries
 from data_pipeline.utils import download_file_from_url
 from data_pipeline.utils import get_module_logger
+from data_pipeline.config import settings
 
 logger = get_module_logger(__name__)
 
@@ -26,11 +27,19 @@ class USArmyFUDS(ExtractTransformLoad):
     ISLAND_AREAS_EXPECTED_IN_DATA = True
 
     def __init__(self):
-        self.FILE_URL: str = (
-            "https://opendata.arcgis.com/api/v3/datasets/"
-            "3f8354667d5b4b1b8ad7a6e00c3cf3b1_1/downloads/"
-            "data?format=geojson&spatialRefId=4326&where=1%3D1"
-        )
+
+        if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
+            self.FILE_URL = (
+                f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/"
+                "us_army_fuds/Formerly_Used_Defense_Sites_(FUDS)_"
+                "all_data_reported_to_Congress_in_FY2020.geojson"
+            )
+        else:
+            self.FILE_URL: str = (
+                "https://opendata.arcgis.com/api/v3/datasets/"
+                "3f8354667d5b4b1b8ad7a6e00c3cf3b1_1/downloads/"
+                "data?format=geojson&spatialRefId=4326&where=1%3D1"
+            )
 
         self.OUTPUT_PATH: Path = self.DATA_PATH / "dataset" / "us_army_fuds"
 

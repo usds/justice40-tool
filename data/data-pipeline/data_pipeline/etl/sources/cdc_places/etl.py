@@ -6,6 +6,7 @@ from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.score import field_names
 from data_pipeline.utils import download_file_from_url
 from data_pipeline.utils import get_module_logger
+from data_pipeline.config import settings
 
 logger = get_module_logger(__name__)
 
@@ -22,7 +23,14 @@ class CDCPlacesETL(ExtractTransformLoad):
     def __init__(self):
         self.OUTPUT_PATH = self.DATA_PATH / "dataset" / "cdc_places"
 
-        self.CDC_PLACES_URL = "https://chronicdata.cdc.gov/api/views/cwsq-ngmh/rows.csv?accessType=DOWNLOAD"
+        if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
+            self.CDC_PLACES_URL = (
+                f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/"
+                "cdc_places/PLACES__Local_Data_for_Better_Health__Census_Tract_Data_2021_release.csv"
+            )
+        else:
+            self.CDC_PLACES_URL = "https://chronicdata.cdc.gov/api/views/cwsq-ngmh/rows.csv?accessType=DOWNLOAD"
+
         self.COLUMNS_TO_KEEP: typing.List[str] = [
             self.GEOID_TRACT_FIELD_NAME,
             field_names.DIABETES_FIELD,

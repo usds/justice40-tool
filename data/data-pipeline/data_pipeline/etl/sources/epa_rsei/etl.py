@@ -5,6 +5,7 @@ from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger
 from data_pipeline.utils import unzip_file_from_url
+from data_pipeline.config import settings
 
 logger = get_module_logger(__name__)
 
@@ -21,7 +22,17 @@ class EPARiskScreeningEnvironmentalIndicatorsETL(ExtractTransformLoad):
     """
 
     def __init__(self):
-        self.AGGREGATED_RSEI_SCORE_FILE_URL = "http://abt-rsei.s3.amazonaws.com/microdata2019/census_agg/CensusMicroTracts2019_2019_aggregated.zip"
+
+        if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
+            self.AGGREGATED_RSEI_SCORE_FILE_URL = (
+                f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/"
+                "epa_rsei/CensusMicroTracts2019_2019_aggregated.zip"
+            )
+        else:
+            self.AGGREGATED_RSEI_SCORE_FILE_URL = (
+                "http://abt-rsei.s3.amazonaws.com/microdata2019/"
+                "census_agg/CensusMicroTracts2019_2019_aggregated.zip"
+            )
 
         self.OUTPUT_PATH: Path = self.DATA_PATH / "dataset" / "epa_rsei"
         self.EPA_RSEI_SCORE_THRESHOLD_CUTOFF = 0.75

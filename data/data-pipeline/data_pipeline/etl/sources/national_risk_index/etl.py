@@ -6,6 +6,7 @@ import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.utils import get_module_logger
+from data_pipeline.config import settings
 
 logger = get_module_logger(__name__)
 
@@ -14,7 +15,18 @@ class NationalRiskIndexETL(ExtractTransformLoad):
     """ETL class for the FEMA National Risk Index dataset"""
 
     NAME = "national_risk_index"
-    SOURCE_URL = "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload//NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
+
+    if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
+        SOURCE_URL = (
+            f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/"
+            "national_risk_index/NRI_Table_CensusTracts.zip"
+        )
+    else:
+        SOURCE_URL = (
+            "https://hazards.fema.gov/nri/Content/StaticDocuments/DataDownload/"
+            "NRI_Table_CensusTracts/NRI_Table_CensusTracts.zip"
+        )
+
     GEO_LEVEL = ValidGeoLevel.CENSUS_TRACT
     PUERTO_RICO_EXPECTED_IN_DATA = False
     LOAD_YAML_CONFIG: bool = True

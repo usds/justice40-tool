@@ -4,6 +4,7 @@ import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.etl.base import ValidGeoLevel
 from data_pipeline.utils import get_module_logger
+from data_pipeline.config import settings
 
 logger = get_module_logger(__name__)
 
@@ -37,10 +38,16 @@ class ChildOpportunityIndex(ExtractTransformLoad):
     PUERTO_RICO_EXPECTED_IN_DATA = False
 
     def __init__(self):
-        self.SOURCE_URL = (
-            "https://data.diversitydatakids.org/datastore/zip/f16fff12-b1e5-4f60-85d3-"
-            "3a0ededa30a0?format=csv"
-        )
+        if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
+            self.SOURCE_URL = (
+                f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/"
+                "child_opportunity_index/raw.zip"
+            )
+        else:
+            self.SOURCE_URL = (
+                "https://data.diversitydatakids.org/datastore/zip/f16fff12-b1e5-4f60-85d3-"
+                "3a0ededa30a0?format=csv"
+            )
 
         # TODO: Decide about nixing this
         self.TRACT_INPUT_COLUMN_NAME = self.INPUT_GEOID_TRACT_FIELD_NAME

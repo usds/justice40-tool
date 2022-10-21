@@ -3,6 +3,7 @@ import pandas as pd
 from data_pipeline.etl.base import ExtractTransformLoad
 from data_pipeline.score import field_names
 from data_pipeline.utils import get_module_logger
+from data_pipeline.config import settings
 
 logger = get_module_logger(__name__)
 
@@ -16,7 +17,13 @@ class CDCSVIIndex(ExtractTransformLoad):
     def __init__(self):
         self.OUTPUT_PATH = self.DATA_PATH / "dataset" / "cdc_svi_index"
 
-        self.CDC_SVI_INDEX_URL = "https://svi.cdc.gov/Documents/Data/2018_SVI_Data/CSV/SVI2018_US.csv"
+        if settings.DATASOURCE_RETRIEVAL_FROM_AWS:
+            self.CDC_SVI_INDEX_URL = (
+                f"{settings.AWS_JUSTICE40_DATASOURCES_URL}/raw-data-sources/"
+                "cdc_svi_index/SVI2018_US.csv"
+            )
+        else:
+            self.CDC_SVI_INDEX_URL = "https://svi.cdc.gov/Documents/Data/2018_SVI_Data/CSV/SVI2018_US.csv"
 
         self.CDC_RPL_THEMES_THRESHOLD = 0.90
 
