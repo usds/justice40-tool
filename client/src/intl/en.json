@@ -307,21 +307,77 @@
     "defaultMessage": "Version {version} file formats",
     "description": "Navigate to the download page. This is first download file link"
   },
+  "download.page.release.update.SECTION1": {
+    "defaultMessage": "New & improved",
+    "description": "Navigate to the download page. This is first section of the release update SECTION1"
+  },
+  "download.page.release.update.SECTION1_B1": {
+    "defaultMessage": "Added Federally Recognized Tribal Lands and Alaska Native Villages data from the Bureau of Indian Affairs at the Department of the Interior to the tool and map",
+    "description": "Navigate to the download page. This is SECTION1_B1"
+  },
+  "download.page.release.update.SECTION1_B2": {
+    "defaultMessage": "Added new data for indicators of burden",
+    "description": "Navigate to the download page. This is SECTION1_B2"
+  },
+  "download.page.release.update.SECTION1_B2_1": {
+    "defaultMessage": "Climate change",
+    "description": "Navigate to the download page. This is SECTION1_B2_1"
+  },
+  "download.page.release.update.SECTION1_B2_1_1": {
+    "defaultMessage": "Projected flood risk",
+    "description": "Navigate to the download page. This is SECTION1_B2_1_1"
+  },
+  "download.page.release.update.SECTION1_B2_1_2": {
+    "defaultMessage": "Projected wildfire risk",
+    "description": "Navigate to the download page. This is SECTION1_B2_1_2"
+  },
+  "download.page.release.update.SECTION1_B2_2": {
+    "defaultMessage": "Housing",
+    "description": "Navigate to the download page. This is SECTION1_B2_2"
+  },
+  "download.page.release.update.SECTION1_B2_2_1": {
+    "defaultMessage": "Lack of plumbing",
+    "description": "Navigate to the download page. This is SECTION1_B2_2_1"
+  },
+  "download.page.release.update.SECTION1_B2_2_2": {
+    "defaultMessage": "Lack of green space",
+    "description": "Navigate to the download page. This is SECTION1_B2_2_2"
+  },
+  "download.page.release.update.SECTION1_B2_2_3": {
+    "defaultMessage": "Historic underinvestment (due to redlining)",
+    "description": "Navigate to the download page. This is SECTION1_B2_2_3"
+  },
+  "download.page.release.update.SECTION1_B2_3": {
+    "defaultMessage": "Legacy pollution",
+    "description": "Navigate to the download page. This is SECTION1_B2_3"
+  },
+  "download.page.release.update.SECTION1_B2_3_1": {
+    "defaultMessage": "Abandoned mine lands",
+    "description": "Navigate to the download page. This is SECTION1_B2_3_1"
+  },
+  "download.page.release.update.SECTION1_B2_3_2": {
+    "defaultMessage": "Formerly used defense sites",
+    "description": "Navigate to the download page. This is SECTION1_B2_3_2"
+  },
+  "download.page.release.update.SECTION1_B2_4": {
+    "defaultMessage": "Transportation",
+    "description": "Navigate to the download page. This is SECTION1_B2_4"
+  },
+  "download.page.release.update.SECTION1_B2_4_1": {
+    "defaultMessage": "Transportation barriers",
+    "description": "Navigate to the download page. This is SECTION1_B2_4_1"
+  },
+  "download.page.release.update.SECTION1_B2_5": {
+    "defaultMessage": "Water",
+    "description": "Navigate to the download page. This is SECTION1_B2_5"
+  },
+  "download.page.release.update.SECTION1_B2_5_1": {
+    "defaultMessage": "Leaking underground storage tanks",
+    "description": "Navigate to the download page. This is SECTION1_B2_5_1"
+  },
   "download.page.release.update.footer": {
     "defaultMessage": "release version {version}",
     "description": "Navigate to the download page. This is second section of the release update section"
-  },
-  "download.page.release.update.section.1": {
-    "defaultMessage": "New & improved",
-    "description": "Navigate to the download page. This is first section of the release update section"
-  },
-  "download.page.release.update.section.1.p.1": {
-    "defaultMessage": "Updates to the methodology based on feedback recieved during the beta period.",
-    "description": "Navigate to the download page. This is first section of the release update section"
-  },
-  "download.page.release.update.section.1.p.1.1": {
-    "defaultMessage": "Additional data sources now available for Puerto Rico. Linguistic isolation as removed from the methodology for Puerto Rico.",
-    "description": "Navigate to the download page. This is first section of the release update section"
   },
   "download.page.release.update.section.2": {
     "defaultMessage": "Fixes",

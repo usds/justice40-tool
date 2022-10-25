@@ -306,6 +306,7 @@ const J40Map = ({location}: IJ40Interface) => {
   const mapBoxBaseLayer = {
     customColorsWithUpdatedTribal: `mapbox://styles/justice40/cl9g30qh7000p15l9cp1ftw16`,
     streetsWithUpdatedTribal: `mapbox://styles/justice40/cl98rlidr002c14obpsvz6zzs`,
+    j40Streets: `mapbox://styles/justice40/cl5mp95tu000k14lpl21spgny`,
   };
 
 
@@ -348,7 +349,7 @@ const J40Map = ({location}: IJ40Interface) => {
           // http://visgl.github.io/react-map-gl/docs/api-reference/interactive-map#map-state
           {...viewport}
           mapStyle={process.env.MAPBOX_STYLES_READ_TOKEN ?
-            mapBoxBaseLayer.customColorsWithUpdatedTribal : getOSBaseMap()}
+            mapBoxBaseLayer.j40Streets : getOSBaseMap()}
           width="100%"
           // Ajusting this height with a conditional statement will not render the map on staging.
           // The reason for this issue is unknown. Consider styling the parent container via SASS.
@@ -367,6 +368,7 @@ const J40Map = ({location}: IJ40Interface) => {
             [
               constants.HIGH_ZOOM_LAYER_ID,
               constants.PRIORITIZED_HIGH_ZOOM_LAYER_ID,
+              constants.LOW_ZOOM_LAYER_ID,
             ]
           }
 
