@@ -77,34 +77,194 @@ const ReleaseUpdate = ({}: IReleaseUpdateProps) => {
         <div>
 
           <div className={styles.releaseHeader}>
-            {DOWNLOAD_COPY.RELEASE.UPDATE_1}
+            {DOWNLOAD_COPY.RELEASE_1_0.UPDATE_1}
           </div>
 
           <div className={styles.releaseSectionTitle}>
-            {DOWNLOAD_COPY.RELEASE.SECTION1}
+            {DOWNLOAD_COPY.RELEASE_1_0.SECTION1}
           </div>
 
           <div className={styles.releaseSectionBody}>
             <ul>
-              <li>{DOWNLOAD_COPY.RELEASE.SECTION1_P1}</li>
+              <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B1}</li>
+
               <ul>
-                <li>{DOWNLOAD_COPY.RELEASE.SECTION1_P1_1}</li>
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B2}</li>
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B2_1}</li>
+                <ul>
+                  <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B2_1_1}</li>
+                  <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B2_1_2}</li>
+                </ul>
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B2_2}</li>
+                <ul>
+                  <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B2_2_1}</li>
+                  <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B2_2_2}</li>
+                </ul>
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B2_3}</li>
+                <ul>
+                  <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B2_3_1}</li>
+                  <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B2_3_2}</li>
+                </ul>
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B2_4}</li>
+                <ul>
+                  <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B2_4_1}</li>
+                </ul>
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B2_5}</li>
+                <ul>
+                  <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B2_5_1}</li>
+                </ul>
               </ul>
+              <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B3}</li>
+              <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B4}</li>
+              <ul>
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B4_1}</li>
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B4_2}</li>
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B4_3}</li>
+              </ul>
+              <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B5}</li>
+              <ul>
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B5_1}</li>
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B5_2}</li>
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B5_3}</li>
+              </ul>
+
+              <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6}</li>
+              <ul>
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1}</li>
+                <ul>
+                  <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_1}</li>
+                  <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2}</li>
+                  <ul>
+                    <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_1}</li>
+                    <ul>
+                      <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_1_1}</li>
+                    </ul>
+                    <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_2}</li>
+                    <ul>
+                      <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_2_1}</li>
+                      <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_2_2}</li>
+                      <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_2_3}</li>
+                      <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_2_4}</li>
+                    </ul>
+                  </ul>
+                </ul>
+
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_2}</li>
+                <ul>
+                  <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_2_1}</li>
+                  <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2}</li>
+                  <ul>
+                    <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_1}</li>
+                    <ul>
+                      <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_1_1}</li>
+                    </ul>
+                    <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_2}</li>
+                    <ul>
+                      <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_2_1}</li>
+                      <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_2_2}</li>
+                      <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_2_3}</li>
+                      <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_2_4}</li>
+                    </ul>
+                  </ul>
+                </ul>
+
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_3}</li>
+                <ul>
+                  <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2}</li>
+                  <ul>
+                    <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_1}</li>
+                    <ul>
+                      <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_1_1}</li>
+                    </ul>
+                    <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_2}</li>
+                    <ul>
+                      <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_2_2}</li>
+                      <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_2_4}</li>
+                    </ul>
+                  </ul>
+                </ul>
+
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_4}</li>
+                <ul>
+                  <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2}</li>
+                  <ul>
+                    <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_1}</li>
+                    <ul>
+                      <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_1_1}</li>
+                    </ul>
+                    <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_2}</li>
+                    <ul>
+                      <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_2_4}</li>
+                    </ul>
+                  </ul>
+                </ul>
+
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_5}</li>
+                <ul>
+                  <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_5_1}</li>
+                  <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_5_2}</li>
+                  <ul>
+                    <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_5_2_1}</li>
+                    <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_5_2_2}</li>
+                    <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_5_2_3}</li>
+                    <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_5_2_4}</li>
+                    <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_2_1}</li>
+                    <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_2_2}</li>
+                  </ul>
+                </ul>
+              </ul>
+
+              <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B7}</li>
+              <ul>
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_1}</li>
+                <ul>
+                  <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B7_1_1}</li>
+                </ul>
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B6_1_2_2}</li>
+                <ul>
+                  <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B7_2_1}</li>
+                  <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B7_2_2}</li>
+                  <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B7_2_3}</li>
+                </ul>
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B7_3}</li>
+                <ul>
+                  <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B7_3_1}</li>
+                </ul>
+              </ul>
+
+              <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B8}</li>
+              <ul>
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B8_1}</li>
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B8_2}</li>
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B8_3}</li>
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B8_4}</li>
+              </ul>
+
+              <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B9}</li>
+              <ul>
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B9_1}</li>
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B9_2}</li>
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B9_3}</li>
+                <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B9_4}</li>
+              </ul>
+
+              <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION1_B10}</li>
             </ul>
           </div>
 
           <div className={styles.releaseSectionTitle}>
-            {DOWNLOAD_COPY.RELEASE.SECTION2}
+            {DOWNLOAD_COPY.RELEASE_1_0.SECTION2}
           </div>
 
           <div className={styles.releaseSectionBody}>
             <ul>
-              <li>{DOWNLOAD_COPY.RELEASE.SECTION2_P1}</li>
+              <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION2_P1}</li>
+              <li>{DOWNLOAD_COPY.RELEASE_1_0.SECTION2_P2}</li>
             </ul>
           </div>
 
           <div>
-            {DOWNLOAD_COPY.RELEASE.FOOTER}
+            {DOWNLOAD_COPY.RELEASE_1_0.FOOTER}
           </div>
 
         </div>

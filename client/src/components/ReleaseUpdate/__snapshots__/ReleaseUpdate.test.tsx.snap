@@ -34,13 +34,332 @@ exports[`rendering of ReleaseUpdate Component checks if component renders 1`] = 
         <div>
           <ul>
             <li>
-              Updates to the methodology based on feedback recieved during the beta period.
+              Added Federally Recognized Tribal Lands and Alaska Native Villages data from the Bureau of Indian Affairs at the Department of the Interior to the tool and map
             </li>
             <ul>
               <li>
-                Additional data sources now available for Puerto Rico. Linguistic isolation as removed from the methodology for Puerto Rico.
+                Added new data for indicators of burden
+              </li>
+              <li>
+                Climate change
+              </li>
+              <ul>
+                <li>
+                  Projected flood risk
+                </li>
+                <li>
+                  Projected wildfire risk
+                </li>
+              </ul>
+              <li>
+                Housing
+              </li>
+              <ul>
+                <li>
+                  Lack of plumbing
+                </li>
+                <li>
+                  Lack of green space
+                </li>
+              </ul>
+              <li>
+                Legacy pollution
+              </li>
+              <ul>
+                <li>
+                  Abandoned mine lands
+                </li>
+                <li>
+                  Formerly used defense sites
+                </li>
+              </ul>
+              <li>
+                Transportation
+              </li>
+              <ul>
+                <li>
+                  Transportation barriers
+                </li>
+              </ul>
+              <li>
+                Water
+              </li>
+              <ul>
+                <li>
+                  Leaking underground storage tanks
+                </li>
+              </ul>
+            </ul>
+            <li>
+              Added an adjacency indicator to methodology to include low income communities that had been completely surrounded by other disadvantaged communities, but which had just missed the thresholds in the beta version.
+            </li>
+            <li>
+              Made technical changes to enhance accuracy of the tool
+            </li>
+            <ul>
+              <li>
+                Removed income data for students enrolled in higher education in the low income indicator
+              </li>
+              <li>
+                Imputed income for census tracts missing that data that have a population greater than zero
+              </li>
+              <li>
+                Used transportation barriers and population loss data indicators only for census tracts with populations of 20 or more
               </li>
             </ul>
+            <li>
+              Improved the user interface
+            </li>
+            <ul>
+              <li>
+                Added demographics (race & age) for census tracts to map side panel
+              </li>
+              <li>
+                Improved the design of the map side panel
+              </li>
+              <li>
+                Updated the site copy of the website and associated Spanish translations
+              </li>
+            </ul>
+            <li>
+              Added new data for all the U.S. Territories, and also made a small methodology change for Puerto Rico
+            </li>
+            <ul>
+              <li>
+                USVI
+              </li>
+              <ul>
+                <li>
+                  Included data from 2010 decennial census for US Virgin Islands
+                </li>
+                <li>
+                  New data from EJScreen 2.1
+                </li>
+                <ul>
+                  <li>
+                    Sustainable Housing:
+                  </li>
+                  <ul>
+                    <li>
+                      Lead paint
+                    </li>
+                  </ul>
+                  <li>
+                    Legacy pollution:
+                  </li>
+                  <ul>
+                    <li>
+                      Proximity to Superfund (National Priorities List (NPL)) sites
+                    </li>
+                    <li>
+                      Proximity to Risk Management Plan (RMP) facilities
+                    </li>
+                    <li>
+                      Proximity to hazardous waste facilities
+                    </li>
+                    <li>
+                      Leaking underground storage tanks
+                    </li>
+                  </ul>
+                </ul>
+              </ul>
+              <li>
+                Guam
+              </li>
+              <ul>
+                <li>
+                  Included data from 2010 decennial census for Guam
+                </li>
+                <li>
+                  New data from EJScreen 2.1
+                </li>
+                <ul>
+                  <li>
+                    Sustainable Housing:
+                  </li>
+                  <ul>
+                    <li>
+                      Lead paint
+                    </li>
+                  </ul>
+                  <li>
+                    Legacy pollution:
+                  </li>
+                  <ul>
+                    <li>
+                      Proximity to Superfund (National Priorities List (NPL)) sites
+                    </li>
+                    <li>
+                      Proximity to Risk Management Plan (RMP) facilities
+                    </li>
+                    <li>
+                      Proximity to hazardous waste facilities
+                    </li>
+                    <li>
+                      Leaking underground storage tanks
+                    </li>
+                  </ul>
+                </ul>
+              </ul>
+              <li>
+                Samoa
+              </li>
+              <ul>
+                <li>
+                  New data from EJScreen 2.1
+                </li>
+                <ul>
+                  <li>
+                    Sustainable Housing:
+                  </li>
+                  <ul>
+                    <li>
+                      Lead paint
+                    </li>
+                  </ul>
+                  <li>
+                    Legacy pollution:
+                  </li>
+                  <ul>
+                    <li>
+                      Proximity to Risk Management Plan (RMP) facilities
+                    </li>
+                    <li>
+                      Leaking underground storage tanks
+                    </li>
+                  </ul>
+                </ul>
+              </ul>
+              <li>
+                Marianna Islands
+              </li>
+              <ul>
+                <li>
+                  New data from EJScreen 2.1
+                </li>
+                <ul>
+                  <li>
+                    Sustainable Housing:
+                  </li>
+                  <ul>
+                    <li>
+                      Lead paint
+                    </li>
+                  </ul>
+                  <li>
+                    Legacy pollution:
+                  </li>
+                  <ul>
+                    <li>
+                      Leaking underground storage tanks
+                    </li>
+                  </ul>
+                </ul>
+              </ul>
+              <li>
+                Puerto Rico
+              </li>
+              <ul>
+                <li>
+                  Removed linguistic isolation as an indicator in the methodology for Puerto Rico
+                </li>
+                <li>
+                  Imported additional available data for Puerto Rico
+                </li>
+                <ul>
+                  <li>
+                    Energy cost
+                  </li>
+                  <li>
+                    Housing cost
+                  </li>
+                  <li>
+                    Abandoned mine lands
+                  </li>
+                  <li>
+                    Proximity to hazardous waste sites
+                  </li>
+                  <li>
+                    Proximity to Superfund (National Priorities List (NPL)) sites
+                  </li>
+                  <li>
+                    Proximity to Risk Management Plan (RMP) facilities
+                  </li>
+                </ul>
+              </ul>
+            </ul>
+            <li>
+              Updated data from EJScreen 2.1 across the entire tool:
+            </li>
+            <ul>
+              <li>
+                Sustainable Housing:
+              </li>
+              <ul>
+                <li>
+                  Lead paint - 2016-2020
+                </li>
+              </ul>
+              <li>
+                Legacy pollution:
+              </li>
+              <ul>
+                <li>
+                  Proximity to Superfund (National Priorities List (NPL)) sites - 2022
+                </li>
+                <li>
+                  Proximity to Risk Management Plans (RMP) facilities - 2022
+                </li>
+                <li>
+                  Proximity to hazardous waste facilities - 2022
+                </li>
+              </ul>
+              <li>
+                Water and wastewater
+              </li>
+              <ul>
+                <li>
+                  Leaking underground storage tanks - 2022
+                </li>
+              </ul>
+            </ul>
+            <li>
+              Enhanced the technical files:
+            </li>
+            <ul>
+              <li>
+                Added all new data indicators and demographics to .xls, .csv, and shapefiles
+              </li>
+              <li>
+                Added versions page to house beta version of download files
+              </li>
+              <li>
+                Updated codebook
+              </li>
+              <li>
+                Updated Technical Support Document
+              </li>
+            </ul>
+            <li>
+              Improved the way that users provide feedback on the tool:
+            </li>
+            <ul>
+              <li>
+                Data survey
+              </li>
+              <li>
+                Site experience survey
+              </li>
+              <li>
+                Census tract feedback
+              </li>
+              <li>
+                General contact form
+              </li>
+            </ul>
+            <li>
+              Added a link to sign up for email mailing list managed by CEQ
+            </li>
           </ul>
         </div>
         <div>
@@ -49,7 +368,10 @@ exports[`rendering of ReleaseUpdate Component checks if component renders 1`] = 
         <div>
           <ul>
             <li>
-              Fixed an issue with zoom and select to show census boundaries at a higher zoom level.
+              Bug fix: loaded missing life expectancy data for Maine and Wisconsin
+            </li>
+            <li>
+              Bug fix: Census tracts that have 0 land should not be included on the map
             </li>
           </ul>
         </div>
