@@ -115,14 +115,3 @@ jobs:
           poetry run s4cmd put ./data_pipeline/data/score/shapefile/ s3://justice40-data/data-versions/${{J40_VERSION_LABEL_STRING}}/${{env.SHA_NUMBER}}/data/score/shapefile --recursive --force  --API-ACL=public-read
           poetry run s4cmd put ./data_pipeline/data/score/tiles/ s3://justice40-data/data-versions/${{J40_VERSION_LABEL_STRING}}/data/score/tiles --recursive --force  --API-ACL=public-read --num-threads=250
           poetry run s4cmd put ./data_pipeline/data/score/downloadable/ s3://justice40-data/data-versions/${{J40_VERSION_LABEL_STRING}}/data/score/downloadable --recursive --force --API-ACL=public-read
-      - name: Update PR with deployed Map URL
-        uses: mshick/add-pr-comment@v1
-        with:
-          # Deploy to S3 for the staging URL
-          message: |
-            ** Map Deployed! **
-            Map with Staging Backend:  Link to come
-            Find tiles here: https://justice40-data.s3.amazonaws.com/data-versions/${{J40_VERSION_LABEL_STRING}}/data/score/tiles
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          repo-token-user-login: "github-actions[bot]"
-          allow-repeats: false
