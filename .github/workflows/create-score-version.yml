@@ -68,18 +68,6 @@ jobs:
           poetry run s4cmd put ./data_pipeline/data/score/csv/ s3://justice40-data/data-versions/${{J40_VERSION_LABEL_STRING}}/data/score/csv --recursive --force --API-ACL=public-read
           poetry run s4cmd put ./data_pipeline/files/ s3://justice40-data/data-versions/${{J40_VERSION_LABEL_STRING}}/data/score/downloadable --recursive --force --API-ACL=public-read
 
-      - name: Update PR with deployed Score URLs
-        uses: mshick/add-pr-comment@v1
-        with:
-          # Deploy to S3 for the Staging URL
-          message: |
-            ** Score Deployed! **
-            Find it here:
-            - Score Full usa.csv: s3://justice40-data/data-versions/${{J40_VERSION_LABEL_STRING}}/data/score/csv/full/usa.csv
-            - Download Zip Packet: s3://justice40-data/data-versions/${{J40_VERSION_LABEL_STRING}}/data/score/downloadable/Screening_Tool_Data.zip
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          repo-token-user-login: "github-actions[bot]"
-          allow-repeats: false
       # - name: Install GDAL/ogr2ogr
       #   run: |
       #     sudo add-apt-repository ppa:ubuntugis/ppa
