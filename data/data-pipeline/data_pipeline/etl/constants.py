@@ -30,12 +30,6 @@ DATASET_LIST = [
         "is_memory_intensive": False,
     },
     {
-        "name": "housing_and_transportation",
-        "module_dir": "housing_and_transportation",
-        "class_name": "HousingTransportationETL",
-        "is_memory_intensive": False,
-    },
-    {
         "name": "mapping_for_ej",
         "module_dir": "mapping_for_ej",
         "class_name": "MappingForEJETL",
