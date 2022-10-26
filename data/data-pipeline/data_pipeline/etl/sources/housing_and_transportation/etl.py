@@ -35,7 +35,7 @@ class HousingTransportationETL(ExtractTransformLoad):
 
             # New file name:
             tmp_csv_file_path = (
-                zip_file_dir / f"htaindex_data_tracts_{fips}.csv"
+                zip_file_dir / f"htaindex2019_data_tracts_{fips}.csv"
             )
 
             try:
