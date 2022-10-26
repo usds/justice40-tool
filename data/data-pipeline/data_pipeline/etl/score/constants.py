@@ -59,8 +59,10 @@ else:
     version_str = os.environ.get("J40_VERSION_LABEL_STRING")
 
 SCORE_DOWNLOADABLE_DIR = DATA_SCORE_DIR / "downloadable"
-SCORE_DOWNLOADABLE_PDF_FILE_NAME = "draft_communities_list.pdf"
+SCORE_DOWNLOADABLE_PDF_FILE_NAME = "draft-communities-list.pdf"
 SCORE_DOWNLOADABLE_PDF_FILE_PATH = FILES_PATH / SCORE_DOWNLOADABLE_PDF_FILE_NAME
+SCORE_DOWNLOADABLE_TSD_FILE_NAME = "cejst-technical-support-document.pdf"
+SCORE_DOWNLOADABLE_TSD_FILE_PATH = FILES_PATH / SCORE_DOWNLOADABLE_TSD_FILE_NAME
 SCORE_DOWNLOADABLE_CSV_FILE_PATH = (
     SCORE_DOWNLOADABLE_DIR / f"{version_str}-communities-{timestamp_str}.csv"
 )
@@ -77,6 +79,18 @@ SCORE_DOWNLOADABLE_CSV_ZIP_FILE_PATH = (
 SCORE_DOWNLOADABLE_XLS_ZIP_FILE_PATH = (
     SCORE_DOWNLOADABLE_DIR
     / f"{version_str}-communities-xls-{timestamp_str}.zip"
+)
+SCORE_VERSIONING_DATA_DOCUMENTATION_ZIP_FILE_PATH = (
+    SCORE_DOWNLOADABLE_DIR
+    / f"{version_str}-data-documentation-{timestamp_str}.zip"
+)
+SCORE_VERSIONING_SHAPEFILE_CODEBOOK_FILE_PATH = (
+    SCORE_DOWNLOADABLE_DIR
+    / f"{version_str}-shapefile-codebook-{timestamp_str}.zip"
+)
+SCORE_VERSIONING_README_FILE_NAME = f"README-version-{version_str}.md"
+SCORE_VERSIONING_README_FILE_PATH = (
+    FILES_PATH / SCORE_VERSIONING_README_FILE_NAME
 )
 
 # For the codebook

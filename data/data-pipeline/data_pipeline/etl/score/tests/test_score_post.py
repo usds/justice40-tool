@@ -133,6 +133,16 @@ def test_load_downloadable_zip(etl, monkeypatch, score_data_expected):
         "SCORE_DOWNLOADABLE_PDF_FILE_PATH",
         static_files_path / constants.SCORE_DOWNLOADABLE_PDF_FILE_NAME,
     )
+    monkeypatch.setattr(
+        constants,
+        "SCORE_VERSIONING_README_FILE_PATH",
+        static_files_path / constants.SCORE_VERSIONING_README_FILE_NAME,
+    )
+    monkeypatch.setattr(
+        constants,
+        "SCORE_DOWNLOADABLE_TSD_FILE_PATH",
+        static_files_path / constants.SCORE_DOWNLOADABLE_TSD_FILE_NAME,
+    )
     etl.output_score_county_state_merged_df = score_data_expected
     etl._load_downloadable_zip(constants.SCORE_DOWNLOADABLE_DIR)
     assert constants.SCORE_DOWNLOADABLE_DIR.is_dir()

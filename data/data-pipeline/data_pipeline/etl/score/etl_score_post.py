@@ -486,8 +486,18 @@ class PostScoreETL(ExtractTransformLoad):
         csv_path = constants.SCORE_DOWNLOADABLE_CSV_FILE_PATH
         excel_path = constants.SCORE_DOWNLOADABLE_EXCEL_FILE_PATH
         codebook_path = constants.SCORE_DOWNLOADABLE_CODEBOOK_FILE_PATH
+        readme_path = constants.SCORE_VERSIONING_README_FILE_PATH
         csv_zip_path = constants.SCORE_DOWNLOADABLE_CSV_ZIP_FILE_PATH
         xls_zip_path = constants.SCORE_DOWNLOADABLE_XLS_ZIP_FILE_PATH
+        score_downloadable_pdf_file_path = (
+            constants.SCORE_DOWNLOADABLE_PDF_FILE_PATH
+        )
+        score_downloadable_tsd_file_path = (
+            constants.SCORE_DOWNLOADABLE_TSD_FILE_PATH
+        )
+        version_data_documentation_zip_path = (
+            constants.SCORE_VERSIONING_DATA_DOCUMENTATION_ZIP_FILE_PATH
+        )
 
         logger.info("Writing downloadable excel")
         excel_config = self._load_excel_from_df(
@@ -552,19 +562,26 @@ class PostScoreETL(ExtractTransformLoad):
         # load codebook to disk
         codebook_df.to_csv(codebook_path, index=False)
 
+        # zip assets
         logger.info("Compressing csv files")
-        files_to_compress = [
-            csv_path,
-            codebook_path,
-        ]
+        files_to_compress = [csv_path, codebook_path, readme_path]
         zip_files(csv_zip_path, files_to_compress)
 
         logger.info("Compressing xls files")
+        files_to_compress = [excel_path, codebook_path, readme_path]
+        zip_files(xls_zip_path, files_to_compress)
+
+        # Per #1557
+        # zip file that contains the .xls, .csv, .pdf, tech support document, checksum file
+        logger.info("Compressing data and documentation files")
         files_to_compress = [
             excel_path,
-            codebook_path,
+            csv_path,
+            score_downloadable_pdf_file_path,
+            score_downloadable_tsd_file_path,
+            readme_path,
         ]
-        zip_files(xls_zip_path, files_to_compress)
+        zip_files(version_data_documentation_zip_path, files_to_compress)
 
     def load(self) -> None:
         self._load_score_csv_full(

@@ -378,6 +378,37 @@ class GeoScoreETL(ExtractTransformLoad):
             zip_files(arcgis_zip_file_path, arcgis_files)
             logger.info("Completed zipping shapefiles")
 
+            # Per #1557:
+            # Zip file that contains the shapefiles, codebook and checksum file.
+            # Normally we get the codebook file path using this constant:
+            # - codebook_path = constants.SCORE_DOWNLOADABLE_CODEBOOK_FILE_PATH
+            # However since we generate it on a separate script (etl_score_post)
+            # the time stamp can be generated again, and thus the file is not found.
+            # So we grab it from the downloadable dir and if we don't find it, it
+            # means we haven't run etl_score_post, and continue
+
+            logger.info("Getting codebook from downloadable dir")
+            codebook_path = None
+            for file in os.listdir(constants.SCORE_DOWNLOADABLE_DIR):
+                if "codebook" in file:
+                    codebook_path = constants.SCORE_DOWNLOADABLE_DIR / file
+
+            if codebook_path:
+                version_shapefile_codebook_zip_path = (
+                    constants.SCORE_VERSIONING_SHAPEFILE_CODEBOOK_FILE_PATH
+                )
+                readme_path = constants.SCORE_VERSIONING_README_FILE_PATH
+
+                logger.info("Compressing shapefile and codebook files")
+                files_to_compress = [
+                    arcgis_zip_file_path,
+                    codebook_path,
+                    readme_path,
+                ]
+                zip_files(
+                    version_shapefile_codebook_zip_path, files_to_compress
+                )
+
         with concurrent.futures.ThreadPoolExecutor() as executor:
             futures = {
                 executor.submit(task)
