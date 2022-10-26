@@ -65,8 +65,8 @@ jobs:
           poetry run python3 data_pipeline/application.py generate-score-post -s aws
       - name: Deploy Score to Geoplatform AWS
         run: |
-          poetry run s4cmd put ./data_pipeline/data/score/csv/ s3://justice40-data/data-versions/${{J40_VERSION_LABEL_STRING}}/data/score/csv --recursive --force --API-ACL=public-read
-          poetry run s4cmd put ./data_pipeline/files/ s3://justice40-data/data-versions/${{J40_VERSION_LABEL_STRING}}/data/score/downloadable --recursive --force --API-ACL=public-read
+          poetry run s4cmd put ./data_pipeline/data/score/csv/ s3://justice40-data/data-versions/${{env.J40_VERSION_LABEL_STRING}}/data/score/csv --recursive --force --API-ACL=public-read
+          poetry run s4cmd put ./data_pipeline/files/ s3://justice40-data/data-versions/${{env.J40_VERSION_LABEL_STRING}}/data/score/downloadable --recursive --force --API-ACL=public-read
 
       # - name: Install GDAL/ogr2ogr
       #   run: |
