@@ -54,11 +54,13 @@ const PreviousVersions = ({location}: IPreviousVersionsProps) => {
                       downloadLink=''
                       buttonText={intl.formatMessage(PREV_VER_COPY.BUTTON.TITLE1)}
                       imageAltTagText={intl.formatMessage(PREV_VER_COPY.BUTTON.BUTTON1_ALT_TAG)}
+                      color={'default'}
                     />
                     <DownloadButton
                       downloadLink=''
                       buttonText={intl.formatMessage(PREV_VER_COPY.BUTTON.TITLE2)}
                       imageAltTagText={intl.formatMessage(PREV_VER_COPY.BUTTON.BUTTON2_ALT_TAG)}
+                      color={'default'}
                     />
                   </CardFooter>
                 </Card>

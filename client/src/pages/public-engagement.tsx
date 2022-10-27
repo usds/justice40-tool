@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Collection, Grid} from '@trussworks/react-uswds';
+import {Collection, CollectionHeading, CollectionItem, Grid} from '@trussworks/react-uswds';
 import {useIntl} from 'gatsby-plugin-intl';
 
 import J40MainGridContainer from '../components/J40MainGridContainer';
@@ -27,7 +27,7 @@ const PublicEngagementPage = ({location}: IPublicEngagementPageProps) => {
 
         <h1>{intl.formatMessage(PUBLIC_ENG_COPY.PAGE_INTRO.PAGE_HEADING1)}</h1>
 
-        <Grid row>
+        <Grid row gap={6}>
           <Grid desktop={{col: 8}}>
             <p>
               {intl.formatMessage(PUBLIC_ENG_COPY.PAGE_INTRO.PAGE_DESCRIPTION1)}
@@ -36,14 +36,35 @@ const PublicEngagementPage = ({location}: IPublicEngagementPageProps) => {
               {intl.formatMessage(PUBLIC_ENG_COPY.PAGE_INTRO.PAGE_DESCRIPTION2)}
             </p>
             <p>
-              {intl.formatMessage(PUBLIC_ENG_COPY.PAGE_INTRO.PAGE_DESCRIPTION3)}
+              {PUBLIC_ENG_COPY.RICH_COPY.PAGE_DESCRIPTION3}
             </p>
+          </Grid>
+          <Grid desktop={{col: 4}}>
+            <PublicVideoBox isBeta={false}/>
           </Grid>
         </Grid>
 
         <Grid row>
           <h2>
-            {intl.formatMessage(PUBLIC_ENG_COPY.PAGE_INTRO.PAGE_HEADING2)}
+            {PUBLIC_ENG_COPY.RICH_COPY.PAGE_HEADING2}
+          </h2>
+        </Grid>
+
+        <Grid row gap={6}>
+          <Grid desktop={{col: 8}}>
+            <Collection>
+              <CollectionItem>
+                <CollectionHeading headingLevel='h2'>
+                  {intl.formatMessage(PUBLIC_ENG_COPY.PAGE_INTRO.PAGE_COMING_SOON)}
+                </CollectionHeading>
+              </CollectionItem>
+            </Collection>
+          </Grid>
+        </Grid>
+
+        <Grid row>
+          <h2>
+            {PUBLIC_ENG_COPY.RICH_COPY.PAGE_HEADING3}
           </h2>
         </Grid>
 
@@ -55,7 +76,7 @@ const PublicEngagementPage = ({location}: IPublicEngagementPageProps) => {
             </Collection>
           </Grid>
           <Grid desktop={{col: 4}}>
-            <PublicVideoBox />
+            <PublicVideoBox isBeta={true}/>
           </Grid>
         </Grid>
 

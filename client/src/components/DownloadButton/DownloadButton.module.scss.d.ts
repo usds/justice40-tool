@@ -3,10 +3,12 @@ declare namespace DownloadButtonNamespace {
       downloadButtonLink: string;
       buttonComponent: string;
       buttonComponentYellow: string;
+      buttonComponentGray: string;
       buttonContainer: string;
       buttonText: string;
       buttonImageBlue: string;
       buttonImageYellow: string;
+      buttonImageGray: string;
     }
   }
 

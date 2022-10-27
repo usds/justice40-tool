@@ -385,7 +385,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         Public engagement opportunities
       </h1>
       <div
-        class="grid-row"
+        class="grid-row grid-gap-6"
         data-testid="grid"
       >
         <div
@@ -394,10 +394,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         >
           <p>
             
-      CEQ is hosting engagement opportunities to connect with the public about the current version of the 
-      tool. These sessions are an opportunity to obtain training on the tool or to provide feedback on the 
-      beta version of the tool. CEQ hopes that members of the public will join these engagements to learn 
-      about the tool, have their questions answered, and share feedback.
+      The Council on Environmental Quality (CEQ) is hosting engagement opportunities to connect with the public about the current versions of the Climate and Economic Justice Screening Tool (CEJST). These sessions are an opportunity to obtain training on the tool or to provide the feedback on the latest version of the tool. CEQ hopes that members of the public will join these engagements to learn about the tool, ask questions, an share feedback.
     
           </p>
           <p>
@@ -407,10 +404,86 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </p>
           <p>
             
-      As they become available, additional public trainings and engagement opportunities on the Climate 
-      and Economic Justice Screening Tool will also be posted on this page.
-    
+    As they become available, additional public trainings and engagement opportunities on the  Climate and Economic Justice Screening Tool will also be posted on this page. 
+            <a
+              class="usa-link usa-link--external"
+              data-cy=""
+              href="https://www.surveymonkey.com/r/whceqej"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Sign-up
+            </a>
+             for updates from CEQ
+  
           </p>
+        </div>
+        <div
+          class="desktop:grid-col-4"
+          data-testid="grid"
+        >
+          <div
+            class="usa-summary-box"
+            data-testid="summary-box"
+          >
+            <div
+              class="usa-summary-box__body"
+            >
+              <h2
+                class="usa-summary-box__heading"
+              >
+                Need information about the latest version of the tool?
+              </h2>
+              <div
+                class="usa-summary-box__text"
+              >
+                
+    See what's new in the version 1.0 of the Climate and Economic Justice Screening tool.
+  
+                <a
+                  href="https://www.youtube.com/watch?v=QwHWcXbhw28"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <button
+                    class="usa-button"
+                    data-testid="button"
+                    type="button"
+                  >
+                    <div>
+                      <div>
+                        Watch on YouTube
+                      </div>
+                      <img
+                        alt="the icon to show that this button will open in a new tab"
+                        src="test-file-stub"
+                      />
+                    </div>
+                  </button>
+                </a>
+                <a
+                  download=""
+                  href="https://static-data-screeningtool.geoplatform.gov/data-pipeline/data/score/downloadable/technical-training-slides.pptx"
+                >
+                  <button
+                    class="usa-button"
+                    data-testid="button"
+                    type="button"
+                  >
+                    <div>
+                      <div>
+                        Download slide deck
+                      </div>
+                      <img
+                        alt="the icon to show that this button will download the file"
+                        src="test-file-stub"
+                      />
+                    </div>
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div
@@ -418,7 +491,45 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         data-testid="grid"
       >
         <h2>
-          Find an event
+          Upcoming events for CEJST version 1.0
+        </h2>
+      </div>
+      <div
+        class="grid-row grid-gap-6"
+        data-testid="grid"
+      >
+        <div
+          class="desktop:grid-col-8"
+          data-testid="grid"
+        >
+          <ul
+            class="usa-collection"
+            data-testid="collection"
+          >
+            <li
+              class="usa-collection__item"
+            >
+              <div
+                class="usa-collection__body"
+              >
+                <h2
+                  class="usa-collection__heading"
+                >
+                  
+      Coming soon!
+    
+                </h2>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div
+        class="grid-row"
+        data-testid="grid"
+      >
+        <h2>
+          Previous events for public beta
         </h2>
       </div>
       <div
@@ -933,15 +1044,17 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             <div
               class="usa-summary-box__body"
             >
-              <h3
+              <h2
                 class="usa-summary-box__heading"
               >
-                Can't make an upcoming session?
-              </h3>
+                Need information about the public beta?
+              </h2>
               <div
                 class="usa-summary-box__text"
               >
-                Watch a recorded version of the CEJST training on YouTube.
+                
+      Watch a recorded version of the beta version of the CEJST training on YouTube.
+  
                 <a
                   href="https://www.youtube.com/watch?v=QwHWcXbhw28"
                   rel="noreferrer"
@@ -954,7 +1067,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   >
                     <div>
                       <div>
-                        Watch on YouTube
+                        Watch on beta demo
                       </div>
                       <img
                         alt="the icon to show that this button will open in a new tab"
@@ -974,7 +1087,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                   >
                     <div>
                       <div>
-                        Download slide deck
+                        Download beta slide deck
                       </div>
                       <img
                         alt="the icon to show that this button will download the file"

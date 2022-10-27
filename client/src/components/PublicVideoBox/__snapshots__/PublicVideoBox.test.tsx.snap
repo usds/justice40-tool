@@ -9,15 +9,17 @@ exports[`rendering of the PublicVideoBox checks if component renders 1`] = `
     <div
       class="usa-summary-box__body"
     >
-      <h3
+      <h2
         class="usa-summary-box__heading"
       >
-        Can't make an upcoming session?
-      </h3>
+        Need information about the latest version of the tool?
+      </h2>
       <div
         class="usa-summary-box__text"
       >
-        Watch a recorded version of the CEJST training on YouTube.
+        
+    See what's new in the version 1.0 of the Climate and Economic Justice Screening tool.
+  
         <a
           href="https://www.youtube.com/watch?v=QwHWcXbhw28"
           rel="noreferrer"

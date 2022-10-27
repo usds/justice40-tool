@@ -2455,8 +2455,12 @@
     "defaultMessage": "Public engagement",
     "description": "Navigate to the public engagement page, this will be the public engagement button label"
   },
+  "public.eng.page.coming.soon.text": {
+    "defaultMessage": "Coming soon!",
+    "description": "Navigate to the public engagement page, this will be the publiceng page coming soon text"
+  },
   "public.eng.page.description1.text": {
-    "defaultMessage": "CEQ is hosting engagement opportunities to connect with the public about the current version of the tool. These sessions are an opportunity to obtain training on the tool or to provide feedback on the beta version of the tool. CEQ hopes that members of the public will join these engagements to learn about the tool, have their questions answered, and share feedback.",
+    "defaultMessage": "The Council on Environmental Quality (CEQ) is hosting engagement opportunities to connect with the public about the current versions of the Climate and Economic Justice Screening Tool (CEJST). These sessions are an opportunity to obtain training on the tool or to provide the feedback on the latest version of the tool. CEQ hopes that members of the public will join these engagements to learn about the tool, ask questions, an share feedback.",
     "description": "Navigate to the public engagement page, this will be the publiceng page description 1 text"
   },
   "public.eng.page.description2.text": {
@@ -2464,7 +2468,7 @@
     "description": "Navigate to the public engagement page, this will be the publiceng page description 2 text"
   },
   "public.eng.page.description3.text": {
-    "defaultMessage": "As they become available, additional public trainings and engagement opportunities on the Climate and Economic Justice Screening Tool will also be posted on this page.",
+    "defaultMessage": "As they become available, additional public trainings and engagement opportunities on the Climate and Economic Justice Screening Tool will also be posted on this page. <link1>Sign-up</link1> for updates from CEQ",
     "description": "Navigate to the public engagement page, this will be the publiceng page description 3 text"
   },
   "public.eng.page.event.info.label": {
@@ -2540,7 +2544,11 @@
     "description": "Navigate to the public engagement page, this will be the publiceng page header text"
   },
   "public.eng.page.sub.header2.text": {
-    "defaultMessage": "Find an event",
+    "defaultMessage": "Upcoming events for CEJST version {version}",
+    "description": "Navigate to the public engagement page, this will be the publiceng page sub header text"
+  },
+  "public.eng.page.sub.header3.text": {
+    "defaultMessage": "Previous events for public beta",
     "description": "Navigate to the public engagement page, this will be the publiceng page sub header text"
   },
   "public.eng.page.tag.label": {
@@ -2552,7 +2560,11 @@
     "description": "Navigate to the public engagement page, this will be the publiceng page title text"
   },
   "public.eng.page.video.box.body.text": {
-    "defaultMessage": "Watch a recorded version of the CEJST training on YouTube.",
+    "defaultMessage": "See what's new in the version {version} of the Climate and Economic Justice Screening tool.",
+    "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box body text."
+  },
+  "public.eng.page.video.box.body2.text": {
+    "defaultMessage": "Watch a recorded version of the beta version of the CEJST training on YouTube.",
     "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box body text."
   },
   "public.eng.page.video.box.button.img.alt.text1": {
@@ -2563,16 +2575,28 @@
     "defaultMessage": "the icon to show that this button will download the file",
     "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is alt tag of the image in the 2nd button."
   },
+  "public.eng.page.video.box.button1.beta.text": {
+    "defaultMessage": "Watch on beta demo",
+    "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box button text."
+  },
   "public.eng.page.video.box.button1.text": {
     "defaultMessage": "Watch on YouTube",
     "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box button text."
+  },
+  "public.eng.page.video.box.button2.beta.text": {
+    "defaultMessage": "Download beta slide deck",
+    "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is the button text for the second button."
   },
   "public.eng.page.video.box.button2.text": {
     "defaultMessage": "Download slide deck",
     "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is the button text for the second button."
   },
+  "public.eng.page.video.box.title.beta.text": {
+    "defaultMessage": "Need information about the public beta?",
+    "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box title text."
+  },
   "public.eng.page.video.box.title.text": {
-    "defaultMessage": "Can't make an upcoming session?",
+    "defaultMessage": "Need information about the latest version of the tool?",
     "description": "Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box title text."
   },
   "public.eng.page.whejac.meeting.day.1.info": {
