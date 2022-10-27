@@ -1,7 +1,9 @@
 FROM ubuntu:20.04
 
+ENV TZ=America/Los_Angeles
+
 # Install packages
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && TZ=America/Los_Angeles DEBIAN_FRONTEND=noninteractive apt-get install -y \
     build-essential \
     make \
     gcc \
@@ -13,7 +15,6 @@ RUN apt-get update && apt-get install -y \
     gdal-bin
 
 # tippeanoe
-ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get install -y software-properties-common libsqlite3-dev zlib1g-dev
 RUN apt-add-repository -y ppa:git-core/ppa
@@ -36,7 +37,7 @@ ENV PYTHONFAULTHANDLER=1 \
   POETRY_VERSION=1.1.12
 
 WORKDIR /data-pipeline
-COPY pyproject.toml /data-pipeline/
+COPY . /data-pipeline
 
 RUN pip install "poetry==$POETRY_VERSION"
 RUN poetry config virtualenvs.create false \
@@ -44,6 +45,5 @@ RUN poetry config virtualenvs.create false \
   && poetry install --no-dev --no-interaction --no-ansi
 
 # Copy all project files into the container
-COPY . /data-pipeline
 
 CMD python3 -m data_pipeline.application data-full-run --check -s aws
