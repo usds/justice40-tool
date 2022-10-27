@@ -231,16 +231,15 @@ class PostScoreETL(ExtractTransformLoad):
         score_tiles = score_tiles[
             ~score_tiles[field_names.GEOID_TRACT_FIELD].isin(tracts_to_drop)
         ]
-
-        score_tiles[constants.TILES_SCORE_FLOAT_COLUMNS] = score_tiles[
-            constants.TILES_SCORE_FLOAT_COLUMNS
-        ].apply(
-            func=lambda series: floor_series(
-                series=series,
-                number_of_decimals=constants.TILES_ROUND_NUM_DECIMALS,
-            ),
-            axis=0,
-        )
+        float_cols = [
+            col
+            for col, col_dtype in score_tiles.dtypes.items()
+            if col_dtype == np.dtype("float64")
+        ]
+        scale_factor = 10**constants.TILES_ROUND_NUM_DECIMALS
+        score_tiles[float_cols] = (
+            score_tiles[float_cols] * scale_factor
+        ).apply(np.floor) / scale_factor
 
         logger.info("Adding fields for island areas and Puerto Rico")
         # The below operation constructs variables for the front end.
