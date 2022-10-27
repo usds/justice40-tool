@@ -847,7 +847,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               alt="The icon used to indicate that the file is downloadable"
               src="test-file-stub"
             />
-             (Codebook included with geojson 741MB unzipped)
+             (Codebook included with shapefile 741MB unzipped)
           </p>
           <p>
             <a
