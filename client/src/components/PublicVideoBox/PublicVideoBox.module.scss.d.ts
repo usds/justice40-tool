@@ -1,6 +1,7 @@
 declare namespace PublicVideoBoxNamespace {
     export interface IPublicVideoBoxScss {
         publicVideoContainer: string;
+        publicVideoContainerBeta: string;
         publicVideoLink: string;
         youTubeBtn: string;
         buttonContainer: string;

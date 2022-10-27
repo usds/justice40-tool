@@ -9,19 +9,28 @@ export interface IDownloadButtonProps {
   downloadLink: string,
   buttonText: string
   imageAltTagText: string,
-  isYellow?: boolean
+  color : 'gray' | 'yellow' | 'default'
 }
 
-const DownloadButton = ({downloadLink, buttonText, imageAltTagText, isYellow = false}: IDownloadButtonProps) => {
+const DownloadButton = ({downloadLink, buttonText, imageAltTagText, color}: IDownloadButtonProps) => {
   return (
     <a className={styles.downloadButtonLink} href={downloadLink} download>
-      <Button type="button" className={isYellow ? styles.buttonComponentYellow : styles.buttonComponent}>
+      <Button
+        type="button"
+        className={
+          color === 'yellow' ? styles.buttonComponentYellow :
+          color === 'gray' ? styles.buttonComponentGray :
+          styles.buttonComponent
+        }>
         <div className={styles.buttonContainer}>
           <div className={styles.buttonText}>
             {buttonText}
           </div>
           <img
-            className={isYellow ? styles.buttonImageYellow : styles.buttonImageBlue}
+            className={
+              color === 'yellow' ? styles.buttonImageYellow :
+              color === 'gray' ? styles.buttonImageGray :
+              styles.buttonImageBlue}
             src={fileDownloadIcon}
             alt={imageAltTagText}
           />

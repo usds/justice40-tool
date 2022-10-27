@@ -1,5 +1,11 @@
 /* eslint-disable max-len */
-import {defineMessages} from 'react-intl';
+import React from 'react';
+import {FormattedMessage} from 'gatsby-plugin-intl';
+import {defineMessages} from 'gatsby-plugin-intl';
+
+import {linkFn} from './common';
+import {VERSION_NUMBER} from './methodology';
+
 import mar9 from '../../images/eventDates/mar9.svg';
 import mar10 from '../../images/eventDates/mar10.svg';
 import mar16 from '../../images/eventDates/mar16.svg';
@@ -31,18 +37,10 @@ export const PAGE_INTRO = defineMessages({
     defaultMessage: 'Public engagement opportunities',
     description: 'Navigate to the public engagement page, this will be the publiceng page header text',
   },
-  PAGE_HEADING2: {
-    id: 'public.eng.page.sub.header2.text',
-    defaultMessage: 'Find an event',
-    description: 'Navigate to the public engagement page, this will be the publiceng page sub header text',
-  },
   PAGE_DESCRIPTION1: {
     id: 'public.eng.page.description1.text',
     defaultMessage: `
-      CEQ is hosting engagement opportunities to connect with the public about the current version of the 
-      tool. These sessions are an opportunity to obtain training on the tool or to provide feedback on the 
-      beta version of the tool. CEQ hopes that members of the public will join these engagements to learn 
-      about the tool, have their questions answered, and share feedback.
+      The Council on Environmental Quality (CEQ) is hosting engagement opportunities to connect with the public about the current versions of the Climate and Economic Justice Screening Tool (CEJST). These sessions are an opportunity to obtain training on the tool or to provide the feedback on the latest version of the tool. CEQ hopes that members of the public will join these engagements to learn about the tool, ask questions, an share feedback.
     `,
     description: 'Navigate to the public engagement page, this will be the publiceng page description 1 text',
   },
@@ -53,13 +51,12 @@ export const PAGE_INTRO = defineMessages({
     `,
     description: 'Navigate to the public engagement page, this will be the publiceng page description 2 text',
   },
-  PAGE_DESCRIPTION3: {
-    id: 'public.eng.page.description3.text',
+  PAGE_COMING_SOON: {
+    id: 'public.eng.page.coming.soon.text',
     defaultMessage: `
-      As they become available, additional public trainings and engagement opportunities on the Climate 
-      and Economic Justice Screening Tool will also be posted on this page.
+      Coming soon!
     `,
-    description: 'Navigate to the public engagement page, this will be the publiceng page description 3 text',
+    description: 'Navigate to the public engagement page, this will be the publiceng page coming soon text',
   },
   SURVEY_TEXT: {
     id: 'fab.survey.text',
@@ -68,20 +65,74 @@ export const PAGE_INTRO = defineMessages({
   },
 });
 
+export const RICH_COPY = {
+  PAGE_DESCRIPTION3: <FormattedMessage
+    id= {`public.eng.page.description3.text`}
+    defaultMessage={`
+    As they become available, additional public trainings and engagement opportunities on the  Climate and Economic Justice Screening Tool will also be posted on this page. <link1>Sign-up</link1> for updates from CEQ
+  `}
+    description={`Navigate to the public engagement page, this will be the publiceng page description 3 text`}
+    values={{
+      link1: linkFn('https://www.surveymonkey.com/r/whceqej', false, true),
+    }}
+  />,
+  PAGE_HEADING2: <FormattedMessage
+    id={'public.eng.page.sub.header2.text'}
+    defaultMessage={'Upcoming events for CEJST version {version}'}
+    description={'Navigate to the public engagement page, this will be the publiceng page sub header text'}
+    values={{
+      version: VERSION_NUMBER,
+    }}
+  />,
+  PAGE_HEADING3: <FormattedMessage
+    id={'public.eng.page.sub.header3.text'}
+    defaultMessage={'Previous events for public beta'}
+    description={'Navigate to the public engagement page, this will be the publiceng page sub header text'}
+    values={{
+      version: VERSION_NUMBER,
+    }}
+  />,
+  VIDEO_BOX_BODY1: <FormattedMessage
+    id={ 'public.eng.page.video.box.body.text'}
+    defaultMessage={ `
+    See what's new in the version {version} of the Climate and Economic Justice Screening tool.
+  `}
+    description={'Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box body text.'}
+    values={{
+      version: VERSION_NUMBER,
+    }}
+  />,
+  VIDEO_BOX_BODY2: <FormattedMessage
+    id={ 'public.eng.page.video.box.body2.text'}
+    defaultMessage={ `
+      Watch a recorded version of the beta version of the CEJST training on YouTube.
+  `}
+    description={'Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box body text.'}
+    values={{
+      version: VERSION_NUMBER,
+    }}
+  />,
+};
+
 export const PUBLIC_ENG_VIDEO = defineMessages({
   TITLE: {
     id: 'public.eng.page.video.box.title.text',
-    defaultMessage: `Can't make an upcoming session?`,
+    defaultMessage: `Need information about the latest version of the tool?`,
     description: 'Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box title text.',
   },
-  BODY: {
-    id: 'public.eng.page.video.box.body.text',
-    defaultMessage: `Watch a recorded version of the CEJST training on YouTube.`,
-    description: 'Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box body text.',
+  TITLE_BETA: {
+    id: 'public.eng.page.video.box.title.beta.text',
+    defaultMessage: `Need information about the public beta?`,
+    description: 'Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box title text.',
   },
   BUTTON1_TEXT: {
     id: 'public.eng.page.video.box.button1.text',
     defaultMessage: `Watch on YouTube`,
+    description: 'Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box button text.',
+  },
+  BUTTON1_BETA_TEXT: {
+    id: 'public.eng.page.video.box.button1.beta.text',
+    defaultMessage: `Watch on beta demo`,
     description: 'Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is that box button text.',
   },
   IMG_ALT_TEXT1: {
@@ -92,6 +143,11 @@ export const PUBLIC_ENG_VIDEO = defineMessages({
   BUTTON2_TEXT: {
     id: 'public.eng.page.video.box.button2.text',
     defaultMessage: `Download slide deck`,
+    description: 'Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is the button text for the second button.',
+  },
+  BUTTON2_BETA_TEXT: {
+    id: 'public.eng.page.video.box.button2.beta.text',
+    defaultMessage: `Download beta slide deck`,
     description: 'Navigate to the public engagement page, there will be box that allows users to watch previously recorded videos. This is the button text for the second button.',
   },
   IMG_ALT_TEXT2: {
