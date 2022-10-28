@@ -28,8 +28,6 @@ DATASET_LIST = [
         "module_dir": "census_decennial",
         "class_name": "CensusDecennialETL",
         "is_memory_intensive": False,
-    },
-    {
         "name": "mapping_for_ej",
         "module_dir": "mapping_for_ej",
         "class_name": "MappingForEJETL",

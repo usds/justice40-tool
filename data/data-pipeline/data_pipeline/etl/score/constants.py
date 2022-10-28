@@ -1,4 +1,3 @@
-import datetime
 import os
 from pathlib import Path
 
@@ -47,12 +46,6 @@ DATA_SCORE_JSON_INDEX_FILE_PATH = (
 DATA_SCORE_TILES_DIR = DATA_SCORE_DIR / "tiles"
 
 # Downloadable paths
-if not os.environ.get("J40_VERSION_DATE_STRING"):
-    current_dt = datetime.datetime.now()
-    timestamp_str = current_dt.strftime("%Y-%m-%d-%H%MGMT")
-else:
-    timestamp_str = os.environ.get("J40_VERSION_DATE_STRING")
-
 if not os.environ.get("J40_VERSION_LABEL_STRING"):
     version_str = "beta"
 else:
@@ -64,29 +57,25 @@ SCORE_DOWNLOADABLE_PDF_FILE_PATH = FILES_PATH / SCORE_DOWNLOADABLE_PDF_FILE_NAME
 SCORE_DOWNLOADABLE_TSD_FILE_NAME = "cejst-technical-support-document.pdf"
 SCORE_DOWNLOADABLE_TSD_FILE_PATH = FILES_PATH / SCORE_DOWNLOADABLE_TSD_FILE_NAME
 SCORE_DOWNLOADABLE_CSV_FILE_PATH = (
-    SCORE_DOWNLOADABLE_DIR / f"{version_str}-communities-{timestamp_str}.csv"
+    SCORE_DOWNLOADABLE_DIR / f"{version_str}-communities.csv"
 )
 SCORE_DOWNLOADABLE_EXCEL_FILE_PATH = (
-    SCORE_DOWNLOADABLE_DIR / f"{version_str}-communities-{timestamp_str}.xlsx"
+    SCORE_DOWNLOADABLE_DIR / f"{version_str}-communities.xlsx"
 )
 SCORE_DOWNLOADABLE_CODEBOOK_FILE_PATH = (
-    SCORE_DOWNLOADABLE_DIR / f"{version_str}-codebook-{timestamp_str}.csv"
+    SCORE_DOWNLOADABLE_DIR / f"{version_str}-codebook.csv"
 )
 SCORE_DOWNLOADABLE_CSV_ZIP_FILE_PATH = (
-    SCORE_DOWNLOADABLE_DIR
-    / f"{version_str}-communities-csv-{timestamp_str}.zip"
+    SCORE_DOWNLOADABLE_DIR / f"{version_str}-communities-csv.zip"
 )
 SCORE_DOWNLOADABLE_XLS_ZIP_FILE_PATH = (
-    SCORE_DOWNLOADABLE_DIR
-    / f"{version_str}-communities-xls-{timestamp_str}.zip"
+    SCORE_DOWNLOADABLE_DIR / f"{version_str}-communities-xls.zip"
 )
 SCORE_VERSIONING_DATA_DOCUMENTATION_ZIP_FILE_PATH = (
-    SCORE_DOWNLOADABLE_DIR
-    / f"{version_str}-data-documentation-{timestamp_str}.zip"
+    SCORE_DOWNLOADABLE_DIR / f"{version_str}-data-documentation.zip"
 )
 SCORE_VERSIONING_SHAPEFILE_CODEBOOK_FILE_PATH = (
-    SCORE_DOWNLOADABLE_DIR
-    / f"{version_str}-shapefile-codebook-{timestamp_str}.zip"
+    SCORE_DOWNLOADABLE_DIR / f"{version_str}-shapefile-codebook.zip"
 )
 SCORE_VERSIONING_README_FILE_NAME = f"README-version-{version_str}.md"
 SCORE_VERSIONING_README_FILE_PATH = (
