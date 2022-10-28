@@ -12,6 +12,7 @@ import SubPageNav from '../components/SubPageNav';
 import * as PREV_VER_COPY from '../data/copy/previousVer';
 import * as CONSTANTS from '../data/constants';
 import {PAGES_ENDPOINTS} from '../data/constants';
+import {getDownloadFileUrl} from '../data/copy/downloads';
 
 interface IPreviousVersionsProps {
   location: Location;
@@ -51,13 +52,17 @@ const PreviousVersions = ({location}: IPreviousVersionsProps) => {
                   </CardBody>
                   <CardFooter>
                     <DownloadButton
-                      downloadLink=''
+                      downloadLink={
+                        getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_BETA_DATA_DOC, true)
+                      }
                       buttonText={intl.formatMessage(PREV_VER_COPY.BUTTON.TITLE1)}
                       imageAltTagText={intl.formatMessage(PREV_VER_COPY.BUTTON.BUTTON1_ALT_TAG)}
                       color={'default'}
                     />
                     <DownloadButton
-                      downloadLink=''
+                      downloadLink={
+                        getDownloadFileUrl(process.env.GATSBY_FILE_DL_PATH_BETA_SHAPE_FILE_ZIP, true)
+                      }
                       buttonText={intl.formatMessage(PREV_VER_COPY.BUTTON.TITLE2)}
                       imageAltTagText={intl.formatMessage(PREV_VER_COPY.BUTTON.BUTTON2_ALT_TAG)}
                       color={'default'}
