@@ -14,6 +14,7 @@ services:
     environment:
       ENV_FOR_DYNACONF: development
       PYTHONUNBUFFERED: 1
+      TZ: America/Los_Angeles
 
   # The score_server serves the data-pipeline volume as a URL
   j40_score_server:
@@ -24,6 +25,9 @@ services:
       - ./data/data-pipeline/data_pipeline/data/score:/data/data-pipeline/data_pipeline/data/score
     ports:
       - 5000:8080
+    environment:
+      TZ: America/Los_Angeles
+
 
   #The j40_website service runs the web app / map / site
   j40_website:
@@ -39,6 +43,7 @@ services:
       # open source one from CartoDB), please create your own API TOKEN from
       # your MapBox account and add the token here:
       MAPBOX_STYLES_READ_TOKEN: ""
+      TZ: America/Los_Angeles
     volumes:
       - ./client/src:/client/src
     ports:
