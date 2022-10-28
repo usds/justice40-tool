@@ -10,15 +10,10 @@ on:
         options:
         - beta
         - 1.0
-      score_date:
-        description: "What is today's date, in YYYY-MM-DD format?"
-        required: true
-        type: string
 
 env:
   CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
   J40_VERSION_LABEL_STRING: ${{ inputs.score_version }}
-  J40_VERSION_DATE_STRING: ${{ inputs.score_date }}
 
 jobs:
   generate-score-tiles:
