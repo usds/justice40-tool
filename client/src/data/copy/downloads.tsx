@@ -504,7 +504,7 @@ export const DOWNLOAD_LINKS = {
   />,
   LINK3: <FormattedMessage
     id={'download.page.download.file.3'}
-    defaultMessage={`<link3>Shapefile</link3> (Codebook included with geojson {shapeFileSize} unzipped)`}
+    defaultMessage={`<link3>Shapefile</link3> (Codebook included with shapefile {shapeFileSize} unzipped)`}
     description={'Navigate to the download page. This is third download file link'}
     values={{
       link3: COMMON_COPY.downloadLink(DOWNLOAD_FILES.SHAPE_FILE.URL),
