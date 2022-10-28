@@ -30,11 +30,6 @@ DATASET_LIST = [
         "class_name": "CensusDecennialETL",
     },
     {
-        "name": "housing_and_transportation",
-        "module_dir": "housing_and_transportation",
-        "class_name": "HousingTransportationETL",
-    },
-    {
         "name": "mapping_for_ej",
         "module_dir": "mapping_for_ej",
         "class_name": "MappingForEJETL",
