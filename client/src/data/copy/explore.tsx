@@ -1362,6 +1362,8 @@ export const LOW_INCOME_TOOLTIP = defineMessages({
     description: 'Hover over the low income icon and it will show Tracts with missing income data are given estimated incomes based on an average of the incomes of the surrounding tracts. Tracts that are surrounded by tracts that are considered disadvantaged have a low income threshold.',
   },
 });
+
+
 export const DOWNLOAD_DRAFT = {
   PARAGRAPH_1: <FormattedMessage
     id={'explore.map.page.under.map.download.draft.ptag.1'}
@@ -1373,15 +1375,15 @@ export const DOWNLOAD_DRAFT = {
       map that will download the data packet
     `}
     values={{
-      link1: COMMON_COPY.downloadLink(DOWNLOADS_COPY.DOWNLOAD_FILES.SHAPE_FILE.URL),
+      link1: COMMON_COPY.downloadLink(DOWNLOADS_COPY.DOWNLOAD_FILES.NARWAL.SHAPE_FILE.URL),
       downloadFileSize: <FormattedNumber
-        value={DOWNLOADS_COPY.DOWNLOAD_FILES.SHAPE_FILE.SIZE}
+        value={DOWNLOADS_COPY.DOWNLOAD_FILES.NARWAL.SHAPE_FILE.SIZE}
         style="unit"
         unit="megabyte"
         unitDisplay="narrow"
       />,
       dateUpdated: <FormattedDate
-        value={DOWNLOADS_COPY.DOWNLOAD_FILES.SHAPE_FILE.LAST_UPDATED}
+        value={DOWNLOADS_COPY.DOWNLOAD_FILES.NARWAL.SHAPE_FILE.LAST_UPDATED}
         year="2-digit"
         month="2-digit"
         day="2-digit"

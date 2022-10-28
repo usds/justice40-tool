@@ -818,7 +818,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               alt="The icon used to indicate that the file is downloadable"
               src="test-file-stub"
             />
-             (.xlsx 24.9MB)
+             (.xlsx 35.6MB)
       
           </p>
           <p>
@@ -833,7 +833,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               alt="The icon used to indicate that the file is downloadable"
               src="test-file-stub"
             />
-             (.csv 28.1MB)
+             (.csv 42MB)
           </p>
           <p>
             <a
@@ -847,7 +847,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               alt="The icon used to indicate that the file is downloadable"
               src="test-file-stub"
             />
-             (Codebook included with shapefile 741MB unzipped)
+             (Codebook included with shapefile 356.8MB unzipped)
           </p>
           <p>
             <a
@@ -859,7 +859,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             >
               Technical support document
             </a>
-             (.pdf 2.5MB)
+             (.pdf 2.4MB)
           </p>
           <p>
             <a
@@ -871,7 +871,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             >
               How to use the list of communities
             </a>
-             (.pdf 674kB)
+             (.pdf 658.3kB)
           </p>
         </div>
         <div
