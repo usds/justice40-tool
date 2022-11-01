@@ -24,6 +24,8 @@ import mar31Exp from '../../images/eventDates/mar31-inactive.svg';
 import apr15Exp from '../../images/eventDates/apr15-inactive.svg';
 import may10Exp from '../../images/eventDates/may10-inactive.svg';
 import may19Exp from '../../images/eventDates/may19-inactive.svg';
+import oct4Exp from '../../images/eventDates/oct4-inactive.svg';
+import oct9Exp from '../../images/eventDates/oct9-inactive.svg';
 
 
 export const PAGE_INTRO = defineMessages({
@@ -309,7 +311,6 @@ export const EVENTS = [
     }),
     REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_q86iMtpwTESYa6f0xpIk7g`,
     DATA_CY: `mar-16-reg-link-block`,
-
   },
   {
     DATE: new Date(2022, 2, 23),
@@ -413,5 +414,39 @@ export const EVENTS = [
     }),
     REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_1PR73vLDQpq1zoAWkhKB5g`,
     DATA_CY: `may-19-reg-link-block`,
+  },
+  {
+    DATE: new Date(2022, 9, 5),
+    NAME: EVENT_TYPES.TRAINING_SESS.NAME,
+    DESC: EVENT_TYPES.TRAINING_SESS.DESCRIPTION,
+    NUMBER: 4,
+    IMAGE: oct4Exp,
+    EXPIRED_IMG: oct4Exp,
+    FIELDS: defineMessages({
+      INFO: {
+        id: 'public.eng.page.event.training.4.info',
+        defaultMessage: `October 4th (4:00 - 5:00 PM EST)`,
+        description: 'Navigate to the public engagement page, this will be the public engagement page event training session 4 date',
+      },
+    }),
+    REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_q86iMtpwTESYa6f0xpIk7g`,
+    DATA_CY: `oct-4-reg-link-block`,
+  },
+  {
+    DATE: new Date(2022, 9, 10),
+    NAME: EVENT_TYPES.TRAINING_SESS.NAME,
+    DESC: EVENT_TYPES.TRAINING_SESS.DESCRIPTION,
+    NUMBER: 5,
+    IMAGE: oct9Exp,
+    EXPIRED_IMG: oct9Exp,
+    FIELDS: defineMessages({
+      INFO: {
+        id: 'public.eng.page.event.training.5.info',
+        defaultMessage: `October 9th (4:00 - 5:00 PM EST)`,
+        description: 'Navigate to the public engagement page, this will be the public engagement page event training session 5 date',
+      },
+    }),
+    REG_LINK: `https://pitc.zoomgov.com/webinar/register/WN_q86iMtpwTESYa6f0xpIk7g`,
+    DATA_CY: `oct-9-reg-link-block`,
   },
 ];

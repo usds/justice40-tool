@@ -421,70 +421,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
         <div
           class="desktop:grid-col-4"
           data-testid="grid"
-        >
-          <div
-            class="usa-summary-box"
-            data-testid="summary-box"
-          >
-            <div
-              class="usa-summary-box__body"
-            >
-              <h2
-                class="usa-summary-box__heading"
-              >
-                Need information about the latest version of the tool?
-              </h2>
-              <div
-                class="usa-summary-box__text"
-              >
-                
-    See what's new in the version 1.0 of the Climate and Economic Justice Screening tool.
-  
-                <a
-                  href="https://www.youtube.com/watch?v=QwHWcXbhw28"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  <button
-                    class="usa-button"
-                    data-testid="button"
-                    type="button"
-                  >
-                    <div>
-                      <div>
-                        Watch on YouTube
-                      </div>
-                      <img
-                        alt="the icon to show that this button will open in a new tab"
-                        src="test-file-stub"
-                      />
-                    </div>
-                  </button>
-                </a>
-                <a
-                  download=""
-                  href="https://static-data-screeningtool.geoplatform.gov/data-pipeline/data/score/downloadable/technical-training-slides.pptx"
-                >
-                  <button
-                    class="usa-button"
-                    data-testid="button"
-                    type="button"
-                  >
-                    <div>
-                      <div>
-                        Download slide deck
-                      </div>
-                      <img
-                        alt="the icon to show that this button will download the file"
-                        src="test-file-stub"
-                      />
-                    </div>
-                  </button>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+        />
       </div>
       <div
         class="grid-row"
@@ -523,6 +460,73 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             </li>
           </ul>
         </div>
+        <div
+          class="desktop:grid-col-4"
+          data-testid="grid"
+        >
+          <div
+            class="usa-summary-box"
+            data-testid="summary-box"
+          >
+            <div
+              class="usa-summary-box__body"
+            >
+              <h2
+                class="usa-summary-box__heading"
+              >
+                Need information about the public beta?
+              </h2>
+              <div
+                class="usa-summary-box__text"
+              >
+                
+      Watch a recorded version of the beta version of the CEJST training on YouTube.
+  
+                <a
+                  href="https://www.youtube.com/watch?v=QwHWcXbhw28"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <button
+                    class="usa-button"
+                    data-testid="button"
+                    type="button"
+                  >
+                    <div>
+                      <div>
+                        Watch on beta demo
+                      </div>
+                      <img
+                        alt="the icon to show that this button will open in a new tab"
+                        src="test-file-stub"
+                      />
+                    </div>
+                  </button>
+                </a>
+                <a
+                  download=""
+                  href="https://static-data-screeningtool.geoplatform.gov/data-pipeline/data/score/downloadable/technical-training-slides.pptx"
+                >
+                  <button
+                    class="usa-button"
+                    data-testid="button"
+                    type="button"
+                  >
+                    <div>
+                      <div>
+                        Download beta slide deck
+                      </div>
+                      <img
+                        alt="the icon to show that this button will download the file"
+                        src="test-file-stub"
+                      />
+                    </div>
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div
         class="grid-row"
@@ -544,6 +548,116 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
             class="usa-collection"
             data-testid="collection"
           >
+            <li
+              class="usa-collection__item"
+            >
+              <img
+                alt="Alt text"
+                class="usa-collection__img"
+                src="test-file-stub"
+              />
+              <div
+                class="usa-collection__body"
+              >
+                <h3
+                  class="usa-collection__heading"
+                >
+                  CEJST training session #5
+                </h3>
+                <p
+                  class="usa-collection__description"
+                >
+                  
+        The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital 
+        Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic 
+        Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to 
+        use the current version of the tool. The presenters at these webinars will be available to 
+        provide technical support and address issues related to accessing and using the tool.
+      
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <b>
+                    Event info
+                  </b>
+                  : October 9th (4:00 - 5:00 PM EST)
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <a
+                    href="https://pitc.zoomgov.com/webinar/register/WN_q86iMtpwTESYa6f0xpIk7g"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <button
+                      class="usa-button"
+                      data-testid="button"
+                      disabled=""
+                      type="button"
+                    >
+                      Registration link
+                    </button>
+                  </a>
+                </p>
+              </div>
+            </li>
+            <li
+              class="usa-collection__item"
+            >
+              <img
+                alt="Alt text"
+                class="usa-collection__img"
+                src="test-file-stub"
+              />
+              <div
+                class="usa-collection__body"
+              >
+                <h3
+                  class="usa-collection__heading"
+                >
+                  CEJST training session #4
+                </h3>
+                <p
+                  class="usa-collection__description"
+                >
+                  
+        The White House Council on Environmental Quality (CEQ), in partnership with the U.S. Digital 
+        Service, is hosting a series of 'Training Webinars' for users of the Climate and Economic 
+        Justice Screening Tool. These webinars are an opportunity for members of the public to learn how to 
+        use the current version of the tool. The presenters at these webinars will be available to 
+        provide technical support and address issues related to accessing and using the tool.
+      
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <b>
+                    Event info
+                  </b>
+                  : October 4th (4:00 - 5:00 PM EST)
+                </p>
+                <p
+                  class="usa-collection__description"
+                >
+                  <a
+                    href="https://pitc.zoomgov.com/webinar/register/WN_q86iMtpwTESYa6f0xpIk7g"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <button
+                      class="usa-button"
+                      data-testid="button"
+                      disabled=""
+                      type="button"
+                    >
+                      Registration link
+                    </button>
+                  </a>
+                </p>
+              </div>
+            </li>
             <li
               class="usa-collection__item"
             >
@@ -1032,73 +1146,6 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               </div>
             </li>
           </ul>
-        </div>
-        <div
-          class="desktop:grid-col-4"
-          data-testid="grid"
-        >
-          <div
-            class="usa-summary-box"
-            data-testid="summary-box"
-          >
-            <div
-              class="usa-summary-box__body"
-            >
-              <h2
-                class="usa-summary-box__heading"
-              >
-                Need information about the public beta?
-              </h2>
-              <div
-                class="usa-summary-box__text"
-              >
-                
-      Watch a recorded version of the beta version of the CEJST training on YouTube.
-  
-                <a
-                  href="https://www.youtube.com/watch?v=QwHWcXbhw28"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  <button
-                    class="usa-button"
-                    data-testid="button"
-                    type="button"
-                  >
-                    <div>
-                      <div>
-                        Watch on beta demo
-                      </div>
-                      <img
-                        alt="the icon to show that this button will open in a new tab"
-                        src="test-file-stub"
-                      />
-                    </div>
-                  </button>
-                </a>
-                <a
-                  download=""
-                  href="https://static-data-screeningtool.geoplatform.gov/data-pipeline/data/score/downloadable/technical-training-slides.pptx"
-                >
-                  <button
-                    class="usa-button"
-                    data-testid="button"
-                    type="button"
-                  >
-                    <div>
-                      <div>
-                        Download beta slide deck
-                      </div>
-                      <img
-                        alt="the icon to show that this button will download the file"
-                        src="test-file-stub"
-                      />
-                    </div>
-                  </button>
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

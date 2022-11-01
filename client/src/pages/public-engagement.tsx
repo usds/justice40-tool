@@ -40,7 +40,7 @@ const PublicEngagementPage = ({location}: IPublicEngagementPageProps) => {
             </p>
           </Grid>
           <Grid desktop={{col: 4}}>
-            <PublicVideoBox isBeta={false}/>
+            {/* <PublicVideoBox isBeta={false}/> */}
           </Grid>
         </Grid>
 
@@ -60,6 +60,9 @@ const PublicEngagementPage = ({location}: IPublicEngagementPageProps) => {
               </CollectionItem>
             </Collection>
           </Grid>
+          <Grid desktop={{col: 4}}>
+            <PublicVideoBox isBeta={true}/>
+          </Grid>
         </Grid>
 
         <Grid row>
@@ -74,9 +77,6 @@ const PublicEngagementPage = ({location}: IPublicEngagementPageProps) => {
             <Collection>
               {events.map((event, index) => <PublicEvent key={index} event={event} />)}
             </Collection>
-          </Grid>
-          <Grid desktop={{col: 4}}>
-            <PublicVideoBox isBeta={true}/>
           </Grid>
         </Grid>
 
