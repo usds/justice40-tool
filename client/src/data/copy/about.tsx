@@ -73,11 +73,12 @@ export const CONTENT = {
   <FormattedMessage
     id={'about.page.paragraph.4'}
     defaultMessage={`
-      CEQ will update the tool each year based on public feedback, research, and the availability of new data. The current version of the tool is version {version}.
+      CEQ will update the tool each year based on public feedback, research, and the availability of new data. The current version of the tool is version {version}. <link1>Sign-up</link1> for updates from CEQ
     `}
     description={'Navigate to the About page. This is the paragraph 4'}
     values={{
       version: VERSION_NUMBER,
+      link1: linkFn('https://www.surveymonkey.com/r/whceqej', false, true),
     }}
   />,
   USE_DATA_PARA:
