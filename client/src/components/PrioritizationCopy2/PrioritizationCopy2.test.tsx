@@ -14,7 +14,7 @@ describe('rendering of PrioritizationCopy2 Component', () => {
       tribalCountUS: null,
       percentTractTribal: 2,
       // eslint-disable-next-line max-len
-      para1: `The Federally-Recognized Tribal lands that cover 2% of this tract are also considered disadvantaged.`,
+      para1: `The lands of Federally Recognized Tribes that cover 2% of this tract are also considered disadvantaged.`,
     },
     {
       totalCategoriesPrioritized: 0,
@@ -25,7 +25,7 @@ describe('rendering of PrioritizationCopy2 Component', () => {
       tribalCountUS: 3,
       percentTractTribal: 4,
       // eslint-disable-next-line max-len
-      para1: `The Federally-Recognized Tribal lands that cover 4% of this tract are also considered disadvantaged.`,
+      para1: `The lands of Federally Recognized Tribes that cover 4% of this tract are also considered disadvantaged.`,
     },
   ];
 

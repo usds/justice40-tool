@@ -69,7 +69,7 @@ const PrioritizationCopy =
         tribalCountAK === null
          ) {
            if (percentTractTribal === null) {
-             prioCopyRendered = EXPLORE_COPY.getPrioFRTCopy(`${tribalCountUS}`);
+             prioCopyRendered = EXPLORE_COPY.getPrioFRTPointsCopy(`${tribalCountUS}`);
            } else if (percentTractTribal === 0) {
              prioCopyRendered = EXPLORE_COPY.getPrioFRTCopy(`less than 1%`);
            } else if (percentTractTribal >= 1) {

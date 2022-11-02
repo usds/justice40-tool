@@ -61,7 +61,7 @@ const PrioritizationCopy2 =
          prioCopy2Rendered = EXPLORE_COPY.getPrioPercAndNumPointsAlsoCopy(`less than 1%`, tribalCountUS);
        } else if (
          tribalCountAK === null &&
-        tribalCountUS !== null &&
+        tribalCountUS === null &&
         (percentTractTribal !== null && percentTractTribal == 0)
        ) {
          prioCopy2Rendered = EXPLORE_COPY.getPrioFRTCopy(`less than 1%`, true);
@@ -80,6 +80,20 @@ const PrioritizationCopy2 =
          prioCopy2Rendered = <></>;
          noStyles = true;
        }
+     } else if (
+       (totalCategoriesPrioritized === 0 && !(isAdjacencyThreshMet && isAdjacencyLowIncome)) &&
+      tribalCountAK === null &&
+      (tribalCountUS !== null && tribalCountUS >= 1) &&
+      (percentTractTribal !== null && percentTractTribal >= 0)
+     ) {
+       prioCopy2Rendered = EXPLORE_COPY.getPrioFRTPointsCopy(tribalCountUS, true);
+     } else if (
+       (totalCategoriesPrioritized >= 1) &&
+        tribalCountAK == null &&
+        (tribalCountUS !== null && tribalCountUS >= 1) &&
+        percentTractTribal == null
+     ) {
+       prioCopy2Rendered = EXPLORE_COPY.getPrioFRTPointsCopy(tribalCountUS, true);
      } else {
        prioCopy2Rendered = <></>;
        noStyles = true;

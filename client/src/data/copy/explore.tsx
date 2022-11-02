@@ -33,7 +33,7 @@ export const PAGE_INTRO = defineMessages({
 export const PAGE_DESCRIPTION1 = <FormattedMessage
   id={'explore.map.page.description.1'}
   defaultMessage={`
-    Census tracts that are overburdened and underserved census tracts are highlighted as being disadvantaged on the map. These include Federally-Recognized Tribal lands, including Alaska Native Villages. 
+    Census tracts that are overburdened and underserved census tracts are highlighted as being disadvantaged on the map. These include Federally Recognized Tribal lands, including Alaska Native Villages. 
   `}
   description={'On the explore the map page, the first description of the page'}
   // values={{
@@ -640,10 +640,25 @@ export const getPrioFRTCopy = (amount:string, isAlso:boolean = false) => {
   return (
     <FormattedMessage
       id={'explore.map.page.side.panel.prio.copy.prio.frt.n.perc'}
-      defaultMessage={ 'The Federally-Recognized Tribal lands that cover {amount} of this tract are {also} considered disadvantaged.'}
-      description={`Navigate to the explore the map page. Click on tract, The Federally-Recognized Tribal lands that cover [#%] of this tract are considered disadvantaged.`}
+      defaultMessage={ 'The lands of Federally Recognized Tribes that cover {amount} of this tract are {also} considered disadvantaged.'}
+      description={`Navigate to the explore the map page. Click on tract, The lands of Federally Recognized Tribes that cover [#%] of this tract are considered disadvantaged.`}
       values={{
         amount: amount,
+        also: isAlso? 'also' : '',
+      }}
+    />
+  );
+};
+
+// Copy around Federally recognized tribes points copy
+export const getPrioFRTPointsCopy = (numPoints:string, isAlso:boolean = false) => {
+  return (
+    <FormattedMessage
+      id={'explore.map.page.side.panel.prio.copy.prio.frt.n.perc'}
+      defaultMessage={ 'The {numPoints} that are Federally Recognized Tribes in this tract are are {also} considered disadvantaged.'}
+      description={`Navigate to the explore the map page. Click on tract, The {numPoints} that are Federally Recognized Tribes in this tract ares are {also} considered disadvantaged.`}
+      values={{
+        numPoints: numPoints,
         also: isAlso? 'also' : '',
       }}
     />
@@ -655,8 +670,8 @@ export const getPrioANVCopy = (numPoints:number, isAlso:boolean = false) => {
   return (
     <FormattedMessage
       id={'explore.map.page.side.panel.prio.copy.prio.frt.n.perc'}
-      defaultMessage={ 'The {numPoints} Alaskan Native Villages in this tract that are Federally-Recognized are {also} considered disadvantaged.'}
-      description={`Navigate to the explore the map page. Click on tract, The {numPoints} of this tract that are Federally-Recognized Tribal lands are {also} considered disadvantaged.`}
+      defaultMessage={ 'The {numPoints} Alaskan Native Villages in this tract that are Federally Recognized are {also} considered disadvantaged.'}
+      description={`Navigate to the explore the map page. Click on tract, The {numPoints} of this tract that are Federally Recognized Tribal lands are {also} considered disadvantaged.`}
       values={{
         numPoints: numPoints,
         also: isAlso? 'also' : '',
@@ -670,8 +685,8 @@ export const getPrioAKUSCopy = (numAKpoints:number, numUSpoints:number, isAlso:b
   return (
     <FormattedMessage
       id={'explore.map.page.side.panel.prio.copy.prio.frt.n.perc'}
-      defaultMessage={ 'The {numAKpoints} Alaskan Native Villages and the {numUSpoints} tribes in this tract that are Federally-Recognized are {also} considered disadvantaged.'}
-      description={`Navigate to the explore the map page. Click on tract, The {numAKpoints} Alaskan Native Villages and the {numUSpoints} tribes in this tract that are Federally-Recognized are considered disadvantaged.`}
+      defaultMessage={ 'The {numAKpoints} Alaskan Native Villages and the {numUSpoints} tribes in this tract that are Federally Recognized are {also} considered disadvantaged.'}
+      description={`Navigate to the explore the map page. Click on tract, The {numAKpoints} Alaskan Native Villages and the {numUSpoints} tribes in this tract that are Federally Recognized are considered disadvantaged.`}
       values={{
         numAKpoints: numAKpoints,
         numUSpoints: numUSpoints,
@@ -686,8 +701,8 @@ export const getPrioPercAndNumPointsAlsoCopy = (amount:string, numPoints:number)
   return (
     <FormattedMessage
       id={'explore.map.page.side.panel.prio.copy.prio.frt.n.perc'}
-      defaultMessage={ 'The Federally-Recognized Tribal lands that cover {amount} of this tract and the {numPoints} tribes that are Federally-Recognized are also considered disadvantaged.'}
-      description={`Navigate to the explore the map page. Click on tract, The Federally-Recognized Tribal lands that cover {amount} of this tract and the {numPoints} tribes that are Federally-Recognized are also considered disadvantaged.`}
+      defaultMessage={ 'The lands of Federally Recognized Tribes that cover {amount} of this tract and the {numPoints} tribes that are Federally Recognized are also considered disadvantaged.'}
+      description={`Navigate to the explore the map page. Click on tract, The Federally Recognized Tribal lands that cover {amount} of this tract and the {numPoints} tribes that are Federally Recognized are also considered disadvantaged.`}
       values={{
         amount: amount,
         numPoints: numPoints,
