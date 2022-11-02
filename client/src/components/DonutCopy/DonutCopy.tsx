@@ -28,7 +28,7 @@ const DonutCopy = ({isAdjacent, povertyBelow200Percentile}: IDonutCopyProps) => 
       <div className={styles.donutRow}>
         <div className={styles.donutRowLabel}>{intl.formatMessage(EXPLORE_COPY.DONUT_COPY.ADJ_LOW_INC)}</div>
         <div className={styles.valueSubTextContainer}>
-          <div className={isAdjacent ? styles.invert : styles.noInvert}>
+          <div className={isAdjacent && povBel200Percentile >= threshold ? styles.invert : styles.noInvert}>
             <IndicatorValue
               type={'percentile'}
               displayStat={povBel200Percentile}
