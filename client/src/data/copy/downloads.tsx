@@ -31,7 +31,7 @@ export const PAGE_INTRO = defineMessages({
 export const getDownloadFileUrl = (filePath:string | undefined, isBeta: boolean) => {
   return [
     process.env.GATSBY_CDN_TILES_BASE_URL,
-    (isBeta ? process.env.GATSBY_FILE_DL_BETA_SCORE_PATH : process.env.GATSBY_FILE_DL_1_0_SCORE_PATH),
+    (isBeta ? process.env.GATSBY_BETA_SCORE_PATH : process.env.GATSBY_1_0_SCORE_PATH),
     filePath,
   ].join('/');
 };
