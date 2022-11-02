@@ -839,8 +839,11 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
 
       </div>
 
-      {/* Only show the DonutCopy if Adjacency index is true */}
-      { properties[constants.ADJACENCY_EXCEEDS_THRESH] && <DonutCopy
+      {/* Only show the DonutCopy if Adjacency index is true and the total number of disadv ind == 0 */}
+      {
+        (properties[constants.ADJACENCY_EXCEEDS_THRESH] &&
+        properties[constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS] === 0) &&
+      <DonutCopy
         isAdjacent={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
         povertyBelow200Percentile={properties[constants.POVERTY_BELOW_200_PERCENTILE]}
       /> }
