@@ -31,7 +31,7 @@ const TractPrioritization = (
     if (percentTractTribal === null && tribalCountAK === null && tribalCountUS === null) {
       return <h3>{EXPLORE_COPY.COMMUNITY.NOT_OF_FOCUS}</h3>;
     } else {
-      return <h3>{EXPLORE_COPY.COMMUNITY.PARTIAL}</h3>;
+      return <h3 className={styles.invert}>{EXPLORE_COPY.COMMUNITY.PARTIAL}</h3>;
     }
   }
 };
