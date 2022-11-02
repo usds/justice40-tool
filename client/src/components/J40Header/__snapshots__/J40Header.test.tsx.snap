@@ -180,18 +180,29 @@ exports[`rendering of the J40Header checks if component renders 1`] = `
           class="grid-col-1"
           data-testid="grid"
         >
-          <img
-            alt="Climate and Economic Justice Screening Tool"
-            src="test-file-stub"
-          />
+          <a
+            data-cy="nav-link-explore-the-map"
+            href="/en/"
+          >
+            <img
+              alt="Climate and Economic Justice Screening Tool"
+              src="test-file-stub"
+            />
+          </a>
         </div>
         <div
           class="grid-col-6"
           data-testid="grid"
         >
-          <div>
-            Climate and Economic Justice Screening Tool
-          </div>
+          <a
+            class="remove-link-style"
+            data-cy="nav-link-explore-the-map"
+            href="/en/"
+          >
+            <div>
+              Climate and Economic Justice Screening Tool
+            </div>
+          </a>
         </div>
         <div
           class="grid-col-fill"

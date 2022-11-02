@@ -20,6 +20,7 @@ import * as styles from './J40Header.module.scss';
 import * as COMMON_COPY from '../../data/copy/common';
 import {PAGES_ENDPOINTS, USWDS_BREAKPOINTS} from '../../data/constants';
 
+
 interface IJ40Header {
   location: Location
 }
@@ -253,14 +254,27 @@ const J40Header = ({location}:IJ40Header) => {
 
           {/* Logo */}
           <Grid col={1}>
-            <img className={styles.logo} src={siteLogo} alt={`${logoLine1}`} />
+            <Link
+              to={PAGES_ENDPOINTS.EXPLORE}
+              key={'explore-map'}
+              data-cy={'nav-link-explore-the-map'}
+            >
+              <img className={styles.logo} src={siteLogo} alt={`${logoLine1}`} />
+            </Link>
           </Grid>
 
           {/* Logo Title */}
           <Grid col={6}>
-            <div className={styles.logoTitle}>
-              {logoLine1}
-            </div>
+            <Link
+              to={PAGES_ENDPOINTS.EXPLORE}
+              key={'explore-map'}
+              className="remove-link-style"
+              data-cy={'nav-link-explore-the-map'}
+            >
+              <div className={styles.logoTitle}>
+                {logoLine1}
+              </div>
+            </Link>
           </Grid>
 
           {/* Nav links */}
