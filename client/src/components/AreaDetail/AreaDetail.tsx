@@ -143,10 +143,17 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
   console.log("Tribal count in CONUS: ", properties[constants.TRIBAL_AREAS_COUNT_CONUS] >= 1 ?
   ` ${properties[constants.TRIBAL_AREAS_COUNT_CONUS]}` : ` null`);
 
-  const blockGroup = properties[constants.GEOID_PROPERTY] ? properties[constants.GEOID_PROPERTY] : "N/A";
-  const population = properties[constants.TOTAL_POPULATION] ? properties[constants.TOTAL_POPULATION] : "N/A";
-  const countyName = properties[constants.COUNTY_NAME] ? properties[constants.COUNTY_NAME] : "N/A";
-  const stateName = properties[constants.STATE_NAME] ? properties[constants.STATE_NAME] : "N/A";
+
+  // Fix constants.MISSING_DATA_STRING import
+  const blockGroup = properties[constants.GEOID_PROPERTY] ?
+   properties[constants.GEOID_PROPERTY] : constants.MISSING_DATA_STRING;
+  const population = properties[constants.TOTAL_POPULATION] ?
+   properties[constants.TOTAL_POPULATION] : constants.MISSING_DATA_STRING;
+  const countyName = properties[constants.COUNTY_NAME] ?
+   properties[constants.COUNTY_NAME] : constants.MISSING_DATA_STRING;
+  const stateName = properties[constants.STATE_NAME] ?
+   properties[constants.STATE_NAME] : constants.MISSING_DATA_STRING;
+
   const sidePanelState = properties[constants.SIDE_PANEL_STATE];
   const percentTractTribal = properties[constants.TRIBAL_AREAS_PERCENTAGE] >= 0 ?
     parseFloat((properties[constants.TRIBAL_AREAS_PERCENTAGE]*100).toFixed()) : null;
