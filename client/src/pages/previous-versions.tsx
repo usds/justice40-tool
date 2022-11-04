@@ -10,8 +10,7 @@ import PublicEngageButton from '../components/PublicEngageButton';
 import SubPageNav from '../components/SubPageNav';
 
 import * as PREV_VER_COPY from '../data/copy/previousVer';
-import * as CONSTANTS from '../data/constants';
-import {PAGES_ENDPOINTS} from '../data/constants';
+import {PAGES_ENDPOINTS, USWDS_BREAKPOINTS} from '../data/constants';
 import {getDownloadFileUrl} from '../data/copy/downloads';
 
 interface IPreviousVersionsProps {
@@ -79,7 +78,7 @@ const PreviousVersions = ({location}: IPreviousVersionsProps) => {
           </Grid>
 
           {/* Third column */}
-          {width > CONSTANTS.USWDS_BREAKPOINTS.DESKTOP ?
+          {width > USWDS_BREAKPOINTS.DESKTOP ?
           <Grid col={12} tablet={{col: 3}}>
             <SubPageNav
               activeSubPageIndex={2}

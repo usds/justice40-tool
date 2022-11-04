@@ -9,7 +9,7 @@ import Layout from '../components/layout';
 import PublicEngageButton from '../components/PublicEngageButton';
 import SubPageNav from '../components/SubPageNav';
 
-import * as CONSTANTS from '../data/constants';
+import {USWDS_BREAKPOINTS} from '../data/constants';
 import * as FAQS_COPY from '../data/copy/faqs';
 import {PAGES_ENDPOINTS} from '../data/constants';
 import {SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT} from '../data/copy/explore';
@@ -248,7 +248,7 @@ const FAQPage = ({location}: IFAQPageProps) => {
           </Grid>
 
           {/* Third column */}
-          {width > CONSTANTS.USWDS_BREAKPOINTS.DESKTOP ?
+          {width > USWDS_BREAKPOINTS.DESKTOP ?
           <Grid col={12} tablet={{col: 3}}>
             <SubPageNav
               activeSubPageIndex={2}
