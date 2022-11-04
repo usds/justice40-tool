@@ -852,7 +852,10 @@ const AreaDetail = ({properties, hash}: IAreaDetailProps) => {
         properties[constants.TOTAL_NUMBER_OF_DISADVANTAGE_INDICATORS] === 0) &&
       <DonutCopy
         isAdjacent={properties[constants.ADJACENCY_EXCEEDS_THRESH]}
-        povertyBelow200Percentile={properties[constants.POVERTY_BELOW_200_PERCENTILE]}
+        povertyBelow200Percentile={
+          properties[constants.POVERTY_BELOW_200_PERCENTILE] > 0 ?
+          properties[constants.POVERTY_BELOW_200_PERCENTILE] : null
+        }
       /> }
 
       {/* Send Feedback button */}
