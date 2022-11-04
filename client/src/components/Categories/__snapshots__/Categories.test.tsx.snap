@@ -26,7 +26,17 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         </p>
         <p>
           
-      Census tracts are small units of geography. Census tract boundaries are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 
+      Census tracts are small units of geography. Census tract 
+          <a
+            class="usa-link usa-link--external"
+            data-cy=""
+            href="https://www.census.gov/programs-surveys/geography/about/glossary.html#par_textimage_6"
+            rel="noreferrer"
+            target="_blank"
+          >
+            boundaries
+          </a>
+           are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 
       census boundaries.    
     
         </p>
@@ -547,7 +557,7 @@ exports[`rendering of the Categories checks if component renders 1`] = `
         </h2>
         <p>
           
-      Federally-Recognized Tribal lands, including Alaska Native Villages, are also considered disadvantaged and highlighted on the map.   
+      Federally Recognized Tribes, including Alaska Native Villages, are also considered disadvantaged communities. They are highlighted on the map.  
     
         </p>
       </div>

@@ -87,7 +87,9 @@ const FAQPage = ({location}: IFAQPageProps) => {
       <>
         <p key={6}>{FAQS_COPY.FAQ_ANSWERS.Q6_P1}</p>
         <div style={dotStyles}>
-          <img src={censusDotIcon}
+          <img
+            className={'faqs-dot-alignment'}
+            src={censusDotIcon}
             alt={intl.formatMessage(SIDE_PANEL_INIT_STATE_ICON_ALT_TEXT.DAC_CIRCLE)}
           />
           <div style={dotStyles.p}>{FAQS_COPY.FAQ_ANSWERS.Q6_P2}</div>

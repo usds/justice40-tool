@@ -7,6 +7,7 @@ import LinkTypeWrapper from '../../components/LinkTypeWrapper';
 import {EJSCREEN, EXEC_ORDER_LINK, FED_RECOGNIZED_INDIAN_ENTITIES} from './about';
 import {boldFn, linkFn, FEEDBACK_EMAIL} from './common';
 import {PAGES_ENDPOINTS} from '../constants';
+import {EXPLORE_PAGE_LINKS} from './explore';
 
 export const PAGE_INTRO = defineMessages({
   PAGE_TILE: {
@@ -291,7 +292,7 @@ export const FAQ_ANSWERS = {
   />,
   Q2_P2: <FormattedMessage
     id={ 'faqs.page.answers.Q2_P2'}
-    defaultMessage={ 'The tool highlights disadvantaged communities across all 50 states, the District of Columbia, and the U.S. territories. A community is considered disadvantaged:'}
+    defaultMessage={ 'The tool highlights disadvantaged communities across all 50 states, the District of Columbia, and the U.S. territories. Communities are considered disadvantaged:'}
     description={ 'Navigate to the FAQs page, this will be an answer, Q2_P2'}
   />,
   Q2_P2_1: <FormattedMessage
@@ -301,7 +302,7 @@ export const FAQ_ANSWERS = {
   />,
   Q2_P2_2: <FormattedMessage
     id={ 'faqs.page.answers.Q2_P2_2'}
-    defaultMessage={ 'If they are on Federally Recognized Tribal land'}
+    defaultMessage={ 'If they are on land within the boundaries of Federally Recognized Tribes'}
     description={ 'Navigate to the FAQs page, this will be an answer, Q2_P2_2'}
   />,
   Q2_P3: <FormattedMessage
@@ -342,7 +343,9 @@ export const FAQ_ANSWERS = {
   />,
   Q5_P1: <FormattedMessage
     id={ 'faqs.page.answers.Q5_P1'}
-    defaultMessage={ 'To respect Tribal sovereignty and self-government and to fulfill Federal trust and treaty responsibilities to Tribal Nations, Federally Recognized Tribal lands are highlighted as disadvantaged on the map. Alaska Native Villages are included as point locations that are smaller than census tracts. The tool’s census tracts and Tribal lands have different boundaries.'}
+    defaultMessage={`
+      To respect Tribal sovereignty and self-government and to fulfill Federal trust and treaty responsibilities to Tribal Nations, land within the boundaries of Federally Recognized tribes  are highlighted as disadvantaged on the map. Alaska Native Villages are included as point locations that are smaller than census tracts. The boundaries of census tracts and the lands of Federally Recognized Tribes are different.
+    `}
     description={ 'Navigate to the FAQs page, this will be an answer, Q5_P1'}
   />,
   Q5_P2: <FormattedMessage
@@ -355,12 +358,17 @@ export const FAQ_ANSWERS = {
   />,
   Q5_P2_1: <FormattedMessage
     id={ 'faqs.page.answers.Q5_P2_1'}
-    defaultMessage={ `The decision to highlight Federally-recognized Tribal lands on the CEJST map and to designate them as disadvantaged communities was made after meaningful and robust consultation with Tribal Nations. This approach is consistent with CEQ’s Action Plan for Consultation and Coordination with Tribal Nations, President Biden’s Memorandum on Tribal Consultation and Strengthening Nation-to-Nation Consultation, and Executive Order 13175 on Consultation and Coordination With Indian Tribal Governments.`}
+    defaultMessage={ `This decision was made after meaningful and robust consultation with Tribal Nations. This approach is consistent with CEQ’s <link1>Action Plan for Consultation and Coordination with Tribal Nations</link1>, <link3>President Biden’s Memorandum on Tribal Consultation and Strengthening Nation-to-Nation Consultation</link3>, and <link2>Executive Order 13175 on Consultation and Coordination With Indian Tribal Governments</link2>.`}
     description={ 'Navigate to the FAQs page, this will be an answer, Q5_P2_1'}
+    values={{
+      link1: linkFn(EXPLORE_PAGE_LINKS.WH_GOV_TRIBAL_ACTION_PLAN_4_26_21, false, true),
+      link2: linkFn(EXPLORE_PAGE_LINKS.FED_REGISTER_CONSULT_TRIBE_GOV_2000, false, true),
+      link3: linkFn(EXPLORE_PAGE_LINKS.WH_GOV_TRIBAL_CONSULT_NATION_NATION_01_25_21, false, true),
+    }}
   />,
   Q6_P1: <FormattedMessage
     id={ 'faqs.page.answers.Q6_P1'}
-    defaultMessage={ `Some census tracts that contain lands of Federally-recognized Tribes that are also considered disadvantaged because they meet the burden thresholds for at least one of the categories on the tool. When this happens, the areas appear darker on the tool’s map.`}
+    defaultMessage={ `Some census tracts that contain land within the boundaries of Federally Recognized Tribes are also considered disadvantaged because they meet the burden thresholds for at least one of the categories on the tool. When this happens, the areas appear darker on the tool’s map.`}
     description={ 'Navigate to the FAQs page, this will be an answer, Q6_P1'}
   />,
   Q6_P2: <FormattedMessage
@@ -370,17 +378,17 @@ export const FAQ_ANSWERS = {
   />,
   Q6_P3: <FormattedMessage
     id={ 'faqs.page.answers.Q6_P3'}
-    defaultMessage={ ` : Disadvantaged census tracts and Federally-Recognized Tribal lands`}
+    defaultMessage={ ` : Disadvantaged census tracts and land within the boundaries of Federally Recognized Tribes `}
     description={ 'Navigate to the FAQs page, this will be an answer, Q6_P3'}
   />,
   Q6_P4: <FormattedMessage
     id={ 'faqs.page.answers.Q6_P4'}
-    defaultMessage={ `Any area that is highlighted is considered disadvantaged, regardless of whether it is a light shade or dark shade. The tool will show if a whole census tract is considered disadvantaged or just the parts that are Federally Recognized Tribal lands.`}
+    defaultMessage={ `Any area that is highlighted is considered disadvantaged, regardless of whether it is a light shade or dark shade. The tool will show if a whole census tract is considered disadvantaged or just the parts that are within the boundaries of Federally Recognized Tribes.`}
     description={ 'Navigate to the FAQs page, this will be an answer, Q6_P4'}
   />,
   Q7: <FormattedMessage
     id={ 'faqs.page.answers.Q7'}
-    defaultMessage={ `A census tract that does not meet any of the burden thresholds in the tool is usually not considered to be a disadvantaged community. However, if such a census tract contains Federally Recognized Tribal lands, then the parts of the tract that are Tribal lands are considered disadvantaged. The tool will display this type of census tract as “partially disadvantaged.”`}
+    defaultMessage={ `A census tract that does not meet any of the burden thresholds in the tool is usually not considered to be a disadvantaged community. However, if such a census tract contains land within the boundaries of Federally Recognized Tribes, then the parts of the tract that are within the land of Tribes are considered disadvantaged. The tool will display this type of census tract as “partially disadvantaged.”`}
     description={ 'Navigate to the FAQs page, this will be an answer, Q7'}
   />,
   Q8_P1: <FormattedMessage
@@ -450,7 +458,7 @@ export const FAQ_ANSWERS = {
   />,
   Q12_P1: <FormattedMessage
     id={ 'faqs.page.answers.Q12_P1'}
-    defaultMessage={ `The CEJST uses lessons learned from the EPA's EJScreen. EJScreen is an environmental justice mapping and screening tool. EJScreen shows environmental and demographic information. The EPA, Federal agencies, and state and local governments will continue to use EJScreen to understand and analyze environmental problems. For example, EPA uses <link1>EJScreen</link1> to:`}
+    defaultMessage={ `The CEJST uses lessons learned from the EPA's EJScreen. EJScreen is an environmental justice mapping and screening tool. EJScreen shows environmental and demographic information and combines that information together into indices. The EPA, Federal agencies, and state and local governments will continue to use EJScreen to understand and analyze for environmental and EJ issues. For example, EPA uses <link1>EJScreen</link1> to:`}
     description={ 'Navigate to the FAQs page, this will be an answer, Q12_P1'}
     values={{
       link1: linkFn(EJSCREEN, false, true),

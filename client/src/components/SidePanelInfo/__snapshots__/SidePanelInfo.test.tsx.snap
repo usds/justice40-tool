@@ -166,7 +166,7 @@ exports[`rendering of the component expects the render to match snapshot 1`] = `
       tabindex="0"
     >
       
-      Federally Recognized Tribal lands are also highlighted
+      Land within the boundaries of Federally Recognized Tribes and point locations for Alaska Native Villages are
     
       <img
         alt="

@@ -33,6 +33,7 @@ There are 3 things that should be included in this file:
   - ABOUT CARD STYLES
   - SUMMARY BOX STYLES
   - PREVIOUS VERSIONS STYLES
+  - FAQs PAGE STYLES
 */
 
 
@@ -525,4 +526,15 @@ button.usa-accordion__button[aria-expanded=true]:has(div[class*="disCategoryCont
 
 .previous-versions-container .usa-card__header, .usa-card__heading, .usa-card__body, .usa-card__footer {
   font-family: "Source Sans Pro Web", "Helvetica Neue", "Helvetica", "Roboto", "Arial", "sans-serif" !important;
+}
+
+/* 
+******************************
+*      FAQs PAGE STYLES
+****************************** 
+*/
+
+.faqs-dot-alignment{
+  align-self: flex-start;
+  padding-top: 5px;
 }

@@ -431,19 +431,19 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           <section>
             <p>
               
-      The tool highlights disadvantaged census tracts across all 50 states, the District of Columbia, and the U.S. territories. A community is considered disadvantaged:
+      The tool highlights disadvantaged census tracts across all 50 states, the District of Columbia, and the U.S. territories. Communities are considered disadvantaged:
     
             </p>
             <div>
               <ul>
                 <li>
                   
-      If they are in a census tract that meets the thresholds for at least one of tool’s categories of burden, or
+      If they are in census tracts that meet the thresholds for at least one of tool’s categories of burden, or
     
                 </li>
                 <li>
                   
-      If they are on Federally-Recognized Tribal land
+      If they are on land within the boundaries of Federally Recognized Tribes
     
                 </li>
               </ul>
@@ -480,7 +480,17 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </p>
           <p>
             
-      Census tracts are small units of geography. Census tract boundaries are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 
+      Census tracts are small units of geography. Census tract 
+            <a
+              class="usa-link usa-link--external"
+              data-cy=""
+              href="https://www.census.gov/programs-surveys/geography/about/glossary.html#par_textimage_6"
+              rel="noreferrer"
+              target="_blank"
+            >
+              boundaries
+            </a>
+             are determined by the U.S. Census Bureau once every ten years. The tool utilizes the census tract boundaries from 2010. This was chosen primarily because many of the data sources in the tool currently use the 2010 
       census boundaries.    
     
           </p>
@@ -1001,7 +1011,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
           </h2>
           <p>
             
-      Federally-Recognized Tribal lands, including Alaska Native Villages, are also considered disadvantaged and highlighted on the map.   
+      Federally Recognized Tribes, including Alaska Native Villages, are also considered disadvantaged communities. They are highlighted on the map.  
     
           </p>
         </div>
@@ -1719,16 +1729,22 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
               <div
                 id="hist-underinv"
               >
-                <div
-                  class=""
-                >
+                <div>
+                  <div>
+                    <span
+                      class="usa-tag"
+                      data-testid="tag"
+                    >
+                      NEW
+                    </span>
+                  </div>
                   <h3>
-                    New Historic underinvestment
+                    Historic underinvestment
                   </h3>
                 </div>
                 <div>
                   
-        Census tracts that experienced historic underinvestment as determined by the National Community Reinvestment Coalition’s (NCRC) historic redlining score. It is determined using the 
+        Census tracts that experienced historic underinvestment based on redlining maps created by the federal government’s Home Owners’ Loan Corporation (HOLC) between 1935 and 1940. The tool uses the 
                   <a
                     class="usa-link usa-link--external"
                     data-cy=""
@@ -1736,9 +1752,9 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     rel="noreferrer"
                     target="_blank"
                   >
-                    NCRC’s methodology
+                    National Community Reinvestment Coalition’s methodology
                   </a>
-                   for identifying areas with the most historic redlining (i.e. a score of 3.25 or more out of 4). This means that people in the  tract had high barriers to accessing home loans. 
+                   for converting boundaries in the HOLC maps to census tracts. Census tracts meet the threshold when they have a score of 3.25 or more out of 4.
       
                 </div>
                 <div>
@@ -1748,15 +1764,11 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <strong>
                       Note: 
                     </strong>
-                    The historic underinvestment data indicator 
+                    The historic underinvestment indicator 
                     <strong>
-                      does not
+                      is not shown
                     </strong>
-                     appear on the map for tracts 
-                    <strong>
-                      that were not
-                    </strong>
-                     evaluated by the National Community Reinvestment Coalition. It is shown in tracts that are most commonly in larger metropolitan areas.
+                     on the map for tracts that were not included in the original HOLC maps because there is no data available.
       
                   </p>
                 </div>
@@ -1786,7 +1798,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     >
                       Dataset of formerly redlined areas
                     </a>
-                     using digitized maps from the Home Owners Loan Corporation from 2010
+                     using digitized maps from the Home Owners Loan Corporation (HOLC), using 2010 census boundaries
                   </li>
                   <li>
                     <span>
@@ -1865,7 +1877,8 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                 </div>
                 <div>
                   
-        Share of land with developed surfaces covered with artificial materials like concrete or pavement and crop land used for agricultural purposes.
+        Share of land with developed surfaces covered with artificial materials like concrete or pavement and crop land used for agricultural purposes. Places that lack green space are also known as nature-deprived.
+
       
                 </div>
                 <ul>
@@ -2909,31 +2922,22 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     </span>
                   </div>
                   <h3>
-                    Tribal lands
+                    Tribes
                   </h3>
                 </div>
                 <div>
                   
-        The Land Area Representation (LAR) dataset depicts the exterior extent of a Federal Indian land area. 
+      The Land Area Representation (LAR) dataset depicts American Indian land areas for Federally Recognized Tribes.
       
-                </div>
-                <div>
-                  <p>
-                    
-        
-                    <strong>
-                      Note: 
-                    </strong>
-                    The LAR dataset depicts the exterior extent of a Federal Indian land area.  Not all Federally recognized tribes have a designated land area; therefore, they may not have an associated land area represented in the land area dataset.
-      
-                  </p>
                 </div>
                 <ul>
                   <li>
                     <span>
                       Used in: 
                     </span>
-                    Displaying Federally recognized tribal boundaries and Alaska Native Villages on the map
+                    
+        Displaying land within the boundaries of Federally Recognized Tribes and point locations of Alaska Native Villages on the map
+      
                   </li>
                   <li>
                     <span>
@@ -2960,7 +2964,7 @@ exports[`rendering of the DatasetContainer checks if various text fields are vis
                     <span>
                       Available for: 
                     </span>
-                    Federally-Recognized Tribes, including Alaskan Native villages 
+                    Federally Recognized Tribes, including Alaskan Native villages 
                   </li>
                 </ul>
               </div>

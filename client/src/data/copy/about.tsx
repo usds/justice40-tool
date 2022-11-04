@@ -25,7 +25,8 @@ export const CONTENT = {
   <FormattedMessage
     id={'about.page.paragraph.1'}
     defaultMessage={`
-      In January of 2020, President Biden issued <link1>Executive Order 14008</link1>. The order directed the Council on Environmental Quality (CEQ) to develop a new tool. This tool is called the Climate and Economic Justice Screening Tool. The tool has an interactive map and uses datasets that are indicators of burdens. The tool uses this information to identify communities that are experiencing these burdens.
+      In January of 2020, President Biden issued <link1>Executive Order 14008</link1>. The order directed the Council on Environmental Quality (CEQ) to develop a new tool. This tool is called the Climate and Economic Justice Screening Tool. The tool has an interactive map and uses datasets that are indicators of burdens. The tool uses this information to identify communities that are experiencing these burdens.These are the communities that are disadvantaged because they are overburdened and underserved.
+
     `}
     description={'Navigate to the About page. This is the paragraph 1'}
     values={{
@@ -37,7 +38,7 @@ export const CONTENT = {
   <FormattedMessage
     id={'about.page.paragraph.2'}
     defaultMessage={`
-      Federal agencies will use the tool to help identify disadvantaged communities that will benefit from programs included in <link1>Justice40 Initiative</link1>. The Justice40 Initiative seeks to deliver 40% of the overall benefits of investments in climate, clean energy, and related areas to disadvantaged communities.
+      Federal agencies will use the tool to help identify disadvantaged communities that will benefit from programs included in the <link1>Justice40 Initiative</link1>. The Justice40 Initiative seeks to deliver 40% of the overall benefits of investments in climate, clean energy, and related areas to disadvantaged communities.
     `}
     description={'Navigate to the About page. This is the paragraph 2'}
     values={{
@@ -96,7 +97,7 @@ export const CONTENT = {
   <FormattedMessage
     id={'about.page.use.data.paragraph'}
     defaultMessage={`
-    A community is considered to be disadvantaged if it meets the <link1>methodology</link1>.
+    A community is considered to be disadvantaged if it meets the tool's <link1>methodology</link1>.
     `}
     description={'Navigate to the About page. This is the paragraph 4'}
     values={{
@@ -115,7 +116,7 @@ export const HOW_TO_USE_TOOL = defineMessages({
   },
   PARA1: {
     id: 'about.page.how.to.use.tool.para1',
-    defaultMessage: 'The tool shows information about the burdens that communities experience. It uses datasets to identify indicators of burdens. The tool shows these burdens in census tracts. Census tracts are small units of geography. Census tracts match the data that is currently available. The tool also shows Federally-recognized Tribal reservation lands, including Alaskan Native Villages.',
+    defaultMessage: 'The tool shows information about the burdens that communities experience. It uses datasets to identify indicators of burdens. The tool shows these burdens in census tracts. Census tracts are small units of geography. Census tracts match the data that is currently available. The tool also shows land within the boundaries of Federally Recognized Tribes and point locations for Alaskan Native Villages.',
     description: 'Navigate to the About page. This is the sub heading of How to use the tool paragraph1',
   },
   PARA2: {
@@ -131,7 +132,7 @@ export const HOW_TO_USE_TOOL = defineMessages({
   USE_MAP_PARA: {
     id: 'about.page.use.map.para',
     defaultMessage: `
-      Zoom and select any census tract to see if it is considered disadvantaged.
+      Zoom-in and select any census tract to see if it is considered disadvantaged.
     `,
     description: 'Navigate to the About page. This is the paragraph of Using the map',
   },
@@ -185,7 +186,7 @@ export const GET_INVOLVED_COMMENTS = {
     id={'about.page.send.feedback.email.link'}
     description={'about page sub header text'}
     defaultMessage={`
-      Contact CEQ
+      Contact
     `}
   />,
 };
@@ -201,7 +202,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
     defaultMessage={`Provide <link1>general feedback</link1> on the CEJST website`}
     description={`Navigate to the about page. You will see How you can help list item 1`}
     values={{
-      link1: linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
+      link1: linkFn('https://www.surveymonkey.com/r/P3LWTSB', false, true),
     }}
   />,
   LIST_ITEM_2: <FormattedMessage
@@ -209,7 +210,7 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
     defaultMessage={`Suggest new <link1>data sources</link1>.`}
     description={`Navigate to the about page. You will see How you can help list item 2`}
     values={{
-      link1: linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
+      link1: linkFn('https://www.surveymonkey.com/r/6G9TQJ8', false, true),
     }}
   />,
   LIST_ITEM_3: <FormattedMessage
@@ -219,11 +220,18 @@ export const HOW_YOU_CAN_HELP_LIST_ITEMS = {
   />,
   LIST_ITEM_4: <FormattedMessage
     id={'about.page.how.you.can.help.list.item.4'}
-    defaultMessage={`Any other questions? Email: <link1>Screeningtool-Support@omb.eop.gov</link1>`}
+    defaultMessage={`Any other questions? The best way to contact the Council on Environmental Quality (CEQ) is by filling out this form. Otherwise, email CEQ at: <link1>Screeningtool-Support@omb.eop.gov</link1>`}
     description={`Navigate to the about page. You will see How you can help list item 3`}
     values={{
       link1: linkFn(PAGES_ENDPOINTS.METHODOLOGY, true, false),
     }}
+  />,
+  PARA1: <FormattedMessage
+    id={'about.page.how.you.can.help.para.1'}
+    defaultMessage={`
+      The Council on Environmental Quality plans to issue a Request for Information in 2023. This will give the public time to use the tool before providing comments.    
+    `}
+    description={`Navigate to the about page. You will see How you can help list item 3`}
   />,
 
 };
